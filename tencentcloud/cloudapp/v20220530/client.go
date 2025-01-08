@@ -69,6 +69,7 @@ func NewVerifyLicenseResponse() (response *VerifyLicenseResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_FAILTOSIGN = "InternalError.FailToSign"
 //  RESOURCENOTFOUND_LICENSENOTFOUNDERR = "ResourceNotFound.LicenseNotFoundErr"
 func (c *Client) VerifyLicense(request *VerifyLicenseRequest) (response *VerifyLicenseResponse, err error) {
     return c.VerifyLicenseWithContext(context.Background(), request)
@@ -79,6 +80,7 @@ func (c *Client) VerifyLicense(request *VerifyLicenseRequest) (response *VerifyL
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_FAILTOSIGN = "InternalError.FailToSign"
 //  RESOURCENOTFOUND_LICENSENOTFOUNDERR = "ResourceNotFound.LicenseNotFoundErr"
 func (c *Client) VerifyLicenseWithContext(ctx context.Context, request *VerifyLicenseRequest) (response *VerifyLicenseResponse, err error) {
     if request == nil {

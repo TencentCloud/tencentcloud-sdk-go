@@ -1839,6 +1839,16 @@ type CreateTargetGroupRequestParams struct {
 
 	// 目标组绑定的后端服务器
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitnil,omitempty" name:"TargetGroupInstances"`
+
+	// 标签。
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 后端服务默认权重。
+	// <ul>
+	//     <li>取值范围[0, 100]</li>
+	//     <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li>
+	// </ul>
+	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 
 type CreateTargetGroupRequest struct {
@@ -1855,6 +1865,16 @@ type CreateTargetGroupRequest struct {
 
 	// 目标组绑定的后端服务器
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitnil,omitempty" name:"TargetGroupInstances"`
+
+	// 标签。
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 后端服务默认权重。
+	// <ul>
+	//     <li>取值范围[0, 100]</li>
+	//     <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li>
+	// </ul>
+	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 
 func (r *CreateTargetGroupRequest) ToJsonString() string {
@@ -1873,6 +1893,8 @@ func (r *CreateTargetGroupRequest) FromJsonString(s string) error {
 	delete(f, "VpcId")
 	delete(f, "Port")
 	delete(f, "TargetGroupInstances")
+	delete(f, "Tags")
+	delete(f, "Weight")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTargetGroupRequest has unknown keys!", "")
 	}
@@ -7363,6 +7385,13 @@ type ModifyTargetGroupAttributeRequestParams struct {
 
 	// 目标组的新默认端口。
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 后端服务默认权重。
+	// <ul>
+	//     <li>取值范围[0, 100]</li>
+	//     <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li> 
+	// </ul>
+	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 
 type ModifyTargetGroupAttributeRequest struct {
@@ -7376,6 +7405,13 @@ type ModifyTargetGroupAttributeRequest struct {
 
 	// 目标组的新默认端口。
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 后端服务默认权重。
+	// <ul>
+	//     <li>取值范围[0, 100]</li>
+	//     <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li> 
+	// </ul>
+	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 
 func (r *ModifyTargetGroupAttributeRequest) ToJsonString() string {
@@ -7393,6 +7429,7 @@ func (r *ModifyTargetGroupAttributeRequest) FromJsonString(s string) error {
 	delete(f, "TargetGroupId")
 	delete(f, "TargetGroupName")
 	delete(f, "Port")
+	delete(f, "Weight")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTargetGroupAttributeRequest has unknown keys!", "")
 	}

@@ -20,6 +20,9 @@ const (
 	// DBError
 	INTERNALERROR_DBERROR = "InternalError.DBError"
 
+	// 签名失败
+	INTERNALERROR_FAILTOSIGN = "InternalError.FailToSign"
+
 	// 找不到该License
 	RESOURCENOTFOUND_LICENSENOTFOUNDERR = "ResourceNotFound.LicenseNotFoundErr"
 )

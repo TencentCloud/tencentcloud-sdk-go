@@ -17,6 +17,9 @@ package v20230812
 const (
 	// 此产品的特有错误码
 
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
 	// 欠费账户不能创建实例
 	FAILEDOPERATION_ARREARSACCOUNTCANNOTRUNINSTANCES = "FailedOperation.ArrearsAccountCannotRunInstances"
 
@@ -28,6 +31,9 @@ const (
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
+
+	// 参数错误。
+	INVALIDPARAMETER = "InvalidParameter"
 
 	// 两个指定的入参每次只能使用其中一个
 	INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"

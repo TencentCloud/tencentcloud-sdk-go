@@ -974,6 +974,9 @@ type BizTaskInfo struct {
 	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceCLSDeliveryInfos []*InstanceCLSDeliveryInfo `json:"InstanceCLSDeliveryInfos,omitnil,omitempty" name:"InstanceCLSDeliveryInfos"`
+
+	// 任务进度信息
+	TaskProgressInfo *TaskProgressInfo `json:"TaskProgressInfo,omitnil,omitempty" name:"TaskProgressInfo"`
 }
 
 type BizTaskModifyInstanceParam struct {
@@ -7015,6 +7018,9 @@ type DescribeInstanceSlowQueriesRequestParams struct {
 
 	// 排序类型，可选值：asc,desc
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+
+	// sql语句
+	SqlText *string `json:"SqlText,omitnil,omitempty" name:"SqlText"`
 }
 
 type DescribeInstanceSlowQueriesRequest struct {
@@ -7049,6 +7055,9 @@ type DescribeInstanceSlowQueriesRequest struct {
 
 	// 排序类型，可选值：asc,desc
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+
+	// sql语句
+	SqlText *string `json:"SqlText,omitnil,omitempty" name:"SqlText"`
 }
 
 func (r *DescribeInstanceSlowQueriesRequest) ToJsonString() string {
@@ -7073,6 +7082,7 @@ func (r *DescribeInstanceSlowQueriesRequest) FromJsonString(s string) error {
 	delete(f, "Database")
 	delete(f, "OrderBy")
 	delete(f, "OrderByType")
+	delete(f, "SqlText")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceSlowQueriesRequest has unknown keys!", "")
 	}
@@ -14992,6 +15002,9 @@ type RollbackToNewClusterRequestParams struct {
 
 	// 原ro实例信息
 	OriginalROInstanceList []*string `json:"OriginalROInstanceList,omitnil,omitempty" name:"OriginalROInstanceList"`
+
+	// 项目id
+	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 type RollbackToNewClusterRequest struct {
@@ -15083,6 +15096,9 @@ type RollbackToNewClusterRequest struct {
 
 	// 原ro实例信息
 	OriginalROInstanceList []*string `json:"OriginalROInstanceList,omitnil,omitempty" name:"OriginalROInstanceList"`
+
+	// 项目id
+	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 func (r *RollbackToNewClusterRequest) ToJsonString() string {
@@ -15123,6 +15139,7 @@ func (r *RollbackToNewClusterRequest) FromJsonString(s string) error {
 	delete(f, "RollbackDatabases")
 	delete(f, "RollbackTables")
 	delete(f, "OriginalROInstanceList")
+	delete(f, "ProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RollbackToNewClusterRequest has unknown keys!", "")
 	}
@@ -16112,6 +16129,17 @@ type TaskMaintainInfo struct {
 	// 可以执行的时间，枚举值：["Mon","Tue","Wed","Thu","Fri", "Sat", "Sun"]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaintainWeekDays []*string `json:"MaintainWeekDays,omitnil,omitempty" name:"MaintainWeekDays"`
+}
+
+type TaskProgressInfo struct {
+	// 当前步骤
+	CurrentStep *string `json:"CurrentStep,omitnil,omitempty" name:"CurrentStep"`
+
+	// 当前进度
+	CurrentStepProgress *int64 `json:"CurrentStepProgress,omitnil,omitempty" name:"CurrentStepProgress"`
+
+	// 预估时间
+	CurrentStepRemainingTime *string `json:"CurrentStepRemainingTime,omitnil,omitempty" name:"CurrentStepRemainingTime"`
 }
 
 type TemplateParamInfo struct {

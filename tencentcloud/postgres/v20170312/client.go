@@ -4117,6 +4117,75 @@ func (c *Client) DescribeLogBackupsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeMaintainTimeWindowRequest() (request *DescribeMaintainTimeWindowRequest) {
+    request = &DescribeMaintainTimeWindowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeMaintainTimeWindow")
+    
+    
+    return
+}
+
+func NewDescribeMaintainTimeWindowResponse() (response *DescribeMaintainTimeWindowResponse) {
+    response = &DescribeMaintainTimeWindowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMaintainTimeWindow
+// 本接口 (DescribeMaintainTimeWindow) 用于查询实例的维护时间窗口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeMaintainTimeWindow(request *DescribeMaintainTimeWindowRequest) (response *DescribeMaintainTimeWindowResponse, err error) {
+    return c.DescribeMaintainTimeWindowWithContext(context.Background(), request)
+}
+
+// DescribeMaintainTimeWindow
+// 本接口 (DescribeMaintainTimeWindow) 用于查询实例的维护时间窗口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeMaintainTimeWindowWithContext(ctx context.Context, request *DescribeMaintainTimeWindowRequest) (response *DescribeMaintainTimeWindowResponse, err error) {
+    if request == nil {
+        request = NewDescribeMaintainTimeWindowRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMaintainTimeWindow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMaintainTimeWindowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOrdersRequest() (request *DescribeOrdersRequest) {
     request = &DescribeOrdersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6775,6 +6844,69 @@ func (c *Client) ModifyDatabaseOwnerWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyDatabaseOwnerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMaintainTimeWindowRequest() (request *ModifyMaintainTimeWindowRequest) {
+    request = &ModifyMaintainTimeWindowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "ModifyMaintainTimeWindow")
+    
+    
+    return
+}
+
+func NewModifyMaintainTimeWindowResponse() (response *ModifyMaintainTimeWindowResponse) {
+    response = &ModifyMaintainTimeWindowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMaintainTimeWindow
+// 本接口 (ModifyMaintainTimeWindow) 用于实例维护时间窗口的修改。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ModifyMaintainTimeWindow(request *ModifyMaintainTimeWindowRequest) (response *ModifyMaintainTimeWindowResponse, err error) {
+    return c.ModifyMaintainTimeWindowWithContext(context.Background(), request)
+}
+
+// ModifyMaintainTimeWindow
+// 本接口 (ModifyMaintainTimeWindow) 用于实例维护时间窗口的修改。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ModifyMaintainTimeWindowWithContext(ctx context.Context, request *ModifyMaintainTimeWindowRequest) (response *ModifyMaintainTimeWindowResponse, err error) {
+    if request == nil {
+        request = NewModifyMaintainTimeWindowRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMaintainTimeWindow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMaintainTimeWindowResponse()
     err = c.Send(request, response)
     return
 }

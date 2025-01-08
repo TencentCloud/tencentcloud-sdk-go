@@ -884,7 +884,21 @@ func NewDeployCertificateInstanceResponse() (response *DeployCertificateInstance
 }
 
 // DeployCertificateInstance
-// 证书部署到云资源实例列表
+// 证书部署到云资源实例列表，本接口只会创建部署任务， 部署任务结果可通过DescribeHostDeployRecordDetail查询。本接口创建部署任务时，会校验证书和部署实例的匹配关系，存在不匹配的则会创建部署任务失败。以下为匹配关系校验规则：
+//
+// - 若待部署的证书和传入实例域名的当前绑定的证书一致， 则不会创建成功
+//
+// - 若待部署的证书和传入域名不匹配， 则不会创建成功
+//
+// - 若部署clb实例时， 7层监听器下无规则，则不会创建成功
+//
+// - 若部署clb实例时， 7层监听器未开启SNI，该监听器下存在任一域名和证书不匹配， 则不会创建成功
+//
+// - 若部署clb实例是，监听器规则为正则表示式， 则不会创建成功
+//
+// 
+//
+// <dx-alert infotype="explain" title="">一个证书ID，相同的资源类型，只能创建一个部署任务，必须等部署任务执行完成，才能创建新的部署任务</dx-alert>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -907,7 +921,21 @@ func (c *Client) DeployCertificateInstance(request *DeployCertificateInstanceReq
 }
 
 // DeployCertificateInstance
-// 证书部署到云资源实例列表
+// 证书部署到云资源实例列表，本接口只会创建部署任务， 部署任务结果可通过DescribeHostDeployRecordDetail查询。本接口创建部署任务时，会校验证书和部署实例的匹配关系，存在不匹配的则会创建部署任务失败。以下为匹配关系校验规则：
+//
+// - 若待部署的证书和传入实例域名的当前绑定的证书一致， 则不会创建成功
+//
+// - 若待部署的证书和传入域名不匹配， 则不会创建成功
+//
+// - 若部署clb实例时， 7层监听器下无规则，则不会创建成功
+//
+// - 若部署clb实例时， 7层监听器未开启SNI，该监听器下存在任一域名和证书不匹配， 则不会创建成功
+//
+// - 若部署clb实例是，监听器规则为正则表示式， 则不会创建成功
+//
+// 
+//
+// <dx-alert infotype="explain" title="">一个证书ID，相同的资源类型，只能创建一个部署任务，必须等部署任务执行完成，才能创建新的部署任务</dx-alert>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

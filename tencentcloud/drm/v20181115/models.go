@@ -212,6 +212,10 @@ type CreateLicenseRequestParams struct {
 
 	// 播放策略参数。
 	PlaybackPolicy *PlaybackPolicy `json:"PlaybackPolicy,omitnil,omitempty" name:"PlaybackPolicy"`
+
+	// Widevine安全级别，接口取值[L1, L2, L3]。
+	// 安全级别定义参考Widevine安全级别定义。
+	WidevineSecurityLevel *string `json:"WidevineSecurityLevel,omitnil,omitempty" name:"WidevineSecurityLevel"`
 }
 
 type CreateLicenseRequest struct {
@@ -232,6 +236,10 @@ type CreateLicenseRequest struct {
 
 	// 播放策略参数。
 	PlaybackPolicy *PlaybackPolicy `json:"PlaybackPolicy,omitnil,omitempty" name:"PlaybackPolicy"`
+
+	// Widevine安全级别，接口取值[L1, L2, L3]。
+	// 安全级别定义参考Widevine安全级别定义。
+	WidevineSecurityLevel *string `json:"WidevineSecurityLevel,omitnil,omitempty" name:"WidevineSecurityLevel"`
 }
 
 func (r *CreateLicenseRequest) ToJsonString() string {
@@ -251,6 +259,7 @@ func (r *CreateLicenseRequest) FromJsonString(s string) error {
 	delete(f, "ContentType")
 	delete(f, "Tracks")
 	delete(f, "PlaybackPolicy")
+	delete(f, "WidevineSecurityLevel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLicenseRequest has unknown keys!", "")
 	}

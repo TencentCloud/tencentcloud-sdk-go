@@ -11672,6 +11672,8 @@ type FlowApproverDetail struct {
 	ApproveStatus *int64 `json:"ApproveStatus,omitnil,omitempty" name:"ApproveStatus"`
 
 	// 模板配置中的参与方ID,与控件绑定
+	//
+	// Deprecated: ReceiptId is deprecated.
 	ReceiptId *string `json:"ReceiptId,omitnil,omitempty" name:"ReceiptId"`
 
 	// 客户自定义的用户ID
@@ -11714,6 +11716,9 @@ type FlowApproverDetail struct {
 	// 自定义签署人角色
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproverRoleName *string `json:"ApproverRoleName,omitnil,omitempty" name:"ApproverRoleName"`
+
+	// 模板配置中的参与方ID,与控件绑定
+	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 }
 
 type FlowApproverUrlInfo struct {
@@ -13543,6 +13548,8 @@ type ReleasedApprover struct {
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 要更换的原合同参与人RecipientId编号。(可通过接口<a href="https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo/">DescribeFlowInfo</a>查询签署人的RecipientId编号)<br/>
+	//
+	// Deprecated: RelievedApproverReceiptId is deprecated.
 	RelievedApproverReceiptId *string `json:"RelievedApproverReceiptId,omitnil,omitempty" name:"RelievedApproverReceiptId"`
 
 	// 指定签署人类型，目前仅支持
@@ -13564,6 +13571,9 @@ type ReleasedApprover struct {
 
 	// 印章Id，签署控件类型为印章时，用于指定本企业签署方在解除协议中使用那个印章进行签署
 	ApproverSignSealId *string `json:"ApproverSignSealId,omitnil,omitempty" name:"ApproverSignSealId"`
+
+	// 要更换的原合同参与人RecipientId编号。(可通过接口<a href="https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo/">DescribeFlowInfo</a>查询签署人的RecipientId编号)<br/>
+	RelievedApproverRecipientId *string `json:"RelievedApproverRecipientId,omitnil,omitempty" name:"RelievedApproverRecipientId"`
 }
 
 type RelieveInfo struct {

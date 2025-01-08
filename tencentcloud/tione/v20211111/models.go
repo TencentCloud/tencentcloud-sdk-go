@@ -4917,6 +4917,10 @@ type NotebookDetail struct {
 
 	// 任务实例创建时间
 	JobCreateTime *string `json:"JobCreateTime,omitnil,omitempty" name:"JobCreateTime"`
+
+	// Appid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 }
 
 type NotebookSetItem struct {
@@ -5026,6 +5030,10 @@ type NotebookSetItem struct {
 
 	// 子用户名称
 	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
+
+	// AppId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 }
 
 type Option struct {

@@ -190,6 +190,10 @@ type AlarmInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 
+	// 告警附加分类字段。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Classifications []*AlarmClassification `json:"Classifications,omitnil,omitempty" name:"Classifications"`
+
 	// 多触发条件。与
 	// Condition互斥。
 	// 注意：此字段可能返回 null，表示取不到有效值。

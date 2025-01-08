@@ -24,7 +24,7 @@ type License struct {
 	// License ID
 	LicenseId *string `json:"LicenseId,omitnil,omitempty" name:"LicenseId"`
 
-	// 软件授权模式。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>Permanent</td><td>永久授权。该授权不受有效期限制。</td></tr><tr><td>Subscription</td><td>订阅授权。授权如果过了有效期，则会进入过期状态。</td></tr></tbody></table>
+	// 软件授权模式。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>Permanent</td><td>永久授权。该授权不受有效期限制。</td></tr><tr><td>Subscription</td><td>订阅授权。授权如果过了有效期，则会进入过期状态。</td></tr><tr><td>Accept</td><td>验收期授权。用于需要验收的软件处于验收期间的授权，授权如果过了验收有效期，则会进入过期状态。</td></tr></tbody></table>
 	LicenseMode *string `json:"LicenseMode,omitnil,omitempty" name:"LicenseMode"`
 
 	// 软件的授权状态。<table><thead><tr><th>枚举值</th><th>说明</th></tr></thead><tbody><tr><td>Issued</td><td>已颁发，等待激活。一般来说，如果软件已经在运行，不会出现该状态。</td></tr><tr><td>Active</td><td>授权在有效期内，这是软件运行期间最常见的状态。</td></tr><tr><td>Expired</td><td>授权已过期。订阅类的软件授权有有效期，如果服务器时间已晚于有效期，则会进入过期状态。</td></tr><tr><td>Isolated</td><td>授权已隔离。有截止日期的授权，当用户授权到期时，先进入此状态，用户可以去续费，超过7天不续费则授权进入Destroyed状态。</td></tr><tr><td>Destroyed</td><td>授权已失效/销毁。用户如果退货软件，则授权会自动失效。</td></tr></tbody></table>
@@ -79,16 +79,21 @@ type SaleParam struct {
 	// 售卖参数标识
 	ParamKey *string `json:"ParamKey,omitnil,omitempty" name:"ParamKey"`
 
-	// 售卖参数值
-	ParamValue *string `json:"ParamValue,omitnil,omitempty" name:"ParamValue"`
-
 	// 售卖参数的展示名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamKeyName *string `json:"ParamKeyName,omitnil,omitempty" name:"ParamKeyName"`
 
+	// 售卖参数值，当ParamType=Quant时，该值有可能为Null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamValue *string `json:"ParamValue,omitnil,omitempty" name:"ParamValue"`
+
 	// 售卖参数值的展示名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamValueName *string `json:"ParamValueName,omitnil,omitempty" name:"ParamValueName"`
+
+	// 售卖参数的类型，目前支持枚举类Enum/数量类Quant
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamType *string `json:"ParamType,omitnil,omitempty" name:"ParamType"`
 }
 
 // Predefined struct for user
@@ -124,6 +129,12 @@ func (r *VerifyLicenseRequest) FromJsonString(s string) error {
 type VerifyLicenseResponseParams struct {
 	// 软件的详细授权信息。
 	License *License `json:"License,omitnil,omitempty" name:"License"`
+
+	// 当前请求服务端的时间戳，格式为RFC3339
+	Timestamp *string `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 对License字段对应的json数据的签名
+	Signature *string `json:"Signature,omitnil,omitempty" name:"Signature"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

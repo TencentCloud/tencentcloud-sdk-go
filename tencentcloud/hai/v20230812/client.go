@@ -45,6 +45,59 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateMuskPromptRequest() (request *CreateMuskPromptRequest) {
+    request = &CreateMuskPromptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "CreateMuskPrompt")
+    
+    
+    return
+}
+
+func NewCreateMuskPromptResponse() (response *CreateMuskPromptResponse) {
+    response = &CreateMuskPromptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMuskPrompt
+// 创建musk prompt 任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateMuskPrompt(request *CreateMuskPromptRequest) (response *CreateMuskPromptResponse, err error) {
+    return c.CreateMuskPromptWithContext(context.Background(), request)
+}
+
+// CreateMuskPrompt
+// 创建musk prompt 任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateMuskPromptWithContext(ctx context.Context, request *CreateMuskPromptRequest) (response *CreateMuskPromptResponse, err error) {
+    if request == nil {
+        request = NewCreateMuskPromptRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMuskPrompt require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMuskPromptResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApplicationsRequest() (request *DescribeApplicationsRequest) {
     request = &DescribeApplicationsRequest{
         BaseRequest: &tchttp.BaseRequest{},

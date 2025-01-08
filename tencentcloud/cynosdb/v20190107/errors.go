@@ -287,6 +287,9 @@ const (
 	// 账号余额不足。
 	OPERATIONDENIED_INSUFFICIENTBALANCEERROR = "OperationDenied.InsufficientBalanceError"
 
+	// 响应大小超限制:{{1}}， 请减少查询数量。
+	OPERATIONDENIED_LENGTHOVERLIMIT = "OperationDenied.LengthOverLimit"
+
 	// 您没有权限操作该资源（进行该操作）。
 	OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
 

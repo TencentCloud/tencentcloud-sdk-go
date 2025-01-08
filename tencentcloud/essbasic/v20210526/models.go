@@ -2196,7 +2196,12 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// 是否开启动态合同（动态签署人2.0）
 	// <ul><li> **false** :(默认) 不开启动态合同（动态签署人2.0）</li>
 	// <li> **true** :开启动态合同（动态签署人2.0）,发起后可继续追加合同签署人</li></ul>
+	//
+	// Deprecated: OpenDynamicFlow is deprecated.
 	OpenDynamicFlow *bool `json:"OpenDynamicFlow,omitnil,omitempty" name:"OpenDynamicFlow"`
+
+	// 是否开启动态合同（动态签署人2.0）<ul><li> **false** :(默认) 不开启动态合同（动态签署人2.0）</li><li> **true** :开启动态合同（动态签署人2.0）,发起后可继续追加合同签署人</li></ul>
+	OpenDynamicSignFlow *bool `json:"OpenDynamicSignFlow,omitnil,omitempty" name:"OpenDynamicSignFlow"`
 }
 
 type ChannelCreateFlowByFilesRequest struct {
@@ -2331,6 +2336,9 @@ type ChannelCreateFlowByFilesRequest struct {
 	// <ul><li> **false** :(默认) 不开启动态合同（动态签署人2.0）</li>
 	// <li> **true** :开启动态合同（动态签署人2.0）,发起后可继续追加合同签署人</li></ul>
 	OpenDynamicFlow *bool `json:"OpenDynamicFlow,omitnil,omitempty" name:"OpenDynamicFlow"`
+
+	// 是否开启动态合同（动态签署人2.0）<ul><li> **false** :(默认) 不开启动态合同（动态签署人2.0）</li><li> **true** :开启动态合同（动态签署人2.0）,发起后可继续追加合同签署人</li></ul>
+	OpenDynamicSignFlow *bool `json:"OpenDynamicSignFlow,omitnil,omitempty" name:"OpenDynamicSignFlow"`
 }
 
 func (r *ChannelCreateFlowByFilesRequest) ToJsonString() string {
@@ -2368,6 +2376,7 @@ func (r *ChannelCreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "NeedPreview")
 	delete(f, "PreviewType")
 	delete(f, "OpenDynamicFlow")
+	delete(f, "OpenDynamicSignFlow")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowByFilesRequest has unknown keys!", "")
 	}
@@ -10606,6 +10615,8 @@ type Filter struct {
 
 type FlowApproverDetail struct {
 	// 模板配置时候的签署人角色ID(用PDF文件发起也可以指定,如果不指定则自动生成此角色ID), 所有的填写控件和签署控件都归属不同的角色
+	//
+	// Deprecated: ReceiptId is deprecated.
 	ReceiptId *string `json:"ReceiptId,omitnil,omitempty" name:"ReceiptId"`
 
 	// 第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样, 可以参考<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#agent" target="_blank">Agent结构体</a>
@@ -10665,6 +10676,9 @@ type FlowApproverDetail struct {
 	// 签署参与人在本流程中的编号ID（每个流程不同），可用此ID来定位签署参与人在本流程的签署节点。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignId *string `json:"SignId,omitnil,omitempty" name:"SignId"`
+
+	// 模板配置时候的签署人角色ID(用PDF文件发起也可以指定,如果不指定则自动生成此角色ID), 所有的填写控件和签署控件都归属不同的角色
+	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 }
 
 type FlowApproverInfo struct {

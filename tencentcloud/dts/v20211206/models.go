@@ -3211,6 +3211,9 @@ type DescribeSubscribeJobsRequestParams struct {
 	// 订阅 ID 筛选，精确匹配
 	SubscribeId *string `json:"SubscribeId,omitnil,omitempty" name:"SubscribeId"`
 
+	// 订阅 ID 筛选，精确匹配
+	SubscribeIds []*string `json:"SubscribeIds,omitnil,omitempty" name:"SubscribeIds"`
+
 	// 订阅名称，前缀模糊匹配
 	SubscribeName *string `json:"SubscribeName,omitnil,omitempty" name:"SubscribeName"`
 
@@ -3250,6 +3253,9 @@ type DescribeSubscribeJobsRequest struct {
 	
 	// 订阅 ID 筛选，精确匹配
 	SubscribeId *string `json:"SubscribeId,omitnil,omitempty" name:"SubscribeId"`
+
+	// 订阅 ID 筛选，精确匹配
+	SubscribeIds []*string `json:"SubscribeIds,omitnil,omitempty" name:"SubscribeIds"`
 
 	// 订阅名称，前缀模糊匹配
 	SubscribeName *string `json:"SubscribeName,omitnil,omitempty" name:"SubscribeName"`
@@ -3298,6 +3304,7 @@ func (r *DescribeSubscribeJobsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SubscribeId")
+	delete(f, "SubscribeIds")
 	delete(f, "SubscribeName")
 	delete(f, "InstanceId")
 	delete(f, "Topic")
@@ -3409,6 +3416,9 @@ type DescribeSyncJobsRequestParams struct {
 	// 同步任务id，如sync-werwfs23
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
+	// 同步任务id列表，如sync-werwfs23
+	JobIds []*string `json:"JobIds,omitnil,omitempty" name:"JobIds"`
+
 	// 同步任务名
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
@@ -3438,6 +3448,12 @@ type DescribeSyncJobsRequestParams struct {
 
 	// tag
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
+
+	// 源端数据库连接信息，可以输入实例ID或者IP等
+	SrcInfoPattern *string `json:"SrcInfoPattern,omitnil,omitempty" name:"SrcInfoPattern"`
+
+	// 目标端数据库连接信息，可以输入实例ID或者IP等
+	DstInfoPattern *string `json:"DstInfoPattern,omitnil,omitempty" name:"DstInfoPattern"`
 }
 
 type DescribeSyncJobsRequest struct {
@@ -3446,6 +3462,9 @@ type DescribeSyncJobsRequest struct {
 	// 同步任务id，如sync-werwfs23
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
+	// 同步任务id列表，如sync-werwfs23
+	JobIds []*string `json:"JobIds,omitnil,omitempty" name:"JobIds"`
+
 	// 同步任务名
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
@@ -3475,6 +3494,12 @@ type DescribeSyncJobsRequest struct {
 
 	// tag
 	TagFilters []*TagFilter `json:"TagFilters,omitnil,omitempty" name:"TagFilters"`
+
+	// 源端数据库连接信息，可以输入实例ID或者IP等
+	SrcInfoPattern *string `json:"SrcInfoPattern,omitnil,omitempty" name:"SrcInfoPattern"`
+
+	// 目标端数据库连接信息，可以输入实例ID或者IP等
+	DstInfoPattern *string `json:"DstInfoPattern,omitnil,omitempty" name:"DstInfoPattern"`
 }
 
 func (r *DescribeSyncJobsRequest) ToJsonString() string {
@@ -3490,6 +3515,7 @@ func (r *DescribeSyncJobsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "JobId")
+	delete(f, "JobIds")
 	delete(f, "JobName")
 	delete(f, "Order")
 	delete(f, "OrderSeq")
@@ -3500,6 +3526,8 @@ func (r *DescribeSyncJobsRequest) FromJsonString(s string) error {
 	delete(f, "JobType")
 	delete(f, "PayMode")
 	delete(f, "TagFilters")
+	delete(f, "SrcInfoPattern")
+	delete(f, "DstInfoPattern")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSyncJobsRequest has unknown keys!", "")
 	}
@@ -4063,7 +4091,10 @@ type EndpointItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnOwnerUin *string `json:"CcnOwnerUin,omitnil,omitempty" name:"CcnOwnerUin"`
 
-	// 为业务添加的额外信息。参数名作key，参数值作value。 tdpg必填参数：PgDatabase-订阅的库名。
+	// 为业务添加的额外信息。参数名作key，参数值作value。 
+	// tdpg必填参数：PgDatabase-订阅的库名；
+	// mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-分片集，主要用于控制台跳转到mongo实例页面，如不填不影响任务运行；
+	// 全业务选填参数：EngineVersion-内核版本。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraAttr []*KeyValuePairOption `json:"ExtraAttr,omitnil,omitempty" name:"ExtraAttr"`
 

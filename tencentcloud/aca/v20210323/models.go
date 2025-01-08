@@ -1080,7 +1080,7 @@ type SmartDrugInfoResp struct {
 	// 药品本位码
 	DrugBasicCode *string `json:"DrugBasicCode,omitnil,omitempty" name:"DrugBasicCode"`
 
-	// OCT标签
+	// OTC标签
 	OctTag *string `json:"OctTag,omitnil,omitempty" name:"OctTag"`
 }
 

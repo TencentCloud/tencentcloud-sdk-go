@@ -365,7 +365,7 @@ const (
 	// 文件系统过大，不支持快照
 	RESOURCEINSUFFICIENT_SNAPSHOTSIZELIMITEXCEEDED = "ResourceInsufficient.SnapshotSizeLimitExceeded"
 
-	// 该子网下已无可用IP。
+	// 该子网下IP数量不足
 	RESOURCEINSUFFICIENT_SUBNETIPALLOCCUPIED = "ResourceInsufficient.SubnetIpAllOccupied"
 
 	// 该资源的标签个数达到最大限制。

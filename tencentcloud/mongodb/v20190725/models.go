@@ -138,11 +138,9 @@ type BackupDownloadTask struct {
 	BackupDesc *string `json:"BackupDesc,omitnil,omitempty" name:"BackupDesc"`
 
 	// 地区信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// Bucket信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 }
 
@@ -1152,19 +1150,15 @@ func (r *CreateDBInstanceResponse) FromJsonString(s string) error {
 
 type CurrentOp struct {
 	// 操作序号。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpId *int64 `json:"OpId,omitnil,omitempty" name:"OpId"`
 
 	// 操作所在的命名空间，形式如db.collection。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ns *string `json:"Ns,omitnil,omitempty" name:"Ns"`
 
 	// 操作执行语句。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 操作类型，可能的取值：aggregate、count、delete、distinct、find、findAndModify、getMore、insert、mapReduce、update和command。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Op *string `json:"Op,omitnil,omitempty" name:"Op"`
 
 	// 操作所在的分片名称。
@@ -1174,19 +1168,15 @@ type CurrentOp struct {
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
 	// 操作详细信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 
 	// 筛选条件，节点状态，可能的取值为：Primary、Secondary。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
 	// 操作已执行时间（ms）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MicrosecsRunning *uint64 `json:"MicrosecsRunning,omitnil,omitempty" name:"MicrosecsRunning"`
 
 	// 当前操作所在节点信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecNode *string `json:"ExecNode,omitnil,omitempty" name:"ExecNode"`
 }
 
@@ -4358,7 +4348,7 @@ type NodeProperty struct {
 	// 节点访问地址。
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
-	// 节点公网访问地址(IP或域名)。
+	// 节点公网访问外网地址(IP或域名，示例为IP方式)。
 	WanServiceAddress *string `json:"WanServiceAddress,omitnil,omitempty" name:"WanServiceAddress"`
 
 	// 角色。

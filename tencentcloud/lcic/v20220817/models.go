@@ -4032,7 +4032,7 @@ type GetRoomEventRequestParams struct {
 	// 起始页，1开始。keyword为空时有效。
 	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 每页个数。keyword为空时有效。一次性最多200条。
+	// 每页个数。keyword为空时有效。一次性最多100条。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 搜索事件类型。有以下事件类型:
@@ -4064,7 +4064,7 @@ type GetRoomEventRequest struct {
 	// 起始页，1开始。keyword为空时有效。
 	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
 
-	// 每页个数。keyword为空时有效。一次性最多200条。
+	// 每页个数。keyword为空时有效。一次性最多100条。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 搜索事件类型。有以下事件类型:

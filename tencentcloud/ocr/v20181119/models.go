@@ -4375,25 +4375,25 @@ func (r *HmtResidentPermitOCRResponse) FromJsonString(s string) error {
 }
 
 type IDCardConfig struct {
-	// 默认为false
+	// 复印件告警，默认为false
 	CopyWarn *bool `json:"CopyWarn,omitnil,omitempty" name:"CopyWarn"`
 
-	// 默认为false
+	// 边框和框内遮挡告警，默认为false
 	BorderCheckWarn *bool `json:"BorderCheckWarn,omitnil,omitempty" name:"BorderCheckWarn"`
 
-	// 默认为false
+	// 翻拍告警，默认为false
 	ReshootWarn *bool `json:"ReshootWarn,omitnil,omitempty" name:"ReshootWarn"`
 
-	// 默认为false
+	// 疑似存在PS痕迹告警，默认为false
 	DetectPsWarn *bool `json:"DetectPsWarn,omitnil,omitempty" name:"DetectPsWarn"`
 
-	// 默认为false
+	// 临时身份证告警，默认为false
 	TempIdWarn *bool `json:"TempIdWarn,omitnil,omitempty" name:"TempIdWarn"`
 
-	// 默认为false
+	// 身份证有效日期不合法告警，默认为false
 	InvalidDateWarn *bool `json:"InvalidDateWarn,omitnil,omitempty" name:"InvalidDateWarn"`
 
-	// 默认为false
+	// 是否开启反光检测，默认为false
 	ReflectWarn *bool `json:"ReflectWarn,omitnil,omitempty" name:"ReflectWarn"`
 }
 

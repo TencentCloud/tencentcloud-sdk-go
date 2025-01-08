@@ -1006,7 +1006,7 @@ func NewCreateParamTemplateResponse() (response *CreateParamTemplateResponse) {
 }
 
 // CreateParamTemplate
-// 创建参数模板。
+// 该接口（CreateParamTemplate）用于创建参数模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1019,7 +1019,7 @@ func (c *Client) CreateParamTemplate(request *CreateParamTemplateRequest) (respo
 }
 
 // CreateParamTemplate
-// 创建参数模板。
+// 该接口（CreateParamTemplate）用于创建参数模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1197,7 +1197,7 @@ func NewDeleteParamTemplateResponse() (response *DeleteParamTemplateResponse) {
 }
 
 // DeleteParamTemplate
-// 删除参数模板
+// 本接口（DeleteParamTemplate）用于删除参数模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1210,7 +1210,7 @@ func (c *Client) DeleteParamTemplate(request *DeleteParamTemplateRequest) (respo
 }
 
 // DeleteParamTemplate
-// 删除参数模板
+// 本接口（DeleteParamTemplate）用于删除参数模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1770,7 +1770,7 @@ func NewDescribeGlobalReplicationAreaResponse() (response *DescribeGlobalReplica
 }
 
 // DescribeGlobalReplicationArea
-// 查询全球复制支持地域信息
+// 本接口（DescribeGlobalReplicationArea）用于查询全球复制支持地域信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -1782,7 +1782,7 @@ func (c *Client) DescribeGlobalReplicationArea(request *DescribeGlobalReplicatio
 }
 
 // DescribeGlobalReplicationArea
-// 查询全球复制支持地域信息
+// 本接口（DescribeGlobalReplicationArea）用于查询全球复制支持地域信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2359,7 +2359,7 @@ func NewDescribeInstanceMonitorSIPResponse() (response *DescribeInstanceMonitorS
 }
 
 // DescribeInstanceMonitorSIP
-// 该接口已下线，请使用数据库智能管家 DBbrain 接口 [DescribeProxyProcessStatistics] (https://cloud.tencent.com/document/product/1130/84544) 获取实例访问来源。
+// 该接口已下线，请使用数据库智能管家 DBbrain 接口 [DescribeProxyProcessStatistics](https://cloud.tencent.com/document/product/1130/84544) 获取实例访问来源。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REDOFLOWFAILED = "FailedOperation.RedoFlowFailed"
@@ -2368,7 +2368,7 @@ func (c *Client) DescribeInstanceMonitorSIP(request *DescribeInstanceMonitorSIPR
 }
 
 // DescribeInstanceMonitorSIP
-// 该接口已下线，请使用数据库智能管家 DBbrain 接口 [DescribeProxyProcessStatistics] (https://cloud.tencent.com/document/product/1130/84544) 获取实例访问来源。
+// 该接口已下线，请使用数据库智能管家 DBbrain 接口 [DescribeProxyProcessStatistics](https://cloud.tencent.com/document/product/1130/84544) 获取实例访问来源。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REDOFLOWFAILED = "FailedOperation.RedoFlowFailed"
@@ -2457,7 +2457,7 @@ func NewDescribeInstanceMonitorTopNCmdResponse() (response *DescribeInstanceMoni
 }
 
 // DescribeInstanceMonitorTopNCmd
-// 查询实例访问命令
+// 本接口（DescribeInstanceMonitorTopNCmd）用于查询实例访问命令。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REDOFLOWFAILED = "FailedOperation.RedoFlowFailed"
@@ -2466,7 +2466,7 @@ func (c *Client) DescribeInstanceMonitorTopNCmd(request *DescribeInstanceMonitor
 }
 
 // DescribeInstanceMonitorTopNCmd
-// 查询实例访问命令
+// 本接口（DescribeInstanceMonitorTopNCmd）用于查询实例访问命令。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REDOFLOWFAILED = "FailedOperation.RedoFlowFailed"
@@ -2612,7 +2612,7 @@ func NewDescribeInstanceParamRecordsResponse() (response *DescribeInstanceParamR
 }
 
 // DescribeInstanceParamRecords
-// 查询参数修改历史列表
+// 本接口（DescribeInstanceParamRecords）用于查询参数修改历史列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2629,7 +2629,7 @@ func (c *Client) DescribeInstanceParamRecords(request *DescribeInstanceParamReco
 }
 
 // DescribeInstanceParamRecords
-// 查询参数修改历史列表
+// 本接口（DescribeInstanceParamRecords）用于查询参数修改历史列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -3222,7 +3222,7 @@ func NewDescribeParamTemplatesResponse() (response *DescribeParamTemplatesRespon
 }
 
 // DescribeParamTemplates
-// 查询参数模板列表
+// 本接口（DescribeParamTemplates）用于查询参数模板列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -3235,7 +3235,7 @@ func (c *Client) DescribeParamTemplates(request *DescribeParamTemplatesRequest) 
 }
 
 // DescribeParamTemplates
-// 查询参数模板列表
+// 本接口（DescribeParamTemplates）用于查询参数模板列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -6208,7 +6208,7 @@ func NewRestoreInstanceResponse() (response *RestoreInstanceResponse) {
 }
 
 // RestoreInstance
-// 恢复 CRS 实例
+// 本接口（RestoreInstance）用于恢复实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -6230,7 +6230,7 @@ func (c *Client) RestoreInstance(request *RestoreInstanceRequest) (response *Res
 }
 
 // RestoreInstance
-// 恢复 CRS 实例
+// 本接口（RestoreInstance）用于恢复实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

@@ -1838,7 +1838,7 @@ func NewDescribeCloudBaseRunPodListResponse() (response *DescribeCloudBaseRunPod
 }
 
 // DescribeCloudBaseRunPodList
-// 查询云应用服务版本容器列表
+// 查询云托管服务版本容器列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1852,7 +1852,7 @@ func (c *Client) DescribeCloudBaseRunPodList(request *DescribeCloudBaseRunPodLis
 }
 
 // DescribeCloudBaseRunPodList
-// 查询云应用服务版本容器列表
+// 查询云托管服务版本容器列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

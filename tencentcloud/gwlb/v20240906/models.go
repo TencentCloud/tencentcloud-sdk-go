@@ -1418,7 +1418,7 @@ type TargetGroupBackend struct {
 	// 目标组ID
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
-	// 后端服务的类型，可取：CVM、ENI（即将支持）
+	// 后端服务的类型，可取：CVM、ENI
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 后端服务的唯一 ID

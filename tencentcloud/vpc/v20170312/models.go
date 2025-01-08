@@ -7409,7 +7409,6 @@ func (r *CreateVpcPeeringConnectionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVpcPeeringConnectionResponseParams struct {
 	// 对等连接ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PeeringConnectionId *string `json:"PeeringConnectionId,omitnil,omitempty" name:"PeeringConnectionId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -28982,12 +28981,13 @@ type PeerConnection struct {
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
 	// 服务分级：PT、AU、AG。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QosLevel *string `json:"QosLevel,omitnil,omitempty" name:"QosLevel"`
 
 	// 互通类型，VPC_PEER：VPC间互通；VPC_BM_PEER：VPC与黑石网络互通。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 对端VPC唯一ID。
+	DestinationVpcId *string `json:"DestinationVpcId,omitnil,omitempty" name:"DestinationVpcId"`
 }
 
 type PolicyStatistics struct {

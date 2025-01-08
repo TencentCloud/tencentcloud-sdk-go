@@ -1120,87 +1120,66 @@ func (r *SetPasswordResponse) FromJsonString(s string) error {
 
 type SpecItem struct {
 	// 规格信息标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpecCode *string `json:"SpecCode,omitnil,omitempty" name:"SpecCode"`
 
 	// 规格有效标志，取值：0-停止售卖，1-开放售卖
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 机器类型，取值：0-HIO，4-HIO10G
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
 	// cpu核心数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
 	// 内存规格，单位为MB
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
 	// 默认磁盘规格，单位MB
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultStorage *uint64 `json:"DefaultStorage,omitnil,omitempty" name:"DefaultStorage"`
 
 	// 最大磁盘规格，单位MB
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxStorage *uint64 `json:"MaxStorage,omitnil,omitempty" name:"MaxStorage"`
 
 	// 最小磁盘规格，单位MB
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinStorage *uint64 `json:"MinStorage,omitnil,omitempty" name:"MinStorage"`
 
 	// 可承载qps信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Qps *uint64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
 	// 连接数限制
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Conns *uint64 `json:"Conns,omitnil,omitempty" name:"Conns"`
 
 	// 实例mongodb版本信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MongoVersionCode *string `json:"MongoVersionCode,omitnil,omitempty" name:"MongoVersionCode"`
 
 	// 实例mongodb版本号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MongoVersionValue *uint64 `json:"MongoVersionValue,omitnil,omitempty" name:"MongoVersionValue"`
 
 	// 实例mongodb版本号（短）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 存储引擎
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineName *string `json:"EngineName,omitnil,omitempty" name:"EngineName"`
 
 	// 集群类型，取值：1-分片集群，0-副本集集群
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterType *uint64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
 	// 最小副本集从节点数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinNodeNum *uint64 `json:"MinNodeNum,omitnil,omitempty" name:"MinNodeNum"`
 
 	// 最大副本集从节点数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxNodeNum *uint64 `json:"MaxNodeNum,omitnil,omitempty" name:"MaxNodeNum"`
 
 	// 最小分片数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinReplicateSetNum *uint64 `json:"MinReplicateSetNum,omitnil,omitempty" name:"MinReplicateSetNum"`
 
 	// 最大分片数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxReplicateSetNum *uint64 `json:"MaxReplicateSetNum,omitnil,omitempty" name:"MaxReplicateSetNum"`
 
 	// 最小分片从节点数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinReplicateSetNodeNum *uint64 `json:"MinReplicateSetNodeNum,omitnil,omitempty" name:"MinReplicateSetNodeNum"`
 
 	// 最大分片从节点数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxReplicateSetNodeNum *uint64 `json:"MaxReplicateSetNodeNum,omitnil,omitempty" name:"MaxReplicateSetNodeNum"`
 }
 
@@ -1282,7 +1261,7 @@ func (r *TerminateDBInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpgradeDBInstanceHourRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vnipr5
+	// 实例ID，格式如：cmgo-iga0****
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 升级后的内存大小，单位：GB
@@ -1298,7 +1277,7 @@ type UpgradeDBInstanceHourRequestParams struct {
 type UpgradeDBInstanceHourRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vnipr5
+	// 实例ID，格式如：cmgo-iga0****
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 升级后的内存大小，单位：GB

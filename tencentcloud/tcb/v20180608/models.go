@@ -42,27 +42,21 @@ type ActivityInfoItem struct {
 
 type ActivityRecordItem struct {
 	// 用户uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 活动id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActivityId *int64 `json:"ActivityId,omitnil,omitempty" name:"ActivityId"`
 
 	// 自定义状态码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 自定义子状态码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubStatus *string `json:"SubStatus,omitnil,omitempty" name:"SubStatus"`
 
 	// 整型子状态码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubStatusInt *int64 `json:"SubStatusInt,omitnil,omitempty" name:"SubStatusInt"`
 
 	// 是否软删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDeleted *bool `json:"IsDeleted,omitnil,omitempty" name:"IsDeleted"`
 }
 
@@ -92,42 +86,33 @@ type AuthDomain struct {
 
 type BaasPackageInfo struct {
 	// DAU产品套餐ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
 	// DAU套餐中文名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageTitle *string `json:"PackageTitle,omitnil,omitempty" name:"PackageTitle"`
 
 	// 套餐分组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 套餐分组中文名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupTitle *string `json:"GroupTitle,omitnil,omitempty" name:"GroupTitle"`
 
 	// json格式化计费标签，例如：
 	// {"pid":2, "cids":{"create": 2, "renew": 2, "modify": 2}, "productCode":"p_tcb_mp", "subProductCode":"sp_tcb_mp_cloudbase_dau"}
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillTags *string `json:"BillTags,omitnil,omitempty" name:"BillTags"`
 
 	// json格式化用户资源限制，例如：
 	// {"Qps":1000,"InvokeNum":{"TimeUnit":"m", "Unit":"万次", "MaxSize": 100},"Capacity":{"TimeUnit":"m", "Unit":"GB", "MaxSize": 100}, "Cdn":{"Flux":{"TimeUnit":"m", "Unit":"GB", "MaxSize": 100}, "BackFlux":{"TimeUnit":"m", "Unit":"GB", "MaxSize": 100}},"Scf":{"Concurrency":1000,"OutFlux":{"TimeUnit":"m", "Unit":"GB", "MaxSize": 100},"MemoryUse":{"TimeUnit":"m", "Unit":"WGBS", "MaxSize": 100000}}}
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceLimit *string `json:"ResourceLimit,omitnil,omitempty" name:"ResourceLimit"`
 
 	// json格式化高级限制，例如：
 	// {"CMSEnable":false,"ProvisionedConcurrencyMem":512000, "PictureProcessing":false, "SecurityAudit":false, "RealTimePush":false, "TemplateMessageBatchPush":false, "Payment":false}
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvanceLimit *string `json:"AdvanceLimit,omitnil,omitempty" name:"AdvanceLimit"`
 
 	// 套餐描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageDescription *string `json:"PackageDescription,omitnil,omitempty" name:"PackageDescription"`
 
 	// 是否对外展示
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsExternal *bool `json:"IsExternal,omitnil,omitempty" name:"IsExternal"`
 }
 
@@ -209,25 +194,20 @@ func (r *BindEnvGatewayResponse) FromJsonString(s string) error {
 
 type CbrPackageInfo struct {
 	// 代码包名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
 	// 代码包版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageVersion *string `json:"PackageVersion,omitnil,omitempty" name:"PackageVersion"`
 }
 
 type CbrRepoInfo struct {
 	// 仓库名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Repo *string `json:"Repo,omitnil,omitempty" name:"Repo"`
 
 	// 仓库平台
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepoType *string `json:"RepoType,omitnil,omitempty" name:"RepoType"`
 
 	// 仓库语言
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepoLanguage *string `json:"RepoLanguage,omitnil,omitempty" name:"RepoLanguage"`
 
 	// 分支名称
@@ -291,11 +271,9 @@ func (r *CheckTcbServiceResponse) FromJsonString(s string) error {
 
 type CloudBaseCapabilities struct {
 	// 启用安全能力项列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Add []*string `json:"Add,omitnil,omitempty" name:"Add"`
 
 	// 禁用安全能力向列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Drop []*string `json:"Drop,omitnil,omitempty" name:"Drop"`
 }
 
@@ -309,41 +287,32 @@ type CloudBaseCodeRepoDetail struct {
 
 type CloudBaseCodeRepoName struct {
 	// repo的名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// repo的完整全名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FullName *string `json:"FullName,omitnil,omitempty" name:"FullName"`
 }
 
 type CloudBaseEsInfo struct {
 	// es的id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// secret名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
 	// ip地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 索引
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Index *string `json:"Index,omitnil,omitempty" name:"Index"`
 
 	// 用户名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
 
 	// 密码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 }
 
@@ -352,19 +321,15 @@ type CloudBaseProjectVersion struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// SAM json
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sam *string `json:"Sam,omitnil,omitempty" name:"Sam"`
 
 	// 来源类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *CodeSource `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 创建时间, unix时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间 ,unix时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 项目状态, 枚举值: 
@@ -375,113 +340,92 @@ type CloudBaseProjectVersion struct {
 	// 	"deploying"-部署中
 	// 	 "deployFail"-部署失败
 	// 	 "success"-部署成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 环境变量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Parameters []*KVPair `json:"Parameters,omitnil,omitempty" name:"Parameters"`
 
 	// 项目类型, 枚举值:
 	// "framework-oneclick" 控制台一键部署
 	// "framework-local-oneclick" cli本地一键部署
 	// "qci-extension-cicd" 内网coding ci cd
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// ci的id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CIId *string `json:"CIId,omitnil,omitempty" name:"CIId"`
 
 	// cd的id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CDId *string `json:"CDId,omitnil,omitempty" name:"CDId"`
 
 	// 环境id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// 版本号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionNum *int64 `json:"VersionNum,omitnil,omitempty" name:"VersionNum"`
 
 	// 错误原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
 
 	// rc.json内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RcJson *string `json:"RcJson,omitnil,omitempty" name:"RcJson"`
 
 	// 插件配置内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddonConfig *string `json:"AddonConfig,omitnil,omitempty" name:"AddonConfig"`
 
 	// 标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 网络配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkConfig *string `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 
 	// 扩展id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtensionId *string `json:"ExtensionId,omitnil,omitempty" name:"ExtensionId"`
 
 	// 错误类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailType *string `json:"FailType,omitnil,omitempty" name:"FailType"`
 
 	// 私有仓库地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepoUrl *string `json:"RepoUrl,omitnil,omitempty" name:"RepoUrl"`
 
 	// 是否私有仓库代码变更触发自动部署
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoDeployOnCodeChange *bool `json:"AutoDeployOnCodeChange,omitnil,omitempty" name:"AutoDeployOnCodeChange"`
 
 	// ci部署进度（%）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BuildPercent *int64 `json:"BuildPercent,omitnil,omitempty" name:"BuildPercent"`
 
 	// Uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// BuildFinishTime
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BuildFinishTime *string `json:"BuildFinishTime,omitnil,omitempty" name:"BuildFinishTime"`
 
 	// DeployFinishTime
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployFinishTime *string `json:"DeployFinishTime,omitnil,omitempty" name:"DeployFinishTime"`
 
 	// BuildId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BuildId *string `json:"BuildId,omitnil,omitempty" name:"BuildId"`
 
 	// SourceUrl
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceUrl *string `json:"SourceUrl,omitnil,omitempty" name:"SourceUrl"`
 
 	// FailReasonShort
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailReasonShort *string `json:"FailReasonShort,omitnil,omitempty" name:"FailReasonShort"`
 
 	// FirstInitRepo
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstInitRepo *string `json:"FirstInitRepo,omitnil,omitempty" name:"FirstInitRepo"`
 }
 
 type CloudBaseRunEmptyDirVolumeSource struct {
 	// 启用emptydir数据卷
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableEmptyDirVolume *bool `json:"EnableEmptyDirVolume,omitnil,omitempty" name:"EnableEmptyDirVolume"`
 
 	// "","Memory","HugePages"
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Medium *string `json:"Medium,omitnil,omitempty" name:"Medium"`
 
 	// emptydir数据卷大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SizeLimit *string `json:"SizeLimit,omitnil,omitempty" name:"SizeLimit"`
 }
 
@@ -559,37 +503,29 @@ type CloudBaseRunImageSecretInfo struct {
 
 type CloudBaseRunKVPriority struct {
 	// 参数的Key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 参数的Value
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 优先级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 }
 
 type CloudBaseRunNfsVolumeSource struct {
 	// NFS挂载Server
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Server *string `json:"Server,omitnil,omitempty" name:"Server"`
 
 	// Server路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 是否只读
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadOnly *bool `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 
 	// secret名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
 	// 临时目录
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableEmptyDirVolume *bool `json:"EnableEmptyDirVolume,omitnil,omitempty" name:"EnableEmptyDirVolume"`
 }
 
@@ -598,42 +534,33 @@ type CloudBaseRunServerVersionItem struct {
 	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 流量占比
 	FlowRatio *int64 `json:"FlowRatio,omitnil,omitempty" name:"FlowRatio"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 
 	// 构建ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BuildId *int64 `json:"BuildId,omitnil,omitempty" name:"BuildId"`
 
 	// 构建方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UploadType *string `json:"UploadType,omitnil,omitempty" name:"UploadType"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// url中的参数路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UrlParam *ObjectKV `json:"UrlParam,omitnil,omitempty" name:"UrlParam"`
 
 	// 优先级（数值越小，优先级越高）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
 	// 是否是默认兜底版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDefaultPriority *bool `json:"IsDefaultPriority,omitnil,omitempty" name:"IsDefaultPriority"`
 
 	// KV Params
@@ -641,32 +568,28 @@ type CloudBaseRunServerVersionItem struct {
 	FlowParams []*CloudBaseRunKVPriority `json:"FlowParams,omitnil,omitempty" name:"FlowParams"`
 
 	// 最小副本数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinReplicas *int64 `json:"MinReplicas,omitnil,omitempty" name:"MinReplicas"`
 
 	// 最大副本数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxReplicas *int64 `json:"MaxReplicas,omitnil,omitempty" name:"MaxReplicas"`
 
 	// 操作记录id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunId *string `json:"RunId,omitnil,omitempty" name:"RunId"`
 
 	// 进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Percent *int64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
 	// 当前副本数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentReplicas *int64 `json:"CurrentReplicas,omitnil,omitempty" name:"CurrentReplicas"`
 
 	// Monolithic，Microservice
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Architecture *string `json:"Architecture,omitnil,omitempty" name:"Architecture"`
 }
 
 type CloudBaseRunServiceVolumeHostPath struct {
-
+	// 主机路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 }
 
 type CloudBaseRunServiceVolumeMount struct {
@@ -744,6 +667,25 @@ type CloudBaseRunVersionFlowItem struct {
 	// 是否是默认兜底版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDefaultPriority *bool `json:"IsDefaultPriority,omitnil,omitempty" name:"IsDefaultPriority"`
+}
+
+type CloudBaseRunVersionPod struct {
+	// webshell链接
+	Webshell *string `json:"Webshell,omitnil,omitempty" name:"Webshell"`
+
+	// pod name
+	PodId *string `json:"PodId,omitnil,omitempty" name:"PodId"`
+
+	// pod ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodIp *string `json:"PodIp,omitnil,omitempty" name:"PodIp"`
+
+	// 状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type CloudBaseRunVolumeMount struct {
@@ -978,43 +920,33 @@ type ClsInfo struct {
 
 type CodeSource struct {
 	// 类型, 可能的枚举: "coding","package","package_url","github","gitlab","gitee","rawcode"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 下载链接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 工作目录
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkDir *string `json:"WorkDir,omitnil,omitempty" name:"WorkDir"`
 
 	// code包名, type为coding的时候需要填写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CodingPackageName *string `json:"CodingPackageName,omitnil,omitempty" name:"CodingPackageName"`
 
 	// coding版本名, type为coding的时候需要填写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CodingPackageVersion *string `json:"CodingPackageVersion,omitnil,omitempty" name:"CodingPackageVersion"`
 
 	// 源码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RawCode *string `json:"RawCode,omitnil,omitempty" name:"RawCode"`
 
 	// 代码分支
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Branch *string `json:"Branch,omitnil,omitempty" name:"Branch"`
 
 	// coding项目ID，type为coding时需要填写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// coding项目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 }
 
@@ -1208,7 +1140,6 @@ func (r *CreateAndDeployCloudBaseProjectRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type CreateAndDeployCloudBaseProjectResponseParams struct {
 	// 环境Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2313,7 +2244,6 @@ func (r *CreateWxCloudBaseRunServerDBClusterResponse) FromJsonString(s string) e
 
 type CustomHeader struct {
 	// 请求添加头部配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RequestToAddList []*CustomRequestToAdd `json:"RequestToAddList,omitnil,omitempty" name:"RequestToAddList"`
 }
 
@@ -2339,15 +2269,12 @@ type CustomLogConfig struct {
 
 type CustomRequestToAdd struct {
 	// Header名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// Header值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// Header类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppendAction *string `json:"AppendAction,omitnil,omitempty" name:"AppendAction"`
 }
 
@@ -2367,7 +2294,6 @@ type DatabasesInfo struct {
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
@@ -3509,11 +3435,9 @@ func (r *DescribeCloudBaseProjectLatestVersionListRequest) FromJsonString(s stri
 // Predefined struct for user
 type DescribeCloudBaseProjectLatestVersionListResponseParams struct {
 	// 项目列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectList []*CloudBaseProjectVersion `json:"ProjectList,omitnil,omitempty" name:"ProjectList"`
 
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3606,11 +3530,9 @@ func (r *DescribeCloudBaseProjectVersionListRequest) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeCloudBaseProjectVersionListResponseParams struct {
 	// 版本列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectVersions []*CloudBaseProjectVersion `json:"ProjectVersions,omitnil,omitempty" name:"ProjectVersions"`
 
 	// 总个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4002,6 +3924,19 @@ func (r *DescribeCloudBaseRunPodListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCloudBaseRunPodListResponseParams struct {
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 容器列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodList []*CloudBaseRunVersionPod `json:"PodList,omitnil,omitempty" name:"PodList"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -7554,23 +7489,18 @@ type EnvBillingInfoItem struct {
 	// 付费渠道。
 	// <li> miniapp：小程序</li>
 	// <li> qcloud：腾讯云</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PaymentChannel *string `json:"PaymentChannel,omitnil,omitempty" name:"PaymentChannel"`
 
 	// 最新的订单信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderInfo *OrderInfo `json:"OrderInfo,omitnil,omitempty" name:"OrderInfo"`
 
 	// 免费配额信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FreeQuota *string `json:"FreeQuota,omitnil,omitempty" name:"FreeQuota"`
 
 	// 是否开启 `超过套餐额度部分转按量付费`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableOverrun *bool `json:"EnableOverrun,omitnil,omitempty" name:"EnableOverrun"`
 
 	// 环境套餐类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtPackageType *string `json:"ExtPackageType,omitnil,omitempty" name:"ExtPackageType"`
 
 	// 是否付费期环境，可取值：yes/no。
@@ -7613,69 +7543,53 @@ type EnvInfo struct {
 	Functions []*FunctionInfo `json:"Functions,omitnil,omitempty" name:"Functions"`
 
 	// tcb产品套餐ID，参考DescribePackages接口的返回值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
 	// 套餐中文名称，参考DescribePackages接口的返回值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
 	// 云日志服务列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogServices []*LogServiceInfo `json:"LogServices,omitnil,omitempty" name:"LogServices"`
 
 	// 静态资源信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StaticStorages []*StaticStorageInfo `json:"StaticStorages,omitnil,omitempty" name:"StaticStorages"`
 
 	// 是否到期自动降为免费版
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAutoDegrade *bool `json:"IsAutoDegrade,omitnil,omitempty" name:"IsAutoDegrade"`
 
 	// 环境渠道
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvChannel *string `json:"EnvChannel,omitnil,omitempty" name:"EnvChannel"`
 
 	// 支付方式。包含以下取值：
 	// <li> prepayment：预付费</li>
 	// <li> postpaid：后付费</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 是否为默认环境
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 
 	// 环境所属地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 环境标签列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 自定义日志服务
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomLogServices []*ClsInfo `json:"CustomLogServices,omitnil,omitempty" name:"CustomLogServices"`
 
 	// 环境类型：baas, run, hoting, weda
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
 
 	// 是否是dau新套餐
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDauPackage *bool `json:"IsDauPackage,omitnil,omitempty" name:"IsDauPackage"`
 
 	// 套餐类型:空\baas\tcbr
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
 	// 架构类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ArchitectureType *string `json:"ArchitectureType,omitnil,omitempty" name:"ArchitectureType"`
 
 	// 回收标志，默认为空
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Recycle *string `json:"Recycle,omitnil,omitempty" name:"Recycle"`
 }
 
@@ -7958,12 +7872,10 @@ type FreequotaInfo struct {
 	// <li>sum-month:以月为单位抵扣</li>
 	// <li>sum-day:以天为单位抵扣</li>
 	// <li>totalize:总容量抵扣</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeductType *string `json:"DeductType,omitnil,omitempty" name:"DeductType"`
 
 	// 免费量类型
 	// <li>basic:通用量抵扣</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FreeQuotaType *string `json:"FreeQuotaType,omitnil,omitempty" name:"FreeQuotaType"`
 }
 
@@ -8263,7 +8175,6 @@ type LogServiceInfo struct {
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// topic保存时长 默认7天
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 }
 
@@ -8907,17 +8818,14 @@ type OrderInfo struct {
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 订单绑定的扩展ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtensionId *string `json:"ExtensionId,omitnil,omitempty" name:"ExtensionId"`
 
 	// 资源初始化结果(仅当ExtensionId不为空时有效): successful(初始化成功), failed(初始化失败), doing(初始化进行中), init(准备初始化)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceReady *string `json:"ResourceReady,omitnil,omitempty" name:"ResourceReady"`
 
 	// 安装标记。建议使用方统一转大小写之后再判断。
 	// <li>QuickStart：快速启动来源</li>
 	// <li>Activity：活动来源</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Flag *string `json:"Flag,omitnil,omitempty" name:"Flag"`
 
 	// 下单时的参数
@@ -8930,71 +8838,56 @@ type PackageFreeQuotaInfo struct {
 	// <li>CDN</li>
 	// <li>FLEXDB</li>
 	// <li>SCF</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 资源指标名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceMetric *string `json:"ResourceMetric,omitnil,omitempty" name:"ResourceMetric"`
 
 	// 资源指标免费量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FreeQuota *int64 `json:"FreeQuota,omitnil,omitempty" name:"FreeQuota"`
 
 	// 指标单位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricUnit *string `json:"MetricUnit,omitnil,omitempty" name:"MetricUnit"`
 
 	// 免费量抵扣周期
 	// <li>sum-month:以月为单位抵扣</li>
 	// <li>sum-day:以天为单位抵扣</li>
 	// <li>totalize:总容量抵扣</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeductType *string `json:"DeductType,omitnil,omitempty" name:"DeductType"`
 
 	// 免费量类型
 	// <li>basic:通用量抵扣</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FreeQuotaType *string `json:"FreeQuotaType,omitnil,omitempty" name:"FreeQuotaType"`
 }
 
 type PlatformStatistic struct {
 	// 终端用户从属平台
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 平台终端用户数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type PostPaidEnvDeductInfo struct {
 	// 资源方
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 指标名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
 	// 按量计费详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResQuota *float64 `json:"ResQuota,omitnil,omitempty" name:"ResQuota"`
 
 	// 资源包抵扣详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PkgQuota *float64 `json:"PkgQuota,omitnil,omitempty" name:"PkgQuota"`
 
 	// 免费额度抵扣详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FreeQuota *float64 `json:"FreeQuota,omitnil,omitempty" name:"FreeQuota"`
 
 	// 环境id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 }
 
@@ -9559,41 +9452,32 @@ func (r *SearchClsLogResponse) FromJsonString(s string) error {
 
 type SmsFreeQuota struct {
 	// 免费量总条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FreeQuota *uint64 `json:"FreeQuota,omitnil,omitempty" name:"FreeQuota"`
 
 	// 共计已使用总条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalUsedQuota *uint64 `json:"TotalUsedQuota,omitnil,omitempty" name:"TotalUsedQuota"`
 
 	// 免费周期起点，0000-00-00 00:00:00 形式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CycleStart *string `json:"CycleStart,omitnil,omitempty" name:"CycleStart"`
 
 	// 免费周期终点，0000-00-00 00:00:00 形式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CycleEnd *string `json:"CycleEnd,omitnil,omitempty" name:"CycleEnd"`
 
 	// 今天已使用总条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TodayUsedQuota *uint64 `json:"TodayUsedQuota,omitnil,omitempty" name:"TodayUsedQuota"`
 }
 
 type SpecialCostItem struct {
 	// 上报日期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportDate *string `json:"ReportDate,omitnil,omitempty" name:"ReportDate"`
 
 	// 腾讯云uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 资源id:环境id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// 上报任务状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -9648,23 +9532,18 @@ type StandaloneGatewayPackageInfo struct {
 
 type StaticStorageInfo struct {
 	// 静态CDN域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StaticDomain *string `json:"StaticDomain,omitnil,omitempty" name:"StaticDomain"`
 
 	// 静态CDN默认文件夹，当前为根目录
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultDirName *string `json:"DefaultDirName,omitnil,omitempty" name:"DefaultDirName"`
 
 	// 资源状态(process/online/offline/init)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// cos所属区域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// bucket信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 }
 

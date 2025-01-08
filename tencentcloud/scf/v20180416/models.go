@@ -486,7 +486,27 @@ type CreateFunctionRequestParams struct {
 	// 函数的环境变量
 	Environment *Environment `json:"Environment,omitnil,omitempty" name:"Environment"`
 
-	// 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.16， Php5.2， Php7.4，Go1，Java8 和 CustomRuntime，默认Python2.7
+	// 函数运行环境，默认Python2.7
+	// 目前支持的运行环境：
+	// - Python2.7
+	// - Python3.6
+	// - Python3.7
+	// - Python3.9
+	// - Python3.10
+	// - Nodejs6.10
+	// - Nodejs8.9
+	// - Nodejs10.15
+	// - Nodejs12.16
+	// - Nodejs14.18
+	// - Nodejs16.13
+	// - Nodejs18.15
+	// - Php5.6
+	// - Php7(7.2版本)
+	// - Php7.4
+	// - Php8.0
+	// - Go1
+	// - Java8
+	// - CustomRuntime
 	Runtime *string `json:"Runtime,omitnil,omitempty" name:"Runtime"`
 
 	// 函数的私有网络配置
@@ -583,7 +603,27 @@ type CreateFunctionRequest struct {
 	// 函数的环境变量
 	Environment *Environment `json:"Environment,omitnil,omitempty" name:"Environment"`
 
-	// 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.16， Php5.2， Php7.4，Go1，Java8 和 CustomRuntime，默认Python2.7
+	// 函数运行环境，默认Python2.7
+	// 目前支持的运行环境：
+	// - Python2.7
+	// - Python3.6
+	// - Python3.7
+	// - Python3.9
+	// - Python3.10
+	// - Nodejs6.10
+	// - Nodejs8.9
+	// - Nodejs10.15
+	// - Nodejs12.16
+	// - Nodejs14.18
+	// - Nodejs16.13
+	// - Nodejs18.15
+	// - Php5.6
+	// - Php7(7.2版本)
+	// - Php7.4
+	// - Php8.0
+	// - Go1
+	// - Java8
+	// - CustomRuntime
 	Runtime *string `json:"Runtime,omitnil,omitempty" name:"Runtime"`
 
 	// 函数的私有网络配置
@@ -5244,7 +5284,7 @@ type UpdateFunctionConfigurationRequestParams struct {
 	// 函数最长执行时间，单位为秒，可选值范 1-900 秒，默认为 3 秒
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.16， PHP5， PHP7，Go1 ， Java8和CustomRuntime
+	// 函数运行环境，创建时指定，目前不支持修改。
 	Runtime *string `json:"Runtime,omitnil,omitempty" name:"Runtime"`
 
 	// 函数的环境变量
@@ -5321,7 +5361,7 @@ type UpdateFunctionConfigurationRequest struct {
 	// 函数最长执行时间，单位为秒，可选值范 1-900 秒，默认为 3 秒
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
-	// 函数运行环境，目前仅支持 Python2.7，Python3.6，Nodejs6.10，Nodejs8.9，Nodejs10.15，Nodejs12.16， PHP5， PHP7，Go1 ， Java8和CustomRuntime
+	// 函数运行环境，创建时指定，目前不支持修改。
 	Runtime *string `json:"Runtime,omitnil,omitempty" name:"Runtime"`
 
 	// 函数的环境变量

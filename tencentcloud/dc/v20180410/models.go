@@ -209,12 +209,13 @@ type BGPStatus struct {
 }
 
 type BgpPeer struct {
+	// 腾讯侧BGP ASN
+	CloudAsn *string `json:"CloudAsn,omitnil,omitempty" name:"CloudAsn"`
+
 	// 用户侧BGP ASN
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Asn *int64 `json:"Asn,omitnil,omitempty" name:"Asn"`
 
 	// 用户侧BGP密钥
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthKey *string `json:"AuthKey,omitnil,omitempty" name:"AuthKey"`
 }
 
@@ -1534,97 +1535,75 @@ type DirectConnect struct {
 	PortType *string `json:"PortType,omitnil,omitempty" name:"PortType"`
 
 	// 运营商或者服务商为物理专线提供的电路编码。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CircuitCode *string `json:"CircuitCode,omitnil,omitempty" name:"CircuitCode"`
 
 	// 冗余物理专线的ID。
 	RedundantDirectConnectId *string `json:"RedundantDirectConnectId,omitnil,omitempty" name:"RedundantDirectConnectId"`
 
 	// 物理专线调试VLAN。默认开启VLAN，自动分配VLAN。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vlan *int64 `json:"Vlan,omitnil,omitempty" name:"Vlan"`
 
 	// 物理专线调试腾讯侧互联IP。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TencentAddress *string `json:"TencentAddress,omitnil,omitempty" name:"TencentAddress"`
 
 	// 物理专线调试用户侧互联IP。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomerAddress *string `json:"CustomerAddress,omitnil,omitempty" name:"CustomerAddress"`
 
 	// 物理专线申请者姓名。默认从账户体系获取。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomerName *string `json:"CustomerName,omitnil,omitempty" name:"CustomerName"`
 
 	// 物理专线申请者联系邮箱。默认从账户体系获取。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomerContactMail *string `json:"CustomerContactMail,omitnil,omitempty" name:"CustomerContactMail"`
 
 	// 物理专线申请者联系号码。默认从账户体系获取。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomerContactNumber *string `json:"CustomerContactNumber,omitnil,omitempty" name:"CustomerContactNumber"`
 
 	// 物理专线的过期时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
 	// 物理专线计费类型。 NON_RECURRING_CHARGE：一次性接入费用；PREPAID_BY_YEAR：按年预付费。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
 	// 报障联系人。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FaultReportContactPerson *string `json:"FaultReportContactPerson,omitnil,omitempty" name:"FaultReportContactPerson"`
 
 	// 报障联系电话。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FaultReportContactNumber *string `json:"FaultReportContactNumber,omitnil,omitempty" name:"FaultReportContactNumber"`
 
 	// 标签键值对
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
 	// 物理专线的接入点类型。
 	AccessPointType *string `json:"AccessPointType,omitnil,omitempty" name:"AccessPointType"`
 
 	// IDC所在城市
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdcCity *string `json:"IdcCity,omitnil,omitempty" name:"IdcCity"`
 
 	// 计费状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeState *string `json:"ChargeState,omitnil,omitempty" name:"ChargeState"`
 
 	// 物理专线开通时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 物理专线是否已签署用户协议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignLaw *bool `json:"SignLaw,omitnil,omitempty" name:"SignLaw"`
 
 	// 物理专线是否为LocalZone
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalZone *bool `json:"LocalZone,omitnil,omitempty" name:"LocalZone"`
 
 	// 该物理专线下vlan 0的专用通道数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VlanZeroDirectConnectTunnelCount *uint64 `json:"VlanZeroDirectConnectTunnelCount,omitnil,omitempty" name:"VlanZeroDirectConnectTunnelCount"`
 
 	// 该物理专线下非vlan 0的专用通道数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OtherVlanDirectConnectTunnelCount *uint64 `json:"OtherVlanDirectConnectTunnelCount,omitnil,omitempty" name:"OtherVlanDirectConnectTunnelCount"`
 
 	// 物理专线最小带宽
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinBandwidth *uint64 `json:"MinBandwidth,omitnil,omitempty" name:"MinBandwidth"`
 
 	// 建设模式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Construct *uint64 `json:"Construct,omitnil,omitempty" name:"Construct"`
 
 	// 物理专线的接入点名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessPointName *string `json:"AccessPointName,omitnil,omitempty" name:"AccessPointName"`
 }
 
@@ -1669,7 +1648,7 @@ type DirectConnectTunnel struct {
 	// BGP ：BGP路由 STATIC：静态 默认为 BGP 路由
 	RouteType *string `json:"RouteType,omitnil,omitempty" name:"RouteType"`
 
-	// 用户侧BGP，Asn，AuthKey
+	// 用户侧BGP，包括： CloudAsn，Asn，AuthKey
 	BgpPeer *BgpPeer `json:"BgpPeer,omitnil,omitempty" name:"BgpPeer"`
 
 	// 用户侧网段地址
@@ -1697,51 +1676,39 @@ type DirectConnectTunnel struct {
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
 	// 关联的网络自定义探测ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetDetectId *string `json:"NetDetectId,omitnil,omitempty" name:"NetDetectId"`
 
 	// BGP community开关
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableBGPCommunity *bool `json:"EnableBGPCommunity,omitnil,omitempty" name:"EnableBGPCommunity"`
 
 	// 是否为Nat通道
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NatType *int64 `json:"NatType,omitnil,omitempty" name:"NatType"`
 
 	// VPC地域简码，如gz、cd
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcRegion *string `json:"VpcRegion,omitnil,omitempty" name:"VpcRegion"`
 
 	// 是否开启BFD
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BfdEnable *int64 `json:"BfdEnable,omitnil,omitempty" name:"BfdEnable"`
 
 	// 专用通道接入点类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessPointType *string `json:"AccessPointType,omitnil,omitempty" name:"AccessPointType"`
 
 	// 专线网关名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DirectConnectGatewayName *string `json:"DirectConnectGatewayName,omitnil,omitempty" name:"DirectConnectGatewayName"`
 
 	// VPC名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
 
 	// TencentBackupAddress，腾讯侧备用互联 IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TencentBackupAddress *string `json:"TencentBackupAddress,omitnil,omitempty" name:"TencentBackupAddress"`
 
 	// 专用通道关联的物理专线是否签署了用户协议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignLaw *bool `json:"SignLaw,omitnil,omitempty" name:"SignLaw"`
 
 	// 高速上云服务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudAttachId *string `json:"CloudAttachId,omitnil,omitempty" name:"CloudAttachId"`
 
 	// 是否共享通道
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShareOrNot *uint64 `json:"ShareOrNot,omitnil,omitempty" name:"ShareOrNot"`
 }
 
@@ -1856,31 +1823,24 @@ type DirectConnectTunnelExtra struct {
 	BgpStatus *BGPStatus `json:"BgpStatus,omitnil,omitempty" name:"BgpStatus"`
 
 	// 是否开启IPv6
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPv6Enable *int64 `json:"IPv6Enable,omitnil,omitempty" name:"IPv6Enable"`
 
 	// 腾讯侧互联IPv6地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TencentIPv6Address *string `json:"TencentIPv6Address,omitnil,omitempty" name:"TencentIPv6Address"`
 
 	// 腾讯侧备用互联IPv6地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TencentBackupIPv6Address *string `json:"TencentBackupIPv6Address,omitnil,omitempty" name:"TencentBackupIPv6Address"`
 
 	// BGPv6状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BgpIPv6Status *BGPStatus `json:"BgpIPv6Status,omitnil,omitempty" name:"BgpIPv6Status"`
 
 	// 用户侧互联IPv6地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomerIPv6Address *string `json:"CustomerIPv6Address,omitnil,omitempty" name:"CustomerIPv6Address"`
 
 	// 专用通道是否支持巨帧。1 支持，0 不支持
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JumboEnable *int64 `json:"JumboEnable,omitnil,omitempty" name:"JumboEnable"`
 
 	// 专用通道是否支持高精度BFD。1支持，0不支持
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HighPrecisionBFDEnable *int64 `json:"HighPrecisionBFDEnable,omitnil,omitempty" name:"HighPrecisionBFDEnable"`
 }
 
@@ -1902,6 +1862,13 @@ type DirectConnectTunnelRoute struct {
 
 	// 路由下一跳IP
 	NextHop *string `json:"NextHop,omitnil,omitempty" name:"NextHop"`
+
+	// 路由更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 是否配置在通道上
+	ApplyOnTunnelEnable *bool `json:"ApplyOnTunnelEnable,omitnil,omitempty" name:"ApplyOnTunnelEnable"`
 }
 
 // Predefined struct for user
@@ -2022,22 +1989,18 @@ type Filter struct {
 
 type InternetAddressDetail struct {
 	// 互联网地址ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 互联网网络地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Subnet *string `json:"Subnet,omitnil,omitempty" name:"Subnet"`
 
 	// 网络地址掩码长度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaskLen *int64 `json:"MaskLen,omitnil,omitempty" name:"MaskLen"`
 
 	// 0:BGP
 	// 1:电信
 	// 2:移动
 	// 3:联通
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddrType *int64 `json:"AddrType,omitnil,omitempty" name:"AddrType"`
 
 	// 0:使用中
@@ -2046,41 +2009,32 @@ type InternetAddressDetail struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 申请时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplyTime *string `json:"ApplyTime,omitnil,omitempty" name:"ApplyTime"`
 
 	// 停用时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StopTime *string `json:"StopTime,omitnil,omitempty" name:"StopTime"`
 
 	// 退还时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReleaseTime *string `json:"ReleaseTime,omitnil,omitempty" name:"ReleaseTime"`
 
 	// 地域信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 用户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 0:IPv4 1:IPv6
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddrProto *int64 `json:"AddrProto,omitnil,omitempty" name:"AddrProto"`
 
 	// 释放状态的IP地址保留的天数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReserveTime *int64 `json:"ReserveTime,omitnil,omitempty" name:"ReserveTime"`
 }
 
 type InternetAddressStatistics struct {
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 互联网公网地址数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetNum *int64 `json:"SubnetNum,omitnil,omitempty" name:"SubnetNum"`
 }
 
@@ -2637,16 +2591,13 @@ func (r *ReleaseInternetAddressResponse) FromJsonString(s string) error {
 
 type RouteFilterPrefix struct {
 	// 用户侧网段地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cidr *string `json:"Cidr,omitnil,omitempty" name:"Cidr"`
 }
 
 type Tag struct {
 	// 标签键
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 标签值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }

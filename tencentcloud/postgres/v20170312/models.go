@@ -5173,6 +5173,72 @@ func (r *DescribeLogBackupsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMaintainTimeWindowRequestParams struct {
+	// 实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+}
+
+type DescribeMaintainTimeWindowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+}
+
+func (r *DescribeMaintainTimeWindowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMaintainTimeWindowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMaintainTimeWindowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMaintainTimeWindowResponseParams struct {
+	// 实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 维护开始时间。时区为东八区（UTC+8）
+	MaintainStartTime *string `json:"MaintainStartTime,omitnil,omitempty" name:"MaintainStartTime"`
+
+	// 维护持续时间。单位：小时
+	MaintainDuration *uint64 `json:"MaintainDuration,omitnil,omitempty" name:"MaintainDuration"`
+
+	// 维护周期
+	MaintainWeekDays []*string `json:"MaintainWeekDays,omitnil,omitempty" name:"MaintainWeekDays"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMaintainTimeWindowResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMaintainTimeWindowResponseParams `json:"Response"`
+}
+
+func (r *DescribeMaintainTimeWindowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMaintainTimeWindowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeOrdersRequestParams struct {
 	// 订单名集合
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
@@ -8043,6 +8109,81 @@ func (r *ModifyDatabaseOwnerResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyDatabaseOwnerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMaintainTimeWindowRequestParams struct {
+	// 实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 维护开始时间。时区为东八区（UTC+8）
+	MaintainStartTime *string `json:"MaintainStartTime,omitnil,omitempty" name:"MaintainStartTime"`
+
+	// 维护持续时间。单位：小时
+	MaintainDuration *uint64 `json:"MaintainDuration,omitnil,omitempty" name:"MaintainDuration"`
+
+	// 维护周期
+	MaintainWeekDays []*string `json:"MaintainWeekDays,omitnil,omitempty" name:"MaintainWeekDays"`
+}
+
+type ModifyMaintainTimeWindowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 维护开始时间。时区为东八区（UTC+8）
+	MaintainStartTime *string `json:"MaintainStartTime,omitnil,omitempty" name:"MaintainStartTime"`
+
+	// 维护持续时间。单位：小时
+	MaintainDuration *uint64 `json:"MaintainDuration,omitnil,omitempty" name:"MaintainDuration"`
+
+	// 维护周期
+	MaintainWeekDays []*string `json:"MaintainWeekDays,omitnil,omitempty" name:"MaintainWeekDays"`
+}
+
+func (r *ModifyMaintainTimeWindowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMaintainTimeWindowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "MaintainStartTime")
+	delete(f, "MaintainDuration")
+	delete(f, "MaintainWeekDays")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMaintainTimeWindowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMaintainTimeWindowResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyMaintainTimeWindowResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyMaintainTimeWindowResponseParams `json:"Response"`
+}
+
+func (r *ModifyMaintainTimeWindowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMaintainTimeWindowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
