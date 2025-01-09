@@ -844,6 +844,76 @@ func (r *QueryDrawPortraitJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type QueryMemeJobRequestParams struct {
+	// 查询表情动图生成任务 ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type QueryMemeJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询表情动图生成任务 ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *QueryMemeJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMemeJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryMemeJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryMemeJobResponseParams struct {
+	// 当前任务状态码：
+	// 1：等待中、2：运行中、4：处理失败、5：处理完成。
+	JobStatusCode *string `json:"JobStatusCode,omitnil,omitempty" name:"JobStatusCode"`
+
+	// 当前任务状态：排队中、处理中、处理失败或者处理完成。
+	JobStatusMsg *string `json:"JobStatusMsg,omitnil,omitempty" name:"JobStatusMsg"`
+
+	// 任务处理失败错误码。
+	JobErrorCode *string `json:"JobErrorCode,omitnil,omitempty" name:"JobErrorCode"`
+
+	// 任务处理失败错误信息。
+	JobErrorMsg *string `json:"JobErrorMsg,omitnil,omitempty" name:"JobErrorMsg"`
+
+	// 生成图 URL，有效期1小时，请及时保存。
+	ResultImage *string `json:"ResultImage,omitnil,omitempty" name:"ResultImage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QueryMemeJobResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryMemeJobResponseParams `json:"Response"`
+}
+
+func (r *QueryMemeJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMemeJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type QueryTextToImageProJobRequestParams struct {
 	// 任务 ID。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -1368,6 +1438,148 @@ func (r *SubmitDrawPortraitJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SubmitDrawPortraitJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitMemeJobRequestParams struct {
+	// 表情模板。
+	// 请在 [表情动图模板列表](https://cloud.tencent.com/document/product/1668/115327)  中选择期望的模板，传入 Pose 名称。
+	Pose *string `json:"Pose,omitnil,omitempty" name:"Pose"`
+
+	// 人像参考图 Base64 数据。
+	// Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	InputImage *string `json:"InputImage,omitnil,omitempty" name:"InputImage"`
+
+	// 人像参考图 Url。
+	// Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	InputUrl *string `json:"InputUrl,omitnil,omitempty" name:"InputUrl"`
+
+	// 生成分辨率。
+	// 真人类型支持256、512，默认为256，
+	// 卡通类型仅支持512。
+	Resolution *int64 `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 自定义文案。
+	// 仅对真人类型的 Pose 生效，将在生成的表情动图中显示指定的文字。如果传入的字符串长度大于10，只截取前10个显示。
+	// 如果不传，默认使用自带的文案。
+	// 如果 text = "" 空字符串，代表不在表情动图中添加文案。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 头发遮罩开关。
+	// true：裁剪过长的头发。
+	// false：不裁剪过长的头发。
+	// 仅对卡通类型的 Pose 生效，默认为 false。
+	Haircut *bool `json:"Haircut,omitnil,omitempty" name:"Haircut"`
+
+	// 为生成结果图添加标识的开关，默认为1。
+	// 1：添加标识。
+	// 0：不添加标识。
+	// 其他数值：默认按1处理。
+	// 建议您使用显著标识来提示结果图是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。
+	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+}
+
+type SubmitMemeJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 表情模板。
+	// 请在 [表情动图模板列表](https://cloud.tencent.com/document/product/1668/115327)  中选择期望的模板，传入 Pose 名称。
+	Pose *string `json:"Pose,omitnil,omitempty" name:"Pose"`
+
+	// 人像参考图 Base64 数据。
+	// Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	InputImage *string `json:"InputImage,omitnil,omitempty" name:"InputImage"`
+
+	// 人像参考图 Url。
+	// Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
+	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 6MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	InputUrl *string `json:"InputUrl,omitnil,omitempty" name:"InputUrl"`
+
+	// 生成分辨率。
+	// 真人类型支持256、512，默认为256，
+	// 卡通类型仅支持512。
+	Resolution *int64 `json:"Resolution,omitnil,omitempty" name:"Resolution"`
+
+	// 自定义文案。
+	// 仅对真人类型的 Pose 生效，将在生成的表情动图中显示指定的文字。如果传入的字符串长度大于10，只截取前10个显示。
+	// 如果不传，默认使用自带的文案。
+	// 如果 text = "" 空字符串，代表不在表情动图中添加文案。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 头发遮罩开关。
+	// true：裁剪过长的头发。
+	// false：不裁剪过长的头发。
+	// 仅对卡通类型的 Pose 生效，默认为 false。
+	Haircut *bool `json:"Haircut,omitnil,omitempty" name:"Haircut"`
+
+	// 为生成结果图添加标识的开关，默认为1。
+	// 1：添加标识。
+	// 0：不添加标识。
+	// 其他数值：默认按1处理。
+	// 建议您使用显著标识来提示结果图是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。
+	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+}
+
+func (r *SubmitMemeJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitMemeJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Pose")
+	delete(f, "InputImage")
+	delete(f, "InputUrl")
+	delete(f, "Resolution")
+	delete(f, "Text")
+	delete(f, "Haircut")
+	delete(f, "LogoAdd")
+	delete(f, "LogoParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitMemeJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitMemeJobResponseParams struct {
+	// 任务id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitMemeJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitMemeJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitMemeJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitMemeJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

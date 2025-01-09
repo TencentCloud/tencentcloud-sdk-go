@@ -356,6 +356,14 @@ type AlarmIndicatorInfo struct {
 	// 指标阈值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Threshold *float64 `json:"Threshold,omitnil,omitempty" name:"Threshold"`
+
+	// 时间范围单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndicatorTimeRangeUnit *string `json:"IndicatorTimeRangeUnit,omitnil,omitempty" name:"IndicatorTimeRangeUnit"`
+
+	// 时间范围值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndicatorTimeRangeValue *int64 `json:"IndicatorTimeRangeValue,omitnil,omitempty" name:"IndicatorTimeRangeValue"`
 }
 
 type AlarmInfo struct {
@@ -3785,6 +3793,12 @@ type CreateHiveTableByDDLRequestParams struct {
 
 	// 是否异步建表
 	Async *bool `json:"Async,omitnil,omitempty" name:"Async"`
+
+	// 数据优化使用的资源
+	DataOptimizationResource *string `json:"DataOptimizationResource,omitnil,omitempty" name:"DataOptimizationResource"`
+
+	// 是否开启数据优化
+	SmartOptimizerWritten *string `json:"SmartOptimizerWritten,omitnil,omitempty" name:"SmartOptimizerWritten"`
 }
 
 type CreateHiveTableByDDLRequest struct {
@@ -3816,6 +3830,12 @@ type CreateHiveTableByDDLRequest struct {
 
 	// 是否异步建表
 	Async *bool `json:"Async,omitnil,omitempty" name:"Async"`
+
+	// 数据优化使用的资源
+	DataOptimizationResource *string `json:"DataOptimizationResource,omitnil,omitempty" name:"DataOptimizationResource"`
+
+	// 是否开启数据优化
+	SmartOptimizerWritten *string `json:"SmartOptimizerWritten,omitnil,omitempty" name:"SmartOptimizerWritten"`
 }
 
 func (r *CreateHiveTableByDDLRequest) ToJsonString() string {
@@ -3839,6 +3859,8 @@ func (r *CreateHiveTableByDDLRequest) FromJsonString(s string) error {
 	delete(f, "Incharge")
 	delete(f, "SchemaName")
 	delete(f, "Async")
+	delete(f, "DataOptimizationResource")
+	delete(f, "SmartOptimizerWritten")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHiveTableByDDLRequest has unknown keys!", "")
 	}
@@ -3892,6 +3914,12 @@ type CreateHiveTableRequestParams struct {
 
 	// 责任人
 	Incharge *string `json:"Incharge,omitnil,omitempty" name:"Incharge"`
+
+	// 数据优化引擎
+	DataOptimizationResource *string `json:"DataOptimizationResource,omitnil,omitempty" name:"DataOptimizationResource"`
+
+	// 是否开启数据优化
+	SmartOptimizerWritten *string `json:"SmartOptimizerWritten,omitnil,omitempty" name:"SmartOptimizerWritten"`
 }
 
 type CreateHiveTableRequest struct {
@@ -3914,6 +3942,12 @@ type CreateHiveTableRequest struct {
 
 	// 责任人
 	Incharge *string `json:"Incharge,omitnil,omitempty" name:"Incharge"`
+
+	// 数据优化引擎
+	DataOptimizationResource *string `json:"DataOptimizationResource,omitnil,omitempty" name:"DataOptimizationResource"`
+
+	// 是否开启数据优化
+	SmartOptimizerWritten *string `json:"SmartOptimizerWritten,omitnil,omitempty" name:"SmartOptimizerWritten"`
 }
 
 func (r *CreateHiveTableRequest) ToJsonString() string {
@@ -3934,6 +3968,8 @@ func (r *CreateHiveTableRequest) FromJsonString(s string) error {
 	delete(f, "Privilege")
 	delete(f, "ProjectId")
 	delete(f, "Incharge")
+	delete(f, "DataOptimizationResource")
+	delete(f, "SmartOptimizerWritten")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHiveTableRequest has unknown keys!", "")
 	}
@@ -19658,6 +19694,9 @@ type GenHiveTableDDLSqlRequestParams struct {
 
 	// 目标端schema名称
 	SinkSchemaName *string `json:"SinkSchemaName,omitnil,omitempty" name:"SinkSchemaName"`
+
+	// 获取源信息的环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
 }
 
 type GenHiveTableDDLSqlRequest struct {
@@ -19734,6 +19773,9 @@ type GenHiveTableDDLSqlRequest struct {
 
 	// 目标端schema名称
 	SinkSchemaName *string `json:"SinkSchemaName,omitnil,omitempty" name:"SinkSchemaName"`
+
+	// 获取源信息的环境
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
 }
 
 func (r *GenHiveTableDDLSqlRequest) ToJsonString() string {
@@ -19772,6 +19814,7 @@ func (r *GenHiveTableDDLSqlRequest) FromJsonString(s string) error {
 	delete(f, "UpsertKeys")
 	delete(f, "TableBaseInfo")
 	delete(f, "SinkSchemaName")
+	delete(f, "Env")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenHiveTableDDLSqlRequest has unknown keys!", "")
 	}
@@ -29850,6 +29893,10 @@ type TaskAlarmInfo struct {
 	// 钉钉群Hook地址，多个hook地址使用,隔开
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DingDingWebHooks *string `json:"DingDingWebHooks,omitnil,omitempty" name:"DingDingWebHooks"`
+
+	// 业务类型, 0-非默认, 1-默认
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessType *int64 `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
 }
 
 type TaskByCycle struct {

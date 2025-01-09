@@ -20,6 +20,23 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type ActivateDeviceInfo struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例类型
+	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 设备激活信息
+	DeviceActivationDetails *DeviceActivationDetail `json:"DeviceActivationDetails,omitnil,omitempty" name:"DeviceActivationDetails"`
+
+	// 已注册设备类型信息
+	RegisteredDeviceType *RegisteredDeviceTypeInfo `json:"RegisteredDeviceType,omitnil,omitempty" name:"RegisteredDeviceType"`
+
+	// 已注册设备通信类型信息
+	RegisteredDeviceNetType *RegisteredDeviceNetTypeInfo `json:"RegisteredDeviceNetType,omitnil,omitempty" name:"RegisteredDeviceNetType"`
+}
+
 // Predefined struct for user
 type ActivateTWeCallLicenseRequestParams struct {
 	// TWecall类型：0-体验套餐；1-家庭安防场景； 2-穿戴类场景； 3-生活娱乐场景； 4-对讲及其它场景
@@ -856,6 +873,20 @@ type CloudStorageEvent struct {
 	// 事件自定义数据	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+}
+
+type CloudStoragePackageInfo struct {
+	// 套餐包id
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+
+	// 套餐包名字
+	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
+
+	// 套餐包数量
+	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
+
+	// 已使用数量
+	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
 }
 
 type CloudStorageTimeData struct {
@@ -3422,6 +3453,129 @@ func (r *DeleteTopicRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTopicRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeActivateDeviceRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeActivateDeviceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeActivateDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeActivateDeviceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeActivateDeviceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeActivateDeviceResponseParams struct {
+	// 设备激活详情信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ActivateDeviceInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeActivateDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeActivateDeviceResponseParams `json:"Response"`
+}
+
+func (r *DescribeActivateDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeActivateDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeActivateLicenseServiceRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 激活码类型
+	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
+}
+
+type DescribeActivateLicenseServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 激活码类型
+	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
+}
+
+func (r *DescribeActivateLicenseServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeActivateLicenseServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "LicenseType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeActivateLicenseServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeActivateLicenseServiceResponseParams struct {
+	// 增值服务激活码信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*LicenseServiceNumInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeActivateLicenseServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeActivateLicenseServiceResponseParams `json:"Response"`
+}
+
+func (r *DescribeActivateLicenseServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeActivateLicenseServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6105,6 +6259,60 @@ func (r *DescribeFirmwareUpdateStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeFreeCloudStorageNumRequestParams struct {
+
+}
+
+type DescribeFreeCloudStorageNumRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeFreeCloudStorageNumRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFreeCloudStorageNumRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFreeCloudStorageNumRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFreeCloudStorageNumResponseParams struct {
+	// 套餐包信息
+	PackageInfos []*CloudStoragePackageInfo `json:"PackageInfos,omitnil,omitempty" name:"PackageInfos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFreeCloudStorageNumResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFreeCloudStorageNumResponseParams `json:"Response"`
+}
+
+func (r *DescribeFreeCloudStorageNumResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFreeCloudStorageNumResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeGatewayBindDevicesRequestParams struct {
 	// 网关设备的产品ID
 	GatewayProductId *string `json:"GatewayProductId,omitnil,omitempty" name:"GatewayProductId"`
@@ -7153,6 +7361,84 @@ func (r *DescribeTopicRuleResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeTopicRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVideoLicenseRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeVideoLicenseRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeVideoLicenseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVideoLicenseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoLicenseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVideoLicenseResponseParams struct {
+	// 视频激活码分类概览
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	License []*VideoLicenseEntity `json:"License,omitnil,omitempty" name:"License"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVideoLicenseResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVideoLicenseResponseParams `json:"Response"`
+}
+
+func (r *DescribeVideoLicenseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVideoLicenseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeviceActivationDetail struct {
+	// 可注册设备数
+	TotalDeviceNum *int64 `json:"TotalDeviceNum,omitnil,omitempty" name:"TotalDeviceNum"`
+
+	// 已注册设备数
+	UsedDeviceNum *int64 `json:"UsedDeviceNum,omitnil,omitempty" name:"UsedDeviceNum"`
+
+	// 设备授权数
+	TotalNormalLicense *int64 `json:"TotalNormalLicense,omitnil,omitempty" name:"TotalNormalLicense"`
+
+	// 已使用设备授权数
+	UsedNormalLicense *int64 `json:"UsedNormalLicense,omitnil,omitempty" name:"UsedNormalLicense"`
+
+	// 蓝牙授权数
+	TotalBluetoothLicense *int64 `json:"TotalBluetoothLicense,omitnil,omitempty" name:"TotalBluetoothLicense"`
+
+	// 已使用蓝牙授权数
+	UsedBluetoothLicense *int64 `json:"UsedBluetoothLicense,omitnil,omitempty" name:"UsedBluetoothLicense"`
 }
 
 type DeviceActiveResult struct {
@@ -9661,6 +9947,21 @@ func (r *InvokeExternalSourceAIServiceTaskResponse) FromJsonString(s string) err
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type LicenseServiceNumInfo struct {
+	// 服务类型
+	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
+
+	// 授权总数
+	TotalNum *int64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
+
+	// 已使用授权数
+	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
+
+	// TWeCall激活码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TWeCallLicense []*TWeCallLicenseInfo `json:"TWeCallLicense,omitnil,omitempty" name:"TWeCallLicense"`
+}
+
 // Predefined struct for user
 type ListEventHistoryRequestParams struct {
 	// 产品ID
@@ -11751,6 +12052,25 @@ func (r *PublishRRPCMessageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RegisteredDeviceNetTypeInfo struct {
+	// 普通设备数
+	NormalDeviceNum *int64 `json:"NormalDeviceNum,omitnil,omitempty" name:"NormalDeviceNum"`
+
+	// 蓝牙设备数
+	BluetoothDeviceNum *int64 `json:"BluetoothDeviceNum,omitnil,omitempty" name:"BluetoothDeviceNum"`
+}
+
+type RegisteredDeviceTypeInfo struct {
+	// 已注册设备数
+	NormalDeviceNum *int64 `json:"NormalDeviceNum,omitnil,omitempty" name:"NormalDeviceNum"`
+
+	// 已注册网关数
+	GatewayDeviceNum *int64 `json:"GatewayDeviceNum,omitnil,omitempty" name:"GatewayDeviceNum"`
+
+	// 已注册子设备数
+	SubDeviceNum *int64 `json:"SubDeviceNum,omitnil,omitempty" name:"SubDeviceNum"`
+}
+
 // Predefined struct for user
 type ReleaseStudioProductRequestParams struct {
 	// 产品ID
@@ -12538,6 +12858,20 @@ type TWeCallInfo struct {
 	ActiveNum *int64 `json:"ActiveNum,omitnil,omitempty" name:"ActiveNum"`
 }
 
+type TWeCallLicenseInfo struct {
+	// voip类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TWeCallType *string `json:"TWeCallType,omitnil,omitempty" name:"TWeCallType"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalNum *int64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
+
+	// 已使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
+}
+
 type TWeCallPkgInfo struct {
 	// 包ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -13284,6 +13618,20 @@ func (r *UploadFirmwareResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UploadFirmwareResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type VideoLicenseEntity struct {
+	// 激活码类型，取值范围如下：0_5_mbps、1_mbps、1_5_mbps、2_mbps
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 有效激活码总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 待使用的激活码数量
+	UsedCount *int64 `json:"UsedCount,omitnil,omitempty" name:"UsedCount"`
+
+	// 即将过期的激活码数量
+	ExpiresSoonCount *int64 `json:"ExpiresSoonCount,omitnil,omitempty" name:"ExpiresSoonCount"`
 }
 
 type WXDeviceInfo struct {

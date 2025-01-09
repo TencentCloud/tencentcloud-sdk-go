@@ -22,18 +22,15 @@ import (
 
 type ActivateHardware struct {
 	// 厂商名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vendor *string `json:"Vendor,omitnil,omitempty" name:"Vendor"`
 
 	// 设备SN序列号
 	SN *string `json:"SN,omitnil,omitempty" name:"SN"`
 
 	// 设备名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 设备密钥
@@ -47,24 +44,18 @@ type ActivateHardware struct {
 	// 1，永久授权
 	// 若不传则默认为月度授权。
 	// 当付费方为厂商时，此参数无效
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LicensePayMode *int64 `json:"LicensePayMode,omitnil,omitempty" name:"LicensePayMode"`
 
 	// 设备分组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 设备分组名称，预留参数，需要分组时传入GroupId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 设备无流量包处理方式，0: 按量付费，1: 截断加速
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowTrunc *int64 `json:"FlowTrunc,omitnil,omitempty" name:"FlowTrunc"`
 
 	// 激活后的设备ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 }
 
@@ -1007,11 +998,9 @@ type DeviceBaseInfo struct {
 	AccessScope *int64 `json:"AccessScope,omitnil,omitempty" name:"AccessScope"`
 
 	// license授权有效期 0：月度授权 1：永久授权
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LicensePayMode *int64 `json:"LicensePayMode,omitnil,omitempty" name:"LicensePayMode"`
 
 	// 付费方 0：厂商付费 1：客户付费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Payer *int64 `json:"Payer,omitnil,omitempty" name:"Payer"`
 
 	// 设备分组ID

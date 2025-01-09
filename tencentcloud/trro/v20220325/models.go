@@ -1304,6 +1304,9 @@ type Device struct {
 	// 每月license的限定时长
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonthlyRemainTime *int64 `json:"MonthlyRemainTime,omitnil,omitempty" name:"MonthlyRemainTime"`
+
+	// 月封顶时长（分钟)
+	LimitedTime *int64 `json:"LimitedTime,omitnil,omitempty" name:"LimitedTime"`
 }
 
 type DeviceInfo struct {

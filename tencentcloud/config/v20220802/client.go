@@ -45,6 +45,61 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewDescribeAggregateDiscoveredResourceRequest() (request *DescribeAggregateDiscoveredResourceRequest) {
+    request = &DescribeAggregateDiscoveredResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("config", APIVersion, "DescribeAggregateDiscoveredResource")
+    
+    
+    return
+}
+
+func NewDescribeAggregateDiscoveredResourceResponse() (response *DescribeAggregateDiscoveredResourceResponse) {
+    response = &DescribeAggregateDiscoveredResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAggregateDiscoveredResource
+// 账号组资源详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ACCOUNTGROUPISNOTEXIST = "ResourceNotFound.AccountGroupIsNotExist"
+//  RESOURCENOTFOUND_RESOURCENOTEXIST = "ResourceNotFound.ResourceNotExist"
+func (c *Client) DescribeAggregateDiscoveredResource(request *DescribeAggregateDiscoveredResourceRequest) (response *DescribeAggregateDiscoveredResourceResponse, err error) {
+    return c.DescribeAggregateDiscoveredResourceWithContext(context.Background(), request)
+}
+
+// DescribeAggregateDiscoveredResource
+// 账号组资源详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ACCOUNTGROUPISNOTEXIST = "ResourceNotFound.AccountGroupIsNotExist"
+//  RESOURCENOTFOUND_RESOURCENOTEXIST = "ResourceNotFound.ResourceNotExist"
+func (c *Client) DescribeAggregateDiscoveredResourceWithContext(ctx context.Context, request *DescribeAggregateDiscoveredResourceRequest) (response *DescribeAggregateDiscoveredResourceResponse, err error) {
+    if request == nil {
+        request = NewDescribeAggregateDiscoveredResourceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAggregateDiscoveredResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAggregateDiscoveredResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDiscoveredResourceRequest() (request *DescribeDiscoveredResourceRequest) {
     request = &DescribeDiscoveredResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -143,6 +198,59 @@ func (c *Client) ListAggregateConfigRulesWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewListAggregateConfigRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListAggregateDiscoveredResourcesRequest() (request *ListAggregateDiscoveredResourcesRequest) {
+    request = &ListAggregateDiscoveredResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("config", APIVersion, "ListAggregateDiscoveredResources")
+    
+    
+    return
+}
+
+func NewListAggregateDiscoveredResourcesResponse() (response *ListAggregateDiscoveredResourcesResponse) {
+    response = &ListAggregateDiscoveredResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListAggregateDiscoveredResources
+// 账号组获取资源列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ACCOUNTGROUPISNOTEXIST = "ResourceNotFound.AccountGroupIsNotExist"
+func (c *Client) ListAggregateDiscoveredResources(request *ListAggregateDiscoveredResourcesRequest) (response *ListAggregateDiscoveredResourcesResponse, err error) {
+    return c.ListAggregateDiscoveredResourcesWithContext(context.Background(), request)
+}
+
+// ListAggregateDiscoveredResources
+// 账号组获取资源列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ACCOUNTGROUPISNOTEXIST = "ResourceNotFound.AccountGroupIsNotExist"
+func (c *Client) ListAggregateDiscoveredResourcesWithContext(ctx context.Context, request *ListAggregateDiscoveredResourcesRequest) (response *ListAggregateDiscoveredResourcesResponse, err error) {
+    if request == nil {
+        request = NewListAggregateDiscoveredResourcesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListAggregateDiscoveredResources require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListAggregateDiscoveredResourcesResponse()
     err = c.Send(request, response)
     return
 }

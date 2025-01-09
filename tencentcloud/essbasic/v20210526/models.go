@@ -2039,7 +2039,6 @@ func (r *ChannelCreateFlowApproversRequest) FromJsonString(s string) error {
 type ChannelCreateFlowApproversResponseParams struct {
 	// 批量补充签署人时，补充失败的报错说明 
 	// 注:`目前仅补充动态签署人时会返回补充失败的原因`	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FillError []*FillError `json:"FillError,omitnil,omitempty" name:"FillError"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2389,11 +2388,9 @@ type ChannelCreateFlowByFilesResponseParams struct {
 	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
 	// 
 	// [点击查看FlowId在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 签署方信息，如角色ID、角色名称等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Approvers []*ApproverItem `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 
 	// 预览链接，有效期5分钟
@@ -2519,14 +2516,12 @@ func (r *ChannelCreateFlowGroupByFilesRequest) FromJsonString(s string) error {
 type ChannelCreateFlowGroupByFilesResponseParams struct {
 	// 合同组ID，为32位字符串。
 	// 建议开发者妥善保存此合同组ID，以便于顺利进行后续操作。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
 	// 合同组中每个合同流程ID，每个ID均为32位字符串。
 	// 
 	// 注:
 	// `此数组的顺序和入参中的FlowGroupInfos顺序一致`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 合同组签署方信息。
@@ -4079,9 +4074,7 @@ type ChannelCreateUserAutoSignEnableUrlRequestParams struct {
 	// <li> **H5SIGN** : 生成H5端开通链接</li></ul>
 	UrlType *string `json:"UrlType,omitnil,omitempty" name:"UrlType"`
 
-	// 是否通知开通方，通知类型:
-	// <ul><li>默认不设置为不通知开通方</li>
-	// <li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
+	// 是否通知开通方，通知类型:<ul><li>默认为不通知开通方</li><li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
 	// 如果通知类型NotifyType选择为SMS，则此处为手机号, 其他通知类型不需要设置此项
@@ -4116,9 +4109,7 @@ type ChannelCreateUserAutoSignEnableUrlRequest struct {
 	// <li> **H5SIGN** : 生成H5端开通链接</li></ul>
 	UrlType *string `json:"UrlType,omitnil,omitempty" name:"UrlType"`
 
-	// 是否通知开通方，通知类型:
-	// <ul><li>默认不设置为不通知开通方</li>
-	// <li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
+	// 是否通知开通方，通知类型:<ul><li>默认为不通知开通方</li><li>**SMS** :  短信通知 ,如果需要短信通知则NotifyAddress填写对方的手机号</li></ul>
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
 	// 如果通知类型NotifyType选择为SMS，则此处为手机号, 其他通知类型不需要设置此项
@@ -5991,7 +5982,7 @@ type ChannelOrganizationInfo struct {
 	// </ul>
 	ActiveStatus *int64 `json:"ActiveStatus,omitnil,omitempty" name:"ActiveStatus"`
 
-	// 账号过期时间，时间戳
+	// 账号到期时间，时间戳
 	LicenseExpireTime *int64 `json:"LicenseExpireTime,omitnil,omitempty" name:"LicenseExpireTime"`
 }
 

@@ -388,6 +388,94 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMuskPromptsRequestParams struct {
+	// workgroup id
+	WorkgroupId *string `json:"WorkgroupId,omitnil,omitempty" name:"WorkgroupId"`
+
+	// workflow id
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// offset 
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// limit
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤参数 支持过滤的键值： PromptId，Status
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeMuskPromptsRequest struct {
+	*tchttp.BaseRequest
+	
+	// workgroup id
+	WorkgroupId *string `json:"WorkgroupId,omitnil,omitempty" name:"WorkgroupId"`
+
+	// workflow id
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// offset 
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// limit
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 过滤参数 支持过滤的键值： PromptId，Status
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeMuskPromptsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMuskPromptsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkgroupId")
+	delete(f, "WorkflowId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMuskPromptsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMuskPromptsResponseParams struct {
+	// total count
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// prompt列表详情
+	MuskPromptInfos []*MuskPromptInfo `json:"MuskPromptInfos,omitnil,omitempty" name:"MuskPromptInfos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMuskPromptsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMuskPromptsResponseParams `json:"Response"`
+}
+
+func (r *DescribeMuskPromptsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMuskPromptsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRegionsRequestParams struct {
 
 }
@@ -863,6 +951,38 @@ type LoginSetting struct {
 	// 服务登录url
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
+type MuskPromptInfo struct {
+	// workflow id
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// workgroup id
+	WorkgroupId *string `json:"WorkgroupId,omitnil,omitempty" name:"WorkgroupId"`
+
+	// prompt id
+	PromptId *string `json:"PromptId,omitnil,omitempty" name:"PromptId"`
+
+	// 生成的内容
+	OutputResource []*string `json:"OutputResource,omitnil,omitempty" name:"OutputResource"`
+
+	// prompt status 
+	// 0: 执行中
+	// 1: 执行成功
+	// 2: 执行失败
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 任务执行耗时，单位毫秒
+	Cost *uint64 `json:"Cost,omitnil,omitempty" name:"Cost"`
+
+	// 任务执行失败错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 }
 
 type NetworkStatus struct {

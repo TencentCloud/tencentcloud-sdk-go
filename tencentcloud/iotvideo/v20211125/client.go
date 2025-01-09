@@ -3539,6 +3539,59 @@ func (c *Client) DescribeForwardRuleWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeFreeCloudStorageNumRequest() (request *DescribeFreeCloudStorageNumRequest) {
+    request = &DescribeFreeCloudStorageNumRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeFreeCloudStorageNum")
+    
+    
+    return
+}
+
+func NewDescribeFreeCloudStorageNumResponse() (response *DescribeFreeCloudStorageNumResponse) {
+    response = &DescribeFreeCloudStorageNumResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFreeCloudStorageNum
+// 查询云存卡套餐信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFreeCloudStorageNum(request *DescribeFreeCloudStorageNumRequest) (response *DescribeFreeCloudStorageNumResponse, err error) {
+    return c.DescribeFreeCloudStorageNumWithContext(context.Background(), request)
+}
+
+// DescribeFreeCloudStorageNum
+// 查询云存卡套餐信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFreeCloudStorageNumWithContext(ctx context.Context, request *DescribeFreeCloudStorageNumRequest) (response *DescribeFreeCloudStorageNumResponse, err error) {
+    if request == nil {
+        request = NewDescribeFreeCloudStorageNumRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFreeCloudStorageNum require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFreeCloudStorageNumResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMessageDataStatsRequest() (request *DescribeMessageDataStatsRequest) {
     request = &DescribeMessageDataStatsRequest{
         BaseRequest: &tchttp.BaseRequest{},

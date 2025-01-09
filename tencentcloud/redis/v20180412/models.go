@@ -7115,7 +7115,9 @@ type InstanceSet struct {
 	// 已隔离实例默认下线时间。按量计费实例隔离后默认两小时后下线，包年包月默认7天后下线。格式如：2020-02-15 10:20:00。
 	OfflineTime *string `json:"OfflineTime,omitnil,omitempty" name:"OfflineTime"`
 
-	// 流程中的实例，返回子状态。
+	// 流程中的实例返回的子状态。
+	// - 0：磁盘读写状态。
+	// - 1：磁盘超限只读状态。
 	SubStatus *int64 `json:"SubStatus,omitnil,omitempty" name:"SubStatus"`
 
 	// 反亲和性标签。

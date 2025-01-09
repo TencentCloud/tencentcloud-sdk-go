@@ -17,6 +17,9 @@ package v20220802
 const (
 	// 此产品的特有错误码
 
+	// 内部错误。
+	INTERNALERROR = "InternalError"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 

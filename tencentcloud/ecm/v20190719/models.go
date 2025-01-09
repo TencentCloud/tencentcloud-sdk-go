@@ -5136,7 +5136,6 @@ type DescribeNetworkInterfacesResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 实例详细信息列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkInterfaceSet []*NetworkInterface `json:"NetworkInterfaceSet,omitnil,omitempty" name:"NetworkInterfaceSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5759,7 +5758,6 @@ type DescribeRouteTablesResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 路由表列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteTableSet []*RouteTable `json:"RouteTableSet,omitnil,omitempty" name:"RouteTableSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6231,7 +6229,6 @@ type DescribeSubnetsResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 子网对象。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetSet []*Subnet `json:"SubnetSet,omitnil,omitempty" name:"SubnetSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6604,7 +6601,6 @@ type DescribeVpcsResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 私有网络对象。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcSet []*VpcInfo `json:"VpcSet,omitnil,omitempty" name:"VpcSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10591,7 +10587,6 @@ type PrivateIpAddressSpecification struct {
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitnil,omitempty" name:"PrivateIpAddress"`
 
 	// 是否是主IP。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Primary *bool `json:"Primary,omitnil,omitempty" name:"Primary"`
 
 	// 公网IP地址。
@@ -10604,7 +10599,6 @@ type PrivateIpAddressSpecification struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 公网IP是否被封堵。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsWanIpBlocked *bool `json:"IsWanIpBlocked,omitnil,omitempty" name:"IsWanIpBlocked"`
 
 	// IP状态：
@@ -12024,7 +12018,6 @@ type SecurityGroupPolicy struct {
 	PolicyDescription *string `json:"PolicyDescription,omitnil,omitempty" name:"PolicyDescription"`
 
 	// 修改时间，例如 2020-07-22 19：27：23
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 网段或IPv6(互斥)。
@@ -12497,11 +12490,9 @@ type SystemDisk struct {
 
 type Tag struct {
 	// 标签健。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 标签值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 

@@ -659,6 +659,75 @@ func (c *Client) QueryDrawPortraitJobWithContext(ctx context.Context, request *Q
     return
 }
 
+func NewQueryMemeJobRequest() (request *QueryMemeJobRequest) {
+    request = &QueryMemeJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("aiart", APIVersion, "QueryMemeJob")
+    
+    
+    return
+}
+
+func NewQueryMemeJobResponse() (response *QueryMemeJobResponse) {
+    response = &QueryMemeJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryMemeJob
+// 表情动图生成接口将静态照片制作成动态的表情包。分为提交任务和查询任务2个接口。
+//
+// - 提交任务：提交一个表情动图生成异步任务，获得任务 ID。
+//
+// - 查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得生成图像结果。
+//
+// 
+//
+// 表情动图生成默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  OPERATIONDENIED_IMAGEILLEGALDETECTED = "OperationDenied.ImageIllegalDetected"
+func (c *Client) QueryMemeJob(request *QueryMemeJobRequest) (response *QueryMemeJobResponse, err error) {
+    return c.QueryMemeJobWithContext(context.Background(), request)
+}
+
+// QueryMemeJob
+// 表情动图生成接口将静态照片制作成动态的表情包。分为提交任务和查询任务2个接口。
+//
+// - 提交任务：提交一个表情动图生成异步任务，获得任务 ID。
+//
+// - 查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得生成图像结果。
+//
+// 
+//
+// 表情动图生成默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  OPERATIONDENIED_IMAGEILLEGALDETECTED = "OperationDenied.ImageIllegalDetected"
+func (c *Client) QueryMemeJobWithContext(ctx context.Context, request *QueryMemeJobRequest) (response *QueryMemeJobResponse, err error) {
+    if request == nil {
+        request = NewQueryMemeJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryMemeJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryMemeJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryTextToImageProJobRequest() (request *QueryTextToImageProJobRequest) {
     request = &QueryTextToImageProJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1100,6 +1169,79 @@ func (c *Client) SubmitDrawPortraitJobWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewSubmitDrawPortraitJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitMemeJobRequest() (request *SubmitMemeJobRequest) {
+    request = &SubmitMemeJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("aiart", APIVersion, "SubmitMemeJob")
+    
+    
+    return
+}
+
+func NewSubmitMemeJobResponse() (response *SubmitMemeJobResponse) {
+    response = &SubmitMemeJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitMemeJob
+// 表情动图生成接口将静态照片制作成动态的表情包。分为提交任务和查询任务2个接口。
+//
+// 
+//
+// - 提交任务：提交一个表情动图生成异步任务，获得任务 ID。
+//
+// - 查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得生成图像结果。
+//
+// 
+//
+// 表情动图生成默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitMemeJob(request *SubmitMemeJobRequest) (response *SubmitMemeJobResponse, err error) {
+    return c.SubmitMemeJobWithContext(context.Background(), request)
+}
+
+// SubmitMemeJob
+// 表情动图生成接口将静态照片制作成动态的表情包。分为提交任务和查询任务2个接口。
+//
+// 
+//
+// - 提交任务：提交一个表情动图生成异步任务，获得任务 ID。
+//
+// - 查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得生成图像结果。
+//
+// 
+//
+// 表情动图生成默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitMemeJobWithContext(ctx context.Context, request *SubmitMemeJobRequest) (response *SubmitMemeJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitMemeJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitMemeJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitMemeJobResponse()
     err = c.Send(request, response)
     return
 }

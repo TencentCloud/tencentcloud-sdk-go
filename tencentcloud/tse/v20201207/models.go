@@ -9042,6 +9042,9 @@ type GovernanceNamespaceInput struct {
 	// 2、列表内容仅一个元素，且为字符 *，表示所有命名空间可见（包括新增）
 	// 3、列表内容为部份命名空间名称，则只对这些命名空间下可见
 	ServiceExportTo []*string `json:"ServiceExportTo,omitnil,omitempty" name:"ServiceExportTo"`
+
+	// 是否开启同步到全局注册中心
+	SyncToGlobalRegistry *bool `json:"SyncToGlobalRegistry,omitnil,omitempty" name:"SyncToGlobalRegistry"`
 }
 
 type GovernanceService struct {
@@ -9212,6 +9215,9 @@ type GovernanceServiceInput struct {
 
 	// 该服务对哪些命名空间可见
 	ExportTo []*string `json:"ExportTo,omitnil,omitempty" name:"ExportTo"`
+
+	// 是否开启同步到全局注册中心
+	SyncToGlobalRegistry *bool `json:"SyncToGlobalRegistry,omitnil,omitempty" name:"SyncToGlobalRegistry"`
 }
 
 type InstancePort struct {

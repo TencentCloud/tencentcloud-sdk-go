@@ -2621,6 +2621,136 @@ func (c *Client) DeleteTopicRuleWithContext(ctx context.Context, request *Delete
     return
 }
 
+func NewDescribeActivateDeviceRequest() (request *DescribeActivateDeviceRequest) {
+    request = &DescribeActivateDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeActivateDevice")
+    
+    
+    return
+}
+
+func NewDescribeActivateDeviceResponse() (response *DescribeActivateDeviceResponse) {
+    response = &DescribeActivateDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeActivateDevice
+// 获取设备激活详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOINSTANCE = "UnauthorizedOperation.NoPermissionToStudioInstance"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+//  UNSUPPORTEDOPERATION_UNPAIDORDER = "UnsupportedOperation.UnpaidOrder"
+func (c *Client) DescribeActivateDevice(request *DescribeActivateDeviceRequest) (response *DescribeActivateDeviceResponse, err error) {
+    return c.DescribeActivateDeviceWithContext(context.Background(), request)
+}
+
+// DescribeActivateDevice
+// 获取设备激活详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOINSTANCE = "UnauthorizedOperation.NoPermissionToStudioInstance"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+//  UNSUPPORTEDOPERATION_UNPAIDORDER = "UnsupportedOperation.UnpaidOrder"
+func (c *Client) DescribeActivateDeviceWithContext(ctx context.Context, request *DescribeActivateDeviceRequest) (response *DescribeActivateDeviceResponse, err error) {
+    if request == nil {
+        request = NewDescribeActivateDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeActivateDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeActivateDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeActivateLicenseServiceRequest() (request *DescribeActivateLicenseServiceRequest) {
+    request = &DescribeActivateLicenseServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeActivateLicenseService")
+    
+    
+    return
+}
+
+func NewDescribeActivateLicenseServiceResponse() (response *DescribeActivateLicenseServiceResponse) {
+    response = &DescribeActivateLicenseServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeActivateLicenseService
+// 获取增值服务激活码详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOINSTANCE = "UnauthorizedOperation.NoPermissionToStudioInstance"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+//  UNSUPPORTEDOPERATION_UNPAIDORDER = "UnsupportedOperation.UnpaidOrder"
+func (c *Client) DescribeActivateLicenseService(request *DescribeActivateLicenseServiceRequest) (response *DescribeActivateLicenseServiceResponse, err error) {
+    return c.DescribeActivateLicenseServiceWithContext(context.Background(), request)
+}
+
+// DescribeActivateLicenseService
+// 获取增值服务激活码详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOINSTANCE = "UnauthorizedOperation.NoPermissionToStudioInstance"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+//  UNSUPPORTEDOPERATION_UNPAIDORDER = "UnsupportedOperation.UnpaidOrder"
+func (c *Client) DescribeActivateLicenseServiceWithContext(ctx context.Context, request *DescribeActivateLicenseServiceRequest) (response *DescribeActivateLicenseServiceResponse, err error) {
+    if request == nil {
+        request = NewDescribeActivateLicenseServiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeActivateLicenseService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeActivateLicenseServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBatchProductionRequest() (request *DescribeBatchProductionRequest) {
     request = &DescribeBatchProductionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4489,6 +4619,59 @@ func (c *Client) DescribeFirmwareUpdateStatusWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeFreeCloudStorageNumRequest() (request *DescribeFreeCloudStorageNumRequest) {
+    request = &DescribeFreeCloudStorageNumRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeFreeCloudStorageNum")
+    
+    
+    return
+}
+
+func NewDescribeFreeCloudStorageNumResponse() (response *DescribeFreeCloudStorageNumResponse) {
+    response = &DescribeFreeCloudStorageNumResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFreeCloudStorageNum
+// 查询云存卡套餐信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFreeCloudStorageNum(request *DescribeFreeCloudStorageNumRequest) (response *DescribeFreeCloudStorageNumResponse, err error) {
+    return c.DescribeFreeCloudStorageNumWithContext(context.Background(), request)
+}
+
+// DescribeFreeCloudStorageNum
+// 查询云存卡套餐信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFreeCloudStorageNumWithContext(ctx context.Context, request *DescribeFreeCloudStorageNumRequest) (response *DescribeFreeCloudStorageNumResponse, err error) {
+    if request == nil {
+        request = NewDescribeFreeCloudStorageNumRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFreeCloudStorageNum require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFreeCloudStorageNumResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGatewayBindDevicesRequest() (request *DescribeGatewayBindDevicesRequest) {
     request = &DescribeGatewayBindDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5412,6 +5595,69 @@ func (c *Client) DescribeTopicRuleWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVideoLicenseRequest() (request *DescribeVideoLicenseRequest) {
+    request = &DescribeVideoLicenseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeVideoLicense")
+    
+    
+    return
+}
+
+func NewDescribeVideoLicenseResponse() (response *DescribeVideoLicenseResponse) {
+    response = &DescribeVideoLicenseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVideoLicense
+// 用于查询视频激活码统计概览
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACTIONNIL = "InvalidParameterValue.ActionNil"
+//  INVALIDPARAMETERVALUE_RULENUMBERBEYONDLIMIT = "InvalidParameterValue.RuleNumberBeyondLimit"
+//  INVALIDPARAMETERVALUE_TOPICRULESQLNOTEDITED = "InvalidParameterValue.TopicRuleSqlNotEdited"
+//  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVideoLicense(request *DescribeVideoLicenseRequest) (response *DescribeVideoLicenseResponse, err error) {
+    return c.DescribeVideoLicenseWithContext(context.Background(), request)
+}
+
+// DescribeVideoLicense
+// 用于查询视频激活码统计概览
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACTIONNIL = "InvalidParameterValue.ActionNil"
+//  INVALIDPARAMETERVALUE_RULENUMBERBEYONDLIMIT = "InvalidParameterValue.RuleNumberBeyondLimit"
+//  INVALIDPARAMETERVALUE_TOPICRULESQLNOTEDITED = "InvalidParameterValue.TopicRuleSqlNotEdited"
+//  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVideoLicenseWithContext(ctx context.Context, request *DescribeVideoLicenseRequest) (response *DescribeVideoLicenseResponse, err error) {
+    if request == nil {
+        request = NewDescribeVideoLicenseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVideoLicense require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVideoLicenseResponse()
     err = c.Send(request, response)
     return
 }

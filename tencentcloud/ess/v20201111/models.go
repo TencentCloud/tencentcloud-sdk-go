@@ -2478,11 +2478,9 @@ type CreateDocumentResponseParams struct {
 	// 
 	// 注: `1.如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL`
 	// `2.当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewFileUrl *string `json:"PreviewFileUrl,omitnil,omitempty" name:"PreviewFileUrl"`
 
 	// 签署方信息，如角色ID、角色名称等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Approvers []*ApproverItem `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3000,7 +2998,6 @@ type CreateFlowApproversResponseParams struct {
 	// 批量补充签署人时，补充失败的报错说明
 	// 
 	// 注:`目前仅补充动态签署人时会返回补充失败的原因`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FillError []*FillError `json:"FillError,omitnil,omitempty" name:"FillError"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3450,11 +3447,9 @@ type CreateFlowByFilesResponseParams struct {
 	// 合同预览链接URL。
 	// 
 	// 注：如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewUrl *string `json:"PreviewUrl,omitnil,omitempty" name:"PreviewUrl"`
 
 	// 签署方信息，如角色ID、角色名称等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Approvers []*ApproverItem `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3543,7 +3538,6 @@ func (r *CreateFlowEvidenceReportRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateFlowEvidenceReportResponseParams struct {
 	// 出证报告 ID，可用于<a href="https://qian.tencent.com/developers/companyApis/certificate/DescribeFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>查询出证任务结果和出证PDF的下载URL
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportId *string `json:"ReportId,omitnil,omitempty" name:"ReportId"`
 
 	// 出证任务执行的状态, 状态含义如下：
@@ -3762,11 +3756,9 @@ func (r *CreateFlowGroupByTemplatesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateFlowGroupByTemplatesResponseParams struct {
 	// 合同(流程)组的合同组Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
 	// 合同(流程)组中子合同列表.
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
 	// 合同组签署人信息。
@@ -6287,21 +6279,17 @@ type CreatePersonAuthCertificateImageResponseParams struct {
 	// 该编号会合成到个人用户证书证明图片。
 	// 
 	// 注: `个人用户认证证书的编号和证明图片绑定, 获取新的证明图片编号会变动`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageCertId *string `json:"ImageCertId,omitnil,omitempty" name:"ImageCertId"`
 
 	// 在数字证书申请过程中，系统会自动生成一个独一无二的序列号。请注意，当证书到期并自动续期时，该序列号将会发生变化。值得注意的是，此序列号不会被合成至个人用户证书的证明图片中。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SerialNumber *string `json:"SerialNumber,omitnil,omitempty" name:"SerialNumber"`
 
 	// CA证书颁发时间，格式为Unix标准时间戳（秒）   
 	// 该时间格式化后会合成到个人用户证书证明图片
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidFrom *uint64 `json:"ValidFrom,omitnil,omitempty" name:"ValidFrom"`
 
 	// CA证书有效截止时间，格式为Unix标准时间戳（秒）
 	// 该时间格式化后会合成到个人用户证书证明图片
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidTo *uint64 `json:"ValidTo,omitnil,omitempty" name:"ValidTo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9029,7 +9017,6 @@ type DescribeBillUsageResponseParams struct {
 	Summary []*OrgBillSummary `json:"Summary,omitnil,omitempty" name:"Summary"`
 
 	// 集团子企业套餐使用情况
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubOrgSummary []*SubOrgBillSummary `json:"SubOrgSummary,omitnil,omitempty" name:"SubOrgSummary"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9657,7 +9644,6 @@ func (r *DescribeFlowComponentsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFlowComponentsResponseParams struct {
 	// 合同流程关联的填写控件信息，包括填写控件的归属方以及是否填写等内容。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecipientComponentInfos []*RecipientComponentInfo `json:"RecipientComponentInfos,omitnil,omitempty" name:"RecipientComponentInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9744,7 +9730,6 @@ func (r *DescribeFlowEvidenceReportRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFlowEvidenceReportResponseParams struct {
 	// 出证报告PDF的下载 URL，`有效期为5分钟`，超过有效期后将无法再下载。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportUrl *string `json:"ReportUrl,omitnil,omitempty" name:"ReportUrl"`
 
 	// 出证任务执行的状态, 状态含义如下：
@@ -10165,7 +10150,7 @@ type DescribeIntegrationEmployeesRequestParams struct {
 	// </ul>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 指定分页返回第几页的数据，如果不传默认返回第一页。页码从 0 开始，即首页为 0，最大20000。
+	// 偏移量，默认为0，最大20000。。关于<code>Offset</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688" target="_blank">简介</a>中的相关小节。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -10195,7 +10180,7 @@ type DescribeIntegrationEmployeesRequest struct {
 	// </ul>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 指定分页返回第几页的数据，如果不传默认返回第一页。页码从 0 开始，即首页为 0，最大20000。
+	// 偏移量，默认为0，最大20000。。关于<code>Offset</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/15688" target="_blank">简介</a>中的相关小节。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -10225,11 +10210,9 @@ func (r *DescribeIntegrationEmployeesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeIntegrationEmployeesResponseParams struct {
 	// 员工信息列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Employees []*Staff `json:"Employees,omitnil,omitempty" name:"Employees"`
 
-	// 指定分页返回第几页的数据。页码从 0 开始，即首页为 0，最大20000。
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 偏移量
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 指定分页每页返回的数据条数，单页最大支持 20。
@@ -10977,11 +10960,9 @@ func (r *DescribeSignFaceVideoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSignFaceVideoResponseParams struct {
 	// 核身视频结果。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoData *DetectInfoVideoData `json:"VideoData,omitnil,omitempty" name:"VideoData"`
 
 	// 意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntentionQuestionResult *IntentionQuestionResult `json:"IntentionQuestionResult,omitnil,omitempty" name:"IntentionQuestionResult"`
 
 	// 意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
@@ -12200,8 +12181,7 @@ type FormField struct {
 
 // Predefined struct for user
 type GetTaskResultApiRequestParams struct {
-	// 转换任务Id，通过接口<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>或<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateMergeFileTask" target="_blank">创建多文件转换任务接口</a>
-	// 得到的转换任务id
+	// 转换任务Id，通过接口<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>得到的转换任务id
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 执行本接口操作的员工信息。
@@ -12221,8 +12201,7 @@ type GetTaskResultApiRequestParams struct {
 type GetTaskResultApiRequest struct {
 	*tchttp.BaseRequest
 	
-	// 转换任务Id，通过接口<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>或<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateMergeFileTask" target="_blank">创建多文件转换任务接口</a>
-	// 得到的转换任务id
+	// 转换任务Id，通过接口<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>得到的转换任务id
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 执行本接口操作的员工信息。

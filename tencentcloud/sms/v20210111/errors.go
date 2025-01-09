@@ -68,6 +68,9 @@ const (
 	// 非主账号无法使用拉取模板列表功能。您可以使用主账号下云 API 密钥来调用接口。
 	FAILEDOPERATION_PROHIBITSUBACCOUNTUSE = "FailedOperation.ProhibitSubAccountUse"
 
+	// 资质ID未审核通过。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。
+	FAILEDOPERATION_QUALIFICATIONIDNOTAPPROVED = "FailedOperation.QualificationIdNotApproved"
+
 	// 签名 ID 不存在。
 	FAILEDOPERATION_SIGNIDNOTEXIST = "FailedOperation.SignIdNotExist"
 
@@ -184,6 +187,9 @@ const (
 
 	// 禁止在模板变量中使用 URL。您可以参考正文模板审核标准下关于 [变量规范](https://cloud.tencent.com/document/product/382/39023#.E5.8F.98.E9.87.8F.E8.A7.84.E8.8C.83.5B.5D(id.3Avariable)) 的描述
 	INVALIDPARAMETERVALUE_PROHIBITEDUSEURLINTEMPLATEPARAMETER = "InvalidParameterValue.ProhibitedUseUrlInTemplateParameter"
+
+	// 资质ID未找到。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。
+	INVALIDPARAMETERVALUE_QUALIFICATIONIDNOTFOUND = "InvalidParameterValue.QualificationIdNotFound"
 
 	// SdkAppId 不存在。
 	INVALIDPARAMETERVALUE_SDKAPPIDNOTEXIST = "InvalidParameterValue.SdkAppIdNotExist"

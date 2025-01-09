@@ -59,6 +59,9 @@ const (
 	// 手机号在免打扰名单库中，通常是用户退订或者命中运营商免打扰名单导致的，可联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) 解决。
 	FAILEDOPERATION_PHONENUMBERINBLACKLIST = "FailedOperation.PhoneNumberInBlacklist"
 
+	// 资质ID未审核通过。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。
+	FAILEDOPERATION_QUALIFICATIONIDNOTAPPROVED = "FailedOperation.QualificationIdNotApproved"
+
 	// 签名 ID 不存在。
 	FAILEDOPERATION_SIGNIDNOTEXIST = "FailedOperation.SignIdNotExist"
 
@@ -166,6 +169,9 @@ const (
 
 	// 禁止在模板变量中使用 URL。您可以参考正文模板审核标准下关于 [变量规范](https://cloud.tencent.com/document/product/382/39023#.E5.8F.98.E9.87.8F.E8.A7.84.E8.8C.83.5B.5D(id.3Avariable)) 的描述
 	INVALIDPARAMETERVALUE_PROHIBITEDUSEURLINTEMPLATEPARAMETER = "InvalidParameterValue.ProhibitedUseUrlInTemplateParameter"
+
+	// 资质ID未找到。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。
+	INVALIDPARAMETERVALUE_QUALIFICATIONIDNOTFOUND = "InvalidParameterValue.QualificationIdNotFound"
 
 	// SdkAppId 不存在。
 	INVALIDPARAMETERVALUE_SDKAPPIDNOTEXIST = "InvalidParameterValue.SdkAppIdNotExist"

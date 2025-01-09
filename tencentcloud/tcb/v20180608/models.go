@@ -2546,7 +2546,7 @@ type DeleteGatewayVersionRequestParams struct {
 	// 是否强制删除
 	IsForce *bool `json:"IsForce,omitnil,omitempty" name:"IsForce"`
 
-	// 操作记录
+	// 操作者记录
 	OperatorRemark *string `json:"OperatorRemark,omitnil,omitempty" name:"OperatorRemark"`
 }
 
@@ -2571,7 +2571,7 @@ type DeleteGatewayVersionRequest struct {
 	// 是否强制删除
 	IsForce *bool `json:"IsForce,omitnil,omitempty" name:"IsForce"`
 
-	// 操作记录
+	// 操作者记录
 	OperatorRemark *string `json:"OperatorRemark,omitnil,omitempty" name:"OperatorRemark"`
 }
 
@@ -7086,11 +7086,9 @@ func (r *DescribeWxGatewayRoutesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWxGatewayRoutesResponseParams struct {
 	// 返回的服务个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 返回的服务列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WxGatewayRouteSet []*WxGatewayRountItem `json:"WxGatewayRouteSet,omitnil,omitempty" name:"WxGatewayRouteSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7176,11 +7174,9 @@ func (r *DescribeWxGatewaysRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWxGatewaysResponseParams struct {
 	// 返回的服务列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Gateways []*GatewayItem `json:"Gateways,omitnil,omitempty" name:"Gateways"`
 
 	// 网关总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7955,11 +7951,9 @@ func (r *FreezeCloudBaseRunServersResponse) FromJsonString(s string) error {
 
 type FrequencyLimitConfig struct {
 	// 限额对象 "ConnectionsLimit" 或 "QPSLimit"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LimitObject *string `json:"LimitObject,omitnil,omitempty" name:"LimitObject"`
 
 	// 限额配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LimitConfig *string `json:"LimitConfig,omitnil,omitempty" name:"LimitConfig"`
 }
 
@@ -7977,103 +7971,78 @@ type GatewayItem struct {
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 用户appid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// WxAppId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WxAppId *string `json:"WxAppId,omitnil,omitempty" name:"WxAppId"`
 
 	// 环境id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// Gateway唯一id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// Gateway名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayName *string `json:"GatewayName,omitnil,omitempty" name:"GatewayName"`
 
 	// Gateway类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayType *string `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 
 	// Gateway描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayDesc *string `json:"GatewayDesc,omitnil,omitempty" name:"GatewayDesc"`
 
 	// 套餐版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageVersion *string `json:"PackageVersion,omitnil,omitempty" name:"PackageVersion"`
 
 	// 套餐唯一id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageId *uint64 `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
 	// vpc唯一id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
 	// 网关状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// l5地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	L5Addr *string `json:"L5Addr,omitnil,omitempty" name:"L5Addr"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 是否可以续费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CanRenew *bool `json:"CanRenew,omitnil,omitempty" name:"CanRenew"`
 
 	// 自动续费标志
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 隔离时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
 
 	// 到期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 变更时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 是否可以降配
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CanDowngrade *bool `json:"CanDowngrade,omitnil,omitempty" name:"CanDowngrade"`
 
 	// 允许未登录访问
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowUncertified *int64 `json:"AllowUncertified,omitnil,omitempty" name:"AllowUncertified"`
 
 	// 网关版本限额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionNumLimit *int64 `json:"VersionNumLimit,omitnil,omitempty" name:"VersionNumLimit"`
 
 	// Donut接入ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LongAccessId *string `json:"LongAccessId,omitnil,omitempty" name:"LongAccessId"`
 
 	// Donut接入域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessDomain *string `json:"AccessDomain,omitnil,omitempty" name:"AccessDomain"`
 }
 
@@ -9837,46 +9806,35 @@ type WxGatewayRountItem struct {
 	GatewayRouteCreateTime *string `json:"GatewayRouteCreateTime,omitnil,omitempty" name:"GatewayRouteCreateTime"`
 
 	// 安全网关路由限制
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrequencyLimitConfig []*FrequencyLimitConfig `json:"FrequencyLimitConfig,omitnil,omitempty" name:"FrequencyLimitConfig"`
 
 	// ip代表绑定后端ip。cbr代表云托管服务
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayRouteServerType *string `json:"GatewayRouteServerType,omitnil,omitempty" name:"GatewayRouteServerType"`
 
 	// 服务名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayRouteServerName *string `json:"GatewayRouteServerName,omitnil,omitempty" name:"GatewayRouteServerName"`
 
 	// ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayRewriteHost *string `json:"GatewayRewriteHost,omitnil,omitempty" name:"GatewayRewriteHost"`
 
 	// 网关版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayVersion *string `json:"GatewayVersion,omitnil,omitempty" name:"GatewayVersion"`
 
 	// 请求路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayRoutePath *string `json:"GatewayRoutePath,omitnil,omitempty" name:"GatewayRoutePath"`
 
 	// 请求模式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayRouteMethod *string `json:"GatewayRouteMethod,omitnil,omitempty" name:"GatewayRouteMethod"`
 
 	// 4层端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayRoutePort *int64 `json:"GatewayRoutePort,omitnil,omitempty" name:"GatewayRoutePort"`
 
 	// 路由环境ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayRouteEnvId *string `json:"GatewayRouteEnvId,omitnil,omitempty" name:"GatewayRouteEnvId"`
 
 	// 路径匹配类型，支持prefix(前缀匹配)，regex(正则匹配)， 默认prefix
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayRoutePathMatchType *string `json:"GatewayRoutePathMatchType,omitnil,omitempty" name:"GatewayRoutePathMatchType"`
 
 	// 安全网关自定义头部
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomHeader *CustomHeader `json:"CustomHeader,omitnil,omitempty" name:"CustomHeader"`
 }

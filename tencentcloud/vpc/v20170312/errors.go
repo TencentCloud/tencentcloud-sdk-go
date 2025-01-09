@@ -398,6 +398,9 @@ const (
 	// 该资源不支持此操作。
 	INVALIDPARAMETERVALUE_RESOURCENOTSUPPORT = "InvalidParameterValue.ResourceNotSupport"
 
+	// 自定义路由的下一跳参数不正确。
+	INVALIDPARAMETERVALUE_ROUTENEXTHOPINVALID = "InvalidParameterValue.RouteNextHopInvalid"
+
 	// 指定的优先级之间冲突或与已存在的优先级冲突。
 	INVALIDPARAMETERVALUE_ROUTEPOLICYPRIORITYCONFLICT = "InvalidParameterValue.RoutePolicyPriorityConflict"
 
@@ -415,6 +418,9 @@ const (
 
 	// 子网与辅助Cidr网段重叠。
 	INVALIDPARAMETERVALUE_SUBNETOVERLAPASSISTCIDR = "InvalidParameterValue.SubnetOverlapAssistCidr"
+
+	// 子网与自定义路由目的Cidr网段完全重叠。
+	INVALIDPARAMETERVALUE_SUBNETOVERLAPROUTE = "InvalidParameterValue.SubnetOverlapRoute"
 
 	// 子网CIDR不合法。
 	INVALIDPARAMETERVALUE_SUBNETRANGE = "InvalidParameterValue.SubnetRange"
@@ -478,6 +484,9 @@ const (
 
 	// 目的网段和当前VPC的CIDR冲突。
 	INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
+
+	// 辅助Cidr与自定义子网路由目的Cidr网段完全重叠。
+	INVALIDPARAMETERVALUE_VPCCIDROVERLAPROUTE = "InvalidParameterValue.VpcCidrOverlapRoute"
 
 	// 当前功能不支持此专线网关。
 	INVALIDPARAMETERVALUE_VPGTYPENOTMATCH = "InvalidParameterValue.VpgTypeNotMatch"
@@ -811,6 +820,9 @@ const (
 
 	// CDC子网不支持创建非本地网关类型的路由。
 	UNSUPPORTEDOPERATION_CDCSUBNETNOTSUPPORTUNLOCALGATEWAY = "UnsupportedOperation.CdcSubnetNotSupportUnLocalGateway"
+
+	// VPG型的CDC网关不存在。
+	UNSUPPORTEDOPERATION_CDCVPGNOTEXISTS = "UnsupportedOperation.CdcVpgNotExists"
 
 	// 实例已经和VPC绑定。
 	UNSUPPORTEDOPERATION_CLASSICINSTANCEIDALREADYEXISTS = "UnsupportedOperation.ClassicInstanceIdAlreadyExists"

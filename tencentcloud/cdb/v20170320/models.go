@@ -16759,6 +16759,14 @@ type UpgradeDBInstanceRequestParams struct {
 
 	// 检查原地升级是否需要重启，1 检查， 0 不检查。如果值为1，检查为原地升级需要重启，则会停止升级并进行返回提示，如果为原地升级不重启，则正常执行升级流程。
 	CheckFastUpgradeReboot *int64 `json:"CheckFastUpgradeReboot,omitnil,omitempty" name:"CheckFastUpgradeReboot"`
+
+	// 数据校验敏感度，非极速变配时使用此参数，敏感度根据当前实例规格计算迁移过程中的数据对比使用的cpu资源
+	// 对应的选项为: "high"、"normal"、"low"，默认为空
+	// 参数详解，：
+	// "high": 对应控制台中的高，数据库负载过高不建议使用
+	// "normal"：对应控制台中的标准
+	// "low"：对应控制台中的低
+	DataCheckSensitive *string `json:"DataCheckSensitive,omitnil,omitempty" name:"DataCheckSensitive"`
 }
 
 type UpgradeDBInstanceRequest struct {
@@ -16823,6 +16831,14 @@ type UpgradeDBInstanceRequest struct {
 
 	// 检查原地升级是否需要重启，1 检查， 0 不检查。如果值为1，检查为原地升级需要重启，则会停止升级并进行返回提示，如果为原地升级不重启，则正常执行升级流程。
 	CheckFastUpgradeReboot *int64 `json:"CheckFastUpgradeReboot,omitnil,omitempty" name:"CheckFastUpgradeReboot"`
+
+	// 数据校验敏感度，非极速变配时使用此参数，敏感度根据当前实例规格计算迁移过程中的数据对比使用的cpu资源
+	// 对应的选项为: "high"、"normal"、"low"，默认为空
+	// 参数详解，：
+	// "high": 对应控制台中的高，数据库负载过高不建议使用
+	// "normal"：对应控制台中的标准
+	// "low"：对应控制台中的低
+	DataCheckSensitive *string `json:"DataCheckSensitive,omitnil,omitempty" name:"DataCheckSensitive"`
 }
 
 func (r *UpgradeDBInstanceRequest) ToJsonString() string {
@@ -16856,6 +16872,7 @@ func (r *UpgradeDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "RoTransType")
 	delete(f, "ClusterTopology")
 	delete(f, "CheckFastUpgradeReboot")
+	delete(f, "DataCheckSensitive")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDBInstanceRequest has unknown keys!", "")
 	}

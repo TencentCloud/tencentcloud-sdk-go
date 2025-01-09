@@ -20,6 +20,52 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AggregateResourceInfo struct {
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源名称
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
+
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
+
+	// 资源状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceStatus *string `json:"ResourceStatus,omitnil,omitempty" name:"ResourceStatus"`
+
+	// 是否删除 1:已删除 0:未删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceDelete *uint64 `json:"ResourceDelete,omitnil,omitempty" name:"ResourceDelete"`
+
+	// 资源创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceCreateTime *string `json:"ResourceCreateTime,omitnil,omitempty" name:"ResourceCreateTime"`
+
+	// 标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceZone *string `json:"ResourceZone,omitnil,omitempty" name:"ResourceZone"`
+
+	// 合规状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComplianceResult *string `json:"ComplianceResult,omitnil,omitempty" name:"ComplianceResult"`
+
+	// 资源所属用户ID
+	ResourceOwnerId *uint64 `json:"ResourceOwnerId,omitnil,omitempty" name:"ResourceOwnerId"`
+
+	// 用户昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceOwnerName *string `json:"ResourceOwnerName,omitnil,omitempty" name:"ResourceOwnerName"`
+}
+
 type Annotation struct {
 	// 资源当前实际配置。长度为0~256位字符，即资源不合规配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -157,6 +203,124 @@ type ConfigRule struct {
 	// ScheduledNotification：周期触发
 	// ConfigurationItemChangeNotification：变更触发
 	ManageTriggerType []*string `json:"ManageTriggerType,omitnil,omitempty" name:"ManageTriggerType"`
+}
+
+// Predefined struct for user
+type DescribeAggregateDiscoveredResourceRequestParams struct {
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源地域
+	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
+
+	// 账号组ID
+	AccountGroupId *string `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+
+	// 资源所属用户ID
+	ResourceOwnerId *uint64 `json:"ResourceOwnerId,omitnil,omitempty" name:"ResourceOwnerId"`
+}
+
+type DescribeAggregateDiscoveredResourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源类型
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源地域
+	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
+
+	// 账号组ID
+	AccountGroupId *string `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+
+	// 资源所属用户ID
+	ResourceOwnerId *uint64 `json:"ResourceOwnerId,omitnil,omitempty" name:"ResourceOwnerId"`
+}
+
+func (r *DescribeAggregateDiscoveredResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAggregateDiscoveredResourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	delete(f, "ResourceType")
+	delete(f, "ResourceRegion")
+	delete(f, "AccountGroupId")
+	delete(f, "ResourceOwnerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAggregateDiscoveredResourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAggregateDiscoveredResourceResponseParams struct {
+	// 资源Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
+
+	// 资源地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
+
+	// 资源可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceZone *string `json:"ResourceZone,omitnil,omitempty" name:"ResourceZone"`
+
+	// 资源配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Configuration *string `json:"Configuration,omitnil,omitempty" name:"Configuration"`
+
+	// 资源创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceCreateTime *string `json:"ResourceCreateTime,omitnil,omitempty" name:"ResourceCreateTime"`
+
+	// 资源标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 资源更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAggregateDiscoveredResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAggregateDiscoveredResourceResponseParams `json:"Response"`
+}
+
+func (r *DescribeAggregateDiscoveredResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAggregateDiscoveredResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -446,6 +610,102 @@ func (r *ListAggregateConfigRulesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListAggregateConfigRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAggregateDiscoveredResourcesRequestParams struct {
+	// 每页显示数量
+	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// 账号组ID
+	AccountGroupId *string `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+
+	// resourceName：资源名  resourceId ：资源ID
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 下一页token
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// 排序方式 asc、desc
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+}
+
+type ListAggregateDiscoveredResourcesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每页显示数量
+	MaxResults *uint64 `json:"MaxResults,omitnil,omitempty" name:"MaxResults"`
+
+	// 账号组ID
+	AccountGroupId *string `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+
+	// resourceName：资源名  resourceId ：资源ID
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 下一页token
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// 排序方式 asc、desc
+	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+}
+
+func (r *ListAggregateDiscoveredResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAggregateDiscoveredResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MaxResults")
+	delete(f, "AccountGroupId")
+	delete(f, "Filters")
+	delete(f, "Tags")
+	delete(f, "NextToken")
+	delete(f, "OrderType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAggregateDiscoveredResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAggregateDiscoveredResourcesResponseParams struct {
+	// 详情
+	Items []*AggregateResourceInfo `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 下一页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListAggregateDiscoveredResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListAggregateDiscoveredResourcesResponseParams `json:"Response"`
+}
+
+func (r *ListAggregateDiscoveredResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAggregateDiscoveredResourcesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

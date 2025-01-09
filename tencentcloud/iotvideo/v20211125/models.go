@@ -856,6 +856,20 @@ type CloudStorageEvent struct {
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
+type CloudStoragePackageInfo struct {
+	// 套餐包id
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+
+	// 套餐包名字
+	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
+
+	// 套餐包数量
+	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
+
+	// 已使用数量
+	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
+}
+
 type CloudStorageTimeData struct {
 	// 云存时间轴信息列表
 	TimeList []*CloudStorageTimeInfo `json:"TimeList,omitnil,omitempty" name:"TimeList"`
@@ -5705,6 +5719,60 @@ func (r *DescribeForwardRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeForwardRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFreeCloudStorageNumRequestParams struct {
+
+}
+
+type DescribeFreeCloudStorageNumRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeFreeCloudStorageNumRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFreeCloudStorageNumRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFreeCloudStorageNumRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFreeCloudStorageNumResponseParams struct {
+	// 套餐包信息
+	PackageInfos []*CloudStoragePackageInfo `json:"PackageInfos,omitnil,omitempty" name:"PackageInfos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFreeCloudStorageNumResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFreeCloudStorageNumResponseParams `json:"Response"`
+}
+
+func (r *DescribeFreeCloudStorageNumResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFreeCloudStorageNumResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

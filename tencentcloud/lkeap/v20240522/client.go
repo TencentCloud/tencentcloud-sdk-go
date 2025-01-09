@@ -275,23 +275,25 @@ func NewCreateSplitDocumentFlowResponse() (response *CreateSplitDocumentFlowResp
 }
 
 // CreateSplitDocumentFlow
-// 创建文档拆分任务
+// 用于创建一个文档拆分任务，支持多种文件类型，具备mllm能力，能够解析并深入理解图表中的信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) CreateSplitDocumentFlow(request *CreateSplitDocumentFlowRequest) (response *CreateSplitDocumentFlowResponse, err error) {
     return c.CreateSplitDocumentFlowWithContext(context.Background(), request)
 }
 
 // CreateSplitDocumentFlow
-// 创建文档拆分任务
+// 用于创建一个文档拆分任务，支持多种文件类型，具备mllm能力，能够解析并深入理解图表中的信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) CreateSplitDocumentFlowWithContext(ctx context.Context, request *CreateSplitDocumentFlowRequest) (response *CreateSplitDocumentFlowResponse, err error) {
     if request == nil {
         request = NewCreateSplitDocumentFlowRequest()
@@ -334,6 +336,7 @@ func NewDeleteAttributeLabelsResponse() (response *DeleteAttributeLabelsResponse
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) DeleteAttributeLabels(request *DeleteAttributeLabelsRequest) (response *DeleteAttributeLabelsResponse, err error) {
     return c.DeleteAttributeLabelsWithContext(context.Background(), request)
 }
@@ -345,6 +348,7 @@ func (c *Client) DeleteAttributeLabels(request *DeleteAttributeLabelsRequest) (r
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) DeleteAttributeLabelsWithContext(ctx context.Context, request *DeleteAttributeLabelsRequest) (response *DeleteAttributeLabelsResponse, err error) {
     if request == nil {
         request = NewDeleteAttributeLabelsRequest()
@@ -387,6 +391,7 @@ func NewDeleteDocsResponse() (response *DeleteDocsResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) DeleteDocs(request *DeleteDocsRequest) (response *DeleteDocsResponse, err error) {
     return c.DeleteDocsWithContext(context.Background(), request)
 }
@@ -398,6 +403,7 @@ func (c *Client) DeleteDocs(request *DeleteDocsRequest) (response *DeleteDocsRes
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) DeleteDocsWithContext(ctx context.Context, request *DeleteDocsRequest) (response *DeleteDocsResponse, err error) {
     if request == nil {
         request = NewDeleteDocsRequest()
@@ -440,6 +446,7 @@ func NewDeleteKnowledgeBaseResponse() (response *DeleteKnowledgeBaseResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) DeleteKnowledgeBase(request *DeleteKnowledgeBaseRequest) (response *DeleteKnowledgeBaseResponse, err error) {
     return c.DeleteKnowledgeBaseWithContext(context.Background(), request)
 }
@@ -451,6 +458,7 @@ func (c *Client) DeleteKnowledgeBase(request *DeleteKnowledgeBaseRequest) (respo
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) DeleteKnowledgeBaseWithContext(ctx context.Context, request *DeleteKnowledgeBaseRequest) (response *DeleteKnowledgeBaseResponse, err error) {
     if request == nil {
         request = NewDeleteKnowledgeBaseRequest()
@@ -493,6 +501,7 @@ func NewDeleteQAsResponse() (response *DeleteQAsResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) DeleteQAs(request *DeleteQAsRequest) (response *DeleteQAsResponse, err error) {
     return c.DeleteQAsWithContext(context.Background(), request)
 }
@@ -504,6 +513,7 @@ func (c *Client) DeleteQAs(request *DeleteQAsRequest) (response *DeleteQAsRespon
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) DeleteQAsWithContext(ctx context.Context, request *DeleteQAsRequest) (response *DeleteQAsResponse, err error) {
     if request == nil {
         request = NewDeleteQAsRequest()
@@ -546,6 +556,7 @@ func NewDescribeDocResponse() (response *DescribeDocResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) DescribeDoc(request *DescribeDocRequest) (response *DescribeDocResponse, err error) {
     return c.DescribeDocWithContext(context.Background(), request)
 }
@@ -557,6 +568,7 @@ func (c *Client) DescribeDoc(request *DescribeDocRequest) (response *DescribeDoc
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) DescribeDocWithContext(ctx context.Context, request *DescribeDocRequest) (response *DescribeDocResponse, err error) {
     if request == nil {
         request = NewDescribeDocRequest()
@@ -1137,7 +1149,9 @@ func NewReconstructDocumentSSEResponse() (response *ReconstructDocumentSSERespon
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ReconstructDocumentSSE(request *ReconstructDocumentSSERequest) (response *ReconstructDocumentSSEResponse, err error) {
     return c.ReconstructDocumentSSEWithContext(context.Background(), request)
@@ -1154,7 +1168,9 @@ func (c *Client) ReconstructDocumentSSE(request *ReconstructDocumentSSERequest) 
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ReconstructDocumentSSEWithContext(ctx context.Context, request *ReconstructDocumentSSERequest) (response *ReconstructDocumentSSEResponse, err error) {
     if request == nil {
@@ -1202,7 +1218,9 @@ func NewRetrieveKnowledgeResponse() (response *RetrieveKnowledgeResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RetrieveKnowledge(request *RetrieveKnowledgeRequest) (response *RetrieveKnowledgeResponse, err error) {
     return c.RetrieveKnowledgeWithContext(context.Background(), request)
@@ -1219,7 +1237,9 @@ func (c *Client) RetrieveKnowledge(request *RetrieveKnowledgeRequest) (response 
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RetrieveKnowledgeWithContext(ctx context.Context, request *RetrieveKnowledgeRequest) (response *RetrieveKnowledgeResponse, err error) {
     if request == nil {
