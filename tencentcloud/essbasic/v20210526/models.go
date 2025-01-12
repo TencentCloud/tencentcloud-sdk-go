@@ -8087,6 +8087,8 @@ type CreateFlowsByTemplatesResponseParams struct {
 	// 合同预览链接URL数组。
 	// 
 	// 注：如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL
+	// 如果预览的文件中指定了动态表格控件，此时此接口返回的是合成前的文档预览链接，合成完成后的文档预览链接需要通过[合同文档合成完成回调](https://qian.tencent.com/developers/partner/callback_types_contracts_sign#%E5%8D%81%E4%B8%80-%E5%90%88%E5%90%8C%E6%96%87%E6%A1%A3%E5%90%88%E6%88%90%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83)获取或使用返回的TaskInfo中的TaskId通过[查询转换任务状态
+	// ](https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi)接口查询得到
 	PreviewUrls []*string `json:"PreviewUrls,omitnil,omitempty" name:"PreviewUrls"`
 
 	// 复杂文档合成任务（如，包含动态表格的预览任务）的任务信息数组；

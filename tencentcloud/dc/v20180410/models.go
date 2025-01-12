@@ -169,7 +169,6 @@ func (r *ApplyInternetAddressRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ApplyInternetAddressResponseParams struct {
 	// 互联网公网地址ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1173,7 +1172,6 @@ type DescribeDirectConnectsResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 用户名下物理专线是否都签署了用户协议。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllSignLaw *bool `json:"AllSignLaw,omitnil,omitempty" name:"AllSignLaw"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1228,23 +1226,18 @@ func (r *DescribeInternetAddressQuotaRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInternetAddressQuotaResponseParams struct {
 	// IPv6互联网公网允许的最小前缀长度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv6PrefixLen *int64 `json:"Ipv6PrefixLen,omitnil,omitempty" name:"Ipv6PrefixLen"`
 
 	// BGP类型IPv4互联网地址配额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv4BgpQuota *int64 `json:"Ipv4BgpQuota,omitnil,omitempty" name:"Ipv4BgpQuota"`
 
 	// 非BGP类型IPv4互联网地址配额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv4OtherQuota *int64 `json:"Ipv4OtherQuota,omitnil,omitempty" name:"Ipv4OtherQuota"`
 
 	// BGP类型IPv4互联网地址已使用数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv4BgpNum *int64 `json:"Ipv4BgpNum,omitnil,omitempty" name:"Ipv4BgpNum"`
 
 	// 非BGP类型互联网地址已使用数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv4OtherNum *int64 `json:"Ipv4OtherNum,omitnil,omitempty" name:"Ipv4OtherNum"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1387,7 +1380,6 @@ type DescribeInternetAddressStatisticsResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 互联网公网地址统计信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetAddressStatistics []*InternetAddressStatistics `json:"InternetAddressStatistics,omitnil,omitempty" name:"InternetAddressStatistics"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1412,36 +1404,36 @@ func (r *DescribeInternetAddressStatisticsResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribePublicDirectConnectTunnelRoutesRequestParams struct {
-	// 专用通道ID
+	// 专用通道ID。
 	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitnil,omitempty" name:"DirectConnectTunnelId"`
 
 	// 过滤条件：
-	// route-type：路由类型，取值：BGP/STATIC
-	// route-subnet：路由cidr，取值如：192.68.1.0/24
+	// route-type：路由类型，取值：BGP/STATIC；
+	// route-subnet：路由cidr，取值如：192.68.1.0/24。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribePublicDirectConnectTunnelRoutesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 专用通道ID
+	// 专用通道ID。
 	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitnil,omitempty" name:"DirectConnectTunnelId"`
 
 	// 过滤条件：
-	// route-type：路由类型，取值：BGP/STATIC
-	// route-subnet：路由cidr，取值如：192.68.1.0/24
+	// route-type：路由类型，取值：BGP/STATIC；
+	// route-subnet：路由cidr，取值如：192.68.1.0/24。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0
+	// 偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量，默认为20，最大值为100
+	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -1469,10 +1461,10 @@ func (r *DescribePublicDirectConnectTunnelRoutesRequest) FromJsonString(s string
 
 // Predefined struct for user
 type DescribePublicDirectConnectTunnelRoutesResponseParams struct {
-	// 互联网通道路由列表
+	// 互联网通道路由列表。
 	Routes []*DirectConnectTunnelRoute `json:"Routes,omitnil,omitempty" name:"Routes"`
 
-	// 记录总数
+	// 路由总数量。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1864,7 +1856,6 @@ type DirectConnectTunnelRoute struct {
 	NextHop *string `json:"NextHop,omitnil,omitempty" name:"NextHop"`
 
 	// 路由更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 是否配置在通道上

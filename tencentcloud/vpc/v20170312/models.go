@@ -22674,11 +22674,9 @@ func (r *InquirePriceCreateDirectConnectGatewayRequest) FromJsonString(s string)
 // Predefined struct for user
 type InquirePriceCreateDirectConnectGatewayResponseParams struct {
 	// 专线网关标准接入费用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCost *int64 `json:"TotalCost,omitnil,omitempty" name:"TotalCost"`
 
 	// 专线网关真实接入费用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealTotalCost *int64 `json:"RealTotalCost,omitnil,omitempty" name:"RealTotalCost"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

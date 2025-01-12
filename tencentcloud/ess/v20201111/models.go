@@ -2477,7 +2477,7 @@ type CreateDocumentResponseParams struct {
 	// 合同预览链接URL。
 	// 
 	// 注: `1.如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL`
-	// `2.当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容`
+	// `2.当使用的模板中存在动态表格控件时，预览结果中没有动态表格的填写内容,完整的预览链接需通过[合同文档合成完成回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign/#%E4%B9%9D-%E5%90%88%E5%90%8C%E6%96%87%E6%A1%A3%E5%90%88%E6%88%90%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83)获取。
 	PreviewFileUrl *string `json:"PreviewFileUrl,omitnil,omitempty" name:"PreviewFileUrl"`
 
 	// 签署方信息，如角色ID、角色名称等

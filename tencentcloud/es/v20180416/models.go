@@ -4194,6 +4194,10 @@ type IndexMetaField struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexSettingsField *IndexSettingsField `json:"IndexSettingsField,omitnil,omitempty" name:"IndexSettingsField"`
 
+	// 索引别名字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexAliasesField []*string `json:"IndexAliasesField,omitnil,omitempty" name:"IndexAliasesField"`
+
 	// 索引所属集群APP ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`

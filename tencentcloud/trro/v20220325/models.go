@@ -1274,35 +1274,27 @@ func (r *DescribeSessionStatisticsResponse) FromJsonString(s string) error {
 
 type Device struct {
 	// 设备ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 设备名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 已经绑定license数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LicenseCount *int64 `json:"LicenseCount,omitnil,omitempty" name:"LicenseCount"`
 
 	// 剩余天数：天
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemainDay *int64 `json:"RemainDay,omitnil,omitempty" name:"RemainDay"`
 
 	// 过期时间：s
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 服务时长：s
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *string `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 已经绑定licenseId列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LicenseIds []*string `json:"LicenseIds,omitnil,omitempty" name:"LicenseIds"`
 
 	// 每月license的限定时长
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonthlyRemainTime *int64 `json:"MonthlyRemainTime,omitnil,omitempty" name:"MonthlyRemainTime"`
 
 	// 月封顶时长（分钟)
@@ -2001,15 +1993,12 @@ type SessionDeviceDetail struct {
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// sdk版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ver *string `json:"Ver,omitnil,omitempty" name:"Ver"`
 
 	// 模式(p2p/server)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SdkMode *string `json:"SdkMode,omitnil,omitempty" name:"SdkMode"`
 
 	// 解码耗时，单位：ms
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DecodeCost []*int64 `json:"DecodeCost,omitnil,omitempty" name:"DecodeCost"`
 
 	// 【已废弃，使用RenderCost】
@@ -2019,75 +2008,57 @@ type SessionDeviceDetail struct {
 	RenderConst []*int64 `json:"RenderConst,omitnil,omitempty" name:"RenderConst"`
 
 	// 卡顿k100
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	K100 []*float64 `json:"K100,omitnil,omitempty" name:"K100"`
 
 	// 卡顿k150
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	K150 []*float64 `json:"K150,omitnil,omitempty" name:"K150"`
 
 	// nack请求数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NACK []*int64 `json:"NACK,omitnil,omitempty" name:"NACK"`
 
 	// 服务端调控码率,单位：kbps
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BitRateEstimate []*int64 `json:"BitRateEstimate,omitnil,omitempty" name:"BitRateEstimate"`
 
 	// 宽度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
 
 	// 高度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 
 	// 编码耗时，单位：ms
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncodeCost []*int64 `json:"EncodeCost,omitnil,omitempty" name:"EncodeCost"`
 
 	// 采集耗时，单位：ms
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptureCost []*int64 `json:"CaptureCost,omitnil,omitempty" name:"CaptureCost"`
 
 	// 渲染耗时，单位：ms
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenderCost []*int64 `json:"RenderCost,omitnil,omitempty" name:"RenderCost"`
 
 	// 配置宽度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigWidth *int64 `json:"ConfigWidth,omitnil,omitempty" name:"ConfigWidth"`
 
 	// 配置高度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigHeight *int64 `json:"ConfigHeight,omitnil,omitempty" name:"ConfigHeight"`
 
 	// 平均帧间隔
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameDelta []*int64 `json:"FrameDelta,omitnil,omitempty" name:"FrameDelta"`
 
 	// 最大帧间隔
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxFrameDelta []*int64 `json:"MaxFrameDelta,omitnil,omitempty" name:"MaxFrameDelta"`
 
 	// 总码率评估,单位：kbps
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalBitrateEstimate []*int64 `json:"TotalBitrateEstimate,omitnil,omitempty" name:"TotalBitrateEstimate"`
 
 	// 帧间隔大于100ms的卡顿时长
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Lag100Duration []*int64 `json:"Lag100Duration,omitnil,omitempty" name:"Lag100Duration"`
 
 	// 帧间隔大于150ms的卡顿时长
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Lag150Duration []*int64 `json:"Lag150Duration,omitnil,omitempty" name:"Lag150Duration"`
 
 	// 是否开启多网：0 单网，1 多网
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MultiMode *int64 `json:"MultiMode,omitnil,omitempty" name:"MultiMode"`
 
 	// 多网卡信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MultiNet []*MultiNet `json:"MultiNet,omitnil,omitempty" name:"MultiNet"`
 }
 

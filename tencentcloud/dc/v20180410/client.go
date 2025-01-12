@@ -915,7 +915,7 @@ func NewDescribePublicDirectConnectTunnelRoutesResponse() (response *DescribePub
 }
 
 // DescribePublicDirectConnectTunnelRoutes
-// 本接口（DescribePublicDirectConnectTunnelRoutes）用于查询互联网通道路由列表
+// 查询互联网通道路由列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -927,7 +927,7 @@ func (c *Client) DescribePublicDirectConnectTunnelRoutes(request *DescribePublic
 }
 
 // DescribePublicDirectConnectTunnelRoutes
-// 本接口（DescribePublicDirectConnectTunnelRoutes）用于查询互联网通道路由列表
+// 查询互联网通道路由列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
