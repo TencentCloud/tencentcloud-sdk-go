@@ -1769,8 +1769,8 @@ type ChannelCreateEmbedWebUrlRequestParams struct {
 	// <li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li>
 	// <li>MODIFY_TEMPLATE：生成修改模板的嵌入页面</li>
 	// <li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li>
-	// <li>PREVIEW_FLOW：生成预览合同文档的嵌入页面（支持移动端）</li>
-	// <li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面（仅支持PC端）</li>
+	// <li>PREVIEW_FLOW：生成预览合同文档的嵌入页面（H5链接，支持移动端的浏览器中打开）</li>
+	// <li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面（仅支持PC的浏览器中打开）</li>
 	// <li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li>
 	// <li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
 	// <li>EXTEND_SERVICE：生成扩展服务的嵌入页面</li>
@@ -1838,8 +1838,8 @@ type ChannelCreateEmbedWebUrlRequest struct {
 	// <li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li>
 	// <li>MODIFY_TEMPLATE：生成修改模板的嵌入页面</li>
 	// <li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li>
-	// <li>PREVIEW_FLOW：生成预览合同文档的嵌入页面（支持移动端）</li>
-	// <li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面（仅支持PC端）</li>
+	// <li>PREVIEW_FLOW：生成预览合同文档的嵌入页面（H5链接，支持移动端的浏览器中打开）</li>
+	// <li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面（仅支持PC的浏览器中打开）</li>
 	// <li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li>
 	// <li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
 	// <li>EXTEND_SERVICE：生成扩展服务的嵌入页面</li>
@@ -5052,11 +5052,9 @@ func (r *ChannelDescribeEmployeesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelDescribeEmployeesResponseParams struct {
 	// 员工信息列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Employees []*Staff `json:"Employees,omitnil,omitempty" name:"Employees"`
 
 	// 指定分页返回第几页的数据。页码从 0 开始，即首页为 0，最大20000。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 指定分页每页返回的数据条数，单页最大支持 20。
@@ -5415,7 +5413,6 @@ type ChannelDescribeRolesResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 查询的角色信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelRoles []*ChannelRole `json:"ChannelRoles,omitnil,omitempty" name:"ChannelRoles"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5507,11 +5504,9 @@ func (r *ChannelDescribeSignFaceVideoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChannelDescribeSignFaceVideoResponseParams struct {
 	// 核身视频结果。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoData *DetectInfoVideoData `json:"VideoData,omitnil,omitempty" name:"VideoData"`
 
 	// 意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntentionQuestionResult *IntentionQuestionResult `json:"IntentionQuestionResult,omitnil,omitempty" name:"IntentionQuestionResult"`
 
 	// 意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
@@ -5816,7 +5811,6 @@ type ChannelGetTaskResultApiResponseParams struct {
 
 	// 预览文件Url，有效期30分钟 
 	// 当前字段返回为空，发起的时候，将ResourceId 放入发起即可
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: PreviewUrl is deprecated.
 	PreviewUrl *string `json:"PreviewUrl,omitnil,omitempty" name:"PreviewUrl"`
@@ -7014,18 +7008,16 @@ func (r *CreateChannelFlowEvidenceReportRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type CreateChannelFlowEvidenceReportResponseParams struct {
 	// 出证报告 ID，可用于<a href="https://qian.tencent.com/developers/partnerApis/certificate/DescribeChannelFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>查询出证任务结果和出证PDF的下载URL
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportId *string `json:"ReportId,omitnil,omitempty" name:"ReportId"`
 
 	// 出证任务执行的状态, 状态含义如下：
 	// 
 	// <ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
 	// <li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
-	// <li>**EvidenceStatusFailed** ： 出征任务执行失败</li></ul>
+	// <li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 废除，字段无效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportUrl *string `json:"ReportUrl,omitnil,omitempty" name:"ReportUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8231,9 +8223,8 @@ type CreateOrganizationAuthFileRequestParams struct {
 	OrganizationCommonInfo *OrganizationCommonInfo `json:"OrganizationCommonInfo,omitnil,omitempty" name:"OrganizationCommonInfo"`
 
 	// 授权书类型：
-	// - 0: 企业认证超管授权书
-	// - 1: 超管变更授权书
-	// - 2: 企业注销授权书
+	// 
+	// <ul><li>0: 企业认证超管授权书</li><li>1: 超管变更授权书</li><li>2: 企业注销授权书</li></ul>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -8255,9 +8246,8 @@ type CreateOrganizationAuthFileRequest struct {
 	OrganizationCommonInfo *OrganizationCommonInfo `json:"OrganizationCommonInfo,omitnil,omitempty" name:"OrganizationCommonInfo"`
 
 	// 授权书类型：
-	// - 0: 企业认证超管授权书
-	// - 1: 超管变更授权书
-	// - 2: 企业注销授权书
+	// 
+	// <ul><li>0: 企业认证超管授权书</li><li>1: 超管变更授权书</li><li>2: 企业注销授权书</li></ul>
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -8285,7 +8275,6 @@ func (r *CreateOrganizationAuthFileRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateOrganizationAuthFileResponseParams struct {
 	// 授权书链接，有效期5分钟。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8442,7 +8431,6 @@ func (r *CreatePartnerAutoSignAuthUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreatePartnerAutoSignAuthUrlResponseParams struct {
 	// 授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
@@ -8537,19 +8525,15 @@ type CreatePersonAuthCertificateImageResponseParams struct {
 	AuthCertUrl *string `json:"AuthCertUrl,omitnil,omitempty" name:"AuthCertUrl"`
 
 	// 个人用户认证证书的编号, 为20位数字组成的字符串,  由腾讯电子签下发此编号 。该编号会合成到个人用户证书证明图片。注: `个人用户认证证书的编号和证明图片绑定, 获取新的证明图片编号会变动`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageCertId *string `json:"ImageCertId,omitnil,omitempty" name:"ImageCertId"`
 
 	// 在数字证书申请过程中，系统会自动生成一个独一无二的序列号。请注意，当证书到期并自动续期时，该序列号将会发生变化。值得注意的是，此序列号不会被合成至个人用户证书的证明图片中。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SerialNumber *string `json:"SerialNumber,omitnil,omitempty" name:"SerialNumber"`
 
 	// CA证书颁发时间，格式为Unix标准时间戳（秒）   该时间格式化后会合成到个人用户证书证明图片
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidFrom *uint64 `json:"ValidFrom,omitnil,omitempty" name:"ValidFrom"`
 
 	// CA证书有效截止时间，格式为Unix标准时间戳（秒）该时间格式化后会合成到个人用户证书证明图片
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidTo *uint64 `json:"ValidTo,omitnil,omitempty" name:"ValidTo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8732,7 +8716,6 @@ type CreateSealByImageResponseParams struct {
 	// 电子印章预览链接地址，地址默认失效时间为24小时。
 	// 
 	// 注:`图片上传生成的电子印章无预览链接地址`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9404,14 +9387,13 @@ func (r *DescribeChannelFlowEvidenceReportRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeChannelFlowEvidenceReportResponseParams struct {
 	// 出证报告PDF的下载 URL，有效期为5分钟，超过有效期后将无法再下载。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportUrl *string `json:"ReportUrl,omitnil,omitempty" name:"ReportUrl"`
 
 	// 出证任务执行的状态, 状态含义如下：
 	// 
 	// <ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
 	// <li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
-	// <li>**EvidenceStatusFailed** ： 出征任务执行失败</li></ul>
+	// <li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9733,7 +9715,6 @@ func (r *DescribeExtendedServiceAuthDetailRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeExtendedServiceAuthDetailResponseParams struct {
 	// 服务授权的信息列表，根据查询类型返回特定扩展服务的开通和授权状况。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthInfoDetail *AuthInfoDetail `json:"AuthInfoDetail,omitnil,omitempty" name:"AuthInfoDetail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9807,7 +9788,6 @@ func (r *DescribeExtendedServiceAuthInfoRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeExtendedServiceAuthInfoResponseParams struct {
 	// 服务开通和授权的信息列表，根据查询类型返回所有支持的扩展服务开通和授权状况，或者返回特定扩展服务的开通和授权状况。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthInfo []*ExtentServiceAuthInfo `json:"AuthInfo,omitnil,omitempty" name:"AuthInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9917,15 +9897,12 @@ type DescribeFlowDetailInfoResponseParams struct {
 
 	// 合同流程的详细信息。
 	// 如果查询的是合同组信息，则返回的是组内所有子合同流程的详细信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowInfo []*FlowDetailInfo `json:"FlowInfo,omitnil,omitempty" name:"FlowInfo"`
 
 	// 合同组ID，只有在查询合同组信息时才会返回。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
 	// 合同组名称，只有在查询合同组信息时才会返回。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowGroupName *string `json:"FlowGroupName,omitnil,omitempty" name:"FlowGroupName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10384,7 +10361,6 @@ type DescribeUsageResponseParams struct {
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 用量明细
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Details []*UsageDetail `json:"Details,omitnil,omitempty" name:"Details"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10999,7 +10975,7 @@ type FlowFileInfo struct {
 	// Deprecated: CallbackUrl is deprecated.
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
-	// 第三方应用的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+	// 第三方应用的业务信息，最大长度1000个字符。
 	CustomerData *string `json:"CustomerData,omitnil,omitempty" name:"CustomerData"`
 
 	// 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署
@@ -11809,11 +11785,9 @@ func (r *OperateChannelTemplateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type OperateChannelTemplateResponseParams struct {
 	// 第三方应用平台的应用ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 合同模板ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 描述模板可见性更改的结果。
@@ -11822,21 +11796,17 @@ type OperateChannelTemplateResponseParams struct {
 	// <li>part-success: 部分成功,失败的会在FailMessageList中展示</li>
 	// <li>fail:全部失败, 失败的会在FailMessageList中展示</li>
 	// </ul>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateResult *string `json:"OperateResult,omitnil,omitempty" name:"OperateResult"`
 
 	// 模板可见范围:
 	// **all**: 所有本第三方应用合作企业可见
 	// **part**: 指定的本第三方应用合作企业
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthTag *string `json:"AuthTag,omitnil,omitempty" name:"AuthTag"`
 
 	// 第三方平台子客企业标识列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyOrganizationOpenIds []*string `json:"ProxyOrganizationOpenIds,omitnil,omitempty" name:"ProxyOrganizationOpenIds"`
 
 	// 操作失败信息数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailMessageList []*AuthFailMessage `json:"FailMessageList,omitnil,omitempty" name:"FailMessageList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12679,11 +12649,9 @@ type SyncProxyOrganizationOperatorsResponseParams struct {
 	// 
 	// <ul><li> **1** :全部成功</li>
 	// <li> **2** :部分成功</li></ul>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 同步失败员工ID及其失败原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedList []*SyncFailReason `json:"FailedList,omitnil,omitempty" name:"FailedList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

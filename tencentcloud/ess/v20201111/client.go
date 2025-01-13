@@ -881,7 +881,7 @@ func NewCreateBatchOrganizationRegistrationTasksResponse() (response *CreateBatc
 //
 // 
 //
-// 1. **此接口需要购买单独的实名套餐包方可调用，如有需求请联系对接人员评估**
+// 1. 此接口需要 <font  color="red"><b>购买单独的实名套餐包</b></font>方可调用，如有需求请联系对接人员评估
 //
 //   
 //
@@ -945,7 +945,7 @@ func (c *Client) CreateBatchOrganizationRegistrationTasks(request *CreateBatchOr
 //
 // 
 //
-// 1. **此接口需要购买单独的实名套餐包方可调用，如有需求请联系对接人员评估**
+// 1. 此接口需要 <font  color="red"><b>购买单独的实名套餐包</b></font>方可调用，如有需求请联系对接人员评估
 //
 //   
 //

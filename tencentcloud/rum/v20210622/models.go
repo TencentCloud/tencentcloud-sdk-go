@@ -6328,7 +6328,7 @@ type ScoreInfo struct {
 	// 请求次数
 	ApiDuration *string `json:"ApiDuration,omitnil,omitempty" name:"ApiDuration"`
 
-	// 分数
+	// 项目总分
 	Score *string `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// error
@@ -6346,6 +6346,24 @@ type ScoreInfo struct {
 	// 时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 页面性能评分
+	PagePerformanceScore *string `json:"PagePerformanceScore,omitnil,omitempty" name:"PagePerformanceScore"`
+
+	// js错误评分
+	JsErrorScore *string `json:"JsErrorScore,omitnil,omitempty" name:"JsErrorScore"`
+
+	// API性能评分
+	ApiPerformanceScore *string `json:"ApiPerformanceScore,omitnil,omitempty" name:"ApiPerformanceScore"`
+
+	// API可用性评分
+	ApiAvaliableScore *string `json:"ApiAvaliableScore,omitnil,omitempty" name:"ApiAvaliableScore"`
+
+	// 静态资源性能评分
+	StaticPerformanceScore *string `json:"StaticPerformanceScore,omitnil,omitempty" name:"StaticPerformanceScore"`
+
+	// 静态资源可用性评分
+	StaticAvaliableScore *string `json:"StaticAvaliableScore,omitnil,omitempty" name:"StaticAvaliableScore"`
 }
 
 // Predefined struct for user

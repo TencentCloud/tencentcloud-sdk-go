@@ -230,49 +230,38 @@ type AggregationLegend struct {
 
 type AlertChannel struct {
 	// 通知模板ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoticeId *string `json:"NoticeId,omitnil,omitempty" name:"NoticeId"`
 
 	// AMP consumer ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AMPConsumerId *string `json:"AMPConsumerId,omitnil,omitempty" name:"AMPConsumerId"`
 }
 
 type AlertChannelRecord struct {
 	// Notice ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoticeId *string `json:"NoticeId,omitnil,omitempty" name:"NoticeId"`
 
 	// Consumer ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AMPConsumerId *string `json:"AMPConsumerId,omitnil,omitempty" name:"AMPConsumerId"`
 
 	// 项目 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// App ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 主账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 子账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
 }
 
@@ -282,87 +271,67 @@ type AlertRecord struct {
 	AlertRecordId *string `json:"AlertRecordId,omitnil,omitempty" name:"AlertRecordId"`
 
 	// 项目 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 场景 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScenarioId *string `json:"ScenarioId,omitnil,omitempty" name:"ScenarioId"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *AlertRecordStatus `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 任务 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// App ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 主账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 子账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
 
 	// 场景名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScenarioName *string `json:"ScenarioName,omitnil,omitempty" name:"ScenarioName"`
 
 	// 告警对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
 
 	// 告警规则 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobSLAId *string `json:"JobSLAId,omitnil,omitempty" name:"JobSLAId"`
 
 	// 告警规则描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobSLADescription *string `json:"JobSLADescription,omitnil,omitempty" name:"JobSLADescription"`
 }
 
 type AlertRecordStatus struct {
 	// 停止压测任务成功与否
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AbortJob *uint64 `json:"AbortJob,omitnil,omitempty" name:"AbortJob"`
 
 	// 发送告警通知成功与否
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SendNotice *uint64 `json:"SendNotice,omitnil,omitempty" name:"SendNotice"`
 }
 
 type Attributes struct {
 	// 采用请求返回码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 采样请求结果码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 采样请求API
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
 
 	// 采样请求调用方法
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
 	// 采样请求延时时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *string `json:"Duration,omitnil,omitempty" name:"Duration"`
 }
 
@@ -389,19 +358,15 @@ type Concurrency struct {
 	Stages []*Stage `json:"Stages,omitnil,omitempty" name:"Stages"`
 
 	// 运行次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IterationCount *int64 `json:"IterationCount,omitnil,omitempty" name:"IterationCount"`
 
 	// 最大RPS
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxRequestsPerSecond *int64 `json:"MaxRequestsPerSecond,omitnil,omitempty" name:"MaxRequestsPerSecond"`
 
 	// 优雅终止任务的等待时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GracefulStopSeconds *int64 `json:"GracefulStopSeconds,omitnil,omitempty" name:"GracefulStopSeconds"`
 
 	// 资源数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resources *int64 `json:"Resources,omitnil,omitempty" name:"Resources"`
 }
 
@@ -1103,23 +1068,18 @@ type CronJob struct {
 	CronJobId *string `json:"CronJobId,omitnil,omitempty" name:"CronJobId"`
 
 	// 定时任务名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 项目ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 场景ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScenarioId *string `json:"ScenarioId,omitnil,omitempty" name:"ScenarioId"`
 
 	// 场景名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScenarioName *string `json:"ScenarioName,omitnil,omitempty" name:"ScenarioName"`
 
 	// cron 表达式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CronExpression *string `json:"CronExpression,omitnil,omitempty" name:"CronExpression"`
 
 	// 结束时间
@@ -1127,15 +1087,12 @@ type CronJob struct {
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 中止原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AbortReason *int64 `json:"AbortReason,omitnil,omitempty" name:"AbortReason"`
 
 	// 定时任务状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// Notice ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoticeId *string `json:"NoticeId,omitnil,omitempty" name:"NoticeId"`
 
 	// 创建时间
@@ -1147,27 +1104,21 @@ type CronJob struct {
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 执行频率类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrequencyType *int64 `json:"FrequencyType,omitnil,omitempty" name:"FrequencyType"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
 	// tom
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobOwner *string `json:"JobOwner,omitnil,omitempty" name:"JobOwner"`
 
 	// App ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 主账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 子账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
 }
 
@@ -1193,7 +1144,6 @@ type CustomSample struct {
 	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
 
 	// 指标序列名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
@@ -1205,7 +1155,6 @@ type CustomSampleMatrix struct {
 	Aggregation *string `json:"Aggregation,omitnil,omitempty" name:"Aggregation"`
 
 	// 指标单位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
 
 	// 指标序列数组
@@ -1731,7 +1680,6 @@ type DescribeAlertChannelsResponseParams struct {
 	AlertChannelSet []*AlertChannelRecord `json:"AlertChannelSet,omitnil,omitempty" name:"AlertChannelSet"`
 
 	// 告警通知接收组数目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1842,7 +1790,6 @@ type DescribeAlertRecordsResponseParams struct {
 	AlertRecordSet []*AlertRecord `json:"AlertRecordSet,omitnil,omitempty" name:"AlertRecordSet"`
 
 	// 告警历史记录的总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2305,7 +2252,6 @@ type DescribeFilesResponseParams struct {
 	FileSet []*File `json:"FileSet,omitnil,omitempty" name:"FileSet"`
 
 	// 文件总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2437,7 +2383,6 @@ type DescribeJobsResponseParams struct {
 	JobSet []*Job `json:"JobSet,omitnil,omitempty" name:"JobSet"`
 
 	// 任务数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2723,7 +2668,6 @@ func (r *DescribeNormalLogsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeNormalLogsResponseParams struct {
 	// 日志上下文，加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容。过期时间1小时
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
 	// 日志数组
@@ -3205,7 +3149,6 @@ type DescribeSampleLogsResponseParams struct {
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 日志上下文，加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容。过期时间1小时
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
 	// 采样日志数组
@@ -3778,27 +3721,21 @@ type DomainNameConfig struct {
 
 type ErrorSummary struct {
 	// 状态码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 结果码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 错误出现次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 错误率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rate *float64 `json:"Rate,omitnil,omitempty" name:"Rate"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 请求协议类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Proto *string `json:"Proto,omitnil,omitempty" name:"Proto"`
 }
 
@@ -3822,7 +3759,6 @@ type File struct {
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 文件行数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LineCount *int64 `json:"LineCount,omitnil,omitempty" name:"LineCount"`
 
 	// 头部数据行
@@ -3834,7 +3770,6 @@ type File struct {
 	TailLines []*string `json:"TailLines,omitnil,omitempty" name:"TailLines"`
 
 	// 首行是否为参数名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeaderInFile *bool `json:"HeaderInFile,omitnil,omitempty" name:"HeaderInFile"`
 
 	// 参数名数组
@@ -3850,7 +3785,6 @@ type File struct {
 	ScenarioSet []*Scenario `json:"ScenarioSet,omitnil,omitempty" name:"ScenarioSet"`
 
 	// 文件状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 创建时间
@@ -3858,37 +3792,29 @@ type File struct {
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 项目 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 此字段不再使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppID *int64 `json:"AppID,omitnil,omitempty" name:"AppID"`
 
 	// 用户主账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 用户子账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
 
 	// 用户账号的 App ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 }
 
 type FileInfo struct {
 	// 文件名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 文件大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
 
 	// 文件类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 更新时间
@@ -3896,7 +3822,6 @@ type FileInfo struct {
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 文件 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 }
 
@@ -4010,7 +3935,6 @@ type HostAlias struct {
 	HostNames []*string `json:"HostNames,omitnil,omitempty" name:"HostNames"`
 
 	// 需绑定的 IP 地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IP *string `json:"IP,omitnil,omitempty" name:"IP"`
 }
 
@@ -4037,11 +3961,9 @@ type Job struct {
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 任务的场景ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScenarioId *string `json:"ScenarioId,omitnil,omitempty" name:"ScenarioId"`
 
 	// 任务的施压配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Load *Load `json:"Load,omitnil,omitempty" name:"Load"`
 
 	// 此字段不再使用
@@ -4059,7 +3981,6 @@ type Job struct {
 	// 任务的运行状态, JobUnknown: 0,JobCreated:1,JobPending:2, JobPreparing:3,JobSelectClustering:4,JobCreateTasking:5,JobSyncTasking:6
 	// JobRunning:11,JobFinished:12,JobPrepareException:13,JobFinishException:14,JobAborting:15,JobAborted:16,JobAbortException:17,JobDeleted:18,
 	// JobSelectClusterException:19,JobCreateTaskException:20,JobSyncTaskException:21
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 任务的开始时间
@@ -4071,19 +3992,15 @@ type Job struct {
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 任务的最大VU数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxVirtualUserCount *int64 `json:"MaxVirtualUserCount,omitnil,omitempty" name:"MaxVirtualUserCount"`
 
 	// 任务的备注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
 	// 错误率百分比
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorRate *float64 `json:"ErrorRate,omitnil,omitempty" name:"ErrorRate"`
 
 	// 任务发起人
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobOwner *string `json:"JobOwner,omitnil,omitempty" name:"JobOwner"`
 
 	// 此字段不再使用
@@ -4091,35 +4008,27 @@ type Job struct {
 	LoadSources *LoadSource `json:"LoadSources,omitnil,omitempty" name:"LoadSources"`
 
 	// 任务时长
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 最大每秒请求数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxRequestsPerSecond *int64 `json:"MaxRequestsPerSecond,omitnil,omitempty" name:"MaxRequestsPerSecond"`
 
 	// 总请求数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RequestTotal *float64 `json:"RequestTotal,omitnil,omitempty" name:"RequestTotal"`
 
 	// 平均每秒请求数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RequestsPerSecond *float64 `json:"RequestsPerSecond,omitnil,omitempty" name:"RequestsPerSecond"`
 
 	// 平均响应时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResponseTimeAverage *float64 `json:"ResponseTimeAverage,omitnil,omitempty" name:"ResponseTimeAverage"`
 
 	// 响应时间第99百分位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResponseTimeP99 *float64 `json:"ResponseTimeP99,omitnil,omitempty" name:"ResponseTimeP99"`
 
 	// 响应时间第95百分位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResponseTimeP95 *float64 `json:"ResponseTimeP95,omitnil,omitempty" name:"ResponseTimeP95"`
 
 	// 响应时间第90百分位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResponseTimeP90 *float64 `json:"ResponseTimeP90,omitnil,omitempty" name:"ResponseTimeP90"`
 
 	// 此字段不再使用
@@ -4127,11 +4036,9 @@ type Job struct {
 	Scripts []*string `json:"Scripts,omitnil,omitempty" name:"Scripts"`
 
 	// 最大响应时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResponseTimeMax *float64 `json:"ResponseTimeMax,omitnil,omitempty" name:"ResponseTimeMax"`
 
 	// 最小响应时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResponseTimeMin *float64 `json:"ResponseTimeMin,omitnil,omitempty" name:"ResponseTimeMin"`
 
 	// 发压host信息
@@ -4155,23 +4062,18 @@ type Job struct {
 	Plugins []*FileInfo `json:"Plugins,omitnil,omitempty" name:"Plugins"`
 
 	// 定时任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CronId *string `json:"CronId,omitnil,omitempty" name:"CronId"`
 
 	// 场景类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 域名绑定配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainNameConfig *DomainNameConfig `json:"DomainNameConfig,omitnil,omitempty" name:"DomainNameConfig"`
 
 	// false
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Debug *bool `json:"Debug,omitnil,omitempty" name:"Debug"`
 
 	// 中断原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AbortReason *int64 `json:"AbortReason,omitnil,omitempty" name:"AbortReason"`
 
 	// 任务的创建时间
@@ -4179,7 +4081,6 @@ type Job struct {
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 项目ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 通知事件回调
@@ -4187,31 +4088,24 @@ type Job struct {
 	NotificationHooks []*NotificationHook `json:"NotificationHooks,omitnil,omitempty" name:"NotificationHooks"`
 
 	// 每秒接收字节数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkReceiveRate *float64 `json:"NetworkReceiveRate,omitnil,omitempty" name:"NetworkReceiveRate"`
 
 	// 每秒发送字节数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkSendRate *float64 `json:"NetworkSendRate,omitnil,omitempty" name:"NetworkSendRate"`
 
 	// 任务状态描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// test-project
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
 	// test-scenario
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScenarioName *string `json:"ScenarioName,omitnil,omitempty" name:"ScenarioName"`
 
 	// 付费类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// job VUM用量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Usage *int64 `json:"Usage,omitnil,omitempty" name:"Usage"`
 }
 
@@ -4233,7 +4127,6 @@ type LabelWithValues struct {
 
 type Load struct {
 	// 施压配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadSpec *LoadSpec `json:"LoadSpec,omitnil,omitempty" name:"LoadSpec"`
 
 	// 压力来源
@@ -4247,15 +4140,12 @@ type Load struct {
 
 type LoadSource struct {
 	// 发压host的IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IP *string `json:"IP,omitnil,omitempty" name:"IP"`
 
 	// 发压host所在的pod
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
 
 	// 所属地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
@@ -4281,7 +4171,6 @@ type MetricInfo struct {
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// 指标描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 指标类型
@@ -4307,15 +4196,12 @@ type MetricLabelWithValues struct {
 
 type NormalLog struct {
 	// 毫秒时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timestamp *string `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
 	// 日志级别
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SeverityText *string `json:"SeverityText,omitnil,omitempty" name:"SeverityText"`
 
 	// 日志输出内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Body *string `json:"Body,omitnil,omitempty" name:"Body"`
 }
 
@@ -4333,7 +4219,6 @@ type NotificationHook struct {
 	Events []*string `json:"Events,omitnil,omitempty" name:"Events"`
 
 	// 回调 URL
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
 }
 
@@ -4345,7 +4230,6 @@ type Project struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 项目描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 标签数组
@@ -4373,15 +4257,12 @@ type Project struct {
 
 type ProtocolInfo struct {
 	// 协议详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 文件大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
 
 	// 文件类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 更新时间
@@ -4389,7 +4270,6 @@ type ProtocolInfo struct {
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 文件 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 }
 
@@ -4470,31 +4350,24 @@ type RequestSummary struct {
 
 type RequestsPerSecond struct {
 	// 最大RPS
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxRequestsPerSecond *int64 `json:"MaxRequestsPerSecond,omitnil,omitempty" name:"MaxRequestsPerSecond"`
 
 	// 施压时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DurationSeconds *int64 `json:"DurationSeconds,omitnil,omitempty" name:"DurationSeconds"`
 
 	// deprecated
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetVirtualUsers *int64 `json:"TargetVirtualUsers,omitnil,omitempty" name:"TargetVirtualUsers"`
 
 	// 资源数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resources *int64 `json:"Resources,omitnil,omitempty" name:"Resources"`
 
 	// 起始RPS
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartRequestsPerSecond *int64 `json:"StartRequestsPerSecond,omitnil,omitempty" name:"StartRequestsPerSecond"`
 
 	// 目标RPS，入参无效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetRequestsPerSecond *int64 `json:"TargetRequestsPerSecond,omitnil,omitempty" name:"TargetRequestsPerSecond"`
 
 	// 优雅关停的等待时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GracefulStopSeconds *int64 `json:"GracefulStopSeconds,omitnil,omitempty" name:"GracefulStopSeconds"`
 }
 
@@ -4561,11 +4434,9 @@ func (r *RestartCronJobsResponse) FromJsonString(s string) error {
 
 type SLALabel struct {
 	// 标签名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelName *string `json:"LabelName,omitnil,omitempty" name:"LabelName"`
 
 	// 标签值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelValue *string `json:"LabelValue,omitnil,omitempty" name:"LabelValue"`
 }
 
@@ -4581,19 +4452,15 @@ type SLAPolicy struct {
 
 type SLARule struct {
 	// 压测指标
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
 
 	// 压测指标聚合方法
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Aggregation *string `json:"Aggregation,omitnil,omitempty" name:"Aggregation"`
 
 	// 压测指标条件判断符号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
 
 	// 阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *float64 `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 标签
@@ -4601,25 +4468,20 @@ type SLARule struct {
 	LabelFilter []*SLALabel `json:"LabelFilter,omitnil,omitempty" name:"LabelFilter"`
 
 	// 是否停止压测任务
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AbortFlag *bool `json:"AbortFlag,omitnil,omitempty" name:"AbortFlag"`
 
 	// 持续时长
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	For *string `json:"For,omitnil,omitempty" name:"For"`
 }
 
 type SampleLog struct {
 	// 日志毫秒时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timestamp *string `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
 	// 采样日志属性
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Attributes *Attributes `json:"Attributes,omitnil,omitempty" name:"Attributes"`
 
 	// har格式的采样请求
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Body *string `json:"Body,omitnil,omitempty" name:"Body"`
 }
 
@@ -4640,7 +4502,6 @@ type SampleStream struct {
 	Values []*SamplePair `json:"Values,omitnil,omitempty" name:"Values"`
 
 	// 指标序列名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
@@ -4652,23 +4513,18 @@ type Scenario struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 场景描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 场景类型，如pts-http, pts-js, pts-trpc, pts-jmeter
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 场景状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 施压配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Load *Load `json:"Load,omitnil,omitempty" name:"Load"`
 
 	// deprecated
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncodedScripts *string `json:"EncodedScripts,omitnil,omitempty" name:"EncodedScripts"`
 
 	// deprecated
@@ -4684,11 +4540,9 @@ type Scenario struct {
 	Datasets []*TestData `json:"Datasets,omitnil,omitempty" name:"Datasets"`
 
 	// SLA规则的ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SLAId *string `json:"SLAId,omitnil,omitempty" name:"SLAId"`
 
 	// Cron Job规则的ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CronId *string `json:"CronId,omitnil,omitempty" name:"CronId"`
 
 	// 场景创建时间
@@ -4698,19 +4552,15 @@ type Scenario struct {
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 项目ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// App ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 用户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 子用户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
 
 	// 测试脚本信息
@@ -4726,7 +4576,6 @@ type Scenario struct {
 	RequestFiles []*FileInfo `json:"RequestFiles,omitnil,omitempty" name:"RequestFiles"`
 
 	// SLA 策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SLAPolicy *SLAPolicy `json:"SLAPolicy,omitnil,omitempty" name:"SLAPolicy"`
 
 	// 扩展包信息
@@ -4734,7 +4583,6 @@ type Scenario struct {
 	Plugins []*FileInfo `json:"Plugins,omitnil,omitempty" name:"Plugins"`
 
 	// 域名解析配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainNameConfig *DomainNameConfig `json:"DomainNameConfig,omitnil,omitempty" name:"DomainNameConfig"`
 
 	// 通知事件回调
@@ -4742,11 +4590,9 @@ type Scenario struct {
 	NotificationHooks []*NotificationHook `json:"NotificationHooks,omitnil,omitempty" name:"NotificationHooks"`
 
 	// 创建人员
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
 
 	// 场景所在的项目的名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 }
 
@@ -4766,7 +4612,6 @@ type ScenarioRelatedJobsParams struct {
 
 type ScenarioWithJobs struct {
 	// scecario结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scenario *Scenario `json:"Scenario,omitnil,omitempty" name:"Scenario"`
 
 	// job结果
@@ -4776,15 +4621,12 @@ type ScenarioWithJobs struct {
 
 type ScriptInfo struct {
 	// 文件名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 文件大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
 
 	// 文件类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 更新时间
@@ -4792,19 +4634,15 @@ type ScriptInfo struct {
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// base64编码后的文件内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncodedContent *string `json:"EncodedContent,omitnil,omitempty" name:"EncodedContent"`
 
 	// base64编码后的har结构体
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncodedHttpArchive *string `json:"EncodedHttpArchive,omitnil,omitempty" name:"EncodedHttpArchive"`
 
 	// 脚本权重，范围 1-100
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadWeight *int64 `json:"LoadWeight,omitnil,omitempty" name:"LoadWeight"`
 
 	// 文件 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 }
 
@@ -4821,11 +4659,9 @@ type ScriptOrigin struct {
 
 type Stage struct {
 	// 施压时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DurationSeconds *int64 `json:"DurationSeconds,omitnil,omitempty" name:"DurationSeconds"`
 
 	// 虚拟用户数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetVirtualUsers *int64 `json:"TargetVirtualUsers,omitnil,omitempty" name:"TargetVirtualUsers"`
 }
 
@@ -4916,25 +4752,20 @@ func (r *StartJobResponse) FromJsonString(s string) error {
 
 type TagSpec struct {
 	// 标签键
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 标签值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 type TestData struct {
 	// 测试数据集所在的文件名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 测试数据集是否分片
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Split *bool `json:"Split,omitnil,omitempty" name:"Split"`
 
 	// 首行是否为参数名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeaderInFile *bool `json:"HeaderInFile,omitnil,omitempty" name:"HeaderInFile"`
 
 	// 参数名数组
@@ -4942,7 +4773,6 @@ type TestData struct {
 	HeaderColumns []*string `json:"HeaderColumns,omitnil,omitempty" name:"HeaderColumns"`
 
 	// 文件行数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LineCount *int64 `json:"LineCount,omitnil,omitempty" name:"LineCount"`
 
 	// 更新时间
@@ -4950,7 +4780,6 @@ type TestData struct {
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 文件字节数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
 
 	// 头部数据行
@@ -4962,11 +4791,9 @@ type TestData struct {
 	TailLines []*string `json:"TailLines,omitnil,omitempty" name:"TailLines"`
 
 	// 文件类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 文件 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 }
 
@@ -5579,7 +5406,6 @@ type VpcLoadDistribution struct {
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// VPC ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网ID列表

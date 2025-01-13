@@ -7794,7 +7794,7 @@ type HeaderKey struct {
 type HeuristicCache struct {
 	// 启发式缓存配置开关，取值有：
 	// on：开启
-	// off：关闭
+	// off：关闭（默认）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 

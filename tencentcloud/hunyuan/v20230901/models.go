@@ -1818,6 +1818,12 @@ type SearchResult struct {
 	// 搜索引文链接
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 搜索引文站点名
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 搜索引文图标
+	Icon *string `json:"Icon,omitnil,omitempty" name:"Icon"`
 }
 
 // Predefined struct for user

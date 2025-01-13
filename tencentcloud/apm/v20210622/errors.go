@@ -44,7 +44,7 @@ const (
 	// AppID 和业务系统信息不匹配。
 	FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
 
-	// 未命中白名单且业务系统id为官方demo业务系统id时，不允许修改接口。
+	// 未命中白名单且业务系统 ID 为官方 Demo 业务系统 ID 时，不允许修改接口。
 	FAILEDOPERATION_DEMOINSTANCENOTALLOWMODIFIED = "FailedOperation.DemoInstanceNotAllowModified"
 
 	// 请勿填写重复的应用名
@@ -89,7 +89,7 @@ const (
 	// 查询指标类数据查询条件缺少过滤参数。
 	FAILEDOPERATION_METRICFILTERSLACKPARAMS = "FailedOperation.MetricFiltersLackParams"
 
-	// 非内网vpc。
+	// 非内网 VPC。
 	FAILEDOPERATION_NOTINNERVPC = "FailedOperation.NotInnerVPC"
 
 	// 查询时间区间不支持。

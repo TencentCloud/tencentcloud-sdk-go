@@ -1267,7 +1267,6 @@ func (r *CreateCloudInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCloudInstanceResponseParams struct {
 	// 实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1503,7 +1502,6 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateClusterResponseParams struct {
 	// 实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8282,7 +8280,6 @@ func (r *ModifyYarnQueueV2Response) FromJsonString(s string) error {
 
 type MonthRepeatStrategy struct {
 	// 重复任务执行的具体时刻，例如"01:02:00"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecuteAtTimeOfDay *string `json:"ExecuteAtTimeOfDay,omitnil,omitempty" name:"ExecuteAtTimeOfDay"`
 
 	// 每月中的天数时间段描述，长度只能为2，例如[2,10]表示每月2-10号。

@@ -1268,12 +1268,7 @@ type DescribeInternetAddressRequestParams struct {
 	// 返回数量，默认为20，最大值100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件：
-	// <li>AddrType, 地址类型。0：BGP 1; 1: 电信， 2：移动， 3：联通</li>
-	// <li>AddrProto地址类型。0：IPv4 1:IPv6</li>
-	// <li>Status 地址状态。 0：使用中， 1：已停用， 2：已退还</li>
-	// <li>Subnet 互联网公网地址，数组</li>
-	// <InstanceIds>互联网公网地址ID，数组</li>
+	// 过滤条件： <li>AddrType，地址类型。0：BGP 1；1: 电信；2：移动；3：联通</li> <li>AddrProto，地址类型。0：IPv4；1:IPv6</li> <li>Status，地址状态。 0：使用中；1：已停用； 2：已退还</li> <li>Subnet，互联网公网地址。数组</li> <li>InstanceIds，互联网公网地址ID。数组</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -1286,12 +1281,7 @@ type DescribeInternetAddressRequest struct {
 	// 返回数量，默认为20，最大值100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件：
-	// <li>AddrType, 地址类型。0：BGP 1; 1: 电信， 2：移动， 3：联通</li>
-	// <li>AddrProto地址类型。0：IPv4 1:IPv6</li>
-	// <li>Status 地址状态。 0：使用中， 1：已停用， 2：已退还</li>
-	// <li>Subnet 互联网公网地址，数组</li>
-	// <InstanceIds>互联网公网地址ID，数组</li>
+	// 过滤条件： <li>AddrType，地址类型。0：BGP 1；1: 电信；2：移动；3：联通</li> <li>AddrProto，地址类型。0：IPv4；1:IPv6</li> <li>Status，地址状态。 0：使用中；1：已停用； 2：已退还</li> <li>Subnet，互联网公网地址。数组</li> <li>InstanceIds，互联网公网地址ID。数组</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -1322,7 +1312,6 @@ type DescribeInternetAddressResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 互联网公网地址列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Subnets []*InternetAddressDetail `json:"Subnets,omitnil,omitempty" name:"Subnets"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
