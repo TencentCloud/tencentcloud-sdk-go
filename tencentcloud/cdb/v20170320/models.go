@@ -997,6 +997,9 @@ type BackupInfo struct {
 
 	// 备份GTID点位
 	ExecutedGTIDSet *string `json:"ExecutedGTIDSet,omitnil,omitempty" name:"ExecutedGTIDSet"`
+
+	// 备份文件MD5值
+	MD5 *string `json:"MD5,omitnil,omitempty" name:"MD5"`
 }
 
 type BackupItem struct {

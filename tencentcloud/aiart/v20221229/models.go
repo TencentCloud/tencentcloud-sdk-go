@@ -1064,6 +1064,7 @@ type ReplaceBackgroundRequestParams struct {
 
 	// 对新背景的文本描述。
 	// 最多支持256个 utf-8 字符，支持中、英文。
+	// 如果 Prompt = "BackgroundTemplate" 代表启用背景模板，需要在参数 BackgroundTemplate 中指定一个背景名称。
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
 	// 反向提示词。
@@ -1073,6 +1074,10 @@ type ReplaceBackgroundRequestParams struct {
 	// 商品图中的商品主体名称。
 	// 建议说明商品主体，否则影响生成效果。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 背景模板。
+	// 仅当 Prompt = "BackgroundTemplate" 时生效，可支持的模板详见 [商品背景模板列表](https://cloud.tencent.com/document/product/1668/115391) ，请传入字段“背景名称”中的值。
+	BackgroundTemplate *string `json:"BackgroundTemplate,omitnil,omitempty" name:"BackgroundTemplate"`
 
 	// 商品 Mask 图 Url，要求背景透明，保留商品主体。
 	// 如果不传，将自动使用内置的商品分割算法得到 Mask。
@@ -1110,6 +1115,7 @@ type ReplaceBackgroundRequest struct {
 
 	// 对新背景的文本描述。
 	// 最多支持256个 utf-8 字符，支持中、英文。
+	// 如果 Prompt = "BackgroundTemplate" 代表启用背景模板，需要在参数 BackgroundTemplate 中指定一个背景名称。
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
 	// 反向提示词。
@@ -1119,6 +1125,10 @@ type ReplaceBackgroundRequest struct {
 	// 商品图中的商品主体名称。
 	// 建议说明商品主体，否则影响生成效果。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 背景模板。
+	// 仅当 Prompt = "BackgroundTemplate" 时生效，可支持的模板详见 [商品背景模板列表](https://cloud.tencent.com/document/product/1668/115391) ，请传入字段“背景名称”中的值。
+	BackgroundTemplate *string `json:"BackgroundTemplate,omitnil,omitempty" name:"BackgroundTemplate"`
 
 	// 商品 Mask 图 Url，要求背景透明，保留商品主体。
 	// 如果不传，将自动使用内置的商品分割算法得到 Mask。
@@ -1163,6 +1173,7 @@ func (r *ReplaceBackgroundRequest) FromJsonString(s string) error {
 	delete(f, "Prompt")
 	delete(f, "NegativePrompt")
 	delete(f, "Product")
+	delete(f, "BackgroundTemplate")
 	delete(f, "MaskUrl")
 	delete(f, "Resolution")
 	delete(f, "LogoAdd")

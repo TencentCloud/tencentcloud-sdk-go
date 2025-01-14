@@ -4071,16 +4071,16 @@ type CreateOutputSRTSettings struct {
 	// 转推SRT的流Id，可选大小写字母、数字和特殊字符（.#!:&,=_-），长度为0~512。
 	StreamId *string `json:"StreamId,omitnil,omitempty" name:"StreamId"`
 
-	// 转推SRT的总延迟，默认0，单位ms，范围为[0, 3000]。
+	// 转推SRT的总延迟，默认0，单位ms，范围为[0, 3000]。此参数同时设置了发送方和接收方的延迟（recvlatency和peerlatency）为相同的值。建议配置为至少3倍RTT，以确保在网络拥塞时能够有效处理数据包的重传和确认
 	Latency *int64 `json:"Latency,omitnil,omitempty" name:"Latency"`
 
-	// 转推SRT的接收延迟，默认120，单位ms，范围为[0, 3000]。
+	// 转推SRT的接收延迟，默认120，单位ms，范围为[0, 3000]。 此参数表示接收方用于缓存数据包的时间长度
 	RecvLatency *int64 `json:"RecvLatency,omitnil,omitempty" name:"RecvLatency"`
 
-	// 转推SRT的对端延迟，默认0，单位ms，范围为[0, 3000]。
+	// 转推SRT的对端延迟，默认0，单位ms，范围为[0, 3000]。 此参数由发送方设置，用于告知接收方其期望的延迟缓冲时间
 	PeerLatency *int64 `json:"PeerLatency,omitnil,omitempty" name:"PeerLatency"`
 
-	// 转推SRT的对端空闲超时时间，默认5000，单位ms，范围为[1000, 10000]。
+	// 转推SRT的对端空闲超时时间，默认5000，单位ms，范围为[1000, 10000]。 如果连接在设定的超时时间内没有活动，将会被关闭
 	PeerIdleTimeout *int64 `json:"PeerIdleTimeout,omitnil,omitempty" name:"PeerIdleTimeout"`
 
 	// 转推SRT的加密密钥，默认为空，表示不加密。只可填ascii码值，长度为[10, 79]。
@@ -4932,6 +4932,70 @@ func (r *CreateStreamLinkOutputInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateStreamLinkOutputInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateStreamLinkSecurityGroupRequestParams struct {
+	// 安全组名称，限制大小写、数字和下划线，Region下唯一。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 白名单列表，数量限制[1, 10]。
+	Whitelist []*string `json:"Whitelist,omitnil,omitempty" name:"Whitelist"`
+}
+
+type CreateStreamLinkSecurityGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 安全组名称，限制大小写、数字和下划线，Region下唯一。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 白名单列表，数量限制[1, 10]。
+	Whitelist []*string `json:"Whitelist,omitnil,omitempty" name:"Whitelist"`
+}
+
+func (r *CreateStreamLinkSecurityGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStreamLinkSecurityGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Whitelist")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStreamLinkSecurityGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateStreamLinkSecurityGroupResponseParams struct {
+	// 安全组 ID。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateStreamLinkSecurityGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateStreamLinkSecurityGroupResponseParams `json:"Response"`
+}
+
+func (r *CreateStreamLinkSecurityGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStreamLinkSecurityGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6358,6 +6422,60 @@ func (r *DeleteStreamLinkOutputResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteStreamLinkSecurityGroupRequestParams struct {
+	// 安全组 ID。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DeleteStreamLinkSecurityGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 安全组 ID。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *DeleteStreamLinkSecurityGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamLinkSecurityGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteStreamLinkSecurityGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamLinkSecurityGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteStreamLinkSecurityGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteStreamLinkSecurityGroupResponseParams `json:"Response"`
+}
+
+func (r *DeleteStreamLinkSecurityGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamLinkSecurityGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteTranscodeTemplateRequestParams struct {
 	// 转码模板唯一标识。
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
@@ -6774,6 +6892,7 @@ type DescribeAdaptiveDynamicStreamingTemplatesRequestParams struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 是否为纯音频，0表示视频，1表示纯音频
+	// 默认值：0
 	PureAudio *uint64 `json:"PureAudio,omitnil,omitempty" name:"PureAudio"`
 
 	// 自适应转码模板标识过滤条件，长度限制：64 个字符
@@ -6798,6 +6917,7 @@ type DescribeAdaptiveDynamicStreamingTemplatesRequest struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 是否为纯音频，0表示视频，1表示纯音频
+	// 默认值：0
 	PureAudio *uint64 `json:"PureAudio,omitnil,omitempty" name:"PureAudio"`
 
 	// 自适应转码模板标识过滤条件，长度限制：64 个字符
@@ -7096,6 +7216,63 @@ type DescribeFlowId struct {
 
 	// flow所在的区域名称。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+}
+
+// Predefined struct for user
+type DescribeGroupAttachFlowsByIdRequestParams struct {
+	// 媒体传输安全组ID。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DescribeGroupAttachFlowsByIdRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体传输安全组ID。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *DescribeGroupAttachFlowsByIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGroupAttachFlowsByIdRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGroupAttachFlowsByIdRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGroupAttachFlowsByIdResponseParams struct {
+	// 安全组反查的Flow信息列表。
+	Infos []*FlowInOutResp `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeGroupAttachFlowsByIdResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGroupAttachFlowsByIdResponseParams `json:"Response"`
+}
+
+func (r *DescribeGroupAttachFlowsByIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGroupAttachFlowsByIdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DescribeHLSPullSourceAddress struct {
@@ -9127,6 +9304,60 @@ func (r *DescribeStreamLinkRegionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeStreamLinkSecurityGroupsRequestParams struct {
+
+}
+
+type DescribeStreamLinkSecurityGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeStreamLinkSecurityGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkSecurityGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamLinkSecurityGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkSecurityGroupsResponseParams struct {
+	// 安全组信息列表。
+	Infos []*SecurityGroupInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamLinkSecurityGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamLinkSecurityGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamLinkSecurityGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkSecurityGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTaskDetailRequestParams struct {
 	// 视频处理任务的任务 ID。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -10097,6 +10328,67 @@ func (r *DisableWorkflowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DisassociateSecurityGroupRequestParams struct {
+	// 媒体传输安全组ID。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 要解绑的输入输出信息列表。
+	UnattachInOutInfos []*UnattachSecurityGroupInOutInfo `json:"UnattachInOutInfos,omitnil,omitempty" name:"UnattachInOutInfos"`
+}
+
+type DisassociateSecurityGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体传输安全组ID。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 要解绑的输入输出信息列表。
+	UnattachInOutInfos []*UnattachSecurityGroupInOutInfo `json:"UnattachInOutInfos,omitnil,omitempty" name:"UnattachInOutInfos"`
+}
+
+func (r *DisassociateSecurityGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateSecurityGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "UnattachInOutInfos")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisassociateSecurityGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisassociateSecurityGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DisassociateSecurityGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DisassociateSecurityGroupResponseParams `json:"Response"`
+}
+
+func (r *DisassociateSecurityGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateSecurityGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DrmInfo struct {
 	// 加密类型：
 	// <li> simpleaes: aes-128 加密</li>
@@ -10565,6 +10857,40 @@ type FlowAudio struct {
 
 	// 音频Pid。
 	Pid *int64 `json:"Pid,omitnil,omitempty" name:"Pid"`
+}
+
+type FlowInOutResp struct {
+	// 流Id。
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 流名称。
+	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
+
+	// 该Flow关联的媒体传输事件EventId。
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 媒体传输输入流所属的区域，取值和InputRegion相同。
+	FlowRegion *string `json:"FlowRegion,omitnil,omitempty" name:"FlowRegion"`
+
+	// 当返回是输出类型时非空，output所在Region。
+	OutputRegion *string `json:"OutputRegion,omitnil,omitempty" name:"OutputRegion"`
+
+	// EventName。
+	EventName *string `json:"EventName,omitnil,omitempty" name:"EventName"`
+
+	// InOutType为Input有效。
+	InputName *string `json:"InputName,omitnil,omitempty" name:"InputName"`
+
+	// InOutType为Output有效。
+	OutputName *string `json:"OutputName,omitnil,omitempty" name:"OutputName"`
+
+	// Input或者Output的Id。
+	InOutId *string `json:"InOutId,omitnil,omitempty" name:"InOutId"`
+
+	// 输入/输出类型，可选值：
+	// Input：输入
+	// Outpu：输出。
+	InOutType *string `json:"InOutType,omitnil,omitempty" name:"InOutType"`
 }
 
 type FlowLogInfo struct {
@@ -14298,6 +14624,74 @@ func (r *ModifyStreamLinkOutputInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyStreamLinkSecurityGroupRequestParams struct {
+	// 安全组Id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 安全组名称，限制大小写、数字和下划线，长度[1, 32]，Region下唯一。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 白名单列表，最多10个。
+	Whitelist []*string `json:"Whitelist,omitnil,omitempty" name:"Whitelist"`
+}
+
+type ModifyStreamLinkSecurityGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 安全组Id。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 安全组名称，限制大小写、数字和下划线，长度[1, 32]，Region下唯一。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 白名单列表，最多10个。
+	Whitelist []*string `json:"Whitelist,omitnil,omitempty" name:"Whitelist"`
+}
+
+func (r *ModifyStreamLinkSecurityGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStreamLinkSecurityGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Name")
+	delete(f, "Whitelist")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStreamLinkSecurityGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStreamLinkSecurityGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyStreamLinkSecurityGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyStreamLinkSecurityGroupResponseParams `json:"Response"`
+}
+
+func (r *ModifyStreamLinkSecurityGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStreamLinkSecurityGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyTranscodeTemplateRequestParams struct {
 	// 转码模板唯一标识。
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
@@ -16550,6 +16944,28 @@ type SearchValueInput struct {
 	TextInput *string `json:"TextInput,omitnil,omitempty" name:"TextInput"`
 }
 
+type SecurityGroupInfo struct {
+	// 安全组 ID。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 安全组名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 白名单列表。
+	Whitelist []*string `json:"Whitelist,omitnil,omitempty" name:"Whitelist"`
+
+	// 绑定的输入流列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OccupiedInputs []*string `json:"OccupiedInputs,omitnil,omitempty" name:"OccupiedInputs"`
+
+	// 安全组地址。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 绑定的输出流列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OccupiedOutputs []*string `json:"OccupiedOutputs,omitnil,omitempty" name:"OccupiedOutputs"`
+}
+
 type SegmentRecognitionItem struct {
 	// 置信度。
 	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
@@ -17351,6 +17767,22 @@ type TranslateConfigureInfoForUpdate struct {
 	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
 }
 
+type UnattachSecurityGroupInOutInfo struct {
+	// 该安全组关联的FlowId。
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 要解绑的输入/输出ID。
+	InOutId *string `json:"InOutId,omitnil,omitempty" name:"InOutId"`
+
+	// 输入/输出类型，可选值：
+	// Input：输入
+	// Output：输出。
+	InOutType *string `json:"InOutType,omitnil,omitempty" name:"InOutType"`
+
+	// Flow所在的Region，和input共用。
+	FlowRegion *string `json:"FlowRegion,omitnil,omitempty" name:"FlowRegion"`
+}
+
 type UrlInputInfo struct {
 	// 视频的 URL。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
@@ -17589,6 +18021,7 @@ type VideoTemplateInfo struct {
 	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 	// 默认值：0。
+	// 注意：Codec为MV-HEVC时可以支持到7680
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
 	// 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
@@ -17597,6 +18030,7 @@ type VideoTemplateInfo struct {
 	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 	// 默认值：0。
+	// 注意：Codec为MV-HEVC时可以支持到7680
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 
 	// 关键帧 I 帧之间的间隔，允许按帧或秒自定义GOP长度，取值范围：0 和 [1, 100000]，
@@ -17792,10 +18226,12 @@ type VideoTemplateInfoForUpdate struct {
 	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
 	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+	// 注意：Codec为MV-HEVC时可以支持到7680
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
 	// 视频流高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
+	// 注意：Codec为MV-HEVC时可以支持到7680
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 

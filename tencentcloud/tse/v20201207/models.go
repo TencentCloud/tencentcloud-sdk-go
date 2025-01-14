@@ -11623,6 +11623,10 @@ type NativeGatewayServerGroup struct {
 	// 分组默认权重
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultWeight *int64 `json:"DefaultWeight,omitnil,omitempty" name:"DefaultWeight"`
+
+	// 弹性节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElasticNumber *uint64 `json:"ElasticNumber,omitnil,omitempty" name:"ElasticNumber"`
 }
 
 type NativeGatewayServerGroups struct {

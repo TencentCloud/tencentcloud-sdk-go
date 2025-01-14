@@ -650,7 +650,7 @@ func NewSuspendProbeTaskResponse() (response *SuspendProbeTaskResponse) {
 }
 
 // SuspendProbeTask
-// 暂停拨测任务
+// 暂停任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -668,7 +668,7 @@ func (c *Client) SuspendProbeTask(request *SuspendProbeTaskRequest) (response *S
 }
 
 // SuspendProbeTask
-// 暂停拨测任务
+// 暂停任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

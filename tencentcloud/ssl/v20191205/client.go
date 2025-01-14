@@ -894,7 +894,7 @@ func NewDeployCertificateInstanceResponse() (response *DeployCertificateInstance
 //
 // - 若部署clb实例时， 7层监听器未开启SNI，该监听器下存在任一域名和证书不匹配， 则不会创建成功
 //
-// - 若部署clb实例是，监听器规则为正则表示式， 则不会创建成功
+// - 若部署clb实例时，监听器规则为正则表示式， 则不会创建成功
 //
 // 
 //
@@ -931,7 +931,7 @@ func (c *Client) DeployCertificateInstance(request *DeployCertificateInstanceReq
 //
 // - 若部署clb实例时， 7层监听器未开启SNI，该监听器下存在任一域名和证书不匹配， 则不会创建成功
 //
-// - 若部署clb实例是，监听器规则为正则表示式， 则不会创建成功
+// - 若部署clb实例时，监听器规则为正则表示式， 则不会创建成功
 //
 // 
 //

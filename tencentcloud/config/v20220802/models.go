@@ -621,7 +621,7 @@ type ListAggregateDiscoveredResourcesRequestParams struct {
 	// 账号组ID
 	AccountGroupId *string `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
 
-	// resourceName：资源名  resourceId ：资源ID
+	// resourceName：资源名  resourceId ：资源ID resourceType：资源类型
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 标签
@@ -643,7 +643,7 @@ type ListAggregateDiscoveredResourcesRequest struct {
 	// 账号组ID
 	AccountGroupId *string `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
 
-	// resourceName：资源名  resourceId ：资源ID
+	// resourceName：资源名  resourceId ：资源ID resourceType：资源类型
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 标签

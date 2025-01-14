@@ -1310,6 +1310,63 @@ func (c *Client) CreateStreamLinkOutputInfoWithContext(ctx context.Context, requ
     return
 }
 
+func NewCreateStreamLinkSecurityGroupRequest() (request *CreateStreamLinkSecurityGroupRequest) {
+    request = &CreateStreamLinkSecurityGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateStreamLinkSecurityGroup")
+    
+    
+    return
+}
+
+func NewCreateStreamLinkSecurityGroupResponse() (response *CreateStreamLinkSecurityGroupResponse) {
+    response = &CreateStreamLinkSecurityGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateStreamLinkSecurityGroup
+// 创建安全组，数量限制5个。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_WHITELIST = "InvalidParameter.Whitelist"
+func (c *Client) CreateStreamLinkSecurityGroup(request *CreateStreamLinkSecurityGroupRequest) (response *CreateStreamLinkSecurityGroupResponse, err error) {
+    return c.CreateStreamLinkSecurityGroupWithContext(context.Background(), request)
+}
+
+// CreateStreamLinkSecurityGroup
+// 创建安全组，数量限制5个。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_WHITELIST = "InvalidParameter.Whitelist"
+func (c *Client) CreateStreamLinkSecurityGroupWithContext(ctx context.Context, request *CreateStreamLinkSecurityGroupRequest) (response *CreateStreamLinkSecurityGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateStreamLinkSecurityGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateStreamLinkSecurityGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateStreamLinkSecurityGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTranscodeTemplateRequest() (request *CreateTranscodeTemplateRequest) {
     request = &CreateTranscodeTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2567,6 +2624,63 @@ func (c *Client) DeleteStreamLinkOutputWithContext(ctx context.Context, request 
     return
 }
 
+func NewDeleteStreamLinkSecurityGroupRequest() (request *DeleteStreamLinkSecurityGroupRequest) {
+    request = &DeleteStreamLinkSecurityGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteStreamLinkSecurityGroup")
+    
+    
+    return
+}
+
+func NewDeleteStreamLinkSecurityGroupResponse() (response *DeleteStreamLinkSecurityGroupResponse) {
+    response = &DeleteStreamLinkSecurityGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteStreamLinkSecurityGroup
+// 删除安全组。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALREADYASSOCIATEDINPUT = "InvalidParameter.AlreadyAssociatedInput"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+func (c *Client) DeleteStreamLinkSecurityGroup(request *DeleteStreamLinkSecurityGroupRequest) (response *DeleteStreamLinkSecurityGroupResponse, err error) {
+    return c.DeleteStreamLinkSecurityGroupWithContext(context.Background(), request)
+}
+
+// DeleteStreamLinkSecurityGroup
+// 删除安全组。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALREADYASSOCIATEDINPUT = "InvalidParameter.AlreadyAssociatedInput"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+func (c *Client) DeleteStreamLinkSecurityGroupWithContext(ctx context.Context, request *DeleteStreamLinkSecurityGroupRequest) (response *DeleteStreamLinkSecurityGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteStreamLinkSecurityGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteStreamLinkSecurityGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteStreamLinkSecurityGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteTranscodeTemplateRequest() (request *DeleteTranscodeTemplateRequest) {
     request = &DeleteTranscodeTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3074,6 +3188,55 @@ func (c *Client) DescribeContentReviewTemplatesWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewDescribeContentReviewTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGroupAttachFlowsByIdRequest() (request *DescribeGroupAttachFlowsByIdRequest) {
+    request = &DescribeGroupAttachFlowsByIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeGroupAttachFlowsById")
+    
+    
+    return
+}
+
+func NewDescribeGroupAttachFlowsByIdResponse() (response *DescribeGroupAttachFlowsByIdResponse) {
+    response = &DescribeGroupAttachFlowsByIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGroupAttachFlowsById
+// 根据安全组反差关联的Flow信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeGroupAttachFlowsById(request *DescribeGroupAttachFlowsByIdRequest) (response *DescribeGroupAttachFlowsByIdResponse, err error) {
+    return c.DescribeGroupAttachFlowsByIdWithContext(context.Background(), request)
+}
+
+// DescribeGroupAttachFlowsById
+// 根据安全组反差关联的Flow信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeGroupAttachFlowsByIdWithContext(ctx context.Context, request *DescribeGroupAttachFlowsByIdRequest) (response *DescribeGroupAttachFlowsByIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeGroupAttachFlowsByIdRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGroupAttachFlowsById require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGroupAttachFlowsByIdResponse()
     err = c.Send(request, response)
     return
 }
@@ -4206,6 +4369,55 @@ func (c *Client) DescribeStreamLinkRegionsWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeStreamLinkSecurityGroupsRequest() (request *DescribeStreamLinkSecurityGroupsRequest) {
+    request = &DescribeStreamLinkSecurityGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeStreamLinkSecurityGroups")
+    
+    
+    return
+}
+
+func NewDescribeStreamLinkSecurityGroupsResponse() (response *DescribeStreamLinkSecurityGroupsResponse) {
+    response = &DescribeStreamLinkSecurityGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeStreamLinkSecurityGroups
+// 批量查询安全组信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeStreamLinkSecurityGroups(request *DescribeStreamLinkSecurityGroupsRequest) (response *DescribeStreamLinkSecurityGroupsResponse, err error) {
+    return c.DescribeStreamLinkSecurityGroupsWithContext(context.Background(), request)
+}
+
+// DescribeStreamLinkSecurityGroups
+// 批量查询安全组信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeStreamLinkSecurityGroupsWithContext(ctx context.Context, request *DescribeStreamLinkSecurityGroupsRequest) (response *DescribeStreamLinkSecurityGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeStreamLinkSecurityGroupsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeStreamLinkSecurityGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeStreamLinkSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
     request = &DescribeTaskDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4792,6 +5004,55 @@ func (c *Client) DisableWorkflowWithContext(ctx context.Context, request *Disabl
     request.SetContext(ctx)
     
     response = NewDisableWorkflowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisassociateSecurityGroupRequest() (request *DisassociateSecurityGroupRequest) {
+    request = &DisassociateSecurityGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DisassociateSecurityGroup")
+    
+    
+    return
+}
+
+func NewDisassociateSecurityGroupResponse() (response *DisassociateSecurityGroupResponse) {
+    response = &DisassociateSecurityGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisassociateSecurityGroup
+// 批量解绑安全组下面关联的输入输出。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DisassociateSecurityGroup(request *DisassociateSecurityGroupRequest) (response *DisassociateSecurityGroupResponse, err error) {
+    return c.DisassociateSecurityGroupWithContext(context.Background(), request)
+}
+
+// DisassociateSecurityGroup
+// 批量解绑安全组下面关联的输入输出。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DisassociateSecurityGroupWithContext(ctx context.Context, request *DisassociateSecurityGroupRequest) (response *DisassociateSecurityGroupResponse, err error) {
+    if request == nil {
+        request = NewDisassociateSecurityGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisassociateSecurityGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisassociateSecurityGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -6209,6 +6470,65 @@ func (c *Client) ModifyStreamLinkOutputInfoWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewModifyStreamLinkOutputInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyStreamLinkSecurityGroupRequest() (request *ModifyStreamLinkSecurityGroupRequest) {
+    request = &ModifyStreamLinkSecurityGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "ModifyStreamLinkSecurityGroup")
+    
+    
+    return
+}
+
+func NewModifyStreamLinkSecurityGroupResponse() (response *ModifyStreamLinkSecurityGroupResponse) {
+    response = &ModifyStreamLinkSecurityGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyStreamLinkSecurityGroup
+// 更新安全组。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_WHITELIST = "InvalidParameter.Whitelist"
+func (c *Client) ModifyStreamLinkSecurityGroup(request *ModifyStreamLinkSecurityGroupRequest) (response *ModifyStreamLinkSecurityGroupResponse, err error) {
+    return c.ModifyStreamLinkSecurityGroupWithContext(context.Background(), request)
+}
+
+// ModifyStreamLinkSecurityGroup
+// 更新安全组。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+//  INVALIDPARAMETER_WHITELIST = "InvalidParameter.Whitelist"
+func (c *Client) ModifyStreamLinkSecurityGroupWithContext(ctx context.Context, request *ModifyStreamLinkSecurityGroupRequest) (response *ModifyStreamLinkSecurityGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyStreamLinkSecurityGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyStreamLinkSecurityGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyStreamLinkSecurityGroupResponse()
     err = c.Send(request, response)
     return
 }

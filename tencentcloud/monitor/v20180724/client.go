@@ -8458,7 +8458,7 @@ func NewModifyPrometheusRecordRuleYamlResponse() (response *ModifyPrometheusReco
 }
 
 // ModifyPrometheusRecordRuleYaml
-// 通过yaml的方式修改Prometheus聚合实例
+// 通过yaml的方式修改Prometheus预聚合规则
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
@@ -8473,7 +8473,7 @@ func (c *Client) ModifyPrometheusRecordRuleYaml(request *ModifyPrometheusRecordR
 }
 
 // ModifyPrometheusRecordRuleYaml
-// 通过yaml的方式修改Prometheus聚合实例
+// 通过yaml的方式修改Prometheus预聚合规则
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"

@@ -13897,10 +13897,10 @@ type PrometheusRecordRuleYamlItem struct {
 	// 最近更新时间
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// Yaml内容
+	// 如果该聚合规则来至模板，则TemplateId为模板id
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 如果该聚合规则来至模板，则TemplateId为模板id
+	// Yaml内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
@@ -14028,7 +14028,14 @@ type PrometheusTag struct {
 }
 
 type PrometheusTarget struct {
+	// 抓取目标的URL
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
+	// target当前状态,当前支持
+	// up = 健康
+	// down = 不健康
+	// unknown = 未知
+	State *string `json:"State,omitnil,omitempty" name:"State"`
 }
 
 type PrometheusTemp struct {

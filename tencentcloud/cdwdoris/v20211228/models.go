@@ -222,31 +222,24 @@ type BackupStatus struct {
 
 type BackupTableContent struct {
 	// 数据库
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
 
 	// 表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
 
 	// 表总字节数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalBytes *int64 `json:"TotalBytes,omitnil,omitempty" name:"TotalBytes"`
 
 	// 表单个副本的大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SingleReplicaBytes *string `json:"SingleReplicaBytes,omitnil,omitempty" name:"SingleReplicaBytes"`
 
 	// 备份状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupStatus *int64 `json:"BackupStatus,omitnil,omitempty" name:"BackupStatus"`
 
 	// 备份的错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupErrorMsg *string `json:"BackupErrorMsg,omitnil,omitempty" name:"BackupErrorMsg"`
 
 	// 该库表是否绑定降冷策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsOpenCoolDown *bool `json:"IsOpenCoolDown,omitnil,omitempty" name:"IsOpenCoolDown"`
 }
 
@@ -327,19 +320,15 @@ func (r *CancelBackupJobResponse) FromJsonString(s string) error {
 
 type ChargeProperties struct {
 	// 计费类型，“PREPAID” 预付费，“POSTPAID_BY_HOUR” 后付费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
 	// 是否自动续费，1表示自动续费开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 计费时间长度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
 	// 计费时间单位，“m”表示月等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 }
 
@@ -378,7 +367,6 @@ func (r *CheckCoolDownWorkingVariableConfigCorrectRequest) FromJsonString(s stri
 // Predefined struct for user
 type CheckCoolDownWorkingVariableConfigCorrectResponseParams struct {
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -412,7 +400,6 @@ type ClusterConfigsHistory struct {
 	OldConfValue *string `json:"OldConfValue,omitnil,omitempty" name:"OldConfValue"`
 
 	// 修改原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 修改时间
@@ -439,7 +426,6 @@ type ClusterConfigsInfoFromEMR struct {
 	NeedRestart *int64 `json:"NeedRestart,omitnil,omitempty" name:"NeedRestart"`
 
 	// 配置文件路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
 
 	// 配置文件kv值
@@ -449,29 +435,23 @@ type ClusterConfigsInfoFromEMR struct {
 	FileKeyValues *string `json:"FileKeyValues,omitnil,omitempty" name:"FileKeyValues"`
 
 	// 配置文件kv值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileKeyValuesNew []*ConfigKeyValue `json:"FileKeyValuesNew,omitnil,omitempty" name:"FileKeyValuesNew"`
 }
 
 type ConfigKeyValue struct {
 	// key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
 
 	// 值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 1-只读，2-可修改但不可删除，3-可删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Display *int64 `json:"Display,omitnil,omitempty" name:"Display"`
 
 	// 0不支持 1支持热更新
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportHotUpdate *int64 `json:"SupportHotUpdate,omitnil,omitempty" name:"SupportHotUpdate"`
 }
 
@@ -491,65 +471,51 @@ type ConfigSubmitContext struct {
 
 type CoolDownBackend struct {
 	// 字段：Host
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
 	// 字段：DataUsedCapacity
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataUsedCapacity *string `json:"DataUsedCapacity,omitnil,omitempty" name:"DataUsedCapacity"`
 
 	// 字段：TotalCapacity
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCapacity *string `json:"TotalCapacity,omitnil,omitempty" name:"TotalCapacity"`
 
 	// 字段：RemoteUsedCapacity
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoteUsedCapacity *string `json:"RemoteUsedCapacity,omitnil,omitempty" name:"RemoteUsedCapacity"`
 }
 
 type CoolDownPolicyInfo struct {
 	// 策略名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
 	// cooldown_ttl
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CooldownDatetime *string `json:"CooldownDatetime,omitnil,omitempty" name:"CooldownDatetime"`
 
 	// cooldown_datetime
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CooldownTtl *string `json:"CooldownTtl,omitnil,omitempty" name:"CooldownTtl"`
 }
 
 type CoolDownTableDataInfo struct {
 	// 列：DatabaseName
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
 	// 列：TableName
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
 	// 列：Size
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *string `json:"Size,omitnil,omitempty" name:"Size"`
 
 	// 列：RemoteSize
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoteSize *string `json:"RemoteSize,omitnil,omitempty" name:"RemoteSize"`
 }
 
 type CosSourceInfo struct {
 	// cos认证中的Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretId *string `json:"SecretId,omitnil,omitempty" name:"SecretId"`
 
 	// cos认证中的key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
 
 	// cos认证中的路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosPath *string `json:"CosPath,omitnil,omitempty" name:"CosPath"`
 }
 
@@ -707,7 +673,6 @@ func (r *CreateBackUpScheduleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateBackUpScheduleResponseParams struct {
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -786,7 +751,6 @@ func (r *CreateCoolDownPolicyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCoolDownPolicyResponseParams struct {
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1053,60 +1017,49 @@ func (r *CreateWorkloadGroupResponse) FromJsonString(s string) error {
 
 type DataBaseAuditRecord struct {
 	// 查询用户
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OsUser *string `json:"OsUser,omitnil,omitempty" name:"OsUser"`
 
 	// 查询ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InitialQueryId *string `json:"InitialQueryId,omitnil,omitempty" name:"InitialQueryId"`
 
 	// SQL语句
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
 
 	// 开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueryStartTime *string `json:"QueryStartTime,omitnil,omitempty" name:"QueryStartTime"`
 
 	// 执行耗时
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DurationMs *int64 `json:"DurationMs,omitnil,omitempty" name:"DurationMs"`
 
 	// 读取行数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadRows *int64 `json:"ReadRows,omitnil,omitempty" name:"ReadRows"`
 
 	// 读取字节数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultRows *int64 `json:"ResultRows,omitnil,omitempty" name:"ResultRows"`
 
 	// 结果字节数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultBytes *uint64 `json:"ResultBytes,omitnil,omitempty" name:"ResultBytes"`
 
 	// 内存
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemoryUsage *int64 `json:"MemoryUsage,omitnil,omitempty" name:"MemoryUsage"`
 
 	// 初始查询IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InitialAddress *string `json:"InitialAddress,omitnil,omitempty" name:"InitialAddress"`
 
 	// 数据库
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
 	// sql类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SqlType *string `json:"SqlType,omitnil,omitempty" name:"SqlType"`
 
 	// catalog名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 是否是查询
+	IsQuery *bool `json:"IsQuery,omitnil,omitempty" name:"IsQuery"`
 }
 
 // Predefined struct for user
@@ -2280,6 +2233,9 @@ type DescribeDatabaseAuditRecordsRequestParams struct {
 
 	// catalog名称（多选）
 	Catalogs []*string `json:"Catalogs,omitnil,omitempty" name:"Catalogs"`
+
+	// 是否是查询 
+	IsQuery []*bool `json:"IsQuery,omitnil,omitempty" name:"IsQuery"`
 }
 
 type DescribeDatabaseAuditRecordsRequest struct {
@@ -2326,6 +2282,9 @@ type DescribeDatabaseAuditRecordsRequest struct {
 
 	// catalog名称（多选）
 	Catalogs []*string `json:"Catalogs,omitnil,omitempty" name:"Catalogs"`
+
+	// 是否是查询 
+	IsQuery []*bool `json:"IsQuery,omitnil,omitempty" name:"IsQuery"`
 }
 
 func (r *DescribeDatabaseAuditRecordsRequest) ToJsonString() string {
@@ -2354,6 +2313,7 @@ func (r *DescribeDatabaseAuditRecordsRequest) FromJsonString(s string) error {
 	delete(f, "DbNames")
 	delete(f, "SqlTypes")
 	delete(f, "Catalogs")
+	delete(f, "IsQuery")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabaseAuditRecordsRequest has unknown keys!", "")
 	}
@@ -2369,11 +2329,9 @@ type DescribeDatabaseAuditRecordsResponseParams struct {
 	SlowQueryRecords *DataBaseAuditRecord `json:"SlowQueryRecords,omitnil,omitempty" name:"SlowQueryRecords"`
 
 	// 记录列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Records []*DataBaseAuditRecord `json:"Records,omitnil,omitempty" name:"Records"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6210,32 +6168,28 @@ type SlowQueryRecord struct {
 	InitialAddress *string `json:"InitialAddress,omitnil,omitempty" name:"InitialAddress"`
 
 	// 数据库名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
 	// 是否是查询，0：否，1：查询语句
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsQuery *int64 `json:"IsQuery,omitnil,omitempty" name:"IsQuery"`
 
 	// ResultBytes的MB格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultBytesMB *float64 `json:"ResultBytesMB,omitnil,omitempty" name:"ResultBytesMB"`
 
 	// MemoryUsage的MB表示
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemoryUsageMB *float64 `json:"MemoryUsageMB,omitnil,omitempty" name:"MemoryUsageMB"`
 
 	// DurationMs的秒表示
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DurationSec *float64 `json:"DurationSec,omitnil,omitempty" name:"DurationSec"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
 	// Catalog  Name
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CatalogName *string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// cpu执行时间 
+	CpuTimeMs *int64 `json:"CpuTimeMs,omitnil,omitempty" name:"CpuTimeMs"`
 }
 
 type Tag struct {

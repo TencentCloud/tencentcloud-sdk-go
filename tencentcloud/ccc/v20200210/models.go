@@ -522,6 +522,91 @@ type CompanyStateInfo struct {
 }
 
 // Predefined struct for user
+type CreateAIAgentCallRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// AI智能体ID
+	AIAgentId *uint64 `json:"AIAgentId,omitnil,omitempty" name:"AIAgentId"`
+
+	// 被叫号码
+	Callee *string `json:"Callee,omitnil,omitempty" name:"Callee"`
+
+	// 主叫号码列表
+	Callers []*string `json:"Callers,omitnil,omitempty" name:"Callers"`
+
+	// 提示词变量
+	PromptVariables []*Variable `json:"PromptVariables,omitnil,omitempty" name:"PromptVariables"`
+}
+
+type CreateAIAgentCallRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// AI智能体ID
+	AIAgentId *uint64 `json:"AIAgentId,omitnil,omitempty" name:"AIAgentId"`
+
+	// 被叫号码
+	Callee *string `json:"Callee,omitnil,omitempty" name:"Callee"`
+
+	// 主叫号码列表
+	Callers []*string `json:"Callers,omitnil,omitempty" name:"Callers"`
+
+	// 提示词变量
+	PromptVariables []*Variable `json:"PromptVariables,omitnil,omitempty" name:"PromptVariables"`
+}
+
+func (r *CreateAIAgentCallRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAIAgentCallRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "AIAgentId")
+	delete(f, "Callee")
+	delete(f, "Callers")
+	delete(f, "PromptVariables")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAIAgentCallRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAIAgentCallResponseParams struct {
+	// 新创建的会话 ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAIAgentCallResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAIAgentCallResponseParams `json:"Response"`
+}
+
+func (r *CreateAIAgentCallResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAIAgentCallResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateAICallRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -759,6 +844,9 @@ type CreateAICallRequestParams struct {
 
 	// 提示词变量
 	PromptVariables []*Variable `json:"PromptVariables,omitnil,omitempty" name:"PromptVariables"`
+
+	// 语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
+	VadSilenceTime *int64 `json:"VadSilenceTime,omitnil,omitempty" name:"VadSilenceTime"`
 }
 
 type CreateAICallRequest struct {
@@ -1000,6 +1088,9 @@ type CreateAICallRequest struct {
 
 	// 提示词变量
 	PromptVariables []*Variable `json:"PromptVariables,omitnil,omitempty" name:"PromptVariables"`
+
+	// 语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
+	VadSilenceTime *int64 `json:"VadSilenceTime,omitnil,omitempty" name:"VadSilenceTime"`
 }
 
 func (r *CreateAICallRequest) ToJsonString() string {
@@ -1038,6 +1129,7 @@ func (r *CreateAICallRequest) FromJsonString(s string) error {
 	delete(f, "NotifyMaxCount")
 	delete(f, "CustomTTSConfig")
 	delete(f, "PromptVariables")
+	delete(f, "VadSilenceTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAICallRequest has unknown keys!", "")
 	}

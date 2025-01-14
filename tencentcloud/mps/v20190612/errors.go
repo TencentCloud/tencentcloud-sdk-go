@@ -59,6 +59,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// InvalidParameter.AlreadyAssociatedInput
+	INVALIDPARAMETER_ALREADYASSOCIATEDINPUT = "InvalidParameter.AlreadyAssociatedInput"
+
 	// InvalidParameter.EndTime
 	INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
 
@@ -118,6 +121,9 @@ const (
 
 	// InvalidParameter.Type
 	INVALIDPARAMETER_TYPE = "InvalidParameter.Type"
+
+	// InvalidParameter.Whitelist
+	INVALIDPARAMETER_WHITELIST = "InvalidParameter.Whitelist"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
