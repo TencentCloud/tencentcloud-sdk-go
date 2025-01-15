@@ -8387,124 +8387,94 @@ type NodeDetailPriceResult struct {
 
 type NodeHardwareInfo struct {
 	// 用户APPID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 序列号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SerialNo *string `json:"SerialNo,omitnil,omitempty" name:"SerialNo"`
 
 	// 机器实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderNo *string `json:"OrderNo,omitnil,omitempty" name:"OrderNo"`
 
 	// master节点绑定外网IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WanIp *string `json:"WanIp,omitnil,omitempty" name:"WanIp"`
 
 	// 节点类型。0:common节点；1:master节点
 	// ；2:core节点；3:task节点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Flag *int64 `json:"Flag,omitnil,omitempty" name:"Flag"`
 
 	// 节点规格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Spec *string `json:"Spec,omitnil,omitempty" name:"Spec"`
 
 	// 节点核数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CpuNum *int64 `json:"CpuNum,omitnil,omitempty" name:"CpuNum"`
 
-	// 节点内存
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 节点内存,单位b
 	MemSize *int64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
 
-	// 节点内存描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 节点内存描述，单位GB
 	MemDesc *string `json:"MemDesc,omitnil,omitempty" name:"MemDesc"`
 
 	// 节点所在region
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
 	// 节点所在Zone
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 申请时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplyTime *string `json:"ApplyTime,omitnil,omitempty" name:"ApplyTime"`
 
 	// 释放时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FreeTime *string `json:"FreeTime,omitnil,omitempty" name:"FreeTime"`
 
 	// 硬盘大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskSize *string `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
 	// 节点描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NameTag *string `json:"NameTag,omitnil,omitempty" name:"NameTag"`
 
 	// 节点部署服务
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Services *string `json:"Services,omitnil,omitempty" name:"Services"`
 
-	// 磁盘类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 磁盘类型，1 :本地盘 2 :云硬盘 3 : 本地SSD 4 : 云SSD 5 : 高效云盘 6 : 增强型SSD云硬盘 11 : 吞吐型云硬盘 12 : 极速型SSD云硬盘 13 : 通用型SSD云硬盘 14 : 大数据型云硬盘 15 : 高IO型云硬盘 16 : 远端SSD盘
 	StorageType *int64 `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 系统盘大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 系统盘大小，单位GB
 	RootSize *int64 `json:"RootSize,omitnil,omitempty" name:"RootSize"`
 
-	// 付费类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 付费类型，0：按量计费；1：包年包月
 	ChargeType *int64 `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
 	// 数据库IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdbIp *string `json:"CdbIp,omitnil,omitempty" name:"CdbIp"`
 
 	// 数据库端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdbPort *int64 `json:"CdbPort,omitnil,omitempty" name:"CdbPort"`
 
-	// 硬盘容量
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 硬盘容量,单位b
 	HwDiskSize *int64 `json:"HwDiskSize,omitnil,omitempty" name:"HwDiskSize"`
 
 	// 硬盘容量描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HwDiskSizeDesc *string `json:"HwDiskSizeDesc,omitnil,omitempty" name:"HwDiskSizeDesc"`
 
-	// 内存容量
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 内存容量，单位b
 	HwMemSize *int64 `json:"HwMemSize,omitnil,omitempty" name:"HwMemSize"`
 
 	// 内存容量描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HwMemSizeDesc *string `json:"HwMemSizeDesc,omitnil,omitempty" name:"HwMemSizeDesc"`
 
 	// 过期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 节点资源ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EmrResourceId *string `json:"EmrResourceId,omitnil,omitempty" name:"EmrResourceId"`
 
 	// 续费标志
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAutoRenew *int64 `json:"IsAutoRenew,omitnil,omitempty" name:"IsAutoRenew"`
 
 	// 设备标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceClass *string `json:"DeviceClass,omitnil,omitempty" name:"DeviceClass"`
 
 	// 支持变配
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mutable *int64 `json:"Mutable,omitnil,omitempty" name:"Mutable"`
 
 	// 多云盘
@@ -8516,11 +8486,9 @@ type NodeHardwareInfo struct {
 	CdbNodeInfo *CdbInfo `json:"CdbNodeInfo,omitnil,omitempty" name:"CdbNodeInfo"`
 
 	// 内网IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 此节点是否可销毁，1可销毁，0不可销毁
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Destroyable *int64 `json:"Destroyable,omitnil,omitempty" name:"Destroyable"`
 
 	// 节点绑定的标签
@@ -8528,31 +8496,24 @@ type NodeHardwareInfo struct {
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 是否是自动扩缩容节点，0为普通节点，1为自动扩缩容节点。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoFlag *int64 `json:"AutoFlag,omitnil,omitempty" name:"AutoFlag"`
 
 	// 资源类型, host/pod
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HardwareResourceType *string `json:"HardwareResourceType,omitnil,omitempty" name:"HardwareResourceType"`
 
 	// 是否浮动规格，1是，0否
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDynamicSpec *int64 `json:"IsDynamicSpec,omitnil,omitempty" name:"IsDynamicSpec"`
 
 	// 浮动规格值json字符串
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DynamicPodSpec *string `json:"DynamicPodSpec,omitnil,omitempty" name:"DynamicPodSpec"`
 
 	// 是否支持变更计费类型 1是，0否
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportModifyPayMode *int64 `json:"SupportModifyPayMode,omitnil,omitempty" name:"SupportModifyPayMode"`
 
-	// 系统盘类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 系统盘类型，1 :本地盘 2 :云硬盘 3 : 本地SSD 4 : 云SSD 5 : 高效云盘 6 : 增强型SSD云硬盘 11 : 吞吐型云硬盘 12 : 极速型SSD云硬盘 13 : 通用型SSD云硬盘 14 : 大数据型云硬盘 15 : 高IO型云硬盘 16 : 远端SSD盘
 	RootStorageType *int64 `json:"RootStorageType,omitnil,omitempty" name:"RootStorageType"`
 
 	// 可用区信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 子网
@@ -8560,48 +8521,43 @@ type NodeHardwareInfo struct {
 	SubnetInfo *SubnetInfo `json:"SubnetInfo,omitnil,omitempty" name:"SubnetInfo"`
 
 	// 客户端
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Clients *string `json:"Clients,omitnil,omitempty" name:"Clients"`
 
 	// 系统当前时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentTime *string `json:"CurrentTime,omitnil,omitempty" name:"CurrentTime"`
 
 	// 是否用于联邦 ,1是，0否
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsFederation *int64 `json:"IsFederation,omitnil,omitempty" name:"IsFederation"`
 
 	// 设备名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 服务
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceClient *string `json:"ServiceClient,omitnil,omitempty" name:"ServiceClient"`
 
 	// 该实例是否开启实例保护，true为开启 false为关闭
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisableApiTermination *bool `json:"DisableApiTermination,omitnil,omitempty" name:"DisableApiTermination"`
 
 	// 0表示老计费，1表示新计费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TradeVersion *int64 `json:"TradeVersion,omitnil,omitempty" name:"TradeVersion"`
 
 	// 各组件状态，Zookeeper:STARTED,ResourceManager:STARTED，STARTED已启动，STOPED已停止
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServicesStatus *string `json:"ServicesStatus,omitnil,omitempty" name:"ServicesStatus"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 共享集群id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SharedClusterId *string `json:"SharedClusterId,omitnil,omitempty" name:"SharedClusterId"`
 
 	// 共享集群id描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SharedClusterIdDesc *string `json:"SharedClusterIdDesc,omitnil,omitempty" name:"SharedClusterIdDesc"`
+
+	// 是否是定时销毁资源
+	TimingResource *bool `json:"TimingResource,omitnil,omitempty" name:"TimingResource"`
+
+	// 资源类型（HardwareResourceType）为pod时，对应的TKE集群id
+	TkeClusterId *string `json:"TkeClusterId,omitnil,omitempty" name:"TkeClusterId"`
 }
 
 type NodeResource struct {

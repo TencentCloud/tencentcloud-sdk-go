@@ -246,7 +246,8 @@ type CreateReconstructDocumentFlowRequestParams struct {
 	// - `PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`、`BMP`、`GIF`、`WEBP`、`HEIC`、`EPS`、`ICNS`、`IM`、`PCX`、`PPM`、`TIFF`、`XBM`、`HEIF`、`JP2`
 	// 
 	// **支持的文件大小：**
-	//  - `PDF`、`DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M
+	//  - `PDF` 最大500M
+	//  - `DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M
 	//  - `TXT`、`MD` 最大10M
 	//  - 其他 最大20M
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
@@ -283,7 +284,8 @@ type CreateReconstructDocumentFlowRequest struct {
 	// - `PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`、`BMP`、`GIF`、`WEBP`、`HEIC`、`EPS`、`ICNS`、`IM`、`PCX`、`PPM`、`TIFF`、`XBM`、`HEIF`、`JP2`
 	// 
 	// **支持的文件大小：**
-	//  - `PDF`、`DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M
+	//  - `PDF` 最大500M
+	//  - `DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M
 	//  - `TXT`、`MD` 最大10M
 	//  - 其他 最大20M
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
@@ -396,7 +398,8 @@ type CreateSplitDocumentFlowRequestParams struct {
 	// - `PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`
 	// 
 	// **支持的文件大小：**
-	//  - `PDF`、`DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M
+	//  - `PDF` 最大500M
+	//  - `DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M
 	//  - `TXT`、`MD` 最大10M
 	//  - 其他 最大20M
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
@@ -439,7 +442,8 @@ type CreateSplitDocumentFlowRequest struct {
 	// - `PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`
 	// 
 	// **支持的文件大小：**
-	//  - `PDF`、`DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M
+	//  - `PDF` 最大500M
+	//  - `DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M
 	//  - `TXT`、`MD` 最大10M
 	//  - 其他 最大20M
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`

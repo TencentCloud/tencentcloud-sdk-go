@@ -13320,6 +13320,12 @@ type SessionResourceTemplate struct {
 	ExecutorMaxNumbers *uint64 `json:"ExecutorMaxNumbers,omitnil,omitempty" name:"ExecutorMaxNumbers"`
 }
 
+type SmartOptimizerChangeTablePolicy struct {
+	// change表的数据保存时间，单位为天
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataRetentionTime *int64 `json:"DataRetentionTime,omitnil,omitempty" name:"DataRetentionTime"`
+}
+
 type SmartOptimizerIndexPolicy struct {
 	// 开启索引
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -13368,6 +13374,10 @@ type SmartOptimizerPolicy struct {
 	// SmartOptimizerIndexPolicy
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Index *SmartOptimizerIndexPolicy `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// SmartOptimizerChangeTablePolicy
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChangeTable *SmartOptimizerChangeTablePolicy `json:"ChangeTable,omitnil,omitempty" name:"ChangeTable"`
 }
 
 type SmartOptimizerWrittenPolicy struct {
@@ -14006,6 +14016,10 @@ type TableBaseInfo struct {
 	// 智能数据治理配置项
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SmartPolicy *SmartPolicy `json:"SmartPolicy,omitnil,omitempty" name:"SmartPolicy"`
+
+	// T-ICEBERG表的主键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrimaryKeys []*string `json:"PrimaryKeys,omitnil,omitempty" name:"PrimaryKeys"`
 }
 
 type TableInfo struct {
@@ -14072,6 +14086,9 @@ type TableResponseInfo struct {
 	// 访问热点
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeatValue *int64 `json:"HeatValue,omitnil,omitempty" name:"HeatValue"`
+
+	// InputFormat的缩写
+	InputFormatShort *string `json:"InputFormatShort,omitnil,omitempty" name:"InputFormatShort"`
 }
 
 type TagInfo struct {

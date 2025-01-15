@@ -1731,7 +1731,7 @@ func NewDescribeSpecResponse() (response *DescribeSpecResponse) {
 }
 
 // DescribeSpec
-// 购买页拉取集群的数据节点和zookeeper节点的规格列表
+// 拉取集群节点规格列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1740,7 +1740,7 @@ func (c *Client) DescribeSpec(request *DescribeSpecRequest) (response *DescribeS
 }
 
 // DescribeSpec
-// 购买页拉取集群的数据节点和zookeeper节点的规格列表
+// 拉取集群节点规格列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

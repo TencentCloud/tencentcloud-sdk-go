@@ -493,8 +493,10 @@ type AddressInfo struct {
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
 	// 备注。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 更新时间。
+	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 }
 
 type AddressTemplate struct {
@@ -510,11 +512,13 @@ type AddressTemplate struct {
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
+	// 最后更新时间。
+	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
+
 	// 带备注的IP地址信息。
 	AddressExtraSet []*AddressInfo `json:"AddressExtraSet,omitnil,omitempty" name:"AddressExtraSet"`
 
 	// 标签键值对。	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
@@ -531,11 +535,13 @@ type AddressTemplateGroup struct {
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
+	// 最后更新时间。
+	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
+
 	// IP地址模板实例。
 	AddressTemplateSet []*AddressTemplateItem `json:"AddressTemplateSet,omitnil,omitempty" name:"AddressTemplateSet"`
 
 	// 标签键值对。	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
@@ -543,7 +549,7 @@ type AddressTemplateItem struct {
 	// IP地址模板ID
 	AddressTemplateId *string `json:"AddressTemplateId,omitnil,omitempty" name:"AddressTemplateId"`
 
-	// IP模板名称。
+	// IP模板名称，废弃字段。
 	AddressTemplateName *string `json:"AddressTemplateName,omitnil,omitempty" name:"AddressTemplateName"`
 
 	// 废弃字段。
@@ -551,6 +557,12 @@ type AddressTemplateItem struct {
 
 	// 废弃字段
 	To *string `json:"To,omitnil,omitempty" name:"To"`
+
+	// 备注。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 最后更新时间。
+	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 }
 
 type AddressTemplateSpecification struct {
@@ -11383,6 +11395,18 @@ type DescribeAddressTemplateGroupsRequestParams struct {
 
 	// 是否查询IP地址模板成员标识。
 	NeedMemberInfo *bool `json:"NeedMemberInfo,omitnil,omitempty" name:"NeedMemberInfo"`
+
+	// 排序字段。支持：`AddressTemplateGroupId ` `CreatedTime` `UpdateTime`。注意：该字段没有默认值。
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
+
+	// IP地址成员排序字段。支持：`AddressTemplateId` `UpdateTime`。注意：该字段没有默认值。
+	MemberOrderField *string `json:"MemberOrderField,omitnil,omitempty" name:"MemberOrderField"`
+
+	// IP地址成员排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+	MemberOrderDirection *string `json:"MemberOrderDirection,omitnil,omitempty" name:"MemberOrderDirection"`
 }
 
 type DescribeAddressTemplateGroupsRequest struct {
@@ -11401,6 +11425,18 @@ type DescribeAddressTemplateGroupsRequest struct {
 
 	// 是否查询IP地址模板成员标识。
 	NeedMemberInfo *bool `json:"NeedMemberInfo,omitnil,omitempty" name:"NeedMemberInfo"`
+
+	// 排序字段。支持：`AddressTemplateGroupId ` `CreatedTime` `UpdateTime`。注意：该字段没有默认值。
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
+
+	// IP地址成员排序字段。支持：`AddressTemplateId` `UpdateTime`。注意：该字段没有默认值。
+	MemberOrderField *string `json:"MemberOrderField,omitnil,omitempty" name:"MemberOrderField"`
+
+	// IP地址成员排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+	MemberOrderDirection *string `json:"MemberOrderDirection,omitnil,omitempty" name:"MemberOrderDirection"`
 }
 
 func (r *DescribeAddressTemplateGroupsRequest) ToJsonString() string {
@@ -11419,6 +11455,10 @@ func (r *DescribeAddressTemplateGroupsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "NeedMemberInfo")
+	delete(f, "OrderField")
+	delete(f, "OrderDirection")
+	delete(f, "MemberOrderField")
+	delete(f, "MemberOrderDirection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAddressTemplateGroupsRequest has unknown keys!", "")
 	}
@@ -11469,6 +11509,18 @@ type DescribeAddressTemplatesRequestParams struct {
 
 	// 是否获取IP地址模板成员标识。
 	NeedMemberInfo *bool `json:"NeedMemberInfo,omitnil,omitempty" name:"NeedMemberInfo"`
+
+	// 排序字段。支持：`AddressTemplateId` `CreatedTime` `UpdateTime`。注意：该字段没有默认值。
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
+
+	// IP成员排序字段。支持：`Address` `UpdateTime`。注意：该字段没有默认值。
+	MemberOrderField *string `json:"MemberOrderField,omitnil,omitempty" name:"MemberOrderField"`
+
+	// IP成员排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+	MemberOrderDirection *string `json:"MemberOrderDirection,omitnil,omitempty" name:"MemberOrderDirection"`
 }
 
 type DescribeAddressTemplatesRequest struct {
@@ -11488,6 +11540,18 @@ type DescribeAddressTemplatesRequest struct {
 
 	// 是否获取IP地址模板成员标识。
 	NeedMemberInfo *bool `json:"NeedMemberInfo,omitnil,omitempty" name:"NeedMemberInfo"`
+
+	// 排序字段。支持：`AddressTemplateId` `CreatedTime` `UpdateTime`。注意：该字段没有默认值。
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
+
+	// IP成员排序字段。支持：`Address` `UpdateTime`。注意：该字段没有默认值。
+	MemberOrderField *string `json:"MemberOrderField,omitnil,omitempty" name:"MemberOrderField"`
+
+	// IP成员排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+	MemberOrderDirection *string `json:"MemberOrderDirection,omitnil,omitempty" name:"MemberOrderDirection"`
 }
 
 func (r *DescribeAddressTemplatesRequest) ToJsonString() string {
@@ -11506,6 +11570,10 @@ func (r *DescribeAddressTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "NeedMemberInfo")
+	delete(f, "OrderField")
+	delete(f, "OrderDirection")
+	delete(f, "MemberOrderField")
+	delete(f, "MemberOrderDirection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAddressTemplatesRequest has unknown keys!", "")
 	}
@@ -17385,6 +17453,18 @@ type DescribeServiceTemplateGroupsRequestParams struct {
 
 	// 是否获取协议端口模板成员标识。
 	NeedMemberInfo *bool `json:"NeedMemberInfo,omitnil,omitempty" name:"NeedMemberInfo"`
+
+	// 排序字段。支持：`ServiceTemplateGroupId ` `CreatedTime` `UpdateTime`。注意：该字段没有默认值。
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
+
+	// 协议端口成员排序字段。支持：`ServiceTemplateId ` `UpdateTime`。注意：该字段没有默认值。
+	MemberOrderField *string `json:"MemberOrderField,omitnil,omitempty" name:"MemberOrderField"`
+
+	// 协议端口成员排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+	MemberOrderDirection *string `json:"MemberOrderDirection,omitnil,omitempty" name:"MemberOrderDirection"`
 }
 
 type DescribeServiceTemplateGroupsRequest struct {
@@ -17403,6 +17483,18 @@ type DescribeServiceTemplateGroupsRequest struct {
 
 	// 是否获取协议端口模板成员标识。
 	NeedMemberInfo *bool `json:"NeedMemberInfo,omitnil,omitempty" name:"NeedMemberInfo"`
+
+	// 排序字段。支持：`ServiceTemplateGroupId ` `CreatedTime` `UpdateTime`。注意：该字段没有默认值。
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
+
+	// 协议端口成员排序字段。支持：`ServiceTemplateId ` `UpdateTime`。注意：该字段没有默认值。
+	MemberOrderField *string `json:"MemberOrderField,omitnil,omitempty" name:"MemberOrderField"`
+
+	// 协议端口成员排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+	MemberOrderDirection *string `json:"MemberOrderDirection,omitnil,omitempty" name:"MemberOrderDirection"`
 }
 
 func (r *DescribeServiceTemplateGroupsRequest) ToJsonString() string {
@@ -17421,6 +17513,10 @@ func (r *DescribeServiceTemplateGroupsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "NeedMemberInfo")
+	delete(f, "OrderField")
+	delete(f, "OrderDirection")
+	delete(f, "MemberOrderField")
+	delete(f, "MemberOrderDirection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServiceTemplateGroupsRequest has unknown keys!", "")
 	}
@@ -17471,6 +17567,18 @@ type DescribeServiceTemplatesRequestParams struct {
 
 	// 是否获取协议端口成员标识。
 	NeedMemberInfo *bool `json:"NeedMemberInfo,omitnil,omitempty" name:"NeedMemberInfo"`
+
+	// 排序字段。支持：`ServiceTemplateId ` `CreatedTime` `UpdateTime`。注意：该字段没有默认值。
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
+
+	// 协议端口排序字段。支持：`Service ` `UpdateTime`。注意：该字段没有默认值。
+	MemberOrderField *string `json:"MemberOrderField,omitnil,omitempty" name:"MemberOrderField"`
+
+	// 协议端口排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+	MemberOrderDirection *string `json:"MemberOrderDirection,omitnil,omitempty" name:"MemberOrderDirection"`
 }
 
 type DescribeServiceTemplatesRequest struct {
@@ -17490,6 +17598,18 @@ type DescribeServiceTemplatesRequest struct {
 
 	// 是否获取协议端口成员标识。
 	NeedMemberInfo *bool `json:"NeedMemberInfo,omitnil,omitempty" name:"NeedMemberInfo"`
+
+	// 排序字段。支持：`ServiceTemplateId ` `CreatedTime` `UpdateTime`。注意：该字段没有默认值。
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
+
+	// 协议端口排序字段。支持：`Service ` `UpdateTime`。注意：该字段没有默认值。
+	MemberOrderField *string `json:"MemberOrderField,omitnil,omitempty" name:"MemberOrderField"`
+
+	// 协议端口排序方法。升序：`ASC`，倒序：`DESC`。注意：该字段没有默认值。
+	MemberOrderDirection *string `json:"MemberOrderDirection,omitnil,omitempty" name:"MemberOrderDirection"`
 }
 
 func (r *DescribeServiceTemplatesRequest) ToJsonString() string {
@@ -17508,6 +17628,10 @@ func (r *DescribeServiceTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "NeedMemberInfo")
+	delete(f, "OrderField")
+	delete(f, "OrderDirection")
+	delete(f, "MemberOrderField")
+	delete(f, "MemberOrderDirection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServiceTemplatesRequest has unknown keys!", "")
 	}
@@ -31405,11 +31529,13 @@ type ServiceTemplate struct {
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
+	// 最后更新时间。
+	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
+
 	// 带备注的协议端口信息。
 	ServiceExtraSet []*ServicesInfo `json:"ServiceExtraSet,omitnil,omitempty" name:"ServiceExtraSet"`
 
 	// 标签键值对。	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
@@ -31426,11 +31552,13 @@ type ServiceTemplateGroup struct {
 	// 创建时间。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
+	// 最后更新时间。
+	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
+
 	// 协议端口模板实例信息。
 	ServiceTemplateSet []*ServiceTemplate `json:"ServiceTemplateSet,omitnil,omitempty" name:"ServiceTemplateSet"`
 
 	// 标签键值对。	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
@@ -31448,6 +31576,9 @@ type ServicesInfo struct {
 
 	// 备注。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 更新时间。
+	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 }
 
 // Predefined struct for user

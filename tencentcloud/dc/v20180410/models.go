@@ -254,7 +254,6 @@ type CloudAttachInfo struct {
 	ApplyTime *string `json:"ApplyTime,omitnil,omitempty" name:"ApplyTime"`
 
 	// 敏捷上云建设完成的时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadyTime *string `json:"ReadyTime,omitnil,omitempty" name:"ReadyTime"`
 
 	// 敏捷上云过期时间
@@ -285,6 +284,9 @@ type CloudAttachInfo struct {
 
 	// 敏捷上云服务是否处于升降配中
 	BUpdateBandwidth *bool `json:"BUpdateBandwidth,omitnil,omitempty" name:"BUpdateBandwidth"`
+
+	// 接入地域
+	ArRegion *string `json:"ArRegion,omitnil,omitempty" name:"ArRegion"`
 }
 
 type Coordinate struct {
@@ -313,6 +315,9 @@ type CreateCasInput struct {
 
 	// 备注信息
 	Remarks *string `json:"Remarks,omitnil,omitempty" name:"Remarks"`
+
+	// 接入地域
+	ArRegion *string `json:"ArRegion,omitnil,omitempty" name:"ArRegion"`
 }
 
 // Predefined struct for user

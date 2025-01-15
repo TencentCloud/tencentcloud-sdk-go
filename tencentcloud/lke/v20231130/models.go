@@ -8667,6 +8667,9 @@ type QAQuery struct {
 
 	// 查询答案
 	QueryAnswer *string `json:"QueryAnswer,omitnil,omitempty" name:"QueryAnswer"`
+
+	// 查询类型 filename 名称、 attribute 标签
+	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
 }
 
 // Predefined struct for user
