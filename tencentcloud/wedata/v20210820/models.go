@@ -3773,7 +3773,7 @@ type CreateHiveTableByDDLRequestParams struct {
 	// 数据库
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
 
-	// 建hive表ddl
+	// 建hive表ddl的base64编码
 	DDLSql *string `json:"DDLSql,omitnil,omitempty" name:"DDLSql"`
 
 	// 表权限 ，默认为0:项目共享;1:仅个人与管理员
@@ -3813,7 +3813,7 @@ type CreateHiveTableByDDLRequest struct {
 	// 数据库
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
 
-	// 建hive表ddl
+	// 建hive表ddl的base64编码
 	DDLSql *string `json:"DDLSql,omitnil,omitempty" name:"DDLSql"`
 
 	// 表权限 ，默认为0:项目共享;1:仅个人与管理员
@@ -4285,6 +4285,7 @@ type CreateOfflineTaskResponseParams struct {
 	ArrangeSpaceTaskId *string `json:"ArrangeSpaceTaskId,omitnil,omitempty" name:"ArrangeSpaceTaskId"`
 
 	// 结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -17773,6 +17774,119 @@ func (r *DescribeTaskScriptResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTaskTableMetricOverviewRequestParams struct {
+	// 任务TaskId
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 来源类型，支持枚举： SOURCE、SINK
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务类型：201. stream, 202. offline，当前只支持实时201
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 根据SchemaName来模糊搜索
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序
+	OrderFields []*OrderFields `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+}
+
+type DescribeTaskTableMetricOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务TaskId
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 来源类型，支持枚举： SOURCE、SINK
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务类型：201. stream, 202. offline，当前只支持实时201
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 根据SchemaName来模糊搜索
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序
+	OrderFields []*OrderFields `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+}
+
+func (r *DescribeTaskTableMetricOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskTableMetricOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "NodeType")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "ProjectId")
+	delete(f, "TaskType")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskTableMetricOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskTableMetricOverviewResponseParams struct {
+	// 表粒度指标集合
+	TaskTableMetricInfos []*TaskTableMetricInfo `json:"TaskTableMetricInfos,omitnil,omitempty" name:"TaskTableMetricInfos"`
+
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 返回列表类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricType *string `json:"MetricType,omitnil,omitempty" name:"MetricType"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskTableMetricOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskTableMetricOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeTaskTableMetricOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskTableMetricOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTemplateDimCountRequestParams struct {
 	// 模板类型
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
@@ -24875,6 +24989,14 @@ type OrderFieldOptional struct {
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 }
 
+type OrderFields struct {
+	// 字段
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 排序
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+}
+
 type OrganizationalFunction struct {
 	// 名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -30758,6 +30880,114 @@ type TaskSubmitPreCheckDetailInfo struct {
 	// 责任人名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InCharge *string `json:"InCharge,omitnil,omitempty" name:"InCharge"`
+}
+
+type TaskTableMetricInfo struct {
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 总记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalRecordNum *int64 `json:"TotalRecordNum,omitnil,omitempty" name:"TotalRecordNum"`
+
+	// 总字节数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalRecordByteNum *int64 `json:"TotalRecordByteNum,omitnil,omitempty" name:"TotalRecordByteNum"`
+
+	// 总脏记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalDirtyRecordNum *int64 `json:"TotalDirtyRecordNum,omitnil,omitempty" name:"TotalDirtyRecordNum"`
+
+	// Schema名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// topic名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// Collection名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Collection *string `json:"Collection,omitnil,omitempty" name:"Collection"`
+
+	// 数据源名称
+	DataSourceName *string `json:"DataSourceName,omitnil,omitempty" name:"DataSourceName"`
+
+	// 节点id
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// 逻辑库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogicDatabase *string `json:"LogicDatabase,omitnil,omitempty" name:"LogicDatabase"`
+
+	// 逻辑表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogicTable *string `json:"LogicTable,omitnil,omitempty" name:"LogicTable"`
+
+	// 逻辑schema名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogicSchema *string `json:"LogicSchema,omitnil,omitempty" name:"LogicSchema"`
+
+	// 物理表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskTableMetricInfos []*TaskTableMetricInfo `json:"TaskTableMetricInfos,omitnil,omitempty" name:"TaskTableMetricInfos"`
+
+	// 同步状态，0-未知，1-正常， 2-异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SyncStatus *int64 `json:"SyncStatus,omitnil,omitempty" name:"SyncStatus"`
+
+	// Target数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetDatabaseName *string `json:"TargetDatabaseName,omitnil,omitempty" name:"TargetDatabaseName"`
+
+	// Target表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetTableName *string `json:"TargetTableName,omitnil,omitempty" name:"TargetTableName"`
+
+	// Write总记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WriteTotalRecordNum *int64 `json:"WriteTotalRecordNum,omitnil,omitempty" name:"WriteTotalRecordNum"`
+
+	// Write总字节数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WriteTotalRecordByteNum *string `json:"WriteTotalRecordByteNum,omitnil,omitempty" name:"WriteTotalRecordByteNum"`
+
+	// TargetSchema名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetSchemaName *string `json:"TargetSchemaName,omitnil,omitempty" name:"TargetSchemaName"`
+
+	// Targettopic名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetTopic *string `json:"TargetTopic,omitnil,omitempty" name:"TargetTopic"`
+
+	// TargetCollection名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetCollection *string `json:"TargetCollection,omitnil,omitempty" name:"TargetCollection"`
+
+	// 数据源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetDataSourceName *string `json:"TargetDataSourceName,omitnil,omitempty" name:"TargetDataSourceName"`
+
+	// 节点id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetNodeId *string `json:"TargetNodeId,omitnil,omitempty" name:"TargetNodeId"`
+
+	// 读取条数的速度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalRecordSpeed *float64 `json:"TotalRecordSpeed,omitnil,omitempty" name:"TotalRecordSpeed"`
+
+	// 写入条数的速度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WriteTotalRecordSpeed *float64 `json:"WriteTotalRecordSpeed,omitnil,omitempty" name:"WriteTotalRecordSpeed"`
+
+	// 异常原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExceptionReason *string `json:"ExceptionReason,omitnil,omitempty" name:"ExceptionReason"`
 }
 
 type TaskTag struct {

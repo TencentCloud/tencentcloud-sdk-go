@@ -9015,6 +9015,67 @@ func (c *Client) DescribeTaskScriptWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeTaskTableMetricOverviewRequest() (request *DescribeTaskTableMetricOverviewRequest) {
+    request = &DescribeTaskTableMetricOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTaskTableMetricOverview")
+    
+    
+    return
+}
+
+func NewDescribeTaskTableMetricOverviewResponse() (response *DescribeTaskTableMetricOverviewResponse) {
+    response = &DescribeTaskTableMetricOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTaskTableMetricOverview
+// 查询实时任务表粒度指标概览
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTaskTableMetricOverview(request *DescribeTaskTableMetricOverviewRequest) (response *DescribeTaskTableMetricOverviewResponse, err error) {
+    return c.DescribeTaskTableMetricOverviewWithContext(context.Background(), request)
+}
+
+// DescribeTaskTableMetricOverview
+// 查询实时任务表粒度指标概览
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTaskTableMetricOverviewWithContext(ctx context.Context, request *DescribeTaskTableMetricOverviewRequest) (response *DescribeTaskTableMetricOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskTableMetricOverviewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskTableMetricOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTaskTableMetricOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTemplateDimCountRequest() (request *DescribeTemplateDimCountRequest) {
     request = &DescribeTemplateDimCountRequest{
         BaseRequest: &tchttp.BaseRequest{},

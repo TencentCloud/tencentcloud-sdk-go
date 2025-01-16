@@ -13848,7 +13848,7 @@ type EditMediaVideoStream struct {
 	// <li>H.266：H.266 编码。</li>
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
-	// 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+	// 视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
 	// 当取值为 0 或不填时，表示自动选择最佳视频码率。
 	Bitrate *uint64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 
@@ -26529,7 +26529,7 @@ type VideoTemplateInfo struct {
 	// 当取值为 0，表示帧率和原始视频保持一致。
 	Fps *uint64 `json:"Fps,omitnil,omitempty" name:"Fps"`
 
-	// 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+	// 视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
 	// 当取值为 0，表示视频码率和原始视频保持一致。
 	Bitrate *uint64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 
@@ -26603,7 +26603,7 @@ type VideoTemplateInfoForUpdate struct {
 	// 当取值为 0，表示帧率和原始视频保持一致。
 	Fps *uint64 `json:"Fps,omitnil,omitempty" name:"Fps"`
 
-	// 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
+	// 视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
 	// 当取值为 0，表示视频码率和原始视频保持一致。
 	Bitrate *uint64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 

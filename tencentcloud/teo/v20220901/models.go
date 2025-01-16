@@ -8304,9 +8304,7 @@ type DescribeSecurityIPGroupRequestParams struct {
 	// 站点 ID ，用于指定查询的站点范围。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 指定安全 IP 组 ID。
-	// <li>提供该参数时，仅查询指定 ID 的安全 IP 组配置；</li>
-	// <li>不传递参数时，返回站点下所有安全 IP 组信息。</li>
+	// 指定安全 IP 组 ID。 <li>提供该参数时，仅查询指定 ID 的安全 IP 组配置；</li> <li>不传递参数时，返回站点下所有安全 IP 组信息。</li>
 	GroupIds []*int64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 }
 
@@ -8316,9 +8314,7 @@ type DescribeSecurityIPGroupRequest struct {
 	// 站点 ID ，用于指定查询的站点范围。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 指定安全 IP 组 ID。
-	// <li>提供该参数时，仅查询指定 ID 的安全 IP 组配置；</li>
-	// <li>不传递参数时，返回站点下所有安全 IP 组信息。</li>
+	// 指定安全 IP 组 ID。 <li>提供该参数时，仅查询指定 ID 的安全 IP 组配置；</li> <li>不传递参数时，返回站点下所有安全 IP 组信息。</li>
 	GroupIds []*int64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 }
 

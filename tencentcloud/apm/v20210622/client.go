@@ -122,7 +122,7 @@ func NewDescribeApmAgentResponse() (response *DescribeApmAgentResponse) {
 }
 
 // DescribeApmAgent
-// 获取 APM Agent信息
+// 获取 APM 接入点
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -140,7 +140,7 @@ func (c *Client) DescribeApmAgent(request *DescribeApmAgentRequest) (response *D
 }
 
 // DescribeApmAgent
-// 获取 APM Agent信息
+// 获取 APM 接入点
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -189,7 +189,7 @@ func NewDescribeApmInstancesResponse() (response *DescribeApmInstancesResponse) 
 }
 
 // DescribeApmInstances
-// 拉取 APM 业务系统列表
+// 获取 APM 业务系统列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_ACCESSCAMFAIL = "AuthFailure.AccessCAMFail"
@@ -202,7 +202,7 @@ func (c *Client) DescribeApmInstances(request *DescribeApmInstancesRequest) (res
 }
 
 // DescribeApmInstances
-// 拉取 APM 业务系统列表
+// 获取 APM 业务系统列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_ACCESSCAMFAIL = "AuthFailure.AccessCAMFail"
@@ -445,7 +445,7 @@ func NewDescribeMetricRecordsResponse() (response *DescribeMetricRecordsResponse
 }
 
 // DescribeMetricRecords
-// 拉取通用指标列表
+// 查询指标列表接口，查询指标更推荐使用DescribeGeneralMetricData接口
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -461,7 +461,7 @@ func (c *Client) DescribeMetricRecords(request *DescribeMetricRecordsRequest) (r
 }
 
 // DescribeMetricRecords
-// 拉取通用指标列表
+// 查询指标列表接口，查询指标更推荐使用DescribeGeneralMetricData接口
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -5340,6 +5340,15 @@ func (r *RecoverBackUpJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RecoverBackUpJobResponseParams struct {
+	// 恢复任务总数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 重复的表名
+	DuplicateTables []*string `json:"DuplicateTables,omitnil,omitempty" name:"DuplicateTables"`
+
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -5466,18 +5475,15 @@ type RegionInfo struct {
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
 	// 地域下所有可用区列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zones []*ZoneInfo `json:"Zones,omitnil,omitempty" name:"Zones"`
 
 	// 该地域下集群数目
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 0代表是国际站 1代表不是
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsInternationalSite *uint64 `json:"IsInternationalSite,omitnil,omitempty" name:"IsInternationalSite"`
 
 	// 桶
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 }
 
@@ -5572,27 +5578,21 @@ type ResourceSpec struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 系统盘描述信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SystemDisk *DiskSpec `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
 
 	// 数据盘描述信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataDisk *DiskSpec `json:"DataDisk,omitnil,omitempty" name:"DataDisk"`
 
 	// 最大节点数目限制
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxNodeSize *int64 `json:"MaxNodeSize,omitnil,omitempty" name:"MaxNodeSize"`
 
 	// 是否可用，false代表售罄
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Available *bool `json:"Available,omitnil,omitempty" name:"Available"`
 
 	// 规格描述信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComputeSpecDesc *string `json:"ComputeSpecDesc,omitnil,omitempty" name:"ComputeSpecDesc"`
 
 	// cvm库存
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceQuota *int64 `json:"InstanceQuota,omitnil,omitempty" name:"InstanceQuota"`
 }
 
@@ -5823,11 +5823,9 @@ type RestoreStatus struct {
 	ReserveDynamicPartitionEnable *bool `json:"ReserveDynamicPartitionEnable,omitnil,omitempty" name:"ReserveDynamicPartitionEnable"`
 
 	// 备份实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupJobId *int64 `json:"BackupJobId,omitnil,omitempty" name:"BackupJobId"`
 
 	// 实例对应snapshot的id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -5994,7 +5992,6 @@ func (r *ScaleUpInstanceResponse) FromJsonString(s string) error {
 
 type ScheduleInfo struct {
 	// 生效周期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EffectivePeriod *string `json:"EffectivePeriod,omitnil,omitempty" name:"EffectivePeriod"`
 
 	// 调度类型，不传该参数时为立即执行：
@@ -6002,32 +5999,25 @@ type ScheduleInfo struct {
 	// Week-周
 	// Month-月
 	// Once-单次
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleType *string `json:"ScheduleType,omitnil,omitempty" name:"ScheduleType"`
 
 	// 执行调度的日期。调度类型为周和月时以英文逗号分隔；
 	// 调度类型为单次时，该值是个日期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleData *string `json:"ScheduleData,omitnil,omitempty" name:"ScheduleData"`
 
 	// 执行时间：时
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleHour *int64 `json:"ScheduleHour,omitnil,omitempty" name:"ScheduleHour"`
 
 	// 执行时间：分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleMin *int64 `json:"ScheduleMin,omitnil,omitempty" name:"ScheduleMin"`
 
 	// 备份粒度：
 	// All-全量
 	// Database-按库
 	// Table-按表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupScope *string `json:"BackupScope,omitnil,omitempty" name:"BackupScope"`
 
 	// 备份库：如果是按库备份，则需要该字段，库之间用英文逗号分割
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupDatabase *string `json:"BackupDatabase,omitnil,omitempty" name:"BackupDatabase"`
 }
 
@@ -6155,7 +6145,6 @@ func (r *UpdateCoolDownRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateCoolDownResponseParams struct {
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6214,33 +6203,26 @@ type UserInfo struct {
 
 type UserWorkloadGroup struct {
 	// test
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// normal
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkloadGroupName *string `json:"WorkloadGroupName,omitnil,omitempty" name:"WorkloadGroupName"`
 }
 
 type WorkloadGroupConfig struct {
 	// 资源组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkloadGroupName *string `json:"WorkloadGroupName,omitnil,omitempty" name:"WorkloadGroupName"`
 
 	// CPU权重
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CpuShare *int64 `json:"CpuShare,omitnil,omitempty" name:"CpuShare"`
 
 	// 内存限制，所有资源组的内存限制值之和应该小于等于100
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemoryLimit *int64 `json:"MemoryLimit,omitnil,omitempty" name:"MemoryLimit"`
 
 	// 是否允许超配分配
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableMemoryOverCommit *bool `json:"EnableMemoryOverCommit,omitnil,omitempty" name:"EnableMemoryOverCommit"`
 
 	// cpu硬限制
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CpuHardLimit *string `json:"CpuHardLimit,omitnil,omitempty" name:"CpuHardLimit"`
 }
 
@@ -6255,10 +6237,8 @@ type ZoneInfo struct {
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// Encryptid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Encrypt *int64 `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
 
 	// 是否为主力园区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Main *bool `json:"Main,omitnil,omitempty" name:"Main"`
 }

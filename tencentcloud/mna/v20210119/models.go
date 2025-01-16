@@ -227,7 +227,6 @@ type AddDeviceResponseParams struct {
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 签名字符串
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Signature *string `json:"Signature,omitnil,omitempty" name:"Signature"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1003,23 +1002,18 @@ type DeviceBaseInfo struct {
 	Payer *int64 `json:"Payer,omitnil,omitempty" name:"Payer"`
 
 	// 设备分组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 设备分组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 设备无流量包处理方式，0: 按量付费，1: 截断加速
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowTrunc *int64 `json:"FlowTrunc,omitnil,omitempty" name:"FlowTrunc"`
 
 	// 设备sn
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sn *string `json:"Sn,omitnil,omitempty" name:"Sn"`
 
 	// 厂商
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vendor *string `json:"Vendor,omitnil,omitempty" name:"Vendor"`
 }
 
@@ -1028,19 +1022,15 @@ type DeviceDetails struct {
 	DeviceBaseInfo *DeviceBaseInfo `json:"DeviceBaseInfo,omitnil,omitempty" name:"DeviceBaseInfo"`
 
 	// 设备网络信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceNetInfo []*DeviceNetInfo `json:"DeviceNetInfo,omitnil,omitempty" name:"DeviceNetInfo"`
 
 	// 聚合服务器地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewaySite *string `json:"GatewaySite,omitnil,omitempty" name:"GatewaySite"`
 
 	// 业务下行速率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessDownRate *float64 `json:"BusinessDownRate,omitnil,omitempty" name:"BusinessDownRate"`
 
 	// 业务上行速率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessUpRate *float64 `json:"BusinessUpRate,omitnil,omitempty" name:"BusinessUpRate"`
 }
 
@@ -1080,7 +1070,6 @@ type DeviceNetInfo struct {
 	// 0:数据
 	// 1:Wi-Fi
 	// 2:有线
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 启用/禁用
@@ -1486,15 +1475,12 @@ func (r *GetFlowAlarmInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetFlowAlarmInfoResponseParams struct {
 	// 流量包的告警阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmValue *int64 `json:"AlarmValue,omitnil,omitempty" name:"AlarmValue"`
 
 	// 告警通知回调url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotifyUrl *string `json:"NotifyUrl,omitnil,omitempty" name:"NotifyUrl"`
 
 	// 告警通知回调key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallbackKey *string `json:"CallbackKey,omitnil,omitempty" name:"CallbackKey"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2409,7 +2395,6 @@ func (r *GetNetMonitorRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetNetMonitorResponseParams struct {
 	// 监控数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorData []*MonitorData `json:"MonitorData,omitnil,omitempty" name:"MonitorData"`
 
 	// 接入区域。取值范围：['MC','AP','EU','AM']

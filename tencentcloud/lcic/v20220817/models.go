@@ -5312,11 +5312,10 @@ type RegisterUserRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 用户名称。
+	// 对应用户昵称。对应修改用户信息下“nickname“字段，在修改用户信息时，可以对该字段进行调整，从而更改用户的昵称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 用户在客户系统的Id，需要在同一应用下唯一。入参为空时默认赋值为UserId
-	// 。
+	// 用户在客户系统的Id，需要在同一应用下唯一。入参为空时默认赋值为UserId。
 	OriginId *string `json:"OriginId,omitnil,omitempty" name:"OriginId"`
 
 	// 用户头像。
@@ -5329,11 +5328,10 @@ type RegisterUserRequest struct {
 	// 低代码互动课堂的SdkAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 用户名称。
+	// 对应用户昵称。对应修改用户信息下“nickname“字段，在修改用户信息时，可以对该字段进行调整，从而更改用户的昵称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 用户在客户系统的Id，需要在同一应用下唯一。入参为空时默认赋值为UserId
-	// 。
+	// 用户在客户系统的Id，需要在同一应用下唯一。入参为空时默认赋值为UserId。
 	OriginId *string `json:"OriginId,omitnil,omitempty" name:"OriginId"`
 
 	// 用户头像。

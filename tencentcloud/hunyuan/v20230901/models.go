@@ -182,6 +182,13 @@ type ChatCompletionsRequestParams struct {
 	ForceSearchEnhancement *bool `json:"ForceSearchEnhancement,omitnil,omitempty" name:"ForceSearchEnhancement"`
 
 	// 自定义结束生成字符串
+	// 
+	// 调用 OpenAI 的接口时，如果您指定了 `stop` 参数, 模型会停止在匹配到 `stop` 的内容之前。
+	// 在调用混元接口时，会停止在匹配到 `stop` 的内容之后。
+	// 
+	// **说明：**
+	// 未来我们可能会修改此行为以便和 OpenAI 保持一致。
+	// 但是目前有使用该参数的情况下，开发者需要注意该参数是否会对应用造成影响，以及未来该行为调整时带来的影响。
 	Stop []*string `json:"Stop,omitnil,omitempty" name:"Stop"`
 
 	// 推荐问答开关。
@@ -300,6 +307,13 @@ type ChatCompletionsRequest struct {
 	ForceSearchEnhancement *bool `json:"ForceSearchEnhancement,omitnil,omitempty" name:"ForceSearchEnhancement"`
 
 	// 自定义结束生成字符串
+	// 
+	// 调用 OpenAI 的接口时，如果您指定了 `stop` 参数, 模型会停止在匹配到 `stop` 的内容之前。
+	// 在调用混元接口时，会停止在匹配到 `stop` 的内容之后。
+	// 
+	// **说明：**
+	// 未来我们可能会修改此行为以便和 OpenAI 保持一致。
+	// 但是目前有使用该参数的情况下，开发者需要注意该参数是否会对应用造成影响，以及未来该行为调整时带来的影响。
 	Stop []*string `json:"Stop,omitnil,omitempty" name:"Stop"`
 
 	// 推荐问答开关。

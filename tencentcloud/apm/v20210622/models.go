@@ -116,54 +116,33 @@ type ApmApplicationConfigView struct {
 }
 
 type ApmField struct {
-	// 昨日同比指标值，已弃用，不建议使用
-	CompareVal *string `json:"CompareVal,omitnil,omitempty" name:"CompareVal"`
+	// 指标名
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// Compare值结果数组，推荐使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CompareVals []*APMKVItem `json:"CompareVals,omitnil,omitempty" name:"CompareVals"`
-
-	// 指标值
+	// 指标数值
 	Value *float64 `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 指标所对应的单位
 	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
 
-	// 请求数
-	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+	// 同比结果数组，推荐使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompareVals []*APMKVItem `json:"CompareVals,omitnil,omitempty" name:"CompareVals"`
 
-	// 同环比上周期具体数值
+	// 同比上一个周期的具体指标数值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastPeriodValue []*APMKV `json:"LastPeriodValue,omitnil,omitempty" name:"LastPeriodValue"`
+
+	// 同比指标值，已弃用，不建议使用
+	CompareVal *string `json:"CompareVal,omitnil,omitempty" name:"CompareVal"`
 }
 
 type ApmInstanceDetail struct {
-	// 存储使用量( MB )
-	AmountOfUsedStorage *float64 `json:"AmountOfUsedStorage,omitnil,omitempty" name:"AmountOfUsedStorage"`
-
-	// 业务系统名
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
-	// 业务系统所属 Tag 列表
-	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
-
 	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 创建人 Uin
-	CreateUin *string `json:"CreateUin,omitnil,omitempty" name:"CreateUin"`
-
-	// 该业务系统已上报的服务端应用数量
-	ServiceCount *int64 `json:"ServiceCount,omitnil,omitempty" name:"ServiceCount"`
-
-	// 日均上报 Span 数
-	CountOfReportSpanPerDay *int64 `json:"CountOfReportSpanPerDay,omitnil,omitempty" name:"CountOfReportSpanPerDay"`
-
-	// AppID 信息
-	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
-
-	// Trace 数据保存时长
-	TraceDuration *int64 `json:"TraceDuration,omitnil,omitempty" name:"TraceDuration"`
+	// 业务系统名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 业务系统描述信息
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
@@ -174,86 +153,105 @@ type ApmInstanceDetail struct {
 	// 业务系统所属地域
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
+	// 业务系统 Tag 列表
+	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// AppID 信息
+	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 创建人 Uin
+	CreateUin *string `json:"CreateUin,omitnil,omitempty" name:"CreateUin"`
+
+	// 存储使用量(单位：MB)
+	AmountOfUsedStorage *float64 `json:"AmountOfUsedStorage,omitnil,omitempty" name:"AmountOfUsedStorage"`
+
+	// 该业务系统服务端应用数量
+	ServiceCount *int64 `json:"ServiceCount,omitnil,omitempty" name:"ServiceCount"`
+
+	// 日均上报 Span 数
+	CountOfReportSpanPerDay *int64 `json:"CountOfReportSpanPerDay,omitnil,omitempty" name:"CountOfReportSpanPerDay"`
+
+	// Trace 数据保存时长（单位：天）
+	TraceDuration *int64 `json:"TraceDuration,omitnil,omitempty" name:"TraceDuration"`
+
 	// 业务系统上报额度
 	SpanDailyCounters *int64 `json:"SpanDailyCounters,omitnil,omitempty" name:"SpanDailyCounters"`
 
-	// 业务系统是否开通计费
+	// 业务系统是否已开通计费（0=未开通，1=已开通）
 	BillingInstance *int64 `json:"BillingInstance,omitnil,omitempty" name:"BillingInstance"`
 
-	// 错误率阈值
+	// 错误警示线（单位：%）
 	ErrRateThreshold *int64 `json:"ErrRateThreshold,omitnil,omitempty" name:"ErrRateThreshold"`
 
-	// 采样率阈值
+	// 采样率（单位：%）
 	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
-	// 是否开启错误采样 0  关 1 开
+	// 是否开启错误采样（0=关, 1=开）
 	ErrorSample *int64 `json:"ErrorSample,omitnil,omitempty" name:"ErrorSample"`
 
-	// 慢调用保存阈值
+	// 采样慢调用保存阈值（单位：ms）
 	SlowRequestSavedThreshold *int64 `json:"SlowRequestSavedThreshold,omitnil,omitempty" name:"SlowRequestSavedThreshold"`
 
 	// CLS 日志所在地域
 	LogRegion *string `json:"LogRegion,omitnil,omitempty" name:"LogRegion"`
 
-	// 日志来源
+	// 日志源
 	LogSource *string `json:"LogSource,omitnil,omitempty" name:"LogSource"`
 
-	// 日志功能开关 0 关 | 1 开
+	// 日志功能开关（0=关， 1=开）
 	IsRelatedLog *int64 `json:"IsRelatedLog,omitnil,omitempty" name:"IsRelatedLog"`
 
-	// 日志主题ID
+	// 日志主题 ID
 	LogTopicID *string `json:"LogTopicID,omitnil,omitempty" name:"LogTopicID"`
 
-	// 该实例已上报的客户端应用数量
+	// 该业务系统客户端应用数量
 	ClientCount *int64 `json:"ClientCount,omitnil,omitempty" name:"ClientCount"`
 
-	// 该实例已上报的总应用数量
+	// 该业务系统最近2天活跃应用数量
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// CLS 日志集 | ES 集群ID
+	// CLS 日志集
 	LogSet *string `json:"LogSet,omitnil,omitempty" name:"LogSet"`
 
-	// Metric 数据保存时长
+	// Metric 数据保存时长（单位：天）
 	MetricDuration *int64 `json:"MetricDuration,omitnil,omitempty" name:"MetricDuration"`
 
 	// 用户自定义展示标签列表
 	CustomShowTags []*string `json:"CustomShowTags,omitnil,omitempty" name:"CustomShowTags"`
 
-	// 业务系统计费模式
-	// 1为预付费
-	// 0为按量付费
+	// 业务系统计费模式（1为预付费，0为按量付费）
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 业务系统计费模式是否生效
 	PayModeEffective *bool `json:"PayModeEffective,omitnil,omitempty" name:"PayModeEffective"`
 
-	// 响应时间满意阈值
+	// 响应时间警示线（单位：ms）
 	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
 
 	// 是否免费（0=否，1=限额免费，2=完全免费），默认0
 	Free *int64 `json:"Free,omitnil,omitempty" name:"Free"`
 
-	// 是否 tsf 默认业务系统（0=否，1-是）
+	// 是否 TSF 默认业务系统（0=否，1=是）
 	DefaultTSF *int64 `json:"DefaultTSF,omitnil,omitempty" name:"DefaultTSF"`
 
-	// 是否关联 Dashboard： 0 关 1 开
+	// 是否关联 Dashboard（0=关, 1=开）
 	IsRelatedDashboard *int64 `json:"IsRelatedDashboard,omitnil,omitempty" name:"IsRelatedDashboard"`
 
-	// Dashboard ID
+	// 关联的 Dashboard ID
 	DashboardTopicID *string `json:"DashboardTopicID,omitnil,omitempty" name:"DashboardTopicID"`
 
-	// 是否开启组件漏洞检测
+	// 是否开启组件漏洞检测（0=关， 1=开）
 	IsInstrumentationVulnerabilityScan *int64 `json:"IsInstrumentationVulnerabilityScan,omitnil,omitempty" name:"IsInstrumentationVulnerabilityScan"`
 
-	// 是否开启 SQL 注入分析
+	// 是否开启 SQL 注入分析（0=关， 1=开）
 	IsSqlInjectionAnalysis *int64 `json:"IsSqlInjectionAnalysis,omitnil,omitempty" name:"IsSqlInjectionAnalysis"`
 }
 
 type ApmMetricRecord struct {
-	// field数组
+	// field数组，用于指标的查询结果
 	Fields []*ApmField `json:"Fields,omitnil,omitempty" name:"Fields"`
 
-	// tag数组
+	// tag数组，用于区分 Groupby 的对象
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
@@ -273,19 +271,19 @@ type CreateApmInstanceRequestParams struct {
 	// 业务系统描述信息
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// Trace 数据保存时长，单位为天默认存储为3天
+	// Trace 数据保存时长（单位：天，默认存储时长为3天）
 	TraceDuration *int64 `json:"TraceDuration,omitnil,omitempty" name:"TraceDuration"`
 
-	// 标签列表
+	// 业务系统 Tag 列表
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 业务系统上报额度值，默认赋值为0表示不限制上报额度
+	// 业务系统上报额度值，默认赋值为0表示不限制上报额度，已废弃
 	SpanDailyCounters *uint64 `json:"SpanDailyCounters,omitnil,omitempty" name:"SpanDailyCounters"`
 
-	// 业务系统的计费模式
+	// 业务系统的计费模式（0=按量付费，1=预付费）
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// （0=付费版；1=tsf 受限免费版；2=免费版）
+	// 是否为免费版业务系统（0=付费版；1=TSF 受限免费版；2=免费版）
 	Free *int64 `json:"Free,omitnil,omitempty" name:"Free"`
 }
 
@@ -298,19 +296,19 @@ type CreateApmInstanceRequest struct {
 	// 业务系统描述信息
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// Trace 数据保存时长，单位为天默认存储为3天
+	// Trace 数据保存时长（单位：天，默认存储时长为3天）
 	TraceDuration *int64 `json:"TraceDuration,omitnil,omitempty" name:"TraceDuration"`
 
-	// 标签列表
+	// 业务系统 Tag 列表
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 业务系统上报额度值，默认赋值为0表示不限制上报额度
+	// 业务系统上报额度值，默认赋值为0表示不限制上报额度，已废弃
 	SpanDailyCounters *uint64 `json:"SpanDailyCounters,omitnil,omitempty" name:"SpanDailyCounters"`
 
-	// 业务系统的计费模式
+	// 业务系统的计费模式（0=按量付费，1=预付费）
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// （0=付费版；1=tsf 受限免费版；2=免费版）
+	// 是否为免费版业务系统（0=付费版；1=TSF 受限免费版；2=免费版）
 	Free *int64 `json:"Free,omitnil,omitempty" name:"Free"`
 }
 
@@ -369,16 +367,16 @@ type DescribeApmAgentRequestParams struct {
 	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 接入方式
+	// 接入方式，现支持 skywalking, ot, ebpf 方式接入上报，不填默认为 ot
 	AgentType *string `json:"AgentType,omitnil,omitempty" name:"AgentType"`
 
-	// 环境
+	// 上报环境，现支持 pl (内网上报), public (外网), inner (自研 VPC )环境上报，不传默认为 public
 	NetworkMode *string `json:"NetworkMode,omitnil,omitempty" name:"NetworkMode"`
 
-	// 语言
+	// 语言，现支持 java, golang, php, python, dotNet, nodejs 语言上报，不传默认为 golang
 	LanguageEnvironment *string `json:"LanguageEnvironment,omitnil,omitempty" name:"LanguageEnvironment"`
 
-	// 上报方式
+	// 上报方式，已弃用
 	ReportMethod *string `json:"ReportMethod,omitnil,omitempty" name:"ReportMethod"`
 }
 
@@ -388,16 +386,16 @@ type DescribeApmAgentRequest struct {
 	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 接入方式
+	// 接入方式，现支持 skywalking, ot, ebpf 方式接入上报，不填默认为 ot
 	AgentType *string `json:"AgentType,omitnil,omitempty" name:"AgentType"`
 
-	// 环境
+	// 上报环境，现支持 pl (内网上报), public (外网), inner (自研 VPC )环境上报，不传默认为 public
 	NetworkMode *string `json:"NetworkMode,omitnil,omitempty" name:"NetworkMode"`
 
-	// 语言
+	// 语言，现支持 java, golang, php, python, dotNet, nodejs 语言上报，不传默认为 golang
 	LanguageEnvironment *string `json:"LanguageEnvironment,omitnil,omitempty" name:"LanguageEnvironment"`
 
-	// 上报方式
+	// 上报方式，已弃用
 	ReportMethod *string `json:"ReportMethod,omitnil,omitempty" name:"ReportMethod"`
 }
 
@@ -454,16 +452,16 @@ type DescribeApmInstancesRequestParams struct {
 	// Tag 列表
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 搜索业务系统名
+	// 按业务系统名过滤
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 过滤业务系统 ID
+	// 按业务系统 ID 过滤
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 是否查询官方 Demo 业务系统
+	// 是否查询官方 Demo 业务系统（0=非 Demo 业务系统，1=Demo 业务系统，默认为0）
 	DemoInstanceFlag *int64 `json:"DemoInstanceFlag,omitnil,omitempty" name:"DemoInstanceFlag"`
 
-	// 是否查询全地域业务系统
+	// 是否查询全地域业务系统（0=不查询全地域，1=查询全地域，默认为0）
 	AllRegionsFlag *int64 `json:"AllRegionsFlag,omitnil,omitempty" name:"AllRegionsFlag"`
 }
 
@@ -473,16 +471,16 @@ type DescribeApmInstancesRequest struct {
 	// Tag 列表
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 搜索业务系统名
+	// 按业务系统名过滤
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 过滤业务系统 ID
+	// 按业务系统 ID 过滤
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 是否查询官方 Demo 业务系统
+	// 是否查询官方 Demo 业务系统（0=非 Demo 业务系统，1=Demo 业务系统，默认为0）
 	DemoInstanceFlag *int64 `json:"DemoInstanceFlag,omitnil,omitempty" name:"DemoInstanceFlag"`
 
-	// 是否查询全地域业务系统
+	// 是否查询全地域业务系统（0=不查询全地域，1=查询全地域，默认为0）
 	AllRegionsFlag *int64 `json:"AllRegionsFlag,omitnil,omitempty" name:"AllRegionsFlag"`
 }
 
@@ -603,7 +601,7 @@ type DescribeGeneralMetricDataRequestParams struct {
 	// 需要查询的指标名称，不可自定义输入，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
 	Metrics []*string `json:"Metrics,omitnil,omitempty" name:"Metrics"`
 
-	// 业务系统ID
+	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 视图名称，不可自定义输入。[详情请见。](https://cloud.tencent.com/document/product/248/101681)
@@ -615,19 +613,24 @@ type DescribeGeneralMetricDataRequestParams struct {
 	// 聚合维度，不同视图有对应的指标维度，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
 	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
 
-	// 起始时间的时间戳，单位为秒，只支持查询2天内最多1小时的指标数据。
+	// 起始时间的时间戳，支持查询30天内的指标数据。（单位：秒）
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间的时间戳，单位为秒，只支持查询2天内最多1小时的指标数据。
+	// 结束时间的时间戳，支持查询30天内的指标数据。（单位：秒）
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 聚合粒度，单位为秒，最小为60s，即一分钟的聚合粒度；如果为空或0则计算开始时间到截止时间的指标数据，上报其他值会报错。
+	// 是否按固定时间跨度聚合，填入1及大于1的值按1处理，不填按0处理。
+	// - 填入0，则计算开始时间到截止时间的指标数据。
+	// - 填入1，则会按照开始时间到截止时间的时间跨度选择聚合粒度：
+	//  - 时间跨度 (0,12) 小时，则按一分钟粒度聚合。
+	//  - 时间跨度 [12,48] 小时，则按五分钟粒度聚合。
+	//  - 时间跨度 (48, +∞) 小时，则按一小时粒度聚合。
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 对查询指标进行排序：
 	// Key 填写云 API 指标名称，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
 	// Value 填写排序方式：     
-	// - asc:对查询指标进行升序排序
+	// - asc：对查询指标进行升序排序
 	// - desc：对查询指标进行降序排序
 	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
@@ -641,7 +644,7 @@ type DescribeGeneralMetricDataRequest struct {
 	// 需要查询的指标名称，不可自定义输入，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
 	Metrics []*string `json:"Metrics,omitnil,omitempty" name:"Metrics"`
 
-	// 业务系统ID
+	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 视图名称，不可自定义输入。[详情请见。](https://cloud.tencent.com/document/product/248/101681)
@@ -653,19 +656,24 @@ type DescribeGeneralMetricDataRequest struct {
 	// 聚合维度，不同视图有对应的指标维度，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
 	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
 
-	// 起始时间的时间戳，单位为秒，只支持查询2天内最多1小时的指标数据。
+	// 起始时间的时间戳，支持查询30天内的指标数据。（单位：秒）
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间的时间戳，单位为秒，只支持查询2天内最多1小时的指标数据。
+	// 结束时间的时间戳，支持查询30天内的指标数据。（单位：秒）
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 聚合粒度，单位为秒，最小为60s，即一分钟的聚合粒度；如果为空或0则计算开始时间到截止时间的指标数据，上报其他值会报错。
+	// 是否按固定时间跨度聚合，填入1及大于1的值按1处理，不填按0处理。
+	// - 填入0，则计算开始时间到截止时间的指标数据。
+	// - 填入1，则会按照开始时间到截止时间的时间跨度选择聚合粒度：
+	//  - 时间跨度 (0,12) 小时，则按一分钟粒度聚合。
+	//  - 时间跨度 [12,48] 小时，则按五分钟粒度聚合。
+	//  - 时间跨度 (48, +∞) 小时，则按一小时粒度聚合。
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 对查询指标进行排序：
 	// Key 填写云 API 指标名称，[详情请见。](https://cloud.tencent.com/document/product/248/101681)
 	// Value 填写排序方式：     
-	// - asc:对查询指标进行升序排序
+	// - asc：对查询指标进行升序排序
 	// - desc：对查询指标进行降序排序
 	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
@@ -728,57 +736,77 @@ func (r *DescribeGeneralMetricDataResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGeneralSpanListRequestParams struct {
-	// 分页
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 列表项个数
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 排序
-	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
-
-	// Span查询开始时间戳（单位:秒）
-	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
 	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// Span 查询开始时间戳（单位：秒）
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// Span 查询结束时间戳（单位：秒）
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 通用过滤参数
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 业务自身服务名
+	// 排序
+	// 现支持的 Key 有：
+	// 
+	// - startTime(开始时间)
+	// - endTime(结束时间)
+	// - duration(响应时间)
+	// 
+	// 现支持的 Value 有：
+	// 
+	// - desc(降序排序)
+	// - asc(升序排序)
+	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 业务自身服务名，控制台用户请填写taw
 	BusinessName *string `json:"BusinessName,omitnil,omitempty" name:"BusinessName"`
 
-	// Span查询结束时间戳（单位:秒）
-	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+	// 单页项目个数，默认为10000，合法取值范围为0～10000
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeGeneralSpanListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分页
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 列表项个数
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 排序
-	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
-
-	// Span查询开始时间戳（单位:秒）
-	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
 	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// Span 查询开始时间戳（单位：秒）
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// Span 查询结束时间戳（单位：秒）
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 通用过滤参数
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 业务自身服务名
+	// 排序
+	// 现支持的 Key 有：
+	// 
+	// - startTime(开始时间)
+	// - endTime(结束时间)
+	// - duration(响应时间)
+	// 
+	// 现支持的 Value 有：
+	// 
+	// - desc(降序排序)
+	// - asc(升序排序)
+	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 业务自身服务名，控制台用户请填写taw
 	BusinessName *string `json:"BusinessName,omitnil,omitempty" name:"BusinessName"`
 
-	// Span查询结束时间戳（单位:秒）
-	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+	// 单页项目个数，默认为10000，合法取值范围为0～10000
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeGeneralSpanListRequest) ToJsonString() string {
@@ -793,14 +821,14 @@ func (r *DescribeGeneralSpanListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Offset")
-	delete(f, "Limit")
-	delete(f, "OrderBy")
-	delete(f, "StartTime")
 	delete(f, "InstanceId")
-	delete(f, "Filters")
-	delete(f, "BusinessName")
+	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "Filters")
+	delete(f, "OrderBy")
+	delete(f, "BusinessName")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGeneralSpanListRequest has unknown keys!", "")
 	}
@@ -837,93 +865,113 @@ func (r *DescribeGeneralSpanListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMetricRecordsRequestParams struct {
+	// 指标列表
+	Metrics []*QueryMetricItem `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+
+	// 业务系统 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间（单位为秒）
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间（单位为秒）
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
 	// 过滤条件
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 指标列表
-	Metrics []*QueryMetricItem `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+	// Or 过滤条件
+	OrFilters []*Filter `json:"OrFilters,omitnil,omitempty" name:"OrFilters"`
 
 	// 聚合维度
 	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
 
 	// 排序
+	// 现支持的 Key 有：
+	// 
+	// - startTime(开始时间)
+	// - endTime(结束时间)
+	// - duration(响应时间)
+	// 
+	// 现支持的 Value 有：
+	// 
+	// - desc(降序排序)
+	// - asc(升序排序)
 	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 业务系统ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+	// 业务名称，控制台用户请填写taw。
+	BusinessName *string `json:"BusinessName,omitnil,omitempty" name:"BusinessName"`
 
-	// 每页大小
+	// 特殊处理查询结果
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 每页大小，默认为1000，合法取值范围为0~1000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 开始时间
-	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 分页起始点
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 结束时间
-	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
-	// 业务名称（默认值：taw）
-	BusinessName *string `json:"BusinessName,omitnil,omitempty" name:"BusinessName"`
 
 	// 页码
 	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
 
 	// 页长
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
-
-	// Or过滤条件
-	OrFilters []*Filter `json:"OrFilters,omitnil,omitempty" name:"OrFilters"`
-
-	// 数据来源
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type DescribeMetricRecordsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 指标列表
+	Metrics []*QueryMetricItem `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+
+	// 业务系统 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间（单位为秒）
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间（单位为秒）
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
 	// 过滤条件
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 指标列表
-	Metrics []*QueryMetricItem `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+	// Or 过滤条件
+	OrFilters []*Filter `json:"OrFilters,omitnil,omitempty" name:"OrFilters"`
 
 	// 聚合维度
 	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
 
 	// 排序
+	// 现支持的 Key 有：
+	// 
+	// - startTime(开始时间)
+	// - endTime(结束时间)
+	// - duration(响应时间)
+	// 
+	// 现支持的 Value 有：
+	// 
+	// - desc(降序排序)
+	// - asc(升序排序)
 	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 业务系统ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+	// 业务名称，控制台用户请填写taw。
+	BusinessName *string `json:"BusinessName,omitnil,omitempty" name:"BusinessName"`
 
-	// 每页大小
+	// 特殊处理查询结果
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 每页大小，默认为1000，合法取值范围为0~1000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 开始时间
-	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 分页起始点
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 结束时间
-	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
-
-	// 业务名称（默认值：taw）
-	BusinessName *string `json:"BusinessName,omitnil,omitempty" name:"BusinessName"`
 
 	// 页码
 	PageIndex *int64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
 
 	// 页长
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
-
-	// Or过滤条件
-	OrFilters []*Filter `json:"OrFilters,omitnil,omitempty" name:"OrFilters"`
-
-	// 数据来源
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 func (r *DescribeMetricRecordsRequest) ToJsonString() string {
@@ -938,20 +986,20 @@ func (r *DescribeMetricRecordsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Filters")
 	delete(f, "Metrics")
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Filters")
+	delete(f, "OrFilters")
 	delete(f, "GroupBy")
 	delete(f, "OrderBy")
-	delete(f, "InstanceId")
-	delete(f, "Limit")
-	delete(f, "StartTime")
-	delete(f, "Offset")
-	delete(f, "EndTime")
 	delete(f, "BusinessName")
+	delete(f, "Type")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	delete(f, "PageIndex")
 	delete(f, "PageSize")
-	delete(f, "OrFilters")
-	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMetricRecordsRequest has unknown keys!", "")
 	}
@@ -988,63 +1036,69 @@ func (r *DescribeMetricRecordsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeServiceOverviewRequestParams struct {
-	// 过滤条件
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-
 	// 指标列表
 	Metrics []*QueryMetricItem `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+
+	// 业务系统 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 聚合维度
 	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
 
-	// 排序
-	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+	// 开始时间（单位：秒）
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 业务系统ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+	// 结束时间（单位：秒）
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 排序方式
+	// Value 填写：
+	// - asc：对查询指标进行升序排序
+	// - desc：对查询指标进行降序排序
+	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 每页大小
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 开始时间
-	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
 	// 分页起始点
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 结束时间
-	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type DescribeServiceOverviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-
 	// 指标列表
 	Metrics []*QueryMetricItem `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+
+	// 业务系统 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 聚合维度
 	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
 
-	// 排序
-	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+	// 开始时间（单位：秒）
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 业务系统ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+	// 结束时间（单位：秒）
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 排序方式
+	// Value 填写：
+	// - asc：对查询指标进行升序排序
+	// - desc：对查询指标进行降序排序
+	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 每页大小
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 开始时间
-	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
 	// 分页起始点
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 结束时间
-	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 func (r *DescribeServiceOverviewRequest) ToJsonString() string {
@@ -1059,15 +1113,15 @@ func (r *DescribeServiceOverviewRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Filters")
 	delete(f, "Metrics")
-	delete(f, "GroupBy")
-	delete(f, "OrderBy")
 	delete(f, "InstanceId")
-	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "GroupBy")
 	delete(f, "StartTime")
-	delete(f, "Offset")
 	delete(f, "EndTime")
+	delete(f, "OrderBy")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServiceOverviewRequest has unknown keys!", "")
 	}
@@ -1104,19 +1158,19 @@ type DescribeTagValuesRequestParams struct {
 	// 维度名
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// 业务系统ID
+	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 结束时间
-	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 过滤条件
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 开始时间
+	// 开始时间（单位为秒）
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// Or过滤条件
+	// 结束时间（单位为秒）
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// Or 过滤条件
 	OrFilters []*Filter `json:"OrFilters,omitnil,omitempty" name:"OrFilters"`
 
 	// 使用类型
@@ -1129,19 +1183,19 @@ type DescribeTagValuesRequest struct {
 	// 维度名
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
-	// 业务系统ID
+	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 结束时间
-	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 过滤条件
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 开始时间
+	// 开始时间（单位为秒）
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// Or过滤条件
+	// 结束时间（单位为秒）
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// Or 过滤条件
 	OrFilters []*Filter `json:"OrFilters,omitnil,omitempty" name:"OrFilters"`
 
 	// 使用类型
@@ -1162,9 +1216,9 @@ func (r *DescribeTagValuesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TagKey")
 	delete(f, "InstanceId")
-	delete(f, "EndTime")
 	delete(f, "Filters")
 	delete(f, "StartTime")
+	delete(f, "EndTime")
 	delete(f, "OrFilters")
 	delete(f, "Type")
 	if len(f) > 0 {
@@ -1244,19 +1298,19 @@ type Line struct {
 
 // Predefined struct for user
 type ModifyApmInstanceRequestParams struct {
-	// 业务系统ID
+	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 业务系统名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 标签列表
+	// Tag 列表
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 业务系统详情
+	// 业务系统描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// Trace数据保存时长
+	// Trace 数据保存时长（单位：天）
 	TraceDuration *int64 `json:"TraceDuration,omitnil,omitempty" name:"TraceDuration"`
 
 	// 是否开启计费
@@ -1265,76 +1319,74 @@ type ModifyApmInstanceRequestParams struct {
 	// 业务系统上报额度
 	SpanDailyCounters *uint64 `json:"SpanDailyCounters,omitnil,omitempty" name:"SpanDailyCounters"`
 
-	// 错误率阈值
+	// 错误率警示线，当应用的平均错误率超出该阈值时，系统会给出异常提示。
 	ErrRateThreshold *int64 `json:"ErrRateThreshold,omitnil,omitempty" name:"ErrRateThreshold"`
 
-	// 采样率
+	// 采样率（单位：%）
 	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
-	// 是否开启错误采样 0 关 1 开
+	// 是否开启错误采样（0=关, 1=开）
 	ErrorSample *int64 `json:"ErrorSample,omitnil,omitempty" name:"ErrorSample"`
 
-	// 慢请求阈值
+	// 采样慢调用保存阈值（单位：ms）
 	SlowRequestSavedThreshold *int64 `json:"SlowRequestSavedThreshold,omitnil,omitempty" name:"SlowRequestSavedThreshold"`
 
-	// 是否开启日志功能 0 关 1 开
+	// 是否开启日志功能（0=关, 1=开）
 	IsRelatedLog *int64 `json:"IsRelatedLog,omitnil,omitempty" name:"IsRelatedLog"`
 
-	// 日志地域
+	// 日志地域，开启日志功能后才会生效
 	LogRegion *string `json:"LogRegion,omitnil,omitempty" name:"LogRegion"`
 
-	// CLS日志主题ID | ES 索引名
+	// CLS 日志主题 ID，开启日志功能后才会生效
 	LogTopicID *string `json:"LogTopicID,omitnil,omitempty" name:"LogTopicID"`
 
-	// CLS日志集 | ES集群ID
+	// 日志集，开启日志功能后才会生效
 	LogSet *string `json:"LogSet,omitnil,omitempty" name:"LogSet"`
 
-	// CLS | ES
+	// 日志源，开启日志功能后才会生效
 	LogSource *string `json:"LogSource,omitnil,omitempty" name:"LogSource"`
 
 	// 用户自定义展示标签列表
 	CustomShowTags []*string `json:"CustomShowTags,omitnil,omitempty" name:"CustomShowTags"`
 
-	// 修改计费模式
-	// 1为预付费
-	// 0为按量付费
+	// 修改计费模式（1为预付费，0为按量付费）
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 响应时间满意阈值
+	// 响应时间警示线
 	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
 
-	// （0=付费版；1=tsf受限免费版；2=免费版）
+	// 是否免费（0=付费版；1=TSF 受限免费版；2=免费版），默认0
 	Free *int64 `json:"Free,omitnil,omitempty" name:"Free"`
 
-	// 是否关联dashboard： 0 关 1 开
+	// 是否关联 Dashboard（0=关,1=开）
 	IsRelatedDashboard *int64 `json:"IsRelatedDashboard,omitnil,omitempty" name:"IsRelatedDashboard"`
 
-	// dashboard ID
+	// 关联的 Dashboard ID，开启关联 Dashboard 后才会生效
 	DashboardTopicID *string `json:"DashboardTopicID,omitnil,omitempty" name:"DashboardTopicID"`
 
-	// 是否开启SQL注入检测
+	// 是否开启 SQL 注入检测（0=关,1=开）
 	IsSqlInjectionAnalysis *int64 `json:"IsSqlInjectionAnalysis,omitnil,omitempty" name:"IsSqlInjectionAnalysis"`
 
-	// 是否开启组件漏洞检测
+	// 是否开启组件漏洞检测（0=关,1=开）
 	IsInstrumentationVulnerabilityScan *int64 `json:"IsInstrumentationVulnerabilityScan,omitnil,omitempty" name:"IsInstrumentationVulnerabilityScan"`
 }
 
 type ModifyApmInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 业务系统ID
+	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 业务系统名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 标签列表
+	// Tag 列表
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 业务系统详情
+	// 业务系统描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// Trace数据保存时长
+	// Trace 数据保存时长（单位：天）
 	TraceDuration *int64 `json:"TraceDuration,omitnil,omitempty" name:"TraceDuration"`
 
 	// 是否开启计费
@@ -1343,57 +1395,55 @@ type ModifyApmInstanceRequest struct {
 	// 业务系统上报额度
 	SpanDailyCounters *uint64 `json:"SpanDailyCounters,omitnil,omitempty" name:"SpanDailyCounters"`
 
-	// 错误率阈值
+	// 错误率警示线，当应用的平均错误率超出该阈值时，系统会给出异常提示。
 	ErrRateThreshold *int64 `json:"ErrRateThreshold,omitnil,omitempty" name:"ErrRateThreshold"`
 
-	// 采样率
+	// 采样率（单位：%）
 	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
-	// 是否开启错误采样 0 关 1 开
+	// 是否开启错误采样（0=关, 1=开）
 	ErrorSample *int64 `json:"ErrorSample,omitnil,omitempty" name:"ErrorSample"`
 
-	// 慢请求阈值
+	// 采样慢调用保存阈值（单位：ms）
 	SlowRequestSavedThreshold *int64 `json:"SlowRequestSavedThreshold,omitnil,omitempty" name:"SlowRequestSavedThreshold"`
 
-	// 是否开启日志功能 0 关 1 开
+	// 是否开启日志功能（0=关, 1=开）
 	IsRelatedLog *int64 `json:"IsRelatedLog,omitnil,omitempty" name:"IsRelatedLog"`
 
-	// 日志地域
+	// 日志地域，开启日志功能后才会生效
 	LogRegion *string `json:"LogRegion,omitnil,omitempty" name:"LogRegion"`
 
-	// CLS日志主题ID | ES 索引名
+	// CLS 日志主题 ID，开启日志功能后才会生效
 	LogTopicID *string `json:"LogTopicID,omitnil,omitempty" name:"LogTopicID"`
 
-	// CLS日志集 | ES集群ID
+	// 日志集，开启日志功能后才会生效
 	LogSet *string `json:"LogSet,omitnil,omitempty" name:"LogSet"`
 
-	// CLS | ES
+	// 日志源，开启日志功能后才会生效
 	LogSource *string `json:"LogSource,omitnil,omitempty" name:"LogSource"`
 
 	// 用户自定义展示标签列表
 	CustomShowTags []*string `json:"CustomShowTags,omitnil,omitempty" name:"CustomShowTags"`
 
-	// 修改计费模式
-	// 1为预付费
-	// 0为按量付费
+	// 修改计费模式（1为预付费，0为按量付费）
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 响应时间满意阈值
+	// 响应时间警示线
 	ResponseDurationWarningThreshold *int64 `json:"ResponseDurationWarningThreshold,omitnil,omitempty" name:"ResponseDurationWarningThreshold"`
 
-	// （0=付费版；1=tsf受限免费版；2=免费版）
+	// 是否免费（0=付费版；1=TSF 受限免费版；2=免费版），默认0
 	Free *int64 `json:"Free,omitnil,omitempty" name:"Free"`
 
-	// 是否关联dashboard： 0 关 1 开
+	// 是否关联 Dashboard（0=关,1=开）
 	IsRelatedDashboard *int64 `json:"IsRelatedDashboard,omitnil,omitempty" name:"IsRelatedDashboard"`
 
-	// dashboard ID
+	// 关联的 Dashboard ID，开启关联 Dashboard 后才会生效
 	DashboardTopicID *string `json:"DashboardTopicID,omitnil,omitempty" name:"DashboardTopicID"`
 
-	// 是否开启SQL注入检测
+	// 是否开启 SQL 注入检测（0=关,1=开）
 	IsSqlInjectionAnalysis *int64 `json:"IsSqlInjectionAnalysis,omitnil,omitempty" name:"IsSqlInjectionAnalysis"`
 
-	// 是否开启组件漏洞检测
+	// 是否开启组件漏洞检测（0=关,1=开）
 	IsInstrumentationVulnerabilityScan *int64 `json:"IsInstrumentationVulnerabilityScan,omitnil,omitempty" name:"IsInstrumentationVulnerabilityScan"`
 }
 
@@ -1535,10 +1585,10 @@ func (r *ModifyGeneralApmApplicationConfigResponse) FromJsonString(s string) err
 }
 
 type OrderBy struct {
-	// 需要排序的字段
+	// 需要排序的字段，现支持 startTIme, endTime, duration
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 顺序排序/倒序排序
+	// asc 顺序排序 / desc 倒序排序
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -1546,11 +1596,11 @@ type QueryMetricItem struct {
 	// 指标名
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
+	// 同比，现支持 CompareByYesterday (与昨天相比)和CompareByLastWeek (与上周相比) 
+	Compares []*string `json:"Compares,omitnil,omitempty" name:"Compares"`
+
 	// 同比，已弃用，不建议使用
 	Compare *string `json:"Compare,omitnil,omitempty" name:"Compare"`
-
-	// 同比，支持多种同比方式
-	Compares []*string `json:"Compares,omitnil,omitempty" name:"Compares"`
 }
 
 type Span struct {

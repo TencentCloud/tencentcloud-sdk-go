@@ -495,6 +495,9 @@ type ClearLaunchConfigurationAttributesRequestParams struct {
 	// 是否清空实例标签列表，非必填，默认为 false。
 	// 填 true 代表清空实例标签列表，清空后基于此新创建的云主机将不会绑定列表中的标签。
 	ClearInstanceTags *bool `json:"ClearInstanceTags,omitnil,omitempty" name:"ClearInstanceTags"`
+
+	// 是否清空 MetaData，非必填，默认为 false。填 true 代表清空 MetaData，清空后基于此新创建的云主机将不会关联自定义的 Metadata。
+	ClearMetadata *bool `json:"ClearMetadata,omitnil,omitempty" name:"ClearMetadata"`
 }
 
 type ClearLaunchConfigurationAttributesRequest struct {
@@ -522,6 +525,9 @@ type ClearLaunchConfigurationAttributesRequest struct {
 	// 是否清空实例标签列表，非必填，默认为 false。
 	// 填 true 代表清空实例标签列表，清空后基于此新创建的云主机将不会绑定列表中的标签。
 	ClearInstanceTags *bool `json:"ClearInstanceTags,omitnil,omitempty" name:"ClearInstanceTags"`
+
+	// 是否清空 MetaData，非必填，默认为 false。填 true 代表清空 MetaData，清空后基于此新创建的云主机将不会关联自定义的 Metadata。
+	ClearMetadata *bool `json:"ClearMetadata,omitnil,omitempty" name:"ClearMetadata"`
 }
 
 func (r *ClearLaunchConfigurationAttributesRequest) ToJsonString() string {
@@ -542,6 +548,7 @@ func (r *ClearLaunchConfigurationAttributesRequest) FromJsonString(s string) err
 	delete(f, "ClearInstanceNameSettings")
 	delete(f, "ClearDisasterRecoverGroupIds")
 	delete(f, "ClearInstanceTags")
+	delete(f, "ClearMetadata")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ClearLaunchConfigurationAttributesRequest has unknown keys!", "")
 	}
@@ -1112,6 +1119,9 @@ type CreateLaunchConfigurationRequestParams struct {
 
 	// 本地专用集群ID。
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+
+	// 自定义metadata。
+	Metadata *Metadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
 type CreateLaunchConfigurationRequest struct {
@@ -1213,6 +1223,9 @@ type CreateLaunchConfigurationRequest struct {
 
 	// 本地专用集群ID。
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+
+	// 自定义metadata。
+	Metadata *Metadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
 func (r *CreateLaunchConfigurationRequest) ToJsonString() string {
@@ -1254,6 +1267,7 @@ func (r *CreateLaunchConfigurationRequest) FromJsonString(s string) error {
 	delete(f, "DisasterRecoverGroupIds")
 	delete(f, "ImageFamily")
 	delete(f, "DedicatedClusterId")
+	delete(f, "Metadata")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLaunchConfigurationRequest has unknown keys!", "")
 	}
@@ -4038,6 +4052,19 @@ type LoginSettings struct {
 	KeepImageLogin *bool `json:"KeepImageLogin,omitnil,omitempty" name:"KeepImageLogin"`
 }
 
+type Metadata struct {
+	// 自定义 Metadata 键值对列表
+	Items []*MetadataItem `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type MetadataItem struct {
+	// 自定义 MetaData 键
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 自定义 MetaData 值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type MetricAlarm struct {
 	// 比较运算符，可选值：<br><li>GREATER_THAN：大于</li><li>GREATER_THAN_OR_EQUAL_TO：大于或等于</li><li>LESS_THAN：小于</li><li> LESS_THAN_OR_EQUAL_TO：小于或等于</li><li> EQUAL_TO：等于</li> <li>NOT_EQUAL_TO：不等于</li>
 	ComparisonOperator *string `json:"ComparisonOperator,omitnil,omitempty" name:"ComparisonOperator"`
@@ -4495,6 +4522,9 @@ type ModifyLaunchConfigurationAttributesRequestParams struct {
 
 	// 本地专用集群ID。
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+
+	// 自定义metadata。
+	Metadata *Metadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
 type ModifyLaunchConfigurationAttributesRequest struct {
@@ -4601,6 +4631,9 @@ type ModifyLaunchConfigurationAttributesRequest struct {
 
 	// 本地专用集群ID。
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+
+	// 自定义metadata。
+	Metadata *Metadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
 func (r *ModifyLaunchConfigurationAttributesRequest) ToJsonString() string {
@@ -4640,6 +4673,7 @@ func (r *ModifyLaunchConfigurationAttributesRequest) FromJsonString(s string) er
 	delete(f, "InstanceTags")
 	delete(f, "ImageFamily")
 	delete(f, "DedicatedClusterId")
+	delete(f, "Metadata")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLaunchConfigurationAttributesRequest has unknown keys!", "")
 	}

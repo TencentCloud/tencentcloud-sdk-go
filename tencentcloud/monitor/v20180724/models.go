@@ -11352,7 +11352,7 @@ type GrafanaIntegrationConfig struct {
 	// 集成描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// Grafana 跳转地址
+	// Grafana 跳转地址(目前未使用，默认为空)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GrafanaURL *string `json:"GrafanaURL,omitnil,omitempty" name:"GrafanaURL"`
 }
