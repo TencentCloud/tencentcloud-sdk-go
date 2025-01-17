@@ -24,6 +24,15 @@ func (c *Client) sendWithNetworkFailureRetry(req *http.Request, retryable bool) 
 	durationFunc := safeDurationFunc(c.profile.NetworkFailureRetryDuration)
 
 	for idx := 0; idx <= maxRetries; idx++ {
+		if idx > 0 && req.ContentLength > 0 {
+			if body, err := req.GetBody(); err != nil {
+				msg := fmt.Sprintf("Fail to get body because %s", err)
+				err = errors.NewTencentCloudSDKError("ClientError.NetworkError", msg, "")
+				return resp, err
+			} else {
+				req.Body = body
+			}
+		}
 		resp, err = c.sendHttp(req)
 
 		// retry when error occurred and retryable and not the last retry
