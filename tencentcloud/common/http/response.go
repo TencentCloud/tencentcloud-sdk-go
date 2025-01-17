@@ -229,6 +229,10 @@ func parseFromSSE(hr *http.Response, resp Response) error {
 
 			key := string(line[:idx])
 			val := line[idx+1:]
+			// If value starts with a U+0020 SPACE character, remove it from value
+			if len(val) > 0 && val[0] == ' ' {
+				val = val[1:]
+			}
 			switch key {
 			case "event":
 				event.Event = string(val)
