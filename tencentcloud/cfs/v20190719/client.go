@@ -112,6 +112,73 @@ func (c *Client) BindAutoSnapshotPolicyWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreateAccessCertRequest() (request *CreateAccessCertRequest) {
+    request = &CreateAccessCertRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "CreateAccessCert")
+    
+    
+    return
+}
+
+func NewCreateAccessCertResponse() (response *CreateAccessCertResponse) {
+    response = &CreateAccessCertResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAccessCert
+// 创建用于访问文件系统的凭证
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_AUTOPOLICYNOTFOUND = "InvalidParameter.AutoPolicyNotFound"
+//  INVALIDPARAMETER_INVALIDSNAPPOLICYSTATUS = "InvalidParameter.InvalidSnapPolicyStatus"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  RESOURCEINSUFFICIENT_SNAPSHOTSIZELIMITEXCEEDED = "ResourceInsufficient.SnapshotSizeLimitExceeded"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
+func (c *Client) CreateAccessCert(request *CreateAccessCertRequest) (response *CreateAccessCertResponse, err error) {
+    return c.CreateAccessCertWithContext(context.Background(), request)
+}
+
+// CreateAccessCert
+// 创建用于访问文件系统的凭证
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_AUTOPOLICYNOTFOUND = "InvalidParameter.AutoPolicyNotFound"
+//  INVALIDPARAMETER_INVALIDSNAPPOLICYSTATUS = "InvalidParameter.InvalidSnapPolicyStatus"
+//  INVALIDPARAMETERVALUE_INVALIDFILESYSTEMID = "InvalidParameterValue.InvalidFileSystemId"
+//  RESOURCEINSUFFICIENT_SNAPSHOTSIZELIMITEXCEEDED = "ResourceInsufficient.SnapshotSizeLimitExceeded"
+//  RESOURCENOTFOUND_FILESYSTEMNOTFOUND = "ResourceNotFound.FileSystemNotFound"
+//  UNSUPPORTEDOPERATION_OUTOFSERVICE = "UnsupportedOperation.OutOfService"
+//  UNSUPPORTEDOPERATION_UNVERIFIEDUSER = "UnsupportedOperation.UnverifiedUser"
+func (c *Client) CreateAccessCertWithContext(ctx context.Context, request *CreateAccessCertRequest) (response *CreateAccessCertResponse, err error) {
+    if request == nil {
+        request = NewCreateAccessCertRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAccessCert require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAccessCertResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAutoSnapshotPolicyRequest() (request *CreateAutoSnapshotPolicyRequest) {
     request = &CreateAutoSnapshotPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},

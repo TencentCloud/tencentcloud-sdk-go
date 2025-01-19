@@ -500,14 +500,14 @@ func (r *CheckBankCardInformationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckEidTokenStatusRequestParams struct {
-	// E证通流程的唯一标识，调用GetEidToken接口时生成。
+	// E证通流程的唯一标识，调用[GetEidToken](https://cloud.tencent.com/document/product/1007/54089)接口时生成。
 	EidToken *string `json:"EidToken,omitnil,omitempty" name:"EidToken"`
 }
 
 type CheckEidTokenStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// E证通流程的唯一标识，调用GetEidToken接口时生成。
+	// E证通流程的唯一标识，调用[GetEidToken](https://cloud.tencent.com/document/product/1007/54089)接口时生成。
 	EidToken *string `json:"EidToken,omitnil,omitempty" name:"EidToken"`
 }
 
@@ -1746,7 +1746,7 @@ func (r *GetActionSequenceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetDetectInfoEnhancedRequestParams struct {
-	// 人脸核身流程的标识，调用DetectAuth接口时生成。
+	// 人脸核身流程的标识，调用[DetectAuth](https://cloud.tencent.com/document/product/1007/31816)接口时生成。
 	BizToken *string `json:"BizToken,omitnil,omitempty" name:"BizToken"`
 
 	// 用于细分客户使用场景，由腾讯侧在线下对接时分配。
@@ -1789,7 +1789,7 @@ type GetDetectInfoEnhancedRequestParams struct {
 type GetDetectInfoEnhancedRequest struct {
 	*tchttp.BaseRequest
 	
-	// 人脸核身流程的标识，调用DetectAuth接口时生成。
+	// 人脸核身流程的标识，调用[DetectAuth](https://cloud.tencent.com/document/product/1007/31816)接口时生成。
 	BizToken *string `json:"BizToken,omitnil,omitempty" name:"BizToken"`
 
 	// 用于细分客户使用场景，由腾讯侧在线下对接时分配。
@@ -2253,7 +2253,7 @@ type GetEidTokenConfig struct {
 
 // Predefined struct for user
 type GetEidTokenRequestParams struct {
-	// EID商户id。
+	// EID商户ID。通过人脸核身控制台[自助接入](https://console.cloud.tencent.com/faceid/access)申请。
 	// - 字段长度最长50位。
 	MerchantId *string `json:"MerchantId,omitnil,omitempty" name:"MerchantId"`
 
@@ -2289,7 +2289,7 @@ type GetEidTokenRequestParams struct {
 type GetEidTokenRequest struct {
 	*tchttp.BaseRequest
 	
-	// EID商户id。
+	// EID商户ID。通过人脸核身控制台[自助接入](https://console.cloud.tencent.com/faceid/access)申请。
 	// - 字段长度最长50位。
 	MerchantId *string `json:"MerchantId,omitnil,omitempty" name:"MerchantId"`
 
@@ -2381,7 +2381,7 @@ func (r *GetEidTokenResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetFaceIdResultRequestParams struct {
 	// SDK人脸核身流程的标识。
-	// - 调用GetFaceIdToken接口时生成。
+	// - 调用[GetFaceIdToken](https://cloud.tencent.com/document/product/1007/49198)接口时生成。
 	FaceIdToken *string `json:"FaceIdToken,omitnil,omitempty" name:"FaceIdToken"`
 
 	// 是否需要拉取视频。
@@ -2397,7 +2397,7 @@ type GetFaceIdResultRequest struct {
 	*tchttp.BaseRequest
 	
 	// SDK人脸核身流程的标识。
-	// - 调用GetFaceIdToken接口时生成。
+	// - 调用[GetFaceIdToken](https://cloud.tencent.com/document/product/1007/49198)接口时生成。
 	FaceIdToken *string `json:"FaceIdToken,omitnil,omitempty" name:"FaceIdToken"`
 
 	// 是否需要拉取视频。
@@ -2537,14 +2537,14 @@ func (r *GetFaceIdResultResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetFaceIdRiskInfoRequestParams struct {
-	// SDK人脸核身流程的标识，调用GetFaceidRiskInfoToken接口时生成。
+	// SDK人脸核身流程的标识，调用[GetFaceidRiskInfoToken](https://cloud.tencent.com/document/product/1007/104581)接口时生成。
 	FaceIdToken *string `json:"FaceIdToken,omitnil,omitempty" name:"FaceIdToken"`
 }
 
 type GetFaceIdRiskInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// SDK人脸核身流程的标识，调用GetFaceidRiskInfoToken接口时生成。
+	// SDK人脸核身流程的标识，调用[GetFaceidRiskInfoToken](https://cloud.tencent.com/document/product/1007/104581)接口时生成。
 	FaceIdToken *string `json:"FaceIdToken,omitnil,omitempty" name:"FaceIdToken"`
 }
 
@@ -4173,7 +4173,7 @@ type MobileNetworkTimeVerificationResponseParams struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 在网时长区间。
-	// - 格式为(a,b]，表示在网时长在a个月以上，b个月以下。
+	// - 格式为[a,b)，表示在网时长在a个月以上，b个月以下。
 	// - 若b为+时表示没有上限。
 	Range *string `json:"Range,omitnil,omitempty" name:"Range"`
 
@@ -4401,7 +4401,7 @@ type ParseNfcDataResponseParams struct {
 
 	// 旅行证件类的核验结果。
 	// - JSON格式如下：
-	// {"result_issuer ":"签发者证书合法性验证结果 ","result_pape r":"证件安全对象合法性验证结果 ","result_data" :"防数据篡改验证结果 ","result_chip" :"防证书件芯片被复制验证结果"} 。
+	// {"result_issuer ":"签发者证书合法性验证结果 ","result_paper":"证件安全对象合法性验证结果 ","result_data" :"防数据篡改验证结果 ","result_chip" :"防证书件芯片被复制验证结果"} 。
 	// - 取值范围： 0:验证通过，1: 验证不通过，2: 未验证，3:部分通过，当4项核验结果都为0时，表示证件为真。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckMRTD *string `json:"CheckMRTD,omitnil,omitempty" name:"CheckMRTD"`

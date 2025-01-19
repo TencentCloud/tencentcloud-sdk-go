@@ -6197,13 +6197,13 @@ type DisIsolateDBInstancesRequestParams struct {
 	DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitnil,omitempty" name:"DBInstanceIdSet"`
 
 	// 购买时长，单位：月。
-	// <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36
-	// <li>后付费：只支持1
+	// <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li>
+	// <li>后付费：只支持1</li>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 是否使用代金券：
-	// <li>true：使用
-	// <li>false：不使用
+	// <li>true：使用</li>
+	// <li>false：不使用</li>
 	// 默认值：false
 	AutoVoucher *bool `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
@@ -6218,13 +6218,13 @@ type DisIsolateDBInstancesRequest struct {
 	DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitnil,omitempty" name:"DBInstanceIdSet"`
 
 	// 购买时长，单位：月。
-	// <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36
-	// <li>后付费：只支持1
+	// <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li>
+	// <li>后付费：只支持1</li>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 是否使用代金券：
-	// <li>true：使用
-	// <li>false：不使用
+	// <li>true：使用</li>
+	// <li>false：不使用</li>
 	// 默认值：false
 	AutoVoucher *bool `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
@@ -7125,11 +7125,17 @@ type ModifyBackupPlanRequestParams struct {
 	// 实例备份保留时长，取值范围为7-1830，单位是天
 	BaseBackupRetentionPeriod *uint64 `json:"BaseBackupRetentionPeriod,omitnil,omitempty" name:"BaseBackupRetentionPeriod"`
 
-	// 实例备份周期，按照星期维度，格式为小写星期英文单词
+	// 实例备份周期，若是星期维度，格式为小写星期英文单词；若是按月维度，格式为数字字符，如["1","2"]。
 	BackupPeriod []*string `json:"BackupPeriod,omitnil,omitempty" name:"BackupPeriod"`
 
 	// 实例日志备份保留时长，取值范围为7-1830，单位是天
 	LogBackupRetentionPeriod *uint64 `json:"LogBackupRetentionPeriod,omitnil,omitempty" name:"LogBackupRetentionPeriod"`
+
+	// 备份计划ID，用于指明要修改哪个备份计划，不传则是修改默认备份计划。
+	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
+
+	// 要修改的备份计划名称。
+	PlanName *string `json:"PlanName,omitnil,omitempty" name:"PlanName"`
 }
 
 type ModifyBackupPlanRequest struct {
@@ -7147,11 +7153,17 @@ type ModifyBackupPlanRequest struct {
 	// 实例备份保留时长，取值范围为7-1830，单位是天
 	BaseBackupRetentionPeriod *uint64 `json:"BaseBackupRetentionPeriod,omitnil,omitempty" name:"BaseBackupRetentionPeriod"`
 
-	// 实例备份周期，按照星期维度，格式为小写星期英文单词
+	// 实例备份周期，若是星期维度，格式为小写星期英文单词；若是按月维度，格式为数字字符，如["1","2"]。
 	BackupPeriod []*string `json:"BackupPeriod,omitnil,omitempty" name:"BackupPeriod"`
 
 	// 实例日志备份保留时长，取值范围为7-1830，单位是天
 	LogBackupRetentionPeriod *uint64 `json:"LogBackupRetentionPeriod,omitnil,omitempty" name:"LogBackupRetentionPeriod"`
+
+	// 备份计划ID，用于指明要修改哪个备份计划，不传则是修改默认备份计划。
+	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
+
+	// 要修改的备份计划名称。
+	PlanName *string `json:"PlanName,omitnil,omitempty" name:"PlanName"`
 }
 
 func (r *ModifyBackupPlanRequest) ToJsonString() string {
@@ -7172,6 +7184,8 @@ func (r *ModifyBackupPlanRequest) FromJsonString(s string) error {
 	delete(f, "BaseBackupRetentionPeriod")
 	delete(f, "BackupPeriod")
 	delete(f, "LogBackupRetentionPeriod")
+	delete(f, "PlanId")
+	delete(f, "PlanName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupPlanRequest has unknown keys!", "")
 	}
@@ -7274,25 +7288,25 @@ type ModifyDBInstanceChargeTypeRequestParams struct {
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
 	// 实例计费类型，目前支持：
-	// <li>PREPAID：预付费，即包年包月
-	// <li>POSTPAID_BY_HOUR：后付费，即按量计费
+	// <li>PREPAID：预付费，即包年包月</li>
+	// <li>POSTPAID_BY_HOUR：后付费，即按量计费</li>
 	// 默认值：PREPAID
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 购买时长，单位：月。
-	// <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36
-	// <li>后付费：只支持1
+	// <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li>
+	// <li>后付费：只支持1</li>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 续费标记：
-	// <li>0：手动续费
-	// <li>1：自动续费
+	// <li>0：手动续费</li>
+	// <li>1：自动续费</li>
 	// 默认值：0
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 是否自动使用代金券：
-	// <li>0：否
-	// <li>1：是
+	// <li>0：否</li>
+	// <li>1：是</li>
 	// 默认值：0
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 }
@@ -7304,25 +7318,25 @@ type ModifyDBInstanceChargeTypeRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
 	// 实例计费类型，目前支持：
-	// <li>PREPAID：预付费，即包年包月
-	// <li>POSTPAID_BY_HOUR：后付费，即按量计费
+	// <li>PREPAID：预付费，即包年包月</li>
+	// <li>POSTPAID_BY_HOUR：后付费，即按量计费</li>
 	// 默认值：PREPAID
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 购买时长，单位：月。
-	// <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36
-	// <li>后付费：只支持1
+	// <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li>
+	// <li>后付费：只支持1</li>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 续费标记：
-	// <li>0：手动续费
-	// <li>1：自动续费
+	// <li>0：手动续费</li>
+	// <li>1：自动续费</li>
 	// 默认值：0
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 是否自动使用代金券：
-	// <li>0：否
-	// <li>1：是
+	// <li>0：否</li>
+	// <li>1：是</li>
 	// 默认值：0
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 }
@@ -9084,10 +9098,15 @@ type RenewInstanceRequestParams struct {
 	// 实例ID，形如postgres-6fego161
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 续费多少个月
+	// 购买时长，单位：月。
+	// <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li>
+	// <li>后付费：只支持1</li>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 是否自动使用代金券,1是,0否，默认不使用
+	// 是否自动使用代金券：
+	// <li>0：否</li>
+	// <li>1：是</li>
+	// 默认值：0
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
 	// 代金券ID列表，目前仅支持指定一张代金券
@@ -9100,10 +9119,15 @@ type RenewInstanceRequest struct {
 	// 实例ID，形如postgres-6fego161
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 续费多少个月
+	// 购买时长，单位：月。
+	// <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li>
+	// <li>后付费：只支持1</li>
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 是否自动使用代金券,1是,0否，默认不使用
+	// 是否自动使用代金券：
+	// <li>0：否</li>
+	// <li>1：是</li>
+	// 默认值：0
 	AutoVoucher *int64 `json:"AutoVoucher,omitnil,omitempty" name:"AutoVoucher"`
 
 	// 代金券ID列表，目前仅支持指定一张代金券
@@ -10159,6 +10183,7 @@ type Version struct {
 
 	// 数据库版本状态，包括：
 	// AVAILABLE：可用；
+	// UPGRADE_ONLY：不可创建，此版本仅可升级至高版本；
 	// DEPRECATED：已弃用。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 

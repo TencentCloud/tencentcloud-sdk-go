@@ -826,6 +826,7 @@ type CloudStorageAIServiceTask struct {
 	// 
 	// - `RealtimeObjectDetect`：目标检测
 	// - `Highlight`：视频浓缩
+	// - `VideoToText`：视频语义理解
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 对应云存视频的起始时间
@@ -873,6 +874,29 @@ type CloudStorageEvent struct {
 	// 事件自定义数据	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+}
+
+type CloudStorageEventWithAITasks struct {
+	// 事件起始时间（Unix 时间戳，秒级
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 事件结束时间（Unix 时间戳，秒级
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 事件缩略图
+	Thumbnail *string `json:"Thumbnail,omitnil,omitempty" name:"Thumbnail"`
+
+	// 事件ID
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 事件录像上传状态，Finished: 全部上传成功 Partial: 部分上传成功 Failed: 上传失败	
+	UploadStatus *string `json:"UploadStatus,omitnil,omitempty" name:"UploadStatus"`
+
+	// 事件自定义数据	
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 事件关联的云存 AI 任务列表
+	AITasks []*CloudStorageAIServiceTask `json:"AITasks,omitnil,omitempty" name:"AITasks"`
 }
 
 type CloudStoragePackageInfo struct {
@@ -3984,6 +4008,7 @@ type DescribeCloudStorageAIServiceTasksRequestParams struct {
 	// 云存 AI 服务类型。可选值：
 	// - `RealtimeObjectDetect`：目标检测
 	// - `Highlight`：视频浓缩
+	// - `VideoToText`：视频语义理解
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 分页拉取数量
@@ -4019,6 +4044,7 @@ type DescribeCloudStorageAIServiceTasksRequest struct {
 	// 云存 AI 服务类型。可选值：
 	// - `RealtimeObjectDetect`：目标检测
 	// - `Highlight`：视频浓缩
+	// - `VideoToText`：视频语义理解
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 分页拉取数量
@@ -4296,6 +4322,146 @@ func (r *DescribeCloudStorageEventsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCloudStorageEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudStorageEventsWithAITasksRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 事件关联的视频 AI 分析服务类型（支持多选）。可选值：
+	// 
+	// - `RealtimeObjectDetect`：目标检测
+	// - `Highlight`：视频浓缩
+	// - `VideoToText`：视频语义理解
+	ServiceTypes []*string `json:"ServiceTypes,omitnil,omitempty" name:"ServiceTypes"`
+
+	// 起始时间（Unix 时间戳，秒级）, 为0 表示 当前时间 - 24h
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间（Unix 时间戳，秒级）, 为0 表示当前时间
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 请求上下文, 用作查询游标
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// 查询数据项目的最大数量, 默认为10。假设传Size=10，返回的实际事件数量为N，则 5 <= N <= 10。
+	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 事件标识符，可以用来指定查询特定的事件，如果不指定，则查询所有事件。
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 通道ID 非NVR设备则不填 NVR设备则必填 默认为无
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+type DescribeCloudStorageEventsWithAITasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 事件关联的视频 AI 分析服务类型（支持多选）。可选值：
+	// 
+	// - `RealtimeObjectDetect`：目标检测
+	// - `Highlight`：视频浓缩
+	// - `VideoToText`：视频语义理解
+	ServiceTypes []*string `json:"ServiceTypes,omitnil,omitempty" name:"ServiceTypes"`
+
+	// 起始时间（Unix 时间戳，秒级）, 为0 表示 当前时间 - 24h
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间（Unix 时间戳，秒级）, 为0 表示当前时间
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 请求上下文, 用作查询游标
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// 查询数据项目的最大数量, 默认为10。假设传Size=10，返回的实际事件数量为N，则 5 <= N <= 10。
+	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 事件标识符，可以用来指定查询特定的事件，如果不指定，则查询所有事件。
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 通道ID 非NVR设备则不填 NVR设备则必填 默认为无
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+func (r *DescribeCloudStorageEventsWithAITasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudStorageEventsWithAITasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "ServiceTypes")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Context")
+	delete(f, "Size")
+	delete(f, "EventId")
+	delete(f, "UserId")
+	delete(f, "ChannelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudStorageEventsWithAITasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudStorageEventsWithAITasksResponseParams struct {
+	// 云存事件列表
+	Events []*CloudStorageEventWithAITasks `json:"Events,omitnil,omitempty" name:"Events"`
+
+	// 请求上下文, 用作查询游标
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// 拉取结果是否已经结束
+	Listover *bool `json:"Listover,omitnil,omitempty" name:"Listover"`
+
+	// 内部结果数量，并不等同于事件总数。
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 视频播放URL
+	VideoURL *string `json:"VideoURL,omitnil,omitempty" name:"VideoURL"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudStorageEventsWithAITasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudStorageEventsWithAITasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudStorageEventsWithAITasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudStorageEventsWithAITasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

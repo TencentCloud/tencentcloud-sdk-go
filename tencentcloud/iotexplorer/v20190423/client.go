@@ -3258,6 +3258,59 @@ func (c *Client) DescribeCloudStorageEventsWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeCloudStorageEventsWithAITasksRequest() (request *DescribeCloudStorageEventsWithAITasksRequest) {
+    request = &DescribeCloudStorageEventsWithAITasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeCloudStorageEventsWithAITasks")
+    
+    
+    return
+}
+
+func NewDescribeCloudStorageEventsWithAITasksResponse() (response *DescribeCloudStorageEventsWithAITasksResponse) {
+    response = &DescribeCloudStorageEventsWithAITasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudStorageEventsWithAITasks
+// 拉取云存事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageEventsWithAITasks(request *DescribeCloudStorageEventsWithAITasksRequest) (response *DescribeCloudStorageEventsWithAITasksResponse, err error) {
+    return c.DescribeCloudStorageEventsWithAITasksWithContext(context.Background(), request)
+}
+
+// DescribeCloudStorageEventsWithAITasks
+// 拉取云存事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageEventsWithAITasksWithContext(ctx context.Context, request *DescribeCloudStorageEventsWithAITasksRequest) (response *DescribeCloudStorageEventsWithAITasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageEventsWithAITasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageEventsWithAITasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageEventsWithAITasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudStorageMultiThumbnailRequest() (request *DescribeCloudStorageMultiThumbnailRequest) {
     request = &DescribeCloudStorageMultiThumbnailRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -210,6 +210,63 @@ type BucketInfo struct {
 }
 
 // Predefined struct for user
+type CreateAccessCertRequestParams struct {
+	// 证书描述
+	CertDesc *string `json:"CertDesc,omitnil,omitempty" name:"CertDesc"`
+}
+
+type CreateAccessCertRequest struct {
+	*tchttp.BaseRequest
+	
+	// 证书描述
+	CertDesc *string `json:"CertDesc,omitnil,omitempty" name:"CertDesc"`
+}
+
+func (r *CreateAccessCertRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAccessCertRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertDesc")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAccessCertRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAccessCertResponseParams struct {
+	// 凭证唯一标识
+	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAccessCertResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAccessCertResponseParams `json:"Response"`
+}
+
+func (r *CreateAccessCertResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAccessCertResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateAutoSnapshotPolicyRequestParams struct {
 	// 快照重复时间点,0-23
 	Hour *string `json:"Hour,omitnil,omitempty" name:"Hour"`

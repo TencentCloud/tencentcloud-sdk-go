@@ -156,15 +156,12 @@ type BackUpJobDisplay struct {
 
 type BackupCosInfo struct {
 	// 备份文件所在的cos桶
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
 
 	// 备份文件所在的完整cos路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosPath *string `json:"CosPath,omitnil,omitempty" name:"CosPath"`
 
 	// 备份文件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapShotPath *string `json:"SnapShotPath,omitnil,omitempty" name:"SnapShotPath"`
 }
 
@@ -212,11 +209,9 @@ type BackupStatus struct {
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
 	// 备份实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupJobId *int64 `json:"BackupJobId,omitnil,omitempty" name:"BackupJobId"`
 
 	// 实例对应snapshoit的id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -245,11 +240,9 @@ type BackupTableContent struct {
 
 type BindUser struct {
 	// 用户名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 主机信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 }
 
@@ -2084,6 +2077,9 @@ type DescribeDatabaseAuditDownloadRequestParams struct {
 
 	// catalog名称 （多选）
 	Catalogs []*string `json:"Catalogs,omitnil,omitempty" name:"Catalogs"`
+
+	// 是否是查询	
+	IsQuery []*bool `json:"IsQuery,omitnil,omitempty" name:"IsQuery"`
 }
 
 type DescribeDatabaseAuditDownloadRequest struct {
@@ -2130,6 +2126,9 @@ type DescribeDatabaseAuditDownloadRequest struct {
 
 	// catalog名称 （多选）
 	Catalogs []*string `json:"Catalogs,omitnil,omitempty" name:"Catalogs"`
+
+	// 是否是查询	
+	IsQuery []*bool `json:"IsQuery,omitnil,omitempty" name:"IsQuery"`
 }
 
 func (r *DescribeDatabaseAuditDownloadRequest) ToJsonString() string {
@@ -2158,6 +2157,7 @@ func (r *DescribeDatabaseAuditDownloadRequest) FromJsonString(s string) error {
 	delete(f, "DbNames")
 	delete(f, "SqlTypes")
 	delete(f, "Catalogs")
+	delete(f, "IsQuery")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabaseAuditDownloadRequest has unknown keys!", "")
 	}
@@ -3134,6 +3134,12 @@ type DescribeSlowQueryRecordsDownloadRequestParams struct {
 
 	// catalog名称
 	CatalogName []*string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序方式
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
 }
 
 type DescribeSlowQueryRecordsDownloadRequest struct {
@@ -3174,6 +3180,12 @@ type DescribeSlowQueryRecordsDownloadRequest struct {
 
 	// catalog名称
 	CatalogName []*string `json:"CatalogName,omitnil,omitempty" name:"CatalogName"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序方式
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
 }
 
 func (r *DescribeSlowQueryRecordsDownloadRequest) ToJsonString() string {
@@ -3200,6 +3212,8 @@ func (r *DescribeSlowQueryRecordsDownloadRequest) FromJsonString(s string) error
 	delete(f, "IsQuery")
 	delete(f, "DbName")
 	delete(f, "CatalogName")
+	delete(f, "SortField")
+	delete(f, "SortOrder")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSlowQueryRecordsDownloadRequest has unknown keys!", "")
 	}
@@ -3274,6 +3288,12 @@ type DescribeSlowQueryRecordsRequestParams struct {
 
 	// MemoryUsage排序字段
 	MemoryUsage *string `json:"MemoryUsage,omitnil,omitempty" name:"MemoryUsage"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序方式
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
 }
 
 type DescribeSlowQueryRecordsRequest struct {
@@ -3320,6 +3340,12 @@ type DescribeSlowQueryRecordsRequest struct {
 
 	// MemoryUsage排序字段
 	MemoryUsage *string `json:"MemoryUsage,omitnil,omitempty" name:"MemoryUsage"`
+
+	// 排序字段
+	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
+
+	// 排序方式
+	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
 }
 
 func (r *DescribeSlowQueryRecordsRequest) ToJsonString() string {
@@ -3348,6 +3374,8 @@ func (r *DescribeSlowQueryRecordsRequest) FromJsonString(s string) error {
 	delete(f, "ReadRows")
 	delete(f, "ResultBytes")
 	delete(f, "MemoryUsage")
+	delete(f, "SortField")
+	delete(f, "SortOrder")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSlowQueryRecordsRequest has unknown keys!", "")
 	}
@@ -3363,11 +3391,9 @@ type DescribeSlowQueryRecordsResponseParams struct {
 	SlowQueryRecords []*SlowQueryRecord `json:"SlowQueryRecords,omitnil,omitempty" name:"SlowQueryRecords"`
 
 	// 所有数据库名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DBNameList []*string `json:"DBNameList,omitnil,omitempty" name:"DBNameList"`
 
 	// 所有catalog名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CatalogNameList []*string `json:"CatalogNameList,omitnil,omitempty" name:"CatalogNameList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

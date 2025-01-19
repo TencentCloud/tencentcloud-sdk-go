@@ -850,6 +850,9 @@ type CreateHpcClusterRequestParams struct {
 
 	// 高性能计算集群对应的业务场景标识，当前只支持CDC。
 	HpcClusterBusinessId *string `json:"HpcClusterBusinessId,omitnil,omitempty" name:"HpcClusterBusinessId"`
+
+	// 标签描述列表。通过指定该参数可以同时绑定标签到相应的HPC高性能集群。
+	TagSpecification []*TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 }
 
 type CreateHpcClusterRequest struct {
@@ -869,6 +872,9 @@ type CreateHpcClusterRequest struct {
 
 	// 高性能计算集群对应的业务场景标识，当前只支持CDC。
 	HpcClusterBusinessId *string `json:"HpcClusterBusinessId,omitnil,omitempty" name:"HpcClusterBusinessId"`
+
+	// 标签描述列表。通过指定该参数可以同时绑定标签到相应的HPC高性能集群。
+	TagSpecification []*TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 }
 
 func (r *CreateHpcClusterRequest) ToJsonString() string {
@@ -888,6 +894,7 @@ func (r *CreateHpcClusterRequest) FromJsonString(s string) error {
 	delete(f, "Remark")
 	delete(f, "HpcClusterType")
 	delete(f, "HpcClusterBusinessId")
+	delete(f, "TagSpecification")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHpcClusterRequest has unknown keys!", "")
 	}
@@ -2590,6 +2597,12 @@ type DescribeHpcClustersRequestParams struct {
 
 	// 高性能计算集群对应的业务场景标识，当前只支持CDC。	
 	HpcClusterBusinessId *string `json:"HpcClusterBusinessId,omitnil,omitempty" name:"HpcClusterBusinessId"`
+
+	// 高性能计算集群实例类型
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <li><strong>tag-key</strong></li> <p style="padding-left: 30px;">按照【<strong>标签键</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> <li><strong>tag-value</strong></li> <p style="padding-left: 30px;">按照【<strong>标签值</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> <li><strong>tag:tag-key</strong></li> <p style="padding-left: 30px;">按照【<strong>标签键值对</strong>】进行过滤。tag-key使用具体的标签键进行替换。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeHpcClustersRequest struct {
@@ -2615,6 +2628,12 @@ type DescribeHpcClustersRequest struct {
 
 	// 高性能计算集群对应的业务场景标识，当前只支持CDC。	
 	HpcClusterBusinessId *string `json:"HpcClusterBusinessId,omitnil,omitempty" name:"HpcClusterBusinessId"`
+
+	// 高性能计算集群实例类型
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// <li><strong>tag-key</strong></li> <p style="padding-left: 30px;">按照【<strong>标签键</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> <li><strong>tag-value</strong></li> <p style="padding-left: 30px;">按照【<strong>标签值</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> <li><strong>tag:tag-key</strong></li> <p style="padding-left: 30px;">按照【<strong>标签键值对</strong>】进行过滤。tag-key使用具体的标签键进行替换。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p> 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeHpcClustersRequest) ToJsonString() string {
@@ -2636,6 +2655,8 @@ func (r *DescribeHpcClustersRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "HpcClusterType")
 	delete(f, "HpcClusterBusinessId")
+	delete(f, "InstanceType")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHpcClustersRequest has unknown keys!", "")
 	}
@@ -4954,6 +4975,12 @@ type HpcClusterInfo struct {
 	// 高性能计算集群对应的业务场景标识，当前只支持CDC。	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HpcClusterBusinessId *string `json:"HpcClusterBusinessId,omitnil,omitempty" name:"HpcClusterBusinessId"`
+
+	// 高性能计算集群网络模式
+	HpcClusterNetMode *uint64 `json:"HpcClusterNetMode,omitnil,omitempty" name:"HpcClusterNetMode"`
+
+	// 高性能计算集群关联的标签列表
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type Image struct {

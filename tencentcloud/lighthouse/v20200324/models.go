@@ -1269,6 +1269,12 @@ type CreateInstancesRequestParams struct {
 
 	// 创建实例后自动执行的命令。
 	InitCommand *Command `json:"InitCommand,omitnil,omitempty" name:"InitCommand"`
+
+	// 主域名。
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// 子域名。
+	Subdomain *string `json:"Subdomain,omitnil,omitempty" name:"Subdomain"`
 }
 
 type CreateInstancesRequest struct {
@@ -1324,6 +1330,12 @@ type CreateInstancesRequest struct {
 
 	// 创建实例后自动执行的命令。
 	InitCommand *Command `json:"InitCommand,omitnil,omitempty" name:"InitCommand"`
+
+	// 主域名。
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// 子域名。
+	Subdomain *string `json:"Subdomain,omitnil,omitempty" name:"Subdomain"`
 }
 
 func (r *CreateInstancesRequest) ToJsonString() string {
@@ -1352,6 +1364,8 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 	delete(f, "FirewallTemplateId")
 	delete(f, "Tags")
 	delete(f, "InitCommand")
+	delete(f, "DomainName")
+	delete(f, "Subdomain")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancesRequest has unknown keys!", "")
 	}
