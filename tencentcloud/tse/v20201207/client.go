@@ -3896,6 +3896,57 @@ func (c *Client) DescribeCloudNativeAPIGatewayConfigWithContext(ctx context.Cont
     return
 }
 
+func NewDescribeCloudNativeAPIGatewayInfoByIpRequest() (request *DescribeCloudNativeAPIGatewayInfoByIpRequest) {
+    request = &DescribeCloudNativeAPIGatewayInfoByIpRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeCloudNativeAPIGatewayInfoByIp")
+    
+    
+    return
+}
+
+func NewDescribeCloudNativeAPIGatewayInfoByIpResponse() (response *DescribeCloudNativeAPIGatewayInfoByIpResponse) {
+    response = &DescribeCloudNativeAPIGatewayInfoByIpResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudNativeAPIGatewayInfoByIp
+// 根据公网IP查询云原生网关实例信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) DescribeCloudNativeAPIGatewayInfoByIp(request *DescribeCloudNativeAPIGatewayInfoByIpRequest) (response *DescribeCloudNativeAPIGatewayInfoByIpResponse, err error) {
+    return c.DescribeCloudNativeAPIGatewayInfoByIpWithContext(context.Background(), request)
+}
+
+// DescribeCloudNativeAPIGatewayInfoByIp
+// 根据公网IP查询云原生网关实例信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) DescribeCloudNativeAPIGatewayInfoByIpWithContext(ctx context.Context, request *DescribeCloudNativeAPIGatewayInfoByIpRequest) (response *DescribeCloudNativeAPIGatewayInfoByIpResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudNativeAPIGatewayInfoByIpRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudNativeAPIGatewayInfoByIp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudNativeAPIGatewayInfoByIpResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudNativeAPIGatewayNodesRequest() (request *DescribeCloudNativeAPIGatewayNodesRequest) {
     request = &DescribeCloudNativeAPIGatewayNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},

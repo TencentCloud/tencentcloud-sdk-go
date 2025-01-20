@@ -5165,6 +5165,64 @@ type DescribeCloudNativeAPIGatewayConfigResult struct {
 }
 
 // Predefined struct for user
+type DescribeCloudNativeAPIGatewayInfoByIpRequestParams struct {
+	// 云原生网关的公网ip
+	PublicNetworkIP *string `json:"PublicNetworkIP,omitnil,omitempty" name:"PublicNetworkIP"`
+}
+
+type DescribeCloudNativeAPIGatewayInfoByIpRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云原生网关的公网ip
+	PublicNetworkIP *string `json:"PublicNetworkIP,omitnil,omitempty" name:"PublicNetworkIP"`
+}
+
+func (r *DescribeCloudNativeAPIGatewayInfoByIpRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudNativeAPIGatewayInfoByIpRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PublicNetworkIP")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudNativeAPIGatewayInfoByIpRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudNativeAPIGatewayInfoByIpResponseParams struct {
+	// 出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *DescribeInstanceInfoByIpResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudNativeAPIGatewayInfoByIpResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudNativeAPIGatewayInfoByIpResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudNativeAPIGatewayInfoByIpResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudNativeAPIGatewayInfoByIpResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCloudNativeAPIGatewayNodesRequestParams struct {
 	// 云原生API网关实例ID。
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
@@ -7360,6 +7418,16 @@ func (r *DescribeGovernanceServicesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeGovernanceServicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeInstanceInfoByIpResult struct {
+	// 实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 分组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
 type DescribeInstanceRegionInfo struct {

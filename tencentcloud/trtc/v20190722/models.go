@@ -75,6 +75,9 @@ type AgentConfig struct {
 
 	// 是否过滤掉用户只说了一个字的句子，true表示过滤，false表示不过滤，默认值为true
 	FilterOneWord *bool `json:"FilterOneWord,omitnil,omitempty" name:"FilterOneWord"`
+
+	// 欢迎消息优先级，0默认，1高优，高优不能被打断。
+	WelcomeMessagePriority *uint64 `json:"WelcomeMessagePriority,omitnil,omitempty" name:"WelcomeMessagePriority"`
 }
 
 type AgentParams struct {

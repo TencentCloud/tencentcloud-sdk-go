@@ -5195,7 +5195,7 @@ type ModifyUserProfileRequestParams struct {
 	// 待修改用户ID
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 待修改的用户名
+	// 待修改的用户名。对应注册用户下“Name“字段，本次修改是对此内容进行修改。
 	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
 
 	// 待修改头像url
@@ -5208,7 +5208,7 @@ type ModifyUserProfileRequest struct {
 	// 待修改用户ID
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// 待修改的用户名
+	// 待修改的用户名。对应注册用户下“Name“字段，本次修改是对此内容进行修改。
 	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
 
 	// 待修改头像url

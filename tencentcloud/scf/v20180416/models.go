@@ -1649,7 +1649,7 @@ type Function struct {
 	// 命名空间
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 函数状态，状态值及流转[参考此处](https://cloud.tencent.com/document/product/583/47175)
+	// 函数状态，状态值及流转[参考此处](https://cloud.tencent.com/document/product/583/17244)
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 函数状态详情
@@ -3155,7 +3155,7 @@ type LayerVersionInfo struct {
 	// 层名称
 	LayerName *string `json:"LayerName,omitnil,omitempty" name:"LayerName"`
 
-	// 层的具体版本当前状态，状态值[参考此处](https://cloud.tencent.com/document/product/583/47175#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
+	// 层的具体版本当前状态，状态值[参考此处](https://cloud.tencent.com/document/product/583/115197#.E5.B1.82.EF.BC.88Layer.EF.BC.89.E7.8A.B6.E6.80.81)
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// Stamp
