@@ -863,6 +863,9 @@ const (
 	// 暂不支持当前域名后缀接入，如您需要使用请联系我们。
 	INVALIDPARAMETERVALUE_TOPLEVELDOMAINNOTSUPPORT = "InvalidParameterValue.TopLevelDomainNotSupport"
 
+	// 试用套餐的自定义页面不允许引用。
+	INVALIDPARAMETERVALUE_TRIALPLANRESPONSEPAGE = "InvalidParameterValue.TrialPlanResponsePage"
+
 	// 配置项错误。
 	INVALIDPARAMETERVALUE_UNRECOGNIZABLEVALUE = "InvalidParameterValue.UnrecognizableValue"
 

@@ -20,6 +20,142 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AgentProcedure struct {
+	// 索引
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Index *uint64 `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 执行过程英语名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 中文名, 用于展示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 状态常量: 使用中: processing, 成功: success, 失败: failed
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 图标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Icon *string `json:"Icon,omitnil,omitempty" name:"Icon"`
+
+	// Agent调试信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Debugging *AgentProcedureDebugging `json:"Debugging,omitnil,omitempty" name:"Debugging"`
+
+	// 是否切换Agent，取值为"main"或者"workflow",不切换为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 工作流名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 当前请求执行时间, 单位 ms
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Elapsed *uint64 `json:"Elapsed,omitnil,omitempty" name:"Elapsed"`
+}
+
+type AgentProcedureDebugging struct {
+	// 模型思考内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 展示的具体文本内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisplayContent *string `json:"DisplayContent,omitnil,omitempty" name:"DisplayContent"`
+
+	// 展示类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisplayType *uint64 `json:"DisplayType,omitnil,omitempty" name:"DisplayType"`
+
+	// 搜索引擎展示的索引
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QuoteInfos []*QuoteInfo `json:"QuoteInfos,omitnil,omitempty" name:"QuoteInfos"`
+
+	// 具体的参考来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	References []*AgentReference `json:"References,omitnil,omitempty" name:"References"`
+}
+
+type AgentReference struct {
+	// 来源文档ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocId *string `json:"DocId,omitnil,omitempty" name:"DocId"`
+
+	// id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 文档业务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
+
+	// 文档名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocName *string `json:"DocName,omitnil,omitempty" name:"DocName"`
+
+	// 问答业务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QaBizId *string `json:"QaBizId,omitnil,omitempty" name:"QaBizId"`
+
+	// 搜索引擎索引
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Index *uint64 `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 标题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+}
+
+type AgentThought struct {
+	// 会话 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 请求 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+
+	// 对应哪条会话, 会话 ID, 用于回答的消息存储使用, 可提前生成, 保存消息时使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// 当前请求执行时间, 单位 ms
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Elapsed *uint64 `json:"Elapsed,omitnil,omitempty" name:"Elapsed"`
+
+	// 当前是否为工作流
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsWorkflow *bool `json:"IsWorkflow,omitnil,omitempty" name:"IsWorkflow"`
+
+	// 如果当前是工作流，工作流名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 具体思考过程详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Procedures []*AgentProcedure `json:"Procedures,omitnil,omitempty" name:"Procedures"`
+
+	// TraceId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TraceId *string `json:"TraceId,omitnil,omitempty" name:"TraceId"`
+}
+
 type ApiVarAttrInfo struct {
 	// 自定义变量id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -89,9 +225,17 @@ type AppInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 模型别名
+	// 生成模型别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelAliasName *string `json:"ModelAliasName,omitnil,omitempty" name:"ModelAliasName"`
+
+	// 应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
+
+	// 思考模型别名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThoughtModelAliasName *string `json:"ThoughtModelAliasName,omitnil,omitempty" name:"ThoughtModelAliasName"`
 }
 
 type AppModel struct {
@@ -126,6 +270,14 @@ type AppModel struct {
 	// 使用类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsageType *string `json:"UsageType,omitnil,omitempty" name:"UsageType"`
+
+	// 模型温度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Temperature *string `json:"Temperature,omitnil,omitempty" name:"Temperature"`
+
+	// 模型TopP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopP *string `json:"TopP,omitnil,omitempty" name:"TopP"`
 }
 
 type AttrLabel struct {
@@ -4482,7 +4634,7 @@ func (r *GetDocPreviewRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetDocPreviewResponseParams struct {
-	// 文件名
+	// 文件名, 发布端固定使用这个名称
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 文件类型
@@ -4496,6 +4648,9 @@ type GetDocPreviewResponseParams struct {
 
 	// cos桶
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// 存在文档重命名情况下的新名称, 评测端优先使用这个名称
+	NewName *string `json:"NewName,omitnil,omitempty" name:"NewName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4965,7 +5120,7 @@ type GetWsTokenRequestParams struct {
 	// 访客ID（外部输入，建议唯一，标识当前接入会话的用户）
 	VisitorBizId *string `json:"VisitorBizId,omitnil,omitempty" name:"VisitorBizId"`
 
-	// 知识标签（用于知识库中知识的检索过滤）
+	// 知识标签，用于知识库中知识的检索过滤。该字段即将下线，请使用对话端接口中的 custom_variables 字段替代该字段。
 	VisitorLabels []*GetWsTokenReq_Label `json:"VisitorLabels,omitnil,omitempty" name:"VisitorLabels"`
 }
 
@@ -4981,7 +5136,7 @@ type GetWsTokenRequest struct {
 	// 访客ID（外部输入，建议唯一，标识当前接入会话的用户）
 	VisitorBizId *string `json:"VisitorBizId,omitnil,omitempty" name:"VisitorBizId"`
 
-	// 知识标签（用于知识库中知识的检索过滤）
+	// 知识标签，用于知识库中知识的检索过滤。该字段即将下线，请使用对话端接口中的 custom_variables 字段替代该字段。
 	VisitorLabels []*GetWsTokenReq_Label `json:"VisitorLabels,omitnil,omitempty" name:"VisitorLabels"`
 }
 
@@ -5009,7 +5164,7 @@ func (r *GetWsTokenRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetWsTokenResponseParams struct {
-	// token值（有效期60s）
+	// token值（有效期60s，仅一次有效，多次校验会报错）
 	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
 
 	// 余额; 余额大于 0 时表示有效
@@ -5018,6 +5173,12 @@ type GetWsTokenResponseParams struct {
 
 	// 对话窗输入字符限制
 	InputLenLimit *int64 `json:"InputLenLimit,omitnil,omitempty" name:"InputLenLimit"`
+
+	// 应用模式，standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
+
+	// SingleWorkflow
+	SingleWorkflow *KnowledgeQaSingleWorkflow `json:"SingleWorkflow,omitnil,omitempty" name:"SingleWorkflow"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5416,7 +5577,7 @@ type KnowledgeQaConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleDescription *string `json:"RoleDescription,omitnil,omitempty" name:"RoleDescription"`
 
-	// 模型配置
+	// 生成模型配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Model *AppModel `json:"Model,omitnil,omitempty" name:"Model"`
 
@@ -5435,6 +5596,26 @@ type KnowledgeQaConfig struct {
 	// 检索范围
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SearchRange *SearchRange `json:"SearchRange,omitnil,omitempty" name:"SearchRange"`
+
+	// 应用模式，standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
+
+	// 检索策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SearchStrategy *SearchStrategy `json:"SearchStrategy,omitnil,omitempty" name:"SearchStrategy"`
+
+	// 单工作流ID，Pattern为single_workflow时传入
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SingleWorkflow *KnowledgeQaSingleWorkflow `json:"SingleWorkflow,omitnil,omitempty" name:"SingleWorkflow"`
+
+	// 应用关联插件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Plugins []*KnowledgeQaPlugin `json:"Plugins,omitnil,omitempty" name:"Plugins"`
+
+	// 思考模型配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThoughtModel *AppModel `json:"ThoughtModel,omitnil,omitempty" name:"ThoughtModel"`
 }
 
 type KnowledgeQaOutput struct {
@@ -5465,6 +5646,33 @@ type KnowledgeQaOutput struct {
 	// 是否打开推荐问题开关
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UseRecommended *bool `json:"UseRecommended,omitnil,omitempty" name:"UseRecommended"`
+}
+
+type KnowledgeQaPlugin struct {
+	// 插件ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+
+	// 插件名称
+	PluginName *string `json:"PluginName,omitnil,omitempty" name:"PluginName"`
+
+	// 插件图标
+	PluginIcon *string `json:"PluginIcon,omitnil,omitempty" name:"PluginIcon"`
+
+	// 工具ID
+	ToolId *string `json:"ToolId,omitnil,omitempty" name:"ToolId"`
+
+	// 工具名称
+	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
+
+	// 工具描述
+	ToolDesc *string `json:"ToolDesc,omitnil,omitempty" name:"ToolDesc"`
+
+	// 工具输入参数
+	Inputs []*PluginToolReqParam `json:"Inputs,omitnil,omitempty" name:"Inputs"`
+
+	// 插件是否和知识库绑定
+	IsBindingKnowledge *bool `json:"IsBindingKnowledge,omitnil,omitempty" name:"IsBindingKnowledge"`
 }
 
 type KnowledgeQaSearch struct {
@@ -5505,6 +5713,23 @@ type KnowledgeQaSearch struct {
 	ResourceStatus *uint64 `json:"ResourceStatus,omitnil,omitempty" name:"ResourceStatus"`
 }
 
+type KnowledgeQaSingleWorkflow struct {
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 工作流名称
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 工作流描述
+	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
+
+	// 工作流状态，发布状态(UNPUBLISHED: 待发布 PUBLISHING: 发布中 PUBLISHED: 已发布 FAIL:发布失败)
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 工作流是否启用
+	IsEnable *bool `json:"IsEnable,omitnil,omitempty" name:"IsEnable"`
+}
+
 type KnowledgeSummary struct {
 	// 1是问答 2是文档片段
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5519,6 +5744,10 @@ type KnowledgeWorkflow struct {
 	// 是否启用工作流
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsEnabled *bool `json:"IsEnabled,omitnil,omitempty" name:"IsEnabled"`
+
+	// 是否启用PDL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsePdl *bool `json:"UsePdl,omitnil,omitempty" name:"UsePdl"`
 }
 
 type Label struct {
@@ -5923,6 +6152,9 @@ type ListDocItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
+	// 重命名的新文档名称，在重命名提交之后，文档发布之前都是这个名称
+	NewName *string `json:"NewName,omitnil,omitempty" name:"NewName"`
+
 	// 文件类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
@@ -6136,6 +6368,12 @@ type ListModelRequestParams struct {
 	// 应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classifys-知识标签提取
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 
+	// 应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
+
+	// 模型类别 generate：生成模型，thought：思考模型
+	ModelCategory *string `json:"ModelCategory,omitnil,omitempty" name:"ModelCategory"`
+
 	// 登录用户主账号(集成商模式必填)	
 	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
 
@@ -6148,6 +6386,12 @@ type ListModelRequest struct {
 	
 	// 应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classifys-知识标签提取
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
+
+	// 应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
+
+	// 模型类别 generate：生成模型，thought：思考模型
+	ModelCategory *string `json:"ModelCategory,omitnil,omitempty" name:"ModelCategory"`
 
 	// 登录用户主账号(集成商模式必填)	
 	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
@@ -6169,6 +6413,8 @@ func (r *ListModelRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "AppType")
+	delete(f, "Pattern")
+	delete(f, "ModelCategory")
 	delete(f, "LoginUin")
 	delete(f, "LoginSubAccountUin")
 	if len(f) > 0 {
@@ -6464,6 +6710,9 @@ type ListQaItem struct {
 
 	// 相似问个数
 	SimilarQuestionNum *uint64 `json:"SimilarQuestionNum,omitnil,omitempty" name:"SimilarQuestionNum"`
+
+	// 返回问答关联的相似问,联动搜索,仅展示一条
+	SimilarQuestionTips *string `json:"SimilarQuestionTips,omitnil,omitempty" name:"SimilarQuestionTips"`
 }
 
 // Predefined struct for user
@@ -8389,6 +8638,10 @@ type MsgRecord struct {
 	// 参考来源引用位置信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuoteInfos []*QuoteInfo `json:"QuoteInfos,omitnil,omitempty" name:"QuoteInfos"`
+
+	// Agent的思考过程信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentThought *AgentThought `json:"AgentThought,omitnil,omitempty" name:"AgentThought"`
 }
 
 type MsgRecordReference struct {
@@ -8511,6 +8764,26 @@ func (r *ParseDocResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ParseDocResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type PluginToolReqParam struct {
+	// 参数名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 参数描述
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 参数类型，0:string, 1:int, 2:float，3:bool 4:object 5:array_string, 6:array_int, 7:array_float, 8:array_bool, 9:array_object
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 参数是否必填
+	IsRequired *bool `json:"IsRequired,omitnil,omitempty" name:"IsRequired"`
+
+	// 参数默认值
+	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
+
+	// 子参数,ParamType 是OBJECT 或 ARRAY<>类型有用
+	SubParams []*PluginToolReqParam `json:"SubParams,omitnil,omitempty" name:"SubParams"`
 }
 
 type Polygon struct {
@@ -9167,7 +9440,7 @@ type ReleaseQA struct {
 	// 状态描述
 	ActionDesc *string `json:"ActionDesc,omitnil,omitempty" name:"ActionDesc"`
 
-	// 来源
+	// 来源1:文档生成，2：批量导入，3：手动添加
 	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 来源描述
@@ -9760,6 +10033,16 @@ type SearchRange struct {
 	// 自定义变量和标签关系数据	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiVarAttrInfos []*ApiVarAttrInfo `json:"ApiVarAttrInfos,omitnil,omitempty" name:"ApiVarAttrInfos"`
+}
+
+type SearchStrategy struct {
+	// 检索策略类型 0:混合检索，1：语义检索
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyType *uint64 `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
+
+	// Excel检索增强开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableEnhancement *bool `json:"TableEnhancement,omitnil,omitempty" name:"TableEnhancement"`
 }
 
 type SimilarQuestion struct {

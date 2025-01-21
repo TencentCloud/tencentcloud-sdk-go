@@ -3498,7 +3498,7 @@ type DeleteRabbitMQPermissionRequestParams struct {
 	// 用户名，登录时使用
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// vhost名
+	// vhost名称
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 }
 
@@ -3511,7 +3511,7 @@ type DeleteRabbitMQPermissionRequest struct {
 	// 用户名，登录时使用
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// vhost名
+	// vhost名称
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 }
 

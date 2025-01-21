@@ -3577,6 +3577,17 @@ func (r *GeneralBasicOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GeneralCardWarnInfo struct {
+	// 是否存在该告警
+	IsWarn *bool `json:"IsWarn,omitnil,omitempty" name:"IsWarn"`
+
+	// 风险程度
+	RiskConfidence *float64 `json:"RiskConfidence,omitnil,omitempty" name:"RiskConfidence"`
+
+	// 告警位置四点坐标
+	Polygon []*Polygon `json:"Polygon,omitnil,omitempty" name:"Polygon"`
+}
+
 // Predefined struct for user
 type GeneralEfficientOCRRequestParams struct {
 	// 图片的 Base64 值。
@@ -7891,6 +7902,139 @@ func (r *RecognizeForeignPermanentResidentIdCardResponse) ToJsonString() string 
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RecognizeForeignPermanentResidentIdCardResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RecognizeGeneralCardWarnRequestParams struct {
+	// 图片链接
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 图片base64
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 卡证类型参数，包含以下范围：  
+	// default：通用卡证  
+	// idcard：身份证  
+	// passport：护照  
+	// bizlicense：营业执照  
+	// regcertificate：登记证书  
+	// residpermit：居住证  
+	// transpermit：通行证  
+	// signboard：门头照  
+	// bankcard：银行卡  
+	// drivinglicense：驾驶证、行驶证
+	CardType *string `json:"CardType,omitnil,omitempty" name:"CardType"`
+
+	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
+}
+
+type RecognizeGeneralCardWarnRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片链接
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 图片base64
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 卡证类型参数，包含以下范围：  
+	// default：通用卡证  
+	// idcard：身份证  
+	// passport：护照  
+	// bizlicense：营业执照  
+	// regcertificate：登记证书  
+	// residpermit：居住证  
+	// transpermit：通行证  
+	// signboard：门头照  
+	// bankcard：银行卡  
+	// drivinglicense：驾驶证、行驶证
+	CardType *string `json:"CardType,omitnil,omitempty" name:"CardType"`
+
+	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitnil,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
+}
+
+func (r *RecognizeGeneralCardWarnRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeGeneralCardWarnRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	delete(f, "CardType")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeGeneralCardWarnRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RecognizeGeneralCardWarnResponseParams struct {
+	// 卡证类型参数，包含以下范围： 
+	// default：通用卡证
+	// idcard：身份证 
+	// passport：护照 
+	// bizlicense：营业执照 
+	// regcertificate：登记证书 
+	// residpermit：居住证 
+	// transpermit：通行证 
+	// signboard：门头照 
+	// bankcard：银行卡 
+	// drivinglicense：驾驶证、行驶证
+	CardType *string `json:"CardType,omitnil,omitempty" name:"CardType"`
+
+	// 模糊信息
+	Blur *GeneralCardWarnInfo `json:"Blur,omitnil,omitempty" name:"Blur"`
+
+	// 边框不完整信息
+	BorderIncomplete *GeneralCardWarnInfo `json:"BorderIncomplete,omitnil,omitempty" name:"BorderIncomplete"`
+
+	// 复印件信息
+	Copy *GeneralCardWarnInfo `json:"Copy,omitnil,omitempty" name:"Copy"`
+
+	// ps篡改信息
+	Ps *GeneralCardWarnInfo `json:"Ps,omitnil,omitempty" name:"Ps"`
+
+	// 反光信息
+	Reflection *GeneralCardWarnInfo `json:"Reflection,omitnil,omitempty" name:"Reflection"`
+
+	// 翻拍件信息
+	Reprint *GeneralCardWarnInfo `json:"Reprint,omitnil,omitempty" name:"Reprint"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RecognizeGeneralCardWarnResponse struct {
+	*tchttp.BaseResponse
+	Response *RecognizeGeneralCardWarnResponseParams `json:"Response"`
+}
+
+func (r *RecognizeGeneralCardWarnResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeGeneralCardWarnResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

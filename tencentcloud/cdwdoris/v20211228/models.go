@@ -117,7 +117,6 @@ type BackUpJobDisplay struct {
 	BackUpSize *int64 `json:"BackUpSize,omitnil,omitempty" name:"BackUpSize"`
 
 	// 备份单副本数据量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackUpSingleSize *int64 `json:"BackUpSingleSize,omitnil,omitempty" name:"BackUpSingleSize"`
 
 	// 实例创建时间
@@ -130,28 +129,25 @@ type BackUpJobDisplay struct {
 	JobStatus *string `json:"JobStatus,omitnil,omitempty" name:"JobStatus"`
 
 	// 0为默认。1时是对远端的doris进行备份，不周期，一次性
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupType *int64 `json:"BackupType,omitnil,omitempty" name:"BackupType"`
 
 	// 0为默认。1时是立即备份。2时是迁移
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupTimeType *int64 `json:"BackupTimeType,omitnil,omitempty" name:"BackupTimeType"`
 
 	// 远端doris的连接信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DorisSourceInfo *DorisSourceInfo `json:"DorisSourceInfo,omitnil,omitempty" name:"DorisSourceInfo"`
 
 	// 实例状态对应的数值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobStatusNum *int64 `json:"JobStatusNum,omitnil,omitempty" name:"JobStatusNum"`
 
 	// 备份实例中关于cos的信息	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupCosInfo *BackupCosInfo `json:"BackupCosInfo,omitnil,omitempty" name:"BackupCosInfo"`
 
 	// 是否使用的自定义桶
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUserDefineBucket *bool `json:"IsUserDefineBucket,omitnil,omitempty" name:"IsUserDefineBucket"`
+
+	// 错误原因
+	ErrorReason *string `json:"ErrorReason,omitnil,omitempty" name:"ErrorReason"`
 }
 
 type BackupCosInfo struct {
@@ -813,7 +809,12 @@ type CreateInstanceNewRequestParams struct {
 	EnableMultiZones *bool `json:"EnableMultiZones,omitnil,omitempty" name:"EnableMultiZones"`
 
 	// 开启多可用区后，用户的所有可用区和子网信息
+	//
+	// Deprecated: UserMultiZoneInfos is deprecated.
 	UserMultiZoneInfos *NetworkInfo `json:"UserMultiZoneInfos,omitnil,omitempty" name:"UserMultiZoneInfos"`
+
+	// 开启多可用区后，用户的所有可用区和子网信息
+	UserMultiZoneInfoArr []*NetworkInfo `json:"UserMultiZoneInfoArr,omitnil,omitempty" name:"UserMultiZoneInfoArr"`
 }
 
 type CreateInstanceNewRequest struct {
@@ -866,6 +867,9 @@ type CreateInstanceNewRequest struct {
 
 	// 开启多可用区后，用户的所有可用区和子网信息
 	UserMultiZoneInfos *NetworkInfo `json:"UserMultiZoneInfos,omitnil,omitempty" name:"UserMultiZoneInfos"`
+
+	// 开启多可用区后，用户的所有可用区和子网信息
+	UserMultiZoneInfoArr []*NetworkInfo `json:"UserMultiZoneInfoArr,omitnil,omitempty" name:"UserMultiZoneInfoArr"`
 }
 
 func (r *CreateInstanceNewRequest) ToJsonString() string {
@@ -895,6 +899,7 @@ func (r *CreateInstanceNewRequest) FromJsonString(s string) error {
 	delete(f, "CaseSensitive")
 	delete(f, "EnableMultiZones")
 	delete(f, "UserMultiZoneInfos")
+	delete(f, "UserMultiZoneInfoArr")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceNewRequest has unknown keys!", "")
 	}
@@ -1224,11 +1229,9 @@ type DescribeAreaRegionResponseParams struct {
 	Items []*RegionAreaInfo `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 前端规则描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrontEndRules []*FrontEndRule `json:"FrontEndRules,omitnil,omitempty" name:"FrontEndRules"`
 
 	// 返回可用的白名单名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AvailableWhiteListNames []*string `json:"AvailableWhiteListNames,omitnil,omitempty" name:"AvailableWhiteListNames"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1293,8 +1296,16 @@ func (r *DescribeBackUpJobDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBackUpJobDetailResponseParams struct {
 	// 备份表详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableContents []*BackupTableContent `json:"TableContents,omitnil,omitempty" name:"TableContents"`
+
+	// 错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// 是否是未知版本
+	IsUnknownVersion *bool `json:"IsUnknownVersion,omitnil,omitempty" name:"IsUnknownVersion"`
+
+	// 返回对象用字符串表示
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1399,15 +1410,12 @@ func (r *DescribeBackUpJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBackUpJobResponseParams struct {
 	// 任务列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackUpJobs []*BackUpJobDisplay `json:"BackUpJobs,omitnil,omitempty" name:"BackUpJobs"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1549,15 +1557,12 @@ type DescribeBackUpTablesResponseParams struct {
 	AvailableTables []*BackupTableContent `json:"AvailableTables,omitnil,omitempty" name:"AvailableTables"`
 
 	// msg
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 未知version
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUnknownVersion *bool `json:"IsUnknownVersion,omitnil,omitempty" name:"IsUnknownVersion"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1622,11 +1627,9 @@ func (r *DescribeBackUpTaskDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBackUpTaskDetailResponseParams struct {
 	// 备份任务进度详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupStatus []*BackupStatus `json:"BackupStatus,omitnil,omitempty" name:"BackupStatus"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1815,7 +1818,6 @@ type DescribeClusterConfigsResponseParams struct {
 	BuildVersion *string `json:"BuildVersion,omitnil,omitempty" name:"BuildVersion"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 是否包含CN节点
@@ -1876,11 +1878,9 @@ func (r *DescribeCoolDownBackendsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCoolDownBackendsResponseParams struct {
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 节点信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*CoolDownBackend `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1938,11 +1938,9 @@ func (r *DescribeCoolDownPoliciesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCoolDownPoliciesResponseParams struct {
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 冷热分层策略列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*CoolDownPolicyInfo `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2007,11 +2005,9 @@ func (r *DescribeCoolDownTableDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCoolDownTableDataResponseParams struct {
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 冷热分层Table数据列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*CoolDownTableDataInfo `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2388,22 +2384,18 @@ func (r *DescribeInstanceNodesInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceNodesInfoResponseParams struct {
 	// Be节点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeNodes []*string `json:"BeNodes,omitnil,omitempty" name:"BeNodes"`
 
 	// Fe节点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeNodes []*string `json:"FeNodes,omitnil,omitempty" name:"FeNodes"`
 
 	// Fe master节点
 	FeMaster *string `json:"FeMaster,omitnil,omitempty" name:"FeMaster"`
 
 	// Be节点信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeNodeInfos []*NodeInfo `json:"BeNodeInfos,omitnil,omitempty" name:"BeNodeInfos"`
 
 	// Fe节点信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeNodeInfos []*NodeInfo `json:"FeNodeInfos,omitnil,omitempty" name:"FeNodeInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2492,7 +2484,6 @@ type DescribeInstanceNodesResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 实例节点总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceNodesList []*InstanceNode `json:"InstanceNodesList,omitnil,omitempty" name:"InstanceNodesList"`
 
 	// 节点类型
@@ -2654,7 +2645,6 @@ type DescribeInstanceOperationsResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 操作记录具体数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operations []*InstanceOperation `json:"Operations,omitnil,omitempty" name:"Operations"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2772,23 +2762,18 @@ type DescribeInstanceStateResponseParams struct {
 	InstanceState *string `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
 
 	// 集群操作创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowCreateTime *string `json:"FlowCreateTime,omitnil,omitempty" name:"FlowCreateTime"`
 
 	// 集群操作名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 集群操作进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowProgress *float64 `json:"FlowProgress,omitnil,omitempty" name:"FlowProgress"`
 
 	// 集群状态描述，例如：运行中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceStateDesc *string `json:"InstanceStateDesc,omitnil,omitempty" name:"InstanceStateDesc"`
 
 	// 集群流程错误信息，例如：“创建失败，资源不足”
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowMsg *string `json:"FlowMsg,omitnil,omitempty" name:"FlowMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2846,11 +2831,9 @@ func (r *DescribeInstanceUsedSubnetsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceUsedSubnetsResponseParams struct {
 	// 集群使用的vpc信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 集群使用的subnet信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedSubnets []*string `json:"UsedSubnets,omitnil,omitempty" name:"UsedSubnets"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2917,7 +2900,6 @@ func (r *DescribeInstancesHealthStateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstancesHealthStateResponseParams struct {
 	// base64编码后的数据，包含了集群的健康信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3070,11 +3052,9 @@ func (r *DescribeRestoreTaskDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRestoreTaskDetailResponseParams struct {
 	// 恢复任务进度详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RestoreStatus []*RestoreStatus `json:"RestoreStatus,omitnil,omitempty" name:"RestoreStatus"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

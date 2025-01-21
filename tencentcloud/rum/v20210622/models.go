@@ -371,8 +371,7 @@ type CreateTawInstanceResponseParams struct {
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 预付费订单 id
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 预付费订单 ，预付费不为null，后付费为null
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -646,7 +645,7 @@ func (r *DeleteReleaseFileResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteStarProjectRequestParams struct {
-	// 实例ID：taw-123
+	// 实例ID：****-1792
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
 	// 项目ID
@@ -656,7 +655,7 @@ type DeleteStarProjectRequestParams struct {
 type DeleteStarProjectRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID：taw-123
+	// 实例ID：****-1792
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
 	// 项目ID
@@ -685,8 +684,7 @@ func (r *DeleteStarProjectRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteStarProjectResponseParams struct {
-	// 返回消息
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 返回消息,请求成功才会返回，出现异常默认为null
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4681,7 +4679,6 @@ func (r *DescribePvListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePvListResponseParams struct {
 	// pv列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectPvSet []*RumPvInfo `json:"ProjectPvSet,omitnil,omitempty" name:"ProjectPvSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5743,6 +5740,34 @@ type Filter struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
+type Kafka struct {
+	// 1：开启
+	// 0：关闭
+	EnableKafka *uint64 `json:"EnableKafka,omitnil,omitempty" name:"EnableKafka"`
+
+	// host地址
+	KafkaHost *string `json:"KafkaHost,omitnil,omitempty" name:"KafkaHost"`
+
+	// topic
+	KafkaTopic *string `json:"KafkaTopic,omitnil,omitempty" name:"KafkaTopic"`
+
+	// 版本
+	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
+
+	// username
+	SaslUserName *string `json:"SaslUserName,omitnil,omitempty" name:"SaslUserName"`
+
+	// password
+	SaslPassword *string `json:"SaslPassword,omitnil,omitempty" name:"SaslPassword"`
+
+	// ssl
+	SaslMechanism *string `json:"SaslMechanism,omitnil,omitempty" name:"SaslMechanism"`
+
+	// 默认算子id为0新增算子
+	// 一旦算子新增成功会返回正确的算子id值
+	SinkId *uint64 `json:"SinkId,omitnil,omitempty" name:"SinkId"`
+}
+
 // Predefined struct for user
 type ModifyInstanceRequestParams struct {
 	// 要修改的实例id
@@ -5874,7 +5899,6 @@ func (r *ModifyProjectLimitRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyProjectLimitResponseParams struct {
 	// 返回信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6044,7 +6068,6 @@ type ReleaseFile struct {
 	FileHash *string `json:"FileHash,omitnil,omitempty" name:"FileHash"`
 
 	// 文件 id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 }
 
@@ -6217,7 +6240,6 @@ type RumInstanceInfo struct {
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 实例类型 1:原web相关类型 2:app端类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
@@ -6238,11 +6260,9 @@ type RumProject struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 项目仓库地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Repo *string `json:"Repo,omitnil,omitempty" name:"Repo"`
 
 	// 项目网址地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
 
 	// 项目采样频率
@@ -6264,20 +6284,19 @@ type RumProject struct {
 	InstanceKey *string `json:"InstanceKey,omitnil,omitempty" name:"InstanceKey"`
 
 	// 项目描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
 	// 是否星标  1:是 0:否
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsStar *int64 `json:"IsStar,omitnil,omitempty" name:"IsStar"`
 
 	// 项目状态(1 创建中，2 运行中，3 异常，4 重启中，5 停止中，6 已停止， 7 销毁中，8 已销毁)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectStatus *int64 `json:"ProjectStatus,omitnil,omitempty" name:"ProjectStatus"`
 
 	// 日志接入点，用户忽略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessPoint *string `json:"AccessPoint,omitnil,omitempty" name:"AccessPoint"`
+
+	// kafka旁路配置信息
+	Kafka *Kafka `json:"Kafka,omitnil,omitempty" name:"Kafka"`
 }
 
 type RumPvInfo struct {
@@ -6285,7 +6304,6 @@ type RumPvInfo struct {
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// pv访问量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pv *string `json:"Pv,omitnil,omitempty" name:"Pv"`
 
 	// 时间

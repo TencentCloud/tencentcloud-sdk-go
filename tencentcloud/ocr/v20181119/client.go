@@ -5130,6 +5130,73 @@ func (c *Client) RecognizeForeignPermanentResidentIdCardWithContext(ctx context.
     return
 }
 
+func NewRecognizeGeneralCardWarnRequest() (request *RecognizeGeneralCardWarnRequest) {
+    request = &RecognizeGeneralCardWarnRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeGeneralCardWarn")
+    
+    
+    return
+}
+
+func NewRecognizeGeneralCardWarnResponse() (response *RecognizeGeneralCardWarnResponse) {
+    response = &RecognizeGeneralCardWarnResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RecognizeGeneralCardWarn
+// 支持通用证照的有效性检测告警，包括卡证复印件告警、卡证翻拍告警等功能，支持通用证照的ps伪造检测，可以应用于各种证件信息有效性校验场景。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeGeneralCardWarn(request *RecognizeGeneralCardWarnRequest) (response *RecognizeGeneralCardWarnResponse, err error) {
+    return c.RecognizeGeneralCardWarnWithContext(context.Background(), request)
+}
+
+// RecognizeGeneralCardWarn
+// 支持通用证照的有效性检测告警，包括卡证复印件告警、卡证翻拍告警等功能，支持通用证照的ps伪造检测，可以应用于各种证件信息有效性校验场景。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeGeneralCardWarnWithContext(ctx context.Context, request *RecognizeGeneralCardWarnRequest) (response *RecognizeGeneralCardWarnResponse, err error) {
+    if request == nil {
+        request = NewRecognizeGeneralCardWarnRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeGeneralCardWarn require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecognizeGeneralCardWarnResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRecognizeGeneralInvoiceRequest() (request *RecognizeGeneralInvoiceRequest) {
     request = &RecognizeGeneralInvoiceRequest{
         BaseRequest: &tchttp.BaseRequest{},

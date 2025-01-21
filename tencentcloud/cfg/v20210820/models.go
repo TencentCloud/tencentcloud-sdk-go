@@ -896,6 +896,9 @@ type DescribeTaskListRequestParams struct {
 
 	// 架构ID
 	ArchId *string `json:"ArchId,omitnil,omitempty" name:"ArchId"`
+
+	// 架构名称
+	ArchName *string `json:"ArchName,omitnil,omitempty" name:"ArchName"`
 }
 
 type DescribeTaskListRequest struct {
@@ -945,6 +948,9 @@ type DescribeTaskListRequest struct {
 
 	// 架构ID
 	ArchId *string `json:"ArchId,omitnil,omitempty" name:"ArchId"`
+
+	// 架构名称
+	ArchName *string `json:"ArchName,omitnil,omitempty" name:"ArchName"`
 }
 
 func (r *DescribeTaskListRequest) ToJsonString() string {
@@ -974,6 +980,7 @@ func (r *DescribeTaskListRequest) FromJsonString(s string) error {
 	delete(f, "ApplicationName")
 	delete(f, "TaskStatusList")
 	delete(f, "ArchId")
+	delete(f, "ArchName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskListRequest has unknown keys!", "")
 	}
@@ -2113,6 +2120,12 @@ type TaskListItem struct {
 	// 状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskStatusType *uint64 `json:"TaskStatusType,omitnil,omitempty" name:"TaskStatusType"`
+
+	// 架构ID
+	ArchId *string `json:"ArchId,omitnil,omitempty" name:"ArchId"`
+
+	// 架构名称
+	ArchName *string `json:"ArchName,omitnil,omitempty" name:"ArchName"`
 }
 
 type TaskMonitor struct {

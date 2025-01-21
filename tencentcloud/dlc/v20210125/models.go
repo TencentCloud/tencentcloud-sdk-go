@@ -13954,13 +13954,13 @@ type TPartition struct {
 	// 字段描述
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
-	// 分区类型
+	// 分区类型（已废弃）
 	PartitionType *string `json:"PartitionType,omitnil,omitempty" name:"PartitionType"`
 
-	// 分区格式
+	// 分区格式（已废弃）
 	PartitionFormat *string `json:"PartitionFormat,omitnil,omitempty" name:"PartitionFormat"`
 
-	// 分区分隔数
+	// 分区分隔数（已废弃）
 	PartitionDot *int64 `json:"PartitionDot,omitnil,omitempty" name:"PartitionDot"`
 
 	// 分区转换策略

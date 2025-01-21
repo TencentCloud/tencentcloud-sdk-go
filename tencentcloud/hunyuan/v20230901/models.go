@@ -384,6 +384,8 @@ type ChatCompletionsResponseParams struct {
 	ErrorMsg *ErrorMsg `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 多轮会话风险审核，值为1时，表明存在信息安全风险，建议终止客户多轮会话。
+	//
+	// Deprecated: ModerationLevel is deprecated.
 	ModerationLevel *string `json:"ModerationLevel,omitnil,omitempty" name:"ModerationLevel"`
 
 	// 搜索结果信息
@@ -583,6 +585,9 @@ type Choice struct {
 
 	// 索引值，流式调用时使用该字段。
 	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 多轮会话风险审核，值为1时，表明存在信息安全风险，建议终止客户多轮会话。
+	ModerationLevel *string `json:"ModerationLevel,omitnil,omitempty" name:"ModerationLevel"`
 }
 
 type Content struct {

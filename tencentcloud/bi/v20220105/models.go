@@ -457,6 +457,12 @@ type CreateDatasourceRequestParams struct {
 
 	// 操作权限限制
 	OperationAuthLimit []*string `json:"OperationAuthLimit,omitnil,omitempty" name:"OperationAuthLimit"`
+
+	// 开启vpc
+	UseVPC *bool `json:"UseVPC,omitnil,omitempty" name:"UseVPC"`
+
+	// 地域
+	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 }
 
 type CreateDatasourceRequest struct {
@@ -521,6 +527,12 @@ type CreateDatasourceRequest struct {
 
 	// 操作权限限制
 	OperationAuthLimit []*string `json:"OperationAuthLimit,omitnil,omitempty" name:"OperationAuthLimit"`
+
+	// 开启vpc
+	UseVPC *bool `json:"UseVPC,omitnil,omitempty" name:"UseVPC"`
+
+	// 地域
+	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 }
 
 func (r *CreateDatasourceRequest) ToJsonString() string {
@@ -555,6 +567,8 @@ func (r *CreateDatasourceRequest) FromJsonString(s string) error {
 	delete(f, "Vport")
 	delete(f, "VpcId")
 	delete(f, "OperationAuthLimit")
+	delete(f, "UseVPC")
+	delete(f, "RegionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDatasourceRequest has unknown keys!", "")
 	}
@@ -1251,6 +1265,10 @@ type DatasourceInfo struct {
 	// 数据源名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbTypeName *string `json:"DbTypeName,omitnil,omitempty" name:"DbTypeName"`
+
+	// 开启vpc
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UseVPC *bool `json:"UseVPC,omitnil,omitempty" name:"UseVPC"`
 }
 
 type DatasourceInfoData struct {
@@ -2749,6 +2767,12 @@ type ModifyDatasourceRequestParams struct {
 
 	// 腾讯云私有网络标识
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 开启vpc	
+	UseVPC *bool `json:"UseVPC,omitnil,omitempty" name:"UseVPC"`
+
+	// 地域
+	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 }
 
 type ModifyDatasourceRequest struct {
@@ -2813,6 +2837,12 @@ type ModifyDatasourceRequest struct {
 
 	// 腾讯云私有网络标识
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 开启vpc	
+	UseVPC *bool `json:"UseVPC,omitnil,omitempty" name:"UseVPC"`
+
+	// 地域
+	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 }
 
 func (r *ModifyDatasourceRequest) ToJsonString() string {
@@ -2847,6 +2877,8 @@ func (r *ModifyDatasourceRequest) FromJsonString(s string) error {
 	delete(f, "Vip")
 	delete(f, "Vport")
 	delete(f, "VpcId")
+	delete(f, "UseVPC")
+	delete(f, "RegionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDatasourceRequest has unknown keys!", "")
 	}
@@ -3154,6 +3186,15 @@ type ModifyUserRoleRequestParams struct {
 
 	// 是否开启手机验证码登录（0 关闭，1 开启）
 	LoginSecurityStatus *int64 `json:"LoginSecurityStatus,omitnil,omitempty" name:"LoginSecurityStatus"`
+
+	// 是否开启密码过期提醒（0 关闭，1 开启
+	ResetPassWordTip *int64 `json:"ResetPassWordTip,omitnil,omitempty" name:"ResetPassWordTip"`
+
+	// 强制修改密码（0 关闭，1 开启）
+	ForceResetPassWord *int64 `json:"ForceResetPassWord,omitnil,omitempty" name:"ForceResetPassWord"`
+
+	// 密码过期提醒时间，30、60、90（默认）、180天
+	PasswordExpired *int64 `json:"PasswordExpired,omitnil,omitempty" name:"PasswordExpired"`
 }
 
 type ModifyUserRoleRequest struct {
@@ -3182,6 +3223,15 @@ type ModifyUserRoleRequest struct {
 
 	// 是否开启手机验证码登录（0 关闭，1 开启）
 	LoginSecurityStatus *int64 `json:"LoginSecurityStatus,omitnil,omitempty" name:"LoginSecurityStatus"`
+
+	// 是否开启密码过期提醒（0 关闭，1 开启
+	ResetPassWordTip *int64 `json:"ResetPassWordTip,omitnil,omitempty" name:"ResetPassWordTip"`
+
+	// 强制修改密码（0 关闭，1 开启）
+	ForceResetPassWord *int64 `json:"ForceResetPassWord,omitnil,omitempty" name:"ForceResetPassWord"`
+
+	// 密码过期提醒时间，30、60、90（默认）、180天
+	PasswordExpired *int64 `json:"PasswordExpired,omitnil,omitempty" name:"PasswordExpired"`
 }
 
 func (r *ModifyUserRoleRequest) ToJsonString() string {
@@ -3204,6 +3254,9 @@ func (r *ModifyUserRoleRequest) FromJsonString(s string) error {
 	delete(f, "AreaCode")
 	delete(f, "AppUserId")
 	delete(f, "LoginSecurityStatus")
+	delete(f, "ResetPassWordTip")
+	delete(f, "ForceResetPassWord")
+	delete(f, "PasswordExpired")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserRoleRequest has unknown keys!", "")
 	}

@@ -7209,158 +7209,6 @@ func (c *Client) DescribeAttackLogsWithContext(ctx context.Context, request *Des
     return
 }
 
-func NewDescribeAttackSourceRequest() (request *DescribeAttackSourceRequest) {
-    request = &DescribeAttackSourceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAttackSource")
-    
-    
-    return
-}
-
-func NewDescribeAttackSourceResponse() (response *DescribeAttackSourceResponse) {
-    response = &DescribeAttackSourceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeAttackSource
-// 已废弃
-//
-// 
-//
-// 查询攻击溯源
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
-//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeAttackSource(request *DescribeAttackSourceRequest) (response *DescribeAttackSourceResponse, err error) {
-    return c.DescribeAttackSourceWithContext(context.Background(), request)
-}
-
-// DescribeAttackSource
-// 已废弃
-//
-// 
-//
-// 查询攻击溯源
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
-//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeAttackSourceWithContext(ctx context.Context, request *DescribeAttackSourceRequest) (response *DescribeAttackSourceResponse, err error) {
-    if request == nil {
-        request = NewDescribeAttackSourceRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeAttackSource require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeAttackSourceResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeAttackSourceEventsRequest() (request *DescribeAttackSourceEventsRequest) {
-    request = &DescribeAttackSourceEventsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAttackSourceEvents")
-    
-    
-    return
-}
-
-func NewDescribeAttackSourceEventsResponse() (response *DescribeAttackSourceEventsResponse) {
-    response = &DescribeAttackSourceEventsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeAttackSourceEvents
-// 已废弃
-//
-// 
-//
-// 查询攻击溯源事件
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
-//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeAttackSourceEvents(request *DescribeAttackSourceEventsRequest) (response *DescribeAttackSourceEventsResponse, err error) {
-    return c.DescribeAttackSourceEventsWithContext(context.Background(), request)
-}
-
-// DescribeAttackSourceEvents
-// 已废弃
-//
-// 
-//
-// 查询攻击溯源事件
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
-//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeAttackSourceEventsWithContext(ctx context.Context, request *DescribeAttackSourceEventsRequest) (response *DescribeAttackSourceEventsResponse, err error) {
-    if request == nil {
-        request = NewDescribeAttackSourceEventsRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeAttackSourceEvents require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeAttackSourceEventsResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeAttackStatisticsRequest() (request *DescribeAttackStatisticsRequest) {
     request = &DescribeAttackStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7384,16 +7232,13 @@ func NewDescribeAttackStatisticsResponse() (response *DescribeAttackStatisticsRe
 // 网络攻击数据统计
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAttackStatistics(request *DescribeAttackStatisticsRequest) (response *DescribeAttackStatisticsResponse, err error) {
     return c.DescribeAttackStatisticsWithContext(context.Background(), request)
@@ -7403,16 +7248,13 @@ func (c *Client) DescribeAttackStatistics(request *DescribeAttackStatisticsReque
 // 网络攻击数据统计
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAttackStatisticsWithContext(ctx context.Context, request *DescribeAttackStatisticsRequest) (response *DescribeAttackStatisticsResponse, err error) {
     if request == nil {
@@ -7453,16 +7295,13 @@ func NewDescribeAttackTopResponse() (response *DescribeAttackTopResponse) {
 // 网络攻击top5数据列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAttackTop(request *DescribeAttackTopRequest) (response *DescribeAttackTopResponse, err error) {
     return c.DescribeAttackTopWithContext(context.Background(), request)
@@ -7472,16 +7311,13 @@ func (c *Client) DescribeAttackTop(request *DescribeAttackTopRequest) (response 
 // 网络攻击top5数据列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAttackTopWithContext(ctx context.Context, request *DescribeAttackTopRequest) (response *DescribeAttackTopResponse, err error) {
     if request == nil {
@@ -7522,16 +7358,13 @@ func NewDescribeAttackTrendsResponse() (response *DescribeAttackTrendsResponse) 
 // 网络攻击趋势数据
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAttackTrends(request *DescribeAttackTrendsRequest) (response *DescribeAttackTrendsResponse, err error) {
     return c.DescribeAttackTrendsWithContext(context.Background(), request)
@@ -7541,16 +7374,13 @@ func (c *Client) DescribeAttackTrends(request *DescribeAttackTrendsRequest) (res
 // 网络攻击趋势数据
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DATERANGE = "InvalidParameter.DateRange"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
 //  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAttackTrendsWithContext(ctx context.Context, request *DescribeAttackTrendsRequest) (response *DescribeAttackTrendsResponse, err error) {
     if request == nil {

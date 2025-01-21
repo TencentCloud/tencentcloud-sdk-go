@@ -503,6 +503,9 @@ const (
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
+	// 地域错误
+	REGIONERROR = "RegionError"
+
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
 

@@ -6605,6 +6605,7 @@ func NewDescribeUserRolesResponse() (response *DescribeUserRolesResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  REGIONERROR = "RegionError"
 func (c *Client) DescribeUserRoles(request *DescribeUserRolesRequest) (response *DescribeUserRolesResponse, err error) {
     return c.DescribeUserRolesWithContext(context.Background(), request)
 }
@@ -6614,6 +6615,7 @@ func (c *Client) DescribeUserRoles(request *DescribeUserRolesRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  REGIONERROR = "RegionError"
 func (c *Client) DescribeUserRolesWithContext(ctx context.Context, request *DescribeUserRolesRequest) (response *DescribeUserRolesResponse, err error) {
     if request == nil {
         request = NewDescribeUserRolesRequest()
