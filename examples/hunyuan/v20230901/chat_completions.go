@@ -17,7 +17,7 @@ func main() {
 	)
 
 	cpf := profile.NewClientProfile()
-	cpf.HttpProfile.ReqTimeout = 360 // 流式接口耗时较长
+	cpf.HttpProfile.ReqTimeout = 400 // 流式接口耗时较长
 
 	client, _ := hunyuan.NewClient(credential, regions.Guangzhou, cpf)
 
