@@ -2130,7 +2130,7 @@ type DescribeUserRoleListResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo *ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
-	// 扩展
+	// 扩展描述信息(提供更多异常信息,用于辅助判断)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 

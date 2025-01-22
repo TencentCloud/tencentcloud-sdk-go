@@ -362,6 +362,63 @@ func (c *Client) CheckCertificateDomainVerificationWithContext(ctx context.Conte
     return
 }
 
+func NewCheckCertificateExistRequest() (request *CheckCertificateExistRequest) {
+    request = &CheckCertificateExistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "CheckCertificateExist")
+    
+    
+    return
+}
+
+func NewCheckCertificateExistResponse() (response *CheckCertificateExistResponse) {
+    response = &CheckCertificateExistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckCertificateExist
+// 根据证书内容检测当前账号下是否存在一致的证书， 存在则返回证书ID， 不存在则返回空
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CANNOTGETORDER = "FailedOperation.CannotGetOrder"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWVERIFY = "FailedOperation.CertificateStatusNotAllowVerify"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+func (c *Client) CheckCertificateExist(request *CheckCertificateExistRequest) (response *CheckCertificateExistResponse, err error) {
+    return c.CheckCertificateExistWithContext(context.Background(), request)
+}
+
+// CheckCertificateExist
+// 根据证书内容检测当前账号下是否存在一致的证书， 存在则返回证书ID， 不存在则返回空
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CANNOTGETORDER = "FailedOperation.CannotGetOrder"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWVERIFY = "FailedOperation.CertificateStatusNotAllowVerify"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+func (c *Client) CheckCertificateExistWithContext(ctx context.Context, request *CheckCertificateExistRequest) (response *CheckCertificateExistResponse, err error) {
+    if request == nil {
+        request = NewCheckCertificateExistRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckCertificateExist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckCertificateExistResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCommitCertificateInformationRequest() (request *CommitCertificateInformationRequest) {
     request = &CommitCertificateInformationRequest{
         BaseRequest: &tchttp.BaseRequest{},

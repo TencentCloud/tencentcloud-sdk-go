@@ -3710,6 +3710,9 @@ type DescribeRedisTopHotKeysRequestParams struct {
 
 	// top 数目，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeRedisTopHotKeysRequest struct {
@@ -3732,6 +3735,9 @@ type DescribeRedisTopHotKeysRequest struct {
 
 	// top 数目，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeRedisTopHotKeysRequest) ToJsonString() string {
@@ -3752,6 +3758,7 @@ func (r *DescribeRedisTopHotKeysRequest) FromJsonString(s string) error {
 	delete(f, "Product")
 	delete(f, "InstanceNodeIds")
 	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRedisTopHotKeysRequest has unknown keys!", "")
 	}

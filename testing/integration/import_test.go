@@ -246,6 +246,7 @@ import (
 	tcaplusdbv20190823 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcaplusdb/v20190823"
 	tcbv20180608 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcb/v20180608"
 	tcbrv20220217 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcbr/v20220217"
+	tccatalogv20241024 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tccatalog/v20241024"
 	tcexv20200727 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tcex/v20200727"
 	tchdv20230306 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tchd/v20230306"
 	tciv20190318 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tci/v20190318"
@@ -3251,6 +3252,19 @@ func TestTcbrv20220217Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init tcbr_v20220217 client: %v", err)
+    }
+}
+
+func TestTccatalogv20241024Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := tccatalogv20241024.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init tccatalog_v20241024 client: %v", err)
     }
 }
 

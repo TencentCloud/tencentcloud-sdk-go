@@ -6845,6 +6845,119 @@ func (r *CreateBatchInitOrganizationUrlResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type CreateBatchOrganizationAuthorizationUrlRequestParams struct {
+	// 应用相关信息。 此接口Agent.AppId 必填。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 组织机构超管姓名。 在注册流程中，必须是超管本人进行操作。此参数需要跟[创建子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)中 AdminName 保持一致。
+	AdminName *string `json:"AdminName,omitnil,omitempty" name:"AdminName"`
+
+	// 组织机构超管手机号。 在注册流程中，必须是超管本人进行操作。此参数需要跟[创建子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)中 Admin Mobile保持一致。
+	AdminMobile *string `json:"AdminMobile,omitnil,omitempty" name:"AdminMobile"`
+
+	// 企业批量认证链接的子任务 SubTaskId，该 SubTaskId 是通过接口 查询企业批量认证链接 DescribeBatchOrganizationRegistrationUrls 获得。此参数需与超管个人三要素（AdminName，AdminMobile，AdminIdCardNumber）配合使用。若 SubTaskId 不属于传入的超级管理员，将进行筛选。
+	SubTaskIds []*string `json:"SubTaskIds,omitnil,omitempty" name:"SubTaskIds"`
+
+	// 组织机构超管证件类型支持以下类型
+	// - ID_CARD : 居民身份证 (默认值)
+	// -  HONGKONG_AND_MACAO : 港澳居民来往内地通行证
+	// - HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)
+	// 此参数需要跟[创建子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)中 AdminIdCardType保持一致。
+	AdminIdCardType *string `json:"AdminIdCardType,omitnil,omitempty" name:"AdminIdCardType"`
+
+	// 组织机构超管证件号。 在注册流程中，必须是超管本人进行操作。此参数需要跟[创建子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)中 AdminIdCardNumber保持一致。
+	AdminIdCardNumber *string `json:"AdminIdCardNumber,omitnil,omitempty" name:"AdminIdCardNumber"`
+
+	// 要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式,  可以在页面展示适合此类型</li></ul>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+}
+
+type CreateBatchOrganizationAuthorizationUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用相关信息。 此接口Agent.AppId 必填。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 组织机构超管姓名。 在注册流程中，必须是超管本人进行操作。此参数需要跟[创建子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)中 AdminName 保持一致。
+	AdminName *string `json:"AdminName,omitnil,omitempty" name:"AdminName"`
+
+	// 组织机构超管手机号。 在注册流程中，必须是超管本人进行操作。此参数需要跟[创建子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)中 Admin Mobile保持一致。
+	AdminMobile *string `json:"AdminMobile,omitnil,omitempty" name:"AdminMobile"`
+
+	// 企业批量认证链接的子任务 SubTaskId，该 SubTaskId 是通过接口 查询企业批量认证链接 DescribeBatchOrganizationRegistrationUrls 获得。此参数需与超管个人三要素（AdminName，AdminMobile，AdminIdCardNumber）配合使用。若 SubTaskId 不属于传入的超级管理员，将进行筛选。
+	SubTaskIds []*string `json:"SubTaskIds,omitnil,omitempty" name:"SubTaskIds"`
+
+	// 组织机构超管证件类型支持以下类型
+	// - ID_CARD : 居民身份证 (默认值)
+	// -  HONGKONG_AND_MACAO : 港澳居民来往内地通行证
+	// - HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)
+	// 此参数需要跟[创建子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)中 AdminIdCardType保持一致。
+	AdminIdCardType *string `json:"AdminIdCardType,omitnil,omitempty" name:"AdminIdCardType"`
+
+	// 组织机构超管证件号。 在注册流程中，必须是超管本人进行操作。此参数需要跟[创建子企业批量认证链接](https://qian.tencent.com/developers/partnerApis/accounts/CreateBatchOrganizationRegistrationTasks)中 AdminIdCardNumber保持一致。
+	AdminIdCardNumber *string `json:"AdminIdCardNumber,omitnil,omitempty" name:"AdminIdCardNumber"`
+
+	// 要跳转的链接类型<ul><li> **HTTP**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  ，此时返回长链 (默认类型)</li><li>**HTTP_SHORT_URL**：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链</li><li>**APP**： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型</li><li>**QR_CODE**： 跳转电子签小程序的http_url的二维码形式,  可以在页面展示适合此类型</li></ul>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+}
+
+func (r *CreateBatchOrganizationAuthorizationUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchOrganizationAuthorizationUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "AdminName")
+	delete(f, "AdminMobile")
+	delete(f, "SubTaskIds")
+	delete(f, "AdminIdCardType")
+	delete(f, "AdminIdCardNumber")
+	delete(f, "Endpoint")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchOrganizationAuthorizationUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchOrganizationAuthorizationUrlResponseParams struct {
+	// 批量企业注册链接-单链接包含多条认证流，根据Endpoint的不同设置，返回不同的链接地址。失效时间：7天跳转链接, 链接的有效期根据企业,员工状态和终端等有区别, 可以参考下表<table> <thead> <tr> <th>Endpoint</th> <th>示例</th> <th>链接有效期限</th> </tr> </thead>  <tbody> <tr> <td>HTTP</td> <td>https://res.ess.tencent.cn/cdn/h5-activity-dev/jump-mp.html?to=AUTHORIZATION_ENTERPRISE_FOR_BATCH_SUBMIT&shortKey=yDCHHURDfBxSB2rj2Bfa</td> <td>7天</td> </tr> <tr> <td>HTTP_SHORT_URL</td> <td>https://test.essurl.cn/8gDKUBAWK8</td> <td>7天</td> </tr> <tr> <td>APP</td> <td>pages/guide/index?to=AUTHORIZATION_ENTERPRISE_FOR_BATCH_SUBMIT&shortKey=yDCHpURDfR6iEkdpsDde</td> <td>7天</td> </tr><tr> <td>QR_CODE</td> <td>https://dyn.test.ess.tencent.cn/imgs/qrcode_urls/authorization_enterprise_for_batch_submit/yDCHHUUckpbdauq9UEjnoFDCCumAMmv1.png</td> <td>7天</td> </tr> </tbody> </table>注： `1.创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义`
+	AuthUrl *string `json:"AuthUrl,omitnil,omitempty" name:"AuthUrl"`
+
+	// 认证流认证失败信息
+	ErrorMessages []*string `json:"ErrorMessages,omitnil,omitempty" name:"ErrorMessages"`
+
+	// 链接过期时间，为 7 天后，创建时间，格式为Unix标准时间戳（秒）。
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBatchOrganizationAuthorizationUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBatchOrganizationAuthorizationUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateBatchOrganizationAuthorizationUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchOrganizationAuthorizationUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateBatchOrganizationRegistrationTasksRequestParams struct {
 	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	// 
