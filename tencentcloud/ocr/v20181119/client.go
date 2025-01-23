@@ -4630,6 +4630,156 @@ func (c *Client) QrcodeOCRWithContext(ctx context.Context, request *QrcodeOCRReq
     return
 }
 
+func NewQuestionOCRRequest() (request *QuestionOCRRequest) {
+    request = &QuestionOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "QuestionOCR")
+    
+    
+    return
+}
+
+func NewQuestionOCRResponse() (response *QuestionOCRResponse) {
+    response = &QuestionOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QuestionOCR
+// 题目识别是教育的基础OCR识别能力。可支持扫描、拍照场景的单题题目识别。接口支持印刷体文本、手写体文本及公式的OCR识别和坐标返回，此外，接口还可对题目中的配图位置进行检测并返回坐标位置。适用于智能批改等场景的题目内容识别作为检索输入。
+//
+// 
+//
+// 默认接口请求频率限制：2次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) QuestionOCR(request *QuestionOCRRequest) (response *QuestionOCRResponse, err error) {
+    return c.QuestionOCRWithContext(context.Background(), request)
+}
+
+// QuestionOCR
+// 题目识别是教育的基础OCR识别能力。可支持扫描、拍照场景的单题题目识别。接口支持印刷体文本、手写体文本及公式的OCR识别和坐标返回，此外，接口还可对题目中的配图位置进行检测并返回坐标位置。适用于智能批改等场景的题目内容识别作为检索输入。
+//
+// 
+//
+// 默认接口请求频率限制：2次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) QuestionOCRWithContext(ctx context.Context, request *QuestionOCRRequest) (response *QuestionOCRResponse, err error) {
+    if request == nil {
+        request = NewQuestionOCRRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QuestionOCR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQuestionOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQuestionSplitOCRRequest() (request *QuestionSplitOCRRequest) {
+    request = &QuestionSplitOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "QuestionSplitOCR")
+    
+    
+    return
+}
+
+func NewQuestionSplitOCRResponse() (response *QuestionSplitOCRResponse) {
+    response = &QuestionSplitOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QuestionSplitOCR
+// 试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置。
+//
+// 
+//
+// 默认接口请求频率限制：2次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) QuestionSplitOCR(request *QuestionSplitOCRRequest) (response *QuestionSplitOCRResponse, err error) {
+    return c.QuestionSplitOCRWithContext(context.Background(), request)
+}
+
+// QuestionSplitOCR
+// 试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置。
+//
+// 
+//
+// 默认接口请求频率限制：2次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) QuestionSplitOCRWithContext(ctx context.Context, request *QuestionSplitOCRRequest) (response *QuestionSplitOCRResponse, err error) {
+    if request == nil {
+        request = NewQuestionSplitOCRRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QuestionSplitOCR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQuestionSplitOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQuotaInvoiceOCRRequest() (request *QuotaInvoiceOCRRequest) {
     request = &QuotaInvoiceOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5130,27 +5280,31 @@ func (c *Client) RecognizeForeignPermanentResidentIdCardWithContext(ctx context.
     return
 }
 
-func NewRecognizeGeneralCardWarnRequest() (request *RecognizeGeneralCardWarnRequest) {
-    request = &RecognizeGeneralCardWarnRequest{
+func NewRecognizeFormulaOCRRequest() (request *RecognizeFormulaOCRRequest) {
+    request = &RecognizeFormulaOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
     
-    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeGeneralCardWarn")
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeFormulaOCR")
     
     
     return
 }
 
-func NewRecognizeGeneralCardWarnResponse() (response *RecognizeGeneralCardWarnResponse) {
-    response = &RecognizeGeneralCardWarnResponse{
+func NewRecognizeFormulaOCRResponse() (response *RecognizeFormulaOCRResponse) {
+    response = &RecognizeFormulaOCRResponse{
         BaseResponse: &tchttp.BaseResponse{},
     } 
     return
 
 }
 
-// RecognizeGeneralCardWarn
-// 支持通用证照的有效性检测告警，包括卡证复印件告警、卡证翻拍告警等功能，支持通用证照的ps伪造检测，可以应用于各种证件信息有效性校验场景。
+// RecognizeFormulaOCR
+// 公式识别是教育的基础OCR识别能力，可支持理科（数学、物理、化学、生物）的印刷体和手写体的公式识别。
+//
+// 
+//
+// 默认接口请求频率限制：2次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -5163,12 +5317,16 @@ func NewRecognizeGeneralCardWarnResponse() (response *RecognizeGeneralCardWarnRe
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) RecognizeGeneralCardWarn(request *RecognizeGeneralCardWarnRequest) (response *RecognizeGeneralCardWarnResponse, err error) {
-    return c.RecognizeGeneralCardWarnWithContext(context.Background(), request)
+func (c *Client) RecognizeFormulaOCR(request *RecognizeFormulaOCRRequest) (response *RecognizeFormulaOCRResponse, err error) {
+    return c.RecognizeFormulaOCRWithContext(context.Background(), request)
 }
 
-// RecognizeGeneralCardWarn
-// 支持通用证照的有效性检测告警，包括卡证复印件告警、卡证翻拍告警等功能，支持通用证照的ps伪造检测，可以应用于各种证件信息有效性校验场景。
+// RecognizeFormulaOCR
+// 公式识别是教育的基础OCR识别能力，可支持理科（数学、物理、化学、生物）的印刷体和手写体的公式识别。
+//
+// 
+//
+// 默认接口请求频率限制：2次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -5181,18 +5339,18 @@ func (c *Client) RecognizeGeneralCardWarn(request *RecognizeGeneralCardWarnReque
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) RecognizeGeneralCardWarnWithContext(ctx context.Context, request *RecognizeGeneralCardWarnRequest) (response *RecognizeGeneralCardWarnResponse, err error) {
+func (c *Client) RecognizeFormulaOCRWithContext(ctx context.Context, request *RecognizeFormulaOCRRequest) (response *RecognizeFormulaOCRResponse, err error) {
     if request == nil {
-        request = NewRecognizeGeneralCardWarnRequest()
+        request = NewRecognizeFormulaOCRRequest()
     }
     
     if c.GetCredential() == nil {
-        return nil, errors.New("RecognizeGeneralCardWarn require credential")
+        return nil, errors.New("RecognizeFormulaOCR require credential")
     }
 
     request.SetContext(ctx)
     
-    response = NewRecognizeGeneralCardWarnResponse()
+    response = NewRecognizeFormulaOCRResponse()
     err = c.Send(request, response)
     return
 }

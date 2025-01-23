@@ -1322,6 +1322,59 @@ func (c *Client) DeleteStaffWithContext(ctx context.Context, request *DeleteStaf
     return
 }
 
+func NewDescribeAICallExtractResultRequest() (request *DescribeAICallExtractResultRequest) {
+    request = &DescribeAICallExtractResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeAICallExtractResult")
+    
+    
+    return
+}
+
+func NewDescribeAICallExtractResultResponse() (response *DescribeAICallExtractResultResponse) {
+    response = &DescribeAICallExtractResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAICallExtractResult
+// 获取 AI 通话内容提取结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAICallExtractResult(request *DescribeAICallExtractResultRequest) (response *DescribeAICallExtractResultResponse, err error) {
+    return c.DescribeAICallExtractResultWithContext(context.Background(), request)
+}
+
+// DescribeAICallExtractResult
+// 获取 AI 通话内容提取结果。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAICallExtractResultWithContext(ctx context.Context, request *DescribeAICallExtractResultRequest) (response *DescribeAICallExtractResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeAICallExtractResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAICallExtractResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAICallExtractResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeActiveCarrierPrivilegeNumberRequest() (request *DescribeActiveCarrierPrivilegeNumberRequest) {
     request = &DescribeActiveCarrierPrivilegeNumberRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1347,7 +1400,7 @@ func NewDescribeActiveCarrierPrivilegeNumberResponse() (response *DescribeActive
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeActiveCarrierPrivilegeNumber(request *DescribeActiveCarrierPrivilegeNumberRequest) (response *DescribeActiveCarrierPrivilegeNumberResponse, err error) {
     return c.DescribeActiveCarrierPrivilegeNumberWithContext(context.Background(), request)
 }
@@ -1358,7 +1411,7 @@ func (c *Client) DescribeActiveCarrierPrivilegeNumber(request *DescribeActiveCar
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeActiveCarrierPrivilegeNumberWithContext(ctx context.Context, request *DescribeActiveCarrierPrivilegeNumberRequest) (response *DescribeActiveCarrierPrivilegeNumberResponse, err error) {
     if request == nil {
         request = NewDescribeActiveCarrierPrivilegeNumberRequest()

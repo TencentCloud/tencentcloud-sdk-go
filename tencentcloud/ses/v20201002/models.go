@@ -504,6 +504,21 @@ func (r *CreateReceiverDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateReceiverDetailResponseParams struct {
+	// 收件人总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 实际上传数量
+	ValidCount *uint64 `json:"ValidCount,omitnil,omitempty" name:"ValidCount"`
+
+	// 数据过长数量
+	TooLongCount *uint64 `json:"TooLongCount,omitnil,omitempty" name:"TooLongCount"`
+
+	// 邮件地址为空数量
+	EmptyEmailCount *uint64 `json:"EmptyEmailCount,omitnil,omitempty" name:"EmptyEmailCount"`
+
+	// 重复数量
+	RepeatCount *uint64 `json:"RepeatCount,omitnil,omitempty" name:"RepeatCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1043,12 +1058,13 @@ type EmailSender struct {
 	EmailAddress *string `json:"EmailAddress,omitnil,omitempty" name:"EmailAddress"`
 
 	// 发信人别名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EmailSenderName *string `json:"EmailSenderName,omitnil,omitempty" name:"EmailSenderName"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTimestamp *uint64 `json:"CreatedTimestamp,omitnil,omitempty" name:"CreatedTimestamp"`
+
+	// smtp密码类型,0=没有设置密码,1=已经设置了密码
+	SmtpPwdType *uint64 `json:"SmtpPwdType,omitnil,omitempty" name:"SmtpPwdType"`
 }
 
 // Predefined struct for user
@@ -1551,7 +1567,6 @@ func (r *ListEmailAddressRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListEmailAddressResponseParams struct {
 	// 发信地址列表详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EmailSenders []*EmailSender `json:"EmailSenders,omitnil,omitempty" name:"EmailSenders"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2053,7 +2068,7 @@ type SendEmailRequestParams struct {
 	// 抄送人邮箱地址，最多支持抄送20人。
 	Cc []*string `json:"Cc,omitnil,omitempty" name:"Cc"`
 
-	// 密送人邮箱地址，最多支持抄送20人。
+	// 密送人邮箱地址，最多支持抄送20人,Bcc和Destination不能重复。
 	Bcc []*string `json:"Bcc,omitnil,omitempty" name:"Bcc"`
 
 	// 使用模板发送时，填写模板相关参数。
@@ -2098,7 +2113,7 @@ type SendEmailRequest struct {
 	// 抄送人邮箱地址，最多支持抄送20人。
 	Cc []*string `json:"Cc,omitnil,omitempty" name:"Cc"`
 
-	// 密送人邮箱地址，最多支持抄送20人。
+	// 密送人邮箱地址，最多支持抄送20人,Bcc和Destination不能重复。
 	Bcc []*string `json:"Bcc,omitnil,omitempty" name:"Bcc"`
 
 	// 使用模板发送时，填写模板相关参数。

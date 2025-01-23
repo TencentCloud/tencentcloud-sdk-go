@@ -2043,7 +2043,7 @@ func (r *GetDetectInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetEidResultRequestParams struct {
-	// E证通流程的唯一标识，调用GetEidToken接口时生成。
+	// E证通流程的唯一标识，调用[GetEidToken](https://cloud.tencent.com/document/product/1007/54089)接口时生成。
 	EidToken *string `json:"EidToken,omitnil,omitempty" name:"EidToken"`
 
 	// 指定拉取的结果信息。
@@ -2077,7 +2077,7 @@ type GetEidResultRequestParams struct {
 type GetEidResultRequest struct {
 	*tchttp.BaseRequest
 	
-	// E证通流程的唯一标识，调用GetEidToken接口时生成。
+	// E证通流程的唯一标识，调用[GetEidToken](https://cloud.tencent.com/document/product/1007/54089)接口时生成。
 	EidToken *string `json:"EidToken,omitnil,omitempty" name:"EidToken"`
 
 	// 指定拉取的结果信息。

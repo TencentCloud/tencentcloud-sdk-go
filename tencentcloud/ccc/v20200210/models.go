@@ -20,6 +20,59 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AICallExtractConfigElement struct {
+	// 配置项类型，包括
+	// Text 文本
+	// Selector 选项
+	// Boolean 布尔值
+	// Number 数字
+	InfoType *string `json:"InfoType,omitnil,omitempty" name:"InfoType"`
+
+	// 配置项名称，不可重复
+	InfoName *string `json:"InfoName,omitnil,omitempty" name:"InfoName"`
+
+	// 配置项具体内容
+	InfoContent *string `json:"InfoContent,omitnil,omitempty" name:"InfoContent"`
+
+	// 配置项提取内容示例
+	Examples []*string `json:"Examples,omitnil,omitempty" name:"Examples"`
+
+	// InfoType 为 Selector，需要配置此字段
+	Choices []*string `json:"Choices,omitnil,omitempty" name:"Choices"`
+}
+
+type AICallExtractResultElement struct {
+	// 提取信息的类型
+	// Text 文本
+	// Selector 选项
+	// Boolean 布尔值
+	// Number 数字
+	InfoType *string `json:"InfoType,omitnil,omitempty" name:"InfoType"`
+
+	// 提取信息的名称
+	InfoName *string `json:"InfoName,omitnil,omitempty" name:"InfoName"`
+
+	// 提取信息的具体描述
+	InfoContent *string `json:"InfoContent,omitnil,omitempty" name:"InfoContent"`
+
+	// 提取信息的具体结果
+	Result *AICallExtractResultInfo `json:"Result,omitnil,omitempty" name:"Result"`
+}
+
+type AICallExtractResultInfo struct {
+	// 提取的类型是文本
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 提取的内型是选项
+	Chosen []*string `json:"Chosen,omitnil,omitempty" name:"Chosen"`
+
+	// 提取类型是布尔值
+	Boolean *bool `json:"Boolean,omitnil,omitempty" name:"Boolean"`
+
+	// 提取类型是数字
+	Number *float64 `json:"Number,omitnil,omitempty" name:"Number"`
+}
+
 type AITransferItem struct {
 	// 转人工的function calling 名称
 	TransferFunctionName *string `json:"TransferFunctionName,omitnil,omitempty" name:"TransferFunctionName"`
@@ -705,6 +758,9 @@ type CreateAICallRequestParams struct {
 	// 1:   使用ai根据prompt自动生成welcomeMessage并先说话
 	WelcomeType *int64 `json:"WelcomeType,omitnil,omitempty" name:"WelcomeType"`
 
+	// 0: 默认可打断， 1：高优先不可打断
+	WelcomeMessagePriority *int64 `json:"WelcomeMessagePriority,omitnil,omitempty" name:"WelcomeMessagePriority"`
+
 	// 最大等待时长(毫秒)，默认60秒，超过这个时间用户没说话，自动挂断
 	MaxDuration *int64 `json:"MaxDuration,omitnil,omitempty" name:"MaxDuration"`
 
@@ -734,7 +790,7 @@ type CreateAICallRequestParams struct {
 	// 20. Russian = "ru" # 俄语
 	Languages []*string `json:"Languages,omitnil,omitempty" name:"Languages"`
 
-	// 打断AI说话模式，默认为0，0表示服务端自动打断，1表示服务端不打断，由端上发送打断信令进行打断
+	// 打断AI说话模式，默认为0，0表示自动打断，1表示不打断。
 	InterruptMode *int64 `json:"InterruptMode,omitnil,omitempty" name:"InterruptMode"`
 
 	// InterruptMode为0时使用，单位为毫秒，默认为500ms。表示服务端检测到持续InterruptSpeechDuration毫秒的人声则进行打断。
@@ -847,6 +903,9 @@ type CreateAICallRequestParams struct {
 
 	// 语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
 	VadSilenceTime *int64 `json:"VadSilenceTime,omitnil,omitempty" name:"VadSilenceTime"`
+
+	// 通话内容提取配置
+	ExtractConfig []*AICallExtractConfigElement `json:"ExtractConfig,omitnil,omitempty" name:"ExtractConfig"`
 }
 
 type CreateAICallRequest struct {
@@ -949,6 +1008,9 @@ type CreateAICallRequest struct {
 	// 1:   使用ai根据prompt自动生成welcomeMessage并先说话
 	WelcomeType *int64 `json:"WelcomeType,omitnil,omitempty" name:"WelcomeType"`
 
+	// 0: 默认可打断， 1：高优先不可打断
+	WelcomeMessagePriority *int64 `json:"WelcomeMessagePriority,omitnil,omitempty" name:"WelcomeMessagePriority"`
+
 	// 最大等待时长(毫秒)，默认60秒，超过这个时间用户没说话，自动挂断
 	MaxDuration *int64 `json:"MaxDuration,omitnil,omitempty" name:"MaxDuration"`
 
@@ -978,7 +1040,7 @@ type CreateAICallRequest struct {
 	// 20. Russian = "ru" # 俄语
 	Languages []*string `json:"Languages,omitnil,omitempty" name:"Languages"`
 
-	// 打断AI说话模式，默认为0，0表示服务端自动打断，1表示服务端不打断，由端上发送打断信令进行打断
+	// 打断AI说话模式，默认为0，0表示自动打断，1表示不打断。
 	InterruptMode *int64 `json:"InterruptMode,omitnil,omitempty" name:"InterruptMode"`
 
 	// InterruptMode为0时使用，单位为毫秒，默认为500ms。表示服务端检测到持续InterruptSpeechDuration毫秒的人声则进行打断。
@@ -1091,6 +1153,9 @@ type CreateAICallRequest struct {
 
 	// 语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
 	VadSilenceTime *int64 `json:"VadSilenceTime,omitnil,omitempty" name:"VadSilenceTime"`
+
+	// 通话内容提取配置
+	ExtractConfig []*AICallExtractConfigElement `json:"ExtractConfig,omitnil,omitempty" name:"ExtractConfig"`
 }
 
 func (r *CreateAICallRequest) ToJsonString() string {
@@ -1116,6 +1181,7 @@ func (r *CreateAICallRequest) FromJsonString(s string) error {
 	delete(f, "Callers")
 	delete(f, "WelcomeMessage")
 	delete(f, "WelcomeType")
+	delete(f, "WelcomeMessagePriority")
 	delete(f, "MaxDuration")
 	delete(f, "Languages")
 	delete(f, "InterruptMode")
@@ -1130,6 +1196,7 @@ func (r *CreateAICallRequest) FromJsonString(s string) error {
 	delete(f, "CustomTTSConfig")
 	delete(f, "PromptVariables")
 	delete(f, "VadSilenceTime")
+	delete(f, "ExtractConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAICallRequest has unknown keys!", "")
 	}
@@ -2505,6 +2572,84 @@ func (r *DeleteStaffResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteStaffResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAICallExtractResultRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 会话 ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 查找起始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查找结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type DescribeAICallExtractResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 会话 ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 查找起始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查找结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeAICallExtractResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAICallExtractResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "SessionId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAICallExtractResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAICallExtractResultResponseParams struct {
+	// 结果列表
+	ResultList []*AICallExtractResultElement `json:"ResultList,omitnil,omitempty" name:"ResultList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAICallExtractResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAICallExtractResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeAICallExtractResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAICallExtractResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
