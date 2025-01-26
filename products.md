@@ -53,7 +53,7 @@
 | cdz | [专属可用区](https://cloud.tencent.com/document/product/1629) | 2024-11-14 01:17:55 |
 | cfg | [混沌演练平台](https://cloud.tencent.com/document/product/1500) | 2025-01-22 01:10:37 |
 | cfs | [文件存储](https://cloud.tencent.com/document/product/582) | 2025-01-20 01:10:16 |
-| cfw | [云防火墙](https://cloud.tencent.com/document/product/1132) | 2025-01-13 01:10:41 |
+| cfw | [云防火墙](https://cloud.tencent.com/document/product/1132) | 2025-01-27 01:11:03 |
 | chdfs | [云 HDFS](https://cloud.tencent.com/document/product/1105) | 2024-12-27 10:55:07 |
 | ciam | [账号风控平台](https://cloud.tencent.com/document/product/1441) | 2024-10-28 01:19:38 |
 | cii | [智能保险助手](https://cloud.tencent.com/document/product/1368) | 2023-05-18 01:12:07 |
@@ -141,7 +141,7 @@
 | keewidb | [云数据库 KeeWiDB](https://cloud.tencent.com/document/product/1520) | 2025-01-09 01:20:47 |
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2024-11-07 01:44:48 |
 | lcic | [实时互动-教育版](https://cloud.tencent.com/document/product/1639) | 2025-01-21 01:14:38 |
-| lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2025-01-20 01:19:11 |
+| lighthouse | [轻量应用服务器](https://cloud.tencent.com/document/product/1207) | 2025-01-27 01:21:56 |
 | live | [云直播CSS](https://cloud.tencent.com/document/product/267) | 2025-01-14 01:19:30 |
 | lke | [大模型知识引擎](https://cloud.tencent.com/document/product/1759) | 2025-01-22 01:20:33 |
 | lkeap | [知识引擎原子能力](https://cloud.tencent.com/document/product/1772) | 2025-01-16 01:20:20 |
@@ -217,7 +217,7 @@
 | tdmq | [消息队列 TDMQ](https://cloud.tencent.com/document/product/1179) | 2025-01-22 01:26:02 |
 | tds | [设备安全](https://cloud.tencent.com/document/product/1628) | 2024-11-14 02:08:25 |
 | tem | [弹性微服务](https://cloud.tencent.com/document/product/1371) | 2024-12-31 01:29:59 |
-| teo | [边缘安全加速平台](https://cloud.tencent.com/document/product/1552) | 2025-01-21 20:17:17 |
+| teo | [边缘安全加速平台](https://cloud.tencent.com/document/product/1552) | 2025-01-24 21:27:12 |
 | thpc | [高性能计算平台](https://cloud.tencent.com/document/product/1527) | 2025-01-01 01:30:04 |
 | tia | [智能钛机器学习](https://cloud.tencent.com/document/product/851) | 2021-10-21 11:12:52 |
 | tic | [资源编排 TIC](https://cloud.tencent.com/document/product/1213) | 2023-08-17 05:26:08 |

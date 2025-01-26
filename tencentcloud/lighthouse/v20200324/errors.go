@@ -200,6 +200,12 @@ const (
 	// 参数非法，防火墙规则已存在。
 	INVALIDPARAMETER_FIREWALLRULESEXIST = "InvalidParameter.FirewallRulesExist"
 
+	// 游戏专区实例仅支持当前镜像。
+	INVALIDPARAMETER_GAMEPORTALINSTANCEONLYSUPPORTCURRENTBLUEPRINT = "InvalidParameter.GamePortalInstanceOnlySupportCurrentBlueprint"
+
+	// 实例展示区域不支持该参数。
+	INVALIDPARAMETER_INSTANCEDISPLAYAREANOTSUPPORTPARAMETER = "InvalidParameter.InstanceDisplayAreaNotSupportParameter"
+
 	// 参数非法，Filter 参数非法。
 	INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
 

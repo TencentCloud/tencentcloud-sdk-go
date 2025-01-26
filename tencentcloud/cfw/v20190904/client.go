@@ -5094,67 +5094,6 @@ func (c *Client) ModifyAllRuleStatusWithContext(ctx context.Context, request *Mo
     return
 }
 
-func NewModifyAllVPCSwitchStatusRequest() (request *ModifyAllVPCSwitchStatusRequest) {
-    request = &ModifyAllVPCSwitchStatusRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cfw", APIVersion, "ModifyAllVPCSwitchStatus")
-    
-    
-    return
-}
-
-func NewModifyAllVPCSwitchStatusResponse() (response *ModifyAllVPCSwitchStatusResponse) {
-    response = &ModifyAllVPCSwitchStatusResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ModifyAllVPCSwitchStatus
-// 该接口已不再使用
-//
-// 
-//
-// VPC防火墙一键开关
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-func (c *Client) ModifyAllVPCSwitchStatus(request *ModifyAllVPCSwitchStatusRequest) (response *ModifyAllVPCSwitchStatusResponse, err error) {
-    return c.ModifyAllVPCSwitchStatusWithContext(context.Background(), request)
-}
-
-// ModifyAllVPCSwitchStatus
-// 该接口已不再使用
-//
-// 
-//
-// VPC防火墙一键开关
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-func (c *Client) ModifyAllVPCSwitchStatusWithContext(ctx context.Context, request *ModifyAllVPCSwitchStatusRequest) (response *ModifyAllVPCSwitchStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyAllVPCSwitchStatusRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyAllVPCSwitchStatus require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyAllVPCSwitchStatusResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewModifyAssetScanRequest() (request *ModifyAssetScanRequest) {
     request = &ModifyAssetScanRequest{
         BaseRequest: &tchttp.BaseRequest{},
