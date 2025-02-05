@@ -63,13 +63,375 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 }
 
 // ChatCompletions
-// 对话
+// #### 接口功能
+//
+// 
+//
+// 调用接口，发起一次对话请求。
+//
+// 
+//
+// #### 已支持的模型
+//
+// - DeepSeek-V3（model 参数值为**deepseek-v3**）
+//
+//     - DeepSeek-V3为671B参数MoE模型，在百科知识、数学推理等多项任务上优势突出，评测成绩在主流榜单中位列开源模型榜首。
+//
+//     - 支持64K上下文长度，最大支持8K输出长度。
+//
+// - DeepSeek-R1（model 参数值为**deepseek-r1**）
+//
+//     - DeepSeek-R1为671B模型，使用强化学习训练，推理过程包含大量反思和验证，思维链长度可达数万字。 该系列模型在数学、代码以及各种复杂逻辑推理任务上推理效果优异，并为用户展现了完整的思考过程。
+//
+//     - 支持64K上下文长度，最大支持8K输出长度。
+//
+// 
+//
+// #### 计费说明
+//
+// - 限时免费
+//
+// 
+//
+// 本接口调用DeepSeek系列模型限时免费。即日至北京时间2025年2月25日23:59:59，所有腾讯云用户均可享受DeepSeek-V3、DeepSeek-R1模型限时免费服务，单账号限制接口并发上限为5。在此之后，模型价格将恢复至原价。
+//
+// - 标准计费（2025年2月26日起生效）
+//
+// ![image](https://cdn.xiaowei.qq.com/static/lke/deepseek-token.png)
+//
+// 
+//
+// 
+//
+// #### 快速接入
+//
+// 1. 完成[实名认证](https://console.cloud.tencent.com/developer/auth)。
+//
+// 2. 主账户前往[控制台](https://console.cloud.tencent.com/lkeap)开通服务。若为子账户，需由主账号在[权限管理](https://console.cloud.tencent.com/cam)中为子账号授权，关联预设策略，策略名称：QcloudLKEAPFullAccess。
+//
+// 3. 通过API Explorer[在线调试](https://console.cloud.tencent.com/api/explorer?Product=lkeap&Version=2024-05-22&Action=ChatCompletions)。
+//
+// 4. 使用[官方 SDK ](https://cloud.tencent.com/document/product/1772/115963#SDK)调用本接口（支持Python/Java/PHP/Go/Node.js/.NET等语言）。
+//
+// 
+//
+// -----------
+//
+// 
+//
+// ### SDK调用示例
+//
+// 通过本地代码调用本接口（支持Python/Java/PHP/Go/Node.js/.NET等语言）：下面的代码以 Python 语言为例，展示如何访问腾讯云上的DeepSeek模型API的样例。
+//
+// （1）安装环境
+//
+// ```
+//
+// python3 -m pip install --upgrade tencentcloud-sdk-python-common
+//
+// python3 -m pip install --upgrade tencentcloud-sdk-python-lkeap
+//
+// ```
+//
+// 
+//
+// （2）示例代码
+//
+// 
+//
+// - 其中SecretKey和SecretID需要从腾讯云控制台获取
+//
+// 
+//
+// - 参数params中模型Model字段可以选择“deepseek-r1“和“deepseek-v3”
+//
+// 
+//
+// ```
+//
+// # -*- coding: utf-8 -*-
+//
+// import json
+//
+// 
+//
+// from tencentcloud.common.common_client import CommonClient
+//
+// from tencentcloud.common import credential
+//
+// from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
+//
+// from tencentcloud.common.profile.client_profile import ClientProfile
+//
+// from tencentcloud.common.profile.http_profile import HttpProfile
+//
+// 
+//
+// class NonStreamResponse(object):
+//
+//     def __init__(self):
+//
+//         self.response = ""
+//
+// 
+//
+//     def _deserialize(self, obj):
+//
+//         self.response = json.dumps(obj)
+//
+// 
+//
+// try:
+//
+//     # 实例化一个认证对象，入参需要传入腾讯云账户 SecretId 和 SecretKey，此处还需注意密钥对的保密
+//
+//     # 代码泄露可能会导致 SecretId 和 SecretKey 泄露，并威胁账号下所有资源的安全性。以下代码示例仅供参考，建议采用更安全的方式来使用密钥，请参见：https://cloud.tencent.com/document/product/1278/85305
+//
+//     # 密钥可前往官网控制台 https://console.cloud.tencent.com/cam/capi 进行获取
+//
+//     cred = credential.Credential("", "")
+//
+// 
+//
+//     httpProfile = HttpProfile()
+//
+//     httpProfile.endpoint = "lkeap.tencentcloudapi.com"
+//
+//     httpProfile.reqTimeout = 40000  # 流式接口可能耗时较长
+//
+//     clientProfile = ClientProfile()
+//
+//     clientProfile.httpProfile = httpProfile
+//
+// 
+//
+//     params = "{\"Model\":\"deepseek-r1\",\"Messages\":[{\"Role\":\"user\",\"Content\":\"你好\"}],\"Stream\":true}";
+//
+//     common_client = CommonClient("lkeap", "2024-05-22", cred, "ap-guangzhou", profile=clientProfile)
+//
+//     resp = common_client._call_and_deserialize("ChatCompletions", json.loads(params), NonStreamResponse)
+//
+//     if isinstance(resp, NonStreamResponse):  # 非流式响应
+//
+//         print(resp.response)
+//
+//     else:  # 流式响应
+//
+//         for event in resp:
+//
+//             print(event)
+//
+// except TencentCloudSDKException as err:
+//
+//     print(err)
+//
+// 
+//
+// ```
+//
+// 
+//
+// **DeepSeek-R1使用建议**
+//
+// 
+//
+// 1. 将温度设置在 0.5-0.7 范围内（建议为0.6），以防止无休止的重复或不连贯的输出。
+//
+// 2. 避免添加system prompt，所有说明都应包含在user prompt中。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *ChatCompletionsResponse, err error) {
     return c.ChatCompletionsWithContext(context.Background(), request)
 }
 
 // ChatCompletions
-// 对话
+// #### 接口功能
+//
+// 
+//
+// 调用接口，发起一次对话请求。
+//
+// 
+//
+// #### 已支持的模型
+//
+// - DeepSeek-V3（model 参数值为**deepseek-v3**）
+//
+//     - DeepSeek-V3为671B参数MoE模型，在百科知识、数学推理等多项任务上优势突出，评测成绩在主流榜单中位列开源模型榜首。
+//
+//     - 支持64K上下文长度，最大支持8K输出长度。
+//
+// - DeepSeek-R1（model 参数值为**deepseek-r1**）
+//
+//     - DeepSeek-R1为671B模型，使用强化学习训练，推理过程包含大量反思和验证，思维链长度可达数万字。 该系列模型在数学、代码以及各种复杂逻辑推理任务上推理效果优异，并为用户展现了完整的思考过程。
+//
+//     - 支持64K上下文长度，最大支持8K输出长度。
+//
+// 
+//
+// #### 计费说明
+//
+// - 限时免费
+//
+// 
+//
+// 本接口调用DeepSeek系列模型限时免费。即日至北京时间2025年2月25日23:59:59，所有腾讯云用户均可享受DeepSeek-V3、DeepSeek-R1模型限时免费服务，单账号限制接口并发上限为5。在此之后，模型价格将恢复至原价。
+//
+// - 标准计费（2025年2月26日起生效）
+//
+// ![image](https://cdn.xiaowei.qq.com/static/lke/deepseek-token.png)
+//
+// 
+//
+// 
+//
+// #### 快速接入
+//
+// 1. 完成[实名认证](https://console.cloud.tencent.com/developer/auth)。
+//
+// 2. 主账户前往[控制台](https://console.cloud.tencent.com/lkeap)开通服务。若为子账户，需由主账号在[权限管理](https://console.cloud.tencent.com/cam)中为子账号授权，关联预设策略，策略名称：QcloudLKEAPFullAccess。
+//
+// 3. 通过API Explorer[在线调试](https://console.cloud.tencent.com/api/explorer?Product=lkeap&Version=2024-05-22&Action=ChatCompletions)。
+//
+// 4. 使用[官方 SDK ](https://cloud.tencent.com/document/product/1772/115963#SDK)调用本接口（支持Python/Java/PHP/Go/Node.js/.NET等语言）。
+//
+// 
+//
+// -----------
+//
+// 
+//
+// ### SDK调用示例
+//
+// 通过本地代码调用本接口（支持Python/Java/PHP/Go/Node.js/.NET等语言）：下面的代码以 Python 语言为例，展示如何访问腾讯云上的DeepSeek模型API的样例。
+//
+// （1）安装环境
+//
+// ```
+//
+// python3 -m pip install --upgrade tencentcloud-sdk-python-common
+//
+// python3 -m pip install --upgrade tencentcloud-sdk-python-lkeap
+//
+// ```
+//
+// 
+//
+// （2）示例代码
+//
+// 
+//
+// - 其中SecretKey和SecretID需要从腾讯云控制台获取
+//
+// 
+//
+// - 参数params中模型Model字段可以选择“deepseek-r1“和“deepseek-v3”
+//
+// 
+//
+// ```
+//
+// # -*- coding: utf-8 -*-
+//
+// import json
+//
+// 
+//
+// from tencentcloud.common.common_client import CommonClient
+//
+// from tencentcloud.common import credential
+//
+// from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
+//
+// from tencentcloud.common.profile.client_profile import ClientProfile
+//
+// from tencentcloud.common.profile.http_profile import HttpProfile
+//
+// 
+//
+// class NonStreamResponse(object):
+//
+//     def __init__(self):
+//
+//         self.response = ""
+//
+// 
+//
+//     def _deserialize(self, obj):
+//
+//         self.response = json.dumps(obj)
+//
+// 
+//
+// try:
+//
+//     # 实例化一个认证对象，入参需要传入腾讯云账户 SecretId 和 SecretKey，此处还需注意密钥对的保密
+//
+//     # 代码泄露可能会导致 SecretId 和 SecretKey 泄露，并威胁账号下所有资源的安全性。以下代码示例仅供参考，建议采用更安全的方式来使用密钥，请参见：https://cloud.tencent.com/document/product/1278/85305
+//
+//     # 密钥可前往官网控制台 https://console.cloud.tencent.com/cam/capi 进行获取
+//
+//     cred = credential.Credential("", "")
+//
+// 
+//
+//     httpProfile = HttpProfile()
+//
+//     httpProfile.endpoint = "lkeap.tencentcloudapi.com"
+//
+//     httpProfile.reqTimeout = 40000  # 流式接口可能耗时较长
+//
+//     clientProfile = ClientProfile()
+//
+//     clientProfile.httpProfile = httpProfile
+//
+// 
+//
+//     params = "{\"Model\":\"deepseek-r1\",\"Messages\":[{\"Role\":\"user\",\"Content\":\"你好\"}],\"Stream\":true}";
+//
+//     common_client = CommonClient("lkeap", "2024-05-22", cred, "ap-guangzhou", profile=clientProfile)
+//
+//     resp = common_client._call_and_deserialize("ChatCompletions", json.loads(params), NonStreamResponse)
+//
+//     if isinstance(resp, NonStreamResponse):  # 非流式响应
+//
+//         print(resp.response)
+//
+//     else:  # 流式响应
+//
+//         for event in resp:
+//
+//             print(event)
+//
+// except TencentCloudSDKException as err:
+//
+//     print(err)
+//
+// 
+//
+// ```
+//
+// 
+//
+// **DeepSeek-R1使用建议**
+//
+// 
+//
+// 1. 将温度设置在 0.5-0.7 范围内（建议为0.6），以防止无休止的重复或不连贯的输出。
+//
+// 2. 避免添加system prompt，所有说明都应包含在user prompt中。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) ChatCompletionsWithContext(ctx context.Context, request *ChatCompletionsRequest) (response *ChatCompletionsResponse, err error) {
     if request == nil {
         request = NewChatCompletionsRequest()
@@ -107,12 +469,26 @@ func NewCreateAttributeLabelResponse() (response *CreateAttributeLabelResponse) 
 
 // CreateAttributeLabel
 // 用于为问答对创建属性标签，以便对内容进行分类和管理。 使用场景：当需要为问答对添加分类标签和属性标记时使用，比如为问答对添加“售后”标签。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) CreateAttributeLabel(request *CreateAttributeLabelRequest) (response *CreateAttributeLabelResponse, err error) {
     return c.CreateAttributeLabelWithContext(context.Background(), request)
 }
 
 // CreateAttributeLabel
 // 用于为问答对创建属性标签，以便对内容进行分类和管理。 使用场景：当需要为问答对添加分类标签和属性标记时使用，比如为问答对添加“售后”标签。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) CreateAttributeLabelWithContext(ctx context.Context, request *CreateAttributeLabelRequest) (response *CreateAttributeLabelResponse, err error) {
     if request == nil {
         request = NewCreateAttributeLabelRequest()
@@ -150,12 +526,26 @@ func NewCreateKnowledgeBaseResponse() (response *CreateKnowledgeBaseResponse) {
 
 // CreateKnowledgeBase
 // 用于在系统中创建一个新的知识库。知识库是一个用于存储和管理知识条目的集合，可以包括文档、问答对、属性标签等。创建知识库后，可以向其中添加各种知识条目，以便在后续的知识检索中使用。 使用场景：当需要在系统中建立一个新的知识库以存储和管理特定领域或项目的知识条目时使用。例如，一个用户可能需要创建一个知识库，以存储用户指南、常见问题解答和技术文档。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) CreateKnowledgeBase(request *CreateKnowledgeBaseRequest) (response *CreateKnowledgeBaseResponse, err error) {
     return c.CreateKnowledgeBaseWithContext(context.Background(), request)
 }
 
 // CreateKnowledgeBase
 // 用于在系统中创建一个新的知识库。知识库是一个用于存储和管理知识条目的集合，可以包括文档、问答对、属性标签等。创建知识库后，可以向其中添加各种知识条目，以便在后续的知识检索中使用。 使用场景：当需要在系统中建立一个新的知识库以存储和管理特定领域或项目的知识条目时使用。例如，一个用户可能需要创建一个知识库，以存储用户指南、常见问题解答和技术文档。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) CreateKnowledgeBaseWithContext(ctx context.Context, request *CreateKnowledgeBaseRequest) (response *CreateKnowledgeBaseResponse, err error) {
     if request == nil {
         request = NewCreateKnowledgeBaseRequest()
@@ -193,12 +583,26 @@ func NewCreateQAResponse() (response *CreateQAResponse) {
 
 // CreateQA
 // 用于创建新的问答对。问答对可以在SearchKnowledge接口知识检索时提供匹配的答案。 使用场景：当需要添加新的知识点和对应的问答对时使用，比如为产品添加新的常见问题解答。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) CreateQA(request *CreateQARequest) (response *CreateQAResponse, err error) {
     return c.CreateQAWithContext(context.Background(), request)
 }
 
 // CreateQA
 // 用于创建新的问答对。问答对可以在SearchKnowledge接口知识检索时提供匹配的答案。 使用场景：当需要添加新的知识点和对应的问答对时使用，比如为产品添加新的常见问题解答。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ENGINESERVERERROR = "FailedOperation.EngineServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 func (c *Client) CreateQAWithContext(ctx context.Context, request *CreateQARequest) (response *CreateQAResponse, err error) {
     if request == nil {
         request = NewCreateQARequest()

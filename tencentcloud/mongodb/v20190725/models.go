@@ -888,7 +888,11 @@ type CreateDBInstanceRequestParams struct {
 	// 私有网络VPC的子网。请登录 [私有网络控制台](https://console.cloud.tencent.com/vpc) 查询子网列表确认正确的 ID。 示例值：subnet-7jbabche
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 实例密码。自定义密码长度为8-32个字符，至少包含字母、数字和字符（!@#%^*()_）中的两种。
+	// 实例密码。设置要求如下：
+	// - 字符个数为[8,32]。
+	// - 可输入[A,Z]、[a,z]、[0,9]范围内的字符。
+	// - 可输入的特殊字符包括：感叹号“!”，at“@”，警号“#“、百分号”%”、插入号“^”、星号“*”、括号“()”、下划线“_”。
+	// - 不能设置单一的字母或者数字。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 实例标签信息。
@@ -1009,7 +1013,11 @@ type CreateDBInstanceRequest struct {
 	// 私有网络VPC的子网。请登录 [私有网络控制台](https://console.cloud.tencent.com/vpc) 查询子网列表确认正确的 ID。 示例值：subnet-7jbabche
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 实例密码。自定义密码长度为8-32个字符，至少包含字母、数字和字符（!@#%^*()_）中的两种。
+	// 实例密码。设置要求如下：
+	// - 字符个数为[8,32]。
+	// - 可输入[A,Z]、[a,z]、[0,9]范围内的字符。
+	// - 可输入的特殊字符包括：感叹号“!”，at“@”，警号“#“、百分号”%”、插入号“^”、星号“*”、括号“()”、下划线“_”。
+	// - 不能设置单一的字母或者数字。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 实例标签信息。
@@ -3386,7 +3394,7 @@ func (r *InquirePriceModifyDBInstanceSpecResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type InquirePriceRenewDBInstancesRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同，接口单次最多只支持5个实例进行操作。
+	// 实例ID，格式如：cmgo-p8vn****。请登录[MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID，且单次最多同时查询5个实例。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 预付费模式（即包年包月）相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
@@ -3396,7 +3404,7 @@ type InquirePriceRenewDBInstancesRequestParams struct {
 type InquirePriceRenewDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同，接口单次最多只支持5个实例进行操作。
+	// 实例ID，格式如：cmgo-p8vn****。请登录[MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID，且单次最多同时查询5个实例。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 预付费模式（即包年包月）相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。

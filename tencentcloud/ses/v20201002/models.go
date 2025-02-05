@@ -195,7 +195,6 @@ type BlackEmailAddress struct {
 	EmailAddress *string `json:"EmailAddress,omitnil,omitempty" name:"EmailAddress"`
 
 	// 被拉黑的理由
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IspDesc *string `json:"IspDesc,omitnil,omitempty" name:"IspDesc"`
 }
 
@@ -581,23 +580,18 @@ func (r *CreateReceiverDetailWithDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateReceiverDetailWithDataResponseParams struct {
 	// 收件人总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 实际上传数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidCount *uint64 `json:"ValidCount,omitnil,omitempty" name:"ValidCount"`
 
 	// 数据过长数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TooLongCount *uint64 `json:"TooLongCount,omitnil,omitempty" name:"TooLongCount"`
 
 	// 邮件地址为空数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EmptyEmailCount *uint64 `json:"EmptyEmailCount,omitnil,omitempty" name:"EmptyEmailCount"`
 
 	// 重复数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepeatCount *uint64 `json:"RepeatCount,omitnil,omitempty" name:"RepeatCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2004,18 +1998,15 @@ type ReceiverData struct {
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 收件人列表描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
 	// 列表状态(1 待上传 2 上传中 3 上传完成)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceiversStatus *uint64 `json:"ReceiversStatus,omitnil,omitempty" name:"ReceiversStatus"`
 
 	// 创建时间,如:2021-09-28 16:40:35
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 无效收件人数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InvalidCount *uint64 `json:"InvalidCount,omitnil,omitempty" name:"InvalidCount"`
 }
 
@@ -2030,15 +2021,12 @@ type ReceiverDetail struct {
 	TemplateData *string `json:"TemplateData,omitnil,omitempty" name:"TemplateData"`
 
 	// 无效原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 1:有效，2:无效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 收件人地址id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EmailId *uint64 `json:"EmailId,omitnil,omitempty" name:"EmailId"`
 }
 

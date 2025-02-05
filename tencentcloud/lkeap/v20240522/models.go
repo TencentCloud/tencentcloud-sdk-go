@@ -68,6 +68,12 @@ type ChatCompletionsRequestParams struct {
 
 	// 是否流式输出
 	Stream *bool `json:"Stream,omitnil,omitempty" name:"Stream"`
+
+	// 控制生成的随机性，较高的值会产生更多样化的输出。
+	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
+
+	// 最大生成的token数量
+	MaxTokens *int64 `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
 }
 
 type ChatCompletionsRequest struct {
@@ -81,6 +87,12 @@ type ChatCompletionsRequest struct {
 
 	// 是否流式输出
 	Stream *bool `json:"Stream,omitnil,omitempty" name:"Stream"`
+
+	// 控制生成的随机性，较高的值会产生更多样化的输出。
+	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
+
+	// 最大生成的token数量
+	MaxTokens *int64 `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
 }
 
 func (r *ChatCompletionsRequest) ToJsonString() string {
@@ -98,6 +110,8 @@ func (r *ChatCompletionsRequest) FromJsonString(s string) error {
 	delete(f, "Model")
 	delete(f, "Messages")
 	delete(f, "Stream")
+	delete(f, "Temperature")
+	delete(f, "MaxTokens")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatCompletionsRequest has unknown keys!", "")
 	}
@@ -106,6 +120,22 @@ func (r *ChatCompletionsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChatCompletionsResponseParams struct {
+	// Unix 时间戳，单位为秒。
+	Created *int64 `json:"Created,omitnil,omitempty" name:"Created"`
+
+	// Token 统计信息。
+	// 按照总 Token 数量计费。
+	Usage *ChatUsage `json:"Usage,omitnil,omitempty" name:"Usage"`
+
+	// 本次请求的 RequestId。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 回复内容。
+	Choices []*Choice `json:"Choices,omitnil,omitempty" name:"Choices"`
+
+	// 模型名称。
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -124,6 +154,34 @@ func (r *ChatCompletionsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ChatCompletionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ChatUsage struct {
+	// 输入token数
+	PromptTokens *int64 `json:"PromptTokens,omitnil,omitempty" name:"PromptTokens"`
+
+	// 输出token数
+	CompletionTokens *int64 `json:"CompletionTokens,omitnil,omitempty" name:"CompletionTokens"`
+
+	// 总token数
+	TotalTokens *int64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
+}
+
+type Choice struct {
+	// 结束标志位，可能为 stop、 sensitive或者tool_calls。
+	// stop 表示输出正常结束。
+	// sensitive 只在开启流式输出审核时会出现，表示安全审核未通过。
+	// tool_calls 标识函数调用。
+	FinishReason *string `json:"FinishReason,omitnil,omitempty" name:"FinishReason"`
+
+	// 增量返回值，流式调用时使用该字段。
+	Delta *Delta `json:"Delta,omitnil,omitempty" name:"Delta"`
+
+	// 返回值，非流式调用时使用该字段。
+	Message *Message `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 索引值，流式调用时使用该字段。
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
 }
 
 // Predefined struct for user
@@ -801,6 +859,14 @@ func (r *DeleteQAsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Delta struct {
+	// 角色名称。
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 内容详情。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
 // Predefined struct for user
 type DescribeDocRequestParams struct {
 
@@ -1343,6 +1409,10 @@ type Message struct {
 
 	// 内容
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 思维链内容。
+	// ReasoningConent参数仅支持出参，且只有deepseek-r1模型会返回。
+	ReasoningContent *string `json:"ReasoningContent,omitnil,omitempty" name:"ReasoningContent"`
 }
 
 // Predefined struct for user
