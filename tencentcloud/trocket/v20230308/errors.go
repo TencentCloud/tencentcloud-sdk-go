@@ -35,6 +35,9 @@ const (
 	// 客户端不存在。
 	RESOURCENOTFOUND_CLIENT = "ResourceNotFound.Client"
 
+	// 接入点不存在。
+	RESOURCENOTFOUND_ENDPOINT = "ResourceNotFound.Endpoint"
+
 	// 消费组不存在，请检查后重试。
 	RESOURCENOTFOUND_GROUP = "ResourceNotFound.Group"
 
@@ -52,6 +55,9 @@ const (
 
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
+
+	// 操作不支持。
+	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 
 	// 实例Topic数量不能调整到已使用额度以下。
 	UNSUPPORTEDOPERATION_INSTANCETOPICNUMDOWNGRADE = "UnsupportedOperation.InstanceTopicNumDowngrade"

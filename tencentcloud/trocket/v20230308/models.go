@@ -4555,6 +4555,90 @@ func (r *ModifyConsumerGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyInstanceEndpointRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 接入点类型，
+	// PUBLIC 公网
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 公网带宽，Mbps为单位
+	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// 公网安全组信息
+	IpRules []*IpRule `json:"IpRules,omitnil,omitempty" name:"IpRules"`
+
+	// 公网是否按流量计费
+	BillingFlow *bool `json:"BillingFlow,omitnil,omitempty" name:"BillingFlow"`
+}
+
+type ModifyInstanceEndpointRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 接入点类型，
+	// PUBLIC 公网
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 公网带宽，Mbps为单位
+	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
+
+	// 公网安全组信息
+	IpRules []*IpRule `json:"IpRules,omitnil,omitempty" name:"IpRules"`
+
+	// 公网是否按流量计费
+	BillingFlow *bool `json:"BillingFlow,omitnil,omitempty" name:"BillingFlow"`
+}
+
+func (r *ModifyInstanceEndpointRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceEndpointRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Type")
+	delete(f, "Bandwidth")
+	delete(f, "IpRules")
+	delete(f, "BillingFlow")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceEndpointRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceEndpointResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyInstanceEndpointResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyInstanceEndpointResponseParams `json:"Response"`
+}
+
+func (r *ModifyInstanceEndpointResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceEndpointResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyInstanceRequestParams struct {
 	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

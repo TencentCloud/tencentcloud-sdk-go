@@ -101,6 +101,18 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 // 
 //
+// ### Openai兼容协议接口
+//
+// 知识引擎原子能力大模型对话 API 兼容了 OpenAI 的接口规范，这意味着您可以直接使用 OpenAI 官方提供的 SDK 来调用大模型对话接口。您仅需要将 base_url 和 [api_key](https://cloud.tencent.com/document/product/1772/115970) 替换成相关配置，不需要对应用做额外修改，即可无缝将您的应用切换到相应的大模型。
+//
+// > base_url：  https://api.lkeap.cloud.tencent.com/v1
+//
+// 
+//
+// > api_key的获取请参考[API KEY管理](https://cloud.tencent.com/document/product/1772/115970)
+//
+// 
+//
 // 
 //
 // #### 快速接入
@@ -285,6 +297,18 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 // - 标准计费（2025年2月26日起生效）
 //
 // ![image](https://cdn.xiaowei.qq.com/static/lke/deepseek-token.png)
+//
+// 
+//
+// ### Openai兼容协议接口
+//
+// 知识引擎原子能力大模型对话 API 兼容了 OpenAI 的接口规范，这意味着您可以直接使用 OpenAI 官方提供的 SDK 来调用大模型对话接口。您仅需要将 base_url 和 [api_key](https://cloud.tencent.com/document/product/1772/115970) 替换成相关配置，不需要对应用做额外修改，即可无缝将您的应用切换到相应的大模型。
+//
+// > base_url：  https://api.lkeap.cloud.tencent.com/v1
+//
+// 
+//
+// > api_key的获取请参考[API KEY管理](https://cloud.tencent.com/document/product/1772/115970)
 //
 // 
 //

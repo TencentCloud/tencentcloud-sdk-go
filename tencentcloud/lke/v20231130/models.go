@@ -7682,6 +7682,15 @@ type ModelInfo struct {
 	// 最多能生成的token数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxTokens *ModelParameter `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
+
+	// 模型来源 Hunyuan：腾讯混元大模型,Industry：腾讯云行业大模型,Experience：新模型体验
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 模型图标
+	Icon *string `json:"Icon,omitnil,omitempty" name:"Icon"`
+
+	// 是否免费
+	IsFree *bool `json:"IsFree,omitnil,omitempty" name:"IsFree"`
 }
 
 type ModelParameter struct {

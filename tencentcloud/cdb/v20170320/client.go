@@ -4441,6 +4441,10 @@ func NewDescribeCpuExpandStrategyResponse() (response *DescribeCpuExpandStrategy
 }
 
 // DescribeCpuExpandStrategy
+// DescribeCpuExpandStrategy
+//
+// 
+//
 // 通过该 API 可以查询实例的 CPU 弹性扩容策略
 //
 // 可能返回的错误码:
@@ -4454,6 +4458,10 @@ func (c *Client) DescribeCpuExpandStrategy(request *DescribeCpuExpandStrategyReq
 }
 
 // DescribeCpuExpandStrategy
+// DescribeCpuExpandStrategy
+//
+// 
+//
 // 通过该 API 可以查询实例的 CPU 弹性扩容策略
 //
 // 可能返回的错误码:

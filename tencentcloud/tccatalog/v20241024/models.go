@@ -368,14 +368,23 @@ type TccCatalogSet struct {
 }
 
 type TccConnection struct {
-	// 终端节点服务Id
+	// 引擎终端节点服务Id
 	EndpointServiceId *string `json:"EndpointServiceId,omitnil,omitempty" name:"EndpointServiceId"`
 
 	// 元数据连接串
 	MetaStoreUrl *string `json:"MetaStoreUrl,omitnil,omitempty" name:"MetaStoreUrl"`
 
-	// 	网络信息
+	// 网络信息
 	NetWork *NetWork `json:"NetWork,omitnil,omitempty" name:"NetWork"`
+
+	// hive版本
+	HiveVersion *string `json:"HiveVersion,omitnil,omitempty" name:"HiveVersion"`
+
+	// hive location
+	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
+
+	// HMS终端节点服务
+	HmsEndpointServiceId *string `json:"HmsEndpointServiceId,omitnil,omitempty" name:"HmsEndpointServiceId"`
 }
 
 type TccConnectionConfig struct {

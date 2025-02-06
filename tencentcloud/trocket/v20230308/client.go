@@ -2578,6 +2578,59 @@ func (c *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyI
     return
 }
 
+func NewModifyInstanceEndpointRequest() (request *ModifyInstanceEndpointRequest) {
+    request = &ModifyInstanceEndpointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "ModifyInstanceEndpoint")
+    
+    
+    return
+}
+
+func NewModifyInstanceEndpointResponse() (response *ModifyInstanceEndpointResponse) {
+    response = &ModifyInstanceEndpointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInstanceEndpoint
+// 修改 RocketMQ 5.x 集群接入点。
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_ENDPOINT = "ResourceNotFound.Endpoint"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyInstanceEndpoint(request *ModifyInstanceEndpointRequest) (response *ModifyInstanceEndpointResponse, err error) {
+    return c.ModifyInstanceEndpointWithContext(context.Background(), request)
+}
+
+// ModifyInstanceEndpoint
+// 修改 RocketMQ 5.x 集群接入点。
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_ENDPOINT = "ResourceNotFound.Endpoint"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyInstanceEndpointWithContext(ctx context.Context, request *ModifyInstanceEndpointRequest) (response *ModifyInstanceEndpointResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceEndpointRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceEndpoint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceEndpointResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyMQTTInsPublicEndpointRequest() (request *ModifyMQTTInsPublicEndpointRequest) {
     request = &ModifyMQTTInsPublicEndpointRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2601,10 +2654,9 @@ func NewModifyMQTTInsPublicEndpointResponse() (response *ModifyMQTTInsPublicEndp
 // 更新MQTT实例公网接入点
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNSUPPORTEDOPERATION_INSTANCETOPICNUMDOWNGRADE = "UnsupportedOperation.InstanceTopicNumDowngrade"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_ENDPOINT = "ResourceNotFound.Endpoint"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyMQTTInsPublicEndpoint(request *ModifyMQTTInsPublicEndpointRequest) (response *ModifyMQTTInsPublicEndpointResponse, err error) {
     return c.ModifyMQTTInsPublicEndpointWithContext(context.Background(), request)
 }
@@ -2613,10 +2665,9 @@ func (c *Client) ModifyMQTTInsPublicEndpoint(request *ModifyMQTTInsPublicEndpoin
 // 更新MQTT实例公网接入点
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNSUPPORTEDOPERATION_INSTANCETOPICNUMDOWNGRADE = "UnsupportedOperation.InstanceTopicNumDowngrade"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_ENDPOINT = "ResourceNotFound.Endpoint"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyMQTTInsPublicEndpointWithContext(ctx context.Context, request *ModifyMQTTInsPublicEndpointRequest) (response *ModifyMQTTInsPublicEndpointResponse, err error) {
     if request == nil {
         request = NewModifyMQTTInsPublicEndpointRequest()
