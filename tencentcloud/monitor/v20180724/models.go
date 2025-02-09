@@ -14271,10 +14271,14 @@ type RemoteWrite struct {
 
 	// 最大block
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: MaxBlockSize is deprecated.
 	MaxBlockSize *string `json:"MaxBlockSize,omitnil,omitempty" name:"MaxBlockSize"`
 
 	// Label
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: Label is deprecated.
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// HTTP 额外添加的头

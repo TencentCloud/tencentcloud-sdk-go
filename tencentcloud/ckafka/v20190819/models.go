@@ -9298,7 +9298,7 @@ type ModifyInstanceAttributesRequestParams struct {
 	// 动态消息保留策略配置
 	DynamicRetentionConfig *DynamicRetentionTime `json:"DynamicRetentionConfig,omitnil,omitempty" name:"DynamicRetentionConfig"`
 
-	// 升配Rebalance时间 参数已废弃,忽略不填!!!
+	// 用于修改升级版本或升配定时任务的执行时间，Unix时间戳，精确到秒
 	RebalanceTime *int64 `json:"RebalanceTime,omitnil,omitempty" name:"RebalanceTime"`
 
 	// 公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写
@@ -9311,6 +9311,9 @@ type ModifyInstanceAttributesRequestParams struct {
 
 	// 实例级别单条消息大小（单位byte)  最大 12582912(不包含)  最小1024(不包含)
 	MaxMessageByte *uint64 `json:"MaxMessageByte,omitnil,omitempty" name:"MaxMessageByte"`
+
+	// 集群topic默认 unclean.leader.election.enable配置: 1 开启  0 关闭
+	UncleanLeaderElectionEnable *int64 `json:"UncleanLeaderElectionEnable,omitnil,omitempty" name:"UncleanLeaderElectionEnable"`
 }
 
 type ModifyInstanceAttributesRequest struct {
@@ -9331,7 +9334,7 @@ type ModifyInstanceAttributesRequest struct {
 	// 动态消息保留策略配置
 	DynamicRetentionConfig *DynamicRetentionTime `json:"DynamicRetentionConfig,omitnil,omitempty" name:"DynamicRetentionConfig"`
 
-	// 升配Rebalance时间 参数已废弃,忽略不填!!!
+	// 用于修改升级版本或升配定时任务的执行时间，Unix时间戳，精确到秒
 	RebalanceTime *int64 `json:"RebalanceTime,omitnil,omitempty" name:"RebalanceTime"`
 
 	// 公网带宽 最小3Mbps  最大999Mbps 仅专业版支持填写
@@ -9342,6 +9345,9 @@ type ModifyInstanceAttributesRequest struct {
 
 	// 实例级别单条消息大小（单位byte)  最大 12582912(不包含)  最小1024(不包含)
 	MaxMessageByte *uint64 `json:"MaxMessageByte,omitnil,omitempty" name:"MaxMessageByte"`
+
+	// 集群topic默认 unclean.leader.election.enable配置: 1 开启  0 关闭
+	UncleanLeaderElectionEnable *int64 `json:"UncleanLeaderElectionEnable,omitnil,omitempty" name:"UncleanLeaderElectionEnable"`
 }
 
 func (r *ModifyInstanceAttributesRequest) ToJsonString() string {
@@ -9365,6 +9371,7 @@ func (r *ModifyInstanceAttributesRequest) FromJsonString(s string) error {
 	delete(f, "PublicNetwork")
 	delete(f, "DynamicDiskConfig")
 	delete(f, "MaxMessageByte")
+	delete(f, "UncleanLeaderElectionEnable")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceAttributesRequest has unknown keys!", "")
 	}

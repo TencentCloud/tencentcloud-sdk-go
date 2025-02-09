@@ -313,6 +313,12 @@ type NetWork struct {
 
 	// 子网网段
 	SubnetCidrBlock *string `json:"SubnetCidrBlock,omitnil,omitempty" name:"SubnetCidrBlock"`
+
+	// 服务clbip
+	ClbIp *string `json:"ClbIp,omitnil,omitempty" name:"ClbIp"`
+
+	// 服务clbPort
+	ClbPort *string `json:"ClbPort,omitnil,omitempty" name:"ClbPort"`
 }
 
 type TccCatalogConfig struct {

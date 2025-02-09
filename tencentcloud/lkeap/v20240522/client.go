@@ -69,6 +69,8 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 // 调用接口，发起一次对话请求。
 //
+// 如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1772/115968)
+//
 // 
 //
 // #### 已支持的模型
@@ -103,7 +105,7 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 // ### Openai兼容协议接口
 //
-// 知识引擎原子能力大模型对话 API 兼容了 OpenAI 的接口规范，这意味着您可以直接使用 OpenAI 官方提供的 SDK 来调用大模型对话接口。您仅需要将 base_url 和 [api_key](https://cloud.tencent.com/document/product/1772/115970) 替换成相关配置，不需要对应用做额外修改，即可无缝将您的应用切换到相应的大模型。
+// 知识引擎原子能力大模型对话 API 兼容了 OpenAI 的接口规范，这意味着您可以直接使用 OpenAI 官方提供的 SDK 来调用大模型对话接口。您仅需要将 base_url 和 [api_key](https://cloud.tencent.com/document/product/1772/115970) 替换成相关配置，不需要对应用做额外修改，即可无缝将您的应用切换到相应的大模型。请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1772/115968)。
 //
 // > base_url：  https://api.lkeap.cloud.tencent.com/v1
 //
@@ -268,6 +270,8 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 // 调用接口，发起一次对话请求。
 //
+// 如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1772/115968)
+//
 // 
 //
 // #### 已支持的模型
@@ -302,7 +306,7 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 // ### Openai兼容协议接口
 //
-// 知识引擎原子能力大模型对话 API 兼容了 OpenAI 的接口规范，这意味着您可以直接使用 OpenAI 官方提供的 SDK 来调用大模型对话接口。您仅需要将 base_url 和 [api_key](https://cloud.tencent.com/document/product/1772/115970) 替换成相关配置，不需要对应用做额外修改，即可无缝将您的应用切换到相应的大模型。
+// 知识引擎原子能力大模型对话 API 兼容了 OpenAI 的接口规范，这意味着您可以直接使用 OpenAI 官方提供的 SDK 来调用大模型对话接口。您仅需要将 base_url 和 [api_key](https://cloud.tencent.com/document/product/1772/115970) 替换成相关配置，不需要对应用做额外修改，即可无缝将您的应用切换到相应的大模型。请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1772/115968)。
 //
 // > base_url：  https://api.lkeap.cloud.tencent.com/v1
 //

@@ -1073,45 +1073,36 @@ type DeviceNetInfo struct {
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 启用/禁用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataEnable *bool `json:"DataEnable,omitnil,omitempty" name:"DataEnable"`
 
 	// 上行限速
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UploadLimit *string `json:"UploadLimit,omitnil,omitempty" name:"UploadLimit"`
 
 	// 下行限速
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadLimit *string `json:"DownloadLimit,omitnil,omitempty" name:"DownloadLimit"`
 
 	// 接收实时速率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataRx *uint64 `json:"DataRx,omitnil,omitempty" name:"DataRx"`
 
 	// 发送实时速率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataTx *uint64 `json:"DataTx,omitnil,omitempty" name:"DataTx"`
 
 	// 运营商类型：
 	// 1: 中国移动；
 	// 2: 中国电信; 
 	// 3: 中国联通
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vendor *int64 `json:"Vendor,omitnil,omitempty" name:"Vendor"`
 
 	// 连接状态：
 	// 0:无连接
 	// 1:连接中
 	// 2:已连接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	State *int64 `json:"State,omitnil,omitempty" name:"State"`
 
 	// 公网IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
 	// 信号强度/单位：dbm
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignalStrength *int64 `json:"SignalStrength,omitnil,omitempty" name:"SignalStrength"`
 
 	// 数据网络类型：
@@ -1120,7 +1111,6 @@ type DeviceNetInfo struct {
 	// 3：3G 
 	// 4：4G 
 	// 5：5G
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rat *int64 `json:"Rat,omitnil,omitempty" name:"Rat"`
 
 	// 网卡名

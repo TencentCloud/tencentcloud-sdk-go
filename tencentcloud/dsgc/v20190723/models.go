@@ -14111,6 +14111,9 @@ type UpdateDSPASelfBuildResourceRequestParams struct {
 
 	// 授权范围：all 授权全部  manual：手动指定
 	AuthRange *string `json:"AuthRange,omitnil,omitempty" name:"AuthRange"`
+
+	// 自建数据资产的名称，支持修改
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 }
 
 type UpdateDSPASelfBuildResourceRequest struct {
@@ -14135,6 +14138,9 @@ type UpdateDSPASelfBuildResourceRequest struct {
 
 	// 授权范围：all 授权全部  manual：手动指定
 	AuthRange *string `json:"AuthRange,omitnil,omitempty" name:"AuthRange"`
+
+	// 自建数据资产的名称，支持修改
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 }
 
 func (r *UpdateDSPASelfBuildResourceRequest) ToJsonString() string {
@@ -14155,6 +14161,7 @@ func (r *UpdateDSPASelfBuildResourceRequest) FromJsonString(s string) error {
 	delete(f, "UserName")
 	delete(f, "Password")
 	delete(f, "AuthRange")
+	delete(f, "ResourceName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDSPASelfBuildResourceRequest has unknown keys!", "")
 	}

@@ -35,7 +35,7 @@ type AddNodeList struct {
 
 // Predefined struct for user
 type AssignProjectRequestParams struct {
-	// 实例ID列表，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同
+	// 实例 ID 列表，请登录[MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 项目ID，用户已创建项目的唯一ID,非自定义
@@ -45,7 +45,7 @@ type AssignProjectRequestParams struct {
 type AssignProjectRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID列表，格式如：cmgo-p8vn****。与云数据库控制台页面中显示的实例ID相同
+	// 实例 ID 列表，请登录[MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 项目ID，用户已创建项目的唯一ID,非自定义
@@ -492,7 +492,11 @@ type CreateDBInstanceHourRequestParams struct {
 	// 私有网络VPC的子网。请登录 [私有网络控制台](https://console.cloud.tencent.com/vpc) 查询子网列表确认正确的 ID。 示例值：subnet-7jbabche
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 实例密码。自定义密码长度为8-32个字符，至少包含字母、数字和字符（!@#%^*()_）中的两种。
+	// 实例密码。设置要求如下：
+	// - 字符个数为[8,32]。
+	// - 可输入[A,Z]、[a,z]、[0,9]范围内的字符。
+	// - 可输入的特殊字符包括：感叹号“!”，at“@”，警号“#”、百分号“%”、插入号“^”、星号“\*”、括号“()”、下划线“_”。
+	// - 不能设置单一的字母或者数字。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 项目ID。
@@ -603,7 +607,11 @@ type CreateDBInstanceHourRequest struct {
 	// 私有网络VPC的子网。请登录 [私有网络控制台](https://console.cloud.tencent.com/vpc) 查询子网列表确认正确的 ID。 示例值：subnet-7jbabche
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 实例密码。自定义密码长度为8-32个字符，至少包含字母、数字和字符（!@#%^*()_）中的两种。
+	// 实例密码。设置要求如下：
+	// - 字符个数为[8,32]。
+	// - 可输入[A,Z]、[a,z]、[0,9]范围内的字符。
+	// - 可输入的特殊字符包括：感叹号“!”，at“@”，警号“#”、百分号“%”、插入号“^”、星号“\*”、括号“()”、下划线“_”。
+	// - 不能设置单一的字母或者数字。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 项目ID。
@@ -891,7 +899,7 @@ type CreateDBInstanceRequestParams struct {
 	// 实例密码。设置要求如下：
 	// - 字符个数为[8,32]。
 	// - 可输入[A,Z]、[a,z]、[0,9]范围内的字符。
-	// - 可输入的特殊字符包括：感叹号“!”，at“@”，警号“#“、百分号”%”、插入号“^”、星号“*”、括号“()”、下划线“_”。
+	// - 可输入的特殊字符包括：感叹号“!”，at“@”，警号“#”、百分号“%”、插入号“^”、星号“\*”、括号“()”、下划线“\_”。
 	// - 不能设置单一的字母或者数字。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
@@ -1016,7 +1024,7 @@ type CreateDBInstanceRequest struct {
 	// 实例密码。设置要求如下：
 	// - 字符个数为[8,32]。
 	// - 可输入[A,Z]、[a,z]、[0,9]范围内的字符。
-	// - 可输入的特殊字符包括：感叹号“!”，at“@”，警号“#“、百分号”%”、插入号“^”、星号“*”、括号“()”、下划线“_”。
+	// - 可输入的特殊字符包括：感叹号“!”，at“@”，警号“#”、百分号“%”、插入号“^”、星号“\*”、括号“()”、下划线“\_”。
 	// - 不能设置单一的字母或者数字。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
@@ -3394,7 +3402,7 @@ func (r *InquirePriceModifyDBInstanceSpecResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type InquirePriceRenewDBInstancesRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vn****。请登录[MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID，且单次最多同时查询5个实例。
+	// 实例ID。请登录[MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID，且单次最多同时查询5个实例。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 预付费模式（即包年包月）相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
@@ -3404,7 +3412,7 @@ type InquirePriceRenewDBInstancesRequestParams struct {
 type InquirePriceRenewDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vn****。请登录[MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID，且单次最多同时查询5个实例。
+	// 实例ID。请登录[MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID，且单次最多同时查询5个实例。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 预付费模式（即包年包月）相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
@@ -4509,20 +4517,20 @@ type RemoveNodeList struct {
 
 // Predefined struct for user
 type RenameInstanceRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例ID，格式如：cmgo-p8vnipr5。请登录[MongoDB 控制台](https://console.cloud.tencent.com/mongodb#/)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 自定义实例名称，名称只支持长度为60个字符的中文、英文、数字、下划线_、分隔符 -
+	// 自定义实例名称，要求为1～128 长度的任意字符。
 	NewName *string `json:"NewName,omitnil,omitempty" name:"NewName"`
 }
 
 type RenameInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
+	// 实例ID，格式如：cmgo-p8vnipr5。请登录[MongoDB 控制台](https://console.cloud.tencent.com/mongodb#/)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 自定义实例名称，名称只支持长度为60个字符的中文、英文、数字、下划线_、分隔符 -
+	// 自定义实例名称，要求为1～128 长度的任意字符。
 	NewName *string `json:"NewName,omitnil,omitempty" name:"NewName"`
 }
 
@@ -4570,7 +4578,9 @@ func (r *RenameInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RenewDBInstancesRequestParams struct {
-	// 一个或多个待操作的实例ID。可通过DescribeInstances接口返回值中的InstanceId获取。每次请求批量实例的上限为100。
+	// 指定续费的一个或多个待操作的实例ID。
+	// - 可通过[DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568)接口返回值中的**InstanceIds**获取。
+	// - 每次续费请求的实例数量上限为100。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。包年包月实例该参数为必传参数。
@@ -4580,7 +4590,9 @@ type RenewDBInstancesRequestParams struct {
 type RenewDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 一个或多个待操作的实例ID。可通过DescribeInstances接口返回值中的InstanceId获取。每次请求批量实例的上限为100。
+	// 指定续费的一个或多个待操作的实例ID。
+	// - 可通过[DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568)接口返回值中的**InstanceIds**获取。
+	// - 每次续费请求的实例数量上限为100。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。包年包月实例该参数为必传参数。

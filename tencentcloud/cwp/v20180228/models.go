@@ -3684,25 +3684,6 @@ type CommandLine struct {
 	Cmdline *string `json:"Cmdline,omitnil,omitempty" name:"Cmdline"`
 }
 
-type ComponentStatistics struct {
-	// 组件ID。
-	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
-
-	// 主机数量。
-	MachineNum *uint64 `json:"MachineNum,omitnil,omitempty" name:"MachineNum"`
-
-	// 组件名称。
-	ComponentName *string `json:"ComponentName,omitnil,omitempty" name:"ComponentName"`
-
-	// 组件类型。
-	// <li>WEB：Web组件</li>
-	// <li>SYSTEM：系统组件</li>
-	ComponentType *string `json:"ComponentType,omitnil,omitempty" name:"ComponentType"`
-
-	// 组件描述。
-	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
-}
-
 // Predefined struct for user
 type CreateBanWhiteListRequestParams struct {
 	// 阻断规则
@@ -5161,53 +5142,6 @@ type DefaultStrategyInfo struct {
 
 	// 策略id
 	StrategyId *uint64 `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
-}
-
-type DefendAttackLog struct {
-	// 日志ID
-	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
-
-	// 客户端ID
-	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
-
-	// 来源IP
-	SrcIp *string `json:"SrcIp,omitnil,omitempty" name:"SrcIp"`
-
-	// 来源端口
-	SrcPort *uint64 `json:"SrcPort,omitnil,omitempty" name:"SrcPort"`
-
-	// 攻击方式
-	HttpMethod *string `json:"HttpMethod,omitnil,omitempty" name:"HttpMethod"`
-
-	// 攻击描述
-	HttpCgi *string `json:"HttpCgi,omitnil,omitempty" name:"HttpCgi"`
-
-	// 攻击参数
-	HttpParam *string `json:"HttpParam,omitnil,omitempty" name:"HttpParam"`
-
-	// 威胁类型
-	VulType *string `json:"VulType,omitnil,omitempty" name:"VulType"`
-
-	// 攻击时间
-	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
-
-	// 目标服务器IP
-	MachineIp *string `json:"MachineIp,omitnil,omitempty" name:"MachineIp"`
-
-	// 目标服务器名称
-	MachineName *string `json:"MachineName,omitnil,omitempty" name:"MachineName"`
-
-	// 目标IP
-	DstIp *string `json:"DstIp,omitnil,omitempty" name:"DstIp"`
-
-	// 目标端口
-	DstPort *uint64 `json:"DstPort,omitnil,omitempty" name:"DstPort"`
-
-	// 攻击内容
-	HttpContent *string `json:"HttpContent,omitnil,omitempty" name:"HttpContent"`
-
-	// 主机额外信息
-	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitnil,omitempty" name:"MachineExtraInfo"`
 }
 
 // Predefined struct for user
@@ -12221,109 +12155,6 @@ func (r *DescribeAttackEventsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeAttackLogsRequestParams struct {
-	// 返回数量，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 过滤条件。
-	// <li>HttpMethod - String - 是否必填：否 - 攻击方法(POST|GET)</li>
-	// <li>DateRange - String - 是否必填：否 - 时间范围(存储最近3个月的数据)，如最近一个月["2019-11-17", "2019-12-17"]</li>
-	// <li>VulType - String 威胁类型 - 是否必填: 否</li>
-	// <li>SrcIp - String 攻击源IP - 是否必填: 否</li>
-	// <li>DstIp - String 攻击目标IP - 是否必填: 否</li>
-	// <li>SrcPort - String 攻击源端口 - 是否必填: 否</li>
-	// <li>DstPort - String 攻击目标端口 - 是否必填: 否</li>
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-
-	// 主机安全客户端ID
-	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
-
-	// 云主机机器ID
-	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
-}
-
-type DescribeAttackLogsRequest struct {
-	*tchttp.BaseRequest
-	
-	// 返回数量，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 过滤条件。
-	// <li>HttpMethod - String - 是否必填：否 - 攻击方法(POST|GET)</li>
-	// <li>DateRange - String - 是否必填：否 - 时间范围(存储最近3个月的数据)，如最近一个月["2019-11-17", "2019-12-17"]</li>
-	// <li>VulType - String 威胁类型 - 是否必填: 否</li>
-	// <li>SrcIp - String 攻击源IP - 是否必填: 否</li>
-	// <li>DstIp - String 攻击目标IP - 是否必填: 否</li>
-	// <li>SrcPort - String 攻击源端口 - 是否必填: 否</li>
-	// <li>DstPort - String 攻击目标端口 - 是否必填: 否</li>
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-
-	// 主机安全客户端ID
-	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
-
-	// 云主机机器ID
-	Quuid *string `json:"Quuid,omitnil,omitempty" name:"Quuid"`
-}
-
-func (r *DescribeAttackLogsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAttackLogsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "Filters")
-	delete(f, "Uuid")
-	delete(f, "Quuid")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAttackLogsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeAttackLogsResponseParams struct {
-	// 日志列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AttackLogs []*DefendAttackLog `json:"AttackLogs,omitnil,omitempty" name:"AttackLogs"`
-
-	// 总条数
-	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeAttackLogsResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeAttackLogsResponseParams `json:"Response"`
-}
-
-func (r *DescribeAttackLogsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAttackLogsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeAttackStatisticsRequestParams struct {
 
 }
@@ -16247,82 +16078,6 @@ func (r *DescribeClientExceptionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClientExceptionResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeComponentStatisticsRequestParams struct {
-	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 过滤条件。
-	// ComponentName - String - 是否必填：否 - 组件名称
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-}
-
-type DescribeComponentStatisticsRequest struct {
-	*tchttp.BaseRequest
-	
-	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 过滤条件。
-	// ComponentName - String - 是否必填：否 - 组件名称
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-}
-
-func (r *DescribeComponentStatisticsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeComponentStatisticsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "Filters")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeComponentStatisticsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeComponentStatisticsResponseParams struct {
-	// 组件统计列表记录总数。
-	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 组件统计列表数据数组。
-	ComponentStatistics []*ComponentStatistics `json:"ComponentStatistics,omitnil,omitempty" name:"ComponentStatistics"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeComponentStatisticsResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeComponentStatisticsResponseParams `json:"Response"`
-}
-
-func (r *DescribeComponentStatisticsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeComponentStatisticsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
