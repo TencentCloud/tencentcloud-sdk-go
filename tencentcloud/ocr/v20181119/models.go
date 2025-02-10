@@ -11594,6 +11594,15 @@ type TextVehicleFront struct {
 	// 印章
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Seal *string `json:"Seal,omitnil,omitempty" name:"Seal"`
+
+	// 状态
+	StateElectronic *string `json:"StateElectronic,omitnil,omitempty" name:"StateElectronic"`
+
+	// 检验有效期
+	InspectionValidityTimeElectronic *string `json:"InspectionValidityTimeElectronic,omitnil,omitempty" name:"InspectionValidityTimeElectronic"`
+
+	// 生成时间
+	GenerationTimeElectronic *string `json:"GenerationTimeElectronic,omitnil,omitempty" name:"GenerationTimeElectronic"`
 }
 
 type TextWaybill struct {

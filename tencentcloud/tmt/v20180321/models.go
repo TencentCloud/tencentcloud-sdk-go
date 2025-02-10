@@ -37,6 +37,8 @@ type FileTranslateRequestParams struct {
 	// pt：葡萄牙语
 	// ru：俄语
 	// ko：韩语
+	// tr：土耳其语
+	// vi：越南语
 	// th：泰语
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
@@ -97,6 +99,8 @@ type FileTranslateRequest struct {
 	// pt：葡萄牙语
 	// ru：俄语
 	// ko：韩语
+	// tr：土耳其语
+	// vi：越南语
 	// th：泰语
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 

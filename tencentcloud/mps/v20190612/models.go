@@ -4016,6 +4016,9 @@ type CreateOutputInfo struct {
 
 	// 输出的RIST的配置。
 	RISTSettings *CreateOutputRistSettings `json:"RISTSettings,omitnil,omitempty" name:"RISTSettings"`
+
+	// 对于含有多个音/视频轨的流，可以指定需要使用的轨道
+	PidSelector *PidSelector `json:"PidSelector,omitnil,omitempty" name:"PidSelector"`
 }
 
 type CreateOutputInfoRTPSettings struct {
@@ -7208,6 +7211,12 @@ type DescribeFlow struct {
 
 	// 媒体传输输入流所属的区域，取值和InputRegion相同。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 该Flow允许创建的输入协议
+	AllowedInputProtocols []*string `json:"AllowedInputProtocols,omitnil,omitempty" name:"AllowedInputProtocols"`
+
+	// 该Flow允许创建的输出协议
+	AllowedOutputProtocols []*string `json:"AllowedOutputProtocols,omitnil,omitempty" name:"AllowedOutputProtocols"`
 }
 
 type DescribeFlowId struct {
@@ -7729,6 +7738,9 @@ type DescribeOutput struct {
 	// 输出的RIST配置信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RISTSettings *DescribeOutputRISTSettings `json:"RISTSettings,omitnil,omitempty" name:"RISTSettings"`
+
+	// 对于含有多个音/视频轨的流，可以指定需要使用的轨道
+	PidSelector *PidSelector `json:"PidSelector,omitnil,omitempty" name:"PidSelector"`
 }
 
 type DescribeOutputHLSPullServerUrl struct {
@@ -13777,6 +13789,9 @@ type ModifyOutputInfo struct {
 
 	// 输出类型：Internet/TencentCSS/StreamLive
 	OutputType *string `json:"OutputType,omitnil,omitempty" name:"OutputType"`
+
+	// 对于含有多个音/视频轨的流，可以指定需要使用的轨道
+	PidSelector *PidSelector `json:"PidSelector,omitnil,omitempty" name:"PidSelector"`
 }
 
 // Predefined struct for user
@@ -15372,6 +15387,16 @@ func (r *ParseNotificationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ParseNotificationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type PidSelector struct {
+	// 对于含有多音轨的流, 可以通过输入PID来指定需要使用的音轨，PID可以输入1到8191之间的正整数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioPID []*int64 `json:"AudioPID,omitnil,omitempty" name:"AudioPID"`
+
+	// 对于含有多个视频轨的流，可以通过输入PID来指定需要使用的视频轨，PID可以输入1到8191之间的正整数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoPID []*int64 `json:"VideoPID,omitnil,omitempty" name:"VideoPID"`
 }
 
 type PoliticalAsrReviewTemplateInfo struct {

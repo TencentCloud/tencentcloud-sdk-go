@@ -411,13 +411,13 @@ type FusionUltraParam struct {
 	WarpRadio *float64 `json:"WarpRadio,omitnil,omitempty" name:"WarpRadio"`
 
 	// 人脸增强强度。对整个人脸进行增强，增加清晰度，改善质量。当生成的人脸不够清晰，质感不够好的时候可以设置。取值越大增强强度越大。
-	// 取值范围：0-1之间。默认取值1。
+	// 取值范围：0-1之间。默认取值0.5。
 	// 
 	// 该参数仅对SwapModelType（模型类型）取值1-5生效
 	EnhanceRadio *float64 `json:"EnhanceRadio,omitnil,omitempty" name:"EnhanceRadio"`
 
 	// 磨皮强度。当生成脸的图像面部显脏时，可进行设置。
-	// 取值范围：0-1之间。默认取值1。
+	// 取值范围：0-1之间。默认取值0.5。
 	// 
 	// 该参数仅对SwapModelType（模型类型）取值1-5生效
 	MpRadio *float64 `json:"MpRadio,omitnil,omitempty" name:"MpRadio"`

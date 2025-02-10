@@ -1114,15 +1114,12 @@ type DeviceNetInfo struct {
 	Rat *int64 `json:"Rat,omitnil,omitempty" name:"Rat"`
 
 	// 网卡名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetInfoName *string `json:"NetInfoName,omitnil,omitempty" name:"NetInfoName"`
 
 	// 下行实时速率（浮点数类型代替上一版本DataRx的整型）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownRate *float64 `json:"DownRate,omitnil,omitempty" name:"DownRate"`
 
 	// 上行实时速率（浮点数类型代替上一版本TxRate的整型）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpRate *float64 `json:"UpRate,omitnil,omitempty" name:"UpRate"`
 }
 
@@ -1156,23 +1153,18 @@ type ExpectedThreshold struct {
 
 type FlowDetails struct {
 	// 流量数据点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetDetails []*NetDetails `json:"NetDetails,omitnil,omitempty" name:"NetDetails"`
 
 	// 设备ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 流量最大值（单位：bytes）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxValue *float64 `json:"MaxValue,omitnil,omitempty" name:"MaxValue"`
 
 	// 流量平均值（单位：bytes）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AvgValue *float64 `json:"AvgValue,omitnil,omitempty" name:"AvgValue"`
 
 	// 流量总值（单位：bytes）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalValue *float64 `json:"TotalValue,omitnil,omitempty" name:"TotalValue"`
 }
 

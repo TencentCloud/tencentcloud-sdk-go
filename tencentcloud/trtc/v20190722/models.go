@@ -25,7 +25,6 @@ type AbnormalEvent struct {
 	AbnormalEventId *uint64 `json:"AbnormalEventId,omitnil,omitempty" name:"AbnormalEventId"`
 
 	// 远端用户ID,""：表示异常事件不是由远端用户产生
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PeerId *string `json:"PeerId,omitnil,omitempty" name:"PeerId"`
 }
 
@@ -4043,7 +4042,6 @@ type QualityData struct {
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 对端Id,为空时表示上行数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PeerId *string `json:"PeerId,omitnil,omitempty" name:"PeerId"`
 
 	// 数据类型

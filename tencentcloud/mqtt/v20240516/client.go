@@ -147,6 +147,106 @@ func (c *Client) CreateAuthorizationPolicyWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateInsPublicEndpointRequest() (request *CreateInsPublicEndpointRequest) {
+    request = &CreateInsPublicEndpointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "CreateInsPublicEndpoint")
+    
+    
+    return
+}
+
+func NewCreateInsPublicEndpointResponse() (response *CreateInsPublicEndpointResponse) {
+    response = &CreateInsPublicEndpointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateInsPublicEndpoint
+// 为MQTT实例创建公网接入点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) CreateInsPublicEndpoint(request *CreateInsPublicEndpointRequest) (response *CreateInsPublicEndpointResponse, err error) {
+    return c.CreateInsPublicEndpointWithContext(context.Background(), request)
+}
+
+// CreateInsPublicEndpoint
+// 为MQTT实例创建公网接入点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) CreateInsPublicEndpointWithContext(ctx context.Context, request *CreateInsPublicEndpointRequest) (response *CreateInsPublicEndpointResponse, err error) {
+    if request == nil {
+        request = NewCreateInsPublicEndpointRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInsPublicEndpoint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateInsPublicEndpointResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateInstanceRequest() (request *CreateInstanceRequest) {
+    request = &CreateInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "CreateInstance")
+    
+    
+    return
+}
+
+func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
+    response = &CreateInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateInstance
+// 购买新的MQTT实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
+    return c.CreateInstanceWithContext(context.Background(), request)
+}
+
+// CreateInstance
+// 购买新的MQTT实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateJWKSAuthenticatorRequest() (request *CreateJWKSAuthenticatorRequest) {
     request = &CreateJWKSAuthenticatorRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -314,6 +414,65 @@ func (c *Client) CreateTopicWithContext(ctx context.Context, request *CreateTopi
     request.SetContext(ctx)
     
     response = NewCreateTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateUserRequest() (request *CreateUserRequest) {
+    request = &CreateUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "CreateUser")
+    
+    
+    return
+}
+
+func NewCreateUserResponse() (response *CreateUserResponse) {
+    response = &CreateUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUser
+// 添加mqtt角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
+func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserResponse, err error) {
+    return c.CreateUserWithContext(context.Background(), request)
+}
+
+// CreateUser
+// 添加mqtt角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
+func (c *Client) CreateUserWithContext(ctx context.Context, request *CreateUserRequest) (response *CreateUserResponse, err error) {
+    if request == nil {
+        request = NewCreateUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserResponse()
     err = c.Send(request, response)
     return
 }
@@ -526,6 +685,110 @@ func (c *Client) DeleteDeviceCertificateWithContext(ctx context.Context, request
     return
 }
 
+func NewDeleteInsPublicEndpointRequest() (request *DeleteInsPublicEndpointRequest) {
+    request = &DeleteInsPublicEndpointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DeleteInsPublicEndpoint")
+    
+    
+    return
+}
+
+func NewDeleteInsPublicEndpointResponse() (response *DeleteInsPublicEndpointResponse) {
+    response = &DeleteInsPublicEndpointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteInsPublicEndpoint
+// 删除MQTT实例的公网接入点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DeleteInsPublicEndpoint(request *DeleteInsPublicEndpointRequest) (response *DeleteInsPublicEndpointResponse, err error) {
+    return c.DeleteInsPublicEndpointWithContext(context.Background(), request)
+}
+
+// DeleteInsPublicEndpoint
+// 删除MQTT实例的公网接入点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DeleteInsPublicEndpointWithContext(ctx context.Context, request *DeleteInsPublicEndpointRequest) (response *DeleteInsPublicEndpointResponse, err error) {
+    if request == nil {
+        request = NewDeleteInsPublicEndpointRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteInsPublicEndpoint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteInsPublicEndpointResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteInstanceRequest() (request *DeleteInstanceRequest) {
+    request = &DeleteInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DeleteInstance")
+    
+    
+    return
+}
+
+func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
+    response = &DeleteInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteInstance
+// 删除MQTT实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *DeleteInstanceResponse, err error) {
+    return c.DeleteInstanceWithContext(context.Background(), request)
+}
+
+// DeleteInstance
+// 删除MQTT实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteInstanceRequest) (response *DeleteInstanceResponse, err error) {
+    if request == nil {
+        request = NewDeleteInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteTopicRequest() (request *DeleteTopicRequest) {
     request = &DeleteTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -573,6 +836,59 @@ func (c *Client) DeleteTopicWithContext(ctx context.Context, request *DeleteTopi
     request.SetContext(ctx)
     
     response = NewDeleteTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteUserRequest() (request *DeleteUserRequest) {
+    request = &DeleteUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DeleteUser")
+    
+    
+    return
+}
+
+func NewDeleteUserResponse() (response *DeleteUserResponse) {
+    response = &DeleteUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteUser
+// 删除MQTT访问用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserResponse, err error) {
+    return c.DeleteUserWithContext(context.Background(), request)
+}
+
+// DeleteUser
+// 删除MQTT访问用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) DeleteUserWithContext(ctx context.Context, request *DeleteUserRequest) (response *DeleteUserResponse, err error) {
+    if request == nil {
+        request = NewDeleteUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteUserResponse()
     err = c.Send(request, response)
     return
 }
@@ -769,6 +1085,55 @@ func (c *Client) DescribeDeviceCertificatesWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeDeviceCertificatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInsPublicEndpointsRequest() (request *DescribeInsPublicEndpointsRequest) {
+    request = &DescribeInsPublicEndpointsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DescribeInsPublicEndpoints")
+    
+    
+    return
+}
+
+func NewDescribeInsPublicEndpointsResponse() (response *DescribeInsPublicEndpointsResponse) {
+    response = &DescribeInsPublicEndpointsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInsPublicEndpoints
+// 查询MQTT实例公网接入点
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeInsPublicEndpoints(request *DescribeInsPublicEndpointsRequest) (response *DescribeInsPublicEndpointsResponse, err error) {
+    return c.DescribeInsPublicEndpointsWithContext(context.Background(), request)
+}
+
+// DescribeInsPublicEndpoints
+// 查询MQTT实例公网接入点
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeInsPublicEndpointsWithContext(ctx context.Context, request *DescribeInsPublicEndpointsRequest) (response *DescribeInsPublicEndpointsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInsPublicEndpointsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInsPublicEndpoints require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInsPublicEndpointsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1003,6 +1368,63 @@ func (c *Client) DescribeTopicListWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeUserListRequest() (request *DescribeUserListRequest) {
+    request = &DescribeUserListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DescribeUserList")
+    
+    
+    return
+}
+
+func NewDescribeUserListResponse() (response *DescribeUserListResponse) {
+    response = &DescribeUserListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserList
+// 查询用户列表，Filter参数使用说明如下：
+//
+// 
+//
+// 1. Username，用户名称模糊搜索
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeUserList(request *DescribeUserListRequest) (response *DescribeUserListResponse, err error) {
+    return c.DescribeUserListWithContext(context.Background(), request)
+}
+
+// DescribeUserList
+// 查询用户列表，Filter参数使用说明如下：
+//
+// 
+//
+// 1. Username，用户名称模糊搜索
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeUserListWithContext(ctx context.Context, request *DescribeUserListRequest) (response *DescribeUserListResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAuthorizationPolicyRequest() (request *ModifyAuthorizationPolicyRequest) {
     request = &ModifyAuthorizationPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1048,6 +1470,108 @@ func (c *Client) ModifyAuthorizationPolicyWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewModifyAuthorizationPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInsPublicEndpointRequest() (request *ModifyInsPublicEndpointRequest) {
+    request = &ModifyInsPublicEndpointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "ModifyInsPublicEndpoint")
+    
+    
+    return
+}
+
+func NewModifyInsPublicEndpointResponse() (response *ModifyInsPublicEndpointResponse) {
+    response = &ModifyInsPublicEndpointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInsPublicEndpoint
+// 更新MQTT实例公网接入点
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) ModifyInsPublicEndpoint(request *ModifyInsPublicEndpointRequest) (response *ModifyInsPublicEndpointResponse, err error) {
+    return c.ModifyInsPublicEndpointWithContext(context.Background(), request)
+}
+
+// ModifyInsPublicEndpoint
+// 更新MQTT实例公网接入点
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) ModifyInsPublicEndpointWithContext(ctx context.Context, request *ModifyInsPublicEndpointRequest) (response *ModifyInsPublicEndpointResponse, err error) {
+    if request == nil {
+        request = NewModifyInsPublicEndpointRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInsPublicEndpoint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInsPublicEndpointResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceRequest() (request *ModifyInstanceRequest) {
+    request = &ModifyInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "ModifyInstance")
+    
+    
+    return
+}
+
+func NewModifyInstanceResponse() (response *ModifyInstanceResponse) {
+    response = &ModifyInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInstance
+// 修改实例属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyInstance(request *ModifyInstanceRequest) (response *ModifyInstanceResponse, err error) {
+    return c.ModifyInstanceWithContext(context.Background(), request)
+}
+
+// ModifyInstance
+// 修改实例属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyInstanceRequest) (response *ModifyInstanceResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceResponse()
     err = c.Send(request, response)
     return
 }
@@ -1197,6 +1721,55 @@ func (c *Client) ModifyTopicWithContext(ctx context.Context, request *ModifyTopi
     request.SetContext(ctx)
     
     response = NewModifyTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyUserRequest() (request *ModifyUserRequest) {
+    request = &ModifyUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "ModifyUser")
+    
+    
+    return
+}
+
+func NewModifyUserResponse() (response *ModifyUserResponse) {
+    response = &ModifyUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyUser
+// 修改MQTT角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyUser(request *ModifyUserRequest) (response *ModifyUserResponse, err error) {
+    return c.ModifyUserWithContext(context.Background(), request)
+}
+
+// ModifyUser
+// 修改MQTT角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyUserWithContext(ctx context.Context, request *ModifyUserRequest) (response *ModifyUserResponse, err error) {
+    if request == nil {
+        request = NewModifyUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserResponse()
     err = c.Send(request, response)
     return
 }

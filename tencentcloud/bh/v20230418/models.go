@@ -126,6 +126,9 @@ type Acl struct {
 
 	// 是否允许记录键盘
 	AllowKeyboardLogger *bool `json:"AllowKeyboardLogger,omitnil,omitempty" name:"AllowKeyboardLogger"`
+
+	// 关联的应用资产列表
+	AppAssetSet []*AppAsset `json:"AppAssetSet,omitnil,omitempty" name:"AppAssetSet"`
 }
 
 // Predefined struct for user
@@ -248,6 +251,65 @@ func (r *AddUserGroupMembersResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *AddUserGroupMembersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type AppAsset struct {
+	// 应用资产id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 资产名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 应用服务器id
+	DeviceId *uint64 `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 应用服务器账号id
+	DeviceAccountId *uint64 `json:"DeviceAccountId,omitnil,omitempty" name:"DeviceAccountId"`
+
+	// 应用资产类型。1-web应用
+	Kind *uint64 `json:"Kind,omitnil,omitempty" name:"Kind"`
+
+	// 客户端工具路径
+	ClientAppPath *string `json:"ClientAppPath,omitnil,omitempty" name:"ClientAppPath"`
+
+	// 客户端工具类型
+	ClientAppKind *string `json:"ClientAppKind,omitnil,omitempty" name:"ClientAppKind"`
+
+	// 应用资产url
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 托管状态。0-未托管，1-已托管
+	BindStatus *uint64 `json:"BindStatus,omitnil,omitempty" name:"BindStatus"`
+
+	// 应用服务器实例id
+	DeviceInstanceId *string `json:"DeviceInstanceId,omitnil,omitempty" name:"DeviceInstanceId"`
+
+	// 应用服务器名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 应用服务器账号名称
+	DeviceAccountName *string `json:"DeviceAccountName,omitnil,omitempty" name:"DeviceAccountName"`
+
+	// 堡垒机实例id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 堡垒机实例信息
+	Resource *Resource `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 网络域id
+	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// 网络域名称
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// 资产组信息
+	GroupSet []*Group `json:"GroupSet,omitnil,omitempty" name:"GroupSet"`
+
+	// 资产所属部门
+	Department *Department `json:"Department,omitnil,omitempty" name:"Department"`
 }
 
 type AssetSyncStatus struct {
@@ -597,6 +659,9 @@ type CreateAclRequestParams struct {
 	// 关联的资产ID集合
 	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitnil,omitempty" name:"DeviceIdSet"`
 
+	// 关联的应用资产ID集合
+	AppAssetIdSet []*uint64 `json:"AppAssetIdSet,omitnil,omitempty" name:"AppAssetIdSet"`
+
 	// 关联的资产组ID
 	DeviceGroupIdSet []*uint64 `json:"DeviceGroupIdSet,omitnil,omitempty" name:"DeviceGroupIdSet"`
 
@@ -687,6 +752,9 @@ type CreateAclRequest struct {
 	// 关联的资产ID集合
 	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitnil,omitempty" name:"DeviceIdSet"`
 
+	// 关联的应用资产ID集合
+	AppAssetIdSet []*uint64 `json:"AppAssetIdSet,omitnil,omitempty" name:"AppAssetIdSet"`
+
 	// 关联的资产组ID
 	DeviceGroupIdSet []*uint64 `json:"DeviceGroupIdSet,omitnil,omitempty" name:"DeviceGroupIdSet"`
 
@@ -758,6 +826,7 @@ func (r *CreateAclRequest) FromJsonString(s string) error {
 	delete(f, "UserIdSet")
 	delete(f, "UserGroupIdSet")
 	delete(f, "DeviceIdSet")
+	delete(f, "AppAssetIdSet")
 	delete(f, "DeviceGroupIdSet")
 	delete(f, "AccountSet")
 	delete(f, "CmdTemplateIdSet")
@@ -2276,6 +2345,9 @@ type DescribeAclsRequestParams struct {
 	// 有访问权限的资产ID集合
 	AuthorizedDeviceIdSet []*uint64 `json:"AuthorizedDeviceIdSet,omitnil,omitempty" name:"AuthorizedDeviceIdSet"`
 
+	// 有访问权限的应用资产ID集合
+	AuthorizedAppAssetIdSet []*uint64 `json:"AuthorizedAppAssetIdSet,omitnil,omitempty" name:"AuthorizedAppAssetIdSet"`
+
 	// 访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
@@ -2313,6 +2385,9 @@ type DescribeAclsRequest struct {
 	// 有访问权限的资产ID集合
 	AuthorizedDeviceIdSet []*uint64 `json:"AuthorizedDeviceIdSet,omitnil,omitempty" name:"AuthorizedDeviceIdSet"`
 
+	// 有访问权限的应用资产ID集合
+	AuthorizedAppAssetIdSet []*uint64 `json:"AuthorizedAppAssetIdSet,omitnil,omitempty" name:"AuthorizedAppAssetIdSet"`
+
 	// 访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
@@ -2345,6 +2420,7 @@ func (r *DescribeAclsRequest) FromJsonString(s string) error {
 	delete(f, "Exact")
 	delete(f, "AuthorizedUserIdSet")
 	delete(f, "AuthorizedDeviceIdSet")
+	delete(f, "AuthorizedAppAssetIdSet")
 	delete(f, "Status")
 	delete(f, "DepartmentId")
 	delete(f, "ExactAccount")
@@ -2805,6 +2881,9 @@ type DescribeDeviceGroupMembersRequestParams struct {
 	// 资产类型，1 - Linux，2 - Windows，3 - MySQL，4 - SQLServer
 	Kind *uint64 `json:"Kind,omitnil,omitempty" name:"Kind"`
 
+	// 资产类型集合，1 - Linux，2 - Windows，3 - MySQL，4 - SQLServer
+	KindSet []*uint64 `json:"KindSet,omitnil,omitempty" name:"KindSet"`
+
 	// 所属部门ID
 	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
 
@@ -2836,6 +2915,9 @@ type DescribeDeviceGroupMembersRequest struct {
 	// 资产类型，1 - Linux，2 - Windows，3 - MySQL，4 - SQLServer
 	Kind *uint64 `json:"Kind,omitnil,omitempty" name:"Kind"`
 
+	// 资产类型集合，1 - Linux，2 - Windows，3 - MySQL，4 - SQLServer
+	KindSet []*uint64 `json:"KindSet,omitnil,omitempty" name:"KindSet"`
+
 	// 所属部门ID
 	DepartmentId *string `json:"DepartmentId,omitnil,omitempty" name:"DepartmentId"`
 
@@ -2862,6 +2944,7 @@ func (r *DescribeDeviceGroupMembersRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Kind")
+	delete(f, "KindSet")
 	delete(f, "DepartmentId")
 	delete(f, "TagFilters")
 	if len(f) > 0 {
@@ -3743,6 +3826,9 @@ type DescribeUsersRequestParams struct {
 	// 查询具有指定资产ID访问权限的用户
 	AuthorizedDeviceIdSet []*uint64 `json:"AuthorizedDeviceIdSet,omitnil,omitempty" name:"AuthorizedDeviceIdSet"`
 
+	// 查询具有指定应用资产ID访问权限的用户
+	AuthorizedAppAssetIdSet []*uint64 `json:"AuthorizedAppAssetIdSet,omitnil,omitempty" name:"AuthorizedAppAssetIdSet"`
+
 	// 认证方式，0 - 本地, 1 - LDAP, 2 - OAuth, 不传为全部
 	AuthTypeSet []*uint64 `json:"AuthTypeSet,omitnil,omitempty" name:"AuthTypeSet"`
 
@@ -3781,6 +3867,9 @@ type DescribeUsersRequest struct {
 	// 查询具有指定资产ID访问权限的用户
 	AuthorizedDeviceIdSet []*uint64 `json:"AuthorizedDeviceIdSet,omitnil,omitempty" name:"AuthorizedDeviceIdSet"`
 
+	// 查询具有指定应用资产ID访问权限的用户
+	AuthorizedAppAssetIdSet []*uint64 `json:"AuthorizedAppAssetIdSet,omitnil,omitempty" name:"AuthorizedAppAssetIdSet"`
+
 	// 认证方式，0 - 本地, 1 - LDAP, 2 - OAuth, 不传为全部
 	AuthTypeSet []*uint64 `json:"AuthTypeSet,omitnil,omitempty" name:"AuthTypeSet"`
 
@@ -3811,6 +3900,7 @@ func (r *DescribeUsersRequest) FromJsonString(s string) error {
 	delete(f, "Phone")
 	delete(f, "Email")
 	delete(f, "AuthorizedDeviceIdSet")
+	delete(f, "AuthorizedAppAssetIdSet")
 	delete(f, "AuthTypeSet")
 	delete(f, "DepartmentId")
 	delete(f, "Filters")
@@ -4116,6 +4206,9 @@ type ModifyAclRequestParams struct {
 	// 关联的资产ID
 	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitnil,omitempty" name:"DeviceIdSet"`
 
+	// 关联的应用资产ID集合
+	AppAssetIdSet []*uint64 `json:"AppAssetIdSet,omitnil,omitempty" name:"AppAssetIdSet"`
+
 	// 关联的资产组ID
 	DeviceGroupIdSet []*uint64 `json:"DeviceGroupIdSet,omitnil,omitempty" name:"DeviceGroupIdSet"`
 
@@ -4209,6 +4302,9 @@ type ModifyAclRequest struct {
 	// 关联的资产ID
 	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitnil,omitempty" name:"DeviceIdSet"`
 
+	// 关联的应用资产ID集合
+	AppAssetIdSet []*uint64 `json:"AppAssetIdSet,omitnil,omitempty" name:"AppAssetIdSet"`
+
 	// 关联的资产组ID
 	DeviceGroupIdSet []*uint64 `json:"DeviceGroupIdSet,omitnil,omitempty" name:"DeviceGroupIdSet"`
 
@@ -4281,6 +4377,7 @@ func (r *ModifyAclRequest) FromJsonString(s string) error {
 	delete(f, "UserIdSet")
 	delete(f, "UserGroupIdSet")
 	delete(f, "DeviceIdSet")
+	delete(f, "AppAssetIdSet")
 	delete(f, "DeviceGroupIdSet")
 	delete(f, "AccountSet")
 	delete(f, "CmdTemplateIdSet")
@@ -6433,6 +6530,12 @@ type SearchSessionRequestParams struct {
 
 	// 若入参为Id，则其他入参字段不作为搜索依据，仅按照Id来搜索会话
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 应用资产类型, 1-web
+	AppAssetKindSet []*uint64 `json:"AppAssetKindSet,omitnil,omitempty" name:"AppAssetKindSet"`
+
+	// 应用资产Url
+	AppAssetUrl *string `json:"AppAssetUrl,omitnil,omitempty" name:"AppAssetUrl"`
 }
 
 type SearchSessionRequest struct {
@@ -6479,6 +6582,12 @@ type SearchSessionRequest struct {
 
 	// 若入参为Id，则其他入参字段不作为搜索依据，仅按照Id来搜索会话
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 应用资产类型, 1-web
+	AppAssetKindSet []*uint64 `json:"AppAssetKindSet,omitnil,omitempty" name:"AppAssetKindSet"`
+
+	// 应用资产Url
+	AppAssetUrl *string `json:"AppAssetUrl,omitnil,omitempty" name:"AppAssetUrl"`
 }
 
 func (r *SearchSessionRequest) ToJsonString() string {
@@ -6507,6 +6616,8 @@ func (r *SearchSessionRequest) FromJsonString(s string) error {
 	delete(f, "DeviceName")
 	delete(f, "Status")
 	delete(f, "Id")
+	delete(f, "AppAssetKindSet")
+	delete(f, "AppAssetUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchSessionRequest has unknown keys!", "")
 	}
@@ -6517,6 +6628,9 @@ func (r *SearchSessionRequest) FromJsonString(s string) error {
 type SearchSessionResponseParams struct {
 	// 记录数
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 会话信息列表
+	SessionSet []*SessionResult `json:"SessionSet,omitnil,omitempty" name:"SessionSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6536,6 +6650,68 @@ func (r *SearchSessionResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SearchSessionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SessionResult struct {
+	// 用户名
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 姓名
+	RealName *string `json:"RealName,omitnil,omitempty" name:"RealName"`
+
+	// 主机账号
+	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 会话大小
+	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 设备ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 内部Ip
+	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
+
+	// 外部Ip
+	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
+
+	// 来源Ip
+	FromIp *string `json:"FromIp,omitnil,omitempty" name:"FromIp"`
+
+	// 会话持续时长
+	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 该会话内命令数量 ，搜索图形会话时该字段无意义
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 该会话内高危命令数，搜索图形时该字段无意义
+	DangerCount *uint64 `json:"DangerCount,omitnil,omitempty" name:"DangerCount"`
+
+	// 会话状态，如1会话活跃  2会话结束  3强制离线  4其他错误
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 会话Id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 设备所属的地域
+	ApCode *string `json:"ApCode,omitnil,omitempty" name:"ApCode"`
+
+	// 会话协议
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 应用资产类型：1-web
+	AppAssetKind *uint64 `json:"AppAssetKind,omitnil,omitempty" name:"AppAssetKind"`
+
+	// 应用资产url
+	AppAssetUrl *string `json:"AppAssetUrl,omitnil,omitempty" name:"AppAssetUrl"`
 }
 
 type TagFilter struct {
