@@ -1210,6 +1210,59 @@ func (c *Client) DescribeDBInstanceParamTplDetailWithContext(ctx context.Context
     return
 }
 
+func NewDescribeDBInstanceURLRequest() (request *DescribeDBInstanceURLRequest) {
+    request = &DescribeDBInstanceURLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeDBInstanceURL")
+    
+    
+    return
+}
+
+func NewDescribeDBInstanceURLResponse() (response *DescribeDBInstanceURLResponse) {
+    response = &DescribeDBInstanceURLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBInstanceURL
+// 本接口（DescribeDBInstanceURL）用于获取指定实例的 URI 形式的连接串访问地址示例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) DescribeDBInstanceURL(request *DescribeDBInstanceURLRequest) (response *DescribeDBInstanceURLResponse, err error) {
+    return c.DescribeDBInstanceURLWithContext(context.Background(), request)
+}
+
+// DescribeDBInstanceURL
+// 本接口（DescribeDBInstanceURL）用于获取指定实例的 URI 形式的连接串访问地址示例。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+func (c *Client) DescribeDBInstanceURLWithContext(ctx context.Context, request *DescribeDBInstanceURLRequest) (response *DescribeDBInstanceURLResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstanceURLRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBInstanceURL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBInstanceURLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBInstancesRequest() (request *DescribeDBInstancesRequest) {
     request = &DescribeDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

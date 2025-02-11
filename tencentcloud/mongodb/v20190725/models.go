@@ -1215,6 +1215,24 @@ type DBInstancePrice struct {
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 }
 
+type DbURL struct {
+	// 指 URI 类别，包括：，
+	// - CLUSTER_ALL：指通过该 URI 连接库实例的主节点，可读写。
+	// - CLUSTER_READ_READONLY：指通过该 URI 连接实例只读节点。
+	// - CLUSTER_READ_SECONDARY：指通过该 URI 连接实例从节点。
+	// - CLUSTER_READ_SECONDARY_AND_READONLY：指通过该 URI 连接实例只读从节点。
+	// - CLUSTER_PRIMARY_AND_SECONDARY：指通过该 URI 连接实例 主节点与从节点。
+	// - MONGOS_ALL：指通过该  URI 连接每个 Mongos 节点，可读写。
+	// - MONGOS_READ_READONLY：指通过该 URI 连接 Mongos 的只读节点。
+	// - MONGOS_READ_SECONDARY：指通过该 URI 连接 Mongos 的从节点。
+	// - MONGOS_READ_PRIMARY_AND_SECONDARY：指通过该URI 连接 Mongos 的主节点与从节点。
+	// - MONGOS_READ_SECONDARY_AND_READONLY：指通过该URI 连接 Mongos 的从节点与只读节点。
+	URLType *string `json:"URLType,omitnil,omitempty" name:"URLType"`
+
+	// 实例 URI 形式的连接串访问地址示例。
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+}
+
 // Predefined struct for user
 type DeleteAccountUserRequestParams struct {
 	// 指定待删除账号的实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
@@ -2205,6 +2223,63 @@ func (r *DescribeDBInstanceParamTplResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDBInstanceParamTplResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBInstanceURLRequestParams struct {
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb#/)在实例列表复制实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeDBInstanceURLRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb#/)在实例列表复制实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeDBInstanceURLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceURLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstanceURLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBInstanceURLResponseParams struct {
+	// 实例 URI 形式的连接串访问地址示例。包含：URI 类型及连接串地址。
+	Urls []*DbURL `json:"Urls,omitnil,omitempty" name:"Urls"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDBInstanceURLResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBInstanceURLResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBInstanceURLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceURLResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

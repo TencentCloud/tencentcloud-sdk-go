@@ -639,7 +639,6 @@ func (r *BatchRegisterRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BatchRegisterResponseParams struct {
 	// 注册成功的用户列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Users []*BatchUserInfo `json:"Users,omitnil,omitempty" name:"Users"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3151,7 +3150,6 @@ func (r *DescribeRoomForbiddenUserRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRoomForbiddenUserResponseParams struct {
 	// 禁言用户信息数组，内容包括被禁言的成员 ID，及其被禁言到的时间（使用 UTC 时间，即世界协调时间）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MutedAccountList []*MutedAccountList `json:"MutedAccountList,omitnil,omitempty" name:"MutedAccountList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3496,7 +3494,6 @@ type DescribeScoreListResponseParams struct {
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 课堂评分列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scores []*ClassScoreItem `json:"Scores,omitnil,omitempty" name:"Scores"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3571,7 +3568,6 @@ type DescribeSdkAppIdUsersResponseParams struct {
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 当前获取用户信息数组列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Users []*UserInfo `json:"Users,omitnil,omitempty" name:"Users"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

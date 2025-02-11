@@ -10502,6 +10502,12 @@ type InstanceInfo struct {
 
 	// 实例延期释放标识
 	FreeDelayFlag *uint64 `json:"FreeDelayFlag,omitnil,omitempty" name:"FreeDelayFlag"`
+
+	// 最近3天最大qps
+	Last3MaxQPS *uint64 `json:"Last3MaxQPS,omitnil,omitempty" name:"Last3MaxQPS"`
+
+	// 最近3天最大带宽
+	Last3MaxBandwidth *uint64 `json:"Last3MaxBandwidth,omitnil,omitempty" name:"Last3MaxBandwidth"`
 }
 
 type IpAccessControlData struct {

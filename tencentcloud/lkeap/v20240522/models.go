@@ -194,6 +194,15 @@ type Choice struct {
 
 // Predefined struct for user
 type CreateAttributeLabelRequestParams struct {
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// 属性标识，最大40个英文字符，如style
+	AttributeKey *string `json:"AttributeKey,omitnil,omitempty" name:"AttributeKey"`
+
+	// 属性名称，最大80个英文字符，如风格
+	AttributeName *string `json:"AttributeName,omitnil,omitempty" name:"AttributeName"`
+
 	// 属性标签信息
 	Labels []*AttributeLabelItem `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
@@ -201,6 +210,15 @@ type CreateAttributeLabelRequestParams struct {
 type CreateAttributeLabelRequest struct {
 	*tchttp.BaseRequest
 	
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// 属性标识，最大40个英文字符，如style
+	AttributeKey *string `json:"AttributeKey,omitnil,omitempty" name:"AttributeKey"`
+
+	// 属性名称，最大80个英文字符，如风格
+	AttributeName *string `json:"AttributeName,omitnil,omitempty" name:"AttributeName"`
+
 	// 属性标签信息
 	Labels []*AttributeLabelItem `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
@@ -217,6 +235,9 @@ func (r *CreateAttributeLabelRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "KnowledgeBaseId")
+	delete(f, "AttributeKey")
+	delete(f, "AttributeName")
 	delete(f, "Labels")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAttributeLabelRequest has unknown keys!", "")
@@ -302,6 +323,15 @@ func (r *CreateKnowledgeBaseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateQARequestParams struct {
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// 问题，最大1000个英文字符
+	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
+
+	// 答案，最大4000个英文字符
+	Answer *string `json:"Answer,omitnil,omitempty" name:"Answer"`
+
 	// 属性标签
 	AttributeLabels []*AttributeLabelReferItem `json:"AttributeLabels,omitnil,omitempty" name:"AttributeLabels"`
 }
@@ -309,6 +339,15 @@ type CreateQARequestParams struct {
 type CreateQARequest struct {
 	*tchttp.BaseRequest
 	
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// 问题，最大1000个英文字符
+	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
+
+	// 答案，最大4000个英文字符
+	Answer *string `json:"Answer,omitnil,omitempty" name:"Answer"`
+
 	// 属性标签
 	AttributeLabels []*AttributeLabelReferItem `json:"AttributeLabels,omitnil,omitempty" name:"AttributeLabels"`
 }
@@ -325,6 +364,9 @@ func (r *CreateQARequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "KnowledgeBaseId")
+	delete(f, "Question")
+	delete(f, "Answer")
 	delete(f, "AttributeLabels")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQARequest has unknown keys!", "")
@@ -334,6 +376,9 @@ func (r *CreateQARequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateQAResponseParams struct {
+	// 问答对ID
+	QaId *string `json:"QaId,omitnil,omitempty" name:"QaId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -662,12 +707,21 @@ func (r *CreateSplitDocumentFlowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAttributeLabelsRequestParams struct {
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 
+	// 属性ID
+	AttributeIds []*string `json:"AttributeIds,omitnil,omitempty" name:"AttributeIds"`
 }
 
 type DeleteAttributeLabelsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// 属性ID
+	AttributeIds []*string `json:"AttributeIds,omitnil,omitempty" name:"AttributeIds"`
 }
 
 func (r *DeleteAttributeLabelsRequest) ToJsonString() string {
@@ -682,7 +736,8 @@ func (r *DeleteAttributeLabelsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "KnowledgeBaseId")
+	delete(f, "AttributeIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAttributeLabelsRequest has unknown keys!", "")
 	}
@@ -713,12 +768,21 @@ func (r *DeleteAttributeLabelsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDocsRequestParams struct {
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 
+	// 文档ID列表。支持批量删除，数量不超过100
+	DocIds []*string `json:"DocIds,omitnil,omitempty" name:"DocIds"`
 }
 
 type DeleteDocsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// 文档ID列表。支持批量删除，数量不超过100
+	DocIds []*string `json:"DocIds,omitnil,omitempty" name:"DocIds"`
 }
 
 func (r *DeleteDocsRequest) ToJsonString() string {
@@ -733,7 +797,8 @@ func (r *DeleteDocsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "KnowledgeBaseId")
+	delete(f, "DocIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDocsRequest has unknown keys!", "")
 	}
@@ -818,12 +883,21 @@ func (r *DeleteKnowledgeBaseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteQAsRequestParams struct {
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 
+	// 问答对ID列表。支持批量删除，数量不超过100
+	QaIds []*string `json:"QaIds,omitnil,omitempty" name:"QaIds"`
 }
 
 type DeleteQAsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// 问答对ID列表。支持批量删除，数量不超过100
+	QaIds []*string `json:"QaIds,omitnil,omitempty" name:"QaIds"`
 }
 
 func (r *DeleteQAsRequest) ToJsonString() string {
@@ -838,7 +912,8 @@ func (r *DeleteQAsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "KnowledgeBaseId")
+	delete(f, "QaIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteQAsRequest has unknown keys!", "")
 	}
@@ -877,12 +952,21 @@ type Delta struct {
 
 // Predefined struct for user
 type DescribeDocRequestParams struct {
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 
+	// 文档ID
+	DocId *string `json:"DocId,omitnil,omitempty" name:"DocId"`
 }
 
 type DescribeDocRequest struct {
 	*tchttp.BaseRequest
 	
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// 文档ID
+	DocId *string `json:"DocId,omitnil,omitempty" name:"DocId"`
 }
 
 func (r *DescribeDocRequest) ToJsonString() string {
@@ -897,7 +981,8 @@ func (r *DescribeDocRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "KnowledgeBaseId")
+	delete(f, "DocId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDocRequest has unknown keys!", "")
 	}
@@ -906,6 +991,27 @@ func (r *DescribeDocRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDocResponseParams struct {
+	// 文档ID
+	DocId *string `json:"DocId,omitnil,omitempty" name:"DocId"`
+
+	// 状态，
+	// 
+	// - Uploading  上传中  
+	// - Auditing 审核中
+	// - Parsing 解析中  
+	// - ParseFailed 解析失败
+	// - Indexing 创建索引中  
+	// - IndexFailed 创建索引失败
+	// - Success  发布成功
+	// - Failed  失败
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 文件名
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
 	// 属性标签
 	AttributeLabels []*AttributeLabelReferItem `json:"AttributeLabels,omitnil,omitempty" name:"AttributeLabels"`
 
@@ -936,6 +1042,7 @@ type DocItem struct {
 
 	//  状态，
 	// - Uploading  上传中  
+	// - Auditing 审核中
 	// - Parsing 解析中  
 	// - ParseFailed 解析失败
 	// - Indexing 创建索引中  
@@ -1192,12 +1299,35 @@ func (r *GetSplitDocumentResultResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ImportQAsRequestParams struct {
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 
+	// 文件名
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 文件的 Url 地址。文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 导入模板：https://cdn.xiaowei.qq.com/lke/assets//static/批量导入问答模板v6.xlsx
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// 文件类型，仅支持XLSX格式，请使用模板
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 }
 
 type ImportQAsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// 文件名
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 文件的 Url 地址。文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 导入模板：https://cdn.xiaowei.qq.com/lke/assets//static/批量导入问答模板v6.xlsx
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// 文件类型，仅支持XLSX格式，请使用模板
+	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 }
 
 func (r *ImportQAsRequest) ToJsonString() string {
@@ -1212,7 +1342,10 @@ func (r *ImportQAsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "KnowledgeBaseId")
+	delete(f, "FileName")
+	delete(f, "FileUrl")
+	delete(f, "FileType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportQAsRequest has unknown keys!", "")
 	}
@@ -1251,12 +1384,27 @@ type LabelItem struct {
 
 // Predefined struct for user
 type ListAttributeLabelsRequestParams struct {
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 
+	// 页码，默认1
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页数目，最大50，默认20
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 type ListAttributeLabelsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// 页码，默认1
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页数目，最大50，默认20
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 func (r *ListAttributeLabelsRequest) ToJsonString() string {
@@ -1271,7 +1419,9 @@ func (r *ListAttributeLabelsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "KnowledgeBaseId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAttributeLabelsRequest has unknown keys!", "")
 	}
@@ -1280,6 +1430,9 @@ func (r *ListAttributeLabelsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListAttributeLabelsResponseParams struct {
+	// 属性总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
 	// 属性标签列表
 	List []*AttributeItem `json:"List,omitnil,omitempty" name:"List"`
 
@@ -1305,12 +1458,27 @@ func (r *ListAttributeLabelsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListDocsRequestParams struct {
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 
+	// 页码，默认1
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页数目，最大50，默认20
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 type ListDocsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// 页码，默认1
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页数目，最大50，默认20
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 func (r *ListDocsRequest) ToJsonString() string {
@@ -1325,7 +1493,9 @@ func (r *ListDocsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "KnowledgeBaseId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListDocsRequest has unknown keys!", "")
 	}
@@ -1334,6 +1504,9 @@ func (r *ListDocsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListDocsResponseParams struct {
+	// 文档总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
 	// 文档信息
 	List []*DocItem `json:"List,omitnil,omitempty" name:"List"`
 
@@ -1359,12 +1532,27 @@ func (r *ListDocsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListQAsRequestParams struct {
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 
+	// 页码，默认1
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页数目，最大50，默认20
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 type ListQAsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// 页码，默认1
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页数目，最大50，默认20
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 func (r *ListQAsRequest) ToJsonString() string {
@@ -1379,7 +1567,9 @@ func (r *ListQAsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "KnowledgeBaseId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListQAsRequest has unknown keys!", "")
 	}
@@ -1388,6 +1578,9 @@ func (r *ListQAsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListQAsResponseParams struct {
+	// 问答对总数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
 	// 问答对信息
 	List []*QaItem `json:"List,omitnil,omitempty" name:"List"`
 
@@ -1425,6 +1618,18 @@ type Message struct {
 
 // Predefined struct for user
 type ModifyAttributeLabelRequestParams struct {
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// 属性ID
+	AttributeId *string `json:"AttributeId,omitnil,omitempty" name:"AttributeId"`
+
+	// 属性标识，最大40个英文字符，如style
+	AttributeKey *string `json:"AttributeKey,omitnil,omitempty" name:"AttributeKey"`
+
+	// 属性名称，最大80个英文字符，如风格
+	AttributeName *string `json:"AttributeName,omitnil,omitempty" name:"AttributeName"`
+
 	// 属性标签
 	Labels []*AttributeLabelItem `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
@@ -1432,6 +1637,18 @@ type ModifyAttributeLabelRequestParams struct {
 type ModifyAttributeLabelRequest struct {
 	*tchttp.BaseRequest
 	
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// 属性ID
+	AttributeId *string `json:"AttributeId,omitnil,omitempty" name:"AttributeId"`
+
+	// 属性标识，最大40个英文字符，如style
+	AttributeKey *string `json:"AttributeKey,omitnil,omitempty" name:"AttributeKey"`
+
+	// 属性名称，最大80个英文字符，如风格
+	AttributeName *string `json:"AttributeName,omitnil,omitempty" name:"AttributeName"`
+
 	// 属性标签
 	Labels []*AttributeLabelItem `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
@@ -1448,6 +1665,10 @@ func (r *ModifyAttributeLabelRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "KnowledgeBaseId")
+	delete(f, "AttributeId")
+	delete(f, "AttributeKey")
+	delete(f, "AttributeName")
 	delete(f, "Labels")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAttributeLabelRequest has unknown keys!", "")
@@ -1479,6 +1700,18 @@ func (r *ModifyAttributeLabelResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyQARequestParams struct {
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// 问答对ID
+	QaId *string `json:"QaId,omitnil,omitempty" name:"QaId"`
+
+	// 问题，最大1000个英文字符
+	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
+
+	// 答案，最大4000个英文字符
+	Answer *string `json:"Answer,omitnil,omitempty" name:"Answer"`
+
 	// 属性标签
 	AttributeLabels []*AttributeLabelReferItem `json:"AttributeLabels,omitnil,omitempty" name:"AttributeLabels"`
 }
@@ -1486,6 +1719,18 @@ type ModifyQARequestParams struct {
 type ModifyQARequest struct {
 	*tchttp.BaseRequest
 	
+	// 知识库ID
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// 问答对ID
+	QaId *string `json:"QaId,omitnil,omitempty" name:"QaId"`
+
+	// 问题，最大1000个英文字符
+	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
+
+	// 答案，最大4000个英文字符
+	Answer *string `json:"Answer,omitnil,omitempty" name:"Answer"`
+
 	// 属性标签
 	AttributeLabels []*AttributeLabelReferItem `json:"AttributeLabels,omitnil,omitempty" name:"AttributeLabels"`
 }
@@ -1502,6 +1747,10 @@ func (r *ModifyQARequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "KnowledgeBaseId")
+	delete(f, "QaId")
+	delete(f, "Question")
+	delete(f, "Answer")
 	delete(f, "AttributeLabels")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyQARequest has unknown keys!", "")

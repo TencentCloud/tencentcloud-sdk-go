@@ -15281,6 +15281,9 @@ type InstallAddonRequestParams struct {
 
 	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取）
 	RawValues *string `json:"RawValues,omitnil,omitempty" name:"RawValues"`
+
+	// 是否仅做安装检查，设置为true时仅做检查，不会安装组件
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 }
 
 type InstallAddonRequest struct {
@@ -15297,6 +15300,9 @@ type InstallAddonRequest struct {
 
 	// addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取）
 	RawValues *string `json:"RawValues,omitnil,omitempty" name:"RawValues"`
+
+	// 是否仅做安装检查，设置为true时仅做检查，不会安装组件
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 }
 
 func (r *InstallAddonRequest) ToJsonString() string {
@@ -15315,6 +15321,7 @@ func (r *InstallAddonRequest) FromJsonString(s string) error {
 	delete(f, "AddonName")
 	delete(f, "AddonVersion")
 	delete(f, "RawValues")
+	delete(f, "DryRun")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InstallAddonRequest has unknown keys!", "")
 	}
@@ -20390,6 +20397,9 @@ type UpdateAddonRequestParams struct {
 
 	// addon参数的更新策略，支持replace和merge两种策略，默认值为merge，兼容旧版本API。replace：使用新RawValues全量替换addon原RawValues，merge：根据新RawValues新增或更新addon原RawValues中对应参数。
 	UpdateStrategy *string `json:"UpdateStrategy,omitnil,omitempty" name:"UpdateStrategy"`
+
+	// 是否仅做更新检查，设置为true时仅做检查，不会更新组件
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 }
 
 type UpdateAddonRequest struct {
@@ -20409,6 +20419,9 @@ type UpdateAddonRequest struct {
 
 	// addon参数的更新策略，支持replace和merge两种策略，默认值为merge，兼容旧版本API。replace：使用新RawValues全量替换addon原RawValues，merge：根据新RawValues新增或更新addon原RawValues中对应参数。
 	UpdateStrategy *string `json:"UpdateStrategy,omitnil,omitempty" name:"UpdateStrategy"`
+
+	// 是否仅做更新检查，设置为true时仅做检查，不会更新组件
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 }
 
 func (r *UpdateAddonRequest) ToJsonString() string {
@@ -20428,6 +20441,7 @@ func (r *UpdateAddonRequest) FromJsonString(s string) error {
 	delete(f, "AddonVersion")
 	delete(f, "RawValues")
 	delete(f, "UpdateStrategy")
+	delete(f, "DryRun")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAddonRequest has unknown keys!", "")
 	}

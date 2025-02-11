@@ -6847,6 +6847,7 @@ func NewUpdateDomainConfigResponse() (response *UpdateDomainConfigResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
+//  FAILEDOPERATION_SSLCERTNOTFOUND = "FailedOperation.SslCertNotFound"
 //  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
@@ -6911,6 +6912,7 @@ func (c *Client) UpdateDomainConfig(request *UpdateDomainConfigRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
+//  FAILEDOPERATION_SSLCERTNOTFOUND = "FailedOperation.SslCertNotFound"
 //  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"

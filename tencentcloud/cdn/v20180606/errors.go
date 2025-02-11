@@ -29,6 +29,9 @@ const (
 	// 域名配置更新操作失败，请重试或联系客服人员解决。
 	FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
 
+	// 证书不存在
+	FAILEDOPERATION_SSLCERTNOTFOUND = "FailedOperation.SslCertNotFound"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 

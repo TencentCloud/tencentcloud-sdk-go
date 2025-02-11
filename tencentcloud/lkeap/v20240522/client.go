@@ -1405,9 +1405,7 @@ func NewListQAsResponse() (response *ListQAsResponse) {
 // 用于获取所有问答对的列表。 使用场景：用于查看当前系统中所有已有的问答对，方便进行管理和维护。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) ListQAs(request *ListQAsRequest) (response *ListQAsResponse, err error) {
     return c.ListQAsWithContext(context.Background(), request)
 }
@@ -1416,9 +1414,7 @@ func (c *Client) ListQAs(request *ListQAsRequest) (response *ListQAsResponse, er
 // 用于获取所有问答对的列表。 使用场景：用于查看当前系统中所有已有的问答对，方便进行管理和维护。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) ListQAsWithContext(ctx context.Context, request *ListQAsRequest) (response *ListQAsResponse, err error) {
     if request == nil {
         request = NewListQAsRequest()
@@ -1458,9 +1454,7 @@ func NewModifyAttributeLabelResponse() (response *ModifyAttributeLabelResponse) 
 // 用于修改已有的属性标签。 使用场景：当需要更改属性标签的名称或描述时使用，比如将“售后”标签改为“售前”。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) ModifyAttributeLabel(request *ModifyAttributeLabelRequest) (response *ModifyAttributeLabelResponse, err error) {
     return c.ModifyAttributeLabelWithContext(context.Background(), request)
 }
@@ -1469,9 +1463,7 @@ func (c *Client) ModifyAttributeLabel(request *ModifyAttributeLabelRequest) (res
 // 用于修改已有的属性标签。 使用场景：当需要更改属性标签的名称或描述时使用，比如将“售后”标签改为“售前”。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) ModifyAttributeLabelWithContext(ctx context.Context, request *ModifyAttributeLabelRequest) (response *ModifyAttributeLabelResponse, err error) {
     if request == nil {
         request = NewModifyAttributeLabelRequest()
@@ -1511,9 +1503,7 @@ func NewModifyQAResponse() (response *ModifyQAResponse) {
 // 用于修改已有的问答对。 使用场景：当需要更新问答对的内容或答案时使用。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) ModifyQA(request *ModifyQARequest) (response *ModifyQAResponse, err error) {
     return c.ModifyQAWithContext(context.Background(), request)
 }
@@ -1522,9 +1512,7 @@ func (c *Client) ModifyQA(request *ModifyQARequest) (response *ModifyQAResponse,
 // 用于修改已有的问答对。 使用场景：当需要更新问答对的内容或答案时使用。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) ModifyQAWithContext(ctx context.Context, request *ModifyQARequest) (response *ModifyQAResponse, err error) {
     if request == nil {
         request = NewModifyQARequest()

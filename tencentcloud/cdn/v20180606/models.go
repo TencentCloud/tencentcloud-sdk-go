@@ -1231,7 +1231,7 @@ type AwsPrivateAccess struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
 
-	// 密钥。
+	// 密钥，字段为脱敏返回。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
 
@@ -8008,7 +8008,7 @@ type HwPrivateAccess struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
 
-	// 密钥
+	// 密钥，字段为脱敏返回。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
 
@@ -10054,7 +10054,7 @@ type OssPrivateAccess struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
 
-	// 密钥。
+	// 密钥，字段为脱敏返回。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
 
@@ -10077,7 +10077,7 @@ type OthersPrivateAccess struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
 
-	// 密钥。
+	// 密钥，字段位脱敏返回。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
 
@@ -10665,7 +10665,7 @@ type QnPrivateAccess struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
 
-	// 密钥
+	// 密钥，字段为脱敏返回。
 	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
 }
 

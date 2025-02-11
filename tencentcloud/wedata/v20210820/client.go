@@ -5005,6 +5005,55 @@ func (c *Client) DescribeInstanceByCycleWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeInstanceDetailInfoRequest() (request *DescribeInstanceDetailInfoRequest) {
+    request = &DescribeInstanceDetailInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeInstanceDetailInfo")
+    
+    
+    return
+}
+
+func NewDescribeInstanceDetailInfoResponse() (response *DescribeInstanceDetailInfoResponse) {
+    response = &DescribeInstanceDetailInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceDetailInfo
+// 实例详情页，返回某个实例所有生命周期信息
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+func (c *Client) DescribeInstanceDetailInfo(request *DescribeInstanceDetailInfoRequest) (response *DescribeInstanceDetailInfoResponse, err error) {
+    return c.DescribeInstanceDetailInfoWithContext(context.Background(), request)
+}
+
+// DescribeInstanceDetailInfo
+// 实例详情页，返回某个实例所有生命周期信息
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+func (c *Client) DescribeInstanceDetailInfoWithContext(ctx context.Context, request *DescribeInstanceDetailInfoRequest) (response *DescribeInstanceDetailInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceDetailInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceDetailInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceDetailInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceLastLogRequest() (request *DescribeInstanceLastLogRequest) {
     request = &DescribeInstanceLastLogRequest{
         BaseRequest: &tchttp.BaseRequest{},

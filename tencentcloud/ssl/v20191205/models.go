@@ -379,7 +379,7 @@ type CdnInstanceDetail struct {
 	// 已部署证书ID
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
-	// 域名状态
+	// 域名状态 rejected：域名审核未通过，域名备案过期/被注销导致，processing：部署中，online：已启动，offline：已关闭
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 域名计费状态
@@ -4378,7 +4378,7 @@ type DescribeHostLighthouseInstanceListRequestParams struct {
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
-	// 过滤参数列表
+	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 部署资源类型 lighthouse
@@ -4394,7 +4394,7 @@ type DescribeHostLighthouseInstanceListRequest struct {
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
-	// 过滤参数列表
+	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 部署资源类型 lighthouse
@@ -4946,7 +4946,7 @@ type DescribeHostVodInstanceListRequestParams struct {
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
-	// 过滤参数列表
+	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 部署资源类型 vod
@@ -4967,7 +4967,7 @@ type DescribeHostVodInstanceListRequest struct {
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
 	IsCache *uint64 `json:"IsCache,omitnil,omitempty" name:"IsCache"`
 
-	// 过滤参数列表
+	// 过滤参数列表； FilterKey：domainMatch（查询域名是否匹配的实例列表） FilterValue：1，表示查询匹配； 0，表示查询不匹配； 默认查询匹配
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 部署资源类型 vod
@@ -5471,20 +5471,20 @@ func (r *DescribePackagesResponse) FromJsonString(s string) error {
 }
 
 type DomainValidationResult struct {
-	// 域名。
+	// 证书绑定的域名。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 验证类型。
+	// 域名验证类型。 取值为：DNS、FILE、DNS_AUTO、DNS_PROXY、FILE_PROXY
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
-	// 本地检查结果。
+	// 腾讯云检测结果，取值：1（验证通过）； -1（被限频或者 txt record not found）；-2（txt record not match）；-3（ns record not found）；-4（file not found）；-5（file not match）；-6（cname record not found）；-7（cname record not match）；-8（ns record not found）-9（file not found）；-10（file not match）
 	LocalCheck *int64 `json:"LocalCheck,omitnil,omitempty" name:"LocalCheck"`
 
-	// CA检查结果。
+	// CA检查结果。取值： -1（未检测通过）；2（检测通过）
 	CaCheck *int64 `json:"CaCheck,omitnil,omitempty" name:"CaCheck"`
 
-	// 检查失败原因。
+	// 检查失败原因。状态LocalCheck的具体描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalCheckFailReason *string `json:"LocalCheckFailReason,omitnil,omitempty" name:"LocalCheckFailReason"`
 
@@ -5492,10 +5492,10 @@ type DomainValidationResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckValue []*string `json:"CheckValue,omitnil,omitempty" name:"CheckValue"`
 
-	// 是否频繁请求。
+	// 是否被限频拦截， 取值：false（未被限频）；true（被限频）
 	Frequently *bool `json:"Frequently,omitnil,omitempty" name:"Frequently"`
 
-	// 是否已经签发。
+	// 证书是否已经签发。取值： false（未签发）；true（已签发）
 	Issued *bool `json:"Issued,omitnil,omitempty" name:"Issued"`
 }
 
@@ -6989,6 +6989,11 @@ type TeoInstanceDetail struct {
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 域名状态
+	// deployed：已部署；
+	// processing：部署中；
+	// applying：申请中；
+	// failed：申请失败；
+	// issued：绑定失败。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 

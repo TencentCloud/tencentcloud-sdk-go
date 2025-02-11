@@ -10572,29 +10572,23 @@ func (r *DescribeOrganizationGroupOrganizationsRequest) FromJsonString(s string)
 // Predefined struct for user
 type DescribeOrganizationGroupOrganizationsResponseParams struct {
 	// 符合查询条件的资源实例总数量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 已授权待激活的子企业总数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JoinedTotal *uint64 `json:"JoinedTotal,omitnil,omitempty" name:"JoinedTotal"`
 
 	// 已加入的企业数量(废弃,请使用ActivatedTotal)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: ActivedTotal is deprecated.
 	ActivedTotal *uint64 `json:"ActivedTotal,omitnil,omitempty" name:"ActivedTotal"`
 
 	// 如果入参Export为 true 时使用，表示导出Excel的url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExportUrl *string `json:"ExportUrl,omitnil,omitempty" name:"ExportUrl"`
 
 	// 成员企业信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*GroupOrganization `json:"List,omitnil,omitempty" name:"List"`
 
 	// 已加入的子企业总数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActivatedTotal *uint64 `json:"ActivatedTotal,omitnil,omitempty" name:"ActivatedTotal"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

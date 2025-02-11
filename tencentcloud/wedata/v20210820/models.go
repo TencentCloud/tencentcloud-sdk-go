@@ -10807,6 +10807,112 @@ func (r *DescribeInstanceByCycleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstanceDetailInfoRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 实例数据时间
+	CurRunDate *string `json:"CurRunDate,omitnil,omitempty" name:"CurRunDate"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 实例的第几次执行
+	LifeRound *int64 `json:"LifeRound,omitnil,omitempty" name:"LifeRound"`
+
+	// 生命周期查询起始index
+	LifeRoundStartIndex *int64 `json:"LifeRoundStartIndex,omitnil,omitempty" name:"LifeRoundStartIndex"`
+
+	// 生命周期查询批次数量
+	LifeRoundSize *int64 `json:"LifeRoundSize,omitnil,omitempty" name:"LifeRoundSize"`
+
+	// 生命周期总数，可省略
+	TotalLifeRound *string `json:"TotalLifeRound,omitnil,omitempty" name:"TotalLifeRound"`
+
+	// 动态加载日志标识
+	Dynamic *bool `json:"Dynamic,omitnil,omitempty" name:"Dynamic"`
+}
+
+type DescribeInstanceDetailInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 实例数据时间
+	CurRunDate *string `json:"CurRunDate,omitnil,omitempty" name:"CurRunDate"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 实例的第几次执行
+	LifeRound *int64 `json:"LifeRound,omitnil,omitempty" name:"LifeRound"`
+
+	// 生命周期查询起始index
+	LifeRoundStartIndex *int64 `json:"LifeRoundStartIndex,omitnil,omitempty" name:"LifeRoundStartIndex"`
+
+	// 生命周期查询批次数量
+	LifeRoundSize *int64 `json:"LifeRoundSize,omitnil,omitempty" name:"LifeRoundSize"`
+
+	// 生命周期总数，可省略
+	TotalLifeRound *string `json:"TotalLifeRound,omitnil,omitempty" name:"TotalLifeRound"`
+
+	// 动态加载日志标识
+	Dynamic *bool `json:"Dynamic,omitnil,omitempty" name:"Dynamic"`
+}
+
+func (r *DescribeInstanceDetailInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceDetailInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "CurRunDate")
+	delete(f, "ProjectId")
+	delete(f, "LifeRound")
+	delete(f, "LifeRoundStartIndex")
+	delete(f, "LifeRoundSize")
+	delete(f, "TotalLifeRound")
+	delete(f, "Dynamic")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceDetailInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceDetailInfoResponseParams struct {
+	// 生命周期结果
+	Data []*InstanceLifeCycleOpsDto `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceDetailInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceDetailInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceDetailInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceDetailInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceLastLogRequestParams struct {
 	// 任务id
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`

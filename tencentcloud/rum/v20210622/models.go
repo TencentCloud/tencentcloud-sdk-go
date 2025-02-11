@@ -4554,6 +4554,8 @@ type DescribeProjectsRequestParams struct {
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 该参数已废弃，demo模式请在Filters内注明
+	//
+	// Deprecated: IsDemo is deprecated.
 	IsDemo *int64 `json:"IsDemo,omitnil,omitempty" name:"IsDemo"`
 }
 
@@ -5327,6 +5329,8 @@ type DescribeScoresRequestParams struct {
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// 该参数已废弃
+	//
+	// Deprecated: IsDemo is deprecated.
 	IsDemo *int64 `json:"IsDemo,omitnil,omitempty" name:"IsDemo"`
 }
 
@@ -5502,12 +5506,16 @@ type DescribeTawInstancesRequestParams struct {
 	InstanceStatuses []*int64 `json:"InstanceStatuses,omitnil,omitempty" name:"InstanceStatuses"`
 
 	// 实例Id, 该参数已废弃，请在Filters内注明
+	//
+	// Deprecated: InstanceIds is deprecated.
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 过滤参数；demo模式传{"Name": "IsDemo", "Values":["1"]}
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 该参数已废弃，demo模式请在Filters内注明
+	//
+	// Deprecated: IsDemo is deprecated.
 	IsDemo *int64 `json:"IsDemo,omitnil,omitempty" name:"IsDemo"`
 }
 
