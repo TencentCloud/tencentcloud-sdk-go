@@ -97,19 +97,15 @@ func (r *SubmitTaskEventRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SubmitTaskEventResponseParams struct {
 	// 任务的唯一订单号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// 信息码。0表示成功，-1标识失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 提示信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 任务处理结果列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*TaskEventData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -134,54 +130,41 @@ func (r *SubmitTaskEventResponse) FromJsonString(s string) error {
 
 type TaskEventData struct {
 	// 状态码，0为成功，-1为失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 提示信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 当前完成或正在完成的安心用户运营平台的任务订单ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskOrderId *string `json:"TaskOrderId,omitnil,omitempty" name:"TaskOrderId"`
 
 	// 当前任务订单状态码。1代表未完成；2代表已完成但未提交任务；3表示已完成，且已提交获得积分任务；4表示过期任务，提交后不获得积分。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskCode *int64 `json:"TaskCode,omitnil,omitempty" name:"TaskCode"`
 
 	// 获得积分数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskCoinNumber *int64 `json:"TaskCoinNumber,omitnil,omitempty" name:"TaskCoinNumber"`
 
 	// 任务类型后台代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 用户的当前积分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCoin *int64 `json:"TotalCoin,omitnil,omitempty" name:"TotalCoin"`
 
 	// 用户透传的附加数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Attach *string `json:"Attach,omitnil,omitempty" name:"Attach"`
 
 	// 计次任务当前完成次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DoneTimes *int64 `json:"DoneTimes,omitnil,omitempty" name:"DoneTimes"`
 
 	// 计次任务当前所需完成次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalTimes *int64 `json:"TotalTimes,omitnil,omitempty" name:"TotalTimes"`
 
 	// 任务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
 	// 用户当前成长值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GrowScore *int64 `json:"GrowScore,omitnil,omitempty" name:"GrowScore"`
 }

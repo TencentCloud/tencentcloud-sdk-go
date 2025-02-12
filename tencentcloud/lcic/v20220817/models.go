@@ -3409,11 +3409,9 @@ type DescribeRoomStatisticsResponseParams struct {
 	MemberRecords []*MemberRecord `json:"MemberRecords,omitnil,omitempty" name:"MemberRecords"`
 
 	// 秒级unix时间戳，实际房间开始时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealStartTime *uint64 `json:"RealStartTime,omitnil,omitempty" name:"RealStartTime"`
 
 	// 秒级unix时间戳，实际房间结束时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealEndTime *uint64 `json:"RealEndTime,omitnil,omitempty" name:"RealEndTime"`
 
 	// 房间消息总数。
@@ -3724,7 +3722,6 @@ type DescribeUserResponseParams struct {
 	Avatar *string `json:"Avatar,omitnil,omitempty" name:"Avatar"`
 
 	// 用户在客户系统的Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginId *string `json:"OriginId,omitnil,omitempty" name:"OriginId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4109,7 +4106,6 @@ type GetRoomEventResponseParams struct {
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 详细事件内容。包含相应的类型、发生的时间戳。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Events []*EventInfo `json:"Events,omitnil,omitempty" name:"Events"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4340,19 +4336,15 @@ func (r *GetWatermarkRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetWatermarkResponseParams struct {
 	// 老师视频区域的水印参数配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TeacherLogo *WatermarkConfig `json:"TeacherLogo,omitnil,omitempty" name:"TeacherLogo"`
 
 	// 白板区域的水印参数配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BoardLogo *WatermarkConfig `json:"BoardLogo,omitnil,omitempty" name:"BoardLogo"`
 
 	// 背景图片配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackgroundPicture *BackgroundPictureConfig `json:"BackgroundPicture,omitnil,omitempty" name:"BackgroundPicture"`
 
 	// 文字水印配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Text *TextMarkConfig `json:"Text,omitnil,omitempty" name:"Text"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

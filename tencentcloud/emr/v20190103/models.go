@@ -9780,6 +9780,9 @@ type SLInstanceInfo struct {
 	// 状态描述
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
+	// 健康状态
+	HealthStatus *string `json:"HealthStatus,omitnil,omitempty" name:"HealthStatus"`
+
 	// 实例名称
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 

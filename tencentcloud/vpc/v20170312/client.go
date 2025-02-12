@@ -2352,6 +2352,73 @@ func (c *Client) CheckNetDetectStateWithContext(ctx context.Context, request *Ch
     return
 }
 
+func NewCheckTrafficMirrorRequest() (request *CheckTrafficMirrorRequest) {
+    request = &CheckTrafficMirrorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "CheckTrafficMirror")
+    
+    
+    return
+}
+
+func NewCheckTrafficMirrorResponse() (response *CheckTrafficMirrorResponse) {
+    response = &CheckTrafficMirrorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckTrafficMirror
+// 检查流量镜像的采集端接收端（公网IP类型）
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_DUPLICATEDLBTRAFFICMIRRORCOLLECTORS = "InvalidParameter.DuplicatedLbTrafficMirrorCollectors"
+//  INVALIDPARAMETER_UNSUPPORTEDLBTRAFFICMIRRORAZ = "InvalidParameter.UnsupportedLbTrafficMirrorAz"
+//  INVALIDPARAMETERVALUE_DUPLICATEDLBTRAFFICMIRRORCOLLECTORS = "InvalidParameterValue.DuplicatedLbTrafficMirrorCollectors"
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
+//  INVALIDPARAMETERVALUE_INVALIDLBTRAFFICMIRRORRECIVERENDPOINT = "InvalidParameterValue.InvalidLbTrafficMirrorReciverEndpoint"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDLBTRAFFICMIRRORAZ = "InvalidParameterValue.UnsupportedLbTrafficMirrorAz"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_VPCMISMATCH = "UnsupportedOperation.VpcMismatch"
+func (c *Client) CheckTrafficMirror(request *CheckTrafficMirrorRequest) (response *CheckTrafficMirrorResponse, err error) {
+    return c.CheckTrafficMirrorWithContext(context.Background(), request)
+}
+
+// CheckTrafficMirror
+// 检查流量镜像的采集端接收端（公网IP类型）
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_DUPLICATEDLBTRAFFICMIRRORCOLLECTORS = "InvalidParameter.DuplicatedLbTrafficMirrorCollectors"
+//  INVALIDPARAMETER_UNSUPPORTEDLBTRAFFICMIRRORAZ = "InvalidParameter.UnsupportedLbTrafficMirrorAz"
+//  INVALIDPARAMETERVALUE_DUPLICATEDLBTRAFFICMIRRORCOLLECTORS = "InvalidParameterValue.DuplicatedLbTrafficMirrorCollectors"
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
+//  INVALIDPARAMETERVALUE_INVALIDLBTRAFFICMIRRORRECIVERENDPOINT = "InvalidParameterValue.InvalidLbTrafficMirrorReciverEndpoint"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDLBTRAFFICMIRRORAZ = "InvalidParameterValue.UnsupportedLbTrafficMirrorAz"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_VPCMISMATCH = "UnsupportedOperation.VpcMismatch"
+func (c *Client) CheckTrafficMirrorWithContext(ctx context.Context, request *CheckTrafficMirrorRequest) (response *CheckTrafficMirrorResponse, err error) {
+    if request == nil {
+        request = NewCheckTrafficMirrorRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckTrafficMirror require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckTrafficMirrorResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewClearRouteTableSelectionPoliciesRequest() (request *ClearRouteTableSelectionPoliciesRequest) {
     request = &ClearRouteTableSelectionPoliciesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6342,6 +6409,137 @@ func (c *Client) CreateSubnetsWithContext(ctx context.Context, request *CreateSu
     return
 }
 
+func NewCreateTrafficMirrorRequest() (request *CreateTrafficMirrorRequest) {
+    request = &CreateTrafficMirrorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateTrafficMirror")
+    
+    
+    return
+}
+
+func NewCreateTrafficMirrorResponse() (response *CreateTrafficMirrorResponse) {
+    response = &CreateTrafficMirrorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTrafficMirror
+// 本接口（CreateTrafficMirror）用于创建流量镜像实例。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_DUPLICATEDLBTRAFFICMIRRORCOLLECTORS = "InvalidParameter.DuplicatedLbTrafficMirrorCollectors"
+//  INVALIDPARAMETER_UNSUPPORTEDLBTRAFFICMIRRORAZ = "InvalidParameter.UnsupportedLbTrafficMirrorAz"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATEDLBTRAFFICMIRRORCOLLECTORS = "InvalidParameterValue.DuplicatedLbTrafficMirrorCollectors"
+//  INVALIDPARAMETERVALUE_DUPLICATEDLBTRAFFICMIRRORRECIVERENDPOINT = "InvalidParameterValue.DuplicatedLbTrafficMirrorReciverEndpoint"
+//  INVALIDPARAMETERVALUE_INVALIDLBTRAFFICMIRRORRECIVERENDPOINT = "InvalidParameterValue.InvalidLbTrafficMirrorReciverEndpoint"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_MIRRORLACKTARGETRESOURCE = "InvalidParameterValue.MirrorLackTargetResource"
+//  INVALIDPARAMETERVALUE_OBJECTUSEINTRAFFICMIRROR = "InvalidParameterValue.ObjectUseInTrafficMirror"
+//  INVALIDPARAMETERVALUE_OBJECTVPCNOTCURRENTVPC = "InvalidParameterValue.ObjectVpcNotCurrentVpc"
+//  INVALIDPARAMETERVALUE_TAGDUPLICATEKEY = "InvalidParameterValue.TagDuplicateKey"
+//  INVALIDPARAMETERVALUE_TAGDUPLICATERESOURCETYPE = "InvalidParameterValue.TagDuplicateResourceType"
+//  INVALIDPARAMETERVALUE_TAGINVALIDKEY = "InvalidParameterValue.TagInvalidKey"
+//  INVALIDPARAMETERVALUE_TAGINVALIDKEYLEN = "InvalidParameterValue.TagInvalidKeyLen"
+//  INVALIDPARAMETERVALUE_TAGINVALIDVAL = "InvalidParameterValue.TagInvalidVal"
+//  INVALIDPARAMETERVALUE_TAGKEYNOTEXISTS = "InvalidParameterValue.TagKeyNotExists"
+//  INVALIDPARAMETERVALUE_TAGNOTALLOCATEDQUOTA = "InvalidParameterValue.TagNotAllocatedQuota"
+//  INVALIDPARAMETERVALUE_TAGNOTEXISTED = "InvalidParameterValue.TagNotExisted"
+//  INVALIDPARAMETERVALUE_TAGNOTSUPPORTTAG = "InvalidParameterValue.TagNotSupportTag"
+//  INVALIDPARAMETERVALUE_TAGRESOURCEFORMATERROR = "InvalidParameterValue.TagResourceFormatError"
+//  INVALIDPARAMETERVALUE_TAGTIMESTAMPEXCEEDED = "InvalidParameterValue.TagTimestampExceeded"
+//  INVALIDPARAMETERVALUE_TAGVALNOTEXISTS = "InvalidParameterValue.TagValNotExists"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDLBTRAFFICMIRRORAZ = "InvalidParameterValue.UnsupportedLbTrafficMirrorAz"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_TAGKEYEXCEEDED = "LimitExceeded.TagKeyExceeded"
+//  LIMITEXCEEDED_TAGKEYPERRESOURCEEXCEEDED = "LimitExceeded.TagKeyPerResourceExceeded"
+//  LIMITEXCEEDED_TAGNOTENOUGHQUOTA = "LimitExceeded.TagNotEnoughQuota"
+//  LIMITEXCEEDED_TAGQUOTA = "LimitExceeded.TagQuota"
+//  LIMITEXCEEDED_TAGQUOTAEXCEEDED = "LimitExceeded.TagQuotaExceeded"
+//  LIMITEXCEEDED_TAGTAGSEXCEEDED = "LimitExceeded.TagTagsExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_IPV6NOTSUPPORT = "UnsupportedOperation.Ipv6NotSupport"
+//  UNSUPPORTEDOPERATION_PUBLICCLBNOTSUPPORT = "UnsupportedOperation.PublicClbNotSupport"
+//  UNSUPPORTEDOPERATION_TAGALLOCATE = "UnsupportedOperation.TagAllocate"
+//  UNSUPPORTEDOPERATION_TAGFREE = "UnsupportedOperation.TagFree"
+//  UNSUPPORTEDOPERATION_TAGNOTPERMIT = "UnsupportedOperation.TagNotPermit"
+//  UNSUPPORTEDOPERATION_TAGSYSTEMRESERVEDTAGKEY = "UnsupportedOperation.TagSystemReservedTagKey"
+//  UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTCLB = "UnsupportedOperation.TrafficMirrorNotSupportClb"
+//  UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTSAMESRCTARGET = "UnsupportedOperation.TrafficMirrorNotSupportSameSrcTarget"
+func (c *Client) CreateTrafficMirror(request *CreateTrafficMirrorRequest) (response *CreateTrafficMirrorResponse, err error) {
+    return c.CreateTrafficMirrorWithContext(context.Background(), request)
+}
+
+// CreateTrafficMirror
+// 本接口（CreateTrafficMirror）用于创建流量镜像实例。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_DUPLICATEDLBTRAFFICMIRRORCOLLECTORS = "InvalidParameter.DuplicatedLbTrafficMirrorCollectors"
+//  INVALIDPARAMETER_UNSUPPORTEDLBTRAFFICMIRRORAZ = "InvalidParameter.UnsupportedLbTrafficMirrorAz"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATEDLBTRAFFICMIRRORCOLLECTORS = "InvalidParameterValue.DuplicatedLbTrafficMirrorCollectors"
+//  INVALIDPARAMETERVALUE_DUPLICATEDLBTRAFFICMIRRORRECIVERENDPOINT = "InvalidParameterValue.DuplicatedLbTrafficMirrorReciverEndpoint"
+//  INVALIDPARAMETERVALUE_INVALIDLBTRAFFICMIRRORRECIVERENDPOINT = "InvalidParameterValue.InvalidLbTrafficMirrorReciverEndpoint"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_MIRRORLACKTARGETRESOURCE = "InvalidParameterValue.MirrorLackTargetResource"
+//  INVALIDPARAMETERVALUE_OBJECTUSEINTRAFFICMIRROR = "InvalidParameterValue.ObjectUseInTrafficMirror"
+//  INVALIDPARAMETERVALUE_OBJECTVPCNOTCURRENTVPC = "InvalidParameterValue.ObjectVpcNotCurrentVpc"
+//  INVALIDPARAMETERVALUE_TAGDUPLICATEKEY = "InvalidParameterValue.TagDuplicateKey"
+//  INVALIDPARAMETERVALUE_TAGDUPLICATERESOURCETYPE = "InvalidParameterValue.TagDuplicateResourceType"
+//  INVALIDPARAMETERVALUE_TAGINVALIDKEY = "InvalidParameterValue.TagInvalidKey"
+//  INVALIDPARAMETERVALUE_TAGINVALIDKEYLEN = "InvalidParameterValue.TagInvalidKeyLen"
+//  INVALIDPARAMETERVALUE_TAGINVALIDVAL = "InvalidParameterValue.TagInvalidVal"
+//  INVALIDPARAMETERVALUE_TAGKEYNOTEXISTS = "InvalidParameterValue.TagKeyNotExists"
+//  INVALIDPARAMETERVALUE_TAGNOTALLOCATEDQUOTA = "InvalidParameterValue.TagNotAllocatedQuota"
+//  INVALIDPARAMETERVALUE_TAGNOTEXISTED = "InvalidParameterValue.TagNotExisted"
+//  INVALIDPARAMETERVALUE_TAGNOTSUPPORTTAG = "InvalidParameterValue.TagNotSupportTag"
+//  INVALIDPARAMETERVALUE_TAGRESOURCEFORMATERROR = "InvalidParameterValue.TagResourceFormatError"
+//  INVALIDPARAMETERVALUE_TAGTIMESTAMPEXCEEDED = "InvalidParameterValue.TagTimestampExceeded"
+//  INVALIDPARAMETERVALUE_TAGVALNOTEXISTS = "InvalidParameterValue.TagValNotExists"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDLBTRAFFICMIRRORAZ = "InvalidParameterValue.UnsupportedLbTrafficMirrorAz"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_TAGKEYEXCEEDED = "LimitExceeded.TagKeyExceeded"
+//  LIMITEXCEEDED_TAGKEYPERRESOURCEEXCEEDED = "LimitExceeded.TagKeyPerResourceExceeded"
+//  LIMITEXCEEDED_TAGNOTENOUGHQUOTA = "LimitExceeded.TagNotEnoughQuota"
+//  LIMITEXCEEDED_TAGQUOTA = "LimitExceeded.TagQuota"
+//  LIMITEXCEEDED_TAGQUOTAEXCEEDED = "LimitExceeded.TagQuotaExceeded"
+//  LIMITEXCEEDED_TAGTAGSEXCEEDED = "LimitExceeded.TagTagsExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_IPV6NOTSUPPORT = "UnsupportedOperation.Ipv6NotSupport"
+//  UNSUPPORTEDOPERATION_PUBLICCLBNOTSUPPORT = "UnsupportedOperation.PublicClbNotSupport"
+//  UNSUPPORTEDOPERATION_TAGALLOCATE = "UnsupportedOperation.TagAllocate"
+//  UNSUPPORTEDOPERATION_TAGFREE = "UnsupportedOperation.TagFree"
+//  UNSUPPORTEDOPERATION_TAGNOTPERMIT = "UnsupportedOperation.TagNotPermit"
+//  UNSUPPORTEDOPERATION_TAGSYSTEMRESERVEDTAGKEY = "UnsupportedOperation.TagSystemReservedTagKey"
+//  UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTCLB = "UnsupportedOperation.TrafficMirrorNotSupportClb"
+//  UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTSAMESRCTARGET = "UnsupportedOperation.TrafficMirrorNotSupportSameSrcTarget"
+func (c *Client) CreateTrafficMirrorWithContext(ctx context.Context, request *CreateTrafficMirrorRequest) (response *CreateTrafficMirrorResponse, err error) {
+    if request == nil {
+        request = NewCreateTrafficMirrorRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTrafficMirror require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTrafficMirrorResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTrafficPackagesRequest() (request *CreateTrafficPackagesRequest) {
     request = &CreateTrafficPackagesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9755,6 +9953,57 @@ func (c *Client) DeleteTemplateMemberWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDeleteTemplateMemberResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTrafficMirrorRequest() (request *DeleteTrafficMirrorRequest) {
+    request = &DeleteTrafficMirrorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteTrafficMirror")
+    
+    
+    return
+}
+
+func NewDeleteTrafficMirrorResponse() (response *DeleteTrafficMirrorResponse) {
+    response = &DeleteTrafficMirrorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTrafficMirror
+// 本接口（DeleteTrafficMirror）用于删除流量镜像实例。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteTrafficMirror(request *DeleteTrafficMirrorRequest) (response *DeleteTrafficMirrorResponse, err error) {
+    return c.DeleteTrafficMirrorWithContext(context.Background(), request)
+}
+
+// DeleteTrafficMirror
+// 本接口（DeleteTrafficMirror）用于删除流量镜像实例。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteTrafficMirrorWithContext(ctx context.Context, request *DeleteTrafficMirrorRequest) (response *DeleteTrafficMirrorResponse, err error) {
+    if request == nil {
+        request = NewDeleteTrafficMirrorRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTrafficMirror require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTrafficMirrorResponse()
     err = c.Send(request, response)
     return
 }
@@ -15503,6 +15752,63 @@ func (c *Client) DescribeTenantCcnsWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeTenantCcnsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTrafficMirrorsRequest() (request *DescribeTrafficMirrorsRequest) {
+    request = &DescribeTrafficMirrorsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeTrafficMirrors")
+    
+    
+    return
+}
+
+func NewDescribeTrafficMirrorsResponse() (response *DescribeTrafficMirrorsResponse) {
+    response = &DescribeTrafficMirrorsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTrafficMirrors
+// 本接口（DescribeTrafficMirrors）用于查询流量镜像实例信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTrafficMirrors(request *DescribeTrafficMirrorsRequest) (response *DescribeTrafficMirrorsResponse, err error) {
+    return c.DescribeTrafficMirrorsWithContext(context.Background(), request)
+}
+
+// DescribeTrafficMirrors
+// 本接口（DescribeTrafficMirrors）用于查询流量镜像实例信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeTrafficMirrorsWithContext(ctx context.Context, request *DescribeTrafficMirrorsRequest) (response *DescribeTrafficMirrorsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTrafficMirrorsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrafficMirrors require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTrafficMirrorsResponse()
     err = c.Send(request, response)
     return
 }
@@ -22876,6 +23182,65 @@ func (c *Client) ModifyTemplateMemberWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyTrafficMirrorAttributeRequest() (request *ModifyTrafficMirrorAttributeRequest) {
+    request = &ModifyTrafficMirrorAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyTrafficMirrorAttribute")
+    
+    
+    return
+}
+
+func NewModifyTrafficMirrorAttributeResponse() (response *ModifyTrafficMirrorAttributeResponse) {
+    response = &ModifyTrafficMirrorAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTrafficMirrorAttribute
+// 本接口（ModifyTrafficMirrorAttribute）用于修改流量镜像实例属性。
+//
+// 注意：只支持修改名字和描述信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyTrafficMirrorAttribute(request *ModifyTrafficMirrorAttributeRequest) (response *ModifyTrafficMirrorAttributeResponse, err error) {
+    return c.ModifyTrafficMirrorAttributeWithContext(context.Background(), request)
+}
+
+// ModifyTrafficMirrorAttribute
+// 本接口（ModifyTrafficMirrorAttribute）用于修改流量镜像实例属性。
+//
+// 注意：只支持修改名字和描述信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyTrafficMirrorAttributeWithContext(ctx context.Context, request *ModifyTrafficMirrorAttributeRequest) (response *ModifyTrafficMirrorAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyTrafficMirrorAttributeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTrafficMirrorAttribute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTrafficMirrorAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyVpcAttributeRequest() (request *ModifyVpcAttributeRequest) {
     request = &ModifyVpcAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -25275,6 +25640,207 @@ func (c *Client) ResetRoutesWithContext(ctx context.Context, request *ResetRoute
     return
 }
 
+func NewResetTrafficMirrorFilterRequest() (request *ResetTrafficMirrorFilterRequest) {
+    request = &ResetTrafficMirrorFilterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ResetTrafficMirrorFilter")
+    
+    
+    return
+}
+
+func NewResetTrafficMirrorFilterResponse() (response *ResetTrafficMirrorFilterResponse) {
+    response = &ResetTrafficMirrorFilterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResetTrafficMirrorFilter
+// 本接口（ResetTrafficMirrorFilter）用于更新流量镜像实例过滤规则。
+//
+// 注意：每一个流量镜像实例，不能同时支持按nat网关和五元组两种规则过滤
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDTRAFFICMIRRORACTION = "InvalidParameterValue.UnsupportedTrafficMirrorAction"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ResetTrafficMirrorFilter(request *ResetTrafficMirrorFilterRequest) (response *ResetTrafficMirrorFilterResponse, err error) {
+    return c.ResetTrafficMirrorFilterWithContext(context.Background(), request)
+}
+
+// ResetTrafficMirrorFilter
+// 本接口（ResetTrafficMirrorFilter）用于更新流量镜像实例过滤规则。
+//
+// 注意：每一个流量镜像实例，不能同时支持按nat网关和五元组两种规则过滤
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDTRAFFICMIRRORACTION = "InvalidParameterValue.UnsupportedTrafficMirrorAction"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ResetTrafficMirrorFilterWithContext(ctx context.Context, request *ResetTrafficMirrorFilterRequest) (response *ResetTrafficMirrorFilterResponse, err error) {
+    if request == nil {
+        request = NewResetTrafficMirrorFilterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetTrafficMirrorFilter require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetTrafficMirrorFilterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetTrafficMirrorSrcsRequest() (request *ResetTrafficMirrorSrcsRequest) {
+    request = &ResetTrafficMirrorSrcsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ResetTrafficMirrorSrcs")
+    
+    
+    return
+}
+
+func NewResetTrafficMirrorSrcsResponse() (response *ResetTrafficMirrorSrcsResponse) {
+    response = &ResetTrafficMirrorSrcsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResetTrafficMirrorSrcs
+// 本接口（ResetTrafficMirrorSrcs）用于重置流量镜像实例采集对象。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_DUPLICATEDLBTRAFFICMIRRORCOLLECTORS = "InvalidParameter.DuplicatedLbTrafficMirrorCollectors"
+//  INVALIDPARAMETER_UNSUPPORTEDLBTRAFFICMIRRORAZ = "InvalidParameter.UnsupportedLbTrafficMirrorAz"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_MIRRORLACKTARGETRESOURCE = "InvalidParameterValue.MirrorLackTargetResource"
+//  INVALIDPARAMETERVALUE_OBJECTVPCNOTCURRENTVPC = "InvalidParameterValue.ObjectVpcNotCurrentVpc"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDLBTRAFFICMIRRORAZ = "InvalidParameterValue.UnsupportedLbTrafficMirrorAz"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTSAMESRCTARGET = "UnsupportedOperation.TrafficMirrorNotSupportSameSrcTarget"
+func (c *Client) ResetTrafficMirrorSrcs(request *ResetTrafficMirrorSrcsRequest) (response *ResetTrafficMirrorSrcsResponse, err error) {
+    return c.ResetTrafficMirrorSrcsWithContext(context.Background(), request)
+}
+
+// ResetTrafficMirrorSrcs
+// 本接口（ResetTrafficMirrorSrcs）用于重置流量镜像实例采集对象。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_DUPLICATEDLBTRAFFICMIRRORCOLLECTORS = "InvalidParameter.DuplicatedLbTrafficMirrorCollectors"
+//  INVALIDPARAMETER_UNSUPPORTEDLBTRAFFICMIRRORAZ = "InvalidParameter.UnsupportedLbTrafficMirrorAz"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_MIRRORLACKTARGETRESOURCE = "InvalidParameterValue.MirrorLackTargetResource"
+//  INVALIDPARAMETERVALUE_OBJECTVPCNOTCURRENTVPC = "InvalidParameterValue.ObjectVpcNotCurrentVpc"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDLBTRAFFICMIRRORAZ = "InvalidParameterValue.UnsupportedLbTrafficMirrorAz"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTSAMESRCTARGET = "UnsupportedOperation.TrafficMirrorNotSupportSameSrcTarget"
+func (c *Client) ResetTrafficMirrorSrcsWithContext(ctx context.Context, request *ResetTrafficMirrorSrcsRequest) (response *ResetTrafficMirrorSrcsResponse, err error) {
+    if request == nil {
+        request = NewResetTrafficMirrorSrcsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetTrafficMirrorSrcs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetTrafficMirrorSrcsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetTrafficMirrorTargetRequest() (request *ResetTrafficMirrorTargetRequest) {
+    request = &ResetTrafficMirrorTargetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ResetTrafficMirrorTarget")
+    
+    
+    return
+}
+
+func NewResetTrafficMirrorTargetResponse() (response *ResetTrafficMirrorTargetResponse) {
+    response = &ResetTrafficMirrorTargetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResetTrafficMirrorTarget
+// 本接口（ResetTrafficMirrorTarget）用于更新流量镜像实例的接收目的信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
+//  INVALIDPARAMETERVALUE_INVALIDLBTRAFFICMIRRORRECIVERENDPOINT = "InvalidParameterValue.InvalidLbTrafficMirrorReciverEndpoint"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_MIRRORLACKTARGETRESOURCE = "InvalidParameterValue.MirrorLackTargetResource"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_IPV6NOTSUPPORT = "UnsupportedOperation.Ipv6NotSupport"
+//  UNSUPPORTEDOPERATION_PUBLICCLBNOTSUPPORT = "UnsupportedOperation.PublicClbNotSupport"
+//  UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTCLB = "UnsupportedOperation.TrafficMirrorNotSupportClb"
+//  UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTSAMESRCTARGET = "UnsupportedOperation.TrafficMirrorNotSupportSameSrcTarget"
+func (c *Client) ResetTrafficMirrorTarget(request *ResetTrafficMirrorTargetRequest) (response *ResetTrafficMirrorTargetResponse, err error) {
+    return c.ResetTrafficMirrorTargetWithContext(context.Background(), request)
+}
+
+// ResetTrafficMirrorTarget
+// 本接口（ResetTrafficMirrorTarget）用于更新流量镜像实例的接收目的信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
+//  INVALIDPARAMETERVALUE_INVALIDLBTRAFFICMIRRORRECIVERENDPOINT = "InvalidParameterValue.InvalidLbTrafficMirrorReciverEndpoint"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_MIRRORLACKTARGETRESOURCE = "InvalidParameterValue.MirrorLackTargetResource"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_IPV6NOTSUPPORT = "UnsupportedOperation.Ipv6NotSupport"
+//  UNSUPPORTEDOPERATION_PUBLICCLBNOTSUPPORT = "UnsupportedOperation.PublicClbNotSupport"
+//  UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTCLB = "UnsupportedOperation.TrafficMirrorNotSupportClb"
+//  UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTSAMESRCTARGET = "UnsupportedOperation.TrafficMirrorNotSupportSameSrcTarget"
+func (c *Client) ResetTrafficMirrorTargetWithContext(ctx context.Context, request *ResetTrafficMirrorTargetRequest) (response *ResetTrafficMirrorTargetResponse, err error) {
+    if request == nil {
+        request = NewResetTrafficMirrorTargetRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetTrafficMirrorTarget require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetTrafficMirrorTargetResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResetVpnConnectionRequest() (request *ResetVpnConnectionRequest) {
     request = &ResetVpnConnectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -25605,6 +26171,108 @@ func (c *Client) SetVpnGatewaysRenewFlagWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewSetVpnGatewaysRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStartTrafficMirrorRequest() (request *StartTrafficMirrorRequest) {
+    request = &StartTrafficMirrorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "StartTrafficMirror")
+    
+    
+    return
+}
+
+func NewStartTrafficMirrorResponse() (response *StartTrafficMirrorResponse) {
+    response = &StartTrafficMirrorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartTrafficMirror
+// 本接口（StartTrafficMirror）用于开启流量镜像实例。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) StartTrafficMirror(request *StartTrafficMirrorRequest) (response *StartTrafficMirrorResponse, err error) {
+    return c.StartTrafficMirrorWithContext(context.Background(), request)
+}
+
+// StartTrafficMirror
+// 本接口（StartTrafficMirror）用于开启流量镜像实例。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) StartTrafficMirrorWithContext(ctx context.Context, request *StartTrafficMirrorRequest) (response *StartTrafficMirrorResponse, err error) {
+    if request == nil {
+        request = NewStartTrafficMirrorRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartTrafficMirror require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartTrafficMirrorResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopTrafficMirrorRequest() (request *StopTrafficMirrorRequest) {
+    request = &StopTrafficMirrorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "StopTrafficMirror")
+    
+    
+    return
+}
+
+func NewStopTrafficMirrorResponse() (response *StopTrafficMirrorResponse) {
+    response = &StopTrafficMirrorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopTrafficMirror
+// 本接口（StopTrafficMirror）用于关闭流量镜像实例。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) StopTrafficMirror(request *StopTrafficMirrorRequest) (response *StopTrafficMirrorResponse, err error) {
+    return c.StopTrafficMirrorWithContext(context.Background(), request)
+}
+
+// StopTrafficMirror
+// 本接口（StopTrafficMirror）用于关闭流量镜像实例。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) StopTrafficMirrorWithContext(ctx context.Context, request *StopTrafficMirrorRequest) (response *StopTrafficMirrorResponse, err error) {
+    if request == nil {
+        request = NewStopTrafficMirrorRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopTrafficMirror require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopTrafficMirrorResponse()
     err = c.Send(request, response)
     return
 }
@@ -26082,6 +26750,130 @@ func (c *Client) UnlockCcnsWithContext(ctx context.Context, request *UnlockCcnsR
     request.SetContext(ctx)
     
     response = NewUnlockCcnsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateTrafficMirrorAllFilterRequest() (request *UpdateTrafficMirrorAllFilterRequest) {
+    request = &UpdateTrafficMirrorAllFilterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "UpdateTrafficMirrorAllFilter")
+    
+    
+    return
+}
+
+func NewUpdateTrafficMirrorAllFilterResponse() (response *UpdateTrafficMirrorAllFilterResponse) {
+    response = &UpdateTrafficMirrorAllFilterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateTrafficMirrorAllFilter
+// 本接口（UpdateTrafficMirrorAllFilter）用于更新流量镜像实例的过滤规则或者采集对象。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_MIRRORLACKTARGETRESOURCE = "InvalidParameterValue.MirrorLackTargetResource"
+//  INVALIDPARAMETERVALUE_OBJECTUSEINTRAFFICMIRROR = "InvalidParameterValue.ObjectUseInTrafficMirror"
+//  INVALIDPARAMETERVALUE_OBJECTVPCNOTCURRENTVPC = "InvalidParameterValue.ObjectVpcNotCurrentVpc"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDTRAFFICMIRRORACTION = "InvalidParameterValue.UnsupportedTrafficMirrorAction"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTSAMESRCTARGET = "UnsupportedOperation.TrafficMirrorNotSupportSameSrcTarget"
+func (c *Client) UpdateTrafficMirrorAllFilter(request *UpdateTrafficMirrorAllFilterRequest) (response *UpdateTrafficMirrorAllFilterResponse, err error) {
+    return c.UpdateTrafficMirrorAllFilterWithContext(context.Background(), request)
+}
+
+// UpdateTrafficMirrorAllFilter
+// 本接口（UpdateTrafficMirrorAllFilter）用于更新流量镜像实例的过滤规则或者采集对象。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_MIRRORLACKTARGETRESOURCE = "InvalidParameterValue.MirrorLackTargetResource"
+//  INVALIDPARAMETERVALUE_OBJECTUSEINTRAFFICMIRROR = "InvalidParameterValue.ObjectUseInTrafficMirror"
+//  INVALIDPARAMETERVALUE_OBJECTVPCNOTCURRENTVPC = "InvalidParameterValue.ObjectVpcNotCurrentVpc"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDTRAFFICMIRRORACTION = "InvalidParameterValue.UnsupportedTrafficMirrorAction"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_TRAFFICMIRRORNOTSUPPORTSAMESRCTARGET = "UnsupportedOperation.TrafficMirrorNotSupportSameSrcTarget"
+func (c *Client) UpdateTrafficMirrorAllFilterWithContext(ctx context.Context, request *UpdateTrafficMirrorAllFilterRequest) (response *UpdateTrafficMirrorAllFilterResponse, err error) {
+    if request == nil {
+        request = NewUpdateTrafficMirrorAllFilterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateTrafficMirrorAllFilter require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateTrafficMirrorAllFilterResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateTrafficMirrorDirectionRequest() (request *UpdateTrafficMirrorDirectionRequest) {
+    request = &UpdateTrafficMirrorDirectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "UpdateTrafficMirrorDirection")
+    
+    
+    return
+}
+
+func NewUpdateTrafficMirrorDirectionResponse() (response *UpdateTrafficMirrorDirectionResponse) {
+    response = &UpdateTrafficMirrorDirectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateTrafficMirrorDirection
+// 本接口（UpdateTrafficMirrorDirection）用于更新流量镜像实例的采集方向。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDTRAFFICMIRRORACTION = "InvalidParameterValue.UnsupportedTrafficMirrorAction"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UpdateTrafficMirrorDirection(request *UpdateTrafficMirrorDirectionRequest) (response *UpdateTrafficMirrorDirectionResponse, err error) {
+    return c.UpdateTrafficMirrorDirectionWithContext(context.Background(), request)
+}
+
+// UpdateTrafficMirrorDirection
+// 本接口（UpdateTrafficMirrorDirection）用于更新流量镜像实例的采集方向。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDTRAFFICMIRRORACTION = "InvalidParameterValue.UnsupportedTrafficMirrorAction"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UpdateTrafficMirrorDirectionWithContext(ctx context.Context, request *UpdateTrafficMirrorDirectionRequest) (response *UpdateTrafficMirrorDirectionResponse, err error) {
+    if request == nil {
+        request = NewUpdateTrafficMirrorDirectionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateTrafficMirrorDirection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateTrafficMirrorDirectionResponse()
     err = c.Send(request, response)
     return
 }

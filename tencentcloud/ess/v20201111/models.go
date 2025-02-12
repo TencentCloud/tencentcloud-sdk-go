@@ -2904,6 +2904,107 @@ func (r *CreateExtendedServiceAuthInfosResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type CreateFileCounterSignRequestParams struct {
+	// 需要加签的文件Id。
+	// 
+	// 注: `暂时只支持pdf类型的文件`
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 执行本接口操作的员工信息。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 是否使用同步模式。
+	// <ul><li><b>false</b>:异步模式，返回taskId。需要使用taskId轮询结果查询接口。</li>
+	// <li><b>true</b>: 同步模式，此接口将直接返回taskId和ResultFileId(加签后文件id)。</li></ul>
+	// 注：
+	// 1. 当加签文件较大的时候，建议使用异步接口进行操作。否则文件加签时间过长会导致接口超时。
+	SyncMode *bool `json:"SyncMode,omitnil,omitempty" name:"SyncMode"`
+}
+
+type CreateFileCounterSignRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要加签的文件Id。
+	// 
+	// 注: `暂时只支持pdf类型的文件`
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 执行本接口操作的员工信息。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 是否使用同步模式。
+	// <ul><li><b>false</b>:异步模式，返回taskId。需要使用taskId轮询结果查询接口。</li>
+	// <li><b>true</b>: 同步模式，此接口将直接返回taskId和ResultFileId(加签后文件id)。</li></ul>
+	// 注：
+	// 1. 当加签文件较大的时候，建议使用异步接口进行操作。否则文件加签时间过长会导致接口超时。
+	SyncMode *bool `json:"SyncMode,omitnil,omitempty" name:"SyncMode"`
+}
+
+func (r *CreateFileCounterSignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFileCounterSignRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileId")
+	delete(f, "Operator")
+	delete(f, "Agent")
+	delete(f, "SyncMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFileCounterSignRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFileCounterSignResponseParams struct {
+	// 加签任务的状态。
+	// 
+	// <ul>
+	// <li><b>PROCESSING</b>: 任务正在执行中。</li>
+	// <li><b>FINISHED</b>: 已执行成功</li>
+	// </ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 加签完成后新的文件Id
+	ResultFileId *string `json:"ResultFileId,omitnil,omitempty" name:"ResultFileId"`
+
+	// 异步模式下用于轮询状态的任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateFileCounterSignResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFileCounterSignResponseParams `json:"Response"`
+}
+
+func (r *CreateFileCounterSignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFileCounterSignResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateFlowApproversRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -9342,28 +9443,98 @@ func (r *DescribeExtendedServiceAuthInfosResponse) FromJsonString(s string) erro
 }
 
 // Predefined struct for user
+type DescribeFileCounterSignResultRequestParams struct {
+	// 执行本接口操作的员工信息。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 加签任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeFileCounterSignResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 加签任务Id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeFileCounterSignResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFileCounterSignResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Agent")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFileCounterSignResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFileCounterSignResultResponseParams struct {
+	// 加签任务的状态。
+	// 
+	// <ul>
+	// <li><b>PROCESSING</b>: 任务正在执行中。</li>
+	// <li><b>FINISHED</b>: 已执行成功</li>
+	// <li><b>FAILED</b>: 执行失败</li>
+	// </ul>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 加签完成后新的文件Id
+	ResultFileId *string `json:"ResultFileId,omitnil,omitempty" name:"ResultFileId"`
+
+	// 失败的错误信息，加签任务失败的情况下会返回。
+	ErrorDetail *string `json:"ErrorDetail,omitnil,omitempty" name:"ErrorDetail"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFileCounterSignResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFileCounterSignResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeFileCounterSignResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFileCounterSignResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeFileUrlsRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 文件对应的业务类型，目前支持：
-	// <ul>
-	// <li>**FLOW ** : <font color="red">如需下载合同文件请选择此项</font></li>
-	// <li>**TEMPLATE ** : 如需下载模板文件请选择此项</li>
-	// <li>**DOCUMENT  **: 如需下载文档文件请选择此项</li>
-	// <li>**SEAL  **: 如需下载印章图片请选择此项</li>
-	// </ul>
+	// 文件对应的业务类型，目前支持：<ul><li>**FLOW ** : <font color="red">如需下载合同文件请选择此项</font></li><li>**TEMPLATE ** : 如需下载模板文件请选择此项</li><li>**DOCUMENT  **: 如需下载文档文件请选择此项</li><li>**SEAL  **: 如需下载印章图片请选择此项</li><li>**DIGITFILE**: 如需下载加签文件请选择此项</li></ul>
 	BusinessType *string `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
 
-	// 业务编号的数组，取值如下：
-	// <ul>
-	// <li>流程编号</li>
-	// <li>模板编号</li>
-	// <li>文档编号</li>
-	// <li>印章编号</li>
-	// <li>如需下载合同文件请传入FlowId，最大支持20个资源</li>
-	// </ul>
+	// 业务编号的数组，取值如下：<ul><li>流程编号</li><li>模板编号</li><li>文档编号</li><li>印章编号</li><li>加签文件编号</li><li>如需下载合同文件请传入FlowId，最大支持20个资源</li></ul>
 	BusinessIds []*string `json:"BusinessIds,omitnil,omitempty" name:"BusinessIds"`
 
 	// 下载后的文件命名，只有FileType为zip的时候生效
@@ -9408,23 +9579,10 @@ type DescribeFileUrlsRequest struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
-	// 文件对应的业务类型，目前支持：
-	// <ul>
-	// <li>**FLOW ** : <font color="red">如需下载合同文件请选择此项</font></li>
-	// <li>**TEMPLATE ** : 如需下载模板文件请选择此项</li>
-	// <li>**DOCUMENT  **: 如需下载文档文件请选择此项</li>
-	// <li>**SEAL  **: 如需下载印章图片请选择此项</li>
-	// </ul>
+	// 文件对应的业务类型，目前支持：<ul><li>**FLOW ** : <font color="red">如需下载合同文件请选择此项</font></li><li>**TEMPLATE ** : 如需下载模板文件请选择此项</li><li>**DOCUMENT  **: 如需下载文档文件请选择此项</li><li>**SEAL  **: 如需下载印章图片请选择此项</li><li>**DIGITFILE**: 如需下载加签文件请选择此项</li></ul>
 	BusinessType *string `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
 
-	// 业务编号的数组，取值如下：
-	// <ul>
-	// <li>流程编号</li>
-	// <li>模板编号</li>
-	// <li>文档编号</li>
-	// <li>印章编号</li>
-	// <li>如需下载合同文件请传入FlowId，最大支持20个资源</li>
-	// </ul>
+	// 业务编号的数组，取值如下：<ul><li>流程编号</li><li>模板编号</li><li>文档编号</li><li>印章编号</li><li>加签文件编号</li><li>如需下载合同文件请传入FlowId，最大支持20个资源</li></ul>
 	BusinessIds []*string `json:"BusinessIds,omitnil,omitempty" name:"BusinessIds"`
 
 	// 下载后的文件命名，只有FileType为zip的时候生效
@@ -14526,6 +14684,115 @@ type UserThreeFactor struct {
 	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
+}
+
+// Predefined struct for user
+type VerifyDigitFileRequestParams struct {
+	// 执行本接口操作的员工信息。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 加签接口返回的文件Id
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+}
+
+type VerifyDigitFileRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 加签接口返回的文件Id
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+}
+
+func (r *VerifyDigitFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyDigitFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Agent")
+	delete(f, "FileId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyDigitFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyDigitFileResponseParams struct {
+	// 加签文件MD5哈希值
+	PdfResourceMd5 *string `json:"PdfResourceMd5,omitnil,omitempty" name:"PdfResourceMd5"`
+
+	// 验签结果代码，代码的含义如下：<ul><li>**1**：文件验证成功。</li><li>**2**：文件验证失败。</li></ul>
+	VerifyResult *int64 `json:"VerifyResult,omitnil,omitempty" name:"VerifyResult"`
+
+	// 验签序列号, 为11为数组组成的字符串
+	VerifySerialNo *string `json:"VerifySerialNo,omitnil,omitempty" name:"VerifySerialNo"`
+
+	// 验签结果详情，每个签名域对应的验签结果。
+	VerifyDigitFileResults []*VerifyDigitFileResult `json:"VerifyDigitFileResults,omitnil,omitempty" name:"VerifyDigitFileResults"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type VerifyDigitFileResponse struct {
+	*tchttp.BaseResponse
+	Response *VerifyDigitFileResponseParams `json:"Response"`
+}
+
+func (r *VerifyDigitFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyDigitFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyDigitFileResult struct {
+	// 证书起始时间的Unix时间戳，单位毫秒
+	CertNotBefore *int64 `json:"CertNotBefore,omitnil,omitempty" name:"CertNotBefore"`
+
+	// 证书过期时间的时间戳，单位毫秒
+	CertNotAfter *int64 `json:"CertNotAfter,omitnil,omitempty" name:"CertNotAfter"`
+
+	// 证书序列号，在数字证书申请过程中，系统会自动生成一个独一无二的序号。	
+	CertSn *string `json:"CertSn,omitnil,omitempty" name:"CertSn"`
+
+	// 证书签名算法, 如SHA1withRSA等算法
+	SignAlgorithm *string `json:"SignAlgorithm,omitnil,omitempty" name:"SignAlgorithm"`
+
+	// 签署时间的Unix时间戳，单位毫秒
+	SignTime *int64 `json:"SignTime,omitnil,omitempty" name:"SignTime"`
+
+	// 签名类型。0表示带签章的数字签名，1表示仅数字签名
+	SignType *int64 `json:"SignType,omitnil,omitempty" name:"SignType"`
+
+	// 申请证书的主体的名字
+	// 
+	// 如果是在腾讯电子签平台签署, 则对应的主体的名字个数如下
+	// **企业**:  ESS@企业名称@编码
+	// **个人**: ESS@个人姓名@证件号@808854
+	// 
+	// 如果在其他平台签署的, 主体的名字参考其他平台的说明
+	SignerName *string `json:"SignerName,omitnil,omitempty" name:"SignerName"`
 }
 
 // Predefined struct for user

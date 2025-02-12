@@ -1966,6 +1966,79 @@ func (c *Client) CreateExtendedServiceAuthInfosWithContext(ctx context.Context, 
     return
 }
 
+func NewCreateFileCounterSignRequest() (request *CreateFileCounterSignRequest) {
+    request = &CreateFileCounterSignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateFileCounterSign")
+    
+    
+    return
+}
+
+func NewCreateFileCounterSignResponse() (response *CreateFileCounterSignResponse) {
+    response = &CreateFileCounterSignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateFileCounterSign
+// 此接口用于发起数字文件CA加签操作。可以使用同步或者异步模式进行。
+//
+// 
+//
+// **注意： 1. 文件类型暂时仅支持PDF类型文件。2. 此接口为『数字文件CA加签服务』白名单功能，使用前请联系对接的客户经理沟通。**
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BALANCENOTENOUGH = "FailedOperation.BalanceNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateFileCounterSign(request *CreateFileCounterSignRequest) (response *CreateFileCounterSignResponse, err error) {
+    return c.CreateFileCounterSignWithContext(context.Background(), request)
+}
+
+// CreateFileCounterSign
+// 此接口用于发起数字文件CA加签操作。可以使用同步或者异步模式进行。
+//
+// 
+//
+// **注意： 1. 文件类型暂时仅支持PDF类型文件。2. 此接口为『数字文件CA加签服务』白名单功能，使用前请联系对接的客户经理沟通。**
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BALANCENOTENOUGH = "FailedOperation.BalanceNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateFileCounterSignWithContext(ctx context.Context, request *CreateFileCounterSignRequest) (response *CreateFileCounterSignResponse, err error) {
+    if request == nil {
+        request = NewCreateFileCounterSignRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFileCounterSign require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFileCounterSignResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFlowRequest() (request *CreateFlowRequest) {
     request = &CreateFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8326,6 +8399,79 @@ func (c *Client) DescribeExtendedServiceAuthInfosWithContext(ctx context.Context
     return
 }
 
+func NewDescribeFileCounterSignResultRequest() (request *DescribeFileCounterSignResultRequest) {
+    request = &DescribeFileCounterSignResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeFileCounterSignResult")
+    
+    
+    return
+}
+
+func NewDescribeFileCounterSignResultResponse() (response *DescribeFileCounterSignResultResponse) {
+    response = &DescribeFileCounterSignResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFileCounterSignResult
+// 文件CA加签任务结果查询接口，用于查询 CreateFileCounterSign接口 发起的异步加签任务。
+//
+// 
+//
+// 注意：`此接口为『数字文件CA加签服务』白名单功能，使用前请联系对接的客户经理沟通。`
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BALANCENOTENOUGH = "FailedOperation.BalanceNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeFileCounterSignResult(request *DescribeFileCounterSignResultRequest) (response *DescribeFileCounterSignResultResponse, err error) {
+    return c.DescribeFileCounterSignResultWithContext(context.Background(), request)
+}
+
+// DescribeFileCounterSignResult
+// 文件CA加签任务结果查询接口，用于查询 CreateFileCounterSign接口 发起的异步加签任务。
+//
+// 
+//
+// 注意：`此接口为『数字文件CA加签服务』白名单功能，使用前请联系对接的客户经理沟通。`
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BALANCENOTENOUGH = "FailedOperation.BalanceNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeFileCounterSignResultWithContext(ctx context.Context, request *DescribeFileCounterSignResultRequest) (response *DescribeFileCounterSignResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeFileCounterSignResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFileCounterSignResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFileCounterSignResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFileUrlsRequest() (request *DescribeFileUrlsRequest) {
     request = &DescribeFileUrlsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11256,6 +11402,55 @@ func (c *Client) UploadFilesWithContext(ctx context.Context, request *UploadFile
     request.SetContext(ctx)
     
     response = NewUploadFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyDigitFileRequest() (request *VerifyDigitFileRequest) {
+    request = &VerifyDigitFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "VerifyDigitFile")
+    
+    
+    return
+}
+
+func NewVerifyDigitFileResponse() (response *VerifyDigitFileResponse) {
+    response = &VerifyDigitFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// VerifyDigitFile
+// 对加签后的文件进行数字签名验证，判断数字签名是否有效。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) VerifyDigitFile(request *VerifyDigitFileRequest) (response *VerifyDigitFileResponse, err error) {
+    return c.VerifyDigitFileWithContext(context.Background(), request)
+}
+
+// VerifyDigitFile
+// 对加签后的文件进行数字签名验证，判断数字签名是否有效。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) VerifyDigitFileWithContext(ctx context.Context, request *VerifyDigitFileRequest) (response *VerifyDigitFileResponse, err error) {
+    if request == nil {
+        request = NewVerifyDigitFileRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyDigitFile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVerifyDigitFileResponse()
     err = c.Send(request, response)
     return
 }

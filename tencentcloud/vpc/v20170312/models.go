@@ -3149,6 +3149,88 @@ func (r *CheckNetDetectStateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CheckTrafficMirrorRequestParams struct {
+	// 流量镜像所属的vpc
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 流量镜像的实例id
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像的采集端IP列表
+	CollectorSources []*string `json:"CollectorSources,omitnil,omitempty" name:"CollectorSources"`
+
+	// 流量镜像的接收端的子网
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 流量镜像采集端的
+	CollectorTarget []*TrafficMirrorTarget `json:"CollectorTarget,omitnil,omitempty" name:"CollectorTarget"`
+}
+
+type CheckTrafficMirrorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流量镜像所属的vpc
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 流量镜像的实例id
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像的采集端IP列表
+	CollectorSources []*string `json:"CollectorSources,omitnil,omitempty" name:"CollectorSources"`
+
+	// 流量镜像的接收端的子网
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 流量镜像采集端的
+	CollectorTarget []*TrafficMirrorTarget `json:"CollectorTarget,omitnil,omitempty" name:"CollectorTarget"`
+}
+
+func (r *CheckTrafficMirrorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckTrafficMirrorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "TrafficMirrorId")
+	delete(f, "CollectorSources")
+	delete(f, "SubnetId")
+	delete(f, "CollectorTarget")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckTrafficMirrorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckTrafficMirrorResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CheckTrafficMirrorResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckTrafficMirrorResponseParams `json:"Response"`
+}
+
+func (r *CheckTrafficMirrorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckTrafficMirrorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CidrForCcn struct {
 	// local cidr值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3521,6 +3603,9 @@ type CreateAndAttachNetworkInterfaceRequestParams struct {
 	// 绑定类型：0 标准型 1 扩展型。
 	AttachType *uint64 `json:"AttachType,omitnil,omitempty" name:"AttachType"`
 
+	// 是否创建RDMA弹性网卡，true:创建rdma弹性网卡，false:普通弹性网卡。不填默认为false。
+	IsRdma *bool `json:"IsRdma,omitnil,omitempty" name:"IsRdma"`
+
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 }
@@ -3561,6 +3646,9 @@ type CreateAndAttachNetworkInterfaceRequest struct {
 	// 绑定类型：0 标准型 1 扩展型。
 	AttachType *uint64 `json:"AttachType,omitnil,omitempty" name:"AttachType"`
 
+	// 是否创建RDMA弹性网卡，true:创建rdma弹性网卡，false:普通弹性网卡。不填默认为false。
+	IsRdma *bool `json:"IsRdma,omitnil,omitempty" name:"IsRdma"`
+
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 }
@@ -3588,6 +3676,7 @@ func (r *CreateAndAttachNetworkInterfaceRequest) FromJsonString(s string) error 
 	delete(f, "NetworkInterfaceDescription")
 	delete(f, "Tags")
 	delete(f, "AttachType")
+	delete(f, "IsRdma")
 	delete(f, "ClientToken")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndAttachNetworkInterfaceRequest has unknown keys!", "")
@@ -5700,6 +5789,9 @@ type CreateNetworkInterfaceRequestParams struct {
 	// 网卡trunking模式设置，Enable-开启，Disable--关闭，默认关闭。
 	TrunkingFlag *string `json:"TrunkingFlag,omitnil,omitempty" name:"TrunkingFlag"`
 
+	// 是否创建RDMA弹性网卡，true:创建rdma弹性网卡，false:普通弹性网卡。不填默认为false
+	IsRdma *bool `json:"IsRdma,omitnil,omitempty" name:"IsRdma"`
+
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 }
@@ -5738,6 +5830,9 @@ type CreateNetworkInterfaceRequest struct {
 	// 网卡trunking模式设置，Enable-开启，Disable--关闭，默认关闭。
 	TrunkingFlag *string `json:"TrunkingFlag,omitnil,omitempty" name:"TrunkingFlag"`
 
+	// 是否创建RDMA弹性网卡，true:创建rdma弹性网卡，false:普通弹性网卡。不填默认为false
+	IsRdma *bool `json:"IsRdma,omitnil,omitempty" name:"IsRdma"`
+
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 }
@@ -5764,6 +5859,7 @@ func (r *CreateNetworkInterfaceRequest) FromJsonString(s string) error {
 	delete(f, "PrivateIpAddresses")
 	delete(f, "Tags")
 	delete(f, "TrunkingFlag")
+	delete(f, "IsRdma")
 	delete(f, "ClientToken")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNetworkInterfaceRequest has unknown keys!", "")
@@ -6960,6 +7056,140 @@ func (r *CreateSubnetsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateSubnetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTrafficMirrorRequestParams struct {
+	// VPC实例ID。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 流量镜像名字。
+	TrafficMirrorName *string `json:"TrafficMirrorName,omitnil,omitempty" name:"TrafficMirrorName"`
+
+	// 流量镜像描述。
+	TrafficMirrorDescribe *string `json:"TrafficMirrorDescribe,omitnil,omitempty" name:"TrafficMirrorDescribe"`
+
+	// 流量镜像状态, 支持RUNNING/STOPED（vpc），RUNNING（公网IP），当采集vpc流量镜像时，此参数为必填。
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 流量镜像采集方向，支持EGRESS/INGRESS/ALL（vpc），ALL（公网IP）。
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+
+	// 流量镜像的采集对象，支持eni_xxxx。
+	CollectorSrcs []*string `json:"CollectorSrcs,omitnil,omitempty" name:"CollectorSrcs"`
+
+	// 流量镜像过滤的natgw实例。
+	NatId *string `json:"NatId,omitnil,omitempty" name:"NatId"`
+
+	// 需要过滤的五元组规则。
+	CollectorNormalFilters []*TrafficMirrorFilter `json:"CollectorNormalFilters,omitnil,omitempty" name:"CollectorNormalFilters"`
+
+	// 流量镜像的目的地址。
+	CollectorTarget *TrafficMirrorTarget `json:"CollectorTarget,omitnil,omitempty" name:"CollectorTarget"`
+
+	// 流量镜像采集流量的发送端所属子网ID。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 创建的流量镜像的类型，支持VPC/PUBLICIP，默认为VPC类型。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type CreateTrafficMirrorRequest struct {
+	*tchttp.BaseRequest
+	
+	// VPC实例ID。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 流量镜像名字。
+	TrafficMirrorName *string `json:"TrafficMirrorName,omitnil,omitempty" name:"TrafficMirrorName"`
+
+	// 流量镜像描述。
+	TrafficMirrorDescribe *string `json:"TrafficMirrorDescribe,omitnil,omitempty" name:"TrafficMirrorDescribe"`
+
+	// 流量镜像状态, 支持RUNNING/STOPED（vpc），RUNNING（公网IP），当采集vpc流量镜像时，此参数为必填。
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 流量镜像采集方向，支持EGRESS/INGRESS/ALL（vpc），ALL（公网IP）。
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+
+	// 流量镜像的采集对象，支持eni_xxxx。
+	CollectorSrcs []*string `json:"CollectorSrcs,omitnil,omitempty" name:"CollectorSrcs"`
+
+	// 流量镜像过滤的natgw实例。
+	NatId *string `json:"NatId,omitnil,omitempty" name:"NatId"`
+
+	// 需要过滤的五元组规则。
+	CollectorNormalFilters []*TrafficMirrorFilter `json:"CollectorNormalFilters,omitnil,omitempty" name:"CollectorNormalFilters"`
+
+	// 流量镜像的目的地址。
+	CollectorTarget *TrafficMirrorTarget `json:"CollectorTarget,omitnil,omitempty" name:"CollectorTarget"`
+
+	// 流量镜像采集流量的发送端所属子网ID。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 创建的流量镜像的类型，支持VPC/PUBLICIP，默认为VPC类型。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *CreateTrafficMirrorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTrafficMirrorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "TrafficMirrorName")
+	delete(f, "TrafficMirrorDescribe")
+	delete(f, "State")
+	delete(f, "Direction")
+	delete(f, "CollectorSrcs")
+	delete(f, "NatId")
+	delete(f, "CollectorNormalFilters")
+	delete(f, "CollectorTarget")
+	delete(f, "SubnetId")
+	delete(f, "Type")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrafficMirrorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTrafficMirrorResponseParams struct {
+	// 流量镜像实例
+	TrafficMirror *TrafficMirror `json:"TrafficMirror,omitnil,omitempty" name:"TrafficMirror"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTrafficMirrorResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTrafficMirrorResponseParams `json:"Response"`
+}
+
+func (r *CreateTrafficMirrorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTrafficMirrorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10641,6 +10871,60 @@ func (r *DeleteTemplateMemberResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTemplateMemberResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTrafficMirrorRequestParams struct {
+	// 流量镜像实例ID
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+}
+
+type DeleteTrafficMirrorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流量镜像实例ID
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+}
+
+func (r *DeleteTrafficMirrorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTrafficMirrorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTrafficMirrorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTrafficMirrorResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteTrafficMirrorResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteTrafficMirrorResponseParams `json:"Response"`
+}
+
+func (r *DeleteTrafficMirrorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTrafficMirrorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -18573,6 +18857,84 @@ func (r *DescribeTenantCcnsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTenantCcnsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTrafficMirrorsRequestParams struct {
+	// 流量镜像实例ID集合
+	TrafficMirrorIds []*string `json:"TrafficMirrorIds,omitnil,omitempty" name:"TrafficMirrorIds"`
+
+	// 流量镜像查询过滤调节
+	Filters *Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeTrafficMirrorsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流量镜像实例ID集合
+	TrafficMirrorIds []*string `json:"TrafficMirrorIds,omitnil,omitempty" name:"TrafficMirrorIds"`
+
+	// 流量镜像查询过滤调节
+	Filters *Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeTrafficMirrorsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTrafficMirrorsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorIds")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrafficMirrorsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTrafficMirrorsResponseParams struct {
+	// 流量镜像实例信息
+	TrafficMirrorSet []*TrafficMirror `json:"TrafficMirrorSet,omitnil,omitempty" name:"TrafficMirrorSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTrafficMirrorsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTrafficMirrorsResponseParams `json:"Response"`
+}
+
+func (r *DescribeTrafficMirrorsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTrafficMirrorsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -27683,6 +28045,74 @@ func (r *ModifyTemplateMemberResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyTrafficMirrorAttributeRequestParams struct {
+	// 流量镜像实例ID
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像实例名称
+	TrafficMirrorName *string `json:"TrafficMirrorName,omitnil,omitempty" name:"TrafficMirrorName"`
+
+	// 流量镜像实例描述信息
+	TrafficMirrorDescription *string `json:"TrafficMirrorDescription,omitnil,omitempty" name:"TrafficMirrorDescription"`
+}
+
+type ModifyTrafficMirrorAttributeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流量镜像实例ID
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像实例名称
+	TrafficMirrorName *string `json:"TrafficMirrorName,omitnil,omitempty" name:"TrafficMirrorName"`
+
+	// 流量镜像实例描述信息
+	TrafficMirrorDescription *string `json:"TrafficMirrorDescription,omitnil,omitempty" name:"TrafficMirrorDescription"`
+}
+
+func (r *ModifyTrafficMirrorAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTrafficMirrorAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	delete(f, "TrafficMirrorName")
+	delete(f, "TrafficMirrorDescription")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTrafficMirrorAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTrafficMirrorAttributeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyTrafficMirrorAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyTrafficMirrorAttributeResponseParams `json:"Response"`
+}
+
+func (r *ModifyTrafficMirrorAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTrafficMirrorAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyVpcAttributeRequestParams struct {
 	// VPC实例ID。形如：vpc-f49l6u0z。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
@@ -30886,6 +31316,203 @@ func (r *ResetRoutesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ResetTrafficMirrorFilterRequestParams struct {
+	// 流量镜像实例ID
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像需要过滤的natgw实例ID
+	NatId *string `json:"NatId,omitnil,omitempty" name:"NatId"`
+
+	// 流量镜像需要过滤的五元组规则
+	CollectorNormalFilters []*TrafficMirrorFilter `json:"CollectorNormalFilters,omitnil,omitempty" name:"CollectorNormalFilters"`
+}
+
+type ResetTrafficMirrorFilterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流量镜像实例ID
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像需要过滤的natgw实例ID
+	NatId *string `json:"NatId,omitnil,omitempty" name:"NatId"`
+
+	// 流量镜像需要过滤的五元组规则
+	CollectorNormalFilters []*TrafficMirrorFilter `json:"CollectorNormalFilters,omitnil,omitempty" name:"CollectorNormalFilters"`
+}
+
+func (r *ResetTrafficMirrorFilterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetTrafficMirrorFilterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	delete(f, "NatId")
+	delete(f, "CollectorNormalFilters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetTrafficMirrorFilterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetTrafficMirrorFilterResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ResetTrafficMirrorFilterResponse struct {
+	*tchttp.BaseResponse
+	Response *ResetTrafficMirrorFilterResponseParams `json:"Response"`
+}
+
+func (r *ResetTrafficMirrorFilterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetTrafficMirrorFilterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetTrafficMirrorSrcsRequestParams struct {
+	// 流量镜像实例ID
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像采集对象
+	CollectorSrcs []*string `json:"CollectorSrcs,omitnil,omitempty" name:"CollectorSrcs"`
+}
+
+type ResetTrafficMirrorSrcsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流量镜像实例ID
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像采集对象
+	CollectorSrcs []*string `json:"CollectorSrcs,omitnil,omitempty" name:"CollectorSrcs"`
+}
+
+func (r *ResetTrafficMirrorSrcsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetTrafficMirrorSrcsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	delete(f, "CollectorSrcs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetTrafficMirrorSrcsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetTrafficMirrorSrcsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ResetTrafficMirrorSrcsResponse struct {
+	*tchttp.BaseResponse
+	Response *ResetTrafficMirrorSrcsResponseParams `json:"Response"`
+}
+
+func (r *ResetTrafficMirrorSrcsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetTrafficMirrorSrcsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetTrafficMirrorTargetRequestParams struct {
+	// 流量镜像实例ID
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像的接收目的信息
+	CollectorTarget *TrafficMirrorTarget `json:"CollectorTarget,omitnil,omitempty" name:"CollectorTarget"`
+
+	// 公网IP类型的流量镜像采集流量的发送端所属子网
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+}
+
+type ResetTrafficMirrorTargetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流量镜像实例ID
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像的接收目的信息
+	CollectorTarget *TrafficMirrorTarget `json:"CollectorTarget,omitnil,omitempty" name:"CollectorTarget"`
+
+	// 公网IP类型的流量镜像采集流量的发送端所属子网
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+}
+
+func (r *ResetTrafficMirrorTargetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetTrafficMirrorTargetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	delete(f, "CollectorTarget")
+	delete(f, "SubnetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetTrafficMirrorTargetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetTrafficMirrorTargetResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ResetTrafficMirrorTargetResponse struct {
+	*tchttp.BaseResponse
+	Response *ResetTrafficMirrorTargetResponseParams `json:"Response"`
+}
+
+func (r *ResetTrafficMirrorTargetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetTrafficMirrorTargetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ResetVpnConnectionRequestParams struct {
 	// VPN网关实例ID。
 	VpnGatewayId *string `json:"VpnGatewayId,omitnil,omitempty" name:"VpnGatewayId"`
@@ -32033,6 +32660,114 @@ type SslVpnSever struct {
 	SpName *string `json:"SpName,omitnil,omitempty" name:"SpName"`
 }
 
+// Predefined struct for user
+type StartTrafficMirrorRequestParams struct {
+	// 流量镜像实例ID
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+}
+
+type StartTrafficMirrorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流量镜像实例ID
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+}
+
+func (r *StartTrafficMirrorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartTrafficMirrorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartTrafficMirrorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartTrafficMirrorResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StartTrafficMirrorResponse struct {
+	*tchttp.BaseResponse
+	Response *StartTrafficMirrorResponseParams `json:"Response"`
+}
+
+func (r *StartTrafficMirrorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartTrafficMirrorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopTrafficMirrorRequestParams struct {
+	// 流量镜像实例ID
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+}
+
+type StopTrafficMirrorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流量镜像实例ID
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+}
+
+func (r *StopTrafficMirrorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopTrafficMirrorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopTrafficMirrorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopTrafficMirrorResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StopTrafficMirrorResponse struct {
+	*tchttp.BaseResponse
+	Response *StopTrafficMirrorResponseParams `json:"Response"`
+}
+
+func (r *StopTrafficMirrorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopTrafficMirrorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Subnet struct {
 	// `VPC`实例`ID`。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
@@ -32147,6 +32882,94 @@ type TrafficFlow struct {
 	// 格式化后流量的单位
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FormatUnit *string `json:"FormatUnit,omitnil,omitempty" name:"FormatUnit"`
+}
+
+type TrafficMirror struct {
+	// VPC实例ID。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 流量镜像实例。
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像名字。
+	TrafficMirrorName *string `json:"TrafficMirrorName,omitnil,omitempty" name:"TrafficMirrorName"`
+
+	// 流量镜像描述。
+	TrafficMirrorDescribe *string `json:"TrafficMirrorDescribe,omitnil,omitempty" name:"TrafficMirrorDescribe"`
+
+	// 流量镜像状态。
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 流量镜像采集方向。
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+
+	// 流量镜像采集对象。
+	CollectorSrcs []*string `json:"CollectorSrcs,omitnil,omitempty" name:"CollectorSrcs"`
+
+	// 流量镜像过滤的nat网关实例ID。
+	NatId *string `json:"NatId,omitnil,omitempty" name:"NatId"`
+
+	// 流量镜像过滤的五元组规则。
+	CollectorNormalFilters []*TrafficMirrorFilter `json:"CollectorNormalFilters,omitnil,omitempty" name:"CollectorNormalFilters"`
+
+	// 流量镜接收目标。
+	CollectorTarget *TrafficMirrorTarget `json:"CollectorTarget,omitnil,omitempty" name:"CollectorTarget"`
+
+	// 流量镜像创建时间。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 流量镜像的类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 流量镜像所属的子网ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 流量镜接收目标资源信息，当接收目标为ENI和CLB时返回。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetInfo []*TrafficMirrorTargetResourceInfo `json:"TargetInfo,omitnil,omitempty" name:"TargetInfo"`
+}
+
+type TrafficMirrorFilter struct {
+	// 过滤规则的源网段
+	SrcNet *string `json:"SrcNet,omitnil,omitempty" name:"SrcNet"`
+
+	// 过滤规则的目的网段
+	DstNet *string `json:"DstNet,omitnil,omitempty" name:"DstNet"`
+
+	// 过滤规则的协议
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 过滤规则的源端口，默认值1-65535
+	SrcPort *string `json:"SrcPort,omitnil,omitempty" name:"SrcPort"`
+
+	// 过滤规则的目的端口，默认值1-65535
+	DstPort *string `json:"DstPort,omitnil,omitempty" name:"DstPort"`
+}
+
+type TrafficMirrorTarget struct {
+	// 流量镜像的接收IP
+	TargetIps []*string `json:"TargetIps,omitnil,omitempty" name:"TargetIps"`
+
+	// 流量镜像接收IP组，均衡规则，支持ENI/FIVE_TUPLE_FLOW（vpc），FIVE_TUPLE_FLOW（公网IP）
+	AlgHash *string `json:"AlgHash,omitnil,omitempty" name:"AlgHash"`
+
+	// 流量镜像的接收endpoint（公网IP）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetEndPoints []*string `json:"TargetEndPoints,omitnil,omitempty" name:"TargetEndPoints"`
+
+	// 流量镜像的接收类型，分别为：IP/ENI/CLB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
+}
+
+type TrafficMirrorTargetResourceInfo struct {
+	// 接收目标的资源Id
+	TargetId *string `json:"TargetId,omitnil,omitempty" name:"TargetId"`
+
+	// 接收目标的资源名称
+	TargetName *string `json:"TargetName,omitnil,omitempty" name:"TargetName"`
 }
 
 type TrafficPackage struct {
@@ -32707,6 +33530,149 @@ func (r *UnlockCcnsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnlockCcnsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateTrafficMirrorAllFilterRequestParams struct {
+	// 流量镜像实例ID
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像采集方向
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+
+	// 流量镜像采集对象
+	CollectorSrcs []*string `json:"CollectorSrcs,omitnil,omitempty" name:"CollectorSrcs"`
+
+	// 流量镜像需要过滤的natgw实例
+	NatId *string `json:"NatId,omitnil,omitempty" name:"NatId"`
+
+	// 流量镜像需要过滤的五元组规则
+	CollectorNormalFilters []*TrafficMirrorFilter `json:"CollectorNormalFilters,omitnil,omitempty" name:"CollectorNormalFilters"`
+}
+
+type UpdateTrafficMirrorAllFilterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流量镜像实例ID
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像采集方向
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+
+	// 流量镜像采集对象
+	CollectorSrcs []*string `json:"CollectorSrcs,omitnil,omitempty" name:"CollectorSrcs"`
+
+	// 流量镜像需要过滤的natgw实例
+	NatId *string `json:"NatId,omitnil,omitempty" name:"NatId"`
+
+	// 流量镜像需要过滤的五元组规则
+	CollectorNormalFilters []*TrafficMirrorFilter `json:"CollectorNormalFilters,omitnil,omitempty" name:"CollectorNormalFilters"`
+}
+
+func (r *UpdateTrafficMirrorAllFilterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTrafficMirrorAllFilterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	delete(f, "Direction")
+	delete(f, "CollectorSrcs")
+	delete(f, "NatId")
+	delete(f, "CollectorNormalFilters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateTrafficMirrorAllFilterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateTrafficMirrorAllFilterResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateTrafficMirrorAllFilterResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateTrafficMirrorAllFilterResponseParams `json:"Response"`
+}
+
+func (r *UpdateTrafficMirrorAllFilterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTrafficMirrorAllFilterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateTrafficMirrorDirectionRequestParams struct {
+	// 流量镜像实例ID
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像采集方向
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+}
+
+type UpdateTrafficMirrorDirectionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流量镜像实例ID
+	TrafficMirrorId *string `json:"TrafficMirrorId,omitnil,omitempty" name:"TrafficMirrorId"`
+
+	// 流量镜像采集方向
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
+}
+
+func (r *UpdateTrafficMirrorDirectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTrafficMirrorDirectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficMirrorId")
+	delete(f, "Direction")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateTrafficMirrorDirectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateTrafficMirrorDirectionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateTrafficMirrorDirectionResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateTrafficMirrorDirectionResponseParams `json:"Response"`
+}
+
+func (r *UpdateTrafficMirrorDirectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTrafficMirrorDirectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

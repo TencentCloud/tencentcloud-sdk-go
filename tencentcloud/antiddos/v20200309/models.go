@@ -1013,7 +1013,7 @@ type CreateBoundIPRequestParams struct {
 	// 已弃用，不填
 	CopyPolicy *string `json:"CopyPolicy,omitnil,omitempty" name:"CopyPolicy"`
 
-	// 如果该资源实例为域名化资产则，该参数必填
+	// 如果该资源实例为域名化资产以及跨地域绑定则，该参数必填
 	FilterRegion *string `json:"FilterRegion,omitnil,omitempty" name:"FilterRegion"`
 }
 
@@ -1035,7 +1035,7 @@ type CreateBoundIPRequest struct {
 	// 已弃用，不填
 	CopyPolicy *string `json:"CopyPolicy,omitnil,omitempty" name:"CopyPolicy"`
 
-	// 如果该资源实例为域名化资产则，该参数必填
+	// 如果该资源实例为域名化资产以及跨地域绑定则，该参数必填
 	FilterRegion *string `json:"FilterRegion,omitnil,omitempty" name:"FilterRegion"`
 }
 

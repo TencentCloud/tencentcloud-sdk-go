@@ -1464,15 +1464,25 @@ type ContentInfo struct {
 	// 结果置信度
 	Confidence *int64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
 
-	// 字段是否不完整
+	// 字段是否不完整（value内容）
 	// 0 字段正常
 	// 1 字段不完整
 	IsInComplete *int64 `json:"IsInComplete,omitnil,omitempty" name:"IsInComplete"`
 
-	// 字段反光
+	// 字段反光（value内容）
 	// 0 字段正常
 	// 1 字段有反光
 	IsReflect *int64 `json:"IsReflect,omitnil,omitempty" name:"IsReflect"`
+
+	// 字段是否不完整（key内容）
+	// 0 字段正常
+	// 1 字段不完整
+	IsKeyInComplete *int64 `json:"IsKeyInComplete,omitnil,omitempty" name:"IsKeyInComplete"`
+
+	// 字段反光（key内容）
+	// 0 字段正常
+	// 1 字段有反光
+	IsKeyReflect *int64 `json:"IsKeyReflect,omitnil,omitempty" name:"IsKeyReflect"`
 }
 
 type Coord struct {

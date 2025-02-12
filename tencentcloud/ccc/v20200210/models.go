@@ -6368,6 +6368,7 @@ type TelCdrInfo struct {
 	// 电话呼出	        210	           notInService	不在服务区
 	// 
 	// 电话呼入&呼出	211    clientError    客户端错误
+	// 电话呼出        212     carrierBlocked      运营商拦截
 	EndStatus *int64 `json:"EndStatus,omitnil,omitempty" name:"EndStatus"`
 
 	// 技能组名称
@@ -6453,6 +6454,7 @@ type TelCdrInfo struct {
 	// 电话呼出	        210	           notInService	不在服务区
 	// 
 	// 电话呼入&呼出	211    clientError    客户端错误
+	// 电话呼出        212     carrierBlocked      运营商拦截
 	EndStatusString *string `json:"EndStatusString,omitnil,omitempty" name:"EndStatusString"`
 
 	// 会话开始时间戳，UNIX 秒级时间戳

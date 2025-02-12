@@ -854,6 +854,12 @@ type AiParagraphInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
 
+	// 分段标题
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 分段关键词
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
+
 	// 分段起始时间点，秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil,omitempty" name:"StartTimeOffset"`
@@ -12177,6 +12183,12 @@ type MediaAiAnalysisDescriptionItem struct {
 
 	// 智能描述的可信度，取值范围是 0 到 100。
 	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
+
+	// 智能描述标题
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 智能描述关键词
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
 	// 分段结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。

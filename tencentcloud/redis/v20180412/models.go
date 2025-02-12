@@ -2184,7 +2184,6 @@ type DescribeBackupUrlResponseParams struct {
 	Filenames []*string `json:"Filenames,omitnil,omitempty" name:"Filenames"`
 
 	// 备份文件信息列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupInfos []*BackupDownloadInfo `json:"BackupInfos,omitnil,omitempty" name:"BackupInfos"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2590,11 +2589,9 @@ func (r *DescribeInstanceAccountRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceAccountResponseParams struct {
 	// 账号详细信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 
 	// 账号个数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2766,35 +2763,27 @@ func (r *DescribeInstanceDTSInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceDTSInfoResponseParams struct {
 	// DTS任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// DTS任务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
 	// 任务状态,取值为：1-创建中(Creating),3-校验中(Checking)4-校验通过(CheckPass),5-校验不通过（CheckNotPass）,7-任务运行(Running),8-准备完成（ReadyComplete）,9-任务成功（Success）,10-任务失败（Failed）,11-撤销中（Stopping）,12-完成中（Completing）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 状态描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
 	// 同步时延，单位：字节
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 断开时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CutDownTime *string `json:"CutDownTime,omitnil,omitempty" name:"CutDownTime"`
 
 	// 源实例信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcInfo *DescribeInstanceDTSInstanceInfo `json:"SrcInfo,omitnil,omitempty" name:"SrcInfo"`
 
 	// 目标实例信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstInfo *DescribeInstanceDTSInstanceInfo `json:"DstInfo,omitnil,omitempty" name:"DstInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3693,21 +3682,18 @@ type DescribeInstanceNodeInfoResponseParams struct {
 	ProxyCount *int64 `json:"ProxyCount,omitnil,omitempty" name:"ProxyCount"`
 
 	// Proxy节点信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Proxy []*ProxyNodes `json:"Proxy,omitnil,omitempty" name:"Proxy"`
 
 	// Redis节点数量。
 	RedisCount *int64 `json:"RedisCount,omitnil,omitempty" name:"RedisCount"`
 
 	// Redis节点信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Redis []*RedisNodes `json:"Redis,omitnil,omitempty" name:"Redis"`
 
 	// 该参数不再使用，请忽略。
 	TendisCount *int64 `json:"TendisCount,omitnil,omitempty" name:"TendisCount"`
 
 	// 该参数不再使用，请忽略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tendis []*TendisNodes `json:"Tendis,omitnil,omitempty" name:"Tendis"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6233,7 +6219,6 @@ func (r *DisableReplicaReadonlyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableReplicaReadonlyResponseParams struct {
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6372,11 +6357,9 @@ func (r *EnableReplicaReadonlyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EnableReplicaReadonlyResponseParams struct {
 	// 错误：ERROR，正确OK（已废弃）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6625,7 +6608,6 @@ func (r *InquiryPriceCreateInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type InquiryPriceCreateInstanceResponseParams struct {
 	// 价格，单位：分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6690,7 +6672,6 @@ func (r *InquiryPriceRenewInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type InquiryPriceRenewInstanceResponseParams struct {
 	// 价格，单位：分。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6769,7 +6750,6 @@ func (r *InquiryPriceUpgradeInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type InquiryPriceUpgradeInstanceResponseParams struct {
 	// 价格，单位：分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

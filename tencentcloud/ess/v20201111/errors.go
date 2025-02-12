@@ -26,6 +26,9 @@ const (
 	// 年龄限制无法使用电子签服务，请联系客服咨询处理。
 	FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
 
+	// 套餐余额不足。
+	FAILEDOPERATION_BALANCENOTENOUGH = "FailedOperation.BalanceNotEnough"
+
 	// 签署流程已有关联文档，请检查参数修改后重试。
 	FAILEDOPERATION_FLOWHASDOCUMENT = "FailedOperation.FlowHasDocument"
 

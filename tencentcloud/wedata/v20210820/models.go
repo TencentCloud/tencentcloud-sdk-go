@@ -3306,6 +3306,16 @@ func (r *CountOpsInstanceStateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateAndDDLSupport struct {
+	// 是否支持select
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportSelect *bool `json:"SupportSelect,omitnil,omitempty" name:"SupportSelect"`
+
+	// 是否支持ddl
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportDdl *bool `json:"SupportDdl,omitnil,omitempty" name:"SupportDdl"`
+}
+
 // Predefined struct for user
 type CreateCustomFunctionRequestParams struct {
 	// 枚举值：HIVE、SPARK、DLC
@@ -5962,6 +5972,14 @@ type DatabaseMeta struct {
 	// 引擎名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 库下表的最新更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifiedTimeByTables *uint64 `json:"ModifiedTimeByTables,omitnil,omitempty" name:"ModifiedTimeByTables"`
+
+	// 库下表的最新访问时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastAccessTimeByTables *uint64 `json:"LastAccessTimeByTables,omitnil,omitempty" name:"LastAccessTimeByTables"`
 }
 
 type DatasourceBaseInfo struct {
@@ -30012,6 +30030,18 @@ type TableMeta struct {
 	// 是否有修改业务权限
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HasBizPermission *bool `json:"HasBizPermission,omitnil,omitempty" name:"HasBizPermission"`
+
+	// 引擎侧创建人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerByEngine *string `json:"OwnerByEngine,omitnil,omitempty" name:"OwnerByEngine"`
+
+	// 用户无映射账户，请先完成账户映射后再来申请。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorTips *string `json:"ErrorTips,omitnil,omitempty" name:"ErrorTips"`
+
+	// 是否支持select or ddl
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IfSupportCreateAndDDL *CreateAndDDLSupport `json:"IfSupportCreateAndDDL,omitnil,omitempty" name:"IfSupportCreateAndDDL"`
 }
 
 type TableMetaProperty struct {

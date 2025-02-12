@@ -99,7 +99,9 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 // - 标准计费（2025年2月26日起生效）
 //
-// ![image](https://cdn.xiaowei.qq.com/static/lke/deepseek-token.png)
+// 
+//
+//  ![image](https://cdn.xiaowei.qq.com/static/lke/deekseep-token0212.png)
 //
 // 
 //
@@ -300,7 +302,9 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 // - 标准计费（2025年2月26日起生效）
 //
-// ![image](https://cdn.xiaowei.qq.com/static/lke/deepseek-token.png)
+// 
+//
+//  ![image](https://cdn.xiaowei.qq.com/static/lke/deekseep-token0212.png)
 //
 // 
 //

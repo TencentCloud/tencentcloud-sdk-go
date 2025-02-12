@@ -76,7 +76,7 @@ func (r *ActivateServiceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChatCompletionsRequestParams struct {
-	// 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo、 hunyuan-turbo-latest、 hunyuan-large、 hunyuan-large-longcontext、 hunyuan-turbo-vision、 hunyuan-standard-vision。
+	// 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-code、hunyuan-role、hunyuan-functioncall、hunyuan-vision、hunyuan-turbo、hunyuan-turbo-latest、hunyuan-turbo-20241223、hunyuan-turbo-20241120、hunyuan-large、hunyuan-large-longcontext、hunyuan-turbo-vision、hunyuan-standard-vision、hunyuan-lite-vision。
 	// 各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。
 	// 
 	// 注意：
@@ -133,14 +133,10 @@ type ChatCompletionsRequestParams struct {
 	// 4. 安全审核能力不属于功能增强范围，不受此字段影响。
 	EnableEnhancement *bool `json:"EnableEnhancement,omitnil,omitempty" name:"EnableEnhancement"`
 
-	// 可调用的工具列表，仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。
+	// 可调用的工具列表，仅对 hunyuan-turbo、hunyuan-functioncall 模型生效。
 	Tools []*Tool `json:"Tools,omitnil,omitempty" name:"Tools"`
 
-	// 工具使用选项，可选值包括 none、auto、custom。
-	// 说明：
-	// 1. 仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。
-	// 2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。
-	// 3. 未设置时，默认值为auto
+	// 工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-turbo、hunyuan-functioncall 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto
 	ToolChoice *string `json:"ToolChoice,omitnil,omitempty" name:"ToolChoice"`
 
 	// 强制模型调用指定的工具，当参数ToolChoice为custom时，此参数为必填
@@ -201,7 +197,7 @@ type ChatCompletionsRequestParams struct {
 type ChatCompletionsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-pro、 hunyuan-code、 hunyuan-role、 hunyuan-functioncall、 hunyuan-vision、 hunyuan-turbo、 hunyuan-turbo-latest、 hunyuan-large、 hunyuan-large-longcontext、 hunyuan-turbo-vision、 hunyuan-standard-vision。
+	// 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-code、hunyuan-role、hunyuan-functioncall、hunyuan-vision、hunyuan-turbo、hunyuan-turbo-latest、hunyuan-turbo-20241223、hunyuan-turbo-20241120、hunyuan-large、hunyuan-large-longcontext、hunyuan-turbo-vision、hunyuan-standard-vision、hunyuan-lite-vision。
 	// 各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。
 	// 
 	// 注意：
@@ -258,14 +254,10 @@ type ChatCompletionsRequest struct {
 	// 4. 安全审核能力不属于功能增强范围，不受此字段影响。
 	EnableEnhancement *bool `json:"EnableEnhancement,omitnil,omitempty" name:"EnableEnhancement"`
 
-	// 可调用的工具列表，仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。
+	// 可调用的工具列表，仅对 hunyuan-turbo、hunyuan-functioncall 模型生效。
 	Tools []*Tool `json:"Tools,omitnil,omitempty" name:"Tools"`
 
-	// 工具使用选项，可选值包括 none、auto、custom。
-	// 说明：
-	// 1. 仅对 hunyuan-pro、hunyuan-turbo、hunyuan-functioncall 模型生效。
-	// 2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。
-	// 3. 未设置时，默认值为auto
+	// 工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-turbo、hunyuan-functioncall 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto
 	ToolChoice *string `json:"ToolChoice,omitnil,omitempty" name:"ToolChoice"`
 
 	// 强制模型调用指定的工具，当参数ToolChoice为custom时，此参数为必填
@@ -877,7 +869,7 @@ type FilesUploadsRequestParams struct {
 	// 文件名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 文件链接。目前仅支持 pdf 格式，单文件大小限制为100M。
+	// 文件链接。目前支持 csv, doc, docx, pdf, ppt, pptx, txt, xls, xlsx 格式，单文件大小限制为100M。
 	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
 }
 
@@ -887,7 +879,7 @@ type FilesUploadsRequest struct {
 	// 文件名。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 文件链接。目前仅支持 pdf 格式，单文件大小限制为100M。
+	// 文件链接。目前支持 csv, doc, docx, pdf, ppt, pptx, txt, xls, xlsx 格式，单文件大小限制为100M。
 	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
 }
 

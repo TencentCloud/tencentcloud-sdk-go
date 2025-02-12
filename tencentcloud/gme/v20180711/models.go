@@ -44,34 +44,27 @@ type AgeDetectTaskResult struct {
 
 type AppStatisticsItem struct {
 	// 实时语音统计数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealtimeSpeechStatisticsItem *RealTimeSpeechStatisticsItem `json:"RealtimeSpeechStatisticsItem,omitnil,omitempty" name:"RealtimeSpeechStatisticsItem"`
 
 	// 语音消息统计数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoiceMessageStatisticsItem *VoiceMessageStatisticsItem `json:"VoiceMessageStatisticsItem,omitnil,omitempty" name:"VoiceMessageStatisticsItem"`
 
 	// 语音过滤统计数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoiceFilterStatisticsItem *VoiceFilterStatisticsItem `json:"VoiceFilterStatisticsItem,omitnil,omitempty" name:"VoiceFilterStatisticsItem"`
 
 	// 统计时间
 	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 
 	// 录音转文本用量统计数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioTextStatisticsItem *AudioTextStatisticsItem `json:"AudioTextStatisticsItem,omitnil,omitempty" name:"AudioTextStatisticsItem"`
 
 	// 流式转文本用量数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamTextStatisticsItem *StreamTextStatisticsItem `json:"StreamTextStatisticsItem,omitnil,omitempty" name:"StreamTextStatisticsItem"`
 
 	// 海外转文本用量数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OverseaTextStatisticsItem *OverseaTextStatisticsItem `json:"OverseaTextStatisticsItem,omitnil,omitempty" name:"OverseaTextStatisticsItem"`
 
 	// 实时语音转文本用量数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealtimeTextStatisticsItem *RealtimeTextStatisticsItem `json:"RealtimeTextStatisticsItem,omitnil,omitempty" name:"RealtimeTextStatisticsItem"`
 }
 
@@ -146,7 +139,6 @@ type AsrConf struct {
 
 type AudioTextStatisticsItem struct {
 	// 统计值，单位：秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *float64 `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
@@ -2048,7 +2040,6 @@ func (r *ModifyUserMicStatusResponse) FromJsonString(s string) error {
 
 type OverseaTextStatisticsItem struct {
 	// 统计值，单位：秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *float64 `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
@@ -2082,7 +2073,6 @@ type RealtimeSpeechConf struct {
 
 type RealtimeTextStatisticsItem struct {
 	// 统计值，单位：秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *float64 `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
@@ -2280,7 +2270,16 @@ type ScanVoiceResult struct {
 }
 
 type SceneInfo struct {
+	// 'RealTime','实时语音分析',
+	// 'VoiceMessage','语音消息',
+	// 'GMECloudApi':'GME云API接口'
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
 
+	// 开关状态，true开启/false关闭
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 用户回调地址
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 }
 
 type ServiceStatus struct {
@@ -2463,7 +2462,6 @@ func (r *StopRecordResponse) FromJsonString(s string) error {
 
 type StreamTextStatisticsItem struct {
 	// 统计值，单位：秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *float64 `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
@@ -2479,11 +2477,9 @@ type SubscribeRecordUserIds struct {
 
 type Tag struct {
 	// 标签键
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 标签值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
