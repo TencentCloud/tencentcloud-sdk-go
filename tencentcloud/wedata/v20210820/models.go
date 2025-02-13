@@ -6897,13 +6897,13 @@ type DeleteResourceFilesRequestParams struct {
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 使用状态
+	// 使用状态， 为ture 判断资源的使用状态，如果使用中则不能删除
 	UseStatus *bool `json:"UseStatus,omitnil,omitempty" name:"UseStatus"`
 
 	// 资源id列表
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 资源路径列表
+	// 需要删除的资源路径列表 即资源管理中的目录结构
 	FilePaths []*string `json:"FilePaths,omitnil,omitempty" name:"FilePaths"`
 }
 
@@ -6913,13 +6913,13 @@ type DeleteResourceFilesRequest struct {
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 使用状态
+	// 使用状态， 为ture 判断资源的使用状态，如果使用中则不能删除
 	UseStatus *bool `json:"UseStatus,omitnil,omitempty" name:"UseStatus"`
 
 	// 资源id列表
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 资源路径列表
+	// 需要删除的资源路径列表 即资源管理中的目录结构
 	FilePaths []*string `json:"FilePaths,omitnil,omitempty" name:"FilePaths"`
 }
 
@@ -20989,6 +20989,9 @@ type InstanceLogInfoOpsDto struct {
 
 	// 日志匹配节点信息
 	MatchedBrokerIp *string `json:"MatchedBrokerIp,omitnil,omitempty" name:"MatchedBrokerIp"`
+
+	// 执行平台通用协议
+	ExecutionExtendedProps []*PairDto `json:"ExecutionExtendedProps,omitnil,omitempty" name:"ExecutionExtendedProps"`
 }
 
 type InstanceLogList struct {
@@ -25259,6 +25262,9 @@ type PairDto struct {
 	// 值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type ParamInfo struct {

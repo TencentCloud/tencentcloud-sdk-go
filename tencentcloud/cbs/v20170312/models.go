@@ -45,6 +45,12 @@ type ApplyDiskBackupRequestParams struct {
 
 	// 云硬盘备份点原云硬盘ID，可通过DescribeDisks接口查询。
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
+
+	// 回滚云硬盘备份点前是否自动关机，默认为FALSE，表示不自动关机
+	AutoStopInstance *bool `json:"AutoStopInstance,omitnil,omitempty" name:"AutoStopInstance"`
+
+	// 回滚云硬盘备份点完成后是否自动开机，默认为FALSE，表示不自动开机
+	AutoStartInstance *bool `json:"AutoStartInstance,omitnil,omitempty" name:"AutoStartInstance"`
 }
 
 type ApplyDiskBackupRequest struct {
@@ -55,6 +61,12 @@ type ApplyDiskBackupRequest struct {
 
 	// 云硬盘备份点原云硬盘ID，可通过DescribeDisks接口查询。
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
+
+	// 回滚云硬盘备份点前是否自动关机，默认为FALSE，表示不自动关机
+	AutoStopInstance *bool `json:"AutoStopInstance,omitnil,omitempty" name:"AutoStopInstance"`
+
+	// 回滚云硬盘备份点完成后是否自动开机，默认为FALSE，表示不自动开机
+	AutoStartInstance *bool `json:"AutoStartInstance,omitnil,omitempty" name:"AutoStartInstance"`
 }
 
 func (r *ApplyDiskBackupRequest) ToJsonString() string {
@@ -71,6 +83,8 @@ func (r *ApplyDiskBackupRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DiskBackupId")
 	delete(f, "DiskId")
+	delete(f, "AutoStopInstance")
+	delete(f, "AutoStartInstance")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyDiskBackupRequest has unknown keys!", "")
 	}

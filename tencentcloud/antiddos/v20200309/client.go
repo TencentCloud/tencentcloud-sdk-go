@@ -2094,6 +2094,7 @@ func NewDeleteDDoSSpeedLimitConfigResponse() (response *DeleteDDoSSpeedLimitConf
 // 删除DDoS防护的访问限速配置
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteDDoSSpeedLimitConfig(request *DeleteDDoSSpeedLimitConfigRequest) (response *DeleteDDoSSpeedLimitConfigResponse, err error) {
     return c.DeleteDDoSSpeedLimitConfigWithContext(context.Background(), request)
@@ -2103,6 +2104,7 @@ func (c *Client) DeleteDDoSSpeedLimitConfig(request *DeleteDDoSSpeedLimitConfigR
 // 删除DDoS防护的访问限速配置
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteDDoSSpeedLimitConfigWithContext(ctx context.Context, request *DeleteDDoSSpeedLimitConfigRequest) (response *DeleteDDoSSpeedLimitConfigResponse, err error) {
     if request == nil {
@@ -5908,7 +5910,7 @@ func NewModifyDDoSLevelResponse() (response *ModifyDDoSLevelResponse) {
 // 读取或修改DDoS的防护等级
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ModifyDDoSLevel(request *ModifyDDoSLevelRequest) (response *ModifyDDoSLevelResponse, err error) {
     return c.ModifyDDoSLevelWithContext(context.Background(), request)
 }
@@ -5917,7 +5919,7 @@ func (c *Client) ModifyDDoSLevel(request *ModifyDDoSLevelRequest) (response *Mod
 // 读取或修改DDoS的防护等级
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) ModifyDDoSLevelWithContext(ctx context.Context, request *ModifyDDoSLevelRequest) (response *ModifyDDoSLevelResponse, err error) {
     if request == nil {
         request = NewModifyDDoSLevelRequest()
@@ -6286,7 +6288,7 @@ func NewSwitchWaterPrintConfigResponse() (response *SwitchWaterPrintConfigRespon
 }
 
 // SwitchWaterPrintConfig
-// 开启或关闭DDoS防护的水印防护配置
+// 开启或关闭DDoS防护的水印防护配置，此功能为付费增值服务，有需求请联系售后
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -6298,7 +6300,7 @@ func (c *Client) SwitchWaterPrintConfig(request *SwitchWaterPrintConfigRequest) 
 }
 
 // SwitchWaterPrintConfig
-// 开启或关闭DDoS防护的水印防护配置
+// 开启或关闭DDoS防护的水印防护配置，此功能为付费增值服务，有需求请联系售后
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

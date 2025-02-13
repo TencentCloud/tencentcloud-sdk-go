@@ -8080,7 +8080,7 @@ func NewUnlockAccountResponse() (response *UnlockAccountResponse) {
 }
 
 // UnlockAccount
-// 解除数据库账号的锁定，解锁后账号可以登陆数据库。
+// 解除数据库账号的锁定，解锁后账号可以登录数据库。
 //
 // 可能返回的错误码:
 //  DBERROR = "DBError"
@@ -8101,7 +8101,7 @@ func (c *Client) UnlockAccount(request *UnlockAccountRequest) (response *UnlockA
 }
 
 // UnlockAccount
-// 解除数据库账号的锁定，解锁后账号可以登陆数据库。
+// 解除数据库账号的锁定，解锁后账号可以登录数据库。
 //
 // 可能返回的错误码:
 //  DBERROR = "DBError"

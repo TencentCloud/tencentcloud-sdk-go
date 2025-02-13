@@ -2110,6 +2110,9 @@ type CreateRocketMQEnvironmentRoleRequestParams struct {
 
 	// 必填字段，集群的ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// Topic&Group维度权限配置
+	DetailedPerms []*DetailedRolePerm `json:"DetailedPerms,omitnil,omitempty" name:"DetailedPerms"`
 }
 
 type CreateRocketMQEnvironmentRoleRequest struct {
@@ -2126,6 +2129,9 @@ type CreateRocketMQEnvironmentRoleRequest struct {
 
 	// 必填字段，集群的ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// Topic&Group维度权限配置
+	DetailedPerms []*DetailedRolePerm `json:"DetailedPerms,omitnil,omitempty" name:"DetailedPerms"`
 }
 
 func (r *CreateRocketMQEnvironmentRoleRequest) ToJsonString() string {
@@ -2144,6 +2150,7 @@ func (r *CreateRocketMQEnvironmentRoleRequest) FromJsonString(s string) error {
 	delete(f, "RoleName")
 	delete(f, "Permissions")
 	delete(f, "ClusterId")
+	delete(f, "DetailedPerms")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRocketMQEnvironmentRoleRequest has unknown keys!", "")
 	}
@@ -2367,6 +2374,9 @@ type CreateRocketMQRoleRequestParams struct {
 
 	// 备注说明，长度必须大等于0且小等于128。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 角色授权类型（集群：Cluster; 主题或消费组：TopicAndGroup）
+	PermType *string `json:"PermType,omitnil,omitempty" name:"PermType"`
 }
 
 type CreateRocketMQRoleRequest struct {
@@ -2380,6 +2390,9 @@ type CreateRocketMQRoleRequest struct {
 
 	// 备注说明，长度必须大等于0且小等于128。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 角色授权类型（集群：Cluster; 主题或消费组：TopicAndGroup）
+	PermType *string `json:"PermType,omitnil,omitempty" name:"PermType"`
 }
 
 func (r *CreateRocketMQRoleRequest) ToJsonString() string {
@@ -2397,6 +2410,7 @@ func (r *CreateRocketMQRoleRequest) FromJsonString(s string) error {
 	delete(f, "RoleName")
 	delete(f, "ClusterId")
 	delete(f, "Remark")
+	delete(f, "PermType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRocketMQRoleRequest has unknown keys!", "")
 	}
@@ -10374,6 +10388,23 @@ func (r *DescribeTopicsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DetailedRolePerm struct {
+	// 权限对应的资源
+	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 是否开启生产权限
+	PermWrite *bool `json:"PermWrite,omitnil,omitempty" name:"PermWrite"`
+
+	// 是否开启消费权限
+	PermRead *bool `json:"PermRead,omitnil,omitempty" name:"PermRead"`
+
+	// 授权资源类型（Topic:主题; Group:消费组）
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
 type Environment struct {
 	// 命名空间名称
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
@@ -12167,6 +12198,9 @@ type ModifyRocketMQEnvironmentRoleRequestParams struct {
 
 	// 必填字段，集群的ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// Topic&Group维度权限配置
+	DetailedPerms []*DetailedRolePerm `json:"DetailedPerms,omitnil,omitempty" name:"DetailedPerms"`
 }
 
 type ModifyRocketMQEnvironmentRoleRequest struct {
@@ -12183,6 +12217,9 @@ type ModifyRocketMQEnvironmentRoleRequest struct {
 
 	// 必填字段，集群的ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// Topic&Group维度权限配置
+	DetailedPerms []*DetailedRolePerm `json:"DetailedPerms,omitnil,omitempty" name:"DetailedPerms"`
 }
 
 func (r *ModifyRocketMQEnvironmentRoleRequest) ToJsonString() string {
@@ -12201,6 +12238,7 @@ func (r *ModifyRocketMQEnvironmentRoleRequest) FromJsonString(s string) error {
 	delete(f, "RoleName")
 	delete(f, "Permissions")
 	delete(f, "ClusterId")
+	delete(f, "DetailedPerms")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRocketMQEnvironmentRoleRequest has unknown keys!", "")
 	}
@@ -12586,6 +12624,9 @@ type ModifyRocketMQRoleRequestParams struct {
 
 	// 备注说明，长度必须大等于0且小等于128。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
+	PermType *string `json:"PermType,omitnil,omitempty" name:"PermType"`
 }
 
 type ModifyRocketMQRoleRequest struct {
@@ -12599,6 +12640,9 @@ type ModifyRocketMQRoleRequest struct {
 
 	// 备注说明，长度必须大等于0且小等于128。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
+	PermType *string `json:"PermType,omitnil,omitempty" name:"PermType"`
 }
 
 func (r *ModifyRocketMQRoleRequest) ToJsonString() string {
@@ -12616,6 +12660,7 @@ func (r *ModifyRocketMQRoleRequest) FromJsonString(s string) error {
 	delete(f, "RoleName")
 	delete(f, "ClusterId")
 	delete(f, "Remark")
+	delete(f, "PermType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRocketMQRoleRequest has unknown keys!", "")
 	}

@@ -2166,6 +2166,8 @@ func NewDescribeRoleListResponse() (response *DescribeRoleListResponse) {
 //
 // 1. RoleName，角色名称模糊搜索
 //
+// 2. AccessKey，AccessKey模糊搜索
+//
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 //  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
@@ -2179,6 +2181,8 @@ func (c *Client) DescribeRoleList(request *DescribeRoleListRequest) (response *D
 // 
 //
 // 1. RoleName，角色名称模糊搜索
+//
+// 2. AccessKey，AccessKey模糊搜索
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"

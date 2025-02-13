@@ -2385,6 +2385,9 @@ type QueueConfig struct {
 	// 队列中期望的空闲节点数量（包含弹性节点和静态节点）。默认值：0。队列中，处于空闲状态的节点小于此值，集群会扩容弹性节点；处于空闲状态的节点大于此值，集群会缩容弹性节点。
 	DesiredIdleNodeCapacity *int64 `json:"DesiredIdleNodeCapacity,omitnil,omitempty" name:"DesiredIdleNodeCapacity"`
 
+	// 队列中期望的总节点数。
+	DesiredNodeCount *int64 `json:"DesiredNodeCount,omitnil,omitempty" name:"DesiredNodeCount"`
+
 	// 扩容比例。默认值：100。取值范围：1～100。
 	// 如果扩容比例为50，那么每轮只会扩容当前作业负载所需的50%数量的节点。
 	ScaleOutRatio *int64 `json:"ScaleOutRatio,omitnil,omitempty" name:"ScaleOutRatio"`
@@ -2430,6 +2433,9 @@ type QueueConfigOverview struct {
 	// 队列中期望的空闲节点数量（包含弹性节点和静态节点）。默认值：0。队列中，处于空闲状态的节点小于此值，集群会扩容弹性节点；处于空闲状态的节点大于此值，集群会缩容弹性节点。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DesiredIdleNodeCapacity *int64 `json:"DesiredIdleNodeCapacity,omitnil,omitempty" name:"DesiredIdleNodeCapacity"`
+
+	// 队列中期望的总节点数。
+	DesiredNodeCount *int64 `json:"DesiredNodeCount,omitnil,omitempty" name:"DesiredNodeCount"`
 
 	// 扩容比例。默认值：100。取值范围：1～100。
 	// 如果扩容比例为50，那么每轮只会扩容当前作业负载所需的50%数量的节点。

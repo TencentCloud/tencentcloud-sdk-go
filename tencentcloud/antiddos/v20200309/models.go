@@ -1096,7 +1096,7 @@ type CreateCCPrecisionPolicyRequestParams struct {
 	// IP值
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 协议， 可取值HTTP，HTTPS
+	// 协议， 可取值http，https，http/https
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 域名
@@ -1118,7 +1118,7 @@ type CreateCCPrecisionPolicyRequest struct {
 	// IP值
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 协议， 可取值HTTP，HTTPS
+	// 协议， 可取值http，https，http/https
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 域名
@@ -1185,7 +1185,7 @@ type CreateCCReqLimitPolicyRequestParams struct {
 	// IP值
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 协议，可取值HTTP，HTTPS
+	// 协议，可取值http, https, http/https
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 域名
@@ -1194,7 +1194,7 @@ type CreateCCReqLimitPolicyRequestParams struct {
 	// 策略项
 	Policy *CCReqLimitPolicyRecord `json:"Policy,omitnil,omitempty" name:"Policy"`
 
-	// 是否为兜底频控
+	// 是否为兜底频控 0表示不是 1表示是
 	IsGlobal *int64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 }
 
@@ -1207,7 +1207,7 @@ type CreateCCReqLimitPolicyRequest struct {
 	// IP值
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 协议，可取值HTTP，HTTPS
+	// 协议，可取值http, https, http/https
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 域名
@@ -1216,7 +1216,7 @@ type CreateCCReqLimitPolicyRequest struct {
 	// 策略项
 	Policy *CCReqLimitPolicyRecord `json:"Policy,omitnil,omitempty" name:"Policy"`
 
-	// 是否为兜底频控
+	// 是否为兜底频控 0表示不是 1表示是
 	IsGlobal *int64 `json:"IsGlobal,omitnil,omitempty" name:"IsGlobal"`
 }
 
@@ -3574,7 +3574,7 @@ type DescribeBgpBizTrendRequestParams struct {
 	// 统计结束时间。 例：“2020-09-22 00:00:00”，注意该时间必须为5分钟的倍数
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 统计纬度，可取值intraffic, outtraffic, inpkg, outpkg
+	// 统计维度，可取值intraffic, outtraffic, inpkg, outpkg； intraffic：入流量 outtraffic：出流量 inpkg：入包速率 outpkg：出包速率
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
 	// 资源实例ID
@@ -3596,7 +3596,7 @@ type DescribeBgpBizTrendRequest struct {
 	// 统计结束时间。 例：“2020-09-22 00:00:00”，注意该时间必须为5分钟的倍数
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 统计纬度，可取值intraffic, outtraffic, inpkg, outpkg
+	// 统计维度，可取值intraffic, outtraffic, inpkg, outpkg； intraffic：入流量 outtraffic：出流量 inpkg：入包速率 outpkg：出包速率
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
 	// 资源实例ID
@@ -7973,7 +7973,7 @@ type ModifyCCPrecisionPolicyRequestParams struct {
 	// 策略Id
 	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
-	// 策略方式。可取值：alg、drop。alg指返回验证码方式验证，drop表示该访问丢弃。
+	// 策略方式。可取值：alg、drop、trans。alg指返回验证码方式验证，drop表示该访问丢弃，trans表示该访问放行。
 	PolicyAction *string `json:"PolicyAction,omitnil,omitempty" name:"PolicyAction"`
 
 	// 策略记录
@@ -7989,7 +7989,7 @@ type ModifyCCPrecisionPolicyRequest struct {
 	// 策略Id
 	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
-	// 策略方式。可取值：alg、drop。alg指返回验证码方式验证，drop表示该访问丢弃。
+	// 策略方式。可取值：alg、drop、trans。alg指返回验证码方式验证，drop表示该访问丢弃，trans表示该访问放行。
 	PolicyAction *string `json:"PolicyAction,omitnil,omitempty" name:"PolicyAction"`
 
 	// 策略记录
@@ -8119,7 +8119,7 @@ type ModifyCCThresholdPolicyRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 协议，可取值HTTP，HTTPS
+	// 协议，可取值http，https，http/https
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 清洗阈值，-1表示开启“默认”模式
@@ -8138,7 +8138,7 @@ type ModifyCCThresholdPolicyRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 协议，可取值HTTP，HTTPS
+	// 协议，可取值http，https，http/https
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 清洗阈值，-1表示开启“默认”模式
@@ -9118,8 +9118,8 @@ type PacketFilterConfig struct {
 	// drop(丢弃)
 	// transmit(放行)
 	// drop_black(丢弃并拉黑)
-	// drop_rst(拦截)
-	// drop_black_rst(拦截并拉黑)
+	// drop_rst(拦截)（已废弃，不支持drop_rst）
+	// drop_black_rst(拦截并拉黑)（已废弃，不支持drop_black_rst）
 	// forward(继续防护)
 	// ]
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
@@ -9134,14 +9134,11 @@ type PacketFilterConfig struct {
 
 	// 检测类型，取值[
 	// sunday(关键字)
-	// pcre(正则表达式)
+	// pcre(正则表达式) （已废弃，仅支持sunday）
 	// ]
 	MatchType *string `json:"MatchType,omitnil,omitempty" name:"MatchType"`
 
-	// 检测值，关键字符串或正则表达式,取值[
-	// 当检测类型为sunday时，请填写字符串或者16进制字节码，例如\x313233对应的是字符串"123"的16进制字节码;
-	// 当检测类型为pcre时, 请填写正则表达式字符串;
-	// ]
+	// 检测值，关键字符串或正则表达式,取值[ 当检测类型为sunday时，请填写字符串或者16进制字节码，例如\x313233对应的是字符串"123"的16进制字节码; 最多支持63位; ]
 	Str *string `json:"Str,omitnil,omitempty" name:"Str"`
 
 	// 从检测位置开始的检测深度，取值[0,1500]
@@ -9152,47 +9149,36 @@ type PacketFilterConfig struct {
 
 	// 是否包含检测值，取值[
 	// 0(包含)
-	// 1(不包含)
+	// 1(不包含) （已废弃，仅支持0）
 	// ]
 	IsNot *int64 `json:"IsNot,omitnil,omitempty" name:"IsNot"`
 
+	// 
 	// 当有第二个检测条件时，与第一检测条件的且或关系，取值[
-	// and(且的关系)
+	// and(且的关系) （已废弃，仅支持none）
 	// none(当没有第二个检测条件时填写此值)
 	// ]
 	MatchLogic *string `json:"MatchLogic,omitnil,omitempty" name:"MatchLogic"`
 
-	// 第二个检测位置，取值[
-	// begin_l5(载荷)
-	// no_match(不匹配)
-	// ]
+	// （已废弃）
 	MatchBegin2 *string `json:"MatchBegin2,omitnil,omitempty" name:"MatchBegin2"`
 
-	// 第二个检测类型，取值[
-	// sunday(关键字)
-	// pcre(正则表达式)
-	// ]
+	// （已废弃）
 	MatchType2 *string `json:"MatchType2,omitnil,omitempty" name:"MatchType2"`
 
-	// 第二个检测值，关键字符串或正则表达式,取值[
-	// 当检测类型为sunday时，请填写字符串或者16进制字节码，例如\x313233对应的是字符串"123"的16进制字节码;
-	// 当检测类型为pcre时, 请填写正则表达式字符串;
-	// ]
+	// （已废弃）
 	Str2 *string `json:"Str2,omitnil,omitempty" name:"Str2"`
 
-	// 从第二个检测位置开始的第二个检测深度，取值[0,1500]
+	// （已废弃）
 	Depth2 *int64 `json:"Depth2,omitnil,omitempty" name:"Depth2"`
 
-	// 从第二个检测位置开始的偏移量，取值范围[0,Depth2]
+	// （已废弃）
 	Offset2 *int64 `json:"Offset2,omitnil,omitempty" name:"Offset2"`
 
-	// 第二个检测是否包含检测值，取值[
-	// 0(包含)
-	// 1(不包含)
-	// ]
+	// （已废弃）
 	IsNot2 *int64 `json:"IsNot2,omitnil,omitempty" name:"IsNot2"`
 
-	// 特征过滤配置添加成功后自动生成的规则ID，当添加新特征过滤配置时，此字段不用填写；
+	// 特征过滤配置添加成功后自动生成的规则ID，当添加新特征过滤配置时，此字段不用填写；当修改/删除新特征过滤配置时，此字段必填；
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 大于报文长度，取值1+
@@ -9553,7 +9539,6 @@ type WaterPrintConfig struct {
 	Verify *string `json:"Verify,omitnil,omitempty" name:"Verify"`
 
 	// 是否开启代理，1开启则忽略IP+端口校验；0关闭则需要IP+端口校验
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudSdkProxy *int64 `json:"CloudSdkProxy,omitnil,omitempty" name:"CloudSdkProxy"`
 }
 

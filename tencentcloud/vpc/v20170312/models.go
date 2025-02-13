@@ -7076,7 +7076,7 @@ type CreateTrafficMirrorRequestParams struct {
 	// 流量镜像采集方向，支持EGRESS/INGRESS/ALL（vpc），ALL（公网IP）。
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 
-	// 流量镜像的采集对象，支持eni_xxxx。
+	// 流量镜像的采集对象。
 	CollectorSrcs []*string `json:"CollectorSrcs,omitnil,omitempty" name:"CollectorSrcs"`
 
 	// 流量镜像过滤的natgw实例。
@@ -7116,7 +7116,7 @@ type CreateTrafficMirrorRequest struct {
 	// 流量镜像采集方向，支持EGRESS/INGRESS/ALL（vpc），ALL（公网IP）。
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 
-	// 流量镜像的采集对象，支持eni_xxxx。
+	// 流量镜像的采集对象。
 	CollectorSrcs []*string `json:"CollectorSrcs,omitnil,omitempty" name:"CollectorSrcs"`
 
 	// 流量镜像过滤的natgw实例。
@@ -8255,10 +8255,10 @@ type CreateVpnGatewaySslServerRequestParams struct {
 	// SSL VPN服务端监听协议端口，默认1194。
 	SslVpnPort *int64 `json:"SslVpnPort,omitnil,omitempty" name:"SslVpnPort"`
 
-	// 认证算法。可选 'SHA1', 'MD5', 'NONE'，默认NONE。
+	// 认证算法。可选 'SHA1'，默认SHA1。
 	IntegrityAlgorithm *string `json:"IntegrityAlgorithm,omitnil,omitempty" name:"IntegrityAlgorithm"`
 
-	// 加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 'NONE'，默认NONE。
+	// 加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 默认AES-128-CBC。
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitnil,omitempty" name:"EncryptAlgorithm"`
 
 	// 是否支持压缩。当前不支持压缩，默认False。
@@ -8298,10 +8298,10 @@ type CreateVpnGatewaySslServerRequest struct {
 	// SSL VPN服务端监听协议端口，默认1194。
 	SslVpnPort *int64 `json:"SslVpnPort,omitnil,omitempty" name:"SslVpnPort"`
 
-	// 认证算法。可选 'SHA1', 'MD5', 'NONE'，默认NONE。
+	// 认证算法。可选 'SHA1'，默认SHA1。
 	IntegrityAlgorithm *string `json:"IntegrityAlgorithm,omitnil,omitempty" name:"IntegrityAlgorithm"`
 
-	// 加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 'NONE'，默认NONE。
+	// 加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 默认AES-128-CBC。
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitnil,omitempty" name:"EncryptAlgorithm"`
 
 	// 是否支持压缩。当前不支持压缩，默认False。
@@ -18865,7 +18865,11 @@ type DescribeTrafficMirrorsRequestParams struct {
 	// 流量镜像实例ID集合
 	TrafficMirrorIds []*string `json:"TrafficMirrorIds,omitnil,omitempty" name:"TrafficMirrorIds"`
 
-	// 流量镜像查询过滤调节
+	// 流量镜像查询过滤调节。
+	// vpc-id ：VPC实例ID，例如：vpc-f49l6u0z。
+	// traffic-mirror-id：流量镜像实例ID。
+	// traffic-mirror-name：流量镜像名称。
+	// tag-key ：按照标签键进行过滤。
 	Filters *Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -18881,7 +18885,11 @@ type DescribeTrafficMirrorsRequest struct {
 	// 流量镜像实例ID集合
 	TrafficMirrorIds []*string `json:"TrafficMirrorIds,omitnil,omitempty" name:"TrafficMirrorIds"`
 
-	// 流量镜像查询过滤调节
+	// 流量镜像查询过滤调节。
+	// vpc-id ：VPC实例ID，例如：vpc-f49l6u0z。
+	// traffic-mirror-id：流量镜像实例ID。
+	// traffic-mirror-name：流量镜像名称。
+	// tag-key ：按照标签键进行过滤。
 	Filters *Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -28930,10 +28938,10 @@ type ModifyVpnGatewaySslServerRequestParams struct {
 	// SSL VPN服务端监听协议端口。
 	SslVpnPort *int64 `json:"SslVpnPort,omitnil,omitempty" name:"SslVpnPort"`
 
-	// 加密算法。可选 'AES-128-CBC', 'AES-192-CBC', 'AES-256-CBC', 'NONE'。默认NONE
+	// 加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 默认AES-128-CBC。
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitnil,omitempty" name:"EncryptAlgorithm"`
 
-	// 认证算法。可选 'SHA1', 'MD5', 'NONE'。默认NONE
+	// 认证算法。可选 'SHA1'，默认SHA1。
 	IntegrityAlgorithm *string `json:"IntegrityAlgorithm,omitnil,omitempty" name:"IntegrityAlgorithm"`
 
 	// 是否支持压缩。当前不支持压缩。默认False。
@@ -28967,10 +28975,10 @@ type ModifyVpnGatewaySslServerRequest struct {
 	// SSL VPN服务端监听协议端口。
 	SslVpnPort *int64 `json:"SslVpnPort,omitnil,omitempty" name:"SslVpnPort"`
 
-	// 加密算法。可选 'AES-128-CBC', 'AES-192-CBC', 'AES-256-CBC', 'NONE'。默认NONE
+	// 加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 默认AES-128-CBC。
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitnil,omitempty" name:"EncryptAlgorithm"`
 
-	// 认证算法。可选 'SHA1', 'MD5', 'NONE'。默认NONE
+	// 认证算法。可选 'SHA1'，默认SHA1。
 	IntegrityAlgorithm *string `json:"IntegrityAlgorithm,omitnil,omitempty" name:"IntegrityAlgorithm"`
 
 	// 是否支持压缩。当前不支持压缩。默认False。

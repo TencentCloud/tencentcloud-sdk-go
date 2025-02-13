@@ -2629,6 +2629,61 @@ func (c *Client) DescribeRecordStreamWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeRecordTaskRequest() (request *DescribeRecordTaskRequest) {
+    request = &DescribeRecordTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeRecordTask")
+    
+    
+    return
+}
+
+func NewDescribeRecordTaskResponse() (response *DescribeRecordTaskResponse) {
+    response = &DescribeRecordTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRecordTask
+// 查询录制任务ID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRecordTask(request *DescribeRecordTaskRequest) (response *DescribeRecordTaskResponse, err error) {
+    return c.DescribeRecordTaskWithContext(context.Background(), request)
+}
+
+// DescribeRecordTask
+// 查询录制任务ID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRecordTaskWithContext(ctx context.Context, request *DescribeRecordTaskRequest) (response *DescribeRecordTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeRecordTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecordTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRecordTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRoomRequest() (request *DescribeRoomRequest) {
     request = &DescribeRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},

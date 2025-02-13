@@ -345,19 +345,15 @@ type CreateUserResponseParams struct {
 	AccountUserId *string `json:"AccountUserId,omitnil,omitempty" name:"AccountUserId"`
 
 	// 备注。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
 	// 昵称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
 
 	// 用户头像地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Avatar *string `json:"Avatar,omitnil,omitempty" name:"Avatar"`
 
 	// 自定义信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Customize *string `json:"Customize,omitnil,omitempty" name:"Customize"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1004,6 +1000,13 @@ type Instance struct {
 	// 超级管理员账号，如果未选择查询实例绑定的超级管理员账号或当前实例未绑定超级管理员账号，则该属性为 null。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuperAdminAccount *string `json:"SuperAdminAccount,omitnil,omitempty" name:"SuperAdminAccount"`
+
+	// 自选桶模式下，展示存储桶使用
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// 自选桶模式下，展示日志桶使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogBucket *string `json:"LogBucket,omitnil,omitempty" name:"LogBucket"`
 }
 
 type Library struct {

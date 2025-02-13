@@ -718,14 +718,20 @@ type CreateRoleRequestParams struct {
 	// 角色名称
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
-	// 备注
-	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
-
 	// 是否开启生产权限
 	PermWrite *bool `json:"PermWrite,omitnil,omitempty" name:"PermWrite"`
 
 	// 是否开启消费权限
 	PermRead *bool `json:"PermRead,omitnil,omitempty" name:"PermRead"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
+	PermType *string `json:"PermType,omitnil,omitempty" name:"PermType"`
+
+	// Topic&Group维度权限配置
+	DetailedPerms []*DetailedRolePerm `json:"DetailedPerms,omitnil,omitempty" name:"DetailedPerms"`
 }
 
 type CreateRoleRequest struct {
@@ -737,14 +743,20 @@ type CreateRoleRequest struct {
 	// 角色名称
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
-	// 备注
-	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
-
 	// 是否开启生产权限
 	PermWrite *bool `json:"PermWrite,omitnil,omitempty" name:"PermWrite"`
 
 	// 是否开启消费权限
 	PermRead *bool `json:"PermRead,omitnil,omitempty" name:"PermRead"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
+	PermType *string `json:"PermType,omitnil,omitempty" name:"PermType"`
+
+	// Topic&Group维度权限配置
+	DetailedPerms []*DetailedRolePerm `json:"DetailedPerms,omitnil,omitempty" name:"DetailedPerms"`
 }
 
 func (r *CreateRoleRequest) ToJsonString() string {
@@ -761,9 +773,11 @@ func (r *CreateRoleRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "Role")
-	delete(f, "Remark")
 	delete(f, "PermWrite")
 	delete(f, "PermRead")
+	delete(f, "Remark")
+	delete(f, "PermType")
+	delete(f, "DetailedPerms")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoleRequest has unknown keys!", "")
 	}
@@ -3799,6 +3813,23 @@ func (r *DescribeTopicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DetailedRolePerm struct {
+	// 权限对应的资源
+	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
+
+	// 是否开启生产权限
+	PermWrite *bool `json:"PermWrite,omitnil,omitempty" name:"PermWrite"`
+
+	// 是否开启消费权限
+	PermRead *bool `json:"PermRead,omitnil,omitempty" name:"PermRead"`
+
+	// 授权资源类型（Topic:主题; Group:消费组）
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 资源备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
 type Endpoint struct {
 	// 接入点类型，枚举值如下
 	// VPC: VPC;
@@ -5123,8 +5154,14 @@ type ModifyRoleRequestParams struct {
 	// 是否开启生产
 	PermWrite *bool `json:"PermWrite,omitnil,omitempty" name:"PermWrite"`
 
+	// 权限类型，默认按集群授权（Cluster：集群维度；TopicAndGroup：主题和消费组维度）
+	PermType *string `json:"PermType,omitnil,omitempty" name:"PermType"`
+
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// Topic&Group维度权限配置
+	DetailedPerms []*DetailedRolePerm `json:"DetailedPerms,omitnil,omitempty" name:"DetailedPerms"`
 }
 
 type ModifyRoleRequest struct {
@@ -5142,8 +5179,14 @@ type ModifyRoleRequest struct {
 	// 是否开启生产
 	PermWrite *bool `json:"PermWrite,omitnil,omitempty" name:"PermWrite"`
 
+	// 权限类型，默认按集群授权（Cluster：集群维度；TopicAndGroup：主题和消费组维度）
+	PermType *string `json:"PermType,omitnil,omitempty" name:"PermType"`
+
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// Topic&Group维度权限配置
+	DetailedPerms []*DetailedRolePerm `json:"DetailedPerms,omitnil,omitempty" name:"DetailedPerms"`
 }
 
 func (r *ModifyRoleRequest) ToJsonString() string {
@@ -5162,7 +5205,9 @@ func (r *ModifyRoleRequest) FromJsonString(s string) error {
 	delete(f, "Role")
 	delete(f, "PermRead")
 	delete(f, "PermWrite")
+	delete(f, "PermType")
 	delete(f, "Remark")
+	delete(f, "DetailedPerms")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoleRequest has unknown keys!", "")
 	}
@@ -5460,6 +5505,13 @@ type RoleItem struct {
 
 	// 修改时间，秒为单位
 	ModifiedTime *int64 `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
+
+	// 权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
+	PermType *string `json:"PermType,omitnil,omitempty" name:"PermType"`
+
+	// Topic和Group维度权限配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetailedRolePerms []*DetailedRolePerm `json:"DetailedRolePerms,omitnil,omitempty" name:"DetailedRolePerms"`
 }
 
 type SourceClusterGroupConfig struct {

@@ -909,6 +909,12 @@ type CallBackTemplateInfo struct {
 	// 音频审核回调 URL。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioAuditNotifyUrl *string `json:"AudioAuditNotifyUrl,omitnil,omitempty" name:"AudioAuditNotifyUrl"`
+
+	// 录制异常回调 URL。
+	RecordExceptionNotifyUrl *string `json:"RecordExceptionNotifyUrl,omitnil,omitempty" name:"RecordExceptionNotifyUrl"`
+
+	// 录制异常回调级别，可选择：error: 错误。alarm: 告警。
+	RecordExceptionLevels []*string `json:"RecordExceptionLevels,omitnil,omitempty" name:"RecordExceptionLevels"`
 }
 
 type CallbackEventInfo struct {
@@ -2392,6 +2398,12 @@ type CreateLiveCallbackTemplateRequestParams struct {
 
 	// 音频审核回调 URL。
 	AudioAuditNotifyUrl *string `json:"AudioAuditNotifyUrl,omitnil,omitempty" name:"AudioAuditNotifyUrl"`
+
+	// 录制异常回调 URL。
+	RecordExceptionNotifyUrl *string `json:"RecordExceptionNotifyUrl,omitnil,omitempty" name:"RecordExceptionNotifyUrl"`
+
+	// 录制异常回调级别，可选择：error、warning、info。
+	RecordExceptionLevels []*string `json:"RecordExceptionLevels,omitnil,omitempty" name:"RecordExceptionLevels"`
 }
 
 type CreateLiveCallbackTemplateRequest struct {
@@ -2443,6 +2455,12 @@ type CreateLiveCallbackTemplateRequest struct {
 
 	// 音频审核回调 URL。
 	AudioAuditNotifyUrl *string `json:"AudioAuditNotifyUrl,omitnil,omitempty" name:"AudioAuditNotifyUrl"`
+
+	// 录制异常回调 URL。
+	RecordExceptionNotifyUrl *string `json:"RecordExceptionNotifyUrl,omitnil,omitempty" name:"RecordExceptionNotifyUrl"`
+
+	// 录制异常回调级别，可选择：error、warning、info。
+	RecordExceptionLevels []*string `json:"RecordExceptionLevels,omitnil,omitempty" name:"RecordExceptionLevels"`
 }
 
 func (r *CreateLiveCallbackTemplateRequest) ToJsonString() string {
@@ -2469,6 +2487,8 @@ func (r *CreateLiveCallbackTemplateRequest) FromJsonString(s string) error {
 	delete(f, "StreamMixNotifyUrl")
 	delete(f, "PushExceptionNotifyUrl")
 	delete(f, "AudioAuditNotifyUrl")
+	delete(f, "RecordExceptionNotifyUrl")
+	delete(f, "RecordExceptionLevels")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveCallbackTemplateRequest has unknown keys!", "")
 	}
@@ -15443,6 +15463,12 @@ type ModifyLiveCallbackTemplateRequestParams struct {
 
 	// 音频审核回调 URL。
 	AudioAuditNotifyUrl *string `json:"AudioAuditNotifyUrl,omitnil,omitempty" name:"AudioAuditNotifyUrl"`
+
+	// 录制异常回调 URL。	
+	RecordExceptionNotifyUrl *string `json:"RecordExceptionNotifyUrl,omitnil,omitempty" name:"RecordExceptionNotifyUrl"`
+
+	// 录制异常回调级别，可选择：error、warning、info。
+	RecordExceptionLevels []*string `json:"RecordExceptionLevels,omitnil,omitempty" name:"RecordExceptionLevels"`
 }
 
 type ModifyLiveCallbackTemplateRequest struct {
@@ -15484,6 +15510,12 @@ type ModifyLiveCallbackTemplateRequest struct {
 
 	// 音频审核回调 URL。
 	AudioAuditNotifyUrl *string `json:"AudioAuditNotifyUrl,omitnil,omitempty" name:"AudioAuditNotifyUrl"`
+
+	// 录制异常回调 URL。	
+	RecordExceptionNotifyUrl *string `json:"RecordExceptionNotifyUrl,omitnil,omitempty" name:"RecordExceptionNotifyUrl"`
+
+	// 录制异常回调级别，可选择：error、warning、info。
+	RecordExceptionLevels []*string `json:"RecordExceptionLevels,omitnil,omitempty" name:"RecordExceptionLevels"`
 }
 
 func (r *ModifyLiveCallbackTemplateRequest) ToJsonString() string {
@@ -15510,6 +15542,8 @@ func (r *ModifyLiveCallbackTemplateRequest) FromJsonString(s string) error {
 	delete(f, "CallbackKey")
 	delete(f, "PushExceptionNotifyUrl")
 	delete(f, "AudioAuditNotifyUrl")
+	delete(f, "RecordExceptionNotifyUrl")
+	delete(f, "RecordExceptionLevels")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveCallbackTemplateRequest has unknown keys!", "")
 	}

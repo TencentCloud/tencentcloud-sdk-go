@@ -4423,6 +4423,9 @@ type IDCardConfig struct {
 
 	// 是否开启反光检测，默认为false
 	ReflectWarn *bool `json:"ReflectWarn,omitnil,omitempty" name:"ReflectWarn"`
+
+	// 是否开启头像剪切
+	CropPortrait *bool `json:"CropPortrait,omitnil,omitempty" name:"CropPortrait"`
 }
 
 type IDCardInfo struct {
@@ -4465,35 +4468,35 @@ type IDCardInfoResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarnCodes []*int64 `json:"WarnCodes,omitnil,omitempty" name:"WarnCodes"`
 
-	// 地址
+	// 地址（人像面）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
-	// 签发机关
+	// 发证机关（国徽面）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Authority *string `json:"Authority,omitnil,omitempty" name:"Authority"`
 
-	// 出生日期
+	// 出生日期（人像面）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Birth *string `json:"Birth,omitnil,omitempty" name:"Birth"`
 
-	// 身份证号
+	// 身份证号（人像面）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdNum *string `json:"IdNum,omitnil,omitempty" name:"IdNum"`
 
-	// 名字
+	// 名字（人像面）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 地区
+	// 民族（人像面）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nation *string `json:"Nation,omitnil,omitempty" name:"Nation"`
 
-	// 性别
+	// 性别（人像面）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sex *string `json:"Sex,omitnil,omitempty" name:"Sex"`
 
-	// 到期时间
+	// 证件有效期（国徽面）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidDate *string `json:"ValidDate,omitnil,omitempty" name:"ValidDate"`
 
@@ -4511,6 +4514,9 @@ type IDCardInfoResult struct {
 
 	// 原图地址
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 身份证头像照片的地址（人像面）
+	PortraitUrl *string `json:"PortraitUrl,omitnil,omitempty" name:"PortraitUrl"`
 }
 
 // Predefined struct for user
