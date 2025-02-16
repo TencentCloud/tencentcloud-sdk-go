@@ -56,6 +56,14 @@ type AgentProcedure struct {
 	// 当前请求执行时间, 单位 ms
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Elapsed *uint64 `json:"Elapsed,omitnil,omitempty" name:"Elapsed"`
+
+	// 工作流节点名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// 用于展示思考放在哪个回复气泡中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplyIndex *uint64 `json:"ReplyIndex,omitnil,omitempty" name:"ReplyIndex"`
 }
 
 type AgentProcedureDebugging struct {

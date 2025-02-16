@@ -9497,6 +9497,8 @@ func NewModifyProtectModeResponse() (response *ModifyProtectModeResponse) {
 // ModifyProtectMode
 // 该接口（ModifyProtectMode）用于修改实例的同步方式。
 //
+// 说明：仅专属集群可调用，该接口即将下线。
+//
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
@@ -9508,6 +9510,8 @@ func (c *Client) ModifyProtectMode(request *ModifyProtectModeRequest) (response 
 
 // ModifyProtectMode
 // 该接口（ModifyProtectMode）用于修改实例的同步方式。
+//
+// 说明：仅专属集群可调用，该接口即将下线。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"

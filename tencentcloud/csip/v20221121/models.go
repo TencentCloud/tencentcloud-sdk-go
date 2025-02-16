@@ -6383,11 +6383,9 @@ type StatisticalFilter struct {
 	// 1:发生次数高于固定值
 	// 2:发生次数高于周期平均值的百分之
 	// 3:发生次数高于用户平均值的百分之
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorType *int64 `json:"OperatorType,omitnil,omitempty" name:"OperatorType"`
 
 	// 统计值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *float64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -6783,17 +6781,14 @@ type UebaEventContent struct {
 
 type UebaRule struct {
 	// 策略id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleID *string `json:"RuleID,omitnil,omitempty" name:"RuleID"`
 
 	// 规则名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// 策略类型
 	// 0:系统策略
 	// 1:自定义策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 
 	// 策略等级
@@ -6802,45 +6797,35 @@ type UebaRule struct {
 	// 2:中危
 	// 3:高危
 	// 4:严重
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleLevel *int64 `json:"RuleLevel,omitnil,omitempty" name:"RuleLevel"`
 
 	// 策略内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleContent *string `json:"RuleContent,omitnil,omitempty" name:"RuleContent"`
 
 	// 策略开关
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleStatus *bool `json:"RuleStatus,omitnil,omitempty" name:"RuleStatus"`
 
 	// 命中次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HitCount *uint64 `json:"HitCount,omitnil,omitempty" name:"HitCount"`
 
 	// 所属账号Appid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppID *string `json:"AppID,omitnil,omitempty" name:"AppID"`
 
 	// 多账号，成员ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemberID *string `json:"MemberID,omitnil,omitempty" name:"MemberID"`
 
 	// Uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
 
 	// 自定义规则具体内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomRuleDetail *UebaCustomRule `json:"CustomRuleDetail,omitnil,omitempty" name:"CustomRuleDetail"`
 
 	// 云类型
 	// 腾讯云：0
 	// aws：1
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudType *int64 `json:"CloudType,omitnil,omitempty" name:"CloudType"`
 }
 

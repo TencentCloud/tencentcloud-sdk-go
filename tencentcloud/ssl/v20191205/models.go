@@ -56,98 +56,104 @@ type ApiGatewayInstanceList struct {
 
 // Predefined struct for user
 type ApplyCertificateRequestParams struct {
-	// 验证方式：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证。
+	// 证书域名验证方式：
+	// DNS_AUTO： 自动添加域名DNS验证， 需用户域名解析托管在『[云解析DNS](https://console.cloud.tencent.com/cns)』，且与申请证书归属同一个腾讯云账号
+	// DNS：手动添加域名DNS验证，需用户手动去域名解析服务商添加验证值
+	// FILE：手动添加域名文件验证。 需要用户手动在域名站点根目录添加指定路径文件进行文件验证， http&https任一通过即可；且域名站点需海外CA机构能访问， 具体访问白名单为：64.78.193.238，216.168.247.9，216.168.249.9，54.189.196.217
 	DvAuthMethod *string `json:"DvAuthMethod,omitnil,omitempty" name:"DvAuthMethod"`
 
-	// 域名。
+	// 证书绑定的域名。
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
-	// 项目 ID。
+	// 证书关联的项目 ID。 默认为0（默认项目）
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 证书类型，目前仅支持类型83。83 = TrustAsia C1 DV Free。
+	// 证书类型， 可不传，目前仅支持类型83。83 = TrustAsia C1 DV Free。
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
-	// 邮箱。
+	// 证书订单关联邮箱。默认为腾讯云账号邮箱， 不存在则关联固定邮箱
 	ContactEmail *string `json:"ContactEmail,omitnil,omitempty" name:"ContactEmail"`
 
-	// 手机。
+	// 证书关联手机号码，  不存在则关联固定手机号码
 	ContactPhone *string `json:"ContactPhone,omitnil,omitempty" name:"ContactPhone"`
 
-	// 有效期，默认3个月，目前仅支持3个月。
+	// 证书有效期，默认3（月），目前仅支持3个月。
 	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
-	// 加密算法，支持 RSA及ECC。
+	// 加密算法，取值为ECC、RSA， 默认为RSA
 	CsrEncryptAlgo *string `json:"CsrEncryptAlgo,omitnil,omitempty" name:"CsrEncryptAlgo"`
 
 	// 密钥对参数，RSA仅支持2048。ECC仅支持prime256v1。加密算法选择ECC时，此参数必填
 	CsrKeyParameter *string `json:"CsrKeyParameter,omitnil,omitempty" name:"CsrKeyParameter"`
 
-	// CSR 的加密密码。
+	// 私钥密码， 目前仅使用在生成jks、pfx格式证书时密码； 其他格式私钥证书未加密
 	CsrKeyPassword *string `json:"CsrKeyPassword,omitnil,omitempty" name:"CsrKeyPassword"`
 
-	// 备注名称。
+	// 证书别名
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
-	// 原证书 ID，用于重新申请。
+	// 旧证书 ID，用于证书续费（证书有效期在30天内，且未过期），会建立续费关系， 可用于托管； 不传则表示新申请证书
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
-	// 权益包ID，用于免费证书扩容包使用
+	// 权益包ID，用于免费证书扩容包使用， 免费证书扩容包已下线
 	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
 	// 签发后是否删除自动域名验证记录， 默认为否；仅域名为DNS_AUTO验证类型支持传参
 	DeleteDnsAutoRecord *bool `json:"DeleteDnsAutoRecord,omitnil,omitempty" name:"DeleteDnsAutoRecord"`
 
-	// 域名数组（多域名证书可以上传）。	
+	// 证书绑定的其他域名，待开放。目前不支持此参数
 	DnsNames []*string `json:"DnsNames,omitnil,omitempty" name:"DnsNames"`
 }
 
 type ApplyCertificateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 验证方式：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证。
+	// 证书域名验证方式：
+	// DNS_AUTO： 自动添加域名DNS验证， 需用户域名解析托管在『[云解析DNS](https://console.cloud.tencent.com/cns)』，且与申请证书归属同一个腾讯云账号
+	// DNS：手动添加域名DNS验证，需用户手动去域名解析服务商添加验证值
+	// FILE：手动添加域名文件验证。 需要用户手动在域名站点根目录添加指定路径文件进行文件验证， http&https任一通过即可；且域名站点需海外CA机构能访问， 具体访问白名单为：64.78.193.238，216.168.247.9，216.168.249.9，54.189.196.217
 	DvAuthMethod *string `json:"DvAuthMethod,omitnil,omitempty" name:"DvAuthMethod"`
 
-	// 域名。
+	// 证书绑定的域名。
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
-	// 项目 ID。
+	// 证书关联的项目 ID。 默认为0（默认项目）
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 证书类型，目前仅支持类型83。83 = TrustAsia C1 DV Free。
+	// 证书类型， 可不传，目前仅支持类型83。83 = TrustAsia C1 DV Free。
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
-	// 邮箱。
+	// 证书订单关联邮箱。默认为腾讯云账号邮箱， 不存在则关联固定邮箱
 	ContactEmail *string `json:"ContactEmail,omitnil,omitempty" name:"ContactEmail"`
 
-	// 手机。
+	// 证书关联手机号码，  不存在则关联固定手机号码
 	ContactPhone *string `json:"ContactPhone,omitnil,omitempty" name:"ContactPhone"`
 
-	// 有效期，默认3个月，目前仅支持3个月。
+	// 证书有效期，默认3（月），目前仅支持3个月。
 	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
-	// 加密算法，支持 RSA及ECC。
+	// 加密算法，取值为ECC、RSA， 默认为RSA
 	CsrEncryptAlgo *string `json:"CsrEncryptAlgo,omitnil,omitempty" name:"CsrEncryptAlgo"`
 
 	// 密钥对参数，RSA仅支持2048。ECC仅支持prime256v1。加密算法选择ECC时，此参数必填
 	CsrKeyParameter *string `json:"CsrKeyParameter,omitnil,omitempty" name:"CsrKeyParameter"`
 
-	// CSR 的加密密码。
+	// 私钥密码， 目前仅使用在生成jks、pfx格式证书时密码； 其他格式私钥证书未加密
 	CsrKeyPassword *string `json:"CsrKeyPassword,omitnil,omitempty" name:"CsrKeyPassword"`
 
-	// 备注名称。
+	// 证书别名
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
-	// 原证书 ID，用于重新申请。
+	// 旧证书 ID，用于证书续费（证书有效期在30天内，且未过期），会建立续费关系， 可用于托管； 不传则表示新申请证书
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
-	// 权益包ID，用于免费证书扩容包使用
+	// 权益包ID，用于免费证书扩容包使用， 免费证书扩容包已下线
 	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
 	// 签发后是否删除自动域名验证记录， 默认为否；仅域名为DNS_AUTO验证类型支持传参
 	DeleteDnsAutoRecord *bool `json:"DeleteDnsAutoRecord,omitnil,omitempty" name:"DeleteDnsAutoRecord"`
 
-	// 域名数组（多域名证书可以上传）。	
+	// 证书绑定的其他域名，待开放。目前不支持此参数
 	DnsNames []*string `json:"DnsNames,omitnil,omitempty" name:"DnsNames"`
 }
 
@@ -186,7 +192,7 @@ func (r *ApplyCertificateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ApplyCertificateResponseParams struct {
-	// 证书 ID。
+	// 新申请成功的证书 ID。
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -382,7 +388,7 @@ type CdnInstanceDetail struct {
 	// 域名状态 rejected：域名审核未通过，域名备案过期/被注销导致，processing：部署中，online：已启动，offline：已关闭
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 域名计费状态
+	// 域名计费状态，on表示开启，off表示关闭。
 	HttpsBillingSwitch *string `json:"HttpsBillingSwitch,omitnil,omitempty" name:"HttpsBillingSwitch"`
 }
 
@@ -445,7 +451,7 @@ type CertificateExtra struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainNumber *string `json:"DomainNumber,omitnil,omitempty" name:"DomainNumber"`
 
-	// 原始证书 ID。
+	// 续费原证书 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginCertificateId *string `json:"OriginCertificateId,omitnil,omitempty" name:"OriginCertificateId"`
 
@@ -453,11 +459,11 @@ type CertificateExtra struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplacedBy *string `json:"ReplacedBy,omitnil,omitempty" name:"ReplacedBy"`
 
-	// 重颁发证书新 ID。
+	// 重颁发证书ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplacedFor *string `json:"ReplacedFor,omitnil,omitempty" name:"ReplacedFor"`
 
-	// 新订单证书 ID。
+	// 续费证书 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewOrder *string `json:"RenewOrder,omitnil,omitempty" name:"RenewOrder"`
 
@@ -465,243 +471,289 @@ type CertificateExtra struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SMCert *int64 `json:"SMCert,omitnil,omitempty" name:"SMCert"`
 
-	// 公司类型
+	// 公司类型，取值：1（个人）；2（公司）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompanyType *int64 `json:"CompanyType,omitnil,omitempty" name:"CompanyType"`
 }
 
 // Predefined struct for user
 type CertificateInfoSubmitRequestParams struct {
-	// 证书 ID。
+	// 待提交资料的付费证书 ID。	
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
-	// CSR 生成方式：online = 在线生成, upload = 手动上传。
+	// 此字段必传。 CSR 生成方式， 取值为：
+	// - online：腾讯云提交的填写的参数信息生成CSR和私钥，并由腾讯云加密存储
+	// - parse：自行生成CSR和私钥，并通过上传CSR申请证书
 	GenCsrType *string `json:"GenCsrType,omitnil,omitempty" name:"GenCsrType"`
 
-	// 绑定证书的主域名。
+	// 证书绑定的通用名称， 若是上传的CSR，则该域名需与CSR解析的通用名称一致
 	CertCommonName *string `json:"CertCommonName,omitnil,omitempty" name:"CertCommonName"`
 
-	// 组织信息类型：1，个人； 2， 公司； 
+	// 组织信息类型， 取值范围：
+	// 1（个人）：仅DV类型证书可设置为1， 个人类型证书组织信息字段可不传：Org开头，Admin开头，Tech开头
+	// 2（公司）：所有类型证书都可设置为2， 按需传组织信息字段
 	CompanyType *uint64 `json:"CompanyType,omitnil,omitempty" name:"CompanyType"`
 
-	// 公司证件类型（）
-	OrgIdType *string `json:"OrgIdType,omitnil,omitempty" name:"OrgIdType"`
-
-	// 公司证件号码
-	OrgIdNumber *string `json:"OrgIdNumber,omitnil,omitempty" name:"OrgIdNumber"`
-
-	// 管理人证件类型
-	AdminIdType *string `json:"AdminIdType,omitnil,omitempty" name:"AdminIdType"`
-
-	// 管理人证件号码
-	AdminIdNumber *string `json:"AdminIdNumber,omitnil,omitempty" name:"AdminIdNumber"`
-
-	// 联系人证件类型
-	TechIdType *string `json:"TechIdType,omitnil,omitempty" name:"TechIdType"`
-
-	// 联系人证件号码
-	TechIdNumber *string `json:"TechIdNumber,omitnil,omitempty" name:"TechIdNumber"`
-
-	// 公司ID
+	// 公司ID，在 [腾讯云控制台](https://console.cloud.tencent.com/ssl/info) 可进行查看，若无满足的公司信息， 则本参数传0 ； 若存在满足当前订单的公司信息， 可以根据 [DescribeCompanies](https://cloud.tencent.com/document/product/400/90375) 查看公司ID； 若传了公司ID，则Org开头的参数可不传
+	// 
 	CompanyId *string `json:"CompanyId,omitnil,omitempty" name:"CompanyId"`
 
-	// 上传的 CSR 内容。如果GenCsrType为upload则该字段必传
+	// 公司证件类型，取值范围：
+	// TYDMZ（统一社会信用代码 ）：仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段
+	// OTHERS（其他）
+	OrgIdType *string `json:"OrgIdType,omitnil,omitempty" name:"OrgIdType"`
+
+	// 公司证件号码，取值范围：
+	// TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
+	OrgIdNumber *string `json:"OrgIdNumber,omitnil,omitempty" name:"OrgIdNumber"`
+
+	// 管理人证件类型，取值范围：
+	// SFZ（身份证）：仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段
+	// HZ（护照）：仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段
+	AdminIdType *string `json:"AdminIdType,omitnil,omitempty" name:"AdminIdType"`
+
+	// 管理人证件号码，仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段， 取值范围：
+	// SFZ（身份证）：110000xxxxxxxx1242
+	// HZ（护照）:EFxxxxxxx
+	AdminIdNumber *string `json:"AdminIdNumber,omitnil,omitempty" name:"AdminIdNumber"`
+
+	// 联系人证件类型，取值范围：
+	// SFZ（身份证）：仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段
+	// HZ（护照）：仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段
+	TechIdType *string `json:"TechIdType,omitnil,omitempty" name:"TechIdType"`
+
+	// 联系人证件号码，仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段，取值范围：
+	// SFZ（身份证）：110000xxxxxxxx1242
+	// HZ（护照）:EFxxxxxxx
+	TechIdNumber *string `json:"TechIdNumber,omitnil,omitempty" name:"TechIdNumber"`
+
+	// 上传的 CSR 内容。
+	// 若GenCsrType为parse， 则此字段必传。
 	Csr *string `json:"Csr,omitnil,omitempty" name:"Csr"`
 
-	// 域名数组（多域名证书可以上传）。
+	// 证书绑定的其他域名， 单域名、泛域名证书无需提供。 多域名、多泛域名必填
 	DnsNames []*string `json:"DnsNames,omitnil,omitempty" name:"DnsNames"`
 
-	// 私钥密码（非必填）。
+	// 私钥密码， 目前仅使用在生成jks、pfx格式证书时密码； 其他格式私钥证书未加密	
 	KeyPass *string `json:"KeyPass,omitnil,omitempty" name:"KeyPass"`
 
-	// 公司名称。
+	// 公司名称。若没有传CompanyId或者ManagerId， 则此字段必传
 	OrgOrganization *string `json:"OrgOrganization,omitnil,omitempty" name:"OrgOrganization"`
 
-	// 部门名称。
+	// 部门名称。若没有传CompanyId或者ManagerId， 则此字段必传
 	OrgDivision *string `json:"OrgDivision,omitnil,omitempty" name:"OrgDivision"`
 
-	// 公司详细地址。
+	// 公司详细地址。若没有传CompanyId或者ManagerId， 则此字段必传
 	OrgAddress *string `json:"OrgAddress,omitnil,omitempty" name:"OrgAddress"`
 
-	// 国家名称，如中国：CN 。
+	// 国家名称，如中国：CN 。若没有传CompanyId或者ManagerId， 则此字段必传
 	OrgCountry *string `json:"OrgCountry,omitnil,omitempty" name:"OrgCountry"`
 
-	// 公司所在城市。
+	// 公司所在城市。若没有传CompanyId或者ManagerId， 则此字段必传
 	OrgCity *string `json:"OrgCity,omitnil,omitempty" name:"OrgCity"`
 
-	// 公司所在省份。
+	// 公司所在省份。若没有传CompanyId或者ManagerId， 则此字段必传
 	OrgRegion *string `json:"OrgRegion,omitnil,omitempty" name:"OrgRegion"`
 
-	// 公司座机区号。
+	// 公司所属区号。若没有传CompanyId或者ManagerId， 则此字段必传
+	// 如：021。  手机号码传 86
 	OrgPhoneArea *string `json:"OrgPhoneArea,omitnil,omitempty" name:"OrgPhoneArea"`
 
-	// 公司座机号码。
+	// 公司所属号码。若没有传CompanyId或者ManagerId， 则此字段必传
 	OrgPhoneNumber *string `json:"OrgPhoneNumber,omitnil,omitempty" name:"OrgPhoneNumber"`
 
-	// 证书验证方式。验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
+	// 证书域名验证方式：
+	// DNS_AUTO： 自动添加域名DNS验证， 需用户域名解析托管在『[云解析DNS](https://console.cloud.tencent.com/cns)』，且与申请证书归属同一个腾讯云账号
+	// DNS：手动添加域名DNS验证，需用户手动去域名解析服务商添加验证值
+	// FILE：手动添加域名文件验证。 需要用户手动在域名站点根目录添加指定路径文件进行文件验证， http&https任一通过即可；且域名站点需海外CA机构能访问， 具体访问白名单为：64.78.193.238，216.168.247.9，216.168.249.9，54.189.196.217
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
-	// 管理人名。
+	// 管理人名。若没有传ManagerId， 则此字段必传
 	AdminFirstName *string `json:"AdminFirstName,omitnil,omitempty" name:"AdminFirstName"`
 
-	// 管理人姓。
+	// 管理人姓。若没有传ManagerId， 则此字段必传
 	AdminLastName *string `json:"AdminLastName,omitnil,omitempty" name:"AdminLastName"`
 
-	// 管理人手机号码。
+	// 管理人手机号码。若没有传ManagerId， 则此字段必传
 	AdminPhone *string `json:"AdminPhone,omitnil,omitempty" name:"AdminPhone"`
 
-	// 管理人邮箱地址。
+	// 管理人邮箱地址。若没有传ManagerId， 则此字段必传
 	AdminEmail *string `json:"AdminEmail,omitnil,omitempty" name:"AdminEmail"`
 
-	// 管理人职位。
+	// 管理人职位。若没有传ManagerId， 则此字段必传
 	AdminTitle *string `json:"AdminTitle,omitnil,omitempty" name:"AdminTitle"`
 
-	// 联系人名。
+	// 联系人名。若没有传ManagerId， 则此字段必传
 	TechFirstName *string `json:"TechFirstName,omitnil,omitempty" name:"TechFirstName"`
 
-	// 联系人姓。
+	// 联系人姓。若没有传ManagerId， 则此字段必传
 	TechLastName *string `json:"TechLastName,omitnil,omitempty" name:"TechLastName"`
 
-	// 联系人邮箱地址。
+	// 联系人邮箱地址。CompanyType为1时， 此字段必传
 	ContactEmail *string `json:"ContactEmail,omitnil,omitempty" name:"ContactEmail"`
 
 	// 是否开启自动续费： 0， 不开启；  1， 开启； 默认为0
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 证书加密参数
+	// 密钥对参数，RSA支持2048，4096。ECC仅支持prime256v1。加密算法选择ECC时，此参数必填
+	// 国密证书类型本字段不用传
 	CsrKeyParameter *string `json:"CsrKeyParameter,omitnil,omitempty" name:"CsrKeyParameter"`
 
-	// 证书加密方式
+	// 加密算法，取值为ECC、RSA， 默认为RSA
+	// 国密证书类型本字段不用传
 	CsrEncryptAlgo *string `json:"CsrEncryptAlgo,omitnil,omitempty" name:"CsrEncryptAlgo"`
 
-	// 管理人ID
+	// 管理人ID，在 [腾讯云控制台](https://console.cloud.tencent.com/ssl/info) 可进行查看，若无满足的管理人信息， 则本参数传0 ； 若存在满足当前订单的管理人信息， 可以根据 [DescribeManagers](https://cloud.tencent.com/document/product/400/52672) 查看管理人ID； 若传了管理人ID，则Org开头、Admin开头、Tech开头的参数可不传； 管理人ID会包含公司信息
 	ManagerId *string `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 
-	// 联系人电话
+	// 联系人电话。若没有传ManagerId， 则此字段必传
 	TechPhone *string `json:"TechPhone,omitnil,omitempty" name:"TechPhone"`
 
 	// 联系人邮箱
 	TechEmail *string `json:"TechEmail,omitnil,omitempty" name:"TechEmail"`
 
-	// 联系人职位
+	// 联系人职位。若没有传ManagerId， 则此字段必传
 	TechTitle *string `json:"TechTitle,omitnil,omitempty" name:"TechTitle"`
 }
 
 type CertificateInfoSubmitRequest struct {
 	*tchttp.BaseRequest
 	
-	// 证书 ID。
+	// 待提交资料的付费证书 ID。	
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
-	// CSR 生成方式：online = 在线生成, upload = 手动上传。
+	// 此字段必传。 CSR 生成方式， 取值为：
+	// - online：腾讯云提交的填写的参数信息生成CSR和私钥，并由腾讯云加密存储
+	// - parse：自行生成CSR和私钥，并通过上传CSR申请证书
 	GenCsrType *string `json:"GenCsrType,omitnil,omitempty" name:"GenCsrType"`
 
-	// 绑定证书的主域名。
+	// 证书绑定的通用名称， 若是上传的CSR，则该域名需与CSR解析的通用名称一致
 	CertCommonName *string `json:"CertCommonName,omitnil,omitempty" name:"CertCommonName"`
 
-	// 组织信息类型：1，个人； 2， 公司； 
+	// 组织信息类型， 取值范围：
+	// 1（个人）：仅DV类型证书可设置为1， 个人类型证书组织信息字段可不传：Org开头，Admin开头，Tech开头
+	// 2（公司）：所有类型证书都可设置为2， 按需传组织信息字段
 	CompanyType *uint64 `json:"CompanyType,omitnil,omitempty" name:"CompanyType"`
 
-	// 公司证件类型（）
-	OrgIdType *string `json:"OrgIdType,omitnil,omitempty" name:"OrgIdType"`
-
-	// 公司证件号码
-	OrgIdNumber *string `json:"OrgIdNumber,omitnil,omitempty" name:"OrgIdNumber"`
-
-	// 管理人证件类型
-	AdminIdType *string `json:"AdminIdType,omitnil,omitempty" name:"AdminIdType"`
-
-	// 管理人证件号码
-	AdminIdNumber *string `json:"AdminIdNumber,omitnil,omitempty" name:"AdminIdNumber"`
-
-	// 联系人证件类型
-	TechIdType *string `json:"TechIdType,omitnil,omitempty" name:"TechIdType"`
-
-	// 联系人证件号码
-	TechIdNumber *string `json:"TechIdNumber,omitnil,omitempty" name:"TechIdNumber"`
-
-	// 公司ID
+	// 公司ID，在 [腾讯云控制台](https://console.cloud.tencent.com/ssl/info) 可进行查看，若无满足的公司信息， 则本参数传0 ； 若存在满足当前订单的公司信息， 可以根据 [DescribeCompanies](https://cloud.tencent.com/document/product/400/90375) 查看公司ID； 若传了公司ID，则Org开头的参数可不传
+	// 
 	CompanyId *string `json:"CompanyId,omitnil,omitempty" name:"CompanyId"`
 
-	// 上传的 CSR 内容。如果GenCsrType为upload则该字段必传
+	// 公司证件类型，取值范围：
+	// TYDMZ（统一社会信用代码 ）：仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段
+	// OTHERS（其他）
+	OrgIdType *string `json:"OrgIdType,omitnil,omitempty" name:"OrgIdType"`
+
+	// 公司证件号码，取值范围：
+	// TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
+	OrgIdNumber *string `json:"OrgIdNumber,omitnil,omitempty" name:"OrgIdNumber"`
+
+	// 管理人证件类型，取值范围：
+	// SFZ（身份证）：仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段
+	// HZ（护照）：仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段
+	AdminIdType *string `json:"AdminIdType,omitnil,omitempty" name:"AdminIdType"`
+
+	// 管理人证件号码，仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段， 取值范围：
+	// SFZ（身份证）：110000xxxxxxxx1242
+	// HZ（护照）:EFxxxxxxx
+	AdminIdNumber *string `json:"AdminIdNumber,omitnil,omitempty" name:"AdminIdNumber"`
+
+	// 联系人证件类型，取值范围：
+	// SFZ（身份证）：仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段
+	// HZ（护照）：仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段
+	TechIdType *string `json:"TechIdType,omitnil,omitempty" name:"TechIdType"`
+
+	// 联系人证件号码，仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段，取值范围：
+	// SFZ（身份证）：110000xxxxxxxx1242
+	// HZ（护照）:EFxxxxxxx
+	TechIdNumber *string `json:"TechIdNumber,omitnil,omitempty" name:"TechIdNumber"`
+
+	// 上传的 CSR 内容。
+	// 若GenCsrType为parse， 则此字段必传。
 	Csr *string `json:"Csr,omitnil,omitempty" name:"Csr"`
 
-	// 域名数组（多域名证书可以上传）。
+	// 证书绑定的其他域名， 单域名、泛域名证书无需提供。 多域名、多泛域名必填
 	DnsNames []*string `json:"DnsNames,omitnil,omitempty" name:"DnsNames"`
 
-	// 私钥密码（非必填）。
+	// 私钥密码， 目前仅使用在生成jks、pfx格式证书时密码； 其他格式私钥证书未加密	
 	KeyPass *string `json:"KeyPass,omitnil,omitempty" name:"KeyPass"`
 
-	// 公司名称。
+	// 公司名称。若没有传CompanyId或者ManagerId， 则此字段必传
 	OrgOrganization *string `json:"OrgOrganization,omitnil,omitempty" name:"OrgOrganization"`
 
-	// 部门名称。
+	// 部门名称。若没有传CompanyId或者ManagerId， 则此字段必传
 	OrgDivision *string `json:"OrgDivision,omitnil,omitempty" name:"OrgDivision"`
 
-	// 公司详细地址。
+	// 公司详细地址。若没有传CompanyId或者ManagerId， 则此字段必传
 	OrgAddress *string `json:"OrgAddress,omitnil,omitempty" name:"OrgAddress"`
 
-	// 国家名称，如中国：CN 。
+	// 国家名称，如中国：CN 。若没有传CompanyId或者ManagerId， 则此字段必传
 	OrgCountry *string `json:"OrgCountry,omitnil,omitempty" name:"OrgCountry"`
 
-	// 公司所在城市。
+	// 公司所在城市。若没有传CompanyId或者ManagerId， 则此字段必传
 	OrgCity *string `json:"OrgCity,omitnil,omitempty" name:"OrgCity"`
 
-	// 公司所在省份。
+	// 公司所在省份。若没有传CompanyId或者ManagerId， 则此字段必传
 	OrgRegion *string `json:"OrgRegion,omitnil,omitempty" name:"OrgRegion"`
 
-	// 公司座机区号。
+	// 公司所属区号。若没有传CompanyId或者ManagerId， 则此字段必传
+	// 如：021。  手机号码传 86
 	OrgPhoneArea *string `json:"OrgPhoneArea,omitnil,omitempty" name:"OrgPhoneArea"`
 
-	// 公司座机号码。
+	// 公司所属号码。若没有传CompanyId或者ManagerId， 则此字段必传
 	OrgPhoneNumber *string `json:"OrgPhoneNumber,omitnil,omitempty" name:"OrgPhoneNumber"`
 
-	// 证书验证方式。验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
+	// 证书域名验证方式：
+	// DNS_AUTO： 自动添加域名DNS验证， 需用户域名解析托管在『[云解析DNS](https://console.cloud.tencent.com/cns)』，且与申请证书归属同一个腾讯云账号
+	// DNS：手动添加域名DNS验证，需用户手动去域名解析服务商添加验证值
+	// FILE：手动添加域名文件验证。 需要用户手动在域名站点根目录添加指定路径文件进行文件验证， http&https任一通过即可；且域名站点需海外CA机构能访问， 具体访问白名单为：64.78.193.238，216.168.247.9，216.168.249.9，54.189.196.217
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
-	// 管理人名。
+	// 管理人名。若没有传ManagerId， 则此字段必传
 	AdminFirstName *string `json:"AdminFirstName,omitnil,omitempty" name:"AdminFirstName"`
 
-	// 管理人姓。
+	// 管理人姓。若没有传ManagerId， 则此字段必传
 	AdminLastName *string `json:"AdminLastName,omitnil,omitempty" name:"AdminLastName"`
 
-	// 管理人手机号码。
+	// 管理人手机号码。若没有传ManagerId， 则此字段必传
 	AdminPhone *string `json:"AdminPhone,omitnil,omitempty" name:"AdminPhone"`
 
-	// 管理人邮箱地址。
+	// 管理人邮箱地址。若没有传ManagerId， 则此字段必传
 	AdminEmail *string `json:"AdminEmail,omitnil,omitempty" name:"AdminEmail"`
 
-	// 管理人职位。
+	// 管理人职位。若没有传ManagerId， 则此字段必传
 	AdminTitle *string `json:"AdminTitle,omitnil,omitempty" name:"AdminTitle"`
 
-	// 联系人名。
+	// 联系人名。若没有传ManagerId， 则此字段必传
 	TechFirstName *string `json:"TechFirstName,omitnil,omitempty" name:"TechFirstName"`
 
-	// 联系人姓。
+	// 联系人姓。若没有传ManagerId， 则此字段必传
 	TechLastName *string `json:"TechLastName,omitnil,omitempty" name:"TechLastName"`
 
-	// 联系人邮箱地址。
+	// 联系人邮箱地址。CompanyType为1时， 此字段必传
 	ContactEmail *string `json:"ContactEmail,omitnil,omitempty" name:"ContactEmail"`
 
 	// 是否开启自动续费： 0， 不开启；  1， 开启； 默认为0
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
-	// 证书加密参数
+	// 密钥对参数，RSA支持2048，4096。ECC仅支持prime256v1。加密算法选择ECC时，此参数必填
+	// 国密证书类型本字段不用传
 	CsrKeyParameter *string `json:"CsrKeyParameter,omitnil,omitempty" name:"CsrKeyParameter"`
 
-	// 证书加密方式
+	// 加密算法，取值为ECC、RSA， 默认为RSA
+	// 国密证书类型本字段不用传
 	CsrEncryptAlgo *string `json:"CsrEncryptAlgo,omitnil,omitempty" name:"CsrEncryptAlgo"`
 
-	// 管理人ID
+	// 管理人ID，在 [腾讯云控制台](https://console.cloud.tencent.com/ssl/info) 可进行查看，若无满足的管理人信息， 则本参数传0 ； 若存在满足当前订单的管理人信息， 可以根据 [DescribeManagers](https://cloud.tencent.com/document/product/400/52672) 查看管理人ID； 若传了管理人ID，则Org开头、Admin开头、Tech开头的参数可不传； 管理人ID会包含公司信息
 	ManagerId *string `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 
-	// 联系人电话
+	// 联系人电话。若没有传ManagerId， 则此字段必传
 	TechPhone *string `json:"TechPhone,omitnil,omitempty" name:"TechPhone"`
 
 	// 联系人邮箱
 	TechEmail *string `json:"TechEmail,omitnil,omitempty" name:"TechEmail"`
 
-	// 联系人职位
+	// 联系人职位。若没有传ManagerId， 则此字段必传
 	TechTitle *string `json:"TechTitle,omitnil,omitempty" name:"TechTitle"`
 }
 
@@ -721,13 +773,13 @@ func (r *CertificateInfoSubmitRequest) FromJsonString(s string) error {
 	delete(f, "GenCsrType")
 	delete(f, "CertCommonName")
 	delete(f, "CompanyType")
+	delete(f, "CompanyId")
 	delete(f, "OrgIdType")
 	delete(f, "OrgIdNumber")
 	delete(f, "AdminIdType")
 	delete(f, "AdminIdNumber")
 	delete(f, "TechIdType")
 	delete(f, "TechIdNumber")
-	delete(f, "CompanyId")
 	delete(f, "Csr")
 	delete(f, "DnsNames")
 	delete(f, "KeyPass")
@@ -785,26 +837,32 @@ func (r *CertificateInfoSubmitResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CertificateOrderSubmitRequestParams struct {
-	// 证书 ID。
+	// 待提交资料的付费证书 ID。	
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 是否删除自动DNS验证值：0，不删除； 1，删除； 默认不删除
 	DeleteDnsAutoRecord *uint64 `json:"DeleteDnsAutoRecord,omitnil,omitempty" name:"DeleteDnsAutoRecord"`
 
-	// 域名验证方式：DNS_AUTO 自动DNS验证， DNS DNS验证， FILE 文件验证
+	// 证书域名验证方式：
+	// DNS_AUTO： 自动添加域名DNS验证， 需用户域名解析托管在『[云解析DNS](https://console.cloud.tencent.com/cns)』，且与申请证书归属同一个腾讯云账号
+	// DNS：手动添加域名DNS验证，需用户手动去域名解析服务商添加验证值
+	// FILE：手动添加域名文件验证。 需要用户手动在域名站点根目录添加指定路径文件进行文件验证， http&https任一通过即可；且域名站点需海外CA机构能访问， 具体访问白名单见控制台页面
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 }
 
 type CertificateOrderSubmitRequest struct {
 	*tchttp.BaseRequest
 	
-	// 证书 ID。
+	// 待提交资料的付费证书 ID。	
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 是否删除自动DNS验证值：0，不删除； 1，删除； 默认不删除
 	DeleteDnsAutoRecord *uint64 `json:"DeleteDnsAutoRecord,omitnil,omitempty" name:"DeleteDnsAutoRecord"`
 
-	// 域名验证方式：DNS_AUTO 自动DNS验证， DNS DNS验证， FILE 文件验证
+	// 证书域名验证方式：
+	// DNS_AUTO： 自动添加域名DNS验证， 需用户域名解析托管在『[云解析DNS](https://console.cloud.tencent.com/cns)』，且与申请证书归属同一个腾讯云账号
+	// DNS：手动添加域名DNS验证，需用户手动去域名解析服务商添加验证值
+	// FILE：手动添加域名文件验证。 需要用户手动在域名站点根目录添加指定路径文件进行文件验证， http&https任一通过即可；且域名站点需海外CA机构能访问， 具体访问白名单见控制台页面
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 }
 
@@ -869,12 +927,99 @@ type Certificates struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 证书来源。
+	// 证书来源：
+	// trustasia：亚洲诚信，
+	// upload：用户上传。
+	// wosign：沃通
+	// sheca：上海CA
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
 	// 证书套餐类型：
-	// 2 = TrustAsia TLS RSA CA，3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = Wotrus 国密域名型证书，34 = Wotrus 国密域名型多域名证书，35 = Wotrus 国密域名型通配符证书，37 = Wotrus 国密企业型证书，38 = Wotrus 国密企业型多域名证书，39 = Wotrus 国密企业型通配符证书，40 = Wotrus 国密增强型证书，41 = Wotrus 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书，43 = DNSPod-企业型(OV)SSL证书，44 = DNSPod-企业型(OV)通配符SSL证书，45 = DNSPod-企业型(OV)多域名SSL证书， 46 = DNSPod-增强型(EV)SSL证书，47 = DNSPod-增强型(EV)多域名SSL证书，48 = DNSPod-域名型(DV)SSL证书，49 = DNSPod-域名型(DV)通配符SSL证书，50 = DNSPod-域名型(DV)多域名SSL证书，51 = DNSPod（国密）-企业型(OV)SSL证书，52 = DNSPod（国密）-企业型(OV)通配符SSL证书，53 = DNSPod（国密）-企业型(OV)多域名SSL证书，54 = DNSPod（国密）-域名型(DV)SSL证书，55 = DNSPod（国密）-域名型(DV)通配符SSL证书， 56 = DNSPod（国密）-域名型(DV)多域名SSL证书，57 = SecureSite 企业型专业版多域名(OV Pro)，58 = SecureSite 企业型多域名(OV)，59 = SecureSite 增强型专业版多域名(EV Pro)，60 = SecureSite 增强型多域名(EV)，61 = Geotrust 增强型多域名(EV)，83 = TrustAsia C1 DV Free
+	// null：用户上传证书（没有套餐类型），
+	// 2：TrustAsia TLS RSA CA， 
+	// 3：SecureSite 增强型企业版（EV Pro）， 
+	// 4：SecureSite 增强型（EV）， 
+	// 5：SecureSite 企业型专业版（OV Pro），
+	// 6：SecureSite 企业型（OV）， 
+	// 7：SecureSite 企业型（OV）通配符， 
+	// 8：Geotrust 增强型（EV）， 
+	// 9：Geotrust 企业型（OV）， 
+	// 10：Geotrust 企业型（OV）通配符， 
+	// 11：TrustAsia 域名型多域名 SSL 证书， 
+	// 12：TrustAsia 域名型（DV）通配符， 
+	// 13：TrustAsia 企业型通配符（OV）SSL 证书（D3）， 
+	// 14：TrustAsia 企业型（OV）SSL 证书（D3）， 
+	// 15：TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 
+	// 16：TrustAsia 增强型 （EV）SSL 证书（D3）， 
+	// 17：TrustAsia 增强型多域名（EV）SSL 证书（D3）， 
+	// 18：GlobalSign 企业型（OV）SSL 证书， 
+	// 19：GlobalSign 企业型通配符 （OV）SSL 证书， 
+	// 20：GlobalSign 增强型 （EV）SSL 证书， 
+	// 21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 
+	// 22：GlobalSign 企业型多域名（OV）SSL 证书， 
+	// 23：GlobalSign 企业型通配符多域名（OV）SSL 证书，
+	// 24：GlobalSign 增强型多域名（EV）SSL 证书，
+	// 25：Wotrus 域名型证书，
+	// 26：Wotrus 域名型多域名证书，
+	// 27：Wotrus 域名型通配符证书，
+	// 28：Wotrus 企业型证书，
+	// 29：Wotrus 企业型多域名证书，
+	// 30：Wotrus 企业型通配符证书，
+	// 31：Wotrus 增强型证书，
+	// 32：Wotrus 增强型多域名证书，
+	// 33：WoTrus-国密域名型证书，
+	// 34：WoTrus-国密域名型证书（多域名），
+	// 35：WoTrus-国密域名型证书（通配符），
+	// 37：WoTrus-国密企业型证书，
+	// 38：WoTrus-国密企业型证书（多域名），
+	// 39：WoTrus-国密企业型证书（通配符），
+	// 40：WoTrus-国密增强型证书，
+	// 41：WoTrus-国密增强型证书（多域名），
+	// 42：TrustAsia-域名型证书（通配符多域名），
+	// 43：DNSPod-企业型(OV)SSL证书
+	// 44：DNSPod-企业型(OV)通配符SSL证书
+	// 45：DNSPod-企业型(OV)多域名SSL证书
+	// 46：DNSPod-增强型(EV)SSL证书
+	// 47：DNSPod-增强型(EV)多域名SSL证书
+	// 48：DNSPod-域名型(DV)SSL证书
+	// 49：DNSPod-域名型(DV)通配符SSL证书
+	// 50：DNSPod-域名型(DV)多域名SSL证书
+	// 51：DNSPod（国密）-企业型(OV)SSL证书
+	// 52：DNSPod（国密）-企业型(OV)通配符SSL证书
+	// 53：DNSPod（国密）-企业型(OV)多域名SSL证书
+	// 54：DNSPod（国密）-域名型(DV)SSL证书
+	// 55：DNSPod（国密）-域名型(DV)通配符SSL证书
+	// 56：DNSPod（国密）-域名型(DV)多域名SSL证书
+	// 57：SecureSite 企业型专业版多域名(OV Pro)
+	// 58：SecureSite 企业型多域名(OV)
+	// 59：SecureSite 增强型专业版多域名(EV Pro)
+	// 60：SecureSite 增强型多域名(EV)
+	// 61：Geotrust 增强型多域名(EV)
+	// 75：SecureSite 企业型(OV)
+	// 76：SecureSite 企业型(OV)通配符
+	// 77：SecureSite 增强型(EV)
+	// 78：Geotrust 企业型(OV)
+	// 79：Geotrust 企业型(OV)通配符
+	// 80：Geotrust 增强型(EV)
+	// 81：GlobalSign 企业型（OV）SSL证书
+	// 82：GlobalSign 企业型通配符 （OV）SSL证书
+	// 83：TrustAsia C1 DV Free
+	// 85：GlobalSign 增强型 （EV）SSL证书
+	// 88：GlobalSign 企业型通配符多域名 （OV）SSL证书
+	// 89：GlobalSign 企业型多域名 （OV）SSL证书
+	// 90：GlobalSign 增强型多域名（EV） SSL证书
+	// 91：Geotrust 增强型多域名(EV)
+	// 92：SecureSite 企业型专业版多域名(OV Pro)
+	// 93：SecureSite 企业型多域名(OV)
+	// 94：SecureSite 增强型专业版多域名(EV Pro)
+	// 95：SecureSite 增强型多域名(EV)
+	// 96：SecureSite 增强型专业版(EV Pro)
+	// 97：SecureSite 企业型专业版(OV Pro)
+	// 98：CFCA 企业型(OV)SSL证书
+	// 99：CFCA 企业型多域名(OV)SSL证书
+	// 100：CFCA 企业型通配符(OV)SSL证书
+	// 101：CFCA 增强型(EV)SSL证书
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
@@ -882,7 +1027,7 @@ type Certificates struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateType *string `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
 
-	// 颁发者。
+	// 证书产品名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductZhName *string `json:"ProductZhName,omitnil,omitempty" name:"ProductZhName"`
 
@@ -894,7 +1039,7 @@ type Certificates struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
-	// 状态。0：审核中，1：已通过，2：审核失败，3：已过期，4：验证方式为 DNS_AUTO 类型的证书， 已添加DNS记录，5：企业证书，待提交，6：订单取消中，7：已取消，8：已提交资料， 待上传确认函，9：证书吊销中，10：已吊销，11：重颁发中，12：待上传吊销确认函，13：免费证书待提交资料状态，14：已退款，
+	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
@@ -910,7 +1055,7 @@ type Certificates struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusMsg *string `json:"StatusMsg,omitnil,omitempty" name:"StatusMsg"`
 
-	// 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，EMAIL = 邮件验证。
+	// 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
@@ -1152,14 +1297,14 @@ func (r *CheckCertificateChainResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckCertificateDomainVerificationRequestParams struct {
-	// 证书ID。
+	// 证书ID。 
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
 type CheckCertificateDomainVerificationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 证书ID。
+	// 证书ID。 
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 }
 
@@ -1184,7 +1329,7 @@ func (r *CheckCertificateDomainVerificationRequest) FromJsonString(s string) err
 
 // Predefined struct for user
 type CheckCertificateDomainVerificationResponseParams struct {
-	// 域名验证结果
+	// 证书域名验证结果列表， 证书若绑定了多个域名， 则返回数组有多份
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerificationResults []*DomainValidationResult `json:"VerificationResults,omitnil,omitempty" name:"VerificationResults"`
 
@@ -1345,20 +1490,26 @@ type ClbListenerRule struct {
 
 // Predefined struct for user
 type CommitCertificateInformationRequestParams struct {
-	// 证书 ID。
+	// 待提交资料的付费证书 ID。	
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 域名验证方式，如 DNS,DNS_AUTO,FILE
+	// 证书域名验证方式：
+	// DNS_AUTO： 自动添加域名DNS验证， 需用户域名解析托管在『[云解析DNS](https://console.cloud.tencent.com/cns)』，且与申请证书归属同一个腾讯云账号
+	// DNS：手动添加域名DNS验证，需用户手动去域名解析服务商添加验证值
+	// FILE：手动添加域名文件验证。 需要用户手动在域名站点根目录添加指定路径文件进行文件验证， http&https任一通过即可；且域名站点需海外CA机构能访问， 具体访问白名单为：64.78.193.238，216.168.247.9，216.168.249.9，54.189.196.217
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 }
 
 type CommitCertificateInformationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 证书 ID。
+	// 待提交资料的付费证书 ID。	
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 域名验证方式，如 DNS,DNS_AUTO,FILE
+	// 证书域名验证方式：
+	// DNS_AUTO： 自动添加域名DNS验证， 需用户域名解析托管在『[云解析DNS](https://console.cloud.tencent.com/cns)』，且与申请证书归属同一个腾讯云账号
+	// DNS：手动添加域名DNS验证，需用户手动去域名解析服务商添加验证值
+	// FILE：手动添加域名文件验证。 需要用户手动在域名站点根目录添加指定路径文件进行文件验证， http&https任一通过即可；且域名站点需海外CA机构能访问， 具体访问白名单为：64.78.193.238，216.168.247.9，216.168.249.9，54.189.196.217
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 }
 
@@ -1432,11 +1583,14 @@ type CompanyInfo struct {
 	// 公司电话
 	CompanyPhone *string `json:"CompanyPhone,omitnil,omitempty" name:"CompanyPhone"`
 
-	// 类型
+	// 公司证件类型，取值范围：
+	// TYDMZ（统一社会信用代码 ）：仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段
+	// OTHERS（其他）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdType *string `json:"IdType,omitnil,omitempty" name:"IdType"`
 
-	// ID号
+	// 公司证件号码，取值范围：
+	// TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdNumber *string `json:"IdNumber,omitnil,omitempty" name:"IdNumber"`
 
@@ -1589,7 +1743,68 @@ func (r *CreateCertificateBindResourceSyncTaskResponse) FromJsonString(s string)
 
 // Predefined struct for user
 type CreateCertificateByPackageRequestParams struct {
-	// 证书产品PID。
+	// 证书产品PID，以下是对每个PID及其对应的证书文字说明：
+	// 1. 1022451 - CFCA-增强型(EV)SSL证书
+	// 2. 1022449 - CFCA-企业型(OV) SSL证书(通配符)
+	// 3. 1022447 - CFCA-企业型(OV)SSL证书
+	// 4. 1014028 - DNSPod亚信国密-企业型(OV)通配符证书
+	// 5. 1014030 - DNSPod亚信国密-企业型(OV)多域名证书
+	// 6. 1014026 - DNSPod亚信国密-企业型(OV)证书
+	// 7. 1014022 - DNSPod亚信国密-域名型(DV)通配符证书
+	// 8. 1014024 - DNSPod亚信国密-域名型(DV)多域名证书
+	// 9. 1014020 - DNSPod亚信国密-域名型(DV)证书
+	// 10. 1013949 - DNSPod SSL 域名型SSL证书(C1)
+	// 11. 1013953 - DNSPod SSL域名型多域名SSL证书(C1)
+	// 12. 1013951 - DNSPod-SSL域名型DV（泛域名）
+	// 13. 1013955 - DNSPod 企业型SSL证书(C1)
+	// 14. 1013959 - DNSPod 企业型多域名SSL证书(C1)
+	// 15. 1013957 - DNSPod 企业型通配符SSL证书(C1)
+	// 16. 1013961 - DNSPod 增强型 SSL 证书(C1)
+	// 17. 1013963 - DNSPod 增强型多域名SSL证书(C1)
+	// 18. 1005919 - TrustAsia-域名型DV（通配符多域名）
+	// 19. 1013882 - SecureSite-增强型专业版EVPro（多域名）
+	// 20. 1018559 - SecureSite-增强型专业版EVPro（单域名）
+	// 21. 1013910 - GlobalSign-增强型EV（多域名）
+	// 22. 1013904 - GlobalSign-增强型EV（单域名）
+	// 23. 1013898 - TrustAsia-增强型EV（多域名）
+	// 24. 1013888 - TrustAsia-增强型EV（单域名）
+	// 25. 1013886 - GeoTrust-增强型EV（多域名）
+	// 26. 1018529 - GeoTrust-增强型EV（单域名）
+	// 27. 1013880 - SecureSite-增强型EV（多域名）
+	// 28. 1018557 - SecureSite-增强型EV（单域名）
+	// 29. 1018586 - TrustAsia-域名型DV（泛域名）
+	// 30. 1018584 - TrustAsia-域名型DV（多域名）
+	// 31. 1013878 - SecureSite-企业型专业版OV Pro（多域名）
+	// 32. 1018582 - SecureSite-企业型专业版OV Pro（单域名）
+	// 33. 1013908 - GlobalSign-企业型OV（通配符多域名）
+	// 34. 1013902 - GlobalSign-企业型OV（泛域名）
+	// 35. 1013906 - GlobalSign-企业型OV（多域名）
+	// 36. 1013900 - GlobalSign-企业型OV（单域名）
+	// 37. 1013896 - TrustAsia-企业型OV（通配符多域名）
+	// 38. 1013892 - TrustAsia-企业型OV（泛域名）
+	// 39. 1013894 - TrustAsia-企业型OV（多域名）
+	// 40. 1013890 - TrustAsia-企业型OV（单域名）
+	// 41. 1004360 - GeoTrust-企业型OV（泛域名）
+	// 42. 1013884 - GeoTrust-企业型OV（单域名）
+	// 43. 1013874 - SecureSite-企业型OV（泛域名）
+	// 44. 1013876 - SecureSite-企业型OV（多域名）
+	// 45. 1018580 - SecureSite-企业型OV（单域名）
+	// 46. 1004460 - DNSPod-国密增强型证书（多域名）
+	// 47. 1004458 - DNSPod-国密增强型证书
+	// 48. 1004370 - DNSPod-国密企业型证书（通配符）
+	// 49. 1004368 - DNSPod-国密企业型证书（多域名）
+	// 50. 1004366 - DNSPod-国密企业型证书
+	// 51. 1004362 - DNSPod-国密域名型证书（通配符）
+	// 52. 1004364 - DNSPod-国密域名型证书（多域名）
+	// 53. 1004358 - DNSPod-国密域名型证书
+	// 54. 1004456 - WoTrus-增强型证书（多域名）
+	// 55. 1004454 - WoTrus-增强型证书
+	// 56. 1004168 - WoTrus-企业型证书（通配符）
+	// 57. 1004166 - WoTrus-企业型证书（多域名）
+	// 58. 1004164 - WoTrus-企业型证书
+	// 59. 1004159 - WoTrus-域名型证书（通配符）
+	// 60. 1004161 - WoTrus-域名型证书（多域名）
+	// 61. 1004157 - WoTrus-域名型证书
 	ProductPid *uint64 `json:"ProductPid,omitnil,omitempty" name:"ProductPid"`
 
 	// 要消耗的权益包ID。
@@ -1610,10 +1825,10 @@ type CreateCertificateByPackageRequestParams struct {
 	// 续费时选择上传CSR时填写CSR。
 	RenewCsr *string `json:"RenewCsr,omitnil,omitempty" name:"RenewCsr"`
 
-	// 续费证书CSR的算法类型。
+	// 续费证书CSR的算法类型：RSA,ECC,SM2
 	RenewAlgorithmType *string `json:"RenewAlgorithmType,omitnil,omitempty" name:"RenewAlgorithmType"`
 
-	// 续费证书CSR的算法参数。
+	// 续费证书CSR的算法参数:2048,4096,prime256v1
 	RenewAlgorithmParam *string `json:"RenewAlgorithmParam,omitnil,omitempty" name:"RenewAlgorithmParam"`
 
 	// 项目ID。
@@ -1640,14 +1855,136 @@ type CreateCertificateByPackageRequestParams struct {
 	// 验证方式
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
-	// 询价参数
+	// 询价参数，以下是对每个询价参数及其对应的证书文字说明：
+	// 1. sv_ssl_cost_cfca_ca_ev - CFCA-增强型(EV)SSL证书
+	// 2. sv_ssl_cost_cfca_ca_ovwildcard - CFCA-企业型(OV) SSL证书(通配符)
+	// 3. sv_ssl_cost_cfca_ca_ov - CFCA-企业型(OV)SSL证书
+	// 4. sv_ssl_cost_dnspod_ca_sm2_ovwildcard - DNSPod亚信国密-企业型(OV)通配符证书
+	// 5. sv_ssl_cost_dnspod_ca_sm2_ovmultidomain - DNSPod亚信国密-企业型(OV)多域名证书
+	// 6. sv_ssl_cost_dnspod_ca_sm2_ov - DNSPod亚信国密-企业型(OV)证书
+	// 7. sv_ssl_cost_dnspod_ca_sm2_dvwildcard - DNSPod亚信国密-域名型(DV)通配符证书
+	// 8. sv_ssl_cost_dnspod_ca_sm2_dvmultidomain - DNSPod亚信国密-域名型(DV)多域名证书
+	// 9. sv_ssl_cost_dnspod_ca_sm2_dv - DNSPod亚信国密-域名型(DV)证书
+	// 10. sv_ssl_cost_dnspod_ca_dv - DNSPod SSL 域名型SSL证书(C1)
+	// 11. sv_ssl_cost_dnspod_ca_dvmultidomain - DNSPod SSL域名型多域名SSL证书(C1)
+	// 12. sv_ssl_cost_dnspod_ca_dvwildcard - DNSPod-SSL域名型DV（泛域名）
+	// 13. sv_ssl_cost_dnspod_ca_ov - DNSPod 企业型SSL证书(C1)
+	// 14. sv_ssl_cost_dnspod_ca_ovmultidomain - DNSPod 企业型多域名SSL证书(C1)
+	// 15. sv_ssl_cost_dnspod_ca_ovwildcard - DNSPod 企业型通配符SSL证书(C1)
+	// 16. sv_ssl_cost_dnspod_ca_ev - DNSPod 增强型 SSL 证书(C1)
+	// 17. sv_ssl_cost_dnspod_ca_evmultidomain - DNSPod 增强型多域名SSL证书(C1)
+	// 18. sv_ssl_cost_trustasia_dvwildcardmulti - TrustAsia-域名型DV（通配符多域名）
+	// 19. sv_ssl_cost_securesiteevpromul_sh - SecureSite-增强型专业版EVPro（多域名）
+	// 20. sv_ssl_cost_symantec_evpro - SecureSite-增强型专业版EVPro（单域名）
+	// 21. sv_ssl_cost_globalsign_ev_mul_sh - GlobalSign-增强型EV（多域名）
+	// 22. sv_ssl_cost_globalsign_ev - GlobalSign-增强型EV（单域名）
+	// 23. sv_ssl_cost_trustasia_evmultidomain - TrustAsia-增强型EV（多域名）
+	// 24. sv_ssl_cost_trustasia_ev - TrustAsia-增强型EV（单域名）
+	// 25. sv_ssl_cost_geotrust_evmultidomain - GeoTrust-增强型EV（多域名）
+	// 26. sv_ssl_cost_geotrust_ev - GeoTrust-增强型EV（单域名）
+	// 27. sv_ssl_cost_symantec_evmultidomain - SecureSite-增强型EV（多域名）
+	// 28. sv_ssl_cost_symantec_ev - SecureSite-增强型EV（单域名）
+	// 29. sv_ssl_cost_trustasia_dvwildcard - TrustAsia-域名型DV（泛域名）
+	// 30. sv_ssl_cost_trustasia_dvmultidomain - TrustAsia-域名型DV（多域名）
+	// 31. sv_ssl_cost_symantec_ovpromultidomain - SecureSite-企业型专业版OV Pro（多域名）
+	// 32. sv_ssl_cost_symantec_ovpro - SecureSite-企业型专业版OV Pro（单域名）
+	// 33. sv_ssl_cost_globalsign_ovwildcardmulti - GlobalSign-企业型OV（通配符多域名）
+	// 34. sv_ssl_cost_globalsign_ovwildcard - GlobalSign-企业型OV（泛域名）
+	// 35. sv_ssl_cost_globalsign_ovmultidomain - GlobalSign-企业型OV（多域名）
+	// 36. sv_ssl_cost_globalsign_ov - GlobalSign-企业型OV（单域名）
+	// 37. sv_ssl_cost_trustasia_ovwildcardmulti - TrustAsia-企业型OV（通配符多域名）
+	// 38. sv_ssl_cost_trustasia_ovwildcard - TrustAsia-企业型OV（泛域名）
+	// 39. sv_ssl_cost_trustasia_ovmultidomain - TrustAsia-企业型OV（多域名）
+	// 40. sv_ssl_cost_trustasia_ov - TrustAsia-企业型OV（单域名）
+	// 41. sv_ssl_cost_geotrust_ovwildcard - GeoTrust-企业型OV（泛域名）
+	// 42. sv_ssl_cost_geotrust_ov - GeoTrust-企业型OV（单域名）
+	// 43. sv_ssl_cost_symantec_ovwildcard - SecureSite-企业型OV（泛域名）
+	// 44. sv_ssl_cost_symantec_ovmultidomain - SecureSite-企业型OV（多域名）
+	// 45. sv_ssl_cost_symantec_ov - SecureSite-企业型OV（单域名）
+	// 46. sv_ssl_cost_dnspod_evmultidomain - DNSPod-国密增强型证书（多域名）
+	// 47. sv_ssl_cost_dnspod_ev - DNSPod-国密增强型证书
+	// 48. sv_ssl_cost_dnspod_ovwildcard - DNSPod-国密企业型证书（通配符）
+	// 49. sv_ssl_cost_dnspod_ovmultidomain - DNSPod-国密企业型证书（多域名）
+	// 50. sv_ssl_cost_dnspod_ov - DNSPod-国密企业型证书
+	// 51. sv_ssl_cost_dnspod_dvwildcard - DNSPod-国密域名型证书（通配符）
+	// 52. sv_ssl_cost_dnspod_dvmultidomain - DNSPod-国密域名型证书（多域名）
+	// 53. sv_ssl_cost_dnspod_dv - DNSPod-国密域名型证书
+	// 54. sv_ssl_cost_wotrus_evmultidomain - WoTrus-增强型证书（多域名）
+	// 55. sv_ssl_cost_wotrus_ev - WoTrus-增强型证书
+	// 56. sv_ssl_cost_wotrus_ovwildcard - WoTrus-企业型证书（通配符）
+	// 57. sv_ssl_cost_wotrus_ovmultidomain - WoTrus-企业型证书（多域名）
+	// 58. sv_ssl_cost_wotrus_ov - WoTrus-企业型证书
+	// 59. sv_ssl_cost_wotrus_dvwildcard - WoTrus-域名型证书（通配符）
+	// 60. sv_ssl_cost_wotrus_dvmultidomain - WoTrus-域名型证书（多域名）
+	// 61. sv_ssl_cost_wotrus_dv - WoTrus-域名型证书
 	PriceKey *string `json:"PriceKey,omitnil,omitempty" name:"PriceKey"`
 }
 
 type CreateCertificateByPackageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 证书产品PID。
+	// 证书产品PID，以下是对每个PID及其对应的证书文字说明：
+	// 1. 1022451 - CFCA-增强型(EV)SSL证书
+	// 2. 1022449 - CFCA-企业型(OV) SSL证书(通配符)
+	// 3. 1022447 - CFCA-企业型(OV)SSL证书
+	// 4. 1014028 - DNSPod亚信国密-企业型(OV)通配符证书
+	// 5. 1014030 - DNSPod亚信国密-企业型(OV)多域名证书
+	// 6. 1014026 - DNSPod亚信国密-企业型(OV)证书
+	// 7. 1014022 - DNSPod亚信国密-域名型(DV)通配符证书
+	// 8. 1014024 - DNSPod亚信国密-域名型(DV)多域名证书
+	// 9. 1014020 - DNSPod亚信国密-域名型(DV)证书
+	// 10. 1013949 - DNSPod SSL 域名型SSL证书(C1)
+	// 11. 1013953 - DNSPod SSL域名型多域名SSL证书(C1)
+	// 12. 1013951 - DNSPod-SSL域名型DV（泛域名）
+	// 13. 1013955 - DNSPod 企业型SSL证书(C1)
+	// 14. 1013959 - DNSPod 企业型多域名SSL证书(C1)
+	// 15. 1013957 - DNSPod 企业型通配符SSL证书(C1)
+	// 16. 1013961 - DNSPod 增强型 SSL 证书(C1)
+	// 17. 1013963 - DNSPod 增强型多域名SSL证书(C1)
+	// 18. 1005919 - TrustAsia-域名型DV（通配符多域名）
+	// 19. 1013882 - SecureSite-增强型专业版EVPro（多域名）
+	// 20. 1018559 - SecureSite-增强型专业版EVPro（单域名）
+	// 21. 1013910 - GlobalSign-增强型EV（多域名）
+	// 22. 1013904 - GlobalSign-增强型EV（单域名）
+	// 23. 1013898 - TrustAsia-增强型EV（多域名）
+	// 24. 1013888 - TrustAsia-增强型EV（单域名）
+	// 25. 1013886 - GeoTrust-增强型EV（多域名）
+	// 26. 1018529 - GeoTrust-增强型EV（单域名）
+	// 27. 1013880 - SecureSite-增强型EV（多域名）
+	// 28. 1018557 - SecureSite-增强型EV（单域名）
+	// 29. 1018586 - TrustAsia-域名型DV（泛域名）
+	// 30. 1018584 - TrustAsia-域名型DV（多域名）
+	// 31. 1013878 - SecureSite-企业型专业版OV Pro（多域名）
+	// 32. 1018582 - SecureSite-企业型专业版OV Pro（单域名）
+	// 33. 1013908 - GlobalSign-企业型OV（通配符多域名）
+	// 34. 1013902 - GlobalSign-企业型OV（泛域名）
+	// 35. 1013906 - GlobalSign-企业型OV（多域名）
+	// 36. 1013900 - GlobalSign-企业型OV（单域名）
+	// 37. 1013896 - TrustAsia-企业型OV（通配符多域名）
+	// 38. 1013892 - TrustAsia-企业型OV（泛域名）
+	// 39. 1013894 - TrustAsia-企业型OV（多域名）
+	// 40. 1013890 - TrustAsia-企业型OV（单域名）
+	// 41. 1004360 - GeoTrust-企业型OV（泛域名）
+	// 42. 1013884 - GeoTrust-企业型OV（单域名）
+	// 43. 1013874 - SecureSite-企业型OV（泛域名）
+	// 44. 1013876 - SecureSite-企业型OV（多域名）
+	// 45. 1018580 - SecureSite-企业型OV（单域名）
+	// 46. 1004460 - DNSPod-国密增强型证书（多域名）
+	// 47. 1004458 - DNSPod-国密增强型证书
+	// 48. 1004370 - DNSPod-国密企业型证书（通配符）
+	// 49. 1004368 - DNSPod-国密企业型证书（多域名）
+	// 50. 1004366 - DNSPod-国密企业型证书
+	// 51. 1004362 - DNSPod-国密域名型证书（通配符）
+	// 52. 1004364 - DNSPod-国密域名型证书（多域名）
+	// 53. 1004358 - DNSPod-国密域名型证书
+	// 54. 1004456 - WoTrus-增强型证书（多域名）
+	// 55. 1004454 - WoTrus-增强型证书
+	// 56. 1004168 - WoTrus-企业型证书（通配符）
+	// 57. 1004166 - WoTrus-企业型证书（多域名）
+	// 58. 1004164 - WoTrus-企业型证书
+	// 59. 1004159 - WoTrus-域名型证书（通配符）
+	// 60. 1004161 - WoTrus-域名型证书（多域名）
+	// 61. 1004157 - WoTrus-域名型证书
 	ProductPid *uint64 `json:"ProductPid,omitnil,omitempty" name:"ProductPid"`
 
 	// 要消耗的权益包ID。
@@ -1668,10 +2005,10 @@ type CreateCertificateByPackageRequest struct {
 	// 续费时选择上传CSR时填写CSR。
 	RenewCsr *string `json:"RenewCsr,omitnil,omitempty" name:"RenewCsr"`
 
-	// 续费证书CSR的算法类型。
+	// 续费证书CSR的算法类型：RSA,ECC,SM2
 	RenewAlgorithmType *string `json:"RenewAlgorithmType,omitnil,omitempty" name:"RenewAlgorithmType"`
 
-	// 续费证书CSR的算法参数。
+	// 续费证书CSR的算法参数:2048,4096,prime256v1
 	RenewAlgorithmParam *string `json:"RenewAlgorithmParam,omitnil,omitempty" name:"RenewAlgorithmParam"`
 
 	// 项目ID。
@@ -1698,7 +2035,68 @@ type CreateCertificateByPackageRequest struct {
 	// 验证方式
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
-	// 询价参数
+	// 询价参数，以下是对每个询价参数及其对应的证书文字说明：
+	// 1. sv_ssl_cost_cfca_ca_ev - CFCA-增强型(EV)SSL证书
+	// 2. sv_ssl_cost_cfca_ca_ovwildcard - CFCA-企业型(OV) SSL证书(通配符)
+	// 3. sv_ssl_cost_cfca_ca_ov - CFCA-企业型(OV)SSL证书
+	// 4. sv_ssl_cost_dnspod_ca_sm2_ovwildcard - DNSPod亚信国密-企业型(OV)通配符证书
+	// 5. sv_ssl_cost_dnspod_ca_sm2_ovmultidomain - DNSPod亚信国密-企业型(OV)多域名证书
+	// 6. sv_ssl_cost_dnspod_ca_sm2_ov - DNSPod亚信国密-企业型(OV)证书
+	// 7. sv_ssl_cost_dnspod_ca_sm2_dvwildcard - DNSPod亚信国密-域名型(DV)通配符证书
+	// 8. sv_ssl_cost_dnspod_ca_sm2_dvmultidomain - DNSPod亚信国密-域名型(DV)多域名证书
+	// 9. sv_ssl_cost_dnspod_ca_sm2_dv - DNSPod亚信国密-域名型(DV)证书
+	// 10. sv_ssl_cost_dnspod_ca_dv - DNSPod SSL 域名型SSL证书(C1)
+	// 11. sv_ssl_cost_dnspod_ca_dvmultidomain - DNSPod SSL域名型多域名SSL证书(C1)
+	// 12. sv_ssl_cost_dnspod_ca_dvwildcard - DNSPod-SSL域名型DV（泛域名）
+	// 13. sv_ssl_cost_dnspod_ca_ov - DNSPod 企业型SSL证书(C1)
+	// 14. sv_ssl_cost_dnspod_ca_ovmultidomain - DNSPod 企业型多域名SSL证书(C1)
+	// 15. sv_ssl_cost_dnspod_ca_ovwildcard - DNSPod 企业型通配符SSL证书(C1)
+	// 16. sv_ssl_cost_dnspod_ca_ev - DNSPod 增强型 SSL 证书(C1)
+	// 17. sv_ssl_cost_dnspod_ca_evmultidomain - DNSPod 增强型多域名SSL证书(C1)
+	// 18. sv_ssl_cost_trustasia_dvwildcardmulti - TrustAsia-域名型DV（通配符多域名）
+	// 19. sv_ssl_cost_securesiteevpromul_sh - SecureSite-增强型专业版EVPro（多域名）
+	// 20. sv_ssl_cost_symantec_evpro - SecureSite-增强型专业版EVPro（单域名）
+	// 21. sv_ssl_cost_globalsign_ev_mul_sh - GlobalSign-增强型EV（多域名）
+	// 22. sv_ssl_cost_globalsign_ev - GlobalSign-增强型EV（单域名）
+	// 23. sv_ssl_cost_trustasia_evmultidomain - TrustAsia-增强型EV（多域名）
+	// 24. sv_ssl_cost_trustasia_ev - TrustAsia-增强型EV（单域名）
+	// 25. sv_ssl_cost_geotrust_evmultidomain - GeoTrust-增强型EV（多域名）
+	// 26. sv_ssl_cost_geotrust_ev - GeoTrust-增强型EV（单域名）
+	// 27. sv_ssl_cost_symantec_evmultidomain - SecureSite-增强型EV（多域名）
+	// 28. sv_ssl_cost_symantec_ev - SecureSite-增强型EV（单域名）
+	// 29. sv_ssl_cost_trustasia_dvwildcard - TrustAsia-域名型DV（泛域名）
+	// 30. sv_ssl_cost_trustasia_dvmultidomain - TrustAsia-域名型DV（多域名）
+	// 31. sv_ssl_cost_symantec_ovpromultidomain - SecureSite-企业型专业版OV Pro（多域名）
+	// 32. sv_ssl_cost_symantec_ovpro - SecureSite-企业型专业版OV Pro（单域名）
+	// 33. sv_ssl_cost_globalsign_ovwildcardmulti - GlobalSign-企业型OV（通配符多域名）
+	// 34. sv_ssl_cost_globalsign_ovwildcard - GlobalSign-企业型OV（泛域名）
+	// 35. sv_ssl_cost_globalsign_ovmultidomain - GlobalSign-企业型OV（多域名）
+	// 36. sv_ssl_cost_globalsign_ov - GlobalSign-企业型OV（单域名）
+	// 37. sv_ssl_cost_trustasia_ovwildcardmulti - TrustAsia-企业型OV（通配符多域名）
+	// 38. sv_ssl_cost_trustasia_ovwildcard - TrustAsia-企业型OV（泛域名）
+	// 39. sv_ssl_cost_trustasia_ovmultidomain - TrustAsia-企业型OV（多域名）
+	// 40. sv_ssl_cost_trustasia_ov - TrustAsia-企业型OV（单域名）
+	// 41. sv_ssl_cost_geotrust_ovwildcard - GeoTrust-企业型OV（泛域名）
+	// 42. sv_ssl_cost_geotrust_ov - GeoTrust-企业型OV（单域名）
+	// 43. sv_ssl_cost_symantec_ovwildcard - SecureSite-企业型OV（泛域名）
+	// 44. sv_ssl_cost_symantec_ovmultidomain - SecureSite-企业型OV（多域名）
+	// 45. sv_ssl_cost_symantec_ov - SecureSite-企业型OV（单域名）
+	// 46. sv_ssl_cost_dnspod_evmultidomain - DNSPod-国密增强型证书（多域名）
+	// 47. sv_ssl_cost_dnspod_ev - DNSPod-国密增强型证书
+	// 48. sv_ssl_cost_dnspod_ovwildcard - DNSPod-国密企业型证书（通配符）
+	// 49. sv_ssl_cost_dnspod_ovmultidomain - DNSPod-国密企业型证书（多域名）
+	// 50. sv_ssl_cost_dnspod_ov - DNSPod-国密企业型证书
+	// 51. sv_ssl_cost_dnspod_dvwildcard - DNSPod-国密域名型证书（通配符）
+	// 52. sv_ssl_cost_dnspod_dvmultidomain - DNSPod-国密域名型证书（多域名）
+	// 53. sv_ssl_cost_dnspod_dv - DNSPod-国密域名型证书
+	// 54. sv_ssl_cost_wotrus_evmultidomain - WoTrus-增强型证书（多域名）
+	// 55. sv_ssl_cost_wotrus_ev - WoTrus-增强型证书
+	// 56. sv_ssl_cost_wotrus_ovwildcard - WoTrus-企业型证书（通配符）
+	// 57. sv_ssl_cost_wotrus_ovmultidomain - WoTrus-企业型证书（多域名）
+	// 58. sv_ssl_cost_wotrus_ov - WoTrus-企业型证书
+	// 59. sv_ssl_cost_wotrus_dvwildcard - WoTrus-域名型证书（通配符）
+	// 60. sv_ssl_cost_wotrus_dvmultidomain - WoTrus-域名型证书（多域名）
+	// 61. sv_ssl_cost_wotrus_dv - WoTrus-域名型证书
 	PriceKey *string `json:"PriceKey,omitnil,omitempty" name:"PriceKey"`
 }
 
@@ -1958,7 +2356,7 @@ type DeleteCertificatesRequestParams struct {
 	// 要删除的证书ID。单次最多100个
 	CertificateIds []*string `json:"CertificateIds,omitnil,omitempty" name:"CertificateIds"`
 
-	// 删除时是否检查证书关联了云资源。默认不检查。如需要检查关联云资源 (需授权服务角色SSL_QCSLinkedRoleInReplaceLoadCertificate)，完成授权后，删除将变成异步任务，接口会返回异步任务ID。需搭配 DescribeDeleteCertificatesTaskResult接口使用，查询删除任务是否成功。
+	// 删除时是否检查证书关联了云资源。默认不检查。如需要检查关联云资源 (需授权服务角色SSL_QCSLinkedRoleInReplaceLoadCertificate)，完成授权后且该参数传true，删除将变成异步任务，接口会返回异步任务ID。需搭配 DescribeDeleteCertificatesTaskResult接口使用，查询删除任务是否成功。
 	IsSync *bool `json:"IsSync,omitnil,omitempty" name:"IsSync"`
 }
 
@@ -1968,7 +2366,7 @@ type DeleteCertificatesRequest struct {
 	// 要删除的证书ID。单次最多100个
 	CertificateIds []*string `json:"CertificateIds,omitnil,omitempty" name:"CertificateIds"`
 
-	// 删除时是否检查证书关联了云资源。默认不检查。如需要检查关联云资源 (需授权服务角色SSL_QCSLinkedRoleInReplaceLoadCertificate)，完成授权后，删除将变成异步任务，接口会返回异步任务ID。需搭配 DescribeDeleteCertificatesTaskResult接口使用，查询删除任务是否成功。
+	// 删除时是否检查证书关联了云资源。默认不检查。如需要检查关联云资源 (需授权服务角色SSL_QCSLinkedRoleInReplaceLoadCertificate)，完成授权后且该参数传true，删除将变成异步任务，接口会返回异步任务ID。需搭配 DescribeDeleteCertificatesTaskResult接口使用，查询删除任务是否成功。
 	IsSync *bool `json:"IsSync,omitnil,omitempty" name:"IsSync"`
 }
 
@@ -2317,14 +2715,14 @@ func (r *DeployCertificateRecordRetryResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeployCertificateRecordRollbackRequestParams struct {
-	// 待重试部署记录ID,就是通过DeployCertificateInstance返回的DeployRecordId
+	// 待重试部署记录ID, 就是通过DeployCertificateInstance返回的DeployRecordId
 	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 }
 
 type DeployCertificateRecordRollbackRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待重试部署记录ID,就是通过DeployCertificateInstance返回的DeployRecordId
+	// 待重试部署记录ID, 就是通过DeployCertificateInstance返回的DeployRecordId
 	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 }
 
@@ -2465,7 +2863,7 @@ type DeployRecordInfo struct {
 	// 部署地域
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 部署状态
+	// 部署状态:0 未开始， 1 成功， 2 失败
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 部署时间
@@ -2502,13 +2900,25 @@ type DescribeCertificateBindResourceTaskDetailRequestParams struct {
 	// 每页展示数量， 默认10，最大值100; 分页总数为云资源地域下实例总数， 即第一页会拉群每个云资源的地域下面Limit数量实例
 	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 当前偏移量
+	// 当前偏移量，默认为0
 	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询资源类型的结果详情， 不传则查询所有
+	// 查询资源类型的结果详情， 不传则查询所有，取值支持：
+	// - clb
+	// - cdn
+	// - ddos
+	// - live
+	// - vod
+	// - waf
+	// - apigateway
+	// - teo
+	// - tke
+	// - cos
+	// - tse
+	// - tcb
 	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
 
-	// 查询地域列表的数据，CLB、TKE、WAF、APIGATEWAY、TCB支持地域查询， 其他资源类型不支持
+	// 查询地域列表的数据，clb、tke、waf、apigateway、tcb、cos、tse支持地域查询， 其他资源类型不支持
 	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
 }
 
@@ -2521,13 +2931,25 @@ type DescribeCertificateBindResourceTaskDetailRequest struct {
 	// 每页展示数量， 默认10，最大值100; 分页总数为云资源地域下实例总数， 即第一页会拉群每个云资源的地域下面Limit数量实例
 	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 当前偏移量
+	// 当前偏移量，默认为0
 	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询资源类型的结果详情， 不传则查询所有
+	// 查询资源类型的结果详情， 不传则查询所有，取值支持：
+	// - clb
+	// - cdn
+	// - ddos
+	// - live
+	// - vod
+	// - waf
+	// - apigateway
+	// - teo
+	// - tke
+	// - cos
+	// - tse
+	// - tcb
 	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
 
-	// 查询地域列表的数据，CLB、TKE、WAF、APIGATEWAY、TCB支持地域查询， 其他资源类型不支持
+	// 查询地域列表的数据，clb、tke、waf、apigateway、tcb、cos、tse支持地域查询， 其他资源类型不支持
 	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
 }
 
@@ -2722,7 +3144,7 @@ func (r *DescribeCertificateDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCertificateDetailResponseParams struct {
-	// 用户 UIN。
+	// 证书所属用户主账号 UIN。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
@@ -2730,7 +3152,11 @@ type DescribeCertificateDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 证书来源：trustasia = 亚洲诚信，upload = 用户上传。
+	// 证书来源：
+	// trustasia：亚洲诚信，
+	// upload：用户上传。
+	// wosign：沃通
+	// sheca：上海CA
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
@@ -2738,15 +3164,99 @@ type DescribeCertificateDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateType *string `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
 
-	// 证书套餐类型：null = 用户上传证书（没有套餐类型），1 = GeoTrust DV SSL CA - G3， 2 = TrustAsia TLS RSA CA， 3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = DNSPod 国密域名型证书，34 = DNSPod 国密域名型多域名证书，35 = DNSPod 国密域名型通配符证书，37 = DNSPod 国密企业型证书，38 = DNSPod 国密企业型多域名证书，39 = DNSPod 国密企业型通配符证书，40 = DNSPod 国密增强型证书，41 = DNSPod 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书。
+	// 证书套餐类型：
+	// null：用户上传证书（没有套餐类型），
+	// 2：TrustAsia TLS RSA CA， 
+	// 3：SecureSite 增强型企业版（EV Pro）， 
+	// 4：SecureSite 增强型（EV）， 
+	// 5：SecureSite 企业型专业版（OV Pro），
+	// 6：SecureSite 企业型（OV）， 
+	// 7：SecureSite 企业型（OV）通配符， 
+	// 8：Geotrust 增强型（EV）， 
+	// 9：Geotrust 企业型（OV）， 
+	// 10：Geotrust 企业型（OV）通配符， 
+	// 11：TrustAsia 域名型多域名 SSL 证书， 
+	// 12：TrustAsia 域名型（DV）通配符， 
+	// 13：TrustAsia 企业型通配符（OV）SSL 证书（D3）， 
+	// 14：TrustAsia 企业型（OV）SSL 证书（D3）， 
+	// 15：TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 
+	// 16：TrustAsia 增强型 （EV）SSL 证书（D3）， 
+	// 17：TrustAsia 增强型多域名（EV）SSL 证书（D3）， 
+	// 18：GlobalSign 企业型（OV）SSL 证书， 
+	// 19：GlobalSign 企业型通配符 （OV）SSL 证书， 
+	// 20：GlobalSign 增强型 （EV）SSL 证书， 
+	// 21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 
+	// 22：GlobalSign 企业型多域名（OV）SSL 证书， 
+	// 23：GlobalSign 企业型通配符多域名（OV）SSL 证书，
+	// 24：GlobalSign 增强型多域名（EV）SSL 证书，
+	// 25：Wotrus 域名型证书，
+	// 26：Wotrus 域名型多域名证书，
+	// 27：Wotrus 域名型通配符证书，
+	// 28：Wotrus 企业型证书，
+	// 29：Wotrus 企业型多域名证书，
+	// 30：Wotrus 企业型通配符证书，
+	// 31：Wotrus 增强型证书，
+	// 32：Wotrus 增强型多域名证书，
+	// 33：WoTrus-国密域名型证书，
+	// 34：WoTrus-国密域名型证书（多域名），
+	// 35：WoTrus-国密域名型证书（通配符），
+	// 37：WoTrus-国密企业型证书，
+	// 38：WoTrus-国密企业型证书（多域名），
+	// 39：WoTrus-国密企业型证书（通配符），
+	// 40：WoTrus-国密增强型证书，
+	// 41：WoTrus-国密增强型证书（多域名），
+	// 42：TrustAsia-域名型证书（通配符多域名），
+	// 43：DNSPod-企业型(OV)SSL证书
+	// 44：DNSPod-企业型(OV)通配符SSL证书
+	// 45：DNSPod-企业型(OV)多域名SSL证书
+	// 46：DNSPod-增强型(EV)SSL证书
+	// 47：DNSPod-增强型(EV)多域名SSL证书
+	// 48：DNSPod-域名型(DV)SSL证书
+	// 49：DNSPod-域名型(DV)通配符SSL证书
+	// 50：DNSPod-域名型(DV)多域名SSL证书
+	// 51：DNSPod（国密）-企业型(OV)SSL证书
+	// 52：DNSPod（国密）-企业型(OV)通配符SSL证书
+	// 53：DNSPod（国密）-企业型(OV)多域名SSL证书
+	// 54：DNSPod（国密）-域名型(DV)SSL证书
+	// 55：DNSPod（国密）-域名型(DV)通配符SSL证书
+	// 56：DNSPod（国密）-域名型(DV)多域名SSL证书
+	// 57：SecureSite 企业型专业版多域名(OV Pro)
+	// 58：SecureSite 企业型多域名(OV)
+	// 59：SecureSite 增强型专业版多域名(EV Pro)
+	// 60：SecureSite 增强型多域名(EV)
+	// 61：Geotrust 增强型多域名(EV)
+	// 75：SecureSite 企业型(OV)
+	// 76：SecureSite 企业型(OV)通配符
+	// 77：SecureSite 增强型(EV)
+	// 78：Geotrust 企业型(OV)
+	// 79：Geotrust 企业型(OV)通配符
+	// 80：Geotrust 增强型(EV)
+	// 81：GlobalSign 企业型（OV）SSL证书
+	// 82：GlobalSign 企业型通配符 （OV）SSL证书
+	// 83：TrustAsia C1 DV Free
+	// 85：GlobalSign 增强型 （EV）SSL证书
+	// 88：GlobalSign 企业型通配符多域名 （OV）SSL证书
+	// 89：GlobalSign 企业型多域名 （OV）SSL证书
+	// 90：GlobalSign 增强型多域名（EV） SSL证书
+	// 91：Geotrust 增强型多域名(EV)
+	// 92：SecureSite 企业型专业版多域名(OV Pro)
+	// 93：SecureSite 企业型多域名(OV)
+	// 94：SecureSite 增强型专业版多域名(EV Pro)
+	// 95：SecureSite 增强型多域名(EV)
+	// 96：SecureSite 增强型专业版(EV Pro)
+	// 97：SecureSite 企业型专业版(OV Pro)
+	// 98：CFCA 企业型(OV)SSL证书
+	// 99：CFCA 企业型多域名(OV)SSL证书
+	// 100：CFCA 企业型通配符(OV)SSL证书
+	// 101：CFCA 增强型(EV)SSL证书
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
-	// 颁发者。
+	// 证书产品名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductZhName *string `json:"ProductZhName,omitnil,omitempty" name:"ProductZhName"`
 
-	// 域名。
+	// 证书绑定通用名称域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
@@ -2754,11 +3264,23 @@ type DescribeCertificateDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
-	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
+	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 状态信息。
+	// 状态信息。 取值范围：
+	// //通用状态信息
+	// 1、PRE-REVIEWING：预审核中
+	// 2、LEGAL-REVIEWING：法务审核中
+	// 3、CA-REVIEWING：CA审核中
+	// 4、PENDING-DCV：域名验证中
+	// 5、WAIT-ISSUE：等待签发（域名验证已通过）
+	// //证书审核失败状态信息
+	// 1、订单审核失败
+	// 2、CA审核失败，域名未通过安全审查
+	// 3、域名验证超时，订单自动关闭，请您重新进行证书申请
+	// 4、证书资料未通过证书CA机构审核，审核人员会致电您证书预留的联系方式，请您留意来电。后续可通过“修改资料”重新提交资料
+	// 待持续完善
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusMsg *string `json:"StatusMsg,omitnil,omitempty" name:"StatusMsg"`
 
@@ -2782,11 +3304,11 @@ type DescribeCertificateDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
-	// 申请时间。
+	// 证书申请时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
-	// 订单 ID。
+	// CA订单 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
@@ -2794,15 +3316,15 @@ type DescribeCertificateDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateExtra *CertificateExtra `json:"CertificateExtra,omitnil,omitempty" name:"CertificateExtra"`
 
-	// 证书私钥
+	// 私钥证书， 国密证书则为签名证书中的私钥证书
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitnil,omitempty" name:"CertificatePrivateKey"`
 
-	// 证书公钥（即证书内容）
+	// 公钥证书， 国密则为签名证书中的公钥证书
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificatePublicKey *string `json:"CertificatePublicKey,omitnil,omitempty" name:"CertificatePublicKey"`
 
-	// DV 认证信息。
+	// 证书域名验证信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthDetail *DvAuthDetail `json:"DvAuthDetail,omitnil,omitempty" name:"DvAuthDetail"`
 
@@ -2842,7 +3364,7 @@ type DescribeCertificateDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsVulnerability *bool `json:"IsVulnerability,omitnil,omitempty" name:"IsVulnerability"`
 
-	// 提交的资料信息。
+	// 付费证书提交的资料信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubmittedData *SubmittedData `json:"SubmittedData,omitnil,omitempty" name:"SubmittedData"`
 
@@ -2862,11 +3384,11 @@ type DescribeCertificateDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RootCert *RootCertificates `json:"RootCert,omitnil,omitempty" name:"RootCert"`
 
-	// 国密加密证书
+	// 国密加密证书公钥， 仅国密证书有值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptCert *string `json:"EncryptCert,omitnil,omitempty" name:"EncryptCert"`
 
-	// 国密加密私钥
+	// 国密加密私钥证书， 仅国密证书有值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptPrivateKey *string `json:"EncryptPrivateKey,omitnil,omitempty" name:"EncryptPrivateKey"`
 
@@ -2878,7 +3400,7 @@ type DescribeCertificateDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptCertFingerprint *string `json:"EncryptCertFingerprint,omitnil,omitempty" name:"EncryptCertFingerprint"`
 
-	// 证书算法
+	// 证书加密算法（国密证书特有）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitnil,omitempty" name:"EncryptAlgorithm"`
 
@@ -2915,7 +3437,7 @@ type DescribeCertificateOperateLogsRequestParams struct {
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 请求日志数量，默认为20。
+	// 请求日志数量，默认为20, 最大值为1000，如超过1000按照1000处理。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 开始时间，默认15天前。
@@ -2931,7 +3453,7 @@ type DescribeCertificateOperateLogsRequest struct {
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 请求日志数量，默认为20。
+	// 请求日志数量，默认为20, 最大值为1000，如超过1000按照1000处理。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 开始时间，默认15天前。
@@ -3037,7 +3559,11 @@ type DescribeCertificateResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 证书来源：trustasia = 亚洲诚信，upload = 用户上传。
+	// 证书来源：
+	// trustasia：亚洲诚信，
+	// upload：用户上传。
+	// wosign：沃通
+	// sheca：上海CA
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
@@ -3045,11 +3571,95 @@ type DescribeCertificateResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateType *string `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
 
-	// 证书套餐类型： 2 = TrustAsia TLS RSA CA，3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = Wotrus 国密域名型证书，34 = Wotrus 国密域名型多域名证书，35 = Wotrus 国密域名型通配符证书，37 = Wotrus 国密企业型证书，38 = Wotrus 国密企业型多域名证书，39 = Wotrus 国密企业型通配符证书，40 = Wotrus 国密增强型证书，41 = Wotrus 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书，43 = DNSPod-企业型(OV)SSL证书，44 = DNSPod-企业型(OV)通配符SSL证书，45 = DNSPod-企业型(OV)多域名SSL证书， 46 = DNSPod-增强型(EV)SSL证书，47 = DNSPod-增强型(EV)多域名SSL证书，48 = DNSPod-域名型(DV)SSL证书，49 = DNSPod-域名型(DV)通配符SSL证书，50 = DNSPod-域名型(DV)多域名SSL证书，51 = DNSPod（国密）-企业型(OV)SSL证书，52 = DNSPod（国密）-企业型(OV)通配符SSL证书，53 = DNSPod（国密）-企业型(OV)多域名SSL证书，54 = DNSPod（国密）-域名型(DV)SSL证书，55 = DNSPod（国密）-域名型(DV)通配符SSL证书， 56 = DNSPod（国密）-域名型(DV)多域名SSL证书，57 = SecureSite 企业型专业版多域名(OV Pro)，58 = SecureSite 企业型多域名(OV)，59 = SecureSite 增强型专业版多域名(EV Pro)，60 = SecureSite 增强型多域名(EV)，61 = Geotrust 增强型多域名(EV)
+	// 证书套餐类型：
+	// null：用户上传证书（没有套餐类型），
+	// 2：TrustAsia TLS RSA CA， 
+	// 3：SecureSite 增强型企业版（EV Pro）， 
+	// 4：SecureSite 增强型（EV）， 
+	// 5：SecureSite 企业型专业版（OV Pro），
+	// 6：SecureSite 企业型（OV）， 
+	// 7：SecureSite 企业型（OV）通配符， 
+	// 8：Geotrust 增强型（EV）， 
+	// 9：Geotrust 企业型（OV）， 
+	// 10：Geotrust 企业型（OV）通配符， 
+	// 11：TrustAsia 域名型多域名 SSL 证书， 
+	// 12：TrustAsia 域名型（DV）通配符， 
+	// 13：TrustAsia 企业型通配符（OV）SSL 证书（D3）， 
+	// 14：TrustAsia 企业型（OV）SSL 证书（D3）， 
+	// 15：TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 
+	// 16：TrustAsia 增强型 （EV）SSL 证书（D3）， 
+	// 17：TrustAsia 增强型多域名（EV）SSL 证书（D3）， 
+	// 18：GlobalSign 企业型（OV）SSL 证书， 
+	// 19：GlobalSign 企业型通配符 （OV）SSL 证书， 
+	// 20：GlobalSign 增强型 （EV）SSL 证书， 
+	// 21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 
+	// 22：GlobalSign 企业型多域名（OV）SSL 证书， 
+	// 23：GlobalSign 企业型通配符多域名（OV）SSL 证书，
+	// 24：GlobalSign 增强型多域名（EV）SSL 证书，
+	// 25：Wotrus 域名型证书，
+	// 26：Wotrus 域名型多域名证书，
+	// 27：Wotrus 域名型通配符证书，
+	// 28：Wotrus 企业型证书，
+	// 29：Wotrus 企业型多域名证书，
+	// 30：Wotrus 企业型通配符证书，
+	// 31：Wotrus 增强型证书，
+	// 32：Wotrus 增强型多域名证书，
+	// 33：WoTrus-国密域名型证书，
+	// 34：WoTrus-国密域名型证书（多域名），
+	// 35：WoTrus-国密域名型证书（通配符），
+	// 37：WoTrus-国密企业型证书，
+	// 38：WoTrus-国密企业型证书（多域名），
+	// 39：WoTrus-国密企业型证书（通配符），
+	// 40：WoTrus-国密增强型证书，
+	// 41：WoTrus-国密增强型证书（多域名），
+	// 42：TrustAsia-域名型证书（通配符多域名），
+	// 43：DNSPod-企业型(OV)SSL证书
+	// 44：DNSPod-企业型(OV)通配符SSL证书
+	// 45：DNSPod-企业型(OV)多域名SSL证书
+	// 46：DNSPod-增强型(EV)SSL证书
+	// 47：DNSPod-增强型(EV)多域名SSL证书
+	// 48：DNSPod-域名型(DV)SSL证书
+	// 49：DNSPod-域名型(DV)通配符SSL证书
+	// 50：DNSPod-域名型(DV)多域名SSL证书
+	// 51：DNSPod（国密）-企业型(OV)SSL证书
+	// 52：DNSPod（国密）-企业型(OV)通配符SSL证书
+	// 53：DNSPod（国密）-企业型(OV)多域名SSL证书
+	// 54：DNSPod（国密）-域名型(DV)SSL证书
+	// 55：DNSPod（国密）-域名型(DV)通配符SSL证书
+	// 56：DNSPod（国密）-域名型(DV)多域名SSL证书
+	// 57：SecureSite 企业型专业版多域名(OV Pro)
+	// 58：SecureSite 企业型多域名(OV)
+	// 59：SecureSite 增强型专业版多域名(EV Pro)
+	// 60：SecureSite 增强型多域名(EV)
+	// 61：Geotrust 增强型多域名(EV)
+	// 75：SecureSite 企业型(OV)
+	// 76：SecureSite 企业型(OV)通配符
+	// 77：SecureSite 增强型(EV)
+	// 78：Geotrust 企业型(OV)
+	// 79：Geotrust 企业型(OV)通配符
+	// 80：Geotrust 增强型(EV)
+	// 81：GlobalSign 企业型（OV）SSL证书
+	// 82：GlobalSign 企业型通配符 （OV）SSL证书
+	// 83：TrustAsia C1 DV Free
+	// 85：GlobalSign 增强型 （EV）SSL证书
+	// 88：GlobalSign 企业型通配符多域名 （OV）SSL证书
+	// 89：GlobalSign 企业型多域名 （OV）SSL证书
+	// 90：GlobalSign 增强型多域名（EV） SSL证书
+	// 91：Geotrust 增强型多域名(EV)
+	// 92：SecureSite 企业型专业版多域名(OV Pro)
+	// 93：SecureSite 企业型多域名(OV)
+	// 94：SecureSite 增强型专业版多域名(EV Pro)
+	// 95：SecureSite 增强型多域名(EV)
+	// 96：SecureSite 增强型专业版(EV Pro)
+	// 97：SecureSite 企业型专业版(OV Pro)
+	// 98：CFCA 企业型(OV)SSL证书
+	// 99：CFCA 企业型多域名(OV)SSL证书
+	// 100：CFCA 企业型通配符(OV)SSL证书
+	// 101：CFCA 增强型(EV)SSL证书
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
-	// 证书颁发者名称。
+	// 证书产品名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductZhName *string `json:"ProductZhName,omitnil,omitempty" name:"ProductZhName"`
 
@@ -3061,15 +3671,27 @@ type DescribeCertificateResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
-	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函。
+	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 状态信息。
+	// 状态信息。 取值范围：
+	// //通用状态信息
+	// 1、PRE-REVIEWING：预审核中
+	// 2、LEGAL-REVIEWING：法务审核中
+	// 3、CA-REVIEWING：CA审核中
+	// 4、PENDING-DCV：域名验证中
+	// 5、WAIT-ISSUE：等待签发（域名验证已通过）
+	// //证书审核失败状态信息
+	// 1、订单审核失败
+	// 2、CA审核失败，域名未通过安全审查
+	// 3、域名验证超时，订单自动关闭，请您重新进行证书申请
+	// 4、证书资料未通过证书CA机构审核，审核人员会致电您证书预留的联系方式，请您留意来电。后续可通过“修改资料”重新提交资料
+	// 待持续完善
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusMsg *string `json:"StatusMsg,omitnil,omitempty" name:"StatusMsg"`
 
-	// 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，EMAIL = 邮件验证。
+	// 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
@@ -3157,15 +3779,15 @@ type DescribeCertificateResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// CA证书的所有加密方式	
+	// CA证书的所有加密方式。仅证书类型CertificateType为CA有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CAEncryptAlgorithms []*string `json:"CAEncryptAlgorithms,omitnil,omitempty" name:"CAEncryptAlgorithms"`
 
-	// CA证书的所有通用名称	
+	// CA证书的所有通用名称。仅证书类型CertificateType为CA有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CACommonNames []*string `json:"CACommonNames,omitnil,omitempty" name:"CACommonNames"`
 
-	// CA证书所有的到期时间	
+	// CA证书所有的到期时间。仅证书类型CertificateType为CA有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CAEndTimes []*string `json:"CAEndTimes,omitnil,omitempty" name:"CAEndTimes"`
 
@@ -3195,13 +3817,13 @@ func (r *DescribeCertificateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCertificatesRequestParams struct {
-	// 分页偏移量，从0开始。
+	// 分页偏移量，从0开始。 默认为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。最大值1000，如超过1000按1000处理
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 搜索关键词，可搜索证书 ID、备注名称、域名。例如： a8xHcaIs。
+	// 搜索关键词，模糊匹配证书 ID、备注名称、证书域名
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
 	// 证书类型：CA = 客户端证书，SVR = 服务器证书。
@@ -3210,10 +3832,10 @@ type DescribeCertificatesRequestParams struct {
 	// 项目 ID。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 按到期时间排序：DESC = 降序， ASC = 升序。
+	// 默认按照证书申请时间降序； 若传排序则按到期时间排序：DESC = 证书到期时间降序， ASC = 证书到期时间升序。
 	ExpirationSort *string `json:"ExpirationSort,omitnil,omitempty" name:"ExpirationSort"`
 
-	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
+	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 已退款。 15 = 证书迁移中
 	CertificateStatus []*uint64 `json:"CertificateStatus,omitnil,omitempty" name:"CertificateStatus"`
 
 	// 是否可部署，可选值：1 = 可部署，0 =  不可部署。
@@ -3250,13 +3872,13 @@ type DescribeCertificatesRequestParams struct {
 type DescribeCertificatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分页偏移量，从0开始。
+	// 分页偏移量，从0开始。 默认为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页数量，默认10。最大值1000，如超过1000按1000处理
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 搜索关键词，可搜索证书 ID、备注名称、域名。例如： a8xHcaIs。
+	// 搜索关键词，模糊匹配证书 ID、备注名称、证书域名
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
 	// 证书类型：CA = 客户端证书，SVR = 服务器证书。
@@ -3265,10 +3887,10 @@ type DescribeCertificatesRequest struct {
 	// 项目 ID。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 按到期时间排序：DESC = 降序， ASC = 升序。
+	// 默认按照证书申请时间降序； 若传排序则按到期时间排序：DESC = 证书到期时间降序， ASC = 证书到期时间升序。
 	ExpirationSort *string `json:"ExpirationSort,omitnil,omitempty" name:"ExpirationSort"`
 
-	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
+	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 已退款。 15 = 证书迁移中
 	CertificateStatus []*uint64 `json:"CertificateStatus,omitnil,omitempty" name:"CertificateStatus"`
 
 	// 是否可部署，可选值：1 = 可部署，0 =  不可部署。
@@ -3369,10 +3991,10 @@ func (r *DescribeCertificatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCompaniesRequestParams struct {
-	// 分页偏移量
+	// 分页偏移量，默认值为0.
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页每页限制数
+	// 分页每页限制数，默认值为0，最大值1000.
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 公司ID
@@ -3382,10 +4004,10 @@ type DescribeCompaniesRequestParams struct {
 type DescribeCompaniesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分页偏移量
+	// 分页偏移量，默认值为0.
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页每页限制数
+	// 分页每页限制数，默认值为0，最大值1000.
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 公司ID
@@ -3504,7 +4126,7 @@ type DescribeDeployedResourcesRequestParams struct {
 	// 证书ID
 	CertificateIds []*string `json:"CertificateIds,omitnil,omitempty" name:"CertificateIds"`
 
-	// 资源类型:clb,cdn,live,waf,antiddos
+	// 资源类型:clb,cdn,live,waf,antiddos,teo
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
@@ -3514,7 +4136,7 @@ type DescribeDeployedResourcesRequest struct {
 	// 证书ID
 	CertificateIds []*string `json:"CertificateIds,omitnil,omitempty" name:"CertificateIds"`
 
-	// 资源类型:clb,cdn,live,waf,antiddos
+	// 资源类型:clb,cdn,live,waf,antiddos,teo
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
@@ -3642,15 +4264,17 @@ type DescribeHostApiGatewayInstanceListRequestParams struct {
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 部署资源类型apigateway
+	//
+	// Deprecated: ResourceType is deprecated.
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 已部署的证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
-	// 每页数量，默认10。	
+	// 每页数量，默认10，最大值为200。	
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，从0开始。	
+	// 分页偏移量，默认值为0。
 	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -3672,10 +4296,10 @@ type DescribeHostApiGatewayInstanceListRequest struct {
 	// 已部署的证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
-	// 每页数量，默认10。	
+	// 每页数量，默认10，最大值为200。	
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，从0开始。	
+	// 分页偏移量，默认值为0。
 	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -3745,15 +4369,17 @@ type DescribeHostCdnInstanceListRequestParams struct {
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 部署资源类型cdn
+	//
+	// Deprecated: ResourceType is deprecated.
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 原证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
-	// 分页偏移量，从0开始。	
+	// 分页偏移量，默认值为0。	
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页数量，默认10。	
+	// 每页数量，默认10，最大值为200。	
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 是否异步,0表示否，1表示是，默认为0
@@ -3778,10 +4404,10 @@ type DescribeHostCdnInstanceListRequest struct {
 	// 原证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
-	// 分页偏移量，从0开始。	
+	// 分页偏移量，默认值为0。	
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页数量，默认10。	
+	// 每页数量，默认10，最大值为200。	
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 是否异步,0表示否，1表示是，默认为0
@@ -4201,26 +4827,26 @@ func (r *DescribeHostDdosInstanceListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHostDeployRecordDetailRequestParams struct {
-	// 部署记录ID
+	// 部署记录ID，通过调用DeployCertificateInstance接口返回的记录ID， 或者通过DeployCertificateRecordRollback回滚接口返回的记录ID
 	DeployRecordId *string `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
-	// 分页偏移量，从0开始。
+	// 分页偏移量，从0开始。默认为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页数量，默认10。
+	// 每页数量，默认10。最大值为200
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeHostDeployRecordDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 部署记录ID
+	// 部署记录ID，通过调用DeployCertificateInstance接口返回的记录ID， 或者通过DeployCertificateRecordRollback回滚接口返回的记录ID
 	DeployRecordId *string `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
-	// 分页偏移量，从0开始。
+	// 分页偏移量，从0开始。默认为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页数量，默认10。
+	// 每页数量，默认10。最大值为200
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -4247,7 +4873,7 @@ func (r *DescribeHostDeployRecordDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHostDeployRecordDetailResponseParams struct {
-	// 总数
+	// 部署记录总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
@@ -4298,7 +4924,7 @@ type DescribeHostDeployRecordRequestParams struct {
 	// 每页数量，默认10。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 支持的资源类型如下,clb,cdn,ddos,waf,apigateway,teo,tke,cos,lighthouse,vod,tcb,tse
+	// 支持的资源类型如下,clb,cdn,ddos,waf,apigateway,teo,tke,cos,lighthouse,vod,tcb,tse,live
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
@@ -4314,7 +4940,7 @@ type DescribeHostDeployRecordRequest struct {
 	// 每页数量，默认10。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 支持的资源类型如下,clb,cdn,ddos,waf,apigateway,teo,tke,cos,lighthouse,vod,tcb,tse
+	// 支持的资源类型如下,clb,cdn,ddos,waf,apigateway,teo,tke,cos,lighthouse,vod,tcb,tse,live
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
@@ -4382,6 +5008,8 @@ type DescribeHostLighthouseInstanceListRequestParams struct {
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 部署资源类型 lighthouse
+	//
+	// Deprecated: ResourceType is deprecated.
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
@@ -4547,6 +5175,8 @@ type DescribeHostTeoInstanceListRequestParams struct {
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 部署资源类型
+	//
+	// Deprecated: ResourceType is deprecated.
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
@@ -4558,10 +5188,10 @@ type DescribeHostTeoInstanceListRequestParams struct {
 	// 已部署的证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
-	// 分页偏移量，从0开始。
+	// 分页偏移量，默认值为0.
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页数量，默认10。	
+	// 每页数量，默认10，最大值为200。	
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 是否异步，1表示是，0表示否，默认为0
@@ -4586,10 +5216,10 @@ type DescribeHostTeoInstanceListRequest struct {
 	// 已部署的证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
-	// 分页偏移量，从0开始。
+	// 分页偏移量，默认值为0.
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页数量，默认10。	
+	// 每页数量，默认10，最大值为200。	
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 是否异步，1表示是，0表示否，默认为0
@@ -4769,26 +5399,26 @@ func (r *DescribeHostTkeInstanceListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHostUpdateRecordDetailRequestParams struct {
-	// 一键更新记录ID,从接口UpdateCertificateInstance获得
+	// 部署记录ID，通过调用UpdateCertificateInstance接口返回的记录ID， 或者通过UpdateCertificateRecordRollback回滚接口返回的记录ID
 	DeployRecordId *string `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
-	// 每页数量，默认10。
+	// 每页数量，默认10。最大值为200
 	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，从0开始。
+	// 分页偏移量，从0开始。默认为0
 	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeHostUpdateRecordDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 一键更新记录ID,从接口UpdateCertificateInstance获得
+	// 部署记录ID，通过调用UpdateCertificateInstance接口返回的记录ID， 或者通过UpdateCertificateRecordRollback回滚接口返回的记录ID
 	DeployRecordId *string `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
-	// 每页数量，默认10。
+	// 每页数量，默认10。最大值为200
 	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量，从0开始。
+	// 分页偏移量，从0开始。默认为0
 	Offset *string `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -5254,10 +5884,10 @@ type DescribeManagersRequestParams struct {
 	// 公司ID,可以从DescribeCompanies接口获取
 	CompanyId *int64 `json:"CompanyId,omitnil,omitempty" name:"CompanyId"`
 
-	// 分页偏移量
+	// 分页偏移量，如果不传默认值为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页每页数量
+	// 分页每页数量，如果不传默认值为10，最大值为1000
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 管理人姓名（将废弃），请使用SearchKey
@@ -5276,7 +5906,7 @@ type DescribeManagersRequestParams struct {
 	// 'expired' 已过期
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 管理人姓/管理人名/邮箱/部门精准匹配
+	// 根据这样的格式:管理人姓|管理人名|邮箱|部门 ,进行精准匹配
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 }
 
@@ -5286,10 +5916,10 @@ type DescribeManagersRequest struct {
 	// 公司ID,可以从DescribeCompanies接口获取
 	CompanyId *int64 `json:"CompanyId,omitnil,omitempty" name:"CompanyId"`
 
-	// 分页偏移量
+	// 分页偏移量，如果不传默认值为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页每页数量
+	// 分页每页数量，如果不传默认值为10，最大值为1000
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 管理人姓名（将废弃），请使用SearchKey
@@ -5308,7 +5938,7 @@ type DescribeManagersRequest struct {
 	// 'expired' 已过期
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 管理人姓/管理人名/邮箱/部门精准匹配
+	// 根据这样的格式:管理人姓|管理人名|邮箱|部门 ,进行精准匹配
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 }
 
@@ -5373,16 +6003,16 @@ type DescribePackagesRequestParams struct {
 	// 限制数目，默认20。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 按状态筛选。
+	// 按状态筛选。状态值包括usable(可用)，used(已用)，expired(已过期)，refund(已退款)
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 按过期时间升序或降序排列。
+	// 按过期时间升序或降序排列，可选值为asc(升序)和desc(降序)
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 按权益包ID搜索。
 	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
-	// 按权益包类型搜索。
+	// 按权益包类型搜索。类型包括：ssl_100(证书批量权益100点)，ssl_500(证书批量权益500点），ssl_2000(证书批量权益2000点）
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 子产品编号
@@ -5398,16 +6028,16 @@ type DescribePackagesRequest struct {
 	// 限制数目，默认20。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 按状态筛选。
+	// 按状态筛选。状态值包括usable(可用)，used(已用)，expired(已过期)，refund(已退款)
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 按过期时间升序或降序排列。
+	// 按过期时间升序或降序排列，可选值为asc(升序)和desc(降序)
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 按权益包ID搜索。
 	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
-	// 按权益包类型搜索。
+	// 按权益包类型搜索。类型包括：ssl_100(证书批量权益100点)，ssl_500(证书批量权益500点），ssl_2000(证书批量权益2000点）
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 子产品编号
@@ -5562,53 +6192,56 @@ func (r *DownloadCertificateResponse) FromJsonString(s string) error {
 }
 
 type DvAuthDetail struct {
-	// DV 认证密钥。
+	// 证书域名验证记录Key
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthKey *string `json:"DvAuthKey,omitnil,omitempty" name:"DvAuthKey"`
 
-	// DV 认证值。
+	// 证书域名验证记录值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthValue *string `json:"DvAuthValue,omitnil,omitempty" name:"DvAuthValue"`
 
-	// DV 认证值域名。
+	// 证书域名验证域名值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthDomain *string `json:"DvAuthDomain,omitnil,omitempty" name:"DvAuthDomain"`
 
-	// DV 认证值路径。
+	// 证书域名验证文件路径， 仅FILE、FILE_PROXY使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthPath *string `json:"DvAuthPath,omitnil,omitempty" name:"DvAuthPath"`
 
-	// DV 认证子域名。
+	// 证书域名验证子域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthKeySubDomain *string `json:"DvAuthKeySubDomain,omitnil,omitempty" name:"DvAuthKeySubDomain"`
 
-	// DV 认证信息。
+	// 证书域名验证信息， 存在多个域名验证使用本字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuths []*DvAuths `json:"DvAuths,omitnil,omitempty" name:"DvAuths"`
 }
 
 type DvAuths struct {
-	// DV 认证密钥。
+	// 证书域名验证记录Key
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthKey *string `json:"DvAuthKey,omitnil,omitempty" name:"DvAuthKey"`
 
-	// DV 认证值。
+	// 证书域名验证记录值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthValue *string `json:"DvAuthValue,omitnil,omitempty" name:"DvAuthValue"`
 
-	// DV 认证值域名。
+	// 证书域名验证域名值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthDomain *string `json:"DvAuthDomain,omitnil,omitempty" name:"DvAuthDomain"`
 
-	// DV 认证值路径。
+	// 证书域名验证文件路径， 仅FILE、FILE_PROXY使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthPath *string `json:"DvAuthPath,omitnil,omitempty" name:"DvAuthPath"`
 
-	// DV 认证子域名，
+	// 证书域名验证子域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthSubDomain *string `json:"DvAuthSubDomain,omitnil,omitempty" name:"DvAuthSubDomain"`
 
-	// DV 认证类型。
+	// 证书域名验证类型，取值：
+	// TXT：DNS域名验证添加TXT记录
+	// FILE：域名文件验证
+	// CNAME：DNS域名验证添加CNAME记录
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthVerifyType *string `json:"DvAuthVerifyType,omitnil,omitempty" name:"DvAuthVerifyType"`
 }
@@ -6057,7 +6690,33 @@ type OperationLog struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
-	// 操作
+	// 每个操作类型都对应一个具体的操作描述。以下是对每个操作类型及其描述的文字说明：
+	// 1. apply - 表示申请一个免费的证书。
+	// 2. delete - 表示删除操作。
+	// 3. download - 表示下载操作。
+	// 4. upload - 表示上传操作。
+	// 5. revoke - 表示吊销证书。
+	// 6. cancelRevoke - 表示取消吊销操作。
+	// 7. updateAlias - 表示更新备注信息。
+	// 8. changeProject - 表示将证书分配到某个项目。
+	// 9. uploadConfirmLetter - 表示上传确认函。
+	// 10. cancel - 表示取消订单操作。
+	// 11. replace - 表示重颁发证书。
+	// 12. downloadConfirmLetter - 表示下载证书吊销确认函。
+	// 13. editRevokeLetter - 表示上传证书吊销确认函。
+	// 14. renewVIP - 表示续费付费证书。
+	// 15. applyVIP - 表示申请付费证书。
+	// 16. submitInfo - 表示提交资料。
+	// 17. downloadConfirmLetter - 表示下载确认函模版。
+	// 18. uploadFromYunAPI - 表示通过云 API 上传。
+	// 19. transferIn - 表示证书转入操作。
+	// 20. transferOut - 表示证书转出操作。
+	// 21. refund - 表示申请退款。
+	// 22. multiYearsRenew - 表示多年期自动续期。
+	// 23. modifyDownloadLimit - 表示修改下载限制开关。
+	// 24. issued - 表示证书签发。
+	// 25. domainValidationPassed - 表示域名验证完成。
+	// 26. Resubmit - 表示证书重新申请。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
@@ -6185,7 +6844,7 @@ type ReplaceCertificateRequestParams struct {
 	// 类型，默认 Original。可选项：Original = 原证书 CSR，Upload = 手动上传，Online = 在线生成。
 	CsrType *string `json:"CsrType,omitnil,omitempty" name:"CsrType"`
 
-	// CSR 内容。
+	// CSR 内容，手动上传的时候需要。
 	CsrContent *string `json:"CsrContent,omitnil,omitempty" name:"CsrContent"`
 
 	// KEY 密码。
@@ -6214,7 +6873,7 @@ type ReplaceCertificateRequest struct {
 	// 类型，默认 Original。可选项：Original = 原证书 CSR，Upload = 手动上传，Online = 在线生成。
 	CsrType *string `json:"CsrType,omitnil,omitempty" name:"CsrType"`
 
-	// CSR 内容。
+	// CSR 内容，手动上传的时候需要。
 	CsrContent *string `json:"CsrContent,omitnil,omitempty" name:"CsrContent"`
 
 	// KEY 密码。
@@ -6283,7 +6942,7 @@ func (r *ReplaceCertificateResponse) FromJsonString(s string) error {
 }
 
 type ResourceTypeRegions struct {
-	// 云资源类型
+	// 云资源类型，支持clb、waf、apigateway、cos、tke、tse、tcb
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 地域列表
@@ -6446,82 +7105,85 @@ func (r *SubmitAuditManagerResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitCertificateInformationRequestParams struct {
-	// 证书 ID。
+	// 待提交资料的付费证书 ID。
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// CSR 生成方式：online = 在线生成, parse = 手动上传。
+	// 此字段必传。 CSR 生成方式， 取值为：
+	// online：腾讯云提交的填写的参数信息生成CSR和私钥， 并由腾讯云加密存储
+	// parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 	CsrType *string `json:"CsrType,omitnil,omitempty" name:"CsrType"`
 
 	// 上传的 CSR 内容。
+	// 若CstType为parse， 则此字段必传。
 	CsrContent *string `json:"CsrContent,omitnil,omitempty" name:"CsrContent"`
 
-	// 绑定证书的域名。
+	// 证书绑定的通用名称， 若是上传的CSR，则该域名需与CSR解析的通用名称一致
 	CertificateDomain *string `json:"CertificateDomain,omitnil,omitempty" name:"CertificateDomain"`
 
-	// 上传的域名数组（多域名证书可以上传）。
+	// 证书绑定的其他域名， 单域名、泛域名证书无需提供。 多域名、多泛域名必填
 	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
 
-	// 私钥密码（非必填）。
+	// 私钥密码， 目前仅使用在生成jks、pfx格式证书时密码； 其他格式私钥证书未加密	
 	KeyPassword *string `json:"KeyPassword,omitnil,omitempty" name:"KeyPassword"`
 
-	// 公司名称。
+	// 字段必传， 公司名称。
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
-	// 部门名称。
+	// 字段必传， 部门名称。
 	OrganizationDivision *string `json:"OrganizationDivision,omitnil,omitempty" name:"OrganizationDivision"`
 
-	// 公司详细地址。
+	// 字段必传， 公司详细地址。
 	OrganizationAddress *string `json:"OrganizationAddress,omitnil,omitempty" name:"OrganizationAddress"`
 
-	// 国家名称，如中国：CN 。
+	// 字段必传， 国家名称，传CN即可
 	OrganizationCountry *string `json:"OrganizationCountry,omitnil,omitempty" name:"OrganizationCountry"`
 
-	// 公司所在城市。
+	// 字段必传， 公司所在城市。
 	OrganizationCity *string `json:"OrganizationCity,omitnil,omitempty" name:"OrganizationCity"`
 
-	// 公司所在省份。
+	// 字段必传， 公司所在省份。
 	OrganizationRegion *string `json:"OrganizationRegion,omitnil,omitempty" name:"OrganizationRegion"`
 
 	// 公司邮编。
 	PostalCode *string `json:"PostalCode,omitnil,omitempty" name:"PostalCode"`
 
-	// 公司座机区号。
+	// 字段必传， 公司座机区号。
 	PhoneAreaCode *string `json:"PhoneAreaCode,omitnil,omitempty" name:"PhoneAreaCode"`
 
-	// 公司座机号码。
+	// 字段必传， 公司座机号码。
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// 证书验证方式。验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
-	// 管理人名。
+	// 字段必传，管理人名。
 	AdminFirstName *string `json:"AdminFirstName,omitnil,omitempty" name:"AdminFirstName"`
 
-	// 管理人姓。
+	// 字段必传，管理人姓。
 	AdminLastName *string `json:"AdminLastName,omitnil,omitempty" name:"AdminLastName"`
 
-	// 管理人手机号码。
+	// 字段必传，管理人手机号码。
 	AdminPhoneNum *string `json:"AdminPhoneNum,omitnil,omitempty" name:"AdminPhoneNum"`
 
-	// 管理人邮箱地址。
+	// 字段必传，管理人邮箱地址。
 	AdminEmail *string `json:"AdminEmail,omitnil,omitempty" name:"AdminEmail"`
 
-	// 管理人职位。
+	// 字段必传，管理人职位。
 	AdminPosition *string `json:"AdminPosition,omitnil,omitempty" name:"AdminPosition"`
 
-	// 联系人名。
+	// 字段必传，联系人名。
 	ContactFirstName *string `json:"ContactFirstName,omitnil,omitempty" name:"ContactFirstName"`
 
-	// 联系人姓。
+	// 字段必传，联系人姓。
 	ContactLastName *string `json:"ContactLastName,omitnil,omitempty" name:"ContactLastName"`
 
-	// 联系人邮箱地址。
+	// 字段必传，联系人邮箱地址。
 	ContactEmail *string `json:"ContactEmail,omitnil,omitempty" name:"ContactEmail"`
 
-	// 联系人手机号码。
+	// 字段必传，联系人手机号码。
 	ContactNumber *string `json:"ContactNumber,omitnil,omitempty" name:"ContactNumber"`
 
-	// 联系人职位。
+	// 字段必传，联系人职位。
 	ContactPosition *string `json:"ContactPosition,omitnil,omitempty" name:"ContactPosition"`
 
 	// 是否DV证书。默认false
@@ -6531,82 +7193,85 @@ type SubmitCertificateInformationRequestParams struct {
 type SubmitCertificateInformationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 证书 ID。
+	// 待提交资料的付费证书 ID。
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// CSR 生成方式：online = 在线生成, parse = 手动上传。
+	// 此字段必传。 CSR 生成方式， 取值为：
+	// online：腾讯云提交的填写的参数信息生成CSR和私钥， 并由腾讯云加密存储
+	// parse：自行生成CSR和私钥， 并通过上传CSR申请证书
 	CsrType *string `json:"CsrType,omitnil,omitempty" name:"CsrType"`
 
 	// 上传的 CSR 内容。
+	// 若CstType为parse， 则此字段必传。
 	CsrContent *string `json:"CsrContent,omitnil,omitempty" name:"CsrContent"`
 
-	// 绑定证书的域名。
+	// 证书绑定的通用名称， 若是上传的CSR，则该域名需与CSR解析的通用名称一致
 	CertificateDomain *string `json:"CertificateDomain,omitnil,omitempty" name:"CertificateDomain"`
 
-	// 上传的域名数组（多域名证书可以上传）。
+	// 证书绑定的其他域名， 单域名、泛域名证书无需提供。 多域名、多泛域名必填
 	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
 
-	// 私钥密码（非必填）。
+	// 私钥密码， 目前仅使用在生成jks、pfx格式证书时密码； 其他格式私钥证书未加密	
 	KeyPassword *string `json:"KeyPassword,omitnil,omitempty" name:"KeyPassword"`
 
-	// 公司名称。
+	// 字段必传， 公司名称。
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
-	// 部门名称。
+	// 字段必传， 部门名称。
 	OrganizationDivision *string `json:"OrganizationDivision,omitnil,omitempty" name:"OrganizationDivision"`
 
-	// 公司详细地址。
+	// 字段必传， 公司详细地址。
 	OrganizationAddress *string `json:"OrganizationAddress,omitnil,omitempty" name:"OrganizationAddress"`
 
-	// 国家名称，如中国：CN 。
+	// 字段必传， 国家名称，传CN即可
 	OrganizationCountry *string `json:"OrganizationCountry,omitnil,omitempty" name:"OrganizationCountry"`
 
-	// 公司所在城市。
+	// 字段必传， 公司所在城市。
 	OrganizationCity *string `json:"OrganizationCity,omitnil,omitempty" name:"OrganizationCity"`
 
-	// 公司所在省份。
+	// 字段必传， 公司所在省份。
 	OrganizationRegion *string `json:"OrganizationRegion,omitnil,omitempty" name:"OrganizationRegion"`
 
 	// 公司邮编。
 	PostalCode *string `json:"PostalCode,omitnil,omitempty" name:"PostalCode"`
 
-	// 公司座机区号。
+	// 字段必传， 公司座机区号。
 	PhoneAreaCode *string `json:"PhoneAreaCode,omitnil,omitempty" name:"PhoneAreaCode"`
 
-	// 公司座机号码。
+	// 字段必传， 公司座机号码。
 	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
 
 	// 证书验证方式。验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
-	// 管理人名。
+	// 字段必传，管理人名。
 	AdminFirstName *string `json:"AdminFirstName,omitnil,omitempty" name:"AdminFirstName"`
 
-	// 管理人姓。
+	// 字段必传，管理人姓。
 	AdminLastName *string `json:"AdminLastName,omitnil,omitempty" name:"AdminLastName"`
 
-	// 管理人手机号码。
+	// 字段必传，管理人手机号码。
 	AdminPhoneNum *string `json:"AdminPhoneNum,omitnil,omitempty" name:"AdminPhoneNum"`
 
-	// 管理人邮箱地址。
+	// 字段必传，管理人邮箱地址。
 	AdminEmail *string `json:"AdminEmail,omitnil,omitempty" name:"AdminEmail"`
 
-	// 管理人职位。
+	// 字段必传，管理人职位。
 	AdminPosition *string `json:"AdminPosition,omitnil,omitempty" name:"AdminPosition"`
 
-	// 联系人名。
+	// 字段必传，联系人名。
 	ContactFirstName *string `json:"ContactFirstName,omitnil,omitempty" name:"ContactFirstName"`
 
-	// 联系人姓。
+	// 字段必传，联系人姓。
 	ContactLastName *string `json:"ContactLastName,omitnil,omitempty" name:"ContactLastName"`
 
-	// 联系人邮箱地址。
+	// 字段必传，联系人邮箱地址。
 	ContactEmail *string `json:"ContactEmail,omitnil,omitempty" name:"ContactEmail"`
 
-	// 联系人手机号码。
+	// 字段必传，联系人手机号码。
 	ContactNumber *string `json:"ContactNumber,omitnil,omitempty" name:"ContactNumber"`
 
-	// 联系人职位。
+	// 字段必传，联系人职位。
 	ContactPosition *string `json:"ContactPosition,omitnil,omitempty" name:"ContactPosition"`
 
 	// 是否DV证书。默认false
@@ -7079,13 +7744,13 @@ type TkeSecretDetail struct {
 
 // Predefined struct for user
 type UpdateCertificateInstanceRequestParams struct {
-	// 一键更新原证书ID， 查询绑定该证书的云资源然后进行证书更新
+	// 一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
 	// 需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse、cos
 	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
 
-	// 一键更新新证书ID，不传则证书公钥和私钥必传
+	// 一键更新的新证书ID。 不传该参数，则公钥证书和私钥证书必传
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 需要部署的地域列表（废弃）
@@ -7093,68 +7758,68 @@ type UpdateCertificateInstanceRequestParams struct {
 	// Deprecated: Regions is deprecated.
 	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
 
-	// 云资源需要部署的地域列表，支持地域的云资源类型必传，如：clb、tke、apigateway、waf、tcb、tse等
+	// 云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb、tke、apigateway、waf、tcb、tse、cos
 	ResourceTypesRegions []*ResourceTypeRegions `json:"ResourceTypesRegions,omitnil,omitempty" name:"ResourceTypesRegions"`
 
-	// 证书公钥， 若上传证书公钥， 则CertificateId不用传
+	// 公钥证书， 若上传公钥证书，那么私钥证书必传。  则CertificateId不用传
 	CertificatePublicKey *string `json:"CertificatePublicKey,omitnil,omitempty" name:"CertificatePublicKey"`
 
-	// 证书私钥，若上传证书公钥， 则CertificateId不用传
+	// 私钥证书，若上传私钥证书， 那么公钥证书必传；  则CertificateId不用传
 	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitnil,omitempty" name:"CertificatePrivateKey"`
 
 	// 旧证书是否忽略到期提醒  0:不忽略通知。1:忽略通知，忽略OldCertificateId到期提醒
 	ExpiringNotificationSwitch *uint64 `json:"ExpiringNotificationSwitch,omitnil,omitempty" name:"ExpiringNotificationSwitch"`
 
-	// 相同的证书是否允许重复上传，若选择上传证书， 则可以配置该参数
+	// 相同的证书是否允许重复上传，若选择上传公钥私钥证书， 则可以配置该参数。 若存在相同重复证书，则更新任务会失败
 	Repeatable *bool `json:"Repeatable,omitnil,omitempty" name:"Repeatable"`
 
-	// 是否允许下载，若选择上传证书， 则可以配置该参数
+	// 是否允许下载，若选择上传公私钥证书， 则可以配置该参数
 	AllowDownload *bool `json:"AllowDownload,omitnil,omitempty" name:"AllowDownload"`
 
-	// 标签列表，若选择上传证书， 则可以配置该参数
+	// 标签列表，若选择上传公私钥证书， 则可以配置该参数
 	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 项目 ID，若选择上传证书， 则可以配置该参数
+	// 项目 ID，若选择上传公私钥证书， 则可以配置该参数
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 type UpdateCertificateInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 一键更新原证书ID， 查询绑定该证书的云资源然后进行证书更新
+	// 一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 
 	// 需要部署的资源类型，参数值可选（小写）：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb、tse、cos
 	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
 
-	// 一键更新新证书ID，不传则证书公钥和私钥必传
+	// 一键更新的新证书ID。 不传该参数，则公钥证书和私钥证书必传
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 需要部署的地域列表（废弃）
 	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
 
-	// 云资源需要部署的地域列表，支持地域的云资源类型必传，如：clb、tke、apigateway、waf、tcb、tse等
+	// 云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb、tke、apigateway、waf、tcb、tse、cos
 	ResourceTypesRegions []*ResourceTypeRegions `json:"ResourceTypesRegions,omitnil,omitempty" name:"ResourceTypesRegions"`
 
-	// 证书公钥， 若上传证书公钥， 则CertificateId不用传
+	// 公钥证书， 若上传公钥证书，那么私钥证书必传。  则CertificateId不用传
 	CertificatePublicKey *string `json:"CertificatePublicKey,omitnil,omitempty" name:"CertificatePublicKey"`
 
-	// 证书私钥，若上传证书公钥， 则CertificateId不用传
+	// 私钥证书，若上传私钥证书， 那么公钥证书必传；  则CertificateId不用传
 	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitnil,omitempty" name:"CertificatePrivateKey"`
 
 	// 旧证书是否忽略到期提醒  0:不忽略通知。1:忽略通知，忽略OldCertificateId到期提醒
 	ExpiringNotificationSwitch *uint64 `json:"ExpiringNotificationSwitch,omitnil,omitempty" name:"ExpiringNotificationSwitch"`
 
-	// 相同的证书是否允许重复上传，若选择上传证书， 则可以配置该参数
+	// 相同的证书是否允许重复上传，若选择上传公钥私钥证书， 则可以配置该参数。 若存在相同重复证书，则更新任务会失败
 	Repeatable *bool `json:"Repeatable,omitnil,omitempty" name:"Repeatable"`
 
-	// 是否允许下载，若选择上传证书， 则可以配置该参数
+	// 是否允许下载，若选择上传公私钥证书， 则可以配置该参数
 	AllowDownload *bool `json:"AllowDownload,omitnil,omitempty" name:"AllowDownload"`
 
-	// 标签列表，若选择上传证书， 则可以配置该参数
+	// 标签列表，若选择上传公私钥证书， 则可以配置该参数
 	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 项目 ID，若选择上传证书， 则可以配置该参数
+	// 项目 ID，若选择上传公私钥证书， 则可以配置该参数
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -7190,11 +7855,11 @@ func (r *UpdateCertificateInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateCertificateInstanceResponseParams struct {
-	// 云资源部署任务ID
+	// 云资源更新任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployRecordId *uint64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
-	// 部署状态，1表示部署成功，0表示部署失败
+	// 更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID
 	DeployStatus *int64 `json:"DeployStatus,omitnil,omitempty" name:"DeployStatus"`
 
 	// 更新异步创建任务进度详情
@@ -7223,20 +7888,20 @@ func (r *UpdateCertificateInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateCertificateRecordRetryRequestParams struct {
-	// 待重试部署记录ID,通过UpdateCertificateInstance得到部署记录ID
+	// 待重试部署记录ID,通过UpdateCertificateInstance得到部署记录ID。 本参数不传的话，则DeployRecordDetailId必传
 	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
-	// 待重试部署记录详情ID,通过DescribeHostUpdateRecordDetail接口获得
+	// 待重试部署记录详情ID,通过DescribeHostUpdateRecordDetail接口获得， 本参数不传的话， 则DeployRecordId必传
 	DeployRecordDetailId *int64 `json:"DeployRecordDetailId,omitnil,omitempty" name:"DeployRecordDetailId"`
 }
 
 type UpdateCertificateRecordRetryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待重试部署记录ID,通过UpdateCertificateInstance得到部署记录ID
+	// 待重试部署记录ID,通过UpdateCertificateInstance得到部署记录ID。 本参数不传的话，则DeployRecordDetailId必传
 	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
-	// 待重试部署记录详情ID,通过DescribeHostUpdateRecordDetail接口获得
+	// 待重试部署记录详情ID,通过DescribeHostUpdateRecordDetail接口获得， 本参数不传的话， 则DeployRecordId必传
 	DeployRecordDetailId *int64 `json:"DeployRecordDetailId,omitnil,omitempty" name:"DeployRecordDetailId"`
 }
 
@@ -7284,14 +7949,14 @@ func (r *UpdateCertificateRecordRetryResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateCertificateRecordRollbackRequestParams struct {
-	// 待重试部署记录ID,通过UpdateCertificateInstance获得
+	// 更新证书待回滚的记录ID, 通过UpdateCertificateInstance获得
 	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 }
 
 type UpdateCertificateRecordRollbackRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待重试部署记录ID,通过UpdateCertificateInstance获得
+	// 更新证书待回滚的记录ID, 通过UpdateCertificateInstance获得
 	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 }
 
@@ -7316,7 +7981,7 @@ func (r *UpdateCertificateRecordRollbackRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type UpdateCertificateRecordRollbackResponseParams struct {
-	// 回滚部署记录ID
+	// 新生成的回滚部署任务的记录ID
 	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7340,27 +8005,46 @@ func (r *UpdateCertificateRecordRollbackResponse) FromJsonString(s string) error
 }
 
 type UpdateRecordDetail struct {
-	// 详情记录id
+	// 更新详情记录id
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 新证书ID
+	// 新旧证书更新 - 新证书ID
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
-	// 旧证书ID
+	// 新旧证书更新 - 旧证书ID
 	OldCertId *string `json:"OldCertId,omitnil,omitempty" name:"OldCertId"`
 
 	// 部署域名列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// 部署资源类型
+	// 新旧证书更新云资源的云资源类型：
+	// - clb
+	// - cdn
+	// - ddos
+	// - live
+	// - vod
+	// - waf
+	// - apigateway
+	// - teo
+	// - tke
+	// - cos
+	// - tse
+	// - tcb
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 部署地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 部署状态
+	// 部署状态， 取值范围：
+	// 0：待部署
+	// 1：部署成功
+	// 2：部署失败
+	// 3：部署中
+	// 4：回滚成功
+	// 5：回滚失败
+	// 6：无资源，无需部署
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 部署错误信息
@@ -7427,13 +8111,25 @@ type UpdateRecordDetail struct {
 }
 
 type UpdateRecordDetails struct {
-	// 部署资源类型
+	// 新旧证书更新云资源的云资源类型：
+	// - clb
+	// - cdn
+	// - ddos
+	// - live
+	// - vod
+	// - waf
+	// - apigateway
+	// - teo
+	// - tke
+	// - cos
+	// - tse
+	// - tcb
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 部署资源详情列表
+	// 该云资源更新详情
 	List []*UpdateRecordDetail `json:"List,omitnil,omitempty" name:"List"`
 
-	// 该部署资源总数
+	// 该云资源更新资源总数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 

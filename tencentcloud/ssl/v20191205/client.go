@@ -465,7 +465,7 @@ func NewCheckCertificateDomainVerificationResponse() (response *CheckCertificate
 }
 
 // CheckCertificateDomainVerification
-// 检查证书域名验证
+// 检查证书域名验证结果
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -478,7 +478,7 @@ func (c *Client) CheckCertificateDomainVerification(request *CheckCertificateDom
 }
 
 // CheckCertificateDomainVerification
-// 检查证书域名验证
+// 检查证书域名验证结果
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -579,7 +579,7 @@ func NewCommitCertificateInformationResponse() (response *CommitCertificateInfor
 }
 
 // CommitCertificateInformation
-// 提交证书订单到CA机构。
+// 付费证书提交订单； 本接口不维护新功能， 可使用新接口进行提交， [CertificateOrderSubmit](https://cloud.tencent.com/document/product/400/116032)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
@@ -597,7 +597,7 @@ func (c *Client) CommitCertificateInformation(request *CommitCertificateInformat
 }
 
 // CommitCertificateInformation
-// 提交证书订单到CA机构。
+// 付费证书提交订单； 本接口不维护新功能， 可使用新接口进行提交， [CertificateOrderSubmit](https://cloud.tencent.com/document/product/400/116032)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
@@ -1255,7 +1255,7 @@ func NewDeployCertificateRecordRollbackResponse() (response *DeployCertificateRe
 }
 
 // DeployCertificateRecordRollback
-// 云资源部署一键回滚
+// 云资源部署成功记录回滚， 部署失败的记录不会回滚； 接口调用成功后， 会创建一个用于回滚的部署任务， 并返回该任务的ID
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1277,7 +1277,7 @@ func (c *Client) DeployCertificateRecordRollback(request *DeployCertificateRecor
 }
 
 // DeployCertificateRecordRollback
-// 云资源部署一键回滚
+// 云资源部署成功记录回滚， 部署失败的记录不会回滚； 接口调用成功后， 会创建一个用于回滚的部署任务， 并返回该任务的ID
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2808,7 +2808,7 @@ func NewDescribeHostUpdateRecordDetailResponse() (response *DescribeHostUpdateRe
 }
 
 // DescribeHostUpdateRecordDetail
-// 查询证书云资源更新记录详情列表
+// 查询证书云资源更新记录详情
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2825,7 +2825,7 @@ func (c *Client) DescribeHostUpdateRecordDetail(request *DescribeHostUpdateRecor
 }
 
 // DescribeHostUpdateRecordDetail
-// 查询证书云资源更新记录详情列表
+// 查询证书云资源更新记录详情
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3700,7 +3700,7 @@ func NewSubmitCertificateInformationResponse() (response *SubmitCertificateInfor
 }
 
 // SubmitCertificateInformation
-// 提交证书资料。输入参数信息可以分多次提交，但提交的证书资料应最低限度保持完整。
+// 付费证书提交资料； 本接口不维护新功能， 可使用新接口进行资料提交， [CertificateInfoSubmit](https://cloud.tencent.com/document/product/400/116033)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
@@ -3716,7 +3716,7 @@ func (c *Client) SubmitCertificateInformation(request *SubmitCertificateInformat
 }
 
 // SubmitCertificateInformation
-// 提交证书资料。输入参数信息可以分多次提交，但提交的证书资料应最低限度保持完整。
+// 付费证书提交资料； 本接口不维护新功能， 可使用新接口进行资料提交， [CertificateInfoSubmit](https://cloud.tencent.com/document/product/400/116033)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
@@ -3925,7 +3925,7 @@ func NewUpdateCertificateRecordRollbackResponse() (response *UpdateCertificateRe
 }
 
 // UpdateCertificateRecordRollback
-// 云资源更新一键回滚
+// 云资源更新成功记录回滚， 只对更新已成功的记录回滚
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3946,7 +3946,7 @@ func (c *Client) UpdateCertificateRecordRollback(request *UpdateCertificateRecor
 }
 
 // UpdateCertificateRecordRollback
-// 云资源更新一键回滚
+// 云资源更新成功记录回滚， 只对更新已成功的记录回滚
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

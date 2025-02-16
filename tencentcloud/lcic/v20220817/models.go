@@ -118,27 +118,21 @@ type AppConfig struct {
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 应用名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 应用状态 1正常 2停用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	State *int64 `json:"State,omitnil,omitempty" name:"State"`
 
 	// 1试用 2轻量版 3标准版 4旗舰版
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppVersion *int64 `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 回调
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Callback *string `json:"Callback,omitnil,omitempty" name:"Callback"`
 
 	// 回调Key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallbackKey *string `json:"CallbackKey,omitnil,omitempty" name:"CallbackKey"`
 }
 
@@ -161,7 +155,6 @@ type AppCustomContent struct {
 
 type BackgroundPictureConfig struct {
 	// 背景图片的url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 

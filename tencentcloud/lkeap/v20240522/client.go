@@ -1842,7 +1842,9 @@ func NewUploadDocRealtimeResponse() (response *UploadDocRealtimeResponse) {
 }
 
 // UploadDocRealtime
-// 用于上传实时文档内容。实时文档在上传后可以立即通过SearchRealtime进行实时检索，适用于在会话中对文档进行问答的场景。
+// 用于上传实时文档内容。
+//
+// 实时文档在上传后可以立即通过SearchRealtime进行实时检索，适用于在会话中对文档进行问答的场景。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1853,7 +1855,9 @@ func (c *Client) UploadDocRealtime(request *UploadDocRealtimeRequest) (response 
 }
 
 // UploadDocRealtime
-// 用于上传实时文档内容。实时文档在上传后可以立即通过SearchRealtime进行实时检索，适用于在会话中对文档进行问答的场景。
+// 用于上传实时文档内容。
+//
+// 实时文档在上传后可以立即通过SearchRealtime进行实时检索，适用于在会话中对文档进行问答的场景。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
