@@ -1333,11 +1333,9 @@ type DescribeScanResult struct {
 	Live *bool `json:"Live,omitnil,omitempty" name:"Live"`
 
 	// 业务返回描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 检测结果，Code 为 0 时返回
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanPiece []*ScanPiece `json:"ScanPiece,omitnil,omitempty" name:"ScanPiece"`
 
 	// 提交检测的时间戳
@@ -2095,15 +2093,12 @@ type RoomUser struct {
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 房间里用户uin列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uins []*uint64 `json:"Uins,omitnil,omitempty" name:"Uins"`
 
 	// 字符串房间id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrRoomId *string `json:"StrRoomId,omitnil,omitempty" name:"StrRoomId"`
 
 	// 房间里用户字符串uin列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrUins []*string `json:"StrUins,omitnil,omitempty" name:"StrUins"`
 }
 
@@ -2126,41 +2121,33 @@ type ScanDetail struct {
 
 type ScanPiece struct {
 	// 流检测时返回，音频转存地址，保留30min
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DumpUrl *string `json:"DumpUrl,omitnil,omitempty" name:"DumpUrl"`
 
 	// 是否违规
 	HitFlag *bool `json:"HitFlag,omitnil,omitempty" name:"HitFlag"`
 
 	// 违规主要类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MainType *string `json:"MainType,omitnil,omitempty" name:"MainType"`
 
 	// 语音检测详情
 	ScanDetail []*ScanDetail `json:"ScanDetail,omitnil,omitempty" name:"ScanDetail"`
 
 	// gme实时语音房间ID，透传任务传入时的RoomId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// gme实时语音用户ID，透传任务传入时的OpenId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Info *string `json:"Info,omitnil,omitempty" name:"Info"`
 
 	// 流检测时分片在流中的偏移时间，单位毫秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 流检测时分片时长
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 分片开始检测时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PieceStartTime *uint64 `json:"PieceStartTime,omitnil,omitempty" name:"PieceStartTime"`
 }
 
@@ -2656,7 +2643,6 @@ type VoiceFilterConf struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 场景配置信息，如开关状态，回调地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneInfos []*SceneInfo `json:"SceneInfos,omitnil,omitempty" name:"SceneInfos"`
 }
 

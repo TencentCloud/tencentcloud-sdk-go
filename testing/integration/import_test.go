@@ -280,6 +280,7 @@ import (
 	tmsv20201229 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tms/v20201229"
 	tmtv20180321 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tmt/v20180321"
 	tourismv20230215 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tourism/v20230215"
+	trabbitv20230418 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trabbit/v20230418"
 	trdpv20220726 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trdp/v20220726"
 	trocketv20230308 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trocket/v20230308"
 	trpv20210515 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trp/v20210515"
@@ -3694,6 +3695,19 @@ func TestTourismv20230215Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init tourism_v20230215 client: %v", err)
+    }
+}
+
+func TestTrabbitv20230418Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := trabbitv20230418.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init trabbit_v20230418 client: %v", err)
     }
 }
 

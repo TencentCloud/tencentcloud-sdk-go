@@ -177,6 +177,27 @@ type BackupPlan struct {
 
 	// 开始备份的最晚时间
 	MaxBackupStartTime *string `json:"MaxBackupStartTime,omitnil,omitempty" name:"MaxBackupStartTime"`
+
+	// 备份计划ID
+	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
+
+	// 备份计划自定义名称。
+	PlanName *string `json:"PlanName,omitnil,omitempty" name:"PlanName"`
+
+	// 日志备份保留时长。
+	LogBackupRetentionPeriod *uint64 `json:"LogBackupRetentionPeriod,omitnil,omitempty" name:"LogBackupRetentionPeriod"`
+
+	// 创建时间。
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 最近一次的修改时间。
+	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
+
+	// 备份计划类型。系统默认创建的为default，自定义的为custom。
+	PlanType *string `json:"PlanType,omitnil,omitempty" name:"PlanType"`
+
+	// 备份周期类型。当前支持week、month。
+	BackupPeriodType *string `json:"BackupPeriodType,omitnil,omitempty" name:"BackupPeriodType"`
 }
 
 type BackupSummary struct {
@@ -702,6 +723,105 @@ func (r *CreateAccountResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBackupPlanRequestParams struct {
+	// 实例ID。
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 备份计划名称。
+	PlanName *string `json:"PlanName,omitnil,omitempty" name:"PlanName"`
+
+	// 创建的备份计划类型，当前仅支持month创建。
+	BackupPeriodType *string `json:"BackupPeriodType,omitnil,omitempty" name:"BackupPeriodType"`
+
+	// 备份的日期，示例是每个月的2号开启备份。
+	BackupPeriod []*string `json:"BackupPeriod,omitnil,omitempty" name:"BackupPeriod"`
+
+	// 备份开始时间，不传跟随默认备份计划。
+	MinBackupStartTime *string `json:"MinBackupStartTime,omitnil,omitempty" name:"MinBackupStartTime"`
+
+	// 备份结束时间，不传跟随默认计划。
+	MaxBackupStartTime *string `json:"MaxBackupStartTime,omitnil,omitempty" name:"MaxBackupStartTime"`
+
+	// 数据备份保留时长，week默认是7,month为30。
+	BaseBackupRetentionPeriod *uint64 `json:"BaseBackupRetentionPeriod,omitnil,omitempty" name:"BaseBackupRetentionPeriod"`
+}
+
+type CreateBackupPlanRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 备份计划名称。
+	PlanName *string `json:"PlanName,omitnil,omitempty" name:"PlanName"`
+
+	// 创建的备份计划类型，当前仅支持month创建。
+	BackupPeriodType *string `json:"BackupPeriodType,omitnil,omitempty" name:"BackupPeriodType"`
+
+	// 备份的日期，示例是每个月的2号开启备份。
+	BackupPeriod []*string `json:"BackupPeriod,omitnil,omitempty" name:"BackupPeriod"`
+
+	// 备份开始时间，不传跟随默认备份计划。
+	MinBackupStartTime *string `json:"MinBackupStartTime,omitnil,omitempty" name:"MinBackupStartTime"`
+
+	// 备份结束时间，不传跟随默认计划。
+	MaxBackupStartTime *string `json:"MaxBackupStartTime,omitnil,omitempty" name:"MaxBackupStartTime"`
+
+	// 数据备份保留时长，week默认是7,month为30。
+	BaseBackupRetentionPeriod *uint64 `json:"BaseBackupRetentionPeriod,omitnil,omitempty" name:"BaseBackupRetentionPeriod"`
+}
+
+func (r *CreateBackupPlanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBackupPlanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "PlanName")
+	delete(f, "BackupPeriodType")
+	delete(f, "BackupPeriod")
+	delete(f, "MinBackupStartTime")
+	delete(f, "MaxBackupStartTime")
+	delete(f, "BaseBackupRetentionPeriod")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBackupPlanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBackupPlanResponseParams struct {
+	// 备份策略的ID.
+	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateBackupPlanResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBackupPlanResponseParams `json:"Response"`
+}
+
+func (r *CreateBackupPlanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBackupPlanResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2554,6 +2674,67 @@ func (r *DeleteAccountResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteBackupPlanRequestParams struct {
+	// 实例ID。	
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 备份计划的ID。
+	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
+}
+
+type DeleteBackupPlanRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。	
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 备份计划的ID。
+	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
+}
+
+func (r *DeleteBackupPlanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBackupPlanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "PlanId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBackupPlanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBackupPlanResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteBackupPlanResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteBackupPlanResponseParams `json:"Response"`
+}
+
+func (r *DeleteBackupPlanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBackupPlanResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteBaseBackupRequestParams struct {
 	// 实例ID。
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
@@ -4269,6 +4450,69 @@ func (r *DescribeDBInstanceParametersResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDBInstanceParametersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBInstanceSSLConfigRequestParams struct {
+	// 实例ID，形如postgres-6bwgamo3
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+}
+
+type DescribeDBInstanceSSLConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID，形如postgres-6bwgamo3
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+}
+
+func (r *DescribeDBInstanceSSLConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceSSLConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstanceSSLConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBInstanceSSLConfigResponseParams struct {
+	// true 代表开通 ，false 代表未开通
+	SSLEnabled *bool `json:"SSLEnabled,omitnil,omitempty" name:"SSLEnabled"`
+
+	// 云端根证书下载链接
+	CAUrl *string `json:"CAUrl,omitnil,omitempty" name:"CAUrl"`
+
+	// 服务器证书中配置的内网或外网连接地址
+	ConnectAddress *string `json:"ConnectAddress,omitnil,omitempty" name:"ConnectAddress"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDBInstanceSSLConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBInstanceSSLConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBInstanceSSLConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceSSLConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6069,6 +6313,115 @@ func (r *DescribeSlowQueryListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTasksRequestParams struct {
+	// 按照任务ID进行查询。其余云API中返回的FlowId和TaskId等价。
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 按照数据库实例ID进行查询。
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 任务的最早开始时间，形如2024-08-23 00:00:00,默认只展示180天内的数据。
+	MinStartTime *string `json:"MinStartTime,omitnil,omitempty" name:"MinStartTime"`
+
+	// 任务的最晚开始时间，形如2024-08-23 00:00:00，默认为当前时间。
+	MaxStartTime *string `json:"MaxStartTime,omitnil,omitempty" name:"MaxStartTime"`
+
+	// 每页显示数量，取值范围为1-100，默认为返回20条。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 数据偏移量，从0开始。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序字段，支持StartTime,EndTime，默认为StartTime。
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 排序方式，包括升序：asc，降序：desc，默认为desc。
+	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+}
+
+type DescribeTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 按照任务ID进行查询。其余云API中返回的FlowId和TaskId等价。
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 按照数据库实例ID进行查询。
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 任务的最早开始时间，形如2024-08-23 00:00:00,默认只展示180天内的数据。
+	MinStartTime *string `json:"MinStartTime,omitnil,omitempty" name:"MinStartTime"`
+
+	// 任务的最晚开始时间，形如2024-08-23 00:00:00，默认为当前时间。
+	MaxStartTime *string `json:"MaxStartTime,omitnil,omitempty" name:"MaxStartTime"`
+
+	// 每页显示数量，取值范围为1-100，默认为返回20条。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 数据偏移量，从0开始。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序字段，支持StartTime,EndTime，默认为StartTime。
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 排序方式，包括升序：asc，降序：desc，默认为desc。
+	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+}
+
+func (r *DescribeTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "DBInstanceId")
+	delete(f, "MinStartTime")
+	delete(f, "MaxStartTime")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTasksResponseParams struct {
+	// 查询到的任务数量
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 任务信息列表
+	TaskSet []*TaskSet `json:"TaskSet,omitnil,omitempty" name:"TaskSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeZonesRequestParams struct {
 
 }
@@ -7788,6 +8141,77 @@ func (r *ModifyDBInstanceReadOnlyGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDBInstanceSSLConfigRequestParams struct {
+	// 实例 ID
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 开启或关闭SSL
+	SSLEnabled *bool `json:"SSLEnabled,omitnil,omitempty" name:"SSLEnabled"`
+
+	// SSL证书保护的唯一连接地址，若为主实例，可设置为内外网IP地址；若为只读实例，可设置为实例IP或只读组IP。在开启SSL或修改SSL保护的连接地址时，该参数为必传项；在关闭SSL时，该参数将被忽略。
+	ConnectAddress *string `json:"ConnectAddress,omitnil,omitempty" name:"ConnectAddress"`
+}
+
+type ModifyDBInstanceSSLConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 开启或关闭SSL
+	SSLEnabled *bool `json:"SSLEnabled,omitnil,omitempty" name:"SSLEnabled"`
+
+	// SSL证书保护的唯一连接地址，若为主实例，可设置为内外网IP地址；若为只读实例，可设置为实例IP或只读组IP。在开启SSL或修改SSL保护的连接地址时，该参数为必传项；在关闭SSL时，该参数将被忽略。
+	ConnectAddress *string `json:"ConnectAddress,omitnil,omitempty" name:"ConnectAddress"`
+}
+
+func (r *ModifyDBInstanceSSLConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceSSLConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "SSLEnabled")
+	delete(f, "ConnectAddress")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceSSLConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBInstanceSSLConfigResponseParams struct {
+	// 任务ID
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDBInstanceSSLConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDBInstanceSSLConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyDBInstanceSSLConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceSSLConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDBInstanceSecurityGroupsRequestParams struct {
 	// 实例或只读组要绑定的安全组列表。
 	// 安全组信息可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来查询。
@@ -8295,6 +8719,74 @@ type ModifyPrivilege struct {
 	// 当ModifyType为revokeObject才需要此参数，参数为true时，撤销权限会级联撤销。默认为false。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsCascade *bool `json:"IsCascade,omitnil,omitempty" name:"IsCascade"`
+}
+
+// Predefined struct for user
+type ModifyReadOnlyDBInstanceWeightRequestParams struct {
+	// 实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 只读组ID
+	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitnil,omitempty" name:"ReadOnlyGroupId"`
+
+	// 只读实例在只读组中的流量权重(1-50)
+	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+}
+
+type ModifyReadOnlyDBInstanceWeightRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 只读组ID
+	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitnil,omitempty" name:"ReadOnlyGroupId"`
+
+	// 只读实例在只读组中的流量权重(1-50)
+	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+}
+
+func (r *ModifyReadOnlyDBInstanceWeightRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyReadOnlyDBInstanceWeightRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "ReadOnlyGroupId")
+	delete(f, "Weight")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyReadOnlyDBInstanceWeightRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyReadOnlyDBInstanceWeightResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyReadOnlyDBInstanceWeightResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyReadOnlyDBInstanceWeightResponseParams `json:"Response"`
+}
+
+func (r *ModifyReadOnlyDBInstanceWeightResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyReadOnlyDBInstanceWeightResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -9742,6 +10234,68 @@ type Tag struct {
 
 	// 标签值
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+}
+
+type TaskDetail struct {
+	// 当前执行的子任务步骤名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentStep *string `json:"CurrentStep,omitnil,omitempty" name:"CurrentStep"`
+
+	// 当前任务所拥有的子步骤描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllSteps *string `json:"AllSteps,omitnil,omitempty" name:"AllSteps"`
+
+	// 任务的输入参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Input *string `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 任务的输出参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// 指定实例配置完成变更后的切换时间，默认值：0
+	// 0:   此任务不需要切换
+	// 1：立即切换
+	// 2：指定时间切换
+	// 3：维护时间窗口内切换。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SwitchTag *uint64 `json:"SwitchTag,omitnil,omitempty" name:"SwitchTag"`
+
+	// 指定的切换时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SwitchTime *string `json:"SwitchTime,omitnil,omitempty" name:"SwitchTime"`
+
+	// 任务的提示信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+}
+
+type TaskSet struct {
+	// 任务ID。
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务的类型。
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 任务实例的实例ID。
+	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
+
+	// 任务的开始时间。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 任务的结束时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 任务的运行状态，包括Running,Success,WaitSwitch,Fail,Pause。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务的执行进度，取值范围0-100。
+	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// 任务的详情信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskDetail *TaskDetail `json:"TaskDetail,omitnil,omitempty" name:"TaskDetail"`
 }
 
 // Predefined struct for user

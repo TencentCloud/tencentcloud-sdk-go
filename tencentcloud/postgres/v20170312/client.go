@@ -526,6 +526,67 @@ func (c *Client) CreateAccountWithContext(ctx context.Context, request *CreateAc
     return
 }
 
+func NewCreateBackupPlanRequest() (request *CreateBackupPlanRequest) {
+    request = &CreateBackupPlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "CreateBackupPlan")
+    
+    
+    return
+}
+
+func NewCreateBackupPlanResponse() (response *CreateBackupPlanResponse) {
+    response = &CreateBackupPlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBackupPlan
+// 此接口用于创建备份策略。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_PRECHECKERROR = "FailedOperation.PreCheckError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMETERLENGTHLIMITERROR = "InvalidParameterValue.ParameterLengthLimitError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+func (c *Client) CreateBackupPlan(request *CreateBackupPlanRequest) (response *CreateBackupPlanResponse, err error) {
+    return c.CreateBackupPlanWithContext(context.Background(), request)
+}
+
+// CreateBackupPlan
+// 此接口用于创建备份策略。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_PRECHECKERROR = "FailedOperation.PreCheckError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMETERLENGTHLIMITERROR = "InvalidParameterValue.ParameterLengthLimitError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+func (c *Client) CreateBackupPlanWithContext(ctx context.Context, request *CreateBackupPlanRequest) (response *CreateBackupPlanResponse, err error) {
+    if request == nil {
+        request = NewCreateBackupPlanRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBackupPlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBackupPlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBaseBackupRequest() (request *CreateBaseBackupRequest) {
     request = &CreateBaseBackupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1787,6 +1848,61 @@ func (c *Client) DeleteAccountWithContext(ctx context.Context, request *DeleteAc
     request.SetContext(ctx)
     
     response = NewDeleteAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteBackupPlanRequest() (request *DeleteBackupPlanRequest) {
+    request = &DeleteBackupPlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "DeleteBackupPlan")
+    
+    
+    return
+}
+
+func NewDeleteBackupPlanResponse() (response *DeleteBackupPlanResponse) {
+    response = &DeleteBackupPlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteBackupPlan
+// 删除备份策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+func (c *Client) DeleteBackupPlan(request *DeleteBackupPlanRequest) (response *DeleteBackupPlanResponse, err error) {
+    return c.DeleteBackupPlanWithContext(context.Background(), request)
+}
+
+// DeleteBackupPlan
+// 删除备份策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+func (c *Client) DeleteBackupPlanWithContext(ctx context.Context, request *DeleteBackupPlanRequest) (response *DeleteBackupPlanResponse, err error) {
+    if request == nil {
+        request = NewDeleteBackupPlanRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBackupPlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBackupPlanResponse()
     err = c.Send(request, response)
     return
 }
@@ -3368,6 +3484,59 @@ func (c *Client) DescribeDBInstanceParametersWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeDBInstanceSSLConfigRequest() (request *DescribeDBInstanceSSLConfigRequest) {
+    request = &DescribeDBInstanceSSLConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeDBInstanceSSLConfig")
+    
+    
+    return
+}
+
+func NewDescribeDBInstanceSSLConfigResponse() (response *DescribeDBInstanceSSLConfigResponse) {
+    response = &DescribeDBInstanceSSLConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBInstanceSSLConfig
+// 本接口用于查询实例SSL状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeDBInstanceSSLConfig(request *DescribeDBInstanceSSLConfigRequest) (response *DescribeDBInstanceSSLConfigResponse, err error) {
+    return c.DescribeDBInstanceSSLConfigWithContext(context.Background(), request)
+}
+
+// DescribeDBInstanceSSLConfig
+// 本接口用于查询实例SSL状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeDBInstanceSSLConfigWithContext(ctx context.Context, request *DescribeDBInstanceSSLConfigRequest) (response *DescribeDBInstanceSSLConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstanceSSLConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBInstanceSSLConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBInstanceSSLConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBInstanceSecurityGroupsRequest() (request *DescribeDBInstanceSecurityGroupsRequest) {
     request = &DescribeDBInstanceSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4908,6 +5077,67 @@ func (c *Client) DescribeSlowQueryListWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeSlowQueryListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
+    request = &DescribeTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeTasks")
+    
+    
+    return
+}
+
+func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
+    response = &DescribeTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTasks
+// 本接口（DescribeTasks）用于查询任务列表，展示异步任务的执行进度。
+//
+// 注：本接口中展示的步骤为总结性步骤，可能伴随着版本迭代进行调整，不建议作为关键逻辑使用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEEXCEEDERROR = "InvalidParameterValue.ParameterValueExceedError"
+func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
+    return c.DescribeTasksWithContext(context.Background(), request)
+}
+
+// DescribeTasks
+// 本接口（DescribeTasks）用于查询任务列表，展示异步任务的执行进度。
+//
+// 注：本接口中展示的步骤为总结性步骤，可能伴随着版本迭代进行调整，不建议作为关键逻辑使用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_DATABASEAFFECTEDERROR = "FailedOperation.DatabaseAffectedError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMETERVALUEEXCEEDERROR = "InvalidParameterValue.ParameterValueExceedError"
+func (c *Client) DescribeTasksWithContext(ctx context.Context, request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTasksResponse()
     err = c.Send(request, response)
     return
 }
@@ -6582,6 +6812,69 @@ func (c *Client) ModifyDBInstanceReadOnlyGroupWithContext(ctx context.Context, r
     return
 }
 
+func NewModifyDBInstanceSSLConfigRequest() (request *ModifyDBInstanceSSLConfigRequest) {
+    request = &ModifyDBInstanceSSLConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "ModifyDBInstanceSSLConfig")
+    
+    
+    return
+}
+
+func NewModifyDBInstanceSSLConfigResponse() (response *ModifyDBInstanceSSLConfigResponse) {
+    response = &ModifyDBInstanceSSLConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDBInstanceSSLConfig
+// 本接口用于修改实例SSL配置，功能包含开启、关闭、修改SSL证书保护的连接地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMETERCHARACTERLIMITERROR = "InvalidParameterValue.ParameterCharacterLimitError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ModifyDBInstanceSSLConfig(request *ModifyDBInstanceSSLConfigRequest) (response *ModifyDBInstanceSSLConfigResponse, err error) {
+    return c.ModifyDBInstanceSSLConfigWithContext(context.Background(), request)
+}
+
+// ModifyDBInstanceSSLConfig
+// 本接口用于修改实例SSL配置，功能包含开启、关闭、修改SSL证书保护的连接地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMETERCHARACTERLIMITERROR = "InvalidParameterValue.ParameterCharacterLimitError"
+//  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ModifyDBInstanceSSLConfigWithContext(ctx context.Context, request *ModifyDBInstanceSSLConfigRequest) (response *ModifyDBInstanceSSLConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceSSLConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBInstanceSSLConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDBInstanceSSLConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBInstanceSecurityGroupsRequest() (request *ModifyDBInstanceSecurityGroupsRequest) {
     request = &ModifyDBInstanceSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6996,6 +7289,91 @@ func (c *Client) ModifyParameterTemplateWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyParameterTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyReadOnlyDBInstanceWeightRequest() (request *ModifyReadOnlyDBInstanceWeightRequest) {
+    request = &ModifyReadOnlyDBInstanceWeightRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "ModifyReadOnlyDBInstanceWeight")
+    
+    
+    return
+}
+
+func NewModifyReadOnlyDBInstanceWeightResponse() (response *ModifyReadOnlyDBInstanceWeightResponse) {
+    response = &ModifyReadOnlyDBInstanceWeightResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyReadOnlyDBInstanceWeight
+// 本接口（ModifyReadOnlyDBInstanceWeight）用于修改只读实例权重
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CAMAUTHFAILED = "FailedOperation.CamAuthFailed"
+//  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_ILLEGALROINSTANCENUM = "FailedOperation.IllegalROInstanceNum"
+//  FAILEDOPERATION_ROGROUPMASTERINSTANCENOTRIGHT = "FailedOperation.ROGroupMasterInstanceNotRight"
+//  FAILEDOPERATION_ROGROUPNOTFOUNDERROR = "FailedOperation.ROGroupNotFoundError"
+//  INSTANCENOTEXIST = "InstanceNotExist"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDINSTANCESTATUS = "InvalidInstanceStatus"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDREADONLYGROUPSTATUS = "InvalidParameterValue.InvalidReadOnlyGroupStatus"
+//  INVALIDPARAMETERVALUE_PARAMETERHANDLEERROR = "InvalidParameterValue.ParameterHandleError"
+//  INVALIDPARAMETERVALUE_READONLYGROUPNOTEXIST = "InvalidParameterValue.ReadOnlyGroupNotExist"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  OPERATIONDENIED_ROGROUPSTATUSERROR = "OperationDenied.ROGroupStatusError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  RESOURCEUNAVAILABLE_INVALIDINSTANCESTATUS = "ResourceUnavailable.InvalidInstanceStatus"
+func (c *Client) ModifyReadOnlyDBInstanceWeight(request *ModifyReadOnlyDBInstanceWeightRequest) (response *ModifyReadOnlyDBInstanceWeightResponse, err error) {
+    return c.ModifyReadOnlyDBInstanceWeightWithContext(context.Background(), request)
+}
+
+// ModifyReadOnlyDBInstanceWeight
+// 本接口（ModifyReadOnlyDBInstanceWeight）用于修改只读实例权重
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CAMAUTHFAILED = "FailedOperation.CamAuthFailed"
+//  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_ILLEGALROINSTANCENUM = "FailedOperation.IllegalROInstanceNum"
+//  FAILEDOPERATION_ROGROUPMASTERINSTANCENOTRIGHT = "FailedOperation.ROGroupMasterInstanceNotRight"
+//  FAILEDOPERATION_ROGROUPNOTFOUNDERROR = "FailedOperation.ROGroupNotFoundError"
+//  INSTANCENOTEXIST = "InstanceNotExist"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDINSTANCESTATUS = "InvalidInstanceStatus"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDREADONLYGROUPSTATUS = "InvalidParameterValue.InvalidReadOnlyGroupStatus"
+//  INVALIDPARAMETERVALUE_PARAMETERHANDLEERROR = "InvalidParameterValue.ParameterHandleError"
+//  INVALIDPARAMETERVALUE_READONLYGROUPNOTEXIST = "InvalidParameterValue.ReadOnlyGroupNotExist"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  OPERATIONDENIED_ROGROUPSTATUSERROR = "OperationDenied.ROGroupStatusError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  RESOURCEUNAVAILABLE_INVALIDINSTANCESTATUS = "ResourceUnavailable.InvalidInstanceStatus"
+func (c *Client) ModifyReadOnlyDBInstanceWeightWithContext(ctx context.Context, request *ModifyReadOnlyDBInstanceWeightRequest) (response *ModifyReadOnlyDBInstanceWeightResponse, err error) {
+    if request == nil {
+        request = NewModifyReadOnlyDBInstanceWeightRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyReadOnlyDBInstanceWeight require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyReadOnlyDBInstanceWeightResponse()
     err = c.Send(request, response)
     return
 }

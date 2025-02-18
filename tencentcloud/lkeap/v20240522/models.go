@@ -437,6 +437,7 @@ type CreateReconstructDocumentFlowRequestParams struct {
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
 	// 文件的 Base64 值。
+	// 支持的文件类型： PNG、JPG、JPEG、PDF、GIF、BMP、TIFF
 	// 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。
 	// 支持的图片像素：单边介于20-10000px之间。
 	// 文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
@@ -475,6 +476,7 @@ type CreateReconstructDocumentFlowRequest struct {
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
 	// 文件的 Base64 值。
+	// 支持的文件类型： PNG、JPG、JPEG、PDF、GIF、BMP、TIFF
 	// 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。
 	// 支持的图片像素：单边介于20-10000px之间。
 	// 文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
@@ -2357,8 +2359,8 @@ type UploadDocRequestParams struct {
 	// 知识库ID
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 
-	// 文件名，可选。
-	// **需带文件类型后缀**，当文件名无法从传入的`FileUrl`获取时需要通过该字段来明确。
+	// 文件名。
+	// **需带文件类型后缀**
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 文件类型。
@@ -2395,8 +2397,8 @@ type UploadDocRequest struct {
 	// 知识库ID
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
 
-	// 文件名，可选。
-	// **需带文件类型后缀**，当文件名无法从传入的`FileUrl`获取时需要通过该字段来明确。
+	// 文件名。
+	// **需带文件类型后缀**
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 文件类型。

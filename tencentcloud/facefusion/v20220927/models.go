@@ -141,6 +141,9 @@ type FuseFaceRequestParams struct {
 	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 
 	// 用户人脸图片、素材模板图的人脸位置信息。不能超过6个。
+	// ●图片分辨率限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于4096*4096（单边限制）。
+	// ●图片大小限制：base64 编码后大小不可超过5M， url不超过10M。
+	// ●支持图片格式：支持jpg或png
 	MergeInfos []*MergeInfo `json:"MergeInfos,omitnil,omitempty" name:"MergeInfos"`
 
 	// 脸型融合比例，数值越高，融合后的脸型越像素材人物。取值范围[0,100] 
@@ -179,6 +182,9 @@ type FuseFaceRequest struct {
 	RspImgType *string `json:"RspImgType,omitnil,omitempty" name:"RspImgType"`
 
 	// 用户人脸图片、素材模板图的人脸位置信息。不能超过6个。
+	// ●图片分辨率限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于4096*4096（单边限制）。
+	// ●图片大小限制：base64 编码后大小不可超过5M， url不超过10M。
+	// ●支持图片格式：支持jpg或png
 	MergeInfos []*MergeInfo `json:"MergeInfos,omitnil,omitempty" name:"MergeInfos"`
 
 	// 脸型融合比例，数值越高，融合后的脸型越像素材人物。取值范围[0,100] 
@@ -267,13 +273,15 @@ type FuseFaceUltraRequestParams struct {
 
 	// 素材模版图片的url地址。
 	// ●base64 和 url 必须提供一个，如果都提供以 url 为准。
-	// ●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000 * 8000（单边限制）。图片url或者图片 base64 数据，base64 编码后大小不可超过10M（图片编码之后可能会大30%左右，建议合理控制图片大小）
+	// ●图片分辨率限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000 * 8000（单边限制）。
+	// ●图片大小限制：base64 编码后大小不可超过10M， url不超过20M。
 	// ●图片格式：支持jpg或png
 	ModelUrl *string `json:"ModelUrl,omitnil,omitempty" name:"ModelUrl"`
 
 	// 素材模版图片base64数据。
 	// ●base64 和 url 必须提供一个，如果都提供以 url 为准。
-	// ●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000*8000（单边限制）。图片url或者图片 base64 数据，base64 编码后大小不可超过10M（图片编码之后可能会大30%左右，建议合理控制图片大小）
+	// ●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000*8000（单边限制）。
+	// ●图片大小限制：base64 编码后大小不可超过10M， url不超过20M。
 	// ●支持图片格式：支持jpg或png
 	ModelImage *string `json:"ModelImage,omitnil,omitempty" name:"ModelImage"`
 
@@ -313,13 +321,15 @@ type FuseFaceUltraRequest struct {
 
 	// 素材模版图片的url地址。
 	// ●base64 和 url 必须提供一个，如果都提供以 url 为准。
-	// ●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000 * 8000（单边限制）。图片url或者图片 base64 数据，base64 编码后大小不可超过10M（图片编码之后可能会大30%左右，建议合理控制图片大小）
+	// ●图片分辨率限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000 * 8000（单边限制）。
+	// ●图片大小限制：base64 编码后大小不可超过10M， url不超过20M。
 	// ●图片格式：支持jpg或png
 	ModelUrl *string `json:"ModelUrl,omitnil,omitempty" name:"ModelUrl"`
 
 	// 素材模版图片base64数据。
 	// ●base64 和 url 必须提供一个，如果都提供以 url 为准。
-	// ●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000*8000（单边限制）。图片url或者图片 base64 数据，base64 编码后大小不可超过10M（图片编码之后可能会大30%左右，建议合理控制图片大小）
+	// ●素材图片限制：图片中面部尺寸大于34 * 34；图片尺寸大于64 * 64，小于8000*8000（单边限制）。
+	// ●图片大小限制：base64 编码后大小不可超过10M， url不超过20M。
 	// ●支持图片格式：支持jpg或png
 	ModelImage *string `json:"ModelImage,omitnil,omitempty" name:"ModelImage"`
 

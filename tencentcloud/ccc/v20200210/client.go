@@ -816,6 +816,8 @@ func NewCreateIVRSessionResponse() (response *CreateIVRSessionResponse) {
 // 创建关联 IVR 的会话，仅高级版支持，目前支持呼入和自动外呼两种 IVR 类型。收到请求后 TCCC 会先尝试呼通被叫，然后进入 IVR 流程。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_AICONCURRENTNOPACKAGE = "FailedOperation.AIConcurrentNoPackage"
+//  FAILEDOPERATION_AICONCURRENTOVERFREQUENCY = "FailedOperation.AIConcurrentOverFrequency"
 //  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
 //  FAILEDOPERATION_CALLEEISBLACKUSER = "FailedOperation.CalleeIsBlackUser"
 //  FAILEDOPERATION_CALLEROVERFREQUENCY = "FailedOperation.CallerOverFrequency"
@@ -837,6 +839,8 @@ func (c *Client) CreateIVRSession(request *CreateIVRSessionRequest) (response *C
 // 创建关联 IVR 的会话，仅高级版支持，目前支持呼入和自动外呼两种 IVR 类型。收到请求后 TCCC 会先尝试呼通被叫，然后进入 IVR 流程。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_AICONCURRENTNOPACKAGE = "FailedOperation.AIConcurrentNoPackage"
+//  FAILEDOPERATION_AICONCURRENTOVERFREQUENCY = "FailedOperation.AIConcurrentOverFrequency"
 //  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
 //  FAILEDOPERATION_CALLEEISBLACKUSER = "FailedOperation.CalleeIsBlackUser"
 //  FAILEDOPERATION_CALLEROVERFREQUENCY = "FailedOperation.CallerOverFrequency"

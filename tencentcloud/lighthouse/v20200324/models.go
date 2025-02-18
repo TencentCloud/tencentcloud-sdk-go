@@ -469,7 +469,6 @@ type Blueprint struct {
 	RequiredMemorySize *int64 `json:"RequiredMemorySize,omitnil,omitempty" name:"RequiredMemorySize"`
 
 	// CVM镜像共享到轻量应用服务器轻量应用服务器后的CVM镜像ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
 	// 官方网站Url。
@@ -479,7 +478,6 @@ type Blueprint struct {
 	GuideUrl *string `json:"GuideUrl,omitnil,omitempty" name:"GuideUrl"`
 
 	// 镜像关联使用场景Id列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneIdSet []*string `json:"SceneIdSet,omitnil,omitempty" name:"SceneIdSet"`
 
 	// Docker版本号。
@@ -567,7 +565,6 @@ type Bundle struct {
 	BundleType *string `json:"BundleType,omitnil,omitempty" name:"BundleType"`
 
 	// 套餐类型描述信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BundleTypeDescription *string `json:"BundleTypeDescription,omitnil,omitempty" name:"BundleTypeDescription"`
 
 	// 套餐展示标签.
@@ -684,9 +681,11 @@ type Command struct {
 
 type ContainerEnv struct {
 	// 环境变量Key
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 环境变量值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -1473,7 +1472,6 @@ type DataDiskPrice struct {
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 
 	// 数据盘挂载的实例ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -5448,15 +5446,12 @@ type DiskBackup struct {
 	Percent *int64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
 	// 上一次操作
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestOperation *string `json:"LatestOperation,omitnil,omitempty" name:"LatestOperation"`
 
 	// 上一次操作状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestOperationState *string `json:"LatestOperationState,omitnil,omitempty" name:"LatestOperationState"`
 
 	// 上一次请求ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestOperationRequestId *string `json:"LatestOperationRequestId,omitnil,omitempty" name:"LatestOperationRequestId"`
 
 	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
@@ -5566,7 +5561,6 @@ type DockerActivity struct {
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 结束时间。按照 ISO8601 标准表示，并且使用 UTC 时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -5630,11 +5624,9 @@ type DockerContainerPublishPort struct {
 	ContainerPort *int64 `json:"ContainerPort,omitnil,omitempty" name:"ContainerPort"`
 
 	// 对外绑定IP，默认0.0.0.0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 协议，默认tcp，支持tcp/udp/sctp
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 }
 
@@ -6345,7 +6337,6 @@ type Instance struct {
 	InitInvocationId *string `json:"InitInvocationId,omitnil,omitempty" name:"InitInvocationId"`
 
 	// 实例违规详情。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceViolationDetail *InstanceViolationDetail `json:"InstanceViolationDetail,omitnil,omitempty" name:"InstanceViolationDetail"`
 }
 
@@ -6359,7 +6350,6 @@ type InstanceChargePrepaid struct {
 
 type InstanceDeniedActions struct {
 	// 实例 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 操作限制列表。
@@ -6388,17 +6378,14 @@ type InstancePrice struct {
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 
 	// 价格货币单位。取值范围CNY:人民币。USD:美元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
 }
 
 type InstancePriceDetail struct {
 	// 实例ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 询价信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstancePrice *InstancePrice `json:"InstancePrice,omitnil,omitempty" name:"InstancePrice"`
 
 	// 折扣梯度详情，每个梯度包含的信息有：时长，折扣数，总价，折扣价，折扣详情（用户折扣、官网折扣、最终折扣）。
@@ -9169,11 +9156,9 @@ func (r *TerminateInstancesResponse) FromJsonString(s string) error {
 
 type TotalPrice struct {
 	// 原始总计价格。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
 
 	// 折扣总计价格。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 }
 
@@ -9195,17 +9180,14 @@ type TrafficPackage struct {
 
 	// 流量包生效周期开始时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
 	// 格式为： YYYY-MM-DDThh:mm:ssZ。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 流量包生效周期结束时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
 	// 格式为： YYYY-MM-DDThh:mm:ssZ。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 流量包到期时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
 	// 格式为： YYYY-MM-DDThh:mm:ssZ。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Deadline *string `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
 	// 流量包状态：

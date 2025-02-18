@@ -12485,11 +12485,11 @@ type ReleasedApprover struct {
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样, 可以参考<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#agent" target="_blank">Agent结构体</a>。
-	// 当为子客企业指定经办人时，此OrganizationOpenId必传。
+	// <font color="red">当为子客企业指定经办人时，此OrganizationOpenId必传。</font>
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil,omitempty" name:"OrganizationOpenId"`
 
 	// 第三方平台子客企业员工的唯一标识，长度不能超过64，只能由字母和数字组成。
-	// 当签署方为同一第三方平台下的员工时，此OpenId必传。
+	// <font color="red">当签署方为同一第三方平台下的员工时，此OpenId必传。</font>
 	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// 签署控件类型，支持自定义企业签署方的签署控件类型

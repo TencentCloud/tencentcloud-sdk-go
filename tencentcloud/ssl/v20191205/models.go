@@ -31,7 +31,6 @@ type ApiGatewayInstanceDetail struct {
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 证书ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 使用协议
@@ -43,14 +42,12 @@ type ApiGatewayInstanceList struct {
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// apigateway实例详情	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*ApiGatewayInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 该地域下apigateway实例总数	
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 是否查询异常
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
@@ -217,24 +214,20 @@ func (r *ApplyCertificateResponse) FromJsonString(s string) error {
 
 type BatchDeleteFail struct {
 	// 失败的证书ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 失败的原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 }
 
 type BindResourceRegionResult struct {
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 关联资源总数
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 是否查询异常
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
@@ -248,19 +241,15 @@ type BindResourceResult struct {
 
 type COSInstanceList struct {
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 实例详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*CosInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 地域下总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
@@ -397,11 +386,9 @@ type CdnInstanceList struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// cdn域名详情	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*CdnInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 是否查询异常
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
@@ -438,17 +425,14 @@ type Certificate struct {
 	DnsNames []*string `json:"DnsNames,omitnil,omitempty" name:"DnsNames"`
 
 	// 根证书ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertCaId *string `json:"CertCaId,omitnil,omitempty" name:"CertCaId"`
 
 	// 证书认证模式：UNIDIRECTIONAL单向认证，MUTUAL双向认证
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SSLMode *string `json:"SSLMode,omitnil,omitempty" name:"SSLMode"`
 }
 
 type CertificateExtra struct {
 	// 证书可配置域名数量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainNumber *string `json:"DomainNumber,omitnil,omitempty" name:"DomainNumber"`
 
 	// 续费原证书 ID。
@@ -468,11 +452,9 @@ type CertificateExtra struct {
 	RenewOrder *string `json:"RenewOrder,omitnil,omitempty" name:"RenewOrder"`
 
 	// 是否是国密证书
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SMCert *int64 `json:"SMCert,omitnil,omitempty" name:"SMCert"`
 
 	// 公司类型，取值：1（个人）；2（公司）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompanyType *int64 `json:"CompanyType,omitnil,omitempty" name:"CompanyType"`
 }
 
@@ -920,11 +902,9 @@ func (r *CertificateOrderSubmitResponse) FromJsonString(s string) error {
 
 type Certificates struct {
 	// 用户 UIN。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
 	// 项目 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 证书来源：
@@ -932,7 +912,6 @@ type Certificates struct {
 	// upload：用户上传。
 	// wosign：沃通
 	// sheca：上海CA
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
 	// 证书套餐类型：
@@ -1020,215 +999,162 @@ type Certificates struct {
 	// 99：CFCA 企业型多域名(OV)SSL证书
 	// 100：CFCA 企业型通配符(OV)SSL证书
 	// 101：CFCA 增强型(EV)SSL证书
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
 	// 证书类型：CA = 客户端证书，SVR = 服务器证书。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateType *string `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
 
 	// 证书产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductZhName *string `json:"ProductZhName,omitnil,omitempty" name:"ProductZhName"`
 
 	// 主域名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 备注名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 证书扩展信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateExtra *CertificateExtra `json:"CertificateExtra,omitnil,omitempty" name:"CertificateExtra"`
 
 	// 漏洞扫描状态：INACTIVE = 未开启，ACTIVE = 已开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulnerabilityStatus *string `json:"VulnerabilityStatus,omitnil,omitempty" name:"VulnerabilityStatus"`
 
 	// 状态信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusMsg *string `json:"StatusMsg,omitnil,omitempty" name:"StatusMsg"`
 
 	// 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
 	// 证书生效时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertBeginTime *string `json:"CertBeginTime,omitnil,omitempty" name:"CertBeginTime"`
 
 	// 证书过期时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertEndTime *string `json:"CertEndTime,omitnil,omitempty" name:"CertEndTime"`
 
 	// 证书有效期，单位（月）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
 	// 创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
 	// 证书 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 证书包含的多个域名（包含主域名）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubjectAltName []*string `json:"SubjectAltName,omitnil,omitempty" name:"SubjectAltName"`
 
 	// 证书类型名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageTypeName *string `json:"PackageTypeName,omitnil,omitempty" name:"PackageTypeName"`
 
 	// 状态名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusName *string `json:"StatusName,omitnil,omitempty" name:"StatusName"`
 
 	// 是否为 VIP 客户。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsVip *bool `json:"IsVip,omitnil,omitempty" name:"IsVip"`
 
 	// 是否为 DV 版证书。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDv *bool `json:"IsDv,omitnil,omitempty" name:"IsDv"`
 
 	// 是否为泛域名证书。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsWildcard *bool `json:"IsWildcard,omitnil,omitempty" name:"IsWildcard"`
 
 	// 是否启用了漏洞扫描功能。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsVulnerability *bool `json:"IsVulnerability,omitnil,omitempty" name:"IsVulnerability"`
 
 	// 是否可续费。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewAble *bool `json:"RenewAble,omitnil,omitempty" name:"RenewAble"`
 
 	// 项目信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectInfo *ProjectInfo `json:"ProjectInfo,omitnil,omitempty" name:"ProjectInfo"`
 
 	// 关联的云资源，暂不可用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BoundResource []*string `json:"BoundResource,omitnil,omitempty" name:"BoundResource"`
 
 	// 是否可部署。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Deployable *bool `json:"Deployable,omitnil,omitempty" name:"Deployable"`
 
 	// 标签列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 是否已忽略到期通知
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsIgnore *bool `json:"IsIgnore,omitnil,omitempty" name:"IsIgnore"`
 
 	// 是否国密证书
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSM *bool `json:"IsSM,omitnil,omitempty" name:"IsSM"`
 
 	// 证书算法
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitnil,omitempty" name:"EncryptAlgorithm"`
 
 	// 上传CA证书的加密算法
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CAEncryptAlgorithms []*string `json:"CAEncryptAlgorithms,omitnil,omitempty" name:"CAEncryptAlgorithms"`
 
 	// 上传CA证书的过期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CAEndTimes []*string `json:"CAEndTimes,omitnil,omitempty" name:"CAEndTimes"`
 
 	// 上传CA证书的通用名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CACommonNames []*string `json:"CACommonNames,omitnil,omitempty" name:"CACommonNames"`
 
 	// 证书预审核信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreAuditInfo *PreAuditInfo `json:"PreAuditInfo,omitnil,omitempty" name:"PreAuditInfo"`
 
 	// 是否自动续费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 托管状态，0，托管中，5，资源替换中， 10， 托管完成， -1未托管 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostingStatus *int64 `json:"HostingStatus,omitnil,omitempty" name:"HostingStatus"`
 
 	// 托管完成时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostingCompleteTime *string `json:"HostingCompleteTime,omitnil,omitempty" name:"HostingCompleteTime"`
 
 	// 托管新证书ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostingRenewCertId *string `json:"HostingRenewCertId,omitnil,omitempty" name:"HostingRenewCertId"`
 
 	// 存在的续费证书ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HasRenewOrder *string `json:"HasRenewOrder,omitnil,omitempty" name:"HasRenewOrder"`
 
 	// 重颁发证书原证书是否删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplaceOriCertIsDelete *bool `json:"ReplaceOriCertIsDelete,omitnil,omitempty" name:"ReplaceOriCertIsDelete"`
 
 	// 是否即将过期， 证书即将到期的30天内为即将过期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsExpiring *bool `json:"IsExpiring,omitnil,omitempty" name:"IsExpiring"`
 
 	// DV证书添加验证截止时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DVAuthDeadline *string `json:"DVAuthDeadline,omitnil,omitempty" name:"DVAuthDeadline"`
 
 	// 域名验证通过时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidationPassedTime *string `json:"ValidationPassedTime,omitnil,omitempty" name:"ValidationPassedTime"`
 
 	// 证书关联的多域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertSANs []*string `json:"CertSANs,omitnil,omitempty" name:"CertSANs"`
 
 	// 域名验证驳回信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AwaitingValidationMsg *string `json:"AwaitingValidationMsg,omitnil,omitempty" name:"AwaitingValidationMsg"`
 
 	// 是否允许下载
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowDownload *bool `json:"AllowDownload,omitnil,omitempty" name:"AllowDownload"`
 
 	// 证书域名是否全部在DNSPOD托管解析
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDNSPODResolve *bool `json:"IsDNSPODResolve,omitnil,omitempty" name:"IsDNSPODResolve"`
 
 	// 是否是权益点购买的证书
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPackage *bool `json:"IsPackage,omitnil,omitempty" name:"IsPackage"`
 
 	// 是否存在私钥密码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyPasswordCustomFlag *bool `json:"KeyPasswordCustomFlag,omitnil,omitempty" name:"KeyPasswordCustomFlag"`
 
 	// 支持下载的WEB服务器类型： nginx、apache、iis、tomcat、jks、root、other
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportDownloadType *SupportDownloadType `json:"SupportDownloadType,omitnil,omitempty" name:"SupportDownloadType"`
 
 	// 证书吊销完成时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertRevokedTime *string `json:"CertRevokedTime,omitnil,omitempty" name:"CertRevokedTime"`
 
 	// 托管资源类型列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostingResourceTypes []*string `json:"HostingResourceTypes,omitnil,omitempty" name:"HostingResourceTypes"`
 
 	// 托管配置信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostingConfig *HostingConfig `json:"HostingConfig,omitnil,omitempty" name:"HostingConfig"`
 }
 
@@ -1419,7 +1345,6 @@ type ClbInstanceDetail struct {
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
 	// CLB监听器列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Listeners []*ClbListener `json:"Listeners,omitnil,omitempty" name:"Listeners"`
 }
 
@@ -1428,14 +1353,12 @@ type ClbInstanceList struct {
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// clb实例详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*ClbInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 该地域下Clb实例总数
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 是否查询异常
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
@@ -1453,15 +1376,12 @@ type ClbListener struct {
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 监听器绑定的证书数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Certificate *Certificate `json:"Certificate,omitnil,omitempty" name:"Certificate"`
 
 	// 监听器规则列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rules []*ClbListenerRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 
 	// 不匹配域名列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoMatchDomains []*string `json:"NoMatchDomains,omitnil,omitempty" name:"NoMatchDomains"`
 }
 
@@ -1476,15 +1396,12 @@ type ClbListenerRule struct {
 	IsMatch *bool `json:"IsMatch,omitnil,omitempty" name:"IsMatch"`
 
 	// 规则已绑定的证书数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Certificate *Certificate `json:"Certificate,omitnil,omitempty" name:"Certificate"`
 
 	// 不匹配域名列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoMatchDomains []*string `json:"NoMatchDomains,omitnil,omitempty" name:"NoMatchDomains"`
 
 	// 规则绑定的路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
@@ -1586,16 +1503,13 @@ type CompanyInfo struct {
 	// 公司证件类型，取值范围：
 	// TYDMZ（统一社会信用代码 ）：仅CFCA类型证书需要使用本字段， 其他类型证书不需要使用本字段
 	// OTHERS（其他）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdType *string `json:"IdType,omitnil,omitempty" name:"IdType"`
 
 	// 公司证件号码，取值范围：
 	// TYDMZ（统一社会信用代码 ）：11532xxxxxxxx24820
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdNumber *string `json:"IdNumber,omitnil,omitempty" name:"IdNumber"`
 
 	// 标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
@@ -1661,7 +1575,6 @@ type CosInstanceDetail struct {
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 已绑定的证书ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// ENABLED: 域名上线状态
@@ -1669,11 +1582,9 @@ type CosInstanceDetail struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 存储桶名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
 	// 存储桶地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
@@ -2263,7 +2174,6 @@ type DdosInstanceDetail struct {
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 证书ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 转发端口
@@ -2275,11 +2185,9 @@ type DdosInstanceList struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// ddos实例详情	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*DdosInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 是否查询异常
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
@@ -2489,15 +2397,12 @@ type DeleteTaskResult struct {
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 
 	// 当前结果缓存时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CacheTime *string `json:"CacheTime,omitnil,omitempty" name:"CacheTime"`
 
 	// 包含的域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 }
 
@@ -2778,7 +2683,6 @@ type DeployRecordDetail struct {
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 原绑定证书ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OldCertId *string `json:"OldCertId,omitnil,omitempty" name:"OldCertId"`
 
 	// 部署实例ID
@@ -2788,21 +2692,18 @@ type DeployRecordDetail struct {
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 部署监听器ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
 	// 部署域名列表
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
 	// 部署监听器协议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 部署状态
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 部署错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 部署记录详情创建时间
@@ -2818,35 +2719,27 @@ type DeployRecordDetail struct {
 	SniSwitch *int64 `json:"SniSwitch,omitnil,omitempty" name:"SniSwitch"`
 
 	// COS存储桶名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
 	// 命名空间名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// secret名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
 	// 端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// TCB环境ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// 部署的TCB类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TCBType *string `json:"TCBType,omitnil,omitempty" name:"TCBType"`
 
 	// 部署的TCB地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 部署CLB监听器的Url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url []*string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
@@ -2884,11 +2777,9 @@ type DeployedResources struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 不建议使用。字段返回和Resources相同。本字段后续只返回null
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 关联资源ID或关联域名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resources []*string `json:"Resources,omitnil,omitempty" name:"Resources"`
 }
 
@@ -5570,7 +5461,7 @@ func (r *DescribeHostUpdateRecordResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHostVodInstanceListRequestParams struct {
-	// 待部署的证书ID
+	// 待部署的证书ID,必填选项
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
@@ -5591,7 +5482,7 @@ type DescribeHostVodInstanceListRequestParams struct {
 type DescribeHostVodInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待部署的证书ID
+	// 待部署的证书ID,必填选项
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 是否查询缓存，1：是； 0：否， 默认为查询缓存，缓存半小时
@@ -5801,6 +5692,8 @@ func (r *DescribeManagerDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeManagerDetailResponseParams struct {
 	// 状态: audit: 审核中 ok: 审核通过 invalid: 失效 expiring: 即将过期 expired: 已过期
+	//
+	// Deprecated: Status is deprecated.
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 管理人姓名
@@ -6105,7 +5998,6 @@ type DomainValidationResult struct {
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 域名验证类型。 取值为：DNS、FILE、DNS_AUTO、DNS_PROXY、FILE_PROXY
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
 	// 腾讯云检测结果，取值：1（验证通过）； -1（被限频或者 txt record not found）；-2（txt record not match）；-3（ns record not found）；-4（file not found）；-5（file not match）；-6（cname record not found）；-7（cname record not match）；-8（ns record not found）-9（file not found）；-10（file not match）
@@ -6115,11 +6007,9 @@ type DomainValidationResult struct {
 	CaCheck *int64 `json:"CaCheck,omitnil,omitempty" name:"CaCheck"`
 
 	// 检查失败原因。状态LocalCheck的具体描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalCheckFailReason *string `json:"LocalCheckFailReason,omitnil,omitempty" name:"LocalCheckFailReason"`
 
 	// 检查到的值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckValue []*string `json:"CheckValue,omitnil,omitempty" name:"CheckValue"`
 
 	// 是否被限频拦截， 取值：false（未被限频）；true（被限频）
@@ -6769,7 +6659,6 @@ type PackageTransferOutInfo struct {
 	TransferCount *uint64 `json:"TransferCount,omitnil,omitempty" name:"TransferCount"`
 
 	// 转入的PackageID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceivePackageId *string `json:"ReceivePackageId,omitnil,omitempty" name:"ReceivePackageId"`
 
 	// 本次转移过期时间。
@@ -6785,11 +6674,9 @@ type PackageTransferOutInfo struct {
 	TransferStatus *string `json:"TransferStatus,omitnil,omitempty" name:"TransferStatus"`
 
 	// 接收者uin。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceiverUin *uint64 `json:"ReceiverUin,omitnil,omitempty" name:"ReceiverUin"`
 
 	// 接收时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceiveTime *string `json:"ReceiveTime,omitnil,omitempty" name:"ReceiveTime"`
 }
 
