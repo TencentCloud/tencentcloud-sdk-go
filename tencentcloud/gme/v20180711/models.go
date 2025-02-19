@@ -2271,27 +2271,21 @@ type SceneInfo struct {
 
 type ServiceStatus struct {
 	// 实时语音服务开关状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealTimeSpeech *StatusInfo `json:"RealTimeSpeech,omitnil,omitempty" name:"RealTimeSpeech"`
 
 	// 语音消息服务开关状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoiceMessage *StatusInfo `json:"VoiceMessage,omitnil,omitempty" name:"VoiceMessage"`
 
 	// 语音内容安全服务开关状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Porn *StatusInfo `json:"Porn,omitnil,omitempty" name:"Porn"`
 
 	// 语音录制服务开关状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Live *StatusInfo `json:"Live,omitnil,omitempty" name:"Live"`
 
 	// 语音转文本服务开关状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealTimeAsr *StatusInfo `json:"RealTimeAsr,omitnil,omitempty" name:"RealTimeAsr"`
 
 	// 文本翻译服务开关状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TextTranslate *StatusInfo `json:"TextTranslate,omitnil,omitempty" name:"TextTranslate"`
 }
 

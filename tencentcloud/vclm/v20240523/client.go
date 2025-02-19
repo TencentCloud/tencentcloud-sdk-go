@@ -80,8 +80,8 @@ func NewCheckAnimateImageJobResponse() (response *CheckAnimateImageJobResponse) 
 //  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_TEMPLATENOTEXISTED = "InvalidParameter.TemplateNotExisted"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDVIDEORESOLUTION = "InvalidParameterValue.InvalidVideoResolution"
 //  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
@@ -109,8 +109,8 @@ func (c *Client) CheckAnimateImageJob(request *CheckAnimateImageJobRequest) (res
 //  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_TEMPLATENOTEXISTED = "InvalidParameter.TemplateNotExisted"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDVIDEORESOLUTION = "InvalidParameterValue.InvalidVideoResolution"
 //  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
@@ -130,67 +130,6 @@ func (c *Client) CheckAnimateImageJobWithContext(ctx context.Context, request *C
     request.SetContext(ctx)
     
     response = NewCheckAnimateImageJobResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewConfirmVideoTranslateJobRequest() (request *ConfirmVideoTranslateJobRequest) {
-    request = &ConfirmVideoTranslateJobRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("vclm", APIVersion, "ConfirmVideoTranslateJob")
-    
-    
-    return
-}
-
-func NewConfirmVideoTranslateJobResponse() (response *ConfirmVideoTranslateJobResponse) {
-    response = &ConfirmVideoTranslateJobResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ConfirmVideoTranslateJob
-// 确认视频转译结果
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_AUDIOPROCESSNOTFINISHED = "FailedOperation.AudioProcessNotFinished"
-//  FAILEDOPERATION_CONFIRMTASKEXCEPTION = "FailedOperation.ConfirmTaskException"
-//  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
-//  FAILEDOPERATION_TEXTMODERATIONNOTPASS = "FailedOperation.TextModerationNotPass"
-//  FAILEDOPERATION_TRANSLATIONCONFIRMHASFINISHED = "FailedOperation.TranslationConfirmHasFinished"
-//  FAILEDOPERATION_TRANSLATIONNOTNEEDCONFIRM = "FailedOperation.TranslationNotNeedConfirm"
-//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
-func (c *Client) ConfirmVideoTranslateJob(request *ConfirmVideoTranslateJobRequest) (response *ConfirmVideoTranslateJobResponse, err error) {
-    return c.ConfirmVideoTranslateJobWithContext(context.Background(), request)
-}
-
-// ConfirmVideoTranslateJob
-// 确认视频转译结果
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_AUDIOPROCESSNOTFINISHED = "FailedOperation.AudioProcessNotFinished"
-//  FAILEDOPERATION_CONFIRMTASKEXCEPTION = "FailedOperation.ConfirmTaskException"
-//  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
-//  FAILEDOPERATION_TEXTMODERATIONNOTPASS = "FailedOperation.TextModerationNotPass"
-//  FAILEDOPERATION_TRANSLATIONCONFIRMHASFINISHED = "FailedOperation.TranslationConfirmHasFinished"
-//  FAILEDOPERATION_TRANSLATIONNOTNEEDCONFIRM = "FailedOperation.TranslationNotNeedConfirm"
-//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
-func (c *Client) ConfirmVideoTranslateJobWithContext(ctx context.Context, request *ConfirmVideoTranslateJobRequest) (response *ConfirmVideoTranslateJobResponse, err error) {
-    if request == nil {
-        request = NewConfirmVideoTranslateJobRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ConfirmVideoTranslateJob require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewConfirmVideoTranslateJobResponse()
     err = c.Send(request, response)
     return
 }
@@ -363,7 +302,6 @@ func NewDescribeVideoStylizationJobResponse() (response *DescribeVideoStylizatio
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
 //  FAILEDOPERATION_TASKSTATUSERROR = "FailedOperation.TaskStatusError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
@@ -379,7 +317,6 @@ func (c *Client) DescribeVideoStylizationJob(request *DescribeVideoStylizationJo
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
 //  FAILEDOPERATION_TASKSTATUSERROR = "FailedOperation.TaskStatusError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
@@ -396,79 +333,6 @@ func (c *Client) DescribeVideoStylizationJobWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeVideoStylizationJobResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeVideoTranslateJobRequest() (request *DescribeVideoTranslateJobRequest) {
-    request = &DescribeVideoTranslateJobRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("vclm", APIVersion, "DescribeVideoTranslateJob")
-    
-    
-    return
-}
-
-func NewDescribeVideoTranslateJobResponse() (response *DescribeVideoTranslateJobResponse) {
-    response = &DescribeVideoTranslateJobResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeVideoTranslateJob
-// 查询视频转译任务
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_AUDIOPROCESSFAILED = "FailedOperation.AudioProcessFailed"
-//  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  REQUESTLIMITEXCEEDED_UINLIMITEXCEEDED = "RequestLimitExceeded.UinLimitExceeded"
-//  RESOURCEUNAVAILABLE_DELIVERING = "ResourceUnavailable.Delivering"
-//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
-//  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
-//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
-//  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
-//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
-//  RESOURCEUNAVAILABLE_UNKNOWNSTATUS = "ResourceUnavailable.UnknownStatus"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) DescribeVideoTranslateJob(request *DescribeVideoTranslateJobRequest) (response *DescribeVideoTranslateJobResponse, err error) {
-    return c.DescribeVideoTranslateJobWithContext(context.Background(), request)
-}
-
-// DescribeVideoTranslateJob
-// 查询视频转译任务
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_AUDIOPROCESSFAILED = "FailedOperation.AudioProcessFailed"
-//  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  REQUESTLIMITEXCEEDED_UINLIMITEXCEEDED = "RequestLimitExceeded.UinLimitExceeded"
-//  RESOURCEUNAVAILABLE_DELIVERING = "ResourceUnavailable.Delivering"
-//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
-//  RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
-//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
-//  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
-//  RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
-//  RESOURCEUNAVAILABLE_UNKNOWNSTATUS = "ResourceUnavailable.UnknownStatus"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) DescribeVideoTranslateJobWithContext(ctx context.Context, request *DescribeVideoTranslateJobRequest) (response *DescribeVideoTranslateJobResponse, err error) {
-    if request == nil {
-        request = NewDescribeVideoTranslateJobRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeVideoTranslateJob require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeVideoTranslateJobResponse()
     err = c.Send(request, response)
     return
 }
@@ -509,7 +373,9 @@ func NewSubmitImageAnimateJobResponse() (response *SubmitImageAnimateJobResponse
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_JOBQUEUEFULL = "FailedOperation.JobQueueFull"
 //  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_TEMPLATENOTEXISTED = "InvalidParameter.TemplateNotExisted"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDVIDEORESOLUTION = "InvalidParameterValue.InvalidVideoResolution"
 //  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
@@ -539,7 +405,9 @@ func (c *Client) SubmitImageAnimateJob(request *SubmitImageAnimateJobRequest) (r
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_JOBQUEUEFULL = "FailedOperation.JobQueueFull"
 //  FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_TEMPLATENOTEXISTED = "InvalidParameter.TemplateNotExisted"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDVIDEORESOLUTION = "InvalidParameterValue.InvalidVideoResolution"
 //  INVALIDPARAMETERVALUE_NOFACEINPHOTO = "InvalidParameterValue.NoFaceInPhoto"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
@@ -722,227 +590,6 @@ func (c *Client) SubmitVideoStylizationJobWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewSubmitVideoStylizationJobResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewSubmitVideoTranslateJobRequest() (request *SubmitVideoTranslateJobRequest) {
-    request = &SubmitVideoTranslateJobRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("vclm", APIVersion, "SubmitVideoTranslateJob")
-    
-    
-    return
-}
-
-func NewSubmitVideoTranslateJobResponse() (response *SubmitVideoTranslateJobResponse) {
-    response = &SubmitVideoTranslateJobResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// SubmitVideoTranslateJob
-// ### 支持音色种别列表。
-//
-// 每个音色都支持：英语（美国）、阿拉伯语、德语、西班牙语、法语、印尼语、意大利语、日语、韩语、马来语、葡萄牙语、俄语、泰语、土耳其语、越南语。
-//
-// 
-//
-// | 音色名称    | 性别 | 音色ID |
-//
-// | ----------- | ---- | ------ |
-//
-// | Seraphina   | 女   | 701002 |
-//
-// | Ada         | 女   | 701003 |
-//
-// | Emma        | 女   | 701007 |
-//
-// | Brian       | 男   | 701008 |
-//
-// | Amanda      | 女   | 701013 |
-//
-// | Brandon     | 男   | 701014 |
-//
-// | Christopher | 男   | 701015 |
-//
-// | Davis       | 男   | 701017 |
-//
-// | Derek       | 男   | 701018 |
-//
-// | Dustin      | 男   | 701019 |
-//
-// | Evelyn      | 女   | 701020 |
-//
-// | Lewis       | 男   | 701021 |
-//
-// | Lola        | 女   | 701022 |
-//
-// | Samuel      | 男   | 701026 |
-//
-// | Steffan     | 男   | 701028 |
-//
-// | Arabella    | 女   | 701029 |
-//
-// | Isidora     | 女   | 701030 |
-//
-// | Tristan     | 男   | 701031 |
-//
-// | Vivienne    | 女   | 701034 |
-//
-// | Lucien      | 男   | 701035 |
-//
-// | Alessio     | 男   | 701036 |
-//
-// | Giuseppe    | 男   | 701037 |
-//
-// | Isabella    | 女   | 701038 |
-//
-// | Marcello    | 男   | 701039 |
-//
-// | Masaru      | 男   | 701040 |
-//
-// | Macerio     | 男   | 701042 |
-//
-// | Thalita     | 女   | 701043 |
-//
-// | 晓晓         | 女   | 701045 |
-//
-// | 晓宇         | 女   | 701046 |
-//
-// | 云逸         | 男   | 701047 |
-//
-// | Yunfan       | 男   | 701048 |
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_AUDIODECODEFAILED = "FailedOperation.AudioDecodeFailed"
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownloadError"
-//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
-//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
-//  FAILEDOPERATION_VIDEODURATIONEXCEED = "FailedOperation.VideoDurationExceed"
-//  FAILEDOPERATION_VIDEOFPSEXCEED = "FailedOperation.VideoFpsExceed"
-//  FAILEDOPERATION_VIDEORESOLUTIONEXCEED = "FailedOperation.VideoResolutionExceed"
-//  FAILEDOPERATION_VIDEOSIZEEXCEED = "FailedOperation.VideoSizeExceed"
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
-//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
-//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
-//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
-//  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) SubmitVideoTranslateJob(request *SubmitVideoTranslateJobRequest) (response *SubmitVideoTranslateJobResponse, err error) {
-    return c.SubmitVideoTranslateJobWithContext(context.Background(), request)
-}
-
-// SubmitVideoTranslateJob
-// ### 支持音色种别列表。
-//
-// 每个音色都支持：英语（美国）、阿拉伯语、德语、西班牙语、法语、印尼语、意大利语、日语、韩语、马来语、葡萄牙语、俄语、泰语、土耳其语、越南语。
-//
-// 
-//
-// | 音色名称    | 性别 | 音色ID |
-//
-// | ----------- | ---- | ------ |
-//
-// | Seraphina   | 女   | 701002 |
-//
-// | Ada         | 女   | 701003 |
-//
-// | Emma        | 女   | 701007 |
-//
-// | Brian       | 男   | 701008 |
-//
-// | Amanda      | 女   | 701013 |
-//
-// | Brandon     | 男   | 701014 |
-//
-// | Christopher | 男   | 701015 |
-//
-// | Davis       | 男   | 701017 |
-//
-// | Derek       | 男   | 701018 |
-//
-// | Dustin      | 男   | 701019 |
-//
-// | Evelyn      | 女   | 701020 |
-//
-// | Lewis       | 男   | 701021 |
-//
-// | Lola        | 女   | 701022 |
-//
-// | Samuel      | 男   | 701026 |
-//
-// | Steffan     | 男   | 701028 |
-//
-// | Arabella    | 女   | 701029 |
-//
-// | Isidora     | 女   | 701030 |
-//
-// | Tristan     | 男   | 701031 |
-//
-// | Vivienne    | 女   | 701034 |
-//
-// | Lucien      | 男   | 701035 |
-//
-// | Alessio     | 男   | 701036 |
-//
-// | Giuseppe    | 男   | 701037 |
-//
-// | Isabella    | 女   | 701038 |
-//
-// | Marcello    | 男   | 701039 |
-//
-// | Masaru      | 男   | 701040 |
-//
-// | Macerio     | 男   | 701042 |
-//
-// | Thalita     | 女   | 701043 |
-//
-// | 晓晓         | 女   | 701045 |
-//
-// | 晓宇         | 女   | 701046 |
-//
-// | 云逸         | 男   | 701047 |
-//
-// | Yunfan       | 男   | 701048 |
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_AUDIODECODEFAILED = "FailedOperation.AudioDecodeFailed"
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownloadError"
-//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
-//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
-//  FAILEDOPERATION_VIDEODURATIONEXCEED = "FailedOperation.VideoDurationExceed"
-//  FAILEDOPERATION_VIDEOFPSEXCEED = "FailedOperation.VideoFpsExceed"
-//  FAILEDOPERATION_VIDEORESOLUTIONEXCEED = "FailedOperation.VideoResolutionExceed"
-//  FAILEDOPERATION_VIDEOSIZEEXCEED = "FailedOperation.VideoSizeExceed"
-//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
-//  INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
-//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
-//  RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
-//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
-//  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) SubmitVideoTranslateJobWithContext(ctx context.Context, request *SubmitVideoTranslateJobRequest) (response *SubmitVideoTranslateJobResponse, err error) {
-    if request == nil {
-        request = NewSubmitVideoTranslateJobRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("SubmitVideoTranslateJob require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewSubmitVideoTranslateJobResponse()
     err = c.Send(request, response)
     return
 }

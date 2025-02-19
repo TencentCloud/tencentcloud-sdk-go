@@ -761,6 +761,108 @@ func (c *Client) DescribeQosWithContext(ctx context.Context, request *DescribeQo
     return
 }
 
+func NewDownloadActiveDeviceCountRequest() (request *DownloadActiveDeviceCountRequest) {
+    request = &DownloadActiveDeviceCountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "DownloadActiveDeviceCount")
+    
+    
+    return
+}
+
+func NewDownloadActiveDeviceCountResponse() (response *DownloadActiveDeviceCountResponse) {
+    response = &DownloadActiveDeviceCountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DownloadActiveDeviceCount
+// 下载活跃设备数量统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DownloadActiveDeviceCount(request *DownloadActiveDeviceCountRequest) (response *DownloadActiveDeviceCountResponse, err error) {
+    return c.DownloadActiveDeviceCountWithContext(context.Background(), request)
+}
+
+// DownloadActiveDeviceCount
+// 下载活跃设备数量统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DownloadActiveDeviceCountWithContext(ctx context.Context, request *DownloadActiveDeviceCountRequest) (response *DownloadActiveDeviceCountResponse, err error) {
+    if request == nil {
+        request = NewDownloadActiveDeviceCountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadActiveDeviceCount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDownloadActiveDeviceCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetActiveDeviceCountRequest() (request *GetActiveDeviceCountRequest) {
+    request = &GetActiveDeviceCountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetActiveDeviceCount")
+    
+    
+    return
+}
+
+func NewGetActiveDeviceCountResponse() (response *GetActiveDeviceCountResponse) {
+    response = &GetActiveDeviceCountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetActiveDeviceCount
+// 活跃设备数量统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetActiveDeviceCount(request *GetActiveDeviceCountRequest) (response *GetActiveDeviceCountResponse, err error) {
+    return c.GetActiveDeviceCountWithContext(context.Background(), request)
+}
+
+// GetActiveDeviceCount
+// 活跃设备数量统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetActiveDeviceCountWithContext(ctx context.Context, request *GetActiveDeviceCountRequest) (response *GetActiveDeviceCountResponse, err error) {
+    if request == nil {
+        request = NewGetActiveDeviceCountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetActiveDeviceCount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetActiveDeviceCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetDeviceRequest() (request *GetDeviceRequest) {
     request = &GetDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},

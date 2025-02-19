@@ -23,17 +23,8 @@ const (
 	// 音频解码失败。
 	FAILEDOPERATION_AUDIODECODEFAILED = "FailedOperation.AudioDecodeFailed"
 
-	// 音频处理失败。
-	FAILEDOPERATION_AUDIOPROCESSFAILED = "FailedOperation.AudioProcessFailed"
-
-	// 音频处理任务未完成，不能执行翻译结果确认
-	FAILEDOPERATION_AUDIOPROCESSNOTFINISHED = "FailedOperation.AudioProcessNotFinished"
-
 	// 人体关键点检测失败。
 	FAILEDOPERATION_BODYJOINTSFAIL = "FailedOperation.BodyJointsFail"
-
-	// 翻译结果确认任务异常。
-	FAILEDOPERATION_CONFIRMTASKEXCEPTION = "FailedOperation.ConfirmTaskException"
 
 	// 下载视频出错。
 	FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownloadError"
@@ -84,9 +75,6 @@ const (
 	FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 
 	// 任务不存在。
-	FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
-
-	// 任务不存在。
 	FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
 
 	// 任务队列已满，请稍后重试。
@@ -100,9 +88,6 @@ const (
 
 	// 内容审核不通过。
 	FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
-
-	// 后端服务超时。
-	FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 
 	// 系统内部错误。
 	FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
@@ -122,41 +107,14 @@ const (
 	// 模板视频存在未检测到人体的帧
 	FAILEDOPERATION_TEMPLATENOTDETECTBODY = "FailedOperation.TemplateNotDetectBody"
 
-	// 文本未通过审核，请修改后重新尝试。
-	FAILEDOPERATION_TEXTMODERATIONNOTPASS = "FailedOperation.TextModerationNotPass"
-
-	// 音频翻译结果已确认
-	FAILEDOPERATION_TRANSLATIONCONFIRMHASFINISHED = "FailedOperation.TranslationConfirmHasFinished"
-
-	// 用户未选择确认音频翻译结果
-	FAILEDOPERATION_TRANSLATIONNOTNEEDCONFIRM = "FailedOperation.TranslationNotNeedConfirm"
-
-	// 内部错误。
-	FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-
 	// 视频解码失败。
 	FAILEDOPERATION_VIDEODECODEFAILED = "FailedOperation.VideoDecodeFailed"
-
-	// 视频时长超限制。
-	FAILEDOPERATION_VIDEODURATIONEXCEED = "FailedOperation.VideoDurationExceed"
-
-	// 视频Fps超限制。
-	FAILEDOPERATION_VIDEOFPSEXCEED = "FailedOperation.VideoFpsExceed"
-
-	// 视频分辨率超限制。
-	FAILEDOPERATION_VIDEORESOLUTIONEXCEED = "FailedOperation.VideoResolutionExceed"
-
-	// 视频分辨率超限制。
-	FAILEDOPERATION_VIDEOSIZEEXCEED = "FailedOperation.VideoSizeExceed"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
-
-	// 参数不合法。
-	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 
 	// 模板不存在
 	INVALIDPARAMETER_TEMPLATENOTEXISTED = "InvalidParameter.TemplateNotExisted"
@@ -245,44 +203,14 @@ const (
 	// 提交任务数超过最大并发。
 	REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
 
-	// 用户账号超出了限制。
-	REQUESTLIMITEXCEEDED_UINLIMITEXCEEDED = "RequestLimitExceeded.UinLimitExceeded"
-
 	// 资源不足。
 	RESOURCEINSUFFICIENT = "ResourceInsufficient"
 
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
-	// 资源正在发货中。
-	RESOURCEUNAVAILABLE_DELIVERING = "ResourceUnavailable.Delivering"
-
-	// 账号已被冻结。
-	RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
-
-	// ResourceUnavailable.InArrears
-	RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-
-	// 服务正在开通中，请稍等。
-	RESOURCEUNAVAILABLE_ISOPENING = "ResourceUnavailable.IsOpening"
-
-	// ResourceUnavailable.LowBalance
-	RESOURCEUNAVAILABLE_LOWBALANCE = "ResourceUnavailable.LowBalance"
-
 	// 计费状态未知。
 	RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
-
-	// 服务未开通。
-	RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
-
-	// 资源已被回收。
-	RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
-
-	// 计费状态未知。
-	RESOURCEUNAVAILABLE_UNKNOWNSTATUS = "ResourceUnavailable.UnknownStatus"
-
-	// 账号已欠费。
-	RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"

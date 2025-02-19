@@ -69,7 +69,7 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 // 调用接口，发起一次对话请求。
 //
-// 如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1772/115968)
+// 如需使用OpenAI兼容接口， 请参考文档：[Deepseek OpenAI对话接口](https://cloud.tencent.com/document/product/1772/115969)
 //
 // 
 //
@@ -79,13 +79,13 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 //     - DeepSeek-V3为671B参数MoE模型，在百科知识、数学推理等多项任务上优势突出，评测成绩在主流榜单中位列开源模型榜首。
 //
-//     - 支持64K上下文长度，最大支持16K输出长度（含思维链）。
+//     - 支持64K上下文长度，最大输入56k，最大输出8k（不含思维链）。
 //
 // - DeepSeek-R1（model 参数值为**deepseek-r1**）
 //
 //     - DeepSeek-R1为671B模型，使用强化学习训练，推理过程包含大量反思和验证，思维链长度可达数万字。 该系列模型在数学、代码以及各种复杂逻辑推理任务上推理效果优异，并为用户展现了完整的思考过程。
 //
-//     - 支持64K上下文长度，最大支持16K输出长度（含思维链）。
+//     -  支持64K上下文长度，最大输入56k，最大输出8k（不含思维链）。
 //
 // 
 //
@@ -107,7 +107,7 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 // ### Openai兼容协议接口
 //
-// 知识引擎原子能力大模型对话 API 兼容了 OpenAI 的接口规范，这意味着您可以直接使用 OpenAI 官方提供的 SDK 来调用大模型对话接口。您仅需要将 base_url 和 [api_key](https://cloud.tencent.com/document/product/1772/115970) 替换成相关配置，不需要对应用做额外修改，即可无缝将您的应用切换到相应的大模型。请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1772/115968)。
+// 知识引擎原子能力大模型对话 API 兼容了 OpenAI 的接口规范，这意味着您可以直接使用 OpenAI 官方提供的 SDK 来调用大模型对话接口。您仅需要将 base_url 和 [api_key](https://cloud.tencent.com/document/product/1772/115970) 替换成相关配置，不需要对应用做额外修改，即可无缝将您的应用切换到相应的大模型。请参考文档：[Deepseek OpenAI对话接口](https://cloud.tencent.com/document/product/1772/115969)。
 //
 // > base_url：  https://api.lkeap.cloud.tencent.com/v1
 //
@@ -272,7 +272,7 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 // 调用接口，发起一次对话请求。
 //
-// 如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1772/115968)
+// 如需使用OpenAI兼容接口， 请参考文档：[Deepseek OpenAI对话接口](https://cloud.tencent.com/document/product/1772/115969)
 //
 // 
 //
@@ -282,13 +282,13 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 //     - DeepSeek-V3为671B参数MoE模型，在百科知识、数学推理等多项任务上优势突出，评测成绩在主流榜单中位列开源模型榜首。
 //
-//     - 支持64K上下文长度，最大支持16K输出长度（含思维链）。
+//     - 支持64K上下文长度，最大输入56k，最大输出8k（不含思维链）。
 //
 // - DeepSeek-R1（model 参数值为**deepseek-r1**）
 //
 //     - DeepSeek-R1为671B模型，使用强化学习训练，推理过程包含大量反思和验证，思维链长度可达数万字。 该系列模型在数学、代码以及各种复杂逻辑推理任务上推理效果优异，并为用户展现了完整的思考过程。
 //
-//     - 支持64K上下文长度，最大支持16K输出长度（含思维链）。
+//     -  支持64K上下文长度，最大输入56k，最大输出8k（不含思维链）。
 //
 // 
 //
@@ -310,7 +310,7 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 // ### Openai兼容协议接口
 //
-// 知识引擎原子能力大模型对话 API 兼容了 OpenAI 的接口规范，这意味着您可以直接使用 OpenAI 官方提供的 SDK 来调用大模型对话接口。您仅需要将 base_url 和 [api_key](https://cloud.tencent.com/document/product/1772/115970) 替换成相关配置，不需要对应用做额外修改，即可无缝将您的应用切换到相应的大模型。请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1772/115968)。
+// 知识引擎原子能力大模型对话 API 兼容了 OpenAI 的接口规范，这意味着您可以直接使用 OpenAI 官方提供的 SDK 来调用大模型对话接口。您仅需要将 base_url 和 [api_key](https://cloud.tencent.com/document/product/1772/115970) 替换成相关配置，不需要对应用做额外修改，即可无缝将您的应用切换到相应的大模型。请参考文档：[Deepseek OpenAI对话接口](https://cloud.tencent.com/document/product/1772/115969)。
 //
 // > base_url：  https://api.lkeap.cloud.tencent.com/v1
 //

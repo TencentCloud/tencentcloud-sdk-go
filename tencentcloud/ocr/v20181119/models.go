@@ -7394,6 +7394,9 @@ type QuestionSplitOCRRequestParams struct {
 
 	// 是否开启切边增强和弯曲矫正,默认为false不开启
 	EnableImageCrop *bool `json:"EnableImageCrop,omitnil,omitempty" name:"EnableImageCrop"`
+
+	// 是否只返回检测框，默认false
+	EnableOnlyDetectBorder *bool `json:"EnableOnlyDetectBorder,omitnil,omitempty" name:"EnableOnlyDetectBorder"`
 }
 
 type QuestionSplitOCRRequest struct {
@@ -7413,6 +7416,9 @@ type QuestionSplitOCRRequest struct {
 
 	// 是否开启切边增强和弯曲矫正,默认为false不开启
 	EnableImageCrop *bool `json:"EnableImageCrop,omitnil,omitempty" name:"EnableImageCrop"`
+
+	// 是否只返回检测框，默认false
+	EnableOnlyDetectBorder *bool `json:"EnableOnlyDetectBorder,omitnil,omitempty" name:"EnableOnlyDetectBorder"`
 }
 
 func (r *QuestionSplitOCRRequest) ToJsonString() string {
@@ -7432,6 +7438,7 @@ func (r *QuestionSplitOCRRequest) FromJsonString(s string) error {
 	delete(f, "IsPdf")
 	delete(f, "PdfPageNumber")
 	delete(f, "EnableImageCrop")
+	delete(f, "EnableOnlyDetectBorder")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QuestionSplitOCRRequest has unknown keys!", "")
 	}

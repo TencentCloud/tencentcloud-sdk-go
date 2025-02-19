@@ -116,6 +116,14 @@ func (r *ActivateHardwareResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ActiveDeviceList struct {
+	// 数量
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 时间
+	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
+}
+
 // Predefined struct for user
 type AddDeviceRequestParams struct {
 	// 新建设备的名称
@@ -1140,6 +1148,91 @@ type DevicePayModeInfo struct {
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
+// Predefined struct for user
+type DownloadActiveDeviceCountRequestParams struct {
+	// 查询粒度。0:day, 1:week, 2:month, 不传默认为day
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 开始时间。单位秒
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间。单位秒
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 设备组, 不传查询全部
+	DevGroup *string `json:"DevGroup,omitnil,omitempty" name:"DevGroup"`
+
+	// license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+	LicenseType *int64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
+}
+
+type DownloadActiveDeviceCountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询粒度。0:day, 1:week, 2:month, 不传默认为day
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 开始时间。单位秒
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间。单位秒
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 设备组, 不传查询全部
+	DevGroup *string `json:"DevGroup,omitnil,omitempty" name:"DevGroup"`
+
+	// license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+	LicenseType *int64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
+}
+
+func (r *DownloadActiveDeviceCountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadActiveDeviceCountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Period")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "DevGroup")
+	delete(f, "LicenseType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadActiveDeviceCountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DownloadActiveDeviceCountResponseParams struct {
+	// URL地址
+	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DownloadActiveDeviceCountResponse struct {
+	*tchttp.BaseResponse
+	Response *DownloadActiveDeviceCountResponseParams `json:"Response"`
+}
+
+func (r *DownloadActiveDeviceCountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadActiveDeviceCountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ExpectedThreshold struct {
 	// 期望发起加速的时延阈值
 	RTT *float64 `json:"RTT,omitnil,omitempty" name:"RTT"`
@@ -1219,6 +1312,109 @@ type FlowPackageInfo struct {
 
 	// 流量包精确余量，单位：MB
 	CapacityRemainPrecise *uint64 `json:"CapacityRemainPrecise,omitnil,omitempty" name:"CapacityRemainPrecise"`
+}
+
+// Predefined struct for user
+type GetActiveDeviceCountRequestParams struct {
+	// 查询粒度。0:day, 1:week, 2:month, 不传默认为day
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 开始时间。单位秒
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间。单位秒
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 设备组, 不传查询全部
+	DevGroup *string `json:"DevGroup,omitnil,omitempty" name:"DevGroup"`
+
+	// license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+	LicenseType *int64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
+}
+
+type GetActiveDeviceCountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询粒度。0:day, 1:week, 2:month, 不传默认为day
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 开始时间。单位秒
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间。单位秒
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 设备组, 不传查询全部
+	DevGroup *string `json:"DevGroup,omitnil,omitempty" name:"DevGroup"`
+
+	// license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+	LicenseType *int64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
+}
+
+func (r *GetActiveDeviceCountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetActiveDeviceCountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Period")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "DevGroup")
+	delete(f, "LicenseType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetActiveDeviceCountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetActiveDeviceCountResponseParams struct {
+	// 激活设备统计
+	ActiveDeviceList []*ActiveDeviceList `json:"ActiveDeviceList,omitnil,omitempty" name:"ActiveDeviceList"`
+
+	// 查询粒度，0:day, 1:week, 2:month, 不传默认为day
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 设备组
+	DevGroup *string `json:"DevGroup,omitnil,omitempty" name:"DevGroup"`
+
+	// license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
+
+	// 租户ID
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetActiveDeviceCountResponse struct {
+	*tchttp.BaseResponse
+	Response *GetActiveDeviceCountResponseParams `json:"Response"`
+}
+
+func (r *GetActiveDeviceCountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetActiveDeviceCountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

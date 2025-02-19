@@ -21,6 +21,67 @@ import (
 )
 
 // Predefined struct for user
+type ActivateCaCertificateRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 证书序列号
+	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
+}
+
+type ActivateCaCertificateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 证书序列号
+	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
+}
+
+func (r *ActivateCaCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ActivateCaCertificateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "CaSn")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ActivateCaCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ActivateCaCertificateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ActivateCaCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *ActivateCaCertificateResponseParams `json:"Response"`
+}
+
+func (r *ActivateCaCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ActivateCaCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ActivateDeviceCertificateRequestParams struct {
 	// 集群id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -78,6 +139,66 @@ func (r *ActivateDeviceCertificateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ActivateDeviceCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ApplyRegistrationCodeRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type ApplyRegistrationCodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *ApplyRegistrationCodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyRegistrationCodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyRegistrationCodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ApplyRegistrationCodeResponseParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 注册码
+	RegistrationCode *string `json:"RegistrationCode,omitnil,omitempty" name:"RegistrationCode"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ApplyRegistrationCodeResponse struct {
+	*tchttp.BaseResponse
+	Response *ApplyRegistrationCodeResponseParams `json:"Response"`
+}
+
+func (r *ApplyRegistrationCodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyRegistrationCodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -153,6 +274,55 @@ type AuthorizationPolicyPriority struct {
 	// 优先级
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+}
+
+type CaCertificateItem struct {
+	// common name
+	CaCn *string `json:"CaCn,omitnil,omitempty" name:"CaCn"`
+
+	// 证书内容
+	CaCertificate *string `json:"CaCertificate,omitnil,omitempty" name:"CaCertificate"`
+
+	// 证书序列号
+	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
+
+	// 证书格式
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 验证证书内容
+	VerificationCertificate *string `json:"VerificationCertificate,omitnil,omitempty" name:"VerificationCertificate"`
+
+	// ca状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 上次激活时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastActivationTime *int64 `json:"LastActivationTime,omitnil,omitempty" name:"LastActivationTime"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *int64 `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 预销毁时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 上次去激活时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastInactivationTime *int64 `json:"LastInactivationTime,omitnil,omitempty" name:"LastInactivationTime"`
+
+	// Ca证书颁发者CN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CaIssuerCn *string `json:"CaIssuerCn,omitnil,omitempty" name:"CaIssuerCn"`
+
+	// 生效时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotBeforeTime *int64 `json:"NotBeforeTime,omitnil,omitempty" name:"NotBeforeTime"`
+
+	// 失效时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotAfterTime *int64 `json:"NotAfterTime,omitnil,omitempty" name:"NotAfterTime"`
 }
 
 // Predefined struct for user
@@ -845,6 +1015,67 @@ func (r *CreateUserResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeactivateCaCertificateRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 证书序列号
+	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
+}
+
+type DeactivateCaCertificateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 证书序列号
+	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
+}
+
+func (r *DeactivateCaCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeactivateCaCertificateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "CaSn")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeactivateCaCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeactivateCaCertificateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeactivateCaCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeactivateCaCertificateResponseParams `json:"Response"`
+}
+
+func (r *DeactivateCaCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeactivateCaCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeactivateDeviceCertificateRequestParams struct {
 	// 集群id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -1030,6 +1261,67 @@ func (r *DeleteAuthorizationPolicyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAuthorizationPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCaCertificateRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 证书序列号
+	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
+}
+
+type DeleteCaCertificateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 证书序列号
+	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
+}
+
+func (r *DeleteCaCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCaCertificateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "CaSn")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCaCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCaCertificateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCaCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCaCertificateResponseParams `json:"Response"`
+}
+
+func (r *DeleteCaCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCaCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1442,6 +1734,161 @@ func (r *DescribeAuthorizationPoliciesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAuthorizationPoliciesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCaCertificateRequestParams struct {
+	// ca证书sn
+	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
+
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeCaCertificateRequest struct {
+	*tchttp.BaseRequest
+	
+	// ca证书sn
+	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
+
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeCaCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCaCertificateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CaSn")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCaCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCaCertificateResponseParams struct {
+	// 创建时间
+	CreatedTime *int64 `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 上次更新时间
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 失效日期
+	NotAfterTime *int64 `json:"NotAfterTime,omitnil,omitempty" name:"NotAfterTime"`
+
+	// 上次激活时间
+	LastActivationTime *int64 `json:"LastActivationTime,omitnil,omitempty" name:"LastActivationTime"`
+
+	// 上次吊销时间
+	LastInactivationTime *int64 `json:"LastInactivationTime,omitnil,omitempty" name:"LastInactivationTime"`
+
+	// 证书状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 证书序列号
+	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
+
+	// common name
+	CaCn *string `json:"CaCn,omitnil,omitempty" name:"CaCn"`
+
+	// 证书内容
+	CaCertificate *string `json:"CaCertificate,omitnil,omitempty" name:"CaCertificate"`
+
+	// 证书格式
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// Ca证书颁发者CN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CaIssuerCn *string `json:"CaIssuerCn,omitnil,omitempty" name:"CaIssuerCn"`
+
+	// 生效开始时间
+	NotBeforeTime *int64 `json:"NotBeforeTime,omitnil,omitempty" name:"NotBeforeTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCaCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCaCertificateResponseParams `json:"Response"`
+}
+
+func (r *DescribeCaCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCaCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCaCertificatesRequestParams struct {
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeCaCertificatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeCaCertificatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCaCertificatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCaCertificatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCaCertificatesResponseParams struct {
+	// ca证书列表
+	Data []*CaCertificateItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCaCertificatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCaCertificatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeCaCertificatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCaCertificatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2634,6 +3081,105 @@ func (r *ModifyInsPublicEndpointResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyInstanceCertBindingRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务端证书id
+	SSLServerCertId *string `json:"SSLServerCertId,omitnil,omitempty" name:"SSLServerCertId"`
+
+	// CA证书id
+	SSLCaCertId *string `json:"SSLCaCertId,omitnil,omitempty" name:"SSLCaCertId"`
+
+	// 加密通信方式
+	// TLS：单向证书认证
+	// mTLS：双向证书认证
+	// BYOC：一设备一证书认证
+	X509Mode *string `json:"X509Mode,omitnil,omitempty" name:"X509Mode"`
+
+	// 设备证书注册类型：
+	// JITP，自动注册；
+	// MANUAL 手动注册
+	DeviceCertificateProvisionType *string `json:"DeviceCertificateProvisionType,omitnil,omitempty" name:"DeviceCertificateProvisionType"`
+
+	// 是否自动激活，默认为false
+	AutomaticActivation *bool `json:"AutomaticActivation,omitnil,omitempty" name:"AutomaticActivation"`
+}
+
+type ModifyInstanceCertBindingRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务端证书id
+	SSLServerCertId *string `json:"SSLServerCertId,omitnil,omitempty" name:"SSLServerCertId"`
+
+	// CA证书id
+	SSLCaCertId *string `json:"SSLCaCertId,omitnil,omitempty" name:"SSLCaCertId"`
+
+	// 加密通信方式
+	// TLS：单向证书认证
+	// mTLS：双向证书认证
+	// BYOC：一设备一证书认证
+	X509Mode *string `json:"X509Mode,omitnil,omitempty" name:"X509Mode"`
+
+	// 设备证书注册类型：
+	// JITP，自动注册；
+	// MANUAL 手动注册
+	DeviceCertificateProvisionType *string `json:"DeviceCertificateProvisionType,omitnil,omitempty" name:"DeviceCertificateProvisionType"`
+
+	// 是否自动激活，默认为false
+	AutomaticActivation *bool `json:"AutomaticActivation,omitnil,omitempty" name:"AutomaticActivation"`
+}
+
+func (r *ModifyInstanceCertBindingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceCertBindingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SSLServerCertId")
+	delete(f, "SSLCaCertId")
+	delete(f, "X509Mode")
+	delete(f, "DeviceCertificateProvisionType")
+	delete(f, "AutomaticActivation")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceCertBindingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceCertBindingResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyInstanceCertBindingResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyInstanceCertBindingResponseParams `json:"Response"`
+}
+
+func (r *ModifyInstanceCertBindingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceCertBindingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyInstanceRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -3070,6 +3616,96 @@ type PublicAccessRule struct {
 	// 备注信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+// Predefined struct for user
+type RegisterCaCertificateRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// CA证书
+	CaCertificate *string `json:"CaCertificate,omitnil,omitempty" name:"CaCertificate"`
+
+	// 验证证书
+	VerificationCertificate *string `json:"VerificationCertificate,omitnil,omitempty" name:"VerificationCertificate"`
+
+	// 证书格式，不传默认PEM格式
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 证书状态，不传默认ACTIVE状态
+	//     ACTIVE,//激活
+	//     INACTIVE,//未激活
+	//     REVOKED,//吊销
+	//     PENDING_ACTIVATION,//注册待激活
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type RegisterCaCertificateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// CA证书
+	CaCertificate *string `json:"CaCertificate,omitnil,omitempty" name:"CaCertificate"`
+
+	// 验证证书
+	VerificationCertificate *string `json:"VerificationCertificate,omitnil,omitempty" name:"VerificationCertificate"`
+
+	// 证书格式，不传默认PEM格式
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 证书状态，不传默认ACTIVE状态
+	//     ACTIVE,//激活
+	//     INACTIVE,//未激活
+	//     REVOKED,//吊销
+	//     PENDING_ACTIVATION,//注册待激活
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *RegisterCaCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RegisterCaCertificateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "CaCertificate")
+	delete(f, "VerificationCertificate")
+	delete(f, "Format")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RegisterCaCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RegisterCaCertificateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RegisterCaCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *RegisterCaCertificateResponseParams `json:"Response"`
+}
+
+func (r *RegisterCaCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RegisterCaCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

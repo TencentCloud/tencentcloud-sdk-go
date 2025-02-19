@@ -3062,20 +3062,20 @@ func (r *DescribeDockerActivitiesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDockerContainerConfigurationRequestParams struct {
-	// 实例ID。
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 容器ID。
+	// 容器ID。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
 	ContainerId *string `json:"ContainerId,omitnil,omitempty" name:"ContainerId"`
 }
 
 type DescribeDockerContainerConfigurationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 容器ID。
+	// 容器ID。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
 	ContainerId *string `json:"ContainerId,omitnil,omitempty" name:"ContainerId"`
 }
 
@@ -6573,7 +6573,6 @@ type KeyPair struct {
 	PublicKey *string `json:"PublicKey,omitnil,omitempty" name:"PublicKey"`
 
 	// 密钥对关联的实例 ID 列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssociatedInstanceIds []*string `json:"AssociatedInstanceIds,omitnil,omitempty" name:"AssociatedInstanceIds"`
 
 	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ
@@ -6696,7 +6695,6 @@ type ModifyBundle struct {
 	Bundle *Bundle `json:"Bundle,omitnil,omitempty" name:"Bundle"`
 
 	// 不支持套餐变更原因信息。变更套餐状态为"AVAILABLE"时, 该信息为空
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotSupportModifyMessage *string `json:"NotSupportModifyMessage,omitnil,omitempty" name:"NotSupportModifyMessage"`
 }
 
@@ -8701,7 +8699,6 @@ type Snapshot struct {
 
 	// 快照的最新操作，只有创建、回滚快照时记录。
 	// 取值如 CreateInstanceSnapshot，RollbackInstanceSnapshot。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestOperation *string `json:"LatestOperation,omitnil,omitempty" name:"LatestOperation"`
 
 	// 快照的最新操作状态，只有创建、回滚快照时记录。
@@ -8709,15 +8706,12 @@ type Snapshot struct {
 	// <li>SUCCESS：表示操作成功</li>
 	// <li>OPERATING：表示操作执行中</li>
 	// <li>FAILED：表示操作失败</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestOperationState *string `json:"LatestOperationState,omitnil,omitempty" name:"LatestOperationState"`
 
 	// 快照最新操作的唯一请求 ID，只有创建、回滚快照时记录。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestOperationRequestId *string `json:"LatestOperationRequestId,omitnil,omitempty" name:"LatestOperationRequestId"`
 
 	// 快照的创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 }
 

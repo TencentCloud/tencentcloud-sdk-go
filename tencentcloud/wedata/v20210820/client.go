@@ -45,6 +45,55 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAddProjectUserRoleRequest() (request *AddProjectUserRoleRequest) {
+    request = &AddProjectUserRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "AddProjectUserRole")
+    
+    
+    return
+}
+
+func NewAddProjectUserRoleResponse() (response *AddProjectUserRoleResponse) {
+    response = &AddProjectUserRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddProjectUserRole
+// 添加项目用户角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) AddProjectUserRole(request *AddProjectUserRoleRequest) (response *AddProjectUserRoleResponse, err error) {
+    return c.AddProjectUserRoleWithContext(context.Background(), request)
+}
+
+// AddProjectUserRole
+// 添加项目用户角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) AddProjectUserRoleWithContext(ctx context.Context, request *AddProjectUserRoleRequest) (response *AddProjectUserRoleResponse, err error) {
+    if request == nil {
+        request = NewAddProjectUserRoleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddProjectUserRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddProjectUserRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchCreateIntegrationTaskAlarmsRequest() (request *BatchCreateIntegrationTaskAlarmsRequest) {
     request = &BatchCreateIntegrationTaskAlarmsRequest{
         BaseRequest: &tchttp.BaseRequest{},
