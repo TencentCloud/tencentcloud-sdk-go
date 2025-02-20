@@ -10698,6 +10698,63 @@ func (c *Client) DescribeAccountAttributesWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeAddressBandwidthRangeRequest() (request *DescribeAddressBandwidthRangeRequest) {
+    request = &DescribeAddressBandwidthRangeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeAddressBandwidthRange")
+    
+    
+    return
+}
+
+func NewDescribeAddressBandwidthRangeResponse() (response *DescribeAddressBandwidthRangeResponse) {
+    response = &DescribeAddressBandwidthRangeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAddressBandwidthRange
+// 查询指定EIP的带宽上下限范围。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ADDRESSIDMALFORMED = "InvalidParameterValue.AddressIdMalformed"
+//  INVALIDPARAMETERVALUE_ADDRESSNOTFOUND = "InvalidParameterValue.AddressNotFound"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  UNSUPPORTEDOPERATION_ACCOUNTNOTSUPPORTED = "UnsupportedOperation.AccountNotSupported"
+func (c *Client) DescribeAddressBandwidthRange(request *DescribeAddressBandwidthRangeRequest) (response *DescribeAddressBandwidthRangeResponse, err error) {
+    return c.DescribeAddressBandwidthRangeWithContext(context.Background(), request)
+}
+
+// DescribeAddressBandwidthRange
+// 查询指定EIP的带宽上下限范围。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ADDRESSIDMALFORMED = "InvalidParameterValue.AddressIdMalformed"
+//  INVALIDPARAMETERVALUE_ADDRESSNOTFOUND = "InvalidParameterValue.AddressNotFound"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  UNSUPPORTEDOPERATION_ACCOUNTNOTSUPPORTED = "UnsupportedOperation.AccountNotSupported"
+func (c *Client) DescribeAddressBandwidthRangeWithContext(ctx context.Context, request *DescribeAddressBandwidthRangeRequest) (response *DescribeAddressBandwidthRangeResponse, err error) {
+    if request == nil {
+        request = NewDescribeAddressBandwidthRangeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAddressBandwidthRange require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAddressBandwidthRangeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAddressQuotaRequest() (request *DescribeAddressQuotaRequest) {
     request = &DescribeAddressQuotaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10981,6 +11038,61 @@ func (c *Client) DescribeAssistantCidrWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeAssistantCidrResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBandwidthPackageBandwidthRangeRequest() (request *DescribeBandwidthPackageBandwidthRangeRequest) {
+    request = &DescribeBandwidthPackageBandwidthRangeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeBandwidthPackageBandwidthRange")
+    
+    
+    return
+}
+
+func NewDescribeBandwidthPackageBandwidthRangeResponse() (response *DescribeBandwidthPackageBandwidthRangeResponse) {
+    response = &DescribeBandwidthPackageBandwidthRangeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBandwidthPackageBandwidthRange
+// 查询指定带宽包的带宽上下限范围
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = "InvalidParameterValue.BandwidthPackageIdMalformed"
+//  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGENOTFOUND = "InvalidParameterValue.BandwidthPackageNotFound"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+func (c *Client) DescribeBandwidthPackageBandwidthRange(request *DescribeBandwidthPackageBandwidthRangeRequest) (response *DescribeBandwidthPackageBandwidthRangeResponse, err error) {
+    return c.DescribeBandwidthPackageBandwidthRangeWithContext(context.Background(), request)
+}
+
+// DescribeBandwidthPackageBandwidthRange
+// 查询指定带宽包的带宽上下限范围
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = "InvalidParameterValue.BandwidthPackageIdMalformed"
+//  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGENOTFOUND = "InvalidParameterValue.BandwidthPackageNotFound"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+func (c *Client) DescribeBandwidthPackageBandwidthRangeWithContext(ctx context.Context, request *DescribeBandwidthPackageBandwidthRangeRequest) (response *DescribeBandwidthPackageBandwidthRangeResponse, err error) {
+    if request == nil {
+        request = NewDescribeBandwidthPackageBandwidthRangeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBandwidthPackageBandwidthRange require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBandwidthPackageBandwidthRangeResponse()
     err = c.Send(request, response)
     return
 }

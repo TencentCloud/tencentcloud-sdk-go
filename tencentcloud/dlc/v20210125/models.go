@@ -4259,22 +4259,18 @@ type DataEngineBasicInfo struct {
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 返回信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 引擎id
 	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
 
 	// 引擎类型，有效值：PrestoSQL/SparkSQL/SparkBatch
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataEngineType *string `json:"DataEngineType,omitnil,omitempty" name:"DataEngineType"`
 
 	// 用户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 账号ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserUin *string `json:"UserUin,omitnil,omitempty" name:"UserUin"`
 }
 
@@ -4292,11 +4288,9 @@ type DataEngineConfigInstanceInfo struct {
 
 type DataEngineConfigPair struct {
 	// 配置项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigItem *string `json:"ConfigItem,omitnil,omitempty" name:"ConfigItem"`
 
 	// 配置值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigValue *string `json:"ConfigValue,omitnil,omitempty" name:"ConfigValue"`
 }
 
@@ -4557,29 +4551,23 @@ type DataEngineInfo struct {
 
 type DataEngineScaleInfo struct {
 	// 引擎ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
 
 	// 引擎名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
 
 	// 引擎规格详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScaleDetail []*DataEngineScaleInfoDetail `json:"ScaleDetail,omitnil,omitempty" name:"ScaleDetail"`
 }
 
 type DataEngineScaleInfoDetail struct {
 	// 统计开始时间，格式为：yyyy-MM-dd HH:mm:ss
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 统计结束时间，格式为：yyyy-MM-dd HH:mm:ss
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 当前统计时间段，引擎规格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CU *int64 `json:"CU,omitnil,omitempty" name:"CU"`
 }
 

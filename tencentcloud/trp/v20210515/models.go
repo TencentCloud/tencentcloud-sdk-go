@@ -109,97 +109,75 @@ func (r *AuthorizedTransferResponse) FromJsonString(s string) error {
 
 type Chain struct {
 	// 码url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 上链数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*ChainValue `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
 type ChainData struct {
 	// 区块hash
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlockHash *string `json:"BlockHash,omitnil,omitempty" name:"BlockHash"`
 
 	// 区块高度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlockHeight *string `json:"BlockHeight,omitnil,omitempty" name:"BlockHeight"`
 
 	// 区块时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlockTime *string `json:"BlockTime,omitnil,omitempty" name:"BlockTime"`
 }
 
 type ChainValue struct {
 	// 标题名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 类型，文字："text"，图片："image"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 值，文字类型："abc"，图片类型：""/images/img.png"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type CodeBatch struct {
 	// 批次号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
 
 	// 企业ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorpId *int64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
 
 	// 批次编码(未使用)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BatchCode *string `json:"BatchCode,omitnil,omitempty" name:"BatchCode"`
 
 	// 码数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CodeCnt *int64 `json:"CodeCnt,omitnil,omitempty" name:"CodeCnt"`
 
 	// 所属商户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MerchantId *string `json:"MerchantId,omitnil,omitempty" name:"MerchantId"`
 
 	// 产品ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 批次类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BatchType *int64 `json:"BatchType,omitnil,omitempty" name:"BatchType"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 微信模板
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MpTpl *string `json:"MpTpl,omitnil,omitempty" name:"MpTpl"`
 
 	// 批次状态 0: 未激活 1: 已激活 -1: 已冻结
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 所属商户名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MerchantName *string `json:"MerchantName,omitnil,omitempty" name:"MerchantName"`
 
 	// 产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
 	// 未使用
@@ -209,7 +187,6 @@ type CodeBatch struct {
 	Ext *Ext `json:"Ext,omitnil,omitempty" name:"Ext"`
 
 	// 模板名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TplName *string `json:"TplName,omitnil,omitempty" name:"TplName"`
 
 	// 调度任务
@@ -235,95 +212,72 @@ type CodeItem struct {
 
 type CodePack struct {
 	// 码id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackId *string `json:"PackId,omitnil,omitempty" name:"PackId"`
 
 	// 企业id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorpId *int64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
 
 	// 商户id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MerchantId *string `json:"MerchantId,omitnil,omitempty" name:"MerchantId"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 制码状态 init: 初始化, pending: 执行中, done: 完成, error: 失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 执行日志
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Log *string `json:"Log,omitnil,omitempty" name:"Log"`
 
 	// 创建人
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateUser *string `json:"CreateUser,omitnil,omitempty" name:"CreateUser"`
 
 	// 码数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Amount *int64 `json:"Amount,omitnil,omitempty" name:"Amount"`
 
 	// 防伪码长度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CodeLength *int64 `json:"CodeLength,omitnil,omitempty" name:"CodeLength"`
 
 	// 码类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CodeType *string `json:"CodeType,omitnil,omitempty" name:"CodeType"`
 
 	// 是否暗码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cipher *int64 `json:"Cipher,omitnil,omitempty" name:"Cipher"`
 
 	// [弃用] 文字码地址，通过另一个接口查
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TextUrl *string `json:"TextUrl,omitnil,omitempty" name:"TextUrl"`
 
 	// [弃用] 二维码地址，通过另一个接口查
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackUrl *string `json:"PackUrl,omitnil,omitempty" name:"PackUrl"`
 
 	// 商户名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MerchantName *string `json:"MerchantName,omitnil,omitempty" name:"MerchantName"`
 
 	// 码规则类型 0: 默认, 1: 自定义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 
 	// 自定义码规则ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
 
 	// 码包类型 0: 普通码包 1: 层级码包
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackType *int64 `json:"PackType,omitnil,omitempty" name:"PackType"`
 
 	// 生码层级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackLevel *uint64 `json:"PackLevel,omitnil,omitempty" name:"PackLevel"`
 
 	// 层级码配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackSpec []*PackSpec `json:"PackSpec,omitnil,omitempty" name:"PackSpec"`
 
 	// 商品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
 	// 商品规格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductSpecification *string `json:"ProductSpecification,omitnil,omitempty" name:"ProductSpecification"`
 
 	// 商品ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 码关系是否预关联
@@ -331,44 +285,35 @@ type CodePack struct {
 	RelateType *int64 `json:"RelateType,omitnil,omitempty" name:"RelateType"`
 
 	// 场景码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneCode *int64 `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
 
 	// 码规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CodeRule *string `json:"CodeRule,omitnil,omitempty" name:"CodeRule"`
 
 	// 已使用码数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedAmount *int64 `json:"UsedAmount,omitnil,omitempty" name:"UsedAmount"`
 
 	// 开始流水号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SerialStart *uint64 `json:"SerialStart,omitnil,omitempty" name:"SerialStart"`
 
 	// 结束流水号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SerialEnd *uint64 `json:"SerialEnd,omitnil,omitempty" name:"SerialEnd"`
 }
 
 type CodePart struct {
 	// 码段名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 码段类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 码段内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 码段长度
 	Length *uint64 `json:"Length,omitnil,omitempty" name:"Length"`
 
 	// 扩展字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ext *string `json:"Ext,omitnil,omitempty" name:"Ext"`
 }
 
@@ -806,7 +751,6 @@ func (r *CreateCorporationOrderRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCorporationOrderResponseParams struct {
 	// 企业ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1037,7 +981,6 @@ func (r *CreateCustomRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCustomRuleResponseParams struct {
 	// 码规则ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1123,7 +1066,6 @@ func (r *CreateMerchantRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateMerchantResponseParams struct {
 	// 商户标识码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MerchantId *string `json:"MerchantId,omitnil,omitempty" name:"MerchantId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1230,7 +1172,6 @@ func (r *CreateProductRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateProductResponseParams struct {
 	// 商品ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1366,7 +1307,6 @@ func (r *CreateTraceCodesAsyncRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateTraceCodesAsyncResponseParams struct {
 	// 批次ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1620,15 +1560,12 @@ type CustomRule struct {
 	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
 
 	// 码规则名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 企业ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
 
 	// 商户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MerchantId *string `json:"MerchantId,omitnil,omitempty" name:"MerchantId"`
 
 	// 码ID长度
@@ -1753,7 +1690,6 @@ func (r *DeleteMerchantRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMerchantResponseParams struct {
 	// 商户标识码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MerchantId *string `json:"MerchantId,omitnil,omitempty" name:"MerchantId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1818,7 +1754,6 @@ func (r *DeleteProductRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteProductResponseParams struct {
 	// 商品ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1883,7 +1818,6 @@ func (r *DeleteTraceDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteTraceDataResponseParams struct {
 	// 溯源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TraceId *string `json:"TraceId,omitnil,omitempty" name:"TraceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2238,11 +2172,9 @@ func (r *DescribeCodeBatchsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCodeBatchsResponseParams struct {
 	// 批次列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CodeBatchs []*CodeBatch `json:"CodeBatchs,omitnil,omitempty" name:"CodeBatchs"`
 
 	// 总条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2307,7 +2239,6 @@ func (r *DescribeCodePackStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCodePackStatusResponseParams struct {
 	// 码包状态 init: 初始化, pending: 执行中, done: 完成, error: 失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2372,15 +2303,12 @@ func (r *DescribeCodePackUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCodePackUrlResponseParams struct {
 	// 文字码包地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 图片码包地址，可能为空
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImgUrl *string `json:"ImgUrl,omitnil,omitempty" name:"ImgUrl"`
 
 	// 文字码包Key，用于上传导入
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileKey *string `json:"FileKey,omitnil,omitempty" name:"FileKey"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2563,7 +2491,6 @@ func (r *DescribeCodesByPackRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCodesByPackResponseParams struct {
 	// 码列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Codes []*CodeItem `json:"Codes,omitnil,omitempty" name:"Codes"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2642,11 +2569,9 @@ func (r *DescribeCorpQuotasRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCorpQuotasResponseParams struct {
 	// 子企业额度使用情况
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorpQuotas []*CorpQuota `json:"CorpQuotas,omitnil,omitempty" name:"CorpQuotas"`
 
 	// 记录总数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2711,7 +2636,6 @@ func (r *DescribeCustomRuleByIdRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCustomRuleByIdResponseParams struct {
 	// 码规则信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomRule *CustomRule `json:"CustomRule,omitnil,omitempty" name:"CustomRule"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2804,11 +2728,9 @@ func (r *DescribeCustomRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCustomRulesResponseParams struct {
 	// 码规则列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomRules []*CustomRule `json:"CustomRules,omitnil,omitempty" name:"CustomRules"`
 
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2873,7 +2795,6 @@ func (r *DescribeJobFileUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeJobFileUrlResponseParams struct {
 	// 码包地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2938,7 +2859,6 @@ func (r *DescribeMerchantByIdRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMerchantByIdResponseParams struct {
 	// 商户信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Merchant *Merchant `json:"Merchant,omitnil,omitempty" name:"Merchant"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3024,11 +2944,9 @@ func (r *DescribeMerchantsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMerchantsResponseParams struct {
 	// 商户列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Merchants []*Merchant `json:"Merchants,omitnil,omitempty" name:"Merchants"`
 
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3268,7 +3186,6 @@ func (r *DescribeProductByIdRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeProductByIdResponseParams struct {
 	// 商品信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Product *Product `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3361,11 +3278,9 @@ func (r *DescribeProductsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeProductsResponseParams struct {
 	// 商品列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Products []*Product `json:"Products,omitnil,omitempty" name:"Products"`
 
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3711,7 +3626,6 @@ func (r *DescribeTmpTokenRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTmpTokenResponseParams struct {
 	// 临时token
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3864,11 +3778,9 @@ func (r *DescribeTraceCodesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTraceCodesResponseParams struct {
 	// 标识列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TraceCodes []*TraceCode `json:"TraceCodes,omitnil,omitempty" name:"TraceCodes"`
 
 	// 条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4163,7 +4075,6 @@ type Merchant struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 创建时间
@@ -4179,7 +4090,6 @@ type Merchant struct {
 	CodeType *int64 `json:"CodeType,omitnil,omitempty" name:"CodeType"`
 
 	// 第三方码域名前缀
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CodeUrl *string `json:"CodeUrl,omitnil,omitempty" name:"CodeUrl"`
 }
 
@@ -4366,7 +4276,6 @@ func (r *ModifyCustomRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCustomRuleResponseParams struct {
 	// 码规则ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4438,7 +4347,6 @@ func (r *ModifyCustomRuleStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCustomRuleStatusResponseParams struct {
 	// 码规则ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4531,7 +4439,6 @@ func (r *ModifyMerchantRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyMerchantResponseParams struct {
 	// 商户标识码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MerchantId *string `json:"MerchantId,omitnil,omitempty" name:"MerchantId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4631,7 +4538,6 @@ func (r *ModifyProductRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyProductResponseParams struct {
 	// 商品ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4855,7 +4761,6 @@ func (r *ModifyTraceDataRanksRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyTraceDataRanksResponseParams struct {
 	// 批次ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5049,15 +4954,12 @@ func (r *ModifyTraceDataResponse) FromJsonString(s string) error {
 
 type OutputAuthorizedTransfer struct {
 	// 推送状态，0表示成功。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 错误码。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 错误信息描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -5072,85 +4974,66 @@ type PackSpec struct {
 	Amount *uint64 `json:"Amount,omitnil,omitempty" name:"Amount"`
 
 	// 码规则ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
 
 	// 码段配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CodeParts []*CodePart `json:"CodeParts,omitnil,omitempty" name:"CodeParts"`
 
 	// 包装单位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
 
 	// 场景值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneCode *int64 `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
 }
 
 type PhaseData struct {
 	// 启用头
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeadEnabled *bool `json:"HeadEnabled,omitnil,omitempty" name:"HeadEnabled"`
 
 	// 标题
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeadTitle *string `json:"HeadTitle,omitnil,omitempty" name:"HeadTitle"`
 
 	// 标识符
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 小程序AppId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 小程序AppPath
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppPath *string `json:"AppPath,omitnil,omitempty" name:"AppPath"`
 
 	// 小程序名称AppName
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 }
 
 type PlanQRCode struct {
 	// 二维码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 状态，0:未激活 1:已激活 2:已冻结
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type PlanQRCodeRecord struct {
 	// 二维码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// OpenID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// 扫码时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanTime *string `json:"ScanTime,omitnil,omitempty" name:"ScanTime"`
 
 	// IP 地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 国家
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
 
 	// 省份
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
 
 	// 城市
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	City *string `json:"City,omitnil,omitempty" name:"City"`
 }
 
@@ -5171,15 +5054,12 @@ type Product struct {
 	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
 
 	// 商品规格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 商品图片
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Logo []*string `json:"Logo,omitnil,omitempty" name:"Logo"`
 
 	// 创建时间
@@ -5189,80 +5069,62 @@ type Product struct {
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 预留字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ext *Ext `json:"Ext,omitnil,omitempty" name:"Ext"`
 
 	// 商户名称
 	MerchantName *string `json:"MerchantName,omitnil,omitempty" name:"MerchantName"`
 
 	// 认证状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertState *int64 `json:"CertState,omitnil,omitempty" name:"CertState"`
 }
 
 type Quota struct {
 	// 服务开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 服务结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 配额ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuotaId *uint64 `json:"QuotaId,omitnil,omitempty" name:"QuotaId"`
 
 	// 企业ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
 
 	// 开通服务
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Services []*string `json:"Services,omitnil,omitempty" name:"Services"`
 
 	// 商户配额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FactoryQuota *int64 `json:"FactoryQuota,omitnil,omitempty" name:"FactoryQuota"`
 
 	// 商品配额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ItemQuota *int64 `json:"ItemQuota,omitnil,omitempty" name:"ItemQuota"`
 
 	// 溯源码配额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrackQuota *int64 `json:"TrackQuota,omitnil,omitempty" name:"TrackQuota"`
 
 	// 销售码配额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SaleQuota *int64 `json:"SaleQuota,omitnil,omitempty" name:"SaleQuota"`
 
 	// 上链配额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChainQuota *int64 `json:"ChainQuota,omitnil,omitempty" name:"ChainQuota"`
 
 	// 风控配额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskQuota *int64 `json:"RiskQuota,omitnil,omitempty" name:"RiskQuota"`
 
 	// AI文字数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AigcTextQuota *int64 `json:"AigcTextQuota,omitnil,omitempty" name:"AigcTextQuota"`
 
 	// AI图片数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AigcImageQuota *int64 `json:"AigcImageQuota,omitnil,omitempty" name:"AigcImageQuota"`
 
 	// 溯源类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrackType *int64 `json:"TrackType,omitnil,omitempty" name:"TrackType"`
 
 	// 开通版本 lite:轻量版, basic:基础版, standard:标准版
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 是否开启企业认证
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductCertify *uint64 `json:"ProductCertify,omitnil,omitempty" name:"ProductCertify"`
 }
 
@@ -5271,7 +5133,6 @@ type RawScanLog struct {
 	LogId *int64 `json:"LogId,omitnil,omitempty" name:"LogId"`
 
 	// 微信小程序openid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Openid *string `json:"Openid,omitnil,omitempty" name:"Openid"`
 
 	// 扫码时间
@@ -5284,27 +5145,21 @@ type RawScanLog struct {
 	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
 
 	// 商户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MerchantId *string `json:"MerchantId,omitnil,omitempty" name:"MerchantId"`
 
 	// 商品ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 批次ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
 
 	// 省份
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
 
 	// 地市
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	City *string `json:"City,omitnil,omitempty" name:"City"`
 
 	// 区/县
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	District *string `json:"District,omitnil,omitempty" name:"District"`
 }
 
@@ -5370,78 +5225,60 @@ type ScanLog struct {
 	LogId *int64 `json:"LogId,omitnil,omitempty" name:"LogId"`
 
 	// 微信openid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Openid *string `json:"Openid,omitnil,omitempty" name:"Openid"`
 
 	// 微信昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 企业ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorpId *int64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
 
 	// 商户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MerchantId *string `json:"MerchantId,omitnil,omitempty" name:"MerchantId"`
 
 	// 商品ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// ip地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 国家
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
 
 	// 省份
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
 
 	// 城市
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	City *string `json:"City,omitnil,omitempty" name:"City"`
 
 	// 县/区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	District *string `json:"District,omitnil,omitempty" name:"District"`
 
 	// 微信 unionid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Unionid *string `json:"Unionid,omitnil,omitempty" name:"Unionid"`
 
 	// 首次扫码 0:否, 1:是
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	First *int64 `json:"First,omitnil,omitempty" name:"First"`
 
 	// 批次ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
 
 	// 扫码类型 0:无效扫码 1: 小程序扫码 2: 商家扫码
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 商户名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MerchantName *string `json:"MerchantName,omitnil,omitempty" name:"MerchantName"`
 
 	// 产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
 	// 产品Logo
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductLogo *string `json:"ProductLogo,omitnil,omitempty" name:"ProductLogo"`
 
 	// 风险状态
@@ -5529,15 +5366,12 @@ type TraceCode struct {
 	Level *uint64 `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 码层级详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackSpec []*PackSpec `json:"PackSpec,omitnil,omitempty" name:"PackSpec"`
 
 	// 场景码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneCode *uint64 `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
 
 	// 流水码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SerialCode *uint64 `json:"SerialCode,omitnil,omitempty" name:"SerialCode"`
 }
 
@@ -5552,7 +5386,6 @@ type TraceData struct {
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 码值，跟码类型一一对应
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 排序，在Phase相同情况下，值越小排名靠前
@@ -5565,27 +5398,21 @@ type TraceData struct {
 	PhaseName *string `json:"PhaseName,omitnil,omitempty" name:"PhaseName"`
 
 	// 溯源时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TraceTime *string `json:"TraceTime,omitnil,omitempty" name:"TraceTime"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 上链状态 0: 未上链 1: 上链中 2: 已上链 -1: 异常
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChainStatus *uint64 `json:"ChainStatus,omitnil,omitempty" name:"ChainStatus"`
 
 	// 上链时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChainTime *string `json:"ChainTime,omitnil,omitempty" name:"ChainTime"`
 
 	// 上链数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChainData *ChainData `json:"ChainData,omitnil,omitempty" name:"ChainData"`
 
 	// 溯源阶段配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PhaseData *PhaseData `json:"PhaseData,omitnil,omitempty" name:"PhaseData"`
 
 	// 溯源阶段状态 0: 无效, 1: 有效
@@ -5633,27 +5460,21 @@ type TraceItem struct {
 
 type UsageQuota struct {
 	// 企业ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorpId *uint64 `json:"CorpId,omitnil,omitempty" name:"CorpId"`
 
 	// 商户配额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FactoryCnt *int64 `json:"FactoryCnt,omitnil,omitempty" name:"FactoryCnt"`
 
 	// 商品数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ItemCnt *int64 `json:"ItemCnt,omitnil,omitempty" name:"ItemCnt"`
 
 	// 溯源码量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrackCnt *int64 `json:"TrackCnt,omitnil,omitempty" name:"TrackCnt"`
 
 	// 营销码额度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SaleCnt *int64 `json:"SaleCnt,omitnil,omitempty" name:"SaleCnt"`
 
 	// 区块链上链次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChainCnt *int64 `json:"ChainCnt,omitnil,omitempty" name:"ChainCnt"`
 
 	// 风险检测次数
@@ -5663,6 +5484,5 @@ type UsageQuota struct {
 	RiskCnt *int64 `json:"RiskCnt,omitnil,omitempty" name:"RiskCnt"`
 
 	// 时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }

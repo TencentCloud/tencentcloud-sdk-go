@@ -20,7 +20,6 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
-	aav20200224 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aa/v20200224"
 	aaiv20180522 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aai/v20180522"
 	acav20210323 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aca/v20210323"
 	acpv20220105 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/acp/v20220105"
@@ -318,19 +317,6 @@ import (
 	yunsouv20180504 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/yunsou/v20180504"
 	yunsouv20191115 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/yunsou/v20191115"
 )
-
-func TestAav20200224Import(t *testing.T) {
-    credential := common.NewCredential(
-        os.Getenv("TENCENTCLOUD_SECRET_ID"),
-        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
-    client, err := aav20200224.NewClient(
-        credential,
-        regions.Guangzhou,
-        profile.NewClientProfile())
-    if err != nil || client == nil {
-        t.Errorf("fail to init aa_v20200224 client: %v", err)
-    }
-}
 
 func TestAaiv20180522Import(t *testing.T) {
     credential := common.NewCredential(

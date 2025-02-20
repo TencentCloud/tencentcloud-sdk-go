@@ -38,6 +38,14 @@ type AdvancedRetentionPolicy struct {
 	Years *uint64 `json:"Years,omitnil,omitempty" name:"Years"`
 }
 
+type ApplyDisk struct {
+	// 快照组关联的快照ID。
+	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
+
+	// 快照组关联快照对应的原云硬盘ID。
+	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
+}
+
 // Predefined struct for user
 type ApplyDiskBackupRequestParams struct {
 	// 云硬盘备份点ID，可通过 DescribeDiskBackups 查询。
@@ -110,6 +118,81 @@ func (r *ApplyDiskBackupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ApplyDiskBackupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ApplySnapshotGroupRequestParams struct {
+	// 回滚的快照组ID。
+	SnapshotGroupId *string `json:"SnapshotGroupId,omitnil,omitempty" name:"SnapshotGroupId"`
+
+	// 回滚的快照组关联的快照ID，及快照对应的原云硬盘ID列表。
+	ApplyDisks []*ApplyDisk `json:"ApplyDisks,omitnil,omitempty" name:"ApplyDisks"`
+
+	// 回滚前是否执行自动关机。
+	AutoStopInstance *bool `json:"AutoStopInstance,omitnil,omitempty" name:"AutoStopInstance"`
+
+	// 回滚完成后是否自动开机。
+	AutoStartInstance *bool `json:"AutoStartInstance,omitnil,omitempty" name:"AutoStartInstance"`
+}
+
+type ApplySnapshotGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 回滚的快照组ID。
+	SnapshotGroupId *string `json:"SnapshotGroupId,omitnil,omitempty" name:"SnapshotGroupId"`
+
+	// 回滚的快照组关联的快照ID，及快照对应的原云硬盘ID列表。
+	ApplyDisks []*ApplyDisk `json:"ApplyDisks,omitnil,omitempty" name:"ApplyDisks"`
+
+	// 回滚前是否执行自动关机。
+	AutoStopInstance *bool `json:"AutoStopInstance,omitnil,omitempty" name:"AutoStopInstance"`
+
+	// 回滚完成后是否自动开机。
+	AutoStartInstance *bool `json:"AutoStartInstance,omitnil,omitempty" name:"AutoStartInstance"`
+}
+
+func (r *ApplySnapshotGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplySnapshotGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SnapshotGroupId")
+	delete(f, "ApplyDisks")
+	delete(f, "AutoStopInstance")
+	delete(f, "AutoStartInstance")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplySnapshotGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ApplySnapshotGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ApplySnapshotGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *ApplySnapshotGroupResponseParams `json:"Response"`
+}
+
+func (r *ApplySnapshotGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplySnapshotGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -873,6 +956,77 @@ func (r *CreateDisksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateSnapshotGroupRequestParams struct {
+	// 需要创建快照组的云硬盘ID列表，必须选择挂载在同一实例上的盘列表。
+	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
+
+	// 快照组名称，快照组关联的快照也会继承快照组的名称。例如：快照组名称为testSnapshotGroup，快照组关联两个快照，则两个快照的名称分别为testSnapshotGroup_0，testSnapshotGroup_1。
+	SnapshotGroupName *string `json:"SnapshotGroupName,omitnil,omitempty" name:"SnapshotGroupName"`
+
+	// 快照组需要绑定的标签列表。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type CreateSnapshotGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要创建快照组的云硬盘ID列表，必须选择挂载在同一实例上的盘列表。
+	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
+
+	// 快照组名称，快照组关联的快照也会继承快照组的名称。例如：快照组名称为testSnapshotGroup，快照组关联两个快照，则两个快照的名称分别为testSnapshotGroup_0，testSnapshotGroup_1。
+	SnapshotGroupName *string `json:"SnapshotGroupName,omitnil,omitempty" name:"SnapshotGroupName"`
+
+	// 快照组需要绑定的标签列表。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *CreateSnapshotGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSnapshotGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DiskIds")
+	delete(f, "SnapshotGroupName")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSnapshotGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSnapshotGroupResponseParams struct {
+	// 创建成功的快照组ID。
+	SnapshotGroupId *string `json:"SnapshotGroupId,omitnil,omitempty" name:"SnapshotGroupId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSnapshotGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSnapshotGroupResponseParams `json:"Response"`
+}
+
+func (r *CreateSnapshotGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSnapshotGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSnapshotRequestParams struct {
 	// 需要创建快照的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
@@ -1063,6 +1217,74 @@ func (r *DeleteDiskBackupsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteDiskBackupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSnapshotGroupRequestParams struct {
+	// 快照组ID。
+	SnapshotGroupId *string `json:"SnapshotGroupId,omitnil,omitempty" name:"SnapshotGroupId"`
+
+	// 快照组ID 列表。此参数与快照组 ID 至少传 1 个，同时传会与快照组 ID 合并。
+	SnapshotGroupIds []*string `json:"SnapshotGroupIds,omitnil,omitempty" name:"SnapshotGroupIds"`
+
+	// 是否同时删除快照组关联的镜像；取值为false，表示不删除快照组绑定的镜像，此时，如果快照组有绑定的镜像，删除会失败；取值为true，表示同时删除快照组绑定的镜像；默认值为false。
+	DeleteBindImages *bool `json:"DeleteBindImages,omitnil,omitempty" name:"DeleteBindImages"`
+}
+
+type DeleteSnapshotGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 快照组ID。
+	SnapshotGroupId *string `json:"SnapshotGroupId,omitnil,omitempty" name:"SnapshotGroupId"`
+
+	// 快照组ID 列表。此参数与快照组 ID 至少传 1 个，同时传会与快照组 ID 合并。
+	SnapshotGroupIds []*string `json:"SnapshotGroupIds,omitnil,omitempty" name:"SnapshotGroupIds"`
+
+	// 是否同时删除快照组关联的镜像；取值为false，表示不删除快照组绑定的镜像，此时，如果快照组有绑定的镜像，删除会失败；取值为true，表示同时删除快照组绑定的镜像；默认值为false。
+	DeleteBindImages *bool `json:"DeleteBindImages,omitnil,omitempty" name:"DeleteBindImages"`
+}
+
+func (r *DeleteSnapshotGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSnapshotGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SnapshotGroupId")
+	delete(f, "SnapshotGroupIds")
+	delete(f, "DeleteBindImages")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSnapshotGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSnapshotGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteSnapshotGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSnapshotGroupResponseParams `json:"Response"`
+}
+
+func (r *DeleteSnapshotGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSnapshotGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1730,6 +1952,80 @@ func (r *DescribeInstancesDiskNumResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstancesDiskNumResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSnapshotGroupsRequestParams struct {
+	// 过滤条件。<br><li>snapshot-group-id - Array of String - 是否必填：否 -（过滤条件）按快照组ID过滤 <br><li>snapshot-group-state - Array of String - 是否必填：否 -（过滤条件）按快照组状态过滤。(NORMAL: 正常 | CREATING:创建中 | ROLLBACKING:回滚中) <br><li>snapshot-group-name - Array of String - 是否必填：否 -（过滤条件）按快照组名称过滤 <br><li>snapshot-id - Array of String - 是否必填：否 -（过滤条件）按快照组内的快照ID过滤
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeSnapshotGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件。<br><li>snapshot-group-id - Array of String - 是否必填：否 -（过滤条件）按快照组ID过滤 <br><li>snapshot-group-state - Array of String - 是否必填：否 -（过滤条件）按快照组状态过滤。(NORMAL: 正常 | CREATING:创建中 | ROLLBACKING:回滚中) <br><li>snapshot-group-name - Array of String - 是否必填：否 -（过滤条件）按快照组名称过滤 <br><li>snapshot-id - Array of String - 是否必填：否 -（过滤条件）按快照组内的快照ID过滤
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeSnapshotGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSnapshotGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSnapshotGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSnapshotGroupsResponseParams struct {
+	// 符合条件的总数量。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 快照组列表详情。
+	SnapshotGroupSet []*SnapshotGroup `json:"SnapshotGroupSet,omitnil,omitempty" name:"SnapshotGroupSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSnapshotGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSnapshotGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeSnapshotGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSnapshotGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3578,7 +3874,7 @@ type ResizeDiskRequestParams struct {
 	// 云硬盘扩容后的大小，单位为GB，必须大于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
 	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。该字段仅供单块云硬盘扩容时传入。
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 }
 
@@ -3588,7 +3884,7 @@ type ResizeDiskRequest struct {
 	// 云硬盘扩容后的大小，单位为GB，必须大于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
 	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。该字段仅供单块云硬盘扩容时传入。
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 }
 
@@ -3740,6 +4036,48 @@ type SnapshotCopyResult struct {
 
 	// 跨地复制的目标地域。
 	DestinationRegion *string `json:"DestinationRegion,omitnil,omitempty" name:"DestinationRegion"`
+}
+
+type SnapshotGroup struct {
+	// 快照组ID。
+	SnapshotGroupId *string `json:"SnapshotGroupId,omitnil,omitempty" name:"SnapshotGroupId"`
+
+	// 快照组类型。NORMAL: 普通快照组，非一致性快照。
+	SnapshotGroupType *string `json:"SnapshotGroupType,omitnil,omitempty" name:"SnapshotGroupType"`
+
+	// 快照组是否包含系统盘快照。
+	ContainRootSnapshot *bool `json:"ContainRootSnapshot,omitnil,omitempty" name:"ContainRootSnapshot"`
+
+	// 快照组包含的快照ID列表。
+	SnapshotIdSet []*string `json:"SnapshotIdSet,omitnil,omitempty" name:"SnapshotIdSet"`
+
+	// 快照组状态。<br><li>NORMAL: 正常<br><li>CREATING:创建中<br><li>ROLLBACKING:回滚中
+	SnapshotGroupState *string `json:"SnapshotGroupState,omitnil,omitempty" name:"SnapshotGroupState"`
+
+	// 快照组创建进度。
+	Percent *uint64 `json:"Percent,omitnil,omitempty" name:"Percent"`
+
+	// 快照组创建时间。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 快照组最新修改时间
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 快照组关联的镜像列表。
+	Images []*Image `json:"Images,omitnil,omitempty" name:"Images"`
+
+	// 快照组名称。
+	SnapshotGroupName *string `json:"SnapshotGroupName,omitnil,omitempty" name:"SnapshotGroupName"`
+
+	// 快照组关联的镜像数量。
+	ImageCount *uint64 `json:"ImageCount,omitnil,omitempty" name:"ImageCount"`
+
+	// 快照组是否永久保留
+	IsPermanent *bool `json:"IsPermanent,omitnil,omitempty" name:"IsPermanent"`
+
+	// 快照组到期时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeadlineTime *string `json:"DeadlineTime,omitnil,omitempty" name:"DeadlineTime"`
 }
 
 type Tag struct {

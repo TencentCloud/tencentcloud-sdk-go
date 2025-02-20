@@ -539,11 +539,9 @@ type SavingPlanOverviewDetail struct {
 	Region []*string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 支付类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayType *uint64 `json:"PayType,omitnil,omitempty" name:"PayType"`
 
 	// 购买时间 yyyy-mm-dd HH:mm:ss格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BuyTime *string `json:"BuyTime,omitnil,omitempty" name:"BuyTime"`
 }
 
@@ -576,6 +574,5 @@ type SavingPlanUsageDetail struct {
 	CostAmount *string `json:"CostAmount,omitnil,omitempty" name:"CostAmount"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region []*string `json:"Region,omitnil,omitempty" name:"Region"`
 }

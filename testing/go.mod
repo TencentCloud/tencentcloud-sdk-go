@@ -4,7 +4,6 @@ module github.com/tencentcloud/tencentcloud-sdk-go/testing
 go 1.14
 
 require (
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aa v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aai v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aca v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/acp v0.0.0
@@ -73,7 +72,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.1102
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.1103
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/controlcenter v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
@@ -272,7 +271,6 @@ require (
 )
 
 replace (
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aa => ../tencentcloud/aa
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aai => ../tencentcloud/aai
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aca => ../tencentcloud/aca
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/acp => ../tencentcloud/acp

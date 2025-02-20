@@ -1211,7 +1211,6 @@ func (r *DescribeRecordInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRecordInfoResponseParams struct {
 	// 录制信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordInfo []*RecordInfo `json:"RecordInfo,omitnil,omitempty" name:"RecordInfo"`
 
 	// 录制类型：1代表单流 2代表混流 3代表单流和混流。
@@ -1289,11 +1288,9 @@ func (r *DescribeRoomInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRoomInfoResponseParams struct {
 	// 操作结果, 0成功, 非0失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *uint64 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 房间用户信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoomUsers []*RoomUser `json:"RoomUsers,omitnil,omitempty" name:"RoomUsers"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1409,7 +1406,6 @@ func (r *DescribeScanResultListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeScanResultListResponseParams struct {
 	// 要查询的语音检测任务的结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*DescribeScanResult `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1474,15 +1470,12 @@ func (r *DescribeTaskInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTaskInfoResponseParams struct {
 	// 进行中的任务taskid（StartRecord接口返回）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 录制类型：1代表单流 2代表混流 3代表单流和混流。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordMode *uint64 `json:"RecordMode,omitnil,omitempty" name:"RecordMode"`
 
 	// 指定订阅流白名单或者黑名单。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubscribeRecordUserIds *SubscribeRecordUserIds `json:"SubscribeRecordUserIds,omitnil,omitempty" name:"SubscribeRecordUserIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1636,7 +1629,6 @@ func (r *GetCustomizationListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetCustomizationListResponseParams struct {
 	// 语音消息转文本热句模型配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomizationConfigs []*CustomizationConfigs `json:"CustomizationConfigs,omitnil,omitempty" name:"CustomizationConfigs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2527,7 +2519,6 @@ func (r *UpdateScanRoomsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateScanRoomsResponseParams struct {
 	// 返回结果码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorCode *int64 `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

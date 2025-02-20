@@ -2394,6 +2394,17 @@ type BandwidthPackageBillBandwidth struct {
 	BandwidthUsage *float64 `json:"BandwidthUsage,omitnil,omitempty" name:"BandwidthUsage"`
 }
 
+type BandwidthRange struct {
+	// 资源ID。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 带宽下限，单位：Mbps。
+	BandwidthLowerLimit *uint64 `json:"BandwidthLowerLimit,omitnil,omitempty" name:"BandwidthLowerLimit"`
+
+	// 带宽上限，单位：Mbps。
+	BandwidthUpperLimit *uint64 `json:"BandwidthUpperLimit,omitnil,omitempty" name:"BandwidthUpperLimit"`
+}
+
 type BatchModifySnapshotPolicy struct {
 	// 快照策略Id。
 	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitnil,omitempty" name:"SnapshotPolicyId"`
@@ -11611,6 +11622,63 @@ func (r *DescribeAccountAttributesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAddressBandwidthRangeRequestParams struct {
+	// EIP资源ID列表，单次查询上限20。
+	AddressIds []*string `json:"AddressIds,omitnil,omitempty" name:"AddressIds"`
+}
+
+type DescribeAddressBandwidthRangeRequest struct {
+	*tchttp.BaseRequest
+	
+	// EIP资源ID列表，单次查询上限20。
+	AddressIds []*string `json:"AddressIds,omitnil,omitempty" name:"AddressIds"`
+}
+
+func (r *DescribeAddressBandwidthRangeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAddressBandwidthRangeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AddressIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAddressBandwidthRangeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAddressBandwidthRangeResponseParams struct {
+	// EIP带宽上下限详细信息。
+	BandwidthRangeSet []*BandwidthRange `json:"BandwidthRangeSet,omitnil,omitempty" name:"BandwidthRangeSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAddressBandwidthRangeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAddressBandwidthRangeResponseParams `json:"Response"`
+}
+
+func (r *DescribeAddressBandwidthRangeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAddressBandwidthRangeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAddressQuotaRequestParams struct {
 
 }
@@ -12081,6 +12149,63 @@ func (r *DescribeAssistantCidrResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAssistantCidrResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBandwidthPackageBandwidthRangeRequestParams struct {
+	// 带宽包资源ID列表，单次查询上限20。
+	BandwidthPackageIds []*string `json:"BandwidthPackageIds,omitnil,omitempty" name:"BandwidthPackageIds"`
+}
+
+type DescribeBandwidthPackageBandwidthRangeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 带宽包资源ID列表，单次查询上限20。
+	BandwidthPackageIds []*string `json:"BandwidthPackageIds,omitnil,omitempty" name:"BandwidthPackageIds"`
+}
+
+func (r *DescribeBandwidthPackageBandwidthRangeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBandwidthPackageBandwidthRangeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BandwidthPackageIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBandwidthPackageBandwidthRangeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBandwidthPackageBandwidthRangeResponseParams struct {
+	// 带宽包带宽上下限详细信息。
+	BandwidthRangeSet []*BandwidthRange `json:"BandwidthRangeSet,omitnil,omitempty" name:"BandwidthRangeSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBandwidthPackageBandwidthRangeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBandwidthPackageBandwidthRangeResponseParams `json:"Response"`
+}
+
+func (r *DescribeBandwidthPackageBandwidthRangeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBandwidthPackageBandwidthRangeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

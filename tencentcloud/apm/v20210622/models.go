@@ -147,7 +147,8 @@ type ApmInstanceDetail struct {
 	// 业务系统描述信息
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 业务系统状态
+	// 业务系统状态。{
+	// 1: 初始化中; 2: 运行中; 4: 限流}
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 业务系统所属地域
@@ -245,6 +246,14 @@ type ApmInstanceDetail struct {
 
 	// 是否开启 SQL 注入分析（0=关， 1=开）
 	IsSqlInjectionAnalysis *int64 `json:"IsSqlInjectionAnalysis,omitnil,omitempty" name:"IsSqlInjectionAnalysis"`
+
+	// 限流原因。{
+	// 1: 正式版限额;
+	// 2: 试用版限额;
+	// 4: 试用版到期;
+	// 8: 账号欠费
+	// }
+	StopReason *int64 `json:"StopReason,omitnil,omitempty" name:"StopReason"`
 }
 
 type ApmMetricRecord struct {

@@ -1566,7 +1566,7 @@ type SubmitGlamPicJobRequestParams struct {
 	// 美照生成风格。
 	// 仅对单人美照生效，单人可支持选择不同风格。需按照美照生成数量，在数组中逐一填入每张美照的风格名称。如果不传，默认取不重复的随机风格顺序。
 	// 多人美照只支持 balanced 一种风格，该参数不生效。
-	// 可选风格：<ul><li>real：面部相似度更高。</li><li>balanced：平衡面部真实感和美观度。</li><li>extured：脸部皮肤更具真实感。</li><li>beautiful：脸部美观度更高。</li></ul>
+	// 可选风格：<ul><li>real：面部相似度更高。</li><li>balanced：平衡面部真实感和美观度。</li><li>textured：脸部皮肤更具真实感。</li><li>beautiful：脸部美观度更高。</li></ul>
 	Style []*string `json:"Style,omitnil,omitempty" name:"Style"`
 
 	// 相似度系数，越高越像用户图。
@@ -1610,7 +1610,7 @@ type SubmitGlamPicJobRequest struct {
 	// 美照生成风格。
 	// 仅对单人美照生效，单人可支持选择不同风格。需按照美照生成数量，在数组中逐一填入每张美照的风格名称。如果不传，默认取不重复的随机风格顺序。
 	// 多人美照只支持 balanced 一种风格，该参数不生效。
-	// 可选风格：<ul><li>real：面部相似度更高。</li><li>balanced：平衡面部真实感和美观度。</li><li>extured：脸部皮肤更具真实感。</li><li>beautiful：脸部美观度更高。</li></ul>
+	// 可选风格：<ul><li>real：面部相似度更高。</li><li>balanced：平衡面部真实感和美观度。</li><li>textured：脸部皮肤更具真实感。</li><li>beautiful：脸部美观度更高。</li></ul>
 	Style []*string `json:"Style,omitnil,omitempty" name:"Style"`
 
 	// 相似度系数，越高越像用户图。

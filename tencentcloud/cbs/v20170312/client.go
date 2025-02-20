@@ -229,6 +229,73 @@ func (c *Client) ApplySnapshotWithContext(ctx context.Context, request *ApplySna
     return
 }
 
+func NewApplySnapshotGroupRequest() (request *ApplySnapshotGroupRequest) {
+    request = &ApplySnapshotGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "ApplySnapshotGroup")
+    
+    
+    return
+}
+
+func NewApplySnapshotGroupResponse() (response *ApplySnapshotGroupResponse) {
+    response = &ApplySnapshotGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ApplySnapshotGroup
+// 本接口（ApplySnapshotGroup）用于回滚快照组，将实例恢复到创建快照组时刻的状态。
+//
+// * 1.可选择快照组全部或部分盘进行回滚；
+//
+// * 2.如果回滚的盘中包含已挂载的盘，要求这些盘必须挂载在同一实例上，且要求该实例已关机才能回滚；
+//
+// * 3.回滚为异步操作，接口返回成功不代表回滚成功，可通过调DescribeSnapshotGroups接口查询快照组的状态。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_SNAPSHOTGROUPDISKATTACHMULTIINSTANCE = "UnsupportedOperation.SnapshotGroupDiskAttachMultiInstance"
+//  UNSUPPORTEDOPERATION_STATEERROR = "UnsupportedOperation.StateError"
+func (c *Client) ApplySnapshotGroup(request *ApplySnapshotGroupRequest) (response *ApplySnapshotGroupResponse, err error) {
+    return c.ApplySnapshotGroupWithContext(context.Background(), request)
+}
+
+// ApplySnapshotGroup
+// 本接口（ApplySnapshotGroup）用于回滚快照组，将实例恢复到创建快照组时刻的状态。
+//
+// * 1.可选择快照组全部或部分盘进行回滚；
+//
+// * 2.如果回滚的盘中包含已挂载的盘，要求这些盘必须挂载在同一实例上，且要求该实例已关机才能回滚；
+//
+// * 3.回滚为异步操作，接口返回成功不代表回滚成功，可通过调DescribeSnapshotGroups接口查询快照组的状态。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_SNAPSHOTGROUPDISKATTACHMULTIINSTANCE = "UnsupportedOperation.SnapshotGroupDiskAttachMultiInstance"
+//  UNSUPPORTEDOPERATION_STATEERROR = "UnsupportedOperation.StateError"
+func (c *Client) ApplySnapshotGroupWithContext(ctx context.Context, request *ApplySnapshotGroupRequest) (response *ApplySnapshotGroupResponse, err error) {
+    if request == nil {
+        request = NewApplySnapshotGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplySnapshotGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewApplySnapshotGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAttachDisksRequest() (request *AttachDisksRequest) {
     request = &AttachDisksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -828,6 +895,91 @@ func (c *Client) CreateSnapshotWithContext(ctx context.Context, request *CreateS
     return
 }
 
+func NewCreateSnapshotGroupRequest() (request *CreateSnapshotGroupRequest) {
+    request = &CreateSnapshotGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "CreateSnapshotGroup")
+    
+    
+    return
+}
+
+func NewCreateSnapshotGroupResponse() (response *CreateSnapshotGroupResponse) {
+    response = &CreateSnapshotGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSnapshotGroup
+// 本接口（CreateSnapshotGroup）用于创建快照组。
+//
+// * 创建快照组的云硬盘列表必须挂载在同一实例上；
+//
+// * 可选择挂载在实例上的全部或部分盘创建快照组。
+//
+// 可能返回的错误码:
+//  INSUFFICIENTSNAPSHOTQUOTA = "InsufficientSnapshotQuota"
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
+//  INVALIDDISK_SNAPSHOTCREATING = "InvalidDisk.SnapshotCreating"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_DISKMIGRATING = "ResourceInUse.DiskMigrating"
+//  RESOURCEINUSE_DISKROLLBACKING = "ResourceInUse.DiskRollbacking"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  RESOURCEUNAVAILABLE_SNAPSHOTCREATING = "ResourceUnavailable.SnapshotCreating"
+func (c *Client) CreateSnapshotGroup(request *CreateSnapshotGroupRequest) (response *CreateSnapshotGroupResponse, err error) {
+    return c.CreateSnapshotGroupWithContext(context.Background(), request)
+}
+
+// CreateSnapshotGroup
+// 本接口（CreateSnapshotGroup）用于创建快照组。
+//
+// * 创建快照组的云硬盘列表必须挂载在同一实例上；
+//
+// * 可选择挂载在实例上的全部或部分盘创建快照组。
+//
+// 可能返回的错误码:
+//  INSUFFICIENTSNAPSHOTQUOTA = "InsufficientSnapshotQuota"
+//  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
+//  INVALIDDISK_SNAPSHOTCREATING = "InvalidDisk.SnapshotCreating"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_DISKMIGRATING = "ResourceInUse.DiskMigrating"
+//  RESOURCEINUSE_DISKROLLBACKING = "ResourceInUse.DiskRollbacking"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  RESOURCEUNAVAILABLE_SNAPSHOTCREATING = "ResourceUnavailable.SnapshotCreating"
+func (c *Client) CreateSnapshotGroupWithContext(ctx context.Context, request *CreateSnapshotGroupRequest) (response *CreateSnapshotGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateSnapshotGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSnapshotGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSnapshotGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAutoSnapshotPoliciesRequest() (request *DeleteAutoSnapshotPoliciesRequest) {
     request = &DeleteAutoSnapshotPoliciesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -946,6 +1098,71 @@ func (c *Client) DeleteDiskBackupsWithContext(ctx context.Context, request *Dele
     request.SetContext(ctx)
     
     response = NewDeleteDiskBackupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSnapshotGroupRequest() (request *DeleteSnapshotGroupRequest) {
+    request = &DeleteSnapshotGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "DeleteSnapshotGroup")
+    
+    
+    return
+}
+
+func NewDeleteSnapshotGroupResponse() (response *DeleteSnapshotGroupResponse) {
+    response = &DeleteSnapshotGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteSnapshotGroup
+// 本接口（DeleteSnapshotGroup）用于删除快照组，一次调用仅支持删除一个快照组。
+//
+// * 默认会删除快照组内的所有快照；
+//
+// * 如果快照组内的快照有关联镜像，则删除失败，所有快照均不会删除；如果需要同时删除快照绑定的镜像，可传入参数DeleteBindImages等于true。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDSNAPSHOTID_NOTFOUND = "InvalidSnapshotId.NotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_SNAPSHOTHASBINDEDIMAGE = "UnsupportedOperation.SnapshotHasBindedImage"
+//  UNSUPPORTEDOPERATION_STATEERROR = "UnsupportedOperation.StateError"
+func (c *Client) DeleteSnapshotGroup(request *DeleteSnapshotGroupRequest) (response *DeleteSnapshotGroupResponse, err error) {
+    return c.DeleteSnapshotGroupWithContext(context.Background(), request)
+}
+
+// DeleteSnapshotGroup
+// 本接口（DeleteSnapshotGroup）用于删除快照组，一次调用仅支持删除一个快照组。
+//
+// * 默认会删除快照组内的所有快照；
+//
+// * 如果快照组内的快照有关联镜像，则删除失败，所有快照均不会删除；如果需要同时删除快照绑定的镜像，可传入参数DeleteBindImages等于true。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDSNAPSHOTID_NOTFOUND = "InvalidSnapshotId.NotFound"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNSUPPORTEDOPERATION_SNAPSHOTHASBINDEDIMAGE = "UnsupportedOperation.SnapshotHasBindedImage"
+//  UNSUPPORTEDOPERATION_STATEERROR = "UnsupportedOperation.StateError"
+func (c *Client) DeleteSnapshotGroupWithContext(ctx context.Context, request *DeleteSnapshotGroupRequest) (response *DeleteSnapshotGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteSnapshotGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSnapshotGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSnapshotGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -1460,6 +1677,65 @@ func (c *Client) DescribeInstancesDiskNumWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeSnapshotGroupsRequest() (request *DescribeSnapshotGroupsRequest) {
+    request = &DescribeSnapshotGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "DescribeSnapshotGroups")
+    
+    
+    return
+}
+
+func NewDescribeSnapshotGroupsResponse() (response *DescribeSnapshotGroupsResponse) {
+    response = &DescribeSnapshotGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSnapshotGroups
+// 本接口（DescribeSnapshotGroups）用于查询快照组列表。
+//
+// * 可以根据快照组ID、快照组状态、快照组关联的快照ID等来查询快照组列表，不同条件之间为与(AND)的关系，过滤信息详细请见过滤器`Filter`。
+//
+// * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的快照组列表。
+//
+// 可能返回的错误码:
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSnapshotGroups(request *DescribeSnapshotGroupsRequest) (response *DescribeSnapshotGroupsResponse, err error) {
+    return c.DescribeSnapshotGroupsWithContext(context.Background(), request)
+}
+
+// DescribeSnapshotGroups
+// 本接口（DescribeSnapshotGroups）用于查询快照组列表。
+//
+// * 可以根据快照组ID、快照组状态、快照组关联的快照ID等来查询快照组列表，不同条件之间为与(AND)的关系，过滤信息详细请见过滤器`Filter`。
+//
+// * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的快照组列表。
+//
+// 可能返回的错误码:
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeSnapshotGroupsWithContext(ctx context.Context, request *DescribeSnapshotGroupsRequest) (response *DescribeSnapshotGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSnapshotGroupsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSnapshotGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSnapshotGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSnapshotOverviewRequest() (request *DescribeSnapshotOverviewRequest) {
     request = &DescribeSnapshotOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1483,10 +1759,8 @@ func NewDescribeSnapshotOverviewResponse() (response *DescribeSnapshotOverviewRe
 // 该接口用于查询用户快照使用概览，包括快照总容量、计费容量等信息。
 //
 // 可能返回的错误码:
-//  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
-//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSnapshotOverview(request *DescribeSnapshotOverviewRequest) (response *DescribeSnapshotOverviewResponse, err error) {
     return c.DescribeSnapshotOverviewWithContext(context.Background(), request)
 }
@@ -1495,10 +1769,8 @@ func (c *Client) DescribeSnapshotOverview(request *DescribeSnapshotOverviewReque
 // 该接口用于查询用户快照使用概览，包括快照总容量、计费容量等信息。
 //
 // 可能返回的错误码:
-//  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
-//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSnapshotOverviewWithContext(ctx context.Context, request *DescribeSnapshotOverviewRequest) (response *DescribeSnapshotOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeSnapshotOverviewRequest()

@@ -1576,6 +1576,14 @@ func (r *CreateAIFormTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CustomsPaymentReceipt struct {
+	// 发票名称
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 识别出的字段名称(关键字)，支持以下字段： 税号 、纳税人识别号 、纳税人名称 、金额合计大写 、金额合计小写 、填发日期 、税务机关 、填票人。 示例值：纳税人识别号
+	Content []*OtherInvoiceItem `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
 type DetailInformationOfAirTicketTupleList struct {
 	// 出发站（自）
 	DepartureStation *string `json:"DepartureStation,omitnil,omitempty" name:"DepartureStation"`
@@ -5234,6 +5242,8 @@ type InvoiceItem struct {
 	// 15：非税发票
 	// 16：全电发票
 	// 17：医疗发票
+	// 18：完税凭证
+	// 19：海关缴款书
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 该发票在原图片中的四点坐标。
@@ -10571,6 +10581,14 @@ type SingleInvoiceItem struct {
 	// 电子发票（机票行程单）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElectronicFlightTicketFull *ElectronicFlightTicketFull `json:"ElectronicFlightTicketFull,omitnil,omitempty" name:"ElectronicFlightTicketFull"`
+
+	// 完税凭证
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaxPayment *TaxPayment `json:"TaxPayment,omitnil,omitempty" name:"TaxPayment"`
+
+	// 海关缴款
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomsPaymentReceipt *CustomsPaymentReceipt `json:"CustomsPaymentReceipt,omitnil,omitempty" name:"CustomsPaymentReceipt"`
 }
 
 type SmartFormFileUrl struct {
@@ -11156,6 +11174,16 @@ type TableTitle struct {
 	// 表格名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type TaxPayment struct {
+	// 发票名称
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 识别出的字段名称(关键字)，支持以下字段：
+	// 税号 、纳税人识别号 、纳税人名称 、金额合计大写 、金额合计小写 、填发日期 、税务机关 、填票人。
+	// 示例值：纳税人识别号
+	Content []*OtherInvoiceItem `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 // Predefined struct for user

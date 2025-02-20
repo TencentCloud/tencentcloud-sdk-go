@@ -9165,6 +9165,9 @@ type LogRechargeRuleInfo struct {
 	// 日志Key列表，RechargeType为full_regex_log时必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Keys []*string `json:"Keys,omitnil,omitempty" name:"Keys"`
+
+	// json解析模式，开启首层数据解析
+	ParseArray *bool `json:"ParseArray,omitnil,omitempty" name:"ParseArray"`
 }
 
 type LogsetInfo struct {

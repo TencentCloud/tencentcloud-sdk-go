@@ -218,6 +218,9 @@ const (
 	// 该快照已经共享，请先解除共享。
 	UNSUPPORTEDOPERATION_SNAPHASSHARED = "UnsupportedOperation.SnapHasShared"
 
+	// 快照组关联快照的原云硬盘未挂载在同一实例上。
+	UNSUPPORTEDOPERATION_SNAPSHOTGROUPDISKATTACHMULTIINSTANCE = "UnsupportedOperation.SnapshotGroupDiskAttachMultiInstance"
+
 	// 该快照创建了自定义快照，请先删除对应镜像。
 	UNSUPPORTEDOPERATION_SNAPSHOTHASBINDEDIMAGE = "UnsupportedOperation.SnapshotHasBindedImage"
 

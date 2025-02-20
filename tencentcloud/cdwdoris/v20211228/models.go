@@ -1759,11 +1759,14 @@ type DescribeClusterConfigsRequestParams struct {
 	// 模糊搜索关键字文件
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 0集群维度 1节点维度
+	// 0集群维度 1节点维度 2启动脚本 3计算组维度
 	ClusterConfigType *int64 `json:"ClusterConfigType,omitnil,omitempty" name:"ClusterConfigType"`
 
 	// eth0的ip地址
 	IPAddress *string `json:"IPAddress,omitnil,omitempty" name:"IPAddress"`
+
+	// 计算组id
+	ComputeGroupId *string `json:"ComputeGroupId,omitnil,omitempty" name:"ComputeGroupId"`
 }
 
 type DescribeClusterConfigsRequest struct {
@@ -1778,11 +1781,14 @@ type DescribeClusterConfigsRequest struct {
 	// 模糊搜索关键字文件
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 0集群维度 1节点维度
+	// 0集群维度 1节点维度 2启动脚本 3计算组维度
 	ClusterConfigType *int64 `json:"ClusterConfigType,omitnil,omitempty" name:"ClusterConfigType"`
 
 	// eth0的ip地址
 	IPAddress *string `json:"IPAddress,omitnil,omitempty" name:"IPAddress"`
+
+	// 计算组id
+	ComputeGroupId *string `json:"ComputeGroupId,omitnil,omitempty" name:"ComputeGroupId"`
 }
 
 func (r *DescribeClusterConfigsRequest) ToJsonString() string {
@@ -1802,6 +1808,7 @@ func (r *DescribeClusterConfigsRequest) FromJsonString(s string) error {
 	delete(f, "FileName")
 	delete(f, "ClusterConfigType")
 	delete(f, "IPAddress")
+	delete(f, "ComputeGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterConfigsRequest has unknown keys!", "")
 	}

@@ -1045,6 +1045,9 @@ type EmailIdentity struct {
 
 	// 当日最高发信量
 	DailyQuota *uint64 `json:"DailyQuota,omitnil,omitempty" name:"DailyQuota"`
+
+	// 域名配置的独立ip
+	SendIp []*string `json:"SendIp,omitnil,omitempty" name:"SendIp"`
 }
 
 type EmailSender struct {

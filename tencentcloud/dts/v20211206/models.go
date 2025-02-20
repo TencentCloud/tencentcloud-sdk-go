@@ -5680,7 +5680,7 @@ type Options struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddAdditionalColumn *bool `json:"AddAdditionalColumn,omitnil,omitempty" name:"AddAdditionalColumn"`
 
-	// 所要同步的DML和DDL的选项，Insert(插入操作)、Update(更新操作)、Delete(删除操作)、DDL(结构同步)， 不填（不选），PartialDDL(自定义,和DdlOptions一起起作用 )
+	// 所要同步的DML和DDL的选项，Insert(插入操作)、Update(更新操作)、Delete(删除操作)、DDL(结构同步)， PartialDDL(自定义,和DdlOptions一起配合使用)。注意，这里至少需要包含DML中的一种。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpTypes []*string `json:"OpTypes,omitnil,omitempty" name:"OpTypes"`
 

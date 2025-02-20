@@ -4152,7 +4152,7 @@ type DescribeCCLevelPolicyRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 协议，可取值HTTP，HTTPS
+	// 协议，可取值http、https、http/https
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 }
 
@@ -4168,7 +4168,7 @@ type DescribeCCLevelPolicyRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 协议，可取值HTTP，HTTPS
+	// 协议，可取值http、https、http/https
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 }
 
@@ -5548,7 +5548,7 @@ type DescribeListBGPInstancesRequestParams struct {
 	// 是否包含基础防护增强版 0: 不包含 1: 包含
 	FilterBasicPlusFlag *uint64 `json:"FilterBasicPlusFlag,omitnil,omitempty" name:"FilterBasicPlusFlag"`
 
-	// 是否商业模式优化-普惠版 0: 包含商业模式优化-普惠版 1: 只查询商业模式优化-普惠版 
+	// 是否标准版2.0 0: 包含标准版2.0 0 1: 只查询标准版2.0 0 2: 不查标准版2.0
 	FilterPlanCntFlag *uint64 `json:"FilterPlanCntFlag,omitnil,omitempty" name:"FilterPlanCntFlag"`
 
 	// 是否跨区域产品 0: 不包含跨区域产品 1: 中国大陆跨区域产品 2: 非中国大陆跨区域产品 3: 包含全部
@@ -5618,7 +5618,7 @@ type DescribeListBGPInstancesRequest struct {
 	// 是否包含基础防护增强版 0: 不包含 1: 包含
 	FilterBasicPlusFlag *uint64 `json:"FilterBasicPlusFlag,omitnil,omitempty" name:"FilterBasicPlusFlag"`
 
-	// 是否商业模式优化-普惠版 0: 包含商业模式优化-普惠版 1: 只查询商业模式优化-普惠版 
+	// 是否标准版2.0 0: 包含标准版2.0 0 1: 只查询标准版2.0 0 2: 不查标准版2.0
 	FilterPlanCntFlag *uint64 `json:"FilterPlanCntFlag,omitnil,omitempty" name:"FilterPlanCntFlag"`
 
 	// 是否跨区域产品 0: 不包含跨区域产品 1: 中国大陆跨区域产品 2: 非中国大陆跨区域产品 3: 包含全部
@@ -7894,7 +7894,7 @@ type ModifyCCLevelPolicyRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 协议，可取值HTTP，HTTPS
+	// 协议，可取值http、https、http/https
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// CC防护等级，可取值loose表示宽松，strict表示严格，normal表示适中， emergency表示攻击紧急， sup_loose表示超级宽松，default表示默认策略（无频控配置下发），customized表示自定义策略
@@ -7913,7 +7913,7 @@ type ModifyCCLevelPolicyRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 协议，可取值HTTP，HTTPS
+	// 协议，可取值http、https、http/https
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// CC防护等级，可取值loose表示宽松，strict表示严格，normal表示适中， emergency表示攻击紧急， sup_loose表示超级宽松，default表示默认策略（无频控配置下发），customized表示自定义策略
@@ -9019,8 +9019,13 @@ type NewL7RuleEntry struct {
 	// HTTPS协议的CC防护状态，取值[0(关闭), 1(开启)]
 	CCEnable *uint64 `json:"CCEnable,omitnil,omitempty" name:"CCEnable"`
 
-	// HTTPS协议的CC防护阈值
+	// HTTPS协议的CC防护阈值（已废弃）
 	CCThreshold *uint64 `json:"CCThreshold,omitnil,omitempty" name:"CCThreshold"`
+
+	// HTTPS协议的CC防护阈值 -1：默认防御阈值
+	// 0: 关闭
+	// 大于0：自定义防护阈值
+	CCThresholdNew *uint64 `json:"CCThresholdNew,omitnil,omitempty" name:"CCThresholdNew"`
 
 	// HTTPS协议的CC防护等级
 	CCLevel *string `json:"CCLevel,omitnil,omitempty" name:"CCLevel"`
