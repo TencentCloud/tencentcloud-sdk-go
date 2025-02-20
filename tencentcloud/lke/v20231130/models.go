@@ -6542,6 +6542,9 @@ type ListQARequestParams struct {
 	// 查询答案
 	QueryAnswer *string `json:"QueryAnswer,omitnil,omitempty" name:"QueryAnswer"`
 
+	// 分类ID
+	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
+
 	// QA业务ID列表
 	QaBizIds []*string `json:"QaBizIds,omitnil,omitempty" name:"QaBizIds"`
 
@@ -6579,6 +6582,9 @@ type ListQARequest struct {
 	// 查询答案
 	QueryAnswer *string `json:"QueryAnswer,omitnil,omitempty" name:"QueryAnswer"`
 
+	// 分类ID
+	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
+
 	// QA业务ID列表
 	QaBizIds []*string `json:"QaBizIds,omitnil,omitempty" name:"QaBizIds"`
 
@@ -6607,6 +6613,7 @@ func (r *ListQARequest) FromJsonString(s string) error {
 	delete(f, "DocBizId")
 	delete(f, "Source")
 	delete(f, "QueryAnswer")
+	delete(f, "CateBizId")
 	delete(f, "QaBizIds")
 	delete(f, "QueryType")
 	if len(f) > 0 {

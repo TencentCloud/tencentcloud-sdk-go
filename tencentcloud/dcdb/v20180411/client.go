@@ -268,6 +268,61 @@ func (c *Client) CancelDcnJobWithContext(ctx context.Context, request *CancelDcn
     return
 }
 
+func NewCancelOnlineDDLJobRequest() (request *CancelOnlineDDLJobRequest) {
+    request = &CancelOnlineDDLJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dcdb", APIVersion, "CancelOnlineDDLJob")
+    
+    
+    return
+}
+
+func NewCancelOnlineDDLJobResponse() (response *CancelOnlineDDLJobResponse) {
+    response = &CancelOnlineDDLJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CancelOnlineDDLJob
+// 取消 Online DDL 任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNSUPPORTEDOPERATION_INVALIDOPERATION = "UnsupportedOperation.InvalidOperation"
+func (c *Client) CancelOnlineDDLJob(request *CancelOnlineDDLJobRequest) (response *CancelOnlineDDLJobResponse, err error) {
+    return c.CancelOnlineDDLJobWithContext(context.Background(), request)
+}
+
+// CancelOnlineDDLJob
+// 取消 Online DDL 任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNSUPPORTEDOPERATION_INVALIDOPERATION = "UnsupportedOperation.InvalidOperation"
+func (c *Client) CancelOnlineDDLJobWithContext(ctx context.Context, request *CancelOnlineDDLJobRequest) (response *CancelOnlineDDLJobResponse, err error) {
+    if request == nil {
+        request = NewCancelOnlineDDLJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelOnlineDDLJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelOnlineDDLJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCloneAccountRequest() (request *CloneAccountRequest) {
     request = &CloneAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2637,6 +2692,59 @@ func (c *Client) DescribeLogFileRetentionPeriodWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewDescribeLogFileRetentionPeriodResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOnlineDDLJobRequest() (request *DescribeOnlineDDLJobRequest) {
+    request = &DescribeOnlineDDLJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dcdb", APIVersion, "DescribeOnlineDDLJob")
+    
+    
+    return
+}
+
+func NewDescribeOnlineDDLJobResponse() (response *DescribeOnlineDDLJobResponse) {
+    response = &DescribeOnlineDDLJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeOnlineDDLJob
+// 查询Online DDL 任务详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+func (c *Client) DescribeOnlineDDLJob(request *DescribeOnlineDDLJobRequest) (response *DescribeOnlineDDLJobResponse, err error) {
+    return c.DescribeOnlineDDLJobWithContext(context.Background(), request)
+}
+
+// DescribeOnlineDDLJob
+// 查询Online DDL 任务详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+func (c *Client) DescribeOnlineDDLJobWithContext(ctx context.Context, request *DescribeOnlineDDLJobRequest) (response *DescribeOnlineDDLJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeOnlineDDLJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOnlineDDLJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOnlineDDLJobResponse()
     err = c.Send(request, response)
     return
 }

@@ -150,6 +150,14 @@ func (r *ChangeClothesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type FaceInfo struct {
+	// 用户图 URL 列表
+	ImageUrls []*string `json:"ImageUrls,omitnil,omitempty" name:"ImageUrls"`
+
+	// 模版图人脸坐标。
+	TemplateFaceRect *Rect `json:"TemplateFaceRect,omitnil,omitempty" name:"TemplateFaceRect"`
+}
+
 type Filter struct {
 	// 过滤不满足分辨率下限的训练图像，默认开启过滤
 	// 开启后将过滤横边<512或竖边<720的图片，横、竖边上限均为2000，不支持调整
@@ -844,6 +852,79 @@ func (r *QueryDrawPortraitJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type QueryGlamPicJobRequestParams struct {
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type QueryGlamPicJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *QueryGlamPicJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryGlamPicJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryGlamPicJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryGlamPicJobResponseParams struct {
+	// 当前任务状态码：
+	// 1：等待中、2：运行中、4：处理失败、5：处理完成。
+	JobStatusCode *string `json:"JobStatusCode,omitnil,omitempty" name:"JobStatusCode"`
+
+	// 当前任务状态：排队中、处理中、处理失败或者处理完成。
+	JobStatusMsg *string `json:"JobStatusMsg,omitnil,omitempty" name:"JobStatusMsg"`
+
+	// 任务处理失败错误码。
+	JobErrorCode *string `json:"JobErrorCode,omitnil,omitempty" name:"JobErrorCode"`
+
+	// 任务处理失败错误信息。
+	JobErrorMsg *string `json:"JobErrorMsg,omitnil,omitempty" name:"JobErrorMsg"`
+
+	// 生成图 URL 列表，有效期1小时，请及时保存。
+	ResultImage []*string `json:"ResultImage,omitnil,omitempty" name:"ResultImage"`
+
+	// 结果 detail 数组，Success 代表成功。
+	ResultDetails []*string `json:"ResultDetails,omitnil,omitempty" name:"ResultDetails"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type QueryGlamPicJobResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryGlamPicJobResponseParams `json:"Response"`
+}
+
+func (r *QueryGlamPicJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryGlamPicJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type QueryMemeJobRequestParams struct {
 	// 查询表情动图生成任务 ID。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -1054,6 +1135,20 @@ func (r *QueryTrainPortraitModelJobResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *QueryTrainPortraitModelJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Rect struct {
+	// 人脸框左上角横坐标。
+	X *int64 `json:"X,omitnil,omitempty" name:"X"`
+
+	// 人脸框左上角纵坐标。
+	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
+
+	// 人脸框宽度。
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 人脸框高度。
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
 }
 
 // Predefined struct for user
@@ -1449,6 +1544,144 @@ func (r *SubmitDrawPortraitJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SubmitDrawPortraitJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitGlamPicJobRequestParams struct {
+	// 美照模板图 URL。
+	// 图片限制：模板图中最多出现5张人脸，单边分辨率大于300，转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	TemplateUrl *string `json:"TemplateUrl,omitnil,omitempty" name:"TemplateUrl"`
+
+	// 用户图 URL 列表，以及模板图中需要替换成用户的人脸框信息。
+	// 一张美照中可包含1 ~ 5个用户形象。每个用户需上传1 ~ 6张照片，如果图中存在多个人脸将取最大人脸。
+	// 模板图中的人脸数量需要大于等于用户个数。如果不传每个用户在模板图中的人脸框位置，默认按照模板图人脸框从大到小的顺序进行替换。如需自定义顺序，需要依次上传每个用户在模板图中的人脸框位置。
+	// 图片限制：每张图片转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。建议使用单人、正脸、脸部区域占比较大、脸部清晰无遮挡、无大角度偏转、无夸张表情的用户图。
+	FaceInfos []*FaceInfo `json:"FaceInfos,omitnil,omitempty" name:"FaceInfos"`
+
+	// 美照生成数量。
+	// 支持1 ~ 4张，默认生成4张。
+	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
+
+	// 美照生成风格。
+	// 仅对单人美照生效，单人可支持选择不同风格。需按照美照生成数量，在数组中逐一填入每张美照的风格名称。如果不传，默认取不重复的随机风格顺序。
+	// 多人美照只支持 balanced 一种风格，该参数不生效。
+	// 可选风格：<ul><li>real：面部相似度更高。</li><li>balanced：平衡面部真实感和美观度。</li><li>extured：脸部皮肤更具真实感。</li><li>beautiful：脸部美观度更高。</li></ul>
+	Style []*string `json:"Style,omitnil,omitempty" name:"Style"`
+
+	// 相似度系数，越高越像用户图。
+	// 取值范围[0, 1]，默认为0.6。
+	Similarity *float64 `json:"Similarity,omitnil,omitempty" name:"Similarity"`
+
+	// 超分选项，默认不做超分，可选开启。
+	// x2：2倍超分
+	// x4：4倍超分
+	Clarity *string `json:"Clarity,omitnil,omitempty" name:"Clarity"`
+
+	// 为生成结果图添加标识的开关，默认为1。
+	// 1：添加标识。
+	// 0：不添加标识。
+	// 其他数值：默认按1处理。
+	// 建议您使用显著标识来提示结果图是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。
+	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+}
+
+type SubmitGlamPicJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 美照模板图 URL。
+	// 图片限制：模板图中最多出现5张人脸，单边分辨率大于300，转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	TemplateUrl *string `json:"TemplateUrl,omitnil,omitempty" name:"TemplateUrl"`
+
+	// 用户图 URL 列表，以及模板图中需要替换成用户的人脸框信息。
+	// 一张美照中可包含1 ~ 5个用户形象。每个用户需上传1 ~ 6张照片，如果图中存在多个人脸将取最大人脸。
+	// 模板图中的人脸数量需要大于等于用户个数。如果不传每个用户在模板图中的人脸框位置，默认按照模板图人脸框从大到小的顺序进行替换。如需自定义顺序，需要依次上传每个用户在模板图中的人脸框位置。
+	// 图片限制：每张图片转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。建议使用单人、正脸、脸部区域占比较大、脸部清晰无遮挡、无大角度偏转、无夸张表情的用户图。
+	FaceInfos []*FaceInfo `json:"FaceInfos,omitnil,omitempty" name:"FaceInfos"`
+
+	// 美照生成数量。
+	// 支持1 ~ 4张，默认生成4张。
+	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
+
+	// 美照生成风格。
+	// 仅对单人美照生效，单人可支持选择不同风格。需按照美照生成数量，在数组中逐一填入每张美照的风格名称。如果不传，默认取不重复的随机风格顺序。
+	// 多人美照只支持 balanced 一种风格，该参数不生效。
+	// 可选风格：<ul><li>real：面部相似度更高。</li><li>balanced：平衡面部真实感和美观度。</li><li>extured：脸部皮肤更具真实感。</li><li>beautiful：脸部美观度更高。</li></ul>
+	Style []*string `json:"Style,omitnil,omitempty" name:"Style"`
+
+	// 相似度系数，越高越像用户图。
+	// 取值范围[0, 1]，默认为0.6。
+	Similarity *float64 `json:"Similarity,omitnil,omitempty" name:"Similarity"`
+
+	// 超分选项，默认不做超分，可选开启。
+	// x2：2倍超分
+	// x4：4倍超分
+	Clarity *string `json:"Clarity,omitnil,omitempty" name:"Clarity"`
+
+	// 为生成结果图添加标识的开关，默认为1。
+	// 1：添加标识。
+	// 0：不添加标识。
+	// 其他数值：默认按1处理。
+	// 建议您使用显著标识来提示结果图是 AI 生成的图片。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。
+	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+}
+
+func (r *SubmitGlamPicJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitGlamPicJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateUrl")
+	delete(f, "FaceInfos")
+	delete(f, "Num")
+	delete(f, "Style")
+	delete(f, "Similarity")
+	delete(f, "Clarity")
+	delete(f, "LogoAdd")
+	delete(f, "LogoParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitGlamPicJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitGlamPicJobResponseParams struct {
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitGlamPicJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitGlamPicJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitGlamPicJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitGlamPicJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

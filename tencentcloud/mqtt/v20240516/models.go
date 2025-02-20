@@ -2381,6 +2381,65 @@ func (r *DescribeInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeProductSKUListRequestParams struct {
+
+}
+
+type DescribeProductSKUListRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeProductSKUListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProductSKUListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProductSKUListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProductSKUListResponseParams struct {
+	// 查询总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// mqtt商品配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MQTTProductSkuList []*ProductSkuItem `json:"MQTTProductSkuList,omitnil,omitempty" name:"MQTTProductSkuList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeProductSKUListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeProductSKUListResponseParams `json:"Response"`
+}
+
+func (r *DescribeProductSKUListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProductSKUListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTopicListRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -3602,6 +3661,61 @@ func (r *ModifyUserResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type PriceTag struct {
+	// 计价名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 计价类别
+	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
+
+	// 计费项标签
+	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 步长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Step *int64 `json:"Step,omitnil,omitempty" name:"Step"`
+}
+
+type ProductSkuItem struct {
+	// 规格类型
+	// BASIC：基础版
+	// PRO ：专业版
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 规格代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SkuCode *string `json:"SkuCode,omitnil,omitempty" name:"SkuCode"`
+
+	// 是否售卖
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnSale *bool `json:"OnSale,omitnil,omitempty" name:"OnSale"`
+
+	// topic num限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicNumLimit *int64 `json:"TopicNumLimit,omitnil,omitempty" name:"TopicNumLimit"`
+
+	// tps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TpsLimit *int64 `json:"TpsLimit,omitnil,omitempty" name:"TpsLimit"`
+
+	// 客户端连接数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientNumLimit *int64 `json:"ClientNumLimit,omitnil,omitempty" name:"ClientNumLimit"`
+
+	// 单客户端最大订阅数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxSubscriptionPerClient *int64 `json:"MaxSubscriptionPerClient,omitnil,omitempty" name:"MaxSubscriptionPerClient"`
+
+	// 授权规则条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthorizationPolicyLimit *int64 `json:"AuthorizationPolicyLimit,omitnil,omitempty" name:"AuthorizationPolicyLimit"`
+
+	// 计费项信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PriceTags []*PriceTag `json:"PriceTags,omitnil,omitempty" name:"PriceTags"`
 }
 
 type PublicAccessRule struct {

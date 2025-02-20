@@ -208,6 +208,9 @@ type AlterDMSDatabaseRequestParams struct {
 
 	// 基础对象
 	Asset *Asset `json:"Asset,omitnil,omitempty" name:"Asset"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 type AlterDMSDatabaseRequest struct {
@@ -224,6 +227,9 @@ type AlterDMSDatabaseRequest struct {
 
 	// 基础对象
 	Asset *Asset `json:"Asset,omitnil,omitempty" name:"Asset"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 func (r *AlterDMSDatabaseRequest) ToJsonString() string {
@@ -242,6 +248,7 @@ func (r *AlterDMSDatabaseRequest) FromJsonString(s string) error {
 	delete(f, "SchemaName")
 	delete(f, "Location")
 	delete(f, "Asset")
+	delete(f, "DatasourceConnectionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AlterDMSDatabaseRequest has unknown keys!", "")
 	}
@@ -283,6 +290,9 @@ type AlterDMSPartitionRequestParams struct {
 
 	// 分区
 	Partition *DMSPartition `json:"Partition,omitnil,omitempty" name:"Partition"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 type AlterDMSPartitionRequest struct {
@@ -299,6 +309,9 @@ type AlterDMSPartitionRequest struct {
 
 	// 分区
 	Partition *DMSPartition `json:"Partition,omitnil,omitempty" name:"Partition"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 func (r *AlterDMSPartitionRequest) ToJsonString() string {
@@ -317,6 +330,7 @@ func (r *AlterDMSPartitionRequest) FromJsonString(s string) error {
 	delete(f, "CurrentTableName")
 	delete(f, "CurrentValues")
 	delete(f, "Partition")
+	delete(f, "DatasourceConnectionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AlterDMSPartitionRequest has unknown keys!", "")
 	}
@@ -400,6 +414,9 @@ type AlterDMSTableRequestParams struct {
 
 	// 当前表名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 type AlterDMSTableRequest struct {
@@ -458,6 +475,9 @@ type AlterDMSTableRequest struct {
 
 	// 当前表名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 func (r *AlterDMSTableRequest) ToJsonString() string {
@@ -490,6 +510,7 @@ func (r *AlterDMSTableRequest) FromJsonString(s string) error {
 	delete(f, "ViewExpandedText")
 	delete(f, "Partitions")
 	delete(f, "Name")
+	delete(f, "DatasourceConnectionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AlterDMSTableRequest has unknown keys!", "")
 	}
@@ -1688,6 +1709,9 @@ type CreateDMSDatabaseRequestParams struct {
 
 	// 数据库名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 type CreateDMSDatabaseRequest struct {
@@ -1704,6 +1728,9 @@ type CreateDMSDatabaseRequest struct {
 
 	// 数据库名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 func (r *CreateDMSDatabaseRequest) ToJsonString() string {
@@ -1722,6 +1749,7 @@ func (r *CreateDMSDatabaseRequest) FromJsonString(s string) error {
 	delete(f, "SchemaName")
 	delete(f, "Location")
 	delete(f, "Name")
+	delete(f, "DatasourceConnectionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDMSDatabaseRequest has unknown keys!", "")
 	}
@@ -1799,6 +1827,9 @@ type CreateDMSTableRequestParams struct {
 
 	// 表名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 type CreateDMSTableRequest struct {
@@ -1851,6 +1882,9 @@ type CreateDMSTableRequest struct {
 
 	// 表名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 func (r *CreateDMSTableRequest) ToJsonString() string {
@@ -1881,6 +1915,7 @@ func (r *CreateDMSTableRequest) FromJsonString(s string) error {
 	delete(f, "ViewExpandedText")
 	delete(f, "Partitions")
 	delete(f, "Name")
+	delete(f, "DatasourceConnectionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDMSTableRequest has unknown keys!", "")
 	}
@@ -4067,6 +4102,9 @@ type DMSPartition struct {
 
 	// 存储对象
 	Sds *DMSSds `json:"Sds,omitnil,omitempty" name:"Sds"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 type DMSSds struct {
@@ -5524,8 +5562,11 @@ type DescribeDMSDatabaseRequestParams struct {
 	// schema名称
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
-	// 匹配规则
+	// 匹配规则，只支持填*
 	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 type DescribeDMSDatabaseRequest struct {
@@ -5537,8 +5578,11 @@ type DescribeDMSDatabaseRequest struct {
 	// schema名称
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
-	// 匹配规则
+	// 匹配规则，只支持填*
 	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 func (r *DescribeDMSDatabaseRequest) ToJsonString() string {
@@ -5556,6 +5600,7 @@ func (r *DescribeDMSDatabaseRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "SchemaName")
 	delete(f, "Pattern")
+	delete(f, "DatasourceConnectionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDMSDatabaseRequest has unknown keys!", "")
 	}
@@ -5637,6 +5682,9 @@ type DescribeDMSPartitionsRequestParams struct {
 
 	// 表达式
 	Expression *string `json:"Expression,omitnil,omitempty" name:"Expression"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 type DescribeDMSPartitionsRequest struct {
@@ -5677,6 +5725,9 @@ type DescribeDMSPartitionsRequest struct {
 
 	// 表达式
 	Expression *string `json:"Expression,omitnil,omitempty" name:"Expression"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 func (r *DescribeDMSPartitionsRequest) ToJsonString() string {
@@ -5703,6 +5754,7 @@ func (r *DescribeDMSPartitionsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Expression")
+	delete(f, "DatasourceConnectionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDMSPartitionsRequest has unknown keys!", "")
 	}
@@ -5748,17 +5800,20 @@ type DescribeDMSTableRequestParams struct {
 	// 表名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 数据目录
+	// catalog类型
 	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
 
 	// 查询关键词
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 查询模式
+	// 查询模式，只支持填*
 	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
 
 	// 表类型
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 type DescribeDMSTableRequest struct {
@@ -5773,17 +5828,20 @@ type DescribeDMSTableRequest struct {
 	// 表名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 数据目录
+	// catalog类型
 	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
 
 	// 查询关键词
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 查询模式
+	// 查询模式，只支持填*
 	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
 
 	// 表类型
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 func (r *DescribeDMSTableRequest) ToJsonString() string {
@@ -5805,6 +5863,7 @@ func (r *DescribeDMSTableRequest) FromJsonString(s string) error {
 	delete(f, "Keyword")
 	delete(f, "Pattern")
 	delete(f, "Type")
+	delete(f, "DatasourceConnectionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDMSTableRequest has unknown keys!", "")
 	}
@@ -5916,13 +5975,13 @@ type DescribeDMSTablesRequestParams struct {
 	// 表名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 数据目录
+	// catalog类型
 	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
 
 	// 查询关键词
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 查询模式
+	// 查询模式，只支持填*
 	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
 
 	// 表类型
@@ -5945,6 +6004,9 @@ type DescribeDMSTablesRequestParams struct {
 
 	// 排序字段：true：升序（默认），false：降序
 	Asc *bool `json:"Asc,omitnil,omitempty" name:"Asc"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 type DescribeDMSTablesRequest struct {
@@ -5959,13 +6021,13 @@ type DescribeDMSTablesRequest struct {
 	// 表名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 数据目录
+	// catalog类型
 	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
 
 	// 查询关键词
 	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 
-	// 查询模式
+	// 查询模式，只支持填*
 	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
 
 	// 表类型
@@ -5988,6 +6050,9 @@ type DescribeDMSTablesRequest struct {
 
 	// 排序字段：true：升序（默认），false：降序
 	Asc *bool `json:"Asc,omitnil,omitempty" name:"Asc"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 func (r *DescribeDMSTablesRequest) ToJsonString() string {
@@ -6015,6 +6080,7 @@ func (r *DescribeDMSTablesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Sort")
 	delete(f, "Asc")
+	delete(f, "DatasourceConnectionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDMSTablesRequest has unknown keys!", "")
 	}
@@ -10403,6 +10469,9 @@ type DropDMSDatabaseRequestParams struct {
 
 	// 是否级联删除
 	Cascade *bool `json:"Cascade,omitnil,omitempty" name:"Cascade"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 type DropDMSDatabaseRequest struct {
@@ -10416,6 +10485,9 @@ type DropDMSDatabaseRequest struct {
 
 	// 是否级联删除
 	Cascade *bool `json:"Cascade,omitnil,omitempty" name:"Cascade"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 func (r *DropDMSDatabaseRequest) ToJsonString() string {
@@ -10433,6 +10505,7 @@ func (r *DropDMSDatabaseRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "DeleteData")
 	delete(f, "Cascade")
+	delete(f, "DatasourceConnectionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DropDMSDatabaseRequest has unknown keys!", "")
 	}
@@ -10480,6 +10553,9 @@ type DropDMSPartitionsRequestParams struct {
 
 	// 是否删除分区数据
 	DeleteData *bool `json:"DeleteData,omitnil,omitempty" name:"DeleteData"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 type DropDMSPartitionsRequest struct {
@@ -10502,6 +10578,9 @@ type DropDMSPartitionsRequest struct {
 
 	// 是否删除分区数据
 	DeleteData *bool `json:"DeleteData,omitnil,omitempty" name:"DeleteData"`
+
+	// 数据源连接名
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 func (r *DropDMSPartitionsRequest) ToJsonString() string {
@@ -10522,6 +10601,7 @@ func (r *DropDMSPartitionsRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Values")
 	delete(f, "DeleteData")
+	delete(f, "DatasourceConnectionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DropDMSPartitionsRequest has unknown keys!", "")
 	}
@@ -10566,6 +10646,9 @@ type DropDMSTableRequestParams struct {
 
 	// 环境属性
 	EnvProps *KVPair `json:"EnvProps,omitnil,omitempty" name:"EnvProps"`
+
+	// 数据目录信息
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 type DropDMSTableRequest struct {
@@ -10582,6 +10665,9 @@ type DropDMSTableRequest struct {
 
 	// 环境属性
 	EnvProps *KVPair `json:"EnvProps,omitnil,omitempty" name:"EnvProps"`
+
+	// 数据目录信息
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 }
 
 func (r *DropDMSTableRequest) ToJsonString() string {
@@ -10600,6 +10686,7 @@ func (r *DropDMSTableRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "DeleteData")
 	delete(f, "EnvProps")
+	delete(f, "DatasourceConnectionName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DropDMSTableRequest has unknown keys!", "")
 	}

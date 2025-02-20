@@ -8288,6 +8288,9 @@ type InstanceAttributesResponse struct {
 
 	// ssl自定义证书id
 	CustomCertId *string `json:"CustomCertId,omitnil,omitempty" name:"CustomCertId"`
+
+	// 集群topic默认 unclean.leader.election.enable配置: 1 开启 0 关闭
+	UncleanLeaderElectionEnable *int64 `json:"UncleanLeaderElectionEnable,omitnil,omitempty" name:"UncleanLeaderElectionEnable"`
 }
 
 type InstanceChargeParam struct {

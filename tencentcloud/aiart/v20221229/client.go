@@ -659,6 +659,75 @@ func (c *Client) QueryDrawPortraitJobWithContext(ctx context.Context, request *Q
     return
 }
 
+func NewQueryGlamPicJobRequest() (request *QueryGlamPicJobRequest) {
+    request = &QueryGlamPicJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("aiart", APIVersion, "QueryGlamPicJob")
+    
+    
+    return
+}
+
+func NewQueryGlamPicJobResponse() (response *QueryGlamPicJobResponse) {
+    response = &QueryGlamPicJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// QueryGlamPicJob
+// AI 美照接口将根据模板为用户生成精美照片。分为提交任务和查询任务2个接口。
+//
+// - 提交任务：提交一个美照生成异步任务，获得任务 ID。
+//
+// - 查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得生成图像结果。
+//
+// 
+//
+// AI 美照默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  OPERATIONDENIED_IMAGEILLEGALDETECTED = "OperationDenied.ImageIllegalDetected"
+func (c *Client) QueryGlamPicJob(request *QueryGlamPicJobRequest) (response *QueryGlamPicJobResponse, err error) {
+    return c.QueryGlamPicJobWithContext(context.Background(), request)
+}
+
+// QueryGlamPicJob
+// AI 美照接口将根据模板为用户生成精美照片。分为提交任务和查询任务2个接口。
+//
+// - 提交任务：提交一个美照生成异步任务，获得任务 ID。
+//
+// - 查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得生成图像结果。
+//
+// 
+//
+// AI 美照默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
+//  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  OPERATIONDENIED_IMAGEILLEGALDETECTED = "OperationDenied.ImageIllegalDetected"
+func (c *Client) QueryGlamPicJobWithContext(ctx context.Context, request *QueryGlamPicJobRequest) (response *QueryGlamPicJobResponse, err error) {
+    if request == nil {
+        request = NewQueryGlamPicJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryGlamPicJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryGlamPicJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryMemeJobRequest() (request *QueryMemeJobRequest) {
     request = &QueryMemeJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1169,6 +1238,75 @@ func (c *Client) SubmitDrawPortraitJobWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewSubmitDrawPortraitJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitGlamPicJobRequest() (request *SubmitGlamPicJobRequest) {
+    request = &SubmitGlamPicJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("aiart", APIVersion, "SubmitGlamPicJob")
+    
+    
+    return
+}
+
+func NewSubmitGlamPicJobResponse() (response *SubmitGlamPicJobResponse) {
+    response = &SubmitGlamPicJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SubmitGlamPicJob
+// AI 美照接口将根据模板为用户生成精美照片。分为提交任务和查询任务2个接口。
+//
+// - 提交任务：提交一个美照生成异步任务，获得任务 ID。
+//
+// - 查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得生成图像结果。
+//
+// 
+//
+// AI 美照默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitGlamPicJob(request *SubmitGlamPicJobRequest) (response *SubmitGlamPicJobResponse, err error) {
+    return c.SubmitGlamPicJobWithContext(context.Background(), request)
+}
+
+// SubmitGlamPicJob
+// AI 美照接口将根据模板为用户生成精美照片。分为提交任务和查询任务2个接口。
+//
+// - 提交任务：提交一个美照生成异步任务，获得任务 ID。
+//
+// - 查询任务：根据任务 ID 查询任务的处理状态、处理结果，任务处理完成后可获得生成图像结果。
+//
+// 
+//
+// AI 美照默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) SubmitGlamPicJobWithContext(ctx context.Context, request *SubmitGlamPicJobRequest) (response *SubmitGlamPicJobResponse, err error) {
+    if request == nil {
+        request = NewSubmitGlamPicJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitGlamPicJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitGlamPicJobResponse()
     err = c.Send(request, response)
     return
 }

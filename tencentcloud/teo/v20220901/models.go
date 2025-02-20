@@ -3239,6 +3239,7 @@ func (r *CreatePlanResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreatePrefetchTaskRequestParams struct {
 	// 站点 ID。
+	// 若您希望快速提交不同站点下的 Targets Url，可以将其填写为 *，但前提是调用该 API 的账号必须具备主账号下全部站点资源的权限。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 要预热的资源列表，每个元素格式类似如下:
@@ -3247,6 +3248,8 @@ type CreatePrefetchTaskRequestParams struct {
 	Targets []*string `json:"Targets,omitnil,omitempty" name:"Targets"`
 
 	// 是否对url进行encode，若内容含有非 ASCII 字符集的字符，请开启此开关进行编码转换（编码规则遵循 RFC3986）。
+	//
+	// Deprecated: EncodeUrl is deprecated.
 	EncodeUrl *bool `json:"EncodeUrl,omitnil,omitempty" name:"EncodeUrl"`
 
 	// 附带的http头部信息。
@@ -3257,6 +3260,7 @@ type CreatePrefetchTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 站点 ID。
+	// 若您希望快速提交不同站点下的 Targets Url，可以将其填写为 *，但前提是调用该 API 的账号必须具备主账号下全部站点资源的权限。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 要预热的资源列表，每个元素格式类似如下:

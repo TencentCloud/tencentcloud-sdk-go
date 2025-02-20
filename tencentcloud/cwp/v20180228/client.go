@@ -17984,69 +17984,6 @@ func (c *Client) DescribeSecurityEventsCntWithContext(ctx context.Context, reque
     return
 }
 
-func NewDescribeSecurityProtectionStatRequest() (request *DescribeSecurityProtectionStatRequest) {
-    request = &DescribeSecurityProtectionStatRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cwp", APIVersion, "DescribeSecurityProtectionStat")
-    
-    
-    return
-}
-
-func NewDescribeSecurityProtectionStatResponse() (response *DescribeSecurityProtectionStatResponse) {
-    response = &DescribeSecurityProtectionStatResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeSecurityProtectionStat
-// 接口已无效
-//
-// 
-//
-// 获取安全防护状态汇总
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-func (c *Client) DescribeSecurityProtectionStat(request *DescribeSecurityProtectionStatRequest) (response *DescribeSecurityProtectionStatResponse, err error) {
-    return c.DescribeSecurityProtectionStatWithContext(context.Background(), request)
-}
-
-// DescribeSecurityProtectionStat
-// 接口已无效
-//
-// 
-//
-// 获取安全防护状态汇总
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-func (c *Client) DescribeSecurityProtectionStatWithContext(ctx context.Context, request *DescribeSecurityProtectionStatRequest) (response *DescribeSecurityProtectionStatResponse, err error) {
-    if request == nil {
-        request = NewDescribeSecurityProtectionStatRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeSecurityProtectionStat require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeSecurityProtectionStatResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeSecurityTrendsRequest() (request *DescribeSecurityTrendsRequest) {
     request = &DescribeSecurityTrendsRequest{
         BaseRequest: &tchttp.BaseRequest{},

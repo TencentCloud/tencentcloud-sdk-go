@@ -248,7 +248,7 @@ type AirTransport struct {
 	// 客票生效日期
 	DateStart *string `json:"DateStart,omitnil,omitempty" name:"DateStart"`
 
-	// 有效截至日期
+	// 有效截止日期
 	DateEnd *string `json:"DateEnd,omitnil,omitempty" name:"DateEnd"`
 
 	// 签注
@@ -3244,6 +3244,12 @@ type FlightItemInfo struct {
 
 	// 免费行李额
 	Allow *string `json:"Allow,omitnil,omitempty" name:"Allow"`
+
+	// 客票生效日期
+	DateStart *string `json:"DateStart,omitnil,omitempty" name:"DateStart"`
+
+	// 有效截止日期
+	DateEnd *string `json:"DateEnd,omitnil,omitempty" name:"DateEnd"`
 }
 
 // Predefined struct for user
@@ -12499,6 +12505,18 @@ type VatElectronicItemInfo struct {
 
 	// 面积单位，仅不动产经营租赁服务发票返回
 	AreaUnit *string `json:"AreaUnit,omitnil,omitempty" name:"AreaUnit"`
+
+	// 出行人，仅旅客运输服务发票返回
+	Traveler *string `json:"Traveler,omitnil,omitempty" name:"Traveler"`
+
+	// 有效身份证件号，仅旅客运输服务发票返回
+	TravelerID *string `json:"TravelerID,omitnil,omitempty" name:"TravelerID"`
+
+	// 出行日期，仅旅客运输服务发票返回
+	TravelDate *string `json:"TravelDate,omitnil,omitempty" name:"TravelDate"`
+
+	// 等级，仅旅客运输服务发票返回
+	TravelLevel *string `json:"TravelLevel,omitnil,omitempty" name:"TravelLevel"`
 }
 
 type VatInvoice struct {

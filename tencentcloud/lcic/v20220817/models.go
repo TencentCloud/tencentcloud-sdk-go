@@ -754,23 +754,18 @@ func (r *BindDocumentToRoomResponse) FromJsonString(s string) error {
 
 type ClassScoreItem struct {
 	// 课堂iD
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 用户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 评分时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 课堂评分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *uint64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 课堂评价
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScoreMsg *string `json:"ScoreMsg,omitnil,omitempty" name:"ScoreMsg"`
 }
 
@@ -1431,15 +1426,12 @@ func (r *CreateSupervisorResponse) FromJsonString(s string) error {
 
 type CustomMsgContent struct {
 	// 自定义消息数据。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 自定义消息描述信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
 	// 扩展字段。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ext *string `json:"Ext,omitnil,omitempty" name:"Ext"`
 }
 
@@ -3801,87 +3793,66 @@ func (r *DescribeUserResponse) FromJsonString(s string) error {
 
 type DocumentInfo struct {
 	// 文档Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocumentId *string `json:"DocumentId,omitnil,omitempty" name:"DocumentId"`
 
 	// 文档原址url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocumentUrl *string `json:"DocumentUrl,omitnil,omitempty" name:"DocumentUrl"`
 
 	// 文档名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocumentName *string `json:"DocumentName,omitnil,omitempty" name:"DocumentName"`
 
 	// 文档所有者UserId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
 
 	// 应用Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 文档权限，0：私有课件 1：公共课件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Permission *uint64 `json:"Permission,omitnil,omitempty" name:"Permission"`
 
 	// 转码结果，无需转码为空，转码成功为结果url，转码失败为错误码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranscodeResult *string `json:"TranscodeResult,omitnil,omitempty" name:"TranscodeResult"`
 
 	// 转码类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranscodeType *uint64 `json:"TranscodeType,omitnil,omitempty" name:"TranscodeType"`
 
 	// 转码进度， 0 - 100 表示（0% - 100%）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranscodeProgress *uint64 `json:"TranscodeProgress,omitnil,omitempty" name:"TranscodeProgress"`
 
 	// 转码状态，0为无需转码，1为正在转码，2为转码失败，3为转码成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranscodeState *uint64 `json:"TranscodeState,omitnil,omitempty" name:"TranscodeState"`
 
 	// 转码失败后的错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranscodeInfo *string `json:"TranscodeInfo,omitnil,omitempty" name:"TranscodeInfo"`
 
 	// 文档类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocumentType *string `json:"DocumentType,omitnil,omitempty" name:"DocumentType"`
 
 	// 文档大小，单位：字节
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocumentSize *uint64 `json:"DocumentSize,omitnil,omitempty" name:"DocumentSize"`
 
 	// 更新的UNIX时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 课件页数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pages *uint64 `json:"Pages,omitnil,omitempty" name:"Pages"`
 
 	// 宽，仅在静态转码的课件有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
 	// 高，仅在静态转码的课件有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 
 	// 封面，仅转码的课件会生成封面
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cover *string `json:"Cover,omitnil,omitempty" name:"Cover"`
 
 	// 课件预览地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Preview *string `json:"Preview,omitnil,omitempty" name:"Preview"`
 
 	// 文档的分辨率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
 	// 转码后文档的最小分辨率，和创建文档时传入的参数一致。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinScaleResolution *string `json:"MinScaleResolution,omitnil,omitempty" name:"MinScaleResolution"`
 }
 
@@ -3941,27 +3912,21 @@ func (r *EndRoomResponse) FromJsonString(s string) error {
 
 type EventDataInfo struct {
 	// 事件发生的房间号。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 事件发生的用户。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 用户设备类型。0: Unknown; 1: Windows; 2: macOS; 3: Android; 4: iOS; 5: Web; 6: Mobile webpage; 7: Weixin Mini Program.
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Device *uint64 `json:"Device,omitnil,omitempty" name:"Device"`
 
 	// 录制时长。单位：秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 录制文件大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordSize *uint64 `json:"RecordSize,omitnil,omitempty" name:"RecordSize"`
 
 	// 录制url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordUrl *string `json:"RecordUrl,omitnil,omitempty" name:"RecordUrl"`
 }
 
@@ -3982,7 +3947,6 @@ type EventInfo struct {
 	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
 
 	// 事件详细内容，包含房间号,成员类型事件包含用户Id。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventData *EventDataInfo `json:"EventData,omitnil,omitempty" name:"EventData"`
 }
 
@@ -4432,21 +4396,17 @@ type GroupBaseInfo struct {
 
 type GroupInfo struct {
 	// 群组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 群组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 群组主讲人ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TeacherId *string `json:"TeacherId,omitnil,omitempty" name:"TeacherId"`
 
 	// 群组类型 
 	// 0-基础群组 
 	// 1-组合群组，若为1时会返回子群组ID列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupType *uint64 `json:"GroupType,omitnil,omitempty" name:"GroupType"`
 
 	// 子群组ID列表，如有。
@@ -4763,47 +4723,37 @@ type MemberRecord struct {
 	SubGroupId []*string `json:"SubGroupId,omitnil,omitempty" name:"SubGroupId"`
 
 	// 用户的上台状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Stage *int64 `json:"Stage,omitnil,omitempty" name:"Stage"`
 
 	// 用户状态。0为未到，1为在线，2为离线，3为被踢，4为永久被踢，5为暂时掉线
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentState *uint64 `json:"CurrentState,omitnil,omitempty" name:"CurrentState"`
 }
 
 type MessageItem struct {
 	// 消息类型。0表示文本消息，1表示图片消息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageType *int64 `json:"MessageType,omitnil,omitempty" name:"MessageType"`
 
 	// 文本消息内容。message type为0时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TextMessage *string `json:"TextMessage,omitnil,omitempty" name:"TextMessage"`
 
 	// 图片消息URL。 message type为1时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageMessage *string `json:"ImageMessage,omitnil,omitempty" name:"ImageMessage"`
 
 	// 自定义消息内容。message type为2时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomMessage *CustomMsgContent `json:"CustomMessage,omitnil,omitempty" name:"CustomMessage"`
 }
 
 type MessageList struct {
 	// 消息时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
 	// 消息发送者
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FromAccount *string `json:"FromAccount,omitnil,omitempty" name:"FromAccount"`
 
 	// 消息序列号，当前课堂内唯一且单调递增
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Seq *int64 `json:"Seq,omitnil,omitempty" name:"Seq"`
 
 	// 历史消息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageBody []*MessageItem `json:"MessageBody,omitnil,omitempty" name:"MessageBody"`
 }
 
@@ -5324,11 +5274,9 @@ type MsgBody struct {
 
 type MutedAccountList struct {
 	// 用户 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemberAccount *string `json:"MemberAccount,omitnil,omitempty" name:"MemberAccount"`
 
 	// 禁言到的时间（使用 UTC 时间，即世界协调时间）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MutedUntil *uint64 `json:"MutedUntil,omitnil,omitempty" name:"MutedUntil"`
 }
 
@@ -5346,7 +5294,6 @@ type QuestionInfo struct {
 	CorrectAnswer *int64 `json:"CorrectAnswer,omitnil,omitempty" name:"CorrectAnswer"`
 
 	// 每个选项答题人数统计
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnswerStats []*AnswerStat `json:"AnswerStats,omitnil,omitempty" name:"AnswerStats"`
 }
 
@@ -5634,19 +5581,15 @@ type SceneItem struct {
 	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 
 	// logo地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogoUrl *string `json:"LogoUrl,omitnil,omitempty" name:"LogoUrl"`
 
 	// 主页地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HomeUrl *string `json:"HomeUrl,omitnil,omitempty" name:"HomeUrl"`
 
 	// 自定义的js
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JSUrl *string `json:"JSUrl,omitnil,omitempty" name:"JSUrl"`
 
 	// 自定义的css
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CSSUrl *string `json:"CSSUrl,omitnil,omitempty" name:"CSSUrl"`
 }
 
@@ -6153,39 +6096,30 @@ func (r *SetWatermarkResponse) FromJsonString(s string) error {
 
 type SingleStreamInfo struct {
 	// 用户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StopTime *uint64 `json:"StopTime,omitnil,omitempty" name:"StopTime"`
 
 	// 总时长
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 文件格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileFormat *string `json:"FileFormat,omitnil,omitempty" name:"FileFormat"`
 
 	// 流url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordUrl *string `json:"RecordUrl,omitnil,omitempty" name:"RecordUrl"`
 
 	// 流大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordSize *uint64 `json:"RecordSize,omitnil,omitempty" name:"RecordSize"`
 
 	// 流ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoId *string `json:"VideoId,omitnil,omitempty" name:"VideoId"`
 
 	// 流类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 }
 
@@ -6377,11 +6311,9 @@ func (r *StopRecordResponse) FromJsonString(s string) error {
 
 type TextMarkConfig struct {
 	// 文字水印内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
 	// 文字水印颜色
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Color *string `json:"Color,omitnil,omitempty" name:"Color"`
 }
 
@@ -6527,44 +6459,34 @@ func (r *UnblockKickedUserResponse) FromJsonString(s string) error {
 
 type UserInfo struct {
 	// 应用Id。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
 	// 用户Id。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 用户昵称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 用户头像Url。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Avatar *string `json:"Avatar,omitnil,omitempty" name:"Avatar"`
 
 	// 用户在客户系统的Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginId *string `json:"OriginId,omitnil,omitempty" name:"OriginId"`
 }
 
 type WatermarkConfig struct {
 	// 水印图片的url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 水印宽。为比例值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Width *float64 `json:"Width,omitnil,omitempty" name:"Width"`
 
 	// 水印高。为比例值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *float64 `json:"Height,omitnil,omitempty" name:"Height"`
 
 	// 水印X偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocationX *float64 `json:"LocationX,omitnil,omitempty" name:"LocationX"`
 
 	// 水印Y偏移, 取值:0-100, 表示区域Y方向的百分比。比如50，则表示位于Y轴中间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocationY *float64 `json:"LocationY,omitnil,omitempty" name:"LocationY"`
 }

@@ -5713,6 +5713,40 @@ type DataSourceConnectStatus struct {
 	Timestamp *uint64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 }
 
+type DataSourceEnvInfo struct {
+	// 环境
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 数据源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
+
+	// 集群id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Params *string `json:"Params,omitnil,omitempty" name:"Params"`
+
+	// 项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 数据源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
+
+	// env环境的数据源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvDataSourceId *string `json:"EnvDataSourceId,omitnil,omitempty" name:"EnvDataSourceId"`
+
+	// 配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizParams *string `json:"BizParams,omitnil,omitempty" name:"BizParams"`
+}
+
 type DataSourceInfo struct {
 	// 若数据源列表为绑定数据库，则为db名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5853,6 +5887,26 @@ type DataSourceInfo struct {
 	// 数据源连接状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConnectStatus *DataSourceConnectStatus `json:"ConnectStatus,omitnil,omitempty" name:"ConnectStatus"`
+
+	// 数据源展示类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisplayType *string `json:"DisplayType,omitnil,omitempty" name:"DisplayType"`
+
+	// 数据源环境
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 数据源唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceUrn *string `json:"DatasourceUrn,omitnil,omitempty" name:"DatasourceUrn"`
+
+	// 是否标准模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	//  数据源环境信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSourceEnvInfos []*DataSourceEnvInfo `json:"DataSourceEnvInfos,omitnil,omitempty" name:"DataSourceEnvInfos"`
 }
 
 type DataSourceInfoPage struct {
@@ -25448,6 +25502,10 @@ type Project struct {
 	// 项目类型，SIMPLE：简单模式 STANDARD：标准模式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 二级菜单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecondModuleList []*string `json:"SecondModuleList,omitnil,omitempty" name:"SecondModuleList"`
 }
 
 type ProjectBaseInfoOpsRequest struct {

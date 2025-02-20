@@ -90,15 +90,12 @@ func (r *CreateRabbitMQServerlessBindingRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type CreateRabbitMQServerlessBindingResponseParams struct {
 	// 队列名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// vhost参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 路由关系Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindingId *int64 `json:"BindingId,omitnil,omitempty" name:"BindingId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -212,7 +209,6 @@ func (r *CreateRabbitMQServerlessExchangeRequest) FromJsonString(s string) error
 // Predefined struct for user
 type CreateRabbitMQServerlessExchangeResponseParams struct {
 	// exchange 名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExchangeName *string `json:"ExchangeName,omitnil,omitempty" name:"ExchangeName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -438,7 +434,6 @@ func (r *CreateRabbitMQServerlessQueueRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateRabbitMQServerlessQueueResponseParams struct {
 	// 队列名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -694,15 +689,12 @@ func (r *DeleteRabbitMQServerlessBindingRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DeleteRabbitMQServerlessBindingResponseParams struct {
 	// 队列名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// vhost参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 路由关系Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindingId *int64 `json:"BindingId,omitnil,omitempty" name:"BindingId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -774,7 +766,6 @@ func (r *DeleteRabbitMQServerlessExchangeRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DeleteRabbitMQServerlessExchangeResponseParams struct {
 	// exchange 名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExchangeName *string `json:"ExchangeName,omitnil,omitempty" name:"ExchangeName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -914,7 +905,6 @@ func (r *DeleteRabbitMQServerlessQueueRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteRabbitMQServerlessQueueResponseParams struct {
 	// 队列名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1143,11 +1133,9 @@ func (r *DescribeRabbitMQServerlessBindingsRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeRabbitMQServerlessBindingsResponseParams struct {
 	// 路由关系列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindingInfoList []*RabbitMQBindingListInfo `json:"BindingInfoList,omitnil,omitempty" name:"BindingInfoList"`
 
 	// 数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1307,11 +1295,9 @@ func (r *DescribeRabbitMQServerlessConsumersRequest) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeRabbitMQServerlessConsumersResponseParams struct {
 	// 消费者列表信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumerInfoList []*RabbitMQConsumersListInfo `json:"ConsumerInfoList,omitnil,omitempty" name:"ConsumerInfoList"`
 
 	// 数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1386,7 +1372,6 @@ type DescribeRabbitMQServerlessExchangeDetailResponseParams struct {
 	ExchangeName *string `json:"ExchangeName,omitnil,omitempty" name:"ExchangeName"`
 
 	// 备注说明
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 是否为持久化 exchange, 当集群重启时, 将会清除所有该字段为 "false" 的 exchange
@@ -1537,11 +1522,9 @@ func (r *DescribeRabbitMQServerlessExchangesRequest) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeRabbitMQServerlessExchangesResponseParams struct {
 	// 交换机列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExchangeInfoList []*RabbitMQExchangeListInfo `json:"ExchangeInfoList,omitnil,omitempty" name:"ExchangeInfoList"`
 
 	// 交换机总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1614,11 +1597,9 @@ type DescribeRabbitMQServerlessInstanceResponseParams struct {
 	QueueQuota *QueueQuota `json:"QueueQuota,omitnil,omitempty" name:"QueueQuota"`
 
 	// 网络信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterNetInfo *RabbitMQServerlessAccessInfo `json:"ClusterNetInfo,omitnil,omitempty" name:"ClusterNetInfo"`
 
 	// 公网白名单信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterWhiteListInfo *RabbitMQServerlessWhiteListInfo `json:"ClusterWhiteListInfo,omitnil,omitempty" name:"ClusterWhiteListInfo"`
 
 	// user配额信息
@@ -1781,123 +1762,93 @@ func (r *DescribeRabbitMQServerlessQueueDetailRequest) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeRabbitMQServerlessQueueDetailResponseParams struct {
 	// 实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// Vhost参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 队列名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 
 	// 队列类型,取值classic或quorum
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueType *string `json:"QueueType,omitnil,omitempty" name:"QueueType"`
 
 	// 在线消费者数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Consumers *int64 `json:"Consumers,omitnil,omitempty" name:"Consumers"`
 
 	// 持久标记
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Durable *bool `json:"Durable,omitnil,omitempty" name:"Durable"`
 
 	// 自动清除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoDelete *bool `json:"AutoDelete,omitnil,omitempty" name:"AutoDelete"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// MessageTTL参数,classic类型专用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageTTL *int64 `json:"MessageTTL,omitnil,omitempty" name:"MessageTTL"`
 
 	// AutoExpire参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoExpire *int64 `json:"AutoExpire,omitnil,omitempty" name:"AutoExpire"`
 
 	// MaxLength参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxLength *int64 `json:"MaxLength,omitnil,omitempty" name:"MaxLength"`
 
 	// MaxLengthBytes参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxLengthBytes *int64 `json:"MaxLengthBytes,omitnil,omitempty" name:"MaxLengthBytes"`
 
 	// DeliveryLimit参数,quorum类型专用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeliveryLimit *int64 `json:"DeliveryLimit,omitnil,omitempty" name:"DeliveryLimit"`
 
 	// OverflowBehaviour参数,取值为drop-head, reject-publish或reject-publish-dlx
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OverflowBehaviour *string `json:"OverflowBehaviour,omitnil,omitempty" name:"OverflowBehaviour"`
 
 	// DeadLetterExchange参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeadLetterExchange *string `json:"DeadLetterExchange,omitnil,omitempty" name:"DeadLetterExchange"`
 
 	// DeadLetterRoutingKey参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeadLetterRoutingKey *string `json:"DeadLetterRoutingKey,omitnil,omitempty" name:"DeadLetterRoutingKey"`
 
 	// SingleActiveConsumer参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SingleActiveConsumer *bool `json:"SingleActiveConsumer,omitnil,omitempty" name:"SingleActiveConsumer"`
 
 	// MaximumPriority参数,classic类型专用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaximumPriority *int64 `json:"MaximumPriority,omitnil,omitempty" name:"MaximumPriority"`
 
 	// LazyMode参数,classic类型专用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LazyMode *bool `json:"LazyMode,omitnil,omitempty" name:"LazyMode"`
 
 	// MasterLocator参数,classic类型专用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MasterLocator *string `json:"MasterLocator,omitnil,omitempty" name:"MasterLocator"`
 
 	// MaxInMemoryLength参数,quorum类型专用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxInMemoryLength *int64 `json:"MaxInMemoryLength,omitnil,omitempty" name:"MaxInMemoryLength"`
 
 	// MaxInMemoryBytes参数,quorum类型专用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxInMemoryBytes *int64 `json:"MaxInMemoryBytes,omitnil,omitempty" name:"MaxInMemoryBytes"`
 
 	// 创建时间戳,单位秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 节点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Node *string `json:"Node,omitnil,omitempty" name:"Node"`
 
 	// 仲裁队列死信一致性策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeadLetterStrategy *string `json:"DeadLetterStrategy,omitnil,omitempty" name:"DeadLetterStrategy"`
 
 	// 仲裁队列的领导者选举策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueLeaderLocator *string `json:"QueueLeaderLocator,omitnil,omitempty" name:"QueueLeaderLocator"`
 
 	// 仲裁队列的初始副本组大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuorumInitialGroupSize *int64 `json:"QuorumInitialGroupSize,omitnil,omitempty" name:"QuorumInitialGroupSize"`
 
 	// 是否为独占队列
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Exclusive *bool `json:"Exclusive,omitnil,omitempty" name:"Exclusive"`
 
 	// 生效的策略名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Policy *string `json:"Policy,omitnil,omitempty" name:"Policy"`
 
 	// 扩展参数 key-value
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Arguments *string `json:"Arguments,omitnil,omitempty" name:"Arguments"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2014,11 +1965,9 @@ func (r *DescribeRabbitMQServerlessQueuesRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeRabbitMQServerlessQueuesResponseParams struct {
 	// 队列列表信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueInfoList []*RabbitMQQueueListInfo `json:"QueueInfoList,omitnil,omitempty" name:"QueueInfoList"`
 
 	// 数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2251,7 +2200,6 @@ type ExchangeQuota struct {
 	MaxExchange *int64 `json:"MaxExchange,omitnil,omitempty" name:"MaxExchange"`
 
 	// 已创建exchange数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedExchange *int64 `json:"UsedExchange,omitnil,omitempty" name:"UsedExchange"`
 }
 
@@ -2312,7 +2260,6 @@ func (r *ListRabbitMQServerlessInstancesRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type ListRabbitMQServerlessInstancesResponseParams struct {
 	// 实例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Instances []*RabbitMQServerlessInstance `json:"Instances,omitnil,omitempty" name:"Instances"`
 
 	// 总数
@@ -2394,7 +2341,6 @@ func (r *ModifyRabbitMQServerlessExchangeRequest) FromJsonString(s string) error
 // Predefined struct for user
 type ModifyRabbitMQServerlessExchangeResponseParams struct {
 	// exchange 名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExchangeName *string `json:"ExchangeName,omitnil,omitempty" name:"ExchangeName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2640,7 +2586,6 @@ func (r *ModifyRabbitMQServerlessQueueRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyRabbitMQServerlessQueueResponseParams struct {
 	// 队列名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2839,45 +2784,35 @@ type QueueQuota struct {
 	MaxQueue *int64 `json:"MaxQueue,omitnil,omitempty" name:"MaxQueue"`
 
 	// 已创建Queue数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedQueue *int64 `json:"UsedQueue,omitnil,omitempty" name:"UsedQueue"`
 }
 
 type RabbitMQBindingListInfo struct {
 	// 路由关系id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindingId *int64 `json:"BindingId,omitnil,omitempty" name:"BindingId"`
 
 	// Vhost参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 源exchange名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 目标类型,queue或exchange
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DestinationType *string `json:"DestinationType,omitnil,omitempty" name:"DestinationType"`
 
 	// 目标资源名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Destination *string `json:"Destination,omitnil,omitempty" name:"Destination"`
 
 	// 绑定key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoutingKey *string `json:"RoutingKey,omitnil,omitempty" name:"RoutingKey"`
 
 	// 源exchange类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceExchangeType *string `json:"SourceExchangeType,omitnil,omitempty" name:"SourceExchangeType"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
@@ -2895,14 +2830,12 @@ type RabbitMQClusterInfo struct {
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 集群说明信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// VPC及网络信息
 	Vpcs []*VpcEndpointInfo `json:"Vpcs,omitnil,omitempty" name:"Vpcs"`
 
 	// 可用区信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 虚拟主机数量
@@ -2933,38 +2866,30 @@ type RabbitMQClusterInfo struct {
 	ExchangeNumber *int64 `json:"ExchangeNumber,omitnil,omitempty" name:"ExchangeNumber"`
 
 	// 集群异常信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExceptionInformation *string `json:"ExceptionInformation,omitnil,omitempty" name:"ExceptionInformation"`
 
 	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
 	ClusterStatus *int64 `json:"ClusterStatus,omitnil,omitempty" name:"ClusterStatus"`
 
 	// 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 是否开启镜像队列策略。1表示开启，0表示没开启。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MirrorQueuePolicyFlag *int64 `json:"MirrorQueuePolicyFlag,omitnil,omitempty" name:"MirrorQueuePolicyFlag"`
 
 	// 每秒消费消息数 单位：条/秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageConsumeRate *float64 `json:"MessageConsumeRate,omitnil,omitempty" name:"MessageConsumeRate"`
 
 	// 集群版本信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterVersion *string `json:"ClusterVersion,omitnil,omitempty" name:"ClusterVersion"`
 
 	// 计费模式，0-后付费，1-预付费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 集群类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 消息保留时间，单位小时
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageRetainTime *uint64 `json:"MessageRetainTime,omitnil,omitempty" name:"MessageRetainTime"`
 }
 
@@ -2999,41 +2924,32 @@ type RabbitMQClusterSpecInfo struct {
 
 type RabbitMQConnection struct {
 	// 连接名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConnectionName *string `json:"ConnectionName,omitnil,omitempty" name:"ConnectionName"`
 
 	// 客户端ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PeerHost *string `json:"PeerHost,omitnil,omitempty" name:"PeerHost"`
 
 	// 连接状态，包括 starting、tuning、opening、running、flow、blocking、blocked、closing 和 closed
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
 	// 连接使用用户
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
 	// 是否开启ssl
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SSL *bool `json:"SSL,omitnil,omitempty" name:"SSL"`
 
 	// 连接协议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 连接下的channel数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Channels *int64 `json:"Channels,omitnil,omitempty" name:"Channels"`
 }
 
 type RabbitMQConsumersListInfo struct {
 	// 客户端Ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientIp *string `json:"ClientIp,omitnil,omitempty" name:"ClientIp"`
 
 	// 消费者Tag
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumerTag *string `json:"ConsumerTag,omitnil,omitempty" name:"ConsumerTag"`
 }
 
@@ -3042,62 +2958,48 @@ type RabbitMQExchangeListInfo struct {
 	ExchangeName *string `json:"ExchangeName,omitnil,omitempty" name:"ExchangeName"`
 
 	// 备注说明
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// exchange 类型, 支持 "fanout","direct","topic","headers"
 	ExchangeType *string `json:"ExchangeType,omitnil,omitempty" name:"ExchangeType"`
 
 	// VHost参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// exchange 创建者, "system":"系统创建", "user":"用户创建"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExchangeCreator *string `json:"ExchangeCreator,omitnil,omitempty" name:"ExchangeCreator"`
 
 	// exchange 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTimeStamp *string `json:"CreateTimeStamp,omitnil,omitempty" name:"CreateTimeStamp"`
 
 	// exchange 修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModTimeStamp *string `json:"ModTimeStamp,omitnil,omitempty" name:"ModTimeStamp"`
 
 	// 输入消息速率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageRateIn *float64 `json:"MessageRateIn,omitnil,omitempty" name:"MessageRateIn"`
 
 	// 输出消息速率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageRateOut *float64 `json:"MessageRateOut,omitnil,omitempty" name:"MessageRateOut"`
 
 	// 是否为持久化交换机，true 为持久化，false 为非持久化
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Durable *bool `json:"Durable,omitnil,omitempty" name:"Durable"`
 
 	// 是否为自动删除交换机，true 为自动删除，false 为非自动删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoDelete *bool `json:"AutoDelete,omitnil,omitempty" name:"AutoDelete"`
 
 	// 是否为内部交换机，true 为内部交换机
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Internal *bool `json:"Internal,omitnil,omitempty" name:"Internal"`
 
 	// 交换机所属实例 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 生效的策略名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Policy *string `json:"Policy,omitnil,omitempty" name:"Policy"`
 
 	// 扩展参数 key-value 对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Arguments *string `json:"Arguments,omitnil,omitempty" name:"Arguments"`
 
 	// 未调度的延时消息数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessagesDelayed *uint64 `json:"MessagesDelayed,omitnil,omitempty" name:"MessagesDelayed"`
 }
 
@@ -3112,29 +3014,23 @@ type RabbitMQPermission struct {
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 权限类型，declare相关操作，该用户可操作该vhost下的资源名称正则表达式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigRegexp *string `json:"ConfigRegexp,omitnil,omitempty" name:"ConfigRegexp"`
 
 	// 权限类型，消息写入相关操作，该用户可操作该vhost下的资源名称正则表达式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WriteRegexp *string `json:"WriteRegexp,omitnil,omitempty" name:"WriteRegexp"`
 
 	// 权限类型，消息读取相关操作，该用户可操作该vhost下的资源名称正则表达式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadRegexp *string `json:"ReadRegexp,omitnil,omitempty" name:"ReadRegexp"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
 type RabbitMQQueueListConsumerDetailInfo struct {
 	// 消费者数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumersNumber *int64 `json:"ConsumersNumber,omitnil,omitempty" name:"ConsumersNumber"`
 }
 
@@ -3143,107 +3039,82 @@ type RabbitMQQueueListInfo struct {
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 
 	// 备注说明
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 消费者信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumerDetail *RabbitMQQueueListConsumerDetailInfo `json:"ConsumerDetail,omitnil,omitempty" name:"ConsumerDetail"`
 
 	// 队列类型，取值 "classic"，"quorum"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueType *string `json:"QueueType,omitnil,omitempty" name:"QueueType"`
 
 	// 消息堆积数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageHeapCount *int64 `json:"MessageHeapCount,omitnil,omitempty" name:"MessageHeapCount"`
 
 	// 消息生产速率，每秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageRateIn *float64 `json:"MessageRateIn,omitnil,omitempty" name:"MessageRateIn"`
 
 	// 消息消费速率，每秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageRateOut *float64 `json:"MessageRateOut,omitnil,omitempty" name:"MessageRateOut"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 队列是否持久化，true 为持久化，false 为非持久化
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Durable *bool `json:"Durable,omitnil,omitempty" name:"Durable"`
 
 	// 队列是否为自动删除队列，true 为自动删除，false 为非自动删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoDelete *bool `json:"AutoDelete,omitnil,omitempty" name:"AutoDelete"`
 
 	// 队列所属实例 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 队列所属虚拟主机名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 队列所在主节点名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Node *string `json:"Node,omitnil,omitempty" name:"Node"`
 
 	// 生效的策略名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Policy *string `json:"Policy,omitnil,omitempty" name:"Policy"`
 
 	// 扩展参数 key-value 对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Arguments *string `json:"Arguments,omitnil,omitempty" name:"Arguments"`
 
 	// 是否独占队列
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Exclusive *bool `json:"Exclusive,omitnil,omitempty" name:"Exclusive"`
 }
 
 type RabbitMQServerlessAccessInfo struct {
 	// 公网域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicAccessEndpoint *string `json:"PublicAccessEndpoint,omitnil,omitempty" name:"PublicAccessEndpoint"`
 
 	// 公网状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicDataStreamStatus *string `json:"PublicDataStreamStatus,omitnil,omitempty" name:"PublicDataStreamStatus"`
 }
 
 type RabbitMQServerlessEndpoint struct {
 	// vpc id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// subnet id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 接入地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcEndpoint *string `json:"VpcEndpoint,omitnil,omitempty" name:"VpcEndpoint"`
 
 	// 接入地址状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcDataStreamEndpointStatus *string `json:"VpcDataStreamEndpointStatus,omitnil,omitempty" name:"VpcDataStreamEndpointStatus"`
 
 	// 是否是公网
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicNetwork *bool `json:"PublicNetwork,omitnil,omitempty" name:"PublicNetwork"`
 
 	// 访问策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessStrategy *string `json:"AccessStrategy,omitnil,omitempty" name:"AccessStrategy"`
 
 	// 带宽
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 }
 
@@ -3276,22 +3147,18 @@ type RabbitMQServerlessInstance struct {
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 集群规格
 	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
 
 	// 异常信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExceptionInformation *string `json:"ExceptionInformation,omitnil,omitempty" name:"ExceptionInformation"`
 
 	// 公网接入点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicAccessEndpoint *string `json:"PublicAccessEndpoint,omitnil,omitempty" name:"PublicAccessEndpoint"`
 
 	// 私有网络接入点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vpcs []*RabbitMQServerlessEndpoint `json:"Vpcs,omitnil,omitempty" name:"Vpcs"`
 
 	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
@@ -3308,15 +3175,16 @@ type RabbitMQServerlessInstance struct {
 
 	// 为了兼容托管版，固定值 0
 	MaxStorage *int64 `json:"MaxStorage,omitnil,omitempty" name:"MaxStorage"`
+
+	// 隔离时间
+	IsolatedTime *uint64 `json:"IsolatedTime,omitnil,omitempty" name:"IsolatedTime"`
 }
 
 type RabbitMQServerlessWhiteListInfo struct {
 	// 公网数据流白名单
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicDataStreamWhiteList *string `json:"PublicDataStreamWhiteList,omitnil,omitempty" name:"PublicDataStreamWhiteList"`
 
 	// 公网数据流白名单状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicDataStreamWhiteListStatus *string `json:"PublicDataStreamWhiteListStatus,omitnil,omitempty" name:"PublicDataStreamWhiteListStatus"`
 }
 
@@ -3331,11 +3199,9 @@ type RabbitMQUser struct {
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 用户描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 用户标签，用于决定改用户访问RabbitMQ Management的权限范围
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 用户创建时间
@@ -3348,11 +3214,9 @@ type RabbitMQUser struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 该用户所能允许的最大连接数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxConnections *int64 `json:"MaxConnections,omitnil,omitempty" name:"MaxConnections"`
 
 	// 该用户所能允许的最大通道数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxChannels *int64 `json:"MaxChannels,omitnil,omitempty" name:"MaxChannels"`
 }
 
@@ -3364,43 +3228,33 @@ type RabbitMQVirtualHostInfo struct {
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// vhost描述信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// vhost标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// vhost概览统计信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualHostStatistics *RabbitMQVirtualHostStatistics `json:"VirtualHostStatistics,omitnil,omitempty" name:"VirtualHostStatistics"`
 
 	// vhost状态，与原生控制台对应，有running、partial、stopped、unknown
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 消息堆积数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageHeapCount *int64 `json:"MessageHeapCount,omitnil,omitempty" name:"MessageHeapCount"`
 
 	// 输入消息速率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageRateIn *float64 `json:"MessageRateIn,omitnil,omitempty" name:"MessageRateIn"`
 
 	// 输出消息速率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageRateOut *float64 `json:"MessageRateOut,omitnil,omitempty" name:"MessageRateOut"`
 
 	// 是否存在镜像队列策略，true 为存在，false 为不存
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MirrorQueuePolicyFlag *bool `json:"MirrorQueuePolicyFlag,omitnil,omitempty" name:"MirrorQueuePolicyFlag"`
 }
 
@@ -3431,11 +3285,9 @@ type UserQuota struct {
 
 type VirtualHostQuota struct {
 	// 最大虚拟主机数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxVirtualHost *uint64 `json:"MaxVirtualHost,omitnil,omitempty" name:"MaxVirtualHost"`
 
 	// 已经使用的虚拟主机数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedVirtualHost *uint64 `json:"UsedVirtualHost,omitnil,omitempty" name:"UsedVirtualHost"`
 }
 
@@ -3451,6 +3303,5 @@ type VpcEndpointInfo struct {
 
 	// vpc接入点状态
 	// OFF/ON/CREATING/DELETING
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcDataStreamEndpointStatus *string `json:"VpcDataStreamEndpointStatus,omitnil,omitempty" name:"VpcDataStreamEndpointStatus"`
 }

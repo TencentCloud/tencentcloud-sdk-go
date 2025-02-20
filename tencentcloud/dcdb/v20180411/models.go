@@ -269,6 +269,67 @@ func (r *CancelDcnJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CancelOnlineDDLJobRequestParams struct {
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 要暂停的 Online DDL 任务对应的流程Id。创建任务时，CreateOnlineDDLJob 会返回此流程Id
+	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+}
+
+type CancelOnlineDDLJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 要暂停的 Online DDL 任务对应的流程Id。创建任务时，CreateOnlineDDLJob 会返回此流程Id
+	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+}
+
+func (r *CancelOnlineDDLJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelOnlineDDLJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "FlowId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelOnlineDDLJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelOnlineDDLJobResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CancelOnlineDDLJobResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelOnlineDDLJobResponseParams `json:"Response"`
+}
+
+func (r *CancelOnlineDDLJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelOnlineDDLJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CloneAccountRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -1858,6 +1919,35 @@ type DCDBShardInfo struct {
 
 	// 分片ShardKey的范围（总共64个哈希值），例如： 0-31，32-63
 	Range *string `json:"Range,omitnil,omitempty" name:"Range"`
+}
+
+type DDLDetail struct {
+	// 分片Id
+	ShardSerialId *string `json:"ShardSerialId,omitnil,omitempty" name:"ShardSerialId"`
+
+	// 数据库
+	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+
+	// 表
+	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
+
+	// 执行的DDL任务内容
+	Alter *string `json:"Alter,omitnil,omitempty" name:"Alter"`
+
+	// 开始执行时间
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 当前任务状态。0 成功； 1失败；  2进行中
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务详细描述信息
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 任务当前所处阶段
+	Stage *string `json:"Stage,omitnil,omitempty" name:"Stage"`
+
+	// 切换状态：1: 未到切换阶段；2：正在等待进行表切换；3: 正在进行切换；4: 切换成功；5: 切换失败
+	SwitchStatus *int64 `json:"SwitchStatus,omitnil,omitempty" name:"SwitchStatus"`
 }
 
 type Database struct {
@@ -4455,6 +4545,79 @@ func (r *DescribeLogFileRetentionPeriodResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLogFileRetentionPeriodResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOnlineDDLJobRequestParams struct {
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// Online DDL 对应的流程Id。创建任务时，CreateOnlineDDLJob 会返回此流程Id
+	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+}
+
+type DescribeOnlineDDLJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// Online DDL 对应的流程Id。创建任务时，CreateOnlineDDLJob 会返回此流程Id
+	FlowId *uint64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+}
+
+func (r *DescribeOnlineDDLJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOnlineDDLJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "FlowId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOnlineDDLJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOnlineDDLJobResponseParams struct {
+	// 任务状态。0：成功；1：失败；大于1：进行中
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务进度百分比
+	Process *int64 `json:"Process,omitnil,omitempty" name:"Process"`
+
+	// 错误信息或提示信息
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 各分片DDL执行详情
+	DDLDetails []*DDLDetail `json:"DDLDetails,omitnil,omitempty" name:"DDLDetails"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeOnlineDDLJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOnlineDDLJobResponseParams `json:"Response"`
+}
+
+func (r *DescribeOnlineDDLJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOnlineDDLJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

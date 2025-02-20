@@ -5071,6 +5071,8 @@ type Pod struct {
 
 	// 容器列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: Containers is deprecated.
 	Containers *Container `json:"Containers,omitnil,omitempty" name:"Containers"`
 
 	// 容器列表
@@ -5080,6 +5082,9 @@ type Pod struct {
 	// 容器调用信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CrossTenantENIInfo *CrossTenantENIInfo `json:"CrossTenantENIInfo,omitnil,omitempty" name:"CrossTenantENIInfo"`
+
+	// 实例的状态信息
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type PodInfo struct {

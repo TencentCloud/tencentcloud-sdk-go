@@ -1560,6 +1560,55 @@ func (c *Client) DescribeInstanceListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeProductSKUListRequest() (request *DescribeProductSKUListRequest) {
+    request = &DescribeProductSKUListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DescribeProductSKUList")
+    
+    
+    return
+}
+
+func NewDescribeProductSKUListResponse() (response *DescribeProductSKUListResponse) {
+    response = &DescribeProductSKUListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeProductSKUList
+// 获取产品售卖规格
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeProductSKUList(request *DescribeProductSKUListRequest) (response *DescribeProductSKUListResponse, err error) {
+    return c.DescribeProductSKUListWithContext(context.Background(), request)
+}
+
+// DescribeProductSKUList
+// 获取产品售卖规格
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeProductSKUListWithContext(ctx context.Context, request *DescribeProductSKUListRequest) (response *DescribeProductSKUListResponse, err error) {
+    if request == nil {
+        request = NewDescribeProductSKUListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProductSKUList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProductSKUListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTopicRequest() (request *DescribeTopicRequest) {
     request = &DescribeTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},
