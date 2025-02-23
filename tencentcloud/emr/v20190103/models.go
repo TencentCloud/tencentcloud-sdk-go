@@ -7128,9 +7128,30 @@ type LoadAutoScaleStrategy struct {
 	// "MEMORYGB"表示按照机器内存数计算。
 	MeasureMethod *string `json:"MeasureMethod,omitnil,omitempty" name:"MeasureMethod"`
 
+	// 节点部署服务列表，例如["HDFS-3.1.2","YARN-3.1.2"]。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SoftDeployDesc []*string `json:"SoftDeployDesc,omitnil,omitempty" name:"SoftDeployDesc"`
+
+	// 启动进程列表，例如["NodeManager"]。
+	ServiceNodeDesc *string `json:"ServiceNodeDesc,omitnil,omitempty" name:"ServiceNodeDesc"`
+
+	// 启动进程列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceNodeInfo []*int64 `json:"ServiceNodeInfo,omitnil,omitempty" name:"ServiceNodeInfo"`
+
+	// 节点部署服务列表。部署服务仅填写HDFS、YARN。[组件名对应的映射关系表](https://cloud.tencent.com/document/product/589/98760)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SoftDeployInfo []*int64 `json:"SoftDeployInfo,omitnil,omitempty" name:"SoftDeployInfo"`
+
 	// 多指标触发条件
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadMetricsConditions *LoadMetricsConditions `json:"LoadMetricsConditions,omitnil,omitempty" name:"LoadMetricsConditions"`
+
+	// 伸缩组Id
+	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// soft例如yarn
+	Soft *string `json:"Soft,omitnil,omitempty" name:"Soft"`
 }
 
 type LoadMetricsCondition struct {

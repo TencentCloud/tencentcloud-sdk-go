@@ -744,6 +744,135 @@ func (r *DescribeGeneralMetricDataResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeGeneralOTSpanListRequestParams struct {
+	// 业务系统 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// Span 查询开始时间戳（单位：秒）
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// Span 查询结束时间戳（单位：秒）
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 通用过滤参数
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序
+	// 现支持的 Key 有：
+	// 
+	// - startTime(开始时间)
+	// - endTime(结束时间)
+	// - duration(响应时间)
+	// 
+	// 现支持的 Value 有：
+	// 
+	// - desc(降序排序)
+	// - asc(升序排序)
+	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 业务自身服务名，控制台用户请填写taw
+	BusinessName *string `json:"BusinessName,omitnil,omitempty" name:"BusinessName"`
+
+	// 单页项目个数，默认为10000，合法取值范围为0～10000
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeGeneralOTSpanListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务系统 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// Span 查询开始时间戳（单位：秒）
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// Span 查询结束时间戳（单位：秒）
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 通用过滤参数
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序
+	// 现支持的 Key 有：
+	// 
+	// - startTime(开始时间)
+	// - endTime(结束时间)
+	// - duration(响应时间)
+	// 
+	// 现支持的 Value 有：
+	// 
+	// - desc(降序排序)
+	// - asc(升序排序)
+	OrderBy *OrderBy `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 业务自身服务名，控制台用户请填写taw
+	BusinessName *string `json:"BusinessName,omitnil,omitempty" name:"BusinessName"`
+
+	// 单页项目个数，默认为10000，合法取值范围为0～10000
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeGeneralOTSpanListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGeneralOTSpanListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Filters")
+	delete(f, "OrderBy")
+	delete(f, "BusinessName")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGeneralOTSpanListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGeneralOTSpanListResponseParams struct {
+	// 总数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 装有查询结果 Spans 的 Trace 结构体。OpenTelemetry 标准 Trace 结构体哈希后的字符串，先将 Trace 利用 ptrace.JSONMarshaler 转换成 Json 字符串，再用 gzip 压缩，最后转换成 base64 标准的字符串。
+	Spans *string `json:"Spans,omitnil,omitempty" name:"Spans"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeGeneralOTSpanListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGeneralOTSpanListResponseParams `json:"Response"`
+}
+
+func (r *DescribeGeneralOTSpanListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGeneralOTSpanListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeGeneralSpanListRequestParams struct {
 	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

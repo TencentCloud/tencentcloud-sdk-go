@@ -1144,7 +1144,6 @@ type DevicePayModeInfo struct {
 	PayModeDesc *string `json:"PayModeDesc,omitnil,omitempty" name:"PayModeDesc"`
 
 	// 流量包ID，仅当付费模式为流量包类型时才有。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
@@ -1283,7 +1282,6 @@ type FlowPackageInfo struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 购买时间，Unix时间戳格式，单位：秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 生效时间，Unix时间戳格式，单位：秒
@@ -2998,7 +2996,6 @@ type GroupInfo struct {
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 分组描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 分组中的设备数量
@@ -3007,85 +3004,67 @@ type GroupInfo struct {
 
 type Hardware struct {
 	// 硬件序列号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SN *string `json:"SN,omitnil,omitempty" name:"SN"`
 
 	// license计费模式：
 	// 1，租户付费
 	// 2，厂商月付费
 	// 3，厂商永久授权
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LicenseChargingMode *int64 `json:"LicenseChargingMode,omitnil,omitempty" name:"LicenseChargingMode"`
 
 	// 设备描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 硬件ID，入参无需传递
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HardwareId *string `json:"HardwareId,omitnil,omitempty" name:"HardwareId"`
 }
 
 type HardwareInfo struct {
 	// 设备ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 设备名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 激活时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActiveTime *string `json:"ActiveTime,omitnil,omitempty" name:"ActiveTime"`
 
 	// 最后在线时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastOnlineTime *string `json:"LastOnlineTime,omitnil,omitempty" name:"LastOnlineTime"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 厂商备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VendorDescription *string `json:"VendorDescription,omitnil,omitempty" name:"VendorDescription"`
 
 	// license计费模式： 1，租户月付费 2，厂商月付费 3，license永久授权
 	// 注：后续将废弃此参数，新接入请使用LicensePayMode和Payer
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LicenseChargingMode *int64 `json:"LicenseChargingMode,omitnil,omitempty" name:"LicenseChargingMode"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 硬件序列号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SN *string `json:"SN,omitnil,omitempty" name:"SN"`
 
 	// license授权有效期 
 	// 0：月度授权 
 	// 1：永久授权
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LicensePayMode *int64 `json:"LicensePayMode,omitnil,omitempty" name:"LicensePayMode"`
 
 	// 付费方 
 	// 0：客户付费 
 	// 1：厂商付费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Payer *int64 `json:"Payer,omitnil,omitempty" name:"Payer"`
 
 	// 设备分组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 设备分组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 设备无流量包处理方式，0: 按量付费，1: 截断加速	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowTrunc *int64 `json:"FlowTrunc,omitnil,omitempty" name:"FlowTrunc"`
 }
 
@@ -3109,7 +3088,6 @@ type L3ConnInfo struct {
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 互通规则描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -3179,11 +3157,9 @@ type MonitorData struct {
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 
 	// 业务指标（bps/ms/%）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessMetrics *float64 `json:"BusinessMetrics,omitnil,omitempty" name:"BusinessMetrics"`
 
 	// 网卡状态信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlotNetInfo []*SlotNetInfo `json:"SlotNetInfo,omitnil,omitempty" name:"SlotNetInfo"`
 }
 
@@ -3495,15 +3471,12 @@ func (r *SetNotifyUrlResponse) FromJsonString(s string) error {
 
 type SlotNetInfo struct {
 	// 网卡名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetInfoName *string `json:"NetInfoName,omitnil,omitempty" name:"NetInfoName"`
 
 	// 公网IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIP *string `json:"PublicIP,omitnil,omitempty" name:"PublicIP"`
 
 	// 指标数据（bps/ms/%）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Current *float64 `json:"Current,omitnil,omitempty" name:"Current"`
 }
 
@@ -3966,7 +3939,6 @@ type VendorHardware struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 激活时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActiveTime *string `json:"ActiveTime,omitnil,omitempty" name:"ActiveTime"`
 
 	// 厂商备注
@@ -3980,7 +3952,6 @@ type VendorHardware struct {
 	LicenseChargingMode *int64 `json:"LicenseChargingMode,omitnil,omitempty" name:"LicenseChargingMode"`
 
 	// 最后在线时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastOnlineTime *string `json:"LastOnlineTime,omitnil,omitempty" name:"LastOnlineTime"`
 
 	// license授权有效期

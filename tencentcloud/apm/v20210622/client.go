@@ -364,6 +364,67 @@ func (c *Client) DescribeGeneralMetricDataWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeGeneralOTSpanListRequest() (request *DescribeGeneralOTSpanListRequest) {
+    request = &DescribeGeneralOTSpanListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "DescribeGeneralOTSpanList")
+    
+    
+    return
+}
+
+func NewDescribeGeneralOTSpanListResponse() (response *DescribeGeneralOTSpanListResponse) {
+    response = &DescribeGeneralOTSpanListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGeneralOTSpanList
+// 通用查询 OpenTelemetry 调用链列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeGeneralOTSpanList(request *DescribeGeneralOTSpanListRequest) (response *DescribeGeneralOTSpanListResponse, err error) {
+    return c.DescribeGeneralOTSpanListWithContext(context.Background(), request)
+}
+
+// DescribeGeneralOTSpanList
+// 通用查询 OpenTelemetry 调用链列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeGeneralOTSpanListWithContext(ctx context.Context, request *DescribeGeneralOTSpanListRequest) (response *DescribeGeneralOTSpanListResponse, err error) {
+    if request == nil {
+        request = NewDescribeGeneralOTSpanListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGeneralOTSpanList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGeneralOTSpanListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGeneralSpanListRequest() (request *DescribeGeneralSpanListRequest) {
     request = &DescribeGeneralSpanListRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -110,6 +110,9 @@ type AccessPoint struct {
 
 	// 端口规格信息。
 	AvailablePortInfo []*PortSpecification `json:"AvailablePortInfo,omitnil,omitempty" name:"AvailablePortInfo"`
+
+	// 接入点地址。
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 }
 
 // Predefined struct for user

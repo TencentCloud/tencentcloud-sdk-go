@@ -5379,6 +5379,10 @@ func NewRecognizeGeneralCardWarnResponse() (response *RecognizeGeneralCardWarnRe
 // RecognizeGeneralCardWarn
 // 支持通用证照的有效性检测告警，包括卡证复印件告警、卡证翻拍告警等功能，支持通用证照的ps伪造检测，可以应用于各种证件信息有效性校验场景。
 //
+// 
+//
+// 默认接口请求频率限制：5次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
@@ -5396,6 +5400,10 @@ func (c *Client) RecognizeGeneralCardWarn(request *RecognizeGeneralCardWarnReque
 
 // RecognizeGeneralCardWarn
 // 支持通用证照的有效性检测告警，包括卡证复印件告警、卡证翻拍告警等功能，支持通用证照的ps伪造检测，可以应用于各种证件信息有效性校验场景。
+//
+// 
+//
+// 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -6818,7 +6826,7 @@ func NewRecognizeValidIDCardOCRResponse() (response *RecognizeValidIDCardOCRResp
 //
 // 
 //
-// 默认接口请求频率限制：20次/秒。
+// 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CARDSIDEERROR = "FailedOperation.CardSideError"
@@ -6849,7 +6857,7 @@ func (c *Client) RecognizeValidIDCardOCR(request *RecognizeValidIDCardOCRRequest
 //
 // 
 //
-// 默认接口请求频率限制：20次/秒。
+// 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CARDSIDEERROR = "FailedOperation.CardSideError"
