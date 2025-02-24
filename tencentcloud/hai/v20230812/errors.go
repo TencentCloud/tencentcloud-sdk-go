@@ -89,6 +89,18 @@ const (
 	// 地域非法
 	INVALIDPARAMETERVALUE_REGIONINVALID = "InvalidParameterValue.RegionInvalid"
 
+	// 无法找到指定的安全组
+	INVALIDPARAMETERVALUE_SECURITYGROUPNOTFOUND = "InvalidParameterValue.SecurityGroupNotFound"
+
+	// 入参中若存在子网ID，则必须同时存在VPC ID。
+	INVALIDPARAMETERVALUE_SUBNETMUSTCOEXISTWITHVPC = "InvalidParameterValue.SubnetMustCoexistWithVpc"
+
+	// 无法找到指定的子网，或该子网不属于指定的VPC
+	INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+
+	// 无法找到指定的VPC
+	INVALIDPARAMETERVALUE_VPCNOTFOUND = "InvalidParameterValue.VpcNotFound"
+
 	// 没有配额去为HAI创建新的安全组
 	LIMITEXCEEDED_SECURITYGROUPLIMITEXCEEDED = "LimitExceeded.SecurityGroupLimitExceeded"
 

@@ -4386,72 +4386,41 @@ type STTConfig struct {
 	// 语音转文本不同套餐版本支持的语言如下：
 	// 
 	// **基础版**：
-	// 
 	// - "zh": 中文
-	// 
 	// - "zh-TW": 中国台湾
-	// 
 	// - "en": 英语
 	// 
 	// **标准版：**
-	// 
 	// - "8k_zh_large": 普方大模型引擎. 当前模型同时支持中文等语言的识别，模型参数量极大，语言模型性能增强，针对电话音频中各类场景、各类中文方言的识别准确率极大提升.
-	// 
 	// - "16k_zh_large": 普方英大模型引擎. 当前模型同时支持中文、英文、多种中文方言等语言的识别，模型参数量极大，语言模型性能增强，针对噪声大、回音大、人声小、人声远等低质量音频的识别准确率极大提升.
-	// 
 	// - "16k_multi_lang": 多语种大模型引擎. 当前模型同时支持英语、日语、韩语、阿拉伯语、菲律宾语、法语、印地语、印尼语、马来语、葡萄牙语、西班牙语、泰语、土耳其语、越南语、德语的识别，可实现15个语种的自动识别(句子/段落级别).
-	// 
 	// - "16k_zh_en": 中英大模型引擎. 当前模型同时支持中文、英语识别，模型参数量极大，语言模型性能增强，针对噪声大、回音大、人声小、人声远等低质量音频的识别准确率极大提升.
 	// 
 	// **高级版：**
-	// 
 	// - "zh-dialect": 中国方言
-	// 
 	// - "zh-yue": 中国粤语
-	// 
 	// - "vi": 越南语
-	// 
 	// - "ja": 日语
-	// 
 	// - "ko": 韩语
-	// 
 	// - "id": 印度尼西亚语
-	// 
 	// - "th": 泰语
-	// 
 	// - "pt": 葡萄牙语
-	// 
 	// - "tr": 土耳其语
-	// 
 	// - "ar": 阿拉伯语
-	// 
 	// - "es": 西班牙语
-	// 
 	// - "hi": 印地语
-	// 
 	// - "fr": 法语
-	// 
 	// - "ms": 马来语
-	// 
 	// - "fil": 菲律宾语
-	// 
 	// - "de": 德语
-	// 
 	// - "it": 意大利语
-	// 
 	// - "ru": 俄语
-	// 
 	// - "sv": 瑞典语
-	// 
 	// - "da": 丹麦语
-	// 
 	// - "no": 挪威语
 	// 
 	// **注意：**
-	// 
 	// 如果缺少满足您需求的语言，请联系我们技术人员。
-	// 
-	// 示例值：zh
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 
 	// **发起模糊识别为高级版能力,默认按照高级版收费,仅支持填写基础版和高级版语言.**
@@ -4598,6 +4567,9 @@ type StartAIConversationRequestParams struct {
 	// TTS配置，为JSON字符串，腾讯云TTS示例如下：
 	//  <pre>{ <br> &emsp; "AppId": 您的应用ID, // Integer 必填<br> &emsp; "TTSType": "TTS类型", // String TTS类型, 固定为"tencent"<br> &emsp; "SecretId": "您的密钥ID", // String 必填<br> &emsp; "SecretKey":  "您的密钥Key", // String 必填<br> &emsp; "VoiceType": 101001, // Integer  必填，音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见<a href="https://cloud.tencent.com/document/product/1073/34112">语音合成计费概述</a>。完整的音色 ID 列表请参见<a href="https://cloud.tencent.com/document/product/1073/92668#55924b56-1a73-4663-a7a1-a8dd82d6e823">语音合成音色列表</a>。<br> &emsp; "Speed": 1.25, // Integer 非必填，语速，范围：[-2，6]，分别对应不同语速： -2: 代表0.6倍 -1: 代表0.8倍 0: 代表1.0倍（默认） 1: 代表1.2倍 2: 代表1.5倍  6: 代表2.5倍  如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。 参数值与实际语速转换，可参考 <a href="https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz">语速转换</a><br> &emsp; "Volume": 5, // Integer 非必填，音量大小，范围：[0，10]，分别对应11个等级的音量，默认值为0，代表正常音量。<br> &emsp; "PrimaryLanguage": "zh-CN" // String 非必填，主要语言<br> &emsp;}</pre>
 	TTSConfig *string `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
+
+	// 数字人配置，为JSON字符串。**数字人配置需要提工单加白后才能使用**
+	AvatarConfig *string `json:"AvatarConfig,omitnil,omitempty" name:"AvatarConfig"`
 }
 
 type StartAIConversationRequest struct {
@@ -4628,6 +4600,9 @@ type StartAIConversationRequest struct {
 	// TTS配置，为JSON字符串，腾讯云TTS示例如下：
 	//  <pre>{ <br> &emsp; "AppId": 您的应用ID, // Integer 必填<br> &emsp; "TTSType": "TTS类型", // String TTS类型, 固定为"tencent"<br> &emsp; "SecretId": "您的密钥ID", // String 必填<br> &emsp; "SecretKey":  "您的密钥Key", // String 必填<br> &emsp; "VoiceType": 101001, // Integer  必填，音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见<a href="https://cloud.tencent.com/document/product/1073/34112">语音合成计费概述</a>。完整的音色 ID 列表请参见<a href="https://cloud.tencent.com/document/product/1073/92668#55924b56-1a73-4663-a7a1-a8dd82d6e823">语音合成音色列表</a>。<br> &emsp; "Speed": 1.25, // Integer 非必填，语速，范围：[-2，6]，分别对应不同语速： -2: 代表0.6倍 -1: 代表0.8倍 0: 代表1.0倍（默认） 1: 代表1.2倍 2: 代表1.5倍  6: 代表2.5倍  如果需要更细化的语速，可以保留小数点后 2 位，例如0.5/1.25/2.81等。 参数值与实际语速转换，可参考 <a href="https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz">语速转换</a><br> &emsp; "Volume": 5, // Integer 非必填，音量大小，范围：[0，10]，分别对应11个等级的音量，默认值为0，代表正常音量。<br> &emsp; "PrimaryLanguage": "zh-CN" // String 非必填，主要语言<br> &emsp;}</pre>
 	TTSConfig *string `json:"TTSConfig,omitnil,omitempty" name:"TTSConfig"`
+
+	// 数字人配置，为JSON字符串。**数字人配置需要提工单加白后才能使用**
+	AvatarConfig *string `json:"AvatarConfig,omitnil,omitempty" name:"AvatarConfig"`
 }
 
 func (r *StartAIConversationRequest) ToJsonString() string {
@@ -4650,6 +4625,7 @@ func (r *StartAIConversationRequest) FromJsonString(s string) error {
 	delete(f, "STTConfig")
 	delete(f, "LLMConfig")
 	delete(f, "TTSConfig")
+	delete(f, "AvatarConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartAIConversationRequest has unknown keys!", "")
 	}

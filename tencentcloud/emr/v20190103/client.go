@@ -1537,6 +1537,57 @@ func (c *Client) DescribeCvmQuotaWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeDAGInfoRequest() (request *DescribeDAGInfoRequest) {
+    request = &DescribeDAGInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeDAGInfo")
+    
+    
+    return
+}
+
+func NewDescribeDAGInfoResponse() (response *DescribeDAGInfoResponse) {
+    response = &DescribeDAGInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDAGInfo
+// 查询DAG信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeDAGInfo(request *DescribeDAGInfoRequest) (response *DescribeDAGInfoResponse, err error) {
+    return c.DescribeDAGInfoWithContext(context.Background(), request)
+}
+
+// DescribeDAGInfo
+// 查询DAG信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDCLUSTERID = "InvalidParameter.InvalidClusterId"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeDAGInfoWithContext(ctx context.Context, request *DescribeDAGInfoRequest) (response *DescribeDAGInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDAGInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDAGInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDAGInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEmrApplicationStaticsRequest() (request *DescribeEmrApplicationStaticsRequest) {
     request = &DescribeEmrApplicationStaticsRequest{
         BaseRequest: &tchttp.BaseRequest{},

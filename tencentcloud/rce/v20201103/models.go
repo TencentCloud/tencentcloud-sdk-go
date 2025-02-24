@@ -97,15 +97,11 @@ func (r *CreateNameListResponse) FromJsonString(s string) error {
 
 type DataAuthorizationInfo struct {
 	// 数据委托方、需求方：客户主体名称。
-	// 
-	// 示例值：某某有限公司。
 	DataProviderName *string `json:"DataProviderName,omitnil,omitempty" name:"DataProviderName"`
 
 	// 数据受托方、提供方：腾讯云主体名称。
 	// 
 	// 固定填：腾讯云计算（北京）有限责任公司
-	// 
-	// 示例值：腾讯云计算（北京）有限责任公司
 	DataRecipientName *string `json:"DataRecipientName,omitnil,omitempty" name:"DataRecipientName"`
 
 	// 客户请求RCE所提供的用户数据类型，支持多选。实际以接口请求传参为准。
@@ -119,38 +115,28 @@ type DataAuthorizationInfo struct {
 	// 4-IP地址；
 	// 
 	// 999-其它；
-	// 
-	// 示例值：[1, 4]
 	UserDataType []*uint64 `json:"UserDataType,omitnil,omitempty" name:"UserDataType"`
 
 	// 客户是否已按[合规指南](https://rule.tencent.com/rule/202409130001)要求获取用户授权，同意客户委托腾讯云处理入参信息
 	// 1-已授权；其它值为未授权。
-	// 示例值：1
 	IsAuthorize *uint64 `json:"IsAuthorize,omitnil,omitempty" name:"IsAuthorize"`
 
 	// 客户是否已按[合规指南](https://rule.tencent.com/rule/202409130001)要求获取用户授权，同意腾讯云结合客户提供的信息，对已合法收集的用户数据进行必要处理得出服务结果，并返回给客户。
 	// 1-已授权；其它值为未授权。
-	// 示例值：1
 	IsOrderHandling *uint64 `json:"IsOrderHandling,omitnil,omitempty" name:"IsOrderHandling"`
 
 	// 客户获得的用户授权期限时间戳（单位秒）。
 	// 
 	// 不填默认无固定期限。
-	// 
-	// 示例值：1719805604
 	AuthorizationTerm *uint64 `json:"AuthorizationTerm,omitnil,omitempty" name:"AuthorizationTerm"`
 
 	// 	
 	// 客户获得用户授权所依赖的协议地址。
-	// 
-	// 示例值：https://www.*****.com/*
 	PrivacyPolicyLink *string `json:"PrivacyPolicyLink,omitnil,omitempty" name:"PrivacyPolicyLink"`
 
 	// 是否是用户个人敏感数据（不推荐使用）。
 	// 
 	// 固定填：1。
-	// 
-	// 示例值：1
 	IsPersonalData *uint64 `json:"IsPersonalData,omitnil,omitempty" name:"IsPersonalData"`
 }
 
@@ -161,10 +147,10 @@ type DataContentInfo struct {
 	// 名单数据描述
 	DataRemark *string `json:"DataRemark,omitnil,omitempty" name:"DataRemark"`
 
-	// 名单数据开始时间，时间格式示例"2024-05-05 12:10:15"
+	// 名单数据开始时间
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 名单数据结束时间，时间格式示例"2024-05-05 12:10:15"
+	// 名单数据结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -773,10 +759,10 @@ type InputModifyNameListDataFront struct {
 	// 名单数据内容
 	DataContent *string `json:"DataContent,omitnil,omitempty" name:"DataContent"`
 
-	// 名单数据开始时间，时间格式示例"2024-05-05 12:10:15"
+	// 名单数据开始时间
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 名单数据结束时间，时间格式示例"2024-05-05 12:10:15"
+	// 名单数据结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 记录状态 [1 启用 2 停用]
@@ -983,7 +969,9 @@ type OnlineScamInfo struct {
 	// 1：广播。
 	ContentType *int64 `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
-	// 类型
+	// 账号类型
+	// 1：手机号
+	// 2：uin账号
 	FraudType *int64 `json:"FraudType,omitnil,omitempty" name:"FraudType"`
 
 	// 账号
@@ -1010,7 +998,6 @@ type OtherAccountInfo struct {
 
 type OuntputDescribeDataListInfo struct {
 	// 数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 列表
@@ -1032,11 +1019,9 @@ type OutputCreateNameListFront struct {
 
 type OutputDeleteNameListData struct {
 	// 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 空数组
@@ -1069,29 +1054,25 @@ type OutputDescribeDataListFront struct {
 	// 数据来源，固定传2（手工录入）
 	DataSource *int64 `json:"DataSource,omitnil,omitempty" name:"DataSource"`
 
-	// 名单数据开始时间，时间格式示例"2024-05-05 12:10:15"
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 名单数据开始时间
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 名单数据结束时间，时间格式示例"2024-05-05 12:10:15"
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 名单数据结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 名单数据状态 [1 启用 2 停用]
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 名单数据描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 名单数据创建时间，时间格式示例"2024-05-05 12:10:15"
+	// 名单数据创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 名单数据更新时间，时间格式示例"2024-05-05 12:10:15"
+	// 名单数据更新时间
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 加密名单数据内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptDataContent *string `json:"EncryptDataContent,omitnil,omitempty" name:"EncryptDataContent"`
 }
 
@@ -1138,11 +1119,11 @@ type OutputDescribeNameListDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 创建时间，时间格式示例"2024-05-05 12:10:15"
+	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间，时间格式示例"2024-05-05 12:10:15"
+	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
@@ -1187,10 +1168,10 @@ type OutputDescribeNameListFrontFix struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 创建时间，时间格式示例"2024-05-05 12:10:15"
+	// 创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 更新时间，时间格式示例"2024-05-05 12:10:15"
+	// 更新时间
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 有效数据/数据总数

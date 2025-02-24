@@ -14826,6 +14826,9 @@ type LiveStreamMonitorInputInfo struct {
 
 	// 该输入源是否正在监播
 	NeedMonitor *bool `json:"NeedMonitor,omitnil,omitempty" name:"NeedMonitor"`
+
+	// 导播台pvw pgm的cdn流id
+	CdnStreamId *string `json:"CdnStreamId,omitnil,omitempty" name:"CdnStreamId"`
 }
 
 type LiveStreamMonitorNotifyPolicy struct {

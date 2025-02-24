@@ -346,6 +346,7 @@ func NewAddCustomRuleResponse() (response *AddCustomRuleResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETERVALUE_CELSYNTAXERR = "InvalidParameterValue.CELSyntaxErr"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -359,6 +360,7 @@ func (c *Client) AddCustomRule(request *AddCustomRuleRequest) (response *AddCust
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETERVALUE_CELSYNTAXERR = "InvalidParameterValue.CELSyntaxErr"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_SPECIFICATIONERR = "LimitExceeded.SpecificationErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -1783,6 +1785,8 @@ func NewDeleteIpAccessControlV2Response() (response *DeleteIpAccessControlV2Resp
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteIpAccessControlV2(request *DeleteIpAccessControlV2Request) (response *DeleteIpAccessControlV2Response, err error) {
     return c.DeleteIpAccessControlV2WithContext(context.Background(), request)
@@ -1796,6 +1800,8 @@ func (c *Client) DeleteIpAccessControlV2(request *DeleteIpAccessControlV2Request
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteIpAccessControlV2WithContext(ctx context.Context, request *DeleteIpAccessControlV2Request) (response *DeleteIpAccessControlV2Response, err error) {
     if request == nil {
@@ -2943,6 +2949,8 @@ func NewDescribeBatchIpAccessControlResponse() (response *DescribeBatchIpAccessC
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeBatchIpAccessControl(request *DescribeBatchIpAccessControlRequest) (response *DescribeBatchIpAccessControlResponse, err error) {
     return c.DescribeBatchIpAccessControlWithContext(context.Background(), request)
 }
@@ -2953,6 +2961,8 @@ func (c *Client) DescribeBatchIpAccessControl(request *DescribeBatchIpAccessCont
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeBatchIpAccessControlWithContext(ctx context.Context, request *DescribeBatchIpAccessControlRequest) (response *DescribeBatchIpAccessControlResponse, err error) {
     if request == nil {
         request = NewDescribeBatchIpAccessControlRequest()
@@ -4433,6 +4443,8 @@ func NewDescribeIpAccessControlResponse() (response *DescribeIpAccessControlResp
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeIpAccessControl(request *DescribeIpAccessControlRequest) (response *DescribeIpAccessControlResponse, err error) {
     return c.DescribeIpAccessControlWithContext(context.Background(), request)
 }
@@ -4443,6 +4455,8 @@ func (c *Client) DescribeIpAccessControl(request *DescribeIpAccessControlRequest
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeIpAccessControlWithContext(ctx context.Context, request *DescribeIpAccessControlRequest) (response *DescribeIpAccessControlResponse, err error) {
     if request == nil {
         request = NewDescribeIpAccessControlRequest()
@@ -7245,6 +7259,8 @@ func NewModifyCustomRuleResponse() (response *ModifyCustomRuleResponse) {
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CELLENGTHEXCEEDLIMIT = "InvalidParameterValue.CELLengthExceedLimit"
+//  INVALIDPARAMETERVALUE_CELSYNTAXERR = "InvalidParameterValue.CELSyntaxErr"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINUSE = "ResourceInUse"
@@ -7268,6 +7284,8 @@ func (c *Client) ModifyCustomRule(request *ModifyCustomRuleRequest) (response *M
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CELLENGTHEXCEEDLIMIT = "InvalidParameterValue.CELLengthExceedLimit"
+//  INVALIDPARAMETERVALUE_CELSYNTAXERR = "InvalidParameterValue.CELSyntaxErr"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINUSE = "ResourceInUse"

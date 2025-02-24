@@ -2029,6 +2029,17 @@ type CustomServiceDefine struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type DAGInfo struct {
+	// 查询ID
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// DAG类型，目前只支持starrocks
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 返回的DAG的JSON字符串
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
 type DayRepeatStrategy struct {
 	// 重复任务执行的具体时刻，例如"01:02:00"
 	ExecuteAtTimeOfDay *string `json:"ExecuteAtTimeOfDay,omitnil,omitempty" name:"ExecuteAtTimeOfDay"`
@@ -2912,6 +2923,81 @@ func (r *DescribeCvmQuotaResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCvmQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDAGInfoRequestParams struct {
+	// 集群ID
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// DAG类型，目前只支持STARROCKS
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 查询ID列表,最大长度为1
+	IDList []*string `json:"IDList,omitnil,omitempty" name:"IDList"`
+}
+
+type DescribeDAGInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// DAG类型，目前只支持STARROCKS
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 查询ID列表,最大长度为1
+	IDList []*string `json:"IDList,omitnil,omitempty" name:"IDList"`
+}
+
+func (r *DescribeDAGInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDAGInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceID")
+	delete(f, "Type")
+	delete(f, "IDList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDAGInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDAGInfoResponseParams struct {
+	// 总数，分页查询时使用
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// Starrocks 查询信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DAGInfoList []*DAGInfo `json:"DAGInfoList,omitnil,omitempty" name:"DAGInfoList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDAGInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDAGInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeDAGInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDAGInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

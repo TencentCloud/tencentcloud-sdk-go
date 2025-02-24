@@ -530,6 +530,8 @@ type AddCustomRuleRequestParams struct {
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
 	// 放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果多个勾选那么以,串接。默认是"geoip,cc,owasp,ai,antileakage"
+	//
+	// Deprecated: Bypass is deprecated.
 	Bypass *string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
 
 	// 添加规则的来源，默认为空
@@ -552,6 +554,9 @@ type AddCustomRuleRequestParams struct {
 
 	// 拦截页面id
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 }
 
 type AddCustomRuleRequest struct {
@@ -604,6 +609,9 @@ type AddCustomRuleRequest struct {
 
 	// 拦截页面id
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 }
 
 func (r *AddCustomRuleRequest) ToJsonString() string {
@@ -634,6 +642,7 @@ func (r *AddCustomRuleRequest) FromJsonString(s string) error {
 	delete(f, "Label")
 	delete(f, "Status")
 	delete(f, "PageId")
+	delete(f, "LogicalOp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCustomRuleRequest has unknown keys!", "")
 	}
@@ -676,17 +685,17 @@ type AddCustomWhiteRuleRequestParams struct {
 	// 优先级
 	SortId *string `json:"SortId,omitnil,omitempty" name:"SortId"`
 
-	// 过期时间
-	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
-
 	// 策略详情
 	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
 
 	// 需要添加策略的域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 放行的详情
+	// 放行的模块，多个模块之间用逗号连接。支持的模块：acl（自定义规则）、owasp（规则引擎）、webshell（恶意文件检测）、geoip（地域封禁）、bwip（IP黑白名单）、cc、botrpc（BOT防护）、antileakage（信息防泄露）、api（API安全）、ai（AI引擎）、ip_auto_deny（IP封禁）、applet（小程序流量风控）
 	Bypass *string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
+
+	// 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
@@ -704,17 +713,17 @@ type AddCustomWhiteRuleRequest struct {
 	// 优先级
 	SortId *string `json:"SortId,omitnil,omitempty" name:"SortId"`
 
-	// 过期时间
-	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
-
 	// 策略详情
 	Strategies []*Strategy `json:"Strategies,omitnil,omitempty" name:"Strategies"`
 
 	// 需要添加策略的域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 放行的详情
+	// 放行的模块，多个模块之间用逗号连接。支持的模块：acl（自定义规则）、owasp（规则引擎）、webshell（恶意文件检测）、geoip（地域封禁）、bwip（IP黑白名单）、cc、botrpc（BOT防护）、antileakage（信息防泄露）、api（API安全）、ai（AI引擎）、ip_auto_deny（IP封禁）、applet（小程序流量风控）
 	Bypass *string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
+
+	// 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
 	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
@@ -737,10 +746,10 @@ func (r *AddCustomWhiteRuleRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Name")
 	delete(f, "SortId")
-	delete(f, "ExpireTime")
 	delete(f, "Strategies")
 	delete(f, "Domain")
 	delete(f, "Bypass")
+	delete(f, "ExpireTime")
 	delete(f, "JobType")
 	delete(f, "JobDateTime")
 	if len(f) > 0 {
@@ -1038,6 +1047,12 @@ type AddSpartaProtectionRequestParams struct {
 
 	// GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
 	GmSSLId *string `json:"GmSSLId,omitnil,omitempty" name:"GmSSLId"`
+
+	// 回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源
+	UpstreamPolicy *int64 `json:"UpstreamPolicy,omitnil,omitempty" name:"UpstreamPolicy"`
+
+	// 分流回源时生效，分流回源的规则。
+	UpstreamRules []*UpstreamRule `json:"UpstreamRules,omitnil,omitempty" name:"UpstreamRules"`
 }
 
 type AddSpartaProtectionRequest struct {
@@ -1217,6 +1232,12 @@ type AddSpartaProtectionRequest struct {
 
 	// GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
 	GmSSLId *string `json:"GmSSLId,omitnil,omitempty" name:"GmSSLId"`
+
+	// 回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源
+	UpstreamPolicy *int64 `json:"UpstreamPolicy,omitnil,omitempty" name:"UpstreamPolicy"`
+
+	// 分流回源时生效，分流回源的规则。
+	UpstreamRules []*UpstreamRule `json:"UpstreamRules,omitnil,omitempty" name:"UpstreamRules"`
 }
 
 func (r *AddSpartaProtectionRequest) ToJsonString() string {
@@ -1276,6 +1297,8 @@ func (r *AddSpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "GmEncCert")
 	delete(f, "GmEncPrivateKey")
 	delete(f, "GmSSLId")
+	delete(f, "UpstreamPolicy")
+	delete(f, "UpstreamRules")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddSpartaProtectionRequest has unknown keys!", "")
 	}
@@ -1526,18 +1549,22 @@ type BatchIpAccessControlData struct {
 
 type BatchIpAccessControlItem struct {
 	// mongo表自增Id
+	//
+	// Deprecated: Id is deprecated.
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 黑名单42或白名单40
 	ActionType *int64 `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
 	// 黑白名单的IP
+	//
+	// Deprecated: Ip is deprecated.
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 备注
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
-	// 添加路径
+	// batch为批量域名，batch-group为防护对象组
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 修改时间
@@ -1569,6 +1596,9 @@ type BatchIpAccessControlItem struct {
 
 	// 生效状态
 	ValidStatus *int64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
+
+	// 防护对象组ID列表，如果绑定的是防护对象组
+	GroupIds []*uint64 `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
 }
 
 // Predefined struct for user
@@ -4973,7 +5003,7 @@ func (r *DescribeAutoDenyIPResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBatchIpAccessControlRequestParams struct {
-	// 筛选条件，支持 ActionType，可选的值为40（白名单）42（黑名单），ValidStatus，可选的值为1（生效）0（过期）
+	// 筛选条件，支持 ActionType（可选的值为40：白名单，42：黑名单），ValidStatus（可选的值0：全部，1：生效，2：过期），Ip，Domains（域名列表），GroupId（防护对象组ID），GroupName（防护对象组名），RuleId（规则ID），TimerType（生效方式，1：永久生效，2：定时生效，3：按周周期生效，4：按月周期生效）
 	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移
@@ -4989,7 +5019,7 @@ type DescribeBatchIpAccessControlRequestParams struct {
 type DescribeBatchIpAccessControlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 筛选条件，支持 ActionType，可选的值为40（白名单）42（黑名单），ValidStatus，可选的值为1（生效）0（过期）
+	// 筛选条件，支持 ActionType（可选的值为40：白名单，42：黑名单），ValidStatus（可选的值0：全部，1：生效，2：过期），Ip，Domains（域名列表），GroupId（防护对象组ID），GroupName（防护对象组名），RuleId（规则ID），TimerType（生效方式，1：永久生效，2：定时生效，3：按周周期生效，4：按月周期生效）
 	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移
@@ -5648,6 +5678,9 @@ type DescribeCustomRulesRspRuleListItem struct {
 
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 }
 
 // Predefined struct for user
@@ -6871,7 +6904,7 @@ type DescribeIpAccessControlRequestParams struct {
 	// IP
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 生效状态
+	// 生效状态，1表示生效中，2表示过期，0表示全部
 	ValidStatus *int64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
 
 	// 最小有效时间的时间戳
@@ -6883,7 +6916,7 @@ type DescribeIpAccessControlRequestParams struct {
 	// 规则ID
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 定时任务类型筛选0 1 2 3 4
+	// 0表示全部，1表示永久生效，2表示定时生效，3表示周粒度生效，4表示月粒度生效
 	TimerType *int64 `json:"TimerType,omitnil,omitempty" name:"TimerType"`
 }
 
@@ -6926,7 +6959,7 @@ type DescribeIpAccessControlRequest struct {
 	// IP
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 生效状态
+	// 生效状态，1表示生效中，2表示过期，0表示全部
 	ValidStatus *int64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
 
 	// 最小有效时间的时间戳
@@ -6938,7 +6971,7 @@ type DescribeIpAccessControlRequest struct {
 	// 规则ID
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
-	// 定时任务类型筛选0 1 2 3 4
+	// 0表示全部，1表示永久生效，2表示定时生效，3表示周粒度生效，4表示月粒度生效
 	TimerType *int64 `json:"TimerType,omitnil,omitempty" name:"TimerType"`
 }
 
@@ -7035,7 +7068,7 @@ type DescribeIpHitItemsRequestParams struct {
 	// 偏移参数
 	Skip *uint64 `json:"Skip,omitnil,omitempty" name:"Skip"`
 
-	// 限制数目
+	// 限制数目，category不等于threat_intelligence时，该值需要必传
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 策略名称
@@ -7044,7 +7077,7 @@ type DescribeIpHitItemsRequestParams struct {
 	// 排序参数
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// IP
+	// IP,category传threat_intelligence的时候，该值必传
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 有效时间最小时间戳
@@ -7081,7 +7114,7 @@ type DescribeIpHitItemsRequest struct {
 	// 偏移参数
 	Skip *uint64 `json:"Skip,omitnil,omitempty" name:"Skip"`
 
-	// 限制数目
+	// 限制数目，category不等于threat_intelligence时，该值需要必传
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 策略名称
@@ -7090,7 +7123,7 @@ type DescribeIpHitItemsRequest struct {
 	// 排序参数
 	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
 
-	// IP
+	// IP,category传threat_intelligence的时候，该值必传
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 有效时间最小时间戳
@@ -9420,6 +9453,14 @@ type DomainsPartInfo struct {
 
 	// 拨测状态。 0: 禁用拨测, 1: 启用拨测
 	ProbeStatus *int64 `json:"ProbeStatus,omitnil,omitempty" name:"ProbeStatus"`
+
+	// 回源策略。
+	// 0：负载均衡回源
+	// 1：分流回源
+	UpstreamPolicy *int64 `json:"UpstreamPolicy,omitnil,omitempty" name:"UpstreamPolicy"`
+
+	// 分流回源策略
+	UpstreamRules []*UpstreamRule `json:"UpstreamRules,omitnil,omitempty" name:"UpstreamRules"`
 }
 
 type DownloadAttackRecordInfo struct {
@@ -10606,12 +10647,15 @@ type IpHitItemsData struct {
 
 type JobDateTime struct {
 	// 定时执行的时间参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timed []*TimedJob `json:"Timed,omitnil,omitempty" name:"Timed"`
 
 	// 周期执行的时间参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cron []*CronJob `json:"Cron,omitnil,omitempty" name:"Cron"`
 
 	// 时区
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeTZone *string `json:"TimeTZone,omitnil,omitempty" name:"TimeTZone"`
 }
 
@@ -11759,6 +11803,8 @@ type ModifyCustomRuleRequestParams struct {
 
 	// 放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果多个勾选那么以,串接。
 	// 默认是"geoip,cc,owasp,ai,antileakage"
+	//
+	// Deprecated: Bypass is deprecated.
 	Bypass *string `json:"Bypass,omitnil,omitempty" name:"Bypass"`
 
 	// 优先级，1~100的整数，数字越小，代表这条规则的执行优先级越高。
@@ -11783,6 +11829,9 @@ type ModifyCustomRuleRequestParams struct {
 
 	// 拦截页面id
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 }
 
 type ModifyCustomRuleRequest struct {
@@ -11835,6 +11884,9 @@ type ModifyCustomRuleRequest struct {
 
 	// 拦截页面id
 	PageId *string `json:"PageId,omitnil,omitempty" name:"PageId"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 }
 
 func (r *ModifyCustomRuleRequest) ToJsonString() string {
@@ -11864,6 +11916,7 @@ func (r *ModifyCustomRuleRequest) FromJsonString(s string) error {
 	delete(f, "Source")
 	delete(f, "Status")
 	delete(f, "PageId")
+	delete(f, "LogicalOp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCustomRuleRequest has unknown keys!", "")
 	}
@@ -11997,7 +12050,7 @@ type ModifyCustomWhiteRuleRequestParams struct {
 	// 优先级，1~100的整数，数字越小，代表这条规则的执行优先级越高。
 	SortId *uint64 `json:"SortId,omitnil,omitempty" name:"SortId"`
 
-	// 规则生效截止时间，0：永久生效，其它值为对应时间的时间戳。
+	// 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 匹配条件数组
@@ -12028,7 +12081,7 @@ type ModifyCustomWhiteRuleRequest struct {
 	// 优先级，1~100的整数，数字越小，代表这条规则的执行优先级越高。
 	SortId *uint64 `json:"SortId,omitnil,omitempty" name:"SortId"`
 
-	// 规则生效截止时间，0：永久生效，其它值为对应时间的时间戳。
+	// 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 匹配条件数组
@@ -13689,6 +13742,12 @@ type ModifySpartaProtectionRequestParams struct {
 
 	// GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
 	GmSSLId *string `json:"GmSSLId,omitnil,omitempty" name:"GmSSLId"`
+
+	// 回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源
+	UpstreamPolicy *int64 `json:"UpstreamPolicy,omitnil,omitempty" name:"UpstreamPolicy"`
+
+	// 分流回源时生效，分流回源的规则。
+	UpstreamRules []*UpstreamRule `json:"UpstreamRules,omitnil,omitempty" name:"UpstreamRules"`
 }
 
 type ModifySpartaProtectionRequest struct {
@@ -13831,6 +13890,12 @@ type ModifySpartaProtectionRequest struct {
 
 	// GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
 	GmSSLId *string `json:"GmSSLId,omitnil,omitempty" name:"GmSSLId"`
+
+	// 回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源
+	UpstreamPolicy *int64 `json:"UpstreamPolicy,omitnil,omitempty" name:"UpstreamPolicy"`
+
+	// 分流回源时生效，分流回源的规则。
+	UpstreamRules []*UpstreamRule `json:"UpstreamRules,omitnil,omitempty" name:"UpstreamRules"`
 }
 
 func (r *ModifySpartaProtectionRequest) ToJsonString() string {
@@ -13889,6 +13954,8 @@ func (r *ModifySpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "GmEncCert")
 	delete(f, "GmEncPrivateKey")
 	delete(f, "GmSSLId")
+	delete(f, "UpstreamPolicy")
+	delete(f, "UpstreamRules")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySpartaProtectionRequest has unknown keys!", "")
 	}
@@ -15070,7 +15137,8 @@ type Strategy struct {
 	// 
 	//     匹配字段不同，相应的匹配参数、逻辑符号、匹配内容有所不同
 	// 具体如下所示：
-	// <table><thead><tr><th>匹配字段</th><th>匹配参数</th><th>逻辑符号</th><th>匹配内容</th></tr></thead><tbody><tr><td>IP（来源IP）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>多个IP以英文逗号隔开,最多20个</td></tr><tr><td>IPV6（来源IPv6）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>支持单个IPV6地址</td></tr><tr><td>Referer（Referer）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>URL（请求路径）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）<br/></td><td>请以/开头,512个字符以内</td></tr><tr><td>UserAgent（UserAgent）</td><td>不支持参数</td><td>同匹配字段<font color="Red">Referer</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>HTTP_METHOD（HTTP请求方法）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）</td><td>请输入方法名称,建议大写</td></tr><tr><td>QUERY_STRING（请求字符串）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET（GET参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_PARAMS_NAMES（GET参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST（POST参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_POST_NAMES（POST参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST_BODY（完整BODY）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入BODY内容,512个字符以内</td></tr><tr><td>COOKIE（Cookie）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>rematch（正则匹配）</td><td><font color="Red">暂不支持</font></td></tr><tr><td>GET_COOKIES_NAMES（Cookie参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>ARGS_COOKIE（Cookie参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_HEADERS_NAMES（Header参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,建议小写,512个字符以内</td></tr><tr><td>ARGS_HEADER（Header参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr></tbody></table>
+	// <table><thead><tr><th>匹配字段</th><th>匹配参数</th><th>逻辑符号</th><th>匹配内容</th></tr></thead><tbody><tr><td>IP（来源IP）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>多个IP以英文逗号隔开,最多20个</td></tr><tr><td>IPV6（来源IPv6）</td><td>不支持参数</td><td>ipmatch（匹配）<br/>ipnmatch（不匹配）</td><td>支持单个IPV6地址</td></tr><tr><td>Referer（Referer）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>URL（请求路径）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）<br/>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）<br/></td><td>请以/开头,512个字符以内</td></tr><tr><td>UserAgent（UserAgent）</td><td>不支持参数</td><td>同匹配字段<font color="Red">Referer</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>HTTP_METHOD（HTTP请求方法）</td><td>不支持参数</td><td>eq（等于）<br/>neq（不等于）</td><td>请输入方法名称,建议大写</td></tr><tr><td>QUERY_STRING（请求字符串）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET（GET参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_PARAMS_NAMES（GET参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST（POST参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_POST_NAMES（POST参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>POST_BODY（完整BODY）</td><td>不支持参数</td><td>同匹配字段<font color="Red">请求路径</font>逻辑符号</td><td>请输入BODY内容,512个字符以内</td></tr><tr><td>COOKIE（Cookie）</td><td>不支持参数</td><td>empty（内容为空）<br/>null（不存在）<br/>rematch（正则匹配）</td><td><font color="Red">暂不支持</font></td></tr><tr><td>GET_COOKIES_NAMES（Cookie参数名）</td><td>不支持参数</td><td>同匹配字段<font color="Red">GET参数名</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>ARGS_COOKIE（Cookie参数值）</td><td>支持参数录入</td><td>同匹配字段<font color="Red">GET参数值</font>逻辑符号</td><td>请输入内容,512个字符以内</td></tr><tr><td>GET_HEADERS_NAMES（Header参数名）</td><td>不支持参数</td><td>exsit（存在参数）<br/>nexsit（不存在参数）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,建议小写,512个字符以内</td></tr><tr><td>ARGS_HEADER（Header参数值）</td><td>支持参数录入</td><td>contains（包含）<br/>ncontains（不包含）<br/>len_eq（长度等于）<br/>len_gt（长度大于）<br/>len_lt（长度小于）<br/>strprefix（前缀匹配）<br/>strsuffix（后缀匹配）<br/>rematch（正则匹配）</td><td>请输入内容,512个字符以内</td></tr><tr><td>CONTENT_LENGTH（Content-length）</td><td>支持参数录入</td><td>numgt（数值大于）<br/>numlt（数值小于）<br/>numeq（数值等于）<br/></td><td>请输入0-9999999999999之间的整数</td></tr><tr><td>IP_GEO（来源IP归属地）</td><td>支持参数录入</td><td>geo_in（属于）<br/>geo_not_in（不属于）<br/></td><td>请输入内容,10240字符以内，格式为序列化的JSON，格式为：[{"Country":"中国","Region":"广东","City":"深圳"}]</td></tr>
+	// </tbody></table>
 	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
 
 	// 逻辑符号 
@@ -15089,6 +15157,11 @@ type Strategy struct {
 	//         len_lt （ 长度小于）
 	//         ipmatch （ 属于）
 	//         ipnmatch （ 不属于）
+	//         numgt （ 数值大于）
+	//         numlt （ 数值小于）
+	//         numeq （ 数值等于）
+	//         geo_in （ IP地理属于）
+	//         geo_not_in （ IP地理不属于）
 	//     各匹配字段对应的逻辑符号不同，详见上述匹配字段表格
 	CompareFunc *string `json:"CompareFunc,omitnil,omitempty" name:"CompareFunc"`
 
@@ -15414,7 +15487,7 @@ type UpsertCCRuleRequestParams struct {
 	// 检测Url
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 匹配方法，0表示等于，1表示前缀匹配，2表示包含
+	// 匹配方法，0表示等于，1表示前缀匹配，2表示包含，3表示不等于，6表示后缀匹配，7表示不包含
 	MatchFunc *int64 `json:"MatchFunc,omitnil,omitempty" name:"MatchFunc"`
 
 	// 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截，26表示精准人机识别，27表示JS校验
@@ -15426,7 +15499,7 @@ type UpsertCCRuleRequestParams struct {
 	// 动作有效时间
 	ValidTime *int64 `json:"ValidTime,omitnil,omitempty" name:"ValidTime"`
 
-	// 附加参数
+	// [{\"key\":\"Method\",\"args\":[\"=R0VU\"],\"match\":\"0\",\"encodeflag\":true}] Key可选值为 Method、Post、Referer、Cookie、User-Agent、CustomHeader match可选值为，当Key为Method的时候可选值为0（等于）、3（不等于）。 Key为Post的时候可选值为0（等于）、3（不等于），Key为Cookie的时候可选值为0（等于）、2（包含），3（不等于）、7（不包含）、 当Key为Referer的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为Cookie的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为User-Agent的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为CustomHeader的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）。 args用来表示匹配内容，需要设置encodeflag为true，当Key为Post、Cookie、CustomHeader时，用等号=来分别串接Key和Value，并分别用Base64编码，类似YWJj=YWJj。当Key为Referer、User-Agent时，用等号=来串接Value，类似=YWJj。
 	OptionsArr *string `json:"OptionsArr,omitnil,omitempty" name:"OptionsArr"`
 
 	// waf版本，sparta-waf或者clb-waf
@@ -15475,7 +15548,7 @@ type UpsertCCRuleRequest struct {
 	// 检测Url
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 匹配方法，0表示等于，1表示前缀匹配，2表示包含
+	// 匹配方法，0表示等于，1表示前缀匹配，2表示包含，3表示不等于，6表示后缀匹配，7表示不包含
 	MatchFunc *int64 `json:"MatchFunc,omitnil,omitempty" name:"MatchFunc"`
 
 	// 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截，26表示精准人机识别，27表示JS校验
@@ -15487,7 +15560,7 @@ type UpsertCCRuleRequest struct {
 	// 动作有效时间
 	ValidTime *int64 `json:"ValidTime,omitnil,omitempty" name:"ValidTime"`
 
-	// 附加参数
+	// [{\"key\":\"Method\",\"args\":[\"=R0VU\"],\"match\":\"0\",\"encodeflag\":true}] Key可选值为 Method、Post、Referer、Cookie、User-Agent、CustomHeader match可选值为，当Key为Method的时候可选值为0（等于）、3（不等于）。 Key为Post的时候可选值为0（等于）、3（不等于），Key为Cookie的时候可选值为0（等于）、2（包含），3（不等于）、7（不包含）、 当Key为Referer的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为Cookie的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为User-Agent的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为CustomHeader的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）。 args用来表示匹配内容，需要设置encodeflag为true，当Key为Post、Cookie、CustomHeader时，用等号=来分别串接Key和Value，并分别用Base64编码，类似YWJj=YWJj。当Key为Referer、User-Agent时，用等号=来串接Value，类似=YWJj。
 	OptionsArr *string `json:"OptionsArr,omitnil,omitempty" name:"OptionsArr"`
 
 	// waf版本，sparta-waf或者clb-waf
@@ -15791,6 +15864,29 @@ func (r *UpsertSessionResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpsertSessionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpstreamRule struct {
+	// 匹配的关键字。目前支持host、uri两种
+	KeyName *string `json:"KeyName,omitnil,omitempty" name:"KeyName"`
+
+	// 逻辑符号。
+	// equal：等于
+	// not equal：不等于
+	// belong：属于
+	// not belong：不属于
+	Symbol *string `json:"Symbol,omitnil,omitempty" name:"Symbol"`
+
+	// 匹配的内容。equal和not equal时，数组只能有一个元素
+	ContentList []*string `json:"ContentList,omitnil,omitempty" name:"ContentList"`
+
+	// 规则匹配后生效的回源地址。
+	AddressList []*string `json:"AddressList,omitnil,omitempty" name:"AddressList"`
+
+	// 回源负载均衡类型，仅多个回源地址时生效。
+	// 0：轮询
+	// 1：IP_HASH
+	BalanceType *uint64 `json:"BalanceType,omitnil,omitempty" name:"BalanceType"`
 }
 
 type UserDomainInfo struct {
