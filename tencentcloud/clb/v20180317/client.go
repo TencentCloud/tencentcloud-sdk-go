@@ -45,6 +45,128 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAddCustomizedConfigRequest() (request *AddCustomizedConfigRequest) {
+    request = &AddCustomizedConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "AddCustomizedConfig")
+    
+    
+    return
+}
+
+func NewAddCustomizedConfigResponse() (response *AddCustomizedConfigResponse) {
+    response = &AddCustomizedConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AddCustomizedConfig
+// 新增个性化配置，准备下线，请使用SetCustomizedConfigForLoadBalancer。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AddCustomizedConfig(request *AddCustomizedConfigRequest) (response *AddCustomizedConfigResponse, err error) {
+    return c.AddCustomizedConfigWithContext(context.Background(), request)
+}
+
+// AddCustomizedConfig
+// 新增个性化配置，准备下线，请使用SetCustomizedConfigForLoadBalancer。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AddCustomizedConfigWithContext(ctx context.Context, request *AddCustomizedConfigRequest) (response *AddCustomizedConfigResponse, err error) {
+    if request == nil {
+        request = NewAddCustomizedConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddCustomizedConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddCustomizedConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAssociateCustomizedConfigRequest() (request *AssociateCustomizedConfigRequest) {
+    request = &AssociateCustomizedConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "AssociateCustomizedConfig")
+    
+    
+    return
+}
+
+func NewAssociateCustomizedConfigResponse() (response *AssociateCustomizedConfigResponse) {
+    response = &AssociateCustomizedConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AssociateCustomizedConfig
+// 关联配置到server或location，根据配置类型关联到server或location。准备下线，请使用SetCustomizedConfigForLoadBalancer。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETER_LISTENERIDNOTFOUND = "InvalidParameter.ListenerIdNotFound"
+//  INVALIDPARAMETER_LOCATIONNOTFOUND = "InvalidParameter.LocationNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AssociateCustomizedConfig(request *AssociateCustomizedConfigRequest) (response *AssociateCustomizedConfigResponse, err error) {
+    return c.AssociateCustomizedConfigWithContext(context.Background(), request)
+}
+
+// AssociateCustomizedConfig
+// 关联配置到server或location，根据配置类型关联到server或location。准备下线，请使用SetCustomizedConfigForLoadBalancer。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETER_LISTENERIDNOTFOUND = "InvalidParameter.ListenerIdNotFound"
+//  INVALIDPARAMETER_LOCATIONNOTFOUND = "InvalidParameter.LocationNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AssociateCustomizedConfigWithContext(ctx context.Context, request *AssociateCustomizedConfigRequest) (response *AssociateCustomizedConfigResponse, err error) {
+    if request == nil {
+        request = NewAssociateCustomizedConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssociateCustomizedConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAssociateCustomizedConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAssociateTargetGroupsRequest() (request *AssociateTargetGroupsRequest) {
     request = &AssociateTargetGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1135,6 +1257,75 @@ func (c *Client) CreateTopicWithContext(ctx context.Context, request *CreateTopi
     request.SetContext(ctx)
     
     response = NewCreateTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCustomizedConfigRequest() (request *DeleteCustomizedConfigRequest) {
+    request = &DeleteCustomizedConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "DeleteCustomizedConfig")
+    
+    
+    return
+}
+
+func NewDeleteCustomizedConfigResponse() (response *DeleteCustomizedConfigResponse) {
+    response = &DeleteCustomizedConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCustomizedConfig
+// 删除个性化配置，准备下线，请使用SetCustomizedConfigForLoadBalancer。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteCustomizedConfig(request *DeleteCustomizedConfigRequest) (response *DeleteCustomizedConfigResponse, err error) {
+    return c.DeleteCustomizedConfigWithContext(context.Background(), request)
+}
+
+// DeleteCustomizedConfig
+// 删除个性化配置，准备下线，请使用SetCustomizedConfigForLoadBalancer。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteCustomizedConfigWithContext(ctx context.Context, request *DeleteCustomizedConfigRequest) (response *DeleteCustomizedConfigResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomizedConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCustomizedConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCustomizedConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -3755,6 +3946,69 @@ func (c *Client) DescribeTaskStatusWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDisassociateCustomizedConfigRequest() (request *DisassociateCustomizedConfigRequest) {
+    request = &DisassociateCustomizedConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "DisassociateCustomizedConfig")
+    
+    
+    return
+}
+
+func NewDisassociateCustomizedConfigResponse() (response *DisassociateCustomizedConfigResponse) {
+    response = &DisassociateCustomizedConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisassociateCustomizedConfig
+// 去关联个性化配置，准备下线，请使用SetCustomizedConfigForLoadBalancer。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETER_LISTENERIDNOTFOUND = "InvalidParameter.ListenerIdNotFound"
+//  INVALIDPARAMETER_LOCATIONNOTFOUND = "InvalidParameter.LocationNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DisassociateCustomizedConfig(request *DisassociateCustomizedConfigRequest) (response *DisassociateCustomizedConfigResponse, err error) {
+    return c.DisassociateCustomizedConfigWithContext(context.Background(), request)
+}
+
+// DisassociateCustomizedConfig
+// 去关联个性化配置，准备下线，请使用SetCustomizedConfigForLoadBalancer。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETER_LISTENERIDNOTFOUND = "InvalidParameter.ListenerIdNotFound"
+//  INVALIDPARAMETER_LOCATIONNOTFOUND = "InvalidParameter.LocationNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DisassociateCustomizedConfigWithContext(ctx context.Context, request *DisassociateCustomizedConfigRequest) (response *DisassociateCustomizedConfigResponse, err error) {
+    if request == nil {
+        request = NewDisassociateCustomizedConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisassociateCustomizedConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisassociateCustomizedConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisassociateTargetGroupsRequest() (request *DisassociateTargetGroupsRequest) {
     request = &DisassociateTargetGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4257,6 +4511,65 @@ func (c *Client) ModifyBlockIPListWithContext(ctx context.Context, request *Modi
     request.SetContext(ctx)
     
     response = NewModifyBlockIPListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCustomizedConfigRequest() (request *ModifyCustomizedConfigRequest) {
+    request = &ModifyCustomizedConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "ModifyCustomizedConfig")
+    
+    
+    return
+}
+
+func NewModifyCustomizedConfigResponse() (response *ModifyCustomizedConfigResponse) {
+    response = &ModifyCustomizedConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCustomizedConfig
+// 修改个性化配置。如果配置已经绑定clb、server或location，同时更新。准备下线，请使用SetCustomizedConfigForLoadBalancer。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyCustomizedConfig(request *ModifyCustomizedConfigRequest) (response *ModifyCustomizedConfigResponse, err error) {
+    return c.ModifyCustomizedConfigWithContext(context.Background(), request)
+}
+
+// ModifyCustomizedConfig
+// 修改个性化配置。如果配置已经绑定clb、server或location，同时更新。准备下线，请使用SetCustomizedConfigForLoadBalancer。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyCustomizedConfigWithContext(ctx context.Context, request *ModifyCustomizedConfigRequest) (response *ModifyCustomizedConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyCustomizedConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCustomizedConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCustomizedConfigResponse()
     err = c.Send(request, response)
     return
 }

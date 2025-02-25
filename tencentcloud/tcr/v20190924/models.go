@@ -8335,7 +8335,6 @@ type RegistryCondition struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 转换到该过程的简明原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 }
 
@@ -8432,27 +8431,21 @@ type ReplicationFilter struct {
 
 type ReplicationLog struct {
 	// 资源类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 源资源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 目的资源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Destination *string `json:"Destination,omitnil,omitempty" name:"Destination"`
 
 	// 同步状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 

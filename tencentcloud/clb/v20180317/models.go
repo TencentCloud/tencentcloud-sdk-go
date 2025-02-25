@@ -21,6 +21,138 @@ import (
 )
 
 // Predefined struct for user
+type AddCustomizedConfigRequestParams struct {
+	// 配置名字
+	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
+
+	// 配置类型，取值范围["CLB", "SERVER", "LOCATION"]，分别表示CLB配置，server配置，location配置。
+	ConfigType *string `json:"ConfigType,omitnil,omitempty" name:"ConfigType"`
+
+	// 配置内容
+	ConfigContent *string `json:"ConfigContent,omitnil,omitempty" name:"ConfigContent"`
+}
+
+type AddCustomizedConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 配置名字
+	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
+
+	// 配置类型，取值范围["CLB", "SERVER", "LOCATION"]，分别表示CLB配置，server配置，location配置。
+	ConfigType *string `json:"ConfigType,omitnil,omitempty" name:"ConfigType"`
+
+	// 配置内容
+	ConfigContent *string `json:"ConfigContent,omitnil,omitempty" name:"ConfigContent"`
+}
+
+func (r *AddCustomizedConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddCustomizedConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConfigName")
+	delete(f, "ConfigType")
+	delete(f, "ConfigContent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCustomizedConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddCustomizedConfigResponseParams struct {
+	// 配置ID
+	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AddCustomizedConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *AddCustomizedConfigResponseParams `json:"Response"`
+}
+
+func (r *AddCustomizedConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddCustomizedConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AssociateCustomizedConfigRequestParams struct {
+	// 配置ID
+	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
+
+	// 关联的server或location
+	BindList []*BindItem `json:"BindList,omitnil,omitempty" name:"BindList"`
+}
+
+type AssociateCustomizedConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 配置ID
+	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
+
+	// 关联的server或location
+	BindList []*BindItem `json:"BindList,omitnil,omitempty" name:"BindList"`
+}
+
+func (r *AssociateCustomizedConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateCustomizedConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UconfigId")
+	delete(f, "BindList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssociateCustomizedConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AssociateCustomizedConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AssociateCustomizedConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *AssociateCustomizedConfigResponseParams `json:"Response"`
+}
+
+func (r *AssociateCustomizedConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AssociateCustomizedConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AssociateTargetGroupsRequestParams struct {
 	// 绑定的关系数组。一次请求最多支持20个。
 	Associations []*TargetGroupAssociation `json:"Associations,omitnil,omitempty" name:"Associations"`
@@ -557,6 +689,23 @@ type BindDetailItem struct {
 	// 配置ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
+}
+
+type BindItem struct {
+	// 配置绑定的CLB ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
+
+	// 配置绑定的监听器ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// 配置绑定的域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 配置绑定的规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocationId *string `json:"LocationId,omitnil,omitempty" name:"LocationId"`
 }
 
 type BlockedIP struct {
@@ -2041,6 +2190,60 @@ type CrossTargets struct {
 
 	// 子机或者网卡所属的地域。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+}
+
+// Predefined struct for user
+type DeleteCustomizedConfigRequestParams struct {
+	// 删除的配置ID列表
+	UconfigIdList []*string `json:"UconfigIdList,omitnil,omitempty" name:"UconfigIdList"`
+}
+
+type DeleteCustomizedConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 删除的配置ID列表
+	UconfigIdList []*string `json:"UconfigIdList,omitnil,omitempty" name:"UconfigIdList"`
+}
+
+func (r *DeleteCustomizedConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomizedConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UconfigIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCustomizedConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCustomizedConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCustomizedConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCustomizedConfigResponseParams `json:"Response"`
+}
+
+func (r *DeleteCustomizedConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomizedConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -5058,6 +5261,67 @@ func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DisassociateCustomizedConfigRequestParams struct {
+	// 配置ID
+	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
+
+	// 解绑的列表
+	BindList []*BindItem `json:"BindList,omitnil,omitempty" name:"BindList"`
+}
+
+type DisassociateCustomizedConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 配置ID
+	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
+
+	// 解绑的列表
+	BindList []*BindItem `json:"BindList,omitnil,omitempty" name:"BindList"`
+}
+
+func (r *DisassociateCustomizedConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateCustomizedConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UconfigId")
+	delete(f, "BindList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisassociateCustomizedConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisassociateCustomizedConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DisassociateCustomizedConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DisassociateCustomizedConfigResponseParams `json:"Response"`
+}
+
+func (r *DisassociateCustomizedConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisassociateCustomizedConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DisassociateTargetGroupsRequestParams struct {
 	// 待解绑的规则关系数组。
 	Associations []*TargetGroupAssociation `json:"Associations,omitnil,omitempty" name:"Associations"`
@@ -6494,6 +6758,74 @@ func (r *ModifyBlockIPListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyBlockIPListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCustomizedConfigRequestParams struct {
+	// 配置名字
+	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
+
+	// 配置ID
+	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
+
+	// 配置内容
+	ConfigContent *string `json:"ConfigContent,omitnil,omitempty" name:"ConfigContent"`
+}
+
+type ModifyCustomizedConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 配置名字
+	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
+
+	// 配置ID
+	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
+
+	// 配置内容
+	ConfigContent *string `json:"ConfigContent,omitnil,omitempty" name:"ConfigContent"`
+}
+
+func (r *ModifyCustomizedConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCustomizedConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConfigName")
+	delete(f, "UconfigId")
+	delete(f, "ConfigContent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCustomizedConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCustomizedConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyCustomizedConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCustomizedConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyCustomizedConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCustomizedConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

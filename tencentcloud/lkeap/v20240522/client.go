@@ -63,13 +63,19 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 }
 
 // ChatCompletions
-// #### 接口功能
+// ### 接口功能
 //
 // 
 //
-// 调用接口，发起一次对话请求。
+// 调用接口，发起一次对话请求。单账号限制接口并发上限为5。
 //
 // 如需使用OpenAI兼容接口， 请参考文档：[Deepseek OpenAI对话接口](https://cloud.tencent.com/document/product/1772/115969)
+//
+// 
+//
+// #### 在线体验
+//
+// 如您希望在网页内直接体验 DeepSeek 模型对话，推荐您前往[腾讯云大模型知识引擎](https://cloud.tencent.com/product/lke)，使用[ DeepSeek 联网助手](https://lke.cloud.tencent.com/webim_exp/#/chat/wQrAwR)。
 //
 // 
 //
@@ -89,13 +95,13 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 // 
 //
-// #### 计费说明
+// ### 计费说明
 //
 // - 限时免费
 //
 // 
 //
-// 本接口调用DeepSeek系列模型限时免费。即日至北京时间2025年2月25日23:59:59，所有腾讯云用户均可享受DeepSeek-V3、DeepSeek-R1模型限时免费服务，单账号限制接口并发上限为5。在此之后，模型价格将恢复至原价。
+// 本接口调用DeepSeek系列模型限时免费。即日至北京时间2025年2月25日23:59:59，所有腾讯云用户均可享受DeepSeek-V3、DeepSeek-R1模型限时免费服务，单账号限制接口并发上限为5。在此之后，模型价格将恢复至原价，单账号限制接口并发上限为5。
 //
 // - 标准计费（2025年2月26日起生效）
 //
@@ -119,7 +125,7 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 // 
 //
-// #### 快速接入
+// ### 快速接入
 //
 // 1. 完成[实名认证](https://console.cloud.tencent.com/developer/auth)。
 //
@@ -266,13 +272,19 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 }
 
 // ChatCompletions
-// #### 接口功能
+// ### 接口功能
 //
 // 
 //
-// 调用接口，发起一次对话请求。
+// 调用接口，发起一次对话请求。单账号限制接口并发上限为5。
 //
 // 如需使用OpenAI兼容接口， 请参考文档：[Deepseek OpenAI对话接口](https://cloud.tencent.com/document/product/1772/115969)
+//
+// 
+//
+// #### 在线体验
+//
+// 如您希望在网页内直接体验 DeepSeek 模型对话，推荐您前往[腾讯云大模型知识引擎](https://cloud.tencent.com/product/lke)，使用[ DeepSeek 联网助手](https://lke.cloud.tencent.com/webim_exp/#/chat/wQrAwR)。
 //
 // 
 //
@@ -292,13 +304,13 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 // 
 //
-// #### 计费说明
+// ### 计费说明
 //
 // - 限时免费
 //
 // 
 //
-// 本接口调用DeepSeek系列模型限时免费。即日至北京时间2025年2月25日23:59:59，所有腾讯云用户均可享受DeepSeek-V3、DeepSeek-R1模型限时免费服务，单账号限制接口并发上限为5。在此之后，模型价格将恢复至原价。
+// 本接口调用DeepSeek系列模型限时免费。即日至北京时间2025年2月25日23:59:59，所有腾讯云用户均可享受DeepSeek-V3、DeepSeek-R1模型限时免费服务，单账号限制接口并发上限为5。在此之后，模型价格将恢复至原价，单账号限制接口并发上限为5。
 //
 // - 标准计费（2025年2月26日起生效）
 //
@@ -322,7 +334,7 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 // 
 //
-// #### 快速接入
+// ### 快速接入
 //
 // 1. 完成[实名认证](https://console.cloud.tencent.com/developer/auth)。
 //

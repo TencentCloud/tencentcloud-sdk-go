@@ -2276,15 +2276,12 @@ type EventVar struct {
 
 type Externals struct {
 	// 释放地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReleaseAddress *bool `json:"ReleaseAddress,omitnil,omitempty" name:"ReleaseAddress"`
 
 	// 不支持的网络类型，取值范围：<br><li>BASIC：基础网络</li><li>VPC1.0：私有网络VPC1.0</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnsupportNetworks []*string `json:"UnsupportNetworks,omitnil,omitempty" name:"UnsupportNetworks"`
 
 	// HDD本地存储属性
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageBlockAttr *StorageBlock `json:"StorageBlockAttr,omitnil,omitempty" name:"StorageBlockAttr"`
 }
 
@@ -2381,7 +2378,6 @@ type InstanceTypeQuotaItem struct {
 	NetworkCard *int64 `json:"NetworkCard,omitnil,omitempty" name:"NetworkCard"`
 
 	// 扩展属性。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Externals *Externals `json:"Externals,omitnil,omitempty" name:"Externals"`
 
 	// 实例的CPU核数，单位：核。
@@ -2406,7 +2402,6 @@ type InstanceTypeQuotaItem struct {
 	Price *ItemPrice `json:"Price,omitnil,omitempty" name:"Price"`
 
 	// 售罄原因。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SoldOutReason *string `json:"SoldOutReason,omitnil,omitempty" name:"SoldOutReason"`
 
 	// 内网带宽，单位Gbps。
@@ -2441,7 +2436,6 @@ type InstanceTypeQuotaItem struct {
 	// <li>NormalStock：表示对应库存供应有保障</li>
 	// <li> UnderStock：表示对应库存即将售罄</li> 
 	// <li>WithoutStock：表示对应库存已经售罄</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusCategory *string `json:"StatusCategory,omitnil,omitempty" name:"StatusCategory"`
 }
 
@@ -2461,87 +2455,68 @@ type InternetAccessible struct {
 
 type ItemPrice struct {
 	// 后续合计费用的原价，后付费模式使用，单位：元。<br><li>如返回了其他时间区间项，如UnitPriceSecondStep，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPrice *float64 `json:"UnitPrice,omitnil,omitempty" name:"UnitPrice"`
 
 	// 后续计价单元，后付费模式使用，可取值范围： <br><li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）：</li><li>GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeUnit *string `json:"ChargeUnit,omitnil,omitempty" name:"ChargeUnit"`
 
 	// 预支合计费用的原价，预付费模式使用，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
 
 	// 预支合计费用的折扣价，预付费模式使用，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 
 	// 折扣，如20.0代表2折。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Discount *float64 `json:"Discount,omitnil,omitempty" name:"Discount"`
 
 	// 后续合计费用的折扣价，后付费模式使用，单位：元<br><li>如返回了其他时间区间项，如UnitPriceDiscountSecondStep，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPriceDiscount *float64 `json:"UnitPriceDiscount,omitnil,omitempty" name:"UnitPriceDiscount"`
 
 	// 使用时间区间在(96, 360)小时的后续合计费用的原价，后付费模式使用，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPriceSecondStep *float64 `json:"UnitPriceSecondStep,omitnil,omitempty" name:"UnitPriceSecondStep"`
 
 	// 使用时间区间在(96, 360)小时的后续合计费用的折扣价，后付费模式使用，单位：元
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPriceDiscountSecondStep *float64 `json:"UnitPriceDiscountSecondStep,omitnil,omitempty" name:"UnitPriceDiscountSecondStep"`
 
 	// 使用时间区间在(360, ∞)小时的后续合计费用的原价，后付费模式使用，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPriceThirdStep *float64 `json:"UnitPriceThirdStep,omitnil,omitempty" name:"UnitPriceThirdStep"`
 
 	// 使用时间区间在(360, ∞)小时的后续合计费用的折扣价，后付费模式使用，单位：元
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPriceDiscountThirdStep *float64 `json:"UnitPriceDiscountThirdStep,omitnil,omitempty" name:"UnitPriceDiscountThirdStep"`
 
 	// 预支三年合计费用的原价，预付费模式使用，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalPriceThreeYear *float64 `json:"OriginalPriceThreeYear,omitnil,omitempty" name:"OriginalPriceThreeYear"`
 
 	// 预支三年合计费用的折扣价，预付费模式使用，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountPriceThreeYear *float64 `json:"DiscountPriceThreeYear,omitnil,omitempty" name:"DiscountPriceThreeYear"`
 
 	// 预支三年应用的折扣，如20.0代表2折。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountThreeYear *float64 `json:"DiscountThreeYear,omitnil,omitempty" name:"DiscountThreeYear"`
 
 	// 预支五年合计费用的原价，预付费模式使用，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalPriceFiveYear *float64 `json:"OriginalPriceFiveYear,omitnil,omitempty" name:"OriginalPriceFiveYear"`
 
 	// 预支五年合计费用的折扣价，预付费模式使用，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountPriceFiveYear *float64 `json:"DiscountPriceFiveYear,omitnil,omitempty" name:"DiscountPriceFiveYear"`
 
 	// 预支五年应用的折扣，如20.0代表2折。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountFiveYear *float64 `json:"DiscountFiveYear,omitnil,omitempty" name:"DiscountFiveYear"`
 
 	// 预支一年合计费用的原价，预付费模式使用，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalPriceOneYear *float64 `json:"OriginalPriceOneYear,omitnil,omitempty" name:"OriginalPriceOneYear"`
 
 	// 预支一年合计费用的折扣价，预付费模式使用，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountPriceOneYear *float64 `json:"DiscountPriceOneYear,omitnil,omitempty" name:"DiscountPriceOneYear"`
 
 	// 预支一年应用的折扣，如20.0代表2折。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountOneYear *float64 `json:"DiscountOneYear,omitnil,omitempty" name:"DiscountOneYear"`
 }
@@ -3093,15 +3068,12 @@ type SpotMarketOptions struct {
 
 type StorageBlock struct {
 	// HDD本地存储类型，值为：LOCAL_PRO.
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// HDD本地存储的最小容量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinSize *int64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
 	// HDD本地存储的最大容量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxSize *int64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 }
 

@@ -1078,67 +1078,52 @@ type OutputDescribeDataListFront struct {
 
 type OutputDescribeDataListFrontData struct {
 	// 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 黑白名单数据信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *OuntputDescribeDataListInfo `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type OutputDescribeNameListDetail struct {
 	// 名单ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NameListId *int64 `json:"NameListId,omitnil,omitempty" name:"NameListId"`
 
 	// 名单名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListName *string `json:"ListName,omitnil,omitempty" name:"ListName"`
 
 	// 名单类型 [1 黑名单 2 白名单]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListType *int64 `json:"ListType,omitnil,omitempty" name:"ListType"`
 
 	// 数据类型[1 手机号 2 qqOpenId 3 2echatOpenId 4 ip 6 idfa 7 imei]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataType *int64 `json:"DataType,omitnil,omitempty" name:"DataType"`
 
 	// 场景Code
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneCode *string `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
 
 	// 名单列表状态 [1 启用 2 停用]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 加密类型 [0 无需加密，1 MD5加密，2 SHA256加密]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptionType *int64 `json:"EncryptionType,omitnil,omitempty" name:"EncryptionType"`
 }
 
 type OutputDescribeNameListDetailFront struct {
 	// 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 列表详情信息
@@ -1151,11 +1136,9 @@ type OutputDescribeNameListFrontFix struct {
 	NameListId *int64 `json:"NameListId,omitnil,omitempty" name:"NameListId"`
 
 	// 名单名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListName *string `json:"ListName,omitnil,omitempty" name:"ListName"`
 
 	// 名单类型 [1 黑名单 2 白名单]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListType *int64 `json:"ListType,omitnil,omitempty" name:"ListType"`
 
 	// 数据类型[1 手机号 2 qqOpenId 3 2echatOpenId 4 ip 6 idfa 7 imei]
@@ -1165,7 +1148,6 @@ type OutputDescribeNameListFrontFix struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 创建时间
@@ -1178,32 +1160,25 @@ type OutputDescribeNameListFrontFix struct {
 	EffectCount *string `json:"EffectCount,omitnil,omitempty" name:"EffectCount"`
 
 	// 加密类型[0 无需加密 1 MD5加密 2 SHA256加密]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptionType *int64 `json:"EncryptionType,omitnil,omitempty" name:"EncryptionType"`
 
 	// 场景Code，all_scene代表全部场景
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneCode *string `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
 }
 
 type OutputDescribeNameListFrontFixListData struct {
 	// 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 黑白名单列表信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *OutputDescribeNameListInfo `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type OutputDescribeNameListInfo struct {
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 列表
@@ -1213,31 +1188,24 @@ type OutputDescribeNameListInfo struct {
 
 type OutputDescribeUserUsageCnt struct {
 	// 当前付费模式，0 后付费 1 预付费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 后付费本月使用量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AfterPayModeThisMonthUsedCnt *int64 `json:"AfterPayModeThisMonthUsedCnt,omitnil,omitempty" name:"AfterPayModeThisMonthUsedCnt"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 超出时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 后付费上月使用量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AfterPayModeLastMonthUsedCnt *int64 `json:"AfterPayModeLastMonthUsedCnt,omitnil,omitempty" name:"AfterPayModeLastMonthUsedCnt"`
 
 	// 预付费总量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeforePayModeTotalUsedCnt *int64 `json:"BeforePayModeTotalUsedCnt,omitnil,omitempty" name:"BeforePayModeTotalUsedCnt"`
 
 	// 预付费剩余用量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeforePayModeRemainUsedCnt *int64 `json:"BeforePayModeRemainUsedCnt,omitnil,omitempty" name:"BeforePayModeRemainUsedCnt"`
 }
 
