@@ -58,6 +58,9 @@ type CreateDisclosedCredentialRequestParams struct {
 
 	// DID应用ID
 	DAPId *uint64 `json:"DAPId,omitnil,omitempty" name:"DAPId"`
+
+	// 用户应用ID
+	UAPId *uint64 `json:"UAPId,omitnil,omitempty" name:"UAPId"`
 }
 
 type CreateDisclosedCredentialRequest struct {
@@ -74,6 +77,9 @@ type CreateDisclosedCredentialRequest struct {
 
 	// DID应用ID
 	DAPId *uint64 `json:"DAPId,omitnil,omitempty" name:"DAPId"`
+
+	// 用户应用ID
+	UAPId *uint64 `json:"UAPId,omitnil,omitempty" name:"UAPId"`
 }
 
 func (r *CreateDisclosedCredentialRequest) ToJsonString() string {
@@ -92,6 +98,7 @@ func (r *CreateDisclosedCredentialRequest) FromJsonString(s string) error {
 	delete(f, "CredentialData")
 	delete(f, "PolicyJson")
 	delete(f, "DAPId")
+	delete(f, "UAPId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDisclosedCredentialRequest has unknown keys!", "")
 	}
@@ -128,6 +135,9 @@ type CreatePresentationRequestParams struct {
 	// DID应用id
 	DAPId *uint64 `json:"DAPId,omitnil,omitempty" name:"DAPId"`
 
+	// 用户应用id
+	UAPId *uint64 `json:"UAPId,omitnil,omitempty" name:"UAPId"`
+
 	// 凭证列表
 	Credentials []*string `json:"Credentials,omitnil,omitempty" name:"Credentials"`
 
@@ -152,6 +162,9 @@ type CreatePresentationRequest struct {
 	
 	// DID应用id
 	DAPId *uint64 `json:"DAPId,omitnil,omitempty" name:"DAPId"`
+
+	// 用户应用id
+	UAPId *uint64 `json:"UAPId,omitnil,omitempty" name:"UAPId"`
 
 	// 凭证列表
 	Credentials []*string `json:"Credentials,omitnil,omitempty" name:"Credentials"`
@@ -185,6 +198,7 @@ func (r *CreatePresentationRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DAPId")
+	delete(f, "UAPId")
 	delete(f, "Credentials")
 	delete(f, "Did")
 	delete(f, "VerifyCode")
@@ -407,6 +421,17 @@ type CredentialState struct {
 	MetaDigest *string `json:"MetaDigest,omitnil,omitempty" name:"MetaDigest"`
 }
 
+type CredentialStatusInfo struct {
+	// 凭证唯一id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 凭证状态（0：吊销；1：有效）
+	Issuer *string `json:"Issuer,omitnil,omitempty" name:"Issuer"`
+
+	// 凭证颁发者Did
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
 // Predefined struct for user
 type DeactivateTDidRequestParams struct {
 	// DID标识符
@@ -528,11 +553,9 @@ func (r *GetAppSummaryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetAppSummaryResponseParams struct {
 	// 用户参与应用的统计指标 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppCounter *ResourceCounterData `json:"AppCounter,omitnil,omitempty" name:"AppCounter"`
 
 	// 用户创建资源的统计指标
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserCounter *ResourceCounterData `json:"UserCounter,omitnil,omitempty" name:"UserCounter"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -597,7 +620,6 @@ func (r *GetCredentialStateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetCredentialStateResponseParams struct {
 	// 凭证状态信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CredentialState *CredentialState `json:"CredentialState,omitnil,omitempty" name:"CredentialState"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -733,7 +755,6 @@ func (r *GetTDidByObjectIdRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetTDidByObjectIdResponseParams struct {
 	// DID标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Did *string `json:"Did,omitnil,omitempty" name:"Did"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1104,23 +1125,18 @@ func (r *QueryCPTResponse) FromJsonString(s string) error {
 
 type ResourceCounterData struct {
 	// DID总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DidCnt *uint64 `json:"DidCnt,omitnil,omitempty" name:"DidCnt"`
 
 	// VC总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VCCnt *uint64 `json:"VCCnt,omitnil,omitempty" name:"VCCnt"`
 
 	// CPT总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CPTCnt *uint64 `json:"CPTCnt,omitnil,omitempty" name:"CPTCnt"`
 
 	//  VC验证总数 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifyCnt *uint64 `json:"VerifyCnt,omitnil,omitempty" name:"VerifyCnt"`
 
 	// 权威机构数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthCnt *uint64 `json:"AuthCnt,omitnil,omitempty" name:"AuthCnt"`
 }
 
@@ -1207,8 +1223,14 @@ type UpdateCredentialStateRequestParams struct {
 	// DID应用Id
 	DAPId *uint64 `json:"DAPId,omitnil,omitempty" name:"DAPId"`
 
-	// 更新VC状态的临时凭证内容，通过创建凭证接口(CreateCredential)生成并签名，凭证类型为：OperateCredential, 为安全起见凭证过期时间不适合太长，建议设置为1分钟内
+	// 更新VC状态的临时凭证内容，通过创建凭证接口(CreateCredential)生成并签名，凭证类型为：OperateCredential, 为安全起见凭证过期时间不适合太长，如设置为1分钟内
 	OperateCredential *string `json:"OperateCredential,omitnil,omitempty" name:"OperateCredential"`
+
+	// 待更新凭证状态的原始凭证内容
+	OriginCredential *string `json:"OriginCredential,omitnil,omitempty" name:"OriginCredential"`
+
+	// 凭证状态信息
+	CredentialStatus *CredentialStatusInfo `json:"CredentialStatus,omitnil,omitempty" name:"CredentialStatus"`
 }
 
 type UpdateCredentialStateRequest struct {
@@ -1217,8 +1239,14 @@ type UpdateCredentialStateRequest struct {
 	// DID应用Id
 	DAPId *uint64 `json:"DAPId,omitnil,omitempty" name:"DAPId"`
 
-	// 更新VC状态的临时凭证内容，通过创建凭证接口(CreateCredential)生成并签名，凭证类型为：OperateCredential, 为安全起见凭证过期时间不适合太长，建议设置为1分钟内
+	// 更新VC状态的临时凭证内容，通过创建凭证接口(CreateCredential)生成并签名，凭证类型为：OperateCredential, 为安全起见凭证过期时间不适合太长，如设置为1分钟内
 	OperateCredential *string `json:"OperateCredential,omitnil,omitempty" name:"OperateCredential"`
+
+	// 待更新凭证状态的原始凭证内容
+	OriginCredential *string `json:"OriginCredential,omitnil,omitempty" name:"OriginCredential"`
+
+	// 凭证状态信息
+	CredentialStatus *CredentialStatusInfo `json:"CredentialStatus,omitnil,omitempty" name:"CredentialStatus"`
 }
 
 func (r *UpdateCredentialStateRequest) ToJsonString() string {
@@ -1235,6 +1263,8 @@ func (r *UpdateCredentialStateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DAPId")
 	delete(f, "OperateCredential")
+	delete(f, "OriginCredential")
+	delete(f, "CredentialStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCredentialStateRequest has unknown keys!", "")
 	}
@@ -1244,7 +1274,6 @@ func (r *UpdateCredentialStateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateCredentialStateResponseParams struct {
 	// 更新是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -2024,6 +2024,25 @@ type InstanceNode struct {
 	// ture的时候表示该节点上部署了chproxy进程
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsCHProxy *bool `json:"IsCHProxy,omitnil,omitempty" name:"IsCHProxy"`
+
+	// 节点状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 节点uuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UUID *string `json:"UUID,omitnil,omitempty" name:"UUID"`
+
+	// 区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 区描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneDesc *string `json:"ZoneDesc,omitnil,omitempty" name:"ZoneDesc"`
+
+	// 真实资源id
+	RealResourceId *string `json:"RealResourceId,omitnil,omitempty" name:"RealResourceId"`
 }
 
 type InstanceStateInfo struct {

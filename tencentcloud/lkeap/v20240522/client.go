@@ -97,15 +97,9 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 // ### 计费说明
 //
-// - 限时免费
-//
 // 
 //
-// 本接口调用DeepSeek系列模型限时免费。即日至北京时间2025年2月25日23:59:59，所有腾讯云用户均可享受DeepSeek-V3、DeepSeek-R1模型限时免费服务，单账号限制接口并发上限为5。在此之后，模型价格将恢复至原价，单账号限制接口并发上限为5。
-//
-// - 标准计费（2025年2月26日起生效）
-//
-// 
+// - 标准计费（2025年2月26日起生效），计费模式为后付费小时结，为保证您账户资源的正常使用，请提前[开通后付费](https://lke.cloud.tencent.com/lke#/app/system/charge/postpaid)并及时[充值](https://console.cloud.tencent.com/expense/recharge)。
 //
 //  ![image](https://cdn.xiaowei.qq.com/static/lke/deekseep-token0212.png)
 //
@@ -306,15 +300,9 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 // ### 计费说明
 //
-// - 限时免费
-//
 // 
 //
-// 本接口调用DeepSeek系列模型限时免费。即日至北京时间2025年2月25日23:59:59，所有腾讯云用户均可享受DeepSeek-V3、DeepSeek-R1模型限时免费服务，单账号限制接口并发上限为5。在此之后，模型价格将恢复至原价，单账号限制接口并发上限为5。
-//
-// - 标准计费（2025年2月26日起生效）
-//
-// 
+// - 标准计费（2025年2月26日起生效），计费模式为后付费小时结，为保证您账户资源的正常使用，请提前[开通后付费](https://lke.cloud.tencent.com/lke#/app/system/charge/postpaid)并及时[充值](https://console.cloud.tencent.com/expense/recharge)。
 //
 //  ![image](https://cdn.xiaowei.qq.com/static/lke/deekseep-token0212.png)
 //
@@ -685,7 +673,7 @@ func NewCreateReconstructDocumentFlowResponse() (response *CreateReconstructDocu
 // CreateReconstructDocumentFlow
 // 本接口为异步接口的发起请求接口，用于发起文档解析任务。
 //
-// 文档解析支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
+// 文档解析支持将图片或PDF、DOCX、PPTX、EXCEL等文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。具体支持文件类型请查看下方输入参数列表。
 //
 // 
 //
@@ -710,7 +698,7 @@ func (c *Client) CreateReconstructDocumentFlow(request *CreateReconstructDocumen
 // CreateReconstructDocumentFlow
 // 本接口为异步接口的发起请求接口，用于发起文档解析任务。
 //
-// 文档解析支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
+// 文档解析支持将图片或PDF、DOCX、PPTX、EXCEL等文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。具体支持文件类型请查看下方输入参数列表。
 //
 // 
 //

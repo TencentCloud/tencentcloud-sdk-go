@@ -22,39 +22,32 @@ import (
 
 type Account struct {
 	// 实例 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 账号名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
 	// 账号描述信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 读写权限策略。
 	// - r：只读。
 	// - w：只写。
 	// - rw：读写。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Privilege *string `json:"Privilege,omitnil,omitempty" name:"Privilege"`
 
 	// 只读路由策略。
 	// - master：主节点。
 	// - replication：从节点。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadonlyPolicy []*string `json:"ReadonlyPolicy,omitnil,omitempty" name:"ReadonlyPolicy"`
 
 	// 子账号状态.
 	// - 1：账号变更中。
 	// - 2：账号有效。
 	// - 4：账号已删除。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
@@ -323,11 +316,9 @@ func (r *AssociateSecurityGroupsResponse) FromJsonString(s string) error {
 
 type AvailableRegion struct {
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 可用区信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AvailableZones []*string `json:"AvailableZones,omitnil,omitempty" name:"AvailableZones"`
 }
 
@@ -2808,35 +2799,27 @@ func (r *DescribeInstanceDTSInfoResponse) FromJsonString(s string) error {
 
 type DescribeInstanceDTSInstanceInfo struct {
 	// 地域 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
 	// 实例 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 仓库ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SetId *int64 `json:"SetId,omitnil,omitempty" name:"SetId"`
 
 	// 可用区ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 实例类型。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 实例名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 实例访问地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
 	// 状态。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -6409,7 +6392,6 @@ type Groups struct {
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 复制组名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 复制组状态。
@@ -6424,11 +6406,9 @@ type Groups struct {
 	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
 	// 复制组中的实例信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Instances []*Instances `json:"Instances,omitnil,omitempty" name:"Instances"`
 
 	// 备注信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
@@ -6915,7 +6895,6 @@ type InstanceIntegerParam struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 参数单位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
 }
 
@@ -7125,111 +7104,84 @@ type InstanceSet struct {
 	SlaveReadWeight *int64 `json:"SlaveReadWeight,omitnil,omitempty" name:"SlaveReadWeight"`
 
 	// 实例关联的标签信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceTags []*InstanceTagInfo `json:"InstanceTags,omitnil,omitempty" name:"InstanceTags"`
 
 	// 项目名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
 	// 是否为免密实例。<ul><li>true：免密实例。</li><li>false：非免密实例。</li></ul>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoAuth *bool `json:"NoAuth,omitnil,omitempty" name:"NoAuth"`
 
 	// 客户端连接数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientLimit *int64 `json:"ClientLimit,omitnil,omitempty" name:"ClientLimit"`
 
 	// DTS状态（内部参数，用户可忽略）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DtsStatus *int64 `json:"DtsStatus,omitnil,omitempty" name:"DtsStatus"`
 
 	// 分片带宽上限，单位MB。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetLimit *int64 `json:"NetLimit,omitnil,omitempty" name:"NetLimit"`
 
 	// 免密实例标识（内部参数，用户可忽略）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PasswordFree *int64 `json:"PasswordFree,omitnil,omitempty" name:"PasswordFree"`
 
 	// 该参数存在命名不规范问题，建议用参数IPv6取代。内部参数，用户可忽略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip6 *string `json:"Vip6,omitnil,omitempty" name:"Vip6"`
 
 	// 内部参数，用户可忽略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPv6 *string `json:"IPv6,omitnil,omitempty" name:"IPv6"`
 
 	// 实例只读标识（内部参数，用户可忽略）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadOnly *int64 `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 
 	// 内部参数，用户可忽略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemainBandwidthDuration *string `json:"RemainBandwidthDuration,omitnil,omitempty" name:"RemainBandwidthDuration"`
 
 	// Redis实例请忽略该参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
 	// 监控版本。<ul><li>1m：1分钟粒度监控。目前该监控粒度已下线，具体信息，请参见[云数据库 Redis 1分钟粒度下线公告](https://cloud.tencent.com/document/product/239/80653)。</li><li>5s：5秒粒度监控。</li></ul>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorVersion *string `json:"MonitorVersion,omitnil,omitempty" name:"MonitorVersion"`
 
 	// 客户端最大连接数可设置的最小值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientLimitMin *int64 `json:"ClientLimitMin,omitnil,omitempty" name:"ClientLimitMin"`
 
 	// 客户端最大连接数可设置的最大值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientLimitMax *int64 `json:"ClientLimitMax,omitnil,omitempty" name:"ClientLimitMax"`
 
 	// 实例的节点详细信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeSet []*RedisNodeInfo `json:"NodeSet,omitnil,omitempty" name:"NodeSet"`
 
 	// 实例所在的地域信息，比如ap-guangzhou。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 外网地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WanAddress *string `json:"WanAddress,omitnil,omitempty" name:"WanAddress"`
 
 	// 北极星服务地址，内部使用。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolarisServer *string `json:"PolarisServer,omitnil,omitempty" name:"PolarisServer"`
 
 	// CDC Redis集群ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RedisClusterId *string `json:"RedisClusterId,omitnil,omitempty" name:"RedisClusterId"`
 
 	// CDC 集群ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 
 	// 产品版本。<ul><li>local：本地盘。</li><li>cloud：云盘版。</li><li>cdc：CDC 集群版本。</li></ul>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductVersion *string `json:"ProductVersion,omitnil,omitempty" name:"ProductVersion"`
 
 	// 实例当前Proxy版本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentProxyVersion *string `json:"CurrentProxyVersion,omitnil,omitempty" name:"CurrentProxyVersion"`
 
 	// 实例当前Cache小版本。如果实例加入全球复制组，显示全球复制的内核版本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentRedisVersion *string `json:"CurrentRedisVersion,omitnil,omitempty" name:"CurrentRedisVersion"`
 
 	// 实例可升级Proxy版本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpgradeProxyVersion *string `json:"UpgradeProxyVersion,omitnil,omitempty" name:"UpgradeProxyVersion"`
 
 	// 实例可升级Cache小版本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpgradeRedisVersion *string `json:"UpgradeRedisVersion,omitnil,omitempty" name:"UpgradeRedisVersion"`
 
 	// 备份模式：- SecondLevelBackup   秒级备份- NormalLevelBackup    普通备份
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupMode *string `json:"BackupMode,omitnil,omitempty" name:"BackupMode"`
 }
 
@@ -7317,7 +7269,6 @@ type Instances struct {
 	RedisShardSize *int64 `json:"RedisShardSize,omitnil,omitempty" name:"RedisShardSize"`
 
 	// 实例的磁盘大小。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
 	// 引擎：社区版Redis、腾讯云CKV。
@@ -7330,11 +7281,9 @@ type Instances struct {
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
 	// 该参数存在命名不规范问题，建议用参数IPv6取代。内部参数，用户可忽略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip6 *string `json:"Vip6,omitnil,omitempty" name:"Vip6"`
 
 	// 内部参数，用户可忽略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPv6 *string `json:"IPv6,omitnil,omitempty" name:"IPv6"`
 
 	// VPC 网络ID，如：75101。
@@ -7448,19 +7397,15 @@ func (r *KillMasterGroupResponse) FromJsonString(s string) error {
 
 type LogDeliveryInfo struct {
 	// 日志投递开启状态，开启：true，关闭：false
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
 	// 日志集ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 日志主题ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志集所在地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogRegion *string `json:"LogRegion,omitnil,omitempty" name:"LogRegion"`
 }
 

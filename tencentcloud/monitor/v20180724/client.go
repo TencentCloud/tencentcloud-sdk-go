@@ -7501,6 +7501,63 @@ func (c *Client) GetPrometheusAgentManagementCommandWithContext(ctx context.Cont
     return
 }
 
+func NewGetTopNMonitorDataRequest() (request *GetTopNMonitorDataRequest) {
+    request = &GetTopNMonitorDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "GetTopNMonitorData")
+    
+    
+    return
+}
+
+func NewGetTopNMonitorDataResponse() (response *GetTopNMonitorDataResponse) {
+    response = &GetTopNMonitorDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetTopNMonitorData
+// 支持TopN查询，对于给定的监控指标和时间区间，按照指标大小按序返回不同维度组合及数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRNOTOPEN = "FailedOperation.ErrNotOpen"
+//  FAILEDOPERATION_ERROWED = "FailedOperation.ErrOwed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetTopNMonitorData(request *GetTopNMonitorDataRequest) (response *GetTopNMonitorDataResponse, err error) {
+    return c.GetTopNMonitorDataWithContext(context.Background(), request)
+}
+
+// GetTopNMonitorData
+// 支持TopN查询，对于给定的监控指标和时间区间，按照指标大小按序返回不同维度组合及数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ERRNOTOPEN = "FailedOperation.ErrNotOpen"
+//  FAILEDOPERATION_ERROWED = "FailedOperation.ErrOwed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetTopNMonitorDataWithContext(ctx context.Context, request *GetTopNMonitorDataRequest) (response *GetTopNMonitorDataResponse, err error) {
+    if request == nil {
+        request = NewGetTopNMonitorDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTopNMonitorData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTopNMonitorDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInstallPluginsRequest() (request *InstallPluginsRequest) {
     request = &InstallPluginsRequest{
         BaseRequest: &tchttp.BaseRequest{},

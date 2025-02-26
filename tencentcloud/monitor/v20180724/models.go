@@ -11229,6 +11229,117 @@ func (r *GetPrometheusAgentManagementCommandResponse) FromJsonString(s string) e
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetTopNMonitorDataRequestParams struct {
+	// topN
+	N *uint64 `json:"N,omitnil,omitempty" name:"N"`
+
+	// 起始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 截止时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 实例对象的维度组合，格式为key-value键值对形式的集合。不同类型的实例字段完全不同，如CVM为[{"Name":"InstanceId","Value":"ins-j0hk02zo"}]，Ckafka为[{"Name":"instanceId","Value":"ckafka-l49k54dd"}]，COS为[{"Name":"appid","Value":"1258344699"},{"Name":"bucket","Value":"rig-1258344699"}]。各个云产品的维度请参阅各个产品监控指标文档，对应的维度列即为维度组合的key，value为key对应的值。单请求最多支持批量拉取50个实例的监控数据。
+	Instances []*Instance `json:"Instances,omitnil,omitempty" name:"Instances"`
+
+	// 指标名称，如Bwpresourcebandwidthin，仅支持单指标拉取。各个云产品的详细指标说明请参阅各个产品监控指标文档，对应的指标英文名即为MetricName
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 命名空间，如QCE/CVM。各个云产品的详细命名空间说明请参阅各个产品监控指标文档
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 监控统计周期，如60。默认为取值为60，单位为s。每个指标支持的统计周期不一定相同，各个云产品支持的统计周期请参阅各个产品监控指标文档，对应的统计周期列即为支持的统计周期。
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+}
+
+type GetTopNMonitorDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// topN
+	N *uint64 `json:"N,omitnil,omitempty" name:"N"`
+
+	// 起始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 截止时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 实例对象的维度组合，格式为key-value键值对形式的集合。不同类型的实例字段完全不同，如CVM为[{"Name":"InstanceId","Value":"ins-j0hk02zo"}]，Ckafka为[{"Name":"instanceId","Value":"ckafka-l49k54dd"}]，COS为[{"Name":"appid","Value":"1258344699"},{"Name":"bucket","Value":"rig-1258344699"}]。各个云产品的维度请参阅各个产品监控指标文档，对应的维度列即为维度组合的key，value为key对应的值。单请求最多支持批量拉取50个实例的监控数据。
+	Instances []*Instance `json:"Instances,omitnil,omitempty" name:"Instances"`
+
+	// 指标名称，如Bwpresourcebandwidthin，仅支持单指标拉取。各个云产品的详细指标说明请参阅各个产品监控指标文档，对应的指标英文名即为MetricName
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 命名空间，如QCE/CVM。各个云产品的详细命名空间说明请参阅各个产品监控指标文档
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// 监控统计周期，如60。默认为取值为60，单位为s。每个指标支持的统计周期不一定相同，各个云产品支持的统计周期请参阅各个产品监控指标文档，对应的统计周期列即为支持的统计周期。
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+}
+
+func (r *GetTopNMonitorDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTopNMonitorDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "N")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Instances")
+	delete(f, "MetricName")
+	delete(f, "Namespace")
+	delete(f, "Period")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTopNMonitorDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTopNMonitorDataResponseParams struct {
+	// 指标名	
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 统计周期	
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// topN
+	N *uint64 `json:"N,omitnil,omitempty" name:"N"`
+
+	// 排序的监控数据	
+	OrderedDataPoints []*SingleOrderedDataPoint `json:"OrderedDataPoints,omitnil,omitempty" name:"OrderedDataPoints"`
+
+	// 返回信息
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetTopNMonitorDataResponse struct {
+	*tchttp.BaseResponse
+	Response *GetTopNMonitorDataResponseParams `json:"Response"`
+}
+
+func (r *GetTopNMonitorDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTopNMonitorDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type GrafanaAccountInfo struct {
 	// 用户账号ID
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
@@ -14496,6 +14607,24 @@ func (r *SetDefaultAlarmPolicyResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SetDefaultAlarmPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SingleOrderedDataPoint struct {
+	// 实例对象维度组合	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Dimensions []*Dimension `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
+
+	// 监控数据值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *float64 `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 监控数据时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *uint64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 排序序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Order *uint64 `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
 // Predefined struct for user

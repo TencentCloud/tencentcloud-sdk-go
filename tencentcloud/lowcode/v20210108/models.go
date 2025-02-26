@@ -20,6 +20,74 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+// Predefined struct for user
+type CreateKnowledgeSetRequestParams struct {
+	// 知识库标识
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 知识库名称
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 描述
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+}
+
+type CreateKnowledgeSetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 知识库标识
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 知识库名称
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 描述
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+}
+
+func (r *CreateKnowledgeSetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateKnowledgeSetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Title")
+	delete(f, "Desc")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateKnowledgeSetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateKnowledgeSetResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateKnowledgeSetResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateKnowledgeSetResponseParams `json:"Response"`
+}
+
+func (r *CreateKnowledgeSetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateKnowledgeSetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DataSourceDetail struct {
 	// 数据源 ID
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
@@ -34,6 +102,7 @@ type DataSourceDetail struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 数据源描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 数据源配置
@@ -43,7 +112,6 @@ type DataSourceDetail struct {
 	CmsProject *string `json:"CmsProject,omitnil,omitempty" name:"CmsProject"`
 
 	// 当前为环境 id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
 
 	// schema 版本信息
@@ -51,7 +119,6 @@ type DataSourceDetail struct {
 	SchemaVersion *string `json:"SchemaVersion,omitnil,omitempty" name:"SchemaVersion"`
 
 	// 创建者用户 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatorId *string `json:"CreatorId,omitnil,omitempty" name:"CreatorId"`
 
 	// 创建时间
@@ -63,7 +130,6 @@ type DataSourceDetail struct {
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 环境 id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// 版本
@@ -75,7 +141,6 @@ type DataSourceDetail struct {
 	AppUsageList []*DataSourceLinkApp `json:"AppUsageList,omitnil,omitempty" name:"AppUsageList"`
 
 	// 发布时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublishedAt *string `json:"PublishedAt,omitnil,omitempty" name:"PublishedAt"`
 
 	// 子数据源ids
@@ -87,11 +152,9 @@ type DataSourceDetail struct {
 	Fun *string `json:"Fun,omitnil,omitempty" name:"Fun"`
 
 	// 云函数状态 1 Active 2 Creating 3 Updating 4 Deleting  9 Deleted 11 CreatFailed  12 UpdateFailed 13 DeleteFailed 21 UpdateTimeOut
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScfStatus *uint64 `json:"ScfStatus,omitnil,omitempty" name:"ScfStatus"`
 
 	// 自定义方法
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Methods *string `json:"Methods,omitnil,omitempty" name:"Methods"`
 
 	// 子数据源名数组
@@ -99,7 +162,6 @@ type DataSourceDetail struct {
 	ChildDataSourceNames []*string `json:"ChildDataSourceNames,omitnil,omitempty" name:"ChildDataSourceNames"`
 
 	// 是否旧数据源 1 新 0 旧
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsNewDataSource *int64 `json:"IsNewDataSource,omitnil,omitempty" name:"IsNewDataSource"`
 
 	// 数据源视图id
@@ -120,6 +182,8 @@ type DataSourceDetail struct {
 
 	// 发布版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: PublishVersion is deprecated.
 	PublishVersion *string `json:"PublishVersion,omitnil,omitempty" name:"PublishVersion"`
 
 	// 发布视图id
@@ -127,7 +191,6 @@ type DataSourceDetail struct {
 	PublishViewId *string `json:"PublishViewId,omitnil,omitempty" name:"PublishViewId"`
 
 	// 数据源子类型   "database" 标准模型 "custom-database" 自定义模型 "system" 系统模型 "connector" 连接器 "custom-connector" 自定义连接器 "hidden" 隐藏数据源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubType *string `json:"SubType,omitnil,omitempty" name:"SubType"`
 
 	// 授权状态  0 授权无效 1 授权有效
@@ -137,6 +200,32 @@ type DataSourceDetail struct {
 	// 数据源授权信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthInfo *TicketAuthInfo `json:"AuthInfo,omitnil,omitempty" name:"AuthInfo"`
+
+	// 1发布0未发布
+	PublishStatus *int64 `json:"PublishStatus,omitnil,omitempty" name:"PublishStatus"`
+
+	// 更新版本
+	UpdateVersion *int64 `json:"UpdateVersion,omitnil,omitempty" name:"UpdateVersion"`
+
+	// 模型关联关系字段列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelationFieldList []*RelationField `json:"RelationFieldList,omitnil,omitempty" name:"RelationFieldList"`
+
+	// db实例类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbInstanceType *string `json:"DbInstanceType,omitnil,omitempty" name:"DbInstanceType"`
+
+	// 体验环境db表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PreviewTableName *string `json:"PreviewTableName,omitnil,omitempty" name:"PreviewTableName"`
+
+	// 正式环境db表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublishedTableName *string `json:"PublishedTableName,omitnil,omitempty" name:"PublishedTableName"`
+
+	// DB来源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbSourceType *string `json:"DbSourceType,omitnil,omitempty" name:"DbSourceType"`
 }
 
 type DataSourceDetailItems struct {
@@ -152,20 +241,19 @@ type DataSourceLinkApp struct {
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 应用名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 
 	// 是否编辑状态使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EditStatusUse *int64 `json:"EditStatusUse,omitnil,omitempty" name:"EditStatusUse"`
 
 	// 是否预览状态使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewStatusUse *int64 `json:"PreviewStatusUse,omitnil,omitempty" name:"PreviewStatusUse"`
 
 	// 是否正式状态使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OnlineStatusUse *int64 `json:"OnlineStatusUse,omitnil,omitempty" name:"OnlineStatusUse"`
+
+	// 数据源ID
+	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
 }
 
 type DataSourceQueryOption struct {
@@ -174,6 +262,130 @@ type DataSourceQueryOption struct {
 
 	// 数据源名称模糊匹配
 	LikeTitle *string `json:"LikeTitle,omitnil,omitempty" name:"LikeTitle"`
+}
+
+// Predefined struct for user
+type DeleteKnowledgeDocumentSetRequestParams struct {
+	// 知识库标识
+	CollectionView *string `json:"CollectionView,omitnil,omitempty" name:"CollectionView"`
+
+	// 删除时制定的条件
+	Query *DocumentQuery `json:"Query,omitnil,omitempty" name:"Query"`
+}
+
+type DeleteKnowledgeDocumentSetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 知识库标识
+	CollectionView *string `json:"CollectionView,omitnil,omitempty" name:"CollectionView"`
+
+	// 删除时制定的条件
+	Query *DocumentQuery `json:"Query,omitnil,omitempty" name:"Query"`
+}
+
+func (r *DeleteKnowledgeDocumentSetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteKnowledgeDocumentSetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CollectionView")
+	delete(f, "Query")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteKnowledgeDocumentSetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteKnowledgeDocumentSetResponseParams struct {
+	// 新增文件返回信息
+	Data *DeleteKnowledgeDocumentSetRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteKnowledgeDocumentSetResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteKnowledgeDocumentSetResponseParams `json:"Response"`
+}
+
+func (r *DeleteKnowledgeDocumentSetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteKnowledgeDocumentSetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeleteKnowledgeDocumentSetRsp struct {
+	// 删除文档数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AffectedCount *int64 `json:"AffectedCount,omitnil,omitempty" name:"AffectedCount"`
+}
+
+// Predefined struct for user
+type DeleteKnowledgeSetRequestParams struct {
+	// 知识库标识
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type DeleteKnowledgeSetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 知识库标识
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+func (r *DeleteKnowledgeSetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteKnowledgeSetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteKnowledgeSetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteKnowledgeSetResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteKnowledgeSetResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteKnowledgeSetResponseParams `json:"Response"`
+}
+
+func (r *DeleteKnowledgeSetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteKnowledgeSetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -214,8 +426,23 @@ type DescribeDataSourceListRequestParams struct {
 	// 查询连接器 0 数据模型 1 连接器 2 自定义连接器
 	QueryConnector *int64 `json:"QueryConnector,omitnil,omitempty" name:"QueryConnector"`
 
-	// 查询数据源黑名单机制，比如不想要系统数据源["system"]
+	// 废弃中
 	NotQuerySubTypeList []*string `json:"NotQuerySubTypeList,omitnil,omitempty" name:"NotQuerySubTypeList"`
+
+	// 查询channelList
+	ChannelList []*string `json:"ChannelList,omitnil,omitempty" name:"ChannelList"`
+
+	// 是否查询数据源关联关系
+	QueryDataSourceRelationList *bool `json:"QueryDataSourceRelationList,omitnil,omitempty" name:"QueryDataSourceRelationList"`
+
+	// db实例类型
+	DbInstanceType *string `json:"DbInstanceType,omitnil,omitempty" name:"DbInstanceType"`
+
+	// 数据库表名列表
+	DatabaseTableNames []*string `json:"DatabaseTableNames,omitnil,omitempty" name:"DatabaseTableNames"`
+
+	// 是否查询系统模型，默认为true，需要显示设置为False才能过滤系统模型
+	QuerySystemModel *bool `json:"QuerySystemModel,omitnil,omitempty" name:"QuerySystemModel"`
 }
 
 type DescribeDataSourceListRequest struct {
@@ -257,8 +484,23 @@ type DescribeDataSourceListRequest struct {
 	// 查询连接器 0 数据模型 1 连接器 2 自定义连接器
 	QueryConnector *int64 `json:"QueryConnector,omitnil,omitempty" name:"QueryConnector"`
 
-	// 查询数据源黑名单机制，比如不想要系统数据源["system"]
+	// 废弃中
 	NotQuerySubTypeList []*string `json:"NotQuerySubTypeList,omitnil,omitempty" name:"NotQuerySubTypeList"`
+
+	// 查询channelList
+	ChannelList []*string `json:"ChannelList,omitnil,omitempty" name:"ChannelList"`
+
+	// 是否查询数据源关联关系
+	QueryDataSourceRelationList *bool `json:"QueryDataSourceRelationList,omitnil,omitempty" name:"QueryDataSourceRelationList"`
+
+	// db实例类型
+	DbInstanceType *string `json:"DbInstanceType,omitnil,omitempty" name:"DbInstanceType"`
+
+	// 数据库表名列表
+	DatabaseTableNames []*string `json:"DatabaseTableNames,omitnil,omitempty" name:"DatabaseTableNames"`
+
+	// 是否查询系统模型，默认为true，需要显示设置为False才能过滤系统模型
+	QuerySystemModel *bool `json:"QuerySystemModel,omitnil,omitempty" name:"QuerySystemModel"`
 }
 
 func (r *DescribeDataSourceListRequest) ToJsonString() string {
@@ -286,6 +528,11 @@ func (r *DescribeDataSourceListRequest) FromJsonString(s string) error {
 	delete(f, "QueryBindToApp")
 	delete(f, "QueryConnector")
 	delete(f, "NotQuerySubTypeList")
+	delete(f, "ChannelList")
+	delete(f, "QueryDataSourceRelationList")
+	delete(f, "DbInstanceType")
+	delete(f, "DatabaseTableNames")
+	delete(f, "QuerySystemModel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataSourceListRequest has unknown keys!", "")
 	}
@@ -297,7 +544,7 @@ type DescribeDataSourceListResponseParams struct {
 	// data 数据
 	Data *DataSourceDetailItems `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
 
@@ -317,7 +564,819 @@ func (r *DescribeDataSourceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKnowledgeDocumentSetDetailRequestParams struct {
+	// 知识库标识
+	CollectionView *string `json:"CollectionView,omitnil,omitempty" name:"CollectionView"`
+
+	// 文件名
+	DocumentSetName *string `json:"DocumentSetName,omitnil,omitempty" name:"DocumentSetName"`
+
+	// 文件id
+	DocumentSetId *string `json:"DocumentSetId,omitnil,omitempty" name:"DocumentSetId"`
+}
+
+type DescribeKnowledgeDocumentSetDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 知识库标识
+	CollectionView *string `json:"CollectionView,omitnil,omitempty" name:"CollectionView"`
+
+	// 文件名
+	DocumentSetName *string `json:"DocumentSetName,omitnil,omitempty" name:"DocumentSetName"`
+
+	// 文件id
+	DocumentSetId *string `json:"DocumentSetId,omitnil,omitempty" name:"DocumentSetId"`
+}
+
+func (r *DescribeKnowledgeDocumentSetDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKnowledgeDocumentSetDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CollectionView")
+	delete(f, "DocumentSetName")
+	delete(f, "DocumentSetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKnowledgeDocumentSetDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKnowledgeDocumentSetDetailResponseParams struct {
+	// 新增文件返回信息
+	Data *DescribeKnowledgeDocumentSetDetailRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeKnowledgeDocumentSetDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKnowledgeDocumentSetDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeKnowledgeDocumentSetDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKnowledgeDocumentSetDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKnowledgeDocumentSetDetailRsp struct {
+	// 获取的数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 文档信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocumentSet *KnowledgeDocumentSet `json:"DocumentSet,omitnil,omitempty" name:"DocumentSet"`
+}
+
+// Predefined struct for user
+type DescribeKnowledgeDocumentSetListRequestParams struct {
+	// 知识库标识
+	CollectionView *string `json:"CollectionView,omitnil,omitempty" name:"CollectionView"`
+
+	// 查询条件
+	Query *PageQuery `json:"Query,omitnil,omitempty" name:"Query"`
+}
+
+type DescribeKnowledgeDocumentSetListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 知识库标识
+	CollectionView *string `json:"CollectionView,omitnil,omitempty" name:"CollectionView"`
+
+	// 查询条件
+	Query *PageQuery `json:"Query,omitnil,omitempty" name:"Query"`
+}
+
+func (r *DescribeKnowledgeDocumentSetListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKnowledgeDocumentSetListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CollectionView")
+	delete(f, "Query")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKnowledgeDocumentSetListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKnowledgeDocumentSetListResponseParams struct {
+	// 新增文件返回信息
+	Data *DescribeKnowledgeDocumentSetListRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeKnowledgeDocumentSetListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKnowledgeDocumentSetListResponseParams `json:"Response"`
+}
+
+func (r *DescribeKnowledgeDocumentSetListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKnowledgeDocumentSetListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeKnowledgeDocumentSetListRsp struct {
+	// 文件集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocumentSets []*QureyKnowledgeDocumentSet `json:"DocumentSets,omitnil,omitempty" name:"DocumentSets"`
+
+	// 条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
+}
+
+// Predefined struct for user
+type DescribeKnowledgeSetListRequestParams struct {
+	// 知识库标识，精准查询
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 知识库名称，精准查询
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 查询条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// NoPage标识不分页
+	QueryMode *string `json:"QueryMode,omitnil,omitempty" name:"QueryMode"`
+}
+
+type DescribeKnowledgeSetListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 知识库标识，精准查询
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 知识库名称，精准查询
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 查询条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// NoPage标识不分页
+	QueryMode *string `json:"QueryMode,omitnil,omitempty" name:"QueryMode"`
+}
+
+func (r *DescribeKnowledgeSetListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKnowledgeSetListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Title")
+	delete(f, "Limit")
+	delete(f, "QueryMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKnowledgeSetListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKnowledgeSetListResponseParams struct {
+	// 知识库列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *KnowledgeSetRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeKnowledgeSetListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKnowledgeSetListResponseParams `json:"Response"`
+}
+
+func (r *DescribeKnowledgeSetListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKnowledgeSetListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DocumentQuery struct {
+	// 文件ids
+	DocumentSetId []*string `json:"DocumentSetId,omitnil,omitempty" name:"DocumentSetId"`
+
+	// 文件名集合
+	DocumentSetName []*string `json:"DocumentSetName,omitnil,omitempty" name:"DocumentSetName"`
+
+	// 使用创建 CollectionView 指定的 Filter 索引的字段设置查询过滤表达式
+	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+type KnowledgeDocumentSet struct {
+	// 文档id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocumentSetId *string `json:"DocumentSetId,omitnil,omitempty" name:"DocumentSetId"`
+
+	// 文档名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocumentSetName *string `json:"DocumentSetName,omitnil,omitempty" name:"DocumentSetName"`
+
+	// 文件完整内容。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 文件内容前 200个字符。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TextPrefix *string `json:"TextPrefix,omitnil,omitempty" name:"TextPrefix"`
+
+	// 文件详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocumentSetInfo *KnowledgeDocumentSetInfo `json:"DocumentSetInfo,omitnil,omitempty" name:"DocumentSetInfo"`
+
+	// 文件拆分信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SplitterPreprocess *KnowledgeSplitterPreprocess `json:"SplitterPreprocess,omitnil,omitempty" name:"SplitterPreprocess"`
+
+	// 未使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 文档标题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileTitle *string `json:"FileTitle,omitnil,omitempty" name:"FileTitle"`
+
+	// 文档元信息，必须为jsonstring
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileMetaData *string `json:"FileMetaData,omitnil,omitempty" name:"FileMetaData"`
+
+	// 作者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Author *string `json:"Author,omitnil,omitempty" name:"Author"`
+}
+
+type KnowledgeDocumentSetInfo struct {
+	// 文件的字符数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TextLength *uint64 `json:"TextLength,omitnil,omitempty" name:"TextLength"`
+
+	// 文件的字节数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ByteLength *uint64 `json:"ByteLength,omitnil,omitempty" name:"ByteLength"`
+
+	// 文件被预处理、Embedding 向量化的进度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexedProgress *uint64 `json:"IndexedProgress,omitnil,omitempty" name:"IndexedProgress"`
+
+	// 文件预处理、Embedding 向量化的状态。
+	// New：等待解析。
+	// Loading：文件解析中。
+	// Failure：文件解析、写入出错。
+	// Ready：文件解析、写入完成。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexedStatus *string `json:"IndexedStatus,omitnil,omitempty" name:"IndexedStatus"`
+
+	// 文件创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 文件最后更新时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateTime *string `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
+
+	// 文件关键字。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Keywords *string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
+}
+
+type KnowledgeSet struct {
+	// 知识库标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 知识库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 状态，
+	// NOT_ENABLED未启用
+	// ENABLED 已启用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Active *string `json:"Active,omitnil,omitempty" name:"Active"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type KnowledgeSetRsp struct {
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 知识库列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KnowledgeSets []*KnowledgeSet `json:"KnowledgeSets,omitnil,omitempty" name:"KnowledgeSets"`
+}
+
+type KnowledgeSplitterPreprocess struct {
+	// 在对文件拆分时，配置是否将 Title 追加到切分后的段落后面一并 Embedding。取值如下所示：
+	// false：不追加。
+	// true：将段落 Title 追加到切分后的段落。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppendTitleToChunk *bool `json:"AppendTitleToChunk,omitnil,omitempty" name:"AppendTitleToChunk"`
+
+	// 在对文件拆分时，配置是否将关键字 keywords 追加到切分后的段落一并 Embedding。取值如下所示：
+	// false：不追加。
+	// true：将全文的 keywords 追加到切分后的段落。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppendKeywordsToChunk *bool `json:"AppendKeywordsToChunk,omitnil,omitempty" name:"AppendKeywordsToChunk"`
+}
+
+type PageQuery struct {
+	// 文件id数组，表示要查询的文件的所有 ID，支持批量查询，数组元素范围[1,20]。
+	DocumentSetId []*string `json:"DocumentSetId,omitnil,omitempty" name:"DocumentSetId"`
+
+	// 表示要查询的文档名称，支持批量查询，数组元素范围[1,20]。
+	DocumentSetName []*string `json:"DocumentSetName,omitnil,omitempty" name:"DocumentSetName"`
+
+	// 取值范围：[1,16384]
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 设置分页偏移量，用于控制分页查询返回结果的起始位置，方便用户对数据进行分页展示和浏览。
+	// 取值：为 limit 整数倍。
+	// 计算公式：offset=limit*(page-1)。
+	// 例如：当 limit = 10，page = 2 时，分页偏移量 offset = 10 * (2 - 1) = 10，表示从查询结果的第 11 条记录开始返回数据。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 设置后，其他字段为空值
+	OutputFields []*string `json:"OutputFields,omitnil,omitempty" name:"OutputFields"`
+
+	// 使用创建 CollectionView 指定的 Filter 索引的字段设置查询过滤表达式。
+	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+type QureyKnowledgeDocumentSet struct {
+	// 文件id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocumentSetId *string `json:"DocumentSetId,omitnil,omitempty" name:"DocumentSetId"`
+
+	// 文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocumentSetName *string `json:"DocumentSetName,omitnil,omitempty" name:"DocumentSetName"`
+
+	// 文件内容前 200个字符。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TextPrefix *string `json:"TextPrefix,omitnil,omitempty" name:"TextPrefix"`
+
+	// 文件拆分信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SplitterPreprocess *KnowledgeSplitterPreprocess `json:"SplitterPreprocess,omitnil,omitempty" name:"SplitterPreprocess"`
+
+	// 文件详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocumentSetInfo *QureyKnowledgeDocumentSetInfo `json:"DocumentSetInfo,omitnil,omitempty" name:"DocumentSetInfo"`
+
+	// 文件标题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileTitle *string `json:"FileTitle,omitnil,omitempty" name:"FileTitle"`
+
+	// 文件元信息，必须为jsonstring
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileMetaData *string `json:"FileMetaData,omitnil,omitempty" name:"FileMetaData"`
+
+	// name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 作者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Author *string `json:"Author,omitnil,omitempty" name:"Author"`
+}
+
+type QureyKnowledgeDocumentSetInfo struct {
+	// 文件的字符数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TextLength *uint64 `json:"TextLength,omitnil,omitempty" name:"TextLength"`
+
+	// 文件的字节数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ByteLength *uint64 `json:"ByteLength,omitnil,omitempty" name:"ByteLength"`
+
+	// 文件被预处理、Embedding 向量化的进度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexedProgress *uint64 `json:"IndexedProgress,omitnil,omitempty" name:"IndexedProgress"`
+
+	// 文件预处理、Embedding 向量化的状态。
+	// New：等待解析。
+	// Loading：文件解析中。
+	// Failure：文件解析、写入出错。
+	// Ready：文件解析、写入完成。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexedStatus *string `json:"IndexedStatus,omitnil,omitempty" name:"IndexedStatus"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexedErrorMsg *string `json:"IndexedErrorMsg,omitnil,omitempty" name:"IndexedErrorMsg"`
+
+	// 文件创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 文件最后更新时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateTime *string `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
+
+	// 文件关键字。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Keywords *string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
+}
+
+type RelationField struct {
+	// 关联关系字段
+	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
+
+	// 关联关系格式
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 关联数据源名称
+	RelateDataSourceName *string `json:"RelateDataSourceName,omitnil,omitempty" name:"RelateDataSourceName"`
+}
+
+type SearchDocInfo struct {
+	// 知识库名称
+	CollectionViewName *string `json:"CollectionViewName,omitnil,omitempty" name:"CollectionViewName"`
+
+	// 文档Id
+	DocSetId *string `json:"DocSetId,omitnil,omitempty" name:"DocSetId"`
+
+	// 文档Name
+	DocSetName *string `json:"DocSetName,omitnil,omitempty" name:"DocSetName"`
+
+	// 文档类型
+	DocType *string `json:"DocType,omitnil,omitempty" name:"DocType"`
+
+	// 文档标题
+	FileTitle *string `json:"FileTitle,omitnil,omitempty" name:"FileTitle"`
+
+	// 文档元信息
+	FileMetaData *string `json:"FileMetaData,omitnil,omitempty" name:"FileMetaData"`
+
+	// 文档描述
+	DocDesc *string `json:"DocDesc,omitnil,omitempty" name:"DocDesc"`
+
+	// 文档大小
+	FileSize *uint64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+}
+
+// Predefined struct for user
+type SearchDocListRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 知识库名称
+	CollectionView *string `json:"CollectionView,omitnil,omitempty" name:"CollectionView"`
+
+	// 搜索模式
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
+
+	// 搜索值
+	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
+
+	// 页码
+	PageNo *uint64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type SearchDocListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 知识库名称
+	CollectionView *string `json:"CollectionView,omitnil,omitempty" name:"CollectionView"`
+
+	// 搜索模式
+	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
+
+	// 搜索值
+	SearchValue *string `json:"SearchValue,omitnil,omitempty" name:"SearchValue"`
+
+	// 页码
+	PageNo *uint64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *SearchDocListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchDocListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "CollectionView")
+	delete(f, "SearchKey")
+	delete(f, "SearchValue")
+	delete(f, "PageNo")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchDocListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchDocListResponseParams struct {
+	// 知识库文档搜索数据
+	Data *SearchDocRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SearchDocListResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchDocListResponseParams `json:"Response"`
+}
+
+func (r *SearchDocListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchDocListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchDocRsp struct {
+	// 文档基本信息
+	DocInfos []*SearchDocInfo `json:"DocInfos,omitnil,omitempty" name:"DocInfos"`
+
+	// 文档总数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+}
+
 type TicketAuthInfo struct {
 	// 授权用户
 	AuthUser *string `json:"AuthUser,omitnil,omitempty" name:"AuthUser"`
+}
+
+// Predefined struct for user
+type UpdateKnowledgeSetRequestParams struct {
+	// 知识库标识
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 知识库名称
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 描述
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 状态;ENABLED启用；NOT_ENABLED不启用
+	Active *string `json:"Active,omitnil,omitempty" name:"Active"`
+}
+
+type UpdateKnowledgeSetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 知识库标识
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 知识库名称
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 描述
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 状态;ENABLED启用；NOT_ENABLED不启用
+	Active *string `json:"Active,omitnil,omitempty" name:"Active"`
+}
+
+func (r *UpdateKnowledgeSetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateKnowledgeSetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Title")
+	delete(f, "Desc")
+	delete(f, "Active")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateKnowledgeSetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateKnowledgeSetResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateKnowledgeSetResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateKnowledgeSetResponseParams `json:"Response"`
+}
+
+func (r *UpdateKnowledgeSetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateKnowledgeSetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UploadKnowledgeDocumentSetRequestParams struct {
+	// 知识库标识
+	CollectionView *string `json:"CollectionView,omitnil,omitempty" name:"CollectionView"`
+
+	// 状态;ENABLED启用；NOT_ENABLED不启用
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 文件存储位置的可读地址
+	CosUrl *string `json:"CosUrl,omitnil,omitempty" name:"CosUrl"`
+
+	// 文件类型，例如: .docx, .md
+	DocumentType *string `json:"DocumentType,omitnil,omitempty" name:"DocumentType"`
+
+	// 对文件的描述
+	DocumentDesc *string `json:"DocumentDesc,omitnil,omitempty" name:"DocumentDesc"`
+
+	// 文件标题
+	FileTitle *string `json:"FileTitle,omitnil,omitempty" name:"FileTitle"`
+
+	// 	文件元信息，为jsonstring
+	FileMetaData *string `json:"FileMetaData,omitnil,omitempty" name:"FileMetaData"`
+
+	// 文件id
+	DocumentSetId *string `json:"DocumentSetId,omitnil,omitempty" name:"DocumentSetId"`
+}
+
+type UploadKnowledgeDocumentSetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 知识库标识
+	CollectionView *string `json:"CollectionView,omitnil,omitempty" name:"CollectionView"`
+
+	// 状态;ENABLED启用；NOT_ENABLED不启用
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 文件存储位置的可读地址
+	CosUrl *string `json:"CosUrl,omitnil,omitempty" name:"CosUrl"`
+
+	// 文件类型，例如: .docx, .md
+	DocumentType *string `json:"DocumentType,omitnil,omitempty" name:"DocumentType"`
+
+	// 对文件的描述
+	DocumentDesc *string `json:"DocumentDesc,omitnil,omitempty" name:"DocumentDesc"`
+
+	// 文件标题
+	FileTitle *string `json:"FileTitle,omitnil,omitempty" name:"FileTitle"`
+
+	// 	文件元信息，为jsonstring
+	FileMetaData *string `json:"FileMetaData,omitnil,omitempty" name:"FileMetaData"`
+
+	// 文件id
+	DocumentSetId *string `json:"DocumentSetId,omitnil,omitempty" name:"DocumentSetId"`
+}
+
+func (r *UploadKnowledgeDocumentSetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadKnowledgeDocumentSetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CollectionView")
+	delete(f, "FileName")
+	delete(f, "CosUrl")
+	delete(f, "DocumentType")
+	delete(f, "DocumentDesc")
+	delete(f, "FileTitle")
+	delete(f, "FileMetaData")
+	delete(f, "DocumentSetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadKnowledgeDocumentSetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UploadKnowledgeDocumentSetResponseParams struct {
+	// 新增文件返回信息
+	Data *UploadKnowledgeDocumentSetRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UploadKnowledgeDocumentSetResponse struct {
+	*tchttp.BaseResponse
+	Response *UploadKnowledgeDocumentSetResponseParams `json:"Response"`
+}
+
+func (r *UploadKnowledgeDocumentSetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadKnowledgeDocumentSetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadKnowledgeDocumentSetRsp struct {
+	// 给文件分配的 ID 信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocumentSetId *string `json:"DocumentSetId,omitnil,omitempty" name:"DocumentSetId"`
+
+	// 文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DocumentSetName *string `json:"DocumentSetName,omitnil,omitempty" name:"DocumentSetName"`
+
+	// 文件标题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileTitle *string `json:"FileTitle,omitnil,omitempty" name:"FileTitle"`
+
+	// 文件元信息，为jsonstring
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileMetaData *string `json:"FileMetaData,omitnil,omitempty" name:"FileMetaData"`
 }

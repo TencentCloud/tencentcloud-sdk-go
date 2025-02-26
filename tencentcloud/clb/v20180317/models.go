@@ -1993,6 +1993,9 @@ type CreateTargetGroupRequestParams struct {
 	// 目标组绑定的后端服务器
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitnil,omitempty" name:"TargetGroupInstances"`
 
+	// 目标组类型，当前支持v1(旧版目标组), v2(新版目标组), 默认为v1(旧版目标组)。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
 	// 标签。
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
@@ -2018,6 +2021,9 @@ type CreateTargetGroupRequest struct {
 
 	// 目标组绑定的后端服务器
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitnil,omitempty" name:"TargetGroupInstances"`
+
+	// 目标组类型，当前支持v1(旧版目标组), v2(新版目标组), 默认为v1(旧版目标组)。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 标签。
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
@@ -2046,6 +2052,7 @@ func (r *CreateTargetGroupRequest) FromJsonString(s string) error {
 	delete(f, "VpcId")
 	delete(f, "Port")
 	delete(f, "TargetGroupInstances")
+	delete(f, "Type")
 	delete(f, "Tags")
 	delete(f, "Weight")
 	if len(f) > 0 {

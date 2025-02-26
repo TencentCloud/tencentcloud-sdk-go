@@ -228,7 +228,6 @@ type DescribeCaptchaAppIdInfoResponseParams struct {
 	CaptchaCode *int64 `json:"CaptchaCode,omitnil,omitempty" name:"CaptchaCode"`
 
 	// 返回操作信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -310,11 +309,9 @@ type DescribeCaptchaDataResponseParams struct {
 	CaptchaCode *int64 `json:"CaptchaCode,omitnil,omitempty" name:"CaptchaCode"`
 
 	// 数据数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*CaptchaQueryData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 返回信息描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -398,7 +395,6 @@ type DescribeCaptchaDataSumResponseParams struct {
 	AttackSum *int64 `json:"AttackSum,omitnil,omitempty" name:"AttackSum"`
 
 	// 返回信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
 	// 成功返回0  其它失败
@@ -492,11 +488,9 @@ type DescribeCaptchaMiniDataResponseParams struct {
 	CaptchaCode *int64 `json:"CaptchaCode,omitnil,omitempty" name:"CaptchaCode"`
 
 	// 数据数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*CaptchaQueryData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 返回信息描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -568,39 +562,30 @@ func (r *DescribeCaptchaMiniDataSumRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCaptchaMiniDataSumResponseParams struct {
 	// 请求总量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GetSum *int64 `json:"GetSum,omitnil,omitempty" name:"GetSum"`
 
 	// 请求验证成功量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VfySuccSum *int64 `json:"VfySuccSum,omitnil,omitempty" name:"VfySuccSum"`
 
 	// 请求验证量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VfySum *int64 `json:"VfySum,omitnil,omitempty" name:"VfySum"`
 
 	// 拦截攻击量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttackSum *int64 `json:"AttackSum,omitnil,omitempty" name:"AttackSum"`
 
 	// 返回信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
 	// 成功返回0  其它失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaCode *int64 `json:"CaptchaCode,omitnil,omitempty" name:"CaptchaCode"`
 
 	// 票据校验总量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckTicketSum *int64 `json:"CheckTicketSum,omitnil,omitempty" name:"CheckTicketSum"`
 
 	// 票据验证通过量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TicketThroughputSum *int64 `json:"TicketThroughputSum,omitnil,omitempty" name:"TicketThroughputSum"`
 
 	// 票据验证拦截量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TicketInterceptSum *int64 `json:"TicketInterceptSum,omitnil,omitempty" name:"TicketInterceptSum"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -682,11 +667,9 @@ type DescribeCaptchaMiniOperDataResponseParams struct {
 	CaptchaCode *int64 `json:"CaptchaCode,omitnil,omitempty" name:"CaptchaCode"`
 
 	// 返回信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
 	// 用户操作数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *CaptchaOperDataRes `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1041,11 +1024,9 @@ type DescribeCaptchaOperDataResponseParams struct {
 	CaptchaCode *int64 `json:"CaptchaCode,omitnil,omitempty" name:"CaptchaCode"`
 
 	// 返回信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
 	// 用户操作数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *CaptchaOperDataRes `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1438,11 +1419,9 @@ type DescribeCaptchaTicketDataResponseParams struct {
 	CaptchaCode *int64 `json:"CaptchaCode,omitnil,omitempty" name:"CaptchaCode"`
 
 	// 返回信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
 	// 验证码票据信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *CaptchaTicketDataRes `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1497,14 +1476,12 @@ func (r *DescribeCaptchaUserAllAppIdRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCaptchaUserAllAppIdResponseParams struct {
 	// 用户注册的所有Appid和应用名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*CaptchaUserAllAppId `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 成功返回 0  其它失败
 	CaptchaCode *int64 `json:"CaptchaCode,omitnil,omitempty" name:"CaptchaCode"`
 
 	// 返回操作信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2141,7 +2118,6 @@ type UpdateCaptchaAppIdInfoResponseParams struct {
 	CaptchaCode *int64 `json:"CaptchaCode,omitnil,omitempty" name:"CaptchaCode"`
 
 	// 返回操作信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

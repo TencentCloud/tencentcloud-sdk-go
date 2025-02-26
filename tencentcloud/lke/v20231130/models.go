@@ -286,6 +286,10 @@ type AppModel struct {
 	// 模型TopP
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopP *string `json:"TopP,omitnil,omitempty" name:"TopP"`
+
+	// 模型资源状态 1：资源可用；2：资源已用尽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceStatus *uint64 `json:"ResourceStatus,omitnil,omitempty" name:"ResourceStatus"`
 }
 
 type AttrLabel struct {
@@ -1116,7 +1120,7 @@ type CreateQACateRequestParams struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 父级业务ID
+	// 父级业务ID，创建顶级分类时传字符串"0"
 	ParentBizId *string `json:"ParentBizId,omitnil,omitempty" name:"ParentBizId"`
 
 	// 分类名称
@@ -1129,7 +1133,7 @@ type CreateQACateRequest struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
-	// 父级业务ID
+	// 父级业务ID，创建顶级分类时传字符串"0"
 	ParentBizId *string `json:"ParentBizId,omitnil,omitempty" name:"ParentBizId"`
 
 	// 分类名称
@@ -2599,11 +2603,23 @@ type DescribeCorpResponseParams struct {
 	// 企业ID
 	CorpBizId *string `json:"CorpBizId,omitnil,omitempty" name:"CorpBizId"`
 
-	// 机器人配额
+	// 应用配额
 	RobotQuota *uint64 `json:"RobotQuota,omitnil,omitempty" name:"RobotQuota"`
 
 	// 企业全称
 	FullName *string `json:"FullName,omitnil,omitempty" name:"FullName"`
+
+	// 是否试用
+	IsTrial *bool `json:"IsTrial,omitnil,omitempty" name:"IsTrial"`
+
+	// 是否试用过期
+	IsTrialExpired *bool `json:"IsTrialExpired,omitnil,omitempty" name:"IsTrialExpired"`
+
+	// 可用应用数量
+	AvailableAppQuota *uint64 `json:"AvailableAppQuota,omitnil,omitempty" name:"AvailableAppQuota"`
+
+	// 是否支持自定义模型配置
+	IsSupportCustomModel *bool `json:"IsSupportCustomModel,omitnil,omitempty" name:"IsSupportCustomModel"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6267,6 +6283,14 @@ type ListDocItem struct {
 	// 是否允许重试，0：否，1：是
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAllowRetry *bool `json:"IsAllowRetry,omitnil,omitempty" name:"IsAllowRetry"`
+
+	// 0:文档比对处理 1:文档生成问答
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Processing []*int64 `json:"Processing,omitnil,omitempty" name:"Processing"`
+
+	// 文档创建落库时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 // Predefined struct for user

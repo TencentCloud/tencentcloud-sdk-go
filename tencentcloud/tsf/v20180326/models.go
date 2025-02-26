@@ -132,7 +132,6 @@ func (r *AddClusterInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddClusterInstancesResponseParams struct {
 	// 添加云主机的返回列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *AddInstanceResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -264,7 +263,6 @@ func (r *AddInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddInstancesResponseParams struct {
 	// 添加云主机是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -827,7 +825,6 @@ func (r *AssociateBusinessLogConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AssociateBusinessLogConfigResponseParams struct {
 	// 操作结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -920,7 +917,6 @@ func (r *AssociateConfigWithGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AssociateConfigWithGroupResponseParams struct {
 	// 绑定是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2945,7 +2941,6 @@ func (r *CreateApplicationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateApplicationResponseParams struct {
 	// 应用ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3115,7 +3110,6 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateClusterResponseParams struct {
 	// 集群ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4156,7 +4150,6 @@ func (r *CreateGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateGroupResponseParams struct {
 	// groupId， null表示创建失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4586,7 +4579,6 @@ func (r *CreateNamespaceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateNamespaceResponseParams struct {
 	// 成功时为命名空间ID，失败为null
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5065,7 +5057,6 @@ func (r *CreateRepositoryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateRepositoryResponseParams struct {
 	// 创建仓库是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5151,7 +5142,6 @@ func (r *CreateTaskFlowRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateTaskFlowResponseParams struct {
 	// 工作流 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5314,7 +5304,6 @@ func (r *CreateTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateTaskResponseParams struct {
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6182,7 +6171,6 @@ type DeleteGroupResponseParams struct {
 	// 删除部署组操作是否成功。
 	// true：操作成功。
 	// false：操作失败。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6744,7 +6732,6 @@ func (r *DeleteRepositoryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteRepositoryResponseParams struct {
 	// 删除仓库是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7589,7 +7576,6 @@ func (r *DeployGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeployGroupResponseParams struct {
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TaskId `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8288,7 +8274,6 @@ func (r *DescribeApplicationsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeApplicationsResponseParams struct {
 	// 应用分页列表信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageApplication `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8583,7 +8568,6 @@ func (r *DescribeClusterInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterInstancesResponseParams struct {
 	// 集群机器实例分页信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageInstance `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8683,7 +8667,6 @@ func (r *DescribeClustersRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClustersResponseParams struct {
 	// Cluster分页信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageClusterV2 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9326,7 +9309,6 @@ func (r *DescribeContainerEventsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeContainerEventsResponseParams struct {
 	// events 分页列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageContainerEvent `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9868,7 +9850,6 @@ func (r *DescribeDeliveryConfigsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDeliveryConfigsResponseParams struct {
 	// 投递项关联部署组信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *DeliveryConfigBindGroups `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10539,7 +10520,6 @@ func (r *DescribeGroupAttributeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeGroupAttributeResponseParams struct {
 	// 虚拟机部署组信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *VmGroupOther `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10846,7 +10826,6 @@ func (r *DescribeGroupInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeGroupInstancesResponseParams struct {
 	// 部署组机器信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageInstance `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11175,7 +11154,6 @@ func (r *DescribeGroupsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeGroupsResponseParams struct {
 	// 虚拟机部署组分页信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageVmGroup `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11679,7 +11657,6 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstancesResponseParams struct {
 	// 机器列表信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *InstanceEnrichedInfoPage `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11779,7 +11756,6 @@ func (r *DescribeInvocationMetricDataCurveRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeInvocationMetricDataCurveResponseParams struct {
 	// 指标监控数据曲线集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result []*MetricDataCurve `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11964,7 +11940,6 @@ func (r *DescribeInvocationMetricDataPointRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeInvocationMetricDataPointResponseParams struct {
 	// 单值指标列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result []*MetricDataSingleValue `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13813,7 +13788,6 @@ func (r *DescribeRepositoryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRepositoryResponseParams struct {
 	// 查询的仓库信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *RepositoryInfo `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13984,7 +13958,6 @@ func (r *DescribeSimpleApplicationsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSimpleApplicationsResponseParams struct {
 	// 简单应用分页对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageSimpleApplication `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14077,7 +14050,6 @@ func (r *DescribeSimpleClustersRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSimpleClustersResponseParams struct {
 	// TSF集群分页对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageCluster `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14191,7 +14163,6 @@ func (r *DescribeSimpleGroupsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSimpleGroupsResponseParams struct {
 	// 简单部署组列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageSimpleGroup `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14319,7 +14290,6 @@ func (r *DescribeSimpleNamespacesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSimpleNamespacesResponseParams struct {
 	// 命名空间分页列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageNamespace `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14482,7 +14452,6 @@ func (r *DescribeStatisticsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeStatisticsResponseParams struct {
 	// 查询服务统计结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ServiceStatisticsResults `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14710,7 +14679,6 @@ func (r *DescribeTaskRecordsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTaskRecordsResponseParams struct {
 	// 任务记录列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TaskRecordPage `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15656,7 +15624,6 @@ func (r *DisassociateBusinessLogConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DisassociateBusinessLogConfigResponseParams struct {
 	// 操作结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15721,7 +15688,6 @@ func (r *DisassociateKafkaConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DisassociateKafkaConfigResponseParams struct {
 	// 解除绑定是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16301,7 +16267,6 @@ func (r *ExpandGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ExpandGroupResponseParams struct {
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TaskId `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -17923,7 +17888,6 @@ func (r *ModifyApplicationRequest) FromJsonString(s string) error {
 type ModifyApplicationResponseParams struct {
 	// true：操作成功
 	// false：操作失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18264,7 +18228,6 @@ type ModifyGroupResponseParams struct {
 	// 更新部署组详情是否成功。
 	// true：操作成功。
 	// false：操作失败。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18580,7 +18543,6 @@ func (r *ModifyNamespaceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyNamespaceResponseParams struct {
 	// Result
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18920,7 +18882,6 @@ func (r *ModifyTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyTaskResponseParams struct {
 	// 更新是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20340,7 +20301,6 @@ func (r *RemoveInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RemoveInstancesResponseParams struct {
 	// 集群移除机器是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21375,7 +21335,6 @@ func (r *ShrinkGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ShrinkGroupResponseParams struct {
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TaskId `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21674,7 +21633,6 @@ func (r *StartGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type StartGroupResponseParams struct {
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TaskId `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21809,7 +21767,6 @@ func (r *StopGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type StopGroupResponseParams struct {
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TaskId `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -23369,7 +23326,6 @@ func (r *UpdateRepositoryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateRepositoryResponseParams struct {
 	// 更新仓库是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
