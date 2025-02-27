@@ -3993,15 +3993,12 @@ func (r *CreateWorkGroupResponse) FromJsonString(s string) error {
 
 type CrontabResumeSuspendStrategy struct {
 	// 定时拉起时间：如：周一&周三8点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResumeTime *string `json:"ResumeTime,omitnil,omitempty" name:"ResumeTime"`
 
 	// 定时挂起时间：如：周一&周三20点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuspendTime *string `json:"SuspendTime,omitnil,omitempty" name:"SuspendTime"`
 
 	// 挂起配置：0（默认）：等待任务结束后挂起、1：强制挂起
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuspendStrategy *int64 `json:"SuspendStrategy,omitnil,omitempty" name:"SuspendStrategy"`
 }
 
@@ -14168,11 +14165,9 @@ type TableResponseInfo struct {
 
 type TagInfo struct {
 	// 标签键
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 标签值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 

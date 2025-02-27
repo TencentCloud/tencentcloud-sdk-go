@@ -925,13 +925,13 @@ type CallbackEventInfo struct {
 	// 接口返回的时间格式和查询请求传入的时间格式一致。
 	EventTime *string `json:"EventTime,omitnil,omitempty" name:"EventTime"`
 
-	// 事件类型
+	// 事件类型。
 	EventType *uint64 `json:"EventType,omitnil,omitempty" name:"EventType"`
 
-	// 回调请求
+	// 回调请求。
 	Request *string `json:"Request,omitnil,omitempty" name:"Request"`
 
-	// 回调响应
+	// 回调响应。
 	Response *string `json:"Response,omitnil,omitempty" name:"Response"`
 
 	// 客户接口响应时间。
@@ -941,10 +941,10 @@ type CallbackEventInfo struct {
 	// 接口返回的时间格式和查询请求传入的时间格式一致。
 	ResponseTime *string `json:"ResponseTime,omitnil,omitempty" name:"ResponseTime"`
 
-	// 回调结果
+	// 回调结果。
 	ResultCode *uint64 `json:"ResultCode,omitnil,omitempty" name:"ResultCode"`
 
-	// 流名称
+	// 流名称。
 	StreamId *string `json:"StreamId,omitnil,omitempty" name:"StreamId"`
 }
 
@@ -1009,23 +1009,18 @@ type CasterBriefInfo struct {
 	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
 
 	// 导播台名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CasterName *string `json:"CasterName,omitnil,omitempty" name:"CasterName"`
 
 	// 导播台的描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 开始计费时间，值为unix时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartBillingTime *uint64 `json:"StartBillingTime,omitnil,omitempty" name:"StartBillingTime"`
 
 	// 结束计费时间，值为unix时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StopBillingTime *uint64 `json:"StopBillingTime,omitnil,omitempty" name:"StopBillingTime"`
 
 	// 创建时间，值为unix时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 导播台状态
@@ -1033,17 +1028,14 @@ type CasterBriefInfo struct {
 	// 1：无预监，有主监
 	// 2：有预监，无主监
 	// 3：有预监，有主监
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 导播台的过期时间，值为-1或unix时间戳。
 	// 当值为-1时，代表永不过期。
 	// 当值为特定unix时间戳时，代表过期时间为对应的时间，导播台在该时间自动停止。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 计费字段，该字段暂无作用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeeType *int64 `json:"FeeType,omitnil,omitempty" name:"FeeType"`
 }
 
@@ -1051,27 +1043,22 @@ type CasterDisplayInfo struct {
 	// 布局Index。
 	// 如果使用自定义布局，为自定义布局下标。
 	// 如果使用单输入布局，如使用输入1，则LayoutIndexType=1， 且LayoutIndex=1，以此类推。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LayoutIndex *uint64 `json:"LayoutIndex,omitnil,omitempty" name:"LayoutIndex"`
 
 	// 使用的水印Index列表。
 	// 注：当作为入参使用时，列表中的水印Index需要已经存在。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarkPicIndexList []*uint64 `json:"MarkPicIndexList,omitnil,omitempty" name:"MarkPicIndexList"`
 
 	// 使用的文字水印Index列表。
 	// 注：作为入参使用时，列表中的Index需要已经存在。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarkWordIndexList []*uint64 `json:"MarkWordIndexList,omitnil,omitempty" name:"MarkWordIndexList"`
 
 	// 使用的转场类型。
 	// 注：支持的转场类型可通过DescribeCasterTransitionTypes接口获取。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransitionType *string `json:"TransitionType,omitnil,omitempty" name:"TransitionType"`
 
 	// 使用的音频输入Index列表。
 	// 注：当该字段非空时，表示使用布局中对应的输入源的视频，AudioIndexList中对应的输入源的音频。且这些输入源需已存在。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioIndexList []*uint64 `json:"AudioIndexList,omitnil,omitempty" name:"AudioIndexList"`
 
 	// 作为入参时，表示使用点播输入源，单画面输入时，点播文件是否从头开始播放。
@@ -1079,7 +1066,6 @@ type CasterDisplayInfo struct {
 	// 有效值，0,1。
 	// 0代表不从头播放
 	// 1代表从头播放
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputStartType *int64 `json:"InputStartType,omitnil,omitempty" name:"InputStartType"`
 
 	// LayoutIndex类型，
@@ -1087,7 +1073,6 @@ type CasterDisplayInfo struct {
 	// 可选值[0,1]
 	// 0:默认类型，代表普通布局
 	// 1:单输入类型，代表单输入布局
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LayoutIndexType *int64 `json:"LayoutIndexType,omitnil,omitempty" name:"LayoutIndexType"`
 }
 
@@ -1173,25 +1158,20 @@ type CasterInputInfo struct {
 	// 输入源的源地址。
 	// 最大允许长度512。
 	// 当InputType为0（推流地址），2（直播拉流地址），3（图片地址）,4（webrtc推流地址）这几种类型时，URL需填入该字段。
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputUrl *string `json:"InputUrl,omitnil,omitempty" name:"InputUrl"`
 
 	// 输入源描述。
 	// 最大允许长度256字符。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 点播地址列表。仅当input type为1（点播地址）时，将一个或多个点播地址，填入该字段。
 	// 单个地址最大允许长度512字符。
 	// 最多允许同时填入5个地址。
 	// 注：此时需保持InputUrl字段为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputUrls []*string `json:"InputUrls,omitnil,omitempty" name:"InputUrls"`
 
 	// 是否启用点播无限循环播放。
 	// 注：当前该字段未生效，默认为True。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoopEnable *bool `json:"LoopEnable,omitnil,omitempty" name:"LoopEnable"`
 
 	// 点播循环次数。
@@ -1199,18 +1179,15 @@ type CasterInputInfo struct {
 	// 当值为-1时，表示无限循环。
 	// 当值为其他正整数时，表示循环对应次数。
 	// 注：该字段暂未生效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoopNumber *int64 `json:"LoopNumber,omitnil,omitempty" name:"LoopNumber"`
 
 	// 是否启用拉取到导播台。
 	// 注：该字段默认强制为true。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PullPushEnable *bool `json:"PullPushEnable,omitnil,omitempty" name:"PullPushEnable"`
 
 	// 输入源音量百分比。
 	// 默认为100。表示音量为原始大小。
 	// 允许值[0,200]。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 }
 
@@ -1233,12 +1210,10 @@ type CasterLayoutInfo struct {
 	// 布局输出的宽度，单位为像素。
 	// 默认为1280像素。
 	// 注：该值仅在画中画布局，且未设置PgmWidth时生效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LayoutWidth *uint64 `json:"LayoutWidth,omitnil,omitempty" name:"LayoutWidth"`
 
 	// 布局输出的高度，单位为像素。
 	// 注：该参数仅在画中画布局，且未设置PgmHeight时生效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LayoutHeight *uint64 `json:"LayoutHeight,omitnil,omitempty" name:"LayoutHeight"`
 }
 
@@ -1268,7 +1243,6 @@ type CasterLayoutParam struct {
 	LayerLocationY *float64 `json:"LayerLocationY,omitnil,omitempty" name:"LayerLocationY"`
 
 	// 是否启用抠图。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsePortraitSegment *bool `json:"UsePortraitSegment,omitnil,omitempty" name:"UsePortraitSegment"`
 }
 
@@ -1277,7 +1251,6 @@ type CasterMarkPicInfo struct {
 	MarkPicIndex *int64 `json:"MarkPicIndex,omitnil,omitempty" name:"MarkPicIndex"`
 
 	// 注：该字段已废弃。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarkPicId *int64 `json:"MarkPicId,omitnil,omitempty" name:"MarkPicId"`
 
 	// 水印图片在输出时的宽度。
@@ -1302,17 +1275,14 @@ type CasterMarkPicInfo struct {
 
 	// 水印地址。
 	// 最大长度256字符，且url需以jpg、jpeg、png、bmp、gif后缀结尾。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarkPicUrl *string `json:"MarkPicUrl,omitnil,omitempty" name:"MarkPicUrl"`
 
 	// 水印描述。
 	// 最大允许长度为256。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 是否启用了等比例缩放。
 	// 注：该字段仅做状态保存，无实际效果。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsEqualProportion *bool `json:"IsEqualProportion,omitnil,omitempty" name:"IsEqualProportion"`
 }
 
@@ -1321,46 +1291,36 @@ type CasterMarkWordInfo struct {
 	MarkWordIndex *int64 `json:"MarkWordIndex,omitnil,omitempty" name:"MarkWordIndex"`
 
 	// 文字水印内容。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarkWordText *string `json:"MarkWordText,omitnil,omitempty" name:"MarkWordText"`
 
 	// 文字水印的字号。
 	// 范围[16, 60]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarkWordFontSize *uint64 `json:"MarkWordFontSize,omitnil,omitempty" name:"MarkWordFontSize"`
 
 	// 文字水印的颜色，值为HEX颜色代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarkWordFontColor *string `json:"MarkWordFontColor,omitnil,omitempty" name:"MarkWordFontColor"`
 
 	// 文字水印的字体类型。
 	// 范围[1,2]。
 	// 1. 宋体
 	// 2. 黑体
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarkWordFontType *uint64 `json:"MarkWordFontType,omitnil,omitempty" name:"MarkWordFontType"`
 
 	// 文字水印的x坐标位置，单位百分比。
 	// 范围[0.0, 1.0]
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarkWordLocationX *float64 `json:"MarkWordLocationX,omitnil,omitempty" name:"MarkWordLocationX"`
 
 	// 文字水印的Y坐标位置，单位百分比。
 	// 范围[0.0, 1.0]
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarkWordLocationY *float64 `json:"MarkWordLocationY,omitnil,omitempty" name:"MarkWordLocationY"`
 
 	// 是否开启文字跑马灯功能。
 	// 默认为false。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarkWordRollEnable *bool `json:"MarkWordRollEnable,omitnil,omitempty" name:"MarkWordRollEnable"`
 
 	// 跑马灯文字显示一遍的时间，单位为秒。
 	// 默认为5s。
 	// 范围[5, 600]。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarkWordRollOnceTime *uint64 `json:"MarkWordRollOnceTime,omitnil,omitempty" name:"MarkWordRollOnceTime"`
 
 	// 跑马灯文字的方向。
@@ -1368,17 +1328,14 @@ type CasterMarkWordInfo struct {
 	// 范围[0,1]。
 	// 0 从左到右
 	// 1 从右到左
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarkWordRollDirection *int64 `json:"MarkWordRollDirection,omitnil,omitempty" name:"MarkWordRollDirection"`
 
 	// 跑马灯文字显示的起始x坐标，单位百分比。
 	// 范围[0.0, 1.0]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarkWordRollStartLocationX *float64 `json:"MarkWordRollStartLocationX,omitnil,omitempty" name:"MarkWordRollStartLocationX"`
 
 	// 跑马灯文字显示的截止x坐标，单位百分比。
 	// 范围[0.0, 1.0]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarkWordRollEndLocationX *float64 `json:"MarkWordRollEndLocationX,omitnil,omitempty" name:"MarkWordRollEndLocationX"`
 }
 
@@ -1393,13 +1350,11 @@ type CasterOutputInfo struct {
 	OutputUrl *string `json:"OutputUrl,omitnil,omitempty" name:"OutputUrl"`
 
 	// 描述信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 推流到腾讯云直播源站时，使用的流ID。
 	// 仅当OutputType为1时生效。
 	// 最大允许128字符。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputStreamId *string `json:"OutputStreamId,omitnil,omitempty" name:"OutputStreamId"`
 
 	// 推流类型。
@@ -1411,19 +1366,16 @@ type CasterOutputInfo struct {
 	// 推到腾讯云直播源站时，使用的域名。
 	// 最大允许128字符，且域名需属于当前账号绑定的云直播推流域名。
 	// 仅在OutputType为1时生效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputDomainName *string `json:"OutputDomainName,omitnil,omitempty" name:"OutputDomainName"`
 
 	// 推到腾讯云直播源站时，使用的AppName。
 	// 最大允许64字符。
 	// 仅在OutputType为1时生效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputAppName *string `json:"OutputAppName,omitnil,omitempty" name:"OutputAppName"`
 
 	// 推到腾讯云直播源站时需要添加的推流参数。
 	// 最大允许长度256字符。
 	// 仅在OutputType为1时生效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputParam *string `json:"OutputParam,omitnil,omitempty" name:"OutputParam"`
 }
 
@@ -17948,7 +17900,6 @@ type PushQualityData struct {
 	Flux *float64 `json:"Flux,omitnil,omitempty" name:"Flux"`
 
 	// 推流服务端 IP。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerIp *string `json:"ServerIp,omitnil,omitempty" name:"ServerIp"`
 }
 
@@ -19016,7 +18967,6 @@ type StreamOnlineInfo struct {
 	// 流是否推送到延播。
 	// 0 - 无延播，
 	// 1 - 有延播。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PushToDelay *int64 `json:"PushToDelay,omitnil,omitempty" name:"PushToDelay"`
 }
 
@@ -19435,15 +19385,12 @@ type TranscodeTotalInfo struct {
 
 type TransitionTypeInfo struct {
 	// 转场名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransitionType *string `json:"TransitionType,omitnil,omitempty" name:"TransitionType"`
 
 	// 素材url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceUrl *string `json:"SourceUrl,omitnil,omitempty" name:"SourceUrl"`
 
 	// 转场的下标，可用来排序，从1开始递增
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Index *uint64 `json:"Index,omitnil,omitempty" name:"Index"`
 }
 

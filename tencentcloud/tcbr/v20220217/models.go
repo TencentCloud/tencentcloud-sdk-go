@@ -453,6 +453,12 @@ type DescribeCloudRunServersRequestParams struct {
 
 	// 不传或传0时 会默认为1
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
+
+	// 服务类型：function | container
+	ServerType *string `json:"ServerType,omitnil,omitempty" name:"ServerType"`
 }
 
 type DescribeCloudRunServersRequest struct {
@@ -468,6 +474,12 @@ type DescribeCloudRunServersRequest struct {
 
 	// 不传或传0时 会默认为1
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
+
+	// 服务类型：function | container
+	ServerType *string `json:"ServerType,omitnil,omitempty" name:"ServerType"`
 }
 
 func (r *DescribeCloudRunServersRequest) ToJsonString() string {
@@ -485,6 +497,8 @@ func (r *DescribeCloudRunServersRequest) FromJsonString(s string) error {
 	delete(f, "EnvId")
 	delete(f, "PageSize")
 	delete(f, "PageNum")
+	delete(f, "ServerName")
+	delete(f, "ServerType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudRunServersRequest has unknown keys!", "")
 	}

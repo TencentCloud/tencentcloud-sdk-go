@@ -72,7 +72,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.1107
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.1108
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/config v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/controlcenter v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
@@ -150,7 +150,6 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lke v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lkeap v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lowcode v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mall v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mariadb v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/market v0.0.0
@@ -180,8 +179,6 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rce v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/redis v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/region v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rkp v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rum v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/scf v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ses v0.0.0
@@ -417,7 +414,6 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lke => ../tencentcloud/lke
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lkeap => ../tencentcloud/lkeap
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lowcode => ../tencentcloud/lowcode
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lp => ../tencentcloud/lp
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mall => ../tencentcloud/mall
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/mariadb => ../tencentcloud/mariadb
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/market => ../tencentcloud/market
@@ -447,8 +443,6 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rce => ../tencentcloud/rce
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/redis => ../tencentcloud/redis
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/region => ../tencentcloud/region
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rkp => ../tencentcloud/rkp
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rp => ../tencentcloud/rp
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rum => ../tencentcloud/rum
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/scf => ../tencentcloud/scf
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ses => ../tencentcloud/ses

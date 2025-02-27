@@ -5744,6 +5744,26 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //
 //         <tr>
 //
+//           <td> TaxPayment </td>
+//
+//           <td> 完税凭证 </td>
+//
+//           <td> 18 </td>
+//
+//         </tr>
+//
+//         <tr>
+//
+//           <td> CustomsPaymentReceipt </td>
+//
+//           <td> 海关缴款 </td>
+//
+//           <td> 19 </td>
+//
+//         </tr>
+//
+//         <tr>
+//
 //           <td> OtherInvoice </td>
 //
 //           <td> 其他发票 </td>
@@ -6060,6 +6080,26 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //           <td> 医疗住院收费票据（电子） </td>
 //
 //           <td> 17 </td>
+//
+//         </tr>
+//
+//         <tr>
+//
+//           <td> TaxPayment </td>
+//
+//           <td> 完税凭证 </td>
+//
+//           <td> 18 </td>
+//
+//         </tr>
+//
+//         <tr>
+//
+//           <td> CustomsPaymentReceipt </td>
+//
+//           <td> 海关缴款 </td>
+//
+//           <td> 19 </td>
 //
 //         </tr>
 //

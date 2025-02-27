@@ -540,7 +540,6 @@ type DescribeClusterInstancesResponseParams struct {
 	InstanceSet []*Instance `json:"InstanceSet,omitnil,omitempty" name:"InstanceSet"`
 
 	// 错误信息集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Errors []*string `json:"Errors,omitnil,omitempty" name:"Errors"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -629,7 +628,6 @@ type DescribeHealthCheckPoliciesResponseParams struct {
 	HealthCheckPolicies []*HealthCheckPolicy `json:"HealthCheckPolicies,omitnil,omitempty" name:"HealthCheckPolicies"`
 
 	// 数组总数目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -718,7 +716,6 @@ type DescribeHealthCheckPolicyBindingsResponseParams struct {
 	HealthCheckPolicyBindings []*HealthCheckPolicyBinding `json:"HealthCheckPolicyBindings,omitnil,omitempty" name:"HealthCheckPolicyBindings"`
 
 	// 健康检测规则数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -889,7 +886,6 @@ func (r *DescribeNodePoolsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeNodePoolsResponseParams struct {
 	// 节点池列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodePools []*NodePool `json:"NodePools,omitnil,omitempty" name:"NodePools"`
 
 	// 资源总数

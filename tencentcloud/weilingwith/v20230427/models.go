@@ -7339,7 +7339,6 @@ func (r *SaveDeviceGroupRequest) FromJsonString(s string) error {
 
 type SaveDeviceGroupRes struct {
 	// 保存or修改设备分组回包信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
@@ -7370,15 +7369,12 @@ func (r *SaveDeviceGroupResponse) FromJsonString(s string) error {
 
 type SceneInfo struct {
 	// 场景id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
 
 	// 场景名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
 
 	// 场景版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 }
 
@@ -7396,29 +7392,23 @@ type SpaceDataListStatsRes struct {
 
 type SpaceDataStats struct {
 	// 工作空间ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
 
 	// 工作空间名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkspaceName *string `json:"WorkspaceName,omitnil,omitempty" name:"WorkspaceName"`
 
 	// 楼栋数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BuildingCount *uint64 `json:"BuildingCount,omitnil,omitempty" name:"BuildingCount"`
 
 	// 建筑面积
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BuildingArea *float64 `json:"BuildingArea,omitnil,omitempty" name:"BuildingArea"`
 }
 
 type SpaceDataTotalStatsRes struct {
 	// 总楼栋数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BuildingCount *uint64 `json:"BuildingCount,omitnil,omitempty" name:"BuildingCount"`
 
 	// 总建筑面积
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BuildingArea *float64 `json:"BuildingArea,omitnil,omitempty" name:"BuildingArea"`
 }
 

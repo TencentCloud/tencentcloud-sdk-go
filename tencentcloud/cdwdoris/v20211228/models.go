@@ -377,6 +377,9 @@ func (r *CheckCoolDownWorkingVariableConfigCorrectResponse) FromJsonString(s str
 }
 
 type ClusterConfigsHistory struct {
+	// 计算组id
+	ComputeGroupId *string `json:"ComputeGroupId,omitnil,omitempty" name:"ComputeGroupId"`
+
 	// 配置文件名称
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
@@ -1671,6 +1674,9 @@ type DescribeClusterConfigsHistoryRequestParams struct {
 	// 需要查询的配置文件名称数组，如果为空则查询全部历史记录。目前支持的配置文件名称有：
 	// apache_hdfs_broker.conf、be.conf、fe.conf、core-site.xml、hdfs-site.xml、odbcinst.ini
 	ConfigFileNames []*string `json:"ConfigFileNames,omitnil,omitempty" name:"ConfigFileNames"`
+
+	// 需要查询的计算组列表
+	ComputeGroupIds []*string `json:"ComputeGroupIds,omitnil,omitempty" name:"ComputeGroupIds"`
 }
 
 type DescribeClusterConfigsHistoryRequest struct {
@@ -1694,6 +1700,9 @@ type DescribeClusterConfigsHistoryRequest struct {
 	// 需要查询的配置文件名称数组，如果为空则查询全部历史记录。目前支持的配置文件名称有：
 	// apache_hdfs_broker.conf、be.conf、fe.conf、core-site.xml、hdfs-site.xml、odbcinst.ini
 	ConfigFileNames []*string `json:"ConfigFileNames,omitnil,omitempty" name:"ConfigFileNames"`
+
+	// 需要查询的计算组列表
+	ComputeGroupIds []*string `json:"ComputeGroupIds,omitnil,omitempty" name:"ComputeGroupIds"`
 }
 
 func (r *DescribeClusterConfigsHistoryRequest) ToJsonString() string {
@@ -1714,6 +1723,7 @@ func (r *DescribeClusterConfigsHistoryRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "ConfigFileNames")
+	delete(f, "ComputeGroupIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterConfigsHistoryRequest has unknown keys!", "")
 	}

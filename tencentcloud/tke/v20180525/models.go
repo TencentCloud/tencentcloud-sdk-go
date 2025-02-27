@@ -594,7 +594,6 @@ func (r *CancelClusterReleaseRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CancelClusterReleaseResponseParams struct {
 	// 应用信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Release *PendingRelease `json:"Release,omitnil,omitempty" name:"Release"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -790,11 +789,9 @@ type CheckInstancesUpgradeAbleResponseParams struct {
 	LatestVersion *string `json:"LatestVersion,omitnil,omitempty" name:"LatestVersion"`
 
 	// 可升级节点列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpgradeAbleInstances []*UpgradeAbleInstancesItem `json:"UpgradeAbleInstances,omitnil,omitempty" name:"UpgradeAbleInstances"`
 
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 不可升级原因
@@ -2139,7 +2136,6 @@ func (r *CreateClusterReleaseRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateClusterReleaseResponseParams struct {
 	// 应用详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Release *PendingRelease `json:"Release,omitnil,omitempty" name:"Release"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5562,7 +5558,6 @@ func (r *DeleteLogConfigsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteLogConfigsResponseParams struct {
 	// 删除采集规则遇到错误时返回错误原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6454,7 +6449,6 @@ type DescribeAvailableClusterVersionResponseParams struct {
 	Versions []*string `json:"Versions,omitnil,omitempty" name:"Versions"`
 
 	// 集群信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Clusters []*ClusterVersion `json:"Clusters,omitnil,omitempty" name:"Clusters"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6635,14 +6629,12 @@ func (r *DescribeBatchModifyTagsStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBatchModifyTagsStatusResponseParams struct {
 	// 失败资源列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedResources []*FailedResource `json:"FailedResources,omitnil,omitempty" name:"FailedResources"`
 
 	// 任务状态：
 	// - running 运行中
 	// - failed 失败
 	// - done 成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 是否同步集群内子资源标签
@@ -6706,7 +6698,6 @@ func (r *DescribeClusterAsGroupOptionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterAsGroupOptionResponseParams struct {
 	// 集群弹性伸缩属性
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterAsGroupOption *ClusterAsGroupOption `json:"ClusterAsGroupOption,omitnil,omitempty" name:"ClusterAsGroupOption"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6845,15 +6836,12 @@ func (r *DescribeClusterAuthenticationOptionsRequest) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeClusterAuthenticationOptionsResponseParams struct {
 	// ServiceAccount认证配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceAccounts *ServiceAccountAuthenticationOptions `json:"ServiceAccounts,omitnil,omitempty" name:"ServiceAccounts"`
 
 	// 最近一次修改操作结果，返回值可能为：Updating，Success，Failed，TimeOut
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestOperationState *string `json:"LatestOperationState,omitnil,omitempty" name:"LatestOperationState"`
 
 	// OIDC认证配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OIDCConfig *OIDCConfigAuthenticationOptions `json:"OIDCConfig,omitnil,omitempty" name:"OIDCConfig"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7046,11 +7034,9 @@ func (r *DescribeClusterEndpointStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterEndpointStatusResponseParams struct {
 	// 查询集群访问端口状态（Created 开启成功，Creating 开启中，NotFound 未开启）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 开启访问入口失败信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7111,7 +7097,6 @@ type DescribeClusterEndpointVipStatusResponseParams struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 操作失败的原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7178,7 +7163,6 @@ type DescribeClusterEndpointsResponseParams struct {
 	ClusterIntranetEndpoint *string `json:"ClusterIntranetEndpoint,omitnil,omitempty" name:"ClusterIntranetEndpoint"`
 
 	// 集群APIServer的域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterDomain *string `json:"ClusterDomain,omitnil,omitempty" name:"ClusterDomain"`
 
 	// 集群APIServer的外网访问ACL列表
@@ -7186,19 +7170,15 @@ type DescribeClusterEndpointsResponseParams struct {
 	ClusterExternalACL []*string `json:"ClusterExternalACL,omitnil,omitempty" name:"ClusterExternalACL"`
 
 	// 外网域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterExternalDomain *string `json:"ClusterExternalDomain,omitnil,omitempty" name:"ClusterExternalDomain"`
 
 	// 内网域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterIntranetDomain *string `json:"ClusterIntranetDomain,omitnil,omitempty" name:"ClusterIntranetDomain"`
 
 	// 外网安全组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroup *string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
 	// 内网访问所属子网
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterIntranetSubnetId *string `json:"ClusterIntranetSubnetId,omitnil,omitempty" name:"ClusterIntranetSubnetId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7256,7 +7236,6 @@ func (r *DescribeClusterExtraArgsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterExtraArgsResponseParams struct {
 	// 集群自定义参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterExtraArgs *ClusterExtraArgs `json:"ClusterExtraArgs,omitnil,omitempty" name:"ClusterExtraArgs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7795,7 +7774,6 @@ func (r *DescribeClusterNodePoolsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterNodePoolsResponseParams struct {
 	// NodePools（节点池列表）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodePoolSet []*NodePool `json:"NodePoolSet,omitnil,omitempty" name:"NodePoolSet"`
 
 	// 资源总数
@@ -7877,19 +7855,15 @@ func (r *DescribeClusterPendingReleasesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterPendingReleasesResponseParams struct {
 	// 正在安装中应用列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReleaseSet []*PendingRelease `json:"ReleaseSet,omitnil,omitempty" name:"ReleaseSet"`
 
 	// 每页返回数量限制
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 页偏移量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 总数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7968,7 +7942,6 @@ func (r *DescribeClusterReleaseDetailsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterReleaseDetailsResponseParams struct {
 	// 应用详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Release *ReleaseDetails `json:"Release,omitnil,omitempty" name:"Release"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8047,11 +8020,9 @@ func (r *DescribeClusterReleaseHistoryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterReleaseHistoryResponseParams struct {
 	// 已安装应用版本历史
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReleaseHistorySet []*ReleaseHistory `json:"ReleaseHistorySet,omitnil,omitempty" name:"ReleaseHistorySet"`
 
 	// 总数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8151,19 +8122,15 @@ func (r *DescribeClusterReleasesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterReleasesResponseParams struct {
 	// 数量限制
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 已安装应用列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReleaseSet []*Release `json:"ReleaseSet,omitnil,omitempty" name:"ReleaseSet"`
 
 	// 已安装应用总数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8367,7 +8334,6 @@ type DescribeClusterSecurityResponseParams struct {
 	SecurityPolicy []*string `json:"SecurityPolicy,omitnil,omitempty" name:"SecurityPolicy"`
 
 	// 集群Kubeconfig文件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Kubeconfig *string `json:"Kubeconfig,omitnil,omitempty" name:"Kubeconfig"`
 
 	// 集群JnsGw的访问地址
@@ -8489,11 +8455,9 @@ func (r *DescribeClusterVirtualNodePoolsRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeClusterVirtualNodePoolsResponseParams struct {
 	// 节点池总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 虚拟节点池列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodePoolSet []*VirtualNodePool `json:"NodePoolSet,omitnil,omitempty" name:"NodePoolSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8565,11 +8529,9 @@ func (r *DescribeClusterVirtualNodeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterVirtualNodeResponseParams struct {
 	// 节点列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nodes []*VirtualNode `json:"Nodes,omitnil,omitempty" name:"Nodes"`
 
 	// 节点总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9701,7 +9663,6 @@ type DescribeEnableVpcCniProgressResponseParams struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 当任务进度为Failed时，对任务状态的进一步描述，例如IPAMD组件安装失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9868,7 +9829,6 @@ func (r *DescribeExistedInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeExistedInstancesResponseParams struct {
 	// 已经存在的实例信息数组。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExistedInstanceSet []*ExistedInstance `json:"ExistedInstanceSet,omitnil,omitempty" name:"ExistedInstanceSet"`
 
 	// 符合条件的实例数量。
@@ -10039,19 +9999,15 @@ type DescribeIPAMDResponseParams struct {
 	EnableIPAMD *bool `json:"EnableIPAMD,omitnil,omitempty" name:"EnableIPAMD"`
 
 	// 是否开启自定义podcidr，默认为false，已安装eniipamd组件才意义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableCustomizedPodCidr *bool `json:"EnableCustomizedPodCidr,omitnil,omitempty" name:"EnableCustomizedPodCidr"`
 
 	// 是否不开启vpccni模式，默认为false，已安装eniipamd组件才意义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisableVpcCniMode *bool `json:"DisableVpcCniMode,omitnil,omitempty" name:"DisableVpcCniMode"`
 
 	// 组件状态，已安装eniipamd组件才会有值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Phase *string `json:"Phase,omitnil,omitempty" name:"Phase"`
 
 	// 错误信息，已安装eniipamd组件且状态为非running才会有错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 子网信息，已安装eniipamd组件才会有值
@@ -10059,11 +10015,9 @@ type DescribeIPAMDResponseParams struct {
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
 	// 固定ip回收时间，已安装eniipamd组件才会有值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClaimExpiredDuration *string `json:"ClaimExpiredDuration,omitnil,omitempty" name:"ClaimExpiredDuration"`
 
 	// 是否开启了中继网卡模式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableTrunkingENI *bool `json:"EnableTrunkingENI,omitnil,omitempty" name:"EnableTrunkingENI"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10212,11 +10166,9 @@ func (r *DescribeImagesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeImagesResponseParams struct {
 	// 镜像数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 镜像信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageInstanceSet []*ImageInstance `json:"ImageInstanceSet,omitnil,omitempty" name:"ImageInstanceSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10302,15 +10254,12 @@ func (r *DescribeLogConfigsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLogConfigsResponseParams struct {
 	// 分页查找时返回采集规则总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 指定采集规则名称查找，部分失败时返回失败采集规则名称及最后一个失败原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 采集规则查询结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogConfigs *string `json:"LogConfigs,omitnil,omitempty" name:"LogConfigs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12395,11 +12344,9 @@ func (r *DescribeRegionsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRegionsResponseParams struct {
 	// 地域的数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 地域列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionInstanceSet []*RegionInstance `json:"RegionInstanceSet,omitnil,omitempty" name:"RegionInstanceSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12813,7 +12760,6 @@ type DescribeRouteTableConflictsResponseParams struct {
 	HasConflict *bool `json:"HasConflict,omitnil,omitempty" name:"HasConflict"`
 
 	// 路由表冲突列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteTableConflictSet []*RouteTableConflict `json:"RouteTableConflictSet,omitnil,omitempty" name:"RouteTableConflictSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12871,7 +12817,6 @@ func (r *DescribeSupportedRuntimeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSupportedRuntimeResponseParams struct {
 	// 可选运行时列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OptionalRuntimes []*OptionalRuntimes `json:"OptionalRuntimes,omitnil,omitempty" name:"OptionalRuntimes"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13303,11 +13248,9 @@ func (r *DescribeVersionsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVersionsResponseParams struct {
 	// 版本数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 版本列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionInstanceSet []*VersionInstance `json:"VersionInstanceSet,omitnil,omitempty" name:"VersionInstanceSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13379,11 +13322,9 @@ func (r *DescribeVpcCniPodLimitsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVpcCniPodLimitsResponseParams struct {
 	// 机型数据数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 机型信息及其可支持的最大VPC-CNI模式Pod数量信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodLimitsInstanceSet []*PodLimitsInstance `json:"PodLimitsInstanceSet,omitnil,omitempty" name:"PodLimitsInstanceSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16224,31 +16165,24 @@ func (r *ModifyClusterAttributeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyClusterAttributeResponseParams struct {
 	// 集群所属项目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 集群名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 集群描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterDesc *string `json:"ClusterDesc,omitnil,omitempty" name:"ClusterDesc"`
 
 	// 集群等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterLevel *string `json:"ClusterLevel,omitnil,omitempty" name:"ClusterLevel"`
 
 	// 自动变配集群等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoUpgradeClusterLevel *AutoUpgradeClusterLevel `json:"AutoUpgradeClusterLevel,omitnil,omitempty" name:"AutoUpgradeClusterLevel"`
 
 	// 是否开启QGPU共享
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QGPUShareEnable *bool `json:"QGPUShareEnable,omitnil,omitempty" name:"QGPUShareEnable"`
 
 	// 集群属性
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterProperty *ClusterProperty `json:"ClusterProperty,omitnil,omitempty" name:"ClusterProperty"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19464,7 +19398,6 @@ func (r *RollbackClusterReleaseRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RollbackClusterReleaseResponseParams struct {
 	// 应用详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Release *PendingRelease `json:"Release,omitnil,omitempty" name:"Release"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19858,7 +19791,6 @@ func (r *SetNodePoolNodeProtectionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SetNodePoolNodeProtectionResponseParams struct {
 	// 成功设置的节点id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SucceedInstanceIds []*string `json:"SucceedInstanceIds,omitnil,omitempty" name:"SucceedInstanceIds"`
 
 	// 没有成功设置的节点id
@@ -20250,7 +20182,6 @@ func (r *UninstallClusterReleaseRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UninstallClusterReleaseResponseParams struct {
 	// 应用详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Release *PendingRelease `json:"Release,omitnil,omitempty" name:"Release"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20512,7 +20443,6 @@ func (r *UpdateClusterKubeconfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateClusterKubeconfigResponseParams struct {
 	// 已更新的子账户Uin列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedSubAccounts []*string `json:"UpdatedSubAccounts,omitnil,omitempty" name:"UpdatedSubAccounts"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21402,7 +21332,6 @@ func (r *UpgradeClusterReleaseRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpgradeClusterReleaseResponseParams struct {
 	// 应用详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Release *PendingRelease `json:"Release,omitnil,omitempty" name:"Release"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

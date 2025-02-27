@@ -1264,7 +1264,7 @@ type OutputManageMarketingRiskValue struct {
 	// 操作时间戳，单位秒（对应输入参数）。
 	PostTime *uint64 `json:"PostTime,omitnil,omitempty" name:"PostTime"`
 
-	// 业务参数。
+	// 业务预留参数（暂无实际业务含义， 无需关注返回值）
 	AssociateAccount *string `json:"AssociateAccount,omitnil,omitempty" name:"AssociateAccount"`
 
 	// 操作来源的外网IP（对应输入参数）。

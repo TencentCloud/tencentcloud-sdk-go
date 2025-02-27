@@ -8151,6 +8151,9 @@ type OrgMember struct {
 
 	// 成员标签列表
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 腾讯云昵称
+	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
 }
 
 type OrgMemberAuthAccount struct {
@@ -9663,6 +9666,9 @@ type UpdateOrganizationMemberRequestParams struct {
 
 	// 代付者Uin。成员财务权限有代付费时需要，取值为成员对应主体的主体管理员Uin
 	PayUin *string `json:"PayUin,omitnil,omitempty" name:"PayUin"`
+
+	// 是否同步组织成员名称到成员账号昵称。取值： 1-同步 0-不同步
+	IsModifyNickName *uint64 `json:"IsModifyNickName,omitnil,omitempty" name:"IsModifyNickName"`
 }
 
 type UpdateOrganizationMemberRequest struct {
@@ -9689,6 +9695,9 @@ type UpdateOrganizationMemberRequest struct {
 
 	// 代付者Uin。成员财务权限有代付费时需要，取值为成员对应主体的主体管理员Uin
 	PayUin *string `json:"PayUin,omitnil,omitempty" name:"PayUin"`
+
+	// 是否同步组织成员名称到成员账号昵称。取值： 1-同步 0-不同步
+	IsModifyNickName *uint64 `json:"IsModifyNickName,omitnil,omitempty" name:"IsModifyNickName"`
 }
 
 func (r *UpdateOrganizationMemberRequest) ToJsonString() string {
@@ -9710,6 +9719,7 @@ func (r *UpdateOrganizationMemberRequest) FromJsonString(s string) error {
 	delete(f, "PermissionIds")
 	delete(f, "IsAllowQuit")
 	delete(f, "PayUin")
+	delete(f, "IsModifyNickName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateOrganizationMemberRequest has unknown keys!", "")
 	}
