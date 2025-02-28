@@ -107,7 +107,7 @@ type Application struct {
 // Predefined struct for user
 type AttachInstancesRequestParams struct {
 	// 计算环境ID
-	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+	EnvId2 *string `json:"EnvId2,omitnil,omitempty" name:"EnvId2"`
 
 	// 加入计算环境实例列表
 	Instances []*Instance `json:"Instances,omitnil,omitempty" name:"Instances"`
@@ -117,7 +117,7 @@ type AttachInstancesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 计算环境ID
-	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+	EnvId2 *string `json:"EnvId2,omitnil,omitempty" name:"EnvId2"`
 
 	// 加入计算环境实例列表
 	Instances []*Instance `json:"Instances,omitnil,omitempty" name:"Instances"`
@@ -135,7 +135,7 @@ func (r *AttachInstancesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "EnvId")
+	delete(f, "EnvId2")
 	delete(f, "Instances")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachInstancesRequest has unknown keys!", "")
