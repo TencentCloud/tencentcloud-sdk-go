@@ -1800,6 +1800,77 @@ func (c *Client) CreateEmbedWebUrlWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateEmployeeChangeUrlRequest() (request *CreateEmployeeChangeUrlRequest) {
+    request = &CreateEmployeeChangeUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateEmployeeChangeUrl")
+    
+    
+    return
+}
+
+func NewCreateEmployeeChangeUrlResponse() (response *CreateEmployeeChangeUrlResponse) {
+    response = &CreateEmployeeChangeUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateEmployeeChangeUrl
+// 生成员工信息变更链接，当前仅支持变更手机号
+//
+// 
+//
+// 注: 
+//
+// 1. 目前仅支持修改员工手机号，待修改员工必须已经实名且在职
+//
+// 2. 仅支持返回小程序链接
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateEmployeeChangeUrl(request *CreateEmployeeChangeUrlRequest) (response *CreateEmployeeChangeUrlResponse, err error) {
+    return c.CreateEmployeeChangeUrlWithContext(context.Background(), request)
+}
+
+// CreateEmployeeChangeUrl
+// 生成员工信息变更链接，当前仅支持变更手机号
+//
+// 
+//
+// 注: 
+//
+// 1. 目前仅支持修改员工手机号，待修改员工必须已经实名且在职
+//
+// 2. 仅支持返回小程序链接
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateEmployeeChangeUrlWithContext(ctx context.Context, request *CreateEmployeeChangeUrlRequest) (response *CreateEmployeeChangeUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateEmployeeChangeUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEmployeeChangeUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateEmployeeChangeUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateEmployeeQualificationSealQrCodeRequest() (request *CreateEmployeeQualificationSealQrCodeRequest) {
     request = &CreateEmployeeQualificationSealQrCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -5101,6 +5101,10 @@ type DescribeBackupConfigResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogicCrossRegionsConfigUpdateTime *string `json:"LogicCrossRegionsConfigUpdateTime,omitnil,omitempty" name:"LogicCrossRegionsConfigUpdateTime"`
 
+	// 自动逻辑备份配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogicBackupConfig *LogicBackupConfigInfo `json:"LogicBackupConfig,omitnil,omitempty" name:"LogicBackupConfig"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -6546,22 +6550,22 @@ func (r *DescribeClustersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBSecurityGroupsRequestParams struct {
-	// 实例ID
+	// 实例ID（InstanceId与InstanceGroupId必须任选一个传入）
 	//
 	// Deprecated: InstanceId is deprecated.
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例组ID
+	// 实例组ID（InstanceId与InstanceGroupId必须任选一个传入）
 	InstanceGroupId *string `json:"InstanceGroupId,omitnil,omitempty" name:"InstanceGroupId"`
 }
 
 type DescribeDBSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例ID（InstanceId与InstanceGroupId必须任选一个传入）
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例组ID
+	// 实例组ID（InstanceId与InstanceGroupId必须任选一个传入）
 	InstanceGroupId *string `json:"InstanceGroupId,omitnil,omitempty" name:"InstanceGroupId"`
 }
 

@@ -99,21 +99,14 @@ type DataAuthorizationInfo struct {
 	// 数据委托方、需求方：客户主体名称。
 	DataProviderName *string `json:"DataProviderName,omitnil,omitempty" name:"DataProviderName"`
 
-	// 数据受托方、提供方：腾讯云主体名称。
-	// 
-	// 固定填：腾讯云计算（北京）有限责任公司
+	// 数据受托方、提供方：腾讯云主体名称。固定填：腾讯云计算（北京）有限责任公司
 	DataRecipientName *string `json:"DataRecipientName,omitnil,omitempty" name:"DataRecipientName"`
 
 	// 客户请求RCE所提供的用户数据类型，支持多选。实际以接口请求传参为准。
-	// 
 	// 1-手机号；
-	// 
 	// 2-微信开放账号；
-	// 
 	// 3-QQ开放账号；
-	// 
 	// 4-IP地址；
-	// 
 	// 999-其它；
 	UserDataType []*uint64 `json:"UserDataType,omitnil,omitempty" name:"UserDataType"`
 
@@ -125,18 +118,13 @@ type DataAuthorizationInfo struct {
 	// 1-已授权；其它值为未授权。
 	IsOrderHandling *uint64 `json:"IsOrderHandling,omitnil,omitempty" name:"IsOrderHandling"`
 
-	// 客户获得的用户授权期限时间戳（单位秒）。
-	// 
-	// 不填默认无固定期限。
+	// 客户获得的用户授权期限时间戳（单位秒）。不填默认无固定期限。
 	AuthorizationTerm *uint64 `json:"AuthorizationTerm,omitnil,omitempty" name:"AuthorizationTerm"`
 
-	// 	
 	// 客户获得用户授权所依赖的协议地址。
 	PrivacyPolicyLink *string `json:"PrivacyPolicyLink,omitnil,omitempty" name:"PrivacyPolicyLink"`
 
-	// 是否是用户个人敏感数据（不推荐使用）。
-	// 
-	// 固定填：1。
+	// 是否是用户个人敏感数据（不推荐使用）。固定填：1。
 	IsPersonalData *uint64 `json:"IsPersonalData,omitnil,omitempty" name:"IsPersonalData"`
 }
 
@@ -572,8 +560,7 @@ type InputCreateNameListFront struct {
 
 type InputCryptoManageMarketingRisk struct {
 	// 是否授权：1已授权，否则未授权。
-	//  调用全栈式风控引擎接口服务时，客户需先明确授权
-	// 
+	//  调用全栈式风控引擎接口服务时，客户需先明确授权。
 	IsAuthorized *string `json:"IsAuthorized,omitnil,omitempty" name:"IsAuthorized"`
 
 	// 加密类型：1AES加密
@@ -1167,13 +1154,13 @@ type OutputDescribeNameListFrontFix struct {
 }
 
 type OutputDescribeNameListFrontFixListData struct {
-	// 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误
+	// 错误码，0 表示成功，非0表示失败错误码。 0：成功 1002：参数错误 4300：未开通服务 6000：系统内部错误。
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 错误信息
+	// 错误信息。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
-	// 黑白名单列表信息
+	// 黑白名单列表信息。
 	Value *OutputDescribeNameListInfo `json:"Value,omitnil,omitempty" name:"Value"`
 }
 

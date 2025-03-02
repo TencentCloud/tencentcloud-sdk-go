@@ -2021,7 +2021,7 @@ func (r *DescribeBlueprintInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBlueprintsRequestParams struct {
-	// 镜像 ID 列表。
+	// 镜像 ID 列表。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值字段BlueprintSet获取。列表长度最大值为100。
 	BlueprintIds []*string `json:"BlueprintIds,omitnil,omitempty" name:"BlueprintIds"`
 
 	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
@@ -2059,7 +2059,7 @@ type DescribeBlueprintsRequestParams struct {
 type DescribeBlueprintsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 镜像 ID 列表。
+	// 镜像 ID 列表。可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值字段BlueprintSet获取。列表长度最大值为100。
 	BlueprintIds []*string `json:"BlueprintIds,omitnil,omitempty" name:"BlueprintIds"`
 
 	// 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
@@ -2437,7 +2437,7 @@ func (r *DescribeDiskBackupsDeniedActionsResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeDiskBackupsRequestParams struct {
-	// 查询的云硬盘备份点ID列表。最大支持 100 个。参数不支持同时指定 DiskBackupIds 和 Filters。
+	// 查询的云硬盘备份点ID列表。可通过[DescribeDiskBackups](https://cloud.tencent.com/document/product/1207/84379)接口返回值字段DiskBackupSet获取。列表长度最大值为100。参数不支持同时指定 DiskBackupIds 和 Filters。
 	DiskBackupIds []*string `json:"DiskBackupIds,omitnil,omitempty" name:"DiskBackupIds"`
 
 	// 过滤器列表。
@@ -2469,7 +2469,7 @@ type DescribeDiskBackupsRequestParams struct {
 type DescribeDiskBackupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询的云硬盘备份点ID列表。最大支持 100 个。参数不支持同时指定 DiskBackupIds 和 Filters。
+	// 查询的云硬盘备份点ID列表。可通过[DescribeDiskBackups](https://cloud.tencent.com/document/product/1207/84379)接口返回值字段DiskBackupSet获取。列表长度最大值为100。参数不支持同时指定 DiskBackupIds 和 Filters。
 	DiskBackupIds []*string `json:"DiskBackupIds,omitnil,omitempty" name:"DiskBackupIds"`
 
 	// 过滤器列表。
@@ -2744,7 +2744,7 @@ func (r *DescribeDisksDeniedActionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDisksRequestParams struct {
-	// 云硬盘ID列表。每次批量请求云硬盘的上限为 100。
+	// 云硬盘ID列表。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值字段KeyPairSet获取。列表长度最大值为100。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
 	// 过滤器列表。
@@ -2793,7 +2793,7 @@ type DescribeDisksRequestParams struct {
 type DescribeDisksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘ID列表。每次批量请求云硬盘的上限为 100。
+	// 云硬盘ID列表。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值字段KeyPairSet获取。列表长度最大值为100。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
 	// 过滤器列表。
@@ -3607,10 +3607,10 @@ func (r *DescribeFirewallTemplateRuleQuotaResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeFirewallTemplateRulesRequestParams struct {
-	// 防火墙模板ID。
+	// 防火墙模板ID列表。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。列表长度最大值为100。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 防火墙模板规则ID列表。
+	// 防火墙模板规则ID列表。可通过[DescribeFirewallTemplateRules](https://cloud.tencent.com/document/product/1207/96875)接口返回值字段TemplateRuleSet获取。列表长度最大值为100。
 	TemplateRuleIds []*string `json:"TemplateRuleIds,omitnil,omitempty" name:"TemplateRuleIds"`
 
 	// 偏移量，默认为 0。
@@ -3623,10 +3623,10 @@ type DescribeFirewallTemplateRulesRequestParams struct {
 type DescribeFirewallTemplateRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 防火墙模板ID。
+	// 防火墙模板ID列表。可通过[DescribeFirewallTemplates](https://cloud.tencent.com/document/product/1207/96874)接口返回值字段TemplateSet获取。列表长度最大值为100。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 防火墙模板规则ID列表。
+	// 防火墙模板规则ID列表。可通过[DescribeFirewallTemplateRules](https://cloud.tencent.com/document/product/1207/96875)接口返回值字段TemplateRuleSet获取。列表长度最大值为100。
 	TemplateRuleIds []*string `json:"TemplateRuleIds,omitnil,omitempty" name:"TemplateRuleIds"`
 
 	// 偏移量，默认为 0。
@@ -4408,7 +4408,7 @@ func (r *DescribeInstancesTrafficPackagesResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeKeyPairsRequestParams struct {
-	// 密钥对 ID 列表，每次请求批量密钥对的上限为 100。
+	// 密钥对 ID 列表。可通过[DescribeKeyPairs](https://cloud.tencent.com/document/product/1207/55540)接口返回值字段KeyPairSet获取。列表长度最大值为100。
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
 
 	// 偏移量，默认为 0。
@@ -4431,7 +4431,7 @@ type DescribeKeyPairsRequestParams struct {
 type DescribeKeyPairsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 密钥对 ID 列表，每次请求批量密钥对的上限为 100。
+	// 密钥对 ID 列表。可通过[DescribeKeyPairs](https://cloud.tencent.com/document/product/1207/55540)接口返回值字段KeyPairSet获取。列表长度最大值为100。
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
 
 	// 偏移量，默认为 0。

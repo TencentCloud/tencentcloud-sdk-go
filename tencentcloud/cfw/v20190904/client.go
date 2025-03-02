@@ -866,6 +866,10 @@ func NewCreateIdsWhiteRuleResponse() (response *CreateIdsWhiteRuleResponse) {
 }
 
 // CreateIdsWhiteRule
+// CreateIdsWhiteRule
+//
+// 
+//
 // 创建入侵防御规则白名单接口
 //
 // 可能返回的错误码:
@@ -878,6 +882,10 @@ func (c *Client) CreateIdsWhiteRule(request *CreateIdsWhiteRuleRequest) (respons
 }
 
 // CreateIdsWhiteRule
+// CreateIdsWhiteRule
+//
+// 
+//
 // 创建入侵防御规则白名单接口
 //
 // 可能返回的错误码:
@@ -1504,6 +1512,10 @@ func NewDeleteIdsWhiteRuleResponse() (response *DeleteIdsWhiteRuleResponse) {
 }
 
 // DeleteIdsWhiteRule
+// 历史方案，业务已迁移，接口不再适用
+//
+// 
+//
 // 删除入侵防御规则白名单接口
 //
 // 可能返回的错误码:
@@ -1516,6 +1528,10 @@ func (c *Client) DeleteIdsWhiteRule(request *DeleteIdsWhiteRuleRequest) (respons
 }
 
 // DeleteIdsWhiteRule
+// 历史方案，业务已迁移，接口不再适用
+//
+// 
+//
 // 删除入侵防御规则白名单接口
 //
 // 可能返回的错误码:
@@ -3204,6 +3220,10 @@ func NewDescribeIdsWhiteRuleResponse() (response *DescribeIdsWhiteRuleResponse) 
 }
 
 // DescribeIdsWhiteRule
+// 历史方案，业务已迁移，接口不再适用
+//
+// 
+//
 // 查询入侵防御规则白名单接口
 //
 // 可能返回的错误码:
@@ -3216,6 +3236,10 @@ func (c *Client) DescribeIdsWhiteRule(request *DescribeIdsWhiteRuleRequest) (res
 }
 
 // DescribeIdsWhiteRule
+// 历史方案，业务已迁移，接口不再适用
+//
+// 
+//
 // 查询入侵防御规则白名单接口
 //
 // 可能返回的错误码:

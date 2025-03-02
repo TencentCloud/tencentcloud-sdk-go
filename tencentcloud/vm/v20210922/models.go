@@ -22,57 +22,59 @@ import (
 
 type AudioResult struct {
 	// 该字段用于返回审核内容是否命中审核模型；取值：0（**未命中**）、1（**命中**）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HitFlag *int64 `json:"HitFlag,omitnil,omitempty" name:"HitFlag"`
 
 	// 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
 	// 返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 该字段用于返回音频文件经ASR识别后的文本信息。最长可识别**5小时**的音频文件，若超出时长限制，接口将会报错。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
 	// 该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 该字段用于返回音频文件的时长，单位为毫秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *string `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 该字段用于返回输入参数中的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
 	// 该字段用于返回音频文件经ASR识别后产生的文本的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TextResults []*AudioResultDetailTextResult `json:"TextResults,omitnil,omitempty" name:"TextResults"`
 
 	// 该字段用于返回音频文件呻吟检测的详细审核结果。具体结果内容请参见AudioResultDetailMoanResult数据结构的细节描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MoanResults []*AudioResultDetailMoanResult `json:"MoanResults,omitnil,omitempty" name:"MoanResults"`
 
 	// 该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LanguageResults []*AudioResultDetailLanguageResult `json:"LanguageResults,omitnil,omitempty" name:"LanguageResults"`
 
 	// 该字段用于返回当前标签（Lable）下的二级标签。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
 
 	// 识别类标签结果信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecognitionResults []*RecognitionResult `json:"RecognitionResults,omitnil,omitempty" name:"RecognitionResults"`
+
+	// 该字段用于返回音频文件说话人检测的详细审核结果
+	SpeakerResults []*SpeakerResult `json:"SpeakerResults,omitnil,omitempty" name:"SpeakerResults"`
+
+	// 该字段用于返回音频文件出行检测的详细审核结果
+	TravelResults []*TravelResult `json:"TravelResults,omitnil,omitempty" name:"TravelResults"`
+
+	// 该字段用于返回音频文件的三级标签
+	SubTag *string `json:"SubTag,omitnil,omitempty" name:"SubTag"`
+
+	// 该字段用于返回音频文件的三级标签码
+	SubTagCode *string `json:"SubTagCode,omitnil,omitempty" name:"SubTagCode"`
+
+	// 该字段用于返回音频文件歌曲识别的详细审核结果
+	LabelResults []*LabelResult `json:"LabelResults,omitnil,omitempty" name:"LabelResults"`
 }
 
 type AudioResultDetailLanguageResult struct {
@@ -123,49 +125,45 @@ type AudioResultDetailMoanResult struct {
 
 type AudioResultDetailTextResult struct {
 	// 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 该字段用于返回ASR识别出的文本内容命中的关键词信息，用于标注内容违规的具体原因（如：加我微信）。该参数可能会有多个返回值，代表命中的多个关键词；若返回值为空，Score不为空，则代表识别结果所对应的恶意标签（Label）来自于语义模型判断的返回值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
 	// 该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的ID，以方便自定义库管理和配置。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibId *string `json:"LibId,omitnil,omitempty" name:"LibId"`
 
 	// 该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的名称,以方便自定义库管理和配置。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibName *string `json:"LibName,omitnil,omitempty" name:"LibName"`
 
 	// 该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 该字段用于返回自定义关键词对应的词库类型，取值为**1**（黑白库）和**2**（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibType *int64 `json:"LibType,omitnil,omitempty" name:"LibType"`
 
 	// 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
 	// 返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 该字段用于返回当前标签（Lable）下的二级标签。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
+
+	// 该字段用于返回命中的关键词信息
+	HitInfos []*OcrHitInfo `json:"HitInfos,omitnil,omitempty" name:"HitInfos"`
 }
 
 type AudioSegments struct {
 	// 截帧时间。
 	// 点播文件：该值为相对于视频偏移时间，单位为秒，例如：0，5，10
 	// 直播流：该值为时间戳，例如：1594650717
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OffsetTime *string `json:"OffsetTime,omitnil,omitempty" name:"OffsetTime"`
 
 	// 结果集
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *AudioResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 创建时间
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 }
 
 type BucketInfo struct {
@@ -584,7 +582,6 @@ type ImageResult struct {
 	// 违规标志
 	// 0 未命中
 	// 1 命中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HitFlag *int64 `json:"HitFlag,omitnil,omitempty" name:"HitFlag"`
 
 	// 命中的标签
@@ -595,31 +592,31 @@ type ImageResult struct {
 	// Abuse 谩骂
 	// Terror 暴恐
 	// Ad 广告
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 审核建议，可选值：
 	// Pass 通过，
 	// Review 建议人审，
 	// Block 确认违规
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 得分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 画面截帧图片结果集
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Results []*ImageResultResult `json:"Results,omitnil,omitempty" name:"Results"`
 
 	// 该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 附加字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
+
+	// 二级标签
+	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
+
+	// 场景结果
+	RecognitionResults []*RecognitionResult `json:"RecognitionResults,omitnil,omitempty" name:"RecognitionResults"`
 }
 
 type ImageResultResult struct {
@@ -712,6 +709,12 @@ type ImageResultsResultDetail struct {
 	// 子标签码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabelCode *string `json:"SubLabelCode,omitnil,omitempty" name:"SubLabelCode"`
+
+	// 子标签
+	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
+
+	// Ocr文本命中信息
+	OcrHitInfos []*OcrHitInfo `json:"OcrHitInfos,omitnil,omitempty" name:"OcrHitInfos"`
 }
 
 type ImageResultsResultDetailLocation struct {
@@ -744,6 +747,12 @@ type ImageSegments struct {
 
 	// 画面截帧结果详情
 	Result *ImageResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 时间
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
+
+	// 截帧毫秒时间
+	OffsetusTime *string `json:"OffsetusTime,omitnil,omitempty" name:"OffsetusTime"`
 }
 
 type InputInfo struct {
@@ -758,6 +767,29 @@ type InputInfo struct {
 	// 桶信息。当输入当时COS时，该字段不为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BucketInfo *string `json:"BucketInfo,omitnil,omitempty" name:"BucketInfo"`
+}
+
+type LabelResult struct {
+	// 场景
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// 建议
+	Suggestion *int64 `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
+
+	// 标签
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 名字
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 分数
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// 开始时间
+	StartTime *float64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *float64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type MediaInfo struct {
@@ -776,6 +808,20 @@ type MediaInfo struct {
 
 	// 封面
 	Thumbnail *string `json:"Thumbnail,omitnil,omitempty" name:"Thumbnail"`
+}
+
+type OcrHitInfo struct {
+	// 关键词
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 关键词内容
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 自定义库名
+	LibName *string `json:"LibName,omitnil,omitempty" name:"LibName"`
+
+	// 位置信息
+	Positions []*TextPosition `json:"Positions,omitnil,omitempty" name:"Positions"`
 }
 
 type RcbAsr struct {
@@ -818,6 +864,20 @@ type SegmentCosUrlList struct {
 	// 全量音频识别文本的cos url
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrUrl *string `json:"AsrUrl,omitnil,omitempty" name:"AsrUrl"`
+}
+
+type SpeakerResult struct {
+	// 标签
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 分数
+	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// 开始时间
+	StartTime *float64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *float64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type StorageInfo struct {
@@ -972,6 +1032,37 @@ type TaskResult struct {
 	// 如果错误，该字段表示错误详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+}
+
+type TextPosition struct {
+	// 命中关键词在文本中的起始位置
+	Start *int64 `json:"Start,omitnil,omitempty" name:"Start"`
+
+	// 命中关键词在文本中的结束位置
+	End *int64 `json:"End,omitnil,omitempty" name:"End"`
+}
+
+type TravelResult struct {
+	// 一级标签
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 二级标签
+	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
+
+	// 风险等级
+	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
+
+	// 出行音频角色
+	AudioRole *string `json:"AudioRole,omitnil,omitempty" name:"AudioRole"`
+
+	// 出行语音文本
+	AudioText *string `json:"AudioText,omitnil,omitempty" name:"AudioText"`
+
+	// 开始时间
+	StartTime *float64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *float64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type User struct {

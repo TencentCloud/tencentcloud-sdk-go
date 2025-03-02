@@ -22,13 +22,10 @@ import (
 
 type Admin struct {
 	// 超管名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 超管手机号，打码显示
 	// 示例值：138****1569
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 }
 
@@ -242,15 +239,12 @@ type ApproverInfo struct {
 
 type ApproverItem struct {
 	// 签署方唯一编号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignId *string `json:"SignId,omitnil,omitempty" name:"SignId"`
 
 	// 签署方角色编号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
 	// 签署方角色名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproverRoleName *string `json:"ApproverRoleName,omitnil,omitempty" name:"ApproverRoleName"`
 }
 
@@ -315,14 +309,11 @@ type ArchiveDynamicApproverData struct {
 	// 签署方唯一编号，一个全局唯一的标识符，不同的流程不会出现冲突。
 	// 
 	// 可以使用签署方的唯一编号来生成签署链接（也可以通过RecipientId来生成签署链接）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignId *string `json:"SignId,omitnil,omitempty" name:"SignId"`
 
 	// 签署方角色编号，签署方角色编号是用于区分同一个流程中不同签署方的唯一标识。不同的流程会出现同样的签署方角色编号。
 	// 
 	// 填写控件和签署控件都与特定的角色编号关联。
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 }
 
@@ -410,27 +401,21 @@ func (r *ArchiveDynamicFlowResponse) FromJsonString(s string) error {
 
 type AuthInfoDetail struct {
 	// 扩展服务类型，和入参一致
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 扩展服务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 授权员工列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HasAuthUserList []*HasAuthUser `json:"HasAuthUserList,omitnil,omitempty" name:"HasAuthUserList"`
 
 	// 授权企业列表（企业自动签时，该字段有值）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HasAuthOrganizationList []*HasAuthOrganization `json:"HasAuthOrganizationList,omitnil,omitempty" name:"HasAuthOrganizationList"`
 
 	// 授权员工列表总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthUserTotal *int64 `json:"AuthUserTotal,omitnil,omitempty" name:"AuthUserTotal"`
 
 	// 授权企业列表总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthOrganizationTotal *int64 `json:"AuthOrganizationTotal,omitnil,omitempty" name:"AuthOrganizationTotal"`
 }
 
@@ -1232,12 +1217,10 @@ type Component struct {
 
 	// **如果控件是关键字定位方式**，可以对关键字定位出来的区域进行横坐标方向的调整，单位为pt（点）。例如，如果关键字定位出来的区域偏左或偏右，可以通过调整横坐标方向的参数来使控件位置更加准确。
 	// 注意： `向左调整设置为负数， 向右调整设置成正数`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OffsetX *float64 `json:"OffsetX,omitnil,omitempty" name:"OffsetX"`
 
 	// **如果控件是关键字定位方式**，可以对关键字定位出来的区域进行纵坐标方向的调整，单位为pt（点）。例如，如果关键字定位出来的区域偏上或偏下，可以通过调整纵坐标方向的参数来使控件位置更加准确。
 	// 注意： `向上调整设置为负数， 向下调整设置成正数`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OffsetY *float64 `json:"OffsetY,omitnil,omitempty" name:"OffsetY"`
 
 	// **如果控件是关键字定位方式**，指定关键字排序规则时，可以选择Positive或Reverse两种排序方式。
@@ -1267,13 +1250,11 @@ type Component struct {
 	// **web嵌入发起合同场景下**， 是否锁定填写和签署控件值不允许嵌入页面进行编辑
 	// <ul><li>false（默认）：不锁定控件值，允许在页面编辑控件值</li>
 	// <li>true：锁定控件值，在页面编辑控件值</li></ul>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LockComponentValue *bool `json:"LockComponentValue,omitnil,omitempty" name:"LockComponentValue"`
 
 	// **web嵌入发起合同场景下**，是否禁止移动和删除填写和签署控件
 	// <ul><li> <b>false（默认）</b> :不禁止移动和删除控件</li>
 	// <li> <b>true</b> : 可以移动和删除控件</li></ul>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ForbidMoveAndDelete *bool `json:"ForbidMoveAndDelete,omitnil,omitempty" name:"ForbidMoveAndDelete"`
 
 	// <font color="red">【暂未使用】</font>日期签署控件的字号，默认为 12
@@ -2740,6 +2721,88 @@ func (r *CreateEmbedWebUrlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateEmbedWebUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateEmployeeChangeUrlRequestParams struct {
+	// 代理企业和员工的信息。<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 待修改的员工UserId
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 待修改的员工手机号
+	NewMobile *string `json:"NewMobile,omitnil,omitempty" name:"NewMobile"`
+}
+
+type CreateEmployeeChangeUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 代理企业和员工的信息。<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 待修改的员工UserId
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 待修改的员工手机号
+	NewMobile *string `json:"NewMobile,omitnil,omitempty" name:"NewMobile"`
+}
+
+func (r *CreateEmployeeChangeUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEmployeeChangeUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "Operator")
+	delete(f, "UserId")
+	delete(f, "NewMobile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEmployeeChangeUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateEmployeeChangeUrlResponseParams struct {
+	// 修改员工信息的小程序链接<br>跳转到腾讯电子签小程序的实现可以参考微信的官方文档:<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html" target="_blank">开放能力/打开 App</a> 
+	MiniAppPath *string `json:"MiniAppPath,omitnil,omitempty" name:"MiniAppPath"`
+
+	// 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+	// 
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateEmployeeChangeUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateEmployeeChangeUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateEmployeeChangeUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEmployeeChangeUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7599,11 +7662,9 @@ func (r *CreateSealResponse) FromJsonString(s string) error {
 
 type CreateStaffResult struct {
 	// 创建员工的成功列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuccessEmployeeData []*SuccessCreateStaffData `json:"SuccessEmployeeData,omitnil,omitempty" name:"SuccessEmployeeData"`
 
 	// 创建员工的失败列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedEmployeeData []*FailedCreateStaffData `json:"FailedEmployeeData,omitnil,omitempty" name:"FailedEmployeeData"`
 }
 
@@ -8850,11 +8911,9 @@ func (r *DeleteSealPoliciesResponse) FromJsonString(s string) error {
 
 type DeleteStaffsResult struct {
 	// 删除员工的成功数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuccessEmployeeData []*SuccessDeleteStaffData `json:"SuccessEmployeeData,omitnil,omitempty" name:"SuccessEmployeeData"`
 
 	// 删除员工的失败数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedEmployeeData []*FailedDeleteStaffData `json:"FailedEmployeeData,omitnil,omitempty" name:"FailedEmployeeData"`
 }
 
@@ -11427,7 +11486,6 @@ type DetectInfoVideoData struct {
 	// 活体视频的base64编码，mp4格式
 	// 
 	// 注:`需进行base64解码获取活体视频文件`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LiveNessVideo *string `json:"LiveNessVideo,omitnil,omitempty" name:"LiveNessVideo"`
 }
 
@@ -11518,14 +11576,11 @@ type DynamicFlowApproverResult struct {
 	// 填写控件和签署控件都与特定的角色编号关联。
 	// 
 	// 在进行新增签署方操作时，建议记录下该签署方的角色编号。后续可以拉取流程信息，用来判断该签署方的当前状态。
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
 	// 签署方唯一编号，一个全局唯一的标识符，不同的流程不会出现冲突。
 	// 
 	// 可以使用签署方的唯一编号来生成签署链接（也可以通过RecipientId来生成签署链接）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignId *string `json:"SignId,omitnil,omitempty" name:"SignId"`
 
 	// 签署方当前状态，会出现下面的状态
@@ -11540,7 +11595,6 @@ type DynamicFlowApproverResult struct {
 	// 10：填写完成
 	// 15：已解除
 	// 19：转他人处理
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproverStatus *int64 `json:"ApproverStatus,omitnil,omitempty" name:"ApproverStatus"`
 }
 
@@ -11592,39 +11646,31 @@ type ExtendAuthInfo struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 操作扩展服务的操作人UserId，员工在腾讯电子签平台的唯一身份标识，为32位字符串。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorUserId *string `json:"OperatorUserId,omitnil,omitempty" name:"OperatorUserId"`
 
 	// 扩展服务的操作时间，格式为Unix标准时间戳（秒）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateOn *int64 `json:"OperateOn,omitnil,omitempty" name:"OperateOn"`
 
 	// 该扩展服务若可以授权，此参数对应授权人员的列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HasAuthUserList []*HasAuthUser `json:"HasAuthUserList,omitnil,omitempty" name:"HasAuthUserList"`
 }
 
 type ExtendScene struct {
 	// 印章来源类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GenerateType *string `json:"GenerateType,omitnil,omitempty" name:"GenerateType"`
 
 	// 印章来源类型描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GenerateTypeDesc *string `json:"GenerateTypeDesc,omitnil,omitempty" name:"GenerateTypeDesc"`
 
 	// 印章来源logo
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GenerateTypeLogo *string `json:"GenerateTypeLogo,omitnil,omitempty" name:"GenerateTypeLogo"`
 }
 
 type FailedCreateRoleData struct {
 	// 用户userId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 角色id列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
 }
 
@@ -11692,7 +11738,6 @@ type FileUrl struct {
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 下载文件的附加信息。如果是pdf文件，会返回pdf文件每页的有效高宽
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Option *string `json:"Option,omitnil,omitempty" name:"Option"`
 }
 
@@ -11747,41 +11792,32 @@ type FillApproverInfo struct {
 
 type FillError struct {
 	// 为签署方经办人在签署合同中的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。与入参中补充的签署人角色ID对应，批量补充部分失败返回对应的错误信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
 	// 补充失败错误说明
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrMessage *string `json:"ErrMessage,omitnil,omitempty" name:"ErrMessage"`
 
 	// 合同流程ID，为32位字符串。	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 }
 
 type FilledComponent struct {
 	// 控件Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentId *string `json:"ComponentId,omitnil,omitempty" name:"ComponentId"`
 
 	// 控件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentName *string `json:"ComponentName,omitnil,omitempty" name:"ComponentName"`
 
 	// 控件填写状态；0-未填写；1-已填写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentFillStatus *string `json:"ComponentFillStatus,omitnil,omitempty" name:"ComponentFillStatus"`
 
 	// 控件填写内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentValue *string `json:"ComponentValue,omitnil,omitempty" name:"ComponentValue"`
 
 	// 控件所属参与方Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentRecipientId *string `json:"ComponentRecipientId,omitnil,omitempty" name:"ComponentRecipientId"`
 
 	// 图片填充控件下载链接，如果是图片填充控件时，这里返回图片的下载链接。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }
 
@@ -11795,7 +11831,6 @@ type Filter struct {
 
 type FlowApproverDetail struct {
 	// 签署时的相关信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproveMessage *string `json:"ApproveMessage,omitnil,omitempty" name:"ApproveMessage"`
 
 	// 签署方姓名
@@ -11823,7 +11858,6 @@ type FlowApproverDetail struct {
 	ReceiptId *string `json:"ReceiptId,omitnil,omitempty" name:"ReceiptId"`
 
 	// 客户自定义的用户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomUserId *string `json:"CustomUserId,omitnil,omitempty" name:"CustomUserId"`
 
 	// 签署人手机号
@@ -11836,31 +11870,24 @@ type FlowApproverDetail struct {
 	ApproveTime *int64 `json:"ApproveTime,omitnil,omitempty" name:"ApproveTime"`
 
 	// 签署方类型，ORGANIZATION-企业员工，PERSON-个人，ENTERPRISESERVER-企业静默签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproveType *string `json:"ApproveType,omitnil,omitempty" name:"ApproveType"`
 
 	// 签署方侧用户来源，如WEWORKAPP-企业微信等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproverSource *string `json:"ApproverSource,omitnil,omitempty" name:"ApproverSource"`
 
 	// 客户自定义签署方标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomApproverTag *string `json:"CustomApproverTag,omitnil,omitempty" name:"CustomApproverTag"`
 
 	// 签署方企业Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationId *string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
 	// 签署方企业名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 签署参与人在本流程中的编号ID（每个流程不同），可用此ID来定位签署参与人在本流程的签署节点，也可用于后续创建签署链接等操作。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignId *string `json:"SignId,omitnil,omitempty" name:"SignId"`
 
 	// 自定义签署人角色
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproverRoleName *string `json:"ApproverRoleName,omitnil,omitempty" name:"ApproverRoleName"`
 
 	// 模板配置中的参与方ID,与控件绑定
@@ -11914,7 +11941,6 @@ type FlowBrief struct {
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 合同流程描述信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowDescription *string `json:"FlowDescription,omitnil,omitempty" name:"FlowDescription"`
 
 	// 合同流程的类别分类（如销售合同/入职合同等）。
@@ -11933,23 +11959,18 @@ type FlowBrief struct {
 	// <li> **9** : 部分填写</li>
 	// <li> **10** : 已拒填</li>
 	// <li> **21** : 已解除</li></ul>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowStatus *int64 `json:"FlowStatus,omitnil,omitempty" name:"FlowStatus"`
 
 	// 合同流程创建时间，格式为Unix标准时间戳（秒）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedOn *int64 `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
 
 	// 当合同流程状态为已拒签（即 FlowStatus=3）或已撤销（即 FlowStatus=6）时，此字段 FlowMessage 为拒签或撤销原因。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowMessage *string `json:"FlowMessage,omitnil,omitempty" name:"FlowMessage"`
 
 	//  合同流程发起方的员工编号, 即员工在腾讯电子签平台的唯一身份标识。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 
 	// 合同流程的签署截止时间，格式为Unix标准时间戳（秒）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 }
 
@@ -12176,18 +12197,15 @@ type FlowDetailInfo struct {
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 合同流程的类别分类（如销售合同/入职合同等）。	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
 
 	// 合同流程当前的签署状态, 会存在下列的状态值 <ul><li> **0** : 未开启流程(合同中不存在填写环节)</li> <li> **1** : 待签署</li> <li> **2** : 部分签署</li> <li> **3** : 已拒签</li> <li> **4** : 已签署</li> <li> **5** : 已过期</li> <li> **6** : 已撤销</li> <li> **7** : 未开启流程(合同中存在填写环节)</li> <li> **8** : 等待填写</li> <li> **9** : 部分填写</li> <li> **10** : 已拒填</li> <li> **21** : 已解除</li></ul>	
 	FlowStatus *int64 `json:"FlowStatus,omitnil,omitempty" name:"FlowStatus"`
 
 	// 当合同流程状态为已拒签（即 FlowStatus=3）或已撤销（即 FlowStatus=6）时，此字段 FlowMessage 为拒签或撤销原因。	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowMessage *string `json:"FlowMessage,omitnil,omitempty" name:"FlowMessage"`
 
 	// 合同流程描述信息。	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowDescription *string `json:"FlowDescription,omitnil,omitempty" name:"FlowDescription"`
 
 	// 合同流程的创建时间戳，格式为Unix标准时间戳（秒）。	
@@ -12200,7 +12218,6 @@ type FlowDetailInfo struct {
 	CcInfos []*FlowApproverDetail `json:"CcInfos,omitnil,omitempty" name:"CcInfos"`
 
 	// 合同流程发起方的员工编号, 即员工在腾讯电子签平台的唯一身份标识。	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 }
 
@@ -12214,11 +12231,9 @@ type FlowGroupApproverInfo struct {
 
 type FlowGroupApprovers struct {
 	// 合同流程ID 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 签署方信息，包含合同ID和角色ID用于定位RecipientId。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Approvers []*ApproverItem `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 }
 
@@ -12449,19 +12464,15 @@ func (r *GetTaskResultApiResponse) FromJsonString(s string) error {
 
 type GroupOrganization struct {
 	// 成员企业名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 成员企业别名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// 成员企业id，为 32 位字符串，可在电子签PC 控制台，企业设置->企业电子签账号 获取
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationId *string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
 	// 记录更新时间， unix时间戳，单位秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 成员企业加入集团的当前状态
@@ -12471,132 +12482,102 @@ type GroupOrganization struct {
 	// <li> **4**：已解除</li>
 	// <li> **5**：已加入</li>
 	// </ul>
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 是否为集团主企业
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsMainOrganization *bool `json:"IsMainOrganization,omitnil,omitempty" name:"IsMainOrganization"`
 
 	// 企业社会信用代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 企业超管信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdminInfo *Admin `json:"AdminInfo,omitnil,omitempty" name:"AdminInfo"`
 
 	// 企业许可证Id，此字段暂时不需要关注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	License *string `json:"License,omitnil,omitempty" name:"License"`
 
 	// 企业许可证过期时间，unix时间戳，单位秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LicenseExpireTime *uint64 `json:"LicenseExpireTime,omitnil,omitempty" name:"LicenseExpireTime"`
 
 	// 成员企业加入集团时间，unix时间戳，单位秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JoinTime *uint64 `json:"JoinTime,omitnil,omitempty" name:"JoinTime"`
 
 	// 是否使用自建审批流引擎（即不是企微审批流引擎）
 	// <ul><li> **true**：是</li>
 	// <li> **false**：否</li></ul>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowEngineEnable *bool `json:"FlowEngineEnable,omitnil,omitempty" name:"FlowEngineEnable"`
 }
 
 type HasAuthOrganization struct {
 	// 授权企业id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationId *string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
 	// 授权企业名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 被授权企业id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil,omitempty" name:"AuthorizedOrganizationId"`
 
 	// 被授权企业名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil,omitempty" name:"AuthorizedOrganizationName"`
 
 	// 授权模板id（仅当授权方式为模板授权时有值）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 授权模板名称（仅当授权方式为模板授权时有值）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
 	// 授权时间，格式为时间戳，单位s
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthorizeTime *int64 `json:"AuthorizeTime,omitnil,omitempty" name:"AuthorizeTime"`
 }
 
 type HasAuthUser struct {
 	// 员工在腾讯电子签平台的唯一身份标识，为32位字符串。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 当前员工的归属情况，可能值是：
 	// MainOrg：在集团企业的场景下，返回此值代表是归属主企业
 	// CurrentOrg：在普通企业场景下返回此值；或者在集团企业的场景下，返回此值代表归属子企业
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BelongTo *string `json:"BelongTo,omitnil,omitempty" name:"BelongTo"`
 
 	// 集团主企业id，当前企业为集团子企业时，该字段有值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MainOrganizationId *string `json:"MainOrganizationId,omitnil,omitempty" name:"MainOrganizationId"`
 }
 
 type IntegrateRole struct {
 	// 角色id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
 	// 角色名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
 
 	// 角色状态，1-启用，2-禁用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleStatus *uint64 `json:"RoleStatus,omitnil,omitempty" name:"RoleStatus"`
 
 	// 是否是集团角色，true-是，false-否
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsGroupRole *bool `json:"IsGroupRole,omitnil,omitempty" name:"IsGroupRole"`
 
 	// 管辖的子企业列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubOrgIdList []*string `json:"SubOrgIdList,omitnil,omitempty" name:"SubOrgIdList"`
 
 	// 权限树
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil,omitempty" name:"PermissionGroups"`
 }
 
 type IntegrationDepartment struct {
 	// 部门ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeptId *string `json:"DeptId,omitnil,omitempty" name:"DeptId"`
 
 	// 部门名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeptName *string `json:"DeptName,omitnil,omitempty" name:"DeptName"`
 
 	// 父部门ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentDeptId *string `json:"ParentDeptId,omitnil,omitempty" name:"ParentDeptId"`
 
 	// 客户系统部门ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeptOpenId *string `json:"DeptOpenId,omitnil,omitempty" name:"DeptOpenId"`
 
 	// 序列号。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderNo *uint64 `json:"OrderNo,omitnil,omitempty" name:"OrderNo"`
 }
 
@@ -12632,7 +12613,6 @@ type IntentionActionResult struct {
 
 type IntentionActionResultDetail struct {
 	// 视频base64编码（其中包含全程提示文本和点头音频，mp4格式）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Video *string `json:"Video,omitnil,omitempty" name:"Video"`
 }
 
@@ -12648,15 +12628,12 @@ type IntentionQuestionResult struct {
 	// 视频base64（其中包含全程问题和回答音频，mp4格式）
 	// 
 	// 注：`需进行base64解码获取视频文件`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Video *string `json:"Video,omitnil,omitempty" name:"Video"`
 
 	//  和答案匹配结果列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultCode []*string `json:"ResultCode,omitnil,omitempty" name:"ResultCode"`
 
 	// 回答问题语音识别结果列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrResult []*string `json:"AsrResult,omitnil,omitempty" name:"AsrResult"`
 }
 
@@ -13238,7 +13215,6 @@ type OccupiedSeal struct {
 	SealStatus *string `json:"SealStatus,omitnil,omitempty" name:"SealStatus"`
 
 	// 审核失败原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
 
 	// 印章图片url，5分钟内有效
@@ -13251,11 +13227,9 @@ type OccupiedSeal struct {
 	IsAllTime *bool `json:"IsAllTime,omitnil,omitempty" name:"IsAllTime"`
 
 	// 授权人列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthorizedUsers []*AuthorizedUser `json:"AuthorizedUsers,omitnil,omitempty" name:"AuthorizedUsers"`
 
 	// 印章扩展数据信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtendScene *ExtendScene `json:"ExtendScene,omitnil,omitempty" name:"ExtendScene"`
 }
 
@@ -13312,53 +13286,38 @@ type OrganizationCommonInfo struct {
 	// 组织机构名称。
 	// 请确认该名称与企业营业执照中注册的名称一致。
 	// 如果名称中包含英文括号()，请使用中文括号（）代替。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 组织机构企业统一社会信用代码。
 	// 请确认该企业统一社会信用代码与企业营业执照中注册的统一社会信用代码一致。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitnil,omitempty" name:"UniformSocialCreditCode"`
 
 	// 组织机构法人的姓名。
 	// 请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LegalName *string `json:"LegalName,omitnil,omitempty" name:"LegalName"`
 
 	// 组织机构法人的证件类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LegalIdCardType *string `json:"LegalIdCardType,omitnil,omitempty" name:"LegalIdCardType"`
 
 	// 组织机构法人的证件号码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LegalIdCardNumber *string `json:"LegalIdCardNumber,omitnil,omitempty" name:"LegalIdCardNumber"`
 
 	// 组织机构超管姓名。
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdminName *string `json:"AdminName,omitnil,omitempty" name:"AdminName"`
 
 	// 组织机构超管手机号。
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdminMobile *string `json:"AdminMobile,omitnil,omitempty" name:"AdminMobile"`
 
 	// 组织机构超管证件类型
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdminIdCardType *string `json:"AdminIdCardType,omitnil,omitempty" name:"AdminIdCardType"`
 
 	// 组织机构超管证件号码
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdminIdCardNumber *string `json:"AdminIdCardNumber,omitnil,omitempty" name:"AdminIdCardNumber"`
 
 	// 原超管姓名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OldAdminName *string `json:"OldAdminName,omitnil,omitempty" name:"OldAdminName"`
 
 	// 原超管手机号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OldAdminMobile *string `json:"OldAdminMobile,omitnil,omitempty" name:"OldAdminMobile"`
 
 	// 原超管证件类型
@@ -13446,65 +13405,50 @@ type PdfVerifyResult struct {
 
 type Permission struct {
 	// 权限名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 权限key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 权限类型 1前端，2后端
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 是否隐藏
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Hide *int64 `json:"Hide,omitnil,omitempty" name:"Hide"`
 
 	// 数据权限标签 1:表示根节点，2:表示叶子结点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataLabel *int64 `json:"DataLabel,omitnil,omitempty" name:"DataLabel"`
 
 	// 数据权限独有，1:关联其他模块鉴权，2:表示关联自己模块鉴权
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataType *int64 `json:"DataType,omitnil,omitempty" name:"DataType"`
 
 	// 数据权限独有，表示数据范围，1：全公司，2:部门及下级部门，3:自己
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataRange *int64 `json:"DataRange,omitnil,omitempty" name:"DataRange"`
 
 	// 关联权限, 表示这个功能权限要受哪个数据权限管控
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataTo *string `json:"DataTo,omitnil,omitempty" name:"DataTo"`
 
 	// 父级权限key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentKey *string `json:"ParentKey,omitnil,omitempty" name:"ParentKey"`
 
 	// 是否选中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsChecked *bool `json:"IsChecked,omitnil,omitempty" name:"IsChecked"`
 
 	// 子权限集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Children []*Permission `json:"Children,omitnil,omitempty" name:"Children"`
 }
 
 type PermissionGroup struct {
 	// 权限组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 权限组key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupKey *string `json:"GroupKey,omitnil,omitempty" name:"GroupKey"`
 
 	// 是否隐藏分组，0否1是
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Hide *int64 `json:"Hide,omitnil,omitempty" name:"Hide"`
 
 	// 权限集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Permissions []*Permission `json:"Permissions,omitnil,omitempty" name:"Permissions"`
 }
 
@@ -13581,7 +13525,6 @@ type Recipient struct {
 
 type RecipientComponentInfo struct {
 	// 签署方经办人在合同流程中的参与方ID，与控件绑定，是控件的归属方
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
 	// 参与方填写状态
@@ -13589,24 +13532,19 @@ type RecipientComponentInfo struct {
 	// <li>**空值** : 此参与方没有填写控件</li>
 	// <li>**0**:  未填写, 表示此参与方还没有填写合同的填写控件</li>
 	// <li>**1**:  已填写, 表示此参与方已经填写所有的填写控件</li></ul>
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecipientFillStatus *string `json:"RecipientFillStatus,omitnil,omitempty" name:"RecipientFillStatus"`
 
 	// 是否为发起方
 	// <ul><li>true-发起方</li>
 	// <li>false-参与方</li></ul>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPromoter *bool `json:"IsPromoter,omitnil,omitempty" name:"IsPromoter"`
 
 	// 改参与方填写控件信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Components []*FilledComponent `json:"Components,omitnil,omitempty" name:"Components"`
 }
 
 type RegisterInfo struct {
 	// 法人姓名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LegalName *string `json:"LegalName,omitnil,omitempty" name:"LegalName"`
 
 	// 社会统一信用代码
@@ -13616,7 +13554,6 @@ type RegisterInfo struct {
 	Uscc *string `json:"Uscc,omitnil,omitempty" name:"Uscc"`
 
 	// 社会统一信用代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnifiedSocialCreditCode *string `json:"UnifiedSocialCreditCode,omitnil,omitempty" name:"UnifiedSocialCreditCode"`
 }
 
@@ -13844,18 +13781,15 @@ type ReviewerInfo struct {
 
 type SealInfo struct {
 	// 印章ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SealId *string `json:"SealId,omitnil,omitempty" name:"SealId"`
 
 	// 印章类型。LEGAL_PERSON_SEAL: 法定代表人章；
 	// ORGANIZATIONSEAL：企业印章；
 	// OFFICIAL：企业公章；
 	// CONTRACT：合同专用章
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SealType *string `json:"SealType,omitnil,omitempty" name:"SealType"`
 
 	// 印章名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SealName *string `json:"SealName,omitnil,omitempty" name:"SealName"`
 }
 
@@ -13899,21 +13833,17 @@ type Staff struct {
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 用户邮箱。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
 	// 用户在第三方平台ID。
 	// 注：`如需在此接口提醒员工实名，该参数不传。`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// 员工角色信息。
 	// 注：`创建和更新场景无需填写。`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Roles []*StaffRole `json:"Roles,omitnil,omitempty" name:"Roles"`
 
 	// 员工部门信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Department *Department `json:"Department,omitnil,omitempty" name:"Department"`
 
 	// 员工是否实名。
@@ -13926,13 +13856,11 @@ type Staff struct {
 
 	// 员工实名时间戳，单位秒。
 	// 注：`创建和更新场景无需填写。`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifiedOn *int64 `json:"VerifiedOn,omitnil,omitempty" name:"VerifiedOn"`
 
 	// 员工是否离职：
 	// <ul><li>**0**：未离职</li><li>**1**：离职</li></ul>
 	// 注：`创建和更新场景无需填写。`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuiteJob *int64 `json:"QuiteJob,omitnil,omitempty" name:"QuiteJob"`
 
 	// 员工离职交接人用户ID。
@@ -13945,17 +13873,14 @@ type Staff struct {
 
 	// 企业微信用户账号ID。
 	// 注：`仅企微类型的企业创建员工接口支持该字段。`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WeworkOpenId *string `json:"WeworkOpenId,omitnil,omitempty" name:"WeworkOpenId"`
 }
 
 type StaffRole struct {
 	// 角色ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
 	// 角色名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
 }
 
@@ -14101,7 +14026,6 @@ type SuccessCreateStaffData struct {
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 提示，当创建已存在未实名用户时，该字段有值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
 
 	// 传入的企微账号id
@@ -14223,7 +14147,6 @@ type TemplateInfo struct {
 	// 您可以通过浏览器直接打开此链接预览模板，或将其嵌入到 iframe 中进行预览。
 	// 
 	// 注意：只有在请求接口时将 <b>WithPreviewUrl </b>参数设置为 true，才会生成预览链接。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewUrl *string `json:"PreviewUrl,omitnil,omitempty" name:"PreviewUrl"`
 
 	// 用户自定义合同类型。
@@ -14231,27 +14154,21 @@ type TemplateInfo struct {
 	// 返回配置模板的时候选择的合同类型。[点击查看配置的位置](https://qcloudimg.tencent-cloud.cn/raw/4a766f0540253bf2a05d50c58bd14990.png)
 	// 
 	// 自定义合同类型配置的地方如链接图所示。[点击查看自定义合同类型管理的位置](https://qcloudimg.tencent-cloud.cn/raw/36582cea03ae6a2559894844942b5d5c.png)
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserFlowType *UserFlowType `json:"UserFlowType,omitnil,omitempty" name:"UserFlowType"`
 
 	// 模板版本的编号，旨在标识其独特的版本信息，通常呈现为一串字符串，由日期和递增的数字组成
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateVersion *string `json:"TemplateVersion,omitnil,omitempty" name:"TemplateVersion"`
 
 	// 模板是否已发布可以分为以下两种状态：
 	// 
 	// <b>true</b>：已发布状态，表示该模板已经发布并可以正常使用。
 	// <b>false</b>：未发布状态，表示该模板还未发布，无法使用。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Published *bool `json:"Published,omitnil,omitempty" name:"Published"`
 
 	// <b>集体账号场景下</b>： 集团账号分享给子企业的模板的来源模板ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShareTemplateId *string `json:"ShareTemplateId,omitnil,omitempty" name:"ShareTemplateId"`
 
 	// 此模板配置的预填印章列表（包括自动签署指定的印章）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateSeals []*SealInfo `json:"TemplateSeals,omitnil,omitempty" name:"TemplateSeals"`
 
 	// 模板内部指定的印章列表
@@ -14631,15 +14548,12 @@ func (r *UploadFilesResponse) FromJsonString(s string) error {
 
 type UserFlowType struct {
 	// 合同类型ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserFlowTypeId *string `json:"UserFlowTypeId,omitnil,omitempty" name:"UserFlowTypeId"`
 
 	// 合同类型名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 合同类型说明
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 

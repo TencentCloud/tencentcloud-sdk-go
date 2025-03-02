@@ -4584,6 +4584,67 @@ func (c *Client) ReconstructDocumentWithContext(ctx context.Context, request *Re
     return
 }
 
+func NewRenameDocRequest() (request *RenameDocRequest) {
+    request = &RenameDocRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "RenameDoc")
+    
+    
+    return
+}
+
+func NewRenameDocResponse() (response *RenameDocResponse) {
+    response = &RenameDocResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RenameDoc
+// 文档重命名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RenameDoc(request *RenameDocRequest) (response *RenameDocResponse, err error) {
+    return c.RenameDocWithContext(context.Background(), request)
+}
+
+// RenameDoc
+// 文档重命名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RenameDocWithContext(ctx context.Context, request *RenameDocRequest) (response *RenameDocResponse, err error) {
+    if request == nil {
+        request = NewRenameDocRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenameDoc require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRenameDocResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResetSessionRequest() (request *ResetSessionRequest) {
     request = &ResetSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},

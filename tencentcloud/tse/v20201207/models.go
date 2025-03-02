@@ -194,6 +194,14 @@ type CLBMultiRegion struct {
 	CLBSlaveZone *string `json:"CLBSlaveZone,omitnil,omitempty" name:"CLBSlaveZone"`
 }
 
+type CanaryPriorityRule struct {
+	// 优先级
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 灰度规则配置
+	CanaryRule *CloudNativeAPIGatewayCanaryRule `json:"CanaryRule,omitnil,omitempty" name:"CanaryRule"`
+}
+
 type CertificateInfo struct {
 	// 唯一id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1280,6 +1288,9 @@ type CreateCloudNativeAPIGatewayCanaryRuleRequestParams struct {
 
 	// 灰度规则配置
 	CanaryRule *CloudNativeAPIGatewayCanaryRule `json:"CanaryRule,omitnil,omitempty" name:"CanaryRule"`
+
+	// 灰度规则配置列表，如果配置了此参数，将以此参数为准，忽略CanaryRule参数
+	CanaryRuleList []*CloudNativeAPIGatewayCanaryRule `json:"CanaryRuleList,omitnil,omitempty" name:"CanaryRuleList"`
 }
 
 type CreateCloudNativeAPIGatewayCanaryRuleRequest struct {
@@ -1293,6 +1304,9 @@ type CreateCloudNativeAPIGatewayCanaryRuleRequest struct {
 
 	// 灰度规则配置
 	CanaryRule *CloudNativeAPIGatewayCanaryRule `json:"CanaryRule,omitnil,omitempty" name:"CanaryRule"`
+
+	// 灰度规则配置列表，如果配置了此参数，将以此参数为准，忽略CanaryRule参数
+	CanaryRuleList []*CloudNativeAPIGatewayCanaryRule `json:"CanaryRuleList,omitnil,omitempty" name:"CanaryRuleList"`
 }
 
 func (r *CreateCloudNativeAPIGatewayCanaryRuleRequest) ToJsonString() string {
@@ -1310,6 +1324,7 @@ func (r *CreateCloudNativeAPIGatewayCanaryRuleRequest) FromJsonString(s string) 
 	delete(f, "GatewayId")
 	delete(f, "ServiceId")
 	delete(f, "CanaryRule")
+	delete(f, "CanaryRuleList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudNativeAPIGatewayCanaryRuleRequest has unknown keys!", "")
 	}
@@ -1824,6 +1839,9 @@ type CreateCloudNativeAPIGatewayRouteRequestParams struct {
 
 	// 是否缓存响应body，默认true
 	ResponseBuffering *bool `json:"ResponseBuffering,omitnil,omitempty" name:"ResponseBuffering"`
+
+	// 正则优先级
+	RegexPriority *int64 `json:"RegexPriority,omitnil,omitempty" name:"RegexPriority"`
 }
 
 type CreateCloudNativeAPIGatewayRouteRequest struct {
@@ -1891,6 +1909,9 @@ type CreateCloudNativeAPIGatewayRouteRequest struct {
 
 	// 是否缓存响应body，默认true
 	ResponseBuffering *bool `json:"ResponseBuffering,omitnil,omitempty" name:"ResponseBuffering"`
+
+	// 正则优先级
+	RegexPriority *int64 `json:"RegexPriority,omitnil,omitempty" name:"RegexPriority"`
 }
 
 func (r *CreateCloudNativeAPIGatewayRouteRequest) ToJsonString() string {
@@ -1920,6 +1941,7 @@ func (r *CreateCloudNativeAPIGatewayRouteRequest) FromJsonString(s string) error
 	delete(f, "Headers")
 	delete(f, "RequestBuffering")
 	delete(f, "ResponseBuffering")
+	delete(f, "RegexPriority")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudNativeAPIGatewayRouteRequest has unknown keys!", "")
 	}
@@ -3334,6 +3356,9 @@ type DeleteCloudNativeAPIGatewayCanaryRuleRequestParams struct {
 
 	// 优先级
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 优先级列表，如果配置了此参数，将以此参数为准，忽略Priority参数
+	PriorityList []*int64 `json:"PriorityList,omitnil,omitempty" name:"PriorityList"`
 }
 
 type DeleteCloudNativeAPIGatewayCanaryRuleRequest struct {
@@ -3347,6 +3372,9 @@ type DeleteCloudNativeAPIGatewayCanaryRuleRequest struct {
 
 	// 优先级
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 优先级列表，如果配置了此参数，将以此参数为准，忽略Priority参数
+	PriorityList []*int64 `json:"PriorityList,omitnil,omitempty" name:"PriorityList"`
 }
 
 func (r *DeleteCloudNativeAPIGatewayCanaryRuleRequest) ToJsonString() string {
@@ -3364,6 +3392,7 @@ func (r *DeleteCloudNativeAPIGatewayCanaryRuleRequest) FromJsonString(s string) 
 	delete(f, "GatewayId")
 	delete(f, "ServiceId")
 	delete(f, "Priority")
+	delete(f, "PriorityList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudNativeAPIGatewayCanaryRuleRequest has unknown keys!", "")
 	}
@@ -9530,6 +9559,9 @@ type KongRoutePreview struct {
 
 	// 是否缓存响应body，默认true
 	ResponseBuffering *bool `json:"ResponseBuffering,omitnil,omitempty" name:"ResponseBuffering"`
+
+	// 正则优先级
+	RegexPriority *int64 `json:"RegexPriority,omitnil,omitempty" name:"RegexPriority"`
 }
 
 type KongServiceDetail struct {
@@ -9981,6 +10013,9 @@ type ModifyCloudNativeAPIGatewayCanaryRuleRequestParams struct {
 
 	// 灰度规则配置
 	CanaryRule *CloudNativeAPIGatewayCanaryRule `json:"CanaryRule,omitnil,omitempty" name:"CanaryRule"`
+
+	// 灰度规则配置列表，如果配置了此参数，将以此参数为准，忽略Priority和CanaryRule参数
+	CanaryRuleList []*CanaryPriorityRule `json:"CanaryRuleList,omitnil,omitempty" name:"CanaryRuleList"`
 }
 
 type ModifyCloudNativeAPIGatewayCanaryRuleRequest struct {
@@ -9997,6 +10032,9 @@ type ModifyCloudNativeAPIGatewayCanaryRuleRequest struct {
 
 	// 灰度规则配置
 	CanaryRule *CloudNativeAPIGatewayCanaryRule `json:"CanaryRule,omitnil,omitempty" name:"CanaryRule"`
+
+	// 灰度规则配置列表，如果配置了此参数，将以此参数为准，忽略Priority和CanaryRule参数
+	CanaryRuleList []*CanaryPriorityRule `json:"CanaryRuleList,omitnil,omitempty" name:"CanaryRuleList"`
 }
 
 func (r *ModifyCloudNativeAPIGatewayCanaryRuleRequest) ToJsonString() string {
@@ -10015,6 +10053,7 @@ func (r *ModifyCloudNativeAPIGatewayCanaryRuleRequest) FromJsonString(s string) 
 	delete(f, "ServiceId")
 	delete(f, "Priority")
 	delete(f, "CanaryRule")
+	delete(f, "CanaryRuleList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudNativeAPIGatewayCanaryRuleRequest has unknown keys!", "")
 	}
@@ -10375,6 +10414,9 @@ type ModifyCloudNativeAPIGatewayRouteRequestParams struct {
 
 	// 是否缓存响应body，默认true
 	ResponseBuffering *bool `json:"ResponseBuffering,omitnil,omitempty" name:"ResponseBuffering"`
+
+	// 增加优先级
+	RegexPriority *int64 `json:"RegexPriority,omitnil,omitempty" name:"RegexPriority"`
 }
 
 type ModifyCloudNativeAPIGatewayRouteRequest struct {
@@ -10445,6 +10487,9 @@ type ModifyCloudNativeAPIGatewayRouteRequest struct {
 
 	// 是否缓存响应body，默认true
 	ResponseBuffering *bool `json:"ResponseBuffering,omitnil,omitempty" name:"ResponseBuffering"`
+
+	// 增加优先级
+	RegexPriority *int64 `json:"RegexPriority,omitnil,omitempty" name:"RegexPriority"`
 }
 
 func (r *ModifyCloudNativeAPIGatewayRouteRequest) ToJsonString() string {
@@ -10475,6 +10520,7 @@ func (r *ModifyCloudNativeAPIGatewayRouteRequest) FromJsonString(s string) error
 	delete(f, "Headers")
 	delete(f, "RequestBuffering")
 	delete(f, "ResponseBuffering")
+	delete(f, "RegexPriority")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudNativeAPIGatewayRouteRequest has unknown keys!", "")
 	}

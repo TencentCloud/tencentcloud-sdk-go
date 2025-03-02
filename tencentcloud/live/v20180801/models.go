@@ -17459,7 +17459,6 @@ type PlayStatInfo struct {
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 
 	// 带宽/流量/请求数/并发连接数/下载速度的值，若没数据返回时该值为0。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *float64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 

@@ -5135,10 +5135,10 @@ type GetWsTokenReq_Label struct {
 
 // Predefined struct for user
 type GetWsTokenRequestParams struct {
-	// 接入类型
+	// 接入类型，当前请填写5
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 应用AppKey（应用发布后在应用页面[发布管理]-[调用信息]-[API管理]处获取）
+	// 当Type=5时，必填；应用AppKey（应用发布后在应用页面[发布管理]-[调用信息]-[API管理]处获取）
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
 	// 访客ID（外部输入，建议唯一，标识当前接入会话的用户）
@@ -5151,10 +5151,10 @@ type GetWsTokenRequestParams struct {
 type GetWsTokenRequest struct {
 	*tchttp.BaseRequest
 	
-	// 接入类型
+	// 接入类型，当前请填写5
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 应用AppKey（应用发布后在应用页面[发布管理]-[调用信息]-[API管理]处获取）
+	// 当Type=5时，必填；应用AppKey（应用发布后在应用页面[发布管理]-[调用信息]-[API管理]处获取）
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
 	// 访客ID（外部输入，建议唯一，标识当前接入会话的用户）
@@ -9533,6 +9533,88 @@ type ReleaseRejectedQuestion struct {
 	// 失败原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+}
+
+// Predefined struct for user
+type RenameDocRequestParams struct {
+	// 登录用户主账号(集成商模式必填)	
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)	
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// 应用ID
+	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
+
+	// 文档ID
+	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
+
+	// 新文档名，需要带上后缀
+	NewName *string `json:"NewName,omitnil,omitempty" name:"NewName"`
+}
+
+type RenameDocRequest struct {
+	*tchttp.BaseRequest
+	
+	// 登录用户主账号(集成商模式必填)	
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)	
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+
+	// 应用ID
+	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
+
+	// 文档ID
+	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
+
+	// 新文档名，需要带上后缀
+	NewName *string `json:"NewName,omitnil,omitempty" name:"NewName"`
+}
+
+func (r *RenameDocRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenameDocRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
+	delete(f, "BotBizId")
+	delete(f, "DocBizId")
+	delete(f, "NewName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenameDocRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RenameDocResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RenameDocResponse struct {
+	*tchttp.BaseResponse
+	Response *RenameDocResponseParams `json:"Response"`
+}
+
+func (r *RenameDocResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenameDocResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

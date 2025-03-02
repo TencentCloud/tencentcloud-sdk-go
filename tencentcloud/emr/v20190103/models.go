@@ -5969,7 +5969,7 @@ type EmrProductConfigOutter struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityOn *bool `json:"SecurityOn,omitnil,omitempty" name:"SecurityOn"`
 
-	// 安全组名称
+	// 集群初始安全组id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroup *string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
@@ -5981,7 +5981,7 @@ type EmrProductConfigOutter struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationRole *string `json:"ApplicationRole,omitnil,omitempty" name:"ApplicationRole"`
 
-	// 安全组
+	// 安全组id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroups []*string `json:"SecurityGroups,omitnil,omitempty" name:"SecurityGroups"`
 

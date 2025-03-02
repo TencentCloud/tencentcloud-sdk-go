@@ -576,11 +576,9 @@ type DataDisk struct {
 	//   默认取值：true<br />
 	//   该参数目前仅用于 `RunInstances` 接口。
 	// </li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitnil,omitempty" name:"DeleteWithInstance"`
 
 	// 数据盘快照ID。选择的数据盘快照大小需小于数据盘大小。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
 	// 数据盘是加密。取值范围：
@@ -590,27 +588,22 @@ type DataDisk struct {
 	//   默认取值：false<br />
 	//   该参数目前仅用于 `RunInstances` 接口。
 	// </li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Encrypt *bool `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
 
 	// 自定义CMK对应的ID，取值为UUID或者类似kms-abcd1234。用于加密云盘。
 	// 
 	// 该参数目前仅用于 `RunInstances` 接口。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
 
 	// 云硬盘性能，单位：MB/s
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ThroughputPerformance *int64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 
 	// 所属的独享集群ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 
 	// 突发性能
 	// 
 	//  <b>注：内测中。</b>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BurstPerformance *bool `json:"BurstPerformance,omitnil,omitempty" name:"BurstPerformance"`
 
 	// 磁盘名称，长度不超过128 个字符。
@@ -2328,11 +2321,9 @@ type InstanceCategoryItem struct {
 
 type InstanceMarketOptionsRequest struct {
 	// 竞价相关选项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpotOptions *SpotMarketOptions `json:"SpotOptions,omitnil,omitempty" name:"SpotOptions"`
 
 	// 市场选项类型，当前只支持取值：spot
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarketType *string `json:"MarketType,omitnil,omitempty" name:"MarketType"`
 }
 
@@ -3046,8 +3037,7 @@ type RunAutomationServiceEnabled struct {
 }
 
 type RunMonitorServiceEnabled struct {
-	// 是否开启[云监控](/document/product/248)服务。取值范围：<br><li>true：表示开启云监控服务<br><li>false：表示不开启云监控服务<br><br>默认取值：true。
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 是否开启[云监控](/document/product/248)服务。取值范围：<br><li>true：表示开启云监控服务</li><li>false：表示不开启云监控服务</li><br>默认取值：true。
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 }
 
@@ -3058,11 +3048,9 @@ type RunSecurityServiceEnabled struct {
 
 type SpotMarketOptions struct {
 	// 竞价出价
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxPrice *string `json:"MaxPrice,omitnil,omitempty" name:"MaxPrice"`
 
 	// 竞价请求类型，当前仅支持类型：one-time
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpotInstanceType *string `json:"SpotInstanceType,omitnil,omitempty" name:"SpotInstanceType"`
 }
 

@@ -36,7 +36,6 @@ type ManagePortraitRiskOutput struct {
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 返回码对应的信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 结果

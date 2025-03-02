@@ -737,6 +737,20 @@ func (r *DescribeTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type HitInfo struct {
+	// 标识模型命中还是关键词命中
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 命中关键词
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 自定义词库名称
+	LibName *string `json:"LibName,omitnil,omitempty" name:"LibName"`
+
+	// 	位置信息
+	Positions []*Position `json:"Positions,omitnil,omitempty" name:"Positions"`
+}
+
 type InputInfo struct {
 	// 该字段表示文件访问类型，取值为**URL**（资源链接）和**COS** (腾讯云对象存储)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -821,6 +835,14 @@ type MoanResult struct {
 	// 注意：此字段可能返回null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
+}
+
+type Position struct {
+	// 关键词起始位置
+	Start *int64 `json:"Start,omitnil,omitempty" name:"Start"`
+
+	// 关键词结束位置
+	End *int64 `json:"End,omitnil,omitempty" name:"End"`
 }
 
 type RecognitionResult struct {
@@ -1032,6 +1054,9 @@ type TextResult struct {
 	// 注意：此字段可能返回null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
+
+	// 该字段用于返回违规文本命中信息
+	HitInfos []*HitInfo `json:"HitInfos,omitnil,omitempty" name:"HitInfos"`
 }
 
 type TravelResults struct {
