@@ -3742,6 +3742,91 @@ func (r *CreateFlowEvidenceReportResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateFlowForwardsRequestParams struct {
+	// 执行本接口操作的员工信息。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同对应参与方需要修改的目标经办人。其UserId可在企业控制台中组织管理里面找到。或者使用获取员工信息接口得到。
+	// 
+	// 注意：`需要保证目标经办人已经加入企业且已实名`
+	TargetUserId *string `json:"TargetUserId,omitnil,omitempty" name:"TargetUserId"`
+
+	// 企业签署方的合同及对应签署方
+	FlowForwardInfos []*FlowForwardInfo `json:"FlowForwardInfos,omitnil,omitempty" name:"FlowForwardInfos"`
+
+	// 代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type CreateFlowForwardsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同对应参与方需要修改的目标经办人。其UserId可在企业控制台中组织管理里面找到。或者使用获取员工信息接口得到。
+	// 
+	// 注意：`需要保证目标经办人已经加入企业且已实名`
+	TargetUserId *string `json:"TargetUserId,omitnil,omitempty" name:"TargetUserId"`
+
+	// 企业签署方的合同及对应签署方
+	FlowForwardInfos []*FlowForwardInfo `json:"FlowForwardInfos,omitnil,omitempty" name:"FlowForwardInfos"`
+
+	// 代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *CreateFlowForwardsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowForwardsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "TargetUserId")
+	delete(f, "FlowForwardInfos")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowForwardsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFlowForwardsResponseParams struct {
+	// 失败的合同id以及错误详情
+	FailedFlows []*FlowForwardResult `json:"FailedFlows,omitnil,omitempty" name:"FailedFlows"`
+
+	// 成功的合同id
+	SuccessFlows []*string `json:"SuccessFlows,omitnil,omitempty" name:"SuccessFlows"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateFlowForwardsResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFlowForwardsResponseParams `json:"Response"`
+}
+
+func (r *CreateFlowForwardsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowForwardsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateFlowGroupByFilesRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
@@ -11690,11 +11775,9 @@ type FailedCreateStaffData struct {
 
 type FailedDeleteStaffData struct {
 	// 员工在电子签的userId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 员工在第三方平台的openId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// 失败原因
@@ -12221,6 +12304,22 @@ type FlowDetailInfo struct {
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
 }
 
+type FlowForwardInfo struct {
+	// 合同流程ID，为32位字符串。此接口的合同流程ID需要由[创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow)接口创建得到。
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 签署方经办人在合同中的参与方ID，为32位字符串。
+	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
+}
+
+type FlowForwardResult struct {
+	// 合同流程ID为32位字符串。您可以登录腾讯电子签控制台，在 "合同" -> "合同中心" 中查看某个合同的FlowId（在页面中展示为合同ID）。[点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)。
+	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 如果失败，返回的错误细节。
+	ErrorDetail *string `json:"ErrorDetail,omitnil,omitempty" name:"ErrorDetail"`
+}
+
 type FlowGroupApproverInfo struct {
 	// 合同流程ID。
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
@@ -12607,7 +12706,6 @@ type IntentionAction struct {
 
 type IntentionActionResult struct {
 	// 意愿核身结果详细数据，与每段点头确认过程一一对应
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Details []*IntentionActionResultDetail `json:"Details,omitnil,omitempty" name:"Details"`
 }
 

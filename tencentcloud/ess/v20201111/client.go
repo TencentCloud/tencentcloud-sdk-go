@@ -3521,6 +3521,93 @@ func (c *Client) CreateFlowEvidenceReportWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateFlowForwardsRequest() (request *CreateFlowForwardsRequest) {
+    request = &CreateFlowForwardsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateFlowForwards")
+    
+    
+    return
+}
+
+func NewCreateFlowForwardsResponse() (response *CreateFlowForwardsResponse) {
+    response = &CreateFlowForwardsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateFlowForwards
+// 该接口用于将合同中本企业当前经办人转为本企业其他员工进行操作。
+//
+// 
+//
+// 注意：
+//
+// 1. 转交的目标经办人需要已经加入企业，且完成实名。
+//
+// 2. 仅企业拥有`超管`、`法人`或者`合同管理员`角色的员工才有调用本接口的权限。如果使用主带子方式调用，请确保您已经加入子企业，且账号在子企业中担任任一上述角色。
+//
+// 3. 仅支持当前经办人为待签署或待填写状态时进行转交操作。
+//
+// 4. 若原合同有填写控件，且当前经办人已经完成填写，则不支持进行转交。
+//
+// 5. 若当前经办人已签署完成，或者处于签署流程中，则不支持进行转交。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BALANCENOTENOUGH = "FailedOperation.BalanceNotEnough"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateFlowForwards(request *CreateFlowForwardsRequest) (response *CreateFlowForwardsResponse, err error) {
+    return c.CreateFlowForwardsWithContext(context.Background(), request)
+}
+
+// CreateFlowForwards
+// 该接口用于将合同中本企业当前经办人转为本企业其他员工进行操作。
+//
+// 
+//
+// 注意：
+//
+// 1. 转交的目标经办人需要已经加入企业，且完成实名。
+//
+// 2. 仅企业拥有`超管`、`法人`或者`合同管理员`角色的员工才有调用本接口的权限。如果使用主带子方式调用，请确保您已经加入子企业，且账号在子企业中担任任一上述角色。
+//
+// 3. 仅支持当前经办人为待签署或待填写状态时进行转交操作。
+//
+// 4. 若原合同有填写控件，且当前经办人已经完成填写，则不支持进行转交。
+//
+// 5. 若当前经办人已签署完成，或者处于签署流程中，则不支持进行转交。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BALANCENOTENOUGH = "FailedOperation.BalanceNotEnough"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateFlowForwardsWithContext(ctx context.Context, request *CreateFlowForwardsRequest) (response *CreateFlowForwardsResponse, err error) {
+    if request == nil {
+        request = NewCreateFlowForwardsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFlowForwards require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFlowForwardsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFlowGroupByFilesRequest() (request *CreateFlowGroupByFilesRequest) {
     request = &CreateFlowGroupByFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},

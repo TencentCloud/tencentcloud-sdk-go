@@ -101,7 +101,15 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 // - 标准计费（2025年2月26日起生效），计费模式为后付费小时结，为保证您账户资源的正常使用，请提前[开通后付费](https://lke.cloud.tencent.com/lke#/app/system/charge/postpaid)并及时[充值](https://console.cloud.tencent.com/expense/recharge)。
 //
-//  ![image](https://cdn.xiaowei.qq.com/static/lke/deekseep-token0212.png)
+// 
+//
+//     -   DeepSeek-R1 模型   | 输入：0.004元/千token | 输出（含思维链）：0.016元/千token
+//
+// 
+//
+//     - DeepSeek-V3 模型 | 输入：0.002元/千token | 输出：0.008元/千token
+//
+// 
 //
 // 
 //
@@ -304,7 +312,15 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 // - 标准计费（2025年2月26日起生效），计费模式为后付费小时结，为保证您账户资源的正常使用，请提前[开通后付费](https://lke.cloud.tencent.com/lke#/app/system/charge/postpaid)并及时[充值](https://console.cloud.tencent.com/expense/recharge)。
 //
-//  ![image](https://cdn.xiaowei.qq.com/static/lke/deekseep-token0212.png)
+// 
+//
+//     -   DeepSeek-R1 模型   | 输入：0.004元/千token | 输出（含思维链）：0.016元/千token
+//
+// 
+//
+//     - DeepSeek-V3 模型 | 输入：0.002元/千token | 输出：0.008元/千token
+//
+// 
 //
 // 
 //

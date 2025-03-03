@@ -25786,10 +25786,10 @@ type RegisterEventRequestParams struct {
 	// 事件所属人
 	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
 
-	// 事件类型，默认值：TIME_SERIES
+	// 必填，事件类型，默认值：TIME_SERIES
 	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
 
-	// 对应day： yyyyMMdd，对应HOUR：yyyyMMddHH，对应MIN：yyyyMMddHHmm，对应SECOND：yyyyMMddHHmmss
+	// 必填，对应day： yyyyMMdd，对应HOUR：yyyyMMddHH，对应MIN：yyyyMMddHHmm，对应SECOND：yyyyMMddHHmmss，默认值：yyyyMMdd
 	DimensionFormat *string `json:"DimensionFormat,omitnil,omitempty" name:"DimensionFormat"`
 
 	// 存活时间
@@ -25820,10 +25820,10 @@ type RegisterEventRequest struct {
 	// 事件所属人
 	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
 
-	// 事件类型，默认值：TIME_SERIES
+	// 必填，事件类型，默认值：TIME_SERIES
 	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
 
-	// 对应day： yyyyMMdd，对应HOUR：yyyyMMddHH，对应MIN：yyyyMMddHHmm，对应SECOND：yyyyMMddHHmmss
+	// 必填，对应day： yyyyMMdd，对应HOUR：yyyyMMddHH，对应MIN：yyyyMMddHHmm，对应SECOND：yyyyMMddHHmmss，默认值：yyyyMMdd
 	DimensionFormat *string `json:"DimensionFormat,omitnil,omitempty" name:"DimensionFormat"`
 
 	// 存活时间
@@ -26031,6 +26031,9 @@ type RenewWorkflowSchedulerInfoDsRequestParams struct {
 
 	// 日历id
 	CalendarId *string `json:"CalendarId,omitnil,omitempty" name:"CalendarId"`
+
+	// 时区
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
 }
 
 type RenewWorkflowSchedulerInfoDsRequest struct {
@@ -26093,6 +26096,9 @@ type RenewWorkflowSchedulerInfoDsRequest struct {
 
 	// 日历id
 	CalendarId *string `json:"CalendarId,omitnil,omitempty" name:"CalendarId"`
+
+	// 时区
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
 }
 
 func (r *RenewWorkflowSchedulerInfoDsRequest) ToJsonString() string {
@@ -26126,6 +26132,7 @@ func (r *RenewWorkflowSchedulerInfoDsRequest) FromJsonString(s string) error {
 	delete(f, "CalendarOpen")
 	delete(f, "CalendarName")
 	delete(f, "CalendarId")
+	delete(f, "ScheduleTimeZone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewWorkflowSchedulerInfoDsRequest has unknown keys!", "")
 	}

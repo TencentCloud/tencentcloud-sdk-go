@@ -6150,6 +6150,9 @@ type UpdateStreamIngestRequestParams struct {
 
 	// 音量，取值范围[0, 100]，默认100，表示原音量。
 	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
+
+	// 是否暂停，默认false表示不暂停。暂停期间任务仍在进行中仍会计费，如果要销毁任务请调用停止接口。
+	IsPause *bool `json:"IsPause,omitnil,omitempty" name:"IsPause"`
 }
 
 type UpdateStreamIngestRequest struct {
@@ -6166,6 +6169,9 @@ type UpdateStreamIngestRequest struct {
 
 	// 音量，取值范围[0, 100]，默认100，表示原音量。
 	Volume *uint64 `json:"Volume,omitnil,omitempty" name:"Volume"`
+
+	// 是否暂停，默认false表示不暂停。暂停期间任务仍在进行中仍会计费，如果要销毁任务请调用停止接口。
+	IsPause *bool `json:"IsPause,omitnil,omitempty" name:"IsPause"`
 }
 
 func (r *UpdateStreamIngestRequest) ToJsonString() string {
@@ -6184,6 +6190,7 @@ func (r *UpdateStreamIngestRequest) FromJsonString(s string) error {
 	delete(f, "TaskId")
 	delete(f, "StreamUrl")
 	delete(f, "Volume")
+	delete(f, "IsPause")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateStreamIngestRequest has unknown keys!", "")
 	}

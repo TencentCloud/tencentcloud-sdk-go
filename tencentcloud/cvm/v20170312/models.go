@@ -755,6 +755,9 @@ type CreateDisasterRecoverGroupRequestParams struct {
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性。
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 置放群组的亲和度，在置放群组的实例会按该亲和度分布，亲和度的取值范围是：1-10，默认为1
+	Affinity *int64 `json:"Affinity,omitnil,omitempty" name:"Affinity"`
 }
 
 type CreateDisasterRecoverGroupRequest struct {
@@ -768,6 +771,9 @@ type CreateDisasterRecoverGroupRequest struct {
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。<br>更多详细信息请参阅：如何保证幂等性。
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 置放群组的亲和度，在置放群组的实例会按该亲和度分布，亲和度的取值范围是：1-10，默认为1
+	Affinity *int64 `json:"Affinity,omitnil,omitempty" name:"Affinity"`
 }
 
 func (r *CreateDisasterRecoverGroupRequest) ToJsonString() string {
@@ -785,6 +791,7 @@ func (r *CreateDisasterRecoverGroupRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Type")
 	delete(f, "ClientToken")
+	delete(f, "Affinity")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDisasterRecoverGroupRequest has unknown keys!", "")
 	}

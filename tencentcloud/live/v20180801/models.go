@@ -13979,15 +13979,12 @@ func (r *DescribeVisitTopSumInfoListResponse) FromJsonString(s string) error {
 
 type DiagnoseResult struct {
 	// 断流信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamBrokenResults []*string `json:"StreamBrokenResults,omitnil,omitempty" name:"StreamBrokenResults"`
 
 	// 低帧率信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LowFrameRateResults []*string `json:"LowFrameRateResults,omitnil,omitempty" name:"LowFrameRateResults"`
 
 	// 流格式诊断信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamFormatResults []*string `json:"StreamFormatResults,omitnil,omitempty" name:"StreamFormatResults"`
 }
 
@@ -14662,87 +14659,67 @@ type LivePackageInfo struct {
 
 type LiveStreamMonitorInfo struct {
 	// 监播任务ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorId *string `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 
 	// 监播任务名称。128字节以内。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorName *string `json:"MonitorName,omitnil,omitempty" name:"MonitorName"`
 
 	// 监播任务输出信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputInfo *LiveStreamMonitorOutputInfo `json:"OutputInfo,omitnil,omitempty" name:"OutputInfo"`
 
 	// 待监播的输入流信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputList []*LiveStreamMonitorInputInfo `json:"InputList,omitnil,omitempty" name:"InputList"`
 
 	// 监播任务状态。
 	// 0： 代表空闲
 	// 1： 代表监播中。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 上一次的启动时间，unix时间戳。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 上一次的停止时间，unix时间戳。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StopTime *uint64 `json:"StopTime,omitnil,omitempty" name:"StopTime"`
 
 	// 监播任务创建时间，unix时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 监播任务更新时间，unix时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 监播事件通知策略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotifyPolicy *LiveStreamMonitorNotifyPolicy `json:"NotifyPolicy,omitnil,omitempty" name:"NotifyPolicy"`
 
 	// 输出音频的输入Index列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudibleInputIndexList []*uint64 `json:"AudibleInputIndexList,omitnil,omitempty" name:"AudibleInputIndexList"`
 
 	// 开启智能语音识别的输入Index列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiAsrInputIndexList []*uint64 `json:"AiAsrInputIndexList,omitnil,omitempty" name:"AiAsrInputIndexList"`
 
 	// 是否开启断流检测
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckStreamBroken *uint64 `json:"CheckStreamBroken,omitnil,omitempty" name:"CheckStreamBroken"`
 
 	// 是否开启低帧率检测
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckStreamLowFrameRate *uint64 `json:"CheckStreamLowFrameRate,omitnil,omitempty" name:"CheckStreamLowFrameRate"`
 
 	// 智能语音识别语种：
 	// 0 关闭 1 中文 2 英文 3日文 4 韩文
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrLanguage *uint64 `json:"AsrLanguage,omitnil,omitempty" name:"AsrLanguage"`
 
 	// 智能文字识别语种：
 	// 0 关闭 1 中、英文
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrLanguage *uint64 `json:"OcrLanguage,omitnil,omitempty" name:"OcrLanguage"`
 
 	// 开启智能文字识别的输入Index列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiOcrInputIndexList []*uint64 `json:"AiOcrInputIndexList,omitnil,omitempty" name:"AiOcrInputIndexList"`
 
 	// 是否存储监播事件到监播报告，以及是否允许查询监播报告
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowMonitorReport *uint64 `json:"AllowMonitorReport,omitnil,omitempty" name:"AllowMonitorReport"`
 
 	// 是否开启格式诊断
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiFormatDiagnose *uint64 `json:"AiFormatDiagnose,omitnil,omitempty" name:"AiFormatDiagnose"`
 
 	// 是否开启内容质检。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiQualityControl *uint64 `json:"AiQualityControl,omitnil,omitempty" name:"AiQualityControl"`
 
 	// 导播台监播对应的导播台场次id
@@ -14754,23 +14731,18 @@ type LiveStreamMonitorInfo struct {
 
 type LiveStreamMonitorInputInfo struct {
 	// 待监播的输入流名称。256字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputStreamName *string `json:"InputStreamName,omitnil,omitempty" name:"InputStreamName"`
 
 	// 待监播的输入流推流域名。128字节以内，只允许填处于启用状态的推流域名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputDomain *string `json:"InputDomain,omitnil,omitempty" name:"InputDomain"`
 
 	// 待监播的输入流推流路径。32字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputApp *string `json:"InputApp,omitnil,omitempty" name:"InputApp"`
 
 	// 待监播的输入流推流url。一般场景下，无需该参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputUrl *string `json:"InputUrl,omitnil,omitempty" name:"InputUrl"`
 
 	// 描述。256字节以内。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 导播台输入源索引（10000 pvw， 10001 pgm， 其余代表输入下标）
@@ -14787,36 +14759,29 @@ type LiveStreamMonitorNotifyPolicy struct {
 	// 通知策略类型：范围[0,1]
 	// 0:代表不使用任何通知策略
 	// 1:代表使用全局回调策略，所有事件通知到CallbackUrl。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotifyPolicyType *uint64 `json:"NotifyPolicyType,omitnil,omitempty" name:"NotifyPolicyType"`
 
 	// 回调URL：长度[0,512]
 	// 只支持http和https类型的url。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 }
 
 type LiveStreamMonitorOutputInfo struct {
 	// 监播任务输出流宽度像素。范围[1,1920]。建议至少大于100像素。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputStreamWidth *uint64 `json:"OutputStreamWidth,omitnil,omitempty" name:"OutputStreamWidth"`
 
 	// 监播任务输出流长度像素。范围[1,1080]，建议至少大于100像素。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputStreamHeight *uint64 `json:"OutputStreamHeight,omitnil,omitempty" name:"OutputStreamHeight"`
 
 	// 监播任务输出流名称。
 	// 不填时，系统会自动生成。
 	// 256字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputStreamName *string `json:"OutputStreamName,omitnil,omitempty" name:"OutputStreamName"`
 
 	// 监播任务播放域名。128字节以内，只允许填处于启用状态的播放域名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputDomain *string `json:"OutputDomain,omitnil,omitempty" name:"OutputDomain"`
 
 	// 监播任务播放路径。32字节以内，只允许包含字母、数字、‘-’，‘_’，'.'字符。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputApp *string `json:"OutputApp,omitnil,omitempty" name:"OutputApp"`
 }
 
@@ -14837,15 +14802,12 @@ type LogInfo struct {
 
 type MPSResult struct {
 	// 智能语音识别结果。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiAsrResults []*string `json:"AiAsrResults,omitnil,omitempty" name:"AiAsrResults"`
 
 	// 智能文字识别结果。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiOcrResults []*string `json:"AiOcrResults,omitnil,omitempty" name:"AiOcrResults"`
 
 	// 内容质检结果。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamQuaCtrlResults []*string `json:"StreamQuaCtrlResults,omitnil,omitempty" name:"StreamQuaCtrlResults"`
 }
 

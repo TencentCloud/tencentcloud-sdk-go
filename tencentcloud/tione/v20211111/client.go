@@ -1628,6 +1628,10 @@ func NewDescribeInferTemplatesResponse() (response *DescribeInferTemplatesRespon
 }
 
 // DescribeInferTemplates
+// 已废弃，收敛到统一接口
+//
+// 
+//
 // 查询推理镜像模板
 //
 // 可能返回的错误码:
@@ -1652,6 +1656,10 @@ func (c *Client) DescribeInferTemplates(request *DescribeInferTemplatesRequest) 
 }
 
 // DescribeInferTemplates
+// 已废弃，收敛到统一接口
+//
+// 
+//
 // 查询推理镜像模板
 //
 // 可能返回的错误码:

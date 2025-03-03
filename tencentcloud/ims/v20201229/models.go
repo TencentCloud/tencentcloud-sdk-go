@@ -457,6 +457,20 @@ type ObjectResult struct {
 	Details []*ObjectDetail `json:"Details,omitnil,omitempty" name:"Details"`
 }
 
+type OcrHitInfo struct {
+	// 标识模型命中还是关键词命中
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 命中关键词
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 自定义词库名称
+	LibName *string `json:"LibName,omitnil,omitempty" name:"LibName"`
+
+	// 位置信息
+	Positions []*Positions `json:"Positions,omitnil,omitempty" name:"Positions"`
+}
+
 type OcrResult struct {
 	// 该字段表示识别场景，取值默认为OCR（图片OCR识别）。
 	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
@@ -508,6 +522,17 @@ type OcrTextDetail struct {
 
 	// 该字段用于返回检测结果所对应的恶意二级标签。
 	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
+
+	// 关键词命中位置信息
+	HitInfos []*OcrHitInfo `json:"HitInfos,omitnil,omitempty" name:"HitInfos"`
+}
+
+type Positions struct {
+	// 关键词起始位置
+	Start *int64 `json:"Start,omitnil,omitempty" name:"Start"`
+
+	// 关键词结束位置
+	End *int64 `json:"End,omitnil,omitempty" name:"End"`
 }
 
 type RecognitionResult struct {
