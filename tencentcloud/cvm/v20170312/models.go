@@ -758,6 +758,9 @@ type CreateDisasterRecoverGroupRequestParams struct {
 
 	// 置放群组的亲和度，在置放群组的实例会按该亲和度分布，亲和度的取值范围是：1-10，默认为1
 	Affinity *int64 `json:"Affinity,omitnil,omitempty" name:"Affinity"`
+
+	// 标签描述列表。通过指定该参数可以绑定标签到置放群组。
+	TagSpecification []*TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 }
 
 type CreateDisasterRecoverGroupRequest struct {
@@ -774,6 +777,9 @@ type CreateDisasterRecoverGroupRequest struct {
 
 	// 置放群组的亲和度，在置放群组的实例会按该亲和度分布，亲和度的取值范围是：1-10，默认为1
 	Affinity *int64 `json:"Affinity,omitnil,omitempty" name:"Affinity"`
+
+	// 标签描述列表。通过指定该参数可以绑定标签到置放群组。
+	TagSpecification []*TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 }
 
 func (r *CreateDisasterRecoverGroupRequest) ToJsonString() string {
@@ -792,6 +798,7 @@ func (r *CreateDisasterRecoverGroupRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "ClientToken")
 	delete(f, "Affinity")
+	delete(f, "TagSpecification")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDisasterRecoverGroupRequest has unknown keys!", "")
 	}
@@ -2411,6 +2418,13 @@ type DescribeDisasterRecoverGroupsRequestParams struct {
 
 	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <li><strong>tag-key</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>标签键</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>tag-value</strong></li> <p style="padding-left: 30px;">按照【<strong>标签值</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>tag:tag-key</strong></li> <p style="padding-left: 30px;">按照【<strong>标签键值对</strong>】进行过滤。tag-key使用具体的标签键进行替换。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeDisasterRecoverGroupsRequest struct {
@@ -2427,6 +2441,13 @@ type DescribeDisasterRecoverGroupsRequest struct {
 
 	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <li><strong>tag-key</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>标签键</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>tag-value</strong></li> <p style="padding-left: 30px;">按照【<strong>标签值</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>tag:tag-key</strong></li> <p style="padding-left: 30px;">按照【<strong>标签键值对</strong>】进行过滤。tag-key使用具体的标签键进行替换。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeDisasterRecoverGroupsRequest) ToJsonString() string {
@@ -2445,6 +2466,7 @@ func (r *DescribeDisasterRecoverGroupsRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDisasterRecoverGroupsRequest has unknown keys!", "")
 	}
@@ -4556,12 +4578,13 @@ type DisasterRecoverGroup struct {
 	CurrentNum *int64 `json:"CurrentNum,omitnil,omitempty" name:"CurrentNum"`
 
 	// 分散置放群组内，云服务器id列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 分散置放群组创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 置放群组关联的标签列表。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type DisasterRecoverGroupQuota struct {

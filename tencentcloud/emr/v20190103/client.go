@@ -4691,6 +4691,65 @@ func (c *Client) ModifySLInstanceWithContext(ctx context.Context, request *Modif
     return
 }
 
+func NewModifySLInstanceBasicRequest() (request *ModifySLInstanceBasicRequest) {
+    request = &ModifySLInstanceBasicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "ModifySLInstanceBasic")
+    
+    
+    return
+}
+
+func NewModifySLInstanceBasicResponse() (response *ModifySLInstanceBasicResponse) {
+    response = &ModifySLInstanceBasicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySLInstanceBasic
+// serverless hbase修改实例名称
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) ModifySLInstanceBasic(request *ModifySLInstanceBasicRequest) (response *ModifySLInstanceBasicResponse, err error) {
+    return c.ModifySLInstanceBasicWithContext(context.Background(), request)
+}
+
+// ModifySLInstanceBasic
+// serverless hbase修改实例名称
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) ModifySLInstanceBasicWithContext(ctx context.Context, request *ModifySLInstanceBasicRequest) (response *ModifySLInstanceBasicResponse, err error) {
+    if request == nil {
+        request = NewModifySLInstanceBasicRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySLInstanceBasic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySLInstanceBasicResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyUserManagerPwdRequest() (request *ModifyUserManagerPwdRequest) {
     request = &ModifyUserManagerPwdRequest{
         BaseRequest: &tchttp.BaseRequest{},

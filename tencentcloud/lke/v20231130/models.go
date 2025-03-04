@@ -3490,7 +3490,7 @@ func (r *DescribeSegmentsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeStorageCredentialRequestParams struct {
-	// 应用ID
+	// 应用ID，参数非必填不代表不需要填写，下面不同的参数组合会获取到不同的权限，具体请参考 https://cloud.tencent.com/document/product/1759/116238
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文件类型,正常的文件名类型后缀，例如 xlsx、pdf、 docx、png 等
@@ -3506,7 +3506,7 @@ type DescribeStorageCredentialRequestParams struct {
 type DescribeStorageCredentialRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID，参数非必填不代表不需要填写，下面不同的参数组合会获取到不同的权限，具体请参考 https://cloud.tencent.com/document/product/1759/116238
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 文件类型,正常的文件名类型后缀，例如 xlsx、pdf、 docx、png 等
