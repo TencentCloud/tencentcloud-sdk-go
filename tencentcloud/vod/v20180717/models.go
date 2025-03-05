@@ -194,10 +194,10 @@ type AdaptiveDynamicStreamingTaskInput struct {
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitnil,omitempty" name:"WatermarkSet"`
 
-	// 溯源水印，该功能已不再支持使用。
+	// 溯源水印。
 	TraceWatermark *TraceWatermarkInput `json:"TraceWatermark,omitnil,omitempty" name:"TraceWatermark"`
 
-	// 版权水印，该功能已不再支持使用。
+	// 版权水印。
 	CopyRightWatermark *CopyRightWatermarkInput `json:"CopyRightWatermark,omitnil,omitempty" name:"CopyRightWatermark"`
 
 	// 字幕列表，元素为字幕 ID，支持多个字幕，最大可支持16个。
@@ -26016,10 +26016,10 @@ type TranscodeTaskInput struct {
 	// 水印列表，支持多张图片或文字水印，最大可支持 10 张。
 	WatermarkSet []*WatermarkInput `json:"WatermarkSet,omitnil,omitempty" name:"WatermarkSet"`
 
-	// 溯源水印，该功能已不再支持使用。
+	// 溯源水印。
 	TraceWatermark *TraceWatermarkInput `json:"TraceWatermark,omitnil,omitempty" name:"TraceWatermark"`
 
-	// 版权水印，该功能已不再支持使用。
+	// 版权水印。
 	CopyRightWatermark *CopyRightWatermarkInput `json:"CopyRightWatermark,omitnil,omitempty" name:"CopyRightWatermark"`
 
 	// 马赛克列表，最大可支持 10 张。

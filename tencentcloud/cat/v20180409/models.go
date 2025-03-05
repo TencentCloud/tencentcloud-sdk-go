@@ -31,7 +31,7 @@ type CreateProbeTasksRequestParams struct {
 	// 拨测节点，如10001，具体拨测地域运营商对应的拨测点编号可联系云拨测确认。
 	Nodes []*string `json:"Nodes,omitnil,omitempty" name:"Nodes"`
 
-	// 拨测间隔
+	// 拨测间隔，单位为分钟
 	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
 	// 拨测参数，详细可参考云拨测官方文档,链接:https://cloud.tencent.com/document/product/248/87308#createprobetasks。
@@ -76,7 +76,7 @@ type CreateProbeTasksRequest struct {
 	// 拨测节点，如10001，具体拨测地域运营商对应的拨测点编号可联系云拨测确认。
 	Nodes []*string `json:"Nodes,omitnil,omitempty" name:"Nodes"`
 
-	// 拨测间隔
+	// 拨测间隔，单位为分钟
 	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
 	// 拨测参数，详细可参考云拨测官方文档,链接:https://cloud.tencent.com/document/product/248/87308#createprobetasks。

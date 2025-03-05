@@ -2422,11 +2422,9 @@ func (r *DescribeCodePacksRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCodePacksResponseParams struct {
 	// 码列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CodePacks []*CodePack `json:"CodePacks,omitnil,omitempty" name:"CodePacks"`
 
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4060,7 +4058,6 @@ type Job struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 任务错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 }
 

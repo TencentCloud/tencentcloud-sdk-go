@@ -7783,7 +7783,7 @@ func NewCreateSealByImageResponse() (response *CreateSealByImageResponse) {
 //
 // 
 //
-// 2. 可以**系统创建**子客企业代创建印章, 系统创建的印章样子下图(样式可以调整)
+// 2. 可以使用**系统生成印章**为子客企业代创建印章, 系统创建的印章样子下图(样式可以调整)
 //
 // 
 //
@@ -7817,7 +7817,7 @@ func (c *Client) CreateSealByImage(request *CreateSealByImageRequest) (response 
 //
 // 
 //
-// 2. 可以**系统创建**子客企业代创建印章, 系统创建的印章样子下图(样式可以调整)
+// 2. 可以使用**系统生成印章**为子客企业代创建印章, 系统创建的印章样子下图(样式可以调整)
 //
 // 
 //

@@ -7840,7 +7840,7 @@ func NewExtractCopyRightWatermarkResponse() (response *ExtractCopyRightWatermark
 }
 
 // ExtractCopyRightWatermark
-// 该 API 已经<font color='red'>不再维护</font>。如果有盗录溯源需求，请参考 [幽灵水印](https://cloud.tencent.com/document/product/266/94228)。
+// 如果有盗录溯源需求，请参考 [幽灵水印](https://cloud.tencent.com/document/product/266/94228)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7855,7 +7855,7 @@ func (c *Client) ExtractCopyRightWatermark(request *ExtractCopyRightWatermarkReq
 }
 
 // ExtractCopyRightWatermark
-// 该 API 已经<font color='red'>不再维护</font>。如果有盗录溯源需求，请参考 [幽灵水印](https://cloud.tencent.com/document/product/266/94228)。
+// 如果有盗录溯源需求，请参考 [幽灵水印](https://cloud.tencent.com/document/product/266/94228)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7901,7 +7901,7 @@ func NewExtractTraceWatermarkResponse() (response *ExtractTraceWatermarkResponse
 }
 
 // ExtractTraceWatermark
-// 该 API 已经<font color='red'>不再维护</font>。如果有盗录溯源需求，请参考 [幽灵水印](https://cloud.tencent.com/document/product/266/94228)。
+// 如果有盗录溯源需求，推荐使用 [幽灵水印](https://cloud.tencent.com/document/product/266/94228)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7916,7 +7916,7 @@ func (c *Client) ExtractTraceWatermark(request *ExtractTraceWatermarkRequest) (r
 }
 
 // ExtractTraceWatermark
-// 该 API 已经<font color='red'>不再维护</font>。如果有盗录溯源需求，请参考 [幽灵水印](https://cloud.tencent.com/document/product/266/94228)。
+// 如果有盗录溯源需求，推荐使用 [幽灵水印](https://cloud.tencent.com/document/product/266/94228)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

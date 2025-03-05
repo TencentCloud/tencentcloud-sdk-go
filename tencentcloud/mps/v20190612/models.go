@@ -715,7 +715,11 @@ type AiAnalysisTaskInput struct {
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
 	// 扩展参数，其值为序列化的 json字符串。
-	// 注意：此参数为定制需求参数，需要线下对接。
+	// 注意：此参数为定制需求参数，参考如下：
+	// 智能檫除：https://cloud.tencent.com/document/product/862/101530
+	// 智能拆条：https://cloud.tencent.com/document/product/862/112098
+	// 高光集锦：https://cloud.tencent.com/document/product/862/107280
+	// 智能横转竖：https://cloud.tencent.com/document/product/862/112112
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtendedParameter *string `json:"ExtendedParameter,omitnil,omitempty" name:"ExtendedParameter"`
 }
@@ -10410,6 +10414,9 @@ func (r *DisassociateSecurityGroupResponse) FromJsonString(s string) error {
 type DrmInfo struct {
 	// 加密类型：
 	// <li> simpleaes: aes-128 加密</li>
+	// <li> widevine</li>
+	// <li> fairplay：Dash不支持fairplay加密</li>  
+	// <li> playready</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
@@ -15914,6 +15921,9 @@ type ProcessMediaRequestParams struct {
 	// <li> Online：实时任务</li>
 	// <li> Offline：闲时任务，不保证实效性，默认3天内处理完</li>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 type ProcessMediaRequest struct {
@@ -15971,6 +15981,9 @@ type ProcessMediaRequest struct {
 	// <li> Online：实时任务</li>
 	// <li> Offline：闲时任务，不保证实效性，默认3天内处理完</li>
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
 func (r *ProcessMediaRequest) ToJsonString() string {
@@ -15999,6 +16012,7 @@ func (r *ProcessMediaRequest) FromJsonString(s string) error {
 	delete(f, "SessionId")
 	delete(f, "SessionContext")
 	delete(f, "TaskType")
+	delete(f, "ResourceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessMediaRequest has unknown keys!", "")
 	}
