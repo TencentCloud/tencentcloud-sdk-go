@@ -22,8 +22,17 @@ func (c *Client) sendWithNetworkFailureRetry(req *http.Request, retryable bool) 
 		maxRetries = maxInt(c.profile.NetworkFailureMaxRetries, 0)
 	}
 	durationFunc := safeDurationFunc(c.profile.NetworkFailureRetryDuration)
+	retryer := newRequestRetryer(req)
 
 	for idx := 0; idx <= maxRetries; idx++ {
+
+		if idx > 0 {
+			err = retryer()
+			if err != nil {
+				return nil, err
+			}
+		}
+
 		resp, err = c.sendHttp(req)
 
 		// retry when error occurred and retryable and not the last retry
