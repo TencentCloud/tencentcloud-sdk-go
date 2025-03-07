@@ -1832,7 +1832,6 @@ type DescribeAllUserContactResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 联系人的信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Contacts []*ContactItem `json:"Contacts,omitnil,omitempty" name:"Contacts"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1900,7 +1899,6 @@ type DescribeAllUserGroupResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 组信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Groups []*GroupItem `json:"Groups,omitnil,omitempty" name:"Groups"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2185,7 +2183,6 @@ type DescribeDBDiagEventResponseParams struct {
 	Suggestions *string `json:"Suggestions,omitnil,omitempty" name:"Suggestions"`
 
 	// 保留字段。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
 
 	// 结束时间。
@@ -2819,7 +2816,6 @@ func (r *DescribeIndexRecommendAggregationSlowLogsRequest) FromJsonString(s stri
 // Predefined struct for user
 type DescribeIndexRecommendAggregationSlowLogsResponseParams struct {
 	// 查询实例慢查询聚合结果。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Aggregation *Aggregation `json:"Aggregation,omitnil,omitempty" name:"Aggregation"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3126,7 +3122,6 @@ type DescribeMySqlProcessListResponseParams struct {
 	ProcessList []*MySqlProcess `json:"ProcessList,omitnil,omitempty" name:"ProcessList"`
 
 	// sql会话统计信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Statistics []*StatisticInfo `json:"Statistics,omitnil,omitempty" name:"Statistics"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5503,7 +5498,6 @@ type KillMySqlThreadsResponseParams struct {
 	Threads []*int64 `json:"Threads,omitnil,omitempty" name:"Threads"`
 
 	// 执行ID， Prepare阶段的任务输出，用于Commit阶段中指定执行kill操作的会话ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SqlExecId *string `json:"SqlExecId,omitnil,omitempty" name:"SqlExecId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

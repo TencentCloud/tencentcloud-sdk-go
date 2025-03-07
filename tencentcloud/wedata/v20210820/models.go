@@ -3863,6 +3863,9 @@ type CreateHiveTableByDDLRequestParams struct {
 
 	// 数据优化表名
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 数据优化资源组
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 }
 
 type CreateHiveTableByDDLRequest struct {
@@ -3903,6 +3906,9 @@ type CreateHiveTableByDDLRequest struct {
 
 	// 数据优化表名
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 数据优化资源组
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 }
 
 func (r *CreateHiveTableByDDLRequest) ToJsonString() string {
@@ -3929,6 +3935,7 @@ func (r *CreateHiveTableByDDLRequest) FromJsonString(s string) error {
 	delete(f, "DataOptimizationResource")
 	delete(f, "SmartOptimizerWritten")
 	delete(f, "TableName")
+	delete(f, "ResourceGroupName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHiveTableByDDLRequest has unknown keys!", "")
 	}
@@ -3991,6 +3998,9 @@ type CreateHiveTableRequestParams struct {
 
 	// 数据优化针对的表
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 数据优化资源组
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 }
 
 type CreateHiveTableRequest struct {
@@ -4022,6 +4032,9 @@ type CreateHiveTableRequest struct {
 
 	// 数据优化针对的表
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 数据优化资源组
+	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
 }
 
 func (r *CreateHiveTableRequest) ToJsonString() string {
@@ -4045,6 +4058,7 @@ func (r *CreateHiveTableRequest) FromJsonString(s string) error {
 	delete(f, "DataOptimizationResource")
 	delete(f, "SmartOptimizerWritten")
 	delete(f, "TableName")
+	delete(f, "ResourceGroupName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHiveTableRequest has unknown keys!", "")
 	}
@@ -12630,6 +12644,12 @@ type DescribeOperateOpsTasksRequestParams struct {
 
 	// 项目ID列表
 	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
+
+	// 黑名单任务ID列表，传了该值在筛选的时候会将列表中的任务ID剔除
+	BlackTaskIdList []*string `json:"BlackTaskIdList,omitnil,omitempty" name:"BlackTaskIdList"`
+
+	// 时区
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
 }
 
 type DescribeOperateOpsTasksRequest struct {
@@ -12712,6 +12732,12 @@ type DescribeOperateOpsTasksRequest struct {
 
 	// 项目ID列表
 	ProjectIds []*string `json:"ProjectIds,omitnil,omitempty" name:"ProjectIds"`
+
+	// 黑名单任务ID列表，传了该值在筛选的时候会将列表中的任务ID剔除
+	BlackTaskIdList []*string `json:"BlackTaskIdList,omitnil,omitempty" name:"BlackTaskIdList"`
+
+	// 时区
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
 }
 
 func (r *DescribeOperateOpsTasksRequest) ToJsonString() string {
@@ -12752,6 +12778,8 @@ func (r *DescribeOperateOpsTasksRequest) FromJsonString(s string) error {
 	delete(f, "InitStrategy")
 	delete(f, "RequestResourceTypes")
 	delete(f, "ProjectIds")
+	delete(f, "BlackTaskIdList")
+	delete(f, "ScheduleTimeZone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOperateOpsTasksRequest has unknown keys!", "")
 	}
@@ -20836,6 +20864,9 @@ type InstanceApiOpsRequest struct {
 
 	// true 只过滤重跑过的实例，false 忽略此过滤条件，结果集过滤条件中不包括是否重跑
 	OnlyRerun *bool `json:"OnlyRerun,omitnil,omitempty" name:"OnlyRerun"`
+
+	// 时区
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
 }
 
 type InstanceCondition struct {
@@ -22500,6 +22531,12 @@ type MakePlanOpsDto struct {
 	// ORDER ： 按照实例时间顺序执行
 	// REVERSE： 实例数据时间逆序
 	MakeDataTimeOrder *string `json:"MakeDataTimeOrder,omitnil,omitempty" name:"MakeDataTimeOrder"`
+
+	// 补录时间范围的时区
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// 执行应用参数
+	AppParam *string `json:"AppParam,omitnil,omitempty" name:"AppParam"`
 }
 
 type MakePlanOpsDtoCollection struct {
@@ -26034,6 +26071,9 @@ type RenewWorkflowSchedulerInfoDsRequestParams struct {
 
 	// 时区
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// 是否自动清理不支持的任务链接
+	ClearLink *bool `json:"ClearLink,omitnil,omitempty" name:"ClearLink"`
 }
 
 type RenewWorkflowSchedulerInfoDsRequest struct {
@@ -26099,6 +26139,9 @@ type RenewWorkflowSchedulerInfoDsRequest struct {
 
 	// 时区
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// 是否自动清理不支持的任务链接
+	ClearLink *bool `json:"ClearLink,omitnil,omitempty" name:"ClearLink"`
 }
 
 func (r *RenewWorkflowSchedulerInfoDsRequest) ToJsonString() string {
@@ -26133,6 +26176,7 @@ func (r *RenewWorkflowSchedulerInfoDsRequest) FromJsonString(s string) error {
 	delete(f, "CalendarName")
 	delete(f, "CalendarId")
 	delete(f, "ScheduleTimeZone")
+	delete(f, "ClearLink")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewWorkflowSchedulerInfoDsRequest has unknown keys!", "")
 	}
@@ -31106,6 +31150,12 @@ type TaskOpsDto struct {
 	// 父任务simple信息(新)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewParentTaskInfos []*AiopsSimpleTaskDto `json:"NewParentTaskInfos,omitnil,omitempty" name:"NewParentTaskInfos"`
+
+	// 任务自依赖类型：
+	// yes： 任务需满足自依赖
+	// no：任务无需满足自依赖
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfWorkFlowDependType *string `json:"SelfWorkFlowDependType,omitnil,omitempty" name:"SelfWorkFlowDependType"`
 }
 
 type TaskScriptContent struct {
@@ -31358,6 +31408,9 @@ type TriggerDsEventRequestParams struct {
 
 	// 事件实例信息(连续时间)
 	EventBatchCaseList []*EventBatchCaseDTO `json:"EventBatchCaseList,omitnil,omitempty" name:"EventBatchCaseList"`
+
+	// 触发时区
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
 }
 
 type TriggerDsEventRequest struct {
@@ -31371,6 +31424,9 @@ type TriggerDsEventRequest struct {
 
 	// 事件实例信息(连续时间)
 	EventBatchCaseList []*EventBatchCaseDTO `json:"EventBatchCaseList,omitnil,omitempty" name:"EventBatchCaseList"`
+
+	// 触发时区
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
 }
 
 func (r *TriggerDsEventRequest) ToJsonString() string {
@@ -31388,6 +31444,7 @@ func (r *TriggerDsEventRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "EventCaseList")
 	delete(f, "EventBatchCaseList")
+	delete(f, "ScheduleTimeZone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TriggerDsEventRequest has unknown keys!", "")
 	}
@@ -32447,6 +32504,10 @@ type WorkflowScheduleDtoDs struct {
 	// 日历调度id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CalendarId *string `json:"CalendarId,omitnil,omitempty" name:"CalendarId"`
+
+	// 时区配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
 }
 
 type WorkflowSchedulerOpsDto struct {

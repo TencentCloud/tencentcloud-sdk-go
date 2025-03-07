@@ -5830,6 +5830,55 @@ func (c *Client) DescribeRocketMQSubscriptionsWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeRocketMQTopUsagesRequest() (request *DescribeRocketMQTopUsagesRequest) {
+    request = &DescribeRocketMQTopUsagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQTopUsages")
+    
+    
+    return
+}
+
+func NewDescribeRocketMQTopUsagesResponse() (response *DescribeRocketMQTopUsagesResponse) {
+    response = &DescribeRocketMQTopUsagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRocketMQTopUsages
+// 用于获取RocketMQ指标排序列表，比如集群实例下占用存储空间最多的主题排序。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeRocketMQTopUsages(request *DescribeRocketMQTopUsagesRequest) (response *DescribeRocketMQTopUsagesResponse, err error) {
+    return c.DescribeRocketMQTopUsagesWithContext(context.Background(), request)
+}
+
+// DescribeRocketMQTopUsages
+// 用于获取RocketMQ指标排序列表，比如集群实例下占用存储空间最多的主题排序。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeRocketMQTopUsagesWithContext(ctx context.Context, request *DescribeRocketMQTopUsagesRequest) (response *DescribeRocketMQTopUsagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQTopUsagesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQTopUsages require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRocketMQTopUsagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRocketMQTopicMsgsRequest() (request *DescribeRocketMQTopicMsgsRequest) {
     request = &DescribeRocketMQTopicMsgsRequest{
         BaseRequest: &tchttp.BaseRequest{},

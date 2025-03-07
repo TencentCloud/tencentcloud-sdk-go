@@ -1184,7 +1184,7 @@ type ProbeTask struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeIpType *int64 `json:"NodeIpType,omitnil,omitempty" name:"NodeIpType"`
 
-	// 拨测间隔
+	// 拨测间隔，单位为分钟
 	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
 	// 拨测参数

@@ -83,6 +83,9 @@ const (
 	// 视读区信息与机读区信息不一致
 	FAILEDOPERATION_INCONSISTENCYBETWEENMRZANDVRZ = "FailedOperation.InconsistencyBetweenMRZAndVRZ"
 
+	// 马来西亚证件识别出的邮编长度不正确
+	FAILEDOPERATION_INVALIDPOSTALCODELENGTH = "FailedOperation.InvalidPostalCodeLength"
+
 	// 发票数据不一致。温馨提示：新版发票核验接口功能更完整，请尽快切换，如已切换请忽略。
 	FAILEDOPERATION_INVOICEMISMATCH = "FailedOperation.InvoiceMismatch"
 

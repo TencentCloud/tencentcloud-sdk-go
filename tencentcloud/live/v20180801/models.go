@@ -741,20 +741,16 @@ func (r *AuthenticateDomainOwnerResponse) FromJsonString(s string) error {
 
 type BackupStreamDetailData struct {
 	// 推流域名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
 	// 推流路径。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	//  UTC 格式，例如：2018-06-29T19:00:00Z。
 	// 注意：和北京时间相差8小时。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublishTime *string `json:"PublishTime,omitnil,omitempty" name:"PublishTime"`
 
 	// 推流唯一标识。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamSequence *string `json:"UpstreamSequence,omitnil,omitempty" name:"UpstreamSequence"`
 
 	// 推流来源。示例：
@@ -762,33 +758,27 @@ type BackupStreamDetailData struct {
 	// 拉流转推(1234)；
 	// 注意：拉流转推来源括号中为拉流转推的任务 
 	//  ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceFrom *string `json:"SourceFrom,omitnil,omitempty" name:"SourceFrom"`
 
 	// 主备标识。
 	// 当前流为主流：1，
 	// 当前流为备流: 0。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MasterFlag *int64 `json:"MasterFlag,omitnil,omitempty" name:"MasterFlag"`
 }
 
 type BackupStreamGroupInfo struct {
 	// 流名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
 
 	// 主备流信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupList []*BackupStreamDetailData `json:"BackupList,omitnil,omitempty" name:"BackupList"`
 
 	// 是否对该流开启了择优调度。
 	// 0 - 未开启。
 	// 1 - 已开启。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OptimalEnable *int64 `json:"OptimalEnable,omitnil,omitempty" name:"OptimalEnable"`
 
 	// 域名分组的分组名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostGroupName *string `json:"HostGroupName,omitnil,omitempty" name:"HostGroupName"`
 }
 
@@ -10069,14 +10059,10 @@ func (r *DescribeLiveSnapshotTemplatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLiveStreamEventListRequestParams struct {
-	// 起始时间。 
-	// UTC 格式，例如：2018-12-29T19:00:00Z。
-	// 支持查询60天内的历史记录。
+	// 起始时间。 UTC 格式，例如：2018-12-29T19:00:00Z。支持查询2个月内的历史记录。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。
-	// UTC 格式，例如：2018-12-29T20:00:00Z。
-	// 不超过当前时间，且和起始时间相差不得超过30天。
+	// 结束时间。UTC 格式，例如：2018-12-29T20:00:00Z。不超过当前时间，且和起始时间相差不得超过1个月。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
@@ -10121,14 +10107,10 @@ type DescribeLiveStreamEventListRequestParams struct {
 type DescribeLiveStreamEventListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 起始时间。 
-	// UTC 格式，例如：2018-12-29T19:00:00Z。
-	// 支持查询60天内的历史记录。
+	// 起始时间。 UTC 格式，例如：2018-12-29T19:00:00Z。支持查询2个月内的历史记录。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。
-	// UTC 格式，例如：2018-12-29T20:00:00Z。
-	// 不超过当前时间，且和起始时间相差不得超过30天。
+	// 结束时间。UTC 格式，例如：2018-12-29T20:00:00Z。不超过当前时间，且和起始时间相差不得超过1个月。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
@@ -10465,15 +10447,10 @@ type DescribeLiveStreamPublishedListRequestParams struct {
 	// 您的推流域名。
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
-	// 结束时间。
-	// UTC 格式，例如：2016-06-30T19:00:00Z。
-	// 不超过当前时间。
-	// 注意：EndTime和StartTime相差不可超过30天。
+	// 结束时间。UTC 格式，例如：2016-06-30T19:00:00Z。不超过当前时间。注意：EndTime和StartTime相差不可超过1个月。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 起始时间。 
-	// UTC 格式，例如：2016-06-29T19:00:00Z。
-	// 最长支持查询60天内数据。
+	// 起始时间。 UTC 格式，例如：2016-06-29T19:00:00Z。最长支持查询2个月内数据。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。不支持模糊匹配。
@@ -10499,15 +10476,10 @@ type DescribeLiveStreamPublishedListRequest struct {
 	// 您的推流域名。
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
-	// 结束时间。
-	// UTC 格式，例如：2016-06-30T19:00:00Z。
-	// 不超过当前时间。
-	// 注意：EndTime和StartTime相差不可超过30天。
+	// 结束时间。UTC 格式，例如：2016-06-30T19:00:00Z。不超过当前时间。注意：EndTime和StartTime相差不可超过1个月。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 起始时间。 
-	// UTC 格式，例如：2016-06-29T19:00:00Z。
-	// 最长支持查询60天内数据。
+	// 起始时间。 UTC 格式，例如：2016-06-29T19:00:00Z。最长支持查询2个月内数据。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 推流路径，与推流和播放地址中的 AppName 保持一致，默认为 live。不支持模糊匹配。
@@ -14022,11 +13994,9 @@ type DomainCertInfo struct {
 
 	// 证书本身标识的域名列表。
 	// 比如: ["*.x.com"]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertDomains []*string `json:"CertDomains,omitnil,omitempty" name:"CertDomains"`
 
 	// 腾讯云ssl的证书Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudCertId *string `json:"CloudCertId,omitnil,omitempty" name:"CloudCertId"`
 }
 
@@ -14098,7 +14068,6 @@ type DomainInfo struct {
 
 	// 0: 标准直播。
 	// 1: 小程序直播。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsMiniProgramLive *int64 `json:"IsMiniProgramLive,omitnil,omitempty" name:"IsMiniProgramLive"`
 }
 
@@ -19604,14 +19573,11 @@ type XP2PDetailInfo struct {
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 
 	// 类型，分live和vod两种。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 流ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
 
 	// AppId。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 }

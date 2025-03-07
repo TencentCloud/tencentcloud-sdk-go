@@ -645,7 +645,6 @@ type DescribeAllUserContactResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 联系人的信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Contacts []*ContactItem `json:"Contacts,omitnil,omitempty" name:"Contacts"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -713,7 +712,6 @@ type DescribeAllUserGroupResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 组信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Groups []*GroupItem `json:"Groups,omitnil,omitempty" name:"Groups"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -812,7 +810,6 @@ type DescribeDBDiagEventResponseParams struct {
 	Suggestions *string `json:"Suggestions,omitnil,omitempty" name:"Suggestions"`
 
 	// 保留字段。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
 
 	// 结束时间。

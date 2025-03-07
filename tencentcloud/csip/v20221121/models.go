@@ -835,7 +835,7 @@ type AssetViewPortRisk struct {
 	// 处置建议,0保持现状、1限制访问、2封禁端口
 	Suggestion *uint64 `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
-	// 状态，0未处理、1已处置、2已忽略
+	// 状态，0未处理、1已处置、2已忽略、3云防已防护
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 风险ID
@@ -861,6 +861,12 @@ type AssetViewPortRisk struct {
 
 	// 识别来源，详细看枚举返回。
 	From *string `json:"From,omitnil,omitempty" name:"From"`
+
+	// 服务判定,high_risk_service 高危服务 web_service web服务 other_service 其他服务
+	ServiceJudge *string `json:"ServiceJudge,omitnil,omitempty" name:"ServiceJudge"`
+
+	// 状态，0未处理、1已处置、2已忽略、3云防已防护、4无需处理
+	XspmStatus *uint64 `json:"XspmStatus,omitnil,omitempty" name:"XspmStatus"`
 }
 
 type AssetViewVULRisk struct {
@@ -1084,6 +1090,9 @@ type AssetViewVULRiskData struct {
 
 	// 是否可以一键体检，1-可以，0-不可以
 	IsOneClick *uint64 `json:"IsOneClick,omitnil,omitempty" name:"IsOneClick"`
+
+	// 是否POC扫描，0-非POC，1-POC
+	IsPOC *uint64 `json:"IsPOC,omitnil,omitempty" name:"IsPOC"`
 }
 
 type AssetViewWeakPassRisk struct {
@@ -1149,6 +1158,9 @@ type AssetViewWeakPassRisk struct {
 
 	// 证明
 	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
+
+	// 端口
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
 type BugInfoDetail struct {
@@ -6321,7 +6333,7 @@ type ServerRisk struct {
 	// 处置建议
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
-	// 状态，0未处理、1已处置、2已忽略
+	// 状态，0未处理、1已处置、2已忽略、3云防已防护
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 资产唯一id
@@ -6353,6 +6365,12 @@ type ServerRisk struct {
 
 	// HTTP响应状态码
 	StatusCode *string `json:"StatusCode,omitnil,omitempty" name:"StatusCode"`
+
+	// 新风险等级,high_risk 高危 suspect 疑似 Normal 暂无风险
+	NewLevel *string `json:"NewLevel,omitnil,omitempty" name:"NewLevel"`
+
+	// 状态，0未处理、1已处置、2已忽略、3云防已防护、4无需处理
+	XspmStatus *uint64 `json:"XspmStatus,omitnil,omitempty" name:"XspmStatus"`
 }
 
 type ServerRiskSuggestion struct {

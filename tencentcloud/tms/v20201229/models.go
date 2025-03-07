@@ -183,6 +183,9 @@ type TextModerationRequestParams struct {
 
 	// 该字段表示待检测对象对应的设备相关信息，传入后可便于甄别相应违规风险设备
 	Device *Device `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// Content的原始语种，比如en,zh
+	SourceLanguage *string `json:"SourceLanguage,omitnil,omitempty" name:"SourceLanguage"`
 }
 
 type TextModerationRequest struct {
@@ -202,6 +205,9 @@ type TextModerationRequest struct {
 
 	// 该字段表示待检测对象对应的设备相关信息，传入后可便于甄别相应违规风险设备
 	Device *Device `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// Content的原始语种，比如en,zh
+	SourceLanguage *string `json:"SourceLanguage,omitnil,omitempty" name:"SourceLanguage"`
 }
 
 func (r *TextModerationRequest) ToJsonString() string {
@@ -221,6 +227,7 @@ func (r *TextModerationRequest) FromJsonString(s string) error {
 	delete(f, "DataId")
 	delete(f, "User")
 	delete(f, "Device")
+	delete(f, "SourceLanguage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextModerationRequest has unknown keys!", "")
 	}

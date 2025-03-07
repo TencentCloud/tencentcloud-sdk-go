@@ -120,7 +120,7 @@ func NewBindDevicesResponse() (response *BindDevicesResponse) {
 }
 
 // BindDevices
-// 本接口（BindDevices）用于网关设备批量绑定子设备 
+// 本接口（BindDevices）用于网关设备批量绑定子设备
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BINDDEVICEOVERLIMIT = "FailedOperation.BindDeviceOverLimit"
@@ -138,7 +138,7 @@ func (c *Client) BindDevices(request *BindDevicesRequest) (response *BindDevices
 }
 
 // BindDevices
-// 本接口（BindDevices）用于网关设备批量绑定子设备 
+// 本接口（BindDevices）用于网关设备批量绑定子设备
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BINDDEVICEOVERLIMIT = "FailedOperation.BindDeviceOverLimit"
@@ -437,7 +437,7 @@ func NewCreateProductResponse() (response *CreateProductResponse) {
 }
 
 // CreateProduct
-// 本接口（CreateProduct）用于创建一个新的物联网通信产品 
+// 本接口（CreateProduct）用于创建一个新的物联网通信产品
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACCOUNTISOLATED = "FailedOperation.AccountIsolated"
@@ -455,7 +455,7 @@ func (c *Client) CreateProduct(request *CreateProductRequest) (response *CreateP
 }
 
 // CreateProduct
-// 本接口（CreateProduct）用于创建一个新的物联网通信产品 
+// 本接口（CreateProduct）用于创建一个新的物联网通信产品
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACCOUNTISOLATED = "FailedOperation.AccountIsolated"
@@ -555,7 +555,7 @@ func NewCreateTopicPolicyResponse() (response *CreateTopicPolicyResponse) {
 }
 
 // CreateTopicPolicy
-// 本接口（CreateTopicPolicy）用于创建一个Topic 
+// 本接口（CreateTopicPolicy）用于创建一个Topic
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_PRODUCTNOTBIND = "FailedOperation.ProductNotBind"
@@ -569,7 +569,7 @@ func (c *Client) CreateTopicPolicy(request *CreateTopicPolicyRequest) (response 
 }
 
 // CreateTopicPolicy
-// 本接口（CreateTopicPolicy）用于创建一个Topic 
+// 本接口（CreateTopicPolicy）用于创建一个Topic
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_PRODUCTNOTBIND = "FailedOperation.ProductNotBind"
@@ -614,7 +614,7 @@ func NewCreateTopicRuleResponse() (response *CreateTopicRuleResponse) {
 }
 
 // CreateTopicRule
-// 本接口（CreateTopicRule）用于创建一个规则 
+// 本接口（CreateTopicRule）用于创建一个规则
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -632,7 +632,7 @@ func (c *Client) CreateTopicRule(request *CreateTopicRuleRequest) (response *Cre
 }
 
 // CreateTopicRule
-// 本接口（CreateTopicRule）用于创建一个规则 
+// 本接口（CreateTopicRule）用于创建一个规则
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -805,7 +805,7 @@ func NewDeleteDeviceShadowResponse() (response *DeleteDeviceShadowResponse) {
 }
 
 // DeleteDeviceShadow
-// 本接口（DeleteDeviceShadow）用于删除设备影子 
+// 本接口（DeleteDeviceShadow）用于删除设备影子
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -816,7 +816,7 @@ func (c *Client) DeleteDeviceShadow(request *DeleteDeviceShadowRequest) (respons
 }
 
 // DeleteDeviceShadow
-// 本接口（DeleteDeviceShadow）用于删除设备影子 
+// 本接口（DeleteDeviceShadow）用于删除设备影子
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1135,7 +1135,7 @@ func NewDescribeDeviceClientKeyResponse() (response *DescribeDeviceClientKeyResp
 }
 
 // DescribeDeviceClientKey
-// 获取证书认证类型设备的私钥，刚生成或者重置设备后仅可调用一次 
+// 获取证书认证类型设备的私钥，刚生成或者重置设备后仅可调用一次
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1149,7 +1149,7 @@ func (c *Client) DescribeDeviceClientKey(request *DescribeDeviceClientKeyRequest
 }
 
 // DescribeDeviceClientKey
-// 获取证书认证类型设备的私钥，刚生成或者重置设备后仅可调用一次 
+// 获取证书认证类型设备的私钥，刚生成或者重置设备后仅可调用一次
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1712,7 +1712,7 @@ func NewDescribeGatewayBindDevicesResponse() (response *DescribeGatewayBindDevic
 }
 
 // DescribeGatewayBindDevices
-// 本接口（DescribeGatewayBindDevices）用于获取网关绑定的子设备列表 
+// 本接口（DescribeGatewayBindDevices）用于获取网关绑定的子设备列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1724,7 +1724,7 @@ func (c *Client) DescribeGatewayBindDevices(request *DescribeGatewayBindDevicesR
 }
 
 // DescribeGatewayBindDevices
-// 本接口（DescribeGatewayBindDevices）用于获取网关绑定的子设备列表 
+// 本接口（DescribeGatewayBindDevices）用于获取网关绑定的子设备列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2081,7 +2081,7 @@ func NewDescribeProductResourcesResponse() (response *DescribeProductResourcesRe
 }
 
 // DescribeProductResources
-// 本接口（DescribeProductResources）用于查询产品资源列表。 
+// 本接口（DescribeProductResources）用于查询产品资源列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_PRODUCTRESOURCEDUPLICATE = "FailedOperation.ProductResourceDuplicate"
@@ -2094,7 +2094,7 @@ func (c *Client) DescribeProductResources(request *DescribeProductResourcesReque
 }
 
 // DescribeProductResources
-// 本接口（DescribeProductResources）用于查询产品资源列表。 
+// 本接口（DescribeProductResources）用于查询产品资源列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_PRODUCTRESOURCEDUPLICATE = "FailedOperation.ProductResourceDuplicate"
@@ -2653,7 +2653,7 @@ func NewGetAllVersionResponse() (response *GetAllVersionResponse) {
 }
 
 // GetAllVersion
-// 本接口（GetAllVersion）用于获取所有的版本列表 
+// 本接口（GetAllVersion）用于获取所有的版本列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2664,7 +2664,7 @@ func (c *Client) GetAllVersion(request *GetAllVersionRequest) (response *GetAllV
 }
 
 // GetAllVersion
-// 本接口（GetAllVersion）用于获取所有的版本列表 
+// 本接口（GetAllVersion）用于获取所有的版本列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2706,7 +2706,7 @@ func NewGetCOSURLResponse() (response *GetCOSURLResponse) {
 }
 
 // GetCOSURL
-// 本接口（GetCOSURL）用于获取固件存储在COS的URL 
+// 本接口（GetCOSURL）用于获取固件存储在COS的URL
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2716,7 +2716,7 @@ func (c *Client) GetCOSURL(request *GetCOSURLRequest) (response *GetCOSURLRespon
 }
 
 // GetCOSURL
-// 本接口（GetCOSURL）用于获取固件存储在COS的URL 
+// 本接口（GetCOSURL）用于获取固件存储在COS的URL
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3345,7 +3345,7 @@ func NewResetDeviceStateResponse() (response *ResetDeviceStateResponse) {
 }
 
 // ResetDeviceState
-// 重置设备的连接状态 
+// 重置设备的连接状态
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3357,7 +3357,7 @@ func (c *Client) ResetDeviceState(request *ResetDeviceStateRequest) (response *R
 }
 
 // ResetDeviceState
-// 重置设备的连接状态 
+// 重置设备的连接状态
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3510,7 +3510,7 @@ func NewUnbindDevicesResponse() (response *UnbindDevicesResponse) {
 }
 
 // UnbindDevices
-// 本接口（UnbindDevices）用于网关设备批量解绑子设备 
+// 本接口（UnbindDevices）用于网关设备批量解绑子设备
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3522,7 +3522,7 @@ func (c *Client) UnbindDevices(request *UnbindDevicesRequest) (response *UnbindD
 }
 
 // UnbindDevices
-// 本接口（UnbindDevices）用于网关设备批量解绑子设备 
+// 本接口（UnbindDevices）用于网关设备批量解绑子设备
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3622,7 +3622,7 @@ func NewUpdateDeviceLogLevelResponse() (response *UpdateDeviceLogLevelResponse) 
 }
 
 // UpdateDeviceLogLevel
-// 设置设备上报的日志级别  
+// 设置设备上报的日志级别
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3634,7 +3634,7 @@ func (c *Client) UpdateDeviceLogLevel(request *UpdateDeviceLogLevelRequest) (res
 }
 
 // UpdateDeviceLogLevel
-// 设置设备上报的日志级别  
+// 设置设备上报的日志级别
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3677,7 +3677,7 @@ func NewUpdateDevicePSKResponse() (response *UpdateDevicePSKResponse) {
 }
 
 // UpdateDevicePSK
-// 本接口（UpdateDevicePSK）用于更新设备的PSK 
+// 本接口（UpdateDevicePSK）用于更新设备的PSK
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3690,7 +3690,7 @@ func (c *Client) UpdateDevicePSK(request *UpdateDevicePSKRequest) (response *Upd
 }
 
 // UpdateDevicePSK
-// 本接口（UpdateDevicePSK）用于更新设备的PSK 
+// 本接口（UpdateDevicePSK）用于更新设备的PSK
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3978,7 +3978,7 @@ func NewUpdateProductDynamicRegisterResponse() (response *UpdateProductDynamicRe
 }
 
 // UpdateProductDynamicRegister
-// 更新产品动态注册的配置 
+// 更新产品动态注册的配置
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3990,7 +3990,7 @@ func (c *Client) UpdateProductDynamicRegister(request *UpdateProductDynamicRegis
 }
 
 // UpdateProductDynamicRegister
-// 更新产品动态注册的配置 
+// 更新产品动态注册的配置
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

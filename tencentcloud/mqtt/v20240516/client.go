@@ -2184,6 +2184,55 @@ func (c *Client) ModifyUserWithContext(ctx context.Context, request *ModifyUserR
     return
 }
 
+func NewPublishMessageRequest() (request *PublishMessageRequest) {
+    request = &PublishMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "PublishMessage")
+    
+    
+    return
+}
+
+func NewPublishMessageResponse() (response *PublishMessageResponse) {
+    response = &PublishMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// PublishMessage
+// 发布 MQTT 消息到消息主题或客户端
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) PublishMessage(request *PublishMessageRequest) (response *PublishMessageResponse, err error) {
+    return c.PublishMessageWithContext(context.Background(), request)
+}
+
+// PublishMessage
+// 发布 MQTT 消息到消息主题或客户端
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) PublishMessageWithContext(ctx context.Context, request *PublishMessageRequest) (response *PublishMessageResponse, err error) {
+    if request == nil {
+        request = NewPublishMessageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PublishMessage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPublishMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRegisterCaCertificateRequest() (request *RegisterCaCertificateRequest) {
     request = &RegisterCaCertificateRequest{
         BaseRequest: &tchttp.BaseRequest{},

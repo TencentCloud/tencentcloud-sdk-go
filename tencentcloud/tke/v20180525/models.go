@@ -10369,7 +10369,6 @@ func (r *DescribeOpenPolicyListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeOpenPolicyListResponseParams struct {
 	// 策略信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpenPolicyInfoList []*OpenPolicyInfo `json:"OpenPolicyInfoList,omitnil,omitempty" name:"OpenPolicyInfoList"`
 
 	// 集群内是否安装了gatekeeper addon
@@ -17770,39 +17769,30 @@ type OpenConstraintInfo struct {
 
 type OpenPolicyInfo struct {
 	// 策略分类：cluster集群策略、node节点策略、namespace命名空间策略、configuration配置相关策略、compute计算资源策略、storage存储资源策略、network网络资源策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyCategory *string `json:"PolicyCategory,omitnil,omitempty" name:"PolicyCategory"`
 
 	// 策略中文名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
 	// 策略描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyDesc *string `json:"PolicyDesc,omitnil,omitempty" name:"PolicyDesc"`
 
 	// 策略运行模式：dryrun空跑不生效，deny拦截生效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnforcementAction *string `json:"EnforcementAction,omitnil,omitempty" name:"EnforcementAction"`
 
 	// 关联的事件数量(最近7d)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventNums *uint64 `json:"EventNums,omitnil,omitempty" name:"EventNums"`
 
 	// 策略英文名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 策略模板类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 
 	// 策略开关状态：open打开，close关闭
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnabledStatus *string `json:"EnabledStatus,omitnil,omitempty" name:"EnabledStatus"`
 
 	// 策略的实例的yaml示例base64编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConstraintYamlExample *string `json:"ConstraintYamlExample,omitnil,omitempty" name:"ConstraintYamlExample"`
 
 	// 策略关联的实例列表

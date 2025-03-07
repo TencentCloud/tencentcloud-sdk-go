@@ -1167,6 +1167,7 @@ type ReplaceBackgroundRequestParams struct {
 	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
 
 	// 商品图中的商品主体名称。
+	// 最多支持50个 utf-8 字符，支持中、英文。
 	// 建议说明商品主体，否则影响生成效果。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
@@ -1218,6 +1219,7 @@ type ReplaceBackgroundRequest struct {
 	NegativePrompt *string `json:"NegativePrompt,omitnil,omitempty" name:"NegativePrompt"`
 
 	// 商品图中的商品主体名称。
+	// 最多支持50个 utf-8 字符，支持中、英文。
 	// 建议说明商品主体，否则影响生成效果。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 

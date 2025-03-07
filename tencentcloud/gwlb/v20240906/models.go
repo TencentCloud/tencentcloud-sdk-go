@@ -476,6 +476,7 @@ type DescribeGatewayLoadBalancersRequestParams struct {
 	// Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
 	// - VpcId - String - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“vpc-bhqk****”。
 	// - Vips - String  - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“10.1.1.1”
+	// - tag:tag-key - String - 是否必填：否 - （过滤条件）按照GWLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 搜索字段，模糊匹配名称、VIP。
@@ -498,6 +499,7 @@ type DescribeGatewayLoadBalancersRequest struct {
 	// Filter.Name和Filter.Values皆为必填项。详细的过滤条件如下：
 	// - VpcId - String - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“vpc-bhqk****”。
 	// - Vips - String  - 是否必填：否 - （过滤条件）按照网关负载均衡实例所属的私有网络过滤，如“10.1.1.1”
+	// - tag:tag-key - String - 是否必填：否 - （过滤条件）按照GWLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 搜索字段，模糊匹配名称、VIP。
@@ -1043,8 +1045,11 @@ type GatewayLoadBalancer struct {
 	// 0：表示未被隔离，1：表示被隔离。
 	Isolation *uint64 `json:"Isolation,omitnil,omitempty" name:"Isolation"`
 
-	// 负载均衡实例被隔离的时间
+	// 网关负载均衡实例被隔离的时间
 	IsolatedTime *string `json:"IsolatedTime,omitnil,omitempty" name:"IsolatedTime"`
+
+	// 是否开启配置修改保护功能。
+	OperateProtect *bool `json:"OperateProtect,omitnil,omitempty" name:"OperateProtect"`
 }
 
 // Predefined struct for user
@@ -1137,6 +1142,9 @@ type ModifyGatewayLoadBalancerAttributeRequestParams struct {
 
 	// 网关负载均衡实例名称。可支持输入1-60个字符。
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
+
+	// 是否开启删除保护。
+	DeleteProtect *bool `json:"DeleteProtect,omitnil,omitempty" name:"DeleteProtect"`
 }
 
 type ModifyGatewayLoadBalancerAttributeRequest struct {
@@ -1147,6 +1155,9 @@ type ModifyGatewayLoadBalancerAttributeRequest struct {
 
 	// 网关负载均衡实例名称。可支持输入1-60个字符。
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
+
+	// 是否开启删除保护。
+	DeleteProtect *bool `json:"DeleteProtect,omitnil,omitempty" name:"DeleteProtect"`
 }
 
 func (r *ModifyGatewayLoadBalancerAttributeRequest) ToJsonString() string {
@@ -1163,6 +1174,7 @@ func (r *ModifyGatewayLoadBalancerAttributeRequest) FromJsonString(s string) err
 	}
 	delete(f, "LoadBalancerId")
 	delete(f, "LoadBalancerName")
+	delete(f, "DeleteProtect")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyGatewayLoadBalancerAttributeRequest has unknown keys!", "")
 	}

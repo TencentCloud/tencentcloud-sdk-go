@@ -7029,6 +7029,10 @@ type InsightResult struct {
 
 	// Yarn任务的部分核心配置
 	JobConf *string `json:"JobConf,omitnil,omitempty" name:"JobConf"`
+
+	// 洞察结构化信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 }
 
 type InstanceChargePrepaid struct {

@@ -9399,6 +9399,93 @@ func (r *DescribeRocketMQSubscriptionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRocketMQTopUsagesRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 指标名称，支持以下：
+	// consumeLag，消费组堆积数量
+	// deadLetterCount，死信数量
+	// topicRateIn,   Topic生产速率
+	// topicRateOut，Topic消费速率
+	// topicStorageSize，Topic存储空间
+	// topicApiCalls，Topic API调用次数
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 排序数量，最大20
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeRocketMQTopUsagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 指标名称，支持以下：
+	// consumeLag，消费组堆积数量
+	// deadLetterCount，死信数量
+	// topicRateIn,   Topic生产速率
+	// topicRateOut，Topic消费速率
+	// topicStorageSize，Topic存储空间
+	// topicApiCalls，Topic API调用次数
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 排序数量，最大20
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRocketMQTopUsagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQTopUsagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "MetricName")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQTopUsagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQTopUsagesResponseParams struct {
+	// 指标值列表
+	Values []*int64 `json:"Values,omitnil,omitempty" name:"Values"`
+
+	// 指标值对应的维度组合，本接口存在以下几个维度：
+	// tenant，namespace，group，topic
+	Dimensions []*DimensionInstance `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRocketMQTopUsagesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRocketMQTopUsagesResponseParams `json:"Response"`
+}
+
+func (r *DescribeRocketMQTopUsagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQTopUsagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRocketMQTopicMsgsRequestParams struct {
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -10403,6 +10490,16 @@ type DetailedRolePerm struct {
 
 	// 资源备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type DimensionInstance struct {
+	// 实例的维度组合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Dimensions []*DimensionOpt `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
+}
+
+type DimensionOpt struct {
+
 }
 
 type Environment struct {

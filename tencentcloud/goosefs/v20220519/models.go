@@ -284,7 +284,6 @@ type ChargeAttribute struct {
 	CurDeadline *string `json:"CurDeadline,omitnil,omitempty" name:"CurDeadline"`
 
 	// 付费方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 自动付费标识：0:默认未设置 1:自动续费 2 不自动续费
@@ -1273,7 +1272,6 @@ type FSAttribute struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// GooseFSx文件系统属性
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GooseFSxAttribute *GooseFSxAttribute `json:"GooseFSxAttribute,omitnil,omitempty" name:"GooseFSxAttribute"`
 
 	// 文件系统状态 ACTIVE(运行中), CREATING(创建中), DESTROYING(销毁中), FAIL(创建失败),EXPANDING(扩容中),PROBING(容灾中)
@@ -1295,14 +1293,12 @@ type FSAttribute struct {
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// Tag数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag []*Tag `json:"Tag,omitnil,omitempty" name:"Tag"`
 
 	// 更新属性时间
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 文件系统付费信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeAttribute *ChargeAttribute `json:"ChargeAttribute,omitnil,omitempty" name:"ChargeAttribute"`
 }
 
@@ -1363,7 +1359,6 @@ type MappedBucket struct {
 	// 
 	// 周期沉降(PeriodExport)
 	// 立即沉降(ImmediateExport)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataRepositoryTaskAutoStrategy []*string `json:"DataRepositoryTaskAutoStrategy,omitnil,omitempty" name:"DataRepositoryTaskAutoStrategy"`
 
 	// 绑定bucket的数据流动策略ID

@@ -6094,6 +6094,9 @@ type ServerlessIndexSettingsField struct {
 	// 索引刷新频率
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RefreshInterval *string `json:"RefreshInterval,omitnil,omitempty" name:"RefreshInterval"`
+
+	// 自定义参数
+	CustomSetting *string `json:"CustomSetting,omitnil,omitempty" name:"CustomSetting"`
 }
 
 type ServerlessSpace struct {

@@ -9171,15 +9171,12 @@ type ParameterDetail struct {
 	NeedReboot *int64 `json:"NeedReboot,omitnil,omitempty" name:"NeedReboot"`
 
 	// 参数允许的最大值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Max *string `json:"Max,omitnil,omitempty" name:"Max"`
 
 	// 参数允许的最小值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Min *string `json:"Min,omitnil,omitempty" name:"Min"`
 
 	// 参数可选枚举值。如果为非枚举参数，则为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnumValue []*string `json:"EnumValue,omitnil,omitempty" name:"EnumValue"`
 }
 
@@ -9242,17 +9239,14 @@ type ProductConf struct {
 	// 是否支持副本只读。
 	// - true：支持副本只读。
 	// - false：不支持。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableReplicaReadOnly *bool `json:"EnableReplicaReadOnly,omitnil,omitempty" name:"EnableReplicaReadOnly"`
 }
 
 type ProxyNodes struct {
 	// 节点 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
 	// 可用区 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 }
 
@@ -9285,15 +9279,12 @@ type RedisBackupSet struct {
 	Locked *int64 `json:"Locked,omitnil,omitempty" name:"Locked"`
 
 	// 内部字段，用户可忽略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupSize *int64 `json:"BackupSize,omitnil,omitempty" name:"BackupSize"`
 
 	// 内部字段，用户可忽略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FullBackup *int64 `json:"FullBackup,omitnil,omitempty" name:"FullBackup"`
 
 	// 内部字段，用户可忽略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 实例 ID。
@@ -9370,19 +9361,15 @@ type RedisCommonInstanceList struct {
 
 type RedisInstanceEvent struct {
 	// 事件 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// 实例 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 事件类型，当前仅支持配置实例迁移、资源腾挪、机房裁撤相关的运维操作。该参数仅支持配置为 **InstanceMigration**。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 事件等级根据其影响严重程度和紧急程度进行分级，由重至轻依次为关键、重要、中等、一般。
@@ -9390,23 +9377,18 @@ type RedisInstanceEvent struct {
 	// - High：重要
 	// - Middle：中等
 	// - Low：一般
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Grade *string `json:"Grade,omitnil,omitempty" name:"Grade"`
 
 	// 事件计划执行日期。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionDate *string `json:"ExecutionDate,omitnil,omitempty" name:"ExecutionDate"`
 
 	// 事件计划执行开始时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 事件计划执行结束时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 运维事件最迟执行的日期，即该事件必须在该日期之前完成，否则可能会对业务产生影响。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestExecutionDate *string `json:"LatestExecutionDate,omitnil,omitempty" name:"LatestExecutionDate"`
 
 	// 事件当前状态。
@@ -9414,19 +9396,15 @@ type RedisInstanceEvent struct {
 	// - Running：在维护时间窗内，正在执行维护的事件。
 	// - Finished：已全部完成维护的事件。
 	// - Canceled：已取消执行的事件。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 事件执行任务完成时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskEndTime *string `json:"TaskEndTime,omitnil,omitempty" name:"TaskEndTime"`
 
 	// 事件影响信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EffectInfo *string `json:"EffectInfo,omitnil,omitempty" name:"EffectInfo"`
 
 	// 事件最初计划执行日期。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InitialExecutionDate *string `json:"InitialExecutionDate,omitnil,omitempty" name:"InitialExecutionDate"`
 }
 
@@ -9882,11 +9860,9 @@ func (r *RestoreInstanceResponse) FromJsonString(s string) error {
 
 type SecondLevelBackupMissingTimestamps struct {
 	// 开始时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimeStamp *int64 `json:"StartTimeStamp,omitnil,omitempty" name:"StartTimeStamp"`
 
 	// 结束时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTimeStamp *int64 `json:"EndTimeStamp,omitnil,omitempty" name:"EndTimeStamp"`
 }
 
@@ -10236,11 +10212,9 @@ func (r *SwitchProxyResponse) FromJsonString(s string) error {
 
 type TaskInfoDetail struct {
 	// 任务 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 任务开始时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 任务类型。
@@ -10299,27 +10273,21 @@ type TaskInfoDetail struct {
 	// - FLOW_UPGRADE_INSTANCE_CACHE_AND_PROXY： "067"，实例版本升级中。
 	// - FLOW_MODIFY_PROXY_NUM："069"，加（减）Proxy 节点。
 	// - FLOW_MODIFYBACKUPMOD："070"，变更实例备份模式。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 实例名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 实例 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 项目 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 任务进度。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Progress *float64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
 	// 任务执行结束时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 任务执行状态。
@@ -10328,7 +10296,6 @@ type TaskInfoDetail struct {
 	// 1：执行中。
 	// 2：完成。
 	// 4：失败。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *int64 `json:"Result,omitnil,omitempty" name:"Result"`
 }
 

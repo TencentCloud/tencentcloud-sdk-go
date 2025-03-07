@@ -7315,6 +7315,9 @@ type DescribeNotebookSessionStatementSqlResultRequestParams struct {
 
 	// 上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回MaxResults字段设置的数据量。
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// 批次Id
+	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
 }
 
 type DescribeNotebookSessionStatementSqlResultRequest struct {
@@ -7328,6 +7331,9 @@ type DescribeNotebookSessionStatementSqlResultRequest struct {
 
 	// 上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回MaxResults字段设置的数据量。
 	NextToken *string `json:"NextToken,omitnil,omitempty" name:"NextToken"`
+
+	// 批次Id
+	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
 }
 
 func (r *DescribeNotebookSessionStatementSqlResultRequest) ToJsonString() string {
@@ -7345,6 +7351,7 @@ func (r *DescribeNotebookSessionStatementSqlResultRequest) FromJsonString(s stri
 	delete(f, "TaskId")
 	delete(f, "MaxResults")
 	delete(f, "NextToken")
+	delete(f, "BatchId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookSessionStatementSqlResultRequest has unknown keys!", "")
 	}
@@ -7381,6 +7388,10 @@ type DescribeNotebookSessionStatementSqlResultResponseParams struct {
 	// 数据扫描量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataAmount *int64 `json:"DataAmount,omitnil,omitempty" name:"DataAmount"`
+
+	// spark ui地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UiUrl *string `json:"UiUrl,omitnil,omitempty" name:"UiUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

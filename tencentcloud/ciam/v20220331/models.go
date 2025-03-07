@@ -22,15 +22,12 @@ import (
 
 type AppAssociatedUserGroupIds struct {
 	// 用户组id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserGroupId *string `json:"UserGroupId,omitnil,omitempty" name:"UserGroupId"`
 
 	// 应用id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 应用名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationName *string `json:"ApplicationName,omitnil,omitempty" name:"ApplicationName"`
 }
 
@@ -392,7 +389,6 @@ func (r *CreateUserRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateUserResponseParams struct {
 	// 创建的用户信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *User `json:"User,omitnil,omitempty" name:"User"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -528,7 +524,6 @@ func (r *DeleteUserGroupsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteUserGroupsResponseParams struct {
 	// 删除的用户组关联的应用信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserGroupDeletedInfo *UserGroupDeleteResp `json:"UserGroupDeletedInfo,omitnil,omitempty" name:"UserGroupDeletedInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -807,7 +802,6 @@ func (r *DescribeUserRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUserResponseParams struct {
 	// 总条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 分页对象
@@ -815,7 +809,6 @@ type DescribeUserResponseParams struct {
 	Pageable *Pageable `json:"Pageable,omitnil,omitempty" name:"Pageable"`
 
 	// 用户列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*User `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -840,7 +833,6 @@ func (r *DescribeUserResponse) FromJsonString(s string) error {
 
 type ErrorDetails struct {
 	// 用户信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 失败原因
@@ -857,11 +849,9 @@ type ExportPropertyMap struct {
 
 type FailedUsers struct {
 	// 失败用户标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedUserIdentification *string `json:"FailedUserIdentification,omitnil,omitempty" name:"FailedUserIdentification"`
 
 	// 导入的用户失败原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedReason *string `json:"FailedReason,omitnil,omitempty" name:"FailedReason"`
 }
 
@@ -1007,7 +997,6 @@ type Job struct {
 	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
 
 	// 失败详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorDetails []*ErrorDetails `json:"ErrorDetails,omitnil,omitempty" name:"ErrorDetails"`
 
 	// 失败的用户
@@ -1138,7 +1127,6 @@ func (r *ListJobsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListJobsResponseParams struct {
 	// 任务列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobSet []*Job `json:"JobSet,omitnil,omitempty" name:"JobSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1227,7 +1215,6 @@ type ListLogMessageByConditionResponseParams struct {
 	Pageable *Pageable `json:"Pageable,omitnil,omitempty" name:"Pageable"`
 
 	// 日志列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*LogMessage `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1312,7 +1299,6 @@ func (r *ListUserByPropertyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListUserByPropertyResponseParams struct {
 	// 用户列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Users []*User `json:"Users,omitnil,omitempty" name:"Users"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1388,15 +1374,12 @@ func (r *ListUserGroupsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListUserGroupsResponseParams struct {
 	// 用户组列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*UserGroup `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 总条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 分页
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Pageable *Pageable `json:"Pageable,omitnil,omitempty" name:"Pageable"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1481,7 +1464,6 @@ func (r *ListUserRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListUserResponseParams struct {
 	// 总条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 分页对象
@@ -1489,7 +1471,6 @@ type ListUserResponseParams struct {
 	Pageable *Pageable `json:"Pageable,omitnil,omitempty" name:"Pageable"`
 
 	// 用户列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*User `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1572,19 +1553,15 @@ type LogMessage struct {
 	LogId *string `json:"LogId,omitnil,omitempty" name:"LogId"`
 
 	// 租户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
 
 	// 用户池ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserStoreId *string `json:"UserStoreId,omitnil,omitempty" name:"UserStoreId"`
 
 	// 事件编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventCode *string `json:"EventCode,omitnil,omitempty" name:"EventCode"`
 
 	// 事件发生时间戳，单位：毫秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventDate *int64 `json:"EventDate,omitnil,omitempty" name:"EventDate"`
 
 	// 描述
@@ -1595,43 +1572,33 @@ type LogMessage struct {
 	// 
 	// <li> **TENANT** </li>  租户
 	// <li> **USER** </li>  用户
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Participant *string `json:"Participant,omitnil,omitempty" name:"Participant"`
 
 	// 应用clientId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationClientId *string `json:"ApplicationClientId,omitnil,omitempty" name:"ApplicationClientId"`
 
 	// 应用名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationName *string `json:"ApplicationName,omitnil,omitempty" name:"ApplicationName"`
 
 	// 认证源ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthSourceId *string `json:"AuthSourceId,omitnil,omitempty" name:"AuthSourceId"`
 
 	// 认证源名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthSourceName *string `json:"AuthSourceName,omitnil,omitempty" name:"AuthSourceName"`
 
 	// 认证源类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthSourceType *string `json:"AuthSourceType,omitnil,omitempty" name:"AuthSourceType"`
 
 	// 认证源类别
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthSourceCategory *string `json:"AuthSourceCategory,omitnil,omitempty" name:"AuthSourceCategory"`
 
 	// IP地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 用户代理
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserAgent *string `json:"UserAgent,omitnil,omitempty" name:"UserAgent"`
 
 	// 用户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 详情
@@ -1651,7 +1618,6 @@ type MemberMap struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -2046,7 +2012,6 @@ func (r *UpdateUserRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateUserResponseParams struct {
 	// 更新之后的用户信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *User `json:"User,omitnil,omitempty" name:"User"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2270,7 +2235,6 @@ type User struct {
 	LastModifiedDate *int64 `json:"LastModifiedDate,omitnil,omitempty" name:"LastModifiedDate"`
 
 	// 自定义属性
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomAttributes []*MemberMap `json:"CustomAttributes,omitnil,omitempty" name:"CustomAttributes"`
 
 	// 身份证号
@@ -2322,7 +2286,6 @@ type User struct {
 	IdentityVerificationMethod *string `json:"IdentityVerificationMethod,omitnil,omitempty" name:"IdentityVerificationMethod"`
 
 	// 是否已经实名核验
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityVerified *bool `json:"IdentityVerified,omitnil,omitempty" name:"IdentityVerified"`
 
 	// 工作
@@ -2334,7 +2297,6 @@ type User struct {
 	Nationality *string `json:"Nationality,omitnil,omitempty" name:"Nationality"`
 
 	// 是否主账号（进行过账号融合后，主账号为true，从账号为false）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Primary *bool `json:"Primary,omitnil,omitempty" name:"Primary"`
 
 	// 时区
@@ -2342,15 +2304,12 @@ type User struct {
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 是否已经首次登录
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlreadyFirstLogin *bool `json:"AlreadyFirstLogin,omitnil,omitempty" name:"AlreadyFirstLogin"`
 
 	// 租户id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
 
 	// 用户目录id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserStoreId *string `json:"UserStoreId,omitnil,omitempty" name:"UserStoreId"`
 
 	// 版本
@@ -2412,11 +2371,9 @@ type UserGroup struct {
 
 type UserGroupDeleteResp struct {
 	// 错误详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 
 	// 用户组关联的应用信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppAssociatedUserGroupIds []*AppAssociatedUserGroupIds `json:"AppAssociatedUserGroupIds,omitnil,omitempty" name:"AppAssociatedUserGroupIds"`
 }
 
@@ -2445,15 +2402,12 @@ type UserStore struct {
 	AppNum *int64 `json:"AppNum,omitnil,omitempty" name:"AppNum"`
 
 	// 上次切换的用户池
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastStatus *bool `json:"LastStatus,omitnil,omitempty" name:"LastStatus"`
 
 	// 默认用户池
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultStatus *bool `json:"DefaultStatus,omitnil,omitempty" name:"DefaultStatus"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateDate *int64 `json:"CreateDate,omitnil,omitempty" name:"CreateDate"`
 
 	// 上次切换时间

@@ -2298,7 +2298,7 @@ func (r *ModifyResourceTagsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyResourcesTagValueRequestParams struct {
-	// 业务类型，示例 cvm 。资源所属业务名称（资源六段式中的第三段）
+	// 业务类型，示例 cvm。资源所属业务名称（资源六段式中的第三段）
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 资源ID数组，资源个数最多为50
@@ -2320,7 +2320,7 @@ type ModifyResourcesTagValueRequestParams struct {
 type ModifyResourcesTagValueRequest struct {
 	*tchttp.BaseRequest
 	
-	// 业务类型，示例 cvm 。资源所属业务名称（资源六段式中的第三段）
+	// 业务类型，示例 cvm。资源所属业务名称（资源六段式中的第三段）
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 资源ID数组，资源个数最多为50

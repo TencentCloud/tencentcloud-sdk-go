@@ -122,7 +122,6 @@ type BinlogInfo struct {
 	Filename *string `json:"Filename,omitnil,omitempty" name:"Filename"`
 
 	// 备份文件大小，单位：Byte。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 }
 
@@ -724,11 +723,9 @@ type DescribeConnectionConfigResponseParams struct {
 	ClientLimit *int64 `json:"ClientLimit,omitnil,omitempty" name:"ClientLimit"`
 
 	// 单分片连接数限制最小值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientLimitMin *int64 `json:"ClientLimitMin,omitnil,omitempty" name:"ClientLimitMin"`
 
 	// 单分片连接数限制最大值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientLimitMax *int64 `json:"ClientLimitMax,omitnil,omitempty" name:"ClientLimitMax"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -896,7 +893,6 @@ type DescribeInstanceBackupsResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 废弃字段。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupSet []*BinlogInfo `json:"BackupSet,omitnil,omitempty" name:"BackupSet"`
 
 	// 实例备份信息列表。
@@ -1119,29 +1115,24 @@ type DescribeInstanceNodeInfoResponseParams struct {
 	ProxyCount *int64 `json:"ProxyCount,omitnil,omitempty" name:"ProxyCount"`
 
 	// Proxy 节点信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Proxy []*ProxyNodeInfo `json:"Proxy,omitnil,omitempty" name:"Proxy"`
 
 	// Redis 节点数量。该参数仅为产品兼容性而保留，并不具有实际意义，可忽略。
 	RedisCount *int64 `json:"RedisCount,omitnil,omitempty" name:"RedisCount"`
 
 	// Redis 节点信息。该参数仅为产品兼容性而保留，并不具有实际意义，可忽略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Redis []*RedisNodeInfo `json:"Redis,omitnil,omitempty" name:"Redis"`
 
 	// Tendis 节点数量。该参数仅为产品兼容性而保留，并不具有实际意义，可忽略。
 	TendisCount *int64 `json:"TendisCount,omitnil,omitempty" name:"TendisCount"`
 
 	// Tendis 节点信息。该参数仅为产品兼容性而保留，并不具有实际意义，可忽略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tendis []*InstanceNodeInfo `json:"Tendis,omitnil,omitempty" name:"Tendis"`
 
 	// KeewiDB 节点数量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeeWiDBCount *int64 `json:"KeeWiDBCount,omitnil,omitempty" name:"KeeWiDBCount"`
 
 	// KeewiDB 节点信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeeWiDB []*InstanceNodeInfo `json:"KeeWiDB,omitnil,omitempty" name:"KeeWiDB"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2477,59 +2468,45 @@ type InstanceInfo struct {
 	SlaveReadWeight *int64 `json:"SlaveReadWeight,omitnil,omitempty" name:"SlaveReadWeight"`
 
 	// 实例关联的标签信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceTags []*InstanceTagInfo `json:"InstanceTags,omitnil,omitempty" name:"InstanceTags"`
 
 	// 项目名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
 	// 是否为免密实例；<ul><li>true：免密实例。</li><li>false：非免密实例。</li></ul>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoAuth *bool `json:"NoAuth,omitnil,omitempty" name:"NoAuth"`
 
 	// 客户端连接数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientLimit *int64 `json:"ClientLimit,omitnil,omitempty" name:"ClientLimit"`
 
 	// DTS状态（内部参数，用户可忽略）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DtsStatus *int64 `json:"DtsStatus,omitnil,omitempty" name:"DtsStatus"`
 
 	// 分片带宽上限，单位 MB。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetLimit *int64 `json:"NetLimit,omitnil,omitempty" name:"NetLimit"`
 
 	// 免密实例标识（内部参数，用户可忽略）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PasswordFree *int64 `json:"PasswordFree,omitnil,omitempty" name:"PasswordFree"`
 
 	// 实例只读标识（内部参数，用户可忽略）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadOnly *int64 `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 
 	// 内部参数，用户可忽略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip6 *string `json:"Vip6,omitnil,omitempty" name:"Vip6"`
 
 	// 内部参数，用户可忽略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemainBandwidthDuration *string `json:"RemainBandwidthDuration,omitnil,omitempty" name:"RemainBandwidthDuration"`
 
 	// 实例的磁盘容量大小。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
 	// 监控版本。<ul><li>1m：分钟粒度监控。</li><li>5s：5秒粒度监控。</li></ul>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorVersion *string `json:"MonitorVersion,omitnil,omitempty" name:"MonitorVersion"`
 
 	// 客户端最大连接数可设置的最小值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientLimitMin *int64 `json:"ClientLimitMin,omitnil,omitempty" name:"ClientLimitMin"`
 
 	// 客户端最大连接数可设置的最大值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientLimitMax *int64 `json:"ClientLimitMax,omitnil,omitempty" name:"ClientLimitMax"`
 
 	// 实例的节点详细信息。
@@ -2537,11 +2514,9 @@ type InstanceInfo struct {
 	NodeSet []*NodeInfo `json:"NodeSet,omitnil,omitempty" name:"NodeSet"`
 
 	// 实例所在的地域信息，比如ap-guangzhou。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 实例内存容量，单位：GB。KeeWiDB 内存容量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineMemory *int64 `json:"MachineMemory,omitnil,omitempty" name:"MachineMemory"`
 
 	// 单分片磁盘大小，单位：MB
@@ -2554,7 +2529,6 @@ type InstanceInfo struct {
 	DiskReplicasNum *int64 `json:"DiskReplicasNum,omitnil,omitempty" name:"DiskReplicasNum"`
 
 	// 数据压缩开关。<ul><li>ON：开启。</li><li>OFF：关闭。</li></ul>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Compression *string `json:"Compression,omitnil,omitempty" name:"Compression"`
 }
 
@@ -2587,7 +2561,6 @@ type InstanceIntegerParam struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 参数单位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
 }
 
@@ -3342,7 +3315,6 @@ type ProductConf struct {
 
 type ProxyNodeInfo struct {
 	// 节点ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 }
 
@@ -3619,43 +3591,33 @@ func (r *StartUpInstanceResponse) FromJsonString(s string) error {
 
 type TaskInfoDetail struct {
 	// 任务Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 任务类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 实例Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 项目Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 任务进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Progress *float64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
 	// 结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 任务状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *int64 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 操作者用户uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperatorUin *string `json:"OperatorUin,omitnil,omitempty" name:"OperatorUin"`
 }
 

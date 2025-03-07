@@ -709,6 +709,57 @@ func (c *Client) CreateReleaseWithContext(ctx context.Context, request *CreateRe
     return
 }
 
+func NewCreateVarRequest() (request *CreateVarRequest) {
+    request = &CreateVarRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "CreateVar")
+    
+    
+    return
+}
+
+func NewCreateVarResponse() (response *CreateVarResponse) {
+    response = &CreateVarResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVar
+// 创建变量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateVar(request *CreateVarRequest) (response *CreateVarResponse, err error) {
+    return c.CreateVarWithContext(context.Background(), request)
+}
+
+// CreateVar
+// 创建变量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateVarWithContext(ctx context.Context, request *CreateVarRequest) (response *CreateVarResponse, err error) {
+    if request == nil {
+        request = NewCreateVarRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVar require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVarResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAppRequest() (request *DeleteAppRequest) {
     request = &DeleteAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -733,6 +784,7 @@ func NewDeleteAppResponse() (response *DeleteAppResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteApp(request *DeleteAppRequest) (response *DeleteAppResponse, err error) {
     return c.DeleteAppWithContext(context.Background(), request)
 }
@@ -742,6 +794,7 @@ func (c *Client) DeleteApp(request *DeleteAppRequest) (response *DeleteAppRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteAppWithContext(ctx context.Context, request *DeleteAppRequest) (response *DeleteAppResponse, err error) {
     if request == nil {
         request = NewDeleteAppRequest()
@@ -782,6 +835,7 @@ func NewDeleteAttributeLabelResponse() (response *DeleteAttributeLabelResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteAttributeLabel(request *DeleteAttributeLabelRequest) (response *DeleteAttributeLabelResponse, err error) {
     return c.DeleteAttributeLabelWithContext(context.Background(), request)
 }
@@ -791,6 +845,7 @@ func (c *Client) DeleteAttributeLabel(request *DeleteAttributeLabelRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteAttributeLabelWithContext(ctx context.Context, request *DeleteAttributeLabelRequest) (response *DeleteAttributeLabelResponse, err error) {
     if request == nil {
         request = NewDeleteAttributeLabelRequest()
@@ -831,6 +886,7 @@ func NewDeleteDocResponse() (response *DeleteDocResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteDoc(request *DeleteDocRequest) (response *DeleteDocResponse, err error) {
     return c.DeleteDocWithContext(context.Background(), request)
 }
@@ -840,6 +896,7 @@ func (c *Client) DeleteDoc(request *DeleteDocRequest) (response *DeleteDocRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteDocWithContext(ctx context.Context, request *DeleteDocRequest) (response *DeleteDocResponse, err error) {
     if request == nil {
         request = NewDeleteDocRequest()
@@ -880,6 +937,7 @@ func NewDeleteDocCateResponse() (response *DeleteDocCateResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteDocCate(request *DeleteDocCateRequest) (response *DeleteDocCateResponse, err error) {
     return c.DeleteDocCateWithContext(context.Background(), request)
 }
@@ -889,6 +947,7 @@ func (c *Client) DeleteDocCate(request *DeleteDocCateRequest) (response *DeleteD
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteDocCateWithContext(ctx context.Context, request *DeleteDocCateRequest) (response *DeleteDocCateResponse, err error) {
     if request == nil {
         request = NewDeleteDocCateRequest()
@@ -2695,6 +2754,57 @@ func (c *Client) GetTaskStatusWithContext(ctx context.Context, request *GetTaskS
     request.SetContext(ctx)
     
     response = NewGetTaskStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetVarListRequest() (request *GetVarListRequest) {
+    request = &GetVarListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "GetVarList")
+    
+    
+    return
+}
+
+func NewGetVarListResponse() (response *GetVarListResponse) {
+    response = &GetVarListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetVarList
+// 查询自定义变量列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) GetVarList(request *GetVarListRequest) (response *GetVarListResponse, err error) {
+    return c.GetVarListWithContext(context.Background(), request)
+}
+
+// GetVarList
+// 查询自定义变量列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) GetVarListWithContext(ctx context.Context, request *GetVarListRequest) (response *GetVarListResponse, err error) {
+    if request == nil {
+        request = NewGetVarListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetVarList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetVarListResponse()
     err = c.Send(request, response)
     return
 }

@@ -22,11 +22,9 @@ import (
 
 type BaselineConfigItem struct {
 	// 账号工厂基线项唯一标识,只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Identifier *string `json:"Identifier,omitnil,omitempty" name:"Identifier"`
 
 	// 账号工厂基线项配置，不同基线项配置参数不同。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Configuration *string `json:"Configuration,omitnil,omitempty" name:"Configuration"`
 }
 

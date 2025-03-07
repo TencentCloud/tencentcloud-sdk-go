@@ -1582,6 +1582,84 @@ func (r *CreateReleaseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateVarRequestParams struct {
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 变量名称，不允许重复，最大支持50个字符
+	VarName *string `json:"VarName,omitnil,omitempty" name:"VarName"`
+
+	// 变量描述，最大支持120个字符
+	VarDesc *string `json:"VarDesc,omitnil,omitempty" name:"VarDesc"`
+
+	// 变量类型定义，支持类型如下：(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO);传输过程是json字符串，标签中仅支持"STRING"类型使用
+	VarType *string `json:"VarType,omitnil,omitempty" name:"VarType"`
+}
+
+type CreateVarRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 变量名称，不允许重复，最大支持50个字符
+	VarName *string `json:"VarName,omitnil,omitempty" name:"VarName"`
+
+	// 变量描述，最大支持120个字符
+	VarDesc *string `json:"VarDesc,omitnil,omitempty" name:"VarDesc"`
+
+	// 变量类型定义，支持类型如下：(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO);传输过程是json字符串，标签中仅支持"STRING"类型使用
+	VarType *string `json:"VarType,omitnil,omitempty" name:"VarType"`
+}
+
+func (r *CreateVarRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVarRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppBizId")
+	delete(f, "VarName")
+	delete(f, "VarDesc")
+	delete(f, "VarType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVarRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVarResponseParams struct {
+	// 变量ID
+	VarId *string `json:"VarId,omitnil,omitempty" name:"VarId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVarResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVarResponseParams `json:"Response"`
+}
+
+func (r *CreateVarResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVarResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Credentials struct {
 	// token
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5122,6 +5200,101 @@ func (r *GetTaskStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetTaskStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetVarListRequestParams struct {
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 变量ID数组
+	VarIds []*string `json:"VarIds,omitnil,omitempty" name:"VarIds"`
+
+	// 按变量名称关键词搜索
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 起始偏移量（默认0）
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限定数量（默认15）
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 按变量类型过滤，默认查询所有类型(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO)
+	VarType *string `json:"VarType,omitnil,omitempty" name:"VarType"`
+}
+
+type GetVarListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 变量ID数组
+	VarIds []*string `json:"VarIds,omitnil,omitempty" name:"VarIds"`
+
+	// 按变量名称关键词搜索
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 起始偏移量（默认0）
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限定数量（默认15）
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 按变量类型过滤，默认查询所有类型(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO)
+	VarType *string `json:"VarType,omitnil,omitempty" name:"VarType"`
+}
+
+func (r *GetVarListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetVarListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppBizId")
+	delete(f, "VarIds")
+	delete(f, "Keyword")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "VarType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetVarListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetVarListResponseParams struct {
+	// 变量总数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 变量信息列表
+	List []*TaskFLowVar `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetVarListResponse struct {
+	*tchttp.BaseResponse
+	Response *GetVarListResponseParams `json:"Response"`
+}
+
+func (r *GetVarListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetVarListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10333,6 +10506,22 @@ type SummaryOutput struct {
 	// 自定义要求指令
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RequireCommand *string `json:"RequireCommand,omitnil,omitempty" name:"RequireCommand"`
+}
+
+type TaskFLowVar struct {
+	// 变量ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VarId *string `json:"VarId,omitnil,omitempty" name:"VarId"`
+
+	// 变量名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VarName *string `json:"VarName,omitnil,omitempty" name:"VarName"`
+
+	// 变量描述（默认为"-"）
+	VarDesc *string `json:"VarDesc,omitnil,omitempty" name:"VarDesc"`
+
+	// 变量类型 (STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO)
+	VarType *string `json:"VarType,omitnil,omitempty" name:"VarType"`
 }
 
 type TaskFlowInfo struct {

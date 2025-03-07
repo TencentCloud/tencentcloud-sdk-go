@@ -5959,6 +5959,30 @@ type ModifyProjectRequestParams struct {
 
 	// 应用描述(可选，最长为 1000字符)
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 启动kafka配置
+	EnableKafka *uint64 `json:"EnableKafka,omitnil,omitempty" name:"EnableKafka"`
+
+	// kafka_host
+	KafkaHost *string `json:"KafkaHost,omitnil,omitempty" name:"KafkaHost"`
+
+	// topic
+	KafkaTopic *string `json:"KafkaTopic,omitnil,omitempty" name:"KafkaTopic"`
+
+	// kafka_version
+	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
+
+	// kafka_username
+	SaslUserName *string `json:"SaslUserName,omitnil,omitempty" name:"SaslUserName"`
+
+	// kafka_pwd
+	SaslPassword *string `json:"SaslPassword,omitnil,omitempty" name:"SaslPassword"`
+
+	// SaslMechanism
+	SaslMechanism *string `json:"SaslMechanism,omitnil,omitempty" name:"SaslMechanism"`
+
+	// sink_id，日知汇算子id
+	SinkId *uint64 `json:"SinkId,omitnil,omitempty" name:"SinkId"`
 }
 
 type ModifyProjectRequest struct {
@@ -5990,6 +6014,30 @@ type ModifyProjectRequest struct {
 
 	// 应用描述(可选，最长为 1000字符)
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 启动kafka配置
+	EnableKafka *uint64 `json:"EnableKafka,omitnil,omitempty" name:"EnableKafka"`
+
+	// kafka_host
+	KafkaHost *string `json:"KafkaHost,omitnil,omitempty" name:"KafkaHost"`
+
+	// topic
+	KafkaTopic *string `json:"KafkaTopic,omitnil,omitempty" name:"KafkaTopic"`
+
+	// kafka_version
+	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
+
+	// kafka_username
+	SaslUserName *string `json:"SaslUserName,omitnil,omitempty" name:"SaslUserName"`
+
+	// kafka_pwd
+	SaslPassword *string `json:"SaslPassword,omitnil,omitempty" name:"SaslPassword"`
+
+	// SaslMechanism
+	SaslMechanism *string `json:"SaslMechanism,omitnil,omitempty" name:"SaslMechanism"`
+
+	// sink_id，日知汇算子id
+	SinkId *uint64 `json:"SinkId,omitnil,omitempty" name:"SinkId"`
 }
 
 func (r *ModifyProjectRequest) ToJsonString() string {
@@ -6013,6 +6061,14 @@ func (r *ModifyProjectRequest) FromJsonString(s string) error {
 	delete(f, "EnableURLGroup")
 	delete(f, "Type")
 	delete(f, "Desc")
+	delete(f, "EnableKafka")
+	delete(f, "KafkaHost")
+	delete(f, "KafkaTopic")
+	delete(f, "KafkaVersion")
+	delete(f, "SaslUserName")
+	delete(f, "SaslPassword")
+	delete(f, "SaslMechanism")
+	delete(f, "SinkId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyProjectRequest has unknown keys!", "")
 	}
@@ -6085,6 +6141,9 @@ type ReleaseFile struct {
 type ResumeInstanceRequestParams struct {
 	// 需要恢复的实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 修改是否包括白名单
+	IsModifyAll *bool `json:"IsModifyAll,omitnil,omitempty" name:"IsModifyAll"`
 }
 
 type ResumeInstanceRequest struct {
@@ -6092,6 +6151,9 @@ type ResumeInstanceRequest struct {
 	
 	// 需要恢复的实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 修改是否包括白名单
+	IsModifyAll *bool `json:"IsModifyAll,omitnil,omitempty" name:"IsModifyAll"`
 }
 
 func (r *ResumeInstanceRequest) ToJsonString() string {
@@ -6107,6 +6169,7 @@ func (r *ResumeInstanceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "IsModifyAll")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResumeInstanceRequest has unknown keys!", "")
 	}
@@ -6397,6 +6460,9 @@ type ScoreInfo struct {
 type StopInstanceRequestParams struct {
 	// 需要停止的实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 修改是否包括白名单
+	IsModifyAll *bool `json:"IsModifyAll,omitnil,omitempty" name:"IsModifyAll"`
 }
 
 type StopInstanceRequest struct {
@@ -6404,6 +6470,9 @@ type StopInstanceRequest struct {
 	
 	// 需要停止的实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 修改是否包括白名单
+	IsModifyAll *bool `json:"IsModifyAll,omitnil,omitempty" name:"IsModifyAll"`
 }
 
 func (r *StopInstanceRequest) ToJsonString() string {
@@ -6419,6 +6488,7 @@ func (r *StopInstanceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "IsModifyAll")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopInstanceRequest has unknown keys!", "")
 	}

@@ -3733,6 +3733,102 @@ type PublicAccessRule struct {
 }
 
 // Predefined struct for user
+type PublishMessageRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 消息 payload，需要按 encoding 指定的编码方式进行编码
+	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
+
+	// 消息目的主题，该参数与 TargetClientId 二选一
+	TargetTopic *string `json:"TargetTopic,omitnil,omitempty" name:"TargetTopic"`
+
+	// 消息目的客户端 ID，该参数与 TargetTopic 二选一
+	TargetClientId *string `json:"TargetClientId,omitnil,omitempty" name:"TargetClientId"`
+
+	// 消息 payload 编码，可选 plain 或 base64，默认为 plain（即不编码）
+	Encoding *string `json:"Encoding,omitnil,omitempty" name:"Encoding"`
+
+	// 消息的服务质量等级，默认为 1
+	Qos *int64 `json:"Qos,omitnil,omitempty" name:"Qos"`
+
+	// 是否为保留消息，默认为 false，且仅支持发布到主题的消息设置为 true
+	Retain *bool `json:"Retain,omitnil,omitempty" name:"Retain"`
+}
+
+type PublishMessageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 消息 payload，需要按 encoding 指定的编码方式进行编码
+	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
+
+	// 消息目的主题，该参数与 TargetClientId 二选一
+	TargetTopic *string `json:"TargetTopic,omitnil,omitempty" name:"TargetTopic"`
+
+	// 消息目的客户端 ID，该参数与 TargetTopic 二选一
+	TargetClientId *string `json:"TargetClientId,omitnil,omitempty" name:"TargetClientId"`
+
+	// 消息 payload 编码，可选 plain 或 base64，默认为 plain（即不编码）
+	Encoding *string `json:"Encoding,omitnil,omitempty" name:"Encoding"`
+
+	// 消息的服务质量等级，默认为 1
+	Qos *int64 `json:"Qos,omitnil,omitempty" name:"Qos"`
+
+	// 是否为保留消息，默认为 false，且仅支持发布到主题的消息设置为 true
+	Retain *bool `json:"Retain,omitnil,omitempty" name:"Retain"`
+}
+
+func (r *PublishMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PublishMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Payload")
+	delete(f, "TargetTopic")
+	delete(f, "TargetClientId")
+	delete(f, "Encoding")
+	delete(f, "Qos")
+	delete(f, "Retain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PublishMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PublishMessageResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type PublishMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *PublishMessageResponseParams `json:"Response"`
+}
+
+func (r *PublishMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PublishMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RegisterCaCertificateRequestParams struct {
 	// 集群id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

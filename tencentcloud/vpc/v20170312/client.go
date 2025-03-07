@@ -18496,6 +18496,7 @@ func NewEnableCcnRoutesResponse() (response *EnableCcnRoutesResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNROUTECIDROVERLAP = "UnsupportedOperation.CcnRouteCidrOverlap"
 //  UNSUPPORTEDOPERATION_ECMP = "UnsupportedOperation.Ecmp"
 func (c *Client) EnableCcnRoutes(request *EnableCcnRoutesRequest) (response *EnableCcnRoutesResponse, err error) {
     return c.EnableCcnRoutesWithContext(context.Background(), request)
@@ -18509,6 +18510,7 @@ func (c *Client) EnableCcnRoutes(request *EnableCcnRoutesRequest) (response *Ena
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNROUTECIDROVERLAP = "UnsupportedOperation.CcnRouteCidrOverlap"
 //  UNSUPPORTEDOPERATION_ECMP = "UnsupportedOperation.Ecmp"
 func (c *Client) EnableCcnRoutesWithContext(ctx context.Context, request *EnableCcnRoutesRequest) (response *EnableCcnRoutesResponse, err error) {
     if request == nil {

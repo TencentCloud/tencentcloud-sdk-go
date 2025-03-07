@@ -1019,27 +1019,27 @@ func (r *DeleteDeviceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDeviceResourceRequestParams struct {
-	// 产品ID
-	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
-
 	// 资源名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
 }
 
 type DeleteDeviceResourceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 产品ID
-	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
-
 	// 资源名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitnil,omitempty" name:"ProductID"`
 }
 
 func (r *DeleteDeviceResourceRequest) ToJsonString() string {
@@ -1054,9 +1054,9 @@ func (r *DeleteDeviceResourceRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ProductID")
 	delete(f, "Name")
 	delete(f, "DeviceName")
+	delete(f, "ProductID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDeviceResourceRequest has unknown keys!", "")
 	}

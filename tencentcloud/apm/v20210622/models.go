@@ -849,7 +849,10 @@ type DescribeGeneralOTSpanListResponseParams struct {
 	// 总数量
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 装有查询结果 Spans 的 Trace 结构体。OpenTelemetry 标准 Trace 结构体哈希后的字符串，先将 Trace 利用 ptrace.JSONMarshaler 转换成 Json 字符串，再用 gzip 压缩，最后转换成 base64 标准的字符串。
+	// Spans字段中包含了链路数据的全部内容，由于数据经过了压缩，需要对结果进行如下三步转换，以还原始的文本。
+	// 1. 将Spans字段中的文本进行 Base64 解码，得到经过压缩后字节数组。
+	// 2. 使用 gzip 对压缩后的字节数组进行解压，得到压缩前的字节数组。
+	// 3. 使用 UTF-8 字符集，将压缩前的字节数组转换为文本。
 	Spans *string `json:"Spans,omitnil,omitempty" name:"Spans"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1174,17 +1177,17 @@ func (r *DescribeMetricRecordsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeServiceOverviewRequestParams struct {
-	// 指标列表
-	Metrics []*QueryMetricItem `json:"Metrics,omitnil,omitempty" name:"Metrics"`
-
 	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 过滤条件
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+	// 指标列表
+	Metrics []*QueryMetricItem `json:"Metrics,omitnil,omitempty" name:"Metrics"`
 
 	// 聚合维度
 	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 开始时间（单位：秒）
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
@@ -1208,17 +1211,17 @@ type DescribeServiceOverviewRequestParams struct {
 type DescribeServiceOverviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 指标列表
-	Metrics []*QueryMetricItem `json:"Metrics,omitnil,omitempty" name:"Metrics"`
-
 	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 过滤条件
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+	// 指标列表
+	Metrics []*QueryMetricItem `json:"Metrics,omitnil,omitempty" name:"Metrics"`
 
 	// 聚合维度
 	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 开始时间（单位：秒）
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
@@ -1251,10 +1254,10 @@ func (r *DescribeServiceOverviewRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Metrics")
 	delete(f, "InstanceId")
-	delete(f, "Filters")
+	delete(f, "Metrics")
 	delete(f, "GroupBy")
+	delete(f, "Filters")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "OrderBy")
@@ -1293,20 +1296,20 @@ func (r *DescribeServiceOverviewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTagValuesRequestParams struct {
-	// 维度名
-	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
-
 	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 过滤条件
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+	// 维度名
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 开始时间（单位为秒）
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间（单位为秒）
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// Or 过滤条件
 	OrFilters []*Filter `json:"OrFilters,omitnil,omitempty" name:"OrFilters"`
@@ -1318,20 +1321,20 @@ type DescribeTagValuesRequestParams struct {
 type DescribeTagValuesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 维度名
-	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
-
 	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 过滤条件
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+	// 维度名
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 开始时间（单位为秒）
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间（单位为秒）
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// Or 过滤条件
 	OrFilters []*Filter `json:"OrFilters,omitnil,omitempty" name:"OrFilters"`
@@ -1352,11 +1355,11 @@ func (r *DescribeTagValuesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "TagKey")
 	delete(f, "InstanceId")
-	delete(f, "Filters")
+	delete(f, "TagKey")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "Filters")
 	delete(f, "OrFilters")
 	delete(f, "Type")
 	if len(f) > 0 {

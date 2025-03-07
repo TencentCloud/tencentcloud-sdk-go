@@ -3017,7 +3017,7 @@ type DescribeSampleLogsRequestParams struct {
 	// 测试任务ID
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容。过期时间1小时
+	// 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容。过期时间1小时，不与 Offset  参数同时使用
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
 	// 日志开始时间
@@ -3029,14 +3029,17 @@ type DescribeSampleLogsRequestParams struct {
 	// 日志级别debug,info,error
 	SeverityText *string `json:"SeverityText,omitnil,omitempty" name:"SeverityText"`
 
-	// ap-shanghai, ap-guangzhou
+	// 地域
 	InstanceRegion *string `json:"InstanceRegion,omitnil,omitempty" name:"InstanceRegion"`
 
 	// 施压引擎节点IP
 	Instance *string `json:"Instance,omitnil,omitempty" name:"Instance"`
 
-	// request 代表采样日志,可为不填
+	// request 代表采样日志,engine 代表引擎日志，console 代表用户打印日志
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 日志偏移量，不与Context 参数同时使用
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回日志条数，最大100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -3069,7 +3072,7 @@ type DescribeSampleLogsRequest struct {
 	// 测试任务ID
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容。过期时间1小时
+	// 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容。过期时间1小时，不与 Offset  参数同时使用
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
 	// 日志开始时间
@@ -3081,14 +3084,17 @@ type DescribeSampleLogsRequest struct {
 	// 日志级别debug,info,error
 	SeverityText *string `json:"SeverityText,omitnil,omitempty" name:"SeverityText"`
 
-	// ap-shanghai, ap-guangzhou
+	// 地域
 	InstanceRegion *string `json:"InstanceRegion,omitnil,omitempty" name:"InstanceRegion"`
 
 	// 施压引擎节点IP
 	Instance *string `json:"Instance,omitnil,omitempty" name:"Instance"`
 
-	// request 代表采样日志,可为不填
+	// request 代表采样日志,engine 代表引擎日志，console 代表用户打印日志
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 日志偏移量，不与Context 参数同时使用
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回日志条数，最大100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -3131,6 +3137,7 @@ func (r *DescribeSampleLogsRequest) FromJsonString(s string) error {
 	delete(f, "InstanceRegion")
 	delete(f, "Instance")
 	delete(f, "LogType")
+	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "ReactionTimeRange")
 	delete(f, "Status")
@@ -3188,6 +3195,9 @@ type DescribeSampleMatrixBatchQueryRequestParams struct {
 
 	// 查询语句
 	Queries []*InternalMetricQuery `json:"Queries,omitnil,omitempty" name:"Queries"`
+
+	// 最多返回的数据点个数
+	MaxPoint *int64 `json:"MaxPoint,omitnil,omitempty" name:"MaxPoint"`
 }
 
 type DescribeSampleMatrixBatchQueryRequest struct {
@@ -3204,6 +3214,9 @@ type DescribeSampleMatrixBatchQueryRequest struct {
 
 	// 查询语句
 	Queries []*InternalMetricQuery `json:"Queries,omitnil,omitempty" name:"Queries"`
+
+	// 最多返回的数据点个数
+	MaxPoint *int64 `json:"MaxPoint,omitnil,omitempty" name:"MaxPoint"`
 }
 
 func (r *DescribeSampleMatrixBatchQueryRequest) ToJsonString() string {
@@ -3222,6 +3235,7 @@ func (r *DescribeSampleMatrixBatchQueryRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "ScenarioId")
 	delete(f, "Queries")
+	delete(f, "MaxPoint")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSampleMatrixBatchQueryRequest has unknown keys!", "")
 	}
@@ -3276,6 +3290,9 @@ type DescribeSampleMatrixQueryRequestParams struct {
 
 	// 分组；取值范围参见 DescribeMetricLabelWithValues 接口返回的指标及其支持的标签名
 	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
+
+	// 返回的最大数据点个数
+	MaxPoint *int64 `json:"MaxPoint,omitnil,omitempty" name:"MaxPoint"`
 }
 
 type DescribeSampleMatrixQueryRequest struct {
@@ -3301,6 +3318,9 @@ type DescribeSampleMatrixQueryRequest struct {
 
 	// 分组；取值范围参见 DescribeMetricLabelWithValues 接口返回的指标及其支持的标签名
 	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
+
+	// 返回的最大数据点个数
+	MaxPoint *int64 `json:"MaxPoint,omitnil,omitempty" name:"MaxPoint"`
 }
 
 func (r *DescribeSampleMatrixQueryRequest) ToJsonString() string {
@@ -3322,6 +3342,7 @@ func (r *DescribeSampleMatrixQueryRequest) FromJsonString(s string) error {
 	delete(f, "Aggregation")
 	delete(f, "Filters")
 	delete(f, "GroupBy")
+	delete(f, "MaxPoint")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSampleMatrixQueryRequest has unknown keys!", "")
 	}
@@ -4644,6 +4665,10 @@ type ScriptInfo struct {
 
 	// 文件 ID
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 文件是否已上传，如果已上传，则可以不必填写 EncodedContent,EncodedHar 等内容。
+	// 主要用于较大长度脚本上传。
+	Uploaded *bool `json:"Uploaded,omitnil,omitempty" name:"Uploaded"`
 }
 
 type ScriptOrigin struct {
