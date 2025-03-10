@@ -843,6 +843,67 @@ func (r *BindOrganizationMemberAuthAccountResponse) FromJsonString(s string) err
 }
 
 // Predefined struct for user
+type BindOrganizationPolicySubAccountRequestParams struct {
+	// 策略ID。
+	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 组织管理员子账号Uin列表。最大5个
+	OrgSubAccountUins []*int64 `json:"OrgSubAccountUins,omitnil,omitempty" name:"OrgSubAccountUins"`
+}
+
+type BindOrganizationPolicySubAccountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 策略ID。
+	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 组织管理员子账号Uin列表。最大5个
+	OrgSubAccountUins []*int64 `json:"OrgSubAccountUins,omitnil,omitempty" name:"OrgSubAccountUins"`
+}
+
+func (r *BindOrganizationPolicySubAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindOrganizationPolicySubAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PolicyId")
+	delete(f, "OrgSubAccountUins")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindOrganizationPolicySubAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindOrganizationPolicySubAccountResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BindOrganizationPolicySubAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *BindOrganizationPolicySubAccountResponseParams `json:"Response"`
+}
+
+func (r *BindOrganizationPolicySubAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindOrganizationPolicySubAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CancelOrganizationMemberAuthAccountRequestParams struct {
 	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
@@ -907,6 +968,67 @@ func (r *CancelOrganizationMemberAuthAccountResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CancelOrganizationMemberAuthAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelOrganizationPolicySubAccountRequestParams struct {
+	// 策略ID。
+	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 组织管理员子账号Uin列表。最大5个
+	OrgSubAccountUins []*int64 `json:"OrgSubAccountUins,omitnil,omitempty" name:"OrgSubAccountUins"`
+}
+
+type CancelOrganizationPolicySubAccountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 策略ID。
+	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 组织管理员子账号Uin列表。最大5个
+	OrgSubAccountUins []*int64 `json:"OrgSubAccountUins,omitnil,omitempty" name:"OrgSubAccountUins"`
+}
+
+func (r *CancelOrganizationPolicySubAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelOrganizationPolicySubAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PolicyId")
+	delete(f, "OrgSubAccountUins")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelOrganizationPolicySubAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelOrganizationPolicySubAccountResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CancelOrganizationPolicySubAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelOrganizationPolicySubAccountResponseParams `json:"Response"`
+}
+
+func (r *CancelOrganizationPolicySubAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelOrganizationPolicySubAccountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

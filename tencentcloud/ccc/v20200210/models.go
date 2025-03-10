@@ -906,6 +906,9 @@ type CreateAICallRequestParams struct {
 
 	// 通话内容提取配置
 	ExtractConfig []*AICallExtractConfigElement `json:"ExtractConfig,omitnil,omitempty" name:"ExtractConfig"`
+
+	// 模型温度控制
+	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 }
 
 type CreateAICallRequest struct {
@@ -1156,6 +1159,9 @@ type CreateAICallRequest struct {
 
 	// 通话内容提取配置
 	ExtractConfig []*AICallExtractConfigElement `json:"ExtractConfig,omitnil,omitempty" name:"ExtractConfig"`
+
+	// 模型温度控制
+	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 }
 
 func (r *CreateAICallRequest) ToJsonString() string {
@@ -1197,6 +1203,7 @@ func (r *CreateAICallRequest) FromJsonString(s string) error {
 	delete(f, "PromptVariables")
 	delete(f, "VadSilenceTime")
 	delete(f, "ExtractConfig")
+	delete(f, "Temperature")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAICallRequest has unknown keys!", "")
 	}

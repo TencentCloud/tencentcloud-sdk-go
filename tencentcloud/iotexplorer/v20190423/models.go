@@ -844,6 +844,9 @@ type CloudStorageAIServiceTask struct {
 	// 任务输出文件列表
 	Files []*string `json:"Files,omitnil,omitempty" name:"Files"`
 
+	// 任务输出文件信息列表
+	FilesInfo []*CloudStorageAIServiceTaskFileInfo `json:"FilesInfo,omitnil,omitempty" name:"FilesInfo"`
+
 	// 创建时间
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
@@ -852,6 +855,31 @@ type CloudStorageAIServiceTask struct {
 
 	// 自定义任务 ID
 	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
+}
+
+type CloudStorageAIServiceTaskFileInfo struct {
+	// 文件名称（含扩展名）
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 文件大小（单位：bytes）
+	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+
+	// 文件下载 URL
+	DownloadURL *string `json:"DownloadURL,omitnil,omitempty" name:"DownloadURL"`
+
+	// 文件的 MIME Type
+	MimeType *string `json:"MimeType,omitnil,omitempty" name:"MimeType"`
+
+	// 视频文件元数据（仅当文件为视频类型时包含该字段）
+	VideoMetaInfo *CloudStorageAIServiceTaskVideoMetaInfo `json:"VideoMetaInfo,omitnil,omitempty" name:"VideoMetaInfo"`
+}
+
+type CloudStorageAIServiceTaskVideoMetaInfo struct {
+	// 视频对应的缩略图的文件名称（含扩展名）
+	ThumbnailFileName *string `json:"ThumbnailFileName,omitnil,omitempty" name:"ThumbnailFileName"`
+
+	// 视频时长（单位：毫秒）
+	DurationMilliSeconds *int64 `json:"DurationMilliSeconds,omitnil,omitempty" name:"DurationMilliSeconds"`
 }
 
 type CloudStorageEvent struct {
@@ -4030,6 +4058,22 @@ type DescribeCloudStorageAIServiceTasksRequestParams struct {
 
 	// 通道 ID
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 设备名称列表。
+	// 
+	// 当需要同时查询多台设备的任务列表时传入，优先级高于参数 `DeviceName`
+	DeviceNames []*string `json:"DeviceNames,omitnil,omitempty" name:"DeviceNames"`
+
+	// 查询任务时间范围的起始时间（秒级 UNIX 时间戳）
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询任务时间范围的结束时间（秒级 UNIX 时间戳）
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 下载 URL 的过期时间。
+	// 
+	// 若传入该参数，则响应中将包含所有文件的下载 URL
+	FileURLExpireTime *int64 `json:"FileURLExpireTime,omitnil,omitempty" name:"FileURLExpireTime"`
 }
 
 type DescribeCloudStorageAIServiceTasksRequest struct {
@@ -4066,6 +4110,22 @@ type DescribeCloudStorageAIServiceTasksRequest struct {
 
 	// 通道 ID
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 设备名称列表。
+	// 
+	// 当需要同时查询多台设备的任务列表时传入，优先级高于参数 `DeviceName`
+	DeviceNames []*string `json:"DeviceNames,omitnil,omitempty" name:"DeviceNames"`
+
+	// 查询任务时间范围的起始时间（秒级 UNIX 时间戳）
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询任务时间范围的结束时间（秒级 UNIX 时间戳）
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 下载 URL 的过期时间。
+	// 
+	// 若传入该参数，则响应中将包含所有文件的下载 URL
+	FileURLExpireTime *int64 `json:"FileURLExpireTime,omitnil,omitempty" name:"FileURLExpireTime"`
 }
 
 func (r *DescribeCloudStorageAIServiceTasksRequest) ToJsonString() string {
@@ -4088,6 +4148,10 @@ func (r *DescribeCloudStorageAIServiceTasksRequest) FromJsonString(s string) err
 	delete(f, "Status")
 	delete(f, "UserId")
 	delete(f, "ChannelId")
+	delete(f, "DeviceNames")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "FileURLExpireTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudStorageAIServiceTasksRequest has unknown keys!", "")
 	}

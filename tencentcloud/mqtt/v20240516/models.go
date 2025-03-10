@@ -1893,6 +1893,77 @@ func (r *DescribeCaCertificatesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeClientListRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 客户端名
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 客户端数量限制,最大1024，默认1024
+	Number *string `json:"Number,omitnil,omitempty" name:"Number"`
+}
+
+type DescribeClientListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 客户端名
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 客户端数量限制,最大1024，默认1024
+	Number *string `json:"Number,omitnil,omitempty" name:"Number"`
+}
+
+func (r *DescribeClientListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClientListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ClientId")
+	delete(f, "Number")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClientListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClientListResponseParams struct {
+	// 客户端列表
+	Clients []*MQTTClientInfo `json:"Clients,omitnil,omitempty" name:"Clients"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClientListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClientListResponseParams `json:"Response"`
+}
+
+func (r *DescribeClientListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClientListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDeviceCertificateRequestParams struct {
 	// 设备证书sn
 	DeviceCertificateSn *string `json:"DeviceCertificateSn,omitnil,omitempty" name:"DeviceCertificateSn"`
@@ -2438,6 +2509,113 @@ func (r *DescribeInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMessageListRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主题
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 请求任务id
+	TaskRequestId *string `json:"TaskRequestId,omitnil,omitempty" name:"TaskRequestId"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeMessageListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主题
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 请求任务id
+	TaskRequestId *string `json:"TaskRequestId,omitnil,omitempty" name:"TaskRequestId"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeMessageListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMessageListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Topic")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "TaskRequestId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMessageListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMessageListResponseParams struct {
+	// 查询总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 消息记录列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*MQTTMessageItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 请求任务id
+	TaskRequestId *string `json:"TaskRequestId,omitnil,omitempty" name:"TaskRequestId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMessageListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMessageListResponseParams `json:"Response"`
+}
+
+func (r *DescribeMessageListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMessageListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeProductSKUListRequestParams struct {
 
 }
@@ -2493,6 +2671,70 @@ func (r *DescribeProductSKUListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeProductSKUListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSharedSubscriptionLagRequestParams struct {
+	// 集群id	
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 共享订阅表达式
+	SharedSubscription *string `json:"SharedSubscription,omitnil,omitempty" name:"SharedSubscription"`
+}
+
+type DescribeSharedSubscriptionLagRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id	
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 共享订阅表达式
+	SharedSubscription *string `json:"SharedSubscription,omitnil,omitempty" name:"SharedSubscription"`
+}
+
+func (r *DescribeSharedSubscriptionLagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSharedSubscriptionLagRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SharedSubscription")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSharedSubscriptionLagRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSharedSubscriptionLagResponseParams struct {
+	// 堆积值
+	Lag *int64 `json:"Lag,omitnil,omitempty" name:"Lag"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSharedSubscriptionLagResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSharedSubscriptionLagResponseParams `json:"Response"`
+}
+
+func (r *DescribeSharedSubscriptionLagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSharedSubscriptionLagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2836,6 +3078,58 @@ type MQTTAuthenticatorItem struct {
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
+type MQTTClientInfo struct {
+	// 客户端唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 客户端网络地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientAddress *string `json:"ClientAddress,omitnil,omitempty" name:"ClientAddress"`
+
+	// MQTT 协议版本，4 表示 MQTT 3.1.1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtocolVersion *int64 `json:"ProtocolVersion,omitnil,omitempty" name:"ProtocolVersion"`
+
+	// 保持连接时间，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Keepalive *int64 `json:"Keepalive,omitnil,omitempty" name:"Keepalive"`
+
+	// 连接状态，CONNECTED 已连接，DISCONNECTED 未连接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectionStatus *string `json:"ConnectionStatus,omitnil,omitempty" name:"ConnectionStatus"`
+
+	// 客户端创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 上次建立连接时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectTime *int64 `json:"ConnectTime,omitnil,omitempty" name:"ConnectTime"`
+
+	// 上次断开连接时间，仅对持久会话（cleanSession=false）并且客户端当前未连接时有意义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisconnectTime *int64 `json:"DisconnectTime,omitnil,omitempty" name:"DisconnectTime"`
+
+	// 客户端的订阅列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MQTTClientSubscriptions []*MQTTClientSubscription `json:"MQTTClientSubscriptions,omitnil,omitempty" name:"MQTTClientSubscriptions"`
+}
+
+type MQTTClientSubscription struct {
+	// topic 订阅
+	TopicFilter *string `json:"TopicFilter,omitnil,omitempty" name:"TopicFilter"`
+
+	// 服务质量等级
+	Qos *int64 `json:"Qos,omitnil,omitempty" name:"Qos"`
+
+	// 堆积数量
+	Lag *int64 `json:"Lag,omitnil,omitempty" name:"Lag"`
+
+	// 投递未确认数量
+	Inflight *int64 `json:"Inflight,omitnil,omitempty" name:"Inflight"`
+}
+
 type MQTTEndpointItem struct {
 	// 类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2952,6 +3246,44 @@ type MQTTInstanceItem struct {
 	// 最大订阅数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxSubscription *int64 `json:"MaxSubscription,omitnil,omitempty" name:"MaxSubscription"`
+}
+
+type MQTTMessageItem struct {
+	// 消息ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
+
+	// 消息tag
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 消息key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Keys *string `json:"Keys,omitnil,omitempty" name:"Keys"`
+
+	// 客户端地址	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProducerAddr *string `json:"ProducerAddr,omitnil,omitempty" name:"ProducerAddr"`
+
+	// 消息发送时间	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProduceTime *string `json:"ProduceTime,omitnil,omitempty" name:"ProduceTime"`
+
+	// 死信重发次数	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeadLetterResendTimes *int64 `json:"DeadLetterResendTimes,omitnil,omitempty" name:"DeadLetterResendTimes"`
+
+	// 死信重发成功次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeadLetterResendSuccessTimes *int64 `json:"DeadLetterResendSuccessTimes,omitnil,omitempty" name:"DeadLetterResendSuccessTimes"`
+
+	// 子topic
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubTopic *string `json:"SubTopic,omitnil,omitempty" name:"SubTopic"`
+
+	// 消息质量等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Qos *string `json:"Qos,omitnil,omitempty" name:"Qos"`
 }
 
 type MQTTTopicItem struct {

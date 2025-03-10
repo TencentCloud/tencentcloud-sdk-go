@@ -943,6 +943,59 @@ func (c *Client) QueryTrainPortraitModelJobWithContext(ctx context.Context, requ
     return
 }
 
+func NewRefineImageRequest() (request *RefineImageRequest) {
+    request = &RefineImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("aiart", APIVersion, "RefineImage")
+    
+    
+    return
+}
+
+func NewRefineImageResponse() (response *RefineImageResponse) {
+    response = &RefineImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RefineImage
+// 将图像变清晰，增强图像细节。变清晰后的图片将保持原图比例，长边为2048。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+func (c *Client) RefineImage(request *RefineImageRequest) (response *RefineImageResponse, err error) {
+    return c.RefineImageWithContext(context.Background(), request)
+}
+
+// RefineImage
+// 将图像变清晰，增强图像细节。变清晰后的图片将保持原图比例，长边为2048。
+//
+// 默认提供1个并发，代表最多能同时处理1个已提交的任务。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+func (c *Client) RefineImageWithContext(ctx context.Context, request *RefineImageRequest) (response *RefineImageResponse, err error) {
+    if request == nil {
+        request = NewRefineImageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RefineImage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRefineImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReplaceBackgroundRequest() (request *ReplaceBackgroundRequest) {
     request = &ReplaceBackgroundRequest{
         BaseRequest: &tchttp.BaseRequest{},

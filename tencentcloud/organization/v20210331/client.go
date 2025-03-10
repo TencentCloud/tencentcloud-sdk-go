@@ -786,6 +786,67 @@ func (c *Client) BindOrganizationMemberAuthAccountWithContext(ctx context.Contex
     return
 }
 
+func NewBindOrganizationPolicySubAccountRequest() (request *BindOrganizationPolicySubAccountRequest) {
+    request = &BindOrganizationPolicySubAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "BindOrganizationPolicySubAccount")
+    
+    
+    return
+}
+
+func NewBindOrganizationPolicySubAccountResponse() (response *BindOrganizationPolicySubAccountResponse) {
+    response = &BindOrganizationPolicySubAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BindOrganizationPolicySubAccount
+// 绑定成员访问授权策略和组织管理员子账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATEPOLICY = "FailedOperation.OperatePolicy"
+//  FAILEDOPERATION_SUBACCOUNTNOTEXIST = "FailedOperation.SubAccountNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_MEMBERPOLICYNOTEXIST = "ResourceNotFound.MemberPolicyNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BindOrganizationPolicySubAccount(request *BindOrganizationPolicySubAccountRequest) (response *BindOrganizationPolicySubAccountResponse, err error) {
+    return c.BindOrganizationPolicySubAccountWithContext(context.Background(), request)
+}
+
+// BindOrganizationPolicySubAccount
+// 绑定成员访问授权策略和组织管理员子账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATEPOLICY = "FailedOperation.OperatePolicy"
+//  FAILEDOPERATION_SUBACCOUNTNOTEXIST = "FailedOperation.SubAccountNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_MEMBERPOLICYNOTEXIST = "ResourceNotFound.MemberPolicyNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BindOrganizationPolicySubAccountWithContext(ctx context.Context, request *BindOrganizationPolicySubAccountRequest) (response *BindOrganizationPolicySubAccountResponse, err error) {
+    if request == nil {
+        request = NewBindOrganizationPolicySubAccountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindOrganizationPolicySubAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindOrganizationPolicySubAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelOrganizationMemberAuthAccountRequest() (request *CancelOrganizationMemberAuthAccountRequest) {
     request = &CancelOrganizationMemberAuthAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -843,6 +904,65 @@ func (c *Client) CancelOrganizationMemberAuthAccountWithContext(ctx context.Cont
     request.SetContext(ctx)
     
     response = NewCancelOrganizationMemberAuthAccountResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCancelOrganizationPolicySubAccountRequest() (request *CancelOrganizationPolicySubAccountRequest) {
+    request = &CancelOrganizationPolicySubAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "CancelOrganizationPolicySubAccount")
+    
+    
+    return
+}
+
+func NewCancelOrganizationPolicySubAccountResponse() (response *CancelOrganizationPolicySubAccountResponse) {
+    response = &CancelOrganizationPolicySubAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CancelOrganizationPolicySubAccount
+// 解绑成员访问授权策略和组织管理员子账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATEPOLICY = "FailedOperation.OperatePolicy"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_MEMBERPOLICYNOTEXIST = "ResourceNotFound.MemberPolicyNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CancelOrganizationPolicySubAccount(request *CancelOrganizationPolicySubAccountRequest) (response *CancelOrganizationPolicySubAccountResponse, err error) {
+    return c.CancelOrganizationPolicySubAccountWithContext(context.Background(), request)
+}
+
+// CancelOrganizationPolicySubAccount
+// 解绑成员访问授权策略和组织管理员子账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATEPOLICY = "FailedOperation.OperatePolicy"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_MEMBERPOLICYNOTEXIST = "ResourceNotFound.MemberPolicyNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CancelOrganizationPolicySubAccountWithContext(ctx context.Context, request *CancelOrganizationPolicySubAccountRequest) (response *CancelOrganizationPolicySubAccountResponse, err error) {
+    if request == nil {
+        request = NewCancelOrganizationPolicySubAccountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelOrganizationPolicySubAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelOrganizationPolicySubAccountResponse()
     err = c.Send(request, response)
     return
 }

@@ -6978,7 +6978,6 @@ type LaunchTemplateVersionData struct {
 
 type LaunchTemplateVersionInfo struct {
 	// 实例启动模板版本号。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LaunchTemplateVersion *uint64 `json:"LaunchTemplateVersion,omitnil,omitempty" name:"LaunchTemplateVersion"`
 
 	// 实例启动模板版本数据详情。
@@ -6994,7 +6993,6 @@ type LaunchTemplateVersionInfo struct {
 	IsDefaultVersion *bool `json:"IsDefaultVersion,omitnil,omitempty" name:"IsDefaultVersion"`
 
 	// 实例启动模板版本描述信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LaunchTemplateVersionDescription *string `json:"LaunchTemplateVersionDescription,omitnil,omitempty" name:"LaunchTemplateVersionDescription"`
 
 	// 创建者。
@@ -8957,11 +8955,9 @@ type ReservedInstancePrice struct {
 	DiscountUsagePrice *float64 `json:"DiscountUsagePrice,omitnil,omitempty" name:"DiscountUsagePrice"`
 
 	// 预支费用的折扣，如20.0代表2折。 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FixedPriceDiscount *float64 `json:"FixedPriceDiscount,omitnil,omitempty" name:"FixedPriceDiscount"`
 
 	// 后续费用的折扣，如20.0代表2折。 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsagePriceDiscount *float64 `json:"UsagePriceDiscount,omitnil,omitempty" name:"UsagePriceDiscount"`
 }
 

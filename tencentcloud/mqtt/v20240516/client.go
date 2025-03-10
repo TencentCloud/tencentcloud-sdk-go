@@ -1295,6 +1295,55 @@ func (c *Client) DescribeCaCertificatesWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeClientListRequest() (request *DescribeClientListRequest) {
+    request = &DescribeClientListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DescribeClientList")
+    
+    
+    return
+}
+
+func NewDescribeClientListResponse() (response *DescribeClientListResponse) {
+    response = &DescribeClientListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClientList
+// 查询 MQTT 客户端详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeClientList(request *DescribeClientListRequest) (response *DescribeClientListResponse, err error) {
+    return c.DescribeClientListWithContext(context.Background(), request)
+}
+
+// DescribeClientList
+// 查询 MQTT 客户端详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeClientListWithContext(ctx context.Context, request *DescribeClientListRequest) (response *DescribeClientListResponse, err error) {
+    if request == nil {
+        request = NewDescribeClientListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClientList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClientListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceCertificateRequest() (request *DescribeDeviceCertificateRequest) {
     request = &DescribeDeviceCertificateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1609,6 +1658,55 @@ func (c *Client) DescribeInstanceListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeMessageListRequest() (request *DescribeMessageListRequest) {
+    request = &DescribeMessageListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DescribeMessageList")
+    
+    
+    return
+}
+
+func NewDescribeMessageListResponse() (response *DescribeMessageListResponse) {
+    response = &DescribeMessageListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMessageList
+// 查询消息列表，如查询死信，请设置ConsumerGroup参数
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeMessageList(request *DescribeMessageListRequest) (response *DescribeMessageListResponse, err error) {
+    return c.DescribeMessageListWithContext(context.Background(), request)
+}
+
+// DescribeMessageList
+// 查询消息列表，如查询死信，请设置ConsumerGroup参数
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeMessageListWithContext(ctx context.Context, request *DescribeMessageListRequest) (response *DescribeMessageListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMessageListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMessageList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMessageListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProductSKUListRequest() (request *DescribeProductSKUListRequest) {
     request = &DescribeProductSKUListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1632,7 +1730,7 @@ func NewDescribeProductSKUListResponse() (response *DescribeProductSKUListRespon
 // 获取产品售卖规格
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeProductSKUList(request *DescribeProductSKUListRequest) (response *DescribeProductSKUListResponse, err error) {
     return c.DescribeProductSKUListWithContext(context.Background(), request)
 }
@@ -1641,7 +1739,7 @@ func (c *Client) DescribeProductSKUList(request *DescribeProductSKUListRequest) 
 // 获取产品售卖规格
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DescribeProductSKUListWithContext(ctx context.Context, request *DescribeProductSKUListRequest) (response *DescribeProductSKUListResponse, err error) {
     if request == nil {
         request = NewDescribeProductSKUListRequest()
@@ -1654,6 +1752,57 @@ func (c *Client) DescribeProductSKUListWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeProductSKUListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSharedSubscriptionLagRequest() (request *DescribeSharedSubscriptionLagRequest) {
+    request = &DescribeSharedSubscriptionLagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DescribeSharedSubscriptionLag")
+    
+    
+    return
+}
+
+func NewDescribeSharedSubscriptionLagResponse() (response *DescribeSharedSubscriptionLagResponse) {
+    response = &DescribeSharedSubscriptionLagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSharedSubscriptionLag
+// 查询共享订阅消息堆积量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeSharedSubscriptionLag(request *DescribeSharedSubscriptionLagRequest) (response *DescribeSharedSubscriptionLagResponse, err error) {
+    return c.DescribeSharedSubscriptionLagWithContext(context.Background(), request)
+}
+
+// DescribeSharedSubscriptionLag
+// 查询共享订阅消息堆积量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeSharedSubscriptionLagWithContext(ctx context.Context, request *DescribeSharedSubscriptionLagRequest) (response *DescribeSharedSubscriptionLagResponse, err error) {
+    if request == nil {
+        request = NewDescribeSharedSubscriptionLagRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSharedSubscriptionLag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSharedSubscriptionLagResponse()
     err = c.Send(request, response)
     return
 }

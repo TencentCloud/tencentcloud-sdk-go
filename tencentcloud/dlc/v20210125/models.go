@@ -12643,6 +12643,9 @@ type Policy struct {
 	// 策略ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 引擎类型
+	EngineGeneration *string `json:"EngineGeneration,omitnil,omitempty" name:"EngineGeneration"`
 }
 
 type Policys struct {

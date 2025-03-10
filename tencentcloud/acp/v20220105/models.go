@@ -388,7 +388,6 @@ type CreateAppScanTaskResponseParams struct {
 	Result *int64 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskID *string `json:"TaskID,omitnil,omitempty" name:"TaskID"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -851,15 +850,12 @@ type DescribeScanTaskReportUrlResponseParams struct {
 	Result *int64 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 诊断报告/堆栈信息/报告json结果下载链接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportUrl *string `json:"ReportUrl,omitnil,omitempty" name:"ReportUrl"`
 
 	// 诊断报告/堆栈/报告json结果的名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportTitle *string `json:"ReportTitle,omitnil,omitempty" name:"ReportTitle"`
 
 	// 诊断json结果内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportResult *string `json:"ReportResult,omitnil,omitempty" name:"ReportResult"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
