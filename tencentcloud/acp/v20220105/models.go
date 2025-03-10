@@ -25,46 +25,36 @@ type AppInfoItem struct {
 	AppPackage *string `json:"AppPackage,omitnil,omitempty" name:"AppPackage"`
 
 	// App名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// App版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppVersion *string `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
 	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// App隐私诊断报告下载链接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportUrl *string `json:"ReportUrl,omitnil,omitempty" name:"ReportUrl"`
 
 	// App隐私诊断报告名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportTitle *string `json:"ReportTitle,omitnil,omitempty" name:"ReportTitle"`
 
 	// App诊断堆栈报告下载链接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BehaviorUrl *string `json:"BehaviorUrl,omitnil,omitempty" name:"BehaviorUrl"`
 
 	// App诊断堆栈报告名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BehaviorTitle *string `json:"BehaviorTitle,omitnil,omitempty" name:"BehaviorTitle"`
 
 	// 诊断高风险项数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HighRiskCount *int64 `json:"HighRiskCount,omitnil,omitempty" name:"HighRiskCount"`
 
 	// 隐私申明文件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivacyTextName *string `json:"PrivacyTextName,omitnil,omitempty" name:"PrivacyTextName"`
 
 	// 软件MD5
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SoftwareMD5 *string `json:"SoftwareMD5,omitnil,omitempty" name:"SoftwareMD5"`
 
 	// 隐私文本MD5
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivacyTextMD5 *string `json:"PrivacyTextMD5,omitnil,omitempty" name:"PrivacyTextMD5"`
 }
 
@@ -79,7 +69,6 @@ type AppTaskData struct {
 	TaskStatus *int64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskErrMsg *string `json:"TaskErrMsg,omitnil,omitempty" name:"TaskErrMsg"`
 
 	// 任务来源,0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android)
@@ -95,7 +84,6 @@ type AppTaskData struct {
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 联系人信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContactName *string `json:"ContactName,omitnil,omitempty" name:"ContactName"`
 }
 
@@ -996,7 +984,6 @@ type ResourceUsageInfoData struct {
 
 type TaskFlowStepsInfo struct {
 	// 流程编号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowNo *string `json:"FlowNo,omitnil,omitempty" name:"FlowNo"`
 
 	// 流程名称
@@ -1006,14 +993,11 @@ type TaskFlowStepsInfo struct {
 	FlowStatus *int64 `json:"FlowStatus,omitnil,omitempty" name:"FlowStatus"`
 
 	// 流程状态描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowStateDesc *string `json:"FlowStateDesc,omitnil,omitempty" name:"FlowStateDesc"`
 
 	// 流程启动时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 流程完成时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }

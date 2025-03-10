@@ -22,6 +22,9 @@ import (
 
 // Predefined struct for user
 type CreateKnowledgeSetRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
 	// 知识库标识
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
@@ -30,11 +33,17 @@ type CreateKnowledgeSetRequestParams struct {
 
 	// 描述
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 知识库的meta信息
+	Meta *string `json:"Meta,omitnil,omitempty" name:"Meta"`
 }
 
 type CreateKnowledgeSetRequest struct {
 	*tchttp.BaseRequest
 	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
 	// 知识库标识
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
@@ -43,6 +52,9 @@ type CreateKnowledgeSetRequest struct {
 
 	// 描述
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 知识库的meta信息
+	Meta *string `json:"Meta,omitnil,omitempty" name:"Meta"`
 }
 
 func (r *CreateKnowledgeSetRequest) ToJsonString() string {
@@ -57,9 +69,11 @@ func (r *CreateKnowledgeSetRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "EnvId")
 	delete(f, "Name")
 	delete(f, "Title")
 	delete(f, "Desc")
+	delete(f, "Meta")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateKnowledgeSetRequest has unknown keys!", "")
 	}
@@ -266,6 +280,9 @@ type DataSourceQueryOption struct {
 
 // Predefined struct for user
 type DeleteKnowledgeDocumentSetRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
 	// 知识库标识
 	CollectionView *string `json:"CollectionView,omitnil,omitempty" name:"CollectionView"`
 
@@ -276,6 +293,9 @@ type DeleteKnowledgeDocumentSetRequestParams struct {
 type DeleteKnowledgeDocumentSetRequest struct {
 	*tchttp.BaseRequest
 	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
 	// 知识库标识
 	CollectionView *string `json:"CollectionView,omitnil,omitempty" name:"CollectionView"`
 
@@ -295,6 +315,7 @@ func (r *DeleteKnowledgeDocumentSetRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "EnvId")
 	delete(f, "CollectionView")
 	delete(f, "Query")
 	if len(f) > 0 {
@@ -336,6 +357,9 @@ type DeleteKnowledgeDocumentSetRsp struct {
 
 // Predefined struct for user
 type DeleteKnowledgeSetRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
 	// 知识库标识
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
@@ -343,6 +367,9 @@ type DeleteKnowledgeSetRequestParams struct {
 type DeleteKnowledgeSetRequest struct {
 	*tchttp.BaseRequest
 	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
 	// 知识库标识
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
@@ -359,6 +386,7 @@ func (r *DeleteKnowledgeSetRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "EnvId")
 	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteKnowledgeSetRequest has unknown keys!", "")
@@ -566,6 +594,9 @@ func (r *DescribeDataSourceListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeKnowledgeDocumentSetDetailRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
 	// 知识库标识
 	CollectionView *string `json:"CollectionView,omitnil,omitempty" name:"CollectionView"`
 
@@ -579,6 +610,9 @@ type DescribeKnowledgeDocumentSetDetailRequestParams struct {
 type DescribeKnowledgeDocumentSetDetailRequest struct {
 	*tchttp.BaseRequest
 	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
 	// 知识库标识
 	CollectionView *string `json:"CollectionView,omitnil,omitempty" name:"CollectionView"`
 
@@ -601,6 +635,7 @@ func (r *DescribeKnowledgeDocumentSetDetailRequest) FromJsonString(s string) err
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "EnvId")
 	delete(f, "CollectionView")
 	delete(f, "DocumentSetName")
 	delete(f, "DocumentSetId")
@@ -647,6 +682,9 @@ type DescribeKnowledgeDocumentSetDetailRsp struct {
 
 // Predefined struct for user
 type DescribeKnowledgeDocumentSetListRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
 	// 知识库标识
 	CollectionView *string `json:"CollectionView,omitnil,omitempty" name:"CollectionView"`
 
@@ -657,6 +695,9 @@ type DescribeKnowledgeDocumentSetListRequestParams struct {
 type DescribeKnowledgeDocumentSetListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
 	// 知识库标识
 	CollectionView *string `json:"CollectionView,omitnil,omitempty" name:"CollectionView"`
 
@@ -676,6 +717,7 @@ func (r *DescribeKnowledgeDocumentSetListRequest) FromJsonString(s string) error
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "EnvId")
 	delete(f, "CollectionView")
 	delete(f, "Query")
 	if len(f) > 0 {
@@ -721,11 +763,17 @@ type DescribeKnowledgeDocumentSetListRsp struct {
 
 // Predefined struct for user
 type DescribeKnowledgeSetListRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
 	// 知识库标识，精准查询
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 知识库名称，精准查询
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 分页起始位
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 查询条数
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -737,11 +785,17 @@ type DescribeKnowledgeSetListRequestParams struct {
 type DescribeKnowledgeSetListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
 	// 知识库标识，精准查询
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 知识库名称，精准查询
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 分页起始位
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 查询条数
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -762,8 +816,10 @@ func (r *DescribeKnowledgeSetListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "EnvId")
 	delete(f, "Name")
 	delete(f, "Title")
+	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "QueryMode")
 	if len(f) > 0 {
@@ -912,6 +968,9 @@ type KnowledgeSet struct {
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 知识库的meta信息
+	Meta *string `json:"Meta,omitnil,omitempty" name:"Meta"`
 }
 
 type KnowledgeSetRsp struct {
@@ -1184,6 +1243,9 @@ type TicketAuthInfo struct {
 
 // Predefined struct for user
 type UpdateKnowledgeSetRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
 	// 知识库标识
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
@@ -1195,11 +1257,17 @@ type UpdateKnowledgeSetRequestParams struct {
 
 	// 状态;ENABLED启用；NOT_ENABLED不启用
 	Active *string `json:"Active,omitnil,omitempty" name:"Active"`
+
+	// 知识库的meta信息
+	Meta *string `json:"Meta,omitnil,omitempty" name:"Meta"`
 }
 
 type UpdateKnowledgeSetRequest struct {
 	*tchttp.BaseRequest
 	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
 	// 知识库标识
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
@@ -1211,6 +1279,9 @@ type UpdateKnowledgeSetRequest struct {
 
 	// 状态;ENABLED启用；NOT_ENABLED不启用
 	Active *string `json:"Active,omitnil,omitempty" name:"Active"`
+
+	// 知识库的meta信息
+	Meta *string `json:"Meta,omitnil,omitempty" name:"Meta"`
 }
 
 func (r *UpdateKnowledgeSetRequest) ToJsonString() string {
@@ -1225,10 +1296,12 @@ func (r *UpdateKnowledgeSetRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "EnvId")
 	delete(f, "Name")
 	delete(f, "Title")
 	delete(f, "Desc")
 	delete(f, "Active")
+	delete(f, "Meta")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateKnowledgeSetRequest has unknown keys!", "")
 	}
@@ -1259,13 +1332,16 @@ func (r *UpdateKnowledgeSetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UploadKnowledgeDocumentSetRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
 	// 知识库标识
 	CollectionView *string `json:"CollectionView,omitnil,omitempty" name:"CollectionView"`
 
 	// 状态;ENABLED启用；NOT_ENABLED不启用
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 文件存储位置的可读地址
+	// 腾讯云文件存储位置的可读地址
 	CosUrl *string `json:"CosUrl,omitnil,omitempty" name:"CosUrl"`
 
 	// 文件类型，例如: .docx, .md
@@ -1287,13 +1363,16 @@ type UploadKnowledgeDocumentSetRequestParams struct {
 type UploadKnowledgeDocumentSetRequest struct {
 	*tchttp.BaseRequest
 	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
 	// 知识库标识
 	CollectionView *string `json:"CollectionView,omitnil,omitempty" name:"CollectionView"`
 
 	// 状态;ENABLED启用；NOT_ENABLED不启用
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 文件存储位置的可读地址
+	// 腾讯云文件存储位置的可读地址
 	CosUrl *string `json:"CosUrl,omitnil,omitempty" name:"CosUrl"`
 
 	// 文件类型，例如: .docx, .md
@@ -1324,6 +1403,7 @@ func (r *UploadKnowledgeDocumentSetRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "EnvId")
 	delete(f, "CollectionView")
 	delete(f, "FileName")
 	delete(f, "CosUrl")

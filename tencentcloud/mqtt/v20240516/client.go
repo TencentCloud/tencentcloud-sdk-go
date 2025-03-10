@@ -1442,6 +1442,55 @@ func (c *Client) DescribeInsPublicEndpointsWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeInsVPCEndpointsRequest() (request *DescribeInsVPCEndpointsRequest) {
+    request = &DescribeInsVPCEndpointsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DescribeInsVPCEndpoints")
+    
+    
+    return
+}
+
+func NewDescribeInsVPCEndpointsResponse() (response *DescribeInsVPCEndpointsResponse) {
+    response = &DescribeInsVPCEndpointsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInsVPCEndpoints
+// 查询MQTT实例公网接入点
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeInsVPCEndpoints(request *DescribeInsVPCEndpointsRequest) (response *DescribeInsVPCEndpointsResponse, err error) {
+    return c.DescribeInsVPCEndpointsWithContext(context.Background(), request)
+}
+
+// DescribeInsVPCEndpoints
+// 查询MQTT实例公网接入点
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeInsVPCEndpointsWithContext(ctx context.Context, request *DescribeInsVPCEndpointsRequest) (response *DescribeInsVPCEndpointsResponse, err error) {
+    if request == nil {
+        request = NewDescribeInsVPCEndpointsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInsVPCEndpoints require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInsVPCEndpointsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceRequest() (request *DescribeInstanceRequest) {
     request = &DescribeInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

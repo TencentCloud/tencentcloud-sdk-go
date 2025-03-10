@@ -527,19 +527,19 @@ type CreateAccountRequestParams struct {
 	// 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 登录用户名，由字母、数字、下划线和连字符组成，长度为1~32位。
+	// 账号名，账号名需要1-32个字符，由字母、数字或特殊字符组成；以字母开头；特殊字符为_-
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 可以登录的主机，与mysql 账号的 host 格式一致，可以支持通配符，例如 %，10.%，10.20.%。
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 账号密码，密码需要 8-32 个字符，不能以 '/' 开头，并且必须包含小写字母、大写字母、数字和符号()~!@#$%^&*-+=_|{}[]:<>,.?/。
+	// 账号密码，密码需要 8\~32 个字符，不能以 '/' 开头，并且至少包含字母、数字和特殊字符 ()~!@#$%^&*-+=_|{}[]:<>,.?/ 中的两项
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 是否创建为只读账号，0：否； 1：只读账号，该账号的sql请求优先选择备机执行，备机延迟时选择主机执行；2：只读账号，优先选择备机执行，备机延迟时操作报错；3：只读账号，优先选择备机执行，忽略备机延迟只读备机；
 	ReadOnly *int64 `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 
-	// 账号备注，可以包含中文、英文字符、常见符号和数字，长度为0~256字符
+	// 账号备注，可以包含中文、英文字符、常见符号和数字，最多256个字符
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 根据传入时间判断备机不可用
@@ -561,19 +561,19 @@ type CreateAccountRequest struct {
 	// 实例 ID，形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 登录用户名，由字母、数字、下划线和连字符组成，长度为1~32位。
+	// 账号名，账号名需要1-32个字符，由字母、数字或特殊字符组成；以字母开头；特殊字符为_-
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 可以登录的主机，与mysql 账号的 host 格式一致，可以支持通配符，例如 %，10.%，10.20.%。
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 账号密码，密码需要 8-32 个字符，不能以 '/' 开头，并且必须包含小写字母、大写字母、数字和符号()~!@#$%^&*-+=_|{}[]:<>,.?/。
+	// 账号密码，密码需要 8\~32 个字符，不能以 '/' 开头，并且至少包含字母、数字和特殊字符 ()~!@#$%^&*-+=_|{}[]:<>,.?/ 中的两项
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 是否创建为只读账号，0：否； 1：只读账号，该账号的sql请求优先选择备机执行，备机延迟时选择主机执行；2：只读账号，优先选择备机执行，备机延迟时操作报错；3：只读账号，优先选择备机执行，忽略备机延迟只读备机；
 	ReadOnly *int64 `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 
-	// 账号备注，可以包含中文、英文字符、常见符号和数字，长度为0~256字符
+	// 账号备注，可以包含中文、英文字符、常见符号和数字，最多256个字符
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 根据传入时间判断备机不可用
@@ -6281,7 +6281,7 @@ type OpenDBExtranetAccessRequestParams struct {
 	// 待开放外网访问的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 是否IPv6，默认0
+	// 是否为IPV6网络类型实例，0:否，1:是，不传默认为0表示实例为IPV4网络类型
 	Ipv6Flag *int64 `json:"Ipv6Flag,omitnil,omitempty" name:"Ipv6Flag"`
 }
 
@@ -6291,7 +6291,7 @@ type OpenDBExtranetAccessRequest struct {
 	// 待开放外网访问的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例详情获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 是否IPv6，默认0
+	// 是否为IPV6网络类型实例，0:否，1:是，不传默认为0表示实例为IPV4网络类型
 	Ipv6Flag *int64 `json:"Ipv6Flag,omitnil,omitempty" name:"Ipv6Flag"`
 }
 
@@ -6523,7 +6523,7 @@ type ResetAccountPasswordRequestParams struct {
 	// 用户允许的访问 host，用户名+host唯一确定一个账号。
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 新密码，由字母、数字或常见符号组成，不能包含分号、单引号和双引号，长度为6~32位。
+	// 密码需要 8\~32 个字符，不能以 '/' 开头，并且至少包含字母、数字和特殊字符 ()~!@#$%^&*-+=_|{}[]:<>,.?/ 中的两项
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 使用GetPublicKey返回的RSA2048公钥加密后的密码
@@ -6542,7 +6542,7 @@ type ResetAccountPasswordRequest struct {
 	// 用户允许的访问 host，用户名+host唯一确定一个账号。
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
-	// 新密码，由字母、数字或常见符号组成，不能包含分号、单引号和双引号，长度为6~32位。
+	// 密码需要 8\~32 个字符，不能以 '/' 开头，并且至少包含字母、数字和特殊字符 ()~!@#$%^&*-+=_|{}[]:<>,.?/ 中的两项
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 使用GetPublicKey返回的RSA2048公钥加密后的密码

@@ -950,7 +950,6 @@ type ExternalNodePoolInfo struct {
 	RuntimeConfig *RuntimeConfig `json:"RuntimeConfig,omitnil,omitempty" name:"RuntimeConfig"`
 
 	// 节点数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodesNum *uint64 `json:"NodesNum,omitnil,omitempty" name:"NodesNum"`
 }
 

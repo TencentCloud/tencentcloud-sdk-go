@@ -2510,7 +2510,6 @@ type InstanceInfo struct {
 	ClientLimitMax *int64 `json:"ClientLimitMax,omitnil,omitempty" name:"ClientLimitMax"`
 
 	// 实例的节点详细信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeSet []*NodeInfo `json:"NodeSet,omitnil,omitempty" name:"NodeSet"`
 
 	// 实例所在的地域信息，比如ap-guangzhou。

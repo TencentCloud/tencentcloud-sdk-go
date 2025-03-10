@@ -4377,136 +4377,6 @@ func (c *Client) ModifyRejectedQuestionWithContext(ctx context.Context, request 
     return
 }
 
-func NewParseDocRequest() (request *ParseDocRequest) {
-    request = &ParseDocRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("lke", APIVersion, "ParseDoc")
-    
-    
-    return
-}
-
-func NewParseDocResponse() (response *ParseDocResponse) {
-    response = &ParseDocResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ParseDoc
-// 接口已迁移到新接口了，无调用量
-//
-// 
-//
-// 接口即将下线，请切换使用新接口：[文档解析](https://cloud.tencent.com/document/product/1759/107504)
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-func (c *Client) ParseDoc(request *ParseDocRequest) (response *ParseDocResponse, err error) {
-    return c.ParseDocWithContext(context.Background(), request)
-}
-
-// ParseDoc
-// 接口已迁移到新接口了，无调用量
-//
-// 
-//
-// 接口即将下线，请切换使用新接口：[文档解析](https://cloud.tencent.com/document/product/1759/107504)
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-func (c *Client) ParseDocWithContext(ctx context.Context, request *ParseDocRequest) (response *ParseDocResponse, err error) {
-    if request == nil {
-        request = NewParseDocRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ParseDoc require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewParseDocResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewQueryParseDocResultRequest() (request *QueryParseDocResultRequest) {
-    request = &QueryParseDocResultRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("lke", APIVersion, "QueryParseDocResult")
-    
-    
-    return
-}
-
-func NewQueryParseDocResultResponse() (response *QueryParseDocResultResponse) {
-    response = &QueryParseDocResultResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// QueryParseDocResult
-// 接口已迁移到新接口了，无调用量
-//
-// 
-//
-// 查询文档解析结果。该接口需开通文档解析原子能力后调用。文档解析原子能力内测中，如有需要请联系架构师或[联系客服](https://cloud.tencent.com/act/event/Online_service) 。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-func (c *Client) QueryParseDocResult(request *QueryParseDocResultRequest) (response *QueryParseDocResultResponse, err error) {
-    return c.QueryParseDocResultWithContext(context.Background(), request)
-}
-
-// QueryParseDocResult
-// 接口已迁移到新接口了，无调用量
-//
-// 
-//
-// 查询文档解析结果。该接口需开通文档解析原子能力后调用。文档解析原子能力内测中，如有需要请联系架构师或[联系客服](https://cloud.tencent.com/act/event/Online_service) 。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-func (c *Client) QueryParseDocResultWithContext(ctx context.Context, request *QueryParseDocResultRequest) (response *QueryParseDocResultResponse, err error) {
-    if request == nil {
-        request = NewQueryParseDocResultRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("QueryParseDocResult require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewQueryParseDocResultResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewQueryRewriteRequest() (request *QueryRewriteRequest) {
     request = &QueryRewriteRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4533,10 +4403,6 @@ func NewQueryRewriteResponse() (response *QueryRewriteResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) QueryRewrite(request *QueryRewriteRequest) (response *QueryRewriteResponse, err error) {
     return c.QueryRewriteWithContext(context.Background(), request)
 }
@@ -4548,10 +4414,6 @@ func (c *Client) QueryRewrite(request *QueryRewriteRequest) (response *QueryRewr
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) QueryRewriteWithContext(ctx context.Context, request *QueryRewriteRequest) (response *QueryRewriteResponse, err error) {
     if request == nil {
         request = NewQueryRewriteRequest()
@@ -4592,10 +4454,6 @@ func NewRateMsgRecordResponse() (response *RateMsgRecordResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) RateMsgRecord(request *RateMsgRecordRequest) (response *RateMsgRecordResponse, err error) {
     return c.RateMsgRecordWithContext(context.Background(), request)
 }
@@ -4605,10 +4463,6 @@ func (c *Client) RateMsgRecord(request *RateMsgRecordRequest) (response *RateMsg
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) RateMsgRecordWithContext(ctx context.Context, request *RateMsgRecordRequest) (response *RateMsgRecordResponse, err error) {
     if request == nil {
         request = NewRateMsgRecordRequest()

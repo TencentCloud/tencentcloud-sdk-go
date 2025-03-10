@@ -44,26 +44,14 @@ const (
 	// 服务未开通。
 	FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 
-	// 内部错误。
-	INTERNALERROR = "InternalError"
-
-	// 参数错误。
-	INVALIDPARAMETER = "InvalidParameter"
-
 	// 参数值错误。
 	INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-
-	// 超过配额限制。
-	LIMITEXCEEDED = "LimitExceeded"
 
 	// 文件内容太大。
 	LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
-
-	// 请求的次数超过了频率限制。
-	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 
 	// 账号已欠费。
 	RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"

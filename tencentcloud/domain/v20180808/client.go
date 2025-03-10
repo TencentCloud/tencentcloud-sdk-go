@@ -3346,11 +3346,10 @@ func NewTransferProhibitionBatchResponse() (response *TransferProhibitionBatchRe
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_UPTO4000 = "InvalidParameter.UpTo4000"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
 //  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
-//  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
+//  UNSUPPORTEDOPERATION_MODIFYDOMAININFOOPERATEUNSUPPORTED = "UnsupportedOperation.ModifyDomainInfoOperateUnsupported"
 func (c *Client) TransferProhibitionBatch(request *TransferProhibitionBatchRequest) (response *TransferProhibitionBatchResponse, err error) {
     return c.TransferProhibitionBatchWithContext(context.Background(), request)
 }
@@ -3363,11 +3362,10 @@ func (c *Client) TransferProhibitionBatch(request *TransferProhibitionBatchReque
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_UPTO4000 = "InvalidParameter.UpTo4000"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
 //  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
-//  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
+//  UNSUPPORTEDOPERATION_MODIFYDOMAININFOOPERATEUNSUPPORTED = "UnsupportedOperation.ModifyDomainInfoOperateUnsupported"
 func (c *Client) TransferProhibitionBatchWithContext(ctx context.Context, request *TransferProhibitionBatchRequest) (response *TransferProhibitionBatchResponse, err error) {
     if request == nil {
         request = NewTransferProhibitionBatchRequest()
@@ -3411,11 +3409,10 @@ func NewUpdateProhibitionBatchResponse() (response *UpdateProhibitionBatchRespon
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_UPTO4000 = "InvalidParameter.UpTo4000"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
 //  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
-//  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
+//  UNSUPPORTEDOPERATION_MODIFYDOMAININFOOPERATEUNSUPPORTED = "UnsupportedOperation.ModifyDomainInfoOperateUnsupported"
 func (c *Client) UpdateProhibitionBatch(request *UpdateProhibitionBatchRequest) (response *UpdateProhibitionBatchResponse, err error) {
     return c.UpdateProhibitionBatchWithContext(context.Background(), request)
 }
@@ -3428,11 +3425,10 @@ func (c *Client) UpdateProhibitionBatch(request *UpdateProhibitionBatchRequest) 
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_UPTO4000 = "InvalidParameter.UpTo4000"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_DOMAINISEMPTY = "MissingParameter.DomainIsEmpty"
 //  MISSINGPARAMETER_REPDATAISNONE = "MissingParameter.RepDataIsNone"
-//  RESOURCEINSUFFICIENT_OVERWORK = "ResourceInsufficient.Overwork"
+//  UNSUPPORTEDOPERATION_MODIFYDOMAININFOOPERATEUNSUPPORTED = "UnsupportedOperation.ModifyDomainInfoOperateUnsupported"
 func (c *Client) UpdateProhibitionBatchWithContext(ctx context.Context, request *UpdateProhibitionBatchRequest) (response *UpdateProhibitionBatchResponse, err error) {
     if request == nil {
         request = NewUpdateProhibitionBatchRequest()

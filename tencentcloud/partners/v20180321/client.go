@@ -809,6 +809,59 @@ func (c *Client) DescribeClientBalanceNewWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeClientJoinIncreaseListRequest() (request *DescribeClientJoinIncreaseListRequest) {
+    request = &DescribeClientJoinIncreaseListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("partners", APIVersion, "DescribeClientJoinIncreaseList")
+    
+    
+    return
+}
+
+func NewDescribeClientJoinIncreaseListResponse() (response *DescribeClientJoinIncreaseListResponse) {
+    response = &DescribeClientJoinIncreaseListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClientJoinIncreaseList
+// 查询合作伙伴名下客户的参与增量激励考核信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeClientJoinIncreaseList(request *DescribeClientJoinIncreaseListRequest) (response *DescribeClientJoinIncreaseListResponse, err error) {
+    return c.DescribeClientJoinIncreaseListWithContext(context.Background(), request)
+}
+
+// DescribeClientJoinIncreaseList
+// 查询合作伙伴名下客户的参与增量激励考核信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeClientJoinIncreaseListWithContext(ctx context.Context, request *DescribeClientJoinIncreaseListRequest) (response *DescribeClientJoinIncreaseListResponse, err error) {
+    if request == nil {
+        request = NewDescribeClientJoinIncreaseListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClientJoinIncreaseList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClientJoinIncreaseListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRebateInfosRequest() (request *DescribeRebateInfosRequest) {
     request = &DescribeRebateInfosRequest{
         BaseRequest: &tchttp.BaseRequest{},

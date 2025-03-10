@@ -3354,6 +3354,9 @@ type CynosdbClusterDetail struct {
 	// 备可用区属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlaveZoneAttr []*SlaveZoneAttrItem `json:"SlaveZoneAttr,omitnil,omitempty" name:"SlaveZoneAttr"`
+
+	// 版本标签
+	CynosVersionTag *string `json:"CynosVersionTag,omitnil,omitempty" name:"CynosVersionTag"`
 }
 
 type CynosdbErrorLogItem struct {
@@ -7846,7 +7849,7 @@ func (r *DescribeProjectSecurityGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProxiesRequestParams struct {
-	// 集群ID（该参数必传，例如cynosdbmysql-xxxxxx）
+	// 集群 ID（该参数必传，例如 cynosdbmysql-2u2mh111）。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 返回数量，默认为 20，最大值为 100
@@ -7872,7 +7875,7 @@ type DescribeProxiesRequestParams struct {
 type DescribeProxiesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID（该参数必传，例如cynosdbmysql-xxxxxx）
+	// 集群 ID（该参数必传，例如 cynosdbmysql-2u2mh111）。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 返回数量，默认为 20，最大值为 100

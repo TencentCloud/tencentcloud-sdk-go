@@ -1185,6 +1185,9 @@ type CreateRoomRequestParams struct {
 
 	// 录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
 	RecordStream *uint64 `json:"RecordStream,omitnil,omitempty" name:"RecordStream"`
+
+	// 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
 }
 
 type CreateRoomRequest struct {
@@ -1296,6 +1299,9 @@ type CreateRoomRequest struct {
 
 	// 录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
 	RecordStream *uint64 `json:"RecordStream,omitnil,omitempty" name:"RecordStream"`
+
+	// 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
 }
 
 func (r *CreateRoomRequest) ToJsonString() string {
@@ -1340,6 +1346,7 @@ func (r *CreateRoomRequest) FromJsonString(s string) error {
 	delete(f, "RecordScene")
 	delete(f, "RecordLang")
 	delete(f, "RecordStream")
+	delete(f, "WhiteBoardSnapshotMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoomRequest has unknown keys!", "")
 	}
@@ -3317,19 +3324,15 @@ type DescribeRoomResponseParams struct {
 	DisableRecord *uint64 `json:"DisableRecord,omitnil,omitempty" name:"DisableRecord"`
 
 	// 助教UserId列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Assistants []*string `json:"Assistants,omitnil,omitempty" name:"Assistants"`
 
 	// 录制地址（协议为https)。仅在房间结束后存在。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordUrl *string `json:"RecordUrl,omitnil,omitempty" name:"RecordUrl"`
 
 	// 课堂状态。0为未开始，1为已开始，2为已结束，3为已过期。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 房间绑定的群组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 打开学生麦克风/摄像头的授权开关
@@ -3382,6 +3385,9 @@ type DescribeRoomResponseParams struct {
 
 	// 录制模板。房间子类型为视频+白板（SubType=videodoc）时默认为3，房间子类型为纯视频（SubType=video）时默认为0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
 	RecordLayout *uint64 `json:"RecordLayout,omitnil,omitempty" name:"RecordLayout"`
+
+	// 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5022,6 +5028,9 @@ type ModifyRoomRequestParams struct {
 	//
 	// Deprecated: RecordLang is deprecated.
 	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
+
+	// 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
 }
 
 type ModifyRoomRequest struct {
@@ -5123,6 +5132,9 @@ type ModifyRoomRequest struct {
 
 	// 录制自定义语言，仅recordlayout=9的时候此参数有效
 	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
+
+	// 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
 }
 
 func (r *ModifyRoomRequest) ToJsonString() string {
@@ -5163,6 +5175,7 @@ func (r *ModifyRoomRequest) FromJsonString(s string) error {
 	delete(f, "EnableAutoStart")
 	delete(f, "RecordScene")
 	delete(f, "RecordLang")
+	delete(f, "WhiteBoardSnapshotMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoomRequest has unknown keys!", "")
 	}
@@ -5481,107 +5494,90 @@ type RoomInfo struct {
 
 	// 录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
 	RecordStream *uint64 `json:"RecordStream,omitnil,omitempty" name:"RecordStream"`
+
+	// 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
 }
 
 type RoomItem struct {
 	// 名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 房间ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 房间状态。0 未开始 ；1进行中  ；2 已结束；3已过期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 实际开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealStartTime *uint64 `json:"RealStartTime,omitnil,omitempty" name:"RealStartTime"`
 
 	// 实际结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealEndTime *uint64 `json:"RealEndTime,omitnil,omitempty" name:"RealEndTime"`
 
 	// 头像区域，摄像头视频画面的分辨率。可以有如下取值：
 	// 1 标清
 	// 2 高清
 	// 3 全高清
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resolution *uint64 `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
 	// 最大允许连麦人数。已废弃，使用字段 MaxMicNumber
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxRTCMember *uint64 `json:"MaxRTCMember,omitnil,omitempty" name:"MaxRTCMember"`
 
 	// 房间录制地址。已废弃，使用新字段 RecordUrl
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplayUrl *string `json:"ReplayUrl,omitnil,omitempty" name:"ReplayUrl"`
 
 	// 录制地址（协议为https)。仅在房间结束后存在。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordUrl *string `json:"RecordUrl,omitnil,omitempty" name:"RecordUrl"`
 
 	// 课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil,omitempty" name:"MaxMicNumber"`
 
 	// 打开学生麦克风/摄像头的授权开关 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableDirectControl *uint64 `json:"EnableDirectControl,omitnil,omitempty" name:"EnableDirectControl"`
 
 	// 开启专注模式。 0 收看全部角色音视频(默认) 1 只看老师和助教
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InteractionMode *int64 `json:"InteractionMode,omitnil,omitempty" name:"InteractionMode"`
 
 	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoOrientation *int64 `json:"VideoOrientation,omitnil,omitempty" name:"VideoOrientation"`
 
 	// 开启课后评分。 0：不开启(默认)  1：开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitnil,omitempty" name:"IsGradingRequiredPostClass"`
 
 	// 房间类型。0:小班课（默认值）；1:大班课；2:1V1（后续扩展）
 	// 注：大班课的布局(layout)只有三分屏
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoomType *int64 `json:"RoomType,omitnil,omitempty" name:"RoomType"`
 
 	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndDelayTime *int64 `json:"EndDelayTime,omitnil,omitempty" name:"EndDelayTime"`
 
 	// 直播类型：0 常规（默认）1 伪直播
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LiveType *uint64 `json:"LiveType,omitnil,omitempty" name:"LiveType"`
 
 	// 伪直播回放链接	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordLiveUrl *string `json:"RecordLiveUrl,omitnil,omitempty" name:"RecordLiveUrl"`
 
 	// 是否自动开始上课：0 不自动上课（默认） 1 自动上课 live_type=1的时候有效	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableAutoStart *uint64 `json:"EnableAutoStart,omitnil,omitempty" name:"EnableAutoStart"`
 
 	// 录制文件背景图片，支持png、jpg、jpeg、bmp格式，暂不支持透明通道
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordBackground *string `json:"RecordBackground,omitnil,omitempty" name:"RecordBackground"`
 
 	// 录制自定义场景，仅recordlayout=9的时候此参数有效,数据内容为用户自定义场景参数，数据格式为json键值对方式，其中键值对的value为string类型。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordScene *string `json:"RecordScene,omitnil,omitempty" name:"RecordScene"`
 
 	// 录制自定义语言，仅recordlayout=9的时候此参数有效
 	RecordLang *string `json:"RecordLang,omitnil,omitempty" name:"RecordLang"`
+
+	// 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
 }
 
 type SceneItem struct {

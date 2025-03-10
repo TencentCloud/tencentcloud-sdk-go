@@ -548,6 +548,27 @@ func (r *AuditApplyClientResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ClientIncreaseInfoList struct {
+	// 客户UIN
+	ClientUin *string `json:"ClientUin,omitnil,omitempty" name:"ClientUin"`
+
+	// 是否参与增量政策，
+	// Y：是，N：否
+	IsJoinIncrease *string `json:"IsJoinIncrease,omitnil,omitempty" name:"IsJoinIncrease"`
+
+	// 增量考核关联时间
+	IncreaseUseAssociateDate *string `json:"IncreaseUseAssociateDate,omitnil,omitempty" name:"IncreaseUseAssociateDate"`
+
+	// 参与增量考核的原始客户等级
+	TLevel *string `json:"TLevel,omitnil,omitempty" name:"TLevel"`
+
+	// 增量考核目标,分
+	IncreaseGoal *string `json:"IncreaseGoal,omitnil,omitempty" name:"IncreaseGoal"`
+
+	// 完成订单金额,分
+	TotalBaseAmt *string `json:"TotalBaseAmt,omitnil,omitempty" name:"TotalBaseAmt"`
+}
+
 // Predefined struct for user
 type CreatePayRelationForClientRequestParams struct {
 	// 客户账号ID
@@ -1500,6 +1521,63 @@ func (r *DescribeClientBalanceNewResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClientBalanceNewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClientJoinIncreaseListRequestParams struct {
+	// 客户UIN列表
+	ClientUins []*string `json:"ClientUins,omitnil,omitempty" name:"ClientUins"`
+}
+
+type DescribeClientJoinIncreaseListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 客户UIN列表
+	ClientUins []*string `json:"ClientUins,omitnil,omitempty" name:"ClientUins"`
+}
+
+func (r *DescribeClientJoinIncreaseListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClientJoinIncreaseListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientUins")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClientJoinIncreaseListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClientJoinIncreaseListResponseParams struct {
+	// 已审核代客列表
+	List []*ClientIncreaseInfoList `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClientJoinIncreaseListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClientJoinIncreaseListResponseParams `json:"Response"`
+}
+
+func (r *DescribeClientJoinIncreaseListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClientJoinIncreaseListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
