@@ -1168,7 +1168,7 @@ type DescribeInstanceNodesRequestParams struct {
 	// 集群实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 集群角色类型，默认为 "data"数据节点
+	// 集群角色类型，“DATA” 为数据节点、“COMMON” 为 ZooKeeper 节点，默认为 "DATA" 数据节点。
 	NodeRole *string `json:"NodeRole,omitnil,omitempty" name:"NodeRole"`
 
 	// 分页参数，第一页为0，第二页为10
@@ -1190,7 +1190,7 @@ type DescribeInstanceNodesRequest struct {
 	// 集群实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 集群角色类型，默认为 "data"数据节点
+	// 集群角色类型，“DATA” 为数据节点、“COMMON” 为 ZooKeeper 节点，默认为 "DATA" 数据节点。
 	NodeRole *string `json:"NodeRole,omitnil,omitempty" name:"NodeRole"`
 
 	// 分页参数，第一页为0，第二页为10

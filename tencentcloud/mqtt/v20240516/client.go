@@ -249,6 +249,61 @@ func (c *Client) CreateAuthorizationPolicyWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateHttpAuthenticatorRequest() (request *CreateHttpAuthenticatorRequest) {
+    request = &CreateHttpAuthenticatorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "CreateHttpAuthenticator")
+    
+    
+    return
+}
+
+func NewCreateHttpAuthenticatorResponse() (response *CreateHttpAuthenticatorResponse) {
+    response = &CreateHttpAuthenticatorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateHttpAuthenticator
+// 创建一个HTTP的认证器
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
+func (c *Client) CreateHttpAuthenticator(request *CreateHttpAuthenticatorRequest) (response *CreateHttpAuthenticatorResponse, err error) {
+    return c.CreateHttpAuthenticatorWithContext(context.Background(), request)
+}
+
+// CreateHttpAuthenticator
+// 创建一个HTTP的认证器
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
+func (c *Client) CreateHttpAuthenticatorWithContext(ctx context.Context, request *CreateHttpAuthenticatorRequest) (response *CreateHttpAuthenticatorResponse, err error) {
+    if request == nil {
+        request = NewCreateHttpAuthenticatorRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateHttpAuthenticator require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateHttpAuthenticatorResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateInsPublicEndpointRequest() (request *CreateInsPublicEndpointRequest) {
     request = &CreateInsPublicEndpointRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -272,8 +327,10 @@ func NewCreateInsPublicEndpointResponse() (response *CreateInsPublicEndpointResp
 // 为MQTT实例创建公网接入点
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
 func (c *Client) CreateInsPublicEndpoint(request *CreateInsPublicEndpointRequest) (response *CreateInsPublicEndpointResponse, err error) {
     return c.CreateInsPublicEndpointWithContext(context.Background(), request)
 }
@@ -282,8 +339,10 @@ func (c *Client) CreateInsPublicEndpoint(request *CreateInsPublicEndpointRequest
 // 为MQTT实例创建公网接入点
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
 func (c *Client) CreateInsPublicEndpointWithContext(ctx context.Context, request *CreateInsPublicEndpointRequest) (response *CreateInsPublicEndpointResponse, err error) {
     if request == nil {
         request = NewCreateInsPublicEndpointRequest()
@@ -2025,6 +2084,55 @@ func (c *Client) ModifyAuthorizationPolicyWithContext(ctx context.Context, reque
     return
 }
 
+func NewModifyHttpAuthenticatorRequest() (request *ModifyHttpAuthenticatorRequest) {
+    request = &ModifyHttpAuthenticatorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "ModifyHttpAuthenticator")
+    
+    
+    return
+}
+
+func NewModifyHttpAuthenticatorResponse() (response *ModifyHttpAuthenticatorResponse) {
+    response = &ModifyHttpAuthenticatorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyHttpAuthenticator
+// 修改MQTT HTTP 认证器
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyHttpAuthenticator(request *ModifyHttpAuthenticatorRequest) (response *ModifyHttpAuthenticatorResponse, err error) {
+    return c.ModifyHttpAuthenticatorWithContext(context.Background(), request)
+}
+
+// ModifyHttpAuthenticator
+// 修改MQTT HTTP 认证器
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyHttpAuthenticatorWithContext(ctx context.Context, request *ModifyHttpAuthenticatorRequest) (response *ModifyHttpAuthenticatorResponse, err error) {
+    if request == nil {
+        request = NewModifyHttpAuthenticatorRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyHttpAuthenticator require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyHttpAuthenticatorResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyInsPublicEndpointRequest() (request *ModifyInsPublicEndpointRequest) {
     request = &ModifyInsPublicEndpointRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2048,7 +2156,7 @@ func NewModifyInsPublicEndpointResponse() (response *ModifyInsPublicEndpointResp
 // 更新MQTT实例公网接入点
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ModifyInsPublicEndpoint(request *ModifyInsPublicEndpointRequest) (response *ModifyInsPublicEndpointResponse, err error) {
     return c.ModifyInsPublicEndpointWithContext(context.Background(), request)
 }
@@ -2057,7 +2165,7 @@ func (c *Client) ModifyInsPublicEndpoint(request *ModifyInsPublicEndpointRequest
 // 更新MQTT实例公网接入点
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ModifyInsPublicEndpointWithContext(ctx context.Context, request *ModifyInsPublicEndpointRequest) (response *ModifyInsPublicEndpointResponse, err error) {
     if request == nil {
         request = NewModifyInsPublicEndpointRequest()

@@ -1102,7 +1102,7 @@ type CreateCCPrecisionPolicyRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 策略方式，可取值alg表示验证码，drop表示丢弃
+	// 策略方式，可取值alg表示验证码，drop表示丢弃，trans表示放行
 	PolicyAction *string `json:"PolicyAction,omitnil,omitempty" name:"PolicyAction"`
 
 	// 策略记录
@@ -1124,7 +1124,7 @@ type CreateCCPrecisionPolicyRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 策略方式，可取值alg表示验证码，drop表示丢弃
+	// 策略方式，可取值alg表示验证码，drop表示丢弃，trans表示放行
 	PolicyAction *string `json:"PolicyAction,omitnil,omitempty" name:"PolicyAction"`
 
 	// 策略记录

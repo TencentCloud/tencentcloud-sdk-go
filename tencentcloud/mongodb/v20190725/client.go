@@ -1745,7 +1745,7 @@ func NewEnableTransparentDataEncryptionResponse() (response *EnableTransparentDa
 }
 
 // EnableTransparentDataEncryption
-// 本接口(EnableTransparentDataEncryption)用于开启云数据库 MongoDB 的透明加密能力。
+// 本接口（EnableTransparentDataEncryption）用于开启云数据库 MongoDB 的透明加密能力。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1756,7 +1756,7 @@ func (c *Client) EnableTransparentDataEncryption(request *EnableTransparentDataE
 }
 
 // EnableTransparentDataEncryption
-// 本接口(EnableTransparentDataEncryption)用于开启云数据库 MongoDB 的透明加密能力。
+// 本接口（EnableTransparentDataEncryption）用于开启云数据库 MongoDB 的透明加密能力。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

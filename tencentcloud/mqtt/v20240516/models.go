@@ -210,53 +210,41 @@ type AuthorizationPolicyItem struct {
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 规则名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
 	// 规则语法版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *int64 `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 越小越优先
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
 	// allow/deny
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Effect *string `json:"Effect,omitnil,omitempty" name:"Effect"`
 
 	// connect、pub、sub
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Actions *string `json:"Actions,omitnil,omitempty" name:"Actions"`
 
 	// 资源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resources *string `json:"Resources,omitnil,omitempty" name:"Resources"`
 
 	// client
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
 	// 用户
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
 	// IP地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 0，1，2
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Qos *string `json:"Qos,omitnil,omitempty" name:"Qos"`
 
 	// 1：表示匹配retain消息
 	// 2：表示匹配非retain消息
 	// 3：表示匹配retain和非retain消息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Retain *int64 `json:"Retain,omitnil,omitempty" name:"Retain"`
 
 	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 1713164969433
@@ -268,12 +256,18 @@ type AuthorizationPolicyItem struct {
 
 type AuthorizationPolicyPriority struct {
 	// 策略id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 优先级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+}
+
+type BodyItem struct {
+	// body key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// body key
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type CaCertificateItem struct {
@@ -293,35 +287,27 @@ type CaCertificateItem struct {
 	VerificationCertificate *string `json:"VerificationCertificate,omitnil,omitempty" name:"VerificationCertificate"`
 
 	// ca状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 上次激活时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastActivationTime *int64 `json:"LastActivationTime,omitnil,omitempty" name:"LastActivationTime"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *int64 `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 预销毁时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 上次去激活时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastInactivationTime *int64 `json:"LastInactivationTime,omitnil,omitempty" name:"LastInactivationTime"`
 
 	// Ca证书颁发者CN
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaIssuerCn *string `json:"CaIssuerCn,omitnil,omitempty" name:"CaIssuerCn"`
 
 	// 生效时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotBeforeTime *int64 `json:"NotBeforeTime,omitnil,omitempty" name:"NotBeforeTime"`
 
 	// 失效时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotAfterTime *int64 `json:"NotAfterTime,omitnil,omitempty" name:"NotAfterTime"`
 }
 
@@ -460,6 +446,123 @@ func (r *CreateAuthorizationPolicyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAuthorizationPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateHttpAuthenticatorRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// jwks端点
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// 最大并发连接数，默认8，范围：1-20
+	Concurrency *int64 `json:"Concurrency,omitnil,omitempty" name:"Concurrency"`
+
+	// 网络请求方法 Get 或 Post，默认post
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// 认证器是否开启：open-启用；close-关闭
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 说明
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 连接超时时间，单位：秒，范围：1-30
+	ConnectTimeout *int64 `json:"ConnectTimeout,omitnil,omitempty" name:"ConnectTimeout"`
+
+	// 请求超时时间，单位：秒，范围：1-30
+	ReadTimeout *int64 `json:"ReadTimeout,omitnil,omitempty" name:"ReadTimeout"`
+
+	// 转发请求header
+	Header []*HeaderItem `json:"Header,omitnil,omitempty" name:"Header"`
+
+	// 转发请求body
+	Body []*BodyItem `json:"Body,omitnil,omitempty" name:"Body"`
+}
+
+type CreateHttpAuthenticatorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// jwks端点
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// 最大并发连接数，默认8，范围：1-20
+	Concurrency *int64 `json:"Concurrency,omitnil,omitempty" name:"Concurrency"`
+
+	// 网络请求方法 Get 或 Post，默认post
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// 认证器是否开启：open-启用；close-关闭
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 说明
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 连接超时时间，单位：秒，范围：1-30
+	ConnectTimeout *int64 `json:"ConnectTimeout,omitnil,omitempty" name:"ConnectTimeout"`
+
+	// 请求超时时间，单位：秒，范围：1-30
+	ReadTimeout *int64 `json:"ReadTimeout,omitnil,omitempty" name:"ReadTimeout"`
+
+	// 转发请求header
+	Header []*HeaderItem `json:"Header,omitnil,omitempty" name:"Header"`
+
+	// 转发请求body
+	Body []*BodyItem `json:"Body,omitnil,omitempty" name:"Body"`
+}
+
+func (r *CreateHttpAuthenticatorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHttpAuthenticatorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Endpoint")
+	delete(f, "Concurrency")
+	delete(f, "Method")
+	delete(f, "Status")
+	delete(f, "Remark")
+	delete(f, "ConnectTimeout")
+	delete(f, "ReadTimeout")
+	delete(f, "Header")
+	delete(f, "Body")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHttpAuthenticatorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateHttpAuthenticatorResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateHttpAuthenticatorResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateHttpAuthenticatorResponseParams `json:"Response"`
+}
+
+func (r *CreateHttpAuthenticatorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHttpAuthenticatorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1809,7 +1912,6 @@ type DescribeCaCertificateResponseParams struct {
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
 	// Ca证书颁发者CN
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaIssuerCn *string `json:"CaIssuerCn,omitnil,omitempty" name:"CaIssuerCn"`
 
 	// 生效开始时间
@@ -2038,7 +2140,6 @@ type DescribeDeviceCertificateResponseParams struct {
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
 	// 客户端id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
 	//     API, 手动注册   
@@ -2047,6 +2148,9 @@ type DescribeDeviceCertificateResponseParams struct {
 
 	// 证书生效开始时间
 	NotBeforeTime *int64 `json:"NotBeforeTime,omitnil,omitempty" name:"NotBeforeTime"`
+
+	// 组织单位
+	OrganizationalUnit *string `json:"OrganizationalUnit,omitnil,omitempty" name:"OrganizationalUnit"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -2355,7 +2459,6 @@ func (r *DescribeInstanceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceListResponseParams struct {
 	// 查询总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 实例列表
@@ -2585,11 +2688,9 @@ func (r *DescribeMessageListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMessageListResponseParams struct {
 	// 查询总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 消息记录列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*MQTTMessageItem `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 请求任务id
@@ -2647,11 +2748,9 @@ func (r *DescribeProductSKUListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeProductSKUListResponseParams struct {
 	// 查询总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// mqtt商品配置信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MQTTProductSkuList []*ProductSkuItem `json:"MQTTProductSkuList,omitnil,omitempty" name:"MQTTProductSkuList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2796,7 +2895,6 @@ func (r *DescribeTopicListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTopicListResponseParams struct {
 	// 查询总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 主题列表
@@ -2953,7 +3051,6 @@ func (r *DescribeUserListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUserListResponseParams struct {
 	// 查询总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 角色信息列表
@@ -2981,7 +3078,6 @@ func (r *DescribeUserListResponse) FromJsonString(s string) error {
 
 type DeviceCertificateItem struct {
 	// 客户端id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
 	// 设备证书
@@ -3006,33 +3102,30 @@ type DeviceCertificateItem struct {
 	//     PENDING_ACTIVATION,//注册待激活
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
+	// 组织单位
+	OrganizationalUnit *string `json:"OrganizationalUnit,omitnil,omitempty" name:"OrganizationalUnit"`
+
 	// 上次激活时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastActivationTime *int64 `json:"LastActivationTime,omitnil,omitempty" name:"LastActivationTime"`
 
 	// 上次取消激活时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastInactivationTime *int64 `json:"LastInactivationTime,omitnil,omitempty" name:"LastInactivationTime"`
 
 	// 创建时间
 	CreatedTime *int64 `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 预销毁时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 证书来源：
 	// API, 手动注册   
 	// JITP 自动注册
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateSource *string `json:"CertificateSource,omitnil,omitempty" name:"CertificateSource"`
 
 	// 证书失效日期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotAfterTime *int64 `json:"NotAfterTime,omitnil,omitempty" name:"NotAfterTime"`
 
 	// 证书生效开始日期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotBeforeTime *int64 `json:"NotBeforeTime,omitnil,omitempty" name:"NotBeforeTime"`
 }
 
@@ -3044,6 +3137,14 @@ type Filter struct {
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
+type HeaderItem struct {
+	// header key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// header value
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type IpRule struct {
 	// IP地址
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
@@ -3052,67 +3153,52 @@ type IpRule struct {
 	Allow *bool `json:"Allow,omitnil,omitempty" name:"Allow"`
 
 	// 备注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type MQTTAuthenticatorItem struct {
 	// 认证器类型: JWT：JWT认证器 JWKS：JWKS认证器 BYOC：一端一证认证器
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 认证器配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 
 	// 认证器状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 说明
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type MQTTClientInfo struct {
 	// 客户端唯一标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
 	// 客户端网络地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientAddress *string `json:"ClientAddress,omitnil,omitempty" name:"ClientAddress"`
 
 	// MQTT 协议版本，4 表示 MQTT 3.1.1
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtocolVersion *int64 `json:"ProtocolVersion,omitnil,omitempty" name:"ProtocolVersion"`
 
 	// 保持连接时间，单位：秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Keepalive *int64 `json:"Keepalive,omitnil,omitempty" name:"Keepalive"`
 
 	// 连接状态，CONNECTED 已连接，DISCONNECTED 未连接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConnectionStatus *string `json:"ConnectionStatus,omitnil,omitempty" name:"ConnectionStatus"`
 
 	// 客户端创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 上次建立连接时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConnectTime *int64 `json:"ConnectTime,omitnil,omitempty" name:"ConnectTime"`
 
 	// 上次断开连接时间，仅对持久会话（cleanSession=false）并且客户端当前未连接时有意义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisconnectTime *int64 `json:"DisconnectTime,omitnil,omitempty" name:"DisconnectTime"`
 
 	// 客户端的订阅列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MQTTClientSubscriptions []*MQTTClientSubscription `json:"MQTTClientSubscriptions,omitnil,omitempty" name:"MQTTClientSubscriptions"`
 }
 
@@ -3132,31 +3218,24 @@ type MQTTClientSubscription struct {
 
 type MQTTEndpointItem struct {
 	// 类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 接入点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// vpc信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 主机
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
 	// 端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 接入点ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 }
 
@@ -3194,7 +3273,6 @@ type MQTTInstanceItem struct {
 	TopicNumLimit *int64 `json:"TopicNumLimit,omitnil,omitempty" name:"TopicNumLimit"`
 
 	// 备注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 主题数量
@@ -3204,85 +3282,65 @@ type MQTTInstanceItem struct {
 	SkuCode *string `json:"SkuCode,omitnil,omitempty" name:"SkuCode"`
 
 	// 弹性TPS限流值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TpsLimit *int64 `json:"TpsLimit,omitnil,omitempty" name:"TpsLimit"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 单客户端最大订阅数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxSubscriptionPerClient *int64 `json:"MaxSubscriptionPerClient,omitnil,omitempty" name:"MaxSubscriptionPerClient"`
 
 	// 客户端连接数上线
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientNumLimit *int64 `json:"ClientNumLimit,omitnil,omitempty" name:"ClientNumLimit"`
 
 	// 是否自动续费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 计费模式， POSTPAID，按量计费 PREPAID，包年包月
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 到期时间，秒为单位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpiryTime *int64 `json:"ExpiryTime,omitnil,omitempty" name:"ExpiryTime"`
 
 	// 预销毁时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DestroyTime *int64 `json:"DestroyTime,omitnil,omitempty" name:"DestroyTime"`
 
 	// 授权规则条数限制
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthorizationPolicyLimit *int64 `json:"AuthorizationPolicyLimit,omitnil,omitempty" name:"AuthorizationPolicyLimit"`
 
 	// 最大ca配额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxCaNum *int64 `json:"MaxCaNum,omitnil,omitempty" name:"MaxCaNum"`
 
 	// 最大订阅数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxSubscription *int64 `json:"MaxSubscription,omitnil,omitempty" name:"MaxSubscription"`
 }
 
 type MQTTMessageItem struct {
 	// 消息ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgId *string `json:"MsgId,omitnil,omitempty" name:"MsgId"`
 
 	// 消息tag
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags *string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 消息key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Keys *string `json:"Keys,omitnil,omitempty" name:"Keys"`
 
 	// 客户端地址	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProducerAddr *string `json:"ProducerAddr,omitnil,omitempty" name:"ProducerAddr"`
 
 	// 消息发送时间	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProduceTime *string `json:"ProduceTime,omitnil,omitempty" name:"ProduceTime"`
 
 	// 死信重发次数	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeadLetterResendTimes *int64 `json:"DeadLetterResendTimes,omitnil,omitempty" name:"DeadLetterResendTimes"`
 
 	// 死信重发成功次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeadLetterResendSuccessTimes *int64 `json:"DeadLetterResendSuccessTimes,omitnil,omitempty" name:"DeadLetterResendSuccessTimes"`
 
 	// 子topic
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubTopic *string `json:"SubTopic,omitnil,omitempty" name:"SubTopic"`
 
 	// 消息质量等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Qos *string `json:"Qos,omitnil,omitempty" name:"Qos"`
 }
 
@@ -3294,7 +3352,6 @@ type MQTTTopicItem struct {
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 主题描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
@@ -3457,6 +3514,123 @@ func (r *ModifyAuthorizationPolicyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAuthorizationPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyHttpAuthenticatorRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 端点
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// 认证器状态：open-启用；close-关闭
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 最大并发连接数，默认8，范围：1-20
+	Concurrency *int64 `json:"Concurrency,omitnil,omitempty" name:"Concurrency"`
+
+	// 连接超时时间，单位：秒，范围：1-30
+	ConnectTimeout *int64 `json:"ConnectTimeout,omitnil,omitempty" name:"ConnectTimeout"`
+
+	// 请求超时时间，单位：秒，范围：1-30
+	ReadTimeout *int64 `json:"ReadTimeout,omitnil,omitempty" name:"ReadTimeout"`
+
+	// 说明
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 请求方法，GET 或者 POST
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// 请求header
+	Header []*HeaderItem `json:"Header,omitnil,omitempty" name:"Header"`
+
+	// 请求body
+	Body []*BodyItem `json:"Body,omitnil,omitempty" name:"Body"`
+}
+
+type ModifyHttpAuthenticatorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 端点
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// 认证器状态：open-启用；close-关闭
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 最大并发连接数，默认8，范围：1-20
+	Concurrency *int64 `json:"Concurrency,omitnil,omitempty" name:"Concurrency"`
+
+	// 连接超时时间，单位：秒，范围：1-30
+	ConnectTimeout *int64 `json:"ConnectTimeout,omitnil,omitempty" name:"ConnectTimeout"`
+
+	// 请求超时时间，单位：秒，范围：1-30
+	ReadTimeout *int64 `json:"ReadTimeout,omitnil,omitempty" name:"ReadTimeout"`
+
+	// 说明
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 请求方法，GET 或者 POST
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
+
+	// 请求header
+	Header []*HeaderItem `json:"Header,omitnil,omitempty" name:"Header"`
+
+	// 请求body
+	Body []*BodyItem `json:"Body,omitnil,omitempty" name:"Body"`
+}
+
+func (r *ModifyHttpAuthenticatorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyHttpAuthenticatorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Endpoint")
+	delete(f, "Status")
+	delete(f, "Concurrency")
+	delete(f, "ConnectTimeout")
+	delete(f, "ReadTimeout")
+	delete(f, "Remark")
+	delete(f, "Method")
+	delete(f, "Header")
+	delete(f, "Body")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyHttpAuthenticatorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyHttpAuthenticatorResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyHttpAuthenticatorResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyHttpAuthenticatorResponseParams `json:"Response"`
+}
+
+func (r *ModifyHttpAuthenticatorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyHttpAuthenticatorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4063,7 +4237,6 @@ type PriceTag struct {
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 步长
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Step *int64 `json:"Step,omitnil,omitempty" name:"Step"`
 }
 
@@ -4071,53 +4244,41 @@ type ProductSkuItem struct {
 	// 规格类型
 	// BASIC：基础版
 	// PRO ：专业版
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 规格代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkuCode *string `json:"SkuCode,omitnil,omitempty" name:"SkuCode"`
 
 	// 是否售卖
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OnSale *bool `json:"OnSale,omitnil,omitempty" name:"OnSale"`
 
 	// topic num限制
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicNumLimit *int64 `json:"TopicNumLimit,omitnil,omitempty" name:"TopicNumLimit"`
 
 	// tps
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TpsLimit *int64 `json:"TpsLimit,omitnil,omitempty" name:"TpsLimit"`
 
 	// 客户端连接数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientNumLimit *int64 `json:"ClientNumLimit,omitnil,omitempty" name:"ClientNumLimit"`
 
 	// 单客户端最大订阅数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxSubscriptionPerClient *int64 `json:"MaxSubscriptionPerClient,omitnil,omitempty" name:"MaxSubscriptionPerClient"`
 
 	// 授权规则条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthorizationPolicyLimit *int64 `json:"AuthorizationPolicyLimit,omitnil,omitempty" name:"AuthorizationPolicyLimit"`
 
 	// 计费项信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PriceTags []*PriceTag `json:"PriceTags,omitnil,omitempty" name:"PriceTags"`
 }
 
 type PublicAccessRule struct {
 	// ip网段信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpRule *string `json:"IpRule,omitnil,omitempty" name:"IpRule"`
 
 	// 允许或者拒绝
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Allow *bool `json:"Allow,omitnil,omitempty" name:"Allow"`
 
 	// 备注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
@@ -4459,11 +4620,9 @@ func (r *RevokedDeviceCertificateResponse) FromJsonString(s string) error {
 
 type Tag struct {
 	// 标签名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 标签值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 

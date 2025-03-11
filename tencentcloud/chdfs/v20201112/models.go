@@ -1061,27 +1061,21 @@ type DescribeFileSystemResponseParams struct {
 	FileSystem *FileSystem `json:"FileSystem,omitnil,omitempty" name:"FileSystem"`
 
 	// 文件系统已使用容量（byte）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CapacityUsed *uint64 `json:"CapacityUsed,omitnil,omitempty" name:"CapacityUsed"`
 
 	// 已使用COS归档存储容量（byte）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ArchiveCapacityUsed *uint64 `json:"ArchiveCapacityUsed,omitnil,omitempty" name:"ArchiveCapacityUsed"`
 
 	// 已使用COS标准存储容量（byte）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StandardCapacityUsed *uint64 `json:"StandardCapacityUsed,omitnil,omitempty" name:"StandardCapacityUsed"`
 
 	// 已使用COS低频存储容量（byte）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DegradeCapacityUsed *uint64 `json:"DegradeCapacityUsed,omitnil,omitempty" name:"DegradeCapacityUsed"`
 
 	// 已使用COS深度归档存储容量（byte）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeepArchiveCapacityUsed *uint64 `json:"DeepArchiveCapacityUsed,omitnil,omitempty" name:"DeepArchiveCapacityUsed"`
 
 	// 已使用COS智能分层存储容量（byte）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntelligentCapacityUsed *uint64 `json:"IntelligentCapacityUsed,omitnil,omitempty" name:"IntelligentCapacityUsed"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

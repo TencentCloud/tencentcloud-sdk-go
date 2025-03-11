@@ -1004,6 +1004,9 @@ type CreateJobRequestParams struct {
 
 	// 作业描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 开启默认告警
+	OpenJobDefaultAlarm *int64 `json:"OpenJobDefaultAlarm,omitnil,omitempty" name:"OpenJobDefaultAlarm"`
 }
 
 type CreateJobRequest struct {
@@ -1041,6 +1044,9 @@ type CreateJobRequest struct {
 
 	// 作业描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 开启默认告警
+	OpenJobDefaultAlarm *int64 `json:"OpenJobDefaultAlarm,omitnil,omitempty" name:"OpenJobDefaultAlarm"`
 }
 
 func (r *CreateJobRequest) ToJsonString() string {
@@ -1066,6 +1072,7 @@ func (r *CreateJobRequest) FromJsonString(s string) error {
 	delete(f, "WorkSpaceId")
 	delete(f, "Tags")
 	delete(f, "Description")
+	delete(f, "OpenJobDefaultAlarm")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobRequest has unknown keys!", "")
 	}
@@ -3922,6 +3929,14 @@ type JobV1 struct {
 	// 使用内存数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunningMem *float64 `json:"RunningMem,omitnil,omitempty" name:"RunningMem"`
+
+	// 是否开了默认告警
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpenJobDefaultAlarm *int64 `json:"OpenJobDefaultAlarm,omitnil,omitempty" name:"OpenJobDefaultAlarm"`
+
+	// 操作中描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProgressDesc *string `json:"ProgressDesc,omitnil,omitempty" name:"ProgressDesc"`
 }
 
 type LogContent struct {
@@ -5042,10 +5057,16 @@ type TreeJobSets struct {
 	ScalingType *int64 `json:"ScalingType,omitnil,omitempty" name:"ScalingType"`
 
 	// RunningCpu
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunningCpu *float64 `json:"RunningCpu,omitnil,omitempty" name:"RunningCpu"`
 
 	// RunningMem
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunningMem *float64 `json:"RunningMem,omitnil,omitempty" name:"RunningMem"`
+
+	// sql
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DecodeSqlCode *string `json:"DecodeSqlCode,omitnil,omitempty" name:"DecodeSqlCode"`
 }
 
 type TreeResourceItem struct {
