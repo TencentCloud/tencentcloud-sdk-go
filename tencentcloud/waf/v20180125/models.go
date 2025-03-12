@@ -14043,6 +14043,80 @@ func (r *ModifyUserLevelResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyUserSignatureClassRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 规则类型ID
+	TypeID *string `json:"TypeID,omitnil,omitempty" name:"TypeID"`
+
+	// 规则类型状态，0:关闭，1:开启
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ModifyUserSignatureClassRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 规则类型ID
+	TypeID *string `json:"TypeID,omitnil,omitempty" name:"TypeID"`
+
+	// 规则类型状态，0:关闭，1:开启
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *ModifyUserSignatureClassRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserSignatureClassRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "TypeID")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserSignatureClassRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUserSignatureClassResponseParams struct {
+	// 规则类型ID
+	TypeID *string `json:"TypeID,omitnil,omitempty" name:"TypeID"`
+
+	// 规则类型状态，0：关闭，1：开启
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyUserSignatureClassResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyUserSignatureClassResponseParams `json:"Response"`
+}
+
+func (r *ModifyUserSignatureClassResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserSignatureClassResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyUserSignatureRuleRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -15388,6 +15462,85 @@ type TimedJob struct {
 
 	// 结束时间戳，单位为秒
 	EndDateTime *uint64 `json:"EndDateTime,omitnil,omitempty" name:"EndDateTime"`
+}
+
+// Predefined struct for user
+type UpdateProtectionModesRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 资源类型
+	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
+
+	// 大类规则ID
+	TypeIDs []*string `json:"TypeIDs,omitnil,omitempty" name:"TypeIDs"`
+
+	// 0表示观察，1表示拦截
+	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+}
+
+type UpdateProtectionModesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 资源类型
+	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
+
+	// 大类规则ID
+	TypeIDs []*string `json:"TypeIDs,omitnil,omitempty" name:"TypeIDs"`
+
+	// 0表示观察，1表示拦截
+	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+}
+
+func (r *UpdateProtectionModesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateProtectionModesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Edition")
+	delete(f, "TypeIDs")
+	delete(f, "Mode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateProtectionModesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateProtectionModesResponseParams struct {
+	// 操作结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CommonRsp *CommonRspData `json:"CommonRsp,omitnil,omitempty" name:"CommonRsp"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateProtectionModesResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateProtectionModesResponseParams `json:"Response"`
+}
+
+func (r *UpdateProtectionModesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateProtectionModesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

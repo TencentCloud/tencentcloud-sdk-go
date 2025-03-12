@@ -2209,7 +2209,6 @@ func (r *DescribeCustomDnsHostSetRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCustomDnsHostSetResponseParams struct {
 	// 自定义DNS Host 列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DnsHostSet []*CustomDnsHost `json:"DnsHostSet,omitnil,omitempty" name:"DnsHostSet"`
 
 	// 自定义DNS Host总数

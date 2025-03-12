@@ -1808,6 +1808,7 @@ func NewFlashBackDBInstanceResponse() (response *FlashBackDBInstanceResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMETERSNIL = "InvalidParameter.ParametersNil"
 //  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  UNAUTHORIZEDOPERATION_NOACCESS = "UnauthorizedOperation.NoAccess"
 //  UNSUPPORTEDOPERATION_KERNELVERSIONNOTSUPPORT = "UnsupportedOperation.KernelVersionNotSupport"
 //  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = "UnsupportedOperation.VersionNotSupport"
 func (c *Client) FlashBackDBInstance(request *FlashBackDBInstanceRequest) (response *FlashBackDBInstanceResponse, err error) {
@@ -1825,6 +1826,7 @@ func (c *Client) FlashBackDBInstance(request *FlashBackDBInstanceRequest) (respo
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMETERSNIL = "InvalidParameter.ParametersNil"
 //  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  UNAUTHORIZEDOPERATION_NOACCESS = "UnauthorizedOperation.NoAccess"
 //  UNSUPPORTEDOPERATION_KERNELVERSIONNOTSUPPORT = "UnsupportedOperation.KernelVersionNotSupport"
 //  UNSUPPORTEDOPERATION_VERSIONNOTSUPPORT = "UnsupportedOperation.VersionNotSupport"
 func (c *Client) FlashBackDBInstanceWithContext(ctx context.Context, request *FlashBackDBInstanceRequest) (response *FlashBackDBInstanceResponse, err error) {

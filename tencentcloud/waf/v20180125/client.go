@@ -8925,6 +8925,69 @@ func (c *Client) ModifyUserLevelWithContext(ctx context.Context, request *Modify
     return
 }
 
+func NewModifyUserSignatureClassRequest() (request *ModifyUserSignatureClassRequest) {
+    request = &ModifyUserSignatureClassRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyUserSignatureClass")
+    
+    
+    return
+}
+
+func NewModifyUserSignatureClassResponse() (response *ModifyUserSignatureClassResponse) {
+    response = &ModifyUserSignatureClassResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyUserSignatureClass
+// 切换Tiga引擎规则类型的生效开关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyUserSignatureClass(request *ModifyUserSignatureClassRequest) (response *ModifyUserSignatureClassResponse, err error) {
+    return c.ModifyUserSignatureClassWithContext(context.Background(), request)
+}
+
+// ModifyUserSignatureClass
+// 切换Tiga引擎规则类型的生效开关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyUserSignatureClassWithContext(ctx context.Context, request *ModifyUserSignatureClassRequest) (response *ModifyUserSignatureClassResponse, err error) {
+    if request == nil {
+        request = NewModifyUserSignatureClassRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserSignatureClass require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserSignatureClassResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyUserSignatureRuleRequest() (request *ModifyUserSignatureRuleRequest) {
     request = &ModifyUserSignatureRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9624,6 +9687,61 @@ func (c *Client) SwitchElasticModeWithContext(ctx context.Context, request *Swit
     request.SetContext(ctx)
     
     response = NewSwitchElasticModeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateProtectionModesRequest() (request *UpdateProtectionModesRequest) {
+    request = &UpdateProtectionModesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "UpdateProtectionModes")
+    
+    
+    return
+}
+
+func NewUpdateProtectionModesResponse() (response *UpdateProtectionModesResponse) {
+    response = &UpdateProtectionModesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateProtectionModes
+// 更新Tiga引擎下大类规则的防护模式
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) UpdateProtectionModes(request *UpdateProtectionModesRequest) (response *UpdateProtectionModesResponse, err error) {
+    return c.UpdateProtectionModesWithContext(context.Background(), request)
+}
+
+// UpdateProtectionModes
+// 更新Tiga引擎下大类规则的防护模式
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) UpdateProtectionModesWithContext(ctx context.Context, request *UpdateProtectionModesRequest) (response *UpdateProtectionModesResponse, err error) {
+    if request == nil {
+        request = NewUpdateProtectionModesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateProtectionModes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateProtectionModesResponse()
     err = c.Send(request, response)
     return
 }

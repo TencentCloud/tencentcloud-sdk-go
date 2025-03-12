@@ -397,6 +397,9 @@ type CreateCustomDomainRequestParams struct {
 
 	// web 应用防火墙配置
 	WafConfig *WafConf `json:"WafConfig,omitnil,omitempty" name:"WafConfig"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateCustomDomainRequest struct {
@@ -416,6 +419,9 @@ type CreateCustomDomainRequest struct {
 
 	// web 应用防火墙配置
 	WafConfig *WafConf `json:"WafConfig,omitnil,omitempty" name:"WafConfig"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateCustomDomainRequest) ToJsonString() string {
@@ -435,6 +441,7 @@ func (r *CreateCustomDomainRequest) FromJsonString(s string) error {
 	delete(f, "EndpointsConfig")
 	delete(f, "CertConfig")
 	delete(f, "WafConfig")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomDomainRequest has unknown keys!", "")
 	}
@@ -1572,6 +1579,9 @@ type DomainInfo struct {
 
 	// web 应用防火墙配置
 	WafConfig *WafConf `json:"WafConfig,omitnil,omitempty" name:"WafConfig"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type EipConfigIn struct {
@@ -1996,6 +2006,9 @@ type GetCustomDomainResponseParams struct {
 
 	// web 应用防火墙配置
 	WafConfig *WafConf `json:"WafConfig,omitnil,omitempty" name:"WafConfig"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4966,6 +4979,9 @@ type TriggerInfo struct {
 	// 客户自定义触发器描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 与此触发器关联的资源。目前仅函数URL关联的自定义域名会返回
+	BoundResources *string `json:"BoundResources,omitnil,omitempty" name:"BoundResources"`
 }
 
 // Predefined struct for user

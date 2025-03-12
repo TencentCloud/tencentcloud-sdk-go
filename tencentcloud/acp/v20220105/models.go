@@ -556,11 +556,9 @@ type DescribeFileTicketResponseParams struct {
 	UploadUrl *string `json:"UploadUrl,omitnil,omitempty" name:"UploadUrl"`
 
 	// 上传url鉴权信息(任务来源为1时上传需要, Authorization参数值)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UploadSign *string `json:"UploadSign,omitnil,omitempty" name:"UploadSign"`
 
 	// 上传文件ID(任务来源为1时提交诊断任务需要)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FildID *string `json:"FildID,omitnil,omitempty" name:"FildID"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -761,7 +759,6 @@ type DescribeScanTaskListResponseParams struct {
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 诊断任务数据列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*AppTaskData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -940,11 +937,9 @@ type DescribeScanTaskStatusResponseParams struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 诊断失败的错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 
 	// 任务流详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowSteps []*TaskFlowStepsInfo `json:"FlowSteps,omitnil,omitempty" name:"FlowSteps"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

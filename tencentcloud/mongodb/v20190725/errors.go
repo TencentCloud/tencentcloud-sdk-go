@@ -206,6 +206,9 @@ const (
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
+	// 没有访问权限
+	UNAUTHORIZEDOPERATION_NOACCESS = "UnauthorizedOperation.NoAccess"
+
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 

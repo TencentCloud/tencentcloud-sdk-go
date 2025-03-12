@@ -3136,6 +3136,9 @@ type DescribeSlowQueryRecordsDownloadRequestParams struct {
 
 	// 排序方式
 	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+
+	// user
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 }
 
 type DescribeSlowQueryRecordsDownloadRequest struct {
@@ -3182,6 +3185,9 @@ type DescribeSlowQueryRecordsDownloadRequest struct {
 
 	// 排序方式
 	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+
+	// user
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 }
 
 func (r *DescribeSlowQueryRecordsDownloadRequest) ToJsonString() string {
@@ -3210,6 +3216,7 @@ func (r *DescribeSlowQueryRecordsDownloadRequest) FromJsonString(s string) error
 	delete(f, "CatalogName")
 	delete(f, "SortField")
 	delete(f, "SortOrder")
+	delete(f, "UserName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSlowQueryRecordsDownloadRequest has unknown keys!", "")
 	}
@@ -3290,6 +3297,9 @@ type DescribeSlowQueryRecordsRequestParams struct {
 
 	// 排序方式
 	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+
+	// user
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 }
 
 type DescribeSlowQueryRecordsRequest struct {
@@ -3342,6 +3352,9 @@ type DescribeSlowQueryRecordsRequest struct {
 
 	// 排序方式
 	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
+
+	// user
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 }
 
 func (r *DescribeSlowQueryRecordsRequest) ToJsonString() string {
@@ -3372,6 +3385,7 @@ func (r *DescribeSlowQueryRecordsRequest) FromJsonString(s string) error {
 	delete(f, "MemoryUsage")
 	delete(f, "SortField")
 	delete(f, "SortOrder")
+	delete(f, "UserName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSlowQueryRecordsRequest has unknown keys!", "")
 	}

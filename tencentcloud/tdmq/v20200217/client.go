@@ -4716,63 +4716,6 @@ func (c *Client) DescribeRabbitMQVirtualHostWithContext(ctx context.Context, req
     return
 }
 
-func NewDescribeRabbitMQVirtualHostListRequest() (request *DescribeRabbitMQVirtualHostListRequest) {
-    request = &DescribeRabbitMQVirtualHostListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRabbitMQVirtualHostList")
-    
-    
-    return
-}
-
-func NewDescribeRabbitMQVirtualHostListResponse() (response *DescribeRabbitMQVirtualHostListResponse) {
-    response = &DescribeRabbitMQVirtualHostListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeRabbitMQVirtualHostList
-// 消息队列TDMQ RabbitMQ 有一个存量旧接口没下线，目前实际上已经不在产品中使用：DescribeRabbitMQVirtualHostList，这个接口很久前已经被 DescribeRabbitMQVirtualHost 替换掉。已无用户在调用。
-//
-// 
-//
-// RabbitMQ专享版查询虚拟主机列表
-//
-// 可能返回的错误码:
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-func (c *Client) DescribeRabbitMQVirtualHostList(request *DescribeRabbitMQVirtualHostListRequest) (response *DescribeRabbitMQVirtualHostListResponse, err error) {
-    return c.DescribeRabbitMQVirtualHostListWithContext(context.Background(), request)
-}
-
-// DescribeRabbitMQVirtualHostList
-// 消息队列TDMQ RabbitMQ 有一个存量旧接口没下线，目前实际上已经不在产品中使用：DescribeRabbitMQVirtualHostList，这个接口很久前已经被 DescribeRabbitMQVirtualHost 替换掉。已无用户在调用。
-//
-// 
-//
-// RabbitMQ专享版查询虚拟主机列表
-//
-// 可能返回的错误码:
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-func (c *Client) DescribeRabbitMQVirtualHostListWithContext(ctx context.Context, request *DescribeRabbitMQVirtualHostListRequest) (response *DescribeRabbitMQVirtualHostListResponse, err error) {
-    if request == nil {
-        request = NewDescribeRabbitMQVirtualHostListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeRabbitMQVirtualHostList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeRabbitMQVirtualHostListResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeRocketMQClusterRequest() (request *DescribeRocketMQClusterRequest) {
     request = &DescribeRocketMQClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},

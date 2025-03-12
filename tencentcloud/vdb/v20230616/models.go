@@ -195,7 +195,6 @@ func (r *DescribeInstanceNodesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceNodesResponseParams struct {
 	// 实例pod列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*NodeInfo `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 查询结果总数量。
@@ -236,6 +235,8 @@ type DescribeInstancesRequestParams struct {
 	Status []*string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 按照引擎筛选实例。
+	//
+	// Deprecated: EngineNames is deprecated.
 	EngineNames []*string `json:"EngineNames,omitnil,omitempty" name:"EngineNames"`
 
 	// 按照版本筛选实例。
@@ -248,6 +249,8 @@ type DescribeInstancesRequestParams struct {
 	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
 
 	// 按照可用区筛选实例。
+	//
+	// Deprecated: Zones is deprecated.
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 
 	// 排序字段。
@@ -347,7 +350,6 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstancesResponseParams struct {
 	// 实例列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*InstanceInfo `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 实例总数。
@@ -462,51 +464,39 @@ type Inbound struct {
 
 type InstanceInfo struct {
 	// 实例ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例自定义名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 用户APPID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 地域。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 可用区。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 产品。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 网络信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Networks []*Network `json:"Networks,omitnil,omitempty" name:"Networks"`
 
 	// 分片信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShardNum *uint64 `json:"ShardNum,omitnil,omitempty" name:"ShardNum"`
 
 	// 副本数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplicaNum *uint64 `json:"ReplicaNum,omitnil,omitempty" name:"ReplicaNum"`
 
 	// CPU.
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
 	// 内存。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Memory *float64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
 	// 磁盘。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Disk *uint64 `json:"Disk,omitnil,omitempty" name:"Disk"`
 
 	// 健康得分。
@@ -528,55 +518,42 @@ type InstanceInfo struct {
 	Project *string `json:"Project,omitnil,omitempty" name:"Project"`
 
 	// 所属标签。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
 	// 创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 资源状态。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 引擎名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineName *string `json:"EngineName,omitnil,omitempty" name:"EngineName"`
 
 	// 引擎版本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
 	// api版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiVersion *string `json:"ApiVersion,omitnil,omitempty" name:"ApiVersion"`
 
 	// 计费模式。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 差异化扩展信息, json格式。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extend *string `json:"Extend,omitnil,omitempty" name:"Extend"`
 
 	// 过期时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpiredAt *string `json:"ExpiredAt,omitnil,omitempty" name:"ExpiredAt"`
 
 	// 是否不过期(永久)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsNoExpired *bool `json:"IsNoExpired,omitnil,omitempty" name:"IsNoExpired"`
 
 	// 外网地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WanAddress *string `json:"WanAddress,omitnil,omitempty" name:"WanAddress"`
 
 	// 隔离时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolateAt *string `json:"IsolateAt,omitnil,omitempty" name:"IsolateAt"`
 
 	// 是否自动续费。0: 不自动续费(可以支持特权不停服)；1:自动续费；2:到期不续费.
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 }
 
@@ -663,7 +640,6 @@ type Network struct {
 
 type NodeInfo struct {
 	// Pod名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 

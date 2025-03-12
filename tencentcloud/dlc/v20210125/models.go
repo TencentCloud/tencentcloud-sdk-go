@@ -3256,6 +3256,9 @@ type CreateSparkAppTaskRequestParams struct {
 
 	// spark作业程序入参，以空格分隔；一般用于周期性调用使用
 	CmdArgs *string `json:"CmdArgs,omitnil,omitempty" name:"CmdArgs"`
+
+	// 任务来源信息
+	SourceInfo []*KVPair `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
 }
 
 type CreateSparkAppTaskRequest struct {
@@ -3266,6 +3269,9 @@ type CreateSparkAppTaskRequest struct {
 
 	// spark作业程序入参，以空格分隔；一般用于周期性调用使用
 	CmdArgs *string `json:"CmdArgs,omitnil,omitempty" name:"CmdArgs"`
+
+	// 任务来源信息
+	SourceInfo []*KVPair `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
 }
 
 func (r *CreateSparkAppTaskRequest) ToJsonString() string {
@@ -3282,6 +3288,7 @@ func (r *CreateSparkAppTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "JobName")
 	delete(f, "CmdArgs")
+	delete(f, "SourceInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSparkAppTaskRequest has unknown keys!", "")
 	}
@@ -3355,6 +3362,9 @@ type CreateSparkSessionBatchSQLRequestParams struct {
 
 	// 用户自定义主键，需唯一
 	CustomKey *string `json:"CustomKey,omitnil,omitempty" name:"CustomKey"`
+
+	// 任务来源信息
+	SourceInfo []*KVPair `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
 }
 
 type CreateSparkSessionBatchSQLRequest struct {
@@ -3397,6 +3407,9 @@ type CreateSparkSessionBatchSQLRequest struct {
 
 	// 用户自定义主键，需唯一
 	CustomKey *string `json:"CustomKey,omitnil,omitempty" name:"CustomKey"`
+
+	// 任务来源信息
+	SourceInfo []*KVPair `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
 }
 
 func (r *CreateSparkSessionBatchSQLRequest) ToJsonString() string {
@@ -3423,6 +3436,7 @@ func (r *CreateSparkSessionBatchSQLRequest) FromJsonString(s string) error {
 	delete(f, "Arguments")
 	delete(f, "IsInherit")
 	delete(f, "CustomKey")
+	delete(f, "SourceInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSparkSessionBatchSQLRequest has unknown keys!", "")
 	}
@@ -3585,6 +3599,9 @@ type CreateTaskRequestParams struct {
 
 	// 标准spark执行任务resourceGroupName
 	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
+
+	// 任务来源信息
+	SourceInfo []*KVPair `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
 }
 
 type CreateTaskRequest struct {
@@ -3604,6 +3621,9 @@ type CreateTaskRequest struct {
 
 	// 标准spark执行任务resourceGroupName
 	ResourceGroupName *string `json:"ResourceGroupName,omitnil,omitempty" name:"ResourceGroupName"`
+
+	// 任务来源信息
+	SourceInfo []*KVPair `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
 }
 
 func (r *CreateTaskRequest) ToJsonString() string {
@@ -3623,6 +3643,7 @@ func (r *CreateTaskRequest) FromJsonString(s string) error {
 	delete(f, "DatasourceConnectionName")
 	delete(f, "DataEngineName")
 	delete(f, "ResourceGroupName")
+	delete(f, "SourceInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskRequest has unknown keys!", "")
 	}
@@ -3748,6 +3769,9 @@ type CreateTasksRequestParams struct {
 
 	// 是否使用multi- statement方式运行一批次任务，true: 是，false: 否
 	IsMultiStatement *bool `json:"IsMultiStatement,omitnil,omitempty" name:"IsMultiStatement"`
+
+	// 任务来源信息
+	SourceInfo []*KVPair `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
 }
 
 type CreateTasksRequest struct {
@@ -3770,6 +3794,9 @@ type CreateTasksRequest struct {
 
 	// 是否使用multi- statement方式运行一批次任务，true: 是，false: 否
 	IsMultiStatement *bool `json:"IsMultiStatement,omitnil,omitempty" name:"IsMultiStatement"`
+
+	// 任务来源信息
+	SourceInfo []*KVPair `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
 }
 
 func (r *CreateTasksRequest) ToJsonString() string {
@@ -3790,6 +3817,7 @@ func (r *CreateTasksRequest) FromJsonString(s string) error {
 	delete(f, "DataEngineName")
 	delete(f, "ResourceGroupName")
 	delete(f, "IsMultiStatement")
+	delete(f, "SourceInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTasksRequest has unknown keys!", "")
 	}
@@ -6112,6 +6140,9 @@ type DescribeDataEngineEventsRequestParams struct {
 
 	// 偏移量，默认为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 资源组id
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
 type DescribeDataEngineEventsRequest struct {
@@ -6125,6 +6156,9 @@ type DescribeDataEngineEventsRequest struct {
 
 	// 偏移量，默认为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 资源组id
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 }
 
 func (r *DescribeDataEngineEventsRequest) ToJsonString() string {
@@ -6142,6 +6176,7 @@ func (r *DescribeDataEngineEventsRequest) FromJsonString(s string) error {
 	delete(f, "DataEngineName")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "SessionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataEngineEventsRequest has unknown keys!", "")
 	}
@@ -7318,6 +7353,9 @@ type DescribeNotebookSessionStatementSqlResultRequestParams struct {
 
 	// 批次Id
 	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
+
+	// 返回结果集中字段值长度截取，如果超过该长度则截取到该长度
+	DataFieldCutLen *int64 `json:"DataFieldCutLen,omitnil,omitempty" name:"DataFieldCutLen"`
 }
 
 type DescribeNotebookSessionStatementSqlResultRequest struct {
@@ -7334,6 +7372,9 @@ type DescribeNotebookSessionStatementSqlResultRequest struct {
 
 	// 批次Id
 	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
+
+	// 返回结果集中字段值长度截取，如果超过该长度则截取到该长度
+	DataFieldCutLen *int64 `json:"DataFieldCutLen,omitnil,omitempty" name:"DataFieldCutLen"`
 }
 
 func (r *DescribeNotebookSessionStatementSqlResultRequest) ToJsonString() string {
@@ -7352,6 +7393,7 @@ func (r *DescribeNotebookSessionStatementSqlResultRequest) FromJsonString(s stri
 	delete(f, "MaxResults")
 	delete(f, "NextToken")
 	delete(f, "BatchId")
+	delete(f, "DataFieldCutLen")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookSessionStatementSqlResultRequest has unknown keys!", "")
 	}
@@ -8872,6 +8914,9 @@ type DescribeTaskResultRequestParams struct {
 
 	// 是否转化数据类型
 	IsTransformDataType *bool `json:"IsTransformDataType,omitnil,omitempty" name:"IsTransformDataType"`
+
+	// 返回结果集中字段长度截取，如果字段值长度超过该长度则截取到该长度
+	DataFieldCutLen *int64 `json:"DataFieldCutLen,omitnil,omitempty" name:"DataFieldCutLen"`
 }
 
 type DescribeTaskResultRequest struct {
@@ -8888,6 +8933,9 @@ type DescribeTaskResultRequest struct {
 
 	// 是否转化数据类型
 	IsTransformDataType *bool `json:"IsTransformDataType,omitnil,omitempty" name:"IsTransformDataType"`
+
+	// 返回结果集中字段长度截取，如果字段值长度超过该长度则截取到该长度
+	DataFieldCutLen *int64 `json:"DataFieldCutLen,omitnil,omitempty" name:"DataFieldCutLen"`
 }
 
 func (r *DescribeTaskResultRequest) ToJsonString() string {
@@ -8906,6 +8954,7 @@ func (r *DescribeTaskResultRequest) FromJsonString(s string) error {
 	delete(f, "NextToken")
 	delete(f, "MaxResults")
 	delete(f, "IsTransformDataType")
+	delete(f, "DataFieldCutLen")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskResultRequest has unknown keys!", "")
 	}
@@ -9165,6 +9214,9 @@ type DescribeTasksOverviewRequestParams struct {
 
 	// 引擎名
 	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// DataEngine-dm8bjs29
+	HouseIds []*string `json:"HouseIds,omitnil,omitempty" name:"HouseIds"`
 }
 
 type DescribeTasksOverviewRequest struct {
@@ -9181,6 +9233,9 @@ type DescribeTasksOverviewRequest struct {
 
 	// 引擎名
 	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// DataEngine-dm8bjs29
+	HouseIds []*string `json:"HouseIds,omitnil,omitempty" name:"HouseIds"`
 }
 
 func (r *DescribeTasksOverviewRequest) ToJsonString() string {
@@ -9199,6 +9254,7 @@ func (r *DescribeTasksOverviewRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "Filters")
 	delete(f, "DataEngineName")
+	delete(f, "HouseIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTasksOverviewRequest has unknown keys!", "")
 	}
@@ -11101,11 +11157,9 @@ type JobLogResult struct {
 
 type KVPair struct {
 	// 配置的key值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 配置的value值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -12422,15 +12476,12 @@ type NotebookSessionStatementBatchInformation struct {
 
 type NotebookSessionStatementInfo struct {
 	// 完成时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Completed *int64 `json:"Completed,omitnil,omitempty" name:"Completed"`
 
 	// 开始时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Started *int64 `json:"Started,omitnil,omitempty" name:"Started"`
 
 	// 完成进度，百分制
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Progress *float64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
 	// Session Statement唯一标识
@@ -12448,11 +12499,9 @@ type NotebookSessionStatementInfo struct {
 	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
 
 	// 运行语句
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -13698,17 +13747,14 @@ type SparkSessionBatchLogOperate struct {
 
 type StatementInformation struct {
 	// SQL任务唯一ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// SQL内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SQL *string `json:"SQL,omitnil,omitempty" name:"SQL"`
 }
 
 type StatementOutput struct {
 	// 执行总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionCount *int64 `json:"ExecutionCount,omitnil,omitempty" name:"ExecutionCount"`
 
 	// Statement数据
@@ -13716,11 +13762,9 @@ type StatementOutput struct {
 	Data []*KVPair `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// Statement状态:ok,error
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 错误名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorName *string `json:"ErrorName,omitnil,omitempty" name:"ErrorName"`
 
 	// 错误类型
@@ -13732,7 +13776,6 @@ type StatementOutput struct {
 	ErrorMessage []*string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 
 	// SQL类型任务结果返回
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SQLResult *string `json:"SQLResult,omitnil,omitempty" name:"SQLResult"`
 }
 
@@ -14357,11 +14400,9 @@ type TaskResultInfo struct {
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 数据源名称，当前任务执行时候选中的默认数据源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil,omitempty" name:"DatasourceConnectionName"`
 
 	// 数据库名称，当前任务执行时候选中的默认数据库
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
 	// 当前执行的SQL，一个任务包含一个SQL
@@ -14396,7 +14437,6 @@ type TaskResultInfo struct {
 	ResultSchema []*Column `json:"ResultSchema,omitnil,omitempty" name:"ResultSchema"`
 
 	// 结果信息，反转义后，外层数组的每个元素为一行数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultSet *string `json:"ResultSet,omitnil,omitempty" name:"ResultSet"`
 
 	// 分页信息，如果没有更多结果数据，nextToken为空
@@ -14415,7 +14455,6 @@ type TaskResultInfo struct {
 	TotalTime *int64 `json:"TotalTime,omitnil,omitempty" name:"TotalTime"`
 
 	// 获取结果消耗的时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueryResultTime *float64 `json:"QueryResultTime,omitnil,omitempty" name:"QueryResultTime"`
 }
 

@@ -7423,6 +7423,69 @@ func (c *Client) UpdateOrganizationMemberEmailBindWithContext(ctx context.Contex
     return
 }
 
+func NewUpdateOrganizationMembersPolicyRequest() (request *UpdateOrganizationMembersPolicyRequest) {
+    request = &UpdateOrganizationMembersPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "UpdateOrganizationMembersPolicy")
+    
+    
+    return
+}
+
+func NewUpdateOrganizationMembersPolicyResponse() (response *UpdateOrganizationMembersPolicyResponse) {
+    response = &UpdateOrganizationMembersPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateOrganizationMembersPolicy
+// 修改组织成员访问策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATEPOLICY = "FailedOperation.OperatePolicy"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_MEMBERIDENTITYNOTEXIST = "ResourceNotFound.MemberIdentityNotExist"
+//  RESOURCENOTFOUND_MEMBERPOLICYNOTEXIST = "ResourceNotFound.MemberPolicyNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONMEMBERNOTEXIST = "ResourceNotFound.OrganizationMemberNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateOrganizationMembersPolicy(request *UpdateOrganizationMembersPolicyRequest) (response *UpdateOrganizationMembersPolicyResponse, err error) {
+    return c.UpdateOrganizationMembersPolicyWithContext(context.Background(), request)
+}
+
+// UpdateOrganizationMembersPolicy
+// 修改组织成员访问策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATEPOLICY = "FailedOperation.OperatePolicy"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_MEMBERIDENTITYNOTEXIST = "ResourceNotFound.MemberIdentityNotExist"
+//  RESOURCENOTFOUND_MEMBERPOLICYNOTEXIST = "ResourceNotFound.MemberPolicyNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONMEMBERNOTEXIST = "ResourceNotFound.OrganizationMemberNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateOrganizationMembersPolicyWithContext(ctx context.Context, request *UpdateOrganizationMembersPolicyRequest) (response *UpdateOrganizationMembersPolicyResponse, err error) {
+    if request == nil {
+        request = NewUpdateOrganizationMembersPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateOrganizationMembersPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateOrganizationMembersPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateOrganizationNodeRequest() (request *UpdateOrganizationNodeRequest) {
     request = &UpdateOrganizationNodeRequest{
         BaseRequest: &tchttp.BaseRequest{},

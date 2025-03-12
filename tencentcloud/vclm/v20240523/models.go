@@ -38,8 +38,17 @@ type CheckAnimateImageJobRequestParams struct {
 	// 图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
+	// 是否对输入图采用加强检测方案。
+	// 
+	// 默认不加强检测（false），仅对输入图做必要的基础检测。
+	// 
+	// 开启加强检测（true）有助于提升效果稳定性，将根据选择的动作模板提取建议的人体关键点，并判断输入图中是否包含这些人体关键点。加强检测仅对人像输入图生效，对非人输入图不生效。
 	EnableBodyJoins *bool `json:"EnableBodyJoins,omitnil,omitempty" name:"EnableBodyJoins"`
+
+	// 是否开启人脸检测。
+	// 
+	// 默认开启人脸检测（true），拦截主体为人像但无人脸、人脸不完整或被遮挡的输入图。可选关闭人脸检测（false）。
+	EnableFace *bool `json:"EnableFace,omitnil,omitempty" name:"EnableFace"`
 }
 
 type CheckAnimateImageJobRequest struct {
@@ -61,8 +70,17 @@ type CheckAnimateImageJobRequest struct {
 	// 图片宽高比：【宽：高】数值在 1:2 到 1:1.2 范围内
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
+	// 是否对输入图采用加强检测方案。
+	// 
+	// 默认不加强检测（false），仅对输入图做必要的基础检测。
+	// 
+	// 开启加强检测（true）有助于提升效果稳定性，将根据选择的动作模板提取建议的人体关键点，并判断输入图中是否包含这些人体关键点。加强检测仅对人像输入图生效，对非人输入图不生效。
 	EnableBodyJoins *bool `json:"EnableBodyJoins,omitnil,omitempty" name:"EnableBodyJoins"`
+
+	// 是否开启人脸检测。
+	// 
+	// 默认开启人脸检测（true），拦截主体为人像但无人脸、人脸不完整或被遮挡的输入图。可选关闭人脸检测（false）。
+	EnableFace *bool `json:"EnableFace,omitnil,omitempty" name:"EnableFace"`
 }
 
 func (r *CheckAnimateImageJobRequest) ToJsonString() string {
@@ -81,6 +99,7 @@ func (r *CheckAnimateImageJobRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "ImageBase64")
 	delete(f, "EnableBodyJoins")
+	delete(f, "EnableFace")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckAnimateImageJobRequest has unknown keys!", "")
 	}
@@ -379,7 +398,11 @@ type SubmitImageAnimateJobRequestParams struct {
 	// 结果视频是否保留模板音频。默认为true
 	EnableAudio *bool `json:"EnableAudio,omitnil,omitempty" name:"EnableAudio"`
 
-	// 是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
+	// 是否对输入图采用加强检测方案。
+	// 
+	// 默认不加强检测（false），仅对输入图做必要的基础检测。
+	// 
+	// 开启加强检测（true）有助于提升效果稳定性，将根据选择的动作模板提取建议的人体关键点，并判断输入图中是否包含这些人体关键点。加强检测仅对人像输入图生效，对非人输入图不生效。
 	EnableBodyJoins *bool `json:"EnableBodyJoins,omitnil,omitempty" name:"EnableBodyJoins"`
 
 	// 是否对结果视频背景进行分割，默认值为false。
@@ -397,6 +420,11 @@ type SubmitImageAnimateJobRequestParams struct {
 	// 标识内容设置。
 	// 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
 	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+
+	// 是否开启人脸检测。
+	// 
+	// 默认开启人脸检测（true），拦截主体为人像但无人脸、人脸不完整或被遮挡的输入图。可选关闭人脸检测（false）。
+	EnableFace *bool `json:"EnableFace,omitnil,omitempty" name:"EnableFace"`
 }
 
 type SubmitImageAnimateJobRequest struct {
@@ -421,7 +449,11 @@ type SubmitImageAnimateJobRequest struct {
 	// 结果视频是否保留模板音频。默认为true
 	EnableAudio *bool `json:"EnableAudio,omitnil,omitempty" name:"EnableAudio"`
 
-	// 是否检测输入图人体12个身体部位（头部、颈部、右肩、右肘、右腕、左肩、左肘、左腕、右髋、左髋,、左膝、右膝）。默认不检测。
+	// 是否对输入图采用加强检测方案。
+	// 
+	// 默认不加强检测（false），仅对输入图做必要的基础检测。
+	// 
+	// 开启加强检测（true）有助于提升效果稳定性，将根据选择的动作模板提取建议的人体关键点，并判断输入图中是否包含这些人体关键点。加强检测仅对人像输入图生效，对非人输入图不生效。
 	EnableBodyJoins *bool `json:"EnableBodyJoins,omitnil,omitempty" name:"EnableBodyJoins"`
 
 	// 是否对结果视频背景进行分割，默认值为false。
@@ -439,6 +471,11 @@ type SubmitImageAnimateJobRequest struct {
 	// 标识内容设置。
 	// 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
 	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+
+	// 是否开启人脸检测。
+	// 
+	// 默认开启人脸检测（true），拦截主体为人像但无人脸、人脸不完整或被遮挡的输入图。可选关闭人脸检测（false）。
+	EnableFace *bool `json:"EnableFace,omitnil,omitempty" name:"EnableFace"`
 }
 
 func (r *SubmitImageAnimateJobRequest) ToJsonString() string {
@@ -461,6 +498,7 @@ func (r *SubmitImageAnimateJobRequest) FromJsonString(s string) error {
 	delete(f, "EnableSegment")
 	delete(f, "LogoAdd")
 	delete(f, "LogoParam")
+	delete(f, "EnableFace")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitImageAnimateJobRequest has unknown keys!", "")
 	}

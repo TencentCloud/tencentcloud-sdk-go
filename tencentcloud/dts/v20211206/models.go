@@ -74,15 +74,12 @@ type CheckStep struct {
 
 type CheckStepInfo struct {
 	// 任务开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartAt *string `json:"StartAt,omitnil,omitempty" name:"StartAt"`
 
 	// 任务结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndAt *string `json:"EndAt,omitnil,omitempty" name:"EndAt"`
 
 	// 任务步骤信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Progress *ProcessProgress `json:"Progress,omitnil,omitempty" name:"Progress"`
 }
 
@@ -156,7 +153,6 @@ type CompareAbstractInfo struct {
 
 type CompareColumnItem struct {
 	// 列名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColumnName *string `json:"ColumnName,omitnil,omitempty" name:"ColumnName"`
 }
 
@@ -184,41 +180,32 @@ type CompareDetailInfo struct {
 
 type CompareObject struct {
 	// 对象模式 整实例-all,部分对象-partial
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectMode *string `json:"ObjectMode,omitnil,omitempty" name:"ObjectMode"`
 
 	// 对象列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectItems []*CompareObjectItem `json:"ObjectItems,omitnil,omitempty" name:"ObjectItems"`
 
 	// 高级对象类型，目前只支持mongodb链路。如index(索引),shardkey(片键),schema(库表)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvancedObjects []*string `json:"AdvancedObjects,omitnil,omitempty" name:"AdvancedObjects"`
 }
 
 type CompareObjectItem struct {
 	// 数据库名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
 	// 数据库选择模式: all 为当前对象下的所有对象,partial 为部分对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbMode *string `json:"DbMode,omitnil,omitempty" name:"DbMode"`
 
 	// schema名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
 	// 表选择模式: all 为当前对象下的所有表对象,partial 为部分表对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableMode *string `json:"TableMode,omitnil,omitempty" name:"TableMode"`
 
 	// 用于一致性校验的表配置，当 TableMode 为 partial 时，需要填写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tables []*CompareTableItem `json:"Tables,omitnil,omitempty" name:"Tables"`
 
 	// 视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象(一致性校验不校验视图，当前参数未启作用)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ViewMode *string `json:"ViewMode,omitnil,omitempty" name:"ViewMode"`
 
 	// 用于一致性校验的视图配置，当 ViewMode 为 partial 时， 需要填写(一致性校验不校验视图，当前参数未启作用)
@@ -228,39 +215,31 @@ type CompareObjectItem struct {
 
 type CompareOptions struct {
 	// 对比方式：dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比), 默认为dataCheck
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
 	// 抽样比例;范围0,100。默认为100
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SampleRate *int64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
 	// 线程数，取值1-5，默认为1
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ThreadCount *int64 `json:"ThreadCount,omitnil,omitempty" name:"ThreadCount"`
 }
 
 type CompareTableItem struct {
 	// 表名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
 	// column 模式，all 为全部，partial 表示部分(该参数仅对数据同步任务有效)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColumnMode *string `json:"ColumnMode,omitnil,omitempty" name:"ColumnMode"`
 
 	// 当 ColumnMode 为 partial 时必填(该参数仅对数据同步任务有效)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Columns []*CompareColumnItem `json:"Columns,omitnil,omitempty" name:"Columns"`
 }
 
 type CompareTaskInfo struct {
 	// 一致性校验任务Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
 
 	// 一致性校验结果，包括：unstart(未启动)、running(校验中)、canceled(已终止)、failed(校验任务失败)、inconsistent(不一致)、consistent(一致)、notexist(不存在校验任务)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -324,7 +303,6 @@ type CompareTaskItem struct {
 
 type CompareViewItem struct {
 	// 视图名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
 }
 
@@ -687,7 +665,6 @@ type ConflictHandleOption struct {
 
 type ConsistencyOption struct {
 	// 一致性检测类型: full(全量检测迁移对象)、noCheck(不检测)、notConfigured(未配置)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 }
 
@@ -1533,208 +1510,158 @@ func (r *CreateSyncJobResponse) FromJsonString(s string) error {
 
 type DBEndpointInfo struct {
 	// 实例所在地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 实例网络接入类型，如：extranet(外网)、ipv6(公网ipv6)、cvm(云主机自建)、dcg(专线接入)、vpncloud(vpn接入的实例)、cdb(云数据库)、ccn(云联网)、intranet(自研上云)、vpc(私有网络)等，注意具体可选值依赖当前链路
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
 	// 实例数据库类型，如：mysql,redis,mongodb,postgresql,mariadb,percona 等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseType *string `json:"DatabaseType,omitnil,omitempty" name:"DatabaseType"`
 
 	// 节点类型，为空或者simple表示普通节点、cluster表示集群节点；对于mongo业务，取值为replicaset(mongodb副本集)、standalone(mongodb单节点)、cluster(mongodb集群)；对于redis实例，为空或simple(单节点)、cluster(集群)、cluster-cache(cache集群)、cluster-proxy(代理集群)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 
 	// 数据库信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Info []*DBInfo `json:"Info,omitnil,omitempty" name:"Info"`
 
 	// 实例服务提供商，如:"aliyun","others"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Supplier *string `json:"Supplier,omitnil,omitempty" name:"Supplier"`
 
 	// MongoDB可定义如下的参数: 	['AuthDatabase':'admin', 
 	// 'AuthFlag': "1",	'AuthMechanism':"SCRAM-SHA-1"]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraAttr []*KeyValuePairOption `json:"ExtraAttr,omitnil,omitempty" name:"ExtraAttr"`
 
 	// 数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseNetEnv *string `json:"DatabaseNetEnv,omitnil,omitempty" name:"DatabaseNetEnv"`
 
 	// tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，Info中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，Info中需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConnectType *string `json:"ConnectType,omitnil,omitempty" name:"ConnectType"`
 }
 
 type DBInfo struct {
 	// 表示节点角色，针对分布式数据库，如mongodb中的mongos节点。tdsqlmysql的可选项：proxy表示节点类型为主机，set表示节点类型为节点。proxy类型必须填在数组第一项。tdsqlmysql类型的源/目标配置必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
 	// 内核版本，针对mariadb的不同内核版本等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbKernel *string `json:"DbKernel,omitnil,omitempty" name:"DbKernel"`
 
 	// 实例的IP地址，对于公网、专线、VPN、云联网、自研上云、VPC等接入方式此项必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
 	// 实例的端口，对于公网、云主机自建、专线、VPN、云联网、自研上云、VPC等接入方式此项必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 实例的用户名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
 	// 实例的密码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// CVM实例短ID，格式如：ins-olgl39y8；与云服务器控制台页面显示的实例ID相同；如果接入类型为云主机自建的方式，此项必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CvmInstanceId *string `json:"CvmInstanceId,omitnil,omitempty" name:"CvmInstanceId"`
 
 	// VPN网关ID，格式如：vpngw-9ghexg7q；如果接入类型为vpncloud的方式，此项必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UniqVpnGwId *string `json:"UniqVpnGwId,omitnil,omitempty" name:"UniqVpnGwId"`
 
 	// 专线网关ID，格式如：dcg-0rxtqqxb；如果接入类型为专线接入的方式，此项必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UniqDcgId *string `json:"UniqDcgId,omitnil,omitempty" name:"UniqDcgId"`
 
 	// 数据库实例ID，格式如：cdb-powiqx8q；如果接入类型为云数据库的方式，此项必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 云联网ID，如：ccn-afp6kltc 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnGwId *string `json:"CcnGwId,omitnil,omitempty" name:"CcnGwId"`
 
 	// 私有网络ID，格式如：vpc-92jblxto；如果接入类型为vpc、vpncloud、ccn、dcg的方式，此项必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 私有网络下的子网ID，格式如：subnet-3paxmkdz；如果接入类型为vpc、vpncloud、ccn、dcg的方式，此项必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 数据库版本，当实例为RDS实例时才有效，格式如：5.6或者5.7，默认为5.6
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
 	// 实例所属账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
 
 	// 跨账号迁移时的角色,只允许[a-zA-Z0-9\-\_]+
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountRole *string `json:"AccountRole,omitnil,omitempty" name:"AccountRole"`
 
 	// 资源所属账号 为空或self(表示本账号内资源)、other(表示其他账户资源)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountMode *string `json:"AccountMode,omitnil,omitempty" name:"AccountMode"`
 
 	// 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmpSecretId *string `json:"TmpSecretId,omitnil,omitempty" name:"TmpSecretId"`
 
 	// 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmpSecretKey *string `json:"TmpSecretKey,omitnil,omitempty" name:"TmpSecretKey"`
 
 	// 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmpToken *string `json:"TmpToken,omitnil,omitempty" name:"TmpToken"`
 
 	// tdsql的分片id。如节点类型为set必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SetId *string `json:"SetId,omitnil,omitempty" name:"SetId"`
 }
 
 type DBItem struct {
 	// 需要迁移或同步的库名，当ObjectMode为partial时，此项必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
 	// 迁移或同步后的库名，默认与源库相同
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewDbName *string `json:"NewDbName,omitnil,omitempty" name:"NewDbName"`
 
 	// 迁移或同步的 schema
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
 	// 迁移或同步后的 schema name
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewSchemaName *string `json:"NewSchemaName,omitnil,omitempty" name:"NewSchemaName"`
 
 	// DB选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当ObjectMode为partial时，此项必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DBMode *string `json:"DBMode,omitnil,omitempty" name:"DBMode"`
 
 	// schema选择模式: all(为当前对象下的所有对象)，partial(部分对象)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchemaMode *string `json:"SchemaMode,omitnil,omitempty" name:"SchemaMode"`
 
 	// 表选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当DBMode为partial时此项必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableMode *string `json:"TableMode,omitnil,omitempty" name:"TableMode"`
 
 	// 表图对象集合，当 TableMode 为 partial 时，此项需要填写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tables []*TableItem `json:"Tables,omitnil,omitempty" name:"Tables"`
 
 	// 视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ViewMode *string `json:"ViewMode,omitnil,omitempty" name:"ViewMode"`
 
 	// 视图对象集合，当 ViewMode 为 partial 时， 此项需要填写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Views []*ViewItem `json:"Views,omitnil,omitempty" name:"Views"`
 
 	// postgresql独有参数，角色选择模式: all 为当前对象下的所有角色对象,partial 为部分角色对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleMode *string `json:"RoleMode,omitnil,omitempty" name:"RoleMode"`
 
 	// postgresql独有参数，当 RoleMode 为 partial 时， 此项需要填写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Roles []*RoleItem `json:"Roles,omitnil,omitempty" name:"Roles"`
 
 	// 选择要同步的模式，partial为部分，all为整选
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FunctionMode *string `json:"FunctionMode,omitnil,omitempty" name:"FunctionMode"`
 
 	// 选择要同步的模式，partial为部分，all为整选
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerMode *string `json:"TriggerMode,omitnil,omitempty" name:"TriggerMode"`
 
 	// 选择要同步的模式，partial为部分，all为整选
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventMode *string `json:"EventMode,omitnil,omitempty" name:"EventMode"`
 
 	// 选择要同步的模式，partial为部分，all为整选
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcedureMode *string `json:"ProcedureMode,omitnil,omitempty" name:"ProcedureMode"`
 
 	// FunctionMode取值为partial时需要填写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Functions []*string `json:"Functions,omitnil,omitempty" name:"Functions"`
 
 	// ProcedureMode取值为partial时需要填写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Procedures []*string `json:"Procedures,omitnil,omitempty" name:"Procedures"`
 
 	// EventMode取值为partial时需要填写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Events []*string `json:"Events,omitnil,omitempty" name:"Events"`
 
 	// TriggerMode取值为partial时需要填写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Triggers []*string `json:"Triggers,omitnil,omitempty" name:"Triggers"`
 }
 
@@ -1810,11 +1737,9 @@ type Database struct {
 
 type DatabaseTableObject struct {
 	// 迁移对象类型 all(全实例)，partial(部分对象)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectMode *string `json:"ObjectMode,omitnil,omitempty" name:"ObjectMode"`
 
 	// 迁移对象，当 ObjectMode 为 partial 时，不为空
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Databases []*DBItem `json:"Databases,omitnil,omitempty" name:"Databases"`
 
 	// 高级对象类型，如trigger、function、procedure、event。注意：如果要迁移同步高级对象，此配置中应该包含对应的高级对象类型
@@ -3874,15 +3799,12 @@ type DifferenceRowDetail struct {
 
 type DistributeRule struct {
 	// 规则类型。非mongo产品的枚举值为: table-按表名分区，pk-按表名+主键分区，cols-按列名分区。mongo的枚举值为：collection-按集合名分区、collectionAndObjectId-按集合+主键分区。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 
 	// 库名匹配规则，请填写正则表达式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbPattern *string `json:"DbPattern,omitnil,omitempty" name:"DbPattern"`
 
 	// 表名匹配规则，如果 DatabaseType 为 mongodb，则匹配集合名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TablePattern *string `json:"TablePattern,omitnil,omitempty" name:"TablePattern"`
 
 	// 列名。如果 RuleType 为 cols，此项必填。订阅任务会用该列的值计算分区。mongo没有按列分区，因此也不用传这个字段。
@@ -3910,200 +3832,152 @@ type DynamicOptions struct {
 
 type Endpoint struct {
 	// 地域英文名，如：ap-guangzhou
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 节点类型，proxy表示节点类型为主机，set表示节点类型为节点。proxy类型必须填在数组第一项。tdsqlmysql类型的源/目标配置必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
 	// 数据库内核类型，tdsql中用于区分不同内核：percona,mariadb,mysql。注意TDSQL-C MySQL、TDSQL PostgreSQL无需填写此项值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbKernel *string `json:"DbKernel,omitnil,omitempty" name:"DbKernel"`
 
 	// 数据库实例ID，格式如：cdb-powiqx8q
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例的IP地址，接入类型为非cdb时此项必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 实例端口，接入类型为非cdb时此项必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 用户名，对于访问需要用户名密码认证的实例必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
 	// 密码，对于访问需要用户名密码认证的实例必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 数据库名，数据库为cdwpg时，需要提供
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
 	// 私有网络ID，对于私有网络、专线、VPN的接入方式此项必填，格式如：vpc-92jblxto
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 私有网络下的子网ID，对于私有网络、专线、VPN的接入方式此项必填，格式如：subnet-3paxmkdz
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// CVM实例短ID，格式如：ins-olgl39y8，与云服务器控制台页面显示的实例ID相同。如果是CVM自建实例，需要传递此字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CvmInstanceId *string `json:"CvmInstanceId,omitnil,omitempty" name:"CvmInstanceId"`
 
 	// 专线网关ID，对于专线接入类型此项必填，格式如：dcg-0rxtqqxb
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UniqDcgId *string `json:"UniqDcgId,omitnil,omitempty" name:"UniqDcgId"`
 
 	// VPN网关ID，对于vpn接入类型此项必填，格式如：vpngw-9ghexg7q
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UniqVpnGwId *string `json:"UniqVpnGwId,omitnil,omitempty" name:"UniqVpnGwId"`
 
 	// 云联网ID，对于云联网接入类型此项必填，如：ccn-afp6kltc
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
 	// 云厂商类型，当实例为RDS实例时，填写为aliyun, 其他情况均填写others，默认为others
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Supplier *string `json:"Supplier,omitnil,omitempty" name:"Supplier"`
 
 	// 数据库版本，当实例为RDS实例时才有效，其他实例忽略，格式如：5.6或者5.7，默认为5.6
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
 	// 实例所属账号，如果为跨账号实例此项必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
 
 	// 资源所属账号 为空或self(表示本账号内资源)、other(表示跨账号资源)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountMode *string `json:"AccountMode,omitnil,omitempty" name:"AccountMode"`
 
 	// 跨账号同步时的角色，只允许[a-zA-Z0-9\-\_]+，如果为跨账号实例此项必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountRole *string `json:"AccountRole,omitnil,omitempty" name:"AccountRole"`
 
 	// 外部角色id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleExternalId *string `json:"RoleExternalId,omitnil,omitempty" name:"RoleExternalId"`
 
 	// 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号同步文档(https://cloud.tencent.com/document/product/571/68729)第4节中关于角色的定义。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmpSecretId *string `json:"TmpSecretId,omitnil,omitempty" name:"TmpSecretId"`
 
 	// 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号同步文档(https://cloud.tencent.com/document/product/571/68729)第4节中关于角色的定义。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmpSecretKey *string `json:"TmpSecretKey,omitnil,omitempty" name:"TmpSecretKey"`
 
 	// 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号同步文档(https://cloud.tencent.com/document/product/571/68729)第4节中关于角色的定义。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmpToken *string `json:"TmpToken,omitnil,omitempty" name:"TmpToken"`
 
 	// 是否走加密传输、UnEncrypted表示不走加密传输，Encrypted表示走加密传输，默认UnEncrypted
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptConn *string `json:"EncryptConn,omitnil,omitempty" name:"EncryptConn"`
 
 	// 数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseNetEnv *string `json:"DatabaseNetEnv,omitnil,omitempty" name:"DatabaseNetEnv"`
 
 	// 数据库为跨账号云联网下的实例时、表示云联网所属主账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnOwnerUin *string `json:"CcnOwnerUin,omitnil,omitempty" name:"CcnOwnerUin"`
 
 	// 数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChildInstanceId *string `json:"ChildInstanceId,omitnil,omitempty" name:"ChildInstanceId"`
 
 	// 数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的类型、例如：只读实例传ro、读写实例传rw
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChildInstanceType *string `json:"ChildInstanceType,omitnil,omitempty" name:"ChildInstanceType"`
 
 	// tdsql的分片id。如节点类型为set必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SetId *string `json:"SetId,omitnil,omitempty" name:"SetId"`
 }
 
 type EndpointItem struct {
 	// 源库所在地域。如果 AccessType 为 ccn，请填vpc所在地域，因为此时不知道源库在哪个地域。其他接入方式，请填订阅任务所在地域，因为确保订阅任务与源库在同一地域是最优的网络方案。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseRegion *string `json:"DatabaseRegion,omitnil,omitempty" name:"DatabaseRegion"`
 
 	// 用户名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
 	// 密码。作为入参时必填，作为出参时为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 目标实例ID。如果 AccessType 为 cdb，此项必填。配置InstanceId时会查询并校验实例信息。mysql的查询接口经过了鉴权，请确保子用户有 cdb:DescribeDBInstances 的接口权限。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 云主机ID。如果 AccessType 为 cvm，此项必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CvmInstanceId *string `json:"CvmInstanceId,omitnil,omitempty" name:"CvmInstanceId"`
 
 	// 专线网关ID。如果 AccessType 为 dcg，此项必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UniqDcgId *string `json:"UniqDcgId,omitnil,omitempty" name:"UniqDcgId"`
 
 	// 云联网ID。如果 AccessType 为 ccn，此项必填。 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
 	// vpn网关ID。如果 AccessType 为 vpncloud，此项必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UniqVpnGwId *string `json:"UniqVpnGwId,omitnil,omitempty" name:"UniqVpnGwId"`
 
 	// VpcID。如果 AccessType 为 dcg\ccn\vpncloud\vpc，此项必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网ID。如果 AccessType 为 dcg\ccn\vpncloud\vpc，此项必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 数据库地址，支持域名与IP。如果 AccessType 为 dcg\ccn\vpncloud\vpc\extranet\intranet，此项必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 
 	// 数据库端口。如果 AccessType 为 dcg\ccn\vpncloud\vpc\extranet\intranet\cvm，此项必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 是否走加密传输，枚举值：UnEncrypted-不加密，Encrypted-加密。只有mysql支持，不填默认不加密，其他产品不填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptConn *string `json:"EncryptConn,omitnil,omitempty" name:"EncryptConn"`
 
 	// 数据库网络环境。如果 AccessType 为 ccn 此项必填。枚举值：UserIDC-自建idc，TencentVPC-腾讯云，Aws-aws，AliYun-阿里云，Others-其他。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseNetEnv *string `json:"DatabaseNetEnv,omitnil,omitempty" name:"DatabaseNetEnv"`
 
 	// 云联网网关所属的主账号uin、跨账号云联网需要。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnOwnerUin *string `json:"CcnOwnerUin,omitnil,omitempty" name:"CcnOwnerUin"`
 
 	// 为业务添加的额外信息。参数名作key，参数值作value。 
 	// tdpg必填参数：PgDatabase-订阅的库名；
 	// mongo选填参数：InstanceType-实例类型：replicaset-副本集，cluster-分片集，主要用于控制台跳转到mongo实例页面，如不填不影响任务运行；
 	// 全业务选填参数：EngineVersion-内核版本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraAttr []*KeyValuePairOption `json:"ExtraAttr,omitnil,omitempty" name:"ExtraAttr"`
 
 	// 数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChildInstanceId *string `json:"ChildInstanceId,omitnil,omitempty" name:"ChildInstanceId"`
 
 	// 数据库为cynos、且是cynos集群内的一个子数据库实例时、该参数为该子实例的类型、例如：只读实例传ro、读写实例传rw
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChildInstanceType *string `json:"ChildInstanceType,omitnil,omitempty" name:"ChildInstanceType"`
 }
 
@@ -4112,29 +3986,23 @@ type ErrInfo struct {
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 解决方案
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
 }
 
 type ErrorInfoItem struct {
 	// 错误码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 解决方案
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
 
 	// 错误日志信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorLog *string `json:"ErrorLog,omitnil,omitempty" name:"ErrorLog"`
 
 	// 文档提示
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HelpDoc *string `json:"HelpDoc,omitnil,omitempty" name:"HelpDoc"`
 }
 
@@ -4146,7 +4014,6 @@ type GroupInfo struct {
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitnil,omitempty" name:"ConsumerGroupName"`
 
 	// 消费者组备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 消费组偏移量。该字段是为了兼容以前单Partition的情况，取值为最后一个分区的偏移量。各分区的偏移量详见StateOfPartition字段
@@ -4171,7 +4038,6 @@ type GroupInfo struct {
 	ConsumerGroupState *string `json:"ConsumerGroupState,omitnil,omitempty" name:"ConsumerGroupState"`
 
 	// 每个消费者正在消费的分区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PartitionAssignment []*PartitionAssignment `json:"PartitionAssignment,omitnil,omitempty" name:"PartitionAssignment"`
 }
 
@@ -4433,21 +4299,17 @@ type KafkaOption struct {
 
 type KeyValuePairOption struct {
 	// 选项key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 选项value
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type MigrateAction struct {
 	// 任务的所有操作列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllAction []*string `json:"AllAction,omitnil,omitempty" name:"AllAction"`
 
 	// 任务在当前状态下允许的操作列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowedAction []*string `json:"AllowedAction,omitnil,omitempty" name:"AllowedAction"`
 }
 
@@ -4473,73 +4335,57 @@ type MigrateDBItem struct {
 
 type MigrateDetailInfo struct {
 	// 总步骤数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepAll *uint64 `json:"StepAll,omitnil,omitempty" name:"StepAll"`
 
 	// 当前步骤
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepNow *uint64 `json:"StepNow,omitnil,omitempty" name:"StepNow"`
 
 	// 主从差距，MB；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MasterSlaveDistance *int64 `json:"MasterSlaveDistance,omitnil,omitempty" name:"MasterSlaveDistance"`
 
 	// 主从差距，秒；只在任务正常，迁移或者同步的最后一步（追Binlog的阶段才有校），如果是非法值，返回-1
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecondsBehindMaster *int64 `json:"SecondsBehindMaster,omitnil,omitempty" name:"SecondsBehindMaster"`
 
 	// 步骤信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepInfo []*StepDetailInfo `json:"StepInfo,omitnil,omitempty" name:"StepInfo"`
 }
 
 type MigrateOption struct {
 	// 迁移对象选项，需要告知迁移服务迁移哪些库表对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseTable *DatabaseTableObject `json:"DatabaseTable,omitnil,omitempty" name:"DatabaseTable"`
 
 	// 迁移类型，full(全量迁移)，structure(结构迁移)，fullAndIncrement(全量加增量迁移)， 默认为fullAndIncrement;注意redis,keewidb产品只支持fullAndIncrement类型。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MigrateType *string `json:"MigrateType,omitnil,omitempty" name:"MigrateType"`
 
 	// 数据一致性校验选项， 默认为不开启一致性校验
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Consistency *ConsistencyOption `json:"Consistency,omitnil,omitempty" name:"Consistency"`
 
 	// 是否迁移账号，true(迁移账号)，false(不迁移账号)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsMigrateAccount *bool `json:"IsMigrateAccount,omitnil,omitempty" name:"IsMigrateAccount"`
 
 	// 是否用源库Root账户覆盖目标库，值包括：false-不覆盖，true-覆盖，选择库表或者结构迁移时应该为false，注意只对旧版迁移有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsOverrideRoot *bool `json:"IsOverrideRoot,omitnil,omitempty" name:"IsOverrideRoot"`
 
 	// 是否在迁移时设置目标库只读(仅对mysql有效)，true(设置只读)、false(不设置只读，默认此值)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDstReadOnly *bool `json:"IsDstReadOnly,omitnil,omitempty" name:"IsDstReadOnly"`
 
 	// 其他附加信息，对于特定库可设置额外参数，Redis可定义如下的参数: 
 	// ["DstWriteMode":normal, 	目标库写入模式,可取值clearData(清空目标实例数据)、overwrite(以覆盖写的方式执行任务)、normal(跟正常流程一样，不做额外动作) 	"IsDstReadOnly":true, 	是否在迁移时设置目标库只读,true(设置只读)、false(不设置只读) 	"ClientOutputBufferHardLimit":512, 	从机缓冲区的硬性容量限制(MB) 	"ClientOutputBufferSoftLimit":512, 	从机缓冲区的软性容量限制(MB) 	"ClientOutputBufferPersistTime":60, 从机缓冲区的软性限制持续时间(秒) 	"ReplBacklogSize":512, 	环形缓冲区容量限制(MB) 	"ReplTimeout":120，		复制超时时间(秒) 	"IsExpireKey":"true",过期key自动淘汰]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraAttr []*KeyValuePairOption `json:"ExtraAttr,omitnil,omitempty" name:"ExtraAttr"`
 
 	// pgsql迁移分类：logical(逻辑迁移)、physical(物理迁移)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MigrateWay *string `json:"MigrateWay,omitnil,omitempty" name:"MigrateWay"`
 }
 
 type ModifiedSubscribeObject struct {
 	// 订阅对象的类型，枚举值为：0-库，1-表(该值对于mongo任务来说，是集合) 。
 	// 注意：mongo只支持全实例、单库或者单集合订阅，因此该字段不要与SubscribeObjectType冲突。如：SubscribeObjectType=4，表示mongo单库订阅，那么该字段应该传0。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectsType *int64 `json:"ObjectsType,omitnil,omitempty" name:"ObjectsType"`
 
 	// 订阅数据库的名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
 	// 订阅数据库中表(或集合)的名称。如果 ObjectsType 为 1，那么此字段为必填，且不为空；
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableNames []*string `json:"TableNames,omitnil,omitempty" name:"TableNames"`
 }
 
@@ -5649,11 +5495,9 @@ type Objects struct {
 
 type OffsetTimeMap struct {
 	// kafka分区编号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PartitionNo *uint64 `json:"PartitionNo,omitnil,omitempty" name:"PartitionNo"`
 
 	// kafka offset
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -5836,97 +5680,75 @@ func (r *PauseSyncJobResponse) FromJsonString(s string) error {
 
 type PipelineInfo struct {
 	// 聚合运算符：$addFields、$match、$project、$replaceRoot、$redact、$replaceWith、$set、$unset。其中 $replaceWith、$set、$unset 只有当订阅实例是4.2及以上版本可选。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AggOp *string `json:"AggOp,omitnil,omitempty" name:"AggOp"`
 
 	// 聚合表达式。必须是json格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AggCmd *string `json:"AggCmd,omitnil,omitempty" name:"AggCmd"`
 }
 
 type ProcessProgress struct {
 	// 步骤的状态， 包括：notStarted(未开始)、running(运行中)、success(成功)、failed(失败)等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 进度信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Percent *uint64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
 	// 总的步骤数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepAll *uint64 `json:"StepAll,omitnil,omitempty" name:"StepAll"`
 
 	// 当前进行的步骤
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepNow *uint64 `json:"StepNow,omitnil,omitempty" name:"StepNow"`
 
 	// 当前步骤输出提示信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 步骤信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Steps []*StepDetailInfo `json:"Steps,omitnil,omitempty" name:"Steps"`
 }
 
 type ProcessStepTip struct {
 	// 提示信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 解决方案
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
 
 	// 文档提示
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HelpDoc *string `json:"HelpDoc,omitnil,omitempty" name:"HelpDoc"`
 }
 
 type RateLimitOption struct {
 	// 当前生效的全量导出线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为16
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentDumpThread *int64 `json:"CurrentDumpThread,omitnil,omitempty" name:"CurrentDumpThread"`
 
 	// 默认的全量导出线程数，该字段仅在出参有意义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultDumpThread *int64 `json:"DefaultDumpThread,omitnil,omitempty" name:"DefaultDumpThread"`
 
 	// 当前生效的全量导出Rps，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为50000000
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentDumpRps *int64 `json:"CurrentDumpRps,omitnil,omitempty" name:"CurrentDumpRps"`
 
 	// 默认的全量导出Rps，该字段仅在出参有意义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultDumpRps *int64 `json:"DefaultDumpRps,omitnil,omitempty" name:"DefaultDumpRps"`
 
 	// 当前生效的全量导入线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为16
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentLoadThread *int64 `json:"CurrentLoadThread,omitnil,omitempty" name:"CurrentLoadThread"`
 
 	// 默认的全量导入线程数，该字段仅在出参有意义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultLoadThread *int64 `json:"DefaultLoadThread,omitnil,omitempty" name:"DefaultLoadThread"`
 
 	// 当前生效的全量导入Rps，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为50000000	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentLoadRps *int64 `json:"CurrentLoadRps,omitnil,omitempty" name:"CurrentLoadRps"`
 
 	// 默认的全量导入Rps，该字段仅在出参有意义	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultLoadRps *int64 `json:"DefaultLoadRps,omitnil,omitempty" name:"DefaultLoadRps"`
 
 	// 当前生效的增量导入线程数，配置任务时可调整该字段值，注意：如果不设置或设置为0则表示保持当前值，最大值为128
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentSinkerThread *int64 `json:"CurrentSinkerThread,omitnil,omitempty" name:"CurrentSinkerThread"`
 
 	// 默认的增量导入线程数，该字段仅在出参有意义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultSinkerThread *int64 `json:"DefaultSinkerThread,omitnil,omitempty" name:"DefaultSinkerThread"`
 
 	// enum:"no"/"yes"、no表示用户未设置过限速、yes表示设置过限速，该字段仅在出参有意义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HasUserSetRateLimit *string `json:"HasUserSetRateLimit,omitnil,omitempty" name:"HasUserSetRateLimit"`
 }
 
@@ -6413,11 +6235,9 @@ func (r *ResumeSyncJobResponse) FromJsonString(s string) error {
 
 type RoleItem struct {
 	// 角色名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleName *string `json:"RoleName,omitnil,omitempty" name:"RoleName"`
 
 	// 迁移后的角色名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewRoleName *string `json:"NewRoleName,omitnil,omitempty" name:"NewRoleName"`
 }
 
@@ -6875,39 +6695,30 @@ func (r *StartSyncJobResponse) FromJsonString(s string) error {
 
 type StepDetailInfo struct {
 	// 步骤序列
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepNo *uint64 `json:"StepNo,omitnil,omitempty" name:"StepNo"`
 
 	// 步骤展现名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepName *string `json:"StepName,omitnil,omitempty" name:"StepName"`
 
 	// 步骤英文标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepId *string `json:"StepId,omitnil,omitempty" name:"StepId"`
 
 	// 步骤状态:success(成功)、failed(失败)、running(执行中)、notStarted(未执行)、默认为notStarted
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 当前步骤开始的时间，格式为"yyyy-mm-dd hh:mm:ss"，该字段不存在或者为空是无意义 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 步骤错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepMessage *string `json:"StepMessage,omitnil,omitempty" name:"StepMessage"`
 
 	// 执行进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Percent *uint64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Errors []*ProcessStepTip `json:"Errors,omitnil,omitempty" name:"Errors"`
 
 	// 告警提示
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Warnings []*ProcessStepTip `json:"Warnings,omitnil,omitempty" name:"Warnings"`
 }
 
@@ -7156,41 +6967,32 @@ type SubsErr struct {
 
 type SubscribeCheckStepInfo struct {
 	// 步骤名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepName *string `json:"StepName,omitnil,omitempty" name:"StepName"`
 
 	// 步骤Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepId *string `json:"StepId,omitnil,omitempty" name:"StepId"`
 
 	// 步骤编号，从 1 开始
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepNo *uint64 `json:"StepNo,omitnil,omitempty" name:"StepNo"`
 
 	// 当前步骤状态，可能值为 notStarted,running,finished,failed
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 当前步骤进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Percent *uint64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
 	// 错误提示
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Errors []*SubscribeCheckStepTip `json:"Errors,omitnil,omitempty" name:"Errors"`
 
 	// 告警提示
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Warnings []*SubscribeCheckStepTip `json:"Warnings,omitnil,omitempty" name:"Warnings"`
 }
 
 type SubscribeCheckStepTip struct {
 	// 错误或告警的详细信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 帮助文档
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HelpDoc *string `json:"HelpDoc,omitnil,omitempty" name:"HelpDoc"`
 }
 
@@ -7202,18 +7004,15 @@ type SubscribeInfo struct {
 	SubscribeName *string `json:"SubscribeName,omitnil,omitempty" name:"SubscribeName"`
 
 	// 订阅实例发送数据的kafka topic
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 订阅实例的类型，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 订阅的数据库实例ID（如果订阅的是云数据库）如果实例不是腾讯云上的，此值为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 云数据库状态：running 运行中，isolated 已隔离，offline 已下线。如果不是云上，此值为空
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
 	// 数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining, 按量转包年包月中 post2PrePayIng
@@ -7223,23 +7022,18 @@ type SubscribeInfo struct {
 	SubsStatus *string `json:"SubsStatus,omitnil,omitempty" name:"SubsStatus"`
 
 	// 上次修改时间，时间格式如：Y-m-d h:m:s
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 创建时间，时间格式如：Y-m-d h:m:s
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 隔离时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
 
 	// 包年包月任务的到期时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 下线时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OfflineTime *string `json:"OfflineTime,omitnil,omitempty" name:"OfflineTime"`
 
 	// 计费方式，0 - 包年包月，1 - 按量计费
@@ -7252,15 +7046,12 @@ type SubscribeInfo struct {
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 接入方式。枚举值：extranet(公网) vpncloud(vpn接入) dcg(专线接入) ccn(云联网) cdb(云数据库) cvm(云主机自建) intranet(自研上云) vpc(私有网络vpc)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
 	// 数据库节点信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Endpoints []*EndpointItem `json:"Endpoints,omitnil,omitempty" name:"Endpoints"`
 
 	// 数据订阅版本, 当前只支持 kafka 版本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubscribeVersion *string `json:"SubscribeVersion,omitnil,omitempty" name:"SubscribeVersion"`
 
 	// 标签
@@ -7274,27 +7065,22 @@ type SubscribeInfo struct {
 
 type SubscribeKafkaConfig struct {
 	// kafka分区数量，枚举值为1，4，8
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NumberOfPartitions *uint64 `json:"NumberOfPartitions,omitnil,omitempty" name:"NumberOfPartitions"`
 
 	// 分区规则。当NumberOfPartitions > 1时，该项必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DistributeRules []*DistributeRule `json:"DistributeRules,omitnil,omitempty" name:"DistributeRules"`
 
 	// 默认分区策略。当NumberOfPartitions > 1时，该项必填。不满足DistributeRules中正则表达式的数据，将按照默认分区策略计算分区。
 	// 非mongo产品的枚举值为: table-按表名分区，pk-按表名+主键分区。mongo的枚举值为：collection-按集合名分区。
 	// 该字段与DistributeRules搭配使用，如果配置了该字段，视为配置了一条DistributeRules。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultRuleType *string `json:"DefaultRuleType,omitnil,omitempty" name:"DefaultRuleType"`
 }
 
 type SubscribeObject struct {
 	// 订阅数据的类型，枚举值：database-数据库，table-数据库的表(如果 DatabaseType 为 mongodb，则表示集合)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
 
 	// 订阅的数据库名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
 
 	// 订阅数据库中表的名称。如果 DatabaseType 为 mongodb，填集合名。mongodb只支持订阅单库或者单集合。
@@ -7304,15 +7090,12 @@ type SubscribeObject struct {
 
 type SyncDBEndpointInfos struct {
 	// 数据库所在地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 实例网络接入类型，如：extranet(外网)、ipv6(公网ipv6)、cvm(云主机自建)、dcg(专线接入)、vpncloud(vpn接入的实例)、cdb(云数据库)、ccn(云联网)、intranet(自研上云)、vpc(私有网络)等，注意具体可选值依赖当前链路
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
 	// 实例数据库类型，如：mysql,redis,mongodb,postgresql,mariadb,percona 等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseType *string `json:"DatabaseType,omitnil,omitempty" name:"DatabaseType"`
 
 	// 数据库信息。注意：如果数据库类型为tdsqlmysql，此处Endpoint数组的顺序应满足规则：proxy节点放在set节点之前。如果SrcConnectType选择proxy接入则只需要填写proxy节点即可。如果选择set接入，数组中第一个set节点必须是shardkey范围起始为0的分片
@@ -7540,19 +7323,15 @@ type Table struct {
 
 type TableItem struct {
 	// 迁移的表名，大小写敏感
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
 	// 迁移后的表名，当TableEditMode为rename时此项必填，注意此配置与TmpTables互斥，只能使用其中一种
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewTableName *string `json:"NewTableName,omitnil,omitempty" name:"NewTableName"`
 
 	// 迁移临时表，注意此配置与NewTableName互斥，只能使用其中一种。当配置的同步对象为表级别且TableEditMode为pt时此项有意义，针对pt-osc等工具在迁移过程中产生的临时表进行同步，需要提前将可能的临时表配置在这里，否则不会同步任何临时表。示例，如要对t1进行pt-osc操作，此项配置应该为["\_t1\_new","\_t1\_old"]；如要对t1进行gh-ost操作，此项配置应该为["\_t1\_ghc","\_t1\_gho","\_t1\_del"]，pt-osc与gh-ost产生的临时表可同时配置。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmpTables []*string `json:"TmpTables,omitnil,omitempty" name:"TmpTables"`
 
 	// 编辑表类型，rename(表映射)，pt(同步附加表)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableEditMode *string `json:"TableEditMode,omitnil,omitempty" name:"TableEditMode"`
 }
 
@@ -7566,11 +7345,9 @@ type TagFilter struct {
 
 type TagItem struct {
 	// 标签键
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 标签值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
@@ -7600,47 +7377,36 @@ type TopicRule struct {
 
 type TradeInfo struct {
 	// 交易订单号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
 	// 上一次交易订单号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastDealName *string `json:"LastDealName,omitnil,omitempty" name:"LastDealName"`
 
 	// 实例规格，包括：micro、small、medium、large、xlarge、2xlarge等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceClass *string `json:"InstanceClass,omitnil,omitempty" name:"InstanceClass"`
 
 	// 计费任务状态， normal(计费或待计费)、resizing(变配中)、reversing(冲正中，比较短暂的状态)、isolating(隔离中，比较短暂的状态)、isolated(已隔离)、offlining(下线中)、offlined(已下线)、notBilled(未计费)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TradeStatus *string `json:"TradeStatus,omitnil,omitempty" name:"TradeStatus"`
 
 	// 到期时间，格式为"yyyy-mm-dd hh:mm:ss"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 下线时间，格式为"yyyy-mm-dd hh:mm:ss"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OfflineTime *string `json:"OfflineTime,omitnil,omitempty" name:"OfflineTime"`
 
 	// 隔离时间，格式为"yyyy-mm-dd hh:mm:ss"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
 
 	// 下线原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OfflineReason *string `json:"OfflineReason,omitnil,omitempty" name:"OfflineReason"`
 
 	// 隔离原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolateReason *string `json:"IsolateReason,omitnil,omitempty" name:"IsolateReason"`
 
 	// 付费类型，包括：postpay(后付费)、prepay(预付费)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayType *string `json:"PayType,omitnil,omitempty" name:"PayType"`
 
 	// 任务计费类型，包括：billing(计费)、notBilling(不计费)、 promotions(促销活动中)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingType *string `json:"BillingType,omitnil,omitempty" name:"BillingType"`
 }
 
@@ -7656,10 +7422,8 @@ type View struct {
 
 type ViewItem struct {
 	// 视图名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
 
 	// 迁移后的视图名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewViewName *string `json:"NewViewName,omitnil,omitempty" name:"NewViewName"`
 }

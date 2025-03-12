@@ -9289,6 +9289,75 @@ func (c *Client) DescribeUsageWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDescribeUserFlowTypeRequest() (request *DescribeUserFlowTypeRequest) {
+    request = &DescribeUserFlowTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "DescribeUserFlowType")
+    
+    
+    return
+}
+
+func NewDescribeUserFlowTypeResponse() (response *DescribeUserFlowTypeResponse) {
+    response = &DescribeUserFlowTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserFlowType
+// 查询用户模版类型，分为两种模式：
+//
+// <ul>
+//
+// <li>QueryBindTemplate:false，查询用户合同模版类型，返回用户合同模版类型ID，用户合同模版类型名称，用户合同模版类型描述信息</li>
+//
+// <li>QueryBindTemplate:false，查询用户合同模版类型，返回用户合同模版类型ID，用户合同模版类型名称，用户合同模版类型描述信息，被绑定的模版数量</li>
+//
+// </ul>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeUserFlowType(request *DescribeUserFlowTypeRequest) (response *DescribeUserFlowTypeResponse, err error) {
+    return c.DescribeUserFlowTypeWithContext(context.Background(), request)
+}
+
+// DescribeUserFlowType
+// 查询用户模版类型，分为两种模式：
+//
+// <ul>
+//
+// <li>QueryBindTemplate:false，查询用户合同模版类型，返回用户合同模版类型ID，用户合同模版类型名称，用户合同模版类型描述信息</li>
+//
+// <li>QueryBindTemplate:false，查询用户合同模版类型，返回用户合同模版类型ID，用户合同模版类型名称，用户合同模版类型描述信息，被绑定的模版数量</li>
+//
+// </ul>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeUserFlowTypeWithContext(ctx context.Context, request *DescribeUserFlowTypeRequest) (response *DescribeUserFlowTypeResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserFlowTypeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserFlowType require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserFlowTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetDownloadFlowUrlRequest() (request *GetDownloadFlowUrlRequest) {
     request = &GetDownloadFlowUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -13773,8 +13773,7 @@ type VerifyOfdVatInvoiceOCRRequestParams struct {
 	// OFD文件的 Url 地址。
 	OfdFileUrl *string `json:"OfdFileUrl,omitnil,omitempty" name:"OfdFileUrl"`
 
-	// OFD文件的 Base64 值。
-	// OfdFileUrl 和 OfdFileBase64 必传其一，若两者都传，只解析OfdFileBase64。
+	// OFD文件的 Base64 值。OfdFileUrl 和 OfdFileBase64 必传其一，若两者都传，只使用OfdFileUrl。
 	OfdFileBase64 *string `json:"OfdFileBase64,omitnil,omitempty" name:"OfdFileBase64"`
 
 	// 需要识别的OFD发票页面的对应页码，默认值为1。 示例值：1
@@ -13787,8 +13786,7 @@ type VerifyOfdVatInvoiceOCRRequest struct {
 	// OFD文件的 Url 地址。
 	OfdFileUrl *string `json:"OfdFileUrl,omitnil,omitempty" name:"OfdFileUrl"`
 
-	// OFD文件的 Base64 值。
-	// OfdFileUrl 和 OfdFileBase64 必传其一，若两者都传，只解析OfdFileBase64。
+	// OFD文件的 Base64 值。OfdFileUrl 和 OfdFileBase64 必传其一，若两者都传，只使用OfdFileUrl。
 	OfdFileBase64 *string `json:"OfdFileBase64,omitnil,omitempty" name:"OfdFileBase64"`
 
 	// 需要识别的OFD发票页面的对应页码，默认值为1。 示例值：1

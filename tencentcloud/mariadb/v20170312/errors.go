@@ -101,6 +101,9 @@ const (
 	// 标签配额不足。
 	FAILEDOPERATION_TAGQUOTAEXCEEDLIMIT = "FailedOperation.TagQuotaExceedLimit"
 
+	// 计费配置查询失败
+	FAILEDOPERATION_TRADECONFIGNOTFOUND = "FailedOperation.TradeConfigNotFound"
+
 	// 实例安全组信息更新失败。
 	FAILEDOPERATION_UPDATEINSTANCEINFOFAILED = "FailedOperation.UpdateInstanceInfoFailed"
 

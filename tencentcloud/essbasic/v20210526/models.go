@@ -10391,6 +10391,9 @@ type DescribeTemplatesRequestParams struct {
 	//
 	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 用户合同类型id
+	UserFlowTypeId *string `json:"UserFlowTypeId,omitnil,omitempty" name:"UserFlowTypeId"`
 }
 
 type DescribeTemplatesRequest struct {
@@ -10474,6 +10477,9 @@ type DescribeTemplatesRequest struct {
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 用户合同类型id
+	UserFlowTypeId *string `json:"UserFlowTypeId,omitnil,omitempty" name:"UserFlowTypeId"`
 }
 
 func (r *DescribeTemplatesRequest) ToJsonString() string {
@@ -10500,6 +10506,7 @@ func (r *DescribeTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "WithPreviewUrl")
 	delete(f, "WithPdfUrl")
 	delete(f, "Operator")
+	delete(f, "UserFlowTypeId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTemplatesRequest has unknown keys!", "")
 	}
@@ -10671,6 +10678,85 @@ func (r *DescribeUsageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserFlowTypeRequestParams struct {
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。 此接口下面信息必填。 <ul> <li>渠道应用标识: Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul> 第三方平台子客企业和员工必须已经经过实名认证	
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 搜索过滤的条件，本字段允许您通过指定模板 ID 或模板名称来进行查询。 <ul><li><strong>模板的用户合同类型</strong>：<strong>Key</strong>设置为 <code>user-flow-type-id</code> ，<strong>Values</strong>为您想要查询的用户模版类型id列表。</li></ul>	
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 查询绑定了模版的用户合同类型
+	// <ul>
+	// <li>false（默认值），查询用户合同类型</li>
+	// <li>true，查询绑定了模版的用户合同类型</li>
+	// </ul>
+	QueryBindTemplate *bool `json:"QueryBindTemplate,omitnil,omitempty" name:"QueryBindTemplate"`
+}
+
+type DescribeUserFlowTypeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。 此接口下面信息必填。 <ul> <li>渠道应用标识: Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul> 第三方平台子客企业和员工必须已经经过实名认证	
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 搜索过滤的条件，本字段允许您通过指定模板 ID 或模板名称来进行查询。 <ul><li><strong>模板的用户合同类型</strong>：<strong>Key</strong>设置为 <code>user-flow-type-id</code> ，<strong>Values</strong>为您想要查询的用户模版类型id列表。</li></ul>	
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 查询绑定了模版的用户合同类型
+	// <ul>
+	// <li>false（默认值），查询用户合同类型</li>
+	// <li>true，查询绑定了模版的用户合同类型</li>
+	// </ul>
+	QueryBindTemplate *bool `json:"QueryBindTemplate,omitnil,omitempty" name:"QueryBindTemplate"`
+}
+
+func (r *DescribeUserFlowTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserFlowTypeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "Filters")
+	delete(f, "QueryBindTemplate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserFlowTypeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserFlowTypeResponseParams struct {
+	// 查询到的所有用户合同类型列表
+	AllUserFlowTypes []*TemplateUserFlowType `json:"AllUserFlowTypes,omitnil,omitempty" name:"AllUserFlowTypes"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUserFlowTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserFlowTypeResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserFlowTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserFlowTypeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13103,6 +13189,23 @@ type TemplateInfo struct {
 	// <ul><li>1：启用（默认），表示模板处于启用状态，可以被用户正常使用。</li>
 	// <li>2：停用，表示模板处于停用状态，禁止用户使用该模板。</li></ul>
 	Available *int64 `json:"Available,omitnil,omitempty" name:"Available"`
+
+	// 模版的用户合同类型
+	UserFlowType *UserFlowType `json:"UserFlowType,omitnil,omitempty" name:"UserFlowType"`
+}
+
+type TemplateUserFlowType struct {
+	// 合同类型id
+	UserFlowTypeId *string `json:"UserFlowTypeId,omitnil,omitempty" name:"UserFlowTypeId"`
+
+	// 用户合同类型名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 每个合同类型绑定的模版数量	
+	TemplateNum *int64 `json:"TemplateNum,omitnil,omitempty" name:"TemplateNum"`
+
+	// 合同类型的具体描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type UploadFile struct {
@@ -13248,6 +13351,17 @@ type UsageDetail struct {
 
 	// 消耗渠道
 	FlowChannel *string `json:"FlowChannel,omitnil,omitempty" name:"FlowChannel"`
+}
+
+type UserFlowType struct {
+	// 用户合同类型id
+	UserFlowTypeId *string `json:"UserFlowTypeId,omitnil,omitempty" name:"UserFlowTypeId"`
+
+	// 用户合同类型名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 用户合同类型的描述信息
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type UserInfo struct {

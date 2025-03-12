@@ -280,18 +280,15 @@ func (r *BatchDeleteClientNodesResponse) FromJsonString(s string) error {
 
 type ChargeAttribute struct {
 	// 到期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurDeadline *string `json:"CurDeadline,omitnil,omitempty" name:"CurDeadline"`
 
 	// 付费方式
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 自动付费标识：0:默认未设置 1:自动续费 2 不自动续费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 资源ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
@@ -326,7 +323,6 @@ type ClientNodeAttribute struct {
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 自定义挂载点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MountPoint *string `json:"MountPoint,omitnil,omitempty" name:"MountPoint"`
 }
 
@@ -1362,26 +1358,21 @@ type MappedBucket struct {
 	DataRepositoryTaskAutoStrategy []*string `json:"DataRepositoryTaskAutoStrategy,omitnil,omitempty" name:"DataRepositoryTaskAutoStrategy"`
 
 	// 绑定bucket的数据流动策略ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 规则备注与描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleDescription *string `json:"RuleDescription,omitnil,omitempty" name:"RuleDescription"`
 
 	// 桶关联状态 0：关联中 1：关联完成
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 是否使用全球加速域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccelerateFlag *bool `json:"AccelerateFlag,omitnil,omitempty" name:"AccelerateFlag"`
 
 	// 桶所在的园区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
 	// 自定义Endpoint
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 }
 
@@ -1577,11 +1568,9 @@ type RoleToken struct {
 
 type SubnetInfo struct {
 	// vpc id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 }
 

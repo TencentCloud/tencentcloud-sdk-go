@@ -779,64 +779,55 @@ type CloudNativeAPIGatewayVpcConfig struct {
 
 type ConfigFile struct {
 	// 配置文件id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 配置文件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 配置文件命名空间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// 配置文件组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
 	// 配置文件内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 配置文件格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
 	// 配置文件注释
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
 	// 配置文件状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 配置文件标签数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*ConfigFileTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 配置文件创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 配置文件创建者
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateBy *string `json:"CreateBy,omitnil,omitempty" name:"CreateBy"`
 
 	// 配置文件修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 配置文件修改者
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyBy *string `json:"ModifyBy,omitnil,omitempty" name:"ModifyBy"`
 
 	// 配置文件发布时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReleaseTime *string `json:"ReleaseTime,omitnil,omitempty" name:"ReleaseTime"`
 
 	// 配置文件发布者
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReleaseBy *string `json:"ReleaseBy,omitnil,omitempty" name:"ReleaseBy"`
+
+	// 配置文件类型
+	ConfigFileSupportedClient *int64 `json:"ConfigFileSupportedClient,omitnil,omitempty" name:"ConfigFileSupportedClient"`
+
+	// 配置文件持久化
+	ConfigFilePersistent *ConfigFilePersistent `json:"ConfigFilePersistent,omitnil,omitempty" name:"ConfigFilePersistent"`
 }
 
 type ConfigFileGroup struct {
@@ -923,6 +914,17 @@ type ConfigFileGroupTag struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type ConfigFilePersistent struct {
+	// 文件编码
+	Encoding *string `json:"Encoding,omitnil,omitempty" name:"Encoding"`
+
+	// 文件下发路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 文件后置命令
+	PostCmd *string `json:"PostCmd,omitnil,omitempty" name:"PostCmd"`
+}
+
 type ConfigFilePublishInfo struct {
 	// 发布名称
 	ReleaseName *string `json:"ReleaseName,omitnil,omitempty" name:"ReleaseName"`
@@ -957,72 +959,61 @@ type ConfigFilePublishInfo struct {
 
 type ConfigFileRelease struct {
 	// 配置文件发布id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 配置文件发布名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 配置文件发布命名空间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// 配置文件发布组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
 	// 配置文件发布文件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 配置文件发布内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 配置文件发布注释
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
 	// 配置文件发布Md5
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Md5 *string `json:"Md5,omitnil,omitempty" name:"Md5"`
 
 	// 配置文件发布版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *uint64 `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 配置文件发布创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 配置文件发布创建者
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateBy *string `json:"CreateBy,omitnil,omitempty" name:"CreateBy"`
 
 	// 配置文件发布修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 配置文件发布修改者
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyBy *string `json:"ModifyBy,omitnil,omitempty" name:"ModifyBy"`
 
 	// 发布描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReleaseDescription *string `json:"ReleaseDescription,omitnil,omitempty" name:"ReleaseDescription"`
 
 	// 是否生效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Active *bool `json:"Active,omitnil,omitempty" name:"Active"`
 
 	// 格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
 	// 配置文件ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigFileId *string `json:"ConfigFileId,omitnil,omitempty" name:"ConfigFileId"`
+
+	// 配置文件类型
+	ConfigFileSupportedClient *int64 `json:"ConfigFileSupportedClient,omitnil,omitempty" name:"ConfigFileSupportedClient"`
+
+	// 配置文件持久化
+	ConfigFilePersistent *ConfigFilePersistent `json:"ConfigFilePersistent,omitnil,omitempty" name:"ConfigFilePersistent"`
 }
 
 type ConfigFileReleaseDeletion struct {
@@ -1049,85 +1040,71 @@ type ConfigFileReleaseDeletion struct {
 
 type ConfigFileReleaseHistory struct {
 	// 配置文件发布历史记录id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 配置文件发布历史名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 配置文件发布历史命名空间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// 配置文件发布历史组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
 
 	// 配置文件发布历史名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 配置文件发布历史内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 配置文件发布历史格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
 	// 配置文件发布历史注释
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
 	// 配置文件发布历史Md5
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Md5 *string `json:"Md5,omitnil,omitempty" name:"Md5"`
 
 	// 配置文件发布历史类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 配置文件发布历史状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 配置文件发布历史标签组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*ConfigFileTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 配置文件发布创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 配置文件发布创建者
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateBy *string `json:"CreateBy,omitnil,omitempty" name:"CreateBy"`
 
 	// 配置文件发布修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 配置文件发布修改者
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyBy *string `json:"ModifyBy,omitnil,omitempty" name:"ModifyBy"`
 
 	// 发布描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReleaseDescription *string `json:"ReleaseDescription,omitnil,omitempty" name:"ReleaseDescription"`
 
 	// 原因，用于失败时原因展示
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReleaseReason *string `json:"ReleaseReason,omitnil,omitempty" name:"ReleaseReason"`
+
+	// 配置文件类型
+	ConfigFileSupportedClient *int64 `json:"ConfigFileSupportedClient,omitnil,omitempty" name:"ConfigFileSupportedClient"`
+
+	// 配置文件持久化
+	ConfigFilePersistent *ConfigFilePersistent `json:"ConfigFilePersistent,omitnil,omitempty" name:"ConfigFilePersistent"`
 }
 
 type ConfigFileTag struct {
 	// key-value 键
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// key-value 值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 

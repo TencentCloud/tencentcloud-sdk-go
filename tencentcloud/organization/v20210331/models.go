@@ -9871,6 +9871,81 @@ func (r *UpdateOrganizationMemberResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type UpdateOrganizationMembersPolicyRequestParams struct {
+	// 成员Uin列表。最多10个
+	MemberUins []*int64 `json:"MemberUins,omitnil,omitempty" name:"MemberUins"`
+
+	// 成员访问策略Id。可通过DescribeOrganizationMemberPolicies获取
+	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 成员访问身份ID。可通过ListOrganizationIdentity获取
+	IdentityId *int64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
+
+	// 策略描述。最大长度为128个字符
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type UpdateOrganizationMembersPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 成员Uin列表。最多10个
+	MemberUins []*int64 `json:"MemberUins,omitnil,omitempty" name:"MemberUins"`
+
+	// 成员访问策略Id。可通过DescribeOrganizationMemberPolicies获取
+	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
+
+	// 成员访问身份ID。可通过ListOrganizationIdentity获取
+	IdentityId *int64 `json:"IdentityId,omitnil,omitempty" name:"IdentityId"`
+
+	// 策略描述。最大长度为128个字符
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *UpdateOrganizationMembersPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateOrganizationMembersPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberUins")
+	delete(f, "PolicyId")
+	delete(f, "IdentityId")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateOrganizationMembersPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateOrganizationMembersPolicyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateOrganizationMembersPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateOrganizationMembersPolicyResponseParams `json:"Response"`
+}
+
+func (r *UpdateOrganizationMembersPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateOrganizationMembersPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UpdateOrganizationNodeRequestParams struct {
 	// 节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
 	NodeId *uint64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`

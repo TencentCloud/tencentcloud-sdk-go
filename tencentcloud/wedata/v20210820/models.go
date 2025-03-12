@@ -8490,7 +8490,11 @@ func (r *DescribeBatchOperateTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeColumnLineageRequestParams struct {
-	// 查询方向，INPUT,OUTPUT,BOTH枚举值
+	// 查询方向枚举值
+	// 
+	// - INPUT
+	// - OUTPUT
+	// - BOTH
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 
 	// 字段信息
@@ -8512,7 +8516,11 @@ type DescribeColumnLineageRequestParams struct {
 type DescribeColumnLineageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询方向，INPUT,OUTPUT,BOTH枚举值
+	// 查询方向枚举值
+	// 
+	// - INPUT
+	// - OUTPUT
+	// - BOTH
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 
 	// 字段信息
@@ -14188,6 +14196,275 @@ func (r *DescribeRealTimeTaskSpeedResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeReportTaskDetailRequestParams struct {
+	// 页码
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页条数
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 租户id
+	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 作业id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 引擎任务id
+	EngineTaskId *string `json:"EngineTaskId,omitnil,omitempty" name:"EngineTaskId"`
+
+	// 产品模块
+	ProductSource *string `json:"ProductSource,omitnil,omitempty" name:"ProductSource"`
+
+	// 主账号
+	OnwerUid *string `json:"OnwerUid,omitnil,omitempty" name:"OnwerUid"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type DescribeReportTaskDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页条数
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 租户id
+	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 作业id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 引擎任务id
+	EngineTaskId *string `json:"EngineTaskId,omitnil,omitempty" name:"EngineTaskId"`
+
+	// 产品模块
+	ProductSource *string `json:"ProductSource,omitnil,omitempty" name:"ProductSource"`
+
+	// 主账号
+	OnwerUid *string `json:"OnwerUid,omitnil,omitempty" name:"OnwerUid"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeReportTaskDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReportTaskDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNum")
+	delete(f, "PageSize")
+	delete(f, "TenantId")
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "InstanceId")
+	delete(f, "JobId")
+	delete(f, "EngineTaskId")
+	delete(f, "ProductSource")
+	delete(f, "OnwerUid")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReportTaskDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReportTaskDetailResponseParams struct {
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ReportTaskDetail `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeReportTaskDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeReportTaskDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeReportTaskDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReportTaskDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReportTaskListRequestParams struct {
+	// 页码
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页条数
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 租户id
+	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 作业id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 引擎任务id
+	EngineTaskId *string `json:"EngineTaskId,omitnil,omitempty" name:"EngineTaskId"`
+
+	// 产品模块
+	ProductSource *string `json:"ProductSource,omitnil,omitempty" name:"ProductSource"`
+
+	// 主账号
+	OnwerUid *string `json:"OnwerUid,omitnil,omitempty" name:"OnwerUid"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type DescribeReportTaskListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页条数
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 租户id
+	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 作业id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 引擎任务id
+	EngineTaskId *string `json:"EngineTaskId,omitnil,omitempty" name:"EngineTaskId"`
+
+	// 产品模块
+	ProductSource *string `json:"ProductSource,omitnil,omitempty" name:"ProductSource"`
+
+	// 主账号
+	OnwerUid *string `json:"OnwerUid,omitnil,omitempty" name:"OnwerUid"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeReportTaskListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReportTaskListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNum")
+	delete(f, "PageSize")
+	delete(f, "TenantId")
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "InstanceId")
+	delete(f, "JobId")
+	delete(f, "EngineTaskId")
+	delete(f, "ProductSource")
+	delete(f, "OnwerUid")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReportTaskListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReportTaskListResponseParams struct {
+	// 1
+	Data *ReportTaskListInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeReportTaskListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeReportTaskListResponseParams `json:"Response"`
+}
+
+func (r *DescribeReportTaskListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReportTaskListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeResourceManagePathTreesRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -16666,7 +16943,11 @@ func (r *DescribeTableLineageInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTableLineageRequestParams struct {
-	// 查询方向，INPUT,OUTPUT,BOTH枚举值
+	// 查询方向枚举值
+	// 
+	// - INPUT
+	// - OUTPUT
+	// - BOTH
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 
 	// 表信息
@@ -16691,7 +16972,11 @@ type DescribeTableLineageRequestParams struct {
 type DescribeTableLineageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询方向，INPUT,OUTPUT,BOTH枚举值
+	// 查询方向枚举值
+	// 
+	// - INPUT
+	// - OUTPUT
+	// - BOTH
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 
 	// 表信息
@@ -19416,6 +19701,88 @@ type DutyScheduleDetailsInfo struct {
 	// 值班信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duty []*Duty `json:"Duty,omitnil,omitempty" name:"Duty"`
+}
+
+type EngineTaskInfo struct {
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineSubmitTime *string `json:"EngineSubmitTime,omitnil,omitempty" name:"EngineSubmitTime"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineExeTime *string `json:"EngineExeTime,omitnil,omitempty" name:"EngineExeTime"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineExeTimes *uint64 `json:"EngineExeTimes,omitnil,omitempty" name:"EngineExeTimes"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CuConsume *uint64 `json:"CuConsume,omitnil,omitempty" name:"CuConsume"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceUsage *int64 `json:"ResourceUsage,omitnil,omitempty" name:"ResourceUsage"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineName *string `json:"EngineName,omitnil,omitempty" name:"EngineName"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineExeStatus *string `json:"EngineExeStatus,omitnil,omitempty" name:"EngineExeStatus"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskKind *string `json:"TaskKind,omitnil,omitempty" name:"TaskKind"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskContent *string `json:"TaskContent,omitnil,omitempty" name:"TaskContent"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputBytesSum *uint64 `json:"InputBytesSum,omitnil,omitempty" name:"InputBytesSum"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShuffleReadBytesSum *uint64 `json:"ShuffleReadBytesSum,omitnil,omitempty" name:"ShuffleReadBytesSum"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShuffleReadRecordsSum *uint64 `json:"ShuffleReadRecordsSum,omitnil,omitempty" name:"ShuffleReadRecordsSum"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputRecordsSum *uint64 `json:"OutputRecordsSum,omitnil,omitempty" name:"OutputRecordsSum"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputBytesSum *uint64 `json:"OutputBytesSum,omitnil,omitempty" name:"OutputBytesSum"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputFilesNum *uint64 `json:"OutputFilesNum,omitnil,omitempty" name:"OutputFilesNum"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputSmallFilesNum *uint64 `json:"OutputSmallFilesNum,omitnil,omitempty" name:"OutputSmallFilesNum"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WaitTime *uint64 `json:"WaitTime,omitnil,omitempty" name:"WaitTime"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueryResultTime *uint64 `json:"QueryResultTime,omitnil,omitempty" name:"QueryResultTime"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CmdArgs *string `json:"CmdArgs,omitnil,omitempty" name:"CmdArgs"`
 }
 
 type EventBatchCaseDTO struct {
@@ -26209,6 +26576,58 @@ func (r *RenewWorkflowSchedulerInfoDsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ReportTaskDetail struct {
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineTaskId *string `json:"EngineTaskId,omitnil,omitempty" name:"EngineTaskId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineExeStatus *string `json:"EngineExeStatus,omitnil,omitempty" name:"EngineExeStatus"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineExeStartTime *string `json:"EngineExeStartTime,omitnil,omitempty" name:"EngineExeStartTime"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineExeEndTime *string `json:"EngineExeEndTime,omitnil,omitempty" name:"EngineExeEndTime"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskTypeId *uint64 `json:"TaskTypeId,omitnil,omitempty" name:"TaskTypeId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessInfo *string `json:"BusinessInfo,omitnil,omitempty" name:"BusinessInfo"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineTaskInfo *EngineTaskInfo `json:"EngineTaskInfo,omitnil,omitempty" name:"EngineTaskInfo"`
+}
+
+type ReportTaskListInfo struct {
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rows []*TaskInfoVo `json:"Rows,omitnil,omitempty" name:"Rows"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNum *uint64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPageNumber *uint64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
+}
+
 type ResourcePathTree struct {
 	// 资源名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -29949,6 +30368,14 @@ type TableLineageInfo struct {
 	// DatabaseId
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseId *string `json:"DatabaseId,omitnil,omitempty" name:"DatabaseId"`
+
+	// 数据来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataFromType *string `json:"DataFromType,omitnil,omitempty" name:"DataFromType"`
+
+	// 采集id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CollectJobId *string `json:"CollectJobId,omitnil,omitempty" name:"CollectJobId"`
 }
 
 type TableMeta struct {
@@ -30583,6 +31010,80 @@ type TaskImportInfo struct {
 	// 重名任务处理策略, 0:跳过,不导入; 1: 重命名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskNameExistMode *uint64 `json:"TaskNameExistMode,omitnil,omitempty" name:"TaskNameExistMode"`
+}
+
+type TaskInfoVo struct {
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppID *string `json:"AppID,omitnil,omitempty" name:"AppID"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskTypeId *uint64 `json:"TaskTypeId,omitnil,omitempty" name:"TaskTypeId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnwerUid *string `json:"OnwerUid,omitnil,omitempty" name:"OnwerUid"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InChargeId *string `json:"InChargeId,omitnil,omitempty" name:"InChargeId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineName *string `json:"EngineName,omitnil,omitempty" name:"EngineName"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineSubType *string `json:"EngineSubType,omitnil,omitempty" name:"EngineSubType"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineTaskId *string `json:"EngineTaskId,omitnil,omitempty" name:"EngineTaskId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineExeStatus *string `json:"EngineExeStatus,omitnil,omitempty" name:"EngineExeStatus"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineExeUser *string `json:"EngineExeUser,omitnil,omitempty" name:"EngineExeUser"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineExeStartTime *string `json:"EngineExeStartTime,omitnil,omitempty" name:"EngineExeStartTime"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineExeEndTime *string `json:"EngineExeEndTime,omitnil,omitempty" name:"EngineExeEndTime"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductSource *string `json:"ProductSource,omitnil,omitempty" name:"ProductSource"`
 }
 
 type TaskInnerInfo struct {

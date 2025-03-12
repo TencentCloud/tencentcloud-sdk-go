@@ -1505,6 +1505,14 @@ type DatasetGroup struct {
 	// 标注Schema是否配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnnotationSchemaConfigured *bool `json:"AnnotationSchemaConfigured,omitnil,omitempty" name:"AnnotationSchemaConfigured"`
+
+	// 创建者名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorNickname *string `json:"CreatorNickname,omitnil,omitempty" name:"CreatorNickname"`
+
+	// cfs路径是否有修改
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCfsUpdated *bool `json:"IsCfsUpdated,omitnil,omitempty" name:"IsCfsUpdated"`
 }
 
 type DatasetInfo struct {
@@ -1631,6 +1639,14 @@ type DatasetInfo struct {
 	// 标注Schema是否配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnnotationSchemaConfigured *bool `json:"AnnotationSchemaConfigured,omitnil,omitempty" name:"AnnotationSchemaConfigured"`
+
+	// 创建者名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorNickname *string `json:"CreatorNickname,omitnil,omitempty" name:"CreatorNickname"`
+
+	// cfs路径是否有修改
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsCfsUpdated *bool `json:"IsCfsUpdated,omitnil,omitempty" name:"IsCfsUpdated"`
 }
 
 type DefaultInnerCallInfo struct {

@@ -414,19 +414,15 @@ type Cluster struct {
 
 type CmqDeadLetterPolicy struct {
 	// 死信队列。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeadLetterQueue *string `json:"DeadLetterQueue,omitnil,omitempty" name:"DeadLetterQueue"`
 
 	// 死信队列策略。0:最大接收次数;1:最大未消费时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Policy *uint64 `json:"Policy,omitnil,omitempty" name:"Policy"`
 
 	// 最大未消费过期时间。Policy为1时必选。范围300-43200，单位秒，需要小于消息最大保留时间MsgRetentionSeconds。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxTimeToLive *uint64 `json:"MaxTimeToLive,omitnil,omitempty" name:"MaxTimeToLive"`
 
 	// 最大接收次数。Policy为0时必选，范围在1到1000。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxReceiveCount *uint64 `json:"MaxReceiveCount,omitnil,omitempty" name:"MaxReceiveCount"`
 }
 
@@ -436,7 +432,6 @@ type CmqDeadLetterSource struct {
 	QueueId *string `json:"QueueId,omitnil,omitempty" name:"QueueId"`
 
 	// 消息队列名字。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 }
 
@@ -448,54 +443,42 @@ type CmqQueue struct {
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 
 	// 每秒钟生产消息条数的限制，消费消息的大小是该值的1.1倍。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Qps *uint64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
 	// 带宽限制。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bps *uint64 `json:"Bps,omitnil,omitempty" name:"Bps"`
 
 	// 飞行消息最大保留时间，需要小于消息保留周期。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxDelaySeconds *uint64 `json:"MaxDelaySeconds,omitnil,omitempty" name:"MaxDelaySeconds"`
 
 	// 最大堆积消息数。取值范围在公测期间为 1,000,000 - 10,000,000，正式上线后范围可达到 1000,000-1000,000,000。默认取值在公测期间为 10,000,000，正式上线后为 100,000,000。
 	MaxMsgHeapNum *uint64 `json:"MaxMsgHeapNum,omitnil,omitempty" name:"MaxMsgHeapNum"`
 
 	// 消息接收长轮询等待时间。取值范围0 - 30秒，默认值0。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PollingWaitSeconds *uint64 `json:"PollingWaitSeconds,omitnil,omitempty" name:"PollingWaitSeconds"`
 
 	// 消息保留周期。取值范围60-1296000秒（1min-15天），默认值345600秒（4 天）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgRetentionSeconds *uint64 `json:"MsgRetentionSeconds,omitnil,omitempty" name:"MsgRetentionSeconds"`
 
 	// 消息可见性超时。取值范围1 - 43200秒（即12小时内），默认值30。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VisibilityTimeout *uint64 `json:"VisibilityTimeout,omitnil,omitempty" name:"VisibilityTimeout"`
 
 	// 消息最大长度。取值范围1024 - 1048576 Byte（即1K - 1024K），默认值65536。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxMsgSize *uint64 `json:"MaxMsgSize,omitnil,omitempty" name:"MaxMsgSize"`
 
 	// 回溯队列的消息回溯时间最大值，取值范围0 - 43200秒，0表示不开启消息回溯。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RewindSeconds *uint64 `json:"RewindSeconds,omitnil,omitempty" name:"RewindSeconds"`
 
 	// 队列的创建时间。返回 Unix 时间戳，精确到毫秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 最后一次修改队列属性的时间。返回 Unix 时间戳，精确到毫秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastModifyTime *uint64 `json:"LastModifyTime,omitnil,omitempty" name:"LastModifyTime"`
 
 	// 在队列中处于 Active 状态（不处于被消费状态）的消息总数，为近似值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActiveMsgNum *uint64 `json:"ActiveMsgNum,omitnil,omitempty" name:"ActiveMsgNum"`
 
 	// 在队列中处于 Inactive 状态（正处于被消费状态）的消息总数，为近似值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InactiveMsgNum *uint64 `json:"InactiveMsgNum,omitnil,omitempty" name:"InactiveMsgNum"`
 
 	// 延迟消息数。
@@ -539,37 +522,29 @@ type CmqQueue struct {
 	Trace *bool `json:"Trace,omitnil,omitempty" name:"Trace"`
 
 	// 租户id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
 
 	// 命名空间名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
 
 	// 集群状态，0:创建中，1:正常，2:销毁中，3:已删除，4: 隔离中，5:创建失败，6: 删除失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 最大未确认消息数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxUnackedMsgNum *int64 `json:"MaxUnackedMsgNum,omitnil,omitempty" name:"MaxUnackedMsgNum"`
 
 	// 最大消息堆积大小（字节）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxMsgBacklogSize *int64 `json:"MaxMsgBacklogSize,omitnil,omitempty" name:"MaxMsgBacklogSize"`
 
 	// 队列可回溯存储空间，取值范围1024MB - 10240MB，0表示不开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetentionSizeInMB *uint64 `json:"RetentionSizeInMB,omitnil,omitempty" name:"RetentionSizeInMB"`
 }
 
 type CmqSubscription struct {
 	// 订阅名字，在单个地域同一账号的同一主题下唯一。订阅名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubscriptionName *string `json:"SubscriptionName,omitnil,omitempty" name:"SubscriptionName"`
 
 	// 订阅 ID。订阅 ID 在拉取监控数据时会用到。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubscriptionId *string `json:"SubscriptionId,omitnil,omitempty" name:"SubscriptionId"`
 
 	// 订阅拥有者的 APPID。
@@ -577,15 +552,12 @@ type CmqSubscription struct {
 	TopicOwner *uint64 `json:"TopicOwner,omitnil,omitempty" name:"TopicOwner"`
 
 	// 该订阅待投递的消息数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgCount *uint64 `json:"MsgCount,omitnil,omitempty" name:"MsgCount"`
 
 	// 最后一次修改订阅属性的时间。返回 Unix 时间戳，精确到毫秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastModifyTime *uint64 `json:"LastModifyTime,omitnil,omitempty" name:"LastModifyTime"`
 
 	// 订阅的创建时间。返回 Unix 时间戳，精确到毫秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 表示订阅接收消息的过滤策略。
@@ -593,71 +565,56 @@ type CmqSubscription struct {
 	BindingKey []*string `json:"BindingKey,omitnil,omitempty" name:"BindingKey"`
 
 	// 接收通知的 endpoint，根据协议 protocol 区分：对于 HTTP，endpoint 必须以http://开头，host 可以是域名或 IP；对于 queue，则填 queueName。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
 
 	// 描述用户创建订阅时选择的过滤策略：
 	// filterType = 1表示用户使用 filterTag 标签过滤
 	// filterType = 2表示用户使用 bindingKey 过滤。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilterTags []*string `json:"FilterTags,omitnil,omitempty" name:"FilterTags"`
 
 	// 订阅的协议，目前支持两种协议：HTTP、queue。使用 HTTP 协议，用户需自己搭建接受消息的 Web Server。使用 queue，消息会自动推送到 CMQ queue，用户可以并发地拉取消息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 向 endpoint 推送消息出现错误时，CMQ 推送服务器的重试策略。取值有：
 	// （1）BACKOFF_RETRY，退避重试。每隔一定时间重试一次，重试够一定次数后，就把该消息丢弃，继续推送下一条消息；
 	// （2）EXPONENTIAL_DECAY_RETRY，指数衰退重试。每次重试的间隔是指数递增的，例如开始 1s，后面是 2s，4s，8s...由于 Topic 消息的周期是一天，所以最多重试一天就把消息丢弃。默认值是 EXPONENTIAL_DECAY_RETRY。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotifyStrategy *string `json:"NotifyStrategy,omitnil,omitempty" name:"NotifyStrategy"`
 
 	// 推送内容的格式。取值：（1）JSON；（2）SIMPLIFIED，即 raw 格式。如果 protocol 是 queue，则取值必须为 SIMPLIFIED。如果 protocol 是 HTTP，两个值均可以，默认值是 JSON。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitnil,omitempty" name:"NotifyContentFormat"`
 
 	// 订阅所属的主题名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 }
 
 type CmqTopic struct {
 	// 主题的 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 主题名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 消息在主题中最长存活时间，从发送到该主题开始经过此参数指定的时间后，不论消息是否被成功推送给用户都将被删除，单位为秒。固定为一天（86400秒），该属性不能修改。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgRetentionSeconds *uint64 `json:"MsgRetentionSeconds,omitnil,omitempty" name:"MsgRetentionSeconds"`
 
 	// 消息最大长度。取值范围1024 - 1048576Byte（即1 - 1024K），默认值为1048576。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxMsgSize *uint64 `json:"MaxMsgSize,omitnil,omitempty" name:"MaxMsgSize"`
 
 	// 每秒钟发布消息的条数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Qps *uint64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
 	// 描述用户创建订阅时选择的过滤策略：
 	// FilterType = 1表示用户使用 FilterTag 标签过滤;
 	// FilterType = 2表示用户使用 BindingKey 过滤。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilterType *uint64 `json:"FilterType,omitnil,omitempty" name:"FilterType"`
 
 	// 主题的创建时间。返回 Unix 时间戳，精确到毫秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 最后一次修改主题属性的时间。返回 Unix 时间戳，精确到毫秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastModifyTime *uint64 `json:"LastModifyTime,omitnil,omitempty" name:"LastModifyTime"`
 
 	// 当前该主题中消息数目（消息堆积数）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgCount *uint64 `json:"MsgCount,omitnil,omitempty" name:"MsgCount"`
 
 	// 创建者 Uin，CAM 鉴权 resource 由该字段组合而成。
@@ -673,33 +630,26 @@ type CmqTopic struct {
 	Trace *bool `json:"Trace,omitnil,omitempty" name:"Trace"`
 
 	// 租户id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
 
 	// 命名空间名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
 
 	// 集群状态，0:创建中，1:正常，2:销毁中，3:已删除，4: 隔离中，5:创建失败，6: 删除失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 0表示pulsar，1表示rocketmq
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BrokerType *int64 `json:"BrokerType,omitnil,omitempty" name:"BrokerType"`
 
 	// 订阅数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubscriptionCount *int64 `json:"SubscriptionCount,omitnil,omitempty" name:"SubscriptionCount"`
 }
 
 type CmqTransactionPolicy struct {
 	// 第一次回查时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstQueryInterval *uint64 `json:"FirstQueryInterval,omitnil,omitempty" name:"FirstQueryInterval"`
 
 	// 最大查询次数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxQueryCount *uint64 `json:"MaxQueryCount,omitnil,omitempty" name:"MaxQueryCount"`
 }
 
@@ -5038,7 +4988,6 @@ type DescribeCmqQueuesResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 队列列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueList []*CmqQueue `json:"QueueList,omitnil,omitempty" name:"QueueList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5136,7 +5085,6 @@ type DescribeCmqSubscriptionDetailResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// Subscription属性集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubscriptionSet []*CmqSubscription `json:"SubscriptionSet,omitnil,omitempty" name:"SubscriptionSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5286,7 +5234,6 @@ func (r *DescribeCmqTopicsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCmqTopicsResponseParams struct {
 	// 主题列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicList []*CmqTopic `json:"TopicList,omitnil,omitempty" name:"TopicList"`
 
 	// 全量主题数量
@@ -7389,81 +7336,6 @@ func (r *DescribeRabbitMQVipInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRabbitMQVipInstancesResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeRabbitMQVirtualHostListRequestParams struct {
-	// 不适用，默认参数
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 偏移量
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 一页限制
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-}
-
-type DescribeRabbitMQVirtualHostListRequest struct {
-	*tchttp.BaseRequest
-	
-	// 不适用，默认参数
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 偏移量
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 一页限制
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-}
-
-func (r *DescribeRabbitMQVirtualHostListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeRabbitMQVirtualHostListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "Offset")
-	delete(f, "Limit")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRabbitMQVirtualHostListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeRabbitMQVirtualHostListResponseParams struct {
-	// 集群列表数量
-	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 集群列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	VirtualHostList []*RabbitMQPrivateVirtualHost `json:"VirtualHostList,omitnil,omitempty" name:"VirtualHostList"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeRabbitMQVirtualHostListResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeRabbitMQVirtualHostListResponseParams `json:"Response"`
-}
-
-func (r *DescribeRabbitMQVirtualHostListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeRabbitMQVirtualHostListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13823,16 +13695,6 @@ type RabbitMQPrivateNode struct {
 	ProcessNumber *uint64 `json:"ProcessNumber,omitnil,omitempty" name:"ProcessNumber"`
 }
 
-type RabbitMQPrivateVirtualHost struct {
-	// 虚拟主机的名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	VirtualHostName *string `json:"VirtualHostName,omitnil,omitempty" name:"VirtualHostName"`
-
-	// 虚拟主机的描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
-}
-
 type RabbitMQQueueListConsumerDetailInfo struct {
 	// 消费者数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -16299,8 +16161,7 @@ type VpcEndpointInfo struct {
 	// vpc接入点信息
 	VpcEndpoint *string `json:"VpcEndpoint,omitnil,omitempty" name:"VpcEndpoint"`
 
-	// vpc接入点状态
-	// OFF/ON/CREATING/DELETING
+	// vpc接入点状态 OFF/ON/CREATING/DELETING
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcDataStreamEndpointStatus *string `json:"VpcDataStreamEndpointStatus,omitnil,omitempty" name:"VpcDataStreamEndpointStatus"`
 }

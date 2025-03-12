@@ -10006,16 +10006,16 @@ type SaveDocRequestParams struct {
 	// 平台cos路径，与DescribeStorageCredential接口查询UploadPath参数保持一致
 	CosUrl *string `json:"CosUrl,omitnil,omitempty" name:"CosUrl"`
 
-	// ETag 全称为 Entity Tag，是对象被创建时标识对象内容的信息标签，可用于检查对象的内容是否发生变化
+	// ETag 全称为 Entity Tag，是对象被创建时标识对象内容的信息标签，可用于检查对象的内容是否发生变化 成功上传cos后，从返回头中获取
 	ETag *string `json:"ETag,omitnil,omitempty" name:"ETag"`
 
-	// cos_hash x-cos-hash-crc64ecma 头部中的 CRC64编码进行校验上传到云端的文件和本地文件的一致性
+	// cos_hash x-cos-hash-crc64ecma 头部中的 CRC64编码进行校验上传到云端的文件和本地文件的一致性  <br> 成功上传cos后，从返回头中获取
 	CosHash *string `json:"CosHash,omitnil,omitempty" name:"CosHash"`
 
 	// 文件大小
 	Size *string `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 标签适用范围 1：全部，2：按条件范围
+	// 标签适用范围，默认填0即可
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
 	// 来源(0 源文件导入 1 网页导入)
@@ -10040,7 +10040,7 @@ type SaveDocRequestParams struct {
 	// 是否引用链接
 	IsRefer *bool `json:"IsRefer,omitnil,omitempty" name:"IsRefer"`
 
-	// 文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档）
+	// 文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为1  <br> 请注意，opt=1的时候请从知识引擎页面下载excel模板
 	Opt *uint64 `json:"Opt,omitnil,omitempty" name:"Opt"`
 
 	// 分类ID
@@ -10062,16 +10062,16 @@ type SaveDocRequest struct {
 	// 平台cos路径，与DescribeStorageCredential接口查询UploadPath参数保持一致
 	CosUrl *string `json:"CosUrl,omitnil,omitempty" name:"CosUrl"`
 
-	// ETag 全称为 Entity Tag，是对象被创建时标识对象内容的信息标签，可用于检查对象的内容是否发生变化
+	// ETag 全称为 Entity Tag，是对象被创建时标识对象内容的信息标签，可用于检查对象的内容是否发生变化 成功上传cos后，从返回头中获取
 	ETag *string `json:"ETag,omitnil,omitempty" name:"ETag"`
 
-	// cos_hash x-cos-hash-crc64ecma 头部中的 CRC64编码进行校验上传到云端的文件和本地文件的一致性
+	// cos_hash x-cos-hash-crc64ecma 头部中的 CRC64编码进行校验上传到云端的文件和本地文件的一致性  <br> 成功上传cos后，从返回头中获取
 	CosHash *string `json:"CosHash,omitnil,omitempty" name:"CosHash"`
 
 	// 文件大小
 	Size *string `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 标签适用范围 1：全部，2：按条件范围
+	// 标签适用范围，默认填0即可
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
 	// 来源(0 源文件导入 1 网页导入)
@@ -10096,7 +10096,7 @@ type SaveDocRequest struct {
 	// 是否引用链接
 	IsRefer *bool `json:"IsRefer,omitnil,omitempty" name:"IsRefer"`
 
-	// 文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档）
+	// 文档操作类型：1：批量导入（批量导入问答对）；2:文档导入（正常导入单个文档） 默认为1  <br> 请注意，opt=1的时候请从知识引擎页面下载excel模板
 	Opt *uint64 `json:"Opt,omitnil,omitempty" name:"Opt"`
 
 	// 分类ID

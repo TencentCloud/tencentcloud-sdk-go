@@ -10179,6 +10179,87 @@ func (c *Client) DescribeUserAutoSignStatusWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeUserFlowTypeRequest() (request *DescribeUserFlowTypeRequest) {
+    request = &DescribeUserFlowTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeUserFlowType")
+    
+    
+    return
+}
+
+func NewDescribeUserFlowTypeResponse() (response *DescribeUserFlowTypeResponse) {
+    response = &DescribeUserFlowTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserFlowType
+// 查询用户模版类型，分为两种模式：
+//
+// <ul>
+//
+// <li>QueryBindTemplate:false，查询用户合同模版类型，返回用户合同模版类型ID，用户合同模版类型名称，用户合同模版类型描述信息</li>
+//
+// <li>QueryBindTemplate:false，查询用户合同模版类型，返回用户合同模版类型ID，用户合同模版类型名称，用户合同模版类型描述信息，被绑定的模版数量</li>
+//
+// </ul>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DescribeUserFlowType(request *DescribeUserFlowTypeRequest) (response *DescribeUserFlowTypeResponse, err error) {
+    return c.DescribeUserFlowTypeWithContext(context.Background(), request)
+}
+
+// DescribeUserFlowType
+// 查询用户模版类型，分为两种模式：
+//
+// <ul>
+//
+// <li>QueryBindTemplate:false，查询用户合同模版类型，返回用户合同模版类型ID，用户合同模版类型名称，用户合同模版类型描述信息</li>
+//
+// <li>QueryBindTemplate:false，查询用户合同模版类型，返回用户合同模版类型ID，用户合同模版类型名称，用户合同模版类型描述信息，被绑定的模版数量</li>
+//
+// </ul>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DescribeUserFlowTypeWithContext(ctx context.Context, request *DescribeUserFlowTypeRequest) (response *DescribeUserFlowTypeResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserFlowTypeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserFlowType require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserFlowTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserVerifyStatusRequest() (request *DescribeUserVerifyStatusRequest) {
     request = &DescribeUserVerifyStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10218,22 +10299,15 @@ func NewDescribeUserVerifyStatusResponse() (response *DescribeUserVerifyStatusRe
 // - 调用此接口需要购买单独的实名套餐包。<font color="red">使用前请联系对接的客户经理沟通</font>。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CALLOPENCLOUDAPIERROR = "InternalError.CallOpenCloudApiError"
-//  INTERNALERROR_CALLBACK = "InternalError.Callback"
-//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
-//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
-//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
-//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
-//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
-//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeUserVerifyStatus(request *DescribeUserVerifyStatusRequest) (response *DescribeUserVerifyStatusResponse, err error) {
     return c.DescribeUserVerifyStatusWithContext(context.Background(), request)
 }
@@ -10258,22 +10332,15 @@ func (c *Client) DescribeUserVerifyStatus(request *DescribeUserVerifyStatusReque
 // - 调用此接口需要购买单独的实名套餐包。<font color="red">使用前请联系对接的客户经理沟通</font>。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CALLOPENCLOUDAPIERROR = "InternalError.CallOpenCloudApiError"
-//  INTERNALERROR_CALLBACK = "InternalError.Callback"
-//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
-//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
-//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
-//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
-//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
-//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeUserVerifyStatusWithContext(ctx context.Context, request *DescribeUserVerifyStatusRequest) (response *DescribeUserVerifyStatusResponse, err error) {
     if request == nil {
         request = NewDescribeUserVerifyStatusRequest()

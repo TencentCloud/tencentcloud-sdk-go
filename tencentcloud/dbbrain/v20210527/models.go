@@ -628,7 +628,6 @@ func (r *CreateDBDiagReportTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDBDiagReportTaskResponseParams struct {
 	// 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1991,7 +1990,6 @@ func (r *DescribeAuditInstanceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAuditInstanceListResponseParams struct {
 	// 符合条件的实例个数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 实例详情。
@@ -3470,7 +3468,6 @@ func (r *DescribeRedisBigKeyAnalysisTasksRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeRedisBigKeyAnalysisTasksResponseParams struct {
 	// 任务总数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 任务列表。
@@ -5214,7 +5211,6 @@ type HealthStatus struct {
 	ScoreLost *int64 `json:"ScoreLost,omitnil,omitempty" name:"ScoreLost"`
 
 	// 扣分详情。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScoreDetails []*ScoreDetail `json:"ScoreDetails,omitnil,omitempty" name:"ScoreDetails"`
 }
 
@@ -5389,22 +5385,18 @@ type InstanceInfo struct {
 	AuditRunningStatus *string `json:"AuditRunningStatus,omitnil,omitempty" name:"AuditRunningStatus"`
 
 	// 内网vip。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternalVip *string `json:"InternalVip,omitnil,omitempty" name:"InternalVip"`
 
 	// 内网port。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternalVport *int64 `json:"InternalVport,omitnil,omitempty" name:"InternalVport"`
 
 	// 创建时间。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 所属集群ID（仅对集群数据库产品该字段非空，如TDSQL-C）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 所属集群名称（仅对集群数据库产品该字段非空，如TDSQL-C）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 自建MySQL的Agent状态，"not_deployed" - 未部署，"deploying" - 部署中，"connected" - 连接正常，"deploy_failed" - 连接失败，"monitoring" - 连接正常，"stopped" - 暂停连接，"connect_failed" - 连接失败，unknown - 未知。

@@ -1271,7 +1271,6 @@ type MigrateStepDetailInfo struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 当前步骤开始的时间，格式为"yyyy-mm-dd hh:mm:ss"，该字段不存在或者为空是无意义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 }
 
@@ -2004,7 +2003,6 @@ func (r *StopMigrateJobResponse) FromJsonString(s string) error {
 
 type SubsErr struct {
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }
 
@@ -2049,7 +2047,6 @@ type SubscribeInfo struct {
 	ConsumeStartTime *string `json:"ConsumeStartTime,omitnil,omitempty" name:"ConsumeStartTime"`
 
 	// 自动续费标识。只有当 PayType=0，该值才有意义。枚举值：0-不自动续费，1-自动续费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 数据订阅实例所属地域
@@ -2081,21 +2078,17 @@ type SubscribeInfo struct {
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 订阅实例版本；txdts-旧版数据订阅,kafka-kafka版本数据订阅
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubscribeVersion *string `json:"SubscribeVersion,omitnil,omitempty" name:"SubscribeVersion"`
 }
 
 type SubscribeObject struct {
 	// 数据订阅对象的类型，0-数据库，1-数据库内的表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectsType *int64 `json:"ObjectsType,omitnil,omitempty" name:"ObjectsType"`
 
 	// 订阅数据库的名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
 	// 订阅数据库中表名称数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableNames []*string `json:"TableNames,omitnil,omitempty" name:"TableNames"`
 }
 
@@ -2112,6 +2105,5 @@ type TagItem struct {
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 标签值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }

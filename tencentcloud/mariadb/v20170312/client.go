@@ -1139,6 +1139,7 @@ func NewDescribeBackupFilesResponse() (response *DescribeBackupFilesResponse) {
 // 本接口(DescribeBackupFiles)用于查看备份文件列表。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
 //  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeBackupFiles(request *DescribeBackupFilesRequest) (response *DescribeBackupFilesResponse, err error) {
@@ -1149,6 +1150,7 @@ func (c *Client) DescribeBackupFiles(request *DescribeBackupFilesRequest) (respo
 // 本接口(DescribeBackupFiles)用于查看备份文件列表。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
 //  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeBackupFilesWithContext(ctx context.Context, request *DescribeBackupFilesRequest) (response *DescribeBackupFilesResponse, err error) {
@@ -1385,6 +1387,7 @@ func NewDescribeDBInstanceDetailResponse() (response *DescribeDBInstanceDetailRe
 // 本接口(DescribeDBInstanceDetail)用于查询指定实例的详细信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TRADECONFIGNOTFOUND = "FailedOperation.TradeConfigNotFound"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_GETINSTANCEDETAILFAILED = "InternalError.GetInstanceDetailFailed"
 //  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
@@ -1399,6 +1402,7 @@ func (c *Client) DescribeDBInstanceDetail(request *DescribeDBInstanceDetailReque
 // 本接口(DescribeDBInstanceDetail)用于查询指定实例的详细信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TRADECONFIGNOTFOUND = "FailedOperation.TradeConfigNotFound"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_GETINSTANCEDETAILFAILED = "InternalError.GetInstanceDetailFailed"
 //  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"

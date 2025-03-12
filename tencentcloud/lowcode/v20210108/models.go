@@ -351,7 +351,6 @@ func (r *DeleteKnowledgeDocumentSetResponse) FromJsonString(s string) error {
 
 type DeleteKnowledgeDocumentSetRsp struct {
 	// 删除文档数量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AffectedCount *int64 `json:"AffectedCount,omitnil,omitempty" name:"AffectedCount"`
 }
 
@@ -672,11 +671,9 @@ func (r *DescribeKnowledgeDocumentSetDetailResponse) FromJsonString(s string) er
 
 type DescribeKnowledgeDocumentSetDetailRsp struct {
 	// 获取的数量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 文档信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocumentSet *KnowledgeDocumentSet `json:"DocumentSet,omitnil,omitempty" name:"DocumentSet"`
 }
 
@@ -753,11 +750,9 @@ func (r *DescribeKnowledgeDocumentSetListResponse) FromJsonString(s string) erro
 
 type DescribeKnowledgeDocumentSetListRsp struct {
 	// 文件集
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocumentSets []*QureyKnowledgeDocumentSet `json:"DocumentSets,omitnil,omitempty" name:"DocumentSets"`
 
 	// 条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 
@@ -867,57 +862,44 @@ type DocumentQuery struct {
 
 type KnowledgeDocumentSet struct {
 	// 文档id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocumentSetId *string `json:"DocumentSetId,omitnil,omitempty" name:"DocumentSetId"`
 
 	// 文档名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocumentSetName *string `json:"DocumentSetName,omitnil,omitempty" name:"DocumentSetName"`
 
 	// 文件完整内容。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
 	// 文件内容前 200个字符。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TextPrefix *string `json:"TextPrefix,omitnil,omitempty" name:"TextPrefix"`
 
 	// 文件详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocumentSetInfo *KnowledgeDocumentSetInfo `json:"DocumentSetInfo,omitnil,omitempty" name:"DocumentSetInfo"`
 
 	// 文件拆分信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SplitterPreprocess *KnowledgeSplitterPreprocess `json:"SplitterPreprocess,omitnil,omitempty" name:"SplitterPreprocess"`
 
 	// 未使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 文档标题
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileTitle *string `json:"FileTitle,omitnil,omitempty" name:"FileTitle"`
 
 	// 文档元信息，必须为jsonstring
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileMetaData *string `json:"FileMetaData,omitnil,omitempty" name:"FileMetaData"`
 
 	// 作者
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Author *string `json:"Author,omitnil,omitempty" name:"Author"`
 }
 
 type KnowledgeDocumentSetInfo struct {
 	// 文件的字符数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TextLength *uint64 `json:"TextLength,omitnil,omitempty" name:"TextLength"`
 
 	// 文件的字节数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ByteLength *uint64 `json:"ByteLength,omitnil,omitempty" name:"ByteLength"`
 
 	// 文件被预处理、Embedding 向量化的进度。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexedProgress *uint64 `json:"IndexedProgress,omitnil,omitempty" name:"IndexedProgress"`
 
 	// 文件预处理、Embedding 向量化的状态。
@@ -925,48 +907,37 @@ type KnowledgeDocumentSetInfo struct {
 	// Loading：文件解析中。
 	// Failure：文件解析、写入出错。
 	// Ready：文件解析、写入完成。
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexedStatus *string `json:"IndexedStatus,omitnil,omitempty" name:"IndexedStatus"`
 
 	// 文件创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 文件最后更新时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastUpdateTime *string `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
 
 	// 文件关键字。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Keywords *string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 }
 
 type KnowledgeSet struct {
 	// 知识库标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 知识库名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 
 	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
 	// 状态，
 	// NOT_ENABLED未启用
 	// ENABLED 已启用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Active *string `json:"Active,omitnil,omitempty" name:"Active"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 知识库的meta信息
@@ -975,11 +946,9 @@ type KnowledgeSet struct {
 
 type KnowledgeSetRsp struct {
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 知识库列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KnowledgeSets []*KnowledgeSet `json:"KnowledgeSets,omitnil,omitempty" name:"KnowledgeSets"`
 }
 
@@ -987,15 +956,11 @@ type KnowledgeSplitterPreprocess struct {
 	// 在对文件拆分时，配置是否将 Title 追加到切分后的段落后面一并 Embedding。取值如下所示：
 	// false：不追加。
 	// true：将段落 Title 追加到切分后的段落。
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppendTitleToChunk *bool `json:"AppendTitleToChunk,omitnil,omitempty" name:"AppendTitleToChunk"`
 
 	// 在对文件拆分时，配置是否将关键字 keywords 追加到切分后的段落一并 Embedding。取值如下所示：
 	// false：不追加。
 	// true：将全文的 keywords 追加到切分后的段落。
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppendKeywordsToChunk *bool `json:"AppendKeywordsToChunk,omitnil,omitempty" name:"AppendKeywordsToChunk"`
 }
 
@@ -1024,53 +989,41 @@ type PageQuery struct {
 
 type QureyKnowledgeDocumentSet struct {
 	// 文件id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocumentSetId *string `json:"DocumentSetId,omitnil,omitempty" name:"DocumentSetId"`
 
 	// 文件名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocumentSetName *string `json:"DocumentSetName,omitnil,omitempty" name:"DocumentSetName"`
 
 	// 文件内容前 200个字符。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TextPrefix *string `json:"TextPrefix,omitnil,omitempty" name:"TextPrefix"`
 
 	// 文件拆分信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SplitterPreprocess *KnowledgeSplitterPreprocess `json:"SplitterPreprocess,omitnil,omitempty" name:"SplitterPreprocess"`
 
 	// 文件详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocumentSetInfo *QureyKnowledgeDocumentSetInfo `json:"DocumentSetInfo,omitnil,omitempty" name:"DocumentSetInfo"`
 
 	// 文件标题
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileTitle *string `json:"FileTitle,omitnil,omitempty" name:"FileTitle"`
 
 	// 文件元信息，必须为jsonstring
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileMetaData *string `json:"FileMetaData,omitnil,omitempty" name:"FileMetaData"`
 
 	// name
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 作者
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Author *string `json:"Author,omitnil,omitempty" name:"Author"`
 }
 
 type QureyKnowledgeDocumentSetInfo struct {
 	// 文件的字符数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TextLength *uint64 `json:"TextLength,omitnil,omitempty" name:"TextLength"`
 
 	// 文件的字节数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ByteLength *uint64 `json:"ByteLength,omitnil,omitempty" name:"ByteLength"`
 
 	// 文件被预处理、Embedding 向量化的进度。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexedProgress *uint64 `json:"IndexedProgress,omitnil,omitempty" name:"IndexedProgress"`
 
 	// 文件预处理、Embedding 向量化的状态。
@@ -1078,24 +1031,18 @@ type QureyKnowledgeDocumentSetInfo struct {
 	// Loading：文件解析中。
 	// Failure：文件解析、写入出错。
 	// Ready：文件解析、写入完成。
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexedStatus *string `json:"IndexedStatus,omitnil,omitempty" name:"IndexedStatus"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexedErrorMsg *string `json:"IndexedErrorMsg,omitnil,omitempty" name:"IndexedErrorMsg"`
 
 	// 文件创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 文件最后更新时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastUpdateTime *string `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
 
 	// 文件关键字。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Keywords *string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 }
 
@@ -1445,18 +1392,14 @@ func (r *UploadKnowledgeDocumentSetResponse) FromJsonString(s string) error {
 
 type UploadKnowledgeDocumentSetRsp struct {
 	// 给文件分配的 ID 信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocumentSetId *string `json:"DocumentSetId,omitnil,omitempty" name:"DocumentSetId"`
 
 	// 文件名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocumentSetName *string `json:"DocumentSetName,omitnil,omitempty" name:"DocumentSetName"`
 
 	// 文件标题
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileTitle *string `json:"FileTitle,omitnil,omitempty" name:"FileTitle"`
 
 	// 文件元信息，为jsonstring
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileMetaData *string `json:"FileMetaData,omitnil,omitempty" name:"FileMetaData"`
 }

@@ -4886,7 +4886,17 @@ func NewSaveDocResponse() (response *SaveDocResponse) {
 }
 
 // SaveDoc
-// 保存文档
+// 知识库文档问答保存。
+//
+// 将文件存储到应用的知识库内需要三步：
+//
+// 1.获取临时密钥，参考[接口文档](https://cloud.tencent.com/document/product/1759/105050)。
+//
+// 2.调用腾讯云提供的 cos 存储接口，将文件存储到知识引擎 cos 中：参考[PUT Objectufeff](https://cloud.tencent.com/document/product/436/7749)
+//
+// 3.调用本接口，将文件的基础信息存储到知识引擎中。
+//
+// 以上步骤可参考[文档](https://cloud.tencent.com/document/product/1759/108903)，文档最后有[代码demo](https://cloud.tencent.com/document/product/1759/108903#demo)，可作为参考。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4895,7 +4905,17 @@ func (c *Client) SaveDoc(request *SaveDocRequest) (response *SaveDocResponse, er
 }
 
 // SaveDoc
-// 保存文档
+// 知识库文档问答保存。
+//
+// 将文件存储到应用的知识库内需要三步：
+//
+// 1.获取临时密钥，参考[接口文档](https://cloud.tencent.com/document/product/1759/105050)。
+//
+// 2.调用腾讯云提供的 cos 存储接口，将文件存储到知识引擎 cos 中：参考[PUT Objectufeff](https://cloud.tencent.com/document/product/436/7749)
+//
+// 3.调用本接口，将文件的基础信息存储到知识引擎中。
+//
+// 以上步骤可参考[文档](https://cloud.tencent.com/document/product/1759/108903)，文档最后有[代码demo](https://cloud.tencent.com/document/product/1759/108903#demo)，可作为参考。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
