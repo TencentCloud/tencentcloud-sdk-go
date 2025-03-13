@@ -2271,6 +2271,59 @@ func (c *Client) CheckDefaultSubnetWithContext(ctx context.Context, request *Che
     return
 }
 
+func NewCheckGatewayFlowMonitorRequest() (request *CheckGatewayFlowMonitorRequest) {
+    request = &CheckGatewayFlowMonitorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "CheckGatewayFlowMonitor")
+    
+    
+    return
+}
+
+func NewCheckGatewayFlowMonitorResponse() (response *CheckGatewayFlowMonitorResponse) {
+    response = &CheckGatewayFlowMonitorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckGatewayFlowMonitor
+// 本接口（CheckGatewayFlowMonitor）用于查询网关是否启用流量监控。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+func (c *Client) CheckGatewayFlowMonitor(request *CheckGatewayFlowMonitorRequest) (response *CheckGatewayFlowMonitorResponse, err error) {
+    return c.CheckGatewayFlowMonitorWithContext(context.Background(), request)
+}
+
+// CheckGatewayFlowMonitor
+// 本接口（CheckGatewayFlowMonitor）用于查询网关是否启用流量监控。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
+func (c *Client) CheckGatewayFlowMonitorWithContext(ctx context.Context, request *CheckGatewayFlowMonitorRequest) (response *CheckGatewayFlowMonitorResponse, err error) {
+    if request == nil {
+        request = NewCheckGatewayFlowMonitorRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckGatewayFlowMonitor require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckGatewayFlowMonitorResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckNetDetectStateRequest() (request *CheckNetDetectStateRequest) {
     request = &CheckNetDetectStateRequest{
         BaseRequest: &tchttp.BaseRequest{},

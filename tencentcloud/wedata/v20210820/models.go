@@ -22334,6 +22334,16 @@ func (r *JudgeResourceFileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type KVPair struct {
+	// 键名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	K *string `json:"K,omitnil,omitempty" name:"K"`
+
+	// 值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	V *string `json:"V,omitnil,omitempty" name:"V"`
+}
+
 // Predefined struct for user
 type KillOpsMakePlanInstancesRequestParams struct {
 	// 项目ID
@@ -22978,6 +22988,77 @@ type MakePlanTaskOpsDtoCollection struct {
 	// 记录列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*MakePlanTaskOpsDto `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type ManualTriggerRecordOpsDto struct {
+	// 运行触发记录ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerId *string `json:"TriggerId,omitnil,omitempty" name:"TriggerId"`
+
+	// 用户提交运行时配置的运行名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerName *string `json:"TriggerName,omitnil,omitempty" name:"TriggerName"`
+
+	// 用户提交运行的备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 数据时间列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatetimeList []*string `json:"DatetimeList,omitnil,omitempty" name:"DatetimeList"`
+
+	// 任务数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskCnt *uint64 `json:"TaskCnt,omitnil,omitempty" name:"TaskCnt"`
+
+	// 实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceCnt *uint64 `json:"InstanceCnt,omitnil,omitempty" name:"InstanceCnt"`
+
+	// 已完成的实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishedInstanceCnt *uint64 `json:"FinishedInstanceCnt,omitnil,omitempty" name:"FinishedInstanceCnt"`
+
+	// 成功的实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessInstanceCnt *uint64 `json:"SuccessInstanceCnt,omitnil,omitempty" name:"SuccessInstanceCnt"`
+
+	// 记录运行状态
+	//  INIT, RUNNING, FINISHED
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 用户提交运行时的入参，主要用于前端反显和记录原始提交信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerParams *string `json:"TriggerParams,omitnil,omitempty" name:"TriggerParams"`
+
+	// 用户主账号ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserUin *string `json:"UserUin,omitnil,omitempty" name:"UserUin"`
+
+	// 用户展示名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 租户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TenantId *string `json:"TenantId,omitnil,omitempty" name:"TenantId"`
+
+	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 数据实例时间的时区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
 }
 
 // Predefined struct for user
@@ -32054,6 +32135,154 @@ func (r *TriggerEventResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TriggerEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TriggerManualTasksRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 触发运行名称
+	TriggerName *string `json:"TriggerName,omitnil,omitempty" name:"TriggerName"`
+
+	// 运行范围 ENTIRE_WORKFLOW or SPECIFIED_TASK
+	TriggerScope *string `json:"TriggerScope,omitnil,omitempty" name:"TriggerScope"`
+
+	// 运行数据时间列表
+	DataTimeList []*string `json:"DataTimeList,omitnil,omitempty" name:"DataTimeList"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 需要运行的任务列表
+	// TriggerScope=ENTIRE_WORKFLOW 时无需传此参数，TriggerScope=SPECIFIED_TASK此参数必传
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 用户提交运行时指定的调度资源组，未指定时使用任务配置的调度资源组
+	SchedulerResourceGroup *string `json:"SchedulerResourceGroup,omitnil,omitempty" name:"SchedulerResourceGroup"`
+
+	// 用户提交运行时指定的集成资源组，未指定时使用任务配置的集成资源组
+	IntegrationResourceGroup *string `json:"IntegrationResourceGroup,omitnil,omitempty" name:"IntegrationResourceGroup"`
+
+	// 执行顺序 ASC、RAND、DESC
+	ExecOrder *string `json:"ExecOrder,omitnil,omitempty" name:"ExecOrder"`
+
+	// 自定义参数，最高优先级
+	CustomParams []*KVPair `json:"CustomParams,omitnil,omitempty" name:"CustomParams"`
+
+	// 页面反显使用，无业务含义
+	ExtraParams *string `json:"ExtraParams,omitnil,omitempty" name:"ExtraParams"`
+
+	// 实例时间的时区
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+}
+
+type TriggerManualTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 触发运行名称
+	TriggerName *string `json:"TriggerName,omitnil,omitempty" name:"TriggerName"`
+
+	// 运行范围 ENTIRE_WORKFLOW or SPECIFIED_TASK
+	TriggerScope *string `json:"TriggerScope,omitnil,omitempty" name:"TriggerScope"`
+
+	// 运行数据时间列表
+	DataTimeList []*string `json:"DataTimeList,omitnil,omitempty" name:"DataTimeList"`
+
+	// 工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 需要运行的任务列表
+	// TriggerScope=ENTIRE_WORKFLOW 时无需传此参数，TriggerScope=SPECIFIED_TASK此参数必传
+	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 用户提交运行时指定的调度资源组，未指定时使用任务配置的调度资源组
+	SchedulerResourceGroup *string `json:"SchedulerResourceGroup,omitnil,omitempty" name:"SchedulerResourceGroup"`
+
+	// 用户提交运行时指定的集成资源组，未指定时使用任务配置的集成资源组
+	IntegrationResourceGroup *string `json:"IntegrationResourceGroup,omitnil,omitempty" name:"IntegrationResourceGroup"`
+
+	// 执行顺序 ASC、RAND、DESC
+	ExecOrder *string `json:"ExecOrder,omitnil,omitempty" name:"ExecOrder"`
+
+	// 自定义参数，最高优先级
+	CustomParams []*KVPair `json:"CustomParams,omitnil,omitempty" name:"CustomParams"`
+
+	// 页面反显使用，无业务含义
+	ExtraParams *string `json:"ExtraParams,omitnil,omitempty" name:"ExtraParams"`
+
+	// 实例时间的时区
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+}
+
+func (r *TriggerManualTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TriggerManualTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TriggerName")
+	delete(f, "TriggerScope")
+	delete(f, "DataTimeList")
+	delete(f, "WorkflowId")
+	delete(f, "Remark")
+	delete(f, "TaskIds")
+	delete(f, "SchedulerResourceGroup")
+	delete(f, "IntegrationResourceGroup")
+	delete(f, "ExecOrder")
+	delete(f, "CustomParams")
+	delete(f, "ExtraParams")
+	delete(f, "ScheduleTimeZone")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TriggerManualTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TriggerManualTasksResponseParams struct {
+	// 请求来源，WEB 前端；CLIENT 客户端
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
+
+	// 详情结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ManualTriggerRecordOpsDto `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TriggerManualTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *TriggerManualTasksResponseParams `json:"Response"`
+}
+
+func (r *TriggerManualTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TriggerManualTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

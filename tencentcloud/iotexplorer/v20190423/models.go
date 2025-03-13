@@ -151,74 +151,6 @@ type AppDeviceInfo struct {
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
-// Predefined struct for user
-type AssignTWeCallLicenseRequestParams struct {
-	// voip类型
-	PkgType *int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
-
-	// appId
-	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
-
-	// License数，只支持50,500,1000,5000,10000,20000,50000
-	DeductNum *int64 `json:"DeductNum,omitnil,omitempty" name:"DeductNum"`
-}
-
-type AssignTWeCallLicenseRequest struct {
-	*tchttp.BaseRequest
-	
-	// voip类型
-	PkgType *int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
-
-	// appId
-	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
-
-	// License数，只支持50,500,1000,5000,10000,20000,50000
-	DeductNum *int64 `json:"DeductNum,omitnil,omitempty" name:"DeductNum"`
-}
-
-func (r *AssignTWeCallLicenseRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *AssignTWeCallLicenseRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "PkgType")
-	delete(f, "MiniProgramAppId")
-	delete(f, "DeductNum")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssignTWeCallLicenseRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type AssignTWeCallLicenseResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type AssignTWeCallLicenseResponse struct {
-	*tchttp.BaseResponse
-	Response *AssignTWeCallLicenseResponseParams `json:"Response"`
-}
-
-func (r *AssignTWeCallLicenseResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *AssignTWeCallLicenseResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type AuthMiniProgramAppInfo struct {
 	// 小程序APPID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9536,100 +9468,6 @@ func (r *GetTWeCallActiveStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type GetTWeCallPkgListRequestParams struct {
-	// appId
-	//
-	// Deprecated: MiniProgramAppId is deprecated.
-	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
-
-	// 类型
-	PkgType []*int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
-
-	// 状态
-	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 偏移量
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 每页数据大小
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-}
-
-type GetTWeCallPkgListRequest struct {
-	*tchttp.BaseRequest
-	
-	// appId
-	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
-
-	// 类型
-	PkgType []*int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
-
-	// 状态
-	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 偏移量
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 每页数据大小
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-}
-
-func (r *GetTWeCallPkgListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetTWeCallPkgListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "MiniProgramAppId")
-	delete(f, "PkgType")
-	delete(f, "Status")
-	delete(f, "Offset")
-	delete(f, "Limit")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTWeCallPkgListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type GetTWeCallPkgListResponseParams struct {
-	// 激活状态
-	TWeCallPkgList []*TWeCallPkgInfo `json:"TWeCallPkgList,omitnil,omitempty" name:"TWeCallPkgList"`
-
-	// 总数
-	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
-
-	// 分类统计
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TWeCallCategoryPkgList []*TWeCallCategoryPkgInfo `json:"TWeCallCategoryPkgList,omitnil,omitempty" name:"TWeCallCategoryPkgList"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type GetTWeCallPkgListResponse struct {
-	*tchttp.BaseResponse
-	Response *GetTWeCallPkgListResponseParams `json:"Response"`
-}
-
-func (r *GetTWeCallPkgListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetTWeCallPkgListResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type GetTopicRuleListRequestParams struct {
 	// 请求的页数
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
@@ -13056,20 +12894,6 @@ type TWeCallActiveInfo struct {
 	PkgType *int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
 }
 
-type TWeCallCategoryPkgInfo struct {
-	// 类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PkgType *int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
-
-	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	All *int64 `json:"All,omitnil,omitempty" name:"All"`
-
-	// 已使用数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Used *int64 `json:"Used,omitnil,omitempty" name:"Used"`
-}
-
 type TWeCallInfo struct {
 	// Sn信息，SN格式：产品ID_设备名
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -13100,36 +12924,6 @@ type TWeCallLicenseInfo struct {
 	// 已使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
-}
-
-type TWeCallPkgInfo struct {
-	// 包ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
-
-	// 包类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PkgType *int64 `json:"PkgType,omitnil,omitempty" name:"PkgType"`
-
-	// 生效时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
-
-	// 过期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
-
-	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 已使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	LicenseUsedNum *int64 `json:"LicenseUsedNum,omitnil,omitempty" name:"LicenseUsedNum"`
-
-	// 总量
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	LicenseTotalNum *int64 `json:"LicenseTotalNum,omitnil,omitempty" name:"LicenseTotalNum"`
 }
 
 type ThumbnailURLInfoList struct {

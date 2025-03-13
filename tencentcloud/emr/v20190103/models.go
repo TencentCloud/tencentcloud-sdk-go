@@ -7035,6 +7035,26 @@ type InsightResult struct {
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 }
 
+type InspectionTaskSettings struct {
+	// 巡检任务的唯一标记
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 巡检任务组名称
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// 巡检任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 巡检任务参数设置
+	TaskSettings []*TaskSettings `json:"TaskSettings,omitnil,omitempty" name:"TaskSettings"`
+
+	// 是否选中，”true“ ”false“
+	Selected *string `json:"Selected,omitnil,omitempty" name:"Selected"`
+
+	// 是否开启监控
+	Enable *string `json:"Enable,omitnil,omitempty" name:"Enable"`
+}
+
 type InstanceChargePrepaid struct {
 	// 包年包月时间，默认为1，单位：月。
 	// 取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11, 12, 24, 36, 48, 60。
@@ -7526,6 +7546,129 @@ func (r *ModifyGlobalConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyGlobalConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInspectionSettingsRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 巡检类型，FixedTime/RealTime
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 任务配置
+	Settings []*InspectionTaskSettings `json:"Settings,omitnil,omitempty" name:"Settings"`
+
+	// 开始时间戳
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间戳
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 巡检周期，eg EveryDay EveryWeek EveryMonth
+	Strategy *string `json:"Strategy,omitnil,omitempty" name:"Strategy"`
+
+	// 每天的开始的时间
+	Clock *string `json:"Clock,omitnil,omitempty" name:"Clock"`
+
+	// 每周的周几
+	DayOfWeek *string `json:"DayOfWeek,omitnil,omitempty" name:"DayOfWeek"`
+
+	// 每月的第几号
+	DayOfMonth *string `json:"DayOfMonth,omitnil,omitempty" name:"DayOfMonth"`
+
+	// 巡检作业Id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type ModifyInspectionSettingsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 巡检类型，FixedTime/RealTime
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 任务配置
+	Settings []*InspectionTaskSettings `json:"Settings,omitnil,omitempty" name:"Settings"`
+
+	// 开始时间戳
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间戳
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 巡检周期，eg EveryDay EveryWeek EveryMonth
+	Strategy *string `json:"Strategy,omitnil,omitempty" name:"Strategy"`
+
+	// 每天的开始的时间
+	Clock *string `json:"Clock,omitnil,omitempty" name:"Clock"`
+
+	// 每周的周几
+	DayOfWeek *string `json:"DayOfWeek,omitnil,omitempty" name:"DayOfWeek"`
+
+	// 每月的第几号
+	DayOfMonth *string `json:"DayOfMonth,omitnil,omitempty" name:"DayOfMonth"`
+
+	// 巡检作业Id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *ModifyInspectionSettingsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInspectionSettingsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Type")
+	delete(f, "Settings")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Strategy")
+	delete(f, "Clock")
+	delete(f, "DayOfWeek")
+	delete(f, "DayOfMonth")
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInspectionSettingsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInspectionSettingsResponseParams struct {
+	// 返回值描述
+	Info *string `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 返回成功修改的巡检任务Id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyInspectionSettingsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyInspectionSettingsResponseParams `json:"Response"`
+}
+
+func (r *ModifyInspectionSettingsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInspectionSettingsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11216,6 +11359,20 @@ type Tag struct {
 
 	// 标签值
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+}
+
+type TaskSettings struct {
+	// 参数名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 参数值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 参数唯一标记
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 是否可编辑，”true" "false"
+	Editable *string `json:"Editable,omitnil,omitempty" name:"Editable"`
 }
 
 // Predefined struct for user

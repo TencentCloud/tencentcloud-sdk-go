@@ -1304,7 +1304,7 @@ func NewDescribeDeviceShadowResponse() (response *DescribeDeviceShadowResponse) 
 }
 
 // DescribeDeviceShadow
-// 本接口（DescribeDeviceShadow）用于查询虚拟设备信息。 
+// 本接口（DescribeDeviceShadow）用于查询虚拟设备信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1317,7 +1317,7 @@ func (c *Client) DescribeDeviceShadow(request *DescribeDeviceShadowRequest) (res
 }
 
 // DescribeDeviceShadow
-// 本接口（DescribeDeviceShadow）用于查询虚拟设备信息。 
+// 本接口（DescribeDeviceShadow）用于查询虚拟设备信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

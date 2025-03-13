@@ -1703,6 +1703,57 @@ func (c *Client) DeleteUserWithContext(ctx context.Context, request *DeleteUserR
     return
 }
 
+func NewDeleteWhiteBoardSnapshotRequest() (request *DeleteWhiteBoardSnapshotRequest) {
+    request = &DeleteWhiteBoardSnapshotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DeleteWhiteBoardSnapshot")
+    
+    
+    return
+}
+
+func NewDeleteWhiteBoardSnapshotResponse() (response *DeleteWhiteBoardSnapshotResponse) {
+    response = &DeleteWhiteBoardSnapshotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteWhiteBoardSnapshot
+// 删除白板板书截图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteWhiteBoardSnapshot(request *DeleteWhiteBoardSnapshotRequest) (response *DeleteWhiteBoardSnapshotResponse, err error) {
+    return c.DeleteWhiteBoardSnapshotWithContext(context.Background(), request)
+}
+
+// DeleteWhiteBoardSnapshot
+// 删除白板板书截图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteWhiteBoardSnapshotWithContext(ctx context.Context, request *DeleteWhiteBoardSnapshotRequest) (response *DeleteWhiteBoardSnapshotResponse, err error) {
+    if request == nil {
+        request = NewDeleteWhiteBoardSnapshotRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteWhiteBoardSnapshot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteWhiteBoardSnapshotResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAnswerListRequest() (request *DescribeAnswerListRequest) {
     request = &DescribeAnswerListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3137,6 +3188,57 @@ func (c *Client) DescribeUserWithContext(ctx context.Context, request *DescribeU
     request.SetContext(ctx)
     
     response = NewDescribeUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWhiteBoardSnapshotRequest() (request *DescribeWhiteBoardSnapshotRequest) {
+    request = &DescribeWhiteBoardSnapshotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeWhiteBoardSnapshot")
+    
+    
+    return
+}
+
+func NewDescribeWhiteBoardSnapshotResponse() (response *DescribeWhiteBoardSnapshotResponse) {
+    response = &DescribeWhiteBoardSnapshotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWhiteBoardSnapshot
+// 查询白板板书截图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeWhiteBoardSnapshot(request *DescribeWhiteBoardSnapshotRequest) (response *DescribeWhiteBoardSnapshotResponse, err error) {
+    return c.DescribeWhiteBoardSnapshotWithContext(context.Background(), request)
+}
+
+// DescribeWhiteBoardSnapshot
+// 查询白板板书截图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeWhiteBoardSnapshotWithContext(ctx context.Context, request *DescribeWhiteBoardSnapshotRequest) (response *DescribeWhiteBoardSnapshotResponse, err error) {
+    if request == nil {
+        request = NewDescribeWhiteBoardSnapshotRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWhiteBoardSnapshot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWhiteBoardSnapshotResponse()
     err = c.Send(request, response)
     return
 }

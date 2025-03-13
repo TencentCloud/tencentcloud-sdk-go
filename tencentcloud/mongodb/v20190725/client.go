@@ -1043,6 +1043,57 @@ func (c *Client) DescribeDBInstanceDealWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeDBInstanceNamespaceRequest() (request *DescribeDBInstanceNamespaceRequest) {
+    request = &DescribeDBInstanceNamespaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeDBInstanceNamespace")
+    
+    
+    return
+}
+
+func NewDescribeDBInstanceNamespaceResponse() (response *DescribeDBInstanceNamespaceResponse) {
+    response = &DescribeDBInstanceNamespaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBInstanceNamespace
+// 本接口（DescribeDBInstanceNamespace）用于查询数据库的表信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeDBInstanceNamespace(request *DescribeDBInstanceNamespaceRequest) (response *DescribeDBInstanceNamespaceResponse, err error) {
+    return c.DescribeDBInstanceNamespaceWithContext(context.Background(), request)
+}
+
+// DescribeDBInstanceNamespace
+// 本接口（DescribeDBInstanceNamespace）用于查询数据库的表信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeDBInstanceNamespaceWithContext(ctx context.Context, request *DescribeDBInstanceNamespaceRequest) (response *DescribeDBInstanceNamespaceResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstanceNamespaceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBInstanceNamespace require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBInstanceNamespaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBInstanceNodePropertyRequest() (request *DescribeDBInstanceNodePropertyRequest) {
     request = &DescribeDBInstanceNodePropertyRequest{
         BaseRequest: &tchttp.BaseRequest{},

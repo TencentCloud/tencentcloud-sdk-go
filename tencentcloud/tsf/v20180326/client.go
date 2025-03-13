@@ -8429,6 +8429,69 @@ func (c *Client) DescribeMicroservicesWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeMicroservicesByGroupIdsRequest() (request *DescribeMicroservicesByGroupIdsRequest) {
+    request = &DescribeMicroservicesByGroupIdsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tsf", APIVersion, "DescribeMicroservicesByGroupIds")
+    
+    
+    return
+}
+
+func NewDescribeMicroservicesByGroupIdsResponse() (response *DescribeMicroservicesByGroupIdsResponse) {
+    response = &DescribeMicroservicesByGroupIdsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMicroservicesByGroupIds
+// 通过部署组ID获取微服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SERVICEQUERYFAILED = "FailedOperation.ServiceQueryFailed"
+//  FAILEDOPERATION_TSFMSERROR = "FailedOperation.TsfMsError"
+//  INTERNALERROR_TSFMSERROR = "InternalError.TsfMsError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER_NAMESPACEIDREQUIRED = "MissingParameter.NamespaceIdRequired"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeMicroservicesByGroupIds(request *DescribeMicroservicesByGroupIdsRequest) (response *DescribeMicroservicesByGroupIdsResponse, err error) {
+    return c.DescribeMicroservicesByGroupIdsWithContext(context.Background(), request)
+}
+
+// DescribeMicroservicesByGroupIds
+// 通过部署组ID获取微服务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SERVICEQUERYFAILED = "FailedOperation.ServiceQueryFailed"
+//  FAILEDOPERATION_TSFMSERROR = "FailedOperation.TsfMsError"
+//  INTERNALERROR_TSFMSERROR = "InternalError.TsfMsError"
+//  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER_NAMESPACEIDREQUIRED = "MissingParameter.NamespaceIdRequired"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
+func (c *Client) DescribeMicroservicesByGroupIdsWithContext(ctx context.Context, request *DescribeMicroservicesByGroupIdsRequest) (response *DescribeMicroservicesByGroupIdsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMicroservicesByGroupIdsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMicroservicesByGroupIds require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMicroservicesByGroupIdsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMsApiListRequest() (request *DescribeMsApiListRequest) {
     request = &DescribeMsApiListRequest{
         BaseRequest: &tchttp.BaseRequest{},

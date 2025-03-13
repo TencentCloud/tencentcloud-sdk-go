@@ -22,19 +22,15 @@ import (
 
 type AuctionInfo struct {
 	// 竞拍人
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bidder *string `json:"Bidder,omitnil,omitempty" name:"Bidder"`
 
 	// 竞拍时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuctionTime *string `json:"AuctionTime,omitnil,omitempty" name:"AuctionTime"`
 
 	// 竞拍价格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuctionPrice *float64 `json:"AuctionPrice,omitnil,omitempty" name:"AuctionPrice"`
 
 	// 状态 up: 领先 down: 落后
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -265,31 +261,24 @@ func (r *BidPreDomainsResponse) FromJsonString(s string) error {
 
 type BiddingAppointResult struct {
 	// business_id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 
 	// 域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 预定价格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppointPrice *uint64 `json:"AppointPrice,omitnil,omitempty" name:"AppointPrice"`
 
 	// 预约保证金
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppointBondPrice *uint64 `json:"AppointBondPrice,omitnil,omitempty" name:"AppointBondPrice"`
 
 	// 预约结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppointEndTime *string `json:"AppointEndTime,omitnil,omitempty" name:"AppointEndTime"`
 
 	// 预约人数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppointNum *uint64 `json:"AppointNum,omitnil,omitempty" name:"AppointNum"`
 
 	// 1 已预约，2 竞价中，3 等待出价 4 竞价失败 5 等待支付 6 等待转移，7 转移中 8 交易成功 9 预约持有者赎回 10 竞价持有者赎回 11 其他阶段持有者赎回 12 违约
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -362,49 +351,38 @@ func (r *BiddingPreReleaseResponse) FromJsonString(s string) error {
 
 type BiddingResult struct {
 	// business_id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 
 	// 域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 当前价格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentPrice *uint64 `json:"CurrentPrice,omitnil,omitempty" name:"CurrentPrice"`
 
 	// 当前用户昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentNickname *string `json:"CurrentNickname,omitnil,omitempty" name:"CurrentNickname"`
 
 	// 我的出价
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BiddingPrice *uint64 `json:"BiddingPrice,omitnil,omitempty" name:"BiddingPrice"`
 
 	// 竞价保证金
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BiddingBondPrice *uint64 `json:"BiddingBondPrice,omitnil,omitempty" name:"BiddingBondPrice"`
 
 	// 竞价结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BiddingEndTime *string `json:"BiddingEndTime,omitnil,omitempty" name:"BiddingEndTime"`
 
 	// 竞价标识，1 领先，2 落后
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BiddingFlag *uint64 `json:"BiddingFlag,omitnil,omitempty" name:"BiddingFlag"`
 
 	// 出价次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BiddingNum *uint64 `json:"BiddingNum,omitnil,omitempty" name:"BiddingNum"`
 
 	// 2 竞价中  3 等待出价 4 竞价失败 10 竞价持有者赎回
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type BiddingSuccessfulResult struct {
 	// 支付结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayEndTime *string `json:"PayEndTime,omitnil,omitempty" name:"PayEndTime"`
 }
 
@@ -2689,7 +2667,6 @@ func (r *DescribePreAuctionListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePreAuctionListResponseParams struct {
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 预释放竞价列表
@@ -2979,7 +2956,6 @@ func (r *DescribePreReleaseListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePreReleaseListResponseParams struct {
 	// 数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 预释放列表
@@ -3564,7 +3540,6 @@ type DomainBatchDetailSet struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 失败原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 创建时间
@@ -3574,7 +3549,6 @@ type DomainBatchDetailSet struct {
 	UpdatedOn *string `json:"UpdatedOn,omitnil,omitempty" name:"UpdatedOn"`
 
 	// 订单号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BigDealId *string `json:"BigDealId,omitnil,omitempty" name:"BigDealId"`
 }
 
@@ -3665,7 +3639,6 @@ type DomainSimpleInfo struct {
 	RealNameAuditStatus *string `json:"RealNameAuditStatus,omitnil,omitempty" name:"RealNameAuditStatus"`
 
 	// 域名实名认证不通过原因。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealNameAuditUnpassReason *string `json:"RealNameAuditUnpassReason,omitnil,omitempty" name:"RealNameAuditUnpassReason"`
 
 	// 域名命名审核状态。
@@ -3677,7 +3650,6 @@ type DomainSimpleInfo struct {
 	DomainNameAuditStatus *string `json:"DomainNameAuditStatus,omitnil,omitempty" name:"DomainNameAuditStatus"`
 
 	// 域名命名审核不通过原因。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainNameAuditUnpassReason *string `json:"DomainNameAuditUnpassReason,omitnil,omitempty" name:"DomainNameAuditUnpassReason"`
 
 	// 注册时间。
@@ -3754,11 +3726,9 @@ type DomainSimpleInfo struct {
 
 type FailReservedDomainInfo struct {
 	// 域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 预约失败原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
 }
 
@@ -4133,69 +4103,53 @@ type PhoneEmailData struct {
 
 type PreAuctionInfo struct {
 	// 域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 竞价倒计时
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BiddingTime *string `json:"BiddingTime,omitnil,omitempty" name:"BiddingTime"`
 
 	// 出价次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BidCount *int64 `json:"BidCount,omitnil,omitempty" name:"BidCount"`
 
 	// 当前价格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
 
 	// 用户操作 bid：出价 "noAction"：无法操作
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Op *string `json:"Op,omitnil,omitempty" name:"Op"`
 
 	// 业务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 }
 
 type PreReleaseInfo struct {
 	// 域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 预订倒计时
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReservationTime *string `json:"ReservationTime,omitnil,omitempty" name:"ReservationTime"`
 
 	// 域名注册时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegTime *string `json:"RegTime,omitnil,omitempty" name:"RegTime"`
 
 	// 域名删除时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DelTime *string `json:"DelTime,omitnil,omitempty" name:"DelTime"`
 
 	// 当前人数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentPeople *int64 `json:"CurrentPeople,omitnil,omitempty" name:"CurrentPeople"`
 
 	// 当前价格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
 
 	// 是否收藏
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsFollow *bool `json:"IsFollow,omitnil,omitempty" name:"IsFollow"`
 
 	// 是否已经预约
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAppoint *bool `json:"IsAppoint,omitnil,omitempty" name:"IsAppoint"`
 
 	// 业务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 是否为原持有者
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDomainUser *bool `json:"IsDomainUser,omitnil,omitempty" name:"IsDomainUser"`
 }
 
@@ -4218,19 +4172,15 @@ type PriceInfo struct {
 
 type PriceScopeConf struct {
 	// 最高价格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxPrice *float64 `json:"MaxPrice,omitnil,omitempty" name:"MaxPrice"`
 
 	// 最低价格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinPrice *float64 `json:"MinPrice,omitnil,omitempty" name:"MinPrice"`
 
 	// 价格幅度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
 
 	// 保证金
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DepositPrice *float64 `json:"DepositPrice,omitnil,omitempty" name:"DepositPrice"`
 }
 
@@ -4348,19 +4298,15 @@ func (r *RenewDomainBatchResponse) FromJsonString(s string) error {
 
 type ReserveBidInfo struct {
 	// 用户
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
 	// 出价
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Price *int64 `json:"Price,omitnil,omitempty" name:"Price"`
 
 	// 出价时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BidTime *string `json:"BidTime,omitnil,omitempty" name:"BidTime"`
 
 	// 当前状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BidStatus *string `json:"BidStatus,omitnil,omitempty" name:"BidStatus"`
 }
 
@@ -4392,27 +4338,21 @@ type ReservedPreDomainInfo struct {
 	ReservedStatus *int64 `json:"ReservedStatus,omitnil,omitempty" name:"ReservedStatus"`
 
 	// 域名预定失败原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
 
 	// 预计变更所有权时间（仅用于参考，实际时间会存在误差）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChangeOwnerTime *string `json:"ChangeOwnerTime,omitnil,omitempty" name:"ChangeOwnerTime"`
 
 	// 注册时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegTime *string `json:"RegTime,omitnil,omitempty" name:"RegTime"`
 
 	// 到期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 资源ID，用于删除资源信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 业务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 }
 
@@ -4630,11 +4570,9 @@ func (r *SetDomainAutoRenewResponse) FromJsonString(s string) error {
 
 type SucDomainInfo struct {
 	// 域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 业务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 }
 

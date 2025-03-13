@@ -212,110 +212,83 @@ func (r *AddAITaskResponse) FromJsonString(s string) error {
 
 type AddDeviceData struct {
 	// 设备iD
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 设备名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 设备接入协议，1:RTMP,2:GB,3:GW 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessProtocol *int64 `json:"AccessProtocol,omitnil,omitempty" name:"AccessProtocol"`
 
 	// 设备类型，1:IPC,2:NVR
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 设备接入服务节点ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 设备接入服务节点名称
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 设备流传输协议，1:UDP,2:TCP 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransportProtocol *int64 `json:"TransportProtocol,omitnil,omitempty" name:"TransportProtocol"`
 
 	// 设备密码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 设备描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 设备状态，0:未注册,1:在线,2:离线,3:禁用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 设备所属组织ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationId *int64 `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
 	// 设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// 网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtocolType *int64 `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
 
 	// 设备接入IP（仅网关接入需要）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 设备Port（仅网关接入需要）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 设备用户名（仅网关接入需要）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
 	// 用户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 }
 
 type AddOrgData struct {
 	// 组织 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationId *string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
 	// 组织名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 组织父节点 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentId *string `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 
 	// 组织层级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 用户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 组织结构
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentIds *string `json:"ParentIds,omitnil,omitempty" name:"ParentIds"`
 
 	// 设备总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 设备在线数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Online *int64 `json:"Online,omitnil,omitempty" name:"Online"`
 }
 
@@ -506,31 +479,24 @@ func (r *AddRecordBackupPlanResponse) FromJsonString(s string) error {
 
 type AddRecordBackupTemplateData struct {
 	// 模板ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 模板名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
 	// 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeSections []*RecordTemplateTimeSections `json:"TimeSections,omitnil,omitempty" name:"TimeSections"`
 
 	// 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DevTimeSections []*RecordTemplateTimeSections `json:"DevTimeSections,omitnil,omitempty" name:"DevTimeSections"`
 
 	// 上云倍速（支持1，2，4倍速）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateAt *string `json:"UpdateAt,omitnil,omitempty" name:"UpdateAt"`
 }
 
@@ -744,7 +710,6 @@ type AddRecordRetrieveTaskData struct {
 	Capacity *float64 `json:"Capacity,omitnil,omitempty" name:"Capacity"`
 
 	// 任务描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
 }
 
@@ -913,35 +878,27 @@ func (r *AddRecordTemplateResponse) FromJsonString(s string) error {
 
 type AddStreamAuthData struct {
 	// 鉴权配置ID（uuid）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 是否开播放鉴权（1:开启,0:关闭）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PullState *int64 `json:"PullState,omitnil,omitempty" name:"PullState"`
 
 	// 播放密钥（仅支持字母数字，长度0-10位）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PullSecret *string `json:"PullSecret,omitnil,omitempty" name:"PullSecret"`
 
 	// 播放过期时间（单位：分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PullExpired *int64 `json:"PullExpired,omitnil,omitempty" name:"PullExpired"`
 
 	// 是否开启推流鉴权（1:开启,0:关闭）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PushState *int64 `json:"PushState,omitnil,omitempty" name:"PushState"`
 
 	// 推流密钥（仅支持字母数字，长度0-10位）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PushSecret *string `json:"PushSecret,omitnil,omitempty" name:"PushSecret"`
 
 	// 推流过期时间（单位：分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PushExpired *int64 `json:"PushExpired,omitnil,omitempty" name:"PushExpired"`
 
 	// 用户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 }
 
@@ -1219,7 +1176,6 @@ type BaseAIResultInfo struct {
 
 type BatchOperateDeviceData struct {
 	// 任务 ID（用于在查询任务的子任务列表接口ListSubTasks中查询任务进度）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -1289,11 +1245,9 @@ func (r *BatchOperateDeviceResponse) FromJsonString(s string) error {
 
 type BitRateInfo struct {
 	// 通道Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
 	// 码率,单位:kbps
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bitrate *float64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 }
 
@@ -1410,14 +1364,12 @@ type ChannelAttrInfo struct {
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 设备通道所属的设备名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 设备通道ID
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
 	// 设备通道名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
 }
 
@@ -1601,15 +1553,12 @@ func (r *ControlDevicePresetResponse) FromJsonString(s string) error {
 
 type ControlDeviceStreamData struct {
 	// flv 流地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Flv *string `json:"Flv,omitnil,omitempty" name:"Flv"`
 
 	// hls 流地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Hls *string `json:"Hls,omitnil,omitempty" name:"Hls"`
 
 	// rtmp 流地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rtmp *string `json:"Rtmp,omitnil,omitempty" name:"Rtmp"`
 }
 
@@ -2633,43 +2582,33 @@ func (r *DescribeCNAMEResponse) FromJsonString(s string) error {
 
 type DescribeDeviceChannelData struct {
 	// 设备 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 通道 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
 	// 通道编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelCode *string `json:"ChannelCode,omitnil,omitempty" name:"ChannelCode"`
 
 	// 通道名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 流状态（0:未传输,1:传输中）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 是否可控 Ptz（0:不可控,1:可控）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PTZType *int64 `json:"PTZType,omitnil,omitempty" name:"PTZType"`
 
 	// 通道厂商
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Manufacturer *string `json:"Manufacturer,omitnil,omitempty" name:"Manufacturer"`
 
 	// 通道支持分辨率（分辨率列表由‘/’隔开，国标协议样例（6/3），自定义样例（12800960/640480））
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
 	// 通道在离线状态（0:离线,1:在线）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	State *int64 `json:"State,omitnil,omitempty" name:"State"`
 
 	// 所在地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
@@ -2732,138 +2671,104 @@ func (r *DescribeDeviceChannelResponse) FromJsonString(s string) error {
 
 type DescribeDeviceData struct {
 	// 设备ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 设备名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 设备接入协议，1:RTMP,2:GB,3:GW 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessProtocol *int64 `json:"AccessProtocol,omitnil,omitempty" name:"AccessProtocol"`
 
 	// 设备类型，1:IPC,2:NVR
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 设备接入服务节点id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 设备接入服务节点名称
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 设备流传输协议，1:UDP,2:TCP 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransportProtocol *int64 `json:"TransportProtocol,omitnil,omitempty" name:"TransportProtocol"`
 
 	// 设备密码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 设备描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// sip服务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SipId *string `json:"SipId,omitnil,omitempty" name:"SipId"`
 
 	// sip服务域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SipDomain *string `json:"SipDomain,omitnil,omitempty" name:"SipDomain"`
 
 	// sip服务IP地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SipIp *string `json:"SipIp,omitnil,omitempty" name:"SipIp"`
 
 	// sip服务端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SipPort *int64 `json:"SipPort,omitnil,omitempty" name:"SipPort"`
 
 	// Rtmp设备推流地址(仅rtmp设备有效)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PushStreamUrl *string `json:"PushStreamUrl,omitnil,omitempty" name:"PushStreamUrl"`
 
 	// 设备状态，0:未注册,1:在线,2:离线,3:禁用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 设备所属组织ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationId *string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
 	// 设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// 设备所属网关名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayName *string `json:"GatewayName,omitnil,omitempty" name:"GatewayName"`
 
 	// 设备网关协议名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtocolTypeName *string `json:"ProtocolTypeName,omitnil,omitempty" name:"ProtocolTypeName"`
 
 	// 网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtocolType *int64 `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
 
 	// 设备接入IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 设备Port
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 设备用户名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
 	// 设备地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 设备厂商
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Manufacturer *string `json:"Manufacturer,omitnil,omitempty" name:"Manufacturer"`
 
 	// 音频关开（0：关闭；1：开启）关闭时丢弃音频	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioSwitch *int64 `json:"AudioSwitch,omitnil,omitempty" name:"AudioSwitch"`
 
 	// 订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubscribeSwitch *int64 `json:"SubscribeSwitch,omitnil,omitempty" name:"SubscribeSwitch"`
 
 	// RTMP推流地址自定义appName
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// RTMP推流地址自定义streamName
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
 
 	// 是否开启静音帧（0：关闭；1 开启）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SilentFrameSwitch *int64 `json:"SilentFrameSwitch,omitnil,omitempty" name:"SilentFrameSwitch"`
 }
 
 type DescribeDevicePresetData struct {
 	// 预置位索引    只支持1-10的索引
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
 
 	// 预置位名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
@@ -2926,15 +2831,12 @@ func (r *DescribeDevicePresetResponse) FromJsonString(s string) error {
 
 type DescribeDeviceRegion struct {
 	// 服务节点描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 服务节点 ID（对应为其他接口中所需的 ClusterId）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 地域信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
@@ -2994,53 +2896,41 @@ func (r *DescribeDeviceRegionResponse) FromJsonString(s string) error {
 
 type DescribeDomainData struct {
 	// 域名ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 播放域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlayDomain *string `json:"PlayDomain,omitnil,omitempty" name:"PlayDomain"`
 
 	// CNAME 记录值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternalDomain *string `json:"InternalDomain,omitnil,omitempty" name:"InternalDomain"`
 
 	// 是否上传证书（0：否，1：是）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HaveCert *int64 `json:"HaveCert,omitnil,omitempty" name:"HaveCert"`
 
 	// 服务节点 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 服务节点名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 用户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 证书ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 域名类型 0:拉流域名 1:推流域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainType *int64 `json:"DomainType,omitnil,omitempty" name:"DomainType"`
 }
 
 type DescribeDomainRegionData struct {
 	// 服务节点描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 服务节点 ID（对应为其他接口中所需的 ClusterId）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 地域信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
@@ -3154,31 +3044,24 @@ func (r *DescribeDomainResponse) FromJsonString(s string) error {
 
 type DescribeGatewayData struct {
 	// 网关索引ID，用于网关查询，更新，删除操作
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// 网关编码，由网关设备生成的唯一编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GwId *string `json:"GwId,omitnil,omitempty" name:"GwId"`
 
 	// 网关名称，仅支持中文、英文、数字、_、-，长度不超过32个字符
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 网关描述，仅支持中文、英文、数字、_、-，长度不超过128个字符
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 服务节点id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 服务节点名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 网关状态，0：离线，1:在线
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 网关版本
@@ -3186,53 +3069,41 @@ type DescribeGatewayData struct {
 	Version []*GatewayVersion `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 网关下挂设备数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceNum *int64 `json:"DeviceNum,omitnil,omitempty" name:"DeviceNum"`
 
 	// 激活时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 所属地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
 type DescribeGatewayMonitor struct {
 	// 设备接入总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceTotal *int64 `json:"DeviceTotal,omitnil,omitempty" name:"DeviceTotal"`
 
 	// 设备在线数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceOnline *int64 `json:"DeviceOnline,omitnil,omitempty" name:"DeviceOnline"`
 
 	// 设备离线数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceOffline *int64 `json:"DeviceOffline,omitnil,omitempty" name:"DeviceOffline"`
 
 	// 视频通道总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelTotal *int64 `json:"ChannelTotal,omitnil,omitempty" name:"ChannelTotal"`
 
 	// 视频通道在线数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelOnline *int64 `json:"ChannelOnline,omitnil,omitempty" name:"ChannelOnline"`
 
 	// 视频通道离线数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelOffline *int64 `json:"ChannelOffline,omitnil,omitempty" name:"ChannelOffline"`
 
 	// 网关上行流量,单位kbps
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpFlow *int64 `json:"UpFlow,omitnil,omitempty" name:"UpFlow"`
 
 	// 流在传输中的通道数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelPull *int64 `json:"ChannelPull,omitnil,omitempty" name:"ChannelPull"`
 
 	// 流未传输中的通道数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelUnPull *int64 `json:"ChannelUnPull,omitnil,omitempty" name:"ChannelUnPull"`
 }
 
@@ -3295,16 +3166,16 @@ func (r *DescribeGatewayMonitorResponse) FromJsonString(s string) error {
 
 type DescribeGatewayProtocolData struct {
 	// 接入协议的字典码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TypeCode *string `json:"TypeCode,omitnil,omitempty" name:"TypeCode"`
 
 	// 接入协议类型值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 接入协议的类型描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 协议值文本
+	ValueText *string `json:"ValueText,omitnil,omitempty" name:"ValueText"`
 }
 
 // Predefined struct for user
@@ -3420,29 +3291,23 @@ func (r *DescribeGatewayResponse) FromJsonString(s string) error {
 
 type DescribeGatewayVersion struct {
 	// 服务名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 服务版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 服务最新版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestVersion *string `json:"LatestVersion,omitnil,omitempty" name:"LatestVersion"`
 
 	// 是否需要更新
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUpdate *bool `json:"IsUpdate,omitnil,omitempty" name:"IsUpdate"`
 
 	// 升级信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpgradeInfo []*string `json:"UpgradeInfo,omitnil,omitempty" name:"UpgradeInfo"`
 }
 
 type DescribeGatewayVersionData struct {
 	// 网关服务列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Services []*DescribeGatewayVersion `json:"Services,omitnil,omitempty" name:"Services"`
 }
 
@@ -3505,35 +3370,27 @@ func (r *DescribeGatewayVersionResponse) FromJsonString(s string) error {
 
 type DescribeOrganizationData struct {
 	// 组织 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationId *string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
 	// 组织名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 组织父节点 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentId *string `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 
 	// 组织层级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 用户id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 组织结构
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentIds *string `json:"ParentIds,omitnil,omitempty" name:"ParentIds"`
 
 	// 设备总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 设备在线数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Online *int64 `json:"Online,omitnil,omitempty" name:"Online"`
 }
 
@@ -3679,31 +3536,24 @@ func (r *DescribeRecordBackupPlanResponse) FromJsonString(s string) error {
 
 type DescribeRecordBackupTemplateData struct {
 	// 模板ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 模板名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
 	// 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeSections []*RecordTemplateTimeSections `json:"TimeSections,omitnil,omitempty" name:"TimeSections"`
 
 	// 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DevTimeSections []*RecordTemplateTimeSections `json:"DevTimeSections,omitnil,omitempty" name:"DevTimeSections"`
 
 	// 上云倍速（支持1，2，4倍速）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateAt *string `json:"UpdateAt,omitnil,omitempty" name:"UpdateAt"`
 }
 
@@ -4029,7 +3879,6 @@ type DescribeRecordRetrieveTaskData struct {
 	Channels []*RecordRetrieveTaskChannelInfo `json:"Channels,omitnil,omitempty" name:"Channels"`
 
 	// 任务描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
 
 	// 任务通道数量
@@ -4224,35 +4073,27 @@ func (r *DescribeRecordTemplateResponse) FromJsonString(s string) error {
 
 type DescribeStreamAuthData struct {
 	// 鉴权配置ID（uuid）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 是否开播放鉴权（1:开启,0:关闭）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PullState *int64 `json:"PullState,omitnil,omitempty" name:"PullState"`
 
 	// 播放密钥（仅支持字母数字，长度0-10位）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PullSecret *string `json:"PullSecret,omitnil,omitempty" name:"PullSecret"`
 
 	// 播放过期时间（单位：分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PullExpired *int64 `json:"PullExpired,omitnil,omitempty" name:"PullExpired"`
 
 	// 是否开启推流鉴权（1:开启,0:关闭）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PushState *int64 `json:"PushState,omitnil,omitempty" name:"PushState"`
 
 	// 推流密钥（仅支持字母数字，长度0-10位）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PushSecret *string `json:"PushSecret,omitnil,omitempty" name:"PushSecret"`
 
 	// 推流过期时间（单位：分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PushExpired *int64 `json:"PushExpired,omitnil,omitempty" name:"PushExpired"`
 
 	// 用户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 }
 
@@ -4426,7 +4267,6 @@ func (r *DescribeUserDeviceResponse) FromJsonString(s string) error {
 
 type DescribeVideoBitRateList struct {
 	// 通道码率列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BitRates []*BitRateInfo `json:"BitRates,omitnil,omitempty" name:"BitRates"`
 }
 
@@ -4635,97 +4475,75 @@ type FaceMaskAIResultInfo struct {
 
 type GatewayDevice struct {
 	// 设备ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 网关接入协议类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtocolType *int64 `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
 
 	// 网关接入协议名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtocolTypeName *string `json:"ProtocolTypeName,omitnil,omitempty" name:"ProtocolTypeName"`
 
 	// 设备名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 设备类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 设备内网IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 设备端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 设备下通道数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelNum *int64 `json:"ChannelNum,omitnil,omitempty" name:"ChannelNum"`
 
 	// 设备状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type GatewayVersion struct {
 	// 服务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 服务版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 }
 
 type GatewaysData struct {
 	// 网关索引ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// 网关编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GwId *string `json:"GwId,omitnil,omitempty" name:"GwId"`
 
 	// 网关名称，仅支持中文、英文、数字、_、-，长度不超过32个字符
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 网关描述，仅支持中文、英文、数字、_、-，长度不超过128个字符
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 网关所属服务节点ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 网关所属服务节点名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 网关所属地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 网关状态，0：离线，1:在线
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 网关激活时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 所属网关设备数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceNum *int64 `json:"DeviceNum,omitnil,omitempty" name:"DeviceNum"`
 }
 
 type ISAPIOutputData struct {
 	// 输出参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputData *string `json:"OutputData,omitnil,omitempty" name:"OutputData"`
 }
 
@@ -5014,11 +4832,9 @@ type ListForbidplayChannelsData struct {
 
 type ListGatewayDevicesData struct {
 	// 网关下设备列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*GatewayDevice `json:"List,omitnil,omitempty" name:"List"`
 
 	// 网关下设备总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
@@ -5095,11 +4911,9 @@ func (r *ListGatewayDevicesResponse) FromJsonString(s string) error {
 
 type ListGatewaysData struct {
 	// 网关列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*GatewaysData `json:"List,omitnil,omitempty" name:"List"`
 
 	// 网关数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
@@ -5388,15 +5202,12 @@ type ListRecordBackupPlanData struct {
 
 type ListRecordBackupPlanDevicesData struct {
 	// 第几页
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
 	// 当前页的设备数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 本次查询的设备通道总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 设备通道信息列表
@@ -5552,31 +5363,24 @@ func (r *ListRecordBackupPlansResponse) FromJsonString(s string) error {
 
 type ListRecordBackupTemplatesData struct {
 	// 模板ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 模板名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
 	// 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeSections []*RecordTemplateTimeSections `json:"TimeSections,omitnil,omitempty" name:"TimeSections"`
 
 	// 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DevTimeSections []*RecordTemplateTimeSections `json:"DevTimeSections,omitnil,omitempty" name:"DevTimeSections"`
 
 	// 上云倍速（支持1，2，4倍速）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateAt *string `json:"UpdateAt,omitnil,omitempty" name:"UpdateAt"`
 }
 
@@ -6060,11 +5864,9 @@ func (r *ListSubTasksResponse) FromJsonString(s string) error {
 
 type ListTasksData struct {
 	// 任务列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*TaskData `json:"List,omitnil,omitempty" name:"List"`
 
 	// 任务数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
@@ -6195,14 +5997,12 @@ type OrganizationChannelInfo struct {
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 设备通道所属的设备名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 设备通道ID
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
 	// 设备通道名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
 
 	// 该通道是否在上云计划中，如果是，则不能在添加到其他上云计划|true：在上云计划中，false：不在上云计划中
@@ -6247,7 +6047,6 @@ type PlateContent struct {
 
 type PlayRecordData struct {
 	// 录像播放地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Flv *string `json:"Flv,omitnil,omitempty" name:"Flv"`
 }
 
@@ -6392,7 +6191,6 @@ func (r *QueryForbidPlayChannelListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryForbidPlayChannelListResponseParams struct {
 	// 返回结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *ListForbidplayChannelsData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6426,11 +6224,9 @@ type RecordPlanBaseInfo struct {
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 上云计划描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
 
 	// 码流类型，default:设备默认码流类型，main:主码流，sub:子码流，其他根据设备能力集自定义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamType *string `json:"StreamType,omitnil,omitempty" name:"StreamType"`
 
 	// 云文件生命周期
@@ -6451,18 +6247,15 @@ type RecordPlanChannelInfo struct {
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 设备通道所属的设备名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 设备通道ID
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
 	// 设备通道名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
 
 	// 所属组织名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 通道所属设备的接入协议类型
@@ -6480,14 +6273,12 @@ type RecordPlanOptData struct {
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 上云计划描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
 
 	// 云文件生命周期
 	LifeCycle *LifeCycleData `json:"LifeCycle,omitnil,omitempty" name:"LifeCycle"`
 
 	// 码流类型，default:设备默认码流类型，main:主码流，sub:子码流，其他根据设备能力集自定义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamType *string `json:"StreamType,omitnil,omitempty" name:"StreamType"`
 
 	// 录像补录模式（0:不启用，1:启用）
@@ -6542,7 +6333,6 @@ type RecordRetrieveTaskDetailsInfo struct {
 	Capacity *int64 `json:"Capacity,omitnil,omitempty" name:"Capacity"`
 
 	// 任务描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Describe *string `json:"Describe,omitnil,omitempty" name:"Describe"`
 
 	// 任务通道数量
@@ -6587,7 +6377,6 @@ type RecordTimeLine struct {
 	End *uint64 `json:"End,omitnil,omitempty" name:"End"`
 
 	// 对应时间片段的播放url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HlsUrl *string `json:"HlsUrl,omitnil,omitempty" name:"HlsUrl"`
 }
 
@@ -6741,7 +6530,6 @@ type SubTaskData struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 任务失败原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
 
 	// 任务进度
@@ -6769,19 +6557,15 @@ type SubTaskData struct {
 	Runtime *int64 `json:"Runtime,omitnil,omitempty" name:"Runtime"`
 
 	// 设备ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 设备名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 通道ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
 	// 通道名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
 }
 
@@ -6793,7 +6577,6 @@ type TaskData struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 失败原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
 
 	// 进度（0-1）
@@ -6836,29 +6619,23 @@ type TaskData struct {
 	Runtime *int64 `json:"Runtime,omitnil,omitempty" name:"Runtime"`
 
 	// 设备ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 设备名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 通道ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
 	//  通道名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
 }
 
 type Timeline struct {
 	// 分片起始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Begin *int64 `json:"Begin,omitnil,omitempty" name:"Begin"`
 
 	// 分片结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	End *int64 `json:"End,omitnil,omitempty" name:"End"`
 }
 
@@ -7025,76 +6802,57 @@ func (r *UpdateAITaskStatusResponse) FromJsonString(s string) error {
 
 type UpdateDeviceData struct {
 	// 设备ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 设备名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 设备接入协议，1:RTMP,2:GB,3:GW 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessProtocol *int64 `json:"AccessProtocol,omitnil,omitempty" name:"AccessProtocol"`
 
 	// 设备类型，1:IPC,2:NVR
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 设备接入服务节点ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 设备接入服务节点名称
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 设备流传输协议，1:UDP,2:TCP 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransportProtocol *int64 `json:"TransportProtocol,omitnil,omitempty" name:"TransportProtocol"`
 
 	// 设备密码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 设备描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 设备状态，0:未注册,1:在线,2:离线,3:禁用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 设备所属组织ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationId *int64 `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
 	// 设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// 网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtocolType *int64 `json:"ProtocolType,omitnil,omitempty" name:"ProtocolType"`
 
 	// 设备接入IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 设备Port
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 设备用户名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
 	// 用户Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 }
 
@@ -7222,43 +6980,33 @@ func (r *UpdateDeviceStatusResponse) FromJsonString(s string) error {
 
 type UpdateGatewayData struct {
 	// 网关索引ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// 网关编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GwId *string `json:"GwId,omitnil,omitempty" name:"GwId"`
 
 	// 网关名称，仅支持中文、英文、数字、_、-，长度不超过32个字符
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 网关描述，仅支持中文、英文、数字、_、-，长度不超过128个字符
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 服务节点ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 服务节点名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 网关状态，0：离线，1:在线
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 激活时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *int64 `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 网关密钥
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Secret *string `json:"Secret,omitnil,omitempty" name:"Secret"`
 
 	// 网关版本信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 }
 
@@ -7335,35 +7083,27 @@ func (r *UpdateGatewayResponse) FromJsonString(s string) error {
 
 type UpdateOrgData struct {
 	// 组织 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationId *string `json:"OrganizationId,omitnil,omitempty" name:"OrganizationId"`
 
 	// 组织名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 组织父节点 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentId *string `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 
 	// 组织层级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 用户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 组织结构
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentIds *string `json:"ParentIds,omitnil,omitempty" name:"ParentIds"`
 
 	// 设备总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 设备在线数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Online *int64 `json:"Online,omitnil,omitempty" name:"Online"`
 }
 
@@ -7549,31 +7289,24 @@ func (r *UpdateRecordBackupPlanResponse) FromJsonString(s string) error {
 
 type UpdateRecordBackupTemplateData struct {
 	// 模板ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 模板名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
 	// 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeSections []*RecordTemplateTimeSections `json:"TimeSections,omitnil,omitempty" name:"TimeSections"`
 
 	// 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DevTimeSections []*RecordTemplateTimeSections `json:"DevTimeSections,omitnil,omitempty" name:"DevTimeSections"`
 
 	// 上云倍速（支持1，2，4倍速）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateAt *string `json:"UpdateAt,omitnil,omitempty" name:"UpdateAt"`
 }
 

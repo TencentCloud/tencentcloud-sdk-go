@@ -995,6 +995,9 @@ const (
 	// 实例类型不支持设置`GridDriverService` 状态
 	UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTGRIDLICENCE = "UnsupportedOperation.InstanceTypeNotSupportGridLicence"
 
+	// 实例类型不支持设置 HighDensityMode 状态
+	UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTHIGHDENSITYMODESETTING = "UnsupportedOperation.InstanceTypeNotSupportHighDensityModeSetting"
+
 	// 实例类型不支持设置`EnableJumboFrame` 状态
 	UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTJUMBOFRAME = "UnsupportedOperation.InstanceTypeNotSupportJumboFrame"
 

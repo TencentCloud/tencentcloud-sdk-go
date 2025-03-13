@@ -13070,6 +13070,55 @@ func (c *Client) TriggerEventWithContext(ctx context.Context, request *TriggerEv
     return
 }
 
+func NewTriggerManualTasksRequest() (request *TriggerManualTasksRequest) {
+    request = &TriggerManualTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "TriggerManualTasks")
+    
+    
+    return
+}
+
+func NewTriggerManualTasksResponse() (response *TriggerManualTasksResponse) {
+    response = &TriggerManualTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TriggerManualTasks
+// 手动任务触发运行
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) TriggerManualTasks(request *TriggerManualTasksRequest) (response *TriggerManualTasksResponse, err error) {
+    return c.TriggerManualTasksWithContext(context.Background(), request)
+}
+
+// TriggerManualTasks
+// 手动任务触发运行
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) TriggerManualTasksWithContext(ctx context.Context, request *TriggerManualTasksRequest) (response *TriggerManualTasksResponse, err error) {
+    if request == nil {
+        request = NewTriggerManualTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TriggerManualTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTriggerManualTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUnlockIntegrationTaskRequest() (request *UnlockIntegrationTaskRequest) {
     request = &UnlockIntegrationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

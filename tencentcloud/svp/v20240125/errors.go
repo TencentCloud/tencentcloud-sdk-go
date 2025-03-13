@@ -17,6 +17,9 @@ package v20240125
 const (
 	// 此产品的特有错误码
 
+	// 未定义异常。
+	INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+
 	// 账号没有cam授权。
 	UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 )

@@ -5978,6 +5978,10 @@ type ServerlessIndexMetaField struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
 
+	// 索引元数据JSON
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexMetaJson *string `json:"IndexMetaJson,omitnil,omitempty" name:"IndexMetaJson"`
+
 	// 索引文档数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexDocs *int64 `json:"IndexDocs,omitnil,omitempty" name:"IndexDocs"`

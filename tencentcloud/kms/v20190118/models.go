@@ -2389,6 +2389,12 @@ type GetServiceStatusResponseParams struct {
 	// KMS 订阅信息。
 	SubscriptionInfo *string `json:"SubscriptionInfo,omitnil,omitempty" name:"SubscriptionInfo"`
 
+	// 返回KMS用户密钥使用数量
+	CmkUserCount *uint64 `json:"CmkUserCount,omitnil,omitempty" name:"CmkUserCount"`
+
+	// 返回KMS用户密钥规格数量
+	CmkLimit *uint64 `json:"CmkLimit,omitnil,omitempty" name:"CmkLimit"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

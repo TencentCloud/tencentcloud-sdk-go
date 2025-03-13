@@ -4149,6 +4149,55 @@ func (c *Client) ModifyGlobalConfigWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyInspectionSettingsRequest() (request *ModifyInspectionSettingsRequest) {
+    request = &ModifyInspectionSettingsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "ModifyInspectionSettings")
+    
+    
+    return
+}
+
+func NewModifyInspectionSettingsResponse() (response *ModifyInspectionSettingsResponse) {
+    response = &ModifyInspectionSettingsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInspectionSettings
+// 设置巡检任务配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyInspectionSettings(request *ModifyInspectionSettingsRequest) (response *ModifyInspectionSettingsResponse, err error) {
+    return c.ModifyInspectionSettingsWithContext(context.Background(), request)
+}
+
+// ModifyInspectionSettings
+// 设置巡检任务配置
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyInspectionSettingsWithContext(ctx context.Context, request *ModifyInspectionSettingsRequest) (response *ModifyInspectionSettingsResponse, err error) {
+    if request == nil {
+        request = NewModifyInspectionSettingsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInspectionSettings require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInspectionSettingsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyInstanceBasicRequest() (request *ModifyInstanceBasicRequest) {
     request = &ModifyInstanceBasicRequest{
         BaseRequest: &tchttp.BaseRequest{},

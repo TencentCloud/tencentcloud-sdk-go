@@ -98,67 +98,6 @@ func (c *Client) ActivateTWeCallLicenseWithContext(ctx context.Context, request 
     return
 }
 
-func NewAssignTWeCallLicenseRequest() (request *AssignTWeCallLicenseRequest) {
-    request = &AssignTWeCallLicenseRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("iotexplorer", APIVersion, "AssignTWeCallLicense")
-    
-    
-    return
-}
-
-func NewAssignTWeCallLicenseResponse() (response *AssignTWeCallLicenseResponse) {
-    response = &AssignTWeCallLicenseResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// AssignTWeCallLicense
-// 微信VOIP功能调整下线
-//
-// 
-//
-// 分配License
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) AssignTWeCallLicense(request *AssignTWeCallLicenseRequest) (response *AssignTWeCallLicenseResponse, err error) {
-    return c.AssignTWeCallLicenseWithContext(context.Background(), request)
-}
-
-// AssignTWeCallLicense
-// 微信VOIP功能调整下线
-//
-// 
-//
-// 分配License
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) AssignTWeCallLicenseWithContext(ctx context.Context, request *AssignTWeCallLicenseRequest) (response *AssignTWeCallLicenseResponse, err error) {
-    if request == nil {
-        request = NewAssignTWeCallLicenseRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("AssignTWeCallLicense require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewAssignTWeCallLicenseResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewBindCloudStorageUserRequest() (request *BindCloudStorageUserRequest) {
     request = &BindCloudStorageUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6943,67 +6882,6 @@ func (c *Client) GetTWeCallActiveStatusWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewGetTWeCallActiveStatusResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewGetTWeCallPkgListRequest() (request *GetTWeCallPkgListRequest) {
-    request = &GetTWeCallPkgListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetTWeCallPkgList")
-    
-    
-    return
-}
-
-func NewGetTWeCallPkgListResponse() (response *GetTWeCallPkgListResponse) {
-    response = &GetTWeCallPkgListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// GetTWeCallPkgList
-// 微信VOIP功能调整下线
-//
-// 
-//
-// 查询TWeCall包列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) GetTWeCallPkgList(request *GetTWeCallPkgListRequest) (response *GetTWeCallPkgListResponse, err error) {
-    return c.GetTWeCallPkgListWithContext(context.Background(), request)
-}
-
-// GetTWeCallPkgList
-// 微信VOIP功能调整下线
-//
-// 
-//
-// 查询TWeCall包列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) GetTWeCallPkgListWithContext(ctx context.Context, request *GetTWeCallPkgListRequest) (response *GetTWeCallPkgListResponse, err error) {
-    if request == nil {
-        request = NewGetTWeCallPkgListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("GetTWeCallPkgList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewGetTWeCallPkgListResponse()
     err = c.Send(request, response)
     return
 }

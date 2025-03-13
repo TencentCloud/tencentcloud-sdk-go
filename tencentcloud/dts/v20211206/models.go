@@ -22,23 +22,18 @@ import (
 
 type AdvancedObjectsItem struct {
 	// 对象类型,可能得值有：account,index,shardkey,schema
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
 
 	// 源端分块
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcChunk *string `json:"SrcChunk,omitnil,omitempty" name:"SrcChunk"`
 
 	// 目标端分块
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstChunk *string `json:"DstChunk,omitnil,omitempty" name:"DstChunk"`
 
 	// 源端值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcItem *string `json:"SrcItem,omitnil,omitempty" name:"SrcItem"`
 
 	// 目标端值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstItem *string `json:"DstItem,omitnil,omitempty" name:"DstItem"`
 }
 
@@ -85,11 +80,9 @@ type CheckStepInfo struct {
 
 type Column struct {
 	// 列名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColumnName *string `json:"ColumnName,omitnil,omitempty" name:"ColumnName"`
 
 	// 新列名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewColumnName *string `json:"NewColumnName,omitnil,omitempty" name:"NewColumnName"`
 }
 
@@ -651,15 +644,12 @@ func (r *ConfigureSyncJobResponse) FromJsonString(s string) error {
 
 type ConflictHandleOption struct {
 	// 条件覆盖的列
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConditionColumn *string `json:"ConditionColumn,omitnil,omitempty" name:"ConditionColumn"`
 
 	// 条件覆盖操作
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConditionOperator *string `json:"ConditionOperator,omitnil,omitempty" name:"ConditionOperator"`
 
 	// 条件覆盖优先级处理
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConditionOrderInSrcAndDst *string `json:"ConditionOrderInSrcAndDst,omitnil,omitempty" name:"ConditionOrderInSrcAndDst"`
 }
 
@@ -1344,7 +1334,6 @@ func (r *CreateSubscribeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSubscribeResponseParams struct {
 	// 数据订阅实例的ID数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubscribeIds []*string `json:"SubscribeIds,omitnil,omitempty" name:"SubscribeIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1667,71 +1656,54 @@ type DBItem struct {
 
 type Database struct {
 	// 需要迁移或同步的库名，当ObjectMode为Partial时，此项必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
 	// 迁移或同步后的库名，默认与源库相同
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewDbName *string `json:"NewDbName,omitnil,omitempty" name:"NewDbName"`
 
 	// DB选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当Mode为Partial时，此项必填。注意，高级对象的同步不依赖此值，如果整库同步此处应该为All。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbMode *string `json:"DbMode,omitnil,omitempty" name:"DbMode"`
 
 	// 迁移或同步的 schema
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
 
 	// 迁移或同步后的 schema name
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewSchemaName *string `json:"NewSchemaName,omitnil,omitempty" name:"NewSchemaName"`
 
 	// 表选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当DBMode为Partial时此项必填，如果整库同步此处应该为All。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableMode *string `json:"TableMode,omitnil,omitempty" name:"TableMode"`
 
 	// 表图对象集合，当 TableMode 为 Partial 时，此项需要填写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tables []*Table `json:"Tables,omitnil,omitempty" name:"Tables"`
 
 	// 视图选择模式: All 为当前对象下的所有视图对象,Partial 为部分视图对象，如果整库同步此处应该为All。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ViewMode *string `json:"ViewMode,omitnil,omitempty" name:"ViewMode"`
 
 	// 视图对象集合，当 ViewMode 为 Partial 时， 此项需要填写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Views []*View `json:"Views,omitnil,omitempty" name:"Views"`
 
 	// 选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FunctionMode *string `json:"FunctionMode,omitnil,omitempty" name:"FunctionMode"`
 
 	// FunctionMode取值为Partial时需要填写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Functions []*string `json:"Functions,omitnil,omitempty" name:"Functions"`
 
 	// 选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcedureMode *string `json:"ProcedureMode,omitnil,omitempty" name:"ProcedureMode"`
 
 	// ProcedureMode取值为Partial时需要填写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Procedures []*string `json:"Procedures,omitnil,omitempty" name:"Procedures"`
 
 	// 触发器迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerMode *string `json:"TriggerMode,omitnil,omitempty" name:"TriggerMode"`
 
 	// 当TriggerMode为partial，指定要迁移的触发器名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Triggers []*string `json:"Triggers,omitnil,omitempty" name:"Triggers"`
 
 	// 事件迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventMode *string `json:"EventMode,omitnil,omitempty" name:"EventMode"`
 
 	// 当EventMode为partial，指定要迁移的事件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Events []*string `json:"Events,omitnil,omitempty" name:"Events"`
 }
 
@@ -1749,7 +1721,6 @@ type DatabaseTableObject struct {
 
 type DdlOption struct {
 	// ddl类型，如Database,Table,View,Index等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DdlObject *string `json:"DdlObject,omitnil,omitempty" name:"DdlObject"`
 
 	// ddl具体值，对于Database可取值[Create,Drop,Alter]<br>对于Table可取值[Create,Drop,Alter,Truncate,Rename]<br/>对于View可取值[Create,Drop]<br/>对于Index可取值[Create,Drop]
@@ -1925,19 +1896,15 @@ func (r *DescribeCheckSyncJobResultRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCheckSyncJobResultResponseParams struct {
 	// 校验任务执行状态，如：notStarted(未开始)、running(校验中)、failed(校验任务失败)、success(任务成功)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 步骤总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepCount *uint64 `json:"StepCount,omitnil,omitempty" name:"StepCount"`
 
 	// 当前所在步骤
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepCur *uint64 `json:"StepCur,omitnil,omitempty" name:"StepCur"`
 
 	// 总体进度，范围为[0,100]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
 	// 步骤信息
@@ -2351,11 +2318,9 @@ func (r *DescribeMigrateDBInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMigrateDBInstancesResponseParams struct {
 	// 符合筛选条件的数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 实例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Instances []*MigrateDBItem `json:"Instances,omitnil,omitempty" name:"Instances"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2482,92 +2447,71 @@ func (r *DescribeMigrationDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMigrationDetailResponseParams struct {
 	// 数据迁移任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 数据迁移任务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
 	// 任务创建(提交)时间，格式为 yyyy-mm-dd hh:mm:ss
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 任务更新时间，格式为 yyyy-mm-dd hh:mm:ss
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 任务开始执行时间，格式为 yyyy-mm-dd hh:mm:ss
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 任务执行结束时间，格式为 yyyy-mm-dd hh:mm:ss
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 迁移任务简要错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BriefMsg *string `json:"BriefMsg,omitnil,omitempty" name:"BriefMsg"`
 
 	// 任务状态，取值为：created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行中)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)、
 	// pausing(暂停中)、
 	// manualPaused(已暂停)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 任务操作信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Action *MigrateAction `json:"Action,omitnil,omitempty" name:"Action"`
 
 	// 迁移执行过程信息，在校验阶段显示校验过程步骤信息，在迁移阶段会显示迁移步骤信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepInfo *MigrateDetailInfo `json:"StepInfo,omitnil,omitempty" name:"StepInfo"`
 
 	// 源实例信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcInfo *DBEndpointInfo `json:"SrcInfo,omitnil,omitempty" name:"SrcInfo"`
 
 	// 目标端信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstInfo *DBEndpointInfo `json:"DstInfo,omitnil,omitempty" name:"DstInfo"`
 
 	// 数据一致性校验结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompareTask *CompareTaskInfo `json:"CompareTask,omitnil,omitempty" name:"CompareTask"`
 
 	// 标签信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 运行模式，取值如：immediate(表示立即运行)、timed(表示定时运行)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
 
 	// 期待启动时间，当RunMode取值为timed时，此值必填，形如："2006-01-02 15:04:05"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpectRunTime *string `json:"ExpectRunTime,omitnil,omitempty" name:"ExpectRunTime"`
 
 	// 迁移选项，描述任务如何执行迁移等一系列配置信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MigrateOption *MigrateOption `json:"MigrateOption,omitnil,omitempty" name:"MigrateOption"`
 
 	// 校验任务运行详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckStepInfo *CheckStepInfo `json:"CheckStepInfo,omitnil,omitempty" name:"CheckStepInfo"`
 
 	// 描述计费相关的信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TradeInfo *TradeInfo `json:"TradeInfo,omitnil,omitempty" name:"TradeInfo"`
 
 	// 任务错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo []*ErrorInfoItem `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
 	// 全量导出可重入标识：enum::"yes"/"no"。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传
 	DumperResumeCtrl *string `json:"DumperResumeCtrl,omitnil,omitempty" name:"DumperResumeCtrl"`
 
 	// 任务的限速信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RateLimitOption *RateLimitOption `json:"RateLimitOption,omitnil,omitempty" name:"RateLimitOption"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2795,15 +2739,12 @@ type DescribeModifyCheckSyncJobResultResponseParams struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 校验的步骤总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepCount *uint64 `json:"StepCount,omitnil,omitempty" name:"StepCount"`
 
 	// 当前所在步骤
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepCur *uint64 `json:"StepCur,omitnil,omitempty" name:"StepCur"`
 
 	// 总体进度，范围为[0,100]	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
 	// 步骤详细信息
@@ -2932,7 +2873,6 @@ type DescribeSubscribeCheckJobResponseParams struct {
 	SubscribeId *string `json:"SubscribeId,omitnil,omitempty" name:"SubscribeId"`
 
 	// 失败或者报错提示，成功则提示success。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 任务运行状态，可能值为 running,failed,success
@@ -2948,7 +2888,6 @@ type DescribeSubscribeCheckJobResponseParams struct {
 	StepNow *uint64 `json:"StepNow,omitnil,omitempty" name:"StepNow"`
 
 	// 各个步骤运行状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Steps []*SubscribeCheckStepInfo `json:"Steps,omitnil,omitempty" name:"Steps"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3015,11 +2954,9 @@ type DescribeSubscribeDetailResponseParams struct {
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 订阅的云数据库实例ID，只有订阅云数据库该值才有意义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 订阅的云数据库实例状态，只有订阅云数据库该值才有意义。可能值为：running, isolated, offline
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
 	// 订阅任务计费状态，可能值为：正常normal, 隔离中isolating, 已隔离isolated, 下线中offlining, 按量转包年包月中 post2PrePayIng
@@ -3029,23 +2966,18 @@ type DescribeSubscribeDetailResponseParams struct {
 	SubsStatus *string `json:"SubsStatus,omitnil,omitempty" name:"SubsStatus"`
 
 	// 修改时间，时间格式如：Y-m-d h:m:s
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 创建时间，时间格式如：Y-m-d h:m:s
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 隔离时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
 
 	// 包年包月任务的到期时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 下线时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OfflineTime *string `json:"OfflineTime,omitnil,omitempty" name:"OfflineTime"`
 
 	// 付费方式，可能值为：0-包年包月，1-按量计费
@@ -3058,47 +2990,36 @@ type DescribeSubscribeDetailResponseParams struct {
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// Kafka topic
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// Kafka服务Broker地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Broker *string `json:"Broker,omitnil,omitempty" name:"Broker"`
 
 	// 数据订阅的类型，当 Product 不为 mongodb 时，可能值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 Product 为 mongodb 时，可能值为 all-全实例更新；database-订阅单库；collection-订阅单集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubscribeMode *string `json:"SubscribeMode,omitnil,omitempty" name:"SubscribeMode"`
 
 	// 订阅数据格式。如果为空则用的默认格式: mysql\cynosdbmysql\mariadb\percona\tdsqlpercona\tdpg是protobuf，mongo是json。当 DatabaseType 为 mysql和cynosdbmysql 时有三种可选协议：protobuf\avro\json。数据格式详情参考官网的消费demo文档
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 订阅的数据库表信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubscribeObjects []*SubscribeObject `json:"SubscribeObjects,omitnil,omitempty" name:"SubscribeObjects"`
 
 	// kafka配置信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KafkaConfig *SubscribeKafkaConfig `json:"KafkaConfig,omitnil,omitempty" name:"KafkaConfig"`
 
 	// 订阅内置kafka的版本信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
 
 	// 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
 	// 接入类型信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Endpoints []*EndpointItem `json:"Endpoints,omitnil,omitempty" name:"Endpoints"`
 
 	// mongo输出聚合设置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PipelineInfo []*PipelineInfo `json:"PipelineInfo,omitnil,omitempty" name:"PipelineInfo"`
 
 	// 标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 订阅任务报错信息
@@ -3108,7 +3029,6 @@ type DescribeSubscribeDetailResponseParams struct {
 	// 为业务添加的额外信息。参数名作key，参数值作value。
 	// mysql选填参数：ProcessXA-是否处理XA事务，为true处理，其他不处理。
 	// mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraAttr []*KeyValuePairOption `json:"ExtraAttr,omitnil,omitempty" name:"ExtraAttr"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3313,7 +3233,6 @@ type DescribeSubscribeReturnableResponseParams struct {
 	IsReturnable *bool `json:"IsReturnable,omitnil,omitempty" name:"IsReturnable"`
 
 	// 不支持退还的原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReturnFailMessage *string `json:"ReturnFailMessage,omitnil,omitempty" name:"ReturnFailMessage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3462,11 +3381,9 @@ func (r *DescribeSyncJobsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSyncJobsResponseParams struct {
 	// 任务数目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 任务详情数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobList []*SyncJobInfo `json:"JobList,omitnil,omitempty" name:"JobList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3687,7 +3604,6 @@ type DetailCheckItem struct {
 
 type DifferenceAdvancedObjectsDetail struct {
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 不一致详情
@@ -3814,19 +3730,15 @@ type DistributeRule struct {
 
 type DynamicOptions struct {
 	// 所要同步的DML和DDL的选项，Insert(插入操作)、Update(更新操作)、Delete(删除操作)、DDL(结构同步)，PartialDDL(自定义,和DdlOptions一起起作用 )；必填、dts会用该值覆盖原有的值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpTypes []*string `json:"OpTypes,omitnil,omitempty" name:"OpTypes"`
 
 	// DDL同步选项，具体描述要同步那些DDL; 当OpTypes取值PartialDDL时、字段不能为空；必填、dts会用该值覆盖原有的值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DdlOptions []*DdlOption `json:"DdlOptions,omitnil,omitempty" name:"DdlOptions"`
 
 	// 冲突处理选项，ReportError(报错)、Ignore(忽略)、Cover(覆盖)、ConditionCover(条件覆盖); 目前目标端为kafka的链路不支持修改该配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConflictHandleType *string `json:"ConflictHandleType,omitnil,omitempty" name:"ConflictHandleType"`
 
 	// 冲突处理的详细选项，如条件覆盖中的条件行和条件操作；不能部分更新该选项的内部字段；有更新时、需要全量更新该字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConflictHandleOption *ConflictHandleOption `json:"ConflictHandleOption,omitnil,omitempty" name:"ConflictHandleOption"`
 }
 
@@ -5477,7 +5389,6 @@ type MonitorInfo struct {
 
 type Objects struct {
 	// 同步对象类型 Partial(部分对象)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
 	// 同步对象，当 Mode 为 Partial 时，不为空
@@ -5485,11 +5396,9 @@ type Objects struct {
 	Databases []*Database `json:"Databases,omitnil,omitempty" name:"Databases"`
 
 	// 高级对象类型，如function、procedure。注意：如果要迁移同步高级对象，此配置中应该包含对应的高级对象类型。当需要同步高级对象时，初始化类型必须包含结构初始化类型，即任务的Options.InitType字段值为Structure或Full
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvancedObjects []*string `json:"AdvancedObjects,omitnil,omitempty" name:"AdvancedObjects"`
 
 	// OnlineDDL类型，冗余字段不做配置用途
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OnlineDDL *OnlineDDL `json:"OnlineDDL,omitnil,omitempty" name:"OnlineDDL"`
 }
 
@@ -5503,25 +5412,20 @@ type OffsetTimeMap struct {
 
 type OnlineDDL struct {
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type Options struct {
 	// 同步初始化选项，Data(全量数据初始化)、Structure(结构初始化)、Full(全量数据且结构初始化，默认)、None(仅增量)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InitType *string `json:"InitType,omitnil,omitempty" name:"InitType"`
 
 	// 同名表的处理，ReportErrorAfterCheck(前置校验并报错，默认)、ExecuteAfterIgnore(忽略并继续执行)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DealOfExistSameTable *string `json:"DealOfExistSameTable,omitnil,omitempty" name:"DealOfExistSameTable"`
 
 	// 冲突处理选项，ReportError(报错，默认为该值)、Ignore(忽略)、Cover(覆盖)、ConditionCover(条件覆盖)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConflictHandleType *string `json:"ConflictHandleType,omitnil,omitempty" name:"ConflictHandleType"`
 
 	// 是否添加附加列
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddAdditionalColumn *bool `json:"AddAdditionalColumn,omitnil,omitempty" name:"AddAdditionalColumn"`
 
 	// 所要同步的DML和DDL的选项，Insert(插入操作)、Update(更新操作)、Delete(删除操作)、DDL(结构同步)， PartialDDL(自定义,和DdlOptions一起配合使用)。注意，这里至少需要包含DML中的一种。
@@ -5529,7 +5433,6 @@ type Options struct {
 	OpTypes []*string `json:"OpTypes,omitnil,omitempty" name:"OpTypes"`
 
 	// 冲突处理的详细选项，如条件覆盖中的条件行和条件操作
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConflictHandleOption *ConflictHandleOption `json:"ConflictHandleOption,omitnil,omitempty" name:"ConflictHandleOption"`
 
 	// DDL同步选项，具体描述要同步那些DDL
@@ -5537,27 +5440,21 @@ type Options struct {
 	DdlOptions []*DdlOption `json:"DdlOptions,omitnil,omitempty" name:"DdlOptions"`
 
 	// kafka同步选项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KafkaOption *KafkaOption `json:"KafkaOption,omitnil,omitempty" name:"KafkaOption"`
 
 	// 任务限速信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RateLimitOption *RateLimitOption `json:"RateLimitOption,omitnil,omitempty" name:"RateLimitOption"`
 
 	// 自动重试的时间窗口设置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitnil,omitempty" name:"AutoRetryTimeRangeMinutes"`
 
 	// 同步到kafka链路指定位点。目前只支持时间格式：2023-12-20T19:24:23+08:00。如果没有指定位点，为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartPosition *string `json:"StartPosition,omitnil,omitempty" name:"StartPosition"`
 
 	// 同步到kafka链路是否过滤掉begin和commit消息。目前仅mysql2kafka链路支持
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilterBeginCommit *bool `json:"FilterBeginCommit,omitnil,omitempty" name:"FilterBeginCommit"`
 
 	// 同步到kafka链路是否过滤掉checkpoint消息。目前仅mysql2kafka链路支持
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilterCheckpoint *bool `json:"FilterCheckpoint,omitnil,omitempty" name:"FilterCheckpoint"`
 }
 
@@ -6308,7 +6205,6 @@ func (r *SkipCheckItemRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SkipCheckItemResponseParams struct {
 	// 跳过的提示信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6724,23 +6620,18 @@ type StepDetailInfo struct {
 
 type StepInfo struct {
 	// 步骤编号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepNo *uint64 `json:"StepNo,omitnil,omitempty" name:"StepNo"`
 
 	// 步骤名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepName *string `json:"StepName,omitnil,omitempty" name:"StepName"`
 
 	// 步骤标号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepId *string `json:"StepId,omitnil,omitempty" name:"StepId"`
 
 	// 当前步骤状态,可能返回有 notStarted(未开始)、running(校验中)、failed(校验任务失败)、finished(完成)、skipped(跳过)、paused(暂停)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 步骤开始时间，可能为空
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 错误信息
@@ -6752,7 +6643,6 @@ type StepInfo struct {
 	Warnings []*StepTip `json:"Warnings,omitnil,omitempty" name:"Warnings"`
 
 	// 当前步骤进度，范围为[0-100]，若为-1表示当前步骤不支持查看进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 }
 
@@ -7105,31 +6995,24 @@ type SyncDBEndpointInfos struct {
 
 type SyncDetailInfo struct {
 	// 总步骤数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepAll *uint64 `json:"StepAll,omitnil,omitempty" name:"StepAll"`
 
 	// 当前步骤
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepNow *uint64 `json:"StepNow,omitnil,omitempty" name:"StepNow"`
 
 	// 总体进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
 	// 当前步骤进度，范围为[0-100]，若为-1表示当前步骤不支持查看进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentStepProgress *int64 `json:"CurrentStepProgress,omitnil,omitempty" name:"CurrentStepProgress"`
 
 	// 同步两端数据量差距
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MasterSlaveDistance *int64 `json:"MasterSlaveDistance,omitnil,omitempty" name:"MasterSlaveDistance"`
 
 	// 同步两端时间差距
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecondsBehindMaster *int64 `json:"SecondsBehindMaster,omitnil,omitempty" name:"SecondsBehindMaster"`
 
 	// 总体描述信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 详细步骤信息
@@ -7137,187 +7020,142 @@ type SyncDetailInfo struct {
 	StepInfos []*StepInfo `json:"StepInfos,omitnil,omitempty" name:"StepInfos"`
 
 	// 不能发起一致性校验的原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CauseOfCompareDisable *string `json:"CauseOfCompareDisable,omitnil,omitempty" name:"CauseOfCompareDisable"`
 
 	// 任务的错误和解决方案信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrInfo *ErrInfo `json:"ErrInfo,omitnil,omitempty" name:"ErrInfo"`
 }
 
 type SyncJobInfo struct {
 	// 同步任务id，如：sync-btso140
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 同步任务名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
 	// 付款方式，PostPay(按量付费)、PrePay(包年包月)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 运行模式，Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
 
 	// 期待运行时间，格式为 yyyy-mm-dd hh:mm:ss
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpectRunTime *string `json:"ExpectRunTime,omitnil,omitempty" name:"ExpectRunTime"`
 
 	// 支持的所有操作
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllActions []*string `json:"AllActions,omitnil,omitempty" name:"AllActions"`
 
 	// 当前状态能进行的操作
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Actions []*string `json:"Actions,omitnil,omitempty" name:"Actions"`
 
 	// 同步选项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Options *Options `json:"Options,omitnil,omitempty" name:"Options"`
 
 	// 同步库表对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Objects *Objects `json:"Objects,omitnil,omitempty" name:"Objects"`
 
 	// 任务规格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
 
 	// 过期时间，格式为 yyyy-mm-dd hh:mm:ss
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 源端地域，如：ap-guangzhou等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcRegion *string `json:"SrcRegion,omitnil,omitempty" name:"SrcRegion"`
 
 	// 源端数据库类型，mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcDatabaseType *string `json:"SrcDatabaseType,omitnil,omitempty" name:"SrcDatabaseType"`
 
 	// 源端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcAccessType *string `json:"SrcAccessType,omitnil,omitempty" name:"SrcAccessType"`
 
 	// 源端信息，单节点数据库使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcInfo *Endpoint `json:"SrcInfo,omitnil,omitempty" name:"SrcInfo"`
 
 	// 枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcNodeType *string `json:"SrcNodeType,omitnil,omitempty" name:"SrcNodeType"`
 
 	// 源端信息，多节点数据库使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcInfos *SyncDBEndpointInfos `json:"SrcInfos,omitnil,omitempty" name:"SrcInfos"`
 
 	// 目标端地域，如：ap-guangzhou等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstRegion *string `json:"DstRegion,omitnil,omitempty" name:"DstRegion"`
 
 	// 目标端数据库类型，mysql,cynosdbmysql,tdapg,tdpg,tdsqlmysql等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstDatabaseType *string `json:"DstDatabaseType,omitnil,omitempty" name:"DstDatabaseType"`
 
 	// 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstAccessType *string `json:"DstAccessType,omitnil,omitempty" name:"DstAccessType"`
 
 	// 目标端信息，单节点数据库使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstInfo *Endpoint `json:"DstInfo,omitnil,omitempty" name:"DstInfo"`
 
 	// 枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstNodeType *string `json:"DstNodeType,omitnil,omitempty" name:"DstNodeType"`
 
 	// 目标端信息，多节点数据库使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstInfos *SyncDBEndpointInfos `json:"DstInfos,omitnil,omitempty" name:"DstInfos"`
 
 	// 创建时间，格式为 yyyy-mm-dd hh:mm:ss
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 开始时间，格式为 yyyy-mm-dd hh:mm:ss
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 任务状态，UnInitialized(未初始化)、Initialized(已初始化)、Checking(校验中)、CheckPass(校验通过)、CheckNotPass(校验不通过)、ReadyRunning(准备运行)、Running(运行中)、Pausing(暂停中)、Paused(已暂停)、Stopping(停止中)、Stopped(已结束)、ResumableErr(任务错误)、Resuming(恢复中)、Failed(失败)、Released(已释放)、Resetting(重置中)、Unknown(未知)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 结束时间，格式为 yyyy-mm-dd hh:mm:ss
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 标签相关信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 同步任务运行步骤信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Detail *SyncDetailInfo `json:"Detail,omitnil,omitempty" name:"Detail"`
 
 	// 用于计费的状态，可能取值有：Normal(正常状态)、Resizing(变配中)、Renewing(续费中)、Isolating(隔离中)、Isolated(已隔离)、Offlining(下线中)、Offlined(已下线)、NotBilled(未计费)、Recovering(解隔离)、PostPay2Prepaying(按量计费转包年包月中)、PrePay2Postpaying(包年包月转按量计费中)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TradeStatus *string `json:"TradeStatus,omitnil,omitempty" name:"TradeStatus"`
 
 	// 同步链路规格，如micro,small,medium,large
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceClass *string `json:"InstanceClass,omitnil,omitempty" name:"InstanceClass"`
 
 	// 自动续费标识，当PayMode值为PrePay则此项配置有意义，取值为：1（表示自动续费）、0（不自动续费）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenew *uint64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
 	// 下线时间，格式为 yyyy-mm-dd hh:mm:ss
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OfflineTime *string `json:"OfflineTime,omitnil,omitempty" name:"OfflineTime"`
 
 	// 动态修改对象，修改任务的状态等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OptObjStatus *string `json:"OptObjStatus,omitnil,omitempty" name:"OptObjStatus"`
 
 	// 自动重试时间段设置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitnil,omitempty" name:"AutoRetryTimeRangeMinutes"`
 
 	// 全量导出可重入标识：enum::"yes"/"no"。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DumperResumeCtrl *string `json:"DumperResumeCtrl,omitnil,omitempty" name:"DumperResumeCtrl"`
 }
 
 type Table struct {
 	// 表名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
 
 	// 新表名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewTableName *string `json:"NewTableName,omitnil,omitempty" name:"NewTableName"`
 
 	// 过滤条件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilterCondition *string `json:"FilterCondition,omitnil,omitempty" name:"FilterCondition"`
 
 	// 是否同步表中所有列，All：当前表下的所有列,Partial(ModifySyncJobConfig接口里的对应字段ColumnMode暂不支持Partial)：当前表下的部分列，通过填充Columns字段详细表信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColumnMode *string `json:"ColumnMode,omitnil,omitempty" name:"ColumnMode"`
 
 	// 同步的列信息，当ColumnMode为Partial时，必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Columns []*Column `json:"Columns,omitnil,omitempty" name:"Columns"`
 
 	// 同步临时表，注意此配置与NewTableName互斥，只能使用其中一种。当配置的同步对象为表级别且TableEditMode为pt时此项有意义，针对pt-osc等工具在同步过程中产生的临时表进行同步，需要提前将可能的临时表配置在这里，否则不会同步任何临时表。示例，如要对t1进行pt-osc操作，此项配置应该为["\_t1\_new","\_t1\_old"]；如要对t1进行gh-ost操作，此项配置应该为["\_t1\_ghc","\_t1\_gho","\_t1\_del"]，pt-osc与gh-ost产生的临时表可同时配置。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmpTables []*string `json:"TmpTables,omitnil,omitempty" name:"TmpTables"`
 
 	// 编辑表类型，rename(表映射)，pt(同步附加表)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableEditMode *string `json:"TableEditMode,omitnil,omitempty" name:"TableEditMode"`
 }
 
@@ -7412,11 +7250,9 @@ type TradeInfo struct {
 
 type View struct {
 	// view名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
 
 	// 预留字段、目前暂时不支持view的重命名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewViewName *string `json:"NewViewName,omitnil,omitempty" name:"NewViewName"`
 }
 

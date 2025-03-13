@@ -775,7 +775,6 @@ type DescribePolicy struct {
 	TaskPolicyRule *string `json:"TaskPolicyRule,omitnil,omitempty" name:"TaskPolicyRule"`
 
 	// 护栏策略生效处理策略 1:顺序执行，2:暂停
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskPolicyDealType *int64 `json:"TaskPolicyDealType,omitnil,omitempty" name:"TaskPolicyDealType"`
 }
 
@@ -1583,6 +1582,9 @@ type ObjectType struct {
 
 	// 1.接入层 2.逻辑层 3. 数据层
 	ArchLayer *int64 `json:"ArchLayer,omitnil,omitempty" name:"ArchLayer"`
+
+	// 是否支持演练生图
+	IsArchSvg *bool `json:"IsArchSvg,omitnil,omitempty" name:"IsArchSvg"`
 }
 
 type ObjectTypeConfig struct {
@@ -1808,6 +1810,9 @@ type Task struct {
 	// region信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskRegionName *string `json:"TaskRegionName,omitnil,omitempty" name:"TaskRegionName"`
+
+	// 架构ID
+	TaskArchId *string `json:"TaskArchId,omitnil,omitempty" name:"TaskArchId"`
 }
 
 type TaskConfig struct {
@@ -2176,7 +2181,6 @@ type TaskReportInfo struct {
 	Expired *bool `json:"Expired,omitnil,omitempty" name:"Expired"`
 
 	// 演练报告cos文件地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosUrl *string `json:"CosUrl,omitnil,omitempty" name:"CosUrl"`
 
 	// 演练报告导出日志
@@ -2190,7 +2194,6 @@ type TaskReportInfo struct {
 	ArchiveTime *string `json:"ArchiveTime,omitnil,omitempty" name:"ArchiveTime"`
 
 	// 归档ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ArchiveUuid *string `json:"ArchiveUuid,omitnil,omitempty" name:"ArchiveUuid"`
 }
 

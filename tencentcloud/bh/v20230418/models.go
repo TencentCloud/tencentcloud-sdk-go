@@ -31,6 +31,157 @@ type ACTemplate struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
+// Predefined struct for user
+type AccessDevicesRequestParams struct {
+	// 资源id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 账号
+	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
+
+	// 运维端登录账号
+	LoginAccount *string `json:"LoginAccount,omitnil,omitempty" name:"LoginAccount"`
+
+	// 运维端登录密码
+	LoginPassword *string `json:"LoginPassword,omitnil,omitempty" name:"LoginPassword"`
+
+	// 密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 私钥
+	PrivateKey *string `json:"PrivateKey,omitnil,omitempty" name:"PrivateKey"`
+
+	// 私钥密码
+	PrivateKeyPassword *string `json:"PrivateKeyPassword,omitnil,omitempty" name:"PrivateKeyPassword"`
+
+	// 客户端工具
+	Exe *string `json:"Exe,omitnil,omitempty" name:"Exe"`
+
+	// RDP挂载盘符驱动（mstsc支持）
+	Drivers []*string `json:"Drivers,omitnil,omitempty" name:"Drivers"`
+
+	// 窗口宽度（RDP支持）
+	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 窗口高度（RDP支持）
+	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
+
+	// 是否内网访问（默认不是）
+	IntranetAccess *bool `json:"IntranetAccess,omitnil,omitempty" name:"IntranetAccess"`
+}
+
+type AccessDevicesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 账号
+	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
+
+	// 运维端登录账号
+	LoginAccount *string `json:"LoginAccount,omitnil,omitempty" name:"LoginAccount"`
+
+	// 运维端登录密码
+	LoginPassword *string `json:"LoginPassword,omitnil,omitempty" name:"LoginPassword"`
+
+	// 密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 私钥
+	PrivateKey *string `json:"PrivateKey,omitnil,omitempty" name:"PrivateKey"`
+
+	// 私钥密码
+	PrivateKeyPassword *string `json:"PrivateKeyPassword,omitnil,omitempty" name:"PrivateKeyPassword"`
+
+	// 客户端工具
+	Exe *string `json:"Exe,omitnil,omitempty" name:"Exe"`
+
+	// RDP挂载盘符驱动（mstsc支持）
+	Drivers []*string `json:"Drivers,omitnil,omitempty" name:"Drivers"`
+
+	// 窗口宽度（RDP支持）
+	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 窗口高度（RDP支持）
+	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
+
+	// 是否内网访问（默认不是）
+	IntranetAccess *bool `json:"IntranetAccess,omitnil,omitempty" name:"IntranetAccess"`
+}
+
+func (r *AccessDevicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AccessDevicesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Account")
+	delete(f, "LoginAccount")
+	delete(f, "LoginPassword")
+	delete(f, "Password")
+	delete(f, "PrivateKey")
+	delete(f, "PrivateKeyPassword")
+	delete(f, "Exe")
+	delete(f, "Drivers")
+	delete(f, "Width")
+	delete(f, "Height")
+	delete(f, "IntranetAccess")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AccessDevicesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AccessDevicesResponseParams struct {
+	// 认证信息
+	AccessInfo *AccessInfo `json:"AccessInfo,omitnil,omitempty" name:"AccessInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AccessDevicesResponse struct {
+	*tchttp.BaseResponse
+	Response *AccessDevicesResponseParams `json:"Response"`
+}
+
+func (r *AccessDevicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AccessDevicesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type AccessInfo struct {
+	// 地址
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 端口
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 账号
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// 密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 唤起链接｜wss链接
+	AccessURL *string `json:"AccessURL,omitnil,omitempty" name:"AccessURL"`
+}
+
 type Acl struct {
 	// 访问权限ID
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`

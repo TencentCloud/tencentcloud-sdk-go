@@ -375,7 +375,6 @@ type AutoScalingGroup struct {
 	CapacityRebalance *bool `json:"CapacityRebalance,omitnil,omitempty" name:"CapacityRebalance"`
 
 	// 实例名称序号相关设置。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceNameIndexSettings *InstanceNameIndexSettings `json:"InstanceNameIndexSettings,omitnil,omitempty" name:"InstanceNameIndexSettings"`
 }
 
@@ -1812,11 +1811,9 @@ type DataDisk struct {
 	// <li>CLOUD_HSSD：增强型SSD云硬盘</li>
 	// <li>CLOUD_TSSD：极速型SSD云硬盘</li>
 	// 默认取值与系统盘类型（SystemDisk.DiskType）保持一致。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
 	// 数据盘快照 ID，类似 `snap-l8psqwnt`。
@@ -3572,7 +3569,6 @@ func (r *ExitStandbyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ExitStandbyResponseParams struct {
 	// 伸缩活动ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActivityId *string `json:"ActivityId,omitnil,omitempty" name:"ActivityId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3683,26 +3679,26 @@ type Instance struct {
 	// 启动配置名称
 	LaunchConfigurationName *string `json:"LaunchConfigurationName,omitnil,omitempty" name:"LaunchConfigurationName"`
 
-	// 生命周期状态，取值如下：<br>
-	// <li>IN_SERVICE：运行中
-	// <li>CREATING：创建中
-	// <li>CREATION_FAILED：创建失败
-	// <li>TERMINATING：中止中
-	// <li>TERMINATION_FAILED：中止失败
-	// <li>ATTACHING：绑定中
-	// <li>ATTACH_FAILED：绑定失败
-	// <li>DETACHING：解绑中
-	// <li>DETACH_FAILED：解绑失败
-	// <li>ATTACHING_LB：绑定LB中
-	// <li>DETACHING_LB：解绑LB中
-	// <li>MODIFYING_LB：修改LB中
-	// <li>STARTING：开机中
-	// <li>START_FAILED：开机失败
-	// <li>STOPPING：关机中
-	// <li>STOP_FAILED：关机失败
-	// <li>STOPPED：已关机
-	// <li>IN_LAUNCHING_HOOK：扩容生命周期挂钩中
-	// <li>IN_TERMINATING_HOOK：缩容生命周期挂钩中
+	// 生命周期状态，取值如下：
+	// <li>IN_SERVICE：运行中</li>
+	// <li>CREATING：创建中</li>
+	// <li>CREATION_FAILED：创建失败</li>
+	// <li>TERMINATING：中止中</li>
+	// <li>TERMINATION_FAILED：中止失败</li>
+	// <li>ATTACHING：绑定中</li>
+	// <li>ATTACH_FAILED：绑定失败</li>
+	// <li>DETACHING：解绑中</li>
+	// <li>DETACH_FAILED：解绑失败</li>
+	// <li>ATTACHING_LB：绑定LB中</li>
+	// <li>DETACHING_LB：解绑LB中</li>
+	// <li>MODIFYING_LB：修改LB中</li>
+	// <li>STARTING：开机中</li>
+	// <li>START_FAILED：开机失败</li>
+	// <li>STOPPING：关机中</li>
+	// <li>STOP_FAILED：关机失败</li>
+	// <li>STOPPED：已关机</li>
+	// <li>IN_LAUNCHING_HOOK：扩容生命周期挂钩中</li>
+	// <li>IN_TERMINATING_HOOK：缩容生命周期挂钩中</li>
 	LifeCycleState *string `json:"LifeCycleState,omitnil,omitempty" name:"LifeCycleState"`
 
 	// 健康状态，取值包括HEALTHY和UNHEALTHY
@@ -3730,14 +3726,13 @@ type Instance struct {
 	AutoScalingGroupName *string `json:"AutoScalingGroupName,omitnil,omitempty" name:"AutoScalingGroupName"`
 
 	// 预热状态，取值如下：
-	// <li>WAITING_ENTER_WARMUP：等待进入预热
-	// <li>NO_NEED_WARMUP：无需预热
-	// <li>IN_WARMUP：预热中
-	// <li>AFTER_WARMUP：完成预热
+	// <li>WAITING_ENTER_WARMUP：等待进入预热</li>
+	// <li>NO_NEED_WARMUP：无需预热</li>
+	// <li>IN_WARMUP：预热中</li>
+	// <li>AFTER_WARMUP：完成预热</li>
 	WarmupStatus *string `json:"WarmupStatus,omitnil,omitempty" name:"WarmupStatus"`
 
 	// 置放群组id，仅支持指定一个。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitnil,omitempty" name:"DisasterRecoverGroupIds"`
 }
 
@@ -3754,7 +3749,6 @@ type InstanceMarketOptionsRequest struct {
 	SpotOptions *SpotMarketOptions `json:"SpotOptions,omitnil,omitempty" name:"SpotOptions"`
 
 	// 市场选项类型，当前只支持取值：spot
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarketType *string `json:"MarketType,omitnil,omitempty" name:"MarketType"`
 }
 
@@ -3814,27 +3808,21 @@ type InternetAccessible struct {
 
 type InvocationResult struct {
 	// 实例ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 执行活动ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InvocationId *string `json:"InvocationId,omitnil,omitempty" name:"InvocationId"`
 
 	// 执行任务ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InvocationTaskId *string `json:"InvocationTaskId,omitnil,omitempty" name:"InvocationTaskId"`
 
 	// 命令ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CommandId *string `json:"CommandId,omitnil,omitempty" name:"CommandId"`
 
 	// 执行任务状态。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
 	// 执行异常信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
 }
 
@@ -3899,7 +3887,6 @@ type LaunchConfiguration struct {
 	InstanceTags []*InstanceTag `json:"InstanceTags,omitnil,omitempty" name:"InstanceTags"`
 
 	// 标签列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 版本号。
@@ -3937,7 +3924,6 @@ type LaunchConfiguration struct {
 	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitnil,omitempty" name:"DisasterRecoverGroupIds"`
 
 	// 镜像族名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
 
 	// 本地专用集群 ID。
@@ -3983,14 +3969,12 @@ type LifecycleActionResultInfo struct {
 
 type LifecycleCommand struct {
 	// 远程命令ID。若选择执行命令，则此项必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CommandId *string `json:"CommandId,omitnil,omitempty" name:"CommandId"`
 
 	// 自定义参数。字段类型为 json encoded string。如：{"varA": "222"}。
 	// key为自定义参数名称，value为该参数的默认取值。kv均为字符串型。
 	// 如果未提供该参数取值，将使用 Command 的 DefaultParameters 进行替换。
 	// 自定义参数最多20个。自定义参数名称需符合以下规范：字符数目上限64，可选范围【a-zA-Z0-9-_】。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Parameters *string `json:"Parameters,omitnil,omitempty" name:"Parameters"`
 }
 
@@ -4026,7 +4010,6 @@ type LifecycleHook struct {
 	LifecycleTransitionType *string `json:"LifecycleTransitionType,omitnil,omitempty" name:"LifecycleTransitionType"`
 
 	// 远程命令执行对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LifecycleCommand *LifecycleCommand `json:"LifecycleCommand,omitnil,omitempty" name:"LifecycleCommand"`
 }
 
@@ -5312,7 +5295,6 @@ type RefreshActivity struct {
 	RefreshActivityId *string `json:"RefreshActivityId,omitnil,omitempty" name:"RefreshActivityId"`
 
 	// 原始刷新活动ID，仅在回滚刷新活动中存在。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginRefreshActivityId *string `json:"OriginRefreshActivityId,omitnil,omitempty" name:"OriginRefreshActivityId"`
 
 	// 刷新批次信息列表。
@@ -5341,7 +5323,6 @@ type RefreshActivity struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 当前刷新批次序号。例如，2 表示当前活动正在刷新第二批次的实例。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentRefreshBatchNum *uint64 `json:"CurrentRefreshBatchNum,omitnil,omitempty" name:"CurrentRefreshBatchNum"`
 
 	// 刷新活动开始时间。
@@ -5353,7 +5334,6 @@ type RefreshActivity struct {
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 刷新活动创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 }
 
@@ -5380,22 +5360,19 @@ type RefreshBatchRelatedInstance struct {
 	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 刷新实例状态。如果在刷新时实例被移出或销毁，状态会更新为 NOT_FOUND。取值如下：<br><li>WAITING：待刷新</li><li>INIT：初始化中</li><li>RUNNING：刷新中</li><li>FAILED：刷新失败</li><li>CANCELLED：已取消</li><li>SUCCESSFUL：刷新成功</li><li>NOT_FOUND：实例不存在
+	// 刷新实例状态。如果在刷新时实例被移出或销毁，状态会更新为 NOT_FOUND。取值如下：<li>WAITING：待刷新</li><li>INIT：初始化中</li><li>RUNNING：刷新中</li><li>FAILED：刷新失败</li><li>CANCELLED：已取消</li><li>SUCCESSFUL：刷新成功</li><li>NOT_FOUND：实例不存在</li>
 	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
 	// 实例刷新中最近一次伸缩活动 ID，可通过 DescribeAutoScalingActivities 接口查询。
 	// 需注意伸缩活动与实例刷新活动不同，一次实例刷新活动可能包括多次伸缩活动。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastActivityId *string `json:"LastActivityId,omitnil,omitempty" name:"LastActivityId"`
 
 	// 实例刷新状态信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceStatusMessage *string `json:"InstanceStatusMessage,omitnil,omitempty" name:"InstanceStatusMessage"`
 }
 
 type RefreshSettings struct {
 	// 滚动更新设置参数。RefreshMode 为滚动更新该参数必须填写。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RollingUpdateSettings *RollingUpdateSettings `json:"RollingUpdateSettings,omitnil,omitempty" name:"RollingUpdateSettings"`
 
 	// 实例后端服务健康状态检查，默认为 FALSE。仅针对绑定应用型负载均衡器的伸缩组生效，开启该检查后，如刷新后实例未通过检查，负载均衡器端口权重始终为 0，且标记为刷新失败。取值范围如下：<li>TRUE：开启检查</li><li>FALSE：不开启检查</li>
@@ -5656,7 +5633,6 @@ type RunMonitorServiceEnabled struct {
 	// <li>TRUE：表示开启云监控服务</li>
 	// <li>FALSE：表示不开启云监控服务</li>
 	// 默认取值：TRUE。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 }
 
@@ -5665,7 +5641,6 @@ type RunSecurityServiceEnabled struct {
 	// <li>TRUE：表示开启云安全服务</li>
 	// <li>FALSE：表示不开启云安全服务</li>
 	// 默认取值：TRUE。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 }
 
@@ -5902,7 +5877,6 @@ type ServiceSettings struct {
 	// RECREATE：重建实例替代原有不健康实例；
 	// RESET：对原有不健康实例进行重装系统操作，可保持数据盘、内网IP、实例id等信息不发生变化，实例登录设置、主机名、增强服务和 UserData 与当前启动配置保持一致。
 	// 默认取值：RECREATE
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplaceMode *string `json:"ReplaceMode,omitnil,omitempty" name:"ReplaceMode"`
 
 	// 自动更新实例标签。默认取值为 False，配置后如伸缩组标签发生更新，会同步更新（同步更新仅支持新增、修改标签，暂不支持删除标签）伸缩组内运行中状态实例的标签，同步更新非立即生效，存在一定延迟。
@@ -5987,7 +5961,6 @@ type SpotMarketOptions struct {
 	MaxPrice *string `json:"MaxPrice,omitnil,omitempty" name:"MaxPrice"`
 
 	// 竞价请求类型，当前仅支持类型：one-time，默认值为one-time
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpotInstanceType *string `json:"SpotInstanceType,omitnil,omitempty" name:"SpotInstanceType"`
 }
 
@@ -6294,12 +6267,16 @@ func (r *StopInstanceRefreshResponse) FromJsonString(s string) error {
 }
 
 type SystemDisk struct {
-	// 系统盘类型。系统盘类型限制详见[云硬盘类型](https://cloud.tencent.com/document/product/362/2353)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><br>默认取值：CLOUD_PREMIUM。
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 系统盘类型。系统盘类型限制详见[云硬盘类型](https://cloud.tencent.com/document/product/362/2353)。取值范围
+	// <li>LOCAL_BASIC：本地硬盘</li>
+	// <li>LOCAL_SSD：本地SSD硬盘</li>
+	// <li>CLOUD_BASIC：普通云硬盘</li>
+	// <li>CLOUD_PREMIUM：高性能云硬盘</li>
+	// <li>CLOUD_SSD：SSD云硬盘</li>
+	// <li>默认取值：CLOUD_PREMIUM。</li>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// 系统盘大小，单位：GB。默认值为 50
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 }
 
@@ -6311,7 +6288,6 @@ type Tag struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 标签绑定的资源类型，当前支持类型："auto-scaling-group", "launch-configuration"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 

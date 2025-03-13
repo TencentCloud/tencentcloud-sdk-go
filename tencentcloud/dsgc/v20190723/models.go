@@ -3674,9 +3674,13 @@ type DescribeBindDBListRequestParams struct {
 	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
 
 	// 数据源类型
+	//
+	// Deprecated: DataSourceType is deprecated.
 	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
 
 	// 数据源ID
+	//
+	// Deprecated: DataSourceId is deprecated.
 	DataSourceId *string `json:"DataSourceId,omitnil,omitempty" name:"DataSourceId"`
 }
 

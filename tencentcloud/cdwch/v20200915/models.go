@@ -1990,6 +1990,9 @@ type InstanceInfo struct {
 	// 绑定的安全组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindSGs []*string `json:"BindSGs,omitnil,omitempty" name:"BindSGs"`
+
+	// 是否开启公网clb
+	HasPublicCloudClb *bool `json:"HasPublicCloudClb,omitnil,omitempty" name:"HasPublicCloudClb"`
 }
 
 type InstanceNode struct {

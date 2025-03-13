@@ -23,17 +23,8 @@ const (
 	// 图片美颜失败，请更换图片。
 	FAILEDOPERATION_BEAUTIFYFAILED = "FailedOperation.BeautifyFailed"
 
-	// 撤销任务无法被成功执行, 请重试。
-	FAILEDOPERATION_CANCELJOBFAILURE = "FailedOperation.CancelJobFailure"
-
 	// 未检测到人脸。
 	FAILEDOPERATION_DETECTNOFACE = "FailedOperation.DetectNoFace"
-
-	// 操作太频繁，触发频控。
-	FAILEDOPERATION_EFFECTFREQCTRL = "FailedOperation.EffectFreqCtrl"
-
-	// 特效服务内部错误。
-	FAILEDOPERATION_EFFECTINNERERROR = "FailedOperation.EffectInnerError"
 
 	// 人脸因太小被过滤，建议人脸分辨率不小于34*34。
 	FAILEDOPERATION_FACESIZETOOSMALL = "FailedOperation.FaceSizeTooSmall"
@@ -67,18 +58,6 @@ const (
 
 	// 服务内部错误，请重试。
 	FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
-
-	// 内部错误。
-	FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
-
-	// 任务冲突。
-	FAILEDOPERATION_JOBCONFLICT = "FailedOperation.JobConflict"
-
-	// 任务已撤销，请重新提交任务。
-	FAILEDOPERATION_JOBHASBEENCANCELED = "FailedOperation.JobHasBeenCanceled"
-
-	// 任务已停止处理，请重新提交任务。
-	FAILEDOPERATION_JOBSTOPPROCESSING = "FailedOperation.JobStopProcessing"
 
 	// 素材超过数量限制。
 	FAILEDOPERATION_MODELVALUEEXCEED = "FailedOperation.ModelValueExceed"

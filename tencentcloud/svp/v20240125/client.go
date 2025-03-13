@@ -88,6 +88,57 @@ func (c *Client) CreateSavingPlanOrderWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeSavingPlanCoverageRequest() (request *DescribeSavingPlanCoverageRequest) {
+    request = &DescribeSavingPlanCoverageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("svp", APIVersion, "DescribeSavingPlanCoverage")
+    
+    
+    return
+}
+
+func NewDescribeSavingPlanCoverageResponse() (response *DescribeSavingPlanCoverageResponse) {
+    response = &DescribeSavingPlanCoverageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSavingPlanCoverage
+// 查询当前用户节省计划覆盖率明细数据，如无特别说明，金额单位均为元（国内站）或者美元（国际站）。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) DescribeSavingPlanCoverage(request *DescribeSavingPlanCoverageRequest) (response *DescribeSavingPlanCoverageResponse, err error) {
+    return c.DescribeSavingPlanCoverageWithContext(context.Background(), request)
+}
+
+// DescribeSavingPlanCoverage
+// 查询当前用户节省计划覆盖率明细数据，如无特别说明，金额单位均为元（国内站）或者美元（国际站）。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) DescribeSavingPlanCoverageWithContext(ctx context.Context, request *DescribeSavingPlanCoverageRequest) (response *DescribeSavingPlanCoverageResponse, err error) {
+    if request == nil {
+        request = NewDescribeSavingPlanCoverageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSavingPlanCoverage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSavingPlanCoverageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSavingPlanDeductRequest() (request *DescribeSavingPlanDeductRequest) {
     request = &DescribeSavingPlanDeductRequest{
         BaseRequest: &tchttp.BaseRequest{},

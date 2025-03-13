@@ -45,6 +45,55 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAccessDevicesRequest() (request *AccessDevicesRequest) {
+    request = &AccessDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "AccessDevices")
+    
+    
+    return
+}
+
+func NewAccessDevicesResponse() (response *AccessDevicesResponse) {
+    response = &AccessDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AccessDevices
+// 外部客户访问资产
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) AccessDevices(request *AccessDevicesRequest) (response *AccessDevicesResponse, err error) {
+    return c.AccessDevicesWithContext(context.Background(), request)
+}
+
+// AccessDevices
+// 外部客户访问资产
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) AccessDevicesWithContext(ctx context.Context, request *AccessDevicesRequest) (response *AccessDevicesResponse, err error) {
+    if request == nil {
+        request = NewAccessDevicesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AccessDevices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAccessDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddDeviceGroupMembersRequest() (request *AddDeviceGroupMembersRequest) {
     request = &AddDeviceGroupMembersRequest{
         BaseRequest: &tchttp.BaseRequest{},

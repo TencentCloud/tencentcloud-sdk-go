@@ -1951,6 +1951,60 @@ func (r *DeleteUserResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteWhiteBoardSnapshotRequestParams struct {
+	// 房间ID
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+type DeleteWhiteBoardSnapshotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 房间ID
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+func (r *DeleteWhiteBoardSnapshotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWhiteBoardSnapshotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteWhiteBoardSnapshotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteWhiteBoardSnapshotResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteWhiteBoardSnapshotResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteWhiteBoardSnapshotResponseParams `json:"Response"`
+}
+
+func (r *DeleteWhiteBoardSnapshotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWhiteBoardSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAnswerListRequestParams struct {
 	// 问题ID
 	QuestionId *string `json:"QuestionId,omitnil,omitempty" name:"QuestionId"`
@@ -3802,6 +3856,72 @@ func (r *DescribeUserResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWhiteBoardSnapshotRequestParams struct {
+	// 房间ID
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+type DescribeWhiteBoardSnapshotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 房间ID
+	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+}
+
+func (r *DescribeWhiteBoardSnapshotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWhiteBoardSnapshotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWhiteBoardSnapshotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWhiteBoardSnapshotResponseParams struct {
+	// 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
+
+	// 板书任务状态，0：未开始，1：进行中，2：失败，3：成功，4：已删除
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 板书截图链接
+	Result []*string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 总数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeWhiteBoardSnapshotResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWhiteBoardSnapshotResponseParams `json:"Response"`
+}
+
+func (r *DescribeWhiteBoardSnapshotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWhiteBoardSnapshotResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

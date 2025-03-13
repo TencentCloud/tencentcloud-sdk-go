@@ -1955,6 +1955,73 @@ func (r *DescribeDBInstanceDealResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDBInstanceNamespaceRequestParams struct {
+	// 指定查询数据库所属的实例 ID，支持批量查询。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 指定查询的数据库名。为空时，返回当前实例的全部数据库列表。
+	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+}
+
+type DescribeDBInstanceNamespaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指定查询数据库所属的实例 ID，支持批量查询。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 指定查询的数据库名。为空时，返回当前实例的全部数据库列表。
+	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+}
+
+func (r *DescribeDBInstanceNamespaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceNamespaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DbName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstanceNamespaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBInstanceNamespaceResponseParams struct {
+	// 查询实例的数据库列表。若未使用 DbName 指定具体查询的数据库，则仅返回查询实例所有的数据库列表，而不返回 Collections 集合信息。
+	Databases []*string `json:"Databases,omitnil,omitempty" name:"Databases"`
+
+	// 查询的集合信息。指定 DbName 时，则仅返回该数据库下的集合列表。
+	Collections []*string `json:"Collections,omitnil,omitempty" name:"Collections"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDBInstanceNamespaceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBInstanceNamespaceResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBInstanceNamespaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceNamespaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDBInstanceNodePropertyRequestParams struct {
 	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

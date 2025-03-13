@@ -2730,12 +2730,7 @@ type CreateApplicationRequestParams struct {
 	// apm业务系统id
 	ApmInstanceId *string `json:"ApmInstanceId,omitnil,omitempty" name:"ApmInstanceId"`
 
-	// 编程语言;
-	// J - JAVA；
-	// C - C/C++；
-	// P - Python；
-	// G - Go；
-	// O - Other；
+	// 编程语言:  Java；C/C++；Python；Go；Other
 	ProgramLanguage *string `json:"ProgramLanguage,omitnil,omitempty" name:"ProgramLanguage"`
 
 	// 开发框架-SpringCloud/Dubbo/Go-GRPC/Other
@@ -2787,12 +2782,7 @@ type CreateApplicationRequest struct {
 	// apm业务系统id
 	ApmInstanceId *string `json:"ApmInstanceId,omitnil,omitempty" name:"ApmInstanceId"`
 
-	// 编程语言;
-	// J - JAVA；
-	// C - C/C++；
-	// P - Python；
-	// G - Go；
-	// O - Other；
+	// 编程语言:  Java；C/C++；Python；Go；Other
 	ProgramLanguage *string `json:"ProgramLanguage,omitnil,omitempty" name:"ProgramLanguage"`
 
 	// 开发框架-SpringCloud/Dubbo/Go-GRPC/Other
@@ -12299,6 +12289,63 @@ func (r *DescribeMicroserviceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMicroservicesByGroupIdsRequestParams struct {
+	// 部署组ID列表
+	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+}
+
+type DescribeMicroservicesByGroupIdsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 部署组ID列表
+	GroupIds []*string `json:"GroupIds,omitnil,omitempty" name:"GroupIds"`
+}
+
+func (r *DescribeMicroservicesByGroupIdsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMicroservicesByGroupIdsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMicroservicesByGroupIdsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMicroservicesByGroupIdsResponseParams struct {
+	// 微服务信息分页列表
+	Result *TsfPageMicroservice `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMicroservicesByGroupIdsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMicroservicesByGroupIdsResponseParams `json:"Response"`
+}
+
+func (r *DescribeMicroservicesByGroupIdsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMicroservicesByGroupIdsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeMicroservicesRequestParams struct {
 	// 命名空间ID
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
@@ -20745,7 +20792,7 @@ type ServiceGovernanceConfig struct {
 	// 是否开启服务注册治理
 	EnableGovernance *bool `json:"EnableGovernance,omitnil,omitempty" name:"EnableGovernance"`
 
-	// 服务治理类型
+	// 服务治理类型（枚举：SHARE、EXCLUSIVE）
 	GovernanceType *string `json:"GovernanceType,omitnil,omitempty" name:"GovernanceType"`
 
 	// 独享实例列表
