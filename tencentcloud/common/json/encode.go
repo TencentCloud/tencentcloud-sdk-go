@@ -332,7 +332,7 @@ func isNilValue(v reflect.Value) bool {
 	// unsafe.UnsafePointer doesn't exist in go1.9
 	const UnsafePointer = 26
 	switch v.Kind() {
-	case reflect.Chan, reflect.Func, reflect.Map, reflect.Pointer, UnsafePointer, reflect.Interface, reflect.Slice:
+	case reflect.Chan, reflect.Func, reflect.Map, reflect.Ptr, UnsafePointer, reflect.Interface, reflect.Slice:
 		return v.IsNil()
 	}
 	return false
