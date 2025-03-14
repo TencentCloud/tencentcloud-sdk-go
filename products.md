@@ -84,7 +84,7 @@
 | dbdc | [云数据库独享集群](https://cloud.tencent.com/document/product/1322) | 2025-01-07 01:15:00 |
 | dc | [专线接入](https://cloud.tencent.com/document/product/216) | 2025-02-24 01:26:07 |
 | dcdb | [TDSQL MySQL 版](https://cloud.tencent.com/document/product/557) | 2025-03-13 01:26:38 |
-| dlc | [数据湖计算 DLC](https://cloud.tencent.com/document/product/1342) | 2025-03-14 01:14:27 |
+| dlc | [数据湖计算 DLC](https://cloud.tencent.com/document/product/1342) | 2025-03-14 17:27:21 |
 | dnspod | [DNSPod](https://cloud.tencent.com/document/product/1427) | 2024-12-31 01:16:41 |
 | domain | [域名注册](https://cloud.tencent.com/document/product/242) | 2025-03-14 01:15:01 |
 | drm | [数字版权管理](https://cloud.tencent.com/document/product/1000) | 2025-01-09 01:16:10 |
@@ -222,7 +222,7 @@
 | tiems | [腾讯云 TI 平台 TI-EMS ](https://cloud.tencent.com/document/product/1120) | 2022-07-19 06:19:39 |
 | tiia | [图像分析](https://cloud.tencent.com/document/product/865) | 2024-12-23 11:03:45 |
 | tione | [TI-ONE 训练平台](https://cloud.tencent.com/document/product/851) | 2025-03-13 02:03:28 |
-| tiw | [互动白板](https://cloud.tencent.com/document/product/1137) | 2025-01-16 01:26:31 |
+| tiw | [互动白板](https://cloud.tencent.com/document/product/1137) | 2025-03-14 18:17:27 |
 | tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2025-03-10 02:05:01 |
 | tkgdq | [腾讯知识图谱数据查询](https://cloud.tencent.com/document/product) | 2020-03-10 00:51:44 |
 | tms | [文本内容安全](https://cloud.tencent.com/document/product/1124) | 2025-03-07 01:28:04 |

@@ -92,12 +92,33 @@ func (r *AddDMSPartitionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddOptimizerEnginesRequestParams struct {
+	// 数据目录名称
+	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
 
+	// 引擎信息列表
+	Engines []*OptimizerEngineInfo `json:"Engines,omitnil,omitempty" name:"Engines"`
+
+	// 数据库名称
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// 数据表名称
+	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
 }
 
 type AddOptimizerEnginesRequest struct {
 	*tchttp.BaseRequest
 	
+	// 数据目录名称
+	Catalog *string `json:"Catalog,omitnil,omitempty" name:"Catalog"`
+
+	// 引擎信息列表
+	Engines []*OptimizerEngineInfo `json:"Engines,omitnil,omitempty" name:"Engines"`
+
+	// 数据库名称
+	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
+
+	// 数据表名称
+	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
 }
 
 func (r *AddOptimizerEnginesRequest) ToJsonString() string {
@@ -112,7 +133,10 @@ func (r *AddOptimizerEnginesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Catalog")
+	delete(f, "Engines")
+	delete(f, "Database")
+	delete(f, "Table")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddOptimizerEnginesRequest has unknown keys!", "")
 	}
@@ -8902,6 +8926,101 @@ func (r *DescribeTaskLogResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTaskMonitorInfosRequestParams struct {
+	// 任务ID列表，上限50个
+	TaskIdList []*string `json:"TaskIdList,omitnil,omitempty" name:"TaskIdList"`
+
+	// 引擎名称
+	HouseName *string `json:"HouseName,omitnil,omitempty" name:"HouseName"`
+
+	// 任务创建时间的起始时间
+	CreateTimeStart *string `json:"CreateTimeStart,omitnil,omitempty" name:"CreateTimeStart"`
+
+	// 任务创建时间的结束时间
+	CreateTimeEnd *string `json:"CreateTimeEnd,omitnil,omitempty" name:"CreateTimeEnd"`
+
+	// 每一页条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeTaskMonitorInfosRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID列表，上限50个
+	TaskIdList []*string `json:"TaskIdList,omitnil,omitempty" name:"TaskIdList"`
+
+	// 引擎名称
+	HouseName *string `json:"HouseName,omitnil,omitempty" name:"HouseName"`
+
+	// 任务创建时间的起始时间
+	CreateTimeStart *string `json:"CreateTimeStart,omitnil,omitempty" name:"CreateTimeStart"`
+
+	// 任务创建时间的结束时间
+	CreateTimeEnd *string `json:"CreateTimeEnd,omitnil,omitempty" name:"CreateTimeEnd"`
+
+	// 每一页条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeTaskMonitorInfosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskMonitorInfosRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIdList")
+	delete(f, "HouseName")
+	delete(f, "CreateTimeStart")
+	delete(f, "CreateTimeEnd")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskMonitorInfosRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskMonitorInfosResponseParams struct {
+	// 任务监控信息列表
+	TaskMonitorInfoList []*TaskMonitorInfo `json:"TaskMonitorInfoList,omitnil,omitempty" name:"TaskMonitorInfoList"`
+
+	// 任务总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskMonitorInfosResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskMonitorInfosResponseParams `json:"Response"`
+}
+
+func (r *DescribeTaskMonitorInfosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskMonitorInfosResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTaskResultRequestParams struct {
 	// 任务唯一ID，仅支持30天内的任务
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -12578,6 +12697,20 @@ type OpendThirdAccessUserInfo struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
+type OptimizerEngineInfo struct {
+	// 引擎资源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HouseName *string `json:"HouseName,omitnil,omitempty" name:"HouseName"`
+
+	// 引擎资源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HouseId *string `json:"HouseId,omitnil,omitempty" name:"HouseId"`
+
+	// 该参数仅针对spark作业引擎有效，用于执行数据优化任务的资源大小，不填时将采用该引擎所有资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HouseSize *int64 `json:"HouseSize,omitnil,omitempty" name:"HouseSize"`
+}
+
 type Other struct {
 	// 枚举类型，默认值为Json，可选值为[Json, Parquet, ORC, AVRD]之一。
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
@@ -14234,6 +14367,29 @@ type Task struct {
 
 	// Spark SQL查询任务
 	SparkSQLTask *SQLTask `json:"SparkSQLTask,omitnil,omitempty" name:"SparkSQLTask"`
+}
+
+type TaskMonitorInfo struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 引擎名称
+	HouseName *string `json:"HouseName,omitnil,omitempty" name:"HouseName"`
+
+	// sql语句
+	QuerySQL *string `json:"QuerySQL,omitnil,omitempty" name:"QuerySQL"`
+
+	// 任务时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 执行时间
+	UsedTime *string `json:"UsedTime,omitnil,omitempty" name:"UsedTime"`
+
+	// 数据扫描量
+	DataAmount *string `json:"DataAmount,omitnil,omitempty" name:"DataAmount"`
+
+	// 指标信息
+	QueryStats *string `json:"QueryStats,omitnil,omitempty" name:"QueryStats"`
 }
 
 type TaskResponseInfo struct {
