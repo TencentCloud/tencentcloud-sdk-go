@@ -1186,7 +1186,7 @@ type CreateRoomRequestParams struct {
 	// 录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
 	RecordStream *uint64 `json:"RecordStream,omitnil,omitempty" name:"RecordStream"`
 
-	// 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+	// 板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式
 	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
 }
 
@@ -1300,7 +1300,7 @@ type CreateRoomRequest struct {
 	// 录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
 	RecordStream *uint64 `json:"RecordStream,omitnil,omitempty" name:"RecordStream"`
 
-	// 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+	// 板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式
 	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
 }
 
@@ -5615,7 +5615,7 @@ type RoomInfo struct {
 	// 录制类型 0 仅录制混流（默认） ;1 录制混流+单流，该模式下除混流录制基础上，分别录制老师、台上学生的音视频流，每路录制都会产生相应的录制费用 。示例：0
 	RecordStream *uint64 `json:"RecordStream,omitnil,omitempty" name:"RecordStream"`
 
-	// 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
+	// 板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式
 	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
 }
 

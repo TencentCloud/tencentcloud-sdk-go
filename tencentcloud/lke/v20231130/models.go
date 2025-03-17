@@ -3266,7 +3266,7 @@ func (r *DescribeReleaseInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeReleaseRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 发布详情
@@ -3276,7 +3276,7 @@ type DescribeReleaseRequestParams struct {
 type DescribeReleaseRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 发布详情
@@ -3311,7 +3311,7 @@ type DescribeReleaseResponseParams struct {
 	// 发布描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 发布状态(1待发布 2发布中 3发布成功 4发布失败 5发布中 6发布中 7发布失败 9发布暂停)
+	// 发布状态(1待发布 2发布中 3发布成功 4发布失败 5发布中(审核中) 6发布中(审核完成) 7发布失败(审核失败) 9发布暂停)
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 发布状态描述
@@ -9902,7 +9902,7 @@ type RunNodeInfo struct {
 
 // Predefined struct for user
 type RunReRankRequestParams struct {
-	// 模型名称, 必填，默认: lke-reranker-base
+	// 查询内容，必填
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 文档列表，必填，最多20个
@@ -9925,7 +9925,7 @@ type RunReRankRequestParams struct {
 type RunReRankRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模型名称, 必填，默认: lke-reranker-base
+	// 查询内容，必填
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 文档列表，必填，最多20个

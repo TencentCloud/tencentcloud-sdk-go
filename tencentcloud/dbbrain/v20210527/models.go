@@ -2220,6 +2220,9 @@ type DescribeDBDiagEventsRequestParams struct {
 	// 实例ID列表。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
+	// 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
 	// 偏移量，默认0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
@@ -2241,6 +2244,9 @@ type DescribeDBDiagEventsRequest struct {
 
 	// 实例ID列表。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 偏移量，默认0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -2265,6 +2271,7 @@ func (r *DescribeDBDiagEventsRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "Severities")
 	delete(f, "InstanceIds")
+	delete(f, "Product")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {

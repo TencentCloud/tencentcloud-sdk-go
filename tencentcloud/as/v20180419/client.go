@@ -2841,6 +2841,91 @@ func (c *Client) EnableAutoScalingGroupWithContext(ctx context.Context, request 
     return
 }
 
+func NewEnterStandbyRequest() (request *EnterStandbyRequest) {
+    request = &EnterStandbyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("as", APIVersion, "EnterStandby")
+    
+    
+    return
+}
+
+func NewEnterStandbyResponse() (response *EnterStandbyResponse) {
+    response = &EnterStandbyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnterStandby
+// 伸缩组内实例进入备用中状态。
+//
+// * 备用中状态实例的 CLB 权重值为 0，不会被自动缩容、不健康替换、实例刷新操作选中
+//
+// * 调用弹性伸缩开关机接口会使得备用中状态发生变化，而云服务器开关机接口不会影响
+//
+// * 实例进入备用中状态后，伸缩组会尝试下调期望实例数，新期望数不会小于最小值
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
+//  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = "ResourceNotFound.AutoScalingGroupNotFound"
+//  RESOURCENOTFOUND_INSTANCESNOTFOUND = "ResourceNotFound.InstancesNotFound"
+//  RESOURCEUNAVAILABLE_AUTOSCALINGGROUPINACTIVITY = "ResourceUnavailable.AutoScalingGroupInActivity"
+//  RESOURCEUNAVAILABLE_INSTANCEINOPERATION = "ResourceUnavailable.InstanceInOperation"
+//  RESOURCEUNAVAILABLE_LOADBALANCERINOPERATION = "ResourceUnavailable.LoadBalancerInOperation"
+func (c *Client) EnterStandby(request *EnterStandbyRequest) (response *EnterStandbyResponse, err error) {
+    return c.EnterStandbyWithContext(context.Background(), request)
+}
+
+// EnterStandby
+// 伸缩组内实例进入备用中状态。
+//
+// * 备用中状态实例的 CLB 权重值为 0，不会被自动缩容、不健康替换、实例刷新操作选中
+//
+// * 调用弹性伸缩开关机接口会使得备用中状态发生变化，而云服务器开关机接口不会影响
+//
+// * 实例进入备用中状态后，伸缩组会尝试下调期望实例数，新期望数不会小于最小值
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
+//  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = "ResourceNotFound.AutoScalingGroupNotFound"
+//  RESOURCENOTFOUND_INSTANCESNOTFOUND = "ResourceNotFound.InstancesNotFound"
+//  RESOURCEUNAVAILABLE_AUTOSCALINGGROUPINACTIVITY = "ResourceUnavailable.AutoScalingGroupInActivity"
+//  RESOURCEUNAVAILABLE_INSTANCEINOPERATION = "ResourceUnavailable.InstanceInOperation"
+//  RESOURCEUNAVAILABLE_LOADBALANCERINOPERATION = "ResourceUnavailable.LoadBalancerInOperation"
+func (c *Client) EnterStandbyWithContext(ctx context.Context, request *EnterStandbyRequest) (response *EnterStandbyResponse, err error) {
+    if request == nil {
+        request = NewEnterStandbyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnterStandby require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnterStandbyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExecuteScalingPolicyRequest() (request *ExecuteScalingPolicyRequest) {
     request = &ExecuteScalingPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -453,7 +453,6 @@ type DedicatedCluster struct {
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 专用集群的描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 专用集群的名称。
@@ -467,6 +466,9 @@ type DedicatedCluster struct {
 
 	// 专用集群所属的站点id。
 	SiteId *string `json:"SiteId,omitnil,omitempty" name:"SiteId"`
+
+	// 专用集群的运营状态
+	RunningStatus *string `json:"RunningStatus,omitnil,omitempty" name:"RunningStatus"`
 }
 
 type DedicatedClusterInstanceType struct {
@@ -551,60 +553,58 @@ type DedicatedClusterOrder struct {
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
 	// 子订单详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DedicatedClusterOrderItems []*DedicatedClusterOrderItem `json:"DedicatedClusterOrderItems,omitnil,omitempty" name:"DedicatedClusterOrderItems"`
 
 	// cpu值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
 	// mem值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mem *int64 `json:"Mem,omitnil,omitempty" name:"Mem"`
 
 	// gpu值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Gpu *int64 `json:"Gpu,omitnil,omitempty" name:"Gpu"`
 
 	// 0代表未支付，1代表已支付
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayStatus *int64 `json:"PayStatus,omitnil,omitempty" name:"PayStatus"`
 
 	// 支付方式，一次性、按月、按年
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayType *string `json:"PayType,omitnil,omitempty" name:"PayType"`
 
 	// 购买时长的单位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
 	// 购买时长
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
 	// 订单类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderType *string `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
 	// 验收状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckStatus *string `json:"CheckStatus,omitnil,omitempty" name:"CheckStatus"`
 
 	// 交付预期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeliverExpectTime *string `json:"DeliverExpectTime,omitnil,omitempty" name:"DeliverExpectTime"`
 
 	// 交付实际完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeliverFinishTime *string `json:"DeliverFinishTime,omitnil,omitempty" name:"DeliverFinishTime"`
 
 	// 验收预期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckExpectTime *string `json:"CheckExpectTime,omitnil,omitempty" name:"CheckExpectTime"`
 
 	// 验收实际完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckFinishTime *string `json:"CheckFinishTime,omitnil,omitempty" name:"CheckFinishTime"`
 
 	// 订单SLA
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderSLA *string `json:"OrderSLA,omitnil,omitempty" name:"OrderSLA"`
 
 	// 订单支付计划
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderPayPlan *string `json:"OrderPayPlan,omitnil,omitempty" name:"OrderPayPlan"`
 }
 
@@ -658,15 +658,12 @@ type DedicatedClusterOrderItem struct {
 	TypeName *string `json:"TypeName,omitnil,omitempty" name:"TypeName"`
 
 	// 规格展示
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComputeFormat *string `json:"ComputeFormat,omitnil,omitempty" name:"ComputeFormat"`
 
 	// 规格类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TypeFamily *string `json:"TypeFamily,omitnil,omitempty" name:"TypeFamily"`
 
 	// 0未支付，1已支付
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubOrderPayStatus *int64 `json:"SubOrderPayStatus,omitnil,omitempty" name:"SubOrderPayStatus"`
 }
 
@@ -675,7 +672,6 @@ type DedicatedClusterType struct {
 	DedicatedClusterTypeId *string `json:"DedicatedClusterTypeId,omitnil,omitempty" name:"DedicatedClusterTypeId"`
 
 	// 配置描述，对应描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 配置名称，对应计算资源类型
@@ -1848,7 +1844,6 @@ type HostInfo struct {
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 宿主机id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostId *string `json:"HostId,omitnil,omitempty" name:"HostId"`
 }
 
@@ -1892,29 +1887,23 @@ type HostStatistic struct {
 
 type InBandwidth struct {
 	// 时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timestamps []*float64 `json:"Timestamps,omitnil,omitempty" name:"Timestamps"`
 
 	// 时间对应的值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*float64 `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
 type LocalNetInfo struct {
 	// 协议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 网络id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 路由信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BGPRoute *string `json:"BGPRoute,omitnil,omitempty" name:"BGPRoute"`
 
 	// 本地IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalIp *string `json:"LocalIp,omitnil,omitempty" name:"LocalIp"`
 }
 
@@ -2348,11 +2337,9 @@ func (r *ModifySiteInfoResponse) FromJsonString(s string) error {
 
 type OutBandwidth struct {
 	// 时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timestamps []*float64 `json:"Timestamps,omitnil,omitempty" name:"Timestamps"`
 
 	// 对应时间的值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*float64 `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
@@ -2366,51 +2353,39 @@ type RegionZoneInfo struct {
 
 type SetInfo struct {
 	// 云硬盘仓库id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SetId *string `json:"SetId,omitnil,omitempty" name:"SetId"`
 
 	// 云硬盘仓库名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SetName *string `json:"SetName,omitnil,omitempty" name:"SetName"`
 
 	// 云硬盘仓库类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SetType *string `json:"SetType,omitnil,omitempty" name:"SetType"`
 
 	// 云硬盘仓库容量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SetSize *float64 `json:"SetSize,omitnil,omitempty" name:"SetSize"`
 
 	// 云硬盘仓库状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SetStatus *string `json:"SetStatus,omitnil,omitempty" name:"SetStatus"`
 
 	// 云硬盘仓库创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 读流量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadTraffic *DetailData `json:"ReadTraffic,omitnil,omitempty" name:"ReadTraffic"`
 
 	// 写流量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WriteTraffic *DetailData `json:"WriteTraffic,omitnil,omitempty" name:"WriteTraffic"`
 
 	// 读IO
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadIO *DetailData `json:"ReadIO,omitnil,omitempty" name:"ReadIO"`
 
 	// 写IO
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WriteIO *DetailData `json:"WriteIO,omitnil,omitempty" name:"WriteIO"`
 
 	// 平均等待时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Await *DetailData `json:"Await,omitnil,omitempty" name:"Await"`
 
 	// 利用率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Util *DetailData `json:"Util,omitnil,omitempty" name:"Util"`
 }
 
@@ -2422,7 +2397,6 @@ type Site struct {
 	SiteId *string `json:"SiteId,omitnil,omitempty" name:"SiteId"`
 
 	// 站点描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 站点创建时间
@@ -2513,7 +2487,6 @@ type SiteDetail struct {
 
 type VpngwBandwidthData struct {
 	// 出带宽流量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutBandwidth *OutBandwidth `json:"OutBandwidth,omitnil,omitempty" name:"OutBandwidth"`
 
 	// 入带宽流量

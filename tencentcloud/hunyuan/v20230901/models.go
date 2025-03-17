@@ -74,6 +74,14 @@ func (r *ActivateServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Character struct {
+	// 人物名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 人物对应SystemPrompt
+	SystemPrompt *string `json:"SystemPrompt,omitnil,omitempty" name:"SystemPrompt"`
+}
+
 // Predefined struct for user
 type ChatCompletionsRequestParams struct {
 	// 模型名称，可选值包括 hunyuan-lite、hunyuan-standard、hunyuan-standard-256K、hunyuan-code、hunyuan-role、hunyuan-functioncall、hunyuan-vision、hunyuan-turbo、hunyuan-turbo-latest、hunyuan-turbo-20241223、hunyuan-turbo-20241120、hunyuan-large、hunyuan-large-longcontext、hunyuan-turbo-vision、hunyuan-standard-vision、hunyuan-lite-vision、hunyuan-turbos-20250226、hunyuan-turbos-latest。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
@@ -1338,6 +1346,177 @@ func (r *GetTokenCountResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *GetTokenCountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GroupChatCompletionsRequestParams struct {
+	// 模型名称，可选值包括 hunyuan-large-role-group。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 聊天上下文信息。
+	Messages []*GroupMessage `json:"Messages,omitnil,omitempty" name:"Messages"`
+
+	// 流式调用开关。
+	// 说明：
+	// 1. 未传值时默认为非流式调用（false）。
+	// 2. 流式调用时以 SSE 协议增量返回结果（返回值取 Choices[n].Delta 中的值，需要拼接增量数据才能获得完整结果）。
+	// 3. 非流式调用时：
+	// 调用方式与普通 HTTP 请求无异。
+	// 接口响应耗时较长，**如需更低时延建议设置为 true**。
+	// 只返回一次最终结果（返回值取 Choices[n].Message 中的值）。
+	// 
+	// 注意：
+	// 通过 SDK 调用时，流式和非流式调用需用**不同的方式**获取返回值，具体参考 SDK 中的注释或示例（在各语言 SDK 代码仓库的 examples/hunyuan/v20230901/ 目录中）。
+	Stream *bool `json:"Stream,omitnil,omitempty" name:"Stream"`
+
+	// 目标人物名称
+	TargetCharacterName *string `json:"TargetCharacterName,omitnil,omitempty" name:"TargetCharacterName"`
+
+	// 角色描述
+	GroupChatConfig *GroupChatConfig `json:"GroupChatConfig,omitnil,omitempty" name:"GroupChatConfig"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 对话接口
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+type GroupChatCompletionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模型名称，可选值包括 hunyuan-large-role-group。各模型介绍请阅读 [产品概述](https://cloud.tencent.com/document/product/1729/104753) 中的说明。注意：不同的模型计费不同，请根据 [购买指南](https://cloud.tencent.com/document/product/1729/97731) 按需调用。
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 聊天上下文信息。
+	Messages []*GroupMessage `json:"Messages,omitnil,omitempty" name:"Messages"`
+
+	// 流式调用开关。
+	// 说明：
+	// 1. 未传值时默认为非流式调用（false）。
+	// 2. 流式调用时以 SSE 协议增量返回结果（返回值取 Choices[n].Delta 中的值，需要拼接增量数据才能获得完整结果）。
+	// 3. 非流式调用时：
+	// 调用方式与普通 HTTP 请求无异。
+	// 接口响应耗时较长，**如需更低时延建议设置为 true**。
+	// 只返回一次最终结果（返回值取 Choices[n].Message 中的值）。
+	// 
+	// 注意：
+	// 通过 SDK 调用时，流式和非流式调用需用**不同的方式**获取返回值，具体参考 SDK 中的注释或示例（在各语言 SDK 代码仓库的 examples/hunyuan/v20230901/ 目录中）。
+	Stream *bool `json:"Stream,omitnil,omitempty" name:"Stream"`
+
+	// 目标人物名称
+	TargetCharacterName *string `json:"TargetCharacterName,omitnil,omitempty" name:"TargetCharacterName"`
+
+	// 角色描述
+	GroupChatConfig *GroupChatConfig `json:"GroupChatConfig,omitnil,omitempty" name:"GroupChatConfig"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 对话接口
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
+func (r *GroupChatCompletionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GroupChatCompletionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Model")
+	delete(f, "Messages")
+	delete(f, "Stream")
+	delete(f, "TargetCharacterName")
+	delete(f, "GroupChatConfig")
+	delete(f, "UserId")
+	delete(f, "SessionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GroupChatCompletionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GroupChatCompletionsResponseParams struct {
+	// Unix 时间戳，单位为秒。
+	Created *int64 `json:"Created,omitnil,omitempty" name:"Created"`
+
+	// Token 统计信息。
+	// 按照总 Token 数量计费。
+	Usage *Usage `json:"Usage,omitnil,omitempty" name:"Usage"`
+
+	// 免责声明。
+	Note *string `json:"Note,omitnil,omitempty" name:"Note"`
+
+	// 本次请求的 RequestId。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 回复内容。
+	Choices []*Choice `json:"Choices,omitnil,omitempty" name:"Choices"`
+
+	// 错误信息。
+	// 如果流式返回中服务处理异常，返回该错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *ErrorMsg `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// 搜索结果信息
+	SearchInfo *SearchInfo `json:"SearchInfo,omitnil,omitempty" name:"SearchInfo"`
+
+	// 多媒体信息。
+	// 说明：
+	// 1. 可以用多媒体信息替换回复内容里的占位符，得到完整的消息。
+	// 2. 可能会出现回复内容里存在占位符，但是因为审核等原因没有返回多媒体信息。
+	Replaces []*Replace `json:"Replaces,omitnil,omitempty" name:"Replaces"`
+
+	// 推荐问答。
+	RecommendedQuestions []*string `json:"RecommendedQuestions,omitnil,omitempty" name:"RecommendedQuestions"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GroupChatCompletionsResponse struct {
+	tchttp.BaseSSEResponse `json:"-"`
+	Response *GroupChatCompletionsResponseParams `json:"Response"`
+}
+
+func (r *GroupChatCompletionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GroupChatCompletionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GroupChatConfig struct {
+	// 人物名称
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// ### 主题：\n武道修炼与科技创新的碰撞\n\n### 地点：\n布尔玛的实验室\n\n### 故事背景：\n布尔玛正在研发一种新型的龙珠雷达，旨在更精确地定位龙珠的位置。她邀请了孙悟空、天津饭、饺子和雅木茶前来测试新设备。然而，这些武道家们对科技的理解有限，导致了一系列有趣的误解和互动。\n\n### 人物关系：\n- **布尔玛**：天才科学家，负责研发和解释新设备。\n- **孙悟空**：纯粹的战斗狂，对科技一窍不通，但对新事物充满好奇。\n- **天津饭**：严肃自律的武道家，对科技持谨慎态度，但愿意尝试。\n- **饺子**：内向单纯，依赖天津饭，对科技感到困惑和害怕。\n- **雅木茶**：幽默自嘲的前沙漠强盗，对科技有一定了解，但更倾向于轻松调侃。\n\n### 人物目标：\n- **布尔玛**：希望新龙珠雷达能够得到有效测试，并得到反馈以改进。\n- **孙悟空**：希望通过新设备找到更强的对手进行战斗。\n- **天津饭**：希望通过测试新设备提升自己的武道修炼。\n- **饺子**：希望在不引起麻烦的情况下完成任务，并得到天津饭的认可。\n- **雅木茶**：希望通过参与测试证明自己的价值，同时享受与朋友们的互动。\n\n### 场景描述：\n布尔玛在实验室中展示她的新龙珠雷达，解释其工作原理和优势。孙悟空对设备的功能感到兴奋，但完全无法理解技术细节，不断提出天真的问题。天津饭则严肃地询问设备的安全性和可靠性，表现出对科技的谨慎态度。饺子对复杂的设备感到害怕，不断向天津饭寻求确认和安慰。雅木茶则在一旁调侃大家的反应，试图缓解紧张气氛。布尔玛在解释过程中不断被孙悟空的问题打断，感到无奈，但也被他的热情所感染。最终，大家决定一起外出测试新设备，展开一场充满欢笑和冒险的旅程。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 角色描述
+	Characters []*Character `json:"Characters,omitnil,omitempty" name:"Characters"`
+}
+
+type GroupMessage struct {
+	// 角色，可选值包括 system、user、assistant、 tool。
+	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 文本内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 角色名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type History struct {

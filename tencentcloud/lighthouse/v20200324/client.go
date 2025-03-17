@@ -1399,7 +1399,11 @@ func NewDeleteBlueprintsResponse() (response *DeleteBlueprintsResponse) {
 }
 
 // DeleteBlueprints
-// 本接口 (DeleteBlueprints) 用于删除镜像。
+// 本接口 (DeleteBlueprints) 用于删除镜像。可删除的镜像应满足如下条件：
+//
+// 1、删除镜像接口需要镜像状态为NORMAL（正常）、ISOLATED（已隔离）、CREATEFAILED（创建失败）、SYNCING_FAILED（目的地域同步失败），其他状态下的镜像不支持删除操作。镜像状态，可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintState获取。
+//
+// 2、仅支持删除自定义镜像。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESTROYRESOURCESFAILED = "FailedOperation.DestroyResourcesFailed"
@@ -1422,7 +1426,11 @@ func (c *Client) DeleteBlueprints(request *DeleteBlueprintsRequest) (response *D
 }
 
 // DeleteBlueprints
-// 本接口 (DeleteBlueprints) 用于删除镜像。
+// 本接口 (DeleteBlueprints) 用于删除镜像。可删除的镜像应满足如下条件：
+//
+// 1、删除镜像接口需要镜像状态为NORMAL（正常）、ISOLATED（已隔离）、CREATEFAILED（创建失败）、SYNCING_FAILED（目的地域同步失败），其他状态下的镜像不支持删除操作。镜像状态，可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值中的BlueprintState获取。
+//
+// 2、仅支持删除自定义镜像。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESTROYRESOURCESFAILED = "FailedOperation.DestroyResourcesFailed"
@@ -1764,6 +1772,8 @@ func NewDeleteKeyPairsResponse() (response *DeleteKeyPairsResponse) {
 // DeleteKeyPairs
 // 本接口（DeleteKeyPairs）用于删除密钥对。
 //
+// - 不能删除已被实例或镜像引用的密钥对，删除之前需要确保没有被任何实例和镜像引用。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DELETEKEYPAIRFAILED = "FailedOperation.DeleteKeyPairFailed"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
@@ -1778,6 +1788,8 @@ func (c *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (response *Delet
 
 // DeleteKeyPairs
 // 本接口（DeleteKeyPairs）用于删除密钥对。
+//
+// - 不能删除已被实例或镜像引用的密钥对，删除之前需要确保没有被任何实例和镜像引用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DELETEKEYPAIRFAILED = "FailedOperation.DeleteKeyPairFailed"
@@ -2014,7 +2026,7 @@ func NewDescribeBlueprintsResponse() (response *DescribeBlueprintsResponse) {
 }
 
 // DescribeBlueprints
-// 本接口（DescribeBlueprints）用于查询镜像信息。
+// 本接口（DescribeBlueprints）用于查询镜像信息。该接口返回的镜像类型有：自定义镜像、共享镜像、公共镜像。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2045,7 +2057,7 @@ func (c *Client) DescribeBlueprints(request *DescribeBlueprintsRequest) (respons
 }
 
 // DescribeBlueprints
-// 本接口（DescribeBlueprints）用于查询镜像信息。
+// 本接口（DescribeBlueprints）用于查询镜像信息。该接口返回的镜像类型有：自定义镜像、共享镜像、公共镜像。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3586,7 +3598,7 @@ func NewDescribeInstanceVncUrlResponse() (response *DescribeInstanceVncUrlRespon
 //
 // 
 //
-// * 处于 `STOPPED` 状态的机器无法使用此功能。
+// * 仅处于 `RUNNING`，`RESCUE_MODE` 状态的机器，且当前机器无变更中操作，才可使用此功能。
 //
 // * 管理终端地址的有效期为 15 秒，调用接口成功后如果 15 秒内不使用该链接进行访问，管理终端地址自动失效，您需要重新查询。
 //
@@ -3630,7 +3642,7 @@ func (c *Client) DescribeInstanceVncUrl(request *DescribeInstanceVncUrlRequest) 
 //
 // 
 //
-// * 处于 `STOPPED` 状态的机器无法使用此功能。
+// * 仅处于 `RUNNING`，`RESCUE_MODE` 状态的机器，且当前机器无变更中操作，才可使用此功能。
 //
 // * 管理终端地址的有效期为 15 秒，调用接口成功后如果 15 秒内不使用该链接进行访问，管理终端地址自动失效，您需要重新查询。
 //
@@ -5707,6 +5719,16 @@ func NewModifyDisksRenewFlagResponse() (response *ModifyDisksRenewFlagResponse) 
 // ModifyDisksRenewFlag
 // 本接口（ModifyDisksRenewFlag）用于修改云硬盘续费标识。
 //
+// 云硬盘需要处于以下状态：
+//
+// <li> ATTACHED （已挂载）</li>
+//
+// <li> UNATTACHED （待挂载）</li>
+//
+// <li> ATTACHING （挂载中） </li>
+//
+// <li> DETACHING （卸载中）</li>
+//
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
@@ -5721,6 +5743,16 @@ func (c *Client) ModifyDisksRenewFlag(request *ModifyDisksRenewFlagRequest) (res
 
 // ModifyDisksRenewFlag
 // 本接口（ModifyDisksRenewFlag）用于修改云硬盘续费标识。
+//
+// 云硬盘需要处于以下状态：
+//
+// <li> ATTACHED （已挂载）</li>
+//
+// <li> UNATTACHED （待挂载）</li>
+//
+// <li> ATTACHING （挂载中） </li>
+//
+// <li> DETACHING （卸载中）</li>
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -8122,6 +8154,8 @@ func NewTerminateDisksResponse() (response *TerminateDisksResponse) {
 // TerminateDisks
 // 本接口（TerminateDisks）用于销毁一个或多个云硬盘。
 //
+// 云硬盘状态必须处于SHUTDOWN（已隔离）状态。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESTROYRESOURCESFAILED = "FailedOperation.DestroyResourcesFailed"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -8136,6 +8170,8 @@ func (c *Client) TerminateDisks(request *TerminateDisksRequest) (response *Termi
 
 // TerminateDisks
 // 本接口（TerminateDisks）用于销毁一个或多个云硬盘。
+//
+// 云硬盘状态必须处于SHUTDOWN（已隔离）状态。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESTROYRESOURCESFAILED = "FailedOperation.DestroyResourcesFailed"

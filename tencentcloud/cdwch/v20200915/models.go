@@ -380,6 +380,9 @@ type CreateInstanceNewRequestParams struct {
 
 	// 标签列表
 	TagItems []*Tag `json:"TagItems,omitnil,omitempty" name:"TagItems"`
+
+	// 副可用去信息
+	SecondaryZoneInfo []*SecondaryZoneInfo `json:"SecondaryZoneInfo,omitnil,omitempty" name:"SecondaryZoneInfo"`
 }
 
 type CreateInstanceNewRequest struct {
@@ -431,6 +434,9 @@ type CreateInstanceNewRequest struct {
 
 	// 标签列表
 	TagItems []*Tag `json:"TagItems,omitnil,omitempty" name:"TagItems"`
+
+	// 副可用去信息
+	SecondaryZoneInfo []*SecondaryZoneInfo `json:"SecondaryZoneInfo,omitnil,omitempty" name:"SecondaryZoneInfo"`
 }
 
 func (r *CreateInstanceNewRequest) ToJsonString() string {
@@ -460,6 +466,7 @@ func (r *CreateInstanceNewRequest) FromJsonString(s string) error {
 	delete(f, "HAZk")
 	delete(f, "CommonSpec")
 	delete(f, "TagItems")
+	delete(f, "SecondaryZoneInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceNewRequest has unknown keys!", "")
 	}
@@ -1477,6 +1484,9 @@ type DescribeInstancesNewRequestParams struct {
 
 	// 信息详细与否
 	IsSimple *bool `json:"IsSimple,omitnil,omitempty" name:"IsSimple"`
+
+	// vip列表
+	Vips []*string `json:"Vips,omitnil,omitempty" name:"Vips"`
 }
 
 type DescribeInstancesNewRequest struct {
@@ -1499,6 +1509,9 @@ type DescribeInstancesNewRequest struct {
 
 	// 信息详细与否
 	IsSimple *bool `json:"IsSimple,omitnil,omitempty" name:"IsSimple"`
+
+	// vip列表
+	Vips []*string `json:"Vips,omitnil,omitempty" name:"Vips"`
 }
 
 func (r *DescribeInstancesNewRequest) ToJsonString() string {
@@ -1519,6 +1532,7 @@ func (r *DescribeInstancesNewRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "SearchTags")
 	delete(f, "IsSimple")
+	delete(f, "Vips")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesNewRequest has unknown keys!", "")
 	}
@@ -2985,6 +2999,24 @@ type SearchTags struct {
 
 	// 1表示只输入标签的键，没有输入值；0表示输入键时且输入值
 	AllValue *int64 `json:"AllValue,omitnil,omitempty" name:"AllValue"`
+}
+
+type SecondaryZoneInfo struct {
+	// 副可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecondaryZone *string `json:"SecondaryZone,omitnil,omitempty" name:"SecondaryZone"`
+
+	// 可用区可用的子网id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecondarySubnet *string `json:"SecondarySubnet,omitnil,omitempty" name:"SecondarySubnet"`
+
+	// 可用区可用的子网可用ip的数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserIpNum *string `json:"UserIpNum,omitnil,omitempty" name:"UserIpNum"`
+
+	// 可用区可用的子网可用ip的数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecondaryUserSubnetIPNum *int64 `json:"SecondaryUserSubnetIPNum,omitnil,omitempty" name:"SecondaryUserSubnetIPNum"`
 }
 
 type ServiceInfo struct {

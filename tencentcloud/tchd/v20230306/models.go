@@ -21,6 +21,74 @@ import (
 )
 
 // Predefined struct for user
+type DescribeEventStatisticsRequestParams struct {
+	// 1. 查询非区域性产品事件时，地域ID指定为：non-regional
+	// 2. 其他地域ID取值请参考：https://cloud.tencent.com/document/api/213/15692
+	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// 1. 不指定产品列表时将查询所有产品。
+	// 2. 产品ID示例：cvm、lb、cdb、cdn、crs
+	ProductIds []*string `json:"ProductIds,omitnil,omitempty" name:"ProductIds"`
+}
+
+type DescribeEventStatisticsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 1. 查询非区域性产品事件时，地域ID指定为：non-regional
+	// 2. 其他地域ID取值请参考：https://cloud.tencent.com/document/api/213/15692
+	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// 1. 不指定产品列表时将查询所有产品。
+	// 2. 产品ID示例：cvm、lb、cdb、cdn、crs
+	ProductIds []*string `json:"ProductIds,omitnil,omitempty" name:"ProductIds"`
+}
+
+func (r *DescribeEventStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEventStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegionId")
+	delete(f, "ProductIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEventStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEventStatisticsResponseParams struct {
+	// 正常产品数
+	Data *TotalStatus `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEventStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEventStatisticsResponseParams `json:"Response"`
+}
+
+func (r *DescribeEventStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEventStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeEventsRequestParams struct {
 	// 事件的发生日期
 	EventDate *string `json:"EventDate,omitnil,omitempty" name:"EventDate"`
@@ -123,4 +191,16 @@ type EventDetail struct {
 type ProductEventList struct {
 	// 事件详情列表
 	EventList []*EventDetail `json:"EventList,omitnil,omitempty" name:"EventList"`
+}
+
+type TotalStatus struct {
+	// 正常状态的数目
+	NormalCount *int64 `json:"NormalCount,omitnil,omitempty" name:"NormalCount"`
+
+	// 通知状态的数目
+	NotifyCount *int64 `json:"NotifyCount,omitnil,omitempty" name:"NotifyCount"`
+
+	// 异常状态的数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AbnormalCount *int64 `json:"AbnormalCount,omitnil,omitempty" name:"AbnormalCount"`
 }

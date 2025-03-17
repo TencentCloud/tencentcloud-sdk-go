@@ -45,6 +45,63 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewDescribeEventStatisticsRequest() (request *DescribeEventStatisticsRequest) {
+    request = &DescribeEventStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tchd", APIVersion, "DescribeEventStatistics")
+    
+    
+    return
+}
+
+func NewDescribeEventStatisticsResponse() (response *DescribeEventStatisticsResponse) {
+    response = &DescribeEventStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEventStatistics
+// 本接口用于查询腾讯云健康看板的实时可用性事件信息，可以通过产品列表、地域进行过滤查询。
+//
+// 可以参考健康看板历史事件页面来获取查询案例（链接：https://status.cloud.tencent.com/history）。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeEventStatistics(request *DescribeEventStatisticsRequest) (response *DescribeEventStatisticsResponse, err error) {
+    return c.DescribeEventStatisticsWithContext(context.Background(), request)
+}
+
+// DescribeEventStatistics
+// 本接口用于查询腾讯云健康看板的实时可用性事件信息，可以通过产品列表、地域进行过滤查询。
+//
+// 可以参考健康看板历史事件页面来获取查询案例（链接：https://status.cloud.tencent.com/history）。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeEventStatisticsWithContext(ctx context.Context, request *DescribeEventStatisticsRequest) (response *DescribeEventStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEventStatisticsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEventStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEventStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEventsRequest() (request *DescribeEventsRequest) {
     request = &DescribeEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},

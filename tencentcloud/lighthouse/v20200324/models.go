@@ -580,7 +580,7 @@ type CancelShareBlueprintAcrossAccountsRequestParams struct {
 	// 镜像ID, 可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。
 	BlueprintId *string `json:"BlueprintId,omitnil,omitempty" name:"BlueprintId"`
 
-	// 接收共享镜像的账号ID列表。账号ID不同于QQ号，查询用户账号ID请查看账号信息中的账号ID栏。账号个数取值最大为10。
+	// 接收共享镜像的[账号ID](https://cloud.tencent.com/document/product/213/4944#.E8.8E.B7.E5.8F.96.E4.B8.BB.E8.B4.A6.E5.8F.B7.E7.9A.84.E8.B4.A6.E5.8F.B7-id)列表。账号ID不同于QQ号，查询用户账号ID请查看账号信息中的账号ID栏。账号个数取值最大为10。
 	AccountIds []*string `json:"AccountIds,omitnil,omitempty" name:"AccountIds"`
 }
 
@@ -590,7 +590,7 @@ type CancelShareBlueprintAcrossAccountsRequest struct {
 	// 镜像ID, 可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。
 	BlueprintId *string `json:"BlueprintId,omitnil,omitempty" name:"BlueprintId"`
 
-	// 接收共享镜像的账号ID列表。账号ID不同于QQ号，查询用户账号ID请查看账号信息中的账号ID栏。账号个数取值最大为10。
+	// 接收共享镜像的[账号ID](https://cloud.tencent.com/document/product/213/4944#.E8.8E.B7.E5.8F.96.E4.B8.BB.E8.B4.A6.E5.8F.B7.E7.9A.84.E8.B4.A6.E5.8F.B7-id)列表。账号ID不同于QQ号，查询用户账号ID请查看账号信息中的账号ID栏。账号个数取值最大为10。
 	AccountIds []*string `json:"AccountIds,omitnil,omitempty" name:"AccountIds"`
 }
 
@@ -1822,14 +1822,14 @@ func (r *DeleteKeyPairsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteSnapshotsRequestParams struct {
-	// 要删除的快照 ID 列表，可通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a>查询。
+	// 要删除的快照 ID 列表，每次请求批量快照的上限为10个，可通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a>查询。
 	SnapshotIds []*string `json:"SnapshotIds,omitnil,omitempty" name:"SnapshotIds"`
 }
 
 type DeleteSnapshotsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要删除的快照 ID 列表，可通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a>查询。
+	// 要删除的快照 ID 列表，每次请求批量快照的上限为10个，可通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a>查询。
 	SnapshotIds []*string `json:"SnapshotIds,omitnil,omitempty" name:"SnapshotIds"`
 }
 
@@ -2034,6 +2034,7 @@ type DescribeBlueprintsRequestParams struct {
 	// <li>blueprint-id</li>按照【镜像 ID】进行过滤。
 	// 类型：String
 	// 必选：否
+	// 镜像 ID ，可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值字段BlueprintSet获取。
 	// <li>blueprint-type</li>按照【镜像类型】进行过滤。
 	// 取值：APP_OS（应用镜像 ）；PURE_OS（系统镜像）；DOCKER（Docker容器镜像）；PRIVATE（自定义镜像）；SHARED（共享镜像）。
 	// 类型：String
@@ -2051,8 +2052,9 @@ type DescribeBlueprintsRequestParams struct {
 	// <li>scene-id</li>按照【使用场景Id】进行过滤。
 	// 类型：String
 	// 必选：否
+	// 场景Id，可通过[查看使用场景列表](https://cloud.tencent.com/document/product/1207/83512)接口获取。
 	// 
-	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 BlueprintIds 和 Filters 。
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 BlueprintIds (可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值字段BlueprintSet获取BlueprintId)和 Filters 。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -2072,6 +2074,7 @@ type DescribeBlueprintsRequest struct {
 	// <li>blueprint-id</li>按照【镜像 ID】进行过滤。
 	// 类型：String
 	// 必选：否
+	// 镜像 ID ，可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值字段BlueprintSet获取。
 	// <li>blueprint-type</li>按照【镜像类型】进行过滤。
 	// 取值：APP_OS（应用镜像 ）；PURE_OS（系统镜像）；DOCKER（Docker容器镜像）；PRIVATE（自定义镜像）；SHARED（共享镜像）。
 	// 类型：String
@@ -2089,8 +2092,9 @@ type DescribeBlueprintsRequest struct {
 	// <li>scene-id</li>按照【使用场景Id】进行过滤。
 	// 类型：String
 	// 必选：否
+	// 场景Id，可通过[查看使用场景列表](https://cloud.tencent.com/document/product/1207/83512)接口获取。
 	// 
-	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 BlueprintIds 和 Filters 。
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 BlueprintIds (可通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回值字段BlueprintSet获取BlueprintId)和 Filters 。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -4874,14 +4878,14 @@ func (r *DescribeScenesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSnapshotsDeniedActionsRequestParams struct {
-	// 快照 ID 列表, 可通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a> 查询。
+	// 快照 ID 列表,每次请求批量快照的上限是100个。 可通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a> 查询。
 	SnapshotIds []*string `json:"SnapshotIds,omitnil,omitempty" name:"SnapshotIds"`
 }
 
 type DescribeSnapshotsDeniedActionsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 快照 ID 列表, 可通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a> 查询。
+	// 快照 ID 列表,每次请求批量快照的上限是100个。 可通过 <a href="https://cloud.tencent.com/document/product/1207/54388" target="_blank">DescribeSnapshots</a> 查询。
 	SnapshotIds []*string `json:"SnapshotIds,omitnil,omitempty" name:"SnapshotIds"`
 }
 
@@ -5325,7 +5329,10 @@ type DiscountDetail struct {
 	// 计费时长。
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 计费单元。
+	// 时间单位。
+	// 取值为：
+	// - m - 月
+	// - d - 日
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
 	// 总价。
@@ -5355,15 +5362,24 @@ type Disk struct {
 	DiskName *string `json:"DiskName,omitnil,omitempty" name:"DiskName"`
 
 	// 磁盘类型
+	// 枚举值：
+	// <li> SYSTEM_DISK: 系统盘 </li>
+	// <li> DATA_DISK: 数据盘 </li>
 	DiskUsage *string `json:"DiskUsage,omitnil,omitempty" name:"DiskUsage"`
 
 	// 磁盘介质类型
+	// 枚举值:
+	// <li> CLOUD_BASIC: 普通云硬盘 </li>
+	// <li> CLOUD_PREMIUM: 高性能云硬盘 </li>
+	// <li> CLOUD_SSD: SSD云硬盘 </li>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// 磁盘付费类型
+	// <li> PREPAID: 预付费 </li>
+	// <li> POSTPAID_BY_HOUR: 按小时后付费 </li>
 	DiskChargeType *string `json:"DiskChargeType,omitnil,omitempty" name:"DiskChargeType"`
 
-	// 磁盘大小
+	// 磁盘大小, 单位GB
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
 	// 续费标识
@@ -5371,7 +5387,7 @@ type Disk struct {
 
 	// 磁盘状态，取值范围：
 	// <li>PENDING：创建中。 </li>
-	// <li>UNATTACHED：未挂载。</li>
+	// <li>UNATTACHED：待挂载。</li>
 	// <li>ATTACHING：挂载中。</li>
 	// <li>ATTACHED：已挂载。</li>
 	// <li>DETACHING：卸载中。 </li>
@@ -5469,12 +5485,20 @@ type DiskBackupDeniedActions struct {
 
 type DiskChargePrepaid struct {
 	// 新购周期。
+	// 可选值：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，云硬盘到期后将按月自动续费。
+	// 自动续费标识。取值范围：
+	// - NOTIFY_AND_AUTO_RENEW：通知过期且自动续费。
+	// - NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费。
+	// - DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知。
+	// 
+	// 默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，云硬盘到期后将按月自动续费。
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 新购单位. 默认值: "m"。
+	// 新购单位.。
+	// 可选值：m - 月。
+	// 默认值：m - 月。
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 }
 
@@ -5482,7 +5506,11 @@ type DiskConfig struct {
 	// 可用区。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 云硬盘类型。
+	// 云硬盘类型。枚举值如下：
+	// 
+	// <li>CLOUD_BASIC：普通云硬盘</li>
+	// <li>CLOUD_PREMIUM：高性能云硬盘</li>
+	// <li>CLOUD_SSD：SSD云硬盘</li>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// 云硬盘可售卖状态。
@@ -5673,10 +5701,10 @@ type FirewallRule struct {
 }
 
 type FirewallRuleInfo struct {
-	// 应用类型，取值：自定义，HTTP(80)，HTTPS(443)，Linux登录(22)，Windows登录(3389)，MySQL(3306)，SQL Server(1433)，全部TCP，全部UDP，Ping-ICMP，ALL。
+	// 应用类型，取值：自定义，HTTP(80)，HTTPS(443)，Linux登录(22)，Windows登录(3389)，MySQL(3306)，SQL Server(1433)，全部TCP，全部UDP，Ping-ICMP，Windows登录优化 (3389)，FTP (21)，Ping，Ping (IPv6)，ALL。
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 
-	// 协议，取值：TCP，UDP，ICMP，ALL。
+	// 协议，取值：TCP，UDP，ICMP，ICMPv6，ALL。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。
@@ -6341,7 +6369,9 @@ type Instance struct {
 }
 
 type InstanceChargePrepaid struct {
-	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
+	// 购买实例的时长，单位：月。
+	// - 创建实例时，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
+	// - 续费实例时，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费</li><br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知</li><br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
@@ -6399,7 +6429,17 @@ type InstanceReturnable struct {
 	// 实例是否可退还。
 	IsReturnable *bool `json:"IsReturnable,omitnil,omitempty" name:"IsReturnable"`
 
-	// 实例退还失败错误码。
+	// 实例退还失败错误码。取值:
+	// 0: 可以退还
+	// 1: 资源已退货。如为退货后续费资源，请于购买6小时后操作
+	// 2: 资源已到期
+	// 3: 资源购买超过5天不支持退款
+	// 4: 非预付费资源不支持退款
+	// 8: 退货数量超出限额
+	// 9: 涉及活动订单不支持退款
+	// 10: 资源不支持自助退，请走工单退款
+	// 11: 涉及推广奖励渠道订单，请提工单咨询
+	// 12: 根据业务侧产品规定，该资源不允许退款
 	ReturnFailCode *int64 `json:"ReturnFailCode,omitnil,omitempty" name:"ReturnFailCode"`
 
 	// 实例退还失败错误信息。
@@ -7328,7 +7368,7 @@ type ModifyInstancesBundleRequestParams struct {
 	// 实例ID列表。一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。每次请求批量实例的上限为15。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 待变更的套餐Id。可通过[DescribeBundles](https://cloud.tencent.com/document/api/1207/47575)接口返回值中的BundleId获取。
+	// 待变更的套餐Id。注意不可和当前要升配的实例套餐ID相同。可通过[DescribeBundles](https://cloud.tencent.com/document/api/1207/47575)接口返回值中的BundleId获取。
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
 
 	// 是否自动抵扣代金券。取值范围：
@@ -7344,7 +7384,7 @@ type ModifyInstancesBundleRequest struct {
 	// 实例ID列表。一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。每次请求批量实例的上限为15。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 待变更的套餐Id。可通过[DescribeBundles](https://cloud.tencent.com/document/api/1207/47575)接口返回值中的BundleId获取。
+	// 待变更的套餐Id。注意不可和当前要升配的实例套餐ID相同。可通过[DescribeBundles](https://cloud.tencent.com/document/api/1207/47575)接口返回值中的BundleId获取。
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
 
 	// 是否自动抵扣代金券。取值范围：
@@ -7824,13 +7864,20 @@ type RenewDiskChargePrepaid struct {
 	// 续费周期。
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，云硬盘到期后将按月自动续费。
+	// 自动续费标识。
+	// 取值范围：
+	// <li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
+	// <li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费，用户需要手动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不自动续费，且不通知</li>
+	// 默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，云硬盘到期后将按月自动续费。
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 周期单位。取值范围：“m”(月)。默认值: "m"。
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
-	// 当前实例到期时间。如“2018-01-01 00:00:00”。指定该参数即可对齐云硬盘所挂载的实例到期时间。该参数与Period必须指定其一，且不支持同时指定。
+	// 当前实例到期时间。如“2018-01-01 00:00:00”。
+	// 指定该参数即可对齐云硬盘所挂载的实例到期时间。
+	// 该参数与Period必须指定其一，且不支持同时指定。
+	// 该参数值必须大于入参中云硬盘的过期时间。
 	CurInstanceDeadline *string `json:"CurInstanceDeadline,omitnil,omitempty" name:"CurInstanceDeadline"`
 }
 
@@ -8250,7 +8297,10 @@ type ResetInstanceBlueprint struct {
 	// 镜像详细信息
 	BlueprintInfo *Blueprint `json:"BlueprintInfo,omitnil,omitempty" name:"BlueprintInfo"`
 
-	// 实例镜像是否可重置为目标镜像
+	// 实例镜像是否可重置为目标镜像。
+	// 取值：
+	// true（允许）
+	// false（不允许）
 	IsResettable *bool `json:"IsResettable,omitnil,omitempty" name:"IsResettable"`
 
 	// 不可重置信息.当镜像可重置时为""
@@ -8616,7 +8666,7 @@ type ShareBlueprintAcrossAccountsRequestParams struct {
 	// 镜像ID, 可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。
 	BlueprintId *string `json:"BlueprintId,omitnil,omitempty" name:"BlueprintId"`
 
-	// 接收共享镜像的账号Id列表。账号ID不同于QQ号，查询用户账号ID请查看账号信息中的账号ID栏。账号个数取值最大为10。
+	// 接收共享镜像的[账号ID](https://cloud.tencent.com/document/product/213/4944#.E8.8E.B7.E5.8F.96.E4.B8.BB.E8.B4.A6.E5.8F.B7.E7.9A.84.E8.B4.A6.E5.8F.B7-id)列表。账号ID不同于QQ号，查询用户账号ID请查看账号信息中的账号ID栏。账号个数取值最大为10。
 	AccountIds []*string `json:"AccountIds,omitnil,omitempty" name:"AccountIds"`
 }
 
@@ -8626,7 +8676,7 @@ type ShareBlueprintAcrossAccountsRequest struct {
 	// 镜像ID, 可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。
 	BlueprintId *string `json:"BlueprintId,omitnil,omitempty" name:"BlueprintId"`
 
-	// 接收共享镜像的账号Id列表。账号ID不同于QQ号，查询用户账号ID请查看账号信息中的账号ID栏。账号个数取值最大为10。
+	// 接收共享镜像的[账号ID](https://cloud.tencent.com/document/product/213/4944#.E8.8E.B7.E5.8F.96.E4.B8.BB.E8.B4.A6.E5.8F.B7.E7.9A.84.E8.B4.A6.E5.8F.B7-id)列表。账号ID不同于QQ号，查询用户账号ID请查看账号信息中的账号ID栏。账号个数取值最大为10。
 	AccountIds []*string `json:"AccountIds,omitnil,omitempty" name:"AccountIds"`
 }
 
@@ -9043,6 +9093,7 @@ type Tag struct {
 // Predefined struct for user
 type TerminateDisksRequestParams struct {
 	// 云硬盘ID列表。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
+	// 每次批量请求云硬盘的上限数量为100。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 }
 
@@ -9050,6 +9101,7 @@ type TerminateDisksRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云硬盘ID列表。可通过[DescribeDisks](https://cloud.tencent.com/document/product/1207/66093)接口返回值中的DiskId获取。
+	// 每次批量请求云硬盘的上限数量为100。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 }
 

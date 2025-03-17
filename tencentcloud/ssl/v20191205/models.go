@@ -1155,6 +1155,7 @@ type Certificates struct {
 	HostingResourceTypes []*string `json:"HostingResourceTypes,omitnil,omitempty" name:"HostingResourceTypes"`
 
 	// 托管配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostingConfig *HostingConfig `json:"HostingConfig,omitnil,omitempty" name:"HostingConfig"`
 }
 
@@ -1314,7 +1315,6 @@ func (r *CheckCertificateExistRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CheckCertificateExistResponseParams struct {
 	// 重复的证书ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepeatCertId *string `json:"RepeatCertId,omitnil,omitempty" name:"RepeatCertId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2531,7 +2531,6 @@ func (r *DeployCertificateInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeployCertificateInstanceResponseParams struct {
 	// 云资源部署任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployRecordId *uint64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
 	// 部署任务创建状态；1表示创建成功； 0表示当前存在部署中的任务，未创建新的部署任务；返回值DeployRecordId为部署中的任务ID
@@ -2870,43 +2869,33 @@ func (r *DescribeCertificateBindResourceTaskDetailRequest) FromJsonString(s stri
 // Predefined struct for user
 type DescribeCertificateBindResourceTaskDetailResponseParams struct {
 	// 关联clb资源详情	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CLB []*ClbInstanceList `json:"CLB,omitnil,omitempty" name:"CLB"`
 
 	// 关联cdn资源详情	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CDN []*CdnInstanceList `json:"CDN,omitnil,omitempty" name:"CDN"`
 
 	// 关联waf资源详情	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WAF []*WafInstanceList `json:"WAF,omitnil,omitempty" name:"WAF"`
 
 	// 关联ddos资源详情	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DDOS []*DdosInstanceList `json:"DDOS,omitnil,omitempty" name:"DDOS"`
 
 	// 关联live资源详情	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LIVE []*LiveInstanceList `json:"LIVE,omitnil,omitempty" name:"LIVE"`
 
 	// 关联vod资源详情	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VOD []*VODInstanceList `json:"VOD,omitnil,omitempty" name:"VOD"`
 
 	// 关联tke资源详情	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TKE []*TkeInstanceList `json:"TKE,omitnil,omitempty" name:"TKE"`
 
 	// 关联apigateway资源详情	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	APIGATEWAY []*ApiGatewayInstanceList `json:"APIGATEWAY,omitnil,omitempty" name:"APIGATEWAY"`
 
 	// 关联tcb资源详情	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TCB []*TCBInstanceList `json:"TCB,omitnil,omitempty" name:"TCB"`
 
 	// 关联teo资源详情	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TEO []*TeoInstanceList `json:"TEO,omitnil,omitempty" name:"TEO"`
 
 	// 关联云资源异步查询结果： 0表示查询中， 1表示查询成功。 2表示查询异常； 若状态为1，则查看BindResourceResult结果；若状态为2，则查看Error原因
@@ -2916,11 +2905,9 @@ type DescribeCertificateBindResourceTaskDetailResponseParams struct {
 	CacheTime *string `json:"CacheTime,omitnil,omitempty" name:"CacheTime"`
 
 	// 关联tse资源详情	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TSE []*TSEInstanceList `json:"TSE,omitnil,omitempty" name:"TSE"`
 
 	// 关联的COS资源详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	COS []*COSInstanceList `json:"COS,omitnil,omitempty" name:"COS"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2978,7 +2965,6 @@ func (r *DescribeCertificateBindResourceTaskResultRequest) FromJsonString(s stri
 // Predefined struct for user
 type DescribeCertificateBindResourceTaskResultResponseParams struct {
 	// 异步任务绑定关联云资源结果列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SyncTaskBindResourceResult []*SyncTaskBindResourceResult `json:"SyncTaskBindResourceResult,omitnil,omitempty" name:"SyncTaskBindResourceResult"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3036,11 +3022,9 @@ func (r *DescribeCertificateDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCertificateDetailResponseParams struct {
 	// 证书所属用户主账号 UIN。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
 	// 项目 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 证书来源：
@@ -3048,11 +3032,9 @@ type DescribeCertificateDetailResponseParams struct {
 	// upload：用户上传。
 	// wosign：沃通
 	// sheca：上海CA
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	From *string `json:"From,omitnil,omitempty" name:"From"`
 
 	// 证书类型：CA = 客户端证书，SVR = 服务器证书。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateType *string `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
 
 	// 证书套餐类型：
@@ -3144,19 +3126,15 @@ type DescribeCertificateDetailResponseParams struct {
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
 	// 证书产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductZhName *string `json:"ProductZhName,omitnil,omitempty" name:"ProductZhName"`
 
 	// 证书绑定通用名称域名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 备注名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 状态信息。 取值范围：
@@ -3180,7 +3158,6 @@ type DescribeCertificateDetailResponseParams struct {
 	VerifyType *string `json:"VerifyType,omitnil,omitempty" name:"VerifyType"`
 
 	// 漏洞扫描状态。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulnerabilityStatus *string `json:"VulnerabilityStatus,omitnil,omitempty" name:"VulnerabilityStatus"`
 
 	// 证书生效时间。
@@ -3192,11 +3169,9 @@ type DescribeCertificateDetailResponseParams struct {
 	CertEndTime *string `json:"CertEndTime,omitnil,omitempty" name:"CertEndTime"`
 
 	// 证书有效期：单位（月）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidityPeriod *string `json:"ValidityPeriod,omitnil,omitempty" name:"ValidityPeriod"`
 
 	// 证书申请时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InsertTime *string `json:"InsertTime,omitnil,omitempty" name:"InsertTime"`
 
 	// CA订单 ID。
@@ -3204,7 +3179,6 @@ type DescribeCertificateDetailResponseParams struct {
 	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// 证书扩展信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateExtra *CertificateExtra `json:"CertificateExtra,omitnil,omitempty" name:"CertificateExtra"`
 
 	// 私钥证书， 国密证书则为签名证书中的私钥证书
@@ -3224,7 +3198,6 @@ type DescribeCertificateDetailResponseParams struct {
 	VulnerabilityReport *string `json:"VulnerabilityReport,omitnil,omitempty" name:"VulnerabilityReport"`
 
 	// 证书 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 证书类型名称。
@@ -3232,27 +3205,21 @@ type DescribeCertificateDetailResponseParams struct {
 	TypeName *string `json:"TypeName,omitnil,omitempty" name:"TypeName"`
 
 	// 状态描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusName *string `json:"StatusName,omitnil,omitempty" name:"StatusName"`
 
 	// 证书包含的多个域名（不包含主域名，主域名使用Domain字段）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubjectAltName []*string `json:"SubjectAltName,omitnil,omitempty" name:"SubjectAltName"`
 
 	// 是否为付费证书。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsVip *bool `json:"IsVip,omitnil,omitempty" name:"IsVip"`
 
 	// 是否为泛域名证书。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsWildcard *bool `json:"IsWildcard,omitnil,omitempty" name:"IsWildcard"`
 
 	// 是否为 DV 版证书。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDv *bool `json:"IsDv,omitnil,omitempty" name:"IsDv"`
 
 	// 是否启用了漏洞扫描功能。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsVulnerability *bool `json:"IsVulnerability,omitnil,omitempty" name:"IsVulnerability"`
 
 	// 付费证书提交的资料信息。
@@ -3260,19 +3227,15 @@ type DescribeCertificateDetailResponseParams struct {
 	SubmittedData *SubmittedData `json:"SubmittedData,omitnil,omitempty" name:"SubmittedData"`
 
 	// 是否可续费。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewAble *bool `json:"RenewAble,omitnil,omitempty" name:"RenewAble"`
 
 	// 是否可部署。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Deployable *bool `json:"Deployable,omitnil,omitempty" name:"Deployable"`
 
 	// 关联标签列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 根证书。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RootCert *RootCertificates `json:"RootCert,omitnil,omitempty" name:"RootCert"`
 
 	// 国密加密证书公钥， 仅国密证书有值
@@ -3292,7 +3255,6 @@ type DescribeCertificateDetailResponseParams struct {
 	EncryptCertFingerprint *string `json:"EncryptCertFingerprint,omitnil,omitempty" name:"EncryptCertFingerprint"`
 
 	// 证书加密算法（国密证书特有）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitnil,omitempty" name:"EncryptAlgorithm"`
 
 	// DV证书吊销验证值
@@ -3385,7 +3347,6 @@ type DescribeCertificateOperateLogsResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 证书操作日志列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateLogs []*OperationLog `json:"OperateLogs,omitnil,omitempty" name:"OperateLogs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3853,11 +3814,9 @@ func (r *DescribeCertificatesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCertificatesResponseParams struct {
 	// 总数量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Certificates []*Certificates `json:"Certificates,omitnil,omitempty" name:"Certificates"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3989,7 +3948,6 @@ func (r *DescribeDeleteCertificatesTaskResultRequest) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeDeleteCertificatesTaskResultResponseParams struct {
 	// 批量删除证书异步任务结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeleteTaskResult []*DeleteTaskResult `json:"DeleteTaskResult,omitnil,omitempty" name:"DeleteTaskResult"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4222,7 +4180,6 @@ func (r *DescribeHostApiGatewayInstanceListRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeHostApiGatewayInstanceListResponseParams struct {
 	// apiGateway实例列表,如取不到值返回空数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*ApiGatewayInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 总数，如取不到值返回0
@@ -4334,23 +4291,18 @@ func (r *DescribeHostCdnInstanceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostCdnInstanceListResponseParams struct {
 	// CDN实例列表，如取不到值返回空数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*CdnInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// CDN域名总数，如取不到值返回0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 异步刷新总数，如取不到值返回0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncTotalNum *int64 `json:"AsyncTotalNum,omitnil,omitempty" name:"AsyncTotalNum"`
 
 	// 异步刷新当前执行数，如取不到值返回0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncOffset *int64 `json:"AsyncOffset,omitnil,omitempty" name:"AsyncOffset"`
 
 	// 当前缓存读取时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncCacheTime *string `json:"AsyncCacheTime,omitnil,omitempty" name:"AsyncCacheTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4450,23 +4402,18 @@ func (r *DescribeHostClbInstanceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostClbInstanceListResponseParams struct {
 	// 总数，取不到值返回0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// CLB实例监听器列表，取不到值返回空数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*ClbInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 异步刷新总数，取不到值返回0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncTotalNum *int64 `json:"AsyncTotalNum,omitnil,omitempty" name:"AsyncTotalNum"`
 
 	// 异步刷新当前执行数，取不到值返回0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncOffset *int64 `json:"AsyncOffset,omitnil,omitempty" name:"AsyncOffset"`
 
 	// 当前缓存读取时间，去不到值返回空
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncCacheTime *string `json:"AsyncCacheTime,omitnil,omitempty" name:"AsyncCacheTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4573,23 +4520,18 @@ func (r *DescribeHostCosInstanceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostCosInstanceListResponseParams struct {
 	// COS实例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*CosInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 异步刷新总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncTotalNum *int64 `json:"AsyncTotalNum,omitnil,omitempty" name:"AsyncTotalNum"`
 
 	// 异步刷新当前执行数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncOffset *int64 `json:"AsyncOffset,omitnil,omitempty" name:"AsyncOffset"`
 
 	// 当前缓存读取时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncCacheTime *string `json:"AsyncCacheTime,omitnil,omitempty" name:"AsyncCacheTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4689,11 +4631,9 @@ func (r *DescribeHostDdosInstanceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostDdosInstanceListResponseParams struct {
 	// DDOS实例列表,取不到值返回空数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*DdosInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4765,23 +4705,18 @@ func (r *DescribeHostDeployRecordDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostDeployRecordDetailResponseParams struct {
 	// 部署记录总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 证书部署记录列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployRecordDetailList []*DeployRecordDetail `json:"DeployRecordDetailList,omitnil,omitempty" name:"DeployRecordDetailList"`
 
 	// 成功总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuccessTotalCount *int64 `json:"SuccessTotalCount,omitnil,omitempty" name:"SuccessTotalCount"`
 
 	// 失败总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedTotalCount *int64 `json:"FailedTotalCount,omitnil,omitempty" name:"FailedTotalCount"`
 
 	// 部署中总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunningTotalCount *int64 `json:"RunningTotalCount,omitnil,omitempty" name:"RunningTotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4860,11 +4795,9 @@ func (r *DescribeHostDeployRecordRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostDeployRecordResponseParams struct {
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 证书部署记录列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployRecordList []*DeployRecordInfo `json:"DeployRecordList,omitnil,omitempty" name:"DeployRecordList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4945,11 +4878,9 @@ func (r *DescribeHostLighthouseInstanceListRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeHostLighthouseInstanceListResponseParams struct {
 	// Lighthouse实例列表,如取不到返回空数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*LighthouseInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 总数，如取不到返回0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5037,7 +4968,6 @@ func (r *DescribeHostLiveInstanceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostLiveInstanceListResponseParams struct {
 	// live实例列表,如取不到值返回空数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*LiveInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5146,7 +5076,6 @@ func (r *DescribeHostTeoInstanceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostTeoInstanceListResponseParams struct {
 	// teo实例列表，如取不到值返回空数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*TeoInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 总数
@@ -5249,23 +5178,18 @@ func (r *DescribeHostTkeInstanceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostTkeInstanceListResponseParams struct {
 	// 总数，取不到值返回0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// tke实例列表，取不到值返回空数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*TkeInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 异步刷新总数，取不到值返回0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncTotalNum *int64 `json:"AsyncTotalNum,omitnil,omitempty" name:"AsyncTotalNum"`
 
 	// 异步刷新当前执行数，取不到值返回0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncOffset *int64 `json:"AsyncOffset,omitnil,omitempty" name:"AsyncOffset"`
 
 	// 当前缓存读取时间	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncCacheTime *string `json:"AsyncCacheTime,omitnil,omitempty" name:"AsyncCacheTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5337,23 +5261,18 @@ func (r *DescribeHostUpdateRecordDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostUpdateRecordDetailResponseParams struct {
 	// 总数,如果取不到返回0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 证书部署记录列表，如果取不到值返回空数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordDetailList []*UpdateRecordDetails `json:"RecordDetailList,omitnil,omitempty" name:"RecordDetailList"`
 
 	// 成功总数,如果取不到返回0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuccessTotalCount *int64 `json:"SuccessTotalCount,omitnil,omitempty" name:"SuccessTotalCount"`
 
 	// 失败总数,如果取不到返回0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedTotalCount *int64 `json:"FailedTotalCount,omitnil,omitempty" name:"FailedTotalCount"`
 
 	// 部署中总数,如果取不到返回0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunningTotalCount *int64 `json:"RunningTotalCount,omitnil,omitempty" name:"RunningTotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5432,11 +5351,9 @@ func (r *DescribeHostUpdateRecordRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostUpdateRecordResponseParams struct {
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 证书部署记录列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployRecordList []*UpdateRecordInfo `json:"DeployRecordList,omitnil,omitempty" name:"DeployRecordList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5524,11 +5441,9 @@ func (r *DescribeHostVodInstanceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostVodInstanceListResponseParams struct {
 	// Vod实例列表，如果取不到值返回空数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*VodInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 总数,如果取不到值返回0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5616,8 +5531,7 @@ func (r *DescribeHostWafInstanceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostWafInstanceListResponseParams struct {
 	// WAF实例列表，如果没有取到值返回空数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceList []*LiveInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
+	InstanceList []*WafInstanceDetail `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6054,11 +5968,9 @@ func (r *DownloadCertificateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DownloadCertificateResponseParams struct {
 	// ZIP base64 编码内容，base64 解码后可保存为 ZIP 文件。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// MIME 类型：application/zip = ZIP 压缩文件。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6109,40 +6021,32 @@ type DvAuthDetail struct {
 
 type DvAuths struct {
 	// 证书域名验证记录Key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthKey *string `json:"DvAuthKey,omitnil,omitempty" name:"DvAuthKey"`
 
 	// 证书域名验证记录值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthValue *string `json:"DvAuthValue,omitnil,omitempty" name:"DvAuthValue"`
 
 	// 证书域名验证域名值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthDomain *string `json:"DvAuthDomain,omitnil,omitempty" name:"DvAuthDomain"`
 
 	// 证书域名验证文件路径， 仅FILE、FILE_PROXY使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthPath *string `json:"DvAuthPath,omitnil,omitempty" name:"DvAuthPath"`
 
 	// 证书域名验证子域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthSubDomain *string `json:"DvAuthSubDomain,omitnil,omitempty" name:"DvAuthSubDomain"`
 
 	// 证书域名验证类型，取值：
 	// TXT：DNS域名验证添加TXT记录
 	// FILE：域名文件验证
 	// CNAME：DNS域名验证添加CNAME记录
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DvAuthVerifyType *string `json:"DvAuthVerifyType,omitnil,omitempty" name:"DvAuthVerifyType"`
 }
 
 type Error struct {
 	// 异常错误码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 异常错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }
 
@@ -6156,33 +6060,26 @@ type Filter struct {
 
 type GatewayCertificate struct {
 	// 网关证书ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 网关证书名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 绑定域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindDomains []*string `json:"BindDomains,omitnil,omitempty" name:"BindDomains"`
 
 	// 证书来源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertSource *string `json:"CertSource,omitnil,omitempty" name:"CertSource"`
 
 	// 当前绑定的SSL证书ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 }
 
 type HostingConfig struct {
 	// 托管资源替换时间， 默认为证书过期前30天存在续费证书则替换
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplaceTime *int64 `json:"ReplaceTime,omitnil,omitempty" name:"ReplaceTime"`
 
 	// 托管发送消息类型：0，托管开始前消息提醒（没有续费证书也会收到该提示消息）； 1， 托管开始消息提醒（存在续费证书才会收到消息提醒）； 2， 托管资源替换失败消息提醒； 3 托管资源替换成功消息提醒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageTypes []*int64 `json:"MessageTypes,omitnil,omitempty" name:"MessageTypes"`
 
 	// 资源替换开始时间
@@ -6285,25 +6182,20 @@ type ManagerInfo struct {
 	StatusInfo []*ManagerStatusInfo `json:"StatusInfo,omitnil,omitempty" name:"StatusInfo"`
 
 	// 标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type ManagerStatusInfo struct {
-	// 审核类型，枚举值：ov,ev,cs,ev_cs
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 审核类型，枚举值：ov,ev
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 审核状态，枚举值：pending,completed,invalid,submitted,expiring,expired
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 过期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 }
 
@@ -6413,11 +6305,9 @@ func (r *ModifyCertificateProjectRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCertificateProjectResponseParams struct {
 	// 修改所属项目成功的证书集合。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuccessCertificates []*string `json:"SuccessCertificates,omitnil,omitempty" name:"SuccessCertificates"`
 
 	// 修改所属项目失败的证书集合。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailCertificates []*string `json:"FailCertificates,omitnil,omitempty" name:"FailCertificates"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6569,15 +6459,12 @@ type OperationLog struct {
 	CreatedOn *string `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
 
 	// 主账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 子账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubAccountUin *string `json:"SubAccountUin,omitnil,omitempty" name:"SubAccountUin"`
 
 	// 证书ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 每个操作类型都对应一个具体的操作描述。以下是对每个操作类型及其描述的文字说明：
@@ -6607,7 +6494,6 @@ type OperationLog struct {
 	// 24. issued - 表示证书签发。
 	// 25. domainValidationPassed - 表示域名验证完成。
 	// 26. Resubmit - 表示证书重新申请。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -6682,41 +6568,32 @@ type PackageTransferOutInfo struct {
 
 type PreAuditInfo struct {
 	// 证书总年限
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalPeriod *int64 `json:"TotalPeriod,omitnil,omitempty" name:"TotalPeriod"`
 
 	// 证书当前年限
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NowPeriod *int64 `json:"NowPeriod,omitnil,omitempty" name:"NowPeriod"`
 
 	// 证书预审核管理人ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ManagerId *string `json:"ManagerId,omitnil,omitempty" name:"ManagerId"`
 }
 
 type ProjectInfo struct {
 	// 项目名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
 	// 项目创建用户 UIN。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectCreatorUin *uint64 `json:"ProjectCreatorUin,omitnil,omitempty" name:"ProjectCreatorUin"`
 
 	// 项目创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectCreateTime *string `json:"ProjectCreateTime,omitnil,omitempty" name:"ProjectCreateTime"`
 
 	// 项目信息简述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectResume *string `json:"ProjectResume,omitnil,omitempty" name:"ProjectResume"`
 
 	// 用户 UIN。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerUin *uint64 `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
 	// 项目 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -6878,7 +6755,6 @@ func (r *RevokeCertificateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RevokeCertificateResponseParams struct {
 	// 吊销证书域名验证信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RevokeDomainValidateAuths []*RevokeDomainValidateAuths `json:"RevokeDomainValidateAuths,omitnil,omitempty" name:"RevokeDomainValidateAuths"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6903,19 +6779,15 @@ func (r *RevokeCertificateResponse) FromJsonString(s string) error {
 
 type RevokeDomainValidateAuths struct {
 	// DV 认证值路径。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainValidateAuthPath *string `json:"DomainValidateAuthPath,omitnil,omitempty" name:"DomainValidateAuthPath"`
 
 	// DV 认证 KEY。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainValidateAuthKey *string `json:"DomainValidateAuthKey,omitnil,omitempty" name:"DomainValidateAuthKey"`
 
 	// DV 认证值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainValidateAuthValue *string `json:"DomainValidateAuthValue,omitnil,omitempty" name:"DomainValidateAuthValue"`
 
 	// DV 认证域名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainValidateAuthDomain *string `json:"DomainValidateAuthDomain,omitnil,omitempty" name:"DomainValidateAuthDomain"`
 }
 
@@ -7365,7 +7237,6 @@ type SyncTaskBindResourceResult struct {
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 关联云资源结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindResourceResult []*BindResourceResult `json:"BindResourceResult,omitnil,omitempty" name:"BindResourceResult"`
 
 	// 关联云资源异步查询结果： 0表示查询中， 1表示查询成功。 2表示查询异常； 若状态为1，则查看BindResourceResult结果；若状态为2，则查看Error原因
@@ -7381,58 +7252,43 @@ type SyncTaskBindResourceResult struct {
 
 type TCBAccessInstance struct {
 	// 域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 统一域名状态
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnionStatus *int64 `json:"UnionStatus,omitnil,omitempty" name:"UnionStatus"`
 
 	// 是否被抢占, 被抢占表示域名被其他环境绑定了，需要解绑或者重新绑定。
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPreempted *bool `json:"IsPreempted,omitnil,omitempty" name:"IsPreempted"`
 
 	// icp黑名单封禁状态，0-未封禁，1-封禁
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ICPStatus *int64 `json:"ICPStatus,omitnil,omitempty" name:"ICPStatus"`
 
 	// 已绑定证书ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 }
 
 type TCBAccessService struct {
 	// 实例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*TCBAccessInstance `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
 type TCBEnvironment struct {
 	// 唯一ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// 来源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -7452,29 +7308,23 @@ type TCBEnvironments struct {
 
 type TCBHostInstance struct {
 	// 域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 解析状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DNSStatus *string `json:"DNSStatus,omitnil,omitempty" name:"DNSStatus"`
 
 	// 已绑定证书ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
 }
 
 type TCBHostService struct {
 	// 实例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceList []*TCBHostInstance `json:"InstanceList,omitnil,omitempty" name:"InstanceList"`
 
 	// 数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
@@ -7493,15 +7343,12 @@ type TCBInstanceList struct {
 
 type TSEInstanceDetail struct {
 	// 网关ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// 网关名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayName *string `json:"GatewayName,omitnil,omitempty" name:"GatewayName"`
 
 	// 网关证书列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateList []*GatewayCertificate `json:"CertificateList,omitnil,omitempty" name:"CertificateList"`
 }
 
@@ -7743,7 +7590,6 @@ func (r *UpdateCertificateInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateCertificateInstanceResponseParams struct {
 	// 云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployRecordId *uint64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
 
 	// 更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID
@@ -7985,15 +7831,12 @@ type UpdateRecordDetail struct {
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
 	// 环境ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// TCB部署类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TCBType *string `json:"TCBType,omitnil,omitempty" name:"TCBType"`
 
 	// 监听器Url(clb专属)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
@@ -8034,7 +7877,6 @@ type UpdateRecordInfo struct {
 	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
 
 	// 部署地域列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Regions []*string `json:"Regions,omitnil,omitempty" name:"Regions"`
 
 	// 部署状态
@@ -8166,7 +8008,6 @@ type UploadCertificateResponseParams struct {
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
 	// 重复证书的ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepeatCertId *string `json:"RepeatCertId,omitnil,omitempty" name:"RepeatCertId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
