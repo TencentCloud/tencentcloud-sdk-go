@@ -1629,7 +1629,6 @@ type DescribeRegisterCodesResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 注册码信息列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegisterCodeSet []*RegisterCodeInfo `json:"RegisterCodeSet,omitnil,omitempty" name:"RegisterCodeSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2213,6 +2212,9 @@ type InvocationTask struct {
 	ErrorInfo *string `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
 	// 调用来源。
+	// 
+	// - USER：来源于用户调用。
+	// - INVOKER：来源于定时执行。
 	InvocationSource *string `json:"InvocationSource,omitnil,omitempty" name:"InvocationSource"`
 }
 
@@ -2401,7 +2403,6 @@ type Invoker struct {
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 执行器周期计划。周期执行器会返回此字段。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleSettings *ScheduleSettings `json:"ScheduleSettings,omitnil,omitempty" name:"ScheduleSettings"`
 
 	// 创建时间。格式为：YYYY-MM-DDThh:mm:ssZ
@@ -2927,10 +2928,10 @@ type RegisterInstanceInfo struct {
 	// 注册码ID。
 	RegisterCodeId *string `json:"RegisterCodeId,omitnil,omitempty" name:"RegisterCodeId"`
 
-	// 实例ID。
+	// 托管实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例名。
+	// 托管实例名。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 机器ID。

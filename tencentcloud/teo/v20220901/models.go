@@ -10141,6 +10141,43 @@ type DetailHost struct {
 	ClientIpCountry *ClientIpCountry `json:"ClientIpCountry,omitnil,omitempty" name:"ClientIpCountry"`
 }
 
+type DetectLengthLimitCondition struct {
+	// 匹配条件的参数名称，取值有：
+	// <li>body_depth：请求正文包部分的检测深度。</li>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 匹配条件的参数值，取值与 Name 成对使用。
+	// 当 Name 值为 body_depth 时， Values 只支持传入单个值，取值有：
+	// <li>8KB；</li>
+	// <li>64KB；</li>
+	// <li>128KB。</li>
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type DetectLengthLimitConfig struct {
+	// 检测长度限制的规则列表。
+	DetectLengthLimitRules []*DetectLengthLimitRule `json:"DetectLengthLimitRules,omitnil,omitempty" name:"DetectLengthLimitRules"`
+}
+
+type DetectLengthLimitRule struct {
+	// 规则Id。仅出参使用。
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 规则名称。仅出参使用。
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 规则描述，仅出参使用。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 规则配置条件。仅出参使用。
+	Conditions []*DetectLengthLimitCondition `json:"Conditions,omitnil,omitempty" name:"Conditions"`
+
+	// 处置方式，取值有：
+	// <li>skip：当请求正文数据超过 Conditions 出参中 body_depth 设置的检测深度时，跳过所有请求正文内容的检测；</li>
+	// <li>scan：仅检测 Conditions 出参中 body_depth 设置的检测深度，对超出部分的请求正文内容直接截断处理，超出部分的请求正文不会经过安全检测。</li>仅出参使用。
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+}
+
 type DiffIPWhitelist struct {
 	// 最新IP白名单列表。
 	LatestIPWhitelist *IPWhitelist `json:"LatestIPWhitelist,omitnil,omitempty" name:"LatestIPWhitelist"`
@@ -16187,6 +16224,10 @@ type SecurityConfig struct {
 	// 慢速攻击配置。如果入参为空或不填，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlowPostConfig *SlowPostConfig `json:"SlowPostConfig,omitnil,omitempty" name:"SlowPostConfig"`
+
+	// 检测长度限制配置。仅出参使用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectLengthLimitConfig *DetectLengthLimitConfig `json:"DetectLengthLimitConfig,omitnil,omitempty" name:"DetectLengthLimitConfig"`
 }
 
 type SecurityTemplateBinding struct {

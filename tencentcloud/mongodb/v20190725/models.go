@@ -3319,13 +3319,13 @@ type InquirePriceCreateDBInstancesRequestParams struct {
 	// 指 Mongos 个数，取值范围为[3,32]。若为分片集群实例询价，则该参数必须设置。注意为空时取默认取值为3个节点。
 	MongosNum *uint64 `json:"MongosNum,omitnil,omitempty" name:"MongosNum"`
 
-	// 指 ConfigServer CPU核数，取值为1，单位：GB。若为分片集群实例询价，该参数必须设置。
+	// 指 ConfigServer CPU核数，固定取值为 1，单位：GB，可不配置该参数。
 	ConfigServerCpu *uint64 `json:"ConfigServerCpu,omitnil,omitempty" name:"ConfigServerCpu"`
 
-	// 指 ConfigServer 内存大小，取值为2，单位：GB。若为分片集群实例询价，则该参数必须设置。
+	// 指 ConfigServer 内存大小，固定取值为 2，单位：GB，可不配置该参数。
 	ConfigServerMemory *uint64 `json:"ConfigServerMemory,omitnil,omitempty" name:"ConfigServerMemory"`
 
-	// 指 ConfigServer 磁盘大小，取值为 20，单位：GB。若为分片集群实例询价，则该参数必须设置。
+	// 指 ConfigServer 磁盘大小，固定取值为 20，单位：GB，可不配置该参数。
 	ConfigServerVolume *uint64 `json:"ConfigServerVolume,omitnil,omitempty" name:"ConfigServerVolume"`
 }
 
@@ -3393,13 +3393,13 @@ type InquirePriceCreateDBInstancesRequest struct {
 	// 指 Mongos 个数，取值范围为[3,32]。若为分片集群实例询价，则该参数必须设置。注意为空时取默认取值为3个节点。
 	MongosNum *uint64 `json:"MongosNum,omitnil,omitempty" name:"MongosNum"`
 
-	// 指 ConfigServer CPU核数，取值为1，单位：GB。若为分片集群实例询价，该参数必须设置。
+	// 指 ConfigServer CPU核数，固定取值为 1，单位：GB，可不配置该参数。
 	ConfigServerCpu *uint64 `json:"ConfigServerCpu,omitnil,omitempty" name:"ConfigServerCpu"`
 
-	// 指 ConfigServer 内存大小，取值为2，单位：GB。若为分片集群实例询价，则该参数必须设置。
+	// 指 ConfigServer 内存大小，固定取值为 2，单位：GB，可不配置该参数。
 	ConfigServerMemory *uint64 `json:"ConfigServerMemory,omitnil,omitempty" name:"ConfigServerMemory"`
 
-	// 指 ConfigServer 磁盘大小，取值为 20，单位：GB。若为分片集群实例询价，则该参数必须设置。
+	// 指 ConfigServer 磁盘大小，固定取值为 20，单位：GB，可不配置该参数。
 	ConfigServerVolume *uint64 `json:"ConfigServerVolume,omitnil,omitempty" name:"ConfigServerVolume"`
 }
 

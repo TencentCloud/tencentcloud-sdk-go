@@ -418,11 +418,9 @@ type ColumnPrivilege struct {
 
 type ConstraintRange struct {
 	// 约束类型为section时的最小值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Min *string `json:"Min,omitnil,omitempty" name:"Min"`
 
 	// 约束类型为section时的最大值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Max *string `json:"Max,omitnil,omitempty" name:"Max"`
 }
 
@@ -1374,7 +1372,6 @@ type DBAccount struct {
 	ReadOnly *int64 `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 
 	// 该字段对只读账号有意义，表示选择主备延迟小于该值的备机
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DelayThresh *int64 `json:"DelayThresh,omitnil,omitempty" name:"DelayThresh"`
 
 	// 针对只读账号，设置策略是否固定备机，0：不固定备机，即备机不满足条件与客户端不断开连接，Proxy选择其他可用备机，1：备机不满足条件断开连接，确保一个连接固定备机。
@@ -1579,19 +1576,15 @@ type DBParamValue struct {
 
 type DCNReplicaConfig struct {
 	// DCN 运行状态，START为正常运行，STOP为暂停
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoReplicationMode *string `json:"RoReplicationMode,omitnil,omitempty" name:"RoReplicationMode"`
 
 	// 延迟复制的类型，DEFAULT为正常，DUE_TIME为指定时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DelayReplicationType *string `json:"DelayReplicationType,omitnil,omitempty" name:"DelayReplicationType"`
 
 	// 延迟复制的指定时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DueTime *string `json:"DueTime,omitnil,omitempty" name:"DueTime"`
 
 	// 延迟复制时的延迟秒数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplicationDelay *int64 `json:"ReplicationDelay,omitnil,omitempty" name:"ReplicationDelay"`
 }
 
@@ -4777,7 +4770,6 @@ type InstanceBackupFileItem struct {
 	InstanceStatus *int64 `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
 	// 分片ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShardId *string `json:"ShardId,omitnil,omitempty" name:"ShardId"`
 
 	// 文件路径
@@ -4807,11 +4799,9 @@ type InstanceBackupFileItem struct {
 
 type InstanceSpec struct {
 	// 设备型号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Machine *string `json:"Machine,omitnil,omitempty" name:"Machine"`
 
 	// 该机型对应的可售卖规格列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpecInfos []*SpecConfigInfo `json:"SpecInfos,omitnil,omitempty" name:"SpecInfos"`
 }
 
@@ -6366,7 +6356,6 @@ type ParamDesc struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 设置过的值，参数生效后，该值和value一样。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SetValue *string `json:"SetValue,omitnil,omitempty" name:"SetValue"`
 
 	// 系统默认值
@@ -6759,7 +6748,6 @@ type SlowLogData struct {
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
 	// 样例Sql
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExampleSql *string `json:"ExampleSql,omitnil,omitempty" name:"ExampleSql"`
 
 	// 账户的域名

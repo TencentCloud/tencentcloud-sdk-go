@@ -285,7 +285,7 @@ func NewCreateAttributeLabelResponse() (response *CreateAttributeLabelResponse) 
 }
 
 // CreateAttributeLabel
-// 创建属性
+// 创建标签
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -294,7 +294,7 @@ func (c *Client) CreateAttributeLabel(request *CreateAttributeLabelRequest) (res
 }
 
 // CreateAttributeLabel
-// 创建属性
+// 创建标签
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -6675,6 +6675,11 @@ type CreatePrepareFlowRequestParams struct {
 
 	// 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
 	FlowDisplayType *int64 `json:"FlowDisplayType,omitnil,omitempty" name:"FlowDisplayType"`
+
+	// 签署控件的配置信息，用在嵌入式发起的页面配置，包括  
+	// 
+	// - 签署控件 是否默认展示日期.
+	SignComponentConfig *SignComponentConfig `json:"SignComponentConfig,omitnil,omitempty" name:"SignComponentConfig"`
 }
 
 type CreatePrepareFlowRequest struct {
@@ -6775,6 +6780,11 @@ type CreatePrepareFlowRequest struct {
 
 	// 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
 	FlowDisplayType *int64 `json:"FlowDisplayType,omitnil,omitempty" name:"FlowDisplayType"`
+
+	// 签署控件的配置信息，用在嵌入式发起的页面配置，包括  
+	// 
+	// - 签署控件 是否默认展示日期.
+	SignComponentConfig *SignComponentConfig `json:"SignComponentConfig,omitnil,omitempty" name:"SignComponentConfig"`
 }
 
 func (r *CreatePrepareFlowRequest) ToJsonString() string {
@@ -6809,6 +6819,7 @@ func (r *CreatePrepareFlowRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "InitiatorComponents")
 	delete(f, "FlowDisplayType")
+	delete(f, "SignComponentConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrepareFlowRequest has unknown keys!", "")
 	}
@@ -12490,7 +12501,7 @@ type FlowGroupInfo struct {
 	// 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
 	AutoSignScene *string `json:"AutoSignScene,omitnil,omitempty" name:"AutoSignScene"`
 
-	// 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+	// 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
 	FlowDisplayType *int64 `json:"FlowDisplayType,omitnil,omitempty" name:"FlowDisplayType"`
 }
 
@@ -13977,6 +13988,15 @@ type SealInfo struct {
 
 	// 印章名称
 	SealName *string `json:"SealName,omitnil,omitempty" name:"SealName"`
+}
+
+type SignComponentConfig struct {
+	// 签署控件默认属性配置，是否默认展示签署日期， 在页面中可以进行修改。
+	// 
+	// - false 展示签署日期（默认）
+	// - true 不展示签署日期 
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/448514412e2f69f6129425beda4ff568.png)。
+	HideDate *bool `json:"HideDate,omitnil,omitempty" name:"HideDate"`
 }
 
 type SignQrCode struct {

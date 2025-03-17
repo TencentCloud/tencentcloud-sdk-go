@@ -3094,6 +3094,57 @@ func (c *Client) DescribeInstancesActionTimerWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeInstancesAttributesRequest() (request *DescribeInstancesAttributesRequest) {
+    request = &DescribeInstancesAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cvm", APIVersion, "DescribeInstancesAttributes")
+    
+    
+    return
+}
+
+func NewDescribeInstancesAttributesResponse() (response *DescribeInstancesAttributesResponse) {
+    response = &DescribeInstancesAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstancesAttributes
+// 获取指定实例的属性，目前支持查询实例自定义数据User-Data。
+//
+// 可能返回的错误码:
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
+func (c *Client) DescribeInstancesAttributes(request *DescribeInstancesAttributesRequest) (response *DescribeInstancesAttributesResponse, err error) {
+    return c.DescribeInstancesAttributesWithContext(context.Background(), request)
+}
+
+// DescribeInstancesAttributes
+// 获取指定实例的属性，目前支持查询实例自定义数据User-Data。
+//
+// 可能返回的错误码:
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
+//  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
+func (c *Client) DescribeInstancesAttributesWithContext(ctx context.Context, request *DescribeInstancesAttributesRequest) (response *DescribeInstancesAttributesResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancesAttributesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstancesAttributes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstancesAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstancesModificationRequest() (request *DescribeInstancesModificationRequest) {
     request = &DescribeInstancesModificationRequest{
         BaseRequest: &tchttp.BaseRequest{},

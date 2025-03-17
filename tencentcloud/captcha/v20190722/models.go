@@ -796,7 +796,6 @@ type DescribeCaptchaMiniResultResponseParams struct {
 	CaptchaCode *int64 `json:"CaptchaCode,omitnil,omitempty" name:"CaptchaCode"`
 
 	// 状态描述及验证错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -937,11 +936,9 @@ type DescribeCaptchaMiniRiskResultResponseParams struct {
 
 	// 状态描述及验证错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
 	// 拦截策略返回信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ManageMarketingRiskValue *OutputManageMarketingRiskValue `json:"ManageMarketingRiskValue,omitnil,omitempty" name:"ManageMarketingRiskValue"`
 
@@ -1858,31 +1855,24 @@ type OutputManageMarketingRiskValue struct {
 	// AccountType 是 0 时，对应账号信息。
 	// AccountType 是 10004 时，对应手机号的 MD5。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 操作时间戳，单位秒（对应输入参数）。 
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PostTime *int64 `json:"PostTime,omitnil,omitempty" name:"PostTime"`
 
 	// 对应输入参数，AccountType 是 QQ 或微信开放账号时，用于标识 QQ 或微信用户登录 后关联业务自身的账号 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssociateAccount *string `json:"AssociateAccount,omitnil,omitempty" name:"AssociateAccount"`
 
-	// 业务详情。 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 业务详情
 	UserIp *string `json:"UserIp,omitnil,omitempty" name:"UserIp"`
 
 	// 风险值 pass : 无恶意
 	// review：需要人工审核
 	// reject：拒绝，高风险恶意
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
-	// 风险类型，请查看下面详细说明 注意：此字段可能返回 null，表示取不到有效值。
+	// 风险类型，请查看下面详细说明 
 	// 账号风险	
 	//         账号信用低	1	账号近期存在因恶意被处罚历史，网络低活跃，被举报等因素
 	// 	疑似 低活跃账号	11	账号活跃度与正常用户有差异

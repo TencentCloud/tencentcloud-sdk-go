@@ -51,8 +51,7 @@ type BatchSendEmailRequestParams struct {
 	// <dx-alert infotype="notice" title="注意"> 如您未申请过特殊配置，则该字段为必填 </dx-alert>
 	Template *Template `json:"Template,omitnil,omitempty" name:"Template"`
 
-	// 已废弃
-	// <dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert>
+	// 已废弃<dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert>
 	Simple *Simple `json:"Simple,omitnil,omitempty" name:"Simple"`
 
 	// 需要发送附件时，填写附件相关参数（暂未支持）
@@ -95,8 +94,7 @@ type BatchSendEmailRequest struct {
 	// <dx-alert infotype="notice" title="注意"> 如您未申请过特殊配置，则该字段为必填 </dx-alert>
 	Template *Template `json:"Template,omitnil,omitempty" name:"Template"`
 
-	// 已废弃
-	// <dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert>
+	// 已废弃<dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert>
 	Simple *Simple `json:"Simple,omitnil,omitempty" name:"Simple"`
 
 	// 需要发送附件时，填写附件相关参数（暂未支持）

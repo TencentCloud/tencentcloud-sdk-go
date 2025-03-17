@@ -829,7 +829,7 @@ type AssetMachineDetail struct {
 	// Cpu负载
 	CpuLoad *string `json:"CpuLoad,omitnil,omitempty" name:"CpuLoad"`
 
-	// 防护级别：0基础版，1专业版，2旗舰版，3普惠版
+	// 防护级别：0基础版，1专业版，2旗舰版，3轻量版
 	ProtectLevel *uint64 `json:"ProtectLevel,omitnil,omitempty" name:"ProtectLevel"`
 
 	// 风险状态：UNKNOW-未知，RISK-风险，SAFT-安全
@@ -4641,7 +4641,7 @@ type CreateRansomDefenseStrategyRequestParams struct {
 	// 排除目录，;分隔
 	ExcludeDir *string `json:"ExcludeDir,omitnil,omitempty" name:"ExcludeDir"`
 
-	// 备份模式： 0按周，1按天
+	// 备份模式： 0按周，1按天，2不备份
 	BackupType *uint64 `json:"BackupType,omitnil,omitempty" name:"BackupType"`
 
 	// 定时任务执行星期天数（1-7）：1;2;7
@@ -4681,7 +4681,7 @@ type CreateRansomDefenseStrategyRequest struct {
 	// 排除目录，;分隔
 	ExcludeDir *string `json:"ExcludeDir,omitnil,omitempty" name:"ExcludeDir"`
 
-	// 备份模式： 0按周，1按天
+	// 备份模式： 0按周，1按天，2不备份
 	BackupType *uint64 `json:"BackupType,omitnil,omitempty" name:"BackupType"`
 
 	// 定时任务执行星期天数（1-7）：1;2;7
@@ -22963,6 +22963,12 @@ type DescribeRansomDefenseEventsListRequestParams struct {
 
 	// 排序字段支持CreateTime
 	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 事件创建起始时间
+	CreateBeginTime *string `json:"CreateBeginTime,omitnil,omitempty" name:"CreateBeginTime"`
+
+	// 事件创建结束时间
+	CreateEndTime *string `json:"CreateEndTime,omitnil,omitempty" name:"CreateEndTime"`
 }
 
 type DescribeRansomDefenseEventsListRequest struct {
@@ -22985,6 +22991,12 @@ type DescribeRansomDefenseEventsListRequest struct {
 
 	// 排序字段支持CreateTime
 	By *string `json:"By,omitnil,omitempty" name:"By"`
+
+	// 事件创建起始时间
+	CreateBeginTime *string `json:"CreateBeginTime,omitnil,omitempty" name:"CreateBeginTime"`
+
+	// 事件创建结束时间
+	CreateEndTime *string `json:"CreateEndTime,omitnil,omitempty" name:"CreateEndTime"`
 }
 
 func (r *DescribeRansomDefenseEventsListRequest) ToJsonString() string {
@@ -23004,6 +23016,8 @@ func (r *DescribeRansomDefenseEventsListRequest) FromJsonString(s string) error 
 	delete(f, "Filters")
 	delete(f, "Order")
 	delete(f, "By")
+	delete(f, "CreateBeginTime")
+	delete(f, "CreateEndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRansomDefenseEventsListRequest has unknown keys!", "")
 	}
@@ -36351,6 +36365,9 @@ type HostTagInfo struct {
 
 	// 主机instance ID
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// 主机类型
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 }
 
 type IgnoreBaselineRule struct {
@@ -37036,7 +37053,7 @@ type Machine struct {
 	// 内核版本
 	KernelVersion *string `json:"KernelVersion,omitnil,omitempty" name:"KernelVersion"`
 
-	// 防护版本：BASIC_VERSION 基础版， PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 普惠版
+	// 防护版本：BASIC_VERSION 基础版， PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 轻量版
 	ProtectType *string `json:"ProtectType,omitnil,omitempty" name:"ProtectType"`
 
 	// 云标签信息
@@ -37198,7 +37215,7 @@ type MachineSimple struct {
 	// 内核版本
 	KernelVersion *string `json:"KernelVersion,omitnil,omitempty" name:"KernelVersion"`
 
-	// 防护版本 BASIC_VERSION 基础版， PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 普惠版.
+	// 防护版本 BASIC_VERSION 基础版， PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 轻量版.
 	ProtectType *string `json:"ProtectType,omitnil,omitempty" name:"ProtectType"`
 
 	// 授权订单对象
@@ -41994,7 +42011,7 @@ type NetAttackEvent struct {
 	// 是否开启漏洞防御，0关1开
 	VulDefenceStatus *uint64 `json:"VulDefenceStatus,omitnil,omitempty" name:"VulDefenceStatus"`
 
-	// 机器付费版本，0 基础版，1专业版，2旗舰版，3普惠版
+	// 机器付费版本，0 基础版，1专业版，2旗舰版，3轻量版
 	PayVersion *uint64 `json:"PayVersion,omitnil,omitempty" name:"PayVersion"`
 
 	// cvm uuid
@@ -42059,7 +42076,7 @@ type NetAttackEventInfo struct {
 	// 攻击次数
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 机器付费版本，0 基础版，1专业版，2旗舰版，3普惠版
+	// 机器付费版本，0 基础版，1专业版，2旗舰版，3轻量版
 	PayVersion *uint64 `json:"PayVersion,omitnil,omitempty" name:"PayVersion"`
 
 	// cvm uuid
@@ -42588,7 +42605,7 @@ type RansomDefenseBackup struct {
 	// 勒索状态：0无告警, 1有告警
 	EventStatus *uint64 `json:"EventStatus,omitnil,omitempty" name:"EventStatus"`
 
-	// 备份状态：0备份中，1正常，2、3失败，4快照已过期，9快照已删除
+	// 备份状态：0备份中，1正常，2、3失败，4快照已过期，5快照数量超出限制，9快照已删除
 	BackupStatus *uint64 `json:"BackupStatus,omitnil,omitempty" name:"BackupStatus"`
 
 	// 备份磁盘数量
@@ -42806,7 +42823,7 @@ type RansomDefenseStrategy struct {
 	// 包含目录，用;分隔
 	ExcludeDir *string `json:"ExcludeDir,omitnil,omitempty" name:"ExcludeDir"`
 
-	// 备份模式： 0按周，1按天
+	// 备份模式： 0按周，1按天，2不备份
 	BackupType *uint64 `json:"BackupType,omitnil,omitempty" name:"BackupType"`
 
 	// 备份星期天数（1-7）：1;2;3;4
@@ -42940,8 +42957,11 @@ type RansomDefenseStrategyMachineBackupInfo struct {
 	// 备份成功次数
 	BackupSuccessCount *uint64 `json:"BackupSuccessCount,omitnil,omitempty" name:"BackupSuccessCount"`
 
-	// 版本信息：0-基础版 1-专业版 2-旗舰版 3-普惠版
+	// 版本信息：0-基础版 1-专业版 2-旗舰版 3-轻量版
 	HostVersion *uint64 `json:"HostVersion,omitnil,omitempty" name:"HostVersion"`
+
+	// 机器所属专区类型 CVM 云服务器, BM 黑石, ECM 边缘计算, LH 轻量应用服务器 ,Other 混合云专区
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 }
 
 type RansomDefenseStrategyMachineDetail struct {
@@ -42982,11 +43002,14 @@ type RansomDefenseStrategyMachineDetail struct {
 	// ;分割 diskId1|diskName1;diskId2|diskName2
 	DiskInfo *string `json:"DiskInfo,omitnil,omitempty" name:"DiskInfo"`
 
-	// 版本信息：0-基础版 1-专业版 2-旗舰版 3-普惠版
+	// 版本信息：0-基础版 1-专业版 2-旗舰版 3-轻量版
 	HostVersion *uint64 `json:"HostVersion,omitnil,omitempty" name:"HostVersion"`
 
 	// 策略名称
 	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
+
+	// 机器所属专区类型 CVM 云服务器, BM 黑石, ECM 边缘计算, LH 轻量应用服务器 ,Other 混合云专区
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 }
 
 type RansomDefenseStrategyMachineInfo struct {
@@ -46371,7 +46394,7 @@ type VulDefenceEvent struct {
 	// 状态 0: 待处理 1:已防御 2:已处理 3: 已忽略 4: 已删除
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 0 专业版,1 旗舰版,2 LH普惠版（仅限LH使用）,3  CVM普惠版（仅限CVM使用）
+	// 0 专业版,1 旗舰版,2 LH轻量版（仅限LH使用）,3  CVM轻量版（仅限CVM使用）
 	UpgradeType *int64 `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
 
 	// 0 不支持修复，1 支持修复
@@ -46613,7 +46636,7 @@ type VulEffectHostList struct {
 	// 说明
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 版本信息：0-基础版 1-专业版 2-旗舰版 3-普惠版
+	// 版本信息：0-基础版 1-专业版 2-旗舰版 3-轻量版
 	HostVersion *uint64 `json:"HostVersion,omitnil,omitempty" name:"HostVersion"`
 
 	// 是否能自动修复 0 :漏洞不可自动修复，  1：可自动修复， 2：客户端已离线， 3：主机不是旗舰版只能手动修复， 4：机型不允许 ，5：修复中 ，6：已修复， 7：检测中  9:修复失败，10:已忽略 11:漏洞只支持linux不支持Windows 12：漏洞只支持Windows不支持linux，13:修复失败但此时主机已离线，14:修复失败但此时主机不是旗舰版， 15:已手动修复

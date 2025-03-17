@@ -2602,6 +2602,74 @@ func (r *CreateIpAccessControlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreatePostCLSFlowRequestParams struct {
+	// 投递的CLS所在区域，默认为ap-shanghai
+	CLSRegion *string `json:"CLSRegion,omitnil,omitempty" name:"CLSRegion"`
+
+	// 投递的CLS所在日志集合名称，默认为 waf_post_logset
+	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
+
+	// 1-访问日志，2-攻击日志，默认为访问日志。
+	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
+}
+
+type CreatePostCLSFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 投递的CLS所在区域，默认为ap-shanghai
+	CLSRegion *string `json:"CLSRegion,omitnil,omitempty" name:"CLSRegion"`
+
+	// 投递的CLS所在日志集合名称，默认为 waf_post_logset
+	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
+
+	// 1-访问日志，2-攻击日志，默认为访问日志。
+	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
+}
+
+func (r *CreatePostCLSFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePostCLSFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CLSRegion")
+	delete(f, "LogsetName")
+	delete(f, "LogType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePostCLSFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePostCLSFlowResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePostCLSFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePostCLSFlowResponseParams `json:"Response"`
+}
+
+func (r *CreatePostCLSFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePostCLSFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CronJob struct {
 	// 每个月的几号执行
 	Days []*uint64 `json:"Days,omitnil,omitempty" name:"Days"`
@@ -7687,6 +7755,63 @@ func (r *DescribePortsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePostCLSFlowsRequestParams struct {
+	// 1-访问日志，2-攻击日志，默认为访问日志。
+	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
+}
+
+type DescribePostCLSFlowsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 1-访问日志，2-攻击日志，默认为访问日志。
+	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
+}
+
+func (r *DescribePostCLSFlowsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePostCLSFlowsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LogType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePostCLSFlowsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePostCLSFlowsResponseParams struct {
+	// 客户的投递流列表
+	PostCLSFlows []*PostCLSFlowInfo `json:"PostCLSFlows,omitnil,omitempty" name:"PostCLSFlows"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePostCLSFlowsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePostCLSFlowsResponseParams `json:"Response"`
+}
+
+func (r *DescribePostCLSFlowsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePostCLSFlowsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeProtectionModesRequestParams struct {
 	// sparta-waf或clb
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
@@ -9029,6 +9154,67 @@ func (r *DescribeWebshellStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeWebshellStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyPostCLSFlowRequestParams struct {
+	// 投递流的流ID
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 1-访问日志，2-攻击日志，默认为访问日志。
+	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
+}
+
+type DestroyPostCLSFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 投递流的流ID
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 1-访问日志，2-攻击日志，默认为访问日志。
+	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
+}
+
+func (r *DestroyPostCLSFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyPostCLSFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	delete(f, "LogType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DestroyPostCLSFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyPostCLSFlowResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DestroyPostCLSFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *DestroyPostCLSFlowResponseParams `json:"Response"`
+}
+
+func (r *DestroyPostCLSFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyPostCLSFlowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14672,6 +14858,32 @@ func (r *PostAttackDownloadTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *PostAttackDownloadTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type PostCLSFlowInfo struct {
+	// 投递流唯一ID
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 1-访问日志 2-攻击日志
+	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 状态 0-为关闭 1-为启用
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// CLS所在区域
+	CLSRegion *string `json:"CLSRegion,omitnil,omitempty" name:"CLSRegion"`
+
+	// CLS日志集合名称
+	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
+
+	// CLS日志集合ID
+	LogsetID *string `json:"LogsetID,omitnil,omitempty" name:"LogsetID"`
+
+	// CLS日志主题名称
+	LogTopicName *string `json:"LogTopicName,omitnil,omitempty" name:"LogTopicName"`
+
+	// CLS日志集合ID
+	LogTopicID *string `json:"LogTopicID,omitnil,omitempty" name:"LogTopicID"`
 }
 
 type ProductInfo struct {

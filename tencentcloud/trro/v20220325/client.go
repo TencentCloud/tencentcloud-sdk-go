@@ -1367,3 +1367,66 @@ func (c *Client) ModifyProjectWithContext(ctx context.Context, request *ModifyPr
     err = c.Send(request, response)
     return
 }
+
+func NewModifyProjectSecModeRequest() (request *ModifyProjectSecModeRequest) {
+    request = &ModifyProjectSecModeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "ModifyProjectSecMode")
+    
+    
+    return
+}
+
+func NewModifyProjectSecModeResponse() (response *ModifyProjectSecModeResponse) {
+    response = &ModifyProjectSecModeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyProjectSecMode
+// 使用项目共享密钥可动态生成设备登录密钥，登录前无需对设备进行提前注册，适合希望简化业务流程的客户。由于是公共密钥，请务必注意保护项目共享密钥，并及时更新。建议项目共享密钥保存在服务器侧。由服务器生成设备登录密码下发给设备，避免密钥保存在客户端侧产生的密钥泄露风险。
+//
+// 
+//
+// 开启项目共享密钥后，对于已注册的设备，仍可使用原设备密码登录。若希望仅能通过共享密钥生成密码登录，请通过云 API 将设备密码更新为"USEPROJECTKEYPWD"。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyProjectSecMode(request *ModifyProjectSecModeRequest) (response *ModifyProjectSecModeResponse, err error) {
+    return c.ModifyProjectSecModeWithContext(context.Background(), request)
+}
+
+// ModifyProjectSecMode
+// 使用项目共享密钥可动态生成设备登录密钥，登录前无需对设备进行提前注册，适合希望简化业务流程的客户。由于是公共密钥，请务必注意保护项目共享密钥，并及时更新。建议项目共享密钥保存在服务器侧。由服务器生成设备登录密码下发给设备，避免密钥保存在客户端侧产生的密钥泄露风险。
+//
+// 
+//
+// 开启项目共享密钥后，对于已注册的设备，仍可使用原设备密码登录。若希望仅能通过共享密钥生成密码登录，请通过云 API 将设备密码更新为"USEPROJECTKEYPWD"。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyProjectSecModeWithContext(ctx context.Context, request *ModifyProjectSecModeRequest) (response *ModifyProjectSecModeResponse, err error) {
+    if request == nil {
+        request = NewModifyProjectSecModeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProjectSecMode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyProjectSecModeResponse()
+    err = c.Send(request, response)
+    return
+}

@@ -1537,6 +1537,14 @@ type History struct {
 	Seed *int64 `json:"Seed,omitnil,omitempty" name:"Seed"`
 }
 
+type Image struct {
+	// 图片Url。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 图片Base64。
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+}
+
 type ImageUrl struct {
 	// 图片的 Url（以 http:// 或 https:// 开头）
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2212,27 +2220,34 @@ type SubmitHunyuanImageJobRequestParams struct {
 
 	// 生成图分辨率。
 	// 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3），不传默认使用1024:1024。
+	// 如果上传 ContentImage 参考图，分辨率仅支持：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1），不传将自动适配分辨率。如果参考图被用于做风格转换，将生成保持原图长宽比例且长边为1024的图片，指定的分辨率不生效。
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
 	// 图片生成数量。
 	// 支持1 ~ 4张，默认生成1张。
 	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
 
-	// 随机种子，默认随机。
-	// 不传：随机种子生成。
-	// 正数：固定种子生成。
-	Seed *int64 `json:"Seed,omitnil,omitempty" name:"Seed"`
-
 	// 超分选项，默认不做超分，可选开启。
 	//  x2：2倍超分
 	//  x4：4倍超分
+	// 在 Resolution 的基础上按比例提高分辨率，例如1024:1024开启2倍超分后将得到2048:2048。
 	Clarity *string `json:"Clarity,omitnil,omitempty" name:"Clarity"`
+
+	// 用于引导内容的参考图。
+	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	ContentImage *Image `json:"ContentImage,omitnil,omitempty" name:"ContentImage"`
 
 	// prompt 扩写开关。1为开启，0为关闭，不传默认开启。
 	// 开启扩写后，将自动扩写原始输入的 prompt 并使用扩写后的 prompt 生成图片，返回生成图片结果时将一并返回扩写后的 prompt 文本。
-	// 如果关闭扩写，将直接使用原始输入的 prompt 生成图片。
+	// 如果关闭扩写，将直接使用原始输入的 prompt 生成图片。如果上传了参考图，扩写关闭不生效，将保持开启。
 	// 建议开启，在多数场景下可提升生成图片效果、丰富生成图片细节。
 	Revise *int64 `json:"Revise,omitnil,omitempty" name:"Revise"`
+
+	// 随机种子，默认随机。
+	// 不传：随机种子生成。
+	// 正数：固定种子生成。
+	// 扩写开启时固定种子不生效，将保持随机。
+	Seed *int64 `json:"Seed,omitnil,omitempty" name:"Seed"`
 
 	// 为生成结果图添加显式水印标识的开关，默认为1。  
 	// 1：添加。  
@@ -2265,27 +2280,34 @@ type SubmitHunyuanImageJobRequest struct {
 
 	// 生成图分辨率。
 	// 支持生成以下分辨率的图片：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1）、720:1280（9:16）、1280:720（16:9）、768:1280（3:5）、1280:768（5:3），不传默认使用1024:1024。
+	// 如果上传 ContentImage 参考图，分辨率仅支持：768:768（1:1）、768:1024（3:4）、1024:768（4:3）、1024:1024（1:1），不传将自动适配分辨率。如果参考图被用于做风格转换，将生成保持原图长宽比例且长边为1024的图片，指定的分辨率不生效。
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
 	// 图片生成数量。
 	// 支持1 ~ 4张，默认生成1张。
 	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
 
-	// 随机种子，默认随机。
-	// 不传：随机种子生成。
-	// 正数：固定种子生成。
-	Seed *int64 `json:"Seed,omitnil,omitempty" name:"Seed"`
-
 	// 超分选项，默认不做超分，可选开启。
 	//  x2：2倍超分
 	//  x4：4倍超分
+	// 在 Resolution 的基础上按比例提高分辨率，例如1024:1024开启2倍超分后将得到2048:2048。
 	Clarity *string `json:"Clarity,omitnil,omitempty" name:"Clarity"`
+
+	// 用于引导内容的参考图。
+	// 图片限制：单边分辨率小于5000，转成 Base64 字符串后小于 8MB，格式支持 jpg、jpeg、png、bmp、tiff、webp。
+	ContentImage *Image `json:"ContentImage,omitnil,omitempty" name:"ContentImage"`
 
 	// prompt 扩写开关。1为开启，0为关闭，不传默认开启。
 	// 开启扩写后，将自动扩写原始输入的 prompt 并使用扩写后的 prompt 生成图片，返回生成图片结果时将一并返回扩写后的 prompt 文本。
-	// 如果关闭扩写，将直接使用原始输入的 prompt 生成图片。
+	// 如果关闭扩写，将直接使用原始输入的 prompt 生成图片。如果上传了参考图，扩写关闭不生效，将保持开启。
 	// 建议开启，在多数场景下可提升生成图片效果、丰富生成图片细节。
 	Revise *int64 `json:"Revise,omitnil,omitempty" name:"Revise"`
+
+	// 随机种子，默认随机。
+	// 不传：随机种子生成。
+	// 正数：固定种子生成。
+	// 扩写开启时固定种子不生效，将保持随机。
+	Seed *int64 `json:"Seed,omitnil,omitempty" name:"Seed"`
 
 	// 为生成结果图添加显式水印标识的开关，默认为1。  
 	// 1：添加。  
@@ -2316,9 +2338,10 @@ func (r *SubmitHunyuanImageJobRequest) FromJsonString(s string) error {
 	delete(f, "Style")
 	delete(f, "Resolution")
 	delete(f, "Num")
-	delete(f, "Seed")
 	delete(f, "Clarity")
+	delete(f, "ContentImage")
 	delete(f, "Revise")
+	delete(f, "Seed")
 	delete(f, "LogoAdd")
 	delete(f, "LogoParam")
 	if len(f) > 0 {

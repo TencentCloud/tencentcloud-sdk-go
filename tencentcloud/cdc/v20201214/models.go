@@ -117,7 +117,6 @@ func (r *CreateDedicatedClusterOrderRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDedicatedClusterOrderResponseParams struct {
 	// 专用集群订单id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DedicatedClusterOrderId *string `json:"DedicatedClusterOrderId,omitnil,omitempty" name:"DedicatedClusterOrderId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1108,7 +1107,6 @@ func (r *DescribeDedicatedClusterHostsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDedicatedClusterHostsResponseParams struct {
 	// 宿主机信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostInfoSet []*HostInfo `json:"HostInfoSet,omitnil,omitempty" name:"HostInfoSet"`
 
 	// 宿主机总数
@@ -1334,19 +1332,15 @@ type DescribeDedicatedClusterOverviewResponseParams struct {
 	HostCount *uint64 `json:"HostCount,omitnil,omitempty" name:"HostCount"`
 
 	// vpn通道状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpnConnectionState *string `json:"VpnConnectionState,omitnil,omitempty" name:"VpnConnectionState"`
 
 	// vpn网关监控数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpngwBandwidthData *VpngwBandwidthData `json:"VpngwBandwidthData,omitnil,omitempty" name:"VpngwBandwidthData"`
 
 	// 本地网关信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalNetInfo *LocalNetInfo `json:"LocalNetInfo,omitnil,omitempty" name:"LocalNetInfo"`
 
 	// vpn网关通道监控数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpnConnectionBandwidthData []*VpngwBandwidthData `json:"VpnConnectionBandwidthData,omitnil,omitempty" name:"VpnConnectionBandwidthData"`
 
 	// 宿主机资源概览信息

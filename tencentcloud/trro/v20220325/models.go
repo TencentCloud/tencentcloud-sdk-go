@@ -1881,6 +1881,104 @@ func (r *ModifyProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyProjectSecModeRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 安全模式  
+	// 0：关闭项目共享密钥 
+	// 1：开启项目共享密钥
+	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 项目密钥 32位 小写英文+数字；  项目密钥模式必填
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 自动注册方式
+	// 0：关闭自动注册
+	// 1：仅允许现场设备自动注册
+	// 2：仅允许远端设备自动注册
+	// 3：允许现场和远端设备均自动注册
+	AutoRegister *int64 `json:"AutoRegister,omitnil,omitempty" name:"AutoRegister"`
+
+	// 是否允许远端获取现场设备列表（getGwList）
+	// 0：不允许
+	// 1：允许
+	FieldListEnable *int64 `json:"FieldListEnable,omitnil,omitempty" name:"FieldListEnable"`
+}
+
+type ModifyProjectSecModeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 安全模式  
+	// 0：关闭项目共享密钥 
+	// 1：开启项目共享密钥
+	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 项目密钥 32位 小写英文+数字；  项目密钥模式必填
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 自动注册方式
+	// 0：关闭自动注册
+	// 1：仅允许现场设备自动注册
+	// 2：仅允许远端设备自动注册
+	// 3：允许现场和远端设备均自动注册
+	AutoRegister *int64 `json:"AutoRegister,omitnil,omitempty" name:"AutoRegister"`
+
+	// 是否允许远端获取现场设备列表（getGwList）
+	// 0：不允许
+	// 1：允许
+	FieldListEnable *int64 `json:"FieldListEnable,omitnil,omitempty" name:"FieldListEnable"`
+}
+
+func (r *ModifyProjectSecModeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyProjectSecModeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "Mode")
+	delete(f, "Key")
+	delete(f, "AutoRegister")
+	delete(f, "FieldListEnable")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyProjectSecModeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyProjectSecModeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyProjectSecModeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyProjectSecModeResponseParams `json:"Response"`
+}
+
+func (r *ModifyProjectSecModeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyProjectSecModeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MultiNet struct {
 	// 网卡序号
 	NetId *int64 `json:"NetId,omitnil,omitempty" name:"NetId"`

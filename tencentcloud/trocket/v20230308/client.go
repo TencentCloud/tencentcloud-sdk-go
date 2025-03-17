@@ -3042,3 +3042,52 @@ func (c *Client) ResendDeadLetterMessageWithContext(ctx context.Context, request
     err = c.Send(request, response)
     return
 }
+
+func NewResetConsumerGroupOffsetRequest() (request *ResetConsumerGroupOffsetRequest) {
+    request = &ResetConsumerGroupOffsetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "ResetConsumerGroupOffset")
+    
+    
+    return
+}
+
+func NewResetConsumerGroupOffsetResponse() (response *ResetConsumerGroupOffsetResponse) {
+    response = &ResetConsumerGroupOffsetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResetConsumerGroupOffset
+// 重置消费位点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ResetConsumerGroupOffset(request *ResetConsumerGroupOffsetRequest) (response *ResetConsumerGroupOffsetResponse, err error) {
+    return c.ResetConsumerGroupOffsetWithContext(context.Background(), request)
+}
+
+// ResetConsumerGroupOffset
+// 重置消费位点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ResetConsumerGroupOffsetWithContext(ctx context.Context, request *ResetConsumerGroupOffsetRequest) (response *ResetConsumerGroupOffsetResponse, err error) {
+    if request == nil {
+        request = NewResetConsumerGroupOffsetRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetConsumerGroupOffset require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetConsumerGroupOffsetResponse()
+    err = c.Send(request, response)
+    return
+}

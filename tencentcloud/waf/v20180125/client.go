@@ -1081,6 +1081,89 @@ func (c *Client) CreateIpAccessControlWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreatePostCLSFlowRequest() (request *CreatePostCLSFlowRequest) {
+    request = &CreatePostCLSFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "CreatePostCLSFlow")
+    
+    
+    return
+}
+
+func NewCreatePostCLSFlowResponse() (response *CreatePostCLSFlowResponse) {
+    response = &CreatePostCLSFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePostCLSFlow
+// 创建CLS投递流任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreatePostCLSFlow(request *CreatePostCLSFlowRequest) (response *CreatePostCLSFlowResponse, err error) {
+    return c.CreatePostCLSFlowWithContext(context.Background(), request)
+}
+
+// CreatePostCLSFlow
+// 创建CLS投递流任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreatePostCLSFlowWithContext(ctx context.Context, request *CreatePostCLSFlowRequest) (response *CreatePostCLSFlowResponse, err error) {
+    if request == nil {
+        request = NewCreatePostCLSFlowRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePostCLSFlow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePostCLSFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAccessExportRequest() (request *DeleteAccessExportRequest) {
     request = &DeleteAccessExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4906,6 +4989,89 @@ func (c *Client) DescribePortsWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDescribePostCLSFlowsRequest() (request *DescribePostCLSFlowsRequest) {
+    request = &DescribePostCLSFlowsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribePostCLSFlows")
+    
+    
+    return
+}
+
+func NewDescribePostCLSFlowsResponse() (response *DescribePostCLSFlowsResponse) {
+    response = &DescribePostCLSFlowsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePostCLSFlows
+// 获取CLS投递流任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePostCLSFlows(request *DescribePostCLSFlowsRequest) (response *DescribePostCLSFlowsResponse, err error) {
+    return c.DescribePostCLSFlowsWithContext(context.Background(), request)
+}
+
+// DescribePostCLSFlows
+// 获取CLS投递流任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePostCLSFlowsWithContext(ctx context.Context, request *DescribePostCLSFlowsRequest) (response *DescribePostCLSFlowsResponse, err error) {
+    if request == nil {
+        request = NewDescribePostCLSFlowsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePostCLSFlows require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePostCLSFlowsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProtectionModesRequest() (request *DescribeProtectionModesRequest) {
     request = &DescribeProtectionModesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4929,7 +5095,24 @@ func NewDescribeProtectionModesResponse() (response *DescribeProtectionModesResp
 // 查询Tiga引擎大类规则及其防护模式
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeProtectionModes(request *DescribeProtectionModesRequest) (response *DescribeProtectionModesResponse, err error) {
     return c.DescribeProtectionModesWithContext(context.Background(), request)
 }
@@ -4938,7 +5121,24 @@ func (c *Client) DescribeProtectionModes(request *DescribeProtectionModesRequest
 // 查询Tiga引擎大类规则及其防护模式
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeProtectionModesWithContext(ctx context.Context, request *DescribeProtectionModesRequest) (response *DescribeProtectionModesResponse, err error) {
     if request == nil {
         request = NewDescribeProtectionModesRequest()
@@ -6133,6 +6333,89 @@ func (c *Client) DescribeWebshellStatusWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeWebshellStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDestroyPostCLSFlowRequest() (request *DestroyPostCLSFlowRequest) {
+    request = &DestroyPostCLSFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DestroyPostCLSFlow")
+    
+    
+    return
+}
+
+func NewDestroyPostCLSFlowResponse() (response *DestroyPostCLSFlowResponse) {
+    response = &DestroyPostCLSFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DestroyPostCLSFlow
+// 销毁CLS投递流任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DestroyPostCLSFlow(request *DestroyPostCLSFlowRequest) (response *DestroyPostCLSFlowResponse, err error) {
+    return c.DestroyPostCLSFlowWithContext(context.Background(), request)
+}
+
+// DestroyPostCLSFlow
+// 销毁CLS投递流任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DestroyPostCLSFlowWithContext(ctx context.Context, request *DestroyPostCLSFlowRequest) (response *DestroyPostCLSFlowResponse, err error) {
+    if request == nil {
+        request = NewDestroyPostCLSFlowRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyPostCLSFlow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDestroyPostCLSFlowResponse()
     err = c.Send(request, response)
     return
 }

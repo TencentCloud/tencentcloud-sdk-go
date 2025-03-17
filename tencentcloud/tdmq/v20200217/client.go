@@ -2221,6 +2221,7 @@ func NewDeleteRabbitMQVipInstanceResponse() (response *DeleteRabbitMQVipInstance
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteRabbitMQVipInstance(request *DeleteRabbitMQVipInstanceRequest) (response *DeleteRabbitMQVipInstanceResponse, err error) {
     return c.DeleteRabbitMQVipInstanceWithContext(context.Background(), request)
 }
@@ -2232,6 +2233,7 @@ func (c *Client) DeleteRabbitMQVipInstance(request *DeleteRabbitMQVipInstanceReq
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteRabbitMQVipInstanceWithContext(ctx context.Context, request *DeleteRabbitMQVipInstanceRequest) (response *DeleteRabbitMQVipInstanceResponse, err error) {
     if request == nil {
         request = NewDeleteRabbitMQVipInstanceRequest()

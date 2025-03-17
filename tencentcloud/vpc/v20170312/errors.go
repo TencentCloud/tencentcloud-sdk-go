@@ -539,6 +539,9 @@ const (
 	// SPD规则源目IP有重叠。
 	INVALIDPARAMETERVALUE_VPNCONNSPDCIDRCONFLICT = "InvalidParameterValue.VpnConnSpdCidrConflict"
 
+	// VPN网关路由参数重复。
+	INVALIDPARAMETERVALUE_VPNGATEWAYROUTEDUPLICATE = "InvalidParameterValue.VpnGatewayRouteDuplicate"
+
 	// 参数Zone的值与CDC所在Zone冲突。
 	INVALIDPARAMETERVALUE_ZONECONFLICT = "InvalidParameterValue.ZoneConflict"
 
@@ -1286,6 +1289,9 @@ const (
 	// 该账不能发起操作。
 	UNSUPPORTEDOPERATION_VPCPEERPURVIEWERROR = "UnsupportedOperation.VpcPeerPurviewError"
 
+	// VPN SPD通道不支持配置健康检查
+	UNSUPPORTEDOPERATION_VPNCONNCIDRNOTSUPPORTEDHEALTHCHECK = "UnsupportedOperation.VpnConnCidrNotSupportedHealthCheck"
+
 	// 当前通道为非可用状态，不支持该操作。
 	UNSUPPORTEDOPERATION_VPNCONNINVALIDSTATE = "UnsupportedOperation.VpnConnInvalidState"
 
@@ -1309,6 +1315,9 @@ const (
 
 	// VPN未配置BGP ASN。
 	UNSUPPORTEDOPERATION_VPNUNSUPPORTEDNOTEXISTBGPASN = "UnsupportedOperation.VpnUnsupportedNotExistBgpAsn"
+
+	// 3.1以下版本VPN网关不支持配置ecmp路由
+	UNSUPPORTEDOPERATION_VPNUNSUPPORTEDROUTEECMPFORCVMVPN = "UnsupportedOperation.VpnUnsupportedRouteEcmpForCvmVpn"
 
 	// 指定资源在不同的可用区。
 	UNSUPPORTEDOPERATION_ZONEMISMATCH = "UnsupportedOperation.ZoneMismatch"

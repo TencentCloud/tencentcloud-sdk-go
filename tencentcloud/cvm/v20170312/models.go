@@ -297,6 +297,11 @@ func (r *AssociateSecurityGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Attribute struct {
+	// 实例的自定义数据。
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+}
+
 type ChargePrepaid struct {
 	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
@@ -3361,6 +3366,72 @@ func (r *DescribeInstancesActionTimerResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstancesAttributesRequestParams struct {
+	// 需要获取的实例属性。可选值：
+	// UserData: 实例自定义数据
+	Attributes []*string `json:"Attributes,omitnil,omitempty" name:"Attributes"`
+
+	// 实例ID列表
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+}
+
+type DescribeInstancesAttributesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要获取的实例属性。可选值：
+	// UserData: 实例自定义数据
+	Attributes []*string `json:"Attributes,omitnil,omitempty" name:"Attributes"`
+
+	// 实例ID列表
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+}
+
+func (r *DescribeInstancesAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesAttributesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Attributes")
+	delete(f, "InstanceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstancesAttributesResponseParams struct {
+	// 指定的实例属性列表
+	InstanceSet []*InstanceAttribute `json:"InstanceSet,omitnil,omitempty" name:"InstanceSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInstancesAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstancesAttributesResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstancesAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesAttributesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstancesModificationRequestParams struct {
 	// 一个或多个待查询的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。每次请求批量实例的上限为20。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
@@ -4468,7 +4539,6 @@ type DescribeTaskInfoResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 查询返回的维修任务列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepairTaskInfoSet []*RepairTaskInfo `json:"RepairTaskInfoSet,omitnil,omitempty" name:"RepairTaskInfoSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4822,8 +4892,13 @@ type EnterRescueModeRequestParams struct {
 	// 救援模式下系统用户名
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 是否强制关机
+	// 是否强制关机。本参数已弃用，推荐使用StopType，不可以与参数StopType同时使用。
+	//
+	// Deprecated: ForceStop is deprecated.
 	ForceStop *bool `json:"ForceStop,omitnil,omitempty" name:"ForceStop"`
+
+	// 实例的关闭模式。取值范围：<br><li>SOFT_FIRST：表示在正常关闭失败后进行强制关闭</li><br><li>HARD：直接强制关闭</li><br><li>SOFT：仅软关机</li><br>默认取值：SOFT。
+	StopType *string `json:"StopType,omitnil,omitempty" name:"StopType"`
 }
 
 type EnterRescueModeRequest struct {
@@ -4838,8 +4913,11 @@ type EnterRescueModeRequest struct {
 	// 救援模式下系统用户名
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 是否强制关机
+	// 是否强制关机。本参数已弃用，推荐使用StopType，不可以与参数StopType同时使用。
 	ForceStop *bool `json:"ForceStop,omitnil,omitempty" name:"ForceStop"`
+
+	// 实例的关闭模式。取值范围：<br><li>SOFT_FIRST：表示在正常关闭失败后进行强制关闭</li><br><li>HARD：直接强制关闭</li><br><li>SOFT：仅软关机</li><br>默认取值：SOFT。
+	StopType *string `json:"StopType,omitnil,omitempty" name:"StopType"`
 }
 
 func (r *EnterRescueModeRequest) ToJsonString() string {
@@ -4858,6 +4936,7 @@ func (r *EnterRescueModeRequest) FromJsonString(s string) error {
 	delete(f, "Password")
 	delete(f, "Username")
 	delete(f, "ForceStop")
+	delete(f, "StopType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnterRescueModeRequest has unknown keys!", "")
 	}
@@ -6575,6 +6654,14 @@ type Instance struct {
 	// 实例的最新操作错误信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestOperationErrorMsg *string `json:"LatestOperationErrorMsg,omitnil,omitempty" name:"LatestOperationErrorMsg"`
+}
+
+type InstanceAttribute struct {
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例属性信息。
+	Attributes *Attribute `json:"Attributes,omitnil,omitempty" name:"Attributes"`
 }
 
 type InstanceChargePrepaid struct {

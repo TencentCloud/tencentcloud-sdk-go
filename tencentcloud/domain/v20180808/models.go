@@ -155,19 +155,15 @@ func (r *BidDetailPageRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BidDetailPageResponseParams struct {
 	// 域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 当前域名价格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentPrice *float64 `json:"CurrentPrice,omitnil,omitempty" name:"CurrentPrice"`
 
 	// 用户上次出价
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BidPrice *float64 `json:"BidPrice,omitnil,omitempty" name:"BidPrice"`
 
 	// 当前加价幅度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentPriceScope *float64 `json:"CurrentPriceScope,omitnil,omitempty" name:"CurrentPriceScope"`
 
 	// 加价幅度区间配置
@@ -175,7 +171,6 @@ type BidDetailPageResponseParams struct {
 	PriceScope []*PriceScopeConf `json:"PriceScope,omitnil,omitempty" name:"PriceScope"`
 
 	// 用户当前已经支付了的保证金
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DepositPrice *float64 `json:"DepositPrice,omitnil,omitempty" name:"DepositPrice"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -860,7 +855,6 @@ func (r *CreateDomainBatchRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDomainBatchResponseParams struct {
 	// 批量日志ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogId *int64 `json:"LogId,omitnil,omitempty" name:"LogId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1413,11 +1407,9 @@ func (r *DescribeAuctionListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAuctionListResponseParams struct {
 	// 竞拍详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuctionList []*AuctionInfo `json:"AuctionList,omitnil,omitempty" name:"AuctionList"`
 
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1492,7 +1484,6 @@ type DescribeBatchOperationLogDetailsResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 日志详情列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainBatchDetailSet []*DomainBatchDetailSet `json:"DomainBatchDetailSet,omitnil,omitempty" name:"DomainBatchDetailSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1560,7 +1551,6 @@ type DescribeBatchOperationLogsResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 日志列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainBatchLogSet []*DomainBatchLogSet `json:"DomainBatchLogSet,omitnil,omitempty" name:"DomainBatchLogSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2315,7 +2305,6 @@ func (r *DescribeDomainNameListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDomainNameListResponseParams struct {
 	// 域名信息集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainSet []*DomainList `json:"DomainSet,omitnil,omitempty" name:"DomainSet"`
 
 	// 域名总数量
@@ -2959,7 +2948,6 @@ type DescribePreReleaseListResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 预释放列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreReleaseList []*PreReleaseInfo `json:"PreReleaseList,omitnil,omitempty" name:"PreReleaseList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3575,6 +3563,12 @@ type DomainBatchLogSet struct {
 
 	// 批量操作失败个数
 	Failed *int64 `json:"Failed,omitnil,omitempty" name:"Failed"`
+
+	// 是否付费
+	PayStatus *bool `json:"PayStatus,omitnil,omitempty" name:"PayStatus"`
+
+	// 大订单ID
+	BigDealId *string `json:"BigDealId,omitnil,omitempty" name:"BigDealId"`
 }
 
 type DomainList struct {

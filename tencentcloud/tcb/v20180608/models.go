@@ -1272,7 +1272,6 @@ func (r *CreateCloudBaseRunResourceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCloudBaseRunResourceResponseParams struct {
 	// 返回集群创建是否成功 succ为成功。并且中间无err
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1631,15 +1630,12 @@ func (r *CreateCloudBaseRunServerVersionRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type CreateCloudBaseRunServerVersionResponseParams struct {
 	// 状态(creating/succ)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 版本名称（只有Result为succ的时候，才会返回VersionName)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
 
 	// 操作记录id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunId *string `json:"RunId,omitnil,omitempty" name:"RunId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3119,15 +3115,12 @@ type DescribeCbrServerVersionResponseParams struct {
 	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// Dockefile的路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DockerfilePath *string `json:"DockerfilePath,omitnil,omitempty" name:"DockerfilePath"`
 
 	// DockerBuild的目录
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BuildDir *string `json:"BuildDir,omitnil,omitempty" name:"BuildDir"`
 
 	// Cpu大小
@@ -3143,7 +3136,6 @@ type DescribeCbrServerVersionResponseParams struct {
 	MaxNum *int64 `json:"MaxNum,omitnil,omitempty" name:"MaxNum"`
 
 	// 环境变量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvParams *string `json:"EnvParams,omitnil,omitempty" name:"EnvParams"`
 
 	// 创建时间
@@ -3153,83 +3145,63 @@ type DescribeCbrServerVersionResponseParams struct {
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 
 	// 版本的IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionIP *string `json:"VersionIP,omitnil,omitempty" name:"VersionIP"`
 
 	// 版本的端口号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionPort *int64 `json:"VersionPort,omitnil,omitempty" name:"VersionPort"`
 
 	// 版本状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 枚举（package/repository/image)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UploadType *string `json:"UploadType,omitnil,omitempty" name:"UploadType"`
 
 	// 服务名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
 
 	// 是否对于外网开放
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPublic *bool `json:"IsPublic,omitnil,omitempty" name:"IsPublic"`
 
 	// vpc id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
 	// 日志采集路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomLogs *string `json:"CustomLogs,omitnil,omitempty" name:"CustomLogs"`
 
 	// 监听端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerPort *int64 `json:"ContainerPort,omitnil,omitempty" name:"ContainerPort"`
 
 	// 延迟多长时间开始健康检查（单位s）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InitialDelaySeconds *int64 `json:"InitialDelaySeconds,omitnil,omitempty" name:"InitialDelaySeconds"`
 
 	// 镜像地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
 	// 是否有Dockerfile：0-default has, 1-has, 2-has not
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HasDockerfile *int64 `json:"HasDockerfile,omitnil,omitempty" name:"HasDockerfile"`
 
 	// 基础镜像
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BaseImage *string `json:"BaseImage,omitnil,omitempty" name:"BaseImage"`
 
 	// 容器启动入口命令
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EntryPoint *string `json:"EntryPoint,omitnil,omitempty" name:"EntryPoint"`
 
 	// 自动扩缩容策略组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyDetail []*HpaPolicy `json:"PolicyDetail,omitnil,omitempty" name:"PolicyDetail"`
 
 	// Tke集群信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TkeClusterInfo *TkeClusterInfo `json:"TkeClusterInfo,omitnil,omitempty" name:"TkeClusterInfo"`
 
 	// 版本工作负载类型；deployment/deamonset
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TkeWorkloadType *string `json:"TkeWorkloadType,omitnil,omitempty" name:"TkeWorkloadType"`
 
 	// 代码包信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageInfo *CbrPackageInfo `json:"PackageInfo,omitnil,omitempty" name:"PackageInfo"`
 
 	// 仓库信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepoInfo *CbrRepoInfo `json:"RepoInfo,omitnil,omitempty" name:"RepoInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3327,15 +3299,12 @@ type DescribeCloudBaseBuildServiceResponseParams struct {
 	PackageVersion *string `json:"PackageVersion,omitnil,omitempty" name:"PackageVersion"`
 
 	// 下载链接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 下载Httpheader
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadHeaders []*KVPair `json:"DownloadHeaders,omitnil,omitempty" name:"DownloadHeaders"`
 
 	// 下载链接是否过期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutDate *bool `json:"OutDate,omitnil,omitempty" name:"OutDate"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3590,7 +3559,6 @@ func (r *DescribeCloudBaseRunAllVpcsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCloudBaseRunAllVpcsResponseParams struct {
 	// 所有vpcid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vpcs []*string `json:"Vpcs,omitnil,omitempty" name:"Vpcs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3655,7 +3623,6 @@ func (r *DescribeCloudBaseRunConfForGateWayRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeCloudBaseRunConfForGateWayResponseParams struct {
 	// 最近更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastUpTime *string `json:"LastUpTime,omitnil,omitempty" name:"LastUpTime"`
 
 	// 配置信息
@@ -3821,11 +3788,9 @@ func (r *DescribeCloudBaseRunOperationTypesRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeCloudBaseRunOperationTypesResponseParams struct {
 	// 操作类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Action []*string `json:"Action,omitnil,omitempty" name:"Action"`
 
 	// 服务名列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerName []*string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3934,7 +3899,6 @@ type DescribeCloudBaseRunPodListResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 容器列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodList []*CloudBaseRunVersionPod `json:"PodList,omitnil,omitempty" name:"PodList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3992,19 +3956,15 @@ func (r *DescribeCloudBaseRunResourceForExtendRequest) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeCloudBaseRunResourceForExtendResponseParams struct {
 	// 集群状态(creating/succ)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterStatus *string `json:"ClusterStatus,omitnil,omitempty" name:"ClusterStatus"`
 
 	// 虚拟集群ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualClusterId *string `json:"VirtualClusterId,omitnil,omitempty" name:"VirtualClusterId"`
 
 	// vpc id信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 地域信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 子网信息
@@ -4066,19 +4026,15 @@ func (r *DescribeCloudBaseRunResourceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCloudBaseRunResourceResponseParams struct {
 	// 集群状态(creating/succ)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterStatus *string `json:"ClusterStatus,omitnil,omitempty" name:"ClusterStatus"`
 
 	// 虚拟集群ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualClusterId *string `json:"VirtualClusterId,omitnil,omitempty" name:"VirtualClusterId"`
 
 	// vpc id信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 地域信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 子网信息
@@ -4252,35 +4208,27 @@ func (r *DescribeCloudBaseRunServerRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCloudBaseRunServerResponseParams struct {
 	// 个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 版本列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionItems []*CloudBaseRunServerVersionItem `json:"VersionItems,omitnil,omitempty" name:"VersionItems"`
 
 	// 服务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
 
 	// 是否对于外网开放
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPublic *bool `json:"IsPublic,omitnil,omitempty" name:"IsPublic"`
 
 	// 镜像仓库
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageRepo *string `json:"ImageRepo,omitnil,omitempty" name:"ImageRepo"`
 
 	// 流量配置的类型（FLOW,URL_PARAMS)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrafficType *string `json:"TrafficType,omitnil,omitempty" name:"TrafficType"`
 
 	// 服务创建类型，默认为空，一键部署为oneclick
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
 	// 服务标签, function: 托管函数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4355,15 +4303,12 @@ type DescribeCloudBaseRunServerVersionResponseParams struct {
 	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// Dockefile的路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DockerfilePath *string `json:"DockerfilePath,omitnil,omitempty" name:"DockerfilePath"`
 
 	// DockerBuild的目录
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BuildDir *string `json:"BuildDir,omitnil,omitempty" name:"BuildDir"`
 
 	// 请使用CPUSize
@@ -4385,7 +4330,6 @@ type DescribeCloudBaseRunServerVersionResponseParams struct {
 	PolicyThreshold *float64 `json:"PolicyThreshold,omitnil,omitempty" name:"PolicyThreshold"`
 
 	// 环境变量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvParams *string `json:"EnvParams,omitnil,omitempty" name:"EnvParams"`
 
 	// 创建时间
@@ -4395,51 +4339,39 @@ type DescribeCloudBaseRunServerVersionResponseParams struct {
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 
 	// 版本的IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionIP *string `json:"VersionIP,omitnil,omitempty" name:"VersionIP"`
 
 	// 版本的端口号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionPort *int64 `json:"VersionPort,omitnil,omitempty" name:"VersionPort"`
 
 	// 版本状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 代码包的名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
 	// 代码版本的名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageVersion *string `json:"PackageVersion,omitnil,omitempty" name:"PackageVersion"`
 
 	// 枚举（package/repository/image)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UploadType *string `json:"UploadType,omitnil,omitempty" name:"UploadType"`
 
 	// Repo的类型(gitlab/github/coding)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepoType *string `json:"RepoType,omitnil,omitempty" name:"RepoType"`
 
 	// 地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Repo *string `json:"Repo,omitnil,omitempty" name:"Repo"`
 
 	// 分支
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Branch *string `json:"Branch,omitnil,omitempty" name:"Branch"`
 
 	// 服务名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
 
 	// 是否对于外网开放
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPublic *bool `json:"IsPublic,omitnil,omitempty" name:"IsPublic"`
 
 	// vpc id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网实例id
@@ -4447,43 +4379,33 @@ type DescribeCloudBaseRunServerVersionResponseParams struct {
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
 	// 日志采集路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomLogs *string `json:"CustomLogs,omitnil,omitempty" name:"CustomLogs"`
 
 	// 监听端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerPort *int64 `json:"ContainerPort,omitnil,omitempty" name:"ContainerPort"`
 
 	// 延迟多长时间开始健康检查（单位s）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InitialDelaySeconds *int64 `json:"InitialDelaySeconds,omitnil,omitempty" name:"InitialDelaySeconds"`
 
 	// 镜像地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
 	// CPU 大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CpuSize *float64 `json:"CpuSize,omitnil,omitempty" name:"CpuSize"`
 
 	// MEM 大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemSize *float64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
 
 	// 是否有Dockerfile：0-default has, 1-has, 2-has not
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HasDockerfile *int64 `json:"HasDockerfile,omitnil,omitempty" name:"HasDockerfile"`
 
 	// 基础镜像
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BaseImage *string `json:"BaseImage,omitnil,omitempty" name:"BaseImage"`
 
 	// 容器启动入口命令
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EntryPoint *string `json:"EntryPoint,omitnil,omitempty" name:"EntryPoint"`
 
 	// 仓库语言
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepoLanguage *string `json:"RepoLanguage,omitnil,omitempty" name:"RepoLanguage"`
 
 	// 自动扩缩容策略组
@@ -4495,7 +4417,6 @@ type DescribeCloudBaseRunServerVersionResponseParams struct {
 	TkeClusterInfo *TkeClusterInfo `json:"TkeClusterInfo,omitnil,omitempty" name:"TkeClusterInfo"`
 
 	// 版本工作负载类型；deployment/deamonset
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TkeWorkloadType *string `json:"TkeWorkloadType,omitnil,omitempty" name:"TkeWorkloadType"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4570,15 +4491,12 @@ type DescribeCloudBaseRunVersionResponseParams struct {
 	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// Dockefile的路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DockerfilePath *string `json:"DockerfilePath,omitnil,omitempty" name:"DockerfilePath"`
 
 	// DockerBuild的目录
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BuildDir *string `json:"BuildDir,omitnil,omitempty" name:"BuildDir"`
 
 	// 副本最小值
@@ -4594,7 +4512,6 @@ type DescribeCloudBaseRunVersionResponseParams struct {
 	PolicyThreshold *float64 `json:"PolicyThreshold,omitnil,omitempty" name:"PolicyThreshold"`
 
 	// 环境变量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvParams *string `json:"EnvParams,omitnil,omitempty" name:"EnvParams"`
 
 	// 创建时间
@@ -4604,91 +4521,69 @@ type DescribeCloudBaseRunVersionResponseParams struct {
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 
 	// 版本的IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionIP *string `json:"VersionIP,omitnil,omitempty" name:"VersionIP"`
 
 	// 版本的端口号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionPort *int64 `json:"VersionPort,omitnil,omitempty" name:"VersionPort"`
 
 	// 版本状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 代码包的名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
 	// 代码版本的名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageVersion *string `json:"PackageVersion,omitnil,omitempty" name:"PackageVersion"`
 
 	// 枚举（package/repository/image)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UploadType *string `json:"UploadType,omitnil,omitempty" name:"UploadType"`
 
 	// Repo的类型(coding/gitlab/github/coding)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepoType *string `json:"RepoType,omitnil,omitempty" name:"RepoType"`
 
 	// 地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Repo *string `json:"Repo,omitnil,omitempty" name:"Repo"`
 
 	// 分支
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Branch *string `json:"Branch,omitnil,omitempty" name:"Branch"`
 
 	// 服务名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
 
 	// 是否对于外网开放
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPublic *bool `json:"IsPublic,omitnil,omitempty" name:"IsPublic"`
 
 	// vpc id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
 	// 日志采集路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomLogs *string `json:"CustomLogs,omitnil,omitempty" name:"CustomLogs"`
 
 	// 监听端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerPort *int64 `json:"ContainerPort,omitnil,omitempty" name:"ContainerPort"`
 
 	// 延迟多长时间开始健康检查（单位s）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InitialDelaySeconds *int64 `json:"InitialDelaySeconds,omitnil,omitempty" name:"InitialDelaySeconds"`
 
 	// 镜像地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
 	// CPU 大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CpuSize *float64 `json:"CpuSize,omitnil,omitempty" name:"CpuSize"`
 
 	// MEM 大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemSize *float64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
 
 	// 扩缩容策略详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyDetail []*HpaPolicy `json:"PolicyDetail,omitnil,omitempty" name:"PolicyDetail"`
 
 	// Cpu的Request值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
 	// Mem的Request值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mem *float64 `json:"Mem,omitnil,omitempty" name:"Mem"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4832,7 +4727,6 @@ func (r *DescribeCloudBaseRunVersionSnapshotRequest) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeCloudBaseRunVersionSnapshotResponseParams struct {
 	// 版本历史
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Snapshots []*CloudRunServiceSimpleVersionSnapshot `json:"Snapshots,omitnil,omitempty" name:"Snapshots"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7715,7 +7609,6 @@ func (r *EstablishCloudBaseRunServerRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EstablishCloudBaseRunServerResponseParams struct {
 	// 创建服务是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7921,11 +7814,9 @@ type FreezeCloudBaseRunServersResponseParams struct {
 	// 失败：fail
 	// 部分：partial（部分成功、部分失败）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 冻结失败服务列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailServerList []*string `json:"FailServerList,omitnil,omitempty" name:"FailServerList"`
 
@@ -8224,7 +8115,6 @@ func (r *ModifyCloudBaseRunServerFlowConfRequest) FromJsonString(s string) error
 // Predefined struct for user
 type ModifyCloudBaseRunServerFlowConfResponseParams struct {
 	// 返回结果，succ代表成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8359,7 +8249,6 @@ func (r *ModifyCloudBaseRunServerVersionRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type ModifyCloudBaseRunServerVersionResponseParams struct {
 	// 返回结果（succ为成功）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9286,11 +9175,9 @@ type RollUpdateCloudBaseRunServerVersionResponseParams struct {
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 滚动更新的VersionName
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
 
 	// 操作记录id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunId *string `json:"RunId,omitnil,omitempty" name:"RunId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9741,11 +9628,9 @@ type UnfreezeCloudBaseRunServersResponseParams struct {
 	// 失败：fail
 	// 部分：partial（部分成功、部分失败）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 解冻失败列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailServerList []*string `json:"FailServerList,omitnil,omitempty" name:"FailServerList"`
 
