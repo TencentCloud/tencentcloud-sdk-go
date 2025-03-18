@@ -2140,6 +2140,10 @@ func NewDescribeSavingPlanCoverageResponse() (response *DescribeSavingPlanCovera
 }
 
 // DescribeSavingPlanCoverage
+// 当前接口已迁移至svp产品
+//
+// 
+//
 // 查询当前用户节省计划覆盖率明细数据，如无特别说明，金额单位均为元（国内站）或者美元（国际站）。
 //
 // 可能返回的错误码:
@@ -2150,6 +2154,10 @@ func (c *Client) DescribeSavingPlanCoverage(request *DescribeSavingPlanCoverageR
 }
 
 // DescribeSavingPlanCoverage
+// 当前接口已迁移至svp产品
+//
+// 
+//
 // 查询当前用户节省计划覆盖率明细数据，如无特别说明，金额单位均为元（国内站）或者美元（国际站）。
 //
 // 可能返回的错误码:

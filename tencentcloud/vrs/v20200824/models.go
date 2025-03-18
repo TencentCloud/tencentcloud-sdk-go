@@ -78,7 +78,9 @@ func (r *CancelVRSTaskResponse) FromJsonString(s string) error {
 }
 
 type CancelVRSTaskRsp struct {
-
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 // Predefined struct for user

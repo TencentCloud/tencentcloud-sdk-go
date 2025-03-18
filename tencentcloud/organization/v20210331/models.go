@@ -194,7 +194,6 @@ func (r *AddOrganizationMemberEmailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddOrganizationMemberEmailResponseParams struct {
 	// 绑定Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindId *uint64 `json:"BindId,omitnil,omitempty" name:"BindId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4576,26 +4575,21 @@ type DescribePolicyResponseParams struct {
 	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
 	// 策略名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
 	// 策略类型。1-自定义 2-预设策略
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 策略描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 策略文档。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyDocument *string `json:"PolicyDocument,omitnil,omitempty" name:"PolicyDocument"`
 
 	// 策略更新时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 策略创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5897,11 +5891,9 @@ type IdentityPolicy struct {
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
 	// 策略类型。取值 1-自定义策略  2-预设策略；默认值2
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyType *uint64 `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
 
 	// 自定义策略内容，遵循CAM策略语法。PolicyType 为自定义策略时有效且必选
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyDocument *string `json:"PolicyDocument,omitnil,omitempty" name:"PolicyDocument"`
 }
 
@@ -6836,7 +6828,6 @@ type ListPoliciesForTarget struct {
 	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
 
 	// 备注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 关联的账号或节点
@@ -6846,19 +6837,15 @@ type ListPoliciesForTarget struct {
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 策略创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
 	// 策略更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 部门名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 策略绑定时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttachTime *string `json:"AttachTime,omitnil,omitempty" name:"AttachTime"`
 }
 
@@ -7040,15 +7027,12 @@ func (r *ListPoliciesResponse) FromJsonString(s string) error {
 
 type ListPolicyNode struct {
 	// 策略创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
 	// 策略绑定次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttachedTimes *uint64 `json:"AttachedTimes,omitnil,omitempty" name:"AttachedTimes"`
 
 	// 策略描述信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 策略名称
@@ -7058,7 +7042,6 @@ type ListPolicyNode struct {
 	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
 	// 策略更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 策略类型 1-自定义 2-预设
@@ -7487,7 +7470,6 @@ type ListTargetsForPolicyNode struct {
 	RelatedType *uint64 `json:"RelatedType,omitnil,omitempty" name:"RelatedType"`
 
 	// 账号或者节点名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 绑定时间
@@ -7988,23 +7970,18 @@ type ManagerShareUnit struct {
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
 	// 描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 共享单元资源数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShareResourceNum *int64 `json:"ShareResourceNum,omitnil,omitempty" name:"ShareResourceNum"`
 
 	// 共享单元成员数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShareMemberNum *int64 `json:"ShareMemberNum,omitnil,omitempty" name:"ShareMemberNum"`
 
 	// 共享范围。取值：1-仅允许集团组织内共享 2-允许共享给任意账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShareScope *uint64 `json:"ShareScope,omitnil,omitempty" name:"ShareScope"`
 }
 
@@ -8087,11 +8064,9 @@ func (r *MoveOrganizationNodeMembersResponse) FromJsonString(s string) error {
 
 type NodeMainInfo struct {
 	// 部门ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeId *int64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
 
 	// 部门名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 }
 
@@ -8183,19 +8158,15 @@ func (r *OpenIdentityCenterResponse) FromJsonString(s string) error {
 
 type OrgFinancialByMonth struct {
 	// 记录ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 月份，格式：yyyy-mm，示例：2021-01。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
 
 	// 消耗金额，单元：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCost *float64 `json:"TotalCost,omitnil,omitempty" name:"TotalCost"`
 
 	// 比上月增长率%。正数增长，负数下降，空值无法统计。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GrowthRate *string `json:"GrowthRate,omitnil,omitempty" name:"GrowthRate"`
 }
 
@@ -8412,19 +8383,15 @@ type OrgPermission struct {
 
 type OrgProductFinancial struct {
 	// 产品Code。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
 	// 产品名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
 
 	// 产品消耗，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCost *float64 `json:"TotalCost,omitnil,omitempty" name:"TotalCost"`
 
 	// 占比%。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ratio *string `json:"Ratio,omitnil,omitempty" name:"Ratio"`
 }
 
@@ -9340,7 +9307,6 @@ type ShareResource struct {
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 产品资源ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductResourceId *string `json:"ProductResourceId,omitnil,omitempty" name:"ProductResourceId"`
 }
 
@@ -9349,7 +9315,6 @@ type ShareUnitMember struct {
 	ShareMemberUin *int64 `json:"ShareMemberUin,omitnil,omitempty" name:"ShareMemberUin"`
 
 	// 创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
@@ -9361,32 +9326,26 @@ type ShareUnitResource struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 产品资源ID。
 	ProductResourceId *string `json:"ProductResourceId,omitnil,omitempty" name:"ProductResourceId"`
 
 	// 共享单元成员数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SharedMemberNum *uint64 `json:"SharedMemberNum,omitnil,omitempty" name:"SharedMemberNum"`
 
 	// 使用中共享单元成员数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SharedMemberUseNum *uint64 `json:"SharedMemberUseNum,omitnil,omitempty" name:"SharedMemberUseNum"`
 
 	// 共享管理员OwnerUin。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShareManagerUin *int64 `json:"ShareManagerUin,omitnil,omitempty" name:"ShareManagerUin"`
 }
 
 type Tag struct {
 	// 标签键
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 标签值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 

@@ -673,6 +673,74 @@ func (r *CancelAssignTWeCallLicenseResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ChangeP2PRouteRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// P2P线路
+	RouteId *uint64 `json:"RouteId,omitnil,omitempty" name:"RouteId"`
+}
+
+type ChangeP2PRouteRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// P2P线路
+	RouteId *uint64 `json:"RouteId,omitnil,omitempty" name:"RouteId"`
+}
+
+func (r *ChangeP2PRouteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChangeP2PRouteRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "RouteId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChangeP2PRouteRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChangeP2PRouteResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ChangeP2PRouteResponse struct {
+	*tchttp.BaseResponse
+	Response *ChangeP2PRouteResponseParams `json:"Response"`
+}
+
+func (r *ChangeP2PRouteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChangeP2PRouteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CheckFirmwareUpdateRequestParams struct {
 	// 产品ID。
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -6931,6 +6999,70 @@ func (r *DescribeModelDefinitionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeP2PRouteRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+}
+
+type DescribeP2PRouteRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+}
+
+func (r *DescribeP2PRouteRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeP2PRouteRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeP2PRouteRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeP2PRouteResponseParams struct {
+	// 当前p2p线路
+	RouteId *uint64 `json:"RouteId,omitnil,omitempty" name:"RouteId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeP2PRouteResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeP2PRouteResponseParams `json:"Response"`
+}
+
+func (r *DescribeP2PRouteResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeP2PRouteResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePackageConsumeTaskRequestParams struct {
 	// 任务id
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -10015,6 +10147,97 @@ func (r *InvokeExternalSourceAIServiceTaskResponse) FromJsonString(s string) err
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type IotApplication struct {
+	// 应用 ID
+	IotAppID *string `json:"IotAppID,omitnil,omitempty" name:"IotAppID"`
+
+	// 应用名称
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// 应用说明
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 开发模式
+	DevMode *int64 `json:"DevMode,omitnil,omitempty" name:"DevMode"`
+
+	// iOS 平台 AppKey
+	IOSAppKey *string `json:"IOSAppKey,omitnil,omitempty" name:"IOSAppKey"`
+
+	// iOS 平台 AppSecret
+	IOSAppSecret *string `json:"IOSAppSecret,omitnil,omitempty" name:"IOSAppSecret"`
+
+	// Android 平台 AppKey
+	AndroidAppKey *string `json:"AndroidAppKey,omitnil,omitempty" name:"AndroidAppKey"`
+
+	// Android 平台 AppSecret
+	AndroidAppSecret *string `json:"AndroidAppSecret,omitnil,omitempty" name:"AndroidAppSecret"`
+
+	// 绑定的产品列表，数据为：ProdcutID 数组 JSON 序列化后的字符串
+	Products *string `json:"Products,omitnil,omitempty" name:"Products"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 信鸽推送APP ID
+	PushSecretID *string `json:"PushSecretID,omitnil,omitempty" name:"PushSecretID"`
+
+	// 信鸽推送SECRET KEY
+	PushSecretKey *string `json:"PushSecretKey,omitnil,omitempty" name:"PushSecretKey"`
+
+	// iOS平台推送环境
+	PushEnvironment *string `json:"PushEnvironment,omitnil,omitempty" name:"PushEnvironment"`
+
+	// 小程序平台 AppKey
+	MiniProgramAppKey *string `json:"MiniProgramAppKey,omitnil,omitempty" name:"MiniProgramAppKey"`
+
+	// 小程序平台 AppSecret
+	MiniProgramAppSecret *string `json:"MiniProgramAppSecret,omitnil,omitempty" name:"MiniProgramAppSecret"`
+
+	// TPNS服务iOS应用AccessID，TPNS全称为腾讯移动推送（Tencent Push Notification Service），详见：https://cloud.tencent.com/document/product/548
+	TPNSiOSAccessID *string `json:"TPNSiOSAccessID,omitnil,omitempty" name:"TPNSiOSAccessID"`
+
+	// TPNS服务iOS应用SecretKey
+	TPNSiOSSecretKey *string `json:"TPNSiOSSecretKey,omitnil,omitempty" name:"TPNSiOSSecretKey"`
+
+	// TPNS服务iOS应用推送环境
+	TPNSiOSPushEnvironment *string `json:"TPNSiOSPushEnvironment,omitnil,omitempty" name:"TPNSiOSPushEnvironment"`
+
+	// TPNS服务Android应用AccessID
+	TPNSAndroidAccessID *string `json:"TPNSAndroidAccessID,omitnil,omitempty" name:"TPNSAndroidAccessID"`
+
+	// TPNS服务Android应用SecretKey
+	TPNSAndroidSecretKey *string `json:"TPNSAndroidSecretKey,omitnil,omitempty" name:"TPNSAndroidSecretKey"`
+
+	// TPNS服务iOS应用所属地域，详细说明参见 ModifyApplication 同名入参。
+	TPNSiOSRegion *string `json:"TPNSiOSRegion,omitnil,omitempty" name:"TPNSiOSRegion"`
+
+	// TPNS服务Android应用所属地域，详细说明参见 ModifyApplication 同名入参。
+	TPNSAndroidRegion *string `json:"TPNSAndroidRegion,omitnil,omitempty" name:"TPNSAndroidRegion"`
+
+	// 自主短信配置APPID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfSmsAppId *string `json:"SelfSmsAppId,omitnil,omitempty" name:"SelfSmsAppId"`
+
+	// 自主短信配置APPKey
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfSmsAppKey *string `json:"SelfSmsAppKey,omitnil,omitempty" name:"SelfSmsAppKey"`
+
+	// 自主短信配置签名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfSmsSign *string `json:"SelfSmsSign,omitnil,omitempty" name:"SelfSmsSign"`
+
+	// 自主短信配置模板ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfSmsTemplateId *int64 `json:"SelfSmsTemplateId,omitnil,omitempty" name:"SelfSmsTemplateId"`
+
+	// 第三方小程序强提醒开关 0：关闭；1：开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WechatNotifyStatus *int64 `json:"WechatNotifyStatus,omitnil,omitempty" name:"WechatNotifyStatus"`
+}
+
 type LicenseServiceNumInfo struct {
 	// 服务类型
 	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
@@ -10366,6 +10589,161 @@ type LoRaGatewayLocation struct {
 
 	// 海拔
 	Altitude *float64 `json:"Altitude,omitnil,omitempty" name:"Altitude"`
+}
+
+// Predefined struct for user
+type ModifyApplicationRequestParams struct {
+	// 应用ID
+	IotAppID *string `json:"IotAppID,omitnil,omitempty" name:"IotAppID"`
+
+	// 应用名称
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// 应用说明
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 关联的产品
+	Products *string `json:"Products,omitnil,omitempty" name:"Products"`
+
+	// 信鸽推送APP ID
+	PushSecretID *string `json:"PushSecretID,omitnil,omitempty" name:"PushSecretID"`
+
+	// 信鸽推送SECRET KEY
+	PushSecretKey *string `json:"PushSecretKey,omitnil,omitempty" name:"PushSecretKey"`
+
+	// iOS平台推送环境
+	PushEnvironment *string `json:"PushEnvironment,omitnil,omitempty" name:"PushEnvironment"`
+
+	// TPNS服务iOS应用AccessID，TPNS全称为腾讯移动推送（Tencent Push Notification Service），详见：https://cloud.tencent.com/document/product/548
+	TPNSiOSAccessID *string `json:"TPNSiOSAccessID,omitnil,omitempty" name:"TPNSiOSAccessID"`
+
+	// TPNS服务iOS应用SecretKey
+	TPNSiOSSecretKey *string `json:"TPNSiOSSecretKey,omitnil,omitempty" name:"TPNSiOSSecretKey"`
+
+	// TPNS服务iOS应用推送环境
+	TPNSiOSPushEnvironment *string `json:"TPNSiOSPushEnvironment,omitnil,omitempty" name:"TPNSiOSPushEnvironment"`
+
+	// TPNS服务Android应用AccessID
+	TPNSAndroidAccessID *string `json:"TPNSAndroidAccessID,omitnil,omitempty" name:"TPNSAndroidAccessID"`
+
+	// TPNS服务Android应用SecretKey
+	TPNSAndroidSecretKey *string `json:"TPNSAndroidSecretKey,omitnil,omitempty" name:"TPNSAndroidSecretKey"`
+
+	// TPNS服务iOS应用所属地域，广州：ap-guangzhou，上海：ap-shanghai，中国香港：ap-hongkong，新加坡：ap-singapore。
+	TPNSiOSRegion *string `json:"TPNSiOSRegion,omitnil,omitempty" name:"TPNSiOSRegion"`
+
+	// TPNS服务Android应用所属地域，广州：ap-guangzhou，上海：ap-shanghai，中国香港：ap-hongkong，新加坡：ap-singapore。
+	TPNSAndroidRegion *string `json:"TPNSAndroidRegion,omitnil,omitempty" name:"TPNSAndroidRegion"`
+
+	// TurnKey小程序托管
+	TurnKeySwitch *int64 `json:"TurnKeySwitch,omitnil,omitempty" name:"TurnKeySwitch"`
+}
+
+type ModifyApplicationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID
+	IotAppID *string `json:"IotAppID,omitnil,omitempty" name:"IotAppID"`
+
+	// 应用名称
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// 应用说明
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 关联的产品
+	Products *string `json:"Products,omitnil,omitempty" name:"Products"`
+
+	// 信鸽推送APP ID
+	PushSecretID *string `json:"PushSecretID,omitnil,omitempty" name:"PushSecretID"`
+
+	// 信鸽推送SECRET KEY
+	PushSecretKey *string `json:"PushSecretKey,omitnil,omitempty" name:"PushSecretKey"`
+
+	// iOS平台推送环境
+	PushEnvironment *string `json:"PushEnvironment,omitnil,omitempty" name:"PushEnvironment"`
+
+	// TPNS服务iOS应用AccessID，TPNS全称为腾讯移动推送（Tencent Push Notification Service），详见：https://cloud.tencent.com/document/product/548
+	TPNSiOSAccessID *string `json:"TPNSiOSAccessID,omitnil,omitempty" name:"TPNSiOSAccessID"`
+
+	// TPNS服务iOS应用SecretKey
+	TPNSiOSSecretKey *string `json:"TPNSiOSSecretKey,omitnil,omitempty" name:"TPNSiOSSecretKey"`
+
+	// TPNS服务iOS应用推送环境
+	TPNSiOSPushEnvironment *string `json:"TPNSiOSPushEnvironment,omitnil,omitempty" name:"TPNSiOSPushEnvironment"`
+
+	// TPNS服务Android应用AccessID
+	TPNSAndroidAccessID *string `json:"TPNSAndroidAccessID,omitnil,omitempty" name:"TPNSAndroidAccessID"`
+
+	// TPNS服务Android应用SecretKey
+	TPNSAndroidSecretKey *string `json:"TPNSAndroidSecretKey,omitnil,omitempty" name:"TPNSAndroidSecretKey"`
+
+	// TPNS服务iOS应用所属地域，广州：ap-guangzhou，上海：ap-shanghai，中国香港：ap-hongkong，新加坡：ap-singapore。
+	TPNSiOSRegion *string `json:"TPNSiOSRegion,omitnil,omitempty" name:"TPNSiOSRegion"`
+
+	// TPNS服务Android应用所属地域，广州：ap-guangzhou，上海：ap-shanghai，中国香港：ap-hongkong，新加坡：ap-singapore。
+	TPNSAndroidRegion *string `json:"TPNSAndroidRegion,omitnil,omitempty" name:"TPNSAndroidRegion"`
+
+	// TurnKey小程序托管
+	TurnKeySwitch *int64 `json:"TurnKeySwitch,omitnil,omitempty" name:"TurnKeySwitch"`
+}
+
+func (r *ModifyApplicationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApplicationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IotAppID")
+	delete(f, "AppName")
+	delete(f, "Description")
+	delete(f, "Products")
+	delete(f, "PushSecretID")
+	delete(f, "PushSecretKey")
+	delete(f, "PushEnvironment")
+	delete(f, "TPNSiOSAccessID")
+	delete(f, "TPNSiOSSecretKey")
+	delete(f, "TPNSiOSPushEnvironment")
+	delete(f, "TPNSAndroidAccessID")
+	delete(f, "TPNSAndroidSecretKey")
+	delete(f, "TPNSiOSRegion")
+	delete(f, "TPNSAndroidRegion")
+	delete(f, "TurnKeySwitch")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApplicationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyApplicationResponseParams struct {
+	// 应用信息
+	Application *IotApplication `json:"Application,omitnil,omitempty" name:"Application"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyApplicationResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyApplicationResponseParams `json:"Response"`
+}
+
+func (r *ModifyApplicationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApplicationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

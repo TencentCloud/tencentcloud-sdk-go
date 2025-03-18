@@ -2277,6 +2277,7 @@ func NewDeleteOrganizationResponse() (response *DeleteOrganizationResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_MEMBEREXISTDELEGATEPAYERNOTALLOWDELETE = "FailedOperation.MemberExistDelegatePayerNotAllowDelete"
 //  FAILEDOPERATION_MEMBERISDELEGATEPAYERNOTALLOWDELETE = "FailedOperation.MemberIsDelegatePayerNotAllowDelete"
+//  FAILEDOPERATION_ORGMEMBERPOLICYEXIST = "FailedOperation.OrgMemberPolicyExist"
 //  FAILEDOPERATION_ORGANIZATIONNOTEMPTY = "FailedOperation.OrganizationNotEmpty"
 //  FAILEDOPERATION_ORGANIZATIONPOLICYISNOTDISABLED = "FailedOperation.OrganizationPolicyIsNotDisabled"
 //  FAILEDOPERATION_QUITSHAREUINT = "FailedOperation.QuitShareUint"
@@ -2295,6 +2296,7 @@ func (c *Client) DeleteOrganization(request *DeleteOrganizationRequest) (respons
 // 可能返回的错误码:
 //  FAILEDOPERATION_MEMBEREXISTDELEGATEPAYERNOTALLOWDELETE = "FailedOperation.MemberExistDelegatePayerNotAllowDelete"
 //  FAILEDOPERATION_MEMBERISDELEGATEPAYERNOTALLOWDELETE = "FailedOperation.MemberIsDelegatePayerNotAllowDelete"
+//  FAILEDOPERATION_ORGMEMBERPOLICYEXIST = "FailedOperation.OrgMemberPolicyExist"
 //  FAILEDOPERATION_ORGANIZATIONNOTEMPTY = "FailedOperation.OrganizationNotEmpty"
 //  FAILEDOPERATION_ORGANIZATIONPOLICYISNOTDISABLED = "FailedOperation.OrganizationPolicyIsNotDisabled"
 //  FAILEDOPERATION_QUITSHAREUINT = "FailedOperation.QuitShareUint"

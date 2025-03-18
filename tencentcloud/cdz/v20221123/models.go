@@ -22,11 +22,9 @@ import (
 
 type CloudDedicatedZoneHostsInfo struct {
 	// Host的唯一标识uuid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostUuid *string `json:"HostUuid,omitnil,omitempty" name:"HostUuid"`
 
 	// 实例名称数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstancesInfo []*string `json:"InstancesInfo,omitnil,omitempty" name:"InstancesInfo"`
 }
 

@@ -313,6 +313,152 @@ type AuditLogFilter struct {
 	ExecTime *int64 `json:"ExecTime,omitnil,omitempty" name:"ExecTime"`
 }
 
+type AutonomyActionVo struct {
+	// 自治任务ID。
+	ActionId *int64 `json:"ActionId,omitnil,omitempty" name:"ActionId"`
+
+	// 自治事件ID。
+	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 类型：支持RedisAutoScaleUp
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 自治任务触发时间。
+	TriggerTime *string `json:"TriggerTime,omitnil,omitempty" name:"TriggerTime"`
+
+	// 自治任务创建时间。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 自治任务更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 自治任务完成时间。
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// 剩余时间，单位：秒。
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 触发原因。
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// 自治任务状态：支持 RUNNING，FINISHED，TERMINATED，CANCELLED
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type AutonomyEventVo struct {
+	// 自治事件ID。
+	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 自治事件类型：支持RunningAutoRecovery，RedisAutoScale
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 自治事件状态：支持 RUNNING，FINISHED，TERMINATED
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 触发原因。	
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// 自治任务触发时间。
+	TriggerTime *int64 `json:"TriggerTime,omitnil,omitempty" name:"TriggerTime"`
+
+	// 自治任务最后触发时间。
+	LastTriggerTime *int64 `json:"LastTriggerTime,omitnil,omitempty" name:"LastTriggerTime"`
+
+	// 自治任务创建时间。
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 自治任务更新时间。
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 自治任务完成时间；非结束状态的时候，该值无意义。
+	FinishTime *int64 `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+}
+
+type AutonomyUserProfileInfo struct {
+	// 是否开启自治。
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 用户Uin。
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 内存上限。
+	MemoryUpperLimit *int64 `json:"MemoryUpperLimit,omitnil,omitempty" name:"MemoryUpperLimit"`
+
+	// 指标阈值规则。
+	ThresholdRule *MetricThreshold `json:"ThresholdRule,omitnil,omitempty" name:"ThresholdRule"`
+
+	// 自治功能类型。
+	EnabledItems []*string `json:"EnabledItems,omitnil,omitempty" name:"EnabledItems"`
+}
+
+// Predefined struct for user
+type CancelDBAutonomyActionRequestParams struct {
+	// 自治任务ID。
+	ActionId *int64 `json:"ActionId,omitnil,omitempty" name:"ActionId"`
+
+	// 实列ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+}
+
+type CancelDBAutonomyActionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 自治任务ID。
+	ActionId *int64 `json:"ActionId,omitnil,omitempty" name:"ActionId"`
+
+	// 实列ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+}
+
+func (r *CancelDBAutonomyActionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelDBAutonomyActionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ActionId")
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelDBAutonomyActionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelDBAutonomyActionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CancelDBAutonomyActionResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelDBAutonomyActionResponseParams `json:"Response"`
+}
+
+func (r *CancelDBAutonomyActionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelDBAutonomyActionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type CancelKillTaskRequestParams struct {
 	// 实例ID。
@@ -374,6 +520,77 @@ func (r *CancelKillTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CancelKillTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelRedisBigKeyAnalysisTasksRequestParams struct {
+	// 自治任务ID。
+	AsyncRequestIds []*int64 `json:"AsyncRequestIds,omitnil,omitempty" name:"AsyncRequestIds"`
+
+	// 实列ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+}
+
+type CancelRedisBigKeyAnalysisTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 自治任务ID。
+	AsyncRequestIds []*int64 `json:"AsyncRequestIds,omitnil,omitempty" name:"AsyncRequestIds"`
+
+	// 实列ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+}
+
+func (r *CancelRedisBigKeyAnalysisTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelRedisBigKeyAnalysisTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AsyncRequestIds")
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelRedisBigKeyAnalysisTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelRedisBigKeyAnalysisTasksResponseParams struct {
+	// 终止大Key任务结果；0-成功。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CancelRedisBigKeyAnalysisTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelRedisBigKeyAnalysisTasksResponseParams `json:"Response"`
+}
+
+func (r *CancelRedisBigKeyAnalysisTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelRedisBigKeyAnalysisTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1344,6 +1561,81 @@ func (r *CreateSqlFilterResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateUserAutonomyProfileRequestParams struct {
+	// 配置类型，为需要配置的功能枚举值，目前包含一下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）
+	ProfileType *string `json:"ProfileType,omitnil,omitempty" name:"ProfileType"`
+
+	// 实列ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 自治功能相关配置，标准JSON字符串格式。
+	ProfileInfo *string `json:"ProfileInfo,omitnil,omitempty" name:"ProfileInfo"`
+}
+
+type CreateUserAutonomyProfileRequest struct {
+	*tchttp.BaseRequest
+	
+	// 配置类型，为需要配置的功能枚举值，目前包含一下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）
+	ProfileType *string `json:"ProfileType,omitnil,omitempty" name:"ProfileType"`
+
+	// 实列ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 自治功能相关配置，标准JSON字符串格式。
+	ProfileInfo *string `json:"ProfileInfo,omitnil,omitempty" name:"ProfileInfo"`
+}
+
+func (r *CreateUserAutonomyProfileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserAutonomyProfileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProfileType")
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	delete(f, "ProfileInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserAutonomyProfileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUserAutonomyProfileResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateUserAutonomyProfileResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateUserAutonomyProfileResponseParams `json:"Response"`
+}
+
+func (r *CreateUserAutonomyProfileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserAutonomyProfileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAuditLogFileRequestParams struct {
 	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
@@ -2102,6 +2394,175 @@ func (r *DescribeAuditLogFilesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAuditLogFilesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBAutonomyActionsRequestParams struct {
+	// 事件ID。
+	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 实列ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+}
+
+type DescribeDBAutonomyActionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 事件ID。
+	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 实列ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+}
+
+func (r *DescribeDBAutonomyActionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBAutonomyActionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EventId")
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBAutonomyActionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBAutonomyActionsResponseParams struct {
+	// 自治事件总数。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 自治事件列表。
+	Actions []*AutonomyActionVo `json:"Actions,omitnil,omitempty" name:"Actions"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDBAutonomyActionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBAutonomyActionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBAutonomyActionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBAutonomyActionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBAutonomyEventsRequestParams struct {
+	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 实列ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 分页参数，默认值为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页参数，默认值为20。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeDBAutonomyEventsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 实列ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 分页参数，默认值为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页参数，默认值为20。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeDBAutonomyEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBAutonomyEventsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBAutonomyEventsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBAutonomyEventsResponseParams struct {
+	// 自治事件列表总数。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 自治事件列表。
+	Events []*AutonomyEventVo `json:"Events,omitnil,omitempty" name:"Events"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDBAutonomyEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBAutonomyEventsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBAutonomyEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBAutonomyEventsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4999,6 +5460,83 @@ func (r *DescribeTopSpaceTablesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeUserAutonomyProfileRequestParams struct {
+	// 配置类型，为需要配置的功能枚举值，目前包含一下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）。
+	ProfileType *string `json:"ProfileType,omitnil,omitempty" name:"ProfileType"`
+
+	// 实列ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+}
+
+type DescribeUserAutonomyProfileRequest struct {
+	*tchttp.BaseRequest
+	
+	// 配置类型，为需要配置的功能枚举值，目前包含一下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）。
+	ProfileType *string `json:"ProfileType,omitnil,omitempty" name:"ProfileType"`
+
+	// 实列ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+}
+
+func (r *DescribeUserAutonomyProfileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserAutonomyProfileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProfileType")
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserAutonomyProfileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserAutonomyProfileResponseParams struct {
+	// 配置类型，为需要配置的功能枚举值，目前包含一下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）。
+	ProfileType *string `json:"ProfileType,omitnil,omitempty" name:"ProfileType"`
+
+	// 更新时间。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 自治用户配置。
+	ProfileInfo *AutonomyUserProfileInfo `json:"ProfileInfo,omitnil,omitempty" name:"ProfileInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUserAutonomyProfileResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserAutonomyProfileResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserAutonomyProfileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserAutonomyProfileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUserSqlAdviceRequestParams struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -5536,6 +6074,17 @@ type MailConfiguration struct {
 	ContactGroup []*int64 `json:"ContactGroup,omitnil,omitempty" name:"ContactGroup"`
 }
 
+type MetricThreshold struct {
+	// 指标。
+	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
+
+	// 阈值。
+	Threshold *int64 `json:"Threshold,omitnil,omitempty" name:"Threshold"`
+
+	// 时间间隔。
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+}
+
 // Predefined struct for user
 type ModifyAlarmPolicyRequestParams struct {
 	// 类型
@@ -5912,6 +6461,81 @@ func (r *ModifySqlFiltersResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifySqlFiltersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUserAutonomyProfileRequestParams struct {
+	// 配置类型，为需要配置的功能枚举值，目前包含一下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）
+	ProfileType *string `json:"ProfileType,omitnil,omitempty" name:"ProfileType"`
+
+	// 实列ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 自治功能相关配置，标准JSON字符串格式。
+	NewProfileInfo *string `json:"NewProfileInfo,omitnil,omitempty" name:"NewProfileInfo"`
+}
+
+type ModifyUserAutonomyProfileRequest struct {
+	*tchttp.BaseRequest
+	
+	// 配置类型，为需要配置的功能枚举值，目前包含一下枚举值：AutonomyGlobal（自治功能全局配置）、RedisAutoScaleUp（Redis自治扩容配置）
+	ProfileType *string `json:"ProfileType,omitnil,omitempty" name:"ProfileType"`
+
+	// 实列ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 自治功能相关配置，标准JSON字符串格式。
+	NewProfileInfo *string `json:"NewProfileInfo,omitnil,omitempty" name:"NewProfileInfo"`
+}
+
+func (r *ModifyUserAutonomyProfileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserAutonomyProfileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProfileType")
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	delete(f, "NewProfileInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserAutonomyProfileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUserAutonomyProfileResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyUserAutonomyProfileResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyUserAutonomyProfileResponseParams `json:"Response"`
+}
+
+func (r *ModifyUserAutonomyProfileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserAutonomyProfileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

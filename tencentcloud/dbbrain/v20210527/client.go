@@ -120,6 +120,79 @@ func (c *Client) AddUserContactWithContext(ctx context.Context, request *AddUser
     return
 }
 
+func NewCancelDBAutonomyActionRequest() (request *CancelDBAutonomyActionRequest) {
+    request = &CancelDBAutonomyActionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "CancelDBAutonomyAction")
+    
+    
+    return
+}
+
+func NewCancelDBAutonomyActionResponse() (response *CancelDBAutonomyActionResponse) {
+    response = &CancelDBAutonomyActionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CancelDBAutonomyAction
+// 自治中心-终止自治任务（单次）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CancelDBAutonomyAction(request *CancelDBAutonomyActionRequest) (response *CancelDBAutonomyActionResponse, err error) {
+    return c.CancelDBAutonomyActionWithContext(context.Background(), request)
+}
+
+// CancelDBAutonomyAction
+// 自治中心-终止自治任务（单次）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CancelDBAutonomyActionWithContext(ctx context.Context, request *CancelDBAutonomyActionRequest) (response *CancelDBAutonomyActionResponse, err error) {
+    if request == nil {
+        request = NewCancelDBAutonomyActionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelDBAutonomyAction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelDBAutonomyActionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelKillTaskRequest() (request *CancelKillTaskRequest) {
     request = &CancelKillTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -189,6 +262,79 @@ func (c *Client) CancelKillTaskWithContext(ctx context.Context, request *CancelK
     request.SetContext(ctx)
     
     response = NewCancelKillTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCancelRedisBigKeyAnalysisTasksRequest() (request *CancelRedisBigKeyAnalysisTasksRequest) {
+    request = &CancelRedisBigKeyAnalysisTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "CancelRedisBigKeyAnalysisTasks")
+    
+    
+    return
+}
+
+func NewCancelRedisBigKeyAnalysisTasksResponse() (response *CancelRedisBigKeyAnalysisTasksResponse) {
+    response = &CancelRedisBigKeyAnalysisTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CancelRedisBigKeyAnalysisTasks
+// 自治中心-终止自治任务（单次）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CancelRedisBigKeyAnalysisTasks(request *CancelRedisBigKeyAnalysisTasksRequest) (response *CancelRedisBigKeyAnalysisTasksResponse, err error) {
+    return c.CancelRedisBigKeyAnalysisTasksWithContext(context.Background(), request)
+}
+
+// CancelRedisBigKeyAnalysisTasks
+// 自治中心-终止自治任务（单次）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CancelRedisBigKeyAnalysisTasksWithContext(ctx context.Context, request *CancelRedisBigKeyAnalysisTasksRequest) (response *CancelRedisBigKeyAnalysisTasksResponse, err error) {
+    if request == nil {
+        request = NewCancelRedisBigKeyAnalysisTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelRedisBigKeyAnalysisTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelRedisBigKeyAnalysisTasksResponse()
     err = c.Send(request, response)
     return
 }
@@ -962,6 +1108,79 @@ func (c *Client) CreateSqlFilterWithContext(ctx context.Context, request *Create
     return
 }
 
+func NewCreateUserAutonomyProfileRequest() (request *CreateUserAutonomyProfileRequest) {
+    request = &CreateUserAutonomyProfileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "CreateUserAutonomyProfile")
+    
+    
+    return
+}
+
+func NewCreateUserAutonomyProfileResponse() (response *CreateUserAutonomyProfileResponse) {
+    response = &CreateUserAutonomyProfileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUserAutonomyProfile
+// 自治中心-终止自治任务（单次）；注意：接口需要加白名单。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateUserAutonomyProfile(request *CreateUserAutonomyProfileRequest) (response *CreateUserAutonomyProfileResponse, err error) {
+    return c.CreateUserAutonomyProfileWithContext(context.Background(), request)
+}
+
+// CreateUserAutonomyProfile
+// 自治中心-终止自治任务（单次）；注意：接口需要加白名单。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateUserAutonomyProfileWithContext(ctx context.Context, request *CreateUserAutonomyProfileRequest) (response *CreateUserAutonomyProfileResponse, err error) {
+    if request == nil {
+        request = NewCreateUserAutonomyProfileRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserAutonomyProfile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserAutonomyProfileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAuditLogFileRequest() (request *DeleteAuditLogFileRequest) {
     request = &DeleteAuditLogFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1682,6 +1901,152 @@ func (c *Client) DescribeAuditLogFilesWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeAuditLogFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDBAutonomyActionsRequest() (request *DescribeDBAutonomyActionsRequest) {
+    request = &DescribeDBAutonomyActionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeDBAutonomyActions")
+    
+    
+    return
+}
+
+func NewDescribeDBAutonomyActionsResponse() (response *DescribeDBAutonomyActionsResponse) {
+    response = &DescribeDBAutonomyActionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBAutonomyActions
+// 自治中心-终止自治任务（单次）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDBAutonomyActions(request *DescribeDBAutonomyActionsRequest) (response *DescribeDBAutonomyActionsResponse, err error) {
+    return c.DescribeDBAutonomyActionsWithContext(context.Background(), request)
+}
+
+// DescribeDBAutonomyActions
+// 自治中心-终止自治任务（单次）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDBAutonomyActionsWithContext(ctx context.Context, request *DescribeDBAutonomyActionsRequest) (response *DescribeDBAutonomyActionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBAutonomyActionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBAutonomyActions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBAutonomyActionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDBAutonomyEventsRequest() (request *DescribeDBAutonomyEventsRequest) {
+    request = &DescribeDBAutonomyEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeDBAutonomyEvents")
+    
+    
+    return
+}
+
+func NewDescribeDBAutonomyEventsResponse() (response *DescribeDBAutonomyEventsResponse) {
+    response = &DescribeDBAutonomyEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBAutonomyEvents
+// 自治中心-终止自治任务（单次）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDBAutonomyEvents(request *DescribeDBAutonomyEventsRequest) (response *DescribeDBAutonomyEventsResponse, err error) {
+    return c.DescribeDBAutonomyEventsWithContext(context.Background(), request)
+}
+
+// DescribeDBAutonomyEvents
+// 自治中心-终止自治任务（单次）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDBAutonomyEventsWithContext(ctx context.Context, request *DescribeDBAutonomyEventsRequest) (response *DescribeDBAutonomyEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBAutonomyEventsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBAutonomyEvents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBAutonomyEventsResponse()
     err = c.Send(request, response)
     return
 }
@@ -3975,6 +4340,79 @@ func (c *Client) DescribeTopSpaceTablesWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeUserAutonomyProfileRequest() (request *DescribeUserAutonomyProfileRequest) {
+    request = &DescribeUserAutonomyProfileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeUserAutonomyProfile")
+    
+    
+    return
+}
+
+func NewDescribeUserAutonomyProfileResponse() (response *DescribeUserAutonomyProfileResponse) {
+    response = &DescribeUserAutonomyProfileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserAutonomyProfile
+// 自治中心-终止自治任务（单次）；注意： 接口调用需要加白名单。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserAutonomyProfile(request *DescribeUserAutonomyProfileRequest) (response *DescribeUserAutonomyProfileResponse, err error) {
+    return c.DescribeUserAutonomyProfileWithContext(context.Background(), request)
+}
+
+// DescribeUserAutonomyProfile
+// 自治中心-终止自治任务（单次）；注意： 接口调用需要加白名单。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserAutonomyProfileWithContext(ctx context.Context, request *DescribeUserAutonomyProfileRequest) (response *DescribeUserAutonomyProfileResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserAutonomyProfileRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserAutonomyProfile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserAutonomyProfileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserSqlAdviceRequest() (request *DescribeUserSqlAdviceRequest) {
     request = &DescribeUserSqlAdviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4405,6 +4843,79 @@ func (c *Client) ModifySqlFiltersWithContext(ctx context.Context, request *Modif
     request.SetContext(ctx)
     
     response = NewModifySqlFiltersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyUserAutonomyProfileRequest() (request *ModifyUserAutonomyProfileRequest) {
+    request = &ModifyUserAutonomyProfileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "ModifyUserAutonomyProfile")
+    
+    
+    return
+}
+
+func NewModifyUserAutonomyProfileResponse() (response *ModifyUserAutonomyProfileResponse) {
+    response = &ModifyUserAutonomyProfileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyUserAutonomyProfile
+// 自治中心-终止自治任务（单次）；注意：接口需要加白名单。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyUserAutonomyProfile(request *ModifyUserAutonomyProfileRequest) (response *ModifyUserAutonomyProfileResponse, err error) {
+    return c.ModifyUserAutonomyProfileWithContext(context.Background(), request)
+}
+
+// ModifyUserAutonomyProfile
+// 自治中心-终止自治任务（单次）；注意：接口需要加白名单。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyUserAutonomyProfileWithContext(ctx context.Context, request *ModifyUserAutonomyProfileRequest) (response *ModifyUserAutonomyProfileResponse, err error) {
+    if request == nil {
+        request = NewModifyUserAutonomyProfileRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserAutonomyProfile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserAutonomyProfileResponse()
     err = c.Send(request, response)
     return
 }

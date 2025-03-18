@@ -267,6 +267,9 @@ type DescribeInstancesRequestParams struct {
 
 	// 按照标签筛选实例
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
+
+	// 任务状态：1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中
+	TaskStatus []*int64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 }
 
 type DescribeInstancesRequest struct {
@@ -313,6 +316,9 @@ type DescribeInstancesRequest struct {
 
 	// 按照标签筛选实例
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
+
+	// 任务状态：1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中
+	TaskStatus []*int64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -341,6 +347,7 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "ResourceTags")
+	delete(f, "TaskStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesRequest has unknown keys!", "")
 	}
@@ -555,6 +562,9 @@ type InstanceInfo struct {
 
 	// 是否自动续费。0: 不自动续费(可以支持特权不停服)；1:自动续费；2:到期不续费.
 	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
+
+	// 任务状态：0-无任务；1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中
+	TaskStatus *int64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 }
 
 // Predefined struct for user
@@ -641,6 +651,9 @@ type Network struct {
 type NodeInfo struct {
 	// Pod名称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// pod状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type Outbound struct {

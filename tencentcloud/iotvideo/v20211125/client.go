@@ -459,6 +459,59 @@ func (c *Client) CancelDeviceFirmwareTaskWithContext(ctx context.Context, reques
     return
 }
 
+func NewChangeP2PRouteRequest() (request *ChangeP2PRouteRequest) {
+    request = &ChangeP2PRouteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotvideo", APIVersion, "ChangeP2PRoute")
+    
+    
+    return
+}
+
+func NewChangeP2PRouteResponse() (response *ChangeP2PRouteResponse) {
+    response = &ChangeP2PRouteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ChangeP2PRoute
+// p2p路线切换
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ChangeP2PRoute(request *ChangeP2PRouteRequest) (response *ChangeP2PRouteResponse, err error) {
+    return c.ChangeP2PRouteWithContext(context.Background(), request)
+}
+
+// ChangeP2PRoute
+// p2p路线切换
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ChangeP2PRouteWithContext(ctx context.Context, request *ChangeP2PRouteRequest) (response *ChangeP2PRouteResponse, err error) {
+    if request == nil {
+        request = NewChangeP2PRouteRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChangeP2PRoute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChangeP2PRouteResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckForwardAuthRequest() (request *CheckForwardAuthRequest) {
     request = &CheckForwardAuthRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3747,6 +3800,59 @@ func (c *Client) DescribeP2PInfoWithContext(ctx context.Context, request *Descri
     request.SetContext(ctx)
     
     response = NewDescribeP2PInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeP2PRouteRequest() (request *DescribeP2PRouteRequest) {
+    request = &DescribeP2PRouteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeP2PRoute")
+    
+    
+    return
+}
+
+func NewDescribeP2PRouteResponse() (response *DescribeP2PRouteResponse) {
+    response = &DescribeP2PRouteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeP2PRoute
+// 当前p2p线路
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeP2PRoute(request *DescribeP2PRouteRequest) (response *DescribeP2PRouteResponse, err error) {
+    return c.DescribeP2PRouteWithContext(context.Background(), request)
+}
+
+// DescribeP2PRoute
+// 当前p2p线路
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeP2PRouteWithContext(ctx context.Context, request *DescribeP2PRouteRequest) (response *DescribeP2PRouteResponse, err error) {
+    if request == nil {
+        request = NewDescribeP2PRouteRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeP2PRoute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeP2PRouteResponse()
     err = c.Send(request, response)
     return
 }

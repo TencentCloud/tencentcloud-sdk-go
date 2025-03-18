@@ -212,6 +212,9 @@ const (
 	// 操作策略失败。
 	FAILEDOPERATION_OPERATEPOLICY = "FailedOperation.OperatePolicy"
 
+	// 存在组织成员访问策略。
+	FAILEDOPERATION_ORGMEMBERPOLICYEXIST = "FailedOperation.OrgMemberPolicyExist"
+
 	// 成员是主体管理账号，不允许退出组织。
 	FAILEDOPERATION_ORGANIZATIONAUTHMANAGENOTALLOWDELETE = "FailedOperation.OrganizationAuthManageNotAllowDelete"
 

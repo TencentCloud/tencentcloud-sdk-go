@@ -21169,6 +21169,12 @@ type InstanceApiOpsRequest struct {
 
 	// 时区
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// 计划调度时间
+	ScheduleTimeFrom *string `json:"ScheduleTimeFrom,omitnil,omitempty" name:"ScheduleTimeFrom"`
+
+	// 计划调度时间
+	ScheduleTimeTo *string `json:"ScheduleTimeTo,omitnil,omitempty" name:"ScheduleTimeTo"`
 }
 
 type InstanceCondition struct {
@@ -22849,6 +22855,10 @@ type MakePlanOpsDto struct {
 
 	// 执行应用参数
 	AppParam *string `json:"AppParam,omitnil,omitempty" name:"AppParam"`
+
+	// 补录计划时间范围的类型： 
+	// DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
+	TimeType *string `json:"TimeType,omitnil,omitempty" name:"TimeType"`
 }
 
 type MakePlanOpsDtoCollection struct {
@@ -22994,6 +23004,9 @@ type ManualTriggerRecordOpsDto struct {
 	// 数据实例时间的时区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// 时间类型，DATA_TIME：数据时间、SCHEDULE_TIME：计划调度时间, 为空时会被当成DATA_TIME处理
+	TimeType *string `json:"TimeType,omitnil,omitempty" name:"TimeType"`
 }
 
 // Predefined struct for user
@@ -32118,6 +32131,9 @@ type TriggerManualTasksRequestParams struct {
 
 	// 实例时间的时区
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// 时间类型，DATA_TIME：数据时间、SCHEDULE_TIME：计划调度时间, 为空时会被当成DATA_TIME处理
+	TimeType *string `json:"TimeType,omitnil,omitempty" name:"TimeType"`
 }
 
 type TriggerManualTasksRequest struct {
@@ -32162,6 +32178,9 @@ type TriggerManualTasksRequest struct {
 
 	// 实例时间的时区
 	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// 时间类型，DATA_TIME：数据时间、SCHEDULE_TIME：计划调度时间, 为空时会被当成DATA_TIME处理
+	TimeType *string `json:"TimeType,omitnil,omitempty" name:"TimeType"`
 }
 
 func (r *TriggerManualTasksRequest) ToJsonString() string {
@@ -32189,6 +32208,7 @@ func (r *TriggerManualTasksRequest) FromJsonString(s string) error {
 	delete(f, "CustomParams")
 	delete(f, "ExtraParams")
 	delete(f, "ScheduleTimeZone")
+	delete(f, "TimeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TriggerManualTasksRequest has unknown keys!", "")
 	}

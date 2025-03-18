@@ -1822,6 +1822,12 @@ type CreateBatchQuickSignUrlRequestParams struct {
 	// 
 	// 注: `若参与方为企业员工时，暂不支持对参与方信息进行缓存`
 	CacheApproverInfo *bool `json:"CacheApproverInfo,omitnil,omitempty" name:"CacheApproverInfo"`
+
+	// 是否允许此链接中签署方批量拒签。
+	//  <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>
+	// 
+	// 注：`合同组暂不支持批量拒签功能。`
+	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 }
 
 type CreateBatchQuickSignUrlRequest struct {
@@ -1903,6 +1909,12 @@ type CreateBatchQuickSignUrlRequest struct {
 	// 
 	// 注: `若参与方为企业员工时，暂不支持对参与方信息进行缓存`
 	CacheApproverInfo *bool `json:"CacheApproverInfo,omitnil,omitempty" name:"CacheApproverInfo"`
+
+	// 是否允许此链接中签署方批量拒签。
+	//  <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>
+	// 
+	// 注：`合同组暂不支持批量拒签功能。`
+	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 }
 
 func (r *CreateBatchQuickSignUrlRequest) ToJsonString() string {
@@ -1929,6 +1941,7 @@ func (r *CreateBatchQuickSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "FlowBatchUrlInfo")
 	delete(f, "Intention")
 	delete(f, "CacheApproverInfo")
+	delete(f, "CanBatchReject")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchQuickSignUrlRequest has unknown keys!", "")
 	}
@@ -2042,6 +2055,9 @@ type CreateBatchSignUrlRequestParams struct {
 	// 
 	// 参考 [公众号 H5 跳转电子签小程序](https://qian.tencent.com/developers/company/openwxminiprogram/#23-%E5%85%AC%E4%BC%97%E5%8F%B7-h5-%E4%B8%AD%E8%B7%B3%E8%BD%AC)。
 	UrlUseEnv *string `json:"UrlUseEnv,omitnil,omitempty" name:"UrlUseEnv"`
+
+	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`合同组暂不支持批量拒签功能。`
+	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 }
 
 type CreateBatchSignUrlRequest struct {
@@ -2127,6 +2143,9 @@ type CreateBatchSignUrlRequest struct {
 	// 
 	// 参考 [公众号 H5 跳转电子签小程序](https://qian.tencent.com/developers/company/openwxminiprogram/#23-%E5%85%AC%E4%BC%97%E5%8F%B7-h5-%E4%B8%AD%E8%B7%B3%E8%BD%AC)。
 	UrlUseEnv *string `json:"UrlUseEnv,omitnil,omitempty" name:"UrlUseEnv"`
+
+	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`合同组暂不支持批量拒签功能。`
+	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 }
 
 func (r *CreateBatchSignUrlRequest) ToJsonString() string {
@@ -2154,6 +2173,7 @@ func (r *CreateBatchSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "FlowBatchUrlInfo")
 	delete(f, "AutoJumpBack")
 	delete(f, "UrlUseEnv")
+	delete(f, "CanBatchReject")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchSignUrlRequest has unknown keys!", "")
 	}
@@ -4273,6 +4293,10 @@ type CreateFlowOption struct {
 
 	// 发起流程的可嵌入页面结果页配置
 	ResultPageConfig []*CreateResultPageConfig `json:"ResultPageConfig,omitnil,omitempty" name:"ResultPageConfig"`
+
+	// 签署控件的配置信息，用在嵌入式发起的页面配置，包括 
+	//  - 签署控件 是否默认展示日期.
+	SignComponentConfig *SignComponentConfig `json:"SignComponentConfig,omitnil,omitempty" name:"SignComponentConfig"`
 }
 
 // Predefined struct for user
@@ -6673,12 +6697,16 @@ type CreatePrepareFlowRequestParams struct {
 	// 模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
 	InitiatorComponents []*Component `json:"InitiatorComponents,omitnil,omitempty" name:"InitiatorComponents"`
 
-	// 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+	// 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
 	FlowDisplayType *int64 `json:"FlowDisplayType,omitnil,omitempty" name:"FlowDisplayType"`
 
-	// 签署控件的配置信息，用在嵌入式发起的页面配置，包括  
+	// <font color="red">此参数已经废弃，请使用 CreateFlowOption 里面的 SignComponentConfig</font>
+	// 签署控件的配置信息，用在嵌入式发起的页面配置，
+	// 包括  
 	// 
 	// - 签署控件 是否默认展示日期.
+	//
+	// Deprecated: SignComponentConfig is deprecated.
 	SignComponentConfig *SignComponentConfig `json:"SignComponentConfig,omitnil,omitempty" name:"SignComponentConfig"`
 }
 
@@ -6778,10 +6806,12 @@ type CreatePrepareFlowRequest struct {
 	// 模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
 	InitiatorComponents []*Component `json:"InitiatorComponents,omitnil,omitempty" name:"InitiatorComponents"`
 
-	// 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+	// 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
 	FlowDisplayType *int64 `json:"FlowDisplayType,omitnil,omitempty" name:"FlowDisplayType"`
 
-	// 签署控件的配置信息，用在嵌入式发起的页面配置，包括  
+	// <font color="red">此参数已经废弃，请使用 CreateFlowOption 里面的 SignComponentConfig</font>
+	// 签署控件的配置信息，用在嵌入式发起的页面配置，
+	// 包括  
 	// 
 	// - 签署控件 是否默认展示日期.
 	SignComponentConfig *SignComponentConfig `json:"SignComponentConfig,omitnil,omitempty" name:"SignComponentConfig"`

@@ -894,6 +894,11 @@ func (r *BindZoneToPlanResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BlockIPActionParameters struct {
+	// 封禁 IP 的惩罚时长。支持的单位有：<li>s：秒，取值范围1～120；</li><li>m：分，取值范围1～120；</li><li>h：小时，取值范围1～48。</li>
+	Duration *string `json:"Duration,omitnil,omitempty" name:"Duration"`
+}
+
 type BotConfig struct {
 	// bot开关，取值有：
 	// <li>on：开启；</li>
@@ -4049,6 +4054,34 @@ type CustomField struct {
 	// 是否投递该字段，不填表示不投递此字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+type CustomRule struct {
+	// 自定义规则的名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 自定义规则的具体内容，需符合表达式语法，详细规范参见产品文档。
+	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 自定义规则的执行动作。	SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>ReturnCustomPage：使用指定页面拦截；</li><li>Redirect：重定向至 URL；</li><li>BlockIP：IP 封禁；</li><li>JSChallenge：JavaScript 挑战；</li><li>ManagedChallenge：托管挑战；</li><li>Allow：放行。</li>
+	Action *SecurityAction `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// 自定义规则是否开启。取值有：<li>on：开启</li><li>off：关闭</li>
+	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 自定义规则的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> - 增加新规则：ID 为空或不指定 ID 参数；<br> - 修改已有规则：指定需要更新/修改的规则 ID；<br> - 删除已有规则：CustomRules 参数中，Rules 列表中未包含的已有规则将被删除。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 自定义规则的类型。取值有：<li>BasicAccessRule：基础访问管控；</li><li>PreciseMatchRule：精准匹配规则，默认；</li><li>ManagedAccessRule：专家定制规则，仅出参。</li><br/>默认为PreciseMatchRule。
+	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// 自定义规则的优先级，范围是 0 ~ 100，默认为 0，仅支持精准匹配规则（PreciseMatchRule）。
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+}
+
+type CustomRules struct {
+	// 自定义规则的定义列表。<br>使用 ModifySecurityPolicy 修改 Web 防护配置时: <br> -  若未指定 Rules 参数，或 Rules 参数长度为零：清空所有自定义规则配置。<br> - 若 SecurityPolicy 参数中，未指定 CustomRules 参数值：保持已有自定义规则配置，不做修改。
+	Rules []*CustomRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 type CustomTime struct {
@@ -11815,6 +11848,84 @@ type LogFormat struct {
 	FieldDelimiter *string `json:"FieldDelimiter,omitnil,omitempty" name:"FieldDelimiter"`
 }
 
+type ManagedRuleAction struct {
+	// 托管规则组下的具体项，用于改写此单条规则项配置的内容，具体参考产品文档。	
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// RuleId 中指定托管规则项的处置动作。 SecurityAction 的 Name 取值支持：<li>Deny：拦截，响应拦截页面；</li><li>Monitor：观察，不处理请求记录安全事件到日志中；</li><li>Disabled：未启用，不扫描请求跳过该规则。</li>
+	Action *SecurityAction `json:"Action,omitnil,omitempty" name:"Action"`
+}
+
+type ManagedRuleAutoUpdate struct {
+	// 是否开启自动更新至最新版本。取值有：<li>on：开启</li><li>off：关闭</li>
+	AutoUpdateToLatestVersion *string `json:"AutoUpdateToLatestVersion,omitnil,omitempty" name:"AutoUpdateToLatestVersion"`
+
+	// 当前使用的版本，格式符合ISO 8601标准，如2023-12-21T12:00:32Z，默认为空，仅出参。
+	RulesetVersion *string `json:"RulesetVersion,omitnil,omitempty" name:"RulesetVersion"`
+}
+
+type ManagedRuleDetail struct {
+	// 托管规则Id。
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 托管规则的防护级别。取值有：<li>low：低风险，此规则风险较低，适用于非常严格控制环境下的访问场景，该等级规则可能造成较多的误报；</li><li>medium：中风险，表示此条规则风险正常，适用较为严格的防护场景；</li><li>high：高风险，表示此条规则风险较高，大多数场景不会产生误报；</li><li>extreme：超高风险，表示此条规则风险极高，基本不会产生误报；</li>
+	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
+
+	// 规则描述。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 规则标签。部分类型的规则不存在标签。
+	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 规则所属版本。
+	RuleVersion *string `json:"RuleVersion,omitnil,omitempty" name:"RuleVersion"`
+}
+
+type ManagedRuleGroup struct {
+	// 托管规则的组名称，未指定配置的规则分组将按照默认配置处理，GroupId 的具体取值参考产品文档。
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 托管规则组的防护级别。取值有：<li>loose：宽松，只包含超高风险规则，此时需配置Action，且RuleActions配置无效；</li><li>normal：正常，包含超高风险和高风险规则，此时需配置Action，且RuleActions配置无效；</li><li>strict：严格，包含超高风险、高风险和中风险规则，此时需配置Action，且RuleActions配置无效；</li><li>extreme：超严格，包含超高风险、高风险、中风险和低风险规则，此时需配置Action，且RuleActions配置无效；</li><li>custom：自定义，精细化策略，按单条规则配置处置方式，此时Action字段无效，使用RuleActions配置单条规则的精细化策略。</li>	
+	SensitivityLevel *string `json:"SensitivityLevel,omitnil,omitempty" name:"SensitivityLevel"`
+
+	// 托管规则组的处置动作。SecurityAction 的 Name 取值支持：<li>Deny：拦截，响应拦截页面；</li><li>Monitor：观察，不处理请求记录安全事件到日志中；</li><li>Disabled：未启用，不扫描请求跳过该规则。</li>
+	Action *SecurityAction `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// 托管规则组下规则项的具体配置，仅在 SensitivityLevel 为 custom 时配置生效。
+	RuleActions []*ManagedRuleAction `json:"RuleActions,omitnil,omitempty" name:"RuleActions"`
+
+	// 托管规则组信息，仅出参。	
+	MetaData *ManagedRuleGroupMeta `json:"MetaData,omitnil,omitempty" name:"MetaData"`
+}
+
+type ManagedRuleGroupMeta struct {
+	// 托管规则组描述，仅出参。
+	GroupDetail *string `json:"GroupDetail,omitnil,omitempty" name:"GroupDetail"`
+
+	// 托管规则组名称，仅出参。
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 当前托管规则组下的所有子规则信息，仅出参。
+	RuleDetails []*ManagedRuleDetail `json:"RuleDetails,omitnil,omitempty" name:"RuleDetails"`
+}
+
+type ManagedRules struct {
+	// 托管规则是否开启。取值有：<li>on：开启，所有托管规则按配置生效；</li><li>off：关闭，所有托管规则不生效。</li>
+	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 评估模式是否开启，仅在 Enabled 参数为 on 时有效。取值有：<li>on：开启，表示所有托管规则以观察模式生效；</li><li>off：关闭，表示所有托管规则以实际配置生效。</li>
+	DetectionOnly *string `json:"DetectionOnly,omitnil,omitempty" name:"DetectionOnly"`
+
+	// 托管规则语义分析选项是否开启，仅在 Enabled 参数为 on 时有效。取值有：<li>on：开启，对请求进行语义分析后进行处理；</li><li>off：关闭，对请求不进行语义分析，直接进行处理。</li> <br/>默认为 off。
+	SemanticAnalysis *string `json:"SemanticAnalysis,omitnil,omitempty" name:"SemanticAnalysis"`
+
+	// 托管规则自动更新选项。
+	AutoUpdate *ManagedRuleAutoUpdate `json:"AutoUpdate,omitnil,omitempty" name:"AutoUpdate"`
+
+	// 托管规则组的配置。如果此结构传空数组或 GroupId 未包含在列表内将按照默认方式处理。
+	ManagedRuleGroups []*ManagedRuleGroup `json:"ManagedRuleGroups,omitnil,omitempty" name:"ManagedRuleGroups"`
+}
+
 type MaxAge struct {
 	// 是否遵循源站，取值有：
 	// <li>on：遵循源站，忽略MaxAge 时间设置；</li>
@@ -14261,44 +14372,44 @@ func (r *ModifySecurityIPGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifySecurityPolicyRequestParams struct {
-	// 站点Id。
+	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 安全配置。
+	// 安全策略配置。<li>当 SecurityPolicy 参数中的 CustomRule 被设置时，SecurityConfig 参数中的 AclConfg、 IpTableConfg 将被忽略；</li><li>当 SecurityPolicy 参数中的 ManagedRule 被设置时，SecurityConfig 参数中的 WafConfig 将被忽略。</li><li>对于自定义规则以及托管规则策略配置建议使用 SecurityPolicy 参数进行设置。</li>
 	SecurityConfig *SecurityConfig `json:"SecurityConfig,omitnil,omitempty" name:"SecurityConfig"`
 
-	// 子域名/应用名。
-	// 
-	// 注意：当同时指定本参数和 TemplateId 参数时，本参数不生效。请勿同时指定本参数和 TemplateId 参数。
+	// 安全策略配置。对 Web 防护自定义策略和托管规则配置建议使用，支持表达式语法对安全策略进行配置。
+	SecurityPolicy *SecurityPolicy `json:"SecurityPolicy,omitnil,omitempty" name:"SecurityPolicy"`
+
+	// 安全策略类型，可使用以下参数值： <li>ZoneDefaultPolicy：用于指定站点级策略；</li><li>Template：用于指定策略模板，需要同时指定 TemplateId 参数；</li><li>Host：用于指定域名级策略（注意：当使用域名来指定域名服务策略时，仅支持已经应用了域名级策略的域名服务或者策略模板）。</li>
 	Entity *string `json:"Entity,omitnil,omitempty" name:"Entity"`
 
-	// 指定模板策略 ID，或指定站点全局策略。
-	// - 如需配置策略模板，请指定策略模板 ID。
-	// - 如需配置站点全局策略，请使用 @ZoneLevel@Domain 参数值
-	// 
-	// 注意：当使用本参数时，Entity 参数不生效。请勿同时使用本参数和 Entity 参数。
+	// 指定域名。当 Entity 参数值为 Host 时，使用本参数指定的域名级策略，例如：使用 www.example.com ，配置该域名的域名级策略。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 指定策略模板 ID。当 Entity 参数值为 Template 时，使用本参数指定策略模板的 ID。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
 type ModifySecurityPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点Id。
+	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 安全配置。
+	// 安全策略配置。<li>当 SecurityPolicy 参数中的 CustomRule 被设置时，SecurityConfig 参数中的 AclConfg、 IpTableConfg 将被忽略；</li><li>当 SecurityPolicy 参数中的 ManagedRule 被设置时，SecurityConfig 参数中的 WafConfig 将被忽略。</li><li>对于自定义规则以及托管规则策略配置建议使用 SecurityPolicy 参数进行设置。</li>
 	SecurityConfig *SecurityConfig `json:"SecurityConfig,omitnil,omitempty" name:"SecurityConfig"`
 
-	// 子域名/应用名。
-	// 
-	// 注意：当同时指定本参数和 TemplateId 参数时，本参数不生效。请勿同时指定本参数和 TemplateId 参数。
+	// 安全策略配置。对 Web 防护自定义策略和托管规则配置建议使用，支持表达式语法对安全策略进行配置。
+	SecurityPolicy *SecurityPolicy `json:"SecurityPolicy,omitnil,omitempty" name:"SecurityPolicy"`
+
+	// 安全策略类型，可使用以下参数值： <li>ZoneDefaultPolicy：用于指定站点级策略；</li><li>Template：用于指定策略模板，需要同时指定 TemplateId 参数；</li><li>Host：用于指定域名级策略（注意：当使用域名来指定域名服务策略时，仅支持已经应用了域名级策略的域名服务或者策略模板）。</li>
 	Entity *string `json:"Entity,omitnil,omitempty" name:"Entity"`
 
-	// 指定模板策略 ID，或指定站点全局策略。
-	// - 如需配置策略模板，请指定策略模板 ID。
-	// - 如需配置站点全局策略，请使用 @ZoneLevel@Domain 参数值
-	// 
-	// 注意：当使用本参数时，Entity 参数不生效。请勿同时使用本参数和 Entity 参数。
+	// 指定域名。当 Entity 参数值为 Host 时，使用本参数指定的域名级策略，例如：使用 www.example.com ，配置该域名的域名级策略。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 指定策略模板 ID。当 Entity 参数值为 Template 时，使用本参数指定策略模板的 ID。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
@@ -14316,7 +14427,9 @@ func (r *ModifySecurityPolicyRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ZoneId")
 	delete(f, "SecurityConfig")
+	delete(f, "SecurityPolicy")
 	delete(f, "Entity")
+	delete(f, "Host")
 	delete(f, "TemplateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySecurityPolicyRequest has unknown keys!", "")
@@ -15521,6 +15634,11 @@ type RealtimeLogDeliveryTask struct {
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
+type RedirectActionParameters struct {
+	// 重定向的URL。
+	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
+}
+
 type RenewFlag struct {
 	// 预付费套餐的自动续费标志，取值有：
 	// <li> on：开启自动续费；</li>
@@ -15672,6 +15790,14 @@ type ResponseSpeedLimitParameters struct {
 	// 
 	// - 当Mode 取值为 LimitAfterSpecificSecondsDownloaded 时，单位取值有： s。
 	StartAt *string `json:"StartAt,omitnil,omitempty" name:"StartAt"`
+}
+
+type ReturnCustomPageActionParameters struct {
+	// 响应状态码。
+	ResponseCode *string `json:"ResponseCode,omitnil,omitempty" name:"ResponseCode"`
+
+	// 响应的自定义页面ID。
+	ErrorPageId *string `json:"ErrorPageId,omitnil,omitempty" name:"ErrorPageId"`
 }
 
 type RewriteAction struct {
@@ -16184,6 +16310,21 @@ type SecEntryValue struct {
 	Sum *float64 `json:"Sum,omitnil,omitempty" name:"Sum"`
 }
 
+type SecurityAction struct {
+	// 安全执行的具体动作。取值有：
+	// <li>Deny：拦截；</li><li>Monitor：观察；</li><li>ReturnCustomPage：使用指定页面拦截；</li><li>Redirect：重定向至 URL；</li><li>BlockIP：IP 封禁；</li><li>JSChallenge：JavaScript 挑战；</li><li>ManagedChallenge：托管挑战；</li><li>Disabled：未启用；</li><li>Allow：放行。</li>
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 当 Name 为 BlockIP 时的附加参数。
+	BlockIPActionParameters *BlockIPActionParameters `json:"BlockIPActionParameters,omitnil,omitempty" name:"BlockIPActionParameters"`
+
+	// 当 Name 为 ReturnCustomPage 时的附加参数。
+	ReturnCustomPageActionParameters *ReturnCustomPageActionParameters `json:"ReturnCustomPageActionParameters,omitnil,omitempty" name:"ReturnCustomPageActionParameters"`
+
+	// 当 Name 为 Redirect 时的附加参数。
+	RedirectActionParameters *RedirectActionParameters `json:"RedirectActionParameters,omitnil,omitempty" name:"RedirectActionParameters"`
+}
+
 type SecurityConfig struct {
 	// 托管规则。如果入参为空或不填，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -16228,6 +16369,14 @@ type SecurityConfig struct {
 	// 检测长度限制配置。仅出参使用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DetectLengthLimitConfig *DetectLengthLimitConfig `json:"DetectLengthLimitConfig,omitnil,omitempty" name:"DetectLengthLimitConfig"`
+}
+
+type SecurityPolicy struct {
+	// 自定义规则配置。
+	CustomRules *CustomRules `json:"CustomRules,omitnil,omitempty" name:"CustomRules"`
+
+	// 托管规则配置。
+	ManagedRules *ManagedRules `json:"ManagedRules,omitnil,omitempty" name:"ManagedRules"`
 }
 
 type SecurityTemplateBinding struct {

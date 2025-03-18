@@ -871,11 +871,9 @@ type DescribeSubscribeConfResponseParams struct {
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 订阅实例的标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 自动续费标识,0-不自动续费，1-自动续费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 数据订阅版本。老版订阅填txdts，kafka版填kafka
@@ -1885,7 +1883,6 @@ type SrcInfo struct {
 	Supplier *string `json:"Supplier,omitnil,omitempty" name:"Supplier"`
 
 	// 云联网ID，如：ccn-afp6kltc
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
 	// 数据库版本，当实例为RDS实例时才有效，格式如：5.6或者5.7，默认为5.6

@@ -17977,8 +17977,7 @@ type DescribeImportMachineInfoRequestParams struct {
 	// 该参数已作废.
 	IsQueryProMachine *bool `json:"IsQueryProMachine,omitnil,omitempty" name:"IsQueryProMachine"`
 
-	// 过滤条件：
-	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship：旗舰版 | ProtectedMachines：专业版+旗舰版） | BASIC_PROPOST_GENERAL_DISCOUNT：普惠版+专业版按量计费+基础版主机 | UnFlagship：专业版预付费+专业版后付费+基础版+普惠版</li>
+	// 过滤条件：<li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship：旗舰版 | ProtectedMachines：专业版+旗舰版） | BASIC_PROPOST_GENERAL_DISCOUNT：轻量版+专业版按量计费+基础版主机 | UnFlagship：专业版预付费+专业版后付费+基础版+轻量版</li>
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -17994,8 +17993,7 @@ type DescribeImportMachineInfoRequest struct {
 	// 该参数已作废.
 	IsQueryProMachine *bool `json:"IsQueryProMachine,omitnil,omitempty" name:"IsQueryProMachine"`
 
-	// 过滤条件：
-	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship：旗舰版 | ProtectedMachines：专业版+旗舰版） | BASIC_PROPOST_GENERAL_DISCOUNT：普惠版+专业版按量计费+基础版主机 | UnFlagship：专业版预付费+专业版后付费+基础版+普惠版</li>
+	// 过滤条件：<li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship：旗舰版 | ProtectedMachines：专业版+旗舰版） | BASIC_PROPOST_GENERAL_DISCOUNT：轻量版+专业版按量计费+基础版主机 | UnFlagship：专业版预付费+专业版后付费+基础版+轻量版</li>
 	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -18598,7 +18596,7 @@ type DescribeLicenseGeneralResponseParams struct {
 	// 专业版总授权数(有效订单)
 	ProVersionLicenseCnt *uint64 `json:"ProVersionLicenseCnt,omitnil,omitempty" name:"ProVersionLicenseCnt"`
 
-	// 普惠版总授权数(有效订单的授权数)
+	// 轻量版总授权数(有效订单的授权数)
 	CwpVersionLicenseCnt *uint64 `json:"CwpVersionLicenseCnt,omitnil,omitempty" name:"CwpVersionLicenseCnt"`
 
 	// 可用惠普版授权数
@@ -18843,7 +18841,7 @@ type DescribeLicenseWhiteConfigResponseParams struct {
 	// 专业版 配置信息
 	Professional *VersionWhiteConfig `json:"Professional,omitnil,omitempty" name:"Professional"`
 
-	// 普惠版 配置信息
+	// 轻量版 配置信息
 	PrattWhitney *VersionWhiteConfig `json:"PrattWhitney,omitnil,omitempty" name:"PrattWhitney"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20013,7 +20011,7 @@ type DescribeMachineGeneralResponseParams struct {
 	// 未防护机器数
 	NotProtectMachineCnt *uint64 `json:"NotProtectMachineCnt,omitnil,omitempty" name:"NotProtectMachineCnt"`
 
-	// 已防护普惠版机器数（Lighthouse机器）
+	// 已防护轻量机器数（Lighthouse机器）
 	LHGeneralDiscountCnt *uint64 `json:"LHGeneralDiscountCnt,omitnil,omitempty" name:"LHGeneralDiscountCnt"`
 
 	// 比较昨日新增的主机数
@@ -20154,7 +20152,7 @@ type DescribeMachineInfoResponseParams struct {
 	// 是否有资产扫描记录，0无，1有
 	HasAssetScan *uint64 `json:"HasAssetScan,omitnil,omitempty" name:"HasAssetScan"`
 
-	// 防护版本：BASIC_VERSION 基础版，PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 普惠版
+	// 防护版本：BASIC_VERSION 基础版，PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 轻量版
 	ProtectType *string `json:"ProtectType,omitnil,omitempty" name:"ProtectType"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -25284,7 +25282,7 @@ type DescribeScanVulSettingResponseParams struct {
 	// 一键扫描超时时长，如：1800秒（s）
 	ClickTimeout *uint64 `json:"ClickTimeout,omitnil,omitempty" name:"ClickTimeout"`
 
-	// 为空默认扫描全部专业版、旗舰版、普惠版主机，不为空只扫描选中主机
+	// 为空默认扫描全部专业版、旗舰版、轻量版主机，不为空只扫描选中主机
 	Uuids []*string `json:"Uuids,omitnil,omitempty" name:"Uuids"`
 
 	// 0版本比对,2版本比对+poc
@@ -27390,7 +27388,7 @@ type DescribeVersionStatisticsResponseParams struct {
 	// 旗舰版数量
 	UltimateVersionNum *uint64 `json:"UltimateVersionNum,omitnil,omitempty" name:"UltimateVersionNum"`
 
-	// 普惠版数量
+	// 轻量版数量
 	GeneralVersionNum *uint64 `json:"GeneralVersionNum,omitnil,omitempty" name:"GeneralVersionNum"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -36368,6 +36366,12 @@ type HostTagInfo struct {
 
 	// 主机类型
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
+
+	// 可用区名称
+	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
+
+	// 可用区ID
+	RegionId *uint64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 }
 
 type IgnoreBaselineRule struct {
@@ -42796,6 +42800,9 @@ type RansomDefenseRollbackTask struct {
 
 	// 主机示例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主机类型
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 }
 
 type RansomDefenseStrategy struct {
@@ -44355,7 +44362,7 @@ type ScanVulSettingRequestParams struct {
 	// 是否开启扫描 1开启 0不开启
 	EnableScan *uint64 `json:"EnableScan,omitnil,omitempty" name:"EnableScan"`
 
-	// 为空默认扫描全部专业版、旗舰版、普惠版主机，不为空只扫描选中主机
+	// 为空默认扫描全部专业版、旗舰版、轻量版主机，不为空只扫描选中主机
 	Uuids []*string `json:"Uuids,omitnil,omitempty" name:"Uuids"`
 
 	// 0版本比对，2版本比对+poc
@@ -44389,7 +44396,7 @@ type ScanVulSettingRequest struct {
 	// 是否开启扫描 1开启 0不开启
 	EnableScan *uint64 `json:"EnableScan,omitnil,omitempty" name:"EnableScan"`
 
-	// 为空默认扫描全部专业版、旗舰版、普惠版主机，不为空只扫描选中主机
+	// 为空默认扫描全部专业版、旗舰版、轻量版主机，不为空只扫描选中主机
 	Uuids []*string `json:"Uuids,omitnil,omitempty" name:"Uuids"`
 
 	// 0版本比对，2版本比对+poc

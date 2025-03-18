@@ -816,9 +816,9 @@ func NewDeleteAuthorizationPolicyResponse() (response *DeleteAuthorizationPolicy
 // 删除策略规则
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_AUTHORIZATIONPOLICY = "ResourceNotFound.AuthorizationPolicy"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
-//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 func (c *Client) DeleteAuthorizationPolicy(request *DeleteAuthorizationPolicyRequest) (response *DeleteAuthorizationPolicyResponse, err error) {
     return c.DeleteAuthorizationPolicyWithContext(context.Background(), request)
 }
@@ -827,9 +827,9 @@ func (c *Client) DeleteAuthorizationPolicy(request *DeleteAuthorizationPolicyReq
 // 删除策略规则
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_AUTHORIZATIONPOLICY = "ResourceNotFound.AuthorizationPolicy"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
-//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 func (c *Client) DeleteAuthorizationPolicyWithContext(ctx context.Context, request *DeleteAuthorizationPolicyRequest) (response *DeleteAuthorizationPolicyResponse, err error) {
     if request == nil {
         request = NewDeleteAuthorizationPolicyRequest()
@@ -1131,6 +1131,7 @@ func NewDeleteUserResponse() (response *DeleteUserResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 //  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+//  RESOURCENOTFOUND_USERNAME = "ResourceNotFound.Username"
 func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserResponse, err error) {
     return c.DeleteUserWithContext(context.Background(), request)
 }
@@ -1142,6 +1143,7 @@ func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserRes
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 //  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+//  RESOURCENOTFOUND_USERNAME = "ResourceNotFound.Username"
 func (c *Client) DeleteUserWithContext(ctx context.Context, request *DeleteUserRequest) (response *DeleteUserResponse, err error) {
     if request == nil {
         request = NewDeleteUserRequest()
@@ -2721,6 +2723,7 @@ func NewUpdateAuthorizationPolicyPriorityResponse() (response *UpdateAuthorizati
 // 修改策略规则优先级
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DUPLICATEAUTHORIZATIONIDORPRIORITY = "FailedOperation.DuplicateAuthorizationIdOrPriority"
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) UpdateAuthorizationPolicyPriority(request *UpdateAuthorizationPolicyPriorityRequest) (response *UpdateAuthorizationPolicyPriorityResponse, err error) {
@@ -2731,6 +2734,7 @@ func (c *Client) UpdateAuthorizationPolicyPriority(request *UpdateAuthorizationP
 // 修改策略规则优先级
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DUPLICATEAUTHORIZATIONIDORPRIORITY = "FailedOperation.DuplicateAuthorizationIdOrPriority"
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) UpdateAuthorizationPolicyPriorityWithContext(ctx context.Context, request *UpdateAuthorizationPolicyPriorityRequest) (response *UpdateAuthorizationPolicyPriorityResponse, err error) {

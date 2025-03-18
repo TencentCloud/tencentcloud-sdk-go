@@ -43,7 +43,6 @@ type ActionSummaryOverviewItem struct {
 	VoucherPayAmount *string `json:"VoucherPayAmount,omitnil,omitempty" name:"VoucherPayAmount"`
 
 	// 分成金账户支出：通过分成金账户支付的金额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransferPayAmount *string `json:"TransferPayAmount,omitnil,omitempty" name:"TransferPayAmount"`
 
 	// 账单月份，格式2019-08
@@ -100,83 +99,63 @@ type AllocationBillTrendDetail struct {
 
 type AllocationDetail struct {
 	// 分账单元唯一标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TreeNodeUniqKey *string `json:"TreeNodeUniqKey,omitnil,omitempty" name:"TreeNodeUniqKey"`
 
 	// 分账单元名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TreeNodeUniqKeyName *string `json:"TreeNodeUniqKeyName,omitnil,omitempty" name:"TreeNodeUniqKeyName"`
 
 	// 日期：结算日期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillDate *string `json:"BillDate,omitnil,omitempty" name:"BillDate"`
 
 	// 支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayerUin *string `json:"PayerUin,omitnil,omitempty" name:"PayerUin"`
 
 	// 使用者 UIN：实际使用资源的账号 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
 	// 操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateUin *string `json:"OperateUin,omitnil,omitempty" name:"OperateUin"`
 
 	// 产品编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessCode *string `json:"BusinessCode,omitnil,omitempty" name:"BusinessCode"`
 
 	// 产品名称：用户所采购的各类云产品
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessCodeName *string `json:"BusinessCodeName,omitnil,omitempty" name:"BusinessCodeName"`
 
 	// 计费模式编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 计费模式：资源的计费模式，区分为包年包月和按量计费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayModeName *string `json:"PayModeName,omitnil,omitempty" name:"PayModeName"`
 
 	// 项目ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
 	// 地域ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *uint64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
 	// 地域名称：资源所属地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 
 	// 可用区ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *uint64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 可用区：资源所属可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 
 	// 资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
 	// 实例类型编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceTypeName *string `json:"InstanceTypeName,omitnil,omitempty" name:"InstanceTypeName"`
 
 	// 分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
@@ -192,208 +171,158 @@ type AllocationDetail struct {
 	SplitItemName *string `json:"SplitItemName,omitnil,omitempty" name:"SplitItemName"`
 
 	// 子产品编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
 
 	// 子产品名称：用户采购的具体产品细分类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductCodeName *string `json:"ProductCodeName,omitnil,omitempty" name:"ProductCodeName"`
 
 	// 交易类型编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
 	// 交易类型：明细交易类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionTypeName *string `json:"ActionTypeName,omitnil,omitempty" name:"ActionTypeName"`
 
 	// 订单 ID：包年包月计费模式下订购的订单号
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// 交易 ID：结算扣费单号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillId *string `json:"BillId,omitnil,omitempty" name:"BillId"`
 
 	// 扣费时间：结算扣费时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayTime *string `json:"PayTime,omitnil,omitempty" name:"PayTime"`
 
 	// 开始使用时间：产品服务开始使用时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeeBeginTime *string `json:"FeeBeginTime,omitnil,omitempty" name:"FeeBeginTime"`
 
 	// 结束使用时间：产品服务结束使用时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeeEndTime *string `json:"FeeEndTime,omitnil,omitempty" name:"FeeEndTime"`
 
 	// 组件类型编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentCode *string `json:"ComponentCode,omitnil,omitempty" name:"ComponentCode"`
 
 	// 组件类型：用户购买的产品或服务对应的组件大类
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentCodeName *string `json:"ComponentCodeName,omitnil,omitempty" name:"ComponentCodeName"`
 
 	// 组件刊例价：组件的官网原始单价（如客户享受一口价/合同价则默认不展示）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SinglePrice *string `json:"SinglePrice,omitnil,omitempty" name:"SinglePrice"`
 
 	// 组件单价：组件的折后单价，组件单价 = 刊例价 * 折扣
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContractPrice *string `json:"ContractPrice,omitnil,omitempty" name:"ContractPrice"`
 
 	// 组件价格单位：组件价格的单位，单位构成：元/用量单位/时长单位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SinglePriceUnit *string `json:"SinglePriceUnit,omitnil,omitempty" name:"SinglePriceUnit"`
 
 	// 组件用量：该组件实际结算用量，组件用量=组件原始用量-抵扣用量（含资源包）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedAmount *string `json:"UsedAmount,omitnil,omitempty" name:"UsedAmount"`
 
 	// 组件用量单位：组件用量对应的单位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedAmountUnit *string `json:"UsedAmountUnit,omitnil,omitempty" name:"UsedAmountUnit"`
 
 	// 使用时长：资源使用的时长，组件用量=组件原始使用时长-抵扣时长（含资源包）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeSpan *string `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
 	// 时长单位：资源使用时长的单位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 
 	// 备注属性（实例配置）：其他备注信息，如预留实例的预留实例类型和交易类型、CCN 产品的两端地域信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReserveDetail *string `json:"ReserveDetail,omitnil,omitempty" name:"ReserveDetail"`
 
 	// 分拆项用量/时长占比：分拆项用量（时长）占比，分拆项用量（时长）/ 拆分前合计用量（时长）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SplitRatio *string `json:"SplitRatio,omitnil,omitempty" name:"SplitRatio"`
 
 	// 组件原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如客户享受一口价/合同价则默认不展示，退费类场景也默认不展示），指定价模式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCost *string `json:"TotalCost,omitnil,omitempty" name:"TotalCost"`
 
 	// 预留实例抵扣时长：本产品或服务使用预留实例抵扣的使用时长
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RITimeSpan *string `json:"RITimeSpan,omitnil,omitempty" name:"RITimeSpan"`
 
 	// 预留实例抵扣原价：本产品或服务使用预留实例抵扣的组件原价金额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RICost *string `json:"RICost,omitnil,omitempty" name:"RICost"`
 
 	// 节省计划抵扣原价：节省计划抵扣原价 = 节省计划包抵扣面值 / 节省计划抵扣率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SPCost *string `json:"SPCost,omitnil,omitempty" name:"SPCost"`
 
 	// 折扣率：本资源享受的折扣率（如客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Discount *string `json:"Discount,omitnil,omitempty" name:"Discount"`
 
 	// 混合折扣率：综合各类折扣抵扣信息后的最终折扣率，混合折扣率=优惠后总价/原价
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlendedDiscount *string `json:"BlendedDiscount,omitnil,omitempty" name:"BlendedDiscount"`
 
 	// 优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealTotalCost *string `json:"RealTotalCost,omitnil,omitempty" name:"RealTotalCost"`
 
 	// 现金账户支出(元)：通过现金账户支付的金额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CashPayAmount *string `json:"CashPayAmount,omitnil,omitempty" name:"CashPayAmount"`
 
 	// 代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoucherPayAmount *string `json:"VoucherPayAmount,omitnil,omitempty" name:"VoucherPayAmount"`
 
 	// 赠送账户支出(元)：使用赠送金支付的金额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitnil,omitempty" name:"IncentivePayAmount"`
 
 	// 分成账户支出(元)：通过分成金账户支付的金额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransferPayAmount *string `json:"TransferPayAmount,omitnil,omitempty" name:"TransferPayAmount"`
 
 	// 分账标签：资源绑定的标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag []*BillTag `json:"Tag,omitnil,omitempty" name:"Tag"`
 
 	// 国内国际编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionType *string `json:"RegionType,omitnil,omitempty" name:"RegionType"`
 
 	// 国内国际：资源所属区域类型（国内、国际）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionTypeName *string `json:"RegionTypeName,omitnil,omitempty" name:"RegionTypeName"`
 
 	// 组件名称编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ItemCode *string `json:"ItemCode,omitnil,omitempty" name:"ItemCode"`
 
 	// 组件名称：用户购买的产品或服务，所包含的具体组件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ItemCodeName *string `json:"ItemCodeName,omitnil,omitempty" name:"ItemCodeName"`
 
 	// 关联单据ID：和本笔交易关联单据ID，如退费订单对应的原新购订单等
 	AssociatedOrder *string `json:"AssociatedOrder,omitnil,omitempty" name:"AssociatedOrder"`
 
 	// 价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PriceInfo []*string `json:"PriceInfo,omitnil,omitempty" name:"PriceInfo"`
 
 	// 计算规则说明：特殊交易类型计费结算的详细计算说明，如退费及变配
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Formula *string `json:"Formula,omitnil,omitempty" name:"Formula"`
 
 	// 计费规则：各产品详细的计费规则官网说明链接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FormulaUrl *string `json:"FormulaUrl,omitnil,omitempty" name:"FormulaUrl"`
 
 	// 原始用量/时长：组件被资源包抵扣前的原始用量
 	// （目前仅实时音视频、弹性微服务、云呼叫中心及专属可用区产品支持该信息外显，其他产品尚在接入中）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealTotalMeasure *string `json:"RealTotalMeasure,omitnil,omitempty" name:"RealTotalMeasure"`
 
 	// 抵扣用量/时长（含资源包）：组件被资源包抵扣的用量
 	// （目前仅实时音视频、弹性微服务、云呼叫中心及专属可用区产品支持该信息外显，其他产品尚在接入中）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeductedMeasure *string `json:"DeductedMeasure,omitnil,omitempty" name:"DeductedMeasure"`
 
 	// 配置描述：资源配置规格信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentConfig *string `json:"ComponentConfig,omitnil,omitempty" name:"ComponentConfig"`
 
 	// 费用归集类型：费用来源类型，分摊、归集、未分配
 	// 0 - 分摊
 	// 1 - 归集
 	// 2 - 未分配
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllocationType *uint64 `json:"AllocationType,omitnil,omitempty" name:"AllocationType"`
 
 	// 当前消费项的优惠对象，例如：官网折扣、用户折扣、活动折扣。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountObject *string `json:"DiscountObject,omitnil,omitempty" name:"DiscountObject"`
 
 	// 当前消费项的优惠类型，例如：折扣、合同价。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountType *string `json:"DiscountType,omitnil,omitempty" name:"DiscountType"`
 
 	// 对优惠类型的补充描述，例如：商务折扣8折，则优惠类型为“折扣”，优惠内容为“0.8”。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountContent *string `json:"DiscountContent,omitnil,omitempty" name:"DiscountContent"`
 
 	// SPDeduction
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SPDeduction *string `json:"SPDeduction,omitnil,omitempty" name:"SPDeduction"`
 
 	// SPDeduction
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SPDeductionRate *string `json:"SPDeductionRate,omitnil,omitempty" name:"SPDeductionRate"`
 
 	// 账单月
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillMonth *string `json:"BillMonth,omitnil,omitempty" name:"BillMonth"`
 }
 
@@ -572,11 +501,9 @@ type AllocationOverviewTotal struct {
 
 type AllocationRule struct {
 	// 公摊规则ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 公摊规则名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 }
 
@@ -1045,11 +972,9 @@ type AllocationSummaryByResource struct {
 
 type AllocationTreeNode struct {
 	// 分账单元唯一标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TreeNodeUniqKey *string `json:"TreeNodeUniqKey,omitnil,omitempty" name:"TreeNodeUniqKey"`
 
 	// 分账单元名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TreeNodeUniqKeyName *string `json:"TreeNodeUniqKeyName,omitnil,omitempty" name:"TreeNodeUniqKeyName"`
 }
 
@@ -1231,11 +1156,9 @@ type ApplicableProducts struct {
 
 type BillActionType struct {
 	// 交易类型编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
 	// 交易类型：明细交易类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionTypeName *string `json:"ActionTypeName,omitnil,omitempty" name:"ActionTypeName"`
 }
 
@@ -1270,7 +1193,6 @@ type BillComponent struct {
 
 type BillDays struct {
 	// 日期：结算日期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillDay *string `json:"BillDay,omitnil,omitempty" name:"BillDay"`
 }
 
@@ -1583,7 +1505,6 @@ type BillDistributionResourceSummary struct {
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitnil,omitempty" name:"IncentivePayAmount"`
 
 	// 分成金账户支出：通过分成金账户支付的金额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransferPayAmount *string `json:"TransferPayAmount,omitnil,omitempty" name:"TransferPayAmount"`
 
 	// 扩展字段3：产品对应的扩展属性信息，仅在资源账单体现
@@ -1596,7 +1517,6 @@ type BillDistributionResourceSummary struct {
 	ExtendField5 *string `json:"ExtendField5,omitnil,omitempty" name:"ExtendField5"`
 
 	// 标签信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*BillTagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 使用者UIN：实际使用资源的账号 ID
@@ -1629,7 +1549,6 @@ type BillDistributionResourceSummary struct {
 	OriginalCostWithSP *string `json:"OriginalCostWithSP,omitnil,omitempty" name:"OriginalCostWithSP"`
 
 	// 账单归属月
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillMonth *string `json:"BillMonth,omitnil,omitempty" name:"BillMonth"`
 }
 
@@ -1669,25 +1588,20 @@ type BillPayMode struct {
 
 type BillProduct struct {
 	// 子产品编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
 
 	// 子产品名称：用户采购的具体产品细分类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductCodeName *string `json:"ProductCodeName,omitnil,omitempty" name:"ProductCodeName"`
 }
 
 type BillProductLink struct {
 	// 子产品编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
 
 	// 子产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductCodeName *string `json:"ProductCodeName,omitnil,omitempty" name:"ProductCodeName"`
 
 	// 组件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Children []*BillItem `json:"Children,omitnil,omitempty" name:"Children"`
 }
 
@@ -1778,7 +1692,6 @@ type BillResourceSummary struct {
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitnil,omitempty" name:"IncentivePayAmount"`
 
 	// 分成金账户支出：通过分成金账户支付的金额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransferPayAmount *string `json:"TransferPayAmount,omitnil,omitempty" name:"TransferPayAmount"`
 
 	// 扩展字段3：产品对应的扩展属性信息，仅在资源账单体现
@@ -1791,7 +1704,6 @@ type BillResourceSummary struct {
 	ExtendField5 *string `json:"ExtendField5,omitnil,omitempty" name:"ExtendField5"`
 
 	// 标签信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*BillTagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 支付者UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
@@ -1827,7 +1739,6 @@ type BillResourceSummary struct {
 	OriginalCostWithSP *string `json:"OriginalCostWithSP,omitnil,omitempty" name:"OriginalCostWithSP"`
 
 	// 账单归属月
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillMonth *string `json:"BillMonth,omitnil,omitempty" name:"BillMonth"`
 }
 
@@ -2105,19 +2016,15 @@ type ConsumptionProjectSummaryDataItem struct {
 	Business []*ConsumptionBusinessSummaryDataItem `json:"Business,omitnil,omitempty" name:"Business"`
 
 	// 现金
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CashPayAmount *string `json:"CashPayAmount,omitnil,omitempty" name:"CashPayAmount"`
 
 	// 赠送金
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitnil,omitempty" name:"IncentivePayAmount"`
 
 	// 代金券
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoucherPayAmount *string `json:"VoucherPayAmount,omitnil,omitempty" name:"VoucherPayAmount"`
 
 	// 分成金
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransferPayAmount *string `json:"TransferPayAmount,omitnil,omitempty" name:"TransferPayAmount"`
 }
 
@@ -6007,7 +5914,6 @@ func (r *DescribeCostDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCostDetailResponseParams struct {
 	// 消耗明细
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DetailSet []*CostDetail `json:"DetailSet,omitnil,omitempty" name:"DetailSet"`
 
 	// 记录数
@@ -8335,7 +8241,6 @@ type ProjectSummaryOverviewItem struct {
 
 type RegionSummaryOverviewItem struct {
 	// 地域ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
 	// 地域名称：资源所属地域，例如华南地区（广州）
@@ -8402,6 +8307,24 @@ type SavingPlanCoverageDetail struct {
 
 	// 覆盖率结果，取值[0, 100]
 	SpCoverage *float64 `json:"SpCoverage,omitnil,omitempty" name:"SpCoverage"`
+
+	// 支付者昵称
+	PayerUinName *string `json:"PayerUinName,omitnil,omitempty" name:"PayerUinName"`
+
+	// 使用者昵称
+	OwnerUinName *string `json:"OwnerUinName,omitnil,omitempty" name:"OwnerUinName"`
+
+	// 支付者uin
+	PayerUin *string `json:"PayerUin,omitnil,omitempty" name:"PayerUin"`
+
+	// 计费项名称
+	SubBillingItemName *string `json:"SubBillingItemName,omitnil,omitempty" name:"SubBillingItemName"`
+
+	// 计费细项名称
+	BillingItemName *string `json:"BillingItemName,omitnil,omitempty" name:"BillingItemName"`
+
+	// 子产品名称
+	SubProductName *string `json:"SubProductName,omitnil,omitempty" name:"SubProductName"`
 }
 
 type SavingPlanCoverageRate struct {
@@ -8443,11 +8366,9 @@ type SummaryDetail struct {
 
 type SummaryTotal struct {
 	// 优惠后总价
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealTotalCost *string `json:"RealTotalCost,omitnil,omitempty" name:"RealTotalCost"`
 
 	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCost *string `json:"TotalCost,omitnil,omitempty" name:"TotalCost"`
 }
 
@@ -8459,41 +8380,32 @@ type TagDataInfo struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 设置分账标签时间，普通标签不返回
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type TagSummaryOverviewItem struct {
 	// 标签值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 
 	// 费用所占百分比，两位小数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealTotalCostRatio *string `json:"RealTotalCostRatio,omitnil,omitempty" name:"RealTotalCostRatio"`
 
 	// 优惠后总价
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealTotalCost *string `json:"RealTotalCost,omitnil,omitempty" name:"RealTotalCost"`
 
 	// 现金账户支出：通过现金账户支付的金额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CashPayAmount *string `json:"CashPayAmount,omitnil,omitempty" name:"CashPayAmount"`
 
 	// 赠送账户支出：使用赠送金支付的金额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitnil,omitempty" name:"IncentivePayAmount"`
 
 	// 优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoucherPayAmount *string `json:"VoucherPayAmount,omitnil,omitempty" name:"VoucherPayAmount"`
 
 	// 分成金账户支出：通过分成金账户支付的金额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransferPayAmount *string `json:"TransferPayAmount,omitnil,omitempty" name:"TransferPayAmount"`
 
 	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCost *string `json:"TotalCost,omitnil,omitempty" name:"TotalCost"`
 }
 

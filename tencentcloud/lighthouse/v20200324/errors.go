@@ -20,7 +20,7 @@ const (
 	// CAM签名/鉴权错误。
 	AUTHFAILURE = "AuthFailure"
 
-	// 请求头中的 Uin 无效
+	// 请求头中的 Uin 无效。
 	AUTHFAILURE_INVALIDHEADERUIN = "AuthFailure.InvalidHeaderUin"
 
 	// 该地域尚未开放，请选择其他地域。
@@ -47,10 +47,10 @@ const (
 	// 查询镜像失败，请稍后再试。
 	FAILEDOPERATION_DESCRIBEBLUEPRINTSFAILED = "FailedOperation.DescribeBlueprintsFailed"
 
-	// 查询套餐折扣失败
+	// 查询套餐折扣失败。
 	FAILEDOPERATION_DESCRIBEBUNDLEDISCOUNTFAILED = "FailedOperation.DescribeBundleDiscountFailed"
 
-	// 查询套餐失败
+	// 查询套餐失败。
 	FAILEDOPERATION_DESCRIBEBUNDLESFAILED = "FailedOperation.DescribeBundlesFailed"
 
 	// 查询云硬盘是否可以退还操作失败。
@@ -104,7 +104,7 @@ const (
 	// 变更资源属性失败，请稍后重新操作。
 	FAILEDOPERATION_MODIFYRESOURCESATTRIBUTEFAILED = "FailedOperation.ModifyResourcesAttributeFailed"
 
-	// 修改资源自动续费失败
+	// 修改资源自动续费失败。
 	FAILEDOPERATION_MODIFYRESOURCESRENEWFLAGFAILED = "FailedOperation.ModifyResourcesRenewFlagFailed"
 
 	// 续费资源失败。
@@ -190,6 +190,9 @@ const (
 
 	// 参数冲突。
 	INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
+
+	// 参数冲突。
+	INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
 
 	// 参数非法，Filter 参数中的 Values 取值数量超过允许的最大数量。
 	INVALIDPARAMETER_FILTERVALUELIMITEXCEEDED = "InvalidParameter.FilterValueLimitExceeded"
@@ -299,7 +302,7 @@ const (
 	// 参数值非法，不允许包含重复的值。
 	INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 
-	// 防火墙模板规则已存在
+	// 防火墙模板规则已存在。
 	INVALIDPARAMETERVALUE_DUPLICATEDFIREWALLTEMPLATERULE = "InvalidParameterValue.DuplicatedFirewallTemplateRule"
 
 	// 列值不正确。
@@ -461,7 +464,7 @@ const (
 	// 超过防火墙规则配额。
 	LIMITEXCEEDED_FIREWALLRULESLIMITEXCEEDED = "LimitExceeded.FirewallRulesLimitExceeded"
 
-	// 防火墙模板规则超出配额
+	// 防火墙模板规则超出配额。
 	LIMITEXCEEDED_FIREWALLTEMPLATERULEQUOTALIMITEXCEEDED = "LimitExceeded.FirewallTemplateRuleQuotaLimitExceeded"
 
 	// 超过实例配额。
@@ -572,10 +575,10 @@ const (
 	// 防火墙规则不存在。
 	RESOURCENOTFOUND_FIREWALLRULESNOTFOUND = "ResourceNotFound.FirewallRulesNotFound"
 
-	// 防火墙模板不存在
+	// 防火墙模板不存在。
 	RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
 
-	// 防火墙模板规则不存在
+	// 防火墙模板规则不存在。
 	RESOURCENOTFOUND_FIREWALLTEMPLATERULENOTFOUND = "ResourceNotFound.FirewallTemplateRuleNotFound"
 
 	// 实例不存在挂载的数据盘。
@@ -620,7 +623,7 @@ const (
 	// 套餐不可用。
 	RESOURCEUNAVAILABLE_BUNDLEUNAVAILABLE = "ResourceUnavailable.BundleUnavailable"
 
-	// 不能应用该防火墙模板
+	// 不能应用该防火墙模板。
 	RESOURCEUNAVAILABLE_CANNOTAPPLYEMPTYFIREWALLTEMPLATE = "ResourceUnavailable.CannotApplyEmptyFirewallTemplate"
 
 	// Docker资源不可用。

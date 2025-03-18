@@ -535,6 +535,12 @@ type CreateModelServiceRequestParams struct {
 
 	// 单副本下的实例数，仅在部署类型为DIST时生效，默认1
 	InstancePerReplicas *int64 `json:"InstancePerReplicas,omitnil,omitempty" name:"InstancePerReplicas"`
+
+	// 30
+	TerminationGracePeriodSeconds *int64 `json:"TerminationGracePeriodSeconds,omitnil,omitempty" name:"TerminationGracePeriodSeconds"`
+
+	// ["sleep","60"]
+	PreStopCommand []*string `json:"PreStopCommand,omitnil,omitempty" name:"PreStopCommand"`
 }
 
 type CreateModelServiceRequest struct {
@@ -667,6 +673,12 @@ type CreateModelServiceRequest struct {
 
 	// 单副本下的实例数，仅在部署类型为DIST时生效，默认1
 	InstancePerReplicas *int64 `json:"InstancePerReplicas,omitnil,omitempty" name:"InstancePerReplicas"`
+
+	// 30
+	TerminationGracePeriodSeconds *int64 `json:"TerminationGracePeriodSeconds,omitnil,omitempty" name:"TerminationGracePeriodSeconds"`
+
+	// ["sleep","60"]
+	PreStopCommand []*string `json:"PreStopCommand,omitnil,omitempty" name:"PreStopCommand"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -716,6 +728,8 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "ServicePort")
 	delete(f, "DeployType")
 	delete(f, "InstancePerReplicas")
+	delete(f, "TerminationGracePeriodSeconds")
+	delete(f, "PreStopCommand")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -4585,6 +4599,12 @@ type ModifyModelServiceRequestParams struct {
 
 	// 单副本下的实例数，仅在部署类型为DIST时生效，默认1
 	InstancePerReplicas *int64 `json:"InstancePerReplicas,omitnil,omitempty" name:"InstancePerReplicas"`
+
+	// 30
+	TerminationGracePeriodSeconds *int64 `json:"TerminationGracePeriodSeconds,omitnil,omitempty" name:"TerminationGracePeriodSeconds"`
+
+	// ["sleep","60"]
+	PreStopCommand []*string `json:"PreStopCommand,omitnil,omitempty" name:"PreStopCommand"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -4690,6 +4710,12 @@ type ModifyModelServiceRequest struct {
 
 	// 单副本下的实例数，仅在部署类型为DIST时生效，默认1
 	InstancePerReplicas *int64 `json:"InstancePerReplicas,omitnil,omitempty" name:"InstancePerReplicas"`
+
+	// 30
+	TerminationGracePeriodSeconds *int64 `json:"TerminationGracePeriodSeconds,omitnil,omitempty" name:"TerminationGracePeriodSeconds"`
+
+	// ["sleep","60"]
+	PreStopCommand []*string `json:"PreStopCommand,omitnil,omitempty" name:"PreStopCommand"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -4730,6 +4756,8 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "CommandBase64")
 	delete(f, "ServicePort")
 	delete(f, "InstancePerReplicas")
+	delete(f, "TerminationGracePeriodSeconds")
+	delete(f, "PreStopCommand")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}
@@ -5877,6 +5905,12 @@ type ServiceInfo struct {
 	// 服务端口，默认为8501
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServicePort *int64 `json:"ServicePort,omitnil,omitempty" name:"ServicePort"`
+
+	// 服务的优雅退出时限。单位为秒，默认值为30，最小为1
+	TerminationGracePeriodSeconds *int64 `json:"TerminationGracePeriodSeconds,omitnil,omitempty" name:"TerminationGracePeriodSeconds"`
+
+	// 服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
+	PreStopCommand []*string `json:"PreStopCommand,omitnil,omitempty" name:"PreStopCommand"`
 }
 
 type ServiceLimit struct {

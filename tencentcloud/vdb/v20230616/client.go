@@ -179,7 +179,7 @@ func NewDescribeInstanceNodesResponse() (response *DescribeInstanceNodesResponse
 }
 
 // DescribeInstanceNodes
-// 实例节点列表
+// 查询实例pod列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -189,7 +189,7 @@ func (c *Client) DescribeInstanceNodes(request *DescribeInstanceNodesRequest) (r
 }
 
 // DescribeInstanceNodes
-// 实例节点列表
+// 查询实例pod列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

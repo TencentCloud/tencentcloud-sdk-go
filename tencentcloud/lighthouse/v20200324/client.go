@@ -233,11 +233,11 @@ func NewApplyInstanceSnapshotResponse() (response *ApplyInstanceSnapshotResponse
 // ApplyInstanceSnapshot
 // 本接口（ApplyInstanceSnapshot）用于回滚指定实例的系统盘快照。
 //
-// <li>仅支持回滚到原系统盘。</li>
+// - 仅支持回滚到原系统盘。
 //
-// <li>用于回滚的快照必须处于 NORMAL 状态。快照状态可以通过 DescribeSnapshots 接口查询，见输出参数中 SnapshotState 字段解释。</li>
+// - 用于回滚的快照必须处于 NORMAL 状态。快照状态可以通过 [DescribeSnapshots](https://cloud.tencent.com/document/product/1207/54388) 接口查询，见输出参数中 SnapshotState 字段解释。
 //
-// <li>回滚快照时，实例的状态必须为 STOPPED 或 RUNNING，可通过 DescribeInstances 接口查询实例状态。处于 RUNNING 状态的实例会强制关机，然后回滚快照。</li>
+// - 回滚快照时，实例的状态必须为 STOPPED 或 RUNNING，可通过 [DescribeInstances](https://cloud.tencent.com/document/product/1207/47573) 接口查询实例状态。处于 RUNNING 状态的实例会强制关机，然后回滚快照。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
@@ -267,11 +267,11 @@ func (c *Client) ApplyInstanceSnapshot(request *ApplyInstanceSnapshotRequest) (r
 // ApplyInstanceSnapshot
 // 本接口（ApplyInstanceSnapshot）用于回滚指定实例的系统盘快照。
 //
-// <li>仅支持回滚到原系统盘。</li>
+// - 仅支持回滚到原系统盘。
 //
-// <li>用于回滚的快照必须处于 NORMAL 状态。快照状态可以通过 DescribeSnapshots 接口查询，见输出参数中 SnapshotState 字段解释。</li>
+// - 用于回滚的快照必须处于 NORMAL 状态。快照状态可以通过 [DescribeSnapshots](https://cloud.tencent.com/document/product/1207/54388) 接口查询，见输出参数中 SnapshotState 字段解释。
 //
-// <li>回滚快照时，实例的状态必须为 STOPPED 或 RUNNING，可通过 DescribeInstances 接口查询实例状态。处于 RUNNING 状态的实例会强制关机，然后回滚快照。</li>
+// - 回滚快照时，实例的状态必须为 STOPPED 或 RUNNING，可通过 [DescribeInstances](https://cloud.tencent.com/document/product/1207/47573) 接口查询实例状态。处于 RUNNING 状态的实例会强制关机，然后回滚快照。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
@@ -510,6 +510,8 @@ func NewAttachDisksResponse() (response *AttachDisksResponse) {
 // AttachDisks
 // 本接口（AttachDisks）用于挂载一个或多个云硬盘。
 //
+// <li>只能挂载处于待挂载状态的云硬盘</li>
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDCOMMANDNOTFOUND = "FailedOperation.InvalidCommandNotFound"
 //  INTERNALERROR_TRADECALLBILLINGGATEWAYFAILED = "InternalError.TradeCallBillingGatewayFailed"
@@ -536,6 +538,8 @@ func (c *Client) AttachDisks(request *AttachDisksRequest) (response *AttachDisks
 
 // AttachDisks
 // 本接口（AttachDisks）用于挂载一个或多个云硬盘。
+//
+// <li>只能挂载处于待挂载状态的云硬盘</li>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDCOMMANDNOTFOUND = "FailedOperation.InvalidCommandNotFound"
@@ -901,13 +905,13 @@ func NewCreateFirewallRulesResponse() (response *CreateFirewallRulesResponse) {
 //
 // 
 //
-// * FirewallVersion 为防火墙版本号，用户每次更新防火墙规则版本会自动加1，防止您更新的规则已过期，不填不考虑冲突。
+// * FirewallVersion 为防火墙版本号，用户每次更新防火墙规则版本会自动加1，防止您更新的规则已过期，不填不考虑冲突。FirewallVersion可通过[DescribeFirewallRules](https://cloud.tencent.com/document/api/1207/48252)接口返回值中的FirewallVersion获取。
 //
 // 
 //
 // 在 FirewallRules 参数中：
 //
-// * Protocol 字段支持输入 TCP，UDP，ICMP，ALL。
+// * Protocol 字段支持输入 TCP，UDP，ICMP，ICMPv6，ALL。
 //
 // * Port 字段允许输入 ALL，或者一个单独的端口号，或者用逗号分隔的离散端口号，或者用减号分隔的两个端口号代表的端口范围。当 Port 为范围时，减号分隔的第一个端口号小于第二个端口号。当 Protocol 字段不是 TCP 或 UDP 时，Port 字段只能为空或 ALL。Port 字段长度不得超过 64。
 //
@@ -946,13 +950,13 @@ func (c *Client) CreateFirewallRules(request *CreateFirewallRulesRequest) (respo
 //
 // 
 //
-// * FirewallVersion 为防火墙版本号，用户每次更新防火墙规则版本会自动加1，防止您更新的规则已过期，不填不考虑冲突。
+// * FirewallVersion 为防火墙版本号，用户每次更新防火墙规则版本会自动加1，防止您更新的规则已过期，不填不考虑冲突。FirewallVersion可通过[DescribeFirewallRules](https://cloud.tencent.com/document/api/1207/48252)接口返回值中的FirewallVersion获取。
 //
 // 
 //
 // 在 FirewallRules 参数中：
 //
-// * Protocol 字段支持输入 TCP，UDP，ICMP，ALL。
+// * Protocol 字段支持输入 TCP，UDP，ICMP，ICMPv6，ALL。
 //
 // * Port 字段允许输入 ALL，或者一个单独的端口号，或者用逗号分隔的离散端口号，或者用减号分隔的两个端口号代表的端口范围。当 Port 为范围时，减号分隔的第一个端口号小于第二个端口号。当 Protocol 字段不是 TCP 或 UDP 时，Port 字段只能为空或 ALL。Port 字段长度不得超过 64。
 //
@@ -1215,6 +1219,8 @@ func NewCreateInstancesResponse() (response *CreateInstancesResponse) {
 // CreateInstances
 // 本接口(CreateInstances)用于创建一个或多个指定套餐的轻量应用服务器实例。
 //
+// *创建实例时，如指定实例访问域名信息时，本次创建请求，仅支持购买一台实例。
+//
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDREGION = "AuthFailure.InvalidRegion"
 //  FAILEDOPERATION = "FailedOperation"
@@ -1261,6 +1267,8 @@ func (c *Client) CreateInstances(request *CreateInstancesRequest) (response *Cre
 
 // CreateInstances
 // 本接口(CreateInstances)用于创建一个或多个指定套餐的轻量应用服务器实例。
+//
+// *创建实例时，如指定实例访问域名信息时，本次创建请求，仅支持购买一台实例。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDREGION = "AuthFailure.InvalidRegion"
@@ -1555,13 +1563,13 @@ func NewDeleteFirewallRulesResponse() (response *DeleteFirewallRulesResponse) {
 //
 // 
 //
-// * FirewallVersion 用于指定要操作的防火墙的版本。传入 FirewallVersion 版本号若不等于当前防火墙的最新版本，将返回失败；若不传 FirewallVersion 则直接删除指定的规则。
+// * FirewallVersion 用于指定要操作的防火墙的版本。传入 FirewallVersion 版本号若不等于当前防火墙的最新版本，将返回失败；若不传 FirewallVersion 则直接删除指定的规则。FirewallVersion可通过[DescribeFirewallRules](https://cloud.tencent.com/document/api/1207/48252)接口返回值中的FirewallVersion获取。
 //
 // 
 //
 // 在 FirewallRules 参数中：
 //
-// * Protocol 字段支持输入 TCP，UDP，ICMP，ALL。
+// * Protocol 字段支持输入 TCP，UDP，ICMP，ICMPv6，ALL。
 //
 // * Port 字段允许输入 ALL，或者一个单独的端口号，或者用逗号分隔的离散端口号，或者用减号分隔的两个端口号代表的端口范围。当 Port 为范围时，减号分隔的第一个端口号小于第二个端口号。当 Protocol 字段不是 TCP 或 UDP 时，Port 字段只能为空或 ALL。Port 字段长度不得超过 64。
 //
@@ -1595,13 +1603,13 @@ func (c *Client) DeleteFirewallRules(request *DeleteFirewallRulesRequest) (respo
 //
 // 
 //
-// * FirewallVersion 用于指定要操作的防火墙的版本。传入 FirewallVersion 版本号若不等于当前防火墙的最新版本，将返回失败；若不传 FirewallVersion 则直接删除指定的规则。
+// * FirewallVersion 用于指定要操作的防火墙的版本。传入 FirewallVersion 版本号若不等于当前防火墙的最新版本，将返回失败；若不传 FirewallVersion 则直接删除指定的规则。FirewallVersion可通过[DescribeFirewallRules](https://cloud.tencent.com/document/api/1207/48252)接口返回值中的FirewallVersion获取。
 //
 // 
 //
 // 在 FirewallRules 参数中：
 //
-// * Protocol 字段支持输入 TCP，UDP，ICMP，ALL。
+// * Protocol 字段支持输入 TCP，UDP，ICMP，ICMPv6，ALL。
 //
 // * Port 字段允许输入 ALL，或者一个单独的端口号，或者用逗号分隔的离散端口号，或者用减号分隔的两个端口号代表的端口范围。当 Port 为范围时，减号分隔的第一个端口号小于第二个端口号。当 Protocol 字段不是 TCP 或 UDP 时，Port 字段只能为空或 ALL。Port 字段长度不得超过 64。
 //
@@ -3015,6 +3023,8 @@ func NewDescribeDockerContainersResponse() (response *DescribeDockerContainersRe
 //  FAILEDOPERATION_DOCKEROPERATIONFAILED = "FailedOperation.DockerOperationFailed"
 //  FAILEDOPERATION_TATINVOCATIONNOTFINISHED = "FailedOperation.TATInvocationNotFinished"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
+//  INVALIDPARAMETER_PARAMETERCONFLICT = "InvalidParameter.ParameterConflict"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
@@ -3041,6 +3051,8 @@ func (c *Client) DescribeDockerContainers(request *DescribeDockerContainersReque
 //  FAILEDOPERATION_DOCKEROPERATIONFAILED = "FailedOperation.DockerOperationFailed"
 //  FAILEDOPERATION_TATINVOCATIONNOTFINISHED = "FailedOperation.TATInvocationNotFinished"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
+//  INVALIDPARAMETER_PARAMETERCONFLICT = "InvalidParameter.ParameterConflict"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
@@ -4713,7 +4725,11 @@ func NewDetachDisksResponse() (response *DetachDisksResponse) {
 }
 
 // DetachDisks
-// 本接口（DetachDisks）用于卸载一个或多个云硬盘。
+// 本接口（DetachDisks）用于卸载一个或多个云硬盘。该操作目前仅支持云硬盘类型为数据盘的云硬盘。
+//
+// - 支持批量操作，卸载挂载在同一主机上的多块云硬盘。如果多块云硬盘中存在不允许卸载的云硬盘，则操作不执行，返回特定的错误码。
+//
+// - 本接口为异步接口，当请求成功返回时，云硬盘并未立即卸载，可通过接口[DescribeDisks](https://cloud.tencent.com/document/product/362/16315)来查询对应云硬盘的状态，如果云硬盘的状态由“ATTACHED”变为“UNATTACHED”，则为卸载成功。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
@@ -4730,7 +4746,11 @@ func (c *Client) DetachDisks(request *DetachDisksRequest) (response *DetachDisks
 }
 
 // DetachDisks
-// 本接口（DetachDisks）用于卸载一个或多个云硬盘。
+// 本接口（DetachDisks）用于卸载一个或多个云硬盘。该操作目前仅支持云硬盘类型为数据盘的云硬盘。
+//
+// - 支持批量操作，卸载挂载在同一主机上的多块云硬盘。如果多块云硬盘中存在不允许卸载的云硬盘，则操作不执行，返回特定的错误码。
+//
+// - 本接口为异步接口，当请求成功返回时，云硬盘并未立即卸载，可通过接口[DescribeDisks](https://cloud.tencent.com/document/product/362/16315)来查询对应云硬盘的状态，如果云硬盘的状态由“ATTACHED”变为“UNATTACHED”，则为卸载成功。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
@@ -5644,7 +5664,11 @@ func NewModifyDisksBackupQuotaResponse() (response *ModifyDisksBackupQuotaRespon
 }
 
 // ModifyDisksBackupQuota
-// 本接口(ModifyDisksBackupQuota)用于调整云硬盘备份点配额。该操作目前仅支持云硬盘类型为数据盘的云硬盘。
+// 本接口(ModifyDisksBackupQuota)用于调整云硬盘备份点配额。
+//
+// 该操作目前仅支持云硬盘类型为数据盘且状态是ATTACHED（已挂载）或 UNATTACHED（待挂载）的云硬盘。
+//
+// 支持批量操作。每次批量请求云硬盘数量上限为15个。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
@@ -5665,7 +5689,11 @@ func (c *Client) ModifyDisksBackupQuota(request *ModifyDisksBackupQuotaRequest) 
 }
 
 // ModifyDisksBackupQuota
-// 本接口(ModifyDisksBackupQuota)用于调整云硬盘备份点配额。该操作目前仅支持云硬盘类型为数据盘的云硬盘。
+// 本接口(ModifyDisksBackupQuota)用于调整云硬盘备份点配额。
+//
+// 该操作目前仅支持云硬盘类型为数据盘且状态是ATTACHED（已挂载）或 UNATTACHED（待挂载）的云硬盘。
+//
+// 支持批量操作。每次批量请求云硬盘数量上限为15个。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
@@ -5883,7 +5911,7 @@ func NewModifyFirewallRuleDescriptionResponse() (response *ModifyFirewallRuleDes
 //
 // 
 //
-// * FirewallVersion 用于指定要操作的防火墙的版本。传入 FirewallVersion 版本号若不等于当前防火墙的最新版本，将返回失败；若不传 FirewallVersion 则直接修改防火墙规则备注。
+// * FirewallVersion 用于指定要操作的防火墙的版本。传入 FirewallVersion 版本号若不等于当前防火墙的最新版本，将返回失败；若不传 FirewallVersion 则直接修改防火墙规则备注。FirewallVersion可通过[DescribeFirewallRules](https://cloud.tencent.com/document/api/1207/48252)接口返回值中的FirewallVersion获取。
 //
 // 
 //
@@ -5893,7 +5921,7 @@ func NewModifyFirewallRuleDescriptionResponse() (response *ModifyFirewallRuleDes
 //
 // 在 FirewallRule 参数中：
 //
-// * Protocol 字段支持输入 TCP，UDP，ICMP，ALL。
+// * Protocol 字段支持输入 TCP，UDP，ICMP，ICMPv6，ALL。
 //
 // * Port 字段允许输入 ALL，或者一个单独的端口号，或者用逗号分隔的离散端口号，或者用减号分隔的两个端口号代表的端口范围。当 Port 为范围时，减号分隔的第一个端口号小于第二个端口号。当 Protocol 字段不是 TCP 或 UDP 时，Port 字段只能为空或 ALL。Port 字段长度不得超过 64。
 //
@@ -5922,7 +5950,7 @@ func (c *Client) ModifyFirewallRuleDescription(request *ModifyFirewallRuleDescri
 //
 // 
 //
-// * FirewallVersion 用于指定要操作的防火墙的版本。传入 FirewallVersion 版本号若不等于当前防火墙的最新版本，将返回失败；若不传 FirewallVersion 则直接修改防火墙规则备注。
+// * FirewallVersion 用于指定要操作的防火墙的版本。传入 FirewallVersion 版本号若不等于当前防火墙的最新版本，将返回失败；若不传 FirewallVersion 则直接修改防火墙规则备注。FirewallVersion可通过[DescribeFirewallRules](https://cloud.tencent.com/document/api/1207/48252)接口返回值中的FirewallVersion获取。
 //
 // 
 //
@@ -5932,7 +5960,7 @@ func (c *Client) ModifyFirewallRuleDescription(request *ModifyFirewallRuleDescri
 //
 // 在 FirewallRule 参数中：
 //
-// * Protocol 字段支持输入 TCP，UDP，ICMP，ALL。
+// * Protocol 字段支持输入 TCP，UDP，ICMP，ICMPv6，ALL。
 //
 // * Port 字段允许输入 ALL，或者一个单独的端口号，或者用逗号分隔的离散端口号，或者用减号分隔的两个端口号代表的端口范围。当 Port 为范围时，减号分隔的第一个端口号小于第二个端口号。当 Protocol 字段不是 TCP 或 UDP 时，Port 字段只能为空或 ALL。Port 字段长度不得超过 64。
 //
@@ -5996,13 +6024,13 @@ func NewModifyFirewallRulesResponse() (response *ModifyFirewallRulesResponse) {
 //
 // 
 //
-// * FirewallVersion 用于指定要操作的防火墙的版本。传入 FirewallVersion 版本号若不等于当前防火墙的最新版本，将返回失败；若不传 FirewallVersion 则直接重置防火墙规则。
+// * FirewallVersion 用于指定要操作的防火墙的版本。传入 FirewallVersion 版本号若不等于当前防火墙的最新版本，将返回失败；若不传 FirewallVersion 则直接重置防火墙规则。可通过[DescribeFirewallRules](https://cloud.tencent.com/document/api/1207/48252)接口返回值中的FirewallVersion获取。
 //
 // 
 //
 // 在 FirewallRules 参数中：
 //
-// * Protocol 字段支持输入 TCP，UDP，ICMP，ALL。
+// * Protocol 字段支持输入 TCP，UDP，ICMP，ICMPv6，ALL。
 //
 // * Port 字段允许输入 ALL，或者一个单独的端口号，或者用逗号分隔的离散端口号，或者用减号分隔的两个端口号代表的端口范围。当 Port 为范围时，减号分隔的第一个端口号小于第二个端口号。当 Protocol 字段不是 TCP 或 UDP 时，Port 字段只能为空或 ALL。Port 字段长度不得超过 64。
 //
@@ -6041,13 +6069,13 @@ func (c *Client) ModifyFirewallRules(request *ModifyFirewallRulesRequest) (respo
 //
 // 
 //
-// * FirewallVersion 用于指定要操作的防火墙的版本。传入 FirewallVersion 版本号若不等于当前防火墙的最新版本，将返回失败；若不传 FirewallVersion 则直接重置防火墙规则。
+// * FirewallVersion 用于指定要操作的防火墙的版本。传入 FirewallVersion 版本号若不等于当前防火墙的最新版本，将返回失败；若不传 FirewallVersion 则直接重置防火墙规则。可通过[DescribeFirewallRules](https://cloud.tencent.com/document/api/1207/48252)接口返回值中的FirewallVersion获取。
 //
 // 
 //
 // 在 FirewallRules 参数中：
 //
-// * Protocol 字段支持输入 TCP，UDP，ICMP，ALL。
+// * Protocol 字段支持输入 TCP，UDP，ICMP，ICMPv6，ALL。
 //
 // * Port 字段允许输入 ALL，或者一个单独的端口号，或者用逗号分隔的离散端口号，或者用减号分隔的两个端口号代表的端口范围。当 Port 为范围时，减号分隔的第一个端口号小于第二个端口号。当 Protocol 字段不是 TCP 或 UDP 时，Port 字段只能为空或 ALL。Port 字段长度不得超过 64。
 //
@@ -7266,11 +7294,13 @@ func NewResetInstanceResponse() (response *ResetInstanceResponse) {
 //
 // 
 //
-// * 如果指定了 BlueprintId 参数，则使用指定的镜像重装；否则按照当前实例使用的镜像进行重装。
+// * 仅`RUNNING`，`STOPPED`状态的机器，且当前机器无变更中的操作，才支持重装系统。
 //
-// * 系统盘将会被格式化，并重置；请确保系统盘中无重要文件。
+// * 如果指定了 BlueprintId 参数，则使用指定的镜像重装，否则按照当前实例使用的镜像进行重装。
 //
-// * 目前不支持实例使用该接口实现 LINUX_UNIX 和 WINDOWS 操作系统切换。
+// * 非中国大陆地域的实例不支持使用该接口实现LIUNX_UNIX和WINDOWS操作系统切换。
+//
+// * 系统盘将会被格式化，并重置，请确保系统盘中无重要文件。
 //
 // * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 <a href="https://cloud.tencent.com/document/product/1207/47573" target="_blank">DescribeInstances</a> 接口查询，如果实例的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
 //
@@ -7318,11 +7348,13 @@ func (c *Client) ResetInstance(request *ResetInstanceRequest) (response *ResetIn
 //
 // 
 //
-// * 如果指定了 BlueprintId 参数，则使用指定的镜像重装；否则按照当前实例使用的镜像进行重装。
+// * 仅`RUNNING`，`STOPPED`状态的机器，且当前机器无变更中的操作，才支持重装系统。
 //
-// * 系统盘将会被格式化，并重置；请确保系统盘中无重要文件。
+// * 如果指定了 BlueprintId 参数，则使用指定的镜像重装，否则按照当前实例使用的镜像进行重装。
 //
-// * 目前不支持实例使用该接口实现 LINUX_UNIX 和 WINDOWS 操作系统切换。
+// * 非中国大陆地域的实例不支持使用该接口实现LIUNX_UNIX和WINDOWS操作系统切换。
+//
+// * 系统盘将会被格式化，并重置，请确保系统盘中无重要文件。
 //
 // * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 <a href="https://cloud.tencent.com/document/product/1207/47573" target="_blank">DescribeInstances</a> 接口查询，如果实例的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
 //
@@ -8225,7 +8257,7 @@ func NewTerminateInstancesResponse() (response *TerminateInstancesResponse) {
 //
 // * 支持批量操作，每次请求批量实例的上限为100。
 //
-// * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 <a href="https://cloud.tencent.com/document/product/1207/47573" target="_blank">DescribeInstances</a> 接口查询，如果实例的最新操作状态 (LatestOperationState) 为“SUCCESS”，则代表操作成功。
+// * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 <a href="https://cloud.tencent.com/document/product/1207/47573" target="_blank">DescribeInstances</a> 接口查询，如果返回列表中不存在该实例，则代表操作成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESTROYRESOURCESFAILED = "FailedOperation.DestroyResourcesFailed"
@@ -8254,7 +8286,7 @@ func (c *Client) TerminateInstances(request *TerminateInstancesRequest) (respons
 //
 // * 支持批量操作，每次请求批量实例的上限为100。
 //
-// * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 <a href="https://cloud.tencent.com/document/product/1207/47573" target="_blank">DescribeInstances</a> 接口查询，如果实例的最新操作状态 (LatestOperationState) 为“SUCCESS”，则代表操作成功。
+// * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 <a href="https://cloud.tencent.com/document/product/1207/47573" target="_blank">DescribeInstances</a> 接口查询，如果返回列表中不存在该实例，则代表操作成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESTROYRESOURCESFAILED = "FailedOperation.DestroyResourcesFailed"

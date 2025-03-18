@@ -39,31 +39,24 @@ type AdvancedObjectsItem struct {
 
 type CheckStep struct {
 	// 步骤编号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepNo *uint64 `json:"StepNo,omitnil,omitempty" name:"StepNo"`
 
 	// 步骤Id， 如：ConnectDBCheck、VersionCheck、SrcPrivilegeCheck等，具体校验项和源目标实例相关
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepId *string `json:"StepId,omitnil,omitempty" name:"StepId"`
 
 	// 步骤名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepName *string `json:"StepName,omitnil,omitempty" name:"StepName"`
 
 	// 此检查步骤的结果，pass(校验通过)、failed(校验失败)、notStarted(校验还未开始进行)、blocked(检验阻塞)、warning(校验有告警，但仍通过)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepStatus *string `json:"StepStatus,omitnil,omitempty" name:"StepStatus"`
 
 	// 此检查步骤的错误消息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepMessage *string `json:"StepMessage,omitnil,omitempty" name:"StepMessage"`
 
 	// 每个检查步骤里的具体检查项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DetailCheckItems []*DetailCheckItem `json:"DetailCheckItems,omitnil,omitempty" name:"DetailCheckItems"`
 
 	// 是否已跳过
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HasSkipped *bool `json:"HasSkipped,omitnil,omitempty" name:"HasSkipped"`
 }
 
@@ -88,59 +81,45 @@ type Column struct {
 
 type CompareAbstractInfo struct {
 	// 校验配置参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Options *CompareOptions `json:"Options,omitnil,omitempty" name:"Options"`
 
 	// 一致性校验对比对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Objects *CompareObject `json:"Objects,omitnil,omitempty" name:"Objects"`
 
 	// 对比结论: same,different
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Conclusion *string `json:"Conclusion,omitnil,omitempty" name:"Conclusion"`
 
 	// 任务状态: success,failed
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 总的表数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalTables *uint64 `json:"TotalTables,omitnil,omitempty" name:"TotalTables"`
 
 	// 已校验的表数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckedTables *uint64 `json:"CheckedTables,omitnil,omitempty" name:"CheckedTables"`
 
 	// 不一致的表数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DifferentTables *uint64 `json:"DifferentTables,omitnil,omitempty" name:"DifferentTables"`
 
 	// 跳过校验的表数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkippedTables *uint64 `json:"SkippedTables,omitnil,omitempty" name:"SkippedTables"`
 
 	// 预估表总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NearlyTableCount *uint64 `json:"NearlyTableCount,omitnil,omitempty" name:"NearlyTableCount"`
 
 	// 不一致的数据行数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DifferentRows *uint64 `json:"DifferentRows,omitnil,omitempty" name:"DifferentRows"`
 
 	// 源库行数，当对比类型为**行数对比**时此项有意义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcSampleRows *uint64 `json:"SrcSampleRows,omitnil,omitempty" name:"SrcSampleRows"`
 
 	// 目标库行数，当对比类型为**行数对比**时此项有意义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstSampleRows *uint64 `json:"DstSampleRows,omitnil,omitempty" name:"DstSampleRows"`
 
 	// 开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartedAt *string `json:"StartedAt,omitnil,omitempty" name:"StartedAt"`
 
 	// 结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishedAt *string `json:"FinishedAt,omitnil,omitempty" name:"FinishedAt"`
 }
 
@@ -151,23 +130,18 @@ type CompareColumnItem struct {
 
 type CompareDetailInfo struct {
 	// 数据不一致的表详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Difference *DifferenceDetail `json:"Difference,omitnil,omitempty" name:"Difference"`
 
 	// 跳过校验的表详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Skipped *SkippedDetail `json:"Skipped,omitnil,omitempty" name:"Skipped"`
 
 	// 数据库不一致的详情，mongodb业务用到
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DifferenceAdvancedObjects *DifferenceAdvancedObjectsDetail `json:"DifferenceAdvancedObjects,omitnil,omitempty" name:"DifferenceAdvancedObjects"`
 
 	// 数据不一致的详情，mongodb业务用到
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DifferenceData *DifferenceDataDetail `json:"DifferenceData,omitnil,omitempty" name:"DifferenceData"`
 
 	// 数据行不一致的详情，mongodb业务用到
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DifferenceRow *DifferenceRowDetail `json:"DifferenceRow,omitnil,omitempty" name:"DifferenceRow"`
 }
 
@@ -179,6 +153,7 @@ type CompareObject struct {
 	ObjectItems []*CompareObjectItem `json:"ObjectItems,omitnil,omitempty" name:"ObjectItems"`
 
 	// 高级对象类型，目前只支持mongodb链路。如index(索引),shardkey(片键),schema(库表)
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvancedObjects []*string `json:"AdvancedObjects,omitnil,omitempty" name:"AdvancedObjects"`
 }
 
@@ -238,59 +213,45 @@ type CompareTaskInfo struct {
 
 type CompareTaskItem struct {
 	// 任务id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 对比任务 Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
 
 	// 对比任务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
 	// 对比任务状态, 可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 对比任务配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Config *CompareObject `json:"Config,omitnil,omitempty" name:"Config"`
 
 	// 对比任务校验详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckProcess *ProcessProgress `json:"CheckProcess,omitnil,omitempty" name:"CheckProcess"`
 
 	// 对比任务运行详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompareProcess *ProcessProgress `json:"CompareProcess,omitnil,omitempty" name:"CompareProcess"`
 
 	// 对比结果, 可能的值：same - 一致；different - 不一致；skipAll - 跳过
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Conclusion *string `json:"Conclusion,omitnil,omitempty" name:"Conclusion"`
 
 	// 任务创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 任务启动时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartedAt *string `json:"StartedAt,omitnil,omitempty" name:"StartedAt"`
 
 	// 对比结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishedAt *string `json:"FinishedAt,omitnil,omitempty" name:"FinishedAt"`
 
 	// 对比类型，dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
 	// 对比配置信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Options *CompareOptions `json:"Options,omitnil,omitempty" name:"Options"`
 
 	// 一致性校验提示信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }
 
@@ -883,7 +844,6 @@ func (r *CreateCompareTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCompareTaskResponseParams struct {
 	// 数据对比任务 ID，形如：dts-8yv4w2i1-cmp-37skmii9
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompareTaskId *string `json:"CompareTaskId,omitnil,omitempty" name:"CompareTaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2029,11 +1989,9 @@ func (r *DescribeCompareReportRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCompareReportResponseParams struct {
 	// 一致性校验摘要信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Abstract *CompareAbstractInfo `json:"Abstract,omitnil,omitempty" name:"Abstract"`
 
 	// 一致性校验详细信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Detail *CompareDetailInfo `json:"Detail,omitnil,omitempty" name:"Detail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2119,11 +2077,9 @@ func (r *DescribeCompareTasksRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCompareTasksResponseParams struct {
 	// 数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 一致性校验列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*CompareTaskItem `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2378,15 +2334,12 @@ func (r *DescribeMigrationCheckJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMigrationCheckJobResponseParams struct {
 	// 校验任务执行状态，如：notStarted(未开始)、running(校验中)、failed(校验任务失败)、success(任务成功)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 校验任务结果输出简要信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BriefMsg *string `json:"BriefMsg,omitnil,omitempty" name:"BriefMsg"`
 
 	// 检查步骤
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepInfo []*CheckStep `json:"StepInfo,omitnil,omitempty" name:"StepInfo"`
 
 	// 校验结果，如：checkPass(校验通过)、checkNotPass(校验未通过)
@@ -2674,11 +2627,9 @@ func (r *DescribeMigrationJobsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMigrationJobsResponseParams struct {
 	// 迁移任务数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 迁移任务列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobList []*JobItem `json:"JobList,omitnil,omitempty" name:"JobList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3570,35 +3521,27 @@ func (r *DestroySyncJobResponse) FromJsonString(s string) error {
 
 type DetailCheckItem struct {
 	// 检查项的名称，如：源实例权限检查
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckItemName *string `json:"CheckItemName,omitnil,omitempty" name:"CheckItemName"`
 
 	// 检查项详细内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// pass(通过)，failed(失败), warning(校验有警告，但仍通过)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckResult *string `json:"CheckResult,omitnil,omitempty" name:"CheckResult"`
 
 	// 检查项失败原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailureReason *string `json:"FailureReason,omitnil,omitempty" name:"FailureReason"`
 
 	// 解决方案
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
 
 	// 运行报错日志
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorLog []*string `json:"ErrorLog,omitnil,omitempty" name:"ErrorLog"`
 
 	// 详细帮助的文档链接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HelpDoc []*string `json:"HelpDoc,omitnil,omitempty" name:"HelpDoc"`
 
 	// 跳过风险文案
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkipInfo *string `json:"SkipInfo,omitnil,omitempty" name:"SkipInfo"`
 }
 
@@ -3613,37 +3556,29 @@ type DifferenceAdvancedObjectsDetail struct {
 
 type DifferenceData struct {
 	// 数据库名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
 
 	// 集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
 
 	// 源端ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcChunk *string `json:"SrcChunk,omitnil,omitempty" name:"SrcChunk"`
 
 	// 目标端ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstChunk *string `json:"DstChunk,omitnil,omitempty" name:"DstChunk"`
 
 	// 源端值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcItem *string `json:"SrcItem,omitnil,omitempty" name:"SrcItem"`
 
 	// 目标端值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstItem *string `json:"DstItem,omitnil,omitempty" name:"DstItem"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 }
 
 type DifferenceDataDetail struct {
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// mongo数据不一致详细列表
@@ -3653,7 +3588,6 @@ type DifferenceDataDetail struct {
 
 type DifferenceDetail struct {
 	// 数据不一致的表数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 校验不一致的表详情
@@ -3663,49 +3597,38 @@ type DifferenceDetail struct {
 
 type DifferenceItem struct {
 	// 数据库名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
 
 	// 表名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
 
 	// 分块号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Chunk *int64 `json:"Chunk,omitnil,omitempty" name:"Chunk"`
 
 	// 源库数值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcItem *string `json:"SrcItem,omitnil,omitempty" name:"SrcItem"`
 
 	// 目标库数值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstItem *string `json:"DstItem,omitnil,omitempty" name:"DstItem"`
 
 	// 索引名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexName *string `json:"IndexName,omitnil,omitempty" name:"IndexName"`
 
 	// 索引下边界
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LowerBoundary *string `json:"LowerBoundary,omitnil,omitempty" name:"LowerBoundary"`
 
 	// 索引上边界
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpperBoundary *string `json:"UpperBoundary,omitnil,omitempty" name:"UpperBoundary"`
 
 	// 对比消耗时间,单位为 ms
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CostTime *float64 `json:"CostTime,omitnil,omitempty" name:"CostTime"`
 
 	// 完成时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishedAt *string `json:"FinishedAt,omitnil,omitempty" name:"FinishedAt"`
 }
 
 type DifferenceRowDetail struct {
 	// 不一致总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 不一致列表
@@ -4117,81 +4040,62 @@ func (r *IsolateSyncJobResponse) FromJsonString(s string) error {
 
 type JobItem struct {
 	// 数据迁移任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 数据迁移任务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
 	// 任务创建(提交)时间，格式为 yyyy-mm-dd hh:mm:ss
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 任务更新时间，格式为 yyyy-mm-dd hh:mm:ss
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 任务开始执行时间，格式为 yyyy-mm-dd hh:mm:ss
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 任务执行结束时间，格式为 yyyy-mm-dd hh:mm:ss
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 迁移任务错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BriefMsg *string `json:"BriefMsg,omitnil,omitempty" name:"BriefMsg"`
 
 	// 任务状态，取值为：creating(创建中)、created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)、
 	// pausing(暂停中)、
 	// manualPaused(已暂停)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 任务运行模式，值包括：immediate(立即运行)，timed(定时运行)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunMode *string `json:"RunMode,omitnil,omitempty" name:"RunMode"`
 
 	// 期待启动时间，当RunMode取值为timed时，此值必填，形如：2022-07-11 16:20:49
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpectRunTime *string `json:"ExpectRunTime,omitnil,omitempty" name:"ExpectRunTime"`
 
 	// 任务操作信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Action *MigrateAction `json:"Action,omitnil,omitempty" name:"Action"`
 
 	// 迁移执行过程信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepInfo *MigrateDetailInfo `json:"StepInfo,omitnil,omitempty" name:"StepInfo"`
 
 	// 源实例信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcInfo *DBEndpointInfo `json:"SrcInfo,omitnil,omitempty" name:"SrcInfo"`
 
 	// 目标端信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstInfo *DBEndpointInfo `json:"DstInfo,omitnil,omitempty" name:"DstInfo"`
 
 	// 数据一致性校验结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompareTask *CompareTaskInfo `json:"CompareTask,omitnil,omitempty" name:"CompareTask"`
 
 	// 计费状态信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TradeInfo *TradeInfo `json:"TradeInfo,omitnil,omitempty" name:"TradeInfo"`
 
 	// 标签信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 自动重试时间段信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitnil,omitempty" name:"AutoRetryTimeRangeMinutes"`
 
 	// 全量导出可重入标识：enum::"yes"/"no"。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DumperResumeCtrl *string `json:"DumperResumeCtrl,omitnil,omitempty" name:"DumperResumeCtrl"`
 }
 
@@ -6140,19 +6044,15 @@ type RoleItem struct {
 
 type RowsCountDifference struct {
 	// 数据库名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
 
 	// 集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
 
 	// 源端行数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcCount *int64 `json:"SrcCount,omitnil,omitempty" name:"SrcCount"`
 
 	// 目标端行数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstCount *int64 `json:"DstCount,omitnil,omitempty" name:"DstCount"`
 }
 
@@ -6290,7 +6190,6 @@ func (r *SkipSyncCheckItemResponse) FromJsonString(s string) error {
 
 type SkippedDetail struct {
 	// 跳过的表数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 跳过校验的表详情
@@ -6300,15 +6199,12 @@ type SkippedDetail struct {
 
 type SkippedItem struct {
 	// 数据库名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
 
 	// 表名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
 
 	// 未发起检查的原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 }
 

@@ -10015,7 +10015,7 @@ type SaveDocRequestParams struct {
 	// 文件大小
 	Size *string `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 标签适用范围，默认填0即可
+	// 标签适用范围，需要传参为1
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
 	// 来源(0 源文件导入 1 网页导入)
@@ -10071,7 +10071,7 @@ type SaveDocRequest struct {
 	// 文件大小
 	Size *string `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 标签适用范围，默认填0即可
+	// 标签适用范围，需要传参为1
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
 	// 来源(0 源文件导入 1 网页导入)

@@ -59,7 +59,7 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
-	// 内容包含非法信息（如色情，恐暴，政治等）。
+	// 文案涉及敏感词，请调整后重新输入。
 	INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
 
 	// css/js地址无法访问

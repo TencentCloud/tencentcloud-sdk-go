@@ -562,6 +562,11 @@ type Bundle struct {
 	// <li>HK_EXCLUSIVE_BUNDLE：香港专属型 </li>
 	// <li>CAREFREE_BUNDLE：无忧型</li>
 	// <li>BEFAST_BUNDLE：蜂驰型 </li>
+	// <li>EXCLUSIVE_BUNDLE_02：境外专属Ⅱ型</li>
+	// <li>NEWCOMER_BUNDLE：新客专享</li>
+	// <li>GAME_PORTAL_BUNDLE：游戏专区</li>
+	// <li>ECONOMY_BUNDLE：经济型</li>
+	// <li>RAZOR_SPEED_BUNDLE：锐驰型</li>
 	BundleType *string `json:"BundleType,omitnil,omitempty" name:"BundleType"`
 
 	// 套餐类型描述信息。
@@ -697,7 +702,7 @@ type CreateBlueprintRequestParams struct {
 	// 镜像描述。最大长度60。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 需要制作镜像的实例ID。
+	// 需要制作镜像的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/1207/47573) 接口返回值中的 InstanceId 获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 是否执行强制关机以制作镜像。
@@ -718,7 +723,7 @@ type CreateBlueprintRequest struct {
 	// 镜像描述。最大长度60。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 需要制作镜像的实例ID。
+	// 需要制作镜像的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/1207/47573) 接口返回值中的 InstanceId 获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 是否执行强制关机以制作镜像。
@@ -1235,6 +1240,7 @@ type CreateInstancesRequestParams struct {
 
 	// 可用区列表。
 	// 不填此参数，表示为随机可用区。
+	// 可通过 <a href="https://cloud.tencent.com/document/product/1207/57513" target="_blank">DescribeZones</a>接口获取指定地域下的可用区列表信息
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 
 	// 是否只预检此次请求。
@@ -1270,9 +1276,11 @@ type CreateInstancesRequestParams struct {
 	InitCommand *Command `json:"InitCommand,omitnil,omitempty" name:"InitCommand"`
 
 	// 主域名。
+	// 注意：域名指定后，仅支持购买一台实例（参数InstanceCount=1）。
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
 	// 子域名。
+	// 注意：域名指定后，仅支持购买一台实例（参数InstanceCount=1）。
 	Subdomain *string `json:"Subdomain,omitnil,omitempty" name:"Subdomain"`
 }
 
@@ -1296,6 +1304,7 @@ type CreateInstancesRequest struct {
 
 	// 可用区列表。
 	// 不填此参数，表示为随机可用区。
+	// 可通过 <a href="https://cloud.tencent.com/document/product/1207/57513" target="_blank">DescribeZones</a>接口获取指定地域下的可用区列表信息
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 
 	// 是否只预检此次请求。
@@ -1331,9 +1340,11 @@ type CreateInstancesRequest struct {
 	InitCommand *Command `json:"InitCommand,omitnil,omitempty" name:"InitCommand"`
 
 	// 主域名。
+	// 注意：域名指定后，仅支持购买一台实例（参数InstanceCount=1）。
 	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
 
 	// 子域名。
+	// 注意：域名指定后，仅支持购买一台实例（参数InstanceCount=1）。
 	Subdomain *string `json:"Subdomain,omitnil,omitempty" name:"Subdomain"`
 }
 
@@ -1375,7 +1386,7 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 type CreateInstancesResponseParams struct {
 	// 当通过本接口来创建实例时会返回该参数，表示一个或多个实例ID。返回实例ID列表并不代表实例创建成功。
 	// 
-	// 可根据 DescribeInstances 接口查询返回的InstancesSet中对应实例的ID的状态来判断创建是否完成；如果实例状态由“启动中”变为“运行中”，则为创建成功。
+	// 可根据<a href="https://cloud.tencent.com/document/product/1207/47573" target="_blank">DescribeInstances</a> 接口查询返回的InstancesSet中对应实例的ID的状态来判断创建是否完成；如果实例状态由“启动中”变为“运行中”，则为创建成功。
 	InstanceIdSet []*string `json:"InstanceIdSet,omitnil,omitempty" name:"InstanceIdSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1531,14 +1542,14 @@ func (r *DeleteBlueprintsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteDiskBackupsRequestParams struct {
-	// 云硬盘备份点ID列表，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379)接口查询。
+	// 云硬盘备份点ID列表，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379)接口查询。列表长度最大值为100。
 	DiskBackupIds []*string `json:"DiskBackupIds,omitnil,omitempty" name:"DiskBackupIds"`
 }
 
 type DeleteDiskBackupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘备份点ID列表，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379)接口查询。
+	// 云硬盘备份点ID列表，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379)接口查询。列表长度最大值为100。
 	DiskBackupIds []*string `json:"DiskBackupIds,omitnil,omitempty" name:"DiskBackupIds"`
 }
 
@@ -2384,14 +2395,14 @@ func (r *DescribeCcnAttachedInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDiskBackupsDeniedActionsRequestParams struct {
-	// 云硬盘备份点 ID 列表, 可通过<a href="https://cloud.tencent.com/document/product/1207/84379" target="_blank">DescribeDiskBackups</a>接口查询。
+	// 云硬盘备份点 ID 列表, 可通过<a href="https://cloud.tencent.com/document/product/1207/84379" target="_blank">DescribeDiskBackups</a>接口查询。列表长度最大值为100。
 	DiskBackupIds []*string `json:"DiskBackupIds,omitnil,omitempty" name:"DiskBackupIds"`
 }
 
 type DescribeDiskBackupsDeniedActionsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘备份点 ID 列表, 可通过<a href="https://cloud.tencent.com/document/product/1207/84379" target="_blank">DescribeDiskBackups</a>接口查询。
+	// 云硬盘备份点 ID 列表, 可通过<a href="https://cloud.tencent.com/document/product/1207/84379" target="_blank">DescribeDiskBackups</a>接口查询。列表长度最大值为100。
 	DiskBackupIds []*string `json:"DiskBackupIds,omitnil,omitempty" name:"DiskBackupIds"`
 }
 
@@ -2454,12 +2465,14 @@ type DescribeDiskBackupsRequestParams struct {
 	// <li>disk-backup-state</li>按照【云硬盘备份点状态】进行过滤。
 	// 类型：String
 	// 必选：否
-	// 取值：参考数据结构 
-	// <a href="https://cloud.tencent.com/document/product/1207/47576#DiskBackup">DescribeSnapshots</a> 下的DiskBackupState取值。
+	// 取值：参考数据结构 [DiskBackup](https://cloud.tencent.com/document/product/1207/47576#DiskBackup) 下的DiskBackupState取值。
 	// <li>disk-usage</li>按照【云硬盘类型】进行过滤。
 	// 类型：String
 	// 必选：否
-	// 取值：SYSTEM_DISK或DATA_DISK
+	// 取值：
+	// - SYSTEM_DISK - 系统盘
+	// - DATA_DISK - 数据盘
+	// 
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为5。参数不支持同时指定DiskBackupIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -2486,12 +2499,14 @@ type DescribeDiskBackupsRequest struct {
 	// <li>disk-backup-state</li>按照【云硬盘备份点状态】进行过滤。
 	// 类型：String
 	// 必选：否
-	// 取值：参考数据结构 
-	// <a href="https://cloud.tencent.com/document/product/1207/47576#DiskBackup">DescribeSnapshots</a> 下的DiskBackupState取值。
+	// 取值：参考数据结构 [DiskBackup](https://cloud.tencent.com/document/product/1207/47576#DiskBackup) 下的DiskBackupState取值。
 	// <li>disk-usage</li>按照【云硬盘类型】进行过滤。
 	// 类型：String
 	// 必选：否
-	// 取值：SYSTEM_DISK或DATA_DISK
+	// 取值：
+	// - SYSTEM_DISK - 系统盘
+	// - DATA_DISK - 数据盘
+	// 
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为5。参数不支持同时指定DiskBackupIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -2623,7 +2638,7 @@ type DescribeDiskDiscountRequestParams struct {
 	// 云硬盘大小, 单位: GB。
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置1个云硬盘备份点配额。
+	// 指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置[0 - 500]个云硬盘备份点配额。
 	DiskBackupQuota *int64 `json:"DiskBackupQuota,omitnil,omitempty" name:"DiskBackupQuota"`
 }
 
@@ -2636,7 +2651,7 @@ type DescribeDiskDiscountRequest struct {
 	// 云硬盘大小, 单位: GB。
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置1个云硬盘备份点配额。
+	// 指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置[0 - 500]个云硬盘备份点配额。
 	DiskBackupQuota *int64 `json:"DiskBackupQuota,omitnil,omitempty" name:"DiskBackupQuota"`
 }
 
@@ -3197,7 +3212,7 @@ type DescribeDockerContainersRequestParams struct {
 	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
+	// 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。参数不支持同时指定 ContainerIds 和 Filters。
 	ContainerIds []*string `json:"ContainerIds,omitnil,omitempty" name:"ContainerIds"`
 
 	// 返回数量，默认为 20，最大值为 100。
@@ -3223,7 +3238,7 @@ type DescribeDockerContainersRequest struct {
 	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。
+	// 容器ID列表。可通过[DescribeDockerContainers](https://cloud.tencent.com/document/product/1207/95473)接口返回值中的ContainerId获取。参数不支持同时指定 ContainerIds 和 Filters。
 	ContainerIds []*string `json:"ContainerIds,omitnil,omitempty" name:"ContainerIds"`
 
 	// 返回数量，默认为 20，最大值为 100。
@@ -3807,7 +3822,6 @@ type DescribeGeneralResourceQuotasRequestParams struct {
 	// - BLUEPRINT 自定义镜像
 	// - FREE_BLUEPRINT 免费自定义镜像
 	// - DATA_DISK 数据盘
-	// - FIREWALL_RULE 防火墙规则
 	ResourceNames []*string `json:"ResourceNames,omitnil,omitempty" name:"ResourceNames"`
 }
 
@@ -3828,7 +3842,6 @@ type DescribeGeneralResourceQuotasRequest struct {
 	// - BLUEPRINT 自定义镜像
 	// - FREE_BLUEPRINT 免费自定义镜像
 	// - DATA_DISK 数据盘
-	// - FIREWALL_RULE 防火墙规则
 	ResourceNames []*string `json:"ResourceNames,omitnil,omitempty" name:"ResourceNames"`
 }
 
@@ -4520,7 +4533,7 @@ type DescribeModifyInstanceBundlesRequestParams struct {
 	// 类型：String
 	// 必选：否
 	// <li>bundle-type</li>按照 【套餐类型进行过滤】。
-	// 取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);
+	// 取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);STARTER_BUNDLE(入门型套餐);ECONOMY_BUNDLE(经济型套餐);RAZOR_SPEED_BUNDLE(锐驰型套餐)
 	// 类型：String
 	// 必选：否
 	// <li>bundle-state</li>按照【套餐状态】进行过滤。
@@ -4553,7 +4566,7 @@ type DescribeModifyInstanceBundlesRequest struct {
 	// 类型：String
 	// 必选：否
 	// <li>bundle-type</li>按照 【套餐类型进行过滤】。
-	// 取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);
+	// 取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);STARTER_BUNDLE(入门型套餐);ECONOMY_BUNDLE(经济型套餐);RAZOR_SPEED_BUNDLE(锐驰型套餐)
 	// 类型：String
 	// 必选：否
 	// <li>bundle-state</li>按照【套餐状态】进行过滤。
@@ -4694,7 +4707,7 @@ type DescribeResetInstanceBlueprintsRequestParams struct {
 	// 必选：否
 	// 可通过 <a href="https://cloud.tencent.com/document/product/1207/47689">DescribeBlueprints</a> 接口返回值中的 BlueprintId 获取。
 	// <li>blueprint-type</li>按照【镜像类型】进行过滤。
-	// 取值： APP_OS（应用镜像 ）；PURE_OS（ 系统镜像）；PRIVATE（自定义镜像）。
+	// 取值： APP_OS（应用镜像 ）；PURE_OS（ 系统镜像）；PRIVATE（自定义镜像）;DOCKER（Docker容器镜像）；SHARED（共享镜像）。
 	// 类型：String
 	// 必选：否
 	// <li>platform-type</li>按照【镜像平台类型】进行过滤。
@@ -4710,7 +4723,7 @@ type DescribeResetInstanceBlueprintsRequestParams struct {
 	// 必选：否
 	// 可通过 <a href="https://cloud.tencent.com/document/product/1207/47689">DescribeBlueprints</a> 接口返回值中的 BlueprintState 获取。
 	// 
-	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BlueprintIds 和 Filters 。
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -4732,7 +4745,7 @@ type DescribeResetInstanceBlueprintsRequest struct {
 	// 必选：否
 	// 可通过 <a href="https://cloud.tencent.com/document/product/1207/47689">DescribeBlueprints</a> 接口返回值中的 BlueprintId 获取。
 	// <li>blueprint-type</li>按照【镜像类型】进行过滤。
-	// 取值： APP_OS（应用镜像 ）；PURE_OS（ 系统镜像）；PRIVATE（自定义镜像）。
+	// 取值： APP_OS（应用镜像 ）；PURE_OS（ 系统镜像）；PRIVATE（自定义镜像）;DOCKER（Docker容器镜像）；SHARED（共享镜像）。
 	// 类型：String
 	// 必选：否
 	// <li>platform-type</li>按照【镜像平台类型】进行过滤。
@@ -4748,7 +4761,7 @@ type DescribeResetInstanceBlueprintsRequest struct {
 	// 必选：否
 	// 可通过 <a href="https://cloud.tencent.com/document/product/1207/47689">DescribeBlueprints</a> 接口返回值中的 BlueprintState 获取。
 	// 
-	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BlueprintIds 和 Filters 。
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -5608,7 +5621,7 @@ type DockerContainer struct {
 	// 容器状态描述
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 容器状态，和docker的容器状态保持一致，当前取值有：created, restarting, running, removing, paused, exited, or dead
+	// 容器状态，和docker的容器状态保持一致，当前取值有：created（已创建）、restarting（重启中）、running（运行中）、removing（迁移中）、paused（暂停）、exited（停止）和dead（死亡）
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
 	// 容器端口主机端口映射列表
@@ -5640,7 +5653,11 @@ type DockerContainerConfiguration struct {
 	// 运行的命令
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
-	// 容器重启策略
+	// 容器重启策略。
+	// - no -默认策略，在容器退出时不重启容器
+	// - on-failure -在容器非正常退出时（退出状态非0），才会重启容器
+	// - on-failure:3 -在容器非正常退出时重启容器，最多重启3次
+	// - always -在容器退出时总是重启容器
 	RestartPolicy *string `json:"RestartPolicy,omitnil,omitempty" name:"RestartPolicy"`
 }
 
@@ -5675,7 +5692,7 @@ type Filter struct {
 }
 
 type FirewallRule struct {
-	// 协议，取值：TCP，UDP，ICMP，ALL。
+	// 协议，取值：TCP，UDP，ICMP，ALL，ICMPv6。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。
@@ -5951,7 +5968,8 @@ type InquirePriceCreateDisksRequestParams struct {
 	// 云硬盘个数, 默认值: 1。
 	DiskCount *int64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
 
-	// 指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置1个云硬盘备份点配额。
+	// 指定云硬盘备份点配额，不传时默认为不带备份点配额。
+	// 取值范围：0 到 500
 	DiskBackupQuota *int64 `json:"DiskBackupQuota,omitnil,omitempty" name:"DiskBackupQuota"`
 }
 
@@ -5970,7 +5988,8 @@ type InquirePriceCreateDisksRequest struct {
 	// 云硬盘个数, 默认值: 1。
 	DiskCount *int64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
 
-	// 指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置1个云硬盘备份点配额。
+	// 指定云硬盘备份点配额，不传时默认为不带备份点配额。
+	// 取值范围：0 到 500
 	DiskBackupQuota *int64 `json:"DiskBackupQuota,omitnil,omitempty" name:"DiskBackupQuota"`
 }
 
@@ -6740,7 +6759,7 @@ type ModifyBundle struct {
 
 // Predefined struct for user
 type ModifyDiskBackupsAttributeRequestParams struct {
-	// 云硬盘备份点ID，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379) 接口返回值中的 DiskBackupId 获取。
+	// 云硬盘备份点ID，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379) 接口返回值中的 DiskBackupId 获取。列表长度最大值为100。
 	DiskBackupIds []*string `json:"DiskBackupIds,omitnil,omitempty" name:"DiskBackupIds"`
 
 	// 云硬盘备份点名称，最大长度 90 。
@@ -6750,7 +6769,7 @@ type ModifyDiskBackupsAttributeRequestParams struct {
 type ModifyDiskBackupsAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘备份点ID，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379) 接口返回值中的 DiskBackupId 获取。
+	// 云硬盘备份点ID，可通过 [DescribeDiskBackups](https://cloud.tencent.com/document/api/1207/84379) 接口返回值中的 DiskBackupId 获取。列表长度最大值为100。
 	DiskBackupIds []*string `json:"DiskBackupIds,omitnil,omitempty" name:"DiskBackupIds"`
 
 	// 云硬盘备份点名称，最大长度 90 。
@@ -8316,6 +8335,7 @@ type ResetInstanceRequestParams struct {
 	BlueprintId *string `json:"BlueprintId,omitnil,omitempty" name:"BlueprintId"`
 
 	// 要创建的容器配置列表。
+	// 注意：仅重装的镜像类型为Docker时支持传入该参数。
 	Containers []*DockerContainerConfiguration `json:"Containers,omitnil,omitempty" name:"Containers"`
 
 	// 实例登录信息配置。默认缺失情况下代表用户选择实例创建后设置登录密码或绑定密钥。
@@ -8332,6 +8352,7 @@ type ResetInstanceRequest struct {
 	BlueprintId *string `json:"BlueprintId,omitnil,omitempty" name:"BlueprintId"`
 
 	// 要创建的容器配置列表。
+	// 注意：仅重装的镜像类型为Docker时支持传入该参数。
 	Containers []*DockerContainerConfiguration `json:"Containers,omitnil,omitempty" name:"Containers"`
 
 	// 实例登录信息配置。默认缺失情况下代表用户选择实例创建后设置登录密码或绑定密钥。

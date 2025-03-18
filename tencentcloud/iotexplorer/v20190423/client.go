@@ -492,6 +492,59 @@ func (c *Client) CancelAssignTWeCallLicenseWithContext(ctx context.Context, requ
     return
 }
 
+func NewChangeP2PRouteRequest() (request *ChangeP2PRouteRequest) {
+    request = &ChangeP2PRouteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ChangeP2PRoute")
+    
+    
+    return
+}
+
+func NewChangeP2PRouteResponse() (response *ChangeP2PRouteResponse) {
+    response = &ChangeP2PRouteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ChangeP2PRoute
+// p2p路线切换
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ChangeP2PRoute(request *ChangeP2PRouteRequest) (response *ChangeP2PRouteResponse, err error) {
+    return c.ChangeP2PRouteWithContext(context.Background(), request)
+}
+
+// ChangeP2PRoute
+// p2p路线切换
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ChangeP2PRouteWithContext(ctx context.Context, request *ChangeP2PRouteRequest) (response *ChangeP2PRouteResponse, err error) {
+    if request == nil {
+        request = NewChangeP2PRouteRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChangeP2PRoute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChangeP2PRouteResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckFirmwareUpdateRequest() (request *CheckFirmwareUpdateRequest) {
     request = &CheckFirmwareUpdateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5074,6 +5127,59 @@ func (c *Client) DescribeModelDefinitionWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeP2PRouteRequest() (request *DescribeP2PRouteRequest) {
+    request = &DescribeP2PRouteRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeP2PRoute")
+    
+    
+    return
+}
+
+func NewDescribeP2PRouteResponse() (response *DescribeP2PRouteResponse) {
+    response = &DescribeP2PRouteResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeP2PRoute
+// 当前p2p线路
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeP2PRoute(request *DescribeP2PRouteRequest) (response *DescribeP2PRouteResponse, err error) {
+    return c.DescribeP2PRouteWithContext(context.Background(), request)
+}
+
+// DescribeP2PRoute
+// 当前p2p线路
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeP2PRouteWithContext(ctx context.Context, request *DescribeP2PRouteRequest) (response *DescribeP2PRouteResponse, err error) {
+    if request == nil {
+        request = NewDescribeP2PRouteRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeP2PRoute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeP2PRouteResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePackageConsumeTaskRequest() (request *DescribePackageConsumeTaskRequest) {
     request = &DescribePackageConsumeTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7362,6 +7468,87 @@ func (c *Client) ListTopicPolicyWithContext(ctx context.Context, request *ListTo
     request.SetContext(ctx)
     
     response = NewListTopicPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyApplicationRequest() (request *ModifyApplicationRequest) {
+    request = &ModifyApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyApplication")
+    
+    
+    return
+}
+
+func NewModifyApplicationResponse() (response *ModifyApplicationResponse) {
+    response = &ModifyApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyApplication
+// 更新应用信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_APPDESCRIPTIONTOOLONG = "InvalidParameterValue.AppDescriptionTooLong"
+//  INVALIDPARAMETERVALUE_APPEXISTS = "InvalidParameterValue.AppExists"
+//  INVALIDPARAMETERVALUE_APPNAMETOOLONG = "InvalidParameterValue.AppNameTooLong"
+//  INVALIDPARAMETERVALUE_APPNOPERMISSION = "InvalidParameterValue.AppNoPermission"
+//  INVALIDPARAMETERVALUE_APPNOTEXISTS = "InvalidParameterValue.AppNotExists"
+//  INVALIDPARAMETERVALUE_PUSHENVIRONMENTINVALID = "InvalidParameterValue.PushEnvironmentInvalid"
+//  INVALIDPARAMETERVALUE_TPNSANDROIDVALIDATIONFAILED = "InvalidParameterValue.TPNSAndroidValidationFailed"
+//  INVALIDPARAMETERVALUE_TPNSIOSVALIDATIONFAILED = "InvalidParameterValue.TPNSiOSValidationFailed"
+//  RESOURCENOTFOUND_APPNOTEXISTS = "ResourceNotFound.AppNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_APPNOPERMISSION = "UnauthorizedOperation.AppNoPermission"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) ModifyApplication(request *ModifyApplicationRequest) (response *ModifyApplicationResponse, err error) {
+    return c.ModifyApplicationWithContext(context.Background(), request)
+}
+
+// ModifyApplication
+// 更新应用信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_APPDESCRIPTIONTOOLONG = "InvalidParameterValue.AppDescriptionTooLong"
+//  INVALIDPARAMETERVALUE_APPEXISTS = "InvalidParameterValue.AppExists"
+//  INVALIDPARAMETERVALUE_APPNAMETOOLONG = "InvalidParameterValue.AppNameTooLong"
+//  INVALIDPARAMETERVALUE_APPNOPERMISSION = "InvalidParameterValue.AppNoPermission"
+//  INVALIDPARAMETERVALUE_APPNOTEXISTS = "InvalidParameterValue.AppNotExists"
+//  INVALIDPARAMETERVALUE_PUSHENVIRONMENTINVALID = "InvalidParameterValue.PushEnvironmentInvalid"
+//  INVALIDPARAMETERVALUE_TPNSANDROIDVALIDATIONFAILED = "InvalidParameterValue.TPNSAndroidValidationFailed"
+//  INVALIDPARAMETERVALUE_TPNSIOSVALIDATIONFAILED = "InvalidParameterValue.TPNSiOSValidationFailed"
+//  RESOURCENOTFOUND_APPNOTEXISTS = "ResourceNotFound.AppNotExists"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_APPNOPERMISSION = "UnauthorizedOperation.AppNoPermission"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+func (c *Client) ModifyApplicationWithContext(ctx context.Context, request *ModifyApplicationRequest) (response *ModifyApplicationResponse, err error) {
+    if request == nil {
+        request = NewModifyApplicationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApplication require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyApplicationResponse()
     err = c.Send(request, response)
     return
 }

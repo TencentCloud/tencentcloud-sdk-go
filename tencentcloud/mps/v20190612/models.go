@@ -10423,6 +10423,9 @@ type DrmInfo struct {
 	// SimpleAes 加密信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SimpleAesDrm *SimpleAesDrm `json:"SimpleAesDrm,omitnil,omitempty" name:"SimpleAesDrm"`
+
+	// FairPlay, WideVine， PlayReady 加密信息。
+	SpekeDrm *SpekeDrm `json:"SpekeDrm,omitnil,omitempty" name:"SpekeDrm"`
 }
 
 type EditMediaFileInfo struct {
@@ -12826,6 +12829,21 @@ type MediaTranscodeItem struct {
 
 	// 视频流信息。
 	VideoStreamSet []*MediaVideoStreamItem `json:"VideoStreamSet,omitnil,omitempty" name:"VideoStreamSet"`
+
+	// 视频转码使用增强项说明，增强项解释
+	// <li>hdr：HDR配置</li>
+	// <li>wd_fps：插帧帧率配置</li>
+	// <li>video_super_resolution：	超分配置</li>
+	// <li>repair：综合增强配置</li>
+	// <li>denoise：视频降噪配置</li>
+	// <li>color_enhance：色彩增强配置</li>
+	// <li>scratch：去划痕配置</li>
+	// <li>artifact：去伪影（毛刺）配置</li>
+	// <li>sharp：细节增强配置</li>
+	// <li>low_light：低光照增强配置</li>
+	// <li>face_enhance：人脸增强配置</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CallBackExtInfo *string `json:"CallBackExtInfo,omitnil,omitempty" name:"CallBackExtInfo"`
 }
 
 type MediaVideoStreamItem struct {
@@ -17195,6 +17213,31 @@ type SnapshotByTimeOffsetTemplate struct {
 	// <li>black：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
 	// 默认值：black 。
 	FillType *string `json:"FillType,omitnil,omitempty" name:"FillType"`
+}
+
+type SpekeDrm struct {
+	// 资源标记，
+	// 支持1-128个字符的数字、字母、下划线(_)、中划线(-)。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// drm厂商访问地址；
+	// 
+	// 注: 不同DRM厂商对子流的数量限制不一样，如 pallycon 限制不能超过5条子流，drmtoday厂商最多仅支持9条子流加密
+	KeyServerUrl *string `json:"KeyServerUrl,omitnil,omitempty" name:"KeyServerUrl"`
+
+	// 加密初始化向量(32字节字符串)。
+	Vector *string `json:"Vector,omitnil,omitempty" name:"Vector"`
+
+	// 加密方式，FairPlay 默认cbcs，PlayReady，Widevine 默认cenc
+	// 
+	// cbcs：PlayReady，Widevine，FairPlay 支持；
+	// cenc：PlayReady，Widevine支持；
+	EncryptionMethod *string `json:"EncryptionMethod,omitnil,omitempty" name:"EncryptionMethod"`
+
+	// 子流加密规则，默认 preset0
+	// preset0：全部子流使用同一个key加密；
+	// preset1：每个子流使用不同的key加密；
+	EncryptionPreset *string `json:"EncryptionPreset,omitnil,omitempty" name:"EncryptionPreset"`
 }
 
 // Predefined struct for user

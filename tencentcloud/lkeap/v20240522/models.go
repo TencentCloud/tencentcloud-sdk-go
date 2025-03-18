@@ -402,7 +402,7 @@ type CreateReconstructDocumentFlowConfig struct {
 	// Markdown文件中表格返回的形式
 	// 0，表格以MD形式返回
 	// 1，表格以HTML形式返回
-	// 默认为1
+	// 默认为0
 	TableResultType *string `json:"TableResultType,omitnil,omitempty" name:"TableResultType"`
 
 	// 智能文档解析返回结果的格式
@@ -411,8 +411,7 @@ type CreateReconstructDocumentFlowConfig struct {
 	// 2：只返回每一页的MD，
 	// 3：返回全文MD + 每一页的OCR原始Json；
 	// 4：返回全文MD + 每一页的MD，
-	// 默认值为3（返回全文MD + 每一页的OCR原始Json）
-	// 
+	// 默认值为0
 	ResultType *string `json:"ResultType,omitnil,omitempty" name:"ResultType"`
 }
 

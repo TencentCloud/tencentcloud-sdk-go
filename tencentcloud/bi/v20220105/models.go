@@ -3540,6 +3540,10 @@ type UserIdAndUserName struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GlobalUserName *string `json:"GlobalUserName,omitnil,omitempty" name:"GlobalUserName"`
 
+	// 全局角色编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GlobalUserCode *string `json:"GlobalUserCode,omitnil,omitempty" name:"GlobalUserCode"`
+
 	// 手机号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
@@ -3563,6 +3567,14 @@ type UserIdAndUserName struct {
 	// 1
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InValidateAppRange *bool `json:"InValidateAppRange,omitnil,omitempty" name:"InValidateAppRange"`
+
+	// -1 免激活  0 未激活  1 已激活 空代表待绑定
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmailActivationStatus *int64 `json:"EmailActivationStatus,omitnil,omitempty" name:"EmailActivationStatus"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type UserInfo struct {
@@ -3717,6 +3729,10 @@ type UserRoleListDataUserRoleInfo struct {
 	// 用户openid
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppOpenUserId *string `json:"AppOpenUserId,omitnil,omitempty" name:"AppOpenUserId"`
+
+	// 邮箱激活状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmailActivationStatus *int64 `json:"EmailActivationStatus,omitnil,omitempty" name:"EmailActivationStatus"`
 }
 
 type WidgetListVO struct {

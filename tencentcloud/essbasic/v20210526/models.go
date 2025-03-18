@@ -1039,6 +1039,9 @@ type ChannelCreateBatchQuickSignUrlRequestParams struct {
 	// 
 	// 注: `若参与方为企业员工时，暂不支持对参与方信息进行缓存`
 	CacheApproverInfo *bool `json:"CacheApproverInfo,omitnil,omitempty" name:"CacheApproverInfo"`
+
+	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`合同组暂不支持批量拒签功能。`
+	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 }
 
 type ChannelCreateBatchQuickSignUrlRequest struct {
@@ -1111,6 +1114,9 @@ type ChannelCreateBatchQuickSignUrlRequest struct {
 	// 
 	// 注: `若参与方为企业员工时，暂不支持对参与方信息进行缓存`
 	CacheApproverInfo *bool `json:"CacheApproverInfo,omitnil,omitempty" name:"CacheApproverInfo"`
+
+	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`合同组暂不支持批量拒签功能。`
+	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 }
 
 func (r *ChannelCreateBatchQuickSignUrlRequest) ToJsonString() string {
@@ -1136,6 +1142,7 @@ func (r *ChannelCreateBatchQuickSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "FlowBatchUrlInfo")
 	delete(f, "Intention")
 	delete(f, "CacheApproverInfo")
+	delete(f, "CanBatchReject")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateBatchQuickSignUrlRequest has unknown keys!", "")
 	}
@@ -1269,6 +1276,9 @@ type ChannelCreateBatchSignUrlRequestParams struct {
 	// 
 	// 参考 [公众号 H5 跳转电子签小程序](https://qian.tencent.com/developers/company/openwxminiprogram/#23-%E5%85%AC%E4%BC%97%E5%8F%B7-h5-%E4%B8%AD%E8%B7%B3%E8%BD%AC)。
 	UrlUseEnv *string `json:"UrlUseEnv,omitnil,omitempty" name:"UrlUseEnv"`
+
+	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`合同组暂不支持批量拒签功能。`
+	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 }
 
 type ChannelCreateBatchSignUrlRequest struct {
@@ -1374,6 +1384,9 @@ type ChannelCreateBatchSignUrlRequest struct {
 	// 
 	// 参考 [公众号 H5 跳转电子签小程序](https://qian.tencent.com/developers/company/openwxminiprogram/#23-%E5%85%AC%E4%BC%97%E5%8F%B7-h5-%E4%B8%AD%E8%B7%B3%E8%BD%AC)。
 	UrlUseEnv *string `json:"UrlUseEnv,omitnil,omitempty" name:"UrlUseEnv"`
+
+	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`合同组暂不支持批量拒签功能。`
+	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
 }
 
 func (r *ChannelCreateBatchSignUrlRequest) ToJsonString() string {
@@ -1403,6 +1416,7 @@ func (r *ChannelCreateBatchSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "OrganizationOpenId")
 	delete(f, "AutoJumpBack")
 	delete(f, "UrlUseEnv")
+	delete(f, "CanBatchReject")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateBatchSignUrlRequest has unknown keys!", "")
 	}
@@ -3419,9 +3433,12 @@ type ChannelCreatePrepareFlowRequestParams struct {
 	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
+	// <font color="red">此参数已经废弃，请使用 CreateFlowOption 里面的 SignComponentConfig</font>
 	// 签署控件的配置信息，用在嵌入式发起的页面配置，包括
 	// 
 	// - 签署控件 是否默认展示日期.
+	//
+	// Deprecated: SignComponentConfig is deprecated.
 	SignComponentConfig *SignComponentConfig `json:"SignComponentConfig,omitnil,omitempty" name:"SignComponentConfig"`
 }
 
@@ -3474,6 +3491,7 @@ type ChannelCreatePrepareFlowRequest struct {
 	// 操作人（用户）信息，不用传
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
 
+	// <font color="red">此参数已经废弃，请使用 CreateFlowOption 里面的 SignComponentConfig</font>
 	// 签署控件的配置信息，用在嵌入式发起的页面配置，包括
 	// 
 	// - 签署控件 是否默认展示日期.
@@ -8269,6 +8287,10 @@ type CreateFlowOption struct {
 	// **true**：跳过
 	// **false**：（默认）不跳过，需要传ResourceId
 	SkipUploadFile *bool `json:"SkipUploadFile,omitnil,omitempty" name:"SkipUploadFile"`
+
+	// 签署控件的配置信息，用在嵌入式发起的页面配置，包括 
+	//  - 签署控件 是否默认展示日期.
+	SignComponentConfig *SignComponentConfig `json:"SignComponentConfig,omitnil,omitempty" name:"SignComponentConfig"`
 }
 
 // Predefined struct for user

@@ -39,7 +39,6 @@ type ActionFieldConfigDetail struct {
 	Field *string `json:"Field,omitnil,omitempty" name:"Field"`
 
 	// 默认值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
 
 	// 支持配置项如下,可根据需要选择配置项，不需要配置是设置空{}：
@@ -147,49 +146,38 @@ type ActionLibraryListResult struct {
 	ActionContent *string `json:"ActionContent,omitnil,omitempty" name:"ActionContent"`
 
 	// 二级分类
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 动作描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionDetail *string `json:"ActionDetail,omitnil,omitempty" name:"ActionDetail"`
 
 	// 是否允许当前账号使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAllowed *bool `json:"IsAllowed,omitnil,omitempty" name:"IsAllowed"`
 
 	// 最佳实践案例的链接地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionBestCase *string `json:"ActionBestCase,omitnil,omitempty" name:"ActionBestCase"`
 
 	// 对象类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectType *string `json:"ObjectType,omitnil,omitempty" name:"ObjectType"`
 
 	// 监控指标ID列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricIdList []*uint64 `json:"MetricIdList,omitnil,omitempty" name:"MetricIdList"`
 
 	// 是否是新动作
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsNewAction *bool `json:"IsNewAction,omitnil,omitempty" name:"IsNewAction"`
 
 	// 对象类型ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectTypeId *int64 `json:"ObjectTypeId,omitnil,omitempty" name:"ObjectTypeId"`
 }
 
 type ApmServiceInfo struct {
 	// 业务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 应用名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceNameList []*string `json:"ServiceNameList,omitnil,omitempty" name:"ServiceNameList"`
 
 	// 地域ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 }
 
@@ -583,7 +571,6 @@ type DescribeActionFieldConfigListResponseParams struct {
 	Results []*ActionFieldConfigResult `json:"Results,omitnil,omitempty" name:"Results"`
 
 	// 资源下线信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceOffline []*ResourceOffline `json:"ResourceOffline,omitnil,omitempty" name:"ResourceOffline"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1565,19 +1552,15 @@ type ObjectType struct {
 	ObjectTypeParams *ObjectTypeConfig `json:"ObjectTypeParams,omitnil,omitempty" name:"ObjectTypeParams"`
 
 	// tke接口json解析规则，null不需要解析
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectTypeJsonParse *ObjectTypeJsonParse `json:"ObjectTypeJsonParse,omitnil,omitempty" name:"ObjectTypeJsonParse"`
 
 	// 是否包含新动作
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectHasNewAction *bool `json:"ObjectHasNewAction,omitnil,omitempty" name:"ObjectHasNewAction"`
 
 	// 对应在平台架构图中的资源类型名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectPlatformName *string `json:"ObjectPlatformName,omitnil,omitempty" name:"ObjectPlatformName"`
 
 	// 1：平台支持的对象 2：应用支持的部分对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectSupportType *int64 `json:"ObjectSupportType,omitnil,omitempty" name:"ObjectSupportType"`
 
 	// 1.接入层 2.逻辑层 3. 数据层
@@ -1603,11 +1586,9 @@ type ObjectTypeConfigFields struct {
 	Header *string `json:"Header,omitnil,omitempty" name:"Header"`
 
 	// 字段值是否需要转译，当不需要转译时，此字段返回null
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Transfer *string `json:"Transfer,omitnil,omitempty" name:"Transfer"`
 
 	// tke的pod字段信息解析
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JsonParse *string `json:"JsonParse,omitnil,omitempty" name:"JsonParse"`
 
 	// 字段类型 0:str 1:list
@@ -1616,19 +1597,15 @@ type ObjectTypeConfigFields struct {
 
 type ObjectTypeJsonParse struct {
 	// 命名空间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NameSpace *string `json:"NameSpace,omitnil,omitempty" name:"NameSpace"`
 
 	// 工作负载名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkloadName *string `json:"WorkloadName,omitnil,omitempty" name:"WorkloadName"`
 
 	// 节点IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LanIP *string `json:"LanIP,omitnil,omitempty" name:"LanIP"`
 
 	// 节点ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -1637,43 +1614,34 @@ type PolicyTriggerLog struct {
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 类型，0--触发，1--恢复
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerType *int64 `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
 
 	// 内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 触发时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatTime *string `json:"CreatTime,omitnil,omitempty" name:"CreatTime"`
 }
 
 type ResourceOffline struct {
 	// 资源ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *int64 `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 资源下线时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceDeleteTime *string `json:"ResourceDeleteTime,omitnil,omitempty" name:"ResourceDeleteTime"`
 
 	// 资源下线提示
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceDeleteMessage *string `json:"ResourceDeleteMessage,omitnil,omitempty" name:"ResourceDeleteMessage"`
 }
 
 type TagWithCreate struct {
 	// 标签键
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 标签值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
@@ -1696,11 +1664,9 @@ type Task struct {
 	TaskDescription *string `json:"TaskDescription,omitnil,omitempty" name:"TaskDescription"`
 
 	// 自定义标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTag *string `json:"TaskTag,omitnil,omitempty" name:"TaskTag"`
 
 	// 任务状态，1001--未开始  1002--进行中（执行）1003--进行中（暂停）1004--执行结束
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskStatus *int64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
 	// 任务结束状态，表明任务以何种状态结束: 0 -- 尚未结束，1 -- 成功，2-- 失败，3--终止
@@ -1748,7 +1714,6 @@ type Task struct {
 	TaskRegionId *int64 `json:"TaskRegionId,omitnil,omitempty" name:"TaskRegionId"`
 
 	// 监控指标列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskMonitors []*TaskMonitor `json:"TaskMonitors,omitnil,omitempty" name:"TaskMonitors"`
 
 	// 保护策略
@@ -1756,7 +1721,6 @@ type Task struct {
 	TaskPolicy *DescribePolicy `json:"TaskPolicy,omitnil,omitempty" name:"TaskPolicy"`
 
 	// 标签列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagWithDescribe `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 关联的演练计划ID
@@ -1772,15 +1736,12 @@ type Task struct {
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 关联的应用名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationName *string `json:"ApplicationName,omitnil,omitempty" name:"ApplicationName"`
 
 	// 关联的告警指标
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmPolicy []*string `json:"AlarmPolicy,omitnil,omitempty" name:"AlarmPolicy"`
 
 	// 关联的APM服务
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApmServiceList []*ApmServiceInfo `json:"ApmServiceList,omitnil,omitempty" name:"ApmServiceList"`
 
 	// 关联的隐患验证项ID
@@ -1788,7 +1749,6 @@ type Task struct {
 	VerifyId *uint64 `json:"VerifyId,omitnil,omitempty" name:"VerifyId"`
 
 	// 护栏处理方式，1--顺序回滚，2--演练暂停
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyDealType *int64 `json:"PolicyDealType,omitnil,omitempty" name:"PolicyDealType"`
 
 	// 计划开始时间
@@ -1808,7 +1768,6 @@ type Task struct {
 	TaskIssue *string `json:"TaskIssue,omitnil,omitempty" name:"TaskIssue"`
 
 	// region信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskRegionName *string `json:"TaskRegionName,omitnil,omitempty" name:"TaskRegionName"`
 
 	// 架构ID
@@ -1846,7 +1805,6 @@ type TaskGroup struct {
 	TaskGroupTitle *string `json:"TaskGroupTitle,omitnil,omitempty" name:"TaskGroupTitle"`
 
 	// 分组描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupDescription *string `json:"TaskGroupDescription,omitnil,omitempty" name:"TaskGroupDescription"`
 
 	// 任务分组顺序
@@ -1874,11 +1832,9 @@ type TaskGroup struct {
 	TaskGroupDiscardInstanceList []*string `json:"TaskGroupDiscardInstanceList,omitnil,omitempty" name:"TaskGroupDiscardInstanceList"`
 
 	// 参演实例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupSelectedInstanceList []*string `json:"TaskGroupSelectedInstanceList,omitnil,omitempty" name:"TaskGroupSelectedInstanceList"`
 
 	// 机器选取规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupInstancesExecuteRule []*TaskGroupInstancesExecuteRules `json:"TaskGroupInstancesExecuteRule,omitnil,omitempty" name:"TaskGroupInstancesExecuteRule"`
 }
 
@@ -1896,11 +1852,9 @@ type TaskGroupAction struct {
 	TaskGroupActionOrder *int64 `json:"TaskGroupActionOrder,omitnil,omitempty" name:"TaskGroupActionOrder"`
 
 	// 分组动作通用配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupActionGeneralConfiguration *string `json:"TaskGroupActionGeneralConfiguration,omitnil,omitempty" name:"TaskGroupActionGeneralConfiguration"`
 
 	// 分组动作自定义配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupActionCustomConfiguration *string `json:"TaskGroupActionCustomConfiguration,omitnil,omitempty" name:"TaskGroupActionCustomConfiguration"`
 
 	// 分组动作状态
@@ -1919,39 +1873,30 @@ type TaskGroupAction struct {
 	TaskGroupActionStatusType *int64 `json:"TaskGroupActionStatusType,omitnil,omitempty" name:"TaskGroupActionStatusType"`
 
 	// RandomId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupActionRandomId *int64 `json:"TaskGroupActionRandomId,omitnil,omitempty" name:"TaskGroupActionRandomId"`
 
 	// RecoverId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupActionRecoverId *int64 `json:"TaskGroupActionRecoverId,omitnil,omitempty" name:"TaskGroupActionRecoverId"`
 
 	// ExecuteId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupActionExecuteId *int64 `json:"TaskGroupActionExecuteId,omitnil,omitempty" name:"TaskGroupActionExecuteId"`
 
 	// 调用api类型，0:tat, 1:云api
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionApiType *int64 `json:"ActionApiType,omitnil,omitempty" name:"ActionApiType"`
 
 	// 1:故障，2:恢复
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionAttribute *int64 `json:"ActionAttribute,omitnil,omitempty" name:"ActionAttribute"`
 
 	// 动作类型：平台、自定义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
 	// 是否可重试
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsExecuteRedo *bool `json:"IsExecuteRedo,omitnil,omitempty" name:"IsExecuteRedo"`
 
 	// 动作风险级别
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionRisk *string `json:"ActionRisk,omitnil,omitempty" name:"ActionRisk"`
 
 	// 动作运行时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupActionExecuteTime *int64 `json:"TaskGroupActionExecuteTime,omitnil,omitempty" name:"TaskGroupActionExecuteTime"`
 
 	// 动作开始执行时间
@@ -2021,7 +1966,6 @@ type TaskGroupInstance struct {
 	TaskGroupInstanceId *int64 `json:"TaskGroupInstanceId,omitnil,omitempty" name:"TaskGroupInstanceId"`
 
 	// 实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupInstanceObjectId *string `json:"TaskGroupInstanceObjectId,omitnil,omitempty" name:"TaskGroupInstanceObjectId"`
 
 	// 实例动作执行状态
@@ -2037,11 +1981,9 @@ type TaskGroupInstance struct {
 	TaskGroupInstanceStatusType *int64 `json:"TaskGroupInstanceStatusType,omitnil,omitempty" name:"TaskGroupInstanceStatusType"`
 
 	// 执行开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupInstanceStartTime *string `json:"TaskGroupInstanceStartTime,omitnil,omitempty" name:"TaskGroupInstanceStartTime"`
 
 	// 执行结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupInstanceEndTime *string `json:"TaskGroupInstanceEndTime,omitnil,omitempty" name:"TaskGroupInstanceEndTime"`
 
 	// 实例动作执行日志
@@ -2051,25 +1993,20 @@ type TaskGroupInstance struct {
 	TaskGroupInstanceExecuteLog *string `json:"TaskGroupInstanceExecuteLog,omitnil,omitempty" name:"TaskGroupInstanceExecuteLog"`
 
 	// 实例是否可重试
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupInstanceIsRedo *bool `json:"TaskGroupInstanceIsRedo,omitnil,omitempty" name:"TaskGroupInstanceIsRedo"`
 
 	// 动作实例执行时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupInstanceExecuteTime *int64 `json:"TaskGroupInstanceExecuteTime,omitnil,omitempty" name:"TaskGroupInstanceExecuteTime"`
 }
 
 type TaskGroupInstancesExecuteRules struct {
 	// 实例选取模式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupInstancesExecuteMode *int64 `json:"TaskGroupInstancesExecuteMode,omitnil,omitempty" name:"TaskGroupInstancesExecuteMode"`
 
 	// 按比例选取模式下选取比例
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupInstancesExecutePercent *int64 `json:"TaskGroupInstancesExecutePercent,omitnil,omitempty" name:"TaskGroupInstancesExecutePercent"`
 
 	// 按数量选取模式下选取数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupInstancesExecuteNum *int64 `json:"TaskGroupInstancesExecuteNum,omitnil,omitempty" name:"TaskGroupInstancesExecuteNum"`
 }
 
@@ -2084,7 +2021,6 @@ type TaskListItem struct {
 	TaskDescription *string `json:"TaskDescription,omitnil,omitempty" name:"TaskDescription"`
 
 	// 任务标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTag *string `json:"TaskTag,omitnil,omitempty" name:"TaskTag"`
 
 	// 任务状态(1001 -- 未开始   1002 -- 进行中  1003 -- 暂停中   1004 -- 任务结束)
@@ -2097,31 +2033,24 @@ type TaskListItem struct {
 	TaskUpdateTime *string `json:"TaskUpdateTime,omitnil,omitempty" name:"TaskUpdateTime"`
 
 	// 0--未开始，1--进行中，2--已完成
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskPreCheckStatus *int64 `json:"TaskPreCheckStatus,omitnil,omitempty" name:"TaskPreCheckStatus"`
 
 	// 环境检查是否通过
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskPreCheckSuccess *bool `json:"TaskPreCheckSuccess,omitnil,omitempty" name:"TaskPreCheckSuccess"`
 
 	// 演练是否符合预期 1-符合预期 2-不符合预期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskExpect *int64 `json:"TaskExpect,omitnil,omitempty" name:"TaskExpect"`
 
 	// 关联应用ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 关联应用名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationName *string `json:"ApplicationName,omitnil,omitempty" name:"ApplicationName"`
 
 	// 验证项ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifyId *uint64 `json:"VerifyId,omitnil,omitempty" name:"VerifyId"`
 
 	// 状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskStatusType *uint64 `json:"TaskStatusType,omitnil,omitempty" name:"TaskStatusType"`
 
 	// 架构ID
@@ -2136,7 +2065,6 @@ type TaskMonitor struct {
 	TaskMonitorId *int64 `json:"TaskMonitorId,omitnil,omitempty" name:"TaskMonitorId"`
 
 	// 监控指标ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricId *uint64 `json:"MetricId,omitnil,omitempty" name:"MetricId"`
 
 	// 监控指标对象类型ID
@@ -2149,21 +2077,17 @@ type TaskMonitor struct {
 	InstancesIds []*string `json:"InstancesIds,omitnil,omitempty" name:"InstancesIds"`
 
 	// 中文指标
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricChineseName *string `json:"MetricChineseName,omitnil,omitempty" name:"MetricChineseName"`
 
 	// 单位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
 }
 
 type TaskOrg struct {
 	// 演练角色
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskRole *string `json:"TaskRole,omitnil,omitempty" name:"TaskRole"`
 
 	// 负责人
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskOperator *string `json:"TaskOperator,omitnil,omitempty" name:"TaskOperator"`
 }
 
@@ -2208,7 +2132,6 @@ type Template struct {
 	TemplateDescription *string `json:"TemplateDescription,omitnil,omitempty" name:"TemplateDescription"`
 
 	// 自定义标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateTag *string `json:"TemplateTag,omitnil,omitempty" name:"TemplateTag"`
 
 	// 使用状态。1 ---- 使用中，2 --- 停用
@@ -2243,23 +2166,18 @@ type Template struct {
 	TemplatePolicy *TemplatePolicy `json:"TemplatePolicy,omitnil,omitempty" name:"TemplatePolicy"`
 
 	// 标签列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagWithDescribe `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 经验来源 0-自建 1-专家推荐
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateSource *int64 `json:"TemplateSource,omitnil,omitempty" name:"TemplateSource"`
 
 	// apm应用信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApmServiceList []*ApmServiceInfo `json:"ApmServiceList,omitnil,omitempty" name:"ApmServiceList"`
 
 	// 告警指标
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmPolicy []*string `json:"AlarmPolicy,omitnil,omitempty" name:"AlarmPolicy"`
 
 	// 护栏处理方式，1--顺序回滚，2--演练暂停
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyDealType *int64 `json:"PolicyDealType,omitnil,omitempty" name:"PolicyDealType"`
 }
 
@@ -2274,7 +2192,6 @@ type TemplateGroup struct {
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 
 	// 分组描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 分组顺序
@@ -2304,11 +2221,9 @@ type TemplateGroupAction struct {
 	Order *int64 `json:"Order,omitnil,omitempty" name:"Order"`
 
 	// 分组动作通用配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GeneralConfiguration *string `json:"GeneralConfiguration,omitnil,omitempty" name:"GeneralConfiguration"`
 
 	// 分组动作自定义配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomConfiguration *string `json:"CustomConfiguration,omitnil,omitempty" name:"CustomConfiguration"`
 
 	// 动作分组创建时间
@@ -2321,31 +2236,24 @@ type TemplateGroupAction struct {
 	ActionTitle *string `json:"ActionTitle,omitnil,omitempty" name:"ActionTitle"`
 
 	// 自身随机id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RandomId *int64 `json:"RandomId,omitnil,omitempty" name:"RandomId"`
 
 	// 恢复动作id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecoverId *int64 `json:"RecoverId,omitnil,omitempty" name:"RecoverId"`
 
 	// 执行动作id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecuteId *int64 `json:"ExecuteId,omitnil,omitempty" name:"ExecuteId"`
 
 	// 调用api类型，0:tat, 1:云api
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionApiType *int64 `json:"ActionApiType,omitnil,omitempty" name:"ActionApiType"`
 
 	// 1:故障，2:恢复
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionAttribute *int64 `json:"ActionAttribute,omitnil,omitempty" name:"ActionAttribute"`
 
 	// 动作类型：平台和自定义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
 	// 动作风险等级，1:低风险 2:中风险 3:高风险
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionRisk *string `json:"ActionRisk,omitnil,omitempty" name:"ActionRisk"`
 
 	// 故障表现
@@ -2363,7 +2271,6 @@ type TemplateListItem struct {
 	TemplateDescription *string `json:"TemplateDescription,omitnil,omitempty" name:"TemplateDescription"`
 
 	// 经验库标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateTag *string `json:"TemplateTag,omitnil,omitempty" name:"TemplateTag"`
 
 	// 经验库状态。1 -- 使用中，2 -- 停用
@@ -2379,7 +2286,6 @@ type TemplateListItem struct {
 	TemplateUsedNum *int64 `json:"TemplateUsedNum,omitnil,omitempty" name:"TemplateUsedNum"`
 
 	// 经验库来源 0-自建经验 1-专家推荐
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateSource *int64 `json:"TemplateSource,omitnil,omitempty" name:"TemplateSource"`
 }
 
@@ -2388,7 +2294,6 @@ type TemplateMonitor struct {
 	MonitorId *int64 `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 
 	// 监控指标ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricId *int64 `json:"MetricId,omitnil,omitempty" name:"MetricId"`
 
 	// 监控指标对象类型ID
@@ -2398,7 +2303,6 @@ type TemplateMonitor struct {
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
 	// 中文指标
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricChineseName *string `json:"MetricChineseName,omitnil,omitempty" name:"MetricChineseName"`
 }
 
