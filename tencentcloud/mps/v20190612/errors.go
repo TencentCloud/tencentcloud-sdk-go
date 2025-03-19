@@ -128,6 +128,15 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 参数值错误：热词库配置
+	INVALIDPARAMETERVALUE_ASRHOTWORDSCONFIGURE = "InvalidParameterValue.AsrHotWordsConfigure"
+
+	// 参数值错误：热词库ID
+	INVALIDPARAMETERVALUE_ASRHOTWORDSLIBRARYID = "InvalidParameterValue.AsrHotWordsLibraryId"
+
+	// 参数值错误：热词库开关
+	INVALIDPARAMETERVALUE_ASRHOTWORDSSWITCH = "InvalidParameterValue.AsrHotWordsSwitch"
+
 	// 参数错误：音频流码率。
 	INVALIDPARAMETERVALUE_AUDIOBITRATE = "InvalidParameterValue.AudioBitrate"
 
@@ -233,11 +242,24 @@ const (
 	// 参数错误：高度。
 	INVALIDPARAMETERVALUE_HEIGHT = "InvalidParameterValue.Height"
 
+	// 参数错误：热词库不存在
+	INVALIDPARAMETERVALUE_HOTWORDSNOTEXIST = "InvalidParameterValue.HotWordsNotExist"
+
+	// HotwordsFormatError
+	// 热词库格式错误，每行的格式为word|weight，即以英文符号|为分割，左边为词，右边为权重，如：你好|5
+	// 
+	// 热词字符串通过逗号分割，文件中换行分割。
+	// 腾讯云|10,语音识别|5,ASR|10
+	INVALIDPARAMETERVALUE_HOTWORDSFORMATERROR = "InvalidParameterValue.HotwordsFormatError"
+
 	// ImageContent参数值无效。
 	INVALIDPARAMETERVALUE_IMAGECONTENT = "InvalidParameterValue.ImageContent"
 
 	// 参数错误：图片水印模板。
 	INVALIDPARAMETERVALUE_IMAGETEMPLATE = "InvalidParameterValue.ImageTemplate"
+
+	// 输入参数有误
+	INVALIDPARAMETERVALUE_INPUTINFO = "InvalidParameterValue.InputInfo"
 
 	// 解析内容 Content 的值不合法。
 	INVALIDPARAMETERVALUE_INVALIDCONTENT = "InvalidParameterValue.InvalidContent"
@@ -320,6 +342,9 @@ const (
 	// 参数值错误：SubtitleFormat 参数非法。
 	INVALIDPARAMETERVALUE_SUBTITLEFORMAT = "InvalidParameterValue.SubtitleFormat"
 
+	// 参数值错误：字幕语言类型
+	INVALIDPARAMETERVALUE_SUBTITLETYPE = "InvalidParameterValue.SubtitleType"
+
 	// 参数值错误：SVG 为空。
 	INVALIDPARAMETERVALUE_SVGTEMPLATE = "InvalidParameterValue.SvgTemplate"
 
@@ -347,6 +372,12 @@ const (
 	// 参数错误：文字模板。
 	INVALIDPARAMETERVALUE_TEXTTEMPLATE = "InvalidParameterValue.TextTemplate"
 
+	// 参数值错误：翻译目标语言
+	INVALIDPARAMETERVALUE_TRANSLATEDSTLANGUAGE = "InvalidParameterValue.TranslateDstLanguage"
+
+	// 参数值错误：翻译开关
+	INVALIDPARAMETERVALUE_TRANSLATESWITCH = "InvalidParameterValue.TranslateSwitch"
+
 	// 参数错误：Type 参数值错误。
 	INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 
@@ -361,6 +392,9 @@ const (
 
 	// 参数错误：视频流的编码格式。
 	INVALIDPARAMETERVALUE_VIDEOCODEC = "InvalidParameterValue.VideoCodec"
+
+	// 参数值错误：视频源语言错误
+	INVALIDPARAMETERVALUE_VIDEOSRCLANGUAGE = "InvalidParameterValue.VideoSrcLanguage"
 
 	// 参数错误：宽度。
 	INVALIDPARAMETERVALUE_WIDTH = "InvalidParameterValue.Width"

@@ -9531,6 +9531,60 @@ func (r *ReleaseWanAddressResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RemoveReplicationGroupRequestParams struct {
+	// 复制组ID
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+}
+
+type RemoveReplicationGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 复制组ID
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+}
+
+func (r *RemoveReplicationGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveReplicationGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveReplicationGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RemoveReplicationGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RemoveReplicationGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *RemoveReplicationGroupResponseParams `json:"Response"`
+}
+
+func (r *RemoveReplicationGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveReplicationGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RemoveReplicationInstanceRequestParams struct {
 	// 复制组 ID。例如：crs-rpl-m3zt****。请登录[Redis 控制台](https://console.cloud.tencent.com/redis/replication)的全球复制组列表获取复制组 ID。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`

@@ -6525,6 +6525,72 @@ func (r *DescribeBinlogsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCPUExpandStrategyInfoRequestParams struct {
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeCPUExpandStrategyInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeCPUExpandStrategyInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCPUExpandStrategyInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCPUExpandStrategyInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCPUExpandStrategyInfoResponseParams struct {
+	// 策略类型。可选值 auto、manual。如果返回为NULL说明尚未开通弹性扩容策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 手动扩容的 CPU 。Type为 manual 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpandCpu *int64 `json:"ExpandCpu,omitnil,omitempty" name:"ExpandCpu"`
+
+	// 自动扩容策略。Type 为 auto 时有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoStrategy *AutoStrategy `json:"AutoStrategy,omitnil,omitempty" name:"AutoStrategy"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCPUExpandStrategyInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCPUExpandStrategyInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeCPUExpandStrategyInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCPUExpandStrategyInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCdbProxyInfoRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`

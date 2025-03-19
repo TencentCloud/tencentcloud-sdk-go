@@ -9750,6 +9750,63 @@ func (r *DescribePrometheusInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePrometheusIntegrationMetricsRequestParams struct {
+	// 集成类型标识。取值参考DescribePrometheusIntegrations接口返回中IntegrationSet[i].Code参数
+	IntegrationCode *string `json:"IntegrationCode,omitnil,omitempty" name:"IntegrationCode"`
+}
+
+type DescribePrometheusIntegrationMetricsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集成类型标识。取值参考DescribePrometheusIntegrations接口返回中IntegrationSet[i].Code参数
+	IntegrationCode *string `json:"IntegrationCode,omitnil,omitempty" name:"IntegrationCode"`
+}
+
+func (r *DescribePrometheusIntegrationMetricsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusIntegrationMetricsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IntegrationCode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusIntegrationMetricsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusIntegrationMetricsResponseParams struct {
+	// 集成指标详情分组
+	IntegrationMetricSet []*IntegrationMetricGroup `json:"IntegrationMetricSet,omitnil,omitempty" name:"IntegrationMetricSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePrometheusIntegrationMetricsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrometheusIntegrationMetricsResponseParams `json:"Response"`
+}
+
+func (r *DescribePrometheusIntegrationMetricsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusIntegrationMetricsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePrometheusRecordRulesRequestParams struct {
 	// Prometheus 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -11618,6 +11675,34 @@ type IntegrationConfiguration struct {
 
 	// dashboard 的 URL
 	GrafanaDashboardURL *string `json:"GrafanaDashboardURL,omitnil,omitempty" name:"GrafanaDashboardURL"`
+}
+
+type IntegrationMetric struct {
+	// 指标名
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 指标名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 统计类型
+	MetricType *string `json:"MetricType,omitnil,omitempty" name:"MetricType"`
+
+	// 单位
+	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
+
+	// 指标详细描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type IntegrationMetricGroup struct {
+	// 分组标识
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// 指标详情
+	Metrics []*IntegrationMetric `json:"Metrics,omitnil,omitempty" name:"Metrics"`
+
+	// 分组名称
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 }
 
 type Label struct {

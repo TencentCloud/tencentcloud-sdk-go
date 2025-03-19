@@ -1183,11 +1183,9 @@ type BillBusinessLink struct {
 
 type BillComponent struct {
 	// 组件类型编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentCode *string `json:"ComponentCode,omitnil,omitempty" name:"ComponentCode"`
 
 	// 组件类型：用户购买的产品或服务对应的组件大类
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentCodeName *string `json:"ComponentCodeName,omitnil,omitempty" name:"ComponentCodeName"`
 }
 
@@ -2045,19 +2043,15 @@ type ConsumptionRegionSummaryDataItem struct {
 	Business []*ConsumptionBusinessSummaryDataItem `json:"Business,omitnil,omitempty" name:"Business"`
 
 	// 现金
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CashPayAmount *string `json:"CashPayAmount,omitnil,omitempty" name:"CashPayAmount"`
 
 	// 代金券
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoucherPayAmount *string `json:"VoucherPayAmount,omitnil,omitempty" name:"VoucherPayAmount"`
 
 	// 赠送金
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncentivePayAmount *string `json:"IncentivePayAmount,omitnil,omitempty" name:"IncentivePayAmount"`
 
 	// 分成金
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransferPayAmount *string `json:"TransferPayAmount,omitnil,omitempty" name:"TransferPayAmount"`
 }
 
@@ -4349,7 +4343,6 @@ type DescribeBillDetailForOrganizationResponseParams struct {
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 本次请求的上下文信息，可用于下一次请求的请求参数中，加快查询速度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

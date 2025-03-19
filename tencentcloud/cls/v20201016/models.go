@@ -85,15 +85,12 @@ func (r *AddMachineGroupInfoResponse) FromJsonString(s string) error {
 
 type AdvanceFilterRuleInfo struct {
 	// 过滤字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 过滤规则，0:等于，1:字段存在，2:字段不存在
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rule *uint64 `json:"Rule,omitnil,omitempty" name:"Rule"`
 
 	// 过滤值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -105,7 +102,6 @@ type AlarmAnalysisConfig struct {
 	// Fields：字段。value支持 __SOURCE__；__FILENAME__；__HOSTNAME__；__TIMESTAMP__；__INDEX_STATUS__；__PKG_LOGID__；__TOPIC__。
 	// Format：显示形式。value支持 1：每条日志一行；2：每条日志每个字段一行。
 	// Limit：最大日志条数。 value示例： 5。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 值。
@@ -116,7 +112,6 @@ type AlarmAnalysisConfig struct {
 	// Fields：字段。value支持 __SOURCE__；__FILENAME__；__HOSTNAME__；__TIMESTAMP__；__INDEX_STATUS__；__PKG_LOGID__；__TOPIC__。
 	// Format：显示形式。value支持 1：每条日志一行；2：每条日志每个字段一行。
 	// Limit：最大日志条数。 value示例： 5。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -167,36 +162,28 @@ type AlarmInfo struct {
 	MessageTemplate *string `json:"MessageTemplate,omitnil,omitempty" name:"MessageTemplate"`
 
 	// 自定义回调模板
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallBack *CallBackInfo `json:"CallBack,omitnil,omitempty" name:"CallBack"`
 
 	// 多维分析设置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Analysis []*AnalysisDimensional `json:"Analysis,omitnil,omitempty" name:"Analysis"`
 
-	// 分组触发状态。1：开启，0：关闭（默认）
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 分组触发状态。true：开启，false：关闭（默认）
 	GroupTriggerStatus *bool `json:"GroupTriggerStatus,omitnil,omitempty" name:"GroupTriggerStatus"`
 
 	// 分组触发条件。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil,omitempty" name:"GroupTriggerCondition"`
 
 	// 监控对象类型。0:执行语句共用监控对象;1:每个执行语句单独选择监控对象。 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil,omitempty" name:"MonitorObjectType"`
 
 	// 告警级别。0:警告(Warn);1:提醒(Info);2:紧急 (Critical)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 
 	// 告警附加分类字段。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Classifications []*AlarmClassification `json:"Classifications,omitnil,omitempty" name:"Classifications"`
 
 	// 多触发条件。与
 	// Condition互斥。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MultiConditions []*MultiCondition `json:"MultiConditions,omitnil,omitempty" name:"MultiConditions"`
 }
 
@@ -205,7 +192,6 @@ type AlarmNotice struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 告警通知渠道组绑定的标签信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 告警模板的类型。可选值：
@@ -215,28 +201,22 @@ type AlarmNotice struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 告警通知模板接收者信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitnil,omitempty" name:"NoticeReceivers"`
 
 	// 告警通知模板回调信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebCallbacks []*WebCallback `json:"WebCallbacks,omitnil,omitempty" name:"WebCallbacks"`
 
 	// 告警通知模板ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmNoticeId *string `json:"AlarmNoticeId,omitnil,omitempty" name:"AlarmNoticeId"`
 
 	// 通知规则。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoticeRules []*NoticeRule `json:"NoticeRules,omitnil,omitempty" name:"NoticeRules"`
 
 	// 免登录操作告警开关。
 	// 参数值： 1：关闭 2：开启（默认开启）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmShieldStatus *uint64 `json:"AlarmShieldStatus,omitnil,omitempty" name:"AlarmShieldStatus"`
 
 	// 调用链接域名。http:// 或者 https:// 开头，不能/结尾
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JumpDomain *string `json:"JumpDomain,omitnil,omitempty" name:"JumpDomain"`
 
 	// 投递相关信息。
@@ -244,11 +224,9 @@ type AlarmNotice struct {
 	AlarmNoticeDeliverConfig *AlarmNoticeDeliverConfig `json:"AlarmNoticeDeliverConfig,omitnil,omitempty" name:"AlarmNoticeDeliverConfig"`
 
 	// 创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 最近更新时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
@@ -257,7 +235,6 @@ type AlarmNoticeDeliverConfig struct {
 	DeliverConfig *DeliverConfig `json:"DeliverConfig,omitnil,omitempty" name:"DeliverConfig"`
 
 	// 投递失败原因。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 }
 
@@ -278,7 +255,6 @@ type AlarmShieldInfo struct {
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 屏蔽规则，当Type为2时必填。规则填写方式详见[产品文档](https://cloud.tencent.com/document/product/614/103178#rule)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rule *string `json:"Rule,omitnil,omitempty" name:"Rule"`
 
 	// 屏蔽原因。
@@ -304,33 +280,26 @@ type AlarmShieldInfo struct {
 
 type AlarmTarget struct {
 	// 日志主题ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 查询语句。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 告警对象序号；从1开始递增。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Number *int64 `json:"Number,omitnil,omitempty" name:"Number"`
 
 	// 查询范围起始时间相对于告警执行时间的偏移，单位为分钟，取值为非正，最大值为0，最小值为-1440。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimeOffset *int64 `json:"StartTimeOffset,omitnil,omitempty" name:"StartTimeOffset"`
 
 	// 查询范围终止时间相对于告警执行时间的偏移，单位为分钟，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTimeOffset *int64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
 
 	// 日志集ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 检索语法规则，默认值为0。
 	// 0：Lucene语法，1：CQL语法。
 	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 }
 
@@ -362,12 +331,10 @@ type AlarmTargetInfo struct {
 	// 检索语法规则，默认值为0。
 	// 0：Lucene语法，1：CQL语法。
 	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
 
 	// 主题类型。
 	// 0: 日志主题，1: 指标主题
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 }
 
@@ -420,30 +387,24 @@ type AlertHistoryRecord struct {
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 告警分组触发时对应的分组信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupTriggerCondition []*GroupTriggerConditionInfo `json:"GroupTriggerCondition,omitnil,omitempty" name:"GroupTriggerCondition"`
 
 	// 告警级别，0代表警告(Warn)，1代表提醒(Info)，2代表紧急 (Critical)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 
 	// 监控对象类型。
 	// 0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil,omitempty" name:"MonitorObjectType"`
 }
 
 type AnalysisDimensional struct {
 	// 分析名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 分析类型：query，field ，original
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 分析内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 多维分析配置。
@@ -580,7 +541,6 @@ type CallBackInfo struct {
 	// ```
 	// "Content-Type: application/json"
 	// ```
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Headers []*string `json:"Headers,omitnil,omitempty" name:"Headers"`
 }
 
@@ -725,7 +685,6 @@ func (r *CheckRechargeKafkaServerRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CheckRechargeKafkaServerResponseParams struct {
 	// Kafka集群可访问状态，0：可正常访问 ...
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -836,12 +795,13 @@ type CloudProductLogTaskInfo struct {
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志配置拓展信息， 一般用于存储额外的日志投递配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extend *string `json:"Extend,omitnil,omitempty" name:"Extend"`
 
 	// 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 任务状态， 0创建中 1创建完成 2 删除中 
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type CollectConfig struct {
@@ -857,13 +817,11 @@ type CollectInfo struct {
 	// 采集类型，必填字段。
 	// <li>0：元数据配置。</li>
 	// <li>1：指定Pod Label。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 指定采集类型的采集配置信息。
 	// <li>当Type为0时，CollectConfigs不允许为空。</li>
 	// <li>当Type为1时，CollectConfigs为空时，表示选择所有Pod Label；否则CollectConfigs为指定Pod Label。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CollectConfigs []*CollectConfig `json:"CollectConfigs,omitnil,omitempty" name:"CollectConfigs"`
 }
 
@@ -905,27 +863,21 @@ type ConfigExtraInfo struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 节点文件配置信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostFile *HostFileInfo `json:"HostFile,omitnil,omitempty" name:"HostFile"`
 
 	// 容器文件路径信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerFile *ContainerFileInfo `json:"ContainerFile,omitnil,omitempty" name:"ContainerFile"`
 
 	// 容器标准输出信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil,omitempty" name:"ContainerStdout"`
 
 	// 日志格式化方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogFormat *string `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
 
 	// 采集的日志类型，json_log代表json格式日志，delimiter_log代表分隔符格式日志，minimalist_log代表极简日志，multiline_log代表多行日志，fullregex_log代表完整正则，默认为minimalist_log
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil,omitempty" name:"ExtractRule"`
 
 	// 采集黑名单路径列表
@@ -939,30 +891,24 @@ type ConfigExtraInfo struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 用户自定义解析字符串
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
 	// 机器组ID
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 自建采集配置标
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigFlag *string `json:"ConfigFlag,omitnil,omitempty" name:"ConfigFlag"`
 
 	// 日志集ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 
 	// 日志集name
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
 	// 日志主题name
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 采集相关配置信息。详情见 CollectInfo复杂类型配置。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CollectInfos []*CollectInfo `json:"CollectInfos,omitnil,omitempty" name:"CollectInfos"`
 
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
@@ -970,7 +916,6 @@ type ConfigExtraInfo struct {
 	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
 	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
 	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
@@ -979,15 +924,12 @@ type ConfigInfo struct {
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 采集规则配置名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 日志格式化方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogFormat *string `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
 
 	// 日志采集路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 采集的日志类型。
@@ -1000,11 +942,9 @@ type ConfigInfo struct {
 	// - user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）；
 	// - service_syslog代表：syslog 采集（详见[采集 Syslog](https://cloud.tencent.com/document/product/614/81454)）；
 	// - windows_event_log代表：Windows事件日志（详见[采集 Windows 事件日志](https://cloud.tencent.com/document/product/614/96678)）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtractRule *ExtractRuleInfo `json:"ExtractRule,omitnil,omitempty" name:"ExtractRule"`
 
 	// 采集黑名单路径列表
@@ -1015,14 +955,12 @@ type ConfigInfo struct {
 	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 用户自定义解析字符串，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserDefineRule *string `json:"UserDefineRule,omitnil,omitempty" name:"UserDefineRule"`
 
 	// 高级采集配置。 Json字符串， Key/Value定义为如下：
@@ -1033,7 +971,6 @@ type ConfigInfo struct {
 	// `{\"ClsAgentFileTimeout\":0,\"ClsAgentMaxDepth\":10,\"ClsAgentParseFailMerge\":true}`
 	// 
 	// 控制台默认占位值：`{\"ClsAgentDefault\":0}`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvancedConfig *string `json:"AdvancedConfig,omitnil,omitempty" name:"AdvancedConfig"`
 }
 
@@ -1098,11 +1035,9 @@ type ConsoleSharingParam struct {
 type ConsumerContent struct {
 	// 是否投递 TAG 信息。
 	// 当EnableTag为true时，表示投递TAG元信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableTag *bool `json:"EnableTag,omitnil,omitempty" name:"EnableTag"`
 
 	// 需要投递的元数据列表，目前仅支持：\_\_SOURCE\_\_，\_\_FILENAME\_\_，\_\_TIMESTAMP\_\_，\_\_HOSTNAME\_\_和\_\_PKGID\_\_
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaFields []*string `json:"MetaFields,omitnil,omitempty" name:"MetaFields"`
 
 	// 当EnableTag为true时，必须填写TagJsonNotTiled字段。
@@ -1115,11 +1050,9 @@ type ConsumerContent struct {
 	// TagJsonNotTiled为false时平铺，示例：
 	// TAG信息：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
 	// 平铺：`{"__TAG__.fieldA":200,"__TAG__.fieldB":"text"}`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagJsonNotTiled *bool `json:"TagJsonNotTiled,omitnil,omitempty" name:"TagJsonNotTiled"`
 
 	// 投递时间戳精度，可选项 [1：秒；2：毫秒] ，默认是1。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimestampAccuracy *int64 `json:"TimestampAccuracy,omitnil,omitempty" name:"TimestampAccuracy"`
 
 	// 投递Json格式。
@@ -1130,7 +1063,6 @@ type ConsumerContent struct {
 	// JsonType为1：转义。示例：
 	// 日志原文：`{"a":"aa", "b":{"b1":"b1b1", "c1":"c1c1"}}`
 	// 投递到Ckafka：`{"a":"aa","b":"{\"b1\":\"b1b1\", \"c1\":\"c1c1\"}"}`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JsonType *int64 `json:"JsonType,omitnil,omitempty" name:"JsonType"`
 }
 
@@ -1155,11 +1087,9 @@ type ContainerFileInfo struct {
 	IncludeLabels []*string `json:"IncludeLabels,omitnil,omitempty" name:"IncludeLabels"`
 
 	// 工作负载信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkLoad *ContainerWorkLoadInfo `json:"WorkLoad,omitnil,omitempty" name:"WorkLoad"`
 
 	// 需要排除的namespace可以多个，用分隔号分割,例如A,B
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExcludeNamespace *string `json:"ExcludeNamespace,omitnil,omitempty" name:"ExcludeNamespace"`
 
 	// 需要排除的pod标签信息
@@ -1176,11 +1106,9 @@ type ContainerStdoutInfo struct {
 	AllContainers *bool `json:"AllContainers,omitnil,omitempty" name:"AllContainers"`
 
 	// container为空表所有的，不为空采集指定的容器
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Container *string `json:"Container,omitnil,omitempty" name:"Container"`
 
 	// namespace可以多个，用分隔号分割,例如A,B；为空或者没有这个字段，表示所有namespace
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// pod标签信息
@@ -1192,7 +1120,6 @@ type ContainerStdoutInfo struct {
 	WorkLoads []*ContainerWorkLoadInfo `json:"WorkLoads,omitnil,omitempty" name:"WorkLoads"`
 
 	// 需要排除的namespace可以多个，用分隔号分割,例如A,B
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExcludeNamespace *string `json:"ExcludeNamespace,omitnil,omitempty" name:"ExcludeNamespace"`
 
 	// 需要排除的pod标签信息
@@ -2524,7 +2451,6 @@ func (r *CreateCosRechargeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCosRechargeResponseParams struct {
 	// COS导入任务id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5576,7 +5502,6 @@ func (r *DescribeAlarmNoticesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAlarmNoticesResponseParams struct {
 	// 告警通知模板列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmNotices []*AlarmNotice `json:"AlarmNotices,omitnil,omitempty" name:"AlarmNotices"`
 
 	// 符合条件的告警通知模板总数。
@@ -6375,7 +6300,6 @@ type DescribeConsumerResponseParams struct {
 	Ckafka *Ckafka `json:"Ckafka,omitnil,omitempty" name:"Ckafka"`
 
 	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Compression *int64 `json:"Compression,omitnil,omitempty" name:"Compression"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6447,7 +6371,6 @@ func (r *DescribeCosRechargesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCosRechargesResponseParams struct {
 	// 见: CosRechargeInfo 结构描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*CosRechargeInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6897,14 +6820,12 @@ type DescribeIndexResponseParams struct {
 	// 内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引
 	// * false:不包含
 	// * true:包含
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncludeInternalFields *bool `json:"IncludeInternalFields,omitnil,omitempty" name:"IncludeInternalFields"`
 
 	// 元数据字段（前缀为`__TAG__`的字段）是否包含至全文索引
 	// * 0:仅包含开启键值索引的元数据字段
 	// * 1:包含所有元数据字段
 	// * 2:不包含任何元数据字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetadataFlag *uint64 `json:"MetadataFlag,omitnil,omitempty" name:"MetadataFlag"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7577,7 +7498,6 @@ func (r *DescribeMachineGroupsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMachineGroupsResponseParams struct {
 	// 机器组信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineGroups []*MachineGroupInfo `json:"MachineGroups,omitnil,omitempty" name:"MachineGroups"`
 
 	// 分页的总数目
@@ -7731,7 +7651,6 @@ type DescribeMachinesResponseParams struct {
 	ServiceLogging *bool `json:"ServiceLogging,omitnil,omitempty" name:"ServiceLogging"`
 
 	// 总数目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7823,7 +7742,6 @@ func (r *DescribeNoticeContentsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeNoticeContentsResponseParams struct {
 	// 通知内容模板列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoticeContents []*NoticeContentTemplate `json:"NoticeContents,omitnil,omitempty" name:"NoticeContents"`
 
 	// 符合条件的通知内容模板总数。
@@ -8168,7 +8086,6 @@ func (r *DescribeShippersRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeShippersResponseParams struct {
 	// 投递规则列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Shippers []*ShipperInfo `json:"Shippers,omitnil,omitempty" name:"Shippers"`
 
 	// 本次查询获取到的总数
@@ -8387,7 +8304,6 @@ func (r *DescribeWebCallbacksRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWebCallbacksResponseParams struct {
 	// 告警渠道回调配置列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebCallbacks []*WebCallbackInfo `json:"WebCallbacks,omitnil,omitempty" name:"WebCallbacks"`
 
 	// 符合条件的通知内容配置总数。
@@ -12305,7 +12221,6 @@ type PreviewKafkaRechargeResponseParams struct {
 	LogSample *string `json:"LogSample,omitnil,omitempty" name:"LogSample"`
 
 	// 日志预览结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogData *string `json:"LogData,omitnil,omitempty" name:"LogData"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12780,18 +12695,15 @@ func (r *SearchCosRechargeInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SearchCosRechargeInfoResponseParams struct {
 	// 匹配到的存储桶下的某个文件的前几行数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 匹配到的存储桶下的文件个数
 	Sum *uint64 `json:"Sum,omitnil,omitempty" name:"Sum"`
 
 	// 当前预览文件路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 预览获取数据失败原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 状态
@@ -13136,7 +13048,6 @@ type SearchLogResponseParams struct {
 	Columns []*Column `json:"Columns,omitnil,omitempty" name:"Columns"`
 
 	// 本次统计分析使用的采样率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SamplingRate *float64 `json:"SamplingRate,omitnil,omitempty" name:"SamplingRate"`
 
 	// 使用多日志主题检索时，各个日志主题的基本信息，例如报错信息。

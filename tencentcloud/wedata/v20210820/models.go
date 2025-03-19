@@ -3764,6 +3764,9 @@ type CreateDsFolderRequestParams struct {
 
 	// 父文件夹ID
 	ParentsFolderId *string `json:"ParentsFolderId,omitnil,omitempty" name:"ParentsFolderId"`
+
+	// 文件夹来源 template管理，orchestrationSpace 编排空间
+	FolderForm *string `json:"FolderForm,omitnil,omitempty" name:"FolderForm"`
 }
 
 type CreateDsFolderRequest struct {
@@ -3777,6 +3780,9 @@ type CreateDsFolderRequest struct {
 
 	// 父文件夹ID
 	ParentsFolderId *string `json:"ParentsFolderId,omitnil,omitempty" name:"ParentsFolderId"`
+
+	// 文件夹来源 template管理，orchestrationSpace 编排空间
+	FolderForm *string `json:"FolderForm,omitnil,omitempty" name:"FolderForm"`
 }
 
 func (r *CreateDsFolderRequest) ToJsonString() string {
@@ -3794,6 +3800,7 @@ func (r *CreateDsFolderRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "FolderName")
 	delete(f, "ParentsFolderId")
+	delete(f, "FolderForm")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDsFolderRequest has unknown keys!", "")
 	}
@@ -9830,6 +9837,21 @@ type DescribeDsFolderTreeRequestParams struct {
 	// - cycle    周期工作流
 	// - manual    手动工作流
 	WorkflowType *string `json:"WorkflowType,omitnil,omitempty" name:"WorkflowType"`
+
+	// 任务类型id列表
+	TaskTypeIdList []*int64 `json:"TaskTypeIdList,omitnil,omitempty" name:"TaskTypeIdList"`
+
+	// 责任人id列表
+	InChargeIdList []*string `json:"InChargeIdList,omitnil,omitempty" name:"InChargeIdList"`
+
+	// 自身责任人
+	OnlyMe *bool `json:"OnlyMe,omitnil,omitempty" name:"OnlyMe"`
+
+	// 是否包含代码模版
+	IncludeCodeTemplate *bool `json:"IncludeCodeTemplate,omitnil,omitempty" name:"IncludeCodeTemplate"`
+
+	// 编排空间 或代码模版 orchestrationSpace 编排空间 template模版管理
+	FolderForm *string `json:"FolderForm,omitnil,omitempty" name:"FolderForm"`
 }
 
 type DescribeDsFolderTreeRequest struct {
@@ -9883,6 +9905,21 @@ type DescribeDsFolderTreeRequest struct {
 	// - cycle    周期工作流
 	// - manual    手动工作流
 	WorkflowType *string `json:"WorkflowType,omitnil,omitempty" name:"WorkflowType"`
+
+	// 任务类型id列表
+	TaskTypeIdList []*int64 `json:"TaskTypeIdList,omitnil,omitempty" name:"TaskTypeIdList"`
+
+	// 责任人id列表
+	InChargeIdList []*string `json:"InChargeIdList,omitnil,omitempty" name:"InChargeIdList"`
+
+	// 自身责任人
+	OnlyMe *bool `json:"OnlyMe,omitnil,omitempty" name:"OnlyMe"`
+
+	// 是否包含代码模版
+	IncludeCodeTemplate *bool `json:"IncludeCodeTemplate,omitnil,omitempty" name:"IncludeCodeTemplate"`
+
+	// 编排空间 或代码模版 orchestrationSpace 编排空间 template模版管理
+	FolderForm *string `json:"FolderForm,omitnil,omitempty" name:"FolderForm"`
 }
 
 func (r *DescribeDsFolderTreeRequest) ToJsonString() string {
@@ -9911,6 +9948,11 @@ func (r *DescribeDsFolderTreeRequest) FromJsonString(s string) error {
 	delete(f, "NewFolderTreeMode")
 	delete(f, "TaskNodeId")
 	delete(f, "WorkflowType")
+	delete(f, "TaskTypeIdList")
+	delete(f, "InChargeIdList")
+	delete(f, "OnlyMe")
+	delete(f, "IncludeCodeTemplate")
+	delete(f, "FolderForm")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDsFolderTreeRequest has unknown keys!", "")
 	}

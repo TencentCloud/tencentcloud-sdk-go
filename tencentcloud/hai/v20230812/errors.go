@@ -62,7 +62,7 @@ const (
 	// 应用ID格式非法
 	INVALIDPARAMETERVALUE_INVALIDAPPLICATIONIDMALFORMED = "InvalidParameterValue.InvalidApplicationIdMalformed"
 
-	// 应用类型application-type仅可以选择PUBLIC_APPLICATION或PRIVATE_APPLICATION。
+	// 应用类型application-type仅可以选择PUBLIC_APPLICATION,PRIVATE_APPLICATION或COMMUNITY_APPLICATION
 	INVALIDPARAMETERVALUE_INVALIDAPPLICATIONTYPE = "InvalidParameterValue.InvalidApplicationType"
 
 	// 付费方式字段不符合规范

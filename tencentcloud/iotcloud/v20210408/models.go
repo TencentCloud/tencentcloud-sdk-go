@@ -4221,8 +4221,7 @@ type ListLogRequestParams struct {
 	// 日志结束时间，毫秒级时间戳
 	MaxTime *uint64 `json:"MaxTime,omitnil,omitempty" name:"MaxTime"`
 
-	// 查询关键字，可以同时支持键值查询和文本查询，例如，查询某key的值为value，并且包含某word的日志，该参数为：key:value word。键值或文本可以包含多个，以空格隔开。其中可以索引的key包括：requestid、productid、devicename、scene、content。
-	// 一个典型的查询示例：productid:ABCDE12345 devicename:test scene:SHADOW content:Device%20connect publish
+	// 查询关键字，可以同时支持键值查询和文本查询，例如，查询某key的值为value，并且包含某word的日志，该参数为：key:vlue worda。键值或文本可以包含多个，以空格隔开。其中可以索引的key包括：requestid、productid、devicename、scene、content。一个典型的查询示例：productid:ABCDE12345 devicename:test scene:SHADOW content:Device%20connect publish
 	Keywords *string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
 	// 日志检索上下文
@@ -4241,8 +4240,7 @@ type ListLogRequest struct {
 	// 日志结束时间，毫秒级时间戳
 	MaxTime *uint64 `json:"MaxTime,omitnil,omitempty" name:"MaxTime"`
 
-	// 查询关键字，可以同时支持键值查询和文本查询，例如，查询某key的值为value，并且包含某word的日志，该参数为：key:value word。键值或文本可以包含多个，以空格隔开。其中可以索引的key包括：requestid、productid、devicename、scene、content。
-	// 一个典型的查询示例：productid:ABCDE12345 devicename:test scene:SHADOW content:Device%20connect publish
+	// 查询关键字，可以同时支持键值查询和文本查询，例如，查询某key的值为value，并且包含某word的日志，该参数为：key:vlue worda。键值或文本可以包含多个，以空格隔开。其中可以索引的key包括：requestid、productid、devicename、scene、content。一个典型的查询示例：productid:ABCDE12345 devicename:test scene:SHADOW content:Device%20connect publish
 	Keywords *string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
 	// 日志检索上下文

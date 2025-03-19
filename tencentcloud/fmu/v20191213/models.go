@@ -22,12 +22,12 @@ import (
 
 // Predefined struct for user
 type BeautifyPicRequestParams struct {
-	// 图片 base64 数据，base64 编码后大小不可超过5M。 
+	// 图片 base64 数据，base64 编码后大小不可超过5M，单边分辨率不超过4000。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	// 暂不支持带有alpha透明通道的图片。
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。 
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。，单边分辨率不超过4000。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
@@ -54,12 +54,12 @@ type BeautifyPicRequestParams struct {
 type BeautifyPicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片 base64 数据，base64 编码后大小不可超过5M。 
+	// 图片 base64 数据，base64 编码后大小不可超过5M，单边分辨率不超过4000。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	// 暂不支持带有alpha透明通道的图片。
 	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
 
-	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。 
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。，单边分辨率不超过4000。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 

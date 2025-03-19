@@ -2278,15 +2278,12 @@ type DiagHistoryEventItem struct {
 	DiagItem *string `json:"DiagItem,omitnil,omitempty" name:"DiagItem"`
 
 	// 实例 ID 。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 保留字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
@@ -2412,7 +2409,6 @@ type InstanceConfs struct {
 	OverviewDisplay *string `json:"OverviewDisplay,omitnil,omitempty" name:"OverviewDisplay"`
 
 	// redis大key分析的自定义分割符，仅redis使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeyDelimiters []*string `json:"KeyDelimiters,omitnil,omitempty" name:"KeyDelimiters"`
 }
 
@@ -2628,7 +2624,6 @@ type MonitorFloatMetric struct {
 	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
 
 	// 指标值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*float64 `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
@@ -2648,7 +2643,6 @@ type MonitorMetric struct {
 	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
 
 	// 指标值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*int64 `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
@@ -2696,7 +2690,6 @@ type SchemaSpaceData struct {
 	TableRows *int64 `json:"TableRows,omitnil,omitempty" name:"TableRows"`
 
 	// 库中所有表对应的独立物理文件大小加和（MB）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PhysicalFileSize *float64 `json:"PhysicalFileSize,omitnil,omitempty" name:"PhysicalFileSize"`
 }
 
@@ -2719,7 +2712,6 @@ type ScoreDetail struct {
 	ScoreLostMax *int64 `json:"ScoreLostMax,omitnil,omitempty" name:"ScoreLostMax"`
 
 	// 扣分项列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*ScoreItem `json:"Items,omitnil,omitempty" name:"Items"`
 }
 

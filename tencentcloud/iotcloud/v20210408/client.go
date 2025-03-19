@@ -1361,7 +1361,7 @@ func NewDescribeDevicesResponse() (response *DescribeDevicesResponse) {
 }
 
 // DescribeDevices
-// 本接口（DescribeDevices）用于查询物联网通信设备的设备列表。 
+// 本接口（DescribeDevices）用于查询物联网通信设备的设备列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1373,7 +1373,7 @@ func (c *Client) DescribeDevices(request *DescribeDevicesRequest) (response *Des
 }
 
 // DescribeDevices
-// 本接口（DescribeDevices）用于查询物联网通信设备的设备列表。 
+// 本接口（DescribeDevices）用于查询物联网通信设备的设备列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2244,7 +2244,7 @@ func NewDescribeProductsResponse() (response *DescribeProductsResponse) {
 }
 
 // DescribeProducts
-// 本接口（DescribeProducts）用于列出产品列表。 
+// 本接口（DescribeProducts）用于列出产品列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2255,7 +2255,7 @@ func (c *Client) DescribeProducts(request *DescribeProductsRequest) (response *D
 }
 
 // DescribeProducts
-// 本接口（DescribeProducts）用于列出产品列表。 
+// 本接口（DescribeProducts）用于列出产品列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2574,7 +2574,7 @@ func NewEnableTopicRuleResponse() (response *EnableTopicRuleResponse) {
 }
 
 // EnableTopicRule
-// 本接口（EnableTopicRule）用于启用规则 
+// 本接口（EnableTopicRule）用于启用规则
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DUPLICATIONOFFUNCTIONITEM = "FailedOperation.DuplicationOfFunctionItem"
@@ -2598,7 +2598,7 @@ func (c *Client) EnableTopicRule(request *EnableTopicRuleRequest) (response *Ena
 }
 
 // EnableTopicRule
-// 本接口（EnableTopicRule）用于启用规则 
+// 本接口（EnableTopicRule）用于启用规则
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DUPLICATIONOFFUNCTIONITEM = "FailedOperation.DuplicationOfFunctionItem"
@@ -2863,7 +2863,7 @@ func NewListLogResponse() (response *ListLogResponse) {
 }
 
 // ListLog
-// 本接口（ListLog）用于查看日志信息 
+// 本接口（ListLog）用于查看日志信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2873,7 +2873,7 @@ func (c *Client) ListLog(request *ListLogRequest) (response *ListLogResponse, er
 }
 
 // ListLog
-// 本接口（ListLog）用于查看日志信息 
+// 本接口（ListLog）用于查看日志信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

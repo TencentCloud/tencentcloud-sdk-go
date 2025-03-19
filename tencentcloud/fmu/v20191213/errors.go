@@ -47,6 +47,9 @@ const (
 	// 图片分辨率过大，超过2000*2000。
 	FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
 
+	// 图片分辨率过大，超过4000*4000。
+	FAILEDOPERATION_IMAGERESOLUTIONTOOLARGE = "FailedOperation.ImageResolutionTooLarge"
+
 	// 图片短边分辨率小于64。
 	FAILEDOPERATION_IMAGERESOLUTIONTOOSMALL = "FailedOperation.ImageResolutionTooSmall"
 

@@ -4217,6 +4217,57 @@ func (c *Client) DestroyStaticStoreWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewEditAuthConfigRequest() (request *EditAuthConfigRequest) {
+    request = &EditAuthConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "EditAuthConfig")
+    
+    
+    return
+}
+
+func NewEditAuthConfigResponse() (response *EditAuthConfigResponse) {
+    response = &EditAuthConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EditAuthConfig
+// 修改登录配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) EditAuthConfig(request *EditAuthConfigRequest) (response *EditAuthConfigResponse, err error) {
+    return c.EditAuthConfigWithContext(context.Background(), request)
+}
+
+// EditAuthConfig
+// 修改登录配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) EditAuthConfigWithContext(ctx context.Context, request *EditAuthConfigRequest) (response *EditAuthConfigResponse, err error) {
+    if request == nil {
+        request = NewEditAuthConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EditAuthConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEditAuthConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEstablishCloudBaseRunServerRequest() (request *EstablishCloudBaseRunServerRequest) {
     request = &EstablishCloudBaseRunServerRequest{
         BaseRequest: &tchttp.BaseRequest{},

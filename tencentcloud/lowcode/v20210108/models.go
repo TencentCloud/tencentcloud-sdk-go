@@ -826,7 +826,6 @@ func (r *DescribeKnowledgeSetListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKnowledgeSetListResponseParams struct {
 	// 知识库列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *KnowledgeSetRsp `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

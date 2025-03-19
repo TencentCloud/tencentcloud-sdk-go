@@ -420,11 +420,9 @@ type CertificateInfo struct {
 	ImgUrl *string `json:"ImgUrl,omitnil,omitempty" name:"ImgUrl"`
 
 	// 原始照片地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginImgUrl *string `json:"OriginImgUrl,omitnil,omitempty" name:"OriginImgUrl"`
 
 	// 联系人证件号码。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegistrantCertificateCode *string `json:"RegistrantCertificateCode,omitnil,omitempty" name:"RegistrantCertificateCode"`
 
 	// 联系人证件类型。
@@ -456,11 +454,9 @@ type CertificateInfo struct {
 	// TWJZZ: 中国台湾居住证。
 	// QTTYDM: 其他-统一社会信用代码证书。
 	// GZJGZY: 公证机构执业证。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegistrantCertificateType *string `json:"RegistrantCertificateType,omitnil,omitempty" name:"RegistrantCertificateType"`
 
 	// 联系人证件照片地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegistrantImgUrl *string `json:"RegistrantImgUrl,omitnil,omitempty" name:"RegistrantImgUrl"`
 }
 

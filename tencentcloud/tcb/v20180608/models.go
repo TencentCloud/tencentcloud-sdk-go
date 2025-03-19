@@ -211,7 +211,6 @@ type CbrRepoInfo struct {
 	RepoLanguage *string `json:"RepoLanguage,omitnil,omitempty" name:"RepoLanguage"`
 
 	// 分支名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Branch *string `json:"Branch,omitnil,omitempty" name:"Branch"`
 }
 
@@ -417,15 +416,12 @@ type CloudBaseProjectVersion struct {
 
 type CloudBaseRunEmptyDirVolumeSource struct {
 	// 启用emptydir数据卷
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableEmptyDirVolume *bool `json:"EnableEmptyDirVolume,omitnil,omitempty" name:"EnableEmptyDirVolume"`
 
 	// "","Memory","HugePages"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Medium *string `json:"Medium,omitnil,omitempty" name:"Medium"`
 
 	// emptydir数据卷大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SizeLimit *string `json:"SizeLimit,omitnil,omitempty" name:"SizeLimit"`
 }
 
@@ -588,7 +584,6 @@ type CloudBaseRunServerVersionItem struct {
 
 type CloudBaseRunServiceVolumeHostPath struct {
 	// 主机路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 }
 
@@ -611,61 +606,47 @@ type CloudBaseRunServiceVolumeMount struct {
 
 type CloudBaseRunSideSpec struct {
 	// 容器镜像
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerImage *string `json:"ContainerImage,omitnil,omitempty" name:"ContainerImage"`
 
 	// 容器端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerPort *int64 `json:"ContainerPort,omitnil,omitempty" name:"ContainerPort"`
 
 	// 容器的名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerName *string `json:"ContainerName,omitnil,omitempty" name:"ContainerName"`
 
 	// kv的json字符串
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvVar *string `json:"EnvVar,omitnil,omitempty" name:"EnvVar"`
 
 	// InitialDelaySeconds 延迟多长时间启动健康检查
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InitialDelaySeconds *int64 `json:"InitialDelaySeconds,omitnil,omitempty" name:"InitialDelaySeconds"`
 
 	// CPU大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
 	// 内存大小（单位：M）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mem *int64 `json:"Mem,omitnil,omitempty" name:"Mem"`
 
 	// 安全特性
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Security *CloudBaseSecurityContext `json:"Security,omitnil,omitempty" name:"Security"`
 
 	// 挂载信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeMountInfos []*CloudBaseRunVolumeMount `json:"VolumeMountInfos,omitnil,omitempty" name:"VolumeMountInfos"`
 }
 
 type CloudBaseRunVersionFlowItem struct {
 	// 版本名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
 
 	// 流量占比
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowRatio *int64 `json:"FlowRatio,omitnil,omitempty" name:"FlowRatio"`
 
 	// 流量参数键值对（URL参数/HEADERS参数）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UrlParam *ObjectKV `json:"UrlParam,omitnil,omitempty" name:"UrlParam"`
 
 	// 优先级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
 	// 是否是默认兜底版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDefaultPriority *bool `json:"IsDefaultPriority,omitnil,omitempty" name:"IsDefaultPriority"`
 }
 
@@ -677,28 +658,23 @@ type CloudBaseRunVersionPod struct {
 	PodId *string `json:"PodId,omitnil,omitempty" name:"PodId"`
 
 	// pod ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodIp *string `json:"PodIp,omitnil,omitempty" name:"PodIp"`
 
 	// 状态
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type CloudBaseRunVolumeMount struct {
 	// 资源名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 挂载路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MountPath *string `json:"MountPath,omitnil,omitempty" name:"MountPath"`
 
 	// 是否只读
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadOnly *bool `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
 
 	// Nfs挂载信息
@@ -706,201 +682,154 @@ type CloudBaseRunVolumeMount struct {
 	NfsVolumes []*CloudBaseRunNfsVolumeSource `json:"NfsVolumes,omitnil,omitempty" name:"NfsVolumes"`
 
 	// 挂载配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MountPropagation *string `json:"MountPropagation,omitnil,omitempty" name:"MountPropagation"`
 }
 
 type CloudBaseRunVpcInfo struct {
 	// vpc的id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
 	// 创建类型(0=继承; 1=新建; 2=指定)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateType *int64 `json:"CreateType,omitnil,omitempty" name:"CreateType"`
 }
 
 type CloudBaseRunVpcSubnet struct {
 	// 子网id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 子网的ipv4
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cidr *string `json:"Cidr,omitnil,omitempty" name:"Cidr"`
 
 	// 可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// subnet类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Target *string `json:"Target,omitnil,omitempty" name:"Target"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type CloudBaseSecurityContext struct {
 	// 安全特性
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Capabilities *CloudBaseCapabilities `json:"Capabilities,omitnil,omitempty" name:"Capabilities"`
 }
 
 type CloudRunServiceSimpleVersionSnapshot struct {
 	// 版本名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
 
 	// 版本备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// cpu规格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
 	// 内存规格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mem *float64 `json:"Mem,omitnil,omitempty" name:"Mem"`
 
 	// 最小副本数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinNum *int64 `json:"MinNum,omitnil,omitempty" name:"MinNum"`
 
 	// 最大副本数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxNum *int64 `json:"MaxNum,omitnil,omitempty" name:"MaxNum"`
 
 	// 镜像url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
 	// 扩容策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
 
 	// 策略阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyThreshold *int64 `json:"PolicyThreshold,omitnil,omitempty" name:"PolicyThreshold"`
 
 	// 环境参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvParams *string `json:"EnvParams,omitnil,omitempty" name:"EnvParams"`
 
 	// 容器端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerPort *int64 `json:"ContainerPort,omitnil,omitempty" name:"ContainerPort"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 更新类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UploadType *string `json:"UploadType,omitnil,omitempty" name:"UploadType"`
 
 	// dockerfile路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DockerfilePath *string `json:"DockerfilePath,omitnil,omitempty" name:"DockerfilePath"`
 
 	// 构建路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BuildDir *string `json:"BuildDir,omitnil,omitempty" name:"BuildDir"`
 
 	// repo类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepoType *string `json:"RepoType,omitnil,omitempty" name:"RepoType"`
 
 	// 仓库
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Repo *string `json:"Repo,omitnil,omitempty" name:"Repo"`
 
 	// 分支
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Branch *string `json:"Branch,omitnil,omitempty" name:"Branch"`
 
 	// 环境id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// 服务名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerName *string `json:"ServerName,omitnil,omitempty" name:"ServerName"`
 
 	// package名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
 	// package版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageVersion *string `json:"PackageVersion,omitnil,omitempty" name:"PackageVersion"`
 
 	// 自定义log路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomLogs *string `json:"CustomLogs,omitnil,omitempty" name:"CustomLogs"`
 
 	// 延时健康检查时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InitialDelaySeconds *int64 `json:"InitialDelaySeconds,omitnil,omitempty" name:"InitialDelaySeconds"`
 
 	// snapshot名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
 
 	// 镜像信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageInfo *CloudBaseRunImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
 
 	// 代码仓库信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CodeDetail *CloudBaseCodeRepoDetail `json:"CodeDetail,omitnil,omitempty" name:"CodeDetail"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type CloudRunServiceVolume struct {
 	// 名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// NFS的挂载方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NFS *CloudBaseRunNfsVolumeSource `json:"NFS,omitnil,omitempty" name:"NFS"`
 
 	// secret名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
 	// 是否开启临时目录逐步废弃，请使用 EmptyDir
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableEmptyDirVolume *bool `json:"EnableEmptyDirVolume,omitnil,omitempty" name:"EnableEmptyDirVolume"`
 
 	// emptydir数据卷详细信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EmptyDir *CloudBaseRunEmptyDirVolumeSource `json:"EmptyDir,omitnil,omitempty" name:"EmptyDir"`
 
 	// 主机路径挂载信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostPath *CloudBaseRunServiceVolumeHostPath `json:"HostPath,omitnil,omitempty" name:"HostPath"`
 }
 
@@ -7294,6 +7223,81 @@ func (r *DestroyStaticStoreResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type EditAuthConfigRequestParams struct {
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 手机号登录配置 "TRUE",  "FALSE", "LOGIN_ONLY"
+	PhoneNumberLogin *string `json:"PhoneNumberLogin,omitnil,omitempty" name:"PhoneNumberLogin"`
+
+	// 匿名登录配置 "TRUE",  "FALSE"
+	AnonymousLogin *string `json:"AnonymousLogin,omitnil,omitempty" name:"AnonymousLogin"`
+
+	// 用户名密码登录配置 "TRUE",  "FALSE"
+	UsernameLogin *string `json:"UsernameLogin,omitnil,omitempty" name:"UsernameLogin"`
+}
+
+type EditAuthConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境id
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 手机号登录配置 "TRUE",  "FALSE", "LOGIN_ONLY"
+	PhoneNumberLogin *string `json:"PhoneNumberLogin,omitnil,omitempty" name:"PhoneNumberLogin"`
+
+	// 匿名登录配置 "TRUE",  "FALSE"
+	AnonymousLogin *string `json:"AnonymousLogin,omitnil,omitempty" name:"AnonymousLogin"`
+
+	// 用户名密码登录配置 "TRUE",  "FALSE"
+	UsernameLogin *string `json:"UsernameLogin,omitnil,omitempty" name:"UsernameLogin"`
+}
+
+func (r *EditAuthConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EditAuthConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "PhoneNumberLogin")
+	delete(f, "AnonymousLogin")
+	delete(f, "UsernameLogin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EditAuthConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EditAuthConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EditAuthConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *EditAuthConfigResponseParams `json:"Response"`
+}
+
+func (r *EditAuthConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EditAuthConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type EndUserInfo struct {
 	// 用户唯一ID
 	UUId *string `json:"UUId,omitnil,omitempty" name:"UUId"`
@@ -7969,11 +7973,9 @@ type GatewayVersionItem struct {
 
 type HpaPolicy struct {
 	// 策略类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
 
 	// 策略阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyThreshold *int64 `json:"PolicyThreshold,omitnil,omitempty" name:"PolicyThreshold"`
 }
 
@@ -9426,15 +9428,12 @@ type Tag struct {
 
 type TkeClusterInfo struct {
 	// 集群ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 集群的vpcId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 版本内网CLB所在子网Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionClbSubnetId *string `json:"VersionClbSubnetId,omitnil,omitempty" name:"VersionClbSubnetId"`
 }
 

@@ -512,6 +512,61 @@ func (c *Client) CreateAnimatedGraphicsTemplateWithContext(ctx context.Context, 
     return
 }
 
+func NewCreateAsrHotwordsRequest() (request *CreateAsrHotwordsRequest) {
+    request = &CreateAsrHotwordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateAsrHotwords")
+    
+    
+    return
+}
+
+func NewCreateAsrHotwordsResponse() (response *CreateAsrHotwordsResponse) {
+    response = &CreateAsrHotwordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAsrHotwords
+// 智能字幕新建热词库接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_HOTWORDSFORMATERROR = "InvalidParameterValue.HotwordsFormatError"
+//  INVALIDPARAMETERVALUE_INPUTINFO = "InvalidParameterValue.InputInfo"
+func (c *Client) CreateAsrHotwords(request *CreateAsrHotwordsRequest) (response *CreateAsrHotwordsResponse, err error) {
+    return c.CreateAsrHotwordsWithContext(context.Background(), request)
+}
+
+// CreateAsrHotwords
+// 智能字幕新建热词库接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_HOTWORDSFORMATERROR = "InvalidParameterValue.HotwordsFormatError"
+//  INVALIDPARAMETERVALUE_INPUTINFO = "InvalidParameterValue.InputInfo"
+func (c *Client) CreateAsrHotwordsWithContext(ctx context.Context, request *CreateAsrHotwordsRequest) (response *CreateAsrHotwordsResponse, err error) {
+    if request == nil {
+        request = NewCreateAsrHotwordsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAsrHotwords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAsrHotwordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateContentReviewTemplateRequest() (request *CreateContentReviewTemplateRequest) {
     request = &CreateContentReviewTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -997,6 +1052,73 @@ func (c *Client) CreateScheduleWithContext(ctx context.Context, request *CreateS
     request.SetContext(ctx)
     
     response = NewCreateScheduleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateSmartSubtitleTemplateRequest() (request *CreateSmartSubtitleTemplateRequest) {
+    request = &CreateSmartSubtitleTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateSmartSubtitleTemplate")
+    
+    
+    return
+}
+
+func NewCreateSmartSubtitleTemplateResponse() (response *CreateSmartSubtitleTemplateResponse) {
+    response = &CreateSmartSubtitleTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSmartSubtitleTemplate
+// 创建自定义智能字幕模板
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_ASRHOTWORDSCONFIGURE = "InvalidParameterValue.AsrHotWordsConfigure"
+//  INVALIDPARAMETERVALUE_ASRHOTWORDSLIBRARYID = "InvalidParameterValue.AsrHotWordsLibraryId"
+//  INVALIDPARAMETERVALUE_ASRHOTWORDSSWITCH = "InvalidParameterValue.AsrHotWordsSwitch"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_SUBTITLEFORMAT = "InvalidParameterValue.SubtitleFormat"
+//  INVALIDPARAMETERVALUE_SUBTITLETYPE = "InvalidParameterValue.SubtitleType"
+//  INVALIDPARAMETERVALUE_TRANSLATEDSTLANGUAGE = "InvalidParameterValue.TranslateDstLanguage"
+//  INVALIDPARAMETERVALUE_TRANSLATESWITCH = "InvalidParameterValue.TranslateSwitch"
+//  INVALIDPARAMETERVALUE_VIDEOSRCLANGUAGE = "InvalidParameterValue.VideoSrcLanguage"
+func (c *Client) CreateSmartSubtitleTemplate(request *CreateSmartSubtitleTemplateRequest) (response *CreateSmartSubtitleTemplateResponse, err error) {
+    return c.CreateSmartSubtitleTemplateWithContext(context.Background(), request)
+}
+
+// CreateSmartSubtitleTemplate
+// 创建自定义智能字幕模板
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_ASRHOTWORDSCONFIGURE = "InvalidParameterValue.AsrHotWordsConfigure"
+//  INVALIDPARAMETERVALUE_ASRHOTWORDSLIBRARYID = "InvalidParameterValue.AsrHotWordsLibraryId"
+//  INVALIDPARAMETERVALUE_ASRHOTWORDSSWITCH = "InvalidParameterValue.AsrHotWordsSwitch"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_SUBTITLEFORMAT = "InvalidParameterValue.SubtitleFormat"
+//  INVALIDPARAMETERVALUE_SUBTITLETYPE = "InvalidParameterValue.SubtitleType"
+//  INVALIDPARAMETERVALUE_TRANSLATEDSTLANGUAGE = "InvalidParameterValue.TranslateDstLanguage"
+//  INVALIDPARAMETERVALUE_TRANSLATESWITCH = "InvalidParameterValue.TranslateSwitch"
+//  INVALIDPARAMETERVALUE_VIDEOSRCLANGUAGE = "InvalidParameterValue.VideoSrcLanguage"
+func (c *Client) CreateSmartSubtitleTemplateWithContext(ctx context.Context, request *CreateSmartSubtitleTemplateRequest) (response *CreateSmartSubtitleTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateSmartSubtitleTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSmartSubtitleTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSmartSubtitleTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -2035,6 +2157,61 @@ func (c *Client) DeleteAnimatedGraphicsTemplateWithContext(ctx context.Context, 
     return
 }
 
+func NewDeleteAsrHotwordsRequest() (request *DeleteAsrHotwordsRequest) {
+    request = &DeleteAsrHotwordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteAsrHotwords")
+    
+    
+    return
+}
+
+func NewDeleteAsrHotwordsResponse() (response *DeleteAsrHotwordsResponse) {
+    response = &DeleteAsrHotwordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAsrHotwords
+// 删除智能字幕热词库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_HOTWORDSNOTEXIST = "InvalidParameterValue.HotWordsNotExist"
+func (c *Client) DeleteAsrHotwords(request *DeleteAsrHotwordsRequest) (response *DeleteAsrHotwordsResponse, err error) {
+    return c.DeleteAsrHotwordsWithContext(context.Background(), request)
+}
+
+// DeleteAsrHotwords
+// 删除智能字幕热词库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_HOTWORDSNOTEXIST = "InvalidParameterValue.HotWordsNotExist"
+func (c *Client) DeleteAsrHotwordsWithContext(ctx context.Context, request *DeleteAsrHotwordsRequest) (response *DeleteAsrHotwordsResponse, err error) {
+    if request == nil {
+        request = NewDeleteAsrHotwordsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAsrHotwords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAsrHotwordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteContentReviewTemplateRequest() (request *DeleteContentReviewTemplateRequest) {
     request = &DeleteContentReviewTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2408,6 +2585,63 @@ func (c *Client) DeleteScheduleWithContext(ctx context.Context, request *DeleteS
     request.SetContext(ctx)
     
     response = NewDeleteScheduleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSmartSubtitleTemplateRequest() (request *DeleteSmartSubtitleTemplateRequest) {
+    request = &DeleteSmartSubtitleTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DeleteSmartSubtitleTemplate")
+    
+    
+    return
+}
+
+func NewDeleteSmartSubtitleTemplateResponse() (response *DeleteSmartSubtitleTemplateResponse) {
+    response = &DeleteSmartSubtitleTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteSmartSubtitleTemplate
+// 删除用户自定义智能字幕模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DELETEDEFAULTTEMPLATE = "InvalidParameterValue.DeleteDefaultTemplate"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DeleteSmartSubtitleTemplate(request *DeleteSmartSubtitleTemplateRequest) (response *DeleteSmartSubtitleTemplateResponse, err error) {
+    return c.DeleteSmartSubtitleTemplateWithContext(context.Background(), request)
+}
+
+// DeleteSmartSubtitleTemplate
+// 删除用户自定义智能字幕模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DELETEDEFAULTTEMPLATE = "InvalidParameterValue.DeleteDefaultTemplate"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DeleteSmartSubtitleTemplateWithContext(ctx context.Context, request *DeleteSmartSubtitleTemplateRequest) (response *DeleteSmartSubtitleTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteSmartSubtitleTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSmartSubtitleTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSmartSubtitleTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -3133,6 +3367,108 @@ func (c *Client) DescribeAnimatedGraphicsTemplatesWithContext(ctx context.Contex
     return
 }
 
+func NewDescribeAsrHotwordsRequest() (request *DescribeAsrHotwordsRequest) {
+    request = &DescribeAsrHotwordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeAsrHotwords")
+    
+    
+    return
+}
+
+func NewDescribeAsrHotwordsResponse() (response *DescribeAsrHotwordsResponse) {
+    response = &DescribeAsrHotwordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAsrHotwords
+// 查询智能字幕热词库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAsrHotwords(request *DescribeAsrHotwordsRequest) (response *DescribeAsrHotwordsResponse, err error) {
+    return c.DescribeAsrHotwordsWithContext(context.Background(), request)
+}
+
+// DescribeAsrHotwords
+// 查询智能字幕热词库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAsrHotwordsWithContext(ctx context.Context, request *DescribeAsrHotwordsRequest) (response *DescribeAsrHotwordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAsrHotwordsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAsrHotwords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAsrHotwordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAsrHotwordsListRequest() (request *DescribeAsrHotwordsListRequest) {
+    request = &DescribeAsrHotwordsListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeAsrHotwordsList")
+    
+    
+    return
+}
+
+func NewDescribeAsrHotwordsListResponse() (response *DescribeAsrHotwordsListResponse) {
+    response = &DescribeAsrHotwordsListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAsrHotwordsList
+// 获取热词库列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAsrHotwordsList(request *DescribeAsrHotwordsListRequest) (response *DescribeAsrHotwordsListResponse, err error) {
+    return c.DescribeAsrHotwordsListWithContext(context.Background(), request)
+}
+
+// DescribeAsrHotwordsList
+// 获取热词库列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAsrHotwordsListWithContext(ctx context.Context, request *DescribeAsrHotwordsListRequest) (response *DescribeAsrHotwordsListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAsrHotwordsListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAsrHotwordsList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAsrHotwordsListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeContentReviewTemplatesRequest() (request *DescribeContentReviewTemplatesRequest) {
     request = &DescribeContentReviewTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3626,6 +3962,65 @@ func (c *Client) DescribeSchedulesWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeSchedulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSmartSubtitleTemplatesRequest() (request *DescribeSmartSubtitleTemplatesRequest) {
+    request = &DescribeSmartSubtitleTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeSmartSubtitleTemplates")
+    
+    
+    return
+}
+
+func NewDescribeSmartSubtitleTemplatesResponse() (response *DescribeSmartSubtitleTemplatesResponse) {
+    response = &DescribeSmartSubtitleTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSmartSubtitleTemplates
+// 根据智能字幕 模板唯一标识，获取智能字幕模板详情列表。返回结果包含符合条件的所有用户自定义智能字幕模板及系统预置智能字幕模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DescribeSmartSubtitleTemplates(request *DescribeSmartSubtitleTemplatesRequest) (response *DescribeSmartSubtitleTemplatesResponse, err error) {
+    return c.DescribeSmartSubtitleTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeSmartSubtitleTemplates
+// 根据智能字幕 模板唯一标识，获取智能字幕模板详情列表。返回结果包含符合条件的所有用户自定义智能字幕模板及系统预置智能字幕模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DescribeSmartSubtitleTemplatesWithContext(ctx context.Context, request *DescribeSmartSubtitleTemplatesRequest) (response *DescribeSmartSubtitleTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSmartSubtitleTemplatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSmartSubtitleTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSmartSubtitleTemplatesResponse()
     err = c.Send(request, response)
     return
 }
@@ -5736,6 +6131,61 @@ func (c *Client) ModifyAnimatedGraphicsTemplateWithContext(ctx context.Context, 
     return
 }
 
+func NewModifyAsrHotwordsRequest() (request *ModifyAsrHotwordsRequest) {
+    request = &ModifyAsrHotwordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "ModifyAsrHotwords")
+    
+    
+    return
+}
+
+func NewModifyAsrHotwordsResponse() (response *ModifyAsrHotwordsResponse) {
+    response = &ModifyAsrHotwordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAsrHotwords
+// 智能字幕更新热词库接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_HOTWORDSNOTEXIST = "InvalidParameterValue.HotWordsNotExist"
+func (c *Client) ModifyAsrHotwords(request *ModifyAsrHotwordsRequest) (response *ModifyAsrHotwordsResponse, err error) {
+    return c.ModifyAsrHotwordsWithContext(context.Background(), request)
+}
+
+// ModifyAsrHotwords
+// 智能字幕更新热词库接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_HOTWORDSNOTEXIST = "InvalidParameterValue.HotWordsNotExist"
+func (c *Client) ModifyAsrHotwordsWithContext(ctx context.Context, request *ModifyAsrHotwordsRequest) (response *ModifyAsrHotwordsResponse, err error) {
+    if request == nil {
+        request = NewModifyAsrHotwordsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAsrHotwords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAsrHotwordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyContentReviewTemplateRequest() (request *ModifyContentReviewTemplateRequest) {
     request = &ModifyContentReviewTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6173,6 +6623,81 @@ func (c *Client) ModifyScheduleWithContext(ctx context.Context, request *ModifyS
     request.SetContext(ctx)
     
     response = NewModifyScheduleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySmartSubtitleTemplateRequest() (request *ModifySmartSubtitleTemplateRequest) {
+    request = &ModifySmartSubtitleTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "ModifySmartSubtitleTemplate")
+    
+    
+    return
+}
+
+func NewModifySmartSubtitleTemplateResponse() (response *ModifySmartSubtitleTemplateResponse) {
+    response = &ModifySmartSubtitleTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifySmartSubtitleTemplate
+// 修改用户自定义智能字幕模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ASRHOTWORDSLIBRARYID = "InvalidParameterValue.AsrHotWordsLibraryId"
+//  INVALIDPARAMETERVALUE_ASRHOTWORDSSWITCH = "InvalidParameterValue.AsrHotWordsSwitch"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_MODIFYDEFAULTTEMPLATE = "InvalidParameterValue.ModifyDefaultTemplate"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_SUBTITLEFORMAT = "InvalidParameterValue.SubtitleFormat"
+//  INVALIDPARAMETERVALUE_SUBTITLETYPE = "InvalidParameterValue.SubtitleType"
+//  INVALIDPARAMETERVALUE_TRANSLATEDSTLANGUAGE = "InvalidParameterValue.TranslateDstLanguage"
+//  INVALIDPARAMETERVALUE_TRANSLATESWITCH = "InvalidParameterValue.TranslateSwitch"
+//  INVALIDPARAMETERVALUE_VIDEOSRCLANGUAGE = "InvalidParameterValue.VideoSrcLanguage"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) ModifySmartSubtitleTemplate(request *ModifySmartSubtitleTemplateRequest) (response *ModifySmartSubtitleTemplateResponse, err error) {
+    return c.ModifySmartSubtitleTemplateWithContext(context.Background(), request)
+}
+
+// ModifySmartSubtitleTemplate
+// 修改用户自定义智能字幕模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ASRHOTWORDSLIBRARYID = "InvalidParameterValue.AsrHotWordsLibraryId"
+//  INVALIDPARAMETERVALUE_ASRHOTWORDSSWITCH = "InvalidParameterValue.AsrHotWordsSwitch"
+//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
+//  INVALIDPARAMETERVALUE_MODIFYDEFAULTTEMPLATE = "InvalidParameterValue.ModifyDefaultTemplate"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_SUBTITLEFORMAT = "InvalidParameterValue.SubtitleFormat"
+//  INVALIDPARAMETERVALUE_SUBTITLETYPE = "InvalidParameterValue.SubtitleType"
+//  INVALIDPARAMETERVALUE_TRANSLATEDSTLANGUAGE = "InvalidParameterValue.TranslateDstLanguage"
+//  INVALIDPARAMETERVALUE_TRANSLATESWITCH = "InvalidParameterValue.TranslateSwitch"
+//  INVALIDPARAMETERVALUE_VIDEOSRCLANGUAGE = "InvalidParameterValue.VideoSrcLanguage"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) ModifySmartSubtitleTemplateWithContext(ctx context.Context, request *ModifySmartSubtitleTemplateRequest) (response *ModifySmartSubtitleTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifySmartSubtitleTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySmartSubtitleTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySmartSubtitleTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -7074,6 +7599,8 @@ func NewProcessMediaResponse() (response *ProcessMediaResponse) {
 //
 // 10. 媒体质检（直播流格式诊断、音画内容检测（抖动、模糊、低光照、过曝光、黑边、白边、黑屏、白屏、花屏、噪点、马赛克、二维码等）、无参考打分）
 //
+// 11. 智能字幕（语音全文、语音热词、语音翻译）
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
@@ -7108,6 +7635,8 @@ func (c *Client) ProcessMedia(request *ProcessMediaRequest) (response *ProcessMe
 // 9. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词、语音翻译、物体识别）。
 //
 // 10. 媒体质检（直播流格式诊断、音画内容检测（抖动、模糊、低光照、过曝光、黑边、白边、黑屏、白屏、花屏、噪点、马赛克、二维码等）、无参考打分）
+//
+// 11. 智能字幕（语音全文、语音热词、语音翻译）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"

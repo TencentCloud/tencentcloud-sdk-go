@@ -4201,6 +4201,63 @@ func (c *Client) DescribeBinlogsWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeCPUExpandStrategyInfoRequest() (request *DescribeCPUExpandStrategyInfoRequest) {
+    request = &DescribeCPUExpandStrategyInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeCPUExpandStrategyInfo")
+    
+    
+    return
+}
+
+func NewDescribeCPUExpandStrategyInfoResponse() (response *DescribeCPUExpandStrategyInfoResponse) {
+    response = &DescribeCPUExpandStrategyInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCPUExpandStrategyInfo
+// 通过该 API 可以查询实例的 CPU 弹性扩容信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REMOTECALLUNMARSHALERROR = "FailedOperation.RemoteCallUnmarshalError"
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_JSONUNMARSHALERROR = "InvalidParameter.JsonUnmarshalError"
+func (c *Client) DescribeCPUExpandStrategyInfo(request *DescribeCPUExpandStrategyInfoRequest) (response *DescribeCPUExpandStrategyInfoResponse, err error) {
+    return c.DescribeCPUExpandStrategyInfoWithContext(context.Background(), request)
+}
+
+// DescribeCPUExpandStrategyInfo
+// 通过该 API 可以查询实例的 CPU 弹性扩容信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REMOTECALLUNMARSHALERROR = "FailedOperation.RemoteCallUnmarshalError"
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_JSONUNMARSHALERROR = "InvalidParameter.JsonUnmarshalError"
+func (c *Client) DescribeCPUExpandStrategyInfoWithContext(ctx context.Context, request *DescribeCPUExpandStrategyInfoRequest) (response *DescribeCPUExpandStrategyInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeCPUExpandStrategyInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCPUExpandStrategyInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCPUExpandStrategyInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCdbProxyInfoRequest() (request *DescribeCdbProxyInfoRequest) {
     request = &DescribeCdbProxyInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

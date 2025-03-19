@@ -554,18 +554,13 @@ type Bundle struct {
 
 	// 套餐类型。
 	// 取值范围：
-	// <li>STARTER_BUNDLE：入门型</li>
 	// <li>GENERAL_BUNDLE：通用型</li>
-	// <li>ENTERPRISE_BUNDLE：企业型</li>
 	// <li>STORAGE_BUNDLE：存储型</li>
+	// <li>ENTERPRISE_BUNDLE：企业型</li>
 	// <li>EXCLUSIVE_BUNDLE：专属型</li>
-	// <li>HK_EXCLUSIVE_BUNDLE：香港专属型 </li>
-	// <li>CAREFREE_BUNDLE：无忧型</li>
 	// <li>BEFAST_BUNDLE：蜂驰型 </li>
-	// <li>EXCLUSIVE_BUNDLE_02：境外专属Ⅱ型</li>
-	// <li>NEWCOMER_BUNDLE：新客专享</li>
-	// <li>GAME_PORTAL_BUNDLE：游戏专区</li>
-	// <li>ECONOMY_BUNDLE：经济型</li>
+	// <li>STARTER_BUNDLE：入门型</li>
+	// <li>CAREFREE_BUNDLE：无忧型</li>
 	// <li>RAZOR_SPEED_BUNDLE：锐驰型</li>
 	BundleType *string `json:"BundleType,omitnil,omitempty" name:"BundleType"`
 
@@ -2239,7 +2234,7 @@ type DescribeBundlesRequestParams struct {
 	// 类型：String
 	// 必选：否
 	// <li>bundle-type</li>按照 【套餐类型进行过滤】。
-	// 取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);STARTER_BUNDLE(入门型套餐);CAREFREE_BUNDLE(无忧型套餐);
+	// 取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);STARTER_BUNDLE(入门型套餐);CAREFREE_BUNDLE(无忧型套餐);RAZOR_SPEED_BUNDLE(锐驰型套餐)
 	// 类型：String
 	// 必选：否
 	// <li>bundle-state</li>按照【套餐状态】进行过滤。
@@ -2250,6 +2245,7 @@ type DescribeBundlesRequestParams struct {
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 可用区列表。默认为全部可用区。
+	// <li>可用区可通过接口 [DescribeZones](https://cloud.tencent.com/document/product/1207/57513) 查询</li>
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 }
 
@@ -2274,7 +2270,7 @@ type DescribeBundlesRequest struct {
 	// 类型：String
 	// 必选：否
 	// <li>bundle-type</li>按照 【套餐类型进行过滤】。
-	// 取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);STARTER_BUNDLE(入门型套餐);CAREFREE_BUNDLE(无忧型套餐);
+	// 取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);STARTER_BUNDLE(入门型套餐);CAREFREE_BUNDLE(无忧型套餐);RAZOR_SPEED_BUNDLE(锐驰型套餐)
 	// 类型：String
 	// 必选：否
 	// <li>bundle-state</li>按照【套餐状态】进行过滤。
@@ -2285,6 +2281,7 @@ type DescribeBundlesRequest struct {
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 可用区列表。默认为全部可用区。
+	// <li>可用区可通过接口 [DescribeZones](https://cloud.tencent.com/document/product/1207/57513) 查询</li>
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 }
 
@@ -7737,7 +7734,7 @@ type RegionInfo struct {
 	// 地域描述，例如，华南地区(广州)。
 	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 
-	// 地域是否可用状态，取值仅为AVAILABLE。
+	// 地域是否可用状态，取值仅为AVAILABLE（表示可用状态）。
 	RegionState *string `json:"RegionState,omitnil,omitempty" name:"RegionState"`
 
 	// 是否中国大陆地域

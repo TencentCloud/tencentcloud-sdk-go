@@ -5989,6 +5989,71 @@ func (c *Client) ReleaseWanAddressWithContext(ctx context.Context, request *Rele
     return
 }
 
+func NewRemoveReplicationGroupRequest() (request *RemoveReplicationGroupRequest) {
+    request = &RemoveReplicationGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("redis", APIVersion, "RemoveReplicationGroup")
+    
+    
+    return
+}
+
+func NewRemoveReplicationGroupResponse() (response *RemoveReplicationGroupResponse) {
+    response = &RemoveReplicationGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RemoveReplicationGroup
+// 删除复制组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMAUTHOSSRESPONSERETURNCODEERROR = "InternalError.CamAuthOssResponseReturnCodeError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INTERNALERROR_NETWORKERR = "InternalError.NetWorkErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_REPLICATIONGROUPNOTEXISTS = "InvalidParameterValue.ReplicationGroupNotExists"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) RemoveReplicationGroup(request *RemoveReplicationGroupRequest) (response *RemoveReplicationGroupResponse, err error) {
+    return c.RemoveReplicationGroupWithContext(context.Background(), request)
+}
+
+// RemoveReplicationGroup
+// 删除复制组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMAUTHOSSRESPONSERETURNCODEERROR = "InternalError.CamAuthOssResponseReturnCodeError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INTERNALERROR_NETWORKERR = "InternalError.NetWorkErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
+//  INVALIDPARAMETERVALUE_REPLICATIONGROUPNOTEXISTS = "InvalidParameterValue.ReplicationGroupNotExists"
+//  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
+func (c *Client) RemoveReplicationGroupWithContext(ctx context.Context, request *RemoveReplicationGroupRequest) (response *RemoveReplicationGroupResponse, err error) {
+    if request == nil {
+        request = NewRemoveReplicationGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveReplicationGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveReplicationGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRemoveReplicationInstanceRequest() (request *RemoveReplicationInstanceRequest) {
     request = &RemoveReplicationInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -6297,6 +6297,59 @@ func (c *Client) DescribePrometheusInstancesOverviewWithContext(ctx context.Cont
     return
 }
 
+func NewDescribePrometheusIntegrationMetricsRequest() (request *DescribePrometheusIntegrationMetricsRequest) {
+    request = &DescribePrometheusIntegrationMetricsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribePrometheusIntegrationMetrics")
+    
+    
+    return
+}
+
+func NewDescribePrometheusIntegrationMetricsResponse() (response *DescribePrometheusIntegrationMetricsResponse) {
+    response = &DescribePrometheusIntegrationMetricsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePrometheusIntegrationMetrics
+// 获取prometheus集成指标
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+func (c *Client) DescribePrometheusIntegrationMetrics(request *DescribePrometheusIntegrationMetricsRequest) (response *DescribePrometheusIntegrationMetricsResponse, err error) {
+    return c.DescribePrometheusIntegrationMetricsWithContext(context.Background(), request)
+}
+
+// DescribePrometheusIntegrationMetrics
+// 获取prometheus集成指标
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+func (c *Client) DescribePrometheusIntegrationMetricsWithContext(ctx context.Context, request *DescribePrometheusIntegrationMetricsRequest) (response *DescribePrometheusIntegrationMetricsResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusIntegrationMetricsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrometheusIntegrationMetrics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrometheusIntegrationMetricsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePrometheusRecordRulesRequest() (request *DescribePrometheusRecordRulesRequest) {
     request = &DescribePrometheusRecordRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
