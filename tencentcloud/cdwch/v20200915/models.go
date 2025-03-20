@@ -126,31 +126,24 @@ type BackUpJobDisplay struct {
 
 type BackupTableContent struct {
 	// 数据库
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
 
 	// 表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
 
 	// 表总字节数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalBytes *int64 `json:"TotalBytes,omitnil,omitempty" name:"TotalBytes"`
 
 	// 虚拟cluster
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VCluster *string `json:"VCluster,omitnil,omitempty" name:"VCluster"`
 
 	// 表ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ips *string `json:"Ips,omitnil,omitempty" name:"Ips"`
 
 	// zk路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZooPath *string `json:"ZooPath,omitnil,omitempty" name:"ZooPath"`
 
 	// cvm的ip地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rip *string `json:"Rip,omitnil,omitempty" name:"Rip"`
 }
 
@@ -196,17 +189,14 @@ type ClusterConfigsInfoFromEMR struct {
 	NeedRestart *int64 `json:"NeedRestart,omitnil,omitempty" name:"NeedRestart"`
 
 	// 保存配置文件的路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
 }
 
 type ClusterInfo struct {
 	// vcluster名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 当前cluster的IP列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeIps []*string `json:"NodeIps,omitnil,omitempty" name:"NodeIps"`
 }
 
@@ -630,7 +620,6 @@ func (r *DescribeBackUpJobDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBackUpJobDetailResponseParams struct {
 	// 备份表详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableContents []*BackupTableContent `json:"TableContents,omitnil,omitempty" name:"TableContents"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -957,7 +946,6 @@ func (r *DescribeCkSqlApisRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCkSqlApisResponseParams struct {
 	// 返回的查询数据，大部分情况是list，也可能是bool
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReturnData *string `json:"ReturnData,omitnil,omitempty" name:"ReturnData"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1365,7 +1353,6 @@ func (r *DescribeInstanceShardsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceShardsResponseParams struct {
 	// 实例shard信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceShardsList *string `json:"InstanceShardsList,omitnil,omitempty" name:"InstanceShardsList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1687,7 +1674,6 @@ func (r *DestroyInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DestroyInstanceResponseParams struct {
 	// 作业id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowID *string `json:"FlowID,omitnil,omitempty" name:"FlowID"`
 
 	// 集群id
@@ -1789,7 +1775,6 @@ type InstanceConfigItem struct {
 
 type InstanceDetail struct {
 	// 告警策略是否可用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableAlarmStrategy *bool `json:"EnableAlarmStrategy,omitnil,omitempty" name:"EnableAlarmStrategy"`
 }
 
@@ -2035,27 +2020,21 @@ type InstanceNode struct {
 	NodeGroups []*GroupInfo `json:"NodeGroups,omitnil,omitempty" name:"NodeGroups"`
 
 	// VPC IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rip *string `json:"Rip,omitnil,omitempty" name:"Rip"`
 
 	// ture的时候表示该节点上部署了chproxy进程
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsCHProxy *bool `json:"IsCHProxy,omitnil,omitempty" name:"IsCHProxy"`
 
 	// 节点状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 节点uuid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UUID *string `json:"UUID,omitnil,omitempty" name:"UUID"`
 
 	// 区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 区描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneDesc *string `json:"ZoneDesc,omitnil,omitempty" name:"ZoneDesc"`
 
 	// 真实资源id
@@ -2064,39 +2043,30 @@ type InstanceNode struct {
 
 type InstanceStateInfo struct {
 	// 集群状态，例如：Serving
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceState *string `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
 
 	// 集群操作创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowCreateTime *string `json:"FlowCreateTime,omitnil,omitempty" name:"FlowCreateTime"`
 
 	// 集群操作名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 集群操作进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowProgress *int64 `json:"FlowProgress,omitnil,omitempty" name:"FlowProgress"`
 
 	// 集群状态描述，例如：运行中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceStateDesc *string `json:"InstanceStateDesc,omitnil,omitempty" name:"InstanceStateDesc"`
 
 	// 集群流程错误信息，例如：“创建失败，资源不足”
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowMsg *string `json:"FlowMsg,omitnil,omitempty" name:"FlowMsg"`
 
 	// 当前步骤的名称，例如：”购买资源中“
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 
 	// 请求id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 
 	// 流程的二级名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessSubName *string `json:"ProcessSubName,omitnil,omitempty" name:"ProcessSubName"`
 }
 
@@ -2252,7 +2222,6 @@ func (r *ModifyInstanceKeyValConfigsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyInstanceKeyValConfigsResponseParams struct {
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// ID
@@ -2607,15 +2576,12 @@ func (r *ResizeDiskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ResizeDiskResponseParams struct {
 	// 流程ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2661,19 +2627,15 @@ type ResourceSpec struct {
 	MaxNodeSize *int64 `json:"MaxNodeSize,omitnil,omitempty" name:"MaxNodeSize"`
 
 	// 是否可用，false代表售罄
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Available *bool `json:"Available,omitnil,omitempty" name:"Available"`
 
 	// 规格描述信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComputeSpecDesc *string `json:"ComputeSpecDesc,omitnil,omitempty" name:"ComputeSpecDesc"`
 
 	// 规格名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisplayName *string `json:"DisplayName,omitnil,omitempty" name:"DisplayName"`
 
 	// 库存数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceQuota *int64 `json:"InstanceQuota,omitnil,omitempty" name:"InstanceQuota"`
 }
 
@@ -2740,15 +2702,12 @@ func (r *ScaleCNOutUpInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ScaleCNOutUpInstanceResponseParams struct {
 	// 流程ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2850,15 +2809,12 @@ func (r *ScaleOutInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ScaleOutInstanceResponseParams struct {
 	// 流程ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2937,15 +2893,12 @@ func (r *ScaleUpInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ScaleUpInstanceResponseParams struct {
 	// 流程ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2970,7 +2923,6 @@ func (r *ScaleUpInstanceResponse) FromJsonString(s string) error {
 
 type ScheduleStrategy struct {
 	// 备份桶名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
 
 	// 备份保留天数
@@ -2986,7 +2938,6 @@ type ScheduleStrategy struct {
 	ScheduleId *int64 `json:"ScheduleId,omitnil,omitempty" name:"ScheduleId"`
 
 	// 下次备份时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NextBackupTime *string `json:"NextBackupTime,omitnil,omitempty" name:"NextBackupTime"`
 }
 
@@ -3003,29 +2954,23 @@ type SearchTags struct {
 
 type SecondaryZoneInfo struct {
 	// 副可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecondaryZone *string `json:"SecondaryZone,omitnil,omitempty" name:"SecondaryZone"`
 
 	// 可用区可用的子网id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecondarySubnet *string `json:"SecondarySubnet,omitnil,omitempty" name:"SecondarySubnet"`
 
 	// 可用区可用的子网可用ip的数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserIpNum *string `json:"UserIpNum,omitnil,omitempty" name:"UserIpNum"`
 
 	// 可用区可用的子网可用ip的数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecondaryUserSubnetIPNum *int64 `json:"SecondaryUserSubnetIPNum,omitnil,omitempty" name:"SecondaryUserSubnetIPNum"`
 }
 
 type ServiceInfo struct {
 	// 服务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 服务的版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 }
 

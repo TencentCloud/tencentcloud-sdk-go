@@ -38,11 +38,9 @@ type AbnormalProcessChildRuleInfo struct {
 	ProcessPath *string `json:"ProcessPath,omitnil,omitempty" name:"ProcessPath"`
 
 	// 子策略id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 威胁等级，HIGH:高，MIDDLE:中，LOW:低
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleLevel *string `json:"RuleLevel,omitnil,omitempty" name:"RuleLevel"`
 }
 
@@ -54,7 +52,6 @@ type AbnormalProcessEventDescription struct {
 	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
 
 	// 事件备注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 命中规则详细信息
@@ -67,11 +64,9 @@ type AbnormalProcessEventDescription struct {
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 事件最后一次处理的时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperationTime *string `json:"OperationTime,omitnil,omitempty" name:"OperationTime"`
 
 	// 命中策略名称：SYSTEM_DEFINED_RULE （系统策略）或  用户自定义的策略名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 }
 
@@ -158,7 +153,6 @@ type AbnormalProcessEventInfo struct {
 	// 隔离失败	ISOLATE_FAILED
 	// 解除隔离中  RESTORING
 	// 解除隔离失败 RESTORE_FAILED
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerNetStatus *string `json:"ContainerNetStatus,omitnil,omitempty" name:"ContainerNetStatus"`
 
 	// 容器子状态
@@ -169,11 +163,9 @@ type AbnormalProcessEventInfo struct {
 	// "SHARED_HOST"         // 容器与主机共享网络
 	// "RESOURCE_LIMIT"      //隔离操作资源超限
 	// "UNKNOW"              // 原因未知
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitnil,omitempty" name:"ContainerNetSubStatus"`
 
 	// 容器隔离操作来源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil,omitempty" name:"ContainerIsolateOperationSrc"`
 
 	// 容器状态
@@ -263,7 +255,6 @@ type AbnormalProcessRuleInfo struct {
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// 策略id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 系统策略的子策略数组
@@ -296,7 +287,6 @@ type AbnormalProcessSystemChildRuleInfo struct {
 	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 
 	// 威胁等级，HIGH:高，MIDDLE:中，LOW:低
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleLevel *string `json:"RuleLevel,omitnil,omitempty" name:"RuleLevel"`
 }
 
@@ -313,7 +303,6 @@ type AccessControlChildRuleInfo struct {
 	TargetFilePath *string `json:"TargetFilePath,omitnil,omitempty" name:"TargetFilePath"`
 
 	// 子策略id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
@@ -325,7 +314,6 @@ type AccessControlEventDescription struct {
 	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
 
 	// 事件备注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 命中规则详细信息
@@ -338,7 +326,6 @@ type AccessControlEventDescription struct {
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 事件最后一次处理的时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperationTime *string `json:"OperationTime,omitnil,omitempty" name:"OperationTime"`
 }
 
@@ -501,7 +488,6 @@ type AccessControlRuleInfo struct {
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// 策略id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 系统策略的子策略数组
@@ -758,7 +744,7 @@ type AddAssetImageRegistryRegistryDetailRequestParams struct {
 	// 仓库url
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 仓库类型，列表：harbor
+	// 仓库类型，列表：harbor,quay,jfrog,aws,azure,other-tcr
 	RegistryType *string `json:"RegistryType,omitnil,omitempty" name:"RegistryType"`
 
 	// 网络类型，列表：public（公网）
@@ -779,8 +765,17 @@ type AddAssetImageRegistryRegistryDetailRequestParams struct {
 	// 联通性检测的记录ID
 	ConnDetectConfig []*ConnDetectConfig `json:"ConnDetectConfig,omitnil,omitempty" name:"ConnDetectConfig"`
 
-	// ”授权&扫描"开关
+	// 是否自动授权&扫描，选择全量同步时只针对最新版本镜像，增量同步时则包含所有新增镜像
 	NeedScan *bool `json:"NeedScan,omitnil,omitempty" name:"NeedScan"`
+
+	// 同步方式，0全量同步，1增量同步
+	SyncMode *uint64 `json:"SyncMode,omitnil,omitempty" name:"SyncMode"`
+
+	// webhook接入地址
+	WebhookUrl *string `json:"WebhookUrl,omitnil,omitempty" name:"WebhookUrl"`
+
+	// webhook接入token
+	WebhookToken *string `json:"WebhookToken,omitnil,omitempty" name:"WebhookToken"`
 }
 
 type AddAssetImageRegistryRegistryDetailRequest struct {
@@ -798,7 +793,7 @@ type AddAssetImageRegistryRegistryDetailRequest struct {
 	// 仓库url
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 仓库类型，列表：harbor
+	// 仓库类型，列表：harbor,quay,jfrog,aws,azure,other-tcr
 	RegistryType *string `json:"RegistryType,omitnil,omitempty" name:"RegistryType"`
 
 	// 网络类型，列表：public（公网）
@@ -819,8 +814,17 @@ type AddAssetImageRegistryRegistryDetailRequest struct {
 	// 联通性检测的记录ID
 	ConnDetectConfig []*ConnDetectConfig `json:"ConnDetectConfig,omitnil,omitempty" name:"ConnDetectConfig"`
 
-	// ”授权&扫描"开关
+	// 是否自动授权&扫描，选择全量同步时只针对最新版本镜像，增量同步时则包含所有新增镜像
 	NeedScan *bool `json:"NeedScan,omitnil,omitempty" name:"NeedScan"`
+
+	// 同步方式，0全量同步，1增量同步
+	SyncMode *uint64 `json:"SyncMode,omitnil,omitempty" name:"SyncMode"`
+
+	// webhook接入地址
+	WebhookUrl *string `json:"WebhookUrl,omitnil,omitempty" name:"WebhookUrl"`
+
+	// webhook接入token
+	WebhookToken *string `json:"WebhookToken,omitnil,omitempty" name:"WebhookToken"`
 }
 
 func (r *AddAssetImageRegistryRegistryDetailRequest) ToJsonString() string {
@@ -847,6 +851,9 @@ func (r *AddAssetImageRegistryRegistryDetailRequest) FromJsonString(s string) er
 	delete(f, "Insecure")
 	delete(f, "ConnDetectConfig")
 	delete(f, "NeedScan")
+	delete(f, "SyncMode")
+	delete(f, "WebhookUrl")
+	delete(f, "WebhookToken")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddAssetImageRegistryRegistryDetailRequest has unknown keys!", "")
 	}
@@ -856,15 +863,12 @@ func (r *AddAssetImageRegistryRegistryDetailRequest) FromJsonString(s string) er
 // Predefined struct for user
 type AddAssetImageRegistryRegistryDetailResponseParams struct {
 	// 连接错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthCheckErr *string `json:"HealthCheckErr,omitnil,omitempty" name:"HealthCheckErr"`
 
 	// 名称错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NameRepeatErr *string `json:"NameRepeatErr,omitnil,omitempty" name:"NameRepeatErr"`
 
 	// 仓库唯一id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegistryId *int64 `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1977,23 +1981,18 @@ type AutoAuthorizedRuleHostInfo struct {
 
 type CKafkaInstanceInfo struct {
 	// 实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
 	// 实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 主题列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicList []*CKafkaTopicInfo `json:"TopicList,omitnil,omitempty" name:"TopicList"`
 
 	// 路由列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteList []*CkafkaRouteInfo `json:"RouteList,omitnil,omitempty" name:"RouteList"`
 
 	// kafka版本号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
 }
 
@@ -2121,7 +2120,6 @@ func (r *CheckRepeatAssetImageRegistryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CheckRepeatAssetImageRegistryResponseParams struct {
 	// 是否重复
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsRepeat *bool `json:"IsRepeat,omitnil,omitempty" name:"IsRepeat"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2146,23 +2144,18 @@ func (r *CheckRepeatAssetImageRegistryResponse) FromJsonString(s string) error {
 
 type CkafkaRouteInfo struct {
 	// 路由ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteID *int64 `json:"RouteID,omitnil,omitempty" name:"RouteID"`
 
 	// 域名名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 域名端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainPort *uint64 `json:"DomainPort,omitnil,omitempty" name:"DomainPort"`
 
 	// 虚拟ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
 	// 虚拟ip类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VipType *int64 `json:"VipType,omitnil,omitempty" name:"VipType"`
 
 	// 接入类型
@@ -2170,7 +2163,6 @@ type CkafkaRouteInfo struct {
 	// 	// 1：SASL_PLAINTEXT（明文方式，不过在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
 	// 	// 2：SSL（SSL加密通信，没有带用户信息，老版本及社区版本都支持）
 	// 	// 3：SASL_SSL（SSL加密通信，在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessType *int64 `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 }
 
@@ -2179,11 +2171,9 @@ type ClsLogsetInfo struct {
 	LogsetID *string `json:"LogsetID,omitnil,omitempty" name:"LogsetID"`
 
 	// 日志集名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
 
 	// cls主题列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicList []*ClsTopicInfo `json:"TopicList,omitnil,omitempty" name:"TopicList"`
 }
 
@@ -2197,78 +2187,60 @@ type ClsTopicInfo struct {
 
 type ClusterCheckItem struct {
 	// 唯一的检测项的ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckItemId *int64 `json:"CheckItemId,omitnil,omitempty" name:"CheckItemId"`
 
 	// 风险项的名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 检测项详细描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ItemDetail *string `json:"ItemDetail,omitnil,omitempty" name:"ItemDetail"`
 
 	// 威胁等级。严重Serious,高危High,中危Middle,提示Hint
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
 	// 检查对象、风险对象.Runc,Kubelet,Containerd,Pods
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskTarget *string `json:"RiskTarget,omitnil,omitempty" name:"RiskTarget"`
 
 	// 风险类别,漏洞风险CVERisk,配置风险ConfigRisk
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskType *string `json:"RiskType,omitnil,omitempty" name:"RiskType"`
 
 	// 检测项所属的风险类型,权限提升:PrivilegePromotion,拒绝服务:RefuseService,目录穿越:DirectoryEscape,未授权访问:UnauthorizedAccess,权限许可和访问控制问题:PrivilegeAndAccessControl,敏感信息泄露:SensitiveInfoLeak
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskAttribute *string `json:"RiskAttribute,omitnil,omitempty" name:"RiskAttribute"`
 
 	// 风险特征,Tag.存在EXP:ExistEXP,存在POD:ExistPOC,无需重启:NoNeedReboot, 服务重启:ServerRestart,远程信息泄露:RemoteInfoLeak,远程拒绝服务:RemoteRefuseService,远程利用:RemoteExploit,远程执行:RemoteExecute
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskProperty *string `json:"RiskProperty,omitnil,omitempty" name:"RiskProperty"`
 
 	// CVE编号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CVENumber *string `json:"CVENumber,omitnil,omitempty" name:"CVENumber"`
 
 	// 披露时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscoverTime *string `json:"DiscoverTime,omitnil,omitempty" name:"DiscoverTime"`
 
 	// 解决方案
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
 
 	// CVSS信息,用于画图
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CVSS *string `json:"CVSS,omitnil,omitempty" name:"CVSS"`
 
 	// CVSS分数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CVSSScore *string `json:"CVSSScore,omitnil,omitempty" name:"CVSSScore"`
 
 	// 参考连接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RelateLink *string `json:"RelateLink,omitnil,omitempty" name:"RelateLink"`
 
 	// 影响类型，为Node或者Workload
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AffectedType *string `json:"AffectedType,omitnil,omitempty" name:"AffectedType"`
 
 	// 受影响的版本信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AffectedVersion *string `json:"AffectedVersion,omitnil,omitempty" name:"AffectedVersion"`
 
 	// 忽略的资产数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IgnoredAssetNum *int64 `json:"IgnoredAssetNum,omitnil,omitempty" name:"IgnoredAssetNum"`
 
 	// 是否忽略该检测项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsIgnored *bool `json:"IsIgnored,omitnil,omitempty" name:"IsIgnored"`
 
 	// 受影响评估
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskAssessment *string `json:"RiskAssessment,omitnil,omitempty" name:"RiskAssessment"`
 }
 
@@ -2375,27 +2347,21 @@ type ClusterInfoItem struct {
 	// 卸载异常: AccessedUninstallException
 	// 接入中: AccessedInstalling
 	// 卸载中: AccessedUninstalling
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessedStatus *string `json:"AccessedStatus,omitnil,omitempty" name:"AccessedStatus"`
 
 	// 接入失败原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessedSubStatus *string `json:"AccessedSubStatus,omitnil,omitempty" name:"AccessedSubStatus"`
 
 	// 节点总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeCount *uint64 `json:"NodeCount,omitnil,omitempty" name:"NodeCount"`
 
 	// 离线节点数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OffLineNodeCount *uint64 `json:"OffLineNodeCount,omitnil,omitempty" name:"OffLineNodeCount"`
 
 	// 未安装agent节点数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnInstallAgentNodeCount *uint64 `json:"UnInstallAgentNodeCount,omitnil,omitempty" name:"UnInstallAgentNodeCount"`
 
 	// 计费核数(弹性计费核数+普通计费核数)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeCoresCnt *uint64 `json:"ChargeCoresCnt,omitnil,omitempty" name:"ChargeCoresCnt"`
 
 	// master 地址列表
@@ -2429,40 +2395,32 @@ type ClusterNodeInfo struct {
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
 	// agent安装状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AgentStatus *string `json:"AgentStatus,omitnil,omitempty" name:"AgentStatus"`
 
 	// 公网ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIP *string `json:"PublicIP,omitnil,omitempty" name:"PublicIP"`
 
 	// 节点ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostID *string `json:"HostID,omitnil,omitempty" name:"HostID"`
 
 	// 主机类型(普通节点情况)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
 	// 节点类型(
 	// NORMAL: 普通节点
 	// SUPER:超级节点
 	// )
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
 
 	// uuid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UUID *string `json:"UUID,omitnil,omitempty" name:"UUID"`
 
 	// 计费核数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeCoresCnt *uint64 `json:"ChargeCoresCnt,omitnil,omitempty" name:"ChargeCoresCnt"`
 
 	// 防护状态:
 	// 已防护: Defended
 	// 未防护: UnDefended
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefendStatus *string `json:"DefendStatus,omitnil,omitempty" name:"DefendStatus"`
 }
 
@@ -2609,19 +2567,15 @@ type ComplianceAffectedAsset struct {
 	CheckResult *string `json:"CheckResult,omitnil,omitempty" name:"CheckResult"`
 
 	// 主机IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostIP *string `json:"HostIP,omitnil,omitempty" name:"HostIP"`
 
 	// 镜像的tag
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageTag *string `json:"ImageTag,omitnil,omitempty" name:"ImageTag"`
 
 	// 检查项验证信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifyInfo *string `json:"VerifyInfo,omitnil,omitempty" name:"VerifyInfo"`
 
 	// 主机实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 镜像仓库信息
@@ -2667,13 +2621,11 @@ type ComplianceAssetDetailInfo struct {
 	FailedPolicyItemCount *uint64 `json:"FailedPolicyItemCount,omitnil,omitempty" name:"FailedPolicyItemCount"`
 
 	// 上次检测的时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastCheckTime *string `json:"LastCheckTime,omitnil,omitempty" name:"LastCheckTime"`
 
 	// 检测结果：
 	// RESULT_FAILED: 未通过。
 	// RESULT_PASSED: 通过。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckResult *string `json:"CheckResult,omitnil,omitempty" name:"CheckResult"`
 
 	// 资产的运行状态。
@@ -2698,7 +2650,6 @@ type ComplianceAssetInfo struct {
 	AssetName *string `json:"AssetName,omitnil,omitempty" name:"AssetName"`
 
 	// 当资产为镜像时，这个字段为镜像Tag。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageTag *string `json:"ImageTag,omitnil,omitempty" name:"ImageTag"`
 
 	// 资产所在的主机IP。
@@ -2719,25 +2670,20 @@ type ComplianceAssetInfo struct {
 	CheckStatus *string `json:"CheckStatus,omitnil,omitempty" name:"CheckStatus"`
 
 	// 此类资产通过的检测项的数目。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PassedPolicyItemCount *uint64 `json:"PassedPolicyItemCount,omitnil,omitempty" name:"PassedPolicyItemCount"`
 
 	// 此类资产未通过的检测的数目。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedPolicyItemCount *uint64 `json:"FailedPolicyItemCount,omitnil,omitempty" name:"FailedPolicyItemCount"`
 
 	// 上次检测的时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastCheckTime *string `json:"LastCheckTime,omitnil,omitempty" name:"LastCheckTime"`
 
 	// 检测结果：
 	// RESULT_FAILED: 未通过。
 	// RESULT_PASSED: 通过。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckResult *string `json:"CheckResult,omitnil,omitempty" name:"CheckResult"`
 
 	// 主机节点的实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 镜像仓库信息
@@ -2782,22 +2728,18 @@ type ComplianceAssetPolicyItem struct {
 	// 检测结果
 	// RESULT_PASSED: 通过
 	// RESULT_FAILED: 未通过
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckResult *string `json:"CheckResult,omitnil,omitempty" name:"CheckResult"`
 
 	// 检测项对应的白名单项的ID。如果存在且非0，表示检测项被用户忽略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WhitelistId *uint64 `json:"WhitelistId,omitnil,omitempty" name:"WhitelistId"`
 
 	// 处理建议。
 	FixSuggestion *string `json:"FixSuggestion,omitnil,omitempty" name:"FixSuggestion"`
 
 	// 最近检测的时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastCheckTime *string `json:"LastCheckTime,omitnil,omitempty" name:"LastCheckTime"`
 
 	// 验证信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifyInfo *string `json:"VerifyInfo,omitnil,omitempty" name:"VerifyInfo"`
 }
 
@@ -2830,7 +2772,6 @@ type ComplianceAssetSummary struct {
 	CheckStatus *string `json:"CheckStatus,omitnil,omitempty" name:"CheckStatus"`
 
 	// 此类别的检测进度，为 0~100 的数。若未在检测中，无此字段。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckProgress *float64 `json:"CheckProgress,omitnil,omitempty" name:"CheckProgress"`
 
 	// 此类资产通过的检测项的数目。
@@ -2867,34 +2808,27 @@ type ComplianceAssetSummary struct {
 	ScanFailedAssetCount *uint64 `json:"ScanFailedAssetCount,omitnil,omitempty" name:"ScanFailedAssetCount"`
 
 	// 上次检测的耗时，单位为秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckCostTime *float64 `json:"CheckCostTime,omitnil,omitempty" name:"CheckCostTime"`
 
 	// 上次检测的时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastCheckTime *string `json:"LastCheckTime,omitnil,omitempty" name:"LastCheckTime"`
 
 	// 定时检测规则。
 	PeriodRule *CompliancePeriodTaskRule `json:"PeriodRule,omitnil,omitempty" name:"PeriodRule"`
 
 	// 已开启的检查项总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpenPolicyItemCount *uint64 `json:"OpenPolicyItemCount,omitnil,omitempty" name:"OpenPolicyItemCount"`
 
 	// 已忽略的检查项总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IgnoredPolicyItemCount *uint64 `json:"IgnoredPolicyItemCount,omitnil,omitempty" name:"IgnoredPolicyItemCount"`
 
 	// 总检测项数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalPolicyItemCount *uint64 `json:"TotalPolicyItemCount,omitnil,omitempty" name:"TotalPolicyItemCount"`
 
 	// 检测主机数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DetectHostCount *uint64 `json:"DetectHostCount,omitnil,omitempty" name:"DetectHostCount"`
 
 	// 当前任务剩余时间，单位秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LeftTime *uint64 `json:"LeftTime,omitnil,omitempty" name:"LeftTime"`
 }
 
@@ -2928,7 +2862,6 @@ type ComplianceContainerDetailInfo struct {
 	ContainerId *string `json:"ContainerId,omitnil,omitempty" name:"ContainerId"`
 
 	// 容器所属的Pod的名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
 }
 
@@ -2945,15 +2878,12 @@ type ComplianceFilters struct {
 
 type ComplianceHostDetailInfo struct {
 	// 主机上的Docker版本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DockerVersion *string `json:"DockerVersion,omitnil,omitempty" name:"DockerVersion"`
 
 	// 主机上的K8S的版本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	K8SVersion *string `json:"K8SVersion,omitnil,omitempty" name:"K8SVersion"`
 
 	// 主机上Containerd版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerdVersion *string `json:"ContainerdVersion,omitnil,omitempty" name:"ContainerdVersion"`
 }
 
@@ -2968,17 +2898,14 @@ type ComplianceImageDetailInfo struct {
 	ImageTag *string `json:"ImageTag,omitnil,omitempty" name:"ImageTag"`
 
 	// 镜像所在远程仓库的路径。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Repository *string `json:"Repository,omitnil,omitempty" name:"Repository"`
 }
 
 type ComplianceK8SDetailInfo struct {
 	// K8S集群的名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// K8S集群的版本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterVersion *string `json:"ClusterVersion,omitnil,omitempty" name:"ClusterVersion"`
 }
 
@@ -2994,7 +2921,6 @@ type CompliancePeriodTask struct {
 	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 
 	// 最近一次触发的时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastTriggerTime *string `json:"LastTriggerTime,omitnil,omitempty" name:"LastTriggerTime"`
 
 	// 总的检查项数目
@@ -3015,7 +2941,6 @@ type CompliancePeriodTaskRule struct {
 	ExecutionTime *string `json:"ExecutionTime,omitnil,omitempty" name:"ExecutionTime"`
 
 	// 是否开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 }
 
@@ -3050,7 +2975,6 @@ type CompliancePolicyItemSummary struct {
 	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 
 	// 最近检测的时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastCheckTime *string `json:"LastCheckTime,omitnil,omitempty" name:"LastCheckTime"`
 
 	// 检测状态
@@ -3067,19 +2991,15 @@ type CompliancePolicyItemSummary struct {
 	// 检测结果。RESULT_PASSED: 通过
 	// 
 	// RESULT_FAILED: 未通过
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckResult *string `json:"CheckResult,omitnil,omitempty" name:"CheckResult"`
 
 	// 通过检测的资产的数目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PassedAssetCount *uint64 `json:"PassedAssetCount,omitnil,omitempty" name:"PassedAssetCount"`
 
 	// 未通过检测的资产的数目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedAssetCount *uint64 `json:"FailedAssetCount,omitnil,omitempty" name:"FailedAssetCount"`
 
 	// 检测项对应的白名单项的ID。如果存在且非0，表示检测项被用户忽略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WhitelistId *uint64 `json:"WhitelistId,omitnil,omitempty" name:"WhitelistId"`
 
 	// 处理建议。
@@ -3089,21 +3009,17 @@ type CompliancePolicyItemSummary struct {
 	BenchmarkStandardId *uint64 `json:"BenchmarkStandardId,omitnil,omitempty" name:"BenchmarkStandardId"`
 
 	// 检测项适用的版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicableVersion *string `json:"ApplicableVersion,omitnil,omitempty" name:"ApplicableVersion"`
 
 	// 检查项描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 检查项审计方法
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuditProcedure *string `json:"AuditProcedure,omitnil,omitempty" name:"AuditProcedure"`
 
 	// 是否开启
 	// <li>0 关闭</li>
 	// <li>1 开启</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsEnable *uint64 `json:"IsEnable,omitnil,omitempty" name:"IsEnable"`
 }
 
@@ -3170,29 +3086,23 @@ type ComponentInfo struct {
 
 type ComponentsInfo struct {
 	// 组件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: Component is deprecated.
 	Component *string `json:"Component,omitnil,omitempty" name:"Component"`
 
 	// 组件版本信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 可修复版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FixedVersion *string `json:"FixedVersion,omitnil,omitempty" name:"FixedVersion"`
 
 	// 路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 组件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
@@ -3333,11 +3243,9 @@ type ContainerInfo struct {
 	NetSubStatus *string `json:"NetSubStatus,omitnil,omitempty" name:"NetSubStatus"`
 
 	// 隔离来源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolateSource *string `json:"IsolateSource,omitnil,omitempty" name:"IsolateSource"`
 
 	// 隔离时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
 
 	// 超级节点id
@@ -3368,7 +3276,6 @@ type ContainerInfo struct {
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 
 	// pod uid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodUid *string `json:"PodUid,omitnil,omitempty" name:"PodUid"`
 }
 
@@ -3979,6 +3886,9 @@ type CreateAssetImageScanTaskRequestParams struct {
 
 	// 任务超时时长单位秒，默认1小时
 	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// 一键扫描任务。默认false表示非一键扫描，true一键扫描
+	IsOneClickScanningTask *bool `json:"IsOneClickScanningTask,omitnil,omitempty" name:"IsOneClickScanningTask"`
 }
 
 type CreateAssetImageScanTaskRequest struct {
@@ -4013,6 +3923,9 @@ type CreateAssetImageScanTaskRequest struct {
 
 	// 任务超时时长单位秒，默认1小时
 	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// 一键扫描任务。默认false表示非一键扫描，true一键扫描
+	IsOneClickScanningTask *bool `json:"IsOneClickScanningTask,omitnil,omitempty" name:"IsOneClickScanningTask"`
 }
 
 func (r *CreateAssetImageScanTaskRequest) ToJsonString() string {
@@ -4037,6 +3950,7 @@ func (r *CreateAssetImageScanTaskRequest) FromJsonString(s string) error {
 	delete(f, "ContainerRunning")
 	delete(f, "ScanScope")
 	delete(f, "Timeout")
+	delete(f, "IsOneClickScanningTask")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAssetImageScanTaskRequest has unknown keys!", "")
 	}
@@ -4265,7 +4179,6 @@ type CreateClusterCheckTaskResponseParams struct {
 	CreateResult *string `json:"CreateResult,omitnil,omitempty" name:"CreateResult"`
 
 	// 返回创建的集群新任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewTaskID *string `json:"NewTaskID,omitnil,omitempty" name:"NewTaskID"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4907,7 +4820,6 @@ func (r *CreateExportComplianceStatusListJobRequest) FromJsonString(s string) er
 // Predefined struct for user
 type CreateExportComplianceStatusListJobResponseParams struct {
 	// 返回创建的导出任务的ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7581,6 +7493,60 @@ func (r *DeleteNetworkFirewallPolicyDetailResponse) FromJsonString(s string) err
 }
 
 // Predefined struct for user
+type DeleteRaspRulesRequestParams struct {
+	// 待删除的规则ID数组 (最大100条)
+	IDs []*uint64 `json:"IDs,omitnil,omitempty" name:"IDs"`
+}
+
+type DeleteRaspRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待删除的规则ID数组 (最大100条)
+	IDs []*uint64 `json:"IDs,omitnil,omitempty" name:"IDs"`
+}
+
+func (r *DeleteRaspRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRaspRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IDs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRaspRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRaspRulesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteRaspRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteRaspRulesResponseParams `json:"Response"`
+}
+
+func (r *DeleteRaspRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRaspRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteReverseShellEventsRequestParams struct {
 	// 事件ids
 	EventIdSet []*string `json:"EventIdSet,omitnil,omitempty" name:"EventIdSet"`
@@ -7954,7 +7920,6 @@ type DescribeAbnormalProcessDetailResponseParams struct {
 	EventDetail *AbnormalProcessEventDescription `json:"EventDetail,omitnil,omitempty" name:"EventDetail"`
 
 	// 祖先进程信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AncestorProcessInfo *ProcessBaseInfo `json:"AncestorProcessInfo,omitnil,omitempty" name:"AncestorProcessInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8038,99 +8003,6 @@ func (r *DescribeAbnormalProcessEventTendencyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAbnormalProcessEventTendencyResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeAbnormalProcessEventsExportRequestParams struct {
-	// 导出字段
-	ExportField []*string `json:"ExportField,omitnil,omitempty" name:"ExportField"`
-
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
-
-	// 升序降序,asc desc
-	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-
-	// 排序字段
-	By *string `json:"By,omitnil,omitempty" name:"By"`
-}
-
-type DescribeAbnormalProcessEventsExportRequest struct {
-	*tchttp.BaseRequest
-	
-	// 导出字段
-	ExportField []*string `json:"ExportField,omitnil,omitempty" name:"ExportField"`
-
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
-
-	// 升序降序,asc desc
-	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-
-	// 排序字段
-	By *string `json:"By,omitnil,omitempty" name:"By"`
-}
-
-func (r *DescribeAbnormalProcessEventsExportRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAbnormalProcessEventsExportRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ExportField")
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "Filters")
-	delete(f, "Order")
-	delete(f, "By")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAbnormalProcessEventsExportRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeAbnormalProcessEventsExportResponseParams struct {
-	// execle下载地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeAbnormalProcessEventsExportResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeAbnormalProcessEventsExportResponseParams `json:"Response"`
-}
-
-func (r *DescribeAbnormalProcessEventsExportResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAbnormalProcessEventsExportResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8361,99 +8233,6 @@ func (r *DescribeAbnormalProcessRuleDetailResponse) FromJsonString(s string) err
 }
 
 // Predefined struct for user
-type DescribeAbnormalProcessRulesExportRequestParams struct {
-	// 导出字段
-	ExportField []*string `json:"ExportField,omitnil,omitempty" name:"ExportField"`
-
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
-
-	// 升序降序,asc desc
-	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-
-	// 排序字段
-	By *string `json:"By,omitnil,omitempty" name:"By"`
-}
-
-type DescribeAbnormalProcessRulesExportRequest struct {
-	*tchttp.BaseRequest
-	
-	// 导出字段
-	ExportField []*string `json:"ExportField,omitnil,omitempty" name:"ExportField"`
-
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
-
-	// 升序降序,asc desc
-	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-
-	// 排序字段
-	By *string `json:"By,omitnil,omitempty" name:"By"`
-}
-
-func (r *DescribeAbnormalProcessRulesExportRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAbnormalProcessRulesExportRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ExportField")
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "Filters")
-	delete(f, "Order")
-	delete(f, "By")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAbnormalProcessRulesExportRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeAbnormalProcessRulesExportResponseParams struct {
-	// execle下载地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeAbnormalProcessRulesExportResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeAbnormalProcessRulesExportResponseParams `json:"Response"`
-}
-
-func (r *DescribeAbnormalProcessRulesExportResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAbnormalProcessRulesExportResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeAbnormalProcessRulesRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -8591,7 +8370,6 @@ type DescribeAccessControlDetailResponseParams struct {
 	ParentProcessInfo *ProcessBaseInfo `json:"ParentProcessInfo,omitnil,omitempty" name:"ParentProcessInfo"`
 
 	// 祖先进程信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AncestorProcessInfo *ProcessBaseInfo `json:"AncestorProcessInfo,omitnil,omitempty" name:"AncestorProcessInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8684,11 +8462,9 @@ func (r *DescribeAccessControlEventsExportRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeAccessControlEventsExportResponseParams struct {
 	// execle下载地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 任务id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8874,99 +8650,6 @@ func (r *DescribeAccessControlRuleDetailResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAccessControlRuleDetailResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeAccessControlRulesExportRequestParams struct {
-	// 导出字段
-	ExportField []*string `json:"ExportField,omitnil,omitempty" name:"ExportField"`
-
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
-
-	// 升序降序,asc desc
-	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-
-	// 排序字段
-	By *string `json:"By,omitnil,omitempty" name:"By"`
-}
-
-type DescribeAccessControlRulesExportRequest struct {
-	*tchttp.BaseRequest
-	
-	// 导出字段
-	ExportField []*string `json:"ExportField,omitnil,omitempty" name:"ExportField"`
-
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
-
-	// 升序降序,asc desc
-	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-
-	// 排序字段
-	By *string `json:"By,omitnil,omitempty" name:"By"`
-}
-
-func (r *DescribeAccessControlRulesExportRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAccessControlRulesExportRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ExportField")
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "Filters")
-	delete(f, "Order")
-	delete(f, "By")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessControlRulesExportRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeAccessControlRulesExportResponseParams struct {
-	// execle下载地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeAccessControlRulesExportResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeAccessControlRulesExportResponseParams `json:"Response"`
-}
-
-func (r *DescribeAccessControlRulesExportResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAccessControlRulesExportResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9894,11 +9577,9 @@ type DescribeAssetContainerDetailResponseParams struct {
 	NetSubStatus *string `json:"NetSubStatus,omitnil,omitempty" name:"NetSubStatus"`
 
 	// 隔离来源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolateSource *string `json:"IsolateSource,omitnil,omitempty" name:"IsolateSource"`
 
 	// 隔离时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
 
 	// 节点ID
@@ -10521,27 +10202,21 @@ type DescribeAssetImageDetailResponseParams struct {
 	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
 
 	// 关联主机个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostCnt *uint64 `json:"HostCnt,omitnil,omitempty" name:"HostCnt"`
 
 	// 关联容器个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerCnt *uint64 `json:"ContainerCnt,omitnil,omitempty" name:"ContainerCnt"`
 
 	// 最近扫描时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanTime *string `json:"ScanTime,omitnil,omitempty" name:"ScanTime"`
 
 	// 漏洞个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulCnt *uint64 `json:"VulCnt,omitnil,omitempty" name:"VulCnt"`
 
 	// 风险行为数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskCnt *uint64 `json:"RiskCnt,omitnil,omitempty" name:"RiskCnt"`
 
 	// 敏感信息数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveInfoCnt *uint64 `json:"SensitiveInfoCnt,omitnil,omitempty" name:"SensitiveInfoCnt"`
 
 	// 是否信任镜像
@@ -10551,63 +10226,48 @@ type DescribeAssetImageDetailResponseParams struct {
 	OsName *string `json:"OsName,omitnil,omitempty" name:"OsName"`
 
 	// agent镜像扫描错误
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AgentError *string `json:"AgentError,omitnil,omitempty" name:"AgentError"`
 
 	// 后端镜像扫描错误
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanError *string `json:"ScanError,omitnil,omitempty" name:"ScanError"`
 
 	// 系统架构
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Architecture *string `json:"Architecture,omitnil,omitempty" name:"Architecture"`
 
 	// 作者
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Author *string `json:"Author,omitnil,omitempty" name:"Author"`
 
 	// 构建历史
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BuildHistory *string `json:"BuildHistory,omitnil,omitempty" name:"BuildHistory"`
 
 	// 木马扫描进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanVirusProgress *uint64 `json:"ScanVirusProgress,omitnil,omitempty" name:"ScanVirusProgress"`
 
 	// 漏洞扫进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanVulProgress *uint64 `json:"ScanVulProgress,omitnil,omitempty" name:"ScanVulProgress"`
 
 	// 敏感信息扫描进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanRiskProgress *uint64 `json:"ScanRiskProgress,omitnil,omitempty" name:"ScanRiskProgress"`
 
 	// 木马扫描错误
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanVirusError *string `json:"ScanVirusError,omitnil,omitempty" name:"ScanVirusError"`
 
 	// 漏洞扫描错误
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanVulError *string `json:"ScanVulError,omitnil,omitempty" name:"ScanVulError"`
 
 	// 敏感信息错误
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanRiskError *string `json:"ScanRiskError,omitnil,omitempty" name:"ScanRiskError"`
 
 	// 镜像扫描状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanStatus *string `json:"ScanStatus,omitnil,omitempty" name:"ScanStatus"`
 
 	// 木马病毒数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirusCnt *uint64 `json:"VirusCnt,omitnil,omitempty" name:"VirusCnt"`
 
 	// 镜像扫描状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 剩余扫描时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemainScanTime *uint64 `json:"RemainScanTime,omitnil,omitempty" name:"RemainScanTime"`
 
 	// 授权为：1，未授权为：0
@@ -10690,106 +10350,6 @@ func (r *DescribeAssetImageHostListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAssetImageHostListResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeAssetImageListExportRequestParams struct {
-	// 导出字段
-	ExportField []*string `json:"ExportField,omitnil,omitempty" name:"ExportField"`
-
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 过滤条件。
-	// <li>ImageName- String - 是否必填：否 - 镜像名称筛选，</li>
-	// <li>ScanStatus - String - 是否必填：否 - 镜像扫描状态notScan，scanning，scanned，scanErr</li>
-	// <li>ImageID- String - 是否必填：否 - 镜像ID筛选，</li>
-	// <li>SecurityRisk- String - 是否必填：否 - 安全风险，VulCnt 、VirusCnt、RiskCnt、IsTrustImage</li>
-	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
-
-	// 排序字段
-	By *string `json:"By,omitnil,omitempty" name:"By"`
-
-	// 排序方式 asc,desc
-	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-}
-
-type DescribeAssetImageListExportRequest struct {
-	*tchttp.BaseRequest
-	
-	// 导出字段
-	ExportField []*string `json:"ExportField,omitnil,omitempty" name:"ExportField"`
-
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 过滤条件。
-	// <li>ImageName- String - 是否必填：否 - 镜像名称筛选，</li>
-	// <li>ScanStatus - String - 是否必填：否 - 镜像扫描状态notScan，scanning，scanned，scanErr</li>
-	// <li>ImageID- String - 是否必填：否 - 镜像ID筛选，</li>
-	// <li>SecurityRisk- String - 是否必填：否 - 安全风险，VulCnt 、VirusCnt、RiskCnt、IsTrustImage</li>
-	Filters []*AssetFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
-
-	// 排序字段
-	By *string `json:"By,omitnil,omitempty" name:"By"`
-
-	// 排序方式 asc,desc
-	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-}
-
-func (r *DescribeAssetImageListExportRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAssetImageListExportRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ExportField")
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "Filters")
-	delete(f, "By")
-	delete(f, "Order")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetImageListExportRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeAssetImageListExportResponseParams struct {
-	// excel文件下载地址
-	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeAssetImageListExportResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeAssetImageListExportResponseParams `json:"Response"`
-}
-
-func (r *DescribeAssetImageListExportResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAssetImageListExportResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10924,7 +10484,6 @@ type DescribeAssetImageRegistryAssetStatusResponseParams struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Err *string `json:"Err,omitnil,omitempty" name:"Err"`
 
 	// 最后一次同步成功时间
@@ -10992,137 +10551,104 @@ func (r *DescribeAssetImageRegistryDetailRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeAssetImageRegistryDetailResponseParams struct {
 	// 镜像Digest
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageDigest *string `json:"ImageDigest,omitnil,omitempty" name:"ImageDigest"`
 
 	// 镜像地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageRepoAddress *string `json:"ImageRepoAddress,omitnil,omitempty" name:"ImageRepoAddress"`
 
 	// 镜像类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegistryType *string `json:"RegistryType,omitnil,omitempty" name:"RegistryType"`
 
 	// 仓库名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
 
 	// 镜像版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageTag *string `json:"ImageTag,omitnil,omitempty" name:"ImageTag"`
 
 	// 扫描时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanTime *string `json:"ScanTime,omitnil,omitempty" name:"ScanTime"`
 
 	// 扫描状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanStatus *string `json:"ScanStatus,omitnil,omitempty" name:"ScanStatus"`
 
 	// 安全漏洞数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulCnt *uint64 `json:"VulCnt,omitnil,omitempty" name:"VulCnt"`
 
 	// 木马病毒数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirusCnt *uint64 `json:"VirusCnt,omitnil,omitempty" name:"VirusCnt"`
 
 	// 风险行为数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskCnt *uint64 `json:"RiskCnt,omitnil,omitempty" name:"RiskCnt"`
 
 	// 敏感信息数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: SentiveInfoCnt is deprecated.
 	SentiveInfoCnt *uint64 `json:"SentiveInfoCnt,omitnil,omitempty" name:"SentiveInfoCnt"`
 
 	// 镜像系统
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OsName *string `json:"OsName,omitnil,omitempty" name:"OsName"`
 
 	// 木马扫描错误
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanVirusError *string `json:"ScanVirusError,omitnil,omitempty" name:"ScanVirusError"`
 
 	// 漏洞扫描错误
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanVulError *string `json:"ScanVulError,omitnil,omitempty" name:"ScanVulError"`
 
 	// 层文件信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LayerInfo *string `json:"LayerInfo,omitnil,omitempty" name:"LayerInfo"`
 
 	// 实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 命名空间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// 高危扫描错误
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanRiskError *string `json:"ScanRiskError,omitnil,omitempty" name:"ScanRiskError"`
 
 	// 木马信息扫描进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanVirusProgress *uint64 `json:"ScanVirusProgress,omitnil,omitempty" name:"ScanVirusProgress"`
 
 	// 漏洞扫描进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanVulProgress *uint64 `json:"ScanVulProgress,omitnil,omitempty" name:"ScanVulProgress"`
 
 	// 敏感扫描进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanRiskProgress *uint64 `json:"ScanRiskProgress,omitnil,omitempty" name:"ScanRiskProgress"`
 
 	// 剩余扫描时间秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanRemainTime *uint64 `json:"ScanRemainTime,omitnil,omitempty" name:"ScanRemainTime"`
 
 	// cve扫描状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CveStatus *string `json:"CveStatus,omitnil,omitempty" name:"CveStatus"`
 
 	// 高危扫描状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskStatus *string `json:"RiskStatus,omitnil,omitempty" name:"RiskStatus"`
 
 	// 木马扫描状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirusStatus *string `json:"VirusStatus,omitnil,omitempty" name:"VirusStatus"`
 
 	// 总进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
 	// 授权状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAuthorized *uint64 `json:"IsAuthorized,omitnil,omitempty" name:"IsAuthorized"`
 
 	// 镜像大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageSize *uint64 `json:"ImageSize,omitnil,omitempty" name:"ImageSize"`
 
 	// 镜像Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
 	// 镜像区域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegistryRegion *string `json:"RegistryRegion,omitnil,omitempty" name:"RegistryRegion"`
 
 	// 镜像创建的时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageCreateTime *string `json:"ImageCreateTime,omitnil,omitempty" name:"ImageCreateTime"`
 
 	// 敏感信息数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveInfoCnt *uint64 `json:"SensitiveInfoCnt,omitnil,omitempty" name:"SensitiveInfoCnt"`
 
 	// Id
@@ -11225,7 +10751,6 @@ func (r *DescribeAssetImageRegistryListExportRequest) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeAssetImageRegistryListExportResponseParams struct {
 	// excel文件下载地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11327,11 +10852,9 @@ func (r *DescribeAssetImageRegistryListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageRegistryListResponseParams struct {
 	// 镜像仓库列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*ImageRepoInfo `json:"List,omitnil,omitempty" name:"List"`
 
 	// 总数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11404,22 +10927,18 @@ type DescribeAssetImageRegistryRegistryDetailResponseParams struct {
 	RegistryType *string `json:"RegistryType,omitnil,omitempty" name:"RegistryType"`
 
 	// 仓库版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegistryVersion *string `json:"RegistryVersion,omitnil,omitempty" name:"RegistryVersion"`
 
 	// 网络类型，列表：public（公网）,private（私网）
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 区域，列表:default（默认）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegistryRegion *string `json:"RegistryRegion,omitnil,omitempty" name:"RegistryRegion"`
 
 	// 限速
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpeedLimit *uint64 `json:"SpeedLimit,omitnil,omitempty" name:"SpeedLimit"`
 
 	// 安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Insecure *uint64 `json:"Insecure,omitnil,omitempty" name:"Insecure"`
 
 	// 联通性检测结果详情
@@ -11427,6 +10946,18 @@ type DescribeAssetImageRegistryRegistryDetailResponseParams struct {
 
 	// tcr情况下instance_id
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// 同步方式，0全量同步，1增量同步
+	SyncMode *uint64 `json:"SyncMode,omitnil,omitempty" name:"SyncMode"`
+
+	// 是否自动授权&扫描，选择全量同步时只针对最新版本镜像，增量同步时则包含所有新增镜像
+	NeedScan *bool `json:"NeedScan,omitnil,omitempty" name:"NeedScan"`
+
+	// webhook接入地址
+	WebhookUrl *string `json:"WebhookUrl,omitnil,omitempty" name:"WebhookUrl"`
+
+	// webhook接入token	
+	WebhookToken *string `json:"WebhookToken,omitnil,omitempty" name:"WebhookToken"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -11513,11 +11044,9 @@ func (r *DescribeAssetImageRegistryRegistryListRequest) FromJsonString(s string)
 // Predefined struct for user
 type DescribeAssetImageRegistryRegistryListResponseParams struct {
 	// 镜像仓库列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*ImageRepoRegistryInfo `json:"List,omitnil,omitempty" name:"List"`
 
 	// 总数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11621,11 +11150,9 @@ func (r *DescribeAssetImageRegistryRiskInfoListRequest) FromJsonString(s string)
 // Predefined struct for user
 type DescribeAssetImageRegistryRiskInfoListResponseParams struct {
 	// 镜像漏洞列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*ImageRisk `json:"List,omitnil,omitempty" name:"List"`
 
 	// 总数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11722,7 +11249,6 @@ func (r *DescribeAssetImageRegistryRiskListExportRequest) FromJsonString(s strin
 // Predefined struct for user
 type DescribeAssetImageRegistryRiskListExportResponseParams struct {
 	// excel文件下载地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11807,7 +11333,6 @@ type DescribeAssetImageRegistryScanStatusOneKeyResponseParams struct {
 	ImageScanCnt *uint64 `json:"ImageScanCnt,omitnil,omitempty" name:"ImageScanCnt"`
 
 	// 扫描进度列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageStatus []*ImageProgress `json:"ImageStatus,omitnil,omitempty" name:"ImageStatus"`
 
 	// 安全个数
@@ -11823,7 +11348,6 @@ type DescribeAssetImageRegistryScanStatusOneKeyResponseParams struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 扫描剩余时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanRemainTime *uint64 `json:"ScanRemainTime,omitnil,omitempty" name:"ScanRemainTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11977,7 +11501,6 @@ func (r *DescribeAssetImageRegistryVirusListExportRequest) FromJsonString(s stri
 // Predefined struct for user
 type DescribeAssetImageRegistryVirusListExportResponseParams struct {
 	// excel文件下载地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12067,11 +11590,9 @@ func (r *DescribeAssetImageRegistryVirusListRequest) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeAssetImageRegistryVirusListResponseParams struct {
 	// 镜像漏洞列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*ImageVirus `json:"List,omitnil,omitempty" name:"List"`
 
 	// 总数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12168,7 +11689,6 @@ func (r *DescribeAssetImageRegistryVulListExportRequest) FromJsonString(s string
 // Predefined struct for user
 type DescribeAssetImageRegistryVulListExportResponseParams struct {
 	// excel文件下载地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12258,11 +11778,9 @@ func (r *DescribeAssetImageRegistryVulListRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeAssetImageRegistryVulListResponseParams struct {
 	// 镜像漏洞列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*ImageVul `json:"List,omitnil,omitempty" name:"List"`
 
 	// 总数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12530,15 +12048,12 @@ type DescribeAssetImageScanSettingResponseParams struct {
 	ScanEndTime *string `json:"ScanEndTime,omitnil,omitempty" name:"ScanEndTime"`
 
 	// 排除的扫描镜像
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExcludeImages []*string `json:"ExcludeImages,omitnil,omitempty" name:"ExcludeImages"`
 
 	// 最后一次扫描时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastScanTime *string `json:"LastScanTime,omitnil,omitempty" name:"LastScanTime"`
 
 	// 扫描结果(Success|InsufficientLicense|ImageNeedIsEmpty|InternalError)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanResult *string `json:"ScanResult,omitnil,omitempty" name:"ScanResult"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14216,15 +13731,12 @@ type DescribeClusterSummaryResponseParams struct {
 	ServerlessClusterCount *uint64 `json:"ServerlessClusterCount,omitnil,omitempty" name:"ServerlessClusterCount"`
 
 	// TKE集群数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TkeClusterCount *uint64 `json:"TkeClusterCount,omitnil,omitempty" name:"TkeClusterCount"`
 
 	// 用户自建腾讯云集群数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserCreateTencentClusterCount *uint64 `json:"UserCreateTencentClusterCount,omitnil,omitempty" name:"UserCreateTencentClusterCount"`
 
 	// 用户自建集群混合云数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserCreateHybridClusterCount *uint64 `json:"UserCreateHybridClusterCount,omitnil,omitempty" name:"UserCreateHybridClusterCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14292,19 +13804,15 @@ type DescribeComplianceAssetDetailInfoResponseParams struct {
 	AssetDetailInfo *ComplianceAssetDetailInfo `json:"AssetDetailInfo,omitnil,omitempty" name:"AssetDetailInfo"`
 
 	// 当资产为容器时，返回此字段。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerDetailInfo *ComplianceContainerDetailInfo `json:"ContainerDetailInfo,omitnil,omitempty" name:"ContainerDetailInfo"`
 
 	// 当资产为镜像时，返回此字段。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageDetailInfo *ComplianceImageDetailInfo `json:"ImageDetailInfo,omitnil,omitempty" name:"ImageDetailInfo"`
 
 	// 当资产为主机时，返回此字段。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostDetailInfo *ComplianceHostDetailInfo `json:"HostDetailInfo,omitnil,omitempty" name:"HostDetailInfo"`
 
 	// 当资产为K8S时，返回此字段。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	K8SDetailInfo *ComplianceK8SDetailInfo `json:"K8SDetailInfo,omitnil,omitempty" name:"K8SDetailInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14394,7 +13902,6 @@ type DescribeComplianceAssetListResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 返回各类资产的列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetInfoList []*ComplianceAssetInfo `json:"AssetInfoList,omitnil,omitempty" name:"AssetInfoList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14798,7 +14305,6 @@ type DescribeComplianceScanFailedAssetListResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 返回各类检测失败的资产的汇总信息的列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanFailedAssetList []*ComplianceScanFailedAsset `json:"ScanFailedAssetList,omitnil,omitempty" name:"ScanFailedAssetList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14965,7 +14471,6 @@ func (r *DescribeComplianceTaskPolicyItemSummaryListRequest) FromJsonString(s st
 // Predefined struct for user
 type DescribeComplianceTaskPolicyItemSummaryListResponseParams struct {
 	// 返回最近一次合规检查任务的ID。这个任务为本次所展示数据的来源。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 返回检测项的总数。
@@ -15229,7 +14734,6 @@ type DescribeContainerSecEventSummaryResponseParams struct {
 	UnhandledMaliciousConnectionEventCnt *uint64 `json:"UnhandledMaliciousConnectionEventCnt,omitnil,omitempty" name:"UnhandledMaliciousConnectionEventCnt"`
 
 	// 未处理k8sApi事件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnhandledK8sApiEventCnt *uint64 `json:"UnhandledK8sApiEventCnt,omitnil,omitempty" name:"UnhandledK8sApiEventCnt"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15558,7 +15062,6 @@ type DescribeEscapeEventDetailResponseParams struct {
 	ParentProcessInfo *ProcessBaseInfo `json:"ParentProcessInfo,omitnil,omitempty" name:"ParentProcessInfo"`
 
 	// 祖先进程信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AncestorProcessInfo *ProcessBaseInfo `json:"AncestorProcessInfo,omitnil,omitempty" name:"AncestorProcessInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15805,99 +15308,6 @@ func (r *DescribeEscapeEventTypeSummaryResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeEscapeEventTypeSummaryResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeEscapeEventsExportRequestParams struct {
-	// 导出字段
-	ExportField []*string `json:"ExportField,omitnil,omitempty" name:"ExportField"`
-
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
-
-	// 升序降序,asc desc
-	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-
-	// 排序字段
-	By *string `json:"By,omitnil,omitempty" name:"By"`
-}
-
-type DescribeEscapeEventsExportRequest struct {
-	*tchttp.BaseRequest
-	
-	// 导出字段
-	ExportField []*string `json:"ExportField,omitnil,omitempty" name:"ExportField"`
-
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
-
-	// 升序降序,asc desc
-	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
-
-	// 排序字段
-	By *string `json:"By,omitnil,omitempty" name:"By"`
-}
-
-func (r *DescribeEscapeEventsExportRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeEscapeEventsExportRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ExportField")
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "Filters")
-	delete(f, "Order")
-	delete(f, "By")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEscapeEventsExportRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeEscapeEventsExportResponseParams struct {
-	// execle下载地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeEscapeEventsExportResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeEscapeEventsExportResponseParams `json:"Response"`
-}
-
-func (r *DescribeEscapeEventsExportResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeEscapeEventsExportResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -16392,15 +15802,12 @@ type DescribeExportJobResultResponseParams struct {
 	ExportStatus *string `json:"ExportStatus,omitnil,omitempty" name:"ExportStatus"`
 
 	// 返回下载URL
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadURL *string `json:"DownloadURL,omitnil,omitempty" name:"DownloadURL"`
 
 	// 当ExportStatus为RUNNING时，返回导出进度。0~100范围的浮点数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExportProgress *float64 `json:"ExportProgress,omitnil,omitempty" name:"ExportProgress"`
 
 	// 失败原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailureMsg *string `json:"FailureMsg,omitnil,omitempty" name:"FailureMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16640,19 +16047,15 @@ type DescribeImageAutoAuthorizedRuleResponseParams struct {
 	IsEnabled *int64 `json:"IsEnabled,omitnil,omitempty" name:"IsEnabled"`
 
 	// 授权范围类别，MANUAL:自选主机节点，ALL:全部镜像
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RangeType *string `json:"RangeType,omitnil,omitempty" name:"RangeType"`
 
 	// 授权范围是自选主机时的主机数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostCount *int64 `json:"HostCount,omitnil,omitempty" name:"HostCount"`
 
 	// 每天最大的镜像授权数限制, 0表示无限制
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxDailyCount *int64 `json:"MaxDailyCount,omitnil,omitempty" name:"MaxDailyCount"`
 
 	// 规则id，用未设置时为0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *int64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 自动扫描开关，0：关闭，1：开启
@@ -16981,7 +16384,6 @@ func (r *DescribeImageRegistryTimingScanTaskRequest) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeImageRegistryTimingScanTaskResponseParams struct {
 	// 定时扫描开关
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 定时任务扫描时间
@@ -16991,7 +16393,6 @@ type DescribeImageRegistryTimingScanTaskResponseParams struct {
 	ScanPeriod *uint64 `json:"ScanPeriod,omitnil,omitempty" name:"ScanPeriod"`
 
 	// 扫描类型数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanType []*string `json:"ScanType,omitnil,omitempty" name:"ScanType"`
 
 	// 扫描全部镜像
@@ -17000,19 +16401,15 @@ type DescribeImageRegistryTimingScanTaskResponseParams struct {
 	All *bool `json:"All,omitnil,omitempty" name:"All"`
 
 	// 自定义扫描镜像
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Images []*ImageInfo `json:"Images,omitnil,omitempty" name:"Images"`
 
 	// 自动以扫描镜像Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id []*uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 是否扫描最新版本镜像
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Latest *bool `json:"Latest,omitnil,omitempty" name:"Latest"`
 
 	// 扫描结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanEndTime *string `json:"ScanEndTime,omitnil,omitempty" name:"ScanEndTime"`
 
 	// 仓库类型 tcr,ccr,harbor	
@@ -17028,11 +16425,9 @@ type DescribeImageRegistryTimingScanTaskResponseParams struct {
 	Namespace []*string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// 排除的镜像资产id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExcludeImageAssetIds []*uint64 `json:"ExcludeImageAssetIds,omitnil,omitempty" name:"ExcludeImageAssetIds"`
 
 	// 最近扫描时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastScanTime *string `json:"LastScanTime,omitnil,omitempty" name:"LastScanTime"`
 
 	// 扫描结果(Success|InsufficientLicense|ImageNeedIsEmpty|InternalError)
@@ -17193,10 +16588,10 @@ type DescribeImageSimpleListRequestParams struct {
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序方式
+	// 排序方式 asc,desc
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段
+	// 排序字段 ContainerCnt
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -17212,10 +16607,10 @@ type DescribeImageSimpleListRequest struct {
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序方式
+	// 排序方式 asc,desc
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段
+	// 排序字段 ContainerCnt
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
@@ -18470,7 +17865,6 @@ type DescribeNetworkFirewallPodLabelsListResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 集群pod详细信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodList []*NetworkClusterPodInfo `json:"PodList,omitnil,omitempty" name:"PodList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18534,7 +17928,6 @@ type DescribeNetworkFirewallPolicyDetailResponseParams struct {
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
 	// 命名空间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// 入站类型
@@ -18544,14 +17937,12 @@ type DescribeNetworkFirewallPolicyDetailResponseParams struct {
 	ToPolicyRule *int64 `json:"ToPolicyRule,omitnil,omitempty" name:"ToPolicyRule"`
 
 	// 自定义规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomPolicy []*NetworkCustomPolicy `json:"CustomPolicy,omitnil,omitempty" name:"CustomPolicy"`
 
 	// pod选择器
 	PodSelector *string `json:"PodSelector,omitnil,omitempty" name:"PodSelector"`
 
 	// 策略描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 策略创建时间
@@ -18561,14 +17952,12 @@ type DescribeNetworkFirewallPolicyDetailResponseParams struct {
 	PolicySourceType *string `json:"PolicySourceType,omitnil,omitempty" name:"PolicySourceType"`
 
 	// 网络策略对应的网络插件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkPolicyPlugin *string `json:"NetworkPolicyPlugin,omitnil,omitempty" name:"NetworkPolicyPlugin"`
 
 	// 网络策略状态
 	PublishStatus *string `json:"PublishStatus,omitnil,omitempty" name:"PublishStatus"`
 
 	// 网络发布结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublishResult *string `json:"PublishResult,omitnil,omitempty" name:"PublishResult"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18783,7 +18172,6 @@ type DescribeNetworkFirewallPolicyStatusResponseParams struct {
 	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
 	// NameRepeat,K8sRuleIngressPortError等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskResult []*string `json:"TaskResult,omitnil,omitempty" name:"TaskResult"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18847,11 +18235,9 @@ type DescribeNetworkFirewallPolicyYamlDetailResponseParams struct {
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
 	// base64编码的yaml字符串
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Yaml *string `json:"Yaml,omitnil,omitempty" name:"Yaml"`
 
 	// 策略描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 策略创建时间
@@ -18861,14 +18247,12 @@ type DescribeNetworkFirewallPolicyYamlDetailResponseParams struct {
 	PolicySourceType *string `json:"PolicySourceType,omitnil,omitempty" name:"PolicySourceType"`
 
 	// 网络策略对应的网络插件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkPolicyPlugin *string `json:"NetworkPolicyPlugin,omitnil,omitempty" name:"NetworkPolicyPlugin"`
 
 	// 网络策略状态
 	PublishStatus *string `json:"PublishStatus,omitnil,omitempty" name:"PublishStatus"`
 
 	// 网络发布结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublishResult *string `json:"PublishResult,omitnil,omitempty" name:"PublishResult"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18999,7 +18383,6 @@ func (r *DescribePostPayDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePostPayDetailResponseParams struct {
 	// 弹性计费扣费详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SoftQuotaDayDetail []*SoftQuotaDayInfo `json:"SoftQuotaDayDetail,omitnil,omitempty" name:"SoftQuotaDayDetail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19054,11 +18437,9 @@ func (r *DescribeProVersionInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeProVersionInfoResponseParams struct {
 	// 专业版开始时间，补充购买时才不为空
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 专业版结束时间，补充购买时才不为空
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 需购买的机器核数
@@ -19068,7 +18449,6 @@ type DescribeProVersionInfoResponseParams struct {
 	MaxPostPayCoresCnt *uint64 `json:"MaxPostPayCoresCnt,omitnil,omitempty" name:"MaxPostPayCoresCnt"`
 
 	// 资源ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 购买状态
@@ -19249,58 +18629,46 @@ type DescribePurchaseStateInfoResponseParams struct {
 	AllCoresCnt *uint64 `json:"AllCoresCnt,omitnil,omitempty" name:"AllCoresCnt"`
 
 	// 总防护核数 =已购核数+ 试用赠送核数 +弹性计费核数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CoresCnt *uint64 `json:"CoresCnt,omitnil,omitempty" name:"CoresCnt"`
 
 	// 未防护核数(未开启防护资源核数)
 	UndefendCoresCnt *uint64 `json:"UndefendCoresCnt,omitnil,omitempty" name:"UndefendCoresCnt"`
 
 	// 已购买核数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthorizedCoresCnt *uint64 `json:"AuthorizedCoresCnt,omitnil,omitempty" name:"AuthorizedCoresCnt"`
 
 	// 试用赠送专业版核心数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GivenAuthorizedCoresCnt *int64 `json:"GivenAuthorizedCoresCnt,omitnil,omitempty" name:"GivenAuthorizedCoresCnt"`
 
 	// 当前弹性计费核数数量
 	CurrentFlexibleCoresCnt *uint64 `json:"CurrentFlexibleCoresCnt,omitnil,omitempty" name:"CurrentFlexibleCoresCnt"`
 
 	// 镜像数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageCnt *uint64 `json:"ImageCnt,omitnil,omitempty" name:"ImageCnt"`
 
 	// 已授权镜像数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthorizedImageCnt *uint64 `json:"AuthorizedImageCnt,omitnil,omitempty" name:"AuthorizedImageCnt"`
 
 	// 过期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpirationTime *string `json:"ExpirationTime,omitnil,omitempty" name:"ExpirationTime"`
 
 	// 已购买镜像授权数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PurchasedAuthorizedCnt *uint64 `json:"PurchasedAuthorizedCnt,omitnil,omitempty" name:"PurchasedAuthorizedCnt"`
 
 	// 0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutomaticRenewal *int64 `json:"AutomaticRenewal,omitnil,omitempty" name:"AutomaticRenewal"`
 
 	// 试用期间赠送镜像授权数，可能会过期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GivenAuthorizedCnt *uint64 `json:"GivenAuthorizedCnt,omitnil,omitempty" name:"GivenAuthorizedCnt"`
 
 	// 起始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
 	// 子状态(具体意义依据State字段而定)
 	// State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubState *string `json:"SubState,omitnil,omitempty" name:"SubState"`
 
 	// 计费key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InquireKey *string `json:"InquireKey,omitnil,omitempty" name:"InquireKey"`
 
 	// 防护策略
@@ -19332,6 +18700,194 @@ func (r *DescribePurchaseStateInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribePurchaseStateInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRaspRuleVulsRequestParams struct {
+	// 过滤条件。
+	// <li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
+	// <li>CVEID- string - 是否必填：否 - CVE编号</li>
+	// <li>Name- string -是否必填: 否 - 漏洞名称</li>
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序方式：asc/desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段：披露时间：SubmitTime
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeRaspRuleVulsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件。
+	// <li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
+	// <li>CVEID- string - 是否必填：否 - CVE编号</li>
+	// <li>Name- string -是否必填: 否 - 漏洞名称</li>
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序方式：asc/desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段：披露时间：SubmitTime
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeRaspRuleVulsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRaspRuleVulsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRaspRuleVulsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRaspRuleVulsResponseParams struct {
+	// 列表内容	
+	List []*RaspRuleVul `json:"List,omitnil,omitempty" name:"List"`
+
+	// 总数量
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRaspRuleVulsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRaspRuleVulsResponseParams `json:"Response"`
+}
+
+func (r *DescribeRaspRuleVulsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRaspRuleVulsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRaspRulesRequestParams struct {
+	// 过滤条件。
+	// <li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
+	// <li>CVEID- string - 是否必填：否 - CVE编号</li>
+	// <li>Name- string -是否必填: 否 - 漏洞名称</li>
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序方式：asc/desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段：披露时间：SubmitTime
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeRaspRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件。
+	// <li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
+	// <li>CVEID- string - 是否必填：否 - CVE编号</li>
+	// <li>Name- string -是否必填: 否 - 漏洞名称</li>
+	Filters []*RunTimeFilters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序方式：asc/desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段：披露时间：SubmitTime
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeRaspRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRaspRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRaspRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRaspRulesResponseParams struct {
+	// 列表内容	
+	List []*RaspRule `json:"List,omitnil,omitempty" name:"List"`
+
+	// 总数量
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRaspRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRaspRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeRaspRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRaspRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -19446,7 +19002,6 @@ type DescribeReverseShellDetailResponseParams struct {
 	EventDetail *ReverseShellEventDescription `json:"EventDetail,omitnil,omitempty" name:"EventDetail"`
 
 	// 祖先进程信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AncestorProcessInfo *ProcessBaseInfo `json:"AncestorProcessInfo,omitnil,omitempty" name:"AncestorProcessInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19539,11 +19094,9 @@ func (r *DescribeReverseShellEventsExportRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeReverseShellEventsExportResponseParams struct {
 	// execle下载地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19916,11 +19469,9 @@ type DescribeRiskDnsEventDetailResponseParams struct {
 	Reference []*string `json:"Reference,omitnil,omitempty" name:"Reference"`
 
 	// 恶意域名或IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
 	// 恶意IP所属城市
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	City *string `json:"City,omitnil,omitempty" name:"City"`
 
 	// 命中规则类型
@@ -19987,7 +19538,6 @@ type DescribeRiskDnsEventDetailResponseParams struct {
 	EventStatus *string `json:"EventStatus,omitnil,omitempty" name:"EventStatus"`
 
 	// 操作时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperationTime *string `json:"OperationTime,omitnil,omitempty" name:"OperationTime"`
 
 	// 备注
@@ -20312,7 +19862,6 @@ type DescribeRiskSyscallDetailResponseParams struct {
 	EventDetail *RiskSyscallEventDescription `json:"EventDetail,omitnil,omitempty" name:"EventDetail"`
 
 	// 祖先进程信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AncestorProcessInfo *ProcessBaseInfo `json:"AncestorProcessInfo,omitnil,omitempty" name:"AncestorProcessInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20405,11 +19954,9 @@ func (r *DescribeRiskSyscallEventsExportRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeRiskSyscallEventsExportResponseParams struct {
 	// Excel下载地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 任务Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21396,27 +20943,21 @@ func (r *DescribeSecLogDeliveryKafkaSettingRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeSecLogDeliveryKafkaSettingResponseParams struct {
 	// 消息队列实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
 	// 消息队列实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 日志类型队列
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogTypeList []*SecLogDeliveryKafkaSettingInfo `json:"LogTypeList,omitnil,omitempty" name:"LogTypeList"`
 
 	// 用户名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
 	// 地域ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionID *string `json:"RegionID,omitnil,omitempty" name:"RegionID"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21643,11 +21184,9 @@ func (r *DescribeSecLogKafkaUINRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSecLogKafkaUINResponseParams struct {
 	// 目标UIN
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstUIN *string `json:"DstUIN,omitnil,omitempty" name:"DstUIN"`
 
 	// 授权状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21728,6 +21267,9 @@ type DescribeSecLogVasInfoResponseParams struct {
 	// 试用存储容量(GB)
 	TrialCapacity *uint64 `json:"TrialCapacity,omitnil,omitempty" name:"TrialCapacity"`
 
+	// 资源详情数组对象
+	ResourceDetailList []*VasInfoResourceDetail `json:"ResourceDetailList,omitnil,omitempty" name:"ResourceDetailList"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -21765,7 +21307,7 @@ type DescribeSuperNodePodListRequestParams struct {
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序字段
+	// 排序字段 StartTime
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 
 	// 排序方式 asc,desc
@@ -21790,7 +21332,7 @@ type DescribeSuperNodePodListRequest struct {
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序字段
+	// 排序字段 StartTime
 	By *string `json:"By,omitnil,omitempty" name:"By"`
 
 	// 排序方式 asc,desc
@@ -22330,7 +21872,6 @@ type DescribeUnfinishRefreshTaskResponseParams struct {
 	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
 	// 新任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewTaskID *string `json:"NewTaskID,omitnil,omitempty" name:"NewTaskID"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -22650,35 +22191,27 @@ type DescribeVirusAutoIsolateSampleDetailResponseParams struct {
 	MD5 *string `json:"MD5,omitnil,omitempty" name:"MD5"`
 
 	// 文件大小(B)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
 
 	// 病毒名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirusName *string `json:"VirusName,omitnil,omitempty" name:"VirusName"`
 
 	// 风险等级 RISK_CRITICAL, RISK_HIGH, RISK_MEDIUM, RISK_LOW, RISK_NOTICE。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
 	// 查杀引擎
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KillEngine []*string `json:"KillEngine,omitnil,omitempty" name:"KillEngine"`
 
 	// 标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 事件描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HarmDescribe *string `json:"HarmDescribe,omitnil,omitempty" name:"HarmDescribe"`
 
 	// 建议方案
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuggestScheme *string `json:"SuggestScheme,omitnil,omitempty" name:"SuggestScheme"`
 
 	// 参考链接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReferenceLink *string `json:"ReferenceLink,omitnil,omitempty" name:"ReferenceLink"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -22889,6 +22422,9 @@ type DescribeVirusAutoIsolateSettingResponseParams struct {
 	// 是否中断隔离文件关联的进程(true:是 false:否)
 	IsKillProgress *bool `json:"IsKillProgress,omitnil,omitempty" name:"IsKillProgress"`
 
+	// 用户用户自定义开关
+	UserAutoIsolateKillSwitch *bool `json:"UserAutoIsolateKillSwitch,omitnil,omitempty" name:"UserAutoIsolateKillSwitch"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -22944,123 +22480,93 @@ func (r *DescribeVirusDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVirusDetailResponseParams struct {
 	// 镜像ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
 	// 镜像名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 木马文件大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
 
 	// 木马文件路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
 
 	// 最近生成时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 病毒名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirusName *string `json:"VirusName,omitnil,omitempty" name:"VirusName"`
 
 	// 风险等级 RISK_CRITICAL, RISK_HIGH, RISK_MEDIUM, RISK_LOW, RISK_NOTICE。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
 	// 容器名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerName *string `json:"ContainerName,omitnil,omitempty" name:"ContainerName"`
 
 	// 容器id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerId *string `json:"ContainerId,omitnil,omitempty" name:"ContainerId"`
 
 	// 主机名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 
 	// 主机id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostId *string `json:"HostId,omitnil,omitempty" name:"HostId"`
 
 	// 进程名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 
 	// 进程路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessPath *string `json:"ProcessPath,omitnil,omitempty" name:"ProcessPath"`
 
 	// 进程md5
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessMd5 *string `json:"ProcessMd5,omitnil,omitempty" name:"ProcessMd5"`
 
 	// 进程id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessId *uint64 `json:"ProcessId,omitnil,omitempty" name:"ProcessId"`
 
 	// 进程参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessArgv *string `json:"ProcessArgv,omitnil,omitempty" name:"ProcessArgv"`
 
 	// 进程链
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessChan *string `json:"ProcessChan,omitnil,omitempty" name:"ProcessChan"`
 
 	// 进程组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessAccountGroup *string `json:"ProcessAccountGroup,omitnil,omitempty" name:"ProcessAccountGroup"`
 
 	// 进程启动用户
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessStartAccount *string `json:"ProcessStartAccount,omitnil,omitempty" name:"ProcessStartAccount"`
 
 	// 进程文件权限
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessFileAuthority *string `json:"ProcessFileAuthority,omitnil,omitempty" name:"ProcessFileAuthority"`
 
 	// 来源：0：一键扫描， 1：定时扫描 2：实时监控
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceType *int64 `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
 	// 标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 事件描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HarmDescribe *string `json:"HarmDescribe,omitnil,omitempty" name:"HarmDescribe"`
 
 	// 建议方案
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuggestScheme *string `json:"SuggestScheme,omitnil,omitempty" name:"SuggestScheme"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mark *string `json:"Mark,omitnil,omitempty" name:"Mark"`
 
 	// 风险文件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 文件MD5
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileMd5 *string `json:"FileMd5,omitnil,omitempty" name:"FileMd5"`
 
 	// 事件类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
 
 	// 集群名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
 
 	// DEAL_NONE:文件待处理
@@ -23072,7 +22578,6 @@ type DescribeVirusDetailResponseParams struct {
 	// DEAL_ISOLATE_FAILED:隔离失败
 	// DEAL_RECOVERING:恢复中
 	// DEAL_RECOVER_FAILED: 恢复失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 失败子状态:
@@ -23082,63 +22587,48 @@ type DescribeVirusDetailResponseParams struct {
 	// BACKUP_FILE_NOT_FOUND:备份文件不存在
 	// CONTAINER_NOT_FOUND_DEAL_ISOLATE:隔离时，容器不存在
 	// CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubStatus *string `json:"SubStatus,omitnil,omitempty" name:"SubStatus"`
 
 	// 内网ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostIP *string `json:"HostIP,omitnil,omitempty" name:"HostIP"`
 
 	// 外网ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientIP *string `json:"ClientIP,omitnil,omitempty" name:"ClientIP"`
 
 	// 父进程启动用户
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PProcessStartUser *string `json:"PProcessStartUser,omitnil,omitempty" name:"PProcessStartUser"`
 
 	// 父进程用户组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PProcessUserGroup *string `json:"PProcessUserGroup,omitnil,omitempty" name:"PProcessUserGroup"`
 
 	// 父进程路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PProcessPath *string `json:"PProcessPath,omitnil,omitempty" name:"PProcessPath"`
 
 	// 父进程命令行参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PProcessParam *string `json:"PProcessParam,omitnil,omitempty" name:"PProcessParam"`
 
 	// 祖先进程启动用户
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AncestorProcessStartUser *string `json:"AncestorProcessStartUser,omitnil,omitempty" name:"AncestorProcessStartUser"`
 
 	// 祖先进程用户组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AncestorProcessUserGroup *string `json:"AncestorProcessUserGroup,omitnil,omitempty" name:"AncestorProcessUserGroup"`
 
 	// 祖先进程路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AncestorProcessPath *string `json:"AncestorProcessPath,omitnil,omitempty" name:"AncestorProcessPath"`
 
 	// 祖先进程命令行参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AncestorProcessParam *string `json:"AncestorProcessParam,omitnil,omitempty" name:"AncestorProcessParam"`
 
 	// 事件最后一次处理的时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperationTime *string `json:"OperationTime,omitnil,omitempty" name:"OperationTime"`
 
 	// 容器隔离状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerNetStatus *string `json:"ContainerNetStatus,omitnil,omitempty" name:"ContainerNetStatus"`
 
 	// 容器隔离子状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitnil,omitempty" name:"ContainerNetSubStatus"`
 
 	// 容器隔离操作来源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil,omitempty" name:"ContainerIsolateOperationSrc"`
 
 	// 检测平台
@@ -23147,15 +22637,12 @@ type DescribeVirusDetailResponseParams struct {
 	// 3: binaryAi
 	// 4: 异常行为
 	// 5: 威胁情报
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckPlatform []*string `json:"CheckPlatform,omitnil,omitempty" name:"CheckPlatform"`
 
 	// 文件访问时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileAccessTime *string `json:"FileAccessTime,omitnil,omitempty" name:"FileAccessTime"`
 
 	// 文件修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileModifyTime *string `json:"FileModifyTime,omitnil,omitempty" name:"FileModifyTime"`
 
 	// 节点子网ID
@@ -23496,15 +22983,12 @@ type DescribeVirusMonitorSettingResponseParams struct {
 	EnableScan *bool `json:"EnableScan,omitnil,omitempty" name:"EnableScan"`
 
 	// 扫描全部路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanPathAll *bool `json:"ScanPathAll,omitnil,omitempty" name:"ScanPathAll"`
 
 	// 当ScanPathAll为true 生效 0扫描以下路径 1、扫描除以下路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanPathType *uint64 `json:"ScanPathType,omitnil,omitempty" name:"ScanPathType"`
 
 	// 自选排除或扫描的地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanPath []*string `json:"ScanPath,omitnil,omitempty" name:"ScanPath"`
 
 	// 扫描路径模式：
@@ -23652,7 +23136,6 @@ type DescribeVirusScanSettingResponseParams struct {
 	ScanPath []*string `json:"ScanPath,omitnil,omitempty" name:"ScanPath"`
 
 	// 一键检测的超时设置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClickTimeout *uint64 `json:"ClickTimeout,omitnil,omitempty" name:"ClickTimeout"`
 
 	// 扫描路径模式：
@@ -23806,7 +23289,6 @@ func (r *DescribeVirusScanTimeoutSettingRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeVirusScanTimeoutSettingResponseParams struct {
 	// 超时时长单位小时
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -23864,31 +23346,24 @@ type DescribeVirusSummaryResponseParams struct {
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 木马影响容器个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskContainerCnt *uint64 `json:"RiskContainerCnt,omitnil,omitempty" name:"RiskContainerCnt"`
 
 	// 待处理风险个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskCnt *uint64 `json:"RiskCnt,omitnil,omitempty" name:"RiskCnt"`
 
 	// 病毒库更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirusDataBaseModifyTime *string `json:"VirusDataBaseModifyTime,omitnil,omitempty" name:"VirusDataBaseModifyTime"`
 
 	// 木马影响容器个数较昨日增长
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskContainerIncrease *int64 `json:"RiskContainerIncrease,omitnil,omitempty" name:"RiskContainerIncrease"`
 
 	// 待处理风险个数较昨日增长
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskIncrease *int64 `json:"RiskIncrease,omitnil,omitempty" name:"RiskIncrease"`
 
 	// 隔离事件个数较昨日新增
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolateIncrease *int64 `json:"IsolateIncrease,omitnil,omitempty" name:"IsolateIncrease"`
 
 	// 隔离事件总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolateCnt *int64 `json:"IsolateCnt,omitnil,omitempty" name:"IsolateCnt"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -24578,15 +24053,12 @@ type DescribeVulDefenceSettingResponseParams struct {
 	ExceptionHostCount *int64 `json:"ExceptionHostCount,omitnil,omitempty" name:"ExceptionHostCount"`
 
 	// 自选漏洞防御主机
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostIDs []*string `json:"HostIDs,omitnil,omitempty" name:"HostIDs"`
 
 	// 开通容器安全的主机总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostTotalCount *int64 `json:"HostTotalCount,omitnil,omitempty" name:"HostTotalCount"`
 
 	// 支持防御的漏洞数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportDefenseVulCount *int64 `json:"SupportDefenseVulCount,omitnil,omitempty" name:"SupportDefenseVulCount"`
 
 	// 普通节点个数
@@ -25950,30 +25422,24 @@ type EmergencyVulInfo struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 漏洞标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// CVSS V3分数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CVSSV3Score *float64 `json:"CVSSV3Score,omitnil,omitempty" name:"CVSSV3Score"`
 
 	// 风险等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// CVE编号
 	CVEID *string `json:"CVEID,omitnil,omitempty" name:"CVEID"`
 
 	// 漏洞类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 
 	// 漏洞披露时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubmitTime *string `json:"SubmitTime,omitnil,omitempty" name:"SubmitTime"`
 
 	// 最近发现时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestFoundTime *string `json:"LatestFoundTime,omitnil,omitempty" name:"LatestFoundTime"`
 
 	// 应急漏洞风险情况：NOT_SCAN：未扫描，SCANNING：扫描中，SCANNED_NOT_RISK：已扫描，暂未风险 ，SCANNED_RISK：已扫描存在风险
@@ -25986,19 +25452,15 @@ type EmergencyVulInfo struct {
 	PocID *string `json:"PocID,omitnil,omitempty" name:"PocID"`
 
 	// 防御状态，NO_DEFENDED:未防御，DEFENDED:已防御
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefenceStatus *string `json:"DefenceStatus,omitnil,omitempty" name:"DefenceStatus"`
 
 	// 漏洞防御主机范围: MANUAL:自选主机节点，ALL:全部
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefenceScope *string `json:"DefenceScope,omitnil,omitempty" name:"DefenceScope"`
 
 	// 漏洞防御主机数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefenceHostCount *int64 `json:"DefenceHostCount,omitnil,omitempty" name:"DefenceHostCount"`
 
 	// 已防御攻击次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefendedCount *int64 `json:"DefendedCount,omitnil,omitempty" name:"DefendedCount"`
 }
 
@@ -26010,11 +25472,9 @@ type EscapeEventDescription struct {
 	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
 
 	// 事件备注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 事件最后一次处理的时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperationTime *string `json:"OperationTime,omitnil,omitempty" name:"OperationTime"`
 }
 
@@ -26078,11 +25538,9 @@ type EscapeEventInfo struct {
 	LatestFoundTime *string `json:"LatestFoundTime,omitnil,omitempty" name:"LatestFoundTime"`
 
 	// 节点IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeIP *string `json:"NodeIP,omitnil,omitempty" name:"NodeIP"`
 
 	// 主机IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostID *string `json:"HostID,omitnil,omitempty" name:"HostID"`
 
 	// 网络状态
@@ -26092,7 +25550,6 @@ type EscapeEventInfo struct {
 	// 隔离失败	ISOLATE_FAILED
 	// 解除隔离中  RESTORING
 	// 解除隔离失败 RESTORE_FAILED
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerNetStatus *string `json:"ContainerNetStatus,omitnil,omitempty" name:"ContainerNetStatus"`
 
 	// 容器子状态
@@ -26103,11 +25560,9 @@ type EscapeEventInfo struct {
 	// "SHARED_HOST"         // 容器与主机共享网络
 	// "RESOURCE_LIMIT"      //隔离操作资源超限
 	// "UNKNOW"              // 原因未知
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitnil,omitempty" name:"ContainerNetSubStatus"`
 
 	// 容器隔离操作来源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil,omitempty" name:"ContainerIsolateOperationSrc"`
 
 	// 容器状态
@@ -26479,11 +25934,9 @@ type HostInfo struct {
 	RegionID *int64 `json:"RegionID,omitnil,omitempty" name:"RegionID"`
 
 	// 所属项目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Project *ProjectInfo `json:"Project,omitnil,omitempty" name:"Project"`
 
 	// 标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 集群id
@@ -26547,11 +26000,9 @@ type ImageComponent struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 组件漏洞数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulCount *uint64 `json:"VulCount,omitnil,omitempty" name:"VulCount"`
 
 	// 镜像ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageID *string `json:"ImageID,omitnil,omitempty" name:"ImageID"`
 }
 
@@ -26594,51 +26045,39 @@ type ImageInfo struct {
 
 type ImageProgress struct {
 	// 镜像id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
 	// 仓库类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegistryType *string `json:"RegistryType,omitnil,omitempty" name:"RegistryType"`
 
 	// 镜像仓库地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageRepoAddress *string `json:"ImageRepoAddress,omitnil,omitempty" name:"ImageRepoAddress"`
 
 	// 实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 命名空间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// 仓库名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
 
 	// 镜像tag
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageTag *string `json:"ImageTag,omitnil,omitempty" name:"ImageTag"`
 
 	// 镜像扫描状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanStatus *string `json:"ScanStatus,omitnil,omitempty" name:"ScanStatus"`
 
 	// 镜像cve扫描进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CveProgress *uint64 `json:"CveProgress,omitnil,omitempty" name:"CveProgress"`
 
 	// 镜像敏感扫描进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskProgress *uint64 `json:"RiskProgress,omitnil,omitempty" name:"RiskProgress"`
 
 	// 镜像木马扫描进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirusProgress *uint64 `json:"VirusProgress,omitnil,omitempty" name:"VirusProgress"`
 }
 
@@ -26706,11 +26145,9 @@ type ImageRepoInfo struct {
 	OsName *string `json:"OsName,omitnil,omitempty" name:"OsName"`
 
 	// 木马扫描错误
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanVirusError *string `json:"ScanVirusError,omitnil,omitempty" name:"ScanVirusError"`
 
 	// 漏洞扫描错误
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanVulError *string `json:"ScanVulError,omitnil,omitempty" name:"ScanVulError"`
 
 	// 实例id
@@ -26723,39 +26160,30 @@ type ImageRepoInfo struct {
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// 高危扫描错误
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanRiskError *string `json:"ScanRiskError,omitnil,omitempty" name:"ScanRiskError"`
 
 	// 敏感信息扫描进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanVirusProgress *uint64 `json:"ScanVirusProgress,omitnil,omitempty" name:"ScanVirusProgress"`
 
 	// 木马扫描进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanVulProgress *uint64 `json:"ScanVulProgress,omitnil,omitempty" name:"ScanVulProgress"`
 
 	// 漏洞扫描进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanRiskProgress *uint64 `json:"ScanRiskProgress,omitnil,omitempty" name:"ScanRiskProgress"`
 
 	// 剩余扫描时间秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanRemainTime *uint64 `json:"ScanRemainTime,omitnil,omitempty" name:"ScanRemainTime"`
 
 	// cve扫描状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CveStatus *string `json:"CveStatus,omitnil,omitempty" name:"CveStatus"`
 
 	// 高危扫描状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskStatus *string `json:"RiskStatus,omitnil,omitempty" name:"RiskStatus"`
 
 	// 木马扫描状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirusStatus *string `json:"VirusStatus,omitnil,omitempty" name:"VirusStatus"`
 
 	// 总进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
 	// 授权状态
@@ -26768,15 +26196,12 @@ type ImageRepoInfo struct {
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 镜像Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
 	// 镜像创建的时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageCreateTime *string `json:"ImageCreateTime,omitnil,omitempty" name:"ImageCreateTime"`
 
 	// 是否为镜像的最新版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsLatestImage *bool `json:"IsLatestImage,omitnil,omitempty" name:"IsLatestImage"`
 
 	// low级别漏洞个数
@@ -26804,7 +26229,6 @@ type ImageRepoInfo struct {
 	HasNeedFixVul *bool `json:"HasNeedFixVul,omitnil,omitempty" name:"HasNeedFixVul"`
 
 	// 敏感信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SensitiveInfoCnt *uint64 `json:"SensitiveInfoCnt,omitnil,omitempty" name:"SensitiveInfoCnt"`
 
 	// 是否推荐处置
@@ -26834,7 +26258,6 @@ type ImageRepoRegistryInfo struct {
 	RegistryVersion *string `json:"RegistryVersion,omitnil,omitempty" name:"RegistryVersion"`
 
 	// 仓库连接错误信息，待废弃，请使用ConnDetectException
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConnectMsg *string `json:"ConnectMsg,omitnil,omitempty" name:"ConnectMsg"`
 
 	// 联通性检测方式
@@ -26863,27 +26286,25 @@ type ImageRepoRegistryInfo struct {
 
 	// 同步失败信息
 	SyncMessage *string `json:"SyncMessage,omitnil,omitempty" name:"SyncMessage"`
+
+	// 同步方式，0全量同步，1增量同步	
+	SyncMode *uint64 `json:"SyncMode,omitnil,omitempty" name:"SyncMode"`
 }
 
 type ImageRisk struct {
 	// 高危行为
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Behavior *uint64 `json:"Behavior,omitnil,omitempty" name:"Behavior"`
 
 	// 种类
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 风险等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
 	// 解决方案
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstructionContent *string `json:"InstructionContent,omitnil,omitempty" name:"InstructionContent"`
 }
 
@@ -26919,7 +26340,7 @@ type ImageScanInquireInfo struct {
 	// 计费项
 	InquireKey *string `json:"InquireKey,omitnil,omitempty" name:"InquireKey"`
 
-	// 容量
+	// 总容量
 	Capcity *uint64 `json:"Capcity,omitnil,omitempty" name:"Capcity"`
 
 	// 已使用量
@@ -26939,6 +26360,15 @@ type ImageScanInquireInfo struct {
 
 	// 资源ID
 	ResourceID *string `json:"ResourceID,omitnil,omitempty" name:"ResourceID"`
+
+	// 购买扫描数
+	PayNum *uint64 `json:"PayNum,omitnil,omitempty" name:"PayNum"`
+
+	// 试用扫描数
+	TrialNum *uint64 `json:"TrialNum,omitnil,omitempty" name:"TrialNum"`
+
+	// 购买已使用量
+	PayUsage *uint64 `json:"PayUsage,omitnil,omitempty" name:"PayUsage"`
 }
 
 type ImageSimpleInfo struct {
@@ -27004,47 +26434,36 @@ type ImageVirus struct {
 
 type ImageVirusInfo struct {
 	// 路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 风险等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevel *uint64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
 	// 病毒名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirusName *string `json:"VirusName,omitnil,omitempty" name:"VirusName"`
 
 	// 标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
 	// 修护建议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
 
 	// 大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
 
 	// 首次发现时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstScanTime *string `json:"FirstScanTime,omitnil,omitempty" name:"FirstScanTime"`
 
 	// 最近扫描时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestScanTime *string `json:"LatestScanTime,omitnil,omitempty" name:"LatestScanTime"`
 
 	// 文件md5
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Md5 *string `json:"Md5,omitnil,omitempty" name:"Md5"`
 
 	// 文件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 检测平台
@@ -27053,103 +26472,79 @@ type ImageVirusInfo struct {
 	// 3: binaryAi
 	// 4: 异常行为
 	// 5: 威胁情报
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckPlatform []*string `json:"CheckPlatform,omitnil,omitempty" name:"CheckPlatform"`
 }
 
 type ImageVul struct {
 	// 漏洞id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CVEID *string `json:"CVEID,omitnil,omitempty" name:"CVEID"`
 
 	// 观点验证程序id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	POCID *string `json:"POCID,omitnil,omitempty" name:"POCID"`
 
 	// 漏洞名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 涉及组件信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Components []*ComponentsInfo `json:"Components,omitnil,omitempty" name:"Components"`
 
 	// 分类
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 
 	// 分类2
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryType *string `json:"CategoryType,omitnil,omitempty" name:"CategoryType"`
 
 	// 风险等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Des *string `json:"Des,omitnil,omitempty" name:"Des"`
 
 	// 解决方案
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OfficialSolution *string `json:"OfficialSolution,omitnil,omitempty" name:"OfficialSolution"`
 
 	// 引用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reference *string `json:"Reference,omitnil,omitempty" name:"Reference"`
 
 	// 防御方案
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefenseSolution *string `json:"DefenseSolution,omitnil,omitempty" name:"DefenseSolution"`
 
 	// 提交时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubmitTime *string `json:"SubmitTime,omitnil,omitempty" name:"SubmitTime"`
 
 	// Cvss分数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CvssScore *string `json:"CvssScore,omitnil,omitempty" name:"CvssScore"`
 
 	// Cvss信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CvssVector *string `json:"CvssVector,omitnil,omitempty" name:"CvssVector"`
 
 	// 是否建议修复
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSuggest *string `json:"IsSuggest,omitnil,omitempty" name:"IsSuggest"`
 
 	// 修复版本号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FixedVersions *string `json:"FixedVersions,omitnil,omitempty" name:"FixedVersions"`
 
 	// 漏洞标签:"CanBeFixed","DynamicLevelPoc","DynamicLevelExp"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag []*string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
 	// 组件名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Component *string `json:"Component,omitnil,omitempty" name:"Component"`
 
 	// 组件版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 攻击热度 0-3
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttackLevel *int64 `json:"AttackLevel,omitnil,omitempty" name:"AttackLevel"`
 
 	// 镜像层信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LayerInfos []*ImageVulLayerInfo `json:"LayerInfos,omitnil,omitempty" name:"LayerInfos"`
 }
 
 type ImageVulLayerInfo struct {
 	// 层id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LayerId *string `json:"LayerId,omitnil,omitempty" name:"LayerId"`
 
 	// 层cmd
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LayerCmd *string `json:"LayerCmd,omitnil,omitempty" name:"LayerCmd"`
 }
 
@@ -27164,19 +26559,15 @@ type ImagesBindRuleInfo struct {
 	ContainerCnt *int64 `json:"ContainerCnt,omitnil,omitempty" name:"ContainerCnt"`
 
 	// 绑定规则id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 规则名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// 镜像大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageSize *int64 `json:"ImageSize,omitnil,omitempty" name:"ImageSize"`
 
 	// 最近扫描时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanTime *string `json:"ScanTime,omitnil,omitempty" name:"ScanTime"`
 }
 
@@ -27310,15 +26701,12 @@ type ImagesVul struct {
 	IsSuggest *bool `json:"IsSuggest,omitnil,omitempty" name:"IsSuggest"`
 
 	// 修复版本号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FixedVersions *string `json:"FixedVersions,omitnil,omitempty" name:"FixedVersions"`
 
 	// 漏洞标签:"CanBeFixed","DynamicLevelPoc","DynamicLevelExp"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag []*string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
 	// 攻击热度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttackLevel *int64 `json:"AttackLevel,omitnil,omitempty" name:"AttackLevel"`
 }
 
@@ -27554,15 +26942,12 @@ type K8sApiAbnormalRuleScopeInfo struct {
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
 	// 威胁等级 HIGH:高级 MIDDLE: 中级 LOW:低级 NOTICE:提示
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
 	// 开关状态(true:开 false:关) 适用于系统规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 是否被删除 适用于自定义规则入参
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDelete *bool `json:"IsDelete,omitnil,omitempty" name:"IsDelete"`
 }
 
@@ -28888,6 +28273,81 @@ func (r *ModifyK8sApiAbnormalRuleStatusResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type ModifyRaspRulesRequestParams struct {
+	// 规则ID(新增时请留空，编辑时候必传)
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 漏洞id数组
+	VulVulsIDs []*uint64 `json:"VulVulsIDs,omitnil,omitempty" name:"VulVulsIDs"`
+
+	// 自定义请求范围加白正则表达式，选择全部请求范围时候为空，否则不能为空，base64编码
+	URLRegexp *string `json:"URLRegexp,omitnil,omitempty" name:"URLRegexp"`
+
+	// 加白方式，0：自定义请求范围加白。1：全部请求加白
+	WhiteType *uint64 `json:"WhiteType,omitnil,omitempty" name:"WhiteType"`
+}
+
+type ModifyRaspRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则ID(新增时请留空，编辑时候必传)
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 漏洞id数组
+	VulVulsIDs []*uint64 `json:"VulVulsIDs,omitnil,omitempty" name:"VulVulsIDs"`
+
+	// 自定义请求范围加白正则表达式，选择全部请求范围时候为空，否则不能为空，base64编码
+	URLRegexp *string `json:"URLRegexp,omitnil,omitempty" name:"URLRegexp"`
+
+	// 加白方式，0：自定义请求范围加白。1：全部请求加白
+	WhiteType *uint64 `json:"WhiteType,omitnil,omitempty" name:"WhiteType"`
+}
+
+func (r *ModifyRaspRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRaspRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "VulVulsIDs")
+	delete(f, "URLRegexp")
+	delete(f, "WhiteType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRaspRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRaspRulesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyRaspRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRaspRulesResponseParams `json:"Response"`
+}
+
+func (r *ModifyRaspRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRaspRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyReverseShellStatusRequestParams struct {
 	// 处理事件ids
 	EventIdSet []*string `json:"EventIdSet,omitnil,omitempty" name:"EventIdSet"`
@@ -29559,6 +29019,9 @@ type ModifyVirusAutoIsolateSettingRequestParams struct {
 
 	// 是否中断隔离文件关联的进程(true:是 false:否)
 	IsKillProgress *bool `json:"IsKillProgress,omitnil,omitempty" name:"IsKillProgress"`
+
+	// 用户用户自定义开关
+	UserAutoIsolateKillSwitch *bool `json:"UserAutoIsolateKillSwitch,omitnil,omitempty" name:"UserAutoIsolateKillSwitch"`
 }
 
 type ModifyVirusAutoIsolateSettingRequest struct {
@@ -29569,6 +29032,9 @@ type ModifyVirusAutoIsolateSettingRequest struct {
 
 	// 是否中断隔离文件关联的进程(true:是 false:否)
 	IsKillProgress *bool `json:"IsKillProgress,omitnil,omitempty" name:"IsKillProgress"`
+
+	// 用户用户自定义开关
+	UserAutoIsolateKillSwitch *bool `json:"UserAutoIsolateKillSwitch,omitnil,omitempty" name:"UserAutoIsolateKillSwitch"`
 }
 
 func (r *ModifyVirusAutoIsolateSettingRequest) ToJsonString() string {
@@ -29585,6 +29051,7 @@ func (r *ModifyVirusAutoIsolateSettingRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AutoIsolateSwitch")
 	delete(f, "IsKillProgress")
+	delete(f, "UserAutoIsolateKillSwitch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVirusAutoIsolateSettingRequest has unknown keys!", "")
 	}
@@ -29618,14 +29085,7 @@ type ModifyVirusFileStatusRequestParams struct {
 	// 处理事件id
 	EventIdSet []*string `json:"EventIdSet,omitnil,omitempty" name:"EventIdSet"`
 
-	// 标记事件的状态，   
-	//     EVENT_DEALED:事件处理
-	//     EVENT_INGNORE"：事件忽略
-	//     EVENT_DEL:事件删除
-	//     EVENT_ADD_WHITE:事件加白
-	//     EVENT_PENDING: 事件待处理
-	// 	EVENT_ISOLATE_CONTAINER: 隔离容器
-	// 	EVENT_RESOTRE_CONTAINER: 恢复容器
+	// 标记事件的状态，       EVENT_DEALED:事件处理    EVENT_IGNORE"：事件忽略    EVENT_DEL:事件删除    EVENT_ADD_WHITE:事件加白    EVENT_PENDING: 事件待处理	EVENT_ISOLATE_CONTAINER: 隔离容器	EVENT_RESOTRE_CONTAINER: 恢复容器
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 事件备注
@@ -29641,14 +29101,7 @@ type ModifyVirusFileStatusRequest struct {
 	// 处理事件id
 	EventIdSet []*string `json:"EventIdSet,omitnil,omitempty" name:"EventIdSet"`
 
-	// 标记事件的状态，   
-	//     EVENT_DEALED:事件处理
-	//     EVENT_INGNORE"：事件忽略
-	//     EVENT_DEL:事件删除
-	//     EVENT_ADD_WHITE:事件加白
-	//     EVENT_PENDING: 事件待处理
-	// 	EVENT_ISOLATE_CONTAINER: 隔离容器
-	// 	EVENT_RESOTRE_CONTAINER: 恢复容器
+	// 标记事件的状态，       EVENT_DEALED:事件处理    EVENT_IGNORE"：事件忽略    EVENT_DEL:事件删除    EVENT_ADD_WHITE:事件加白    EVENT_PENDING: 事件待处理	EVENT_ISOLATE_CONTAINER: 隔离容器	EVENT_RESOTRE_CONTAINER: 恢复容器
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 事件备注
@@ -30170,14 +29623,12 @@ type NetworkAuditRecord struct {
 	OperationTime *string `json:"OperationTime,omitnil,omitempty" name:"OperationTime"`
 
 	// 操作人appid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 操作人uin
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 策略id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 }
 
@@ -30216,11 +29667,9 @@ type NetworkClusterInfoItem struct {
 	NetworkPolicyPluginStatus *string `json:"NetworkPolicyPluginStatus,omitnil,omitempty" name:"NetworkPolicyPluginStatus"`
 
 	// 集群网络插件错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkPolicyPluginError *string `json:"NetworkPolicyPluginError,omitnil,omitempty" name:"NetworkPolicyPluginError"`
 
 	// 容器网络插件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterNetworkSettings *string `json:"ClusterNetworkSettings,omitnil,omitempty" name:"ClusterNetworkSettings"`
 }
 
@@ -30245,15 +29694,12 @@ type NetworkClusterPodInfo struct {
 	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
 
 	// pod空间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// pod标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Labels *string `json:"Labels,omitnil,omitempty" name:"Labels"`
 
 	// pod类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkloadKind *string `json:"WorkloadKind,omitnil,omitempty" name:"WorkloadKind"`
 }
 
@@ -30262,7 +29708,6 @@ type NetworkCustomPolicy struct {
 	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 
 	// 网络策略策略端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ports []*NetworkPorts `json:"Ports,omitnil,omitempty" name:"Ports"`
 
 	// 网络策略策略对象
@@ -30276,7 +29721,6 @@ type NetworkCustomPolicy struct {
 	// 开启中：Publishing
 	// 
 	// 待开启：unPublishEdit
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Peer []*NetworkPeer `json:"Peer,omitnil,omitempty" name:"Peer"`
 }
 
@@ -30291,15 +29735,12 @@ type NetworkPeer struct {
 	PeerType *string `json:"PeerType,omitnil,omitempty" name:"PeerType"`
 
 	// 空间选择器
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceSelector *string `json:"NamespaceSelector,omitnil,omitempty" name:"NamespaceSelector"`
 
 	// pod选择器
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodSelector *string `json:"PodSelector,omitnil,omitempty" name:"PodSelector"`
 
 	// Ip选择器
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPBlock *string `json:"IPBlock,omitnil,omitempty" name:"IPBlock"`
 }
 
@@ -30308,7 +29749,6 @@ type NetworkPolicyInfoItem struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 网络策略描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 发布状态：
@@ -30345,7 +29785,6 @@ type NetworkPolicyInfoItem struct {
 	NetworkPolicyPlugin *string `json:"NetworkPolicyPlugin,omitnil,omitempty" name:"NetworkPolicyPlugin"`
 
 	// 策略发布结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublishResult *string `json:"PublishResult,omitnil,omitempty" name:"PublishResult"`
 
 	// 入站规则
@@ -30367,7 +29806,6 @@ type NetworkPolicyInfoItem struct {
 	ToPolicyRule *int64 `json:"ToPolicyRule,omitnil,omitempty" name:"ToPolicyRule"`
 
 	// 作用对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodSelector *string `json:"PodSelector,omitnil,omitempty" name:"PodSelector"`
 
 	// 网络策略Id
@@ -30376,11 +29814,9 @@ type NetworkPolicyInfoItem struct {
 
 type NetworkPorts struct {
 	// 网络策略协议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 网络策略策略端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
@@ -30502,19 +29938,15 @@ type PortInfo struct {
 
 type ProcessBaseInfo struct {
 	// 进程启动用户
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessStartUser *string `json:"ProcessStartUser,omitnil,omitempty" name:"ProcessStartUser"`
 
 	// 进程用户组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessUserGroup *string `json:"ProcessUserGroup,omitnil,omitempty" name:"ProcessUserGroup"`
 
 	// 进程路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessPath *string `json:"ProcessPath,omitnil,omitempty" name:"ProcessPath"`
 
 	// 进程命令行参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessParam *string `json:"ProcessParam,omitnil,omitempty" name:"ProcessParam"`
 }
 
@@ -30648,6 +30080,52 @@ type RaspInfo struct {
 
 	// rasp  描述
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type RaspRule struct {
+	// 规则ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 自定义请求url范围正则表达式，为空则保存不成功
+	URLRegexp *string `json:"URLRegexp,omitnil,omitempty" name:"URLRegexp"`
+
+	// 漏洞id
+	VulVulsID *uint64 `json:"VulVulsID,omitnil,omitempty" name:"VulVulsID"`
+
+	// 漏洞名称
+	VulVulsName *string `json:"VulVulsName,omitnil,omitempty" name:"VulVulsName"`
+
+	// cve_id
+	CveID *string `json:"CveID,omitnil,omitempty" name:"CveID"`
+
+	// 漏洞防御类型，从漏洞表富化， 1:支持组件漏洞防御，组件漏洞没有正则加白。2:支持正则防御
+	SupportDefense *uint64 `json:"SupportDefense,omitnil,omitempty" name:"SupportDefense"`
+
+	// 加白范围，0:全部请求加白，1:自定义请求范围加白
+	WhiteType *uint64 `json:"WhiteType,omitnil,omitempty" name:"WhiteType"`
+
+	// 状态 0: 有效
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+}
+
+type RaspRuleVul struct {
+	// 漏洞id
+	VulVulsID *uint64 `json:"VulVulsID,omitnil,omitempty" name:"VulVulsID"`
+
+	// 漏洞名称
+	VulVulsName *string `json:"VulVulsName,omitnil,omitempty" name:"VulVulsName"`
+
+	// cve_id
+	CveID *string `json:"CveID,omitnil,omitempty" name:"CveID"`
+
+	// 漏洞防御类型，从漏洞表富化， 1:支持组件漏洞防御，组件漏洞没有正则加白。2:支持正则防御
+	SupportDefense *uint64 `json:"SupportDefense,omitnil,omitempty" name:"SupportDefense"`
 }
 
 type RegionInfo struct {
@@ -30876,14 +30354,12 @@ type ReverseShellEventDescription struct {
 	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
 
 	// 事件备注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 目标地址
 	DstAddress *string `json:"DstAddress,omitnil,omitempty" name:"DstAddress"`
 
 	// 事件最后一次处理的时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperationTime *string `json:"OperationTime,omitnil,omitempty" name:"OperationTime"`
 }
 
@@ -31175,14 +30651,12 @@ type RiskSyscallEventDescription struct {
 	Solution *string `json:"Solution,omitnil,omitempty" name:"Solution"`
 
 	// 事件备注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 系统调用名称
 	SyscallName *string `json:"SyscallName,omitnil,omitempty" name:"SyscallName"`
 
 	// 事件最后一次处理的时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperationTime *string `json:"OperationTime,omitnil,omitempty" name:"OperationTime"`
 }
 
@@ -31355,7 +30829,6 @@ type RuleBaseInfo struct {
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 策略更新时间, 存在为空的情况
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 策略名字
@@ -31422,11 +30895,9 @@ type RunTimeEventBaseInfo struct {
 	LatestFoundTime *string `json:"LatestFoundTime,omitnil,omitempty" name:"LatestFoundTime"`
 
 	// 内网ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostIP *string `json:"HostIP,omitnil,omitempty" name:"HostIP"`
 
 	// 外网ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientIP *string `json:"ClientIP,omitnil,omitempty" name:"ClientIP"`
 
 	// 网络状态
@@ -31436,7 +30907,6 @@ type RunTimeEventBaseInfo struct {
 	// 隔离失败	ISOLATE_FAILED
 	// 解除隔离中  RESTORING
 	// 解除隔离失败 RESTORE_FAILED
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerNetStatus *string `json:"ContainerNetStatus,omitnil,omitempty" name:"ContainerNetStatus"`
 
 	// 容器子状态
@@ -31447,11 +30917,9 @@ type RunTimeEventBaseInfo struct {
 	// "SHARED_HOST"         // 容器与主机共享网络
 	// "RESOURCE_LIMIT"      //隔离操作资源超限
 	// "UNKNOW"              // 原因未知
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitnil,omitempty" name:"ContainerNetSubStatus"`
 
 	// 容器隔离操作来源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil,omitempty" name:"ContainerIsolateOperationSrc"`
 
 	// 节点ID
@@ -31861,27 +31329,36 @@ type SecLogDeliveryClsSettingInfo struct {
 	TopicID *string `json:"TopicID,omitnil,omitempty" name:"TopicID"`
 
 	// 日志集名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogSetName *string `json:"LogSetName,omitnil,omitempty" name:"LogSetName"`
 
 	// 主题名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 日志类型	
+	SubLogType []*string `json:"SubLogType,omitnil,omitempty" name:"SubLogType"`
+
+	// 错误信息
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 }
 
 type SecLogDeliveryKafkaSettingInfo struct {
-	// 日志类型
+	// 安全日志模块
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
 	// 主题ID
 	TopicID *string `json:"TopicID,omitnil,omitempty" name:"TopicID"`
 
 	// 主题名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 投递状态(false:关 true:开)
 	State *bool `json:"State,omitnil,omitempty" name:"State"`
+
+	// 日志类型
+	SubLogType []*string `json:"SubLogType,omitnil,omitempty" name:"SubLogType"`
+
+	// 错误信息
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 }
 
 type SecLogJoinInfo struct {
@@ -31910,33 +31387,27 @@ type SecLogJoinObjectInfo struct {
 	HostID *string `json:"HostID,omitnil,omitempty" name:"HostID"`
 
 	// 主机名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 
 	// 主机IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostIP *string `json:"HostIP,omitnil,omitempty" name:"HostIP"`
 
 	// 主机状态
 	HostStatus *string `json:"HostStatus,omitnil,omitempty" name:"HostStatus"`
 
 	// 集群ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterID *string `json:"ClusterID,omitnil,omitempty" name:"ClusterID"`
 
 	// 集群名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 外网IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIP *string `json:"PublicIP,omitnil,omitempty" name:"PublicIP"`
 
 	// 接入状态(true:已接入  false:未接入)
 	JoinState *bool `json:"JoinState,omitnil,omitempty" name:"JoinState"`
 
 	// 集群版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterVersion *string `json:"ClusterVersion,omitnil,omitempty" name:"ClusterVersion"`
 
 	// 集群主节点地址
@@ -31949,7 +31420,6 @@ type SecLogJoinObjectInfo struct {
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
 	// 集群状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterStatus *string `json:"ClusterStatus,omitnil,omitempty" name:"ClusterStatus"`
 }
 
@@ -32400,11 +31870,9 @@ type SupportDefenceVul struct {
 	SubmitTime *string `json:"SubmitTime,omitnil,omitempty" name:"SubmitTime"`
 
 	// 漏洞id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VulId *int64 `json:"VulId,omitnil,omitempty" name:"VulId"`
 
 	// 状态，0:防御中，1：已加白，指的是在白名单列表中有这个漏洞的，不一定是全局型白名单
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -32797,6 +32265,12 @@ type UpdateAssetImageRegistryRegistryDetailRequestParams struct {
 
 	// 仓库唯一id
 	RegistryId *int64 `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// 同步方式，0全量同步，1增量同步
+	SyncMode *uint64 `json:"SyncMode,omitnil,omitempty" name:"SyncMode"`
+
+	// 是否自动授权&扫描，选择增量同步时参数生效，包含所有新增镜像
+	NeedScan *bool `json:"NeedScan,omitnil,omitempty" name:"NeedScan"`
 }
 
 type UpdateAssetImageRegistryRegistryDetailRequest struct {
@@ -32837,6 +32311,12 @@ type UpdateAssetImageRegistryRegistryDetailRequest struct {
 
 	// 仓库唯一id
 	RegistryId *int64 `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// 同步方式，0全量同步，1增量同步
+	SyncMode *uint64 `json:"SyncMode,omitnil,omitempty" name:"SyncMode"`
+
+	// 是否自动授权&扫描，选择增量同步时参数生效，包含所有新增镜像
+	NeedScan *bool `json:"NeedScan,omitnil,omitempty" name:"NeedScan"`
 }
 
 func (r *UpdateAssetImageRegistryRegistryDetailRequest) ToJsonString() string {
@@ -32863,6 +32343,8 @@ func (r *UpdateAssetImageRegistryRegistryDetailRequest) FromJsonString(s string)
 	delete(f, "Insecure")
 	delete(f, "ConnDetectConfig")
 	delete(f, "RegistryId")
+	delete(f, "SyncMode")
+	delete(f, "NeedScan")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAssetImageRegistryRegistryDetailRequest has unknown keys!", "")
 	}
@@ -32872,15 +32354,12 @@ func (r *UpdateAssetImageRegistryRegistryDetailRequest) FromJsonString(s string)
 // Predefined struct for user
 type UpdateAssetImageRegistryRegistryDetailResponseParams struct {
 	// 连接错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthCheckErr *string `json:"HealthCheckErr,omitnil,omitempty" name:"HealthCheckErr"`
 
 	// 名称错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NameRepeatErr *string `json:"NameRepeatErr,omitnil,omitempty" name:"NameRepeatErr"`
 
 	// 仓库唯一id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegistryId *int64 `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -33264,6 +32743,23 @@ func (r *UpdateNetworkFirewallPolicyYamlDetailResponse) FromJsonString(s string)
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type VasInfoResourceDetail struct {
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 到期时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 0 付费订单 1试用 2赠送
+	SourceType *uint64 `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 购买量
+	InquireNum *uint64 `json:"InquireNum,omitnil,omitempty" name:"InquireNum"`
+}
+
 type VirusAutoIsolateSampleInfo struct {
 	// 文件MD5值
 	MD5 *string `json:"MD5,omitnil,omitempty" name:"MD5"`
@@ -33373,11 +32869,9 @@ type VirusInfo struct {
 	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil,omitempty" name:"ContainerIsolateOperationSrc"`
 
 	// md5值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MD5 *string `json:"MD5,omitnil,omitempty" name:"MD5"`
 
 	// 风险等级 RISK_CRITICAL, RISK_HIGH, RISK_MEDIUM, RISK_LOW, RISK_NOTICE。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
 	// 检测平台
@@ -33386,7 +32880,6 @@ type VirusInfo struct {
 	// 3: binaryAi
 	// 4: 异常行为
 	// 5: 威胁情报
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckPlatform []*string `json:"CheckPlatform,omitnil,omitempty" name:"CheckPlatform"`
 
 	// 节点ID
@@ -33509,15 +33002,12 @@ type VirusTendencyInfo struct {
 
 type VulAffectedComponentInfo struct {
 	// 组件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 组件版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version []*string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 组件修复版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FixedVersion []*string `json:"FixedVersion,omitnil,omitempty" name:"FixedVersion"`
 }
 
@@ -33565,25 +33055,20 @@ type VulAffectedContainerInfo struct {
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
 	// 容器状态 "RUNNING":运行,"PAUSED":暂停,"STOPPED":停止,"CREATED":已经创建,"DESTROYED":已销毁,"RESTARTING":重启中,"REMOVING":迁移中,"DEAD":DEAD,"UNKNOWN":未知
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerStatus *string `json:"ContainerStatus,omitnil,omitempty" name:"ContainerStatus"`
 }
 
 type VulAffectedImageComponentInfo struct {
 	// 组件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 组件版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 组件修复版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FixedVersion *string `json:"FixedVersion,omitnil,omitempty" name:"FixedVersion"`
 
 	// 组件路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 }
 
@@ -33671,7 +33156,6 @@ type VulDefenceEvent struct {
 	EventID *int64 `json:"EventID,omitnil,omitempty" name:"EventID"`
 
 	// 首次发现时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 隔离状态
@@ -33684,7 +33168,6 @@ type VulDefenceEvent struct {
 	ContainerNetStatus *string `json:"ContainerNetStatus,omitnil,omitempty" name:"ContainerNetStatus"`
 
 	// 最近发现时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MergeTime *string `json:"MergeTime,omitnil,omitempty" name:"MergeTime"`
 
 	// 容器状态
@@ -33695,7 +33178,6 @@ type VulDefenceEvent struct {
 	// 已经销毁: DESTROYED
 	// 正在重启中: RESTARTING
 	// 迁移中: REMOVING
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerStatus *string `json:"ContainerStatus,omitnil,omitempty" name:"ContainerStatus"`
 
 	// 容器子状态
@@ -33706,23 +33188,18 @@ type VulDefenceEvent struct {
 	// 	"SHARED_HOST"         // 容器与主机共享网络
 	// 	"RESOURCE_LIMIT"      //隔离操作资源超限
 	// 	"UNKNOW"              // 原因未知
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitnil,omitempty" name:"ContainerNetSubStatus"`
 
 	// 容器隔离操作来源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil,omitempty" name:"ContainerIsolateOperationSrc"`
 
 	// 主机QUUID/超级节点ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QUUID *string `json:"QUUID,omitnil,omitempty" name:"QUUID"`
 
 	// 主机内网IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostIP *string `json:"HostIP,omitnil,omitempty" name:"HostIP"`
 
 	// 主机名称/超级节点名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
 
 	// 节点类型[NORMAL:普通节点|SUPER:超级节点]
@@ -33815,35 +33292,27 @@ type VulDefenceEventDetail struct {
 	NetworkPayload *string `json:"NetworkPayload,omitnil,omitempty" name:"NetworkPayload"`
 
 	// 进程PID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PID *int64 `json:"PID,omitnil,omitempty" name:"PID"`
 
 	// 进程主类名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MainClass *string `json:"MainClass,omitnil,omitempty" name:"MainClass"`
 
 	// 堆栈信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StackTrace *string `json:"StackTrace,omitnil,omitempty" name:"StackTrace"`
 
 	// 监听账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerAccount *string `json:"ServerAccount,omitnil,omitempty" name:"ServerAccount"`
 
 	// 监听端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerPort *string `json:"ServerPort,omitnil,omitempty" name:"ServerPort"`
 
 	// 进程路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerExe *string `json:"ServerExe,omitnil,omitempty" name:"ServerExe"`
 
 	// 进程命令行参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerArg *string `json:"ServerArg,omitnil,omitempty" name:"ServerArg"`
 
 	// 主机QUUID/超级节点ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QUUID *string `json:"QUUID,omitnil,omitempty" name:"QUUID"`
 
 	// 隔离状态
@@ -33853,7 +33322,6 @@ type VulDefenceEventDetail struct {
 	// 隔离失败	ISOLATE_FAILED
 	// 解除隔离中  RESTORING
 	// 解除隔离失败 RESTORE_FAILED
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerNetStatus *string `json:"ContainerNetStatus,omitnil,omitempty" name:"ContainerNetStatus"`
 
 	// 容器子状态
@@ -33864,11 +33332,9 @@ type VulDefenceEventDetail struct {
 	// 	"SHARED_HOST"         // 容器与主机共享网络
 	// 	"RESOURCE_LIMIT"      //隔离操作资源超限
 	// 	"UNKNOW"              // 原因未知
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitnil,omitempty" name:"ContainerNetSubStatus"`
 
 	// 容器隔离操作来源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil,omitempty" name:"ContainerIsolateOperationSrc"`
 
 	// 容器状态
@@ -33879,15 +33345,12 @@ type VulDefenceEventDetail struct {
 	// 已经销毁: DESTROYED
 	// 正在重启中: RESTARTING
 	// 迁移中: REMOVING
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerStatus *string `json:"ContainerStatus,omitnil,omitempty" name:"ContainerStatus"`
 
 	// 接口Url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JNDIUrl *string `json:"JNDIUrl,omitnil,omitempty" name:"JNDIUrl"`
 
 	// rasp detail
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RaspDetail []*RaspInfo `json:"RaspDetail,omitnil,omitempty" name:"RaspDetail"`
 
 	// 超级节点子网名称
@@ -34001,19 +33464,15 @@ type VulDetailInfo struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 漏洞标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 漏洞类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryType *string `json:"CategoryType,omitnil,omitempty" name:"CategoryType"`
 
 	// 漏洞威胁等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 漏洞披露时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubmitTime *string `json:"SubmitTime,omitnil,omitempty" name:"SubmitTime"`
 
 	// 漏洞描述
@@ -34059,23 +33518,18 @@ type VulDetailInfo struct {
 	PocID *string `json:"PocID,omitnil,omitempty" name:"PocID"`
 
 	// 防御状态，NO_DEFENDED:未防御，DEFENDED:已防御
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefenceStatus *string `json:"DefenceStatus,omitnil,omitempty" name:"DefenceStatus"`
 
 	// 漏洞防御主机范围: MANUAL:自选主机节点，ALL:全部
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefenceScope *string `json:"DefenceScope,omitnil,omitempty" name:"DefenceScope"`
 
 	// 漏洞防御主机数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefenceHostCount *int64 `json:"DefenceHostCount,omitnil,omitempty" name:"DefenceHostCount"`
 
 	// 已防御攻击次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefendedCount *int64 `json:"DefendedCount,omitnil,omitempty" name:"DefendedCount"`
 
 	// 是否已扫描，NOT_SCAN:未扫描,SCANNED:已扫描
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanStatus *string `json:"ScanStatus,omitnil,omitempty" name:"ScanStatus"`
 }
 
@@ -34121,30 +33575,24 @@ type VulInfo struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 漏洞标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// CVSS V3分数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CVSSV3Score *float64 `json:"CVSSV3Score,omitnil,omitempty" name:"CVSSV3Score"`
 
 	// 风险等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// CVE编号
 	CVEID *string `json:"CVEID,omitnil,omitempty" name:"CVEID"`
 
 	// 漏洞子类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 
 	// 首次发现时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FoundTime *string `json:"FoundTime,omitnil,omitempty" name:"FoundTime"`
 
 	// 最近发现时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestFoundTime *string `json:"LatestFoundTime,omitnil,omitempty" name:"LatestFoundTime"`
 
 	// 漏洞ID
@@ -34154,31 +33602,24 @@ type VulInfo struct {
 	LocalImageCount *int64 `json:"LocalImageCount,omitnil,omitempty" name:"LocalImageCount"`
 
 	// 影响容器数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerCount *int64 `json:"ContainerCount,omitnil,omitempty" name:"ContainerCount"`
 
 	// 影响仓库镜像数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegistryImageCount *int64 `json:"RegistryImageCount,omitnil,omitempty" name:"RegistryImageCount"`
 
 	// 漏洞PocID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PocID *string `json:"PocID,omitnil,omitempty" name:"PocID"`
 
 	// 防御状态，NO_DEFENDED:未防御，DEFENDED:已防御
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefenceStatus *string `json:"DefenceStatus,omitnil,omitempty" name:"DefenceStatus"`
 
 	// 漏洞防御主机范围: MANUAL:自选主机节点，ALL:全部
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefenceScope *string `json:"DefenceScope,omitnil,omitempty" name:"DefenceScope"`
 
 	// 漏洞防御主机数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefenceHostCount *int64 `json:"DefenceHostCount,omitnil,omitempty" name:"DefenceHostCount"`
 
 	// 已防御攻击次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefendedCount *int64 `json:"DefendedCount,omitnil,omitempty" name:"DefendedCount"`
 }
 
@@ -34196,7 +33637,6 @@ type VulScanImageInfo struct {
 	ScanStatus *string `json:"ScanStatus,omitnil,omitempty" name:"ScanStatus"`
 
 	// 扫描时长
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanDuration *float64 `json:"ScanDuration,omitnil,omitempty" name:"ScanDuration"`
 
 	// 高危漏洞数

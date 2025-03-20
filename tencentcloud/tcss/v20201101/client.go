@@ -4334,6 +4334,69 @@ func (c *Client) DeleteNetworkFirewallPolicyDetailWithContext(ctx context.Contex
     return
 }
 
+func NewDeleteRaspRulesRequest() (request *DeleteRaspRulesRequest) {
+    request = &DeleteRaspRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DeleteRaspRules")
+    
+    
+    return
+}
+
+func NewDeleteRaspRulesResponse() (response *DeleteRaspRulesResponse) {
+    response = &DeleteRaspRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteRaspRules
+// 删除漏洞防御白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteRaspRules(request *DeleteRaspRulesRequest) (response *DeleteRaspRulesResponse, err error) {
+    return c.DeleteRaspRulesWithContext(context.Background(), request)
+}
+
+// DeleteRaspRules
+// 删除漏洞防御白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteRaspRulesWithContext(ctx context.Context, request *DeleteRaspRulesRequest) (response *DeleteRaspRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteRaspRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRaspRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRaspRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteReverseShellEventsRequest() (request *DeleteReverseShellEventsRequest) {
     request = &DeleteReverseShellEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4861,75 +4924,6 @@ func (c *Client) DescribeAbnormalProcessEventsWithContext(ctx context.Context, r
     return
 }
 
-func NewDescribeAbnormalProcessEventsExportRequest() (request *DescribeAbnormalProcessEventsExportRequest) {
-    request = &DescribeAbnormalProcessEventsExportRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcss", APIVersion, "DescribeAbnormalProcessEventsExport")
-    
-    
-    return
-}
-
-func NewDescribeAbnormalProcessEventsExportResponse() (response *DescribeAbnormalProcessEventsExportResponse) {
-    response = &DescribeAbnormalProcessEventsExportResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeAbnormalProcessEventsExport
-// 接口已废弃
-//
-// 
-//
-// 查询运行时异常进程事件列表信息导出
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeAbnormalProcessEventsExport(request *DescribeAbnormalProcessEventsExportRequest) (response *DescribeAbnormalProcessEventsExportResponse, err error) {
-    return c.DescribeAbnormalProcessEventsExportWithContext(context.Background(), request)
-}
-
-// DescribeAbnormalProcessEventsExport
-// 接口已废弃
-//
-// 
-//
-// 查询运行时异常进程事件列表信息导出
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeAbnormalProcessEventsExportWithContext(ctx context.Context, request *DescribeAbnormalProcessEventsExportRequest) (response *DescribeAbnormalProcessEventsExportResponse, err error) {
-    if request == nil {
-        request = NewDescribeAbnormalProcessEventsExportRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeAbnormalProcessEventsExport require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeAbnormalProcessEventsExportResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeAbnormalProcessLevelSummaryRequest() (request *DescribeAbnormalProcessLevelSummaryRequest) {
     request = &DescribeAbnormalProcessLevelSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5109,75 +5103,6 @@ func (c *Client) DescribeAbnormalProcessRulesWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeAbnormalProcessRulesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeAbnormalProcessRulesExportRequest() (request *DescribeAbnormalProcessRulesExportRequest) {
-    request = &DescribeAbnormalProcessRulesExportRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcss", APIVersion, "DescribeAbnormalProcessRulesExport")
-    
-    
-    return
-}
-
-func NewDescribeAbnormalProcessRulesExportResponse() (response *DescribeAbnormalProcessRulesExportResponse) {
-    response = &DescribeAbnormalProcessRulesExportResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeAbnormalProcessRulesExport
-// 接口已废弃
-//
-// 
-//
-// 查询运行时异常进程策略列表信息导出
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeAbnormalProcessRulesExport(request *DescribeAbnormalProcessRulesExportRequest) (response *DescribeAbnormalProcessRulesExportResponse, err error) {
-    return c.DescribeAbnormalProcessRulesExportWithContext(context.Background(), request)
-}
-
-// DescribeAbnormalProcessRulesExport
-// 接口已废弃
-//
-// 
-//
-// 查询运行时异常进程策略列表信息导出
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeAbnormalProcessRulesExportWithContext(ctx context.Context, request *DescribeAbnormalProcessRulesExportRequest) (response *DescribeAbnormalProcessRulesExportResponse, err error) {
-    if request == nil {
-        request = NewDescribeAbnormalProcessRulesExportRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeAbnormalProcessRulesExport require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeAbnormalProcessRulesExportResponse()
     err = c.Send(request, response)
     return
 }
@@ -5489,75 +5414,6 @@ func (c *Client) DescribeAccessControlRulesWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeAccessControlRulesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeAccessControlRulesExportRequest() (request *DescribeAccessControlRulesExportRequest) {
-    request = &DescribeAccessControlRulesExportRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcss", APIVersion, "DescribeAccessControlRulesExport")
-    
-    
-    return
-}
-
-func NewDescribeAccessControlRulesExportResponse() (response *DescribeAccessControlRulesExportResponse) {
-    response = &DescribeAccessControlRulesExportResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeAccessControlRulesExport
-// 接口已废弃
-//
-// 
-//
-// 查询运行时访问控制策略列表导出
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeAccessControlRulesExport(request *DescribeAccessControlRulesExportRequest) (response *DescribeAccessControlRulesExportResponse, err error) {
-    return c.DescribeAccessControlRulesExportWithContext(context.Background(), request)
-}
-
-// DescribeAccessControlRulesExport
-// 接口已废弃
-//
-// 
-//
-// 查询运行时访问控制策略列表导出
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeAccessControlRulesExportWithContext(ctx context.Context, request *DescribeAccessControlRulesExportRequest) (response *DescribeAccessControlRulesExportResponse, err error) {
-    if request == nil {
-        request = NewDescribeAccessControlRulesExportRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeAccessControlRulesExport require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeAccessControlRulesExportResponse()
     err = c.Send(request, response)
     return
 }
@@ -6543,69 +6399,6 @@ func (c *Client) DescribeAssetImageListWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeAssetImageListResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeAssetImageListExportRequest() (request *DescribeAssetImageListExportRequest) {
-    request = &DescribeAssetImageListExportRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageListExport")
-    
-    
-    return
-}
-
-func NewDescribeAssetImageListExportResponse() (response *DescribeAssetImageListExportResponse) {
-    response = &DescribeAssetImageListExportResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeAssetImageListExport
-// 接口已废弃
-//
-// 
-//
-// 容器安全搜索查询镜像列表导出
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeAssetImageListExport(request *DescribeAssetImageListExportRequest) (response *DescribeAssetImageListExportResponse, err error) {
-    return c.DescribeAssetImageListExportWithContext(context.Background(), request)
-}
-
-// DescribeAssetImageListExport
-// 接口已废弃
-//
-// 
-//
-// 容器安全搜索查询镜像列表导出
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeAssetImageListExportWithContext(ctx context.Context, request *DescribeAssetImageListExportRequest) (response *DescribeAssetImageListExportResponse, err error) {
-    if request == nil {
-        request = NewDescribeAssetImageListExportRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeAssetImageListExport require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeAssetImageListExportResponse()
     err = c.Send(request, response)
     return
 }
@@ -9648,67 +9441,6 @@ func (c *Client) DescribeEscapeEventTypeSummaryWithContext(ctx context.Context, 
     return
 }
 
-func NewDescribeEscapeEventsExportRequest() (request *DescribeEscapeEventsExportRequest) {
-    request = &DescribeEscapeEventsExportRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcss", APIVersion, "DescribeEscapeEventsExport")
-    
-    
-    return
-}
-
-func NewDescribeEscapeEventsExportResponse() (response *DescribeEscapeEventsExportResponse) {
-    response = &DescribeEscapeEventsExportResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeEscapeEventsExport
-// 接口已废弃
-//
-// 
-//
-// DescribeEscapeEventsExport  查询容器逃逸事件列表导出
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeEscapeEventsExport(request *DescribeEscapeEventsExportRequest) (response *DescribeEscapeEventsExportResponse, err error) {
-    return c.DescribeEscapeEventsExportWithContext(context.Background(), request)
-}
-
-// DescribeEscapeEventsExport
-// 接口已废弃
-//
-// 
-//
-// DescribeEscapeEventsExport  查询容器逃逸事件列表导出
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DescribeEscapeEventsExportWithContext(ctx context.Context, request *DescribeEscapeEventsExportRequest) (response *DescribeEscapeEventsExportResponse, err error) {
-    if request == nil {
-        request = NewDescribeEscapeEventsExportRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeEscapeEventsExport require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeEscapeEventsExportResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeEscapeRuleInfoRequest() (request *DescribeEscapeRuleInfoRequest) {
     request = &DescribeEscapeRuleInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12175,6 +11907,132 @@ func (c *Client) DescribePurchaseStateInfoWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribePurchaseStateInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRaspRuleVulsRequest() (request *DescribeRaspRuleVulsRequest) {
+    request = &DescribeRaspRuleVulsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeRaspRuleVuls")
+    
+    
+    return
+}
+
+func NewDescribeRaspRuleVulsResponse() (response *DescribeRaspRuleVulsResponse) {
+    response = &DescribeRaspRuleVulsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRaspRuleVuls
+// 获取漏洞防御白名单漏洞列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeRaspRuleVuls(request *DescribeRaspRuleVulsRequest) (response *DescribeRaspRuleVulsResponse, err error) {
+    return c.DescribeRaspRuleVulsWithContext(context.Background(), request)
+}
+
+// DescribeRaspRuleVuls
+// 获取漏洞防御白名单漏洞列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeRaspRuleVulsWithContext(ctx context.Context, request *DescribeRaspRuleVulsRequest) (response *DescribeRaspRuleVulsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRaspRuleVulsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRaspRuleVuls require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRaspRuleVulsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRaspRulesRequest() (request *DescribeRaspRulesRequest) {
+    request = &DescribeRaspRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeRaspRules")
+    
+    
+    return
+}
+
+func NewDescribeRaspRulesResponse() (response *DescribeRaspRulesResponse) {
+    response = &DescribeRaspRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRaspRules
+// 查询支持防御的漏洞列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeRaspRules(request *DescribeRaspRulesRequest) (response *DescribeRaspRulesResponse, err error) {
+    return c.DescribeRaspRulesWithContext(context.Background(), request)
+}
+
+// DescribeRaspRules
+// 查询支持防御的漏洞列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeRaspRulesWithContext(ctx context.Context, request *DescribeRaspRulesRequest) (response *DescribeRaspRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRaspRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRaspRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRaspRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -17854,6 +17712,69 @@ func (c *Client) ModifyK8sApiAbnormalRuleStatusWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewModifyK8sApiAbnormalRuleStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRaspRulesRequest() (request *ModifyRaspRulesRequest) {
+    request = &ModifyRaspRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "ModifyRaspRules")
+    
+    
+    return
+}
+
+func NewModifyRaspRulesResponse() (response *ModifyRaspRulesResponse) {
+    response = &ModifyRaspRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRaspRules
+// 编辑或者创建java内存马白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyRaspRules(request *ModifyRaspRulesRequest) (response *ModifyRaspRulesResponse, err error) {
+    return c.ModifyRaspRulesWithContext(context.Background(), request)
+}
+
+// ModifyRaspRules
+// 编辑或者创建java内存马白名单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyRaspRulesWithContext(ctx context.Context, request *ModifyRaspRulesRequest) (response *ModifyRaspRulesResponse, err error) {
+    if request == nil {
+        request = NewModifyRaspRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRaspRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRaspRulesResponse()
     err = c.Send(request, response)
     return
 }

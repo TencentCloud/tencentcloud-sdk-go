@@ -2737,11 +2737,9 @@ type SecLogExportTaskInfo struct {
 	AsyncRequestId *uint64 `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
 	// 任务开始时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 任务结束时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 任务创建时间。
@@ -2754,19 +2752,15 @@ type SecLogExportTaskInfo struct {
 	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
 	// 导出日志开始时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogStartTime *string `json:"LogStartTime,omitnil,omitempty" name:"LogStartTime"`
 
 	// 导出日志结束时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogEndTime *string `json:"LogEndTime,omitnil,omitempty" name:"LogEndTime"`
 
 	// 日志文件总大小，单位KB。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalSize *uint64 `json:"TotalSize,omitnil,omitempty" name:"TotalSize"`
 
 	// 风险等级列表。0 无风险；1 低风险；2 中风险；3 高风险。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DangerLevels []*uint64 `json:"DangerLevels,omitnil,omitempty" name:"DangerLevels"`
 }
 
@@ -2925,19 +2919,15 @@ type TimeSlice struct {
 
 type UserProfile struct {
 	// 配置的id。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProfileId *string `json:"ProfileId,omitnil,omitempty" name:"ProfileId"`
 
 	// 配置类型。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProfileType *string `json:"ProfileType,omitnil,omitempty" name:"ProfileType"`
 
 	// 配置级别，"User"或"Instance"。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProfileLevel *string `json:"ProfileLevel,omitnil,omitempty" name:"ProfileLevel"`
 
 	// 配置名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProfileName *string `json:"ProfileName,omitnil,omitempty" name:"ProfileName"`
 
 	// 配置详情。

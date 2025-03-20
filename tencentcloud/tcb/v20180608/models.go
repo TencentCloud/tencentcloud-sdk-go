@@ -20,26 +20,6 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
-type ActivityInfoItem struct {
-	// 活动id
-	ActivityId *int64 `json:"ActivityId,omitnil,omitempty" name:"ActivityId"`
-
-	// 记录插入时间
-	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
-
-	// 记录最后一次变更时间
-	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
-
-	// 活动开始时间
-	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
-
-	// 活动结束时间
-	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
-
-	// 自定义备注信息
-	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
-}
-
 type ActivityRecordItem struct {
 	// 用户uin
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
@@ -2607,63 +2587,6 @@ func (r *DeleteWxGatewayRouteResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteWxGatewayRouteResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeActivityInfoRequestParams struct {
-	// 活动id列表
-	ActivityIdList []*int64 `json:"ActivityIdList,omitnil,omitempty" name:"ActivityIdList"`
-}
-
-type DescribeActivityInfoRequest struct {
-	*tchttp.BaseRequest
-	
-	// 活动id列表
-	ActivityIdList []*int64 `json:"ActivityIdList,omitnil,omitempty" name:"ActivityIdList"`
-}
-
-func (r *DescribeActivityInfoRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeActivityInfoRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ActivityIdList")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeActivityInfoRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeActivityInfoResponseParams struct {
-	// 活动详情
-	ActivityInfoList []*ActivityInfoItem `json:"ActivityInfoList,omitnil,omitempty" name:"ActivityInfoList"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeActivityInfoResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeActivityInfoResponseParams `json:"Response"`
-}
-
-func (r *DescribeActivityInfoResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeActivityInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

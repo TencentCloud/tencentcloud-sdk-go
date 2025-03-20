@@ -17769,7 +17769,6 @@ type PodChargeInfo struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// Pod是GPU时，表示GPU卡数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Gpu *string `json:"Gpu,omitnil,omitempty" name:"Gpu"`
 
 	// 计费类型
@@ -17789,27 +17788,21 @@ type PodChargeInfo struct {
 
 type PodDeductionRate struct {
 	// Pod的 CPU
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
 	// Pod 的内存
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Memory *float64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
 	//  Pod 的类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	//  Pod 的 GPU 卡数，Pod 类型为 GPU 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GpuNum *string `json:"GpuNum,omitnil,omitempty" name:"GpuNum"`
 
 	// 这种规格的 Pod总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
 
 	// 这种规格的 Pod被预留券抵扣的数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeductionNum *uint64 `json:"DeductionNum,omitnil,omitempty" name:"DeductionNum"`
 }
 
@@ -17843,23 +17836,18 @@ type PodLimitsInstance struct {
 
 type PodNodeInfo struct {
 	// 集群 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	//  节点名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
 	// 可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 命名空间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	//  Pod 名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
@@ -18998,43 +18986,33 @@ type ReservedInstanceSpec struct {
 
 type ReservedInstanceUtilizationRate struct {
 	// 使用率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rate *float64 `json:"Rate,omitnil,omitempty" name:"Rate"`
 
 	// 预留券数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Num *uint64 `json:"Num,omitnil,omitempty" name:"Num"`
 
 	// 核数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CPU *float64 `json:"CPU,omitnil,omitempty" name:"CPU"`
 
 	// 内存
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Memory *float64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
 	//  预留券类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// GPU 卡数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GpuNum *string `json:"GpuNum,omitnil,omitempty" name:"GpuNum"`
 
 	// 可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 集群 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 节点名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
 	// Pod 数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodNum *uint64 `json:"PodNum,omitnil,omitempty" name:"PodNum"`
 }
 
@@ -19634,23 +19612,18 @@ type SubnetInfos struct {
 
 type SuperNodeResource struct {
 	// 节点名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
 	// 节点上的资源总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Num *uint64 `json:"Num,omitnil,omitempty" name:"Num"`
 
 	// 节点上的总核数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
 	// 节点上的总内存数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Memory *float64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
 	// 节点上的总 GPU 卡数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Gpu *float64 `json:"Gpu,omitnil,omitempty" name:"Gpu"`
 }
 

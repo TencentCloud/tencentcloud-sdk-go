@@ -1193,11 +1193,9 @@ type LifecycleConfig struct {
 
 type MachineSetScaling struct {
 	// 节点池最小副本数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinReplicas *int64 `json:"MinReplicas,omitnil,omitempty" name:"MinReplicas"`
 
 	// 节点池最大副本数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxReplicas *int64 `json:"MaxReplicas,omitnil,omitempty" name:"MaxReplicas"`
 
 	// 节点池扩容策略。ZoneEquality：多可用区打散；ZonePriority：首选可用区优先；
@@ -1207,11 +1205,9 @@ type MachineSetScaling struct {
 
 type MachineUpgradeSettings struct {
 	// 是否开启自动升级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoUpgrade *bool `json:"AutoUpgrade,omitnil,omitempty" name:"AutoUpgrade"`
 
 	// 运维窗口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpgradeOptions *AutoUpgradeOptions `json:"UpgradeOptions,omitnil,omitempty" name:"UpgradeOptions"`
 
 	// 升级项
@@ -1219,7 +1215,6 @@ type MachineUpgradeSettings struct {
 	Components []*string `json:"Components,omitnil,omitempty" name:"Components"`
 
 	// 升级时，最大不可升级的节点数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxUnavailable *IntOrString `json:"MaxUnavailable,omitnil,omitempty" name:"MaxUnavailable"`
 }
 
@@ -1494,11 +1489,9 @@ type NativeNodeInfo struct {
 	SecurityGroupIDs []*string `json:"SecurityGroupIDs,omitnil,omitempty" name:"SecurityGroupIDs"`
 
 	// VPC 唯一 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网唯一 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// OS的名称
@@ -1515,7 +1508,6 @@ type NativeNodeInfo struct {
 
 type NativeNodePoolInfo struct {
 	// 伸缩配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scaling *MachineSetScaling `json:"Scaling,omitnil,omitempty" name:"Scaling"`
 
 	// 子网列表
@@ -1526,7 +1518,6 @@ type NativeNodePoolInfo struct {
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
 	// 自动升级配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpgradeSettings *MachineUpgradeSettings `json:"UpgradeSettings,omitnil,omitempty" name:"UpgradeSettings"`
 
 	// 是否开启自愈能力
@@ -1537,7 +1528,6 @@ type NativeNodePoolInfo struct {
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 包年包月机型计费配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 
 	// 系统盘配置
@@ -1548,7 +1538,6 @@ type NativeNodePoolInfo struct {
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
 
 	// Machine 系统配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Management *ManagementConfig `json:"Management,omitnil,omitempty" name:"Management"`
 
 	// 故障自愈规则名称
@@ -1564,29 +1553,24 @@ type NativeNodePoolInfo struct {
 	KubeletArgs []*string `json:"KubeletArgs,omitnil,omitempty" name:"KubeletArgs"`
 
 	// 预定义脚本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Lifecycle *LifecycleConfig `json:"Lifecycle,omitnil,omitempty" name:"Lifecycle"`
 
 	// 运行时根目录
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuntimeRootDir *string `json:"RuntimeRootDir,omitnil,omitempty" name:"RuntimeRootDir"`
 
 	// 是否开启弹性伸缩
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableAutoscaling *bool `json:"EnableAutoscaling,omitnil,omitempty" name:"EnableAutoscaling"`
 
 	// 机型列表
 	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 
 	// 期望节点数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Replicas *int64 `json:"Replicas,omitnil,omitempty" name:"Replicas"`
 
 	// 就绪 Machine 个数
 	ReadyReplicas *int64 `json:"ReadyReplicas,omitnil,omitempty" name:"ReadyReplicas"`
 
 	// 公网带宽设置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitnil,omitempty" name:"InternetAccessible"`
 
 	// 原生节点池数据盘
@@ -1594,7 +1578,6 @@ type NativeNodePoolInfo struct {
 	DataDisks []*DataDisk `json:"DataDisks,omitnil,omitempty" name:"DataDisks"`
 
 	// 原生节点机型 Native, NativeCVM
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 }
 

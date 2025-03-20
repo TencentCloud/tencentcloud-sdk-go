@@ -8220,7 +8220,7 @@ func NewGetRecordPlanByDevResponse() (response *GetRecordPlanByDevResponse) {
 }
 
 // GetRecordPlanByDev
-// 本接口(GetRecordPlanByDev)用于根据设备ID查询其绑定的录制计划.
+// 本接口(GetRecordPlanByDev)用于根据设备ID查询其绑定的录制计划. 这个接口没有业务逻辑用到, 已废弃，统一用DescribeDevice
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -8263,7 +8263,7 @@ func (c *Client) GetRecordPlanByDev(request *GetRecordPlanByDevRequest) (respons
 }
 
 // GetRecordPlanByDev
-// 本接口(GetRecordPlanByDev)用于根据设备ID查询其绑定的录制计划.
+// 本接口(GetRecordPlanByDev)用于根据设备ID查询其绑定的录制计划. 这个接口没有业务逻辑用到, 已废弃，统一用DescribeDevice
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

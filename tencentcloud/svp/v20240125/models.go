@@ -411,7 +411,6 @@ func (r *DescribeSavingPlanOverviewRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSavingPlanOverviewResponseParams struct {
 	// 节省计划总览明细数据	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Overviews []*SavingPlanOverviewDetail `json:"Overviews,omitnil,omitempty" name:"Overviews"`
 
 	// 查询命中的节省计划总览明细数据总条数
@@ -588,83 +587,63 @@ type SavingPlanCoverageRate struct {
 
 type SavingPlanDeductDetail struct {
 	// 账号id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
 	// 账号名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerUinName *string `json:"OwnerUinName,omitnil,omitempty" name:"OwnerUinName"`
 
 	// 抵扣账号id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayerUin *string `json:"PayerUin,omitnil,omitempty" name:"PayerUin"`
 
 	// 抵扣账号名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayerUinName *string `json:"PayerUinName,omitnil,omitempty" name:"PayerUinName"`
 
 	// 节省计划资源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpId *string `json:"SpId,omitnil,omitempty" name:"SpId"`
 
 	// 产品编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
 
 	// 产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
 	// 子产品编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
 
 	// 子产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubProductName *string `json:"SubProductName,omitnil,omitempty" name:"SubProductName"`
 
 	// 交易ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutTradeNo *string `json:"OutTradeNo,omitnil,omitempty" name:"OutTradeNo"`
 
 	// 地域id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
 	// 地域名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 
 	// 地区id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 地区名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 
 	// 开始使用时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpStartTime *string `json:"SpStartTime,omitnil,omitempty" name:"SpStartTime"`
 
 	// 结束使用时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpEndTime *string `json:"SpEndTime,omitnil,omitempty" name:"SpEndTime"`
 
 	// 折扣时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeductTime *string `json:"DeductTime,omitnil,omitempty" name:"DeductTime"`
 
 	// 抵扣金额，单位分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeductAmount *string `json:"DeductAmount,omitnil,omitempty" name:"DeductAmount"`
 
 	// 抵扣折扣率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeductDiscount *string `json:"DeductDiscount,omitnil,omitempty" name:"DeductDiscount"`
 
 	// 抵扣比率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeductRate *string `json:"DeductRate,omitnil,omitempty" name:"DeductRate"`
 }
 

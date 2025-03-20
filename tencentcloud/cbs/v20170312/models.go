@@ -22,19 +22,15 @@ import (
 
 type AdvancedRetentionPolicy struct {
 	// 保留最新快照Days天内的每天最新的一个快照，取值范围：[0, 100]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Days *uint64 `json:"Days,omitnil,omitempty" name:"Days"`
 
 	// 保留最新快照Weeks周内的每周最新的一个快照，取值范围：[0, 100]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weeks *uint64 `json:"Weeks,omitnil,omitempty" name:"Weeks"`
 
 	// 保留最新快照Months月内的每月最新的一个快照， 取值范围：[0, 100]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Months *uint64 `json:"Months,omitnil,omitempty" name:"Months"`
 
 	// 保留最新快照Years年内的每年最新的一个快照，取值范围：[0, 100]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Years *uint64 `json:"Years,omitnil,omitempty" name:"Years"`
 }
 
@@ -383,7 +379,6 @@ type AutoSnapshotPolicy struct {
 	AutoSnapshotPolicyState *string `json:"AutoSnapshotPolicyState,omitnil,omitempty" name:"AutoSnapshotPolicyState"`
 
 	// 是否是跨账号复制快照快照, 1：是, 0: 不是
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsCopyToRemote *uint64 `json:"IsCopyToRemote,omitnil,omitempty" name:"IsCopyToRemote"`
 
 	// 使用该定期快照策略创建出来的快照是否永久保留。
@@ -412,15 +407,12 @@ type AutoSnapshotPolicy struct {
 	CopyToAccountUin *string `json:"CopyToAccountUin,omitnil,omitempty" name:"CopyToAccountUin"`
 
 	// 已绑定当前定期快照策略的实例ID列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceIdSet []*string `json:"InstanceIdSet,omitnil,omitempty" name:"InstanceIdSet"`
 
 	// 该定期快照创建的快照可以保留的月数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetentionMonths *uint64 `json:"RetentionMonths,omitnil,omitempty" name:"RetentionMonths"`
 
 	// 该定期快照创建的快照最大保留数量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetentionAmount *uint64 `json:"RetentionAmount,omitnil,omitempty" name:"RetentionAmount"`
 
 	// 定期快照高级保留策略。
@@ -432,7 +424,6 @@ type AutoSnapshotPolicy struct {
 	CopyFromAccountUin *string `json:"CopyFromAccountUin,omitnil,omitempty" name:"CopyFromAccountUin"`
 
 	// 标签。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
@@ -537,7 +528,6 @@ type CdcSize struct {
 	DiskTotal *uint64 `json:"DiskTotal,omitnil,omitempty" name:"DiskTotal"`
 
 	// 独享集群的可用容量大小，单位GiB
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskAvailable *uint64 `json:"DiskAvailable,omitnil,omitempty" name:"DiskAvailable"`
 }
 

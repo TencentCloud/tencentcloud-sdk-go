@@ -4849,6 +4849,9 @@ type DisasterRecoverGroup struct {
 	// 分散置放群组创建时间。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
+	// 置放群组亲和度
+	Affinity *int64 `json:"Affinity,omitnil,omitempty" name:"Affinity"`
+
 	// 置放群组关联的标签列表。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }

@@ -5941,55 +5941,6 @@ func (c *Client) DescribeReportTasksWithContext(ctx context.Context, request *De
     return
 }
 
-func NewDescribeRuleDetailRequest() (request *DescribeRuleDetailRequest) {
-    request = &DescribeRuleDetailRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("dsgc", APIVersion, "DescribeRuleDetail")
-    
-    
-    return
-}
-
-func NewDescribeRuleDetailResponse() (response *DescribeRuleDetailResponse) {
-    response = &DescribeRuleDetailResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeRuleDetail
-// 查询分类规则详情
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeRuleDetail(request *DescribeRuleDetailRequest) (response *DescribeRuleDetailResponse, err error) {
-    return c.DescribeRuleDetailWithContext(context.Background(), request)
-}
-
-// DescribeRuleDetail
-// 查询分类规则详情
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeRuleDetailWithContext(ctx context.Context, request *DescribeRuleDetailRequest) (response *DescribeRuleDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeRuleDetailRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeRuleDetail require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeRuleDetailResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeRuleListRequest() (request *DescribeRuleListRequest) {
     request = &DescribeRuleListRequest{
         BaseRequest: &tchttp.BaseRequest{},

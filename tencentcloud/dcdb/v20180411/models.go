@@ -1903,15 +1903,12 @@ type DCDBShardInfo struct {
 	ProxyVersion *string `json:"ProxyVersion,omitnil,omitempty" name:"ProxyVersion"`
 
 	// 付费模型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Paymode *string `json:"Paymode,omitnil,omitempty" name:"Paymode"`
 
 	// 分片的主可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShardMasterZone *string `json:"ShardMasterZone,omitnil,omitempty" name:"ShardMasterZone"`
 
 	// 分片的从可用区列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShardSlaveZones []*string `json:"ShardSlaveZones,omitnil,omitempty" name:"ShardSlaveZones"`
 
 	// CPU核数
@@ -2778,11 +2775,9 @@ type DescribeDBSecurityGroupsResponseParams struct {
 	Groups []*SecurityGroup `json:"Groups,omitnil,omitempty" name:"Groups"`
 
 	// 实例VIP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VIP *string `json:"VIP,omitnil,omitempty" name:"VIP"`
 
 	// 实例端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VPort *string `json:"VPort,omitnil,omitempty" name:"VPort"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3952,7 +3947,6 @@ type DescribeDCDBShardsResponseParams struct {
 	Shards []*DCDBShardInfo `json:"Shards,omitnil,omitempty" name:"Shards"`
 
 	// 灾备标志，0-无，1-主实例，2-灾备实例
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DcnFlag *int64 `json:"DcnFlag,omitnil,omitempty" name:"DcnFlag"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6864,7 +6858,6 @@ type ParamDesc struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 设置过的值，参数生效后，该值和value一样。未设置过就不返回该字段。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SetValue *string `json:"SetValue,omitnil,omitempty" name:"SetValue"`
 
 	// 系统默认值
@@ -7305,11 +7298,9 @@ type SlowLogData struct {
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
 	// 样例Sql
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExampleSql *string `json:"ExampleSql,omitnil,omitempty" name:"ExampleSql"`
 
 	// 账户的域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 }
 
@@ -7518,63 +7509,48 @@ func (r *TerminateDedicatedDBInstanceResponse) FromJsonString(s string) error {
 
 type TmpInstance struct {
 	// 应用ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 实例备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceRemark *string `json:"InstanceRemark,omitnil,omitempty" name:"InstanceRemark"`
 
 	// 0:非临时实例 ,1:无效临时实例, 2:回档成功的有效临时实例
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TempType *int64 `json:"TempType,omitnil,omitempty" name:"TempType"`
 
 	// 实例状态,0:待初始化,1:流程处理中,2:有效状态,-1:已隔离，-2：已下线
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 实例 ID，形如：tdsql-ow728lmc。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例虚IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
 	// 实例虚端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 
 	// 有效期结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PeriodEndTime *string `json:"PeriodEndTime,omitnil,omitempty" name:"PeriodEndTime"`
 
 	// 源实例 ID，形如：tdsql-ow728lmc。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcInstanceId *string `json:"SrcInstanceId,omitnil,omitempty" name:"SrcInstanceId"`
 
 	// 实例状态描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
 	// 实例所在地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 实例所在可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 实例虚IPv6
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vipv6 *string `json:"Vipv6,omitnil,omitempty" name:"Vipv6"`
 
 	// 实例IPv6标志
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv6Flag *uint64 `json:"Ipv6Flag,omitnil,omitempty" name:"Ipv6Flag"`
 }
 

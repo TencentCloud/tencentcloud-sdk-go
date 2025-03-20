@@ -105,65 +105,50 @@ type Aggregation struct {
 	SortCount *int64 `json:"SortCount,omitnil,omitempty" name:"SortCount"`
 
 	// 慢查模板概览。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlowLogs []*string `json:"SlowLogs,omitnil,omitempty" name:"SlowLogs"`
 }
 
 type AlarmProfileList struct {
 	// 0-不是 1-是
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsWebHook *int64 `json:"IsWebHook,omitnil,omitempty" name:"IsWebHook"`
 
 	// 接收告警用户数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceiveUinCount *int64 `json:"ReceiveUinCount,omitnil,omitempty" name:"ReceiveUinCount"`
 
 	// 语言
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Lang *string `json:"Lang,omitnil,omitempty" name:"Lang"`
 
 	// 模板类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 接收组数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceiveGroupCount *int64 `json:"ReceiveGroupCount,omitnil,omitempty" name:"ReceiveGroupCount"`
 
 	// 更新用户的uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateUin *int64 `json:"UpdateUin,omitnil,omitempty" name:"UpdateUin"`
 
 	// 接收类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceiveType []*int64 `json:"ReceiveType,omitnil,omitempty" name:"ReceiveType"`
 
 	// 接收用户信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceiveInfo []*ReceiveInfo `json:"ReceiveInfo,omitnil,omitempty" name:"ReceiveInfo"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 模板名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
 	// 发送渠道
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SendChannel []*int64 `json:"SendChannel,omitnil,omitempty" name:"SendChannel"`
 
 	// 模板id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// webhook数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebHookCount *int64 `json:"WebHookCount,omitnil,omitempty" name:"WebHookCount"`
 }
 
@@ -254,27 +239,23 @@ type AuditInstanceInfo struct {
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 资源Tags。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceTags []*string `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 }
 
 type AuditLogFile struct {
 	// 审计日志文件生成异步任务ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
 	// 审计日志文件名称。
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
 	// 审计日志文件创建时间。格式为 : "2019-03-20 17:09:13"。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 文件状态值。可能返回的值为：
 	// "creating" - 生成中;
 	// "failed" - 创建失败;
 	// "success" - 已生成;
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 文件大小，单位为 KB。
@@ -6757,27 +6738,21 @@ type ProfileInfo struct {
 
 type ReceiveInfo struct {
 	// 接收组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceiveGroup []*int64 `json:"ReceiveGroup,omitnil,omitempty" name:"ReceiveGroup"`
 
 	// 最后接收时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndReceiveTime *string `json:"EndReceiveTime,omitnil,omitempty" name:"EndReceiveTime"`
 
 	// 接收名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceiveName *string `json:"ReceiveName,omitnil,omitempty" name:"ReceiveName"`
 
 	// 推送渠道
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SendChannel []*int64 `json:"SendChannel,omitnil,omitempty" name:"SendChannel"`
 
 	// 开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartReceiveTime *string `json:"StartReceiveTime,omitnil,omitempty" name:"StartReceiveTime"`
 
 	// 接收用户列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceiveUin []*ReceiveUin `json:"ReceiveUin,omitnil,omitempty" name:"ReceiveUin"`
 }
 
@@ -6973,11 +6948,9 @@ type SecLogExportTaskInfo struct {
 	AsyncRequestId *uint64 `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
 	// 任务开始时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 任务结束时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 任务创建时间。
@@ -6990,19 +6963,15 @@ type SecLogExportTaskInfo struct {
 	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
 	// 导出日志开始时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogStartTime *string `json:"LogStartTime,omitnil,omitempty" name:"LogStartTime"`
 
 	// 导出日志结束时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogEndTime *string `json:"LogEndTime,omitnil,omitempty" name:"LogEndTime"`
 
 	// 日志文件总大小，单位KB。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalSize *uint64 `json:"TotalSize,omitnil,omitempty" name:"TotalSize"`
 
 	// 风险等级列表。0 无风险；1 低风险；2 中风险；3 高风险。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DangerLevels []*uint64 `json:"DangerLevels,omitnil,omitempty" name:"DangerLevels"`
 }
 
@@ -7039,26 +7008,21 @@ type SlowLogInfoItem struct {
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
 
 	// User来源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// IP来源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserHost *string `json:"UserHost,omitnil,omitempty" name:"UserHost"`
 
 	// 执行时间,单位秒
 	QueryTime *float64 `json:"QueryTime,omitnil,omitempty" name:"QueryTime"`
 
 	// 锁时间,单位秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LockTime *float64 `json:"LockTime,omitnil,omitempty" name:"LockTime"`
 
 	// 扫描行数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RowsExamined *int64 `json:"RowsExamined,omitnil,omitempty" name:"RowsExamined"`
 
 	// 返回行数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RowsSent *int64 `json:"RowsSent,omitnil,omitempty" name:"RowsSent"`
 }
 
@@ -7165,29 +7129,23 @@ type StatDimension struct {
 
 type StatisticDataInfo struct {
 	// 统计维度的值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 平均时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeAvg *float64 `json:"TimeAvg,omitnil,omitempty" name:"TimeAvg"`
 
 	// 总时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeSum *float64 `json:"TimeSum,omitnil,omitempty" name:"TimeSum"`
 
 	// 数量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 
 type StatisticInfo struct {
 	// 统计分析的维度。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Dimension *string `json:"Dimension,omitnil,omitempty" name:"Dimension"`
 
 	// 统计分析的维度下的统计数据详情。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*StatisticDataInfo `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
@@ -7460,19 +7418,15 @@ func (r *UpdateMonitorSwitchResponse) FromJsonString(s string) error {
 
 type UserProfile struct {
 	// 配置的id。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProfileId *string `json:"ProfileId,omitnil,omitempty" name:"ProfileId"`
 
 	// 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProfileType *string `json:"ProfileType,omitnil,omitempty" name:"ProfileType"`
 
 	// 配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProfileLevel *string `json:"ProfileLevel,omitnil,omitempty" name:"ProfileLevel"`
 
 	// 配置名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProfileName *string `json:"ProfileName,omitnil,omitempty" name:"ProfileName"`
 
 	// 配置详情。

@@ -7099,55 +7099,6 @@ func (c *Client) ModifyEnvironmentRoleWithContext(ctx context.Context, request *
     return
 }
 
-func NewModifyPublicNetworkAccessPointRequest() (request *ModifyPublicNetworkAccessPointRequest) {
-    request = &ModifyPublicNetworkAccessPointRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyPublicNetworkAccessPoint")
-    
-    
-    return
-}
-
-func NewModifyPublicNetworkAccessPointResponse() (response *ModifyPublicNetworkAccessPointResponse) {
-    response = &ModifyPublicNetworkAccessPointResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ModifyPublicNetworkAccessPoint
-// RabbitMQ专享版修改公网管控台，vpc15672开关
-//
-// 可能返回的错误码:
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-func (c *Client) ModifyPublicNetworkAccessPoint(request *ModifyPublicNetworkAccessPointRequest) (response *ModifyPublicNetworkAccessPointResponse, err error) {
-    return c.ModifyPublicNetworkAccessPointWithContext(context.Background(), request)
-}
-
-// ModifyPublicNetworkAccessPoint
-// RabbitMQ专享版修改公网管控台，vpc15672开关
-//
-// 可能返回的错误码:
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-func (c *Client) ModifyPublicNetworkAccessPointWithContext(ctx context.Context, request *ModifyPublicNetworkAccessPointRequest) (response *ModifyPublicNetworkAccessPointResponse, err error) {
-    if request == nil {
-        request = NewModifyPublicNetworkAccessPointRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyPublicNetworkAccessPoint require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyPublicNetworkAccessPointResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewModifyPublicNetworkSecurityPolicyRequest() (request *ModifyPublicNetworkSecurityPolicyRequest) {
     request = &ModifyPublicNetworkSecurityPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},

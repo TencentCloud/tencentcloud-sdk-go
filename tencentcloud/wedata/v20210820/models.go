@@ -6106,6 +6106,10 @@ type DatabaseMeta struct {
 	// 库下表的最新访问时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastAccessTimeByTables *uint64 `json:"LastAccessTimeByTables,omitnil,omitempty" name:"LastAccessTimeByTables"`
+
+	// 库guid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseGuid *string `json:"DatabaseGuid,omitnil,omitempty" name:"DatabaseGuid"`
 }
 
 type DatasourceBaseInfo struct {
@@ -20529,6 +20533,9 @@ type GenHiveTableDDLSqlRequestParams struct {
 
 	// 获取源信息的环境
 	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// doris写入模式配置
+	WriteMode *string `json:"WriteMode,omitnil,omitempty" name:"WriteMode"`
 }
 
 type GenHiveTableDDLSqlRequest struct {
@@ -20608,6 +20615,9 @@ type GenHiveTableDDLSqlRequest struct {
 
 	// 获取源信息的环境
 	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// doris写入模式配置
+	WriteMode *string `json:"WriteMode,omitnil,omitempty" name:"WriteMode"`
 }
 
 func (r *GenHiveTableDDLSqlRequest) ToJsonString() string {
@@ -20647,6 +20657,7 @@ func (r *GenHiveTableDDLSqlRequest) FromJsonString(s string) error {
 	delete(f, "TableBaseInfo")
 	delete(f, "SinkSchemaName")
 	delete(f, "Env")
+	delete(f, "WriteMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenHiveTableDDLSqlRequest has unknown keys!", "")
 	}

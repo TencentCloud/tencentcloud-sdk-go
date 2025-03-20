@@ -855,6 +855,89 @@ func (c *Client) CreateDomainGroupWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateDomainsAnalyticsFileRequest() (request *CreateDomainsAnalyticsFileRequest) {
+    request = &CreateDomainsAnalyticsFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "CreateDomainsAnalyticsFile")
+    
+    
+    return
+}
+
+func NewCreateDomainsAnalyticsFileResponse() (response *CreateDomainsAnalyticsFileResponse) {
+    response = &CreateDomainsAnalyticsFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDomainsAnalyticsFile
+// 批量导出域名解析量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
+//  FAILEDOPERATION_NOTREALNAMEDUSER = "FailedOperation.NotRealNamedUser"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BATCHLIMITUNDO = "InvalidParameter.BatchLimitUndo"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINSEMPTY = "InvalidParameter.DomainsEmpty"
+//  INVALIDPARAMETER_JOBGREATERTHANLIMIT = "InvalidParameter.JobGreaterThanLimit"
+//  INVALIDPARAMETER_OPERATEFAILED = "InvalidParameter.OperateFailed"
+//  INVALIDPARAMETER_PARAMSILLEGAL = "InvalidParameter.ParamsIllegal"
+//  INVALIDPARAMETER_RECORDSEMPTY = "InvalidParameter.RecordsEmpty"
+//  INVALIDPARAMETER_STARTTIMEGREATERTHANENDTIME = "InvalidParameter.StarttimeGreaterThanEndtime"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_BATCHTASKLIMIT = "RequestLimitExceeded.BatchTaskLimit"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateDomainsAnalyticsFile(request *CreateDomainsAnalyticsFileRequest) (response *CreateDomainsAnalyticsFileResponse, err error) {
+    return c.CreateDomainsAnalyticsFileWithContext(context.Background(), request)
+}
+
+// CreateDomainsAnalyticsFile
+// 批量导出域名解析量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
+//  FAILEDOPERATION_NOTREALNAMEDUSER = "FailedOperation.NotRealNamedUser"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BATCHLIMITUNDO = "InvalidParameter.BatchLimitUndo"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINSEMPTY = "InvalidParameter.DomainsEmpty"
+//  INVALIDPARAMETER_JOBGREATERTHANLIMIT = "InvalidParameter.JobGreaterThanLimit"
+//  INVALIDPARAMETER_OPERATEFAILED = "InvalidParameter.OperateFailed"
+//  INVALIDPARAMETER_PARAMSILLEGAL = "InvalidParameter.ParamsIllegal"
+//  INVALIDPARAMETER_RECORDSEMPTY = "InvalidParameter.RecordsEmpty"
+//  INVALIDPARAMETER_STARTTIMEGREATERTHANENDTIME = "InvalidParameter.StarttimeGreaterThanEndtime"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_BATCHTASKLIMIT = "RequestLimitExceeded.BatchTaskLimit"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateDomainsAnalyticsFileWithContext(ctx context.Context, request *CreateDomainsAnalyticsFileRequest) (response *CreateDomainsAnalyticsFileResponse, err error) {
+    if request == nil {
+        request = NewCreateDomainsAnalyticsFileRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDomainsAnalyticsFile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDomainsAnalyticsFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateLineGroupRequest() (request *CreateLineGroupRequest) {
     request = &CreateLineGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1463,6 +1546,91 @@ func (c *Client) CreateSnapshotWithContext(ctx context.Context, request *CreateS
     request.SetContext(ctx)
     
     response = NewCreateSnapshotResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateSubDomainsAnalyticsFileRequest() (request *CreateSubDomainsAnalyticsFileRequest) {
+    request = &CreateSubDomainsAnalyticsFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "CreateSubDomainsAnalyticsFile")
+    
+    
+    return
+}
+
+func NewCreateSubDomainsAnalyticsFileResponse() (response *CreateSubDomainsAnalyticsFileResponse) {
+    response = &CreateSubDomainsAnalyticsFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSubDomainsAnalyticsFile
+// 批量导出子域名解析量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
+//  FAILEDOPERATION_NOTREALNAMEDUSER = "FailedOperation.NotRealNamedUser"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BATCHLIMITUNDO = "InvalidParameter.BatchLimitUndo"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINSEMPTY = "InvalidParameter.DomainsEmpty"
+//  INVALIDPARAMETER_JOBGREATERTHANLIMIT = "InvalidParameter.JobGreaterThanLimit"
+//  INVALIDPARAMETER_OPERATEFAILED = "InvalidParameter.OperateFailed"
+//  INVALIDPARAMETER_PARAMSILLEGAL = "InvalidParameter.ParamsIllegal"
+//  INVALIDPARAMETER_RECORDSEMPTY = "InvalidParameter.RecordsEmpty"
+//  INVALIDPARAMETER_STARTTIMEGREATERTHANENDTIME = "InvalidParameter.StarttimeGreaterThanEndtime"
+//  INVALIDPARAMETERVALUE_DOMAINGRADEINVALID = "InvalidParameterValue.DomainGradeInvalid"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_BATCHTASKLIMIT = "RequestLimitExceeded.BatchTaskLimit"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateSubDomainsAnalyticsFile(request *CreateSubDomainsAnalyticsFileRequest) (response *CreateSubDomainsAnalyticsFileResponse, err error) {
+    return c.CreateSubDomainsAnalyticsFileWithContext(context.Background(), request)
+}
+
+// CreateSubDomainsAnalyticsFile
+// 批量导出子域名解析量
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
+//  FAILEDOPERATION_NOTREALNAMEDUSER = "FailedOperation.NotRealNamedUser"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BATCHLIMITUNDO = "InvalidParameter.BatchLimitUndo"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINSEMPTY = "InvalidParameter.DomainsEmpty"
+//  INVALIDPARAMETER_JOBGREATERTHANLIMIT = "InvalidParameter.JobGreaterThanLimit"
+//  INVALIDPARAMETER_OPERATEFAILED = "InvalidParameter.OperateFailed"
+//  INVALIDPARAMETER_PARAMSILLEGAL = "InvalidParameter.ParamsIllegal"
+//  INVALIDPARAMETER_RECORDSEMPTY = "InvalidParameter.RecordsEmpty"
+//  INVALIDPARAMETER_STARTTIMEGREATERTHANENDTIME = "InvalidParameter.StarttimeGreaterThanEndtime"
+//  INVALIDPARAMETERVALUE_DOMAINGRADEINVALID = "InvalidParameterValue.DomainGradeInvalid"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  REQUESTLIMITEXCEEDED_BATCHTASKLIMIT = "RequestLimitExceeded.BatchTaskLimit"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateSubDomainsAnalyticsFileWithContext(ctx context.Context, request *CreateSubDomainsAnalyticsFileRequest) (response *CreateSubDomainsAnalyticsFileResponse, err error) {
+    if request == nil {
+        request = NewCreateSubDomainsAnalyticsFileRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSubDomainsAnalyticsFile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSubDomainsAnalyticsFileResponse()
     err = c.Send(request, response)
     return
 }
@@ -3489,6 +3657,59 @@ func (c *Client) DescribeDomainWhoisWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeDomainWhoisResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFileInfoByJobIdRequest() (request *DescribeFileInfoByJobIdRequest) {
+    request = &DescribeFileInfoByJobIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeFileInfoByJobId")
+    
+    
+    return
+}
+
+func NewDescribeFileInfoByJobIdResponse() (response *DescribeFileInfoByJobIdResponse) {
+    response = &DescribeFileInfoByJobIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFileInfoByJobId
+// 根据批量任务ID获取生成文件信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FILENOTEXIST = "FailedOperation.FileNotExist"
+//  FAILEDOPERATION_NOTBATCHTASKOWNER = "FailedOperation.NotBatchTaskOwner"
+//  INVALIDPARAMETER_BATCHTASKNOTEXIST = "InvalidParameter.BatchTaskNotExist"
+func (c *Client) DescribeFileInfoByJobId(request *DescribeFileInfoByJobIdRequest) (response *DescribeFileInfoByJobIdResponse, err error) {
+    return c.DescribeFileInfoByJobIdWithContext(context.Background(), request)
+}
+
+// DescribeFileInfoByJobId
+// 根据批量任务ID获取生成文件信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FILENOTEXIST = "FailedOperation.FileNotExist"
+//  FAILEDOPERATION_NOTBATCHTASKOWNER = "FailedOperation.NotBatchTaskOwner"
+//  INVALIDPARAMETER_BATCHTASKNOTEXIST = "InvalidParameter.BatchTaskNotExist"
+func (c *Client) DescribeFileInfoByJobIdWithContext(ctx context.Context, request *DescribeFileInfoByJobIdRequest) (response *DescribeFileInfoByJobIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeFileInfoByJobIdRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFileInfoByJobId require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFileInfoByJobIdResponse()
     err = c.Send(request, response)
     return
 }

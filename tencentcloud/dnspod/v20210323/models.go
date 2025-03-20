@@ -839,6 +839,88 @@ func (r *CreateDomainResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDomainsAnalyticsFileRequestParams struct {
+	// 需要查询解析量的域名数组。
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 查询解析量的时间区间起点。如：2023-01-01。
+	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
+
+	// 查询解析量的统计维度。默认为 DATE。
+	// DATE：按天统计
+	// HOUR：按小时统计
+	DNSFormat *string `json:"DNSFormat,omitnil,omitempty" name:"DNSFormat"`
+
+	// 查询解析量的时间区间终点。如：2023-01-01。默认为当天。
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
+}
+
+type CreateDomainsAnalyticsFileRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要查询解析量的域名数组。
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 查询解析量的时间区间起点。如：2023-01-01。
+	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
+
+	// 查询解析量的统计维度。默认为 DATE。
+	// DATE：按天统计
+	// HOUR：按小时统计
+	DNSFormat *string `json:"DNSFormat,omitnil,omitempty" name:"DNSFormat"`
+
+	// 查询解析量的时间区间终点。如：2023-01-01。默认为当天。
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
+}
+
+func (r *CreateDomainsAnalyticsFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDomainsAnalyticsFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domains")
+	delete(f, "StartDate")
+	delete(f, "DNSFormat")
+	delete(f, "EndDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDomainsAnalyticsFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDomainsAnalyticsFileResponseParams struct {
+	// 当前批量任务 id。
+	JobId *uint64 `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDomainsAnalyticsFileResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDomainsAnalyticsFileResponseParams `json:"Response"`
+}
+
+func (r *CreateDomainsAnalyticsFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDomainsAnalyticsFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateLineGroupCopyRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -1406,6 +1488,99 @@ func (r *CreateSnapshotResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSubDomainsAnalyticsFileRequestParams struct {
+	// 需要查询解析量的域名数组。
+	Domains []*SubDomainsAnalyticsParamsItem `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 查询解析量的时间区间起点。如：2023-01-01。
+	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
+
+	// 查询解析量子域名类型。
+	// 1：子域名
+	// 2：无解析量子域名
+	SubDomainType *uint64 `json:"SubDomainType,omitnil,omitempty" name:"SubDomainType"`
+
+	// 查询解析量的统计维度。默认为 DATE。
+	// DATE：按天统计
+	// HOUR：按小时统计
+	DNSFormat *string `json:"DNSFormat,omitnil,omitempty" name:"DNSFormat"`
+
+	// 查询解析量的时间区间终点。如：2023-01-01。默认为当天。
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
+}
+
+type CreateSubDomainsAnalyticsFileRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要查询解析量的域名数组。
+	Domains []*SubDomainsAnalyticsParamsItem `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 查询解析量的时间区间起点。如：2023-01-01。
+	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
+
+	// 查询解析量子域名类型。
+	// 1：子域名
+	// 2：无解析量子域名
+	SubDomainType *uint64 `json:"SubDomainType,omitnil,omitempty" name:"SubDomainType"`
+
+	// 查询解析量的统计维度。默认为 DATE。
+	// DATE：按天统计
+	// HOUR：按小时统计
+	DNSFormat *string `json:"DNSFormat,omitnil,omitempty" name:"DNSFormat"`
+
+	// 查询解析量的时间区间终点。如：2023-01-01。默认为当天。
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
+}
+
+func (r *CreateSubDomainsAnalyticsFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSubDomainsAnalyticsFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domains")
+	delete(f, "StartDate")
+	delete(f, "SubDomainType")
+	delete(f, "DNSFormat")
+	delete(f, "EndDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSubDomainsAnalyticsFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSubDomainsAnalyticsFileResponseParams struct {
+	// 当前批量任务 id。
+	JobId *uint64 `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSubDomainsAnalyticsFileResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSubDomainsAnalyticsFileResponseParams `json:"Response"`
+}
+
+func (r *CreateSubDomainsAnalyticsFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSubDomainsAnalyticsFileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3449,6 +3624,63 @@ func (r *DescribeDomainWhoisResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeFileInfoByJobIdRequestParams struct {
+	// 任务ID
+	JobId *uint64 `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type DescribeFileInfoByJobIdRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	JobId *uint64 `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *DescribeFileInfoByJobIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFileInfoByJobIdRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFileInfoByJobIdRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFileInfoByJobIdResponseParams struct {
+	// 生成文件相关信息
+	FileInfo *FileInfo `json:"FileInfo,omitnil,omitempty" name:"FileInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFileInfoByJobIdResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFileInfoByJobIdResponseParams `json:"Response"`
+}
+
+func (r *DescribeFileInfoByJobIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFileInfoByJobIdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLineGroupListRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -5459,6 +5691,52 @@ func (r *DownloadSnapshotResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type FileInfo struct {
+	// 文件 id。
+	FileId *uint64 `json:"FileId,omitnil,omitempty" name:"FileId"`
+
+	// 文件生成时间。
+	CreatedOn *string `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
+
+	// 文件最后更新时间。
+	UpdatedOn *string `json:"UpdatedOn,omitnil,omitempty" name:"UpdatedOn"`
+
+	// 文件涉及到的域名。
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 文件名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 文件下载链接。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
+
+	// 生成文件的任务 id。
+	JobId *uint64 `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 生成文件的进度。100 表示 完成度为100%。
+	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// 文件状态。
+	// OK：已完成
+	// RUNNING：正在生成中
+	// ERROR：生成失败
+	// CANCELED：文件已取消生成
+	// CANCELING：文件正在取消生成
+	// EXPIRED：文件已过期
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 生成文件的任务类型。
+	// RECORD_LOG：解析量数据
+	// RECORD_EXPORT：导出解析记录
+	// DOMAIN_EXPORT：导出域名列表
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 剩余时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LeftTime *LeftTime `json:"LeftTime,omitnil,omitempty" name:"LeftTime"`
+}
+
 type GroupInfo struct {
 	// 分组ID
 	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
@@ -5480,6 +5758,20 @@ type KeyValue struct {
 	// 值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type LeftTime struct {
+	// 剩余天数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Days *uint64 `json:"Days,omitnil,omitempty" name:"Days"`
+
+	// 剩余小时数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hours *uint64 `json:"Hours,omitnil,omitempty" name:"Hours"`
+
+	// 剩余分钟数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mins *uint64 `json:"Mins,omitnil,omitempty" name:"Mins"`
 }
 
 type LineGroupDetail struct {
@@ -7814,6 +8106,20 @@ type SnapshotRecord struct {
 	// 失败原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+}
+
+type SubDomainsAnalyticsParamsItem struct {
+	// 要查询解析量的主域名。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 要查询解析量的子域名主机头。
+	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
+
+	// 查询子域名列表的偏移量。没有指定查询的 Subdomain 参数时，根据分页参数返回每页子域名解析量。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询子域名列表的每页条数。没有指定查询的 Subdomain 参数时，根据分页参数返回每页子域名解析量。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type SubdomainAliasAnalyticsItem struct {

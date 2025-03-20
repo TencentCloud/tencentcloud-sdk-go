@@ -2612,6 +2612,9 @@ type CreatePostCLSFlowRequestParams struct {
 
 	// 1-访问日志，2-攻击日志，默认为访问日志。
 	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 投递的CLS所在日志主题的名称，默认为 waf_post_logtopic
+	LogTopicName *string `json:"LogTopicName,omitnil,omitempty" name:"LogTopicName"`
 }
 
 type CreatePostCLSFlowRequest struct {
@@ -2625,6 +2628,9 @@ type CreatePostCLSFlowRequest struct {
 
 	// 1-访问日志，2-攻击日志，默认为访问日志。
 	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 投递的CLS所在日志主题的名称，默认为 waf_post_logtopic
+	LogTopicName *string `json:"LogTopicName,omitnil,omitempty" name:"LogTopicName"`
 }
 
 func (r *CreatePostCLSFlowRequest) ToJsonString() string {
@@ -2642,6 +2648,7 @@ func (r *CreatePostCLSFlowRequest) FromJsonString(s string) error {
 	delete(f, "CLSRegion")
 	delete(f, "LogsetName")
 	delete(f, "LogType")
+	delete(f, "LogTopicName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePostCLSFlowRequest has unknown keys!", "")
 	}

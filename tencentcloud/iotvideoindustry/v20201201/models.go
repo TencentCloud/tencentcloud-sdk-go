@@ -22,75 +22,58 @@ import (
 
 type AbnormalEvents struct {
 	// 对应查询日期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 
 	// 列表信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Info []*AbnormalEventsInfo `json:"Info,omitnil,omitempty" name:"Info"`
 }
 
 type AbnormalEventsInfo struct {
 	// 类型值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *int64 `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 类型总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 
 type AllDeviceInfo struct {
 	// 设备唯一标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 设备类型；2：IPC
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceType *int64 `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
 	// 设备状态；0：设备不在线；1：设备在线；2：设备隔离中；3：设备未注册
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 设备扩展属性
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraInformation *string `json:"ExtraInformation,omitnil,omitempty" name:"ExtraInformation"`
 
 	// 设备名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
 
 	// 设备绑定分组路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupPath *string `json:"GroupPath,omitnil,omitempty" name:"GroupPath"`
 
 	// 设备编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceCode *string `json:"DeviceCode,omitnil,omitempty" name:"DeviceCode"`
 
 	// 是否存在录像,，0:不存在；1：存在
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsRecord *int64 `json:"IsRecord,omitnil,omitempty" name:"IsRecord"`
 
 	// 该设备是否可录制
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Recordable *int64 `json:"Recordable,omitnil,omitempty" name:"Recordable"`
 
 	// 设备接入协议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 组Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 组名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 }
 
@@ -163,41 +146,32 @@ type ChannelDetail struct {
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
 	// 通道类型 0：未知；1：视频通道；2：音频通道；3：告警通道
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelType *int64 `json:"ChannelType,omitnil,omitempty" name:"ChannelType"`
 
 	// 20位国标通道编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelCode *string `json:"ChannelCode,omitnil,omitempty" name:"ChannelCode"`
 
 	// 通道扩展信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraInformation *string `json:"ExtraInformation,omitnil,omitempty" name:"ExtraInformation"`
 
 	// 通道在线状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 通道是否存在录像标识 0：无录像；1：有录像
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsRecord *int64 `json:"IsRecord,omitnil,omitempty" name:"IsRecord"`
 
 	// 通道所属设备唯一标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 通道所属虚拟组织的ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessGroupId *string `json:"BusinessGroupId,omitnil,omitempty" name:"BusinessGroupId"`
 }
 
 type ChannelItem struct {
 	// 设备唯一标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 通道唯一标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 }
 
@@ -779,11 +753,9 @@ func (r *CreateDeviceGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDeviceGroupResponseParams struct {
 	// 响应结果，“OK”为成功，其他为失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 分组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -862,15 +834,12 @@ func (r *CreateDeviceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDeviceResponseParams struct {
 	// 设备编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceCode *string `json:"DeviceCode,omitnil,omitempty" name:"DeviceCode"`
 
 	// 设备唯一标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 设备虚拟组信息，仅在创建NVR时返回该值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualGroupId *string `json:"VirtualGroupId,omitnil,omitempty" name:"VirtualGroupId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -935,11 +904,9 @@ func (r *CreateLiveChannelRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateLiveChannelResponseParams struct {
 	// 直播频道ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LiveChannelId *string `json:"LiveChannelId,omitnil,omitempty" name:"LiveChannelId"`
 
 	// 直播频道推流地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PushStreamAddress *string `json:"PushStreamAddress,omitnil,omitempty" name:"PushStreamAddress"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1025,7 +992,6 @@ func (r *CreateLiveRecordPlanRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateLiveRecordPlanResponseParams struct {
 	// 录制计划名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1125,7 +1091,6 @@ func (r *CreateMessageForwardRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateMessageForwardResponseParams struct {
 	// 配置ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntId *int64 `json:"IntId,omitnil,omitempty" name:"IntId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1381,7 +1346,6 @@ func (r *CreateSceneRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSceneResponseParams struct {
 	// 场景ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntId *int64 `json:"IntId,omitnil,omitempty" name:"IntId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1571,7 +1535,6 @@ func (r *DeleteDeviceGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDeviceGroupResponseParams struct {
 	// 响应结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1629,7 +1592,6 @@ func (r *DeleteDeviceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDeviceResponseParams struct {
 	// 操作结果 OK-成功； 其他-失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2074,7 +2036,6 @@ func (r *DeleteTimeTemplateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteTimeTemplateResponseParams struct {
 	// 操作结果，OK：成功，其他：失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2254,7 +2215,6 @@ func (r *DescribeAbnormalEventsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAbnormalEventsResponseParams struct {
 	// 异动事件走势列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*AbnormalEvents `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2340,11 +2300,9 @@ func (r *DescribeAllDeviceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAllDeviceListResponseParams struct {
 	// 设备总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 设备详细信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Devices []*AllDeviceInfo `json:"Devices,omitnil,omitempty" name:"Devices"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2416,11 +2374,9 @@ func (r *DescribeBindSceneChannelsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBindSceneChannelsResponseParams struct {
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 通道列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*ChannelItem `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2492,11 +2448,9 @@ func (r *DescribeBindSceneDevicesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBindSceneDevicesResponseParams struct {
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 设备列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*DeviceItem `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2795,11 +2749,9 @@ func (r *DescribeChannelsByLiveRecordPlanRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeChannelsByLiveRecordPlanResponseParams struct {
 	// 总个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 通道详情数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LiveChannels []*LiveChannelItem `json:"LiveChannels,omitnil,omitempty" name:"LiveChannels"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2892,11 +2844,9 @@ func (r *DescribeChannelsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeChannelsResponseParams struct {
 	// 通道总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 通道详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Channels []*ChannelDetail `json:"Channels,omitnil,omitempty" name:"Channels"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3055,11 +3005,9 @@ func (r *DescribeDeviceEventRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDeviceEventResponseParams struct {
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 事件列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Events []*Events `json:"Events,omitnil,omitempty" name:"Events"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3117,7 +3065,6 @@ func (r *DescribeDeviceGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDeviceGroupResponseParams struct {
 	// 设备所在分组信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DevGroups []*DevGroupInfo `json:"DevGroups,omitnil,omitempty" name:"DevGroups"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3535,7 +3482,6 @@ func (r *DescribeGroupByIdRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeGroupByIdResponseParams struct {
 	// 分组信息详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Group *GroupItem `json:"Group,omitnil,omitempty" name:"Group"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3593,7 +3539,6 @@ func (r *DescribeGroupByPathRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeGroupByPathResponseParams struct {
 	// 分组信息详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Group *GroupItem `json:"Group,omitnil,omitempty" name:"Group"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3688,11 +3633,9 @@ func (r *DescribeGroupDevicesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeGroupDevicesResponseParams struct {
 	// 分组绑定的设备数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 设备详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceList []*GroupDeviceItem `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3750,7 +3693,6 @@ func (r *DescribeGroupsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeGroupsResponseParams struct {
 	// 分组详细信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Groups []*GroupInfo `json:"Groups,omitnil,omitempty" name:"Groups"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3829,11 +3771,9 @@ func (r *DescribeIPCChannelsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeIPCChannelsResponseParams struct {
 	// 通道总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 通道详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceList []*GroupDeviceItem `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3981,31 +3921,24 @@ func (r *DescribeLiveChannelRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLiveChannelResponseParams struct {
 	// 频道ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LiveChannelId *string `json:"LiveChannelId,omitnil,omitempty" name:"LiveChannelId"`
 
 	// 频道名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LiveChannelName *string `json:"LiveChannelName,omitnil,omitempty" name:"LiveChannelName"`
 
 	// 直播频道类型 1：固定直播；2：移动直播
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LiveChannelType *int64 `json:"LiveChannelType,omitnil,omitempty" name:"LiveChannelType"`
 
 	// 通道直播状态：1: 未推流，2: 推流中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LiveStatus *int64 `json:"LiveStatus,omitnil,omitempty" name:"LiveStatus"`
 
 	// 推流地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PushStreamAddress *string `json:"PushStreamAddress,omitnil,omitempty" name:"PushStreamAddress"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime []*string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime []*string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4334,11 +4267,9 @@ func (r *DescribeLiveVideoListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLiveVideoListResponseParams struct {
 	// 总的条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 录制任务详情数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordList []*LiveRecordItem `json:"RecordList,omitnil,omitempty" name:"RecordList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4396,44 +4327,37 @@ func (r *DescribeMessageForwardRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMessageForwardResponseParams struct {
 	// 区域ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
 	// 区域名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 
 	// 实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Instance *string `json:"Instance,omitnil,omitempty" name:"Instance"`
 
 	// 实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 配置ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntId *int64 `json:"IntId,omitnil,omitempty" name:"IntId"`
 
 	// json数组， 转发类型 1: 告警 2:GPS
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageType *string `json:"MessageType,omitnil,omitempty" name:"MessageType"`
 
 	// kafka topic id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 配置创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 用户Uin信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// kafka topic 名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4566,7 +4490,6 @@ func (r *DescribeMonitorDataByDateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMonitorDataByDateResponseParams struct {
 	// 统计数据列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*RecordStatistic `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4631,7 +4554,6 @@ func (r *DescribePresetListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePresetListResponseParams struct {
 	// 预置列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*PresetItem `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4717,7 +4639,6 @@ func (r *DescribeRecordDatesByChannelRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRecordDatesByChannelResponseParams struct {
 	// 含有录像文件的日期列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Dates []*string `json:"Dates,omitnil,omitempty" name:"Dates"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4956,7 +4877,6 @@ func (r *DescribeRecordingPlanByIdRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRecordingPlanByIdResponseParams struct {
 	// 录制计划详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Plan *RecordPlanDetail `json:"Plan,omitnil,omitempty" name:"Plan"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5011,11 +4931,9 @@ func (r *DescribeRecordingPlansRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRecordingPlansResponseParams struct {
 	// 录制计划详情·列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Plans []*RecordPlanDetail `json:"Plans,omitnil,omitempty" name:"Plans"`
 
 	// 录制计划总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5127,31 +5045,24 @@ func (r *DescribeSceneRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSceneResponseParams struct {
 	// 场景ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntId *int64 `json:"IntId,omitnil,omitempty" name:"IntId"`
 
 	// 录制时长(秒)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordDuration *int64 `json:"RecordDuration,omitnil,omitempty" name:"RecordDuration"`
 
 	// 场景名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
 
 	// 场景触发规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneTrigger *string `json:"SceneTrigger,omitnil,omitempty" name:"SceneTrigger"`
 
 	// 存储时长 (天)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StoreDuration *int64 `json:"StoreDuration,omitnil,omitempty" name:"StoreDuration"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 用户Uin
@@ -5219,11 +5130,9 @@ func (r *DescribeScenesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeScenesResponseParams struct {
 	// 场景总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 场景列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*SceneItem `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5367,31 +5276,24 @@ func (r *DescribeStatisticSummaryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeStatisticSummaryResponseParams struct {
 	// 录制设备总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordingDevice *uint64 `json:"RecordingDevice,omitnil,omitempty" name:"RecordingDevice"`
 
 	// 非录制设备总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NonRecordingDevice *uint64 `json:"NonRecordingDevice,omitnil,omitempty" name:"NonRecordingDevice"`
 
 	// 观看流量总数。为直播观看流量与点播观看流量之和。单位：GB
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WatchFlux *float64 `json:"WatchFlux,omitnil,omitempty" name:"WatchFlux"`
 
 	// 累计有效存储容量总数。单位：GB
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageUsage *float64 `json:"StorageUsage,omitnil,omitempty" name:"StorageUsage"`
 
 	// X-P2P分享流量。单位 Byte
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	P2PFluxTotal *float64 `json:"P2PFluxTotal,omitnil,omitempty" name:"P2PFluxTotal"`
 
 	// X-P2P峰值带宽。 单位bps
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	P2PPeakValue *float64 `json:"P2PPeakValue,omitnil,omitempty" name:"P2PPeakValue"`
 
 	// RTMP推流路数 ( 直播推流)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LivePushTotal *int64 `json:"LivePushTotal,omitnil,omitempty" name:"LivePushTotal"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5477,11 +5379,9 @@ func (r *DescribeSubGroupsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSubGroupsResponseParams struct {
 	// 子分组详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupList []*GroupItem `json:"GroupList,omitnil,omitempty" name:"GroupList"`
 
 	// 子分组总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5633,11 +5533,9 @@ func (r *DescribeVideoListByChannelRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVideoListByChannelResponseParams struct {
 	// 录像详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoList []*RecordTaskItem `json:"VideoList,omitnil,omitempty" name:"VideoList"`
 
 	// 录像总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5867,7 +5765,6 @@ func (r *DescribeWarnModRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWarnModResponseParams struct {
 	// 告警类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5974,11 +5871,9 @@ func (r *DescribeWarningsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWarningsResponseParams struct {
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 告警列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*WarningsData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6059,7 +5954,6 @@ type DescribeXP2PDataResponseParams struct {
 	// [log_time,cdn_bytes , p2p_bytes, online_people, stuck_times, stuck_people,request,request_success,request_fail,play_fail]
 	// [时间戳,cdn流量(字节) , p2p流量(字节), 在线人数, 卡播次数, 卡播人数,起播请求次数,起播成功次数,起播失败次数,播放失败次数, pcdn cdn流量（字节), pcdn路由流量(字节), 上传流量(字节)]
 	// [1481016480, 46118502414, 75144943171, 61691, 3853, 0,0,0,0,0, 0, 0, 0]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6101,11 +5995,9 @@ type DevGroupInfo struct {
 
 type DeviceItem struct {
 	// 设备唯一标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 通道唯一标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 }
 
@@ -6121,15 +6013,12 @@ type DeviceMonitorValue struct {
 
 type Events struct {
 	// 开始时间，秒级时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventTime *int64 `json:"EventTime,omitnil,omitempty" name:"EventTime"`
 
 	// 事件类型 1:注册 2:心跳 4:录制异常 5:播放异常 6:流中断
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventType *int64 `json:"EventType,omitnil,omitempty" name:"EventType"`
 
 	// 事件描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventDesc *string `json:"EventDesc,omitnil,omitempty" name:"EventDesc"`
 
 	// 设备类型
@@ -6148,7 +6037,6 @@ type Events struct {
 	EventLog *string `json:"EventLog,omitnil,omitempty" name:"EventLog"`
 
 	// 设备备注名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 }
 
@@ -6215,7 +6103,6 @@ func (r *GetRecordDatesByDevRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetRecordDatesByDevResponseParams struct {
 	// 含有录像文件的日期列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Dates []*string `json:"Dates,omitnil,omitempty" name:"Dates"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6273,7 +6160,6 @@ func (r *GetRecordPlanByDevRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetRecordPlanByDevResponseParams struct {
 	// 录制计划详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Plan *RecordPlanItem `json:"Plan,omitnil,omitempty" name:"Plan"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6331,7 +6217,6 @@ func (r *GetRecordPlanByIdRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetRecordPlanByIdResponseParams struct {
 	// 录制计划详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Plan *RecordPlanItem `json:"Plan,omitnil,omitempty" name:"Plan"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6386,11 +6271,9 @@ func (r *GetRecordPlansRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetRecordPlansResponseParams struct {
 	// 录制计划详情·列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Plans []*RecordPlanItem `json:"Plans,omitnil,omitempty" name:"Plans"`
 
 	// 录制计划总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6448,7 +6331,6 @@ func (r *GetTimeTemplateByIdRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetTimeTemplateByIdResponseParams struct {
 	// 时间模板详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Template *TimeTemplateItem `json:"Template,omitnil,omitempty" name:"Template"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6503,7 +6385,6 @@ func (r *GetTimeTemplatesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetTimeTemplatesResponseParams struct {
 	// 时间模板列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Templates []*TimeTemplateItem `json:"Templates,omitnil,omitempty" name:"Templates"`
 
 	// 时间模板总数
@@ -6608,11 +6489,9 @@ func (r *GetVideoListByConRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetVideoListByConResponseParams struct {
 	// 录像详情列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoList []*RecordTaskItem `json:"VideoList,omitnil,omitempty" name:"VideoList"`
 
 	// 录像总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6637,55 +6516,42 @@ func (r *GetVideoListByConResponse) FromJsonString(s string) error {
 
 type GroupDeviceItem struct {
 	// 设备唯一标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 设备名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
 
 	// 设备状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 扩展信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraInformation *string `json:"ExtraInformation,omitnil,omitempty" name:"ExtraInformation"`
 
 	// 设备类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceType *int64 `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
 	// rtsp地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RTSPUrl *string `json:"RTSPUrl,omitnil,omitempty" name:"RTSPUrl"`
 
 	// 设备编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceCode *string `json:"DeviceCode,omitnil,omitempty" name:"DeviceCode"`
 
 	// 是否存在录像
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsRecord *int64 `json:"IsRecord,omitnil,omitempty" name:"IsRecord"`
 
 	// 该设备是否可录制
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Recordable *int64 `json:"Recordable,omitnil,omitempty" name:"Recordable"`
 
 	// 设备接入协议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 设备创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 设备通道总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelNum *int64 `json:"ChannelNum,omitnil,omitempty" name:"ChannelNum"`
 
 	// 设备视频通道总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoChannelNum *int64 `json:"VideoChannelNum,omitnil,omitempty" name:"VideoChannelNum"`
 }
 
@@ -6715,57 +6581,44 @@ type GroupInfo struct {
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 分组状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupStatus *int64 `json:"GroupStatus,omitnil,omitempty" name:"GroupStatus"`
 
 	// 设备不存在时产生的错误
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
 type GroupItem struct {
 	// 分组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 父分组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParentId *string `json:"ParentId,omitnil,omitempty" name:"ParentId"`
 
 	// 分组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 分组路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupPath *string `json:"GroupPath,omitnil,omitempty" name:"GroupPath"`
 
 	// 分组描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupDescribe *string `json:"GroupDescribe,omitnil,omitempty" name:"GroupDescribe"`
 
 	// 分组绑定设备数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceNum *int64 `json:"DeviceNum,omitnil,omitempty" name:"DeviceNum"`
 
 	// 子分组数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubGroupNum *int64 `json:"SubGroupNum,omitnil,omitempty" name:"SubGroupNum"`
 
 	// 分组附加信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraInformation *string `json:"ExtraInformation,omitnil,omitempty" name:"ExtraInformation"`
 
 	// 分组类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupType *string `json:"GroupType,omitnil,omitempty" name:"GroupType"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 分组状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupStatus *int64 `json:"GroupStatus,omitnil,omitempty" name:"GroupStatus"`
 }
 
@@ -7206,7 +7059,6 @@ func (r *ModifyDeviceDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDeviceDataResponseParams struct {
 	// 操作结果,“OK”表示成功，其他表示失败。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7832,11 +7684,9 @@ func (r *ModifyVideoInfoResponse) FromJsonString(s string) error {
 
 type PresetItem struct {
 	// 预置位ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PresetId *int64 `json:"PresetId,omitnil,omitempty" name:"PresetId"`
 
 	// 预置位名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PresetName *string `json:"PresetName,omitnil,omitempty" name:"PresetName"`
 
 	// 预置位状态 0:未设置预置位 1:已设置预置位 2:已设置预置位&看守位
@@ -7848,67 +7698,52 @@ type PresetItem struct {
 
 type RecordPlanDetail struct {
 	// 计划ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
 
 	// 计划名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 时间模板ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeTemplateId *string `json:"TimeTemplateId,omitnil,omitempty" name:"TimeTemplateId"`
 
 	// 时间模板名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeTemplateName *string `json:"TimeTemplateName,omitnil,omitempty" name:"TimeTemplateName"`
 
 	// 绑定的通道列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Channels []*ChannelItem `json:"Channels,omitnil,omitempty" name:"Channels"`
 
 	// 存储周期（天）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordStorageTime *int64 `json:"RecordStorageTime,omitnil,omitempty" name:"RecordStorageTime"`
 }
 
 type RecordPlanItem struct {
 	// 计划ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
 
 	// 计划名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 时间模板ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeTemplateId *string `json:"TimeTemplateId,omitnil,omitempty" name:"TimeTemplateId"`
 
 	// 时间模板名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeTemplateName *string `json:"TimeTemplateName,omitnil,omitempty" name:"TimeTemplateName"`
 
 	// 录制类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
 
 	// 绑定的设备列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Devices []*DeviceItem `json:"Devices,omitnil,omitempty" name:"Devices"`
 
 	// 录像存储天数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordStorageTime *int64 `json:"RecordStorageTime,omitnil,omitempty" name:"RecordStorageTime"`
 }
 
 type RecordStatistic struct {
 	// 时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Time *int64 `json:"Time,omitnil,omitempty" name:"Time"`
 
 	// 统计结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *RecordStatisticValue `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -7928,43 +7763,33 @@ type RecordStatisticValue struct {
 
 type RecordTaskItem struct {
 	// 录像任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordTaskId *string `json:"RecordTaskId,omitnil,omitempty" name:"RecordTaskId"`
 
 	// 录制计划ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordPlanId *string `json:"RecordPlanId,omitnil,omitempty" name:"RecordPlanId"`
 
 	// 本录制片段开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 本录制片段结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 录制模式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
 
 	// 本录制片段对应的录制文件URL
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoUrl *string `json:"VideoUrl,omitnil,omitempty" name:"VideoUrl"`
 
 	// 本录制片段当前的录制状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordStatus *int64 `json:"RecordStatus,omitnil,omitempty" name:"RecordStatus"`
 
 	// 场景ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneId *int64 `json:"SceneId,omitnil,omitempty" name:"SceneId"`
 
 	// 告警ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarnId *int64 `json:"WarnId,omitnil,omitempty" name:"WarnId"`
 
 	// 录制id，NVR下属设备有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 }
 
@@ -8031,27 +7856,21 @@ func (r *ResetWarningResponse) FromJsonString(s string) error {
 
 type SceneItem struct {
 	// 场景ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntId *int64 `json:"IntId,omitnil,omitempty" name:"IntId"`
 
 	// 用户UIN
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 场景名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
 
 	// 触发规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneTrigger *string `json:"SceneTrigger,omitnil,omitempty" name:"SceneTrigger"`
 
 	// 录制时长 秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordDuration *int64 `json:"RecordDuration,omitnil,omitempty" name:"RecordDuration"`
 
 	// 存储时长 天
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StoreDuration *int64 `json:"StoreDuration,omitnil,omitempty" name:"StoreDuration"`
 
 	// 创建时间
@@ -8109,23 +7928,18 @@ type StreamAddress struct {
 
 type TimeTemplateItem struct {
 	// 时间模板ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 模板名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 是否全时录制，即7*24小时录制 0-否 1-是
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAllWeek *int64 `json:"IsAllWeek,omitnil,omitempty" name:"IsAllWeek"`
 
 	// 是否为自定义模板 0-否 1-是
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 时间片段详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeTemplateSpecs []*TimeTemplateSpec `json:"TimeTemplateSpecs,omitnil,omitempty" name:"TimeTemplateSpecs"`
 }
 
@@ -8260,7 +8074,6 @@ func (r *UpdateDevicePassWordRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateDevicePassWordResponseParams struct {
 	// 操作结果，“OK”表示成功，其他表示失败。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8461,35 +8274,27 @@ func (r *UpdateTimeTemplateResponse) FromJsonString(s string) error {
 
 type WarningsData struct {
 	// 唯一ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 设备ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 设备名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 告警通道
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarnChannel *string `json:"WarnChannel,omitnil,omitempty" name:"WarnChannel"`
 
 	// 告警级别 1: "一级警情", 2: "二级警情", 3: "三级警情", 4: "四级警情",
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarnLevel *int64 `json:"WarnLevel,omitnil,omitempty" name:"WarnLevel"`
 
 	// 告警级别名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarnLevelName *string `json:"WarnLevelName,omitnil,omitempty" name:"WarnLevelName"`
 
 	// 告警方式 2 设备报警 5 视频报警 6 设备故障报警
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarnMode *int64 `json:"WarnMode,omitnil,omitempty" name:"WarnMode"`
 
 	// 告警方式名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarnModeName *string `json:"WarnModeName,omitnil,omitempty" name:"WarnModeName"`
 
 	// 告警类型  2: {
@@ -8526,18 +8331,14 @@ type WarningsData struct {
 	// 				2: "存储设备风扇故障报警",
 	// 			},
 	// 		}
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarnType *int64 `json:"WarnType,omitnil,omitempty" name:"WarnType"`
 
 	// 是否删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Del *int64 `json:"Del,omitnil,omitempty" name:"Del"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }

@@ -5530,7 +5530,6 @@ type DescribeChangedParamsAfterUpgradeResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 实例参数列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*ParamItemInfo `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5785,7 +5784,6 @@ func (r *DescribeClusterDetailDatabasesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterDetailDatabasesResponseParams struct {
 	// 数据库信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbInfos []*DbInfo `json:"DbInfos,omitnil,omitempty" name:"DbInfos"`
 
 	// 总数
@@ -6066,7 +6064,6 @@ type DescribeClusterParamLogsResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 参数修改记录
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterParamLogs []*ClusterParamModifyLog `json:"ClusterParamLogs,omitnil,omitempty" name:"ClusterParamLogs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6141,7 +6138,6 @@ type DescribeClusterParamsResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 实例参数列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*ParamInfo `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6199,27 +6195,21 @@ func (r *DescribeClusterPasswordComplexityRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeClusterPasswordComplexityResponseParams struct {
 	// 数据字典参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidatePasswordDictionary *ParamInfo `json:"ValidatePasswordDictionary,omitnil,omitempty" name:"ValidatePasswordDictionary"`
 
 	// 密码长度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidatePasswordLength *ParamInfo `json:"ValidatePasswordLength,omitnil,omitempty" name:"ValidatePasswordLength"`
 
 	// 大小写敏感字符个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidatePasswordMixedCaseCount *ParamInfo `json:"ValidatePasswordMixedCaseCount,omitnil,omitempty" name:"ValidatePasswordMixedCaseCount"`
 
 	// 数字个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidatePasswordNumberCount *ParamInfo `json:"ValidatePasswordNumberCount,omitnil,omitempty" name:"ValidatePasswordNumberCount"`
 
 	// 密码等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidatePasswordPolicy *ParamInfo `json:"ValidatePasswordPolicy,omitnil,omitempty" name:"ValidatePasswordPolicy"`
 
 	// 特殊字符个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidatePasswordSpecialCharCount *ParamInfo `json:"ValidatePasswordSpecialCharCount,omitnil,omitempty" name:"ValidatePasswordSpecialCharCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6743,11 +6733,9 @@ func (r *DescribeInstanceErrorLogsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceErrorLogsResponseParams struct {
 	// 日志条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 错误日志列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorLogs []*CynosdbErrorLogItem `json:"ErrorLogs,omitnil,omitempty" name:"ErrorLogs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7782,7 +7770,6 @@ type DescribeProxiesResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 数据库代理组列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyGroupInfos []*ProxyGroupInfo `json:"ProxyGroupInfos,omitnil,omitempty" name:"ProxyGroupInfos"`
 
 	// 数据库代理节点
@@ -8178,7 +8165,6 @@ type DescribeResourcePackageListResponseParams struct {
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 资源包明细
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Detail []*Package `json:"Detail,omitnil,omitempty" name:"Detail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8273,7 +8259,6 @@ type DescribeResourcePackageSaleSpecResponseParams struct {
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 资源包明细说明
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Detail []*SalePackageSpec `json:"Detail,omitnil,omitempty" name:"Detail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8399,11 +8384,9 @@ func (r *DescribeRollbackTimeRangeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRollbackTimeRangeResponseParams struct {
 	// 有效回归时间范围开始时间点（已废弃）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeRangeStart *string `json:"TimeRangeStart,omitnil,omitempty" name:"TimeRangeStart"`
 
 	// 有效回归时间范围结束时间点（已废弃）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeRangeEnd *string `json:"TimeRangeEnd,omitnil,omitempty" name:"TimeRangeEnd"`
 
 	// 可回档时间范围
@@ -8602,11 +8585,9 @@ func (r *DescribeSupportProxyVersionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSupportProxyVersionResponseParams struct {
 	// 支持的数据库代理版本集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportProxyVersions []*string `json:"SupportProxyVersions,omitnil,omitempty" name:"SupportProxyVersions"`
 
 	// 当前proxy版本号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentProxyVersion *string `json:"CurrentProxyVersion,omitnil,omitempty" name:"CurrentProxyVersion"`
 
 	// 代理版本详情
@@ -8981,7 +8962,6 @@ func (r *ExportInstanceErrorLogsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ExportInstanceErrorLogsResponseParams struct {
 	// 错误日志导出内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorLogItems []*ErrorLogItemExport `json:"ErrorLogItems,omitnil,omitempty" name:"ErrorLogItems"`
 
 	// 错误日志字符串
@@ -9537,11 +9517,9 @@ func (r *InquirePriceModifyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type InquirePriceModifyResponseParams struct {
 	// 实例价格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstancePrice *TradePrice `json:"InstancePrice,omitnil,omitempty" name:"InstancePrice"`
 
 	// 存储价格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StoragePrice *TradePrice `json:"StoragePrice,omitnil,omitempty" name:"StoragePrice"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9951,7 +9929,6 @@ func (r *IsolateClusterRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type IsolateClusterResponseParams struct {
 	// 任务流ID(后付费或者serverless资源返回，如果需要同步任务状态，请使用DescribeFlow接口)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 退款订单号(预付费资源返回，如果需要同步订单状态，请使用计费产品的DescribeDealsByCond同步订单状态)
@@ -11337,15 +11314,12 @@ func (r *ModifyClusterStorageRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyClusterStorageResponseParams struct {
 	// 冻结流水ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
 
 	// 大订单号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BigDealIds []*string `json:"BigDealIds,omitnil,omitempty" name:"BigDealIds"`
 
 	// 订单号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13488,22 +13462,15 @@ type ParamItemDetail struct {
 
 type ParamItemInfo struct {
 	// 参数名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParamName *string `json:"ParamName,omitnil,omitempty" name:"ParamName"`
 
 	// 参数新值
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewValue *string `json:"NewValue,omitnil,omitempty" name:"NewValue"`
 
 	// 参数旧值
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OldValue *string `json:"OldValue,omitnil,omitempty" name:"OldValue"`
 
 	// 参数公式
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValueFunction *string `json:"ValueFunction,omitnil,omitempty" name:"ValueFunction"`
 }
 
@@ -14051,23 +14018,18 @@ func (r *RenewClustersRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RenewClustersResponseParams struct {
 	// 预付费总订单号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BigDealIds []*string `json:"BigDealIds,omitnil,omitempty" name:"BigDealIds"`
 
 	// 退款订单号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 
 	// 冻结流水，一次开通一个冻结流水
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
 
 	// 每个订单号对应的发货资源id列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 集群id列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14869,19 +14831,15 @@ func (r *RollbackToNewClusterRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RollbackToNewClusterResponseParams struct {
 	// 冻结流水ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
 
 	// 订单号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
 
 	// 资源ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取资源ID）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
 	// 集群ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取集群ID）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
 
 	// 大订单号
@@ -15159,7 +15117,6 @@ func (r *SearchClusterTablesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SearchClusterTablesResponseParams struct {
 	// 数据表列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tables []*DatabaseTables `json:"Tables,omitnil,omitempty" name:"Tables"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16118,11 +16075,9 @@ func (r *UpgradeInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpgradeInstanceResponseParams struct {
 	// 冻结流水ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
 
 	// 大订单号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BigDealIds []*string `json:"BigDealIds,omitnil,omitempty" name:"BigDealIds"`
 
 	// 订单号

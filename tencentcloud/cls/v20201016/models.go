@@ -781,29 +781,6 @@ func (r *CloseKafkaConsumerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type CloudProductLogTaskInfo struct {
-	// 日志服务地域
-	ClsRegion *string `json:"ClsRegion,omitnil,omitempty" name:"ClsRegion"`
-
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 日志集ID
-	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
-
-	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
-
-	// 日志配置拓展信息， 一般用于存储额外的日志投递配置
-	Extend *string `json:"Extend,omitnil,omitempty" name:"Extend"`
-
-	// 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
-	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
-
-	// 任务状态， 0创建中 1创建完成 2 删除中 
-	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
-}
-
 type CollectConfig struct {
 	// 指定采集类型的采集配置名称信息。
 	// <li>当CollectInfo中Type为0：表示元数据配置，name为元数据名称。
@@ -1689,159 +1666,6 @@ func (r *CreateAlarmShieldResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAlarmShieldResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateCloudProductLogTaskRequestParams struct {
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
-	AssumerName *string `json:"AssumerName,omitnil,omitempty" name:"AssumerName"`
-
-	// 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
-	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
-
-	// 云产品地域。 不同日志类型(LogType)地域入參格式存在差异， 请参考如下示例：
-	// - CDS所有日志类型：ap-guangzhou
-	// - CDB-AUDIT: gz
-	// - TDSQL-C-AUDIT:  gz
-	// - MongoDB-AUDIT:  gz
-	// - MongoDB-SlowLog：ap-guangzhou
-	// - MongoDB-ErrorLog：ap-guangzhou
-	// - TDMYSQL-SLOW：gz
-	// - DCDB所有日志类型：gz
-	// - MariaDB所有日志类型：gz
-	// - PostgreSQL所有日志类型：gz
-	// - BH所有日志类型：overseas-polaris(国内站海外)/fsi-polaris(国内站金融)/general-polaris(国内站普通)/intl-sg-prod(国际站)
-	// - APIS所有日志类型：gz
-	CloudProductRegion *string `json:"CloudProductRegion,omitnil,omitempty" name:"CloudProductRegion"`
-
-	// CLS目标地域
-	ClsRegion *string `json:"ClsRegion,omitnil,omitempty" name:"ClsRegion"`
-
-	// 日志集名称，未填LogsetId时必填。若日志集不存在, 将自动创建
-	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
-
-	// 日志集ID，若指定则代表选择已有日志集。选择已有日志集时，LogsetName可以不填
-	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
-
-	// 日志主题名称，在未填TopicId时必填。 若日志主题不存在，将自动创建
-	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
-
-	// 日志主题ID，若指定则代表选择已有日志主题，选择已有日志主题时，TopicName可以不填
-	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
-
-	// 日志配置拓展信息， 一般用于存储额外的日志投递配置
-	Extend *string `json:"Extend,omitnil,omitempty" name:"Extend"`
-}
-
-type CreateCloudProductLogTaskRequest struct {
-	*tchttp.BaseRequest
-	
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
-	AssumerName *string `json:"AssumerName,omitnil,omitempty" name:"AssumerName"`
-
-	// 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
-	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
-
-	// 云产品地域。 不同日志类型(LogType)地域入參格式存在差异， 请参考如下示例：
-	// - CDS所有日志类型：ap-guangzhou
-	// - CDB-AUDIT: gz
-	// - TDSQL-C-AUDIT:  gz
-	// - MongoDB-AUDIT:  gz
-	// - MongoDB-SlowLog：ap-guangzhou
-	// - MongoDB-ErrorLog：ap-guangzhou
-	// - TDMYSQL-SLOW：gz
-	// - DCDB所有日志类型：gz
-	// - MariaDB所有日志类型：gz
-	// - PostgreSQL所有日志类型：gz
-	// - BH所有日志类型：overseas-polaris(国内站海外)/fsi-polaris(国内站金融)/general-polaris(国内站普通)/intl-sg-prod(国际站)
-	// - APIS所有日志类型：gz
-	CloudProductRegion *string `json:"CloudProductRegion,omitnil,omitempty" name:"CloudProductRegion"`
-
-	// CLS目标地域
-	ClsRegion *string `json:"ClsRegion,omitnil,omitempty" name:"ClsRegion"`
-
-	// 日志集名称，未填LogsetId时必填。若日志集不存在, 将自动创建
-	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
-
-	// 日志集ID，若指定则代表选择已有日志集。选择已有日志集时，LogsetName可以不填
-	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
-
-	// 日志主题名称，在未填TopicId时必填。 若日志主题不存在，将自动创建
-	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
-
-	// 日志主题ID，若指定则代表选择已有日志主题，选择已有日志主题时，TopicName可以不填
-	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
-
-	// 日志配置拓展信息， 一般用于存储额外的日志投递配置
-	Extend *string `json:"Extend,omitnil,omitempty" name:"Extend"`
-}
-
-func (r *CreateCloudProductLogTaskRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateCloudProductLogTaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "AssumerName")
-	delete(f, "LogType")
-	delete(f, "CloudProductRegion")
-	delete(f, "ClsRegion")
-	delete(f, "LogsetName")
-	delete(f, "LogsetId")
-	delete(f, "TopicName")
-	delete(f, "TopicId")
-	delete(f, "Extend")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudProductLogTaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateCloudProductLogTaskResponseParams struct {
-	// 日志主题ID
-	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
-
-	// 日志主题名称
-	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
-
-	// 日志集ID
-	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
-
-	// 日志集名称
-	LogsetName *string `json:"LogsetName,omitnil,omitempty" name:"LogsetName"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type CreateCloudProductLogTaskResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateCloudProductLogTaskResponseParams `json:"Response"`
-}
-
-func (r *CreateCloudProductLogTaskResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateCloudProductLogTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4284,105 +4108,6 @@ func (r *DeleteAlarmShieldResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DeleteCloudProductLogTaskRequestParams struct {
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
-	AssumerName *string `json:"AssumerName,omitnil,omitempty" name:"AssumerName"`
-
-	// 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
-	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
-
-	// 云产品地域。 不同日志类型(LogType)地域入參格式存在差异， 请参考如下示例：
-	// - CDS所有日志类型：ap-guangzhou
-	// - CDB-AUDIT: gz
-	// - TDSQL-C-AUDIT: gz
-	// - MongoDB-AUDIT: gz
-	// - MongoDB-SlowLog：ap-guangzhou
-	// - MongoDB-ErrorLog：ap-guangzhou
-	// - TDMYSQL-SLOW：gz
-	// - DCDB所有日志类型：gz
-	// - MariaDB所有日志类型：gz
-	// - PostgreSQL所有日志类型：gz
-	// - BH所有日志类型：overseas-polaris(国内站海外)/fsi-polaris(国内站金融)/general-polaris(国内站普通)/intl-sg-prod(国际站)
-	// - APIS所有日志类型：gz
-	CloudProductRegion *string `json:"CloudProductRegion,omitnil,omitempty" name:"CloudProductRegion"`
-}
-
-type DeleteCloudProductLogTaskRequest struct {
-	*tchttp.BaseRequest
-	
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
-	AssumerName *string `json:"AssumerName,omitnil,omitempty" name:"AssumerName"`
-
-	// 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
-	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
-
-	// 云产品地域。 不同日志类型(LogType)地域入參格式存在差异， 请参考如下示例：
-	// - CDS所有日志类型：ap-guangzhou
-	// - CDB-AUDIT: gz
-	// - TDSQL-C-AUDIT: gz
-	// - MongoDB-AUDIT: gz
-	// - MongoDB-SlowLog：ap-guangzhou
-	// - MongoDB-ErrorLog：ap-guangzhou
-	// - TDMYSQL-SLOW：gz
-	// - DCDB所有日志类型：gz
-	// - MariaDB所有日志类型：gz
-	// - PostgreSQL所有日志类型：gz
-	// - BH所有日志类型：overseas-polaris(国内站海外)/fsi-polaris(国内站金融)/general-polaris(国内站普通)/intl-sg-prod(国际站)
-	// - APIS所有日志类型：gz
-	CloudProductRegion *string `json:"CloudProductRegion,omitnil,omitempty" name:"CloudProductRegion"`
-}
-
-func (r *DeleteCloudProductLogTaskRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteCloudProductLogTaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "AssumerName")
-	delete(f, "LogType")
-	delete(f, "CloudProductRegion")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudProductLogTaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteCloudProductLogTaskResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DeleteCloudProductLogTaskResponse struct {
-	*tchttp.BaseResponse
-	Response *DeleteCloudProductLogTaskResponseParams `json:"Response"`
-}
-
-func (r *DeleteCloudProductLogTaskResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteCloudProductLogTaskResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DeleteConfigExtraRequestParams struct {
 	// 特殊采集规则扩展配置ID
 	ConfigExtraId *string `json:"ConfigExtraId,omitnil,omitempty" name:"ConfigExtraId"`
@@ -5823,106 +5548,6 @@ func (r *DescribeAlertRecordHistoryResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAlertRecordHistoryResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeCloudProductLogTasksRequestParams struct {
-	// 分页的偏移量，默认值为0。
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 分页单页限制数目，默认值为100，最大值100。
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// - assumerName
-	//   - 按照【云产品标识】进行过滤。
-	//   - 类型：String
-	//   - 必选：否
-	//   - 枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
-	// - logType
-	//   - 按照【日志类型】进行过滤。
-	//   - 类型：String
-	//   - 必选：否
-	//   - 枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
-	// - instanceId
-	//   - 按照【实例ID】进行过滤。
-	//   - 类型：String
-	//   - 必选：否
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-}
-
-type DescribeCloudProductLogTasksRequest struct {
-	*tchttp.BaseRequest
-	
-	// 分页的偏移量，默认值为0。
-	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 分页单页限制数目，默认值为100，最大值100。
-	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// - assumerName
-	//   - 按照【云产品标识】进行过滤。
-	//   - 类型：String
-	//   - 必选：否
-	//   - 枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
-	// - logType
-	//   - 按照【日志类型】进行过滤。
-	//   - 类型：String
-	//   - 必选：否
-	//   - 枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
-	// - instanceId
-	//   - 按照【实例ID】进行过滤。
-	//   - 类型：String
-	//   - 必选：否
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-}
-
-func (r *DescribeCloudProductLogTasksRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeCloudProductLogTasksRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Offset")
-	delete(f, "Limit")
-	delete(f, "Filters")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudProductLogTasksRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeCloudProductLogTasksResponseParams struct {
-	// 日志配置详情列表
-	Tasks []*CloudProductLogTaskInfo `json:"Tasks,omitnil,omitempty" name:"Tasks"`
-
-	// 日志配置总数
-	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeCloudProductLogTasksResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeCloudProductLogTasksResponseParams `json:"Response"`
-}
-
-func (r *DescribeCloudProductLogTasksResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeCloudProductLogTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9766,112 +9391,6 @@ func (r *ModifyAlarmShieldResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type ModifyCloudProductLogTaskRequestParams struct {
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
-	AssumerName *string `json:"AssumerName,omitnil,omitempty" name:"AssumerName"`
-
-	// 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
-	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
-
-	// 云产品地域。 不同日志类型(LogType)地域入參格式存在差异， 请参考如下示例：
-	// - CDS所有日志类型：ap-guangzhou
-	// - CDB-AUDIT: gz
-	// - TDSQL-C-AUDIT: gz
-	// - MongoDB-AUDIT: gz
-	// - MongoDB-SlowLog：ap-guangzhou
-	// - MongoDB-ErrorLog：ap-guangzhou
-	// - TDMYSQL-SLOW：gz
-	// - DCDB所有日志类型：gz
-	// - MariaDB所有日志类型：gz
-	// - PostgreSQL所有日志类型：gz
-	// - BH所有日志类型：overseas-polaris(国内站海外)/fsi-polaris(国内站金融)/general-polaris(国内站普通)/intl-sg-prod(国际站)
-	// - APIS所有日志类型：gz
-	CloudProductRegion *string `json:"CloudProductRegion,omitnil,omitempty" name:"CloudProductRegion"`
-
-	// 日志配置拓展信息， 一般用于存储额外的日志投递配置
-	Extend *string `json:"Extend,omitnil,omitempty" name:"Extend"`
-}
-
-type ModifyCloudProductLogTaskRequest struct {
-	*tchttp.BaseRequest
-	
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 云产品标识，支持枚举：CDS、CWP、CDB、TDSQL-C、MongoDB、TDStore、DCDB、MariaDB、PostgreSQL、BH、APIS
-	AssumerName *string `json:"AssumerName,omitnil,omitempty" name:"AssumerName"`
-
-	// 日志类型，支持枚举：CDS-AUDIT、CDS-RISK、CDB-AUDIT、TDSQL-C-AUDIT、MongoDB-AUDIT、MongoDB-SlowLog、MongoDB-ErrorLog、TDMYSQL-SLOW、DCDB-AUDIT、DCDB-SLOW、DCDB-ERROR、MariaDB-AUDIT、MariaDB-SLOW、MariaDB-ERROR、PostgreSQL-SLOW、PostgreSQL-ERROR、PostgreSQL-AUDIT、BH-FILELOG、BH-COMMANDLOG、APIS-ACCESS
-	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
-
-	// 云产品地域。 不同日志类型(LogType)地域入參格式存在差异， 请参考如下示例：
-	// - CDS所有日志类型：ap-guangzhou
-	// - CDB-AUDIT: gz
-	// - TDSQL-C-AUDIT: gz
-	// - MongoDB-AUDIT: gz
-	// - MongoDB-SlowLog：ap-guangzhou
-	// - MongoDB-ErrorLog：ap-guangzhou
-	// - TDMYSQL-SLOW：gz
-	// - DCDB所有日志类型：gz
-	// - MariaDB所有日志类型：gz
-	// - PostgreSQL所有日志类型：gz
-	// - BH所有日志类型：overseas-polaris(国内站海外)/fsi-polaris(国内站金融)/general-polaris(国内站普通)/intl-sg-prod(国际站)
-	// - APIS所有日志类型：gz
-	CloudProductRegion *string `json:"CloudProductRegion,omitnil,omitempty" name:"CloudProductRegion"`
-
-	// 日志配置拓展信息， 一般用于存储额外的日志投递配置
-	Extend *string `json:"Extend,omitnil,omitempty" name:"Extend"`
-}
-
-func (r *ModifyCloudProductLogTaskRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyCloudProductLogTaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "AssumerName")
-	delete(f, "LogType")
-	delete(f, "CloudProductRegion")
-	delete(f, "Extend")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudProductLogTaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ModifyCloudProductLogTaskResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type ModifyCloudProductLogTaskResponse struct {
-	*tchttp.BaseResponse
-	Response *ModifyCloudProductLogTaskResponseParams `json:"Response"`
-}
-
-func (r *ModifyCloudProductLogTaskResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyCloudProductLogTaskResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type ModifyConfigExtraRequestParams struct {
 	// 采集配置扩展信息id
 	ConfigExtraId *string `json:"ConfigExtraId,omitnil,omitempty" name:"ConfigExtraId"`
@@ -13270,11 +12789,9 @@ func (r *SplitPartitionResponse) FromJsonString(s string) error {
 
 type Tag struct {
 	// 标签键
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 标签值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -13330,7 +12847,6 @@ type TopicInfo struct {
 	Index *bool `json:"Index,omitnil,omitempty" name:"Index"`
 
 	// 云产品标识，主题由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssumerName *string `json:"AssumerName,omitnil,omitempty" name:"AssumerName"`
 
 	// 创建时间
@@ -13342,30 +12858,24 @@ type TopicInfo struct {
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 主题绑定的标签信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 该主题是否开启自动分裂
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoSplit *bool `json:"AutoSplit,omitnil,omitempty" name:"AutoSplit"`
 
 	// 若开启自动分裂的话，该主题能够允许的最大分区数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxSplitPartitions *int64 `json:"MaxSplitPartitions,omitnil,omitempty" name:"MaxSplitPartitions"`
 
 	// 主题的存储类型
 	// 
 	// - hot: 标准存储
 	// - cold: 低频存储
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
 	// 生命周期，单位天，可取值范围1~3600。取值为3640时代表永久保存
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 云产品二级标识，日志主题由其它云产品创建时，该字段会显示云产品名称及其日志类型的二级分类，例如TKE-Audit、TKE-Event。部分云产品仅有云产品标识(AssumerName)，无该字段。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubAssumerName *string `json:"SubAssumerName,omitnil,omitempty" name:"SubAssumerName"`
 
 	// 主题描述
@@ -13375,18 +12885,15 @@ type TopicInfo struct {
 	// 开启日志沉降，标准存储的生命周期， hotPeriod < Period。
 	// 标准存储为 hotPeriod, 低频存储则为 Period-hotPeriod。（主题类型需为日志主题）
 	// HotPeriod=0为没有开启日志沉降。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HotPeriod *uint64 `json:"HotPeriod,omitnil,omitempty" name:"HotPeriod"`
 
 	// 主题类型。
 	// - 0: 日志主题 
 	// - 1: 指标主题
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BizType *uint64 `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 免鉴权开关。 false：关闭； true：开启。
 	// 开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsWebTracking *bool `json:"IsWebTracking,omitnil,omitempty" name:"IsWebTracking"`
 
 	// 日志主题扩展信息
@@ -13394,15 +12901,12 @@ type TopicInfo struct {
 	Extends *TopicExtendInfo `json:"Extends,omitnil,omitempty" name:"Extends"`
 
 	// 异步迁移任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicAsyncTaskID *string `json:"TopicAsyncTaskID,omitnil,omitempty" name:"TopicAsyncTaskID"`
 
 	// 异步迁移状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MigrationStatus *uint64 `json:"MigrationStatus,omitnil,omitempty" name:"MigrationStatus"`
 
 	// 异步迁移完成后，预计生效日期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EffectiveDate *string `json:"EffectiveDate,omitnil,omitempty" name:"EffectiveDate"`
 }
 
@@ -13490,7 +12994,6 @@ type ValueInfo struct {
 	SqlFlag *bool `json:"SqlFlag,omitnil,omitempty" name:"SqlFlag"`
 
 	// 是否包含中文，long及double类型字段需为false
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainZH *bool `json:"ContainZH,omitnil,omitempty" name:"ContainZH"`
 }
 
@@ -13553,44 +13056,34 @@ type WebCallback struct {
 
 type WebCallbackInfo struct {
 	// 告警渠道回调配置id。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebCallbackId *string `json:"WebCallbackId,omitnil,omitempty" name:"WebCallbackId"`
 
 	// 告警渠道回调配置名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 渠道类型
 	// 
 	// WeCom:企业微信;DingTalk:钉钉;Lark:飞书;Http:自定义回调;
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 回调地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Webhook *string `json:"Webhook,omitnil,omitempty" name:"Webhook"`
 
 	// 请求方式。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
 	// 秘钥信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 主账号。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *uint64 `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 子账号。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubUin *uint64 `json:"SubUin,omitnil,omitempty" name:"SubUin"`
 
 	// 创建时间。秒级时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间。秒级时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }

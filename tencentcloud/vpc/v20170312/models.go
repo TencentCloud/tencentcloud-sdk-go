@@ -23973,11 +23973,9 @@ type InternetPriceDetail struct {
 	UnitPrice *float64 `json:"UnitPrice,omitnil,omitempty" name:"UnitPrice"`
 
 	// 折扣后的价格，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 
 	// 计价单元，可取值范围：<ul> <li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）。</li></ul>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeUnit *string `json:"ChargeUnit,omitnil,omitempty" name:"ChargeUnit"`
 
 	// 原价，单位：元，仅预付费价格查询返回。
@@ -24098,39 +24096,30 @@ type IpField struct {
 
 type IpGeolocationInfo struct {
 	// 国家信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
 
 	// 省、州、郡一级行政区域信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
 
 	// 市一级行政区域信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	City *string `json:"City,omitnil,omitempty" name:"City"`
 
 	// 市内区域信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 接入运营商信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
 
 	// 骨干运营商名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsName *string `json:"AsName,omitnil,omitempty" name:"AsName"`
 
 	// 骨干运营商AS号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsId *string `json:"AsId,omitnil,omitempty" name:"AsId"`
 
 	// 注释信息。目前的填充值为移动接入用户的APN值，如无APN属性则为空
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
 	// IP地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressIp *string `json:"AddressIp,omitnil,omitempty" name:"AddressIp"`
 }
 
@@ -29994,7 +29983,6 @@ type Quota struct {
 	QuotaLimit *int64 `json:"QuotaLimit,omitnil,omitempty" name:"QuotaLimit"`
 
 	// 配额所属的网络组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuotaGroup *string `json:"QuotaGroup,omitnil,omitempty" name:"QuotaGroup"`
 }
 
@@ -33075,11 +33063,9 @@ type TrafficFlow struct {
 	Value *uint64 `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 格式化后的流量，单位见参数 FormatUnit
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FormatValue *float64 `json:"FormatValue,omitnil,omitempty" name:"FormatValue"`
 
 	// 格式化后流量的单位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FormatUnit *string `json:"FormatUnit,omitnil,omitempty" name:"FormatUnit"`
 }
 
@@ -33176,7 +33162,6 @@ type TrafficPackage struct {
 	TrafficPackageId *string `json:"TrafficPackageId,omitnil,omitempty" name:"TrafficPackageId"`
 
 	// 流量包名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrafficPackageName *string `json:"TrafficPackageName,omitnil,omitempty" name:"TrafficPackageName"`
 
 	// 流量包总量，单位GB
@@ -33198,7 +33183,6 @@ type TrafficPackage struct {
 	UsedAmount *float64 `json:"UsedAmount,omitnil,omitempty" name:"UsedAmount"`
 
 	// 流量包标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
 	// 区分闲时流量包与全时流量包
@@ -33880,7 +33864,6 @@ type UsedDetail struct {
 	TrafficPackageId *string `json:"TrafficPackageId,omitnil,omitempty" name:"TrafficPackageId"`
 
 	// 流量包名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrafficPackageName *string `json:"TrafficPackageName,omitnil,omitempty" name:"TrafficPackageName"`
 
 	// 流量包总量

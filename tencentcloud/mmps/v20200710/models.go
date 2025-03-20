@@ -25,46 +25,36 @@ type AppInfoItem struct {
 	AppPackage *string `json:"AppPackage,omitnil,omitempty" name:"AppPackage"`
 
 	// 小程序应用名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// 小程序应用版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppVersion *string `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
 	Platform *int64 `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 小程序隐私诊断报告下载链接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportUrl *string `json:"ReportUrl,omitnil,omitempty" name:"ReportUrl"`
 
 	// 小程序隐私诊断报告名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportTitle *string `json:"ReportTitle,omitnil,omitempty" name:"ReportTitle"`
 
 	// 小程序隐私诊断堆栈报告下载链接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BehaviorUrl *string `json:"BehaviorUrl,omitnil,omitempty" name:"BehaviorUrl"`
 
 	// 小程序隐私诊断堆栈报告名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BehaviorTitle *string `json:"BehaviorTitle,omitnil,omitempty" name:"BehaviorTitle"`
 
 	// 诊断风险项数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HighRiskCount *int64 `json:"HighRiskCount,omitnil,omitempty" name:"HighRiskCount"`
 
 	// 隐私申明文件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivacyTextName *string `json:"PrivacyTextName,omitnil,omitempty" name:"PrivacyTextName"`
 
 	// 软件MD5
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SoftwareMD5 *string `json:"SoftwareMD5,omitnil,omitempty" name:"SoftwareMD5"`
 
 	// 隐私文本MD5
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivacyTextMD5 *string `json:"PrivacyTextMD5,omitnil,omitempty" name:"PrivacyTextMD5"`
 }
 
@@ -79,7 +69,6 @@ type AppTaskData struct {
 	TaskStatus *int64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskErrMsg *string `json:"TaskErrMsg,omitnil,omitempty" name:"TaskErrMsg"`
 
 	// 任务来源,0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
@@ -95,7 +84,6 @@ type AppTaskData struct {
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 联系人信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContactName *string `json:"ContactName,omitnil,omitempty" name:"ContactName"`
 }
 
@@ -759,7 +747,6 @@ type DescribeFlySecMiniAppReportUrlResponseParams struct {
 	Ret *int64 `json:"Ret,omitnil,omitempty" name:"Ret"`
 
 	// 诊断报告下载链接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -848,11 +835,9 @@ type DescribeFlySecMiniAppScanReportListResponseParams struct {
 	Ret *int64 `json:"Ret,omitnil,omitempty" name:"Ret"`
 
 	// 诊断报告数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*FlySecMiniAppReportData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 诊断任务数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -934,11 +919,9 @@ type DescribeFlySecMiniAppScanTaskListResponseParams struct {
 	Ret *int64 `json:"Ret,omitnil,omitempty" name:"Ret"`
 
 	// 诊断任务数据列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*FlySecMiniAppTaskData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 诊断任务数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1077,15 +1060,12 @@ type DescribeFlySecMiniAppScanTaskStatusResponseParams struct {
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 诊断失败错误码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Errno *int64 `json:"Errno,omitnil,omitempty" name:"Errno"`
 
 	// 小程序名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MiniAppName *string `json:"MiniAppName,omitnil,omitempty" name:"MiniAppName"`
 
 	// 小程序版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MiniAppVersion *string `json:"MiniAppVersion,omitnil,omitempty" name:"MiniAppVersion"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1262,11 +1242,9 @@ type DescribeScanTaskListResponseParams struct {
 	Result *int64 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 诊断任务数据列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*AppTaskData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 任务总数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1358,11 +1336,9 @@ type DescribeScanTaskReportUrlResponseParams struct {
 	ReportUrl *string `json:"ReportUrl,omitnil,omitempty" name:"ReportUrl"`
 
 	// 诊断报告/堆栈名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportTitle *string `json:"ReportTitle,omitnil,omitempty" name:"ReportTitle"`
 
 	// 诊断json结果内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportResult *string `json:"ReportResult,omitnil,omitempty" name:"ReportResult"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1571,7 +1547,6 @@ type ResourceUsageInfoData struct {
 
 type TaskFlowStepsInfo struct {
 	// 流程编号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowNo *string `json:"FlowNo,omitnil,omitempty" name:"FlowNo"`
 
 	// 流程名称
@@ -1581,14 +1556,11 @@ type TaskFlowStepsInfo struct {
 	FlowStatus *int64 `json:"FlowStatus,omitnil,omitempty" name:"FlowStatus"`
 
 	// 流程状态描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowStateDesc *string `json:"FlowStateDesc,omitnil,omitempty" name:"FlowStateDesc"`
 
 	// 流程启动时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 流程完成时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }

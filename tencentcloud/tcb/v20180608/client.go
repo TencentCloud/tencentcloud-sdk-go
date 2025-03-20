@@ -1109,61 +1109,6 @@ func (c *Client) DeleteWxGatewayRouteWithContext(ctx context.Context, request *D
     return
 }
 
-func NewDescribeActivityInfoRequest() (request *DescribeActivityInfoRequest) {
-    request = &DescribeActivityInfoRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tcb", APIVersion, "DescribeActivityInfo")
-    
-    
-    return
-}
-
-func NewDescribeActivityInfoResponse() (response *DescribeActivityInfoResponse) {
-    response = &DescribeActivityInfoResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeActivityInfo
-// 查询活动信息
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
-func (c *Client) DescribeActivityInfo(request *DescribeActivityInfoRequest) (response *DescribeActivityInfoResponse, err error) {
-    return c.DescribeActivityInfoWithContext(context.Background(), request)
-}
-
-// DescribeActivityInfo
-// 查询活动信息
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
-func (c *Client) DescribeActivityInfoWithContext(ctx context.Context, request *DescribeActivityInfoRequest) (response *DescribeActivityInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeActivityInfoRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeActivityInfo require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeActivityInfoResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeActivityRecordRequest() (request *DescribeActivityRecordRequest) {
     request = &DescribeActivityRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
