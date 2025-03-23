@@ -3143,11 +3143,9 @@ func (r *DescribeDeviceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDeviceListResponseParams struct {
 	// 设备总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 设备详细信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Devices []*AllDeviceInfo `json:"Devices,omitnil,omitempty" name:"Devices"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3859,11 +3857,9 @@ func (r *DescribeLiveChannelListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLiveChannelListResponseParams struct {
 	// 频道总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 频道信息数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LiveChannels []*LiveChannelInfo `json:"LiveChannels,omitnil,omitempty" name:"LiveChannels"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4421,11 +4417,9 @@ func (r *DescribeMessageForwardsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMessageForwardsResponseParams struct {
 	// 配置总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 配置列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*MessageForward `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6003,11 +5997,9 @@ type DeviceItem struct {
 
 type DeviceMonitorValue struct {
 	// 统计值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *float64 `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 统计时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Time *int64 `json:"Time,omitnil,omitempty" name:"Time"`
 }
 
@@ -6624,31 +6616,24 @@ type GroupItem struct {
 
 type LiveChannelInfo struct {
 	// 频道ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LiveChannelId *string `json:"LiveChannelId,omitnil,omitempty" name:"LiveChannelId"`
 
 	// 频道名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LiveChannelName *string `json:"LiveChannelName,omitnil,omitempty" name:"LiveChannelName"`
 
 	// 频道类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LiveChannelType *int64 `json:"LiveChannelType,omitnil,omitempty" name:"LiveChannelType"`
 
 	// 通道直播状态：1: 未推流，2: 推流中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LiveStatus *int64 `json:"LiveStatus,omitnil,omitempty" name:"LiveStatus"`
 
 	// 推流地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PushStreamAddress *string `json:"PushStreamAddress,omitnil,omitempty" name:"PushStreamAddress"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
@@ -6701,47 +6686,36 @@ type LiveRecordPlanItem struct {
 
 type MessageForward struct {
 	// 配置ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntId *int64 `json:"IntId,omitnil,omitempty" name:"IntId"`
 
 	// 用户Uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// json数组， 转发类型 1: 告警 2:GPS
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageType *string `json:"MessageType,omitnil,omitempty" name:"MessageType"`
 
 	// 区域ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
 	// 区域名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 
 	// 实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Instance *string `json:"Instance,omitnil,omitempty" name:"Instance"`
 
 	// 实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// kafka topic id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// topic 名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 }
 

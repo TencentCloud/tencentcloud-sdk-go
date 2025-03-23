@@ -5697,6 +5697,69 @@ func (c *Client) DescribeTopicRuleWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeUnbindedDevicesRequest() (request *DescribeUnbindedDevicesRequest) {
+    request = &DescribeUnbindedDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeUnbindedDevices")
+    
+    
+    return
+}
+
+func NewDescribeUnbindedDevicesResponse() (response *DescribeUnbindedDevicesResponse) {
+    response = &DescribeUnbindedDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUnbindedDevices
+// 获取未绑定的设备列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DescribeUnbindedDevices(request *DescribeUnbindedDevicesRequest) (response *DescribeUnbindedDevicesResponse, err error) {
+    return c.DescribeUnbindedDevicesWithContext(context.Background(), request)
+}
+
+// DescribeUnbindedDevices
+// 获取未绑定的设备列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DescribeUnbindedDevicesWithContext(ctx context.Context, request *DescribeUnbindedDevicesRequest) (response *DescribeUnbindedDevicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeUnbindedDevicesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUnbindedDevices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUnbindedDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVideoLicenseRequest() (request *DescribeVideoLicenseRequest) {
     request = &DescribeVideoLicenseRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5721,13 +5784,13 @@ func NewDescribeVideoLicenseResponse() (response *DescribeVideoLicenseResponse) 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_ACTIONNIL = "InvalidParameterValue.ActionNil"
-//  INVALIDPARAMETERVALUE_RULENUMBERBEYONDLIMIT = "InvalidParameterValue.RuleNumberBeyondLimit"
-//  INVALIDPARAMETERVALUE_TOPICRULESQLNOTEDITED = "InvalidParameterValue.TopicRuleSqlNotEdited"
-//  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) DescribeVideoLicense(request *DescribeVideoLicenseRequest) (response *DescribeVideoLicenseResponse, err error) {
     return c.DescribeVideoLicenseWithContext(context.Background(), request)
 }
@@ -5737,13 +5800,13 @@ func (c *Client) DescribeVideoLicense(request *DescribeVideoLicenseRequest) (res
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_ACTIONNIL = "InvalidParameterValue.ActionNil"
-//  INVALIDPARAMETERVALUE_RULENUMBERBEYONDLIMIT = "InvalidParameterValue.RuleNumberBeyondLimit"
-//  INVALIDPARAMETERVALUE_TOPICRULESQLNOTEDITED = "InvalidParameterValue.TopicRuleSqlNotEdited"
-//  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) DescribeVideoLicenseWithContext(ctx context.Context, request *DescribeVideoLicenseRequest) (response *DescribeVideoLicenseResponse, err error) {
     if request == nil {
         request = NewDescribeVideoLicenseRequest()

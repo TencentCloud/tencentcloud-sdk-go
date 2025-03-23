@@ -4609,67 +4609,6 @@ func (c *Client) RenameDocWithContext(ctx context.Context, request *RenameDocReq
     return
 }
 
-func NewResetSessionRequest() (request *ResetSessionRequest) {
-    request = &ResetSessionRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("lke", APIVersion, "ResetSession")
-    
-    
-    return
-}
-
-func NewResetSessionResponse() (response *ResetSessionResponse) {
-    response = &ResetSessionResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ResetSession
-// 重置会话
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) ResetSession(request *ResetSessionRequest) (response *ResetSessionResponse, err error) {
-    return c.ResetSessionWithContext(context.Background(), request)
-}
-
-// ResetSession
-// 重置会话
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) ResetSessionWithContext(ctx context.Context, request *ResetSessionRequest) (response *ResetSessionResponse, err error) {
-    if request == nil {
-        request = NewResetSessionRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ResetSession require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewResetSessionResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewRetryDocAuditRequest() (request *RetryDocAuditRequest) {
     request = &RetryDocAuditRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -492,7 +492,6 @@ type ClusterActivity struct {
 	ActivityStatus *string `json:"ActivityStatus,omitnil,omitempty" name:"ActivityStatus"`
 
 	// 集群活动状态码。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActivityStatusCode *string `json:"ActivityStatusCode,omitnil,omitempty" name:"ActivityStatusCode"`
 
 	// 集群活动结果详情。
@@ -509,11 +508,9 @@ type ClusterActivity struct {
 	RelatedNodeActivitySet []*NodeActivity `json:"RelatedNodeActivitySet,omitnil,omitempty" name:"RelatedNodeActivitySet"`
 
 	// 集群活动开始时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 集群活动结束时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -537,7 +534,6 @@ type ClusterOverview struct {
 	SchedulerType *string `json:"SchedulerType,omitnil,omitempty" name:"SchedulerType"`
 
 	// 集群调度器版本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SchedulerVersion *string `json:"SchedulerVersion,omitnil,omitempty" name:"SchedulerVersion"`
 
 	// 计算节点数量。
@@ -2043,11 +2039,9 @@ type GooseFSxOption struct {
 
 type GooseFSxOptionOverview struct {
 	// 文件系统master的ip和端口列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Masters []*string `json:"Masters,omitnil,omitempty" name:"Masters"`
 
 	// 文件系统的本地挂载路径。GooseFSx目前只支持挂载在/goosefsx/{文件系统ID}_proxy/目录下。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalPath *string `json:"LocalPath,omitnil,omitempty" name:"LocalPath"`
 }
 

@@ -25931,6 +25931,9 @@ type ProdSchedulerTask struct {
 	// 生产调度任务任务类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CycleType *int64 `json:"CycleType,omitnil,omitempty" name:"CycleType"`
+
+	// 生产任务类型
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 }
 
 type Project struct {
@@ -27558,6 +27561,29 @@ type RuleGroup struct {
 	// EMR集群部署方式：CVM/TKE
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterDeployType *string `json:"ClusterDeployType,omitnil,omitempty" name:"ClusterDeployType"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 执行详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecDetail *string `json:"ExecDetail,omitnil,omitempty" name:"ExecDetail"`
+
+	// 事中关联任务数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PipelineTaskCount *int64 `json:"PipelineTaskCount,omitnil,omitempty" name:"PipelineTaskCount"`
+
+	// 有效规则数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableRuleCount *int64 `json:"EnableRuleCount,omitnil,omitempty" name:"EnableRuleCount"`
+
+	// 任务描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 监控创建人
+	CreateUserName *string `json:"CreateUserName,omitnil,omitempty" name:"CreateUserName"`
 }
 
 type RuleGroupExecResult struct {
@@ -27746,6 +27772,24 @@ type RuleGroupExecStrategy struct {
 	// DLC资源组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DlcGroupName *string `json:"DlcGroupName,omitnil,omitempty" name:"DlcGroupName"`
+
+	// 任务名称
+	RuleGroupName *string `json:"RuleGroupName,omitnil,omitempty" name:"RuleGroupName"`
+
+	// 数据库名称
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// schema名称
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 表名称
+	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 数据源id
+	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 任务描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type RuleGroupPage struct {
@@ -27828,6 +27872,10 @@ type RuleGroupSubscribe struct {
 	// 规则名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 发送对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmMessageRule *string `json:"AlarmMessageRule,omitnil,omitempty" name:"AlarmMessageRule"`
 }
 
 type RuleGroupTable struct {

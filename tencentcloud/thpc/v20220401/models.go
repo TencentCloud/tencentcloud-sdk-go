@@ -500,7 +500,6 @@ type ClusterActivity struct {
 	ActivityStatus *string `json:"ActivityStatus,omitnil,omitempty" name:"ActivityStatus"`
 
 	// 集群活动状态码。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActivityStatusCode *string `json:"ActivityStatusCode,omitnil,omitempty" name:"ActivityStatusCode"`
 
 	// 集群活动结果详情。
@@ -517,11 +516,9 @@ type ClusterActivity struct {
 	RelatedNodeActivitySet []*NodeActivity `json:"RelatedNodeActivitySet,omitnil,omitempty" name:"RelatedNodeActivitySet"`
 
 	// 集群活动开始时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 集群活动结束时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 

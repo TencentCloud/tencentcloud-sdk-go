@@ -1138,6 +1138,9 @@ type CreateProxySessionKillTaskRequestParams struct {
 
 	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 实列代理ID。
+	InstanceProxyId *string `json:"InstanceProxyId,omitnil,omitempty" name:"InstanceProxyId"`
 }
 
 type CreateProxySessionKillTaskRequest struct {
@@ -1148,6 +1151,9 @@ type CreateProxySessionKillTaskRequest struct {
 
 	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 实列代理ID。
+	InstanceProxyId *string `json:"InstanceProxyId,omitnil,omitempty" name:"InstanceProxyId"`
 }
 
 func (r *CreateProxySessionKillTaskRequest) ToJsonString() string {
@@ -1164,6 +1170,7 @@ func (r *CreateProxySessionKillTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "Product")
+	delete(f, "InstanceProxyId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProxySessionKillTaskRequest has unknown keys!", "")
 	}
@@ -3137,7 +3144,7 @@ type DescribeHealthScoreRequestParams struct {
 	// 获取健康得分的时间，时间格式如：2019-09-10 12:13:14。
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -3150,7 +3157,7 @@ type DescribeHealthScoreRequest struct {
 	// 获取健康得分的时间，时间格式如：2019-09-10 12:13:14。
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -6568,7 +6575,6 @@ type MonitorMetric struct {
 	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
 
 	// 指标值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*float64 `json:"Values,omitnil,omitempty" name:"Values"`
 }
 

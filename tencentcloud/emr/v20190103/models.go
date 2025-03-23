@@ -370,6 +370,9 @@ type AttachDisksRequestParams struct {
 
 	// 可选参数，不传该参数则仅执行挂载操作。传入True时，会在挂载成功后将云硬盘设置为随云主机销毁模式，仅对按量计费云硬盘有效。
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitnil,omitempty" name:"DeleteWithInstance"`
+
+	// 新挂磁盘时可支持配置的服务名称列表
+	SelectiveConfServices []*string `json:"SelectiveConfServices,omitnil,omitempty" name:"SelectiveConfServices"`
 }
 
 type AttachDisksRequest struct {
@@ -397,6 +400,9 @@ type AttachDisksRequest struct {
 
 	// 可选参数，不传该参数则仅执行挂载操作。传入True时，会在挂载成功后将云硬盘设置为随云主机销毁模式，仅对按量计费云硬盘有效。
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitnil,omitempty" name:"DeleteWithInstance"`
+
+	// 新挂磁盘时可支持配置的服务名称列表
+	SelectiveConfServices []*string `json:"SelectiveConfServices,omitnil,omitempty" name:"SelectiveConfServices"`
 }
 
 func (r *AttachDisksRequest) ToJsonString() string {
@@ -418,6 +424,7 @@ func (r *AttachDisksRequest) FromJsonString(s string) error {
 	delete(f, "CreateDisk")
 	delete(f, "DiskSpec")
 	delete(f, "DeleteWithInstance")
+	delete(f, "SelectiveConfServices")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachDisksRequest has unknown keys!", "")
 	}
@@ -606,6 +613,9 @@ type CBSInstance struct {
 
 	// 云盘是否为共享型云盘。
 	Shareable *bool `json:"Shareable,omitnil,omitempty" name:"Shareable"`
+
+	// emr节点ID
+	EmrResourceId *string `json:"EmrResourceId,omitnil,omitempty" name:"EmrResourceId"`
 }
 
 type CLBSetting struct {
@@ -4249,6 +4259,18 @@ type DescribeNodeDataDisksRequestParams struct {
 
 	// 节点CVM实例Id列表
 	CvmInstanceIds []*string `json:"CvmInstanceIds,omitnil,omitempty" name:"CvmInstanceIds"`
+
+	// 查询云盘的过滤条件
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 模糊搜索
+	InnerSearch *string `json:"InnerSearch,omitnil,omitempty" name:"InnerSearch"`
+
+	// 每页返回数量，默认值为100，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 数据偏移值
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeNodeDataDisksRequest struct {
@@ -4259,6 +4281,18 @@ type DescribeNodeDataDisksRequest struct {
 
 	// 节点CVM实例Id列表
 	CvmInstanceIds []*string `json:"CvmInstanceIds,omitnil,omitempty" name:"CvmInstanceIds"`
+
+	// 查询云盘的过滤条件
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 模糊搜索
+	InnerSearch *string `json:"InnerSearch,omitnil,omitempty" name:"InnerSearch"`
+
+	// 每页返回数量，默认值为100，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 数据偏移值
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeNodeDataDisksRequest) ToJsonString() string {
@@ -4275,6 +4309,10 @@ func (r *DescribeNodeDataDisksRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "CvmInstanceIds")
+	delete(f, "Filters")
+	delete(f, "InnerSearch")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNodeDataDisksRequest has unknown keys!", "")
 	}
@@ -4289,6 +4327,9 @@ type DescribeNodeDataDisksResponseParams struct {
 	// 云盘列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CBSList []*CBSInstance `json:"CBSList,omitnil,omitempty" name:"CBSList"`
+
+	// 云盘最大容量
+	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6303,6 +6344,9 @@ type InquirePriceRenewEmrResponseParams struct {
 	// 实例续费的时长。
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
+	// 节点续费询价明细列表
+	NodeRenewPriceDetails []*NodeRenewPriceDetail `json:"NodeRenewPriceDetails,omitnil,omitempty" name:"NodeRenewPriceDetails"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -6641,6 +6685,9 @@ type InquiryPriceRenewInstanceResponseParams struct {
 	// 价格详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PriceDetail []*PriceDetail `json:"PriceDetail,omitnil,omitempty" name:"PriceDetail"`
+
+	// 节点续费询价明细列表
+	NodeRenewPriceDetails []*NodeRenewPriceDetail `json:"NodeRenewPriceDetails,omitnil,omitempty" name:"NodeRenewPriceDetails"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -8875,6 +8922,32 @@ type NodeHardwareInfo struct {
 	TkeClusterId *string `json:"TkeClusterId,omitnil,omitempty" name:"TkeClusterId"`
 }
 
+type NodeRenewPriceDetail struct {
+	// 计费类型，包月为1、包销为3
+	ChargeType *int64 `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// emr资源id
+	EmrResourceId *string `json:"EmrResourceId,omitnil,omitempty" name:"EmrResourceId"`
+
+	// 节点类型
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 节点内网ip
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 当前到期时间
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 原价
+	OriginalCost *float64 `json:"OriginalCost,omitnil,omitempty" name:"OriginalCost"`
+
+	// 折扣价
+	DiscountCost *float64 `json:"DiscountCost,omitnil,omitempty" name:"DiscountCost"`
+
+	// 节点子项续费询价明细列表
+	RenewPriceDetails []*RenewPriceDetail `json:"RenewPriceDetails,omitnil,omitempty" name:"RenewPriceDetails"`
+}
+
 type NodeResource struct {
 	// 配置Id
 	ResourceConfigId *uint64 `json:"ResourceConfigId,omitnil,omitempty" name:"ResourceConfigId"`
@@ -9654,6 +9727,23 @@ type RenewInstancesInfo struct {
 	MCMultiDisk []*MultiDiskMC `json:"MCMultiDisk,omitnil,omitempty" name:"MCMultiDisk"`
 }
 
+type RenewPriceDetail struct {
+	// 计费项名称
+	BillingName *string `json:"BillingName,omitnil,omitempty" name:"BillingName"`
+
+	// 折扣
+	Policy *float64 `json:"Policy,omitnil,omitempty" name:"Policy"`
+
+	// 数量
+	Quantity *int64 `json:"Quantity,omitnil,omitempty" name:"Quantity"`
+
+	// 原价
+	OriginalCost *float64 `json:"OriginalCost,omitnil,omitempty" name:"OriginalCost"`
+
+	// 折扣价
+	DiscountCost *float64 `json:"DiscountCost,omitnil,omitempty" name:"DiscountCost"`
+}
+
 type RepeatStrategy struct {
 	// 取值范围"DAY","DOW","DOM","NONE"，分别表示按天重复、按周重复、按月重复和一次执行。必须填写
 	RepeatType *string `json:"RepeatType,omitnil,omitempty" name:"RepeatType"`
@@ -9756,14 +9846,17 @@ type ResizeDataDisksRequestParams struct {
 	// EMR集群实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 需要扩容的云盘ID
-	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
-
 	// 需要扩充的容量值，容量值需要大于原容量，并且为10的整数倍
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
 	// 需要扩容的节点ID列表
 	CvmInstanceIds []*string `json:"CvmInstanceIds,omitnil,omitempty" name:"CvmInstanceIds"`
+
+	// 需要扩容的云盘ID
+	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
+
+	// 是否扩容全部云硬盘
+	ResizeAll *bool `json:"ResizeAll,omitnil,omitempty" name:"ResizeAll"`
 }
 
 type ResizeDataDisksRequest struct {
@@ -9772,14 +9865,17 @@ type ResizeDataDisksRequest struct {
 	// EMR集群实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 需要扩容的云盘ID
-	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
-
 	// 需要扩充的容量值，容量值需要大于原容量，并且为10的整数倍
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
 	// 需要扩容的节点ID列表
 	CvmInstanceIds []*string `json:"CvmInstanceIds,omitnil,omitempty" name:"CvmInstanceIds"`
+
+	// 需要扩容的云盘ID
+	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
+
+	// 是否扩容全部云硬盘
+	ResizeAll *bool `json:"ResizeAll,omitnil,omitempty" name:"ResizeAll"`
 }
 
 func (r *ResizeDataDisksRequest) ToJsonString() string {
@@ -9795,9 +9891,10 @@ func (r *ResizeDataDisksRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
-	delete(f, "DiskIds")
 	delete(f, "DiskSize")
 	delete(f, "CvmInstanceIds")
+	delete(f, "DiskIds")
+	delete(f, "ResizeAll")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResizeDataDisksRequest has unknown keys!", "")
 	}

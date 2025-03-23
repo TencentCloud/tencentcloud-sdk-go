@@ -4001,66 +4001,6 @@ func (r *DescribeBizTrendResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeBlackWhiteIpListRequestParams struct {
-	// 资源实例ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-}
-
-type DescribeBlackWhiteIpListRequest struct {
-	*tchttp.BaseRequest
-	
-	// 资源实例ID
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-}
-
-func (r *DescribeBlackWhiteIpListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeBlackWhiteIpListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBlackWhiteIpListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeBlackWhiteIpListResponseParams struct {
-	// 黑名单IP列表
-	BlackIpList []*string `json:"BlackIpList,omitnil,omitempty" name:"BlackIpList"`
-
-	// 白名单IP列表
-	WhiteIpList []*string `json:"WhiteIpList,omitnil,omitempty" name:"WhiteIpList"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeBlackWhiteIpListResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeBlackWhiteIpListResponseParams `json:"Response"`
-}
-
-func (r *DescribeBlackWhiteIpListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeBlackWhiteIpListResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeCCLevelListRequestParams struct {
 	// DDoS防护子产品代号（bgp-multip表示高防包）
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
@@ -6341,101 +6281,6 @@ func (r *DescribeListPortAclListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeListProtectThresholdConfigRequestParams struct {
-	// 页起始偏移，取值为(页码-1)*一页条数
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例
-	FilterInstanceId *string `json:"FilterInstanceId,omitnil,omitempty" name:"FilterInstanceId"`
-
-	// IP搜索
-	FilterIp *string `json:"FilterIp,omitnil,omitempty" name:"FilterIp"`
-
-	// 域名搜索(查询域名与协议的CC防护阈值时使用）
-	FilterDomain *string `json:"FilterDomain,omitnil,omitempty" name:"FilterDomain"`
-
-	// 协议搜索(查询域名与协议的CC防护阈值时使用）
-	FilterProtocol *string `json:"FilterProtocol,omitnil,omitempty" name:"FilterProtocol"`
-}
-
-type DescribeListProtectThresholdConfigRequest struct {
-	*tchttp.BaseRequest
-	
-	// 页起始偏移，取值为(页码-1)*一页条数
-	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
-
-	// 一页条数，当Limit=0时，默认一页条数为100;最大取值为100
-	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
-
-	// 资源实例ID搜索, 支持资源实例前缀通配搜索，例如bgp-*表示获取高防包类型的资源实例
-	FilterInstanceId *string `json:"FilterInstanceId,omitnil,omitempty" name:"FilterInstanceId"`
-
-	// IP搜索
-	FilterIp *string `json:"FilterIp,omitnil,omitempty" name:"FilterIp"`
-
-	// 域名搜索(查询域名与协议的CC防护阈值时使用）
-	FilterDomain *string `json:"FilterDomain,omitnil,omitempty" name:"FilterDomain"`
-
-	// 协议搜索(查询域名与协议的CC防护阈值时使用）
-	FilterProtocol *string `json:"FilterProtocol,omitnil,omitempty" name:"FilterProtocol"`
-}
-
-func (r *DescribeListProtectThresholdConfigRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeListProtectThresholdConfigRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Offset")
-	delete(f, "Limit")
-	delete(f, "FilterInstanceId")
-	delete(f, "FilterIp")
-	delete(f, "FilterDomain")
-	delete(f, "FilterProtocol")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListProtectThresholdConfigRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeListProtectThresholdConfigResponseParams struct {
-	// 总记录数
-	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
-
-	// 防护阈值配置列表
-	ConfigList []*ProtectThresholdRelation `json:"ConfigList,omitnil,omitempty" name:"ConfigList"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeListProtectThresholdConfigResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeListProtectThresholdConfigResponseParams `json:"Response"`
-}
-
-func (r *DescribeListProtectThresholdConfigResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeListProtectThresholdConfigResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeListProtocolBlockConfigRequestParams struct {
 	// 页起始偏移，取值为(页码-1)*一页条数
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -7869,20 +7714,6 @@ type Layer7Rule struct {
 	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 }
 
-type ListenerCcThreholdConfig struct {
-	// 域名
-	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
-
-	// 协议（可取值https）
-	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
-
-	// 开关状态（0：关闭，1：开启）
-	CCEnable *int64 `json:"CCEnable,omitnil,omitempty" name:"CCEnable"`
-
-	// cc防护阈值
-	CCThreshold *int64 `json:"CCThreshold,omitnil,omitempty" name:"CCThreshold"`
-}
-
 // Predefined struct for user
 type ModifyCCLevelPolicyRequestParams struct {
 	// 实例Id
@@ -9207,79 +9038,6 @@ type PortSegment struct {
 
 	// 结束端口，取值1~65535，必须不小于起始端口
 	EndPort *uint64 `json:"EndPort,omitnil,omitempty" name:"EndPort"`
-}
-
-type ProtectThresholdRelation struct {
-	// DDoS防护等级，取值[
-	// low(宽松)
-	// middle(适中)
-	// high(严格)
-	// ]
-	DDoSLevel *string `json:"DDoSLevel,omitnil,omitempty" name:"DDoSLevel"`
-
-	// DDoS清洗阈值，单位Mbps
-	DDoSThreshold *uint64 `json:"DDoSThreshold,omitnil,omitempty" name:"DDoSThreshold"`
-
-	// DDoS的AI防护开关，取值[
-	// on(开启)
-	// off(关闭)
-	// ]
-	DDoSAI *string `json:"DDoSAI,omitnil,omitempty" name:"DDoSAI"`
-
-	// CC清洗开关，取值[
-	// 0(关闭)
-	// 1(开启)
-	// ]
-	CCEnable *uint64 `json:"CCEnable,omitnil,omitempty" name:"CCEnable"`
-
-	// CC清洗阈值，单位QPS
-	CCThreshold *uint64 `json:"CCThreshold,omitnil,omitempty" name:"CCThreshold"`
-
-	// 所属的资源实例
-	InstanceDetailList []*InstanceRelation `json:"InstanceDetailList,omitnil,omitempty" name:"InstanceDetailList"`
-
-	// 域名与协议纬度的防护阈值
-	ListenerCcThresholdList []*ListenerCcThreholdConfig `json:"ListenerCcThresholdList,omitnil,omitempty" name:"ListenerCcThresholdList"`
-
-	// SYN FLOOD流量阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SynFloodThreshold *uint64 `json:"SynFloodThreshold,omitnil,omitempty" name:"SynFloodThreshold"`
-
-	// SYN FLOOD包量阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SynFloodPktThreshold *uint64 `json:"SynFloodPktThreshold,omitnil,omitempty" name:"SynFloodPktThreshold"`
-
-	// UDP FLOOD流量阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UdpFloodThreshold *uint64 `json:"UdpFloodThreshold,omitnil,omitempty" name:"UdpFloodThreshold"`
-
-	// UDP FLOOD包量阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UdpFloodPktThreshold *uint64 `json:"UdpFloodPktThreshold,omitnil,omitempty" name:"UdpFloodPktThreshold"`
-
-	// ACK FLOOD流量阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AckFloodThreshold *uint64 `json:"AckFloodThreshold,omitnil,omitempty" name:"AckFloodThreshold"`
-
-	// ACK FLOOD包量阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AckFloodPktThreshold *uint64 `json:"AckFloodPktThreshold,omitnil,omitempty" name:"AckFloodPktThreshold"`
-
-	// SYNACK FLOOD流量阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SynAckFloodThreshold *uint64 `json:"SynAckFloodThreshold,omitnil,omitempty" name:"SynAckFloodThreshold"`
-
-	// SYNACK FLOOD包量阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SynAckFloodPktThreshold *uint64 `json:"SynAckFloodPktThreshold,omitnil,omitempty" name:"SynAckFloodPktThreshold"`
-
-	// RST FLOOD流量阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RstFloodThreshold *uint64 `json:"RstFloodThreshold,omitnil,omitempty" name:"RstFloodThreshold"`
-
-	// RST FLOOD包量阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RstFloodPktThreshold *uint64 `json:"RstFloodPktThreshold,omitnil,omitempty" name:"RstFloodPktThreshold"`
 }
 
 type ProtocolBlockConfig struct {

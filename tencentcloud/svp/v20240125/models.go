@@ -329,7 +329,6 @@ func (r *DescribeSavingPlanDeductRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSavingPlanDeductResponseParams struct {
 	// 查询命中的节省计划抵扣明细数据总条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 查询命中的节省计划抵扣明细数据明细

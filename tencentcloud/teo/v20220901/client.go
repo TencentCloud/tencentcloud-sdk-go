@@ -8540,6 +8540,57 @@ func (c *Client) ModifyL7AccRuleWithContext(ctx context.Context, request *Modify
     return
 }
 
+func NewModifyL7AccRulePriorityRequest() (request *ModifyL7AccRulePriorityRequest) {
+    request = &ModifyL7AccRulePriorityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyL7AccRulePriority")
+    
+    
+    return
+}
+
+func NewModifyL7AccRulePriorityResponse() (response *ModifyL7AccRulePriorityResponse) {
+    response = &ModifyL7AccRulePriorityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyL7AccRulePriority
+// 本接口用于修改[规则引擎](https://cloud.tencent.com/document/product/1552/70901)中规则列表的优先级，本接口需要传入站点 ID 下完整的规则 ID 列表，规则 ID 列表可以通过[查询七层加速规则](https://cloud.tencent.com/document/product/1552/115820)接口获取，最终优先级顺序将调整成规则 ID 列表的顺序，从前往后执行。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDRULEENGINE = "InvalidParameter.InvalidRuleEngine"
+//  INVALIDPARAMETER_INVALIDRULEENGINENOTFOUND = "InvalidParameter.InvalidRuleEngineNotFound"
+func (c *Client) ModifyL7AccRulePriority(request *ModifyL7AccRulePriorityRequest) (response *ModifyL7AccRulePriorityResponse, err error) {
+    return c.ModifyL7AccRulePriorityWithContext(context.Background(), request)
+}
+
+// ModifyL7AccRulePriority
+// 本接口用于修改[规则引擎](https://cloud.tencent.com/document/product/1552/70901)中规则列表的优先级，本接口需要传入站点 ID 下完整的规则 ID 列表，规则 ID 列表可以通过[查询七层加速规则](https://cloud.tencent.com/document/product/1552/115820)接口获取，最终优先级顺序将调整成规则 ID 列表的顺序，从前往后执行。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDRULEENGINE = "InvalidParameter.InvalidRuleEngine"
+//  INVALIDPARAMETER_INVALIDRULEENGINENOTFOUND = "InvalidParameter.InvalidRuleEngineNotFound"
+func (c *Client) ModifyL7AccRulePriorityWithContext(ctx context.Context, request *ModifyL7AccRulePriorityRequest) (response *ModifyL7AccRulePriorityResponse, err error) {
+    if request == nil {
+        request = NewModifyL7AccRulePriorityRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyL7AccRulePriority require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyL7AccRulePriorityResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyL7AccSettingRequest() (request *ModifyL7AccSettingRequest) {
     request = &ModifyL7AccSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},

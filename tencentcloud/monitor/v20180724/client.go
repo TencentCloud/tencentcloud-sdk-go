@@ -515,6 +515,69 @@ func (c *Client) CreateAlertRuleWithContext(ctx context.Context, request *Create
     return
 }
 
+func NewCreateConditionsTemplateRequest() (request *CreateConditionsTemplateRequest) {
+    request = &CreateConditionsTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "CreateConditionsTemplate")
+    
+    
+    return
+}
+
+func NewCreateConditionsTemplateResponse() (response *CreateConditionsTemplateResponse) {
+    response = &CreateConditionsTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateConditionsTemplate
+// 创建告警条件模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateConditionsTemplate(request *CreateConditionsTemplateRequest) (response *CreateConditionsTemplateResponse, err error) {
+    return c.CreateConditionsTemplateWithContext(context.Background(), request)
+}
+
+// CreateConditionsTemplate
+// 创建告警条件模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateConditionsTemplateWithContext(ctx context.Context, request *CreateConditionsTemplateRequest) (response *CreateConditionsTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateConditionsTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateConditionsTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateConditionsTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateExporterIntegrationRequest() (request *CreateExporterIntegrationRequest) {
     request = &CreateExporterIntegrationRequest{
         BaseRequest: &tchttp.BaseRequest{},

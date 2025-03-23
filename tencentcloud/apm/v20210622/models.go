@@ -1006,11 +1006,11 @@ func (r *DescribeGeneralSpanListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMetricRecordsRequestParams struct {
-	// 指标列表
-	Metrics []*QueryMetricItem `json:"Metrics,omitnil,omitempty" name:"Metrics"`
-
 	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 指标列表
+	Metrics []*QueryMetricItem `json:"Metrics,omitnil,omitempty" name:"Metrics"`
 
 	// 开始时间（单位为秒）
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
@@ -1018,14 +1018,14 @@ type DescribeMetricRecordsRequestParams struct {
 	// 结束时间（单位为秒）
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
+	// 聚合维度
+	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
+
 	// 过滤条件
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// Or 过滤条件
 	OrFilters []*Filter `json:"OrFilters,omitnil,omitempty" name:"OrFilters"`
-
-	// 聚合维度
-	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
 
 	// 排序
 	// 现支持的 Key 有：
@@ -1062,11 +1062,11 @@ type DescribeMetricRecordsRequestParams struct {
 type DescribeMetricRecordsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 指标列表
-	Metrics []*QueryMetricItem `json:"Metrics,omitnil,omitempty" name:"Metrics"`
-
 	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 指标列表
+	Metrics []*QueryMetricItem `json:"Metrics,omitnil,omitempty" name:"Metrics"`
 
 	// 开始时间（单位为秒）
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
@@ -1074,14 +1074,14 @@ type DescribeMetricRecordsRequest struct {
 	// 结束时间（单位为秒）
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
+	// 聚合维度
+	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
+
 	// 过滤条件
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// Or 过滤条件
 	OrFilters []*Filter `json:"OrFilters,omitnil,omitempty" name:"OrFilters"`
-
-	// 聚合维度
-	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
 
 	// 排序
 	// 现支持的 Key 有：
@@ -1127,13 +1127,13 @@ func (r *DescribeMetricRecordsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Metrics")
 	delete(f, "InstanceId")
+	delete(f, "Metrics")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "GroupBy")
 	delete(f, "Filters")
 	delete(f, "OrFilters")
-	delete(f, "GroupBy")
 	delete(f, "OrderBy")
 	delete(f, "BusinessName")
 	delete(f, "Type")
@@ -1183,17 +1183,17 @@ type DescribeServiceOverviewRequestParams struct {
 	// 指标列表
 	Metrics []*QueryMetricItem `json:"Metrics,omitnil,omitempty" name:"Metrics"`
 
-	// 聚合维度
-	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
-
-	// 过滤条件
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-
 	// 开始时间（单位：秒）
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间（单位：秒）
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 聚合维度
+	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序方式
 	// Value 填写：
@@ -1217,17 +1217,17 @@ type DescribeServiceOverviewRequest struct {
 	// 指标列表
 	Metrics []*QueryMetricItem `json:"Metrics,omitnil,omitempty" name:"Metrics"`
 
-	// 聚合维度
-	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
-
-	// 过滤条件
-	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
-
 	// 开始时间（单位：秒）
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间（单位：秒）
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 聚合维度
+	GroupBy []*string `json:"GroupBy,omitnil,omitempty" name:"GroupBy"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序方式
 	// Value 填写：
@@ -1256,10 +1256,10 @@ func (r *DescribeServiceOverviewRequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "Metrics")
-	delete(f, "GroupBy")
-	delete(f, "Filters")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "GroupBy")
+	delete(f, "Filters")
 	delete(f, "OrderBy")
 	delete(f, "Limit")
 	delete(f, "Offset")

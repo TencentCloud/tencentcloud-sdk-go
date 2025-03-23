@@ -1653,6 +1653,126 @@ func (r *CreateAlertRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateConditionsTemplateRequestParams struct {
+	// 固定值，monitor
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 视图名
+	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
+
+	// 组名
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 是否为与关系
+	IsUnionRule *int64 `json:"IsUnionRule,omitnil,omitempty" name:"IsUnionRule"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 父ID
+	ParentGroupID *int64 `json:"ParentGroupID,omitnil,omitempty" name:"ParentGroupID"`
+
+	// 是否屏蔽
+	IsShielded *int64 `json:"IsShielded,omitnil,omitempty" name:"IsShielded"`
+
+	// 复合告警表达式
+	ComplexExpression *string `json:"ComplexExpression,omitnil,omitempty" name:"ComplexExpression"`
+
+	// 指标告警条件
+	Conditions []*ModifyConditionsTemplateRequestCondition `json:"Conditions,omitnil,omitempty" name:"Conditions"`
+
+	// 事件告警条件
+	EventConditions []*ModifyConditionsTemplateRequestEventCondition `json:"EventConditions,omitnil,omitempty" name:"EventConditions"`
+}
+
+type CreateConditionsTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 固定值，monitor
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 视图名
+	ViewName *string `json:"ViewName,omitnil,omitempty" name:"ViewName"`
+
+	// 组名
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 是否为与关系
+	IsUnionRule *int64 `json:"IsUnionRule,omitnil,omitempty" name:"IsUnionRule"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 父ID
+	ParentGroupID *int64 `json:"ParentGroupID,omitnil,omitempty" name:"ParentGroupID"`
+
+	// 是否屏蔽
+	IsShielded *int64 `json:"IsShielded,omitnil,omitempty" name:"IsShielded"`
+
+	// 复合告警表达式
+	ComplexExpression *string `json:"ComplexExpression,omitnil,omitempty" name:"ComplexExpression"`
+
+	// 指标告警条件
+	Conditions []*ModifyConditionsTemplateRequestCondition `json:"Conditions,omitnil,omitempty" name:"Conditions"`
+
+	// 事件告警条件
+	EventConditions []*ModifyConditionsTemplateRequestEventCondition `json:"EventConditions,omitnil,omitempty" name:"EventConditions"`
+}
+
+func (r *CreateConditionsTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConditionsTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "ViewName")
+	delete(f, "GroupName")
+	delete(f, "IsUnionRule")
+	delete(f, "Remark")
+	delete(f, "ParentGroupID")
+	delete(f, "IsShielded")
+	delete(f, "ComplexExpression")
+	delete(f, "Conditions")
+	delete(f, "EventConditions")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConditionsTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateConditionsTemplateResponseParams struct {
+	// 模板策略组ID
+	GroupID *int64 `json:"GroupID,omitnil,omitempty" name:"GroupID"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateConditionsTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateConditionsTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateConditionsTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConditionsTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateExporterIntegrationRequestParams struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -12498,6 +12618,46 @@ func (r *ModifyAlarmReceiversResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyAlarmReceiversResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ModifyConditionsTemplateRequestCondition struct {
+	// 统计周期
+	CalcPeriod *string `json:"CalcPeriod,omitnil,omitempty" name:"CalcPeriod"`
+
+	// 统计方式
+	CalcType *string `json:"CalcType,omitnil,omitempty" name:"CalcType"`
+
+	// 持续周期
+	ContinuePeriod *string `json:"ContinuePeriod,omitnil,omitempty" name:"ContinuePeriod"`
+
+	// 指标ID
+	MetricID *int64 `json:"MetricID,omitnil,omitempty" name:"MetricID"`
+
+	// 统计值
+	CalcValue *string `json:"CalcValue,omitnil,omitempty" name:"CalcValue"`
+
+	// 告警通知周期
+	AlarmNotifyPeriod *string `json:"AlarmNotifyPeriod,omitnil,omitempty" name:"AlarmNotifyPeriod"`
+
+	// 告警通知方式
+	AlarmNotifyType *int64 `json:"AlarmNotifyType,omitnil,omitempty" name:"AlarmNotifyType"`
+
+	// 规则ID
+	RuleID *int64 `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+}
+
+type ModifyConditionsTemplateRequestEventCondition struct {
+	// 告警通知周期
+	AlarmNotifyPeriod *string `json:"AlarmNotifyPeriod,omitnil,omitempty" name:"AlarmNotifyPeriod"`
+
+	// 告警通知方式
+	AlarmNotifyType *string `json:"AlarmNotifyType,omitnil,omitempty" name:"AlarmNotifyType"`
+
+	// 事件ID
+	EventID *string `json:"EventID,omitnil,omitempty" name:"EventID"`
+
+	// 规则ID
+	RuleID *int64 `json:"RuleID,omitnil,omitempty" name:"RuleID"`
 }
 
 // Predefined struct for user

@@ -321,6 +321,7 @@ type Cluster struct {
 	Healthy *int64 `json:"Healthy,omitnil,omitempty" name:"Healthy"`
 
 	// 集群健康信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthyInfo *string `json:"HealthyInfo,omitnil,omitempty" name:"HealthyInfo"`
 
 	// 集群状态，0:创建中，1:正常，2:销毁中，3:已删除，4: 隔离中，5:创建失败，6: 删除失败
@@ -342,53 +343,69 @@ type Cluster struct {
 	MaxStorageCapacity *int64 `json:"MaxStorageCapacity,omitnil,omitempty" name:"MaxStorageCapacity"`
 
 	// 集群版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 公网访问接入点
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicEndPoint *string `json:"PublicEndPoint,omitnil,omitempty" name:"PublicEndPoint"`
 
 	// VPC访问接入点
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcEndPoint *string `json:"VpcEndPoint,omitnil,omitempty" name:"VpcEndPoint"`
 
 	// 命名空间数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceNum *int64 `json:"NamespaceNum,omitnil,omitempty" name:"NamespaceNum"`
 
 	// 已使用存储限制，MB为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedStorageBudget *int64 `json:"UsedStorageBudget,omitnil,omitempty" name:"UsedStorageBudget"`
 
 	// 最大生产消息速率，以条数为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxPublishRateInMessages *int64 `json:"MaxPublishRateInMessages,omitnil,omitempty" name:"MaxPublishRateInMessages"`
 
 	// 最大推送消息速率，以条数为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxDispatchRateInMessages *int64 `json:"MaxDispatchRateInMessages,omitnil,omitempty" name:"MaxDispatchRateInMessages"`
 
 	// 最大生产消息速率，以字节为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxPublishRateInBytes *int64 `json:"MaxPublishRateInBytes,omitnil,omitempty" name:"MaxPublishRateInBytes"`
 
 	// 最大推送消息速率，以字节为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxDispatchRateInBytes *int64 `json:"MaxDispatchRateInBytes,omitnil,omitempty" name:"MaxDispatchRateInBytes"`
 
 	// 已创建主题数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicNum *int64 `json:"TopicNum,omitnil,omitempty" name:"TopicNum"`
 
 	// 最长消息延时，以秒为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxMessageDelayInSeconds *int64 `json:"MaxMessageDelayInSeconds,omitnil,omitempty" name:"MaxMessageDelayInSeconds"`
 
 	// 是否开启公网访问，不填时默认开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicAccessEnabled *bool `json:"PublicAccessEnabled,omitnil,omitempty" name:"PublicAccessEnabled"`
 
 	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 计费模式：
 	// 0: 按量计费
 	// 1: 包年包月
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 项目名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
 
 	// 是否支持升级专业版实例
@@ -638,18 +655,23 @@ type CmqTransactionPolicy struct {
 
 type Consumer struct {
 	// 消费者开始连接的时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConnectedSince *string `json:"ConnectedSince,omitnil,omitempty" name:"ConnectedSince"`
 
 	// 消费者地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumerAddr *string `json:"ConsumerAddr,omitnil,omitempty" name:"ConsumerAddr"`
 
 	// 消费者名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumerName *string `json:"ConsumerName,omitnil,omitempty" name:"ConsumerName"`
 
 	// 消费者版本。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientVersion *string `json:"ClientVersion,omitnil,omitempty" name:"ClientVersion"`
 
 	// 消费者连接的主题分区号
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 }
 
@@ -678,9 +700,11 @@ type ConsumerLog struct {
 
 type ConsumerLogs struct {
 	// 记录数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 消费日志。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumerLogSets []*ConsumerLog `json:"ConsumerLogSets,omitnil,omitempty" name:"ConsumerLogSets"`
 }
 
@@ -720,12 +744,15 @@ type ConsumerStats struct {
 
 type ConsumersSchedule struct {
 	// 当前分区id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Partitions *uint64 `json:"Partitions,omitnil,omitempty" name:"Partitions"`
 
 	// 消息数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	NumberOfEntries *uint64 `json:"NumberOfEntries,omitnil,omitempty" name:"NumberOfEntries"`
 
 	// 消息积压数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgBacklog *uint64 `json:"MsgBacklog,omitnil,omitempty" name:"MsgBacklog"`
 
 	// 消费者每秒分发消息的数量之和。
@@ -735,6 +762,7 @@ type ConsumersSchedule struct {
 	MsgThroughputOut *string `json:"MsgThroughputOut,omitnil,omitempty" name:"MsgThroughputOut"`
 
 	// 超时丢弃比例。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgRateExpired *string `json:"MsgRateExpired,omitnil,omitempty" name:"MsgRateExpired"`
 }
 
@@ -10310,6 +10338,7 @@ type DetailedRolePerm struct {
 
 type DimensionInstance struct {
 	// 实例的维度组合
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Dimensions []*DimensionOpt `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
 }
 
@@ -10346,12 +10375,15 @@ type Environment struct {
 	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
 
 	// Topic数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicNum *int64 `json:"TopicNum,omitnil,omitempty" name:"TopicNum"`
 
 	// 消息保留策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetentionPolicy *RetentionPolicy `json:"RetentionPolicy,omitnil,omitempty" name:"RetentionPolicy"`
 
 	// 是否自动创建订阅
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoSubscriptionCreation *bool `json:"AutoSubscriptionCreation,omitnil,omitempty" name:"AutoSubscriptionCreation"`
 }
 
@@ -10377,9 +10409,12 @@ type EnvironmentRole struct {
 
 type EnvironmentRoleSet struct {
 	// 需要绑定的命名空间Id，不重复且存在资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
 	// 名字空间需要绑定的权限，枚举为 "consume" "produce" 组合，但是不为空
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Permissions []*string `json:"Permissions,omitnil,omitempty" name:"Permissions"`
 }
 
@@ -10764,6 +10799,7 @@ type InstanceNodeDistribution struct {
 	NodePermWipeFlag *bool `json:"NodePermWipeFlag,omitnil,omitempty" name:"NodePermWipeFlag"`
 
 	// 可用区状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneStatus *string `json:"ZoneStatus,omitnil,omitempty" name:"ZoneStatus"`
 }
 
@@ -10823,15 +10859,19 @@ type InternalTenant struct {
 	MaxDispatchTps *uint64 `json:"MaxDispatchTps,omitnil,omitempty" name:"MaxDispatchTps"`
 
 	// 命名空间最大消费带宽，byte为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxDispatchRateInBytes *uint64 `json:"MaxDispatchRateInBytes,omitnil,omitempty" name:"MaxDispatchRateInBytes"`
 
 	// 命名空间最大生产带宽，byte为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxPublishRateInBytes *uint64 `json:"MaxPublishRateInBytes,omitnil,omitempty" name:"MaxPublishRateInBytes"`
 
 	// 消息最大保留空间，MB为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxRetentionSizeInMB *uint64 `json:"MaxRetentionSizeInMB,omitnil,omitempty" name:"MaxRetentionSizeInMB"`
 
 	// public Access Enabled
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicAccessEnabled *bool `json:"PublicAccessEnabled,omitnil,omitempty" name:"PublicAccessEnabled"`
 }
 
@@ -12796,42 +12836,55 @@ type MsgLog struct {
 
 type PartitionsTopic struct {
 	// 最后一次间隔内发布消息的平均byte大小。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AverageMsgSize *string `json:"AverageMsgSize,omitnil,omitempty" name:"AverageMsgSize"`
 
 	// 消费者数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumerCount *string `json:"ConsumerCount,omitnil,omitempty" name:"ConsumerCount"`
 
 	// 被记录下来的消息总数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastConfirmedEntry *string `json:"LastConfirmedEntry,omitnil,omitempty" name:"LastConfirmedEntry"`
 
 	// 最后一个ledger创建的时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastLedgerCreatedTimestamp *string `json:"LastLedgerCreatedTimestamp,omitnil,omitempty" name:"LastLedgerCreatedTimestamp"`
 
 	// 本地和复制的发布者每秒发布消息的速率。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgRateIn *string `json:"MsgRateIn,omitnil,omitempty" name:"MsgRateIn"`
 
 	// 本地和复制的消费者每秒分发消息的数量之和。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgRateOut *string `json:"MsgRateOut,omitnil,omitempty" name:"MsgRateOut"`
 
 	// 本地和复制的发布者每秒发布消息的byte。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgThroughputIn *string `json:"MsgThroughputIn,omitnil,omitempty" name:"MsgThroughputIn"`
 
 	// 本地和复制的消费者每秒分发消息的byte。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgThroughputOut *string `json:"MsgThroughputOut,omitnil,omitempty" name:"MsgThroughputOut"`
 
 	// 被记录下来的消息总数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	NumberOfEntries *string `json:"NumberOfEntries,omitnil,omitempty" name:"NumberOfEntries"`
 
 	// 子分区id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Partitions *int64 `json:"Partitions,omitnil,omitempty" name:"Partitions"`
 
 	// 生产者数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProducerCount *string `json:"ProducerCount,omitnil,omitempty" name:"ProducerCount"`
 
 	// 以byte计算的所有消息存储总量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalSize *string `json:"TotalSize,omitnil,omitempty" name:"TotalSize"`
 
 	// topic类型描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicType *uint64 `json:"TopicType,omitnil,omitempty" name:"TopicType"`
 }
 
@@ -12961,38 +13014,49 @@ func (r *PublishCmqMsgResponse) FromJsonString(s string) error {
 
 type Publisher struct {
 	// 生产者id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProducerId *int64 `json:"ProducerId,omitnil,omitempty" name:"ProducerId"`
 
 	// 生产者名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProducerName *string `json:"ProducerName,omitnil,omitempty" name:"ProducerName"`
 
 	// 生产者地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
 
 	// 客户端版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientVersion *string `json:"ClientVersion,omitnil,omitempty" name:"ClientVersion"`
 
 	// 消息生产速率（条/秒）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgRateIn *float64 `json:"MsgRateIn,omitnil,omitempty" name:"MsgRateIn"`
 
 	// 消息生产吞吐速率（字节/秒）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgThroughputIn *float64 `json:"MsgThroughputIn,omitnil,omitempty" name:"MsgThroughputIn"`
 
 	// 平均消息大小（字节）
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AverageMsgSize *float64 `json:"AverageMsgSize,omitnil,omitempty" name:"AverageMsgSize"`
 
 	// 连接时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConnectedSince *string `json:"ConnectedSince,omitnil,omitempty" name:"ConnectedSince"`
 
 	// 生产者连接的主题分区号
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Partition *int64 `json:"Partition,omitnil,omitempty" name:"Partition"`
 }
 
 type PulsarNetworkAccessPointInfo struct {
 	// vpc的id，支撑网和公网接入点，该字段为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网id，支撑网和公网接入点，该字段为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 接入地址
@@ -13012,21 +13076,27 @@ type PulsarNetworkAccessPointInfo struct {
 	// 2：跨地域访问，已经完成了异地切换，该状态用于源集群的接入点，该状态下的接入点不可删除
 	// 3：跨地域访问，随时可以进行异地访问切回，该状态用于目标集群的接入点，该状态下的接入点不可删除
 	// 4:跨地域访问，目标集群已经完成异地切回，等待删除状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperationType *uint64 `json:"OperationType,omitnil,omitempty" name:"OperationType"`
 
 	// 接入点类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessPointsType *string `json:"AccessPointsType,omitnil,omitempty" name:"AccessPointsType"`
 
 	// 带宽，目前只有公网会有这个值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
 	// 类
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityPolicy []*SecurityPolicy `json:"SecurityPolicy,omitnil,omitempty" name:"SecurityPolicy"`
 
 	// 是否是标准的接入点 true是标准的 false不是标准的
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StandardAccessPoint *bool `json:"StandardAccessPoint,omitnil,omitempty" name:"StandardAccessPoint"`
 
 	// 可用区信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 }
 
@@ -13050,25 +13120,31 @@ type PulsarProClusterInfo struct {
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 节点分布情况
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeDistribution []*InstanceNodeDistribution `json:"NodeDistribution,omitnil,omitempty" name:"NodeDistribution"`
 
 	// 最大储存容量，单位：MB
 	MaxStorage *uint64 `json:"MaxStorage,omitnil,omitempty" name:"MaxStorage"`
 
 	// 是否可以修改路由
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CanEditRoute *bool `json:"CanEditRoute,omitnil,omitempty" name:"CanEditRoute"`
 
 	// 代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingLabelVersion *string `json:"BillingLabelVersion,omitnil,omitempty" name:"BillingLabelVersion"`
 
 	// 实例到期时间戳，毫秒级精度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 是否开启自动创建主题
 	// true就是开启了，false是关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoCreateTopicStatus *bool `json:"AutoCreateTopicStatus,omitnil,omitempty" name:"AutoCreateTopicStatus"`
 
 	// 自动创建主题的默认分区数，如果没开启就是0
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultPartitionNumber *int64 `json:"DefaultPartitionNumber,omitnil,omitempty" name:"DefaultPartitionNumber"`
 
 	// 用户自定义的租户别名，如果没有，会复用专业集群 ID
@@ -13092,10 +13168,12 @@ type PulsarProClusterSpecInfo struct {
 	MaxTopics *uint64 `json:"MaxTopics,omitnil,omitempty" name:"MaxTopics"`
 
 	// 规格外弹性TPS
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScalableTps *uint64 `json:"ScalableTps,omitnil,omitempty" name:"ScalableTps"`
 
 	// 32或者128
 	// 当前集群topic的最大分区数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxPartitions *uint64 `json:"MaxPartitions,omitnil,omitempty" name:"MaxPartitions"`
 
 	// 商品最大延迟消息数量。0代表没有限制	
@@ -13134,30 +13212,37 @@ type PulsarProInstance struct {
 	PayMode *uint64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 备注信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 实例配置ID
 	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
 
 	// 规格外弹性TPS
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScalableTps *uint64 `json:"ScalableTps,omitnil,omitempty" name:"ScalableTps"`
 
 	// VPC的id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 峰值带宽。单位：mbps
 	MaxBandWidth *uint64 `json:"MaxBandWidth,omitnil,omitempty" name:"MaxBandWidth"`
 
 	// 集群的标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 集群创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingLabelVersion *string `json:"BillingLabelVersion,omitnil,omitempty" name:"BillingLabelVersion"`
 
 	// 自定义租户
@@ -14874,12 +14959,16 @@ type Role struct {
 
 type SecurityPolicy struct {
 	// ip或者网段
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Route *string `json:"Route,omitnil,omitempty" name:"Route"`
 
 	// 策略 true就是允许，白名单或者 false 拒绝 黑名单
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Policy *bool `json:"Policy,omitnil,omitempty" name:"Policy"`
 
 	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
@@ -15456,57 +15545,75 @@ type Subscription struct {
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
 	// 消费者开始连接的时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConnectedSince *string `json:"ConnectedSince,omitnil,omitempty" name:"ConnectedSince"`
 
 	// 消费者地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumerAddr *string `json:"ConsumerAddr,omitnil,omitempty" name:"ConsumerAddr"`
 
 	// 消费者数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumerCount *string `json:"ConsumerCount,omitnil,omitempty" name:"ConsumerCount"`
 
 	// 消费者名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumerName *string `json:"ConsumerName,omitnil,omitempty" name:"ConsumerName"`
 
 	// 堆积的消息数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgBacklog *string `json:"MsgBacklog,omitnil,omitempty" name:"MsgBacklog"`
 
 	// 于TTL，此订阅下没有被发送而是被丢弃的比例。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgRateExpired *string `json:"MsgRateExpired,omitnil,omitempty" name:"MsgRateExpired"`
 
 	// 消费者每秒分发消息的数量之和。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgRateOut *string `json:"MsgRateOut,omitnil,omitempty" name:"MsgRateOut"`
 
 	// 消费者每秒消息的byte。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgThroughputOut *string `json:"MsgThroughputOut,omitnil,omitempty" name:"MsgThroughputOut"`
 
 	// 订阅名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubscriptionName *string `json:"SubscriptionName,omitnil,omitempty" name:"SubscriptionName"`
 
 	// 消费者集合。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumerSets []*Consumer `json:"ConsumerSets,omitnil,omitempty" name:"ConsumerSets"`
 
 	// 是否在线。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsOnline *bool `json:"IsOnline,omitnil,omitempty" name:"IsOnline"`
 
 	// 消费进度集合。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumersScheduleSets []*ConsumersSchedule `json:"ConsumersScheduleSets,omitnil,omitempty" name:"ConsumersScheduleSets"`
 
 	// 备注。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 最近修改时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 订阅类型，Exclusive，Shared，Failover， Key_Shared，空或NULL表示未知，
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubType *string `json:"SubType,omitnil,omitempty" name:"SubType"`
 
 	// 是否由于未 ack 数到达上限而被 block
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlockedSubscriptionOnUnackedMsgs *bool `json:"BlockedSubscriptionOnUnackedMsgs,omitnil,omitempty" name:"BlockedSubscriptionOnUnackedMsgs"`
 
 	// 未 ack 消息数上限
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxUnackedMsgNum *int64 `json:"MaxUnackedMsgNum,omitnil,omitempty" name:"MaxUnackedMsgNum"`
 }
 
@@ -15523,50 +15630,65 @@ type SubscriptionTopic struct {
 
 type Tag struct {
 	// 标签的key的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 标签的Value的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 type Topic struct {
 	// 最后一次间隔内发布消息的平均byte大小。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AverageMsgSize *string `json:"AverageMsgSize,omitnil,omitempty" name:"AverageMsgSize"`
 
 	// 消费者数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumerCount *string `json:"ConsumerCount,omitnil,omitempty" name:"ConsumerCount"`
 
 	// 被记录下来的消息总数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastConfirmedEntry *string `json:"LastConfirmedEntry,omitnil,omitempty" name:"LastConfirmedEntry"`
 
 	// 最后一个ledger创建的时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastLedgerCreatedTimestamp *string `json:"LastLedgerCreatedTimestamp,omitnil,omitempty" name:"LastLedgerCreatedTimestamp"`
 
 	// 本地和复制的发布者每秒发布消息的速率。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgRateIn *string `json:"MsgRateIn,omitnil,omitempty" name:"MsgRateIn"`
 
 	// 本地和复制的消费者每秒分发消息的数量之和。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgRateOut *string `json:"MsgRateOut,omitnil,omitempty" name:"MsgRateOut"`
 
 	// 本地和复制的发布者每秒发布消息的byte。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgThroughputIn *string `json:"MsgThroughputIn,omitnil,omitempty" name:"MsgThroughputIn"`
 
 	// 本地和复制的消费者每秒分发消息的byte。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgThroughputOut *string `json:"MsgThroughputOut,omitnil,omitempty" name:"MsgThroughputOut"`
 
 	// 被记录下来的消息总数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	NumberOfEntries *string `json:"NumberOfEntries,omitnil,omitempty" name:"NumberOfEntries"`
 
 	// 分区数<=0：topic下无子分区。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Partitions *int64 `json:"Partitions,omitnil,omitempty" name:"Partitions"`
 
 	// 生产者数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProducerCount *string `json:"ProducerCount,omitnil,omitempty" name:"ProducerCount"`
 
 	// 以byte计算的所有消息存储总量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalSize *string `json:"TotalSize,omitnil,omitempty" name:"TotalSize"`
 
 	// 分区topic里面的子分区。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubTopicSets []*PartitionsTopic `json:"SubTopicSets,omitnil,omitempty" name:"SubTopicSets"`
 
 	// topic类型描述：
@@ -15576,36 +15698,47 @@ type Topic struct {
 	// 3：重试队列；
 	// 4：死信队列；
 	// 5：事务消息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicType *uint64 `json:"TopicType,omitnil,omitempty" name:"TopicType"`
 
 	// 环境（命名空间）名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
 
 	// 主题名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 说明，128个字符以内。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 最近修改时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 生产者上限。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProducerLimit *string `json:"ProducerLimit,omitnil,omitempty" name:"ProducerLimit"`
 
 	// 消费者上限。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumerLimit *string `json:"ConsumerLimit,omitnil,omitempty" name:"ConsumerLimit"`
 
 	// 0: 非持久非分区
 	// 1: 非持久分区
 	// 2: 持久非分区
 	// 3: 持久分区
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PulsarTopicType *int64 `json:"PulsarTopicType,omitnil,omitempty" name:"PulsarTopicType"`
 
 	// 未消费消息过期时间，单位：秒
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgTTL *uint64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
 
 	// 集群 ID
@@ -15651,12 +15784,14 @@ type TopicStats struct {
 
 type Topic_Simplification struct {
 	// 主题名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 0: 非持久非分区
 	// 1: 非持久分区
 	// 2: 持久非分区
 	// 3: 持久分区
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	PulsarTopicType *int64 `json:"PulsarTopicType,omitnil,omitempty" name:"PulsarTopicType"`
 }
 
@@ -15836,6 +15971,7 @@ type VpcBindRecord struct {
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 说明，128个字符以内
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 

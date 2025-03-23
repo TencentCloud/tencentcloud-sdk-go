@@ -5047,7 +5047,7 @@ func NewResizeDataDisksResponse() (response *ResizeDataDisksResponse) {
 }
 
 // ResizeDataDisks
-// 云盘扩容
+// 云数据盘扩容
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INVALIDDISKSIZE = "InvalidParameter.InvalidDiskSize"
@@ -5058,7 +5058,7 @@ func (c *Client) ResizeDataDisks(request *ResizeDataDisksRequest) (response *Res
 }
 
 // ResizeDataDisks
-// 云盘扩容
+// 云数据盘扩容
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INVALIDDISKSIZE = "InvalidParameter.InvalidDiskSize"

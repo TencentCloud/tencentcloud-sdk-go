@@ -9638,67 +9638,6 @@ func (r *RenameDocResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type ResetSessionRequestParams struct {
-	// 会话ID
-	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
-
-	// 是否仅清空会话关联
-	IsOnlyEmptyTheDialog *bool `json:"IsOnlyEmptyTheDialog,omitnil,omitempty" name:"IsOnlyEmptyTheDialog"`
-}
-
-type ResetSessionRequest struct {
-	*tchttp.BaseRequest
-	
-	// 会话ID
-	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
-
-	// 是否仅清空会话关联
-	IsOnlyEmptyTheDialog *bool `json:"IsOnlyEmptyTheDialog,omitnil,omitempty" name:"IsOnlyEmptyTheDialog"`
-}
-
-func (r *ResetSessionRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ResetSessionRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "SessionId")
-	delete(f, "IsOnlyEmptyTheDialog")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetSessionRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ResetSessionResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type ResetSessionResponse struct {
-	*tchttp.BaseResponse
-	Response *ResetSessionResponseParams `json:"Response"`
-}
-
-func (r *ResetSessionResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ResetSessionResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type RetryDocAuditRequestParams struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
