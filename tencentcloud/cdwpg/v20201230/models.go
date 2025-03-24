@@ -1033,38 +1033,38 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSimpleInstancesRequestParams struct {
-	// 11
+	// 用集群id搜索
 	SearchInstanceId *string `json:"SearchInstanceId,omitnil,omitempty" name:"SearchInstanceId"`
 
-	// 11
+	// 用集群名字搜索
 	SearchInstanceName *string `json:"SearchInstanceName,omitnil,omitempty" name:"SearchInstanceName"`
 
-	// 11
+	// 分页参数，第一页为0，第二页为10
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 11
+	// 分页参数，分页步长，默认为10
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 11
+	// 用标签列表搜索
 	SearchTags []*string `json:"SearchTags,omitnil,omitempty" name:"SearchTags"`
 }
 
 type DescribeSimpleInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 11
+	// 用集群id搜索
 	SearchInstanceId *string `json:"SearchInstanceId,omitnil,omitempty" name:"SearchInstanceId"`
 
-	// 11
+	// 用集群名字搜索
 	SearchInstanceName *string `json:"SearchInstanceName,omitnil,omitempty" name:"SearchInstanceName"`
 
-	// 11
+	// 分页参数，第一页为0，第二页为10
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 11
+	// 分页参数，分页步长，默认为10
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 11
+	// 用标签列表搜索
 	SearchTags []*string `json:"SearchTags,omitnil,omitempty" name:"SearchTags"`
 }
 
@@ -1093,15 +1093,15 @@ func (r *DescribeSimpleInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSimpleInstancesResponseParams struct {
-	// 1
+	// 集群列表总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 1
+	// 集群列表详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstancesList []*InstanceSimpleInfoNew `json:"InstancesList,omitnil,omitempty" name:"InstancesList"`
 
-	// -
+	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
@@ -1672,71 +1672,71 @@ type InstanceOperation struct {
 }
 
 type InstanceSimpleInfoNew struct {
-	// 1
+	// ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 1
+	// 集群Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 1
+	// 集群名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 1
+	// 内核版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 1
+	// 地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 1
+	// 地域Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 1
+	// 地域详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionDesc *string `json:"RegionDesc,omitnil,omitempty" name:"RegionDesc"`
 
-	// 1
+	// 地区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 1
+	// 地区id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 1
+	// 地区详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneDesc *string `json:"ZoneDesc,omitnil,omitempty" name:"ZoneDesc"`
 
-	// 1
+	// 私有网络
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 1
+	// 子网
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 1
+	// 开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 1
+	// 过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 1
+	// 访问地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessInfo *string `json:"AccessInfo,omitnil,omitempty" name:"AccessInfo"`
 
-	// 1
+	// 计费方式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 1
+	// 自动续费
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *bool `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
@@ -2201,7 +2201,7 @@ type ResourceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskSpec *CBSSpecInfo `json:"DiskSpec,omitnil,omitempty" name:"DiskSpec"`
 
-	// 资源类型，DATA
+	// 节点类型，cn 或dn
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
@@ -2462,67 +2462,67 @@ type SearchTags struct {
 }
 
 type SimpleInstanceInfo struct {
-	// 1
+	// ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 1
+	// 集群Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 1
+	// 集群名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 1
+	// 内核版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 1
+	// 地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 1
+	// 地区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 1
+	// 私有网络
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserVPCID *string `json:"UserVPCID,omitnil,omitempty" name:"UserVPCID"`
 
-	// 1
+	// 子网
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserSubnetID *string `json:"UserSubnetID,omitnil,omitempty" name:"UserSubnetID"`
 
-	// 1
+	// 开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 1
+	// 到期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 1
+	// 访问地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessInfo *string `json:"AccessInfo,omitnil,omitempty" name:"AccessInfo"`
 
-	// 1
+	// 自动续费开关，0为不自动续费，1为自动续费
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 1
+	// 计费方式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeProperties *ChargeProperties `json:"ChargeProperties,omitnil,omitempty" name:"ChargeProperties"`
 
-	// 1
+	// 资源集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resources []*ResourceInfo `json:"Resources,omitnil,omitempty" name:"Resources"`
 
-	// 1
+	// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 1
+	// 集群状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }

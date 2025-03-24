@@ -22,12 +22,27 @@ import (
 
 // Predefined struct for user
 type AddProjectUserRoleRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
+	// 用户uin
+	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
+
+	// 角色id
+	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
 }
 
 type AddProjectUserRoleRequest struct {
 	*tchttp.BaseRequest
 	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 用户uin
+	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
+
+	// 角色id
+	RoleIds []*string `json:"RoleIds,omitnil,omitempty" name:"RoleIds"`
 }
 
 func (r *AddProjectUserRoleRequest) ToJsonString() string {
@@ -42,7 +57,9 @@ func (r *AddProjectUserRoleRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ProjectId")
+	delete(f, "UserIds")
+	delete(f, "RoleIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddProjectUserRoleRequest has unknown keys!", "")
 	}
@@ -51,6 +68,9 @@ func (r *AddProjectUserRoleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddProjectUserRoleResponseParams struct {
+	// 返回数据
+	Data *bool `json:"Data,omitnil,omitempty" name:"Data"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -481,6 +501,10 @@ type AlarmReceiverInfo struct {
 	// 飞书群，0：未设置，1：成功，2：失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LarkGroup *uint64 `json:"LarkGroup,omitnil,omitempty" name:"LarkGroup"`
+
+	// 发送结果 大json格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmMessageSendResult *string `json:"AlarmMessageSendResult,omitnil,omitempty" name:"AlarmMessageSendResult"`
 }
 
 type Apply struct {
@@ -31068,6 +31092,10 @@ type TaskAlarmInfo struct {
 	// 业务类型, 0-非默认, 1-默认
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessType *int64 `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
+
+	// alarm message rule
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmMessageRule *string `json:"AlarmMessageRule,omitnil,omitempty" name:"AlarmMessageRule"`
 }
 
 type TaskByCycle struct {

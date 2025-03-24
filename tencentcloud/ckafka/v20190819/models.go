@@ -190,7 +190,6 @@ func (r *AuthorizeTokenRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AuthorizeTokenResponseParams struct {
 	// 0 成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *int64 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -569,7 +568,6 @@ func (r *CancelAuthorizationTokenRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CancelAuthorizationTokenResponseParams struct {
 	// 0 成功 非0 失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *int64 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -632,7 +630,6 @@ func (r *CheckCdcClusterRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CheckCdcClusterResponseParams struct {
 	// 返回结果状态Success
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -678,6 +675,7 @@ type ClickHouseConnectParam struct {
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
 	// 是否更新到关联的Datahub任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUpdate *bool `json:"IsUpdate,omitnil,omitempty" name:"IsUpdate"`
 }
 
@@ -939,15 +937,18 @@ type ConsumerRecord struct {
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 消息key
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 消息value
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 消息时间戳
 	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
 	// 消息headers
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Headers *string `json:"Headers,omitnil,omitempty" name:"Headers"`
 }
 
@@ -2671,7 +2672,6 @@ func (r *CreateTokenRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateTokenResponseParams struct {
 	// token串
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3479,7 +3479,6 @@ func (r *DeleteDatahubTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDatahubTaskResponseParams struct {
 	// 操作结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *DatahubTaskIdRes `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4575,7 +4574,6 @@ type DescribeConnectResourceResp struct {
 // Predefined struct for user
 type DescribeConnectResourceResponseParams struct {
 	// 连接源的Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *DescribeConnectResourceResp `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5241,7 +5239,6 @@ type DescribeDatahubTopicsResp struct {
 // Predefined struct for user
 type DescribeDatahubTopicsResponseParams struct {
 	// 主题列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *DescribeDatahubTopicsResp `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5314,7 +5311,6 @@ func (r *DescribeGroupInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeGroupInfoResponseParams struct {
 	// 返回的结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result []*GroupInfoResponse `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5903,7 +5899,6 @@ func (r *DescribeRegionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRegionResponseParams struct {
 	// 返回地域枚举结果列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result []*Region `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6429,7 +6424,6 @@ func (r *DescribeTopicRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTopicResponseParams struct {
 	// 返回的结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TopicResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8203,7 +8197,6 @@ func (r *InstanceScalingDownRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type InstanceScalingDownResponseParams struct {
 	// 返回结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ScalingDownResp `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8710,7 +8703,6 @@ func (r *ModifyDatahubTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDatahubTaskResponseParams struct {
 	// 任务id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *DatahubTaskIdRes `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

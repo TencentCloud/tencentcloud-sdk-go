@@ -1100,19 +1100,15 @@ type ClusterCondition struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 最后一次探测到该状态的时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastProbeTime *string `json:"LastProbeTime,omitnil,omitempty" name:"LastProbeTime"`
 
 	// 最后一次转换到该过程的时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastTransitionTime *string `json:"LastTransitionTime,omitnil,omitempty" name:"LastTransitionTime"`
 
 	// 转换到该过程的简明原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 转换到该过程的更多信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }
 
@@ -1144,7 +1140,6 @@ type ClusterExtraArgs struct {
 
 type ClusterInternalLB struct {
 	// 是否开启内网访问LB
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
 	// 内网访问LB关联的子网Id
@@ -1266,23 +1261,18 @@ type ClusterProperty struct {
 
 type ClusterPublicLB struct {
 	// 是否开启公网访问LB
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
 	// 允许访问的来源CIDR列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowFromCidrs []*string `json:"AllowFromCidrs,omitnil,omitempty" name:"AllowFromCidrs"`
 
 	// 安全策略放通单个IP或CIDR(例如: "192.168.1.0/24",默认为拒绝所有)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityPolicies []*string `json:"SecurityPolicies,omitnil,omitempty" name:"SecurityPolicies"`
 
 	// 外网访问相关的扩展参数，格式为json
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraParam *string `json:"ExtraParam,omitnil,omitempty" name:"ExtraParam"`
 
 	// 新内外网功能，需要传递安全组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroup *string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 }
 
@@ -3270,7 +3260,6 @@ func (r *CreateEksLogConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateEksLogConfigResponseParams struct {
 	// 日志采集topicid
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -17656,15 +17645,12 @@ type OIDCConfigAuthenticationOptions struct {
 
 type OpenConstraintInfo struct {
 	// 策略实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 策略实例关联事件数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventNums *uint64 `json:"EventNums,omitnil,omitempty" name:"EventNums"`
 
 	// 实例yaml详情base64编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	YamlDetail *string `json:"YamlDetail,omitnil,omitempty" name:"YamlDetail"`
 }
 

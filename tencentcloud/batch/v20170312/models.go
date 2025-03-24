@@ -2149,10 +2149,10 @@ type EnvData struct {
 }
 
 type EnvDataCpm struct {
-	// 黑石可用区名称列表。如ap-guangzhou-bls-1, 可通过黑石接口[DescribeRegions]( https://cloud.tencent.com/document/api/386/33564)接口获取。不是Batch可用区名称。目前仅支持一个可用区名称。
+	// 黑石可用区名称列表。如ap-guangzhou-bls-1。不是Batch可用区名称。目前仅支持一个可用区名称。
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 
-	// 购买的机型ID。通过黑石接口[DescribeDeviceClass]( https://cloud.tencent.com/document/api/386/32911)查询设备型号，获取机型信息。
+	// 购买的机型ID。
 	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 
 	// 购买时长单位，取值：m(月)。
@@ -2161,7 +2161,7 @@ type EnvDataCpm struct {
 	// 购买时长。
 	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// RAID类型ID。通过黑石接口[DescribeDeviceClassPartition]( https://cloud.tencent.com/document/api/386/32910)查询机型RAID方式以及系统盘大小，获取RAID信息。
+	// RAID类型ID。
 	RaidId *int64 `json:"RaidId,omitnil,omitempty" name:"RaidId"`
 
 	// 部署服务器的操作系统ID。通过批量计算接口DescribeCpmOsInfo查询操作系统信息。
@@ -2200,7 +2200,7 @@ type EnvDataCpm struct {
 	// 自定义镜像ID，取值生效时用自定义镜像部署物理机。
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
-	// 系统盘根分区大小，单位为G，默认取值10G。通过黑石接口[DescribeDeviceClassPartition]( https://cloud.tencent.com/document/api/386/32910)查询机型RAID方式以及系统盘大小，获取根分区信息。
+	// 系统盘根分区大小，单位为G，默认取值10G。
 	SysRootSpace *int64 `json:"SysRootSpace,omitnil,omitempty" name:"SysRootSpace"`
 
 	// /data分区大小，单位为G。如果系统盘还有剩余大小，会分配给/data分区。（特殊情况：如果剩余空间不足10G，并且没有指定/data分区，则剩余空间会分配给Root分区）。

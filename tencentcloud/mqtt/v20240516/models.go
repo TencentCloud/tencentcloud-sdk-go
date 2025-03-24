@@ -2399,16 +2399,16 @@ func (r *DescribeInsVPCEndpointsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceListRequestParams struct {
-	// 查询条件列表,支持以下子弹
+	// 查询条件列表,支持以下字段
 	// InstanceName：集群名模糊搜索
 	// InstanceId：集群id精确搜索
-	// InstanceStatus：集群状态搜索
+	// InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，MODIFYING-变配中，DELETING-删除中）
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 查询起始位置
+	// 查询起始位置，默认0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询结果限制数量
+	// 查询结果限制数量，默认20，最大100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 标签过滤器
@@ -2418,16 +2418,16 @@ type DescribeInstanceListRequestParams struct {
 type DescribeInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询条件列表,支持以下子弹
+	// 查询条件列表,支持以下字段
 	// InstanceName：集群名模糊搜索
 	// InstanceId：集群id精确搜索
-	// InstanceStatus：集群状态搜索
+	// InstanceStatus：集群状态搜索（RUNNING-运行中，CREATING-创建中，MODIFYING-变配中，DELETING-删除中）
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 查询起始位置
+	// 查询起始位置，默认0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询结果限制数量
+	// 查询结果限制数量，默认20，最大100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 标签过滤器
@@ -2839,7 +2839,7 @@ func (r *DescribeSharedSubscriptionLagResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicListRequestParams struct {
-	// 实例ID
+	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 查询条件列表:
@@ -2856,7 +2856,7 @@ type DescribeTopicListRequestParams struct {
 type DescribeTopicListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 查询条件列表:
@@ -3249,8 +3249,7 @@ type MQTTInstanceItem struct {
 	// 实例版本
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 实例类型，
-	// EXPERIMENT，体验版
+	// 实例类型
 	// BASIC，基础版
 	// PRO，专业版
 	// PLATINUM，铂金版
@@ -3284,7 +3283,7 @@ type MQTTInstanceItem struct {
 	// 弹性TPS限流值
 	TpsLimit *int64 `json:"TpsLimit,omitnil,omitempty" name:"TpsLimit"`
 
-	// 创建时间
+	// 创建时间，毫秒级时间戳
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 单客户端最大订阅数量
@@ -3293,16 +3292,18 @@ type MQTTInstanceItem struct {
 	// 客户端连接数上线
 	ClientNumLimit *int64 `json:"ClientNumLimit,omitnil,omitempty" name:"ClientNumLimit"`
 
-	// 是否自动续费
+	// 是否自动续费。仅包年包月就去那生效。
+	// 1:自动续费
+	// 0:非自动续费
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 计费模式， POSTPAID，按量计费 PREPAID，包年包月
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 到期时间，秒为单位
+	// 到期时间，毫秒级时间戳
 	ExpiryTime *int64 `json:"ExpiryTime,omitnil,omitempty" name:"ExpiryTime"`
 
-	// 预销毁时间
+	// 预销毁时间，毫秒级时间戳
 	DestroyTime *int64 `json:"DestroyTime,omitnil,omitempty" name:"DestroyTime"`
 
 	// 授权规则条数限制

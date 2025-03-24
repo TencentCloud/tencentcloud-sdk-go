@@ -1734,7 +1734,6 @@ type QueueConfigOverview struct {
 
 type QueueOverview struct {
 	// 队列名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 }
 

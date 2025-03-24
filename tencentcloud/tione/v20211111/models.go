@@ -3849,6 +3849,14 @@ type GooseFS struct {
 	NameSpace *string `json:"NameSpace,omitnil,omitempty" name:"NameSpace"`
 }
 
+type GooseFSx struct {
+	// goosefsx实例id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// GooseFSx实例需要挂载的路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+}
+
 type GpuDetail struct {
 	// GPU 显卡类型；枚举值: V100 A100 T4
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4418,6 +4426,9 @@ type ModelInfo struct {
 
 	// cos路径信息
 	CosPathInfo *CosPathInfo `json:"CosPathInfo,omitnil,omitempty" name:"CosPathInfo"`
+
+	// GooseFSx的配置，ModelSource为GooseFSx时有效
+	GooseFSx *GooseFSx `json:"GooseFSx,omitnil,omitempty" name:"GooseFSx"`
 
 	// 模型对应的算法框架，预留
 	// 注意：此字段可能返回 null，表示取不到有效值。

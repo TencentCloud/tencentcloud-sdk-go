@@ -3434,7 +3434,6 @@ type DomainBaseInfo struct {
 	RealNameAuditStatus *string `json:"RealNameAuditStatus,omitnil,omitempty" name:"RealNameAuditStatus"`
 
 	// 域名实名认证不通过原因。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealNameAuditUnpassReason *string `json:"RealNameAuditUnpassReason,omitnil,omitempty" name:"RealNameAuditUnpassReason"`
 
 	// 域名命名审核状态。

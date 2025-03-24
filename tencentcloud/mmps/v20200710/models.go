@@ -988,15 +988,12 @@ type DescribeFlySecMiniAppScanTaskParamResponseParams struct {
 	Mode *int64 `json:"Mode,omitnil,omitempty" name:"Mode"`
 
 	// 小程序测试账号(自有账号体系需提供,其他情况不需要)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MiniAppTestAccount *string `json:"MiniAppTestAccount,omitnil,omitempty" name:"MiniAppTestAccount"`
 
 	// 小程序测试密码(自有账号体系需提供,其他情况不需要)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MiniAppTestPwd *string `json:"MiniAppTestPwd,omitnil,omitempty" name:"MiniAppTestPwd"`
 
 	// 诊断扫描版本 0:正式版 1:体验版
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanVersion *int64 `json:"ScanVersion,omitnil,omitempty" name:"ScanVersion"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

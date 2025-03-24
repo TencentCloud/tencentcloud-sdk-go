@@ -1928,15 +1928,12 @@ func (r *DetachNodesResponse) FromJsonString(s string) error {
 
 type EnhancedService struct {
 	// 开启云安全服务。若不指定该参数，则默认开启云安全服务。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityService *RunSecurityServiceEnabled `json:"SecurityService,omitnil,omitempty" name:"SecurityService"`
 
 	// 开启腾讯云可观测平台服务。若不指定该参数，则默认开启腾讯云可观测平台服务。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorService *RunMonitorServiceEnabled `json:"MonitorService,omitnil,omitempty" name:"MonitorService"`
 
 	// 开启云自动化助手服务（TencentCloud Automation Tools，TAT）。若不指定该参数，默认开启云自动化助手服务。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutomationService *RunAutomationServiceEnabled `json:"AutomationService,omitnil,omitempty" name:"AutomationService"`
 }
 
@@ -2322,16 +2319,17 @@ type NodeOverview struct {
 	// thpc集群节点id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// 节点的工作状态
+	NodeAllocateState *string `json:"NodeAllocateState,omitnil,omitempty" name:"NodeAllocateState"`
 }
 
 type NodeScript struct {
 	// 节点执行脚本获取地址。
 	// 目前仅支持cos地址。地址最大长度：255。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScriptPath *string `json:"ScriptPath,omitnil,omitempty" name:"ScriptPath"`
 
 	// 脚本执行超时时间（包含拉取脚本的时间）。单位秒，默认值：30。取值范围：10～1200。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 }
 
@@ -2421,7 +2419,6 @@ type QueueConfigOverview struct {
 	ExpansionNodeConfigs []*ExpansionNodeConfigOverview `json:"ExpansionNodeConfigs,omitnil,omitempty" name:"ExpansionNodeConfigs"`
 
 	// 队列中期望的空闲节点数量（包含弹性节点和静态节点）。默认值：0。队列中，处于空闲状态的节点小于此值，集群会扩容弹性节点；处于空闲状态的节点大于此值，集群会缩容弹性节点。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DesiredIdleNodeCapacity *int64 `json:"DesiredIdleNodeCapacity,omitnil,omitempty" name:"DesiredIdleNodeCapacity"`
 
 	// 队列中期望的总节点数。
@@ -2429,17 +2426,14 @@ type QueueConfigOverview struct {
 
 	// 扩容比例。默认值：100。取值范围：1～100。
 	// 如果扩容比例为50，那么每轮只会扩容当前作业负载所需的50%数量的节点。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScaleOutRatio *int64 `json:"ScaleOutRatio,omitnil,omitempty" name:"ScaleOutRatio"`
 
 	// 比例扩容阈值。默认值：0。取值范围：0～200。
 	// 当作业负载需要扩容节点数量大于此值，当前扩容轮次按照ScaleOutRatio配置的的比例进行扩容。当作业负载需要扩容节点数量小于此值，当前扩容轮次扩容当前作业负载所需数量的节点。
 	// 此参数配合ScaleOutRatio参数进行使用，用于比例扩容场景下，在作业负载所需节点数量较小时，加快收敛速度。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScaleOutNodeThreshold *int64 `json:"ScaleOutNodeThreshold,omitnil,omitempty" name:"ScaleOutNodeThreshold"`
 
 	// 每轮扩容最大节点个数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxNodesPerCycle *int64 `json:"MaxNodesPerCycle,omitnil,omitempty" name:"MaxNodesPerCycle"`
 
 	// 扩容过程中，作业的内存在匹配实例机型时增大比例（不会影响作业提交的内存大小，只影响匹配计算过程）。<br/>
@@ -2447,13 +2441,11 @@ type QueueConfigOverview struct {
 	// 
 	// - 当ScaleUpMemRatio=0时，会匹配到16GB内存规格的实例,但是由于操作系统内的可用内存为14.9GB小于作业所需的15GB，扩容出来的实例作业无法运行起来。
 	// - 当ScaleUpMemRatio=10时，匹配实例规格会按照15*(1+10%)=16.5GB来进行实例规格匹配，则不会匹配到16GB的实例，而是更大内存规格的实例来保证作业能够被运行起来。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScaleUpMemRatio *int64 `json:"ScaleUpMemRatio,omitnil,omitempty" name:"ScaleUpMemRatio"`
 }
 
 type QueueOverview struct {
 	// 队列名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 }
 
@@ -2464,7 +2456,6 @@ type RunAutomationServiceEnabled struct {
 
 type RunMonitorServiceEnabled struct {
 	// 是否开启[腾讯云可观测平台](/document/product/248)服务。取值范围：<br><li>TRUE：表示开启腾讯云可观测平台服务</li><br><li>FALSE：表示不开启腾讯云可观测平台服务</li><br><br>默认取值：TRUE。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 }
 
@@ -2730,11 +2721,9 @@ type SpaceInternetAccessible struct {
 
 type SpacePlacement struct {
 	// 可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 项目，默认是0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -2812,11 +2801,9 @@ type Tag struct {
 
 type TagSpecification struct {
 	// 标签绑定的资源类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 标签对列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 

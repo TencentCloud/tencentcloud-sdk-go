@@ -4829,9 +4829,9 @@ func NewSaveDocResponse() (response *SaveDocResponse) {
 //
 // 将文件存储到应用的知识库内需要三步：
 //
-// 1.获取临时密钥，参考[接口文档](https://cloud.tencent.com/document/product/1759/105050)。
+// 1.获取临时密钥，参考[接口文档](https://cloud.tencent.com/document/product/1759/105050)。获取临时密钥不同参数组合权限不一样，可参考 [知识引擎操作 cos 指南](https://cloud.tencent.com/document/product/1759/116238)
 //
-// 2.调用腾讯云提供的 cos 存储接口，将文件存储到知识引擎 cos 中：参考[PUT Objectufeff](https://cloud.tencent.com/document/product/436/7749)
+// 2.调用腾讯云提供的 cos 存储接口，将文件存储到知识引擎 cos 中：具体可参考[ COS SDK 概览](https://cloud.tencent.com/document/product/436/6474), 注意使用的是临时密钥的方式操作 COS 
 //
 // 3.调用本接口，将文件的基础信息存储到知识引擎中。
 //
@@ -4848,9 +4848,9 @@ func (c *Client) SaveDoc(request *SaveDocRequest) (response *SaveDocResponse, er
 //
 // 将文件存储到应用的知识库内需要三步：
 //
-// 1.获取临时密钥，参考[接口文档](https://cloud.tencent.com/document/product/1759/105050)。
+// 1.获取临时密钥，参考[接口文档](https://cloud.tencent.com/document/product/1759/105050)。获取临时密钥不同参数组合权限不一样，可参考 [知识引擎操作 cos 指南](https://cloud.tencent.com/document/product/1759/116238)
 //
-// 2.调用腾讯云提供的 cos 存储接口，将文件存储到知识引擎 cos 中：参考[PUT Objectufeff](https://cloud.tencent.com/document/product/436/7749)
+// 2.调用腾讯云提供的 cos 存储接口，将文件存储到知识引擎 cos 中：具体可参考[ COS SDK 概览](https://cloud.tencent.com/document/product/436/6474), 注意使用的是临时密钥的方式操作 COS 
 //
 // 3.调用本接口，将文件的基础信息存储到知识引擎中。
 //

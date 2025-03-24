@@ -8275,6 +8275,12 @@ type CreateFlowOption struct {
 	// **false**：（默认）不允许
 	CanSkipAddApprover *bool `json:"CanSkipAddApprover,omitnil,omitempty" name:"CanSkipAddApprover"`
 
+	// 是否可以编辑签署人包括新增，修改，删除 
+	// <ul><li>（默认） false -可以编辑签署人</li> <li> true - 可以编辑签署人</li></ul>
+	// 
+	// 注意：如果设置参数为 false， 则 参数签署人 [FlowApproverList](https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlow) 不能为空
+	ForbidEditApprover *bool `json:"ForbidEditApprover,omitnil,omitempty" name:"ForbidEditApprover"`
+
 	// 定制化发起合同弹窗的描述信息，长度不能超过500，只能由中文、字母、数字和标点组成。
 	CustomCreateFlowDescription *string `json:"CustomCreateFlowDescription,omitnil,omitempty" name:"CustomCreateFlowDescription"`
 

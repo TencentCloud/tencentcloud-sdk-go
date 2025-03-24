@@ -507,7 +507,6 @@ func (r *DescribeRegionsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRegionsResponseParams struct {
 	// 地域列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionSet []*RegionInfo `json:"RegionSet,omitnil,omitempty" name:"RegionSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -565,7 +564,6 @@ func (r *DescribeScenesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeScenesResponseParams struct {
 	// 场景详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneSet []*SceneInfo `json:"SceneSet,omitnil,omitempty" name:"SceneSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -987,7 +985,6 @@ type MuskPromptInfo struct {
 
 type NetworkStatus struct {
 	// HAI 的实例 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 公网 IP 地址
@@ -999,11 +996,9 @@ type NetworkStatus struct {
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
 	// 流量包总量，单位GB
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalTrafficAmount *float64 `json:"TotalTrafficAmount,omitnil,omitempty" name:"TotalTrafficAmount"`
 
 	// 流量包剩余量，单位GB
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemainingTrafficAmount *float64 `json:"RemainingTrafficAmount,omitnil,omitempty" name:"RemainingTrafficAmount"`
 }
 
@@ -1023,23 +1018,17 @@ type Price struct {
 
 type RegionInfo struct {
 	// ap-guangzhou
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 华南地区(广州)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 
 	// 地域是否可用状态
 	// AVAILABLE：可用
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionState *string `json:"RegionState,omitnil,omitempty" name:"RegionState"`
 
 	// 学术加速是否支持：
 	// NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_SUPPORT表示已经支持。对于ALREADY_SUPPORT的地域才需进一步调用DescribeScholarRocketStatus查看学术加速是开启还是关闭
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScholarRocketSupportState *string `json:"ScholarRocketSupportState,omitnil,omitempty" name:"ScholarRocketSupportState"`
 }
 
@@ -1144,13 +1133,9 @@ func (r *RunInstancesResponse) FromJsonString(s string) error {
 
 type SceneInfo struct {
 	// 场景id
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
 
 	// 场景名
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
 }
 

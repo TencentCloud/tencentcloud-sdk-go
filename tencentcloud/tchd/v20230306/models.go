@@ -201,6 +201,5 @@ type TotalStatus struct {
 	NotifyCount *int64 `json:"NotifyCount,omitnil,omitempty" name:"NotifyCount"`
 
 	// 异常状态的数目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AbnormalCount *int64 `json:"AbnormalCount,omitnil,omitempty" name:"AbnormalCount"`
 }

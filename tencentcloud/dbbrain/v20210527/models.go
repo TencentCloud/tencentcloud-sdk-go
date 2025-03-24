@@ -646,6 +646,28 @@ func (r *CloseAuditServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CmdCostGroup struct {
+	// 该延迟区间内命令数占总命令数百分比
+	Percent *float64 `json:"Percent,omitnil,omitempty" name:"Percent"`
+
+	// 延迟区间上界，单位ms
+	CostUpperLimit *string `json:"CostUpperLimit,omitnil,omitempty" name:"CostUpperLimit"`
+
+	// 延迟区间下界，单位ms
+	CostLowerLimit *string `json:"CostLowerLimit,omitnil,omitempty" name:"CostLowerLimit"`
+
+	// 该延迟区间内命令次数
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+}
+
+type CmdPerfInfo struct {
+	// redis命令
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// 监控数据
+	SeriesData *MonitorMetricSeriesData `json:"SeriesData,omitnil,omitempty" name:"SeriesData"`
+}
+
 type ContactItem struct {
 	// 联系人id。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -2358,11 +2380,9 @@ func (r *DescribeAuditLogFilesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAuditLogFilesResponseParams struct {
 	// 符合条件的审计日志文件个数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 审计日志文件详情。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*AuditLogFile `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2952,6 +2972,126 @@ func (r *DescribeDBDiagReportTasksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDBPerfTimeSeriesRequestParams struct {
+	// 需要获取性能趋势的实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 指标名称，多个指标之间用逗号分隔。
+	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 需要获取性能趋势的集群ID。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 性能数据统计粒度。
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 实列节点ID。
+	InstanceNodeId *string `json:"InstanceNodeId,omitnil,omitempty" name:"InstanceNodeId"`
+
+	// 实列代理ID。
+	InstanceProxyId *string `json:"InstanceProxyId,omitnil,omitempty" name:"InstanceProxyId"`
+
+	// 代理节点ID。
+	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
+}
+
+type DescribeDBPerfTimeSeriesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要获取性能趋势的实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 指标名称，多个指标之间用逗号分隔。
+	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
+
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 需要获取性能趋势的集群ID。
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 性能数据统计粒度。
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 实列节点ID。
+	InstanceNodeId *string `json:"InstanceNodeId,omitnil,omitempty" name:"InstanceNodeId"`
+
+	// 实列代理ID。
+	InstanceProxyId *string `json:"InstanceProxyId,omitnil,omitempty" name:"InstanceProxyId"`
+
+	// 代理节点ID。
+	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
+}
+
+func (r *DescribeDBPerfTimeSeriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBPerfTimeSeriesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Metric")
+	delete(f, "Product")
+	delete(f, "ClusterId")
+	delete(f, "Period")
+	delete(f, "InstanceNodeId")
+	delete(f, "InstanceProxyId")
+	delete(f, "ProxyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBPerfTimeSeriesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBPerfTimeSeriesResponseParams struct {
+	// 实列性能数据。
+	Data *MonitorMetricSeriesData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDBPerfTimeSeriesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBPerfTimeSeriesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBPerfTimeSeriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBPerfTimeSeriesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDBSpaceStatusRequestParams struct {
 	// 实例 ID 。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -3434,11 +3574,9 @@ func (r *DescribeMailProfileRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMailProfileResponseParams struct {
 	// 邮件配置详情。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProfileList []*UserProfile `json:"ProfileList,omitnil,omitempty" name:"ProfileList"`
 
 	// 邮件配置总数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3946,6 +4084,261 @@ func (r *DescribeRedisBigKeyAnalysisTasksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRedisBigKeyAnalysisTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedisCmdPerfTimeSeriesRequestParams struct {
+	// 实例 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，仅仅支持值 "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 开始时间，如“2025-03-17T00:00:00+00:00”。0天 < 当前服务器时间 - 开始时间 <= 10天。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，如“2025-03-17T01:00:00+00:00”，0天 < 结束时间 - 开始时间 <= 10天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 需要分析的redis命令
+	CommandList []*string `json:"CommandList,omitnil,omitempty" name:"CommandList"`
+
+	// 监控指标，以逗号分隔
+	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
+
+	// 监控指标时间粒度，单位秒，若不提供则根据开始时间和结束时间取默认值
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+}
+
+type DescribeRedisCmdPerfTimeSeriesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，仅仅支持值 "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// 开始时间，如“2025-03-17T00:00:00+00:00”。0天 < 当前服务器时间 - 开始时间 <= 10天。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，如“2025-03-17T01:00:00+00:00”，0天 < 结束时间 - 开始时间 <= 10天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 需要分析的redis命令
+	CommandList []*string `json:"CommandList,omitnil,omitempty" name:"CommandList"`
+
+	// 监控指标，以逗号分隔
+	Metric *string `json:"Metric,omitnil,omitempty" name:"Metric"`
+
+	// 监控指标时间粒度，单位秒，若不提供则根据开始时间和结束时间取默认值
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+}
+
+func (r *DescribeRedisCmdPerfTimeSeriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisCmdPerfTimeSeriesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "CommandList")
+	delete(f, "Metric")
+	delete(f, "Period")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRedisCmdPerfTimeSeriesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedisCmdPerfTimeSeriesResponseParams struct {
+	// redis命令延迟趋势
+	CmdPerfList []*CmdPerfInfo `json:"CmdPerfList,omitnil,omitempty" name:"CmdPerfList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRedisCmdPerfTimeSeriesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRedisCmdPerfTimeSeriesResponseParams `json:"Response"`
+}
+
+func (r *DescribeRedisCmdPerfTimeSeriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisCmdPerfTimeSeriesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedisCommandCostStatisticsRequestParams struct {
+	// 实例 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间，如“2025-03-17T00:00:00+00:00”。0天 < 当前服务器时间 - 开始时间 <= 10天。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，如“2025-03-17T01:00:00+00:00”，0天 < 结束时间 - 开始时间 <= 10天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 服务产品类型，仅仅支持值 "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+}
+
+type DescribeRedisCommandCostStatisticsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间，如“2025-03-17T00:00:00+00:00”。0天 < 当前服务器时间 - 开始时间 <= 10天。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，如“2025-03-17T01:00:00+00:00”，0天 < 结束时间 - 开始时间 <= 10天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 服务产品类型，仅仅支持值 "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+}
+
+func (r *DescribeRedisCommandCostStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisCommandCostStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRedisCommandCostStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedisCommandCostStatisticsResponseParams struct {
+	// redis延迟分布区间
+	CmdCostGroups []*CmdCostGroup `json:"CmdCostGroups,omitnil,omitempty" name:"CmdCostGroups"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRedisCommandCostStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRedisCommandCostStatisticsResponseParams `json:"Response"`
+}
+
+func (r *DescribeRedisCommandCostStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisCommandCostStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedisCommandOverviewRequestParams struct {
+	// 实例 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间，如“2025-03-17T00:00:00+00:00”。0天 < 当前服务器时间 - 开始时间 <= 10天。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，如“2025-03-17T01:00:00+00:00”，0天 < 结束时间 - 开始时间 <= 10天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 服务产品类型，仅仅支持值 "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+}
+
+type DescribeRedisCommandOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间，如“2025-03-17T00:00:00+00:00”。0天 < 当前服务器时间 - 开始时间 <= 10天。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间，如“2025-03-17T01:00:00+00:00”，0天 < 结束时间 - 开始时间 <= 10天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 服务产品类型，仅仅支持值 "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+}
+
+func (r *DescribeRedisCommandOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisCommandOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRedisCommandOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedisCommandOverviewResponseParams struct {
+	// redis访问命令统计
+	CmdList []*RedisCmdInfo `json:"CmdList,omitnil,omitempty" name:"CmdList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRedisCommandOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRedisCommandOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeRedisCommandOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisCommandOverviewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6793,6 +7186,14 @@ type RedisBigKeyTask struct {
 
 	// 任务包含的分片节点序号列表。
 	ShardIds []*int64 `json:"ShardIds,omitnil,omitempty" name:"ShardIds"`
+}
+
+type RedisCmdInfo struct {
+	// redis命令
+	Cmd *string `json:"Cmd,omitnil,omitempty" name:"Cmd"`
+
+	// 命令次数
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 
 type RedisKeySpaceData struct {

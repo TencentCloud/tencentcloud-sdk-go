@@ -1385,6 +1385,7 @@ func NewCreateSignatureResponse() (response *CreateSignatureResponse) {
 // 为一个镜像版本创建签名
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -1405,6 +1406,7 @@ func (c *Client) CreateSignature(request *CreateSignatureRequest) (response *Cre
 // 为一个镜像版本创建签名
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -1582,6 +1584,7 @@ func NewCreateTagRetentionRuleResponse() (response *CreateTagRetentionRuleRespon
 // 创建版本保留规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
@@ -1604,6 +1607,7 @@ func (c *Client) CreateTagRetentionRule(request *CreateTagRetentionRuleRequest) 
 // 创建版本保留规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
@@ -3071,6 +3075,7 @@ func NewDeleteTagRetentionRuleResponse() (response *DeleteTagRetentionRuleRespon
 // 删除版本保留规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
@@ -3092,6 +3097,7 @@ func (c *Client) DeleteTagRetentionRule(request *DeleteTagRetentionRuleRequest) 
 // 删除版本保留规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
@@ -3144,6 +3150,7 @@ func NewDeleteWebhookTriggerResponse() (response *DeleteWebhookTriggerResponse) 
 // 删除触发器
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -3151,6 +3158,7 @@ func NewDeleteWebhookTriggerResponse() (response *DeleteWebhookTriggerResponse) 
 //  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteWebhookTrigger(request *DeleteWebhookTriggerRequest) (response *DeleteWebhookTriggerResponse, err error) {
     return c.DeleteWebhookTriggerWithContext(context.Background(), request)
 }
@@ -3159,6 +3167,7 @@ func (c *Client) DeleteWebhookTrigger(request *DeleteWebhookTriggerRequest) (res
 // 删除触发器
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -3166,6 +3175,7 @@ func (c *Client) DeleteWebhookTrigger(request *DeleteWebhookTriggerRequest) (res
 //  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteWebhookTriggerWithContext(ctx context.Context, request *DeleteWebhookTriggerRequest) (response *DeleteWebhookTriggerResponse, err error) {
     if request == nil {
         request = NewDeleteWebhookTriggerRequest()
@@ -5540,6 +5550,7 @@ func NewDescribeWebhookTriggerResponse() (response *DescribeWebhookTriggerRespon
 // 查询触发器
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -5548,6 +5559,7 @@ func NewDescribeWebhookTriggerResponse() (response *DescribeWebhookTriggerRespon
 //  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeWebhookTrigger(request *DescribeWebhookTriggerRequest) (response *DescribeWebhookTriggerResponse, err error) {
     return c.DescribeWebhookTriggerWithContext(context.Background(), request)
 }
@@ -5556,6 +5568,7 @@ func (c *Client) DescribeWebhookTrigger(request *DescribeWebhookTriggerRequest) 
 // 查询触发器
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -5564,6 +5577,7 @@ func (c *Client) DescribeWebhookTrigger(request *DescribeWebhookTriggerRequest) 
 //  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeWebhookTriggerWithContext(ctx context.Context, request *DescribeWebhookTriggerRequest) (response *DescribeWebhookTriggerResponse, err error) {
     if request == nil {
         request = NewDescribeWebhookTriggerRequest()

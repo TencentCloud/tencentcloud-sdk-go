@@ -5439,10 +5439,10 @@ type DescribeRepositoriesRequestParams struct {
 	// 指定镜像仓库，不填写默认查询指定命名空间下所有镜像仓库
 	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
 
-	// 页数，用于分页
+	// 页数，第几页，用于分页
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页个数，用于分页
+	// 每页个数，用于分页，最大值为100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 基于字段排序，支持的值有-creation_time,-name, -update_time
@@ -5461,10 +5461,10 @@ type DescribeRepositoriesRequest struct {
 	// 指定镜像仓库，不填写默认查询指定命名空间下所有镜像仓库
 	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
 
-	// 页数，用于分页
+	// 页数，第几页，用于分页
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 每页个数，用于分页
+	// 每页个数，用于分页，最大值为100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 基于字段排序，支持的值有-creation_time,-name, -update_time
@@ -8614,11 +8614,9 @@ type RetentionPolicy struct {
 
 type RetentionRule struct {
 	// 支持的策略，可选值为latestPushedK（保留最新推送多少个版本）nDaysSinceLastPush（保留近天内推送）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 规则设置下的对应值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -8911,11 +8909,9 @@ type TcrRepositoryInfo struct {
 	Public *bool `json:"Public,omitnil,omitempty" name:"Public"`
 
 	// 仓库详细描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 简单描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BriefDescription *string `json:"BriefDescription,omitnil,omitempty" name:"BriefDescription"`
 
 	// 更新时间，格式"2006-01-02 15:04:05.999999999 -0700 MST"
@@ -9215,7 +9211,6 @@ type WebhookTrigger struct {
 	NamespaceId *int64 `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 触发器所属命名空间名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
 }
 

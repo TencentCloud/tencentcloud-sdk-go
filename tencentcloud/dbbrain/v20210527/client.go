@@ -2367,6 +2367,81 @@ func (c *Client) DescribeDBDiagReportTasksWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeDBPerfTimeSeriesRequest() (request *DescribeDBPerfTimeSeriesRequest) {
+    request = &DescribeDBPerfTimeSeriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeDBPerfTimeSeries")
+    
+    
+    return
+}
+
+func NewDescribeDBPerfTimeSeriesResponse() (response *DescribeDBPerfTimeSeriesResponse) {
+    response = &DescribeDBPerfTimeSeriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBPerfTimeSeries
+// 根据实例ID获取指定时间段的性能趋势。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDBPerfTimeSeries(request *DescribeDBPerfTimeSeriesRequest) (response *DescribeDBPerfTimeSeriesResponse, err error) {
+    return c.DescribeDBPerfTimeSeriesWithContext(context.Background(), request)
+}
+
+// DescribeDBPerfTimeSeries
+// 根据实例ID获取指定时间段的性能趋势。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDBPerfTimeSeriesWithContext(ctx context.Context, request *DescribeDBPerfTimeSeriesRequest) (response *DescribeDBPerfTimeSeriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBPerfTimeSeriesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBPerfTimeSeries require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBPerfTimeSeriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBSpaceStatusRequest() (request *DescribeDBSpaceStatusRequest) {
     request = &DescribeDBSpaceStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3188,6 +3263,225 @@ func (c *Client) DescribeRedisBigKeyAnalysisTasksWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewDescribeRedisBigKeyAnalysisTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRedisCmdPerfTimeSeriesRequest() (request *DescribeRedisCmdPerfTimeSeriesRequest) {
+    request = &DescribeRedisCmdPerfTimeSeriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeRedisCmdPerfTimeSeries")
+    
+    
+    return
+}
+
+func NewDescribeRedisCmdPerfTimeSeriesResponse() (response *DescribeRedisCmdPerfTimeSeriesResponse) {
+    response = &DescribeRedisCmdPerfTimeSeriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRedisCmdPerfTimeSeries
+// 延迟分析-命令字分析-查询命令延迟趋势
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisCmdPerfTimeSeries(request *DescribeRedisCmdPerfTimeSeriesRequest) (response *DescribeRedisCmdPerfTimeSeriesResponse, err error) {
+    return c.DescribeRedisCmdPerfTimeSeriesWithContext(context.Background(), request)
+}
+
+// DescribeRedisCmdPerfTimeSeries
+// 延迟分析-命令字分析-查询命令延迟趋势
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisCmdPerfTimeSeriesWithContext(ctx context.Context, request *DescribeRedisCmdPerfTimeSeriesRequest) (response *DescribeRedisCmdPerfTimeSeriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRedisCmdPerfTimeSeriesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRedisCmdPerfTimeSeries require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRedisCmdPerfTimeSeriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRedisCommandCostStatisticsRequest() (request *DescribeRedisCommandCostStatisticsRequest) {
+    request = &DescribeRedisCommandCostStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeRedisCommandCostStatistics")
+    
+    
+    return
+}
+
+func NewDescribeRedisCommandCostStatisticsResponse() (response *DescribeRedisCommandCostStatisticsResponse) {
+    response = &DescribeRedisCommandCostStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRedisCommandCostStatistics
+// 延迟分析-查询命令延迟分布
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisCommandCostStatistics(request *DescribeRedisCommandCostStatisticsRequest) (response *DescribeRedisCommandCostStatisticsResponse, err error) {
+    return c.DescribeRedisCommandCostStatisticsWithContext(context.Background(), request)
+}
+
+// DescribeRedisCommandCostStatistics
+// 延迟分析-查询命令延迟分布
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisCommandCostStatisticsWithContext(ctx context.Context, request *DescribeRedisCommandCostStatisticsRequest) (response *DescribeRedisCommandCostStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRedisCommandCostStatisticsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRedisCommandCostStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRedisCommandCostStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRedisCommandOverviewRequest() (request *DescribeRedisCommandOverviewRequest) {
+    request = &DescribeRedisCommandOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeRedisCommandOverview")
+    
+    
+    return
+}
+
+func NewDescribeRedisCommandOverviewResponse() (response *DescribeRedisCommandOverviewResponse) {
+    response = &DescribeRedisCommandOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRedisCommandOverview
+// 延迟分析-查询实例访问命令统计
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisCommandOverview(request *DescribeRedisCommandOverviewRequest) (response *DescribeRedisCommandOverviewResponse, err error) {
+    return c.DescribeRedisCommandOverviewWithContext(context.Background(), request)
+}
+
+// DescribeRedisCommandOverview
+// 延迟分析-查询实例访问命令统计
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisCommandOverviewWithContext(ctx context.Context, request *DescribeRedisCommandOverviewRequest) (response *DescribeRedisCommandOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeRedisCommandOverviewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRedisCommandOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRedisCommandOverviewResponse()
     err = c.Send(request, response)
     return
 }

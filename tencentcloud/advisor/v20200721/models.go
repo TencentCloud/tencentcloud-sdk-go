@@ -22,15 +22,12 @@ import (
 
 type Conditions struct {
 	// 警告条件ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConditionId *uint64 `json:"ConditionId,omitnil,omitempty" name:"ConditionId"`
 
 	// 警告级别，2:中风险，3:高风险
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *uint64 `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 警告级别描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelDesc *string `json:"LevelDesc,omitnil,omitempty" name:"LevelDesc"`
 
 	// 警告条件描述
@@ -69,7 +66,6 @@ func (r *DescribeStrategiesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeStrategiesResponseParams struct {
 	// 评估项列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Strategies []*Strategies `json:"Strategies,omitnil,omitempty" name:"Strategies"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -224,38 +220,29 @@ type RiskFieldsDesc struct {
 
 type Strategies struct {
 	// 评估项ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrategyId *uint64 `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
 
 	// 评估项名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 评估项描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
 	// 评估项对应产品ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 评估项对应产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductDesc *string `json:"ProductDesc,omitnil,omitempty" name:"ProductDesc"`
 
 	// 评估项优化建议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Repair *string `json:"Repair,omitnil,omitempty" name:"Repair"`
 
 	// 评估项类别ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 评估项类别名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 评估项风险列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Conditions []*Conditions `json:"Conditions,omitnil,omitempty" name:"Conditions"`
 }

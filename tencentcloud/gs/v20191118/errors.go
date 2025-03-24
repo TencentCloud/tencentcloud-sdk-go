@@ -38,6 +38,9 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 参数错误。
+	INVALIDPARAMETER = "InvalidParameter"
+
 	// Json解析失败。
 	INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
 
@@ -50,6 +53,9 @@ const (
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
+	// 资源不存在。
+	RESOURCENOTFOUND = "ResourceNotFound"
+
 	// 没有空闲机器。
 	RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
 
@@ -61,6 +67,9 @@ const (
 
 	// 机器还在初始化中。
 	RESOURCEUNAVAILABLE_INITIALIZATION = "ResourceUnavailable.Initialization"
+
+	// 操作不支持。
+	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 
 	// 机器未运行。
 	UNSUPPORTEDOPERATION_NOTRUNNING = "UnsupportedOperation.NotRunning"
