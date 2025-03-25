@@ -28,7 +28,6 @@ type AppInfo struct {
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// 应用名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// Ios 包名
@@ -73,10 +72,10 @@ type ApplicationInfo struct {
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 
 	// license数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Licenses []*License `json:"Licenses,omitnil,omitempty" name:"Licenses"`
 
 	// license 秘钥
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LicenseKey *string `json:"LicenseKey,omitnil,omitempty" name:"LicenseKey"`
 
 	// 安卓应用的唯一标识
@@ -84,19 +83,15 @@ type ApplicationInfo struct {
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 用户应用Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationId *uint64 `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 视立方下载license的url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LicenseUrl *string `json:"LicenseUrl,omitnil,omitempty" name:"LicenseUrl"`
 
 	// 优图美视信息列表
@@ -157,18 +152,15 @@ type CreateActivityLicenseResponseParams struct {
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// app名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
 
 	// ios包名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BundleId *string `json:"BundleId,omitnil,omitempty" name:"BundleId"`
 
 	// 安卓包名
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
 	// 有效时长
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 开始时间
@@ -184,11 +176,9 @@ type CreateActivityLicenseResponseParams struct {
 	LicenseUrl *string `json:"LicenseUrl,omitnil,omitempty" name:"LicenseUrl"`
 
 	// license剩余天数，最后一天以及过期显示0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResidueDay *uint64 `json:"ResidueDay,omitnil,omitempty" name:"ResidueDay"`
 
 	// license剩余秒数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Residue *uint64 `json:"Residue,omitnil,omitempty" name:"Residue"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -541,7 +531,7 @@ func (r *CreateLicenseResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTestXMagicRequestParams struct {
-	// 应用id
+	// 将腾讯特效创建到哪个应用下
 	ApplicationId *uint64 `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 营业执照
@@ -560,7 +550,7 @@ type CreateTestXMagicRequestParams struct {
 type CreateTestXMagicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用id
+	// 将腾讯特效创建到哪个应用下
 	ApplicationId *uint64 `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 营业执照
@@ -941,11 +931,9 @@ func (r *DescribeFeatureListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFeatureListResponseParams struct {
 	// 功能列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeatureList []*VideoFeature `json:"FeatureList,omitnil,omitempty" name:"FeatureList"`
 
 	// 优图功能列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	XMagicFeatureList []*XMagicFeature `json:"XMagicFeatureList,omitnil,omitempty" name:"XMagicFeatureList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1200,7 +1188,6 @@ type DescribeTrialFeatureResponseParams struct {
 	XMagicTrial *XMagicTrial `json:"XMagicTrial,omitnil,omitempty" name:"XMagicTrial"`
 
 	// 可以开通的优图测试功能列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	XMagicTrialList []*XMagicTrial `json:"XMagicTrialList,omitnil,omitempty" name:"XMagicTrialList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1821,11 +1808,9 @@ func (r *DescribeXMagicResourceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeXMagicResourceListResponseParams struct {
 	// 优图资源包信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resources []*XMagicResourceSimpleInfo `json:"Resources,omitnil,omitempty" name:"Resources"`
 
 	// 资源数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1890,11 +1875,9 @@ func (r *DescribeXMagicResourceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeXMagicResourceResponseParams struct {
 	// 优图资源包信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resources []*XMagicResource `json:"Resources,omitnil,omitempty" name:"Resources"`
 
 	// 资源数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1940,11 +1923,9 @@ type Feature struct {
 	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 }
 
@@ -1969,18 +1950,15 @@ type License struct {
 	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
 	// 测试license 是否可以续期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Renewal *bool `json:"Renewal,omitnil,omitempty" name:"Renewal"`
 
 	// license索引
 	LicenseId *uint64 `json:"LicenseId,omitnil,omitempty" name:"LicenseId"`
 
 	// license名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 测试license 是否升级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Update *bool `json:"Update,omitnil,omitempty" name:"Update"`
 
 	// 兼容老的licenseUrl
@@ -1992,7 +1970,6 @@ type License struct {
 	Group *uint64 `json:"Group,omitnil,omitempty" name:"Group"`
 
 	// 过期：true ，未过期：其它
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Expired *bool `json:"Expired,omitnil,omitempty" name:"Expired"`
 
 	// 返回还有多少秒过期，过期返回0
@@ -2000,11 +1977,9 @@ type License struct {
 	RestTime *uint64 `json:"RestTime,omitnil,omitempty" name:"RestTime"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 计费资源相关信息
@@ -2012,7 +1987,6 @@ type License struct {
 	Resource *RenewResource `json:"Resource,omitnil,omitempty" name:"Resource"`
 
 	// 是否为马甲包
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsVest *bool `json:"IsVest,omitnil,omitempty" name:"IsVest"`
 }
 
@@ -2031,11 +2005,9 @@ type LicenseResourceInfo struct {
 	FeatureId *uint64 `json:"FeatureId,omitnil,omitempty" name:"FeatureId"`
 
 	// 此license资源的开始生效时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 此license资源的生效结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 创建时间
@@ -2045,11 +2017,9 @@ type LicenseResourceInfo struct {
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 此资源是否可用于续期和更新有效期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUse *bool `json:"IsUse,omitnil,omitempty" name:"IsUse"`
 
 	// 此资源的状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 销毁时间
@@ -2057,11 +2027,9 @@ type LicenseResourceInfo struct {
 	IsolatedTimestamp *string `json:"IsolatedTimestamp,omitnil,omitempty" name:"IsolatedTimestamp"`
 
 	// 功能模块名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 功能模块类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 资源包信息
@@ -2073,11 +2041,9 @@ type LicenseResourceInfo struct {
 	Application *AppInfo `json:"Application,omitnil,omitempty" name:"Application"`
 
 	// 资源Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 自动续费状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 }
 
@@ -2096,11 +2062,9 @@ type LicenseResourceSimpleInfo struct {
 	FeatureId *uint64 `json:"FeatureId,omitnil,omitempty" name:"FeatureId"`
 
 	// 此license资源的开始生效时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 此license资源的生效结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 创建时间
@@ -2110,11 +2074,9 @@ type LicenseResourceSimpleInfo struct {
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 此资源是否可用于续期和更新有效期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUse *bool `json:"IsUse,omitnil,omitempty" name:"IsUse"`
 
 	// 此资源的状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 销毁时间
@@ -2122,11 +2084,9 @@ type LicenseResourceSimpleInfo struct {
 	IsolatedTimestamp *string `json:"IsolatedTimestamp,omitnil,omitempty" name:"IsolatedTimestamp"`
 
 	// 功能模块名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 功能模块类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 资源包信息
@@ -2134,11 +2094,9 @@ type LicenseResourceSimpleInfo struct {
 	Package *Package `json:"Package,omitnil,omitempty" name:"Package"`
 
 	// 资源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 自动续费状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 }
 
@@ -2451,14 +2409,14 @@ func (r *ModifyPresetApplicationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTrialLicenseRequestParams struct {
-	// 执照ID
+	// 授权ID
 	LicenseId *string `json:"LicenseId,omitnil,omitempty" name:"LicenseId"`
 }
 
 type ModifyTrialLicenseRequest struct {
 	*tchttp.BaseRequest
 	
-	// 执照ID
+	// 授权ID
 	LicenseId *string `json:"LicenseId,omitnil,omitempty" name:"LicenseId"`
 }
 
@@ -2565,7 +2523,8 @@ func (r *ModifyXMagicResponse) FromJsonString(s string) error {
 }
 
 type NewsInfo struct {
-
+	// 新闻Id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type Package struct {
@@ -2592,7 +2551,6 @@ type Package struct {
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 资源包类型ID,对应点播：PackageId 对应直播：TypeId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -2659,11 +2617,9 @@ func (r *RenewLicenseResponse) FromJsonString(s string) error {
 
 type RenewResource struct {
 	// 资源Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 自动续期标记，0：默认，1：自动续期，2：不续期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 资源冻结时间
@@ -2675,11 +2631,9 @@ type RenewResource struct {
 	Refund *bool `json:"Refund,omitnil,omitempty" name:"Refund"`
 
 	// 子产品码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubProductCode *string `json:"SubProductCode,omitnil,omitempty" name:"SubProductCode"`
 
 	// 资源到期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -3003,15 +2957,12 @@ type VideoFeature struct {
 	FeatureId *uint64 `json:"FeatureId,omitnil,omitempty" name:"FeatureId"`
 
 	// 功能名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 功能类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 是否可以申请试用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Trial *bool `json:"Trial,omitnil,omitempty" name:"Trial"`
 
 	// 可以试用的次数
@@ -3023,19 +2974,15 @@ type VideoFeature struct {
 	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 功能所属业务方
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 平台类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 }
 
@@ -3081,7 +3028,6 @@ type XMagicInfo struct {
 	CompanyType *string `json:"CompanyType,omitnil,omitempty" name:"CompanyType"`
 
 	// 优图套餐类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Plan *string `json:"Plan,omitnil,omitempty" name:"Plan"`
 
 	// 测试版还是正式版 test | formal
@@ -3112,7 +3058,6 @@ type XMagicInfo struct {
 	RenewalCount *uint64 `json:"RenewalCount,omitnil,omitempty" name:"RenewalCount"`
 
 	// 历次审批的回复
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reply []*string `json:"Reply,omitnil,omitempty" name:"Reply"`
 
 	// 创建时间
@@ -3122,7 +3067,6 @@ type XMagicInfo struct {
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 用户更新信息的时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 是否过期
@@ -3134,11 +3078,9 @@ type XMagicInfo struct {
 	RestTime *uint64 `json:"RestTime,omitnil,omitempty" name:"RestTime"`
 
 	// single: 原子能力,combined:套餐
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	XMagicType *string `json:"XMagicType,omitnil,omitempty" name:"XMagicType"`
 
 	// 优图模块名称，自动中英文
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 优图资源信息
@@ -3146,7 +3088,6 @@ type XMagicInfo struct {
 	Resource *RenewResource `json:"Resource,omitnil,omitempty" name:"Resource"`
 
 	// 是否是马甲包
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsVest *bool `json:"IsVest,omitnil,omitempty" name:"IsVest"`
 }
 
@@ -3174,35 +3115,27 @@ type XMagicResource struct {
 	XMagic *bool `json:"XMagic,omitnil,omitempty" name:"XMagic"`
 
 	// 资源开始生效时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 资源结束生效时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 资源包是否过期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Expired *bool `json:"Expired,omitnil,omitempty" name:"Expired"`
 
 	// 功能模块名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// single: 原子能力,combined:套餐
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	XMagicType *string `json:"XMagicType,omitnil,omitempty" name:"XMagicType"`
 
 	// xmagic:优图， avatar：虚拟人
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 资源Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 资源是否可以使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUse *bool `json:"IsUse,omitnil,omitempty" name:"IsUse"`
 }
 
@@ -3226,11 +3159,9 @@ type XMagicResourceSimpleInfo struct {
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 资源开始生效时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 资源结束生效时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 应用信息
@@ -3249,27 +3180,21 @@ type XMagicResourceSimpleInfo struct {
 	Operation []*string `json:"Operation,omitnil,omitempty" name:"Operation"`
 
 	// 是否可以使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUse *bool `json:"IsUse,omitnil,omitempty" name:"IsUse"`
 
 	// single: 原子能力,combined:套餐
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	XMagicType *string `json:"XMagicType,omitnil,omitempty" name:"XMagicType"`
 
 	// 功能模块名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 资源所属业务方 xmagic：优图，avatar：虚拟形象 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 资源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 资源自动续费状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 }
 
@@ -3296,4 +3221,7 @@ type XMagicTrial struct {
 
 	// single: 原子能力,combined:套餐
 	XMagicType *string `json:"XMagicType,omitnil,omitempty" name:"XMagicType"`
+
+	// vod：点播 live：直播
+	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 }

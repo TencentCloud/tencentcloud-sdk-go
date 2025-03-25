@@ -331,7 +331,7 @@ type Backend struct {
 	// 后端服务的唯一 ID，如 ins-abcd1234
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 后端服务的监听端口
+	// 后端服务的监听端口，如果是全端口段监听器绑定的全监听目标组场景，此端口返回0，表示无效端口，绑定的后端服务的端口随监听器端口。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 后端服务的转发权重，取值范围：[0, 100]，默认为 10。
@@ -1984,7 +1984,7 @@ type CreateTargetGroupRequestParams struct {
 	// 目标组的vpcid属性，不填则使用默认vpc
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 目标组的默认端口， 后续添加服务器时可使用该默认端口。Port和TargetGroupInstances.N中的port二者必填其一。
+	// 目标组的默认端口， 后续添加服务器时可使用该默认端口。全监听目标组不支持此参数，非全监听目标组Port和TargetGroupInstances.N中的port二者必填其一。
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 目标组绑定的后端服务器，单次最多支持50个。
@@ -2005,6 +2005,9 @@ type CreateTargetGroupRequestParams struct {
 	//     <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li>
 	// </ul>
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// 全监听目标组标识，为true表示是全监听目标组，false表示不是全监听目标组。
+	FullListenSwitch *bool `json:"FullListenSwitch,omitnil,omitempty" name:"FullListenSwitch"`
 }
 
 type CreateTargetGroupRequest struct {
@@ -2016,7 +2019,7 @@ type CreateTargetGroupRequest struct {
 	// 目标组的vpcid属性，不填则使用默认vpc
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 目标组的默认端口， 后续添加服务器时可使用该默认端口。Port和TargetGroupInstances.N中的port二者必填其一。
+	// 目标组的默认端口， 后续添加服务器时可使用该默认端口。全监听目标组不支持此参数，非全监听目标组Port和TargetGroupInstances.N中的port二者必填其一。
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 目标组绑定的后端服务器，单次最多支持50个。
@@ -2037,6 +2040,9 @@ type CreateTargetGroupRequest struct {
 	//     <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li>
 	// </ul>
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// 全监听目标组标识，为true表示是全监听目标组，false表示不是全监听目标组。
+	FullListenSwitch *bool `json:"FullListenSwitch,omitnil,omitempty" name:"FullListenSwitch"`
 }
 
 func (r *CreateTargetGroupRequest) ToJsonString() string {
@@ -2059,6 +2065,7 @@ func (r *CreateTargetGroupRequest) FromJsonString(s string) error {
 	delete(f, "Protocol")
 	delete(f, "Tags")
 	delete(f, "Weight")
+	delete(f, "FullListenSwitch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTargetGroupRequest has unknown keys!", "")
 	}
@@ -7427,7 +7434,7 @@ func (r *ModifyLoadBalancerAttributesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLoadBalancerMixIpTargetRequestParams struct {
-	// 负载均衡实例ID数组。
+	// 负载均衡实例ID数组，默认支持20个负载均衡实例ID。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
 	// 开启/关闭IPv6FullChain负载均衡7层监听器支持混绑IPv4/IPv6目标特性。
@@ -7437,7 +7444,7 @@ type ModifyLoadBalancerMixIpTargetRequestParams struct {
 type ModifyLoadBalancerMixIpTargetRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡实例ID数组。
+	// 负载均衡实例ID数组，默认支持20个负载均衡实例ID。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
 	// 开启/关闭IPv6FullChain负载均衡7层监听器支持混绑IPv4/IPv6目标特性。
@@ -7742,7 +7749,7 @@ type ModifyTargetGroupAttributeRequestParams struct {
 	// 目标组的新名称。
 	TargetGroupName *string `json:"TargetGroupName,omitnil,omitempty" name:"TargetGroupName"`
 
-	// 目标组的新默认端口。
+	// 目标组的新默认端口。全监听目标组不支持此参数。
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 后端服务默认权重。
@@ -7762,7 +7769,7 @@ type ModifyTargetGroupAttributeRequest struct {
 	// 目标组的新名称。
 	TargetGroupName *string `json:"TargetGroupName,omitnil,omitempty" name:"TargetGroupName"`
 
-	// 目标组的新默认端口。
+	// 目标组的新默认端口。全监听目标组不支持此参数。
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 后端服务默认权重。
@@ -9318,7 +9325,7 @@ type TargetGroupBackend struct {
 	// 后端服务的唯一 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 后端服务的监听端口
+	// 后端服务的监听端口，全端口段监听器此字段返回0，代表无效端口，即不支持设置。
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 后端服务的转发权重，取值范围：[0, 100]，默认为 10。
@@ -9359,7 +9366,7 @@ type TargetGroupInfo struct {
 	// 目标组的名字
 	TargetGroupName *string `json:"TargetGroupName,omitnil,omitempty" name:"TargetGroupName"`
 
-	// 目标组的默认端口
+	// 目标组的默认端口，全监听目标组此字段返回0，表示无效端口。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
@@ -9391,13 +9398,16 @@ type TargetGroupInfo struct {
 	// 默认权重。只有v2类型目标组返回该字段。当返回为NULL时， 表示未设置默认权重。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// 是否全监听目标组
+	FullListenSwitch *bool `json:"FullListenSwitch,omitnil,omitempty" name:"FullListenSwitch"`
 }
 
 type TargetGroupInstance struct {
 	// 目标组实例的内网IP
 	BindIP *string `json:"BindIP,omitnil,omitempty" name:"BindIP"`
 
-	// 目标组实例的端口
+	// 目标组实例的端口，全监听目标组不支持传此字段。
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 目标组实例的权重
@@ -9405,7 +9415,7 @@ type TargetGroupInstance struct {
 	// v2目标组需要配置权重，调用CreateTargetGroup接口创建目标组时该参数与创建接口中的Weight参数必填其一。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
-	// 目标组实例的新端口
+	// 目标组实例的新端口，全监听目标组不支持传此字段。
 	NewPort *uint64 `json:"NewPort,omitnil,omitempty" name:"NewPort"`
 }
 

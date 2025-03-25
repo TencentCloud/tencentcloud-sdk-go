@@ -2671,6 +2671,7 @@ func NewDeleteRepositoryResponse() (response *DeleteRepositoryResponse) {
 // 删除镜像仓库
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
@@ -2690,6 +2691,7 @@ func (c *Client) DeleteRepository(request *DeleteRepositoryRequest) (response *D
 // 删除镜像仓库
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
@@ -6446,6 +6448,7 @@ func NewModifyRepositoryResponse() (response *ModifyRepositoryResponse) {
 // 更新镜像仓库信息，可修改仓库描述信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
@@ -6464,6 +6467,7 @@ func (c *Client) ModifyRepository(request *ModifyRepositoryRequest) (response *M
 // 更新镜像仓库信息，可修改仓库描述信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
@@ -6798,6 +6802,7 @@ func NewModifyTagRetentionRuleResponse() (response *ModifyTagRetentionRuleRespon
 // 更新版本保留规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
@@ -6819,6 +6824,7 @@ func (c *Client) ModifyTagRetentionRule(request *ModifyTagRetentionRuleRequest) 
 // 更新版本保留规则
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
@@ -6924,6 +6930,7 @@ func NewModifyWebhookTriggerResponse() (response *ModifyWebhookTriggerResponse) 
 // 更新触发器
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -6931,6 +6938,7 @@ func NewModifyWebhookTriggerResponse() (response *ModifyWebhookTriggerResponse) 
 //  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyWebhookTrigger(request *ModifyWebhookTriggerRequest) (response *ModifyWebhookTriggerResponse, err error) {
     return c.ModifyWebhookTriggerWithContext(context.Background(), request)
 }
@@ -6939,6 +6947,7 @@ func (c *Client) ModifyWebhookTrigger(request *ModifyWebhookTriggerRequest) (res
 // 更新触发器
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -6946,6 +6955,7 @@ func (c *Client) ModifyWebhookTrigger(request *ModifyWebhookTriggerRequest) (res
 //  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TCRRESOURCENOTFOUND = "ResourceNotFound.TcrResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyWebhookTriggerWithContext(ctx context.Context, request *ModifyWebhookTriggerRequest) (response *ModifyWebhookTriggerResponse, err error) {
     if request == nil {
         request = NewModifyWebhookTriggerRequest()

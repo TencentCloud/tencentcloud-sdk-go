@@ -1033,7 +1033,7 @@ func NewCreateRoomResponse() (response *CreateRoomResponse) {
 }
 
 // CreateRoom
-// 创建房间
+// 创建课堂
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1056,7 +1056,7 @@ func (c *Client) CreateRoom(request *CreateRoomRequest) (response *CreateRoomRes
 }
 
 // CreateRoom
-// 创建房间
+// 创建课堂
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

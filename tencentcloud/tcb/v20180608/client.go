@@ -542,6 +542,7 @@ func NewCreatePostpayPackageResponse() (response *CreatePostpayPackageResponse) 
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_BALANCENOTENOUGH = "ResourceUnavailable.BalanceNotEnough"
+//  RESOURCESSOLDOUT_POSTPAYPACKAGENOTAVAILABLE = "ResourcesSoldOut.PostpayPackageNotAvailable"
 func (c *Client) CreatePostpayPackage(request *CreatePostpayPackageRequest) (response *CreatePostpayPackageResponse, err error) {
     return c.CreatePostpayPackageWithContext(context.Background(), request)
 }
@@ -556,6 +557,7 @@ func (c *Client) CreatePostpayPackage(request *CreatePostpayPackageRequest) (res
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE_BALANCENOTENOUGH = "ResourceUnavailable.BalanceNotEnough"
+//  RESOURCESSOLDOUT_POSTPAYPACKAGENOTAVAILABLE = "ResourcesSoldOut.PostpayPackageNotAvailable"
 func (c *Client) CreatePostpayPackageWithContext(ctx context.Context, request *CreatePostpayPackageRequest) (response *CreatePostpayPackageResponse, err error) {
     if request == nil {
         request = NewCreatePostpayPackageRequest()

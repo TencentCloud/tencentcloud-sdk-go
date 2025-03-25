@@ -30,6 +30,12 @@ type ActionAlterUserRequestParams struct {
 
 	// 用户权限类型 0:普通用户 1:管理员
 	UserPrivilege *int64 `json:"UserPrivilege,omitnil,omitempty" name:"UserPrivilege"`
+
+	// 计算组列表
+	ComputeGroups []*string `json:"ComputeGroups,omitnil,omitempty" name:"ComputeGroups"`
+
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type ActionAlterUserRequest struct {
@@ -43,6 +49,12 @@ type ActionAlterUserRequest struct {
 
 	// 用户权限类型 0:普通用户 1:管理员
 	UserPrivilege *int64 `json:"UserPrivilege,omitnil,omitempty" name:"UserPrivilege"`
+
+	// 计算组列表
+	ComputeGroups []*string `json:"ComputeGroups,omitnil,omitempty" name:"ComputeGroups"`
+
+	// 集群ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 func (r *ActionAlterUserRequest) ToJsonString() string {
@@ -60,6 +72,8 @@ func (r *ActionAlterUserRequest) FromJsonString(s string) error {
 	delete(f, "UserInfo")
 	delete(f, "ApiType")
 	delete(f, "UserPrivilege")
+	delete(f, "ComputeGroups")
+	delete(f, "InstanceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ActionAlterUserRequest has unknown keys!", "")
 	}
@@ -400,6 +414,9 @@ type ClusterConfigsHistory struct {
 }
 
 type ClusterConfigsInfoFromEMR struct {
+	// 计算组id
+	ComputeGroupId *string `json:"ComputeGroupId,omitnil,omitempty" name:"ComputeGroupId"`
+
 	// 配置文件名称
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
@@ -1059,6 +1076,9 @@ type DataBaseAuditRecord struct {
 
 	// 是否是查询
 	IsQuery *bool `json:"IsQuery,omitnil,omitempty" name:"IsQuery"`
+
+	// 计算组
+	ComputeGroup *string `json:"ComputeGroup,omitnil,omitempty" name:"ComputeGroup"`
 }
 
 // Predefined struct for user
@@ -2092,6 +2112,9 @@ type DescribeDatabaseAuditDownloadRequestParams struct {
 
 	// 是否是查询	
 	IsQuery []*bool `json:"IsQuery,omitnil,omitempty" name:"IsQuery"`
+
+	// 计算组列表
+	ComputeGroups []*string `json:"ComputeGroups,omitnil,omitempty" name:"ComputeGroups"`
 }
 
 type DescribeDatabaseAuditDownloadRequest struct {
@@ -2141,6 +2164,9 @@ type DescribeDatabaseAuditDownloadRequest struct {
 
 	// 是否是查询	
 	IsQuery []*bool `json:"IsQuery,omitnil,omitempty" name:"IsQuery"`
+
+	// 计算组列表
+	ComputeGroups []*string `json:"ComputeGroups,omitnil,omitempty" name:"ComputeGroups"`
 }
 
 func (r *DescribeDatabaseAuditDownloadRequest) ToJsonString() string {
@@ -2170,6 +2196,7 @@ func (r *DescribeDatabaseAuditDownloadRequest) FromJsonString(s string) error {
 	delete(f, "SqlTypes")
 	delete(f, "Catalogs")
 	delete(f, "IsQuery")
+	delete(f, "ComputeGroups")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabaseAuditDownloadRequest has unknown keys!", "")
 	}
@@ -2247,6 +2274,9 @@ type DescribeDatabaseAuditRecordsRequestParams struct {
 
 	// 是否是查询 
 	IsQuery []*bool `json:"IsQuery,omitnil,omitempty" name:"IsQuery"`
+
+	// 计算组列表
+	ComputeGroups []*string `json:"ComputeGroups,omitnil,omitempty" name:"ComputeGroups"`
 }
 
 type DescribeDatabaseAuditRecordsRequest struct {
@@ -2296,6 +2326,9 @@ type DescribeDatabaseAuditRecordsRequest struct {
 
 	// 是否是查询 
 	IsQuery []*bool `json:"IsQuery,omitnil,omitempty" name:"IsQuery"`
+
+	// 计算组列表
+	ComputeGroups []*string `json:"ComputeGroups,omitnil,omitempty" name:"ComputeGroups"`
 }
 
 func (r *DescribeDatabaseAuditRecordsRequest) ToJsonString() string {
@@ -2325,6 +2358,7 @@ func (r *DescribeDatabaseAuditRecordsRequest) FromJsonString(s string) error {
 	delete(f, "SqlTypes")
 	delete(f, "Catalogs")
 	delete(f, "IsQuery")
+	delete(f, "ComputeGroups")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabaseAuditRecordsRequest has unknown keys!", "")
 	}
@@ -2611,6 +2645,9 @@ type DescribeInstanceOperationsRequestParams struct {
 
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 计算组ID
+	ComputeGroupId *string `json:"ComputeGroupId,omitnil,omitempty" name:"ComputeGroupId"`
 }
 
 type DescribeInstanceOperationsRequest struct {
@@ -2630,6 +2667,9 @@ type DescribeInstanceOperationsRequest struct {
 
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 计算组ID
+	ComputeGroupId *string `json:"ComputeGroupId,omitnil,omitempty" name:"ComputeGroupId"`
 }
 
 func (r *DescribeInstanceOperationsRequest) ToJsonString() string {
@@ -2649,6 +2689,7 @@ func (r *DescribeInstanceOperationsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "ComputeGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceOperationsRequest has unknown keys!", "")
 	}
@@ -2954,6 +2995,9 @@ type DescribeInstancesRequestParams struct {
 
 	// 搜索标签列表，没匹配到则不过滤集群列表
 	SearchTags []*SearchTags `json:"SearchTags,omitnil,omitempty" name:"SearchTags"`
+
+	// 0 : 存算一体,1：存算分离,2:ALL
+	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
 type DescribeInstancesRequest struct {
@@ -2973,6 +3017,9 @@ type DescribeInstancesRequest struct {
 
 	// 搜索标签列表，没匹配到则不过滤集群列表
 	SearchTags []*SearchTags `json:"SearchTags,omitnil,omitempty" name:"SearchTags"`
+
+	// 0 : 存算一体,1：存算分离,2:ALL
+	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -2992,6 +3039,7 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "SearchTags")
+	delete(f, "InstanceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesRequest has unknown keys!", "")
 	}
@@ -3139,6 +3187,9 @@ type DescribeSlowQueryRecordsDownloadRequestParams struct {
 
 	// user
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 计算组列表
+	ComputeGroups []*string `json:"ComputeGroups,omitnil,omitempty" name:"ComputeGroups"`
 }
 
 type DescribeSlowQueryRecordsDownloadRequest struct {
@@ -3188,6 +3239,9 @@ type DescribeSlowQueryRecordsDownloadRequest struct {
 
 	// user
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 计算组列表
+	ComputeGroups []*string `json:"ComputeGroups,omitnil,omitempty" name:"ComputeGroups"`
 }
 
 func (r *DescribeSlowQueryRecordsDownloadRequest) ToJsonString() string {
@@ -3217,6 +3271,7 @@ func (r *DescribeSlowQueryRecordsDownloadRequest) FromJsonString(s string) error
 	delete(f, "SortField")
 	delete(f, "SortOrder")
 	delete(f, "UserName")
+	delete(f, "ComputeGroups")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSlowQueryRecordsDownloadRequest has unknown keys!", "")
 	}
@@ -3300,6 +3355,9 @@ type DescribeSlowQueryRecordsRequestParams struct {
 
 	// user
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 计算组列表
+	ComputeGroups []*string `json:"ComputeGroups,omitnil,omitempty" name:"ComputeGroups"`
 }
 
 type DescribeSlowQueryRecordsRequest struct {
@@ -3355,6 +3413,9 @@ type DescribeSlowQueryRecordsRequest struct {
 
 	// user
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 计算组列表
+	ComputeGroups []*string `json:"ComputeGroups,omitnil,omitempty" name:"ComputeGroups"`
 }
 
 func (r *DescribeSlowQueryRecordsRequest) ToJsonString() string {
@@ -3386,6 +3447,7 @@ func (r *DescribeSlowQueryRecordsRequest) FromJsonString(s string) error {
 	delete(f, "SortField")
 	delete(f, "SortOrder")
 	delete(f, "UserName")
+	delete(f, "ComputeGroups")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSlowQueryRecordsRequest has unknown keys!", "")
 	}
@@ -3439,6 +3501,9 @@ type DescribeSpecRequestParams struct {
 
 	// 机型名称
 	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
+
+	// 是否存算分离
+	IsSSC *bool `json:"IsSSC,omitnil,omitempty" name:"IsSSC"`
 }
 
 type DescribeSpecRequest struct {
@@ -3455,6 +3520,9 @@ type DescribeSpecRequest struct {
 
 	// 机型名称
 	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
+
+	// 是否存算分离
+	IsSSC *bool `json:"IsSSC,omitnil,omitempty" name:"IsSSC"`
 }
 
 func (r *DescribeSpecRequest) ToJsonString() string {
@@ -3473,6 +3541,7 @@ func (r *DescribeSpecRequest) FromJsonString(s string) error {
 	delete(f, "PayMode")
 	delete(f, "Zones")
 	delete(f, "SpecName")
+	delete(f, "IsSSC")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSpecRequest has unknown keys!", "")
 	}
@@ -4127,6 +4196,9 @@ type InstanceInfo struct {
 
 	// cn节点信息
 	CNSummary *NodesSummary `json:"CNSummary,omitnil,omitempty" name:"CNSummary"`
+
+	// 计算组个数
+	ComputeGroupCount *int64 `json:"ComputeGroupCount,omitnil,omitempty" name:"ComputeGroupCount"`
 }
 
 type InstanceNode struct {
@@ -4168,6 +4240,9 @@ type InstanceNode struct {
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 计算组ID
+	ComputeGroupId *string `json:"ComputeGroupId,omitnil,omitempty" name:"ComputeGroupId"`
 }
 
 type InstanceOperation struct {
@@ -4203,6 +4278,9 @@ type InstanceOperation struct {
 
 	// 操作明细
 	OperationDetail *string `json:"OperationDetail,omitnil,omitempty" name:"OperationDetail"`
+
+	// 计算组id
+	ComputerGroupId *string `json:"ComputerGroupId,omitnil,omitempty" name:"ComputerGroupId"`
 }
 
 // Predefined struct for user
@@ -4777,6 +4855,12 @@ type ModifyUserPrivilegesV3RequestParams struct {
 
 	// 用户链接来自的 IP	
 	WhiteHost *string `json:"WhiteHost,omitnil,omitempty" name:"WhiteHost"`
+
+	// 更新类型，默认0，1为更新绑定计算组
+	UpdateType *int64 `json:"UpdateType,omitnil,omitempty" name:"UpdateType"`
+
+	// 需绑定计算组列表
+	UpdateComputeGroups []*string `json:"UpdateComputeGroups,omitnil,omitempty" name:"UpdateComputeGroups"`
 }
 
 type ModifyUserPrivilegesV3Request struct {
@@ -4793,6 +4877,12 @@ type ModifyUserPrivilegesV3Request struct {
 
 	// 用户链接来自的 IP	
 	WhiteHost *string `json:"WhiteHost,omitnil,omitempty" name:"WhiteHost"`
+
+	// 更新类型，默认0，1为更新绑定计算组
+	UpdateType *int64 `json:"UpdateType,omitnil,omitempty" name:"UpdateType"`
+
+	// 需绑定计算组列表
+	UpdateComputeGroups []*string `json:"UpdateComputeGroups,omitnil,omitempty" name:"UpdateComputeGroups"`
 }
 
 func (r *ModifyUserPrivilegesV3Request) ToJsonString() string {
@@ -4811,6 +4901,8 @@ func (r *ModifyUserPrivilegesV3Request) FromJsonString(s string) error {
 	delete(f, "UserName")
 	delete(f, "UserPrivileges")
 	delete(f, "WhiteHost")
+	delete(f, "UpdateType")
+	delete(f, "UpdateComputeGroups")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserPrivilegesV3Request has unknown keys!", "")
 	}
@@ -5037,6 +5129,12 @@ type NodeInfos struct {
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 计算组id
+	ComputeGroupId *string `json:"ComputeGroupId,omitnil,omitempty" name:"ComputeGroupId"`
+
+	// rip
+	RIp *string `json:"RIp,omitnil,omitempty" name:"RIp"`
 }
 
 type NodesSummary struct {
@@ -6122,6 +6220,9 @@ type SlowQueryRecord struct {
 
 	// cpu执行时间 
 	CpuTimeMs *int64 `json:"CpuTimeMs,omitnil,omitempty" name:"CpuTimeMs"`
+
+	// 计算组
+	ComputeGroup *string `json:"ComputeGroup,omitnil,omitempty" name:"ComputeGroup"`
 }
 
 type Tag struct {
@@ -6277,4 +6378,7 @@ type ZoneInfo struct {
 
 	// 是否为主力园区
 	Main *bool `json:"Main,omitnil,omitempty" name:"Main"`
+
+	// 0表示未开通容器化，1表示已开通容器化
+	ContainerEnabled *int64 `json:"ContainerEnabled,omitnil,omitempty" name:"ContainerEnabled"`
 }

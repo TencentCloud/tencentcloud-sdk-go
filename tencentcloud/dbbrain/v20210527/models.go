@@ -6933,11 +6933,9 @@ type MongoDBIndex struct {
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 推荐索引列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexesToBuild []*IndexesToBuild `json:"IndexesToBuild,omitnil,omitempty" name:"IndexesToBuild"`
 
 	// 无效索引列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexesToDrop []*IndexesToDrop `json:"IndexesToDrop,omitnil,omitempty" name:"IndexesToDrop"`
 }
 
@@ -7157,11 +7155,9 @@ type ReceiveInfo struct {
 
 type ReceiveUin struct {
 	// 用户名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UinName *string `json:"UinName,omitnil,omitempty" name:"UinName"`
 
 	// 用户id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 }
 

@@ -83,20 +83,20 @@ func (r *ActivateCaCertificateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ActivateDeviceCertificateRequestParams struct {
-	// 集群id
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 设备证书序列号
+	// 设备证书的SN序列号，可以从 [DescribeDeviceCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
 	DeviceCertificateSn *string `json:"DeviceCertificateSn,omitnil,omitempty" name:"DeviceCertificateSn"`
 }
 
 type ActivateDeviceCertificateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群id
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 设备证书序列号
+	// 设备证书的SN序列号，可以从 [DescribeDeviceCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
 	DeviceCertificateSn *string `json:"DeviceCertificateSn,omitnil,omitempty" name:"DeviceCertificateSn"`
 }
 
@@ -144,14 +144,14 @@ func (r *ActivateDeviceCertificateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ApplyRegistrationCodeRequestParams struct {
-	// 集群id
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type ApplyRegistrationCodeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群id
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -203,59 +203,67 @@ func (r *ApplyRegistrationCodeResponse) FromJsonString(s string) error {
 }
 
 type AuthorizationPolicyItem struct {
-	// 规则ID
+	// 策略规则ID
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 集群ID
+	// MQTT集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 规则名
+	// 策略规则名
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
-	// 规则语法版本
+	// 规则语法版本，当前仅支持1，默认为1
 	Version *int64 `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 越小越优先
+	// 策略优先级，优先级ID越小表示策略越优先检查生效。可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
-	// allow/deny
+	// 决策
+	// allow：允许符合该策略的设备的访问请求。
+	// deny：拒绝覆盖该策略的设备的访问请求。
+	// 可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
 	Effect *string `json:"Effect,omitnil,omitempty" name:"Effect"`
 
-	// connect、pub、sub
+	// 操作
+	// connect：连接
+	// pub：发布mqtt消息
+	// sub：订阅mqtt消息
+	// 可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
 	Actions *string `json:"Actions,omitnil,omitempty" name:"Actions"`
 
-	// 资源
+	// 资源，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
 	Resources *string `json:"Resources,omitnil,omitempty" name:"Resources"`
 
-	// client
+	// 条件-连接设备ID，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
-	// 用户
+	// 条件-用户名，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// IP地址
+	// 条件-客户端IP地址，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
-	// 0，1，2
+	// 条件-服务质量，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
 	Qos *string `json:"Qos,omitnil,omitempty" name:"Qos"`
 
+	// 条件-保留消息，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)。
 	// 1：表示匹配retain消息
 	// 2：表示匹配非retain消息
 	// 3：表示匹配retain和非retain消息
 	Retain *int64 `json:"Retain,omitnil,omitempty" name:"Retain"`
 
-	// 描述
+	// 备注，长度不超过128个字符。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 1713164969433
+	// 创建时间。毫秒级时间戳 。
 	CreatedTime *int64 `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 1713164969433
+	// 更新时间。毫秒级时间戳 。
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type AuthorizationPolicyPriority struct {
-	// 策略id
+	// 授权策略规则id，可以从 [DescribeAuthorizationPolicies](https://cloud.tencent.com/document/api/1778/111074)接口获得。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 优先级
@@ -271,7 +279,7 @@ type BodyItem struct {
 }
 
 type CaCertificateItem struct {
-	// common name
+	// 证书的公用名(Common Name)
 	CaCn *string `json:"CaCn,omitnil,omitempty" name:"CaCn"`
 
 	// 证书内容
@@ -280,34 +288,38 @@ type CaCertificateItem struct {
 	// 证书序列号
 	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
 
-	// 证书格式
+	// 证书格式，当前仅支持 PEM 格式
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
 	// 验证证书内容
 	VerificationCertificate *string `json:"VerificationCertificate,omitnil,omitempty" name:"VerificationCertificate"`
 
-	// ca状态
+	// CA证书的状态
+	//     ACTIVE：激活
+	//     INACTIVE：未激活
+	//     REVOKED：吊销
+	//     PENDING_ACTIVATION：注册待激活
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 上次激活时间
+	// 上次激活时间，毫秒级时间戳 。
 	LastActivationTime *int64 `json:"LastActivationTime,omitnil,omitempty" name:"LastActivationTime"`
 
-	// 创建时间
+	// 创建时间，毫秒级时间戳 。
 	CreatedTime *int64 `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 预销毁时间
+	// 更新时间，毫秒级时间戳 。
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 上次去激活时间
+	// 上次去激活时间，毫秒级时间戳 。
 	LastInactivationTime *int64 `json:"LastInactivationTime,omitnil,omitempty" name:"LastInactivationTime"`
 
 	// Ca证书颁发者CN
 	CaIssuerCn *string `json:"CaIssuerCn,omitnil,omitempty" name:"CaIssuerCn"`
 
-	// 生效时间
+	// 生效时间，毫秒级时间戳 。
 	NotBeforeTime *int64 `json:"NotBeforeTime,omitnil,omitempty" name:"NotBeforeTime"`
 
-	// 失效时间
+	// 失效时间，毫秒级时间戳 。
 	NotAfterTime *int64 `json:"NotAfterTime,omitnil,omitempty" name:"NotAfterTime"`
 }
 
@@ -970,26 +982,26 @@ func (r *CreateJWTAuthenticatorResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTopicRequestParams struct {
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题，不能为空，只能包含字母、数字、“-”及“_”，3-100 字符。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 备注
+	// 备注，最长 128 字符
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type CreateTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题，不能为空，只能包含字母、数字、“-”及“_”，3-100 字符。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 备注
+	// 备注，最长 128 字符
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
@@ -1044,32 +1056,32 @@ func (r *CreateTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserRequestParams struct {
-	// 实例ID
+	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名
+	// 用户名，不能为空，只支持数字 大小写字母 分隔符("_","-")，不能超过 32 个字符
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
 	// 密码，该字段为空时候则后端会默认生成
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 备注
+	// 备注，长度不超过128个字符。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type CreateUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名
+	// 用户名，不能为空，只支持数字 大小写字母 分隔符("_","-")，不能超过 32 个字符
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
 	// 密码，该字段为空时候则后端会默认生成
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 备注
+	// 备注，长度不超过128个字符。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
@@ -1119,20 +1131,20 @@ func (r *CreateUserResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeactivateCaCertificateRequestParams struct {
-	// 集群id
+	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 证书序列号
+	// 证书序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
 	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
 }
 
 type DeactivateCaCertificateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群id
+	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 证书序列号
+	// 证书序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
 	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
 }
 
@@ -1180,20 +1192,20 @@ func (r *DeactivateCaCertificateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeactivateDeviceCertificateRequestParams struct {
-	// 集群id
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 设备证书序列号
+	// 设备证书的SN序列号，可以从 [DescribeDeviceCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、设备证书文件中获得。
 	DeviceCertificateSn *string `json:"DeviceCertificateSn,omitnil,omitempty" name:"DeviceCertificateSn"`
 }
 
 type DeactivateDeviceCertificateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群id
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 设备证书序列号
+	// 设备证书的SN序列号，可以从 [DescribeDeviceCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、设备证书文件中获得。
 	DeviceCertificateSn *string `json:"DeviceCertificateSn,omitnil,omitempty" name:"DeviceCertificateSn"`
 }
 
@@ -1241,26 +1253,26 @@ func (r *DeactivateDeviceCertificateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAuthenticatorRequestParams struct {
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 认证器类型:
 	// JWT：JWT认证器
 	// JWKS：JWKS认证器
-	// BYOC：一端一证认证器
+	// HTTP：HTTP认证器
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type DeleteAuthenticatorRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 认证器类型:
 	// JWT：JWT认证器
 	// JWKS：JWKS认证器
-	// BYOC：一端一证认证器
+	// HTTP：HTTP认证器
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -1308,20 +1320,20 @@ func (r *DeleteAuthenticatorResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAuthorizationPolicyRequestParams struct {
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 策略规则id
+	// 授权策略规则id，可以从 [DescribeAuthorizationPolicies](https://cloud.tencent.com/document/api/1778/111074)接口获得。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type DeleteAuthorizationPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 策略规则id
+	// 授权策略规则id，可以从 [DescribeAuthorizationPolicies](https://cloud.tencent.com/document/api/1778/111074)接口获得。
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
@@ -1369,20 +1381,20 @@ func (r *DeleteAuthorizationPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteCaCertificateRequestParams struct {
-	// 集群id
+	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 证书序列号
+	// 证书序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
 	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
 }
 
 type DeleteCaCertificateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群id
+	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 证书序列号
+	// 证书序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
 	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
 }
 
@@ -1491,14 +1503,14 @@ func (r *DeleteDeviceCertificateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteInsPublicEndpointRequestParams struct {
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DeleteInsPublicEndpointRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -1721,20 +1733,26 @@ func (r *DeleteUserResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAuthenticatorRequestParams struct {
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 认证器类型: JWT：JWT认证器 JWKS：JWKS认证器 HTTP:HTTP认证器
+	// 认证器类型:
+	// JWT：JWT认证器
+	// JWKS：JWKS认证器
+	// HTTP：HTTP认证器
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type DescribeAuthenticatorRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 认证器类型: JWT：JWT认证器 JWKS：JWKS认证器 HTTP:HTTP认证器
+	// 认证器类型:
+	// JWT：JWT认证器
+	// JWKS：JWKS认证器
+	// HTTP：HTTP认证器
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
@@ -1785,14 +1803,14 @@ func (r *DescribeAuthenticatorResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAuthorizationPoliciesRequestParams struct {
-	// 集群ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeAuthorizationPoliciesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -1939,14 +1957,14 @@ func (r *DescribeCaCertificateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCaCertificatesRequestParams struct {
-	// 集群ID
+	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeCaCertificatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -1996,7 +2014,7 @@ func (r *DescribeCaCertificatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeClientListRequestParams struct {
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 客户端名
@@ -2009,7 +2027,7 @@ type DescribeClientListRequestParams struct {
 type DescribeClientListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 客户端名
@@ -2067,20 +2085,20 @@ func (r *DescribeClientListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDeviceCertificateRequestParams struct {
-	// 设备证书sn
+	// 设备证书的SN序列号，用于唯一标识一个设备证书。
 	DeviceCertificateSn *string `json:"DeviceCertificateSn,omitnil,omitempty" name:"DeviceCertificateSn"`
 
-	// 集群id
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeDeviceCertificateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 设备证书sn
+	// 设备证书的SN序列号，用于唯一标识一个设备证书。
 	DeviceCertificateSn *string `json:"DeviceCertificateSn,omitnil,omitempty" name:"DeviceCertificateSn"`
 
-	// 集群id
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -2106,22 +2124,26 @@ func (r *DescribeDeviceCertificateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDeviceCertificateResponseParams struct {
-	// 创建时间
+	// 创建时间，毫秒级时间戳 。
 	CreatedTime *int64 `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 上次更新时间
+	// 上次更新时间，毫秒级时间戳 。
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 证书失效日期
+	// 证书失效日期，毫秒级时间戳 。
 	NotAfterTime *int64 `json:"NotAfterTime,omitnil,omitempty" name:"NotAfterTime"`
 
-	// 上次激活时间
+	// 上次激活时间，毫秒级时间戳 。
 	LastActivationTime *int64 `json:"LastActivationTime,omitnil,omitempty" name:"LastActivationTime"`
 
-	// 上次取消激活时间
+	// 上次取消激活时间，毫秒级时间戳 。
 	LastInactivationTime *int64 `json:"LastInactivationTime,omitnil,omitempty" name:"LastInactivationTime"`
 
-	// 证书状态
+	// 设备证书的状态
+	//     ACTIVE：激活 
+	//     INACTIVE：未激活
+	//     REVOKED：吊销
+	//     PENDING_ACTIVATION：注册待激活
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// Ca证书序列号
@@ -2136,17 +2158,18 @@ type DescribeDeviceCertificateResponseParams struct {
 	// 设备证书common name
 	DeviceCertificateCn *string `json:"DeviceCertificateCn,omitnil,omitempty" name:"DeviceCertificateCn"`
 
-	// 证书格式
+	// 证书格式，当前仅支持PEM格式
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
 	// 客户端id
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
-	//     API, 手动注册   
-	//     JITP 自动注册
+	// 证书来源    
+	// API：手动注册   
+	// JITP：自动注册
 	CertificateSource *string `json:"CertificateSource,omitnil,omitempty" name:"CertificateSource"`
 
-	// 证书生效开始时间
+	// 证书生效开始时间，毫秒级时间戳 。
 	NotBeforeTime *int64 `json:"NotBeforeTime,omitnil,omitempty" name:"NotBeforeTime"`
 
 	// 组织单位
@@ -2174,10 +2197,18 @@ func (r *DescribeDeviceCertificateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDeviceCertificatesRequestParams struct {
-	// 集群ID
+	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 过滤器支持ClientId、CaSn、DeviceCertificateSn、Status搜索
+	// 支持搜索参数
+	// ClientId：客户端id
+	// CaSn：所属的CA证书SN
+	// DeviceCertificateSn：设备证书SN
+	// DeviceCertificateCn：设备证书CN
+	// OrganizationalUnit：证书OU
+	// NotAfterEnd：过期时间小于等于指定时间的证书
+	// NotAfterStart：过期时间大于等于指定时间的证书
+	// Status：证书状态
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页limit
@@ -2196,10 +2227,18 @@ type DescribeDeviceCertificatesRequestParams struct {
 type DescribeDeviceCertificatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 过滤器支持ClientId、CaSn、DeviceCertificateSn、Status搜索
+	// 支持搜索参数
+	// ClientId：客户端id
+	// CaSn：所属的CA证书SN
+	// DeviceCertificateSn：设备证书SN
+	// DeviceCertificateCn：设备证书CN
+	// OrganizationalUnit：证书OU
+	// NotAfterEnd：过期时间小于等于指定时间的证书
+	// NotAfterStart：过期时间大于等于指定时间的证书
+	// Status：证书状态
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 分页limit
@@ -2268,14 +2307,14 @@ func (r *DescribeDeviceCertificatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInsPublicEndpointsRequestParams struct {
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeInsPublicEndpointsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -2306,7 +2345,7 @@ type DescribeInsPublicEndpointsResponseParams struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 带宽
+	// 带宽，单位Mbps
 	Bandwidth *int64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
 	// 公网访问规则
@@ -2342,14 +2381,14 @@ func (r *DescribeInsPublicEndpointsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInsVPCEndpointsRequestParams struct {
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeInsVPCEndpointsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -2839,34 +2878,34 @@ func (r *DescribeSharedSubscriptionLagResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicListRequestParams struct {
-	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 查询条件列表:
 	// 支持TopicName模糊查询
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 查询起始位置
+	// 查询起始位置，默认0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询结果限制数量
+	// 查询结果限制数量，默认0，最大20
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeTopicListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 查询条件列表:
 	// 支持TopicName模糊查询
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 查询起始位置
+	// 查询起始位置，默认0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询结果限制数量
+	// 查询结果限制数量，默认0，最大20
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -2995,34 +3034,34 @@ func (r *DescribeTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserListRequestParams struct {
-	// 实例ID
+	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 查询条件列表支持字段
-	// Username：Username模糊查询
+	// Username：按照【用户名】进行过滤，支持模糊过滤，类型：String
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 查询起始位置
+	// 查询起始位置，默认值0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询结果限制数量
+	// 查询结果限制数量，默认值20，最大值100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeUserListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 查询条件列表支持字段
-	// Username：Username模糊查询
+	// Username：按照【用户名】进行过滤，支持模糊过滤，类型：String
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 查询起始位置
+	// 查询起始位置，默认值0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询结果限制数量
+	// 查询结果限制数量，默认值20，最大值100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -3157,30 +3196,48 @@ type IpRule struct {
 }
 
 type MQTTAuthenticatorItem struct {
-	// 认证器类型: JWT：JWT认证器 JWKS：JWKS认证器 BYOC：一端一证认证器
+	// 认证器类型
+	// JWT：JWT认证器
+	// JWKS：JWKS认证器
+	// HTTP：HTTP认证器
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 认证器配置
+	// HTTP认证器
+	// headers（请求头）：标准请求头和自定义请求头
+	// endpoint（接入点）：认证服务器接入点
+	// method（http请求方法）：POST/GET
+	// readTimeout（读超时时间）：读取认证服务器数据超时时间，单位秒
+	// connectTimeout（连接超时时间）：连接认证服务器超时时间，单位秒
+	// body（请求体）：http请求体
+	// concurrency（并发数）：最大并发请求数
+	// 样例：{"headers":[{"key":"Content-type","value":"application/json"},{"key":"username","value":"${Username}"}],"endpoint":"https://127.0.0.1:443","method":"POST","readTimeout":10,"connectTimeout":10,"body":[{"key":"client-id","value":"${ClientId}"}],"concurrency":8}
+	// 
+	// 参考 [认证管理概述](https://cloud.tencent.com/document/product/1778/114813)
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 
 	// 认证器状态
+	// open：认证器打开
+	// close：认证器关闭
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 创建时间
+	// 创建时间，毫秒级时间戳 。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 说明
+	// 说明，最长 128 字符。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type MQTTClientInfo struct {
-	// 客户端唯一标识
+	// 客户端ID
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
 	// 客户端网络地址
 	ClientAddress *string `json:"ClientAddress,omitnil,omitempty" name:"ClientAddress"`
 
-	// MQTT 协议版本，4 表示 MQTT 3.1.1
+	// MQTT 协议版本
+	// 3：表示MQTT 3.1版本
+	// 4：表示 MQTT 3.1.1
+	// 5:   标识MQTT 5.0协议
 	ProtocolVersion *int64 `json:"ProtocolVersion,omitnil,omitempty" name:"ProtocolVersion"`
 
 	// 保持连接时间，单位：秒
@@ -3189,13 +3246,13 @@ type MQTTClientInfo struct {
 	// 连接状态，CONNECTED 已连接，DISCONNECTED 未连接
 	ConnectionStatus *string `json:"ConnectionStatus,omitnil,omitempty" name:"ConnectionStatus"`
 
-	// 客户端创建时间
+	// 客户端创建时间，毫秒级时间戳 。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 上次建立连接时间
+	// 上次建立连接时间，毫秒级时间戳 。
 	ConnectTime *int64 `json:"ConnectTime,omitnil,omitempty" name:"ConnectTime"`
 
-	// 上次断开连接时间，仅对持久会话（cleanSession=false）并且客户端当前未连接时有意义
+	// 上次断开连接时间，仅对持久会话（cleanSession=false）并且客户端当前未连接时有意义，毫秒级时间戳 。
 	DisconnectTime *int64 `json:"DisconnectTime,omitnil,omitempty" name:"DisconnectTime"`
 
 	// 客户端的订阅列表
@@ -3207,6 +3264,9 @@ type MQTTClientSubscription struct {
 	TopicFilter *string `json:"TopicFilter,omitnil,omitempty" name:"TopicFilter"`
 
 	// 服务质量等级
+	// 0: 至多一次
+	// 1: 至少一次
+	// 2: 恰好一次
 	Qos *int64 `json:"Qos,omitnil,omitempty" name:"Qos"`
 
 	// 堆积数量
@@ -3366,10 +3426,10 @@ type MQTTUserItem struct {
 	// 备注信息
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 创建时间，秒为单位
+	// 创建时间，毫秒级时间戳 。
 	CreatedTime *int64 `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 修改时间，秒为单位
+	// 修改时间，毫秒级时间戳 。
 	ModifiedTime *int64 `json:"ModifiedTime,omitnil,omitempty" name:"ModifiedTime"`
 }
 
@@ -4093,26 +4153,26 @@ func (r *ModifyJWTAuthenticatorResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTopicRequestParams struct {
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题，不能为空，只能包含字母、数字、“-”及“_”，3-100 字符。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 备注信息
+	// 备注信息，最长 128 字符
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type ModifyTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题
+	// 主题，不能为空，只能包含字母、数字、“-”及“_”，3-100 字符。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 备注信息
+	// 备注信息，最长 128 字符
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
@@ -4161,26 +4221,26 @@ func (r *ModifyTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUserRequestParams struct {
-	// 实例ID
+	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用户名
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 备注
+	// 备注，长度不超过128个字符。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type ModifyUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用户名
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 备注
+	// 备注，长度不超过128个字符。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
@@ -4285,10 +4345,10 @@ type PublicAccessRule struct {
 
 // Predefined struct for user
 type PublishMessageRequestParams struct {
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消息 payload，需要按 encoding 指定的编码方式进行编码
+	// 消息负载 Payload，是消息的实际内容，需要按 encoding 指定的编码方式进行编码
 	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
 
 	// 消息目的主题，该参数与 TargetClientId 二选一
@@ -4301,6 +4361,9 @@ type PublishMessageRequestParams struct {
 	Encoding *string `json:"Encoding,omitnil,omitempty" name:"Encoding"`
 
 	// 消息的服务质量等级，默认为 1
+	// QoS 0（至多一次）消息发送后，不保证接收方一定收到，也不要求接收方确认。
+	// QoS 1（至少一次）消息至少被接收方成功接收一次，但可能重复。
+	// QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重复。
 	Qos *int64 `json:"Qos,omitnil,omitempty" name:"Qos"`
 
 	// 是否为保留消息，默认为 false，且仅支持发布到主题的消息设置为 true
@@ -4310,10 +4373,10 @@ type PublishMessageRequestParams struct {
 type PublishMessageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消息 payload，需要按 encoding 指定的编码方式进行编码
+	// 消息负载 Payload，是消息的实际内容，需要按 encoding 指定的编码方式进行编码
 	Payload *string `json:"Payload,omitnil,omitempty" name:"Payload"`
 
 	// 消息目的主题，该参数与 TargetClientId 二选一
@@ -4326,6 +4389,9 @@ type PublishMessageRequest struct {
 	Encoding *string `json:"Encoding,omitnil,omitempty" name:"Encoding"`
 
 	// 消息的服务质量等级，默认为 1
+	// QoS 0（至多一次）消息发送后，不保证接收方一定收到，也不要求接收方确认。
+	// QoS 1（至少一次）消息至少被接收方成功接收一次，但可能重复。
+	// QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重复。
 	Qos *int64 `json:"Qos,omitnil,omitempty" name:"Qos"`
 
 	// 是否为保留消息，默认为 false，且仅支持发布到主题的消息设置为 true
@@ -4637,7 +4703,7 @@ type TagFilter struct {
 
 // Predefined struct for user
 type UpdateAuthorizationPolicyPriorityRequestParams struct {
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 策略ID和优先级
@@ -4647,7 +4713,7 @@ type UpdateAuthorizationPolicyPriorityRequestParams struct {
 type UpdateAuthorizationPolicyPriorityRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 策略ID和优先级

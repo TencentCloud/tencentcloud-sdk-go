@@ -302,7 +302,7 @@ type BatchCreateRoomRequestParams struct {
 	// 低代码平台的SdkAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 创建房间ID列表
+	// 创建课堂ID列表
 	RoomInfos []*RoomInfo `json:"RoomInfos,omitnil,omitempty" name:"RoomInfos"`
 }
 
@@ -312,7 +312,7 @@ type BatchCreateRoomRequest struct {
 	// 低代码平台的SdkAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 创建房间ID列表
+	// 创建课堂ID列表
 	RoomInfos []*RoomInfo `json:"RoomInfos,omitnil,omitempty" name:"RoomInfos"`
 }
 
@@ -1075,13 +1075,13 @@ func (r *CreateGroupWithSubGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRoomRequestParams struct {
-	// 房间名称。
+	// 课堂名称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 预定的房间开始时间，unix时间戳（秒）。
+	// 预定的课堂开始时间，unix时间戳（秒）。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 预定的房间结束时间，unix时间戳（秒）。
+	// 预定的课堂结束时间，unix时间戳（秒）。
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 低代码互动课堂的SdkAppId。
@@ -1093,12 +1093,10 @@ type CreateRoomRequestParams struct {
 	// 3 全高清
 	Resolution *uint64 `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。该取值影响计费，请根据业务实际情况设置。计费规则见“购买指南”下“计费概述”。
+	// 设置课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。该取值影响计费，请根据业务实际情况设置。计费规则见“购买指南”下“计费概述”。
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil,omitempty" name:"MaxMicNumber"`
 
-	// 房间子类型，可以有以下取值：
-	// videodoc 文档+视频
-	// video 纯视频
+	// 课堂子类型，可以有以下取值：videodoc 文档+视频video 纯视频
 	SubType *string `json:"SubType,omitnil,omitempty" name:"SubType"`
 
 	// 老师ID。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有老师权限。
@@ -1136,7 +1134,7 @@ type CreateRoomRequestParams struct {
 	// 录制模板。未配置时默认取值0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
 	RecordLayout *uint64 `json:"RecordLayout,omitnil,omitempty" name:"RecordLayout"`
 
-	// 房间绑定的群组ID,非空时限制组成员进入
+	// 课堂绑定的群组ID,非空时限制组成员进入
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 是否允许老师/助教直接控制学生的摄像头/麦克风。可以有以下取值：
@@ -1155,8 +1153,7 @@ type CreateRoomRequestParams struct {
 	// 开启课后评分。 0：不开启(默认)  1：开启
 	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitnil,omitempty" name:"IsGradingRequiredPostClass"`
 
-	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (预留参数，暂未开放)
-	// 注：大班课的布局(layout)只有三分屏
+	// 课堂类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (预留参数，暂未开放)注：大班课的布局(layout)只有三分屏
 	RoomType *int64 `json:"RoomType,omitnil,omitempty" name:"RoomType"`
 
 	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
@@ -1193,13 +1190,13 @@ type CreateRoomRequestParams struct {
 type CreateRoomRequest struct {
 	*tchttp.BaseRequest
 	
-	// 房间名称。
+	// 课堂名称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 预定的房间开始时间，unix时间戳（秒）。
+	// 预定的课堂开始时间，unix时间戳（秒）。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 预定的房间结束时间，unix时间戳（秒）。
+	// 预定的课堂结束时间，unix时间戳（秒）。
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 低代码互动课堂的SdkAppId。
@@ -1211,12 +1208,10 @@ type CreateRoomRequest struct {
 	// 3 全高清
 	Resolution *uint64 `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。该取值影响计费，请根据业务实际情况设置。计费规则见“购买指南”下“计费概述”。
+	// 设置课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。该取值影响计费，请根据业务实际情况设置。计费规则见“购买指南”下“计费概述”。
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil,omitempty" name:"MaxMicNumber"`
 
-	// 房间子类型，可以有以下取值：
-	// videodoc 文档+视频
-	// video 纯视频
+	// 课堂子类型，可以有以下取值：videodoc 文档+视频video 纯视频
 	SubType *string `json:"SubType,omitnil,omitempty" name:"SubType"`
 
 	// 老师ID。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有老师权限。
@@ -1252,7 +1247,7 @@ type CreateRoomRequest struct {
 	// 录制模板。未配置时默认取值0。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
 	RecordLayout *uint64 `json:"RecordLayout,omitnil,omitempty" name:"RecordLayout"`
 
-	// 房间绑定的群组ID,非空时限制组成员进入
+	// 课堂绑定的群组ID,非空时限制组成员进入
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 是否允许老师/助教直接控制学生的摄像头/麦克风。可以有以下取值：
@@ -1271,8 +1266,7 @@ type CreateRoomRequest struct {
 	// 开启课后评分。 0：不开启(默认)  1：开启
 	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitnil,omitempty" name:"IsGradingRequiredPostClass"`
 
-	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (预留参数，暂未开放)
-	// 注：大班课的布局(layout)只有三分屏
+	// 课堂类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (预留参数，暂未开放)注：大班课的布局(layout)只有三分屏
 	RoomType *int64 `json:"RoomType,omitnil,omitempty" name:"RoomType"`
 
 	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
@@ -1783,14 +1777,14 @@ func (r *DeleteRecordResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRoomRequestParams struct {
-	// 房间ID。
+	// 课堂ID。
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 }
 
 type DeleteRoomRequest struct {
 	*tchttp.BaseRequest
 	
-	// 房间ID。
+	// 课堂ID。
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 }
 
@@ -2154,7 +2148,7 @@ func (r *DescribeAppDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCurrentMemberListRequestParams struct {
-	// 房间Id。
+	// 课堂Id。
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 分页查询当前页数，从1开始递增。
@@ -2167,7 +2161,7 @@ type DescribeCurrentMemberListRequestParams struct {
 type DescribeCurrentMemberListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 房间Id。
+	// 课堂Id。
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 分页查询当前页数，从1开始递增。
@@ -3290,7 +3284,7 @@ func (r *DescribeRoomForbiddenUserResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRoomRequestParams struct {
-	// 房间Id。
+	// 课堂Id。
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 请求RTMP推流链接，0：否，1：是，默认为0。
@@ -3300,7 +3294,7 @@ type DescribeRoomRequestParams struct {
 type DescribeRoomRequest struct {
 	*tchttp.BaseRequest
 	
-	// 房间Id。
+	// 课堂Id。
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 请求RTMP推流链接，0：否，1：是，默认为0。
@@ -3329,13 +3323,13 @@ func (r *DescribeRoomRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRoomResponseParams struct {
-	// 房间名称。
+	// 课堂名称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 预定的房间开始时间，unix时间戳（秒）。
+	// 预定的课堂开始时间，unix时间戳（秒）。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 预定的房间结束时间，unix时间戳（秒）。
+	// 预定的课堂结束时间，unix时间戳（秒）。
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 老师的UserId。
@@ -3353,7 +3347,7 @@ type DescribeRoomResponseParams struct {
 	// 3 全高清
 	Resolution *uint64 `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
+	// 设置课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil,omitempty" name:"MaxMicNumber"`
 
 	// 进入课堂时是否自动连麦。可以有以下取值：
@@ -3366,9 +3360,7 @@ type DescribeRoomResponseParams struct {
 	// 1 开启高音质
 	AudioQuality *uint64 `json:"AudioQuality,omitnil,omitempty" name:"AudioQuality"`
 
-	// 房间子类型，可以有以下取值：
-	// videodoc 文档+视频
-	// video 纯视频
+	// 课堂子类型，可以有以下取值：videodoc 文档+视频video 纯视频
 	SubType *string `json:"SubType,omitnil,omitempty" name:"SubType"`
 
 	// 上课后是否禁止自动录制。可以有以下取值：
@@ -3386,7 +3378,7 @@ type DescribeRoomResponseParams struct {
 	// 课堂状态。0为未开始，1为已开始，2为已结束，3为已过期。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 房间绑定的群组ID
+	// 课堂绑定的群组ID
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 打开学生麦克风/摄像头的授权开关
@@ -3400,11 +3392,10 @@ type DescribeRoomResponseParams struct {
 	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
 	VideoOrientation *uint64 `json:"VideoOrientation,omitnil,omitempty" name:"VideoOrientation"`
 
-	// 该房间是否开启了课后评分功能。0：未开启  1：开启
+	// 该课堂是否开启了课后评分功能。0：未开启  1：开启
 	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitnil,omitempty" name:"IsGradingRequiredPostClass"`
 
-	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
-	// 注：大班课的布局(layout)只有三分屏
+	// 课堂类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)注：大班课的布局(layout)只有三分屏
 	RoomType *int64 `json:"RoomType,omitnil,omitempty" name:"RoomType"`
 
 	// 录制时长
@@ -3465,7 +3456,7 @@ func (r *DescribeRoomResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRoomStatisticsRequestParams struct {
-	// 房间Id。
+	// 课堂Id。
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 分页查询当前页数，从1开始递增。
@@ -3478,7 +3469,7 @@ type DescribeRoomStatisticsRequestParams struct {
 type DescribeRoomStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 房间Id。
+	// 课堂Id。
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 分页查询当前页数，从1开始递增。
@@ -3529,10 +3520,10 @@ type DescribeRoomStatisticsResponseParams struct {
 	// 秒级unix时间戳，实际房间结束时间。
 	RealEndTime *uint64 `json:"RealEndTime,omitnil,omitempty" name:"RealEndTime"`
 
-	// 房间消息总数。
+	// 课堂消息总数。
 	MessageCount *uint64 `json:"MessageCount,omitnil,omitempty" name:"MessageCount"`
 
-	// 房间连麦总数。
+	// 课堂连麦总数。
 	MicCount *uint64 `json:"MicCount,omitnil,omitempty" name:"MicCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4169,7 +4160,7 @@ func (r *ForbidSendMsgResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetRoomEventRequestParams struct {
-	// 房间Id。
+	// 课堂Id。
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 应用Id。
@@ -4201,7 +4192,7 @@ type GetRoomEventRequestParams struct {
 type GetRoomEventRequest struct {
 	*tchttp.BaseRequest
 	
-	// 房间Id。
+	// 课堂Id。
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 应用Id。
@@ -4255,7 +4246,7 @@ func (r *GetRoomEventRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetRoomEventResponseParams struct {
-	// 该房间的事件总数，keyword搜索不影响该值。
+	// 该课堂的事件总数，keyword搜索不影响该值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 详细事件内容。包含相应的类型、发生的时间戳。
@@ -4286,7 +4277,7 @@ type GetRoomMessageRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 房间Id。	
+	// 课堂Id。	
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 消息序列。获取该序列以前的消息(不包含该seq消息)
@@ -4302,7 +4293,7 @@ type GetRoomMessageRequest struct {
 	// 低代码互动课堂的SdkAppId。
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 房间Id。	
+	// 课堂Id。	
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 消息序列。获取该序列以前的消息(不包含该seq消息)
@@ -4431,7 +4422,7 @@ type GetRoomsResponseParams struct {
 	// 总数
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
-	// 房间列表
+	// 课堂列表
 	Rooms []*RoomItem `json:"Rooms,omitnil,omitempty" name:"Rooms"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4586,7 +4577,7 @@ type ImageMsgContent struct {
 
 // Predefined struct for user
 type KickUserFromRoomRequestParams struct {
-	// 房间Id。
+	// 课堂Id。
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 低代码平台的SdkAppId。
@@ -4607,7 +4598,7 @@ type KickUserFromRoomRequestParams struct {
 type KickUserFromRoomRequest struct {
 	*tchttp.BaseRequest
 	
-	// 房间Id。
+	// 课堂Id。
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 低代码平台的SdkAppId。
@@ -6518,7 +6509,7 @@ type UnblockKickedUserRequestParams struct {
 	// 低代码平台的SdkAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 房间Id。
+	// 课堂Id。
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 需要解禁踢出的成员Id。
@@ -6531,7 +6522,7 @@ type UnblockKickedUserRequest struct {
 	// 低代码平台的SdkAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
 
-	// 房间Id。
+	// 课堂Id。
 	RoomId *uint64 `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 需要解禁踢出的成员Id。

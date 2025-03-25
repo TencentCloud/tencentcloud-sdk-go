@@ -59,7 +59,6 @@ type AutoDelStrategyInfoResp struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 自动删除策略列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrategyInfo []*AutoDelStrategyInfo `json:"StrategyInfo,omitnil,omitempty" name:"StrategyInfo"`
 }
 
@@ -180,7 +179,6 @@ func (r *BatchDeleteRepositoryPersonalResponse) FromJsonString(s string) error {
 
 type CVEWhitelistItem struct {
 	// 漏洞白名单 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CVEID *string `json:"CVEID,omitnil,omitempty" name:"CVEID"`
 }
 
@@ -222,7 +220,6 @@ type CheckInstanceNameResponseParams struct {
 	IsValidated *bool `json:"IsValidated,omitnil,omitempty" name:"IsValidated"`
 
 	// 1: Illegal（名称非法）, 2:Reserved（名字保留）, 3:Existed（名字已存在）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DetailCode *int64 `json:"DetailCode,omitnil,omitempty" name:"DetailCode"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -812,7 +809,6 @@ func (r *CreateInstanceTokenRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateInstanceTokenResponseParams struct {
 	// 用户名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
 	// 访问凭证
@@ -822,7 +818,6 @@ type CreateInstanceTokenResponseParams struct {
 	ExpTime *int64 `json:"ExpTime,omitnil,omitempty" name:"ExpTime"`
 
 	// 长期凭证的TokenId，短期凭证没有TokenId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TokenId *string `json:"TokenId,omitnil,omitempty" name:"TokenId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3508,7 +3503,6 @@ type DescribeApplicationTriggerLogPersonalResp struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 触发日志列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogInfo []*TriggerLogResp `json:"LogInfo,omitnil,omitempty" name:"LogInfo"`
 }
 
@@ -6639,7 +6633,6 @@ type FavorResp struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 仓库信息数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepoInfo []*Favors `json:"RepoInfo,omitnil,omitempty" name:"RepoInfo"`
 }
 
@@ -6651,27 +6644,21 @@ type Favors struct {
 	RepoType *string `json:"RepoType,omitnil,omitempty" name:"RepoType"`
 
 	// Pull总共的次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PullCount *int64 `json:"PullCount,omitnil,omitempty" name:"PullCount"`
 
 	// 仓库收藏次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FavorCount *int64 `json:"FavorCount,omitnil,omitempty" name:"FavorCount"`
 
 	// 仓库是否公开
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Public *int64 `json:"Public,omitnil,omitempty" name:"Public"`
 
 	// 是否为官方所有
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsQcloudOfficial *bool `json:"IsQcloudOfficial,omitnil,omitempty" name:"IsQcloudOfficial"`
 
 	// 仓库Tag的数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagCount *int64 `json:"TagCount,omitnil,omitempty" name:"TagCount"`
 
 	// Logo
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Logo *string `json:"Logo,omitnil,omitempty" name:"Logo"`
 
 	// 地域
@@ -8220,11 +8207,9 @@ type PeerReplicationOption struct {
 
 type Permission struct {
 	// 资源路径，目前仅支持Namespace
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
 	// 动作，目前仅支持：tcr:PushRepository、tcr:PullRepository、tcr:CreateRepository、tcr:CreateHelmChart、tcr:DescribeHelmCharts
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Actions []*string `json:"Actions,omitnil,omitempty" name:"Actions"`
 }
 
@@ -8300,19 +8285,15 @@ type Registry struct {
 	InternalEndpoint *string `json:"InternalEndpoint,omitnil,omitempty" name:"InternalEndpoint"`
 
 	// 实例云标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSpecification *TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 
 	// 实例过期时间（预付费）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpiredAt *string `json:"ExpiredAt,omitnil,omitempty" name:"ExpiredAt"`
 
 	// 实例付费类型，0表示后付费，1表示预付费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMod *int64 `json:"PayMod,omitnil,omitempty" name:"PayMod"`
 
 	// 预付费续费标识，0表示手动续费，1表示自动续费，2不续费并且不通知
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 是否开启实例删除保护，false表示不开启
@@ -8346,7 +8327,6 @@ type RegistryStatus struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 附加状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Conditions []*RegistryCondition `json:"Conditions,omitnil,omitempty" name:"Conditions"`
 }
 
@@ -8551,7 +8531,6 @@ type RepositoryInfoResp struct {
 	CreationTime *string `json:"CreationTime,omitnil,omitempty" name:"CreationTime"`
 
 	// 镜像仓库描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 是否为公有镜像
@@ -8648,7 +8627,6 @@ type RetentionTask struct {
 
 type SameImagesResp struct {
 	// tag列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SameImages []*string `json:"SameImages,omitnil,omitempty" name:"SameImages"`
 }
 
@@ -8687,19 +8665,15 @@ type SecurityPolicy struct {
 
 type ServiceAccount struct {
 	// 服务级账号名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 是否禁用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Disable *bool `json:"Disable,omitnil,omitempty" name:"Disable"`
 
 	// 过期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpiresAt *int64 `json:"ExpiresAt,omitnil,omitempty" name:"ExpiresAt"`
 
 	// 创建时间
@@ -8707,21 +8681,17 @@ type ServiceAccount struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Permissions []*Permission `json:"Permissions,omitnil,omitempty" name:"Permissions"`
 }
 
 type Tag struct {
 	// 云标签的key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 云标签的值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -8742,7 +8712,6 @@ type TagInfo struct {
 	CreationTime *string `json:"CreationTime,omitnil,omitempty" name:"CreationTime"`
 
 	// 制品创建至今时间长度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DurationDays *string `json:"DurationDays,omitnil,omitempty" name:"DurationDays"`
 
 	// 标注的制品作者
@@ -8789,11 +8758,9 @@ type TagInfoResp struct {
 
 type TagSpecification struct {
 	// 默认值为instance
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 云标签数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
@@ -8808,14 +8775,12 @@ type TaskDetail struct {
 	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
 	// 任务的状态信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskMessage *string `json:"TaskMessage,omitnil,omitempty" name:"TaskMessage"`
 
 	// 任务开始时间
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 任务结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishedTime *string `json:"FinishedTime,omitnil,omitempty" name:"FinishedTime"`
 }
 
@@ -8833,11 +8798,9 @@ type TcrImageInfo struct {
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 制品类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 
 	// KMS 签名信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KmsSignature *string `json:"KmsSignature,omitnil,omitempty" name:"KmsSignature"`
 }
 
@@ -8875,11 +8838,9 @@ type TcrNamespaceInfo struct {
 	NamespaceId *int64 `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 实例云标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSpecification *TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 
 	// 命名空间元数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Metadata []*KeyValueString `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 
 	// 漏洞白名单列表
@@ -8923,111 +8884,86 @@ type TriggerInvokeCondition struct {
 	InvokeMethod *string `json:"InvokeMethod,omitnil,omitempty" name:"InvokeMethod"`
 
 	// 触发表达式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InvokeExpr *string `json:"InvokeExpr,omitnil,omitempty" name:"InvokeExpr"`
 }
 
 type TriggerInvokePara struct {
 	// AppId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 
 	// TKE集群ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// TKE集群命名空间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// TKE集群工作负载名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
 	// TKE集群工作负载中容器名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerName *string `json:"ContainerName,omitnil,omitempty" name:"ContainerName"`
 
 	// TKE集群地域数字ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterRegion *int64 `json:"ClusterRegion,omitnil,omitempty" name:"ClusterRegion"`
 }
 
 type TriggerInvokeResult struct {
 	// 请求TKE返回值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
 
 	// 请求TKE返回信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
 }
 
 type TriggerLogResp struct {
 	// 仓库名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepoName *string `json:"RepoName,omitnil,omitempty" name:"RepoName"`
 
 	// Tag名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagName *string `json:"TagName,omitnil,omitempty" name:"TagName"`
 
 	// 触发器名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerName *string `json:"TriggerName,omitnil,omitempty" name:"TriggerName"`
 
 	// 触发方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InvokeSource *string `json:"InvokeSource,omitnil,omitempty" name:"InvokeSource"`
 
 	// 触发动作
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InvokeAction *string `json:"InvokeAction,omitnil,omitempty" name:"InvokeAction"`
 
 	// 触发时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InvokeTime *string `json:"InvokeTime,omitnil,omitempty" name:"InvokeTime"`
 
 	// 触发条件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InvokeCondition *TriggerInvokeCondition `json:"InvokeCondition,omitnil,omitempty" name:"InvokeCondition"`
 
 	// 触发参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InvokePara *TriggerInvokePara `json:"InvokePara,omitnil,omitempty" name:"InvokePara"`
 
 	// 触发结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InvokeResult *TriggerInvokeResult `json:"InvokeResult,omitnil,omitempty" name:"InvokeResult"`
 }
 
 type TriggerResp struct {
 	// 触发器名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerName *string `json:"TriggerName,omitnil,omitempty" name:"TriggerName"`
 
 	// 触发来源
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InvokeSource *string `json:"InvokeSource,omitnil,omitempty" name:"InvokeSource"`
 
 	// 触发动作
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InvokeAction *string `json:"InvokeAction,omitnil,omitempty" name:"InvokeAction"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 触发条件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InvokeCondition *TriggerInvokeCondition `json:"InvokeCondition,omitnil,omitempty" name:"InvokeCondition"`
 
 	// 触发器参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InvokePara *TriggerInvokePara `json:"InvokePara,omitnil,omitempty" name:"InvokePara"`
 }
 
@@ -9165,15 +9101,12 @@ type VpcAndDomainInfo struct {
 
 type VpcPrivateDomainStatus struct {
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// unique vpc id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// ENABLE代表已经开启，DISABLE代表未开启，ERROR代表查询出错
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 

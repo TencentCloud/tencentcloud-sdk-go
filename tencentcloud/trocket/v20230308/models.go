@@ -3673,7 +3673,6 @@ func (r *DescribeTopicListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTopicListResponseParams struct {
 	// 查询总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 主题列表
@@ -5633,7 +5632,6 @@ type SourceClusterGroupConfig struct {
 
 type SourceClusterTopicConfig struct {
 	// 主题名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 主题类型，
@@ -5649,24 +5647,18 @@ type SourceClusterTopicConfig struct {
 	// PartitionedOrder 分区顺序消息
 	// Transaction 事务消息
 	// DelayScheduled 延时消息
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicType *string `json:"TopicType,omitnil,omitempty" name:"TopicType"`
 
 	// 队列数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueNum *int64 `json:"QueueNum,omitnil,omitempty" name:"QueueNum"`
 
 	// 备注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 是否已导入，作为入参时无效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Imported *bool `json:"Imported,omitnil,omitempty" name:"Imported"`
 
 	// 命名空间，仅4.x集群有效
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// 导入状态，
@@ -5674,19 +5666,15 @@ type SourceClusterTopicConfig struct {
 	// AlreadyExists 已存在，
 	// Success 成功，
 	// Failure 失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImportStatus *string `json:"ImportStatus,omitnil,omitempty" name:"ImportStatus"`
 
 	// 4.x的命名空间，出参使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceV4 *string `json:"NamespaceV4,omitnil,omitempty" name:"NamespaceV4"`
 
 	// 4.x的主题名，出参使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicNameV4 *string `json:"TopicNameV4,omitnil,omitempty" name:"TopicNameV4"`
 
 	// 4.x的完整命名空间，出参使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FullNamespaceV4 *string `json:"FullNamespaceV4,omitnil,omitempty" name:"FullNamespaceV4"`
 }
 
@@ -5799,7 +5787,6 @@ type TopicConsumeStats struct {
 	SubString *string `json:"SubString,omitnil,omitempty" name:"SubString"`
 
 	// 最后消费进度更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastUpdateTime *int64 `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
 }
 

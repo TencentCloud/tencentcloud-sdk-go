@@ -15464,125 +15464,98 @@ type KubeJarvisStateCatalogue struct {
 	// 目录级别，支持参数：
 	// first：一级目录
 	// second：二级目录
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CatalogueLevel *string `json:"CatalogueLevel,omitnil,omitempty" name:"CatalogueLevel"`
 
 	// 目录名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CatalogueName *string `json:"CatalogueName,omitnil,omitempty" name:"CatalogueName"`
 }
 
 type KubeJarvisStateDiagnostic struct {
 	// 诊断开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 诊断结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 诊断目录
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Catalogues []*KubeJarvisStateCatalogue `json:"Catalogues,omitnil,omitempty" name:"Catalogues"`
 
 	// 诊断类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 诊断名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 诊断描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
 	// 诊断结果列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Results []*KubeJarvisStateResultsItem `json:"Results,omitnil,omitempty" name:"Results"`
 
 	// 诊断结果统计
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Statistics []*KubeJarvisStateStatistic `json:"Statistics,omitnil,omitempty" name:"Statistics"`
 }
 
 type KubeJarvisStateDiagnosticOverview struct {
 	// 诊断目录
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Catalogues []*KubeJarvisStateCatalogue `json:"Catalogues,omitnil,omitempty" name:"Catalogues"`
 
 	// 诊断结果统计
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Statistics []*KubeJarvisStateStatistic `json:"Statistics,omitnil,omitempty" name:"Statistics"`
 }
 
 type KubeJarvisStateInspectionOverview struct {
 	// 集群ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 诊断结果统计
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Statistics []*KubeJarvisStateStatistic `json:"Statistics,omitnil,omitempty" name:"Statistics"`
 
 	// 诊断结果详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Diagnostics []*KubeJarvisStateDiagnosticOverview `json:"Diagnostics,omitnil,omitempty" name:"Diagnostics"`
 }
 
 type KubeJarvisStateInspectionResult struct {
 	// 集群ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 诊断开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 诊断结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 诊断结果统计
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Statistics []*KubeJarvisStateStatistic `json:"Statistics,omitnil,omitempty" name:"Statistics"`
 
 	// 诊断结果详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Diagnostics []*KubeJarvisStateDiagnostic `json:"Diagnostics,omitnil,omitempty" name:"Diagnostics"`
 
 	// 查询巡检报告相关报错
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
 }
 
 type KubeJarvisStateInspectionResultsItem struct {
 	// 巡检结果名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 诊断结果统计
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Statistics []*KubeJarvisStateStatistic `json:"Statistics,omitnil,omitempty" name:"Statistics"`
 }
 
 type KubeJarvisStateResultObjInfo struct {
 	// 对象属性名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PropertyName *string `json:"PropertyName,omitnil,omitempty" name:"PropertyName"`
 
 	// 对象属性值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PropertyValue *string `json:"PropertyValue,omitnil,omitempty" name:"PropertyValue"`
 }
 
 type KubeJarvisStateResultsItem struct {
 	// 诊断结果级别
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
 
 	// 诊断对象名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjName *string `json:"ObjName,omitnil,omitempty" name:"ObjName"`
 
 	// 诊断对象信息
@@ -15590,11 +15563,9 @@ type KubeJarvisStateResultsItem struct {
 	ObjInfo []*KubeJarvisStateResultObjInfo `json:"ObjInfo,omitnil,omitempty" name:"ObjInfo"`
 
 	// 诊断项标题
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 
 	// 诊断项描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
 	// 诊断建议
@@ -15602,21 +15573,17 @@ type KubeJarvisStateResultsItem struct {
 	Proposal *string `json:"Proposal,omitnil,omitempty" name:"Proposal"`
 
 	// 诊断建议文档链接
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProposalDocUrl *string `json:"ProposalDocUrl,omitnil,omitempty" name:"ProposalDocUrl"`
 
 	// 诊断建议文档名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProposalDocName *string `json:"ProposalDocName,omitnil,omitempty" name:"ProposalDocName"`
 }
 
 type KubeJarvisStateStatistic struct {
 	// 诊断结果的健康水平
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthyLevel *string `json:"HealthyLevel,omitnil,omitempty" name:"HealthyLevel"`
 
 	// 诊断结果的统计
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 

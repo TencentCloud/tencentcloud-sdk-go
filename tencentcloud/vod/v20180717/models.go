@@ -2777,15 +2777,12 @@ type CLSLogsetInfo struct {
 
 type CLSTopicInfo struct {
 	// 日志主题 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 日志主题名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 日志集 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 }
 
@@ -22292,11 +22289,9 @@ type QualityInspectTask struct {
 	MetaData *MediaMetaData `json:"MetaData,omitnil,omitempty" name:"MetaData"`
 
 	// 音画质检测任务输入。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Input *QualityInspectTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 音画质检测任务输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *QualityInspectTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
@@ -22351,43 +22346,33 @@ type QualityInspectTemplateItem struct {
 	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitnil,omitempty" name:"ScreenshotInterval"`
 
 	// 视频画面抖动重影检测的控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JitterConfigure *JitterConfigureInfo `json:"JitterConfigure,omitnil,omitempty" name:"JitterConfigure"`
 
 	// 视频画面模糊检测的控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlurConfigure *BlurConfigureInfo `json:"BlurConfigure,omitnil,omitempty" name:"BlurConfigure"`
 
 	// 视频画面低光、过曝检测的控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AbnormalLightingConfigure *AbnormalLightingConfigureInfo `json:"AbnormalLightingConfigure,omitnil,omitempty" name:"AbnormalLightingConfigure"`
 
 	// 视频画面花屏检测的控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CrashScreenConfigure *CrashScreenConfigureInfo `json:"CrashScreenConfigure,omitnil,omitempty" name:"CrashScreenConfigure"`
 
 	// 视频画面黑边、白边、黑屏、白屏检测的控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlackWhiteEdgeConfigure *BlackWhiteEdgeConfigureInfo `json:"BlackWhiteEdgeConfigure,omitnil,omitempty" name:"BlackWhiteEdgeConfigure"`
 
 	// 视频画面噪点检测的控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoiseConfigure *NoiseConfigureInfo `json:"NoiseConfigure,omitnil,omitempty" name:"NoiseConfigure"`
 
 	// 视频画面马赛克检测的控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MosaicConfigure *MosaicConfigureInfo `json:"MosaicConfigure,omitnil,omitempty" name:"MosaicConfigure"`
 
 	// 视频画面二维码检测的控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QRCodeConfigure *QRCodeConfigureInfo `json:"QRCodeConfigure,omitnil,omitempty" name:"QRCodeConfigure"`
 
 	// 视频画面质量评价的控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QualityEvaluationConfigure *QualityEvaluationConfigureInfo `json:"QualityEvaluationConfigure,omitnil,omitempty" name:"QualityEvaluationConfigure"`
 
 	// 音频（静音、低音、爆音）检测的控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoiceConfigure *VoiceConfigureInfo `json:"VoiceConfigure,omitnil,omitempty" name:"VoiceConfigure"`
 
 	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -22887,15 +22872,12 @@ type RebuildMediaTask struct {
 	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
 	// 音画质重生任务的输入。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Input *RebuildMediaTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 音画质重生任务的输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *RebuildMediaTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 音画质重生输出视频的元信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaData *MediaMetaData `json:"MetaData,omitnil,omitempty" name:"MetaData"`
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
@@ -22915,7 +22897,7 @@ type RebuildMediaTaskInput struct {
 	// 结束偏移时间，单位：秒，不填表示截取到视频末尾。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
 
-	// 音画质重生模版号。
+	// 音画质重生模板号。
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
 	// 画质修复控制参数。
@@ -23396,7 +23378,6 @@ type RemoveWatermarkTask struct {
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 智能去除水印任务的输入。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Input *RemoveWaterMarkTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 智能去除水印任务的输出。
@@ -25589,7 +25570,7 @@ type SvgWatermarkInputForUpdate struct {
 	// <li>当字符串以 H% 结尾，表示水印 Height 为视频高度的百分比大小，如 10H% 表示 Height 为视频高度的 10%；</li>
 	// <li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短边的 10%；</li>
 	// <li>当字符串以 L% 结尾，表示水印 Height 为视频长边的百分比大小，如 10L% 表示 Height 为视频长边的 10%；</li>
-	// <li>当字符串以 % 结尾时，含义同 H%。
+	// <li>当字符串以 % 结尾时，含义同 H%。</li>
 	// 默认值为 0px。
 	Height *string `json:"Height,omitnil,omitempty" name:"Height"`
 
@@ -25600,6 +25581,8 @@ type SvgWatermarkInputForUpdate struct {
 	// 可以看出，A、B、C、D 都是周期性地显示 5 秒、隐藏 15 秒，且四者有固定的显示顺序。
 	// 此配置项即用来描述单个水印的周期配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: CycleConfig is deprecated.
 	CycleConfig *WatermarkCycleConfigForUpdate `json:"CycleConfig,omitnil,omitempty" name:"CycleConfig"`
 }
 
@@ -26070,11 +26053,9 @@ type TranscodeTemplate struct {
 	RemoveAudio *int64 `json:"RemoveAudio,omitnil,omitempty" name:"RemoveAudio"`
 
 	// 视频流配置参数，仅当 RemoveVideo 为 0，该字段有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoTemplate *VideoTemplateInfo `json:"VideoTemplate,omitnil,omitempty" name:"VideoTemplate"`
 
 	// 音频流配置参数，仅当 RemoveAudio 为 0，该字段有效 。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioTemplate *AudioTemplateInfo `json:"AudioTemplate,omitnil,omitempty" name:"AudioTemplate"`
 
 	// 极速高清转码参数。

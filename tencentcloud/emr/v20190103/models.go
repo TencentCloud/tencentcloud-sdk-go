@@ -937,7 +937,6 @@ type ClusterInstancesInfo struct {
 
 type ClusterRelationMeta struct {
 	// 集群类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
 	// 集群id列表
@@ -1871,7 +1870,6 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateInstanceResponseParams struct {
 	// 实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4930,7 +4928,6 @@ func (r *DescribeServiceNodeInfosRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeServiceNodeInfosResponseParams struct {
 	// 总数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCnt *int64 `json:"TotalCnt,omitnil,omitempty" name:"TotalCnt"`
 
 	// 进程信息
@@ -4938,7 +4935,6 @@ type DescribeServiceNodeInfosResponseParams struct {
 	ServiceNodeList []*ServiceNodeDetailInfo `json:"ServiceNodeList,omitnil,omitempty" name:"ServiceNodeList"`
 
 	// 集群所有节点的别名序列化
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AliasInfo *string `json:"AliasInfo,omitnil,omitempty" name:"AliasInfo"`
 
 	// 支持的FlagNode列表
@@ -5572,7 +5568,6 @@ type DescribeYarnScheduleHistoryResponseParams struct {
 	Tasks []*SchedulerTaskInfo `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
 	// 任务详情总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 调度类型筛选列表
@@ -5759,7 +5754,6 @@ type EmrListInstance struct {
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 常见状态描述：集群生产中,集群运行中,集群创建中,集群已关闭,集群已删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
 	// 集群名字
@@ -5790,31 +5784,24 @@ type EmrListInstance struct {
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 产品ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *uint64 `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 项目ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 区域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *uint64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
 	// 子网ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *uint64 `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 网络ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *uint64 `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 地区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 状态码, 取值为-2(集群已删除), -1(集群已关闭), 0(集群生产中), 2(集群运行中), 3(集群创建中)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 实例标签
@@ -5822,39 +5809,30 @@ type EmrListInstance struct {
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 告警信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmInfo *string `json:"AlarmInfo,omitnil,omitempty" name:"AlarmInfo"`
 
 	// 是否是woodpecker集群
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsWoodpeckerCluster *uint64 `json:"IsWoodpeckerCluster,omitnil,omitempty" name:"IsWoodpeckerCluster"`
 
 	// Vpc中文
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
 
 	// 子网中文
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetName *string `json:"SubnetName,omitnil,omitempty" name:"SubnetName"`
 
 	// 字符串VpcId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
 	// 字符串子网
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
 	// 集群类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterClass *string `json:"ClusterClass,omitnil,omitempty" name:"ClusterClass"`
 
 	// 是否为跨AZ集群
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsMultiZoneCluster *bool `json:"IsMultiZoneCluster,omitnil,omitempty" name:"IsMultiZoneCluster"`
 
 	// 是否手戳集群
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsHandsCluster *bool `json:"IsHandsCluster,omitnil,omitempty" name:"IsHandsCluster"`
 
 	// 体外客户端组件信息
@@ -5862,12 +5840,13 @@ type EmrListInstance struct {
 	OutSideSoftInfo []*SoftDependInfo `json:"OutSideSoftInfo,omitnil,omitempty" name:"OutSideSoftInfo"`
 
 	// 当前集群的应用场景是否支持体外客户端
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSupportOutsideCluster *bool `json:"IsSupportOutsideCluster,omitnil,omitempty" name:"IsSupportOutsideCluster"`
 
 	// 是否专有集群场景集群
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDedicatedCluster *bool `json:"IsDedicatedCluster,omitnil,omitempty" name:"IsDedicatedCluster"`
+
+	// 集群支持克隆
+	IsSupportClone *bool `json:"IsSupportClone,omitnil,omitempty" name:"IsSupportClone"`
 }
 
 type EmrPrice struct {
@@ -8539,11 +8518,9 @@ func (r *ModifyYarnDeployRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyYarnDeployResponseParams struct {
 	// 为false不点亮部署生效、重置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDraft *bool `json:"IsDraft,omitnil,omitempty" name:"IsDraft"`
 
 	// 错误信息，预留
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9765,7 +9742,6 @@ type RepeatStrategy struct {
 	NotRepeat *NotRepeatStrategy `json:"NotRepeat,omitnil,omitempty" name:"NotRepeat"`
 
 	// 规则过期时间，超过该时间后，规则将自动置为暂停状态，形式为"2020-07-23 00:00:00"。必须填写
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Expire *string `json:"Expire,omitnil,omitempty" name:"Expire"`
 
 	// 周期性规则开始时间

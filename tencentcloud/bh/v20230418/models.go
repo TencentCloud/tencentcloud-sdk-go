@@ -33,25 +33,32 @@ type ACTemplate struct {
 
 // Predefined struct for user
 type AccessDevicesRequestParams struct {
-	// 资源id
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 账号
+	// 资产的登录账号
 	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
 
 	// 运维端登录账号
+	//
+	// Deprecated: LoginAccount is deprecated.
 	LoginAccount *string `json:"LoginAccount,omitnil,omitempty" name:"LoginAccount"`
 
 	// 运维端登录密码
+	//
+	// Deprecated: LoginPassword is deprecated.
 	LoginPassword *string `json:"LoginPassword,omitnil,omitempty" name:"LoginPassword"`
 
-	// 密码
+	// 资产ID
+	DeviceId *uint64 `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 资源id(优先使用DeviceId)
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 未托管密码私钥时，填入
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 私钥
+	// 未托管密码私钥时，填入
 	PrivateKey *string `json:"PrivateKey,omitnil,omitempty" name:"PrivateKey"`
 
-	// 私钥密码
+	// 未托管密码私钥时，填入
 	PrivateKeyPassword *string `json:"PrivateKeyPassword,omitnil,omitempty" name:"PrivateKeyPassword"`
 
 	// 客户端工具
@@ -68,15 +75,15 @@ type AccessDevicesRequestParams struct {
 
 	// 是否内网访问（默认不是）
 	IntranetAccess *bool `json:"IntranetAccess,omitnil,omitempty" name:"IntranetAccess"`
+
+	// 是否自动管理访问串，删掉过期的，新建可用的（默认false）
+	AutoManageAccessCredential *bool `json:"AutoManageAccessCredential,omitnil,omitempty" name:"AutoManageAccessCredential"`
 }
 
 type AccessDevicesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源id
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-
-	// 账号
+	// 资产的登录账号
 	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
 
 	// 运维端登录账号
@@ -85,13 +92,19 @@ type AccessDevicesRequest struct {
 	// 运维端登录密码
 	LoginPassword *string `json:"LoginPassword,omitnil,omitempty" name:"LoginPassword"`
 
-	// 密码
+	// 资产ID
+	DeviceId *uint64 `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 资源id(优先使用DeviceId)
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 未托管密码私钥时，填入
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 私钥
+	// 未托管密码私钥时，填入
 	PrivateKey *string `json:"PrivateKey,omitnil,omitempty" name:"PrivateKey"`
 
-	// 私钥密码
+	// 未托管密码私钥时，填入
 	PrivateKeyPassword *string `json:"PrivateKeyPassword,omitnil,omitempty" name:"PrivateKeyPassword"`
 
 	// 客户端工具
@@ -108,6 +121,9 @@ type AccessDevicesRequest struct {
 
 	// 是否内网访问（默认不是）
 	IntranetAccess *bool `json:"IntranetAccess,omitnil,omitempty" name:"IntranetAccess"`
+
+	// 是否自动管理访问串，删掉过期的，新建可用的（默认false）
+	AutoManageAccessCredential *bool `json:"AutoManageAccessCredential,omitnil,omitempty" name:"AutoManageAccessCredential"`
 }
 
 func (r *AccessDevicesRequest) ToJsonString() string {
@@ -122,10 +138,11 @@ func (r *AccessDevicesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "InstanceId")
 	delete(f, "Account")
 	delete(f, "LoginAccount")
 	delete(f, "LoginPassword")
+	delete(f, "DeviceId")
+	delete(f, "InstanceId")
 	delete(f, "Password")
 	delete(f, "PrivateKey")
 	delete(f, "PrivateKeyPassword")
@@ -134,6 +151,7 @@ func (r *AccessDevicesRequest) FromJsonString(s string) error {
 	delete(f, "Width")
 	delete(f, "Height")
 	delete(f, "IntranetAccess")
+	delete(f, "AutoManageAccessCredential")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AccessDevicesRequest has unknown keys!", "")
 	}

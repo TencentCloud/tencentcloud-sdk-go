@@ -4200,6 +4200,12 @@ type DescribeOrganizationMembersRequestParams struct {
 
 	// 成员标签搜索列表，最大10个
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 组织单元ID
+	NodeId *uint64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// 组织单元名称
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 }
 
 type DescribeOrganizationMembersRequest struct {
@@ -4225,6 +4231,12 @@ type DescribeOrganizationMembersRequest struct {
 
 	// 成员标签搜索列表，最大10个
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 组织单元ID
+	NodeId *uint64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// 组织单元名称
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 }
 
 func (r *DescribeOrganizationMembersRequest) ToJsonString() string {
@@ -4246,6 +4258,8 @@ func (r *DescribeOrganizationMembersRequest) FromJsonString(s string) error {
 	delete(f, "AuthName")
 	delete(f, "Product")
 	delete(f, "Tags")
+	delete(f, "NodeId")
+	delete(f, "NodeName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationMembersRequest has unknown keys!", "")
 	}

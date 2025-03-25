@@ -1427,7 +1427,7 @@ type CreateUserOIDCConfigRequestParams struct {
 	// 授权请求Scope。openid; email;profile。授权请求信息范围。默认必选openid。
 	Scope []*string `json:"Scope,omitnil,omitempty" name:"Scope"`
 
-	// 描述
+	// 描述信息。由用户自行定义。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -1459,7 +1459,7 @@ type CreateUserOIDCConfigRequest struct {
 	// 授权请求Scope。openid; email;profile。授权请求信息范围。默认必选openid。
 	Scope []*string `json:"Scope,omitnil,omitempty" name:"Scope"`
 
-	// 描述
+	// 描述信息。由用户自行定义。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 

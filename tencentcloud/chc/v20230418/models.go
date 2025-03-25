@@ -2948,7 +2948,6 @@ type DeviceOrderBaseInfo struct {
 	IdcId *uint64 `json:"IdcId,omitnil,omitempty" name:"IdcId"`
 
 	// 机房名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdcName *string `json:"IdcName,omitnil,omitempty" name:"IdcName"`
 
 	// 设备类型
@@ -3338,7 +3337,6 @@ type OtherDevReceivingInfo struct {
 
 type Personnel struct {
 	// 证件号码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IDCardNumber *string `json:"IDCardNumber,omitnil,omitempty" name:"IDCardNumber"`
 
 	// 证件类型。对应关系如下：IDENTITY_CARD: 身份证,
@@ -3346,35 +3344,27 @@ type Personnel struct {
 	// PASSPORT: 护照,
 	// DRIVING_LICENSE: 驾照,
 	// OTHER: 其他
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IDCardType *string `json:"IDCardType,omitnil,omitempty" name:"IDCardType"`
 
 	// 公司名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Company *string `json:"Company,omitnil,omitempty" name:"Company"`
 
 	// 语言。对应关系：ENGLISH: 英文, CHINESE: 中文
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LanguageType *string `json:"LanguageType,omitnil,omitempty" name:"LanguageType"`
 
 	// 姓名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 电话
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TelNumber *string `json:"TelNumber,omitnil,omitempty" name:"TelNumber"`
 
 	// 职位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Position *string `json:"Position,omitnil,omitempty" name:"Position"`
 
 	// 微信
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Wechat *string `json:"Wechat,omitnil,omitempty" name:"Wechat"`
 
 	// 邮箱
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 }
 
@@ -3509,19 +3499,15 @@ type RackUsage struct {
 
 type SelfOperation struct {
 	// 联系人员电话
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StuffContact *string `json:"StuffContact,omitnil,omitempty" name:"StuffContact"`
 
 	// 身份证号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StuffIDCard *string `json:"StuffIDCard,omitnil,omitempty" name:"StuffIDCard"`
 
 	// 人员姓名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StuffName *string `json:"StuffName,omitnil,omitempty" name:"StuffName"`
 
 	// 上门时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperationTime *string `json:"OperationTime,omitnil,omitempty" name:"OperationTime"`
 }
 
@@ -3679,7 +3665,6 @@ type WorkOrderData struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 工单完成时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
 }
 

@@ -30793,6 +30793,10 @@ type TableMeta struct {
 	// 是否支持select or ddl
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IfSupportCreateAndDDL *CreateAndDDLSupport `json:"IfSupportCreateAndDDL,omitnil,omitempty" name:"IfSupportCreateAndDDL"`
+
+	// 字段数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnCount *int64 `json:"ColumnCount,omitnil,omitempty" name:"ColumnCount"`
 }
 
 type TableMetaProperty struct {

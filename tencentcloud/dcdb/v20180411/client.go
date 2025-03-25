@@ -1811,6 +1811,7 @@ func NewDescribeDCDBInstanceDetailResponse() (response *DescribeDCDBInstanceDeta
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  FAILEDOPERATION_TRADECONFIGNOTFOUND = "FailedOperation.TradeConfigNotFound"
 //  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
 //  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1825,6 +1826,7 @@ func (c *Client) DescribeDCDBInstanceDetail(request *DescribeDCDBInstanceDetailR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
+//  FAILEDOPERATION_TRADECONFIGNOTFOUND = "FailedOperation.TradeConfigNotFound"
 //  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
 //  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
 //  INVALIDPARAMETER = "InvalidParameter"

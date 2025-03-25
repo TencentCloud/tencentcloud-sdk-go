@@ -12355,7 +12355,6 @@ func (r *ModifyRocketMQInstanceSpecRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyRocketMQInstanceSpecResponseParams struct {
 	// 订单号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14879,7 +14878,6 @@ type RocketMQVipInstance struct {
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 实例版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceVersion *string `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
 
 	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败，6 - 变配中，7 - 变配失败
@@ -14917,23 +14915,18 @@ type RocketMQVipInstance struct {
 	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
 
 	// 最大可设置消息保留时间，小时为单位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxRetention *int64 `json:"MaxRetention,omitnil,omitempty" name:"MaxRetention"`
 
 	// 最小可设置消息保留时间，小时为单位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinRetention *int64 `json:"MinRetention,omitnil,omitempty" name:"MinRetention"`
 
 	// 实例消息保留时间，小时为单位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Retention *int64 `json:"Retention,omitnil,omitempty" name:"Retention"`
 
 	// 是否开启ACL鉴权
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AclEnabled *bool `json:"AclEnabled,omitnil,omitempty" name:"AclEnabled"`
 
 	// 销毁时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DestroyTime *uint64 `json:"DestroyTime,omitnil,omitempty" name:"DestroyTime"`
 }
 

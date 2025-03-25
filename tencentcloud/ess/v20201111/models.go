@@ -4233,9 +4233,9 @@ type CreateFlowOption struct {
 	ForbidAddApprover *bool `json:"ForbidAddApprover,omitnil,omitempty" name:"ForbidAddApprover"`
 
 	// 是否可以编辑签署人包括新增，修改，删除 
-	// <ul><li>（默认） false -可以编辑签署人</li> <li> true - 可以编辑签署人</li></ul>
+	// <ul><li>（默认） false -可以编辑签署人</li> <li> true - 禁止编辑签署人</li></ul>
 	// 
-	// 注意：如果设置参数为 false， 则 参数签署人 [FlowApproverList](https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlow) 不能为空
+	// 注意：如果设置参数为  true， 则 参数签署人 [FlowApproverList](https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlow) 不能为空
 	ForbidEditApprover *bool `json:"ForbidEditApprover,omitnil,omitempty" name:"ForbidEditApprover"`
 
 	//   禁止设置设置签署流程属性 (顺序、合同签署认证方式等)，若为true则在发起流程的可嵌入页面隐藏签署流程设置面板

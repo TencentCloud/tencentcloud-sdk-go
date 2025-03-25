@@ -479,7 +479,7 @@ func NewChangeP2PRouteResponse() (response *ChangeP2PRouteResponse) {
 }
 
 // ChangeP2PRoute
-// p2p路线切换
+// p2p路线切换（此接口目前处于内测接口，可以联系申请加白 ）
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -490,7 +490,7 @@ func (c *Client) ChangeP2PRoute(request *ChangeP2PRouteRequest) (response *Chang
 }
 
 // ChangeP2PRoute
-// p2p路线切换
+// p2p路线切换（此接口目前处于内测接口，可以联系申请加白 ）
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

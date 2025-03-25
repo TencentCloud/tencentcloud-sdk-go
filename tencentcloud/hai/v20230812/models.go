@@ -22,42 +22,31 @@ import (
 
 type ApplicationInfo struct {
 	// 应用id
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 应用名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationName *string `json:"ApplicationName,omitnil,omitempty" name:"ApplicationName"`
 
 	// 应用描述
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 应用的环境配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigEnvironment *string `json:"ConfigEnvironment,omitnil,omitempty" name:"ConfigEnvironment"`
 
 	// 系统盘大小下限
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinSystemDiskSize *int64 `json:"MinSystemDiskSize,omitnil,omitempty" name:"MinSystemDiskSize"`
 
 	// 应用类型，目前该项取值可以为PRIVATE_APPLICATION或者PUBLIC_APPLICATION
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationType *string `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
 
 	// 应用状态：CREATING-创建中；ONLINE -正常在线；DELETING -删除中；ARREARS - 欠费隔离
 	// 示例值：ONLINE
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationState *string `json:"ApplicationState,omitnil,omitempty" name:"ApplicationState"`
 
 	// 应用创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 应用大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationSize *int64 `json:"ApplicationSize,omitnil,omitempty" name:"ApplicationSize"`
 }
 
@@ -750,7 +739,6 @@ func (r *InquirePriceRunInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type InquirePriceRunInstancesResponseParams struct {
 	// 发货参数对应的价格组合，当DryRun=True，会返回空
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Price *Price `json:"Price,omitnil,omitempty" name:"Price"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -896,42 +884,32 @@ type InstanceChargePrepaid struct {
 
 type ItemPrice struct {
 	// 原单价
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPrice *float64 `json:"UnitPrice,omitnil,omitempty" name:"UnitPrice"`
 
 	// 折扣后单价
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountUnitPrice *float64 `json:"DiscountUnitPrice,omitnil,omitempty" name:"DiscountUnitPrice"`
 
 	// 折扣
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Discount *float64 `json:"Discount,omitnil,omitempty" name:"Discount"`
 
 	// 单位：时/月
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeUnit *string `json:"ChargeUnit,omitnil,omitempty" name:"ChargeUnit"`
 
 	// 商品数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Amount *uint64 `json:"Amount,omitnil,omitempty" name:"Amount"`
 }
 
 type ItemPriceDetail struct {
 	// 实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例价格详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstancePrice *ItemPrice `json:"InstancePrice,omitnil,omitempty" name:"InstancePrice"`
 
 	// 磁盘价格详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudDiskPrice *ItemPrice `json:"CloudDiskPrice,omitnil,omitempty" name:"CloudDiskPrice"`
 
 	// 该实例的总价钱
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceTotalPrice *ItemPrice `json:"InstanceTotalPrice,omitnil,omitempty" name:"InstanceTotalPrice"`
 }
 
@@ -1004,15 +982,12 @@ type NetworkStatus struct {
 
 type Price struct {
 	// 实例价格信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstancePrice *ItemPrice `json:"InstancePrice,omitnil,omitempty" name:"InstancePrice"`
 
 	// 云盘价格信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudDiskPrice *ItemPrice `json:"CloudDiskPrice,omitnil,omitempty" name:"CloudDiskPrice"`
 
 	// 分实例价格
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PriceDetailSet []*ItemPriceDetail `json:"PriceDetailSet,omitnil,omitempty" name:"PriceDetailSet"`
 }
 

@@ -6676,11 +6676,9 @@ type LiveRecordItem struct {
 
 type LiveRecordPlanItem struct {
 	// 计划ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
 
 	// 计划名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlanName *string `json:"PlanName,omitnil,omitempty" name:"PlanName"`
 }
 
@@ -7723,15 +7721,12 @@ type RecordStatistic struct {
 
 type RecordStatisticValue struct {
 	// 期望执行时间 秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpectTimeLen *int64 `json:"ExpectTimeLen,omitnil,omitempty" name:"ExpectTimeLen"`
 
 	// 实际执行时间 秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordTimeLen *int64 `json:"RecordTimeLen,omitnil,omitempty" name:"RecordTimeLen"`
 
 	// 存储大小 G
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileSize *float64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 }
 
@@ -7870,33 +7865,26 @@ type ServerConfiguration struct {
 
 type StatisticItem struct {
 	// 日期。格式【YYYY-MM-DD】
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 
 	// 统计数额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sum *float64 `json:"Sum,omitnil,omitempty" name:"Sum"`
 }
 
 type StreamAddress struct {
 	// 流ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamId *string `json:"StreamId,omitnil,omitempty" name:"StreamId"`
 
 	// rtsp流地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RtspAddr *string `json:"RtspAddr,omitnil,omitempty" name:"RtspAddr"`
 
 	// rtmp流地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RtmpAddr *string `json:"RtmpAddr,omitnil,omitempty" name:"RtmpAddr"`
 
 	// hls流地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HlsAddr *string `json:"HlsAddr,omitnil,omitempty" name:"HlsAddr"`
 
 	// flv流地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlvAddr *string `json:"FlvAddr,omitnil,omitempty" name:"FlvAddr"`
 }
 
@@ -7919,15 +7907,12 @@ type TimeTemplateItem struct {
 
 type TimeTemplateSpec struct {
 	// 一周中的周几
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DayofWeek *int64 `json:"DayofWeek,omitnil,omitempty" name:"DayofWeek"`
 
 	// 时间片段的开始时分。格式【HH:MM】
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
 	// 时间片段的结束时分。格式【HH:MM】
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 

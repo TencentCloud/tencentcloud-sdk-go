@@ -350,7 +350,7 @@ func NewCreateTestXMagicResponse() (response *CreateTestXMagicResponse) {
 }
 
 // CreateTestXMagic
-// 申请开通测试版优图
+// 申请开通测试版腾讯特效
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UPLOADLICENSEFILEFAIL = "FailedOperation.UploadLicenseFileFail"
@@ -367,7 +367,7 @@ func (c *Client) CreateTestXMagic(request *CreateTestXMagicRequest) (response *C
 }
 
 // CreateTestXMagic
-// 申请开通测试版优图
+// 申请开通测试版腾讯特效
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UPLOADLICENSEFILEFAIL = "FailedOperation.UploadLicenseFileFail"
@@ -1351,7 +1351,7 @@ func NewModifyApplicationResponse() (response *ModifyApplicationResponse) {
 }
 
 // ModifyApplication
-// 编辑更改应用
+// 更改测试包名信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1367,7 +1367,7 @@ func (c *Client) ModifyApplication(request *ModifyApplicationRequest) (response 
 }
 
 // ModifyApplication
-// 编辑更改应用
+// 更改测试包名信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

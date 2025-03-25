@@ -223,23 +223,18 @@ type ChainMakerContractResult struct {
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 交易结果码含义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CodeMessage *string `json:"CodeMessage,omitnil,omitempty" name:"CodeMessage"`
 
 	// 交易ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TxId *string `json:"TxId,omitnil,omitempty" name:"TxId"`
 
 	// Gas使用量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GasUsed *int64 `json:"GasUsed,omitnil,omitempty" name:"GasUsed"`
 
 	// 合约返回消息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 合约函数返回，base64编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 }
 
@@ -248,31 +243,24 @@ type ChainMakerTransactionResult struct {
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 交易结果码含义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CodeMessage *string `json:"CodeMessage,omitnil,omitempty" name:"CodeMessage"`
 
 	// 交易ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TxId *string `json:"TxId,omitnil,omitempty" name:"TxId"`
 
 	// Gas使用量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GasUsed *int64 `json:"GasUsed,omitnil,omitempty" name:"GasUsed"`
 
 	// 区块高度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlockHeight *int64 `json:"BlockHeight,omitnil,omitempty" name:"BlockHeight"`
 
 	// 合约执行结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContractEvent *string `json:"ContractEvent,omitnil,omitempty" name:"ContractEvent"`
 
 	// 合约返回信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 交易时间，单位是秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 }
 
@@ -1576,7 +1564,6 @@ func (r *InvokeChainMakerDemoContractRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type InvokeChainMakerDemoContractResponseParams struct {
 	// 交易结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ChainMakerContractResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2050,14 +2037,12 @@ func (r *QueryChainMakerDemoBlockTransactionRequest) FromJsonString(s string) er
 // Predefined struct for user
 type QueryChainMakerDemoBlockTransactionResponseParams struct {
 	// 区块交易
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result []*ChainMakerTransactionResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 区块高度
 	BlockHeight *int64 `json:"BlockHeight,omitnil,omitempty" name:"BlockHeight"`
 
 	// 交易数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TxCount *int64 `json:"TxCount,omitnil,omitempty" name:"TxCount"`
 
 	// 区块时间戳，单位是秒
@@ -2146,7 +2131,6 @@ func (r *QueryChainMakerDemoContractRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryChainMakerDemoContractResponseParams struct {
 	// 交易结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ChainMakerContractResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2218,7 +2202,6 @@ func (r *QueryChainMakerDemoTransactionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryChainMakerDemoTransactionResponseParams struct {
 	// 交易结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ChainMakerTransactionResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2604,27 +2587,21 @@ func (r *SrvInvokeResponse) FromJsonString(s string) error {
 
 type Transaction struct {
 	// 交易ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TxId *string `json:"TxId,omitnil,omitempty" name:"TxId"`
 
 	// 合约名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChaincodeName *string `json:"ChaincodeName,omitnil,omitempty" name:"ChaincodeName"`
 
 	// 交易发送者
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sender *string `json:"Sender,omitnil,omitempty" name:"Sender"`
 
 	// 交易创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 交易所在区块高度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlockHeight *int64 `json:"BlockHeight,omitnil,omitempty" name:"BlockHeight"`
 
 	// 交易在区块中的序号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TxIndex *int64 `json:"TxIndex,omitnil,omitempty" name:"TxIndex"`
 }
 

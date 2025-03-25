@@ -25,14 +25,12 @@ type AndroidApp struct {
 	AndroidAppId *string `json:"AndroidAppId,omitnil,omitempty" name:"AndroidAppId"`
 
 	// 安卓应用名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 安卓应用状态（上架、下架）
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
 	// 安卓应用版本列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AndroidAppVersionInfo []*AndroidAppVersionInfo `json:"AndroidAppVersionInfo,omitnil,omitempty" name:"AndroidAppVersionInfo"`
 
 	// 安卓应用创建时间
@@ -60,7 +58,6 @@ type AndroidInstance struct {
 	AndroidInstanceRegion *string `json:"AndroidInstanceRegion,omitnil,omitempty" name:"AndroidInstanceRegion"`
 
 	// 实例可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AndroidInstanceZone *string `json:"AndroidInstanceZone,omitnil,omitempty" name:"AndroidInstanceZone"`
 
 	// 实例状态：INITIALIZING，NORMAL，PROCESSING
@@ -70,7 +67,6 @@ type AndroidInstance struct {
 	AndroidInstanceType *string `json:"AndroidInstanceType,omitnil,omitempty" name:"AndroidInstanceType"`
 
 	// 实例镜像 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AndroidInstanceImageId *string `json:"AndroidInstanceImageId,omitnil,omitempty" name:"AndroidInstanceImageId"`
 
 	// 分辨率宽度
@@ -97,15 +93,12 @@ type AndroidInstance struct {
 
 type AndroidInstanceAppInfo struct {
 	// 应用id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AndroidAppId *string `json:"AndroidAppId,omitnil,omitempty" name:"AndroidAppId"`
 
 	// 应用名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 应用版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AndroidAppVersion *string `json:"AndroidAppVersion,omitnil,omitempty" name:"AndroidAppVersion"`
 
 	// 应用包名
@@ -120,19 +113,15 @@ type AndroidInstanceAppInfo struct {
 
 type AndroidInstanceImage struct {
 	// 镜像 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AndroidInstanceImageId *string `json:"AndroidInstanceImageId,omitnil,omitempty" name:"AndroidInstanceImageId"`
 
 	// 镜像名称，由业务方自定义，仅用于展示
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AndroidInstanceImageName *string `json:"AndroidInstanceImageName,omitnil,omitempty" name:"AndroidInstanceImageName"`
 
 	// 镜像状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AndroidInstanceImageState *string `json:"AndroidInstanceImageState,omitnil,omitempty" name:"AndroidInstanceImageState"`
 
 	// 镜像可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AndroidInstanceImageZone *string `json:"AndroidInstanceImageZone,omitnil,omitempty" name:"AndroidInstanceImageZone"`
 }
 
@@ -146,11 +135,9 @@ type AndroidInstanceLabel struct {
 
 type AndroidInstanceTask struct {
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
 }
 
@@ -165,7 +152,6 @@ type AndroidInstanceTaskStatus struct {
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
 
 	// 任务执行结果描述，针对某些任务，可以是可解析的 json
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskResult *string `json:"TaskResult,omitnil,omitempty" name:"TaskResult"`
 }
 
@@ -360,7 +346,6 @@ func (r *CreateAndroidInstanceImageRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAndroidInstanceImageResponseParams struct {
 	// 安卓实例镜像 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AndroidInstanceImageId *string `json:"AndroidInstanceImageId,omitnil,omitempty" name:"AndroidInstanceImageId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1040,7 +1025,6 @@ func (r *DescribeAndroidAppsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAndroidAppsResponseParams struct {
 	// 安卓应用列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Apps []*AndroidApp `json:"Apps,omitnil,omitempty" name:"Apps"`
 
 	// 安卓应用列表长度
@@ -1101,7 +1085,6 @@ func (r *DescribeAndroidInstanceAppsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAndroidInstanceAppsResponseParams struct {
 	// 安卓应用列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Apps []*AndroidInstanceAppInfo `json:"Apps,omitnil,omitempty" name:"Apps"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1173,11 +1156,9 @@ func (r *DescribeAndroidInstanceImagesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAndroidInstanceImagesResponseParams struct {
 	// 镜像总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 镜像列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AndroidInstanceImages []*AndroidInstanceImage `json:"AndroidInstanceImages,omitnil,omitempty" name:"AndroidInstanceImages"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1316,7 +1297,6 @@ func (r *DescribeAndroidInstanceTasksStatusRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeAndroidInstanceTasksStatusResponseParams struct {
 	// 任务状态集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskStatusSet []*AndroidInstanceTaskStatus `json:"TaskStatusSet,omitnil,omitempty" name:"TaskStatusSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1656,10 +1636,10 @@ func (r *ExecuteCommandOnAndroidInstancesResponse) FromJsonString(s string) erro
 }
 
 type Filter struct {
-	// "aaa"
+	// 字段名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// ["bbb", "ccc"]
+	// 字段值列表
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
@@ -1712,7 +1692,6 @@ func (r *InstallAndroidInstancesAppRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type InstallAndroidInstancesAppResponseParams struct {
 	// 任务集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskSet []*AndroidInstanceTask `json:"TaskSet,omitnil,omitempty" name:"TaskSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2050,7 +2029,6 @@ func (r *RebootAndroidInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RebootAndroidInstancesResponseParams struct {
 	// 任务集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskSet []*AndroidInstanceTask `json:"TaskSet,omitnil,omitempty" name:"TaskSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2132,7 +2110,6 @@ func (r *ResetAndroidInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ResetAndroidInstancesResponseParams struct {
 	// 任务集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskSet []*AndroidInstanceTask `json:"TaskSet,omitnil,omitempty" name:"TaskSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2373,7 +2350,6 @@ func (r *StartAndroidInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type StartAndroidInstancesResponseParams struct {
 	// 任务集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskSet []*AndroidInstanceTask `json:"TaskSet,omitnil,omitempty" name:"TaskSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2614,7 +2590,6 @@ func (r *StopAndroidInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type StopAndroidInstancesResponseParams struct {
 	// 任务集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskSet []*AndroidInstanceTask `json:"TaskSet,omitnil,omitempty" name:"TaskSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2968,7 +2943,6 @@ type SyncExecuteCommandResult struct {
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 命令执行输出内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 命令执行结果
@@ -3113,7 +3087,6 @@ func (r *UninstallAndroidInstancesAppRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UninstallAndroidInstancesAppResponseParams struct {
 	// 任务集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskSet []*AndroidInstanceTask `json:"TaskSet,omitnil,omitempty" name:"TaskSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

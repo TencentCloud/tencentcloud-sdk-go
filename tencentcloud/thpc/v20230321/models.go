@@ -1474,6 +1474,16 @@ type DescribeClustersRequestParams struct {
 
 	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <ul>
+	//     <li><strong>cluster-type</strong>
+	//         <p style="padding-left: 30px;">按照【<strong>集群类型</strong>】进行过滤</p>
+	//         <p style="padding-left: 30px;">类型：String</p>
+	//         <p style="padding-left: 30px;">必选：否</p>
+	//     </li>
+	// </ul>
+	// <p style="padding-left: 30px;">每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeClustersRequest struct {
@@ -1487,6 +1497,16 @@ type DescribeClustersRequest struct {
 
 	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// <ul>
+	//     <li><strong>cluster-type</strong>
+	//         <p style="padding-left: 30px;">按照【<strong>集群类型</strong>】进行过滤</p>
+	//         <p style="padding-left: 30px;">类型：String</p>
+	//         <p style="padding-left: 30px;">必选：否</p>
+	//     </li>
+	// </ul>
+	// <p style="padding-left: 30px;">每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。</p>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeClustersRequest) ToJsonString() string {
@@ -1504,6 +1524,7 @@ func (r *DescribeClustersRequest) FromJsonString(s string) error {
 	delete(f, "ClusterIds")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClustersRequest has unknown keys!", "")
 	}

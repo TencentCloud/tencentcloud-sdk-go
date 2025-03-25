@@ -44,12 +44,15 @@ type AccountInfo struct {
 
 type CBSSpec struct {
 	// 盘类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// 大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
 	// 个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskCount *int64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
 }
 
@@ -68,16 +71,16 @@ type CBSSpecInfo struct {
 }
 
 type CNResourceSpec struct {
-	// 无
+	// 节点类型
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 无
+	// 机型
 	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
 
-	// 无
+	// 节点个数
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 
-	// 无
+	// 磁盘信息
 	DiskSpec *CBSSpec `json:"DiskSpec,omitnil,omitempty" name:"DiskSpec"`
 }
 
@@ -134,12 +137,15 @@ type ConfigHistory struct {
 
 type ConfigParams struct {
 	// 名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParameterName *string `json:"ParameterName,omitnil,omitempty" name:"ParameterName"`
 
 	// 值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParameterValue *string `json:"ParameterValue,omitnil,omitempty" name:"ParameterValue"`
 
 	// 修改前的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParameterOldValue *string `json:"ParameterOldValue,omitnil,omitempty" name:"ParameterOldValue"`
 }
 
@@ -420,10 +426,10 @@ type DescribeDBParamsRequestParams struct {
 	// cn/dn
 	NodeTypes []*string `json:"NodeTypes,omitnil,omitempty" name:"NodeTypes"`
 
-	// range::(0,100]
+	// 分页参数，分页步长，默认为10 示例值：10
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// range::[0,INF)
+	// 分页参数，第一页为0，第二页为10
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// InstanceId名称
@@ -436,10 +442,10 @@ type DescribeDBParamsRequest struct {
 	// cn/dn
 	NodeTypes []*string `json:"NodeTypes,omitnil,omitempty" name:"NodeTypes"`
 
-	// range::(0,100]
+	// 分页参数，分页步长，默认为10 示例值：10
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// range::[0,INF)
+	// 分页参数，第一页为0，第二页为10
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// InstanceId名称
@@ -939,10 +945,10 @@ func (r *DescribeInstanceStateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesRequestParams struct {
-	// 搜索的集群id名称
+	// 用集群id搜索
 	SearchInstanceId *string `json:"SearchInstanceId,omitnil,omitempty" name:"SearchInstanceId"`
 
-	// 搜索的集群name
+	// 用集群名字搜索
 	SearchInstanceName *string `json:"SearchInstanceName,omitnil,omitempty" name:"SearchInstanceName"`
 
 	// 分页参数，第一页为0，第二页为10
@@ -958,10 +964,10 @@ type DescribeInstancesRequestParams struct {
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 搜索的集群id名称
+	// 用集群id搜索
 	SearchInstanceId *string `json:"SearchInstanceId,omitnil,omitempty" name:"SearchInstanceId"`
 
-	// 搜索的集群name
+	// 用集群名字搜索
 	SearchInstanceName *string `json:"SearchInstanceName,omitnil,omitempty" name:"SearchInstanceName"`
 
 	// 分页参数，第一页为0，第二页为10
@@ -1007,7 +1013,7 @@ type DescribeInstancesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstancesList []*InstanceInfo `json:"InstancesList,omitnil,omitempty" name:"InstancesList"`
 
-	// -
+	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
@@ -1439,27 +1445,27 @@ func (r *DestroyInstanceByApiResponse) FromJsonString(s string) error {
 }
 
 type DiskSpecPlus struct {
-	// 1
+	// 磁盘个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskCount *int64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
 
-	// 1
+	// 磁盘最大值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxDiskSize *int64 `json:"MaxDiskSize,omitnil,omitempty" name:"MaxDiskSize"`
 
-	// 1
+	// 磁盘最小值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinDiskSize *int64 `json:"MinDiskSize,omitnil,omitempty" name:"MinDiskSize"`
 
-	// 1
+	// 磁盘类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 1
+	// 磁盘类型详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskDesc *string `json:"DiskDesc,omitnil,omitempty" name:"DiskDesc"`
 
-	// 1
+	// 机型类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CvmClass *string `json:"CvmClass,omitnil,omitempty" name:"CvmClass"`
 }
@@ -1508,47 +1514,47 @@ type InstanceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// cdwpg-cn或者其他
+	// 内核版本类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// cdwpg-cn或者其他
+	// 集群名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// Running
+	// 集群状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 运行中
+	// 集群状态详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
-	// 无
+	// 集群状态信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceStateInfo *InstanceStateInfo `json:"InstanceStateInfo,omitnil,omitempty" name:"InstanceStateInfo"`
 
-	// -
+	// 集群id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 2022-09-05 20:00:01
+	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// ap-chongqing
+	// 地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// ap
+	// 地区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// region
+	// 地域详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionDesc *string `json:"RegionDesc,omitnil,omitempty" name:"RegionDesc"`
 
-	// zone
+	// 地区详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneDesc *string `json:"ZoneDesc,omitnil,omitempty" name:"ZoneDesc"`
 
@@ -1556,7 +1562,7 @@ type InstanceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// v3
+	// 内核版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
@@ -1572,35 +1578,35 @@ type InstanceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DNNodes []*InstanceNodeGroup `json:"DNNodes,omitnil,omitempty" name:"DNNodes"`
 
-	// 1
+	// 地域id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
-	// 1
+	// 地区id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 1
+	// 私有网络
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 1
+	// 子网
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 1
+	// 过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
-	// 1
+	// 计费方式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 1
+	// 自动续费
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *bool `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 1
+	// 集群id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
@@ -1621,15 +1627,15 @@ type InstanceNode struct {
 }
 
 type InstanceNodeGroup struct {
-	// 1
+	// 机型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
 
-	// 1
+	// 磁盘信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataDisk *DiskSpecPlus `json:"DataDisk,omitnil,omitempty" name:"DataDisk"`
 
-	// 1
+	// 机器个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CvmCount *int64 `json:"CvmCount,omitnil,omitempty" name:"CvmCount"`
 }
@@ -1774,11 +1780,11 @@ type InstanceStateInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupStatus *int64 `json:"BackupStatus,omitnil,omitempty" name:"BackupStatus"`
 
-	// 1
+	// 请求id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 
-	// 1
+	// 集群是否有备份中任务，有为1,无为0
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupOpenStatus *int64 `json:"BackupOpenStatus,omitnil,omitempty" name:"BackupOpenStatus"`
 }
@@ -2342,10 +2348,10 @@ func (r *ScaleOutInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ScaleOutInstanceResponseParams struct {
-	// 1
+	// 流程id
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
-	// 1
+	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 

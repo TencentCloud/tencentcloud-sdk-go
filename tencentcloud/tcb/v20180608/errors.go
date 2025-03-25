@@ -131,6 +131,9 @@ const (
 	// 资源过期。
 	RESOURCEUNAVAILABLE_RESOURCEOVERDUE = "ResourceUnavailable.ResourceOverdue"
 
+	// 资源售罄。后付费套餐已不再支持购买。
+	RESOURCESSOLDOUT_POSTPAYPACKAGENOTAVAILABLE = "ResourcesSoldOut.PostpayPackageNotAvailable"
+
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 

@@ -687,7 +687,7 @@ type CreateDBInstanceRequestParams struct {
 	// 项目 ID，可以通过查看项目列表获取，不传则关联到默认项目
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 数据库引擎版本，当前可选：8.0，5.7，10.1，10.0。
+	// 数据库引擎版本，当前可选：8.0，5.7，10.1。
 	DbVersionId *string `json:"DbVersionId,omitnil,omitempty" name:"DbVersionId"`
 
 	// 实例名称， 可以通过该字段自主的设置实例的名字
@@ -757,7 +757,7 @@ type CreateDBInstanceRequest struct {
 	// 项目 ID，可以通过查看项目列表获取，不传则关联到默认项目
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 数据库引擎版本，当前可选：8.0，5.7，10.1，10.0。
+	// 数据库引擎版本，当前可选：8.0，5.7，10.1。
 	DbVersionId *string `json:"DbVersionId,omitnil,omitempty" name:"DbVersionId"`
 
 	// 实例名称， 可以通过该字段自主的设置实例的名字
@@ -834,7 +834,6 @@ type CreateDBInstanceResponseParams struct {
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
 	// 订单对应的实例 ID 列表，如果此处没有返回实例 ID，可以通过订单查询接口获取。还可通过实例查询接口查询实例是否创建完成。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1487,15 +1486,12 @@ type DBInstance struct {
 	Qps *int64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
 	// 付费模式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Paymode *string `json:"Paymode,omitnil,omitempty" name:"Paymode"`
 
 	// 实例处于异步任务时的异步任务流程ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Locker *int64 `json:"Locker,omitnil,omitempty" name:"Locker"`
 
 	// 实例目前运行状态描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
 	// 外网状态，0-未开通；1-已开通；2-关闭；3-开通中
@@ -1514,55 +1510,42 @@ type DBInstance struct {
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
 	// 实例IPv6标志
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv6Flag *uint64 `json:"Ipv6Flag,omitnil,omitempty" name:"Ipv6Flag"`
 
 	// 内网IPv6
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vipv6 *string `json:"Vipv6,omitnil,omitempty" name:"Vipv6"`
 
 	// 外网IPv6
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WanVipv6 *string `json:"WanVipv6,omitnil,omitempty" name:"WanVipv6"`
 
 	// 外网IPv6端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WanPortIpv6 *uint64 `json:"WanPortIpv6,omitnil,omitempty" name:"WanPortIpv6"`
 
 	// 外网IPv6状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WanStatusIpv6 *uint64 `json:"WanStatusIpv6,omitnil,omitempty" name:"WanStatusIpv6"`
 
 	// 数据库引擎
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbEngine *string `json:"DbEngine,omitnil,omitempty" name:"DbEngine"`
 
 	// 数据库版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 
 	// DCN标志，0-无，1-主实例，2-灾备实例
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DcnFlag *int64 `json:"DcnFlag,omitnil,omitempty" name:"DcnFlag"`
 
 	// DCN状态，0-无，1-创建中，2-同步中，3-已断开
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DcnStatus *int64 `json:"DcnStatus,omitnil,omitempty" name:"DcnStatus"`
 
 	// DCN灾备实例数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DcnDstNum *int64 `json:"DcnDstNum,omitnil,omitempty" name:"DcnDstNum"`
 
 	// 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 实例标签信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
 	// 数据库版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbVersionId *string `json:"DbVersionId,omitnil,omitempty" name:"DbVersionId"`
 }
 
@@ -2481,7 +2464,6 @@ type DescribeDBInstanceDetailResponseParams struct {
 	IsEncryptSupported *int64 `json:"IsEncryptSupported,omitnil,omitempty" name:"IsEncryptSupported"`
 
 	// 内网IPv6
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip6 *string `json:"Vip6,omitnil,omitempty" name:"Vip6"`
 
 	// 实例Cpu核数
@@ -2494,62 +2476,48 @@ type DescribeDBInstanceDetailResponseParams struct {
 	Qps *int64 `json:"Qps,omitnil,omitempty" name:"Qps"`
 
 	// 是否支持IPv6
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv6Flag *int64 `json:"Ipv6Flag,omitnil,omitempty" name:"Ipv6Flag"`
 
 	// 外网IPv6地址，公网可访问
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WanVipv6 *string `json:"WanVipv6,omitnil,omitempty" name:"WanVipv6"`
 
 	// 外网状态，0-未开通；1-已开通；2-关闭；3-开通中；4-关闭中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WanStatusIpv6 *int64 `json:"WanStatusIpv6,omitnil,omitempty" name:"WanStatusIpv6"`
 
 	// 外网IPv6端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WanPortIpv6 *int64 `json:"WanPortIpv6,omitnil,omitempty" name:"WanPortIpv6"`
 
 	// 数据库引擎
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbEngine *string `json:"DbEngine,omitnil,omitempty" name:"DbEngine"`
 
 	// 数据库版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbVersion *string `json:"DbVersion,omitnil,omitempty" name:"DbVersion"`
 
 	// 标签信息
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
 	// DCN标志，0-无，1-主实例，2-灾备实例
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DcnFlag *int64 `json:"DcnFlag,omitnil,omitempty" name:"DcnFlag"`
 
 	// DCN状态，0-无，1-创建中，2-同步中，3-已断开
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DcnStatus *int64 `json:"DcnStatus,omitnil,omitempty" name:"DcnStatus"`
 
 	// DCN灾备实例数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DcnDstNum *int64 `json:"DcnDstNum,omitnil,omitempty" name:"DcnDstNum"`
 
 	// 1： 主实例（独享型）, 2: 主实例, 3： 灾备实例, 4： 灾备实例（独享型）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *int64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 实例的各个DB节点信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodesInfo []*NodeInfo `json:"NodesInfo,omitnil,omitempty" name:"NodesInfo"`
 
 	// 实例是否支持设置用户连接数限制，内核为10.1暂不支持。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsMaxUserConnectionsSupported *bool `json:"IsMaxUserConnectionsSupported,omitnil,omitempty" name:"IsMaxUserConnectionsSupported"`
 
 	// 对外显示的数据库版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbVersionId *string `json:"DbVersionId,omitnil,omitempty" name:"DbVersionId"`
 
 	// 加密状态, 0-未开启，1-已开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptStatus *int64 `json:"EncryptStatus,omitnil,omitempty" name:"EncryptStatus"`
 
 	// DCN的配置信息
@@ -2561,11 +2529,9 @@ type DescribeDBInstanceDetailResponseParams struct {
 	ReplicaStatus *DCNReplicaStatus `json:"ReplicaStatus,omitnil,omitempty" name:"ReplicaStatus"`
 
 	// 独享集群类型，0:公有云, 1:金融围笼, 2:CDC集群
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExclusterType *int64 `json:"ExclusterType,omitnil,omitempty" name:"ExclusterType"`
 
 	// VPC就近访问
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RsAccessStrategy *int64 `json:"RsAccessStrategy,omitnil,omitempty" name:"RsAccessStrategy"`
 
 	// 尚未回收的网络资源

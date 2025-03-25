@@ -1873,19 +1873,15 @@ type ContainerEvent struct {
 
 type ContainerGroupDeploy struct {
 	// 部署组id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 分组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 实例总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceNum *int64 `json:"InstanceNum,omitnil,omitempty" name:"InstanceNum"`
 
 	// 已启动实例总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentNum *int64 `json:"CurrentNum,omitnil,omitempty" name:"CurrentNum"`
 
 	// 镜像server
@@ -1921,7 +1917,6 @@ type ContainerGroupDeploy struct {
 	AccessType *int64 `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
 	// 端口映射
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtocolPorts []*ProtocolPort `json:"ProtocolPorts,omitnil,omitempty" name:"ProtocolPorts"`
 
 	// 更新方式：0:快速更新 1:滚动更新
@@ -1981,7 +1976,6 @@ type ContainerGroupDeploy struct {
 	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitnil,omitempty" name:"HealthCheckSettings"`
 
 	// 是否部署Agent容器
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployAgent *bool `json:"DeployAgent,omitnil,omitempty" name:"DeployAgent"`
 
 	// 部署组备注
@@ -1989,11 +1983,9 @@ type ContainerGroupDeploy struct {
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// 是否创建 k8s service
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisableService *bool `json:"DisableService,omitnil,omitempty" name:"DisableService"`
 
 	// service 是否为 headless 类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeadlessService *bool `json:"HeadlessService,omitnil,omitempty" name:"HeadlessService"`
 
 	// TcrRepoInfo值
@@ -2013,11 +2005,9 @@ type ContainerGroupDeploy struct {
 	KubeInjectEnable *bool `json:"KubeInjectEnable,omitnil,omitempty" name:"KubeInjectEnable"`
 
 	// 仓库类型 (person, tcr)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepoType *string `json:"RepoType,omitnil,omitempty" name:"RepoType"`
 
 	// 预热配置设置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarmupSetting *WarmupSetting `json:"WarmupSetting,omitnil,omitempty" name:"WarmupSetting"`
 
 	// Envoy网关服务配置
@@ -2025,19 +2015,15 @@ type ContainerGroupDeploy struct {
 	GatewayConfig *GatewayConfig `json:"GatewayConfig,omitnil,omitempty" name:"GatewayConfig"`
 
 	// 容器名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerName *string `json:"ContainerName,omitnil,omitempty" name:"ContainerName"`
 
 	// 附加容器列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdditionalContainerList []*GroupContainerInfo `json:"AdditionalContainerList,omitnil,omitempty" name:"AdditionalContainerList"`
 
 	// 内部容器列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternalContainerList []*GroupContainerInfo `json:"InternalContainerList,omitnil,omitempty" name:"InternalContainerList"`
 
 	// service列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceSettingList []*ServiceSetting `json:"ServiceSettingList,omitnil,omitempty" name:"ServiceSettingList"`
 }
 
@@ -9298,7 +9284,6 @@ func (r *DescribeContainerGroupDeployInfoRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeContainerGroupDeployInfoResponseParams struct {
 	// 获取部署组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ContainerGroupDeploy `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10816,7 +10801,6 @@ func (r *DescribeGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeGroupResponseParams struct {
 	// 虚拟机部署组详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *VmGroup `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16528,63 +16512,48 @@ type GroupContainerInfo struct {
 	TagName *string `json:"TagName,omitnil,omitempty" name:"TagName"`
 
 	// 容器名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerName *string `json:"ContainerName,omitnil,omitempty" name:"ContainerName"`
 
 	// 镜像名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepoName *string `json:"RepoName,omitnil,omitempty" name:"RepoName"`
 
 	// 仓库类型,tcr，address，personal，默认personal
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepoType *string `json:"RepoType,omitnil,omitempty" name:"RepoType"`
 
 	// tcr仓库信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TcrRepoInfo *TcrRepoInfo `json:"TcrRepoInfo,omitnil,omitempty" name:"TcrRepoInfo"`
 
 	// 镜像server
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Server *string `json:"Server,omitnil,omitempty" name:"Server"`
 
 	// 凭证名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
 
 	// jvm 参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JvmOpts *string `json:"JvmOpts,omitnil,omitempty" name:"JvmOpts"`
 
 	// 容器最大的 CPU 核数，对应 K8S 的 limit
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CpuLimit *string `json:"CpuLimit,omitnil,omitempty" name:"CpuLimit"`
 
 	// 容器分配的 CPU 核数，对应 K8S 的 request
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CpuRequest *string `json:"CpuRequest,omitnil,omitempty" name:"CpuRequest"`
 
 	// 容器分配的内存 MiB 数，对应 K8S 的 request
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemRequest *string `json:"MemRequest,omitnil,omitempty" name:"MemRequest"`
 
 	// 容器最大的内存 MiB 数，对应 K8S 的 limit
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemLimit *string `json:"MemLimit,omitnil,omitempty" name:"MemLimit"`
 
 	// 健康检查配置信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitnil,omitempty" name:"HealthCheckSettings"`
 
 	// 环境变量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Envs []*Env `json:"Envs,omitnil,omitempty" name:"Envs"`
 
 	// 环境变量,作为入参时不用填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserEnvs []*Env `json:"UserEnvs,omitnil,omitempty" name:"UserEnvs"`
 
 	// 数据卷挂载点信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeMountInfoList []*VolumeMountInfo `json:"VolumeMountInfoList,omitnil,omitempty" name:"VolumeMountInfoList"`
 }
 
@@ -16880,6 +16849,9 @@ type ImageRepository struct {
 
 	// 仓库名，等同reponame字段
 	RepoName *string `json:"RepoName,omitnil,omitempty" name:"RepoName"`
+
+	// 仓库类型
+	RepoType *string `json:"RepoType,omitnil,omitempty" name:"RepoType"`
 }
 
 type ImageRepositoryResult struct {
@@ -20532,6 +20504,9 @@ type SearchBusinessLogRequestParams struct {
 
 	// 游标ID
 	ScrollId *string `json:"ScrollId,omitnil,omitempty" name:"ScrollId"`
+
+	// 查询es使用searchAfter时，游标
+	SearchAfter []*string `json:"SearchAfter,omitnil,omitempty" name:"SearchAfter"`
 }
 
 type SearchBusinessLogRequest struct {
@@ -20575,6 +20550,9 @@ type SearchBusinessLogRequest struct {
 
 	// 游标ID
 	ScrollId *string `json:"ScrollId,omitnil,omitempty" name:"ScrollId"`
+
+	// 查询es使用searchAfter时，游标
+	SearchAfter []*string `json:"SearchAfter,omitnil,omitempty" name:"SearchAfter"`
 }
 
 func (r *SearchBusinessLogRequest) ToJsonString() string {
@@ -20602,6 +20580,7 @@ func (r *SearchBusinessLogRequest) FromJsonString(s string) error {
 	delete(f, "SearchWordType")
 	delete(f, "BatchType")
 	delete(f, "ScrollId")
+	delete(f, "SearchAfter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchBusinessLogRequest has unknown keys!", "")
 	}
@@ -20611,7 +20590,6 @@ func (r *SearchBusinessLogRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SearchBusinessLogResponseParams struct {
 	// 业务日志列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageBusinessLogV2 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20675,6 +20653,9 @@ type SearchStdoutLogRequestParams struct {
 
 	// 游标ID
 	ScrollId *string `json:"ScrollId,omitnil,omitempty" name:"ScrollId"`
+
+	// 查询es使用searchAfter时，游标
+	SearchAfter []*string `json:"SearchAfter,omitnil,omitempty" name:"SearchAfter"`
 }
 
 type SearchStdoutLogRequest struct {
@@ -20719,6 +20700,9 @@ type SearchStdoutLogRequest struct {
 
 	// 游标ID
 	ScrollId *string `json:"ScrollId,omitnil,omitempty" name:"ScrollId"`
+
+	// 查询es使用searchAfter时，游标
+	SearchAfter []*string `json:"SearchAfter,omitnil,omitempty" name:"SearchAfter"`
 }
 
 func (r *SearchStdoutLogRequest) ToJsonString() string {
@@ -20745,6 +20729,7 @@ func (r *SearchStdoutLogRequest) FromJsonString(s string) error {
 	delete(f, "SearchWordType")
 	delete(f, "BatchType")
 	delete(f, "ScrollId")
+	delete(f, "SearchAfter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchStdoutLogRequest has unknown keys!", "")
 	}
@@ -20754,7 +20739,6 @@ func (r *SearchStdoutLogRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SearchStdoutLogResponseParams struct {
 	// 标准输出日志列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageStdoutLogV2 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20802,88 +20786,70 @@ type ServiceGovernanceConfig struct {
 
 type ServiceSetting struct {
 	// 0:公网, 1:集群内访问, 2：NodePort, 3: VPC 内网访问
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessType *int64 `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
 	// 容器端口映射
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtocolPorts []*ProtocolPort `json:"ProtocolPorts,omitnil,omitempty" name:"ProtocolPorts"`
 
 	// 子网ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 是否创建 k8s service，默认为 false
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisableService *bool `json:"DisableService,omitnil,omitempty" name:"DisableService"`
 
 	// service 是否为 headless 类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeadlessService *bool `json:"HeadlessService,omitnil,omitempty" name:"HeadlessService"`
 
 	// 当为 true 且 DisableService 也为 true 时，会删除之前创建的 service，请小心使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowDeleteService *bool `json:"AllowDeleteService,omitnil,omitempty" name:"AllowDeleteService"`
 
 	// 开启SessionAffinity，true为开启，false为不开启，默认为false
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpenSessionAffinity *bool `json:"OpenSessionAffinity,omitnil,omitempty" name:"OpenSessionAffinity"`
 
 	// SessionAffinity会话时间，默认10800
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionAffinityTimeoutSeconds *int64 `json:"SessionAffinityTimeoutSeconds,omitnil,omitempty" name:"SessionAffinityTimeoutSeconds"`
 
 	// 服务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
 	// 外部流量策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExternalTrafficStrategy *string `json:"ExternalTrafficStrategy,omitnil,omitempty" name:"ExternalTrafficStrategy"`
 
 	// 外部流量策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExternalTrafficPolicy *string `json:"ExternalTrafficPolicy,omitnil,omitempty" name:"ExternalTrafficPolicy"`
 
 	// 负载均衡提供者
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerProvisioner *string `json:"LoadBalancerProvisioner,omitnil,omitempty" name:"LoadBalancerProvisioner"`
 
 	// 负载均衡类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancingType *string `json:"LoadBalancingType,omitnil,omitempty" name:"LoadBalancingType"`
 
 	// k8s负载均衡内网vip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterIp *string `json:"ClusterIp,omitnil,omitempty" name:"ClusterIp"`
 
 	// 禁用服务Int记录
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisableServiceInt *uint64 `json:"DisableServiceInt,omitnil,omitempty" name:"DisableServiceInt"`
 
 	// 开启SessionAffinity Int记录
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpenSessionAffinityInt *uint64 `json:"OpenSessionAffinityInt,omitnil,omitempty" name:"OpenSessionAffinityInt"`
 
 	// 开启HeadlessService int记录
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeadlessServiceInt *uint64 `json:"HeadlessServiceInt,omitnil,omitempty" name:"HeadlessServiceInt"`
 
 	// 服务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// VPC网络ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 负载均衡VIP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancingIp *string `json:"LoadBalancingIp,omitnil,omitempty" name:"LoadBalancingIp"`
 
 	// 负载均衡id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
+
+	// 已存在的负载均衡id
+	ExistingLoadBalancerId *string `json:"ExistingLoadBalancerId,omitnil,omitempty" name:"ExistingLoadBalancerId"`
 }
 
 type ServiceStatisticsResult struct {
@@ -21933,11 +21899,9 @@ type TsfPageBusinessLogConfig struct {
 
 type TsfPageBusinessLogV2 struct {
 	// 总条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 业务日志列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*BusinessLogV2 `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 游标ID
@@ -21947,6 +21911,10 @@ type TsfPageBusinessLogV2 struct {
 	// 查询状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 查询es时，使用searchAfter返回的游标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SearchAfter []*string `json:"SearchAfter,omitnil,omitempty" name:"SearchAfter"`
 }
 
 type TsfPageCluster struct {
@@ -22101,11 +22069,9 @@ type TsfPageSimpleGroup struct {
 
 type TsfPageStdoutLogV2 struct {
 	// 总条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 标准输出日志列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*StdoutLogV2 `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 游标ID
@@ -22115,6 +22081,10 @@ type TsfPageStdoutLogV2 struct {
 	// 查询状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 游标ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SearchAfter []*string `json:"SearchAfter,omitnil,omitempty" name:"SearchAfter"`
 }
 
 type TsfPageUnitNamespace struct {
@@ -23074,15 +23044,12 @@ type ValueFrom struct {
 
 type VmGroup struct {
 	// 部署组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 部署组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 部署组状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupStatus *string `json:"GroupStatus,omitnil,omitempty" name:"GroupStatus"`
 
 	// 程序包ID
@@ -23098,35 +23065,27 @@ type VmGroup struct {
 	PackageVersion *string `json:"PackageVersion,omitnil,omitempty" name:"PackageVersion"`
 
 	// 集群ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 集群名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 命名空间ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 命名空间名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
 
 	// 应用ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 应用名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationName *string `json:"ApplicationName,omitnil,omitempty" name:"ApplicationName"`
 
 	// 部署组机器数目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
 	// 部署组运行中机器数目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunInstanceCount *int64 `json:"RunInstanceCount,omitnil,omitempty" name:"RunInstanceCount"`
 
 	// 部署组启动参数信息
@@ -23134,15 +23093,12 @@ type VmGroup struct {
 	StartupParameters *string `json:"StartupParameters,omitnil,omitempty" name:"StartupParameters"`
 
 	// 部署组创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 部署组更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 部署组停止机器数目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OffInstanceCount *int64 `json:"OffInstanceCount,omitnil,omitempty" name:"OffInstanceCount"`
 
 	// 部署组描述信息
@@ -23150,19 +23106,15 @@ type VmGroup struct {
 	GroupDesc *string `json:"GroupDesc,omitnil,omitempty" name:"GroupDesc"`
 
 	// 微服务类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MicroserviceType *string `json:"MicroserviceType,omitnil,omitempty" name:"MicroserviceType"`
 
 	// 应用类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationType *string `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
 
 	// 部署组资源类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupResourceType *string `json:"GroupResourceType,omitnil,omitempty" name:"GroupResourceType"`
 
 	// 部署组更新时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedTime *int64 `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 
 	// 部署应用描述信息
@@ -23170,27 +23122,21 @@ type VmGroup struct {
 	DeployDesc *string `json:"DeployDesc,omitnil,omitempty" name:"DeployDesc"`
 
 	// 滚动发布的更新方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateType *uint64 `json:"UpdateType,omitnil,omitempty" name:"UpdateType"`
 
 	// 发布是否启用beta批次
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployBetaEnable *bool `json:"DeployBetaEnable,omitnil,omitempty" name:"DeployBetaEnable"`
 
 	// 滚动发布的批次比例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployBatch []*float64 `json:"DeployBatch,omitnil,omitempty" name:"DeployBatch"`
 
 	// 滚动发布的批次执行方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployExeMode *string `json:"DeployExeMode,omitnil,omitempty" name:"DeployExeMode"`
 
 	// 滚动发布的每个批次的等待时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployWaitTime *uint64 `json:"DeployWaitTime,omitnil,omitempty" name:"DeployWaitTime"`
 
 	// 是否开启了健康检查
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableHealthCheck *bool `json:"EnableHealthCheck,omitnil,omitempty" name:"EnableHealthCheck"`
 
 	// 健康检查配置
@@ -23214,11 +23160,9 @@ type VmGroup struct {
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// javaagent信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AgentProfileList []*AgentProfile `json:"AgentProfileList,omitnil,omitempty" name:"AgentProfileList"`
 
 	// 预热属性配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarmupSetting *WarmupSetting `json:"WarmupSetting,omitnil,omitempty" name:"WarmupSetting"`
 
 	// Envoy网关配置
@@ -23226,13 +23170,35 @@ type VmGroup struct {
 	GatewayConfig *GatewayConfig `json:"GatewayConfig,omitnil,omitempty" name:"GatewayConfig"`
 
 	// 批次是否开启健康检查
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableBatchHealthCheck *bool `json:"EnableBatchHealthCheck,omitnil,omitempty" name:"EnableBatchHealthCheck"`
+
+	// 是否开启cgroup控制内存cpu
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilebeatCgroupEnable *bool `json:"FilebeatCgroupEnable,omitnil,omitempty" name:"FilebeatCgroupEnable"`
+
+	// filebeat使用cpu上限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilebeatMaxCpu *float64 `json:"FilebeatMaxCpu,omitnil,omitempty" name:"FilebeatMaxCpu"`
+
+	// filebeat使用内存上限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilebeatMaxMem *int64 `json:"FilebeatMaxMem,omitnil,omitempty" name:"FilebeatMaxMem"`
+
+	// 仓库ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepositoryId *string `json:"RepositoryId,omitnil,omitempty" name:"RepositoryId"`
+
+	// 仓库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
+
+	// 仓库类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepositoryType *string `json:"RepositoryType,omitnil,omitempty" name:"RepositoryType"`
 }
 
 type VmGroupOther struct {
 	// 部署组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 程序包ID
@@ -23248,23 +23214,18 @@ type VmGroupOther struct {
 	PackageVersion *string `json:"PackageVersion,omitnil,omitempty" name:"PackageVersion"`
 
 	// 部署组实例数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
 	// 部署组运行中实例数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunInstanceCount *int64 `json:"RunInstanceCount,omitnil,omitempty" name:"RunInstanceCount"`
 
 	// 部署组中停止实例数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OffInstanceCount *int64 `json:"OffInstanceCount,omitnil,omitempty" name:"OffInstanceCount"`
 
 	// 部署组状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupStatus *string `json:"GroupStatus,omitnil,omitempty" name:"GroupStatus"`
 
 	// 服务配置信息是否匹配
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsNotEqualServiceConfig *bool `json:"IsNotEqualServiceConfig,omitnil,omitempty" name:"IsNotEqualServiceConfig"`
 
 	// HealthCheckSettings
