@@ -1447,7 +1447,6 @@ type MetricData struct {
 	DataSet []*DatePoint `json:"DataSet,omitnil,omitempty" name:"DataSet"`
 
 	// 查询范围内的请求总量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricCount *int64 `json:"MetricCount,omitnil,omitempty" name:"MetricCount"`
 }
 
@@ -1821,7 +1820,6 @@ type PrivateZone struct {
 	RecordCount *int64 `json:"RecordCount,omitnil,omitempty" name:"RecordCount"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 绑定的Vpc列表
@@ -1838,26 +1836,21 @@ type PrivateZone struct {
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 绑定的关联账号的vpc列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountVpcSet []*AccountVpcInfoOutput `json:"AccountVpcSet,omitnil,omitempty" name:"AccountVpcSet"`
 
 	// 是否自定义TLD
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsCustomTld *bool `json:"IsCustomTld,omitnil,omitempty" name:"IsCustomTld"`
 
 	// CNAME加速状态：开通：ENABLED, 关闭，DISABLED
 	CnameSpeedupStatus *string `json:"CnameSpeedupStatus,omitnil,omitempty" name:"CnameSpeedupStatus"`
 
 	// 转发规则名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ForwardRuleName *string `json:"ForwardRuleName,omitnil,omitempty" name:"ForwardRuleName"`
 
 	// 转发规则类型：云上到云下，DOWN；云下到云上，UP，目前只支持DOWN
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ForwardRuleType *string `json:"ForwardRuleType,omitnil,omitempty" name:"ForwardRuleType"`
 
 	// 转发的地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ForwardAddress *string `json:"ForwardAddress,omitnil,omitempty" name:"ForwardAddress"`
 
 	// 终端节点名称
@@ -1865,7 +1858,6 @@ type PrivateZone struct {
 	EndPointName *string `json:"EndPointName,omitnil,omitempty" name:"EndPointName"`
 
 	// 已删除的vpc
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeletedVpcSet []*VpcInfo `json:"DeletedVpcSet,omitnil,omitempty" name:"DeletedVpcSet"`
 }
 
@@ -1889,7 +1881,6 @@ type PrivateZoneRecord struct {
 	TTL *int64 `json:"TTL,omitnil,omitempty" name:"TTL"`
 
 	// MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MX *int64 `json:"MX,omitnil,omitempty" name:"MX"`
 
 	// 记录状态：ENABLED
@@ -1910,11 +1901,9 @@ type PrivateZoneRecord struct {
 	Extra *string `json:"Extra,omitnil,omitempty" name:"Extra"`
 
 	// 0暂停，1启用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enabled *uint64 `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 

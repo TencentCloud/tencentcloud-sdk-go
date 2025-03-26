@@ -87,6 +87,8 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 //     - 支持64K上下文长度，最大输入56k，最大输出8k（不含思维链）。
 //
+//     - 注意：相比于DeepSeek-V3，DeepSeek-V3-0324仅更新了模型权重，未增加参数量。总模型大小为685B，其中包括671B的主模型权重和 14B 的多令牌预测（MTP）模块权重，后续均描述主模型参数量。
+//
 // - DeepSeek-V3（model 参数值为**deepseek-v3**）
 //
 //     - DeepSeek-V3为671B参数MoE模型，在百科知识、数学推理等多项任务上优势突出，评测成绩在主流榜单中位列开源模型榜首。
@@ -307,6 +309,8 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //     - DeepSeek-V3-0324为671B参数MoE模型，在编程与技术能力、上下文理解与长文本处理等方面优势突出。
 //
 //     - 支持64K上下文长度，最大输入56k，最大输出8k（不含思维链）。
+//
+//     - 注意：相比于DeepSeek-V3，DeepSeek-V3-0324仅更新了模型权重，未增加参数量。总模型大小为685B，其中包括671B的主模型权重和 14B 的多令牌预测（MTP）模块权重，后续均描述主模型参数量。
 //
 // - DeepSeek-V3（model 参数值为**deepseek-v3**）
 //

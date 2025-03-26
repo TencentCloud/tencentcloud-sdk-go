@@ -31,19 +31,15 @@ type AIAnalysisTemplateItem struct {
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
 	// 智能分类任务控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClassificationConfigure *ClassificationConfigureInfo `json:"ClassificationConfigure,omitnil,omitempty" name:"ClassificationConfigure"`
 
 	// 智能标签任务控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagConfigure *TagConfigureInfo `json:"TagConfigure,omitnil,omitempty" name:"TagConfigure"`
 
 	// 智能封面任务控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CoverConfigure *CoverConfigureInfo `json:"CoverConfigure,omitnil,omitempty" name:"CoverConfigure"`
 
 	// 智能按帧标签任务控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameTagConfigure *FrameTagConfigureInfo `json:"FrameTagConfigure,omitnil,omitempty" name:"FrameTagConfigure"`
 
 	// 智能精彩集锦任务控制参数。
@@ -72,40 +68,31 @@ type AIRecognitionTemplateItem struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 头尾识别控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeadTailConfigure *HeadTailConfigureInfo `json:"HeadTailConfigure,omitnil,omitempty" name:"HeadTailConfigure"`
 
 	// 拆条识别控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentConfigure *SegmentConfigureInfo `json:"SegmentConfigure,omitnil,omitempty" name:"SegmentConfigure"`
 
 	// 人脸识别控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FaceConfigure *FaceConfigureInfo `json:"FaceConfigure,omitnil,omitempty" name:"FaceConfigure"`
 
 	// 文本全文识别控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrFullTextConfigure *OcrFullTextConfigureInfo `json:"OcrFullTextConfigure,omitnil,omitempty" name:"OcrFullTextConfigure"`
 
 	// 文本关键词识别控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrWordsConfigure *OcrWordsConfigureInfo `json:"OcrWordsConfigure,omitnil,omitempty" name:"OcrWordsConfigure"`
 
 	// 语音全文识别控制参数。
 	// <font color=red>注意：本参数已不再维护，推荐使用 AsrTranslateConfigure 参数发起语音翻译识别（当 DstLanguage 不填或填空字符串时，则不进行翻译，计费项和语音全文识别一致）。</font> 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrFullTextConfigure *AsrFullTextConfigureInfo `json:"AsrFullTextConfigure,omitnil,omitempty" name:"AsrFullTextConfigure"`
 
 	// 语音关键词识别控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrWordsConfigure *AsrWordsConfigureInfo `json:"AsrWordsConfigure,omitnil,omitempty" name:"AsrWordsConfigure"`
 
 	// 语音翻译识别控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrTranslateConfigure *AsrTranslateConfigureInfo `json:"AsrTranslateConfigure,omitnil,omitempty" name:"AsrTranslateConfigure"`
 
 	// 物体识别控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectConfigure *ObjectConfigureInfo `json:"ObjectConfigure,omitnil,omitempty" name:"ObjectConfigure"`
 
 	// 截图时间间隔，单位：秒。
@@ -291,23 +278,18 @@ type AiAnalysisResult struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClassificationTask *AiAnalysisTaskClassificationResult `json:"ClassificationTask,omitnil,omitempty" name:"ClassificationTask"`
 
 	// 视频内容分析智能封面任务的查询结果，当任务类型为 Cover 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CoverTask *AiAnalysisTaskCoverResult `json:"CoverTask,omitnil,omitempty" name:"CoverTask"`
 
 	// 视频内容分析智能标签任务的查询结果，当任务类型为 Tag 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagTask *AiAnalysisTaskTagResult `json:"TagTask,omitnil,omitempty" name:"TagTask"`
 
 	// 视频内容分析智能按帧标签任务的查询结果，当任务类型为 FrameTag 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameTagTask *AiAnalysisTaskFrameTagResult `json:"FrameTagTask,omitnil,omitempty" name:"FrameTagTask"`
 
 	// 视频内容分析智能精彩集锦任务的查询结果，当任务类型为 Highlight 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HighlightTask *AiAnalysisTaskHighlightResult `json:"HighlightTask,omitnil,omitempty" name:"HighlightTask"`
 }
 
@@ -345,7 +327,6 @@ type AiAnalysisTaskClassificationResult struct {
 	Input *AiAnalysisTaskClassificationInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 智能分类任务输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskClassificationOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 智能分类任务进度，取值范围 [0-100] 。
@@ -392,7 +373,6 @@ type AiAnalysisTaskCoverResult struct {
 	Input *AiAnalysisTaskCoverInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 智能封面任务输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskCoverOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 智能封面任务进度，取值范围 [0-100] 。
@@ -439,7 +419,6 @@ type AiAnalysisTaskFrameTagResult struct {
 	Input *AiAnalysisTaskFrameTagInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 智能按帧标签任务输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskFrameTagOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 智能按帧标签任务进度，取值范围 [0-100] 。
@@ -486,7 +465,6 @@ type AiAnalysisTaskHighlightResult struct {
 	Input *AiAnalysisTaskHighlightInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 智能精彩片段任务输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskHighlightOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 智能精彩片段任务进度，取值范围 [0-100] 。
@@ -538,7 +516,6 @@ type AiAnalysisTaskTagResult struct {
 	Input *AiAnalysisTaskTagInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 智能标签任务输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskTagOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 智能标签任务进度，取值范围 [0-100] 。
@@ -625,46 +602,37 @@ type AiRecognitionResult struct {
 
 	// 视频片头片尾识别结果，当 Type 为
 	//  HeadTailRecognition 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeadTailTask *AiRecognitionTaskHeadTailResult `json:"HeadTailTask,omitnil,omitempty" name:"HeadTailTask"`
 
 	// 视频拆条识别结果，当 Type 为
 	//  SegmentRecognition 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentTask *AiRecognitionTaskSegmentResult `json:"SegmentTask,omitnil,omitempty" name:"SegmentTask"`
 
 	// 人脸识别结果，当 Type 为 
 	//  FaceRecognition 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FaceTask *AiRecognitionTaskFaceResult `json:"FaceTask,omitnil,omitempty" name:"FaceTask"`
 
 	// 语音关键词识别结果，当 Type 为
 	//  AsrWordsRecognition 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrWordsTask *AiRecognitionTaskAsrWordsResult `json:"AsrWordsTask,omitnil,omitempty" name:"AsrWordsTask"`
 
 	// 语音全文识别结果，当 Type 为
 	//  AsrFullTextRecognition 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrFullTextTask *AiRecognitionTaskAsrFullTextResult `json:"AsrFullTextTask,omitnil,omitempty" name:"AsrFullTextTask"`
 
 	// 语音翻译结果，当 Type 为 AsrTranslateRecognition 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrTranslateTask *AiRecognitionTaskAsrTranslateResult `json:"AsrTranslateTask,omitnil,omitempty" name:"AsrTranslateTask"`
 
 	// 文本关键词识别结果，当 Type 为
 	//  OcrWordsRecognition 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrWordsTask *AiRecognitionTaskOcrWordsResult `json:"OcrWordsTask,omitnil,omitempty" name:"OcrWordsTask"`
 
 	// 文本全文识别结果，当 Type 为
 	//  OcrFullTextRecognition 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrFullTextTask *AiRecognitionTaskOcrFullTextResult `json:"OcrFullTextTask,omitnil,omitempty" name:"OcrFullTextTask"`
 
 	// 物体识别结果，当 Type 为
 	//  ObjectRecognition 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectTask *AiRecognitionTaskObjectResult `json:"ObjectTask,omitnil,omitempty" name:"ObjectTask"`
 }
 
@@ -685,7 +653,6 @@ type AiRecognitionTaskAsrFullTextResult struct {
 	Input *AiRecognitionTaskAsrFullTextResultInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 语音全文识别任务输出信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiRecognitionTaskAsrFullTextResultOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 语音全文识别任务进度，取值范围 [0-100] 。
@@ -773,7 +740,6 @@ type AiRecognitionTaskAsrTranslateResult struct {
 	Input *AiRecognitionTaskAsrTranslateResultInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 语音翻译任务输出信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiRecognitionTaskAsrTranslateResultOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 语音翻译任务进度，取值范围 [0-100] 。
@@ -840,7 +806,6 @@ type AiRecognitionTaskAsrWordsResult struct {
 	Input *AiRecognitionTaskAsrWordsResultInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 语音关键词识别任务输出信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiRecognitionTaskAsrWordsResultOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 语音关键词识别任务进度，取值范围 [0-100] 。
@@ -906,7 +871,6 @@ type AiRecognitionTaskFaceResult struct {
 	Input *AiRecognitionTaskFaceResultInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 人脸识别任务输出信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiRecognitionTaskFaceResultOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 人脸识别任务进度，取值范围 [0-100] 。
@@ -983,7 +947,6 @@ type AiRecognitionTaskHeadTailResult struct {
 	Input *AiRecognitionTaskHeadTailResultInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 视频片头片尾识别任务输出信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiRecognitionTaskHeadTailResultOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 视频片头片尾识别任务进度，取值范围 [0-100] 。
@@ -1037,7 +1000,6 @@ type AiRecognitionTaskObjectResult struct {
 	Input *AiRecognitionTaskObjectResultInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 物体识别任务输出信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiRecognitionTaskObjectResultOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 物体识别任务进度，取值范围 [0-100] 。
@@ -1125,7 +1087,6 @@ type AiRecognitionTaskOcrFullTextResult struct {
 	Input *AiRecognitionTaskOcrFullTextResultInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 文本全文识别任务输出信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiRecognitionTaskOcrFullTextResultOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 文本全文识别任务进度，取值范围 [0-100] 。
@@ -1194,7 +1155,6 @@ type AiRecognitionTaskOcrWordsResult struct {
 	Input *AiRecognitionTaskOcrWordsResultInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 文本关键词识别任务输出信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiRecognitionTaskOcrWordsResultOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 文本关键词识别任务进度，取值范围 [0-100] 。
@@ -1260,11 +1220,9 @@ type AiRecognitionTaskSegmentResult struct {
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 视频拆条任务输入信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Input *AiRecognitionTaskSegmentResultInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 视频拆条任务输出信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiRecognitionTaskSegmentResultOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 视频拆条任务进度，取值范围 [0-100] 。
@@ -1579,7 +1537,6 @@ type AiReviewTaskPoliticalOcrResult struct {
 	Input *AiReviewPoliticalOcrTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 音视频审核 Ocr 文字涉及令人不适宜信息的任务输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPoliticalOcrTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 音视频审核 Ocr 文字涉及令人不适宜信息的任务进度，取值范围 [0-100] 。
@@ -1603,7 +1560,6 @@ type AiReviewTaskPoliticalResult struct {
 	Input *AiReviewPoliticalTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 音视频审核涉及令人不适宜信息的任务输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPoliticalTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 音视频审核涉及令人不适宜信息的任务进度，取值范围 [0-100] 。
@@ -1627,7 +1583,6 @@ type AiReviewTaskPornAsrResult struct {
 	Input *AiReviewPornAsrTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 音视频审核 Asr 文字涉及令人反感的信息的任务输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPornAsrTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 音视频审核 Asr 文字涉及令人反感的信息的任务进度，取值范围 [0-100] 。
@@ -1651,7 +1606,6 @@ type AiReviewTaskPornOcrResult struct {
 	Input *AiReviewPornOcrTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// Ocr 文字音视频审核涉及令人反感的信息的任务输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPornOcrTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// Ocr 文字音视频审核涉及令人反感的信息的任务进度，取值范围 [0-100] 。
@@ -1675,7 +1629,6 @@ type AiReviewTaskPornResult struct {
 	Input *AiReviewPornTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 音视频审核涉及令人反感的信息的任务输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPornTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 音视频审核涉及令人反感的信息的任务进度，取值范围 [0-100] 。
@@ -1699,7 +1652,6 @@ type AiReviewTaskProhibitedAsrResult struct {
 	Input *AiReviewProhibitedAsrTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 音视频审核 Asr 文字鉴违禁任务输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewProhibitedAsrTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 音视频审核 Asr 文字鉴违禁任务进度，取值范围 [0-100] 。
@@ -1723,7 +1675,6 @@ type AiReviewTaskProhibitedOcrResult struct {
 	Input *AiReviewProhibitedOcrTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 音视频审核 Ocr 文字鉴违禁任务输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewProhibitedOcrTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 音视频审核 Ocr 文字鉴违禁任务进度，取值范围 [0-100] 。
@@ -1747,7 +1698,6 @@ type AiReviewTaskTerrorismOcrResult struct {
 	Input *AiReviewTerrorismOcrTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 音视频审核 Ocr 文字涉及令人不安全的信息的任务输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewTerrorismOcrTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 音视频审核 Ocr 文字涉及令人不安全的信息的任务进度，取值范围 [0-100] 。
@@ -1771,7 +1721,6 @@ type AiReviewTaskTerrorismResult struct {
 	Input *AiReviewTerrorismTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 音视频审核涉及令人不安全的信息的任务输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewTerrorismTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 音视频审核涉及令人不安全的信息的任务进度，取值范围 [0-100] 。
@@ -3404,25 +3353,20 @@ type ContentReviewTemplateItem struct {
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
 	// 鉴别涉及令人反感的信息的控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PornConfigure *PornConfigureInfo `json:"PornConfigure,omitnil,omitempty" name:"PornConfigure"`
 
 	// 鉴别涉及令人不安全的信息的控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TerrorismConfigure *TerrorismConfigureInfo `json:"TerrorismConfigure,omitnil,omitempty" name:"TerrorismConfigure"`
 
 	// 鉴别涉及令人不适宜的信息的控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoliticalConfigure *PoliticalConfigureInfo `json:"PoliticalConfigure,omitnil,omitempty" name:"PoliticalConfigure"`
 
 	// 违禁控制参数。违禁内容包括：
 	// <li>谩骂；</li>
 	// <li>涉毒违法。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProhibitedConfigure *ProhibitedConfigureInfo `json:"ProhibitedConfigure,omitnil,omitempty" name:"ProhibitedConfigure"`
 
 	// 用户自定义音视频审核控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserDefineConfigure *UserDefineConfigureInfo `json:"UserDefineConfigure,omitnil,omitempty" name:"UserDefineConfigure"`
 
 	// 音视频审核结果是否进入音视频审核墙（对音视频审核结果进行人工复核）的开关。
@@ -6227,7 +6171,7 @@ type CreateSubAppIdRequestParams struct {
 	// 应用名称，长度限制：40个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 应用简介，长度限制： 300个字符。
+	// 应用简介，长度限制： 300个字符。不填则应用简介默认为空。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -6237,7 +6181,7 @@ type CreateSubAppIdRequest struct {
 	// 应用名称，长度限制：40个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 应用简介，长度限制： 300个字符。
+	// 应用简介，长度限制： 300个字符。不填则应用简介默认为空。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -13155,7 +13099,6 @@ type DescribeTranscodeTemplatesResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 转码模板详情列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranscodeTemplateSet []*TranscodeTemplate `json:"TranscodeTemplateSet,omitnil,omitempty" name:"TranscodeTemplateSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16020,7 +15963,6 @@ type MediaCastEvent struct {
 	// <li>Scheduled ：等待定时时间到达后启动；</li>
 	// <li>Stopped ：已经停止转推；</li>
 	// <li>Idle ：空闲。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -17362,20 +17304,10 @@ type ModifyAnimatedGraphicsTemplateRequestParams struct {
 	// 转动图模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
-	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-	// 默认值：0。
+	// 动图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
-	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-	// 默认值：0。
+	// 动图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 
 	// 分辨率自适应，可选值：
@@ -17409,20 +17341,10 @@ type ModifyAnimatedGraphicsTemplateRequest struct {
 	// 转动图模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 动图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
-	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-	// 默认值：0。
+	// 动图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 动图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
-	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-	// 默认值：0。
+	// 动图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 
 	// 分辨率自适应，可选值：
@@ -18178,10 +18100,10 @@ type ModifyImageSpriteTemplateRequestParams struct {
 	// 雪碧图模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 雪碧图中小图的宽度，取值范围： [128, 4096]，单位：px。
+	// 雪碧图中小图的宽度，取值范围： [32, 4096]，单位：px。
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 雪碧图中小图的高度，取值范围： [128, 4096]，单位：px。
+	// 雪碧图中小图的高度，取值范围： [32, 4096]，单位：px。
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 
 	// 分辨率自适应，可选值：
@@ -18206,10 +18128,7 @@ type ModifyImageSpriteTemplateRequestParams struct {
 	// 雪碧图中小图的列数。
 	ColumnCount *uint64 `json:"ColumnCount,omitnil,omitempty" name:"ColumnCount"`
 
-	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
-	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-	// 默认值：black 。
+	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li><li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li><li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li><li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>默认值：black 。
 	FillType *string `json:"FillType,omitnil,omitempty" name:"FillType"`
 
 	// 模板描述信息，长度限制：256 个字符。
@@ -18234,10 +18153,10 @@ type ModifyImageSpriteTemplateRequest struct {
 	// 雪碧图模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 雪碧图中小图的宽度，取值范围： [128, 4096]，单位：px。
+	// 雪碧图中小图的宽度，取值范围： [32, 4096]，单位：px。
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 雪碧图中小图的高度，取值范围： [128, 4096]，单位：px。
+	// 雪碧图中小图的高度，取值范围： [32, 4096]，单位：px。
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 
 	// 分辨率自适应，可选值：
@@ -18262,10 +18181,7 @@ type ModifyImageSpriteTemplateRequest struct {
 	// 雪碧图中小图的列数。
 	ColumnCount *uint64 `json:"ColumnCount,omitnil,omitempty" name:"ColumnCount"`
 
-	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-	// <li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
-	// <li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-	// 默认值：black 。
+	// 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li><li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li><li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li><li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>默认值：black 。
 	FillType *string `json:"FillType,omitnil,omitempty" name:"FillType"`
 
 	// 模板描述信息，长度限制：256 个字符。
@@ -19302,20 +19218,10 @@ type ModifySampleSnapshotTemplateRequestParams struct {
 	// 采样截图模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
-	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-	// 默认值：0。
+	// 截图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
-	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-	// 默认值：0。
+	// 截图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 
 	// 分辨率自适应，可选值：
@@ -19361,20 +19267,10 @@ type ModifySampleSnapshotTemplateRequest struct {
 	// 采样截图模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
-	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-	// 默认值：0。
+	// 截图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
-	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-	// 默认值：0。
+	// 截图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 
 	// 分辨率自适应，可选值：
@@ -19470,20 +19366,10 @@ type ModifySnapshotByTimeOffsetTemplateRequestParams struct {
 	// 指定时间点截图模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
-	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-	// 默认值：0。
+	// 截图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
-	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-	// 默认值：0。
+	// 截图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 
 	// 分辨率自适应，可选值：
@@ -19519,20 +19405,10 @@ type ModifySnapshotByTimeOffsetTemplateRequest struct {
 	// 指定时间点截图模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
-	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-	// 默认值：0。
+	// 截图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-	// <li>当 Width、Height 均为 0，则分辨率同源；</li>
-	// <li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-	// 默认值：0。
+	// 截图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 
 	// 分辨率自适应，可选值：
@@ -23821,11 +23697,9 @@ type ReviewAudioVideoTask struct {
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 音视频审核任务的输入。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Input *ReviewAudioVideoTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 音视频审核任务的输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *ReviewAudioVideoTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
@@ -24099,11 +23973,9 @@ type RoundPlayFilePlayInfo struct {
 	StartPlayTime *string `json:"StartPlayTime,omitnil,omitempty" name:"StartPlayTime"`
 
 	// 播放时长，单位为秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *float64 `json:"Duration,omitnil,omitempty" name:"Duration"`
 
 	// 播放进度，单位为秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Progress *float64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 }
 
@@ -24139,11 +24011,9 @@ type RoundPlayInfo struct {
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 创建时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 过期时间，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#52)，过期后将停止播单的播放。“9999-12-31T23:59:59+08:00”表示永不过期。

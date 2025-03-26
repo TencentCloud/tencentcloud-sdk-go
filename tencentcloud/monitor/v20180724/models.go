@@ -432,6 +432,18 @@ type AlarmPolicy struct {
 
 	// 通知模板绑定内容模板信息
 	NoticeTmplBindInfos []*NoticeContentTmplBindInfo `json:"NoticeTmplBindInfos,omitnil,omitempty" name:"NoticeTmplBindInfos"`
+
+	// 模板通知的等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HierarchicalNotices []*AlarmHierarchicalNotice `json:"HierarchicalNotices,omitnil,omitempty" name:"HierarchicalNotices"`
+
+	// 通知模板绑定内容模板信息，同NoticeTmplBindInfos
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoticeContentTmplBindInfos []*NoticeContentTmplBindInfo `json:"NoticeContentTmplBindInfos,omitnil,omitempty" name:"NoticeContentTmplBindInfos"`
+
+	// 预设配置id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PredefinedConfigID *string `json:"PredefinedConfigID,omitnil,omitempty" name:"PredefinedConfigID"`
 }
 
 type AlarmPolicyCondition struct {
@@ -5383,13 +5395,7 @@ type DescribeAlarmPoliciesRequestParams struct {
 	// [策略类型列表](https://cloud.tencent.com/document/product/248/50397)当Dimension不为空时，该项为必填项
 	Namespaces []*string `json:"Namespaces,omitnil,omitempty" name:"Namespaces"`
 
-	// 告警对象列表，JSON 字符串。外层数组，对应多个实例，内层为对象的维度。例如“云服务器-基础监控”可写为：
-	// `[ {"Dimensions": {"unInstanceId": "ins-qr8d555g"}}, {"Dimensions": {"unInstanceId": "ins-qr8d555h"}} ]`
-	// 具体也可以参考下方的示例 2。
-	// 
-	// 不同云产品参数示例详见 [维度信息Dimensions列表](https://cloud.tencent.com/document/product/248/50397)
-	// 
-	// 注意：如果NeedCorrespondence传入1，即需要返回策略与实例对应关系，请传入不多于20个告警对象维度，否则容易请求超时
+	// 告警对象列表，JSON 字符串。外层数组，对应多个实例，内层为对象的维度。例如“云服务器-基础监控”可写为：`[[{"name":"unInstanceId","value":"ins-qr888845g"}]]`具体也可以参考下方的示例 2。不同云产品参数示例详见 [维度信息Dimensions列表](https://cloud.tencent.com/document/product/248/50397)注意：如果NeedCorrespondence传入1，即需要返回策略与实例对应关系，请传入不多于20个告警对象维度，否则容易请求超时
 	Dimensions *string `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
 
 	// 根据接收人搜索，可以使用“访问管理”的 [拉取子用户 ListUsers](https://cloud.tencent.com/document/product/598/34587) 接口获取用户列表 或 [查询子用户 GetUser](https://cloud.tencent.com/document/product/598/34590) 接口查询子用户详情，此处填入返回结果中的 `Uid` 字段
@@ -5453,6 +5459,9 @@ type DescribeAlarmPoliciesRequestParams struct {
 
 	// 通知内容模板ID筛选
 	NoticeContentTmplIDs []*string `json:"NoticeContentTmplIDs,omitnil,omitempty" name:"NoticeContentTmplIDs"`
+
+	// 是否为预设策略，1是，0否
+	IsPredefined *int64 `json:"IsPredefined,omitnil,omitempty" name:"IsPredefined"`
 }
 
 type DescribeAlarmPoliciesRequest struct {
@@ -5477,13 +5486,7 @@ type DescribeAlarmPoliciesRequest struct {
 	// [策略类型列表](https://cloud.tencent.com/document/product/248/50397)当Dimension不为空时，该项为必填项
 	Namespaces []*string `json:"Namespaces,omitnil,omitempty" name:"Namespaces"`
 
-	// 告警对象列表，JSON 字符串。外层数组，对应多个实例，内层为对象的维度。例如“云服务器-基础监控”可写为：
-	// `[ {"Dimensions": {"unInstanceId": "ins-qr8d555g"}}, {"Dimensions": {"unInstanceId": "ins-qr8d555h"}} ]`
-	// 具体也可以参考下方的示例 2。
-	// 
-	// 不同云产品参数示例详见 [维度信息Dimensions列表](https://cloud.tencent.com/document/product/248/50397)
-	// 
-	// 注意：如果NeedCorrespondence传入1，即需要返回策略与实例对应关系，请传入不多于20个告警对象维度，否则容易请求超时
+	// 告警对象列表，JSON 字符串。外层数组，对应多个实例，内层为对象的维度。例如“云服务器-基础监控”可写为：`[[{"name":"unInstanceId","value":"ins-qr888845g"}]]`具体也可以参考下方的示例 2。不同云产品参数示例详见 [维度信息Dimensions列表](https://cloud.tencent.com/document/product/248/50397)注意：如果NeedCorrespondence传入1，即需要返回策略与实例对应关系，请传入不多于20个告警对象维度，否则容易请求超时
 	Dimensions *string `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
 
 	// 根据接收人搜索，可以使用“访问管理”的 [拉取子用户 ListUsers](https://cloud.tencent.com/document/product/598/34587) 接口获取用户列表 或 [查询子用户 GetUser](https://cloud.tencent.com/document/product/598/34590) 接口查询子用户详情，此处填入返回结果中的 `Uid` 字段
@@ -5547,6 +5550,9 @@ type DescribeAlarmPoliciesRequest struct {
 
 	// 通知内容模板ID筛选
 	NoticeContentTmplIDs []*string `json:"NoticeContentTmplIDs,omitnil,omitempty" name:"NoticeContentTmplIDs"`
+
+	// 是否为预设策略，1是，0否
+	IsPredefined *int64 `json:"IsPredefined,omitnil,omitempty" name:"IsPredefined"`
 }
 
 func (r *DescribeAlarmPoliciesRequest) ToJsonString() string {
@@ -5588,6 +5594,7 @@ func (r *DescribeAlarmPoliciesRequest) FromJsonString(s string) error {
 	delete(f, "PromInsId")
 	delete(f, "ReceiverOnCallFormIDs")
 	delete(f, "NoticeContentTmplIDs")
+	delete(f, "IsPredefined")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmPoliciesRequest has unknown keys!", "")
 	}
@@ -15140,6 +15147,10 @@ type URLNotice struct {
 	// 通知周期 1-7表示周一到周日
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weekday []*int64 `json:"Weekday,omitnil,omitempty" name:"Weekday"`
+
+	// 组名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupMembers *string `json:"GroupMembers,omitnil,omitempty" name:"GroupMembers"`
 }
 
 // Predefined struct for user

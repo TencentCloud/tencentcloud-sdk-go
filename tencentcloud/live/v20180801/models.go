@@ -1212,24 +1212,16 @@ type CasterLayoutParam struct {
 	// 在画面最终渲染时，将按ID从小到大的顺序，由下至上渲染。
 	LayerId *int64 `json:"LayerId,omitnil,omitempty" name:"LayerId"`
 
-	// 布局层宽度。
-	// 当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。
-	// 当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面上所占的比例值。
+	// 布局层宽度。单位为百分比，范围[0.0,1.0]，表示该层在最终画面上所占的比例值。
 	LayerWidth *float64 `json:"LayerWidth,omitnil,omitempty" name:"LayerWidth"`
 
-	// 布局层高度.
-	// 当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。
-	// 当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面上所占的比例值。
+	// 布局层高度。单位为百分比，范围[0.0,1.0]， 表示该层在最终画面上所占的比例值。
 	LayerHeight *float64 `json:"LayerHeight,omitnil,omitempty" name:"LayerHeight"`
 
-	// 布局层位置x坐标。
-	// 当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。
-	// 当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面上x坐标所占的比例值。
+	// 布局层位置x坐标。单位为百分比，范围[0.0,1.0]，表示该层在最终画面上x坐标所占的比例值。
 	LayerLocationX *float64 `json:"LayerLocationX,omitnil,omitempty" name:"LayerLocationX"`
 
-	// 布局层位置Y坐标。
-	// 当该值为大于1的整数值时，单位为像素，允许范围[1,1920]。
-	// 当该值为小于1大于0的小数时，单位为百分比，表示该层在最终画面Y坐标上所占的比例值。
+	// 布局层位置Y坐标。单位为百分比，范围[0.0,1.0]， 表示该层在最终画面Y坐标上所占的比例值。
 	LayerLocationY *float64 `json:"LayerLocationY,omitnil,omitempty" name:"LayerLocationY"`
 
 	// 是否启用抠图。

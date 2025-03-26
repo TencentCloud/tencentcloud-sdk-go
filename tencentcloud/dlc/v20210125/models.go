@@ -4810,6 +4810,9 @@ type DatasourceConnectionConfig struct {
 	// Doris数据源连接的属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TCHouseD *TCHouseD `json:"TCHouseD,omitnil,omitempty" name:"TCHouseD"`
+
+	// TccHive数据目录连接信息
+	TccHive *TccHive `json:"TccHive,omitnil,omitempty" name:"TccHive"`
 }
 
 type DatasourceConnectionInfo struct {
@@ -11216,7 +11219,6 @@ type HiveInfo struct {
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// EMR集群中hive组件的版本号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HiveVersion *string `json:"HiveVersion,omitnil,omitempty" name:"HiveVersion"`
 
 	// Kerberos详细信息
@@ -12399,6 +12401,26 @@ type MysqlInfo struct {
 	// 数据库实例名称，和数据库侧保持一致
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+}
+
+type NetWork struct {
+	// 服务clbip
+	ClbIp *string `json:"ClbIp,omitnil,omitempty" name:"ClbIp"`
+
+	// 服务clbPort
+	ClbPort *string `json:"ClbPort,omitnil,omitempty" name:"ClbPort"`
+
+	// vpc实例id
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// vpc网段
+	VpcCidrBlock *string `json:"VpcCidrBlock,omitnil,omitempty" name:"VpcCidrBlock"`
+
+	// 子网实例id
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 子网网段
+	SubnetCidrBlock *string `json:"SubnetCidrBlock,omitnil,omitempty" name:"SubnetCidrBlock"`
 }
 
 type NetworkConnection struct {
@@ -14135,23 +14157,18 @@ func (r *SwitchDataEngineResponse) FromJsonString(s string) error {
 
 type TCHouseD struct {
 	// 数据源实例的唯一ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 数据源名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 数据源的JDBC
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	JdbcUrl *string `json:"JdbcUrl,omitnil,omitempty" name:"JdbcUrl"`
 
 	// 用于访问数据源的用户
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
 	// 数据源访问密码，需要base64编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 数据源的VPC和子网信息
@@ -14159,11 +14176,9 @@ type TCHouseD struct {
 	Location *DatasourceConnectionLocation `json:"Location,omitnil,omitempty" name:"Location"`
 
 	// 默认数据库名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
 
 	// 访问信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessInfo *string `json:"AccessInfo,omitnil,omitempty" name:"AccessInfo"`
 }
 
@@ -14643,6 +14658,29 @@ type TasksOverview struct {
 
 	// 当前时间范围的总任务个数
 	TotalTaskCount *int64 `json:"TotalTaskCount,omitnil,omitempty" name:"TotalTaskCount"`
+}
+
+type TccHive struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 终端节点服务ID
+	EndpointServiceId *string `json:"EndpointServiceId,omitnil,omitempty" name:"EndpointServiceId"`
+
+	// thrift连接地址
+	MetaStoreUrl *string `json:"MetaStoreUrl,omitnil,omitempty" name:"MetaStoreUrl"`
+
+	// hive版本
+	HiveVersion *string `json:"HiveVersion,omitnil,omitempty" name:"HiveVersion"`
+
+	// 网络信息
+	TccConnection *NetWork `json:"TccConnection,omitnil,omitempty" name:"TccConnection"`
+
+	// Hms终端节点服务ID
+	HmsEndpointServiceId *string `json:"HmsEndpointServiceId,omitnil,omitempty" name:"HmsEndpointServiceId"`
 }
 
 type TextFile struct {

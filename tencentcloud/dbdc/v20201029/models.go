@@ -328,11 +328,9 @@ type DescribeInstanceDetail struct {
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 金融围笼ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FenceId *string `json:"FenceId,omitnil,omitempty" name:"FenceId"`
 
 	// 所属集群ID(默认集群为空)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
@@ -443,11 +441,9 @@ type DescribeInstanceDetailResponseParams struct {
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 金融围笼ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FenceId *string `json:"FenceId,omitnil,omitempty" name:"FenceId"`
 
 	// 所属集群ID(默认集群为空)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -853,19 +849,15 @@ type InstanceDetail struct {
 
 type InstanceDeviceInfo struct {
 	// 集群ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 读写设备组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadWriteDevice []*DeviceInfo `json:"ReadWriteDevice,omitnil,omitempty" name:"ReadWriteDevice"`
 
 	// 只读设备组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadOnlyDevice []*DeviceInfo `json:"ReadOnlyDevice,omitnil,omitempty" name:"ReadOnlyDevice"`
 
 	// 空闲设备组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FreeDevice []*DeviceInfo `json:"FreeDevice,omitnil,omitempty" name:"FreeDevice"`
 }
 

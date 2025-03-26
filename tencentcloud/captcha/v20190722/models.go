@@ -1161,17 +1161,14 @@ type DescribeCaptchaRceResultResponseParams struct {
 	CaptchaCode *int64 `json:"CaptchaCode,omitnil,omitempty" name:"CaptchaCode"`
 
 	// 状态描述及验证错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
 	// 无感验证模式下，该参数返回验证结果：
 	// EvilLevel=0 请求无恶意
 	// EvilLevel=100 请求有恶意
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EvilLevel *int64 `json:"EvilLevel,omitnil,omitempty" name:"EvilLevel"`
 
 	// 前端获取验证码时间，时间戳格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GetCaptchaTime *int64 `json:"GetCaptchaTime,omitnil,omitempty" name:"GetCaptchaTime"`
 
 	// 拦截类型
@@ -1182,8 +1179,10 @@ type DescribeCaptchaRceResultResponseParams struct {
 	SubmitCaptchaTime *int64 `json:"SubmitCaptchaTime,omitnil,omitempty" name:"SubmitCaptchaTime"`
 
 	// rce检测结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RceResult *RceResult `json:"RceResult,omitnil,omitempty" name:"RceResult"`
+
+	// 设备风险大类
+	DeviceRiskCategory *string `json:"DeviceRiskCategory,omitnil,omitempty" name:"DeviceRiskCategory"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1320,17 +1319,14 @@ type DescribeCaptchaResultResponseParams struct {
 	CaptchaCode *int64 `json:"CaptchaCode,omitnil,omitempty" name:"CaptchaCode"`
 
 	// 状态描述及验证错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CaptchaMsg *string `json:"CaptchaMsg,omitnil,omitempty" name:"CaptchaMsg"`
 
 	// 无感验证模式下，该参数返回验证结果：
 	// EvilLevel=0 请求无恶意
 	// EvilLevel=100 请求有恶意
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EvilLevel *int64 `json:"EvilLevel,omitnil,omitempty" name:"EvilLevel"`
 
 	// 前端获取验证码时间，时间戳格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GetCaptchaTime *int64 `json:"GetCaptchaTime,omitnil,omitempty" name:"GetCaptchaTime"`
 
 	// 拦截类型
@@ -1899,35 +1895,27 @@ type OutputManageMarketingRiskValue struct {
 
 type RceResult struct {
 	// 用户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 操作时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PostTime *int64 `json:"PostTime,omitnil,omitempty" name:"PostTime"`
 
 	// 业务参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssociateAccount *string `json:"AssociateAccount,omitnil,omitempty" name:"AssociateAccount"`
 
 	// 用户Ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserIp *string `json:"UserIp,omitnil,omitempty" name:"UserIp"`
 
 	// 风险等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
 	// 风险类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskType []*int64 `json:"RiskType,omitnil,omitempty" name:"RiskType"`
 
 	// 设备唯一ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConstId *string `json:"ConstId,omitnil,omitempty" name:"ConstId"`
 
 	// 风险扩展参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskInformation *string `json:"RiskInformation,omitnil,omitempty" name:"RiskInformation"`
 }
 

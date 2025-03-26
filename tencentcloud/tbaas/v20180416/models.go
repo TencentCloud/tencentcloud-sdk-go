@@ -62,7 +62,6 @@ func (r *ApplyChainMakerBatchUserCertRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ApplyChainMakerBatchUserCertResponseParams struct {
 	// 成功生成的用户证书的base64编码字符串列表，与SignUserCsrList一一对应
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignUserCrtList []*string `json:"SignUserCrtList,omitnil,omitempty" name:"SignUserCrtList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1471,7 +1470,6 @@ func (r *InvokeChainMakerContractRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type InvokeChainMakerContractResponseParams struct {
 	// 交易结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ChainMakerContractResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1869,14 +1867,12 @@ func (r *QueryChainMakerBlockTransactionRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type QueryChainMakerBlockTransactionResponseParams struct {
 	// 区块交易
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result []*ChainMakerTransactionResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 区块高度
 	BlockHeight *int64 `json:"BlockHeight,omitnil,omitempty" name:"BlockHeight"`
 
 	// 交易数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TxCount *int64 `json:"TxCount,omitnil,omitempty" name:"TxCount"`
 
 	// 区块时间戳，单位是秒
@@ -1965,7 +1961,6 @@ func (r *QueryChainMakerContractRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryChainMakerContractResponseParams struct {
 	// 交易结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ChainMakerContractResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2273,7 +2268,6 @@ func (r *QueryChainMakerTransactionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryChainMakerTransactionResponseParams struct {
 	// 交易结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ChainMakerTransactionResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

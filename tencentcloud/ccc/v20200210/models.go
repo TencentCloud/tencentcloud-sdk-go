@@ -1313,7 +1313,7 @@ type CreateAutoCalloutTaskRequestParams struct {
 	// 主叫号码列表
 	Callers []*string `json:"Callers,omitnil,omitempty" name:"Callers"`
 
-	// 呼叫使用的Ivr
+	// 呼叫使用的 IVR Id，不填时需要填写 AIAgentId
 	IvrId *uint64 `json:"IvrId,omitnil,omitempty" name:"IvrId"`
 
 	// 任务名
@@ -1336,6 +1336,15 @@ type CreateAutoCalloutTaskRequestParams struct {
 
 	// 被叫属性
 	CalleeAttributes []*CalleeAttribute `json:"CalleeAttributes,omitnil,omitempty" name:"CalleeAttributes"`
+
+	// IANA 时区名称，参考 https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 可用时间段
+	AvailableTime []*TimeRange `json:"AvailableTime,omitnil,omitempty" name:"AvailableTime"`
+
+	// 智能体 ID，不填写时需要填写 IvrId
+	AIAgentId *int64 `json:"AIAgentId,omitnil,omitempty" name:"AIAgentId"`
 }
 
 type CreateAutoCalloutTaskRequest struct {
@@ -1353,7 +1362,7 @@ type CreateAutoCalloutTaskRequest struct {
 	// 主叫号码列表
 	Callers []*string `json:"Callers,omitnil,omitempty" name:"Callers"`
 
-	// 呼叫使用的Ivr
+	// 呼叫使用的 IVR Id，不填时需要填写 AIAgentId
 	IvrId *uint64 `json:"IvrId,omitnil,omitempty" name:"IvrId"`
 
 	// 任务名
@@ -1376,6 +1385,15 @@ type CreateAutoCalloutTaskRequest struct {
 
 	// 被叫属性
 	CalleeAttributes []*CalleeAttribute `json:"CalleeAttributes,omitnil,omitempty" name:"CalleeAttributes"`
+
+	// IANA 时区名称，参考 https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 可用时间段
+	AvailableTime []*TimeRange `json:"AvailableTime,omitnil,omitempty" name:"AvailableTime"`
+
+	// 智能体 ID，不填写时需要填写 IvrId
+	AIAgentId *int64 `json:"AIAgentId,omitnil,omitempty" name:"AIAgentId"`
 }
 
 func (r *CreateAutoCalloutTaskRequest) ToJsonString() string {
@@ -1402,6 +1420,9 @@ func (r *CreateAutoCalloutTaskRequest) FromJsonString(s string) error {
 	delete(f, "Variables")
 	delete(f, "UUI")
 	delete(f, "CalleeAttributes")
+	delete(f, "TimeZone")
+	delete(f, "AvailableTime")
+	delete(f, "AIAgentId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAutoCalloutTaskRequest has unknown keys!", "")
 	}
@@ -2057,6 +2078,12 @@ type CreatePredictiveDialingCampaignRequestParams struct {
 
 	// 被叫属性
 	CalleeAttributes []*CalleeAttribute `json:"CalleeAttributes,omitnil,omitempty" name:"CalleeAttributes"`
+
+	// IANA 时区名称，参考 https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 可用时间段
+	AvailableTime []*TimeRange `json:"AvailableTime,omitnil,omitempty" name:"AvailableTime"`
 }
 
 type CreatePredictiveDialingCampaignRequest struct {
@@ -2109,6 +2136,12 @@ type CreatePredictiveDialingCampaignRequest struct {
 
 	// 被叫属性
 	CalleeAttributes []*CalleeAttribute `json:"CalleeAttributes,omitnil,omitempty" name:"CalleeAttributes"`
+
+	// IANA 时区名称，参考 https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 可用时间段
+	AvailableTime []*TimeRange `json:"AvailableTime,omitnil,omitempty" name:"AvailableTime"`
 }
 
 func (r *CreatePredictiveDialingCampaignRequest) ToJsonString() string {
@@ -2139,6 +2172,8 @@ func (r *CreatePredictiveDialingCampaignRequest) FromJsonString(s string) error 
 	delete(f, "Variables")
 	delete(f, "UUI")
 	delete(f, "CalleeAttributes")
+	delete(f, "TimeZone")
+	delete(f, "AvailableTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePredictiveDialingCampaignRequest has unknown keys!", "")
 	}
@@ -6156,7 +6191,13 @@ type StaffInfo struct {
 	StaffNumber *string `json:"StaffNumber,omitnil,omitempty" name:"StaffNumber"`
 
 	// 用户角色id
+	// 一个用户绑定了多个角色时以RoleIdList为准
+	//
+	// Deprecated: RoleId is deprecated.
 	RoleId *uint64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
+
+	// 用户角色id列表
+	RoleIdList *uint64 `json:"RoleIdList,omitnil,omitempty" name:"RoleIdList"`
 
 	// 所属技能组列表
 	SkillGroupList []*SkillGroupItem `json:"SkillGroupList,omitnil,omitempty" name:"SkillGroupList"`
@@ -6522,6 +6563,14 @@ type TelCdrInfo struct {
 
 	// 通话中语音留言ASR文本信息地址
 	VoicemailAsrURL []*string `json:"VoicemailAsrURL,omitnil,omitempty" name:"VoicemailAsrURL"`
+}
+
+type TimeRange struct {
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 // Predefined struct for user

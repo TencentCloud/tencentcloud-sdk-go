@@ -2301,7 +2301,6 @@ func (r *DetachDisksResponse) FromJsonString(s string) error {
 
 type DetailPrice struct {
 	// 描述计费项目名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PriceTitle *string `json:"PriceTitle,omitnil,omitempty" name:"PriceTitle"`
 
 	// 描述计费项目显示名称，用户控制台展示。
@@ -3756,7 +3755,6 @@ type PrepayPrice struct {
 	UnitPrice *float64 `json:"UnitPrice,omitnil,omitempty" name:"UnitPrice"`
 
 	// 计费项目明细列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DetailPrices []*DetailPrice `json:"DetailPrices,omitnil,omitempty" name:"DetailPrices"`
 }
 

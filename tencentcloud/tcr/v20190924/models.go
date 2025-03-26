@@ -3733,7 +3733,6 @@ type DescribeExternalEndpointStatusResponseParams struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4184,11 +4183,9 @@ type DescribeImageManifestsResponseParams struct {
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
 
 	// 镜像的Labels信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Labels []*KeyValueString `json:"Labels,omitnil,omitempty" name:"Labels"`
 
 	// 镜像大小，单位：byte
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4406,6 +4403,12 @@ func (r *DescribeImagesResponse) FromJsonString(s string) error {
 type DescribeImmutableTagRulesRequestParams struct {
 	// 实例 Id
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// 页数，默认为1
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 每页展示个数，最大值为100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 type DescribeImmutableTagRulesRequest struct {
@@ -4413,6 +4416,12 @@ type DescribeImmutableTagRulesRequest struct {
 	
 	// 实例 Id
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// 页数，默认为1
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 每页展示个数，最大值为100
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 func (r *DescribeImmutableTagRulesRequest) ToJsonString() string {
@@ -4428,6 +4437,8 @@ func (r *DescribeImmutableTagRulesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "RegistryId")
+	delete(f, "Page")
+	delete(f, "PageSize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImmutableTagRulesRequest has unknown keys!", "")
 	}
@@ -4437,11 +4448,9 @@ func (r *DescribeImmutableTagRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeImmutableTagRulesResponseParams struct {
 	// 规则列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rules []*ImmutableTagRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 
 	// 未创建规则的命名空间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EmptyNs []*string `json:"EmptyNs,omitnil,omitempty" name:"EmptyNs"`
 
 	// 规则总量
@@ -4577,7 +4586,6 @@ func (r *DescribeInstanceCustomizedDomainRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeInstanceCustomizedDomainResponseParams struct {
 	// 域名信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainInfoList []*CustomizedDomainInfo `json:"DomainInfoList,omitnil,omitempty" name:"DomainInfoList"`
 
 	// 总个数
@@ -4803,7 +4811,6 @@ type DescribeInstancesResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 实例信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Registries []*Registry `json:"Registries,omitnil,omitempty" name:"Registries"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4861,7 +4868,6 @@ func (r *DescribeInternalEndpointDnsStatusRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeInternalEndpointDnsStatusResponseParams struct {
 	// vpc私有域名解析状态列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcSet []*VpcPrivateDomainStatus `json:"VpcSet,omitnil,omitempty" name:"VpcSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5858,7 +5864,6 @@ func (r *DescribeServiceAccountsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeServiceAccountsResponseParams struct {
 	// 服务级账号列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceAccounts []*ServiceAccount `json:"ServiceAccounts,omitnil,omitempty" name:"ServiceAccounts"`
 
 	// 服务级账户数量
@@ -8677,7 +8682,6 @@ type ServiceAccount struct {
 	ExpiresAt *int64 `json:"ExpiresAt,omitnil,omitempty" name:"ExpiresAt"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间

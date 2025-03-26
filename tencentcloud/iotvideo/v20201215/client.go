@@ -118,7 +118,7 @@ func NewBatchUpdateFirmwareResponse() (response *BatchUpdateFirmwareResponse) {
 }
 
 // BatchUpdateFirmware
-// 本接口（BatchUpdateFirmware）用于批量更新设备固件 
+// 本接口（BatchUpdateFirmware）用于批量更新设备固件
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DEVICEISUPDATING = "FailedOperation.DeviceIsUpdating"
@@ -130,7 +130,7 @@ func (c *Client) BatchUpdateFirmware(request *BatchUpdateFirmwareRequest) (respo
 }
 
 // BatchUpdateFirmware
-// 本接口（BatchUpdateFirmware）用于批量更新设备固件 
+// 本接口（BatchUpdateFirmware）用于批量更新设备固件
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DEVICEISUPDATING = "FailedOperation.DeviceIsUpdating"
@@ -915,7 +915,7 @@ func NewDeleteFirmwareResponse() (response *DeleteFirmwareResponse) {
 }
 
 // DeleteFirmware
-// 本接口（DeleteFirmware）用于删除固件 
+// 本接口（DeleteFirmware）用于删除固件
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -926,7 +926,7 @@ func (c *Client) DeleteFirmware(request *DeleteFirmwareRequest) (response *Delet
 }
 
 // DeleteFirmware
-// 本接口（DeleteFirmware）用于删除固件 
+// 本接口（DeleteFirmware）用于删除固件
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3076,7 +3076,7 @@ func NewGetAllFirmwareVersionResponse() (response *GetAllFirmwareVersionResponse
 }
 
 // GetAllFirmwareVersion
-// 本接口（GetAllFirmwareVersion）用于获取所有的版本列表 
+// 本接口（GetAllFirmwareVersion）用于获取所有的版本列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3087,7 +3087,7 @@ func (c *Client) GetAllFirmwareVersion(request *GetAllFirmwareVersionRequest) (r
 }
 
 // GetAllFirmwareVersion
-// 本接口（GetAllFirmwareVersion）用于获取所有的版本列表 
+// 本接口（GetAllFirmwareVersion）用于获取所有的版本列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3129,7 +3129,7 @@ func NewGetFirmwareURLResponse() (response *GetFirmwareURLResponse) {
 }
 
 // GetFirmwareURL
-// 本接口（GetFirmwareURL）用于获取固件存储的URL 
+// 本接口（GetFirmwareURL）用于获取固件存储的URL
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3139,7 +3139,7 @@ func (c *Client) GetFirmwareURL(request *GetFirmwareURLRequest) (response *GetFi
 }
 
 // GetFirmwareURL
-// 本接口（GetFirmwareURL）用于获取固件存储的URL 
+// 本接口（GetFirmwareURL）用于获取固件存储的URL
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3286,7 +3286,7 @@ func NewListFirmwaresResponse() (response *ListFirmwaresResponse) {
 }
 
 // ListFirmwares
-// 本接口（ListFirmwares）用于获取固件列表 
+// 本接口（ListFirmwares）用于获取固件列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3298,7 +3298,7 @@ func (c *Client) ListFirmwares(request *ListFirmwaresRequest) (response *ListFir
 }
 
 // ListFirmwares
-// 本接口（ListFirmwares）用于获取固件列表 
+// 本接口（ListFirmwares）用于获取固件列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4140,7 +4140,7 @@ func NewUploadFirmwareResponse() (response *UploadFirmwareResponse) {
 }
 
 // UploadFirmware
-// 本接口（UploadFirmware）用于上传设备固件信息 
+// 本接口（UploadFirmware）用于上传设备固件信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4151,7 +4151,7 @@ func (c *Client) UploadFirmware(request *UploadFirmwareRequest) (response *Uploa
 }
 
 // UploadFirmware
-// 本接口（UploadFirmware）用于上传设备固件信息 
+// 本接口（UploadFirmware）用于上传设备固件信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

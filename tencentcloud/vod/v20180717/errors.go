@@ -362,6 +362,9 @@ const (
 	// Isps 参数错误。
 	INVALIDPARAMETERVALUE_ISPS = "InvalidParameterValue.Isps"
 
+	// ItemId 错误。
+	INVALIDPARAMETERVALUE_ITEMID = "InvalidParameterValue.ItemId"
+
 	// 参数值错误：打点信息内容过长。
 	INVALIDPARAMETERVALUE_KEYFRAMEDESCCONTENTTOOLONG = "InvalidParameterValue.KeyFrameDescContentTooLong"
 

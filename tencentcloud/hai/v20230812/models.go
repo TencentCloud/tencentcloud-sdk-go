@@ -347,13 +347,9 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstancesResponseParams struct {
 	// 实例总数
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 分页实例详情
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceSet []*Instance `json:"InstanceSet,omitnil,omitempty" name:"InstanceSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -617,7 +613,6 @@ func (r *DescribeServiceLoginSettingsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeServiceLoginSettingsResponseParams struct {
 	// 服务登录配置详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoginSettings []*LoginSetting `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -763,11 +758,9 @@ func (r *InquirePriceRunInstancesResponse) FromJsonString(s string) error {
 
 type Instance struct {
 	// 实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 实例状态：
@@ -778,92 +771,66 @@ type Instance struct {
 	// STOPPED_NO_CHARGE：表示关机不收费
 	// TERMINATING：表示销毁中
 	// TERMINATED：表示已销毁
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceState *string `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
 
 	// 应用名称
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationName *string `json:"ApplicationName,omitnil,omitempty" name:"ApplicationName"`
 
 	// 算力套餐名称
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BundleName *string `json:"BundleName,omitnil,omitempty" name:"BundleName"`
 
 	// 实例所包含的GPU卡数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GPUCount *uint64 `json:"GPUCount,omitnil,omitempty" name:"GPUCount"`
 
 	// 算力
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GPUPerformance *string `json:"GPUPerformance,omitnil,omitempty" name:"GPUPerformance"`
 
 	// 显存
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GPUMemory *string `json:"GPUMemory,omitnil,omitempty" name:"GPUMemory"`
 
 	// CPU核数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CPU *string `json:"CPU,omitnil,omitempty" name:"CPU"`
 
 	// 内存
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Memory *string `json:"Memory,omitnil,omitempty" name:"Memory"`
 
 	// 系统盘数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SystemDisk *SystemDisk `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
 
 	// 内网ip地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitnil,omitempty" name:"PrivateIpAddresses"`
 
 	// 公网ip地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIpAddresses []*string `json:"PublicIpAddresses,omitnil,omitempty" name:"PublicIpAddresses"`
 
 	// 安全组ID
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
 	// 实例最新操作
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestOperation *string `json:"LatestOperation,omitnil,omitempty" name:"LatestOperation"`
 
 	// 实例最新操作状态：
 	// SUCCESS：表示操作成功
 	// OPERATING：表示操作执行中
 	// FAILED：表示操作失败
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestOperationState *string `json:"LatestOperationState,omitnil,omitempty" name:"LatestOperationState"`
 
 	// 实例创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 公网出带宽上限，默认10Mbps
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxOutBandwidth *string `json:"MaxOutBandwidth,omitnil,omitempty" name:"MaxOutBandwidth"`
 
 	// 每月免费流量，默认500G
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxFreeTraffic *string `json:"MaxFreeTraffic,omitnil,omitempty" name:"MaxFreeTraffic"`
 
 	// 应用配置环境
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigurationEnvironment *string `json:"ConfigurationEnvironment,omitnil,omitempty" name:"ConfigurationEnvironment"`
 
 	// 实例包含的登录服务详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoginServices []*LoginService `json:"LoginServices,omitnil,omitempty" name:"LoginServices"`
 
 	// 应用服务的操作系统类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OSType *string `json:"OSType,omitnil,omitempty" name:"OSType"`
 }
 
@@ -915,7 +882,6 @@ type ItemPriceDetail struct {
 
 type LoginService struct {
 	// 登录方式名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 }
 

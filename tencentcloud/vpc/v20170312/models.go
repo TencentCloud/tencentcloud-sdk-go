@@ -7384,6 +7384,9 @@ type CreateVpcEndPointRequestParams struct {
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4
+	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
 }
 
 type CreateVpcEndPointRequest struct {
@@ -7409,6 +7412,9 @@ type CreateVpcEndPointRequest struct {
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4
+	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
 }
 
 func (r *CreateVpcEndPointRequest) ToJsonString() string {
@@ -7430,6 +7436,7 @@ func (r *CreateVpcEndPointRequest) FromJsonString(s string) error {
 	delete(f, "EndPointVip")
 	delete(f, "SecurityGroupId")
 	delete(f, "Tags")
+	delete(f, "IpAddressType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpcEndPointRequest has unknown keys!", "")
 	}
@@ -7483,6 +7490,9 @@ type CreateVpcEndPointServiceRequestParams struct {
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
 }
 
 type CreateVpcEndPointServiceRequest struct {
@@ -7508,6 +7518,9 @@ type CreateVpcEndPointServiceRequest struct {
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
 }
 
 func (r *CreateVpcEndPointServiceRequest) ToJsonString() string {
@@ -7529,6 +7542,7 @@ func (r *CreateVpcEndPointServiceRequest) FromJsonString(s string) error {
 	delete(f, "IsPassService")
 	delete(f, "ServiceType")
 	delete(f, "Tags")
+	delete(f, "IpAddressType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpcEndPointServiceRequest has unknown keys!", "")
 	}
@@ -11063,6 +11077,9 @@ func (r *DeleteTrafficPackagesResponse) FromJsonString(s string) error {
 type DeleteVpcEndPointRequestParams struct {
 	// 终端节点ID。
 	EndPointId *string `json:"EndPointId,omitnil,omitempty" name:"EndPointId"`
+
+	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
 }
 
 type DeleteVpcEndPointRequest struct {
@@ -11070,6 +11087,9 @@ type DeleteVpcEndPointRequest struct {
 	
 	// 终端节点ID。
 	EndPointId *string `json:"EndPointId,omitnil,omitempty" name:"EndPointId"`
+
+	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
 }
 
 func (r *DeleteVpcEndPointRequest) ToJsonString() string {
@@ -11085,6 +11105,7 @@ func (r *DeleteVpcEndPointRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "EndPointId")
+	delete(f, "IpAddressType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVpcEndPointRequest has unknown keys!", "")
 	}
@@ -11117,6 +11138,9 @@ func (r *DeleteVpcEndPointResponse) FromJsonString(s string) error {
 type DeleteVpcEndPointServiceRequestParams struct {
 	// 终端节点ID。
 	EndPointServiceId *string `json:"EndPointServiceId,omitnil,omitempty" name:"EndPointServiceId"`
+
+	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
 }
 
 type DeleteVpcEndPointServiceRequest struct {
@@ -11124,6 +11148,9 @@ type DeleteVpcEndPointServiceRequest struct {
 	
 	// 终端节点ID。
 	EndPointServiceId *string `json:"EndPointServiceId,omitnil,omitempty" name:"EndPointServiceId"`
+
+	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
 }
 
 func (r *DeleteVpcEndPointServiceRequest) ToJsonString() string {
@@ -11139,6 +11166,7 @@ func (r *DeleteVpcEndPointServiceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "EndPointServiceId")
+	delete(f, "IpAddressType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVpcEndPointServiceRequest has unknown keys!", "")
 	}
@@ -19401,6 +19429,9 @@ type DescribeVpcEndPointRequestParams struct {
 
 	// 终端节点ID列表。
 	EndPointId []*string `json:"EndPointId,omitnil,omitempty" name:"EndPointId"`
+
+	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
 }
 
 type DescribeVpcEndPointRequest struct {
@@ -19421,6 +19452,9 @@ type DescribeVpcEndPointRequest struct {
 
 	// 终端节点ID列表。
 	EndPointId []*string `json:"EndPointId,omitnil,omitempty" name:"EndPointId"`
+
+	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
 }
 
 func (r *DescribeVpcEndPointRequest) ToJsonString() string {
@@ -19439,6 +19473,7 @@ func (r *DescribeVpcEndPointRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "EndPointId")
+	delete(f, "IpAddressType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVpcEndPointRequest has unknown keys!", "")
 	}
@@ -19493,6 +19528,9 @@ type DescribeVpcEndPointServiceRequestParams struct {
 
 	// <li>不支持同时传入参数 Filters 。</li> <li>列出授权给当前账号的终端节点服务信息。可以配合EndPointServiceIds参数进行过滤，哪些终端节点服务授权了该账户。</li>
 	IsListAuthorizedEndPointService *bool `json:"IsListAuthorizedEndPointService,omitnil,omitempty" name:"IsListAuthorizedEndPointService"`
+
+	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
 }
 
 type DescribeVpcEndPointServiceRequest struct {
@@ -19516,6 +19554,9 @@ type DescribeVpcEndPointServiceRequest struct {
 
 	// <li>不支持同时传入参数 Filters 。</li> <li>列出授权给当前账号的终端节点服务信息。可以配合EndPointServiceIds参数进行过滤，哪些终端节点服务授权了该账户。</li>
 	IsListAuthorizedEndPointService *bool `json:"IsListAuthorizedEndPointService,omitnil,omitempty" name:"IsListAuthorizedEndPointService"`
+
+	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
 }
 
 func (r *DescribeVpcEndPointServiceRequest) ToJsonString() string {
@@ -19535,6 +19576,7 @@ func (r *DescribeVpcEndPointServiceRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "EndPointServiceIds")
 	delete(f, "IsListAuthorizedEndPointService")
+	delete(f, "IpAddressType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVpcEndPointServiceRequest has unknown keys!", "")
 	}
@@ -22565,6 +22607,9 @@ type EnableVpcEndPointConnectRequestParams struct {
 	// 是否接受终端节点连接请求。
 	// <li> true：自动接受。</li> <li> false：不自动接受。</li>
 	AcceptFlag *bool `json:"AcceptFlag,omitnil,omitempty" name:"AcceptFlag"`
+
+	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
 }
 
 type EnableVpcEndPointConnectRequest struct {
@@ -22579,6 +22624,9 @@ type EnableVpcEndPointConnectRequest struct {
 	// 是否接受终端节点连接请求。
 	// <li> true：自动接受。</li> <li> false：不自动接受。</li>
 	AcceptFlag *bool `json:"AcceptFlag,omitnil,omitempty" name:"AcceptFlag"`
+
+	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
 }
 
 func (r *EnableVpcEndPointConnectRequest) ToJsonString() string {
@@ -22596,6 +22644,7 @@ func (r *EnableVpcEndPointConnectRequest) FromJsonString(s string) error {
 	delete(f, "EndPointServiceId")
 	delete(f, "EndPointId")
 	delete(f, "AcceptFlag")
+	delete(f, "IpAddressType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableVpcEndPointConnectRequest has unknown keys!", "")
 	}
@@ -28399,6 +28448,9 @@ type ModifyVpcEndPointAttributeRequestParams struct {
 
 	// 安全组ID列表。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
 }
 
 type ModifyVpcEndPointAttributeRequest struct {
@@ -28412,6 +28464,9 @@ type ModifyVpcEndPointAttributeRequest struct {
 
 	// 安全组ID列表。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
 }
 
 func (r *ModifyVpcEndPointAttributeRequest) ToJsonString() string {
@@ -28429,6 +28484,7 @@ func (r *ModifyVpcEndPointAttributeRequest) FromJsonString(s string) error {
 	delete(f, "EndPointId")
 	delete(f, "EndPointName")
 	delete(f, "SecurityGroupIds")
+	delete(f, "IpAddressType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVpcEndPointAttributeRequest has unknown keys!", "")
 	}
@@ -28473,6 +28529,9 @@ type ModifyVpcEndPointServiceAttributeRequestParams struct {
 
 	// 后端服务的ID，比如lb-xxx。
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitnil,omitempty" name:"ServiceInstanceId"`
+
+	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
 }
 
 type ModifyVpcEndPointServiceAttributeRequest struct {
@@ -28492,6 +28551,9 @@ type ModifyVpcEndPointServiceAttributeRequest struct {
 
 	// 后端服务的ID，比如lb-xxx。
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitnil,omitempty" name:"ServiceInstanceId"`
+
+	// 协议类型，支持 Ipv4，Ipv6，默认 Ipv4。
+	IpAddressType *string `json:"IpAddressType,omitnil,omitempty" name:"IpAddressType"`
 }
 
 func (r *ModifyVpcEndPointServiceAttributeRequest) ToJsonString() string {
@@ -28511,6 +28573,7 @@ func (r *ModifyVpcEndPointServiceAttributeRequest) FromJsonString(s string) erro
 	delete(f, "EndPointServiceName")
 	delete(f, "AutoAcceptFlag")
 	delete(f, "ServiceInstanceId")
+	delete(f, "IpAddressType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVpcEndPointServiceAttributeRequest has unknown keys!", "")
 	}

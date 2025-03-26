@@ -378,6 +378,11 @@ type AdaptiveStreamTemplate struct {
 	// <li>0：否，</li>
 	// <li>1：是。</li>
 	RemoveVideo *uint64 `json:"RemoveVideo,omitnil,omitempty" name:"RemoveVideo"`
+
+	// 音频参数信息列表。
+	// 注意：参数数组长度最大为64。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioList []*AudioTemplateInfo `json:"AudioList,omitnil,omitempty" name:"AudioList"`
 }
 
 type AddOnSubtitle struct {
@@ -2209,6 +2214,11 @@ type AudioTemplateInfo struct {
 	// 当媒体的封装格式是音频格式时（flac，ogg，mp3，m4a）时，声道数不允许设为5.1声道。
 	// 默认值：2。
 	AudioChannel *int64 `json:"AudioChannel,omitnil,omitempty" name:"AudioChannel"`
+
+	// 合并音轨信息。
+	// 注意：此字段只是自适应转码生效，
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrackChannelInfo *AudioTrackChannelInfo `json:"TrackChannelInfo,omitnil,omitempty" name:"TrackChannelInfo"`
 }
 
 type AudioTemplateInfoForUpdate struct {
@@ -2255,6 +2265,27 @@ type AudioTemplateInfoForUpdate struct {
 	// 指定输出要保留的音频轨道。默认是全部保留源的。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamSelects []*int64 `json:"StreamSelects,omitnil,omitempty" name:"StreamSelects"`
+}
+
+type AudioTrackChannelInfo struct {
+	// 是否开启混音，可选值：
+	// 0：表示不开启混音
+	// 1：表示开启混音
+	// 默认值：0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelsRemix *int64 `json:"ChannelsRemix,omitnil,omitempty" name:"ChannelsRemix"`
+
+	// 合并音轨输入类型，可选值：
+	// trask：表示使用音轨id；
+	// trask_channel： 表示使用音轨id和声道id；
+	// 默认：trask。
+	// 注意：如果原视频是多声道，建议使用trask_channel。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelectType *string `json:"SelectType,omitnil,omitempty" name:"SelectType"`
+
+	// 音轨信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputTrackInfo []*TrackInfo `json:"InputTrackInfo,omitnil,omitempty" name:"InputTrackInfo"`
 }
 
 type AwsS3FileUploadTrigger struct {
@@ -12090,6 +12121,14 @@ type HighlightSegmentItem struct {
 	// 片段标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SegmentTags []*string `json:"SegmentTags,omitnil,omitempty" name:"SegmentTags"`
+
+	// 直播切片对应直播起始时间点，采用 ISO 日期格式。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 直播切片对应直播结束时间点，采用 ISO 日期格式。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type ImageEncodeConfig struct {
@@ -18348,6 +18387,9 @@ type SegmentRecognitionItem struct {
 
 	// 直播拆条用，人物位置参考信息用于横转竖。
 	PersonPositionUrl *string `json:"PersonPositionUrl,omitnil,omitempty" name:"PersonPositionUrl"`
+
+	// 指定人物ID。
+	PersonId *string `json:"PersonId,omitnil,omitempty" name:"PersonId"`
 }
 
 type SegmentSpecificInfo struct {
@@ -19224,6 +19266,26 @@ type TextWatermarkTemplateInputForUpdate struct {
 
 	// 文字内容，长度不超过100个字符。
 	TextContent *string `json:"TextContent,omitnil,omitempty" name:"TextContent"`
+}
+
+type TrackInfo struct {
+	// 音轨和声道数字，说明：
+	// 当：SelectType值为trask，此值为整数类型，例如：1；
+	// 当：SelectType值为trask_channel，此值为小数类型，例如：1.0；
+	// 默认值：1.0
+	// 注意：整数部分代表音轨序号，以小数部分代表声道。音轨序号即为音轨的stream index，支持输入0和正整数。小数部分最多支持2位小数，并且仅支持0-63，但是如果Codec为aac/eac3/ac3时，小数部分仅支持0-15。例如：对于stream index为1的音轨，1.0代表这个音轨的第1个声道，1.1代表这个音轨的第2个声道。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrackNum *string `json:"TrackNum,omitnil,omitempty" name:"TrackNum"`
+
+	// 声道音量大小，说明：
+	// 当：AudioChannel的值为1时，此值长度为1；
+	// 当：AudioChannel的值为2时，此值长度为2；
+	// 当：AudioChannel的值为6时，此值长度大于2。
+	// 此值数组值取值范围：[-60, 6]，其中-60代表静音、0代表保持原音量，6表示原音量增加一倍，默认值为-60。
+	// 注意：支持3位小数。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelVolume []*float64 `json:"ChannelVolume,omitnil,omitempty" name:"ChannelVolume"`
 }
 
 type TranscodeTaskInput struct {

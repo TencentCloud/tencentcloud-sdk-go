@@ -22,20 +22,20 @@ import (
 
 // Predefined struct for user
 type ActivateCaCertificateRequestParams struct {
-	// 集群id
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 证书序列号
+	// CA证书的SN序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
 	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
 }
 
 type ActivateCaCertificateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群id
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 证书序列号
+	// CA证书的SN序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
 	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
 }
 
@@ -1062,7 +1062,7 @@ type CreateUserRequestParams struct {
 	// 用户名，不能为空，只支持数字 大小写字母 分隔符("_","-")，不能超过 32 个字符
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 密码，该字段为空时候则后端会默认生成
+	// 密码，该字段为空时候则后端会默认生成。用户自定义密码时，不能为空，只支持数字 大小写字母 分隔符("_","-")，不能超过 64 个字符。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 备注，长度不超过128个字符。
@@ -1078,7 +1078,7 @@ type CreateUserRequest struct {
 	// 用户名，不能为空，只支持数字 大小写字母 分隔符("_","-")，不能超过 32 个字符
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
-	// 密码，该字段为空时候则后端会默认生成
+	// 密码，该字段为空时候则后端会默认生成。用户自定义密码时，不能为空，只支持数字 大小写字母 分隔符("_","-")，不能超过 64 个字符。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 备注，长度不超过128个字符。
@@ -1384,7 +1384,7 @@ type DeleteCaCertificateRequestParams struct {
 	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 证书序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
+	// CA证书序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
 	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
 }
 
@@ -1394,7 +1394,7 @@ type DeleteCaCertificateRequest struct {
 	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 证书序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
+	// CA证书序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
 	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
 }
 
@@ -1557,14 +1557,14 @@ func (r *DeleteInsPublicEndpointResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteInstanceRequestParams struct {
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DeleteInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -1860,20 +1860,20 @@ func (r *DescribeAuthorizationPoliciesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCaCertificateRequestParams struct {
-	// ca证书sn
+	// CA证书的SN序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
 	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
 
-	// 集群id
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeCaCertificateRequest struct {
 	*tchttp.BaseRequest
 	
-	// ca证书sn
+	// CA证书的SN序列号，可以从 [DescribeCaCertificates](https://cloud.tencent.com/document/api/1778/116206)接口、控制台、证书文件中获得。
 	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
 
-	// 集群id
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -1899,40 +1899,42 @@ func (r *DescribeCaCertificateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCaCertificateResponseParams struct {
-	// 创建时间
+	// 创建时间，毫秒级时间戳 。
 	CreatedTime *int64 `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 上次更新时间
+	// 上次更新时间，毫秒级时间戳 。
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
-	// 失效日期
+	// 失效日期，毫秒级时间戳 。
 	NotAfterTime *int64 `json:"NotAfterTime,omitnil,omitempty" name:"NotAfterTime"`
 
-	// 上次激活时间
+	// 上次激活时间，毫秒级时间戳 。
 	LastActivationTime *int64 `json:"LastActivationTime,omitnil,omitempty" name:"LastActivationTime"`
 
-	// 上次吊销时间
+	// 上次吊销时间，毫秒级时间戳 。
 	LastInactivationTime *int64 `json:"LastInactivationTime,omitnil,omitempty" name:"LastInactivationTime"`
 
-	// 证书状态
+	// CA证书状态
+	//  ACTIVE：激活
+	// INACTIVE：未激活
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 证书序列号
 	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
 
-	// common name
+	// 证书的CN（Common Name），证书中用于标识主体的名称，通常是域名或组织名称
 	CaCn *string `json:"CaCn,omitnil,omitempty" name:"CaCn"`
 
 	// 证书内容
 	CaCertificate *string `json:"CaCertificate,omitnil,omitempty" name:"CaCertificate"`
 
-	// 证书格式
+	// 证书格式，当仅支持PEM格式
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
 	// Ca证书颁发者CN
 	CaIssuerCn *string `json:"CaIssuerCn,omitnil,omitempty" name:"CaIssuerCn"`
 
-	// 生效开始时间
+	// 生效开始时间，毫秒级时间戳 。
 	NotBeforeTime *int64 `json:"NotBeforeTime,omitnil,omitempty" name:"NotBeforeTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2017,7 +2019,7 @@ type DescribeClientListRequestParams struct {
 	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 客户端名
+	// 客户端ID
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
 	// 客户端数量限制,最大1024，默认1024
@@ -2030,7 +2032,7 @@ type DescribeClientListRequest struct {
 	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 客户端名
+	// 客户端ID
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
 	// 客户端数量限制,最大1024，默认1024
@@ -2197,27 +2199,28 @@ func (r *DescribeDeviceCertificateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDeviceCertificatesRequestParams struct {
-	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 支持搜索参数
-	// ClientId：客户端id
-	// CaSn：所属的CA证书SN
-	// DeviceCertificateSn：设备证书SN
-	// DeviceCertificateCn：设备证书CN
+	// ClientId：客户端id，根据实际业务使用获取
+	// CaSn：所属的CA证书SN序列号 可以从 [查询集群CA证书列表](https://cloud.tencent.com/document/api/1778/116206) 或者实际业务使用获取
+	// DeviceCertificateSn：设备证书SN序列号 可从[查询设备证书详情](https://cloud.tencent.com/document/api/1778/113748) 获取
+	// DeviceCertificateCn：设备证书CN 可从[查询设备证书详情](https://cloud.tencent.com/document/api/1778/113748) 获取
 	// OrganizationalUnit：证书OU
 	// NotAfterEnd：过期时间小于等于指定时间的证书
 	// NotAfterStart：过期时间大于等于指定时间的证书
-	// Status：证书状态
+	// Status：设备证书状态     ACTIVE（激活）； INACTIVE（未激活）REVOKED（吊销）；PENDING_ACTIVATION（注册待激活）
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页limit
+	// 分页limit，默认20，最大100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量
+	// 分页偏移量，默认0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// CREATE_TIME_DESC, 创建时间降序
+	// 排序规则
+	//     CREATE_TIME_DESC, 创建时间降序
 	//     CREATE_TIME_ASC,创建时间升序
 	//     UPDATE_TIME_DESC,更新时间降序
 	//     UPDATE_TIME_ASC,更新时间升序
@@ -2227,27 +2230,28 @@ type DescribeDeviceCertificatesRequestParams struct {
 type DescribeDeviceCertificatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 支持搜索参数
-	// ClientId：客户端id
-	// CaSn：所属的CA证书SN
-	// DeviceCertificateSn：设备证书SN
-	// DeviceCertificateCn：设备证书CN
+	// ClientId：客户端id，根据实际业务使用获取
+	// CaSn：所属的CA证书SN序列号 可以从 [查询集群CA证书列表](https://cloud.tencent.com/document/api/1778/116206) 或者实际业务使用获取
+	// DeviceCertificateSn：设备证书SN序列号 可从[查询设备证书详情](https://cloud.tencent.com/document/api/1778/113748) 获取
+	// DeviceCertificateCn：设备证书CN 可从[查询设备证书详情](https://cloud.tencent.com/document/api/1778/113748) 获取
 	// OrganizationalUnit：证书OU
 	// NotAfterEnd：过期时间小于等于指定时间的证书
 	// NotAfterStart：过期时间大于等于指定时间的证书
-	// Status：证书状态
+	// Status：设备证书状态     ACTIVE（激活）； INACTIVE（未激活）REVOKED（吊销）；PENDING_ACTIVATION（注册待激活）
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 分页limit
+	// 分页limit，默认20，最大100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 分页偏移量
+	// 分页偏移量，默认0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// CREATE_TIME_DESC, 创建时间降序
+	// 排序规则
+	//     CREATE_TIME_DESC, 创建时间降序
 	//     CREATE_TIME_ASC,创建时间升序
 	//     UPDATE_TIME_DESC,更新时间降序
 	//     UPDATE_TIME_ASC,更新时间升序
@@ -2282,7 +2286,7 @@ type DescribeDeviceCertificatesResponseParams struct {
 	// 总数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 设备证书
+	// 设备证书列表
 	Data []*DeviceCertificateItem `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2888,7 +2892,7 @@ type DescribeTopicListRequestParams struct {
 	// 查询起始位置，默认0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询结果限制数量，默认0，最大20
+	// 查询结果限制数量，默认20，最大20
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -2905,7 +2909,7 @@ type DescribeTopicListRequest struct {
 	// 查询起始位置，默认0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询结果限制数量，默认0，最大20
+	// 查询结果限制数量，默认20，最大20
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -3122,38 +3126,38 @@ type DeviceCertificateItem struct {
 	// 设备证书
 	DeviceCertificate *string `json:"DeviceCertificate,omitnil,omitempty" name:"DeviceCertificate"`
 
-	// 设备证书Sn
+	// 设备证书SN序列号，用于唯一标识一个设备证书
 	DeviceCertificateSn *string `json:"DeviceCertificateSn,omitnil,omitempty" name:"DeviceCertificateSn"`
 
 	// 设备证书Cn
 	DeviceCertificateCn *string `json:"DeviceCertificateCn,omitnil,omitempty" name:"DeviceCertificateCn"`
 
-	// 签发ca的序列号
+	// 签发该证书的CA证书的序列号
 	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
 
-	// 证书格式
+	// 证书格式，当前仅支持PEM
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
-	// 证书状态
-	//     ACTIVE,//激活
-	//     INACTIVE,//未激活
-	//     REVOKED,//吊销
-	//     PENDING_ACTIVATION,//注册待激活
+	// 设备证书状态
+	//     ACTIVE：激活
+	//     INACTIVE：未激活
+	//     REVOKED：吊销
+	//     PENDING_ACTIVATION：注册待激活
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 组织单位
 	OrganizationalUnit *string `json:"OrganizationalUnit,omitnil,omitempty" name:"OrganizationalUnit"`
 
-	// 上次激活时间
+	// 上次激活时间，毫秒级时间戳 。
 	LastActivationTime *int64 `json:"LastActivationTime,omitnil,omitempty" name:"LastActivationTime"`
 
-	// 上次取消激活时间
+	// 上次取消激活时间，毫秒级时间戳 。
 	LastInactivationTime *int64 `json:"LastInactivationTime,omitnil,omitempty" name:"LastInactivationTime"`
 
-	// 创建时间
+	// 创建时间，毫秒级时间戳 。
 	CreatedTime *int64 `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 预销毁时间
+	// 更新时间，毫秒级时间戳 。
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 证书来源：
@@ -3161,10 +3165,10 @@ type DeviceCertificateItem struct {
 	// JITP 自动注册
 	CertificateSource *string `json:"CertificateSource,omitnil,omitempty" name:"CertificateSource"`
 
-	// 证书失效日期
+	// 证书失效日期，毫秒级时间戳 。
 	NotAfterTime *int64 `json:"NotAfterTime,omitnil,omitempty" name:"NotAfterTime"`
 
-	// 证书生效开始日期
+	// 证书生效开始日期，毫秒级时间戳 。
 	NotBeforeTime *int64 `json:"NotBeforeTime,omitnil,omitempty" name:"NotBeforeTime"`
 }
 
@@ -3352,7 +3356,7 @@ type MQTTInstanceItem struct {
 	// 客户端连接数上线
 	ClientNumLimit *int64 `json:"ClientNumLimit,omitnil,omitempty" name:"ClientNumLimit"`
 
-	// 是否自动续费。仅包年包月就去那生效。
+	// 是否自动续费。仅包年包月集群生效。
 	// 1:自动续费
 	// 0:非自动续费
 	RenewFlag *int64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
@@ -4447,46 +4451,42 @@ func (r *PublishMessageResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RegisterCaCertificateRequestParams struct {
-	// 集群id
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// CA证书
+	// CA证书内容，自签CA可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817) 签发自签CA
 	CaCertificate *string `json:"CaCertificate,omitnil,omitempty" name:"CaCertificate"`
 
-	// 验证证书
+	// 验证证书内容，可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817) 手动注册CA证书章节
 	VerificationCertificate *string `json:"VerificationCertificate,omitnil,omitempty" name:"VerificationCertificate"`
 
-	// 证书格式，不传默认PEM格式
+	// 证书格式，不传默认PEM格式，当前仅支持PEM格式
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
 	// 证书状态，不传默认ACTIVE状态
-	//     ACTIVE,//激活
-	//     INACTIVE,//未激活
-	//     REVOKED,//吊销
-	//     PENDING_ACTIVATION,//注册待激活
+	//     ACTIVE：激活
+	//     INACTIVE：未激活
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type RegisterCaCertificateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群id
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// CA证书
+	// CA证书内容，自签CA可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817) 签发自签CA
 	CaCertificate *string `json:"CaCertificate,omitnil,omitempty" name:"CaCertificate"`
 
-	// 验证证书
+	// 验证证书内容，可参考 [自定义 X.509 证书实现 “一机一证”](https://cloud.tencent.com/document/product/1778/114817) 手动注册CA证书章节
 	VerificationCertificate *string `json:"VerificationCertificate,omitnil,omitempty" name:"VerificationCertificate"`
 
-	// 证书格式，不传默认PEM格式
+	// 证书格式，不传默认PEM格式，当前仅支持PEM格式
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
 	// 证书状态，不传默认ACTIVE状态
-	//     ACTIVE,//激活
-	//     INACTIVE,//未激活
-	//     REVOKED,//吊销
-	//     PENDING_ACTIVATION,//注册待激活
+	//     ACTIVE：激活
+	//     INACTIVE：未激活
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -4537,44 +4537,52 @@ func (r *RegisterCaCertificateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RegisterDeviceCertificateRequestParams struct {
-	// 集群id
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 设备证书
+	// 设备证书内容，可参考 [使用 CA 证书生成服务端/客户端证书](https://cloud.tencent.com/document/product/1778/114817#aab79cc8-a148-412e-beb8-9c9e158eb944) 生成
 	DeviceCertificate *string `json:"DeviceCertificate,omitnil,omitempty" name:"DeviceCertificate"`
 
 	// 关联的CA证书SN
 	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
 
-	// 客户端ID
+	// 客户端ID，需要关联该证书的客户端ID。根据实际业务使用填写
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
-	// 证书格式
+	// 证书格式，默认为PEM，当前仅支持PEM格式
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
-	//     ACTIVE,//激活     INACTIVE,//未激活     REVOKED,//吊销     PENDING_ACTIVATION,//注册待激活
+	//  客户端证书状态，默认激活状态（ACTIVE）
+	// ACTIVE：激活     
+	// INACTIVE：未激活     
+	// REVOKED：吊销 
+	// PENDING_ACTIVATION：注册待激活
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type RegisterDeviceCertificateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群id
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 设备证书
+	// 设备证书内容，可参考 [使用 CA 证书生成服务端/客户端证书](https://cloud.tencent.com/document/product/1778/114817#aab79cc8-a148-412e-beb8-9c9e158eb944) 生成
 	DeviceCertificate *string `json:"DeviceCertificate,omitnil,omitempty" name:"DeviceCertificate"`
 
 	// 关联的CA证书SN
 	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
 
-	// 客户端ID
+	// 客户端ID，需要关联该证书的客户端ID。根据实际业务使用填写
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
-	// 证书格式
+	// 证书格式，默认为PEM，当前仅支持PEM格式
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
-	//     ACTIVE,//激活     INACTIVE,//未激活     REVOKED,//吊销     PENDING_ACTIVATION,//注册待激活
+	//  客户端证书状态，默认激活状态（ACTIVE）
+	// ACTIVE：激活     
+	// INACTIVE：未激活     
+	// REVOKED：吊销 
+	// PENDING_ACTIVATION：注册待激活
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 

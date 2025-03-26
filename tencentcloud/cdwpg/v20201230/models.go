@@ -107,7 +107,7 @@ type ChargeProperties struct {
 }
 
 type ConfigHistory struct {
-	// id1
+	// id
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 实例名

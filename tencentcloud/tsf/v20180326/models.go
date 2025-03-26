@@ -1107,7 +1107,6 @@ type BusinessLogConfig struct {
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
 	// 配置项日志路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigPath *string `json:"ConfigPath,omitnil,omitempty" name:"ConfigPath"`
 
 	// 配置项描述
@@ -1119,7 +1118,6 @@ type BusinessLogConfig struct {
 	ConfigTags *string `json:"ConfigTags,omitnil,omitempty" name:"ConfigTags"`
 
 	// 配置项对应的ES管道
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigPipeline *string `json:"ConfigPipeline,omitnil,omitempty" name:"ConfigPipeline"`
 
 	// 配置项创建时间
@@ -1131,7 +1129,6 @@ type BusinessLogConfig struct {
 	ConfigUpdateTime *string `json:"ConfigUpdateTime,omitnil,omitempty" name:"ConfigUpdateTime"`
 
 	// 配置项解析规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigSchema *BusinessLogConfigSchema `json:"ConfigSchema,omitnil,omitempty" name:"ConfigSchema"`
 
 	// 配置项关联部署组
@@ -1141,8 +1138,15 @@ type BusinessLogConfig struct {
 	ConfigAssociatedGroups []*BusinesLogConfigAssociatedGroup `json:"ConfigAssociatedGroups,omitnil,omitempty" name:"ConfigAssociatedGroups"`
 
 	// 配置项关联部署组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigAssociatedGroupList []*BusinessLogConfigAssociatedGroup `json:"ConfigAssociatedGroupList,omitnil,omitempty" name:"ConfigAssociatedGroupList"`
+
+	// 是否开启filebeat高级配置开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilebeatConfigEnable *bool `json:"FilebeatConfigEnable,omitnil,omitempty" name:"FilebeatConfigEnable"`
+
+	// close_timeout参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilebeatCloseTimeout *int64 `json:"FilebeatCloseTimeout,omitnil,omitempty" name:"FilebeatCloseTimeout"`
 }
 
 type BusinessLogConfigAssociatedGroup struct {
@@ -8250,7 +8254,6 @@ func (r *DescribeBusinessLogConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBusinessLogConfigResponseParams struct {
 	// 日志配置项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *BusinessLogConfig `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11991,7 +11994,6 @@ func (r *DescribeJvmMonitorRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeJvmMonitorResponseParams struct {
 	// Java实例jvm监控数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *JvmMonitorData `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21803,8 +21805,11 @@ type ThreadPicture struct {
 	// 活跃线程数
 	ThreadActive []*CurvePoint `json:"ThreadActive,omitnil,omitempty" name:"ThreadActive"`
 
-	// 守护线程数
+	// 守护线程数 拼写错误，废弃
 	DeamonThreadCount []*CurvePoint `json:"DeamonThreadCount,omitnil,omitempty" name:"DeamonThreadCount"`
+
+	// 守护线程数
+	DaemonThreadCount []*CurvePoint `json:"DaemonThreadCount,omitnil,omitempty" name:"DaemonThreadCount"`
 }
 
 type TrySchedule struct {

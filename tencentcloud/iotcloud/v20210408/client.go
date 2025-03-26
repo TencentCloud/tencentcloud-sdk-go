@@ -1194,7 +1194,7 @@ func NewDescribeDeviceResourceResponse() (response *DescribeDeviceResourceRespon
 }
 
 // DescribeDeviceResource
-// 本接口（DescribeDeviceResource）用于查询设备资源详情。 
+// 本接口（DescribeDeviceResource）用于查询设备资源详情。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1206,7 +1206,7 @@ func (c *Client) DescribeDeviceResource(request *DescribeDeviceResourceRequest) 
 }
 
 // DescribeDeviceResource
-// 本接口（DescribeDeviceResource）用于查询设备资源详情。 
+// 本接口（DescribeDeviceResource）用于查询设备资源详情。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1249,7 +1249,7 @@ func NewDescribeDeviceResourcesResponse() (response *DescribeDeviceResourcesResp
 }
 
 // DescribeDeviceResources
-// 本接口（DescribeDeviceResources）用于查询设备资源列表。 
+// 本接口（DescribeDeviceResources）用于查询设备资源列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1261,7 +1261,7 @@ func (c *Client) DescribeDeviceResources(request *DescribeDeviceResourcesRequest
 }
 
 // DescribeDeviceResources
-// 本接口（DescribeDeviceResources）用于查询设备资源列表。 
+// 本接口（DescribeDeviceResources）用于查询设备资源列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2026,7 +2026,7 @@ func NewDescribeProductResourceResponse() (response *DescribeProductResourceResp
 }
 
 // DescribeProductResource
-// 本接口（DescribeProductResource）用于查询产品资源详情。 
+// 本接口（DescribeProductResource）用于查询产品资源详情。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2038,7 +2038,7 @@ func (c *Client) DescribeProductResource(request *DescribeProductResourceRequest
 }
 
 // DescribeProductResource
-// 本接口（DescribeProductResource）用于查询产品资源详情。 
+// 本接口（DescribeProductResource）用于查询产品资源详情。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

@@ -613,11 +613,11 @@ type Capabilities struct {
 }
 
 type CbsVolume struct {
-	// cbs volume 数据卷名称
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
 	// 腾讯云cbs盘Id
 	CbsDiskId *string `json:"CbsDiskId,omitnil,omitempty" name:"CbsDiskId"`
+
+	// cbs volume 数据卷名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 // Predefined struct for user
@@ -1334,81 +1334,79 @@ type Container struct {
 	// 容器名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 容器启动命令
-	Commands []*string `json:"Commands,omitnil,omitempty" name:"Commands"`
-
 	// 容器启动参数
 	Args []*string `json:"Args,omitnil,omitempty" name:"Args"`
 
-	// 容器内操作系统的环境变量
-	EnvironmentVars []*EnvironmentVariable `json:"EnvironmentVars,omitnil,omitempty" name:"EnvironmentVars"`
+	// 容器启动命令
+	Commands []*string `json:"Commands,omitnil,omitempty" name:"Commands"`
 
 	// CPU，制改容器最多可使用的核数，该值不可超过容器实例的总核数。单位：核。
 	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 内存，限制该容器最多可使用的内存值，该值不可超过容器实例的总内存值。单位：GiB
-	Memory *float64 `json:"Memory,omitnil,omitempty" name:"Memory"`
-
-	// 数据卷挂载信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
-
 	// 当前状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentState *ContainerState `json:"CurrentState,omitnil,omitempty" name:"CurrentState"`
 
-	// 重启次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RestartCount *uint64 `json:"RestartCount,omitnil,omitempty" name:"RestartCount"`
-
-	// 容器工作目录
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	WorkingDir *string `json:"WorkingDir,omitnil,omitempty" name:"WorkingDir"`
-
-	// 存活探针
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	LivenessProbe *LivenessOrReadinessProbe `json:"LivenessProbe,omitnil,omitempty" name:"LivenessProbe"`
-
-	// 就绪探针
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReadinessProbe *LivenessOrReadinessProbe `json:"ReadinessProbe,omitnil,omitempty" name:"ReadinessProbe"`
+	// 容器内操作系统的环境变量
+	EnvironmentVars []*EnvironmentVariable `json:"EnvironmentVars,omitnil,omitempty" name:"EnvironmentVars"`
 
 	// Gpu限制
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GpuLimit *uint64 `json:"GpuLimit,omitnil,omitempty" name:"GpuLimit"`
 
+	// 存活探针
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LivenessProbe *LivenessOrReadinessProbe `json:"LivenessProbe,omitnil,omitempty" name:"LivenessProbe"`
+
+	// 内存，限制该容器最多可使用的内存值，该值不可超过容器实例的总内存值。单位：GiB
+	Memory *float64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 就绪探针
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReadinessProbe *LivenessOrReadinessProbe `json:"ReadinessProbe,omitnil,omitempty" name:"ReadinessProbe"`
+
+	// 重启次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RestartCount *uint64 `json:"RestartCount,omitnil,omitempty" name:"RestartCount"`
+
 	// 容器的安全上下文
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityContext *SecurityContext `json:"SecurityContext,omitnil,omitempty" name:"SecurityContext"`
+
+	// 数据卷挂载信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeMounts []*VolumeMount `json:"VolumeMounts,omitnil,omitempty" name:"VolumeMounts"`
+
+	// 容器工作目录
+	WorkingDir *string `json:"WorkingDir,omitnil,omitempty" name:"WorkingDir"`
 }
 
 type ContainerState struct {
+	// 容器运行退出码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExitCode *int64 `json:"ExitCode,omitnil,omitempty" name:"ExitCode"`
+
+	// 容器运行结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// 容器状态信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 容器状态 Reason
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// 容器重启次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RestartCount *int64 `json:"RestartCount,omitnil,omitempty" name:"RestartCount"`
+
 	// 容器运行开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 容器状态：created, running, exited, unknown
 	State *string `json:"State,omitnil,omitempty" name:"State"`
-
-	// 容器运行结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
-
-	// 容器运行退出码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExitCode *int64 `json:"ExitCode,omitnil,omitempty" name:"ExitCode"`
-
-	// 容器状态 Reason
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
-
-	// 容器状态信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
-
-	// 容器重启次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RestartCount *int64 `json:"RestartCount,omitnil,omitempty" name:"RestartCount"`
 }
 
 type ControllerStatus struct {
@@ -4276,16 +4274,13 @@ type CustomDriver struct {
 
 type DNSConfig struct {
 	// DNS 服务器IP地址列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nameservers []*string `json:"Nameservers,omitnil,omitempty" name:"Nameservers"`
 
-	// DNS搜索域列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Searches []*string `json:"Searches,omitnil,omitempty" name:"Searches"`
-
 	// 对象选项列表，每个对象由name和value（可选）构成
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Options []*DNSConfigOption `json:"Options,omitnil,omitempty" name:"Options"`
+
+	// DNS搜索域列表
+	Searches []*string `json:"Searches,omitnil,omitempty" name:"Searches"`
 }
 
 type DNSConfigOption struct {
@@ -8905,7 +8900,6 @@ func (r *DescribeEKSContainerInstanceRegionsRequest) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeEKSContainerInstanceRegionsResponseParams struct {
 	// EKS Container Instance支持的地域信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Regions []*EksCiRegionInfo `json:"Regions,omitnil,omitempty" name:"Regions"`
 
 	// 总数
@@ -10264,6 +10258,65 @@ func (r *DescribeLogSwitchesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLogSwitchesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOSImagesRequestParams struct {
+
+}
+
+type DescribeOSImagesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeOSImagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOSImagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOSImagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOSImagesResponseParams struct {
+	// 镜像信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OSImageSeriesSet []*OSImage `json:"OSImageSeriesSet,omitnil,omitempty" name:"OSImageSeriesSet"`
+
+	// 镜像数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeOSImagesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOSImagesResponseParams `json:"Response"`
+}
+
+func (r *DescribeOSImagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOSImagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -13803,96 +13856,82 @@ type EipAttribute struct {
 }
 
 type EksCi struct {
+	// 自动为用户创建的EipId
+	AutoCreatedEipId *string `json:"AutoCreatedEipId,omitnil,omitempty" name:"AutoCreatedEipId"`
+
+	// 为容器实例关联 CAM 角色，value 填写 CAM 角色名称，容器实例可获取该 CAM 角色包含的权限策略，方便 容器实例 内的程序进行如购买资源、读写存储等云资源操作。
+	CamRoleName *string `json:"CamRoleName,omitnil,omitempty" name:"CamRoleName"`
+
+	// 容器列表
+	Containers []*Container `json:"Containers,omitnil,omitempty" name:"Containers"`
+
+	// CPU大小
+	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// CPU类型
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
+
+	// 接到请求后的系统创建时间。
+	CreationTime *string `json:"CreationTime,omitnil,omitempty" name:"CreationTime"`
+
+	// 容器实例绑定的Eip地址，注意可能为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EipAddress *string `json:"EipAddress,omitnil,omitempty" name:"EipAddress"`
+
 	// EKS Cotainer Instance Id
 	EksCiId *string `json:"EksCiId,omitnil,omitempty" name:"EksCiId"`
 
 	// EKS Cotainer Instance Name
 	EksCiName *string `json:"EksCiName,omitnil,omitempty" name:"EksCiName"`
 
+	// 数据卷信息
+	EksCiVolume *EksCiVolume `json:"EksCiVolume,omitnil,omitempty" name:"EksCiVolume"`
+
+	// GPU卡数量
+	GpuCount *uint64 `json:"GpuCount,omitnil,omitempty" name:"GpuCount"`
+
+	// GPU类型。如无使用GPU则不返回
+	GpuType *string `json:"GpuType,omitnil,omitempty" name:"GpuType"`
+
+	// 初始化容器列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InitContainers []*Container `json:"InitContainers,omitnil,omitempty" name:"InitContainers"`
+
 	// 内存大小
 	Memory *float64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// CPU大小
-	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+	// 容器状态是否持久化
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PersistStatus *bool `json:"PersistStatus,omitnil,omitempty" name:"PersistStatus"`
+
+	// 内网ip地址
+	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
+
+	// 容器组的重启策略
+	RestartPolicy *string `json:"RestartPolicy,omitnil,omitempty" name:"RestartPolicy"`
+
+	// 容器组运行的安全上下文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityContext *SecurityContext `json:"SecurityContext,omitnil,omitempty" name:"SecurityContext"`
 
 	// 安全组ID
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
-
-	// 容器组的重启策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RestartPolicy *string `json:"RestartPolicy,omitnil,omitempty" name:"RestartPolicy"`
 
 	// 返回容器组创建状态：Pending，Running，Succeeded，Failed。其中：
 	// Failed （运行失败）指的容器组退出，RestartPolilcy为Never， 有容器exitCode非0；
 	// Succeeded（运行成功）指的是容器组退出了，RestartPolicy为Never或onFailure，所有容器exitCode都为0；
 	// Failed和Succeeded这两种状态都会停止运行，停止计费。
 	// Pending是创建中，Running是 运行中。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 接到请求后的系统创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreationTime *string `json:"CreationTime,omitnil,omitempty" name:"CreationTime"`
-
-	// 容器全部成功退出后的时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SucceededTime *string `json:"SucceededTime,omitnil,omitempty" name:"SucceededTime"`
-
-	// 容器列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Containers []*Container `json:"Containers,omitnil,omitempty" name:"Containers"`
-
-	// 数据卷信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	EksCiVolume *EksCiVolume `json:"EksCiVolume,omitnil,omitempty" name:"EksCiVolume"`
-
-	// 容器组运行的安全上下文
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SecurityContext *SecurityContext `json:"SecurityContext,omitnil,omitempty" name:"SecurityContext"`
-
-	// 内网ip地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
-
-	// 容器实例绑定的Eip地址，注意可能为空
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	EipAddress *string `json:"EipAddress,omitnil,omitempty" name:"EipAddress"`
-
-	// GPU类型。如无使用GPU则不返回
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	GpuType *string `json:"GpuType,omitnil,omitempty" name:"GpuType"`
-
-	// CPU类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
-
-	// GPU卡数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	GpuCount *uint64 `json:"GpuCount,omitnil,omitempty" name:"GpuCount"`
-
-	// 实例所属VPC的Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
-
 	// 实例所属子网Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 初始化容器列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	InitContainers []*Container `json:"InitContainers,omitnil,omitempty" name:"InitContainers"`
+	// 容器全部成功退出后的时间
+	SucceededTime *string `json:"SucceededTime,omitnil,omitempty" name:"SucceededTime"`
 
-	// 为容器实例关联 CAM 角色，value 填写 CAM 角色名称，容器实例可获取该 CAM 角色包含的权限策略，方便 容器实例 内的程序进行如购买资源、读写存储等云资源操作。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CamRoleName *string `json:"CamRoleName,omitnil,omitempty" name:"CamRoleName"`
-
-	// 自动为用户创建的EipId
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AutoCreatedEipId *string `json:"AutoCreatedEipId,omitnil,omitempty" name:"AutoCreatedEipId"`
-
-	// 容器状态是否持久化
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PersistStatus *bool `json:"PersistStatus,omitnil,omitempty" name:"PersistStatus"`
+	// 实例所属VPC的Id
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 }
 
 type EksCiRegionInfo struct {
@@ -15741,16 +15780,14 @@ func (r *ListClusterInspectionResultsResponse) FromJsonString(s string) error {
 
 type LivenessOrReadinessProbe struct {
 	// 探针参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Probe *Probe `json:"Probe,omitnil,omitempty" name:"Probe"`
-
-	// HttpGet检测参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	HttpGet *HttpGet `json:"HttpGet,omitnil,omitempty" name:"HttpGet"`
 
 	// 容器内检测命令参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Exec *Exec `json:"Exec,omitnil,omitempty" name:"Exec"`
+
+	// HttpGet检测参数
+	HttpGet *HttpGet `json:"HttpGet,omitnil,omitempty" name:"HttpGet"`
 
 	// TcpSocket检测的端口参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -17462,11 +17499,11 @@ type NfsVolume struct {
 	// nfs volume 数据卷名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// NFS 服务器地址
-	Server *string `json:"Server,omitnil,omitempty" name:"Server"`
-
 	// NFS 数据卷路径
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// NFS 服务器地址
+	Server *string `json:"Server,omitnil,omitempty" name:"Server"`
 
 	// 默认为 False
 	ReadOnly *bool `json:"ReadOnly,omitnil,omitempty" name:"ReadOnly"`
@@ -17608,6 +17645,26 @@ type OIDCConfigAuthenticationOptions struct {
 	// 创建PodIdentityWebhook组件
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoInstallPodIdentityWebhookAddon *bool `json:"AutoInstallPodIdentityWebhookAddon,omitnil,omitempty" name:"AutoInstallPodIdentityWebhookAddon"`
+}
+
+type OSImage struct {
+	// os聚合名称
+	SeriesName *string `json:"SeriesName,omitnil,omitempty" name:"SeriesName"`
+
+	// os别名
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// os名称
+	OsName *string `json:"OsName,omitnil,omitempty" name:"OsName"`
+
+	// 操作系统类型(分为定制和非定制，取值分别为:DOCKER_CUSTOMIZE、GENERAL)
+	OsCustomizeType *string `json:"OsCustomizeType,omitnil,omitempty" name:"OsCustomizeType"`
+
+	// os是否下线(online表示在线,offline表示下线)
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 镜像id
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 }
 
 type OpenConstraintInfo struct {
@@ -17805,14 +17862,13 @@ type PodNodeInfo struct {
 }
 
 type Probe struct {
+	// Minimum consecutive failures for the probe to be considered failed after having succeeded.Defaults to 3. Minimum value is 1.
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailureThreshold *int64 `json:"FailureThreshold,omitnil,omitempty" name:"FailureThreshold"`
+
 	// Number of seconds after the container has started before liveness probes are initiated.
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InitialDelaySeconds *int64 `json:"InitialDelaySeconds,omitnil,omitempty" name:"InitialDelaySeconds"`
-
-	// Number of seconds after which the probe times out.
-	// Defaults to 1 second. Minimum value is 1.
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimeoutSeconds *int64 `json:"TimeoutSeconds,omitnil,omitempty" name:"TimeoutSeconds"`
 
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -17822,9 +17878,10 @@ type Probe struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuccessThreshold *int64 `json:"SuccessThreshold,omitnil,omitempty" name:"SuccessThreshold"`
 
-	// Minimum consecutive failures for the probe to be considered failed after having succeeded.Defaults to 3. Minimum value is 1.
+	// Number of seconds after which the probe times out.
+	// Defaults to 1 second. Minimum value is 1.
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailureThreshold *int64 `json:"FailureThreshold,omitnil,omitempty" name:"FailureThreshold"`
+	TimeoutSeconds *int64 `json:"TimeoutSeconds,omitnil,omitempty" name:"TimeoutSeconds"`
 }
 
 type PrometheusAgentInfo struct {
@@ -19790,7 +19847,6 @@ type TaskStepInfo struct {
 
 type TcpSocket struct {
 	// TcpSocket检测的端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
@@ -20442,7 +20498,6 @@ func (r *UpdateEKSContainerInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateEKSContainerInstanceResponseParams struct {
 	// 容器实例 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EksCiId *string `json:"EksCiId,omitnil,omitempty" name:"EksCiId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21114,13 +21169,17 @@ type VirtualNodeSpec struct {
 }
 
 type VolumeMount struct {
+	// 挂载路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MountPath *string `json:"MountPath,omitnil,omitempty" name:"MountPath"`
+
 	// volume名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 挂载路径
+	// 传播挂载方式
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MountPath *string `json:"MountPath,omitnil,omitempty" name:"MountPath"`
+	MountPropagation *string `json:"MountPropagation,omitnil,omitempty" name:"MountPropagation"`
 
 	// 是否只读
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -21129,10 +21188,6 @@ type VolumeMount struct {
 	// 子路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubPath *string `json:"SubPath,omitnil,omitempty" name:"SubPath"`
-
-	// 传播挂载方式
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	MountPropagation *string `json:"MountPropagation,omitnil,omitempty" name:"MountPropagation"`
 
 	// 子路径表达式
 	// 注意：此字段可能返回 null，表示取不到有效值。

@@ -548,6 +548,9 @@ const (
 	// 智能诊断未开启。
 	UNSUPPORTEDOPERATION_DIAGNOSENOTOPEN = "UnsupportedOperation.DiagnoseNotOpen"
 
+	// 节点磁盘可用空间不足
+	UNSUPPORTEDOPERATION_DISKFREESPACEINSUFFICIENT = "UnsupportedOperation.DiskFreeSpaceInsufficient"
+
 	// 不支持的读硬盘配置。
 	UNSUPPORTEDOPERATION_DISKUSE = "UnsupportedOperation.DiskUse"
 
