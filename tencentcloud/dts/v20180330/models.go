@@ -1205,7 +1205,6 @@ type MigrateJobInfo struct {
 	ErrorInfo []*ErrorInfo `json:"ErrorInfo,omitnil,omitempty" name:"ErrorInfo"`
 
 	// 标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagItem `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 源实例为集群时且接入为非cdb时源实例信息

@@ -240,7 +240,7 @@ func NewCreateDeviceResponse() (response *CreateDeviceResponse) {
 }
 
 // CreateDevice
-// 本接口（CreateDevice）用于新建一个物联网通信设备。 
+// 本接口（CreateDevice）用于新建一个物联网通信设备。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ALREADYDISTRIBUTIONDEVICE = "FailedOperation.AlreadyDistributionDevice"
@@ -264,7 +264,7 @@ func (c *Client) CreateDevice(request *CreateDeviceRequest) (response *CreateDev
 }
 
 // CreateDevice
-// 本接口（CreateDevice）用于新建一个物联网通信设备。 
+// 本接口（CreateDevice）用于新建一个物联网通信设备。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ALREADYDISTRIBUTIONDEVICE = "FailedOperation.AlreadyDistributionDevice"
@@ -681,7 +681,7 @@ func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
 }
 
 // DeleteDevice
-// 本接口（DeleteDevice）用于删除物联网通信设备。 
+// 本接口（DeleteDevice）用于删除物联网通信设备。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -697,7 +697,7 @@ func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDev
 }
 
 // DeleteDevice
-// 本接口（DeleteDevice）用于删除物联网通信设备。 
+// 本接口（DeleteDevice）用于删除物联网通信设备。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

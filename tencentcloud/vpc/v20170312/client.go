@@ -802,7 +802,7 @@ func NewAssignIpv6AddressesResponse() (response *AssignIpv6AddressesResponse) {
 // AssignIpv6Addresses
 // 本接口（AssignIpv6Addresses）用于弹性网卡申请`IPv6`地址。<br />
 //
-// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询[DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037)接口。
 //
 // * 一个弹性网卡支持绑定的IP地址是有限制的，更多资源限制信息详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
 //
@@ -836,7 +836,7 @@ func (c *Client) AssignIpv6Addresses(request *AssignIpv6AddressesRequest) (respo
 // AssignIpv6Addresses
 // 本接口（AssignIpv6Addresses）用于弹性网卡申请`IPv6`地址。<br />
 //
-// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询[DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037)接口。
 //
 // * 一个弹性网卡支持绑定的IP地址是有限制的，更多资源限制信息详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
 //
@@ -1956,7 +1956,9 @@ func NewAttachNetworkInterfaceResponse() (response *AttachNetworkInterfaceRespon
 //
 // 
 //
-// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询[DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037)
+//
+// 接口。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
@@ -1992,7 +1994,9 @@ func (c *Client) AttachNetworkInterface(request *AttachNetworkInterfaceRequest) 
 //
 // 
 //
-// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询[DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037)
+//
+// 接口。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
@@ -17474,7 +17478,9 @@ func NewDetachNetworkInterfaceResponse() (response *DetachNetworkInterfaceRespon
 // DetachNetworkInterface
 // 本接口（DetachNetworkInterface）用于弹性网卡解绑云服务器。
 //
-// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询[DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037)
+//
+// 接口。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
@@ -17492,7 +17498,9 @@ func (c *Client) DetachNetworkInterface(request *DetachNetworkInterfaceRequest) 
 // DetachNetworkInterface
 // 本接口（DetachNetworkInterface）用于弹性网卡解绑云服务器。
 //
-// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询[DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037)
+//
+// 接口。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
@@ -26557,7 +26565,7 @@ func NewUnassignIpv6AddressesResponse() (response *UnassignIpv6AddressesResponse
 // UnassignIpv6Addresses
 // 本接口（UnassignIpv6Addresses）用于释放弹性网卡`IPv6`地址。<br />
 //
-// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询[DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037)接口。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -26574,7 +26582,7 @@ func (c *Client) UnassignIpv6Addresses(request *UnassignIpv6AddressesRequest) (r
 // UnassignIpv6Addresses
 // 本接口（UnassignIpv6Addresses）用于释放弹性网卡`IPv6`地址。<br />
 //
-// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询[DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037)接口。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -26742,7 +26750,9 @@ func NewUnassignPrivateIpAddressesResponse() (response *UnassignPrivateIpAddress
 //
 // 
 //
-// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询[DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037)
+//
+// 接口。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DUPLICATEPARA = "InvalidParameterValue.DuplicatePara"
@@ -26765,7 +26775,9 @@ func (c *Client) UnassignPrivateIpAddresses(request *UnassignPrivateIpAddressesR
 //
 // 
 //
-// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询[DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037)
+//
+// 接口。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DUPLICATEPARA = "InvalidParameterValue.DuplicatePara"

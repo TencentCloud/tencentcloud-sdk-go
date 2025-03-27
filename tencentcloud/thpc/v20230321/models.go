@@ -559,6 +559,9 @@ type ClusterOverview struct {
 
 	// 集群所属私有网络ID。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 集群类型
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 type ComputeNode struct {

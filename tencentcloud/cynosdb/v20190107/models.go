@@ -654,30 +654,24 @@ type AuditRuleTemplateInfo struct {
 	RuleFilters []*RuleFilters `json:"RuleFilters,omitnil,omitempty" name:"RuleFilters"`
 
 	// 规则模板描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 规则模板创建时间。
 	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
 
 	// 规则模板修改时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateAt *string `json:"UpdateAt,omitnil,omitempty" name:"UpdateAt"`
 
 	// 告警等级。1-低风险，2-中风险，3-高风险。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmLevel *uint64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 
 	// 告警策略。0-不告警，1-告警。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmPolicy *uint64 `json:"AlarmPolicy,omitnil,omitempty" name:"AlarmPolicy"`
 
 	// 模板状态。0-无任务 ，1-修改中。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 规则模板应用在哪些在实例。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AffectedInstances []*string `json:"AffectedInstances,omitnil,omitempty" name:"AffectedInstances"`
 }
 
@@ -4826,7 +4820,6 @@ type DescribeAuditRuleTemplatesResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 规则模板详细信息列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*AuditRuleTemplateInfo `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

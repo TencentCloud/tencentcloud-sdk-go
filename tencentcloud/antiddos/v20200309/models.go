@@ -40,7 +40,6 @@ type AclConfig struct {
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
 	// 策略优先级，数字越小，级别越高，该规则越靠前匹配，取值1-1000
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 }
 
@@ -54,19 +53,15 @@ type AclConfigRelation struct {
 
 type AnycastOutPackRelation struct {
 	// 业务带宽(单位M)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NormalBandwidth *uint64 `json:"NormalBandwidth,omitnil,omitempty" name:"NormalBandwidth"`
 
 	// 转发规则数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ForwardRulesLimit *uint64 `json:"ForwardRulesLimit,omitnil,omitempty" name:"ForwardRulesLimit"`
 
 	// 自动续费标记
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 到期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurDeadline *string `json:"CurDeadline,omitnil,omitempty" name:"CurDeadline"`
 }
 
@@ -269,19 +264,15 @@ type BGPIPInstance struct {
 	StaticPackRelation *StaticPackRelation `json:"StaticPackRelation,omitnil,omitempty" name:"StaticPackRelation"`
 
 	// 区分高防IP境外线路
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *uint64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 区分集群
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tgw *uint64 `json:"Tgw,omitnil,omitempty" name:"Tgw"`
 
 	// 高防弹性公网IP状态，包含'CREATING'(创建中),'BINDING'(绑定中),'BIND'(已绑定),'UNBINDING'(解绑中),'UNBIND'(已解绑),'OFFLINING'(释放中),'BIND_ENI'(绑定悬空弹性网卡)。只对高防弹性公网IP实例有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EipAddressStatus *string `json:"EipAddressStatus,omitnil,omitempty" name:"EipAddressStatus"`
 
 	// 是否高防弹性公网IP实例，是为1，否为0。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EipFlag *int64 `json:"EipFlag,omitnil,omitempty" name:"EipFlag"`
 
 	// 资产实例所属的高防弹性公网IP套餐包详情，
@@ -295,22 +286,18 @@ type BGPIPInstance struct {
 	EipAddressInfo *EipAddressRelation `json:"EipAddressInfo,omitnil,omitempty" name:"EipAddressInfo"`
 
 	// 建议客户接入的域名，客户可使用域名接入。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 是否开启安全加速，是为1，否为0。
 	DamDDoSStatus *uint64 `json:"DamDDoSStatus,omitnil,omitempty" name:"DamDDoSStatus"`
 
 	// 是否Ipv6版本的IP, 是为1，否为0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	V6Flag *uint64 `json:"V6Flag,omitnil,omitempty" name:"V6Flag"`
 
 	// 是否渠道版高防IP，是为1，否为0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BGPIPChannelFlag *uint64 `json:"BGPIPChannelFlag,omitnil,omitempty" name:"BGPIPChannelFlag"`
 
 	// 资源关联标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagInfoList []*TagInfo `json:"TagInfoList,omitnil,omitempty" name:"TagInfoList"`
 
 	// 资产实例所属的全力防护套餐包详情，
@@ -319,19 +306,15 @@ type BGPIPInstance struct {
 	AnycastOutPackRelation *AnycastOutPackRelation `json:"AnycastOutPackRelation,omitnil,omitempty" name:"AnycastOutPackRelation"`
 
 	// 资源实例版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceVersion *uint64 `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
 
 	// 重保实例
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConvoyId *string `json:"ConvoyId,omitnil,omitempty" name:"ConvoyId"`
 
 	// 带宽后付费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElasticBandwidth *uint64 `json:"ElasticBandwidth,omitnil,omitempty" name:"ElasticBandwidth"`
 
 	// 是否为EO代播的ip: 1是，0不是
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EOFlag *uint64 `json:"EOFlag,omitnil,omitempty" name:"EOFlag"`
 }
 
@@ -459,7 +442,6 @@ type BGPIPL7RuleEntry struct {
 	ErrCode *uint64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 
 	// 版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *uint64 `json:"Version,omitnil,omitempty" name:"Version"`
 }
 
@@ -525,11 +507,9 @@ type BGPInstance struct {
 	VitalityVersion *uint64 `json:"VitalityVersion,omitnil,omitempty" name:"VitalityVersion"`
 
 	// 网络线路
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Line *uint64 `json:"Line,omitnil,omitempty" name:"Line"`
 
 	// 不计费的业务带宽
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FreeServiceBandwidth *uint64 `json:"FreeServiceBandwidth,omitnil,omitempty" name:"FreeServiceBandwidth"`
 
 	// 弹性业务带宽开关
@@ -539,27 +519,21 @@ type BGPInstance struct {
 	GiftServiceBandWidth *int64 `json:"GiftServiceBandWidth,omitnil,omitempty" name:"GiftServiceBandWidth"`
 
 	// 修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 是否是基础防护加强版 0: 不是 1: 是
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BasicPlusFlag *uint64 `json:"BasicPlusFlag,omitnil,omitempty" name:"BasicPlusFlag"`
 
 	// 是否标准版2.0 0: 包含标准版2.0 1: 只查询标准版2.0 2: 不查标准版2.0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlanCntFlag *uint64 `json:"PlanCntFlag,omitnil,omitempty" name:"PlanCntFlag"`
 
 	// 是否跨区域产品 0: 不包含跨区域产品 1: 中国大陆跨区域产品 2: 非中国大陆跨区域产品
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransRegionFlag *uint64 `json:"TransRegionFlag,omitnil,omitempty" name:"TransRegionFlag"`
 
 	// 是否为超级高防包
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuperPackFlag *uint64 `json:"SuperPackFlag,omitnil,omitempty" name:"SuperPackFlag"`
 
 	// 所属ZoneId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 }
 
@@ -580,31 +554,24 @@ type BGPInstanceSpecification struct {
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 联合产品标记，0代表普通高防包，1代表联合高防包
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnionPackFlag *uint64 `json:"UnionPackFlag,omitnil,omitempty" name:"UnionPackFlag"`
 
 	// 业务带宽
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceBandWidth *uint64 `json:"ServiceBandWidth,omitnil,omitempty" name:"ServiceBandWidth"`
 
 	// 战斗服版本标记，0表示普通高防包，1表示战斗服高防包
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BattleEditionFlag *uint64 `json:"BattleEditionFlag,omitnil,omitempty" name:"BattleEditionFlag"`
 
 	// 渠道版标记，0表示普通高防包，1表示渠道版高防包
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelEditionFlag *uint64 `json:"ChannelEditionFlag,omitnil,omitempty" name:"ChannelEditionFlag"`
 
 	// 高防包企业版标记，0表示普通高防包；1表示企业版高防包
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnterpriseFlag *uint64 `json:"EnterpriseFlag,omitnil,omitempty" name:"EnterpriseFlag"`
 
 	// 高防包企业版弹性阈值，0表示未开启；大于0为弹性防护阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElasticLimit *uint64 `json:"ElasticLimit,omitnil,omitempty" name:"ElasticLimit"`
 
 	// 降配后的防护能力，单位Gbps
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownGradeProtect *uint64 `json:"DownGradeProtect,omitnil,omitempty" name:"DownGradeProtect"`
 }
 
@@ -653,7 +620,6 @@ type BoundIpInfo struct {
 	IspCode *uint64 `json:"IspCode,omitnil,omitempty" name:"IspCode"`
 
 	// 域名化资产对应的域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
@@ -3536,11 +3502,9 @@ type DescribeBasicDeviceStatusResponseParams struct {
 	Data []*KeyValue `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 域名化资产的名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CLBData []*KeyValue `json:"CLBData,omitnil,omitempty" name:"CLBData"`
 
 	// cnamewaf资源状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CnameWafData []*KeyValue `json:"CnameWafData,omitnil,omitempty" name:"CnameWafData"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3846,7 +3810,6 @@ type DescribeBizMonitorTrendResponseParams struct {
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
 	// 返回DataList中的最大值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxData *uint64 `json:"MaxData,omitnil,omitempty" name:"MaxData"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3977,7 +3940,6 @@ type DescribeBizTrendResponseParams struct {
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
 	// 返回DataList中的最大值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxData *uint64 `json:"MaxData,omitnil,omitempty" name:"MaxData"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4549,7 +4511,6 @@ type DescribeCCTrendResponseParams struct {
 	Data []*uint64 `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 资源ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))，incount(请求次数), dropcount(攻击次数)]
@@ -5032,7 +4993,6 @@ type DescribeDDoSTrendResponseParams struct {
 	Data []*uint64 `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 资源ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
@@ -7332,23 +7292,18 @@ type EipAddressPackRelation struct {
 
 type EipAddressRelation struct {
 	// 高防弹性公网IP绑定的实例地区，例如hk代表中国香港
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EipAddressRegion *string `json:"EipAddressRegion,omitnil,omitempty" name:"EipAddressRegion"`
 
 	// 绑定的资源实例ID。可能是一个CVM。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EipBoundRscIns *string `json:"EipBoundRscIns,omitnil,omitempty" name:"EipBoundRscIns"`
 
 	// 绑定的弹性网卡ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EipBoundRscEni *string `json:"EipBoundRscEni,omitnil,omitempty" name:"EipBoundRscEni"`
 
 	// 绑定的资源内网ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EipBoundRscVip *string `json:"EipBoundRscVip,omitnil,omitempty" name:"EipBoundRscVip"`
 
 	// 修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
@@ -7376,7 +7331,6 @@ type EipProductInfo struct {
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 域名化资产对应的域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
@@ -7460,7 +7414,6 @@ type IPLineInfo struct {
 	ResourceFlag *int64 `json:"ResourceFlag,omitnil,omitempty" name:"ResourceFlag"`
 
 	// 域名化资产对应的域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
@@ -7544,7 +7497,6 @@ type L4RuleSource struct {
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 备份源站，1: 备份源站，0: 普通源站
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Backup *uint64 `json:"Backup,omitnil,omitempty" name:"Backup"`
 }
 
@@ -7586,7 +7538,6 @@ type L7RuleEntry struct {
 	CCEnable *uint64 `json:"CCEnable,omitnil,omitempty" name:"CCEnable"`
 
 	// 是否开启Https协议使用Http回源，取值[0(关闭), 1(开启)]，不填写默认是关闭
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpsToHttpEnable *uint64 `json:"HttpsToHttpEnable,omitnil,omitempty" name:"HttpsToHttpEnable"`
 
 	// 证书来源，当转发协议为https时必须填，取值[2(腾讯云托管证书)]，当转发协议为http时也可以填0
@@ -7605,7 +7556,6 @@ type L7RuleEntry struct {
 	CCStatus *uint64 `json:"CCStatus,omitnil,omitempty" name:"CCStatus"`
 
 	// 接入端口值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualPort *uint64 `json:"VirtualPort,omitnil,omitempty" name:"VirtualPort"`
 
 	// 当证书来源为腾讯云托管证书时，此字段必须填写托管证书ID
@@ -8868,7 +8818,6 @@ type NewL7RuleEntry struct {
 	HttpsToHttpEnable *uint64 `json:"HttpsToHttpEnable,omitnil,omitempty" name:"HttpsToHttpEnable"`
 
 	// 接入端口值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualPort *uint64 `json:"VirtualPort,omitnil,omitempty" name:"VirtualPort"`
 
 	// http强制跳转https，1表示打开，0表示关闭
@@ -8878,7 +8827,6 @@ type NewL7RuleEntry struct {
 	ErrCode *uint64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 
 	// 版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *uint64 `json:"Version,omitnil,omitempty" name:"Version"`
 }
 
@@ -9133,7 +9081,6 @@ type SchedulingDomainInfo struct {
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 域名名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsrDomainName *string `json:"UsrDomainName,omitnil,omitempty" name:"UsrDomainName"`
 }
 
@@ -9167,23 +9114,18 @@ type SpeedValue struct {
 
 type StaticPackRelation struct {
 	// 保底带宽
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtectBandwidth *uint64 `json:"ProtectBandwidth,omitnil,omitempty" name:"ProtectBandwidth"`
 
 	// 业务带宽
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NormalBandwidth *uint64 `json:"NormalBandwidth,omitnil,omitempty" name:"NormalBandwidth"`
 
 	// 转发规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ForwardRulesLimit *uint64 `json:"ForwardRulesLimit,omitnil,omitempty" name:"ForwardRulesLimit"`
 
 	// 自动续费标记
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 到期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurDeadline *string `json:"CurDeadline,omitnil,omitempty" name:"CurDeadline"`
 }
 

@@ -2327,26 +2327,34 @@ func (r *DescribeDomainNameListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDomainPriceListRequestParams struct {
-	// 查询价格的后缀列表。默认则为全部后缀
+	// 查询指定域名后缀的域名价格列表，若不指定域名后缀，默认查询所有后缀的域名价格列表。
 	TldList []*string `json:"TldList,omitnil,omitempty" name:"TldList"`
 
-	// 查询购买的年份，默认会列出所有年份的价格
+	// 查询购买的年份，默认会列出所有年份的价格，可选值【1,10】
 	Year []*int64 `json:"Year,omitnil,omitempty" name:"Year"`
 
-	// 域名的购买类型：new  新购，renew 续费，redem 赎回，tran 转入
+	// 域名的购买类型：
+	// new  新购
+	// renew 续费
+	// redem 赎回
+	// tran 转入
 	Operation []*string `json:"Operation,omitnil,omitempty" name:"Operation"`
 }
 
 type DescribeDomainPriceListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询价格的后缀列表。默认则为全部后缀
+	// 查询指定域名后缀的域名价格列表，若不指定域名后缀，默认查询所有后缀的域名价格列表。
 	TldList []*string `json:"TldList,omitnil,omitempty" name:"TldList"`
 
-	// 查询购买的年份，默认会列出所有年份的价格
+	// 查询购买的年份，默认会列出所有年份的价格，可选值【1,10】
 	Year []*int64 `json:"Year,omitnil,omitempty" name:"Year"`
 
-	// 域名的购买类型：new  新购，renew 续费，redem 赎回，tran 转入
+	// 域名的购买类型：
+	// new  新购
+	// renew 续费
+	// redem 赎回
+	// tran 转入
 	Operation []*string `json:"Operation,omitnil,omitempty" name:"Operation"`
 }
 

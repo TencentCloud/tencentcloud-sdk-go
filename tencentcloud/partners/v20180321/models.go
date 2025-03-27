@@ -1582,6 +1582,82 @@ func (r *DescribeClientJoinIncreaseListResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type DescribeClientSwitchTraTaskInfoRequestParams struct {
+	// 代客UIN
+	ClientUin *string `json:"ClientUin,omitnil,omitempty" name:"ClientUin"`
+
+	// 1：代理，2：代采
+	SwitchType *int64 `json:"SwitchType,omitnil,omitempty" name:"SwitchType"`
+}
+
+type DescribeClientSwitchTraTaskInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 代客UIN
+	ClientUin *string `json:"ClientUin,omitnil,omitempty" name:"ClientUin"`
+
+	// 1：代理，2：代采
+	SwitchType *int64 `json:"SwitchType,omitnil,omitempty" name:"SwitchType"`
+}
+
+func (r *DescribeClientSwitchTraTaskInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClientSwitchTraTaskInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientUin")
+	delete(f, "SwitchType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClientSwitchTraTaskInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClientSwitchTraTaskInfoResponseParams struct {
+	// 客户UIN
+	ClientUin *string `json:"ClientUin,omitnil,omitempty" name:"ClientUin"`
+
+	// 切换类型：代理,代采
+	SwitchType *string `json:"SwitchType,omitnil,omitempty" name:"SwitchType"`
+
+	// ok，符合，fail，不符合
+	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 切换链接
+	SwitchUrl *string `json:"SwitchUrl,omitnil,omitempty" name:"SwitchUrl"`
+
+	// 不符合的原因
+	ResultMsg *string `json:"ResultMsg,omitnil,omitempty" name:"ResultMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClientSwitchTraTaskInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClientSwitchTraTaskInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeClientSwitchTraTaskInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClientSwitchTraTaskInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRebateInfosNewRequestParams struct {
 	// 返佣月份，如2018-02
 	RebateMonth *string `json:"RebateMonth,omitnil,omitempty" name:"RebateMonth"`

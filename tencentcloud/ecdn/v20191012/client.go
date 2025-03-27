@@ -637,6 +637,10 @@ func NewDescribePurgeTasksResponse() (response *DescribePurgeTasksResponse) {
 }
 
 // DescribePurgeTasks
+// ECDN即将下线，如需要动态加速请使用EdgeOne
+//
+// 
+//
 // DescribePurgeTasks 用于查询刷新任务提交历史记录及执行进度。
 //
 // 
@@ -657,6 +661,10 @@ func (c *Client) DescribePurgeTasks(request *DescribePurgeTasksRequest) (respons
 }
 
 // DescribePurgeTasks
+// ECDN即将下线，如需要动态加速请使用EdgeOne
+//
+// 
+//
 // DescribePurgeTasks 用于查询刷新任务提交历史记录及执行进度。
 //
 // 
@@ -708,6 +716,10 @@ func NewPurgeUrlsCacheResponse() (response *PurgeUrlsCacheResponse) {
 }
 
 // PurgeUrlsCache
+// ECDN即将下线，如需要动态加速请使用EdgeOne
+//
+// 
+//
 // PurgeUrlsCache 用于批量刷新Url，一次提交将返回一个刷新任务id。
 //
 // 
@@ -737,6 +749,10 @@ func (c *Client) PurgeUrlsCache(request *PurgeUrlsCacheRequest) (response *Purge
 }
 
 // PurgeUrlsCache
+// ECDN即将下线，如需要动态加速请使用EdgeOne
+//
+// 
+//
 // PurgeUrlsCache 用于批量刷新Url，一次提交将返回一个刷新任务id。
 //
 // 

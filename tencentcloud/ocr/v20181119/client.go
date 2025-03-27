@@ -835,77 +835,6 @@ func (c *Client) ClassifyStoreNameWithContext(ctx context.Context, request *Clas
     return
 }
 
-func NewCreateAIFormTaskRequest() (request *CreateAIFormTaskRequest) {
-    request = &CreateAIFormTaskRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "CreateAIFormTask")
-    
-    
-    return
-}
-
-func NewCreateAIFormTaskResponse() (response *CreateAIFormTaskResponse) {
-    response = &CreateAIFormTaskResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateAIFormTask
-// 智慧表单产品已下线，需要下线相关API
-//
-// 
-//
-// 本接口可创建智能表单录入任务，支持多个识别图片和PDF的URL上传，返回含有识别内容的操作页面URL。
-//
-// 
-//
-// 智能表单录入产品提供高准确率的表单识别技术和人工核对工具，支持自定义字段，将识别结果自动填入到自定义条目中，并提供人工操作工具，完成整个表单识别过程。适用性强，可对票据、合同、货单等文件的识别，适用于金融、货代、保险、档案等领域。本产品免费公测中，您可以点击demo（超链接：https://ocr.smartform.cloud.tencent.com/）试用，如需购买请与商务团队联系。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
-//  FAILEDOPERATION_USERQUOTAERROR = "FailedOperation.UserQuotaError"
-//  INVALIDPARAMETERVALUE_FILEURLILLEGALERROR = "InvalidParameterValue.FileUrlIllegalError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-func (c *Client) CreateAIFormTask(request *CreateAIFormTaskRequest) (response *CreateAIFormTaskResponse, err error) {
-    return c.CreateAIFormTaskWithContext(context.Background(), request)
-}
-
-// CreateAIFormTask
-// 智慧表单产品已下线，需要下线相关API
-//
-// 
-//
-// 本接口可创建智能表单录入任务，支持多个识别图片和PDF的URL上传，返回含有识别内容的操作页面URL。
-//
-// 
-//
-// 智能表单录入产品提供高准确率的表单识别技术和人工核对工具，支持自定义字段，将识别结果自动填入到自定义条目中，并提供人工操作工具，完成整个表单识别过程。适用性强，可对票据、合同、货单等文件的识别，适用于金融、货代、保险、档案等领域。本产品免费公测中，您可以点击demo（超链接：https://ocr.smartform.cloud.tencent.com/）试用，如需购买请与商务团队联系。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
-//  FAILEDOPERATION_USERQUOTAERROR = "FailedOperation.UserQuotaError"
-//  INVALIDPARAMETERVALUE_FILEURLILLEGALERROR = "InvalidParameterValue.FileUrlIllegalError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-func (c *Client) CreateAIFormTaskWithContext(ctx context.Context, request *CreateAIFormTaskRequest) (response *CreateAIFormTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateAIFormTaskRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateAIFormTask require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateAIFormTaskResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDriverLicenseOCRRequest() (request *DriverLicenseOCRRequest) {
     request = &DriverLicenseOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2979,65 +2908,6 @@ func (c *Client) GetOCRTokenWithContext(ctx context.Context, request *GetOCRToke
     request.SetContext(ctx)
     
     response = NewGetOCRTokenResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewGetTaskStateRequest() (request *GetTaskStateRequest) {
-    request = &GetTaskStateRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "GetTaskState")
-    
-    
-    return
-}
-
-func NewGetTaskStateResponse() (response *GetTaskStateResponse) {
-    response = &GetTaskStateResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// GetTaskState
-// 智慧表单产品已下线，需要下线相关API
-//
-// 
-//
-// 支持查询智能表单录入任务的状态。本产品免费公测中，您可以点击demo（超链接：https://ocr.smartform.cloud.tencent.com/）试用，如需购买请与商务团队联系。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-func (c *Client) GetTaskState(request *GetTaskStateRequest) (response *GetTaskStateResponse, err error) {
-    return c.GetTaskStateWithContext(context.Background(), request)
-}
-
-// GetTaskState
-// 智慧表单产品已下线，需要下线相关API
-//
-// 
-//
-// 支持查询智能表单录入任务的状态。本产品免费公测中，您可以点击demo（超链接：https://ocr.smartform.cloud.tencent.com/）试用，如需购买请与商务团队联系。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DBERROR = "FailedOperation.DbError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-func (c *Client) GetTaskStateWithContext(ctx context.Context, request *GetTaskStateRequest) (response *GetTaskStateResponse, err error) {
-    if request == nil {
-        request = NewGetTaskStateRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("GetTaskState require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewGetTaskStateResponse()
     err = c.Send(request, response)
     return
 }
@@ -5770,6 +5640,16 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //
 //         <tr>
 //
+//           <td> BankSlip </td>
+//
+//           <td> 银行回单 </td>
+//
+//           <td> 20 </td>
+//
+//         </tr>
+//
+//         <tr>
+//
 //           <td> OtherInvoice </td>
 //
 //           <td> 其他发票 </td>
@@ -6106,6 +5986,16 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //           <td> 海关缴款 </td>
 //
 //           <td> 19 </td>
+//
+//         </tr>
+//
+//         <tr>
+//
+//           <td> BankSlip </td>
+//
+//           <td> 银行回单 </td>
+//
+//           <td> 20 </td>
 //
 //         </tr>
 //
@@ -8090,97 +7980,6 @@ func (c *Client) VatInvoiceOCRWithContext(ctx context.Context, request *VatInvoi
     request.SetContext(ctx)
     
     response = NewVatInvoiceOCRResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewVatInvoiceVerifyRequest() (request *VatInvoiceVerifyRequest) {
-    request = &VatInvoiceVerifyRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ocr", APIVersion, "VatInvoiceVerify")
-    
-    
-    return
-}
-
-func NewVatInvoiceVerifyResponse() (response *VatInvoiceVerifyResponse) {
-    response = &VatInvoiceVerifyResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// VatInvoiceVerify
-// 已上线VatInvoiceVerifyNew，VatInvoiceVerify需要下线，产品在官网已发通告
-//
-// 
-//
-// 本接口支持增值税发票的准确性核验，您可以通过输入增值税发票的关键字段提供所需的验证信息，接口返回真实的票面相关信息，包括发票代码、发票号码、开票日期、金额、消费类型、购方名称、购方税号、销方名称、销方税号等多个常用字段。支持多种发票类型核验，包括增值税专用发票、增值税普通发票（含电子普通发票、卷式发票、通行费发票）、全电发票、机动车销售统一发票、货物运输业增值税专用发票、二手车销售统一发票。
-//
-// 
-//
-// 默认接口请求频率限制：20次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_ARREARSERROR = "FailedOperation.ArrearsError"
-//  FAILEDOPERATION_COUNTLIMITERROR = "FailedOperation.CountLimitError"
-//  FAILEDOPERATION_INVOICEMISMATCH = "FailedOperation.InvoiceMismatch"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  INVALIDPARAMETERVALUE_PRICEORVERIFICATIONPARAMETERVALUELIMIT = "InvalidParameterValue.PriceOrVerificationParameterValueLimit"
-//  INVALIDPARAMETERVALUE_TICKETDATEPARAMETERVALUELIMIT = "InvalidParameterValue.TicketDateParameterValueLimit"
-//  RESOURCENOTFOUND_NOINVOICE = "ResourceNotFound.NoInvoice"
-//  RESOURCENOTFOUND_NOTSUPPORTCURRENTINVOICEQUERY = "ResourceNotFound.NotSupportCurrentInvoiceQuery"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCEUNAVAILABLE_TAXNETWORKERROR = "ResourceUnavailable.TaxNetworkError"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) VatInvoiceVerify(request *VatInvoiceVerifyRequest) (response *VatInvoiceVerifyResponse, err error) {
-    return c.VatInvoiceVerifyWithContext(context.Background(), request)
-}
-
-// VatInvoiceVerify
-// 已上线VatInvoiceVerifyNew，VatInvoiceVerify需要下线，产品在官网已发通告
-//
-// 
-//
-// 本接口支持增值税发票的准确性核验，您可以通过输入增值税发票的关键字段提供所需的验证信息，接口返回真实的票面相关信息，包括发票代码、发票号码、开票日期、金额、消费类型、购方名称、购方税号、销方名称、销方税号等多个常用字段。支持多种发票类型核验，包括增值税专用发票、增值税普通发票（含电子普通发票、卷式发票、通行费发票）、全电发票、机动车销售统一发票、货物运输业增值税专用发票、二手车销售统一发票。
-//
-// 
-//
-// 默认接口请求频率限制：20次/秒。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_ARREARSERROR = "FailedOperation.ArrearsError"
-//  FAILEDOPERATION_COUNTLIMITERROR = "FailedOperation.CountLimitError"
-//  FAILEDOPERATION_INVOICEMISMATCH = "FailedOperation.InvoiceMismatch"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  INVALIDPARAMETERVALUE_PRICEORVERIFICATIONPARAMETERVALUELIMIT = "InvalidParameterValue.PriceOrVerificationParameterValueLimit"
-//  INVALIDPARAMETERVALUE_TICKETDATEPARAMETERVALUELIMIT = "InvalidParameterValue.TicketDateParameterValueLimit"
-//  RESOURCENOTFOUND_NOINVOICE = "ResourceNotFound.NoInvoice"
-//  RESOURCENOTFOUND_NOTSUPPORTCURRENTINVOICEQUERY = "ResourceNotFound.NotSupportCurrentInvoiceQuery"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCEUNAVAILABLE_TAXNETWORKERROR = "ResourceUnavailable.TaxNetworkError"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) VatInvoiceVerifyWithContext(ctx context.Context, request *VatInvoiceVerifyRequest) (response *VatInvoiceVerifyResponse, err error) {
-    if request == nil {
-        request = NewVatInvoiceVerifyRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("VatInvoiceVerify require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewVatInvoiceVerifyResponse()
     err = c.Send(request, response)
     return
 }

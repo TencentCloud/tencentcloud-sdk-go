@@ -862,6 +862,59 @@ func (c *Client) DescribeClientJoinIncreaseListWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeClientSwitchTraTaskInfoRequest() (request *DescribeClientSwitchTraTaskInfoRequest) {
+    request = &DescribeClientSwitchTraTaskInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("partners", APIVersion, "DescribeClientSwitchTraTaskInfo")
+    
+    
+    return
+}
+
+func NewDescribeClientSwitchTraTaskInfoResponse() (response *DescribeClientSwitchTraTaskInfoResponse) {
+    response = &DescribeClientSwitchTraTaskInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeClientSwitchTraTaskInfo
+// 查询客户的交易类型切换任务的信息，查询成功则获取当前用户的切换链接，查询失败则返回失败的原因
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeClientSwitchTraTaskInfo(request *DescribeClientSwitchTraTaskInfoRequest) (response *DescribeClientSwitchTraTaskInfoResponse, err error) {
+    return c.DescribeClientSwitchTraTaskInfoWithContext(context.Background(), request)
+}
+
+// DescribeClientSwitchTraTaskInfo
+// 查询客户的交易类型切换任务的信息，查询成功则获取当前用户的切换链接，查询失败则返回失败的原因
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeClientSwitchTraTaskInfoWithContext(ctx context.Context, request *DescribeClientSwitchTraTaskInfoRequest) (response *DescribeClientSwitchTraTaskInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeClientSwitchTraTaskInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClientSwitchTraTaskInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClientSwitchTraTaskInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRebateInfosRequest() (request *DescribeRebateInfosRequest) {
     request = &DescribeRebateInfosRequest{
         BaseRequest: &tchttp.BaseRequest{},

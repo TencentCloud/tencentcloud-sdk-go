@@ -1502,89 +1502,6 @@ type Coord struct {
 	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
 }
 
-// Predefined struct for user
-type CreateAIFormTaskRequestParams struct {
-	// 多个文件的URL列表
-	FileList []*SmartFormFileUrl `json:"FileList,omitnil,omitempty" name:"FileList"`
-
-	// 备注信息1
-	FirstNotes *string `json:"FirstNotes,omitnil,omitempty" name:"FirstNotes"`
-
-	// 备注信息2
-	SecondNotes *string `json:"SecondNotes,omitnil,omitempty" name:"SecondNotes"`
-
-	// 文件类型
-	FileType *uint64 `json:"FileType,omitnil,omitempty" name:"FileType"`
-}
-
-type CreateAIFormTaskRequest struct {
-	*tchttp.BaseRequest
-	
-	// 多个文件的URL列表
-	FileList []*SmartFormFileUrl `json:"FileList,omitnil,omitempty" name:"FileList"`
-
-	// 备注信息1
-	FirstNotes *string `json:"FirstNotes,omitnil,omitempty" name:"FirstNotes"`
-
-	// 备注信息2
-	SecondNotes *string `json:"SecondNotes,omitnil,omitempty" name:"SecondNotes"`
-
-	// 文件类型
-	FileType *uint64 `json:"FileType,omitnil,omitempty" name:"FileType"`
-}
-
-func (r *CreateAIFormTaskRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateAIFormTaskRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "FileList")
-	delete(f, "FirstNotes")
-	delete(f, "SecondNotes")
-	delete(f, "FileType")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAIFormTaskRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateAIFormTaskResponseParams struct {
-	// 本次识别任务的唯一身份ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-
-	// 本次识别任务的操作URL，有效期自生成之时起共24小时
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperateUrl *string `json:"OperateUrl,omitnil,omitempty" name:"OperateUrl"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type CreateAIFormTaskResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateAIFormTaskResponseParams `json:"Response"`
-}
-
-func (r *CreateAIFormTaskResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateAIFormTaskResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type CustomsPaymentReceipt struct {
 	// 发票名称
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
@@ -4095,68 +4012,6 @@ func (r *GetOCRTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-// Predefined struct for user
-type GetTaskStateRequestParams struct {
-	// 智慧表单任务唯一身份ID
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-type GetTaskStateRequest struct {
-	*tchttp.BaseRequest
-	
-	// 智慧表单任务唯一身份ID
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-func (r *GetTaskStateRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetTaskStateRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "TaskId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTaskStateRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type GetTaskStateResponseParams struct {
-	// 1:任务识别完成，还未提交
-	// 2:任务已手动关闭
-	// 3:任务已提交
-	// 4:任务识别中
-	// 5:超时：任务超过了可操作的24H时限
-	// 6:任务识别失败
-	TaskState *uint64 `json:"TaskState,omitnil,omitempty" name:"TaskState"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type GetTaskStateResponse struct {
-	*tchttp.BaseResponse
-	Response *GetTaskStateResponseParams `json:"Response"`
-}
-
-func (r *GetTaskStateResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetTaskStateResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type GroupInfo struct {
 	// 每一行的元素
 	Groups []*LineInfo `json:"Groups,omitnil,omitempty" name:"Groups"`
@@ -5258,6 +5113,7 @@ type InvoiceItem struct {
 	// 17：医疗发票
 	// 18：完税凭证
 	// 19：海关缴款书
+	// 20：银行回单
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 该发票在原图片中的四点坐标。
@@ -5596,28 +5452,26 @@ func (r *MLIDCardOCRResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type MLIDPassportOCRRequestParams struct {
-	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
 	// 是否返回图片，默认false
 	RetImage *bool `json:"RetImage,omitnil,omitempty" name:"RetImage"`
 
-	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
-	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }
 
 type MLIDPassportOCRRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。
+	// 图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
 	// 是否返回图片，默认false
 	RetImage *bool `json:"RetImage,omitnil,omitempty" name:"RetImage"`
 
-	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。
-	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。建议卡片部分占据图片2/3以上。图片下载时间不超过 3 秒。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 }
 
@@ -8410,6 +8264,7 @@ type RecognizeGeneralInvoiceRequestParams struct {
 	// 17：医疗发票
 	// 18：完税凭证
 	// 19：海关缴款书
+	// 20：银行回单
 	// -1：其他发票
 	Types []*int64 `json:"Types,omitnil,omitempty" name:"Types"`
 
@@ -8459,6 +8314,7 @@ type RecognizeGeneralInvoiceRequest struct {
 	// 17：医疗发票
 	// 18：完税凭证
 	// 19：海关缴款书
+	// 20：银行回单
 	// -1：其他发票
 	Types []*int64 `json:"Types,omitnil,omitempty" name:"Types"`
 
@@ -10595,14 +10451,6 @@ type SingleInvoiceItem struct {
 	BankSlip *BankSlip `json:"BankSlip,omitnil,omitempty" name:"BankSlip"`
 }
 
-type SmartFormFileUrl struct {
-	// 文件url地址
-	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
-
-	// 文件的顺序，顺序从1开始
-	FileOrderNumber *uint64 `json:"FileOrderNumber,omitnil,omitempty" name:"FileOrderNumber"`
-}
-
 // Predefined struct for user
 type SmartStructuralOCRRequestParams struct {
 	// 图片的 Url 地址。
@@ -10891,10 +10739,16 @@ type SmartStructuralProRequestParams struct {
 	// WordRecognize -- 手写英文作文模版
 	// Statement -- 对账单识别模板
 	// BookingConfirmation -- 配舱通知书识别模板
+	// AirWayBill -- 航空运单识别模板
+	// DispatchWeightNote -- 磅单发货单识别模板
+	// ReceiptWeightNote -- 磅单收货单识别模板
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 是否开启全文字段坐标值的识别
 	EnableCoord *bool `json:"EnableCoord,omitnil,omitempty" name:"EnableCoord"`
+
+	// 是否开启父子key识别，默认是
+	OutputParentKey *bool `json:"OutputParentKey,omitnil,omitempty" name:"OutputParentKey"`
 }
 
 type SmartStructuralProRequest struct {
@@ -10927,10 +10781,16 @@ type SmartStructuralProRequest struct {
 	// WordRecognize -- 手写英文作文模版
 	// Statement -- 对账单识别模板
 	// BookingConfirmation -- 配舱通知书识别模板
+	// AirWayBill -- 航空运单识别模板
+	// DispatchWeightNote -- 磅单发货单识别模板
+	// ReceiptWeightNote -- 磅单收货单识别模板
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 是否开启全文字段坐标值的识别
 	EnableCoord *bool `json:"EnableCoord,omitnil,omitempty" name:"EnableCoord"`
+
+	// 是否开启父子key识别，默认是
+	OutputParentKey *bool `json:"OutputParentKey,omitnil,omitempty" name:"OutputParentKey"`
 }
 
 func (r *SmartStructuralProRequest) ToJsonString() string {
@@ -10952,6 +10812,7 @@ func (r *SmartStructuralProRequest) FromJsonString(s string) error {
 	delete(f, "ReturnFullText")
 	delete(f, "ConfigId")
 	delete(f, "EnableCoord")
+	delete(f, "OutputParentKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SmartStructuralProRequest has unknown keys!", "")
 	}
@@ -13275,114 +13136,6 @@ func (r *VatInvoiceVerifyNewResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *VatInvoiceVerifyNewResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type VatInvoiceVerifyRequestParams struct {
-	// 发票代码， 一张发票一天只能查询5次。
-	InvoiceCode *string `json:"InvoiceCode,omitnil,omitempty" name:"InvoiceCode"`
-
-	// 发票号码（8位）
-	InvoiceNo *string `json:"InvoiceNo,omitnil,omitempty" name:"InvoiceNo"`
-
-	// 开票日期（不支持当天发票查询，支持五年以内开具的发票），格式：“YYYY-MM-DD”，如：2019-12-20。
-	InvoiceDate *string `json:"InvoiceDate,omitnil,omitempty" name:"InvoiceDate"`
-
-	// 根据票种传递对应值，如果报参数错误，请仔细检查每个票种对应的值
-	// 
-	// 增值税专用发票：开具金额（不含税）
-	// 
-	// 增值税普通发票、增值税电子普通发票（含通行费发票）、增值税普通发票（卷票）：校验码后6位
-	// 
-	// 区块链发票：不含税金额/校验码，例如：“285.01/856ab”
-	// 
-	// 机动车销售统一发票：不含税价
-	// 
-	// 货物运输业增值税专用发票：合计金额
-	// 
-	// 二手车销售统一发票：车价合计
-	Additional *string `json:"Additional,omitnil,omitempty" name:"Additional"`
-}
-
-type VatInvoiceVerifyRequest struct {
-	*tchttp.BaseRequest
-	
-	// 发票代码， 一张发票一天只能查询5次。
-	InvoiceCode *string `json:"InvoiceCode,omitnil,omitempty" name:"InvoiceCode"`
-
-	// 发票号码（8位）
-	InvoiceNo *string `json:"InvoiceNo,omitnil,omitempty" name:"InvoiceNo"`
-
-	// 开票日期（不支持当天发票查询，支持五年以内开具的发票），格式：“YYYY-MM-DD”，如：2019-12-20。
-	InvoiceDate *string `json:"InvoiceDate,omitnil,omitempty" name:"InvoiceDate"`
-
-	// 根据票种传递对应值，如果报参数错误，请仔细检查每个票种对应的值
-	// 
-	// 增值税专用发票：开具金额（不含税）
-	// 
-	// 增值税普通发票、增值税电子普通发票（含通行费发票）、增值税普通发票（卷票）：校验码后6位
-	// 
-	// 区块链发票：不含税金额/校验码，例如：“285.01/856ab”
-	// 
-	// 机动车销售统一发票：不含税价
-	// 
-	// 货物运输业增值税专用发票：合计金额
-	// 
-	// 二手车销售统一发票：车价合计
-	Additional *string `json:"Additional,omitnil,omitempty" name:"Additional"`
-}
-
-func (r *VatInvoiceVerifyRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *VatInvoiceVerifyRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InvoiceCode")
-	delete(f, "InvoiceNo")
-	delete(f, "InvoiceDate")
-	delete(f, "Additional")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VatInvoiceVerifyRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type VatInvoiceVerifyResponseParams struct {
-	// 增值税发票信息，详情请点击左侧链接。
-	Invoice *VatInvoice `json:"Invoice,omitnil,omitempty" name:"Invoice"`
-
-	// 机动车销售统一发票信息
-	VehicleInvoiceInfo *VehicleInvoiceInfo `json:"VehicleInvoiceInfo,omitnil,omitempty" name:"VehicleInvoiceInfo"`
-
-	// 二手车销售统一发票信息
-	UsedVehicleInvoiceInfo *UsedVehicleInvoiceInfo `json:"UsedVehicleInvoiceInfo,omitnil,omitempty" name:"UsedVehicleInvoiceInfo"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type VatInvoiceVerifyResponse struct {
-	*tchttp.BaseResponse
-	Response *VatInvoiceVerifyResponseParams `json:"Response"`
-}
-
-func (r *VatInvoiceVerifyResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *VatInvoiceVerifyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

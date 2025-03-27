@@ -948,6 +948,9 @@ type Delta struct {
 
 	// 内容详情。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 思维链内容。 ReasoningConent参数仅支持出参，且只有deepseek-r1模型会返回。
+	ReasoningContent *string `json:"ReasoningContent,omitnil,omitempty" name:"ReasoningContent"`
 }
 
 // Predefined struct for user

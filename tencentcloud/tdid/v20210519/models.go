@@ -674,23 +674,18 @@ func (r *GetOverSummaryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetOverSummaryResponseParams struct {
 	// 用户参与应用的统计指标
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppCounter *ResourceCounterData `json:"AppCounter,omitnil,omitempty" name:"AppCounter"`
 
 	// 用户部署应用的统计指标
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserCounter *ResourceCounterData `json:"UserCounter,omitnil,omitempty" name:"UserCounter"`
 
 	// 用户参与的应用总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppCnt *uint64 `json:"AppCnt,omitnil,omitempty" name:"AppCnt"`
 
 	// 用户部署的应用总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployCnt *uint64 `json:"DeployCnt,omitnil,omitempty" name:"DeployCnt"`
 
 	// 部署网络子链总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChainCnt *uint64 `json:"ChainCnt,omitnil,omitempty" name:"ChainCnt"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -1130,6 +1130,9 @@ type DescribeCloudRecordingRequestParams struct {
 
 	// 录制任务的唯一Id，在启动录制成功后会返回。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 转推录制任务发起时所填，标识一次录制
+	RecorderKey *string `json:"RecorderKey,omitnil,omitempty" name:"RecorderKey"`
 }
 
 type DescribeCloudRecordingRequest struct {
@@ -1140,6 +1143,9 @@ type DescribeCloudRecordingRequest struct {
 
 	// 录制任务的唯一Id，在启动录制成功后会返回。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 转推录制任务发起时所填，标识一次录制
+	RecorderKey *string `json:"RecorderKey,omitnil,omitempty" name:"RecorderKey"`
 }
 
 func (r *DescribeCloudRecordingRequest) ToJsonString() string {
@@ -1156,6 +1162,7 @@ func (r *DescribeCloudRecordingRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SdkAppId")
 	delete(f, "TaskId")
+	delete(f, "RecorderKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudRecordingRequest has unknown keys!", "")
 	}
@@ -1175,6 +1182,9 @@ type DescribeCloudRecordingResponseParams struct {
 
 	// 录制文件信息。
 	StorageFileList []*StorageFile `json:"StorageFileList,omitnil,omitempty" name:"StorageFileList"`
+
+	// 转推录制任务发起时所填，标识一次录制
+	RecorderKey *string `json:"RecorderKey,omitnil,omitempty" name:"RecorderKey"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

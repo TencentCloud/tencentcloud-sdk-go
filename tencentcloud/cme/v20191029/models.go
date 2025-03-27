@@ -2082,7 +2082,6 @@ func (r *DescribeResourceAuthorizationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeResourceAuthorizationResponseParams struct {
 	// 符合条件的资源授权记录总数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 授权信息列表。
@@ -2574,7 +2573,7 @@ func (r *DescribeTeamsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVideoEncodingPresetsRequestParams struct {
-	// 平台名称，指定访问的平台。
+	// 平台名称，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 要查询的配置 ID 列表。填写该参数则按照配置 ID 进行查询。
@@ -2590,7 +2589,7 @@ type DescribeVideoEncodingPresetsRequestParams struct {
 type DescribeVideoEncodingPresetsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 平台名称，指定访问的平台。
+	// 平台名称，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 要查询的配置 ID 列表。填写该参数则按照配置 ID 进行查询。
@@ -4366,7 +4365,7 @@ type MaterialStatus struct {
 
 type MaterialTagInfo struct {
 	// 标签类型，取值为：
-	// <li>PRESET：预置标签；</li>
+	// <li>PRESET：预置标签。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 标签 Id 。当标签类型为 PRESET 时，标签 Id 为预置标签 Id 。
@@ -4496,7 +4495,6 @@ type MediaCastProjectInput struct {
 
 type MediaCastSourceInfo struct {
 	// 输入源 Id，由系统分配。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 输入源的媒体类型，取值有：
@@ -5022,7 +5020,7 @@ func (r *ModifyTeamResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyVideoEncodingPresetRequestParams struct {
-	// 平台名称，指定访问的平台。
+	// 平台名称，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 配置 ID。
@@ -5053,7 +5051,7 @@ type ModifyVideoEncodingPresetRequestParams struct {
 type ModifyVideoEncodingPresetRequest struct {
 	*tchttp.BaseRequest
 	
-	// 平台名称，指定访问的平台。
+	// 平台名称，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 配置 ID。
@@ -5130,7 +5128,7 @@ func (r *ModifyVideoEncodingPresetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type MoveClassRequestParams struct {
-	// 平台名称，指定访问的平台。
+	// 平台名称，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 归属者。
@@ -5149,7 +5147,7 @@ type MoveClassRequestParams struct {
 type MoveClassRequest struct {
 	*tchttp.BaseRequest
 	
-	// 平台名称，指定访问的平台。
+	// 平台名称，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 归属者。
@@ -5295,7 +5293,7 @@ type OtherMaterial struct {
 
 // Predefined struct for user
 type ParseEventRequestParams struct {
-	// 平台名称，指定访问的平台。
+	// 平台名称，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 回调事件内容。
@@ -5305,7 +5303,7 @@ type ParseEventRequestParams struct {
 type ParseEventRequest struct {
 	*tchttp.BaseRequest
 	
-	// 平台名称，指定访问的平台。
+	// 平台名称，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
 
 	// 回调事件内容。

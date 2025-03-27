@@ -245,11 +245,7 @@ const (
 	// 参数错误：热词库不存在
 	INVALIDPARAMETERVALUE_HOTWORDSNOTEXIST = "InvalidParameterValue.HotWordsNotExist"
 
-	// HotwordsFormatError
-	// 热词库格式错误，每行的格式为word|weight，即以英文符号|为分割，左边为词，右边为权重，如：你好|5
-	// 
-	// 热词字符串通过逗号分割，文件中换行分割。
-	// 腾讯云|10,语音识别|5,ASR|10
+	// 热词库格式错误。请参考[热词配置说明文档](https://cloud.tencent.com/document/product/862/116244#afc37e17-2786-4289-9bc3-8e24435d3f45)。
 	INVALIDPARAMETERVALUE_HOTWORDSFORMATERROR = "InvalidParameterValue.HotwordsFormatError"
 
 	// ImageContent参数值无效。

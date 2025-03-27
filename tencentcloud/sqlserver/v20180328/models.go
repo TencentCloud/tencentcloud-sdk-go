@@ -947,6 +947,9 @@ type CreateBasicDBInstancesRequestParams struct {
 
 	// 系统时区，默认：China Standard Time
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 磁盘加密标识，0-不加密，1-加密
+	DiskEncryptFlag *int64 `json:"DiskEncryptFlag,omitnil,omitempty" name:"DiskEncryptFlag"`
 }
 
 type CreateBasicDBInstancesRequest struct {
@@ -1017,6 +1020,9 @@ type CreateBasicDBInstancesRequest struct {
 
 	// 系统时区，默认：China Standard Time
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 磁盘加密标识，0-不加密，1-加密
+	DiskEncryptFlag *int64 `json:"DiskEncryptFlag,omitnil,omitempty" name:"DiskEncryptFlag"`
 }
 
 func (r *CreateBasicDBInstancesRequest) ToJsonString() string {
@@ -1053,6 +1059,7 @@ func (r *CreateBasicDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "ResourceTags")
 	delete(f, "Collation")
 	delete(f, "TimeZone")
+	delete(f, "DiskEncryptFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBasicDBInstancesRequest has unknown keys!", "")
 	}
@@ -1399,6 +1406,9 @@ type CreateCloudDBInstancesRequestParams struct {
 
 	// 备节点可用区，默认为空。当MultiNodes = true时，主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
 	DrZones []*string `json:"DrZones,omitnil,omitempty" name:"DrZones"`
+
+	// 磁盘加密标识，0-不加密，1-加密
+	DiskEncryptFlag *int64 `json:"DiskEncryptFlag,omitnil,omitempty" name:"DiskEncryptFlag"`
 }
 
 type CreateCloudDBInstancesRequest struct {
@@ -1478,6 +1488,9 @@ type CreateCloudDBInstancesRequest struct {
 
 	// 备节点可用区，默认为空。当MultiNodes = true时，主节点和备节点可用区不能全部相同。备机可用区集合最小为2个，最大不超过5个。
 	DrZones []*string `json:"DrZones,omitnil,omitempty" name:"DrZones"`
+
+	// 磁盘加密标识，0-不加密，1-加密
+	DiskEncryptFlag *int64 `json:"DiskEncryptFlag,omitnil,omitempty" name:"DiskEncryptFlag"`
 }
 
 func (r *CreateCloudDBInstancesRequest) ToJsonString() string {
@@ -1517,6 +1530,7 @@ func (r *CreateCloudDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "TimeZone")
 	delete(f, "MultiNodes")
 	delete(f, "DrZones")
+	delete(f, "DiskEncryptFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudDBInstancesRequest has unknown keys!", "")
 	}
@@ -1621,6 +1635,9 @@ type CreateCloudReadOnlyDBInstancesRequestParams struct {
 
 	// 系统时区，默认：China Standard Time
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 磁盘加密标识，0-不加密，1-加密
+	DiskEncryptFlag *int64 `json:"DiskEncryptFlag,omitnil,omitempty" name:"DiskEncryptFlag"`
 }
 
 type CreateCloudReadOnlyDBInstancesRequest struct {
@@ -1697,6 +1714,9 @@ type CreateCloudReadOnlyDBInstancesRequest struct {
 
 	// 系统时区，默认：China Standard Time
 	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
+
+	// 磁盘加密标识，0-不加密，1-加密
+	DiskEncryptFlag *int64 `json:"DiskEncryptFlag,omitnil,omitempty" name:"DiskEncryptFlag"`
 }
 
 func (r *CreateCloudReadOnlyDBInstancesRequest) ToJsonString() string {
@@ -1735,6 +1755,7 @@ func (r *CreateCloudReadOnlyDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "ResourceTags")
 	delete(f, "Collation")
 	delete(f, "TimeZone")
+	delete(f, "DiskEncryptFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudReadOnlyDBInstancesRequest has unknown keys!", "")
 	}
@@ -5303,6 +5324,9 @@ type DescribeDBInstancesAttributeResponseParams struct {
 
 	// 多节点备机只读信息
 	MultiDrReadableInfo []*DrReadableInfo `json:"MultiDrReadableInfo,omitnil,omitempty" name:"MultiDrReadableInfo"`
+
+	// 是否开启磁盘加密，1-开启，0-未开启
+	IsDiskEncryptFlag *int64 `json:"IsDiskEncryptFlag,omitnil,omitempty" name:"IsDiskEncryptFlag"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

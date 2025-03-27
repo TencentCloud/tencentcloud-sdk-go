@@ -10311,6 +10311,10 @@ type IotApplication struct {
 	// 第三方小程序强提醒开关 0：关闭；1：开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WechatNotifyStatus *int64 `json:"WechatNotifyStatus,omitnil,omitempty" name:"WechatNotifyStatus"`
+
+	// 互联互通产品ID列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InterconnectionProducts *string `json:"InterconnectionProducts,omitnil,omitempty" name:"InterconnectionProducts"`
 }
 
 type LicenseServiceNumInfo struct {
@@ -12182,6 +12186,10 @@ type ProductEntry struct {
 	// 有效期
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 互联互通标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsInterconnection *int64 `json:"IsInterconnection,omitnil,omitempty" name:"IsInterconnection"`
 }
 
 type ProductModelDefinition struct {

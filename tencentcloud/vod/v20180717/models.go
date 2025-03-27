@@ -2669,7 +2669,6 @@ type AudioTransform struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 音量调节参数， 当 Type = Volume 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeParam *AudioVolumeParam `json:"VolumeParam,omitnil,omitempty" name:"VolumeParam"`
 }
 
@@ -2906,7 +2905,7 @@ type ComplexAdaptiveDynamicStreamingTask struct {
 	// <li>FINISH：已完成。</li>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 自适应码流任务的执行状态与结果，每个元素对应一个自适应码流模版。
+	// 自适应码流任务的执行状态与结果，每个元素对应一个自适应码流模板。
 	ComplexAdaptiveDynamicStreamingTaskResultSet []*ComplexAdaptiveDynamicStreamingTaskResult `json:"ComplexAdaptiveDynamicStreamingTaskResultSet,omitnil,omitempty" name:"ComplexAdaptiveDynamicStreamingTaskResultSet"`
 }
 
@@ -2928,12 +2927,11 @@ type ComplexAdaptiveDynamicStreamingTaskAudioInput struct {
 
 type ComplexAdaptiveDynamicStreamingTaskInput struct {
 	// 自适应码流参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamPara *ComplexAdaptiveDynamicStreamingTaskStreamPara `json:"StreamPara,omitnil,omitempty" name:"StreamPara"`
 }
 
 type ComplexAdaptiveDynamicStreamingTaskOutput struct {
-	// 自适应码流模版 ID。
+	// 自适应码流模板 ID。
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
 	// 自适应码流打包格式。可选值：
@@ -2972,7 +2970,6 @@ type ComplexAdaptiveDynamicStreamingTaskResult struct {
 	Input *ComplexAdaptiveDynamicStreamingTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 自适应码流任务的输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *ComplexAdaptiveDynamicStreamingTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
 }
 
@@ -3142,11 +3139,9 @@ type ComposeMediaTask struct {
 	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
 	// 制作媒体文件任务的输入。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Input *ComposeMediaTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 制作媒体文件任务的输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *ComposeMediaTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 输出视频的元信息。
@@ -8777,7 +8772,6 @@ func (r *DescribeAllClassRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAllClassResponseParams struct {
 	// 分类信息集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClassInfoSet []*MediaClassInfo `json:"ClassInfoSet,omitnil,omitempty" name:"ClassInfoSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9517,15 +9511,12 @@ func (r *DescribeCdnLogsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCdnLogsResponseParams struct {
 	// 日志下载链接总数量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 海外CDN节点的日志下载列表。如果域名没有开启海外加速，忽略该参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OverseaCdnLogs []*CdnLogInfo `json:"OverseaCdnLogs,omitnil,omitempty" name:"OverseaCdnLogs"`
 
 	// 国内CDN节点的日志下载列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomesticCdnLogs []*CdnLogInfo `json:"DomesticCdnLogs,omitnil,omitempty" name:"DomesticCdnLogs"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10184,7 +10175,6 @@ func (r *DescribeDrmKeyProviderInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDrmKeyProviderInfoResponseParams struct {
 	// 华曦达（SDMC）相关的 DRM 密钥提供商信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SDMCInfo *SDMCDrmKeyProviderInfo `json:"SDMCInfo,omitnil,omitempty" name:"SDMCInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13430,7 +13420,6 @@ type DomainDetailInfo struct {
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 加速地区信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccelerateAreaInfos []*AccelerateAreaInfo `json:"AccelerateAreaInfos,omitnil,omitempty" name:"AccelerateAreaInfos"`
 
 	// 部署状态，取值有：
@@ -13440,15 +13429,12 @@ type DomainDetailInfo struct {
 	DeployStatus *string `json:"DeployStatus,omitnil,omitempty" name:"DeployStatus"`
 
 	// HTTPS 配置信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HTTPSConfig *DomainHTTPSConfig `json:"HTTPSConfig,omitnil,omitempty" name:"HTTPSConfig"`
 
 	// [Key 防盗链](https://cloud.tencent.com/document/product/266/14047)配置信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UrlSignatureAuthPolicy *UrlSignatureAuthPolicy `json:"UrlSignatureAuthPolicy,omitnil,omitempty" name:"UrlSignatureAuthPolicy"`
 
 	// [Referer 防盗链](https://cloud.tencent.com/document/product/266/14046)配置信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RefererAuthPolicy *RefererAuthPolicy `json:"RefererAuthPolicy,omitnil,omitempty" name:"RefererAuthPolicy"`
 
 	// 域名添加到腾讯云点播系统中的时间。
@@ -13456,11 +13442,9 @@ type DomainDetailInfo struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 域名 QUIC 配置信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QUICConfig *DomainQUICConfig `json:"QUICConfig,omitnil,omitempty" name:"QUICConfig"`
 
 	// IP 访问限制配置信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPFilterPolicy *IPFilterPolicy `json:"IPFilterPolicy,omitnil,omitempty" name:"IPFilterPolicy"`
 
 	// 域名类型，取值有： <li>VOD：使用 VOD 产品分发的域名；</li> <li>EdgeOne：使用 EdgeOne 产品分发的域名。</li>
@@ -13725,11 +13709,9 @@ type EditMediaTask struct {
 	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
 	// 视频编辑任务的输入。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Input *EditMediaTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 视频编辑任务的输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *EditMediaTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 输出视频的元信息。
@@ -14405,11 +14387,9 @@ type ExtractCopyRightWatermarkTask struct {
 	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
 
 	// 提取版权水印任务输入信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Input *ExtractCopyRightWatermarkTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 提取版权水印任务输出信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *ExtractCopyRightWatermarkTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
@@ -14743,7 +14723,6 @@ type FileDeleteResultItem struct {
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
 	// 本次删除的文件部分。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeleteParts []*MediaDeleteItem `json:"DeleteParts,omitnil,omitempty" name:"DeleteParts"`
 }
 
@@ -14795,7 +14774,6 @@ type FileVerifyInfo struct {
 	FileVerifyDomains []*string `json:"FileVerifyDomains,omitnil,omitempty" name:"FileVerifyDomains"`
 
 	// 文件校验文件名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileVerifyName *string `json:"FileVerifyName,omitnil,omitempty" name:"FileVerifyName"`
 }
 
@@ -15476,11 +15454,9 @@ type JustInTimeTranscodeTemplate struct {
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
 	// 视频参数配置。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoConfigure *VideoConfigureInfo `json:"VideoConfigure,omitnil,omitempty" name:"VideoConfigure"`
 
 	// 水印参数配置。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WatermarkConfigure *WatermarkConfigureData `json:"WatermarkConfigure,omitnil,omitempty" name:"WatermarkConfigure"`
 }
 
@@ -17890,6 +17866,9 @@ func (r *ModifyEnhanceMediaTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyEventConfigRequestParams struct {
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
 	// 接收事件通知的方式。
 	// <li>PUSH：[HTTP 回调通知](https://cloud.tencent.com/document/product/266/33779)；</li>
 	// <li>PULL：[基于消息队列的可靠通知](https://cloud.tencent.com/document/product/266/33779)。</li>
@@ -17907,14 +17886,14 @@ type ModifyEventConfigRequestParams struct {
 
 	// 是否接收剪辑固化完成事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
 	PersistenceCompleteEventSwitch *string `json:"PersistenceCompleteEventSwitch,omitnil,omitempty" name:"PersistenceCompleteEventSwitch"`
-
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
-	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 }
 
 type ModifyEventConfigRequest struct {
 	*tchttp.BaseRequest
 	
+	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
 	// 接收事件通知的方式。
 	// <li>PUSH：[HTTP 回调通知](https://cloud.tencent.com/document/product/266/33779)；</li>
 	// <li>PULL：[基于消息队列的可靠通知](https://cloud.tencent.com/document/product/266/33779)。</li>
@@ -17932,9 +17911,6 @@ type ModifyEventConfigRequest struct {
 
 	// 是否接收剪辑固化完成事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
 	PersistenceCompleteEventSwitch *string `json:"PersistenceCompleteEventSwitch,omitnil,omitempty" name:"PersistenceCompleteEventSwitch"`
-
-	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
-	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
 }
 
 func (r *ModifyEventConfigRequest) ToJsonString() string {
@@ -17949,12 +17925,12 @@ func (r *ModifyEventConfigRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "SubAppId")
 	delete(f, "Mode")
 	delete(f, "NotificationUrl")
 	delete(f, "UploadMediaCompleteEventSwitch")
 	delete(f, "DeleteMediaCompleteEventSwitch")
 	delete(f, "PersistenceCompleteEventSwitch")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEventConfigRequest has unknown keys!", "")
 	}
@@ -20545,14 +20521,12 @@ func (r *ParseStreamingManifestResponse) FromJsonString(s string) error {
 
 type PersistenceCompleteTask struct {
 	// 固化生成的媒体 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
 	// 剪辑固化的来源，有以下三种。
 	// <li>SimpleHlsClip：来自简单 HLS 剪辑；</li>
 	// <li>FastEditMedia：来自快速媒体编辑；</li>
 	// <li>LiveRealTimeClip:来自直播即时剪辑。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PersistenceSource *string `json:"PersistenceSource,omitnil,omitempty" name:"PersistenceSource"`
 }
 
@@ -20673,15 +20647,12 @@ type PoliticalAsrReviewTemplateInfoForUpdate struct {
 
 type PoliticalConfigureInfo struct {
 	// 画面鉴别涉及令人不适宜的信息的控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImgReviewInfo *PoliticalImgReviewTemplateInfo `json:"ImgReviewInfo,omitnil,omitempty" name:"ImgReviewInfo"`
 
 	// 语音鉴别涉及令人不适宜的信息的控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrReviewInfo *PoliticalAsrReviewTemplateInfo `json:"AsrReviewInfo,omitnil,omitempty" name:"AsrReviewInfo"`
 
 	// 文本鉴别涉及令人不适宜的信息的控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrReviewInfo *PoliticalOcrReviewTemplateInfo `json:"OcrReviewInfo,omitnil,omitempty" name:"OcrReviewInfo"`
 }
 
@@ -20815,15 +20786,12 @@ type PornAsrReviewTemplateInfoForUpdate struct {
 
 type PornConfigureInfo struct {
 	// 画面鉴别涉及令人反感的信息的控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImgReviewInfo *PornImgReviewTemplateInfo `json:"ImgReviewInfo,omitnil,omitempty" name:"ImgReviewInfo"`
 
 	// 语音鉴别涉及令人反感的信息的控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrReviewInfo *PornAsrReviewTemplateInfo `json:"AsrReviewInfo,omitnil,omitempty" name:"AsrReviewInfo"`
 
 	// 文本鉴别涉及令人反感的信息的控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrReviewInfo *PornOcrReviewTemplateInfo `json:"OcrReviewInfo,omitnil,omitempty" name:"OcrReviewInfo"`
 }
 
@@ -21055,11 +21023,11 @@ type ProcessImageRequestParams struct {
 	// 操作类型。现在仅支持填 ContentReview，表示内容智能识别。
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 
-	// 图片内容智能识别参数，当 Operation 为 ContentReview 时该字段有效。
-	ContentReviewInput *ImageContentReviewInput `json:"ContentReviewInput,omitnil,omitempty" name:"ContentReviewInput"`
-
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 图片内容智能识别参数，当 Operation 为 ContentReview 时该字段有效。
+	ContentReviewInput *ImageContentReviewInput `json:"ContentReviewInput,omitnil,omitempty" name:"ContentReviewInput"`
 }
 
 type ProcessImageRequest struct {
@@ -21071,11 +21039,11 @@ type ProcessImageRequest struct {
 	// 操作类型。现在仅支持填 ContentReview，表示内容智能识别。
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 
-	// 图片内容智能识别参数，当 Operation 为 ContentReview 时该字段有效。
-	ContentReviewInput *ImageContentReviewInput `json:"ContentReviewInput,omitnil,omitempty" name:"ContentReviewInput"`
-
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
 	SubAppId *uint64 `json:"SubAppId,omitnil,omitempty" name:"SubAppId"`
+
+	// 图片内容智能识别参数，当 Operation 为 ContentReview 时该字段有效。
+	ContentReviewInput *ImageContentReviewInput `json:"ContentReviewInput,omitnil,omitempty" name:"ContentReviewInput"`
 }
 
 func (r *ProcessImageRequest) ToJsonString() string {
@@ -21092,8 +21060,8 @@ func (r *ProcessImageRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FileId")
 	delete(f, "Operation")
-	delete(f, "ContentReviewInput")
 	delete(f, "SubAppId")
+	delete(f, "ContentReviewInput")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessImageRequest has unknown keys!", "")
 	}
@@ -21619,11 +21587,9 @@ type ProhibitedAsrReviewTemplateInfoForUpdate struct {
 
 type ProhibitedConfigureInfo struct {
 	// 语音违禁控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrReviewInfo *ProhibitedAsrReviewTemplateInfo `json:"AsrReviewInfo,omitnil,omitempty" name:"AsrReviewInfo"`
 
 	// 文本违禁控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrReviewInfo *ProhibitedOcrReviewTemplateInfo `json:"OcrReviewInfo,omitnil,omitempty" name:"OcrReviewInfo"`
 }
 
@@ -22022,15 +21988,12 @@ type QualityEnhanceTask struct {
 	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
 	// 音画质重生任务的输入。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Input *QualityEnhanceTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 音画质重生任务的输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *QualityEnhanceTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 音画质重生输出视频的元信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaData *MediaMetaData `json:"MetaData,omitnil,omitempty" name:"MetaData"`
 
 	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
@@ -22260,7 +22223,6 @@ type QualityInspectTemplateItem struct {
 
 type RebuildAudioInfo struct {
 	// 音频降噪控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioDenoiseInfo *AudioDenoiseInfo `json:"AudioDenoiseInfo,omitnil,omitempty" name:"AudioDenoiseInfo"`
 }
 
@@ -22853,19 +22815,15 @@ type RebuildMediaTemplate struct {
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
 	// 音画质重生视频控制信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RebuildVideoInfo *RebuildVideoInfo `json:"RebuildVideoInfo,omitnil,omitempty" name:"RebuildVideoInfo"`
 
 	// 音画质重生音频控制信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RebuildAudioInfo *RebuildAudioInfo `json:"RebuildAudioInfo,omitnil,omitempty" name:"RebuildAudioInfo"`
 
 	// 输出视频控制信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetVideoInfo *RebuildMediaTargetVideoStream `json:"TargetVideoInfo,omitnil,omitempty" name:"TargetVideoInfo"`
 
 	// 输出音频控制信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetAudioInfo *RebuildMediaTargetAudioStream `json:"TargetAudioInfo,omitnil,omitempty" name:"TargetAudioInfo"`
 
 	// 封装格式。可选值：mp4、hls。默认是 mp4。
@@ -22960,11 +22918,9 @@ type ReduceMediaBitrateMediaProcessTaskResult struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 降码率任务中视频转码任务的查询结果，当任务类型为 Transcode 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranscodeTask *ReduceMediaBitrateTranscodeResult `json:"TranscodeTask,omitnil,omitempty" name:"TranscodeTask"`
 
 	// 降码率任务中对视频转自适应码流任务的查询结果，当任务类型为 AdaptiveDynamicStreaming 时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdaptiveDynamicStreamingTask *ReduceMediaBitrateAdaptiveDynamicStreamingResult `json:"AdaptiveDynamicStreamingTask,omitnil,omitempty" name:"AdaptiveDynamicStreamingTask"`
 }
 
@@ -22987,7 +22943,6 @@ type ReduceMediaBitrateTask struct {
 	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
 
 	// 原始视频的元信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaData *MediaMetaData `json:"MetaData,omitnil,omitempty" name:"MetaData"`
 
 	// 降码率任务执行状态与结果。
@@ -23022,7 +22977,6 @@ type ReduceMediaBitrateTranscodeResult struct {
 	Input *TranscodeTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 转码任务的输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaTranscodeItem `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 转码进度，取值范围 [0-100] 。
@@ -23047,7 +23001,7 @@ type RefererAuthPolicy struct {
 	// 当 Status 取值为 Enabled 时，AuthType 必须赋值。
 	AuthType *string `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 
-	// 用于校验的 Referer 列表，最大支持20个 Referer。当 Status 取值为 Enabled 时， Referers 不能为空数组。Referer 的格式参考域名的格式。
+	// 用于校验的 Referer 列表，最大支持  400 个 Referer。当 Status 取值为 Enabled 时， Referers 不能为空数组。Referer 的格式参考域名的格式。
 	Referers []*string `json:"Referers,omitnil,omitempty" name:"Referers"`
 
 	// 是否允许空 Referer 访问本域名，可选值：
@@ -23938,7 +23892,7 @@ type ReviewInfo struct {
 }
 
 type ReviewTemplate struct {
-	// 审核模版唯一标签。
+	// 审核模板唯一标签。
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
 	// 模板名称。
@@ -25222,7 +25176,6 @@ type SplitMediaTaskSegmentInfo struct {
 	Input *SplitMediaTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 视频拆条任务输出信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *TaskOutputMediaInfo `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 任务类型为 Procedure 的任务 ID。若发起[视频拆条](https://cloud.tencent.com/document/api/266/51098)任务时，视频拆条任务信息列表指定了任务流模板(ProcedureName)，当该任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。
@@ -25647,11 +25600,9 @@ type TempCertificate struct {
 
 type TerrorismConfigureInfo struct {
 	// 画面鉴别涉及令人不安全的信息的任务控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImgReviewInfo *TerrorismImgReviewTemplateInfo `json:"ImgReviewInfo,omitnil,omitempty" name:"ImgReviewInfo"`
 
 	// 文字鉴别涉及令人不安全的信息的任务控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrReviewInfo *TerrorismOcrReviewTemplateInfo `json:"OcrReviewInfo,omitnil,omitempty" name:"OcrReviewInfo"`
 }
 
@@ -26110,15 +26061,12 @@ type UserDefineAsrTextReviewTemplateInfoForUpdate struct {
 
 type UserDefineConfigureInfo struct {
 	// 用户自定义人物音视频审核控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FaceReviewInfo *UserDefineFaceReviewTemplateInfo `json:"FaceReviewInfo,omitnil,omitempty" name:"FaceReviewInfo"`
 
 	// 用户自定义语音音视频审核控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrReviewInfo *UserDefineAsrTextReviewTemplateInfo `json:"AsrReviewInfo,omitnil,omitempty" name:"AsrReviewInfo"`
 
 	// 用户自定义文本音视频审核控制参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrReviewInfo *UserDefineOcrTextReviewTemplateInfo `json:"OcrReviewInfo,omitnil,omitempty" name:"OcrReviewInfo"`
 }
 

@@ -958,6 +958,8 @@ type CreateUserRoleProjectRequestParams struct {
 	RoleIdList []*int64 `json:"RoleIdList,omitnil,omitempty" name:"RoleIdList"`
 
 	// 用户列表（废弃）
+	//
+	// Deprecated: UserList is deprecated.
 	UserList []*UserIdAndUserName `json:"UserList,omitnil,omitempty" name:"UserList"`
 
 	// 用户列表（新）
@@ -1046,6 +1048,8 @@ type CreateUserRoleRequestParams struct {
 	RoleIdList []*int64 `json:"RoleIdList,omitnil,omitempty" name:"RoleIdList"`
 
 	// 用户列表（废弃）
+	//
+	// Deprecated: UserList is deprecated.
 	UserList []*UserIdAndUserName `json:"UserList,omitnil,omitempty" name:"UserList"`
 
 	// 用户列表（新）

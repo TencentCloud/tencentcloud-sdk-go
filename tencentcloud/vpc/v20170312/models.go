@@ -1135,7 +1135,7 @@ func (r *AllocateIp6AddressesBandwidthResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AssignIpv6AddressesRequestParams struct {
-	// 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。
+	// 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
 	// 指定的`IPv6`地址列表，单次最多指定10个。与入参`Ipv6AddressCount`合并计算配额。与Ipv6AddressCount必填一个。
@@ -1151,7 +1151,7 @@ type AssignIpv6AddressesRequestParams struct {
 type AssignIpv6AddressesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。
+	// 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
 	// 指定的`IPv6`地址列表，单次最多指定10个。与入参`Ipv6AddressCount`合并计算配额。与Ipv6AddressCount必填一个。
@@ -1341,7 +1341,7 @@ func (r *AssignIpv6SubnetCidrBlockResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AssignPrivateIpAddressesRequestParams struct {
-	// 弹性网卡实例ID，例如：eni-m6dyj72l。
+	// 弹性网卡实例ID，例如：eni-m6dyj72l。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
 	// 指定的内网IP信息，单次最多指定10个。与SecondaryPrivateIpAddressCount至少提供一个。
@@ -1350,7 +1350,7 @@ type AssignPrivateIpAddressesRequestParams struct {
 	// 新申请的内网IP地址个数，与PrivateIpAddresses至少提供一个。内网IP地址个数总和不能超过配额数，详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitnil,omitempty" name:"SecondaryPrivateIpAddressCount"`
 
-	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
+	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 	QosLevel *string `json:"QosLevel,omitnil,omitempty" name:"QosLevel"`
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
@@ -1360,7 +1360,7 @@ type AssignPrivateIpAddressesRequestParams struct {
 type AssignPrivateIpAddressesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 弹性网卡实例ID，例如：eni-m6dyj72l。
+	// 弹性网卡实例ID，例如：eni-m6dyj72l。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
 	// 指定的内网IP信息，单次最多指定10个。与SecondaryPrivateIpAddressCount至少提供一个。
@@ -1369,7 +1369,7 @@ type AssignPrivateIpAddressesRequest struct {
 	// 新申请的内网IP地址个数，与PrivateIpAddresses至少提供一个。内网IP地址个数总和不能超过配额数，详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitnil,omitempty" name:"SecondaryPrivateIpAddressCount"`
 
-	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
+	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 	QosLevel *string `json:"QosLevel,omitnil,omitempty" name:"QosLevel"`
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
@@ -1955,20 +1955,20 @@ func (r *AssociateNetworkAclSubnetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AssociateNetworkInterfaceSecurityGroupsRequestParams struct {
-	// 弹性网卡实例ID。形如：eni-pxir56ns。每次请求的实例的上限为100。本接口不支持主网卡绑定安全组。
+	// 弹性网卡实例ID。形如：eni-pxir56ns。每次请求的实例的上限为100。本接口不支持主网卡绑定安全组。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitnil,omitempty" name:"NetworkInterfaceIds"`
 
-	// 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。
+	// 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }
 
 type AssociateNetworkInterfaceSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 弹性网卡实例ID。形如：eni-pxir56ns。每次请求的实例的上限为100。本接口不支持主网卡绑定安全组。
+	// 弹性网卡实例ID。形如：eni-pxir56ns。每次请求的实例的上限为100。本接口不支持主网卡绑定安全组。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitnil,omitempty" name:"NetworkInterfaceIds"`
 
-	// 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。
+	// 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。每次请求的实例的上限为100。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }
 
@@ -2145,10 +2145,10 @@ func (r *AttachClassicLinkVpcResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AttachNetworkInterfaceRequestParams struct {
-	// 弹性网卡实例ID，例如：eni-m6dyj72l。
+	// 弹性网卡实例ID，例如：eni-m6dyj72l。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
-	// CVM实例ID。形如：ins-r8hr2upy。
+	// CVM实例ID。形如：ins-r8hr2upy。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 网卡的挂载类型：0 标准型，1扩展型，默认值0。
@@ -2161,10 +2161,10 @@ type AttachNetworkInterfaceRequestParams struct {
 type AttachNetworkInterfaceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 弹性网卡实例ID，例如：eni-m6dyj72l。
+	// 弹性网卡实例ID，例如：eni-m6dyj72l。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
-	// CVM实例ID。形如：ins-r8hr2upy。
+	// CVM实例ID。形如：ins-r8hr2upy。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 网卡的挂载类型：0 标准型，1扩展型，默认值0。
@@ -3647,16 +3647,16 @@ func (r *CreateAddressTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAndAttachNetworkInterfaceRequestParams struct {
-	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+	// VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/1108/43663)接口获取。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 弹性网卡名称，最大长度不能超过60个字节。
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitnil,omitempty" name:"NetworkInterfaceName"`
 
-	// 弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。
+	// 弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 云服务器实例ID。
+	// 云服务器实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 指定的内网IP信息，单次最多指定10个。
@@ -3665,10 +3665,10 @@ type CreateAndAttachNetworkInterfaceRequestParams struct {
 	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitnil,omitempty" name:"SecondaryPrivateIpAddressCount"`
 
-	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
+	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 	QosLevel *string `json:"QosLevel,omitnil,omitempty" name:"QosLevel"`
 
-	// 指定绑定的安全组，例如：['sg-1dd51d']。
+	// 指定绑定的安全组，例如：['sg-1dd51d']。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
 	// 弹性网卡描述，可任意命名，但不得超过60个字符。
@@ -3690,16 +3690,16 @@ type CreateAndAttachNetworkInterfaceRequestParams struct {
 type CreateAndAttachNetworkInterfaceRequest struct {
 	*tchttp.BaseRequest
 	
-	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+	// VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/1108/43663)接口获取。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 弹性网卡名称，最大长度不能超过60个字节。
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitnil,omitempty" name:"NetworkInterfaceName"`
 
-	// 弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。
+	// 弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 云服务器实例ID。
+	// 云服务器实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 指定的内网IP信息，单次最多指定10个。
@@ -3708,10 +3708,10 @@ type CreateAndAttachNetworkInterfaceRequest struct {
 	// 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitnil,omitempty" name:"SecondaryPrivateIpAddressCount"`
 
-	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
+	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 	QosLevel *string `json:"QosLevel,omitnil,omitempty" name:"QosLevel"`
 
-	// 指定绑定的安全组，例如：['sg-1dd51d']。
+	// 指定绑定的安全组，例如：['sg-1dd51d']。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
 	// 弹性网卡描述，可任意命名，但不得超过60个字符。
@@ -5835,13 +5835,13 @@ func (r *CreateNetworkAclResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateNetworkInterfaceRequestParams struct {
-	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+	// VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/1108/43663)接口获取。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 弹性网卡名称，最大长度不能超过60个字节。
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitnil,omitempty" name:"NetworkInterfaceName"`
 
-	// 弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。
+	// 弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 弹性网卡描述，可任意命名，但不得超过60个字符。
@@ -5851,10 +5851,10 @@ type CreateNetworkInterfaceRequestParams struct {
 	// 配额数查询：[DescribeVpcLimits](https://cloud.tencent.com/document/api/215/42942)。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitnil,omitempty" name:"SecondaryPrivateIpAddressCount"`
 
-	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
+	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 	QosLevel *string `json:"QosLevel,omitnil,omitempty" name:"QosLevel"`
 
-	// 指定绑定的安全组，例如：['sg-1dd51d']。
+	// 指定绑定的安全组，例如：['sg-1dd51d']。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
 	// 指定的内网IP信息，单次最多指定10个。
@@ -5876,13 +5876,13 @@ type CreateNetworkInterfaceRequestParams struct {
 type CreateNetworkInterfaceRequest struct {
 	*tchttp.BaseRequest
 	
-	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+	// VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/1108/43663)接口获取。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 弹性网卡名称，最大长度不能超过60个字节。
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitnil,omitempty" name:"NetworkInterfaceName"`
 
-	// 弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。
+	// 弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 弹性网卡描述，可任意命名，但不得超过60个字符。
@@ -5892,10 +5892,10 @@ type CreateNetworkInterfaceRequest struct {
 	// 配额数查询：[DescribeVpcLimits](https://cloud.tencent.com/document/api/215/42942)。
 	SecondaryPrivateIpAddressCount *uint64 `json:"SecondaryPrivateIpAddressCount,omitnil,omitempty" name:"SecondaryPrivateIpAddressCount"`
 
-	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
+	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 	QosLevel *string `json:"QosLevel,omitnil,omitempty" name:"QosLevel"`
 
-	// 指定绑定的安全组，例如：['sg-1dd51d']。
+	// 指定绑定的安全组，例如：['sg-1dd51d']。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
 	// 指定的内网IP信息，单次最多指定10个。
@@ -16329,15 +16329,20 @@ func (r *DescribeNetworkInterfaceLimitResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNetworkInterfacesRequestParams struct {
-	// 弹性网卡实例ID查询。形如：eni-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定NetworkInterfaceIds和Filters。
+	// 弹性网卡实例ID查询。形如：eni-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定NetworkInterfaceIds和Filters。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitnil,omitempty" name:"NetworkInterfaceIds"`
 
 	// 过滤条件，参数不支持同时指定NetworkInterfaceIds和Filters。
-	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
-	// <li>subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。</li>
-	// <li>network-interface-id - String - （过滤条件）弹性网卡实例ID，形如：eni-5k56k7k7。</li>
-	// <li>attachment.instance-id - String - （过滤条件）绑定的云服务器实例ID，形如：ins-3nqpdn3i。</li>
-	// <li>groups.security-group-id - String - （过滤条件）绑定的安全组实例ID，例如：sg-f9ekbxeq。</li>
+	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/1108/43663)接口获取。
+	// </li>
+	// <li>subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
+	// </li>
+	// <li>network-interface-id - String - （过滤条件）弹性网卡实例ID，形如：eni-5k56k7k7。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
+	// </li>
+	// <li>attachment.instance-id - String - （过滤条件）绑定的云服务器实例ID，形如：ins-3nqpdn3i。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。
+	// </li>
+	// <li>groups.security-group-id - String - （过滤条件）绑定的安全组实例ID，例如：sg-f9ekbxeq。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。
+	// </li>
 	// <li>network-interface-name - String - （过滤条件）网卡实例名称。</li>
 	// <li>network-interface-description - String - （过滤条件）网卡实例描述。</li>
 	// <li>address-ip - String - （过滤条件）内网IPv4地址，单IP后缀模糊匹配，多IP精确匹配。可以与`ip-exact-match`配合做单IP的精确匹配查询。</li>
@@ -16346,7 +16351,7 @@ type DescribeNetworkInterfacesRequestParams struct {
 	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
 	// <li>is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网卡进行过滤。值为true时，仅过滤主网卡；值为false时，仅过滤辅助网卡；此过滤参数未提供时，同时过滤主网卡和辅助网卡。</li>
 	// <li>eni-type - String -是否必填：否- （过滤条件）按照网卡类型进行过滤。“0”-辅助网卡，“1”-主网卡，“2”：中继网卡。</li>
-	// <li>eni-qos - String -是否必填：否- （过滤条件）按照网卡服务质量进行过滤。“AG”-服务质量为云铜，“AU”-服务质量为云银。</li>
+	// <li>eni-qos - String -是否必填：否- （过滤条件）按照网卡服务质量进行过滤。PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</li>
 	// <li>address-ipv6 - String - 是否必填：否 -（过滤条件）内网IPv6地址过滤，支持多ipv6地址查询，如果和address-ip一起使用取交集。</li>
 	// <li>public-address-ip - String - （过滤条件）公网IPv4地址，精确匹配。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -16361,15 +16366,20 @@ type DescribeNetworkInterfacesRequestParams struct {
 type DescribeNetworkInterfacesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 弹性网卡实例ID查询。形如：eni-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定NetworkInterfaceIds和Filters。
+	// 弹性网卡实例ID查询。形如：eni-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定NetworkInterfaceIds和Filters。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitnil,omitempty" name:"NetworkInterfaceIds"`
 
 	// 过滤条件，参数不支持同时指定NetworkInterfaceIds和Filters。
-	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
-	// <li>subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。</li>
-	// <li>network-interface-id - String - （过滤条件）弹性网卡实例ID，形如：eni-5k56k7k7。</li>
-	// <li>attachment.instance-id - String - （过滤条件）绑定的云服务器实例ID，形如：ins-3nqpdn3i。</li>
-	// <li>groups.security-group-id - String - （过滤条件）绑定的安全组实例ID，例如：sg-f9ekbxeq。</li>
+	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/1108/43663)接口获取。
+	// </li>
+	// <li>subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
+	// </li>
+	// <li>network-interface-id - String - （过滤条件）弹性网卡实例ID，形如：eni-5k56k7k7。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
+	// </li>
+	// <li>attachment.instance-id - String - （过滤条件）绑定的云服务器实例ID，形如：ins-3nqpdn3i。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。
+	// </li>
+	// <li>groups.security-group-id - String - （过滤条件）绑定的安全组实例ID，例如：sg-f9ekbxeq。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。
+	// </li>
 	// <li>network-interface-name - String - （过滤条件）网卡实例名称。</li>
 	// <li>network-interface-description - String - （过滤条件）网卡实例描述。</li>
 	// <li>address-ip - String - （过滤条件）内网IPv4地址，单IP后缀模糊匹配，多IP精确匹配。可以与`ip-exact-match`配合做单IP的精确匹配查询。</li>
@@ -16378,7 +16388,7 @@ type DescribeNetworkInterfacesRequest struct {
 	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
 	// <li>is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网卡进行过滤。值为true时，仅过滤主网卡；值为false时，仅过滤辅助网卡；此过滤参数未提供时，同时过滤主网卡和辅助网卡。</li>
 	// <li>eni-type - String -是否必填：否- （过滤条件）按照网卡类型进行过滤。“0”-辅助网卡，“1”-主网卡，“2”：中继网卡。</li>
-	// <li>eni-qos - String -是否必填：否- （过滤条件）按照网卡服务质量进行过滤。“AG”-服务质量为云铜，“AU”-服务质量为云银。</li>
+	// <li>eni-qos - String -是否必填：否- （过滤条件）按照网卡服务质量进行过滤。PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</li>
 	// <li>address-ipv6 - String - 是否必填：否 -（过滤条件）内网IPv6地址过滤，支持多ipv6地址查询，如果和address-ip一起使用取交集。</li>
 	// <li>public-address-ip - String - （过滤条件）公网IPv4地址，精确匹配。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -21009,10 +21019,10 @@ func (r *DetachClassicLinkVpcResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DetachNetworkInterfaceRequestParams struct {
-	// 弹性网卡实例ID，例如：eni-m6dyj72l。
+	// 弹性网卡实例ID，例如：eni-m6dyj72l。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
-	// CVM实例ID。形如：ins-r8hr2upy。
+	// CVM实例ID。形如：ins-r8hr2upy。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
@@ -21022,10 +21032,10 @@ type DetachNetworkInterfaceRequestParams struct {
 type DetachNetworkInterfaceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 弹性网卡实例ID，例如：eni-m6dyj72l。
+	// 弹性网卡实例ID，例如：eni-m6dyj72l。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
-	// CVM实例ID。形如：ins-r8hr2upy。
+	// CVM实例ID。形如：ins-r8hr2upy。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
@@ -24179,7 +24189,7 @@ type Ipv6Address struct {
 	// 是否是主`IP`。
 	Primary *bool `json:"Primary,omitnil,omitempty" name:"Primary"`
 
-	// `EIP`实例`ID`，形如：`eip-hxlqja90`。
+	// `EIP`实例`ID`，形如：`eip-hxlqja90`。作为入参数时，可通过[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取。
 	AddressId *string `json:"AddressId,omitnil,omitempty" name:"AddressId"`
 
 	// 描述信息。
@@ -24199,7 +24209,7 @@ type Ipv6Address struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIpAddress *string `json:"PublicIpAddress,omitnil,omitempty" name:"PublicIpAddress"`
 
-	// `IPv6`地址的类型: `GUA`, `OTHER`, `ULA`
+	// `IPv6`地址的类型: `GUA`(全球单播地址), `OTHER`(非GUA/ULA地址), `ULA`(唯一本地地址)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 }
@@ -24392,32 +24402,32 @@ type MemberInfo struct {
 
 // Predefined struct for user
 type MigrateNetworkInterfaceRequestParams struct {
-	// 弹性网卡实例ID，例如：eni-m6dyj72l。
+	// 弹性网卡实例ID，例如：eni-m6dyj72l。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
-	// 弹性网卡当前绑定的CVM实例ID。形如：ins-r8hr2upy。
+	// 弹性网卡当前绑定的CVM实例ID。形如：ins-r8hr2upy。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。
 	SourceInstanceId *string `json:"SourceInstanceId,omitnil,omitempty" name:"SourceInstanceId"`
 
-	// 待迁移的目的CVM实例ID。
+	// 待迁移的目的CVM实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。
 	DestinationInstanceId *string `json:"DestinationInstanceId,omitnil,omitempty" name:"DestinationInstanceId"`
 
-	// 网卡绑定类型：0 标准型 1 扩展型。
+	// 网卡绑定类型：0 标准型 1 扩展型。默认：0。
 	AttachType *uint64 `json:"AttachType,omitnil,omitempty" name:"AttachType"`
 }
 
 type MigrateNetworkInterfaceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 弹性网卡实例ID，例如：eni-m6dyj72l。
+	// 弹性网卡实例ID，例如：eni-m6dyj72l。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
-	// 弹性网卡当前绑定的CVM实例ID。形如：ins-r8hr2upy。
+	// 弹性网卡当前绑定的CVM实例ID。形如：ins-r8hr2upy。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。
 	SourceInstanceId *string `json:"SourceInstanceId,omitnil,omitempty" name:"SourceInstanceId"`
 
-	// 待迁移的目的CVM实例ID。
+	// 待迁移的目的CVM实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。
 	DestinationInstanceId *string `json:"DestinationInstanceId,omitnil,omitempty" name:"DestinationInstanceId"`
 
-	// 网卡绑定类型：0 标准型 1 扩展型。
+	// 网卡绑定类型：0 标准型 1 扩展型。默认：0。
 	AttachType *uint64 `json:"AttachType,omitnil,omitempty" name:"AttachType"`
 }
 
@@ -26455,7 +26465,7 @@ func (r *ModifyIp6TranslatorResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyIpv6AddressesAttributeRequestParams struct {
-	// 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。
+	// 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
 	// 指定的内网IPv6地址信息。
@@ -26465,7 +26475,7 @@ type ModifyIpv6AddressesAttributeRequestParams struct {
 type ModifyIpv6AddressesAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。
+	// 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
 	// 指定的内网IPv6地址信息。
@@ -27116,7 +27126,7 @@ func (r *ModifyNetworkAclQuintupleEntriesResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type ModifyNetworkInterfaceAttributeRequestParams struct {
-	// 弹性网卡实例ID，例如：eni-pxir56ns。
+	// 弹性网卡实例ID，例如：eni-pxir56ns。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
 	// 弹性网卡名称，最大长度不能超过60个字节。
@@ -27125,7 +27135,7 @@ type ModifyNetworkInterfaceAttributeRequestParams struct {
 	// 弹性网卡描述，可任意命名，但不得超过60个字符。
 	NetworkInterfaceDescription *string `json:"NetworkInterfaceDescription,omitnil,omitempty" name:"NetworkInterfaceDescription"`
 
-	// 指定绑定的安全组，例如:['sg-1dd51d']。
+	// 指定绑定的安全组，例如:['sg-1dd51d']。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
 	// 网卡trunking模式设置，Enable-开启，Disable--关闭，默认关闭。
@@ -27135,7 +27145,7 @@ type ModifyNetworkInterfaceAttributeRequestParams struct {
 type ModifyNetworkInterfaceAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 弹性网卡实例ID，例如：eni-pxir56ns。
+	// 弹性网卡实例ID，例如：eni-pxir56ns。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
 	// 弹性网卡名称，最大长度不能超过60个字节。
@@ -27144,7 +27154,7 @@ type ModifyNetworkInterfaceAttributeRequest struct {
 	// 弹性网卡描述，可任意命名，但不得超过60个字符。
 	NetworkInterfaceDescription *string `json:"NetworkInterfaceDescription,omitnil,omitempty" name:"NetworkInterfaceDescription"`
 
-	// 指定绑定的安全组，例如:['sg-1dd51d']。
+	// 指定绑定的安全组，例如:['sg-1dd51d']。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
 	// 网卡trunking模式设置，Enable-开启，Disable--关闭，默认关闭。
@@ -27198,26 +27208,26 @@ func (r *ModifyNetworkInterfaceAttributeResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type ModifyNetworkInterfaceQosRequestParams struct {
-	// 弹性网卡ID，支持批量修改。
+	// 弹性网卡ID，支持批量修改。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitnil,omitempty" name:"NetworkInterfaceIds"`
 
-	// 服务质量，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
+	// 服务质量，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 	QosLevel *string `json:"QosLevel,omitnil,omitempty" name:"QosLevel"`
 
-	// DirectSend端口范围最大值。
+	// DirectSend端口范围最大值。最大值: 65535。
 	DirectSendMaxPort *uint64 `json:"DirectSendMaxPort,omitnil,omitempty" name:"DirectSendMaxPort"`
 }
 
 type ModifyNetworkInterfaceQosRequest struct {
 	*tchttp.BaseRequest
 	
-	// 弹性网卡ID，支持批量修改。
+	// 弹性网卡ID，支持批量修改。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitnil,omitempty" name:"NetworkInterfaceIds"`
 
-	// 服务质量，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
+	// 服务质量，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 	QosLevel *string `json:"QosLevel,omitnil,omitempty" name:"QosLevel"`
 
-	// DirectSend端口范围最大值。
+	// DirectSend端口范围最大值。最大值: 65535。
 	DirectSendMaxPort *uint64 `json:"DirectSendMaxPort,omitnil,omitempty" name:"DirectSendMaxPort"`
 }
 
@@ -27266,7 +27276,7 @@ func (r *ModifyNetworkInterfaceQosResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyPrivateIpAddressesAttributeRequestParams struct {
-	// 弹性网卡实例ID，例如：eni-m6dyj72l。
+	// 弹性网卡实例ID，例如：eni-m6dyj72l。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
 	// 指定的内网IP信息。
@@ -27276,7 +27286,7 @@ type ModifyPrivateIpAddressesAttributeRequestParams struct {
 type ModifyPrivateIpAddressesAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 弹性网卡实例ID，例如：eni-m6dyj72l。
+	// 弹性网卡实例ID，例如：eni-m6dyj72l。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
 	// 指定的内网IP信息。
@@ -29689,7 +29699,7 @@ type NetworkInterface struct {
 	// 可用区。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 创建时间。
+	// 创建时间。格式：YYYY-MM-DD hh:mm:ss。示例值：2020-10-28 08:23:59
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// `IPv6`地址列表。
@@ -29698,10 +29708,10 @@ type NetworkInterface struct {
 	// 标签键值对。
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
-	// 网卡类型。0 - 弹性网卡；1 - evm弹性网卡。
+	// 网卡类型。“0”-辅助网卡，“1”-主网卡，“2”：中继网卡
 	EniType *uint64 `json:"EniType,omitnil,omitempty" name:"EniType"`
 
-	// 网卡绑定的子机类型：cvm，eks。
+	// 网卡绑定的子机类型：cvm（普通CVM子机），eks（弹性容器服务Elastic Kubernetes Service）， hai（高性能应用服务Hyper Application Inventor）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
 
@@ -29718,10 +29728,10 @@ type NetworkInterface struct {
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 服务质量级别：
-	// <li>`DEFAULT`：默认</li>
-	// <li>`PT`：云金</li>
-	// <li>`AU`：云银</li>
-	// <li>`AG`：云铜</li>
+	// PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
+	// 
+	// 可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QosLevel *string `json:"QosLevel,omitnil,omitempty" name:"QosLevel"`
 }
@@ -29912,7 +29922,7 @@ type PrivateIpAddressSpecification struct {
 	// AVAILABLE：可用的
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// IP服务质量等级，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
+	// IP服务质量等级，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 	QosLevel *string `json:"QosLevel,omitnil,omitempty" name:"QosLevel"`
 }
 
@@ -33425,7 +33435,7 @@ type TranslationNatRuleInput struct {
 
 // Predefined struct for user
 type UnassignIpv6AddressesRequestParams struct {
-	// 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。
+	// 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
 	// 指定的`IPv6`地址列表，单次最多指定10个。
@@ -33435,7 +33445,7 @@ type UnassignIpv6AddressesRequestParams struct {
 type UnassignIpv6AddressesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。
+	// 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
 	// 指定的`IPv6`地址列表，单次最多指定10个。
@@ -33608,26 +33618,26 @@ func (r *UnassignIpv6SubnetCidrBlockResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UnassignPrivateIpAddressesRequestParams struct {
-	// 弹性网卡实例ID，例如：eni-m6dyj72l。
+	// 弹性网卡实例ID，例如：eni-m6dyj72l。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
 	// 指定的内网IP信息，单次最多指定10个。
 	PrivateIpAddresses []*PrivateIpAddressSpecification `json:"PrivateIpAddresses,omitnil,omitempty" name:"PrivateIpAddresses"`
 
-	// 网卡绑定的子机实例ID，该参数仅用于指定网卡退还IP并解绑子机的场景，如果不涉及解绑子机，请勿填写。
+	// 网卡绑定的子机实例ID，该参数仅用于指定网卡退还IP并解绑子机的场景，如果不涉及解绑子机，请勿填写。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type UnassignPrivateIpAddressesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 弹性网卡实例ID，例如：eni-m6dyj72l。
+	// 弹性网卡实例ID，例如：eni-m6dyj72l。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
 	// 指定的内网IP信息，单次最多指定10个。
 	PrivateIpAddresses []*PrivateIpAddressSpecification `json:"PrivateIpAddresses,omitnil,omitempty" name:"PrivateIpAddresses"`
 
-	// 网卡绑定的子机实例ID，该参数仅用于指定网卡退还IP并解绑子机的场景，如果不涉及解绑子机，请勿填写。
+	// 网卡绑定的子机实例ID，该参数仅用于指定网卡退还IP并解绑子机的场景，如果不涉及解绑子机，请勿填写。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 

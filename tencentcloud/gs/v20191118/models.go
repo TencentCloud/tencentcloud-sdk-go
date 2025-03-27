@@ -3116,6 +3116,9 @@ type UploadFileToAndroidInstancesRequestParams struct {
 
 	// 文件下载 URL
 	FileURL *string `json:"FileURL,omitnil,omitempty" name:"FileURL"`
+
+	// 上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
+	DestinationDirectory *string `json:"DestinationDirectory,omitnil,omitempty" name:"DestinationDirectory"`
 }
 
 type UploadFileToAndroidInstancesRequest struct {
@@ -3126,6 +3129,9 @@ type UploadFileToAndroidInstancesRequest struct {
 
 	// 文件下载 URL
 	FileURL *string `json:"FileURL,omitnil,omitempty" name:"FileURL"`
+
+	// 上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
+	DestinationDirectory *string `json:"DestinationDirectory,omitnil,omitempty" name:"DestinationDirectory"`
 }
 
 func (r *UploadFileToAndroidInstancesRequest) ToJsonString() string {
@@ -3142,6 +3148,7 @@ func (r *UploadFileToAndroidInstancesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AndroidInstanceIds")
 	delete(f, "FileURL")
+	delete(f, "DestinationDirectory")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadFileToAndroidInstancesRequest has unknown keys!", "")
 	}

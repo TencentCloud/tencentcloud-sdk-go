@@ -1072,18 +1072,19 @@ type Component struct {
 	// **在通过接口拉取控件信息场景下**，为出参参数，此控件归属的参与方的角色ID角色（即RecipientId），**发起合同时候不要填写此字段留空即可**
 	ComponentRecipientId *string `json:"ComponentRecipientId,omitnil,omitempty" name:"ComponentRecipientId"`
 
+	// 
 	// **在所有的定位方式下**，控件的扩展参数，为<font color="red">JSON格式</font>，不同类型的控件会有部分非通用参数。
 	// 
 	// <font color="red">ComponentType为TEXT、MULTI_LINE_TEXT时</font>，支持以下参数：
 	// <ul><li> <b>Font</b>：目前只支持黑体、宋体、仿宋</li>
-	// <li> <b>FontSize</b>： 范围12 :72</li>
+	// <li> <b>FontSize</b>： 范围6 :72</li>
 	// <li> <b>FontAlign</b>： Left/Right/Center，左对齐/居中/右对齐</li>
 	// <li> <b>FontColor</b>：字符串类型，格式为RGB颜色数字</li></ul>
 	// <b>参数样例</b>：`{"FontColor":"255,0,0","FontSize":12}`
 	// 
 	// <font color="red">ComponentType为DATE时</font>，支持以下参数：
 	// <ul><li> <b>Font</b>：目前只支持黑体、宋体、仿宋</li>
-	// <li> <b>FontSize</b>： 范围12 :72</li></ul>
+	// <li> <b>FontSize</b>： 范围6 :72</li></ul>
 	// <b>参数样例</b>：`{"FontColor":"255,0,0","FontSize":12}`
 	// 
 	// <font color="red">ComponentType为WATERMARK时</font>，支持以下参数：
@@ -7318,6 +7319,9 @@ type CreateSchemeUrlRequestParams struct {
 	// 
 	// 参考 [公众号 H5 跳转电子签小程序](https://qian.tencent.com/developers/company/openwxminiprogram/#23-%E5%85%AC%E4%BC%97%E5%8F%B7-h5-%E4%B8%AD%E8%B7%B3%E8%BD%AC)。
 	UrlUseEnv *string `json:"UrlUseEnv,omitnil,omitempty" name:"UrlUseEnv"`
+
+	// 在动态签署人场景预设了“企业名称”时，可通过该参数控制“已认证身份才可领取”，即在加入了预设的企业后才可领取。默认值：false，无须先加入企业。
+	PickUpAfterJoined *bool `json:"PickUpAfterJoined,omitnil,omitempty" name:"PickUpAfterJoined"`
 }
 
 type CreateSchemeUrlRequest struct {
@@ -7400,6 +7404,9 @@ type CreateSchemeUrlRequest struct {
 	// 
 	// 参考 [公众号 H5 跳转电子签小程序](https://qian.tencent.com/developers/company/openwxminiprogram/#23-%E5%85%AC%E4%BC%97%E5%8F%B7-h5-%E4%B8%AD%E8%B7%B3%E8%BD%AC)。
 	UrlUseEnv *string `json:"UrlUseEnv,omitnil,omitempty" name:"UrlUseEnv"`
+
+	// 在动态签署人场景预设了“企业名称”时，可通过该参数控制“已认证身份才可领取”，即在加入了预设的企业后才可领取。默认值：false，无须先加入企业。
+	PickUpAfterJoined *bool `json:"PickUpAfterJoined,omitnil,omitempty" name:"PickUpAfterJoined"`
 }
 
 func (r *CreateSchemeUrlRequest) ToJsonString() string {
@@ -7430,6 +7437,7 @@ func (r *CreateSchemeUrlRequest) FromJsonString(s string) error {
 	delete(f, "RecipientId")
 	delete(f, "FlowGroupUrlInfo")
 	delete(f, "UrlUseEnv")
+	delete(f, "PickUpAfterJoined")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSchemeUrlRequest has unknown keys!", "")
 	}
@@ -9552,10 +9560,14 @@ type DescribeExtendedServiceAuthInfosRequestParams struct {
 	// <li>HIDE_OPERATOR_DISPLAY：隐藏合同经办人姓名</li>
 	// <li>ORGANIZATION_OCR_FALLBACK：正楷临摹签名失败后更换其他签名类型</li>
 	// <li>ORGANIZATION_FLOW_NOTIFY_TYPE：短信通知签署方</li>
-	// <li>HIDE_ONE_KEY_SIGN：个人签署方手动签字</li>
 	// <li>ORGANIZATION_FLOW_EMAIL_NOTIFY：邮件通知签署方</li>
 	// <li>FLOW_APPROVAL：合同审批强制开启</li>
-	// <li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li></ul>
+	// <li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li>
+	// <li>HIDE_ONE_KEY_SIGN：个人签署方手写签名时需逐个手写</li>
+	// <li>SIGN_SIGNATURE_DEFAULT_SET_HANDWRITE：个人签署方手动签名</li>
+	// <li>APP_LOGIN：限制企业员工小程序端登录</li>
+	// <li>PC_LOGIN：限制企业员工网页端登录</li>
+	// </ul>
 	ExtendServiceType *string `json:"ExtendServiceType,omitnil,omitempty" name:"ExtendServiceType"`
 
 	// 代理企业和员工的信息。
@@ -9582,10 +9594,14 @@ type DescribeExtendedServiceAuthInfosRequest struct {
 	// <li>HIDE_OPERATOR_DISPLAY：隐藏合同经办人姓名</li>
 	// <li>ORGANIZATION_OCR_FALLBACK：正楷临摹签名失败后更换其他签名类型</li>
 	// <li>ORGANIZATION_FLOW_NOTIFY_TYPE：短信通知签署方</li>
-	// <li>HIDE_ONE_KEY_SIGN：个人签署方手动签字</li>
 	// <li>ORGANIZATION_FLOW_EMAIL_NOTIFY：邮件通知签署方</li>
 	// <li>FLOW_APPROVAL：合同审批强制开启</li>
-	// <li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li></ul>
+	// <li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li>
+	// <li>HIDE_ONE_KEY_SIGN：个人签署方手写签名时需逐个手写</li>
+	// <li>SIGN_SIGNATURE_DEFAULT_SET_HANDWRITE：个人签署方手动签名</li>
+	// <li>APP_LOGIN：限制企业员工小程序端登录</li>
+	// <li>PC_LOGIN：限制企业员工网页端登录</li>
+	// </ul>
 	ExtendServiceType *string `json:"ExtendServiceType,omitnil,omitempty" name:"ExtendServiceType"`
 
 	// 代理企业和员工的信息。
@@ -12970,10 +12986,14 @@ type ModifyExtendedServiceRequestParams struct {
 	// <li>HIDE_OPERATOR_DISPLAY：隐藏合同经办人姓名</li>
 	// <li>ORGANIZATION_OCR_FALLBACK：正楷临摹签名失败后更换其他签名类型</li>
 	// <li>ORGANIZATION_FLOW_NOTIFY_TYPE：短信通知签署方</li>
-	// <li>HIDE_ONE_KEY_SIGN：个人签署方手动签字</li>
+	// <li>HIDE_ONE_KEY_SIGN：个人签署方手写签名时需逐个手写</li>
+	// <li>SIGN_SIGNATURE_DEFAULT_SET_HANDWRITE：个人签署方手动签名</li>
 	// <li>ORGANIZATION_FLOW_EMAIL_NOTIFY：邮件通知签署方</li>
 	// <li>FLOW_APPROVAL：合同审批强制开启</li>
-	// <li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li></ul>
+	// <li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li>
+	// <li>APP_LOGIN：限制企业员工小程序端登录</li>
+	// <li>PC_LOGIN：限制企业员工网页端登录</li>
+	// </ul>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 操作类型
@@ -13012,10 +13032,14 @@ type ModifyExtendedServiceRequest struct {
 	// <li>HIDE_OPERATOR_DISPLAY：隐藏合同经办人姓名</li>
 	// <li>ORGANIZATION_OCR_FALLBACK：正楷临摹签名失败后更换其他签名类型</li>
 	// <li>ORGANIZATION_FLOW_NOTIFY_TYPE：短信通知签署方</li>
-	// <li>HIDE_ONE_KEY_SIGN：个人签署方手动签字</li>
+	// <li>HIDE_ONE_KEY_SIGN：个人签署方手写签名时需逐个手写</li>
+	// <li>SIGN_SIGNATURE_DEFAULT_SET_HANDWRITE：个人签署方手动签名</li>
 	// <li>ORGANIZATION_FLOW_EMAIL_NOTIFY：邮件通知签署方</li>
 	// <li>FLOW_APPROVAL：合同审批强制开启</li>
-	// <li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li></ul>
+	// <li>ORGANIZATION_FLOW_PASSWD_NOTIFY：签署密码开通引导</li>
+	// <li>APP_LOGIN：限制企业员工小程序端登录</li>
+	// <li>PC_LOGIN：限制企业员工网页端登录</li>
+	// </ul>
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 操作类型

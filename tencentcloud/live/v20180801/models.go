@@ -12466,6 +12466,9 @@ type DescribePullTransformPushInfoRequestParams struct {
 	// Oversea：则查询国外数据，
 	// 默认：查询国内+国外的数据。
 	MainlandOrOversea *string `json:"MainlandOrOversea,omitnil,omitempty" name:"MainlandOrOversea"`
+
+	// 可选值：  PullLivePushLive：拉流源类型为直播  PullVodPushLive：拉流源类型为点播  PullPicPushLive：拉流源类型为图片  默认：查询全部拉流源类型
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 }
 
 type DescribePullTransformPushInfoRequest struct {
@@ -12487,6 +12490,9 @@ type DescribePullTransformPushInfoRequest struct {
 	// Oversea：则查询国外数据，
 	// 默认：查询国内+国外的数据。
 	MainlandOrOversea *string `json:"MainlandOrOversea,omitnil,omitempty" name:"MainlandOrOversea"`
+
+	// 可选值：  PullLivePushLive：拉流源类型为直播  PullVodPushLive：拉流源类型为点播  PullPicPushLive：拉流源类型为图片  默认：查询全部拉流源类型
+	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 }
 
 func (r *DescribePullTransformPushInfoRequest) ToJsonString() string {
@@ -12504,6 +12510,7 @@ func (r *DescribePullTransformPushInfoRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "MainlandOrOversea")
+	delete(f, "SourceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePullTransformPushInfoRequest has unknown keys!", "")
 	}
@@ -12517,6 +12524,9 @@ type DescribePullTransformPushInfoResponseParams struct {
 
 	// 拉流转推得总时长
 	TotalDuration *uint64 `json:"TotalDuration,omitnil,omitempty" name:"TotalDuration"`
+
+	// 拉流转推得总时长（秒）
+	TotalDurationSecond *uint64 `json:"TotalDurationSecond,omitnil,omitempty" name:"TotalDurationSecond"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -18973,6 +18983,9 @@ type TaskDurationInfo struct {
 
 	// 拉流转推任务的时长，单位为分钟
 	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 拉流转推任务的时长，单位为秒
+	DurationSecond *uint64 `json:"DurationSecond,omitnil,omitempty" name:"DurationSecond"`
 }
 
 type TaskStatusInfo struct {
