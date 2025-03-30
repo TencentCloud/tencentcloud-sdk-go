@@ -615,6 +615,165 @@ func (c *Client) CreateTrainingModelWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateTrainingTaskRequest() (request *CreateTrainingTaskRequest) {
+    request = &CreateTrainingTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "CreateTrainingTask")
+    
+    
+    return
+}
+
+func NewCreateTrainingTaskResponse() (response *CreateTrainingTaskResponse) {
+    response = &CreateTrainingTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTrainingTask
+// 创建模型训练任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATENAMETASKISCREATING = "FailedOperation.DuplicateNameTaskIsCreating"
+//  FAILEDOPERATION_FREEZEBILLFAILED = "FailedOperation.FreezeBillFailed"
+//  FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BINDINGTAGSFAILED = "InternalError.BindingTagsFailed"
+//  INTERNALERROR_CFSNOTFOUND = "InternalError.CFSNotFound"
+//  INTERNALERROR_CHECKFSPATHACCESSIBILITYFAILED = "InternalError.CheckFSPathAccessibilityFailed"
+//  INTERNALERROR_CREATETCRINSTANCETOKENFAILED = "InternalError.CreateTcrInstanceTokenFailed"
+//  INTERNALERROR_GETCFSFILESYSTEMSFAILED = "InternalError.GetCFSFileSystemsFailed"
+//  INTERNALERROR_GETCFSMOUNTINFOFAILED = "InternalError.GetCFSMountInfoFailed"
+//  INTERNALERROR_QUERYHDFSINFOFAILED = "InternalError.QueryHDFSInfoFailed"
+//  INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
+//  INTERNALERROR_QUERYRESOURCESPECFAILED = "InternalError.QueryResourceSpecFailed"
+//  INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
+//  INTERNALERROR_QUERYVPCINFOFAILED = "InternalError.QueryVPCInfoFailed"
+//  INTERNALERROR_VALIDATECREATETASKFAILED = "InternalError.ValidateCreateTaskFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_AIMARKETOUTPUTCONFIGEMPTY = "InvalidParameterValue.AIMarketOutputConfigEmpty"
+//  INVALIDPARAMETERVALUE_AIMARKETPUBLICALGOVERSIONNOTEXIST = "InvalidParameterValue.AIMarketPublicAlgoVersionNotExist"
+//  INVALIDPARAMETERVALUE_BACKOFFLIMITILLEGAL = "InvalidParameterValue.BackOffLimitIllegal"
+//  INVALIDPARAMETERVALUE_BACKOFFLIMITNOTSUPPORT = "InvalidParameterValue.BackOffLimitNotSupport"
+//  INVALIDPARAMETERVALUE_COSPATHNOTEXIST = "InvalidParameterValue.CosPathNotExist"
+//  INVALIDPARAMETERVALUE_DATASETNUMLIMITEXCEEDED = "InvalidParameterValue.DatasetNumLimitExceeded"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  INVALIDPARAMETERVALUE_FSPATHINACCESSIBLE = "InvalidParameterValue.FSPathInaccessible"
+//  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
+//  INVALIDPARAMETERVALUE_GETCFSMOUNTIPFAILED = "InvalidParameterValue.GetCFSMountIPFailed"
+//  INVALIDPARAMETERVALUE_GETGOOSEFSFAILED = "InvalidParameterValue.GetGooseFSFailed"
+//  INVALIDPARAMETERVALUE_GOOSEFSNOTEXIST = "InvalidParameterValue.GooseFSNotExist"
+//  INVALIDPARAMETERVALUE_IMAGEILLEGAL = "InvalidParameterValue.ImageIllegal"
+//  INVALIDPARAMETERVALUE_IMAGENOTFOUND = "InvalidParameterValue.ImageNotFound"
+//  INVALIDPARAMETERVALUE_NOTALLOW = "InvalidParameterValue.NotAllow"
+//  INVALIDPARAMETERVALUE_PARAMLENGTHEXCEEDLIMIT = "InvalidParameterValue.ParamLengthExceedLimit"
+//  INVALIDPARAMETERVALUE_PATHILLEGAL = "InvalidParameterValue.PathIllegal"
+//  INVALIDPARAMETERVALUE_QUERYVPCINFOFAILED = "InvalidParameterValue.QueryVPCInfoFailed"
+//  INVALIDPARAMETERVALUE_RDMACONFIGILLEGAL = "InvalidParameterValue.RDMAConfigIllegal"
+//  INVALIDPARAMETERVALUE_RESOURCECONFIGILLEGAL = "InvalidParameterValue.ResourceConfigIllegal"
+//  INVALIDPARAMETERVALUE_TAIJIRESOURCECONFIGILLEGAL = "InvalidParameterValue.TAIJIResourceConfigIllegal"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDDATACONFIG = "InvalidParameterValue.UnsupportedDataConfig"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_BILLINGEXCEPTION = "OperationDenied.BillingException"
+//  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
+//  OPERATIONDENIED_IPILLEGAL = "OperationDenied.IpIllegal"
+//  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
+//  OPERATIONDENIED_NETWORKCIDRILLEGAL = "OperationDenied.NetworkCidrIllegal"
+//  OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
+//  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
+//  OPERATIONDENIED_SUBNETILLEGAL = "OperationDenied.SubnetIllegal"
+//  OPERATIONDENIED_TAIJIAPPLICATIONGROUPINSUFFICIENT = "OperationDenied.TAIJIApplicationGroupInsufficient"
+//  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
+//  RESOURCENOTFOUND_CFSNOTFOUND = "ResourceNotFound.CfsNotFound"
+//  RESOURCENOTFOUND_VPCNOTFOUND = "ResourceNotFound.VPCNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateTrainingTask(request *CreateTrainingTaskRequest) (response *CreateTrainingTaskResponse, err error) {
+    return c.CreateTrainingTaskWithContext(context.Background(), request)
+}
+
+// CreateTrainingTask
+// 创建模型训练任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATENAMETASKISCREATING = "FailedOperation.DuplicateNameTaskIsCreating"
+//  FAILEDOPERATION_FREEZEBILLFAILED = "FailedOperation.FreezeBillFailed"
+//  FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BINDINGTAGSFAILED = "InternalError.BindingTagsFailed"
+//  INTERNALERROR_CFSNOTFOUND = "InternalError.CFSNotFound"
+//  INTERNALERROR_CHECKFSPATHACCESSIBILITYFAILED = "InternalError.CheckFSPathAccessibilityFailed"
+//  INTERNALERROR_CREATETCRINSTANCETOKENFAILED = "InternalError.CreateTcrInstanceTokenFailed"
+//  INTERNALERROR_GETCFSFILESYSTEMSFAILED = "InternalError.GetCFSFileSystemsFailed"
+//  INTERNALERROR_GETCFSMOUNTINFOFAILED = "InternalError.GetCFSMountInfoFailed"
+//  INTERNALERROR_QUERYHDFSINFOFAILED = "InternalError.QueryHDFSInfoFailed"
+//  INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
+//  INTERNALERROR_QUERYRESOURCESPECFAILED = "InternalError.QueryResourceSpecFailed"
+//  INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
+//  INTERNALERROR_QUERYVPCINFOFAILED = "InternalError.QueryVPCInfoFailed"
+//  INTERNALERROR_VALIDATECREATETASKFAILED = "InternalError.ValidateCreateTaskFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_AIMARKETOUTPUTCONFIGEMPTY = "InvalidParameterValue.AIMarketOutputConfigEmpty"
+//  INVALIDPARAMETERVALUE_AIMARKETPUBLICALGOVERSIONNOTEXIST = "InvalidParameterValue.AIMarketPublicAlgoVersionNotExist"
+//  INVALIDPARAMETERVALUE_BACKOFFLIMITILLEGAL = "InvalidParameterValue.BackOffLimitIllegal"
+//  INVALIDPARAMETERVALUE_BACKOFFLIMITNOTSUPPORT = "InvalidParameterValue.BackOffLimitNotSupport"
+//  INVALIDPARAMETERVALUE_COSPATHNOTEXIST = "InvalidParameterValue.CosPathNotExist"
+//  INVALIDPARAMETERVALUE_DATASETNUMLIMITEXCEEDED = "InvalidParameterValue.DatasetNumLimitExceeded"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  INVALIDPARAMETERVALUE_FSPATHINACCESSIBLE = "InvalidParameterValue.FSPathInaccessible"
+//  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
+//  INVALIDPARAMETERVALUE_GETCFSMOUNTIPFAILED = "InvalidParameterValue.GetCFSMountIPFailed"
+//  INVALIDPARAMETERVALUE_GETGOOSEFSFAILED = "InvalidParameterValue.GetGooseFSFailed"
+//  INVALIDPARAMETERVALUE_GOOSEFSNOTEXIST = "InvalidParameterValue.GooseFSNotExist"
+//  INVALIDPARAMETERVALUE_IMAGEILLEGAL = "InvalidParameterValue.ImageIllegal"
+//  INVALIDPARAMETERVALUE_IMAGENOTFOUND = "InvalidParameterValue.ImageNotFound"
+//  INVALIDPARAMETERVALUE_NOTALLOW = "InvalidParameterValue.NotAllow"
+//  INVALIDPARAMETERVALUE_PARAMLENGTHEXCEEDLIMIT = "InvalidParameterValue.ParamLengthExceedLimit"
+//  INVALIDPARAMETERVALUE_PATHILLEGAL = "InvalidParameterValue.PathIllegal"
+//  INVALIDPARAMETERVALUE_QUERYVPCINFOFAILED = "InvalidParameterValue.QueryVPCInfoFailed"
+//  INVALIDPARAMETERVALUE_RDMACONFIGILLEGAL = "InvalidParameterValue.RDMAConfigIllegal"
+//  INVALIDPARAMETERVALUE_RESOURCECONFIGILLEGAL = "InvalidParameterValue.ResourceConfigIllegal"
+//  INVALIDPARAMETERVALUE_TAIJIRESOURCECONFIGILLEGAL = "InvalidParameterValue.TAIJIResourceConfigIllegal"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDDATACONFIG = "InvalidParameterValue.UnsupportedDataConfig"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_BILLINGEXCEPTION = "OperationDenied.BillingException"
+//  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
+//  OPERATIONDENIED_IPILLEGAL = "OperationDenied.IpIllegal"
+//  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
+//  OPERATIONDENIED_NETWORKCIDRILLEGAL = "OperationDenied.NetworkCidrIllegal"
+//  OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
+//  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
+//  OPERATIONDENIED_SUBNETILLEGAL = "OperationDenied.SubnetIllegal"
+//  OPERATIONDENIED_TAIJIAPPLICATIONGROUPINSUFFICIENT = "OperationDenied.TAIJIApplicationGroupInsufficient"
+//  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
+//  RESOURCENOTFOUND_CFSNOTFOUND = "ResourceNotFound.CfsNotFound"
+//  RESOURCENOTFOUND_VPCNOTFOUND = "ResourceNotFound.VPCNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateTrainingTaskWithContext(ctx context.Context, request *CreateTrainingTaskRequest) (response *CreateTrainingTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateTrainingTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTrainingTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTrainingTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDatasetRequest() (request *DeleteDatasetRequest) {
     request = &DeleteDatasetRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1109,6 +1268,63 @@ func (c *Client) DeleteTrainingModelVersionWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDeleteTrainingModelVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTrainingTaskRequest() (request *DeleteTrainingTaskRequest) {
+    request = &DeleteTrainingTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DeleteTrainingTask")
+    
+    
+    return
+}
+
+func NewDeleteTrainingTaskResponse() (response *DeleteTrainingTaskResponse) {
+    response = &DeleteTrainingTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTrainingTask
+// 删除训练任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteTrainingTask(request *DeleteTrainingTaskRequest) (response *DeleteTrainingTaskResponse, err error) {
+    return c.DeleteTrainingTaskWithContext(context.Background(), request)
+}
+
+// DeleteTrainingTask
+// 删除训练任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteTrainingTaskWithContext(ctx context.Context, request *DeleteTrainingTaskRequest) (response *DeleteTrainingTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteTrainingTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTrainingTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTrainingTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -3060,6 +3276,111 @@ func (c *Client) StartNotebookWithContext(ctx context.Context, request *StartNot
     return
 }
 
+func NewStartTrainingTaskRequest() (request *StartTrainingTaskRequest) {
+    request = &StartTrainingTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "StartTrainingTask")
+    
+    
+    return
+}
+
+func NewStartTrainingTaskResponse() (response *StartTrainingTaskResponse) {
+    response = &StartTrainingTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartTrainingTask
+// 启动模型训练任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CFSNOTFOUND = "InternalError.CFSNotFound"
+//  INTERNALERROR_CREATEJOBINSTANCEFAILED = "InternalError.CreateJobInstanceFailed"
+//  INTERNALERROR_CREATETCRINSTANCETOKENFAILED = "InternalError.CreateTcrInstanceTokenFailed"
+//  INTERNALERROR_GETCFSFILESYSTEMSFAILED = "InternalError.GetCFSFileSystemsFailed"
+//  INTERNALERROR_GETCFSMOUNTINFOFAILED = "InternalError.GetCFSMountInfoFailed"
+//  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
+//  INTERNALERROR_QUERYHDFSINFOFAILED = "InternalError.QueryHDFSInfoFailed"
+//  INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
+//  INTERNALERROR_QUERYRESOURCESPECFAILED = "InternalError.QueryResourceSpecFailed"
+//  INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_COSPATHNOTEXIST = "InvalidParameterValue.CosPathNotExist"
+//  INVALIDPARAMETERVALUE_DATASETNOTEXIST = "InvalidParameterValue.DatasetNotExist"
+//  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
+//  INVALIDPARAMETERVALUE_GETCFSMOUNTIPFAILED = "InvalidParameterValue.GetCFSMountIPFailed"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_BILLINGEXCEPTION = "OperationDenied.BillingException"
+//  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
+//  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
+//  OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
+//  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
+//  OPERATIONDENIED_TAIJIAPPLICATIONGROUPINSUFFICIENT = "OperationDenied.TAIJIApplicationGroupInsufficient"
+//  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CFSNOTFOUND = "ResourceNotFound.CfsNotFound"
+//  RESOURCENOTFOUND_VPCNOTFOUND = "ResourceNotFound.VPCNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) StartTrainingTask(request *StartTrainingTaskRequest) (response *StartTrainingTaskResponse, err error) {
+    return c.StartTrainingTaskWithContext(context.Background(), request)
+}
+
+// StartTrainingTask
+// 启动模型训练任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CFSNOTFOUND = "InternalError.CFSNotFound"
+//  INTERNALERROR_CREATEJOBINSTANCEFAILED = "InternalError.CreateJobInstanceFailed"
+//  INTERNALERROR_CREATETCRINSTANCETOKENFAILED = "InternalError.CreateTcrInstanceTokenFailed"
+//  INTERNALERROR_GETCFSFILESYSTEMSFAILED = "InternalError.GetCFSFileSystemsFailed"
+//  INTERNALERROR_GETCFSMOUNTINFOFAILED = "InternalError.GetCFSMountInfoFailed"
+//  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
+//  INTERNALERROR_QUERYHDFSINFOFAILED = "InternalError.QueryHDFSInfoFailed"
+//  INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
+//  INTERNALERROR_QUERYRESOURCESPECFAILED = "InternalError.QueryResourceSpecFailed"
+//  INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_COSPATHNOTEXIST = "InvalidParameterValue.CosPathNotExist"
+//  INVALIDPARAMETERVALUE_DATASETNOTEXIST = "InvalidParameterValue.DatasetNotExist"
+//  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
+//  INVALIDPARAMETERVALUE_GETCFSMOUNTIPFAILED = "InvalidParameterValue.GetCFSMountIPFailed"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_BILLINGEXCEPTION = "OperationDenied.BillingException"
+//  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
+//  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
+//  OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
+//  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
+//  OPERATIONDENIED_TAIJIAPPLICATIONGROUPINSUFFICIENT = "OperationDenied.TAIJIApplicationGroupInsufficient"
+//  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CFSNOTFOUND = "ResourceNotFound.CfsNotFound"
+//  RESOURCENOTFOUND_VPCNOTFOUND = "ResourceNotFound.VPCNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) StartTrainingTaskWithContext(ctx context.Context, request *StartTrainingTaskRequest) (response *StartTrainingTaskResponse, err error) {
+    if request == nil {
+        request = NewStartTrainingTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartTrainingTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartTrainingTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopModelAccelerateTaskRequest() (request *StopModelAccelerateTaskRequest) {
     request = &StopModelAccelerateTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3188,6 +3509,69 @@ func (c *Client) StopNotebookWithContext(ctx context.Context, request *StopNoteb
     request.SetContext(ctx)
     
     response = NewStopNotebookResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopTrainingTaskRequest() (request *StopTrainingTaskRequest) {
+    request = &StopTrainingTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "StopTrainingTask")
+    
+    
+    return
+}
+
+func NewStopTrainingTaskResponse() (response *StopTrainingTaskResponse) {
+    response = &StopTrainingTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopTrainingTask
+// 停止模型训练任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NOPERMISSION = "InternalError.NoPermission"
+//  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
+//  INTERNALERROR_STOPJOBINSTANCEFAILED = "InternalError.StopJobInstanceFailed"
+//  INTERNALERROR_UNSUBMITTEDSTATUSNOTALLOWSTOP = "InternalError.UnSubmittedStatusNotAllowStop"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) StopTrainingTask(request *StopTrainingTaskRequest) (response *StopTrainingTaskResponse, err error) {
+    return c.StopTrainingTaskWithContext(context.Background(), request)
+}
+
+// StopTrainingTask
+// 停止模型训练任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NOPERMISSION = "InternalError.NoPermission"
+//  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
+//  INTERNALERROR_STOPJOBINSTANCEFAILED = "InternalError.StopJobInstanceFailed"
+//  INTERNALERROR_UNSUBMITTEDSTATUSNOTALLOWSTOP = "InternalError.UnSubmittedStatusNotAllowStop"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) StopTrainingTaskWithContext(ctx context.Context, request *StopTrainingTaskRequest) (response *StopTrainingTaskResponse, err error) {
+    if request == nil {
+        request = NewStopTrainingTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopTrainingTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopTrainingTaskResponse()
     err = c.Send(request, response)
     return
 }

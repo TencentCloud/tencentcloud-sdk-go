@@ -432,7 +432,6 @@ type BGPIPL7RuleEntry struct {
 	HttpsToHttpEnable *uint64 `json:"HttpsToHttpEnable,omitnil,omitempty" name:"HttpsToHttpEnable"`
 
 	// 接入端口值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualPort *uint64 `json:"VirtualPort,omitnil,omitempty" name:"VirtualPort"`
 
 	// http强制跳转https，1表示打开，0表示关闭

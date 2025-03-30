@@ -6935,6 +6935,7 @@ type SyncJobInfo struct {
 	AllActions []*string `json:"AllActions,omitnil,omitempty" name:"AllActions"`
 
 	// 当前状态能进行的操作
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Actions []*string `json:"Actions,omitnil,omitempty" name:"Actions"`
 
 	// 同步选项

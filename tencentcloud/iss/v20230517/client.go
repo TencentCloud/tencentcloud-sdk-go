@@ -982,6 +982,73 @@ func (c *Client) ControlDevicePresetWithContext(ctx context.Context, request *Co
     return
 }
 
+func NewControlDeviceSnapshotRequest() (request *ControlDeviceSnapshotRequest) {
+    request = &ControlDeviceSnapshotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "ControlDeviceSnapshot")
+    
+    
+    return
+}
+
+func NewControlDeviceSnapshotResponse() (response *ControlDeviceSnapshotResponse) {
+    response = &ControlDeviceSnapshotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ControlDeviceSnapshot
+// 控制设备抓拍--单次，当前仅支持国标设备
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEVICERESPONSETIMEOUT = "FailedOperation.DeviceResponseTimeOut"
+//  FAILEDOPERATION_DEVICERESULTTIMEOUT = "FailedOperation.DeviceResultTimeOut"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDCHANNELID = "InvalidParameterValue.InvalidChannelId"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDACCESSTYPE = "InvalidParameterValue.UnSupportedAccessType"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDPRESETCMD = "InvalidParameterValue.UnSupportedPresetCMD"
+//  RESOURCEUNAVAILABLE_CHANNELOFFLINE = "ResourceUnavailable.ChannelOffline"
+//  RESOURCEUNAVAILABLE_DEVDISABLE = "ResourceUnavailable.DevDisable"
+//  RESOURCEUNAVAILABLE_DEVNOREGISTER = "ResourceUnavailable.DevNoRegister"
+//  RESOURCEUNAVAILABLE_DEVOFFLINE = "ResourceUnavailable.DevOffline"
+func (c *Client) ControlDeviceSnapshot(request *ControlDeviceSnapshotRequest) (response *ControlDeviceSnapshotResponse, err error) {
+    return c.ControlDeviceSnapshotWithContext(context.Background(), request)
+}
+
+// ControlDeviceSnapshot
+// 控制设备抓拍--单次，当前仅支持国标设备
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEVICERESPONSETIMEOUT = "FailedOperation.DeviceResponseTimeOut"
+//  FAILEDOPERATION_DEVICERESULTTIMEOUT = "FailedOperation.DeviceResultTimeOut"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDCHANNELID = "InvalidParameterValue.InvalidChannelId"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDACCESSTYPE = "InvalidParameterValue.UnSupportedAccessType"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDPRESETCMD = "InvalidParameterValue.UnSupportedPresetCMD"
+//  RESOURCEUNAVAILABLE_CHANNELOFFLINE = "ResourceUnavailable.ChannelOffline"
+//  RESOURCEUNAVAILABLE_DEVDISABLE = "ResourceUnavailable.DevDisable"
+//  RESOURCEUNAVAILABLE_DEVNOREGISTER = "ResourceUnavailable.DevNoRegister"
+//  RESOURCEUNAVAILABLE_DEVOFFLINE = "ResourceUnavailable.DevOffline"
+func (c *Client) ControlDeviceSnapshotWithContext(ctx context.Context, request *ControlDeviceSnapshotRequest) (response *ControlDeviceSnapshotResponse, err error) {
+    if request == nil {
+        request = NewControlDeviceSnapshotRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ControlDeviceSnapshot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewControlDeviceSnapshotResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewControlDeviceStreamRequest() (request *ControlDeviceStreamRequest) {
     request = &ControlDeviceStreamRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3266,6 +3333,63 @@ func (c *Client) ListAITasksWithContext(ctx context.Context, request *ListAITask
     request.SetContext(ctx)
     
     response = NewListAITasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListDeviceSnapshotsRequest() (request *ListDeviceSnapshotsRequest) {
+    request = &ListDeviceSnapshotsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "ListDeviceSnapshots")
+    
+    
+    return
+}
+
+func NewListDeviceSnapshotsResponse() (response *ListDeviceSnapshotsResponse) {
+    response = &ListDeviceSnapshotsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListDeviceSnapshots
+// 获取设备抓拍结果列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDCHANNELID = "InvalidParameterValue.InvalidChannelId"
+//  INVALIDPARAMETERVALUE_PAGESIZEEXCEEDLIMIT = "InvalidParameterValue.PageSizeExceedLimit"
+//  INVALIDPARAMETERVALUE_STARTOVERENDTIME = "InvalidParameterValue.StartOverEndTime"
+//  INVALIDPARAMETERVALUE_STARTOVERNOWTIME = "InvalidParameterValue.StartOverNowTime"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ListDeviceSnapshots(request *ListDeviceSnapshotsRequest) (response *ListDeviceSnapshotsResponse, err error) {
+    return c.ListDeviceSnapshotsWithContext(context.Background(), request)
+}
+
+// ListDeviceSnapshots
+// 获取设备抓拍结果列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDCHANNELID = "InvalidParameterValue.InvalidChannelId"
+//  INVALIDPARAMETERVALUE_PAGESIZEEXCEEDLIMIT = "InvalidParameterValue.PageSizeExceedLimit"
+//  INVALIDPARAMETERVALUE_STARTOVERENDTIME = "InvalidParameterValue.StartOverEndTime"
+//  INVALIDPARAMETERVALUE_STARTOVERNOWTIME = "InvalidParameterValue.StartOverNowTime"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ListDeviceSnapshotsWithContext(ctx context.Context, request *ListDeviceSnapshotsRequest) (response *ListDeviceSnapshotsResponse, err error) {
+    if request == nil {
+        request = NewListDeviceSnapshotsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListDeviceSnapshots require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListDeviceSnapshotsResponse()
     err = c.Send(request, response)
     return
 }

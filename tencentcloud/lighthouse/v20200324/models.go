@@ -5690,9 +5690,12 @@ type Filter struct {
 
 type FirewallRule struct {
 	// 协议，取值：TCP，UDP，ICMP，ALL，ICMPv6。
+	// 
+	// - 使用ICMP协议时，只支持CidrBlock，不支持使用Port、Ipv6CidrBlock参数；
+	// - 使用ICMPv6协议时，只支持Ipv6CidrBlock，不支持使用Port、Ipv6CidrBlock参数；
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。
+	// 端口，取值：ALL，单独的端口，逗号分隔的离散端口，减号分隔的端口范围。注意：单独的端口与离散端口不能同时存在。
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// IPv4网段或 IPv4地址(互斥)。
@@ -5707,7 +5710,7 @@ type FirewallRule struct {
 	// 和CidrBlock互斥，两者都不指定时，如果Protocol是ICMPv6，则取默认值::/0。
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitnil,omitempty" name:"Ipv6CidrBlock"`
 
-	// 取值：ACCEPT，DROP。默认为 ACCEPT。
+	// 取值：ACCEPT（允许），DROP（拒绝）。默认为 ACCEPT。
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
 	// 防火墙规则描述。

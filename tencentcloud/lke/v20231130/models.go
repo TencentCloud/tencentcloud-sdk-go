@@ -7898,7 +7898,7 @@ type ModelInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxTokens *ModelParameter `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
 
-	// 模型来源 Hunyuan：腾讯混元大模型,Industry：腾讯云行业大模型,Experience：新模型体验
+	// 模型来源 Hunyuan：腾讯混元大模型,Industry：腾讯云行业大模型,Experience：新模型体验,Custom自定义模型
 	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 模型图标
@@ -7906,6 +7906,17 @@ type ModelInfo struct {
 
 	// 是否免费
 	IsFree *bool `json:"IsFree,omitnil,omitempty" name:"IsFree"`
+
+	// 模型对话框可输入的上限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputLenLimit *uint64 `json:"InputLenLimit,omitnil,omitempty" name:"InputLenLimit"`
+
+	// 支持工作流的类型 0:模型不支持; 1: 模型支持工作流； 2： 模型支持效果不佳；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportWorkflowStatus *uint64 `json:"SupportWorkflowStatus,omitnil,omitempty" name:"SupportWorkflowStatus"`
+
+	// 模型类别 generate：生成模型，thought：思考模型
+	ModelCategory *string `json:"ModelCategory,omitnil,omitempty" name:"ModelCategory"`
 }
 
 type ModelParameter struct {

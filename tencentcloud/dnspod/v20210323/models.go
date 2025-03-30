@@ -3213,8 +3213,7 @@ func (r *DescribeDomainLogListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDomainLogListResponseParams struct {
-	// 域名信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 域名日志信息
 	LogList []*string `json:"LogList,omitnil,omitempty" name:"LogList"`
 
 	// 分页大小
@@ -4609,7 +4608,6 @@ type DescribeRecordSnapshotRollbackResultResponseParams struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 失败的记录信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedRecordList []*SnapshotRecord `json:"FailedRecordList,omitnil,omitempty" name:"FailedRecordList"`
 
 	// 所属域名
@@ -5423,7 +5421,6 @@ type DomainInfo struct {
 	CnameSpeedup *string `json:"CnameSpeedup,omitnil,omitempty" name:"CnameSpeedup"`
 
 	// 域名备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 域名Punycode
@@ -5463,22 +5460,18 @@ type DomainInfo struct {
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 域名实际使用的NS列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActualNsList []*string `json:"ActualNsList,omitnil,omitempty" name:"ActualNsList"`
 
 	// 域名的记录数量
 	RecordCount *uint64 `json:"RecordCount,omitnil,omitempty" name:"RecordCount"`
 
 	// 域名所有者的账户昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerNick *string `json:"OwnerNick,omitnil,omitempty" name:"OwnerNick"`
 
 	// 是否在付费套餐宽限期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsGracePeriod *string `json:"IsGracePeriod,omitnil,omitempty" name:"IsGracePeriod"`
 
 	// 是否在付费套餐缓冲期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VipBuffered *string `json:"VipBuffered,omitnil,omitempty" name:"VipBuffered"`
 
 	// VIP套餐有效期开始时间
@@ -5498,11 +5491,9 @@ type DomainInfo struct {
 	VipResourceId *string `json:"VipResourceId,omitnil,omitempty" name:"VipResourceId"`
 
 	// 是否是子域名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSubDomain *bool `json:"IsSubDomain,omitnil,omitempty" name:"IsSubDomain"`
 
 	// 域名关联的标签列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagList []*TagItem `json:"TagList,omitnil,omitempty" name:"TagList"`
 
 	// 是否启用搜索引擎推送
@@ -5600,23 +5591,18 @@ type DomainShareUserInfo struct {
 	DomainShareId *uint64 `json:"DomainShareId,omitnil,omitempty" name:"DomainShareId"`
 
 	// 共享模式。r-只读；w-可写；rw-可读写。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 
 	// 共享到的用户昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
 
 	// 共享到的用户UIN
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QCloudUIN *string `json:"QCloudUIN,omitnil,omitempty" name:"QCloudUIN"`
 
 	// 共享状态。enabled-有效；pause-无效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 共享的子域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
 }
 
@@ -5756,7 +5742,6 @@ type KeyValue struct {
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -6617,18 +6602,15 @@ func (r *ModifyPackageAutoRenewResponse) FromJsonString(s string) error {
 
 type ModifyRecordBatchDetail struct {
 	// 见RecordInfoBatchModify
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordList []*BatchRecordInfo `json:"RecordList,omitnil,omitempty" name:"RecordList"`
 
 	// 任务编号
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 域名等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainGrade *string `json:"DomainGrade,omitnil,omitempty" name:"DomainGrade"`
 
 	// 错误信息
@@ -6636,7 +6618,6 @@ type ModifyRecordBatchDetail struct {
 	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 
 	// 该条任务运行状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 操作类型
@@ -6644,7 +6625,6 @@ type ModifyRecordBatchDetail struct {
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 
 	// 域名ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 }
 
@@ -7809,7 +7789,6 @@ type RecordInfo struct {
 	MonitorStatus *string `json:"MonitorStatus,omitnil,omitempty" name:"MonitorStatus"`
 
 	// 记录的备注。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 记录最后更新时间。
@@ -7858,7 +7837,6 @@ type RecordListItem struct {
 	TTL *uint64 `json:"TTL,omitnil,omitempty" name:"TTL"`
 
 	// MX值，只有MX记录有
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MX *uint64 `json:"MX,omitnil,omitempty" name:"MX"`
 
 	// 是否是默认的ns记录
@@ -8155,7 +8133,6 @@ type TagItem struct {
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 标签值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 

@@ -45,6 +45,57 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAbortAgentCruiseDialingCampaignRequest() (request *AbortAgentCruiseDialingCampaignRequest) {
+    request = &AbortAgentCruiseDialingCampaignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "AbortAgentCruiseDialingCampaign")
+    
+    
+    return
+}
+
+func NewAbortAgentCruiseDialingCampaignResponse() (response *AbortAgentCruiseDialingCampaignResponse) {
+    response = &AbortAgentCruiseDialingCampaignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AbortAgentCruiseDialingCampaign
+// 停止座席巡航式外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) AbortAgentCruiseDialingCampaign(request *AbortAgentCruiseDialingCampaignRequest) (response *AbortAgentCruiseDialingCampaignResponse, err error) {
+    return c.AbortAgentCruiseDialingCampaignWithContext(context.Background(), request)
+}
+
+// AbortAgentCruiseDialingCampaign
+// 停止座席巡航式外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) AbortAgentCruiseDialingCampaignWithContext(ctx context.Context, request *AbortAgentCruiseDialingCampaignRequest) (response *AbortAgentCruiseDialingCampaignResponse, err error) {
+    if request == nil {
+        request = NewAbortAgentCruiseDialingCampaignRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AbortAgentCruiseDialingCampaign require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAbortAgentCruiseDialingCampaignResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAbortPredictiveDialingCampaignRequest() (request *AbortPredictiveDialingCampaignRequest) {
     request = &AbortPredictiveDialingCampaignRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -431,6 +482,61 @@ func (c *Client) CreateAdminURLWithContext(ctx context.Context, request *CreateA
     request.SetContext(ctx)
     
     response = NewCreateAdminURLResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAgentCruiseDialingCampaignRequest() (request *CreateAgentCruiseDialingCampaignRequest) {
+    request = &CreateAgentCruiseDialingCampaignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "CreateAgentCruiseDialingCampaign")
+    
+    
+    return
+}
+
+func NewCreateAgentCruiseDialingCampaignResponse() (response *CreateAgentCruiseDialingCampaignResponse) {
+    response = &CreateAgentCruiseDialingCampaignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAgentCruiseDialingCampaign
+// 座席巡航式外呼。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_OUTOFCOUNTLIMIT = "LimitExceeded.OutOfCountLimit"
+func (c *Client) CreateAgentCruiseDialingCampaign(request *CreateAgentCruiseDialingCampaignRequest) (response *CreateAgentCruiseDialingCampaignResponse, err error) {
+    return c.CreateAgentCruiseDialingCampaignWithContext(context.Background(), request)
+}
+
+// CreateAgentCruiseDialingCampaign
+// 座席巡航式外呼。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_OUTOFCOUNTLIMIT = "LimitExceeded.OutOfCountLimit"
+func (c *Client) CreateAgentCruiseDialingCampaignWithContext(ctx context.Context, request *CreateAgentCruiseDialingCampaignRequest) (response *CreateAgentCruiseDialingCampaignResponse, err error) {
+    if request == nil {
+        request = NewCreateAgentCruiseDialingCampaignRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAgentCruiseDialingCampaign require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAgentCruiseDialingCampaignResponse()
     err = c.Send(request, response)
     return
 }
@@ -1446,6 +1552,59 @@ func (c *Client) DescribeActiveCarrierPrivilegeNumberWithContext(ctx context.Con
     request.SetContext(ctx)
     
     response = NewDescribeActiveCarrierPrivilegeNumberResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAgentCruiseDialingCampaignRequest() (request *DescribeAgentCruiseDialingCampaignRequest) {
+    request = &DescribeAgentCruiseDialingCampaignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeAgentCruiseDialingCampaign")
+    
+    
+    return
+}
+
+func NewDescribeAgentCruiseDialingCampaignResponse() (response *DescribeAgentCruiseDialingCampaignResponse) {
+    response = &DescribeAgentCruiseDialingCampaignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAgentCruiseDialingCampaign
+// 查询 座席巡航式外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAgentCruiseDialingCampaign(request *DescribeAgentCruiseDialingCampaignRequest) (response *DescribeAgentCruiseDialingCampaignResponse, err error) {
+    return c.DescribeAgentCruiseDialingCampaignWithContext(context.Background(), request)
+}
+
+// DescribeAgentCruiseDialingCampaign
+// 查询 座席巡航式外呼任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeAgentCruiseDialingCampaignWithContext(ctx context.Context, request *DescribeAgentCruiseDialingCampaignRequest) (response *DescribeAgentCruiseDialingCampaignResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentCruiseDialingCampaignRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgentCruiseDialingCampaign require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAgentCruiseDialingCampaignResponse()
     err = c.Send(request, response)
     return
 }
@@ -3442,6 +3601,65 @@ func (c *Client) StopAutoCalloutTaskWithContext(ctx context.Context, request *St
     return
 }
 
+func NewTransferToManualRequest() (request *TransferToManualRequest) {
+    request = &TransferToManualRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "TransferToManual")
+    
+    
+    return
+}
+
+func NewTransferToManualResponse() (response *TransferToManualResponse) {
+    response = &TransferToManualResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// TransferToManual
+// 特定场景下讲会话转接到人工坐席
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SESSIONNOTEXISTS = "FailedOperation.SessionNotExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_RINGALLGROUPMEMBEROVERFLOW = "InvalidParameterValue.RingAllGroupMemberOverflow"
+//  INVALIDPARAMETERVALUE_SKILLGROUPERROR = "InvalidParameterValue.SkillGroupError"
+func (c *Client) TransferToManual(request *TransferToManualRequest) (response *TransferToManualResponse, err error) {
+    return c.TransferToManualWithContext(context.Background(), request)
+}
+
+// TransferToManual
+// 特定场景下讲会话转接到人工坐席
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SESSIONNOTEXISTS = "FailedOperation.SessionNotExists"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_RINGALLGROUPMEMBEROVERFLOW = "InvalidParameterValue.RingAllGroupMemberOverflow"
+//  INVALIDPARAMETERVALUE_SKILLGROUPERROR = "InvalidParameterValue.SkillGroupError"
+func (c *Client) TransferToManualWithContext(ctx context.Context, request *TransferToManualRequest) (response *TransferToManualResponse, err error) {
+    if request == nil {
+        request = NewTransferToManualRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TransferToManual require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTransferToManualResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUnbindNumberCallOutSkillGroupRequest() (request *UnbindNumberCallOutSkillGroupRequest) {
     request = &UnbindNumberCallOutSkillGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3465,10 +3683,12 @@ func NewUnbindNumberCallOutSkillGroupResponse() (response *UnbindNumberCallOutSk
 // 解绑号码外呼技能组
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION_SESSIONNOTEXISTS = "FailedOperation.SessionNotExists"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_RINGALLGROUPMEMBEROVERFLOW = "InvalidParameterValue.RingAllGroupMemberOverflow"
+//  INVALIDPARAMETERVALUE_SKILLGROUPERROR = "InvalidParameterValue.SkillGroupError"
 func (c *Client) UnbindNumberCallOutSkillGroup(request *UnbindNumberCallOutSkillGroupRequest) (response *UnbindNumberCallOutSkillGroupResponse, err error) {
     return c.UnbindNumberCallOutSkillGroupWithContext(context.Background(), request)
 }
@@ -3477,10 +3697,12 @@ func (c *Client) UnbindNumberCallOutSkillGroup(request *UnbindNumberCallOutSkill
 // 解绑号码外呼技能组
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  FAILEDOPERATION_SESSIONNOTEXISTS = "FailedOperation.SessionNotExists"
+//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_RINGALLGROUPMEMBEROVERFLOW = "InvalidParameterValue.RingAllGroupMemberOverflow"
+//  INVALIDPARAMETERVALUE_SKILLGROUPERROR = "InvalidParameterValue.SkillGroupError"
 func (c *Client) UnbindNumberCallOutSkillGroupWithContext(ctx context.Context, request *UnbindNumberCallOutSkillGroupRequest) (response *UnbindNumberCallOutSkillGroupResponse, err error) {
     if request == nil {
         request = NewUnbindNumberCallOutSkillGroupRequest()

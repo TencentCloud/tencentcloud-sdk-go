@@ -1297,6 +1297,219 @@ func (r *CreateTrainingModelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTrainingTaskRequestParams struct {
+	// 训练任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 计费模式，eg：PREPAID 包年包月（资源组）;
+	// POSTPAID_BY_HOUR 按量计费
+	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// 资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{"Role":"WORKER", "InstanceType": "TI.S.MEDIUM.POST", "InstanceNum": 1}]
+	ResourceConfigInfos []*ResourceConfigInfo `json:"ResourceConfigInfos,omitnil,omitempty" name:"ResourceConfigInfos"`
+
+	// 训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH
+	FrameworkName *string `json:"FrameworkName,omitnil,omitempty" name:"FrameworkName"`
+
+	// 训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：1.15、1.9
+	FrameworkVersion *string `json:"FrameworkVersion,omitnil,omitempty" name:"FrameworkVersion"`
+
+	// 训练框架环境，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu
+	FrameworkEnvironment *string `json:"FrameworkEnvironment,omitnil,omitempty" name:"FrameworkEnvironment"`
+
+	// 预付费专用资源组ID，通过DescribeBillingResourceGroups接口查询
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// 标签配置
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 自定义镜像信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
+
+	// COS代码包路径
+	CodePackagePath *CosPathInfo `json:"CodePackagePath,omitnil,omitempty" name:"CodePackagePath"`
+
+	// 任务的启动命令，按任务训练模式输入，如遇特殊字符导致配置失败，可使用EncodedStartCmdInfo参数
+	StartCmdInfo *StartCmdInfo `json:"StartCmdInfo,omitnil,omitempty" name:"StartCmdInfo"`
+
+	// 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
+	TrainingMode *string `json:"TrainingMode,omitnil,omitempty" name:"TrainingMode"`
+
+	// 数据配置，依赖DataSource字段，数量不超过10个
+	DataConfigs []*DataConfig `json:"DataConfigs,omitnil,omitempty" name:"DataConfigs"`
+
+	// VPC Id
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 子网Id
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// COS训练输出路径
+	Output *CosPathInfo `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// CLS日志配置
+	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
+
+	// 调优参数，不超过2048个字符
+	TuningParameters *string `json:"TuningParameters,omitnil,omitempty" name:"TuningParameters"`
+
+	// 是否上报日志
+	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
+
+	// 备注，不超过1024个字符
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 数据来源，eg：DATASET、COS、CFS、CFSTurbo、HDFS、GooseFSx
+	DataSource *string `json:"DataSource,omitnil,omitempty" name:"DataSource"`
+
+	// 回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&内容详见：[[TI-ONE接口回调说明]](https://cloud.tencent.com/document/product/851/84292)
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
+
+	// 编码后的任务启动命令，与StartCmdInfo同时配置时，仅当前参数生效
+	EncodedStartCmdInfo *EncodedStartCmdInfo `json:"EncodedStartCmdInfo,omitnil,omitempty" name:"EncodedStartCmdInfo"`
+}
+
+type CreateTrainingTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 训练任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 计费模式，eg：PREPAID 包年包月（资源组）;
+	// POSTPAID_BY_HOUR 按量计费
+	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// 资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{"Role":"WORKER", "InstanceType": "TI.S.MEDIUM.POST", "InstanceNum": 1}]
+	ResourceConfigInfos []*ResourceConfigInfo `json:"ResourceConfigInfos,omitnil,omitempty" name:"ResourceConfigInfos"`
+
+	// 训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH
+	FrameworkName *string `json:"FrameworkName,omitnil,omitempty" name:"FrameworkName"`
+
+	// 训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：1.15、1.9
+	FrameworkVersion *string `json:"FrameworkVersion,omitnil,omitempty" name:"FrameworkVersion"`
+
+	// 训练框架环境，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu
+	FrameworkEnvironment *string `json:"FrameworkEnvironment,omitnil,omitempty" name:"FrameworkEnvironment"`
+
+	// 预付费专用资源组ID，通过DescribeBillingResourceGroups接口查询
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
+
+	// 标签配置
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 自定义镜像信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
+
+	// COS代码包路径
+	CodePackagePath *CosPathInfo `json:"CodePackagePath,omitnil,omitempty" name:"CodePackagePath"`
+
+	// 任务的启动命令，按任务训练模式输入，如遇特殊字符导致配置失败，可使用EncodedStartCmdInfo参数
+	StartCmdInfo *StartCmdInfo `json:"StartCmdInfo,omitnil,omitempty" name:"StartCmdInfo"`
+
+	// 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
+	TrainingMode *string `json:"TrainingMode,omitnil,omitempty" name:"TrainingMode"`
+
+	// 数据配置，依赖DataSource字段，数量不超过10个
+	DataConfigs []*DataConfig `json:"DataConfigs,omitnil,omitempty" name:"DataConfigs"`
+
+	// VPC Id
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 子网Id
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// COS训练输出路径
+	Output *CosPathInfo `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// CLS日志配置
+	LogConfig *LogConfig `json:"LogConfig,omitnil,omitempty" name:"LogConfig"`
+
+	// 调优参数，不超过2048个字符
+	TuningParameters *string `json:"TuningParameters,omitnil,omitempty" name:"TuningParameters"`
+
+	// 是否上报日志
+	LogEnable *bool `json:"LogEnable,omitnil,omitempty" name:"LogEnable"`
+
+	// 备注，不超过1024个字符
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 数据来源，eg：DATASET、COS、CFS、CFSTurbo、HDFS、GooseFSx
+	DataSource *string `json:"DataSource,omitnil,omitempty" name:"DataSource"`
+
+	// 回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&内容详见：[[TI-ONE接口回调说明]](https://cloud.tencent.com/document/product/851/84292)
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
+
+	// 编码后的任务启动命令，与StartCmdInfo同时配置时，仅当前参数生效
+	EncodedStartCmdInfo *EncodedStartCmdInfo `json:"EncodedStartCmdInfo,omitnil,omitempty" name:"EncodedStartCmdInfo"`
+}
+
+func (r *CreateTrainingTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTrainingTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "ChargeType")
+	delete(f, "ResourceConfigInfos")
+	delete(f, "FrameworkName")
+	delete(f, "FrameworkVersion")
+	delete(f, "FrameworkEnvironment")
+	delete(f, "ResourceGroupId")
+	delete(f, "Tags")
+	delete(f, "ImageInfo")
+	delete(f, "CodePackagePath")
+	delete(f, "StartCmdInfo")
+	delete(f, "TrainingMode")
+	delete(f, "DataConfigs")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "Output")
+	delete(f, "LogConfig")
+	delete(f, "TuningParameters")
+	delete(f, "LogEnable")
+	delete(f, "Remark")
+	delete(f, "DataSource")
+	delete(f, "CallbackUrl")
+	delete(f, "EncodedStartCmdInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrainingTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTrainingTaskResponseParams struct {
+	// 训练任务ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTrainingTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTrainingTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateTrainingTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTrainingTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CronScaleJob struct {
 	// Cron表达式，标识任务的执行时间，精确到分钟级
 	Schedule *string `json:"Schedule,omitnil,omitempty" name:"Schedule"`
@@ -2038,6 +2251,60 @@ func (r *DeleteTrainingModelVersionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTrainingModelVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTrainingTaskRequestParams struct {
+	// 训练任务ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type DeleteTrainingTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 训练任务ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *DeleteTrainingTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTrainingTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTrainingTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTrainingTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteTrainingTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteTrainingTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteTrainingTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTrainingTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3805,6 +4072,11 @@ func (r *DescribeTrainingTasksResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeTrainingTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type EncodedStartCmdInfo struct {
+	// 任务的启动命令，以base64格式输入，注意转换时需要完整输入{"StartCmd":"","PsStartCmd":"","WorkerStartCmd":""}
+	StartCmdInfo *string `json:"StartCmdInfo,omitnil,omitempty" name:"StartCmdInfo"`
 }
 
 type EnvVar struct {
@@ -6058,6 +6330,60 @@ func (r *StartNotebookResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StartTrainingTaskRequestParams struct {
+	// 训练任务ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type StartTrainingTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 训练任务ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *StartTrainingTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartTrainingTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartTrainingTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartTrainingTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StartTrainingTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *StartTrainingTaskResponseParams `json:"Response"`
+}
+
+func (r *StartTrainingTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartTrainingTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type StatefulSetCondition struct {
 	// 信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6197,6 +6523,60 @@ func (r *StopNotebookResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StopNotebookResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopTrainingTaskRequestParams struct {
+	// 训练任务ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type StopTrainingTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 训练任务ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *StopTrainingTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopTrainingTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopTrainingTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopTrainingTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StopTrainingTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *StopTrainingTaskResponseParams `json:"Response"`
+}
+
+func (r *StopTrainingTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopTrainingTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

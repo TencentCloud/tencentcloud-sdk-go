@@ -4076,72 +4076,41 @@ type RecognizeConfig struct {
 	// 语音转文本不同套餐版本支持的语言如下：
 	// 
 	// **基础版**：
-	// 
-	// - "zh": 中文
-	// 
-	// - "zh-TW": 中国台湾
-	// 
+	// - "zh": 中文（简体）
+	// - "zh-TW": 中文（繁体）
 	// - "en": 英语
 	// 
 	// **标准版：**
-	// 
 	// - "8k_zh_large": 普方大模型引擎. 当前模型同时支持中文等语言的识别，模型参数量极大，语言模型性能增强，针对电话音频中各类场景、各类中文方言的识别准确率极大提升.
-	// 
 	// - "16k_zh_large": 普方英大模型引擎. 当前模型同时支持中文、英文、多种中文方言等语言的识别，模型参数量极大，语言模型性能增强，针对噪声大、回音大、人声小、人声远等低质量音频的识别准确率极大提升.
-	// 
 	// - "16k_multi_lang": 多语种大模型引擎. 当前模型同时支持英语、日语、韩语、阿拉伯语、菲律宾语、法语、印地语、印尼语、马来语、葡萄牙语、西班牙语、泰语、土耳其语、越南语、德语的识别，可实现15个语种的自动识别(句子/段落级别).
-	// 
 	// - "16k_zh_en": 中英大模型引擎. 当前模型同时支持中文、英语识别，模型参数量极大，语言模型性能增强，针对噪声大、回音大、人声小、人声远等低质量音频的识别准确率极大提升.
 	// 
 	// **高级版：**
-	// 
 	// - "zh-dialect": 中国方言
-	// 
 	// - "zh-yue": 中国粤语
-	// 
 	// - "vi": 越南语
-	// 
 	// - "ja": 日语
-	// 
 	// - "ko": 韩语
-	// 
 	// - "id": 印度尼西亚语
-	// 
 	// - "th": 泰语
-	// 
 	// - "pt": 葡萄牙语
-	// 
 	// - "tr": 土耳其语
-	// 
 	// - "ar": 阿拉伯语
-	// 
 	// - "es": 西班牙语
-	// 
 	// - "hi": 印地语
-	// 
 	// - "fr": 法语
-	// 
 	// - "ms": 马来语
-	// 
 	// - "fil": 菲律宾语
-	// 
 	// - "de": 德语
-	// 
 	// - "it": 意大利语
-	// 
 	// - "ru": 俄语
-	// 
 	// - "sv": 瑞典语
-	// 
 	// - "da": 丹麦语
-	// 
 	// - "no": 挪威语
 	// 
 	// **注意：**
-	// 
 	// 如果缺少满足您需求的语言，请联系我们技术人员。
-	// 
-	// 示例值：zh
 	Language *string `json:"Language,omitnil,omitempty" name:"Language"`
 
 	// **发起模糊识别为高级版能力,默认按照高级版收费,仅支持填写基础版和高级版语言.**
@@ -4589,6 +4558,9 @@ type StartAIConversationRequestParams struct {
 
 	// 数字人配置，为JSON字符串。**数字人配置需要提工单加白后才能使用**
 	AvatarConfig *string `json:"AvatarConfig,omitnil,omitempty" name:"AvatarConfig"`
+
+	// 实验性参数,联系后台使用
+	ExperimentalParams *string `json:"ExperimentalParams,omitnil,omitempty" name:"ExperimentalParams"`
 }
 
 type StartAIConversationRequest struct {
@@ -4622,6 +4594,9 @@ type StartAIConversationRequest struct {
 
 	// 数字人配置，为JSON字符串。**数字人配置需要提工单加白后才能使用**
 	AvatarConfig *string `json:"AvatarConfig,omitnil,omitempty" name:"AvatarConfig"`
+
+	// 实验性参数,联系后台使用
+	ExperimentalParams *string `json:"ExperimentalParams,omitnil,omitempty" name:"ExperimentalParams"`
 }
 
 func (r *StartAIConversationRequest) ToJsonString() string {
@@ -4645,6 +4620,7 @@ func (r *StartAIConversationRequest) FromJsonString(s string) error {
 	delete(f, "LLMConfig")
 	delete(f, "TTSConfig")
 	delete(f, "AvatarConfig")
+	delete(f, "ExperimentalParams")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartAIConversationRequest has unknown keys!", "")
 	}

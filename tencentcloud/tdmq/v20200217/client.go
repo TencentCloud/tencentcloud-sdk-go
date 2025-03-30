@@ -5595,6 +5595,10 @@ func NewDescribeRocketMQSmoothMigrationTaskListResponse() (response *DescribeRoc
 }
 
 // DescribeRocketMQSmoothMigrationTaskList
+// 平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
+//
+// 
+//
 // 用于查询RocketMQ平滑迁移任务列表
 //
 // 可能返回的错误码:
@@ -5604,6 +5608,10 @@ func (c *Client) DescribeRocketMQSmoothMigrationTaskList(request *DescribeRocket
 }
 
 // DescribeRocketMQSmoothMigrationTaskList
+// 平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
+//
+// 
+//
 // 用于查询RocketMQ平滑迁移任务列表
 //
 // 可能返回的错误码:
@@ -5644,6 +5652,10 @@ func NewDescribeRocketMQSourceClusterGroupListResponse() (response *DescribeRock
 }
 
 // DescribeRocketMQSourceClusterGroupList
+// 平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
+//
+// 
+//
 // 平滑迁移过程获取源集群group列表接口
 //
 // 可能返回的错误码:
@@ -5653,6 +5665,10 @@ func (c *Client) DescribeRocketMQSourceClusterGroupList(request *DescribeRocketM
 }
 
 // DescribeRocketMQSourceClusterGroupList
+// 平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
+//
+// 
+//
 // 平滑迁移过程获取源集群group列表接口
 //
 // 可能返回的错误码:
@@ -5693,6 +5709,10 @@ func NewDescribeRocketMQSourceClusterTopicListResponse() (response *DescribeRock
 }
 
 // DescribeRocketMQSourceClusterTopicList
+// 平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
+//
+// 
+//
 // 平滑迁移过程获取源集群topic列表接口
 //
 // 可能返回的错误码:
@@ -5702,6 +5722,10 @@ func (c *Client) DescribeRocketMQSourceClusterTopicList(request *DescribeRocketM
 }
 
 // DescribeRocketMQSourceClusterTopicList
+// 平滑迁移相关接口已迁移至trocket产品下，该接口已废弃
+//
+// 
+//
 // 平滑迁移过程获取源集群topic列表接口
 //
 // 可能返回的错误码:

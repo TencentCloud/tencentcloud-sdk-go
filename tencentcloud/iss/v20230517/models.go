@@ -1551,6 +1551,81 @@ func (r *ControlDevicePresetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ControlDeviceSnapshotRequestParams struct {
+	// 通道ID
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 连拍张数，可选值范围1～10
+	SnapNum *int64 `json:"SnapNum,omitnil,omitempty" name:"SnapNum"`
+
+	// 抓拍间隔时间，可选值范围1～1800
+	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// 图片存储时间，默认 7 天，仅支持（7, 15, 30, 60, 90, 180, 365）天
+	Expire *int64 `json:"Expire,omitnil,omitempty" name:"Expire"`
+}
+
+type ControlDeviceSnapshotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 通道ID
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 连拍张数，可选值范围1～10
+	SnapNum *int64 `json:"SnapNum,omitnil,omitempty" name:"SnapNum"`
+
+	// 抓拍间隔时间，可选值范围1～1800
+	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// 图片存储时间，默认 7 天，仅支持（7, 15, 30, 60, 90, 180, 365）天
+	Expire *int64 `json:"Expire,omitnil,omitempty" name:"Expire"`
+}
+
+func (r *ControlDeviceSnapshotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ControlDeviceSnapshotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelId")
+	delete(f, "SnapNum")
+	delete(f, "Interval")
+	delete(f, "Expire")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ControlDeviceSnapshotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ControlDeviceSnapshotResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ControlDeviceSnapshotResponse struct {
+	*tchttp.BaseResponse
+	Response *ControlDeviceSnapshotResponseParams `json:"Response"`
+}
+
+func (r *ControlDeviceSnapshotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ControlDeviceSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ControlDeviceStreamData struct {
 	// flv 流地址
 	Flv *string `json:"Flv,omitnil,omitempty" name:"Flv"`
@@ -4473,6 +4548,29 @@ type FaceMaskAIResultInfo struct {
 	FaceMaskInfo []*BaseAIResultInfo `json:"FaceMaskInfo,omitnil,omitempty" name:"FaceMaskInfo"`
 }
 
+type GBDeviceSnapInfo struct {
+	// 文件名称
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 下载地址，空值表示存储图片过期
+	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
+
+	// 图片大小，单位B
+	ImageSize *int64 `json:"ImageSize,omitnil,omitempty" name:"ImageSize"`
+
+	// 文件的创建时间
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 图片的接收时间
+	ReceivedTime *string `json:"ReceivedTime,omitnil,omitempty" name:"ReceivedTime"`
+
+	// 预览地址，空值表示存储图片过期
+	PreviewUrl *string `json:"PreviewUrl,omitnil,omitempty" name:"PreviewUrl"`
+
+	// 国标信令会话ID，同时对应控制设备抓拍 ( ControlDeviceSnapshot )接口返回的request_id
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+}
+
 type GatewayDevice struct {
 	// 设备ID
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
@@ -4682,6 +4780,101 @@ type ListDeviceInfo struct {
 
 	// 通道数量
 	ChannelNum *uint64 `json:"ChannelNum,omitnil,omitempty" name:"ChannelNum"`
+}
+
+// Predefined struct for user
+type ListDeviceSnapshotsRequestParams struct {
+	// 通道ID
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 设备ID（该字段暂不生效）
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 查询开始时间，默认查询当天
+	Start *int64 `json:"Start,omitnil,omitempty" name:"Start"`
+
+	// 查询结束时间，默认查询当天
+	End *int64 `json:"End,omitnil,omitempty" name:"End"`
+
+	// 分页页码，默认1
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小，默认200，最大2000
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type ListDeviceSnapshotsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 通道ID
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 设备ID（该字段暂不生效）
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 查询开始时间，默认查询当天
+	Start *int64 `json:"Start,omitnil,omitempty" name:"Start"`
+
+	// 查询结束时间，默认查询当天
+	End *int64 `json:"End,omitnil,omitempty" name:"End"`
+
+	// 分页页码，默认1
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小，默认200，最大2000
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *ListDeviceSnapshotsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListDeviceSnapshotsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelId")
+	delete(f, "DeviceId")
+	delete(f, "Start")
+	delete(f, "End")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListDeviceSnapshotsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListDeviceSnapshotsResponseParams struct {
+	// 抓拍结果信息列表
+	Data []*GBDeviceSnapInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 抓拍结果总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListDeviceSnapshotsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListDeviceSnapshotsResponseParams `json:"Response"`
+}
+
+func (r *ListDeviceSnapshotsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListDeviceSnapshotsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

@@ -489,11 +489,9 @@ type AuditInstanceFilters struct {
 
 type AuditInstanceInfo struct {
 	// 项目ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 标签信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
@@ -541,35 +539,27 @@ type AuditLog struct {
 	ThreadId *int64 `json:"ThreadId,omitnil,omitempty" name:"ThreadId"`
 
 	// 扫描行数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckRows *int64 `json:"CheckRows,omitnil,omitempty" name:"CheckRows"`
 
 	// cpu执行时间，微秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CpuTime *float64 `json:"CpuTime,omitnil,omitempty" name:"CpuTime"`
 
 	// IO等待时间，微秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IoWaitTime *int64 `json:"IoWaitTime,omitnil,omitempty" name:"IoWaitTime"`
 
 	// 锁等待时间，微秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LockWaitTime *int64 `json:"LockWaitTime,omitnil,omitempty" name:"LockWaitTime"`
 
 	// 事务持续等待时间，微秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrxLivingTime *int64 `json:"TrxLivingTime,omitnil,omitempty" name:"TrxLivingTime"`
 
 	// 开始时间，与timestamp构成一个精确到纳秒的时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NsTime *int64 `json:"NsTime,omitnil,omitempty" name:"NsTime"`
 
 	// 日志命中规则模板的基本信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateInfo []*LogRuleTemplateInfo `json:"TemplateInfo,omitnil,omitempty" name:"TemplateInfo"`
 
 	// 事务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrxId *int64 `json:"TrxId,omitnil,omitempty" name:"TrxId"`
 }
 
@@ -639,7 +629,6 @@ type AuditLogFilter struct {
 
 type AuditRuleFilters struct {
 	// 单条审计规则。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleFilters []*RuleFilters `json:"RuleFilters,omitnil,omitempty" name:"RuleFilters"`
 }
 
@@ -4179,6 +4168,12 @@ type DeliverSummary struct {
 
 	// 投递子类型：cls，ckafka。
 	DeliverSubType *string `json:"DeliverSubType,omitnil,omitempty" name:"DeliverSubType"`
+
+	// 投递者
+	DeliverConsumer *string `json:"DeliverConsumer,omitnil,omitempty" name:"DeliverConsumer"`
+
+	// 投递者名称
+	DeliverConsumerName *string `json:"DeliverConsumerName,omitnil,omitempty" name:"DeliverConsumerName"`
 }
 
 // Predefined struct for user
@@ -9657,19 +9652,15 @@ type InstanceAuditRule struct {
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 是否是规则审计。true-规则审计，false-全审计。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuditRule *bool `json:"AuditRule,omitnil,omitempty" name:"AuditRule"`
 
 	// 审计规则详情。仅当AuditRule=true时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuditRuleFilters []*AuditRuleFilters `json:"AuditRuleFilters,omitnil,omitempty" name:"AuditRuleFilters"`
 
 	// 是否是审计策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OldRule *bool `json:"OldRule,omitnil,omitempty" name:"OldRule"`
 
 	// 实例应用的规则模板详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleTemplates []*RuleTemplateInfo `json:"RuleTemplates,omitnil,omitempty" name:"RuleTemplates"`
 }
 
@@ -9681,55 +9672,42 @@ type InstanceAuditStatus struct {
 	AuditStatus *string `json:"AuditStatus,omitnil,omitempty" name:"AuditStatus"`
 
 	// 日志保留时长。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogExpireDay *uint64 `json:"LogExpireDay,omitnil,omitempty" name:"LogExpireDay"`
 
 	// 高频存储时长。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HighLogExpireDay *uint64 `json:"HighLogExpireDay,omitnil,omitempty" name:"HighLogExpireDay"`
 
 	// 低频存储时长。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LowLogExpireDay *uint64 `json:"LowLogExpireDay,omitnil,omitempty" name:"LowLogExpireDay"`
 
 	// 日志存储量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingAmount *float64 `json:"BillingAmount,omitnil,omitempty" name:"BillingAmount"`
 
 	// 高频存储量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HighRealStorage *float64 `json:"HighRealStorage,omitnil,omitempty" name:"HighRealStorage"`
 
 	// 低频存储量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LowRealStorage *float64 `json:"LowRealStorage,omitnil,omitempty" name:"LowRealStorage"`
 
 	// 是否为全审计。true-表示全审计。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuditAll *bool `json:"AuditAll,omitnil,omitempty" name:"AuditAll"`
 
 	// 审计开通时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateAt *string `json:"CreateAt,omitnil,omitempty" name:"CreateAt"`
 
 	// 实例相关信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceInfo *AuditInstanceInfo `json:"InstanceInfo,omitnil,omitempty" name:"InstanceInfo"`
 
 	// 总存储量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealStorage *float64 `json:"RealStorage,omitnil,omitempty" name:"RealStorage"`
 
 	// 实例所应用的规则模板。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil,omitempty" name:"RuleTemplateIds"`
 
 	// 是否开启日志投递：ON，OFF
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Deliver *string `json:"Deliver,omitnil,omitempty" name:"Deliver"`
 
 	// 日志投递类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeliverSummary []*DeliverSummary `json:"DeliverSummary,omitnil,omitempty" name:"DeliverSummary"`
 }
 
@@ -10039,19 +10017,15 @@ func (r *IsolateInstanceResponse) FromJsonString(s string) error {
 
 type LogRuleTemplateInfo struct {
 	// 模板ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleTemplateId *string `json:"RuleTemplateId,omitnil,omitempty" name:"RuleTemplateId"`
 
 	// 规则模板名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleTemplateName *string `json:"RuleTemplateName,omitnil,omitempty" name:"RuleTemplateName"`
 
 	// 告警等级。1-低风险，2-中风险，3-高风险。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmLevel *string `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 
 	// 规则模板变更状态：0-未变更；1-已变更；2-已删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleTemplateStatus *int64 `json:"RuleTemplateStatus,omitnil,omitempty" name:"RuleTemplateStatus"`
 }
 
@@ -14872,27 +14846,21 @@ type RuleFilters struct {
 
 type RuleTemplateInfo struct {
 	// 规则模板ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleTemplateId *string `json:"RuleTemplateId,omitnil,omitempty" name:"RuleTemplateId"`
 
 	// 规则模板名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleTemplateName *string `json:"RuleTemplateName,omitnil,omitempty" name:"RuleTemplateName"`
 
 	// 规则内容。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleFilters []*RuleFilters `json:"RuleFilters,omitnil,omitempty" name:"RuleFilters"`
 
 	// 告警等级。1-低风险，2-中风险，3-高风险。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmLevel *int64 `json:"AlarmLevel,omitnil,omitempty" name:"AlarmLevel"`
 
 	// 告警策略。0-不告警，1-告警。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmPolicy *int64 `json:"AlarmPolicy,omitnil,omitempty" name:"AlarmPolicy"`
 
 	// 规则描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 

@@ -450,6 +450,67 @@ func (c *Client) CreateAndroidInstancesWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreateAndroidInstancesScreenshotRequest() (request *CreateAndroidInstancesScreenshotRequest) {
+    request = &CreateAndroidInstancesScreenshotRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "CreateAndroidInstancesScreenshot")
+    
+    
+    return
+}
+
+func NewCreateAndroidInstancesScreenshotResponse() (response *CreateAndroidInstancesScreenshotResponse) {
+    response = &CreateAndroidInstancesScreenshotResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAndroidInstancesScreenshot
+// 安卓实例截图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateAndroidInstancesScreenshot(request *CreateAndroidInstancesScreenshotRequest) (response *CreateAndroidInstancesScreenshotResponse, err error) {
+    return c.CreateAndroidInstancesScreenshotWithContext(context.Background(), request)
+}
+
+// CreateAndroidInstancesScreenshot
+// 安卓实例截图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateAndroidInstancesScreenshotWithContext(ctx context.Context, request *CreateAndroidInstancesScreenshotRequest) (response *CreateAndroidInstancesScreenshotResponse, err error) {
+    if request == nil {
+        request = NewCreateAndroidInstancesScreenshotRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAndroidInstancesScreenshot require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAndroidInstancesScreenshotResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSessionRequest() (request *CreateSessionRequest) {
     request = &CreateSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},

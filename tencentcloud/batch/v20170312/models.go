@@ -2827,11 +2827,9 @@ type NamedCpmComputeEnv struct {
 
 type Notification struct {
 	// CMQ主题名字，要求主题名有效且关联订阅
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 事件配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventConfigs []*EventConfig `json:"EventConfigs,omitnil,omitempty" name:"EventConfigs"`
 }
 
@@ -2866,7 +2864,6 @@ type OutputMapping struct {
 	DestinationPath *string `json:"DestinationPath,omitnil,omitempty" name:"DestinationPath"`
 
 	// 输出映射选项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputMappingOption *OutputMappingOption `json:"OutputMappingOption,omitnil,omitempty" name:"OutputMappingOption"`
 }
 
@@ -2885,7 +2882,6 @@ type OutputMappingOption struct {
 	// 容器场景下,输出选项从实例映射到容器内的实例侧的工作空间。
 	// BATCH_WORKSPACE: 工作空间为BATCH在实例内定义的工作空间，BATCH侧保证作业之间的隔离。（默认）
 	// GLOBAL_WORKSPACE: 工作空间为实例操作系统空间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Workspace *string `json:"Workspace,omitnil,omitempty" name:"Workspace"`
 }
 

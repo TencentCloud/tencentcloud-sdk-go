@@ -85,6 +85,67 @@ type AITransferItem struct {
 }
 
 // Predefined struct for user
+type AbortAgentCruiseDialingCampaignRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 任务 ID
+	CampaignId *uint64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+}
+
+type AbortAgentCruiseDialingCampaignRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 任务 ID
+	CampaignId *uint64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+}
+
+func (r *AbortAgentCruiseDialingCampaignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AbortAgentCruiseDialingCampaignRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "CampaignId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AbortAgentCruiseDialingCampaignRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AbortAgentCruiseDialingCampaignResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type AbortAgentCruiseDialingCampaignResponse struct {
+	*tchttp.BaseResponse
+	Response *AbortAgentCruiseDialingCampaignResponseParams `json:"Response"`
+}
+
+func (r *AbortAgentCruiseDialingCampaignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AbortAgentCruiseDialingCampaignResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AbortPredictiveDialingCampaignRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -1328,6 +1389,126 @@ func (r *CreateAdminURLResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAdminURLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAgentCruiseDialingCampaignRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 座席账号
+	Agent *string `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 单轮并发呼叫量 1-20
+	ConcurrencyNumber *int64 `json:"ConcurrencyNumber,omitnil,omitempty" name:"ConcurrencyNumber"`
+
+	// 任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 被叫列表，支持 E.164 或不带国家码形式的号码
+	Callees []*string `json:"Callees,omitnil,omitempty" name:"Callees"`
+
+	// 主叫列表，使用管理端展示的号码格式
+	Callers []*string `json:"Callers,omitnil,omitempty" name:"Callers"`
+
+	// 被叫呼叫顺序 0 随机 1 顺序
+	CallOrder *int64 `json:"CallOrder,omitnil,omitempty" name:"CallOrder"`
+
+	// 调用方自定义数据，最大长度 1024
+	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
+}
+
+type CreateAgentCruiseDialingCampaignRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 座席账号
+	Agent *string `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 单轮并发呼叫量 1-20
+	ConcurrencyNumber *int64 `json:"ConcurrencyNumber,omitnil,omitempty" name:"ConcurrencyNumber"`
+
+	// 任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 被叫列表，支持 E.164 或不带国家码形式的号码
+	Callees []*string `json:"Callees,omitnil,omitempty" name:"Callees"`
+
+	// 主叫列表，使用管理端展示的号码格式
+	Callers []*string `json:"Callers,omitnil,omitempty" name:"Callers"`
+
+	// 被叫呼叫顺序 0 随机 1 顺序
+	CallOrder *int64 `json:"CallOrder,omitnil,omitempty" name:"CallOrder"`
+
+	// 调用方自定义数据，最大长度 1024
+	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
+}
+
+func (r *CreateAgentCruiseDialingCampaignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAgentCruiseDialingCampaignRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Name")
+	delete(f, "Agent")
+	delete(f, "ConcurrencyNumber")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Callees")
+	delete(f, "Callers")
+	delete(f, "CallOrder")
+	delete(f, "UUI")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAgentCruiseDialingCampaignRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAgentCruiseDialingCampaignResponseParams struct {
+	// 生成的任务 ID
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAgentCruiseDialingCampaignResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAgentCruiseDialingCampaignResponseParams `json:"Response"`
+}
+
+func (r *CreateAgentCruiseDialingCampaignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAgentCruiseDialingCampaignResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2808,6 +2989,97 @@ func (r *DescribeActiveCarrierPrivilegeNumberResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeActiveCarrierPrivilegeNumberResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAgentCruiseDialingCampaignRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 任务 ID
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+}
+
+type DescribeAgentCruiseDialingCampaignRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 任务 ID
+	CampaignId *int64 `json:"CampaignId,omitnil,omitempty" name:"CampaignId"`
+}
+
+func (r *DescribeAgentCruiseDialingCampaignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentCruiseDialingCampaignRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "CampaignId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentCruiseDialingCampaignRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAgentCruiseDialingCampaignResponseParams struct {
+	// 任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 座席账号
+	Agent *string `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 单轮并发呼叫量 1-20
+	ConcurrencyNumber *int64 `json:"ConcurrencyNumber,omitnil,omitempty" name:"ConcurrencyNumber"`
+
+	// 任务启动时间，Unix 时间戳，到此时间后会自动启动任务
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 任务结束时间，Unix 时间戳，到此时间后会自动终止任务
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 被叫呼叫顺序 0 随机 1 顺序
+	CallOrder *int64 `json:"CallOrder,omitnil,omitempty" name:"CallOrder"`
+
+	// 调用方自定义数据，最大长度 1024
+	UUI *string `json:"UUI,omitnil,omitempty" name:"UUI"`
+
+	// 任务状态 0 未启动 1 运行中 2 已完成 3 已终止
+	State *int64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// 被叫总数
+	TotalCalleeCount *int64 `json:"TotalCalleeCount,omitnil,omitempty" name:"TotalCalleeCount"`
+
+	// 已呼被叫数
+	CalledCalleeCount *int64 `json:"CalledCalleeCount,omitnil,omitempty" name:"CalledCalleeCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAgentCruiseDialingCampaignResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAgentCruiseDialingCampaignResponseParams `json:"Response"`
+}
+
+func (r *DescribeAgentCruiseDialingCampaignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentCruiseDialingCampaignResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6603,6 +6875,74 @@ type TimeRange struct {
 
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+// Predefined struct for user
+type TransferToManualRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 技能组Id
+	SkillGroupId *uint64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
+}
+
+type TransferToManualRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 会话ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 技能组Id
+	SkillGroupId *uint64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
+}
+
+func (r *TransferToManualRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TransferToManualRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "SessionId")
+	delete(f, "SkillGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TransferToManualRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TransferToManualResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type TransferToManualResponse struct {
+	*tchttp.BaseResponse
+	Response *TransferToManualResponseParams `json:"Response"`
+}
+
+func (r *TransferToManualResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TransferToManualResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
