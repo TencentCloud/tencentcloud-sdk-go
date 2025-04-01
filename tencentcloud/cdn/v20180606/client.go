@@ -2460,7 +2460,7 @@ func NewDescribeImageConfigResponse() (response *DescribeImageConfigResponse) {
 }
 
 // DescribeImageConfig
-// DescribeImageConfig 用于获取域名图片优化的当前配置，支持Webp、TPG、 Guetzli 和 Avif。 
+// DescribeImageConfig 用于获取域名图片优化的当前配置，支持Webp、TPG、 Guetzli 和 Avif。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
@@ -2479,7 +2479,7 @@ func (c *Client) DescribeImageConfig(request *DescribeImageConfigRequest) (respo
 }
 
 // DescribeImageConfig
-// DescribeImageConfig 用于获取域名图片优化的当前配置，支持Webp、TPG、 Guetzli 和 Avif。 
+// DescribeImageConfig 用于获取域名图片优化的当前配置，支持Webp、TPG、 Guetzli 和 Avif。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"

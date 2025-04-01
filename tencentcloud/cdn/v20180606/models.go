@@ -1985,7 +1985,6 @@ func (r *CreateClsLogTopicRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateClsLogTopicResponseParams struct {
 	// 主题ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2537,15 +2536,12 @@ type CreateVerifyRecordResponseParams struct {
 	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
 
 	// 文件验证 URL 指引
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileVerifyUrl *string `json:"FileVerifyUrl,omitnil,omitempty" name:"FileVerifyUrl"`
 
 	// 文件校验域名列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileVerifyDomains []*string `json:"FileVerifyDomains,omitnil,omitempty" name:"FileVerifyDomains"`
 
 	// 文件校验文件名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileVerifyName *string `json:"FileVerifyName,omitnil,omitempty" name:"FileVerifyName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3630,11 +3626,9 @@ func (r *DescribeCertDomainsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCertDomainsResponseParams struct {
 	// 已接入CDN的域名列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
 	// 已配置证书的CDN域名列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertifiedDomains []*string `json:"CertifiedDomains,omitnil,omitempty" name:"CertifiedDomains"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3805,7 +3799,6 @@ type DescribeDiagnoseReportResponseParams struct {
 	OriginInfo *DiagnoseData `json:"OriginInfo,omitnil,omitempty" name:"OriginInfo"`
 
 	// 刷新检测信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PurgeInfo *DiagnoseData `json:"PurgeInfo,omitnil,omitempty" name:"PurgeInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3963,7 +3956,6 @@ func (r *DescribeDistrictIspDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDistrictIspDataResponseParams struct {
 	// 地区运营商数据明细
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*DistrictIspInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4462,19 +4454,15 @@ func (r *DescribeImageConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeImageConfigResponseParams struct {
 	// WebpAdapter配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebpAdapter *WebpAdapter `json:"WebpAdapter,omitnil,omitempty" name:"WebpAdapter"`
 
 	// TpgAdapter配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TpgAdapter *TpgAdapter `json:"TpgAdapter,omitnil,omitempty" name:"TpgAdapter"`
 
 	// GuetzliAdapter配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GuetzliAdapter *GuetzliAdapter `json:"GuetzliAdapter,omitnil,omitempty" name:"GuetzliAdapter"`
 
 	// AvifAdapter配置项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AvifAdapter *AvifAdapter `json:"AvifAdapter,omitnil,omitempty" name:"AvifAdapter"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5219,11 +5207,9 @@ func (r *DescribePurgeTasksRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePurgeTasksResponseParams struct {
 	// 详细刷新记录
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PurgeLogs []*PurgeTask `json:"PurgeLogs,omitnil,omitempty" name:"PurgeLogs"`
 
 	// 任务总数，用于分页
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5400,11 +5386,9 @@ func (r *DescribePushTasksRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePushTasksResponseParams struct {
 	// 预热历史记录
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PushLogs []*PushTask `json:"PushLogs,omitnil,omitempty" name:"PushLogs"`
 
 	// 任务总数，用于分页
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7119,11 +7103,9 @@ func (r *DisableCachesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableCachesResponseParams struct {
 	// 提交结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CacheOptResult *CacheOptResult `json:"CacheOptResult,omitnil,omitempty" name:"CacheOptResult"`
 
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7482,11 +7464,9 @@ func (r *EnableCachesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EnableCachesResponseParams struct {
 	// 结果列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CacheOptResult *CacheOptResult `json:"CacheOptResult,omitnil,omitempty" name:"CacheOptResult"`
 
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7736,11 +7716,9 @@ func (r *GetDisableRecordsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetDisableRecordsResponseParams struct {
 	// 封禁历史记录
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UrlRecordList []*UrlRecord `json:"UrlRecordList,omitnil,omitempty" name:"UrlRecordList"`
 
 	// 任务总数，用于分页
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8311,7 +8289,6 @@ type ListClsTopicDomainsResponseParams struct {
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 日志主题最近更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -309,14 +309,6 @@ type ComputeNodeMetrics struct {
 	AbnormalCount *uint64 `json:"AbnormalCount,omitnil,omitempty" name:"AbnormalCount"`
 }
 
-type CpmVirtualPrivateCloud struct {
-	// 黑石私有网络ID
-	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
-
-	// 黑石子网ID
-	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
-}
-
 // Predefined struct for user
 type CreateComputeEnvRequestParams struct {
 	// 计算环境信息
@@ -385,77 +377,6 @@ func (r *CreateComputeEnvResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateComputeEnvResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateCpmComputeEnvRequestParams struct {
-	// 计算环境信息
-	ComputeEnv *NamedCpmComputeEnv `json:"ComputeEnv,omitnil,omitempty" name:"ComputeEnv"`
-
-	// 位置信息
-	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
-
-	// 用于保证请求幂等性的字符串。该字符串由用户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
-	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
-}
-
-type CreateCpmComputeEnvRequest struct {
-	*tchttp.BaseRequest
-	
-	// 计算环境信息
-	ComputeEnv *NamedCpmComputeEnv `json:"ComputeEnv,omitnil,omitempty" name:"ComputeEnv"`
-
-	// 位置信息
-	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
-
-	// 用于保证请求幂等性的字符串。该字符串由用户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
-	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
-}
-
-func (r *CreateCpmComputeEnvRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateCpmComputeEnvRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ComputeEnv")
-	delete(f, "Placement")
-	delete(f, "ClientToken")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCpmComputeEnvRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateCpmComputeEnvResponseParams struct {
-	// 计算环境ID
-	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type CreateCpmComputeEnvResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateCpmComputeEnvResponseParams `json:"Response"`
-}
-
-func (r *CreateCpmComputeEnvResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateCpmComputeEnvResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1267,63 +1188,6 @@ func (r *DescribeComputeEnvsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeComputeEnvsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeCpmOsInfoRequestParams struct {
-	// 黑石设备类型代号。 可以从[DescribeDeviceClass](https://cloud.tencent.com/document/api/386/32911)查询设备类型列表。
-	DeviceClassCode *string `json:"DeviceClassCode,omitnil,omitempty" name:"DeviceClassCode"`
-}
-
-type DescribeCpmOsInfoRequest struct {
-	*tchttp.BaseRequest
-	
-	// 黑石设备类型代号。 可以从[DescribeDeviceClass](https://cloud.tencent.com/document/api/386/32911)查询设备类型列表。
-	DeviceClassCode *string `json:"DeviceClassCode,omitnil,omitempty" name:"DeviceClassCode"`
-}
-
-func (r *DescribeCpmOsInfoRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeCpmOsInfoRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "DeviceClassCode")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCpmOsInfoRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeCpmOsInfoResponseParams struct {
-	// 操作系统信息列表。
-	OsInfoSet []*OsInfo `json:"OsInfoSet,omitnil,omitempty" name:"OsInfoSet"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeCpmOsInfoResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeCpmOsInfoResponseParams `json:"Response"`
-}
-
-func (r *DescribeCpmOsInfoResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeCpmOsInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2148,71 +2012,6 @@ type EnvData struct {
 	VirtualPrivateClouds []*VirtualPrivateCloud `json:"VirtualPrivateClouds,omitnil,omitempty" name:"VirtualPrivateClouds"`
 }
 
-type EnvDataCpm struct {
-	// 黑石可用区名称列表。如ap-guangzhou-bls-1。不是Batch可用区名称。目前仅支持一个可用区名称。
-	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
-
-	// 购买的机型ID。
-	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
-
-	// 购买时长单位，取值：m(月)。
-	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
-
-	// 购买时长。
-	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
-
-	// RAID类型ID。
-	RaidId *int64 `json:"RaidId,omitnil,omitempty" name:"RaidId"`
-
-	// 部署服务器的操作系统ID。通过批量计算接口DescribeCpmOsInfo查询操作系统信息。
-	OsTypeId *int64 `json:"OsTypeId,omitnil,omitempty" name:"OsTypeId"`
-
-	// 黑石VPC列表，目前仅支持一个VPC。
-	VirtualPrivateClouds []*CpmVirtualPrivateCloud `json:"VirtualPrivateClouds,omitnil,omitempty" name:"VirtualPrivateClouds"`
-
-	// 是否安装安全Agent，取值：1(安装) 0(不安装)，默认取值0。
-	NeedSecurityAgent *int64 `json:"NeedSecurityAgent,omitnil,omitempty" name:"NeedSecurityAgent"`
-
-	// 是否安装监控Agent，取值：1(安装) 0(不安装)，默认取值0。
-	NeedMonitorAgent *int64 `json:"NeedMonitorAgent,omitnil,omitempty" name:"NeedMonitorAgent"`
-
-	// 自动续费标志位，取值：1(自动续费) 0(不自动续费)，默认取值0。
-	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
-
-	// 数据盘是否格式化，取值：1(格式化) 0(不格式化)，默认取值为1。
-	IsZoning *int64 `json:"IsZoning,omitnil,omitempty" name:"IsZoning"`
-
-	// 指定数据盘的文件系统格式，当前支持 ext4和xfs选项， 默认为ext4。 参数适用于数据盘和Linux， 且在IsZoning为1时生效。
-	FileSystem *string `json:"FileSystem,omitnil,omitempty" name:"FileSystem"`
-
-	// 设置Linux root或Windows Administrator的密码。若不设置此参数，默认情况下会随机生成密码，并以站内信方式通知到用户。
-	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
-
-	// 是否分配弹性公网IP，取值：1(分配) 0(不分配)，默认取值0。
-	ApplyEip *int64 `json:"ApplyEip,omitnil,omitempty" name:"ApplyEip"`
-
-	// 弹性公网IP计费模式，取值：flow(按流量计费) bandwidth(按带宽计费)，默认取值flow。
-	EipPayMode *string `json:"EipPayMode,omitnil,omitempty" name:"EipPayMode"`
-
-	// 弹性公网IP带宽限制，单位Mb。
-	EipBandwidth *int64 `json:"EipBandwidth,omitnil,omitempty" name:"EipBandwidth"`
-
-	// 自定义镜像ID，取值生效时用自定义镜像部署物理机。
-	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
-
-	// 系统盘根分区大小，单位为G，默认取值10G。
-	SysRootSpace *int64 `json:"SysRootSpace,omitnil,omitempty" name:"SysRootSpace"`
-
-	// /data分区大小，单位为G。如果系统盘还有剩余大小，会分配给/data分区。（特殊情况：如果剩余空间不足10G，并且没有指定/data分区，则剩余空间会分配给Root分区）。
-	SysDataSpace *int64 `json:"SysDataSpace,omitnil,omitempty" name:"SysDataSpace"`
-
-	// 是否开启超线程，取值：1(开启) 0(关闭)，默认取值1。
-	HyperThreading *int64 `json:"HyperThreading,omitnil,omitempty" name:"HyperThreading"`
-
-	// 指定的内网IP列表，不指定时自动分配。
-	LanIps []*string `json:"LanIps,omitnil,omitempty" name:"LanIps"`
-}
-
 type EnvVar struct {
 	// 环境变量名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -2784,76 +2583,12 @@ type NamedComputeEnv struct {
 	NotificationTarget *string `json:"NotificationTarget,omitnil,omitempty" name:"NotificationTarget"`
 }
 
-type NamedCpmComputeEnv struct {
-	// 计算环境名称
-	EnvName *string `json:"EnvName,omitnil,omitempty" name:"EnvName"`
-
-	// 计算环境具体参数
-	EnvData *EnvDataCpm `json:"EnvData,omitnil,omitempty" name:"EnvData"`
-
-	// 计算节点期望个数
-	DesiredComputeNodeCount *int64 `json:"DesiredComputeNodeCount,omitnil,omitempty" name:"DesiredComputeNodeCount"`
-
-	// 计算环境描述
-	EnvDescription *string `json:"EnvDescription,omitnil,omitempty" name:"EnvDescription"`
-
-	// 计算环境管理类型， 取值MANAGED。
-	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
-
-	// 授权信息
-	Authentications []*Authentication `json:"Authentications,omitnil,omitempty" name:"Authentications"`
-
-	// 输入映射信息
-	InputMappings []*InputMapping `json:"InputMappings,omitnil,omitempty" name:"InputMappings"`
-
-	// 通知信息
-	Notifications *Notification `json:"Notifications,omitnil,omitempty" name:"Notifications"`
-
-	// 非活跃节点处理策略，默认“RECREATE”，即对于实例创建失败或异常退还的计算节点，定期重新创建实例资源。
-	ActionIfComputeNodeInactive *string `json:"ActionIfComputeNodeInactive,omitnil,omitempty" name:"ActionIfComputeNodeInactive"`
-
-	// 对于实例创建失败或异常退还的计算节点，定期重新创建实例资源的最大重试次数，最大值100，如果不设置的话，系统会设置一个默认值，当前为7。
-	ResourceMaxRetryCount *int64 `json:"ResourceMaxRetryCount,omitnil,omitempty" name:"ResourceMaxRetryCount"`
-
-	// 标签列表。通过指定该参数可以支持绑定标签到黑石计算环境。每个黑石计算环境最多绑定10个标签。
-	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
-
-	// 表示通知信息的通知目标类型。
-	// 取值范围：CMQ，TDMQ_CMQ。
-	// CMQ:表示向腾讯云CMQ发送消息。
-	// TDMQ_CMQ：表示向腾讯云TDMQ_CMQ发送消息。<br/>默认值为CMQ。<br/>注：腾讯云计划于2022年6月前正式下线消息队列 CMQ，建议使用TDMQ_CMQ。参考文档：[CMQ迁移到TDMQ_CMQ](https://cloud.tencent.com/document/product/406/60860)
-	NotificationTarget *string `json:"NotificationTarget,omitnil,omitempty" name:"NotificationTarget"`
-}
-
 type Notification struct {
 	// CMQ主题名字，要求主题名有效且关联订阅
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// 事件配置
 	EventConfigs []*EventConfig `json:"EventConfigs,omitnil,omitempty" name:"EventConfigs"`
-}
-
-type OsInfo struct {
-	// 操作系统ID。
-	OsTypeId *uint64 `json:"OsTypeId,omitnil,omitempty" name:"OsTypeId"`
-
-	// 操作系统名称。
-	OsName *string `json:"OsName,omitnil,omitempty" name:"OsName"`
-
-	// 操作系统名称描述。
-	OsDescription *string `json:"OsDescription,omitnil,omitempty" name:"OsDescription"`
-
-	// 操作系统英文名称。
-	OsEnglishDescription *string `json:"OsEnglishDescription,omitnil,omitempty" name:"OsEnglishDescription"`
-
-	// 操作系统的分类，如CentOs Debian。
-	OsClass *string `json:"OsClass,omitnil,omitempty" name:"OsClass"`
-
-	// 标识镜像分类。public:公共镜像; private: 专属镜像。
-	ImageTag *string `json:"ImageTag,omitnil,omitempty" name:"ImageTag"`
-
-	// 操作系统，ext4文件下所支持的最大的磁盘大小。单位为T。
-	MaxPartitionSize *uint64 `json:"MaxPartitionSize,omitnil,omitempty" name:"MaxPartitionSize"`
 }
 
 type OutputMapping struct {

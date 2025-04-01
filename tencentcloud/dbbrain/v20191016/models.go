@@ -1373,6 +1373,133 @@ func (r *DescribeMailProfileResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMySqlProcessListRequestParams struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 线程的ID，用于筛选线程列表。
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 线程的操作账号名，用于筛选线程列表。
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// 线程的操作主机地址，用于筛选线程列表。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 线程的操作数据库，用于筛选线程列表。
+	DB *string `json:"DB,omitnil,omitempty" name:"DB"`
+
+	// 线程的操作状态，用于筛选线程列表。
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 线程的执行类型，用于筛选线程列表。
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// 线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
+	Time *uint64 `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// 线程的操作语句，用于筛选线程列表。
+	Info *string `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 返回数量，默认20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+}
+
+type DescribeMySqlProcessListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 线程的ID，用于筛选线程列表。
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 线程的操作账号名，用于筛选线程列表。
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// 线程的操作主机地址，用于筛选线程列表。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 线程的操作数据库，用于筛选线程列表。
+	DB *string `json:"DB,omitnil,omitempty" name:"DB"`
+
+	// 线程的操作状态，用于筛选线程列表。
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 线程的执行类型，用于筛选线程列表。
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// 线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
+	Time *uint64 `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// 线程的操作语句，用于筛选线程列表。
+	Info *string `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 返回数量，默认20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+}
+
+func (r *DescribeMySqlProcessListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMySqlProcessListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ID")
+	delete(f, "User")
+	delete(f, "Host")
+	delete(f, "DB")
+	delete(f, "State")
+	delete(f, "Command")
+	delete(f, "Time")
+	delete(f, "Info")
+	delete(f, "Limit")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMySqlProcessListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMySqlProcessListResponseParams struct {
+	// 实时线程列表。
+	ProcessList []*MySqlProcess `json:"ProcessList,omitnil,omitempty" name:"ProcessList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMySqlProcessListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMySqlProcessListResponseParams `json:"Response"`
+}
+
+func (r *DescribeMySqlProcessListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMySqlProcessListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSecurityAuditLogDownloadUrlsRequestParams struct {
 	// 安全审计组Id。
 	SecAuditGroupId *string `json:"SecAuditGroupId,omitnil,omitempty" name:"SecAuditGroupId"`
@@ -2680,6 +2807,32 @@ type MonitorMetricSeriesData struct {
 
 	// 监控指标对应的时间戳。
 	Timestamp []*int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+}
+
+type MySqlProcess struct {
+	// 线程ID。
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 线程的操作账号名。
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// 线程的操作主机地址。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 线程的操作数据库。
+	DB *string `json:"DB,omitnil,omitempty" name:"DB"`
+
+	// 线程的操作状态。
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 线程的执行类型。
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// 线程的操作时长，单位秒。
+	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// 线程的操作语句。
+	Info *string `json:"Info,omitnil,omitempty" name:"Info"`
 }
 
 type ProfileInfo struct {

@@ -227,77 +227,6 @@ func (c *Client) CreateComputeEnvWithContext(ctx context.Context, request *Creat
     return
 }
 
-func NewCreateCpmComputeEnvRequest() (request *CreateCpmComputeEnvRequest) {
-    request = &CreateCpmComputeEnvRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("batch", APIVersion, "CreateCpmComputeEnv")
-    
-    
-    return
-}
-
-func NewCreateCpmComputeEnvResponse() (response *CreateCpmComputeEnvResponse) {
-    response = &CreateCpmComputeEnvResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateCpmComputeEnv
-// 创建黑石计算环境
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CALLCPMAPI = "InternalError.CallCpmAPI"
-//  INTERNALERROR_CPMRESPONSEDATAEMPTY = "InternalError.CpmResponseDataEmpty"
-//  INVALIDPARAMETER_ENVDESCRIPTIONTOOLONG = "InvalidParameter.EnvDescriptionTooLong"
-//  INVALIDPARAMETER_ENVNAMETOOLONG = "InvalidParameter.EnvNameTooLong"
-//  INVALIDPARAMETER_NOTIFICATIONEVENTNAMEDUPLICATE = "InvalidParameter.NotificationEventNameDuplicate"
-//  INVALIDPARAMETER_NOTIFICATIONTOPICNAME = "InvalidParameter.NotificationTopicName"
-//  INVALIDPARAMETER_NOTIFICATIONTOPICNAMETOOLONG = "InvalidParameter.NotificationTopicNameTooLong"
-//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
-//  INVALIDPARAMETERVALUE_OSTYPEID = "InvalidParameterValue.OsTypeId"
-//  INVALIDPARAMETERVALUE_REGIONNOTSUPPORTCPM = "InvalidParameterValue.RegionNotSupportCpm"
-//  UNAUTHORIZEDOPERATION_USERNOTALLOWEDTOUSEBATCH = "UnauthorizedOperation.UserNotAllowedToUseBatch"
-func (c *Client) CreateCpmComputeEnv(request *CreateCpmComputeEnvRequest) (response *CreateCpmComputeEnvResponse, err error) {
-    return c.CreateCpmComputeEnvWithContext(context.Background(), request)
-}
-
-// CreateCpmComputeEnv
-// 创建黑石计算环境
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CALLCPMAPI = "InternalError.CallCpmAPI"
-//  INTERNALERROR_CPMRESPONSEDATAEMPTY = "InternalError.CpmResponseDataEmpty"
-//  INVALIDPARAMETER_ENVDESCRIPTIONTOOLONG = "InvalidParameter.EnvDescriptionTooLong"
-//  INVALIDPARAMETER_ENVNAMETOOLONG = "InvalidParameter.EnvNameTooLong"
-//  INVALIDPARAMETER_NOTIFICATIONEVENTNAMEDUPLICATE = "InvalidParameter.NotificationEventNameDuplicate"
-//  INVALIDPARAMETER_NOTIFICATIONTOPICNAME = "InvalidParameter.NotificationTopicName"
-//  INVALIDPARAMETER_NOTIFICATIONTOPICNAMETOOLONG = "InvalidParameter.NotificationTopicNameTooLong"
-//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
-//  INVALIDPARAMETERVALUE_OSTYPEID = "InvalidParameterValue.OsTypeId"
-//  INVALIDPARAMETERVALUE_REGIONNOTSUPPORTCPM = "InvalidParameterValue.RegionNotSupportCpm"
-//  UNAUTHORIZEDOPERATION_USERNOTALLOWEDTOUSEBATCH = "UnauthorizedOperation.UserNotAllowedToUseBatch"
-func (c *Client) CreateCpmComputeEnvWithContext(ctx context.Context, request *CreateCpmComputeEnvRequest) (response *CreateCpmComputeEnvResponse, err error) {
-    if request == nil {
-        request = NewCreateCpmComputeEnvRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateCpmComputeEnv require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateCpmComputeEnvResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateTaskTemplateRequest() (request *CreateTaskTemplateRequest) {
     request = &CreateTaskTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -912,59 +841,6 @@ func (c *Client) DescribeComputeEnvsWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeComputeEnvsResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeCpmOsInfoRequest() (request *DescribeCpmOsInfoRequest) {
-    request = &DescribeCpmOsInfoRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("batch", APIVersion, "DescribeCpmOsInfo")
-    
-    
-    return
-}
-
-func NewDescribeCpmOsInfoResponse() (response *DescribeCpmOsInfoResponse) {
-    response = &DescribeCpmOsInfoResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeCpmOsInfo
-// 创建黑石计算环境时，查询批量计算环境支持的黑石操作系统信息
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CALLCPMAPI = "InternalError.CallCpmAPI"
-//  INVALIDPARAMETERVALUE_REGIONNOTSUPPORTCPM = "InvalidParameterValue.RegionNotSupportCpm"
-func (c *Client) DescribeCpmOsInfo(request *DescribeCpmOsInfoRequest) (response *DescribeCpmOsInfoResponse, err error) {
-    return c.DescribeCpmOsInfoWithContext(context.Background(), request)
-}
-
-// DescribeCpmOsInfo
-// 创建黑石计算环境时，查询批量计算环境支持的黑石操作系统信息
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CALLCPMAPI = "InternalError.CallCpmAPI"
-//  INVALIDPARAMETERVALUE_REGIONNOTSUPPORTCPM = "InvalidParameterValue.RegionNotSupportCpm"
-func (c *Client) DescribeCpmOsInfoWithContext(ctx context.Context, request *DescribeCpmOsInfoRequest) (response *DescribeCpmOsInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeCpmOsInfoRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeCpmOsInfo require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeCpmOsInfoResponse()
     err = c.Send(request, response)
     return
 }

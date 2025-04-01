@@ -6047,6 +6047,12 @@ type ServiceGroup struct {
 	// 服务组下期望的pod数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AvailableReplicasCount *uint64 `json:"AvailableReplicasCount,omitnil,omitempty" name:"AvailableReplicasCount"`
+
+	// 服务组的subuin
+	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
+
+	// 服务组的app_id
+	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 }
 
 type ServiceInfo struct {
@@ -6143,7 +6149,7 @@ type ServiceInfo struct {
 
 	// 定时停止的配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScheduledAction *string `json:"ScheduledAction,omitnil,omitempty" name:"ScheduledAction"`
+	ScheduledAction *ScheduledAction `json:"ScheduledAction,omitnil,omitempty" name:"ScheduledAction"`
 
 	// 实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。

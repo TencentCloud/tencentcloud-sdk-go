@@ -4424,6 +4424,122 @@ func (r *DescribeRedisProcessListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRedisSlowLogTopSqlsRequestParams struct {
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间，如“2019-09-10 12:13:14”。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 服务产品类型，支持值： "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// Redis Proxy节点ID。
+	InstanceProxyId *string `json:"InstanceProxyId,omitnil,omitempty" name:"InstanceProxyId"`
+
+	// 排序键，支持ExecTimes,QueryTime,QueryTimeMax,QueryTimeAvg等排序键，默认为QueryTime。
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// 排序方式，支持ASC（升序）以及DESC（降序），默认为DESC。
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeRedisSlowLogTopSqlsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间，如“2019-09-10 12:13:14”。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 服务产品类型，支持值： "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// Redis Proxy节点ID。
+	InstanceProxyId *string `json:"InstanceProxyId,omitnil,omitempty" name:"InstanceProxyId"`
+
+	// 排序键，支持ExecTimes,QueryTime,QueryTimeMax,QueryTimeAvg等排序键，默认为QueryTime。
+	SortBy *string `json:"SortBy,omitnil,omitempty" name:"SortBy"`
+
+	// 排序方式，支持ASC（升序）以及DESC（降序），默认为DESC。
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeRedisSlowLogTopSqlsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisSlowLogTopSqlsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Product")
+	delete(f, "InstanceProxyId")
+	delete(f, "SortBy")
+	delete(f, "OrderBy")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRedisSlowLogTopSqlsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedisSlowLogTopSqlsResponseParams struct {
+	// 符合条件的记录总数。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 慢日志 top sql 列表。
+	Rows []*SlowLogAgg `json:"Rows,omitnil,omitempty" name:"Rows"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRedisSlowLogTopSqlsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRedisSlowLogTopSqlsResponseParams `json:"Response"`
+}
+
+func (r *DescribeRedisSlowLogTopSqlsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisSlowLogTopSqlsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRedisTopBigKeysRequestParams struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -4879,6 +4995,108 @@ func (r *DescribeSecurityAuditLogExportTasksResponse) FromJsonString(s string) e
 }
 
 // Predefined struct for user
+type DescribeSlowLogQueryTimeStatsRequestParams struct {
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间，如“2019-09-10 12:13:14”。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// Proxy节点ID。
+	InstanceProxyId *string `json:"InstanceProxyId,omitnil,omitempty" name:"InstanceProxyId"`
+
+	// 实列节点ID。
+	InstanceNodeId *string `json:"InstanceNodeId,omitnil,omitempty" name:"InstanceNodeId"`
+
+	// 查询类型，目前支持值：mongod，mongos。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type DescribeSlowLogQueryTimeStatsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID 。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 开始时间，如“2019-09-10 12:13:14”。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// Proxy节点ID。
+	InstanceProxyId *string `json:"InstanceProxyId,omitnil,omitempty" name:"InstanceProxyId"`
+
+	// 实列节点ID。
+	InstanceNodeId *string `json:"InstanceNodeId,omitnil,omitempty" name:"InstanceNodeId"`
+
+	// 查询类型，目前支持值：mongod，mongos。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+func (r *DescribeSlowLogQueryTimeStatsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSlowLogQueryTimeStatsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Product")
+	delete(f, "InstanceProxyId")
+	delete(f, "InstanceNodeId")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSlowLogQueryTimeStatsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSlowLogQueryTimeStatsResponseParams struct {
+	// 符合条件的记录总数。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 慢日志 top sql 列表。
+	Items []*SqlCostDistribution `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSlowLogQueryTimeStatsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSlowLogQueryTimeStatsResponseParams `json:"Response"`
+}
+
+func (r *DescribeSlowLogQueryTimeStatsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSlowLogQueryTimeStatsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSlowLogTimeSeriesStatsRequestParams struct {
 	// 实例 ID 。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -4889,8 +5107,17 @@ type DescribeSlowLogTimeSeriesStatsRequestParams struct {
 	// 结束时间，如“2019-09-10 12:13:14”，结束时间与开始时间的间隔最大可为7天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// Proxy节点ID。	
+	InstanceProxyId *string `json:"InstanceProxyId,omitnil,omitempty" name:"InstanceProxyId"`
+
+	// 实列节点ID。	
+	InstanceNodeId *string `json:"InstanceNodeId,omitnil,omitempty" name:"InstanceNodeId"`
+
+	// 查询类型，目前支持值：mongod，mongos。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type DescribeSlowLogTimeSeriesStatsRequest struct {
@@ -4905,8 +5132,17 @@ type DescribeSlowLogTimeSeriesStatsRequest struct {
 	// 结束时间，如“2019-09-10 12:13:14”，结束时间与开始时间的间隔最大可为7天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+
+	// Proxy节点ID。	
+	InstanceProxyId *string `json:"InstanceProxyId,omitnil,omitempty" name:"InstanceProxyId"`
+
+	// 实列节点ID。	
+	InstanceNodeId *string `json:"InstanceNodeId,omitnil,omitempty" name:"InstanceNodeId"`
+
+	// 查询类型，目前支持值：mongod，mongos。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 func (r *DescribeSlowLogTimeSeriesStatsRequest) ToJsonString() string {
@@ -4925,6 +5161,9 @@ func (r *DescribeSlowLogTimeSeriesStatsRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "Product")
+	delete(f, "InstanceProxyId")
+	delete(f, "InstanceNodeId")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSlowLogTimeSeriesStatsRequest has unknown keys!", "")
 	}
@@ -7430,6 +7669,32 @@ type SessionItem struct {
 	AllConn *int64 `json:"AllConn,omitnil,omitempty" name:"AllConn"`
 }
 
+type SlowLogAgg struct {
+	// 命令模版。
+	Cmd *string `json:"Cmd,omitnil,omitempty" name:"Cmd"`
+
+	// 命令详情。
+	Detail *string `json:"Detail,omitnil,omitempty" name:"Detail"`
+
+	// 执行次数。
+	ExecTimes *int64 `json:"ExecTimes,omitnil,omitempty" name:"ExecTimes"`
+
+	// 总耗时。
+	QueryTime *float64 `json:"QueryTime,omitnil,omitempty" name:"QueryTime"`
+
+	// 平均执行时间。
+	QueryTimeAvg *float64 `json:"QueryTimeAvg,omitnil,omitempty" name:"QueryTimeAvg"`
+
+	// 最大执行时间。
+	QueryTimeMax *float64 `json:"QueryTimeMax,omitnil,omitempty" name:"QueryTimeMax"`
+
+	// 最小执行时间。
+	QueryTimeMin *float64 `json:"QueryTimeMin,omitnil,omitempty" name:"QueryTimeMin"`
+
+	// 总耗时占比
+	QueryTimeRatio *float64 `json:"QueryTimeRatio,omitnil,omitempty" name:"QueryTimeRatio"`
+}
+
 type SlowLogHost struct {
 	// 来源地址。
 	UserHost *string `json:"UserHost,omitnil,omitempty" name:"UserHost"`
@@ -7556,6 +7821,20 @@ type SlowLogUser struct {
 
 	// 该来源用户名的慢日志数目。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+}
+
+type SqlCostDistribution struct {
+	// sql条数。
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 分段耗时下边界，单位是秒。
+	From *float64 `json:"From,omitnil,omitempty" name:"From"`
+
+	// 分段耗时上边界，单位是秒。
+	To *float64 `json:"To,omitnil,omitempty" name:"To"`
+
+	// 耗时占比。
+	Ratio *float64 `json:"Ratio,omitnil,omitempty" name:"Ratio"`
 }
 
 type StatDimension struct {

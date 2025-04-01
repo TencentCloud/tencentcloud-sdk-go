@@ -1009,6 +1009,65 @@ func (c *Client) DescribeMailProfileWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeMySqlProcessListRequest() (request *DescribeMySqlProcessListRequest) {
+    request = &DescribeMySqlProcessListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeMySqlProcessList")
+    
+    
+    return
+}
+
+func NewDescribeMySqlProcessListResponse() (response *DescribeMySqlProcessListResponse) {
+    response = &DescribeMySqlProcessListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMySqlProcessList
+// 查询关系型数据库的实时线程列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+func (c *Client) DescribeMySqlProcessList(request *DescribeMySqlProcessListRequest) (response *DescribeMySqlProcessListResponse, err error) {
+    return c.DescribeMySqlProcessListWithContext(context.Background(), request)
+}
+
+// DescribeMySqlProcessList
+// 查询关系型数据库的实时线程列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+func (c *Client) DescribeMySqlProcessListWithContext(ctx context.Context, request *DescribeMySqlProcessListRequest) (response *DescribeMySqlProcessListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMySqlProcessListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMySqlProcessList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMySqlProcessListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecurityAuditLogDownloadUrlsRequest() (request *DescribeSecurityAuditLogDownloadUrlsRequest) {
     request = &DescribeSecurityAuditLogDownloadUrlsRequest{
         BaseRequest: &tchttp.BaseRequest{},

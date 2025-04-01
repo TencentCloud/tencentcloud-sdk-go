@@ -4373,18 +4373,21 @@ type ProductSkuItem struct {
 	// 规格类型
 	// BASIC：基础版
 	// PRO ：专业版
+	// PLATINUM： 铂金版
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 规格代码
 	SkuCode *string `json:"SkuCode,omitnil,omitempty" name:"SkuCode"`
 
 	// 是否售卖
+	// 1: 可售卖
+	// 0: 不可售卖
 	OnSale *bool `json:"OnSale,omitnil,omitempty" name:"OnSale"`
 
 	// topic num限制
 	TopicNumLimit *int64 `json:"TopicNumLimit,omitnil,omitempty" name:"TopicNumLimit"`
 
-	// tps
+	// MQTT 集群下每秒钟生产消息量和消费消息量之和。详细计算方式参考 [计费概述](https://cloud.tencent.com/document/product/1778/109698)
 	TpsLimit *int64 `json:"TpsLimit,omitnil,omitempty" name:"TpsLimit"`
 
 	// 客户端连接数

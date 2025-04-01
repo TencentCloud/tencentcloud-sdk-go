@@ -26315,6 +26315,10 @@ type ProjectUserRole struct {
 	// 租户iD
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 是否项目负责人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsProjectOwner *bool `json:"IsProjectOwner,omitnil,omitempty" name:"IsProjectOwner"`
 }
 
 type ProjectUsersPage struct {

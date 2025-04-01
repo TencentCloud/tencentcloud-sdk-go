@@ -1862,13 +1862,19 @@ type ModifyAndroidInstanceResolutionRequestParams struct {
 	// 安卓实例 ID
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
 
-	// 分辨率宽度
+	// 分辨率宽度。建议按照以下数值设置，避免出现性能不足问题：
+	// 实例类型为单开（A1）、双开（A2）、三开（ A3）：建议设置为 1080
+	// 实例类型为 四开（A4） 及以上：建议设置为 720
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 分辨率高度
+	// 分辨率高度。建议按照以下数值设置，避免出现性能不足问题：
+	// 实例类型为单开（A1）、双开（A2）、三开（ A3）：建议设置为 1920
+	// 实例类型为 四开（A4） 及以上：建议设置为 1280
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 
 	// 每英寸像素点。如果不填，系统将会计算一个合理的数值。修改 DPI 可能会导致 App 异常退出，请谨慎使用！
+	// 分辨率为 720x1280：建议配置为 320
+	// 分辨率为  1080x1920：建议配置为 480
 	DPI *uint64 `json:"DPI,omitnil,omitempty" name:"DPI"`
 }
 
@@ -1878,13 +1884,19 @@ type ModifyAndroidInstanceResolutionRequest struct {
 	// 安卓实例 ID
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
 
-	// 分辨率宽度
+	// 分辨率宽度。建议按照以下数值设置，避免出现性能不足问题：
+	// 实例类型为单开（A1）、双开（A2）、三开（ A3）：建议设置为 1080
+	// 实例类型为 四开（A4） 及以上：建议设置为 720
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
-	// 分辨率高度
+	// 分辨率高度。建议按照以下数值设置，避免出现性能不足问题：
+	// 实例类型为单开（A1）、双开（A2）、三开（ A3）：建议设置为 1920
+	// 实例类型为 四开（A4） 及以上：建议设置为 1280
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 
 	// 每英寸像素点。如果不填，系统将会计算一个合理的数值。修改 DPI 可能会导致 App 异常退出，请谨慎使用！
+	// 分辨率为 720x1280：建议配置为 320
+	// 分辨率为  1080x1920：建议配置为 480
 	DPI *uint64 `json:"DPI,omitnil,omitempty" name:"DPI"`
 }
 

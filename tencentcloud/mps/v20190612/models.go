@@ -4182,7 +4182,7 @@ type CreateOutputInfo struct {
 	// 输出描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 输出的转推协议，支持SRT|RTP|RTMP|RTMP_PULL|RTSP|RIST。
+	// 输出的转推协议，支持SRT|RTP|RTMP|RTMP_PULL|RTSP_PULL|RIST。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 输出地区。

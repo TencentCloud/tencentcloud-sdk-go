@@ -497,14 +497,12 @@ type Cdc struct {
 	CdcState *string `json:"CdcState,omitnil,omitempty" name:"CdcState"`
 
 	// 独享集群所属的[可用区](/document/product/213/15753#ZoneInfo)ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 独享集群实例名称。
 	CdcName *string `json:"CdcName,omitnil,omitempty" name:"CdcName"`
 
 	// 独享集群的资源容量大小。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcResource *CdcSize `json:"CdcResource,omitnil,omitempty" name:"CdcResource"`
 
 	// 独享集群实例id。
@@ -2535,7 +2533,7 @@ type DiskConfig struct {
 	// 配置是否可用。
 	Available *bool `json:"Available,omitnil,omitempty" name:"Available"`
 
-	// 付费模式。取值范围：<br><li>PREPAID：表示预付费，即包年包月<br><li>POSTPAID_BY_HOUR：表示后付费，即按量计费。
+	// 付费模式。取值范围：<br><li>PREPAID：表示预付费，即包年包月</li><br><li>POSTPAID_BY_HOUR：表示后付费，即按量计费。</li>
 	DiskChargeType *string `json:"DiskChargeType,omitnil,omitempty" name:"DiskChargeType"`
 
 	// 云硬盘所属的[可用区](/document/product/213/15753#ZoneInfo)。
@@ -2545,11 +2543,10 @@ type DiskConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceFamily *string `json:"InstanceFamily,omitnil,omitempty" name:"InstanceFamily"`
 
-	// 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：SSD表示SSD云硬盘。
+	// 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘</li><br><li>CLOUD_PREMIUM：表示高性能云硬盘</li><br><li>CLOUD_SSD：SSD表示SSD云硬盘。</li>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// 云盘大小变化的最小步长，单位GB。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepSize *uint64 `json:"StepSize,omitnil,omitempty" name:"StepSize"`
 
 	// 额外的性能区间。
@@ -2560,7 +2557,7 @@ type DiskConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceClass *string `json:"DeviceClass,omitnil,omitempty" name:"DeviceClass"`
 
-	// 云盘类型。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
+	// 云盘类型。取值范围：<br><li>SYSTEM_DISK：表示系统盘</li><br><li>DATA_DISK：表示数据盘。</li>
 	DiskUsage *string `json:"DiskUsage,omitnil,omitempty" name:"DiskUsage"`
 
 	// 最小可配置云盘大小，单位GB。
@@ -2570,7 +2567,6 @@ type DiskConfig struct {
 	MaxDiskSize *uint64 `json:"MaxDiskSize,omitnil,omitempty" name:"MaxDiskSize"`
 
 	// 描述预付费或后付费云盘的价格。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Price *Price `json:"Price,omitnil,omitempty" name:"Price"`
 }
 

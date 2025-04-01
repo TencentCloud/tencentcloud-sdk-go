@@ -240,18 +240,15 @@ type AttachEntityOfPolicy struct {
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 实体名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 实体Uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *uint64 `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 关联类型。1 用户关联 ； 2 用户组关联 3 角色关联
 	RelatedType *uint64 `json:"RelatedType,omitnil,omitempty" name:"RelatedType"`
 
 	// 策略关联时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttachmentTime *string `json:"AttachmentTime,omitnil,omitempty" name:"AttachmentTime"`
 }
 
@@ -321,23 +318,18 @@ type AttachPolicyInfo struct {
 	PolicyId *uint64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
 	// 策略名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
 	// 创建来源，1 通过控制台创建, 2 通过策略语法创建
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateMode *uint64 `json:"CreateMode,omitnil,omitempty" name:"CreateMode"`
 
 	// 取值为User和QCS。User代表自定义策略，QCS代表系统策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
 
 	// 策略备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 策略关联操作者主账号
@@ -353,11 +345,9 @@ type AttachPolicyInfo struct {
 	OperateUinType *uint64 `json:"OperateUinType,omitnil,omitempty" name:"OperateUinType"`
 
 	// 是否已下线，1代表已下线，0代表未下线
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Deactived *uint64 `json:"Deactived,omitnil,omitempty" name:"Deactived"`
 
 	// 已下线的产品列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeactivedDetail []*string `json:"DeactivedDetail,omitnil,omitempty" name:"DeactivedDetail"`
 }
 
@@ -508,22 +498,18 @@ type AttachedPolicyOfRole struct {
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
 	// 策略类型，User表示自定义策略，QCS表示预设策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyType *string `json:"PolicyType,omitnil,omitempty" name:"PolicyType"`
 
 	// 策略创建方式，1表示按产品功能或项目权限创建，其他表示按策略语法创建
 	CreateMode *uint64 `json:"CreateMode,omitnil,omitempty" name:"CreateMode"`
 
 	// 是否已下线(0:否 1:是)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Deactived *uint64 `json:"Deactived,omitnil,omitempty" name:"Deactived"`
 
 	// 已下线的产品列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeactivedDetail []*string `json:"DeactivedDetail,omitnil,omitempty" name:"DeactivedDetail"`
 
 	// 策略描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -547,15 +533,12 @@ type AttachedUserPolicy struct {
 	CreateMode *string `json:"CreateMode,omitnil,omitempty" name:"CreateMode"`
 
 	// 随组关联信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Groups []*AttachedUserPolicyGroupInfo `json:"Groups,omitnil,omitempty" name:"Groups"`
 
 	// 是否已下线(0:否 1:是)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Deactived *uint64 `json:"Deactived,omitnil,omitempty" name:"Deactived"`
 
 	// 已下线的产品列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeactivedDetail []*string `json:"DeactivedDetail,omitnil,omitempty" name:"DeactivedDetail"`
 }
 
@@ -1133,7 +1116,6 @@ func (r *CreatePolicyVersionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreatePolicyVersionResponseParams struct {
 	// 策略版本号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionId *uint64 `json:"VersionId,omitnil,omitempty" name:"VersionId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1226,7 +1208,6 @@ func (r *CreateRoleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateRoleResponseParams struct {
 	// 角色ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleId *string `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2383,7 +2364,6 @@ func (r *DescribeRoleListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRoleListResponseParams struct {
 	// 角色详情列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*RoleInfo `json:"List,omitnil,omitempty" name:"List"`
 
 	// 角色总数
@@ -2453,7 +2433,6 @@ type DescribeSafeAuthFlagCollResponseParams struct {
 	OffsiteFlag *OffsiteFlag `json:"OffsiteFlag,omitnil,omitempty" name:"OffsiteFlag"`
 
 	// 是否提示信任设备1 ：提示 0: 不提示
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PromptTrust *int64 `json:"PromptTrust,omitnil,omitempty" name:"PromptTrust"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3286,27 +3265,21 @@ func (r *GetPolicyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetPolicyResponseParams struct {
 	// 策略名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
 	// 策略描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 1 表示自定义策略，2 表示预设策略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 策略创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
 	// 策略最近更新时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 策略文档。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyDocument *string `json:"PolicyDocument,omitnil,omitempty" name:"PolicyDocument"`
 
 	// 备注。
@@ -3314,7 +3287,6 @@ type GetPolicyResponseParams struct {
 	PresetAlias *string `json:"PresetAlias,omitnil,omitempty" name:"PresetAlias"`
 
 	// 是否是服务相关策略，0代表不是服务相关策略，1代表是服务相关策略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsServiceLinkedRolePolicy *uint64 `json:"IsServiceLinkedRolePolicy,omitnil,omitempty" name:"IsServiceLinkedRolePolicy"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3928,11 +3900,9 @@ type GetUserResponseParams struct {
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
 	// 最近一次登录ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecentlyLoginIP *string `json:"RecentlyLoginIP,omitnil,omitempty" name:"RecentlyLoginIP"`
 
 	// 最近一次登录时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecentlyLoginTime *string `json:"RecentlyLoginTime,omitnil,omitempty" name:"RecentlyLoginTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4545,11 +4515,9 @@ func (r *ListEntitiesForPolicyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListEntitiesForPolicyResponseParams struct {
 	// 实体总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalNum *uint64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
 
 	// 实体列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*AttachEntityOfPolicy `json:"List,omitnil,omitempty" name:"List"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4917,7 +4885,6 @@ type ListPoliciesResponseParams struct {
 	List []*StrategyInfo `json:"List,omitnil,omitempty" name:"List"`
 
 	// 保留字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceTypeList []*string `json:"ServiceTypeList,omitnil,omitempty" name:"ServiceTypeList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4975,7 +4942,6 @@ func (r *ListPolicyVersionsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListPolicyVersionsResponseParams struct {
 	// 策略版本列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Versions []*PolicyVersionItem `json:"Versions,omitnil,omitempty" name:"Versions"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5413,15 +5379,12 @@ type PolicyVersionDetail struct {
 
 type PolicyVersionItem struct {
 	// 策略版本号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionId *uint64 `json:"VersionId,omitnil,omitempty" name:"VersionId"`
 
 	// 策略版本创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateDate *string `json:"CreateDate,omitnil,omitempty" name:"CreateDate"`
 
 	// 是否是正在生效的版本。0表示不是，1表示是
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDefaultVersion *int64 `json:"IsDefaultVersion,omitnil,omitempty" name:"IsDefaultVersion"`
 }
 
@@ -5581,11 +5544,9 @@ type Receiver struct {
 	IsReceiverOwner *int64 `json:"IsReceiverOwner,omitnil,omitempty" name:"IsReceiverOwner"`
 
 	// 是否允许微信接收通知
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WechatFlag *int64 `json:"WechatFlag,omitnil,omitempty" name:"WechatFlag"`
 
 	// 账号uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *int64 `json:"Uin,omitnil,omitempty" name:"Uin"`
 }
 
@@ -7058,10 +7019,8 @@ type WeChatWorkSubAccount struct {
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
 	// 企业微信UserId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WeChatWorkUserId *string `json:"WeChatWorkUserId,omitnil,omitempty" name:"WeChatWorkUserId"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }

@@ -15657,6 +15657,101 @@ func (r *DescribeNatGatewayDirectConnectGatewayRouteResponse) FromJsonString(s s
 }
 
 // Predefined struct for user
+type DescribeNatGatewayFlowMonitorDetailRequestParams struct {
+	// 时间点。表示要查询的时刻。聚合粒度为60、300时，会查询最近一个整分钟开始的聚合周期；聚合粒度为3600时，会查询最近一个整点开始的聚合周期；聚合粒度为86400时，会查询最近一个整天开始的聚合周期。形如：`2019-03-24T10:51:23+08:00`。
+	TimePoint *string `json:"TimePoint,omitnil,omitempty" name:"TimePoint"`
+
+	// NAT网关的ID，形如：`nat-ig8xpno8`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 展示排序靠前的数据。默认值：10，表示默认展示排序前 10 的数据。最大值：100。
+	TopN *int64 `json:"TopN,omitnil,omitempty" name:"TopN"`
+
+	// 排序字段。支持：入包量`InPkg`、出包量`OutPkg`、入流量`InTraffic`、出流量`OutTraffic`，标准型nat额外支持 并发连接数`ConcurrentConnectionCount` 、新建连接速率`NewConnectionRate`。默认值`OutTraffic`。
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 聚合时间粒度。支持：60、300、3600、86400，即按照1分钟、5分钟、1小时、1天进行聚合查询。
+	AggregationTimeRange *int64 `json:"AggregationTimeRange,omitnil,omitempty" name:"AggregationTimeRange"`
+
+	// 是否查询全部指标。默认值：True，表示查询全部指标。
+	AllMetricMode *bool `json:"AllMetricMode,omitnil,omitempty" name:"AllMetricMode"`
+}
+
+type DescribeNatGatewayFlowMonitorDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 时间点。表示要查询的时刻。聚合粒度为60、300时，会查询最近一个整分钟开始的聚合周期；聚合粒度为3600时，会查询最近一个整点开始的聚合周期；聚合粒度为86400时，会查询最近一个整天开始的聚合周期。形如：`2019-03-24T10:51:23+08:00`。
+	TimePoint *string `json:"TimePoint,omitnil,omitempty" name:"TimePoint"`
+
+	// NAT网关的ID，形如：`nat-ig8xpno8`。
+	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
+
+	// 展示排序靠前的数据。默认值：10，表示默认展示排序前 10 的数据。最大值：100。
+	TopN *int64 `json:"TopN,omitnil,omitempty" name:"TopN"`
+
+	// 排序字段。支持：入包量`InPkg`、出包量`OutPkg`、入流量`InTraffic`、出流量`OutTraffic`，标准型nat额外支持 并发连接数`ConcurrentConnectionCount` 、新建连接速率`NewConnectionRate`。默认值`OutTraffic`。
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 聚合时间粒度。支持：60、300、3600、86400，即按照1分钟、5分钟、1小时、1天进行聚合查询。
+	AggregationTimeRange *int64 `json:"AggregationTimeRange,omitnil,omitempty" name:"AggregationTimeRange"`
+
+	// 是否查询全部指标。默认值：True，表示查询全部指标。
+	AllMetricMode *bool `json:"AllMetricMode,omitnil,omitempty" name:"AllMetricMode"`
+}
+
+func (r *DescribeNatGatewayFlowMonitorDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNatGatewayFlowMonitorDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TimePoint")
+	delete(f, "NatGatewayId")
+	delete(f, "TopN")
+	delete(f, "OrderField")
+	delete(f, "AggregationTimeRange")
+	delete(f, "AllMetricMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNatGatewayFlowMonitorDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNatGatewayFlowMonitorDetailResponseParams struct {
+	// 符合条件的对象数。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 网关流量监控明细。
+	NatGatewayFlowMonitorDetailSet []*NatGatewayFlowMonitorDetail `json:"NatGatewayFlowMonitorDetailSet,omitnil,omitempty" name:"NatGatewayFlowMonitorDetailSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNatGatewayFlowMonitorDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNatGatewayFlowMonitorDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeNatGatewayFlowMonitorDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNatGatewayFlowMonitorDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeNatGatewaySourceIpTranslationNatRulesRequestParams struct {
 	// NAT网关统一 ID，形如：`nat-123xx454`。
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
@@ -29440,6 +29535,29 @@ type NatGatewayDestinationIpPortTranslationNatRule struct {
 	// NAT网关转发规则创建时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+}
+
+type NatGatewayFlowMonitorDetail struct {
+	// 来源`IP`。
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitnil,omitempty" name:"PrivateIpAddress"`
+
+	// 入包量。
+	InPkg *uint64 `json:"InPkg,omitnil,omitempty" name:"InPkg"`
+
+	// 出包量。
+	OutPkg *uint64 `json:"OutPkg,omitnil,omitempty" name:"OutPkg"`
+
+	// 入流量，单位：`Byte`。
+	InTraffic *uint64 `json:"InTraffic,omitnil,omitempty" name:"InTraffic"`
+
+	// 出流量，单位：`Byte`。
+	OutTraffic *uint64 `json:"OutTraffic,omitnil,omitempty" name:"OutTraffic"`
+
+	// 并发连接数。仅标准型nat支持此参数。
+	ConcurrentConnectionCount *uint64 `json:"ConcurrentConnectionCount,omitnil,omitempty" name:"ConcurrentConnectionCount"`
+
+	// 新建连接速率。仅标准型nat支持此参数。
+	NewConnectionRate *uint64 `json:"NewConnectionRate,omitnil,omitempty" name:"NewConnectionRate"`
 }
 
 type NatRegionInfoWithArea struct {

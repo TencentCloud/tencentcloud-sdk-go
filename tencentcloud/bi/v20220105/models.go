@@ -1277,6 +1277,14 @@ type DatasourceInfo struct {
 	// 开启vpc
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UseVPC *bool `json:"UseVPC,omitnil,omitempty" name:"UseVPC"`
+
+	// 所属人ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// 所属人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerName *string `json:"OwnerName,omitnil,omitempty" name:"OwnerName"`
 }
 
 type DatasourceInfoData struct {
@@ -1980,6 +1988,12 @@ type DescribeUserProjectListRequestParams struct {
 
 	// 无
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 是否过滤掉企业管理员
+	IsFilterPerAuthUser *bool `json:"IsFilterPerAuthUser,omitnil,omitempty" name:"IsFilterPerAuthUser"`
+
+	// 是否过滤掉当前用户
+	IsFilterCurrentUser *bool `json:"IsFilterCurrentUser,omitnil,omitempty" name:"IsFilterCurrentUser"`
 }
 
 type DescribeUserProjectListRequest struct {
@@ -1996,6 +2010,12 @@ type DescribeUserProjectListRequest struct {
 
 	// 无
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 是否过滤掉企业管理员
+	IsFilterPerAuthUser *bool `json:"IsFilterPerAuthUser,omitnil,omitempty" name:"IsFilterPerAuthUser"`
+
+	// 是否过滤掉当前用户
+	IsFilterCurrentUser *bool `json:"IsFilterCurrentUser,omitnil,omitempty" name:"IsFilterCurrentUser"`
 }
 
 func (r *DescribeUserProjectListRequest) ToJsonString() string {
@@ -2014,6 +2034,8 @@ func (r *DescribeUserProjectListRequest) FromJsonString(s string) error {
 	delete(f, "AllPage")
 	delete(f, "PageNo")
 	delete(f, "PageSize")
+	delete(f, "IsFilterPerAuthUser")
+	delete(f, "IsFilterCurrentUser")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserProjectListRequest has unknown keys!", "")
 	}
@@ -2183,6 +2205,12 @@ type DescribeUserRoleProjectListRequestParams struct {
 
 	// 是否只获取绑定企微应用的
 	IsOnlyBindAppUser *bool `json:"IsOnlyBindAppUser,omitnil,omitempty" name:"IsOnlyBindAppUser"`
+
+	// 是否获取全部数据
+	AllPage *bool `json:"AllPage,omitnil,omitempty" name:"AllPage"`
+
+	// 角色编码
+	RoleCode *string `json:"RoleCode,omitnil,omitempty" name:"RoleCode"`
 }
 
 type DescribeUserRoleProjectListRequest struct {
@@ -2199,6 +2227,12 @@ type DescribeUserRoleProjectListRequest struct {
 
 	// 是否只获取绑定企微应用的
 	IsOnlyBindAppUser *bool `json:"IsOnlyBindAppUser,omitnil,omitempty" name:"IsOnlyBindAppUser"`
+
+	// 是否获取全部数据
+	AllPage *bool `json:"AllPage,omitnil,omitempty" name:"AllPage"`
+
+	// 角色编码
+	RoleCode *string `json:"RoleCode,omitnil,omitempty" name:"RoleCode"`
 }
 
 func (r *DescribeUserRoleProjectListRequest) ToJsonString() string {
@@ -2217,6 +2251,8 @@ func (r *DescribeUserRoleProjectListRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "ProjectId")
 	delete(f, "IsOnlyBindAppUser")
+	delete(f, "AllPage")
+	delete(f, "RoleCode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserRoleProjectListRequest has unknown keys!", "")
 	}
@@ -3453,6 +3489,18 @@ type Project struct {
 	// 定制化参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigList []*ProjectConfigList `json:"ConfigList,omitnil,omitempty" name:"ConfigList"`
+
+	// 创建人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedUserName *string `json:"CreatedUserName,omitnil,omitempty" name:"CreatedUserName"`
+
+	// 所属人id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// 所属人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerName *string `json:"OwnerName,omitnil,omitempty" name:"OwnerName"`
 }
 
 type ProjectConfigList struct {

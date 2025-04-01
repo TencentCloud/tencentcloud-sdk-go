@@ -1997,6 +1997,7 @@ func NewDescribeDCDBPriceResponse() (response *DescribeDCDBPriceResponse) {
 // 本接口（DescribeDCDBPrice）用于在购买实例前，查询实例的价格。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TRADECONFIGNOTFOUND = "FailedOperation.TradeConfigNotFound"
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
 //  INTERNALERROR_QUERYPRICEFAILED = "InternalError.QueryPriceFailed"
 //  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
@@ -2011,6 +2012,7 @@ func (c *Client) DescribeDCDBPrice(request *DescribeDCDBPriceRequest) (response 
 // 本接口（DescribeDCDBPrice）用于在购买实例前，查询实例的价格。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TRADECONFIGNOTFOUND = "FailedOperation.TradeConfigNotFound"
 //  INTERNALERROR_CAMAUTHFAILED = "InternalError.CamAuthFailed"
 //  INTERNALERROR_QUERYPRICEFAILED = "InternalError.QueryPriceFailed"
 //  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"

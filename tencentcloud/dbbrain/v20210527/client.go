@@ -3559,6 +3559,81 @@ func (c *Client) DescribeRedisProcessListWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeRedisSlowLogTopSqlsRequest() (request *DescribeRedisSlowLogTopSqlsRequest) {
+    request = &DescribeRedisSlowLogTopSqlsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeRedisSlowLogTopSqls")
+    
+    
+    return
+}
+
+func NewDescribeRedisSlowLogTopSqlsResponse() (response *DescribeRedisSlowLogTopSqlsResponse) {
+    response = &DescribeRedisSlowLogTopSqlsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRedisSlowLogTopSqls
+// 统计排序指定时间段内的top慢sql。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisSlowLogTopSqls(request *DescribeRedisSlowLogTopSqlsRequest) (response *DescribeRedisSlowLogTopSqlsResponse, err error) {
+    return c.DescribeRedisSlowLogTopSqlsWithContext(context.Background(), request)
+}
+
+// DescribeRedisSlowLogTopSqls
+// 统计排序指定时间段内的top慢sql。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisSlowLogTopSqlsWithContext(ctx context.Context, request *DescribeRedisSlowLogTopSqlsRequest) (response *DescribeRedisSlowLogTopSqlsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRedisSlowLogTopSqlsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRedisSlowLogTopSqls require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRedisSlowLogTopSqlsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRedisTopBigKeysRequest() (request *DescribeRedisTopBigKeysRequest) {
     request = &DescribeRedisTopBigKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3920,6 +3995,81 @@ func (c *Client) DescribeSecurityAuditLogExportTasksWithContext(ctx context.Cont
     request.SetContext(ctx)
     
     response = NewDescribeSecurityAuditLogExportTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSlowLogQueryTimeStatsRequest() (request *DescribeSlowLogQueryTimeStatsRequest) {
+    request = &DescribeSlowLogQueryTimeStatsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeSlowLogQueryTimeStats")
+    
+    
+    return
+}
+
+func NewDescribeSlowLogQueryTimeStatsResponse() (response *DescribeSlowLogQueryTimeStatsResponse) {
+    response = &DescribeSlowLogQueryTimeStatsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSlowLogQueryTimeStats
+// 统计排序指定时间段内的top慢sql。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSlowLogQueryTimeStats(request *DescribeSlowLogQueryTimeStatsRequest) (response *DescribeSlowLogQueryTimeStatsResponse, err error) {
+    return c.DescribeSlowLogQueryTimeStatsWithContext(context.Background(), request)
+}
+
+// DescribeSlowLogQueryTimeStats
+// 统计排序指定时间段内的top慢sql。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSlowLogQueryTimeStatsWithContext(ctx context.Context, request *DescribeSlowLogQueryTimeStatsRequest) (response *DescribeSlowLogQueryTimeStatsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSlowLogQueryTimeStatsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSlowLogQueryTimeStats require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSlowLogQueryTimeStatsResponse()
     err = c.Send(request, response)
     return
 }

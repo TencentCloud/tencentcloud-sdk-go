@@ -2017,6 +2017,9 @@ func (r *CreateRoleConfigurationResponse) FromJsonString(s string) error {
 type CreateSCIMCredentialRequestParams struct {
 	// 空间ID。z-前缀开头，后面是12位随机数字/小写字母
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 过期时间（秒），最小1小时，最大99年。如果不传则默认一年过期
+	ExpireDuration *uint64 `json:"ExpireDuration,omitnil,omitempty" name:"ExpireDuration"`
 }
 
 type CreateSCIMCredentialRequest struct {
@@ -2024,6 +2027,9 @@ type CreateSCIMCredentialRequest struct {
 	
 	// 空间ID。z-前缀开头，后面是12位随机数字/小写字母
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 过期时间（秒），最小1小时，最大99年。如果不传则默认一年过期
+	ExpireDuration *uint64 `json:"ExpireDuration,omitnil,omitempty" name:"ExpireDuration"`
 }
 
 func (r *CreateSCIMCredentialRequest) ToJsonString() string {
@@ -2039,6 +2045,7 @@ func (r *CreateSCIMCredentialRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ZoneId")
+	delete(f, "ExpireDuration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSCIMCredentialRequest has unknown keys!", "")
 	}

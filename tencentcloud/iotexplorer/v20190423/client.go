@@ -1457,7 +1457,7 @@ func NewCreatePositionSpaceResponse() (response *CreatePositionSpaceResponse) {
 }
 
 // CreatePositionSpace
-// 创建位置空间
+// 创建位置空间。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1472,7 +1472,7 @@ func (c *Client) CreatePositionSpace(request *CreatePositionSpaceRequest) (respo
 }
 
 // CreatePositionSpace
-// 创建位置空间
+// 创建位置空间。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

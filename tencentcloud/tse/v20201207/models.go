@@ -56,39 +56,31 @@ type ApolloEnvParam struct {
 
 type AutoScalerBehavior struct {
 	// 扩容行为配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScaleUp *AutoScalerRules `json:"ScaleUp,omitnil,omitempty" name:"ScaleUp"`
 
 	// 缩容行为配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScaleDown *AutoScalerRules `json:"ScaleDown,omitnil,omitempty" name:"ScaleDown"`
 }
 
 type AutoScalerPolicy struct {
 	// 类型，Pods
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 扩容周期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PeriodSeconds *int64 `json:"PeriodSeconds,omitnil,omitempty" name:"PeriodSeconds"`
 }
 
 type AutoScalerRules struct {
 	// 稳定窗口时间，扩容时默认0，缩容时默认300
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StabilizationWindowSeconds *int64 `json:"StabilizationWindowSeconds,omitnil,omitempty" name:"StabilizationWindowSeconds"`
 
 	// 选择策略依据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SelectPolicy *string `json:"SelectPolicy,omitnil,omitempty" name:"SelectPolicy"`
 
 	// 扩缩容策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Policies []*AutoScalerPolicy `json:"Policies,omitnil,omitempty" name:"Policies"`
 }
 
@@ -635,7 +627,6 @@ type CloudNativeAPIGatewayStrategy struct {
 
 type CloudNativeAPIGatewayStrategyAutoScalerConfig struct {
 	// 最大副本数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxReplicas *int64 `json:"MaxReplicas,omitnil,omitempty" name:"MaxReplicas"`
 
 	// 指标列表
@@ -685,15 +676,12 @@ type CloudNativeAPIGatewayStrategyAutoScalerConfigMetric struct {
 	// 指标资源名称
 	// - cpu
 	// - memory
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
 	// 指标目标类型，目前只支持百分比Utilization
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
 	// 指标目标值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetValue *int64 `json:"TargetValue,omitnil,omitempty" name:"TargetValue"`
 }
 
@@ -751,19 +739,15 @@ type CloudNativeAPIGatewayStrategyCronScalerConfig struct {
 
 type CloudNativeAPIGatewayStrategyCronScalerConfigParam struct {
 	// 定时伸缩周期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 定时伸缩开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartAt *string `json:"StartAt,omitnil,omitempty" name:"StartAt"`
 
 	// 定时伸缩目标节点数，不超过指标伸缩中定义的最大节点数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetReplicas *int64 `json:"TargetReplicas,omitnil,omitempty" name:"TargetReplicas"`
 
 	// 定时伸缩cron表达式，无需输入
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Crontab *string `json:"Crontab,omitnil,omitempty" name:"Crontab"`
 }
 
@@ -1232,7 +1216,6 @@ type CreateAutoScalerResourceStrategyResponseParams struct {
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 策略Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrategyId *string `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

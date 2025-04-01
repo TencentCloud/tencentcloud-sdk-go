@@ -13142,6 +13142,9 @@ type ResourceTag struct {
 type RestartDBInstanceRequestParams struct {
 	// 数据库实例ID，形如mssql-njj2mtpl
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 重启设置，0-立刻重启，1-维护时间窗口内重启，默认0
+	WaitSwitch *uint64 `json:"WaitSwitch,omitnil,omitempty" name:"WaitSwitch"`
 }
 
 type RestartDBInstanceRequest struct {
@@ -13149,6 +13152,9 @@ type RestartDBInstanceRequest struct {
 	
 	// 数据库实例ID，形如mssql-njj2mtpl
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 重启设置，0-立刻重启，1-维护时间窗口内重启，默认0
+	WaitSwitch *uint64 `json:"WaitSwitch,omitnil,omitempty" name:"WaitSwitch"`
 }
 
 func (r *RestartDBInstanceRequest) ToJsonString() string {
@@ -13164,6 +13170,7 @@ func (r *RestartDBInstanceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "WaitSwitch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartDBInstanceRequest has unknown keys!", "")
 	}

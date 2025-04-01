@@ -88,15 +88,14 @@ func (r *ActivateTWeCallLicenseRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ActivateTWeCallLicenseResponseParams struct {
 	// 设备激活返回数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: DeviceList is deprecated.
 	DeviceList []*DeviceActiveResult `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
 
 	// 设备激活失败返回数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailureList []*DeviceActiveResult `json:"FailureList,omitnil,omitempty" name:"FailureList"`
 
 	// 设备激活成功返回数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuccessList []*DeviceActiveResult `json:"SuccessList,omitnil,omitempty" name:"SuccessList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -153,27 +152,21 @@ type AppDeviceInfo struct {
 
 type AuthMiniProgramAppInfo struct {
 	// 小程序APPID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MiniProgramAppId *string `json:"MiniProgramAppId,omitnil,omitempty" name:"MiniProgramAppId"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 小程序名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MiniProgramName *string `json:"MiniProgramName,omitnil,omitempty" name:"MiniProgramName"`
 
 	// 激活码数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LicenseNum *int64 `json:"LicenseNum,omitnil,omitempty" name:"LicenseNum"`
 
 	// 应用ID 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IotAppId *string `json:"IotAppId,omitnil,omitempty" name:"IotAppId"`
 
 	// 应用名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IotAppName *string `json:"IotAppName,omitnil,omitempty" name:"IotAppName"`
 }
 
@@ -353,31 +346,24 @@ type BindProductInfo struct {
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
 	// 产品所属项目ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 物模型类型。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataProtocol *int64 `json:"DataProtocol,omitnil,omitempty" name:"DataProtocol"`
 
 	// 产品分组模板ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryId *int64 `json:"CategoryId,omitnil,omitempty" name:"CategoryId"`
 
 	// 产品类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 
 	// 连接类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DevStatus *string `json:"DevStatus,omitnil,omitempty" name:"DevStatus"`
 
 	// 产品拥有者名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductOwnerName *string `json:"ProductOwnerName,omitnil,omitempty" name:"ProductOwnerName"`
 }
 
@@ -582,7 +568,6 @@ type CallDeviceActionSyncResponseParams struct {
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
 	// 输出参数，取值设备端上报$thing/up/action method为action_reply 的 response字段，物模型协议参考https://cloud.tencent.com/document/product/1081/34916#.E8.AE.BE.E5.A4.87.E8.A1.8C.E4.B8.BA.E8.B0.83.E7.94.A8
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputParams *string `json:"OutputParams,omitnil,omitempty" name:"OutputParams"`
 
 	// 返回状态，取值设备端上报$thing/up/action	method为action_reply 的 status字段，如果不包含status字段，则取默认值，空字符串，物模型协议参考https://cloud.tencent.com/document/product/1081/34916#.E8.AE.BE.E5.A4.87.E8.A1.8C.E4.B8.BA.E8.B0.83.E7.94.A8
@@ -610,11 +595,9 @@ func (r *CallDeviceActionSyncResponse) FromJsonString(s string) error {
 
 type CamTag struct {
 	// 标签键
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 标签值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
@@ -782,11 +765,9 @@ func (r *CheckFirmwareUpdateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CheckFirmwareUpdateResponseParams struct {
 	// 设备当前固件版本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentVersion *string `json:"CurrentVersion,omitnil,omitempty" name:"CurrentVersion"`
 
 	// 固件可升级版本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstVersion *string `json:"DstVersion,omitnil,omitempty" name:"DstVersion"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -957,7 +938,6 @@ type CloudStorageTimeData struct {
 	TimeList []*CloudStorageTimeInfo `json:"TimeList,omitnil,omitempty" name:"TimeList"`
 
 	// 播放地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoURL *string `json:"VideoURL,omitnil,omitempty" name:"VideoURL"`
 }
 
@@ -1049,7 +1029,6 @@ type ControlDeviceDataResponseParams struct {
 	// JSON字符串， 返回下发控制的结果信息, 
 	// Sent = 1 表示设备已经在线并且订阅了控制下发的mqtt topic.
 	// pushResult 是表示发送结果，其中 0 表示成功， 23101 表示设备未在线或没有订阅相关的 MQTT Topic。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1835,11 +1814,9 @@ func (r *CreateFreeCloudStorageRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateFreeCloudStorageResponseParams struct {
 	// 订单金额，单位为分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Price *uint64 `json:"Price,omitnil,omitempty" name:"Price"`
 
 	// 支付金额，单位为分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Amount *uint64 `json:"Amount,omitnil,omitempty" name:"Amount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1986,11 +1963,9 @@ func (r *CreateIotVideoCloudStorageRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateIotVideoCloudStorageResponseParams struct {
 	// 订单金额，单位为分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Price *uint64 `json:"Price,omitnil,omitempty" name:"Price"`
 
 	// 支付金额，单位为分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Amount *uint64 `json:"Amount,omitnil,omitempty" name:"Amount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2370,7 +2345,6 @@ func (r *CreatePositionSpaceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreatePositionSpaceResponseParams struct {
 	// 空间Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpaceId *string `json:"SpaceId,omitnil,omitempty" name:"SpaceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2626,7 +2600,6 @@ func (r *CreateTRTCSignaturesWithRoomIdRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateTRTCSignaturesWithRoomIdResponseParams struct {
 	// 返回参数数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TRTCParamList []*TRTCParams `json:"TRTCParamList,omitnil,omitempty" name:"TRTCParamList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2923,11 +2896,9 @@ func (r *DeleteDeviceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDeviceResponseParams struct {
 	// 删除的结果代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultCode *string `json:"ResultCode,omitnil,omitempty" name:"ResultCode"`
 
 	// 删除的结果信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultMessage *string `json:"ResultMessage,omitnil,omitempty" name:"ResultMessage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2985,11 +2956,9 @@ func (r *DeleteDevicesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDevicesResponseParams struct {
 	// 删除的结果代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultCode *string `json:"ResultCode,omitnil,omitempty" name:"ResultCode"`
 
 	// 删除的结果信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultMessage *string `json:"ResultMessage,omitnil,omitempty" name:"ResultMessage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3554,7 +3523,6 @@ func (r *DescribeActivateDeviceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeActivateDeviceResponseParams struct {
 	// 设备激活详情信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *ActivateDeviceInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3619,7 +3587,6 @@ func (r *DescribeActivateLicenseServiceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeActivateLicenseServiceResponseParams struct {
 	// 增值服务激活码信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*LicenseServiceNumInfo `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3702,15 +3669,12 @@ type DescribeBatchProductionResponseParams struct {
 	UploadUrl *string `json:"UploadUrl,omitnil,omitempty" name:"UploadUrl"`
 
 	// 成功数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuccessCount *int64 `json:"SuccessCount,omitnil,omitempty" name:"SuccessCount"`
 
 	// 量产最后失败原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastFailedReason *string `json:"LastFailedReason,omitnil,omitempty" name:"LastFailedReason"`
 
 	// 量产状态  0：任务创建，未量产；1：处理中；2：量产结束上传结果中；3：任务完成
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4655,15 +4619,12 @@ func (r *DescribeCloudStorageOrderRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCloudStorageOrderResponseParams struct {
 	// 云存套餐开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 云存套餐过期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 套餐id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
 	// 套餐状态
@@ -4676,11 +4637,9 @@ type DescribeCloudStorageOrderResponseParams struct {
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
 	// 订单金额，单位为分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Price *uint64 `json:"Price,omitnil,omitempty" name:"Price"`
 
 	// 支付金额，单位为分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Amount *uint64 `json:"Amount,omitnil,omitempty" name:"Amount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4896,7 +4855,6 @@ type DescribeCloudStorageResponseParams struct {
 	ShiftDuration *uint64 `json:"ShiftDuration,omitnil,omitempty" name:"ShiftDuration"`
 
 	// 云存用户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5360,23 +5318,18 @@ func (r *DescribeDeviceBindGatewayRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDeviceBindGatewayResponseParams struct {
 	// 网关产品ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayProductId *string `json:"GatewayProductId,omitnil,omitempty" name:"GatewayProductId"`
 
 	// 网关设备名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayDeviceName *string `json:"GatewayDeviceName,omitnil,omitempty" name:"GatewayDeviceName"`
 
 	// 网关产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayName *string `json:"GatewayName,omitnil,omitempty" name:"GatewayName"`
 
 	// 设备对应产品所属的主账号名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayProductOwnerName *string `json:"GatewayProductOwnerName,omitnil,omitempty" name:"GatewayProductOwnerName"`
 
 	// 设备对应产品所属的主账号 UIN
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayProductOwnerUin *string `json:"GatewayProductOwnerUin,omitnil,omitempty" name:"GatewayProductOwnerUin"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5476,19 +5429,15 @@ func (r *DescribeDeviceDataHistoryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDeviceDataHistoryResponseParams struct {
 	// 属性字段名称，对应数据模板中功能属性的标识符
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FieldName *string `json:"FieldName,omitnil,omitempty" name:"FieldName"`
 
 	// 数据是否已全部返回，true 表示数据全部返回，false 表示还有数据待返回，可将 Context 作为入参，继续查询返回结果。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Listover *bool `json:"Listover,omitnil,omitempty" name:"Listover"`
 
 	// 检索上下文，当 ListOver 为false时，可以用此上下文，继续读取后续数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
 	// 历史数据结果数组，返回对应时间点及取值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Results []*DeviceDataHistoryItem `json:"Results,omitnil,omitempty" name:"Results"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5688,7 +5637,6 @@ func (r *DescribeDeviceFirmwaresRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDeviceFirmwaresResponseParams struct {
 	// 固件信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Firmwares []*DeviceFirmwareInfo `json:"Firmwares,omitnil,omitempty" name:"Firmwares"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5783,7 +5731,6 @@ type DescribeDeviceLocationSolveResponseParams struct {
 	LocationType *string `json:"LocationType,omitnil,omitempty" name:"LocationType"`
 
 	// 误差精度预估，单位为米
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Accuracy *float64 `json:"Accuracy,omitnil,omitempty" name:"Accuracy"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6278,30 +6225,24 @@ type DescribeFirmwareResponseParams struct {
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 固件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 固件描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 固件Md5值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Md5sum *string `json:"Md5sum,omitnil,omitempty" name:"Md5sum"`
 
 	// 固件上传的秒级时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Createtime *uint64 `json:"Createtime,omitnil,omitempty" name:"Createtime"`
 
 	// 产品名称
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
 	// 固件升级模块
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 
 	// 固件用户自定义配置信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserDefined *string `json:"UserDefined,omitnil,omitempty" name:"UserDefined"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6373,43 +6314,33 @@ func (r *DescribeFirmwareTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFirmwareTaskResponseParams struct {
 	// 固件任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 固件任务状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 固件任务创建时间，单位：秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 固件任务升级类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
 	// 固件任务升级模式。originalVersion（按版本号升级）、filename（提交文件升级）、devicenames（按设备名称升级）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpgradeMode *string `json:"UpgradeMode,omitnil,omitempty" name:"UpgradeMode"`
 
 	// 产品ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 原始固件版本号，在UpgradeMode是originalVersion升级模式下会返回
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalVersion *string `json:"OriginalVersion,omitnil,omitempty" name:"OriginalVersion"`
 
 	// 创建账号ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateUserId *uint64 `json:"CreateUserId,omitnil,omitempty" name:"CreateUserId"`
 
 	// 创建账号ID昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatorNickName *string `json:"CreatorNickName,omitnil,omitempty" name:"CreatorNickName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6474,18 +6405,15 @@ func (r *DescribeFirmwareUpdateStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFirmwareUpdateStatusResponseParams struct {
 	// 升级任务源版本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriVersion *string `json:"OriVersion,omitnil,omitempty" name:"OriVersion"`
 
 	// 升级任务目标版本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstVersion *string `json:"DstVersion,omitnil,omitempty" name:"DstVersion"`
 
 	// 升级状态：- 0：设备离线。- 1：待处理。- 2：消息下发成功。- 3：下载中。- 4：烧录中。- 5：失败。- 6：升级完成。- 7：正在处理中。- 8：等待用户确认。- 10：升级超时。- 20：下载完成。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Percent *int64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6709,11 +6637,9 @@ func (r *DescribeGatewaySubDeviceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeGatewaySubDeviceListResponseParams struct {
 	// 设备的总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 设备列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceList []*FamilySubDevice `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6880,7 +6806,6 @@ func (r *DescribeInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceResponseParams struct {
 	// 实例信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *InstanceDetail `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6938,7 +6863,6 @@ func (r *DescribeLoRaFrequencyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLoRaFrequencyResponseParams struct {
 	// 返回详情项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *LoRaFrequencyEntry `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7255,11 +7179,9 @@ func (r *DescribePositionFenceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePositionFenceListResponseParams struct {
 	// 围栏列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*PositionFenceInfo `json:"List,omitnil,omitempty" name:"List"`
 
 	// 围栏数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7650,11 +7572,9 @@ func (r *DescribeTopicRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTopicRuleResponseParams struct {
 	// 规则描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rule *TopicRule `json:"Rule,omitnil,omitempty" name:"Rule"`
 
 	// 规则绑定的标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CamTag []*CamTag `json:"CamTag,omitnil,omitempty" name:"CamTag"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7726,7 +7646,6 @@ func (r *DescribeUnbindedDevicesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUnbindedDevicesResponseParams struct {
 	// 未绑定的设备列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnbindedDevices []*BindDeviceInfo `json:"UnbindedDevices,omitnil,omitempty" name:"UnbindedDevices"`
 
 	// 设备的总数量
@@ -7787,7 +7706,6 @@ func (r *DescribeVideoLicenseRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVideoLicenseResponseParams struct {
 	// 视频激活码分类概览
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	License []*VideoLicenseEntity `json:"License,omitnil,omitempty" name:"License"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7828,6 +7746,12 @@ type DeviceActivationDetail struct {
 
 	// 已使用蓝牙授权数
 	UsedBluetoothLicense *int64 `json:"UsedBluetoothLicense,omitnil,omitempty" name:"UsedBluetoothLicense"`
+
+	// 可免费注册设备数
+	TotalFreeLicense *int64 `json:"TotalFreeLicense,omitnil,omitempty" name:"TotalFreeLicense"`
+
+	// 已使用注册设备数
+	UsedFreeLicense *int64 `json:"UsedFreeLicense,omitnil,omitempty" name:"UsedFreeLicense"`
 }
 
 type DeviceActiveResult struct {
@@ -7838,33 +7762,26 @@ type DeviceActiveResult struct {
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
 	// SN信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sn *string `json:"Sn,omitnil,omitempty" name:"Sn"`
 
 	// 设备激活状态，0：激活成功；50011：系统错误；50012：产品不存在；50013：设备不存在；50014：产品无权限；50015：不是音视频产品；50016：SN格式错误；50017：激活码类型错误；50018：激活次数限频；50019：激活码不足；50020：SN已暂停；
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *uint64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 
 	// 过期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 }
 
 type DeviceData struct {
 	// 设备证书，用于 TLS 建立链接时校验客户端身份。采用非对称加密时返回该参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceCert *string `json:"DeviceCert,omitnil,omitempty" name:"DeviceCert"`
 
 	// 设备名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 设备私钥，用于 TLS 建立链接时校验客户端身份，腾讯云后台不保存，请妥善保管。采用非对称加密时返回该参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DevicePrivateKey *string `json:"DevicePrivateKey,omitnil,omitempty" name:"DevicePrivateKey"`
 
 	// 对称加密密钥，base64编码。采用对称加密时返回该参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DevicePsk *string `json:"DevicePsk,omitnil,omitempty" name:"DevicePsk"`
 }
 
@@ -7899,75 +7816,57 @@ type DeviceInfo struct {
 
 	// 首次上线时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstOnlineTime *int64 `json:"FirstOnlineTime,omitnil,omitempty" name:"FirstOnlineTime"`
 
 	// 最后一次上线时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoginTime *int64 `json:"LoginTime,omitnil,omitempty" name:"LoginTime"`
 
 	// 设备创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 设备固件版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 设备证书
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceCert *string `json:"DeviceCert,omitnil,omitempty" name:"DeviceCert"`
 
 	// 日志级别
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogLevel *int64 `json:"LogLevel,omitnil,omitempty" name:"LogLevel"`
 
 	// LoRaWAN 设备地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DevAddr *string `json:"DevAddr,omitnil,omitempty" name:"DevAddr"`
 
 	// LoRaWAN 应用密钥
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppKey *string `json:"AppKey,omitnil,omitempty" name:"AppKey"`
 
 	// LoRaWAN 设备唯一标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DevEUI *string `json:"DevEUI,omitnil,omitempty" name:"DevEUI"`
 
 	// LoRaWAN 应用会话密钥
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppSKey *string `json:"AppSKey,omitnil,omitempty" name:"AppSKey"`
 
 	// LoRaWAN 网络会话密钥
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NwkSKey *string `json:"NwkSKey,omitnil,omitempty" name:"NwkSKey"`
 
 	// 创建人Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateUserId *int64 `json:"CreateUserId,omitnil,omitempty" name:"CreateUserId"`
 
 	// 创建人昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatorNickName *string `json:"CreatorNickName,omitnil,omitempty" name:"CreatorNickName"`
 
 	// 启用/禁用状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableState *int64 `json:"EnableState,omitnil,omitempty" name:"EnableState"`
 
 	// 产品ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
 	// 设备类型（设备、子设备、网关）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
 	// 是否是 lora 设备
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsLora *bool `json:"IsLora,omitnil,omitempty" name:"IsLora"`
 }
 
@@ -8001,11 +7900,9 @@ type DeviceUser struct {
 	Role *int64 `json:"Role,omitnil,omitempty" name:"Role"`
 
 	// 家庭ID，所有者带该参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FamilyId *string `json:"FamilyId,omitnil,omitempty" name:"FamilyId"`
 
 	// 家庭名称，所有者带该参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FamilyName *string `json:"FamilyName,omitnil,omitempty" name:"FamilyName"`
 }
 
@@ -8273,27 +8170,21 @@ func (r *EnableTopicRuleResponse) FromJsonString(s string) error {
 
 type EventHistoryItem struct {
 	// 事件的时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeStamp *int64 `json:"TimeStamp,omitnil,omitempty" name:"TimeStamp"`
 
 	// 事件的产品ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 事件的设备名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 事件的标识符ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
 
 	// 事件的类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 事件的数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
@@ -8308,22 +8199,18 @@ type FamilySubDevice struct {
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 设备别名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AliasName *string `json:"AliasName,omitnil,omitempty" name:"AliasName"`
 
 	// 设备绑定的家庭ID
 	FamilyId *string `json:"FamilyId,omitnil,omitempty" name:"FamilyId"`
 
 	// 设备所在的房间ID，默认"0"
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
 
 	// 图标
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IconUrl *string `json:"IconUrl,omitnil,omitempty" name:"IconUrl"`
 
 	// grid图标
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IconUrlGrid *string `json:"IconUrlGrid,omitnil,omitempty" name:"IconUrlGrid"`
 
 	// 设备绑定时间戳
@@ -8402,35 +8289,27 @@ type FirmwareInfo struct {
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
 	// 固件名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 固件描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 产品ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
 	// 固件升级模块
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 
 	// 创建者子 uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateUserId *int64 `json:"CreateUserId,omitnil,omitempty" name:"CreateUserId"`
 
 	// 创建者昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatorNickName *string `json:"CreatorNickName,omitnil,omitempty" name:"CreatorNickName"`
 
 	// 固件用户自定义配置信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserDefined *string `json:"UserDefined,omitnil,omitempty" name:"UserDefined"`
 }
 
@@ -8947,11 +8826,9 @@ func (r *GetDeviceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetDeviceListResponseParams struct {
 	// 返回的设备列表, 注意列表设备的 DevicePsk 为空, 要获取设备的 DevicePsk 请使用 DescribeDevice
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Devices []*DeviceInfo `json:"Devices,omitnil,omitempty" name:"Devices"`
 
 	// 产品下的设备总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9186,7 +9063,6 @@ func (r *GetFamilyDeviceUserListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetFamilyDeviceUserListResponseParams struct {
 	// 设备的用户列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserList []*DeviceUser `json:"UserList,omitnil,omitempty" name:"UserList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9265,11 +9141,9 @@ func (r *GetGatewaySubDeviceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetGatewaySubDeviceListResponseParams struct {
 	// 设备的总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 设备列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceList *FamilySubDevice `json:"DeviceList,omitnil,omitempty" name:"DeviceList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9344,7 +9218,6 @@ type GetLoRaGatewayListResponseParams struct {
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 返回详情项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Gateways []*LoRaGatewayItem `json:"Gateways,omitnil,omitempty" name:"Gateways"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9416,11 +9289,9 @@ func (r *GetPositionSpaceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetPositionSpaceListResponseParams struct {
 	// 位置空间列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*PositionSpaceInfo `json:"List,omitnil,omitempty" name:"List"`
 
 	// 位置空间数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9520,11 +9391,9 @@ func (r *GetProjectListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetProjectListResponseParams struct {
 	// 项目列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Projects []*ProjectEntryEx `json:"Projects,omitnil,omitempty" name:"Projects"`
 
 	// 列表项个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9824,7 +9693,6 @@ func (r *GetWechatDeviceTicketRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetWechatDeviceTicketResponseParams struct {
 	// 微信设备信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WXDeviceInfo *WXDeviceInfo `json:"WXDeviceInfo,omitnil,omitempty" name:"WXDeviceInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9957,51 +9825,39 @@ type InstanceDetail struct {
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 总设备数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalDevice *int64 `json:"TotalDevice,omitnil,omitempty" name:"TotalDevice"`
 
 	// 激活设备数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActivateDevice *int64 `json:"ActivateDevice,omitnil,omitempty" name:"ActivateDevice"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 实例状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 消息上下行配置TPS
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpDownTPS *int64 `json:"UpDownTPS,omitnil,omitempty" name:"UpDownTPS"`
 
 	// 当前消息上下行TPS
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpDownCurrentTPS *int64 `json:"UpDownCurrentTPS,omitnil,omitempty" name:"UpDownCurrentTPS"`
 
 	// 消息转发配置TPS
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ForwardTPS *int64 `json:"ForwardTPS,omitnil,omitempty" name:"ForwardTPS"`
 
 	// 消息转发当前TPS
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ForwardCurrentTPS *int64 `json:"ForwardCurrentTPS,omitnil,omitempty" name:"ForwardCurrentTPS"`
 
 	// 实例单元数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CellNum *int64 `json:"CellNum,omitnil,omitempty" name:"CellNum"`
 
 	// 实例Tag，企业实例必传
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingTag *string `json:"BillingTag,omitnil,omitempty" name:"BillingTag"`
 
 	// 每日消息数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EverydayFreeMessageCount *int64 `json:"EverydayFreeMessageCount,omitnil,omitempty" name:"EverydayFreeMessageCount"`
 
 	// 最大在线设备数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxDeviceOnlineCount *int64 `json:"MaxDeviceOnlineCount,omitnil,omitempty" name:"MaxDeviceOnlineCount"`
 }
 
@@ -10312,27 +10168,21 @@ type IotApplication struct {
 	TPNSAndroidRegion *string `json:"TPNSAndroidRegion,omitnil,omitempty" name:"TPNSAndroidRegion"`
 
 	// 自主短信配置APPID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SelfSmsAppId *string `json:"SelfSmsAppId,omitnil,omitempty" name:"SelfSmsAppId"`
 
 	// 自主短信配置APPKey
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SelfSmsAppKey *string `json:"SelfSmsAppKey,omitnil,omitempty" name:"SelfSmsAppKey"`
 
 	// 自主短信配置签名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SelfSmsSign *string `json:"SelfSmsSign,omitnil,omitempty" name:"SelfSmsSign"`
 
 	// 自主短信配置模板ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SelfSmsTemplateId *int64 `json:"SelfSmsTemplateId,omitnil,omitempty" name:"SelfSmsTemplateId"`
 
 	// 第三方小程序强提醒开关 0：关闭；1：开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WechatNotifyStatus *int64 `json:"WechatNotifyStatus,omitnil,omitempty" name:"WechatNotifyStatus"`
 
 	// 互联互通产品ID列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InterconnectionProducts *string `json:"InterconnectionProducts,omitnil,omitempty" name:"InterconnectionProducts"`
 }
 
@@ -10347,7 +10197,6 @@ type LicenseServiceNumInfo struct {
 	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
 
 	// TWeCall激活码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TWeCallLicense []*TWeCallLicenseInfo `json:"TWeCallLicense,omitnil,omitempty" name:"TWeCallLicense"`
 }
 
@@ -10435,19 +10284,15 @@ func (r *ListEventHistoryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListEventHistoryResponseParams struct {
 	// 搜索上下文, 用作查询游标
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
 	// 搜索结果数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 搜索结果是否已经结束
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Listover *bool `json:"Listover,omitnil,omitempty" name:"Listover"`
 
 	// 搜集结果集
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventHistory []*EventHistoryItem `json:"EventHistory,omitnil,omitempty" name:"EventHistory"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -11966,26 +11811,21 @@ type PackageInfo struct {
 	CSExpiredTime *int64 `json:"CSExpiredTime,omitnil,omitempty" name:"CSExpiredTime"`
 
 	// 云存套餐创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *int64 `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 云存套餐更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *int64 `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 套餐id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
 
 	// 订单id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// 通道id
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
 	// 用户id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CSUserId *string `json:"CSUserId,omitnil,omitempty" name:"CSUserId"`
 }
 
@@ -12082,11 +11922,9 @@ type PositionItem struct {
 	Latitude *float64 `json:"Latitude,omitnil,omitempty" name:"Latitude"`
 
 	// 位置点的定位类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocationType *string `json:"LocationType,omitnil,omitempty" name:"LocationType"`
 
 	// 位置点的精度预估，单位为米
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Accuracy *float64 `json:"Accuracy,omitnil,omitempty" name:"Accuracy"`
 }
 
@@ -12104,7 +11942,6 @@ type PositionSpaceInfo struct {
 	AuthorizeType *int64 `json:"AuthorizeType,omitnil,omitempty" name:"AuthorizeType"`
 
 	// 描述备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 产品列表
@@ -12179,35 +12016,27 @@ type ProductEntry struct {
 	ModuleId *int64 `json:"ModuleId,omitnil,omitempty" name:"ModuleId"`
 
 	// 是否使用脚本进行二进制转json功能 可以取值 true / false
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableProductScript *string `json:"EnableProductScript,omitnil,omitempty" name:"EnableProductScript"`
 
 	// 创建人 UinId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateUserId *int64 `json:"CreateUserId,omitnil,omitempty" name:"CreateUserId"`
 
 	// 创建者昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatorNickName *string `json:"CreatorNickName,omitnil,omitempty" name:"CreatorNickName"`
 
 	// 绑定策略（1：强踢；2：非强踢；0：表示无意义）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindStrategy *uint64 `json:"BindStrategy,omitnil,omitempty" name:"BindStrategy"`
 
 	// 设备数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceCount *int64 `json:"DeviceCount,omitnil,omitempty" name:"DeviceCount"`
 
 	// 平均传输速率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rate *string `json:"Rate,omitnil,omitempty" name:"Rate"`
 
 	// 有效期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 互联互通标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsInterconnection *int64 `json:"IsInterconnection,omitnil,omitempty" name:"IsInterconnection"`
 }
 
@@ -12225,11 +12054,9 @@ type ProductModelDefinition struct {
 	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 产品所属分类的模型快照（产品创建时刻的）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryModel *string `json:"CategoryModel,omitnil,omitempty" name:"CategoryModel"`
 
 	// 产品的连接类型的模型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetTypeModel *string `json:"NetTypeModel,omitnil,omitempty" name:"NetTypeModel"`
 }
 
@@ -12276,19 +12103,15 @@ type ProjectEntryEx struct {
 	WebAppCount *uint64 `json:"WebAppCount,omitnil,omitempty" name:"WebAppCount"`
 
 	// 实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 应用数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationCount *uint64 `json:"ApplicationCount,omitnil,omitempty" name:"ApplicationCount"`
 
 	// 设备注册总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceCount *uint64 `json:"DeviceCount,omitnil,omitempty" name:"DeviceCount"`
 
 	// 是否开通物联使能
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableOpenState *uint64 `json:"EnableOpenState,omitnil,omitempty" name:"EnableOpenState"`
 }
 
@@ -12412,7 +12235,6 @@ func (r *PublishFirmwareUpdateMessageRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type PublishFirmwareUpdateMessageResponseParams struct {
 	// 请求状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12617,6 +12439,9 @@ type RegisteredDeviceTypeInfo struct {
 
 	// 已注册子设备数
 	SubDeviceNum *int64 `json:"SubDeviceNum,omitnil,omitempty" name:"SubDeviceNum"`
+
+	// 已注册视频设备数
+	VideoDeviceNum *int64 `json:"VideoDeviceNum,omitnil,omitempty" name:"VideoDeviceNum"`
 }
 
 // Predefined struct for user
@@ -13149,11 +12974,9 @@ func (r *SearchPositionSpaceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SearchPositionSpaceResponseParams struct {
 	// 位置空间列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*PositionSpaceInfo `json:"List,omitnil,omitempty" name:"List"`
 
 	// 符合条件的位置空间个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13363,11 +13186,9 @@ type TWeCallActiveInfo struct {
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 
 	// Sn信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sn *string `json:"Sn,omitnil,omitempty" name:"Sn"`
 
 	// 过期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 类型
@@ -13376,7 +13197,6 @@ type TWeCallActiveInfo struct {
 
 type TWeCallInfo struct {
 	// Sn信息，SN格式：产品ID_设备名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Sn *string `json:"Sn,omitnil,omitempty" name:"Sn"`
 
 	// 小程序ID，参数已弃用，不用传参
@@ -13394,25 +13214,20 @@ type TWeCallInfo struct {
 
 type TWeCallLicenseInfo struct {
 	// voip类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TWeCallType *string `json:"TWeCallType,omitnil,omitempty" name:"TWeCallType"`
 
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalNum *int64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
 
 	// 已使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
 }
 
 type ThumbnailURLInfoList struct {
 	// 缩略图访问地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ThumbnailURL *string `json:"ThumbnailURL,omitnil,omitempty" name:"ThumbnailURL"`
 
 	// 缩略图访问地址的过期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 }
 
@@ -13432,15 +13247,12 @@ type TopicRule struct {
 	Sql *string `json:"Sql,omitnil,omitempty" name:"Sql"`
 
 	// 规则描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 行为的JSON字符串。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Actions *string `json:"Actions,omitnil,omitempty" name:"Actions"`
 
 	// 是否禁用规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleDisabled *bool `json:"RuleDisabled,omitnil,omitempty" name:"RuleDisabled"`
 }
 
@@ -13912,11 +13724,9 @@ func (r *UpdateDevicesEnableStateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateDevicesEnableStateResponseParams struct {
 	// 删除的结果代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultCode *string `json:"ResultCode,omitnil,omitempty" name:"ResultCode"`
 
 	// 删除的结果信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultMessage *string `json:"ResultMessage,omitnil,omitempty" name:"ResultMessage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14140,25 +13950,20 @@ type VideoLicenseEntity struct {
 
 type WXDeviceInfo struct {
 	// 设备ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
 
 	// 设备信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WXIoTDeviceInfo *WXIoTDeviceInfo `json:"WXIoTDeviceInfo,omitnil,omitempty" name:"WXIoTDeviceInfo"`
 }
 
 type WXIoTDeviceInfo struct {
 	// sn信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SN *string `json:"SN,omitnil,omitempty" name:"SN"`
 
 	// 票据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SNTicket *string `json:"SNTicket,omitnil,omitempty" name:"SNTicket"`
 
 	// 模板ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelId *string `json:"ModelId,omitnil,omitempty" name:"ModelId"`
 }
 

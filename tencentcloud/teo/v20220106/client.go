@@ -65,6 +65,10 @@ func NewCreatePrefetchTaskResponse() (response *CreatePrefetchTaskResponse) {
 }
 
 // CreatePrefetchTask
+// 老版本接口，最近一次调用时23年11月了
+//
+// 
+//
 // 创建预热任务
 //
 // 可能返回的错误码:
@@ -85,6 +89,10 @@ func (c *Client) CreatePrefetchTask(request *CreatePrefetchTaskRequest) (respons
 }
 
 // CreatePrefetchTask
+// 老版本接口，最近一次调用时23年11月了
+//
+// 
+//
 // 创建预热任务
 //
 // 可能返回的错误码:
@@ -136,6 +144,10 @@ func NewCreatePurgeTaskResponse() (response *CreatePurgeTaskResponse) {
 }
 
 // CreatePurgeTask
+// 老版本接口，老版本pod的最近一次调用在23年11月
+//
+// 
+//
 // 创建清除缓存任务
 //
 // 可能返回的错误码:
@@ -157,6 +169,10 @@ func (c *Client) CreatePurgeTask(request *CreatePurgeTaskRequest) (response *Cre
 }
 
 // CreatePurgeTask
+// 老版本接口，老版本pod的最近一次调用在23年11月
+//
+// 
+//
 // 创建清除缓存任务
 //
 // 可能返回的错误码:

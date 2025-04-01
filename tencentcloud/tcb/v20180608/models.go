@@ -7860,6 +7860,9 @@ type GatewayItem struct {
 
 	// Donut接入域名
 	AccessDomain *string `json:"AccessDomain,omitnil,omitempty" name:"AccessDomain"`
+
+	// 标签键值对
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type GatewayVersionItem struct {

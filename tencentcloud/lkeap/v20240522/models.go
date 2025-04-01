@@ -423,7 +423,7 @@ type CreateReconstructDocumentFlowRequestParams struct {
 	// - `PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`、`BMP`、`GIF`、`WEBP`、`HEIC`、`EPS`、`ICNS`、`IM`、`PCX`、`PPM`、`TIFF`、`XBM`、`HEIF`、`JP2`
 	// 
 	// **支持的文件大小：**
-	//  - `PDF` 最大500M
+	//  - `PDF` 最大300M
 	//  - `DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M
 	//  - `TXT`、`MD` 最大10M
 	//  - 其他 最大20M
@@ -462,7 +462,7 @@ type CreateReconstructDocumentFlowRequest struct {
 	// - `PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`、`BMP`、`GIF`、`WEBP`、`HEIC`、`EPS`、`ICNS`、`IM`、`PCX`、`PPM`、`TIFF`、`XBM`、`HEIF`、`JP2`
 	// 
 	// **支持的文件大小：**
-	//  - `PDF` 最大500M
+	//  - `PDF` 最大300M
 	//  - `DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M
 	//  - `TXT`、`MD` 最大10M
 	//  - 其他 最大20M
@@ -1913,7 +1913,7 @@ type ReconstructDocumentSSERequestParams struct {
 	// **支持的文件类型**：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、IM、PCX、PPM、TIFF、XBM、HEIF、JP2
 	// **支持的文件大小**：
 	// - PDF、DOC、DOCX、PPT、PPTX 支持100M
-	// - MD、TXT 支持10M
+	// - MD、TXT、XLS、XLSX、CSV 支持10M
 	// - 其他支持20M
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
@@ -1947,7 +1947,7 @@ type ReconstructDocumentSSERequest struct {
 	// **支持的文件类型**：PDF、DOC、DOCX、PPT、PPTX、MD、TXT、XLS、XLSX、CSV、PNG、JPG、JPEG、BMP、GIF、WEBP、HEIC、EPS、ICNS、IM、PCX、PPM、TIFF、XBM、HEIF、JP2
 	// **支持的文件大小**：
 	// - PDF、DOC、DOCX、PPT、PPTX 支持100M
-	// - MD、TXT 支持10M
+	// - MD、TXT、XLS、XLSX、CSV 支持10M
 	// - 其他支持20M
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
@@ -2012,7 +2012,9 @@ type ReconstructDocumentSSEResponseParams struct {
 	// 进度信息。
 	ProgressMessage *string `json:"ProgressMessage,omitnil,omitempty" name:"ProgressMessage"`
 
-	// 文档解析结果URL。存储在腾讯云cos，可以通过http请求下载，URL十分钟内有效。
+	// 文档解析结果的临时下载地址。
+	// 文件类型为zip压缩包，下载链接有效期30分钟。
+	// 压缩包内包含*.md、*.json以及images文件夹。
 	DocumentRecognizeResultUrl *string `json:"DocumentRecognizeResultUrl,omitnil,omitempty" name:"DocumentRecognizeResultUrl"`
 
 	// 文档解析失败的页码。

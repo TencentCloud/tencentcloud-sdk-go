@@ -165,7 +165,6 @@ func (r *CheckRecordSnapshotRollbackRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CheckRecordSnapshotRollbackResponseParams struct {
 	// 错误原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -253,11 +252,9 @@ type CheckSnapshotRollbackResponseParams struct {
 	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
 	// 检查失败数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Failed *uint64 `json:"Failed,omitnil,omitempty" name:"Failed"`
 
 	// 失败记录信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedRecordList []*SnapshotRecord `json:"FailedRecordList,omitnil,omitempty" name:"FailedRecordList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -490,18 +487,15 @@ func (r *CreateDomainAliasResponse) FromJsonString(s string) error {
 
 type CreateDomainBatchDetail struct {
 	// 见RecordInfoBatch
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordList []*CreateDomainBatchRecord `json:"RecordList,omitnil,omitempty" name:"RecordList"`
 
 	// 任务编号
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 域名等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainGrade *string `json:"DomainGrade,omitnil,omitempty" name:"DomainGrade"`
 
 	// 错误信息
@@ -509,41 +503,32 @@ type CreateDomainBatchDetail struct {
 	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 
 	// 该条任务运行状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 操作类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 }
 
 type CreateDomainBatchRecord struct {
 	// 子域名(主机记录)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
 
 	// 记录类型, 详见 DescribeRecordType 接口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
 
 	// 解析记录的线路，详见 DescribeRecordLineList 接口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordLine *string `json:"RecordLine,omitnil,omitempty" name:"RecordLine"`
 
 	// 记录值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 记录的 TTL 值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TTL *uint64 `json:"TTL,omitnil,omitempty" name:"TTL"`
 
 	// 记录添加状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 操作类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 
 	// 错误信息
@@ -1068,18 +1053,15 @@ func (r *CreateLineGroupResponse) FromJsonString(s string) error {
 
 type CreateRecordBatchDetail struct {
 	// 见RecordInfoBatch
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordList []*CreateRecordBatchRecord `json:"RecordList,omitnil,omitempty" name:"RecordList"`
 
 	// 任务编号
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 域名等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainGrade *string `json:"DomainGrade,omitnil,omitempty" name:"DomainGrade"`
 
 	// 错误信息
@@ -1087,7 +1069,6 @@ type CreateRecordBatchDetail struct {
 	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 
 	// 该条任务运行状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 操作类型
@@ -1095,33 +1076,26 @@ type CreateRecordBatchDetail struct {
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 
 	// 域名ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 }
 
 type CreateRecordBatchRecord struct {
 	// 子域名(主机记录)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
 
 	// 记录类型, 详见 DescribeRecordType 接口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
 
 	// 解析记录的线路，详见 DescribeRecordLineList 接口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordLine *string `json:"RecordLine,omitnil,omitempty" name:"RecordLine"`
 
 	// 记录值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 记录的 TTL 值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TTL *uint64 `json:"TTL,omitnil,omitempty" name:"TTL"`
 
 	// 记录添加状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 操作类型
@@ -1136,11 +1110,9 @@ type CreateRecordBatchRecord struct {
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 记录的MX权重
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MX *uint64 `json:"MX,omitnil,omitempty" name:"MX"`
 
 	// 记录的权重
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 
@@ -2493,7 +2465,6 @@ func (r *DeleteSnapshotResponse) FromJsonString(s string) error {
 
 type DescribeBatchTaskDetail struct {
 	// 见BatchRecordInfo
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordList []*BatchRecordInfo `json:"RecordList,omitnil,omitempty" name:"RecordList"`
 
 	// 任务编号
@@ -2504,7 +2475,6 @@ type DescribeBatchTaskDetail struct {
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 域名等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainGrade *string `json:"DomainGrade,omitnil,omitempty" name:"DomainGrade"`
 
 	// 错误信息
@@ -2512,7 +2482,6 @@ type DescribeBatchTaskDetail struct {
 	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 
 	// 该条任务运行状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 操作类型
@@ -5719,7 +5688,6 @@ type FileInfo struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 剩余时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LeftTime *LeftTime `json:"LeftTime,omitnil,omitempty" name:"LeftTime"`
 }
 
@@ -5747,15 +5715,12 @@ type KeyValue struct {
 
 type LeftTime struct {
 	// 剩余天数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Days *uint64 `json:"Days,omitnil,omitempty" name:"Days"`
 
 	// 剩余小时数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Hours *uint64 `json:"Hours,omitnil,omitempty" name:"Hours"`
 
 	// 剩余分钟数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mins *uint64 `json:"Mins,omitnil,omitempty" name:"Mins"`
 }
 

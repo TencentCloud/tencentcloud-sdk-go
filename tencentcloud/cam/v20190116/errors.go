@@ -308,6 +308,9 @@ const (
 	// 每个账号最多支持两个AccessKey。
 	OPERATIONDENIED_ACCESSKEYOVERLIMIT = "OperationDenied.AccessKeyOverLimit"
 
+	// 禁止变更 CIC Policy。
+	OPERATIONDENIED_CICPOLICYOPERATIONDENIED = "OperationDenied.CicPolicyOperationDenied"
+
 	// 存在未删除的API密钥。
 	OPERATIONDENIED_HAVEKEYS = "OperationDenied.HaveKeys"
 

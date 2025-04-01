@@ -22,43 +22,33 @@ import (
 
 type AccountFactoryItem struct {
 	// 账号工厂基线项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Identifier *string `json:"Identifier,omitnil,omitempty" name:"Identifier"`
 
 	// 基线项名称，功能项名字唯一，仅支持英文字母、数宇、汉字、符号@、＆_[]-的组合，1-25个中文或英文字符。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 基线项英文名称，基线项名字唯一，仅支持英文字母、数字、空格、符号@、＆_[]-的组合，1-64个英文字符。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NameEn *string `json:"NameEn,omitnil,omitempty" name:"NameEn"`
 
 	// 基线项权重，数值小权重越高，取值范围大于等于0。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
 	// 基线项是否必填，1必填，0非必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Required *int64 `json:"Required,omitnil,omitempty" name:"Required"`
 
 	// 基线项依赖项，N的取值范围与该基线项依赖的其它基线项个数有关。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DependsOn []*DependsOnItem `json:"DependsOn,omitnil,omitempty" name:"DependsOn"`
 
 	// 基线描述，长度为2~256个英文或中文字符，默认值为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 基线项英文描述，长度为2~1024个英文字符，默认值为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DescriptionEn *string `json:"DescriptionEn,omitnil,omitempty" name:"DescriptionEn"`
 
 	// 基线分类，长度为2~32个英文或中文字符，不能为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Classify *string `json:"Classify,omitnil,omitempty" name:"Classify"`
 
 	// 基线英文分类，长度为2~64个英文字符，不能为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClassifyEn *string `json:"ClassifyEn,omitnil,omitempty" name:"ClassifyEn"`
 }
 
@@ -72,53 +62,41 @@ type BaselineConfigItem struct {
 
 type BaselineInfoItem struct {
 	// 账号工厂基线项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Identifier *string `json:"Identifier,omitnil,omitempty" name:"Identifier"`
 
 	// 账号工厂基线项配置，不同的基线项配置参数不同。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Configuration *string `json:"Configuration,omitnil,omitempty" name:"Configuration"`
 
 	// 基线应用的账号数量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplyCount *int64 `json:"ApplyCount,omitnil,omitempty" name:"ApplyCount"`
 }
 
 type BaselineStepTaskInfo struct {
 	// 任务唯一Id，只能包含英文字母、数字，是16个字符的随机字符串。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 基线功能项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Identifier *string `json:"Identifier,omitnil,omitempty" name:"Identifier"`
 
 	// 被应用基线项的成员账号uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemberUin *int64 `json:"MemberUin,omitnil,omitempty" name:"MemberUin"`
 
 	// 基线项应用的状态,Running表示基线项应用中,Success表示基线项应用成功,Failed表示基线项应用失败,Pending表示基线项待应用,Skipped表示基线项被跳过
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 错误码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *string `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrMessage *string `json:"ErrMessage,omitnil,omitempty" name:"ErrMessage"`
 
 	// 基线项部署输出
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 创建时间，按照ISO8601标准表示，格式为yyyy-MM-dd hh:mm:ss。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间，按照ISO8601标准表示，格式为yyyy-MM-dd hh:mm:ss。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
@@ -185,11 +163,9 @@ func (r *BatchApplyAccountBaselinesResponse) FromJsonString(s string) error {
 
 type DependsOnItem struct {
 	// 依赖项类型，只有LandingZoneSetUp或AccountFactorySetUp。LandingZoneSetUp表示landingZone的依赖项；AccountFactorySetUp表示账号工厂的依赖项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 功能项唯一标识，只能包含英文字母、数字和@、,._[]-:()（）【】+=，。，长度2-128个字符。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Identifier *string `json:"Identifier,omitnil,omitempty" name:"Identifier"`
 }
 
@@ -225,23 +201,18 @@ func (r *GetAccountFactoryBaselineRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetAccountFactoryBaselineResponseParams struct {
 	// 资源所属主账号uin。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerUin *int64 `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
 
 	// 基线项名称，基线项名字唯一，仅支持英文字母、数宇、汉字、符号@、＆_[]-的组合，1-25个中文或英文字符。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 基线项配置列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BaselineConfigItems []*BaselineInfoItem `json:"BaselineConfigItems,omitnil,omitempty" name:"BaselineConfigItems"`
 
 	// 创建时间，按照ISO8601标准表示，格式为yyyy-MM-dd hh:mm:ss。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间，按照ISO8601标准表示，格式为yyyy-MM-dd hh:mm:ss。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

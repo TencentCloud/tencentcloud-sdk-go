@@ -209,6 +209,9 @@ type BriefNodeInfo struct {
 
 	// 节点所属分片的分片ID
 	ShardId *string `json:"ShardId,omitnil,omitempty" name:"ShardId"`
+
+	// 节点所在可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 // Predefined struct for user
@@ -816,6 +819,9 @@ type CreateDCDBInstanceRequestParams struct {
 
 	// DCN同步模式，0：异步， 1：强同步 
 	DcnSyncMode *int64 `json:"DcnSyncMode,omitnil,omitempty" name:"DcnSyncMode"`
+
+	// Cpu类型，如：英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 }
 
 type CreateDCDBInstanceRequest struct {
@@ -893,6 +899,9 @@ type CreateDCDBInstanceRequest struct {
 
 	// DCN同步模式，0：异步， 1：强同步 
 	DcnSyncMode *int64 `json:"DcnSyncMode,omitnil,omitempty" name:"DcnSyncMode"`
+
+	// Cpu类型，如：英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 }
 
 func (r *CreateDCDBInstanceRequest) ToJsonString() string {
@@ -930,6 +939,7 @@ func (r *CreateDCDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "AutoRenewFlag")
 	delete(f, "SecurityGroupIds")
 	delete(f, "DcnSyncMode")
+	delete(f, "CpuType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDCDBInstanceRequest has unknown keys!", "")
 	}
@@ -1299,6 +1309,9 @@ type CreateHourDCDBInstanceRequestParams struct {
 
 	// DCN同步模式，0：异步， 1：强同步
 	DcnSyncMode *int64 `json:"DcnSyncMode,omitnil,omitempty" name:"DcnSyncMode"`
+
+	// Cpu类型，如：英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 }
 
 type CreateHourDCDBInstanceRequest struct {
@@ -1373,6 +1386,9 @@ type CreateHourDCDBInstanceRequest struct {
 
 	// DCN同步模式，0：异步， 1：强同步
 	DcnSyncMode *int64 `json:"DcnSyncMode,omitnil,omitempty" name:"DcnSyncMode"`
+
+	// Cpu类型，如：英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 }
 
 func (r *CreateHourDCDBInstanceRequest) ToJsonString() string {
@@ -1409,6 +1425,7 @@ func (r *CreateHourDCDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "RollbackTime")
 	delete(f, "SecurityGroupIds")
 	delete(f, "DcnSyncMode")
+	delete(f, "CpuType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHourDCDBInstanceRequest has unknown keys!", "")
 	}
@@ -3294,6 +3311,9 @@ type DescribeDCDBInstanceDetailResponseParams struct {
 	// 是否支持DCN切换
 	IsDcnSwitchSupported *int64 `json:"IsDcnSwitchSupported,omitnil,omitempty" name:"IsDcnSwitchSupported"`
 
+	// cpu类型，英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD	
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3607,6 +3627,9 @@ type DescribeDCDBPriceRequestParams struct {
 	// * pent：分
 	// * microPent：微分
 	AmountUnit *string `json:"AmountUnit,omitnil,omitempty" name:"AmountUnit"`
+
+	// Cpu类型，如：英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 }
 
 type DescribeDCDBPriceRequest struct {
@@ -3643,6 +3666,9 @@ type DescribeDCDBPriceRequest struct {
 	// * pent：分
 	// * microPent：微分
 	AmountUnit *string `json:"AmountUnit,omitnil,omitempty" name:"AmountUnit"`
+
+	// Cpu类型，如：英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 }
 
 func (r *DescribeDCDBPriceRequest) ToJsonString() string {
@@ -3666,6 +3692,7 @@ func (r *DescribeDCDBPriceRequest) FromJsonString(s string) error {
 	delete(f, "ShardCount")
 	delete(f, "Paymode")
 	delete(f, "AmountUnit")
+	delete(f, "CpuType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDCDBPriceRequest has unknown keys!", "")
 	}
@@ -4770,12 +4797,15 @@ func (r *DescribeProjectsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeShardSpecRequestParams struct {
-
+	// Cpu类型，如：英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 }
 
 type DescribeShardSpecRequest struct {
 	*tchttp.BaseRequest
 	
+	// Cpu类型，如：英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 }
 
 func (r *DescribeShardSpecRequest) ToJsonString() string {
@@ -4790,7 +4820,7 @@ func (r *DescribeShardSpecRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "CpuType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeShardSpecRequest has unknown keys!", "")
 	}
@@ -6738,6 +6768,9 @@ type NodeInfo struct {
 
 	// DB节点角色，取值为master或者slave
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 节点所在的可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 // Predefined struct for user
@@ -6901,6 +6934,12 @@ type RegionInfo struct {
 
 	// 可选择的主可用区和从可用区
 	AvailableChoice []*ShardZoneChooseInfo `json:"AvailableChoice,omitnil,omitempty" name:"AvailableChoice"`
+
+	// 主机类型，如：物理机：Machine，容器：Container。
+	HostType *string `json:"HostType,omitnil,omitempty" name:"HostType"`
+
+	// Cpu类型，如：英特尔：Intel/AMD，海光：Hygon
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 }
 
 // Predefined struct for user
@@ -7325,11 +7364,18 @@ type SwitchDBInstanceHARequestParams struct {
 	// 实例Id，形如 tdsql-ow728lmc。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 切换的目标区域，会自动选择该可用区中延迟最低的节点。
+	// 指定可用区标识符，具体含义由zoneMode参数决定。 
+	// 
+	// - 当zoneMode为target时表示目标可用区 
+	// 
+	// - 当zoneMode为avoid时表示需避开的故障可用区
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 指定分片实例id进行切换
 	ShardInstanceIds []*string `json:"ShardInstanceIds,omitnil,omitempty" name:"ShardInstanceIds"`
+
+	// 可用区模式选择器，定义zone参数的语义类型。  - 默认值：target  - 可选值：target, avoid
+	ZoneMode *string `json:"ZoneMode,omitnil,omitempty" name:"ZoneMode"`
 }
 
 type SwitchDBInstanceHARequest struct {
@@ -7338,11 +7384,18 @@ type SwitchDBInstanceHARequest struct {
 	// 实例Id，形如 tdsql-ow728lmc。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 切换的目标区域，会自动选择该可用区中延迟最低的节点。
+	// 指定可用区标识符，具体含义由zoneMode参数决定。 
+	// 
+	// - 当zoneMode为target时表示目标可用区 
+	// 
+	// - 当zoneMode为avoid时表示需避开的故障可用区
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 指定分片实例id进行切换
 	ShardInstanceIds []*string `json:"ShardInstanceIds,omitnil,omitempty" name:"ShardInstanceIds"`
+
+	// 可用区模式选择器，定义zone参数的语义类型。  - 默认值：target  - 可选值：target, avoid
+	ZoneMode *string `json:"ZoneMode,omitnil,omitempty" name:"ZoneMode"`
 }
 
 func (r *SwitchDBInstanceHARequest) ToJsonString() string {
@@ -7360,6 +7413,7 @@ func (r *SwitchDBInstanceHARequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "Zone")
 	delete(f, "ShardInstanceIds")
+	delete(f, "ZoneMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchDBInstanceHARequest has unknown keys!", "")
 	}

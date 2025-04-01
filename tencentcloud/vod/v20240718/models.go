@@ -668,7 +668,6 @@ type IncrementalMigrationStrategyInfo struct {
 	OriginType *string `json:"OriginType,omitnil,omitempty" name:"OriginType"`
 
 	// 回源源站配置。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpOriginConfig *IncrementalMigrationHttpOriginConfig `json:"HttpOriginConfig,omitnil,omitempty" name:"HttpOriginConfig"`
 }
 

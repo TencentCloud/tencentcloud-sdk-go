@@ -716,6 +716,9 @@ type CreateDBInstanceRequestParams struct {
 
 	// DCN同步模式，0：异步， 1：强同步
 	DcnSyncMode *int64 `json:"DcnSyncMode,omitnil,omitempty" name:"DcnSyncMode"`
+
+	// cpu类型，英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 }
 
 type CreateDBInstanceRequest struct {
@@ -786,6 +789,9 @@ type CreateDBInstanceRequest struct {
 
 	// DCN同步模式，0：异步， 1：强同步
 	DcnSyncMode *int64 `json:"DcnSyncMode,omitnil,omitempty" name:"DcnSyncMode"`
+
+	// cpu类型，英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 }
 
 func (r *CreateDBInstanceRequest) ToJsonString() string {
@@ -821,6 +827,7 @@ func (r *CreateDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "DcnRegion")
 	delete(f, "DcnInstanceId")
 	delete(f, "DcnSyncMode")
+	delete(f, "CpuType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstanceRequest has unknown keys!", "")
 	}
@@ -1151,6 +1158,9 @@ type CreateHourDBInstanceRequestParams struct {
 
 	// DCN同步模式，0：异步， 1：强同步
 	DcnSyncMode *int64 `json:"DcnSyncMode,omitnil,omitempty" name:"DcnSyncMode"`
+
+	// cpu类型，英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 }
 
 type CreateHourDBInstanceRequest struct {
@@ -1214,6 +1224,9 @@ type CreateHourDBInstanceRequest struct {
 
 	// DCN同步模式，0：异步， 1：强同步
 	DcnSyncMode *int64 `json:"DcnSyncMode,omitnil,omitempty" name:"DcnSyncMode"`
+
+	// cpu类型，英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 }
 
 func (r *CreateHourDBInstanceRequest) ToJsonString() string {
@@ -1247,6 +1260,7 @@ func (r *CreateHourDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "RollbackInstanceId")
 	delete(f, "RollbackTime")
 	delete(f, "DcnSyncMode")
+	delete(f, "CpuType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHourDBInstanceRequest has unknown keys!", "")
 	}
@@ -2547,6 +2561,9 @@ type DescribeDBInstanceDetailResponseParams struct {
 	// proxy版本号
 	ProxyVersion *string `json:"ProxyVersion,omitnil,omitempty" name:"ProxyVersion"`
 
+	// Cpu类型，如：英特尔：Intel/AMD，海光：Hygon
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2569,12 +2586,15 @@ func (r *DescribeDBInstanceDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstanceSpecsRequestParams struct {
-
+	// Cpu类型，如：英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 }
 
 type DescribeDBInstanceSpecsRequest struct {
 	*tchttp.BaseRequest
 	
+	// Cpu类型，如：英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 }
 
 func (r *DescribeDBInstanceSpecsRequest) ToJsonString() string {
@@ -2589,7 +2609,7 @@ func (r *DescribeDBInstanceSpecsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "CpuType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstanceSpecsRequest has unknown keys!", "")
 	}
@@ -3889,6 +3909,9 @@ type DescribePriceRequestParams struct {
 	// * pent：分
 	// * microPent：微分
 	AmountUnit *string `json:"AmountUnit,omitnil,omitempty" name:"AmountUnit"`
+
+	// Cpu类型，如：英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 }
 
 type DescribePriceRequest struct {
@@ -3922,6 +3945,9 @@ type DescribePriceRequest struct {
 	// * pent：分
 	// * microPent：微分
 	AmountUnit *string `json:"AmountUnit,omitnil,omitempty" name:"AmountUnit"`
+
+	// Cpu类型，如：英特尔：Intel/AMD，海光：Hygon，默认Intel/AMD
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 }
 
 func (r *DescribePriceRequest) ToJsonString() string {
@@ -3944,6 +3970,7 @@ func (r *DescribePriceRequest) FromJsonString(s string) error {
 	delete(f, "Count")
 	delete(f, "Paymode")
 	delete(f, "AmountUnit")
+	delete(f, "CpuType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePriceRequest has unknown keys!", "")
 	}
@@ -6227,6 +6254,9 @@ type NodeInfo struct {
 
 	// DB节点角色，取值为master或者slave
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 节点所在可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 // Predefined struct for user
@@ -6366,6 +6396,9 @@ type RegionInfo struct {
 
 	// 可选择的主可用区和从可用区
 	AvailableChoice []*ZoneChooseInfo `json:"AvailableChoice,omitnil,omitempty" name:"AvailableChoice"`
+
+	// Cpu类型，如：英特尔：Intel/AMD，海光：Hygon
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
 }
 
 // Predefined struct for user
@@ -6748,8 +6781,18 @@ type SwitchDBInstanceHARequestParams struct {
 	// 实例Id，形如 tdsql-ow728lmc
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 切换的目标区域，会自动选择该可用区中延迟最低的节点
+	// 指定可用区标识符，具体含义由zoneMode参数决定。 
+	// 
+	// - 当zoneMode为target时表示目标可用区 
+	// 
+	// - 当zoneMode为avoid时表示需避开的故障可用区
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 可用区模式选择器，定义zone参数的语义类型。 
+	// - 默认值：target
+	// 
+	// - 可选值：target, avoid
+	ZoneMode *string `json:"ZoneMode,omitnil,omitempty" name:"ZoneMode"`
 }
 
 type SwitchDBInstanceHARequest struct {
@@ -6758,8 +6801,18 @@ type SwitchDBInstanceHARequest struct {
 	// 实例Id，形如 tdsql-ow728lmc
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 切换的目标区域，会自动选择该可用区中延迟最低的节点
+	// 指定可用区标识符，具体含义由zoneMode参数决定。 
+	// 
+	// - 当zoneMode为target时表示目标可用区 
+	// 
+	// - 当zoneMode为avoid时表示需避开的故障可用区
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 可用区模式选择器，定义zone参数的语义类型。 
+	// - 默认值：target
+	// 
+	// - 可选值：target, avoid
+	ZoneMode *string `json:"ZoneMode,omitnil,omitempty" name:"ZoneMode"`
 }
 
 func (r *SwitchDBInstanceHARequest) ToJsonString() string {
@@ -6776,6 +6829,7 @@ func (r *SwitchDBInstanceHARequest) FromJsonString(s string) error {
 	}
 	delete(f, "InstanceId")
 	delete(f, "Zone")
+	delete(f, "ZoneMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchDBInstanceHARequest has unknown keys!", "")
 	}

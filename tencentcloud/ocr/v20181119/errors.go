@@ -44,9 +44,6 @@ const (
 	// 字段值不符合预期
 	FAILEDOPERATION_FIELDEXCEPTION = "FailedOperation.FieldException"
 
-	// 文件解码失败
-	FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-
 	// 第二代身份证信息不合法或缺失（身份证号、姓名字段校验非法等）
 	FAILEDOPERATION_IDCARDINFOILLEGAL = "FailedOperation.IdCardInfoIllegal"
 
