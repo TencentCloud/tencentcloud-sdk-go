@@ -3998,7 +3998,7 @@ type CreateInput struct {
 	// 输入名称，可填大小写、数字和下划线，长度为[1, 32]。
 	InputName *string `json:"InputName,omitnil,omitempty" name:"InputName"`
 
-	// 输入的协议，可选[SRT|RTP|RTMP_PUSH|RTMP_PULL|RTSP_PULL|RIST]。
+	// 输入的协议，可选[SRT|RTP|RTMP|RTMP_PULL|RTSP_PULL|RIST]。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 输入描述，长度为[0, 255]。
@@ -4296,7 +4296,7 @@ type CreateOutputSRTSettings struct {
 }
 
 type CreateOutputSRTSettingsDestinations struct {
-	// 输出的IP。
+	// 输出的IP或域名。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 输出的端口。
@@ -14765,7 +14765,7 @@ type ModifyOutputInfo struct {
 	// 输出的描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 输出的转推协议，支持SRT|RTP|RTMP|RTMP_PULL|RTSP|RIST。
+	// 输出的转推协议，支持SRT|RTP|RTMP|RTMP_PULL|RTSP_PULL|RIST。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 转推SRT的配置。
@@ -17961,7 +17961,7 @@ type SRTAddressDestination struct {
 }
 
 type SRTSourceAddressReq struct {
-	// 对端IP。
+	// 对端IP或域名。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 对端端口。

@@ -214,6 +214,61 @@ func (c *Client) BoundLicensesWithContext(ctx context.Context, request *BoundLic
     return
 }
 
+func NewCreateCloudRecordingRequest() (request *CreateCloudRecordingRequest) {
+    request = &CreateCloudRecordingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "CreateCloudRecording")
+    
+    
+    return
+}
+
+func NewCreateCloudRecordingResponse() (response *CreateCloudRecordingResponse) {
+    response = &CreateCloudRecordingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCloudRecording
+// 启动云端录制功能，完成房间内的音视频录制，并上传到指定的云存储。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateCloudRecording(request *CreateCloudRecordingRequest) (response *CreateCloudRecordingResponse, err error) {
+    return c.CreateCloudRecordingWithContext(context.Background(), request)
+}
+
+// CreateCloudRecording
+// 启动云端录制功能，完成房间内的音视频录制，并上传到指定的云存储。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateCloudRecordingWithContext(ctx context.Context, request *CreateCloudRecordingRequest) (response *CreateCloudRecordingResponse, err error) {
+    if request == nil {
+        request = NewCreateCloudRecordingRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCloudRecording require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCloudRecordingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDeviceRequest() (request *CreateDeviceRequest) {
     request = &CreateDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -326,6 +381,61 @@ func (c *Client) CreateProjectWithContext(ctx context.Context, request *CreatePr
     request.SetContext(ctx)
     
     response = NewCreateProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCloudRecordingRequest() (request *DeleteCloudRecordingRequest) {
+    request = &DeleteCloudRecordingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "DeleteCloudRecording")
+    
+    
+    return
+}
+
+func NewDeleteCloudRecordingResponse() (response *DeleteCloudRecordingResponse) {
+    response = &DeleteCloudRecordingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCloudRecording
+// 成功开启录制后，可以使用此接口来停止录制任务。停止录制成功后不代表文件全部传输完成，如果未完成后台将会继续上传文件，成功后通过事件回调通知客户文件全部传输完成状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteCloudRecording(request *DeleteCloudRecordingRequest) (response *DeleteCloudRecordingResponse, err error) {
+    return c.DeleteCloudRecordingWithContext(context.Background(), request)
+}
+
+// DeleteCloudRecording
+// 成功开启录制后，可以使用此接口来停止录制任务。停止录制成功后不代表文件全部传输完成，如果未完成后台将会继续上传文件，成功后通过事件回调通知客户文件全部传输完成状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteCloudRecordingWithContext(ctx context.Context, request *DeleteCloudRecordingRequest) (response *DeleteCloudRecordingResponse, err error) {
+    if request == nil {
+        request = NewDeleteCloudRecordingRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCloudRecording require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCloudRecordingResponse()
     err = c.Send(request, response)
     return
 }
@@ -1191,6 +1301,69 @@ func (c *Client) GetLicensesWithContext(ctx context.Context, request *GetLicense
     return
 }
 
+func NewModifyCallbackUrlRequest() (request *ModifyCallbackUrlRequest) {
+    request = &ModifyCallbackUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "ModifyCallbackUrl")
+    
+    
+    return
+}
+
+func NewModifyCallbackUrlResponse() (response *ModifyCallbackUrlResponse) {
+    response = &ModifyCallbackUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCallbackUrl
+// 设置回调URL
+//
+// 录制回调事件内容参考：https://cloud.tencent.com/document/product/647/81113
+//
+// 转推回调事件内容参考：https://cloud.tencent.com/document/product/647/88552
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyCallbackUrl(request *ModifyCallbackUrlRequest) (response *ModifyCallbackUrlResponse, err error) {
+    return c.ModifyCallbackUrlWithContext(context.Background(), request)
+}
+
+// ModifyCallbackUrl
+// 设置回调URL
+//
+// 录制回调事件内容参考：https://cloud.tencent.com/document/product/647/81113
+//
+// 转推回调事件内容参考：https://cloud.tencent.com/document/product/647/88552
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyCallbackUrlWithContext(ctx context.Context, request *ModifyCallbackUrlRequest) (response *ModifyCallbackUrlResponse, err error) {
+    if request == nil {
+        request = NewModifyCallbackUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCallbackUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCallbackUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDeviceRequest() (request *ModifyDeviceRequest) {
     request = &ModifyDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1427,6 +1600,114 @@ func (c *Client) ModifyProjectSecModeWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyProjectSecModeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStartPublishLiveStreamRequest() (request *StartPublishLiveStreamRequest) {
+    request = &StartPublishLiveStreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "StartPublishLiveStream")
+    
+    
+    return
+}
+
+func NewStartPublishLiveStreamResponse() (response *StartPublishLiveStreamResponse) {
+    response = &StartPublishLiveStreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StartPublishLiveStream
+// 启动一个混流转推任务，将 TRTC 房间的多路音视频流混成一路音视频流，编码后推到直播 CDN 或者回推到 TRTC 房间。也支持不转码直接转推 TRTC 房间的单路流。启动成功后，会返回一个 SdkAppid 维度唯一的任务 Id（TaskId）。您需要保存该 TaskId，后续需要依赖此 TaskId 更新和结束任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) StartPublishLiveStream(request *StartPublishLiveStreamRequest) (response *StartPublishLiveStreamResponse, err error) {
+    return c.StartPublishLiveStreamWithContext(context.Background(), request)
+}
+
+// StartPublishLiveStream
+// 启动一个混流转推任务，将 TRTC 房间的多路音视频流混成一路音视频流，编码后推到直播 CDN 或者回推到 TRTC 房间。也支持不转码直接转推 TRTC 房间的单路流。启动成功后，会返回一个 SdkAppid 维度唯一的任务 Id（TaskId）。您需要保存该 TaskId，后续需要依赖此 TaskId 更新和结束任务。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) StartPublishLiveStreamWithContext(ctx context.Context, request *StartPublishLiveStreamRequest) (response *StartPublishLiveStreamResponse, err error) {
+    if request == nil {
+        request = NewStartPublishLiveStreamRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartPublishLiveStream require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartPublishLiveStreamResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopPublishLiveStreamRequest() (request *StopPublishLiveStreamRequest) {
+    request = &StopPublishLiveStreamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trro", APIVersion, "StopPublishLiveStream")
+    
+    
+    return
+}
+
+func NewStopPublishLiveStreamResponse() (response *StopPublishLiveStreamResponse) {
+    response = &StopPublishLiveStreamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopPublishLiveStream
+// 停止指定的混流转推任务。如果没有调用 Stop 接口停止任务，所有参与混流转推的主播离开房间超过MaxIdleTime 设置的时间后，任务也会自动停止。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) StopPublishLiveStream(request *StopPublishLiveStreamRequest) (response *StopPublishLiveStreamResponse, err error) {
+    return c.StopPublishLiveStreamWithContext(context.Background(), request)
+}
+
+// StopPublishLiveStream
+// 停止指定的混流转推任务。如果没有调用 Stop 接口停止任务，所有参与混流转推的主播离开房间超过MaxIdleTime 设置的时间后，任务也会自动停止。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) StopPublishLiveStreamWithContext(ctx context.Context, request *StopPublishLiveStreamRequest) (response *StopPublishLiveStreamResponse, err error) {
+    if request == nil {
+        request = NewStopPublishLiveStreamRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopPublishLiveStream require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopPublishLiveStreamResponse()
     err = c.Send(request, response)
     return
 }

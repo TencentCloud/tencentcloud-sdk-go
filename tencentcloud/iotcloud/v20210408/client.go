@@ -3266,7 +3266,7 @@ func NewReplaceTopicRuleResponse() (response *ReplaceTopicRuleResponse) {
 }
 
 // ReplaceTopicRule
-// 本接口（ReplaceTopicRule）用于修改替换规则 
+// 本接口（ReplaceTopicRule）用于修改替换规则
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3283,6 +3283,7 @@ func NewReplaceTopicRuleResponse() (response *ReplaceTopicRuleResponse) {
 //  INVALIDPARAMETERVALUE_TOPICRULEALREADYEXIST = "InvalidParameterValue.TopicRuleAlreadyExist"
 //  INVALIDPARAMETERVALUE_TOPICRULESQLNOTEDITED = "InvalidParameterValue.TopicRuleSqlNotEdited"
 //  INVALIDPARAMETERVALUE_UPDATETOPICRULEDBFAIL = "InvalidParameterValue.UpdateTopicRuleDBFail"
+//  OPERATIONDENIED_GETTDMQPROINTERNALENDPOINTFAIL = "OperationDenied.GetTDMQProInternalEndpointFail"
 //  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ReplaceTopicRule(request *ReplaceTopicRuleRequest) (response *ReplaceTopicRuleResponse, err error) {
@@ -3290,7 +3291,7 @@ func (c *Client) ReplaceTopicRule(request *ReplaceTopicRuleRequest) (response *R
 }
 
 // ReplaceTopicRule
-// 本接口（ReplaceTopicRule）用于修改替换规则 
+// 本接口（ReplaceTopicRule）用于修改替换规则
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3307,6 +3308,7 @@ func (c *Client) ReplaceTopicRule(request *ReplaceTopicRuleRequest) (response *R
 //  INVALIDPARAMETERVALUE_TOPICRULEALREADYEXIST = "InvalidParameterValue.TopicRuleAlreadyExist"
 //  INVALIDPARAMETERVALUE_TOPICRULESQLNOTEDITED = "InvalidParameterValue.TopicRuleSqlNotEdited"
 //  INVALIDPARAMETERVALUE_UPDATETOPICRULEDBFAIL = "InvalidParameterValue.UpdateTopicRuleDBFail"
+//  OPERATIONDENIED_GETTDMQPROINTERNALENDPOINTFAIL = "OperationDenied.GetTDMQProInternalEndpointFail"
 //  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ReplaceTopicRuleWithContext(ctx context.Context, request *ReplaceTopicRuleRequest) (response *ReplaceTopicRuleResponse, err error) {

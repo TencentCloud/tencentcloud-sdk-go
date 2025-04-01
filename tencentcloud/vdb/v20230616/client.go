@@ -102,6 +102,61 @@ func (c *Client) AssociateSecurityGroupsWithContext(ctx context.Context, request
     return
 }
 
+func NewCreateInstanceRequest() (request *CreateInstanceRequest) {
+    request = &CreateInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vdb", APIVersion, "CreateInstance")
+    
+    
+    return
+}
+
+func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
+    response = &CreateInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateInstance
+// 本接口（CreateInstance）用于创建向量数据库实例。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
+    return c.CreateInstanceWithContext(context.Background(), request)
+}
+
+// CreateInstance
+// 本接口（CreateInstance）用于创建向量数据库实例。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBSecurityGroupsRequest() (request *DescribeDBSecurityGroupsRequest) {
     request = &DescribeDBSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -155,6 +210,63 @@ func (c *Client) DescribeDBSecurityGroupsWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeDBSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceMaintenanceWindowRequest() (request *DescribeInstanceMaintenanceWindowRequest) {
+    request = &DescribeInstanceMaintenanceWindowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vdb", APIVersion, "DescribeInstanceMaintenanceWindow")
+    
+    
+    return
+}
+
+func NewDescribeInstanceMaintenanceWindowResponse() (response *DescribeInstanceMaintenanceWindowResponse) {
+    response = &DescribeInstanceMaintenanceWindowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstanceMaintenanceWindow
+// 本接口（DescribeInstanceMaintenanceWindow）用于查看实例维护时间窗。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeInstanceMaintenanceWindow(request *DescribeInstanceMaintenanceWindowRequest) (response *DescribeInstanceMaintenanceWindowResponse, err error) {
+    return c.DescribeInstanceMaintenanceWindowWithContext(context.Background(), request)
+}
+
+// DescribeInstanceMaintenanceWindow
+// 本接口（DescribeInstanceMaintenanceWindow）用于查看实例维护时间窗。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeInstanceMaintenanceWindowWithContext(ctx context.Context, request *DescribeInstanceMaintenanceWindowRequest) (response *DescribeInstanceMaintenanceWindowResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceMaintenanceWindowRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceMaintenanceWindow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceMaintenanceWindowResponse()
     err = c.Send(request, response)
     return
 }
@@ -261,6 +373,57 @@ func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDestroyInstancesRequest() (request *DestroyInstancesRequest) {
+    request = &DestroyInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vdb", APIVersion, "DestroyInstances")
+    
+    
+    return
+}
+
+func NewDestroyInstancesResponse() (response *DestroyInstancesResponse) {
+    response = &DestroyInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DestroyInstances
+// 本接口（DestroyInstances）用于销毁实例。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DestroyInstances(request *DestroyInstancesRequest) (response *DestroyInstancesResponse, err error) {
+    return c.DestroyInstancesWithContext(context.Background(), request)
+}
+
+// DestroyInstances
+// 本接口（DestroyInstances）用于销毁实例。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DestroyInstancesWithContext(ctx context.Context, request *DestroyInstancesRequest) (response *DestroyInstancesResponse, err error) {
+    if request == nil {
+        request = NewDestroyInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDestroyInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisassociateSecurityGroupsRequest() (request *DisassociateSecurityGroupsRequest) {
     request = &DisassociateSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -314,6 +477,63 @@ func (c *Client) DisassociateSecurityGroupsWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDisassociateSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewIsolateInstanceRequest() (request *IsolateInstanceRequest) {
+    request = &IsolateInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vdb", APIVersion, "IsolateInstance")
+    
+    
+    return
+}
+
+func NewIsolateInstanceResponse() (response *IsolateInstanceResponse) {
+    response = &IsolateInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// IsolateInstance
+// 本接口（IsolateInstance）用于隔离实例于回收站，在回收站保护时长内可恢复实例。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) IsolateInstance(request *IsolateInstanceRequest) (response *IsolateInstanceResponse, err error) {
+    return c.IsolateInstanceWithContext(context.Background(), request)
+}
+
+// IsolateInstance
+// 本接口（IsolateInstance）用于隔离实例于回收站，在回收站保护时长内可恢复实例。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) IsolateInstanceWithContext(ctx context.Context, request *IsolateInstanceRequest) (response *IsolateInstanceResponse, err error) {
+    if request == nil {
+        request = NewIsolateInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("IsolateInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewIsolateInstanceResponse()
     err = c.Send(request, response)
     return
 }
@@ -379,6 +599,266 @@ func (c *Client) ModifyDBInstanceSecurityGroupsWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewModifyDBInstanceSecurityGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceMaintenanceWindowRequest() (request *ModifyInstanceMaintenanceWindowRequest) {
+    request = &ModifyInstanceMaintenanceWindowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vdb", APIVersion, "ModifyInstanceMaintenanceWindow")
+    
+    
+    return
+}
+
+func NewModifyInstanceMaintenanceWindowResponse() (response *ModifyInstanceMaintenanceWindowResponse) {
+    response = &ModifyInstanceMaintenanceWindowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInstanceMaintenanceWindow
+// 本接口（ModifyInstanceMaintenanceWindow）用于修改实例维护时间窗范围。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyInstanceMaintenanceWindow(request *ModifyInstanceMaintenanceWindowRequest) (response *ModifyInstanceMaintenanceWindowResponse, err error) {
+    return c.ModifyInstanceMaintenanceWindowWithContext(context.Background(), request)
+}
+
+// ModifyInstanceMaintenanceWindow
+// 本接口（ModifyInstanceMaintenanceWindow）用于修改实例维护时间窗范围。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyInstanceMaintenanceWindowWithContext(ctx context.Context, request *ModifyInstanceMaintenanceWindowRequest) (response *ModifyInstanceMaintenanceWindowResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceMaintenanceWindowRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceMaintenanceWindow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceMaintenanceWindowResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRecoverInstanceRequest() (request *RecoverInstanceRequest) {
+    request = &RecoverInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vdb", APIVersion, "RecoverInstance")
+    
+    
+    return
+}
+
+func NewRecoverInstanceResponse() (response *RecoverInstanceResponse) {
+    response = &RecoverInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RecoverInstance
+// 本接口（RecoverInstance）用于恢复在回收站隔离的实例。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) RecoverInstance(request *RecoverInstanceRequest) (response *RecoverInstanceResponse, err error) {
+    return c.RecoverInstanceWithContext(context.Background(), request)
+}
+
+// RecoverInstance
+// 本接口（RecoverInstance）用于恢复在回收站隔离的实例。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) RecoverInstanceWithContext(ctx context.Context, request *RecoverInstanceRequest) (response *RecoverInstanceResponse, err error) {
+    if request == nil {
+        request = NewRecoverInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecoverInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecoverInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewScaleOutInstanceRequest() (request *ScaleOutInstanceRequest) {
+    request = &ScaleOutInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vdb", APIVersion, "ScaleOutInstance")
+    
+    
+    return
+}
+
+func NewScaleOutInstanceResponse() (response *ScaleOutInstanceResponse) {
+    response = &ScaleOutInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ScaleOutInstance
+// 本接口（ScaleOutInstance）用于水平扩容节点数量。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ScaleOutInstance(request *ScaleOutInstanceRequest) (response *ScaleOutInstanceResponse, err error) {
+    return c.ScaleOutInstanceWithContext(context.Background(), request)
+}
+
+// ScaleOutInstance
+// 本接口（ScaleOutInstance）用于水平扩容节点数量。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ScaleOutInstanceWithContext(ctx context.Context, request *ScaleOutInstanceRequest) (response *ScaleOutInstanceResponse, err error) {
+    if request == nil {
+        request = NewScaleOutInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScaleOutInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewScaleOutInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewScaleUpInstanceRequest() (request *ScaleUpInstanceRequest) {
+    request = &ScaleUpInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vdb", APIVersion, "ScaleUpInstance")
+    
+    
+    return
+}
+
+func NewScaleUpInstanceResponse() (response *ScaleUpInstanceResponse) {
+    response = &ScaleUpInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ScaleUpInstance
+// 本接口（ScaleUpInstance）用于升级节点配置规格。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ScaleUpInstance(request *ScaleUpInstanceRequest) (response *ScaleUpInstanceResponse, err error) {
+    return c.ScaleUpInstanceWithContext(context.Background(), request)
+}
+
+// ScaleUpInstance
+// 本接口（ScaleUpInstance）用于升级节点配置规格。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ScaleUpInstanceWithContext(ctx context.Context, request *ScaleUpInstanceRequest) (response *ScaleUpInstanceResponse, err error) {
+    if request == nil {
+        request = NewScaleUpInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScaleUpInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewScaleUpInstanceResponse()
     err = c.Send(request, response)
     return
 }

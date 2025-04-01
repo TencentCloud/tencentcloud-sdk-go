@@ -3337,14 +3337,14 @@ type CreateFlowByFilesRequestParams struct {
 	// ![image](https://qcloudimg.tencent-cloud.cn/raw/36582cea03ae6a2559894844942b5d5c.png)
 	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
 
-	// 模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
+	// 发起的时候合成到PDF上的填写控件（需要提供填写控件的内容）
 	// <ul><li> 单行文本控件      </li>
 	// <li> 多行文本控件      </li>
 	// <li> 勾选框控件        </li>
 	// <li> 数字控件          </li>
 	// <li> 图片控件          </li>
-	// <li> 水印控件          </li>
-	// <li> 动态表格等填写控件</li></ul>
+	// <li> 水印控件等          </li>
+	// </ul>
 	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
@@ -3478,14 +3478,14 @@ type CreateFlowByFilesRequest struct {
 	// ![image](https://qcloudimg.tencent-cloud.cn/raw/36582cea03ae6a2559894844942b5d5c.png)
 	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
 
-	// 模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
+	// 发起的时候合成到PDF上的填写控件（需要提供填写控件的内容）
 	// <ul><li> 单行文本控件      </li>
 	// <li> 多行文本控件      </li>
 	// <li> 勾选框控件        </li>
 	// <li> 数字控件          </li>
 	// <li> 图片控件          </li>
-	// <li> 水印控件          </li>
-	// <li> 动态表格等填写控件</li></ul>
+	// <li> 水印控件等          </li>
+	// </ul>
 	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。

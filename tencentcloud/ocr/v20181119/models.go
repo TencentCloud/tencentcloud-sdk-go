@@ -1466,6 +1466,11 @@ func (r *ClassifyStoreNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ConfigAdvanced struct {
+	// 模版的单个属性配置
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
+}
+
 type ContentInfo struct {
 	// 字段内容
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
@@ -10742,6 +10747,7 @@ type SmartStructuralProRequestParams struct {
 	// AirWayBill -- 航空运单识别模板
 	// DispatchWeightNote -- 磅单发货单识别模板
 	// ReceiptWeightNote -- 磅单收货单识别模板
+	// ArticalRecognize -- 手写作文模版
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 是否开启全文字段坐标值的识别
@@ -10749,6 +10755,9 @@ type SmartStructuralProRequestParams struct {
 
 	// 是否开启父子key识别，默认是
 	OutputParentKey *bool `json:"OutputParentKey,omitnil,omitempty" name:"OutputParentKey"`
+
+	// 模版的单个属性配置
+	ConfigAdvanced *ConfigAdvanced `json:"ConfigAdvanced,omitnil,omitempty" name:"ConfigAdvanced"`
 }
 
 type SmartStructuralProRequest struct {
@@ -10784,6 +10793,7 @@ type SmartStructuralProRequest struct {
 	// AirWayBill -- 航空运单识别模板
 	// DispatchWeightNote -- 磅单发货单识别模板
 	// ReceiptWeightNote -- 磅单收货单识别模板
+	// ArticalRecognize -- 手写作文模版
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 是否开启全文字段坐标值的识别
@@ -10791,6 +10801,9 @@ type SmartStructuralProRequest struct {
 
 	// 是否开启父子key识别，默认是
 	OutputParentKey *bool `json:"OutputParentKey,omitnil,omitempty" name:"OutputParentKey"`
+
+	// 模版的单个属性配置
+	ConfigAdvanced *ConfigAdvanced `json:"ConfigAdvanced,omitnil,omitempty" name:"ConfigAdvanced"`
 }
 
 func (r *SmartStructuralProRequest) ToJsonString() string {
@@ -10813,6 +10826,7 @@ func (r *SmartStructuralProRequest) FromJsonString(s string) error {
 	delete(f, "ConfigId")
 	delete(f, "EnableCoord")
 	delete(f, "OutputParentKey")
+	delete(f, "ConfigAdvanced")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SmartStructuralProRequest has unknown keys!", "")
 	}
@@ -13856,6 +13870,20 @@ type WordCoordPoint struct {
 }
 
 type WordItem struct {
+	// 文本块内容
+	DetectedText *string `json:"DetectedText,omitnil,omitempty" name:"DetectedText"`
+
+	// 四点坐标
+	Coord *Polygon `json:"Coord,omitnil,omitempty" name:"Coord"`
+
+	// 描述性信息
+	AdvancedInfo *string `json:"AdvancedInfo,omitnil,omitempty" name:"AdvancedInfo"`
+
+	// 单词的四点坐标
+	WordCoord []*WordPolygon `json:"WordCoord,omitnil,omitempty" name:"WordCoord"`
+}
+
+type WordPolygon struct {
 	// 文本块内容
 	DetectedText *string `json:"DetectedText,omitnil,omitempty" name:"DetectedText"`
 

@@ -338,6 +338,9 @@ const (
 	// 请求的消息类型无效。
 	INVALIDPARAMETER_INVALIDINFOTYPE = "InvalidParameter.InvalidInfoType"
 
+	// 指定参数int类型转换失败
+	INVALIDPARAMETER_INVALIDINTFORMAT = "InvalidParameter.InvalidIntFormat"
+
 	// 无效的最大结果数。
 	INVALIDPARAMETER_INVALIDMAXRESULTS = "InvalidParameter.InvalidMaxResults"
 

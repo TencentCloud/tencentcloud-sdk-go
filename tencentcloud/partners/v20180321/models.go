@@ -147,6 +147,9 @@ type AgentClientElem struct {
 
 	// 客户名称，此字段和控制台返回一致。
 	ClientName *string `json:"ClientName,omitnil,omitempty" name:"ClientName"`
+
+	// 增量目标金额(分)
+	IncreaseGoal *string `json:"IncreaseGoal,omitnil,omitempty" name:"IncreaseGoal"`
 }
 
 type AgentDealNewElem struct {

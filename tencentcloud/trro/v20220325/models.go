@@ -223,6 +223,135 @@ func (r *BoundLicensesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CloudStorage struct {
+	// 腾讯云对象存储COS以及第三方云存储账号信息
+	// 0：腾讯云对象存储 COS
+	// 1：AWS
+	// 【注意】目前第三方云存储仅支持AWS，更多第三方云存储陆续支持中
+	// 示例值：0
+	Vendor *int64 `json:"Vendor,omitnil,omitempty" name:"Vendor"`
+
+	// 腾讯云对象存储的[地域信息]（https://cloud.tencent.com/document/product/436/6224#.E5.9C.B0.E5.9F.9F）。
+	// 示例值：cn-shanghai-1
+	// 
+	// AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions）
+	// 示例值：ap-shanghai(cos, 具体参考云存储厂商支持的地域)
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 云存储桶名称。
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// 云存储的access_key账号信息。
+	// 若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretId值。
+	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
+
+	// 云存储的secret_key账号信息。
+	// 若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretKey值。
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// 云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围az,AZ,0~9,'_'和'-'，举个例子，录制文件xxx.m3u8在 ["prefix1", "prefix2"]作用下，会变成prefix1/prefix2/TaskId/xxx.m3u8。
+	FileNamePrefix []*string `json:"FileNamePrefix,omitnil,omitempty" name:"FileNamePrefix"`
+}
+
+// Predefined struct for user
+type CreateCloudRecordingRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 设备id
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 视频流号
+	VideoStreamId *int64 `json:"VideoStreamId,omitnil,omitempty" name:"VideoStreamId"`
+
+	// 腾讯云对象存储COS以及第三方云存储的账号信息
+	CloudStorage *CloudStorage `json:"CloudStorage,omitnil,omitempty" name:"CloudStorage"`
+
+	// 如果是aac或者mp4文件格式，超过长度限制后，系统会自动拆分视频文件。单位：分钟。默认为1440min（24h），取值范围为1-1440。【单文件限制最大为2G，满足文件大小 >2G 或录制时长度 > 24h任意一个条件，文件都会自动切分】 Hls 格式录制此参数不生效。
+	MaxMediaFileDuration *int64 `json:"MaxMediaFileDuration,omitnil,omitempty" name:"MaxMediaFileDuration"`
+
+	// 输出文件的格式（存储至COS等第三方存储时有效）。0：输出文件为hls格式。1：输出文件格式为hls+mp4。2：输出文件格式为hls+aac 。3：(默认)输出文件格式为mp4。4：输出文件格式为aac。
+	OutputFormat *int64 `json:"OutputFormat,omitnil,omitempty" name:"OutputFormat"`
+
+	// 房间内持续没有主播的状态超过MaxIdleTime的时长，自动停止录制，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。 示例值：30
+	MaxIdleTime *int64 `json:"MaxIdleTime,omitnil,omitempty" name:"MaxIdleTime"`
+}
+
+type CreateCloudRecordingRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 设备id
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 视频流号
+	VideoStreamId *int64 `json:"VideoStreamId,omitnil,omitempty" name:"VideoStreamId"`
+
+	// 腾讯云对象存储COS以及第三方云存储的账号信息
+	CloudStorage *CloudStorage `json:"CloudStorage,omitnil,omitempty" name:"CloudStorage"`
+
+	// 如果是aac或者mp4文件格式，超过长度限制后，系统会自动拆分视频文件。单位：分钟。默认为1440min（24h），取值范围为1-1440。【单文件限制最大为2G，满足文件大小 >2G 或录制时长度 > 24h任意一个条件，文件都会自动切分】 Hls 格式录制此参数不生效。
+	MaxMediaFileDuration *int64 `json:"MaxMediaFileDuration,omitnil,omitempty" name:"MaxMediaFileDuration"`
+
+	// 输出文件的格式（存储至COS等第三方存储时有效）。0：输出文件为hls格式。1：输出文件格式为hls+mp4。2：输出文件格式为hls+aac 。3：(默认)输出文件格式为mp4。4：输出文件格式为aac。
+	OutputFormat *int64 `json:"OutputFormat,omitnil,omitempty" name:"OutputFormat"`
+
+	// 房间内持续没有主播的状态超过MaxIdleTime的时长，自动停止录制，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。 示例值：30
+	MaxIdleTime *int64 `json:"MaxIdleTime,omitnil,omitempty" name:"MaxIdleTime"`
+}
+
+func (r *CreateCloudRecordingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudRecordingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "DeviceId")
+	delete(f, "VideoStreamId")
+	delete(f, "CloudStorage")
+	delete(f, "MaxMediaFileDuration")
+	delete(f, "OutputFormat")
+	delete(f, "MaxIdleTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudRecordingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCloudRecordingResponseParams struct {
+	// 云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。任务 ID需要业务保存下来，作为下次针对这个录制任务操作的参数。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCloudRecordingResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCloudRecordingResponseParams `json:"Response"`
+}
+
+func (r *CreateCloudRecordingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudRecordingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type CreateDeviceRequestParams struct {
 	// 创建设备所归属的项目ID
@@ -373,6 +502,60 @@ func (r *CreateProjectResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateProjectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCloudRecordingRequestParams struct {
+	// 录制任务的唯一Id，在启动录制成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DeleteCloudRecordingRequest struct {
+	*tchttp.BaseRequest
+	
+	// 录制任务的唯一Id，在启动录制成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteCloudRecordingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudRecordingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudRecordingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCloudRecordingResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCloudRecordingResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCloudRecordingResponseParams `json:"Response"`
+}
+
+func (r *DeleteCloudRecordingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudRecordingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1644,6 +1827,80 @@ type License struct {
 }
 
 // Predefined struct for user
+type ModifyCallbackUrlRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 回调URL
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
+
+	// 回调签名密钥，用于校验回调信息的完整性
+	SignKey *string `json:"SignKey,omitnil,omitempty" name:"SignKey"`
+}
+
+type ModifyCallbackUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 回调URL
+	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
+
+	// 回调签名密钥，用于校验回调信息的完整性
+	SignKey *string `json:"SignKey,omitnil,omitempty" name:"SignKey"`
+}
+
+func (r *ModifyCallbackUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCallbackUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "CallbackUrl")
+	delete(f, "SignKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCallbackUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCallbackUrlResponseParams struct {
+	// 响应码，0：成功，其他：失败
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 响应消息，ok:成功，其他：失败
+	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyCallbackUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCallbackUrlResponseParams `json:"Response"`
+}
+
+func (r *ModifyCallbackUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCallbackUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDeviceRequestParams struct {
 	// 要修改设备归属项目的项目ID
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -2027,6 +2284,14 @@ type ProjectInfo struct {
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
+type PublishParams struct {
+	// 腾讯云直播推流地址url
+	PublishUrl *string `json:"PublishUrl,omitnil,omitempty" name:"PublishUrl"`
+
+	// 是否是腾讯云CDN，0为转推非腾讯云CDN，1为转推腾讯CDN，不携带该参数默认为1。
+	IsTencentUrl *int64 `json:"IsTencentUrl,omitnil,omitempty" name:"IsTencentUrl"`
+}
+
 type RecentSessionInfo struct {
 	// 会话ID
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
@@ -2204,4 +2469,173 @@ type SessionIntervalStatistic struct {
 
 	// 优良会话占比，单位：%
 	NotBadSessionRatio *uint64 `json:"NotBadSessionRatio,omitnil,omitempty" name:"NotBadSessionRatio"`
+}
+
+// Predefined struct for user
+type StartPublishLiveStreamRequestParams struct {
+	// 是否转码，0表示无需转码，1表示需要转码。是否收取转码费是由WithTranscoding参数决定的，WithTranscoding为0，表示旁路转推，不会收取转码费用，WithTranscoding为1，表示混流转推，会收取转码费用。 示例值：1
+	WithTranscoding *int64 `json:"WithTranscoding,omitnil,omitempty" name:"WithTranscoding"`
+
+	// 所有参与混流转推的主播持续离开TRTC房间或切换成观众超过MaxIdleTime的时长，自动停止转推，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。
+	MaxIdleTime *int64 `json:"MaxIdleTime,omitnil,omitempty" name:"MaxIdleTime"`
+
+	// 转推视频参数
+	VideoParams *VideoParams `json:"VideoParams,omitnil,omitempty" name:"VideoParams"`
+
+	// 转推的URL参数，一个任务最多支持10个推流URL
+	PublishParams []*PublishParams `json:"PublishParams,omitnil,omitempty" name:"PublishParams"`
+}
+
+type StartPublishLiveStreamRequest struct {
+	*tchttp.BaseRequest
+	
+	// 是否转码，0表示无需转码，1表示需要转码。是否收取转码费是由WithTranscoding参数决定的，WithTranscoding为0，表示旁路转推，不会收取转码费用，WithTranscoding为1，表示混流转推，会收取转码费用。 示例值：1
+	WithTranscoding *int64 `json:"WithTranscoding,omitnil,omitempty" name:"WithTranscoding"`
+
+	// 所有参与混流转推的主播持续离开TRTC房间或切换成观众超过MaxIdleTime的时长，自动停止转推，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。
+	MaxIdleTime *int64 `json:"MaxIdleTime,omitnil,omitempty" name:"MaxIdleTime"`
+
+	// 转推视频参数
+	VideoParams *VideoParams `json:"VideoParams,omitnil,omitempty" name:"VideoParams"`
+
+	// 转推的URL参数，一个任务最多支持10个推流URL
+	PublishParams []*PublishParams `json:"PublishParams,omitnil,omitempty" name:"PublishParams"`
+}
+
+func (r *StartPublishLiveStreamRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartPublishLiveStreamRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WithTranscoding")
+	delete(f, "MaxIdleTime")
+	delete(f, "VideoParams")
+	delete(f, "PublishParams")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartPublishLiveStreamRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartPublishLiveStreamResponseParams struct {
+	// 用于唯一标识转推任务，由腾讯云服务端生成，后续停止请求需要携带TaskiD参数。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StartPublishLiveStreamResponse struct {
+	*tchttp.BaseResponse
+	Response *StartPublishLiveStreamResponseParams `json:"Response"`
+}
+
+func (r *StartPublishLiveStreamResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartPublishLiveStreamResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopPublishLiveStreamRequestParams struct {
+	// 唯一标识转推任务。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type StopPublishLiveStreamRequest struct {
+	*tchttp.BaseRequest
+	
+	// 唯一标识转推任务。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *StopPublishLiveStreamRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopPublishLiveStreamRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopPublishLiveStreamRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopPublishLiveStreamResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StopPublishLiveStreamResponse struct {
+	*tchttp.BaseResponse
+	Response *StopPublishLiveStreamResponseParams `json:"Response"`
+}
+
+func (r *StopPublishLiveStreamResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopPublishLiveStreamResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type VideoList struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 设备id
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 流id
+	VideoStreamId *int64 `json:"VideoStreamId,omitnil,omitempty" name:"VideoStreamId"`
+
+	// 子画面在输出时的宽度，单位为像素值，不填默认为0。
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 子画面在输出时的高度，单位为像素值，不填默认为0。
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
+}
+
+type VideoParams struct {
+	// 输出流宽，音视频输出时必填。取值范围[0,1920]，单位为像素值。
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 输出流高，音视频输出时必填。取值范围[0,1080]，单位为像素值。
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
+
+	// 输出流帧率，音视频输出时必填。取值范围[1,60]，表示混流的输出帧率可选范围为1到60fps。
+	Fps *int64 `json:"Fps,omitnil,omitempty" name:"Fps"`
+
+	// 输出流码率，音视频输出时必填。取值范围[1,10000]，单位为kbps。
+	BitRate *int64 `json:"BitRate,omitnil,omitempty" name:"BitRate"`
+
+	// 输出流gop，音视频输出时必填。取值范围[1,5]，单位为秒。
+	Gop *int64 `json:"Gop,omitnil,omitempty" name:"Gop"`
+
+	// 转推视频流列表
+	VideoList []*VideoList `json:"VideoList,omitnil,omitempty" name:"VideoList"`
 }

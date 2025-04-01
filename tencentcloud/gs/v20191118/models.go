@@ -35,6 +35,9 @@ type AndroidApp struct {
 
 	// 安卓应用创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 用户 Id
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
 type AndroidAppVersionInfo struct {
@@ -1043,6 +1046,9 @@ type DescribeAndroidAppsRequestParams struct {
 
 	// 应用ID数组
 	AndroidAppIds []*string `json:"AndroidAppIds,omitnil,omitempty" name:"AndroidAppIds"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeAndroidAppsRequest struct {
@@ -1056,6 +1062,9 @@ type DescribeAndroidAppsRequest struct {
 
 	// 应用ID数组
 	AndroidAppIds []*string `json:"AndroidAppIds,omitnil,omitempty" name:"AndroidAppIds"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeAndroidAppsRequest) ToJsonString() string {
@@ -1073,6 +1082,7 @@ func (r *DescribeAndroidAppsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "AndroidAppIds")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAndroidAppsRequest has unknown keys!", "")
 	}

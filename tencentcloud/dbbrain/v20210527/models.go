@@ -791,7 +791,7 @@ type CreateDBDiagReportTaskRequestParams struct {
 	// 接收邮件的联系组ID数组。
 	ContactGroup []*int64 `json:"ContactGroup,omitnil,omitempty" name:"ContactGroup"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认值为"mysql"。
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，默认值为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -816,7 +816,7 @@ type CreateDBDiagReportTaskRequest struct {
 	// 接收邮件的联系组ID数组。
 	ContactGroup []*int64 `json:"ContactGroup,omitnil,omitempty" name:"ContactGroup"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认值为"mysql"。
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，默认值为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -878,7 +878,7 @@ type CreateDBDiagReportUrlRequestParams struct {
 	// 健康报告相应的任务ID，可通过DescribeDBDiagReportTasks查询。
 	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
-	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -891,7 +891,7 @@ type CreateDBDiagReportUrlRequest struct {
 	// 健康报告相应的任务ID，可通过DescribeDBDiagReportTasks查询。
 	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
-	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -2582,7 +2582,7 @@ type DescribeDBDiagEventRequestParams struct {
 	// 事件 ID 。通过“获取实例诊断历史DescribeDBDiagHistory”获取。
 	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -2595,7 +2595,7 @@ type DescribeDBDiagEventRequest struct {
 	// 事件 ID 。通过“获取实例诊断历史DescribeDBDiagHistory”获取。
 	EventId *int64 `json:"EventId,omitnil,omitempty" name:"EventId"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -2866,7 +2866,7 @@ type DescribeDBDiagReportTasksRequestParams struct {
 	// 实例ID数组，用于筛选指定实例的任务列表。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 定时生成；"MANUAL" - 手动触发。
+	// 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 计划任务；"MANUAL" - 手动触发。
 	Sources []*string `json:"Sources,omitnil,omitempty" name:"Sources"`
 
 	// 报告的健康等级，支持的取值包括："HEALTH" - 健康；"SUB_HEALTH" - 亚健康；"RISK" - 危险；"HIGH_RISK" - 高危。
@@ -2881,7 +2881,7 @@ type DescribeDBDiagReportTasksRequestParams struct {
 	// 返回数量，默认20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -2897,7 +2897,7 @@ type DescribeDBDiagReportTasksRequest struct {
 	// 实例ID数组，用于筛选指定实例的任务列表。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 定时生成；"MANUAL" - 手动触发。
+	// 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 计划任务；"MANUAL" - 手动触发。
 	Sources []*string `json:"Sources,omitnil,omitempty" name:"Sources"`
 
 	// 报告的健康等级，支持的取值包括："HEALTH" - 健康；"SUB_HEALTH" - 亚健康；"RISK" - 危险；"HIGH_RISK" - 高危。
@@ -2912,7 +2912,7 @@ type DescribeDBDiagReportTasksRequest struct {
 	// 返回数量，默认20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -6137,6 +6137,9 @@ type HealthStatus struct {
 
 	// 扣分详情。
 	ScoreDetails []*ScoreDetail `json:"ScoreDetails,omitnil,omitempty" name:"ScoreDetails"`
+
+	// 健康等级版本，默认为"V1"
+	HealthLevelVersion *string `json:"HealthLevelVersion,omitnil,omitempty" name:"HealthLevelVersion"`
 }
 
 type IndexesToBuild struct {
@@ -6197,6 +6200,33 @@ type InstanceBasicInfo struct {
 
 	// 实例引擎版本。
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
+
+	// CPU数量，对于Redis为0。
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 实例部署模式。
+	DeployMode *string `json:"DeployMode,omitnil,omitempty" name:"DeployMode"`
+
+	// 实例内存配置。
+	InstanceConf *RedisInstanceConf `json:"InstanceConf,omitnil,omitempty" name:"InstanceConf"`
+
+	// DBbrain是否支持该实例。
+	IsSupported *bool `json:"IsSupported,omitnil,omitempty" name:"IsSupported"`
+
+	// 实例内存，单位MB。
+	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 实例地域。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 实例子网统一ID，对于redis为空字符串。
+	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
+
+	// 实例私有网络统一ID，对于redis为空字符串。
+	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
+
+	// 实例磁盘容量，对于Redis为0。
+	Volume *int64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 }
 
 type InstanceConfs struct {
@@ -7190,6 +7220,17 @@ type RedisCmdInfo struct {
 
 	// 命令次数
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+}
+
+type RedisInstanceConf struct {
+	// 副本数量
+	ReplicasNum *string `json:"ReplicasNum,omitnil,omitempty" name:"ReplicasNum"`
+
+	// 分片数量
+	ShardNum *string `json:"ShardNum,omitnil,omitempty" name:"ShardNum"`
+
+	// 分片内存大小，单位MB
+	ShardSize *string `json:"ShardSize,omitnil,omitempty" name:"ShardSize"`
 }
 
 type RedisKeySpaceData struct {

@@ -6168,6 +6168,9 @@ type CreateSubAppIdRequestParams struct {
 
 	// 应用简介，长度限制： 300个字符。不填则应用简介默认为空。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 应用类型， 取值有：<li>AllInOne：一体化；</li><li>Professional：专业版。</li>默认值为 AllInOne。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type CreateSubAppIdRequest struct {
@@ -6178,6 +6181,9 @@ type CreateSubAppIdRequest struct {
 
 	// 应用简介，长度限制： 300个字符。不填则应用简介默认为空。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 应用类型， 取值有：<li>AllInOne：一体化；</li><li>Professional：专业版。</li>默认值为 AllInOne。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 func (r *CreateSubAppIdRequest) ToJsonString() string {
@@ -6194,6 +6200,7 @@ func (r *CreateSubAppIdRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Name")
 	delete(f, "Description")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSubAppIdRequest has unknown keys!", "")
 	}

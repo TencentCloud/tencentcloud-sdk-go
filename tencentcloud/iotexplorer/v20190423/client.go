@@ -1765,7 +1765,7 @@ func NewCreateTopicPolicyResponse() (response *CreateTopicPolicyResponse) {
 }
 
 // CreateTopicPolicy
-// 本接口（CreateTopicPolicy）用于创建一个Topic 
+// 本接口（CreateTopicPolicy）用于创建一个Topic
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1774,12 +1774,13 @@ func NewCreateTopicPolicyResponse() (response *CreateTopicPolicyResponse) {
 //  LIMITEXCEEDED_TOPICPOLICYEXCEEDLIMIT = "LimitExceeded.TopicPolicyExceedLimit"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) CreateTopicPolicy(request *CreateTopicPolicyRequest) (response *CreateTopicPolicyResponse, err error) {
     return c.CreateTopicPolicyWithContext(context.Background(), request)
 }
 
 // CreateTopicPolicy
-// 本接口（CreateTopicPolicy）用于创建一个Topic 
+// 本接口（CreateTopicPolicy）用于创建一个Topic
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1788,6 +1789,7 @@ func (c *Client) CreateTopicPolicy(request *CreateTopicPolicyRequest) (response 
 //  LIMITEXCEEDED_TOPICPOLICYEXCEEDLIMIT = "LimitExceeded.TopicPolicyExceedLimit"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) CreateTopicPolicyWithContext(ctx context.Context, request *CreateTopicPolicyRequest) (response *CreateTopicPolicyResponse, err error) {
     if request == nil {
         request = NewCreateTopicPolicyRequest()
@@ -2521,25 +2523,27 @@ func NewDeleteTopicPolicyResponse() (response *DeleteTopicPolicyResponse) {
 }
 
 // DeleteTopicPolicy
-// 本接口（DeleteTopicPolicy）用于删除Topic 
+// 本接口（DeleteTopicPolicy）用于删除Topic
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  RESOURCENOTFOUND_TOPICPOLICYNOTEXIST = "ResourceNotFound.TopicPolicyNotExist"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) DeleteTopicPolicy(request *DeleteTopicPolicyRequest) (response *DeleteTopicPolicyResponse, err error) {
     return c.DeleteTopicPolicyWithContext(context.Background(), request)
 }
 
 // DeleteTopicPolicy
-// 本接口（DeleteTopicPolicy）用于删除Topic 
+// 本接口（DeleteTopicPolicy）用于删除Topic
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  RESOURCENOTFOUND_TOPICPOLICYNOTEXIST = "ResourceNotFound.TopicPolicyNotExist"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) DeleteTopicPolicyWithContext(ctx context.Context, request *DeleteTopicPolicyRequest) (response *DeleteTopicPolicyResponse, err error) {
     if request == nil {
         request = NewDeleteTopicPolicyRequest()
@@ -5599,25 +5603,27 @@ func NewDescribeTopicPolicyResponse() (response *DescribeTopicPolicyResponse) {
 }
 
 // DescribeTopicPolicy
-// 本接口（DescribeTopicPolicy）用于查看Topic详细信息 
+// 本接口（DescribeTopicPolicy）用于查看Topic详细信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  RESOURCENOTFOUND_TOPICPOLICYNOTEXIST = "ResourceNotFound.TopicPolicyNotExist"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) DescribeTopicPolicy(request *DescribeTopicPolicyRequest) (response *DescribeTopicPolicyResponse, err error) {
     return c.DescribeTopicPolicyWithContext(context.Background(), request)
 }
 
 // DescribeTopicPolicy
-// 本接口（DescribeTopicPolicy）用于查看Topic详细信息 
+// 本接口（DescribeTopicPolicy）用于查看Topic详细信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  RESOURCENOTFOUND_TOPICPOLICYNOTEXIST = "ResourceNotFound.TopicPolicyNotExist"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) DescribeTopicPolicyWithContext(ctx context.Context, request *DescribeTopicPolicyRequest) (response *DescribeTopicPolicyResponse, err error) {
     if request == nil {
         request = NewDescribeTopicPolicyRequest()
@@ -7507,6 +7513,7 @@ func NewListTopicPolicyResponse() (response *ListTopicPolicyResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) ListTopicPolicy(request *ListTopicPolicyRequest) (response *ListTopicPolicyResponse, err error) {
     return c.ListTopicPolicyWithContext(context.Background(), request)
 }
@@ -7519,6 +7526,7 @@ func (c *Client) ListTopicPolicy(request *ListTopicPolicyRequest) (response *Lis
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) ListTopicPolicyWithContext(ctx context.Context, request *ListTopicPolicyRequest) (response *ListTopicPolicyResponse, err error) {
     if request == nil {
         request = NewListTopicPolicyRequest()
@@ -8466,7 +8474,7 @@ func NewModifyTopicPolicyResponse() (response *ModifyTopicPolicyResponse) {
 }
 
 // ModifyTopicPolicy
-// 本接口（UpdateTopicPolicy）用于更新Topic信息 
+// 本接口（UpdateTopicPolicy）用于更新Topic信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -8475,12 +8483,13 @@ func NewModifyTopicPolicyResponse() (response *ModifyTopicPolicyResponse) {
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  RESOURCENOTFOUND_TOPICPOLICYNOTEXIST = "ResourceNotFound.TopicPolicyNotExist"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) ModifyTopicPolicy(request *ModifyTopicPolicyRequest) (response *ModifyTopicPolicyResponse, err error) {
     return c.ModifyTopicPolicyWithContext(context.Background(), request)
 }
 
 // ModifyTopicPolicy
-// 本接口（UpdateTopicPolicy）用于更新Topic信息 
+// 本接口（UpdateTopicPolicy）用于更新Topic信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -8489,6 +8498,7 @@ func (c *Client) ModifyTopicPolicy(request *ModifyTopicPolicyRequest) (response 
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
 //  RESOURCENOTFOUND_TOPICPOLICYNOTEXIST = "ResourceNotFound.TopicPolicyNotExist"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
 func (c *Client) ModifyTopicPolicyWithContext(ctx context.Context, request *ModifyTopicPolicyRequest) (response *ModifyTopicPolicyResponse, err error) {
     if request == nil {
         request = NewModifyTopicPolicyRequest()
@@ -9851,7 +9861,7 @@ func NewUpdateFirmwareResponse() (response *UpdateFirmwareResponse) {
 }
 
 // UpdateFirmware
-// 本接口（UpdateFirmware）用于对指定设备发起固件升级请求 
+// 本接口（UpdateFirmware）用于对指定设备发起固件升级请求
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DEVICEFIRMWAREISUPDATED = "FailedOperation.DeviceFirmwareIsUpdated"
@@ -9873,7 +9883,7 @@ func (c *Client) UpdateFirmware(request *UpdateFirmwareRequest) (response *Updat
 }
 
 // UpdateFirmware
-// 本接口（UpdateFirmware）用于对指定设备发起固件升级请求 
+// 本接口（UpdateFirmware）用于对指定设备发起固件升级请求
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DEVICEFIRMWAREISUPDATED = "FailedOperation.DeviceFirmwareIsUpdated"

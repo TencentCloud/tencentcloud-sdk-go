@@ -203,11 +203,9 @@ func (r *DescribeApplicationsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeApplicationsResponseParams struct {
 	// 应用总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 分页返回的应用列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationSet []*ApplicationInfo `json:"ApplicationSet,omitnil,omitempty" name:"ApplicationSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -268,7 +266,6 @@ type DescribeInstanceNetworkStatusResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 查询结果集
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkStatusSet []*NetworkStatus `json:"NetworkStatusSet,omitnil,omitempty" name:"NetworkStatusSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -887,11 +884,9 @@ type LoginService struct {
 
 type LoginSetting struct {
 	// 服务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
 	// 服务登录url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
@@ -1220,16 +1215,13 @@ func (r *StopInstanceResponse) FromJsonString(s string) error {
 }
 
 type SystemDisk struct {
-	// 系统盘类型。系统盘类型限制详见[存储概述](https://cloud.tencent.com/document/product/213/4952)。取值范围：<br><li>LOCAL_BASIC：本地硬盘<br><li>LOCAL_SSD：本地SSD硬盘<br><li>CLOUD_BASIC：普通云硬盘<br><li>CLOUD_SSD：SSD云硬盘<br><li>CLOUD_PREMIUM：高性能云硬盘<br><li>CLOUD_BSSD：通用性SSD云硬盘<br><br>默认取值：当前有库存的硬盘类型。	
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 系统盘类型。取值范围：<li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_HSSD：增强型SSD云盘</li>默认取值：当前有库存的硬盘类型。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// 系统盘大小，单位：GB。默认值为 80
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
 	// 系统盘分区盘符
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskName *string `json:"DiskName,omitnil,omitempty" name:"DiskName"`
 }
 

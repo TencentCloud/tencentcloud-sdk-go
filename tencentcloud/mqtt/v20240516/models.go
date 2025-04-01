@@ -2557,14 +2557,14 @@ func (r *DescribeInstanceListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceRequestParams struct {
-	// 实例ID [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -3932,7 +3932,7 @@ type ModifyInstanceRequestParams struct {
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 需要变更的配置规格
-	// 基础版和增强版集群不能升配到铂金版规格，铂金版集群不能降配至基础版和增强版规格。
+	// 基础版和专业版集群不能升配到铂金版规格，铂金版集群不能降配至基础版和增强版规格。
 	SkuCode *string `json:"SkuCode,omitnil,omitempty" name:"SkuCode"`
 
 	// 客户端证书注册方式：
@@ -3960,7 +3960,7 @@ type ModifyInstanceRequest struct {
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 需要变更的配置规格
-	// 基础版和增强版集群不能升配到铂金版规格，铂金版集群不能降配至基础版和增强版规格。
+	// 基础版和专业版集群不能升配到铂金版规格，铂金版集群不能降配至基础版和增强版规格。
 	SkuCode *string `json:"SkuCode,omitnil,omitempty" name:"SkuCode"`
 
 	// 客户端证书注册方式：
@@ -4355,16 +4355,17 @@ func (r *ModifyUserResponse) FromJsonString(s string) error {
 }
 
 type PriceTag struct {
-	// 计价名称
+	// 计价名称，表示规格的计费项项目分类，具体规格的计价名称可参考  [获取MQTT产品售卖规格](https://cloud.tencent.com/document/product/1778/116232) 接口的返回结果。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 计价类别
+	// 计价类别，计价名称子类，具体规格的计价类别可参考  [获取MQTT产品售卖规格](https://cloud.tencent.com/document/product/1778/116232) 的返回结果。
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 
-	// 计费项标签
+	// 计费项标签，为计价名称（Name）下计价类别（Category）的子项目，表示一个具体的收费项。规格的计费项标签可参考 
+	//  [获取MQTT产品售卖规格](https://cloud.tencent.com/document/product/1778/116232) 接口的返回结果。
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 步长
+	// 计费步长，表示该规格在 计价名称（Name）下的计价类别（Category）的计费项标签（Code）计费数量。具体规格该字段取值参考 [获取MQTT产品售卖规格](https://cloud.tencent.com/document/product/1778/116232)
 	Step *int64 `json:"Step,omitnil,omitempty" name:"Step"`
 }
 
@@ -4578,6 +4579,12 @@ func (r *RegisterCaCertificateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RegisterCaCertificateResponseParams struct {
+	// mqtt实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// ca 证书的序列号
+	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4675,6 +4682,15 @@ func (r *RegisterDeviceCertificateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RegisterDeviceCertificateResponseParams struct {
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 关联的CA证书SN
+	CaSn *string `json:"CaSn,omitnil,omitempty" name:"CaSn"`
+
+	// 设备证书的SN
+	DeviceCertificateSn *string `json:"DeviceCertificateSn,omitnil,omitempty" name:"DeviceCertificateSn"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

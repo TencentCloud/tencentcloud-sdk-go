@@ -13336,6 +13336,12 @@ type RabbitMQClusterInfo struct {
 
 	// 实例类型，0 专享版、1 Serverless 版
 	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 开始隔离时间
+	IsolatedTime *int64 `json:"IsolatedTime,omitnil,omitempty" name:"IsolatedTime"`
+
+	// 是否为容器实例，默认 true
+	Container *bool `json:"Container,omitnil,omitempty" name:"Container"`
 }
 
 type RabbitMQClusterSpecInfo struct {
@@ -13645,6 +13651,9 @@ type RabbitMQVipInstance struct {
 
 	// 实例类型，0 专享版、1 Serverless 版
 	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 隔离时间，毫秒为单位
+	IsolatedTime *uint64 `json:"IsolatedTime,omitnil,omitempty" name:"IsolatedTime"`
 }
 
 type RabbitMQVirtualHostInfo struct {

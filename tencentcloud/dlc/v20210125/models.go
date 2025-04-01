@@ -3497,6 +3497,150 @@ func (r *CreateSparkSessionBatchSQLResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateSparkSubmitTaskRequestParams struct {
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 任务类型：当前支持1: BatchType, 2: StreamingType, 4: SQLType
+	TaskType *uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 引擎名称，当前仅支持Spark批作业集群
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// 指定运行的程序脚本路径，当前仅支持jar和py，对于SQLType该值设为空字符串
+	PackagePath *string `json:"PackagePath,omitnil,omitempty" name:"PackagePath"`
+
+	// 指定的鉴权信息
+	RoleArn *int64 `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
+
+	// 运行任务所需资源是否继承自集群上配置资源信息，0（默认，不继承）、1（继承，当设置为该值，则任务级资源配置可不额外指定）
+	IsInherit *uint64 `json:"IsInherit,omitnil,omitempty" name:"IsInherit"`
+
+	// jar任务时需要指定主程序
+	MainClass *string `json:"MainClass,omitnil,omitempty" name:"MainClass"`
+
+	// 当前DriverSize规格仅支持（内存型集群则使用m前缀的枚举值）: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge
+	DriverSize *string `json:"DriverSize,omitnil,omitempty" name:"DriverSize"`
+
+	// 当前ExecutorSize规格仅支持（内存型集群则使用m前缀的枚举值）: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge
+	ExecutorSize *string `json:"ExecutorSize,omitnil,omitempty" name:"ExecutorSize"`
+
+	// 指定使用的executor数量，最小为1
+	ExecutorNumbers *uint64 `json:"ExecutorNumbers,omitnil,omitempty" name:"ExecutorNumbers"`
+
+	// 指定使用的executor最大数量, 当该值大于ExecutorNums则自动开启动态
+	ExecutorMaxNumbers *uint64 `json:"ExecutorMaxNumbers,omitnil,omitempty" name:"ExecutorMaxNumbers"`
+
+	// 提交任务的附加配置集合，当前支持Key包含：MAINARGS：程序入口参数，空格分割(SqlType任务通过该值指定base64加密后的sql)、SPARKCONFIG：Spark配置，以换行符分隔、ENI：Eni连接信息、DEPENDENCYPACKAGEPATH：依赖的程序包（--jars、--py-files:支持py/zip/egg等归档格式），多文件以逗号分隔、DEPENDENCYFILEPATH：依赖文件资源（--files: 非jar、zip），多文件以逗号分隔、DEPENDENCYARCHIVESPATH：依赖archives资源（--archives: 支持tar.gz/tgz/tar等归档格式)，多文件以逗号分隔、MAXRETRIES：任务重试次数，非流任务默认为1、SPARKIMAGE：Spark镜像版本号，支持使用dlc镜像/用户自定的tcr镜像运行任务、SPARKIMAGEVERSION：Spark镜像版本名称，与SPARKIMAGE一一对应
+	CmdArgs []*KVPair `json:"CmdArgs,omitnil,omitempty" name:"CmdArgs"`
+
+	// 任务来源信息
+	SourceInfo []*KVPair `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
+}
+
+type CreateSparkSubmitTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务名称
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 任务类型：当前支持1: BatchType, 2: StreamingType, 4: SQLType
+	TaskType *uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 引擎名称，当前仅支持Spark批作业集群
+	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
+
+	// 指定运行的程序脚本路径，当前仅支持jar和py，对于SQLType该值设为空字符串
+	PackagePath *string `json:"PackagePath,omitnil,omitempty" name:"PackagePath"`
+
+	// 指定的鉴权信息
+	RoleArn *int64 `json:"RoleArn,omitnil,omitempty" name:"RoleArn"`
+
+	// 运行任务所需资源是否继承自集群上配置资源信息，0（默认，不继承）、1（继承，当设置为该值，则任务级资源配置可不额外指定）
+	IsInherit *uint64 `json:"IsInherit,omitnil,omitempty" name:"IsInherit"`
+
+	// jar任务时需要指定主程序
+	MainClass *string `json:"MainClass,omitnil,omitempty" name:"MainClass"`
+
+	// 当前DriverSize规格仅支持（内存型集群则使用m前缀的枚举值）: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge
+	DriverSize *string `json:"DriverSize,omitnil,omitempty" name:"DriverSize"`
+
+	// 当前ExecutorSize规格仅支持（内存型集群则使用m前缀的枚举值）: small/medium/large/xlarge/m.small/m.medium/m.large/m.xlarge
+	ExecutorSize *string `json:"ExecutorSize,omitnil,omitempty" name:"ExecutorSize"`
+
+	// 指定使用的executor数量，最小为1
+	ExecutorNumbers *uint64 `json:"ExecutorNumbers,omitnil,omitempty" name:"ExecutorNumbers"`
+
+	// 指定使用的executor最大数量, 当该值大于ExecutorNums则自动开启动态
+	ExecutorMaxNumbers *uint64 `json:"ExecutorMaxNumbers,omitnil,omitempty" name:"ExecutorMaxNumbers"`
+
+	// 提交任务的附加配置集合，当前支持Key包含：MAINARGS：程序入口参数，空格分割(SqlType任务通过该值指定base64加密后的sql)、SPARKCONFIG：Spark配置，以换行符分隔、ENI：Eni连接信息、DEPENDENCYPACKAGEPATH：依赖的程序包（--jars、--py-files:支持py/zip/egg等归档格式），多文件以逗号分隔、DEPENDENCYFILEPATH：依赖文件资源（--files: 非jar、zip），多文件以逗号分隔、DEPENDENCYARCHIVESPATH：依赖archives资源（--archives: 支持tar.gz/tgz/tar等归档格式)，多文件以逗号分隔、MAXRETRIES：任务重试次数，非流任务默认为1、SPARKIMAGE：Spark镜像版本号，支持使用dlc镜像/用户自定的tcr镜像运行任务、SPARKIMAGEVERSION：Spark镜像版本名称，与SPARKIMAGE一一对应
+	CmdArgs []*KVPair `json:"CmdArgs,omitnil,omitempty" name:"CmdArgs"`
+
+	// 任务来源信息
+	SourceInfo []*KVPair `json:"SourceInfo,omitnil,omitempty" name:"SourceInfo"`
+}
+
+func (r *CreateSparkSubmitTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSparkSubmitTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskName")
+	delete(f, "TaskType")
+	delete(f, "DataEngineName")
+	delete(f, "PackagePath")
+	delete(f, "RoleArn")
+	delete(f, "IsInherit")
+	delete(f, "MainClass")
+	delete(f, "DriverSize")
+	delete(f, "ExecutorSize")
+	delete(f, "ExecutorNumbers")
+	delete(f, "ExecutorMaxNumbers")
+	delete(f, "CmdArgs")
+	delete(f, "SourceInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSparkSubmitTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSparkSubmitTaskResponseParams struct {
+	// 批作业ID
+	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
+
+	// 批任务ID，用改ID进行任务的查询与删除等
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSparkSubmitTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSparkSubmitTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateSparkSubmitTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSparkSubmitTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateStoreLocationRequestParams struct {
 	// 计算结果存储cos路径，如：cosn://bucketname/
 	StoreLocation *string `json:"StoreLocation,omitnil,omitempty" name:"StoreLocation"`

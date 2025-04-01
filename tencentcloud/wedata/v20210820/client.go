@@ -6975,6 +6975,57 @@ func (c *Client) DescribeResourceManagePathTreesWithContext(ctx context.Context,
     return
 }
 
+func NewDescribeRoleListRequest() (request *DescribeRoleListRequest) {
+    request = &DescribeRoleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRoleList")
+    
+    
+    return
+}
+
+func NewDescribeRoleListResponse() (response *DescribeRoleListResponse) {
+    response = &DescribeRoleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRoleList
+// 获取角色列表信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+func (c *Client) DescribeRoleList(request *DescribeRoleListRequest) (response *DescribeRoleListResponse, err error) {
+    return c.DescribeRoleListWithContext(context.Background(), request)
+}
+
+// DescribeRoleList
+// 获取角色列表信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+func (c *Client) DescribeRoleListWithContext(ctx context.Context, request *DescribeRoleListRequest) (response *DescribeRoleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRoleListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRoleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRoleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRuleRequest() (request *DescribeRuleRequest) {
     request = &DescribeRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13247,6 +13298,55 @@ func (c *Client) UpdateDataModelRegistryInfoWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewUpdateDataModelRegistryInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateProjectUserRoleRequest() (request *UpdateProjectUserRoleRequest) {
+    request = &UpdateProjectUserRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "UpdateProjectUserRole")
+    
+    
+    return
+}
+
+func NewUpdateProjectUserRoleResponse() (response *UpdateProjectUserRoleResponse) {
+    response = &UpdateProjectUserRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateProjectUserRole
+// 修改项目用户角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) UpdateProjectUserRole(request *UpdateProjectUserRoleRequest) (response *UpdateProjectUserRoleResponse, err error) {
+    return c.UpdateProjectUserRoleWithContext(context.Background(), request)
+}
+
+// UpdateProjectUserRole
+// 修改项目用户角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) UpdateProjectUserRoleWithContext(ctx context.Context, request *UpdateProjectUserRoleRequest) (response *UpdateProjectUserRoleResponse, err error) {
+    if request == nil {
+        request = NewUpdateProjectUserRoleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateProjectUserRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateProjectUserRoleResponse()
     err = c.Send(request, response)
     return
 }

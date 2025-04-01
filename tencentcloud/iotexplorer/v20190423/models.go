@@ -872,6 +872,17 @@ type CloudStorageAIServiceTaskFileInfo struct {
 
 	// 视频文件元数据（仅当文件为视频类型时包含该字段）
 	VideoMetaInfo *CloudStorageAIServiceTaskVideoMetaInfo `json:"VideoMetaInfo,omitnil,omitempty" name:"VideoMetaInfo"`
+
+	// 文件标签
+	Labels []*CloudStorageAIServiceTaskFileLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
+}
+
+type CloudStorageAIServiceTaskFileLabel struct {
+	// key1
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// value1
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type CloudStorageAIServiceTaskVideoMetaInfo struct {
@@ -3841,11 +3852,9 @@ type DescribeCloudStorageAIServiceCallbackResponseParams struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// HTTP 回调 URL
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
 
 	// HTTP 回调鉴权 Token
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallbackToken *string `json:"CallbackToken,omitnil,omitempty" name:"CallbackToken"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3972,6 +3981,11 @@ func (r *DescribeCloudStorageAIServiceResponse) FromJsonString(s string) error {
 type DescribeCloudStorageAIServiceTaskRequestParams struct {
 	// 任务 ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 下载 URL 的过期时间。
+	// 
+	// 若传入该参数，则响应中将包含所有文件的下载 URL
+	FileURLExpireTime *int64 `json:"FileURLExpireTime,omitnil,omitempty" name:"FileURLExpireTime"`
 }
 
 type DescribeCloudStorageAIServiceTaskRequest struct {
@@ -3979,6 +3993,11 @@ type DescribeCloudStorageAIServiceTaskRequest struct {
 	
 	// 任务 ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 下载 URL 的过期时间。
+	// 
+	// 若传入该参数，则响应中将包含所有文件的下载 URL
+	FileURLExpireTime *int64 `json:"FileURLExpireTime,omitnil,omitempty" name:"FileURLExpireTime"`
 }
 
 func (r *DescribeCloudStorageAIServiceTaskRequest) ToJsonString() string {
@@ -3994,6 +4013,7 @@ func (r *DescribeCloudStorageAIServiceTaskRequest) FromJsonString(s string) erro
 		return err
 	}
 	delete(f, "TaskId")
+	delete(f, "FileURLExpireTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudStorageAIServiceTaskRequest has unknown keys!", "")
 	}
@@ -9972,7 +9992,7 @@ type InstanceDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CellNum *int64 `json:"CellNum,omitnil,omitempty" name:"CellNum"`
 
-	// 实例Tag
+	// 实例Tag，企业实例必传
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingTag *string `json:"BillingTag,omitnil,omitempty" name:"BillingTag"`
 
@@ -10199,7 +10219,6 @@ type InvokeExternalSourceAIServiceTaskResponseParams struct {
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 任务信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskInfo *CloudStorageAIServiceTask `json:"TaskInfo,omitnil,omitempty" name:"TaskInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

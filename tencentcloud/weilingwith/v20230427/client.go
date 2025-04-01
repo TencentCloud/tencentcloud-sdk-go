@@ -1268,6 +1268,10 @@ func NewDescribeCityWorkspaceListResponse() (response *DescribeCityWorkspaceList
 }
 
 // DescribeCityWorkspaceList
+// 老微瓴后续不继续更新
+//
+// 
+//
 // 通过城市id查询工作空间列表
 //
 // 可能返回的错误码:
@@ -1279,6 +1283,10 @@ func (c *Client) DescribeCityWorkspaceList(request *DescribeCityWorkspaceListReq
 }
 
 // DescribeCityWorkspaceList
+// 老微瓴后续不继续更新
+//
+// 
+//
 // 通过城市id查询工作空间列表
 //
 // 可能返回的错误码:
