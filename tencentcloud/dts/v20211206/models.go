@@ -1548,6 +1548,9 @@ type DBInfo struct {
 	// 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
 	TmpToken *string `json:"TmpToken,omitnil,omitempty" name:"TmpToken"`
 
+	// 是否走加密传输、UnEncrypted表示不走加密传输，Encrypted表示走加密传输，默认UnEncrypted
+	EncryptConn *string `json:"EncryptConn,omitnil,omitempty" name:"EncryptConn"`
+
 	// tdsql的分片id。如节点类型为set必填。
 	SetId *string `json:"SetId,omitnil,omitempty" name:"SetId"`
 }
@@ -3662,6 +3665,21 @@ type DynamicOptions struct {
 
 	// 冲突处理的详细选项，如条件覆盖中的条件行和条件操作；不能部分更新该选项的内部字段；有更新时、需要全量更新该字段
 	ConflictHandleOption *ConflictHandleOption `json:"ConflictHandleOption,omitnil,omitempty" name:"ConflictHandleOption"`
+
+	// 同步到kafka链路的kafka配置
+	KafkaOption *KafkaOption `json:"KafkaOption,omitnil,omitempty" name:"KafkaOption"`
+
+	// 同步到kafka链路是否过滤掉begin和commit消息。目前仅mysql2kafka链路支持
+	FilterBeginCommit *bool `json:"FilterBeginCommit,omitnil,omitempty" name:"FilterBeginCommit"`
+
+	// 同步到kafka链路是否过滤掉checkpoint消息。目前仅mysql2kafka链路支持
+	FilterCheckpoint *bool `json:"FilterCheckpoint,omitnil,omitempty" name:"FilterCheckpoint"`
+
+	// 同名表的处理，ReportErrorAfterCheck(前置校验并报错，默认)、ExecuteAfterIgnore(忽略并继续执行)
+	DealOfExistSameTable *string `json:"DealOfExistSameTable,omitnil,omitempty" name:"DealOfExistSameTable"`
+
+	// 仅增量任务重新设置指定位点
+	StartPosition *string `json:"StartPosition,omitnil,omitempty" name:"StartPosition"`
 }
 
 type Endpoint struct {

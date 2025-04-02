@@ -92,7 +92,7 @@
 | ds | [文档服务](https://cloud.tencent.com/document/product/869) | 2024-03-20 01:15:13 |
 | dsgc | [数据安全治理中心](https://cloud.tencent.com/document/product/1087) | 2025-03-20 20:20:10 |
 | dtf | [分布式事务](https://cloud.tencent.com/document/product/1224) | 2022-04-04 06:38:57 |
-| dts | [数据传输服务](https://cloud.tencent.com/document/product/571) | 2025-03-31 01:16:23 |
+| dts | [数据传输服务](https://cloud.tencent.com/document/product/571) | 2025-04-02 16:33:03 |
 | eb | [事件总线](https://cloud.tencent.com/document/product/1359) | 2025-03-25 15:22:50 |
 | ecc | [英文作文批改](https://cloud.tencent.com/document/product/1076) | 2024-09-05 01:32:54 |
 | ecdn | [全站加速网络](https://cloud.tencent.com/document/product/570) | 2025-03-28 01:32:15 |
