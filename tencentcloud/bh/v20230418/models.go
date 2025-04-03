@@ -6881,6 +6881,9 @@ type SessionResult struct {
 
 	// 应用资产url
 	AppAssetUrl *string `json:"AppAssetUrl,omitnil,omitempty" name:"AppAssetUrl"`
+
+	// 回放类型 默认0, 1-rfb 2-mp4 3-ssh
+	ReplayType *uint64 `json:"ReplayType,omitnil,omitempty" name:"ReplayType"`
 }
 
 type TagFilter struct {

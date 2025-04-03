@@ -9380,6 +9380,11 @@ type TargetGroupInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssociatedRule []*AssociationItem `json:"AssociatedRule,omitnil,omitempty" name:"AssociatedRule"`
 
+	// 后端转发协议类型，支持类型TCP， UDP。仅V2新版目标组支持返回该参数。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
 	// 目标组类型，当前支持v1(旧版目标组), v2(新版目标组), gwlb(全局负载均衡目标组)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetGroupType *string `json:"TargetGroupType,omitnil,omitempty" name:"TargetGroupType"`

@@ -9372,10 +9372,10 @@ type ModifyTopicAttributesRequestParams struct {
 	// 标签列表
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 生产限流，单位 MB/s
+	// 生产限流，单位 MB/s；设置为-1，则生产不限流
 	QuotaProducerByteRate *int64 `json:"QuotaProducerByteRate,omitnil,omitempty" name:"QuotaProducerByteRate"`
 
-	// 消费限流，单位 MB/s
+	// 消费限流，单位 MB/s；设置为-1，则消费不限流
 	QuotaConsumerByteRate *int64 `json:"QuotaConsumerByteRate,omitnil,omitempty" name:"QuotaConsumerByteRate"`
 
 	// topic副本数  最小值 1,最大值 3
@@ -9430,10 +9430,10 @@ type ModifyTopicAttributesRequest struct {
 	// 标签列表
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 生产限流，单位 MB/s
+	// 生产限流，单位 MB/s；设置为-1，则生产不限流
 	QuotaProducerByteRate *int64 `json:"QuotaProducerByteRate,omitnil,omitempty" name:"QuotaProducerByteRate"`
 
-	// 消费限流，单位 MB/s
+	// 消费限流，单位 MB/s；设置为-1，则消费不限流
 	QuotaConsumerByteRate *int64 `json:"QuotaConsumerByteRate,omitnil,omitempty" name:"QuotaConsumerByteRate"`
 
 	// topic副本数  最小值 1,最大值 3

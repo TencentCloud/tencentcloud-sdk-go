@@ -1166,6 +1166,9 @@ const (
 	// 当前已存在相同的别称域名，不支持重复添加
 	RESOURCEINUSE_ALIASNAME = "ResourceInUse.AliasName"
 
+	// 该域名已作为加速域名存在，不支持重复接入。
+	RESOURCEINUSE_ALREADYEXISTSASANACCELERATIONDOMAIN = "ResourceInUse.AlreadyExistsAsAnAccelerationDomain"
+
 	// 资源被本账号Cname接入占用。
 	RESOURCEINUSE_CNAME = "ResourceInUse.Cname"
 

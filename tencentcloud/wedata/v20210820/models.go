@@ -569,6 +569,9 @@ type Apply struct {
 	// 审批id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplyId *string `json:"ApplyId,omitnil,omitempty" name:"ApplyId"`
+
+	// 扩展字段
+	Metadata *string `json:"Metadata,omitnil,omitempty" name:"Metadata"`
 }
 
 type ApproveModify struct {
