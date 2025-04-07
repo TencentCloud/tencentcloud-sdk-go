@@ -8707,10 +8707,10 @@ type GroupTriggerConditionInfo struct {
 }
 
 type HighLightItem struct {
-	// 高亮的日志Key
+	// 高亮的日志字段名称
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 高亮的语法
+	// 高亮的关键词
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
@@ -8925,6 +8925,9 @@ type LogInfo struct {
 
 	// 请求包内日志的ID
 	PkgLogId *string `json:"PkgLogId,omitnil,omitempty" name:"PkgLogId"`
+
+	// 符合检索条件的关键词，一般用于高亮显示。仅支持键值检索，不支持全文检索	
+	HighLights []*HighLightItem `json:"HighLights,omitnil,omitempty" name:"HighLights"`
 
 	// 日志内容的Json序列化字符串
 	LogJson *string `json:"LogJson,omitnil,omitempty" name:"LogJson"`
@@ -12772,6 +12775,9 @@ type SearchLogRequestParams struct {
 	// 为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
 	// 两种返回方式在编码格式上有少量区别，建议使用true
 	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil,omitempty" name:"UseNewAnalysis"`
+
+	// 是否高亮符合检索条件的关键词，一般用于高亮显示。仅支持键值检索，不支持全文检索
+	HighLight *bool `json:"HighLight,omitnil,omitempty" name:"HighLight"`
 }
 
 type SearchLogRequest struct {
@@ -12848,6 +12854,9 @@ type SearchLogRequest struct {
 	// 为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
 	// 两种返回方式在编码格式上有少量区别，建议使用true
 	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil,omitempty" name:"UseNewAnalysis"`
+
+	// 是否高亮符合检索条件的关键词，一般用于高亮显示。仅支持键值检索，不支持全文检索
+	HighLight *bool `json:"HighLight,omitnil,omitempty" name:"HighLight"`
 }
 
 func (r *SearchLogRequest) ToJsonString() string {
@@ -12874,6 +12883,7 @@ func (r *SearchLogRequest) FromJsonString(s string) error {
 	delete(f, "Context")
 	delete(f, "SamplingRate")
 	delete(f, "UseNewAnalysis")
+	delete(f, "HighLight")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchLogRequest has unknown keys!", "")
 	}

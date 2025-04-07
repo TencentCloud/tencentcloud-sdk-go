@@ -45,6 +45,65 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewBackUpAndroidInstanceToStorageRequest() (request *BackUpAndroidInstanceToStorageRequest) {
+    request = &BackUpAndroidInstanceToStorageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "BackUpAndroidInstanceToStorage")
+    
+    
+    return
+}
+
+func NewBackUpAndroidInstanceToStorageResponse() (response *BackUpAndroidInstanceToStorageResponse) {
+    response = &BackUpAndroidInstanceToStorageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BackUpAndroidInstanceToStorage
+// 备份云手机到指定存储
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BackUpAndroidInstanceToStorage(request *BackUpAndroidInstanceToStorageRequest) (response *BackUpAndroidInstanceToStorageResponse, err error) {
+    return c.BackUpAndroidInstanceToStorageWithContext(context.Background(), request)
+}
+
+// BackUpAndroidInstanceToStorage
+// 备份云手机到指定存储
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BackUpAndroidInstanceToStorageWithContext(ctx context.Context, request *BackUpAndroidInstanceToStorageRequest) (response *BackUpAndroidInstanceToStorageResponse, err error) {
+    if request == nil {
+        request = NewBackUpAndroidInstanceToStorageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BackUpAndroidInstanceToStorage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBackUpAndroidInstanceToStorageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewConnectAndroidInstanceRequest() (request *ConnectAndroidInstanceRequest) {
     request = &ConnectAndroidInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1713,6 +1772,65 @@ func (c *Client) RestartAndroidInstancesAppWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewRestartAndroidInstancesAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRestoreAndroidInstanceFromStorageRequest() (request *RestoreAndroidInstanceFromStorageRequest) {
+    request = &RestoreAndroidInstanceFromStorageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "RestoreAndroidInstanceFromStorage")
+    
+    
+    return
+}
+
+func NewRestoreAndroidInstanceFromStorageResponse() (response *RestoreAndroidInstanceFromStorageResponse) {
+    response = &RestoreAndroidInstanceFromStorageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RestoreAndroidInstanceFromStorage
+// 指定存储还原云手机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RestoreAndroidInstanceFromStorage(request *RestoreAndroidInstanceFromStorageRequest) (response *RestoreAndroidInstanceFromStorageResponse, err error) {
+    return c.RestoreAndroidInstanceFromStorageWithContext(context.Background(), request)
+}
+
+// RestoreAndroidInstanceFromStorage
+// 指定存储还原云手机
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RestoreAndroidInstanceFromStorageWithContext(ctx context.Context, request *RestoreAndroidInstanceFromStorageRequest) (response *RestoreAndroidInstanceFromStorageResponse, err error) {
+    if request == nil {
+        request = NewRestoreAndroidInstanceFromStorageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestoreAndroidInstanceFromStorage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRestoreAndroidInstanceFromStorageResponse()
     err = c.Send(request, response)
     return
 }

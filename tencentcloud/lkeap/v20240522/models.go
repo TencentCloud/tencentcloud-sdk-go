@@ -1087,6 +1087,63 @@ type EmbeddingObject struct {
 }
 
 // Predefined struct for user
+type GetCharacterUsageRequestParams struct {
+
+}
+
+type GetCharacterUsageRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *GetCharacterUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetCharacterUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetCharacterUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetCharacterUsageResponseParams struct {
+	// 已用字符数
+	Used *uint64 `json:"Used,omitnil,omitempty" name:"Used"`
+
+	// 可用字符数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetCharacterUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *GetCharacterUsageResponseParams `json:"Response"`
+}
+
+func (r *GetCharacterUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetCharacterUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetEmbeddingRequestParams struct {
 	// 模型名称
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`

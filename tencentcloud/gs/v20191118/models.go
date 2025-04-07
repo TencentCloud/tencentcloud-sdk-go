@@ -92,6 +92,9 @@ type AndroidInstance struct {
 
 	// 用户ID
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 内网 IP
+	PrivateIP *string `json:"PrivateIP,omitnil,omitempty" name:"PrivateIP"`
 }
 
 type AndroidInstanceAppInfo struct {
@@ -165,6 +168,113 @@ type AndroidInstanceTaskStatus struct {
 
 	// 任务完成时间
 	CompleteTime *string `json:"CompleteTime,omitnil,omitempty" name:"CompleteTime"`
+}
+
+// Predefined struct for user
+type BackUpAndroidInstanceToStorageRequestParams struct {
+	// 安卓实例ID
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
+
+	// 存储服务器类型，如 COS、S3。注意：使用 COS 和 S3 都将占用外网带宽。
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// 自定义对象Key
+	ObjectKey *string `json:"ObjectKey,omitnil,omitempty" name:"ObjectKey"`
+
+	// 包含的路径，支持仅含一个通配符*，通配符不能出现在路径开始
+	Includes []*string `json:"Includes,omitnil,omitempty" name:"Includes"`
+
+	// 需要排除路径，支持仅含一个通配符*，通配符不能出现在路径开始
+	Excludes []*string `json:"Excludes,omitnil,omitempty" name:"Excludes"`
+
+	// COS协议选项
+	COSOptions *COSOptions `json:"COSOptions,omitnil,omitempty" name:"COSOptions"`
+
+	// S3存储协议选项
+	S3Options *S3Options `json:"S3Options,omitnil,omitempty" name:"S3Options"`
+}
+
+type BackUpAndroidInstanceToStorageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 安卓实例ID
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
+
+	// 存储服务器类型，如 COS、S3。注意：使用 COS 和 S3 都将占用外网带宽。
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// 自定义对象Key
+	ObjectKey *string `json:"ObjectKey,omitnil,omitempty" name:"ObjectKey"`
+
+	// 包含的路径，支持仅含一个通配符*，通配符不能出现在路径开始
+	Includes []*string `json:"Includes,omitnil,omitempty" name:"Includes"`
+
+	// 需要排除路径，支持仅含一个通配符*，通配符不能出现在路径开始
+	Excludes []*string `json:"Excludes,omitnil,omitempty" name:"Excludes"`
+
+	// COS协议选项
+	COSOptions *COSOptions `json:"COSOptions,omitnil,omitempty" name:"COSOptions"`
+
+	// S3存储协议选项
+	S3Options *S3Options `json:"S3Options,omitnil,omitempty" name:"S3Options"`
+}
+
+func (r *BackUpAndroidInstanceToStorageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BackUpAndroidInstanceToStorageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidInstanceId")
+	delete(f, "StorageType")
+	delete(f, "ObjectKey")
+	delete(f, "Includes")
+	delete(f, "Excludes")
+	delete(f, "COSOptions")
+	delete(f, "S3Options")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BackUpAndroidInstanceToStorageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BackUpAndroidInstanceToStorageResponseParams struct {
+	// 实例任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BackUpAndroidInstanceToStorageResponse struct {
+	*tchttp.BaseResponse
+	Response *BackUpAndroidInstanceToStorageResponseParams `json:"Response"`
+}
+
+func (r *BackUpAndroidInstanceToStorageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BackUpAndroidInstanceToStorageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type COSOptions struct {
+	// 存储桶
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// 存储区域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
 // Predefined struct for user
@@ -2303,6 +2413,105 @@ func (r *RestartAndroidInstancesAppResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RestartAndroidInstancesAppResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestoreAndroidInstanceFromStorageRequestParams struct {
+	// 安卓实例ID
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
+
+	// 自定义备份对象Key
+	ObjectKey *string `json:"ObjectKey,omitnil,omitempty" name:"ObjectKey"`
+
+	// 存储服务器类型，如 COS、S3。注意：使用 COS 和 S3 都将占用外网带宽。
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// COS协议选项
+	COSOptions *COSOptions `json:"COSOptions,omitnil,omitempty" name:"COSOptions"`
+
+	// S3存储协议选项
+	S3Options *S3Options `json:"S3Options,omitnil,omitempty" name:"S3Options"`
+}
+
+type RestoreAndroidInstanceFromStorageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 安卓实例ID
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
+
+	// 自定义备份对象Key
+	ObjectKey *string `json:"ObjectKey,omitnil,omitempty" name:"ObjectKey"`
+
+	// 存储服务器类型，如 COS、S3。注意：使用 COS 和 S3 都将占用外网带宽。
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// COS协议选项
+	COSOptions *COSOptions `json:"COSOptions,omitnil,omitempty" name:"COSOptions"`
+
+	// S3存储协议选项
+	S3Options *S3Options `json:"S3Options,omitnil,omitempty" name:"S3Options"`
+}
+
+func (r *RestoreAndroidInstanceFromStorageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestoreAndroidInstanceFromStorageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidInstanceId")
+	delete(f, "ObjectKey")
+	delete(f, "StorageType")
+	delete(f, "COSOptions")
+	delete(f, "S3Options")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestoreAndroidInstanceFromStorageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestoreAndroidInstanceFromStorageResponseParams struct {
+	// 实例任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RestoreAndroidInstanceFromStorageResponse struct {
+	*tchttp.BaseResponse
+	Response *RestoreAndroidInstanceFromStorageResponseParams `json:"Response"`
+}
+
+func (r *RestoreAndroidInstanceFromStorageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestoreAndroidInstanceFromStorageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type S3Options struct {
+	// 存储节点
+	EndPoint *string `json:"EndPoint,omitnil,omitempty" name:"EndPoint"`
+
+	// 存储桶
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// 密钥 ID
+	AccessKeyId *string `json:"AccessKeyId,omitnil,omitempty" name:"AccessKeyId"`
+
+	// 密钥 Key
+	SecretAccessKey *string `json:"SecretAccessKey,omitnil,omitempty" name:"SecretAccessKey"`
 }
 
 // Predefined struct for user

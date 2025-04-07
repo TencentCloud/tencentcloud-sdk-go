@@ -67,7 +67,7 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 // 
 //
-// 调用接口，发起一次对话请求。单账号限制接口并发上限为5。
+// 调用接口，发起一次对话请求。单账号限制接口并发上限为100。
 //
 // 如需使用OpenAI兼容接口， 请参考文档：[Deepseek OpenAI对话接口](https://cloud.tencent.com/document/product/1772/115969)
 //
@@ -290,7 +290,7 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 // 
 //
-// 调用接口，发起一次对话请求。单账号限制接口并发上限为5。
+// 调用接口，发起一次对话请求。单账号限制接口并发上限为100。
 //
 // 如需使用OpenAI兼容接口， 请参考文档：[Deepseek OpenAI对话接口](https://cloud.tencent.com/document/product/1772/115969)
 //
@@ -1082,6 +1082,61 @@ func (c *Client) DescribeDocWithContext(ctx context.Context, request *DescribeDo
     request.SetContext(ctx)
     
     response = NewDescribeDocResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetCharacterUsageRequest() (request *GetCharacterUsageRequest) {
+    request = &GetCharacterUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lkeap", APIVersion, "GetCharacterUsage")
+    
+    
+    return
+}
+
+func NewGetCharacterUsageResponse() (response *GetCharacterUsageResponse) {
+    response = &GetCharacterUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetCharacterUsage
+// 获取字符使用量统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+func (c *Client) GetCharacterUsage(request *GetCharacterUsageRequest) (response *GetCharacterUsageResponse, err error) {
+    return c.GetCharacterUsageWithContext(context.Background(), request)
+}
+
+// GetCharacterUsage
+// 获取字符使用量统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+func (c *Client) GetCharacterUsageWithContext(ctx context.Context, request *GetCharacterUsageRequest) (response *GetCharacterUsageResponse, err error) {
+    if request == nil {
+        request = NewGetCharacterUsageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetCharacterUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetCharacterUsageResponse()
     err = c.Send(request, response)
     return
 }

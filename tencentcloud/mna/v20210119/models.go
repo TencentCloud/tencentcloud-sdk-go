@@ -463,25 +463,6 @@ func (r *AddL3ConnResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type Capacity struct {
-	// 电信鉴权的Token。要加速的电信手机终端访问 http://qos.189.cn/qos-api/getToken?appid=TencentCloud 页面，获取返回结果中result的值
-	CTCCToken *string `json:"CTCCToken,omitnil,omitempty" name:"CTCCToken"`
-
-	// 终端所处在的省份，建议不填写由服务端自动获取，若需填写请填写带有省、市、自治区、特别行政区等后缀的省份中文全称
-	Province *string `json:"Province,omitnil,omitempty" name:"Province"`
-}
-
-type Context struct {
-	// 测速数据
-	NetworkData *NetworkData `json:"NetworkData,omitnil,omitempty" name:"NetworkData"`
-
-	// 用户期望最低门限
-	ExpectedLowThreshold *ExpectedThreshold `json:"ExpectedLowThreshold,omitnil,omitempty" name:"ExpectedLowThreshold"`
-
-	// 用户期望最高门限
-	ExpectedHighThreshold *ExpectedThreshold `json:"ExpectedHighThreshold,omitnil,omitempty" name:"ExpectedHighThreshold"`
-}
-
 // Predefined struct for user
 type CreateEncryptedKeyRequestParams struct {
 
@@ -533,153 +514,6 @@ func (r *CreateEncryptedKeyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateEncryptedKeyResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateQosRequestParams struct {
-	// 加速业务源地址信息，SrcIpv6和（SrcIpv4+SrcPublicIpv4）二选一，目前Ipv6不可用，全部填写以Ipv4参数为准。
-	SrcAddressInfo *SrcAddressInfo `json:"SrcAddressInfo,omitnil,omitempty" name:"SrcAddressInfo"`
-
-	// 加速业务目标地址信息
-	DestAddressInfo *DestAddressInfo `json:"DestAddressInfo,omitnil,omitempty" name:"DestAddressInfo"`
-
-	// 加速套餐
-	// T100K：时延性保障 + 带宽保障上下行保障 100kbps
-	// T200K：时延性保障 + 带宽保障上下行保障 200kbps
-	// T400K：时延性保障 + 带宽保障上下行保障  400kbps
-	// BD1M：带宽型保障 + 下行带宽保障1Mbps
-	// BD2M：带宽型保障 + 下行带宽保障2Mbps
-	// BD4M：带宽型保障 + 下行带宽保障4Mbps
-	// BU1M：带宽型保障 + 上行带宽保障1Mbps
-	// BU2M：带宽型保障 + 上行带宽保障2Mbps
-	// BU4M：带宽型保障 + 上行带宽保障4Mbps
-	QosMenu *string `json:"QosMenu,omitnil,omitempty" name:"QosMenu"`
-
-	// 申请加速的设备信息，包括运营商，操作系统，设备唯一标识等。
-	DeviceInfo *DeviceInfo `json:"DeviceInfo,omitnil,omitempty" name:"DeviceInfo"`
-
-	// 期望加速时长（单位分钟），默认值30分钟
-	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
-
-	// 接口能力扩展，如果是电信用户，必须填充CTCC Token字段
-	Capacity *Capacity `json:"Capacity,omitnil,omitempty" name:"Capacity"`
-
-	// 应用模板ID
-	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
-
-	// 针对特殊协议进行加速
-	// 1. IP （默认值）
-	// 2. UDP
-	// 3. TCP
-	Protocol *uint64 `json:"Protocol,omitnil,omitempty" name:"Protocol"`
-
-	// 加速策略关键数据
-	Context *Context `json:"Context,omitnil,omitempty" name:"Context"`
-
-	// 签名
-	Extern *string `json:"Extern,omitnil,omitempty" name:"Extern"`
-}
-
-type CreateQosRequest struct {
-	*tchttp.BaseRequest
-	
-	// 加速业务源地址信息，SrcIpv6和（SrcIpv4+SrcPublicIpv4）二选一，目前Ipv6不可用，全部填写以Ipv4参数为准。
-	SrcAddressInfo *SrcAddressInfo `json:"SrcAddressInfo,omitnil,omitempty" name:"SrcAddressInfo"`
-
-	// 加速业务目标地址信息
-	DestAddressInfo *DestAddressInfo `json:"DestAddressInfo,omitnil,omitempty" name:"DestAddressInfo"`
-
-	// 加速套餐
-	// T100K：时延性保障 + 带宽保障上下行保障 100kbps
-	// T200K：时延性保障 + 带宽保障上下行保障 200kbps
-	// T400K：时延性保障 + 带宽保障上下行保障  400kbps
-	// BD1M：带宽型保障 + 下行带宽保障1Mbps
-	// BD2M：带宽型保障 + 下行带宽保障2Mbps
-	// BD4M：带宽型保障 + 下行带宽保障4Mbps
-	// BU1M：带宽型保障 + 上行带宽保障1Mbps
-	// BU2M：带宽型保障 + 上行带宽保障2Mbps
-	// BU4M：带宽型保障 + 上行带宽保障4Mbps
-	QosMenu *string `json:"QosMenu,omitnil,omitempty" name:"QosMenu"`
-
-	// 申请加速的设备信息，包括运营商，操作系统，设备唯一标识等。
-	DeviceInfo *DeviceInfo `json:"DeviceInfo,omitnil,omitempty" name:"DeviceInfo"`
-
-	// 期望加速时长（单位分钟），默认值30分钟
-	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
-
-	// 接口能力扩展，如果是电信用户，必须填充CTCC Token字段
-	Capacity *Capacity `json:"Capacity,omitnil,omitempty" name:"Capacity"`
-
-	// 应用模板ID
-	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
-
-	// 针对特殊协议进行加速
-	// 1. IP （默认值）
-	// 2. UDP
-	// 3. TCP
-	Protocol *uint64 `json:"Protocol,omitnil,omitempty" name:"Protocol"`
-
-	// 加速策略关键数据
-	Context *Context `json:"Context,omitnil,omitempty" name:"Context"`
-
-	// 签名
-	Extern *string `json:"Extern,omitnil,omitempty" name:"Extern"`
-}
-
-func (r *CreateQosRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateQosRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "SrcAddressInfo")
-	delete(f, "DestAddressInfo")
-	delete(f, "QosMenu")
-	delete(f, "DeviceInfo")
-	delete(f, "Duration")
-	delete(f, "Capacity")
-	delete(f, "TemplateId")
-	delete(f, "Protocol")
-	delete(f, "Context")
-	delete(f, "Extern")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQosRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateQosResponseParams struct {
-	// 单次加速唯一 Id
-	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
-
-	// 当前加速剩余时长（单位秒）
-	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type CreateQosResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateQosResponseParams `json:"Response"`
-}
-
-func (r *CreateQosResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateQosResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -845,145 +679,6 @@ func (r *DeleteL3ConnResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-// Predefined struct for user
-type DeleteQosRequestParams struct {
-	// 单次加速唯一 Id
-	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
-}
-
-type DeleteQosRequest struct {
-	*tchttp.BaseRequest
-	
-	// 单次加速唯一 Id
-	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
-}
-
-func (r *DeleteQosRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteQosRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "SessionId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteQosRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteQosResponseParams struct {
-	// 单次加速唯一 Id
-	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
-
-	// 本次加速会话持续时间（单位秒）
-	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DeleteQosResponse struct {
-	*tchttp.BaseResponse
-	Response *DeleteQosResponseParams `json:"Response"`
-}
-
-func (r *DeleteQosResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteQosResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeQosRequestParams struct {
-	// 单次加速唯一 Id
-	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
-}
-
-type DescribeQosRequest struct {
-	*tchttp.BaseRequest
-	
-	// 单次加速唯一 Id
-	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
-}
-
-func (r *DescribeQosRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeQosRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "SessionId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQosRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeQosResponseParams struct {
-	// 0：无匹配的加速中会话
-	// 1：存在匹配的加速中会话
-	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 手机公网出口IP，仅匹配时返回
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SrcPublicIpv4 *string `json:"SrcPublicIpv4,omitnil,omitempty" name:"SrcPublicIpv4"`
-
-	// 业务访问目的IP，仅匹配时返回
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DestIpv4 []*string `json:"DestIpv4,omitnil,omitempty" name:"DestIpv4"`
-
-	// 当前加速剩余时长（单位秒）有，仅匹配时返回
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Duration *uint64 `json:"Duration,omitnil,omitempty" name:"Duration"`
-
-	// 加速套餐类型，仅匹配时返回
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	QosMenu *string `json:"QosMenu,omitnil,omitempty" name:"QosMenu"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeQosResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeQosResponseParams `json:"Response"`
-}
-
-func (r *DescribeQosResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeQosResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DestAddressInfo struct {
-	// 加速业务目标 ip 地址数组
-	DestIp []*string `json:"DestIp,omitnil,omitempty" name:"DestIp"`
-}
-
 type DeviceBaseInfo struct {
 	// 设备唯一ID
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
@@ -1040,37 +735,6 @@ type DeviceDetails struct {
 
 	// 业务上行速率
 	BusinessUpRate *float64 `json:"BusinessUpRate,omitnil,omitempty" name:"BusinessUpRate"`
-}
-
-type DeviceInfo struct {
-	// 运营商
-	// 1：移动 
-	// 2：电信
-	// 3：联通
-	// 4：广电
-	// 99：其他
-	Vendor *uint64 `json:"Vendor,omitnil,omitempty" name:"Vendor"`
-
-	// 设备操作系统：
-	// 1：Android
-	// 2： IOS
-	// 99：其他
-	OS *uint64 `json:"OS,omitnil,omitempty" name:"OS"`
-
-	// 设备唯一标识
-	// IOS 填写 IDFV
-	// Android 填写 IMEI
-	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
-
-	// 用户手机号码
-	PhoneNum *string `json:"PhoneNum,omitnil,omitempty" name:"PhoneNum"`
-
-	// 无线信息
-	// 1：4G
-	// 2：5G
-	// 3：WIFI
-	// 99：其他
-	Wireless *uint64 `json:"Wireless,omitnil,omitempty" name:"Wireless"`
 }
 
 type DeviceNetInfo struct {
@@ -1230,17 +894,6 @@ func (r *DownloadActiveDeviceCountResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DownloadActiveDeviceCountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
-}
-
-type ExpectedThreshold struct {
-	// 期望发起加速的时延阈值
-	RTT *float64 `json:"RTT,omitnil,omitempty" name:"RTT"`
-
-	// 期望发起加速的丢包率阈值
-	Loss *float64 `json:"Loss,omitnil,omitempty" name:"Loss"`
-
-	// 期望发起加速的抖动阈值
-	Jitter *float64 `json:"Jitter,omitnil,omitempty" name:"Jitter"`
 }
 
 type FlowDetails struct {
@@ -3171,20 +2824,6 @@ type NetDetails struct {
 	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
 }
 
-type NetworkData struct {
-	// 时延数组，最大长度30
-	RTT []*float64 `json:"RTT,omitnil,omitempty" name:"RTT"`
-
-	// 丢包率
-	Loss *float64 `json:"Loss,omitnil,omitempty" name:"Loss"`
-
-	// 抖动
-	Jitter *float64 `json:"Jitter,omitnil,omitempty" name:"Jitter"`
-
-	// 10位秒级时间戳
-	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
-}
-
 // Predefined struct for user
 type OrderFlowPackageRequestParams struct {
 	// 流量包规格类型。可取值如下：
@@ -3478,17 +3117,6 @@ type SlotNetInfo struct {
 
 	// 指标数据（bps/ms/%）
 	Current *float64 `json:"Current,omitnil,omitempty" name:"Current"`
-}
-
-type SrcAddressInfo struct {
-	// 用户私网 ipv4 地址
-	SrcIpv4 *string `json:"SrcIpv4,omitnil,omitempty" name:"SrcIpv4"`
-
-	// 用户公网 ipv4 地址
-	SrcPublicIpv4 *string `json:"SrcPublicIpv4,omitnil,omitempty" name:"SrcPublicIpv4"`
-
-	// 用户 ipv6 地址
-	SrcIpv6 *string `json:"SrcIpv6,omitnil,omitempty" name:"SrcIpv6"`
 }
 
 // Predefined struct for user
