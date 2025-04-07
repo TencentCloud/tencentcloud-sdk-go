@@ -540,6 +540,38 @@ type BlockIgnoreRule struct {
 	FwType *int64 `json:"FwType,omitnil,omitempty" name:"FwType"`
 }
 
+type CfwInsStatus struct {
+	// 防火墙实例id
+	CfwInsId *string `json:"CfwInsId,omitnil,omitempty" name:"CfwInsId"`
+
+	// 防火墙类型，nat：nat防火墙；ew：vpc间防火墙
+	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
+
+	// 实例所属地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 实例运行状态，Running：正常运行；BypassAutoFix：bypass修复；Updating：升级中；Expand：扩容中；BypassManual：手动触发bypass中；BypassAuto：自动触发bypass中
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 事件时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventTime *string `json:"EventTime,omitnil,omitempty" name:"EventTime"`
+
+	// 恢复时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecoverTime *string `json:"RecoverTime,omitnil,omitempty" name:"RecoverTime"`
+
+	// 实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CfwInsName *string `json:"CfwInsName,omitnil,omitempty" name:"CfwInsName"`
+
+	// Normal: 正常模式
+	// OnlyRoute: 透明模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrafficMode *string `json:"TrafficMode,omitnil,omitempty" name:"TrafficMode"`
+}
+
 type CfwNatDnatRule struct {
 	// 网络协议，可选值：TCP、UDP。
 	IpProtocol *string `json:"IpProtocol,omitnil,omitempty" name:"IpProtocol"`
@@ -3889,6 +3921,64 @@ func (r *DescribeCfwEipsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCfwEipsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfwInsStatusRequestParams struct {
+
+}
+
+type DescribeCfwInsStatusRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeCfwInsStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfwInsStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfwInsStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfwInsStatusResponseParams struct {
+	// 防火墙实例运行状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CfwInsStatus []*CfwInsStatus `json:"CfwInsStatus,omitnil,omitempty" name:"CfwInsStatus"`
+
+	// 0
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCfwInsStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCfwInsStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeCfwInsStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfwInsStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

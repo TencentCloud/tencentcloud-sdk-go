@@ -2511,6 +2511,89 @@ func (c *Client) DescribeCfwEipsWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeCfwInsStatusRequest() (request *DescribeCfwInsStatusRequest) {
+    request = &DescribeCfwInsStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeCfwInsStatus")
+    
+    
+    return
+}
+
+func NewDescribeCfwInsStatusResponse() (response *DescribeCfwInsStatusResponse) {
+    response = &DescribeCfwInsStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCfwInsStatus
+// cfw实例运行状态查询
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCfwInsStatus(request *DescribeCfwInsStatusRequest) (response *DescribeCfwInsStatusResponse, err error) {
+    return c.DescribeCfwInsStatusWithContext(context.Background(), request)
+}
+
+// DescribeCfwInsStatus
+// cfw实例运行状态查询
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCfwInsStatusWithContext(ctx context.Context, request *DescribeCfwInsStatusRequest) (response *DescribeCfwInsStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeCfwInsStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCfwInsStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCfwInsStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDefenseSwitchRequest() (request *DescribeDefenseSwitchRequest) {
     request = &DescribeDefenseSwitchRequest{
         BaseRequest: &tchttp.BaseRequest{},

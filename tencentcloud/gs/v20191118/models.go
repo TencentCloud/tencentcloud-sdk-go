@@ -156,6 +156,15 @@ type AndroidInstanceTaskStatus struct {
 
 	// 任务执行结果描述，针对某些任务，可以是可解析的 json
 	TaskResult *string `json:"TaskResult,omitnil,omitempty" name:"TaskResult"`
+
+	// 任务类型
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 任务创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 任务完成时间
+	CompleteTime *string `json:"CompleteTime,omitnil,omitempty" name:"CompleteTime"`
 }
 
 // Predefined struct for user
@@ -1331,15 +1340,33 @@ func (r *DescribeAndroidInstanceLabelsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAndroidInstanceTasksStatusRequestParams struct {
-	// 任务ID列表
+	// 任务 ID 列表
 	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 条件过滤器
+	Filter []*Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 偏移量，默认为 0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制量，默认为20，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeAndroidInstanceTasksStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务ID列表
+	// 任务 ID 列表
 	TaskIds []*string `json:"TaskIds,omitnil,omitempty" name:"TaskIds"`
+
+	// 条件过滤器
+	Filter []*Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 偏移量，默认为 0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制量，默认为20，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 func (r *DescribeAndroidInstanceTasksStatusRequest) ToJsonString() string {
@@ -1355,6 +1382,9 @@ func (r *DescribeAndroidInstanceTasksStatusRequest) FromJsonString(s string) err
 		return err
 	}
 	delete(f, "TaskIds")
+	delete(f, "Filter")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAndroidInstanceTasksStatusRequest has unknown keys!", "")
 	}
@@ -1365,6 +1395,9 @@ func (r *DescribeAndroidInstanceTasksStatusRequest) FromJsonString(s string) err
 type DescribeAndroidInstanceTasksStatusResponseParams struct {
 	// 任务状态集合
 	TaskStatusSet []*AndroidInstanceTaskStatus `json:"TaskStatusSet,omitnil,omitempty" name:"TaskStatusSet"`
+
+	// 任务总数量
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

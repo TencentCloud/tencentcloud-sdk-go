@@ -4345,6 +4345,9 @@ type IDCardInfoResult struct {
 
 	// 身份证头像照片的地址（人像面）
 	PortraitUrl *string `json:"PortraitUrl,omitnil,omitempty" name:"PortraitUrl"`
+
+	// 整型错误码
+	IntErrorCode *int64 `json:"IntErrorCode,omitnil,omitempty" name:"IntErrorCode"`
 }
 
 // Predefined struct for user

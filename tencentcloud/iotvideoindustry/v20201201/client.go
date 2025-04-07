@@ -733,7 +733,7 @@ func NewCreateLiveRecordPlanResponse() (response *CreateLiveRecordPlanResponse) 
 }
 
 // CreateLiveRecordPlan
-// 创建直播录制计划
+// 创建直播录制计划，直播录制接口，暂时下线中，只有国标接口支持云端录制
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -804,7 +804,7 @@ func (c *Client) CreateLiveRecordPlan(request *CreateLiveRecordPlanRequest) (res
 }
 
 // CreateLiveRecordPlan
-// 创建直播录制计划
+// 创建直播录制计划，直播录制接口，暂时下线中，只有国标接口支持云端录制
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
