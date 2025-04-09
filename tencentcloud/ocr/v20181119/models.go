@@ -5056,7 +5056,7 @@ type InvoiceItem struct {
 	// 该发票在原图片中的四点坐标。
 	Polygon *Polygon `json:"Polygon,omitnil,omitempty" name:"Polygon"`
 
-	// 识别出的图片在混贴票据图片中的旋转角度。
+	// 识别出切图后各图片的旋转角度。
 	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
 
 	// 识别到的内容。

@@ -3790,6 +3790,59 @@ func (c *Client) DescribeCloudStorageUsersWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeCsReportCountDataInfoRequest() (request *DescribeCsReportCountDataInfoRequest) {
+    request = &DescribeCsReportCountDataInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeCsReportCountDataInfo")
+    
+    
+    return
+}
+
+func NewDescribeCsReportCountDataInfoResponse() (response *DescribeCsReportCountDataInfoResponse) {
+    response = &DescribeCsReportCountDataInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCsReportCountDataInfo
+// 获取云存上报统计信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCsReportCountDataInfo(request *DescribeCsReportCountDataInfoRequest) (response *DescribeCsReportCountDataInfoResponse, err error) {
+    return c.DescribeCsReportCountDataInfoWithContext(context.Background(), request)
+}
+
+// DescribeCsReportCountDataInfo
+// 获取云存上报统计信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCsReportCountDataInfoWithContext(ctx context.Context, request *DescribeCsReportCountDataInfoRequest) (response *DescribeCsReportCountDataInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeCsReportCountDataInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCsReportCountDataInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCsReportCountDataInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
     request = &DescribeDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},

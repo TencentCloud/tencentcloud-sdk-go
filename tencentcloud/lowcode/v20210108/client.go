@@ -217,6 +217,7 @@ func NewDescribeDataSourceListResponse() (response *DescribeDataSourceListRespon
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LOWCODEUSERNOTEXIST = "FailedOperation.LowcodeUserNotExist"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -231,6 +232,7 @@ func (c *Client) DescribeDataSourceList(request *DescribeDataSourceListRequest) 
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LOWCODEUSERNOTEXIST = "FailedOperation.LowcodeUserNotExist"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

@@ -1049,6 +1049,26 @@ func (r *ControlDeviceDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CountDataInfo struct {
+	// 视频上报异常次数
+	VideoExceptionNum *uint64 `json:"VideoExceptionNum,omitnil,omitempty" name:"VideoExceptionNum"`
+
+	// 视频上报成功次数
+	VideoSuccessNum *uint64 `json:"VideoSuccessNum,omitnil,omitempty" name:"VideoSuccessNum"`
+
+	// 视频上报成功率
+	VideoSuccessRate *string `json:"VideoSuccessRate,omitnil,omitempty" name:"VideoSuccessRate"`
+
+	// 事件上报异常次数
+	EventExceptionNum *uint64 `json:"EventExceptionNum,omitnil,omitempty" name:"EventExceptionNum"`
+
+	// 事件上报成功次数
+	EventSuccessNum *uint64 `json:"EventSuccessNum,omitnil,omitempty" name:"EventSuccessNum"`
+
+	// 事件上报成功率
+	EventSuccessRate *string `json:"EventSuccessRate,omitnil,omitempty" name:"EventSuccessRate"`
+}
+
 // Predefined struct for user
 type CreateBatchProductionRequestParams struct {
 	// 项目ID
@@ -5271,6 +5291,91 @@ func (r *DescribeCloudStorageUsersResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCloudStorageUsersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCsReportCountDataInfoRequestParams struct {
+	// 产品id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 统计开始时间戳
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 统计结束时间戳
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 设备通道
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+type DescribeCsReportCountDataInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品id
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 统计开始时间戳
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 统计结束时间戳
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 设备通道
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+func (r *DescribeCsReportCountDataInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCsReportCountDataInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ChannelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCsReportCountDataInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCsReportCountDataInfoResponseParams struct {
+	// 云存上报统计信息
+	Data *CountDataInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCsReportCountDataInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCsReportCountDataInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeCsReportCountDataInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCsReportCountDataInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -45,49 +45,6 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
-func NewManageDeviceRiskRequest() (request *ManageDeviceRiskRequest) {
-    request = &ManageDeviceRiskRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("taf", APIVersion, "ManageDeviceRisk")
-    
-    
-    return
-}
-
-func NewManageDeviceRiskResponse() (response *ManageDeviceRiskResponse) {
-    response = &ManageDeviceRiskResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ManageDeviceRisk
-// oaid 设备风险接口
-func (c *Client) ManageDeviceRisk(request *ManageDeviceRiskRequest) (response *ManageDeviceRiskResponse, err error) {
-    return c.ManageDeviceRiskWithContext(context.Background(), request)
-}
-
-// ManageDeviceRisk
-// oaid 设备风险接口
-func (c *Client) ManageDeviceRiskWithContext(ctx context.Context, request *ManageDeviceRiskRequest) (response *ManageDeviceRiskResponse, err error) {
-    if request == nil {
-        request = NewManageDeviceRiskRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ManageDeviceRisk require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewManageDeviceRiskResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewManagePortraitRiskRequest() (request *ManagePortraitRiskRequest) {
     request = &ManagePortraitRiskRequest{
         BaseRequest: &tchttp.BaseRequest{},

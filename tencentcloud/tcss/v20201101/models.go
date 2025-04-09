@@ -10204,11 +10204,14 @@ type DescribeAssetImageDetailResponseParams struct {
 	// 镜像大小
 	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 关联主机个数
+	// 关联主机个数(包含普通节点数和超级节点数)
 	HostCnt *uint64 `json:"HostCnt,omitnil,omitempty" name:"HostCnt"`
 
 	// 关联容器个数
 	ContainerCnt *uint64 `json:"ContainerCnt,omitnil,omitempty" name:"ContainerCnt"`
+
+	// 超级节点数
+	SuperNodeCnt *uint64 `json:"SuperNodeCnt,omitnil,omitempty" name:"SuperNodeCnt"`
 
 	// 最近扫描时间
 	ScanTime *string `json:"ScanTime,omitnil,omitempty" name:"ScanTime"`
@@ -18686,6 +18689,9 @@ type DescribePurchaseStateInfoResponseParams struct {
 	// 已防护主机核数
 	DefendHostCoresCnt *uint64 `json:"DefendHostCoresCnt,omitnil,omitempty" name:"DefendHostCoresCnt"`
 
+	// 试用的专业版核数
+	TrialCoresCnt *uint64 `json:"TrialCoresCnt,omitnil,omitempty" name:"TrialCoresCnt"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -25668,8 +25674,11 @@ type EscapeWhiteListInfo struct {
 	// 白名单记录ID
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 关联主机数量
+	// 关联主机数量（包含普通节点和超级节点数量）
 	HostCount *int64 `json:"HostCount,omitnil,omitempty" name:"HostCount"`
+
+	// 关联超级节点数量
+	SuperNodeCount *int64 `json:"SuperNodeCount,omitnil,omitempty" name:"SuperNodeCount"`
 
 	// 关联容器数量
 	ContainerCount *int64 `json:"ContainerCount,omitnil,omitempty" name:"ContainerCount"`
@@ -26587,8 +26596,11 @@ type ImagesInfo struct {
 	// 镜像大小
 	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 主机个数
+	// 主机个数(包含普通节点数和超级节点数)
 	HostCnt *uint64 `json:"HostCnt,omitnil,omitempty" name:"HostCnt"`
+
+	// 超级节点数
+	SuperNodeCnt *uint64 `json:"SuperNodeCnt,omitnil,omitempty" name:"SuperNodeCnt"`
 
 	// 容器个数
 	ContainerCnt *uint64 `json:"ContainerCnt,omitnil,omitempty" name:"ContainerCnt"`
@@ -33082,8 +33094,11 @@ type VulAffectedImageInfo struct {
 	// 镜像名称
 	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
 
-	// 关联的主机数
+	// 关联的主机数(包含普通节点数和超级节点数)
 	HostCount *int64 `json:"HostCount,omitnil,omitempty" name:"HostCount"`
+
+	// 关联的超级节点数
+	SuperNodeCount *int64 `json:"SuperNodeCount,omitnil,omitempty" name:"SuperNodeCount"`
 
 	// 关联的容器数
 	ContainerCount *int64 `json:"ContainerCount,omitnil,omitempty" name:"ContainerCount"`

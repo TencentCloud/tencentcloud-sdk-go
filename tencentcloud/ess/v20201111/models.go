@@ -1829,6 +1829,9 @@ type CreateBatchQuickSignUrlRequestParams struct {
 	// 
 	// 注：`合同组暂不支持批量拒签功能。`
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
+
+	// 	 预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。
+	PresetApproverInfo *PresetApproverInfo `json:"PresetApproverInfo,omitnil,omitempty" name:"PresetApproverInfo"`
 }
 
 type CreateBatchQuickSignUrlRequest struct {
@@ -1916,6 +1919,9 @@ type CreateBatchQuickSignUrlRequest struct {
 	// 
 	// 注：`合同组暂不支持批量拒签功能。`
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
+
+	// 	 预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。
+	PresetApproverInfo *PresetApproverInfo `json:"PresetApproverInfo,omitnil,omitempty" name:"PresetApproverInfo"`
 }
 
 func (r *CreateBatchQuickSignUrlRequest) ToJsonString() string {
@@ -1943,6 +1949,7 @@ func (r *CreateBatchQuickSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "Intention")
 	delete(f, "CacheApproverInfo")
 	delete(f, "CanBatchReject")
+	delete(f, "PresetApproverInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchQuickSignUrlRequest has unknown keys!", "")
 	}
@@ -1983,13 +1990,20 @@ type CreateBatchSignUrlRequestParams struct {
 	// 签署方经办人的姓名。
 	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 	// 
-	// 注：`请确保和合同中填入的一致`, `除动态签署人场景外，此参数必填`
+	// 注：
+	// <ul>
+	// <li>请确保和合同中填入的一致。</li>
+	// <li>在动态签署人补充链接场景中，可以通过传入这个值，对补充的个人参与方信息进行限制。仅匹配传入姓名的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。</li>
+	// </ul>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
 	// 请确认手机号所有方为此业务通知方。
 	// 
-	// 注：`请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息`，`除动态签署人场景外，此参数必填`
+	// 注：
+	// <ul>
+	// <li>请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息。</li><li>在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入手机号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。 </li>
+	// </ul>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 代理企业和员工的信息。
@@ -2001,7 +2015,9 @@ type CreateBatchSignUrlRequestParams struct {
 	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
 	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 	// 
-	// 注：`请确保和合同中填入的一致`
+	// 注：
+	// 1. `请确保和合同中填入的一致`。
+	// 2. `在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件类型的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方，且需要和证件号参数一同传递，不能单独进行限制。`
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
@@ -2009,7 +2025,9 @@ type CreateBatchSignUrlRequestParams struct {
 	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	// 
-	// 注：`请确保和合同中填入的一致`
+	// 注：
+	// 1. `请确保和合同中填入的一致`。
+	// 2. `在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 通知用户方式：
@@ -2072,13 +2090,20 @@ type CreateBatchSignUrlRequest struct {
 	// 签署方经办人的姓名。
 	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 	// 
-	// 注：`请确保和合同中填入的一致`, `除动态签署人场景外，此参数必填`
+	// 注：
+	// <ul>
+	// <li>请确保和合同中填入的一致。</li>
+	// <li>在动态签署人补充链接场景中，可以通过传入这个值，对补充的个人参与方信息进行限制。仅匹配传入姓名的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。</li>
+	// </ul>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
 	// 请确认手机号所有方为此业务通知方。
 	// 
-	// 注：`请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息`，`除动态签署人场景外，此参数必填`
+	// 注：
+	// <ul>
+	// <li>请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息。</li><li>在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入手机号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。 </li>
+	// </ul>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 代理企业和员工的信息。
@@ -2090,7 +2115,9 @@ type CreateBatchSignUrlRequest struct {
 	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
 	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 	// 
-	// 注：`请确保和合同中填入的一致`
+	// 注：
+	// 1. `请确保和合同中填入的一致`。
+	// 2. `在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件类型的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方，且需要和证件号参数一同传递，不能单独进行限制。`
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
@@ -2098,7 +2125,9 @@ type CreateBatchSignUrlRequest struct {
 	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	// 
-	// 注：`请确保和合同中填入的一致`
+	// 注：
+	// 1. `请确保和合同中填入的一致`。
+	// 2. `在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 通知用户方式：
@@ -2611,12 +2640,32 @@ type CreateEmbedWebUrlRequestParams struct {
 	// <ul><li>CREATE_SEAL: 生成创建印章的嵌入页面</li>
 	// <li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li>
 	// <li>MODIFY_TEMPLATE：生成编辑模板的嵌入页面</li>
+	// <li>CREATE_CONTRACT_DRAFT_COOPEDIT：生成创建起草合同的嵌入页面</li>
 	// <li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li>
 	// <li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li>
 	// <li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
 	// <li>EXTEND_SERVICE：生成拓展服务的嵌入页面</li>
 	// <li>PREVIEW_FLOW：生成预览合同的嵌入页面（支持移动端）</li>
 	// <li>PREVIEW_FLOW_DETAIL：生成查看合同详情的嵌入页面（仅支持PC端）</li></ul>
+	// 
+	// 注意：
+	// 不同的嵌入类型，操作人需要的权限项不同（权限配置可参考[权限配置](https://qian.tencent.com/document/61355)）。
+	// <table>
+	// <tr><th>EmbedType</th><th>权限</th></tr>
+	// <tr><th>CREATE_SEAL</th><th>印章管理-添加印章</th></tr>
+	// <tr><th>CREATE_TEMPLATE</th><th>模板管理-创建模板</th></tr>
+	// <tr><th>MODIFY_TEMPLATE</th><th>模板管理-编辑模板</th></tr>
+	// <tr><th>CREATE_CONTRACT_DRAFT_COOPEDIT</th><th>合同管理-起草合同</th></tr>
+	// <tr><th>PREVIEW_TEMPLATE</th><th>拥有下面三种权限的一种就行</br>
+	// 模板管理-查询模板（本企业全部模板）</br>
+	// 模板管理-查询模板（本部门全部模板）</br>
+	// 模板管理-查询模板（本人创建模板）</th></tr>
+	// <tr><th>PREVIEW_SEAL_LIST</th><th>印章管理</th></tr>
+	// <tr><th>PREVIEW_SEAL_DETAIL</th><th>印章管理</th></tr>
+	// <tr><th>EXTEND_SERVICE</th><th>无要求</th></tr>
+	// <tr><th>PREVIEW_FLOW</th><th>是否是当前合同的参与方，或者发起方企业的法人、超管、合同管理员</th></tr>
+	// <tr><th>PREVIEW_FLOW_DETAIL</th><th>是否是当前合同的参与方，或者发起方企业的法人、超管、合同管理员</th></tr>
+	// </table>
 	EmbedType *string `json:"EmbedType,omitnil,omitempty" name:"EmbedType"`
 
 	// WEB嵌入的业务资源ID
@@ -2626,12 +2675,14 @@ type CreateEmbedWebUrlRequestParams struct {
 	// <li>为PREVIEW_SEAL_DETAIL，必填，取值为印章id。</li>
 	// <li>为CREATE_TEMPLATE，非必填，取值为资源id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)*</li>
 	// <li>为MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模板id。</li>
+	// <li>为CREATE_CONTRACT_DRAFT_COOPEDIT，非必填，取值为资源 id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)*</li>
 	// <li>为PREVIEW_FLOW，PREVIEW_FLOW_DETAIL，必填，取值为合同id。</li>
 	// </ul>
 	// 
 	// 注意：
 	//  1. CREATE_TEMPLATE中的BusinessId仅支持PDF文件类型， 如果您的文件不是PDF， 请使用接口[创建文件转换任务
 	// ](https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi) 和[查询转换任务状态](https://qian.tencent.com/developers/companyApis/templatesAndFiles/GetTaskResultApi) 来进行转换成PDF资源。
+	//  2. CREATE_CONTRACT_DRAFT_COOPEDIT中的BusinessId仅支持DOC 和 DOCX 的文件，并且大小不能超过 10M。
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 代理企业和员工的信息。
@@ -2659,12 +2710,32 @@ type CreateEmbedWebUrlRequest struct {
 	// <ul><li>CREATE_SEAL: 生成创建印章的嵌入页面</li>
 	// <li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li>
 	// <li>MODIFY_TEMPLATE：生成编辑模板的嵌入页面</li>
+	// <li>CREATE_CONTRACT_DRAFT_COOPEDIT：生成创建起草合同的嵌入页面</li>
 	// <li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li>
 	// <li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li>
 	// <li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
 	// <li>EXTEND_SERVICE：生成拓展服务的嵌入页面</li>
 	// <li>PREVIEW_FLOW：生成预览合同的嵌入页面（支持移动端）</li>
 	// <li>PREVIEW_FLOW_DETAIL：生成查看合同详情的嵌入页面（仅支持PC端）</li></ul>
+	// 
+	// 注意：
+	// 不同的嵌入类型，操作人需要的权限项不同（权限配置可参考[权限配置](https://qian.tencent.com/document/61355)）。
+	// <table>
+	// <tr><th>EmbedType</th><th>权限</th></tr>
+	// <tr><th>CREATE_SEAL</th><th>印章管理-添加印章</th></tr>
+	// <tr><th>CREATE_TEMPLATE</th><th>模板管理-创建模板</th></tr>
+	// <tr><th>MODIFY_TEMPLATE</th><th>模板管理-编辑模板</th></tr>
+	// <tr><th>CREATE_CONTRACT_DRAFT_COOPEDIT</th><th>合同管理-起草合同</th></tr>
+	// <tr><th>PREVIEW_TEMPLATE</th><th>拥有下面三种权限的一种就行</br>
+	// 模板管理-查询模板（本企业全部模板）</br>
+	// 模板管理-查询模板（本部门全部模板）</br>
+	// 模板管理-查询模板（本人创建模板）</th></tr>
+	// <tr><th>PREVIEW_SEAL_LIST</th><th>印章管理</th></tr>
+	// <tr><th>PREVIEW_SEAL_DETAIL</th><th>印章管理</th></tr>
+	// <tr><th>EXTEND_SERVICE</th><th>无要求</th></tr>
+	// <tr><th>PREVIEW_FLOW</th><th>是否是当前合同的参与方，或者发起方企业的法人、超管、合同管理员</th></tr>
+	// <tr><th>PREVIEW_FLOW_DETAIL</th><th>是否是当前合同的参与方，或者发起方企业的法人、超管、合同管理员</th></tr>
+	// </table>
 	EmbedType *string `json:"EmbedType,omitnil,omitempty" name:"EmbedType"`
 
 	// WEB嵌入的业务资源ID
@@ -2674,12 +2745,14 @@ type CreateEmbedWebUrlRequest struct {
 	// <li>为PREVIEW_SEAL_DETAIL，必填，取值为印章id。</li>
 	// <li>为CREATE_TEMPLATE，非必填，取值为资源id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)*</li>
 	// <li>为MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模板id。</li>
+	// <li>为CREATE_CONTRACT_DRAFT_COOPEDIT，非必填，取值为资源 id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)*</li>
 	// <li>为PREVIEW_FLOW，PREVIEW_FLOW_DETAIL，必填，取值为合同id。</li>
 	// </ul>
 	// 
 	// 注意：
 	//  1. CREATE_TEMPLATE中的BusinessId仅支持PDF文件类型， 如果您的文件不是PDF， 请使用接口[创建文件转换任务
 	// ](https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi) 和[查询转换任务状态](https://qian.tencent.com/developers/companyApis/templatesAndFiles/GetTaskResultApi) 来进行转换成PDF资源。
+	//  2. CREATE_CONTRACT_DRAFT_COOPEDIT中的BusinessId仅支持DOC 和 DOCX 的文件，并且大小不能超过 10M。
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 代理企业和员工的信息。
@@ -2724,6 +2797,8 @@ func (r *CreateEmbedWebUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateEmbedWebUrlResponseParams struct {
 	// 嵌入的web链接，有效期：5分钟
+	// 链接仅能使用一次
+	// 建议：每次都用接口生成链接，保证链接的有效性
 	// <br/>EmbedType=PREVIEW_CC_FLOW，该url为h5链接
 	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
 
@@ -7250,21 +7325,29 @@ type CreateSchemeUrlRequestParams struct {
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 合同流程里边签署方经办人的姓名。
+	// 
+	// `注：在动态签署人补充链接场景中，可以通过传入这个值，对补充的个人参与方信息进行限制。仅匹配传入姓名的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 合同流程里边签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
+	// 
+	// `注：在动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入手机号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 证件类型，支持以下类型
 	// <ul><li>ID_CARD : 中国大陆居民身份证</li>
 	// <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
 	// <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
+	// 
+	// `注：在动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件类型的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方，且需要和证件号参数一同传递，不能单独进行限制。`
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
 	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
 	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// 
+	// `注：在动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 要跳转的链接类型
@@ -7335,21 +7418,29 @@ type CreateSchemeUrlRequest struct {
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 合同流程里边签署方经办人的姓名。
+	// 
+	// `注：在动态签署人补充链接场景中，可以通过传入这个值，对补充的个人参与方信息进行限制。仅匹配传入姓名的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 合同流程里边签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
+	// 
+	// `注：在动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入手机号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 证件类型，支持以下类型
 	// <ul><li>ID_CARD : 中国大陆居民身份证</li>
 	// <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
 	// <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
+	// 
+	// `注：在动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件类型的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方，且需要和证件号参数一同传递，不能单独进行限制。`
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
 	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
 	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// 
+	// `注：在动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 要跳转的链接类型
@@ -11854,7 +11945,7 @@ type EmbedUrlOption struct {
 	// - true: 不展示上传文件页
 	//  
 	// 
-	// 注意: 此参数仅针对**EmbedType=CREATE_TEMPLATE(创建模板)有效**，
+	// 注意: 此参数仅针对**EmbedType=CREATE_TEMPLATE(创建模板)和EmbedType=CREATE_CONTRACT_DRAFT_COOPEDIT(创建起草合同)有效**，
 	SkipUploadFile *bool `json:"SkipUploadFile,omitnil,omitempty" name:"SkipUploadFile"`
 }
 
@@ -13709,6 +13800,26 @@ type PermissionGroup struct {
 
 	// 权限集合
 	Permissions []*Permission `json:"Permissions,omitnil,omitempty" name:"Permissions"`
+}
+
+type PresetApproverInfo struct {
+	// 预设参与方姓名。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 预设参与方手机号。
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
+
+	// 预设参与方证件号，需要和IdCardType同时传入。
+	// 
+	// 证件号码，应符合以下规则
+	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li></ul>
+	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
+
+	// 预设参与方的证件类型，需要与IdCardNumber同时传入。
+	// 
+	// 证件类型，支持以下类型
+	// <ul><li><b>ID_CARD</b>: 居民身份证</li></ul>
+	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 }
 
 type Recipient struct {

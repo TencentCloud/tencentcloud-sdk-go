@@ -1835,6 +1835,12 @@ type DescribeClustersRequestParams struct {
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
 	// 过滤规则
+	//     
+	// - Name
+	//     按照集群的名字进行模糊查询。例如：测试
+	//     类型： String
+	//     必选： 否
+	//     
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 工作空间 SerialId
@@ -1857,6 +1863,12 @@ type DescribeClustersRequest struct {
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
 	// 过滤规则
+	//     
+	// - Name
+	//     按照集群的名字进行模糊查询。例如：测试
+	//     类型： String
+	//     必选： 否
+	//     
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 工作空间 SerialId

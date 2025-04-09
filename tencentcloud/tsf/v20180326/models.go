@@ -284,7 +284,6 @@ func (r *AddInstancesResponse) FromJsonString(s string) error {
 
 type AdvanceSettings struct {
 	// 子任务单机并发数限制，默认值为2
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubTaskConcurrency *int64 `json:"SubTaskConcurrency,omitnil,omitempty" name:"SubTaskConcurrency"`
 }
 
@@ -437,11 +436,9 @@ type ApiDetailResponse struct {
 	RequestContentType *string `json:"RequestContentType,omitnil,omitempty" name:"RequestContentType"`
 
 	// API  能否调试
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CanRun *bool `json:"CanRun,omitnil,omitempty" name:"CanRun"`
 
 	// API 状态 0:离线 1:在线，默认0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// API 描述
@@ -680,11 +677,9 @@ type ApplicationAttribute struct {
 
 type ApplicationForPage struct {
 	// 应用ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 应用名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationName *string `json:"ApplicationName,omitnil,omitempty" name:"ApplicationName"`
 
 	// 应用描述
@@ -692,35 +687,27 @@ type ApplicationForPage struct {
 	ApplicationDesc *string `json:"ApplicationDesc,omitnil,omitempty" name:"ApplicationDesc"`
 
 	// 应用类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationType *string `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
 
 	// 微服务类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MicroserviceType *string `json:"MicroserviceType,omitnil,omitempty" name:"MicroserviceType"`
 
 	// 编程语言
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProgLang *string `json:"ProgLang,omitnil,omitempty" name:"ProgLang"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 应用资源类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationResourceType *string `json:"ApplicationResourceType,omitnil,omitempty" name:"ApplicationResourceType"`
 
 	// 应用runtime类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationRuntimeType *string `json:"ApplicationRuntimeType,omitnil,omitempty" name:"ApplicationRuntimeType"`
 
 	// Apigateway的serviceId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApigatewayServiceId *string `json:"ApigatewayServiceId,omitnil,omitempty" name:"ApigatewayServiceId"`
 
 	// 应用备注名
@@ -732,7 +719,6 @@ type ApplicationForPage struct {
 	ServiceConfigList []*ServiceConfig `json:"ServiceConfigList,omitnil,omitempty" name:"ServiceConfigList"`
 
 	// IgnoreCreateImageRepository
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IgnoreCreateImageRepository *bool `json:"IgnoreCreateImageRepository,omitnil,omitempty" name:"IgnoreCreateImageRepository"`
 
 	// Apm业务系统id
@@ -752,15 +738,12 @@ type ApplicationForPage struct {
 	MicroserviceSubType *string `json:"MicroserviceSubType,omitnil,omitempty" name:"MicroserviceSubType"`
 
 	// 应用编程语言类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProgramLanguage *string `json:"ProgramLanguage,omitnil,omitempty" name:"ProgramLanguage"`
 
 	// 开发框架类型[SpringCloud，Dubbo，Go-GRPC，Other]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameworkType *string `json:"FrameworkType,omitnil,omitempty" name:"FrameworkType"`
 
 	// 注册配置治理信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceGovernanceConfig *ServiceGovernanceConfig `json:"ServiceGovernanceConfig,omitnil,omitempty" name:"ServiceGovernanceConfig"`
 
 	// 微服务类型列表
@@ -768,7 +751,6 @@ type ApplicationForPage struct {
 	MicroserviceTypeList []*string `json:"MicroserviceTypeList,omitnil,omitempty" name:"MicroserviceTypeList"`
 
 	// 是否同时创建镜像仓库
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateSameNameImageRepository *bool `json:"CreateSameNameImageRepository,omitnil,omitempty" name:"CreateSameNameImageRepository"`
 }
 
@@ -1141,11 +1123,9 @@ type BusinessLogConfig struct {
 	ConfigAssociatedGroupList []*BusinessLogConfigAssociatedGroup `json:"ConfigAssociatedGroupList,omitnil,omitempty" name:"ConfigAssociatedGroupList"`
 
 	// 是否开启filebeat高级配置开关
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilebeatConfigEnable *bool `json:"FilebeatConfigEnable,omitnil,omitempty" name:"FilebeatConfigEnable"`
 
 	// close_timeout参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilebeatCloseTimeout *int64 `json:"FilebeatCloseTimeout,omitnil,omitempty" name:"FilebeatCloseTimeout"`
 }
 
@@ -1597,15 +1577,12 @@ type Config struct {
 
 type ConfigMapOption struct {
 	// -
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// -
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// -
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
 }
 
@@ -2033,11 +2010,9 @@ type ContainerGroupDeploy struct {
 
 type ContainerGroupDetail struct {
 	// 部署组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 分组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 实例总数
@@ -2045,11 +2020,9 @@ type ContainerGroupDetail struct {
 	InstanceNum *int64 `json:"InstanceNum,omitnil,omitempty" name:"InstanceNum"`
 
 	// 已启动实例总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentNum *int64 `json:"CurrentNum,omitnil,omitempty" name:"CurrentNum"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 镜像server
@@ -2065,35 +2038,27 @@ type ContainerGroupDetail struct {
 	TagName *string `json:"TagName,omitnil,omitempty" name:"TagName"`
 
 	// 集群ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 集群名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 命名空间ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
 	// 命名空间名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
 
 	// 应用ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// 负载均衡ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LbIp *string `json:"LbIp,omitnil,omitempty" name:"LbIp"`
 
 	// 应用类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationType *string `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
 
 	// Service ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterIp *string `json:"ClusterIp,omitnil,omitempty" name:"ClusterIp"`
 
 	// NodePort端口，只有公网和NodePort访问方式才有值
@@ -2113,7 +2078,6 @@ type ContainerGroupDetail struct {
 	AccessType *uint64 `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
 	// 更新方式：0:快速更新 1:滚动更新
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateType *int64 `json:"UpdateType,omitnil,omitempty" name:"UpdateType"`
 
 	// 更新间隔,单位秒
@@ -2121,15 +2085,12 @@ type ContainerGroupDetail struct {
 	UpdateIvl *int64 `json:"UpdateIvl,omitnil,omitempty" name:"UpdateIvl"`
 
 	// 端口数组对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtocolPorts []*ProtocolPort `json:"ProtocolPorts,omitnil,omitempty" name:"ProtocolPorts"`
 
 	// 环境变量数组对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Envs []*Env `json:"Envs,omitnil,omitempty" name:"Envs"`
 
 	// 应用名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationName *string `json:"ApplicationName,omitnil,omitempty" name:"ApplicationName"`
 
 	// pod错误信息描述
@@ -2137,11 +2098,9 @@ type ContainerGroupDetail struct {
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 部署组状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 服务类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MicroserviceType *string `json:"MicroserviceType,omitnil,omitempty" name:"MicroserviceType"`
 
 	// 初始分配的 CPU 核数，对应 K8S request
@@ -2157,15 +2116,12 @@ type ContainerGroupDetail struct {
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 部署组资源类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupResourceType *string `json:"GroupResourceType,omitnil,omitempty" name:"GroupResourceType"`
 
 	// 部署组实例个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceCount *uint64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
 	// 部署组更新时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedTime *int64 `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 
 	// kubernetes滚动更新策略的MaxSurge参数
@@ -2181,7 +2137,6 @@ type ContainerGroupDetail struct {
 	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitnil,omitempty" name:"HealthCheckSettings"`
 
 	// 允许PlainYamlDeploy
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowPlainYamlDeploy *bool `json:"AllowPlainYamlDeploy,omitnil,omitempty" name:"AllowPlainYamlDeploy"`
 
 	// 是否不等于ServiceConfig
@@ -2235,7 +2190,6 @@ type ContainerGroupOther struct {
 	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitnil,omitempty" name:"HealthCheckSettings"`
 
 	// 服务配置信息是否匹配
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsNotEqualServiceConfig *bool `json:"IsNotEqualServiceConfig,omitnil,omitempty" name:"IsNotEqualServiceConfig"`
 }
 
@@ -2516,7 +2470,6 @@ func (r *CreateApiGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateApiGroupResponseParams struct {
 	// API分组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2659,7 +2612,6 @@ func (r *CreateApiRateLimitRuleWithDetailRespRequest) FromJsonString(s string) e
 // Predefined struct for user
 type CreateApiRateLimitRuleWithDetailRespResponseParams struct {
 	// 创建的规则 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ApiRateLimitRule `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3097,7 +3049,6 @@ func (r *CreateConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateConfigResponseParams struct {
 	// true：创建成功；false：创建失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3268,7 +3219,6 @@ func (r *CreateConfigTemplateWithDetailRespRequest) FromJsonString(s string) err
 // Predefined struct for user
 type CreateConfigTemplateWithDetailRespResponseParams struct {
 	// 创建成功，返回 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ConfigTemplate `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3375,7 +3325,6 @@ func (r *CreateConfigWithDetailRespRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateConfigWithDetailRespResponseParams struct {
 	// 配置项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *Config `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3725,7 +3674,6 @@ func (r *CreateFileConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateFileConfigResponseParams struct {
 	// true：创建成功；false：创建失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3853,7 +3801,6 @@ func (r *CreateFileConfigWithDetailRespRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateFileConfigWithDetailRespResponseParams struct {
 	// 文件配置项
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *FileConfig `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4109,7 +4056,6 @@ func (r *CreateLaneRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateLaneResponseParams struct {
 	// 泳道ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4202,7 +4148,6 @@ func (r *CreateLaneRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateLaneRuleResponseParams struct {
 	// 泳道规则Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4574,7 +4519,6 @@ func (r *CreatePathRewritesWithDetailRespRequest) FromJsonString(s string) error
 // Predefined struct for user
 type CreatePathRewritesWithDetailRespResponseParams struct {
 	// 返回路径重写规则 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result []*string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4745,7 +4689,6 @@ func (r *CreatePublicConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreatePublicConfigResponseParams struct {
 	// true：创建成功；false：创建失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4845,7 +4788,6 @@ func (r *CreatePublicConfigWithDetailRespRequest) FromJsonString(s string) error
 // Predefined struct for user
 type CreatePublicConfigWithDetailRespResponseParams struct {
 	// 公共配置项 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *Config `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5249,7 +5191,6 @@ func (r *CreateUnitNamespacesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateUnitNamespacesResponseParams struct {
 	// 是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5327,8 +5268,7 @@ func (r *CreateUnitRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUnitRuleResponseParams struct {
-	// 是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 是否成功，成功：true，失败：false。；
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5407,7 +5347,6 @@ func (r *CreateUnitRuleWithDetailRespRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateUnitRuleWithDetailRespResponseParams struct {
 	// 单元化规则信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *UnitRule `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5626,7 +5565,6 @@ type DeleteApplicationResponseParams struct {
 	// 删除应用操作是否成功。
 	// true：操作成功。
 	// false：操作失败。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5923,7 +5861,6 @@ func (r *DeleteFileConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteFileConfigResponseParams struct {
 	// 删除结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6235,7 +6172,6 @@ func (r *DeleteLaneRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteLaneRuleResponseParams struct {
 	// 操作状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6550,7 +6486,6 @@ func (r *DeletePublicConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeletePublicConfigResponseParams struct {
 	// true：删除成功；false：删除失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6786,7 +6721,6 @@ func (r *DeleteUnitNamespacesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteUnitNamespacesResponseParams struct {
 	// 是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6844,7 +6778,6 @@ func (r *DeleteUnitRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteUnitRuleResponseParams struct {
 	// 是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7248,7 +7181,6 @@ type DeployContainerGroupResponseParams struct {
 	// 部署容器应用是否成功。
 	// true：成功。
 	// false：失败。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7583,7 +7515,6 @@ func (r *DescribeApiGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeApiGroupResponseParams struct {
 	// API分组信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ApiGroupInfo `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7697,7 +7628,6 @@ func (r *DescribeApiGroupsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeApiGroupsResponseParams struct {
 	// 翻页结构体
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageApiGroupInfo `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8339,7 +8269,6 @@ func (r *DescribeBusinessLogConfigsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBusinessLogConfigsResponseParams struct {
 	// 业务日志配置列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageBusinessLogConfig `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8623,7 +8552,6 @@ func (r *DescribeConfigReleaseLogsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeConfigReleaseLogsResponseParams struct {
 	// 分页的配置项发布历史列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageConfigReleaseLog `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8730,7 +8658,6 @@ func (r *DescribeConfigReleasesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeConfigReleasesResponseParams struct {
 	// 分页的配置发布信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageConfigRelease `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8959,7 +8886,6 @@ func (r *DescribeConfigTemplateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeConfigTemplateResponseParams struct {
 	// 导入结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ConfigTemplate `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9059,7 +8985,6 @@ func (r *DescribeConfigsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeConfigsResponseParams struct {
 	// 分页后的配置项列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageConfig `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9848,7 +9773,6 @@ func (r *DescribeEnabledUnitRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEnabledUnitRuleResponseParams struct {
 	// 单元化规则对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *UnitRule `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9955,7 +9879,6 @@ func (r *DescribeFileConfigReleasesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFileConfigReleasesResponseParams struct {
 	// 配置项发布信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageFileConfigRelease `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10055,7 +9978,6 @@ func (r *DescribeFileConfigsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFileConfigsResponseParams struct {
 	// 文件配置项列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageFileConfig `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10518,7 +10440,6 @@ func (r *DescribeGroupBusinessLogConfigsRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeGroupBusinessLogConfigsResponseParams struct {
 	// 业务日志配置列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageBusinessLogConfig `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10746,7 +10667,6 @@ func (r *DescribeGroupReleaseRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeGroupReleaseResponseParams struct {
 	// 部署组发布的相关信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *GroupRelease `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12079,7 +11999,6 @@ func (r *DescribeLaneRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLaneRulesResponseParams struct {
 	// 泳道规则列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *LaneRules `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12165,7 +12084,6 @@ func (r *DescribeLanesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLanesResponseParams struct {
 	// 泳道列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *LaneInfos `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12251,7 +12169,6 @@ func (r *DescribeMicroserviceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMicroserviceResponseParams struct {
 	// 微服务详情实例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageMsInstance `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12429,7 +12346,6 @@ func (r *DescribeMicroservicesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMicroservicesResponseParams struct {
 	// 微服务分页列表信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageMicroservice `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13168,7 +13084,6 @@ func (r *DescribePublicConfigReleaseLogsRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribePublicConfigReleaseLogsResponseParams struct {
 	// 分页后的公共配置项发布历史列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageConfigReleaseLog `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13254,7 +13169,6 @@ func (r *DescribePublicConfigReleasesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePublicConfigReleasesResponseParams struct {
 	// 公共配置发布信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageConfigRelease `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13419,7 +13333,6 @@ func (r *DescribePublicConfigSummaryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePublicConfigSummaryResponseParams struct {
 	// 分页的全局配置统计信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageConfig `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13512,7 +13425,6 @@ func (r *DescribePublicConfigsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePublicConfigsResponseParams struct {
 	// 分页后的全局配置项列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageConfig `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13570,7 +13482,6 @@ func (r *DescribeReleasedConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeReleasedConfigResponseParams struct {
 	// 已发布的配置内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14788,7 +14699,6 @@ func (r *DescribeUnitNamespacesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUnitNamespacesResponseParams struct {
 	// 单元化命名空间对象列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageUnitNamespace `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14846,7 +14756,6 @@ func (r *DescribeUnitRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUnitRuleResponseParams struct {
 	// 单元化规则对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *UnitRule `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -14932,7 +14841,6 @@ func (r *DescribeUnitRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUnitRulesResponseParams struct {
 	// 分页列表信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result []*TsfPageUnitRule `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15018,7 +14926,6 @@ func (r *DescribeUnitRulesV2Request) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUnitRulesV2ResponseParams struct {
 	// 分页列表信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageUnitRuleV2 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15189,7 +15096,6 @@ func (r *DescribeUsableUnitNamespacesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUsableUnitNamespacesResponseParams struct {
 	// 单元化命名空间对象列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *TsfPageUnitNamespace `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15247,7 +15153,6 @@ func (r *DisableLaneRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableLaneRuleResponseParams struct {
 	// 操作状态。成功：true，失败：false
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15419,7 +15324,6 @@ func (r *DisableUnitRouteRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableUnitRouteResponseParams struct {
 	// 返回结果，成功失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15477,7 +15381,6 @@ func (r *DisableUnitRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableUnitRuleResponseParams struct {
 	// 是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15734,7 +15637,6 @@ func (r *EnableLaneRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EnableLaneRuleResponseParams struct {
 	// 操作状态。成功：true，失败：false
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15905,8 +15807,7 @@ func (r *EnableUnitRouteRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type EnableUnitRouteResponseParams struct {
-	// 返回结果，成功失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 返回结果。成功：true，失败：false。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15963,8 +15864,7 @@ func (r *EnableUnitRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type EnableUnitRuleResponseParams struct {
-	// 是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 是否成功，成功：true，失败：false。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16343,27 +16243,21 @@ type ForceSchedule struct {
 
 type GatewayApiGroupVo struct {
 	// 分组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 分组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 分组下API个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupApiCount *uint64 `json:"GroupApiCount,omitnil,omitempty" name:"GroupApiCount"`
 
 	// 分组API列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupApis []*GatewayGroupApiVo `json:"GroupApis,omitnil,omitempty" name:"GroupApis"`
 
 	// 网关实例的类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayInstanceType *string `json:"GatewayInstanceType,omitnil,omitempty" name:"GatewayInstanceType"`
 
 	// 网关实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayInstanceId *string `json:"GatewayInstanceId,omitnil,omitempty" name:"GatewayInstanceId"`
 }
 
@@ -16479,33 +16373,26 @@ type GatewayPluginBoundParam struct {
 
 type GatewayVo struct {
 	// 网关部署组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayDeployGroupId *string `json:"GatewayDeployGroupId,omitnil,omitempty" name:"GatewayDeployGroupId"`
 
 	// 网关部署组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayDeployGroupName *string `json:"GatewayDeployGroupName,omitnil,omitempty" name:"GatewayDeployGroupName"`
 
 	// API 分组个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupNum *uint64 `json:"GroupNum,omitnil,omitempty" name:"GroupNum"`
 
 	// API 分组列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Groups []*GatewayApiGroupVo `json:"Groups,omitnil,omitempty" name:"Groups"`
 }
 
 type GroupApiUseStatistics struct {
 	// 总调用数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopStatusCode []*ApiUseStatisticsEntity `json:"TopStatusCode,omitnil,omitempty" name:"TopStatusCode"`
 
 	// 平均错误率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopTimeCost []*ApiUseStatisticsEntity `json:"TopTimeCost,omitnil,omitempty" name:"TopTimeCost"`
 
 	// 分位值对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Quantile *QuantileEntity `json:"Quantile,omitnil,omitempty" name:"Quantile"`
 }
 
@@ -17396,11 +17283,9 @@ type LaneInfo struct {
 
 type LaneInfos struct {
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 泳道信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*LaneInfo `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
@@ -18195,7 +18080,6 @@ func (r *ModifyLaneRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyLaneRuleResponseParams struct {
 	// 操作状态。成功：true，失败：false
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19836,7 +19720,6 @@ func (r *ReleaseConfigWithDetailRespRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ReleaseConfigWithDetailRespResponseParams struct {
 	// 配置项发布 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ConfigRelease `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19907,8 +19790,7 @@ func (r *ReleaseFileConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ReleaseFileConfigResponseParams struct {
-	// 发布结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 发布结果，成功：true，失败：false。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -19980,7 +19862,6 @@ func (r *ReleasePublicConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ReleasePublicConfigResponseParams struct {
 	// true：发布成功；false：发布失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20254,7 +20135,6 @@ func (r *RevocationPublicConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RevocationPublicConfigResponseParams struct {
 	// true：撤销成功；false：撤销失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -20311,8 +20191,7 @@ func (r *RevokeFileConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RevokeFileConfigResponseParams struct {
-	// 撤回结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 撤回结果，成功：true，失败：false。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21894,11 +21773,9 @@ type TsfPageApplication struct {
 
 type TsfPageBusinessLogConfig struct {
 	// 总条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 业务日志配置项列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*BusinessLogConfig `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
@@ -21994,11 +21871,9 @@ type TsfPageFileConfig struct {
 
 type TsfPageFileConfigRelease struct {
 	// 数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*FileConfigRelease `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
@@ -22012,11 +21887,9 @@ type TsfPageGatewayDeployGroup struct {
 
 type TsfPageGatewayPlugin struct {
 	// 记录总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 记录实体列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*GatewayPlugin `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
@@ -22110,11 +21983,9 @@ type TsfPageUnitRule struct {
 
 type TsfPageUnitRuleV2 struct {
 	// 记录总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 记录实体列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*UnitRule `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
@@ -22191,19 +22062,15 @@ type UnitNamespace struct {
 	NamespaceName *string `json:"NamespaceName,omitnil,omitempty" name:"NamespaceName"`
 
 	// 单元化命名空间ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 网关实体ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayInstanceId *string `json:"GatewayInstanceId,omitnil,omitempty" name:"GatewayInstanceId"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 }
 
@@ -22399,7 +22266,6 @@ func (r *UpdateApiGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateApiGroupResponseParams struct {
 	// 返回结果，true: 成功, false: 失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -23005,8 +22871,7 @@ func (r *UpdateUnitRuleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateUnitRuleResponseParams struct {
-	// 是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 是否成功，成功：true，失败：false。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

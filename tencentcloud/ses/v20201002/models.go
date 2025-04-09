@@ -26,6 +26,9 @@ type Attachment struct {
 
 	// Base64之后的附件内容，您可以发送的附件大小上限为4M。注意：腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍。应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 接口会返回错误。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 附件URL。未开放功能，请勿使用。
+	FileURL *string `json:"FileURL,omitnil,omitempty" name:"FileURL"`
 }
 
 // Predefined struct for user

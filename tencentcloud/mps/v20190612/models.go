@@ -2200,11 +2200,8 @@ type AudioTemplateInfo struct {
 	// 当取值为 0，表示音频码率和原始音频保持一致。
 	Bitrate *int64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 
-	// 音频流的采样率，可选值：
-	// <li>32000</li>
-	// <li>44100</li>
-	// <li>48000</li>
-	// 单位：Hz。
+	// 音频流的采样率，不同编码标准支持的采样率选项不同。详细参考[音频采样率支持范围文档]https://cloud.tencent.com/document/product/862/77166#f3b039f1-d817-4a96-b4e4-90132d31cd53
+	// 注意：请确保源音频流的采样率在上述选项范围内，否则可能导致转码失败！
 	SampleRate *uint64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
 	// 音频通道方式，可选值：
@@ -2246,11 +2243,8 @@ type AudioTemplateInfoForUpdate struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bitrate *int64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 
-	// 音频流的采样率，可选值：
-	// <li>32000</li>
-	// <li>44100</li>
-	// <li>48000</li>
-	// 单位：Hz。
+	// 音频流的采样率，不同编码标准支持的采样率选项不同。详细参考[音频采样率支持范围文档]https://cloud.tencent.com/document/product/862/77166#f3b039f1-d817-4a96-b4e4-90132d31cd53
+	// 注意：请确保源音频流的采样率在上述选项范围内，否则可能导致转码失败！
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SampleRate *uint64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
@@ -18779,16 +18773,16 @@ type SnapshotByTimeOffsetTemplate struct {
 }
 
 type SpekeDrm struct {
-	// 资源标记，
+	// 资源标记，该字段内容为用户自定义；
 	// 支持1-128个字符的数字、字母、下划线(_)、中划线(-)。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// drm厂商访问地址；
+	// DRM厂商访问地址，该字段内容从DRM厂商获取。
 	// 
-	// 注: 不同DRM厂商对子流的数量限制不一样，如 pallycon 限制不能超过5条子流，drmtoday厂商最多仅支持9条子流加密
+	// 注: 不同DRM厂商对子流的数量限制不一样，如 PallyCon 限制不能超过5条子流，DRMtoday厂商最多仅支持9条子流加密
 	KeyServerUrl *string `json:"KeyServerUrl,omitnil,omitempty" name:"KeyServerUrl"`
 
-	// 加密初始化向量(32字节字符串)。
+	// 加密初始化向量(32字节字符串)，该字段内容为用户自定义。
 	Vector *string `json:"Vector,omitnil,omitempty" name:"Vector"`
 
 	// 加密方式，FairPlay 默认cbcs，PlayReady，Widevine 默认cenc
@@ -19756,8 +19750,9 @@ type VideoTemplateInfo struct {
 	FpsDenominator *int64 `json:"FpsDenominator,omitnil,omitempty" name:"FpsDenominator"`
 
 	// 3D视频拼接方式，仅mv-hevc，3D视频生效，可选值：
-	// <li>side_by_side：左右视角</li>
-	// <li>top_bottom：上下视角</li>
+	// <li>side_by_side：原视频内容左右排列布局</li>
+	// <li>top_bottom：原视频内容上下排列布局</li>
+	// 计费将按照切分后的分辨率尺寸上报用量及计费；
 	// 默认值:side_by_side
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Stereo3dType *string `json:"Stereo3dType,omitnil,omitempty" name:"Stereo3dType"`
@@ -19969,8 +19964,9 @@ type VideoTemplateInfoForUpdate struct {
 	FpsDenominator *int64 `json:"FpsDenominator,omitnil,omitempty" name:"FpsDenominator"`
 
 	// 3D视频拼接方式，仅mv-hevc，3D视频生效，可选值：
-	// <li>side_by_side：左右视角</li>
-	// <li>top_bottom：上下视角</li>
+	// <li>side_by_side：原视频内容左右排列布局</li>
+	// <li>top_bottom：原视频内容上下排列布局</li>
+	// 计费将按照切分后的分辨率尺寸上报用量及计费；
 	// 默认值:side_by_side
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Stereo3dType *string `json:"Stereo3dType,omitnil,omitempty" name:"Stereo3dType"`

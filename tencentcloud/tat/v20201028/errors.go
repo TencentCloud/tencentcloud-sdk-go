@@ -155,8 +155,14 @@ const (
 	// 未启用自定义参数功能。
 	INVALIDPARAMETERVALUE_SUPPORTPARAMETERSONLYIFENABLEPARAMETER = "InvalidParameterValue.SupportParametersOnlyIfEnableParameter"
 
+	// 参数取值过大。
+	INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+
 	// 长度超过限制。
 	INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+
+	// 参数取值过小。
+	INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
 
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"

@@ -13501,20 +13501,48 @@ func (r *ModifyInstanceParamResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstancePasswordComplexityRequestParams struct {
-	// 实例短 ID 列表。
+	// 要修改密码复杂度的实例 ID。
+	// 说明：支持输入多个实例 ID 进行修改。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 要修改的参数列表。每一个元素是Name和CurrentValue的组合。Name是参数名，CurrentValue是要修改成的值。8.0版本Name支持范围：["validate_password.policy","validate_password.length","validate_password.mixed_case_count","validate_password.number_count","validate_password.special_char_count"],5.6和5.7版本支持范围：["validate_password_policy","validate_password_length","validate_password_mixed_case_count","validate_password_number_count","validate_password_special_char_count"]
+	// 要修改的密码复杂度的选项。每一个选项是以组合形式写入的，一个组合包括 Name 和 CurrentValue，其中 Name 表示对应选项的参数名，CurrentValue 表示参数值。例如：[{"Name": "validate_password.length", "CurrentValue": "10"}]，表示将密码的最小字符数修改为10。
+	// 说明：不同数据库版本的实例，支持修改的密码复杂度的选项如下。
+	// 1. MySQL 8.0：
+	// 选项 validate_password.policy，表示密码复杂度的开关，值为 LOW 时表示关闭；值为 MEDIUM 时表示开启。温馨提示：如需修改具体的密码策略，此选项的值需为 MEDIUM。
+	// 选项 validate_password.length，表示密码总长度的最小字符数。
+	// 选项 validate_password.mixed_case_count，表示小写和大写字母的最小字符数。
+	// 选项 validate_password.number_count，表示数字的最小字符数。
+	// 选项 validate_password.special_char_count，表示特殊字符的最小字符数。
+	// 2. MySQL 5.6、MySQL 5.7：
+	// 选项 validate_password_policy，表示密码复杂度的开关，值为 LOW 时表示关闭；值为 MEDIUM 时表示开启。温馨提示：如需修改具体的密码策略，此选项的值需为 MEDIUM。
+	// 选项 validate_password_length，表示密码总长度的最小字符数。
+	// 选项 validate_password_mixed_case_count，表示小写和大写字母的最小字符数。
+	// 选项 validate_password_number_count，表示数字的最小字符数。
+	// 选项 validate_password_special_char_count，表示特殊字符的最小字符数。
 	ParamList []*Parameter `json:"ParamList,omitnil,omitempty" name:"ParamList"`
 }
 
 type ModifyInstancePasswordComplexityRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例短 ID 列表。
+	// 要修改密码复杂度的实例 ID。
+	// 说明：支持输入多个实例 ID 进行修改。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 要修改的参数列表。每一个元素是Name和CurrentValue的组合。Name是参数名，CurrentValue是要修改成的值。8.0版本Name支持范围：["validate_password.policy","validate_password.length","validate_password.mixed_case_count","validate_password.number_count","validate_password.special_char_count"],5.6和5.7版本支持范围：["validate_password_policy","validate_password_length","validate_password_mixed_case_count","validate_password_number_count","validate_password_special_char_count"]
+	// 要修改的密码复杂度的选项。每一个选项是以组合形式写入的，一个组合包括 Name 和 CurrentValue，其中 Name 表示对应选项的参数名，CurrentValue 表示参数值。例如：[{"Name": "validate_password.length", "CurrentValue": "10"}]，表示将密码的最小字符数修改为10。
+	// 说明：不同数据库版本的实例，支持修改的密码复杂度的选项如下。
+	// 1. MySQL 8.0：
+	// 选项 validate_password.policy，表示密码复杂度的开关，值为 LOW 时表示关闭；值为 MEDIUM 时表示开启。温馨提示：如需修改具体的密码策略，此选项的值需为 MEDIUM。
+	// 选项 validate_password.length，表示密码总长度的最小字符数。
+	// 选项 validate_password.mixed_case_count，表示小写和大写字母的最小字符数。
+	// 选项 validate_password.number_count，表示数字的最小字符数。
+	// 选项 validate_password.special_char_count，表示特殊字符的最小字符数。
+	// 2. MySQL 5.6、MySQL 5.7：
+	// 选项 validate_password_policy，表示密码复杂度的开关，值为 LOW 时表示关闭；值为 MEDIUM 时表示开启。温馨提示：如需修改具体的密码策略，此选项的值需为 MEDIUM。
+	// 选项 validate_password_length，表示密码总长度的最小字符数。
+	// 选项 validate_password_mixed_case_count，表示小写和大写字母的最小字符数。
+	// 选项 validate_password_number_count，表示数字的最小字符数。
+	// 选项 validate_password_special_char_count，表示特殊字符的最小字符数。
 	ParamList []*Parameter `json:"ParamList,omitnil,omitempty" name:"ParamList"`
 }
 

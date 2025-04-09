@@ -208,6 +208,9 @@ type CreateTargetGroupRequestParams struct {
 
 	// 是否支持全死全活。默认支持。
 	AllDeadToAlive *bool `json:"AllDeadToAlive,omitnil,omitempty" name:"AllDeadToAlive"`
+
+	// 标签。
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateTargetGroupRequest struct {
@@ -239,6 +242,9 @@ type CreateTargetGroupRequest struct {
 
 	// 是否支持全死全活。默认支持。
 	AllDeadToAlive *bool `json:"AllDeadToAlive,omitnil,omitempty" name:"AllDeadToAlive"`
+
+	// 标签。
+	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateTargetGroupRequest) ToJsonString() string {
@@ -261,6 +267,7 @@ func (r *CreateTargetGroupRequest) FromJsonString(s string) error {
 	delete(f, "HealthCheck")
 	delete(f, "ScheduleAlgorithm")
 	delete(f, "AllDeadToAlive")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTargetGroupRequest has unknown keys!", "")
 	}

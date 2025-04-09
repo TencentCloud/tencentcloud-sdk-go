@@ -1715,9 +1715,13 @@ func NewCreateEmbedWebUrlResponse() (response *CreateEmbedWebUrlResponse) {
 //
 // 3. 修改模板
 //
-// 4. 预览模板
+// 4. 创建起草合同
 //
-// 5. 预览合同流程
+// 5. 预览模板
+//
+// 6. 预览合同流程
+//
+//  
 //
 // 
 //
@@ -1756,9 +1760,13 @@ func (c *Client) CreateEmbedWebUrl(request *CreateEmbedWebUrlRequest) (response 
 //
 // 3. 修改模板
 //
-// 4. 预览模板
+// 4. 创建起草合同
 //
-// 5. 预览合同流程
+// 5. 预览模板
+//
+// 6. 预览合同流程
+//
+//  
 //
 // 
 //

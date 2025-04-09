@@ -1042,6 +1042,9 @@ type ChannelCreateBatchQuickSignUrlRequestParams struct {
 
 	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`合同组暂不支持批量拒签功能。`
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
+
+	// 预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。
+	PresetApproverInfo *PresetApproverInfo `json:"PresetApproverInfo,omitnil,omitempty" name:"PresetApproverInfo"`
 }
 
 type ChannelCreateBatchQuickSignUrlRequest struct {
@@ -1117,6 +1120,9 @@ type ChannelCreateBatchQuickSignUrlRequest struct {
 
 	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>注：`合同组暂不支持批量拒签功能。`
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
+
+	// 预设的动态签署方的补充信息，仅匹配对应信息的签署方才能领取合同。暂时仅对个人参与方生效。
+	PresetApproverInfo *PresetApproverInfo `json:"PresetApproverInfo,omitnil,omitempty" name:"PresetApproverInfo"`
 }
 
 func (r *ChannelCreateBatchQuickSignUrlRequest) ToJsonString() string {
@@ -1143,6 +1149,7 @@ func (r *ChannelCreateBatchQuickSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "Intention")
 	delete(f, "CacheApproverInfo")
 	delete(f, "CanBatchReject")
+	delete(f, "PresetApproverInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateBatchQuickSignUrlRequest has unknown keys!", "")
 	}
@@ -1190,13 +1197,20 @@ type ChannelCreateBatchSignUrlRequestParams struct {
 	// 签署方经办人的姓名。
 	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 	// 
-	// 注：`请确保和合同中填入的一致`，`除动态签署人或子客员工经办人场景外，此参数必填`
+	// 注：
+	// <ul>
+	// <li>请确保和合同中填入的一致。</li>
+	// <li>在动态签署人补充链接场景中，可以通过传入这个值，对补充的个人参与方信息进行限制。仅匹配传入姓名的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。</li>
+	// </ul>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
 	// 请确认手机号所有方为此业务通知方。
 	// 
-	// 注：`请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息`，`除动态签署人或子客员工经办人场景外，此参数必填`
+	// 注：
+	// <ul>
+	// <li>请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息。</li><li>在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入手机号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。 </li>
+	// </ul>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 执行本接口操作的员工信息。
@@ -1208,7 +1222,9 @@ type ChannelCreateBatchSignUrlRequestParams struct {
 	// <li>**HONGKONG_AND_MACAO** : 中国港澳居民来往内地通行证</li>
 	// <li>**HONGKONG_MACAO_AND_TAIWAN** : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 	// 
-	// 注：`请确保和合同中填入的一致`
+	// 注：
+	// 1. `请确保和合同中填入的一致`。
+	// 2. `在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件类型的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方，且需要和证件号参数一同传递，不能单独进行限制。`
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
@@ -1216,7 +1232,9 @@ type ChannelCreateBatchSignUrlRequestParams struct {
 	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	// 
-	// 注：`请确保和合同中填入的一致`
+	// 注：
+	// 1. `请确保和合同中填入的一致`。
+	// 2. `在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 通知用户方式：
@@ -1299,13 +1317,20 @@ type ChannelCreateBatchSignUrlRequest struct {
 	// 签署方经办人的姓名。
 	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 	// 
-	// 注：`请确保和合同中填入的一致`，`除动态签署人或子客员工经办人场景外，此参数必填`
+	// 注：
+	// <ul>
+	// <li>请确保和合同中填入的一致。</li>
+	// <li>在动态签署人补充链接场景中，可以通过传入这个值，对补充的个人参与方信息进行限制。仅匹配传入姓名的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。</li>
+	// </ul>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
 	// 请确认手机号所有方为此业务通知方。
 	// 
-	// 注：`请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息`，`除动态签署人或子客员工经办人场景外，此参数必填`
+	// 注：
+	// <ul>
+	// <li>请确保和合同中填入的一致,  若无法保持一致，请确保在发起和生成批量签署链接时传入相同的参与方证件信息。</li><li>在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入手机号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。 </li>
+	// </ul>
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 执行本接口操作的员工信息。
@@ -1317,7 +1342,9 @@ type ChannelCreateBatchSignUrlRequest struct {
 	// <li>**HONGKONG_AND_MACAO** : 中国港澳居民来往内地通行证</li>
 	// <li>**HONGKONG_MACAO_AND_TAIWAN** : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
 	// 
-	// 注：`请确保和合同中填入的一致`
+	// 注：
+	// 1. `请确保和合同中填入的一致`。
+	// 2. `在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件类型的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方，且需要和证件号参数一同传递，不能单独进行限制。`
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
@@ -1325,7 +1352,9 @@ type ChannelCreateBatchSignUrlRequest struct {
 	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	// 
-	// 注：`请确保和合同中填入的一致`
+	// 注：
+	// 1. `请确保和合同中填入的一致`。
+	// 2. `在生成动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 通知用户方式：
@@ -9121,23 +9150,31 @@ type CreateSignUrlsRequestParams struct {
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 合同流程里边参与方的姓名。
-	// 注: `GenerateType为"PERSON"(即个人签署方)时必填`
+	// 注: 
+	// 1. `GenerateType为"PERSON"(即个人签署方)时必填`。
+	// 2. `在动态签署人补充链接场景中，可以通过传入这个值，对补充的个人参与方信息进行限制。仅匹配传入姓名的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 合同流程里边签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
-	// 注:  `GenerateType为"PERSON"或"FOLLOWER"时必填`
+	// 注:  
+	// 1. `GenerateType为"PERSON"或"FOLLOWER"时必填。`
+	// 2. `在动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入手机号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 证件类型，支持以下类型
 	// <ul><li>ID_CARD : 中国大陆居民身份证</li>
 	// <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
 	// <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
+	// 
+	// `注：在动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件类型的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方，且需要和证件号参数一同传递，不能单独进行限制。`
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
 	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
 	// <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// 
+	// `注：在动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 第三方平台子客企业的企业的标识, 即OrganizationOpenId。 注:  `1.GenerateType为"CHANNEL"时必填` `2.获取B端动态签署人领取链接时,可指定此字段来预先设定签署人的平台子客企业,预设后只能以该平台子客企业身份去领取合同并完成签署`
@@ -9240,23 +9277,31 @@ type CreateSignUrlsRequest struct {
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
 	// 合同流程里边参与方的姓名。
-	// 注: `GenerateType为"PERSON"(即个人签署方)时必填`
+	// 注: 
+	// 1. `GenerateType为"PERSON"(即个人签署方)时必填`。
+	// 2. `在动态签署人补充链接场景中，可以通过传入这个值，对补充的个人参与方信息进行限制。仅匹配传入姓名的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 合同流程里边签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
-	// 注:  `GenerateType为"PERSON"或"FOLLOWER"时必填`
+	// 注:  
+	// 1. `GenerateType为"PERSON"或"FOLLOWER"时必填。`
+	// 2. `在动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入手机号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
 
 	// 证件类型，支持以下类型
 	// <ul><li>ID_CARD : 中国大陆居民身份证</li>
 	// <li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
 	// <li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li></ul>
+	// 
+	// `注：在动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件类型的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方，且需要和证件号参数一同传递，不能单独进行限制。`
 	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 
 	// 证件号码，应符合以下规则
 	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li>
 	// <li>港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li>
 	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// 
+	// `注：在动态签署人补充链接场景中，可以通过传入此值，对补充的个人参与方信息进行限制。仅匹配传入证件号的参与方才能补充合同。此参数预设信息功能暂时仅支持个人动态参与方。`
 	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
 
 	// 第三方平台子客企业的企业的标识, 即OrganizationOpenId。 注:  `1.GenerateType为"CHANNEL"时必填` `2.获取B端动态签署人领取链接时,可指定此字段来预先设定签署人的平台子客企业,预设后只能以该平台子客企业身份去领取合同并完成签署`
@@ -12499,6 +12544,26 @@ func (r *PrepareFlowsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *PrepareFlowsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type PresetApproverInfo struct {
+	// 预设参与方姓名。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 预设参与方手机号。
+	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
+
+	// 预设参与方证件号，需要和IdCardType同时传入。
+	// 
+	// 证件号码，应符合以下规则
+	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成(如存在X，请大写)。</li></ul>
+	IdCardNumber *string `json:"IdCardNumber,omitnil,omitempty" name:"IdCardNumber"`
+
+	// 预设参与方的证件类型，需要与IdCardNumber同时传入。
+	// 
+	// 证件类型，支持以下类型
+	// <ul><li><b>ID_CARD</b>: 居民身份证</li></ul>
+	IdCardType *string `json:"IdCardType,omitnil,omitempty" name:"IdCardType"`
 }
 
 type ProxyOrganizationOperator struct {

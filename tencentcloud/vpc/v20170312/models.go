@@ -3310,11 +3310,9 @@ func (r *CheckTrafficMirrorResponse) FromJsonString(s string) error {
 
 type CidrForCcn struct {
 	// local cidr值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cidr *string `json:"Cidr,omitnil,omitempty" name:"Cidr"`
 
 	// 是否发布到了云联网。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublishedToVbc *bool `json:"PublishedToVbc,omitnil,omitempty" name:"PublishedToVbc"`
 }
 
@@ -22962,7 +22960,7 @@ type FilterObject struct {
 }
 
 type FlowLog struct {
-	// 私用网络ID或者统一ID，建议使用统一ID。
+	// 私用网络唯一ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/1108/43663)接口获取。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 流日志唯一ID。
@@ -22971,19 +22969,19 @@ type FlowLog struct {
 	// 流日志实例名字。
 	FlowLogName *string `json:"FlowLogName,omitnil,omitempty" name:"FlowLogName"`
 
-	// 流日志所属资源类型，VPC|SUBNET|NETWORKINTERFACE|CCN|NAT|DCG。
+	// 流日志所属资源类型：VPC(私有网络)，SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 资源唯一ID。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 流日志采集类型，ACCEPT|REJECT|ALL。
+	// 流日志采集类型，ACCEPT（允许），REJECT（拒绝），ALL（全部）。
 	TrafficType *string `json:"TrafficType,omitnil,omitempty" name:"TrafficType"`
 
 	// 流日志存储ID。
 	CloudLogId *string `json:"CloudLogId,omitnil,omitempty" name:"CloudLogId"`
 
-	// 流日志存储ID状态。
+	// 流日志存储ID状态。SUCCESS（成功），DELETED（删除）。
 	CloudLogState *string `json:"CloudLogState,omitnil,omitempty" name:"CloudLogState"`
 
 	// 流日志描述信息。
@@ -22999,15 +22997,12 @@ type FlowLog struct {
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 消费端类型：cls、ckafka。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
 	// 消费端信息，当消费端类型为ckafka时返回。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowLogStorage *FlowLogStorage `json:"FlowLogStorage,omitnil,omitempty" name:"FlowLogStorage"`
 
 	// 流日志存储ID对应的地域信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudLogRegion *string `json:"CloudLogRegion,omitnil,omitempty" name:"CloudLogRegion"`
 }
 
@@ -23016,7 +23011,6 @@ type FlowLogStorage struct {
 	StorageId *string `json:"StorageId,omitnil,omitempty" name:"StorageId"`
 
 	// 主题Id，当流日志存储类型为ckafka时，必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StorageTopic *string `json:"StorageTopic,omitnil,omitempty" name:"StorageTopic"`
 }
 
@@ -23336,15 +23330,12 @@ func (r *HaVipAssociateAddressIpResponse) FromJsonString(s string) error {
 
 type HaVipAssociation struct {
 	// HaVip绑定的子机或网卡唯一ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// HaVip实例唯一ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HaVipId *string `json:"HaVipId,omitnil,omitempty" name:"HaVipId"`
 
 	// HaVip绑定的类型。取值:CVM, ENI。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 }
 
@@ -23426,69 +23417,53 @@ type HighPriorityModifyItem struct {
 
 type HighPriorityRoute struct {
 	// 高优路由表唯一 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HighPriorityRouteTableId *string `json:"HighPriorityRouteTableId,omitnil,omitempty" name:"HighPriorityRouteTableId"`
 
 	// 高优路由表条目唯一 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HighPriorityRouteId *string `json:"HighPriorityRouteId,omitnil,omitempty" name:"HighPriorityRouteId"`
 
 	// 目标网段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitnil,omitempty" name:"DestinationCidrBlock"`
 
 	// 网关类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayType *string `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
 
 	// 网关唯一ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// 高优路由条目描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// ECMP算法，支持的算法有：ECMP_QUINTUPLE_HASH：五元组hash，ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash，ECMP_DESTINATION_IP_HASH：目的IP hash，ECMP_SOURCE_IP_HASH：源IP hash。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetRouteAlgorithm *string `json:"SubnetRouteAlgorithm,omitnil,omitempty" name:"SubnetRouteAlgorithm"`
 
 	// 出参展示，是否为CDC属性高优路由
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsCdc *bool `json:"IsCdc,omitnil,omitempty" name:"IsCdc"`
 
 	// 出参展示，CDC 唯一ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 
 	// 创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 }
 
 type HighPriorityRouteTable struct {
 	// 高优路由表唯一 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HighPriorityRouteTableId *string `json:"HighPriorityRouteTableId,omitnil,omitempty" name:"HighPriorityRouteTableId"`
 
 	// VPC实例ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 高优路由表名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 高优路由表关联的子网列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetSet []*string `json:"SubnetSet,omitnil,omitempty" name:"SubnetSet"`
 
 	// 高优路由表条目信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HighPriorityRouteSet []*HighPriorityRoute `json:"HighPriorityRouteSet,omitnil,omitempty" name:"HighPriorityRouteSet"`
 
 	// 创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 }
 
@@ -24301,11 +24276,9 @@ type Ipv6Address struct {
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
 	// 如果 IPv6地址是 ULA 类型，绑定的公网IP地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIpAddress *string `json:"PublicIpAddress,omitnil,omitempty" name:"PublicIpAddress"`
 
 	// `IPv6`地址的类型: `GUA`(全球单播地址), `OTHER`(非GUA/ULA地址), `ULA`(唯一本地地址)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 }
 
@@ -24375,7 +24348,6 @@ type LocalGateway struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 标签键值对。	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
 	// 本地网关实例ID（计划起用）
@@ -28896,6 +28868,9 @@ type ModifyVpnConnectionAttributeRequestParams struct {
 
 	// 健康检查配置
 	HealthCheckConfig *HealthCheckConfig `json:"HealthCheckConfig,omitnil,omitempty" name:"HealthCheckConfig"`
+
+	// BGP隧道配置
+	BgpConfig *BgpConfig `json:"BgpConfig,omitnil,omitempty" name:"BgpConfig"`
 }
 
 type ModifyVpnConnectionAttributeRequest struct {
@@ -28945,6 +28920,9 @@ type ModifyVpnConnectionAttributeRequest struct {
 
 	// 健康检查配置
 	HealthCheckConfig *HealthCheckConfig `json:"HealthCheckConfig,omitnil,omitempty" name:"HealthCheckConfig"`
+
+	// BGP隧道配置
+	BgpConfig *BgpConfig `json:"BgpConfig,omitnil,omitempty" name:"BgpConfig"`
 }
 
 func (r *ModifyVpnConnectionAttributeRequest) ToJsonString() string {
@@ -28974,6 +28952,7 @@ func (r *ModifyVpnConnectionAttributeRequest) FromJsonString(s string) error {
 	delete(f, "DpdAction")
 	delete(f, "CustomerGatewayId")
 	delete(f, "HealthCheckConfig")
+	delete(f, "BgpConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVpnConnectionAttributeRequest has unknown keys!", "")
 	}
@@ -29706,11 +29685,9 @@ type NetworkAclEntry struct {
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
 	// IPv4网络ACL条目唯一ID。当修改ACL条目时，NetworkAclIpv4EntryId和NetworkAclIpv6EntryID至少提供一个。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkAclIpv4EntryId *string `json:"NetworkAclIpv4EntryId,omitnil,omitempty" name:"NetworkAclIpv4EntryId"`
 
 	// IPv6网络ACL条目唯一ID。当修改ACL条目时，NetworkAclIpv4EntryId和NetworkAclIpv6EntryId至少提供一个。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkAclIpv6EntryId *string `json:"NetworkAclIpv6EntryId,omitnil,omitempty" name:"NetworkAclIpv6EntryId"`
 }
 
@@ -29990,19 +29967,15 @@ type PeerConnection struct {
 
 type PolicyStatistics struct {
 	// 入站IPv4总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IngressIPv4TotalCount *uint64 `json:"IngressIPv4TotalCount,omitnil,omitempty" name:"IngressIPv4TotalCount"`
 
 	// 入站IPv6总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IngressIPv6TotalCount *uint64 `json:"IngressIPv6TotalCount,omitnil,omitempty" name:"IngressIPv6TotalCount"`
 
 	// 出站IPv4总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EgressIPv4TotalCount *uint64 `json:"EgressIPv4TotalCount,omitnil,omitempty" name:"EgressIPv4TotalCount"`
 
 	// 出站IPv6总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EgressIPv6TotalCount *uint64 `json:"EgressIPv6TotalCount,omitnil,omitempty" name:"EgressIPv6TotalCount"`
 }
 
@@ -32374,11 +32347,9 @@ type RouteConflict struct {
 
 type RouteECMPAlgorithm struct {
 	//  目标网段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitnil,omitempty" name:"DestinationCidrBlock"`
 
 	// 支持的 ECMP算法有：ECMP_QUINTUPLE_HASH：五元组hash，ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash，ECMP_DESTINATION_IP_HASH：目的IP hash，ECMP_SOURCE_IP_HASH：源IP hash。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetRouteAlgorithm *string `json:"SubnetRouteAlgorithm,omitnil,omitempty" name:"SubnetRouteAlgorithm"`
 }
 
@@ -32437,17 +32408,14 @@ type RouteTable struct {
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
 	// local路由是否发布云联网。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalCidrForCcn []*CidrForCcn `json:"LocalCidrForCcn,omitnil,omitempty" name:"LocalCidrForCcn"`
 }
 
 type RouteTableAssociation struct {
 	// 子网实例ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 路由表实例ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteTableId *string `json:"RouteTableId,omitnil,omitempty" name:"RouteTableId"`
 }
 
@@ -32474,7 +32442,6 @@ type SecurityGroup struct {
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
 	// 安全组更新时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
@@ -32532,66 +32499,51 @@ type SecurityGroupLimitSet struct {
 
 type SecurityGroupPolicy struct {
 	// 安全组规则索引号，值会随着安全组规则的变更动态变化。使用PolicyIndex时，请先调用`DescribeSecurityGroupPolicies`获取到规则的PolicyIndex，并且结合返回值中的Version一起使用处理规则。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyIndex *int64 `json:"PolicyIndex,omitnil,omitempty" name:"PolicyIndex"`
 
 	// 协议, 取值: TCP,UDP,ICMP,ICMPv6,ALL。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 端口(all, 离散port,  range)。
 	// 说明：如果Protocol设置为ALL，则Port也需要设置为all。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceTemplate *ServiceTemplateSpecification `json:"ServiceTemplate,omitnil,omitempty" name:"ServiceTemplate"`
 
 	// 网段或IP(互斥)，特殊说明：0.0.0.0/n 都会映射为0.0.0.0/0。作为入参时，可使用字符串`MY_PUBLIC_IP`指代发起请求的公网IP地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CidrBlock *string `json:"CidrBlock,omitnil,omitempty" name:"CidrBlock"`
 
 	// 网段或IPv6(互斥)。作为入参时，可使用字符串`MY_PUBLIC_IP`指代发起请求的公网IPv6地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitnil,omitempty" name:"Ipv6CidrBlock"`
 
 	// 安全组实例ID，例如：sg-ohuuioma。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 
 	// IP地址ID或者IP地址组ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressTemplate *AddressTemplateSpecification `json:"AddressTemplate,omitnil,omitempty" name:"AddressTemplate"`
 
 	// ACCEPT 或 DROP。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
 	// 安全组规则描述。作为入参时，当未传递该参数或值为空，且参数CidrBlock或Ipv6CidrBlock值为MY_PUBLIC_IP时，该参数的值将会被自动填充为Replaced-From-MY_PUBLIC_IP。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyDescription *string `json:"PolicyDescription,omitnil,omitempty" name:"PolicyDescription"`
 
 	// 安全组最近修改时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
 type SecurityGroupPolicySet struct {
 	// 安全组规则当前版本。用户每次更新安全规则版本会自动加1，防止更新的路由规则已过期，不填不考虑冲突。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 出站规则。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Egress []*SecurityGroupPolicy `json:"Egress,omitnil,omitempty" name:"Egress"`
 
 	// 入站规则。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ingress []*SecurityGroupPolicy `json:"Ingress,omitnil,omitempty" name:"Ingress"`
 
 	// 安全组策略条目统计。只用于出参。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyStatistics *PolicyStatistics `json:"PolicyStatistics,omitnil,omitempty" name:"PolicyStatistics"`
 }
 
@@ -33295,15 +33247,12 @@ type TrafficMirror struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 流量镜像的类型。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 流量镜像所属的子网ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 流量镜接收目标资源信息，当接收目标为ENI和CLB时返回。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetInfo []*TrafficMirrorTargetResourceInfo `json:"TargetInfo,omitnil,omitempty" name:"TargetInfo"`
 }
 
@@ -33332,11 +33281,9 @@ type TrafficMirrorTarget struct {
 	AlgHash *string `json:"AlgHash,omitnil,omitempty" name:"AlgHash"`
 
 	// 流量镜像的接收endpoint（公网IP）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetEndPoints []*string `json:"TargetEndPoints,omitnil,omitempty" name:"TargetEndPoints"`
 
 	// 流量镜像的接收类型，分别为：IP/ENI/CLB
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 }
 
@@ -34179,11 +34126,9 @@ type VpcPrivateIpAddress struct {
 
 type VpcTaskResultDetailInfo struct {
 	// 资源ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 状态。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 

@@ -65,12 +65,20 @@ func NewSubmitTaskEventResponse() (response *SubmitTaskEventResponse) {
 }
 
 // SubmitTaskEvent
+// smop产品下线，接口也一起下线
+//
+// 
+//
 // 提交任务事件接口
 func (c *Client) SubmitTaskEvent(request *SubmitTaskEventRequest) (response *SubmitTaskEventResponse, err error) {
     return c.SubmitTaskEventWithContext(context.Background(), request)
 }
 
 // SubmitTaskEvent
+// smop产品下线，接口也一起下线
+//
+// 
+//
 // 提交任务事件接口
 func (c *Client) SubmitTaskEventWithContext(ctx context.Context, request *SubmitTaskEventRequest) (response *SubmitTaskEventResponse, err error) {
     if request == nil {

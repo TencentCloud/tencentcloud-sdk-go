@@ -1319,6 +1319,9 @@ const (
 	// 3.1以下版本VPN网关不支持配置ecmp路由
 	UNSUPPORTEDOPERATION_VPNUNSUPPORTEDROUTEECMPFORCVMVPN = "UnsupportedOperation.VpnUnsupportedRouteEcmpForCvmVpn"
 
+	// 对端网关不存在BGP ASN。
+	UNSUPPORTEDOPERATION_VPNUNSUPPORTEDUSRGWNOTEXISTBGPASN = "UnsupportedOperation.VpnUnsupportedUsrGwNotExistBgpAsn"
+
 	// 指定资源在不同的可用区。
 	UNSUPPORTEDOPERATION_ZONEMISMATCH = "UnsupportedOperation.ZoneMismatch"
 

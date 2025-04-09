@@ -391,7 +391,6 @@ type CloudNativeAPIGatewayConfig struct {
 	ConsoleType *string `json:"ConsoleType,omitnil,omitempty" name:"ConsoleType"`
 
 	// HTTP链接地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpUrl *string `json:"HttpUrl,omitnil,omitempty" name:"HttpUrl"`
 
 	// HTTPS链接地址。
@@ -401,15 +400,12 @@ type CloudNativeAPIGatewayConfig struct {
 	NetType *string `json:"NetType,omitnil,omitempty" name:"NetType"`
 
 	// 管理员用户名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdminUser *string `json:"AdminUser,omitnil,omitempty" name:"AdminUser"`
 
 	// 管理员密码。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdminPassword *string `json:"AdminPassword,omitnil,omitempty" name:"AdminPassword"`
 
 	// 网络状态, Open|Closed|Updating
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 网络访问策略
@@ -417,55 +413,42 @@ type CloudNativeAPIGatewayConfig struct {
 	AccessControl *NetworkAccessControl `json:"AccessControl,omitnil,omitempty" name:"AccessControl"`
 
 	// 内网子网 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 内网VPC ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 负载均衡的描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 负载均衡的规格类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlaType *string `json:"SlaType,omitnil,omitempty" name:"SlaType"`
 
 	// clb规格名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlaName *string `json:"SlaName,omitnil,omitempty" name:"SlaName"`
 
 	// clb vip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
 	// 带宽
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
 	// 是否多可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MultiZoneFlag *bool `json:"MultiZoneFlag,omitnil,omitempty" name:"MultiZoneFlag"`
 
 	// 主可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MasterZoneId *string `json:"MasterZoneId,omitnil,omitempty" name:"MasterZoneId"`
 
 	// 备可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlaveZoneId *string `json:"SlaveZoneId,omitnil,omitempty" name:"SlaveZoneId"`
 
 	// 主可用区名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MasterZoneName *string `json:"MasterZoneName,omitnil,omitempty" name:"MasterZoneName"`
 
 	// 备可用区名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlaveZoneName *string `json:"SlaveZoneName,omitnil,omitempty" name:"SlaveZoneName"`
 
 	// 网络 id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkId *string `json:"NetworkId,omitnil,omitempty" name:"NetworkId"`
 }
 
@@ -507,11 +490,9 @@ type CloudNativeAPIGatewayNode struct {
 
 type CloudNativeAPIGatewayNodeConfig struct {
 	// 节点配置, 1c2g|2c4g|4c8g|8c16g。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Specification *string `json:"Specification,omitnil,omitempty" name:"Specification"`
 
 	// 节点数量，2-9。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Number *int64 `json:"Number,omitnil,omitempty" name:"Number"`
 }
 
@@ -1895,11 +1876,9 @@ type CreateCloudNativeAPIGatewayServerGroupResult struct {
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -2073,7 +2052,6 @@ func (r *CreateCloudNativeAPIGatewayServiceRequest) FromJsonString(s string) err
 // Predefined struct for user
 type CreateCloudNativeAPIGatewayServiceResponseParams struct {
 	// 网关服务创建结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *CreateGatewayServiceResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2913,7 +2891,6 @@ func (r *CreateNativeGatewayServerGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateNativeGatewayServerGroupResponseParams struct {
 	// 网关分组创建信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *CreateCloudNativeAPIGatewayServerGroupResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4918,7 +4895,6 @@ func (r *DescribeCloudNativeAPIGatewayCertificateDetailsRequest) FromJsonString(
 // Predefined struct for user
 type DescribeCloudNativeAPIGatewayCertificateDetailsResponseParams struct {
 	// 无
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *KongCertificate `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5138,7 +5114,6 @@ func (r *DescribeCloudNativeAPIGatewayInfoByIpRequest) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeCloudNativeAPIGatewayInfoByIpResponseParams struct {
 	// 出参
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *DescribeInstanceInfoByIpResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5282,7 +5257,6 @@ func (r *DescribeCloudNativeAPIGatewayPortsRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeCloudNativeAPIGatewayPortsResponseParams struct {
 	// 云原生API网关实例协议端口列表响应结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *DescribeGatewayInstancePortResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5594,7 +5568,6 @@ func (r *DescribeCloudNativeAPIGatewayRoutesRequest) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeCloudNativeAPIGatewayRoutesResponseParams struct {
 	// 无
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *KongServiceRouteList `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5737,7 +5710,6 @@ func (r *DescribeCloudNativeAPIGatewayServicesRequest) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeCloudNativeAPIGatewayServicesResponseParams struct {
 	// 无
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *KongServices `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6692,11 +6664,9 @@ func (r *DescribeConfigFilesResponse) FromJsonString(s string) error {
 
 type DescribeGatewayInstancePortResult struct {
 	// 云原生API网关ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// 网关实例协议端口列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayInstancePortList []*GatewayInstanceSchemeAndPorts `json:"GatewayInstancePortList,omitnil,omitempty" name:"GatewayInstancePortList"`
 }
 
@@ -7359,11 +7329,9 @@ func (r *DescribeGovernanceServicesResponse) FromJsonString(s string) error {
 
 type DescribeInstanceInfoByIpResult struct {
 	// 实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// 分组id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
@@ -7975,7 +7943,6 @@ func (r *DescribePublicNetworkRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePublicNetworkResponseParams struct {
 	// 获取云原生API网关公网详情响应结果。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *DescribePublicNetworkResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8000,15 +7967,12 @@ func (r *DescribePublicNetworkResponse) FromJsonString(s string) error {
 
 type DescribePublicNetworkResult struct {
 	// 网关实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// 网关分组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 客户端公网信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicNetwork *CloudNativeAPIGatewayConfig `json:"PublicNetwork,omitnil,omitempty" name:"PublicNetwork"`
 }
 
@@ -8252,7 +8216,6 @@ func (r *DescribeUpstreamHealthCheckConfigRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeUpstreamHealthCheckConfigResponseParams struct {
 	// 健康检查配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *UpstreamHealthCheckConfig `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8310,7 +8273,6 @@ func (r *DescribeWafDomainsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWafDomainsResponseParams struct {
 	// 已被 WAF 防护域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *DescribeWafDomainsResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8713,11 +8675,9 @@ type Filter struct {
 
 type GatewayInstanceSchemeAndPorts struct {
 	// 端口协议，可选HTTP、HTTPS、TCP和UDP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scheme *string `json:"Scheme,omitnil,omitempty" name:"Scheme"`
 
 	// 端口列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PortList []*uint64 `json:"PortList,omitnil,omitempty" name:"PortList"`
 }
 
@@ -9210,25 +9170,20 @@ type KeyValue struct {
 
 type KongActiveHealthCheck struct {
 	// 主动健康检查健康探测间隔，单位：秒，0表示不开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthyInterval *uint64 `json:"HealthyInterval,omitnil,omitempty" name:"HealthyInterval"`
 
 	// 主动健康检查异常探测间隔，单位：秒，0表示不开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnHealthyInterval *uint64 `json:"UnHealthyInterval,omitnil,omitempty" name:"UnHealthyInterval"`
 
 	// 在 GET HTTP 请求中使用的路径，以作为主动运行状况检查的探测器运行。默认： ”/”。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpPath *string `json:"HttpPath,omitnil,omitempty" name:"HttpPath"`
 
 	// GET HTTP 请求的超时时间，单位：秒。默认 60。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timeout *float64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 }
 
 type KongCertificate struct {
 	// 无
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cert *KongCertificatesPreview `json:"Cert,omitnil,omitempty" name:"Cert"`
 }
 
@@ -9250,65 +9205,51 @@ type KongCertificatesList struct {
 
 type KongCertificatesPreview struct {
 	// 证书名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 绑定的域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindDomains []*string `json:"BindDomains,omitnil,omitempty" name:"BindDomains"`
 
 	// 证书状态：expired(已过期)
 	//                    active(生效中)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 证书pem格式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Crt *string `json:"Crt,omitnil,omitempty" name:"Crt"`
 
 	// 证书私钥
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 证书过期时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 证书上传时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 证书签发时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IssueTime *string `json:"IssueTime,omitnil,omitempty" name:"IssueTime"`
 
 	// 证书来源：native(kong自定义证书)
 	//                     ssl(ssl平台证书)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertSource *string `json:"CertSource,omitnil,omitempty" name:"CertSource"`
 
 	// ssl平台证书Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 }
 
 type KongPassiveHealthCheck struct {
 	// 后端target协议类型，被动健康检查支持http和tcp，主动健康检查支持http
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type KongRoutePreview struct {
 	// 服务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// 服务名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 无
@@ -9324,23 +9265,18 @@ type KongRoutePreview struct {
 	Hosts []*string `json:"Hosts,omitnil,omitempty" name:"Hosts"`
 
 	// 无
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocols []*string `json:"Protocols,omitnil,omitempty" name:"Protocols"`
 
 	// 无
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreserveHost *bool `json:"PreserveHost,omitnil,omitempty" name:"PreserveHost"`
 
 	// 无
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpsRedirectStatusCode *int64 `json:"HttpsRedirectStatusCode,omitnil,omitempty" name:"HttpsRedirectStatusCode"`
 
 	// 无
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StripPath *bool `json:"StripPath,omitnil,omitempty" name:"StripPath"`
 
 	// 无
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 是否开启了强制HTTPS
@@ -9350,19 +9286,15 @@ type KongRoutePreview struct {
 	ForceHttps *bool `json:"ForceHttps,omitnil,omitempty" name:"ForceHttps"`
 
 	// 服务名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
 	// 服务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceID *string `json:"ServiceID,omitnil,omitempty" name:"ServiceID"`
 
 	// 目的端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DestinationPorts []*uint64 `json:"DestinationPorts,omitnil,omitempty" name:"DestinationPorts"`
 
 	// 路由的Headers
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Headers []*KVMapping `json:"Headers,omitnil,omitempty" name:"Headers"`
 
 	// 是否缓存请求body，默认true
@@ -9423,31 +9355,24 @@ type KongServiceDetail struct {
 
 type KongServicePreview struct {
 	// 服务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// 服务名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 后端配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamInfo *KongUpstreamInfo `json:"UpstreamInfo,omitnil,omitempty" name:"UpstreamInfo"`
 
 	// 后端类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamType *string `json:"UpstreamType,omitnil,omitempty" name:"UpstreamType"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 是否可编辑
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Editable *bool `json:"Editable,omitnil,omitempty" name:"Editable"`
 
 	// 请求路径
@@ -9457,21 +9382,17 @@ type KongServicePreview struct {
 
 type KongServiceRouteList struct {
 	// 无
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteList []*KongRoutePreview `json:"RouteList,omitnil,omitempty" name:"RouteList"`
 
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
 type KongServices struct {
 	// kong实例的服务列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceList []*KongServicePreview `json:"ServiceList,omitnil,omitempty" name:"ServiceList"`
 
 	// 列表总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
@@ -12532,7 +12453,6 @@ func (r *UpdateUpstreamHealthCheckConfigRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type UpdateUpstreamHealthCheckConfigResponseParams struct {
 	// 是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12604,7 +12524,6 @@ func (r *UpdateUpstreamTargetsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateUpstreamTargetsResponseParams struct {
 	// 是否更新成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12629,39 +12548,30 @@ func (r *UpdateUpstreamTargetsResponse) FromJsonString(s string) error {
 
 type UpstreamHealthCheckConfig struct {
 	// 开启主动健康检查
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableActiveHealthCheck *bool `json:"EnableActiveHealthCheck,omitnil,omitempty" name:"EnableActiveHealthCheck"`
 
 	// 主动健康检查配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActiveHealthCheck *KongActiveHealthCheck `json:"ActiveHealthCheck,omitnil,omitempty" name:"ActiveHealthCheck"`
 
 	// 开启被动健康检查
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnablePassiveHealthCheck *bool `json:"EnablePassiveHealthCheck,omitnil,omitempty" name:"EnablePassiveHealthCheck"`
 
 	// 被动健康检查配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PassiveHealthCheck *KongPassiveHealthCheck `json:"PassiveHealthCheck,omitnil,omitempty" name:"PassiveHealthCheck"`
 
 	// 连续健康阈值，单位：次
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Successes *uint64 `json:"Successes,omitnil,omitempty" name:"Successes"`
 
 	// 连续异常阈值，单位：次	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Failures *uint64 `json:"Failures,omitnil,omitempty" name:"Failures"`
 
 	// 超时阈值，单位：次
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timeouts *uint64 `json:"Timeouts,omitnil,omitempty" name:"Timeouts"`
 
 	// 健康HTTP状态码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthyHttpStatuses []*uint64 `json:"HealthyHttpStatuses,omitnil,omitempty" name:"HealthyHttpStatuses"`
 
 	// 异常HTTP状态码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnhealthyHttpStatuses []*uint64 `json:"UnhealthyHttpStatuses,omitnil,omitempty" name:"UnhealthyHttpStatuses"`
 
 	// 健康检查监控上报的数据屏蔽权重为0的节点
@@ -12671,7 +12581,6 @@ type UpstreamHealthCheckConfig struct {
 	IgnoreZeroWeightNodes *bool `json:"IgnoreZeroWeightNodes,omitnil,omitempty" name:"IgnoreZeroWeightNodes"`
 
 	// 健康检查支持权重为0节点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZeroWeightHeathCheck *bool `json:"ZeroWeightHeathCheck,omitnil,omitempty" name:"ZeroWeightHeathCheck"`
 }
 
