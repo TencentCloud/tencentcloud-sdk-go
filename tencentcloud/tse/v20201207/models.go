@@ -271,43 +271,34 @@ func (r *CloseWafProtectionResponse) FromJsonString(s string) error {
 
 type CloudAPIGatewayCanaryRuleList struct {
 	// 灰度规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CanaryRuleList []*CloudNativeAPIGatewayCanaryRule `json:"CanaryRuleList,omitnil,omitempty" name:"CanaryRuleList"`
 
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
 type CloudNativeAPIGatewayBalancedService struct {
 	// 服务 ID，作为入参时，必填
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceID *string `json:"ServiceID,omitnil,omitempty" name:"ServiceID"`
 
 	// 服务名称，作为入参时，无意义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
 	// Upstream 名称，作为入参时，无意义
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamName *string `json:"UpstreamName,omitnil,omitempty" name:"UpstreamName"`
 
 	// 百分比，10 即 10%，范围0-100
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Percent *float64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 }
 
 type CloudNativeAPIGatewayCanaryRule struct {
 	// 优先级，值范围为 0 到 100；值越大，优先级越高；不同规则间优先级不可重复
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
 	// 是否启用规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 
 	// 参数匹配条件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConditionList []*CloudNativeAPIGatewayCanaryRuleCondition `json:"ConditionList,omitnil,omitempty" name:"ConditionList"`
 
 	// 服务的流量百分比配置
@@ -315,40 +306,31 @@ type CloudNativeAPIGatewayCanaryRule struct {
 	BalancedServiceList []*CloudNativeAPIGatewayBalancedService `json:"BalancedServiceList,omitnil,omitempty" name:"BalancedServiceList"`
 
 	// 归属服务 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 
 	// 归属服务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
 	// 灰度规则类别
 	// Standard｜Lane
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 
 	// 全链路灰度策略多个条件之间的匹配方式，与AND，或OR
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MatchType *string `json:"MatchType,omitnil,omitempty" name:"MatchType"`
 
 	// 泳道组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 泳道组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 泳道ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LaneId *string `json:"LaneId,omitnil,omitempty" name:"LaneId"`
 
 	// 泳道名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LaneName *string `json:"LaneName,omitnil,omitempty" name:"LaneName"`
 
 	// 泳道匹配规则：严格STRICT｜宽松PERMISSIVE
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MatchMode *string `json:"MatchMode,omitnil,omitempty" name:"MatchMode"`
 
 	// 泳道标签
@@ -358,31 +340,24 @@ type CloudNativeAPIGatewayCanaryRule struct {
 
 type CloudNativeAPIGatewayCanaryRuleCondition struct {
 	// 条件类型，支持 path, method, query, header, cookie, body 和 system。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 参数名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 操作符，支持 "le", "eq", "lt", "ne", "ge", "gt", "regex", "exists", "in", "not in",  "prefix" ,"exact", "regex" 等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 目标参数值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 分隔符，当 Operator 为 in 或者 not in 时生效。支持值为英文逗号，英文分号，空格，换行符。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Delimiter *string `json:"Delimiter,omitnil,omitempty" name:"Delimiter"`
 
 	// 全局配置 Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GlobalConfigId *string `json:"GlobalConfigId,omitnil,omitempty" name:"GlobalConfigId"`
 
 	// 全局配置名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GlobalConfigName *string `json:"GlobalConfigName,omitnil,omitempty" name:"GlobalConfigName"`
 }
 
@@ -460,31 +435,24 @@ type CloudNativeAPIGatewayNode struct {
 	NodeIp *string `json:"NodeIp,omitnil,omitempty" name:"NodeIp"`
 
 	// Zone id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// Zone
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 分组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 分组名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 节点权重
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
 	// 是否默认权重
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDefaultWeight *bool `json:"IsDefaultWeight,omitnil,omitempty" name:"IsDefaultWeight"`
 }
 
@@ -504,11 +472,9 @@ type CloudNativeAPIGatewayRateLimitDetail struct {
 	QpsThresholds []*QpsThreshold `json:"QpsThresholds,omitnil,omitempty" name:"QpsThresholds"`
 
 	// 需要进行流量控制的请求路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 需要进行流量控制的请求头Key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Header *string `json:"Header,omitnil,omitempty" name:"Header"`
 
 	// 限流依据
@@ -516,24 +482,18 @@ type CloudNativeAPIGatewayRateLimitDetail struct {
 	LimitBy *string `json:"LimitBy,omitnil,omitempty" name:"LimitBy"`
 
 	// 外部redis配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExternalRedis *ExternalRedis `json:"ExternalRedis,omitnil,omitempty" name:"ExternalRedis"`
 
 	// 计数器策略 
 	// local 单机
 	// redis  默认redis
 	// external_redis 外部redis
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Policy *string `json:"Policy,omitnil,omitempty" name:"Policy"`
 
 	// 响应配置，响应策略为text
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RateLimitResponse *RateLimitResponse `json:"RateLimitResponse,omitnil,omitempty" name:"RateLimitResponse"`
 
 	// 请求转发地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RateLimitResponseUrl *string `json:"RateLimitResponseUrl,omitnil,omitempty" name:"RateLimitResponseUrl"`
 
 	// 响应策略
@@ -565,31 +525,24 @@ type CloudNativeAPIGatewayStrategy struct {
 	StrategyId *string `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
 
 	// 策略名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 策略描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 弹性伸缩配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Config *CloudNativeAPIGatewayStrategyAutoScalerConfig `json:"Config,omitnil,omitempty" name:"Config"`
 
 	// 网关实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// 定时伸缩配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CronConfig *CloudNativeAPIGatewayStrategyCronScalerConfig `json:"CronConfig,omitnil,omitempty" name:"CronConfig"`
 
 	// 最大节点数
@@ -661,23 +614,18 @@ type CloudNativeAPIGatewayStrategyAutoScalerConfigMetric struct {
 
 type CloudNativeAPIGatewayStrategyBindingGroupInfo struct {
 	// 网关分组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 节点配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeConfig *CloudNativeAPIGatewayNodeConfig `json:"NodeConfig,omitnil,omitempty" name:"NodeConfig"`
 
 	// 绑定时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindTime *string `json:"BindTime,omitnil,omitempty" name:"BindTime"`
 
 	// 网关分组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 绑定状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -727,11 +675,9 @@ type CloudNativeAPIGatewayStrategyCronScalerConfigParam struct {
 
 type CloudNativeAPIGatewayVpcConfig struct {
 	// 私有网络ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 }
 
@@ -1597,7 +1543,6 @@ type CreateCloudNativeAPIGatewayResult struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -4437,7 +4382,6 @@ type DeleteNativeGatewayServerGroupResult struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -5067,15 +5011,12 @@ type DescribeCloudNativeAPIGatewayConfigResult struct {
 	ConfigList []*CloudNativeAPIGatewayConfig `json:"ConfigList,omitnil,omitempty" name:"ConfigList"`
 
 	// 分组子网信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupSubnetId *string `json:"GroupSubnetId,omitnil,omitempty" name:"GroupSubnetId"`
 
 	// 分组VPC信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupVpcId *string `json:"GroupVpcId,omitnil,omitempty" name:"GroupVpcId"`
 
 	// 分组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 }
 
@@ -5367,68 +5308,52 @@ type DescribeCloudNativeAPIGatewayResult struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 实例的标签信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*InstanceTagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 是否开启 cls 日志
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableCls *bool `json:"EnableCls,omitnil,omitempty" name:"EnableCls"`
 
 	// 付费模式，0表示后付费，1预付费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TradeType *int64 `json:"TradeType,omitnil,omitempty" name:"TradeType"`
 
 	// 实例版本，当前支持开发版、标准版、专业版【TRIAL、STANDARD、PROFESSIONAL】
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeatureVersion *string `json:"FeatureVersion,omitnil,omitempty" name:"FeatureVersion"`
 
 	// 公网出流量带宽，[1,2048]Mbps
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
 	// 自动续费标记，0表示默认状态(用户未设置，即初始状态)；
 	// 1表示自动续费，2表示明确不自动续费(用户设置)，若业务无续费概念或无需自动续费，需要设置为0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 到期时间，预付费时使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurDeadline *string `json:"CurDeadline,omitnil,omitempty" name:"CurDeadline"`
 
 	// 隔离时间，实例隔离时使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
 
 	// 是否开启客户端公网。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableInternet *bool `json:"EnableInternet,omitnil,omitempty" name:"EnableInternet"`
 
 	// 实例实际的地域信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineRegion *string `json:"EngineRegion,omitnil,omitempty" name:"EngineRegion"`
 
 	// Ingress class名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IngressClassName *string `json:"IngressClassName,omitnil,omitempty" name:"IngressClassName"`
 
 	// 公网计费方式。可选取值 BANDWIDTH | TRAFFIC ，表示按带宽和按流量计费。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetPayMode *string `json:"InternetPayMode,omitnil,omitempty" name:"InternetPayMode"`
 
 	// 云原生API网关小版本号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayMinorVersion *string `json:"GatewayMinorVersion,omitnil,omitempty" name:"GatewayMinorVersion"`
 
 	// 实例监听的端口信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstancePort *InstancePort `json:"InstancePort,omitnil,omitempty" name:"InstancePort"`
 
 	// 公网CLB默认类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerType *string `json:"LoadBalancerType,omitnil,omitempty" name:"LoadBalancerType"`
 
 	// 公网IP地址列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIpAddresses []*string `json:"PublicIpAddresses,omitnil,omitempty" name:"PublicIpAddresses"`
 }
 
@@ -7882,15 +7807,12 @@ func (r *DescribePublicAddressConfigResponse) FromJsonString(s string) error {
 
 type DescribePublicAddressConfigResult struct {
 	// 网关实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// 公网地址信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigList []*PublicAddressConfig `json:"ConfigList,omitnil,omitempty" name:"ConfigList"`
 
 	// 总个数	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
@@ -8384,19 +8306,15 @@ func (r *DescribeWafProtectionResponse) FromJsonString(s string) error {
 
 type DescribeWafProtectionResult struct {
 	// 全局防护状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GlobalStatus *string `json:"GlobalStatus,omitnil,omitempty" name:"GlobalStatus"`
 
 	// 服务防护状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServicesStatus []*ServiceWafStatus `json:"ServicesStatus,omitnil,omitempty" name:"ServicesStatus"`
 
 	// 路由防护状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteStatus []*RouteWafStatus `json:"RouteStatus,omitnil,omitempty" name:"RouteStatus"`
 
 	// 对象防护状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObjectStatus *string `json:"ObjectStatus,omitnil,omitempty" name:"ObjectStatus"`
 }
 
@@ -8649,19 +8567,15 @@ type EnvInfo struct {
 
 type ExternalRedis struct {
 	// redis ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RedisHost *string `json:"RedisHost,omitnil,omitempty" name:"RedisHost"`
 
 	// redis密码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RedisPassword *string `json:"RedisPassword,omitnil,omitempty" name:"RedisPassword"`
 
 	// redis端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RedisPort *int64 `json:"RedisPort,omitnil,omitempty" name:"RedisPort"`
 
 	// 超时时间  ms
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RedisTimeout *int64 `json:"RedisTimeout,omitnil,omitempty" name:"RedisTimeout"`
 }
 
@@ -9092,19 +9006,15 @@ type GovernanceServiceInput struct {
 
 type InstancePort struct {
 	// 监听的 http 端口范围。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpPort *string `json:"HttpPort,omitnil,omitempty" name:"HttpPort"`
 
 	// 监听的 https 端口范围。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpsPort *string `json:"HttpsPort,omitnil,omitempty" name:"HttpsPort"`
 
 	// 监听的 tcp 端口范围。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TcpPort *string `json:"TcpPort,omitnil,omitempty" name:"TcpPort"`
 
 	// 监听的 udp 端口范围。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UdpPort *string `json:"UdpPort,omitnil,omitempty" name:"UdpPort"`
 }
 
@@ -9160,11 +9070,9 @@ type KVPair struct {
 
 type KeyValue struct {
 	// 条件的Key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 条件的Value
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -9189,7 +9097,6 @@ type KongCertificate struct {
 
 type KongCertificatesList struct {
 	// 证书列表总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 无
@@ -9309,15 +9216,12 @@ type KongRoutePreview struct {
 
 type KongServiceDetail struct {
 	// 服务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// 服务名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 后端协议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 后端路径
@@ -9325,11 +9229,9 @@ type KongServiceDetail struct {
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 后端延时，单位ms
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
 	// 重试次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Retries *int64 `json:"Retries,omitnil,omitempty" name:"Retries"`
 
 	// 标签
@@ -9337,19 +9239,15 @@ type KongServiceDetail struct {
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 后端配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamInfo *KongUpstreamInfo `json:"UpstreamInfo,omitnil,omitempty" name:"UpstreamInfo"`
 
 	// 后端类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamType *string `json:"UpstreamType,omitnil,omitempty" name:"UpstreamType"`
 
 	// 是否可编辑
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Editable *bool `json:"Editable,omitnil,omitempty" name:"Editable"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 }
 
@@ -9499,39 +9397,31 @@ type KongUpstreamInfo struct {
 
 type KongUpstreamList struct {
 	// 无
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamList []*KongUpstreamPreview `json:"UpstreamList,omitnil,omitempty" name:"UpstreamList"`
 }
 
 type KongUpstreamPreview struct {
 	// 服务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// 服务名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 后端配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Target []*KongTarget `json:"Target,omitnil,omitempty" name:"Target"`
 }
 
 type LimitRule struct {
 	// 请求匹配条件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Filters []*RuleFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 参数限流依据组合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LimitBy []*KeyValue `json:"LimitBy,omitnil,omitempty" name:"LimitBy"`
 
 	// 限流阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QpsThresholds []*QpsThreshold `json:"QpsThresholds,omitnil,omitempty" name:"QpsThresholds"`
 
 	// 精确限流阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccurateQpsThresholds []*AccurateQpsThreshold `json:"AccurateQpsThresholds,omitnil,omitempty" name:"AccurateQpsThresholds"`
 }
 
@@ -11406,31 +11296,24 @@ type NativeGatewayServerGroup struct {
 	IsFirstGroup *int64 `json:"IsFirstGroup,omitnil,omitempty" name:"IsFirstGroup"`
 
 	// 关联策略信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BindingStrategy *CloudNativeAPIGatewayStrategy `json:"BindingStrategy,omitnil,omitempty" name:"BindingStrategy"`
 
 	// 网关实例 id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
 
 	// 带宽
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
 	// 修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 子网id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetIds *string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
 	// 分组默认权重
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultWeight *int64 `json:"DefaultWeight,omitnil,omitempty" name:"DefaultWeight"`
 
 	// 弹性节点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElasticNumber *uint64 `json:"ElasticNumber,omitnil,omitempty" name:"ElasticNumber"`
 }
 
@@ -11573,27 +11456,21 @@ type PolarisLimiterAddress struct {
 
 type PublicAddressConfig struct {
 	// 公网 ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
 	// 公网最大带宽
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
 	// 公网所属分组 id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 公网所属分组名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 公网负载均衡 id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkId *string `json:"NetworkId,omitnil,omitempty" name:"NetworkId"`
 
 	// 公网负载均衡描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -11681,15 +11558,12 @@ type QpsThreshold struct {
 
 type RateLimitResponse struct {
 	// 自定义响应体
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Body *string `json:"Body,omitnil,omitempty" name:"Body"`
 
 	// Headers
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Headers []*KVMapping `json:"Headers,omitnil,omitempty" name:"Headers"`
 
 	// http状态码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpStatus *int64 `json:"HttpStatus,omitnil,omitempty" name:"HttpStatus"`
 }
 
@@ -11850,53 +11724,41 @@ func (r *RollbackConfigFileReleasesResponse) FromJsonString(s string) error {
 
 type RouteWafStatus struct {
 	// 路由的名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 路由的 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	//  路由是否开启 WAF 防护
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 方法
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Methods []*string `json:"Methods,omitnil,omitempty" name:"Methods"`
 
 	// 路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Paths []*string `json:"Paths,omitnil,omitempty" name:"Paths"`
 
 	// 域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Hosts []*string `json:"Hosts,omitnil,omitempty" name:"Hosts"`
 
 	// 路由对应服务的名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
 	// 路由对应服务的ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
 }
 
 type RuleFilter struct {
 	// 限流条件的Key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 限流条件的Values
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 
 	// 操作符
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// header或query对应的name
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
@@ -12041,19 +11903,15 @@ type ServiceGovernanceInfo struct {
 
 type ServiceWafStatus struct {
 	//  服务的名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 服务的 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
 	// 服务的类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	//  服务是否开启 WAF 防护
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -12062,35 +11920,28 @@ type SourceInfo struct {
 	Addresses []*string `json:"Addresses,omitnil,omitempty" name:"Addresses"`
 
 	// 微服务引擎VPC信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcInfo *SourceInstanceVpcInfo `json:"VpcInfo,omitnil,omitempty" name:"VpcInfo"`
 
 	// 微服务引擎鉴权信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Auth *SourceInstanceAuth `json:"Auth,omitnil,omitempty" name:"Auth"`
 }
 
 type SourceInstanceAuth struct {
 	// 用户名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Username *string `json:"Username,omitnil,omitempty" name:"Username"`
 
 	// 账户密码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 访问凭据 token
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessToken *string `json:"AccessToken,omitnil,omitempty" name:"AccessToken"`
 }
 
 type SourceInstanceVpcInfo struct {
 	// 微服务引擎VPC信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcID *string `json:"VpcID,omitnil,omitempty" name:"VpcID"`
 
 	// 微服务引擎子网信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetID *string `json:"SubnetID,omitnil,omitempty" name:"SubnetID"`
 }
 
@@ -12259,7 +12110,6 @@ type UpdateCloudNativeAPIGatewayResult struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 

@@ -2650,8 +2650,11 @@ type CreateEmbedWebUrlRequestParams struct {
 	// 
 	// 注意：
 	// 不同的嵌入类型，操作人需要的权限项不同（权限配置可参考[权限配置](https://qian.tencent.com/document/61355)）。
-	// <table>
+	// <table  border="1">
+	// <thead>
 	// <tr><th>EmbedType</th><th>权限</th></tr>
+	// </thead>     
+	// <tbody> 
 	// <tr><th>CREATE_SEAL</th><th>印章管理-添加印章</th></tr>
 	// <tr><th>CREATE_TEMPLATE</th><th>模板管理-创建模板</th></tr>
 	// <tr><th>MODIFY_TEMPLATE</th><th>模板管理-编辑模板</th></tr>
@@ -2665,6 +2668,7 @@ type CreateEmbedWebUrlRequestParams struct {
 	// <tr><th>EXTEND_SERVICE</th><th>无要求</th></tr>
 	// <tr><th>PREVIEW_FLOW</th><th>是否是当前合同的参与方，或者发起方企业的法人、超管、合同管理员</th></tr>
 	// <tr><th>PREVIEW_FLOW_DETAIL</th><th>是否是当前合同的参与方，或者发起方企业的法人、超管、合同管理员</th></tr>
+	// </tbody> 
 	// </table>
 	EmbedType *string `json:"EmbedType,omitnil,omitempty" name:"EmbedType"`
 
@@ -2720,8 +2724,11 @@ type CreateEmbedWebUrlRequest struct {
 	// 
 	// 注意：
 	// 不同的嵌入类型，操作人需要的权限项不同（权限配置可参考[权限配置](https://qian.tencent.com/document/61355)）。
-	// <table>
+	// <table  border="1">
+	// <thead>
 	// <tr><th>EmbedType</th><th>权限</th></tr>
+	// </thead>     
+	// <tbody> 
 	// <tr><th>CREATE_SEAL</th><th>印章管理-添加印章</th></tr>
 	// <tr><th>CREATE_TEMPLATE</th><th>模板管理-创建模板</th></tr>
 	// <tr><th>MODIFY_TEMPLATE</th><th>模板管理-编辑模板</th></tr>
@@ -2735,6 +2742,7 @@ type CreateEmbedWebUrlRequest struct {
 	// <tr><th>EXTEND_SERVICE</th><th>无要求</th></tr>
 	// <tr><th>PREVIEW_FLOW</th><th>是否是当前合同的参与方，或者发起方企业的法人、超管、合同管理员</th></tr>
 	// <tr><th>PREVIEW_FLOW_DETAIL</th><th>是否是当前合同的参与方，或者发起方企业的法人、超管、合同管理员</th></tr>
+	// </tbody> 
 	// </table>
 	EmbedType *string `json:"EmbedType,omitnil,omitempty" name:"EmbedType"`
 
@@ -13581,6 +13589,95 @@ type OccupiedSeal struct {
 
 	// 印章扩展数据信息
 	ExtendScene *ExtendScene `json:"ExtendScene,omitnil,omitempty" name:"ExtendScene"`
+}
+
+// Predefined struct for user
+type OperateTemplateRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 模板ID，为32位字符串。
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// 操作类型，可取值如下:
+	// <ul>
+	// <li>DELETE:  删除</li>
+	// <li>ENABLE: 启用</li>
+	// <li>DISABLE: 停用</li>
+	// </ul>
+	OperateType *string `json:"OperateType,omitnil,omitempty" name:"OperateType"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type OperateTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 模板ID，为32位字符串。
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// 操作类型，可取值如下:
+	// <ul>
+	// <li>DELETE:  删除</li>
+	// <li>ENABLE: 启用</li>
+	// <li>DISABLE: 停用</li>
+	// </ul>
+	OperateType *string `json:"OperateType,omitnil,omitempty" name:"OperateType"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *OperateTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OperateTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "TemplateId")
+	delete(f, "OperateType")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OperateTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OperateTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type OperateTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *OperateTemplateResponseParams `json:"Response"`
+}
+
+func (r *OperateTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OperateTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type OrgBillSummary struct {

@@ -35,8 +35,23 @@ const (
 	// FailedOperation.DuplicateData
 	FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 
+	// 非专业版资源
+	FAILEDOPERATION_RESOURCENOTPRO = "FailedOperation.ResourceNotPro"
+
 	// FailedOperation.TooFrequent
 	FAILEDOPERATION_TOOFREQUENT = "FailedOperation.TooFrequent"
+
+	// 用户已过期
+	FAILEDOPERATION_USEREXPIRED = "FailedOperation.UserExpired"
+
+	// 用户未生效
+	FAILEDOPERATION_USERINVALID = "FailedOperation.UserInvalid"
+
+	// 用户已锁定
+	FAILEDOPERATION_USERLOCKED = "FailedOperation.UserLocked"
+
+	// 用户不存在
+	FAILEDOPERATION_USERNOTEXIST = "FailedOperation.UserNotExist"
 
 	// FailedOperation.VPCDeployed
 	FAILEDOPERATION_VPCDEPLOYED = "FailedOperation.VPCDeployed"

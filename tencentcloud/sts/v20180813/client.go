@@ -94,6 +94,8 @@ func NewAssumeRoleResponse() (response *AssumeRoleResponse) {
 // （2）将用户添加为角色信任策略中的主体。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CHECKMFAERROR = "FailedOperation.CheckMFAError"
+//  FAILEDOPERATION_MFATYPENOTSUPPORTED = "FailedOperation.MFATypeNotSupported"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ENCRYPTERROR = "InternalError.EncryptError"
 //  INTERNALERROR_GETAPPIDERROR = "InternalError.GetAppIdError"
@@ -151,6 +153,8 @@ func (c *Client) AssumeRole(request *AssumeRoleRequest) (response *AssumeRoleRes
 // （2）将用户添加为角色信任策略中的主体。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CHECKMFAERROR = "FailedOperation.CheckMFAError"
+//  FAILEDOPERATION_MFATYPENOTSUPPORTED = "FailedOperation.MFATypeNotSupported"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ENCRYPTERROR = "InternalError.EncryptError"
 //  INTERNALERROR_GETAPPIDERROR = "InternalError.GetAppIdError"
@@ -526,6 +530,79 @@ func (c *Client) GetFederationTokenWithContext(ctx context.Context, request *Get
     request.SetContext(ctx)
     
     response = NewGetFederationTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetSessionTokenRequest() (request *GetSessionTokenRequest) {
+    request = &GetSessionTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sts", APIVersion, "GetSessionToken")
+    
+    
+    return
+}
+
+func NewGetSessionTokenResponse() (response *GetSessionTokenResponse) {
+    response = &GetSessionTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetSessionToken
+// 获取MFA临时证书
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CHECKMFAERROR = "FailedOperation.CheckMFAError"
+//  FAILEDOPERATION_MFATYPENOTSUPPORTED = "FailedOperation.MFATypeNotSupported"
+//  FAILEDOPERATION_TEMPKEYNOTALLOWED = "FailedOperation.TempKeyNotAllowed"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ENCRYPTERROR = "InternalError.EncryptError"
+//  INTERNALERROR_GETSEEDTOKENERROR = "InternalError.GetSeedTokenError"
+//  INTERNALERROR_PBSERIALIZEERROR = "InternalError.PbSerializeError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_ACCOUNTNOTAVALIABLE = "InvalidParameter.AccountNotAvaliable"
+//  INVALIDPARAMETER_OVERTIMEERROR = "InvalidParameter.OverTimeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) GetSessionToken(request *GetSessionTokenRequest) (response *GetSessionTokenResponse, err error) {
+    return c.GetSessionTokenWithContext(context.Background(), request)
+}
+
+// GetSessionToken
+// 获取MFA临时证书
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CHECKMFAERROR = "FailedOperation.CheckMFAError"
+//  FAILEDOPERATION_MFATYPENOTSUPPORTED = "FailedOperation.MFATypeNotSupported"
+//  FAILEDOPERATION_TEMPKEYNOTALLOWED = "FailedOperation.TempKeyNotAllowed"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INTERNALERROR_ENCRYPTERROR = "InternalError.EncryptError"
+//  INTERNALERROR_GETSEEDTOKENERROR = "InternalError.GetSeedTokenError"
+//  INTERNALERROR_PBSERIALIZEERROR = "InternalError.PbSerializeError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_ACCOUNTNOTAVALIABLE = "InvalidParameter.AccountNotAvaliable"
+//  INVALIDPARAMETER_OVERTIMEERROR = "InvalidParameter.OverTimeError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) GetSessionTokenWithContext(ctx context.Context, request *GetSessionTokenRequest) (response *GetSessionTokenResponse, err error) {
+    if request == nil {
+        request = NewGetSessionTokenRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetSessionToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetSessionTokenResponse()
     err = c.Send(request, response)
     return
 }

@@ -1081,6 +1081,89 @@ func (c *Client) CreateIpAccessControlWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreatePostCKafkaFlowRequest() (request *CreatePostCKafkaFlowRequest) {
+    request = &CreatePostCKafkaFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "CreatePostCKafkaFlow")
+    
+    
+    return
+}
+
+func NewCreatePostCKafkaFlowResponse() (response *CreatePostCKafkaFlowResponse) {
+    response = &CreatePostCKafkaFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePostCKafkaFlow
+// 创建CKafka投递流任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreatePostCKafkaFlow(request *CreatePostCKafkaFlowRequest) (response *CreatePostCKafkaFlowResponse, err error) {
+    return c.CreatePostCKafkaFlowWithContext(context.Background(), request)
+}
+
+// CreatePostCKafkaFlow
+// 创建CKafka投递流任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreatePostCKafkaFlowWithContext(ctx context.Context, request *CreatePostCKafkaFlowRequest) (response *CreatePostCKafkaFlowResponse, err error) {
+    if request == nil {
+        request = NewCreatePostCKafkaFlowRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePostCKafkaFlow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePostCKafkaFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePostCLSFlowRequest() (request *CreatePostCLSFlowRequest) {
     request = &CreatePostCLSFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4989,6 +5072,89 @@ func (c *Client) DescribePortsWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDescribePostCKafkaFlowsRequest() (request *DescribePostCKafkaFlowsRequest) {
+    request = &DescribePostCKafkaFlowsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribePostCKafkaFlows")
+    
+    
+    return
+}
+
+func NewDescribePostCKafkaFlowsResponse() (response *DescribePostCKafkaFlowsResponse) {
+    response = &DescribePostCKafkaFlowsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePostCKafkaFlows
+// 获取CKafka投递流任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePostCKafkaFlows(request *DescribePostCKafkaFlowsRequest) (response *DescribePostCKafkaFlowsResponse, err error) {
+    return c.DescribePostCKafkaFlowsWithContext(context.Background(), request)
+}
+
+// DescribePostCKafkaFlows
+// 获取CKafka投递流任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePostCKafkaFlowsWithContext(ctx context.Context, request *DescribePostCKafkaFlowsRequest) (response *DescribePostCKafkaFlowsResponse, err error) {
+    if request == nil {
+        request = NewDescribePostCKafkaFlowsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePostCKafkaFlows require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePostCKafkaFlowsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePostCLSFlowsRequest() (request *DescribePostCLSFlowsRequest) {
     request = &DescribePostCLSFlowsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6333,6 +6499,89 @@ func (c *Client) DescribeWebshellStatusWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeWebshellStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDestroyPostCKafkaFlowRequest() (request *DestroyPostCKafkaFlowRequest) {
+    request = &DestroyPostCKafkaFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DestroyPostCKafkaFlow")
+    
+    
+    return
+}
+
+func NewDestroyPostCKafkaFlowResponse() (response *DestroyPostCKafkaFlowResponse) {
+    response = &DestroyPostCKafkaFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DestroyPostCKafkaFlow
+// 销毁CKafka投递流任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DestroyPostCKafkaFlow(request *DestroyPostCKafkaFlowRequest) (response *DestroyPostCKafkaFlowResponse, err error) {
+    return c.DestroyPostCKafkaFlowWithContext(context.Background(), request)
+}
+
+// DestroyPostCKafkaFlow
+// 销毁CKafka投递流任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CKAFKAINTERNALERROR = "FailedOperation.CKafkaInternalError"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DestroyPostCKafkaFlowWithContext(ctx context.Context, request *DestroyPostCKafkaFlowRequest) (response *DestroyPostCKafkaFlowResponse, err error) {
+    if request == nil {
+        request = NewDestroyPostCKafkaFlowRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyPostCKafkaFlow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDestroyPostCKafkaFlowResponse()
     err = c.Send(request, response)
     return
 }

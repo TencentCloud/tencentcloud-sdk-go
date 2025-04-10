@@ -56,6 +56,9 @@ const (
 	// 集群访问失败。
 	FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
 
+	// 翻页超过1万条，建议重新选择日志查询时间
+	FAILEDOPERATION_CONTEXTLIMITERROR = "FailedOperation.ContextLimitError"
+
 	// cos client 内部错误。
 	FAILEDOPERATION_DCCOSCLIENTERR = "FailedOperation.DCCosClientErr"
 

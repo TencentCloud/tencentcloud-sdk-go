@@ -120,7 +120,6 @@ type GetBpaasApproveDetailResponseParams struct {
 	ApplyOwnUin *uint64 `json:"ApplyOwnUin,omitnil,omitempty" name:"ApplyOwnUin"`
 
 	// 申请人昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplyUinNick *string `json:"ApplyUinNick,omitnil,omitempty" name:"ApplyUinNick"`
 
 	// 审批流id
@@ -130,31 +129,24 @@ type GetBpaasApproveDetailResponseParams struct {
 	BpaasName *string `json:"BpaasName,omitnil,omitempty" name:"BpaasName"`
 
 	// 申请参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationParams []*ApplyParam `json:"ApplicationParams,omitnil,omitempty" name:"ApplicationParams"`
 
 	// 申请原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 申请时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 申请单状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 节点信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nodes []*StatusNode `json:"Nodes,omitnil,omitempty" name:"Nodes"`
 
 	// 正在审批的节点id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApprovingNodeId *string `json:"ApprovingNodeId,omitnil,omitempty" name:"ApprovingNodeId"`
 
 	// 更新时间，时间格式：2021-12-12 10:12:10	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -290,78 +282,59 @@ type StatusNode struct {
 	NextNode *string `json:"NextNode,omitnil,omitempty" name:"NextNode"`
 
 	// 审批意见模型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Opinion *ApproveOpinion `json:"Opinion,omitnil,omitempty" name:"Opinion"`
 
 	// scf函数名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScfName *string `json:"ScfName,omitnil,omitempty" name:"ScfName"`
 
 	// 状态（0：待审批，1：审批通过，2：拒绝，3：scf执行失败，4：scf执行成功）18: 外部审批中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubStatus *uint64 `json:"SubStatus,omitnil,omitempty" name:"SubStatus"`
 
 	// 审批节点审批人
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApprovedUin []*uint64 `json:"ApprovedUin,omitnil,omitempty" name:"ApprovedUin"`
 
 	// 审批时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 审批意见信息 审批节点:审批人意见  执行节点:scf函数执行日志
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 有权限审批该节点的uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Users *ApproveUser `json:"Users,omitnil,omitempty" name:"Users"`
 
 	// 是否有权限审批该节点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsApprove *bool `json:"IsApprove,omitnil,omitempty" name:"IsApprove"`
 
 	// 审批id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproveId *string `json:"ApproveId,omitnil,omitempty" name:"ApproveId"`
 
 	// 审批方式 0或签 1会签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproveMethod *uint64 `json:"ApproveMethod,omitnil,omitempty" name:"ApproveMethod"`
 
 	// 审批节点审批类型，1人工审批 2自动通过 3自动决绝 4外部审批scf
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproveType *uint64 `json:"ApproveType,omitnil,omitempty" name:"ApproveType"`
 
 	// 外部审批类型 scf:0或null ; CKafka:1
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallMethod *uint64 `json:"CallMethod,omitnil,omitempty" name:"CallMethod"`
 
 	// CKafka - 接入资源ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataHubId *string `json:"DataHubId,omitnil,omitempty" name:"DataHubId"`
 
 	// CKafka - 任务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
 	// CKafka - 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CKafkaRegion *string `json:"CKafkaRegion,omitnil,omitempty" name:"CKafkaRegion"`
 
 	// 外部审批Url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExternalUrl *string `json:"ExternalUrl,omitnil,omitempty" name:"ExternalUrl"`
 
 	// 并行节点 3-4
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParallelNodes *string `json:"ParallelNodes,omitnil,omitempty" name:"ParallelNodes"`
 
 	// scf拒绝时返回信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RejectedCloudFunctionMsg *string `json:"RejectedCloudFunctionMsg,omitnil,omitempty" name:"RejectedCloudFunctionMsg"`
 
 	// 上一个节点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrevNode *string `json:"PrevNode,omitnil,omitempty" name:"PrevNode"`
 }

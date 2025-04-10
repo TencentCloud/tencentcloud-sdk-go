@@ -1913,6 +1913,59 @@ func (c *Client) DescribeInferTemplatesWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeLogsRequest() (request *DescribeLogsRequest) {
+    request = &DescribeLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeLogs")
+    
+    
+    return
+}
+
+func NewDescribeLogsResponse() (response *DescribeLogsResponse) {
+    response = &DescribeLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLogs
+// 获取任务式建模训练任务，Notebook，在线服务和批量预测任务的日志API
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONTEXTLIMITERROR = "FailedOperation.ContextLimitError"
+func (c *Client) DescribeLogs(request *DescribeLogsRequest) (response *DescribeLogsResponse, err error) {
+    return c.DescribeLogsWithContext(context.Background(), request)
+}
+
+// DescribeLogs
+// 获取任务式建模训练任务，Notebook，在线服务和批量预测任务的日志API
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONTEXTLIMITERROR = "FailedOperation.ContextLimitError"
+func (c *Client) DescribeLogsWithContext(ctx context.Context, request *DescribeLogsRequest) (response *DescribeLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeLogsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeModelAccelerateTaskRequest() (request *DescribeModelAccelerateTaskRequest) {
     request = &DescribeModelAccelerateTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

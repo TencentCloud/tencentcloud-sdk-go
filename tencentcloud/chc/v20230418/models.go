@@ -713,7 +713,7 @@ type CreateQuitWorkOrderRequestParams struct {
 	// 设备类型，server, netDevice, otherDevice
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 下架选择 1.自行解决 2.由腾讯IDC负责 3.不涉及下架，如：其他设备退出
+	// 下架选择 1.自行解决 2.由腾讯IDC负责
 	StuffOption *string `json:"StuffOption,omitnil,omitempty" name:"StuffOption"`
 
 	// 关电确认 1.授权时关电 2.关电前需要确认
@@ -750,7 +750,7 @@ type CreateQuitWorkOrderRequest struct {
 	// 设备类型，server, netDevice, otherDevice
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 下架选择 1.自行解决 2.由腾讯IDC负责 3.不涉及下架，如：其他设备退出
+	// 下架选择 1.自行解决 2.由腾讯IDC负责
 	StuffOption *string `json:"StuffOption,omitnil,omitempty" name:"StuffOption"`
 
 	// 关电确认 1.授权时关电 2.关电前需要确认
@@ -1214,6 +1214,105 @@ func (r *CreateServerModelResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateServerModelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSpeciallyQuitWorkOrderRequestParams struct {
+	// 机房id
+	IdcId *uint64 `json:"IdcId,omitnil,omitempty" name:"IdcId"`
+
+	// 设备类型：otherDevice。此接口只支持其他设备
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
+
+	// 交接方式 1.物流上门收货 2.客户上门自提
+	HandoverMethod *string `json:"HandoverMethod,omitnil,omitempty" name:"HandoverMethod"`
+
+	// 物流上门收货必传
+	LogisticsReceipt *LogisticsReceipt `json:"LogisticsReceipt,omitnil,omitempty" name:"LogisticsReceipt"`
+
+	// 客户上门自提必传
+	CustomerReceipt *CustomerReceipt `json:"CustomerReceipt,omitnil,omitempty" name:"CustomerReceipt"`
+
+	// 备注信息
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 当设备类型为otherDevice，此参数必传
+	OtherDeviceList []*OtherDevReceivingInfo `json:"OtherDeviceList,omitnil,omitempty" name:"OtherDeviceList"`
+}
+
+type CreateSpeciallyQuitWorkOrderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 机房id
+	IdcId *uint64 `json:"IdcId,omitnil,omitempty" name:"IdcId"`
+
+	// 设备类型：otherDevice。此接口只支持其他设备
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
+
+	// 交接方式 1.物流上门收货 2.客户上门自提
+	HandoverMethod *string `json:"HandoverMethod,omitnil,omitempty" name:"HandoverMethod"`
+
+	// 物流上门收货必传
+	LogisticsReceipt *LogisticsReceipt `json:"LogisticsReceipt,omitnil,omitempty" name:"LogisticsReceipt"`
+
+	// 客户上门自提必传
+	CustomerReceipt *CustomerReceipt `json:"CustomerReceipt,omitnil,omitempty" name:"CustomerReceipt"`
+
+	// 备注信息
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 当设备类型为otherDevice，此参数必传
+	OtherDeviceList []*OtherDevReceivingInfo `json:"OtherDeviceList,omitnil,omitempty" name:"OtherDeviceList"`
+}
+
+func (r *CreateSpeciallyQuitWorkOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSpeciallyQuitWorkOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdcId")
+	delete(f, "DeviceType")
+	delete(f, "HandoverMethod")
+	delete(f, "LogisticsReceipt")
+	delete(f, "CustomerReceipt")
+	delete(f, "Remark")
+	delete(f, "OtherDeviceList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSpeciallyQuitWorkOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSpeciallyQuitWorkOrderResponseParams struct {
+	// 创建的工单信息
+	WorkOrderSet []*WorkOrderTinyInfo `json:"WorkOrderSet,omitnil,omitempty" name:"WorkOrderSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSpeciallyQuitWorkOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSpeciallyQuitWorkOrderResponseParams `json:"Response"`
+}
+
+func (r *CreateSpeciallyQuitWorkOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSpeciallyQuitWorkOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

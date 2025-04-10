@@ -2499,6 +2499,77 @@ func (c *Client) DeleteConsumerWithContext(ctx context.Context, request *DeleteC
     return
 }
 
+func NewDeleteCosRechargeRequest() (request *DeleteCosRechargeRequest) {
+    request = &DeleteCosRechargeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteCosRecharge")
+    
+    
+    return
+}
+
+func NewDeleteCosRechargeResponse() (response *DeleteCosRechargeResponse) {
+    response = &DeleteCosRechargeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCosRecharge
+// 本接口用于删除cos导入任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DeleteCosRecharge(request *DeleteCosRechargeRequest) (response *DeleteCosRechargeResponse, err error) {
+    return c.DeleteCosRechargeWithContext(context.Background(), request)
+}
+
+// DeleteCosRecharge
+// 本接口用于删除cos导入任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) DeleteCosRechargeWithContext(ctx context.Context, request *DeleteCosRechargeRequest) (response *DeleteCosRechargeResponse, err error) {
+    if request == nil {
+        request = NewDeleteCosRechargeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCosRecharge require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCosRechargeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDashboardSubscribeRequest() (request *DeleteDashboardSubscribeRequest) {
     request = &DeleteDashboardSubscribeRequest{
         BaseRequest: &tchttp.BaseRequest{},

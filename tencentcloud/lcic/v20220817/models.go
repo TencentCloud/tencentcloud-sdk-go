@@ -4285,6 +4285,9 @@ type GetRoomMessageRequestParams struct {
 
 	// 消息拉取的条数。最大数量不能超过套餐包限制。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 请求消息的userId
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
 type GetRoomMessageRequest struct {
@@ -4301,6 +4304,9 @@ type GetRoomMessageRequest struct {
 
 	// 消息拉取的条数。最大数量不能超过套餐包限制。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 请求消息的userId
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
 func (r *GetRoomMessageRequest) ToJsonString() string {
@@ -4319,6 +4325,7 @@ func (r *GetRoomMessageRequest) FromJsonString(s string) error {
 	delete(f, "RoomId")
 	delete(f, "Seq")
 	delete(f, "Limit")
+	delete(f, "UserId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRoomMessageRequest has unknown keys!", "")
 	}

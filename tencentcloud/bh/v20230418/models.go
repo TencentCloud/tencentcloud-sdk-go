@@ -1484,6 +1484,119 @@ func (r *CreateDeviceGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateOperationTaskRequestParams struct {
+	// 运维任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 运维任务类型,1 - 手工执行, 2 - 周期性自动执行
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 执行账号
+	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
+
+	// 超时时间,单位秒
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// 执行脚本内容
+	Script *string `json:"Script,omitnil,omitempty" name:"Script"`
+
+	// 执行主机集合，满足条件以下三个条件：1. 资产绑定可用的专业版或国密版堡垒机服务；2、资产类型为linux资产；3、用户具有资产权限，且资产添加了指定执行账号
+	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitnil,omitempty" name:"DeviceIdSet"`
+
+	// 执行间隔，单位天. 手工执行时无需传入
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 首次执行日期 默认1970-01-01T08:00:01+08:00,手工执行时无需传入
+	FirstTime *string `json:"FirstTime,omitnil,omitempty" name:"FirstTime"`
+
+	// Script参数是否需要进行base64编码后传递，1-需要进行base64编码后传递，非1值-不需要进行base64编码后传递
+	Encoding *uint64 `json:"Encoding,omitnil,omitempty" name:"Encoding"`
+}
+
+type CreateOperationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 运维任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 运维任务类型,1 - 手工执行, 2 - 周期性自动执行
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 执行账号
+	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
+
+	// 超时时间,单位秒
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// 执行脚本内容
+	Script *string `json:"Script,omitnil,omitempty" name:"Script"`
+
+	// 执行主机集合，满足条件以下三个条件：1. 资产绑定可用的专业版或国密版堡垒机服务；2、资产类型为linux资产；3、用户具有资产权限，且资产添加了指定执行账号
+	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitnil,omitempty" name:"DeviceIdSet"`
+
+	// 执行间隔，单位天. 手工执行时无需传入
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 首次执行日期 默认1970-01-01T08:00:01+08:00,手工执行时无需传入
+	FirstTime *string `json:"FirstTime,omitnil,omitempty" name:"FirstTime"`
+
+	// Script参数是否需要进行base64编码后传递，1-需要进行base64编码后传递，非1值-不需要进行base64编码后传递
+	Encoding *uint64 `json:"Encoding,omitnil,omitempty" name:"Encoding"`
+}
+
+func (r *CreateOperationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOperationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "Account")
+	delete(f, "Timeout")
+	delete(f, "Script")
+	delete(f, "DeviceIdSet")
+	delete(f, "Period")
+	delete(f, "FirstTime")
+	delete(f, "Encoding")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOperationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOperationTaskResponseParams struct {
+	// 运维任务ID
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateOperationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOperationTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateOperationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOperationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateResourceRequestParams struct {
 	// 部署region
 	DeployRegion *string `json:"DeployRegion,omitnil,omitempty" name:"DeployRegion"`
@@ -2180,6 +2293,60 @@ func (r *DeleteDevicesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteDevicesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOperationTasksRequestParams struct {
+	// 运维任务ID集合
+	IdSet []*uint64 `json:"IdSet,omitnil,omitempty" name:"IdSet"`
+}
+
+type DeleteOperationTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 运维任务ID集合
+	IdSet []*uint64 `json:"IdSet,omitnil,omitempty" name:"IdSet"`
+}
+
+func (r *DeleteOperationTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOperationTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteOperationTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOperationTasksResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteOperationTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteOperationTasksResponseParams `json:"Response"`
+}
+
+func (r *DeleteOperationTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOperationTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3698,6 +3865,87 @@ func (r *DescribeOperationEventResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeOperationTaskRequestParams struct {
+	// 运维任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 运维任务类型，1 - 手工执行任务， 2 - 周期性任务
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 分页偏移位置，默认值为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页条目数，默认20
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeOperationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 运维任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 运维任务类型，1 - 手工执行任务， 2 - 周期性任务
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 分页偏移位置，默认值为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页条目数，默认20
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeOperationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOperationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOperationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOperationTaskResponseParams struct {
+	// 运维任务列表
+	OperationTasks []*OperationTask `json:"OperationTasks,omitnil,omitempty" name:"OperationTasks"`
+
+	// 任务总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeOperationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOperationTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeOperationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOperationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeResourcesRequestParams struct {
 	// 地域码, 如: ap-guangzhou
 	ApCode *string `json:"ApCode,omitnil,omitempty" name:"ApCode"`
@@ -5121,6 +5369,123 @@ func (r *ModifyOAuthSettingResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyOperationTaskRequestParams struct {
+	// 任务Id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 任务类型, 1 - 手工执行, 2 - 周期性自动执行
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 执行账号
+	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
+
+	// 超时时间,单位秒
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// 执行脚本内容
+	Script *string `json:"Script,omitnil,omitempty" name:"Script"`
+
+	// 执行主机集合，满足条件以下三个条件：1. 资产绑定可用的专业版或国密版堡垒机服务；2、资产类型为linux资产；3、用户具有资产权限，且资产添加了指定执行账号
+	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitnil,omitempty" name:"DeviceIdSet"`
+
+	// 执行间隔，单位天. 手工执行时无需传入
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 首次执行日期，默认1970-01-01T08:00:01+08:00,手工执行时无需传入
+	FirstTime *string `json:"FirstTime,omitnil,omitempty" name:"FirstTime"`
+
+	// Script参数是否需要进行base64编码后传递，1-需要进行base64编码后传递，非1值-不需要进行base64编码后传递
+	Encoding *uint64 `json:"Encoding,omitnil,omitempty" name:"Encoding"`
+}
+
+type ModifyOperationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务Id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 任务类型, 1 - 手工执行, 2 - 周期性自动执行
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 执行账号
+	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
+
+	// 超时时间,单位秒
+	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// 执行脚本内容
+	Script *string `json:"Script,omitnil,omitempty" name:"Script"`
+
+	// 执行主机集合，满足条件以下三个条件：1. 资产绑定可用的专业版或国密版堡垒机服务；2、资产类型为linux资产；3、用户具有资产权限，且资产添加了指定执行账号
+	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitnil,omitempty" name:"DeviceIdSet"`
+
+	// 执行间隔，单位天. 手工执行时无需传入
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 首次执行日期，默认1970-01-01T08:00:01+08:00,手工执行时无需传入
+	FirstTime *string `json:"FirstTime,omitnil,omitempty" name:"FirstTime"`
+
+	// Script参数是否需要进行base64编码后传递，1-需要进行base64编码后传递，非1值-不需要进行base64编码后传递
+	Encoding *uint64 `json:"Encoding,omitnil,omitempty" name:"Encoding"`
+}
+
+func (r *ModifyOperationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyOperationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "Account")
+	delete(f, "Timeout")
+	delete(f, "Script")
+	delete(f, "DeviceIdSet")
+	delete(f, "Period")
+	delete(f, "FirstTime")
+	delete(f, "Encoding")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyOperationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyOperationTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyOperationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyOperationTaskResponseParams `json:"Response"`
+}
+
+func (r *ModifyOperationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyOperationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyResourceRequestParams struct {
 	// 需要开通服务的资源ID
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
@@ -5436,6 +5801,35 @@ type OperationEvent struct {
 
 	// 签名值
 	SignValue *string `json:"SignValue,omitnil,omitempty" name:"SignValue"`
+}
+
+type OperationTask struct {
+	// 运维任务主键ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 运维任务ID
+	OperationId *string `json:"OperationId,omitnil,omitempty" name:"OperationId"`
+
+	// 运维任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 创建用户
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 运维人员姓名
+	RealName *string `json:"RealName,omitnil,omitempty" name:"RealName"`
+
+	// 任务类型，1 - 手工执行任务， 2 - 周期性任务
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 周期性任务执行间隔，单位天
+	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 执行账户
+	NextTime *string `json:"NextTime,omitnil,omitempty" name:"NextTime"`
+
+	// 下一次执行时间
+	FirstTime *string `json:"FirstTime,omitnil,omitempty" name:"FirstTime"`
 }
 
 // Predefined struct for user
@@ -5795,6 +6189,60 @@ func (r *RunChangePwdTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RunChangePwdTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RunOperationTaskRequestParams struct {
+	// 运维任务ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+type RunOperationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 运维任务ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+}
+
+func (r *RunOperationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunOperationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunOperationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RunOperationTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RunOperationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *RunOperationTaskResponseParams `json:"Response"`
+}
+
+func (r *RunOperationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunOperationTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

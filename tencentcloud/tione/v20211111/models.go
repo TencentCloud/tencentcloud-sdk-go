@@ -2966,6 +2966,183 @@ func (r *DescribeInferTemplatesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLogsRequestParams struct {
+	// 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测
+	// 枚举值：
+	// - TRAIN
+	// - NOTEBOOK
+	// - INFER
+	// - BATCH
+	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
+
+	// 日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 日志查询结束时间（RFC3339格式的时间字符串），默认值为当前时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 日志查询条数，默认值100，最大值100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
+	// - Service类型为TRAIN：
+	//   调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId
+	// - Service类型为NOTEBOOK：
+	//   调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName
+	// - Service类型为INFER：
+	//   调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId
+	// - Service类型为BATCH：
+	//   调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// Pod的名称，即需要查询服务对应的Pod，和Service参数对应，不同Service的PodName获取方式不同，具体如下：
+	// - Service类型为TRAIN：
+	//   调用[DescribeTrainingTaskPods接口](/document/product/851/75088)查询训练任务pod列表，PodName为接口返回值中Response.PodNames
+	// - Service类型为NOTEBOOK：
+	//   调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，PodName为接口返回值中Response.NotebookDetail.PodName
+	// - Service类型为INFER：
+	//   调用[DescribeModelService接口](/document/product/851/82287)查询单个服务详情，PodName为接口返回值中Response.Service.ServiceInfo.PodInfos
+	// - Service类型为BATCH：
+	//   调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，PodName为接口返回值中Response.BatchTaskDetail. PodList
+	// 注：支持结尾通配符*
+	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+
+	// 排序方向（可选值为ASC, DESC ），默认为DESC
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 按哪个字段排序（可选值为Timestamp），默认值为Timestamp
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 日志查询上下文，查询下一页的时候需要回传这个字段，该字段来自本接口的返回
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// 过滤条件
+	// 注意: 
+	// 1. Filter.Name：目前只支持Key（也就是按关键字过滤日志）
+	// 2. Filter.Values：表示过滤日志的关键字；Values为多个的时候表示同时满足
+	// 3. Filter. Negative和Filter. Fuzzy没有使用
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测
+	// 枚举值：
+	// - TRAIN
+	// - NOTEBOOK
+	// - INFER
+	// - BATCH
+	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
+
+	// 日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 日志查询结束时间（RFC3339格式的时间字符串），默认值为当前时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 日志查询条数，默认值100，最大值100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
+	// - Service类型为TRAIN：
+	//   调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId
+	// - Service类型为NOTEBOOK：
+	//   调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName
+	// - Service类型为INFER：
+	//   调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId
+	// - Service类型为BATCH：
+	//   调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// Pod的名称，即需要查询服务对应的Pod，和Service参数对应，不同Service的PodName获取方式不同，具体如下：
+	// - Service类型为TRAIN：
+	//   调用[DescribeTrainingTaskPods接口](/document/product/851/75088)查询训练任务pod列表，PodName为接口返回值中Response.PodNames
+	// - Service类型为NOTEBOOK：
+	//   调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，PodName为接口返回值中Response.NotebookDetail.PodName
+	// - Service类型为INFER：
+	//   调用[DescribeModelService接口](/document/product/851/82287)查询单个服务详情，PodName为接口返回值中Response.Service.ServiceInfo.PodInfos
+	// - Service类型为BATCH：
+	//   调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，PodName为接口返回值中Response.BatchTaskDetail. PodList
+	// 注：支持结尾通配符*
+	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+
+	// 排序方向（可选值为ASC, DESC ），默认为DESC
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 按哪个字段排序（可选值为Timestamp），默认值为Timestamp
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 日志查询上下文，查询下一页的时候需要回传这个字段，该字段来自本接口的返回
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// 过滤条件
+	// 注意: 
+	// 1. Filter.Name：目前只支持Key（也就是按关键字过滤日志）
+	// 2. Filter.Values：表示过滤日志的关键字；Values为多个的时候表示同时满足
+	// 3. Filter. Negative和Filter. Fuzzy没有使用
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Service")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Limit")
+	delete(f, "ServiceId")
+	delete(f, "PodName")
+	delete(f, "Order")
+	delete(f, "OrderField")
+	delete(f, "Context")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogsResponseParams struct {
+	// 分页的游标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// 日志数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*LogIdentity `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeModelAccelerateTaskRequestParams struct {
 	// 模型加速任务ID
 	ModelAccTaskId *string `json:"ModelAccTaskId,omitnil,omitempty" name:"ModelAccTaskId"`
@@ -4445,6 +4622,24 @@ type LogConfig struct {
 	// 日志需要投递到cls的主题
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+}
+
+type LogIdentity struct {
+	// 单条日志的ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 单条日志的内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 这条日志对应的Pod名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
+
+	// 日志的时间戳（RFC3339格式的时间字符串）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *string `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 }
 
 type Message struct {

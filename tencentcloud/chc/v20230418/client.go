@@ -604,6 +604,49 @@ func (c *Client) CreateServerModelWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateSpeciallyQuitWorkOrderRequest() (request *CreateSpeciallyQuitWorkOrderRequest) {
+    request = &CreateSpeciallyQuitWorkOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("chc", APIVersion, "CreateSpeciallyQuitWorkOrder")
+    
+    
+    return
+}
+
+func NewCreateSpeciallyQuitWorkOrderResponse() (response *CreateSpeciallyQuitWorkOrderResponse) {
+    response = &CreateSpeciallyQuitWorkOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSpeciallyQuitWorkOrder
+// 创建临时设备退出工单
+func (c *Client) CreateSpeciallyQuitWorkOrder(request *CreateSpeciallyQuitWorkOrderRequest) (response *CreateSpeciallyQuitWorkOrderResponse, err error) {
+    return c.CreateSpeciallyQuitWorkOrderWithContext(context.Background(), request)
+}
+
+// CreateSpeciallyQuitWorkOrder
+// 创建临时设备退出工单
+func (c *Client) CreateSpeciallyQuitWorkOrderWithContext(ctx context.Context, request *CreateSpeciallyQuitWorkOrderRequest) (response *CreateSpeciallyQuitWorkOrderResponse, err error) {
+    if request == nil {
+        request = NewCreateSpeciallyQuitWorkOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSpeciallyQuitWorkOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSpeciallyQuitWorkOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAvailableModelListRequest() (request *DescribeAvailableModelListRequest) {
     request = &DescribeAvailableModelListRequest{
         BaseRequest: &tchttp.BaseRequest{},

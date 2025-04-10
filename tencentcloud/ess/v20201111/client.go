@@ -11022,6 +11022,119 @@ func (c *Client) ModifyIntegrationRoleWithContext(ctx context.Context, request *
     return
 }
 
+func NewOperateTemplateRequest() (request *OperateTemplateRequest) {
+    request = &OperateTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "OperateTemplate")
+    
+    
+    return
+}
+
+func NewOperateTemplateResponse() (response *OperateTemplateResponse) {
+    response = &OperateTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OperateTemplate
+// 此接口（OperateTemplate）用于对企业自有模板进行管理操作，所有操作都会有对应的回调触发，具体参考回调文档 <a href="https://qian.tencent.com/developers/company/callback_types_templates" target="_blank">模板操作相关回调</a>
+//
+// 
+//
+// # 支持的操作
+//
+// ## 1. 删除模板 (OperateType=DELETE)
+//
+// 此操作会从模板将企业自有模板中彻底删除，若要保留模板而不删除，可将将模板停用。
+//
+// 
+//
+// ## 2. 启用模板 (OperateType=ENABLE)
+//
+// 此操作是将停用的模板启用，操作幂等，若模板已经启用，接口不报错。
+//
+// 
+//
+// ## 3. 停用模板 (OperateType=DELETE)
+//
+// 此操作是将启用态的模板停用，操作幂等，若模板已经停用，接口不报错，停用后，无法通过此模板发起合同，已经发起的合同不受影响。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+func (c *Client) OperateTemplate(request *OperateTemplateRequest) (response *OperateTemplateResponse, err error) {
+    return c.OperateTemplateWithContext(context.Background(), request)
+}
+
+// OperateTemplate
+// 此接口（OperateTemplate）用于对企业自有模板进行管理操作，所有操作都会有对应的回调触发，具体参考回调文档 <a href="https://qian.tencent.com/developers/company/callback_types_templates" target="_blank">模板操作相关回调</a>
+//
+// 
+//
+// # 支持的操作
+//
+// ## 1. 删除模板 (OperateType=DELETE)
+//
+// 此操作会从模板将企业自有模板中彻底删除，若要保留模板而不删除，可将将模板停用。
+//
+// 
+//
+// ## 2. 启用模板 (OperateType=ENABLE)
+//
+// 此操作是将停用的模板启用，操作幂等，若模板已经启用，接口不报错。
+//
+// 
+//
+// ## 3. 停用模板 (OperateType=DELETE)
+//
+// 此操作是将启用态的模板停用，操作幂等，若模板已经停用，接口不报错，停用后，无法通过此模板发起合同，已经发起的合同不受影响。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+func (c *Client) OperateTemplateWithContext(ctx context.Context, request *OperateTemplateRequest) (response *OperateTemplateResponse, err error) {
+    if request == nil {
+        request = NewOperateTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OperateTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOperateTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRenewAutoSignLicenseRequest() (request *RenewAutoSignLicenseRequest) {
     request = &RenewAutoSignLicenseRequest{
         BaseRequest: &tchttp.BaseRequest{},

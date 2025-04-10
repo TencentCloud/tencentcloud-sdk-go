@@ -256,7 +256,7 @@ type CosSnapShotInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
-	// 普通索引信息列表
+	// 普通[{"DataStreamName":"ilm-history-5","Is索引信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CommonIndexArr []*CommonIndexInfo `json:"CommonIndexArr,omitnil,omitempty" name:"CommonIndexArr"`
 
@@ -5087,6 +5087,14 @@ type LogstashPipelineInfo struct {
 	// 管道缓冲队列检查点写入数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueCheckPointWrites *uint64 `json:"QueueCheckPointWrites,omitnil,omitempty" name:"QueueCheckPointWrites"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type MasterNodeInfo struct {
@@ -6041,7 +6049,7 @@ type ServerlessIndexMetaField struct {
 	// 标签信息
 	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
 
-	// 3782478.47
+	// 索引流量，单位byte
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexTraffic *float64 `json:"IndexTraffic,omitnil,omitempty" name:"IndexTraffic"`
 }
@@ -6175,7 +6183,7 @@ type ServerlessSpace struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterType *int64 `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 
-	// key:value
+	// 空间标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagList []*TagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
@@ -6277,6 +6285,10 @@ type Snapshots struct {
 	// 备份失败的索引分片和失败原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Failures []*Failures `json:"Failures,omitnil,omitempty" name:"Failures"`
+
+	// 是否用户备份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserBackUp *string `json:"UserBackUp,omitnil,omitempty" name:"UserBackUp"`
 }
 
 // Predefined struct for user

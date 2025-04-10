@@ -2603,6 +2603,109 @@ func (r *CreateIpAccessControlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePostCKafkaFlowRequestParams struct {
+	// 投递的CKafka所在区域
+	CKafkaRegion *string `json:"CKafkaRegion,omitnil,omitempty" name:"CKafkaRegion"`
+
+	// 客户的CKafka 实例ID
+	CKafkaID *string `json:"CKafkaID,omitnil,omitempty" name:"CKafkaID"`
+
+	// 支撑环境是IP:PORT，外网环境是domain:PORT
+	Brokers *string `json:"Brokers,omitnil,omitempty" name:"Brokers"`
+
+	// 默认为none，支持snappy、gzip和lz4压缩，推荐snappy
+	Compression *string `json:"Compression,omitnil,omitempty" name:"Compression"`
+
+	// 1-外网TGW，2-支撑环境，默认为支撑环境
+	VipType *int64 `json:"VipType,omitnil,omitempty" name:"VipType"`
+
+	// 1-访问日志，2-攻击日志，默认为访问日志
+	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 主题名称，默认不传或者传空字符串，默认值为waf_post_access_log
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// kafka集群的版本号
+	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
+}
+
+type CreatePostCKafkaFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 投递的CKafka所在区域
+	CKafkaRegion *string `json:"CKafkaRegion,omitnil,omitempty" name:"CKafkaRegion"`
+
+	// 客户的CKafka 实例ID
+	CKafkaID *string `json:"CKafkaID,omitnil,omitempty" name:"CKafkaID"`
+
+	// 支撑环境是IP:PORT，外网环境是domain:PORT
+	Brokers *string `json:"Brokers,omitnil,omitempty" name:"Brokers"`
+
+	// 默认为none，支持snappy、gzip和lz4压缩，推荐snappy
+	Compression *string `json:"Compression,omitnil,omitempty" name:"Compression"`
+
+	// 1-外网TGW，2-支撑环境，默认为支撑环境
+	VipType *int64 `json:"VipType,omitnil,omitempty" name:"VipType"`
+
+	// 1-访问日志，2-攻击日志，默认为访问日志
+	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 主题名称，默认不传或者传空字符串，默认值为waf_post_access_log
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// kafka集群的版本号
+	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
+}
+
+func (r *CreatePostCKafkaFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePostCKafkaFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CKafkaRegion")
+	delete(f, "CKafkaID")
+	delete(f, "Brokers")
+	delete(f, "Compression")
+	delete(f, "VipType")
+	delete(f, "LogType")
+	delete(f, "Topic")
+	delete(f, "KafkaVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePostCKafkaFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePostCKafkaFlowResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePostCKafkaFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePostCKafkaFlowResponseParams `json:"Response"`
+}
+
+func (r *CreatePostCKafkaFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePostCKafkaFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePostCLSFlowRequestParams struct {
 	// 投递的CLS所在区域，默认为ap-shanghai
 	CLSRegion *string `json:"CLSRegion,omitnil,omitempty" name:"CLSRegion"`
@@ -7762,6 +7865,63 @@ func (r *DescribePortsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePostCKafkaFlowsRequestParams struct {
+	// 1-访问日志，2-攻击日志，默认为访问日志。
+	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
+}
+
+type DescribePostCKafkaFlowsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 1-访问日志，2-攻击日志，默认为访问日志。
+	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
+}
+
+func (r *DescribePostCKafkaFlowsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePostCKafkaFlowsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LogType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePostCKafkaFlowsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePostCKafkaFlowsResponseParams struct {
+	// 客户的投递流列表
+	PostCKafkaFlows []*PostCKafkaFlowInfo `json:"PostCKafkaFlows,omitnil,omitempty" name:"PostCKafkaFlows"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePostCKafkaFlowsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePostCKafkaFlowsResponseParams `json:"Response"`
+}
+
+func (r *DescribePostCKafkaFlowsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePostCKafkaFlowsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePostCLSFlowsRequestParams struct {
 	// 1-访问日志，2-攻击日志，默认为访问日志。
 	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
@@ -9161,6 +9321,67 @@ func (r *DescribeWebshellStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeWebshellStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyPostCKafkaFlowRequestParams struct {
+	// 投递流的流ID
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 1-访问日志，2-攻击日志，默认为访问日志。
+	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
+}
+
+type DestroyPostCKafkaFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 投递流的流ID
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 1-访问日志，2-攻击日志，默认为访问日志。
+	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
+}
+
+func (r *DestroyPostCKafkaFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyPostCKafkaFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	delete(f, "LogType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DestroyPostCKafkaFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyPostCKafkaFlowResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DestroyPostCKafkaFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *DestroyPostCKafkaFlowResponseParams `json:"Response"`
+}
+
+func (r *DestroyPostCKafkaFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyPostCKafkaFlowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14865,6 +15086,32 @@ func (r *PostAttackDownloadTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *PostAttackDownloadTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type PostCKafkaFlowInfo struct {
+	// 投递流唯一ID
+	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 1-访问日志 2-攻击日志
+	LogType *int64 `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 状态 0-为关闭 1-为启用
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// CKafka所在区域
+	CKafkaRegion *string `json:"CKafkaRegion,omitnil,omitempty" name:"CKafkaRegion"`
+
+	// CKafka实例ID
+	CKafkaID *string `json:"CKafkaID,omitnil,omitempty" name:"CKafkaID"`
+
+	// ckafka地址信息
+	Brokers *string `json:"Brokers,omitnil,omitempty" name:"Brokers"`
+
+	// ckafka版本号
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 主题名称
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 }
 
 type PostCLSFlowInfo struct {

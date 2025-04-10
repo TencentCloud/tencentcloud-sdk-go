@@ -14409,6 +14409,14 @@ type RocketMQGroup struct {
 	// 重试次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetryMaxTimes *uint64 `json:"RetryMaxTimes,omitnil,omitempty" name:"RetryMaxTimes"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 }
 
 type RocketMQGroupConfig struct {
@@ -14737,6 +14745,14 @@ type RocketMQTopic struct {
 
 	// 创建时间，以毫秒为单位
 	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
 	// 最后写入时间，单位为秒
 	// 注意：此字段可能返回 null，表示取不到有效值。

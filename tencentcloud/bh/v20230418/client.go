@@ -905,6 +905,75 @@ func (c *Client) CreateDeviceGroupWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateOperationTaskRequest() (request *CreateOperationTaskRequest) {
+    request = &CreateOperationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "CreateOperationTask")
+    
+    
+    return
+}
+
+func NewCreateOperationTaskResponse() (response *CreateOperationTaskResponse) {
+    response = &CreateOperationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateOperationTask
+// 创建运维任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_RESOURCENOTPRO = "FailedOperation.ResourceNotPro"
+//  FAILEDOPERATION_USEREXPIRED = "FailedOperation.UserExpired"
+//  FAILEDOPERATION_USERINVALID = "FailedOperation.UserInvalid"
+//  FAILEDOPERATION_USERLOCKED = "FailedOperation.UserLocked"
+//  FAILEDOPERATION_USERNOTEXIST = "FailedOperation.UserNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateOperationTask(request *CreateOperationTaskRequest) (response *CreateOperationTaskResponse, err error) {
+    return c.CreateOperationTaskWithContext(context.Background(), request)
+}
+
+// CreateOperationTask
+// 创建运维任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_RESOURCENOTPRO = "FailedOperation.ResourceNotPro"
+//  FAILEDOPERATION_USEREXPIRED = "FailedOperation.UserExpired"
+//  FAILEDOPERATION_USERINVALID = "FailedOperation.UserInvalid"
+//  FAILEDOPERATION_USERLOCKED = "FailedOperation.UserLocked"
+//  FAILEDOPERATION_USERNOTEXIST = "FailedOperation.UserNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateOperationTaskWithContext(ctx context.Context, request *CreateOperationTaskRequest) (response *CreateOperationTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateOperationTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOperationTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOperationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateResourceRequest() (request *CreateResourceRequest) {
     request = &CreateResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1487,6 +1556,71 @@ func (c *Client) DeleteDevicesWithContext(ctx context.Context, request *DeleteDe
     request.SetContext(ctx)
     
     response = NewDeleteDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteOperationTasksRequest() (request *DeleteOperationTasksRequest) {
+    request = &DeleteOperationTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "DeleteOperationTasks")
+    
+    
+    return
+}
+
+func NewDeleteOperationTasksResponse() (response *DeleteOperationTasksResponse) {
+    response = &DeleteOperationTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteOperationTasks
+// 删除运维任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  FAILEDOPERATION_USEREXPIRED = "FailedOperation.UserExpired"
+//  FAILEDOPERATION_USERINVALID = "FailedOperation.UserInvalid"
+//  FAILEDOPERATION_USERLOCKED = "FailedOperation.UserLocked"
+//  FAILEDOPERATION_USERNOTEXIST = "FailedOperation.UserNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteOperationTasks(request *DeleteOperationTasksRequest) (response *DeleteOperationTasksResponse, err error) {
+    return c.DeleteOperationTasksWithContext(context.Background(), request)
+}
+
+// DeleteOperationTasks
+// 删除运维任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  FAILEDOPERATION_USEREXPIRED = "FailedOperation.UserExpired"
+//  FAILEDOPERATION_USERINVALID = "FailedOperation.UserInvalid"
+//  FAILEDOPERATION_USERLOCKED = "FailedOperation.UserLocked"
+//  FAILEDOPERATION_USERNOTEXIST = "FailedOperation.UserNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteOperationTasksWithContext(ctx context.Context, request *DeleteOperationTasksRequest) (response *DeleteOperationTasksResponse, err error) {
+    if request == nil {
+        request = NewDeleteOperationTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOperationTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteOperationTasksResponse()
     err = c.Send(request, response)
     return
 }
@@ -2381,6 +2515,71 @@ func (c *Client) DescribeOperationEventWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeOperationTaskRequest() (request *DescribeOperationTaskRequest) {
+    request = &DescribeOperationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "DescribeOperationTask")
+    
+    
+    return
+}
+
+func NewDescribeOperationTaskResponse() (response *DescribeOperationTaskResponse) {
+    response = &DescribeOperationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeOperationTask
+// 获取运维任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  FAILEDOPERATION_USEREXPIRED = "FailedOperation.UserExpired"
+//  FAILEDOPERATION_USERINVALID = "FailedOperation.UserInvalid"
+//  FAILEDOPERATION_USERLOCKED = "FailedOperation.UserLocked"
+//  FAILEDOPERATION_USERNOTEXIST = "FailedOperation.UserNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeOperationTask(request *DescribeOperationTaskRequest) (response *DescribeOperationTaskResponse, err error) {
+    return c.DescribeOperationTaskWithContext(context.Background(), request)
+}
+
+// DescribeOperationTask
+// 获取运维任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  FAILEDOPERATION_USEREXPIRED = "FailedOperation.UserExpired"
+//  FAILEDOPERATION_USERINVALID = "FailedOperation.UserInvalid"
+//  FAILEDOPERATION_USERLOCKED = "FailedOperation.UserLocked"
+//  FAILEDOPERATION_USERNOTEXIST = "FailedOperation.UserNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeOperationTaskWithContext(ctx context.Context, request *DescribeOperationTaskRequest) (response *DescribeOperationTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeOperationTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOperationTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOperationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeResourcesRequest() (request *DescribeResourcesRequest) {
     request = &DescribeResourcesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3174,6 +3373,81 @@ func (c *Client) ModifyOAuthSettingWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyOperationTaskRequest() (request *ModifyOperationTaskRequest) {
+    request = &ModifyOperationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "ModifyOperationTask")
+    
+    
+    return
+}
+
+func NewModifyOperationTaskResponse() (response *ModifyOperationTaskResponse) {
+    response = &ModifyOperationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyOperationTask
+// 修改运维任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  FAILEDOPERATION_RESOURCENOTPRO = "FailedOperation.ResourceNotPro"
+//  FAILEDOPERATION_USEREXPIRED = "FailedOperation.UserExpired"
+//  FAILEDOPERATION_USERINVALID = "FailedOperation.UserInvalid"
+//  FAILEDOPERATION_USERLOCKED = "FailedOperation.UserLocked"
+//  FAILEDOPERATION_USERNOTEXIST = "FailedOperation.UserNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyOperationTask(request *ModifyOperationTaskRequest) (response *ModifyOperationTaskResponse, err error) {
+    return c.ModifyOperationTaskWithContext(context.Background(), request)
+}
+
+// ModifyOperationTask
+// 修改运维任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  FAILEDOPERATION_RESOURCENOTPRO = "FailedOperation.ResourceNotPro"
+//  FAILEDOPERATION_USEREXPIRED = "FailedOperation.UserExpired"
+//  FAILEDOPERATION_USERINVALID = "FailedOperation.UserInvalid"
+//  FAILEDOPERATION_USERLOCKED = "FailedOperation.UserLocked"
+//  FAILEDOPERATION_USERNOTEXIST = "FailedOperation.UserNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyOperationTaskWithContext(ctx context.Context, request *ModifyOperationTaskRequest) (response *ModifyOperationTaskResponse, err error) {
+    if request == nil {
+        request = NewModifyOperationTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyOperationTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyOperationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyResourceRequest() (request *ModifyResourceRequest) {
     request = &ModifyResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3629,6 +3903,71 @@ func (c *Client) RunChangePwdTaskWithContext(ctx context.Context, request *RunCh
     request.SetContext(ctx)
     
     response = NewRunChangePwdTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRunOperationTaskRequest() (request *RunOperationTaskRequest) {
+    request = &RunOperationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "RunOperationTask")
+    
+    
+    return
+}
+
+func NewRunOperationTaskResponse() (response *RunOperationTaskResponse) {
+    response = &RunOperationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RunOperationTask
+// 执行运维任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  FAILEDOPERATION_USEREXPIRED = "FailedOperation.UserExpired"
+//  FAILEDOPERATION_USERINVALID = "FailedOperation.UserInvalid"
+//  FAILEDOPERATION_USERLOCKED = "FailedOperation.UserLocked"
+//  FAILEDOPERATION_USERNOTEXIST = "FailedOperation.UserNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) RunOperationTask(request *RunOperationTaskRequest) (response *RunOperationTaskResponse, err error) {
+    return c.RunOperationTaskWithContext(context.Background(), request)
+}
+
+// RunOperationTask
+// 执行运维任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  FAILEDOPERATION_USEREXPIRED = "FailedOperation.UserExpired"
+//  FAILEDOPERATION_USERINVALID = "FailedOperation.UserInvalid"
+//  FAILEDOPERATION_USERLOCKED = "FailedOperation.UserLocked"
+//  FAILEDOPERATION_USERNOTEXIST = "FailedOperation.UserNotExist"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) RunOperationTaskWithContext(ctx context.Context, request *RunOperationTaskRequest) (response *RunOperationTaskResponse, err error) {
+    if request == nil {
+        request = NewRunOperationTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunOperationTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRunOperationTaskResponse()
     err = c.Send(request, response)
     return
 }

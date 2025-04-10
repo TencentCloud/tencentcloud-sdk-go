@@ -870,7 +870,7 @@ func NewCreateAuditLogFileResponse() (response *CreateAuditLogFileResponse) {
 }
 
 // CreateAuditLogFile
-// 本接口(CreateAuditLogFile)用于创建云数据库实例的审计日志文件。
+// 本接口（CreateAuditLogFile）用于创建云数据库实例的审计日志文件。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEAUDITLOGFILEERROR = "FailedOperation.CreateAuditLogFileError"
@@ -899,7 +899,7 @@ func (c *Client) CreateAuditLogFile(request *CreateAuditLogFileRequest) (respons
 }
 
 // CreateAuditLogFile
-// 本接口(CreateAuditLogFile)用于创建云数据库实例的审计日志文件。
+// 本接口（CreateAuditLogFile）用于创建云数据库实例的审计日志文件。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEAUDITLOGFILEERROR = "FailedOperation.CreateAuditLogFileError"

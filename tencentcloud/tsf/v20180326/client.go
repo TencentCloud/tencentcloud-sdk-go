@@ -7618,6 +7618,10 @@ func NewDescribeInovcationIndicatorsResponse() (response *DescribeInovcationIndi
 }
 
 // DescribeInovcationIndicators
+// 废弃接口
+//
+// 
+//
 // 废弃
 //
 // 可能返回的错误码:
@@ -7632,6 +7636,10 @@ func (c *Client) DescribeInovcationIndicators(request *DescribeInovcationIndicat
 }
 
 // DescribeInovcationIndicators
+// 废弃接口
+//
+// 
+//
 // 废弃
 //
 // 可能返回的错误码:

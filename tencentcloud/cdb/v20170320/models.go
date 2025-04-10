@@ -1959,6 +1959,9 @@ type CreateAuditLogFileRequestParams struct {
 
 	// 过滤条件。可按设置的过滤条件过滤日志。
 	LogFilter []*InstanceAuditLogFilters `json:"LogFilter,omitnil,omitempty" name:"LogFilter"`
+
+	// 下载筛选列
+	ColumnFilter []*string `json:"ColumnFilter,omitnil,omitempty" name:"ColumnFilter"`
 }
 
 type CreateAuditLogFileRequest struct {
@@ -1987,6 +1990,9 @@ type CreateAuditLogFileRequest struct {
 
 	// 过滤条件。可按设置的过滤条件过滤日志。
 	LogFilter []*InstanceAuditLogFilters `json:"LogFilter,omitnil,omitempty" name:"LogFilter"`
+
+	// 下载筛选列
+	ColumnFilter []*string `json:"ColumnFilter,omitnil,omitempty" name:"ColumnFilter"`
 }
 
 func (r *CreateAuditLogFileRequest) ToJsonString() string {
@@ -2008,6 +2014,7 @@ func (r *CreateAuditLogFileRequest) FromJsonString(s string) error {
 	delete(f, "OrderBy")
 	delete(f, "Filter")
 	delete(f, "LogFilter")
+	delete(f, "ColumnFilter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAuditLogFileRequest has unknown keys!", "")
 	}

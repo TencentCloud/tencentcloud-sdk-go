@@ -1820,35 +1820,27 @@ type ContainGroupResult struct {
 
 type ContainerEvent struct {
 	// 第一次出现的时间，以 ms 为单位的时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstTimestamp *int64 `json:"FirstTimestamp,omitnil,omitempty" name:"FirstTimestamp"`
 
 	// 最后一次出现的时间，以 ms 为单位的时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastTimestamp *int64 `json:"LastTimestamp,omitnil,omitempty" name:"LastTimestamp"`
 
 	// 级别
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 资源类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 
 	// 资源名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 详细描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 出现次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
 }
 
@@ -5382,11 +5374,9 @@ type CurvePoint struct {
 
 type CustomPodSchedule struct {
 	// -
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ForceSchedule *ForceSchedule `json:"ForceSchedule,omitnil,omitempty" name:"ForceSchedule"`
 
 	// -
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrySchedule *TrySchedule `json:"TrySchedule,omitnil,omitempty" name:"TrySchedule"`
 }
 
@@ -8126,7 +8116,6 @@ func (r *DescribeBasicResourceUsageRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBasicResourceUsageResponseParams struct {
 	// TSF基本资源信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *OverviewBasicResourceUsage `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12448,10 +12437,10 @@ func (r *DescribeMsApiListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOverviewInvocationRequestParams struct {
-	// 命名空间ID
+	// 命名空间ID， 此参数必填
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 监控统计类型，可选值：SumReqAmount、AvgFailureRate、AvgTimeCost，分别对应请求量、请求错误率、平均响应耗时
+	// 监控统计类型，必填，可选值：SumReqAmount、AvgFailureRate、AvgTimeCost，分别对应请求量、请求错误率、平均响应耗时
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 监控统计数据粒度，可选值：60、3600、86400，分别对应1分钟、1小时、1天
@@ -12467,10 +12456,10 @@ type DescribeOverviewInvocationRequestParams struct {
 type DescribeOverviewInvocationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 命名空间ID
+	// 命名空间ID， 此参数必填
 	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
 
-	// 监控统计类型，可选值：SumReqAmount、AvgFailureRate、AvgTimeCost，分别对应请求量、请求错误率、平均响应耗时
+	// 监控统计类型，必填，可选值：SumReqAmount、AvgFailureRate、AvgTimeCost，分别对应请求量、请求错误率、平均响应耗时
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 监控统计数据粒度，可选值：60、3600、86400，分别对应1分钟、1小时、1天
@@ -12509,7 +12498,6 @@ func (r *DescribeOverviewInvocationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeOverviewInvocationResponseParams struct {
 	// 监控统计数据列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result []*MetricDataPoint `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16099,7 +16087,6 @@ func (r *ExpandGroupResponse) FromJsonString(s string) error {
 
 type FieldRef struct {
 	// k8s 的 FieldPath
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FieldPath *string `json:"FieldPath,omitnil,omitempty" name:"FieldPath"`
 }
 
@@ -16233,11 +16220,9 @@ type Filter struct {
 
 type ForceSchedule struct {
 	// -
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AffinityList []*Affinity `json:"AffinityList,omitnil,omitempty" name:"AffinityList"`
 
 	// -
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AntiAffinityList []*Affinity `json:"AntiAffinityList,omitnil,omitempty" name:"AntiAffinityList"`
 }
 
@@ -16263,7 +16248,6 @@ type GatewayApiGroupVo struct {
 
 type GatewayConfig struct {
 	// 服务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
@@ -17094,7 +17078,6 @@ type InvocationMetricScatterPlot struct {
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 多值数据点集合
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataPoints []*MultiValueDataPoints `json:"DataPoints,omitnil,omitempty" name:"DataPoints"`
 }
 
@@ -17688,7 +17671,7 @@ func (r *ModifyClusterResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyContainerGroupRequestParams struct {
-	// 部署组ID
+	// 部署组ID 必填项
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 0:公网 1:集群内访问 2：NodePort
@@ -17713,7 +17696,7 @@ type ModifyContainerGroupRequestParams struct {
 type ModifyContainerGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 部署组ID
+	// 部署组ID 必填项
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 0:公网 1:集群内访问 2：NodePort
@@ -17765,7 +17748,6 @@ type ModifyContainerGroupResponseParams struct {
 	// 更新部署组是否成功。
 	// true：成功。
 	// false：失败。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -18831,7 +18813,6 @@ type MsInstance struct {
 
 type MultiValue struct {
 	// 数据点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*float64 `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
@@ -18966,15 +18947,12 @@ func (r *OperateApplicationTcrBindingResponse) FromJsonString(s string) error {
 
 type OperationInfo struct {
 	// 初始化按钮的控制信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Init *OperationInfoDetail `json:"Init,omitnil,omitempty" name:"Init"`
 
 	// 添加实例按钮的控制信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddInstance *OperationInfoDetail `json:"AddInstance,omitnil,omitempty" name:"AddInstance"`
 
 	// 销毁机器的控制信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Destroy *OperationInfoDetail `json:"Destroy,omitnil,omitempty" name:"Destroy"`
 }
 
@@ -20034,7 +20012,6 @@ type Resource struct {
 
 type ResourceFieldRef struct {
 	// k8s 的 Resource
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 }
 
@@ -21529,11 +21506,9 @@ type TaskRecord struct {
 	TimeOut *int64 `json:"TimeOut,omitnil,omitempty" name:"TimeOut"`
 
 	// 重试次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetryCount *int64 `json:"RetryCount,omitnil,omitempty" name:"RetryCount"`
 
 	// 重试间隔
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RetryInterval *int64 `json:"RetryInterval,omitnil,omitempty" name:"RetryInterval"`
 
 	// 触发规则
@@ -21546,39 +21521,30 @@ type TaskRecord struct {
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 判断任务成功的操作符
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuccessOperator *string `json:"SuccessOperator,omitnil,omitempty" name:"SuccessOperator"`
 
 	// 判断任务成功的阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuccessRatio *int64 `json:"SuccessRatio,omitnil,omitempty" name:"SuccessRatio"`
 
 	// 分片数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShardCount *int64 `json:"ShardCount,omitnil,omitempty" name:"ShardCount"`
 
 	// 高级设置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvanceSettings *AdvanceSettings `json:"AdvanceSettings,omitnil,omitempty" name:"AdvanceSettings"`
 
 	// 分片参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShardArguments []*ShardArgument `json:"ShardArguments,omitnil,omitempty" name:"ShardArguments"`
 
 	// 所属工作流ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BelongFlowIds []*string `json:"BelongFlowIds,omitnil,omitempty" name:"BelongFlowIds"`
 
 	// 任务历史ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskLogId *string `json:"TaskLogId,omitnil,omitempty" name:"TaskLogId"`
 
 	// 触发类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerType *string `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
 
 	// 任务参数，长度限制10000个字符
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskArgument *string `json:"TaskArgument,omitnil,omitempty" name:"TaskArgument"`
 }
 
@@ -21595,7 +21561,6 @@ type TaskRule struct {
 	RuleType *string `json:"RuleType,omitnil,omitempty" name:"RuleType"`
 
 	// Cron类型规则，cron表达式。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Expression *string `json:"Expression,omitnil,omitempty" name:"Expression"`
 
 	// 时间间隔， 单位毫秒
@@ -21693,11 +21658,9 @@ type ThreadPicture struct {
 
 type TrySchedule struct {
 	// -
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AffinityList []*Affinity `json:"AffinityList,omitnil,omitempty" name:"AffinityList"`
 
 	// -
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AntiAffinityList []*Affinity `json:"AntiAffinityList,omitnil,omitempty" name:"AntiAffinityList"`
 }
 
@@ -21759,15 +21722,12 @@ type TsfPageApiGroupInfo struct {
 
 type TsfPageApplication struct {
 	// 应用总数目
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 应用信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*ApplicationForPage `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 获取部署组实例列表返回的原始批次个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpecTotalCount *int64 `json:"SpecTotalCount,omitnil,omitempty" name:"SpecTotalCount"`
 }
 
@@ -21795,7 +21755,6 @@ type TsfPageBusinessLogV2 struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 查询es时，使用searchAfter返回的游标
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SearchAfter []*string `json:"SearchAfter,omitnil,omitempty" name:"SearchAfter"`
 }
 
@@ -21961,7 +21920,6 @@ type TsfPageStdoutLogV2 struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 游标ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SearchAfter []*string `json:"SearchAfter,omitnil,omitempty" name:"SearchAfter"`
 }
 
@@ -22729,7 +22687,6 @@ type UpdateHealthCheckSettingsResponseParams struct {
 	// 更新健康检查配置操作是否成功。
 	// true：操作成功。
 	// false：操作失败。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -22896,7 +22853,6 @@ func (r *UpdateUnitRuleResponse) FromJsonString(s string) error {
 
 type ValueFrom struct {
 	// k8s env 的 FieldRef
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FieldRef *FieldRef `json:"FieldRef,omitnil,omitempty" name:"FieldRef"`
 
 	// k8s env 的 ResourceFieldRef
@@ -22904,11 +22860,9 @@ type ValueFrom struct {
 	ResourceFieldRef *ResourceFieldRef `json:"ResourceFieldRef,omitnil,omitempty" name:"ResourceFieldRef"`
 
 	// k8s env的configMapKeyRef
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigMapKeyRef *CommonRef `json:"ConfigMapKeyRef,omitnil,omitempty" name:"ConfigMapKeyRef"`
 
 	// k8s env 的 secretKeyRef
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretKeyRef *CommonRef `json:"SecretKeyRef,omitnil,omitempty" name:"SecretKeyRef"`
 }
 
@@ -23043,27 +22997,21 @@ type VmGroup struct {
 	EnableBatchHealthCheck *bool `json:"EnableBatchHealthCheck,omitnil,omitempty" name:"EnableBatchHealthCheck"`
 
 	// 是否开启cgroup控制内存cpu
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilebeatCgroupEnable *bool `json:"FilebeatCgroupEnable,omitnil,omitempty" name:"FilebeatCgroupEnable"`
 
 	// filebeat使用cpu上限
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilebeatMaxCpu *float64 `json:"FilebeatMaxCpu,omitnil,omitempty" name:"FilebeatMaxCpu"`
 
 	// filebeat使用内存上限
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilebeatMaxMem *int64 `json:"FilebeatMaxMem,omitnil,omitempty" name:"FilebeatMaxMem"`
 
 	// 仓库ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepositoryId *string `json:"RepositoryId,omitnil,omitempty" name:"RepositoryId"`
 
 	// 仓库名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepositoryName *string `json:"RepositoryName,omitnil,omitempty" name:"RepositoryName"`
 
 	// 仓库类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepositoryType *string `json:"RepositoryType,omitnil,omitempty" name:"RepositoryType"`
 }
 
