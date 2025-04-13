@@ -3985,6 +3985,14 @@ func (r *DescribeUnsatisfiedReplyContextResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DocFilterFlag struct {
+	// 标识位
+	Flag *string `json:"Flag,omitnil,omitempty" name:"Flag"`
+
+	// 标识值
+	Value *bool `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type DocSegment struct {
 	// 片段ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4756,6 +4764,9 @@ type GetDocPreviewResponseParams struct {
 
 	// 存在文档重命名情况下的新名称, 评测端优先使用这个名称
 	NewName *string `json:"NewName,omitnil,omitempty" name:"NewName"`
+
+	// 文件md结果cos临时地址
+	ParseResultCosUrl *string `json:"ParseResultCosUrl,omitnil,omitempty" name:"ParseResultCosUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5638,6 +5649,14 @@ func (r *IgnoreUnsatisfiedReplyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type IntentAchievement struct {
+	// 意图达成方式，qa:问答回复、doc：文档回复、workflow：工作流回复，llm：大模型回复
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 意图达成方式描述
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+}
+
 type InvokeAPI struct {
 	// 请求方法，如GET/POST等
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5773,7 +5792,19 @@ type KnowledgeQaConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Greeting *string `json:"Greeting,omitnil,omitempty" name:"Greeting"`
 
-	// 角色描述，300字符以内
+	// 角色描述，4000字符以内。通过填写描述，设定应用的 #角色名称、 #风格特点 及可达成的#意图。建议按照下面的模板填写，且自定义意图建议不超过5个。
+	// 
+	// #角色名称：
+	// #风格特点：
+	// #输出要求：
+	// #能力限制：
+	// 
+	// 能够达成以下用户意图
+	// ##意图名称：
+	// ##意图描述：
+	// ##意图示例：
+	// ##意图实现：
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleDescription *string `json:"RoleDescription,omitnil,omitempty" name:"RoleDescription"`
 
@@ -5816,6 +5847,14 @@ type KnowledgeQaConfig struct {
 	// 思考模型配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ThoughtModel *AppModel `json:"ThoughtModel,omitnil,omitempty" name:"ThoughtModel"`
+
+	// 意图达成方式优先级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntentAchievements []*IntentAchievement `json:"IntentAchievements,omitnil,omitempty" name:"IntentAchievements"`
+
+	// 是否开启图文检索
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageTextRetrieval *bool `json:"ImageTextRetrieval,omitnil,omitempty" name:"ImageTextRetrieval"`
 }
 
 type KnowledgeQaOutput struct {
@@ -6491,6 +6530,12 @@ type ListDocRequestParams struct {
 
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
+
+	// 文件类型分类筛选
+	FileTypes []*string `json:"FileTypes,omitnil,omitempty" name:"FileTypes"`
+
+	// 文档列表筛选标识位
+	FilterFlag []*DocFilterFlag `json:"FilterFlag,omitnil,omitempty" name:"FilterFlag"`
 }
 
 type ListDocRequest struct {
@@ -6516,6 +6561,12 @@ type ListDocRequest struct {
 
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
+
+	// 文件类型分类筛选
+	FileTypes []*string `json:"FileTypes,omitnil,omitempty" name:"FileTypes"`
+
+	// 文档列表筛选标识位
+	FilterFlag []*DocFilterFlag `json:"FilterFlag,omitnil,omitempty" name:"FilterFlag"`
 }
 
 func (r *ListDocRequest) ToJsonString() string {
@@ -6537,6 +6588,8 @@ func (r *ListDocRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "QueryType")
 	delete(f, "CateBizId")
+	delete(f, "FileTypes")
+	delete(f, "FilterFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListDocRequest has unknown keys!", "")
 	}
@@ -8932,6 +8985,9 @@ type PluginToolReqParam struct {
 
 	// 子参数,ParamType 是OBJECT 或 ARRAY<>类型有用
 	SubParams []*PluginToolReqParam `json:"SubParams,omitnil,omitempty" name:"SubParams"`
+
+	// 插件参数配置是否隐藏不可见，true-隐藏不可见，false-可见
+	GlobalHidden *bool `json:"GlobalHidden,omitnil,omitempty" name:"GlobalHidden"`
 }
 
 type Polygon struct {

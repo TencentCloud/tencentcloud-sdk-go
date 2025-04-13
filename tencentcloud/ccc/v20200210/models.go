@@ -73,6 +73,48 @@ type AICallExtractResultInfo struct {
 	Number *float64 `json:"Number,omitnil,omitempty" name:"Number"`
 }
 
+type AILatencyDetail struct {
+	// 对话ID
+	RoundId *string `json:"RoundId,omitnil,omitempty" name:"RoundId"`
+
+	// asr时延（毫秒）
+	ASRLatency *int64 `json:"ASRLatency,omitnil,omitempty" name:"ASRLatency"`
+
+	// tts时延（毫秒）
+	TTSLatency *int64 `json:"TTSLatency,omitnil,omitempty" name:"TTSLatency"`
+
+	// llm时延（毫秒）
+	LLMLatency *int64 `json:"LLMLatency,omitnil,omitempty" name:"LLMLatency"`
+
+	// 端到端时延（毫秒）
+	ETELatency *int64 `json:"ETELatency,omitnil,omitempty" name:"ETELatency"`
+}
+
+type AILatencyStatistics struct {
+	// asr时延统计
+	ASRLatency *AILatencyStatisticsInfo `json:"ASRLatency,omitnil,omitempty" name:"ASRLatency"`
+
+	// tts时延统计
+	TTSLatency *AILatencyStatisticsInfo `json:"TTSLatency,omitnil,omitempty" name:"TTSLatency"`
+
+	// llm时延统计
+	LLMLatency *AILatencyStatisticsInfo `json:"LLMLatency,omitnil,omitempty" name:"LLMLatency"`
+
+	// 端到端时延统计
+	ETELatency *AILatencyStatisticsInfo `json:"ETELatency,omitnil,omitempty" name:"ETELatency"`
+}
+
+type AILatencyStatisticsInfo struct {
+	// 最小值
+	MinLatency *int64 `json:"MinLatency,omitnil,omitempty" name:"MinLatency"`
+
+	// 中位数
+	MiddleLatency *int64 `json:"MiddleLatency,omitnil,omitempty" name:"MiddleLatency"`
+
+	// p90
+	P90Latency *int64 `json:"P90Latency,omitnil,omitempty" name:"P90Latency"`
+}
+
 type AITransferItem struct {
 	// 转人工的function calling 名称
 	TransferFunctionName *string `json:"TransferFunctionName,omitnil,omitempty" name:"TransferFunctionName"`
@@ -2909,6 +2951,89 @@ func (r *DescribeAICallExtractResultResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAILatencyRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 会话 ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 查找起始时间	
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 1737350008
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type DescribeAILatencyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 会话 ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 查找起始时间	
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 1737350008
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeAILatencyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAILatencyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "SessionId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAILatencyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAILatencyResponseParams struct {
+	// 时延明细数据
+	//  -1表示无对应数据
+	AILatencyDetail []*AILatencyDetail `json:"AILatencyDetail,omitnil,omitempty" name:"AILatencyDetail"`
+
+	// 时延统计数据
+	//  -1表示无对应数据
+	AILatencyStatistics *AILatencyStatistics `json:"AILatencyStatistics,omitnil,omitempty" name:"AILatencyStatistics"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAILatencyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAILatencyResponseParams `json:"Response"`
+}
+
+func (r *DescribeAILatencyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAILatencyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeActiveCarrierPrivilegeNumberRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -5409,6 +5534,67 @@ type Filter struct {
 }
 
 // Predefined struct for user
+type ForceMemberOfflineRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 客服ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+type ForceMemberOfflineRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 客服ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+func (r *ForceMemberOfflineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ForceMemberOfflineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "UserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ForceMemberOfflineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ForceMemberOfflineResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ForceMemberOfflineResponse struct {
+	*tchttp.BaseResponse
+	Response *ForceMemberOfflineResponseParams `json:"Response"`
+}
+
+func (r *ForceMemberOfflineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ForceMemberOfflineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type HangUpCallRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -6249,6 +6435,67 @@ func (r *ResetExtensionPasswordResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ResetExtensionPasswordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestoreMemberOnlineRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 客服ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+type RestoreMemberOnlineRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 客服ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+func (r *RestoreMemberOnlineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestoreMemberOnlineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "UserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestoreMemberOnlineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestoreMemberOnlineResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RestoreMemberOnlineResponse struct {
+	*tchttp.BaseResponse
+	Response *RestoreMemberOnlineResponseParams `json:"Response"`
+}
+
+func (r *RestoreMemberOnlineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestoreMemberOnlineResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

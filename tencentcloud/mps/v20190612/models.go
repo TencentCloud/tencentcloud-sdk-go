@@ -380,7 +380,7 @@ type AdaptiveStreamTemplate struct {
 	RemoveVideo *uint64 `json:"RemoveVideo,omitnil,omitempty" name:"RemoveVideo"`
 
 	// 音频参数信息列表。
-	// 注意：参数数组长度最大为64。
+	// 注意：参数只在自适应转码使用音轨合并多音轨时使用, 参数数组长度最大为64。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioList []*AudioTemplateInfo `json:"AudioList,omitnil,omitempty" name:"AudioList"`
 }
@@ -2193,14 +2193,22 @@ type AudioTemplateInfo struct {
 	// <li>mp2。</li>
 	// 当外层参数 Container 为 hls 时，可选值为：
 	// <li>aac；</li>
-	// <li>mp3。</li>
+	// <li>mp3;</li>
+	// <li>eac3：自适应转码音轨合并时使用。</li>
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
 	// 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。
 	// 当取值为 0，表示音频码率和原始音频保持一致。
+	// 注意：如果使用自适应转码音轨合并TrackChannelInfo参数，取值范围：
+	// 1）、不能填0；
+	// 2）、Codec为：aac时，取值范围：[26, 256];
+	// 3）、Codec为：ac3时，取值范围：[26, 640];
+	// 4)、Codec为：eac3时，取值范围：[26, 6144]，备注：当SampleRate为44100HZ，最大值为：5644，当SampleRate为48000HZ，最大值为：6144，
+	// 
 	Bitrate *int64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 
 	// 音频流的采样率，不同编码标准支持的采样率选项不同。详细参考[音频采样率支持范围文档]https://cloud.tencent.com/document/product/862/77166#f3b039f1-d817-4a96-b4e4-90132d31cd53
+	// 单位：Hz
 	// 注意：请确保源音频流的采样率在上述选项范围内，否则可能导致转码失败！
 	SampleRate *uint64 `json:"SampleRate,omitnil,omitempty" name:"SampleRate"`
 
@@ -2270,10 +2278,10 @@ type AudioTrackChannelInfo struct {
 	ChannelsRemix *int64 `json:"ChannelsRemix,omitnil,omitempty" name:"ChannelsRemix"`
 
 	// 合并音轨输入类型，可选值：
-	// trask：表示使用音轨id；
-	// trask_channel： 表示使用音轨id和声道id；
-	// 默认：trask。
-	// 注意：如果原视频是多声道，建议使用trask_channel。
+	// track：表示使用音轨id；
+	// track_channel： 表示使用音轨id和声道id；
+	// 默认：track。
+	// 注意：如果原视频是多声道，建议使用track_channel。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SelectType *string `json:"SelectType,omitnil,omitempty" name:"SelectType"`
 
@@ -19009,7 +19017,7 @@ type SvgWatermarkInputForUpdate struct {
 	// <li>当字符串以 S% 结尾，表示水印 Height 为视频短边的百分比大小，如 10S% 表示 Height 为视频短边的 10%；</li>
 	// <li>当字符串以 L% 结尾，表示水印 Height 为视频长边的百分比大小，如 10L% 表示 Height 为视频长边的 10%；</li>
 	// <li>当字符串以 % 结尾时，含义同 H%。
-	// 默认值为 0px。
+	// 默认值为 0px。</li>
 	Height *string `json:"Height,omitnil,omitempty" name:"Height"`
 }
 
@@ -19272,9 +19280,9 @@ type TrackInfo struct {
 	TrackNum *string `json:"TrackNum,omitnil,omitempty" name:"TrackNum"`
 
 	// 声道音量大小，说明：
-	// 当：AudioChannel的值为1时，此值长度为1；
-	// 当：AudioChannel的值为2时，此值长度为2；
-	// 当：AudioChannel的值为6时，此值长度大于2。
+	// 当：AudioChannel的值为1时，此数组长度为1，例如：[6]；
+	// 当：AudioChannel的值为2时，此数组长度为2，例如：[0,6]；
+	// 当：AudioChannel的值为6时，此数组长度大于2小于16，例如：[-60,0,0,6]。
 	// 此值数组值取值范围：[-60, 6]，其中-60代表静音、0代表保持原音量，6表示原音量增加一倍，默认值为-60。
 	// 注意：支持3位小数。
 	// 

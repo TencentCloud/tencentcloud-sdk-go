@@ -4663,12 +4663,9 @@ type StartAITranscriptionRequestParams struct {
 	// 转录机器人的参数。
 	TranscriptionParams *TranscriptionParams `json:"TranscriptionParams,omitnil,omitempty" name:"TranscriptionParams"`
 
-	// 调用方传入的唯一Id，服务端用来去重。
+	// 调用方传入的唯一Id，服务端用来任务去重，重复的任务会发起失败。服务端固定使用SdkAppId+RoomId+RoomIdType+RobotUserId来去重，如果传入了SessionId，也会使用SessionId去重。
 	// 注意：
-	// 如果传入该参数，服务端优先使用该参数来去重。
-	// 如果不传该参数，服务端的去重策略如下：
-	// - 如果TranscriptionMode字段是0，则一个房间只能开启一个任务
-	// - 如果TranscriptionMode字段是1，则一个TargetUserId只能开启一个任务
+	// TranscriptionMode为0时，需要保证一个房间内只发起一个任务，如果发起多个任务，则机器人之间会相互订阅，除非主动停止任务，否则只有10小时后任务才会超时退出，这种情况下建议填写SessionId，保证后续重复发起的任务失败。
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
 	// TRTC房间号的类型，0代表数字房间号，1代表字符串房间号。不填默认是数字房间号。
@@ -4690,12 +4687,9 @@ type StartAITranscriptionRequest struct {
 	// 转录机器人的参数。
 	TranscriptionParams *TranscriptionParams `json:"TranscriptionParams,omitnil,omitempty" name:"TranscriptionParams"`
 
-	// 调用方传入的唯一Id，服务端用来去重。
+	// 调用方传入的唯一Id，服务端用来任务去重，重复的任务会发起失败。服务端固定使用SdkAppId+RoomId+RoomIdType+RobotUserId来去重，如果传入了SessionId，也会使用SessionId去重。
 	// 注意：
-	// 如果传入该参数，服务端优先使用该参数来去重。
-	// 如果不传该参数，服务端的去重策略如下：
-	// - 如果TranscriptionMode字段是0，则一个房间只能开启一个任务
-	// - 如果TranscriptionMode字段是1，则一个TargetUserId只能开启一个任务
+	// TranscriptionMode为0时，需要保证一个房间内只发起一个任务，如果发起多个任务，则机器人之间会相互订阅，除非主动停止任务，否则只有10小时后任务才会超时退出，这种情况下建议填写SessionId，保证后续重复发起的任务失败。
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
 
 	// TRTC房间号的类型，0代表数字房间号，1代表字符串房间号。不填默认是数字房间号。

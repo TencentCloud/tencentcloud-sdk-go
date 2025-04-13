@@ -47,6 +47,9 @@ const (
 	// LogoUrl 或 LogoImage 有误，水印图下载失败。
 	FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
 
+	// 任务不存在。
+	FAILEDOPERATION_JOBNOTFOUND = "FailedOperation.JobNotFound"
+
 	// 合作伙伴账号不允许开通，请更换账号。
 	FAILEDOPERATION_PARTNERACCOUNTUNSUPPORT = "FailedOperation.PartnerAccountUnSupport"
 
@@ -80,11 +83,23 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 不支持的图片格式。
+	INVALIDPARAMETERVALUE_INVALIDIMAGEFORMAT = "InvalidParameterValue.InvalidImageFormat"
+
+	// 不支持的图片分辨率。
+	INVALIDPARAMETERVALUE_INVALIDIMAGERESOLUTION = "InvalidParameterValue.InvalidImageResolution"
+
+	// 图片大小超出限制。
+	INVALIDPARAMETERVALUE_INVALIDIMAGESIZE = "InvalidParameterValue.InvalidImageSize"
+
 	// 模型不存在。
 	INVALIDPARAMETERVALUE_MODEL = "InvalidParameterValue.Model"
 
 	// 参数字段或者值有误
 	INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+
+	// URL格式不合法。
+	INVALIDPARAMETERVALUE_URLILLEGAL = "InvalidParameterValue.UrlIllegal"
 
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
@@ -95,8 +110,20 @@ const (
 	// 文本包含违法违规信息，审核不通过。
 	OPERATIONDENIED_TEXTILLEGALDETECTED = "OperationDenied.TextIllegalDetected"
 
+	// 同时处理的任务数过多，请稍后重试。
+	REQUESTLIMITEXCEEDED_JOBNUMEXCEED = "RequestLimitExceeded.JobNumExceed"
+
+	// 资源不足。
+	RESOURCEINSUFFICIENT = "ResourceInsufficient"
+
 	// 计费资源已耗尽。
 	RESOURCEINSUFFICIENT_CHARGERESOURCEEXHAUST = "ResourceInsufficient.ChargeResourceExhaust"
+
+	// 资源不存在。
+	RESOURCENOTFOUND = "ResourceNotFound"
+
+	// 资源不可用。
+	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
 	// 账号已欠费。
 	RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"

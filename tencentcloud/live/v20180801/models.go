@@ -2685,13 +2685,7 @@ type CreateLivePullStreamTaskRequestParams struct {
 	// 注意：北京时间值为 UTC 时间值 + 8 小时。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间，注意：
-	// 1. 结束时间必须大于开始时间；
-	// 2. 结束时间必须大于当前时间；
-	// 3. 结束时间 和 开始时间 间隔必须小于七天。
-	// 使用 UTC 格式时间，
-	// 例如：2019-01-08T10:00:00Z。
-	// 注意：北京时间值为 UTC 时间值 + 8 小时。
+	// 结束时间，注意：1. 结束时间必须大于开始时间；2. 结束时间必须大于当前时间；3. 结束时间 和 开始时间 间隔必须小于30天。使用 UTC 格式时间，例如：2019-01-08T10:00:00Z。注意：北京时间值为 UTC 时间值 + 8 小时。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 任务操作人备注。
@@ -2851,13 +2845,7 @@ type CreateLivePullStreamTaskRequest struct {
 	// 注意：北京时间值为 UTC 时间值 + 8 小时。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间，注意：
-	// 1. 结束时间必须大于开始时间；
-	// 2. 结束时间必须大于当前时间；
-	// 3. 结束时间 和 开始时间 间隔必须小于七天。
-	// 使用 UTC 格式时间，
-	// 例如：2019-01-08T10:00:00Z。
-	// 注意：北京时间值为 UTC 时间值 + 8 小时。
+	// 结束时间，注意：1. 结束时间必须大于开始时间；2. 结束时间必须大于当前时间；3. 结束时间 和 开始时间 间隔必须小于30天。使用 UTC 格式时间，例如：2019-01-08T10:00:00Z。注意：北京时间值为 UTC 时间值 + 8 小时。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 任务操作人备注。

@@ -11173,7 +11173,7 @@ func NewDescribeHostLoginListResponse() (response *DescribeHostLoginListResponse
 }
 
 // DescribeHostLoginList
-// 获取登录审计列表
+// 获取异常登录列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -11188,7 +11188,7 @@ func (c *Client) DescribeHostLoginList(request *DescribeHostLoginListRequest) (r
 }
 
 // DescribeHostLoginList
-// 获取登录审计列表
+// 获取异常登录列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

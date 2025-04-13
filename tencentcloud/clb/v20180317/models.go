@@ -9456,6 +9456,10 @@ type TargetRegionInfo struct {
 
 	// Target所属网络，私有网络格式如 vpc-abcd1234，如果是基础网络，则为"0"
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// Target所属网络，私有网络格式如86323，如果是基础网络，则为0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumericalVpcId *int64 `json:"NumericalVpcId,omitnil,omitempty" name:"NumericalVpcId"`
 }
 
 type TypeInfo struct {

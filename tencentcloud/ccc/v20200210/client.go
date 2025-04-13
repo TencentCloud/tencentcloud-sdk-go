@@ -1503,6 +1503,59 @@ func (c *Client) DescribeAICallExtractResultWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeAILatencyRequest() (request *DescribeAILatencyRequest) {
+    request = &DescribeAILatencyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeAILatency")
+    
+    
+    return
+}
+
+func NewDescribeAILatencyResponse() (response *DescribeAILatencyResponse) {
+    response = &DescribeAILatencyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAILatency
+// 获取 AI 时延信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeAILatency(request *DescribeAILatencyRequest) (response *DescribeAILatencyResponse, err error) {
+    return c.DescribeAILatencyWithContext(context.Background(), request)
+}
+
+// DescribeAILatency
+// 获取 AI 时延信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeAILatencyWithContext(ctx context.Context, request *DescribeAILatencyRequest) (response *DescribeAILatencyResponse, err error) {
+    if request == nil {
+        request = NewDescribeAILatencyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAILatency require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAILatencyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeActiveCarrierPrivilegeNumberRequest() (request *DescribeActiveCarrierPrivilegeNumberRequest) {
     request = &DescribeActiveCarrierPrivilegeNumberRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1526,9 +1579,9 @@ func NewDescribeActiveCarrierPrivilegeNumberResponse() (response *DescribeActive
 // 查询生效运营商白名单规则
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DescribeActiveCarrierPrivilegeNumber(request *DescribeActiveCarrierPrivilegeNumberRequest) (response *DescribeActiveCarrierPrivilegeNumberResponse, err error) {
     return c.DescribeActiveCarrierPrivilegeNumberWithContext(context.Background(), request)
 }
@@ -1537,9 +1590,9 @@ func (c *Client) DescribeActiveCarrierPrivilegeNumber(request *DescribeActiveCar
 // 查询生效运营商白名单规则
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DescribeActiveCarrierPrivilegeNumberWithContext(ctx context.Context, request *DescribeActiveCarrierPrivilegeNumberRequest) (response *DescribeActiveCarrierPrivilegeNumberResponse, err error) {
     if request == nil {
         request = NewDescribeActiveCarrierPrivilegeNumberRequest()
@@ -3055,6 +3108,59 @@ func (c *Client) DisableCCCPhoneNumberWithContext(ctx context.Context, request *
     return
 }
 
+func NewForceMemberOfflineRequest() (request *ForceMemberOfflineRequest) {
+    request = &ForceMemberOfflineRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "ForceMemberOffline")
+    
+    
+    return
+}
+
+func NewForceMemberOfflineResponse() (response *ForceMemberOfflineResponse) {
+    response = &ForceMemberOfflineResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ForceMemberOffline
+// 强制客服下线
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ForceMemberOffline(request *ForceMemberOfflineRequest) (response *ForceMemberOfflineResponse, err error) {
+    return c.ForceMemberOfflineWithContext(context.Background(), request)
+}
+
+// ForceMemberOffline
+// 强制客服下线
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ForceMemberOfflineWithContext(ctx context.Context, request *ForceMemberOfflineRequest) (response *ForceMemberOfflineResponse, err error) {
+    if request == nil {
+        request = NewForceMemberOfflineRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ForceMemberOffline require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewForceMemberOfflineResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewHangUpCallRequest() (request *HangUpCallRequest) {
     request = &HangUpCallRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3491,6 +3597,59 @@ func (c *Client) ResetExtensionPasswordWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewResetExtensionPasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRestoreMemberOnlineRequest() (request *RestoreMemberOnlineRequest) {
+    request = &RestoreMemberOnlineRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "RestoreMemberOnline")
+    
+    
+    return
+}
+
+func NewRestoreMemberOnlineResponse() (response *RestoreMemberOnlineResponse) {
+    response = &RestoreMemberOnlineResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RestoreMemberOnline
+// 恢复客服上线
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) RestoreMemberOnline(request *RestoreMemberOnlineRequest) (response *RestoreMemberOnlineResponse, err error) {
+    return c.RestoreMemberOnlineWithContext(context.Background(), request)
+}
+
+// RestoreMemberOnline
+// 恢复客服上线
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) RestoreMemberOnlineWithContext(ctx context.Context, request *RestoreMemberOnlineRequest) (response *RestoreMemberOnlineResponse, err error) {
+    if request == nil {
+        request = NewRestoreMemberOnlineRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestoreMemberOnline require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRestoreMemberOnlineResponse()
     err = c.Send(request, response)
     return
 }

@@ -334,7 +334,6 @@ type CloudNativeAPIGatewayCanaryRule struct {
 	MatchMode *string `json:"MatchMode,omitnil,omitempty" name:"MatchMode"`
 
 	// 泳道标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LaneTag *string `json:"LaneTag,omitnil,omitempty" name:"LaneTag"`
 }
 
