@@ -1,53 +1,10 @@
-# Release v1.0.1143
+# Release v1.0.1144
 
-## 云联络中心(ccc) 版本：2020-02-10
+## 运维安全中心（堡垒机）(bh) 版本：2023-04-18
 
-### 第 92 次发布
+### 第 8 次发布
 
-发布时间：2025-04-14 01:13:13
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeAILatency](https://cloud.tencent.com/document/api/679/117857)
-* [ForceMemberOffline](https://cloud.tencent.com/document/api/679/117859)
-* [RestoreMemberOnline](https://cloud.tencent.com/document/api/679/117858)
-
-新增数据结构：
-
-* [AILatencyDetail](https://cloud.tencent.com/document/api/679/47715#AILatencyDetail)
-* [AILatencyStatistics](https://cloud.tencent.com/document/api/679/47715#AILatencyStatistics)
-* [AILatencyStatisticsInfo](https://cloud.tencent.com/document/api/679/47715#AILatencyStatisticsInfo)
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 125 次发布
-
-发布时间：2025-04-14 01:18:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [TargetRegionInfo](https://cloud.tencent.com/document/api/214/30694#TargetRegionInfo)
-
-	* 新增成员：NumericalVpcId
-
-
-
-
-## 腾讯混元大模型(hunyuan) 版本：2023-09-01
-
-### 第 39 次发布
-
-发布时间：2025-04-14 01:37:06
+发布时间：2025-04-15 01:10:26
 
 本次发布包含了以下内容：
 
@@ -55,21 +12,45 @@
 
 新增接口：
 
-* [QueryHunyuanTo3DJob](https://cloud.tencent.com/document/api/1729/117862)
-* [SubmitHunyuanTo3DJob](https://cloud.tencent.com/document/api/1729/117861)
+* [CreateAccessWhiteListRule](https://cloud.tencent.com/document/api/1025/117905)
+* [DeleteAccessWhiteListRules](https://cloud.tencent.com/document/api/1025/117904)
+* [DescribeAccessWhiteListRules](https://cloud.tencent.com/document/api/1025/117903)
+* [SearchTaskResult](https://cloud.tencent.com/document/api/1025/117906)
 
 新增数据结构：
 
-* [File3D](https://cloud.tencent.com/document/api/1729/101838#File3D)
-* [File3Ds](https://cloud.tencent.com/document/api/1729/101838#File3Ds)
+* [AccessWhiteListRule](https://cloud.tencent.com/document/api/1025/74416#AccessWhiteListRule)
+* [TaskResult](https://cloud.tencent.com/document/api/1025/74416#TaskResult)
 
 
 
-## 大模型知识引擎(lke) 版本：2023-11-30
+## 消息队列 CKafka 版(ckafka) 版本：2019-08-19
 
-### 第 38 次发布
+### 第 120 次发布
 
-发布时间：2025-04-14 01:44:53
+发布时间：2025-04-15 01:18:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCvmInfo](https://cloud.tencent.com/document/api/597/117908)
+* [DescribeTypeInstances](https://cloud.tencent.com/document/api/597/117907)
+
+新增数据结构：
+
+* [CvmAndIpInfo](https://cloud.tencent.com/document/api/597/40861#CvmAndIpInfo)
+* [ListCvmAndIpInfoRsp](https://cloud.tencent.com/document/api/597/40861#ListCvmAndIpInfoRsp)
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 128 次发布
+
+发布时间：2025-04-15 01:25:48
 
 本次发布包含了以下内容：
 
@@ -77,42 +58,29 @@
 
 修改接口：
 
-* [GetDocPreview](https://cloud.tencent.com/document/api/1759/105067)
+* [CreateAuditLogFile](https://cloud.tencent.com/document/api/1003/81440)
 
-	* 新增出参：ParseResultCosUrl
+	* 新增入参：ColumnFilter
 
-* [ListDoc](https://cloud.tencent.com/document/api/1759/105064)
-
-	* 新增入参：FileTypes, FilterFlag
-
-
-新增数据结构：
-
-* [DocFilterFlag](https://cloud.tencent.com/document/api/1759/105104#DocFilterFlag)
-* [IntentAchievement](https://cloud.tencent.com/document/api/1759/105104#IntentAchievement)
 
 修改数据结构：
 
-* [KnowledgeQaConfig](https://cloud.tencent.com/document/api/1759/105104#KnowledgeQaConfig)
+* [ClusterInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#ClusterInstanceDetail)
 
-	* 新增成员：IntentAchievements, ImageTextRetrieval
+	* 新增成员：NodeList
 
-* [PluginToolReqParam](https://cloud.tencent.com/document/api/1759/105104#PluginToolReqParam)
+* [CynosdbInstance](https://cloud.tencent.com/document/api/1003/48097#CynosdbInstance)
 
-	* 新增成员：GlobalHidden
-
-
-
-
-## 腾讯云可观测平台(monitor) 版本：2023-06-16
+	* 新增成员：CynosVersionTag, NodeList
 
 
 
-## 腾讯云可观测平台(monitor) 版本：2018-07-24
 
-### 第 135 次发布
+## 云游戏(gs) 版本：2019-11-18
 
-发布时间：2025-04-14 01:47:18
+### 第 28 次发布
+
+发布时间：2025-04-15 01:37:19
 
 本次发布包含了以下内容：
 
@@ -120,7 +88,162 @@
 
 新增接口：
 
-* [ExportPrometheusReadOnlyDynamicAPI](https://cloud.tencent.com/document/api/248/117863)
+* [CreateAndroidApp](https://cloud.tencent.com/document/api/1162/117914)
+* [CreateAndroidAppVersion](https://cloud.tencent.com/document/api/1162/117913)
+* [CreateCosCredential](https://cloud.tencent.com/document/api/1162/117909)
+* [DeleteAndroidApp](https://cloud.tencent.com/document/api/1162/117912)
+* [DeleteAndroidAppVersion](https://cloud.tencent.com/document/api/1162/117911)
+* [ModifyAndroidApp](https://cloud.tencent.com/document/api/1162/117910)
+
+新增数据结构：
+
+* [AndroidAppCosInfo](https://cloud.tencent.com/document/api/1162/40743#AndroidAppCosInfo)
+
+
+
+## 网关负载均衡(gwlb) 版本：2024-09-06
+
+### 第 4 次发布
+
+发布时间：2025-04-15 01:37:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TargetGroupHealthCheck](https://cloud.tencent.com/document/api/1782/111701#TargetGroupHealthCheck)
+
+	* <font color="#dd0000">**修改成员**：</font>HealthSwitch
+
+* [TargetGroupInfo](https://cloud.tencent.com/document/api/1782/111701#TargetGroupInfo)
+
+	* 新增成员：Tag
+
+
+
+
+## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
+
+### 第 24 次发布
+
+发布时间：2025-04-15 01:54:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeRequestData](https://cloud.tencent.com/document/api/1338/55936)
+
+	* 新增入参：Export
+
+	* 新增出参：Url
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 111 次发布
+
+发布时间：2025-04-15 02:00:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCloudBaseRunVersionRsByCondition](https://cloud.tencent.com/document/api/876/61952)
+
+	* 新增入参：EnvId, ClusterId, FilterGwSwitch
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 75 次发布
+
+发布时间：2025-04-15 02:06:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [HostPath](https://cloud.tencent.com/document/api/851/75051#HostPath)
+
+修改数据结构：
+
+* [DataConfig](https://cloud.tencent.com/document/api/851/75051#DataConfig)
+
+	* 新增成员：HostPathSource
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 251 次发布
+
+发布时间：2025-04-15 02:15:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [MigrateBandwidthPackageResources](https://cloud.tencent.com/document/api/215/117915)
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 142 次发布
+
+发布时间：2025-04-15 02:18:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetInstanceLog](https://cloud.tencent.com/document/api/1267/117918)
+* [GetTaskInstance](https://cloud.tencent.com/document/api/1267/117917)
+* [ListInstances](https://cloud.tencent.com/document/api/1267/117916)
+
+修改接口：
+
+* [DescribeInstanceLogFile](https://cloud.tencent.com/document/api/1267/95208)
+
+	* 新增入参：MaxLifeRound
+
+
+新增数据结构：
+
+* [InstanceDetailVO](https://cloud.tencent.com/document/api/1267/76336#InstanceDetailVO)
+* [InstanceLifeCycleVO](https://cloud.tencent.com/document/api/1267/76336#InstanceLifeCycleVO)
+* [InstanceLogVO](https://cloud.tencent.com/document/api/1267/76336#InstanceLogVO)
+* [InstancePageVO](https://cloud.tencent.com/document/api/1267/76336#InstancePageVO)
+* [InstanceVO](https://cloud.tencent.com/document/api/1267/76336#InstanceVO)
+
+修改数据结构：
+
+* [TableMeta](https://cloud.tencent.com/document/api/1267/76336#TableMeta)
+
+	* 新增成员：DataFromType, EngineOwner, DataLayerUuid, DataLayerName
+
 
 
 

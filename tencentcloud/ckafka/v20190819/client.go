@@ -3054,6 +3054,67 @@ func (c *Client) DescribeConsumerGroupWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeCvmInfoRequest() (request *DescribeCvmInfoRequest) {
+    request = &DescribeCvmInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "DescribeCvmInfo")
+    
+    
+    return
+}
+
+func NewDescribeCvmInfoResponse() (response *DescribeCvmInfoResponse) {
+    response = &DescribeCvmInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCvmInfo
+// 本接口用于获取实例对应后端CVM信息，包括cvmId和ip等。用于专业版，标准版返回数据为空
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_BATCHDELINSTANCELIMIT = "UnsupportedOperation.BatchDelInstanceLimit"
+//  UNSUPPORTEDOPERATION_OSSREJECT = "UnsupportedOperation.OssReject"
+func (c *Client) DescribeCvmInfo(request *DescribeCvmInfoRequest) (response *DescribeCvmInfoResponse, err error) {
+    return c.DescribeCvmInfoWithContext(context.Background(), request)
+}
+
+// DescribeCvmInfo
+// 本接口用于获取实例对应后端CVM信息，包括cvmId和ip等。用于专业版，标准版返回数据为空
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_BATCHDELINSTANCELIMIT = "UnsupportedOperation.BatchDelInstanceLimit"
+//  UNSUPPORTEDOPERATION_OSSREJECT = "UnsupportedOperation.OssReject"
+func (c *Client) DescribeCvmInfoWithContext(ctx context.Context, request *DescribeCvmInfoRequest) (response *DescribeCvmInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeCvmInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCvmInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCvmInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDatahubGroupOffsetsRequest() (request *DescribeDatahubGroupOffsetsRequest) {
     request = &DescribeDatahubGroupOffsetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4634,6 +4695,73 @@ func (c *Client) DescribeTopicSyncReplicaWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeTopicSyncReplicaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTypeInstancesRequest() (request *DescribeTypeInstancesRequest) {
+    request = &DescribeTypeInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "DescribeTypeInstances")
+    
+    
+    return
+}
+
+func NewDescribeTypeInstancesResponse() (response *DescribeTypeInstancesResponse) {
+    response = &DescribeTypeInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTypeInstances
+// 本接口（DescribeTypeInstances）用于在用户账户下获取指定类型消息队列 CKafka 实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_BATCHDELINSTANCELIMIT = "UnsupportedOperation.BatchDelInstanceLimit"
+//  UNSUPPORTEDOPERATION_OSSREJECT = "UnsupportedOperation.OssReject"
+func (c *Client) DescribeTypeInstances(request *DescribeTypeInstancesRequest) (response *DescribeTypeInstancesResponse, err error) {
+    return c.DescribeTypeInstancesWithContext(context.Background(), request)
+}
+
+// DescribeTypeInstances
+// 本接口（DescribeTypeInstances）用于在用户账户下获取指定类型消息队列 CKafka 实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_BATCHDELINSTANCELIMIT = "UnsupportedOperation.BatchDelInstanceLimit"
+//  UNSUPPORTEDOPERATION_OSSREJECT = "UnsupportedOperation.OssReject"
+func (c *Client) DescribeTypeInstancesWithContext(ctx context.Context, request *DescribeTypeInstancesRequest) (response *DescribeTypeInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTypeInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTypeInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTypeInstancesResponse()
     err = c.Send(request, response)
     return
 }

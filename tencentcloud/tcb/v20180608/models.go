@@ -4458,12 +4458,27 @@ func (r *DescribeCloudBaseRunVersionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCloudBaseRunVersionRsByConditionRequestParams struct {
+	// 环境ID；EnvId和ClusterId不能同时为空
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
+	// 集群ID；EnvId和ClusterId不能同时为空
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 过滤网关服务开关
+	FilterGwSwitch *bool `json:"FilterGwSwitch,omitnil,omitempty" name:"FilterGwSwitch"`
 }
 
 type DescribeCloudBaseRunVersionRsByConditionRequest struct {
 	*tchttp.BaseRequest
 	
+	// 环境ID；EnvId和ClusterId不能同时为空
+	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
+
+	// 集群ID；EnvId和ClusterId不能同时为空
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 过滤网关服务开关
+	FilterGwSwitch *bool `json:"FilterGwSwitch,omitnil,omitempty" name:"FilterGwSwitch"`
 }
 
 func (r *DescribeCloudBaseRunVersionRsByConditionRequest) ToJsonString() string {
@@ -4478,7 +4493,9 @@ func (r *DescribeCloudBaseRunVersionRsByConditionRequest) FromJsonString(s strin
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "EnvId")
+	delete(f, "ClusterId")
+	delete(f, "FilterGwSwitch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudBaseRunVersionRsByConditionRequest has unknown keys!", "")
 	}

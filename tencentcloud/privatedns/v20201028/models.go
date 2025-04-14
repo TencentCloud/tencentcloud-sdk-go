@@ -1353,6 +1353,9 @@ type DescribeRequestDataRequestParams struct {
 
 	// 请求量统计结束时间，格式：2020-11-22 23:59:59
 	TimeRangeEnd *string `json:"TimeRangeEnd,omitnil,omitempty" name:"TimeRangeEnd"`
+
+	// 是否导出：true导出，false不导出
+	Export *bool `json:"Export,omitnil,omitempty" name:"Export"`
 }
 
 type DescribeRequestDataRequest struct {
@@ -1366,6 +1369,9 @@ type DescribeRequestDataRequest struct {
 
 	// 请求量统计结束时间，格式：2020-11-22 23:59:59
 	TimeRangeEnd *string `json:"TimeRangeEnd,omitnil,omitempty" name:"TimeRangeEnd"`
+
+	// 是否导出：true导出，false不导出
+	Export *bool `json:"Export,omitnil,omitempty" name:"Export"`
 }
 
 func (r *DescribeRequestDataRequest) ToJsonString() string {
@@ -1383,6 +1389,7 @@ func (r *DescribeRequestDataRequest) FromJsonString(s string) error {
 	delete(f, "TimeRangeBegin")
 	delete(f, "Filters")
 	delete(f, "TimeRangeEnd")
+	delete(f, "Export")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRequestDataRequest has unknown keys!", "")
 	}
@@ -1396,6 +1403,9 @@ type DescribeRequestDataResponseParams struct {
 
 	// 请求量单位时间: Day：天，Hour：小时
 	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
+
+	// 导出数据下载地址
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

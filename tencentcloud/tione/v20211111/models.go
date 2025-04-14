@@ -1589,6 +1589,9 @@ type DataConfig struct {
 	// CBS配置信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CBSSource *CBSConfig `json:"CBSSource,omitnil,omitempty" name:"CBSSource"`
+
+	// 主机路径信息
+	HostPathSource *HostPath `json:"HostPathSource,omitnil,omitempty" name:"HostPathSource"`
 }
 
 type DataPoint struct {
@@ -4354,6 +4357,11 @@ type HorizontalPodAutoscaler struct {
 	// "concurrency-util":单个实例请求数量值。范围{1,100000}
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HpaMetrics []*Option `json:"HpaMetrics,omitnil,omitempty" name:"HpaMetrics"`
+}
+
+type HostPath struct {
+	// 需要挂载的主机路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 }
 
 type HyperParameter struct {

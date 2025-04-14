@@ -561,7 +561,7 @@ type SubmitPortraitSingJobRequestParams struct {
 	// 宠物模式下，如果不传该参数，默认将脸部唱演视频回贴原图，生成视频分辨率与原图一致。如不需要脸部回贴，仅保留脸部唱演视频，可传入512:512。
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 为生成视频添加标识的开关，默认为0。 
+	// 为生成视频添加标识的开关，默认为1。 
 	// 1：添加标识；
 	//  0：不添加标识；
 	// 其他数值：默认按1处理。 
@@ -604,7 +604,7 @@ type SubmitPortraitSingJobRequest struct {
 	// 宠物模式下，如果不传该参数，默认将脸部唱演视频回贴原图，生成视频分辨率与原图一致。如不需要脸部回贴，仅保留脸部唱演视频，可传入512:512。
 	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
-	// 为生成视频添加标识的开关，默认为0。 
+	// 为生成视频添加标识的开关，默认为1。 
 	// 1：添加标识；
 	//  0：不添加标识；
 	// 其他数值：默认按1处理。 

@@ -7741,7 +7741,7 @@ func NewDeleteBandwidthPackageResponse() (response *DeleteBandwidthPackageRespon
 }
 
 // DeleteBandwidthPackage
-// 接口支持删除共享带宽包，包括[设备带宽包](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85)和[IP带宽包](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)
+// 接口支持删除共享带宽包，包括[设备带宽包](https://cloud.tencent.com/document/product/684/15245#bwptype)和[IP带宽包](https://cloud.tencent.com/document/product/684/15245#bwptype)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDREGION = "FailedOperation.InvalidRegion"
@@ -7759,7 +7759,7 @@ func (c *Client) DeleteBandwidthPackage(request *DeleteBandwidthPackageRequest) 
 }
 
 // DeleteBandwidthPackage
-// 接口支持删除共享带宽包，包括[设备带宽包](https://cloud.tencent.com/document/product/684/15246#.E8.AE.BE.E5.A4.87.E5.B8.A6.E5.AE.BD.E5.8C.85)和[IP带宽包](https://cloud.tencent.com/document/product/684/15246#ip-.E5.B8.A6.E5.AE.BD.E5.8C.85)
+// 接口支持删除共享带宽包，包括[设备带宽包](https://cloud.tencent.com/document/product/684/15245#bwptype)和[IP带宽包](https://cloud.tencent.com/document/product/684/15245#bwptype)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDREGION = "FailedOperation.InvalidRegion"
@@ -19765,6 +19765,67 @@ func (c *Client) LockCcnsWithContext(ctx context.Context, request *LockCcnsReque
     return
 }
 
+func NewMigrateBandwidthPackageResourcesRequest() (request *MigrateBandwidthPackageResourcesRequest) {
+    request = &MigrateBandwidthPackageResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "MigrateBandwidthPackageResources")
+    
+    
+    return
+}
+
+func NewMigrateBandwidthPackageResourcesResponse() (response *MigrateBandwidthPackageResourcesResponse) {
+    response = &MigrateBandwidthPackageResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// MigrateBandwidthPackageResources
+// 本接口 (MigrateBandwidthPackageResources) 用于共享带宽包之间迁移资源
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = "InvalidParameterValue.BandwidthPackageIdMalformed"
+//  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGENOTFOUND = "InvalidParameterValue.BandwidthPackageNotFound"
+//  INVALIDPARAMETERVALUE_RESOURCEIDMALFORMED = "InvalidParameterValue.ResourceIdMalformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  LIMITEXCEEDED_BANDWIDTHPACKAGERESOURCEQUOTA = "LimitExceeded.BandwidthPackageResourceQuota"
+//  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+func (c *Client) MigrateBandwidthPackageResources(request *MigrateBandwidthPackageResourcesRequest) (response *MigrateBandwidthPackageResourcesResponse, err error) {
+    return c.MigrateBandwidthPackageResourcesWithContext(context.Background(), request)
+}
+
+// MigrateBandwidthPackageResources
+// 本接口 (MigrateBandwidthPackageResources) 用于共享带宽包之间迁移资源
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = "InvalidParameterValue.BandwidthPackageIdMalformed"
+//  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGENOTFOUND = "InvalidParameterValue.BandwidthPackageNotFound"
+//  INVALIDPARAMETERVALUE_RESOURCEIDMALFORMED = "InvalidParameterValue.ResourceIdMalformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  LIMITEXCEEDED_BANDWIDTHPACKAGERESOURCEQUOTA = "LimitExceeded.BandwidthPackageResourceQuota"
+//  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+func (c *Client) MigrateBandwidthPackageResourcesWithContext(ctx context.Context, request *MigrateBandwidthPackageResourcesRequest) (response *MigrateBandwidthPackageResourcesResponse, err error) {
+    if request == nil {
+        request = NewMigrateBandwidthPackageResourcesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("MigrateBandwidthPackageResources require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewMigrateBandwidthPackageResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewMigrateNetworkInterfaceRequest() (request *MigrateNetworkInterfaceRequest) {
     request = &MigrateNetworkInterfaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -20456,7 +20517,7 @@ func NewModifyBandwidthPackageAttributeResponse() (response *ModifyBandwidthPack
 }
 
 // ModifyBandwidthPackageAttribute
-// 接口用于修改带宽包属性，包括带宽包名字等
+// 接口用于修改带宽包属性，包括带宽包名称和计费模式
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
@@ -20469,7 +20530,7 @@ func (c *Client) ModifyBandwidthPackageAttribute(request *ModifyBandwidthPackage
 }
 
 // ModifyBandwidthPackageAttribute
-// 接口用于修改带宽包属性，包括带宽包名字等
+// 接口用于修改带宽包属性，包括带宽包名称和计费模式
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"

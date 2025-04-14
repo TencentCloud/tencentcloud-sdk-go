@@ -67,7 +67,7 @@ func NewAssociateTargetGroupsResponse() (response *AssociateTargetGroupsResponse
 // AssociateTargetGroups
 // 本接口(AssociateTargetGroups)用来将目标组绑定到负载均衡。
 //
-// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -84,7 +84,7 @@ func (c *Client) AssociateTargetGroups(request *AssociateTargetGroupsRequest) (r
 // AssociateTargetGroups
 // 本接口(AssociateTargetGroups)用来将目标组绑定到负载均衡。
 //
-// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -134,7 +134,7 @@ func NewCreateGatewayLoadBalancerResponse() (response *CreateGatewayLoadBalancer
 //
 // 注意：单个账号在每个地域的默认购买配额为：10个。
 //
-// 本接口为异步接口，接口成功返回后，可使用 DescribeGatewayLoadBalancers 接口查询负载均衡实例的状态（如创建中、正常），以确定是否创建成功。
+// 本接口为异步接口，接口成功返回后，可使用 [DescribeTaskStatus](https://cloud.tencent.com/document/api/1782/111700) 接口查询负载均衡实例的状态。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -148,7 +148,7 @@ func (c *Client) CreateGatewayLoadBalancer(request *CreateGatewayLoadBalancerReq
 //
 // 注意：单个账号在每个地域的默认购买配额为：10个。
 //
-// 本接口为异步接口，接口成功返回后，可使用 DescribeGatewayLoadBalancers 接口查询负载均衡实例的状态（如创建中、正常），以确定是否创建成功。
+// 本接口为异步接口，接口成功返回后，可使用 [DescribeTaskStatus](https://cloud.tencent.com/document/api/1782/111700) 接口查询负载均衡实例的状态。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -189,7 +189,7 @@ func NewCreateTargetGroupResponse() (response *CreateTargetGroupResponse) {
 }
 
 // CreateTargetGroup
-// 创建目标组。该功能正在内测中，如需使用，请通过[工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1)。
+// 创建目标组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -204,7 +204,7 @@ func (c *Client) CreateTargetGroup(request *CreateTargetGroupRequest) (response 
 }
 
 // CreateTargetGroup
-// 创建目标组。该功能正在内测中，如需使用，请通过[工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1)。
+// 创建目标组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -252,7 +252,7 @@ func NewDeleteGatewayLoadBalancerResponse() (response *DeleteGatewayLoadBalancer
 // DeleteGatewayLoadBalancer
 // DeleteGatewayLoadBalancer 接口用以删除指定的一个或多个网关负载均衡实例。成功删除后，会把网关负载均衡实例与后端服务解绑。
 //
-// 本接口为异步接口，接口返回成功后，需以返回的 RequestId 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+// 本接口为异步接口，接口返回成功后，需以返回的 RequestId 为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/api/1782/111700) 接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -263,7 +263,7 @@ func (c *Client) DeleteGatewayLoadBalancer(request *DeleteGatewayLoadBalancerReq
 // DeleteGatewayLoadBalancer
 // DeleteGatewayLoadBalancer 接口用以删除指定的一个或多个网关负载均衡实例。成功删除后，会把网关负载均衡实例与后端服务解绑。
 //
-// 本接口为异步接口，接口返回成功后，需以返回的 RequestId 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+// 本接口为异步接口，接口返回成功后，需以返回的 RequestId 为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/api/1782/111700) 接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -362,8 +362,6 @@ func NewDeregisterTargetGroupInstancesResponse() (response *DeregisterTargetGrou
 // DeregisterTargetGroupInstances
 // 从目标组中解绑服务器。
 //
-// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
-//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
@@ -377,8 +375,6 @@ func (c *Client) DeregisterTargetGroupInstances(request *DeregisterTargetGroupIn
 
 // DeregisterTargetGroupInstances
 // 从目标组中解绑服务器。
-//
-// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -757,7 +753,7 @@ func NewDisassociateTargetGroupsResponse() (response *DisassociateTargetGroupsRe
 // DisassociateTargetGroups
 // 解除负载均衡和目标组的关联关系。
 //
-// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -773,7 +769,7 @@ func (c *Client) DisassociateTargetGroups(request *DisassociateTargetGroupsReque
 // DisassociateTargetGroups
 // 解除负载均衡和目标组的关联关系。
 //
-// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1052,8 +1048,6 @@ func NewRegisterTargetGroupInstancesResponse() (response *RegisterTargetGroupIns
 // RegisterTargetGroupInstances
 // 注册服务器到目标组。
 //
-// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
-//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
@@ -1068,8 +1062,6 @@ func (c *Client) RegisterTargetGroupInstances(request *RegisterTargetGroupInstan
 
 // RegisterTargetGroupInstances
 // 注册服务器到目标组。
-//
-// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -40,6 +40,11 @@ type AndroidApp struct {
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
+type AndroidAppCosInfo struct {
+	// 安卓应用ID
+	AndroidAppId *string `json:"AndroidAppId,omitnil,omitempty" name:"AndroidAppId"`
+}
+
 type AndroidAppVersionInfo struct {
 	// 安卓应用版本
 	AndroidAppVersion *string `json:"AndroidAppVersion,omitnil,omitempty" name:"AndroidAppVersion"`
@@ -423,6 +428,134 @@ func (r *CopyAndroidInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CopyAndroidInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAndroidAppRequestParams struct {
+	// 安卓应用名字
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 用户 Id
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+type CreateAndroidAppRequest struct {
+	*tchttp.BaseRequest
+	
+	// 安卓应用名字
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 用户 Id
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+func (r *CreateAndroidAppRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAndroidAppRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "UserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndroidAppRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAndroidAppResponseParams struct {
+	// 应用ID
+	AndroidAppId *string `json:"AndroidAppId,omitnil,omitempty" name:"AndroidAppId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAndroidAppResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAndroidAppResponseParams `json:"Response"`
+}
+
+func (r *CreateAndroidAppResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAndroidAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAndroidAppVersionRequestParams struct {
+	// 应用ID
+	AndroidAppId *string `json:"AndroidAppId,omitnil,omitempty" name:"AndroidAppId"`
+
+	// 应用包下载地址
+	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
+}
+
+type CreateAndroidAppVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID
+	AndroidAppId *string `json:"AndroidAppId,omitnil,omitempty" name:"AndroidAppId"`
+
+	// 应用包下载地址
+	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
+}
+
+func (r *CreateAndroidAppVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAndroidAppVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidAppId")
+	delete(f, "DownloadUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndroidAppVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAndroidAppVersionResponseParams struct {
+	// 应用版本
+	AndroidAppVersion *string `json:"AndroidAppVersion,omitnil,omitempty" name:"AndroidAppVersion"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAndroidAppVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAndroidAppVersionResponseParams `json:"Response"`
+}
+
+func (r *CreateAndroidAppVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAndroidAppVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -855,6 +988,91 @@ func (r *CreateAndroidInstancesScreenshotResponse) FromJsonString(s string) erro
 }
 
 // Predefined struct for user
+type CreateCosCredentialRequestParams struct {
+	// Cos 密钥类型， Mobile 移动端, PC 桌面, AndroidApp 安卓应用
+	CosType *string `json:"CosType,omitnil,omitempty" name:"CosType"`
+
+	// 云手机 Cos 数据
+	AndroidAppCosInfo *AndroidAppCosInfo `json:"AndroidAppCosInfo,omitnil,omitempty" name:"AndroidAppCosInfo"`
+}
+
+type CreateCosCredentialRequest struct {
+	*tchttp.BaseRequest
+	
+	// Cos 密钥类型， Mobile 移动端, PC 桌面, AndroidApp 安卓应用
+	CosType *string `json:"CosType,omitnil,omitempty" name:"CosType"`
+
+	// 云手机 Cos 数据
+	AndroidAppCosInfo *AndroidAppCosInfo `json:"AndroidAppCosInfo,omitnil,omitempty" name:"AndroidAppCosInfo"`
+}
+
+func (r *CreateCosCredentialRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCosCredentialRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CosType")
+	delete(f, "AndroidAppCosInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCosCredentialRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCosCredentialResponseParams struct {
+	// Cos SecretID
+	SecretID *string `json:"SecretID,omitnil,omitempty" name:"SecretID"`
+
+	// Cos SecretKey
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// Cos Session
+	SessionToken *string `json:"SessionToken,omitnil,omitempty" name:"SessionToken"`
+
+	// Cos Bucket
+	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
+
+	// Cos Region
+	CosRegion *string `json:"CosRegion,omitnil,omitempty" name:"CosRegion"`
+
+	// Cos 操作路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// Cos 密钥的起始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// Cos 密钥的失效时间
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCosCredentialResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCosCredentialResponseParams `json:"Response"`
+}
+
+func (r *CreateCosCredentialResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCosCredentialResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSessionRequestParams struct {
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
@@ -1037,6 +1255,121 @@ func (r *CreateSessionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateSessionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAndroidAppRequestParams struct {
+	// 应用ID
+	AndroidAppId *string `json:"AndroidAppId,omitnil,omitempty" name:"AndroidAppId"`
+}
+
+type DeleteAndroidAppRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID
+	AndroidAppId *string `json:"AndroidAppId,omitnil,omitempty" name:"AndroidAppId"`
+}
+
+func (r *DeleteAndroidAppRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAndroidAppRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAndroidAppRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAndroidAppResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAndroidAppResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAndroidAppResponseParams `json:"Response"`
+}
+
+func (r *DeleteAndroidAppResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAndroidAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAndroidAppVersionRequestParams struct {
+	// 安卓应用 Id
+	AndroidAppId *string `json:"AndroidAppId,omitnil,omitempty" name:"AndroidAppId"`
+
+	// 安卓应用版本
+	AndroidAppVersion *string `json:"AndroidAppVersion,omitnil,omitempty" name:"AndroidAppVersion"`
+}
+
+type DeleteAndroidAppVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 安卓应用 Id
+	AndroidAppId *string `json:"AndroidAppId,omitnil,omitempty" name:"AndroidAppId"`
+
+	// 安卓应用版本
+	AndroidAppVersion *string `json:"AndroidAppVersion,omitnil,omitempty" name:"AndroidAppVersion"`
+}
+
+func (r *DeleteAndroidAppVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAndroidAppVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidAppId")
+	delete(f, "AndroidAppVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAndroidAppVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAndroidAppVersionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAndroidAppVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAndroidAppVersionResponseParams `json:"Response"`
+}
+
+func (r *DeleteAndroidAppVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAndroidAppVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1937,6 +2270,74 @@ type LabelRequirement struct {
 
 	// 标签值列表
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+// Predefined struct for user
+type ModifyAndroidAppRequestParams struct {
+	// 安卓应用 Id
+	AndroidAppId *string `json:"AndroidAppId,omitnil,omitempty" name:"AndroidAppId"`
+
+	// 安卓应用名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 用户 Id
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+type ModifyAndroidAppRequest struct {
+	*tchttp.BaseRequest
+	
+	// 安卓应用 Id
+	AndroidAppId *string `json:"AndroidAppId,omitnil,omitempty" name:"AndroidAppId"`
+
+	// 安卓应用名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 用户 Id
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+}
+
+func (r *ModifyAndroidAppRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAndroidAppRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidAppId")
+	delete(f, "Name")
+	delete(f, "UserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAndroidAppRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAndroidAppResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAndroidAppResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAndroidAppResponseParams `json:"Response"`
+}
+
+func (r *ModifyAndroidAppResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAndroidAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

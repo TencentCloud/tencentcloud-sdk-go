@@ -1362,6 +1362,9 @@ type ClusterInstanceDetail struct {
 
 	// 数据库类型
 	DbMode *string `json:"DbMode,omitnil,omitempty" name:"DbMode"`
+
+	// 节点列表
+	NodeList []*string `json:"NodeList,omitnil,omitempty" name:"NodeList"`
 }
 
 type ClusterParamModifyLog struct {
@@ -1562,6 +1565,9 @@ type CreateAuditLogFileRequestParams struct {
 
 	// 审计日志过滤条件
 	LogFilter []*InstanceAuditLogFilter `json:"LogFilter,omitnil,omitempty" name:"LogFilter"`
+
+	// 审计日志列
+	ColumnFilter []*string `json:"ColumnFilter,omitnil,omitempty" name:"ColumnFilter"`
 }
 
 type CreateAuditLogFileRequest struct {
@@ -1590,6 +1596,9 @@ type CreateAuditLogFileRequest struct {
 
 	// 审计日志过滤条件
 	LogFilter []*InstanceAuditLogFilter `json:"LogFilter,omitnil,omitempty" name:"LogFilter"`
+
+	// 审计日志列
+	ColumnFilter []*string `json:"ColumnFilter,omitnil,omitempty" name:"ColumnFilter"`
 }
 
 func (r *CreateAuditLogFileRequest) ToJsonString() string {
@@ -1611,6 +1620,7 @@ func (r *CreateAuditLogFileRequest) FromJsonString(s string) error {
 	delete(f, "OrderBy")
 	delete(f, "Filter")
 	delete(f, "LogFilter")
+	delete(f, "ColumnFilter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAuditLogFileRequest has unknown keys!", "")
 	}
@@ -3419,6 +3429,12 @@ type CynosdbInstance struct {
 
 	// 实例存储类型
 	InstanceStorageType *string `json:"InstanceStorageType,omitnil,omitempty" name:"InstanceStorageType"`
+
+	// 未知字段
+	CynosVersionTag *string `json:"CynosVersionTag,omitnil,omitempty" name:"CynosVersionTag"`
+
+	// libradb 节点信息
+	NodeList []*string `json:"NodeList,omitnil,omitempty" name:"NodeList"`
 }
 
 type CynosdbInstanceDetail struct {

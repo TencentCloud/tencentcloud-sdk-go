@@ -3058,6 +3058,19 @@ type CtsdbParam struct {
 	CtsdbMetric *string `json:"CtsdbMetric,omitnil,omitempty" name:"CtsdbMetric"`
 }
 
+type CvmAndIpInfo struct {
+	// ckafka集群实例Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CkafkaInstanceId *string `json:"CkafkaInstanceId,omitnil,omitempty" name:"CkafkaInstanceId"`
+
+	// CVM实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// IP地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+}
+
 type DatahubResource struct {
 	// 资源类型
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -4771,6 +4784,63 @@ func (r *DescribeConsumerGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeConsumerGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCvmInfoRequestParams struct {
+	// ckafka集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+type DescribeCvmInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// ckafka集群实例Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeCvmInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCvmInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCvmInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCvmInfoResponseParams struct {
+	// 返回结果
+	Result *ListCvmAndIpInfoRsp `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCvmInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCvmInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeCvmInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCvmInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6610,6 +6680,98 @@ func (r *DescribeTopicSyncReplicaResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTypeInstancesRequestParams struct {
+	// （过滤条件）按照实例ID过滤
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// （过滤条件）按照实例名称过滤，支持模糊查询
+	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
+
+	// （过滤条件）实例的状态。0：创建中，1：运行中，2：删除中，不填默认返回全部
+	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 偏移量，不填默认为0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，不填则默认10，最大值100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 匹配标签key值。
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+}
+
+type DescribeTypeInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// （过滤条件）按照实例ID过滤
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// （过滤条件）按照实例名称过滤，支持模糊查询
+	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
+
+	// （过滤条件）实例的状态。0：创建中，1：运行中，2：删除中，不填默认返回全部
+	Status []*int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 偏移量，不填默认为0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量，不填则默认10，最大值100
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 匹配标签key值。
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+}
+
+func (r *DescribeTypeInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTypeInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "SearchWord")
+	delete(f, "Status")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "TagKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTypeInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTypeInstancesResponseParams struct {
+	// 返回的结果
+	Result *InstanceResponse `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTypeInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTypeInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeTypeInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTypeInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUserRequestParams struct {
 	// ckafka集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -8333,6 +8495,16 @@ type KafkaParam struct {
 
 	// 正则匹配Topic列表
 	TopicRegularExpression *string `json:"TopicRegularExpression,omitnil,omitempty" name:"TopicRegularExpression"`
+}
+
+type ListCvmAndIpInfoRsp struct {
+	// cvm和IP 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CvmList []*CvmAndIpInfo `json:"CvmList,omitnil,omitempty" name:"CvmList"`
+
+	// 实例数据量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
 type LowercaseParam struct {

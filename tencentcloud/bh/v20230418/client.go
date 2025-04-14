@@ -411,6 +411,93 @@ func (c *Client) BindDeviceResourceWithContext(ctx context.Context, request *Bin
     return
 }
 
+func NewCreateAccessWhiteListRuleRequest() (request *CreateAccessWhiteListRuleRequest) {
+    request = &CreateAccessWhiteListRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "CreateAccessWhiteListRule")
+    
+    
+    return
+}
+
+func NewCreateAccessWhiteListRuleResponse() (response *CreateAccessWhiteListRuleResponse) {
+    response = &CreateAccessWhiteListRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAccessWhiteListRule
+// 添加访问白名单规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateAccessWhiteListRule(request *CreateAccessWhiteListRuleRequest) (response *CreateAccessWhiteListRuleResponse, err error) {
+    return c.CreateAccessWhiteListRuleWithContext(context.Background(), request)
+}
+
+// CreateAccessWhiteListRule
+// 添加访问白名单规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateAccessWhiteListRuleWithContext(ctx context.Context, request *CreateAccessWhiteListRuleRequest) (response *CreateAccessWhiteListRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateAccessWhiteListRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAccessWhiteListRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAccessWhiteListRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAclRequest() (request *CreateAclRequest) {
     request = &CreateAclRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1171,6 +1258,59 @@ func (c *Client) CreateUserGroupWithContext(ctx context.Context, request *Create
     return
 }
 
+func NewDeleteAccessWhiteListRulesRequest() (request *DeleteAccessWhiteListRulesRequest) {
+    request = &DeleteAccessWhiteListRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "DeleteAccessWhiteListRules")
+    
+    
+    return
+}
+
+func NewDeleteAccessWhiteListRulesResponse() (response *DeleteAccessWhiteListRulesResponse) {
+    response = &DeleteAccessWhiteListRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAccessWhiteListRules
+// 删除访问白名单规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteAccessWhiteListRules(request *DeleteAccessWhiteListRulesRequest) (response *DeleteAccessWhiteListRulesResponse, err error) {
+    return c.DeleteAccessWhiteListRulesWithContext(context.Background(), request)
+}
+
+// DeleteAccessWhiteListRules
+// 删除访问白名单规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteAccessWhiteListRulesWithContext(ctx context.Context, request *DeleteAccessWhiteListRulesRequest) (response *DeleteAccessWhiteListRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteAccessWhiteListRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAccessWhiteListRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAccessWhiteListRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAclsRequest() (request *DeleteAclsRequest) {
     request = &DeleteAclsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1851,6 +1991,61 @@ func (c *Client) DeployResourceWithContext(ctx context.Context, request *DeployR
     request.SetContext(ctx)
     
     response = NewDeployResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAccessWhiteListRulesRequest() (request *DescribeAccessWhiteListRulesRequest) {
+    request = &DescribeAccessWhiteListRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "DescribeAccessWhiteListRules")
+    
+    
+    return
+}
+
+func NewDescribeAccessWhiteListRulesResponse() (response *DescribeAccessWhiteListRulesResponse) {
+    response = &DescribeAccessWhiteListRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAccessWhiteListRules
+// 查询访问白名单规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAccessWhiteListRules(request *DescribeAccessWhiteListRulesRequest) (response *DescribeAccessWhiteListRulesResponse, err error) {
+    return c.DescribeAccessWhiteListRulesWithContext(context.Background(), request)
+}
+
+// DescribeAccessWhiteListRules
+// 查询访问白名单规则列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAccessWhiteListRulesWithContext(ctx context.Context, request *DescribeAccessWhiteListRulesRequest) (response *DescribeAccessWhiteListRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccessWhiteListRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccessWhiteListRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccessWhiteListRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -4339,6 +4534,59 @@ func (c *Client) SearchSessionCommandWithContext(ctx context.Context, request *S
     request.SetContext(ctx)
     
     response = NewSearchSessionCommandResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchTaskResultRequest() (request *SearchTaskResultRequest) {
+    request = &SearchTaskResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "SearchTaskResult")
+    
+    
+    return
+}
+
+func NewSearchTaskResultResponse() (response *SearchTaskResultResponse) {
+    response = &SearchTaskResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SearchTaskResult
+// 搜索运维任务执行结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SearchTaskResult(request *SearchTaskResultRequest) (response *SearchTaskResultResponse, err error) {
+    return c.SearchTaskResultWithContext(context.Background(), request)
+}
+
+// SearchTaskResult
+// 搜索运维任务执行结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SearchTaskResultWithContext(ctx context.Context, request *SearchTaskResultRequest) (response *SearchTaskResultResponse, err error) {
+    if request == nil {
+        request = NewSearchTaskResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchTaskResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchTaskResultResponse()
     err = c.Send(request, response)
     return
 }

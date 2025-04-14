@@ -200,6 +200,20 @@ type AccessInfo struct {
 	AccessURL *string `json:"AccessURL,omitnil,omitempty" name:"AccessURL"`
 }
 
+type AccessWhiteListRule struct {
+	// 规则ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// IP或者网段
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 备注信息
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+}
+
 type Acl struct {
 	// 访问权限ID
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -782,6 +796,70 @@ type CmdTemplate struct {
 
 	// 命令模板类型 1-内置 2-自定义
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+// Predefined struct for user
+type CreateAccessWhiteListRuleRequestParams struct {
+	// ip 10.10.10.1或者网段10.10.10.0/24，最小长度4字节，最大长度40字节。
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 备注信息，最小长度0字符，最大长度40字符。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type CreateAccessWhiteListRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// ip 10.10.10.1或者网段10.10.10.0/24，最小长度4字节，最大长度40字节。
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 备注信息，最小长度0字符，最大长度40字符。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+func (r *CreateAccessWhiteListRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAccessWhiteListRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Source")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAccessWhiteListRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAccessWhiteListRuleResponseParams struct {
+	// 新建成功后返回的记录ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAccessWhiteListRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAccessWhiteListRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateAccessWhiteListRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAccessWhiteListRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1912,6 +1990,60 @@ func (r *CreateUserResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteAccessWhiteListRulesRequestParams struct {
+	// 待删除的ID集合
+	IdSet []*uint64 `json:"IdSet,omitnil,omitempty" name:"IdSet"`
+}
+
+type DeleteAccessWhiteListRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待删除的ID集合
+	IdSet []*uint64 `json:"IdSet,omitnil,omitempty" name:"IdSet"`
+}
+
+func (r *DeleteAccessWhiteListRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAccessWhiteListRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAccessWhiteListRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAccessWhiteListRulesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAccessWhiteListRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAccessWhiteListRulesResponseParams `json:"Response"`
+}
+
+func (r *DeleteAccessWhiteListRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAccessWhiteListRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAclsRequestParams struct {
 	// 待删除的权限ID集合
 	IdSet []*uint64 `json:"IdSet,omitnil,omitempty" name:"IdSet"`
@@ -2655,6 +2787,93 @@ func (r *DeployResourceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeployResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAccessWhiteListRulesRequestParams struct {
+	// 用户ID集合，非必需，如果使用IdSet参数则忽略Name参数
+	IdSet []*uint64 `json:"IdSet,omitnil,omitempty" name:"IdSet"`
+
+	// 来源IP或网段，模糊查询，最大长度64字符
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 分页偏移位置，默认0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页条目数量，默认20
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeAccessWhiteListRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户ID集合，非必需，如果使用IdSet参数则忽略Name参数
+	IdSet []*uint64 `json:"IdSet,omitnil,omitempty" name:"IdSet"`
+
+	// 来源IP或网段，模糊查询，最大长度64字符
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 分页偏移位置，默认0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页条目数量，默认20
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeAccessWhiteListRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccessWhiteListRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdSet")
+	delete(f, "Name")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessWhiteListRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAccessWhiteListRulesResponseParams struct {
+	// 记录总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 访问白名单规则列表
+	AccessWhiteListRuleSet []*AccessWhiteListRule `json:"AccessWhiteListRuleSet,omitnil,omitempty" name:"AccessWhiteListRuleSet"`
+
+	// 是否放开全部来源IP，如果为true，TotalCount为0，AccessWhiteListRuleSet为空
+	AllowAny *bool `json:"AllowAny,omitnil,omitempty" name:"AllowAny"`
+
+	// 是否开启自动添加来源IP, 如果为true, 在开启访问白名单的情况下将自动添加来源IP
+	AllowAuto *bool `json:"AllowAuto,omitnil,omitempty" name:"AllowAuto"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAccessWhiteListRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAccessWhiteListRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeAccessWhiteListRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccessWhiteListRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7269,6 +7488,128 @@ func (r *SearchSessionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SearchTaskResultRequestParams struct {
+	// 搜索区间的开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 搜索区间的结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 运维任务ID
+	OperationId *string `json:"OperationId,omitnil,omitempty" name:"OperationId"`
+
+	// 运维任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 用户名，长度不超过20
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 姓名，长度不超过20
+	RealName *string `json:"RealName,omitnil,omitempty" name:"RealName"`
+
+	// 任务类型
+	// 1 手工运维任务
+	// 2 定时任务
+	// 3 账号推送任务
+	TaskType []*uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 查询偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页的页内记录数，默认为20，最大200
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type SearchTaskResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 搜索区间的开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 搜索区间的结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 运维任务ID
+	OperationId *string `json:"OperationId,omitnil,omitempty" name:"OperationId"`
+
+	// 运维任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 用户名，长度不超过20
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 姓名，长度不超过20
+	RealName *string `json:"RealName,omitnil,omitempty" name:"RealName"`
+
+	// 任务类型
+	// 1 手工运维任务
+	// 2 定时任务
+	// 3 账号推送任务
+	TaskType []*uint64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 查询偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页的页内记录数，默认为20，最大200
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *SearchTaskResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchTaskResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "OperationId")
+	delete(f, "Name")
+	delete(f, "UserName")
+	delete(f, "RealName")
+	delete(f, "TaskType")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchTaskResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchTaskResultResponseParams struct {
+	// 记录数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 运维任务执行结果
+	TaskResult []*TaskResult `json:"TaskResult,omitnil,omitempty" name:"TaskResult"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SearchTaskResultResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchTaskResultResponseParams `json:"Response"`
+}
+
+func (r *SearchTaskResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchTaskResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SessionResult struct {
 	// 用户名
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
@@ -7340,6 +7681,35 @@ type TagFilter struct {
 
 	// 标签值
 	TagValue []*string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
+}
+
+type TaskResult struct {
+	// 运维任务结果日志ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 运维任务ID
+	OperationId *string `json:"OperationId,omitnil,omitempty" name:"OperationId"`
+
+	// 运维任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 执行任务来源IP
+	FromIp *string `json:"FromIp,omitnil,omitempty" name:"FromIp"`
+
+	// 运维任务所属用户
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 运维任务所属用户的姓名
+	RealName *string `json:"RealName,omitnil,omitempty" name:"RealName"`
+
+	// 运维任务执行状态 1 - 执行中，2 - 成功，3 - 失败，4 - 部分失败
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 运维任务开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 运维任务结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type User struct {

@@ -234,6 +234,122 @@ func (c *Client) CopyAndroidInstanceWithContext(ctx context.Context, request *Co
     return
 }
 
+func NewCreateAndroidAppRequest() (request *CreateAndroidAppRequest) {
+    request = &CreateAndroidAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "CreateAndroidApp")
+    
+    
+    return
+}
+
+func NewCreateAndroidAppResponse() (response *CreateAndroidAppResponse) {
+    response = &CreateAndroidAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAndroidApp
+// 创建安卓应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONCREATEFAIL = "FailedOperation.ApplicationCreateFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_APPLICATIONLIMITEXCEEDED = "OperationDenied.ApplicationLimitExceeded"
+func (c *Client) CreateAndroidApp(request *CreateAndroidAppRequest) (response *CreateAndroidAppResponse, err error) {
+    return c.CreateAndroidAppWithContext(context.Background(), request)
+}
+
+// CreateAndroidApp
+// 创建安卓应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONCREATEFAIL = "FailedOperation.ApplicationCreateFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_APPLICATIONLIMITEXCEEDED = "OperationDenied.ApplicationLimitExceeded"
+func (c *Client) CreateAndroidAppWithContext(ctx context.Context, request *CreateAndroidAppRequest) (response *CreateAndroidAppResponse, err error) {
+    if request == nil {
+        request = NewCreateAndroidAppRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAndroidApp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAndroidAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateAndroidAppVersionRequest() (request *CreateAndroidAppVersionRequest) {
+    request = &CreateAndroidAppVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "CreateAndroidAppVersion")
+    
+    
+    return
+}
+
+func NewCreateAndroidAppVersionResponse() (response *CreateAndroidAppVersionResponse) {
+    response = &CreateAndroidAppVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAndroidAppVersion
+// 创建安卓应用版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_VERSIONCREATING = "OperationDenied.VersionCreating"
+//  OPERATIONDENIED_VERSIONLIMITEXCEEDED = "OperationDenied.VersionLimitExceeded"
+func (c *Client) CreateAndroidAppVersion(request *CreateAndroidAppVersionRequest) (response *CreateAndroidAppVersionResponse, err error) {
+    return c.CreateAndroidAppVersionWithContext(context.Background(), request)
+}
+
+// CreateAndroidAppVersion
+// 创建安卓应用版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_VERSIONCREATING = "OperationDenied.VersionCreating"
+//  OPERATIONDENIED_VERSIONLIMITEXCEEDED = "OperationDenied.VersionLimitExceeded"
+func (c *Client) CreateAndroidAppVersionWithContext(ctx context.Context, request *CreateAndroidAppVersionRequest) (response *CreateAndroidAppVersionResponse, err error) {
+    if request == nil {
+        request = NewCreateAndroidAppVersionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAndroidAppVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAndroidAppVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAndroidInstanceImageRequest() (request *CreateAndroidInstanceImageRequest) {
     request = &CreateAndroidInstanceImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -570,6 +686,73 @@ func (c *Client) CreateAndroidInstancesScreenshotWithContext(ctx context.Context
     return
 }
 
+func NewCreateCosCredentialRequest() (request *CreateCosCredentialRequest) {
+    request = &CreateCosCredentialRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "CreateCosCredential")
+    
+    
+    return
+}
+
+func NewCreateCosCredentialResponse() (response *CreateCosCredentialResponse) {
+    response = &CreateCosCredentialResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCosCredential
+// 用于创建 Cos 临时密钥
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  FAILEDOPERATION_GAMELOCKFAIL = "FailedOperation.GameLockFail"
+//  FAILEDOPERATION_GAMENOTFIND = "FailedOperation.GameNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_VERSIONCREATING = "OperationDenied.VersionCreating"
+//  OPERATIONDENIED_VERSIONLIMITEXCEEDED = "OperationDenied.VersionLimitExceeded"
+func (c *Client) CreateCosCredential(request *CreateCosCredentialRequest) (response *CreateCosCredentialResponse, err error) {
+    return c.CreateCosCredentialWithContext(context.Background(), request)
+}
+
+// CreateCosCredential
+// 用于创建 Cos 临时密钥
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  FAILEDOPERATION_GAMELOCKFAIL = "FailedOperation.GameLockFail"
+//  FAILEDOPERATION_GAMENOTFIND = "FailedOperation.GameNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_VERSIONCREATING = "OperationDenied.VersionCreating"
+//  OPERATIONDENIED_VERSIONLIMITEXCEEDED = "OperationDenied.VersionLimitExceeded"
+func (c *Client) CreateCosCredentialWithContext(ctx context.Context, request *CreateCosCredentialRequest) (response *CreateCosCredentialResponse, err error) {
+    if request == nil {
+        request = NewCreateCosCredentialRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCosCredential require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCosCredentialResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSessionRequest() (request *CreateSessionRequest) {
     request = &CreateSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -643,6 +826,114 @@ func (c *Client) CreateSessionWithContext(ctx context.Context, request *CreateSe
     request.SetContext(ctx)
     
     response = NewCreateSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAndroidAppRequest() (request *DeleteAndroidAppRequest) {
+    request = &DeleteAndroidAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "DeleteAndroidApp")
+    
+    
+    return
+}
+
+func NewDeleteAndroidAppResponse() (response *DeleteAndroidAppResponse) {
+    response = &DeleteAndroidAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAndroidApp
+// 删除安卓应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteAndroidApp(request *DeleteAndroidAppRequest) (response *DeleteAndroidAppResponse, err error) {
+    return c.DeleteAndroidAppWithContext(context.Background(), request)
+}
+
+// DeleteAndroidApp
+// 删除安卓应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteAndroidAppWithContext(ctx context.Context, request *DeleteAndroidAppRequest) (response *DeleteAndroidAppResponse, err error) {
+    if request == nil {
+        request = NewDeleteAndroidAppRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAndroidApp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAndroidAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAndroidAppVersionRequest() (request *DeleteAndroidAppVersionRequest) {
+    request = &DeleteAndroidAppVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "DeleteAndroidAppVersion")
+    
+    
+    return
+}
+
+func NewDeleteAndroidAppVersionResponse() (response *DeleteAndroidAppVersionResponse) {
+    response = &DeleteAndroidAppVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAndroidAppVersion
+// 删除安卓应用版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_VERSIONCREATING = "OperationDenied.VersionCreating"
+func (c *Client) DeleteAndroidAppVersion(request *DeleteAndroidAppVersionRequest) (response *DeleteAndroidAppVersionResponse, err error) {
+    return c.DeleteAndroidAppVersionWithContext(context.Background(), request)
+}
+
+// DeleteAndroidAppVersion
+// 删除安卓应用版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_VERSIONCREATING = "OperationDenied.VersionCreating"
+func (c *Client) DeleteAndroidAppVersionWithContext(ctx context.Context, request *DeleteAndroidAppVersionRequest) (response *DeleteAndroidAppVersionResponse, err error) {
+    if request == nil {
+        request = NewDeleteAndroidAppVersionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAndroidAppVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAndroidAppVersionResponse()
     err = c.Send(request, response)
     return
 }
@@ -1349,6 +1640,61 @@ func (c *Client) InstallAndroidInstancesAppWithContext(ctx context.Context, requ
     return
 }
 
+func NewModifyAndroidAppRequest() (request *ModifyAndroidAppRequest) {
+    request = &ModifyAndroidAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "ModifyAndroidApp")
+    
+    
+    return
+}
+
+func NewModifyAndroidAppResponse() (response *ModifyAndroidAppResponse) {
+    response = &ModifyAndroidAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAndroidApp
+// 修改安卓应用信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyAndroidApp(request *ModifyAndroidAppRequest) (response *ModifyAndroidAppResponse, err error) {
+    return c.ModifyAndroidAppWithContext(context.Background(), request)
+}
+
+// ModifyAndroidApp
+// 修改安卓应用信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyAndroidAppWithContext(ctx context.Context, request *ModifyAndroidAppRequest) (response *ModifyAndroidAppResponse, err error) {
+    if request == nil {
+        request = NewModifyAndroidAppRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAndroidApp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAndroidAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAndroidInstanceInformationRequest() (request *ModifyAndroidInstanceInformationRequest) {
     request = &ModifyAndroidInstanceInformationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1372,13 +1718,10 @@ func NewModifyAndroidInstanceInformationResponse() (response *ModifyAndroidInsta
 // 修改安卓实例的信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyAndroidInstanceInformation(request *ModifyAndroidInstanceInformationRequest) (response *ModifyAndroidInstanceInformationResponse, err error) {
     return c.ModifyAndroidInstanceInformationWithContext(context.Background(), request)
 }
@@ -1387,13 +1730,10 @@ func (c *Client) ModifyAndroidInstanceInformation(request *ModifyAndroidInstance
 // 修改安卓实例的信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyAndroidInstanceInformationWithContext(ctx context.Context, request *ModifyAndroidInstanceInformationRequest) (response *ModifyAndroidInstanceInformationResponse, err error) {
     if request == nil {
         request = NewModifyAndroidInstanceInformationRequest()
@@ -1433,13 +1773,10 @@ func NewModifyAndroidInstanceResolutionResponse() (response *ModifyAndroidInstan
 // 修改安卓实例分辨率。需要注意的是该接口可能导致正在运行的应用出现闪退，所以建议在实例维护时期才进行调用。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyAndroidInstanceResolution(request *ModifyAndroidInstanceResolutionRequest) (response *ModifyAndroidInstanceResolutionResponse, err error) {
     return c.ModifyAndroidInstanceResolutionWithContext(context.Background(), request)
 }
@@ -1448,13 +1785,10 @@ func (c *Client) ModifyAndroidInstanceResolution(request *ModifyAndroidInstanceR
 // 修改安卓实例分辨率。需要注意的是该接口可能导致正在运行的应用出现闪退，所以建议在实例维护时期才进行调用。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyAndroidInstanceResolutionWithContext(ctx context.Context, request *ModifyAndroidInstanceResolutionRequest) (response *ModifyAndroidInstanceResolutionResponse, err error) {
     if request == nil {
         request = NewModifyAndroidInstanceResolutionRequest()
@@ -1494,13 +1828,10 @@ func NewModifyAndroidInstancesLabelsResponse() (response *ModifyAndroidInstances
 // 修改安卓实例分辨率。需要注意的是该接口可能导致正在运行的应用出现闪退，所以建议在实例维护时期才进行调用。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyAndroidInstancesLabels(request *ModifyAndroidInstancesLabelsRequest) (response *ModifyAndroidInstancesLabelsResponse, err error) {
     return c.ModifyAndroidInstancesLabelsWithContext(context.Background(), request)
 }
@@ -1509,13 +1840,10 @@ func (c *Client) ModifyAndroidInstancesLabels(request *ModifyAndroidInstancesLab
 // 修改安卓实例分辨率。需要注意的是该接口可能导致正在运行的应用出现闪退，所以建议在实例维护时期才进行调用。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyAndroidInstancesLabelsWithContext(ctx context.Context, request *ModifyAndroidInstancesLabelsRequest) (response *ModifyAndroidInstancesLabelsResponse, err error) {
     if request == nil {
         request = NewModifyAndroidInstancesLabelsRequest()
@@ -1555,13 +1883,10 @@ func NewModifyAndroidInstancesUserIdResponse() (response *ModifyAndroidInstances
 // 批量修改安卓实例的用户ID
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyAndroidInstancesUserId(request *ModifyAndroidInstancesUserIdRequest) (response *ModifyAndroidInstancesUserIdResponse, err error) {
     return c.ModifyAndroidInstancesUserIdWithContext(context.Background(), request)
 }
@@ -1570,13 +1895,10 @@ func (c *Client) ModifyAndroidInstancesUserId(request *ModifyAndroidInstancesUse
 // 批量修改安卓实例的用户ID
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyAndroidInstancesUserIdWithContext(ctx context.Context, request *ModifyAndroidInstancesUserIdRequest) (response *ModifyAndroidInstancesUserIdResponse, err error) {
     if request == nil {
         request = NewModifyAndroidInstancesUserIdRequest()

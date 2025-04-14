@@ -165,16 +165,24 @@ type AccountAttribute struct {
 
 // Predefined struct for user
 type AddBandwidthPackageResourcesRequestParams struct {
-	// 资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'
+	// 资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'。EIP资源列表可通过[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取，LB资源列表可通过[DescribeLoadBalancers](https://cloud.tencent.com/document/api/214/30685)接口获取。
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 带宽包唯一标识ID，形如'bwp-xxxx'
+	// 带宽包唯一标识ID，形如'bwp-xxxx'，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
-	// 带宽包类型，当前支持'BGP'、'HIGH_QUALITY_BGP'、'ANYCAST'、'SINGLEISP_CUCC'、'SINGLEISP_CMCC'、'SINGLEISP_CTCC'等类型。
+	// 带宽包类型，可选值：
+	// <li>BGP: 普通BGP共享带宽包</li>
+	// <li>HIGH_QUALITY_BGP: 精品BGP共享带宽包</li>
+	// <li>ANYCAST：公网加速带宽包</li>
+	// <li>SINGLEISP_CMCC: 中国移动共享带宽包</li>
+	// <li>SINGLEISP_CTCC: 中国电信共享带宽包</li>
+	// <li>SINGLEISP_CUCC: 中国联通共享带宽包</li>
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
-	// 资源类型，包括'Address', 'LoadBalance'
+	// 资源类型，可选值：
+	// <li>Address：弹性公网IP</li>
+	// <li>LoadBalance：负载均衡</li>
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 带宽包协议类型。当前支持'ipv4'和'ipv6'协议类型。
@@ -184,16 +192,24 @@ type AddBandwidthPackageResourcesRequestParams struct {
 type AddBandwidthPackageResourcesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'
+	// 资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'。EIP资源列表可通过[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取，LB资源列表可通过[DescribeLoadBalancers](https://cloud.tencent.com/document/api/214/30685)接口获取。
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 带宽包唯一标识ID，形如'bwp-xxxx'
+	// 带宽包唯一标识ID，形如'bwp-xxxx'，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
-	// 带宽包类型，当前支持'BGP'、'HIGH_QUALITY_BGP'、'ANYCAST'、'SINGLEISP_CUCC'、'SINGLEISP_CMCC'、'SINGLEISP_CTCC'等类型。
+	// 带宽包类型，可选值：
+	// <li>BGP: 普通BGP共享带宽包</li>
+	// <li>HIGH_QUALITY_BGP: 精品BGP共享带宽包</li>
+	// <li>ANYCAST：公网加速带宽包</li>
+	// <li>SINGLEISP_CMCC: 中国移动共享带宽包</li>
+	// <li>SINGLEISP_CTCC: 中国电信共享带宽包</li>
+	// <li>SINGLEISP_CUCC: 中国联通共享带宽包</li>
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
-	// 资源类型，包括'Address', 'LoadBalance'
+	// 资源类型，可选值：
+	// <li>Address：弹性公网IP</li>
+	// <li>LoadBalance：负载均衡</li>
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 带宽包协议类型。当前支持'ipv4'和'ipv6'协议类型。
@@ -2359,10 +2375,22 @@ type BandwidthPackage struct {
 	// 带宽包唯一标识Id
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
-	// 带宽包类型，包括'BGP','SINGLEISP','ANYCAST','SINGLEISP_CMCC','SINGLEISP_CTCC','SINGLEISP_CUCC'
+	// 带宽包类型，包括：
+	// <li>BGP: 普通BGP共享带宽包</li>
+	// <li>HIGH_QUALITY_BGP: 精品BGP共享带宽包</li>
+	// <li>ANYCAST：公网加速带宽包</li>
+	// <li>SINGLEISP_CMCC: 中国移动共享带宽包</li>
+	// <li>SINGLEISP_CTCC: 中国电信共享带宽包</li>
+	// <li>SINGLEISP_CUCC: 中国联通共享带宽包</li>
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
-	// 带宽包计费类型，包括:<li>'TOP5_POSTPAID_BY_MONTH':按月后付费TOP5计费</li><li> 'PERCENT95_POSTPAID_BY_MONTH':按月后付费月95计费</li><li>'ENHANCED95_POSTPAID_BY_MONTH':按月后付费增强型95计费</li><li>'FIXED_PREPAID_BY_MONTH':包月预付费计费</li><li>‘PEAK_BANDWIDTH_POSTPAID_BY_DAY’: 后付费日结按带宽计费</li>
+	// 带宽包计费类型, 包括:
+	// <li>ENHANCED95_POSTPAID_BY_MONTH: 后付费-增强型95计费</li>
+	// <li>PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 后付费-按主流量计费</li>
+	// <li>BANDWIDTH_POSTPAID_BY_DAY: 常规BGP-后付费-按带宽计费</li>
+	// <li>FIXED_PREPAID_BY_MONTH: 常规BGP-预付费</li>
+	// <li>PEAK_BANDWIDTH_POSTPAID_BY_DAY: 静态单线-后付费-按日结算</li>
+	// <li>TOP5_POSTPAID_BY_MONTH: 后付费-TOP5计费，如需使用，请提交工单申请</li>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
 	// 带宽包名称
@@ -2398,10 +2426,22 @@ type BandwidthRange struct {
 	// 资源ID。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 带宽下限，单位：Mbps。
+	// 带宽下限，单位：Mbps。计费类型以及对应的带宽下限：
+	// - TOP5_POSTPAID_BY_MONTH: 默认无下限
+	// - BANDWIDTH_POSTPAID_BY_DAY: 50
+	// - FIXED_PREPAID_BY_MONTH: 100
+	// - ENHANCED95_POSTPAID_BY_MONTH: 300
+	// - PEAK_BANDWIDTH_POSTPAID_BY_DAY: 50
+	// - PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 50
 	BandwidthLowerLimit *uint64 `json:"BandwidthLowerLimit,omitnil,omitempty" name:"BandwidthLowerLimit"`
 
-	// 带宽上限，单位：Mbps。
+	// 带宽上限，单位：Mbps。计费类型以及对应的带宽上限：
+	// - TOP5_POSTPAID_BY_MONTH: 默认无上限
+	// - BANDWIDTH_POSTPAID_BY_DAY: 300
+	// - FIXED_PREPAID_BY_MONTH: 5000
+	// - ENHANCED95_POSTPAID_BY_MONTH: 5000
+	// - PEAK_BANDWIDTH_POSTPAID_BY_DAY: 300
+	// - PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 2000
 	BandwidthUpperLimit *uint64 `json:"BandwidthUpperLimit,omitnil,omitempty" name:"BandwidthUpperLimit"`
 }
 
@@ -3856,24 +3896,25 @@ type CreateBandwidthPackageRequestParams struct {
 	// <li>SINGLEISP_CMCC: 中国移动共享带宽包</li>
 	// <li>SINGLEISP_CTCC: 中国电信共享带宽包</li>
 	// <li>SINGLEISP_CUCC: 中国联通共享带宽包</li>
+	// 注意：仅部分地域支持三网带宽包和精品BGP带宽包。
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
 	// 带宽包计费类型, 默认为: ENHANCED95_POSTPAID_BY_MONTH, 可选值:
-	// <li>TOP5_POSTPAID_BY_MONTH: 按月后付费TOP5计费</li>
-	// <li>PERCENT95_POSTPAID_BY_MONTH: 按月后付费月95计费</li>
-	// <li>FIXED_PREPAID_BY_MONTH: 包月预付费计费</li>
-	// <li>ENHANCED95_POSTPAID_BY_MONTH: 按月后付费增强型95计费</li>
-	// <li>PEAK_BANDWIDTH_POSTPAID_BY_DAY: 后付费日结按带宽计费</li>
-	// <li>PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 后付费按主流量计费</li>
+	// <li>ENHANCED95_POSTPAID_BY_MONTH: 后付费-增强型95计费</li>
+	// <li>PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 后付费-按主流量计费</li>
+	// <li>BANDWIDTH_POSTPAID_BY_DAY: 常规BGP-后付费-按带宽计费</li>
+	// <li>FIXED_PREPAID_BY_MONTH: 常规BGP-预付费</li>
+	// <li>PEAK_BANDWIDTH_POSTPAID_BY_DAY: 静态单线-后付费-按日结算</li>
+	// <li>TOP5_POSTPAID_BY_MONTH: 后付费-TOP5计费，如需使用，请提交工单申请</li>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// 带宽包名称。
+	// 带宽包名称。名称长度小于60，只包含数字、字母和下划线。
 	BandwidthPackageName *string `json:"BandwidthPackageName,omitnil,omitempty" name:"BandwidthPackageName"`
 
-	// 带宽包数量(传统账户类型只能填1), 标准账户类型取值范围为1~20。
+	// 带宽包数量(传统账户类型只能填1), 标准账户类型取值范围为1~20。默认为1。
 	BandwidthPackageCount *uint64 `json:"BandwidthPackageCount,omitnil,omitempty" name:"BandwidthPackageCount"`
 
-	// 带宽包限速大小。单位：Mbps，-1表示不限速。不同计费类型的带宽包对应不同的带宽上下限。
+	// 带宽包限速大小。单位：Mbps，-1表示不限速。带宽包计费类型对应的带宽上下限可参考：[BandwidthRange](https://cloud.tencent.com/document/api/215/15824#BandwidthRange)
 	InternetMaxBandwidth *int64 `json:"InternetMaxBandwidth,omitnil,omitempty" name:"InternetMaxBandwidth"`
 
 	// 需要关联的标签列表。
@@ -3882,10 +3923,10 @@ type CreateBandwidthPackageRequestParams struct {
 	// 带宽包协议类型。当前支持'ipv4'和'ipv6'协议带宽包，默认值是'ipv4'。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 预付费包月带宽包的购买时长，单位: 月，取值范围: 1~60。
+	// 预付费包月带宽包的购买时长，单位: 月，取值范围: 1~60。预付费计费类型必传。
 	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 网络出口，默认值：center_egress1
+	// 网络出口，默认值：center_egress1，其它可选值：center_egress2、center_egress3。
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
 }
 
@@ -3898,24 +3939,25 @@ type CreateBandwidthPackageRequest struct {
 	// <li>SINGLEISP_CMCC: 中国移动共享带宽包</li>
 	// <li>SINGLEISP_CTCC: 中国电信共享带宽包</li>
 	// <li>SINGLEISP_CUCC: 中国联通共享带宽包</li>
+	// 注意：仅部分地域支持三网带宽包和精品BGP带宽包。
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
 	// 带宽包计费类型, 默认为: ENHANCED95_POSTPAID_BY_MONTH, 可选值:
-	// <li>TOP5_POSTPAID_BY_MONTH: 按月后付费TOP5计费</li>
-	// <li>PERCENT95_POSTPAID_BY_MONTH: 按月后付费月95计费</li>
-	// <li>FIXED_PREPAID_BY_MONTH: 包月预付费计费</li>
-	// <li>ENHANCED95_POSTPAID_BY_MONTH: 按月后付费增强型95计费</li>
-	// <li>PEAK_BANDWIDTH_POSTPAID_BY_DAY: 后付费日结按带宽计费</li>
-	// <li>PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 后付费按主流量计费</li>
+	// <li>ENHANCED95_POSTPAID_BY_MONTH: 后付费-增强型95计费</li>
+	// <li>PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 后付费-按主流量计费</li>
+	// <li>BANDWIDTH_POSTPAID_BY_DAY: 常规BGP-后付费-按带宽计费</li>
+	// <li>FIXED_PREPAID_BY_MONTH: 常规BGP-预付费</li>
+	// <li>PEAK_BANDWIDTH_POSTPAID_BY_DAY: 静态单线-后付费-按日结算</li>
+	// <li>TOP5_POSTPAID_BY_MONTH: 后付费-TOP5计费，如需使用，请提交工单申请</li>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 
-	// 带宽包名称。
+	// 带宽包名称。名称长度小于60，只包含数字、字母和下划线。
 	BandwidthPackageName *string `json:"BandwidthPackageName,omitnil,omitempty" name:"BandwidthPackageName"`
 
-	// 带宽包数量(传统账户类型只能填1), 标准账户类型取值范围为1~20。
+	// 带宽包数量(传统账户类型只能填1), 标准账户类型取值范围为1~20。默认为1。
 	BandwidthPackageCount *uint64 `json:"BandwidthPackageCount,omitnil,omitempty" name:"BandwidthPackageCount"`
 
-	// 带宽包限速大小。单位：Mbps，-1表示不限速。不同计费类型的带宽包对应不同的带宽上下限。
+	// 带宽包限速大小。单位：Mbps，-1表示不限速。带宽包计费类型对应的带宽上下限可参考：[BandwidthRange](https://cloud.tencent.com/document/api/215/15824#BandwidthRange)
 	InternetMaxBandwidth *int64 `json:"InternetMaxBandwidth,omitnil,omitempty" name:"InternetMaxBandwidth"`
 
 	// 需要关联的标签列表。
@@ -3924,10 +3966,10 @@ type CreateBandwidthPackageRequest struct {
 	// 带宽包协议类型。当前支持'ipv4'和'ipv6'协议带宽包，默认值是'ipv4'。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 预付费包月带宽包的购买时长，单位: 月，取值范围: 1~60。
+	// 预付费包月带宽包的购买时长，单位: 月，取值范围: 1~60。预付费计费类型必传。
 	TimeSpan *uint64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
-	// 网络出口，默认值：center_egress1
+	// 网络出口，默认值：center_egress1，其它可选值：center_egress2、center_egress3。
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
 }
 
@@ -8810,14 +8852,14 @@ func (r *DeleteAssistantCidrResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteBandwidthPackageRequestParams struct {
-	// 待删除带宽包唯一ID
+	// 待删除带宽包唯一ID，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 }
 
 type DeleteBandwidthPackageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待删除带宽包唯一ID
+	// 待删除带宽包唯一ID，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 }
 
@@ -12246,14 +12288,14 @@ func (r *DescribeAssistantCidrResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBandwidthPackageBandwidthRangeRequestParams struct {
-	// 带宽包资源ID列表，单次查询上限20。
+	// 带宽包资源ID列表，单次查询上限20。可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
 	BandwidthPackageIds []*string `json:"BandwidthPackageIds,omitnil,omitempty" name:"BandwidthPackageIds"`
 }
 
 type DescribeBandwidthPackageBandwidthRangeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 带宽包资源ID列表，单次查询上限20。
+	// 带宽包资源ID列表，单次查询上限20。可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
 	BandwidthPackageIds []*string `json:"BandwidthPackageIds,omitnil,omitempty" name:"BandwidthPackageIds"`
 }
 
@@ -12278,7 +12320,7 @@ func (r *DescribeBandwidthPackageBandwidthRangeRequest) FromJsonString(s string)
 
 // Predefined struct for user
 type DescribeBandwidthPackageBandwidthRangeResponseParams struct {
-	// 带宽包带宽上下限详细信息。
+	// 带宽包带宽上下限详细信息。ResourceId：带宽包id、BandwidthLowerLimit：带宽下限、BandwidthUpperLimit：带宽上限。
 	BandwidthRangeSet []*BandwidthRange `json:"BandwidthRangeSet,omitnil,omitempty" name:"BandwidthRangeSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12303,14 +12345,14 @@ func (r *DescribeBandwidthPackageBandwidthRangeResponse) FromJsonString(s string
 
 // Predefined struct for user
 type DescribeBandwidthPackageBillUsageRequestParams struct {
-	// 后付费共享带宽包的唯一ID
+	// 后付费共享带宽包的唯一ID，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/api/215/19209)接口获取BandwidthPackageId。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 }
 
 type DescribeBandwidthPackageBillUsageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 后付费共享带宽包的唯一ID
+	// 后付费共享带宽包的唯一ID，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/api/215/19209)接口获取BandwidthPackageId。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 }
 
@@ -12417,7 +12459,7 @@ type DescribeBandwidthPackageResourcesRequestParams struct {
 	// 标识 共享带宽包 的唯一 ID 列表。共享带宽包 唯一 ID 形如：`bwp-11112222`。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
-	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AddressIds`和`Filters`。详细的过滤条件如下：
+	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。详细的过滤条件如下：
 	// <li> resource-id - String - 是否必填：否 - （过滤条件）按照 共享带宽包内资源 的唯一 ID 过滤。共享带宽包内资源 唯一 ID 形如：eip-11112222。</li>
 	// <li> resource-type - String - 是否必填：否 - （过滤条件）按照 共享带宽包内资源 类型过滤，目前仅支持 弹性IP 和 负载均衡 两种类型，可选值为 Address 和 LoadBalance。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -12435,7 +12477,7 @@ type DescribeBandwidthPackageResourcesRequest struct {
 	// 标识 共享带宽包 的唯一 ID 列表。共享带宽包 唯一 ID 形如：`bwp-11112222`。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
-	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AddressIds`和`Filters`。详细的过滤条件如下：
+	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。详细的过滤条件如下：
 	// <li> resource-id - String - 是否必填：否 - （过滤条件）按照 共享带宽包内资源 的唯一 ID 过滤。共享带宽包内资源 唯一 ID 形如：eip-11112222。</li>
 	// <li> resource-type - String - 是否必填：否 - （过滤条件）按照 共享带宽包内资源 类型过滤，目前仅支持 弹性IP 和 负载均衡 两种类型，可选值为 Address 和 LoadBalance。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -12505,8 +12547,8 @@ type DescribeBandwidthPackagesRequestParams struct {
 	// 每次请求的`Filters`的上限为10。参数不支持同时指定`BandwidthPackageIds`和`Filters`。详细的过滤条件如下：
 	// <li> bandwidth-package-id - String - 是否必填：否 - （过滤条件）按照带宽包的唯一标识ID过滤。</li>
 	// <li> bandwidth-package-name - String - 是否必填：否 - （过滤条件）按照 带宽包名称过滤。不支持模糊过滤。</li>
-	// <li> network-type - String - 是否必填：否 - （过滤条件）按照带宽包的类型过滤。类型包括'HIGH_QUALITY_BGP','BGP','SINGLEISP'和'ANYCAST'。</li>
-	// <li> charge-type - String - 是否必填：否 - （过滤条件）按照带宽包的计费类型过滤。计费类型包括: <li>'TOP5_POSTPAID_BY_MONTH':按月后付费TOP5计费</li><li> 'PERCENT95_POSTPAID_BY_MONTH':按月后付费月95计费</li><li>'ENHANCED95_POSTPAID_BY_MONTH':按月后付费增强型95计费</li><li>'FIXED_PREPAID_BY_MONTH':包月预付费计费</li><li>‘PEAK_BANDWIDTH_POSTPAID_BY_DAY’: 后付费日结按带宽计费</li>
+	// <li> network-type - String - 是否必填：否 - （过滤条件）按照带宽包的类型过滤。网络类型可参考[BandwidthPackage](https://cloud.tencent.com/document/api/215/15824#BandwidthPackage)。</li>
+	// <li> charge-type - String - 是否必填：否 - （过滤条件）按照带宽包的计费类型过滤。计费类型可参考[BandwidthPackage](https://cloud.tencent.com/document/api/215/15824#BandwidthPackage)。</li>
 	// <li> resource.resource-type - String - 是否必填：否 - （过滤条件）按照带宽包资源类型过滤。资源类型包括'Address'和'LoadBalance'</li>
 	// <li> resource.resource-id - String - 是否必填：否 - （过滤条件）按照带宽包资源Id过滤。资源Id形如'eip-xxxx','lb-xxxx'</li>
 	// <li> resource.address-ip - String - 是否必填：否 - （过滤条件）按照带宽包资源Ip过滤。</li>
@@ -12531,8 +12573,8 @@ type DescribeBandwidthPackagesRequest struct {
 	// 每次请求的`Filters`的上限为10。参数不支持同时指定`BandwidthPackageIds`和`Filters`。详细的过滤条件如下：
 	// <li> bandwidth-package-id - String - 是否必填：否 - （过滤条件）按照带宽包的唯一标识ID过滤。</li>
 	// <li> bandwidth-package-name - String - 是否必填：否 - （过滤条件）按照 带宽包名称过滤。不支持模糊过滤。</li>
-	// <li> network-type - String - 是否必填：否 - （过滤条件）按照带宽包的类型过滤。类型包括'HIGH_QUALITY_BGP','BGP','SINGLEISP'和'ANYCAST'。</li>
-	// <li> charge-type - String - 是否必填：否 - （过滤条件）按照带宽包的计费类型过滤。计费类型包括: <li>'TOP5_POSTPAID_BY_MONTH':按月后付费TOP5计费</li><li> 'PERCENT95_POSTPAID_BY_MONTH':按月后付费月95计费</li><li>'ENHANCED95_POSTPAID_BY_MONTH':按月后付费增强型95计费</li><li>'FIXED_PREPAID_BY_MONTH':包月预付费计费</li><li>‘PEAK_BANDWIDTH_POSTPAID_BY_DAY’: 后付费日结按带宽计费</li>
+	// <li> network-type - String - 是否必填：否 - （过滤条件）按照带宽包的类型过滤。网络类型可参考[BandwidthPackage](https://cloud.tencent.com/document/api/215/15824#BandwidthPackage)。</li>
+	// <li> charge-type - String - 是否必填：否 - （过滤条件）按照带宽包的计费类型过滤。计费类型可参考[BandwidthPackage](https://cloud.tencent.com/document/api/215/15824#BandwidthPackage)。</li>
 	// <li> resource.resource-type - String - 是否必填：否 - （过滤条件）按照带宽包资源类型过滤。资源类型包括'Address'和'LoadBalance'</li>
 	// <li> resource.resource-id - String - 是否必填：否 - （过滤条件）按照带宽包资源Id过滤。资源Id形如'eip-xxxx','lb-xxxx'</li>
 	// <li> resource.address-ip - String - 是否必填：否 - （过滤条件）按照带宽包资源Ip过滤。</li>
@@ -24468,6 +24510,74 @@ type MemberInfo struct {
 }
 
 // Predefined struct for user
+type MigrateBandwidthPackageResourcesRequestParams struct {
+	// 当前资源所在的共享带宽包ID
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
+
+	// 要迁移的目标共享带宽包的ID
+	TargetBandwidthPackageId *string `json:"TargetBandwidthPackageId,omitnil,omitempty" name:"TargetBandwidthPackageId"`
+
+	// 要迁移的资源的ID列表
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+}
+
+type MigrateBandwidthPackageResourcesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 当前资源所在的共享带宽包ID
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
+
+	// 要迁移的目标共享带宽包的ID
+	TargetBandwidthPackageId *string `json:"TargetBandwidthPackageId,omitnil,omitempty" name:"TargetBandwidthPackageId"`
+
+	// 要迁移的资源的ID列表
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+}
+
+func (r *MigrateBandwidthPackageResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *MigrateBandwidthPackageResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BandwidthPackageId")
+	delete(f, "TargetBandwidthPackageId")
+	delete(f, "ResourceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MigrateBandwidthPackageResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type MigrateBandwidthPackageResourcesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type MigrateBandwidthPackageResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *MigrateBandwidthPackageResourcesResponseParams `json:"Response"`
+}
+
+func (r *MigrateBandwidthPackageResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *MigrateBandwidthPackageResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type MigrateNetworkInterfaceRequestParams struct {
 	// 弹性网卡实例ID，例如：eni-m6dyj72l。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
@@ -25114,8 +25224,13 @@ type ModifyBandwidthPackageAttributeRequestParams struct {
 	// 带宽包名称
 	BandwidthPackageName *string `json:"BandwidthPackageName,omitnil,omitempty" name:"BandwidthPackageName"`
 
-	// 带宽包计费模式，示例 ：
-	// 'TOP5_POSTPAID_BY_MONTH'（后付费-TOP5计费）
+	// 带宽包计费模式，可选值:
+	// <li>ENHANCED95_POSTPAID_BY_MONTH: 后付费-增强型95计费</li>
+	// <li>PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 后付费-按主流量计费</li>
+	// <li>BANDWIDTH_POSTPAID_BY_DAY: 常规BGP-后付费-按带宽计费</li>
+	// <li>FIXED_PREPAID_BY_MONTH: 常规BGP-预付费</li>
+	// <li>PEAK_BANDWIDTH_POSTPAID_BY_DAY: 静态单线-后付费-按日结算</li>
+	// <li>TOP5_POSTPAID_BY_MONTH: 后付费-TOP5计费，如需使用，请提交工单申请</li>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 }
 
@@ -25128,8 +25243,13 @@ type ModifyBandwidthPackageAttributeRequest struct {
 	// 带宽包名称
 	BandwidthPackageName *string `json:"BandwidthPackageName,omitnil,omitempty" name:"BandwidthPackageName"`
 
-	// 带宽包计费模式，示例 ：
-	// 'TOP5_POSTPAID_BY_MONTH'（后付费-TOP5计费）
+	// 带宽包计费模式，可选值:
+	// <li>ENHANCED95_POSTPAID_BY_MONTH: 后付费-增强型95计费</li>
+	// <li>PRIMARY_TRAFFIC_POSTPAID_BY_HOUR: 后付费-按主流量计费</li>
+	// <li>BANDWIDTH_POSTPAID_BY_DAY: 常规BGP-后付费-按带宽计费</li>
+	// <li>FIXED_PREPAID_BY_MONTH: 常规BGP-预付费</li>
+	// <li>PEAK_BANDWIDTH_POSTPAID_BY_DAY: 静态单线-后付费-按日结算</li>
+	// <li>TOP5_POSTPAID_BY_MONTH: 后付费-TOP5计费，如需使用，请提交工单申请</li>
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
 }
 
@@ -25178,20 +25298,20 @@ func (r *ModifyBandwidthPackageAttributeResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type ModifyBandwidthPackageBandwidthRequestParams struct {
-	// 带宽包限速大小。单位：Mbps。
+	// 带宽包限速大小。单位：Mbps。带宽包计费类型对应的带宽上下限可参考：[BandwidthRange](https://cloud.tencent.com/document/api/215/15824#BandwidthRange) 
 	InternetMaxBandwidth *int64 `json:"InternetMaxBandwidth,omitnil,omitempty" name:"InternetMaxBandwidth"`
 
-	// 共享带宽包ID
+	// 共享带宽包ID，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 }
 
 type ModifyBandwidthPackageBandwidthRequest struct {
 	*tchttp.BaseRequest
 	
-	// 带宽包限速大小。单位：Mbps。
+	// 带宽包限速大小。单位：Mbps。带宽包计费类型对应的带宽上下限可参考：[BandwidthRange](https://cloud.tencent.com/document/api/215/15824#BandwidthRange) 
 	InternetMaxBandwidth *int64 `json:"InternetMaxBandwidth,omitnil,omitempty" name:"InternetMaxBandwidth"`
 
-	// 共享带宽包ID
+	// 共享带宽包ID，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 }
 
@@ -30138,6 +30258,11 @@ type Quota struct {
 	// - `TOTAL_EIP6_QUOTA`：用户当前地域下，传统弹性公网IPv6的配额数；
 	// - `BGP_EIPv6_QUOTA`：用户当前地域下，可申请的 BGP 弹性公网IPv6 的配额数；
 	// - `SINGLEISP_EIPv6_QUOTA`：用户当前地域下，可申请的静态单线弹性公网IPv6 的配额数；
+	// - `TOTAL_BANDWIDTHPKG_QUOTA`：用户当前地域下，可申请的带宽包总配额；
+	// - `PRIMARY_TRAFFIC_SINGLE_BWP_QUOTA`：用户当前地域下，可申请的静态单线主流量带宽包配额数；
+	// - `PRIMARY_TRAFFIC_BGP_BWP_QUOTA`：用户当前地域下，可申请的BGP主流量带宽包配额数；
+	// - `BandwidthGuaranteedRatio`：用户当前地域下，保底带宽包默认保底比例；
+	// - `TezBandwidthGuaranteedRatio`：用户当前地域下，边缘可用区保底带宽包默认保底比例；
 	QuotaId *string `json:"QuotaId,omitnil,omitempty" name:"QuotaId"`
 
 	// 当前数量
@@ -30521,27 +30646,31 @@ func (r *ReleaseIp6AddressesBandwidthResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RemoveBandwidthPackageResourcesRequestParams struct {
-	// 带宽包唯一标识ID，形如'bwp-xxxx'
+	// 资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'。EIP资源列表可通过[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取，LB资源列表可通过[DescribeLoadBalancers](https://cloud.tencent.com/document/api/214/30685)接口获取。
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 带宽包唯一标识ID，形如'bwp-xxxx'，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
-	// 资源类型，包括‘Address’, ‘LoadBalance’
+	// 资源类型，可选值：
+	// <li>Address：弹性公网IP</li>
+	// <li>LoadBalance：负载均衡</li>
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
-
-	// 资源ID，可支持资源形如'eip-xxxx', 'lb-xxxx'
-	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 }
 
 type RemoveBandwidthPackageResourcesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 带宽包唯一标识ID，形如'bwp-xxxx'
+	// 资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'。EIP资源列表可通过[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取，LB资源列表可通过[DescribeLoadBalancers](https://cloud.tencent.com/document/api/214/30685)接口获取。
+	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 带宽包唯一标识ID，形如'bwp-xxxx'，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
-	// 资源类型，包括‘Address’, ‘LoadBalance’
+	// 资源类型，可选值：
+	// <li>Address：弹性公网IP</li>
+	// <li>LoadBalance：负载均衡</li>
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
-
-	// 资源ID，可支持资源形如'eip-xxxx', 'lb-xxxx'
-	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 }
 
 func (r *RemoveBandwidthPackageResourcesRequest) ToJsonString() string {
@@ -30556,9 +30685,9 @@ func (r *RemoveBandwidthPackageResourcesRequest) FromJsonString(s string) error 
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "ResourceIds")
 	delete(f, "BandwidthPackageId")
 	delete(f, "ResourceType")
-	delete(f, "ResourceIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveBandwidthPackageResourcesRequest has unknown keys!", "")
 	}

@@ -469,25 +469,13 @@ type DataDisk struct {
 	// 该参数目前仅用于`DescribeInstances`等查询类接口的返回参数，不可用于`RunInstances`等写接口的入参。
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 
-	// 数据盘是否随子机销毁。取值范围：
-	// <li>true：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li>
-	// <li>
-	//   false：子机销毁时，保留数据盘<br />
-	//   默认取值：true<br />
-	//   该参数目前仅用于 `RunInstances` 接口。
-	// </li>
+	// 数据盘是否随子机销毁。取值范围：<li>true：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li><li>false：子机销毁时，保留数据盘</li><br/>默认取值：true <br/>该参数目前仅用于 `RunInstances` 接口。
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitnil,omitempty" name:"DeleteWithInstance"`
 
 	// 数据盘快照ID。选择的数据盘快照大小需小于数据盘大小。
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
-	// 数据盘是加密。取值范围：
-	// <li>true：加密</li>
-	// <li>
-	//   false：不加密<br />
-	//   默认取值：false<br />
-	//   该参数目前仅用于 `RunInstances` 接口。
-	// </li>
+	// 数据盘是否加密。取值范围：<li>true：加密</li><li>false：不加密</li><br/>默认取值：false<br/>该参数目前仅用于 `RunInstances` 接口。
 	Encrypt *bool `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
 
 	// 自定义CMK对应的ID，取值为UUID或者类似kms-abcd1234。用于加密云盘。
@@ -2128,7 +2116,7 @@ type InstanceTypeQuotaItem struct {
 	// 实例机型。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例计费模式。取值范围： <br><li>PREPAID：表示预付费，即包年包月<br></li>POSTPAID_BY_HOUR：表示后付费，即按量计费<br><li>CDHPAID：表示[专用宿主机](https://cloud.tencent.com/document/product/416)付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。<br></li>`SPOTPAID`：表示竞价实例付费。
+	// 实例计费模式。取值范围： <br><li>PREPAID：表示预付费，即包年包月<br></li><li>POSTPAID_BY_HOUR：表示后付费，即按量计费</li><li>CDHPAID：表示[专用宿主机](https://cloud.tencent.com/document/product/416)付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。<br></li><li>SPOTPAID：表示竞价实例付费。</li>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 网卡类型，例如：25代表25G网卡
@@ -2152,7 +2140,7 @@ type InstanceTypeQuotaItem struct {
 	// 本地磁盘规格列表。当该参数返回为空值时，表示当前情况下无法创建本地盘。
 	LocalDiskTypeList []*LocalDiskType `json:"LocalDiskTypeList,omitnil,omitempty" name:"LocalDiskTypeList"`
 
-	// 实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br></li>SOLD_OUT：表示实例已售罄。
+	// 实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br></li><li>SOLD_OUT：表示实例已售罄。</li>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 实例的售卖价格。
@@ -2189,10 +2177,7 @@ type InstanceTypeQuotaItem struct {
 	Frequency *string `json:"Frequency,omitnil,omitempty" name:"Frequency"`
 
 	// 描述库存情况。取值范围：
-	// <li> EnoughStock：表示对应库存非常充足</li> 
-	// <li>NormalStock：表示对应库存供应有保障</li>
-	// <li> UnderStock：表示对应库存即将售罄</li> 
-	// <li>WithoutStock：表示对应库存已经售罄</li>
+	// <li> EnoughStock：表示对应库存非常充足</li> <li>NormalStock：表示对应库存供应有保障</li><li> UnderStock：表示对应库存即将售罄</li> <li>WithoutStock：表示对应库存已经售罄</li>
 	StatusCategory *string `json:"StatusCategory,omitnil,omitempty" name:"StatusCategory"`
 }
 
@@ -2743,10 +2728,10 @@ type StorageBlock struct {
 	// HDD本地存储类型，值为：LOCAL_PRO.
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// HDD本地存储的最小容量
+	// HDD本地存储的最小容量。单位：GiB。
 	MinSize *int64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
-	// HDD本地存储的最大容量
+	// HDD本地存储的最大容量。单位：GiB。
 	MaxSize *int64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 }
 

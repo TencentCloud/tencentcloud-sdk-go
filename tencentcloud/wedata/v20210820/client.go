@@ -10277,6 +10277,55 @@ func (c *Client) GetFileInfoWithContext(ctx context.Context, request *GetFileInf
     return
 }
 
+func NewGetInstanceLogRequest() (request *GetInstanceLogRequest) {
+    request = &GetInstanceLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "GetInstanceLog")
+    
+    
+    return
+}
+
+func NewGetInstanceLogResponse() (response *GetInstanceLogResponse) {
+    response = &GetInstanceLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetInstanceLog
+// 获取实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) GetInstanceLog(request *GetInstanceLogRequest) (response *GetInstanceLogResponse, err error) {
+    return c.GetInstanceLogWithContext(context.Background(), request)
+}
+
+// GetInstanceLog
+// 获取实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) GetInstanceLogWithContext(ctx context.Context, request *GetInstanceLogRequest) (response *GetInstanceLogResponse, err error) {
+    if request == nil {
+        request = NewGetInstanceLogRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetInstanceLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetInstanceLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetIntegrationNodeColumnSchemaRequest() (request *GetIntegrationNodeColumnSchemaRequest) {
     request = &GetIntegrationNodeColumnSchemaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10490,6 +10539,55 @@ func (c *Client) GetOfflineInstanceListWithContext(ctx context.Context, request 
     return
 }
 
+func NewGetTaskInstanceRequest() (request *GetTaskInstanceRequest) {
+    request = &GetTaskInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "GetTaskInstance")
+    
+    
+    return
+}
+
+func NewGetTaskInstanceResponse() (response *GetTaskInstanceResponse) {
+    response = &GetTaskInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetTaskInstance
+// 获取实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) GetTaskInstance(request *GetTaskInstanceRequest) (response *GetTaskInstanceResponse, err error) {
+    return c.GetTaskInstanceWithContext(context.Background(), request)
+}
+
+// GetTaskInstance
+// 获取实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) GetTaskInstanceWithContext(ctx context.Context, request *GetTaskInstanceRequest) (response *GetTaskInstanceResponse, err error) {
+    if request == nil {
+        request = NewGetTaskInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTaskInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTaskInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewJudgeResourceFileRequest() (request *JudgeResourceFileRequest) {
     request = &JudgeResourceFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10633,6 +10731,55 @@ func (c *Client) KillScheduleInstancesWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewKillScheduleInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListInstancesRequest() (request *ListInstancesRequest) {
+    request = &ListInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ListInstances")
+    
+    
+    return
+}
+
+func NewListInstancesResponse() (response *ListInstancesResponse) {
+    response = &ListInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListInstances
+// 获取实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ListInstances(request *ListInstancesRequest) (response *ListInstancesResponse, err error) {
+    return c.ListInstancesWithContext(context.Background(), request)
+}
+
+// ListInstances
+// 获取实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ListInstancesWithContext(ctx context.Context, request *ListInstancesRequest) (response *ListInstancesResponse, err error) {
+    if request == nil {
+        request = NewListInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListInstancesResponse()
     err = c.Send(request, response)
     return
 }

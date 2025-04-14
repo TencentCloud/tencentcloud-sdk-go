@@ -52,20 +52,16 @@ type ActionTimer struct {
 	// 执行时间，按照ISO8601标准表示，并且使用UTC时间。格式为 YYYY-MM-DDThh:mm:ssZ。例如 2018-05-29T11:26:40Z，执行时间必须大于当前时间5分钟。
 	ActionTime *string `json:"ActionTime,omitnil,omitempty" name:"ActionTime"`
 
-	// 扩展数据
+	// 扩展数据。仅做出参使用。
 	Externals *Externals `json:"Externals,omitnil,omitempty" name:"Externals"`
 
-	// 定时器ID。
+	// 定时器ID。仅做出参使用。
 	ActionTimerId *string `json:"ActionTimerId,omitnil,omitempty" name:"ActionTimerId"`
 
-	// 定时器状态，取值范围：
-	// 
-	// UNDO：未触发
-	// DOING：触发中
-	// DONE：已经触发
+	// 定时器状态，仅做出参使用。取值范围：<br><li>UNDO：未执行</li> <li>DOING：正在执行</li><li>DONE：执行完成。</li>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 定时器对应的实例ID。
+	// 定时器对应的实例ID。仅做出参使用。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -238,20 +234,20 @@ func (r *AssociateInstancesKeyPairsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AssociateSecurityGroupsRequestParams struct {
-	// 要绑定的`安全组ID`，类似sg-efil73jd，只支持绑定单个安全组。
+	// 要绑定的`安全组ID`，类似sg-efil73jd，只支持绑定单个安全组。可通过 [DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808) 接口返回值中的`SecurityGroupId`获取。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 被绑定的`实例ID`，类似ins-lesecurk，支持指定多个实例，每次请求批量实例的上限为100。
+	// 被绑定的`实例ID`，类似ins-lesecurk，支持指定多个实例，每次请求批量实例的上限为100。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
 type AssociateSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要绑定的`安全组ID`，类似sg-efil73jd，只支持绑定单个安全组。
+	// 要绑定的`安全组ID`，类似sg-efil73jd，只支持绑定单个安全组。可通过 [DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808) 接口返回值中的`SecurityGroupId`获取。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 被绑定的`实例ID`，类似ins-lesecurk，支持指定多个实例，每次请求批量实例的上限为100。
+	// 被绑定的`实例ID`，类似ins-lesecurk，支持指定多个实例，每次请求批量实例的上限为100。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
@@ -911,13 +907,17 @@ func (r *CreateHpcClusterResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateImageRequestParams struct {
-	// 镜像名称
+	// 镜像名称。
+	// 最多支持60个字符。
 	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
 
 	// 需要制作镜像的实例ID。基于实例创建镜像时，为必填参数。
+	// InstanceId 和 SnapshotIds 为二选一必填参数。
+	// 可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 镜像描述
+	// 镜像描述。
+	// 最多支持 256 个字符。
 	ImageDescription *string `json:"ImageDescription,omitnil,omitempty" name:"ImageDescription"`
 
 	// 是否执行强制关机以制作镜像。
@@ -930,16 +930,21 @@ type CreateImageRequestParams struct {
 	// 关于Sysprep的详情请参考[链接](https://cloud.tencent.com/document/product/213/43498)。
 	Sysprep *string `json:"Sysprep,omitnil,omitempty" name:"Sysprep"`
 
-	// 基于实例创建整机镜像时，指定包含在镜像里的数据盘ID
+	// 基于实例创建整机镜像时，指定包含在镜像里的数据盘ID。
+	// DataDiskIds 只能在指定 InstanceId 实例所包含的数据盘范围内指定。
+	// 可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的 `DataDisks` 获取。
 	DataDiskIds []*string `json:"DataDiskIds,omitnil,omitempty" name:"DataDiskIds"`
 
-	// 基于快照创建镜像，指定快照ID，必须包含一个系统盘快照。不可与InstanceId同时传入。
+	// 基于快照创建镜像，指定快照ID，必须包含一个系统盘快照。不可与 InstanceId 同时传入。
+	// InstanceId 和 SnapshotIds 为二选一必填参数。
+	// 可通过 [DescribeSnapshots](https://cloud.tencent.com/document/product/362/15647) 接口返回值中的`SnapshotId`获取。
 	SnapshotIds []*string `json:"SnapshotIds,omitnil,omitempty" name:"SnapshotIds"`
 
 	// 检测本次请求的是否成功，但不会对操作的资源产生任何影响。默认取值为false。
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
 	// 标签描述列表。通过指定该参数可以同时绑定标签到自定义镜像。
+	// 可通过 [DescribeTags](https://cloud.tencent.com/document/api/651/35316) 接口返回值中的 `TagKey` 和 `TagValue` 获取。
 	TagSpecification []*TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 
 	// 镜像族
@@ -949,13 +954,17 @@ type CreateImageRequestParams struct {
 type CreateImageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 镜像名称
+	// 镜像名称。
+	// 最多支持60个字符。
 	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
 
 	// 需要制作镜像的实例ID。基于实例创建镜像时，为必填参数。
+	// InstanceId 和 SnapshotIds 为二选一必填参数。
+	// 可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 镜像描述
+	// 镜像描述。
+	// 最多支持 256 个字符。
 	ImageDescription *string `json:"ImageDescription,omitnil,omitempty" name:"ImageDescription"`
 
 	// 是否执行强制关机以制作镜像。
@@ -968,16 +977,21 @@ type CreateImageRequest struct {
 	// 关于Sysprep的详情请参考[链接](https://cloud.tencent.com/document/product/213/43498)。
 	Sysprep *string `json:"Sysprep,omitnil,omitempty" name:"Sysprep"`
 
-	// 基于实例创建整机镜像时，指定包含在镜像里的数据盘ID
+	// 基于实例创建整机镜像时，指定包含在镜像里的数据盘ID。
+	// DataDiskIds 只能在指定 InstanceId 实例所包含的数据盘范围内指定。
+	// 可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的 `DataDisks` 获取。
 	DataDiskIds []*string `json:"DataDiskIds,omitnil,omitempty" name:"DataDiskIds"`
 
-	// 基于快照创建镜像，指定快照ID，必须包含一个系统盘快照。不可与InstanceId同时传入。
+	// 基于快照创建镜像，指定快照ID，必须包含一个系统盘快照。不可与 InstanceId 同时传入。
+	// InstanceId 和 SnapshotIds 为二选一必填参数。
+	// 可通过 [DescribeSnapshots](https://cloud.tencent.com/document/product/362/15647) 接口返回值中的`SnapshotId`获取。
 	SnapshotIds []*string `json:"SnapshotIds,omitnil,omitempty" name:"SnapshotIds"`
 
 	// 检测本次请求的是否成功，但不会对操作的资源产生任何影响。默认取值为false。
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
 	// 标签描述列表。通过指定该参数可以同时绑定标签到自定义镜像。
+	// 可通过 [DescribeTags](https://cloud.tencent.com/document/api/651/35316) 接口返回值中的 `TagKey` 和 `TagValue` 获取。
 	TagSpecification []*TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 
 	// 镜像族
@@ -1637,25 +1651,13 @@ type DataDisk struct {
 	// 该参数目前仅用于`DescribeInstances`等查询类接口的返回参数，不可用于`RunInstances`等写接口的入参。
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 
-	// 数据盘是否随子机销毁。取值范围：
-	// <li>true：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li>
-	// <li>
-	//   false：子机销毁时，保留数据盘<br />
-	//   默认取值：true<br />
-	//   该参数目前仅用于 `RunInstances` 接口。
-	// </li>
+	// 数据盘是否随子机销毁。取值范围：<li>true：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li><li>false：子机销毁时，保留数据盘</li><br/>默认取值：true <br/>该参数目前仅用于 `RunInstances` 接口。
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitnil,omitempty" name:"DeleteWithInstance"`
 
 	// 数据盘快照ID。选择的数据盘快照大小需小于数据盘大小。
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
-	// 数据盘是加密。取值范围：
-	// <li>true：加密</li>
-	// <li>
-	//   false：不加密<br />
-	//   默认取值：false<br />
-	//   该参数目前仅用于 `RunInstances` 接口。
-	// </li>
+	// 数据盘是否加密。取值范围：<li>true：加密</li><li>false：不加密</li><br/>默认取值：false<br/>该参数目前仅用于 `RunInstances` 接口。
 	Encrypt *bool `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
 
 	// 自定义CMK对应的ID，取值为UUID或者类似kms-abcd1234。用于加密云盘。
@@ -1790,26 +1792,32 @@ func (r *DeleteHpcClustersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteImagesRequestParams struct {
-	// 准备删除的镜像Id列表
+	// 删除的镜像 ID 列表。
+	// 可通过 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) 接口返回值中的`ImageId`获取。
 	ImageIds []*string `json:"ImageIds,omitnil,omitempty" name:"ImageIds"`
 
-	// 是否删除镜像关联的快照
+	// 是否删除镜像关联的快照。
+	// 默认值：false
 	DeleteBindedSnap *bool `json:"DeleteBindedSnap,omitnil,omitempty" name:"DeleteBindedSnap"`
 
-	// 检测是否支持删除镜像
+	// 检测是否支持删除镜像。
+	// 默认值：false
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 }
 
 type DeleteImagesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 准备删除的镜像Id列表
+	// 删除的镜像 ID 列表。
+	// 可通过 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) 接口返回值中的`ImageId`获取。
 	ImageIds []*string `json:"ImageIds,omitnil,omitempty" name:"ImageIds"`
 
-	// 是否删除镜像关联的快照
+	// 是否删除镜像关联的快照。
+	// 默认值：false
 	DeleteBindedSnap *bool `json:"DeleteBindedSnap,omitnil,omitempty" name:"DeleteBindedSnap"`
 
-	// 检测是否支持删除镜像
+	// 检测是否支持删除镜像。
+	// 默认值：false
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 }
 
@@ -1858,14 +1866,14 @@ func (r *DeleteImagesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteInstancesActionTimerRequestParams struct {
-	// 定时任务ID列表，可以通过DescribeInstancesActionTimer接口查询。只能删除未执行的定时任务。
+	// 定时任务ID列表，可以通过[ DescribeInstancesActionTimer ](https://cloud.tencent.com/document/product/213/103950)接口查询。只能删除未执行的定时任务。
 	ActionTimerIds []*string `json:"ActionTimerIds,omitnil,omitempty" name:"ActionTimerIds"`
 }
 
 type DeleteInstancesActionTimerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 定时任务ID列表，可以通过DescribeInstancesActionTimer接口查询。只能删除未执行的定时任务。
+	// 定时任务ID列表，可以通过[ DescribeInstancesActionTimer ](https://cloud.tencent.com/document/product/213/103950)接口查询。只能删除未执行的定时任务。
 	ActionTimerIds []*string `json:"ActionTimerIds,omitnil,omitempty" name:"ActionTimerIds"`
 }
 
@@ -2020,20 +2028,20 @@ func (r *DeleteLaunchTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLaunchTemplateVersionsRequestParams struct {
-	// 启动模板ID。
+	// 启动模板ID。可通过 [DescribeLaunchTemplates](https://cloud.tencent.com/document/api/213/66322) 接口返回值中的`LaunchTemplateId`获取。
 	LaunchTemplateId *string `json:"LaunchTemplateId,omitnil,omitempty" name:"LaunchTemplateId"`
 
-	// 实例启动模板版本列表。
+	// 实例启动模板版本列表。可通过 [DescribeLaunchTemplateVersions](https://cloud.tencent.com/document/api/213/66323) 接口返回值中的`LaunchTemplateVersion`获取。
 	LaunchTemplateVersions []*int64 `json:"LaunchTemplateVersions,omitnil,omitempty" name:"LaunchTemplateVersions"`
 }
 
 type DeleteLaunchTemplateVersionsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 启动模板ID。
+	// 启动模板ID。可通过 [DescribeLaunchTemplates](https://cloud.tencent.com/document/api/213/66322) 接口返回值中的`LaunchTemplateId`获取。
 	LaunchTemplateId *string `json:"LaunchTemplateId,omitnil,omitempty" name:"LaunchTemplateId"`
 
-	// 实例启动模板版本列表。
+	// 实例启动模板版本列表。可通过 [DescribeLaunchTemplateVersions](https://cloud.tencent.com/document/api/213/66323) 接口返回值中的`LaunchTemplateVersion`获取。
 	LaunchTemplateVersions []*int64 `json:"LaunchTemplateVersions,omitnil,omitempty" name:"LaunchTemplateVersions"`
 }
 
@@ -2084,7 +2092,7 @@ type DescribeAccountQuotaRequestParams struct {
 	// <li><strong>zone</strong></li>
 	// <p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤。可用区形如：ap-guangzhou-1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
 	// <li><strong>quota-type</strong></li>
-	// <p style="padding-left: 30px;">按照【<strong>配额类型</strong>】进行过滤。配额类型形如：PostPaidQuotaSet。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：PostPaidQuotaSet,DisasterRecoverGroupQuotaSet,PrePaidQuotaSet,SpotPaidQuotaSet</p>
+	// <p style="padding-left: 30px;">按照【<strong>配额类型</strong>】进行过滤。配额类型形如：PostPaidQuotaSet。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：</p><p style="padding-left: 30px;">PostPaidQuotaSet: 后付费配额</p><p style="padding-left: 30px;">PrePaidQuotaSet: 预付费配额</p><p style="padding-left: 30px;">SpotPaidQuotaSet: 竞价配额</p><p style="padding-left: 30px;">ImageQuotaSet: 镜像配额</p><p style="padding-left: 30px;">DisasterRecoverGroupQuotaSet: 置放群组配额</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -2094,7 +2102,7 @@ type DescribeAccountQuotaRequest struct {
 	// <li><strong>zone</strong></li>
 	// <p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤。可用区形如：ap-guangzhou-1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
 	// <li><strong>quota-type</strong></li>
-	// <p style="padding-left: 30px;">按照【<strong>配额类型</strong>】进行过滤。配额类型形如：PostPaidQuotaSet。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：PostPaidQuotaSet,DisasterRecoverGroupQuotaSet,PrePaidQuotaSet,SpotPaidQuotaSet</p>
+	// <p style="padding-left: 30px;">按照【<strong>配额类型</strong>】进行过滤。配额类型形如：PostPaidQuotaSet。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：</p><p style="padding-left: 30px;">PostPaidQuotaSet: 后付费配额</p><p style="padding-left: 30px;">PrePaidQuotaSet: 预付费配额</p><p style="padding-left: 30px;">SpotPaidQuotaSet: 竞价配额</p><p style="padding-left: 30px;">ImageQuotaSet: 镜像配额</p><p style="padding-left: 30px;">DisasterRecoverGroupQuotaSet: 置放群组配额</p>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -3218,14 +3226,14 @@ func (r *DescribeInstanceTypeConfigsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceVncUrlRequestParams struct {
-	// 一个操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) API返回值中的`InstanceId`获取。
+	// 一个操作的实例ID。可通过[ DescribeInstances ](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeInstanceVncUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 一个操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728) API返回值中的`InstanceId`获取。
+	// 一个操作的实例ID。可通过[ DescribeInstances ](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -3278,19 +3286,19 @@ type DescribeInstancesActionTimerRequestParams struct {
 	// 定时任务ID列表。
 	ActionTimerIds []*string `json:"ActionTimerIds,omitnil,omitempty" name:"ActionTimerIds"`
 
-	// 按照一个或者多个实例ID查询。
+	// 按照一个或者多个实例ID查询。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 定时器动作，目前仅支持销毁一个值：TerminateInstances。
 	TimerAction *string `json:"TimerAction,omitnil,omitempty" name:"TimerAction"`
 
-	// 执行时间的结束范围，用于条件筛选，格式如2018-05-01 19:00:00。
+	// 定时任务执行时间的结束范围，用于条件筛选，格式如2018-05-01 19:00:00。
 	EndActionTime *string `json:"EndActionTime,omitnil,omitempty" name:"EndActionTime"`
 
-	// 执行时间的开始范围，用于条件筛选，格式如2018-05-01 19:00:00。
+	// 定时任务执行时间的开始范围，用于条件筛选，格式如2018-05-01 19:00:00。
 	StartActionTime *string `json:"StartActionTime,omitnil,omitempty" name:"StartActionTime"`
 
-	// 定时任务状态列表。<br><li>UNDO：未执行</li> <br><li>DOING：正在执行</li><br><li>DONE：执行完成。</li>
+	// 定时任务状态列表。<br><li>UNDO：未执行</li> <li>DOING：正在执行</li><li>DONE：执行完成。</li>
 	StatusList []*string `json:"StatusList,omitnil,omitempty" name:"StatusList"`
 }
 
@@ -3300,19 +3308,19 @@ type DescribeInstancesActionTimerRequest struct {
 	// 定时任务ID列表。
 	ActionTimerIds []*string `json:"ActionTimerIds,omitnil,omitempty" name:"ActionTimerIds"`
 
-	// 按照一个或者多个实例ID查询。
+	// 按照一个或者多个实例ID查询。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 定时器动作，目前仅支持销毁一个值：TerminateInstances。
 	TimerAction *string `json:"TimerAction,omitnil,omitempty" name:"TimerAction"`
 
-	// 执行时间的结束范围，用于条件筛选，格式如2018-05-01 19:00:00。
+	// 定时任务执行时间的结束范围，用于条件筛选，格式如2018-05-01 19:00:00。
 	EndActionTime *string `json:"EndActionTime,omitnil,omitempty" name:"EndActionTime"`
 
-	// 执行时间的开始范围，用于条件筛选，格式如2018-05-01 19:00:00。
+	// 定时任务执行时间的开始范围，用于条件筛选，格式如2018-05-01 19:00:00。
 	StartActionTime *string `json:"StartActionTime,omitnil,omitempty" name:"StartActionTime"`
 
-	// 定时任务状态列表。<br><li>UNDO：未执行</li> <br><li>DOING：正在执行</li><br><li>DONE：执行完成。</li>
+	// 定时任务状态列表。<br><li>UNDO：未执行</li> <li>DOING：正在执行</li><li>DONE：执行完成。</li>
 	StatusList []*string `json:"StatusList,omitnil,omitempty" name:"StatusList"`
 }
 
@@ -3371,7 +3379,7 @@ type DescribeInstancesAttributesRequestParams struct {
 	// UserData: 实例自定义数据
 	Attributes []*string `json:"Attributes,omitnil,omitempty" name:"Attributes"`
 
-	// 实例ID列表
+	// 实例ID列表。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
@@ -3382,7 +3390,7 @@ type DescribeInstancesAttributesRequest struct {
 	// UserData: 实例自定义数据
 	Attributes []*string `json:"Attributes,omitnil,omitempty" name:"Attributes"`
 
-	// 实例ID列表
+	// 实例ID列表。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
@@ -3437,7 +3445,7 @@ type DescribeInstancesModificationRequestParams struct {
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// <li><strong>status</strong></li>
-	// <p style="padding-left: 30px;">按照【<strong>配置规格状态</strong>】进行过滤。配置规格状态形如：SELL、UNAVAILABLE。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <p style="padding-left: 30px;">按照【<strong>配置规格状态</strong>】进行过滤。配置规格状态形如：SELL(表示实例可售卖)、UNAVAILABLE(表示实例不可用)。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为2。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
@@ -3449,7 +3457,7 @@ type DescribeInstancesModificationRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// <li><strong>status</strong></li>
-	// <p style="padding-left: 30px;">按照【<strong>配置规格状态</strong>】进行过滤。配置规格状态形如：SELL、UNAVAILABLE。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <p style="padding-left: 30px;">按照【<strong>配置规格状态</strong>】进行过滤。配置规格状态形如：SELL(表示实例可售卖)、UNAVAILABLE(表示实例不可用)。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为2。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
@@ -3508,7 +3516,7 @@ type DescribeInstancesOperationLimitRequestParams struct {
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 实例操作。
-	// <li> INSTANCE_DEGRADE：实例降配操作</li>
+	// <li> INSTANCE_DEGRADE：实例降配操作</li><li> INTERNET_CHARGE_TYPE_CHANGE：实例调整带宽付费模式操作</li>
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 }
 
@@ -3519,7 +3527,7 @@ type DescribeInstancesOperationLimitRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 实例操作。
-	// <li> INSTANCE_DEGRADE：实例降配操作</li>
+	// <li> INSTANCE_DEGRADE：实例降配操作</li><li> INTERNET_CHARGE_TYPE_CHANGE：实例调整带宽付费模式操作</li>
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
 }
 
@@ -4570,7 +4578,7 @@ type DescribeZoneInstanceConfigInfosRequestParams struct {
 	// <li><strong>instance-type</strong></li>
 	// <p style="padding-left: 30px;">按照【<strong>实例机型</strong>】进行过滤。不同实例机型指定了不同的资源规格，具体取值可通过调用接口 [DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/product/213/15749) 来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。若不指定该参数，则默认查询筛选条件下所有机型。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 	// <li><strong>instance-charge-type</strong></li>
-	// <p style="padding-left: 30px;">按照【<strong>实例计费模式</strong>】进行过滤。(PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费 )</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <p style="padding-left: 30px;">按照【<strong>实例计费模式</strong>】进行过滤。(PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费  | CDHPAID：表示独享子机 | SPOTPAID：表示竞价付费 | CDCPAID：表示专用集群付费)</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 	// <li><strong>sort-keys</strong></li>
 	// <p style="padding-left: 30px;">按关键字进行排序,格式为排序字段加排序方式，中间用冒号分隔。 例如： 按cpu数逆序排序 "cpu:desc", 按mem大小顺序排序 "mem:asc"</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。
@@ -4587,7 +4595,7 @@ type DescribeZoneInstanceConfigInfosRequest struct {
 	// <li><strong>instance-type</strong></li>
 	// <p style="padding-left: 30px;">按照【<strong>实例机型</strong>】进行过滤。不同实例机型指定了不同的资源规格，具体取值可通过调用接口 [DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/product/213/15749) 来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。若不指定该参数，则默认查询筛选条件下所有机型。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 	// <li><strong>instance-charge-type</strong></li>
-	// <p style="padding-left: 30px;">按照【<strong>实例计费模式</strong>】进行过滤。(PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费 )</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <p style="padding-left: 30px;">按照【<strong>实例计费模式</strong>】进行过滤。(PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费  | CDHPAID：表示独享子机 | SPOTPAID：表示竞价付费 | CDCPAID：表示专用集群付费)</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 	// <li><strong>sort-keys</strong></li>
 	// <p style="padding-left: 30px;">按关键字进行排序,格式为排序字段加排序方式，中间用冒号分隔。 例如： 按cpu数逆序排序 "cpu:desc", 按mem大小顺序排序 "mem:asc"</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。
@@ -4765,20 +4773,20 @@ func (r *DisassociateInstancesKeyPairsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DisassociateSecurityGroupsRequestParams struct {
-	// 要解绑的`安全组ID`，类似sg-efil73jd，只支持解绑单个安全组。
+	// 要解绑的`安全组ID`，类似sg-efil73jd，只支持解绑单个安全组。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`SecurityGroupIds`获取实例绑定的安全组。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 被解绑的`实例ID`，类似ins-lesecurk，支持指定多个实例，每次请求批量实例的上限为100。
+	// 被解绑的`实例ID`，类似ins-lesecurk，支持指定多个实例，每次请求批量实例的上限为100。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
 type DisassociateSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要解绑的`安全组ID`，类似sg-efil73jd，只支持解绑单个安全组。
+	// 要解绑的`安全组ID`，类似sg-efil73jd，只支持解绑单个安全组。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`SecurityGroupIds`获取实例绑定的安全组。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 被解绑的`实例ID`，类似ins-lesecurk，支持指定多个实例，每次请求批量实例的上限为100。
+	// 被解绑的`实例ID`，类似ins-lesecurk，支持指定多个实例，每次请求批量实例的上限为100。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
@@ -4970,14 +4978,14 @@ func (r *EnterRescueModeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExitRescueModeRequestParams struct {
-	// 退出救援模式的实例id
+	// 退出救援模式的实例id。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type ExitRescueModeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 退出救援模式的实例id
+	// 退出救援模式的实例id。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -5024,22 +5032,27 @@ func (r *ExitRescueModeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportImagesRequestParams struct {
-	// COS存储桶名称
+	// COS存储桶名称。
+	// 可通过 [List Buckets](https://cloud.tencent.com/document/product/436/8291) 接口查询请求者名下的所有存储桶列表或特定地域下的存储桶列表。
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
 
 	// 镜像ID列表。调用 ExportImages 接口时，参数 ImageIds 和 SnapshotIds 为二选一必填参数，目前参数 SnapshotIds 暂未对外开放。
+	// 可通过 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) 接口返回值中的`ImageId`获取。
 	ImageIds []*string `json:"ImageIds,omitnil,omitempty" name:"ImageIds"`
 
 	// 镜像文件导出格式。取值范围：RAW，QCOW2，VHD，VMDK。默认为RAW
 	ExportFormat *string `json:"ExportFormat,omitnil,omitempty" name:"ExportFormat"`
 
-	// 导出文件的名称前缀列表
+	// 导出文件的名称前缀列表。
+	// 默认导出文件无名称前缀。
 	FileNamePrefixList []*string `json:"FileNamePrefixList,omitnil,omitempty" name:"FileNamePrefixList"`
 
-	// 是否只导出系统盘
+	// 是否只导出系统盘。
+	// 默认值：false
 	OnlyExportRootDisk *bool `json:"OnlyExportRootDisk,omitnil,omitempty" name:"OnlyExportRootDisk"`
 
-	// 检测镜像是否支持导出
+	// 检测镜像是否支持导出。
+	// 默认值：false
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
 	// 角色名称。默认为CVM_QcsRole，发起请求前请确认是否存在该角色，以及是否已正确配置COS写入权限。
@@ -5049,22 +5062,27 @@ type ExportImagesRequestParams struct {
 type ExportImagesRequest struct {
 	*tchttp.BaseRequest
 	
-	// COS存储桶名称
+	// COS存储桶名称。
+	// 可通过 [List Buckets](https://cloud.tencent.com/document/product/436/8291) 接口查询请求者名下的所有存储桶列表或特定地域下的存储桶列表。
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
 
 	// 镜像ID列表。调用 ExportImages 接口时，参数 ImageIds 和 SnapshotIds 为二选一必填参数，目前参数 SnapshotIds 暂未对外开放。
+	// 可通过 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) 接口返回值中的`ImageId`获取。
 	ImageIds []*string `json:"ImageIds,omitnil,omitempty" name:"ImageIds"`
 
 	// 镜像文件导出格式。取值范围：RAW，QCOW2，VHD，VMDK。默认为RAW
 	ExportFormat *string `json:"ExportFormat,omitnil,omitempty" name:"ExportFormat"`
 
-	// 导出文件的名称前缀列表
+	// 导出文件的名称前缀列表。
+	// 默认导出文件无名称前缀。
 	FileNamePrefixList []*string `json:"FileNamePrefixList,omitnil,omitempty" name:"FileNamePrefixList"`
 
-	// 是否只导出系统盘
+	// 是否只导出系统盘。
+	// 默认值：false
 	OnlyExportRootDisk *bool `json:"OnlyExportRootDisk,omitnil,omitempty" name:"OnlyExportRootDisk"`
 
-	// 检测镜像是否支持导出
+	// 检测镜像是否支持导出。
+	// 默认值：false
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
 	// 角色名称。默认为CVM_QcsRole，发起请求前请确认是否存在该角色，以及是否已正确配置COS写入权限。
@@ -5101,7 +5119,9 @@ type ExportImagesResponseParams struct {
 	// 导出镜像任务ID
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 导出镜像的COS文件名列表
+	// 导出镜像的COS文件名列表。其中，文件名格式如下。
+	// * 系统盘：前缀名_镜像ID_system_快照ID.镜像格式
+	// * 数据盘：前缀名_镜像ID_data_快照ID.镜像格式
 	CosPaths []*string `json:"CosPaths,omitnil,omitempty" name:"CosPaths"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5510,7 +5530,7 @@ func (r *ImportImageResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ImportInstancesActionTimerRequestParams struct {
-	// 实例id列表，可以通过DescribeInstances接口查询到。
+	// 实例id列表，可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 定时器任务信息，目前仅支持定时销毁。
@@ -5520,7 +5540,7 @@ type ImportInstancesActionTimerRequestParams struct {
 type ImportInstancesActionTimerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id列表，可以通过DescribeInstances接口查询到。
+	// 实例id列表，可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 定时器任务信息，目前仅支持定时销毁。
@@ -6191,28 +6211,28 @@ func (r *InquiryPriceResetInstancesTypeResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type InquiryPriceResizeInstanceDisksRequestParams struct {
-	// 待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。
+	// 待操作的实例ID。可通过[ DescribeInstances ](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 待扩容的数据盘配置信息。只支持扩容非弹性数据盘（[`DescribeDisks`](https://cloud.tencent.com/document/api/362/16315)接口返回值中的`Portable`为`false`表示非弹性）。数据盘容量单位：GB。最小扩容步长：10G。关于数据盘类型的选择请参考硬盘产品简介。可选数据盘类型受到实例类型`InstanceType`限制。另外允许扩容的最大容量也因数据盘类型的不同而有所差异。
+	// 待扩容的数据盘配置信息。只支持扩容非弹性数据盘[ DescribeDisks ](https://cloud.tencent.com/document/api/362/16315)接口返回值中的`Portable`为`false`表示非弹性）。数据盘容量单位：GB。最小扩容步长：10G。关于数据盘类型的选择请参考硬盘产品简介。可选数据盘类型受到实例类型`InstanceType`限制。另外允许扩容的最大容量也因数据盘类型的不同而有所差异。
 	// <dx-alert infotype="explain" title="">您必须指定参数DataDisks与SystemDisk的其中一个，但不能同时指定。</dx-alert>
 	DataDisks []*DataDisk `json:"DataDisks,omitnil,omitempty" name:"DataDisks"`
 
-	// 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再重置用户密码。取值范围：<br><li>true：表示在正常关机失败后进行强制关机</li><br><li>false：表示在正常关机失败后不进行强制关机</li><br><br>默认取值：false。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
+	// 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再重置用户密码。取值范围：<br><li>true：表示在正常关机失败后进行强制关机</li><br><li>false：表示在正常关机失败后不进行强制关机</li><br>默认取值：false。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
 	ForceStop *bool `json:"ForceStop,omitnil,omitempty" name:"ForceStop"`
 }
 
 type InquiryPriceResizeInstanceDisksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。
+	// 待操作的实例ID。可通过[ DescribeInstances ](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 待扩容的数据盘配置信息。只支持扩容非弹性数据盘（[`DescribeDisks`](https://cloud.tencent.com/document/api/362/16315)接口返回值中的`Portable`为`false`表示非弹性）。数据盘容量单位：GB。最小扩容步长：10G。关于数据盘类型的选择请参考硬盘产品简介。可选数据盘类型受到实例类型`InstanceType`限制。另外允许扩容的最大容量也因数据盘类型的不同而有所差异。
+	// 待扩容的数据盘配置信息。只支持扩容非弹性数据盘[ DescribeDisks ](https://cloud.tencent.com/document/api/362/16315)接口返回值中的`Portable`为`false`表示非弹性）。数据盘容量单位：GB。最小扩容步长：10G。关于数据盘类型的选择请参考硬盘产品简介。可选数据盘类型受到实例类型`InstanceType`限制。另外允许扩容的最大容量也因数据盘类型的不同而有所差异。
 	// <dx-alert infotype="explain" title="">您必须指定参数DataDisks与SystemDisk的其中一个，但不能同时指定。</dx-alert>
 	DataDisks []*DataDisk `json:"DataDisks,omitnil,omitempty" name:"DataDisks"`
 
-	// 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再重置用户密码。取值范围：<br><li>true：表示在正常关机失败后进行强制关机</li><br><li>false：表示在正常关机失败后不进行强制关机</li><br><br>默认取值：false。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
+	// 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机，然后再重置用户密码。取值范围：<br><li>true：表示在正常关机失败后进行强制关机</li><br><li>false：表示在正常关机失败后不进行强制关机</li><br>默认取值：false。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
 	ForceStop *bool `json:"ForceStop,omitnil,omitempty" name:"ForceStop"`
 }
 
@@ -6278,7 +6298,8 @@ type InquiryPriceRunInstancesRequestParams struct {
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 
-	// 实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。若不指定该参数，则默认机型为S1.SMALL1。
+	// 实例机型。不同实例机型指定了不同的资源规格。
+	// <br><li>对于付费模式为PREPAID或POSTPAID_BY_HOUR的实例创建，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。若不指定该参数，则系统将根据当前地域的资源售卖情况动态指定默认机型。</li><br><li>对于付费模式为CDHPAID的实例创建，该参数以"CDH_"为前缀，根据CPU和内存配置生成，具体形式为：CDH_XCXG，例如对于创建CPU为1核，内存为1G大小的专用宿主机的实例，该参数应该为CDH_1C1G。</li>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
@@ -6302,7 +6323,7 @@ type InquiryPriceRunInstancesRequestParams struct {
 	// 实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。默认情况下会随机生成密码，并以站内信方式知会到用户。
 	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
 
-	// 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则默认不绑定安全组。
+	// 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的`SecurityGroupId`字段来获取。若不指定该参数，则默认不绑定安全组。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
 	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
@@ -6347,7 +6368,8 @@ type InquiryPriceRunInstancesRequest struct {
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 
-	// 实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。若不指定该参数，则默认机型为S1.SMALL1。
+	// 实例机型。不同实例机型指定了不同的资源规格。
+	// <br><li>对于付费模式为PREPAID或POSTPAID_BY_HOUR的实例创建，具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格](https://cloud.tencent.com/document/product/213/11518)描述。若不指定该参数，则系统将根据当前地域的资源售卖情况动态指定默认机型。</li><br><li>对于付费模式为CDHPAID的实例创建，该参数以"CDH_"为前缀，根据CPU和内存配置生成，具体形式为：CDH_XCXG，例如对于创建CPU为1核，内存为1G大小的专用宿主机的实例，该参数应该为CDH_1C1G。</li>
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
@@ -6371,7 +6393,7 @@ type InquiryPriceRunInstancesRequest struct {
 	// 实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。默认情况下会随机生成密码，并以站内信方式知会到用户。
 	LoginSettings *LoginSettings `json:"LoginSettings,omitnil,omitempty" name:"LoginSettings"`
 
-	// 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则默认不绑定安全组。
+	// 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的`SecurityGroupId`字段来获取。若不指定该参数，则默认不绑定安全组。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
 	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
@@ -6722,7 +6744,7 @@ type InstanceTypeConfig struct {
 	// CPU核数，单位：核。
 	CPU *int64 `json:"CPU,omitnil,omitempty" name:"CPU"`
 
-	// 内存容量，单位：`GB`。
+	// 内存容量，单位：`GiB`。
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
 	// FPGA核数，单位：核。
@@ -6750,7 +6772,7 @@ type InstanceTypeQuotaItem struct {
 	// 实例机型。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 实例计费模式。取值范围： <br><li>PREPAID：表示预付费，即包年包月<br></li>POSTPAID_BY_HOUR：表示后付费，即按量计费<br><li>CDHPAID：表示[专用宿主机](https://cloud.tencent.com/document/product/416)付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。<br></li>`SPOTPAID`：表示竞价实例付费。
+	// 实例计费模式。取值范围： <br><li>PREPAID：表示预付费，即包年包月<br></li><li>POSTPAID_BY_HOUR：表示后付费，即按量计费</li><li>CDHPAID：表示[专用宿主机](https://cloud.tencent.com/document/product/416)付费，即只对`专用宿主机`计费，不对`专用宿主机`上的实例计费。<br></li><li>SPOTPAID：表示竞价实例付费。</li>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 网卡类型，例如：25代表25G网卡
@@ -6774,7 +6796,7 @@ type InstanceTypeQuotaItem struct {
 	// 本地磁盘规格列表。当该参数返回为空值时，表示当前情况下无法创建本地盘。
 	LocalDiskTypeList []*LocalDiskType `json:"LocalDiskTypeList,omitnil,omitempty" name:"LocalDiskTypeList"`
 
-	// 实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br></li>SOLD_OUT：表示实例已售罄。
+	// 实例是否售卖。取值范围： <br><li>SELL：表示实例可购买<br></li><li>SOLD_OUT：表示实例已售罄。</li>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 实例的售卖价格。
@@ -6811,10 +6833,7 @@ type InstanceTypeQuotaItem struct {
 	Frequency *string `json:"Frequency,omitnil,omitempty" name:"Frequency"`
 
 	// 描述库存情况。取值范围：
-	// <li> EnoughStock：表示对应库存非常充足</li> 
-	// <li>NormalStock：表示对应库存供应有保障</li>
-	// <li> UnderStock：表示对应库存即将售罄</li> 
-	// <li>WithoutStock：表示对应库存已经售罄</li>
+	// <li> EnoughStock：表示对应库存非常充足</li> <li>NormalStock：表示对应库存供应有保障</li><li> UnderStock：表示对应库存即将售罄</li> <li>WithoutStock：表示对应库存已经售罄</li>
 	StatusCategory *string `json:"StatusCategory,omitnil,omitempty" name:"StatusCategory"`
 }
 
@@ -7081,7 +7100,7 @@ type LaunchTemplateVersionInfo struct {
 	// 实例启动模板版本描述信息。
 	LaunchTemplateVersionDescription *string `json:"LaunchTemplateVersionDescription,omitnil,omitempty" name:"LaunchTemplateVersionDescription"`
 
-	// 创建者。
+	// 创建者的AppId。
 	CreatedBy *string `json:"CreatedBy,omitnil,omitempty" name:"CreatedBy"`
 }
 
@@ -7559,7 +7578,7 @@ func (r *ModifyImageSharePermissionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstanceDiskTypeRequestParams struct {
-	// 待操作的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/9388) 接口返回值中的`InstanceId`获取。
+	// 待操作的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例数据盘配置信息，只需要指定要转换的目标云硬盘的介质类型，指定DiskType的值，当前只支持一个数据盘转化。只支持CDHPAID类型实例指定CdcId参数。
@@ -7572,7 +7591,7 @@ type ModifyInstanceDiskTypeRequestParams struct {
 type ModifyInstanceDiskTypeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待操作的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/9388) 接口返回值中的`InstanceId`获取。
+	// 待操作的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例数据盘配置信息，只需要指定要转换的目标云硬盘的介质类型，指定DiskType的值，当前只支持一个数据盘转化。只支持CDHPAID类型实例指定CdcId参数。
@@ -7631,13 +7650,12 @@ type ModifyInstancesAttributeRequestParams struct {
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 修改后实例名称。可任意命名，但不得超过60个字符。
-	// <dx-alert infotype="explain" title="">必须指定InstanceName与SecurityGroups的其中一个，但不能同时设置</dx-alert>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16 KB。关于获取此参数的详细介绍，请参阅 [Windows](https://cloud.tencent.com/document/product/213/17526) 和 [Linux](https://cloud.tencent.com/document/product/213/17525) 启动时运行命令。
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 
-	// 指定实例的修改后的安全组Id列表，子机将重新关联指定列表的安全组，原本关联的安全组会被解绑。<dx-alert infotype="explain" title="">必须指定SecurityGroups与InstanceName的其中一个，但不能同时设置</dx-alert>
+	// 指定实例的修改后的安全组Id列表，子机将重新关联指定列表的安全组，原本关联的安全组会被解绑。
 	SecurityGroups []*string `json:"SecurityGroups,omitnil,omitempty" name:"SecurityGroups"`
 
 	// 给实例绑定用户角色，传空值为解绑操作
@@ -7668,13 +7686,12 @@ type ModifyInstancesAttributeRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 修改后实例名称。可任意命名，但不得超过60个字符。
-	// <dx-alert infotype="explain" title="">必须指定InstanceName与SecurityGroups的其中一个，但不能同时设置</dx-alert>
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16 KB。关于获取此参数的详细介绍，请参阅 [Windows](https://cloud.tencent.com/document/product/213/17526) 和 [Linux](https://cloud.tencent.com/document/product/213/17525) 启动时运行命令。
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 
-	// 指定实例的修改后的安全组Id列表，子机将重新关联指定列表的安全组，原本关联的安全组会被解绑。<dx-alert infotype="explain" title="">必须指定SecurityGroups与InstanceName的其中一个，但不能同时设置</dx-alert>
+	// 指定实例的修改后的安全组Id列表，子机将重新关联指定列表的安全组，原本关联的安全组会被解绑。
 	SecurityGroups []*string `json:"SecurityGroups,omitnil,omitempty" name:"SecurityGroups"`
 
 	// 给实例绑定用户角色，传空值为解绑操作
@@ -7752,13 +7769,13 @@ type ModifyInstancesChargeTypeRequestParams struct {
 	// 一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为30。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 修改后实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月。<br><li>POSTPAID_BY_HOUR：后付费，即按量付费。
+	// 修改后实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<li> PREPAID：预付费，即包年包月。</li><li> POSTPAID_BY_HOUR：后付费，即按量付费。</li>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 修改后预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。<dx-alert infotype="explain" title="">若指定实例的付费模式为预付费则该参数必传。</dx-alert>
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 
-	// 是否同时切换弹性数据云盘计费模式。取值范围：<br><li>true：表示切换弹性数据云盘计费模式<br><li>false：表示不切换弹性数据云盘计费模式<br><br>默认取值：false。
+	// 是否同时切换弹性数据云盘计费模式。取值范围：<li> true：表示切换弹性数据云盘计费模式</li><li> false：表示不切换弹性数据云盘计费模式</li>默认取值：false。
 	ModifyPortableDataDisk *bool `json:"ModifyPortableDataDisk,omitnil,omitempty" name:"ModifyPortableDataDisk"`
 }
 
@@ -7768,13 +7785,13 @@ type ModifyInstancesChargeTypeRequest struct {
 	// 一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为30。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 修改后实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月。<br><li>POSTPAID_BY_HOUR：后付费，即按量付费。
+	// 修改后实例[计费类型](https://cloud.tencent.com/document/product/213/2180)。<li> PREPAID：预付费，即包年包月。</li><li> POSTPAID_BY_HOUR：后付费，即按量付费。</li>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 修改后预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。<dx-alert infotype="explain" title="">若指定实例的付费模式为预付费则该参数必传。</dx-alert>
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 
-	// 是否同时切换弹性数据云盘计费模式。取值范围：<br><li>true：表示切换弹性数据云盘计费模式<br><li>false：表示不切换弹性数据云盘计费模式<br><br>默认取值：false。
+	// 是否同时切换弹性数据云盘计费模式。取值范围：<li> true：表示切换弹性数据云盘计费模式</li><li> false：表示不切换弹性数据云盘计费模式</li>默认取值：false。
 	ModifyPortableDataDisk *bool `json:"ModifyPortableDataDisk,omitnil,omitempty" name:"ModifyPortableDataDisk"`
 }
 
@@ -7895,7 +7912,7 @@ type ModifyInstancesProjectRequestParams struct {
 	// 一个或多个待操作的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) API返回值中的`InstanceId`获取。每次请求允许操作的实例数量上限是100。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 项目ID。项目可以使用[AddProject](https://cloud.tencent.com/document/api/651/81952)接口创建。可通过[`DescribeProject`](https://cloud.tencent.com/document/api/651/78725) API返回值中的`projectId`获取。后续使用[DescribeInstances](https://cloud.tencent.com/document/api/213/15728)接口查询实例时，项目ID可用于过滤结果。
+	// 项目ID。项目可以使用[ AddProject ](https://cloud.tencent.com/document/api/651/81952)接口创建。可通过[ DescribeProject ](https://cloud.tencent.com/document/api/651/78725) 接口返回值中的`projectId`获取。后续使用[DescribeInstances](https://cloud.tencent.com/document/api/213/15728)接口查询实例时，项目ID可用于过滤结果。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -7905,7 +7922,7 @@ type ModifyInstancesProjectRequest struct {
 	// 一个或多个待操作的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) API返回值中的`InstanceId`获取。每次请求允许操作的实例数量上限是100。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 项目ID。项目可以使用[AddProject](https://cloud.tencent.com/document/api/651/81952)接口创建。可通过[`DescribeProject`](https://cloud.tencent.com/document/api/651/78725) API返回值中的`projectId`获取。后续使用[DescribeInstances](https://cloud.tencent.com/document/api/213/15728)接口查询实例时，项目ID可用于过滤结果。
+	// 项目ID。项目可以使用[ AddProject ](https://cloud.tencent.com/document/api/651/81952)接口创建。可通过[ DescribeProject ](https://cloud.tencent.com/document/api/651/78725) 接口返回值中的`projectId`获取。后续使用[DescribeInstances](https://cloud.tencent.com/document/api/213/15728)接口查询实例时，项目ID可用于过滤结果。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -8157,20 +8174,20 @@ func (r *ModifyKeyPairAttributeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLaunchTemplateDefaultVersionRequestParams struct {
-	// 启动模板ID。
+	// 启动模板ID。可通过 [DescribeLaunchTemplates](https://cloud.tencent.com/document/api/213/66322) 接口返回值中的`LaunchTemplateId `获取。
 	LaunchTemplateId *string `json:"LaunchTemplateId,omitnil,omitempty" name:"LaunchTemplateId"`
 
-	// 待设置的默认版本号。
+	// 待设置的默认版本号。可通过 [DescribeLaunchTemplateVersions](https://cloud.tencent.com/document/api/213/66323) 接口返回值中的`LaunchTemplateVersion`获取。
 	DefaultVersion *int64 `json:"DefaultVersion,omitnil,omitempty" name:"DefaultVersion"`
 }
 
 type ModifyLaunchTemplateDefaultVersionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 启动模板ID。
+	// 启动模板ID。可通过 [DescribeLaunchTemplates](https://cloud.tencent.com/document/api/213/66322) 接口返回值中的`LaunchTemplateId `获取。
 	LaunchTemplateId *string `json:"LaunchTemplateId,omitnil,omitempty" name:"LaunchTemplateId"`
 
-	// 待设置的默认版本号。
+	// 待设置的默认版本号。可通过 [DescribeLaunchTemplateVersions](https://cloud.tencent.com/document/api/213/66323) 接口返回值中的`LaunchTemplateVersion`获取。
 	DefaultVersion *int64 `json:"DefaultVersion,omitnil,omitempty" name:"DefaultVersion"`
 }
 
@@ -8296,7 +8313,7 @@ type Price struct {
 
 // Predefined struct for user
 type ProgramFpgaImageRequestParams struct {
-	// 实例的ID信息。
+	// 实例的ID信息。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// FPGA镜像文件的COS URL地址。
@@ -8312,7 +8329,7 @@ type ProgramFpgaImageRequestParams struct {
 type ProgramFpgaImageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例的ID信息。
+	// 实例的ID信息。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// FPGA镜像文件的COS URL地址。
@@ -9417,7 +9434,7 @@ type ResetInstancesTypeRequestParams struct {
 	// 一个或多个待操作的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。本接口目前仅支持每次操作1个实例。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 调整后的实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口[`DescribeInstanceTypeConfigs`](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。
+	// 调整后的实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口[ DescribeInstanceTypeConfigs ](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机。取值范围：<br><li>true：表示在正常关机失败后进行强制关机</li><br><li>false：表示在正常关机失败后不进行强制关机</li><br><br>默认取值：false。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
@@ -9430,7 +9447,7 @@ type ResetInstancesTypeRequest struct {
 	// 一个或多个待操作的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。本接口目前仅支持每次操作1个实例。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 调整后的实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口[`DescribeInstanceTypeConfigs`](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。
+	// 调整后的实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口[ DescribeInstanceTypeConfigs ](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例类型](https://cloud.tencent.com/document/product/213/11518)描述。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// 是否对运行中的实例选择强制关机。建议对运行中的实例先手动关机。取值范围：<br><li>true：表示在正常关机失败后进行强制关机</li><br><li>false：表示在正常关机失败后不进行强制关机</li><br><br>默认取值：false。<br><br>强制关机的效果等同于关闭物理计算机的电源开关。强制关机可能会导致数据丢失或文件系统损坏，请仅在服务器不能正常关机时使用。
@@ -10028,10 +10045,10 @@ type StorageBlock struct {
 	// HDD本地存储类型，值为：LOCAL_PRO.
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// HDD本地存储的最小容量
+	// HDD本地存储的最小容量。单位：GiB。
 	MinSize *int64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
-	// HDD本地存储的最大容量
+	// HDD本地存储的最大容量。单位：GiB。
 	MaxSize *int64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 }
 
@@ -10045,10 +10062,10 @@ type SyncImage struct {
 
 // Predefined struct for user
 type SyncImagesRequestParams struct {
-	// 镜像ID列表 ，镜像ID可以通过如下方式获取：<br><li>通过[DescribeImages](https://cloud.tencent.com/document/api/213/15715)接口返回的`ImageId`获取。</li><li>通过[镜像控制台](https://console.cloud.tencent.com/cvm/image)获取。<br>镜像ID必须满足限制：</li><li>镜像ID对应的镜像状态必须为`NORMAL`。</li>镜像状态请参考[镜像数据表](https://cloud.tencent.com/document/product/213/15753#Image)。
+	// 镜像ID列表 ，镜像ID可以通过如下方式获取：<br><li>通过[DescribeImages](https://cloud.tencent.com/document/api/213/15715)接口返回的`ImageId`获取，镜像ID对应的镜像状态必须为`NORMAL`。</li><li>通过[镜像控制台](https://console.cloud.tencent.com/cvm/image)获取。</li>
 	ImageIds []*string `json:"ImageIds,omitnil,omitempty" name:"ImageIds"`
 
-	// 目的同步地域列表，必须满足如下限制：<br><li>必须是一个合法的Region。</li><li>如果是自定义镜像，则目标同步地域不能为源地域。</li><li>如果是共享镜像，则目的同步地域仅支持源地域，表示将共享镜像复制为源地域的自定义镜像。</li><li>暂不支持部分地域同步，请参考[复制镜像](https://cloud.tencent.com/document/product/213/4943#.E5.A4.8D.E5.88.B6.E8.AF.B4.E6.98.8E)。</li>具体地域参数请参考[Region](https://cloud.tencent.com/document/product/213/6091)。
+	// 目的同步地域列表，必须满足如下限制：<br><li>必须是一个合法的Region。</li><li>如果是自定义镜像，则目标同步地域不能为源地域。</li><li>如果是共享镜像，则目的同步地域仅支持源地域，表示将共享镜像复制为源地域的自定义镜像。</li><li>如果是自定义镜像复制为加密自定义镜像，则目的同步地域仅支持源地域，表示将自定义镜像复制为源地域的加密自定义镜像。</li><li>暂不支持部分地域同步，请参考[复制镜像](https://cloud.tencent.com/document/product/213/4943#.E5.A4.8D.E5.88.B6.E8.AF.B4.E6.98.8E)。</li>具体地域参数请参考[Region](https://cloud.tencent.com/document/product/213/6091)。
 	DestinationRegions []*string `json:"DestinationRegions,omitnil,omitempty" name:"DestinationRegions"`
 
 	// 检测是否支持发起同步镜像。
@@ -10056,6 +10073,7 @@ type SyncImagesRequestParams struct {
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
 	// 目标镜像名称。默认使用源镜像名称。
+	// 最多支持 60 个字符。
 	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
 
 	// 是否需要返回目的地域的镜像ID。
@@ -10064,22 +10082,23 @@ type SyncImagesRequestParams struct {
 
 	// 是否复制为加密自定义镜像。
 	// 默认值为 false。
-	// 复制加密自定义镜像仅支持同地域。
+	// 复制加密自定义镜像仅支持同地域， 即 DestinationRegions 仅支持填写指定镜像所在地域。
 	Encrypt *bool `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
 
 	// 加密自定义镜像使用的 KMS 密钥 ID。
 	// 仅当复制加密镜像时，即 Encrypt 为 true 时，此参数有效；
 	// 不指定 KmsKeyId，默认使用 CBS 云产品 KMS 密钥。
+	// KMS 密钥 ID 通过[KMS 控制台](https://console.cloud.tencent.com/kms2)获取。
 	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
 }
 
 type SyncImagesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 镜像ID列表 ，镜像ID可以通过如下方式获取：<br><li>通过[DescribeImages](https://cloud.tencent.com/document/api/213/15715)接口返回的`ImageId`获取。</li><li>通过[镜像控制台](https://console.cloud.tencent.com/cvm/image)获取。<br>镜像ID必须满足限制：</li><li>镜像ID对应的镜像状态必须为`NORMAL`。</li>镜像状态请参考[镜像数据表](https://cloud.tencent.com/document/product/213/15753#Image)。
+	// 镜像ID列表 ，镜像ID可以通过如下方式获取：<br><li>通过[DescribeImages](https://cloud.tencent.com/document/api/213/15715)接口返回的`ImageId`获取，镜像ID对应的镜像状态必须为`NORMAL`。</li><li>通过[镜像控制台](https://console.cloud.tencent.com/cvm/image)获取。</li>
 	ImageIds []*string `json:"ImageIds,omitnil,omitempty" name:"ImageIds"`
 
-	// 目的同步地域列表，必须满足如下限制：<br><li>必须是一个合法的Region。</li><li>如果是自定义镜像，则目标同步地域不能为源地域。</li><li>如果是共享镜像，则目的同步地域仅支持源地域，表示将共享镜像复制为源地域的自定义镜像。</li><li>暂不支持部分地域同步，请参考[复制镜像](https://cloud.tencent.com/document/product/213/4943#.E5.A4.8D.E5.88.B6.E8.AF.B4.E6.98.8E)。</li>具体地域参数请参考[Region](https://cloud.tencent.com/document/product/213/6091)。
+	// 目的同步地域列表，必须满足如下限制：<br><li>必须是一个合法的Region。</li><li>如果是自定义镜像，则目标同步地域不能为源地域。</li><li>如果是共享镜像，则目的同步地域仅支持源地域，表示将共享镜像复制为源地域的自定义镜像。</li><li>如果是自定义镜像复制为加密自定义镜像，则目的同步地域仅支持源地域，表示将自定义镜像复制为源地域的加密自定义镜像。</li><li>暂不支持部分地域同步，请参考[复制镜像](https://cloud.tencent.com/document/product/213/4943#.E5.A4.8D.E5.88.B6.E8.AF.B4.E6.98.8E)。</li>具体地域参数请参考[Region](https://cloud.tencent.com/document/product/213/6091)。
 	DestinationRegions []*string `json:"DestinationRegions,omitnil,omitempty" name:"DestinationRegions"`
 
 	// 检测是否支持发起同步镜像。
@@ -10087,6 +10106,7 @@ type SyncImagesRequest struct {
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
 	// 目标镜像名称。默认使用源镜像名称。
+	// 最多支持 60 个字符。
 	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
 
 	// 是否需要返回目的地域的镜像ID。
@@ -10095,12 +10115,13 @@ type SyncImagesRequest struct {
 
 	// 是否复制为加密自定义镜像。
 	// 默认值为 false。
-	// 复制加密自定义镜像仅支持同地域。
+	// 复制加密自定义镜像仅支持同地域， 即 DestinationRegions 仅支持填写指定镜像所在地域。
 	Encrypt *bool `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
 
 	// 加密自定义镜像使用的 KMS 密钥 ID。
 	// 仅当复制加密镜像时，即 Encrypt 为 true 时，此参数有效；
 	// 不指定 KmsKeyId，默认使用 CBS 云产品 KMS 密钥。
+	// KMS 密钥 ID 通过[KMS 控制台](https://console.cloud.tencent.com/kms2)获取。
 	KmsKeyId *string `json:"KmsKeyId,omitnil,omitempty" name:"KmsKeyId"`
 }
 

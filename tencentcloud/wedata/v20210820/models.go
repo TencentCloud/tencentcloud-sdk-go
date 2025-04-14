@@ -11611,6 +11611,9 @@ type DescribeInstanceLogFileRequestParams struct {
 	// 当前生命周期数
 	CurrentLifeRound *int64 `json:"CurrentLifeRound,omitnil,omitempty" name:"CurrentLifeRound"`
 
+	// 最大生命周期数
+	MaxLifeRound *int64 `json:"MaxLifeRound,omitnil,omitempty" name:"MaxLifeRound"`
+
 	// 当前生命周期重试次数
 	Tries *int64 `json:"Tries,omitnil,omitempty" name:"Tries"`
 
@@ -11654,6 +11657,9 @@ type DescribeInstanceLogFileRequest struct {
 	// 当前生命周期数
 	CurrentLifeRound *int64 `json:"CurrentLifeRound,omitnil,omitempty" name:"CurrentLifeRound"`
 
+	// 最大生命周期数
+	MaxLifeRound *int64 `json:"MaxLifeRound,omitnil,omitempty" name:"MaxLifeRound"`
+
 	// 当前生命周期重试次数
 	Tries *int64 `json:"Tries,omitnil,omitempty" name:"Tries"`
 
@@ -11684,6 +11690,7 @@ func (r *DescribeInstanceLogFileRequest) FromJsonString(s string) error {
 	delete(f, "ExecutionFileType")
 	delete(f, "InstanceLifeDetailDtoList")
 	delete(f, "CurrentLifeRound")
+	delete(f, "MaxLifeRound")
 	delete(f, "Tries")
 	delete(f, "Dynamic")
 	if len(f) > 0 {
@@ -21112,6 +21119,155 @@ func (r *GetFileInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetInstanceLogRequestParams struct {
+	// **项目ID**
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// **实例唯一标识**
+	InstanceKey *string `json:"InstanceKey,omitnil,omitempty" name:"InstanceKey"`
+
+	// 生命周期编号
+	LifeRoundNum *uint64 `json:"LifeRoundNum,omitnil,omitempty" name:"LifeRoundNum"`
+
+	// **时区**
+	// timeZone, 默认UTC+8
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// **日志所在执行机Ip**
+	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
+
+	// **日志文件**
+	// 实例详情中 executionJobId 为空时，但 originFileName 不为空时，入参中必须包含 originFileName 与 brokerIp
+	// 如果 executionJobId 与 originFileName 都为空，则说明实例未下发执行或没有产生日志。例如分支节点 或 归并节点
+	OriginFileName *string `json:"OriginFileName,omitnil,omitempty" name:"OriginFileName"`
+
+	// **执行ID**
+	// 
+	// 实例详情中 executionJobId 不为空时，入参中需包含executionJobId 。originFileName 与 brokerIp为非必要参数
+	ExecutionJobId *string `json:"ExecutionJobId,omitnil,omitempty" name:"ExecutionJobId"`
+
+	// **日志级别**
+	// 默认All
+	// 
+	// - Info
+	// - Debug
+	// - Warn
+	// - Error
+	// - All
+	LogLevel *string `json:"LogLevel,omitnil,omitempty" name:"LogLevel"`
+
+	// **获取日志的开始行 行号**
+	// 默认 1
+	StartLineNum *uint64 `json:"StartLineNum,omitnil,omitempty" name:"StartLineNum"`
+
+	// **获取日志的结束行 行号**
+	// 默认 10000
+	EndLineCount *uint64 `json:"EndLineCount,omitnil,omitempty" name:"EndLineCount"`
+}
+
+type GetInstanceLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// **项目ID**
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// **实例唯一标识**
+	InstanceKey *string `json:"InstanceKey,omitnil,omitempty" name:"InstanceKey"`
+
+	// 生命周期编号
+	LifeRoundNum *uint64 `json:"LifeRoundNum,omitnil,omitempty" name:"LifeRoundNum"`
+
+	// **时区**
+	// timeZone, 默认UTC+8
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// **日志所在执行机Ip**
+	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
+
+	// **日志文件**
+	// 实例详情中 executionJobId 为空时，但 originFileName 不为空时，入参中必须包含 originFileName 与 brokerIp
+	// 如果 executionJobId 与 originFileName 都为空，则说明实例未下发执行或没有产生日志。例如分支节点 或 归并节点
+	OriginFileName *string `json:"OriginFileName,omitnil,omitempty" name:"OriginFileName"`
+
+	// **执行ID**
+	// 
+	// 实例详情中 executionJobId 不为空时，入参中需包含executionJobId 。originFileName 与 brokerIp为非必要参数
+	ExecutionJobId *string `json:"ExecutionJobId,omitnil,omitempty" name:"ExecutionJobId"`
+
+	// **日志级别**
+	// 默认All
+	// 
+	// - Info
+	// - Debug
+	// - Warn
+	// - Error
+	// - All
+	LogLevel *string `json:"LogLevel,omitnil,omitempty" name:"LogLevel"`
+
+	// **获取日志的开始行 行号**
+	// 默认 1
+	StartLineNum *uint64 `json:"StartLineNum,omitnil,omitempty" name:"StartLineNum"`
+
+	// **获取日志的结束行 行号**
+	// 默认 10000
+	EndLineCount *uint64 `json:"EndLineCount,omitnil,omitempty" name:"EndLineCount"`
+}
+
+func (r *GetInstanceLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetInstanceLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "InstanceKey")
+	delete(f, "LifeRoundNum")
+	delete(f, "ScheduleTimeZone")
+	delete(f, "BrokerIp")
+	delete(f, "OriginFileName")
+	delete(f, "ExecutionJobId")
+	delete(f, "LogLevel")
+	delete(f, "StartLineNum")
+	delete(f, "EndLineCount")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetInstanceLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetInstanceLogResponseParams struct {
+	// 调度实例详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *InstanceLogVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetInstanceLogResponse struct {
+	*tchttp.BaseResponse
+	Response *GetInstanceLogResponseParams `json:"Response"`
+}
+
+func (r *GetInstanceLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetInstanceLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetIntegrationNodeColumnSchemaRequestParams struct {
 	// 字段示例（json格式）
 	ColumnContent *string `json:"ColumnContent,omitnil,omitempty" name:"ColumnContent"`
@@ -21338,6 +21494,80 @@ func (r *GetOfflineInstanceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetTaskInstanceRequestParams struct {
+	// **项目ID**
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// **实例唯一标识**
+	InstanceKey *string `json:"InstanceKey,omitnil,omitempty" name:"InstanceKey"`
+
+	// **时区**
+	// timeZone, 默认UTC+8
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+}
+
+type GetTaskInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// **项目ID**
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// **实例唯一标识**
+	InstanceKey *string `json:"InstanceKey,omitnil,omitempty" name:"InstanceKey"`
+
+	// **时区**
+	// timeZone, 默认UTC+8
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+}
+
+func (r *GetTaskInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTaskInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "InstanceKey")
+	delete(f, "ScheduleTimeZone")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTaskInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetTaskInstanceResponseParams struct {
+	// 调度实例详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *InstanceDetailVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetTaskInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *GetTaskInstanceResponseParams `json:"Response"`
+}
+
+func (r *GetTaskInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetTaskInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type GovDatasourceInfo struct {
 	// 数据源id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -21475,6 +21705,157 @@ type InstanceCondition struct {
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 }
 
+type InstanceDetailVO struct {
+	// 实例唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceKey *string `json:"InstanceKey,omitnil,omitempty" name:"InstanceKey"`
+
+	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 文件夹ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+
+	// 文件夹名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
+
+	// 工作流ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 工作流名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 负责人列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InChargeList []*string `json:"InChargeList,omitnil,omitempty" name:"InChargeList"`
+
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// **任务周期类型**
+	// 支持过滤多个，条件间为 或 的过滤关系
+	// * O: ONEOFF_CYCLE
+	// * Y: YEAR_CYCLE
+	// * M: MONTH_CYCLE
+	// * W: WEEK_CYCLE
+	// * D: DAY_CYCLE
+	// * H: HOUR_CYCLE
+	// * I: MINUTE_CYCLE
+	// * C: CRONTAB_CYCLE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskCycleType *string `json:"TaskCycleType,omitnil,omitempty" name:"TaskCycleType"`
+
+	// 任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskType *TaskTypeOpsDto `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 执行资源组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitnil,omitempty" name:"ExecutorGroupId"`
+
+	// 资源组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorGroupName *string `json:"ExecutorGroupName,omitnil,omitempty" name:"ExecutorGroupName"`
+
+	// 标准数据时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurRunDate *string `json:"CurRunDate,omitnil,omitempty" name:"CurRunDate"`
+
+	// 下一个标准数据时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCurDate *string `json:"NextCurDate,omitnil,omitempty" name:"NextCurDate"`
+
+	// 每次运行失败，下发重试次数限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TryLimit *uint64 `json:"TryLimit,omitnil,omitempty" name:"TryLimit"`
+
+	// 当前运行已下发运行次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tries *uint64 `json:"Tries,omitnil,omitempty" name:"Tries"`
+
+	// 累计运行次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalRunNum *uint64 `json:"TotalRunNum,omitnil,omitempty" name:"TotalRunNum"`
+
+	// 生命周期编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LifeRoundNum *uint64 `json:"LifeRoundNum,omitnil,omitempty" name:"LifeRoundNum"`
+
+	// **实例类型**
+	// 
+	// - 0 表示补录类型
+	// - 1 表示周期实例
+	// - 2 表示非周期实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// **实例状态**
+	// 
+	// - [0] 表示 等待事件
+	// - [12] 表示 等待上游
+	// - [6, 7, 9, 10, 18] 表示 等待运行
+	// - [1, 19, 22] 表示 运行中
+	// - [21] 表示 跳过运行
+	// - [3] 表示 失败重试
+	// - [8, 4, 5, 13] 表示 失败
+	// - [2] 表示 成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceState *uint64 `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
+
+	// 计划调度时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchedulerTime *string `json:"SchedulerTime,omitnil,omitempty" name:"SchedulerTime"`
+
+	// 运行开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 运行完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 耗费时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CostTime *string `json:"CostTime,omitnil,omitempty" name:"CostTime"`
+
+	// **实例运行触发类型**
+	// 
+	// - RERUN 表示重跑
+	// - ADDITION 表示补录
+	// - PERIODIC 表示周期
+	// - APERIODIC 表示非周期
+	// - RERUN_SKIP_RUN 表示重跑 - 空跑
+	// - ADDITION_SKIP_RUN 表示补录 - 空跑
+	// - PERIODIC_SKIP_RUN 表示周期 - 空跑
+	// - APERIODIC_SKIP_RUN 表示非周期 - 空跑
+	// - MANUAL_TRIGGER 表示手动触发
+	// - RERUN_MANUAL_TRIGGER 表示手动触发 - 重跑
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceRunType *string `json:"InstanceRunType,omitnil,omitempty" name:"InstanceRunType"`
+
+	// **下发执行ID**
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionJobId *string `json:"ExecutionJobId,omitnil,omitempty" name:"ExecutionJobId"`
+
+	// **实例生命周期列表**
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceLifeCycleList []*InstanceLifeCycleVO `json:"InstanceLifeCycleList,omitnil,omitempty" name:"InstanceLifeCycleList"`
+
+	// **实例最近一次的执行日志**
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestLog *InstanceLogVO `json:"LatestLog,omitnil,omitempty" name:"LatestLog"`
+}
+
 type InstanceDownloadLogInfo struct {
 	// 文件名
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -21554,8 +21935,90 @@ type InstanceLifeCycleOpsDto struct {
 	TaskType *TaskTypeOpsDto `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 }
 
+type InstanceLifeCycleVO struct {
+	// 实例唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceKey *string `json:"InstanceKey,omitnil,omitempty" name:"InstanceKey"`
+
+	// **实例状态**
+	// 
+	// - [0] 表示 等待事件
+	// - [12] 表示 等待上游
+	// - [6, 7, 9, 10, 18] 表示 等待运行
+	// - [1, 19, 22] 表示 运行中
+	// - [21] 表示 跳过运行
+	// - [3] 表示 失败重试
+	// - [8, 4, 5, 13] 表示 失败
+	// - [2] 表示 成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceState *uint64 `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
+
+	// 生命周期编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LifeRoundNum *uint64 `json:"LifeRoundNum,omitnil,omitempty" name:"LifeRoundNum"`
+
+	// **实例运行触发类型**
+	// 
+	// - RERUN 表示重跑
+	// - ADDITION 表示补录
+	// - PERIODIC 表示周期
+	// - APERIODIC 表示非周期
+	// - RERUN_SKIP_RUN 表示重跑 - 空跑
+	// - ADDITION_SKIP_RUN 表示补录 - 空跑
+	// - PERIODIC_SKIP_RUN 表示周期 - 空跑
+	// - APERIODIC_SKIP_RUN 表示非周期 - 空跑
+	// - MANUAL_TRIGGER 表示手动触发
+	// - RERUN_MANUAL_TRIGGER 表示手动触发 - 重跑
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunType *string `json:"RunType,omitnil,omitempty" name:"RunType"`
+
+	// 失败重试次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tries *uint64 `json:"Tries,omitnil,omitempty" name:"Tries"`
+
+	// **实例生命周期列表**
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LifeCycleDetailList []*InstanceLifeDetailDto `json:"LifeCycleDetailList,omitnil,omitempty" name:"LifeCycleDetailList"`
+
+	// **实例代码文件**
+	// 该文件内容为当次执行实例运行使用的代码，仅部分任务支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeFileName *string `json:"CodeFileName,omitnil,omitempty" name:"CodeFileName"`
+
+	// **下发执行ID**
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionJobId *string `json:"ExecutionJobId,omitnil,omitempty" name:"ExecutionJobId"`
+
+	// 日志所在执行节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
+
+	// 日志文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginFileName *string `json:"OriginFileName,omitnil,omitempty" name:"OriginFileName"`
+
+	// **实例日志类型**
+	// 
+	// - run: 运行; 
+	// - kill: 终止
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
+
+	// 耗费时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CostTime *string `json:"CostTime,omitnil,omitempty" name:"CostTime"`
+}
+
 type InstanceLifeDetailDto struct {
-	// 实例状态
+	// **实例状态**
+	// - [0] 表示 等待事件
+	// - [12] 表示 等待上游
+	// - [6, 7, 9, 10, 18] 表示 等待运行
+	// - [1, 19, 22] 表示 运行中
+	// - [21] 表示 跳过运行
+	// - [3] 表示 失败重试
+	// - [8, 4, 5, 13] 表示 失败
+	// - [2] 表示 成功
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
@@ -21563,7 +22026,16 @@ type InstanceLifeDetailDto struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 实例生命周期阶段状态
+	// **实例生命周期阶段状态**
+	// 
+	// - WAIT_UPSTREAM 表示 等待事件/上游状态
+	// - WAIT_RUN 表示 等待运行状态
+	// - RUNNING 表示 运行中状态
+	// - COMPLETE 表示 终态-完成
+	// - FAILED 表示 终态-失败重试
+	// - EXPIRED 表示 终态-失败
+	// - SKIP_RUNNING 表示 终态-被上游分支节点跳过的分支
+	// - HISTORY 表示 兼容历史实例
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DetailState *string `json:"DetailState,omitnil,omitempty" name:"DetailState"`
 
@@ -21772,6 +22244,86 @@ type InstanceLogList struct {
 	// 耗费时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CostTime *string `json:"CostTime,omitnil,omitempty" name:"CostTime"`
+}
+
+type InstanceLogVO struct {
+	// 实例唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceKey *string `json:"InstanceKey,omitnil,omitempty" name:"InstanceKey"`
+
+	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// **实例状态**
+	// 
+	// - [0] 表示 等待事件
+	// - [12] 表示 等待上游
+	// - [6, 7, 9, 10, 18] 表示 等待运行
+	// - [1, 19, 22] 表示 运行中
+	// - [21] 表示 跳过运行
+	// - [3] 表示 失败重试
+	// - [8, 4, 5, 13] 表示 失败
+	// - [2] 表示 成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceState *uint64 `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
+
+	// **实例运行触发类型**
+	// 
+	// - RERUN 表示重跑
+	// - ADDITION 表示补录
+	// - PERIODIC 表示周期
+	// - APERIODIC 表示非周期
+	// - RERUN_SKIP_RUN 表示重跑 - 空跑
+	// - ADDITION_SKIP_RUN 表示补录 - 空跑
+	// - PERIODIC_SKIP_RUN 表示周期 - 空跑
+	// - APERIODIC_SKIP_RUN 表示非周期 - 空跑
+	// - MANUAL_TRIGGER 表示手动触发
+	// - RERUN_MANUAL_TRIGGER 表示手动触发 - 重跑
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunType *string `json:"RunType,omitnil,omitempty" name:"RunType"`
+
+	// 开始运行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 运行完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// **运行代码内容**
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeInfo *string `json:"CodeInfo,omitnil,omitempty" name:"CodeInfo"`
+
+	// **运行代码文件大小**
+	// 单位KB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeFileSize *string `json:"CodeFileSize,omitnil,omitempty" name:"CodeFileSize"`
+
+	// 日志所在节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
+
+	// **日志内容**
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogInfo *string `json:"LogInfo,omitnil,omitempty" name:"LogInfo"`
+
+	// **日志文件大小**
+	// 单位KB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogFileSize *string `json:"LogFileSize,omitnil,omitempty" name:"LogFileSize"`
+
+	// **本次查询返回的日志行数**
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LineCount *uint64 `json:"LineCount,omitnil,omitempty" name:"LineCount"`
+
+	// 执行平台日志分页查询参数, 每次请求透明传入。第一页查询时值为空字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 日志分页查询，是否最后一页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsEnd *bool `json:"IsEnd,omitnil,omitempty" name:"IsEnd"`
 }
 
 type InstanceNodeInfo struct {
@@ -22056,6 +22608,32 @@ type InstanceOpsInfoPage struct {
 	Items []*InstanceOpsDto `json:"Items,omitnil,omitempty" name:"Items"`
 }
 
+type InstancePageVO struct {
+	// **总条数**
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// **总分页数**
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPage *uint64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
+
+	// 页码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页条目数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 总分页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageCount *uint64 `json:"PageCount,omitnil,omitempty" name:"PageCount"`
+
+	// 数据列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*InstanceVO `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
 type InstanceSearchCondition struct {
 	// 任务调度周期类型
 	CycleList []*string `json:"CycleList,omitnil,omitempty" name:"CycleList"`
@@ -22108,6 +22686,123 @@ type InstanceStatisticInfo struct {
 	// 1
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+}
+
+type InstanceVO struct {
+	// **实例唯一标识**
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceKey *string `json:"InstanceKey,omitnil,omitempty" name:"InstanceKey"`
+
+	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 文件夹ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+
+	// 文件夹名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
+
+	// 工作流ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 工作流名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 负责人列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InChargeList []*string `json:"InChargeList,omitnil,omitempty" name:"InChargeList"`
+
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskType *TaskTypeOpsDto `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// **任务周期类型**
+	// 支持过滤多个，条件间为 或 的过滤关系
+	// * O: ONEOFF_CYCLE
+	// * Y: YEAR_CYCLE
+	// * M: MONTH_CYCLE
+	// * W: WEEK_CYCLE
+	// * D: DAY_CYCLE
+	// * H: HOUR_CYCLE
+	// * I: MINUTE_CYCLE
+	// * C: CRONTAB_CYCLE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskCycleType *string `json:"TaskCycleType,omitnil,omitempty" name:"TaskCycleType"`
+
+	// 标准数据时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurRunDate *string `json:"CurRunDate,omitnil,omitempty" name:"CurRunDate"`
+
+	// 每次运行失败，下发重试次数限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TryLimit *uint64 `json:"TryLimit,omitnil,omitempty" name:"TryLimit"`
+
+	// **失败重试次数**
+	// 再次使用 手动重跑 或 补录实例等方式触发运行时，会被重置为 0 后重新计数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tries *uint64 `json:"Tries,omitnil,omitempty" name:"Tries"`
+
+	// 累计运行次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalRunNum *uint64 `json:"TotalRunNum,omitnil,omitempty" name:"TotalRunNum"`
+
+	// **实例类型**
+	// 
+	// - 0 表示补录类型
+	// - 1 表示周期实例
+	// - 2 表示非周期实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// **实例状态**
+	// 
+	// - [0] 表示 等待事件
+	// - [12] 表示 等待上游
+	// - [6, 7, 9, 10, 18] 表示 等待运行
+	// - [1, 19, 22] 表示 运行中
+	// - [21] 表示 跳过运行
+	// - [3] 表示 失败重试
+	// - [8, 4, 5, 13] 表示 失败
+	// - [2] 表示 成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceState *uint64 `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
+
+	// 运行开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 运行完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 耗费时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CostTime *string `json:"CostTime,omitnil,omitempty" name:"CostTime"`
+
+	// 计划调度时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchedulerTime *string `json:"SchedulerTime,omitnil,omitempty" name:"SchedulerTime"`
+
+	// 执行资源组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitnil,omitempty" name:"ExecutorGroupId"`
+
+	// 资源组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorGroupName *string `json:"ExecutorGroupName,omitnil,omitempty" name:"ExecutorGroupName"`
 }
 
 type IntegrationInstanceLog struct {
@@ -22895,6 +23590,289 @@ type LinkOpsDto struct {
 	// 工作流id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+}
+
+// Predefined struct for user
+type ListInstancesRequestParams struct {
+	// **项目ID**
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// **实例计划调度时间**
+	// 过滤起始时间，时间格式为 yyyy-MM-dd HH:mm:ss
+	ScheduleTimeFrom *string `json:"ScheduleTimeFrom,omitnil,omitempty" name:"ScheduleTimeFrom"`
+
+	// **实例计划调度时间**
+	// 过滤截止时间，时间格式为 yyyy-MM-dd HH:mm:ss
+	ScheduleTimeTo *string `json:"ScheduleTimeTo,omitnil,omitempty" name:"ScheduleTimeTo"`
+
+	// **页码，整型**
+	// 配合pageSize使用且不能小于1， 默认值1
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// **每页数目，整型**
+	// 配合pageNumber使用且不能大于200, 默认值 10
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// **查询结果排序字段**
+	// 
+	// - SCHEDULE_DATE 表示 计划调度时间
+	// - START_TIME 表示 实例开始执行时间
+	// - END_TIME 表示 实例结束执行时间
+	// - COST_TIME 表示 实例执行时长
+	SortColumn *string `json:"SortColumn,omitnil,omitempty" name:"SortColumn"`
+
+	// **实例排序方式**
+	// 
+	// - ASC 
+	// - DESC
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// **实例类型**
+	// 
+	// - 0 表示补录类型
+	// - 1 表示周期实例
+	// - 2 表示非周期实例
+	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// **实例执行状态**
+	// 支持过滤多个，条件间为 或 的过滤关系
+	// 
+	// - [0] 表示 等待事件
+	// - [12] 表示 等待上游
+	// - [6, 7, 9, 10, 18] 表示 等待运行
+	// - [1, 19, 22] 表示 运行中
+	// - [21] 表示 跳过运行
+	// - [3] 表示 失败重试
+	// - [8, 4, 5, 13] 表示 失败
+	// - [2] 表示 成功
+	InstanceStateList []*uint64 `json:"InstanceStateList,omitnil,omitempty" name:"InstanceStateList"`
+
+	// **任务类型Id**
+	// 
+	// - 支持过滤多个，条件间为 或 的过滤关系
+	// - 可以通过接口 DescribeAllTaskType 获取项目支持的全部任务类型
+	TaskTypeIdList []*uint64 `json:"TaskTypeIdList,omitnil,omitempty" name:"TaskTypeIdList"`
+
+	// **任务周期类型**
+	// 支持过滤多个，条件间为 或 的过滤关系
+	// * O: ONEOFF_CYCLE
+	// * Y: YEAR_CYCLE
+	// * M: MONTH_CYCLE
+	// * W: WEEK_CYCLE
+	// * D: DAY_CYCLE
+	// * H: HOUR_CYCLE
+	// * I: MINUTE_CYCLE
+	// * C: CRONTAB_CYCLE
+	TaskCycleList []*string `json:"TaskCycleList,omitnil,omitempty" name:"TaskCycleList"`
+
+	// **任务名称 或 任务ID**
+	// 支持模糊搜索过滤, 多个用 英文逗号, 分割
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// **任务负责人**
+	// 支持过滤多个，条件间为 或 的过滤关系
+	InChargeList []*string `json:"InChargeList,omitnil,omitempty" name:"InChargeList"`
+
+	// **任务所属文件件**
+	// 支持过滤多个，条件间为 或 的过滤关系
+	// 可以通过接口 FindAllFolder 获取项目下的所有文件夹列表
+	TaskFolderIdList []*string `json:"TaskFolderIdList,omitnil,omitempty" name:"TaskFolderIdList"`
+
+	// **任务所属工作流**
+	// 支持过滤多个，条件间为 或 的过滤关系
+	// 可以通过接口 DescribeOpsWorkflows 获取项目下的所有工作流列表
+	WorkflowIdList []*string `json:"WorkflowIdList,omitnil,omitempty" name:"WorkflowIdList"`
+
+	// **执行资源组Id**
+	// 支持过滤多个，条件间为 或 的过滤关系
+	// 可以通过接口 DescribeNormalSchedulerExecutorGroups 获取项目下的所有调度资源组列表
+	// 可以通过接口 DescribeNormalIntegrationExecutorGroups 获取项目下的所有集成资源组列表
+	ExecutorGroupIdList []*string `json:"ExecutorGroupIdList,omitnil,omitempty" name:"ExecutorGroupIdList"`
+
+	// **开始时间**
+	// 过滤起始时间，时间格式为 yyyy-MM-dd HH:mm:ss
+	StartTimeFrom *string `json:"StartTimeFrom,omitnil,omitempty" name:"StartTimeFrom"`
+
+	// **开始时间**
+	// 过滤截止时间，时间格式为 yyyy-MM-dd HH:mm:ss
+	StartTimeTo *string `json:"StartTimeTo,omitnil,omitempty" name:"StartTimeTo"`
+
+	// **时区**
+	// timeZone, 默认UTC+8
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+}
+
+type ListInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// **项目ID**
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// **实例计划调度时间**
+	// 过滤起始时间，时间格式为 yyyy-MM-dd HH:mm:ss
+	ScheduleTimeFrom *string `json:"ScheduleTimeFrom,omitnil,omitempty" name:"ScheduleTimeFrom"`
+
+	// **实例计划调度时间**
+	// 过滤截止时间，时间格式为 yyyy-MM-dd HH:mm:ss
+	ScheduleTimeTo *string `json:"ScheduleTimeTo,omitnil,omitempty" name:"ScheduleTimeTo"`
+
+	// **页码，整型**
+	// 配合pageSize使用且不能小于1， 默认值1
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// **每页数目，整型**
+	// 配合pageNumber使用且不能大于200, 默认值 10
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// **查询结果排序字段**
+	// 
+	// - SCHEDULE_DATE 表示 计划调度时间
+	// - START_TIME 表示 实例开始执行时间
+	// - END_TIME 表示 实例结束执行时间
+	// - COST_TIME 表示 实例执行时长
+	SortColumn *string `json:"SortColumn,omitnil,omitempty" name:"SortColumn"`
+
+	// **实例排序方式**
+	// 
+	// - ASC 
+	// - DESC
+	SortType *string `json:"SortType,omitnil,omitempty" name:"SortType"`
+
+	// **实例类型**
+	// 
+	// - 0 表示补录类型
+	// - 1 表示周期实例
+	// - 2 表示非周期实例
+	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// **实例执行状态**
+	// 支持过滤多个，条件间为 或 的过滤关系
+	// 
+	// - [0] 表示 等待事件
+	// - [12] 表示 等待上游
+	// - [6, 7, 9, 10, 18] 表示 等待运行
+	// - [1, 19, 22] 表示 运行中
+	// - [21] 表示 跳过运行
+	// - [3] 表示 失败重试
+	// - [8, 4, 5, 13] 表示 失败
+	// - [2] 表示 成功
+	InstanceStateList []*uint64 `json:"InstanceStateList,omitnil,omitempty" name:"InstanceStateList"`
+
+	// **任务类型Id**
+	// 
+	// - 支持过滤多个，条件间为 或 的过滤关系
+	// - 可以通过接口 DescribeAllTaskType 获取项目支持的全部任务类型
+	TaskTypeIdList []*uint64 `json:"TaskTypeIdList,omitnil,omitempty" name:"TaskTypeIdList"`
+
+	// **任务周期类型**
+	// 支持过滤多个，条件间为 或 的过滤关系
+	// * O: ONEOFF_CYCLE
+	// * Y: YEAR_CYCLE
+	// * M: MONTH_CYCLE
+	// * W: WEEK_CYCLE
+	// * D: DAY_CYCLE
+	// * H: HOUR_CYCLE
+	// * I: MINUTE_CYCLE
+	// * C: CRONTAB_CYCLE
+	TaskCycleList []*string `json:"TaskCycleList,omitnil,omitempty" name:"TaskCycleList"`
+
+	// **任务名称 或 任务ID**
+	// 支持模糊搜索过滤, 多个用 英文逗号, 分割
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// **任务负责人**
+	// 支持过滤多个，条件间为 或 的过滤关系
+	InChargeList []*string `json:"InChargeList,omitnil,omitempty" name:"InChargeList"`
+
+	// **任务所属文件件**
+	// 支持过滤多个，条件间为 或 的过滤关系
+	// 可以通过接口 FindAllFolder 获取项目下的所有文件夹列表
+	TaskFolderIdList []*string `json:"TaskFolderIdList,omitnil,omitempty" name:"TaskFolderIdList"`
+
+	// **任务所属工作流**
+	// 支持过滤多个，条件间为 或 的过滤关系
+	// 可以通过接口 DescribeOpsWorkflows 获取项目下的所有工作流列表
+	WorkflowIdList []*string `json:"WorkflowIdList,omitnil,omitempty" name:"WorkflowIdList"`
+
+	// **执行资源组Id**
+	// 支持过滤多个，条件间为 或 的过滤关系
+	// 可以通过接口 DescribeNormalSchedulerExecutorGroups 获取项目下的所有调度资源组列表
+	// 可以通过接口 DescribeNormalIntegrationExecutorGroups 获取项目下的所有集成资源组列表
+	ExecutorGroupIdList []*string `json:"ExecutorGroupIdList,omitnil,omitempty" name:"ExecutorGroupIdList"`
+
+	// **开始时间**
+	// 过滤起始时间，时间格式为 yyyy-MM-dd HH:mm:ss
+	StartTimeFrom *string `json:"StartTimeFrom,omitnil,omitempty" name:"StartTimeFrom"`
+
+	// **开始时间**
+	// 过滤截止时间，时间格式为 yyyy-MM-dd HH:mm:ss
+	StartTimeTo *string `json:"StartTimeTo,omitnil,omitempty" name:"StartTimeTo"`
+
+	// **时区**
+	// timeZone, 默认UTC+8
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+}
+
+func (r *ListInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "ScheduleTimeFrom")
+	delete(f, "ScheduleTimeTo")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "SortColumn")
+	delete(f, "SortType")
+	delete(f, "InstanceType")
+	delete(f, "InstanceStateList")
+	delete(f, "TaskTypeIdList")
+	delete(f, "TaskCycleList")
+	delete(f, "Keyword")
+	delete(f, "InChargeList")
+	delete(f, "TaskFolderIdList")
+	delete(f, "WorkflowIdList")
+	delete(f, "ExecutorGroupIdList")
+	delete(f, "StartTimeFrom")
+	delete(f, "StartTimeTo")
+	delete(f, "ScheduleTimeZone")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListInstancesResponseParams struct {
+	// 实例结果集
+	Data *InstancePageVO `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListInstancesResponseParams `json:"Response"`
+}
+
+func (r *ListInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -31032,6 +32010,22 @@ type TableMeta struct {
 	// 是否支持select or ddl
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IfSupportCreateAndDDL *CreateAndDDLSupport `json:"IfSupportCreateAndDDL,omitnil,omitempty" name:"IfSupportCreateAndDDL"`
+
+	// 资产来源 历史默认值都是CRAWLER
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataFromType *string `json:"DataFromType,omitnil,omitempty" name:"DataFromType"`
+
+	// 引擎侧责任人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineOwner *string `json:"EngineOwner,omitnil,omitempty" name:"EngineOwner"`
+
+	// 数据分层UUID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataLayerUuid *string `json:"DataLayerUuid,omitnil,omitempty" name:"DataLayerUuid"`
+
+	// 数据分层名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataLayerName *string `json:"DataLayerName,omitnil,omitempty" name:"DataLayerName"`
 
 	// 字段数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
