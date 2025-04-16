@@ -8229,6 +8229,12 @@ type DescribeDSPALevelGroupsRequestParams struct {
 
 	// 分级组名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 每页返回的记录数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 从第几条记录开始返回
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeDSPALevelGroupsRequest struct {
@@ -8239,6 +8245,12 @@ type DescribeDSPALevelGroupsRequest struct {
 
 	// 分级组名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 每页返回的记录数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 从第几条记录开始返回
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeDSPALevelGroupsRequest) ToJsonString() string {
@@ -8255,6 +8267,8 @@ func (r *DescribeDSPALevelGroupsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DspaId")
 	delete(f, "Name")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPALevelGroupsRequest has unknown keys!", "")
 	}

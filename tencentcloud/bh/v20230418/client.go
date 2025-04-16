@@ -4538,6 +4538,59 @@ func (c *Client) SearchSessionCommandWithContext(ctx context.Context, request *S
     return
 }
 
+func NewSearchSubtaskResultByIdRequest() (request *SearchSubtaskResultByIdRequest) {
+    request = &SearchSubtaskResultByIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "SearchSubtaskResultById")
+    
+    
+    return
+}
+
+func NewSearchSubtaskResultByIdResponse() (response *SearchSubtaskResultByIdResponse) {
+    response = &SearchSubtaskResultByIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SearchSubtaskResultById
+// 查询运维子任务执行结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SearchSubtaskResultById(request *SearchSubtaskResultByIdRequest) (response *SearchSubtaskResultByIdResponse, err error) {
+    return c.SearchSubtaskResultByIdWithContext(context.Background(), request)
+}
+
+// SearchSubtaskResultById
+// 查询运维子任务执行结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SearchSubtaskResultByIdWithContext(ctx context.Context, request *SearchSubtaskResultByIdRequest) (response *SearchSubtaskResultByIdResponse, err error) {
+    if request == nil {
+        request = NewSearchSubtaskResultByIdRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchSubtaskResultById require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchSubtaskResultByIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSearchTaskResultRequest() (request *SearchTaskResultRequest) {
     request = &SearchTaskResultRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -7602,7 +7602,7 @@ func NewGetMonitorDataResponse() (response *GetMonitorDataResponse) {
 //
 // 例子：3:avg+max，5:avg+min，6:max+min，7:avg+max+min
 //
-// 拉取数据的粒度和统计方式的对应关系尽量在接入平台进行配置，如果没有配置，因为更小粒度数据存储时间有限，拉取时间范围也是有限。
+// 拉取数据的粒度和统计方式的对应关系尽量在接入平台进行配置，如果没有配置对应统计方式，请提工单反馈。
 //
 // 
 //
@@ -7633,7 +7633,7 @@ func (c *Client) GetMonitorData(request *GetMonitorDataRequest) (response *GetMo
 //
 // 例子：3:avg+max，5:avg+min，6:max+min，7:avg+max+min
 //
-// 拉取数据的粒度和统计方式的对应关系尽量在接入平台进行配置，如果没有配置，因为更小粒度数据存储时间有限，拉取时间范围也是有限。
+// 拉取数据的粒度和统计方式的对应关系尽量在接入平台进行配置，如果没有配置对应统计方式，请提工单反馈。
 //
 // 
 //

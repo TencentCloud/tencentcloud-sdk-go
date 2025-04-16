@@ -1917,6 +1917,9 @@ type CreateSLInstanceRequestParams struct {
 
 	// 预付费参数
 	PrePaySetting *PrePaySetting `json:"PrePaySetting,omitnil,omitempty" name:"PrePaySetting"`
+
+	// 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808	
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 }
 
 type CreateSLInstanceRequest struct {
@@ -1945,6 +1948,9 @@ type CreateSLInstanceRequest struct {
 
 	// 预付费参数
 	PrePaySetting *PrePaySetting `json:"PrePaySetting,omitnil,omitempty" name:"PrePaySetting"`
+
+	// 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808	
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 }
 
 func (r *CreateSLInstanceRequest) ToJsonString() string {
@@ -1967,6 +1973,7 @@ func (r *CreateSLInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ZoneSettings")
 	delete(f, "Tags")
 	delete(f, "PrePaySetting")
+	delete(f, "ClientToken")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSLInstanceRequest has unknown keys!", "")
 	}
@@ -3802,6 +3809,104 @@ func (r *DescribeInsightListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInsightListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInspectionTaskResultRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 分页大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeInspectionTaskResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 分页大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeInspectionTaskResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInspectionTaskResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Type")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInspectionTaskResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInspectionTaskResultResponseParams struct {
+	// 巡检任务记录，base64编码
+	InspectionResultInfo *string `json:"InspectionResultInfo,omitnil,omitempty" name:"InspectionResultInfo"`
+
+	// 记录总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 类别信息，base64编码，{"FixedTime": "定时", "RealTime": "及时"}
+	TypeInfo *string `json:"TypeInfo,omitnil,omitempty" name:"TypeInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInspectionTaskResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInspectionTaskResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeInspectionTaskResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInspectionTaskResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8343,6 +8448,9 @@ type ModifySLInstanceRequestParams struct {
 
 	// 该区域变配后的目标节点数量，所有区域节点总数应大于等于3，小于等于50。
 	NodeNum *int64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
+
+	// 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808	
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 }
 
 type ModifySLInstanceRequest struct {
@@ -8356,6 +8464,9 @@ type ModifySLInstanceRequest struct {
 
 	// 该区域变配后的目标节点数量，所有区域节点总数应大于等于3，小于等于50。
 	NodeNum *int64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
+
+	// 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808	
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 }
 
 func (r *ModifySLInstanceRequest) ToJsonString() string {
@@ -8373,6 +8484,7 @@ func (r *ModifySLInstanceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "Zone")
 	delete(f, "NodeNum")
+	delete(f, "ClientToken")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySLInstanceRequest has unknown keys!", "")
 	}

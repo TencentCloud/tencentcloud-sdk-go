@@ -1921,6 +1921,14 @@ func (r *EncryptResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ExclusiveHSM struct {
+	// 独享集群Id
+	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
+
+	// 独享集群名称
+	HsmClusterName *string `json:"HsmClusterName,omitnil,omitempty" name:"HsmClusterName"`
+}
+
 // Predefined struct for user
 type GenerateDataKeyRequestParams struct {
 	// CMK全局唯一标识符
@@ -2394,6 +2402,9 @@ type GetServiceStatusResponseParams struct {
 
 	// 返回KMS用户密钥规格数量
 	CmkLimit *uint64 `json:"CmkLimit,omitnil,omitempty" name:"CmkLimit"`
+
+	// 返回独享集群组
+	ExclusiveHSMList []*ExclusiveHSM `json:"ExclusiveHSMList,omitnil,omitempty" name:"ExclusiveHSMList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

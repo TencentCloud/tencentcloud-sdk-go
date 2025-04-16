@@ -21767,11 +21767,11 @@ type InstanceDetailVO struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutorGroupName *string `json:"ExecutorGroupName,omitnil,omitempty" name:"ExecutorGroupName"`
 
-	// 标准数据时间
+	// 实例数据时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurRunDate *string `json:"CurRunDate,omitnil,omitempty" name:"CurRunDate"`
 
-	// 下一个标准数据时间
+	// 下一个实例数据时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NextCurDate *string `json:"NextCurDate,omitnil,omitempty" name:"NextCurDate"`
 
@@ -22742,7 +22742,7 @@ type InstanceVO struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskCycleType *string `json:"TaskCycleType,omitnil,omitempty" name:"TaskCycleType"`
 
-	// 标准数据时间
+	// 实例数据时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurRunDate *string `json:"CurRunDate,omitnil,omitempty" name:"CurRunDate"`
 

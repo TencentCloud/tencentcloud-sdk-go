@@ -625,32 +625,42 @@ func (r *ConfigureChcDeployVpcResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ConvertOperatingSystemsRequestParams struct {
-	// 执行操作系统转换的实例 ID
+	// 执行操作系统转换的实例 ID。
+	// 可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
+	// 仅支持操作系统为 CentOS 7、CentOS 8 的实例执行转换。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 是否最小规模转换
+	// 是否最小规模转换。
+	// 默认值：false
 	MinimalConversion *bool `json:"MinimalConversion,omitnil,omitempty" name:"MinimalConversion"`
 
-	// 是否只预检
+	// 是否只预检。
+	// 默认值：false
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
 	// 转换的目标操作系统类型。仅支持 TencentOS。
+	// 默认值：TencentOS
 	TargetOSType *string `json:"TargetOSType,omitnil,omitempty" name:"TargetOSType"`
 }
 
 type ConvertOperatingSystemsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 执行操作系统转换的实例 ID
+	// 执行操作系统转换的实例 ID。
+	// 可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
+	// 仅支持操作系统为 CentOS 7、CentOS 8 的实例执行转换。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 是否最小规模转换
+	// 是否最小规模转换。
+	// 默认值：false
 	MinimalConversion *bool `json:"MinimalConversion,omitnil,omitempty" name:"MinimalConversion"`
 
-	// 是否只预检
+	// 是否只预检。
+	// 默认值：false
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
 	// 转换的目标操作系统类型。仅支持 TencentOS。
+	// 默认值：TencentOS
 	TargetOSType *string `json:"TargetOSType,omitnil,omitempty" name:"TargetOSType"`
 }
 
@@ -1974,14 +1984,14 @@ func (r *DeleteKeyPairsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLaunchTemplateRequestParams struct {
-	// 启动模板ID。
+	// 启动模板ID。可通过 [DescribeLaunchTemplates](https://cloud.tencent.com/document/api/213/66322) 接口返回值中的`LaunchTemplateId`获取。
 	LaunchTemplateId *string `json:"LaunchTemplateId,omitnil,omitempty" name:"LaunchTemplateId"`
 }
 
 type DeleteLaunchTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 启动模板ID。
+	// 启动模板ID。可通过 [DescribeLaunchTemplates](https://cloud.tencent.com/document/api/213/66322) 接口返回值中的`LaunchTemplateId`获取。
 	LaunchTemplateId *string `json:"LaunchTemplateId,omitnil,omitempty" name:"LaunchTemplateId"`
 }
 
@@ -6863,7 +6873,7 @@ type InternetBandwidthConfig struct {
 }
 
 type InternetChargeTypeConfig struct {
-	// 网络计费模式。
+	// 网络计费类型。取值范围：<br><li>BANDWIDTH_PREPAID：预付费按带宽结算</li><li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li><li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费</li><li>BANDWIDTH_PACKAGE：带宽包用户</li>默认取值：非带宽包用户默认与子机付费类型保持一致，比如子机付费类型为预付费，网络计费类型默认为预付费；子机付费类型为后付费，网络计费类型默认为后付费。
 	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 
 	// 网络计费模式描述信息。

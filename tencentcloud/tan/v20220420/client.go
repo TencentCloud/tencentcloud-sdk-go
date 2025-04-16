@@ -65,6 +65,10 @@ func NewCreateBlockNodeRecordsResponse() (response *CreateBlockNodeRecordsRespon
 }
 
 // CreateBlockNodeRecords
+// 产品下线
+//
+// 
+//
 // 推送节点数据
 //
 // 可能返回的错误码:
@@ -95,6 +99,10 @@ func (c *Client) CreateBlockNodeRecords(request *CreateBlockNodeRecordsRequest) 
 }
 
 // CreateBlockNodeRecords
+// 产品下线
+//
+// 
+//
 // 推送节点数据
 //
 // 可能返回的错误码:

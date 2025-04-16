@@ -2018,6 +2018,57 @@ func (c *Client) DescribeInsightListWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeInspectionTaskResultRequest() (request *DescribeInspectionTaskResultRequest) {
+    request = &DescribeInspectionTaskResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeInspectionTaskResult")
+    
+    
+    return
+}
+
+func NewDescribeInspectionTaskResultResponse() (response *DescribeInspectionTaskResultResponse) {
+    response = &DescribeInspectionTaskResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInspectionTaskResult
+// 获取巡检任务结果列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) DescribeInspectionTaskResult(request *DescribeInspectionTaskResultRequest) (response *DescribeInspectionTaskResultResponse, err error) {
+    return c.DescribeInspectionTaskResultWithContext(context.Background(), request)
+}
+
+// DescribeInspectionTaskResult
+// 获取巡检任务结果列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+func (c *Client) DescribeInspectionTaskResultWithContext(ctx context.Context, request *DescribeInspectionTaskResultRequest) (response *DescribeInspectionTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeInspectionTaskResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInspectionTaskResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInspectionTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceRenewNodesRequest() (request *DescribeInstanceRenewNodesRequest) {
     request = &DescribeInstanceRenewNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},

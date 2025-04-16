@@ -45,6 +45,49 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewChangeMigratingTopicToNextStageRequest() (request *ChangeMigratingTopicToNextStageRequest) {
+    request = &ChangeMigratingTopicToNextStageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "ChangeMigratingTopicToNextStage")
+    
+    
+    return
+}
+
+func NewChangeMigratingTopicToNextStageResponse() (response *ChangeMigratingTopicToNextStageResponse) {
+    response = &ChangeMigratingTopicToNextStageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ChangeMigratingTopicToNextStage
+// 修改迁移中的Topic状态进入下一步
+func (c *Client) ChangeMigratingTopicToNextStage(request *ChangeMigratingTopicToNextStageRequest) (response *ChangeMigratingTopicToNextStageResponse, err error) {
+    return c.ChangeMigratingTopicToNextStageWithContext(context.Background(), request)
+}
+
+// ChangeMigratingTopicToNextStage
+// 修改迁移中的Topic状态进入下一步
+func (c *Client) ChangeMigratingTopicToNextStageWithContext(ctx context.Context, request *ChangeMigratingTopicToNextStageRequest) (response *ChangeMigratingTopicToNextStageResponse, err error) {
+    if request == nil {
+        request = NewChangeMigratingTopicToNextStageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChangeMigratingTopicToNextStage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChangeMigratingTopicToNextStageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateConsumerGroupRequest() (request *CreateConsumerGroupRequest) {
     request = &CreateConsumerGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -846,6 +889,59 @@ func (c *Client) DeleteRoleWithContext(ctx context.Context, request *DeleteRoleR
     request.SetContext(ctx)
     
     response = NewDeleteRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSmoothMigrationTaskRequest() (request *DeleteSmoothMigrationTaskRequest) {
+    request = &DeleteSmoothMigrationTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DeleteSmoothMigrationTask")
+    
+    
+    return
+}
+
+func NewDeleteSmoothMigrationTaskResponse() (response *DeleteSmoothMigrationTaskResponse) {
+    response = &DeleteSmoothMigrationTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteSmoothMigrationTask
+// 删除平滑迁移任务，只有被取消的任务才可删除
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) DeleteSmoothMigrationTask(request *DeleteSmoothMigrationTaskRequest) (response *DeleteSmoothMigrationTaskResponse, err error) {
+    return c.DeleteSmoothMigrationTaskWithContext(context.Background(), request)
+}
+
+// DeleteSmoothMigrationTask
+// 删除平滑迁移任务，只有被取消的任务才可删除
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) DeleteSmoothMigrationTaskWithContext(ctx context.Context, request *DeleteSmoothMigrationTaskRequest) (response *DeleteSmoothMigrationTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteSmoothMigrationTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSmoothMigrationTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSmoothMigrationTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -2089,6 +2185,167 @@ func (c *Client) DescribeMessageTraceWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeMigratingGroupStatsRequest() (request *DescribeMigratingGroupStatsRequest) {
+    request = &DescribeMigratingGroupStatsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeMigratingGroupStats")
+    
+    
+    return
+}
+
+func NewDescribeMigratingGroupStatsResponse() (response *DescribeMigratingGroupStatsResponse) {
+    response = &DescribeMigratingGroupStatsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMigratingGroupStats
+// 查看迁移消费组的实时信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
+func (c *Client) DescribeMigratingGroupStats(request *DescribeMigratingGroupStatsRequest) (response *DescribeMigratingGroupStatsResponse, err error) {
+    return c.DescribeMigratingGroupStatsWithContext(context.Background(), request)
+}
+
+// DescribeMigratingGroupStats
+// 查看迁移消费组的实时信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
+func (c *Client) DescribeMigratingGroupStatsWithContext(ctx context.Context, request *DescribeMigratingGroupStatsRequest) (response *DescribeMigratingGroupStatsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMigratingGroupStatsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMigratingGroupStats require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMigratingGroupStatsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMigratingTopicListRequest() (request *DescribeMigratingTopicListRequest) {
+    request = &DescribeMigratingTopicListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeMigratingTopicList")
+    
+    
+    return
+}
+
+func NewDescribeMigratingTopicListResponse() (response *DescribeMigratingTopicListResponse) {
+    response = &DescribeMigratingTopicListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMigratingTopicList
+// 查询Topic迁移状态列表
+//
+// 
+//
+// 查询过滤器，支持TopicName、MigrationStatus查询
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
+func (c *Client) DescribeMigratingTopicList(request *DescribeMigratingTopicListRequest) (response *DescribeMigratingTopicListResponse, err error) {
+    return c.DescribeMigratingTopicListWithContext(context.Background(), request)
+}
+
+// DescribeMigratingTopicList
+// 查询Topic迁移状态列表
+//
+// 
+//
+// 查询过滤器，支持TopicName、MigrationStatus查询
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
+func (c *Client) DescribeMigratingTopicListWithContext(ctx context.Context, request *DescribeMigratingTopicListRequest) (response *DescribeMigratingTopicListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMigratingTopicListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMigratingTopicList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMigratingTopicListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMigratingTopicStatsRequest() (request *DescribeMigratingTopicStatsRequest) {
+    request = &DescribeMigratingTopicStatsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeMigratingTopicStats")
+    
+    
+    return
+}
+
+func NewDescribeMigratingTopicStatsResponse() (response *DescribeMigratingTopicStatsResponse) {
+    response = &DescribeMigratingTopicStatsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMigratingTopicStats
+// 用于查询迁移主题的实时数据
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeMigratingTopicStats(request *DescribeMigratingTopicStatsRequest) (response *DescribeMigratingTopicStatsResponse, err error) {
+    return c.DescribeMigratingTopicStatsWithContext(context.Background(), request)
+}
+
+// DescribeMigratingTopicStats
+// 用于查询迁移主题的实时数据
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeMigratingTopicStatsWithContext(ctx context.Context, request *DescribeMigratingTopicStatsRequest) (response *DescribeMigratingTopicStatsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMigratingTopicStatsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMigratingTopicStats require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMigratingTopicStatsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProductSKUsRequest() (request *DescribeProductSKUsRequest) {
     request = &DescribeProductSKUsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2113,7 +2370,7 @@ func NewDescribeProductSKUsResponse() (response *DescribeProductSKUsResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
-//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeProductSKUs(request *DescribeProductSKUsRequest) (response *DescribeProductSKUsResponse, err error) {
     return c.DescribeProductSKUsWithContext(context.Background(), request)
 }
@@ -2123,7 +2380,7 @@ func (c *Client) DescribeProductSKUs(request *DescribeProductSKUsRequest) (respo
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
-//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeProductSKUsWithContext(ctx context.Context, request *DescribeProductSKUsRequest) (response *DescribeProductSKUsResponse, err error) {
     if request == nil {
         request = NewDescribeProductSKUsRequest()
@@ -2170,7 +2427,7 @@ func NewDescribeRoleListResponse() (response *DescribeRoleListResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
-//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeRoleList(request *DescribeRoleListRequest) (response *DescribeRoleListResponse, err error) {
     return c.DescribeRoleListWithContext(context.Background(), request)
 }
@@ -2186,7 +2443,7 @@ func (c *Client) DescribeRoleList(request *DescribeRoleListRequest) (response *D
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
-//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeRoleListWithContext(ctx context.Context, request *DescribeRoleListRequest) (response *DescribeRoleListResponse, err error) {
     if request == nil {
         request = NewDescribeRoleListRequest()
@@ -2199,6 +2456,77 @@ func (c *Client) DescribeRoleListWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeRoleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSourceClusterGroupListRequest() (request *DescribeSourceClusterGroupListRequest) {
+    request = &DescribeSourceClusterGroupListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeSourceClusterGroupList")
+    
+    
+    return
+}
+
+func NewDescribeSourceClusterGroupListResponse() (response *DescribeSourceClusterGroupListResponse) {
+    response = &DescribeSourceClusterGroupListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSourceClusterGroupList
+// 平滑迁移过程获取源集群group列表接口
+//
+// 
+//
+// 查询过滤器，支持字段
+//
+// GroupName，消费组名称模糊搜索
+//
+// Imported，是否已导入
+//
+// ImportStatus，导入状态
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeSourceClusterGroupList(request *DescribeSourceClusterGroupListRequest) (response *DescribeSourceClusterGroupListResponse, err error) {
+    return c.DescribeSourceClusterGroupListWithContext(context.Background(), request)
+}
+
+// DescribeSourceClusterGroupList
+// 平滑迁移过程获取源集群group列表接口
+//
+// 
+//
+// 查询过滤器，支持字段
+//
+// GroupName，消费组名称模糊搜索
+//
+// Imported，是否已导入
+//
+// ImportStatus，导入状态
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeSourceClusterGroupListWithContext(ctx context.Context, request *DescribeSourceClusterGroupListRequest) (response *DescribeSourceClusterGroupListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSourceClusterGroupListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSourceClusterGroupList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSourceClusterGroupListResponse()
     err = c.Send(request, response)
     return
 }
@@ -2376,6 +2704,55 @@ func (c *Client) DescribeTopicListByGroupWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeTopicListByGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDoHealthCheckOnMigratingTopicRequest() (request *DoHealthCheckOnMigratingTopicRequest) {
+    request = &DoHealthCheckOnMigratingTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DoHealthCheckOnMigratingTopic")
+    
+    
+    return
+}
+
+func NewDoHealthCheckOnMigratingTopicResponse() (response *DoHealthCheckOnMigratingTopicResponse) {
+    response = &DoHealthCheckOnMigratingTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DoHealthCheckOnMigratingTopic
+// 检查迁移中的主题是否处于正常状态，只有处于正常状态的主题，才可以进入下一个迁移阶段
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DoHealthCheckOnMigratingTopic(request *DoHealthCheckOnMigratingTopicRequest) (response *DoHealthCheckOnMigratingTopicResponse, err error) {
+    return c.DoHealthCheckOnMigratingTopicWithContext(context.Background(), request)
+}
+
+// DoHealthCheckOnMigratingTopic
+// 检查迁移中的主题是否处于正常状态，只有处于正常状态的主题，才可以进入下一个迁移阶段
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DoHealthCheckOnMigratingTopicWithContext(ctx context.Context, request *DoHealthCheckOnMigratingTopicRequest) (response *DoHealthCheckOnMigratingTopicResponse, err error) {
+    if request == nil {
+        request = NewDoHealthCheckOnMigratingTopicRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DoHealthCheckOnMigratingTopic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDoHealthCheckOnMigratingTopicResponse()
     err = c.Send(request, response)
     return
 }
@@ -2994,6 +3371,55 @@ func (c *Client) ModifyTopicWithContext(ctx context.Context, request *ModifyTopi
     return
 }
 
+func NewRemoveMigratingTopicRequest() (request *RemoveMigratingTopicRequest) {
+    request = &RemoveMigratingTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "RemoveMigratingTopic")
+    
+    
+    return
+}
+
+func NewRemoveMigratingTopicResponse() (response *RemoveMigratingTopicResponse) {
+    response = &RemoveMigratingTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RemoveMigratingTopic
+// 从迁移列表中移除主题，仅当主题处于初始状态时有效
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) RemoveMigratingTopic(request *RemoveMigratingTopicRequest) (response *RemoveMigratingTopicResponse, err error) {
+    return c.RemoveMigratingTopicWithContext(context.Background(), request)
+}
+
+// RemoveMigratingTopic
+// 从迁移列表中移除主题，仅当主题处于初始状态时有效
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) RemoveMigratingTopicWithContext(ctx context.Context, request *RemoveMigratingTopicRequest) (response *RemoveMigratingTopicResponse, err error) {
+    if request == nil {
+        request = NewRemoveMigratingTopicRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveMigratingTopic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveMigratingTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResendDeadLetterMessageRequest() (request *ResendDeadLetterMessageRequest) {
     request = &ResendDeadLetterMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3088,6 +3514,55 @@ func (c *Client) ResetConsumerGroupOffsetWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewResetConsumerGroupOffsetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRollbackMigratingTopicStageRequest() (request *RollbackMigratingTopicStageRequest) {
+    request = &RollbackMigratingTopicStageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "RollbackMigratingTopicStage")
+    
+    
+    return
+}
+
+func NewRollbackMigratingTopicStageResponse() (response *RollbackMigratingTopicStageResponse) {
+    response = &RollbackMigratingTopicStageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RollbackMigratingTopicStage
+// 回滚正在迁移的主题至前一个阶段
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) RollbackMigratingTopicStage(request *RollbackMigratingTopicStageRequest) (response *RollbackMigratingTopicStageResponse, err error) {
+    return c.RollbackMigratingTopicStageWithContext(context.Background(), request)
+}
+
+// RollbackMigratingTopicStage
+// 回滚正在迁移的主题至前一个阶段
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) RollbackMigratingTopicStageWithContext(ctx context.Context, request *RollbackMigratingTopicStageRequest) (response *RollbackMigratingTopicStageResponse, err error) {
+    if request == nil {
+        request = NewRollbackMigratingTopicStageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RollbackMigratingTopicStage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRollbackMigratingTopicStageResponse()
     err = c.Send(request, response)
     return
 }

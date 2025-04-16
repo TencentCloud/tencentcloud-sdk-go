@@ -20,6 +20,77 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+// Predefined struct for user
+type ChangeMigratingTopicToNextStageRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 主题名称列表
+	TopicNameList []*string `json:"TopicNameList,omitnil,omitempty" name:"TopicNameList"`
+
+	// 命名空间列表，仅4.x集群有效，与TopicNameList一一对应
+	NamespaceList []*string `json:"NamespaceList,omitnil,omitempty" name:"NamespaceList"`
+}
+
+type ChangeMigratingTopicToNextStageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 主题名称列表
+	TopicNameList []*string `json:"TopicNameList,omitnil,omitempty" name:"TopicNameList"`
+
+	// 命名空间列表，仅4.x集群有效，与TopicNameList一一对应
+	NamespaceList []*string `json:"NamespaceList,omitnil,omitempty" name:"NamespaceList"`
+}
+
+func (r *ChangeMigratingTopicToNextStageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChangeMigratingTopicToNextStageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "TopicNameList")
+	delete(f, "NamespaceList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChangeMigratingTopicToNextStageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChangeMigratingTopicToNextStageResponseParams struct {
+	// 迁移主题状态修改的结果列表
+	Results []*TopicStageChangeResult `json:"Results,omitnil,omitempty" name:"Results"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ChangeMigratingTopicToNextStageResponse struct {
+	*tchttp.BaseResponse
+	Response *ChangeMigratingTopicToNextStageResponseParams `json:"Response"`
+}
+
+func (r *ChangeMigratingTopicToNextStageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChangeMigratingTopicToNextStageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ConsumeGroupItem struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -1327,6 +1398,60 @@ func (r *DeleteRoleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSmoothMigrationTaskRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DeleteSmoothMigrationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteSmoothMigrationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSmoothMigrationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSmoothMigrationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSmoothMigrationTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteSmoothMigrationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSmoothMigrationTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteSmoothMigrationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSmoothMigrationTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3392,6 +3517,252 @@ func (r *DescribeMessageTraceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMigratingGroupStatsRequestParams struct {
+	// 迁移任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 消费组名称
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+}
+
+type DescribeMigratingGroupStatsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 迁移任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 消费组名称
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+}
+
+func (r *DescribeMigratingGroupStatsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMigratingGroupStatsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "GroupName")
+	delete(f, "Namespace")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMigratingGroupStatsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMigratingGroupStatsResponseParams struct {
+	// 源集群消费组堆积
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceConsumeLag *int64 `json:"SourceConsumeLag,omitnil,omitempty" name:"SourceConsumeLag"`
+
+	// 目标集群消费组堆积
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetConsumeLag *int64 `json:"TargetConsumeLag,omitnil,omitempty" name:"TargetConsumeLag"`
+
+	// 源集群连接客户端列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceConsumerClients []*ConsumerClient `json:"SourceConsumerClients,omitnil,omitempty" name:"SourceConsumerClients"`
+
+	// 目标集群连接客户端列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetConsumerClients []*ConsumerClient `json:"TargetConsumerClients,omitnil,omitempty" name:"TargetConsumerClients"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMigratingGroupStatsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMigratingGroupStatsResponseParams `json:"Response"`
+}
+
+func (r *DescribeMigratingGroupStatsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMigratingGroupStatsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMigratingTopicListRequestParams struct {
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeMigratingTopicListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeMigratingTopicListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMigratingTopicListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "TaskId")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMigratingTopicListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMigratingTopicListResponseParams struct {
+	// 查询总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 主题列表
+	MigrateTopics []*MigratingTopic `json:"MigrateTopics,omitnil,omitempty" name:"MigrateTopics"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMigratingTopicListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMigratingTopicListResponseParams `json:"Response"`
+}
+
+func (r *DescribeMigratingTopicListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMigratingTopicListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMigratingTopicStatsRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 主题名称
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 命名空间，仅4.x集群有效
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+}
+
+type DescribeMigratingTopicStatsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 主题名称
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 命名空间，仅4.x集群有效
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+}
+
+func (r *DescribeMigratingTopicStatsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMigratingTopicStatsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "TopicName")
+	delete(f, "Namespace")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMigratingTopicStatsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMigratingTopicStatsResponseParams struct {
+	// 源集群的消费者数量
+	SourceClusterConsumerCount *int64 `json:"SourceClusterConsumerCount,omitnil,omitempty" name:"SourceClusterConsumerCount"`
+
+	// 目标集群的消费者数量
+	TargetClusterConsumerCount *int64 `json:"TargetClusterConsumerCount,omitnil,omitempty" name:"TargetClusterConsumerCount"`
+
+	// 源集群消费组列表
+	SourceClusterConsumerGroups []*string `json:"SourceClusterConsumerGroups,omitnil,omitempty" name:"SourceClusterConsumerGroups"`
+
+	// 目标集群消费组列表
+	TargetClusterConsumerGroups []*string `json:"TargetClusterConsumerGroups,omitnil,omitempty" name:"TargetClusterConsumerGroups"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMigratingTopicStatsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMigratingTopicStatsResponseParams `json:"Response"`
+}
+
+func (r *DescribeMigratingTopicStatsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMigratingTopicStatsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeProductSKUsRequestParams struct {
 
 }
@@ -3525,6 +3896,88 @@ func (r *DescribeRoleListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRoleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSourceClusterGroupListRequestParams struct {
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeSourceClusterGroupListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeSourceClusterGroupListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSourceClusterGroupListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "TaskId")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSourceClusterGroupListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSourceClusterGroupListResponseParams struct {
+	// 查询总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 消费组配置列表
+	Groups []*SourceClusterGroupConfig `json:"Groups,omitnil,omitempty" name:"Groups"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSourceClusterGroupListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSourceClusterGroupListResponseParams `json:"Response"`
+}
+
+func (r *DescribeSourceClusterGroupListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSourceClusterGroupListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3827,6 +4280,93 @@ type DetailedRolePerm struct {
 
 	// 资源备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+// Predefined struct for user
+type DoHealthCheckOnMigratingTopicRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 主题名称
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 是否忽略当前检查
+	IgnoreCheck *bool `json:"IgnoreCheck,omitnil,omitempty" name:"IgnoreCheck"`
+
+	// 命名空间，仅4.x集群有效
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+}
+
+type DoHealthCheckOnMigratingTopicRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 主题名称
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 是否忽略当前检查
+	IgnoreCheck *bool `json:"IgnoreCheck,omitnil,omitempty" name:"IgnoreCheck"`
+
+	// 命名空间，仅4.x集群有效
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+}
+
+func (r *DoHealthCheckOnMigratingTopicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DoHealthCheckOnMigratingTopicRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "TopicName")
+	delete(f, "IgnoreCheck")
+	delete(f, "Namespace")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DoHealthCheckOnMigratingTopicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DoHealthCheckOnMigratingTopicResponseParams struct {
+	// 是否通过	
+	Passed *bool `json:"Passed,omitnil,omitempty" name:"Passed"`
+
+	// 健康检查返回的错误信息
+	// NotChecked 未执行检查， Unknown 未知错误, TopicNotImported 主题未导入, TopicNotExistsInSourceCluster 主题在源集群中不存在, TopicNotExistsInTargetCluster 主题在目标集群中不存在, ConsumerConnectedOnTarget 目标集群上存在消费者连接, SourceTopicHasNewMessagesIn5Minutes 源集群主题前5分钟内有新消息写入, TargetTopicHasNewMessagesIn5Minutes 目标集群主题前5分钟内有新消息写入, SourceTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, TargetTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, ConsumerGroupCountNotMatch 订阅组数量不一致, SourceTopicHasUnconsumedMessages 源集群主题存在未消费消息,
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// 健康检查返回的错误信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReasonList []*string `json:"ReasonList,omitnil,omitempty" name:"ReasonList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DoHealthCheckOnMigratingTopicResponse struct {
+	*tchttp.BaseResponse
+	Response *DoHealthCheckOnMigratingTopicResponseParams `json:"Response"`
+}
+
+func (r *DoHealthCheckOnMigratingTopicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DoHealthCheckOnMigratingTopicResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Endpoint struct {
@@ -4491,6 +5031,28 @@ type MessageTrackItem struct {
 	// 异常信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExceptionDesc *string `json:"ExceptionDesc,omitnil,omitempty" name:"ExceptionDesc"`
+}
+
+type MigratingTopic struct {
+	// 主题名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 迁移状态 S_RW_D_NA 源集群读写 S_RW_D_R 源集群读写目标集群读 S_RW_D_RW 源集群读写目标集群读写 S_R_D_RW 源集群读目标集群读写 S_NA_D_RW 目标集群读写
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MigrationStatus *string `json:"MigrationStatus,omitnil,omitempty" name:"MigrationStatus"`
+
+	// 是否完成健康检查	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCheckPassed *bool `json:"HealthCheckPassed,omitnil,omitempty" name:"HealthCheckPassed"`
+
+	// 上次健康检查返回的错误信息，仅在HealthCheckPassed为false时有效。 NotChecked 未执行检查， Unknown 未知错误, TopicNotImported 主题未导入, TopicNotExistsInSourceCluster 主题在源集群中不存在, TopicNotExistsInTargetCluster 主题在目标集群中不存在, ConsumerConnectedOnTarget 目标集群上存在消费者连接, SourceTopicHasNewMessagesIn5Minutes 源集群主题前5分钟内有新消息写入, TargetTopicHasNewMessagesIn5Minutes 目标集群主题前5分钟内有新消息写入, SourceTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, TargetTopicHasNoMessagesIn5Minutes 源集群前5分钟内没有新消息写入, ConsumerGroupCountNotMatch 订阅组数量不一致, SourceTopicHasUnconsumedMessages 源集群主题存在未消费消息,
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCheckError *string `json:"HealthCheckError,omitnil,omitempty" name:"HealthCheckError"`
+
+	// 命名空间，仅4.x集群有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 }
 
 // Predefined struct for user
@@ -5409,6 +5971,74 @@ type PublicAccessRule struct {
 }
 
 // Predefined struct for user
+type RemoveMigratingTopicRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 主题名称
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 命名空间，仅迁移至4.x集群有效
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+}
+
+type RemoveMigratingTopicRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 主题名称
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 命名空间，仅迁移至4.x集群有效
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+}
+
+func (r *RemoveMigratingTopicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveMigratingTopicRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "TopicName")
+	delete(f, "Namespace")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveMigratingTopicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RemoveMigratingTopicResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RemoveMigratingTopicResponse struct {
+	*tchttp.BaseResponse
+	Response *RemoveMigratingTopicResponseParams `json:"Response"`
+}
+
+func (r *RemoveMigratingTopicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveMigratingTopicResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ResendDeadLetterMessageRequestParams struct {
 	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -5586,6 +6216,74 @@ type RoleItem struct {
 	// Topic和Group维度权限配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DetailedRolePerms []*DetailedRolePerm `json:"DetailedRolePerms,omitnil,omitempty" name:"DetailedRolePerms"`
+}
+
+// Predefined struct for user
+type RollbackMigratingTopicStageRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 主题名称
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 命名空间，仅4.x集群有效
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+}
+
+type RollbackMigratingTopicStageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 主题名称
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 命名空间，仅4.x集群有效
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+}
+
+func (r *RollbackMigratingTopicStageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RollbackMigratingTopicStageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "TopicName")
+	delete(f, "Namespace")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RollbackMigratingTopicStageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RollbackMigratingTopicStageResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RollbackMigratingTopicStageResponse struct {
+	*tchttp.BaseResponse
+	Response *RollbackMigratingTopicStageResponseParams `json:"Response"`
+}
+
+func (r *RollbackMigratingTopicStageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RollbackMigratingTopicStageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SourceClusterGroupConfig struct {
@@ -5829,6 +6527,20 @@ type TopicItem struct {
 	// 消息保留时长
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgTTL *int64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
+}
+
+type TopicStageChangeResult struct {
+	// 主题名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Success *bool `json:"Success,omitnil,omitempty" name:"Success"`
+
+	// 命名空间，仅4.x有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 }
 
 type VpcInfo struct {

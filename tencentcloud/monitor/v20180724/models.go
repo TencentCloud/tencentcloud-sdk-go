@@ -11306,7 +11306,7 @@ type GetMonitorDataRequestParams struct {
 	// 结束时间，如2018-09-22T20:51:23+08:00，默认为当前时间。 EndTime不能小于StartTime
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 返回多种统计方式数据。avg, max, min (1,2,4)可以自由组合
+	// 返回多种统计方式数据。avg, max, min (1,2,4)可以自由组合。注意: 仅支持对API配置文档中展示的统计方式返回对应的统计数据。如所需的统计方式不满足您的查询需求，请提工单反馈。
 	SpecifyStatistics *int64 `json:"SpecifyStatistics,omitnil,omitempty" name:"SpecifyStatistics"`
 }
 
@@ -11331,7 +11331,7 @@ type GetMonitorDataRequest struct {
 	// 结束时间，如2018-09-22T20:51:23+08:00，默认为当前时间。 EndTime不能小于StartTime
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 返回多种统计方式数据。avg, max, min (1,2,4)可以自由组合
+	// 返回多种统计方式数据。avg, max, min (1,2,4)可以自由组合。注意: 仅支持对API配置文档中展示的统计方式返回对应的统计数据。如所需的统计方式不满足您的查询需求，请提工单反馈。
 	SpecifyStatistics *int64 `json:"SpecifyStatistics,omitnil,omitempty" name:"SpecifyStatistics"`
 }
 

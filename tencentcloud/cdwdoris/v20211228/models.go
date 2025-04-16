@@ -5619,6 +5619,12 @@ type RegionInfo struct {
 
 	// 桶
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// 存算分离集群数
+	SSCCount *int64 `json:"SSCCount,omitnil,omitempty" name:"SSCCount"`
+
+	// 是否开通存算分离
+	EnableSSC *bool `json:"EnableSSC,omitnil,omitempty" name:"EnableSSC"`
 }
 
 // Predefined struct for user

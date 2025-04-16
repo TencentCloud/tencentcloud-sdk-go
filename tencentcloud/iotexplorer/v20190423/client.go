@@ -1745,6 +1745,61 @@ func (c *Client) CreateTRTCSignaturesWithRoomIdWithContext(ctx context.Context, 
     return
 }
 
+func NewCreateTWeSeeRecognitionTaskRequest() (request *CreateTWeSeeRecognitionTaskRequest) {
+    request = &CreateTWeSeeRecognitionTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateTWeSeeRecognitionTask")
+    
+    
+    return
+}
+
+func NewCreateTWeSeeRecognitionTaskResponse() (response *CreateTWeSeeRecognitionTaskResponse) {
+    response = &CreateTWeSeeRecognitionTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTWeSeeRecognitionTask
+// 创建 TWeSee 语义理解任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTWeSeeRecognitionTask(request *CreateTWeSeeRecognitionTaskRequest) (response *CreateTWeSeeRecognitionTaskResponse, err error) {
+    return c.CreateTWeSeeRecognitionTaskWithContext(context.Background(), request)
+}
+
+// CreateTWeSeeRecognitionTask
+// 创建 TWeSee 语义理解任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateTWeSeeRecognitionTaskWithContext(ctx context.Context, request *CreateTWeSeeRecognitionTaskRequest) (response *CreateTWeSeeRecognitionTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateTWeSeeRecognitionTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTWeSeeRecognitionTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTWeSeeRecognitionTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTopicPolicyRequest() (request *CreateTopicPolicyRequest) {
     request = &CreateTopicPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7391,6 +7446,61 @@ func (c *Client) InvokeExternalSourceAIServiceTaskWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewInvokeExternalSourceAIServiceTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInvokeTWeSeeRecognitionTaskRequest() (request *InvokeTWeSeeRecognitionTaskRequest) {
+    request = &InvokeTWeSeeRecognitionTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "InvokeTWeSeeRecognitionTask")
+    
+    
+    return
+}
+
+func NewInvokeTWeSeeRecognitionTaskResponse() (response *InvokeTWeSeeRecognitionTaskResponse) {
+    response = &InvokeTWeSeeRecognitionTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InvokeTWeSeeRecognitionTask
+// 同步执行 TWeSee 语义理解任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) InvokeTWeSeeRecognitionTask(request *InvokeTWeSeeRecognitionTaskRequest) (response *InvokeTWeSeeRecognitionTaskResponse, err error) {
+    return c.InvokeTWeSeeRecognitionTaskWithContext(context.Background(), request)
+}
+
+// InvokeTWeSeeRecognitionTask
+// 同步执行 TWeSee 语义理解任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) InvokeTWeSeeRecognitionTaskWithContext(ctx context.Context, request *InvokeTWeSeeRecognitionTaskRequest) (response *InvokeTWeSeeRecognitionTaskResponse, err error) {
+    if request == nil {
+        request = NewInvokeTWeSeeRecognitionTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InvokeTWeSeeRecognitionTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInvokeTWeSeeRecognitionTaskResponse()
     err = c.Send(request, response)
     return
 }

@@ -45,6 +45,61 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateDLPFileDetectionTaskRequest() (request *CreateDLPFileDetectionTaskRequest) {
+    request = &CreateDLPFileDetectionTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "CreateDLPFileDetectionTask")
+    
+    
+    return
+}
+
+func NewCreateDLPFileDetectionTaskResponse() (response *CreateDLPFileDetectionTaskResponse) {
+    response = &CreateDLPFileDetectionTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDLPFileDetectionTask
+// 提交送检任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateDLPFileDetectionTask(request *CreateDLPFileDetectionTaskRequest) (response *CreateDLPFileDetectionTaskResponse, err error) {
+    return c.CreateDLPFileDetectionTaskWithContext(context.Background(), request)
+}
+
+// CreateDLPFileDetectionTask
+// 提交送检任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateDLPFileDetectionTaskWithContext(ctx context.Context, request *CreateDLPFileDetectionTaskRequest) (response *CreateDLPFileDetectionTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateDLPFileDetectionTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDLPFileDetectionTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDLPFileDetectionTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDeviceVirtualGroupRequest() (request *CreateDeviceVirtualGroupRequest) {
     request = &CreateDeviceVirtualGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -169,6 +224,61 @@ func (c *Client) DescribeAccountGroupsWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeAccountGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDLPFileDetectResultRequest() (request *DescribeDLPFileDetectResultRequest) {
+    request = &DescribeDLPFileDetectResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeDLPFileDetectResult")
+    
+    
+    return
+}
+
+func NewDescribeDLPFileDetectResultResponse() (response *DescribeDLPFileDetectResultResponse) {
+    response = &DescribeDLPFileDetectResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDLPFileDetectResult
+// webservice查询文件检测结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDLPFileDetectResult(request *DescribeDLPFileDetectResultRequest) (response *DescribeDLPFileDetectResultResponse, err error) {
+    return c.DescribeDLPFileDetectResultWithContext(context.Background(), request)
+}
+
+// DescribeDLPFileDetectResult
+// webservice查询文件检测结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDLPFileDetectResultWithContext(ctx context.Context, request *DescribeDLPFileDetectResultRequest) (response *DescribeDLPFileDetectResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeDLPFileDetectResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDLPFileDetectResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDLPFileDetectResultResponse()
     err = c.Send(request, response)
     return
 }

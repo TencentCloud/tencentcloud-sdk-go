@@ -10691,7 +10691,7 @@ func NewStartCpuExpandResponse() (response *StartCpuExpandResponse) {
 }
 
 // StartCpuExpand
-// 通过该API，可以开启CPU弹性扩容，包括一次性的手动扩容以及自动弹性扩容。
+// 通过该 API，可以开启 CPU 弹性扩容，包括一次性的手动扩容以及自动弹性扩容。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSTANCETASKCONFLICTERROR = "FailedOperation.InstanceTaskConflictError"
@@ -10706,7 +10706,7 @@ func (c *Client) StartCpuExpand(request *StartCpuExpandRequest) (response *Start
 }
 
 // StartCpuExpand
-// 通过该API，可以开启CPU弹性扩容，包括一次性的手动扩容以及自动弹性扩容。
+// 通过该 API，可以开启 CPU 弹性扩容，包括一次性的手动扩容以及自动弹性扩容。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSTANCETASKCONFLICTERROR = "FailedOperation.InstanceTaskConflictError"

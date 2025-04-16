@@ -2641,6 +2641,145 @@ func (r *CreateTRTCSignaturesWithRoomIdResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type CreateTWeSeeRecognitionTaskRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 输入视频 / 图片的 URL
+	InputURL *string `json:"InputURL,omitnil,omitempty" name:"InputURL"`
+
+	// 自定义事件 ID
+	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
+
+	// 是否保存该事件使其可被搜索
+	EnableSearch *bool `json:"EnableSearch,omitnil,omitempty" name:"EnableSearch"`
+
+	// 事件起始时间事件起始时间（毫秒级 UNIX 时间戳，若不传则默认为接口调用时间）
+	StartTimeMs *uint64 `json:"StartTimeMs,omitnil,omitempty" name:"StartTimeMs"`
+
+	// 事件结束时间事件起始时间（毫秒级 UNIX 时间戳，若不传则默认为接口调用时间）
+	EndTimeMs *uint64 `json:"EndTimeMs,omitnil,omitempty" name:"EndTimeMs"`
+
+	// 算法配置
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 是否自定义设备，为 true 时不检查设备存在性，默认为 false
+	IsCustomDevice *bool `json:"IsCustomDevice,omitnil,omitempty" name:"IsCustomDevice"`
+
+	// 输入类型。可选值：
+	// 
+	// - `video`：视频（默认值）
+	// - `image`：图片
+	InputType *string `json:"InputType,omitnil,omitempty" name:"InputType"`
+
+	// 摘要服务质量。可选值：
+	// 
+	// - `minutely`：分钟级（默认值）
+	// - `immediate`：立即
+	SummaryQOS *string `json:"SummaryQOS,omitnil,omitempty" name:"SummaryQOS"`
+}
+
+type CreateTWeSeeRecognitionTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 输入视频 / 图片的 URL
+	InputURL *string `json:"InputURL,omitnil,omitempty" name:"InputURL"`
+
+	// 自定义事件 ID
+	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
+
+	// 是否保存该事件使其可被搜索
+	EnableSearch *bool `json:"EnableSearch,omitnil,omitempty" name:"EnableSearch"`
+
+	// 事件起始时间事件起始时间（毫秒级 UNIX 时间戳，若不传则默认为接口调用时间）
+	StartTimeMs *uint64 `json:"StartTimeMs,omitnil,omitempty" name:"StartTimeMs"`
+
+	// 事件结束时间事件起始时间（毫秒级 UNIX 时间戳，若不传则默认为接口调用时间）
+	EndTimeMs *uint64 `json:"EndTimeMs,omitnil,omitempty" name:"EndTimeMs"`
+
+	// 算法配置
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 是否自定义设备，为 true 时不检查设备存在性，默认为 false
+	IsCustomDevice *bool `json:"IsCustomDevice,omitnil,omitempty" name:"IsCustomDevice"`
+
+	// 输入类型。可选值：
+	// 
+	// - `video`：视频（默认值）
+	// - `image`：图片
+	InputType *string `json:"InputType,omitnil,omitempty" name:"InputType"`
+
+	// 摘要服务质量。可选值：
+	// 
+	// - `minutely`：分钟级（默认值）
+	// - `immediate`：立即
+	SummaryQOS *string `json:"SummaryQOS,omitnil,omitempty" name:"SummaryQOS"`
+}
+
+func (r *CreateTWeSeeRecognitionTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTWeSeeRecognitionTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "InputURL")
+	delete(f, "CustomId")
+	delete(f, "EnableSearch")
+	delete(f, "StartTimeMs")
+	delete(f, "EndTimeMs")
+	delete(f, "Config")
+	delete(f, "IsCustomDevice")
+	delete(f, "InputType")
+	delete(f, "SummaryQOS")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTWeSeeRecognitionTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTWeSeeRecognitionTaskResponseParams struct {
+	// 任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTWeSeeRecognitionTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTWeSeeRecognitionTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateTWeSeeRecognitionTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTWeSeeRecognitionTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateTopicPolicyRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -10200,6 +10339,151 @@ func (r *InvokeExternalSourceAIServiceTaskResponse) FromJsonString(s string) err
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type InvokeTWeSeeRecognitionTaskRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 输入视频 / 图片的 URL
+	InputURL *string `json:"InputURL,omitnil,omitempty" name:"InputURL"`
+
+	// 自定义事件 ID
+	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
+
+	// 是否保存该事件使其可被搜索
+	EnableSearch *bool `json:"EnableSearch,omitnil,omitempty" name:"EnableSearch"`
+
+	// 事件起始时间事件起始时间（毫秒级 UNIX 时间戳，若不传则默认为接口调用时间）
+	StartTimeMs *uint64 `json:"StartTimeMs,omitnil,omitempty" name:"StartTimeMs"`
+
+	// 事件结束时间事件起始时间（毫秒级 UNIX 时间戳，若不传则默认为接口调用时间）
+	EndTimeMs *uint64 `json:"EndTimeMs,omitnil,omitempty" name:"EndTimeMs"`
+
+	// 算法配置
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 是否自定义设备，为 true 时不检查设备存在性，默认为 false
+	IsCustomDevice *bool `json:"IsCustomDevice,omitnil,omitempty" name:"IsCustomDevice"`
+
+	// 输入类型。可选值：
+	// 
+	// - `video`：视频（默认值）
+	// - `image`：图片
+	InputType *string `json:"InputType,omitnil,omitempty" name:"InputType"`
+
+	// 摘要服务质量。可选值：
+	// 
+	// - `minutely`：分钟级（默认值）
+	// - `immediate`：立即
+	SummaryQOS *string `json:"SummaryQOS,omitnil,omitempty" name:"SummaryQOS"`
+}
+
+type InvokeTWeSeeRecognitionTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 输入视频 / 图片的 URL
+	InputURL *string `json:"InputURL,omitnil,omitempty" name:"InputURL"`
+
+	// 自定义事件 ID
+	CustomId *string `json:"CustomId,omitnil,omitempty" name:"CustomId"`
+
+	// 是否保存该事件使其可被搜索
+	EnableSearch *bool `json:"EnableSearch,omitnil,omitempty" name:"EnableSearch"`
+
+	// 事件起始时间事件起始时间（毫秒级 UNIX 时间戳，若不传则默认为接口调用时间）
+	StartTimeMs *uint64 `json:"StartTimeMs,omitnil,omitempty" name:"StartTimeMs"`
+
+	// 事件结束时间事件起始时间（毫秒级 UNIX 时间戳，若不传则默认为接口调用时间）
+	EndTimeMs *uint64 `json:"EndTimeMs,omitnil,omitempty" name:"EndTimeMs"`
+
+	// 算法配置
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 是否自定义设备，为 true 时不检查设备存在性，默认为 false
+	IsCustomDevice *bool `json:"IsCustomDevice,omitnil,omitempty" name:"IsCustomDevice"`
+
+	// 输入类型。可选值：
+	// 
+	// - `video`：视频（默认值）
+	// - `image`：图片
+	InputType *string `json:"InputType,omitnil,omitempty" name:"InputType"`
+
+	// 摘要服务质量。可选值：
+	// 
+	// - `minutely`：分钟级（默认值）
+	// - `immediate`：立即
+	SummaryQOS *string `json:"SummaryQOS,omitnil,omitempty" name:"SummaryQOS"`
+}
+
+func (r *InvokeTWeSeeRecognitionTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InvokeTWeSeeRecognitionTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "InputURL")
+	delete(f, "CustomId")
+	delete(f, "EnableSearch")
+	delete(f, "StartTimeMs")
+	delete(f, "EndTimeMs")
+	delete(f, "Config")
+	delete(f, "IsCustomDevice")
+	delete(f, "InputType")
+	delete(f, "SummaryQOS")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeTWeSeeRecognitionTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InvokeTWeSeeRecognitionTaskResponseParams struct {
+	// 任务 ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务是否执行完成
+	Completed *bool `json:"Completed,omitnil,omitempty" name:"Completed"`
+
+	// 语义理解任务结果（仅当 Completed 为 true 时包含该出参）
+	Result *VisionRecognitionResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InvokeTWeSeeRecognitionTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *InvokeTWeSeeRecognitionTaskResponseParams `json:"Response"`
+}
+
+func (r *InvokeTWeSeeRecognitionTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InvokeTWeSeeRecognitionTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type IotApplication struct {
 	// 应用 ID
 	IotAppID *string `json:"IotAppID,omitnil,omitempty" name:"IotAppID"`
@@ -14049,6 +14333,26 @@ type VideoLicenseEntity struct {
 
 	// 即将过期的激活码数量
 	ExpiresSoonCount *int64 `json:"ExpiresSoonCount,omitnil,omitempty" name:"ExpiresSoonCount"`
+}
+
+type VisionRecognitionResult struct {
+	// 任务状态（1：失败；2：成功但结果为空；3：成功且结果非空）
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 识别到的目标类型。可能取值：
+	// 
+	// - `person`：人
+	// - `vehicle`：车辆
+	// - `dog`：狗
+	// - `cat`：猫
+	// - `fire`：火焰
+	// - `smoke`：烟雾
+	// - `package`：快递包裹
+	// - `license_plate`：车牌
+	DetectedClassifications []*string `json:"DetectedClassifications,omitnil,omitempty" name:"DetectedClassifications"`
+
+	// 视频摘要文本
+	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
 }
 
 type WXDeviceInfo struct {

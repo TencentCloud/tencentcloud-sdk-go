@@ -1091,6 +1091,7 @@ type CreateRoomRequestParams struct {
 	// 1 标清
 	// 2 高清
 	// 3 全高清
+	// 注意：连麦人数（MaxMicNumber）>6时，仅可使用标清
 	Resolution *uint64 `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
 	// 设置课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。该取值影响计费，请根据业务实际情况设置。计费规则见“购买指南”下“计费概述”。
@@ -1185,6 +1186,9 @@ type CreateRoomRequestParams struct {
 
 	// 板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式
 	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
+
+	// 字幕转写功能开关：0关闭，1开启，默认关闭
+	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
 }
 
 type CreateRoomRequest struct {
@@ -1206,6 +1210,7 @@ type CreateRoomRequest struct {
 	// 1 标清
 	// 2 高清
 	// 3 全高清
+	// 注意：连麦人数（MaxMicNumber）>6时，仅可使用标清
 	Resolution *uint64 `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 
 	// 设置课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。小班课取值范围[0,16]，大班课取值范围[0,1]，当取值为0时表示当前课堂/直播，不支持连麦互动。该取值影响计费，请根据业务实际情况设置。计费规则见“购买指南”下“计费概述”。
@@ -1296,6 +1301,9 @@ type CreateRoomRequest struct {
 
 	// 板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式
 	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
+
+	// 字幕转写功能开关：0关闭，1开启，默认关闭
+	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
 }
 
 func (r *CreateRoomRequest) ToJsonString() string {
@@ -1341,6 +1349,7 @@ func (r *CreateRoomRequest) FromJsonString(s string) error {
 	delete(f, "RecordLang")
 	delete(f, "RecordStream")
 	delete(f, "WhiteBoardSnapshotMode")
+	delete(f, "SubtitlesTranscription")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoomRequest has unknown keys!", "")
 	}
@@ -5734,6 +5743,10 @@ type SendRoomNormalMessageRequestParams struct {
 
 	// 昵称，当FromAccount没有在房间中，需要填写NickName，当FromAccount在房间中，填写NickName无意义
 	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
+
+	// 消息的优先级，默认优先级 Normal。
+	// 可以指定3种优先级，从高到低依次为 High、Normal 和 Low，区分大小写。
+	Priority *string `json:"Priority,omitnil,omitempty" name:"Priority"`
 }
 
 type SendRoomNormalMessageRequest struct {
@@ -5756,6 +5769,10 @@ type SendRoomNormalMessageRequest struct {
 
 	// 昵称，当FromAccount没有在房间中，需要填写NickName，当FromAccount在房间中，填写NickName无意义
 	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
+
+	// 消息的优先级，默认优先级 Normal。
+	// 可以指定3种优先级，从高到低依次为 High、Normal 和 Low，区分大小写。
+	Priority *string `json:"Priority,omitnil,omitempty" name:"Priority"`
 }
 
 func (r *SendRoomNormalMessageRequest) ToJsonString() string {
@@ -5776,6 +5793,7 @@ func (r *SendRoomNormalMessageRequest) FromJsonString(s string) error {
 	delete(f, "MsgBody")
 	delete(f, "CloudCustomData")
 	delete(f, "NickName")
+	delete(f, "Priority")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendRoomNormalMessageRequest has unknown keys!", "")
 	}

@@ -7489,6 +7489,91 @@ func (r *SearchSessionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type SearchSubtaskResultByIdRequestParams struct {
+	// 运维任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 查询偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页的页内记录数，默认为20，最大200
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 运维父任务执行日志ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 运维父任务执行状态
+	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type SearchSubtaskResultByIdRequest struct {
+	*tchttp.BaseRequest
+	
+	// 运维任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 查询偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页的页内记录数，默认为20，最大200
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 运维父任务执行日志ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 运维父任务执行状态
+	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *SearchSubtaskResultByIdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchSubtaskResultByIdRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Id")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchSubtaskResultByIdRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchSubtaskResultByIdResponseParams struct {
+	// 记录数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SearchSubtaskResultByIdResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchSubtaskResultByIdResponseParams `json:"Response"`
+}
+
+func (r *SearchSubtaskResultByIdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchSubtaskResultByIdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type SearchTaskResultRequestParams struct {
 	// 搜索区间的开始时间
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`

@@ -67,7 +67,6 @@ type AccessRegionDetial struct {
 	// 第5个bit，支持精品BGP接入；
 	// 第6个bit，支持三网接入；
 	// 第7个bit，支持接入段Qos加速。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeatureBitmap *int64 `json:"FeatureBitmap,omitnil,omitempty" name:"FeatureBitmap"`
 }
 
@@ -294,11 +293,9 @@ type BindRealServer struct {
 	// 0表示正常；
 	// 1表示异常。
 	// 未开启健康检查状态时，该状态始终为正常。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealServerStatus *int64 `json:"RealServerStatus,omitnil,omitempty" name:"RealServerStatus"`
 
 	// 源站的端口号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealServerPort *int64 `json:"RealServerPort,omitnil,omitempty" name:"RealServerPort"`
 
 	// 当源站为域名时，域名被解析成一个或者多个IP，该字段表示其中异常的IP列表。状态异常，但该字段为空时，表示域名解析异常。
@@ -322,7 +319,6 @@ type BindRealServerInfo struct {
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 标签列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*TagPair `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
@@ -412,26 +408,21 @@ type Certificate struct {
 	CertificateType *int64 `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
 
 	// 证书名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateAlias *string `json:"CertificateAlias,omitnil,omitempty" name:"CertificateAlias"`
 
 	// 证书创建时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 证书生效起始时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginTime *uint64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
 	// 证书过期时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 证书签发者通用名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IssuerCN *string `json:"IssuerCN,omitnil,omitempty" name:"IssuerCN"`
 
 	// 证书主题通用名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubjectCN *string `json:"SubjectCN,omitnil,omitempty" name:"SubjectCN"`
 }
 
@@ -451,34 +442,27 @@ type CertificateDetail struct {
 	CertificateType *int64 `json:"CertificateType,omitnil,omitempty" name:"CertificateType"`
 
 	// 证书名字。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateAlias *string `json:"CertificateAlias,omitnil,omitempty" name:"CertificateAlias"`
 
 	// 证书内容。
 	CertificateContent *string `json:"CertificateContent,omitnil,omitempty" name:"CertificateContent"`
 
 	// 密钥内容。仅当证书类型为SSL证书时，返回该字段。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertificateKey *string `json:"CertificateKey,omitnil,omitempty" name:"CertificateKey"`
 
 	// 创建时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 证书生效起始时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginTime *uint64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
 	// 证书过期时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 证书签发者通用名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IssuerCN *string `json:"IssuerCN,omitnil,omitempty" name:"IssuerCN"`
 
 	// 证书主题通用名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubjectCN *string `json:"SubjectCN,omitnil,omitempty" name:"SubjectCN"`
 }
 
@@ -815,7 +799,6 @@ type CountryAreaMap struct {
 	ContinentInnerCode *string `json:"ContinentInnerCode,omitnil,omitempty" name:"ContinentInnerCode"`
 
 	// 标注信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
@@ -6634,7 +6617,6 @@ type Domain struct {
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 默认入口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
 
 	// 通道数量
@@ -6648,11 +6630,9 @@ type Domain struct {
 	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 标签列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*TagPair `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
 	// 封禁解封状态：BANNED表示已封禁，RECOVER表示已解封或未封禁，BANNING表示封禁中，RECOVERING表示解封中，BAN_FAILED表示封禁失败，RECOVER_FAILED表示解封失败。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BanStatus *string `json:"BanStatus,omitnil,omitempty" name:"BanStatus"`
 }
 
@@ -6690,23 +6670,18 @@ type DomainErrorPageInfo struct {
 	ErrorNos []*int64 `json:"ErrorNos,omitnil,omitempty" name:"ErrorNos"`
 
 	// 新的错误码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewErrorNo *int64 `json:"NewErrorNo,omitnil,omitempty" name:"NewErrorNo"`
 
 	// 需要清理的响应头
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClearHeaders []*string `json:"ClearHeaders,omitnil,omitempty" name:"ClearHeaders"`
 
 	// 需要设置的响应头
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SetHeaders []*HttpHeaderParam `json:"SetHeaders,omitnil,omitempty" name:"SetHeaders"`
 
 	// 设置的响应体(不包括 HTTP头)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Body *string `json:"Body,omitnil,omitempty" name:"Body"`
 
 	// 规则状态,0为成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -8939,27 +8914,21 @@ func (r *OpenSecurityPolicyResponse) FromJsonString(s string) error {
 
 type ProxyAccessInfo struct {
 	// 地域ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
 	// 地域名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 
 	// 通道ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
 
 	// 通道接入ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
 	// 三网通道VIP列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VipList []*IPDetail `json:"VipList,omitnil,omitempty" name:"VipList"`
 
 	// 接入点IDC类型。ec或dc
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceRegionIdcType *string `json:"SourceRegionIdcType,omitnil,omitempty" name:"SourceRegionIdcType"`
 }
 
@@ -9007,33 +8976,26 @@ type ProxyGroupDetail struct {
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
 	// 标签列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*TagPair `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
 	// 安全策略ID，当设置了安全策略时，存在该字段。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
 	// 通道组版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 通道获取客户端IP的方式，0表示TOA，1表示Proxy Protocol
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientIPMethod []*int64 `json:"ClientIPMethod,omitnil,omitempty" name:"ClientIPMethod"`
 
 	// IP版本，可取值：IPv4、IPv6，默认值IPv4
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPAddressVersion *string `json:"IPAddressVersion,omitnil,omitempty" name:"IPAddressVersion"`
 
 	// 通道组套餐类型：Thunder表示标准通道组，Accelerator表示银牌加速通道组，CrossBorder表示跨境通道组。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
 	// 支持Http3特性的标识，其中：
 	// 0表示关闭；
 	// 1表示启用。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Http3Supported *int64 `json:"Http3Supported,omitnil,omitempty" name:"Http3Supported"`
 
 	// 特性位图，每个bit位代表一种特性，其中：
@@ -9048,13 +9010,11 @@ type ProxyGroupDetail struct {
 	// 第6个bit，支持三网接入；
 	// 第7个bit，支持接入段Qos加速。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeatureBitmap *int64 `json:"FeatureBitmap,omitnil,omitempty" name:"FeatureBitmap"`
 
 	// 是否支持设置TLS设置
 	// 0表示不支持；
 	// 1表示支持。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSupportTLSChoice *uint64 `json:"IsSupportTLSChoice,omitnil,omitempty" name:"IsSupportTLSChoice"`
 }
 
@@ -9067,7 +9027,6 @@ type ProxyGroupInfo struct {
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 通道组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
 	// 项目ID
@@ -9090,21 +9049,17 @@ type ProxyGroupInfo struct {
 	TagSet []*TagPair `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
 	// 通道组版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 通道组是否包含微软通道
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyType *uint64 `json:"ProxyType,omitnil,omitempty" name:"ProxyType"`
 
 	// 支持Http3特性的标识，其中：
 	// 0表示关闭；
 	// 1表示启用。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Http3Supported *int64 `json:"Http3Supported,omitnil,omitempty" name:"Http3Supported"`
 
 	// 特性位图，每个bit位代表一种特性，其中：
@@ -9119,7 +9074,6 @@ type ProxyGroupInfo struct {
 	// 第6个bit，支持三网接入；
 	// 第7个bit，支持接入段Qos加速。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeatureBitmap *int64 `json:"FeatureBitmap,omitnil,omitempty" name:"FeatureBitmap"`
 }
 
@@ -9130,7 +9084,6 @@ type ProxyIdDict struct {
 
 type ProxyInfo struct {
 	// （旧参数，请使用ProxyId）通道实例ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 创建时间，采用Unix时间戳的方式，表示从1970年1月1日（UTC/GMT的午夜）开始所经过的秒数。
@@ -9179,7 +9132,6 @@ type ProxyInfo struct {
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// （新参数）通道实例ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
 
 	// 1，该通道可缩扩容；0，该通道无法缩扩容。
@@ -9197,30 +9149,24 @@ type ProxyInfo struct {
 	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
 	// 接入地域详细信息，包括地域ID和地域名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessRegionInfo *RegionDetail `json:"AccessRegionInfo,omitnil,omitempty" name:"AccessRegionInfo"`
 
 	// 源站地域详细信息，包括地域ID和地域名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealServerRegionInfo *RegionDetail `json:"RealServerRegionInfo,omitnil,omitempty" name:"RealServerRegionInfo"`
 
 	// 通道转发IP
 	ForwardIP *string `json:"ForwardIP,omitnil,omitempty" name:"ForwardIP"`
 
 	// 标签列表，不存在标签时，该字段为空列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*TagPair `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
 	// 是否支持安全组配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportSecurity *int64 `json:"SupportSecurity,omitnil,omitempty" name:"SupportSecurity"`
 
 	// 计费类型: 0表示按带宽计费  1表示按流量计费。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingType *int64 `json:"BillingType,omitnil,omitempty" name:"BillingType"`
 
 	// 关联了解析的域名列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RelatedGlobalDomains []*string `json:"RelatedGlobalDomains,omitnil,omitempty" name:"RelatedGlobalDomains"`
 
 	// 配置变更时间
@@ -9228,42 +9174,33 @@ type ProxyInfo struct {
 	ModifyConfigTime *uint64 `json:"ModifyConfigTime,omitnil,omitempty" name:"ModifyConfigTime"`
 
 	// 通道类型，100表示THUNDER通道，103表示微软合作通道
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyType *uint64 `json:"ProxyType,omitnil,omitempty" name:"ProxyType"`
 
 	// 通道获取客户端IP的方式，0表示TOA，1表示Proxy Protocol
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientIPMethod []*int64 `json:"ClientIPMethod,omitnil,omitempty" name:"ClientIPMethod"`
 
 	// IP版本：IPv4、IPv6
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPAddressVersion *string `json:"IPAddressVersion,omitnil,omitempty" name:"IPAddressVersion"`
 
 	// 网络类型：normal表示常规BGP，cn2表示精品BGP，triple表示三网，secure_eip表示定制安全EIP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
 
 	// 通道套餐类型：Thunder表示标准通道，Accelerator表示银牌加速通道，
 	// CrossBorder表示跨境通道。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
 	// 封禁解封状态：BANNED表示已封禁，RECOVER表示已解封或未封禁，BANNING表示封禁中，RECOVERING表示解封中，BAN_FAILED表示封禁失败，RECOVER_FAILED表示解封失败。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BanStatus *string `json:"BanStatus,omitnil,omitempty" name:"BanStatus"`
 
 	// IP列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPList []*IPDetail `json:"IPList,omitnil,omitempty" name:"IPList"`
 
 	// 支持Http3协议的标识，其中：
 	// 0表示关闭；
 	// 1表示启用。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Http3Supported *int64 `json:"Http3Supported,omitnil,omitempty" name:"Http3Supported"`
 
 	// 是否在封禁黑名单中，其中：0表示不在黑名单中，1表示在黑名单中。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InBanBlacklist *int64 `json:"InBanBlacklist,omitnil,omitempty" name:"InBanBlacklist"`
 
 	// 特性位图，每个bit位代表一种特性，其中：
@@ -9278,17 +9215,14 @@ type ProxyInfo struct {
 	// 第6个bit，支持三网接入；
 	// 第7个bit，支持接入段Qos加速。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeatureBitmap *int64 `json:"FeatureBitmap,omitnil,omitempty" name:"FeatureBitmap"`
 
 	// 是否是开启了auto scale的通道，0表示否，1表示是。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAutoScaleProxy *int64 `json:"IsAutoScaleProxy,omitnil,omitempty" name:"IsAutoScaleProxy"`
 
 	// 是否允许设置TLS配置
 	// 0表示不支持；
 	// 1表示支持。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSupportTLSChoice *int64 `json:"IsSupportTLSChoice,omitnil,omitempty" name:"IsSupportTLSChoice"`
 }
 
@@ -9398,7 +9332,6 @@ type RegionDetail struct {
 	// 第5个bit，支持精品BGP接入；
 	// 第6个bit，支持三网接入；
 	// 第7个bit，支持接入段Qos加速。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeatureBitmap *uint64 `json:"FeatureBitmap,omitnil,omitempty" name:"FeatureBitmap"`
 
 	// 接入区域支持的能力
@@ -9481,15 +9414,12 @@ type RuleCheckParams struct {
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 源站服务失败统计频率
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedCountInter *uint64 `json:"FailedCountInter,omitnil,omitempty" name:"FailedCountInter"`
 
 	// 源站健康性检查阀值，超过该阀值会屏蔽服务
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedThreshold *uint64 `json:"FailedThreshold,omitnil,omitempty" name:"FailedThreshold"`
 
 	// 源站健康性检测超出阀值后，屏蔽的时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlockInter *uint64 `json:"BlockInter,omitnil,omitempty" name:"BlockInter"`
 }
 
@@ -9530,16 +9460,13 @@ type RuleInfo struct {
 	BindStatus *uint64 `json:"BindStatus,omitnil,omitempty" name:"BindStatus"`
 
 	// 通道转发到源站的请求所携带的host，其中default表示直接转发接收到的host。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ForwardHost *string `json:"ForwardHost,omitnil,omitempty" name:"ForwardHost"`
 
 	// 服务器名称指示（ServerNameIndication，简称SNI）开关。ON表示开启，OFF表示关闭。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerNameIndicationSwitch *string `json:"ServerNameIndicationSwitch,omitnil,omitempty" name:"ServerNameIndicationSwitch"`
 
 	// 服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerNameIndication *string `json:"ServerNameIndication,omitnil,omitempty" name:"ServerNameIndication"`
 
@@ -9580,18 +9507,15 @@ type SecurityPolicyRuleOut struct {
 	AliasName *string `json:"AliasName,omitnil,omitempty" name:"AliasName"`
 
 	// 目标端口范围
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DestPortRange *string `json:"DestPortRange,omitnil,omitempty" name:"DestPortRange"`
 
 	// 规则ID
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 要匹配的协议类型（TCP/UDP）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 安全策略ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyId *string `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 }
 
@@ -9886,34 +9810,27 @@ type TCPListener struct {
 	BindStatus *uint64 `json:"BindStatus,omitnil,omitempty" name:"BindStatus"`
 
 	// 监听器绑定的源站信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealServerSet []*BindRealServer `json:"RealServerSet,omitnil,omitempty" name:"RealServerSet"`
 
 	// 监听器创建时间，Unix时间戳
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 监听器获取客户端 IP 的方式，0表示TOA, 1表示Proxy Protocol
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientIPMethod *uint64 `json:"ClientIPMethod,omitnil,omitempty" name:"ClientIPMethod"`
 
 	// 健康阈值，表示连续检查成功多少次后认定源站健康。范围为1到10
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthyThreshold *uint64 `json:"HealthyThreshold,omitnil,omitempty" name:"HealthyThreshold"`
 
 	// 不健康阈值，表示连续检查失败多少次数后认为源站不健康。范围为1到10
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnhealthyThreshold *uint64 `json:"UnhealthyThreshold,omitnil,omitempty" name:"UnhealthyThreshold"`
 
 	// 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailoverSwitch *uint64 `json:"FailoverSwitch,omitnil,omitempty" name:"FailoverSwitch"`
 
 	// 是否开启会话保持选项：0关闭， 非0开启，非0值为会话保持时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionPersist *uint64 `json:"SessionPersist,omitnil,omitempty" name:"SessionPersist"`
 
 	// 监听器的通道ID，如果监听器属于通道组，则为null
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
 
 	// 监听器的通道组ID，如果监听器属于通道，则为null

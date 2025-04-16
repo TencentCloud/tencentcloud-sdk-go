@@ -11431,6 +11431,12 @@ type ModifyInstanceData struct {
 
 	// 升级方式。升级完成后切换或维护时间内切换
 	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
+
+	// libra节点数量
+	LibraNodeCount *int64 `json:"LibraNodeCount,omitnil,omitempty" name:"LibraNodeCount"`
+
+	// 原libra节点数量
+	OldLibraNodeCount *int64 `json:"OldLibraNodeCount,omitnil,omitempty" name:"OldLibraNodeCount"`
 }
 
 // Predefined struct for user
@@ -11731,6 +11737,9 @@ type ModifyParamItem struct {
 
 	// 参数旧值（只在出参时有用）
 	OldValue *string `json:"OldValue,omitnil,omitempty" name:"OldValue"`
+
+	// libra组件类型
+	Component *string `json:"Component,omitnil,omitempty" name:"Component"`
 }
 
 // Predefined struct for user

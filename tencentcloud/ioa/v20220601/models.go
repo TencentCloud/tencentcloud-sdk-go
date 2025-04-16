@@ -45,6 +45,100 @@ type Condition struct {
 	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
 }
 
+type CreateDLPFileDetectionTaskData struct {
+	// 提交任务生成的id，也即requestID。用于后续查询
+	DLPFileDetectionTaskID *string `json:"DLPFileDetectionTaskID,omitnil,omitempty" name:"DLPFileDetectionTaskID"`
+}
+
+// Predefined struct for user
+type CreateDLPFileDetectionTaskRequestParams struct {
+	// 文件下载链接，要求公网可访问，GET方式访问后为文件
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 文件名，带后缀
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	//  文件md5，传入相同md5会直接使用之前缓存的结果。
+	// 
+	// > 请注意：不同文件使用相同md5送检，会命中缓存得到旧的检测结果
+	FileMd5 *string `json:"FileMd5,omitnil,omitempty" name:"FileMd5"`
+
+	// 管理域实例ID，用于CAM管理域权限分配
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// 回调地址，暂时未使用
+	CallBackUrl *string `json:"CallBackUrl,omitnil,omitempty" name:"CallBackUrl"`
+}
+
+type CreateDLPFileDetectionTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件下载链接，要求公网可访问，GET方式访问后为文件
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 文件名，带后缀
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	//  文件md5，传入相同md5会直接使用之前缓存的结果。
+	// 
+	// > 请注意：不同文件使用相同md5送检，会命中缓存得到旧的检测结果
+	FileMd5 *string `json:"FileMd5,omitnil,omitempty" name:"FileMd5"`
+
+	// 管理域实例ID，用于CAM管理域权限分配
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// 回调地址，暂时未使用
+	CallBackUrl *string `json:"CallBackUrl,omitnil,omitempty" name:"CallBackUrl"`
+}
+
+func (r *CreateDLPFileDetectionTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDLPFileDetectionTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Url")
+	delete(f, "FileName")
+	delete(f, "FileMd5")
+	delete(f, "DomainInstanceId")
+	delete(f, "CallBackUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDLPFileDetectionTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDLPFileDetectionTaskResponseParams struct {
+	// 创建送检任务响应数据
+	Data *CreateDLPFileDetectionTaskData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDLPFileDetectionTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDLPFileDetectionTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateDLPFileDetectionTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDLPFileDetectionTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type CreateDeviceVirtualGroupRequestParams struct {
 	// 必填，终端自定义分组名
@@ -302,6 +396,84 @@ func (r *DescribeAccountGroupsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAccountGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDLPFileDetectResultData struct {
+	// 提交任务时的文件md5
+	FileMd5 *string `json:"FileMd5,omitnil,omitempty" name:"FileMd5"`
+
+	// 提交任务时的文件名
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 状态：等待检测->正在检测->检测失败/检测成功。或任务不存在
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 文件检测结果，json字符串。
+	DetectResult *string `json:"DetectResult,omitnil,omitempty" name:"DetectResult"`
+}
+
+// Predefined struct for user
+type DescribeDLPFileDetectResultRequestParams struct {
+	// 管理域实例ID，用于CAM管理域权限分配
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// 查询ID，即提交送检任务接口（CreateDLPFileDetectionTask）返回的任务ID（DLPFileDetectionTaskID）
+	QueryID *string `json:"QueryID,omitnil,omitempty" name:"QueryID"`
+}
+
+type DescribeDLPFileDetectResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 管理域实例ID，用于CAM管理域权限分配
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// 查询ID，即提交送检任务接口（CreateDLPFileDetectionTask）返回的任务ID（DLPFileDetectionTaskID）
+	QueryID *string `json:"QueryID,omitnil,omitempty" name:"QueryID"`
+}
+
+func (r *DescribeDLPFileDetectResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDLPFileDetectResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainInstanceId")
+	delete(f, "QueryID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDLPFileDetectResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDLPFileDetectResultResponseParams struct {
+	// 查询任务结果
+	Data *DescribeDLPFileDetectResultData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDLPFileDetectResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDLPFileDetectResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeDLPFileDetectResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDLPFileDetectResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
