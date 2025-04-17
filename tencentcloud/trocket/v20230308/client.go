@@ -2260,7 +2260,7 @@ func NewDescribeMigratingTopicListResponse() (response *DescribeMigratingTopicLi
 //
 // 
 //
-// 查询过滤器，支持TopicName、MigrationStatus查询
+// 查询过滤器，支持TopicName、MigrationStatus、Namespace查询
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -2274,7 +2274,7 @@ func (c *Client) DescribeMigratingTopicList(request *DescribeMigratingTopicListR
 //
 // 
 //
-// 查询过滤器，支持TopicName、MigrationStatus查询
+// 查询过滤器，支持TopicName、MigrationStatus、Namespace查询
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -2492,6 +2492,8 @@ func NewDescribeSourceClusterGroupListResponse() (response *DescribeSourceCluste
 //
 // ImportStatus，导入状态
 //
+// Namespace，命名空间
+//
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -2511,6 +2513,8 @@ func (c *Client) DescribeSourceClusterGroupList(request *DescribeSourceClusterGr
 // Imported，是否已导入
 //
 // ImportStatus，导入状态
+//
+// Namespace，命名空间
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"

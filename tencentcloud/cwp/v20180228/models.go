@@ -20702,7 +20702,6 @@ type DescribeMachinesRequestParams struct {
 	// <li>Ips - String - 是否必填：否 - 通过ip查询 </li>
 	// <li>Names - String - 是否必填：否 - 通过实例名查询 </li>
 	// <li>InstanceIds - String - 是否必填：否 - 通过实例id查询 </li>
-	// <li>Status - String - 是否必填：否 - 客户端在线状态（OFFLINE: 离线/关机 | ONLINE: 在线 | UNINSTALLED：未安装 | AGENT_OFFLINE 离线| AGENT_SHUTDOWN 已关机）</li>
 	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship : 旗舰版 | ProtectedMachines: 专业版+旗舰版）</li>
 	// <li>Risk - String 是否必填: 否 - 风险主机( yes ) </li>
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
@@ -20710,6 +20709,8 @@ type DescribeMachinesRequestParams struct {
 	// <li>Quuid - String - 是否必填: 否 - 云服务器uuid  最大100条.</li>
 	// <li>AddedOnTheFifteen- String 是否必填: 否 - 是否只查询15天内新增的主机( 1：是) </li>
 	// <li> TagId- String 是否必填: 否 - 查询指定标签关联的主机列表 </li>
+	// <li> AgentStatus- String 是否必填: 否 - ALL 全部; ONLINE 防护中; OFFLINE 已离线;UNINSTALLED 未安装</li>
+	// <li> MachineStatus- String 是否必填: 否 - ALL 全部; RUNNING 运行中; STOPPED 已关机; EXPIRED 待回收</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 机器所属业务ID列表
@@ -20740,7 +20741,6 @@ type DescribeMachinesRequest struct {
 	// <li>Ips - String - 是否必填：否 - 通过ip查询 </li>
 	// <li>Names - String - 是否必填：否 - 通过实例名查询 </li>
 	// <li>InstanceIds - String - 是否必填：否 - 通过实例id查询 </li>
-	// <li>Status - String - 是否必填：否 - 客户端在线状态（OFFLINE: 离线/关机 | ONLINE: 在线 | UNINSTALLED：未安装 | AGENT_OFFLINE 离线| AGENT_SHUTDOWN 已关机）</li>
 	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship : 旗舰版 | ProtectedMachines: 专业版+旗舰版）</li>
 	// <li>Risk - String 是否必填: 否 - 风险主机( yes ) </li>
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
@@ -20748,6 +20748,8 @@ type DescribeMachinesRequest struct {
 	// <li>Quuid - String - 是否必填: 否 - 云服务器uuid  最大100条.</li>
 	// <li>AddedOnTheFifteen- String 是否必填: 否 - 是否只查询15天内新增的主机( 1：是) </li>
 	// <li> TagId- String 是否必填: 否 - 查询指定标签关联的主机列表 </li>
+	// <li> AgentStatus- String 是否必填: 否 - ALL 全部; ONLINE 防护中; OFFLINE 已离线;UNINSTALLED 未安装</li>
+	// <li> MachineStatus- String 是否必填: 否 - ALL 全部; RUNNING 运行中; STOPPED 已关机; EXPIRED 待回收</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 机器所属业务ID列表
@@ -33338,7 +33340,12 @@ type ExportFileTamperEventsRequestParams struct {
 	Fileds []*string `json:"Fileds,omitnil,omitempty" name:"Fileds"`
 
 	// 需要导出的字段
+	//
+	// Deprecated: Fields is deprecated.
 	Fields *string `json:"Fields,omitnil,omitempty" name:"Fields"`
+
+	// 需要导出的字段
+	Where []*string `json:"Where,omitnil,omitempty" name:"Where"`
 }
 
 type ExportFileTamperEventsRequest struct {
@@ -33356,6 +33363,9 @@ type ExportFileTamperEventsRequest struct {
 
 	// 需要导出的字段
 	Fields *string `json:"Fields,omitnil,omitempty" name:"Fields"`
+
+	// 需要导出的字段
+	Where []*string `json:"Where,omitnil,omitempty" name:"Where"`
 }
 
 func (r *ExportFileTamperEventsRequest) ToJsonString() string {
@@ -33373,6 +33383,7 @@ func (r *ExportFileTamperEventsRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Fileds")
 	delete(f, "Fields")
+	delete(f, "Where")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportFileTamperEventsRequest has unknown keys!", "")
 	}
@@ -36764,6 +36775,16 @@ type LicenseBindDetail struct {
 
 	// 主机额外信息
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitnil,omitempty" name:"MachineExtraInfo"`
+
+	// <li> RUNNING 运行中</li>
+	// <li> STOPPED 已关机</li>
+	// <li> EXPIRED 待回收</li>
+	InstanceState *string `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
+
+	// <li>ONLINE 已离线 </li>
+	// <li>OFFLINE 防护中</li>
+	// <li>UNINSTALLED 未安装客户端</li>
+	AgentState *string `json:"AgentState,omitnil,omitempty" name:"AgentState"`
 }
 
 type LicenseBindTaskDetail struct {
@@ -36983,12 +37004,14 @@ type Machine struct {
 	// 主机系统。
 	MachineOs *string `json:"MachineOs,omitnil,omitempty" name:"MachineOs"`
 
-	// 主机状态。
-	// <li>OFFLINE: 离线  </li>
-	// <li>ONLINE: 在线</li>
-	// <li>SHUTDOWN: 已关机</li>
-	// <li>UNINSTALLED: 未防护</li>
+	// 主机状态。 <li>OFFLINE: 离线 </li> <li>ONLINE: 在线</li> <li>SHUTDOWN: 已关机</li> <li>UNINSTALLED: 未防护</li>	
 	MachineStatus *string `json:"MachineStatus,omitnil,omitempty" name:"MachineStatus"`
+
+	// ONLINE 防护中; OFFLINE 已离线;UNINStALLED 未安装
+	AgentStatus *string `json:"AgentStatus,omitnil,omitempty" name:"AgentStatus"`
+
+	// RUNNING 运行中; STOPED 已关机; EXPIRED 待回收	
+	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
 	// 主机安全Uuid，若客户端长时间不在线将返回空字符。
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
@@ -37441,6 +37464,12 @@ type MalwareInfo struct {
 
 	// 参考链接
 	References []*string `json:"References,omitnil,omitempty" name:"References"`
+
+	// 木马文件是否存在
+	FileExists *bool `json:"FileExists,omitnil,omitempty" name:"FileExists"`
+
+	// 木马进程是否存在
+	ProcessExists *bool `json:"ProcessExists,omitnil,omitempty" name:"ProcessExists"`
 }
 
 type MalwareRisk struct {
@@ -43611,6 +43640,9 @@ type ReverseShellEventInfo struct {
 
 	// 命令详情的转义后内容，供正则加白全字符串匹配使用
 	CmdLineQuote *string `json:"CmdLineQuote,omitnil,omitempty" name:"CmdLineQuote"`
+
+	// 风险等级
+	RiskLevel *uint64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 }
 
 type ReverseShellRule struct {

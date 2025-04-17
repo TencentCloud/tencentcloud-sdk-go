@@ -36,7 +36,6 @@ type AccountInfo struct {
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 账户属性
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Perms []*string `json:"Perms,omitnil,omitempty" name:"Perms"`
 }
 
@@ -243,7 +242,6 @@ type CreateInstanceByApiResponseParams struct {
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -678,7 +676,6 @@ func (r *DescribeInstanceNodesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceNodesResponseParams struct {
 	// error msg
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 节点列表
@@ -889,27 +886,21 @@ type DescribeInstanceStateResponseParams struct {
 	InstanceState *string `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
 
 	// 集群操作创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowCreateTime *string `json:"FlowCreateTime,omitnil,omitempty" name:"FlowCreateTime"`
 
 	// 集群操作名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 集群操作进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowProgress *float64 `json:"FlowProgress,omitnil,omitempty" name:"FlowProgress"`
 
 	// 集群状态描述，例如：运行中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceStateDesc *string `json:"InstanceStateDesc,omitnil,omitempty" name:"InstanceStateDesc"`
 
 	// 集群流程错误信息，例如：“创建失败，资源不足”
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowMsg *string `json:"FlowMsg,omitnil,omitempty" name:"FlowMsg"`
 
 	// 当前步骤的名称，例如：”购买资源中“
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 
 	// 集群备份任务开启状态
@@ -1005,7 +996,6 @@ type DescribeInstancesResponseParams struct {
 	InstancesList []*InstanceInfo `json:"InstancesList,omitnil,omitempty" name:"InstancesList"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1094,11 +1084,9 @@ type DescribeSimpleInstancesResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 集群列表详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstancesList []*InstanceSimpleInfoNew `json:"InstancesList,omitnil,omitempty" name:"InstancesList"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1483,7 +1471,6 @@ type HbaConfig struct {
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
 	// 是否遮盖
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mask *string `json:"Mask,omitnil,omitempty" name:"Mask"`
 }
 
@@ -1498,11 +1485,9 @@ type InstanceInfo struct {
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 集群状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 集群状态详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
 	// 集群状态信息
@@ -1510,7 +1495,6 @@ type InstanceInfo struct {
 	InstanceStateInfo *InstanceStateInfo `json:"InstanceStateInfo,omitnil,omitempty" name:"InstanceStateInfo"`
 
 	// 集群id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
 	// 创建时间
@@ -1523,15 +1507,12 @@ type InstanceInfo struct {
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 地域详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionDesc *string `json:"RegionDesc,omitnil,omitempty" name:"RegionDesc"`
 
 	// 地区详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneDesc *string `json:"ZoneDesc,omitnil,omitempty" name:"ZoneDesc"`
 
 	// 标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 内核版本
@@ -1547,11 +1528,9 @@ type InstanceInfo struct {
 	DNNodes []*InstanceNodeGroup `json:"DNNodes,omitnil,omitempty" name:"DNNodes"`
 
 	// 地域id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
 	// 地区id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 私有网络
@@ -1615,19 +1594,15 @@ type InstanceOperation struct {
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 操作结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 操作上下文
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
 
 	// 操作更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 操作UIN
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 }
 
@@ -1648,22 +1623,18 @@ type InstanceSimpleInfoNew struct {
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 地域Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
 	// 地域详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionDesc *string `json:"RegionDesc,omitnil,omitempty" name:"RegionDesc"`
 
 	// 地区
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 地区id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 地区详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneDesc *string `json:"ZoneDesc,omitnil,omitempty" name:"ZoneDesc"`
 
 	// 私有网络
@@ -1679,7 +1650,6 @@ type InstanceSimpleInfoNew struct {
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 访问地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessInfo *string `json:"AccessInfo,omitnil,omitempty" name:"AccessInfo"`
 
 	// 计费方式
@@ -1694,39 +1664,30 @@ type InstanceStateInfo struct {
 	InstanceState *string `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
 
 	// 集群操作创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowCreateTime *string `json:"FlowCreateTime,omitnil,omitempty" name:"FlowCreateTime"`
 
 	// 集群操作名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 集群操作进度
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowProgress *int64 `json:"FlowProgress,omitnil,omitempty" name:"FlowProgress"`
 
 	// 集群状态描述，例如：运行中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceStateDesc *string `json:"InstanceStateDesc,omitnil,omitempty" name:"InstanceStateDesc"`
 
 	// 集群流程错误信息，例如：“创建失败，资源不足”
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowMsg *string `json:"FlowMsg,omitnil,omitempty" name:"FlowMsg"`
 
 	// 当前步骤的名称，例如：”购买资源中“
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
 
 	// 集群是否有备份中任务，有为1,无为0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupStatus *int64 `json:"BackupStatus,omitnil,omitempty" name:"BackupStatus"`
 
 	// 请求id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 
 	// 集群是否有备份中任务，有为1,无为0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupOpenStatus *int64 `json:"BackupOpenStatus,omitnil,omitempty" name:"BackupOpenStatus"`
 }
 
@@ -1900,7 +1861,6 @@ type ModifyUserHbaResponseParams struct {
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1933,71 +1893,54 @@ type NodeConfigParams struct {
 
 type NormQueryItem struct {
 	// 调用次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallTimes *int64 `json:"CallTimes,omitnil,omitempty" name:"CallTimes"`
 
 	// 读共享内存块数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SharedReadBlocks *int64 `json:"SharedReadBlocks,omitnil,omitempty" name:"SharedReadBlocks"`
 
 	// 写共享内存块数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SharedWriteBlocks *int64 `json:"SharedWriteBlocks,omitnil,omitempty" name:"SharedWriteBlocks"`
 
 	// 数据库
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
 	// 脱敏后语句
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NormalQuery *string `json:"NormalQuery,omitnil,omitempty" name:"NormalQuery"`
 
 	// 执行时间最长的语句
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxElapsedQuery *string `json:"MaxElapsedQuery,omitnil,omitempty" name:"MaxElapsedQuery"`
 
 	// 花费总时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CostTime *float64 `json:"CostTime,omitnil,omitempty" name:"CostTime"`
 
 	// 客户端ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientIp *string `json:"ClientIp,omitnil,omitempty" name:"ClientIp"`
 
 	// 用户名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 
 	// 总次数占比
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCallTimesPercent *float64 `json:"TotalCallTimesPercent,omitnil,omitempty" name:"TotalCallTimesPercent"`
 
 	// 总耗时占比
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCostTimePercent *float64 `json:"TotalCostTimePercent,omitnil,omitempty" name:"TotalCostTimePercent"`
 
 	// 花费最小时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinCostTime *float64 `json:"MinCostTime,omitnil,omitempty" name:"MinCostTime"`
 
 	// 花费最大时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxCostTime *float64 `json:"MaxCostTime,omitnil,omitempty" name:"MaxCostTime"`
 
 	// 最早一条时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstTime *string `json:"FirstTime,omitnil,omitempty" name:"FirstTime"`
 
 	// 最晚一条时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastTime *string `json:"LastTime,omitnil,omitempty" name:"LastTime"`
 
 	// 读io总耗时
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReadCostTime *float64 `json:"ReadCostTime,omitnil,omitempty" name:"ReadCostTime"`
 
 	// 写io总耗时
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WriteCostTime *float64 `json:"WriteCostTime,omitnil,omitempty" name:"WriteCostTime"`
 }
 
@@ -2018,15 +1961,12 @@ type ParamDetail struct {
 	ValueRange *ValueRange `json:"ValueRange,omitnil,omitempty" name:"ValueRange"`
 
 	// 单位
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
 
 	// 英文简介
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShortDesc *string `json:"ShortDesc,omitnil,omitempty" name:"ShortDesc"`
 
 	// 参数名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParameterName *string `json:"ParameterName,omitnil,omitempty" name:"ParameterName"`
 }
 
@@ -2101,7 +2041,6 @@ func (r *ResetAccountPasswordRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ResetAccountPasswordResponseParams struct {
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2278,7 +2217,6 @@ type ScaleOutInstanceResponseParams struct {
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2425,7 +2363,6 @@ type SimpleInstanceInfo struct {
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 访问地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccessInfo *string `json:"AccessInfo,omitnil,omitempty" name:"AccessInfo"`
 
 	// 自动续费开关，0为不自动续费，1为自动续费
@@ -2438,7 +2375,6 @@ type SimpleInstanceInfo struct {
 	Resources []*ResourceInfo `json:"Resources,omitnil,omitempty" name:"Resources"`
 
 	// 标签列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 集群状态
@@ -2545,14 +2481,12 @@ type UpgradeItem struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 任务结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 任务完成状态
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 操作者
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateUin *string `json:"OperateUin,omitnil,omitempty" name:"OperateUin"`
 }
 
@@ -2564,10 +2498,8 @@ type ValueRange struct {
 	Range *Range `json:"Range,omitnil,omitempty" name:"Range"`
 
 	// type 取enum的时候，返回参数值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enum []*string `json:"Enum,omitnil,omitempty" name:"Enum"`
 
 	// type 取string的时候，返回的参数值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	String *string `json:"String,omitnil,omitempty" name:"String"`
 }

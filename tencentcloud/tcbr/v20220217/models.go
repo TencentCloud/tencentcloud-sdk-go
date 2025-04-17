@@ -1079,6 +1079,9 @@ type ServerBaseConfig struct {
 
 	// 服务标签, function: 函数托管
 	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// 内网访问开关 close | open
+	InternalAccess *string `json:"InternalAccess,omitnil,omitempty" name:"InternalAccess"`
 }
 
 type ServerBaseInfo struct {

@@ -159,6 +159,14 @@ type Choice struct {
 	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
 }
 
+type CodeRepoConfig struct {
+	// 代码仓库Id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 代码仓下载目标地址
+	TargetPath *string `json:"TargetPath,omitnil,omitempty" name:"TargetPath"`
+}
+
 type Container struct {
 	// 名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1368,6 +1376,9 @@ type CreateTrainingTaskRequestParams struct {
 
 	// 编码后的任务启动命令，与StartCmdInfo同时配置时，仅当前参数生效
 	EncodedStartCmdInfo *EncodedStartCmdInfo `json:"EncodedStartCmdInfo,omitnil,omitempty" name:"EncodedStartCmdInfo"`
+
+	// 代码仓库配置
+	CodeRepos []*CodeRepoConfig `json:"CodeRepos,omitnil,omitempty" name:"CodeRepos"`
 }
 
 type CreateTrainingTaskRequest struct {
@@ -1442,6 +1453,9 @@ type CreateTrainingTaskRequest struct {
 
 	// 编码后的任务启动命令，与StartCmdInfo同时配置时，仅当前参数生效
 	EncodedStartCmdInfo *EncodedStartCmdInfo `json:"EncodedStartCmdInfo,omitnil,omitempty" name:"EncodedStartCmdInfo"`
+
+	// 代码仓库配置
+	CodeRepos []*CodeRepoConfig `json:"CodeRepos,omitnil,omitempty" name:"CodeRepos"`
 }
 
 func (r *CreateTrainingTaskRequest) ToJsonString() string {
@@ -1479,6 +1493,7 @@ func (r *CreateTrainingTaskRequest) FromJsonString(s string) error {
 	delete(f, "DataSource")
 	delete(f, "CallbackUrl")
 	delete(f, "EncodedStartCmdInfo")
+	delete(f, "CodeRepos")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrainingTaskRequest has unknown keys!", "")
 	}
@@ -7077,6 +7092,9 @@ type TrainingTaskDetail struct {
 	// 回调地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
+
+	// 任务关联的代码仓库配置
+	CodeRepos []*CodeRepoConfig `json:"CodeRepos,omitnil,omitempty" name:"CodeRepos"`
 }
 
 type TrainingTaskSetItem struct {

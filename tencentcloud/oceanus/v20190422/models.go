@@ -697,7 +697,7 @@ type CreateJobConfigRequestParams struct {
 	// 主类
 	EntrypointClass *string `json:"EntrypointClass,omitnil,omitempty" name:"EntrypointClass"`
 
-	// 主类入参
+	// 主类入参，需要区分下Sql作业配置，Jar作业配置，Python作业配置，具体参考下面的示例值
 	ProgramArgs *string `json:"ProgramArgs,omitnil,omitempty" name:"ProgramArgs"`
 
 	// 备注
@@ -800,7 +800,7 @@ type CreateJobConfigRequest struct {
 	// 主类
 	EntrypointClass *string `json:"EntrypointClass,omitnil,omitempty" name:"EntrypointClass"`
 
-	// 主类入参
+	// 主类入参，需要区分下Sql作业配置，Jar作业配置，Python作业配置，具体参考下面的示例值
 	ProgramArgs *string `json:"ProgramArgs,omitnil,omitempty" name:"ProgramArgs"`
 
 	// 备注

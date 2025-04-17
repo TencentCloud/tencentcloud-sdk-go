@@ -112,6 +112,9 @@ type ApplicationInfo struct {
 
 	// 账号AppId
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 扩展包名数量上限
+	NameLimit *uint64 `json:"NameLimit,omitnil,omitempty" name:"NameLimit"`
 }
 
 // Predefined struct for user

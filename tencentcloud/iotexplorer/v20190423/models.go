@@ -7710,6 +7710,90 @@ func (r *DescribeStudioProductResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTWeSeeConfigRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 通道ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+type DescribeTWeSeeConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 通道ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+func (r *DescribeTWeSeeConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTWeSeeConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "UserId")
+	delete(f, "ChannelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTWeSeeConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTWeSeeConfigResponseParams struct {
+	// 是否开启视频摘要
+	EnableSummary *bool `json:"EnableSummary,omitnil,omitempty" name:"EnableSummary"`
+
+	// 是否开启视频搜索
+	EnableSearch *bool `json:"EnableSearch,omitnil,omitempty" name:"EnableSearch"`
+
+	// 配置参数
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTWeSeeConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTWeSeeConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeTWeSeeConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTWeSeeConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTopicPolicyRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -10104,6 +10188,87 @@ type InstanceDetail struct {
 }
 
 // Predefined struct for user
+type InvokeAISearchServiceRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 自然语言查询
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 搜索结果总结的语言类型，支持的类型有：en-US、zh-CN、id-ID、th-TH
+	SummaryLang *string `json:"SummaryLang,omitnil,omitempty" name:"SummaryLang"`
+}
+
+type InvokeAISearchServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 自然语言查询
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 搜索结果总结的语言类型，支持的类型有：en-US、zh-CN、id-ID、th-TH
+	SummaryLang *string `json:"SummaryLang,omitnil,omitempty" name:"SummaryLang"`
+}
+
+func (r *InvokeAISearchServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InvokeAISearchServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "Query")
+	delete(f, "SummaryLang")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeAISearchServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InvokeAISearchServiceResponseParams struct {
+	// 基于搜索结果的总结
+	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// 视频结果集
+	Targets []*TargetInfo `json:"Targets,omitnil,omitempty" name:"Targets"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InvokeAISearchServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *InvokeAISearchServiceResponseParams `json:"Response"`
+}
+
+func (r *InvokeAISearchServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InvokeAISearchServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type InvokeCloudStorageAIServiceTaskRequestParams struct {
 	// 产品 ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -12020,6 +12185,102 @@ func (r *ModifyStudioProductResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyTWeSeeConfigRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 通道ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 是否开启视频摘要，不传则不修改
+	EnableSummary *bool `json:"EnableSummary,omitnil,omitempty" name:"EnableSummary"`
+
+	// 是否开启视频搜索，不传则不修改
+	EnableSearch *bool `json:"EnableSearch,omitnil,omitempty" name:"EnableSearch"`
+
+	// 配置参数，不传则不修改
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+}
+
+type ModifyTWeSeeConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 通道ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 是否开启视频摘要，不传则不修改
+	EnableSummary *bool `json:"EnableSummary,omitnil,omitempty" name:"EnableSummary"`
+
+	// 是否开启视频搜索，不传则不修改
+	EnableSearch *bool `json:"EnableSearch,omitnil,omitempty" name:"EnableSearch"`
+
+	// 配置参数，不传则不修改
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+}
+
+func (r *ModifyTWeSeeConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTWeSeeConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "UserId")
+	delete(f, "ChannelId")
+	delete(f, "EnableSummary")
+	delete(f, "EnableSearch")
+	delete(f, "Config")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTWeSeeConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTWeSeeConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyTWeSeeConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyTWeSeeConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyTWeSeeConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTWeSeeConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyTopicPolicyRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
@@ -13608,6 +13869,29 @@ type TWeCallLicenseInfo struct {
 
 	// 已使用
 	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
+}
+
+type TargetInfo struct {
+	// 视频唯一ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 视频起始时间（毫秒级Unix时间戳）
+	StartTimeMs *int64 `json:"StartTimeMs,omitnil,omitempty" name:"StartTimeMs"`
+
+	// 视频结束时间（毫秒级Unix时间戳）
+	EndTimeMs *int64 `json:"EndTimeMs,omitnil,omitempty" name:"EndTimeMs"`
+
+	// 用户自定义事件ID，后续扩展使用
+	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
+
+	// 视频内容摘要
+	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
 }
 
 type ThumbnailURLInfoList struct {

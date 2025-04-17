@@ -5691,6 +5691,63 @@ func (c *Client) DescribeStudioProductWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeTWeSeeConfigRequest() (request *DescribeTWeSeeConfigRequest) {
+    request = &DescribeTWeSeeConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeTWeSeeConfig")
+    
+    
+    return
+}
+
+func NewDescribeTWeSeeConfigResponse() (response *DescribeTWeSeeConfigResponse) {
+    response = &DescribeTWeSeeConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTWeSeeConfig
+// 拉取 TWeSee 配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DescribeTWeSeeConfig(request *DescribeTWeSeeConfigRequest) (response *DescribeTWeSeeConfigResponse, err error) {
+    return c.DescribeTWeSeeConfigWithContext(context.Background(), request)
+}
+
+// DescribeTWeSeeConfig
+// 拉取 TWeSee 配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+func (c *Client) DescribeTWeSeeConfigWithContext(ctx context.Context, request *DescribeTWeSeeConfigRequest) (response *DescribeTWeSeeConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeTWeSeeConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTWeSeeConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTWeSeeConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTopicPolicyRequest() (request *DescribeTopicPolicyRequest) {
     request = &DescribeTopicPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7332,6 +7389,59 @@ func (c *Client) InheritCloudStorageUserWithContext(ctx context.Context, request
     return
 }
 
+func NewInvokeAISearchServiceRequest() (request *InvokeAISearchServiceRequest) {
+    request = &InvokeAISearchServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "InvokeAISearchService")
+    
+    
+    return
+}
+
+func NewInvokeAISearchServiceResponse() (response *InvokeAISearchServiceResponse) {
+    response = &InvokeAISearchServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InvokeAISearchService
+// 视频语义搜索
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) InvokeAISearchService(request *InvokeAISearchServiceRequest) (response *InvokeAISearchServiceResponse, err error) {
+    return c.InvokeAISearchServiceWithContext(context.Background(), request)
+}
+
+// InvokeAISearchService
+// 视频语义搜索
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) InvokeAISearchServiceWithContext(ctx context.Context, request *InvokeAISearchServiceRequest) (response *InvokeAISearchServiceResponse, err error) {
+    if request == nil {
+        request = NewInvokeAISearchServiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InvokeAISearchService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInvokeAISearchServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInvokeCloudStorageAIServiceTaskRequest() (request *InvokeCloudStorageAIServiceTaskRequest) {
     request = &InvokeCloudStorageAIServiceTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8613,6 +8723,93 @@ func (c *Client) ModifyStudioProductWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyStudioProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTWeSeeConfigRequest() (request *ModifyTWeSeeConfigRequest) {
+    request = &ModifyTWeSeeConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyTWeSeeConfig")
+    
+    
+    return
+}
+
+func NewModifyTWeSeeConfigResponse() (response *ModifyTWeSeeConfigResponse) {
+    response = &ModifyTWeSeeConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTWeSeeConfig
+// 修改 TWeSee 配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODELDEFINEDONTMATCHTEMPLATE = "InvalidParameterValue.ModelDefineDontMatchTemplate"
+//  INVALIDPARAMETERVALUE_PRODUCTALREADYEXIST = "InvalidParameterValue.ProductAlreadyExist"
+//  INVALIDPARAMETERVALUE_PRODUCTIDINVALID = "InvalidParameterValue.ProductIDInvalid"
+//  INVALIDPARAMETERVALUE_PRODUCTPARMSERROR = "InvalidParameterValue.ProductParmsError"
+//  LIMITEXCEEDED_STUDIOPRODUCTEXCEEDLIMIT = "LimitExceeded.StudioProductExceedLimit"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_PRODUCTORDEVICENOTEXIST = "ResourceNotFound.ProductOrDeviceNotExist"
+//  RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = "UnauthorizedOperation.NoPermissionToProject"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+//  UNSUPPORTEDOPERATION_VIDEOPRODUCTNOTEXIST = "UnsupportedOperation.VideoProductNotExist"
+func (c *Client) ModifyTWeSeeConfig(request *ModifyTWeSeeConfigRequest) (response *ModifyTWeSeeConfigResponse, err error) {
+    return c.ModifyTWeSeeConfigWithContext(context.Background(), request)
+}
+
+// ModifyTWeSeeConfig
+// 修改 TWeSee 配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODELDEFINEDONTMATCHTEMPLATE = "InvalidParameterValue.ModelDefineDontMatchTemplate"
+//  INVALIDPARAMETERVALUE_PRODUCTALREADYEXIST = "InvalidParameterValue.ProductAlreadyExist"
+//  INVALIDPARAMETERVALUE_PRODUCTIDINVALID = "InvalidParameterValue.ProductIDInvalid"
+//  INVALIDPARAMETERVALUE_PRODUCTPARMSERROR = "InvalidParameterValue.ProductParmsError"
+//  LIMITEXCEEDED_STUDIOPRODUCTEXCEEDLIMIT = "LimitExceeded.StudioProductExceedLimit"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_PRODUCTORDEVICENOTEXIST = "ResourceNotFound.ProductOrDeviceNotExist"
+//  RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = "UnauthorizedOperation.NoPermissionToProject"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+//  UNSUPPORTEDOPERATION_VIDEOPRODUCTNOTEXIST = "UnsupportedOperation.VideoProductNotExist"
+func (c *Client) ModifyTWeSeeConfigWithContext(ctx context.Context, request *ModifyTWeSeeConfigRequest) (response *ModifyTWeSeeConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyTWeSeeConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTWeSeeConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTWeSeeConfigResponse()
     err = c.Send(request, response)
     return
 }

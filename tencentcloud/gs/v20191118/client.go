@@ -1695,6 +1695,63 @@ func (c *Client) ModifyAndroidAppWithContext(ctx context.Context, request *Modif
     return
 }
 
+func NewModifyAndroidAppVersionRequest() (request *ModifyAndroidAppVersionRequest) {
+    request = &ModifyAndroidAppVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "ModifyAndroidAppVersion")
+    
+    
+    return
+}
+
+func NewModifyAndroidAppVersionResponse() (response *ModifyAndroidAppVersionResponse) {
+    response = &ModifyAndroidAppVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAndroidAppVersion
+// 修改安卓应用版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyAndroidAppVersion(request *ModifyAndroidAppVersionRequest) (response *ModifyAndroidAppVersionResponse, err error) {
+    return c.ModifyAndroidAppVersionWithContext(context.Background(), request)
+}
+
+// ModifyAndroidAppVersion
+// 修改安卓应用版本
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyAndroidAppVersionWithContext(ctx context.Context, request *ModifyAndroidAppVersionRequest) (response *ModifyAndroidAppVersionResponse, err error) {
+    if request == nil {
+        request = NewModifyAndroidAppVersionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAndroidAppVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAndroidAppVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAndroidInstanceInformationRequest() (request *ModifyAndroidInstanceInformationRequest) {
     request = &ModifyAndroidInstanceInformationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1718,6 +1775,7 @@ func NewModifyAndroidInstanceInformationResponse() (response *ModifyAndroidInsta
 // 修改安卓实例的信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
 //  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1730,6 +1788,7 @@ func (c *Client) ModifyAndroidInstanceInformation(request *ModifyAndroidInstance
 // 修改安卓实例的信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
 //  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1773,6 +1832,7 @@ func NewModifyAndroidInstanceResolutionResponse() (response *ModifyAndroidInstan
 // 修改安卓实例分辨率。需要注意的是该接口可能导致正在运行的应用出现闪退，所以建议在实例维护时期才进行调用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
 //  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1785,6 +1845,7 @@ func (c *Client) ModifyAndroidInstanceResolution(request *ModifyAndroidInstanceR
 // 修改安卓实例分辨率。需要注意的是该接口可能导致正在运行的应用出现闪退，所以建议在实例维护时期才进行调用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
 //  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1828,6 +1889,7 @@ func NewModifyAndroidInstancesLabelsResponse() (response *ModifyAndroidInstances
 // 修改安卓实例分辨率。需要注意的是该接口可能导致正在运行的应用出现闪退，所以建议在实例维护时期才进行调用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
 //  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1840,6 +1902,7 @@ func (c *Client) ModifyAndroidInstancesLabels(request *ModifyAndroidInstancesLab
 // 修改安卓实例分辨率。需要注意的是该接口可能导致正在运行的应用出现闪退，所以建议在实例维护时期才进行调用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
 //  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1856,6 +1919,63 @@ func (c *Client) ModifyAndroidInstancesLabelsWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewModifyAndroidInstancesLabelsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAndroidInstancesResolutionRequest() (request *ModifyAndroidInstancesResolutionRequest) {
+    request = &ModifyAndroidInstancesResolutionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "ModifyAndroidInstancesResolution")
+    
+    
+    return
+}
+
+func NewModifyAndroidInstancesResolutionResponse() (response *ModifyAndroidInstancesResolutionResponse) {
+    response = &ModifyAndroidInstancesResolutionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAndroidInstancesResolution
+// 修改安卓实例分辨率。需要注意的是该接口需要重启才能生效。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyAndroidInstancesResolution(request *ModifyAndroidInstancesResolutionRequest) (response *ModifyAndroidInstancesResolutionResponse, err error) {
+    return c.ModifyAndroidInstancesResolutionWithContext(context.Background(), request)
+}
+
+// ModifyAndroidInstancesResolution
+// 修改安卓实例分辨率。需要注意的是该接口需要重启才能生效。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
+//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyAndroidInstancesResolutionWithContext(ctx context.Context, request *ModifyAndroidInstancesResolutionRequest) (response *ModifyAndroidInstancesResolutionResponse, err error) {
+    if request == nil {
+        request = NewModifyAndroidInstancesResolutionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAndroidInstancesResolution require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAndroidInstancesResolutionResponse()
     err = c.Send(request, response)
     return
 }
@@ -1883,6 +2003,7 @@ func NewModifyAndroidInstancesUserIdResponse() (response *ModifyAndroidInstances
 // 批量修改安卓实例的用户ID
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
 //  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1895,6 +2016,7 @@ func (c *Client) ModifyAndroidInstancesUserId(request *ModifyAndroidInstancesUse
 // 批量修改安卓实例的用户ID
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
 //  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
 //  INVALIDPARAMETER = "InvalidParameter"

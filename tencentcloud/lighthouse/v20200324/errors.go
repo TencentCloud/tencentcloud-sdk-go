@@ -353,9 +353,6 @@ const (
 	// 云硬盘类型非法。
 	INVALIDPARAMETERVALUE_INVALIDDISKTYPE = "InvalidParameterValue.InvalidDiskType"
 
-	// 设置是否使用默认密钥对登录的值不正确。
-	INVALIDPARAMETERVALUE_INVALIDINSTANCELOGINKEYPAIRPERMITLOGIN = "InvalidParameterValue.InvalidInstanceLoginKeyPairPermitLogin"
-
 	// 参数值非法，IP 地址格式非法。
 	INVALIDPARAMETERVALUE_INVALIDIPFORMAT = "InvalidParameterValue.InvalidIpFormat"
 
@@ -769,9 +766,6 @@ const (
 
 	// 国际站不支持该操作。
 	UNSUPPORTEDOPERATION_OPERATIONNOTSUPPORTEDININTLSITE = "UnsupportedOperation.OperationNotSupportedInIntlSite"
-
-	// 此接口已下线。
-	UNSUPPORTEDOPERATION_OPERATIONOFFLINE = "UnsupportedOperation.OperationOffline"
 
 	// 计费资源中心删除资源失败。
 	UNSUPPORTEDOPERATION_POSTDESTROYRESOURCEFAILED = "UnsupportedOperation.PostDestroyResourceFailed"

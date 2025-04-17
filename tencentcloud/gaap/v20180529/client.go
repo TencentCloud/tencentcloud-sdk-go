@@ -3715,7 +3715,7 @@ func NewDescribeDomainErrorPageInfoResponse() (response *DescribeDomainErrorPage
 }
 
 // DescribeDomainErrorPageInfo
-// 查询目前定制域名的错误响应
+// 查询指定域名的错误响应
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3734,7 +3734,7 @@ func (c *Client) DescribeDomainErrorPageInfo(request *DescribeDomainErrorPageInf
 }
 
 // DescribeDomainErrorPageInfo
-// 查询目前定制域名的错误响应
+// 查询指定域名的错误响应
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

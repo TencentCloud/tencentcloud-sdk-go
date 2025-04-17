@@ -3443,6 +3443,9 @@ type DescribeRoomResponseParams struct {
 	// 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
 	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
 
+	// 字幕转写功能开关：0关闭，1开启，默认关闭
+	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -5158,6 +5161,9 @@ type ModifyRoomRequestParams struct {
 
 	// 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
 	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
+
+	// 字幕转写功能开关：0关闭，1开启，默认关闭
+	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
 }
 
 type ModifyRoomRequest struct {
@@ -5262,6 +5268,9 @@ type ModifyRoomRequest struct {
 
 	// 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
 	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
+
+	// 字幕转写功能开关：0关闭，1开启，默认关闭
+	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
 }
 
 func (r *ModifyRoomRequest) ToJsonString() string {
@@ -5303,6 +5312,7 @@ func (r *ModifyRoomRequest) FromJsonString(s string) error {
 	delete(f, "RecordScene")
 	delete(f, "RecordLang")
 	delete(f, "WhiteBoardSnapshotMode")
+	delete(f, "SubtitlesTranscription")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoomRequest has unknown keys!", "")
 	}

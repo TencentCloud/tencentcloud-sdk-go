@@ -3889,63 +3889,6 @@ func (r *DescribeGeneralResourceQuotasResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeInstanceLoginKeyPairAttributeRequestParams struct {
-	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-}
-
-type DescribeInstanceLoginKeyPairAttributeRequest struct {
-	*tchttp.BaseRequest
-	
-	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
-}
-
-func (r *DescribeInstanceLoginKeyPairAttributeRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeInstanceLoginKeyPairAttributeRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceLoginKeyPairAttributeRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeInstanceLoginKeyPairAttributeResponseParams struct {
-	// 是否允许使用默认密钥对登录，YES：允许登录 NO：禁止登录。
-	PermitLogin *string `json:"PermitLogin,omitnil,omitempty" name:"PermitLogin"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeInstanceLoginKeyPairAttributeResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeInstanceLoginKeyPairAttributeResponseParams `json:"Response"`
-}
-
-func (r *DescribeInstanceLoginKeyPairAttributeResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeInstanceLoginKeyPairAttributeResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeInstanceVncUrlRequestParams struct {
 	// 实例 ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1207/47573)接口返回值中的InstanceId获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -7456,67 +7399,6 @@ func (r *ModifyInstancesBundleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyInstancesBundleResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ModifyInstancesLoginKeyPairAttributeRequestParams struct {
-	// 实例 ID 列表。每次请求批量实例的上限为 100。
-	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
-
-	// 是否允许使用默认密钥对登录，YES：允许登录；NO：禁止登录
-	PermitLogin *string `json:"PermitLogin,omitnil,omitempty" name:"PermitLogin"`
-}
-
-type ModifyInstancesLoginKeyPairAttributeRequest struct {
-	*tchttp.BaseRequest
-	
-	// 实例 ID 列表。每次请求批量实例的上限为 100。
-	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
-
-	// 是否允许使用默认密钥对登录，YES：允许登录；NO：禁止登录
-	PermitLogin *string `json:"PermitLogin,omitnil,omitempty" name:"PermitLogin"`
-}
-
-func (r *ModifyInstancesLoginKeyPairAttributeRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyInstancesLoginKeyPairAttributeRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceIds")
-	delete(f, "PermitLogin")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstancesLoginKeyPairAttributeRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ModifyInstancesLoginKeyPairAttributeResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type ModifyInstancesLoginKeyPairAttributeResponse struct {
-	*tchttp.BaseResponse
-	Response *ModifyInstancesLoginKeyPairAttributeResponseParams `json:"Response"`
-}
-
-func (r *ModifyInstancesLoginKeyPairAttributeResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyInstancesLoginKeyPairAttributeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

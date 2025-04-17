@@ -855,3 +855,147 @@ type WebContent struct {
 	// 分数
 	Score *string `json:"Score,omitnil,omitempty" name:"Score"`
 }
+
+type WebPage struct {
+	// 标题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 网页摘要
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// 网页收录时间。可能为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// Markdown 格式的网页正文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+// Predefined struct for user
+type WebSearchRequestParams struct {
+	// 查询
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 搜索的网页数量，默认20
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 指定域名，gov.cn 可匹配 *.gov.cn的域名。
+	Site *string `json:"Site,omitnil,omitempty" name:"Site"`
+
+	// 是否获取返回网页全文，默认 false。
+	FetchContent *bool `json:"FetchContent,omitnil,omitempty" name:"FetchContent"`
+
+	// 域名白名单，在不指定 Site 时，只保存匹配白名单域名的网页。
+	WhiteSites []*string `json:"WhiteSites,omitnil,omitempty" name:"WhiteSites"`
+
+	// 域名黑名单，在不指定 Site 和白名单时，过滤黑名单中的域名。
+	BlackSites []*string `json:"BlackSites,omitnil,omitempty" name:"BlackSites"`
+
+	// 秒级时间冲，搜索网页的开始时间，默认不限制开始时间。
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 秒级时间戳，搜索网页的结束时间，默认为现在。
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 指定搜索引擎，可选混合搜索 mixed，或 bing, baidu, sogou, 默认为 sogou
+	SearchEngine *string `json:"SearchEngine,omitnil,omitempty" name:"SearchEngine"`
+}
+
+type WebSearchRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 搜索的网页数量，默认20
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 指定域名，gov.cn 可匹配 *.gov.cn的域名。
+	Site *string `json:"Site,omitnil,omitempty" name:"Site"`
+
+	// 是否获取返回网页全文，默认 false。
+	FetchContent *bool `json:"FetchContent,omitnil,omitempty" name:"FetchContent"`
+
+	// 域名白名单，在不指定 Site 时，只保存匹配白名单域名的网页。
+	WhiteSites []*string `json:"WhiteSites,omitnil,omitempty" name:"WhiteSites"`
+
+	// 域名黑名单，在不指定 Site 和白名单时，过滤黑名单中的域名。
+	BlackSites []*string `json:"BlackSites,omitnil,omitempty" name:"BlackSites"`
+
+	// 秒级时间冲，搜索网页的开始时间，默认不限制开始时间。
+	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 秒级时间戳，搜索网页的结束时间，默认为现在。
+	EndTime *uint64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 指定搜索引擎，可选混合搜索 mixed，或 bing, baidu, sogou, 默认为 sogou
+	SearchEngine *string `json:"SearchEngine,omitnil,omitempty" name:"SearchEngine"`
+}
+
+func (r *WebSearchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *WebSearchRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Query")
+	delete(f, "Count")
+	delete(f, "Site")
+	delete(f, "FetchContent")
+	delete(f, "WhiteSites")
+	delete(f, "BlackSites")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "SearchEngine")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "WebSearchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type WebSearchResponseParams struct {
+	// 查询
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 响应状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 执行搜索的引擎
+	SearchEngine *string `json:"SearchEngine,omitnil,omitempty" name:"SearchEngine"`
+
+	// 搜索结果
+	Results []*WebPage `json:"Results,omitnil,omitempty" name:"Results"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type WebSearchResponse struct {
+	*tchttp.BaseResponse
+	Response *WebSearchResponseParams `json:"Response"`
+}
+
+func (r *WebSearchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *WebSearchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}

@@ -38,11 +38,17 @@ type AndroidApp struct {
 
 	// 用户 Id
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 应用模式（NORMAL : 普通模式；ADVANCED : 高级模式）
+	AppMode *string `json:"AppMode,omitnil,omitempty" name:"AppMode"`
 }
 
 type AndroidAppCosInfo struct {
 	// 安卓应用ID
 	AndroidAppId *string `json:"AndroidAppId,omitnil,omitempty" name:"AndroidAppId"`
+
+	// 应用名称（支持 apk 和 tgz 两种格式文件，当应用 AppMode 为 NORMAL 时，只支持上传 apk 类型文件，当应用 AppMode 为 ADVANCED 高级模式时，只支持上传  tgz 类型文件）
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 }
 
 type AndroidAppVersionInfo struct {
@@ -56,6 +62,9 @@ type AndroidAppVersionInfo struct {
 
 	// 安卓应用版本创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 }
 
 type AndroidInstance struct {
@@ -438,6 +447,9 @@ type CreateAndroidAppRequestParams struct {
 
 	// 用户 Id
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 应用模式（NORMAL : 普通模式、只支持 apk 文件上传，为默认值；ADVANCED : 高级模式、只支持上传 tgz 文件 和 自定义 shell 命令执行）
+	AppMode *string `json:"AppMode,omitnil,omitempty" name:"AppMode"`
 }
 
 type CreateAndroidAppRequest struct {
@@ -448,6 +460,9 @@ type CreateAndroidAppRequest struct {
 
 	// 用户 Id
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 应用模式（NORMAL : 普通模式、只支持 apk 文件上传，为默认值；ADVANCED : 高级模式、只支持上传 tgz 文件 和 自定义 shell 命令执行）
+	AppMode *string `json:"AppMode,omitnil,omitempty" name:"AppMode"`
 }
 
 func (r *CreateAndroidAppRequest) ToJsonString() string {
@@ -464,6 +479,7 @@ func (r *CreateAndroidAppRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Name")
 	delete(f, "UserId")
+	delete(f, "AppMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndroidAppRequest has unknown keys!", "")
 	}
@@ -502,6 +518,9 @@ type CreateAndroidAppVersionRequestParams struct {
 
 	// 应用包下载地址
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
+
+	// shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 }
 
 type CreateAndroidAppVersionRequest struct {
@@ -512,6 +531,9 @@ type CreateAndroidAppVersionRequest struct {
 
 	// 应用包下载地址
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
+
+	// shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 }
 
 func (r *CreateAndroidAppVersionRequest) ToJsonString() string {
@@ -528,6 +550,7 @@ func (r *CreateAndroidAppVersionRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AndroidAppId")
 	delete(f, "DownloadUrl")
+	delete(f, "Command")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndroidAppVersionRequest has unknown keys!", "")
 	}
@@ -2341,6 +2364,81 @@ func (r *ModifyAndroidAppResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyAndroidAppVersionRequestParams struct {
+	// 安卓应用 Id
+	AndroidAppId *string `json:"AndroidAppId,omitnil,omitempty" name:"AndroidAppId"`
+
+	// 安卓应用版本 Id
+	AndroidAppVersion *string `json:"AndroidAppVersion,omitnil,omitempty" name:"AndroidAppVersion"`
+
+	// 安卓应用版本名称
+	AndroidAppVersionName *string `json:"AndroidAppVersionName,omitnil,omitempty" name:"AndroidAppVersionName"`
+
+	// shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+}
+
+type ModifyAndroidAppVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 安卓应用 Id
+	AndroidAppId *string `json:"AndroidAppId,omitnil,omitempty" name:"AndroidAppId"`
+
+	// 安卓应用版本 Id
+	AndroidAppVersion *string `json:"AndroidAppVersion,omitnil,omitempty" name:"AndroidAppVersion"`
+
+	// 安卓应用版本名称
+	AndroidAppVersionName *string `json:"AndroidAppVersionName,omitnil,omitempty" name:"AndroidAppVersionName"`
+
+	// shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+}
+
+func (r *ModifyAndroidAppVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAndroidAppVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidAppId")
+	delete(f, "AndroidAppVersion")
+	delete(f, "AndroidAppVersionName")
+	delete(f, "Command")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAndroidAppVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAndroidAppVersionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAndroidAppVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAndroidAppVersionResponseParams `json:"Response"`
+}
+
+func (r *ModifyAndroidAppVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAndroidAppVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyAndroidInstanceInformationRequestParams struct {
 	// 安卓实例 ID
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
@@ -2407,19 +2505,27 @@ type ModifyAndroidInstanceResolutionRequestParams struct {
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
 
 	// 分辨率宽度。建议按照以下数值设置，避免出现性能不足问题：
-	// 实例类型为单开（A1）、双开（A2）、三开（ A3）：建议设置为 1080
-	// 实例类型为 四开（A4） 及以上：建议设置为 720
+	// 实例类型为单开（A1）：建议设置为 1080
+	// 实例类型为双开（A2） 及以上：建议设置为 720
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
 	// 分辨率高度。建议按照以下数值设置，避免出现性能不足问题：
-	// 实例类型为单开（A1）、双开（A2）、三开（ A3）：建议设置为 1920
-	// 实例类型为 四开（A4） 及以上：建议设置为 1280
+	// 实例类型为单开（A1）：建议设置为 1920
+	// 实例类型为双开（A2） 及以上：建议设置为 1280
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 
 	// 每英寸像素点。如果不填，系统将会计算一个合理的数值。修改 DPI 可能会导致 App 异常退出，请谨慎使用！
 	// 分辨率为 720x1280：建议配置为 320
 	// 分辨率为  1080x1920：建议配置为 480
 	DPI *uint64 `json:"DPI,omitnil,omitempty" name:"DPI"`
+
+	// 帧率。ResolutionType 为 PHYSICAL 时才会修改帧率。另外建议按照以下数值设置，避免出现性能不足问题： 实例类型为单开（A1）：建议设置为 60 实例类型为双开（A2） 及以上：建议设置为 30
+	FPS *uint64 `json:"FPS,omitnil,omitempty" name:"FPS"`
+
+	// 修改分辨率类型。修改物理分辨率，需要重启才能生效。
+	// OVERRIDE：默认值，修改覆盖（显示）分辨率
+	// PHYSICAL：修改物理分辨率
+	ResolutionType *string `json:"ResolutionType,omitnil,omitempty" name:"ResolutionType"`
 }
 
 type ModifyAndroidInstanceResolutionRequest struct {
@@ -2429,19 +2535,27 @@ type ModifyAndroidInstanceResolutionRequest struct {
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
 
 	// 分辨率宽度。建议按照以下数值设置，避免出现性能不足问题：
-	// 实例类型为单开（A1）、双开（A2）、三开（ A3）：建议设置为 1080
-	// 实例类型为 四开（A4） 及以上：建议设置为 720
+	// 实例类型为单开（A1）：建议设置为 1080
+	// 实例类型为双开（A2） 及以上：建议设置为 720
 	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
 
 	// 分辨率高度。建议按照以下数值设置，避免出现性能不足问题：
-	// 实例类型为单开（A1）、双开（A2）、三开（ A3）：建议设置为 1920
-	// 实例类型为 四开（A4） 及以上：建议设置为 1280
+	// 实例类型为单开（A1）：建议设置为 1920
+	// 实例类型为双开（A2） 及以上：建议设置为 1280
 	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
 
 	// 每英寸像素点。如果不填，系统将会计算一个合理的数值。修改 DPI 可能会导致 App 异常退出，请谨慎使用！
 	// 分辨率为 720x1280：建议配置为 320
 	// 分辨率为  1080x1920：建议配置为 480
 	DPI *uint64 `json:"DPI,omitnil,omitempty" name:"DPI"`
+
+	// 帧率。ResolutionType 为 PHYSICAL 时才会修改帧率。另外建议按照以下数值设置，避免出现性能不足问题： 实例类型为单开（A1）：建议设置为 60 实例类型为双开（A2） 及以上：建议设置为 30
+	FPS *uint64 `json:"FPS,omitnil,omitempty" name:"FPS"`
+
+	// 修改分辨率类型。修改物理分辨率，需要重启才能生效。
+	// OVERRIDE：默认值，修改覆盖（显示）分辨率
+	// PHYSICAL：修改物理分辨率
+	ResolutionType *string `json:"ResolutionType,omitnil,omitempty" name:"ResolutionType"`
 }
 
 func (r *ModifyAndroidInstanceResolutionRequest) ToJsonString() string {
@@ -2460,6 +2574,8 @@ func (r *ModifyAndroidInstanceResolutionRequest) FromJsonString(s string) error 
 	delete(f, "Width")
 	delete(f, "Height")
 	delete(f, "DPI")
+	delete(f, "FPS")
+	delete(f, "ResolutionType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAndroidInstanceResolutionRequest has unknown keys!", "")
 	}
@@ -2553,6 +2669,115 @@ func (r *ModifyAndroidInstancesLabelsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAndroidInstancesLabelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAndroidInstancesResolutionRequestParams struct {
+	// 安卓实例 ID 列表
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 分辨率宽度。建议按照以下数值设置，避免出现性能不足问题：
+	// 实例类型为单开（A1）：建议设置为 1080
+	// 实例类型为双开（A2） 及以上：建议设置为 720
+	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 分辨率高度。建议按照以下数值设置，避免出现性能不足问题：
+	// 实例类型为单开（A1）：建议设置为 1920
+	// 实例类型为双开（A2） 及以上：建议设置为 1280
+	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
+
+	// 每英寸像素点。
+	// 分辨率为 720x1280：建议配置为 320
+	// 分辨率为  1080x1920：建议配置为 480
+	DPI *uint64 `json:"DPI,omitnil,omitempty" name:"DPI"`
+
+	// 帧率。ResolutionType 为 PHYSICAL 时才会修改帧率。另外建议按照以下数值设置，避免出现性能不足问题：
+	// 实例类型为单开（A1）：建议设置为 60
+	// 实例类型为双开（A2） 及以上：建议设置为 30
+	FPS *uint64 `json:"FPS,omitnil,omitempty" name:"FPS"`
+
+	// 修改分辨率类型。修改物理分辨率，需要重启才能生效。
+	// OVERRIDE：默认值，修改覆盖（显示）分辨率
+	// PHYSICAL：修改物理分辨率
+	ResolutionType *string `json:"ResolutionType,omitnil,omitempty" name:"ResolutionType"`
+}
+
+type ModifyAndroidInstancesResolutionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 安卓实例 ID 列表
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 分辨率宽度。建议按照以下数值设置，避免出现性能不足问题：
+	// 实例类型为单开（A1）：建议设置为 1080
+	// 实例类型为双开（A2） 及以上：建议设置为 720
+	Width *uint64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 分辨率高度。建议按照以下数值设置，避免出现性能不足问题：
+	// 实例类型为单开（A1）：建议设置为 1920
+	// 实例类型为双开（A2） 及以上：建议设置为 1280
+	Height *uint64 `json:"Height,omitnil,omitempty" name:"Height"`
+
+	// 每英寸像素点。
+	// 分辨率为 720x1280：建议配置为 320
+	// 分辨率为  1080x1920：建议配置为 480
+	DPI *uint64 `json:"DPI,omitnil,omitempty" name:"DPI"`
+
+	// 帧率。ResolutionType 为 PHYSICAL 时才会修改帧率。另外建议按照以下数值设置，避免出现性能不足问题：
+	// 实例类型为单开（A1）：建议设置为 60
+	// 实例类型为双开（A2） 及以上：建议设置为 30
+	FPS *uint64 `json:"FPS,omitnil,omitempty" name:"FPS"`
+
+	// 修改分辨率类型。修改物理分辨率，需要重启才能生效。
+	// OVERRIDE：默认值，修改覆盖（显示）分辨率
+	// PHYSICAL：修改物理分辨率
+	ResolutionType *string `json:"ResolutionType,omitnil,omitempty" name:"ResolutionType"`
+}
+
+func (r *ModifyAndroidInstancesResolutionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAndroidInstancesResolutionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidInstanceIds")
+	delete(f, "Width")
+	delete(f, "Height")
+	delete(f, "DPI")
+	delete(f, "FPS")
+	delete(f, "ResolutionType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAndroidInstancesResolutionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAndroidInstancesResolutionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAndroidInstancesResolutionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAndroidInstancesResolutionResponseParams `json:"Response"`
+}
+
+func (r *ModifyAndroidInstancesResolutionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAndroidInstancesResolutionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

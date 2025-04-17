@@ -3413,7 +3413,6 @@ func (r *DescribeBlackHeaderRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBlackHeaderResponseParams struct {
 	// 禁用的自定义header列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlackHeaders []*string `json:"BlackHeaders,omitnil,omitempty" name:"BlackHeaders"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3721,11 +3720,9 @@ func (r *DescribeCustomHeaderRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCustomHeaderResponseParams struct {
 	// 规则id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 自定义header列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Headers []*HttpHeaderParam `json:"Headers,omitnil,omitempty" name:"Headers"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3810,14 +3807,14 @@ func (r *DescribeDestRegionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDomainErrorPageInfoByIdsRequestParams struct {
-	// 定制错误ID列表,最多支持10个
+	// 定制错误ID列表，最多支持10个
 	ErrorPageIds []*string `json:"ErrorPageIds,omitnil,omitempty" name:"ErrorPageIds"`
 }
 
 type DescribeDomainErrorPageInfoByIdsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 定制错误ID列表,最多支持10个
+	// 定制错误ID列表，最多支持10个
 	ErrorPageIds []*string `json:"ErrorPageIds,omitnil,omitempty" name:"ErrorPageIds"`
 }
 
@@ -3843,7 +3840,6 @@ func (r *DescribeDomainErrorPageInfoByIdsRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeDomainErrorPageInfoByIdsResponseParams struct {
 	// 定制错误响应配置集
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorPageSet []*DomainErrorPageInfo `json:"ErrorPageSet,omitnil,omitempty" name:"ErrorPageSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3908,7 +3904,6 @@ func (r *DescribeDomainErrorPageInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDomainErrorPageInfoResponseParams struct {
 	// 定制错误响应配置集
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorPageSet []*DomainErrorPageInfo `json:"ErrorPageSet,omitnil,omitempty" name:"ErrorPageSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5147,7 +5142,6 @@ type DescribeProxyGroupListResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 通道组列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyGroupList []*ProxyGroupInfo `json:"ProxyGroupList,omitnil,omitempty" name:"ProxyGroupList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6282,7 +6276,6 @@ type DescribeTaskStatusResponseParams struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7103,11 +7096,9 @@ type InquiryPriceCreateProxyResponseParams struct {
 	DiscountFlowUnitPrice *float64 `json:"DiscountFlowUnitPrice,omitnil,omitempty" name:"DiscountFlowUnitPrice"`
 
 	// 精品BGP的带宽费用价格，单位: 元/Mbps/天
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cn2BandwidthPrice *float64 `json:"Cn2BandwidthPrice,omitnil,omitempty" name:"Cn2BandwidthPrice"`
 
 	// 精品BGP的折后带宽费用价格，单位: 元/Mbps/天
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cn2BandwidthPriceWithDiscount *float64 `json:"Cn2BandwidthPriceWithDiscount,omitnil,omitempty" name:"Cn2BandwidthPriceWithDiscount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
