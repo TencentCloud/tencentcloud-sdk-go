@@ -3768,6 +3768,9 @@ type CreateFlowEvidenceReportRequestParams struct {
 	// <ul><li> **0** :合同签署报告（默认）</li>
 	// <li> **1** :公证处核验报告</li></ul>
 	ReportType *int64 `json:"ReportType,omitnil,omitempty" name:"ReportType"`
+
+	// 混合云模式获取合同文件合并出证，默认：不同意。注：此参数需要联系腾讯电子签运营进行开通后生效
+	HybridEvidenceFlowFile *bool `json:"HybridEvidenceFlowFile,omitnil,omitempty" name:"HybridEvidenceFlowFile"`
 }
 
 type CreateFlowEvidenceReportRequest struct {
@@ -3789,6 +3792,9 @@ type CreateFlowEvidenceReportRequest struct {
 	// <ul><li> **0** :合同签署报告（默认）</li>
 	// <li> **1** :公证处核验报告</li></ul>
 	ReportType *int64 `json:"ReportType,omitnil,omitempty" name:"ReportType"`
+
+	// 混合云模式获取合同文件合并出证，默认：不同意。注：此参数需要联系腾讯电子签运营进行开通后生效
+	HybridEvidenceFlowFile *bool `json:"HybridEvidenceFlowFile,omitnil,omitempty" name:"HybridEvidenceFlowFile"`
 }
 
 func (r *CreateFlowEvidenceReportRequest) ToJsonString() string {
@@ -3807,6 +3813,7 @@ func (r *CreateFlowEvidenceReportRequest) FromJsonString(s string) error {
 	delete(f, "FlowId")
 	delete(f, "Agent")
 	delete(f, "ReportType")
+	delete(f, "HybridEvidenceFlowFile")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowEvidenceReportRequest has unknown keys!", "")
 	}

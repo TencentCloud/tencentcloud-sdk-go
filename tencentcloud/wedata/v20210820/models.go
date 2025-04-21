@@ -28418,6 +28418,10 @@ type Rule struct {
 	// 项目名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type RuleConfig struct {
@@ -28925,10 +28929,20 @@ type RuleGroupExecResult struct {
 	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
 	// 实例运行的开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 实例运行的结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// 监控名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupName *string `json:"RuleGroupName,omitnil,omitempty" name:"RuleGroupName"`
+
+	// 判断是否屏蔽监控 0.屏蔽 1.不屏蔽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleGroupExist *string `json:"RuleGroupExist,omitnil,omitempty" name:"RuleGroupExist"`
 }
 
 type RuleGroupExecResultPage struct {

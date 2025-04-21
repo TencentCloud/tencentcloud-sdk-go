@@ -5634,6 +5634,9 @@ type RoomInfo struct {
 
 	// 板书截图生成类型。0 不生成板书（默认）；1 全量模式；2 单页去重模式
 	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
+
+	// 字幕转写功能开关：0关闭，1开启，默认关闭
+	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
 }
 
 type RoomItem struct {
@@ -5715,6 +5718,9 @@ type RoomItem struct {
 
 	// 板书截图生成类型。0 不生成板书；1 全量模式；2 单页去重模式
 	WhiteBoardSnapshotMode *uint64 `json:"WhiteBoardSnapshotMode,omitnil,omitempty" name:"WhiteBoardSnapshotMode"`
+
+	// 字幕转写功能开关：0关闭，1开启，默认关闭
+	SubtitlesTranscription *uint64 `json:"SubtitlesTranscription,omitnil,omitempty" name:"SubtitlesTranscription"`
 }
 
 type SceneItem struct {

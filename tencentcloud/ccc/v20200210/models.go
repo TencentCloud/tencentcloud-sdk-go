@@ -692,9 +692,11 @@ type CreateAIAgentCallRequestParams struct {
 	Callers []*string `json:"Callers,omitnil,omitempty" name:"Callers"`
 
 	// 提示词变量
+	//
+	// Deprecated: PromptVariables is deprecated.
 	PromptVariables []*Variable `json:"PromptVariables,omitnil,omitempty" name:"PromptVariables"`
 
-	// 通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> dify变量</p>  
+	// 通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> 欢迎语延迟播放(秒级)：welcome-message-delay</p>  <p> dify变量</p>  
 	// 
 	// 1. dify-inputs-xxx 为dify的inputs变量
 	// 2.  dify-inputs-user 为dify的user值
@@ -720,7 +722,7 @@ type CreateAIAgentCallRequest struct {
 	// 提示词变量
 	PromptVariables []*Variable `json:"PromptVariables,omitnil,omitempty" name:"PromptVariables"`
 
-	// 通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> dify变量</p>  
+	// 通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> 欢迎语延迟播放(秒级)：welcome-message-delay</p>  <p> dify变量</p>  
 	// 
 	// 1. dify-inputs-xxx 为dify的inputs变量
 	// 2.  dify-inputs-user 为dify的user值
@@ -1018,6 +1020,8 @@ type CreateAICallRequestParams struct {
 	CustomTTSConfig *string `json:"CustomTTSConfig,omitnil,omitempty" name:"CustomTTSConfig"`
 
 	// 提示词变量
+	//
+	// Deprecated: PromptVariables is deprecated.
 	PromptVariables []*Variable `json:"PromptVariables,omitnil,omitempty" name:"PromptVariables"`
 
 	// 语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
@@ -1029,7 +1033,7 @@ type CreateAICallRequestParams struct {
 	// 模型温度控制
 	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 
-	// 通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> dify变量</p>  
+	// 通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> 欢迎语延迟播放(秒级)：welcome-message-delay</p>  <p> dify变量</p>  
 	// 
 	// 1. dify-inputs-xxx 为dify的inputs变量
 	// 2.  dify-inputs-user 为dify的user值
@@ -1290,7 +1294,7 @@ type CreateAICallRequest struct {
 	// 模型温度控制
 	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 
-	// 通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> dify变量</p>  
+	// 通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> 欢迎语延迟播放(秒级)：welcome-message-delay</p>  <p> dify变量</p>  
 	// 
 	// 1. dify-inputs-xxx 为dify的inputs变量
 	// 2.  dify-inputs-user 为dify的user值
@@ -2683,6 +2687,67 @@ func (r *CreateUserSigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateUserSigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCCCSkillGroupRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 技能组ID
+	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
+}
+
+type DeleteCCCSkillGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 技能组ID
+	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
+}
+
+func (r *DeleteCCCSkillGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCCCSkillGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "SkillGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCCCSkillGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCCCSkillGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCCCSkillGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCCCSkillGroupResponseParams `json:"Response"`
+}
+
+func (r *DeleteCCCSkillGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCCCSkillGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

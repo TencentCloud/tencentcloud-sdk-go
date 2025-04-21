@@ -858,11 +858,9 @@ type WebContent struct {
 
 type WebPage struct {
 	// 标题
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
 
 	// url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 网页摘要
@@ -898,7 +896,7 @@ type WebSearchRequestParams struct {
 	// 域名黑名单，在不指定 Site 和白名单时，过滤黑名单中的域名。
 	BlackSites []*string `json:"BlackSites,omitnil,omitempty" name:"BlackSites"`
 
-	// 秒级时间冲，搜索网页的开始时间，默认不限制开始时间。
+	// 秒级时间戳，搜索网页的开始时间，默认不限制开始时间。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 秒级时间戳，搜索网页的结束时间，默认为现在。
@@ -929,7 +927,7 @@ type WebSearchRequest struct {
 	// 域名黑名单，在不指定 Site 和白名单时，过滤黑名单中的域名。
 	BlackSites []*string `json:"BlackSites,omitnil,omitempty" name:"BlackSites"`
 
-	// 秒级时间冲，搜索网页的开始时间，默认不限制开始时间。
+	// 秒级时间戳，搜索网页的开始时间，默认不限制开始时间。
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 秒级时间戳，搜索网页的结束时间，默认为现在。

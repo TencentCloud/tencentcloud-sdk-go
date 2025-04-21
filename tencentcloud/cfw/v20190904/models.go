@@ -548,27 +548,22 @@ type CfwInsStatus struct {
 	FwType *string `json:"FwType,omitnil,omitempty" name:"FwType"`
 
 	// 实例所属地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 实例运行状态，Running：正常运行；BypassAutoFix：bypass修复；Updating：升级中；Expand：扩容中；BypassManual：手动触发bypass中；BypassAuto：自动触发bypass中
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 事件时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EventTime *string `json:"EventTime,omitnil,omitempty" name:"EventTime"`
 
 	// 恢复时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecoverTime *string `json:"RecoverTime,omitnil,omitempty" name:"RecoverTime"`
 
 	// 实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CfwInsName *string `json:"CfwInsName,omitnil,omitempty" name:"CfwInsName"`
 
 	// Normal: 正常模式
 	// OnlyRoute: 透明模式
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrafficMode *string `json:"TrafficMode,omitnil,omitempty" name:"TrafficMode"`
 }
 
@@ -2959,6 +2954,12 @@ type DescAcItem struct {
 
 	// 规则最近命中时间
 	LastHitTime *string `json:"LastHitTime,omitnil,omitempty" name:"LastHitTime"`
+
+	// 地区简称
+	CountryKey *string `json:"CountryKey,omitnil,omitempty" name:"CountryKey"`
+
+	// 省份、城市简称
+	CityKey *string `json:"CityKey,omitnil,omitempty" name:"CityKey"`
 }
 
 type DescNatDnatRule struct {
@@ -4489,6 +4490,9 @@ type DescribeFwEdgeIpsResponseParams struct {
 
 	// 实例类型列表
 	InstanceTypeLst []*string `json:"InstanceTypeLst,omitnil,omitempty" name:"InstanceTypeLst"`
+
+	// 串行模式开关个数
+	SerilCount *int64 `json:"SerilCount,omitnil,omitempty" name:"SerilCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6865,6 +6869,9 @@ type EnterpriseSecurityGroupRuleRuleInfo struct {
 
 	// 规则id  等同RuleUuid
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 域名解析的IP统计
+	DnsParseCount *SgDnsParseCount `json:"DnsParseCount,omitnil,omitempty" name:"DnsParseCount"`
 }
 
 // Predefined struct for user
@@ -10385,7 +10392,7 @@ type SecurityGroupRule struct {
 	// drop：拒绝
 	RuleAction *string `json:"RuleAction,omitnil,omitempty" name:"RuleAction"`
 
-	// 描述
+	// 规则描述 用于规则使用或者场景的描述，最多支持50个字符
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 规则顺序，-1表示最低，1表示最高，请勿和外层Type冲突（和外层的Type配合使用，当中间插入时，指定添加位置）
@@ -10611,6 +10618,14 @@ func (r *SetNatFwEipResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SetNatFwEipResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SgDnsParseCount struct {
+	// 有效下发的IP个数，离散数据
+	ValidCount *int64 `json:"ValidCount,omitnil,omitempty" name:"ValidCount"`
+
+	// 未下发的IP个数，离散数据
+	InvalidCount *int64 `json:"InvalidCount,omitnil,omitempty" name:"InvalidCount"`
 }
 
 type StaticInfo struct {

@@ -138,6 +138,12 @@ func NewAssociateInstancesKeyPairsResponse() (response *AssociateInstancesKeyPai
 //
 // 
 //
+// * 仅支持对 `Linux` 操作系统实例进行绑定操作。
+//
+// * 非强制关机场景下，仅支持对 [STOPPED](https://cloud.tencent.com/document/product/213/15753#InstanceStatus) 状态实例进行绑定操作。
+//
+// * 强制关机场景下，先执行强制关机，再绑定密钥；如实例原状态为 [RUNNING](https://cloud.tencent.com/document/product/213/15753#InstanceStatus)，绑定完成后实例会自动开机。
+//
 // * 将密钥的公钥写入到实例的`SSH`配置当中，用户就可以通过该密钥的私钥来登录实例。
 //
 // * 如果实例原来绑定过密钥，那么原来的密钥将失效。
@@ -184,6 +190,12 @@ func (c *Client) AssociateInstancesKeyPairs(request *AssociateInstancesKeyPairsR
 // 本接口 (AssociateInstancesKeyPairs) 用于将密钥绑定到实例上。
 //
 // 
+//
+// * 仅支持对 `Linux` 操作系统实例进行绑定操作。
+//
+// * 非强制关机场景下，仅支持对 [STOPPED](https://cloud.tencent.com/document/product/213/15753#InstanceStatus) 状态实例进行绑定操作。
+//
+// * 强制关机场景下，先执行强制关机，再绑定密钥；如实例原状态为 [RUNNING](https://cloud.tencent.com/document/product/213/15753#InstanceStatus)，绑定完成后实例会自动开机。
 //
 // * 将密钥的公钥写入到实例的`SSH`配置当中，用户就可以通过该密钥的私钥来登录实例。
 //
@@ -4032,7 +4044,11 @@ func NewDisassociateInstancesKeyPairsResponse() (response *DisassociateInstances
 //
 // 
 //
-// * 只支持[`STOPPED`](https://cloud.tencent.com/document/product/213/15753#InstanceStatus)状态的`Linux`操作系统的实例。
+// * 仅支持对 Linux 操作系统实例进行解绑操作。
+//
+// * 非强制关机场景下，仅支持对 [STOPPED](https://cloud.tencent.com/document/product/213/15753#InstanceStatus) 状态实例进行解绑操作。
+//
+// * 强制关机场景下，先执行强制关机，再解绑密钥；如实例原状态为 [RUNNING](https://cloud.tencent.com/document/product/213/15753#InstanceStatus)，解绑完成后实例会自动开机。
 //
 // * 解绑密钥后，实例可以通过原来设置的密码登录。
 //
@@ -4075,7 +4091,11 @@ func (c *Client) DisassociateInstancesKeyPairs(request *DisassociateInstancesKey
 //
 // 
 //
-// * 只支持[`STOPPED`](https://cloud.tencent.com/document/product/213/15753#InstanceStatus)状态的`Linux`操作系统的实例。
+// * 仅支持对 Linux 操作系统实例进行解绑操作。
+//
+// * 非强制关机场景下，仅支持对 [STOPPED](https://cloud.tencent.com/document/product/213/15753#InstanceStatus) 状态实例进行解绑操作。
+//
+// * 强制关机场景下，先执行强制关机，再解绑密钥；如实例原状态为 [RUNNING](https://cloud.tencent.com/document/product/213/15753#InstanceStatus)，解绑完成后实例会自动开机。
 //
 // * 解绑密钥后，实例可以通过原来设置的密码登录。
 //
@@ -8561,6 +8581,8 @@ func NewResizeInstanceDisksResponse() (response *ResizeInstanceDisksResponse) {
 //
 // * 如果是系统盘，目前只支持扩容，不支持缩容。
 //
+// *  如果是运行中的实例，必须指定ForceStop或ResizeOnline任意一个参数为true，否则操作失败。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDINSTANCEAPPLICATIONROLE = "FailedOperation.InvalidInstanceApplicationRole"
 //  INTERNALERROR = "InternalError"
@@ -8617,6 +8639,8 @@ func (c *Client) ResizeInstanceDisks(request *ResizeInstanceDisksRequest) (respo
 // * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
 //
 // * 如果是系统盘，目前只支持扩容，不支持缩容。
+//
+// *  如果是运行中的实例，必须指定ForceStop或ResizeOnline任意一个参数为true，否则操作失败。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDINSTANCEAPPLICATIONROLE = "FailedOperation.InvalidInstanceApplicationRole"

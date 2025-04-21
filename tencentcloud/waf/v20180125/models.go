@@ -1693,6 +1693,23 @@ func (r *BatchOperateUserSignatureRulesResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BotActionScopeRuleEntry struct {
+	// 参数
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 匹配符
+	Op *string `json:"Op,omitnil,omitempty" name:"Op"`
+
+	// 参数值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 对于头部字段匹配value的时候指定的头部名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 470后使用此字段存储多值
+	ValueArray []*string `json:"ValueArray,omitnil,omitempty" name:"ValueArray"`
+}
+
 type BotPkg struct {
 	// 资源id
 	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
@@ -1751,6 +1768,173 @@ type BotQPS struct {
 	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 }
 
+type BotSceneActionRule struct {
+	// 动作策略ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 动作策略名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 策略优先级
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 策略生效状态
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 分数范围
+	Score []*BotScoreRuleEntry `json:"Score,omitnil,omitempty" name:"Score"`
+
+	// 100-宽松、200-中等、300-严格、0-自定义
+	Level *string `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 生效范围，为空表示全部范围
+	Scope []*BotActionScopeRuleEntry `json:"Scope,omitnil,omitempty" name:"Scope"`
+
+	// default：默认创建 custom：自定义创建
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 匹配范围类型：全局匹配 or 自定义匹配范围
+	ScopeType *string `json:"ScopeType,omitnil,omitempty" name:"ScopeType"`
+
+	// 匹配条件间的与或关系
+	ActionMatchType *string `json:"ActionMatchType,omitnil,omitempty" name:"ActionMatchType"`
+}
+
+type BotSceneInfo struct {
+	// 场景ID
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
+
+	// 场景类型，default:默认场景,custom:非默认场景
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 场景名
+	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
+
+	// 更新时间
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 场景模板类型，登录: login  秒杀:seckill  爬内容：crawl 自定义: custom
+	BusinessType []*string `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
+
+	// 客户端类型，浏览器/H5 : browser  小程序: miniApp  App:
+	ClientType []*string `json:"ClientType,omitnil,omitempty" name:"ClientType"`
+
+	// 优先级
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 匹配范围
+	MatchCondition []*BotSceneMatchCondition `json:"MatchCondition,omitnil,omitempty" name:"MatchCondition"`
+
+	// 场景开关
+	SceneStatus *bool `json:"SceneStatus,omitnil,omitempty" name:"SceneStatus"`
+
+	// 前端对抗开关
+	JsInjectStatus *bool `json:"JsInjectStatus,omitnil,omitempty" name:"JsInjectStatus"`
+
+	// AI开关
+	AIStatus *bool `json:"AIStatus,omitnil,omitempty" name:"AIStatus"`
+
+	// TI开关
+	TIStatus *bool `json:"TIStatus,omitnil,omitempty" name:"TIStatus"`
+
+	// 智能统计开关
+	StatisticStatus *bool `json:"StatisticStatus,omitnil,omitempty" name:"StatisticStatus"`
+
+	// 动作策略数量
+	ActionRuleCount *int64 `json:"ActionRuleCount,omitnil,omitempty" name:"ActionRuleCount"`
+
+	// 自定义规则数量
+	UCBCount *int64 `json:"UCBCount,omitnil,omitempty" name:"UCBCount"`
+
+	// 场景的匹配范围，global-全部匹配 custom-自定义匹配范围
+	MatchType *string `json:"MatchType,omitnil,omitempty" name:"MatchType"`
+
+	// 匹配条件间的与或关系
+	ActionMatchType *string `json:"ActionMatchType,omitnil,omitempty" name:"ActionMatchType"`
+
+	// UA模块开关
+	UAStatus *bool `json:"UAStatus,omitnil,omitempty" name:"UAStatus"`
+
+	// 简易模式场景：前端对抗对应mysql的记录id
+	JsInjectRuleId *int64 `json:"JsInjectRuleId,omitnil,omitempty" name:"JsInjectRuleId"`
+
+	// 简易模式场景：前端对抗配置动作
+	JsInjectAction *int64 `json:"JsInjectAction,omitnil,omitempty" name:"JsInjectAction"`
+
+	// 简易模式场景：前端对抗重定向路径
+	JsInjectRedirect *string `json:"JsInjectRedirect,omitnil,omitempty" name:"JsInjectRedirect"`
+
+	// 简易模式场景：动作策略信息  PS:简易模式只有一个动作策略
+	ActionRuleList []*BotSceneActionRule `json:"ActionRuleList,omitnil,omitempty" name:"ActionRuleList"`
+
+	// 简易模式场景：monitor-观察 intercept-拦截 custom-自定义
+	BotIdPattern *string `json:"BotIdPattern,omitnil,omitempty" name:"BotIdPattern"`
+
+	// 简易模式场景：bot_id规则总数
+	BotIdCount *int64 `json:"BotIdCount,omitnil,omitempty" name:"BotIdCount"`
+
+	// 简易模式场景：观察动作的规则总数
+	BotIdMonitorCount *int64 `json:"BotIdMonitorCount,omitnil,omitempty" name:"BotIdMonitorCount"`
+
+	// 简易模式场景：拦截动作的规则总数
+	BotIdInterceptCount *int64 `json:"BotIdInterceptCount,omitnil,omitempty" name:"BotIdInterceptCount"`
+
+	// 创建场景时选择的规则集
+	RuleSetSelection []*string `json:"RuleSetSelection,omitnil,omitempty" name:"RuleSetSelection"`
+
+	// 改场景的bot token列表
+	TokenList []*BotToken `json:"TokenList,omitnil,omitempty" name:"TokenList"`
+
+	// 简易模式场景：重定向动作的规则总数
+	BotIdRedirectCount *int64 `json:"BotIdRedirectCount,omitnil,omitempty" name:"BotIdRedirectCount"`
+
+	// 简易模式场景：人机识别动作的规则总数
+	BotIdCaptchaCount *int64 `json:"BotIdCaptchaCount,omitnil,omitempty" name:"BotIdCaptchaCount"`
+
+	// 简易模式场景：防护等级
+	BotIdProtectLevel *string `json:"BotIdProtectLevel,omitnil,omitempty" name:"BotIdProtectLevel"`
+
+	// 简易模式场景：全局重定向路径
+	BotIdGlobalRedirect *string `json:"BotIdGlobalRedirect,omitnil,omitempty" name:"BotIdGlobalRedirect"`
+
+	// 简易模式场景：JS校验动作的规则总数
+	BotIdJsChallengeCount *int64 `json:"BotIdJsChallengeCount,omitnil,omitempty" name:"BotIdJsChallengeCount"`
+}
+
+type BotSceneMatchCondition struct {
+	// 匹配参数
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 匹配符
+	Op *string `json:"Op,omitnil,omitempty" name:"Op"`
+
+	// 匹配值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 对于头部字段匹配value的时候指定的头部名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 470后使用此入参存在多值
+	ValueArray []*string `json:"ValueArray,omitnil,omitempty" name:"ValueArray"`
+}
+
+type BotScoreRuleEntry struct {
+	// 分数区间上限
+	Upper *string `json:"Upper,omitnil,omitempty" name:"Upper"`
+
+	// 分数区间下限
+	Lower *string `json:"Lower,omitnil,omitempty" name:"Lower"`
+
+	// 处置动作
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// 流量标签
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 重定向
+	Redirect *string `json:"Redirect,omitnil,omitempty" name:"Redirect"`
+}
+
 type BotStatPointItem struct {
 	// 横坐标
 	TimeStamp *string `json:"TimeStamp,omitnil,omitempty" name:"TimeStamp"`
@@ -1763,6 +1947,38 @@ type BotStatPointItem struct {
 
 	// Key对应的页面展示内容
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+}
+
+type BotToken struct {
+	// 会话名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 会话描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 会话id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 策略的开关状态
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 会话位置
+	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
+
+	// 会话key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 会话匹配方式，前缀匹配、后缀匹配等
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 会话更新的时间戳
+	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 场景列表，内容为空表示全部场景应用
+	Scene []*string `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// 优先级
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 }
 
 type CCRuleData struct {
@@ -3100,6 +3316,78 @@ func (r *DeleteAttackWhiteRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAttackWhiteRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBotSceneUCBRuleRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 自定义规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 1.BOT全局白名单处调用时，传"global";2.BOT场景配置时，传具体的场景ID
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
+}
+
+type DeleteBotSceneUCBRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 自定义规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 1.BOT全局白名单处调用时，传"global";2.BOT场景配置时，传具体的场景ID
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
+}
+
+func (r *DeleteBotSceneUCBRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBotSceneUCBRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "RuleId")
+	delete(f, "SceneId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBotSceneUCBRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBotSceneUCBRuleResponseParams struct {
+	// 正常情况下为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteBotSceneUCBRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteBotSceneUCBRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteBotSceneUCBRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBotSceneUCBRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5255,6 +5543,310 @@ func (r *DescribeBatchIpAccessControlResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeBatchIpAccessControlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBotSceneListRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 每页数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 页码
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 场景模板类型，通过此下拉字段进行场景筛选。全部: all 登录: login  秒杀:seckill  爬内容：crawl 自定义: custom
+	BusinessType []*string `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
+
+	// 通过场景名称模糊搜索
+	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
+
+	// 是否只显示默认场景
+	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+
+	// 是否仅显示生效场景
+	IsValid *bool `json:"IsValid,omitnil,omitempty" name:"IsValid"`
+}
+
+type DescribeBotSceneListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 每页数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 页码
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 场景模板类型，通过此下拉字段进行场景筛选。全部: all 登录: login  秒杀:seckill  爬内容：crawl 自定义: custom
+	BusinessType []*string `json:"BusinessType,omitnil,omitempty" name:"BusinessType"`
+
+	// 通过场景名称模糊搜索
+	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
+
+	// 是否只显示默认场景
+	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+
+	// 是否仅显示生效场景
+	IsValid *bool `json:"IsValid,omitnil,omitempty" name:"IsValid"`
+}
+
+func (r *DescribeBotSceneListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBotSceneListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "BusinessType")
+	delete(f, "SceneName")
+	delete(f, "IsDefault")
+	delete(f, "IsValid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBotSceneListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBotSceneListResponseParams struct {
+	// 符合筛选条件的场景数目
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 当TotalCount为0时，返回空
+	BotSceneList []*BotSceneInfo `json:"BotSceneList,omitnil,omitempty" name:"BotSceneList"`
+
+	// true-简易模式
+	SimpleFlag *bool `json:"SimpleFlag,omitnil,omitempty" name:"SimpleFlag"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBotSceneListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBotSceneListResponseParams `json:"Response"`
+}
+
+func (r *DescribeBotSceneListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBotSceneListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBotSceneOverviewRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+type DescribeBotSceneOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+}
+
+func (r *DescribeBotSceneOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBotSceneOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBotSceneOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBotSceneOverviewResponseParams struct {
+	// BOT总开关
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 场景总数
+	SceneCount *int64 `json:"SceneCount,omitnil,omitempty" name:"SceneCount"`
+
+	// 生效场景数
+	ValidSceneCount *int64 `json:"ValidSceneCount,omitnil,omitempty" name:"ValidSceneCount"`
+
+	// 当前开启的、匹配范围为全局、优先级最高的场景
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentGlobalScene *GlobalSceneInfo `json:"CurrentGlobalScene,omitnil,omitempty" name:"CurrentGlobalScene"`
+
+	// 自定义规则总数，不包括BOT白名单
+	CustomRuleNums *int64 `json:"CustomRuleNums,omitnil,omitempty" name:"CustomRuleNums"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBotSceneOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBotSceneOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeBotSceneOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBotSceneOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBotSceneUCBRuleRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 翻页组件的起始页
+	Skip *uint64 `json:"Skip,omitnil,omitempty" name:"Skip"`
+
+	// 翻页组件的页数据条数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序参数
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// 1.BOT全局白名单处调用时，传"global";2.BOT场景配置处调用时，传具体的场景ID
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
+
+	// 需要过滤的动作
+	Operate *string `json:"Operate,omitnil,omitempty" name:"Operate"`
+
+	// 需要过滤的规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 兼容老数据和新旧版前端
+	VersionFlag *string `json:"VersionFlag,omitnil,omitempty" name:"VersionFlag"`
+
+	// 生效方式：0-全部 1-永久生效 2-定时生效 3-周粒度生效 4-月粒度生效
+	TimerType *uint64 `json:"TimerType,omitnil,omitempty" name:"TimerType"`
+
+	// 0-全部 1-生效中 2-已过期
+	ValidStatus *uint64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
+}
+
+type DescribeBotSceneUCBRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 翻页组件的起始页
+	Skip *uint64 `json:"Skip,omitnil,omitempty" name:"Skip"`
+
+	// 翻页组件的页数据条数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序参数
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// 1.BOT全局白名单处调用时，传"global";2.BOT场景配置处调用时，传具体的场景ID
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
+
+	// 需要过滤的动作
+	Operate *string `json:"Operate,omitnil,omitempty" name:"Operate"`
+
+	// 需要过滤的规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 兼容老数据和新旧版前端
+	VersionFlag *string `json:"VersionFlag,omitnil,omitempty" name:"VersionFlag"`
+
+	// 生效方式：0-全部 1-永久生效 2-定时生效 3-周粒度生效 4-月粒度生效
+	TimerType *uint64 `json:"TimerType,omitnil,omitempty" name:"TimerType"`
+
+	// 0-全部 1-生效中 2-已过期
+	ValidStatus *uint64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
+}
+
+func (r *DescribeBotSceneUCBRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBotSceneUCBRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Skip")
+	delete(f, "Limit")
+	delete(f, "Sort")
+	delete(f, "SceneId")
+	delete(f, "Operate")
+	delete(f, "Name")
+	delete(f, "VersionFlag")
+	delete(f, "TimerType")
+	delete(f, "ValidStatus")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBotSceneUCBRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBotSceneUCBRuleResponseParams struct {
+	// 返回数据包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DescribeBotUCBRuleRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBotSceneUCBRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBotSceneUCBRuleResponseParams `json:"Response"`
+}
+
+func (r *DescribeBotSceneUCBRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBotSceneUCBRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeBotUCBRuleRsp struct {
+	// 规则列表
+	Res []*InOutputBotUCBRule `json:"Res,omitnil,omitempty" name:"Res"`
+
+	// 规则总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
 // Predefined struct for user
@@ -10424,6 +11016,20 @@ func (r *GetInstanceQpsLimitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GlobalSceneInfo struct {
+	// 场景ID
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
+
+	// 场景名称
+	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
+
+	// 场景优先级
+	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 场景更新时间
+	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
 type GoodNews struct {
 	// 商品数量
 	GoodsNum *int64 `json:"GoodsNum,omitnil,omitempty" name:"GoodsNum"`
@@ -10822,6 +11428,106 @@ func (r *ImportIpAccessControlResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ImportIpAccessControlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type InOutputBotUCBRule struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// UCB的具体规则项
+	Rule []*InOutputUCBRuleEntry `json:"Rule,omitnil,omitempty" name:"Rule"`
+
+	// 处置动作
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// 规则开关
+	OnOff *string `json:"OnOff,omitnil,omitempty" name:"OnOff"`
+
+	// 规则类型
+	RuleType *int64 `json:"RuleType,omitnil,omitempty" name:"RuleType"`
+
+	// 规则优先级
+	Prior *int64 `json:"Prior,omitnil,omitempty" name:"Prior"`
+
+	// 修改时间戳
+	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// 标签
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 入参ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 场景ID
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
+
+	// 生效时间
+	ValidTime *int64 `json:"ValidTime,omitnil,omitempty" name:"ValidTime"`
+
+	// 传入的appid
+	Appid *uint64 `json:"Appid,omitnil,omitempty" name:"Appid"`
+
+	// 额外参数
+	AdditionArg *string `json:"AdditionArg,omitnil,omitempty" name:"AdditionArg"`
+
+	// 规则描述
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 规则ID
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// true-系统预设规则 false-自定义规则
+	PreDefine *bool `json:"PreDefine,omitnil,omitempty" name:"PreDefine"`
+
+	// 定时任务类型
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// 定时任务配置
+	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 生效截止时间
+	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 生效-1,失效-0
+	ValidStatus *int64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
+
+	// 自定义拦截页面ID
+	BlockPageId *uint64 `json:"BlockPageId,omitnil,omitempty" name:"BlockPageId"`
+
+	// 当Action=intercept时，此字段必填
+	ActionList []*UCBActionProportion `json:"ActionList,omitnil,omitempty" name:"ActionList"`
+}
+
+type InOutputUCBRuleEntry struct {
+	// 键
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 操作符
+	Op *string `json:"Op,omitnil,omitempty" name:"Op"`
+
+	// 值
+	Value *UCBEntryValue `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 可选的补充操作符
+	OpOp *string `json:"OpOp,omitnil,omitempty" name:"OpOp"`
+
+	// 可选的补充参数
+	OpArg []*string `json:"OpArg,omitnil,omitempty" name:"OpArg"`
+
+	// 可选的补充值
+	OpValue *float64 `json:"OpValue,omitnil,omitempty" name:"OpValue"`
+
+	// Header参数值时使用
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 区域选择
+	Areas []*Area `json:"Areas,omitnil,omitempty" name:"Areas"`
+
+	// 语言环境
+	Lang *string `json:"Lang,omitnil,omitempty" name:"Lang"`
 }
 
 type InstanceInfo struct {
@@ -12078,6 +12784,152 @@ func (r *ModifyAttackWhiteRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAttackWhiteRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBotSceneStatusRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 场景ID
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
+
+	// true-开启 false-关闭
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type ModifyBotSceneStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 场景ID
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
+
+	// true-开启 false-关闭
+	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *ModifyBotSceneStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBotSceneStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "SceneId")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBotSceneStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBotSceneStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBotSceneStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBotSceneStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyBotSceneStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBotSceneStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBotSceneUCBRuleRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 1.BOT全局白名单处调用时，传"global";2.BOT场景配置时，传具体的场景ID
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
+
+	// 规则内容, 增加编码SceneId信息,1.BOT全局白名单处调用时，SceneId为"global", RuleType传10, Action为"permit";2.BOT场景配置时，SceneId为场景ID
+	Rule *InOutputBotUCBRule `json:"Rule,omitnil,omitempty" name:"Rule"`
+
+	// 530改批量操作
+	BatchRules []*InOutputBotUCBRule `json:"BatchRules,omitnil,omitempty" name:"BatchRules"`
+}
+
+type ModifyBotSceneUCBRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 1.BOT全局白名单处调用时，传"global";2.BOT场景配置时，传具体的场景ID
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
+
+	// 规则内容, 增加编码SceneId信息,1.BOT全局白名单处调用时，SceneId为"global", RuleType传10, Action为"permit";2.BOT场景配置时，SceneId为场景ID
+	Rule *InOutputBotUCBRule `json:"Rule,omitnil,omitempty" name:"Rule"`
+
+	// 530改批量操作
+	BatchRules []*InOutputBotUCBRule `json:"BatchRules,omitnil,omitempty" name:"BatchRules"`
+}
+
+func (r *ModifyBotSceneUCBRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBotSceneUCBRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "SceneId")
+	delete(f, "Rule")
+	delete(f, "BatchRules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBotSceneUCBRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBotSceneUCBRuleResponseParams struct {
+	// 正常情况下为null
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBotSceneUCBRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBotSceneUCBRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyBotSceneUCBRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBotSceneUCBRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -15112,6 +15964,12 @@ type PostCKafkaFlowInfo struct {
 
 	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 压缩算法，支持gzip 和 lz4
+	Compression *string `json:"Compression,omitnil,omitempty" name:"Compression"`
+
+	// 描述信息
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 type PostCLSFlowInfo struct {
@@ -15928,6 +16786,31 @@ type TimedJob struct {
 
 	// 结束时间戳，单位为秒
 	EndDateTime *uint64 `json:"EndDateTime,omitnil,omitempty" name:"EndDateTime"`
+}
+
+type UCBActionProportion struct {
+	// 动作
+	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// 比例
+	Proportion *float64 `json:"Proportion,omitnil,omitempty" name:"Proportion"`
+}
+
+type UCBEntryValue struct {
+	// string类型值
+	BasicValue *string `json:"BasicValue,omitnil,omitempty" name:"BasicValue"`
+
+	// 布尔类型值
+	LogicValue *bool `json:"LogicValue,omitnil,omitempty" name:"LogicValue"`
+
+	// string数组类型值
+	BelongValue []*string `json:"BelongValue,omitnil,omitempty" name:"BelongValue"`
+
+	// 指示有效的字段
+	ValidKey *string `json:"ValidKey,omitnil,omitempty" name:"ValidKey"`
+
+	// string数组类型值
+	MultiValue []*string `json:"MultiValue,omitnil,omitempty" name:"MultiValue"`
 }
 
 // Predefined struct for user

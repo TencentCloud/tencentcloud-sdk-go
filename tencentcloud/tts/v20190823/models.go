@@ -296,6 +296,9 @@ type TextToVoiceRequestParams struct {
 	// 若使用一句话版声音复刻，请填入固定值“200000000”
 	VoiceType *int64 `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
 
+	// 一句话版声音复刻音色ID，使用一句话版声音复刻音色时需填写。【已废弃】
+	FastVoiceType *string `json:"FastVoiceType,omitnil,omitempty" name:"FastVoiceType"`
+
 	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li><li>3-日文</li>
 	PrimaryLanguage *int64 `json:"PrimaryLanguage,omitnil,omitempty" name:"PrimaryLanguage"`
 
@@ -320,9 +323,6 @@ type TextToVoiceRequestParams struct {
 
 	// 控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效；
 	EmotionIntensity *int64 `json:"EmotionIntensity,omitnil,omitempty" name:"EmotionIntensity"`
-
-	// 一句话版声音复刻音色ID，使用一句话版声音复刻音色时需填写。【已废弃】
-	FastVoiceType *string `json:"FastVoiceType,omitnil,omitempty" name:"FastVoiceType"`
 }
 
 type TextToVoiceRequest struct {
@@ -351,6 +351,9 @@ type TextToVoiceRequest struct {
 	// 若使用一句话版声音复刻，请填入固定值“200000000”
 	VoiceType *int64 `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
 
+	// 一句话版声音复刻音色ID，使用一句话版声音复刻音色时需填写。【已废弃】
+	FastVoiceType *string `json:"FastVoiceType,omitnil,omitempty" name:"FastVoiceType"`
+
 	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li><li>3-日文</li>
 	PrimaryLanguage *int64 `json:"PrimaryLanguage,omitnil,omitempty" name:"PrimaryLanguage"`
 
@@ -375,9 +378,6 @@ type TextToVoiceRequest struct {
 
 	// 控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效；
 	EmotionIntensity *int64 `json:"EmotionIntensity,omitnil,omitempty" name:"EmotionIntensity"`
-
-	// 一句话版声音复刻音色ID，使用一句话版声音复刻音色时需填写。【已废弃】
-	FastVoiceType *string `json:"FastVoiceType,omitnil,omitempty" name:"FastVoiceType"`
 }
 
 func (r *TextToVoiceRequest) ToJsonString() string {
@@ -399,6 +399,7 @@ func (r *TextToVoiceRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "ModelType")
 	delete(f, "VoiceType")
+	delete(f, "FastVoiceType")
 	delete(f, "PrimaryLanguage")
 	delete(f, "SampleRate")
 	delete(f, "Codec")
@@ -406,7 +407,6 @@ func (r *TextToVoiceRequest) FromJsonString(s string) error {
 	delete(f, "SegmentRate")
 	delete(f, "EmotionCategory")
 	delete(f, "EmotionIntensity")
-	delete(f, "FastVoiceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToVoiceRequest has unknown keys!", "")
 	}

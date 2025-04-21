@@ -1082,6 +1082,9 @@ type ServerBaseConfig struct {
 
 	// 内网访问开关 close | open
 	InternalAccess *string `json:"InternalAccess,omitnil,omitempty" name:"InternalAccess"`
+
+	// 内网域名
+	InternalDomain *string `json:"InternalDomain,omitnil,omitempty" name:"InternalDomain"`
 }
 
 type ServerBaseInfo struct {
@@ -1108,6 +1111,9 @@ type ServerBaseInfo struct {
 
 	// 服务类型: function 云函数2.0；container 容器服务
 	ServerType *string `json:"ServerType,omitnil,omitempty" name:"ServerType"`
+
+	// 流量类型，目前只有 FLOW
+	TrafficType *string `json:"TrafficType,omitnil,omitempty" name:"TrafficType"`
 }
 
 type ServerManageTaskInfo struct {

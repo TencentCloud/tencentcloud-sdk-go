@@ -478,7 +478,6 @@ type CreateInstanceNewResponseParams struct {
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -773,22 +772,18 @@ type DescribeBackUpScheduleResponseParams struct {
 	BackUpOpened *bool `json:"BackUpOpened,omitnil,omitempty" name:"BackUpOpened"`
 
 	// 元数据备份策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaStrategy *ScheduleStrategy `json:"MetaStrategy,omitnil,omitempty" name:"MetaStrategy"`
 
 	// 表数据备份策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataStrategy *ScheduleStrategy `json:"DataStrategy,omitnil,omitempty" name:"DataStrategy"`
 
 	// 备份表列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackUpContents []*BackupTableContent `json:"BackUpContents,omitnil,omitempty" name:"BackUpContents"`
 
 	// 备份的状态
 	BackUpStatus *int64 `json:"BackUpStatus,omitnil,omitempty" name:"BackUpStatus"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1145,7 +1140,6 @@ type DescribeInstanceKeyValConfigsResponseParams struct {
 	MapConfigItems []*MapConfigItem `json:"MapConfigItems,omitnil,omitempty" name:"MapConfigItems"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

@@ -1580,6 +1580,55 @@ func (c *Client) DeleteAttackWhiteRuleWithContext(ctx context.Context, request *
     return
 }
 
+func NewDeleteBotSceneUCBRuleRequest() (request *DeleteBotSceneUCBRuleRequest) {
+    request = &DeleteBotSceneUCBRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DeleteBotSceneUCBRule")
+    
+    
+    return
+}
+
+func NewDeleteBotSceneUCBRuleResponse() (response *DeleteBotSceneUCBRuleResponse) {
+    response = &DeleteBotSceneUCBRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteBotSceneUCBRule
+// 场景化后删除Bot的UCB自定义规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteBotSceneUCBRule(request *DeleteBotSceneUCBRuleRequest) (response *DeleteBotSceneUCBRuleResponse, err error) {
+    return c.DeleteBotSceneUCBRuleWithContext(context.Background(), request)
+}
+
+// DeleteBotSceneUCBRule
+// 场景化后删除Bot的UCB自定义规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteBotSceneUCBRuleWithContext(ctx context.Context, request *DeleteBotSceneUCBRuleRequest) (response *DeleteBotSceneUCBRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteBotSceneUCBRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBotSceneUCBRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBotSceneUCBRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCCRuleRequest() (request *DeleteCCRuleRequest) {
     request = &DeleteCCRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3141,6 +3190,175 @@ func (c *Client) DescribeBatchIpAccessControlWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeBatchIpAccessControlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBotSceneListRequest() (request *DescribeBotSceneListRequest) {
+    request = &DescribeBotSceneListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeBotSceneList")
+    
+    
+    return
+}
+
+func NewDescribeBotSceneListResponse() (response *DescribeBotSceneListResponse) {
+    response = &DescribeBotSceneListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBotSceneList
+// 获取BOT场景列表与概览
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BOTSERVICENOTSUBSCRIBEERR = "UnsupportedOperation.BotServiceNotSubscribeErr"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) DescribeBotSceneList(request *DescribeBotSceneListRequest) (response *DescribeBotSceneListResponse, err error) {
+    return c.DescribeBotSceneListWithContext(context.Background(), request)
+}
+
+// DescribeBotSceneList
+// 获取BOT场景列表与概览
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BOTSERVICENOTSUBSCRIBEERR = "UnsupportedOperation.BotServiceNotSubscribeErr"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) DescribeBotSceneListWithContext(ctx context.Context, request *DescribeBotSceneListRequest) (response *DescribeBotSceneListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBotSceneListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBotSceneList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBotSceneListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBotSceneOverviewRequest() (request *DescribeBotSceneOverviewRequest) {
+    request = &DescribeBotSceneOverviewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeBotSceneOverview")
+    
+    
+    return
+}
+
+func NewDescribeBotSceneOverviewResponse() (response *DescribeBotSceneOverviewResponse) {
+    response = &DescribeBotSceneOverviewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBotSceneOverview
+// 获取Bot场景全局概览
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) DescribeBotSceneOverview(request *DescribeBotSceneOverviewRequest) (response *DescribeBotSceneOverviewResponse, err error) {
+    return c.DescribeBotSceneOverviewWithContext(context.Background(), request)
+}
+
+// DescribeBotSceneOverview
+// 获取Bot场景全局概览
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) DescribeBotSceneOverviewWithContext(ctx context.Context, request *DescribeBotSceneOverviewRequest) (response *DescribeBotSceneOverviewResponse, err error) {
+    if request == nil {
+        request = NewDescribeBotSceneOverviewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBotSceneOverview require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBotSceneOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBotSceneUCBRuleRequest() (request *DescribeBotSceneUCBRuleRequest) {
+    request = &DescribeBotSceneUCBRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeBotSceneUCBRule")
+    
+    
+    return
+}
+
+func NewDescribeBotSceneUCBRuleResponse() (response *DescribeBotSceneUCBRuleResponse) {
+    response = &DescribeBotSceneUCBRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBotSceneUCBRule
+// 场景化后Bot获取UCB自定义规则策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MONGOOPERATIONFAILED = "FailedOperation.MongoOperationFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_BOTSCENENOTEXISTERR = "InvalidParameter.BotSceneNotExistErr"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BOTSERVICENOTSUBSCRIBEERR = "UnsupportedOperation.BotServiceNotSubscribeErr"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) DescribeBotSceneUCBRule(request *DescribeBotSceneUCBRuleRequest) (response *DescribeBotSceneUCBRuleResponse, err error) {
+    return c.DescribeBotSceneUCBRuleWithContext(context.Background(), request)
+}
+
+// DescribeBotSceneUCBRule
+// 场景化后Bot获取UCB自定义规则策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MONGOOPERATIONFAILED = "FailedOperation.MongoOperationFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_BOTSCENENOTEXISTERR = "InvalidParameter.BotSceneNotExistErr"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_BOTSERVICENOTSUBSCRIBEERR = "UnsupportedOperation.BotServiceNotSubscribeErr"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) DescribeBotSceneUCBRuleWithContext(ctx context.Context, request *DescribeBotSceneUCBRuleRequest) (response *DescribeBotSceneUCBRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeBotSceneUCBRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBotSceneUCBRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBotSceneUCBRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -7706,6 +7924,112 @@ func (c *Client) ModifyAttackWhiteRuleWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyAttackWhiteRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBotSceneStatusRequest() (request *ModifyBotSceneStatusRequest) {
+    request = &ModifyBotSceneStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyBotSceneStatus")
+    
+    
+    return
+}
+
+func NewModifyBotSceneStatusResponse() (response *ModifyBotSceneStatusResponse) {
+    response = &ModifyBotSceneStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyBotSceneStatus
+// bot子场景开关
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_BOTSCENENOTEXISTERR = "InvalidParameter.BotSceneNotExistErr"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) ModifyBotSceneStatus(request *ModifyBotSceneStatusRequest) (response *ModifyBotSceneStatusResponse, err error) {
+    return c.ModifyBotSceneStatusWithContext(context.Background(), request)
+}
+
+// ModifyBotSceneStatus
+// bot子场景开关
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_BOTSCENENOTEXISTERR = "InvalidParameter.BotSceneNotExistErr"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) ModifyBotSceneStatusWithContext(ctx context.Context, request *ModifyBotSceneStatusRequest) (response *ModifyBotSceneStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyBotSceneStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBotSceneStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBotSceneStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBotSceneUCBRuleRequest() (request *ModifyBotSceneUCBRuleRequest) {
+    request = &ModifyBotSceneUCBRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyBotSceneUCBRule")
+    
+    
+    return
+}
+
+func NewModifyBotSceneUCBRuleResponse() (response *ModifyBotSceneUCBRuleResponse) {
+    response = &ModifyBotSceneUCBRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyBotSceneUCBRule
+// 【接口复用】场景化后更新Bot的UCB自定义规则，两个调用位置：1.BOT全局白名单 2.BOT场景配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_BOTNAMEREPEATERR = "InvalidParameter.BotNameRepeatErr"
+func (c *Client) ModifyBotSceneUCBRule(request *ModifyBotSceneUCBRuleRequest) (response *ModifyBotSceneUCBRuleResponse, err error) {
+    return c.ModifyBotSceneUCBRuleWithContext(context.Background(), request)
+}
+
+// ModifyBotSceneUCBRule
+// 【接口复用】场景化后更新Bot的UCB自定义规则，两个调用位置：1.BOT全局白名单 2.BOT场景配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_BOTNAMEREPEATERR = "InvalidParameter.BotNameRepeatErr"
+func (c *Client) ModifyBotSceneUCBRuleWithContext(ctx context.Context, request *ModifyBotSceneUCBRuleRequest) (response *ModifyBotSceneUCBRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyBotSceneUCBRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBotSceneUCBRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBotSceneUCBRuleResponse()
     err = c.Send(request, response)
     return
 }

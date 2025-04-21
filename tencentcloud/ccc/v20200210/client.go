@@ -1291,6 +1291,61 @@ func (c *Client) CreateUserSigWithContext(ctx context.Context, request *CreateUs
     return
 }
 
+func NewDeleteCCCSkillGroupRequest() (request *DeleteCCCSkillGroupRequest) {
+    request = &DeleteCCCSkillGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DeleteCCCSkillGroup")
+    
+    
+    return
+}
+
+func NewDeleteCCCSkillGroupResponse() (response *DeleteCCCSkillGroupResponse) {
+    response = &DeleteCCCSkillGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCCCSkillGroup
+// 删除技能组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteCCCSkillGroup(request *DeleteCCCSkillGroupRequest) (response *DeleteCCCSkillGroupResponse, err error) {
+    return c.DeleteCCCSkillGroupWithContext(context.Background(), request)
+}
+
+// DeleteCCCSkillGroup
+// 删除技能组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DeleteCCCSkillGroupWithContext(ctx context.Context, request *DeleteCCCSkillGroupRequest) (response *DeleteCCCSkillGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteCCCSkillGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCCCSkillGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCCCSkillGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteExtensionRequest() (request *DeleteExtensionRequest) {
     request = &DeleteExtensionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1316,8 +1371,8 @@ func NewDeleteExtensionResponse() (response *DeleteExtensionResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DeleteExtension(request *DeleteExtensionRequest) (response *DeleteExtensionResponse, err error) {
     return c.DeleteExtensionWithContext(context.Background(), request)
 }
@@ -1328,8 +1383,8 @@ func (c *Client) DeleteExtension(request *DeleteExtensionRequest) (response *Del
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DeleteExtensionWithContext(ctx context.Context, request *DeleteExtensionRequest) (response *DeleteExtensionResponse, err error) {
     if request == nil {
         request = NewDeleteExtensionRequest()

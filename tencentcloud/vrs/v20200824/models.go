@@ -128,6 +128,10 @@ type CreateVRSTaskRequestParams struct {
 
 	// 校验音频ID。（仅基础版声音复刻使用）
 	VPRAudioId *string `json:"VPRAudioId,omitnil,omitempty" name:"VPRAudioId"`
+
+	// 是否开启语音增强，0 - 关闭，1 - 开启 。默认关闭
+	// 语音增强仅适用于一句话复刻场景
+	EnableVoiceEnhance *uint64 `json:"EnableVoiceEnhance,omitnil,omitempty" name:"EnableVoiceEnhance"`
 }
 
 type CreateVRSTaskRequest struct {
@@ -176,6 +180,10 @@ type CreateVRSTaskRequest struct {
 
 	// 校验音频ID。（仅基础版声音复刻使用）
 	VPRAudioId *string `json:"VPRAudioId,omitnil,omitempty" name:"VPRAudioId"`
+
+	// 是否开启语音增强，0 - 关闭，1 - 开启 。默认关闭
+	// 语音增强仅适用于一句话复刻场景
+	EnableVoiceEnhance *uint64 `json:"EnableVoiceEnhance,omitnil,omitempty" name:"EnableVoiceEnhance"`
 }
 
 func (r *CreateVRSTaskRequest) ToJsonString() string {
@@ -201,6 +209,7 @@ func (r *CreateVRSTaskRequest) FromJsonString(s string) error {
 	delete(f, "ModelType")
 	delete(f, "TaskType")
 	delete(f, "VPRAudioId")
+	delete(f, "EnableVoiceEnhance")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVRSTaskRequest has unknown keys!", "")
 	}

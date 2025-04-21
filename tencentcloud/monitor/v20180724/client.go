@@ -5325,6 +5325,79 @@ func (c *Client) DescribePolicyGroupListWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribePolicyObjectCountRequest() (request *DescribePolicyObjectCountRequest) {
+    request = &DescribePolicyObjectCountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribePolicyObjectCount")
+    
+    
+    return
+}
+
+func NewDescribePolicyObjectCountResponse() (response *DescribePolicyObjectCountResponse) {
+    response = &DescribePolicyObjectCountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePolicyObjectCount
+// 查询策略组在每个地域下面绑定的对象数统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_EXETIMEOUT = "InternalError.ExeTimeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERPARAM = "InvalidParameter.InvalidParameterParam"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePolicyObjectCount(request *DescribePolicyObjectCountRequest) (response *DescribePolicyObjectCountResponse, err error) {
+    return c.DescribePolicyObjectCountWithContext(context.Background(), request)
+}
+
+// DescribePolicyObjectCount
+// 查询策略组在每个地域下面绑定的对象数统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_EXETIMEOUT = "InternalError.ExeTimeout"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERPARAM = "InvalidParameter.InvalidParameterParam"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePolicyObjectCountWithContext(ctx context.Context, request *DescribePolicyObjectCountRequest) (response *DescribePolicyObjectCountResponse, err error) {
+    if request == nil {
+        request = NewDescribePolicyObjectCountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePolicyObjectCount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePolicyObjectCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProductEventListRequest() (request *DescribeProductEventListRequest) {
     request = &DescribeProductEventListRequest{
         BaseRequest: &tchttp.BaseRequest{},

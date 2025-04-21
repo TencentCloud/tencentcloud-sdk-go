@@ -2142,6 +2142,9 @@ type DescribeModelVersionListRequestParams struct {
 
 	// 园区ID，当 Checked 参数传 True 时，该参数必须传值
 	CampusId *uint64 `json:"CampusId,omitnil,omitempty" name:"CampusId"`
+
+	// 型号关键字，可以实现模糊匹配搜索功能
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 }
 
 type DescribeModelVersionListRequest struct {
@@ -2158,6 +2161,9 @@ type DescribeModelVersionListRequest struct {
 
 	// 园区ID，当 Checked 参数传 True 时，该参数必须传值
 	CampusId *uint64 `json:"CampusId,omitnil,omitempty" name:"CampusId"`
+
+	// 型号关键字，可以实现模糊匹配搜索功能
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 }
 
 func (r *DescribeModelVersionListRequest) ToJsonString() string {
@@ -2176,6 +2182,7 @@ func (r *DescribeModelVersionListRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Checked")
 	delete(f, "CampusId")
+	delete(f, "ModelName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelVersionListRequest has unknown keys!", "")
 	}

@@ -5590,7 +5590,6 @@ type DescribeAdvancedStoreLocationResponseParams struct {
 	LakeFsStatus *string `json:"LakeFsStatus,omitnil,omitempty" name:"LakeFsStatus"`
 
 	// 托管存储桶类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BucketType *string `json:"BucketType,omitnil,omitempty" name:"BucketType"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7814,7 +7813,6 @@ func (r *DescribeResultDownloadRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeResultDownloadResponseParams struct {
 	// 下载文件路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 任务状态 init | queue | format | compress | success|  timeout | error
@@ -12643,7 +12641,6 @@ type NotebookSessionStatementInfo struct {
 	OutPut *StatementOutput `json:"OutPut,omitnil,omitempty" name:"OutPut"`
 
 	// 批任务id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BatchId *string `json:"BatchId,omitnil,omitempty" name:"BatchId"`
 
 	// 运行语句
@@ -12733,19 +12730,15 @@ type Other struct {
 
 type OtherCHDFSBinding struct {
 	// 产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
 
 	// 用户名称（该字段已废弃）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuperUser []*string `json:"SuperUser,omitnil,omitempty" name:"SuperUser"`
 
 	// vpc配置信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcInfo []*CHDFSProductVpcInfo `json:"VpcInfo,omitnil,omitempty" name:"VpcInfo"`
 
 	// 是否与该桶绑定（该字段已废弃）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsBind *bool `json:"IsBind,omitnil,omitempty" name:"IsBind"`
 }
 
@@ -14402,7 +14395,6 @@ type TaskResponseInfo struct {
 	OperateUin *string `json:"OperateUin,omitnil,omitempty" name:"OperateUin"`
 
 	// 计算资源名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataEngineName *string `json:"DataEngineName,omitnil,omitempty" name:"DataEngineName"`
 
 	// 导入类型是本地导入还是cos

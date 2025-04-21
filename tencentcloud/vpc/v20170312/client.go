@@ -19923,7 +19923,7 @@ func NewMigrateNetworkInterfaceResponse() (response *MigrateNetworkInterfaceResp
 // MigrateNetworkInterface
 // 本接口（MigrateNetworkInterface）用于弹性网卡迁移。
 //
-// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询[DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) `接口。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -19939,7 +19939,7 @@ func (c *Client) MigrateNetworkInterface(request *MigrateNetworkInterfaceRequest
 // MigrateNetworkInterface
 // 本接口（MigrateNetworkInterface）用于弹性网卡迁移。
 //
-// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询`DescribeVpcTaskResult`接口。
+// 本接口是异步完成，如需查询异步任务执行结果，请使用本接口返回的`RequestId`轮询[DescribeVpcTaskResult](https://cloud.tencent.com/document/api/215/59037) `接口。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
