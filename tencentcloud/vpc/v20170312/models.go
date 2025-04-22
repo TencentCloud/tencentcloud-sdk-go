@@ -4889,6 +4889,70 @@ func (r *CreateFlowLogResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateGlobalRoutesRequestParams struct {
+	// VPC唯一Id。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 全局路由对象。创建时必填参数： 'GatewayType'，'GatewayId'，'DestinationCidrBlock'。
+	GlobalRoutes []*GlobalRoute `json:"GlobalRoutes,omitnil,omitempty" name:"GlobalRoutes"`
+}
+
+type CreateGlobalRoutesRequest struct {
+	*tchttp.BaseRequest
+	
+	// VPC唯一Id。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 全局路由对象。创建时必填参数： 'GatewayType'，'GatewayId'，'DestinationCidrBlock'。
+	GlobalRoutes []*GlobalRoute `json:"GlobalRoutes,omitnil,omitempty" name:"GlobalRoutes"`
+}
+
+func (r *CreateGlobalRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGlobalRoutesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "GlobalRoutes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGlobalRoutesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGlobalRoutesResponseParams struct {
+	// 全局路由对象。
+	GlobalRouteSet []*GlobalRoute `json:"GlobalRouteSet,omitnil,omitempty" name:"GlobalRouteSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateGlobalRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateGlobalRoutesResponseParams `json:"Response"`
+}
+
+func (r *CreateGlobalRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGlobalRoutesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateHaVipRequestParams struct {
 	// `HAVIP`所在私有网络`ID`。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
@@ -9416,6 +9480,67 @@ func (r *DeleteFlowLogResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteFlowLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGlobalRoutesRequestParams struct {
+	// VPC唯一Id。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 全局路由实例唯一Id列表。
+	GlobalRouteIds []*string `json:"GlobalRouteIds,omitnil,omitempty" name:"GlobalRouteIds"`
+}
+
+type DeleteGlobalRoutesRequest struct {
+	*tchttp.BaseRequest
+	
+	// VPC唯一Id。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 全局路由实例唯一Id列表。
+	GlobalRouteIds []*string `json:"GlobalRouteIds,omitnil,omitempty" name:"GlobalRouteIds"`
+}
+
+func (r *DeleteGlobalRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGlobalRoutesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "GlobalRouteIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGlobalRoutesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGlobalRoutesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteGlobalRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteGlobalRoutesResponseParams `json:"Response"`
+}
+
+func (r *DeleteGlobalRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGlobalRoutesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14688,6 +14813,117 @@ func (r *DescribeGatewayFlowQosResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeGatewayFlowQosResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGlobalRoutesRequestParams struct {
+	// 过滤条件。
+	// <li>global-route-id - String - （过滤条件）如全局路由唯一 Id，形如：gr-bmenrwu2。</li>
+	// <li>vpc-id - String - （过滤条件）VPC唯一Id， 形如： vpc-mcqaoy0f。</li>
+	// <li>gateway-id - String - （过滤条件）下一跳对象。</li>
+	// <li>gateway-type - String -  是否必填：否 - （过滤条件）按下一跳类型进行过滤。支持 NORMAL_CVM
+	// </li>
+	// <li>cdc-id - String - （过滤条件）CDC实例ID，形如：cluster-gbo27yc4。</li>
+	// <li>description - String - （过滤条件）描述。</li>
+	// <li>dest-cidr - String - （过滤条件）Ipv4目标网段。</li>
+	// <li>subnet-route-algorithm - String - （过滤条件）支持的 ECMP算法有：
+	// 
+	//    - ECMP_QUINTUPLE_HASH：五元组hash
+	//    - ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash
+	//    - ECMP_DESTINATION_IP_HASH：目的IP hash
+	//    - ECMP_SOURCE_IP_HASH：源IP hash
+	// </li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 请求对象个数。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 全局路由唯一Id列表。
+	GlobalRouteIds []*string `json:"GlobalRouteIds,omitnil,omitempty" name:"GlobalRouteIds"`
+}
+
+type DescribeGlobalRoutesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件。
+	// <li>global-route-id - String - （过滤条件）如全局路由唯一 Id，形如：gr-bmenrwu2。</li>
+	// <li>vpc-id - String - （过滤条件）VPC唯一Id， 形如： vpc-mcqaoy0f。</li>
+	// <li>gateway-id - String - （过滤条件）下一跳对象。</li>
+	// <li>gateway-type - String -  是否必填：否 - （过滤条件）按下一跳类型进行过滤。支持 NORMAL_CVM
+	// </li>
+	// <li>cdc-id - String - （过滤条件）CDC实例ID，形如：cluster-gbo27yc4。</li>
+	// <li>description - String - （过滤条件）描述。</li>
+	// <li>dest-cidr - String - （过滤条件）Ipv4目标网段。</li>
+	// <li>subnet-route-algorithm - String - （过滤条件）支持的 ECMP算法有：
+	// 
+	//    - ECMP_QUINTUPLE_HASH：五元组hash
+	//    - ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash
+	//    - ECMP_DESTINATION_IP_HASH：目的IP hash
+	//    - ECMP_SOURCE_IP_HASH：源IP hash
+	// </li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移量。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 请求对象个数。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 全局路由唯一Id列表。
+	GlobalRouteIds []*string `json:"GlobalRouteIds,omitnil,omitempty" name:"GlobalRouteIds"`
+}
+
+func (r *DescribeGlobalRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGlobalRoutesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "GlobalRouteIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGlobalRoutesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGlobalRoutesResponseParams struct {
+	// 全局路由对象。
+	GlobalRouteSet []*GlobalRoute `json:"GlobalRouteSet,omitnil,omitempty" name:"GlobalRouteSet"`
+
+	// 符合条件的实例数量。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeGlobalRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGlobalRoutesResponseParams `json:"Response"`
+}
+
+func (r *DescribeGlobalRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGlobalRoutesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -23327,6 +23563,37 @@ func (r *GetCcnRegionBandwidthLimitsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GlobalRoute struct {
+	// 作为出参展示，表示VPC唯一Id，。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 全局路由唯一Id。
+	GlobalRouteId *string `json:"GlobalRouteId,omitnil,omitempty" name:"GlobalRouteId"`
+
+	// Ipv4目标网段。
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitnil,omitempty" name:"DestinationCidrBlock"`
+
+	// 下一跳类型，支持 NORMAL_CVM。
+	GatewayType *string `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+
+	// 下一跳对象，如果GatewayType类型是NORMAL_CVM填写子机IP。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 备注。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 创建时间。
+	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
+
+	// 支持的 ECMP算法有：
+	// 
+	// - ECMP_QUINTUPLE_HASH：五元组hash
+	// - ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash
+	// - ECMP_DESTINATION_IP_HASH：目的IP hash
+	// - ECMP_SOURCE_IP_HASH：源IP hash。
+	SubnetRouteAlgorithm *string `json:"SubnetRouteAlgorithm,omitnil,omitempty" name:"SubnetRouteAlgorithm"`
+}
+
 type HaVip struct {
 	// `HAVIP`的`ID`，是`HAVIP`的唯一标识。
 	HaVipId *string `json:"HaVipId,omitnil,omitempty" name:"HaVipId"`
@@ -26150,6 +26417,142 @@ func (r *ModifyGatewayFlowQosResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyGatewayFlowQosResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGlobalRouteECMPAlgorithmRequestParams struct {
+	// VPC唯一Id。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// Ipv4目标网段。
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitnil,omitempty" name:"DestinationCidrBlock"`
+
+	// 支持的 ECMP算法有：ECMP_QUINTUPLE_HASH：五元组hash，ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash，ECMP_DESTINATION_IP_HASH：目的IP hash，ECMP_SOURCE_IP_HASH：源IP hash。
+	SubnetRouteAlgorithm *string `json:"SubnetRouteAlgorithm,omitnil,omitempty" name:"SubnetRouteAlgorithm"`
+
+	// CDC 集群唯一 ID。
+	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
+}
+
+type ModifyGlobalRouteECMPAlgorithmRequest struct {
+	*tchttp.BaseRequest
+	
+	// VPC唯一Id。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// Ipv4目标网段。
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitnil,omitempty" name:"DestinationCidrBlock"`
+
+	// 支持的 ECMP算法有：ECMP_QUINTUPLE_HASH：五元组hash，ECMP_SOURCE_DESTINATION_IP_HASH：源和目的IP hash，ECMP_DESTINATION_IP_HASH：目的IP hash，ECMP_SOURCE_IP_HASH：源IP hash。
+	SubnetRouteAlgorithm *string `json:"SubnetRouteAlgorithm,omitnil,omitempty" name:"SubnetRouteAlgorithm"`
+
+	// CDC 集群唯一 ID。
+	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
+}
+
+func (r *ModifyGlobalRouteECMPAlgorithmRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGlobalRouteECMPAlgorithmRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "DestinationCidrBlock")
+	delete(f, "SubnetRouteAlgorithm")
+	delete(f, "CdcId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyGlobalRouteECMPAlgorithmRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGlobalRouteECMPAlgorithmResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyGlobalRouteECMPAlgorithmResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyGlobalRouteECMPAlgorithmResponseParams `json:"Response"`
+}
+
+func (r *ModifyGlobalRouteECMPAlgorithmResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGlobalRouteECMPAlgorithmResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGlobalRoutesRequestParams struct {
+	// VPC唯一Id。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 全局路由对象。仅支持修改：'Description'，其他字段暂不支持。
+	GlobalRoutes []*GlobalRoute `json:"GlobalRoutes,omitnil,omitempty" name:"GlobalRoutes"`
+}
+
+type ModifyGlobalRoutesRequest struct {
+	*tchttp.BaseRequest
+	
+	// VPC唯一Id。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 全局路由对象。仅支持修改：'Description'，其他字段暂不支持。
+	GlobalRoutes []*GlobalRoute `json:"GlobalRoutes,omitnil,omitempty" name:"GlobalRoutes"`
+}
+
+func (r *ModifyGlobalRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGlobalRoutesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "GlobalRoutes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyGlobalRoutesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGlobalRoutesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyGlobalRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyGlobalRoutesResponseParams `json:"Response"`
+}
+
+func (r *ModifyGlobalRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGlobalRoutesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -514,6 +514,123 @@ func (r *DescribeInstantTasksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeNodeGroupsRequestParams struct {
+	// 节点类型。0: 全部 1: IDC 2: LastMile 3: Mobile，不填默认为0
+	NodeType []*int64 `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 节点分类。0: 全部 1: PC 2：Mobile，不填默认为0。PC分类包括IDC和LM节点类型，Mobile分类包括Mobile节点类型。与NodeType参数取交集。
+	TaskCategory *int64 `json:"TaskCategory,omitnil,omitempty" name:"TaskCategory"`
+
+	// IP类型。0: 全部 1: IPv4 2: IPv6，不填默认为0
+	IPType *int64 `json:"IPType,omitnil,omitempty" name:"IPType"`
+
+	// 拨测点描述关键词。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 地域ID。0: 精选拨测点 1: 国内 2: 港澳台 3: 亚太 4: 欧洲与美洲 5: 非洲与大洋洲，不填默认为0
+	RegionID *int64 `json:"RegionID,omitnil,omitempty" name:"RegionID"`
+
+	// 省份或国家ID。0表示全部，不填默认为0
+	DistrictID *int64 `json:"DistrictID,omitnil,omitempty" name:"DistrictID"`
+
+	// 运营商ID。0: 全部 1: 中国电信 2: 中国联通 3: 中国移动 99: 其他，不填默认为0
+	NetServiceID *int64 `json:"NetServiceID,omitnil,omitempty" name:"NetServiceID"`
+
+	// 节点组类型。0: 高级拨测点组 1: 可用性节点 2: 我的拨测点组，不填默认为0
+	NodeGroupType *int64 `json:"NodeGroupType,omitnil,omitempty" name:"NodeGroupType"`
+
+	// 任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois，不填默认为0，不对任务类型做过滤
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。
+	ProbeType *uint64 `json:"ProbeType,omitnil,omitempty" name:"ProbeType"`
+}
+
+type DescribeNodeGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 节点类型。0: 全部 1: IDC 2: LastMile 3: Mobile，不填默认为0
+	NodeType []*int64 `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 节点分类。0: 全部 1: PC 2：Mobile，不填默认为0。PC分类包括IDC和LM节点类型，Mobile分类包括Mobile节点类型。与NodeType参数取交集。
+	TaskCategory *int64 `json:"TaskCategory,omitnil,omitempty" name:"TaskCategory"`
+
+	// IP类型。0: 全部 1: IPv4 2: IPv6，不填默认为0
+	IPType *int64 `json:"IPType,omitnil,omitempty" name:"IPType"`
+
+	// 拨测点描述关键词。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 地域ID。0: 精选拨测点 1: 国内 2: 港澳台 3: 亚太 4: 欧洲与美洲 5: 非洲与大洋洲，不填默认为0
+	RegionID *int64 `json:"RegionID,omitnil,omitempty" name:"RegionID"`
+
+	// 省份或国家ID。0表示全部，不填默认为0
+	DistrictID *int64 `json:"DistrictID,omitnil,omitempty" name:"DistrictID"`
+
+	// 运营商ID。0: 全部 1: 中国电信 2: 中国联通 3: 中国移动 99: 其他，不填默认为0
+	NetServiceID *int64 `json:"NetServiceID,omitnil,omitempty" name:"NetServiceID"`
+
+	// 节点组类型。0: 高级拨测点组 1: 可用性节点 2: 我的拨测点组，不填默认为0
+	NodeGroupType *int64 `json:"NodeGroupType,omitnil,omitempty" name:"NodeGroupType"`
+
+	// 任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois，不填默认为0，不对任务类型做过滤
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。
+	ProbeType *uint64 `json:"ProbeType,omitnil,omitempty" name:"ProbeType"`
+}
+
+func (r *DescribeNodeGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNodeGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NodeType")
+	delete(f, "TaskCategory")
+	delete(f, "IPType")
+	delete(f, "Name")
+	delete(f, "RegionID")
+	delete(f, "DistrictID")
+	delete(f, "NetServiceID")
+	delete(f, "NodeGroupType")
+	delete(f, "TaskType")
+	delete(f, "ProbeType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNodeGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNodeGroupsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNodeGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNodeGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeNodeGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNodeGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeNodesRequestParams struct {
 	// 节点类型
 	// <li> 1 = IDC </li>

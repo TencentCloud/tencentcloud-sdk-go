@@ -584,7 +584,6 @@ type ApplicationProxyRule struct {
 	SessionPersist *bool `json:"SessionPersist,omitnil,omitempty" name:"SessionPersist"`
 
 	// 会话保持的时间，只有当SessionPersist为true时，该值才会生效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionPersistTime *uint64 `json:"SessionPersistTime,omitnil,omitempty" name:"SessionPersistTime"`
 
 	// 源站端口，支持格式：
@@ -593,7 +592,6 @@ type ApplicationProxyRule struct {
 	OriginPort *string `json:"OriginPort,omitnil,omitempty" name:"OriginPort"`
 
 	// 规则标签。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleTag *string `json:"RuleTag,omitnil,omitempty" name:"RuleTag"`
 }
 
@@ -1091,7 +1089,6 @@ type Cache struct {
 
 	// 缓存过期时间设置。
 	// 单位为秒，最大可设置为 365 天。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CacheTime *int64 `json:"CacheTime,omitnil,omitempty" name:"CacheTime"`
 
 	// 是否开启强制缓存，取值有：
@@ -1145,13 +1142,11 @@ type CacheKey struct {
 	// 是否开启全路径缓存，取值有：
 	// <li>on：开启全路径缓存（即关闭参数忽略）；</li>
 	// <li>off：关闭全路径缓存（即开启参数忽略）。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FullUrlCache *string `json:"FullUrlCache,omitnil,omitempty" name:"FullUrlCache"`
 
 	// 是否忽略大小写缓存，取值有：
 	// <li>on：忽略；</li>
 	// <li>off：不忽略。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IgnoreCase *string `json:"IgnoreCase,omitnil,omitempty" name:"IgnoreCase"`
 
 	// CacheKey 中包含请求参数。
@@ -1266,7 +1261,6 @@ type CachePrefresh struct {
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
 	// 缓存预刷新百分比，取值范围：1-99。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Percent *int64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 }
 
@@ -1432,7 +1426,6 @@ type ClientIpHeader struct {
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
 	// 回源时，存放客户端 IP 的请求头名称。当 Switch 为 on 时，该参数必填。该参数不允许填写 X-Forwarded-For。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeaderName *string `json:"HeaderName,omitnil,omitempty" name:"HeaderName"`
 }
 
@@ -1444,10 +1437,9 @@ type CnameStatus struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cname *string `json:"Cname,omitnil,omitempty" name:"Cname"`
 
-	// Cname状态信息，取值有：
+	// CNAME 状态信息，取值有：
 	// <li>active：生效；</li>
-	// <li>moved：不生效。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// <li>moved：不生效；</li>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -1468,7 +1460,6 @@ type Compression struct {
 	// 支持的压缩算法列表，取值有：
 	// <li>brotli：brotli算法；</li>
 	// <li>gzip：gzip算法。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Algorithms []*string `json:"Algorithms,omitnil,omitempty" name:"Algorithms"`
 }
 
@@ -4042,17 +4033,14 @@ type CustomField struct {
 	// <li>RspHeader：从 HTTP 响应头中提取指定字段值；</li>
 	// <li>Cookie: 从 Cookie 中提取指定字段值；</li>
 	// <li>ReqBody: 从 HTTP 请求正文中通过 Google RE2 正则表达式提取指定内容。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 根据字段类型（Name）填入字段值的定义。需要区分大小写。
 	// <li>当字段类型为 ReqHeader、RspHeader、Cookie 时，填入需要提取值的参数名称，例如：Accept-Language。可输入 1-100 个字符，允许的字符开头为字母，中间为字母、数字、-，结尾为字母、数字；</li>
 	// <li>当字段类型为 ReqBody 时，填入 Google RE2 正则表达式，正则表达式长度上限为 4KB。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
 	// 是否投递该字段，不填表示不投递此字段。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
 }
 
@@ -4101,11 +4089,9 @@ type CustomTime struct {
 
 type CustomizedHeader struct {
 	// 自定义头部 Key。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 自定义头部 Value。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -4191,49 +4177,39 @@ type DDosProtectionConfig struct {
 
 type DefaultServerCertInfo struct {
 	// 服务器证书 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 证书备注名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// 证书类型，取值有：
 	// <li>default: 默认证书;</li>
 	// <li>upload:用户上传;</li>
 	// <li>managed:腾讯云托管。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 证书过期时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 证书生效时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EffectiveTime *string `json:"EffectiveTime,omitnil,omitempty" name:"EffectiveTime"`
 
 	// 证书公用名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CommonName *string `json:"CommonName,omitnil,omitempty" name:"CommonName"`
 
 	// 证书SAN域名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubjectAltName []*string `json:"SubjectAltName,omitnil,omitempty" name:"SubjectAltName"`
 
 	// 部署状态，取值有：
 	// <li>processing: 部署中；</li>
 	// <li>deployed: 已部署；</li>
 	// <li>failed: 部署失败。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// Status为失败时,此字段返回失败原因。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 证书算法。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignAlgo *string `json:"SignAlgo,omitnil,omitempty" name:"SignAlgo"`
 }
 
@@ -5511,7 +5487,6 @@ type DeployRecord struct {
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 发布记录 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
 	// 变更说明。
@@ -10887,7 +10862,6 @@ type ForceRedirect struct {
 	// 重定向状态码，取值有：
 	// <li>301：301跳转；</li>
 	// <li>302：302跳转。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RedirectStatusCode *int64 `json:"RedirectStatusCode,omitnil,omitempty" name:"RedirectStatusCode"`
 }
 
@@ -11209,19 +11183,16 @@ type Hsts struct {
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
 	// MaxAge 数值。单位为秒，最大值为1天。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxAge *int64 `json:"MaxAge,omitnil,omitempty" name:"MaxAge"`
 
 	// 是否包含子域名，取值有：
 	// <li>on：开启；</li>
 	// <li>off：关闭。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncludeSubDomains *string `json:"IncludeSubDomains,omitnil,omitempty" name:"IncludeSubDomains"`
 
 	// 是否开启预加载，取值有：
 	// <li>on：开启；</li>
 	// <li>off：关闭。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Preload *string `json:"Preload,omitnil,omitempty" name:"Preload"`
 }
 
@@ -11229,13 +11200,11 @@ type Https struct {
 	// http2 配置开关，取值有：
 	// <li>on：开启；</li>
 	// <li>off：关闭。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Http2 *string `json:"Http2,omitnil,omitempty" name:"Http2"`
 
 	// OCSP 配置开关，取值有：
 	// <li>on：开启；</li>
 	// <li>off：关闭。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcspStapling *string `json:"OcspStapling,omitnil,omitempty" name:"OcspStapling"`
 
 	// Tls 版本设置，取值有：
@@ -11243,7 +11212,6 @@ type Https struct {
 	// <li>TLSV1.1：TLSv1.1版本；</li>
 	// <li>TLSV1.2：TLSv1.2版本；</li>
 	// <li>TLSv1.3：TLSv1.3版本。</li>修改时必须开启连续的版本。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TlsVersion []*string `json:"TlsVersion,omitnil,omitempty" name:"TlsVersion"`
 
 	// HSTS 配置。
@@ -11257,14 +11225,12 @@ type Https struct {
 	// 申请类型，取值有：
 	// <li>apply：托管EdgeOne；</li>
 	// <li>none：不托管EdgeOne。</li>不填，默认取值为none。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplyType *string `json:"ApplyType,omitnil,omitempty" name:"ApplyType"`
 
 	// 密码套件，取值有：
 	// <li>loose-v2023：提供高兼容性，安全性一般，支持 TLS 1.0-1.3 密码套件；</li>
 	// <li>general-v2023：提供较高兼容性，安全性中等，支持 TLS 1.2-1.3 密码套件；</li>
 	// <li>strict-v2023：提供高安全性能，禁用所有含不安全隐患的加密套件，支持 TLS 1.2-1.3 密码套件。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CipherSuite *string `json:"CipherSuite,omitnil,omitempty" name:"CipherSuite"`
 }
 
@@ -11324,7 +11290,6 @@ type Identification struct {
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 
 	// 验证子域名。验证站点时，该值为空。验证子域名是为具体子域名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 验证状态，取值有：
@@ -11336,7 +11301,6 @@ type Identification struct {
 	Ascription *AscriptionInfo `json:"Ascription,omitnil,omitempty" name:"Ascription"`
 
 	// 域名当前的 NS 记录。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalNameServers []*string `json:"OriginalNameServers,omitnil,omitempty" name:"OriginalNameServers"`
 
 	// 站点归属权校验：文件校验信息。
@@ -15061,24 +15025,20 @@ type OfflineCacheParameters struct {
 
 type Origin struct {
 	// 主源站列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Origins []*string `json:"Origins,omitnil,omitempty" name:"Origins"`
 
 	// 备源站列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupOrigins []*string `json:"BackupOrigins,omitnil,omitempty" name:"BackupOrigins"`
 
 	// 回源协议配置，取值有：
 	// <li>http：强制 http 回源；</li>
 	// <li>follow：协议跟随回源；</li>
 	// <li>https：强制 https 回源。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginPullProtocol *string `json:"OriginPullProtocol,omitnil,omitempty" name:"OriginPullProtocol"`
 
 	// 源站为腾讯云 COS 时，是否为私有访问 bucket，取值有：
 	// <li>on：私有访问；</li>
 	// <li>off：公共访问。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosPrivateAccess *string `json:"CosPrivateAccess,omitnil,omitempty" name:"CosPrivateAccess"`
 }
 
@@ -15168,7 +15128,6 @@ type OriginGroup struct {
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 回源Host Header。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostHeader *string `json:"HostHeader,omitnil,omitempty" name:"HostHeader"`
 }
 
@@ -15455,7 +15414,6 @@ type PostMaxSize struct {
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
 	// 最大限制，取值在1MB和500MB之间。单位字节。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxSize *int64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 }
 
@@ -15527,11 +15485,9 @@ type QueryString struct {
 	// CacheKey使用QueryString的方式，取值有：
 	// <li>includeCustom：使用部分url参数；</li>
 	// <li>excludeCustom：排除部分url参数。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
 	// 使用/排除的url参数数组。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value []*string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -16539,35 +16495,27 @@ type SecurityType struct {
 
 type ServerCertInfo struct {
 	// 服务器证书 ID。来源于 SSL 侧，您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/ssl) 查看 CertId。
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 证书备注名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 
 	// 证书类型，取值有：
 	// <li>default：默认证书；</li>
 	// <li>upload：用户上传；</li>
 	// <li>managed：腾讯云托管。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 证书过期时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 证书部署时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeployTime *string `json:"DeployTime,omitnil,omitempty" name:"DeployTime"`
 
 	// 签名算法。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignAlgo *string `json:"SignAlgo,omitnil,omitempty" name:"SignAlgo"`
 
 	// 证书归属域名名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CommonName *string `json:"CommonName,omitnil,omitempty" name:"CommonName"`
 }
 
@@ -16789,14 +16737,14 @@ type Task struct {
 	// 节点缓存清除方法，取值有：
 	// <li>invalidate：标记过期，用户请求时触发回源校验，即发送带有 If-None-Match 和 If-Modified-Since 头部的 HTTP 条件请求。若源站响应 200，则节点会回源拉取新的资源并更新缓存；若源站响应 304，则节点不会更新缓存；</li>
 	// <li>delete：直接删除节点缓存，用户请求时触发回源拉取资源。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 
 	// 状态。取值有：
 	// <li>processing：处理中；</li>
 	// <li>success：成功；</li>
 	// <li> failed：失败；</li>
-	// <li>timeout：超时。</li>
+	// <li>timeout：超时；</li>
+	// <li>canceled：已取消。</li>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 任务创建时间。
@@ -17285,7 +17233,6 @@ type Zone struct {
 	ActiveStatus *string `json:"ActiveStatus,omitnil,omitempty" name:"ActiveStatus"`
 
 	// 站点别名。数字、英文、-和_组合，限制20个字符。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AliasZoneName *string `json:"AliasZoneName,omitnil,omitempty" name:"AliasZoneName"`
 
 	// 是否伪站点，取值有：

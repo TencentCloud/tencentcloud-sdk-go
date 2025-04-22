@@ -169,6 +169,65 @@ func (c *Client) CreateDeviceVirtualGroupWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreatePrivilegeCodeRequest() (request *CreatePrivilegeCodeRequest) {
+    request = &CreatePrivilegeCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "CreatePrivilegeCode")
+    
+    
+    return
+}
+
+func NewCreatePrivilegeCodeResponse() (response *CreatePrivilegeCodeResponse) {
+    response = &CreatePrivilegeCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePrivilegeCode
+// 生成特权码，私有化调用path为：capi/Assets/Device/CreatePrivilegeCode，生成的特权码、卸载码，仅对该设备当天有效
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreatePrivilegeCode(request *CreatePrivilegeCodeRequest) (response *CreatePrivilegeCodeResponse, err error) {
+    return c.CreatePrivilegeCodeWithContext(context.Background(), request)
+}
+
+// CreatePrivilegeCode
+// 生成特权码，私有化调用path为：capi/Assets/Device/CreatePrivilegeCode，生成的特权码、卸载码，仅对该设备当天有效
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreatePrivilegeCodeWithContext(ctx context.Context, request *CreatePrivilegeCodeRequest) (response *CreatePrivilegeCodeResponse, err error) {
+    if request == nil {
+        request = NewCreatePrivilegeCodeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePrivilegeCode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePrivilegeCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAccountGroupsRequest() (request *DescribeAccountGroupsRequest) {
     request = &DescribeAccountGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -450,6 +509,57 @@ func (c *Client) DescribeRootAccountGroupWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeRootAccountGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSoftCensusListByDeviceRequest() (request *DescribeSoftCensusListByDeviceRequest) {
+    request = &DescribeSoftCensusListByDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeSoftCensusListByDevice")
+    
+    
+    return
+}
+
+func NewDescribeSoftCensusListByDeviceResponse() (response *DescribeSoftCensusListByDeviceResponse) {
+    response = &DescribeSoftCensusListByDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSoftCensusListByDevice
+// 查看终端树下的软件列表,私有化调用path为：capi/Software/DescribeSoftCensusListByDevice
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) DescribeSoftCensusListByDevice(request *DescribeSoftCensusListByDeviceRequest) (response *DescribeSoftCensusListByDeviceResponse, err error) {
+    return c.DescribeSoftCensusListByDeviceWithContext(context.Background(), request)
+}
+
+// DescribeSoftCensusListByDevice
+// 查看终端树下的软件列表,私有化调用path为：capi/Software/DescribeSoftCensusListByDevice
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) DescribeSoftCensusListByDeviceWithContext(ctx context.Context, request *DescribeSoftCensusListByDeviceRequest) (response *DescribeSoftCensusListByDeviceResponse, err error) {
+    if request == nil {
+        request = NewDescribeSoftCensusListByDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSoftCensusListByDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSoftCensusListByDeviceResponse()
     err = c.Send(request, response)
     return
 }

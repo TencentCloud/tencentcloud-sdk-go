@@ -1504,6 +1504,9 @@ type ClusterV2 struct {
 
 	// 是否开启cls日志功能
 	EnableLogCollection *bool `json:"EnableLogCollection,omitnil,omitempty" name:"EnableLogCollection"`
+
+	// 集群状态的原因
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 }
 
 type CommonOption struct {

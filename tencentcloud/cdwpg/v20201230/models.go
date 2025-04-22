@@ -41,15 +41,12 @@ type AccountInfo struct {
 
 type CBSSpec struct {
 	// 盘类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// 大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
 	// 个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiskCount *int64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
 }
 
@@ -126,15 +123,12 @@ type ConfigHistory struct {
 
 type ConfigParams struct {
 	// 名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParameterName *string `json:"ParameterName,omitnil,omitempty" name:"ParameterName"`
 
 	// 值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParameterValue *string `json:"ParameterValue,omitnil,omitempty" name:"ParameterValue"`
 
 	// 修改前的值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParameterOldValue *string `json:"ParameterOldValue,omitnil,omitempty" name:"ParameterOldValue"`
 }
 

@@ -327,6 +327,59 @@ func (c *Client) DescribeInstantTasksWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeNodeGroupsRequest() (request *DescribeNodeGroupsRequest) {
+    request = &DescribeNodeGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cat", APIVersion, "DescribeNodeGroups")
+    
+    
+    return
+}
+
+func NewDescribeNodeGroupsResponse() (response *DescribeNodeGroupsResponse) {
+    response = &DescribeNodeGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNodeGroups
+// 获取拨测点组（可用性拨测点组、高级拨测点组、我的拨测点组）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeNodeGroups(request *DescribeNodeGroupsRequest) (response *DescribeNodeGroupsResponse, err error) {
+    return c.DescribeNodeGroupsWithContext(context.Background(), request)
+}
+
+// DescribeNodeGroups
+// 获取拨测点组（可用性拨测点组、高级拨测点组、我的拨测点组）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeNodeGroupsWithContext(ctx context.Context, request *DescribeNodeGroupsRequest) (response *DescribeNodeGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeNodeGroupsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNodeGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNodeGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNodesRequest() (request *DescribeNodesRequest) {
     request = &DescribeNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -350,13 +403,8 @@ func NewDescribeNodesResponse() (response *DescribeNodesResponse) {
 // 获取拨测节点
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
-//  FAILEDOPERATION_ESQUERYERROR = "FailedOperation.ESQueryError"
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeNodes(request *DescribeNodesRequest) (response *DescribeNodesResponse, err error) {
     return c.DescribeNodesWithContext(context.Background(), request)
@@ -366,13 +414,8 @@ func (c *Client) DescribeNodes(request *DescribeNodesRequest) (response *Describ
 // 获取拨测节点
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
-//  FAILEDOPERATION_ESQUERYERROR = "FailedOperation.ESQueryError"
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeNodesWithContext(ctx context.Context, request *DescribeNodesRequest) (response *DescribeNodesResponse, err error) {
     if request == nil {

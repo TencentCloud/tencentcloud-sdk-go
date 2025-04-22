@@ -20,6 +20,16 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AgentDebugInfo struct {
+	// 工具、大模型的输入信息，json
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Input *string `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 工具、大模型的输出信息，json
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
+}
+
 type AgentProcedure struct {
 	// 索引
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1520,7 +1530,7 @@ func (r *CreateRejectedQuestionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateReleaseRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 发布描述
@@ -1530,7 +1540,7 @@ type CreateReleaseRequestParams struct {
 type CreateReleaseRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 发布描述
@@ -4344,6 +4354,12 @@ func (r *ExportUnsatisfiedReplyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ExtraInfo struct {
+	// ECharts信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EChartsInfo []*string `json:"EChartsInfo,omitnil,omitempty" name:"EChartsInfo"`
+}
+
 type FileInfo struct {
 	// 文件名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4991,6 +5007,9 @@ type GetMsgRecordRequestParams struct {
 
 	// 场景, 体验: 1; 正式: 2
 	Scene *uint64 `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// 传该值，代表拉取该记录id的前后总共count条消息记录
+	MidRecordId *string `json:"MidRecordId,omitnil,omitempty" name:"MidRecordId"`
 }
 
 type GetMsgRecordRequest struct {
@@ -5013,6 +5032,9 @@ type GetMsgRecordRequest struct {
 
 	// 场景, 体验: 1; 正式: 2
 	Scene *uint64 `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// 传该值，代表拉取该记录id的前后总共count条消息记录
+	MidRecordId *string `json:"MidRecordId,omitnil,omitempty" name:"MidRecordId"`
 }
 
 func (r *GetMsgRecordRequest) ToJsonString() string {
@@ -5033,6 +5055,7 @@ func (r *GetMsgRecordRequest) FromJsonString(s string) error {
 	delete(f, "LastRecordId")
 	delete(f, "BotAppKey")
 	delete(f, "Scene")
+	delete(f, "MidRecordId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetMsgRecordRequest has unknown keys!", "")
 	}
@@ -6506,6 +6529,9 @@ type ListDocItem struct {
 	// 文档创建落库时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 文档所属分类ID
+	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 }
 
 // Predefined struct for user
@@ -7175,7 +7201,7 @@ func (r *ListRejectedQuestionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListReleaseConfigPreviewRequestParams struct {
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 页码
@@ -7206,7 +7232,7 @@ type ListReleaseConfigPreviewRequestParams struct {
 type ListReleaseConfigPreviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 机器人ID
+	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
 
 	// 页码
@@ -8930,6 +8956,10 @@ type MsgRecord struct {
 	// Agent的思考过程信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AgentThought *AgentThought `json:"AgentThought,omitnil,omitempty" name:"AgentThought"`
+
+	// 扩展信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraInfo *ExtraInfo `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
 }
 
 type MsgRecordReference struct {
@@ -9054,6 +9084,10 @@ type ProcedureDebugging struct {
 	// 工作流调试信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkFlow *WorkFlowSummary `json:"WorkFlow,omitnil,omitempty" name:"WorkFlow"`
+
+	// Agent调试信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Agent *AgentDebugInfo `json:"Agent,omitnil,omitempty" name:"Agent"`
 }
 
 type QACate struct {
@@ -9152,7 +9186,7 @@ type QueryRewriteRequestParams struct {
 	// 需要改写的问题
 	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
 
-	// 需要改写的多轮历史会话
+	// 需要改写的多轮历史会话，每轮历史对话需要包含user（问）和assistant（答）成对输入，由于模型字符限制，最多提供4轮对话。
 	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
 
 	// 模型名称
@@ -9165,7 +9199,7 @@ type QueryRewriteRequest struct {
 	// 需要改写的问题
 	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
 
-	// 需要改写的多轮历史会话
+	// 需要改写的多轮历史会话，每轮历史对话需要包含user（问）和assistant（答）成对输入，由于模型字符限制，最多提供4轮对话。
 	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
 
 	// 模型名称

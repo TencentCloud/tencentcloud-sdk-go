@@ -584,6 +584,9 @@ const (
 	// 引用负载均衡的7层域名服务正在部署中，请稍后再编辑。
 	INVALIDPARAMETER_LOADBALANCERBINDL7NOTINSTABLESTATUS = "InvalidParameter.LoadBalancerBindL7NotInStableStatus"
 
+	// 负载均衡器绑定的源站组无效。
+	INVALIDPARAMETER_LOADBALANCERBINDORIGINGROUPINVALID = "InvalidParameter.LoadBalancerBindOriginGroupInvalid"
+
 	// 同一站点下的负载均衡名称不可以重复。
 	INVALIDPARAMETER_LOADBALANCERNAMEREPEATED = "InvalidParameter.LoadBalancerNameRepeated"
 

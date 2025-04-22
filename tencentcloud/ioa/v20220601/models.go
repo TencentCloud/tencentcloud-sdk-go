@@ -236,6 +236,77 @@ type CreateDeviceVirtualGroupRspData struct {
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
+// Predefined struct for user
+type CreatePrivilegeCodeRequestParams struct {
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// 必填；设备唯一标识符;
+	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+}
+
+type CreatePrivilegeCodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// 必填；设备唯一标识符;
+	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+}
+
+func (r *CreatePrivilegeCodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrivilegeCodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainInstanceId")
+	delete(f, "Mid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrivilegeCodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrivilegeCodeResponseParams struct {
+	// 业务响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *CreatePrivilegeCodeRspData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePrivilegeCodeResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePrivilegeCodeResponseParams `json:"Response"`
+}
+
+func (r *CreatePrivilegeCodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrivilegeCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreatePrivilegeCodeRspData struct {
+	// 特权码数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
+}
+
 type DescribeAccountGroupsData struct {
 	// 账号分组名全路径，点分格式
 	NamePath *string `json:"NamePath,omitnil,omitempty" name:"NamePath"`
@@ -952,6 +1023,138 @@ func (r *DescribeRootAccountGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRootAccountGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeSoftCensusListByDeviceData struct {
+	// 终端用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// mac地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MacAddr *string `json:"MacAddr,omitnil,omitempty" name:"MacAddr"`
+
+	// 终端计算机名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 终端组路径名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupNamePath *string `json:"GroupNamePath,omitnil,omitempty" name:"GroupNamePath"`
+
+	// IP地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 唯一标识Mid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+
+	// 企业账户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IoaUserName *string `json:"IoaUserName,omitnil,omitempty" name:"IoaUserName"`
+
+	// 终端分组Id(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 终端组名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 终端列表Id(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 软件数量(只支持32位)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SoftNum *int64 `json:"SoftNum,omitnil,omitempty" name:"SoftNum"`
+
+	// 盗版风险（1=风险;2=未知）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PiracyRisk *int64 `json:"PiracyRisk,omitnil,omitempty" name:"PiracyRisk"`
+}
+
+type DescribeSoftCensusListByDevicePageData struct {
+	// 软件统计响应对象集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*DescribeSoftCensusListByDeviceData `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 分页公共对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Page *Paging `json:"Page,omitnil,omitempty" name:"Page"`
+}
+
+// Predefined struct for user
+type DescribeSoftCensusListByDeviceRequestParams struct {
+	// 必填，系统类型（0: win，1：linux，2: mac，4：android，5：ios  ）
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+
+	// 必填，终端分组ID
+	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 过滤条件、分页参数   <li>Name - String - 是否必填：否 - 操作符: eq,like,ilike  - 排序支持：否 - 备注：字段含义，终端名。</li> 	<li>UserName - String - 是否必填：否 - 操作符: eq,like,ilike  - 排序支持：否 - 备注：字段含义，终端用户名。</li> 	<li>IoaUserName - String - 是否必填：否 - 操作符: eq,like,ilike  - 排序支持：否 - 备注：字段含义，最近登录账号。</li> 	<li>Ip - String - 是否必填：否 - 操作符: eq,like,ilike  - 排序支持：否 - 备注：字段含义，IP地址。</li> 	<li>MacAddr - String - 是否必填：否 - 操作符: eq,like,ilike  - 排序支持：否 - 备注：字段含义，MAC地址。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+}
+
+type DescribeSoftCensusListByDeviceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 必填，系统类型（0: win，1：linux，2: mac，4：android，5：ios  ）
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+
+	// 必填，终端分组ID
+	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 过滤条件、分页参数   <li>Name - String - 是否必填：否 - 操作符: eq,like,ilike  - 排序支持：否 - 备注：字段含义，终端名。</li> 	<li>UserName - String - 是否必填：否 - 操作符: eq,like,ilike  - 排序支持：否 - 备注：字段含义，终端用户名。</li> 	<li>IoaUserName - String - 是否必填：否 - 操作符: eq,like,ilike  - 排序支持：否 - 备注：字段含义，最近登录账号。</li> 	<li>Ip - String - 是否必填：否 - 操作符: eq,like,ilike  - 排序支持：否 - 备注：字段含义，IP地址。</li> 	<li>MacAddr - String - 是否必填：否 - 操作符: eq,like,ilike  - 排序支持：否 - 备注：字段含义，MAC地址。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+}
+
+func (r *DescribeSoftCensusListByDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSoftCensusListByDeviceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OsType")
+	delete(f, "GroupId")
+	delete(f, "Condition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSoftCensusListByDeviceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSoftCensusListByDeviceResponseParams struct {
+	// 业务响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DescribeSoftCensusListByDevicePageData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSoftCensusListByDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSoftCensusListByDeviceResponseParams `json:"Response"`
+}
+
+func (r *DescribeSoftCensusListByDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSoftCensusListByDeviceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

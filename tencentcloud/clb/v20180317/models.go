@@ -238,7 +238,6 @@ type AssociationItem struct {
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
 	// 关联目标组的权重， 该参数只有v2新版目标组生效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 
@@ -342,7 +341,6 @@ type Backend struct {
 	PublicIpAddresses []*string `json:"PublicIpAddresses,omitnil,omitempty" name:"PublicIpAddresses"`
 
 	// 后端服务的内网 IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitnil,omitempty" name:"PrivateIpAddresses"`
 
 	// 后端服务的实例名称
@@ -350,7 +348,6 @@ type Backend struct {
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 后端服务被绑定的时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegisteredTime *string `json:"RegisteredTime,omitnil,omitempty" name:"RegisteredTime"`
 
 	// 弹性网卡唯一ID，如 eni-1234abcd
@@ -358,7 +355,6 @@ type Backend struct {
 	EniId *string `json:"EniId,omitnil,omitempty" name:"EniId"`
 
 	// 标签。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
 }
 
@@ -418,7 +414,6 @@ type BatchDeregisterTargetsResponseParams struct {
 	FailListenerIdSet []*string `json:"FailListenerIdSet,omitnil,omitempty" name:"FailListenerIdSet"`
 
 	// 解绑失败错误原因信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -659,15 +654,12 @@ type BindDetailItem struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 配置绑定的监听器ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
 	// 配置绑定的域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 配置绑定的规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocationId *string `json:"LocationId,omitnil,omitempty" name:"LocationId"`
 
 	// 监听器名字
@@ -675,11 +667,9 @@ type BindDetailItem struct {
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
 	// 监听器协议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 监听器端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vport *int64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 
 	// location的url
@@ -687,7 +677,6 @@ type BindDetailItem struct {
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 配置ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
 }
 
@@ -696,15 +685,12 @@ type BindItem struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 配置绑定的监听器ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
 	// 配置绑定的域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 配置绑定的规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocationId *string `json:"LocationId,omitnil,omitempty" name:"LocationId"`
 }
 
@@ -724,7 +710,6 @@ type CertIdRelatedWithLoadBalancers struct {
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 与证书关联的负载均衡实例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancers []*LoadBalancer `json:"LoadBalancers,omitnil,omitempty" name:"LoadBalancers"`
 }
 
@@ -782,11 +767,9 @@ type CertificateOutput struct {
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 客户端证书的 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertCaId *string `json:"CertCaId,omitnil,omitempty" name:"CertCaId"`
 
 	// 多本服务器证书场景扩展的服务器证书ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtCertIds []*string `json:"ExtCertIds,omitnil,omitempty" name:"ExtCertIds"`
 }
 
@@ -868,7 +851,6 @@ type ClassicalLoadBalancerInfo struct {
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 负载均衡实例ID列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 }
 
@@ -883,20 +865,16 @@ type ClassicalTarget struct {
 	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
 	// 后端服务的外网 IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIpAddresses []*string `json:"PublicIpAddresses,omitnil,omitempty" name:"PublicIpAddresses"`
 
 	// 后端服务的内网 IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitnil,omitempty" name:"PrivateIpAddresses"`
 
 	// 后端服务的实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 后端服务的状态
 	// 1：故障，2：运行中，3：创建中，4：已关机，5：已退还，6：退还中， 7：重启中，8：开机中，9：关机中，10：密码重置中，11：格式化中，12：镜像制作中，13：带宽设置中，14：重装系统中，19：升级中，21：热迁移中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunFlag *int64 `json:"RunFlag,omitnil,omitempty" name:"RunFlag"`
 }
 
@@ -1178,19 +1156,15 @@ type Cluster struct {
 	ClustersVersion *string `json:"ClustersVersion,omitnil,omitempty" name:"ClustersVersion"`
 
 	// 集群容灾类型，如SINGLE-ZONE，DISASTER-RECOVERY，MUTUAL-DISASTER-RECOVERY
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisasterRecoveryType *string `json:"DisasterRecoveryType,omitnil,omitempty" name:"DisasterRecoveryType"`
 
 	// 网络出口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
 
 	// IP版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPVersion *string `json:"IPVersion,omitnil,omitempty" name:"IPVersion"`
 
 	// 标签信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag []*TagInfo `json:"Tag,omitnil,omitempty" name:"Tag"`
 }
 
@@ -1199,7 +1173,6 @@ type ClusterItem struct {
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 集群名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 集群所在可用区，如ap-guangzhou-1
@@ -1219,14 +1192,12 @@ type ClusterResource struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 资源是否闲置。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Idle *string `json:"Idle,omitnil,omitempty" name:"Idle"`
 
 	// 集群名称。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
 	// 集群的Isp属性，如："BGP","CMCC","CUCC","CTCC","INTERNAL"。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
 
 	// 集群所在的可用区
@@ -1236,11 +1207,9 @@ type ClusterResource struct {
 
 type ClustersZone struct {
 	// 集群所在的主可用区。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MasterZone []*string `json:"MasterZone,omitnil,omitempty" name:"MasterZone"`
 
 	// 集群所在的备可用区。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlaveZone []*string `json:"SlaveZone,omitnil,omitempty" name:"SlaveZone"`
 }
 
@@ -1252,7 +1221,6 @@ type ConfigListItem struct {
 	ConfigType *string `json:"ConfigType,omitnil,omitempty" name:"ConfigType"`
 
 	// 配置名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
 	// 配置内容
@@ -1377,6 +1345,7 @@ type CreateListenerRequestParams struct {
 	SessionType *string `json:"SessionType,omitnil,omitempty" name:"SessionType"`
 
 	// 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器，0:关闭；1:开启， 默认关闭。
+	// 若后端服务对连接数上限有限制，则建议谨慎开启。此功能目前处于内测中，如需使用，请提交 [内测申请](https://cloud.tencent.com/apply/p/tsodp6qm21)。
 	KeepaliveEnable *int64 `json:"KeepaliveEnable,omitnil,omitempty" name:"KeepaliveEnable"`
 
 	// 创建端口段监听器时必须传入此参数，用以标识结束端口。同时，入参Ports只允许传入一个成员，用以标识开始端口。【如果您需要体验端口段功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】。
@@ -1455,6 +1424,7 @@ type CreateListenerRequest struct {
 	SessionType *string `json:"SessionType,omitnil,omitempty" name:"SessionType"`
 
 	// 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器，0:关闭；1:开启， 默认关闭。
+	// 若后端服务对连接数上限有限制，则建议谨慎开启。此功能目前处于内测中，如需使用，请提交 [内测申请](https://cloud.tencent.com/apply/p/tsodp6qm21)。
 	KeepaliveEnable *int64 `json:"KeepaliveEnable,omitnil,omitempty" name:"KeepaliveEnable"`
 
 	// 创建端口段监听器时必须传入此参数，用以标识结束端口。同时，入参Ports只允许传入一个成员，用以标识开始端口。【如果您需要体验端口段功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】。
@@ -1594,7 +1564,7 @@ type CreateLoadBalancerRequestParams struct {
 	// 仅适用于公网且IP版本为IPv4的负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 网络计费模式，最大出带宽。仅对内网属性的性能容量型实例和公网属性的所有实例生效。
+	// 网络计费模式，最大出带宽。仅对内网属性的性能容量型实例和公网属性的所有实例生效。API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)
 	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitnil,omitempty" name:"InternetAccessible"`
 
 	// 仅适用于公网负载均衡。目前仅广州、上海、南京、济南、杭州、福州、北京、石家庄、武汉、长沙、成都、重庆地域支持静态单线 IP 线路类型，如需体验，请联系商务经理申请。申请通过后，即可选择中国移动（CMCC）、中国联通（CUCC）或中国电信（CTCC）的运营商类型，网络计费模式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。 如果不指定本参数，则默认使用BGP。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213)  接口查询一个地域所支持的Isp。
@@ -1648,10 +1618,10 @@ type CreateLoadBalancerRequestParams struct {
 	// 网络出口
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
 
-	// 负载均衡实例的预付费相关属性
+	// 负载均衡实例的预付费相关属性，API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)
 	LBChargePrepaid *LBChargePrepaid `json:"LBChargePrepaid,omitnil,omitempty" name:"LBChargePrepaid"`
 
-	// 负载均衡实例计费类型，取值：POSTPAID_BY_HOUR，PREPAID，默认是POSTPAID_BY_HOUR。
+	// 负载均衡实例计费类型，取值：POSTPAID_BY_HOUR，PREPAID，默认是POSTPAID_BY_HOUR。API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)
 	LBChargeType *string `json:"LBChargeType,omitnil,omitempty" name:"LBChargeType"`
 
 	// 七层访问日志主题ID
@@ -1694,7 +1664,7 @@ type CreateLoadBalancerRequest struct {
 	// 仅适用于公网且IP版本为IPv4的负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 网络计费模式，最大出带宽。仅对内网属性的性能容量型实例和公网属性的所有实例生效。
+	// 网络计费模式，最大出带宽。仅对内网属性的性能容量型实例和公网属性的所有实例生效。API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)
 	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitnil,omitempty" name:"InternetAccessible"`
 
 	// 仅适用于公网负载均衡。目前仅广州、上海、南京、济南、杭州、福州、北京、石家庄、武汉、长沙、成都、重庆地域支持静态单线 IP 线路类型，如需体验，请联系商务经理申请。申请通过后，即可选择中国移动（CMCC）、中国联通（CUCC）或中国电信（CTCC）的运营商类型，网络计费模式只能使用按带宽包计费(BANDWIDTH_PACKAGE)。 如果不指定本参数，则默认使用BGP。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213)  接口查询一个地域所支持的Isp。
@@ -1748,10 +1718,10 @@ type CreateLoadBalancerRequest struct {
 	// 网络出口
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
 
-	// 负载均衡实例的预付费相关属性
+	// 负载均衡实例的预付费相关属性，API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)
 	LBChargePrepaid *LBChargePrepaid `json:"LBChargePrepaid,omitnil,omitempty" name:"LBChargePrepaid"`
 
-	// 负载均衡实例计费类型，取值：POSTPAID_BY_HOUR，PREPAID，默认是POSTPAID_BY_HOUR。
+	// 负载均衡实例计费类型，取值：POSTPAID_BY_HOUR，PREPAID，默认是POSTPAID_BY_HOUR。API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)
 	LBChargeType *string `json:"LBChargeType,omitnil,omitempty" name:"LBChargeType"`
 
 	// 七层访问日志主题ID
@@ -2203,11 +2173,9 @@ type CrossTargets struct {
 	EniId *string `json:"EniId,omitnil,omitempty" name:"EniId"`
 
 	// 子机实例ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 子机实例名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 子机或者网卡所属的地域。
@@ -3263,7 +3231,6 @@ func (r *DescribeClassicalLBHealthStatusRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeClassicalLBHealthStatusResponseParams struct {
 	// 后端健康状态列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthList []*ClassicalHealth `json:"HealthList,omitnil,omitempty" name:"HealthList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3349,7 +3316,6 @@ func (r *DescribeClassicalLBListenersRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClassicalLBListenersResponseParams struct {
 	// 监听器列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Listeners []*ClassicalListener `json:"Listeners,omitnil,omitempty" name:"Listeners"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3407,7 +3373,6 @@ func (r *DescribeClassicalLBTargetsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClassicalLBTargetsResponseParams struct {
 	// 后端服务列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Targets []*ClassicalTarget `json:"Targets,omitnil,omitempty" name:"Targets"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3972,7 +3937,6 @@ func (r *DescribeIdleLoadBalancersRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeIdleLoadBalancersResponseParams struct {
 	// 闲置实例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdleLoadBalancers []*IdleLoadBalancer `json:"IdleLoadBalancers,omitnil,omitempty" name:"IdleLoadBalancers"`
 
 	// 所有闲置实例数目
@@ -4114,7 +4078,6 @@ type DescribeListenersResponseParams struct {
 	Listeners []*Listener `json:"Listeners,omitnil,omitempty" name:"Listeners"`
 
 	// 总的监听器个数（根据端口、协议、监听器ID过滤后）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4292,7 +4255,6 @@ func (r *DescribeLoadBalancerTrafficRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLoadBalancerTrafficResponseParams struct {
 	// 按出带宽从高到低排序后的负载均衡信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerTraffic []*LoadBalancerTraffic `json:"LoadBalancerTraffic,omitnil,omitempty" name:"LoadBalancerTraffic"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4401,7 +4363,6 @@ type DescribeLoadBalancersDetailResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 负载均衡详情列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerDetailSet []*LoadBalancerDetail `json:"LoadBalancerDetailSet,omitnil,omitempty" name:"LoadBalancerDetailSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4436,10 +4397,10 @@ type DescribeLoadBalancersRequestParams struct {
 	// 负载均衡实例的类型。1：通用的负载均衡实例，0：传统型负载均衡实例。如果不传此参数，则查询所有类型的负载均衡实例。
 	Forward *int64 `json:"Forward,omitnil,omitempty" name:"Forward"`
 
-	// 负载均衡实例的名称。
+	// 负载均衡实例的名称，支持模糊查询。
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
-	// 腾讯云为负载均衡实例分配的域名。
+	// 腾讯云为负载均衡实例分配的域名，支持模糊查询。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 负载均衡实例的 VIP 地址，支持多个。
@@ -4457,23 +4418,29 @@ type DescribeLoadBalancersRequestParams struct {
 	// 返回负载均衡实例的数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序参数，支持以下字段：LoadBalancerName，CreateTime，Domain，LoadBalancerType。
+	// 排序参数，支持以下字段：
+	// - LoadBalancerName
+	// - CreateTime
+	// - Domain
+	// - LoadBalancerType
+	// 
+	// 默认为 CreateTime。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 1：倒序，0：顺序，默认按照创建时间倒序。
+	// 1：倒序，0：顺序，默认为1，按照创建时间倒序。
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 搜索字段，模糊匹配名称、域名、VIP。
+	// 模糊搜索字段，模糊匹配负载均衡实例的名称、域名、负载均衡实例的 VIP 地址，负载均衡实例ID。
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 负载均衡实例所属的项目 ID，可以通过 DescribeProject 接口获取。
+	// 负载均衡实例所属的项目 ID，可以通过[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 接口获取，不传默认所有项目。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 负载均衡是否绑定后端服务，0：没有绑定后端服务，1：绑定后端服务，-1：查询全部。
 	WithRs *int64 `json:"WithRs,omitnil,omitempty" name:"WithRs"`
 
 	// 负载均衡实例所属私有网络唯一ID，如 vpc-bhqkbhdx，
-	// 基础网络可传入'0'。
+	// 查找基础网络类型的负载均衡可传入'0'。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 安全组ID，如 sg-m1cc****。
@@ -4482,7 +4449,52 @@ type DescribeLoadBalancersRequestParams struct {
 	// 主可用区ID，如 ："100001" （对应的是广州一区）。可通过[DescribeZones](https://cloud.tencent.com/document/product/213/15707)获取可用区列表。
 	MasterZone *string `json:"MasterZone,omitnil,omitempty" name:"MasterZone"`
 
-	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。<br/>`Filter.Name`和`Filter.Values`皆为必填项。详细的过滤条件如下：<li> charge-type - String - 是否必填：否 - （过滤条件）按照 CLB 的实例计费模式过滤，包括"PREPAID","POSTPAID_BY_HOUR"。</li><li> internet-charge-type - String - 是否必填：否 - （过滤条件）按照 CLB 的网络计费模式过滤，包括"BANDWIDTH_PREPAID","TRAFFIC_POSTPAID_BY_HOUR","BANDWIDTH_POSTPAID_BY_HOUR","BANDWIDTH_PACKAGE"。</li><li> master-zone-id - String - 是否必填：否 - （过滤条件）按照 CLB 的主可用区ID过滤，如 ："100001" （对应的是广州一区）。</li><li> tag-key - String - 是否必填：否 - （过滤条件）按照 CLB 标签的键过滤。</li><li> tag:tag-key - String - 是否必填：否 - （过滤条件）按照CLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。</li><li> function-name - String - 是否必填：否 - （过滤条件）按照 CLB 后端绑定的SCF云函数的函数名称过滤。</li><li> vip-isp - String - 是否必填：否 - （过滤条件）按照 CLB VIP的运营商类型过滤，如："BGP","INTERNAL","CMCC","CTCC","CUCC"等。</li><li> sla-type - String - 是否必填：否 - （过滤条件）按照 CLB 的性能容量型规格过滤，包括"clb.c1.small","clb.c2.medium","clb.c3.small","clb.c3.medium","clb.c4.small","clb.c4.medium","clb.c4.large","clb.c4.xlarge","others"。</li><li> exclusive - uint64 - 是否必填：否 - （过滤条件）按照独占实例进行过滤。</li>
+	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。<br/>`Filter.Name`和`Filter.Values`皆为必填项。详细的过滤条件如下：
+	// - charge-type
+	// 按照【实例计费模式】进行过滤。实例计费模式例如：PREPAID。
+	// 类型：String
+	// 必选：否
+	// 可选项：PREPAID(预付费)、POSTPAID_BY_HOUR(后付费)
+	// - internet-charge-type
+	// 按照【网络计费模式】进行过滤。网络计费模式例如：BANDWIDTH_PREPAID。
+	// 类型：String
+	// 必选：否
+	// 可选项：BANDWIDTH_PREPAID(预付费按带宽结算)、 TRAFFIC_POSTPAID_BY_HOUR(流量按小时后付费)、BANDWIDTH_POSTPAID_BY_HOUR(带宽按小时后付费)、BANDWIDTH_PACKAGE(带宽包用户)
+	// - master-zone-id
+	// 按照【CLB主可用区ID】进行过滤。例如：100001（对应的是广州一区）。
+	// 类型：String
+	// 必选：否
+	// 获取方式：[DescribeZones](https://cloud.tencent.com/document/product/213/15707)
+	// - tag-key
+	// 按照【CLB 标签的键】进行过滤，例如：tag-key。
+	// 类型：String
+	// 必选：否
+	// - tag:tag-key
+	// 按照【CLB标签键值】进行过滤，例如：tag-test。
+	// 类型：String
+	// 必选：否
+	// - function-name
+	// 按照【后端绑定SCF云函数的函数名称】进行过滤，例如：helloworld-1744958255。
+	// 类型：String
+	// 必选：否
+	// 获取方式：[ListFunctions](https://cloud.tencent.com/document/api/583/18582)
+	// - vip-isp
+	// 按照【CLB VIP的运营商类型】进行过滤，例如：BGP。
+	// 类型：String
+	// 必选：否
+	// 公网类型可选项：BGP(多线)、CMCC(中国移动)、CTCC(中国电信)、CUCC(中国联通)
+	// 内网类型可选项：INTERNAL(内网)
+	// - sla-type
+	// 按照【CLB 的性能容量型规格】进行过滤，例如：clb.c4.xlarge。
+	// 类型：String
+	// 必选：否
+	// 可选项：clb.c2.medium(标准型)、clb.c3.small(高阶型1)、clb.c3.medium(高阶型2)、clb.c4.small(超强型1)、clb.c4.medium(超强型2)、clb.c4.large(超强型3)、clb.c4.xlarge(超强型4)
+	// 具体规格参数参考：
+	// - exclusive
+	// 按照【独占实例】进行过滤。例如：1，代表筛选独占型实例。
+	// 类型：String
+	// 必选：否
+	// 可选项：0、1
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 选择返回的扩充字段，不指定时，扩充字段默认不返回。详细支持的扩充字段如下：
@@ -4503,10 +4515,10 @@ type DescribeLoadBalancersRequest struct {
 	// 负载均衡实例的类型。1：通用的负载均衡实例，0：传统型负载均衡实例。如果不传此参数，则查询所有类型的负载均衡实例。
 	Forward *int64 `json:"Forward,omitnil,omitempty" name:"Forward"`
 
-	// 负载均衡实例的名称。
+	// 负载均衡实例的名称，支持模糊查询。
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
-	// 腾讯云为负载均衡实例分配的域名。
+	// 腾讯云为负载均衡实例分配的域名，支持模糊查询。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 负载均衡实例的 VIP 地址，支持多个。
@@ -4524,23 +4536,29 @@ type DescribeLoadBalancersRequest struct {
 	// 返回负载均衡实例的数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 排序参数，支持以下字段：LoadBalancerName，CreateTime，Domain，LoadBalancerType。
+	// 排序参数，支持以下字段：
+	// - LoadBalancerName
+	// - CreateTime
+	// - Domain
+	// - LoadBalancerType
+	// 
+	// 默认为 CreateTime。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 1：倒序，0：顺序，默认按照创建时间倒序。
+	// 1：倒序，0：顺序，默认为1，按照创建时间倒序。
 	OrderType *int64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
 
-	// 搜索字段，模糊匹配名称、域名、VIP。
+	// 模糊搜索字段，模糊匹配负载均衡实例的名称、域名、负载均衡实例的 VIP 地址，负载均衡实例ID。
 	SearchKey *string `json:"SearchKey,omitnil,omitempty" name:"SearchKey"`
 
-	// 负载均衡实例所属的项目 ID，可以通过 DescribeProject 接口获取。
+	// 负载均衡实例所属的项目 ID，可以通过[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 接口获取，不传默认所有项目。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 负载均衡是否绑定后端服务，0：没有绑定后端服务，1：绑定后端服务，-1：查询全部。
 	WithRs *int64 `json:"WithRs,omitnil,omitempty" name:"WithRs"`
 
 	// 负载均衡实例所属私有网络唯一ID，如 vpc-bhqkbhdx，
-	// 基础网络可传入'0'。
+	// 查找基础网络类型的负载均衡可传入'0'。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 安全组ID，如 sg-m1cc****。
@@ -4549,7 +4567,52 @@ type DescribeLoadBalancersRequest struct {
 	// 主可用区ID，如 ："100001" （对应的是广州一区）。可通过[DescribeZones](https://cloud.tencent.com/document/product/213/15707)获取可用区列表。
 	MasterZone *string `json:"MasterZone,omitnil,omitempty" name:"MasterZone"`
 
-	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。<br/>`Filter.Name`和`Filter.Values`皆为必填项。详细的过滤条件如下：<li> charge-type - String - 是否必填：否 - （过滤条件）按照 CLB 的实例计费模式过滤，包括"PREPAID","POSTPAID_BY_HOUR"。</li><li> internet-charge-type - String - 是否必填：否 - （过滤条件）按照 CLB 的网络计费模式过滤，包括"BANDWIDTH_PREPAID","TRAFFIC_POSTPAID_BY_HOUR","BANDWIDTH_POSTPAID_BY_HOUR","BANDWIDTH_PACKAGE"。</li><li> master-zone-id - String - 是否必填：否 - （过滤条件）按照 CLB 的主可用区ID过滤，如 ："100001" （对应的是广州一区）。</li><li> tag-key - String - 是否必填：否 - （过滤条件）按照 CLB 标签的键过滤。</li><li> tag:tag-key - String - 是否必填：否 - （过滤条件）按照CLB标签键值对进行过滤，tag-key使用具体的标签键进行替换。</li><li> function-name - String - 是否必填：否 - （过滤条件）按照 CLB 后端绑定的SCF云函数的函数名称过滤。</li><li> vip-isp - String - 是否必填：否 - （过滤条件）按照 CLB VIP的运营商类型过滤，如："BGP","INTERNAL","CMCC","CTCC","CUCC"等。</li><li> sla-type - String - 是否必填：否 - （过滤条件）按照 CLB 的性能容量型规格过滤，包括"clb.c1.small","clb.c2.medium","clb.c3.small","clb.c3.medium","clb.c4.small","clb.c4.medium","clb.c4.large","clb.c4.xlarge","others"。</li><li> exclusive - uint64 - 是否必填：否 - （过滤条件）按照独占实例进行过滤。</li>
+	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为100。<br/>`Filter.Name`和`Filter.Values`皆为必填项。详细的过滤条件如下：
+	// - charge-type
+	// 按照【实例计费模式】进行过滤。实例计费模式例如：PREPAID。
+	// 类型：String
+	// 必选：否
+	// 可选项：PREPAID(预付费)、POSTPAID_BY_HOUR(后付费)
+	// - internet-charge-type
+	// 按照【网络计费模式】进行过滤。网络计费模式例如：BANDWIDTH_PREPAID。
+	// 类型：String
+	// 必选：否
+	// 可选项：BANDWIDTH_PREPAID(预付费按带宽结算)、 TRAFFIC_POSTPAID_BY_HOUR(流量按小时后付费)、BANDWIDTH_POSTPAID_BY_HOUR(带宽按小时后付费)、BANDWIDTH_PACKAGE(带宽包用户)
+	// - master-zone-id
+	// 按照【CLB主可用区ID】进行过滤。例如：100001（对应的是广州一区）。
+	// 类型：String
+	// 必选：否
+	// 获取方式：[DescribeZones](https://cloud.tencent.com/document/product/213/15707)
+	// - tag-key
+	// 按照【CLB 标签的键】进行过滤，例如：tag-key。
+	// 类型：String
+	// 必选：否
+	// - tag:tag-key
+	// 按照【CLB标签键值】进行过滤，例如：tag-test。
+	// 类型：String
+	// 必选：否
+	// - function-name
+	// 按照【后端绑定SCF云函数的函数名称】进行过滤，例如：helloworld-1744958255。
+	// 类型：String
+	// 必选：否
+	// 获取方式：[ListFunctions](https://cloud.tencent.com/document/api/583/18582)
+	// - vip-isp
+	// 按照【CLB VIP的运营商类型】进行过滤，例如：BGP。
+	// 类型：String
+	// 必选：否
+	// 公网类型可选项：BGP(多线)、CMCC(中国移动)、CTCC(中国电信)、CUCC(中国联通)
+	// 内网类型可选项：INTERNAL(内网)
+	// - sla-type
+	// 按照【CLB 的性能容量型规格】进行过滤，例如：clb.c4.xlarge。
+	// 类型：String
+	// 必选：否
+	// 可选项：clb.c2.medium(标准型)、clb.c3.small(高阶型1)、clb.c3.medium(高阶型2)、clb.c4.small(超强型1)、clb.c4.medium(超强型2)、clb.c4.large(超强型3)、clb.c4.xlarge(超强型4)
+	// 具体规格参数参考：
+	// - exclusive
+	// 按照【独占实例】进行过滤。例如：1，代表筛选独占型实例。
+	// 类型：String
+	// 必选：否
+	// 可选项：0、1
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 选择返回的扩充字段，不指定时，扩充字段默认不返回。详细支持的扩充字段如下：
@@ -5069,6 +5132,12 @@ func (r *DescribeTargetGroupsResponse) FromJsonString(s string) error {
 type DescribeTargetHealthRequestParams struct {
 	// 要查询的负载均衡实例ID列表。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
+
+	// 要查询的监听器ID列表。
+	ListenerIds []*string `json:"ListenerIds,omitnil,omitempty" name:"ListenerIds"`
+
+	// 要查询的转发规则ID列表。
+	LocationIds []*string `json:"LocationIds,omitnil,omitempty" name:"LocationIds"`
 }
 
 type DescribeTargetHealthRequest struct {
@@ -5076,6 +5145,12 @@ type DescribeTargetHealthRequest struct {
 	
 	// 要查询的负载均衡实例ID列表。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
+
+	// 要查询的监听器ID列表。
+	ListenerIds []*string `json:"ListenerIds,omitnil,omitempty" name:"ListenerIds"`
+
+	// 要查询的转发规则ID列表。
+	LocationIds []*string `json:"LocationIds,omitnil,omitempty" name:"LocationIds"`
 }
 
 func (r *DescribeTargetHealthRequest) ToJsonString() string {
@@ -5091,6 +5166,8 @@ func (r *DescribeTargetHealthRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "LoadBalancerIds")
+	delete(f, "ListenerIds")
+	delete(f, "LocationIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTargetHealthRequest has unknown keys!", "")
 	}
@@ -5100,7 +5177,6 @@ func (r *DescribeTargetHealthRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTargetHealthResponseParams struct {
 	// 负载均衡实例列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancers []*LoadBalancerHealth `json:"LoadBalancers,omitnil,omitempty" name:"LoadBalancers"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5192,7 +5268,6 @@ func (r *DescribeTargetsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTargetsResponseParams struct {
 	// 监听器后端绑定的机器信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Listeners []*ListenerBackend `json:"Listeners,omitnil,omitempty" name:"Listeners"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -5420,11 +5495,9 @@ type ExclusiveCluster struct {
 
 type ExtraInfo struct {
 	// 是否开通VIP直通
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZhiTong *bool `json:"ZhiTong,omitnil,omitempty" name:"ZhiTong"`
 
 	// TgwGroup名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TgwGroupName *string `json:"TgwGroupName,omitnil,omitempty" name:"TgwGroupName"`
 }
 
@@ -5453,7 +5526,6 @@ type FunctionInfo struct {
 
 type FunctionTarget struct {
 	// 云函数相关信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Function *FunctionInfo `json:"Function,omitnil,omitempty" name:"Function"`
 
 	// 权重
@@ -5465,20 +5537,16 @@ type HealthCheck struct {
 	HealthSwitch *int64 `json:"HealthSwitch,omitnil,omitempty" name:"HealthSwitch"`
 
 	// 健康检查的响应超时时间，可选值：2~60，默认值：2，单位：秒。响应超时时间要小于检查间隔时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeOut *int64 `json:"TimeOut,omitnil,omitempty" name:"TimeOut"`
 
 	// 健康检查探测间隔时间，默认值：5，IPv4 CLB实例的取值范围为：2-300，IPv6 CLB 实例的取值范围为：5-300。单位：秒。
 	// 说明：部分老旧 IPv4 CLB实例的取值范围为：5-300。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntervalTime *int64 `json:"IntervalTime,omitnil,omitempty" name:"IntervalTime"`
 
 	// 健康阈值，默认值：3，表示当连续探测三次健康则表示该转发正常，可选值：2~10，单位：次。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthNum *int64 `json:"HealthNum,omitnil,omitempty" name:"HealthNum"`
 
 	// 不健康阈值，默认值：3，表示当连续探测三次不健康则表示该转发异常，可选值：2~10，单位：次。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnHealthNum *int64 `json:"UnHealthNum,omitnil,omitempty" name:"UnHealthNum"`
 
 	// 健康检查状态码（仅适用于HTTP/HTTPS转发规则、TCP监听器的HTTP健康检查方式）。可选值：1~31，默认 31。
@@ -5515,7 +5583,6 @@ type HealthCheck struct {
 	RecvContext *string `json:"RecvContext,omitnil,omitempty" name:"RecvContext"`
 
 	// 健康检查使用的协议。取值 TCP | HTTP | HTTPS | GRPC | PING | CUSTOM，UDP监听器支持PING/CUSTOM，TCP监听器支持TCP/HTTP/CUSTOM，TCP_SSL/QUIC监听器支持TCP/HTTP，HTTP规则支持HTTP/GRPC，HTTPS规则支持HTTP/HTTPS/GRPC。HTTP监听器默认值为HTTP;TCP、TCP_SSL、QUIC监听器默认值为TCP;UDP监听器默认为PING;HTTPS监听器的CheckType默认值与后端转发协议一致。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckType *string `json:"CheckType,omitnil,omitempty" name:"CheckType"`
 
 	// HTTP版本。健康检查协议CheckType的值取HTTP时，必传此字段，代表后端服务的HTTP版本：HTTP/1.0、HTTP/1.1；（仅适用于TCP监听器）
@@ -5523,7 +5590,6 @@ type HealthCheck struct {
 	HttpVersion *string `json:"HttpVersion,omitnil,omitempty" name:"HttpVersion"`
 
 	// 健康检查源IP类型：0（使用LB的VIP作为源IP），1（使用100.64网段IP作为源IP）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceIpType *int64 `json:"SourceIpType,omitnil,omitempty" name:"SourceIpType"`
 
 	// GRPC健康检查状态码（仅适用于后端转发协议为GRPC的规则）。默认值为 12，可输入值为数值、多个数值、或者范围，例如 20 或 20,25 或 0-99
@@ -5555,7 +5621,6 @@ type IdleLoadBalancer struct {
 	Forward *uint64 `json:"Forward,omitnil,omitempty" name:"Forward"`
 
 	// 负载均衡域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
@@ -5863,14 +5928,12 @@ func (r *InquiryPriceRenewLoadBalancerResponse) FromJsonString(s string) error {
 
 type InternetAccessible struct {
 	// TRAFFIC_POSTPAID_BY_HOUR 按流量按小时后计费 ; BANDWIDTH_POSTPAID_BY_HOUR 按带宽按小时后计费，国际站用户不支持该计费模式; BANDWIDTH_PACKAGE 按带宽包计费;BANDWIDTH_PREPAID按带宽预付费。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 
 	// 最大出带宽，单位Mbps，仅对公网属性的共享型、性能容量型和独占型 CLB 实例、以及内网属性的性能容量型 CLB 实例生效。
 	// - 对于公网属性的共享型和独占型 CLB 实例，最大出带宽的范围为1Mbps-2048Mbps。
 	// - 对于公网属性和内网属性的性能容量型 CLB实例，最大出带宽的范围为1Mbps-61440Mbps。
 	// （调用CreateLoadBalancer创建LB时不指定此参数则设置为默认值10Mbps。此上限可调整）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
 	// 带宽包的类型，如SINGLEISP（单线）、BGP（多线）。
@@ -5908,11 +5971,9 @@ type ItemPrice struct {
 
 type LBChargePrepaid struct {
 	// 续费类型：AUTO_RENEW 自动续费，  MANUAL_RENEW 手动续费
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
 	// 购买时长，单位：月
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 }
 
@@ -5949,11 +6010,9 @@ type LbRsTargets struct {
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// rs的vpcId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *int64 `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// rs的权重
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 
@@ -5984,7 +6043,6 @@ type Listener struct {
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 
 	// 是否开启SNI特性，1：表示开启，0：表示不开启（本参数仅对于HTTPS监听器有意义）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SniSwitch *int64 `json:"SniSwitch,omitnil,omitempty" name:"SniSwitch"`
 
 	// 监听器下的全部转发规则（本参数仅对于HTTP/HTTPS监听器有意义）
@@ -5992,15 +6050,12 @@ type Listener struct {
 	Rules []*RuleOutput `json:"Rules,omitnil,omitempty" name:"Rules"`
 
 	// 监听器的名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
 	// 监听器的创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 端口段结束端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndPort *int64 `json:"EndPort,omitnil,omitempty" name:"EndPort"`
 
 	// 后端服务器类型
@@ -6012,7 +6067,6 @@ type Listener struct {
 	TargetGroup *BasicTargetGroupInfo `json:"TargetGroup,omitnil,omitempty" name:"TargetGroup"`
 
 	// 会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionType *string `json:"SessionType,omitnil,omitempty" name:"SessionType"`
 
 	// 是否开启长连接，1开启，0关闭，（本参数仅对于HTTP/HTTPS监听器有意义）
@@ -6020,15 +6074,12 @@ type Listener struct {
 	KeepaliveEnable *int64 `json:"KeepaliveEnable,omitnil,omitempty" name:"KeepaliveEnable"`
 
 	// 仅支持Nat64 CLB TCP监听器
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Toa *bool `json:"Toa,omitnil,omitempty" name:"Toa"`
 
 	// 解绑后端目标时，是否发RST给客户端，（此参数仅对于TCP监听器有意义）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeregisterTargetRst *bool `json:"DeregisterTargetRst,omitnil,omitempty" name:"DeregisterTargetRst"`
 
 	// 监听器的属性
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttrFlags []*string `json:"AttrFlags,omitnil,omitempty" name:"AttrFlags"`
 
 	// 绑定的目标组列表
@@ -6036,11 +6087,9 @@ type Listener struct {
 	TargetGroupList []*BasicTargetGroupInfo `json:"TargetGroupList,omitnil,omitempty" name:"TargetGroupList"`
 
 	// 监听器最大连接数，-1表示监听器维度不限速。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxConn *int64 `json:"MaxConn,omitnil,omitempty" name:"MaxConn"`
 
 	// 监听器最大新增连接数，-1表示监听器维度不限速。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxCps *int64 `json:"MaxCps,omitnil,omitempty" name:"MaxCps"`
 
 	// 空闲连接超时时间，仅支持TCP监听器。默认值:900；共享型实例和独占型实例取值范围：300～900，性能容量型实例取值范围:300～1980。
@@ -6048,8 +6097,10 @@ type Listener struct {
 	IdleConnectTimeout *int64 `json:"IdleConnectTimeout,omitnil,omitempty" name:"IdleConnectTimeout"`
 
 	// 调度时间。触发强制重新调度后，长连接将会在设置的调度时间内断开并完成重新分配
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RescheduleInterval *uint64 `json:"RescheduleInterval,omitnil,omitempty" name:"RescheduleInterval"`
+
+	// 数据压缩模式
+	DataCompressMode *string `json:"DataCompressMode,omitnil,omitempty" name:"DataCompressMode"`
 }
 
 type ListenerBackend struct {
@@ -6063,15 +6114,12 @@ type ListenerBackend struct {
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 监听器下的规则信息（仅适用于HTTP/HTTPS监听器）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rules []*RuleTargets `json:"Rules,omitnil,omitempty" name:"Rules"`
 
 	// 监听器上绑定的后端服务列表（仅适用于TCP/UDP/TCP_SSL监听器）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Targets []*Backend `json:"Targets,omitnil,omitempty" name:"Targets"`
 
 	// 若支持端口段，则为端口段结束端口；若不支持端口段，则为0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndPort *int64 `json:"EndPort,omitnil,omitempty" name:"EndPort"`
 }
 
@@ -6080,7 +6128,6 @@ type ListenerHealth struct {
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
 	// 监听器名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
 	// 监听器的协议
@@ -6090,7 +6137,6 @@ type ListenerHealth struct {
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 监听器的转发规则列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rules []*RuleHealth `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
@@ -6113,7 +6159,6 @@ type ListenerItem struct {
 	Targets []*LbRsTargets `json:"Targets,omitnil,omitempty" name:"Targets"`
 
 	// 端口段监听器的结束端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndPort *int64 `json:"EndPort,omitnil,omitempty" name:"EndPort"`
 }
 
@@ -6125,50 +6170,43 @@ type LoadBalancer struct {
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
 	// 负载均衡实例的网络类型：
-	// OPEN：公网属性， INTERNAL：内网属性；对于内网属性的负载均衡，可通过绑定EIP出公网，具体可参考EIP文档。
+	// OPEN：公网属性， INTERNAL：内网属性；对于内网属性的负载均衡，可通过绑定EIP出公网，具体可参考EIP文档[绑定弹性公网IP](https://cloud.tencent.com/document/product/215/16700)。
 	LoadBalancerType *string `json:"LoadBalancerType,omitnil,omitempty" name:"LoadBalancerType"`
 
 	// 负载均衡类型标识，1：负载均衡，0：传统型负载均衡。
 	Forward *uint64 `json:"Forward,omitnil,omitempty" name:"Forward"`
 
 	// 负载均衡实例的域名，仅公网传统型和域名型负载均衡实例才提供该字段。逐步下线中，建议用LoadBalancerDomain替代。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 负载均衡实例的 VIP 列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerVips []*string `json:"LoadBalancerVips,omitnil,omitempty" name:"LoadBalancerVips"`
 
 	// 负载均衡实例的状态，包括
 	// 0：创建中，1：正常运行。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 负载均衡实例的创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 格式：YYYY-MM-DD HH:mm:ss
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 负载均衡实例的上次状态转换时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 格式：YYYY-MM-DD HH:mm:ss
 	StatusTime *string `json:"StatusTime,omitnil,omitempty" name:"StatusTime"`
 
 	// 负载均衡实例所属的项目 ID， 0 表示默认项目。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 私有网络的 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 高防 LB 的标识，1：高防负载均衡 0：非高防负载均衡。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpenBgp *uint64 `json:"OpenBgp,omitnil,omitempty" name:"OpenBgp"`
 
 	// 在 2016 年 12 月份之前的传统型内网负载均衡都是开启了 snat 的。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Snat *bool `json:"Snat,omitnil,omitempty" name:"Snat"`
 
 	// 0：表示未被隔离，1：表示被隔离。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Isolation *uint64 `json:"Isolation,omitnil,omitempty" name:"Isolation"`
 
 	// 用户开启日志的信息，日志只有公网属性创建了 HTTP 、HTTPS 监听器的负载均衡才会有日志。
@@ -6178,31 +6216,24 @@ type LoadBalancer struct {
 	Log *string `json:"Log,omitnil,omitempty" name:"Log"`
 
 	// 负载均衡实例所在的子网（仅对内网VPC型LB有意义）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 负载均衡实例的标签信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*TagInfo `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 负载均衡实例的安全组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecureGroups []*string `json:"SecureGroups,omitnil,omitempty" name:"SecureGroups"`
 
 	// 负载均衡实例绑定的后端设备的基本信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetRegionInfo *TargetRegionInfo `json:"TargetRegionInfo,omitnil,omitempty" name:"TargetRegionInfo"`
 
 	// anycast负载均衡的发布域，对于非anycast的负载均衡，此字段返回为空字符串
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnycastZone *string `json:"AnycastZone,omitnil,omitempty" name:"AnycastZone"`
 
 	// IP版本，ipv4 | ipv6
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressIPVersion *string `json:"AddressIPVersion,omitnil,omitempty" name:"AddressIPVersion"`
 
-	// 数值形式的私有网络 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 数值形式的私有网络 ID。
 	NumericalVpcId *uint64 `json:"NumericalVpcId,omitnil,omitempty" name:"NumericalVpcId"`
 
 	// 负载均衡IP地址所属的运营商。
@@ -6222,11 +6253,13 @@ type LoadBalancer struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupZoneSet []*ZoneInfo `json:"BackupZoneSet,omitnil,omitempty" name:"BackupZoneSet"`
 
-	// 负载均衡实例被隔离的时间
+	// 负载均衡实例被隔离的时间。
+	// 格式：YYYY-MM-DD HH:mm:ss
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolatedTime *string `json:"IsolatedTime,omitnil,omitempty" name:"IsolatedTime"`
 
-	// 负载均衡实例的过期时间，仅对预付费负载均衡生效
+	// 负载均衡实例的过期时间，仅对预付费负载均衡生效。
+	// 格式：YYYY-MM-DD HH:mm:ss
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
@@ -6238,16 +6271,14 @@ type LoadBalancer struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetworkAttributes *InternetAccessible `json:"NetworkAttributes,omitnil,omitempty" name:"NetworkAttributes"`
 
-	// 负载均衡实例的预付费相关属性
+	// 负载均衡实例的预付费相关属性，仅在 ChargeType=PREPAID 时显示。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrepaidAttributes *LBChargePrepaid `json:"PrepaidAttributes,omitnil,omitempty" name:"PrepaidAttributes"`
 
 	// 负载均衡日志服务(CLS)的日志集ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogSetId *string `json:"LogSetId,omitnil,omitempty" name:"LogSetId"`
 
 	// 负载均衡日志服务(CLS)的日志主题ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogTopicId *string `json:"LogTopicId,omitnil,omitempty" name:"LogTopicId"`
 
 	// 负载均衡实例的IPv6地址
@@ -6259,47 +6290,40 @@ type LoadBalancer struct {
 	ExtraInfo *ExtraInfo `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
 
 	// 是否可绑定高防包
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDDos *bool `json:"IsDDos,omitnil,omitempty" name:"IsDDos"`
 
 	// 负载均衡维度的个性化配置ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 后端服务是否放通来自LB的流量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerPassToTarget *bool `json:"LoadBalancerPassToTarget,omitnil,omitempty" name:"LoadBalancerPassToTarget"`
 
 	// 内网独占集群
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExclusiveCluster *ExclusiveCluster `json:"ExclusiveCluster,omitnil,omitempty" name:"ExclusiveCluster"`
 
-	// IP地址版本为ipv6时此字段有意义， IPv6Nat64 | IPv6FullChain
+	// IP地址版本为ipv6时此字段有意义，IPv6Nat64 | IPv6FullChain。
+	// IPv6Nat64: 基于 NAT64 IPv6 过渡技术实现的负载均衡器。
+	// IPv6FullChain：基于 IPv6 单栈技术实现的负载均衡。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IPv6Mode *string `json:"IPv6Mode,omitnil,omitempty" name:"IPv6Mode"`
 
 	// 是否开启SnatPro。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnatPro *bool `json:"SnatPro,omitnil,omitempty" name:"SnatPro"`
 
 	// 开启SnatPro负载均衡后，SnatIp列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnatIps []*SnatIp `json:"SnatIps,omitnil,omitempty" name:"SnatIps"`
 
 	// 性能容量型规格。<ul><li> clb.c1.small：简约型规格 </li><li> clb.c2.medium：标准型规格 </li><li> clb.c3.small：高阶型1规格 </li><li> clb.c3.medium：高阶型2规格 </li><li> clb.c4.small：超强型1规格 </li><li> clb.c4.medium：超强型2规格 </li><li> clb.c4.large：超强型3规格 </li><li> clb.c4.xlarge：超强型4规格 </li><li>""：非性能容量型实例</li></ul>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlaType *string `json:"SlaType,omitnil,omitempty" name:"SlaType"`
 
 	// vip是否被封堵
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsBlock *bool `json:"IsBlock,omitnil,omitempty" name:"IsBlock"`
 
-	// 封堵或解封时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 封堵或解封时间。
+	// 格式：YYYY-MM-DD HH:mm:ss。
 	IsBlockTime *string `json:"IsBlockTime,omitnil,omitempty" name:"IsBlockTime"`
 
 	// IP类型是否是本地BGP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalBgp *bool `json:"LocalBgp,omitnil,omitempty" name:"LocalBgp"`
 
 	// 7层独占标签。
@@ -6307,7 +6331,6 @@ type LoadBalancer struct {
 	ClusterTag *string `json:"ClusterTag,omitnil,omitempty" name:"ClusterTag"`
 
 	// 开启IPv6FullChain负载均衡7层监听器支持混绑IPv4/IPv6目标功能。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MixIpTarget *bool `json:"MixIpTarget,omitnil,omitempty" name:"MixIpTarget"`
 
 	// 私有网络内网负载均衡，就近接入模式下规则所落在的可用区
@@ -6319,27 +6342,43 @@ type LoadBalancer struct {
 	NfvInfo *string `json:"NfvInfo,omitnil,omitempty" name:"NfvInfo"`
 
 	// 负载均衡日志服务(CLS)的健康检查日志集ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthLogSetId *string `json:"HealthLogSetId,omitnil,omitempty" name:"HealthLogSetId"`
 
 	// 负载均衡日志服务(CLS)的健康检查日志主题ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthLogTopicId *string `json:"HealthLogTopicId,omitnil,omitempty" name:"HealthLogTopicId"`
 
 	// 集群ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
 
-	// 负载均衡的属性
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 负载均衡的属性，按位来决定是否开启
+	// 2^0: 删除保护，开启后防止负载均衡被误删除。 
+	// 2^1: 用户不可见，控制负载均衡对用户的可见性。 
+	// 2^2: 阻塞状态，可能用于限制负载均衡的某些操作或流量。 
+	// 2^3: 禁用负载均衡的NAT功能，可能用于特定场景下的流量直接转发。 
+	// 2^4: 封禁状态，可能用于暂停负载均衡服务或限制访问。 
+	// 2^5: 升配标志，可能用于标识负载均衡需要升级配置或性能。 
+	// 2^6: 停止状态，开启后负载均衡暂停服务。 
+	// 2^7: 不使用VPC网关，可能用于绕过VPC网关直接处理流量。 
+	// 2^8: 安全组在TGW（Transit Gateway）中，涉及网络安全策略配置。 
+	// 2^9: 共享限制标志，可能用于控制负载均衡的共享资源限制。 
+	// 2^10: Web应用防火墙（WAF）标志，开启后启用WAF保护。 
+	// 2^11: 域名型负载均衡，标识负载均衡是否基于域名进行流量分发。 
+	// 2^12: IPv6源地址转换（SNAT），用于IPv6网络的源地址处理。 
+	// 2^13: 隐藏域名，可能用于隐私保护或特定场景下不暴露域名。 
+	// 2^14: 巨型帧支持，开启后支持更大的数据帧以提高网络效率。 
+	// 2^15: 四层IP直连无NAT，可能用于四层负载均衡直接转发IP流量。 
+	// 2^16: VPC网关三层服务，可能涉及三层网络服务的网关功能。 
+	// 2^17: IPv6扩展标志，可能用于特定的IPv6功能支持。 
+	// 2^18: IPv6独占标志，可能用于专属IPv6流量处理。 
+	// 2^19: BGP专业版支持，可能涉及高级BGP路由功能。 
+	// 2^20: TOA（TCP Option Address）清理，清除TCP选项中的地址信息。 
 	AttributeFlags []*string `json:"AttributeFlags,omitnil,omitempty" name:"AttributeFlags"`
 
 	// 负载均衡实例的域名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerDomain *string `json:"LoadBalancerDomain,omitnil,omitempty" name:"LoadBalancerDomain"`
 
 	// 网络出口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
 
 	// 实例类型是否为独占型。1：独占型实例。0：非独占型实例。
@@ -6500,11 +6539,9 @@ type LoadBalancerDetail struct {
 	SniSwitch *int64 `json:"SniSwitch,omitnil,omitempty" name:"SniSwitch"`
 
 	// 负载均衡实例的域名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerDomain *string `json:"LoadBalancerDomain,omitnil,omitempty" name:"LoadBalancerDomain"`
 
 	// 网络出口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
 
 	// 负载均衡的属性
@@ -6526,11 +6563,9 @@ type LoadBalancerHealth struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 负载均衡实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
 	// 监听器列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Listeners []*ListenerHealth `json:"Listeners,omitnil,omitempty" name:"Listeners"`
 }
 
@@ -6551,7 +6586,6 @@ type LoadBalancerTraffic struct {
 	OutBandwidth *float64 `json:"OutBandwidth,omitnil,omitempty" name:"OutBandwidth"`
 
 	// CLB域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
@@ -8153,18 +8187,15 @@ type OAuth struct {
 	// 开启或关闭鉴权。
 	// True: 开启;
 	// False: 关闭
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OAuthEnable *bool `json:"OAuthEnable,omitnil,omitempty" name:"OAuthEnable"`
 
 	// IAP全部故障后，拒绝请求还是放行。BYPASS:通过,
 	// REJECT: 拒绝
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OAuthFailureStatus *string `json:"OAuthFailureStatus,omitnil,omitempty" name:"OAuthFailureStatus"`
 }
 
 type Price struct {
 	// 描述了实例价格。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstancePrice *ItemPrice `json:"InstancePrice,omitnil,omitempty" name:"InstancePrice"`
 
 	// 描述了网络价格。
@@ -8564,11 +8595,9 @@ type Resource struct {
 	Isp *string `json:"Isp,omitnil,omitempty" name:"Isp"`
 
 	// 可用资源。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AvailabilitySet []*ResourceAvailability `json:"AvailabilitySet,omitnil,omitempty" name:"AvailabilitySet"`
 
 	// 运营商类型信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TypeSet []*TypeInfo `json:"TypeSet,omitnil,omitempty" name:"TypeSet"`
 }
 
@@ -8607,15 +8636,12 @@ type RewriteTarget struct {
 	TargetLocationId *string `json:"TargetLocationId,omitnil,omitempty" name:"TargetLocationId"`
 
 	// 重定向状态码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RewriteCode *int64 `json:"RewriteCode,omitnil,omitempty" name:"RewriteCode"`
 
 	// 重定向是否携带匹配的url
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TakeUrl *bool `json:"TakeUrl,omitnil,omitempty" name:"TakeUrl"`
 
 	// 重定向类型，Manual: 手动重定向，Auto:  自动重定向
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RewriteType *string `json:"RewriteType,omitnil,omitempty" name:"RewriteType"`
 }
 
@@ -8670,7 +8696,6 @@ type RuleHealth struct {
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 本规则上绑定的后端服务的健康检查状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Targets []*TargetHealth `json:"Targets,omitnil,omitempty" name:"Targets"`
 }
 
@@ -8727,18 +8752,15 @@ type RuleOutput struct {
 	LocationId *string `json:"LocationId,omitnil,omitempty" name:"LocationId"`
 
 	// 转发规则的域名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 转发规则的路径。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 会话保持时间
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 
 	// 健康检查信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HealthCheck *HealthCheck `json:"HealthCheck,omitnil,omitempty" name:"HealthCheck"`
 
 	// 证书信息
@@ -8753,7 +8775,6 @@ type RuleOutput struct {
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
 	// 转发规则的重定向目标信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RewriteTarget *RewriteTarget `json:"RewriteTarget,omitnil,omitempty" name:"RewriteTarget"`
 
 	// 是否开启gzip
@@ -8782,23 +8803,18 @@ type RuleOutput struct {
 	TargetGroup *BasicTargetGroupInfo `json:"TargetGroup,omitnil,omitempty" name:"TargetGroup"`
 
 	// WAF实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WafDomainId *string `json:"WafDomainId,omitnil,omitempty" name:"WafDomainId"`
 
 	// TRPC被调服务器路由，ForwardType为TRPC时有效。目前暂未对外开放。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrpcCallee *string `json:"TrpcCallee,omitnil,omitempty" name:"TrpcCallee"`
 
 	// TRPC调用服务接口，ForwardType为TRPC时有效。目前暂未对外开放。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrpcFunc *string `json:"TrpcFunc,omitnil,omitempty" name:"TrpcFunc"`
 
 	// QUIC状态。QUIC_ACTIVE表示开启，QUIC_INACTIVE表示未开启。注意，只有HTTPS域名才能开启QUIC。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuicStatus *string `json:"QuicStatus,omitnil,omitempty" name:"QuicStatus"`
 
 	// 转发规则的域名列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
 	// 绑定的目标组列表
@@ -8806,7 +8822,6 @@ type RuleOutput struct {
 	TargetGroupList []*BasicTargetGroupInfo `json:"TargetGroupList,omitnil,omitempty" name:"TargetGroupList"`
 
 	// OAuth配置状态信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OAuth *OAuth `json:"OAuth,omitnil,omitempty" name:"OAuth"`
 }
 
@@ -8821,11 +8836,9 @@ type RuleTargets struct {
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 后端服务的信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Targets []*Backend `json:"Targets,omitnil,omitempty" name:"Targets"`
 
 	// 后端云函数的信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FunctionTargets []*FunctionTarget `json:"FunctionTargets,omitnil,omitempty" name:"FunctionTargets"`
 }
 
@@ -9253,12 +9266,9 @@ type SpecAvailability struct {
 	// 规格类型。
 	// <li>clb.c2.medium（标准型）</li><li>clb.c3.small（高阶型1）</li><li>clb.c3.medium（高阶型2）</li>
 	// <li>clb.c4.small（超强型1）</li><li>clb.c4.medium（超强型2）</li><li>clb.c4.large（超强型3）</li><li>clb.c4.xlarge（超强型4）</li><li>shared（共享型）</li>
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpecType *string `json:"SpecType,omitnil,omitempty" name:"SpecType"`
 
 	// 规格可用性。资源可用性，"Available"：可用，"Unavailable"：不可用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Availability *string `json:"Availability,omitnil,omitempty" name:"Availability"`
 }
 
@@ -9273,16 +9283,13 @@ type TagInfo struct {
 type Target struct {
 	// 后端服务的监听端口。
 	// 注意：绑定CVM（云服务器）或ENI（弹性网卡）时必传此参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 后端服务的类型，可取：CVM（云服务器）、ENI（弹性网卡）；作为入参时，目前本参数暂不生效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 绑定CVM时需要传入此参数，代表CVM的唯一 ID，可通过 DescribeInstances 接口返回字段中的 InstanceId 字段获取。表示绑定主网卡主IPv4地址；以下场景都不支持指定InstanceId：绑定非CVM，绑定CVM上的辅助网卡IP，通过跨域2.0绑定CVM，以及绑定CVM的IPv6地址等。
 	// 注意：参数 InstanceId、EniIp 有且只能传入其中一个参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 后端服务修改后的转发权重，取值范围：[0, 100]，默认为 10。此参数的优先级高于[RsWeightRule](https://cloud.tencent.com/document/api/214/30694#RsWeightRule)中的Weight参数，即最终的权重值以此Weight参数值为准，仅当此Weight参数为空时，才以RsWeightRule中的Weight参数为准。
@@ -9290,11 +9297,9 @@ type Target struct {
 
 	// 绑定IP时需要传入此参数，支持弹性网卡的IP和其他内网IP，如果是弹性网卡则必须先绑定至CVM，然后才能绑定到负载均衡实例。
 	// 注意：参数 InstanceId、EniIp 有且只能传入其中一个参数。如果绑定双栈IPV6子机，则必须传该参数。如果是跨地域绑定，则必须传该参数，不支持传InstanceId参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EniIp *string `json:"EniIp,omitnil,omitempty" name:"EniIp"`
 
 	// 标签。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
 }
 
@@ -9332,15 +9337,12 @@ type TargetGroupBackend struct {
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
 	// 后端服务的外网 IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIpAddresses []*string `json:"PublicIpAddresses,omitnil,omitempty" name:"PublicIpAddresses"`
 
 	// 后端服务的内网 IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitnil,omitempty" name:"PrivateIpAddresses"`
 
 	// 后端服务的实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 后端服务被绑定的时间
@@ -9348,11 +9350,9 @@ type TargetGroupBackend struct {
 	RegisteredTime *string `json:"RegisteredTime,omitnil,omitempty" name:"RegisteredTime"`
 
 	// 弹性网卡唯一ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EniId *string `json:"EniId,omitnil,omitempty" name:"EniId"`
 
 	// 后端服务的可用区ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *uint64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 }
 
@@ -9386,22 +9386,18 @@ type TargetGroupInfo struct {
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 目标组类型，当前支持v1(旧版目标组), v2(新版目标组), gwlb(全局负载均衡目标组)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetGroupType *string `json:"TargetGroupType,omitnil,omitempty" name:"TargetGroupType"`
 
 	// 目标组已关联的规则数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssociatedRuleCount *int64 `json:"AssociatedRuleCount,omitnil,omitempty" name:"AssociatedRuleCount"`
 
 	// 目标组内的实例数量。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegisteredInstancesCount *int64 `json:"RegisteredInstancesCount,omitnil,omitempty" name:"RegisteredInstancesCount"`
 
 	// 标签。
 	Tag []*TagInfo `json:"Tag,omitnil,omitempty" name:"Tag"`
 
 	// 默认权重。只有v2类型目标组返回该字段。当返回为NULL时， 表示未设置默认权重。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
 	// 是否全监听目标组
@@ -9446,8 +9442,10 @@ type TargetHealth struct {
 	HealthStatusDetial *string `json:"HealthStatusDetial,omitnil,omitempty" name:"HealthStatusDetial"`
 
 	// 目标组唯一ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
+
+	// Target的权重。
+	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 
 type TargetRegionInfo struct {
@@ -9458,43 +9456,34 @@ type TargetRegionInfo struct {
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// Target所属网络，私有网络格式如86323，如果是基础网络，则为0
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NumericalVpcId *int64 `json:"NumericalVpcId,omitnil,omitempty" name:"NumericalVpcId"`
 }
 
 type TypeInfo struct {
 	// 运营商类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 规格可用性
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpecAvailabilitySet []*SpecAvailability `json:"SpecAvailabilitySet,omitnil,omitempty" name:"SpecAvailabilitySet"`
 }
 
 type ZoneInfo struct {
 	// 可用区数值形式的唯一ID，如：100001
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *uint64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 可用区字符串形式的唯一ID，如：ap-guangzhou-1
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 可用区名称，如：广州一区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 
 	// 可用区所属地域，如：ap-guangzhou
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneRegion *string `json:"ZoneRegion,omitnil,omitempty" name:"ZoneRegion"`
 
 	// 可用区是否是LocalZone可用区，如：false
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalZone *bool `json:"LocalZone,omitnil,omitempty" name:"LocalZone"`
 
 	// 可用区是否是EdgeZone可用区，如：false
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EdgeZone *bool `json:"EdgeZone,omitnil,omitempty" name:"EdgeZone"`
 }
 
@@ -9503,7 +9492,6 @@ type ZoneResource struct {
 	MasterZone *string `json:"MasterZone,omitnil,omitempty" name:"MasterZone"`
 
 	// 资源列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceSet []*Resource `json:"ResourceSet,omitnil,omitempty" name:"ResourceSet"`
 
 	// 备可用区，如"ap-guangzhou-2"，单可用区时，备可用区为null。
@@ -9526,6 +9514,5 @@ type ZoneResource struct {
 	EdgeZone *bool `json:"EdgeZone,omitnil,omitempty" name:"EdgeZone"`
 
 	// 网络出口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Egress *string `json:"Egress,omitnil,omitempty" name:"Egress"`
 }

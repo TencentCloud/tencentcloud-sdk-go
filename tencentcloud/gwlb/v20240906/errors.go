@@ -47,6 +47,9 @@ const (
 	// InvalidParameterValue.Length
 	INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 
+	// 输入参数值不在合法的范围内。
+	INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 

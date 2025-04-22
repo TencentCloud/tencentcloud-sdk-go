@@ -4330,6 +4330,10 @@ func NewDescribeDeviceLocationSolveResponse() (response *DescribeDeviceLocationS
 }
 
 // DescribeDeviceLocationSolve
+// 获取实时位置解析依赖于teg位置服务，近30天调用只有2个个人账号调用，产品推下线
+//
+// 
+//
 // 获取实时位置解析
 //
 // 可能返回的错误码:
@@ -4346,6 +4350,10 @@ func (c *Client) DescribeDeviceLocationSolve(request *DescribeDeviceLocationSolv
 }
 
 // DescribeDeviceLocationSolve
+// 获取实时位置解析依赖于teg位置服务，近30天调用只有2个个人账号调用，产品推下线
+//
+// 
+//
 // 获取实时位置解析
 //
 // 可能返回的错误码:

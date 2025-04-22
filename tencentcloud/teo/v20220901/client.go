@@ -1598,6 +1598,7 @@ func NewCreateLoadBalancerResponse() (response *CreateLoadBalancerResponse) {
 // 创建负载均衡实例。详情请参考 [快速创建负载均衡实例](https://cloud.tencent.com/document/product/1552/104223)。负载均衡功能内测中，如您需要使用请 [联系我们](https://cloud.tencent.com/online-service)。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_LOADBALANCERBINDORIGINGROUPINVALID = "InvalidParameter.LoadBalancerBindOriginGroupInvalid"
 //  INVALIDPARAMETER_LOADBALANCERNAMEREPEATED = "InvalidParameter.LoadBalancerNameRepeated"
 //  INVALIDPARAMETER_ORIGINGROUPTYPECANNOTMATCHLBTYPE = "InvalidParameter.OriginGroupTypeCanNotMatchLBType"
 //  INVALIDPARAMETER_SOMEORIGINGROUPNOTEXIST = "InvalidParameter.SomeOriginGroupNotExist"
@@ -1610,6 +1611,7 @@ func (c *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (respons
 // 创建负载均衡实例。详情请参考 [快速创建负载均衡实例](https://cloud.tencent.com/document/product/1552/104223)。负载均衡功能内测中，如您需要使用请 [联系我们](https://cloud.tencent.com/online-service)。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_LOADBALANCERBINDORIGINGROUPINVALID = "InvalidParameter.LoadBalancerBindOriginGroupInvalid"
 //  INVALIDPARAMETER_LOADBALANCERNAMEREPEATED = "InvalidParameter.LoadBalancerNameRepeated"
 //  INVALIDPARAMETER_ORIGINGROUPTYPECANNOTMATCHLBTYPE = "InvalidParameter.OriginGroupTypeCanNotMatchLBType"
 //  INVALIDPARAMETER_SOMEORIGINGROUPNOTEXIST = "InvalidParameter.SomeOriginGroupNotExist"

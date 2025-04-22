@@ -3914,6 +3914,65 @@ func (c *Client) CreateFlowLogWithContext(ctx context.Context, request *CreateFl
     return
 }
 
+func NewCreateGlobalRoutesRequest() (request *CreateGlobalRoutesRequest) {
+    request = &CreateGlobalRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateGlobalRoutes")
+    
+    
+    return
+}
+
+func NewCreateGlobalRoutesResponse() (response *CreateGlobalRoutesResponse) {
+    response = &CreateGlobalRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateGlobalRoutes
+// 本接口（CreateGlobalRoutes）用于创建全局路由。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateGlobalRoutes(request *CreateGlobalRoutesRequest) (response *CreateGlobalRoutesResponse, err error) {
+    return c.CreateGlobalRoutesWithContext(context.Background(), request)
+}
+
+// CreateGlobalRoutes
+// 本接口（CreateGlobalRoutes）用于创建全局路由。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateGlobalRoutesWithContext(ctx context.Context, request *CreateGlobalRoutesRequest) (response *CreateGlobalRoutesResponse, err error) {
+    if request == nil {
+        request = NewCreateGlobalRoutesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGlobalRoutes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGlobalRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateHaVipRequest() (request *CreateHaVipRequest) {
     request = &CreateHaVipRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8335,6 +8394,57 @@ func (c *Client) DeleteFlowLogWithContext(ctx context.Context, request *DeleteFl
     request.SetContext(ctx)
     
     response = NewDeleteFlowLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGlobalRoutesRequest() (request *DeleteGlobalRoutesRequest) {
+    request = &DeleteGlobalRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteGlobalRoutes")
+    
+    
+    return
+}
+
+func NewDeleteGlobalRoutesResponse() (response *DeleteGlobalRoutesResponse) {
+    response = &DeleteGlobalRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteGlobalRoutes
+// 删除全局路由。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+func (c *Client) DeleteGlobalRoutes(request *DeleteGlobalRoutesRequest) (response *DeleteGlobalRoutesResponse, err error) {
+    return c.DeleteGlobalRoutesWithContext(context.Background(), request)
+}
+
+// DeleteGlobalRoutes
+// 删除全局路由。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+func (c *Client) DeleteGlobalRoutesWithContext(ctx context.Context, request *DeleteGlobalRoutesRequest) (response *DeleteGlobalRoutesResponse, err error) {
+    if request == nil {
+        request = NewDeleteGlobalRoutesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGlobalRoutes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGlobalRoutesResponse()
     err = c.Send(request, response)
     return
 }
@@ -12771,6 +12881,63 @@ func (c *Client) DescribeGatewayFlowQosWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeGatewayFlowQosResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGlobalRoutesRequest() (request *DescribeGlobalRoutesRequest) {
+    request = &DescribeGlobalRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeGlobalRoutes")
+    
+    
+    return
+}
+
+func NewDescribeGlobalRoutesResponse() (response *DescribeGlobalRoutesResponse) {
+    response = &DescribeGlobalRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGlobalRoutes
+// 查询全局路由列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = "InvalidParameterValue.NotUtf8EncodingError"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeGlobalRoutes(request *DescribeGlobalRoutesRequest) (response *DescribeGlobalRoutesResponse, err error) {
+    return c.DescribeGlobalRoutesWithContext(context.Background(), request)
+}
+
+// DescribeGlobalRoutes
+// 查询全局路由列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_NOTUTF8ENCODINGERROR = "InvalidParameterValue.NotUtf8EncodingError"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeGlobalRoutesWithContext(ctx context.Context, request *DescribeGlobalRoutesRequest) (response *DescribeGlobalRoutesResponse, err error) {
+    if request == nil {
+        request = NewDescribeGlobalRoutesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGlobalRoutes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGlobalRoutesResponse()
     err = c.Send(request, response)
     return
 }
@@ -21329,6 +21496,120 @@ func (c *Client) ModifyGatewayFlowQosWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyGatewayFlowQosResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyGlobalRouteECMPAlgorithmRequest() (request *ModifyGlobalRouteECMPAlgorithmRequest) {
+    request = &ModifyGlobalRouteECMPAlgorithmRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyGlobalRouteECMPAlgorithm")
+    
+    
+    return
+}
+
+func NewModifyGlobalRouteECMPAlgorithmResponse() (response *ModifyGlobalRouteECMPAlgorithmResponse) {
+    response = &ModifyGlobalRouteECMPAlgorithmResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyGlobalRouteECMPAlgorithm
+// 修改全局路由表ECMP算法 HASH 策略。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyGlobalRouteECMPAlgorithm(request *ModifyGlobalRouteECMPAlgorithmRequest) (response *ModifyGlobalRouteECMPAlgorithmResponse, err error) {
+    return c.ModifyGlobalRouteECMPAlgorithmWithContext(context.Background(), request)
+}
+
+// ModifyGlobalRouteECMPAlgorithm
+// 修改全局路由表ECMP算法 HASH 策略。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RESOURCENOTFOUND = "InvalidParameterValue.ResourceNotFound"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyGlobalRouteECMPAlgorithmWithContext(ctx context.Context, request *ModifyGlobalRouteECMPAlgorithmRequest) (response *ModifyGlobalRouteECMPAlgorithmResponse, err error) {
+    if request == nil {
+        request = NewModifyGlobalRouteECMPAlgorithmRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGlobalRouteECMPAlgorithm require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGlobalRouteECMPAlgorithmResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyGlobalRoutesRequest() (request *ModifyGlobalRoutesRequest) {
+    request = &ModifyGlobalRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyGlobalRoutes")
+    
+    
+    return
+}
+
+func NewModifyGlobalRoutesResponse() (response *ModifyGlobalRoutesResponse) {
+    response = &ModifyGlobalRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyGlobalRoutes
+// 修改全局路由。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyGlobalRoutes(request *ModifyGlobalRoutesRequest) (response *ModifyGlobalRoutesResponse, err error) {
+    return c.ModifyGlobalRoutesWithContext(context.Background(), request)
+}
+
+// ModifyGlobalRoutes
+// 修改全局路由。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyGlobalRoutesWithContext(ctx context.Context, request *ModifyGlobalRoutesRequest) (response *ModifyGlobalRoutesResponse, err error) {
+    if request == nil {
+        request = NewModifyGlobalRoutesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGlobalRoutes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGlobalRoutesResponse()
     err = c.Send(request, response)
     return
 }

@@ -89,7 +89,7 @@ type ApproverInfo struct {
 	// 如果签署方是企业签署方(approverType = 0 或者 approverType = 3)， 则企业名称必填。
 	OrganizationName *string `json:"OrganizationName,omitnil,omitempty" name:"OrganizationName"`
 
-	// 合同中的签署控件列表，列表中可支持下列多种签署控件,控件的详细定义参考开发者中心的Component结构体
+	// 【在用文件发起合同场景下才有效，模板发起场景下需要在模板中配置】合同中的该名签署方的签署控件列表，列表中可支持下列多种签署控件,控件的详细定义参考开发者中心的Component结构体
 	// <ul><li> 个人签名/印章</li>
 	// <li> 企业印章</li>
 	// <li> 骑缝章等签署控件</li></ul>
@@ -135,7 +135,7 @@ type ApproverInfo struct {
 	// 注: `如果是用模板发起, 优先使用此处上传的, 如果不传则用模板的配置的`
 	ApproverRoleName *string `json:"ApproverRoleName,omitnil,omitempty" name:"ApproverRoleName"`
 
-	// 签署意愿确认渠道，默认为WEIXINAPP:人脸识别
+	// <font coloe="red">【已废弃】</font>签署意愿确认渠道，默认为WEIXINAPP:人脸识别
 	// 
 	// 注: 将要废弃, 用ApproverSignTypes签署人签署合同时的认证方式代替, 新客户可请用ApproverSignTypes来设置
 	VerifyChannel []*string `json:"VerifyChannel,omitnil,omitempty" name:"VerifyChannel"`
@@ -167,16 +167,17 @@ type ApproverInfo struct {
 	// 详细操作可以参考开发者中心的ApproverOption结构体。
 	ApproverOption *ApproverOption `json:"ApproverOption,omitnil,omitempty" name:"ApproverOption"`
 
-	// 指定个人签署方查看合同的校验方式,可以传值如下:
+	// 【在用文件发起合同场景下才有效，模板发起场景下需要在模板中配置】指定个人签署方查看合同的校验方式,可以传值如下:
 	// <ul><li>  **1**   : （默认）人脸识别,人脸识别后才能合同内容</li>
 	// <li>  **2**  : 手机号验证, 用户手机号和参与方手机号(ApproverMobile)相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证）
 	// </li></ul>
 	// 注: 
 	// <ul><li>如果合同流程设置ApproverVerifyType查看合同的校验方式,    则忽略此签署人的查看合同的校验方式</li>
 	// <li>此字段可传多个校验方式</li></ul>
+	// 
 	ApproverVerifyTypes []*int64 `json:"ApproverVerifyTypes,omitnil,omitempty" name:"ApproverVerifyTypes"`
 
-	// 您可以指定签署方签署合同的认证校验方式，可传递以下值：
+	// 【在用文件发起合同场景下才有效，模板发起场景下需要在模板中配置】您可以指定签署方签署合同的认证校验方式，可传递以下值：
 	// <ul><li>**1**：人脸认证，需进行人脸识别成功后才能签署合同；</li>
 	// <li>**2**：签署密码，需输入与用户在腾讯电子签设置的密码一致才能校验成功进行合同签署；</li>
 	// <li>**3**：运营商三要素，需到运营商处比对手机号实名信息（名字、手机号、证件号）校验一致才能成功进行合同签署。（如果是港澳台客户，建议不要选择这个）</li>
@@ -206,7 +207,7 @@ type ApproverInfo struct {
 	// ![image](https://qcloudimg.tencent-cloud.cn/raw/b14d5188ed0229d1401e74a9a49cab6d.png)
 	ApproverNeedSignReview *bool `json:"ApproverNeedSignReview,omitnil,omitempty" name:"ApproverNeedSignReview"`
 
-	// [用PDF文件创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles)时,如果设置了外层参数SignBeanTag=1(允许签署过程中添加签署控件),则可通过此参数明确规定合同所使用的签署控件类型（骑缝章、普通章法人章等）和具体的印章（印章ID或者印章类型）或签名方式。
+	// 【在用文件发起合同场景下才有效】在调用[用PDF文件创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles)创建合同时,如果设置了外层参数SignBeanTag=1(允许签署过程中添加签署控件),则可通过此参数明确规定合同所使用的签署控件类型（骑缝章、普通章法人章等）和具体的印章（印章ID或者印章类型）或签名方式。
 	// 
 	// 注：`限制印章控件或骑缝章控件情况下,仅本企业签署方可以指定具体印章（通过传递ComponentValue,支持多个），他方企业或个人只支持限制控件类型。`
 	AddSignComponentsLimits []*ComponentLimit `json:"AddSignComponentsLimits,omitnil,omitempty" name:"AddSignComponentsLimits"`
@@ -219,7 +220,7 @@ type ApproverInfo struct {
 	// 注: `若不设置此参数，则默认使用合同的截止时间，此参数暂不支持合同组子合同`
 	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
 
-	// 签署人在合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
+	// 【在用文件发起合同场景下才有效，模板发起场景下需要在模板中配置】签署人在合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
 	// <ul><li>单行文本控件</li>
 	// <li>多行文本控件</li>
 	// <li>勾选框控件</li>

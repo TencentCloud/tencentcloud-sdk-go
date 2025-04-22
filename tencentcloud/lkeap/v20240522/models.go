@@ -76,7 +76,7 @@ type ChatCompletionsRequestParams struct {
 	// 控制生成的随机性，较高的值会产生更多样化的输出。
 	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 
-	// 最大生成的token数量
+	// 最大生成的token数量，默认为4096，最大可设置为16384
 	MaxTokens *int64 `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
 }
 
@@ -99,7 +99,7 @@ type ChatCompletionsRequest struct {
 	// 控制生成的随机性，较高的值会产生更多样化的输出。
 	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 
-	// 最大生成的token数量
+	// 最大生成的token数量，默认为4096，最大可设置为16384
 	MaxTokens *int64 `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
 }
 

@@ -173,6 +173,9 @@ type AlarmInfo struct {
 	// 分组触发条件。
 	GroupTriggerCondition []*string `json:"GroupTriggerCondition,omitnil,omitempty" name:"GroupTriggerCondition"`
 
+	// 告警策略绑定的标签信息。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
 	// 监控对象类型。0:执行语句共用监控对象;1:每个执行语句单独选择监控对象。 
 	MonitorObjectType *uint64 `json:"MonitorObjectType,omitnil,omitempty" name:"MonitorObjectType"`
 
@@ -13404,6 +13407,9 @@ type ValueInfo struct {
 
 	// 是否包含中文，long及double类型字段需为false
 	ContainZH *bool `json:"ContainZH,omitnil,omitempty" name:"ContainZH"`
+
+	// 字段别名
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 }
 
 type WebCallback struct {

@@ -2843,6 +2843,18 @@ type CreatePostCKafkaFlowRequestParams struct {
 
 	// kafka集群的版本号
 	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
+
+	// 是否开启SASL校验，默认不开启，0-关闭，1-开启
+	SASLEnable *int64 `json:"SASLEnable,omitnil,omitempty" name:"SASLEnable"`
+
+	// SASL用户名
+	SASLUser *string `json:"SASLUser,omitnil,omitempty" name:"SASLUser"`
+
+	// SASL密码
+	SASLPassword *string `json:"SASLPassword,omitnil,omitempty" name:"SASLPassword"`
+
+	// 开启访问日志某些字段是否投递
+	WriteConfig *FieldWriteConfig `json:"WriteConfig,omitnil,omitempty" name:"WriteConfig"`
 }
 
 type CreatePostCKafkaFlowRequest struct {
@@ -2871,6 +2883,18 @@ type CreatePostCKafkaFlowRequest struct {
 
 	// kafka集群的版本号
 	KafkaVersion *string `json:"KafkaVersion,omitnil,omitempty" name:"KafkaVersion"`
+
+	// 是否开启SASL校验，默认不开启，0-关闭，1-开启
+	SASLEnable *int64 `json:"SASLEnable,omitnil,omitempty" name:"SASLEnable"`
+
+	// SASL用户名
+	SASLUser *string `json:"SASLUser,omitnil,omitempty" name:"SASLUser"`
+
+	// SASL密码
+	SASLPassword *string `json:"SASLPassword,omitnil,omitempty" name:"SASLPassword"`
+
+	// 开启访问日志某些字段是否投递
+	WriteConfig *FieldWriteConfig `json:"WriteConfig,omitnil,omitempty" name:"WriteConfig"`
 }
 
 func (r *CreatePostCKafkaFlowRequest) ToJsonString() string {
@@ -2893,6 +2917,10 @@ func (r *CreatePostCKafkaFlowRequest) FromJsonString(s string) error {
 	delete(f, "LogType")
 	delete(f, "Topic")
 	delete(f, "KafkaVersion")
+	delete(f, "SASLEnable")
+	delete(f, "SASLUser")
+	delete(f, "SASLPassword")
+	delete(f, "WriteConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePostCKafkaFlowRequest has unknown keys!", "")
 	}
@@ -10542,6 +10570,17 @@ type ExportAccessInfo struct {
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
+type FieldWriteConfig struct {
+	// 1:开启 0:不开启
+	EnableHeaders *int64 `json:"EnableHeaders,omitnil,omitempty" name:"EnableHeaders"`
+
+	// 1:开启 0:不开启
+	EnableBody *int64 `json:"EnableBody,omitnil,omitempty" name:"EnableBody"`
+
+	// 1:开启 0:不开启
+	EnableBot *int64 `json:"EnableBot,omitnil,omitempty" name:"EnableBot"`
+}
+
 type FiltersItemNew struct {
 	// 字段名； 过滤
 	// 子订单号过滤通过name 为：DealName； value为子订单号
@@ -15968,8 +16007,23 @@ type PostCKafkaFlowInfo struct {
 	// 压缩算法，支持gzip 和 lz4
 	Compression *string `json:"Compression,omitnil,omitempty" name:"Compression"`
 
+	// 是否支持SASL,0-关闭，1-开启
+	SASLEnable *int64 `json:"SASLEnable,omitnil,omitempty" name:"SASLEnable"`
+
+	// SASL用户名
+	SASLUser *string `json:"SASLUser,omitnil,omitempty" name:"SASLUser"`
+
+	// SALS密码
+	SASLPassword *string `json:"SASLPassword,omitnil,omitempty" name:"SASLPassword"`
+
 	// 描述信息
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 1-外网TGW，2-支撑环境，默认为支撑环境
+	VipType *int64 `json:"VipType,omitnil,omitempty" name:"VipType"`
+
+	// 配置状态
+	WriteConfig *FieldWriteConfig `json:"WriteConfig,omitnil,omitempty" name:"WriteConfig"`
 }
 
 type PostCLSFlowInfo struct {

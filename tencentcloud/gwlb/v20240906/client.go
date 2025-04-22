@@ -532,6 +532,7 @@ func NewDescribeTargetGroupInstancesResponse() (response *DescribeTargetGroupIns
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTargetGroupInstances(request *DescribeTargetGroupInstancesRequest) (response *DescribeTargetGroupInstancesResponse, err error) {
     return c.DescribeTargetGroupInstancesWithContext(context.Background(), request)
@@ -545,6 +546,7 @@ func (c *Client) DescribeTargetGroupInstances(request *DescribeTargetGroupInstan
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTargetGroupInstancesWithContext(ctx context.Context, request *DescribeTargetGroupInstancesRequest) (response *DescribeTargetGroupInstancesResponse, err error) {
     if request == nil {
@@ -589,6 +591,7 @@ func NewDescribeTargetGroupListResponse() (response *DescribeTargetGroupListResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTargetGroupList(request *DescribeTargetGroupListRequest) (response *DescribeTargetGroupListResponse, err error) {
     return c.DescribeTargetGroupListWithContext(context.Background(), request)
@@ -602,6 +605,7 @@ func (c *Client) DescribeTargetGroupList(request *DescribeTargetGroupListRequest
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTargetGroupListWithContext(ctx context.Context, request *DescribeTargetGroupListRequest) (response *DescribeTargetGroupListResponse, err error) {
     if request == nil {
@@ -985,8 +989,6 @@ func NewModifyTargetGroupInstancesWeightResponse() (response *ModifyTargetGroupI
 // ModifyTargetGroupInstancesWeight
 // 修改目标组的服务器权重。
 //
-// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
-//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
@@ -1000,8 +1002,6 @@ func (c *Client) ModifyTargetGroupInstancesWeight(request *ModifyTargetGroupInst
 
 // ModifyTargetGroupInstancesWeight
 // 修改目标组的服务器权重。
-//
-// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
