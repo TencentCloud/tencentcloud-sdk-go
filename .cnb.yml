@@ -1,0 +1,33 @@
+test_config: &test_config
+  docker:
+    # Use the pipeline name as the image name
+    image: ${CNB_PIPELINE_NAME}
+    volumes:
+      - /root/go/pkg/mod
+  imports: https://cnb.cool/tencent/cloud/api/sdk/secret/-/blob/main/secret.json
+  stages:
+    - name: test
+      script:
+        - cd testing
+        - go mod tidy
+        - go test -v ./...
+
+.test_matrix: &test_matrix
+  golang:latest:
+    <<: *test_config
+  golang:1.22:
+    <<: *test_config
+  golang:1.21:
+    <<: *test_config
+  golang:1.20:
+    <<: *test_config
+  golang:1.19:
+    <<: *test_config
+  golang:1.18:
+    <<: *test_config
+
+master:
+  push:
+    <<: *test_matrix
+  pull_request:
+    <<: *test_matrix
