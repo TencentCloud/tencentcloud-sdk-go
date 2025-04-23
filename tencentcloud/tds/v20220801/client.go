@@ -45,6 +45,57 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewDescribeFinanceFraudUltimateRequest() (request *DescribeFinanceFraudUltimateRequest) {
+    request = &DescribeFinanceFraudUltimateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tds", APIVersion, "DescribeFinanceFraudUltimate")
+    
+    
+    return
+}
+
+func NewDescribeFinanceFraudUltimateResponse() (response *DescribeFinanceFraudUltimateResponse) {
+    response = &DescribeFinanceFraudUltimateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFinanceFraudUltimate
+// 查询设备标识及风险（金融旗舰版）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+func (c *Client) DescribeFinanceFraudUltimate(request *DescribeFinanceFraudUltimateRequest) (response *DescribeFinanceFraudUltimateResponse, err error) {
+    return c.DescribeFinanceFraudUltimateWithContext(context.Background(), request)
+}
+
+// DescribeFinanceFraudUltimate
+// 查询设备标识及风险（金融旗舰版）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+func (c *Client) DescribeFinanceFraudUltimateWithContext(ctx context.Context, request *DescribeFinanceFraudUltimateRequest) (response *DescribeFinanceFraudUltimateResponse, err error) {
+    if request == nil {
+        request = NewDescribeFinanceFraudUltimateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFinanceFraudUltimate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFinanceFraudUltimateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFraudBaseRequest() (request *DescribeFraudBaseRequest) {
     request = &DescribeFraudBaseRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -4109,8 +4109,11 @@ type CreateInputSRTSettings struct {
 
 // Predefined struct for user
 type CreateLiveRecordTemplateRequestParams struct {
-	// HLS 配置参数
+	// HLS配置参数，和MP4Configure需要二选一必填。
 	HLSConfigure *HLSConfigureInfo `json:"HLSConfigure,omitnil,omitempty" name:"HLSConfigure"`
+
+	// MP4配置参数，和HLSConfigure需要二选一必填。
+	MP4Configure *MP4ConfigureInfo `json:"MP4Configure,omitnil,omitempty" name:"MP4Configure"`
 
 	// 录制模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -4122,8 +4125,11 @@ type CreateLiveRecordTemplateRequestParams struct {
 type CreateLiveRecordTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// HLS 配置参数
+	// HLS配置参数，和MP4Configure需要二选一必填。
 	HLSConfigure *HLSConfigureInfo `json:"HLSConfigure,omitnil,omitempty" name:"HLSConfigure"`
+
+	// MP4配置参数，和HLSConfigure需要二选一必填。
+	MP4Configure *MP4ConfigureInfo `json:"MP4Configure,omitnil,omitempty" name:"MP4Configure"`
 
 	// 录制模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -4145,6 +4151,7 @@ func (r *CreateLiveRecordTemplateRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "HLSConfigure")
+	delete(f, "MP4Configure")
 	delete(f, "Name")
 	delete(f, "Comment")
 	if len(f) > 0 {
@@ -12439,6 +12446,9 @@ type LiveRecordTemplate struct {
 	// HLS 配置参数
 	HLSConfigure *HLSConfigureInfo `json:"HLSConfigure,omitnil,omitempty" name:"HLSConfigure"`
 
+	// MP4配置参数
+	MP4Configure *MP4ConfigureInfo `json:"MP4Configure,omitnil,omitempty" name:"MP4Configure"`
+
 	// 录制模板名称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
@@ -12996,6 +13006,11 @@ type LowLightEnhanceConfig struct {
 	// 默认值：normal。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type MP4ConfigureInfo struct {
+	// 录制周期，单位：秒，取值范围 10 分钟到720分钟。默认值：60分钟（3600秒）。
+	Interval *int64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 }
 
 // Predefined struct for user
@@ -14281,7 +14296,9 @@ func (r *ModifyAnimatedGraphicsTemplateResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type ModifyAsrHotwordsRequestParams struct {
-	// 热词库 id
+	// 热词库 id 
+	// 如果热词库是文本热词：Name 和 Content 至少填一个 
+	// 如果热词库是：Name、FileContent 和 FileName 至少填一个 
 	HotwordsId *string `json:"HotwordsId,omitnil,omitempty" name:"HotwordsId"`
 
 	// 热词库名称
@@ -14302,7 +14319,9 @@ type ModifyAsrHotwordsRequestParams struct {
 type ModifyAsrHotwordsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 热词库 id
+	// 热词库 id 
+	// 如果热词库是文本热词：Name 和 Content 至少填一个 
+	// 如果热词库是：Name、FileContent 和 FileName 至少填一个 
 	HotwordsId *string `json:"HotwordsId,omitnil,omitempty" name:"HotwordsId"`
 
 	// 热词库名称
@@ -14700,8 +14719,11 @@ type ModifyLiveRecordTemplateRequestParams struct {
 	// 录制模板唯一标识。
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// HLS 配置参数
+	// HLS配置参数，和MP4Configure需要二选一必填。
 	HLSConfigure *HLSConfigureInfo `json:"HLSConfigure,omitnil,omitempty" name:"HLSConfigure"`
+
+	// MP4配置参数，和HLSConfigure需要二选一必填。
+	MP4Configure *MP4ConfigureInfo `json:"MP4Configure,omitnil,omitempty" name:"MP4Configure"`
 
 	// 录制模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -14716,8 +14738,11 @@ type ModifyLiveRecordTemplateRequest struct {
 	// 录制模板唯一标识。
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// HLS 配置参数
+	// HLS配置参数，和MP4Configure需要二选一必填。
 	HLSConfigure *HLSConfigureInfo `json:"HLSConfigure,omitnil,omitempty" name:"HLSConfigure"`
+
+	// MP4配置参数，和HLSConfigure需要二选一必填。
+	MP4Configure *MP4ConfigureInfo `json:"MP4Configure,omitnil,omitempty" name:"MP4Configure"`
 
 	// 录制模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -14740,6 +14765,7 @@ func (r *ModifyLiveRecordTemplateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Definition")
 	delete(f, "HLSConfigure")
+	delete(f, "MP4Configure")
 	delete(f, "Name")
 	delete(f, "Comment")
 	if len(f) > 0 {
@@ -17360,9 +17386,13 @@ type QualityControlData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoVideo *bool `json:"NoVideo,omitnil,omitempty" name:"NoVideo"`
 
-	// 视频无参考质量打分，百分制。
+	// 视频无参考质量评分，百分制。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QualityEvaluationScore *int64 `json:"QualityEvaluationScore,omitnil,omitempty" name:"QualityEvaluationScore"`
+
+	// 视频无参考质量评分，MOS分数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QualityEvaluationMeanOpinionScore *float64 `json:"QualityEvaluationMeanOpinionScore,omitnil,omitempty" name:"QualityEvaluationMeanOpinionScore"`
 
 	// 内容质检检出异常项。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -20278,6 +20308,9 @@ type WordResult struct {
 
 	// 字词结束时间戳，单位秒。
 	End *float64 `json:"End,omitnil,omitempty" name:"End"`
+
+	// 翻译文本
+	Trans *string `json:"Trans,omitnil,omitempty" name:"Trans"`
 }
 
 type WorkflowInfo struct {

@@ -2294,6 +2294,77 @@ func (c *Client) DescribeDBDiagHistoryWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeDBDiagReportContentRequest() (request *DescribeDBDiagReportContentRequest) {
+    request = &DescribeDBDiagReportContentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeDBDiagReportContent")
+    
+    
+    return
+}
+
+func NewDescribeDBDiagReportContentResponse() (response *DescribeDBDiagReportContentResponse) {
+    response = &DescribeDBDiagReportContentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDBDiagReportContent
+// 健康报告内容。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDBDiagReportContent(request *DescribeDBDiagReportContentRequest) (response *DescribeDBDiagReportContentResponse, err error) {
+    return c.DescribeDBDiagReportContentWithContext(context.Background(), request)
+}
+
+// DescribeDBDiagReportContent
+// 健康报告内容。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDBDiagReportContentWithContext(ctx context.Context, request *DescribeDBDiagReportContentRequest) (response *DescribeDBDiagReportContentResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBDiagReportContentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBDiagReportContent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBDiagReportContentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBDiagReportTasksRequest() (request *DescribeDBDiagReportTasksRequest) {
     request = &DescribeDBDiagReportTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},

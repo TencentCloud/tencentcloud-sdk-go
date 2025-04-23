@@ -2856,6 +2856,77 @@ func (r *DescribeDBDiagHistoryResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDBDiagReportContentRequestParams struct {
+	// 实例名
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 异步任务ID
+	AsyncRequestId *uint64 `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
+
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+}
+
+type DescribeDBDiagReportContentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例名
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 异步任务ID
+	AsyncRequestId *uint64 `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
+
+	// 服务产品类型，支持值："mysql" - 云数据库 MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
+	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
+}
+
+func (r *DescribeDBDiagReportContentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBDiagReportContentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "AsyncRequestId")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBDiagReportContentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBDiagReportContentResponseParams struct {
+	// 报告内容。
+	Report *string `json:"Report,omitnil,omitempty" name:"Report"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDBDiagReportContentResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBDiagReportContentResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBDiagReportContentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBDiagReportContentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDBDiagReportTasksRequestParams struct {
 	// 第一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`

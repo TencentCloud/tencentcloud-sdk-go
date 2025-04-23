@@ -11708,6 +11708,9 @@ type InstanceInfo struct {
 
 	// 最近3天最大带宽
 	Last3MaxBandwidth *uint64 `json:"Last3MaxBandwidth,omitnil,omitempty" name:"Last3MaxBandwidth"`
+
+	// 重保增强包
+	MajorEventsProPkg *MajorEventsProPkg `json:"MajorEventsProPkg,omitnil,omitempty" name:"MajorEventsProPkg"`
 }
 
 type IpAccessControlData struct {
@@ -11965,6 +11968,35 @@ type MajorEventsPkg struct {
 
 	// 护网包状态
 	HWState *int64 `json:"HWState,omitnil,omitempty" name:"HWState"`
+}
+
+type MajorEventsProPkg struct {
+	// 资源id
+	ResourceIds *string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
+
+	// 状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 地域
+	Region *int64 `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 开始时间
+	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 申请数量
+	InquireNum *int64 `json:"InquireNum,omitnil,omitempty" name:"InquireNum"`
+
+	// 使用数量
+	UsedNum *int64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
+
+	// 续费标志
+	RenewFlag *uint64 `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
+
+	// 计费项
+	BillingItem *string `json:"BillingItem,omitnil,omitempty" name:"BillingItem"`
 }
 
 type MiniExtendPkg struct {

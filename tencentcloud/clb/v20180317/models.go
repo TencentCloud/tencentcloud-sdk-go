@@ -663,7 +663,6 @@ type BindDetailItem struct {
 	LocationId *string `json:"LocationId,omitnil,omitempty" name:"LocationId"`
 
 	// 监听器名字
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
 	// 监听器协议

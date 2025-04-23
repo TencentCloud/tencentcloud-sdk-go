@@ -100,6 +100,61 @@ func (c *Client) CreateDedicatedClusterWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreateDedicatedClusterImageCacheRequest() (request *CreateDedicatedClusterImageCacheRequest) {
+    request = &CreateDedicatedClusterImageCacheRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdc", APIVersion, "CreateDedicatedClusterImageCache")
+    
+    
+    return
+}
+
+func NewCreateDedicatedClusterImageCacheResponse() (response *CreateDedicatedClusterImageCacheResponse) {
+    response = &CreateDedicatedClusterImageCacheResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDedicatedClusterImageCache
+// 创建云上镜像缓存到本地专用集群中
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_IMAGEISCACHEDINCDC = "InvalidParameter.ImageIsCachedInCdc"
+//  LIMITEXCEEDED_CDCIMAGETASKQUOTA = "LimitExceeded.CdcImageTaskQuota"
+//  UNSUPPORTEDOPERATION_SYNCCDCIMAGENOTSUPPORT = "UnsupportedOperation.SyncCdcImageNotSupport"
+func (c *Client) CreateDedicatedClusterImageCache(request *CreateDedicatedClusterImageCacheRequest) (response *CreateDedicatedClusterImageCacheResponse, err error) {
+    return c.CreateDedicatedClusterImageCacheWithContext(context.Background(), request)
+}
+
+// CreateDedicatedClusterImageCache
+// 创建云上镜像缓存到本地专用集群中
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_IMAGEISCACHEDINCDC = "InvalidParameter.ImageIsCachedInCdc"
+//  LIMITEXCEEDED_CDCIMAGETASKQUOTA = "LimitExceeded.CdcImageTaskQuota"
+//  UNSUPPORTEDOPERATION_SYNCCDCIMAGENOTSUPPORT = "UnsupportedOperation.SyncCdcImageNotSupport"
+func (c *Client) CreateDedicatedClusterImageCacheWithContext(ctx context.Context, request *CreateDedicatedClusterImageCacheRequest) (response *CreateDedicatedClusterImageCacheResponse, err error) {
+    if request == nil {
+        request = NewCreateDedicatedClusterImageCacheRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDedicatedClusterImageCache require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDedicatedClusterImageCacheResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDedicatedClusterOrderRequest() (request *CreateDedicatedClusterOrderRequest) {
     request = &CreateDedicatedClusterOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -208,6 +263,61 @@ func (c *Client) CreateSiteWithContext(ctx context.Context, request *CreateSiteR
     request.SetContext(ctx)
     
     response = NewCreateSiteResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDedicatedClusterImageCacheRequest() (request *DeleteDedicatedClusterImageCacheRequest) {
+    request = &DeleteDedicatedClusterImageCacheRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdc", APIVersion, "DeleteDedicatedClusterImageCache")
+    
+    
+    return
+}
+
+func NewDeleteDedicatedClusterImageCacheResponse() (response *DeleteDedicatedClusterImageCacheResponse) {
+    response = &DeleteDedicatedClusterImageCacheResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteDedicatedClusterImageCache
+// 删除本地专用集群的云上镜像缓存
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDIMAGESTATE = "FailedOperation.InvalidImageState"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_IMAGENOTCACHEINCDC = "InvalidParameter.ImageNotCacheInCdc"
+//  UNSUPPORTEDOPERATION_SYNCCDCIMAGENOTSUPPORT = "UnsupportedOperation.SyncCdcImageNotSupport"
+func (c *Client) DeleteDedicatedClusterImageCache(request *DeleteDedicatedClusterImageCacheRequest) (response *DeleteDedicatedClusterImageCacheResponse, err error) {
+    return c.DeleteDedicatedClusterImageCacheWithContext(context.Background(), request)
+}
+
+// DeleteDedicatedClusterImageCache
+// 删除本地专用集群的云上镜像缓存
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDIMAGESTATE = "FailedOperation.InvalidImageState"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_IMAGENOTCACHEINCDC = "InvalidParameter.ImageNotCacheInCdc"
+//  UNSUPPORTEDOPERATION_SYNCCDCIMAGENOTSUPPORT = "UnsupportedOperation.SyncCdcImageNotSupport"
+func (c *Client) DeleteDedicatedClusterImageCacheWithContext(ctx context.Context, request *DeleteDedicatedClusterImageCacheRequest) (response *DeleteDedicatedClusterImageCacheResponse, err error) {
+    if request == nil {
+        request = NewDeleteDedicatedClusterImageCacheRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDedicatedClusterImageCache require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDedicatedClusterImageCacheResponse()
     err = c.Send(request, response)
     return
 }

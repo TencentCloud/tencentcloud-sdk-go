@@ -69,6 +69,9 @@ type CreateProductSecretRequestParams struct {
 
 	// 轮转周期，以天为单位，默认为1天。
 	RotationFrequency *int64 `json:"RotationFrequency,omitnil,omitempty" name:"RotationFrequency"`
+
+	// KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+	KmsHsmClusterId *string `json:"KmsHsmClusterId,omitnil,omitempty" name:"KmsHsmClusterId"`
 }
 
 type CreateProductSecretRequest struct {
@@ -121,6 +124,9 @@ type CreateProductSecretRequest struct {
 
 	// 轮转周期，以天为单位，默认为1天。
 	RotationFrequency *int64 `json:"RotationFrequency,omitnil,omitempty" name:"RotationFrequency"`
+
+	// KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+	KmsHsmClusterId *string `json:"KmsHsmClusterId,omitnil,omitempty" name:"KmsHsmClusterId"`
 }
 
 func (r *CreateProductSecretRequest) ToJsonString() string {
@@ -147,6 +153,7 @@ func (r *CreateProductSecretRequest) FromJsonString(s string) error {
 	delete(f, "RotationBeginTime")
 	delete(f, "EnableRotation")
 	delete(f, "RotationFrequency")
+	delete(f, "KmsHsmClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProductSecretRequest has unknown keys!", "")
 	}
@@ -208,6 +215,9 @@ type CreateSSHKeyPairSecretRequestParams struct {
 
 	// 用户自定义输入的SSH密钥对的名称，可由数字，字母和下划线组成，只能以数字和字母开头，长度不超过25个字符。
 	SSHKeyName *string `json:"SSHKeyName,omitnil,omitempty" name:"SSHKeyName"`
+
+	// KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+	KmsHsmClusterId *string `json:"KmsHsmClusterId,omitnil,omitempty" name:"KmsHsmClusterId"`
 }
 
 type CreateSSHKeyPairSecretRequest struct {
@@ -232,6 +242,9 @@ type CreateSSHKeyPairSecretRequest struct {
 
 	// 用户自定义输入的SSH密钥对的名称，可由数字，字母和下划线组成，只能以数字和字母开头，长度不超过25个字符。
 	SSHKeyName *string `json:"SSHKeyName,omitnil,omitempty" name:"SSHKeyName"`
+
+	// KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+	KmsHsmClusterId *string `json:"KmsHsmClusterId,omitnil,omitempty" name:"KmsHsmClusterId"`
 }
 
 func (r *CreateSSHKeyPairSecretRequest) ToJsonString() string {
@@ -252,6 +265,7 @@ func (r *CreateSSHKeyPairSecretRequest) FromJsonString(s string) error {
 	delete(f, "KmsKeyId")
 	delete(f, "Tags")
 	delete(f, "SSHKeyName")
+	delete(f, "KmsHsmClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSSHKeyPairSecretRequest has unknown keys!", "")
 	}
@@ -323,6 +337,9 @@ type CreateSecretRequestParams struct {
 
 	// 标签列表
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+	KmsHsmClusterId *string `json:"KmsHsmClusterId,omitnil,omitempty" name:"KmsHsmClusterId"`
 }
 
 type CreateSecretRequest struct {
@@ -354,6 +371,9 @@ type CreateSecretRequest struct {
 
 	// 标签列表
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+	KmsHsmClusterId *string `json:"KmsHsmClusterId,omitnil,omitempty" name:"KmsHsmClusterId"`
 }
 
 func (r *CreateSecretRequest) ToJsonString() string {
@@ -377,6 +397,7 @@ func (r *CreateSecretRequest) FromJsonString(s string) error {
 	delete(f, "SecretString")
 	delete(f, "AdditionalConfig")
 	delete(f, "Tags")
+	delete(f, "KmsHsmClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSecretRequest has unknown keys!", "")
 	}

@@ -48,6 +48,70 @@ type CosInfo struct {
 }
 
 // Predefined struct for user
+type CreateDedicatedClusterImageCacheRequestParams struct {
+	// 集群ID
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+
+	// 镜像ID
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+}
+
+type CreateDedicatedClusterImageCacheRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+
+	// 镜像ID
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+}
+
+func (r *CreateDedicatedClusterImageCacheRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDedicatedClusterImageCacheRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DedicatedClusterId")
+	delete(f, "ImageId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDedicatedClusterImageCacheRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDedicatedClusterImageCacheResponseParams struct {
+	// 任务id
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDedicatedClusterImageCacheResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDedicatedClusterImageCacheResponseParams `json:"Response"`
+}
+
+func (r *CreateDedicatedClusterImageCacheResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDedicatedClusterImageCacheResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDedicatedClusterOrderRequestParams struct {
 	// 专用集群id
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
@@ -704,6 +768,67 @@ type DedicatedClusterTypeInfo struct {
 
 	// 集群类型个数
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+}
+
+// Predefined struct for user
+type DeleteDedicatedClusterImageCacheRequestParams struct {
+	// 集群id
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+
+	// 镜像id
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+}
+
+type DeleteDedicatedClusterImageCacheRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
+
+	// 镜像id
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+}
+
+func (r *DeleteDedicatedClusterImageCacheRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDedicatedClusterImageCacheRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DedicatedClusterId")
+	delete(f, "ImageId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDedicatedClusterImageCacheRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDedicatedClusterImageCacheResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteDedicatedClusterImageCacheResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDedicatedClusterImageCacheResponseParams `json:"Response"`
+}
+
+func (r *DeleteDedicatedClusterImageCacheResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDedicatedClusterImageCacheResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

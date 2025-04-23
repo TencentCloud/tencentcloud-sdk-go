@@ -15678,7 +15678,7 @@ func (r *UninstallGrafanaPluginsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateAlertRuleRequestParams struct {
-	// Prometheus 高警规则 ID
+	// Prometheus 告警规则 ID
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// Prometheus 实例 ID
@@ -15703,22 +15703,22 @@ type UpdateAlertRuleRequestParams struct {
 	// 告警规则接收组列表(当前规则绑定的接收组列表可通过 DescribeAlertRules 接口获取；用户已有的接收组列表可通过 DescribeAlarmNotices 接口获取)
 	Receivers []*string `json:"Receivers,omitnil,omitempty" name:"Receivers"`
 
-	// 报警规则标签列表
+	// 告警规则标签列表
 	Labels []*PrometheusRuleKV `json:"Labels,omitnil,omitempty" name:"Labels"`
 
-	// 报警规则注释列表。
+	// 告警规则注释列表。
 	// 
 	// 告警对象和告警消息是 Prometheus Rule Annotations 的特殊字段，需要通过 annotations 来传递，对应的 Key 分别为summary/description。
 	Annotations []*PrometheusRuleKV `json:"Annotations,omitnil,omitempty" name:"Annotations"`
 
-	// 报警策略模板分类(自定义，可不填)
+	// 告警策略模板分类(自定义，可不填)
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type UpdateAlertRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// Prometheus 高警规则 ID
+	// Prometheus 告警规则 ID
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// Prometheus 实例 ID
@@ -15743,15 +15743,15 @@ type UpdateAlertRuleRequest struct {
 	// 告警规则接收组列表(当前规则绑定的接收组列表可通过 DescribeAlertRules 接口获取；用户已有的接收组列表可通过 DescribeAlarmNotices 接口获取)
 	Receivers []*string `json:"Receivers,omitnil,omitempty" name:"Receivers"`
 
-	// 报警规则标签列表
+	// 告警规则标签列表
 	Labels []*PrometheusRuleKV `json:"Labels,omitnil,omitempty" name:"Labels"`
 
-	// 报警规则注释列表。
+	// 告警规则注释列表。
 	// 
 	// 告警对象和告警消息是 Prometheus Rule Annotations 的特殊字段，需要通过 annotations 来传递，对应的 Key 分别为summary/description。
 	Annotations []*PrometheusRuleKV `json:"Annotations,omitnil,omitempty" name:"Annotations"`
 
-	// 报警策略模板分类(自定义，可不填)
+	// 告警策略模板分类(自定义，可不填)
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 

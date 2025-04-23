@@ -23,6 +23,18 @@ const (
 	// 删除site失败。
 	FAILEDOPERATION_FAILDELETESITE = "FailedOperation.FailDeleteSite"
 
+	// 镜像的状态不支持镜像同步
+	FAILEDOPERATION_INVALIDIMAGESTATE = "FailedOperation.InvalidImageState"
+
+	// 内部错误。
+	INTERNALERROR = "InternalError"
+
+	// 当前镜像已经在本地专用集群中缓存
+	INVALIDPARAMETER_IMAGEISCACHEDINCDC = "InvalidParameter.ImageIsCachedInCdc"
+
+	// 当前镜像没有在本地专用集群中缓存
+	INVALIDPARAMETER_IMAGENOTCACHEINCDC = "InvalidParameter.ImageNotCacheInCdc"
+
 	// 该机型暂不支持。
 	INVALIDPARAMETER_INSTANCETYPENOTSUPPORT = "InvalidParameter.InstanceTypeNotSupport"
 
@@ -56,6 +68,9 @@ const (
 	// 当前可用区暂未支持。
 	INVALIDPARAMETERVALUE_ZONENOTSUPPORTED = "InvalidParameterValue.ZoneNotSupported"
 
+	// 当前集群的镜像任务数量已达上限
+	LIMITEXCEEDED_CDCIMAGETASKQUOTA = "LimitExceeded.CdcImageTaskQuota"
+
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
@@ -79,4 +94,7 @@ const (
 
 	// 不支持非CUSTOMER类型的app id。
 	UNSUPPORTEDOPERATION_NONCUSTOMERAPPIDNOTSUPPORT = "UnsupportedOperation.NonCustomerAppIdNotSupport"
+
+	// 账户不支持cdc镜像同步，需要先加白
+	UNSUPPORTEDOPERATION_SYNCCDCIMAGENOTSUPPORT = "UnsupportedOperation.SyncCdcImageNotSupport"
 )

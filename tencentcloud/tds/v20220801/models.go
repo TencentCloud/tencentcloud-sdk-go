@@ -51,6 +51,168 @@ type DataAuthorizationInfo struct {
 }
 
 // Predefined struct for user
+type DescribeFinanceFraudUltimateRequestParams struct {
+	// 客户端通过SDK获取的设备Token
+	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
+
+	// 使用场景。目前仅支持login-登录场景、register-注册场景
+	SceneCode *string `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
+
+	// 用户唯一标识
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 事件时间戳（毫秒）
+	EventTime *uint64 `json:"EventTime,omitnil,omitempty" name:"EventTime"`
+
+	// 事件耗时（毫秒），例如进入登录界面到点击登录按钮耗时
+	ElapsedTime *uint64 `json:"ElapsedTime,omitnil,omitempty" name:"ElapsedTime"`
+
+	// 微信的OpenId
+	WeChatOpenId *string `json:"WeChatOpenId,omitnil,omitempty" name:"WeChatOpenId"`
+
+	// 手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
+
+	// 业务客户端IP
+	BizClientIp *string `json:"BizClientIp,omitnil,omitempty" name:"BizClientIp"`
+
+	// QQ的OpenId
+	QQOpenId *string `json:"QQOpenId,omitnil,omitempty" name:"QQOpenId"`
+
+	// 数据授权信息
+	DataAuthorization *DataAuthorizationInfo `json:"DataAuthorization,omitnil,omitempty" name:"DataAuthorization"`
+}
+
+type DescribeFinanceFraudUltimateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 客户端通过SDK获取的设备Token
+	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`
+
+	// 使用场景。目前仅支持login-登录场景、register-注册场景
+	SceneCode *string `json:"SceneCode,omitnil,omitempty" name:"SceneCode"`
+
+	// 用户唯一标识
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 事件时间戳（毫秒）
+	EventTime *uint64 `json:"EventTime,omitnil,omitempty" name:"EventTime"`
+
+	// 事件耗时（毫秒），例如进入登录界面到点击登录按钮耗时
+	ElapsedTime *uint64 `json:"ElapsedTime,omitnil,omitempty" name:"ElapsedTime"`
+
+	// 微信的OpenId
+	WeChatOpenId *string `json:"WeChatOpenId,omitnil,omitempty" name:"WeChatOpenId"`
+
+	// 手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5
+	PhoneNumber *string `json:"PhoneNumber,omitnil,omitempty" name:"PhoneNumber"`
+
+	// 业务客户端IP
+	BizClientIp *string `json:"BizClientIp,omitnil,omitempty" name:"BizClientIp"`
+
+	// QQ的OpenId
+	QQOpenId *string `json:"QQOpenId,omitnil,omitempty" name:"QQOpenId"`
+
+	// 数据授权信息
+	DataAuthorization *DataAuthorizationInfo `json:"DataAuthorization,omitnil,omitempty" name:"DataAuthorization"`
+}
+
+func (r *DescribeFinanceFraudUltimateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFinanceFraudUltimateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceToken")
+	delete(f, "SceneCode")
+	delete(f, "UserId")
+	delete(f, "EventTime")
+	delete(f, "ElapsedTime")
+	delete(f, "WeChatOpenId")
+	delete(f, "PhoneNumber")
+	delete(f, "BizClientIp")
+	delete(f, "QQOpenId")
+	delete(f, "DataAuthorization")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFinanceFraudUltimateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFinanceFraudUltimateResponseParams struct {
+	// App版本信息
+	AppVersion *string `json:"AppVersion,omitnil,omitempty" name:"AppVersion"`
+
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 客户端IP
+	ClientIp *string `json:"ClientIp,omitnil,omitempty" name:"ClientIp"`
+
+	// 机型
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 网络类型
+	NetworkType *string `json:"NetworkType,omitnil,omitempty" name:"NetworkType"`
+
+	// 应用包名
+	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
+
+	// 平台（2-Android，3-iOS，4-H5，5-微信小程序）
+	Platform *string `json:"Platform,omitnil,omitempty" name:"Platform"`
+
+	// 系统版本
+	SystemVersion *string `json:"SystemVersion,omitnil,omitempty" name:"SystemVersion"`
+
+	// SDK版本号
+	SdkBuildNo *string `json:"SdkBuildNo,omitnil,omitempty" name:"SdkBuildNo"`
+
+	// 实时风险信息
+	RiskInfos []*RiskInfo `json:"RiskInfos,omitnil,omitempty" name:"RiskInfos"`
+
+	// 离线风险信息
+	HistRiskInfos []*RiskInfo `json:"HistRiskInfos,omitnil,omitempty" name:"HistRiskInfos"`
+
+	// 设备匿名标识
+	Openid *string `json:"Openid,omitnil,omitempty" name:"Openid"`
+
+	// 场景风险信息
+	SceneRiskInfos []*RiskInfo `json:"SceneRiskInfos,omitnil,omitempty" name:"SceneRiskInfos"`
+
+	// 建议等级。1-极差，2-较差，3-中等，4-良好，5-优秀
+	SuggestionLevel *uint64 `json:"SuggestionLevel,omitnil,omitempty" name:"SuggestionLevel"`
+
+	// 图灵盾统一ID
+	Unionid *string `json:"Unionid,omitnil,omitempty" name:"Unionid"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFinanceFraudUltimateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFinanceFraudUltimateResponseParams `json:"Response"`
+}
+
+func (r *DescribeFinanceFraudUltimateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFinanceFraudUltimateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeFraudBaseRequestParams struct {
 	// 客户端通过SDK获取的设备Token
 	DeviceToken *string `json:"DeviceToken,omitnil,omitempty" name:"DeviceToken"`

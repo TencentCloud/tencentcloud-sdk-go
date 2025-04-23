@@ -5613,6 +5613,84 @@ func (r *DescribeAdvancedStoreLocationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeClusterMonitorInfosRequestParams struct {
+	// 引擎Id
+	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
+
+	// 任务创建时间的起始时间
+	TimeStart *string `json:"TimeStart,omitnil,omitempty" name:"TimeStart"`
+
+	// 任务创建时间的结束时间
+	TimeEnd *string `json:"TimeEnd,omitnil,omitempty" name:"TimeEnd"`
+
+	// 指标名称
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+}
+
+type DescribeClusterMonitorInfosRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎Id
+	DataEngineId *string `json:"DataEngineId,omitnil,omitempty" name:"DataEngineId"`
+
+	// 任务创建时间的起始时间
+	TimeStart *string `json:"TimeStart,omitnil,omitempty" name:"TimeStart"`
+
+	// 任务创建时间的结束时间
+	TimeEnd *string `json:"TimeEnd,omitnil,omitempty" name:"TimeEnd"`
+
+	// 指标名称
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+}
+
+func (r *DescribeClusterMonitorInfosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterMonitorInfosRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataEngineId")
+	delete(f, "TimeStart")
+	delete(f, "TimeEnd")
+	delete(f, "MetricName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterMonitorInfosRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterMonitorInfosResponseParams struct {
+	// 集群监控信息列表
+	Info *string `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterMonitorInfosResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterMonitorInfosResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterMonitorInfosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterMonitorInfosResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDLCCatalogAccessRequestParams struct {
 	// 显示条数
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`

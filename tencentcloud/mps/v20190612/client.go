@@ -539,6 +539,8 @@ func NewCreateAsrHotwordsResponse() (response *CreateAsrHotwordsResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_HOTWORDSFORMATERROR = "InvalidParameterValue.HotwordsFormatError"
 //  INVALIDPARAMETERVALUE_INPUTINFO = "InvalidParameterValue.InputInfo"
+//  LIMITEXCEEDED_TOOMUCHHOTWORDS = "LimitExceeded.TooMuchHotWords"
+//  LIMITEXCEEDED_TOOMUCHLARGEHOTWORDS = "LimitExceeded.TooMuchLargeHotWords"
 func (c *Client) CreateAsrHotwords(request *CreateAsrHotwordsRequest) (response *CreateAsrHotwordsResponse, err error) {
     return c.CreateAsrHotwordsWithContext(context.Background(), request)
 }
@@ -551,6 +553,8 @@ func (c *Client) CreateAsrHotwords(request *CreateAsrHotwordsRequest) (response 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_HOTWORDSFORMATERROR = "InvalidParameterValue.HotwordsFormatError"
 //  INVALIDPARAMETERVALUE_INPUTINFO = "InvalidParameterValue.InputInfo"
+//  LIMITEXCEEDED_TOOMUCHHOTWORDS = "LimitExceeded.TooMuchHotWords"
+//  LIMITEXCEEDED_TOOMUCHLARGEHOTWORDS = "LimitExceeded.TooMuchLargeHotWords"
 func (c *Client) CreateAsrHotwordsWithContext(ctx context.Context, request *CreateAsrHotwordsRequest) (response *CreateAsrHotwordsResponse, err error) {
     if request == nil {
         request = NewCreateAsrHotwordsRequest()

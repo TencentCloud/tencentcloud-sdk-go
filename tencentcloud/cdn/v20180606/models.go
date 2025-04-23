@@ -8068,6 +8068,9 @@ type IpFilterPathRule struct {
 	// path 时填充绝对路径，如 /xxx/test.html
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RulePaths []*string `json:"RulePaths,omitnil,omitempty" name:"RulePaths"`
+
+	// 备注信息, 最多支持50个字符
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type IpFreqLimit struct {

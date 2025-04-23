@@ -401,6 +401,12 @@ const (
 	// 水印原点距离视频图像坐标原点的垂直位置。支持 %、px 两种格式。
 	INVALIDPARAMETERVALUE_YPOS = "InvalidParameterValue.YPos"
 
+	// 热词库创建数量到达默认上限
+	LIMITEXCEEDED_TOOMUCHHOTWORDS = "LimitExceeded.TooMuchHotWords"
+
+	// 大型热词库创建到达上限
+	LIMITEXCEEDED_TOOMUCHLARGEHOTWORDS = "LimitExceeded.TooMuchLargeHotWords"
+
 	// 超过限制值：模板数超限。
 	LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
 
