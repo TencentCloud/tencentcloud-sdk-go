@@ -24,22 +24,48 @@ const (
 	octetStream = "application/octet-stream"
 )
 
+// DefaultHttpClient is the default HTTP client used by the SDK.
+// It can be overridden for custom HTTP client configurations.
 var DefaultHttpClient *http.Client
 
+// Client encapsulates the core functionalities for interacting with Tencent Cloud services.
 type Client struct {
-	region          string
-	httpClient      *http.Client
-	httpProfile     *profile.HttpProfile
-	profile         *profile.ClientProfile
-	credential      CredentialIface
-	signMethod      string
+	// The region to which the client is connected.
+	region string
+
+	// The HTTP client used for making requests.
+	httpClient *http.Client
+
+	// The HTTP profile containing endpoint and method settings.
+	httpProfile *profile.HttpProfile
+
+	// The client profile containing retry and sign method settings.
+	profile *profile.ClientProfile
+
+	// The credential used for authentication.
+	credential CredentialIface
+
+	// The signature method used for signing requests (e.g., HmacSHA256, HmacSHA1).
+	signMethod string
+
+	// Indicates whether the payload should be unsigned.
 	unsignedPayload bool
-	debug           bool
-	rb              *circuitBreaker
-	logger          Logger
-	requestClient   string
+
+	// Enables debug logging.
+	debug bool
+
+	// The circuit breaker for handling service unavailability.
+	rb *circuitBreaker
+
+	// The logger for logging messages.
+	logger Logger
+
+	// The client identifier sent in the request header.
+	requestClient string
 }
 
+// Send sends the request and parses the response.
+// It handles request completion, signature, and circuit breaking.
 func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err error) {
 	c.completeRequest(request)
 
@@ -51,7 +77,7 @@ func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err err
 	}
 
 	if request.GetSkipSign() {
-		// Some APIs can skip signature.
+		// Some APIs allow skipping the signature process.
 		return c.sendWithoutSignature(request, response)
 	} else if c.profile.DisableRegionBreaker == true || c.rb == nil {
 		return c.sendWithSignature(request, response)
@@ -60,6 +86,8 @@ func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err err
 	}
 }
 
+// completeRequest fills in any missing request parameters with default values
+// from the client's configuration.
 func (c *Client) completeRequest(request tchttp.Request) {
 	if request.GetScheme() == "" {
 		request.SetScheme(c.httpProfile.Scheme)
@@ -81,6 +109,7 @@ func (c *Client) completeRequest(request tchttp.Request) {
 		request.SetHttpMethod(c.httpProfile.ReqMethod)
 	}
 
+	// Add idempotency key for unsafe retries.
 	if c.profile.UnsafeRetryOnConnectionFailure {
 		header := request.GetHeader()
 		if header == nil {
@@ -280,6 +309,8 @@ func (c *Client) sendWithSignatureV1(request tchttp.Request, response tchttp.Res
 }
 
 func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Response) (err error) {
+	// Prepare the headers for the request, including essential information
+	// and the necessary components for Signature Version 3 authentication.
 	headers := map[string]string{
 		"Host":               request.GetDomain(),
 		"X-TC-Action":        request.GetAction(),
@@ -288,18 +319,26 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 		"X-TC-RequestClient": request.GetParams()["RequestClient"],
 		"X-TC-Language":      c.profile.Language,
 	}
+
+	// Include the region if specified.
 	if c.region != "" {
 		headers["X-TC-Region"] = c.region
 	}
+
+	// Retrieve the secret ID, secret key, and security token from the credentials.
 	secId, secKey, token := c.credential.GetCredential()
 	if token != "" {
 		headers["X-TC-Token"] = token
 	}
+
+	// Set the Content-Type header based on the HTTP method.
 	if request.GetHttpMethod() == "GET" {
 		headers["Content-Type"] = "application/x-www-form-urlencoded"
 	} else {
 		headers["Content-Type"] = "application/json"
 	}
+
+	// Handle octet-stream (binary data) requests.
 	isOctetStream := false
 	cr := &tchttp.CommonRequest{}
 	ok := false
@@ -316,6 +355,8 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 		}
 	}
 
+	// Merge any additional headers from the request, but skip built-in headers
+	// to prevent them from being overridden.
 	for k, v := range request.GetHeader() {
 		switch k {
 		case "X-TC-Action", "X-TC-Version", "X-TC-Timestamp", "X-TC-RequestClient",
@@ -326,6 +367,8 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 		}
 	}
 
+	// Handle the case where the request content type is explicitly set to octet-stream,
+	// but it's not already handled as an OctetStream CommonRequest.
 	if !isOctetStream && request.GetContentType() == octetStream {
 		isOctetStream = true
 		b, _ := json.Marshal(request)
@@ -339,11 +382,17 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 		headers["Content-Type"] = octetStream
 		octetStreamBody = request.GetBody()
 	}
-	// start signature v3 process
+	// --- Begin Signature Version 3 (TC3-HMAC-SHA256) Signing Process ---
 
-	// build canonical request string
+	// 1. Construct the Canonical Request
+
+	// HTTP Method (e.g., "GET", "POST").
 	httpRequestMethod := request.GetHttpMethod()
+
+	// Canonical URI (always "/").
 	canonicalURI := "/"
+
+	// Canonical Query String (for GET requests).
 	canonicalQueryString := ""
 	if httpRequestMethod == "GET" {
 		err = tchttp.ConstructParams(request)
@@ -354,6 +403,7 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 		for key, value := range request.GetParams() {
 			params[key] = value
 		}
+		// Remove standard parameters that are not part of the canonical query string.
 		delete(params, "Action")
 		delete(params, "Version")
 		delete(params, "Nonce")
@@ -362,8 +412,14 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 		delete(params, "Timestamp")
 		canonicalQueryString = tchttp.GetUrlQueriesEncoded(params)
 	}
+
+	// Canonical Headers (sorted and formatted).
 	canonicalHeaders := fmt.Sprintf("content-type:%s\nhost:%s\n", headers["Content-Type"], headers["Host"])
+
+	// Signed Headers (list of headers included in the signature).
 	signedHeaders := "content-type;host"
+
+	// Request Payload (for POST requests).
 	requestPayload := ""
 	if httpRequestMethod == "POST" {
 		if isOctetStream {
@@ -377,6 +433,8 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 			requestPayload = string(b)
 		}
 	}
+
+	// Hashed Request Payload.
 	hashedRequestPayload := ""
 	if c.unsignedPayload {
 		hashedRequestPayload = sha256hex("UNSIGNED-PAYLOAD")
@@ -384,6 +442,8 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	} else {
 		hashedRequestPayload = sha256hex(requestPayload)
 	}
+
+	// Construct the complete Canonical Request String.
 	canonicalRequest := fmt.Sprintf("%s\n%s\n%s\n%s\n%s\n%s",
 		httpRequestMethod,
 		canonicalURI,
@@ -393,15 +453,25 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 		hashedRequestPayload)
 	//log.Println("canonicalRequest:", canonicalRequest)
 
-	// build string to sign
+	// 2. Construct the String to Sign
+
+	// Algorithm.
 	algorithm := "TC3-HMAC-SHA256"
+
+	// Request Timestamp.
 	requestTimestamp := headers["X-TC-Timestamp"]
+
+	// Credential Scope.
 	timestamp, _ := strconv.ParseInt(requestTimestamp, 10, 64)
 	t := time.Unix(timestamp, 0).UTC()
 	// must be the format 2006-01-02, ref to package time for more info
 	date := t.Format("2006-01-02")
 	credentialScope := fmt.Sprintf("%s/%s/tc3_request", date, request.GetService())
+
+	// Hashed Canonical Request.
 	hashedCanonicalRequest := sha256hex(canonicalRequest)
+
+	// Construct the String to Sign.
 	string2sign := fmt.Sprintf("%s\n%s\n%s\n%s",
 		algorithm,
 		requestTimestamp,
@@ -409,14 +479,24 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 		hashedCanonicalRequest)
 	//log.Println("string2sign", string2sign)
 
-	// sign string
+	// 3. Calculate the Signature
+
+	// Secret Date.
 	secretDate := hmacsha256(date, "TC3"+secKey)
+
+	// Secret Service.
 	secretService := hmacsha256(request.GetService(), secretDate)
+
+	// Secret Key.
 	secretKey := hmacsha256("tc3_request", secretService)
+
+	// Signature.
 	signature := hex.EncodeToString([]byte(hmacsha256(string2sign, secretKey)))
 	//log.Println("signature", signature)
 
-	// build authorization
+	// 4. Construct the Authorization Header
+
+	// Authorization Header.
 	authorization := fmt.Sprintf("%s Credential=%s/%s, SignedHeaders=%s, Signature=%s",
 		algorithm,
 		secId,
@@ -425,25 +505,37 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 		signature)
 	//log.Println("authorization", authorization)
 
+	// Add the Authorization header to the request headers.
 	headers["Authorization"] = authorization
+
+	// --- End Signature Version 3 Signing Process ---
+
+	// Construct the full URL.
 	url := request.GetScheme() + "://" + request.GetDomain() + request.GetPath()
 	if canonicalQueryString != "" {
 		url = url + "?" + canonicalQueryString
 	}
+
+	// Create the HTTP request.
 	httpRequest, err := http.NewRequest(httpRequestMethod, url, strings.NewReader(requestPayload))
 	if err != nil {
 		return err
 	}
 	httpRequest = httpRequest.WithContext(request.GetContext())
+
+	// Set all the headers on the request.
 	for k, v := range headers {
 		httpRequest.Header[k] = []string{v}
 	}
+
+	// Send the HTTP request with rate limit retry logic.
 	httpResponse, err := c.sendWithRateLimitRetry(httpRequest, isRetryable(request))
 	if err != nil {
 		return err
 	}
-	err = tchttp.ParseFromHttpResponse(httpResponse, response)
-	return err
+
+	// Parse the HTTP response into the specified response object.
+	return tchttp.ParseFromHttpResponse(httpResponse, response)
 }
 
 // send http request
