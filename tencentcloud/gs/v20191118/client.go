@@ -1579,6 +1579,65 @@ func (c *Client) ExecuteCommandOnAndroidInstancesWithContext(ctx context.Context
     return
 }
 
+func NewFetchAndroidInstancesLogsRequest() (request *FetchAndroidInstancesLogsRequest) {
+    request = &FetchAndroidInstancesLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "FetchAndroidInstancesLogs")
+    
+    
+    return
+}
+
+func NewFetchAndroidInstancesLogsResponse() (response *FetchAndroidInstancesLogsResponse) {
+    response = &FetchAndroidInstancesLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// FetchAndroidInstancesLogs
+// 批量获取安卓实例日志
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) FetchAndroidInstancesLogs(request *FetchAndroidInstancesLogsRequest) (response *FetchAndroidInstancesLogsResponse, err error) {
+    return c.FetchAndroidInstancesLogsWithContext(context.Background(), request)
+}
+
+// FetchAndroidInstancesLogs
+// 批量获取安卓实例日志
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) FetchAndroidInstancesLogsWithContext(ctx context.Context, request *FetchAndroidInstancesLogsRequest) (response *FetchAndroidInstancesLogsResponse, err error) {
+    if request == nil {
+        request = NewFetchAndroidInstancesLogsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FetchAndroidInstancesLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewFetchAndroidInstancesLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInstallAndroidInstancesAppRequest() (request *InstallAndroidInstancesAppRequest) {
     request = &InstallAndroidInstancesAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1866,6 +1925,57 @@ func (c *Client) ModifyAndroidInstanceResolutionWithContext(ctx context.Context,
     return
 }
 
+func NewModifyAndroidInstancesInformationRequest() (request *ModifyAndroidInstancesInformationRequest) {
+    request = &ModifyAndroidInstancesInformationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "ModifyAndroidInstancesInformation")
+    
+    
+    return
+}
+
+func NewModifyAndroidInstancesInformationResponse() (response *ModifyAndroidInstancesInformationResponse) {
+    response = &ModifyAndroidInstancesInformationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAndroidInstancesInformation
+// 批量修改安卓实例信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyAndroidInstancesInformation(request *ModifyAndroidInstancesInformationRequest) (response *ModifyAndroidInstancesInformationResponse, err error) {
+    return c.ModifyAndroidInstancesInformationWithContext(context.Background(), request)
+}
+
+// ModifyAndroidInstancesInformation
+// 批量修改安卓实例信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyAndroidInstancesInformationWithContext(ctx context.Context, request *ModifyAndroidInstancesInformationRequest) (response *ModifyAndroidInstancesInformationResponse, err error) {
+    if request == nil {
+        request = NewModifyAndroidInstancesInformationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAndroidInstancesInformation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAndroidInstancesInformationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAndroidInstancesLabelsRequest() (request *ModifyAndroidInstancesLabelsRequest) {
     request = &ModifyAndroidInstancesLabelsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1889,11 +1999,8 @@ func NewModifyAndroidInstancesLabelsResponse() (response *ModifyAndroidInstances
 // 修改安卓实例分辨率。需要注意的是该接口可能导致正在运行的应用出现闪退，所以建议在实例维护时期才进行调用。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
-//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyAndroidInstancesLabels(request *ModifyAndroidInstancesLabelsRequest) (response *ModifyAndroidInstancesLabelsResponse, err error) {
     return c.ModifyAndroidInstancesLabelsWithContext(context.Background(), request)
 }
@@ -1902,11 +2009,8 @@ func (c *Client) ModifyAndroidInstancesLabels(request *ModifyAndroidInstancesLab
 // 修改安卓实例分辨率。需要注意的是该接口可能导致正在运行的应用出现闪退，所以建议在实例维护时期才进行调用。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
-//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyAndroidInstancesLabelsWithContext(ctx context.Context, request *ModifyAndroidInstancesLabelsRequest) (response *ModifyAndroidInstancesLabelsResponse, err error) {
     if request == nil {
         request = NewModifyAndroidInstancesLabelsRequest()
@@ -1946,11 +2050,8 @@ func NewModifyAndroidInstancesResolutionResponse() (response *ModifyAndroidInsta
 // 修改安卓实例分辨率。需要注意的是该接口需要重启才能生效。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
-//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyAndroidInstancesResolution(request *ModifyAndroidInstancesResolutionRequest) (response *ModifyAndroidInstancesResolutionResponse, err error) {
     return c.ModifyAndroidInstancesResolutionWithContext(context.Background(), request)
 }
@@ -1959,11 +2060,8 @@ func (c *Client) ModifyAndroidInstancesResolution(request *ModifyAndroidInstance
 // 修改安卓实例分辨率。需要注意的是该接口需要重启才能生效。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
-//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyAndroidInstancesResolutionWithContext(ctx context.Context, request *ModifyAndroidInstancesResolutionRequest) (response *ModifyAndroidInstancesResolutionResponse, err error) {
     if request == nil {
         request = NewModifyAndroidInstancesResolutionRequest()
@@ -2003,11 +2101,8 @@ func NewModifyAndroidInstancesUserIdResponse() (response *ModifyAndroidInstances
 // 批量修改安卓实例的用户ID
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
-//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyAndroidInstancesUserId(request *ModifyAndroidInstancesUserIdRequest) (response *ModifyAndroidInstancesUserIdResponse, err error) {
     return c.ModifyAndroidInstancesUserIdWithContext(context.Background(), request)
 }
@@ -2016,11 +2111,8 @@ func (c *Client) ModifyAndroidInstancesUserId(request *ModifyAndroidInstancesUse
 // 批量修改安卓实例的用户ID
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_APPLICATIONLOCKFAIL = "FailedOperation.ApplicationLockFail"
-//  FAILEDOPERATION_APPLICATIONNOTFIND = "FailedOperation.ApplicationNotFind"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyAndroidInstancesUserIdWithContext(ctx context.Context, request *ModifyAndroidInstancesUserIdRequest) (response *ModifyAndroidInstancesUserIdResponse, err error) {
     if request == nil {
         request = NewModifyAndroidInstancesUserIdRequest()

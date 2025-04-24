@@ -1531,10 +1531,10 @@ func (r *CreateProClusterResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRabbitMQBindingRequestParams struct {
-	// 实例Id
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Vhost名称
+	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 源exchange
@@ -1553,10 +1553,10 @@ type CreateRabbitMQBindingRequestParams struct {
 type CreateRabbitMQBindingRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Vhost名称
+	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 源exchange
@@ -1598,7 +1598,7 @@ func (r *CreateRabbitMQBindingRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRabbitMQBindingResponseParams struct {
-	// 实例名称
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// vhost名称
@@ -1629,13 +1629,13 @@ func (r *CreateRabbitMQBindingResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRabbitMQUserRequestParams struct {
-	// 集群实例Id
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用户名，登录时使用
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// 密码，登录时使用
+	// 密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&*_=|{}[]:;',.?/】中的两项
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 描述
@@ -1655,13 +1655,13 @@ type CreateRabbitMQUserRequestParams struct {
 type CreateRabbitMQUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群实例Id
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用户名，登录时使用
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// 密码，登录时使用
+	// 密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&*_=|{}[]:;',.?/】中的两项
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 描述
@@ -1733,16 +1733,25 @@ type CreateRabbitMQVipInstanceRequestParams struct {
 	// 可用区
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 私有网络VpcId
+	// 私有网络ID，形如 vpc-xxx。有效的 VpcId 可通过登录[私有网络](https://console.cloud.tencent.com/vpc/vpc?rid=1)控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372)，从接口返回中的 unVpcId 字段获取。若在创建子机时 VpcId 与 SubnetId 同时传入 DEFAULT，则强制使用默认 vpc 网络。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 私有网络SubnetId
+	// 私有网络子网 ID，形如 subnet-xxx。有效的私有网络子网 ID 可通过登录[子网控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口 [DescribeSubnets](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的 unSubnetId 字段获取。若在创建子机时 SubnetId 与 VpcId 同时传入 DEFAULT，则强制使用默认 vpc 网络。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 集群名称
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 节点规格,基础型rabbit-vip-basic-1,标准型rabbit-vip-basic-2,高阶1型rabbit-vip-basic-3,高阶2型rabbit-vip-basic-4。不传默认为基础型
+	// 集群的节点规格，需要输入对应的规格标识：
+	// 2C8G：rabbit-vip-basic-2c8g
+	// 4C16G：rabbit-vip-basic-4c16g
+	// 8C32G：rabbit-vip-basic-8c32g
+	// 16C32G：rabbit-vip-basic-4
+	// 16C64G：rabbit-vip-basic-16c64g
+	// 2C4G：rabbit-vip-basic-5
+	// 4C8G：rabbit-vip-basic-1
+	// 8C16G（已售罄）：rabbit-vip-basic-2
+	// 不传默认为 4C8G：rabbit-vip-basic-1
 	NodeSpec *string `json:"NodeSpec,omitnil,omitempty" name:"NodeSpec"`
 
 	// 节点数量,多可用区最少为3节点。不传默认单可用区为1,多可用区为3
@@ -1751,10 +1760,10 @@ type CreateRabbitMQVipInstanceRequestParams struct {
 	// 单节点存储规格,不传默认为200G
 	StorageSize *int64 `json:"StorageSize,omitnil,omitempty" name:"StorageSize"`
 
-	// 镜像队列,不传默认为false
+	// 是否开启默认镜像队列，true 表示为开启，false 表示为不开启。不传默认为 false
 	EnableCreateDefaultHaMirrorQueue *bool `json:"EnableCreateDefaultHaMirrorQueue,omitnil,omitempty" name:"EnableCreateDefaultHaMirrorQueue"`
 
-	// 预付费使用。自动续费,不传默认为true
+	// 仅预付费集群（PayMode 参数为 1 时）使用该参数，表示是否自动续费，true 表示打开自动续费。不传默认为 true
 	AutoRenewFlag *bool `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 购买时长,不传默认为1(月)
@@ -1772,7 +1781,7 @@ type CreateRabbitMQVipInstanceRequestParams struct {
 	// 资源标签列表
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 公网带宽大小，单位 M
+	// 公网带宽大小，单位 Mbps
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
 	// 是否打开公网接入，不传默认为false
@@ -1785,16 +1794,25 @@ type CreateRabbitMQVipInstanceRequest struct {
 	// 可用区
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
-	// 私有网络VpcId
+	// 私有网络ID，形如 vpc-xxx。有效的 VpcId 可通过登录[私有网络](https://console.cloud.tencent.com/vpc/vpc?rid=1)控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372)，从接口返回中的 unVpcId 字段获取。若在创建子机时 VpcId 与 SubnetId 同时传入 DEFAULT，则强制使用默认 vpc 网络。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 私有网络SubnetId
+	// 私有网络子网 ID，形如 subnet-xxx。有效的私有网络子网 ID 可通过登录[子网控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口 [DescribeSubnets](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的 unSubnetId 字段获取。若在创建子机时 SubnetId 与 VpcId 同时传入 DEFAULT，则强制使用默认 vpc 网络。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 集群名称
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 节点规格,基础型rabbit-vip-basic-1,标准型rabbit-vip-basic-2,高阶1型rabbit-vip-basic-3,高阶2型rabbit-vip-basic-4。不传默认为基础型
+	// 集群的节点规格，需要输入对应的规格标识：
+	// 2C8G：rabbit-vip-basic-2c8g
+	// 4C16G：rabbit-vip-basic-4c16g
+	// 8C32G：rabbit-vip-basic-8c32g
+	// 16C32G：rabbit-vip-basic-4
+	// 16C64G：rabbit-vip-basic-16c64g
+	// 2C4G：rabbit-vip-basic-5
+	// 4C8G：rabbit-vip-basic-1
+	// 8C16G（已售罄）：rabbit-vip-basic-2
+	// 不传默认为 4C8G：rabbit-vip-basic-1
 	NodeSpec *string `json:"NodeSpec,omitnil,omitempty" name:"NodeSpec"`
 
 	// 节点数量,多可用区最少为3节点。不传默认单可用区为1,多可用区为3
@@ -1803,10 +1821,10 @@ type CreateRabbitMQVipInstanceRequest struct {
 	// 单节点存储规格,不传默认为200G
 	StorageSize *int64 `json:"StorageSize,omitnil,omitempty" name:"StorageSize"`
 
-	// 镜像队列,不传默认为false
+	// 是否开启默认镜像队列，true 表示为开启，false 表示为不开启。不传默认为 false
 	EnableCreateDefaultHaMirrorQueue *bool `json:"EnableCreateDefaultHaMirrorQueue,omitnil,omitempty" name:"EnableCreateDefaultHaMirrorQueue"`
 
-	// 预付费使用。自动续费,不传默认为true
+	// 仅预付费集群（PayMode 参数为 1 时）使用该参数，表示是否自动续费，true 表示打开自动续费。不传默认为 true
 	AutoRenewFlag *bool `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 购买时长,不传默认为1(月)
@@ -1824,7 +1842,7 @@ type CreateRabbitMQVipInstanceRequest struct {
 	// 资源标签列表
 	ResourceTags []*Tag `json:"ResourceTags,omitnil,omitempty" name:"ResourceTags"`
 
-	// 公网带宽大小，单位 M
+	// 公网带宽大小，单位 Mbps
 	Bandwidth *uint64 `json:"Bandwidth,omitnil,omitempty" name:"Bandwidth"`
 
 	// 是否打开公网接入，不传默认为false
@@ -1867,10 +1885,10 @@ func (r *CreateRabbitMQVipInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRabbitMQVipInstanceResponseParams struct {
-	// 订单号Id
+	// 订单号 ID
 	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
 
-	// 实例Id
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1895,7 +1913,7 @@ func (r *CreateRabbitMQVipInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRabbitMQVirtualHostRequestParams struct {
-	// 集群实例Id
+	// 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// vhost名
@@ -1914,7 +1932,7 @@ type CreateRabbitMQVirtualHostRequestParams struct {
 type CreateRabbitMQVirtualHostRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群实例Id
+	// 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// vhost名
@@ -3369,10 +3387,10 @@ func (r *DeleteProClusterResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRabbitMQBindingRequestParams struct {
-	// 实例Id
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Vhost参数
+	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 路由关系Id
@@ -3382,10 +3400,10 @@ type DeleteRabbitMQBindingRequestParams struct {
 type DeleteRabbitMQBindingRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Vhost参数
+	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 路由关系Id
@@ -3415,7 +3433,7 @@ func (r *DeleteRabbitMQBindingRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRabbitMQBindingResponseParams struct {
-	// 实例名称
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// vhost参数
@@ -3446,26 +3464,26 @@ func (r *DeleteRabbitMQBindingResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRabbitMQPermissionRequestParams struct {
-	// 集群实例Id
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名，登录时使用
+	// 用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// vhost名称
+	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到 Vhost 名称。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 }
 
 type DeleteRabbitMQPermissionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群实例Id
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名，登录时使用
+	// 用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// vhost名称
+	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到 Vhost 名称。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 }
 
@@ -3514,20 +3532,20 @@ func (r *DeleteRabbitMQPermissionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRabbitMQUserRequestParams struct {
-	// 集群实例Id
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名，登录时使用
+	// 用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 }
 
 type DeleteRabbitMQUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群实例Id
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名，登录时使用
+	// 用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 }
 
@@ -3575,7 +3593,7 @@ func (r *DeleteRabbitMQUserResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRabbitMQVipInstanceRequestParams struct {
-	// 实例Id
+	// 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 是否国际站请求，默认 false
@@ -3585,7 +3603,7 @@ type DeleteRabbitMQVipInstanceRequestParams struct {
 type DeleteRabbitMQVipInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 是否国际站请求，默认 false
@@ -3614,10 +3632,10 @@ func (r *DeleteRabbitMQVipInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRabbitMQVipInstanceResponseParams struct {
-	// 订单号Id
+	// 订单号 ID
 	TranId *string `json:"TranId,omitnil,omitempty" name:"TranId"`
 
-	// 实例Id
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3642,20 +3660,20 @@ func (r *DeleteRabbitMQVipInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRabbitMQVirtualHostRequestParams struct {
-	// 集群实例Id
+	// 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// vhost名
+	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 }
 
 type DeleteRabbitMQVirtualHostRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群实例Id
+	// 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// vhost名
+	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 }
 
@@ -6569,26 +6587,26 @@ func (r *DescribeRabbitMQExchangesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRabbitMQNodeListRequestParams struct {
-	// rabbitmq集群ID
+	// 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 偏移量
+	// 偏移量，默认值 0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 一页限制
+	// 一页限制,moren
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 模糊搜索节点名字
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// 过滤参数的名字和数值
-	// 现在只有一个nodeStatus
-	// running/down
-	// 数组类型，兼容后续添加过滤参数
+	// 过滤参数的名字和数值，当前仅支持根据节点状态筛选。
+	// "Name": "nodeStatus"
+	// "Value": running or down
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 按指定元素排序，现在只有2个
-	// cpuUsage/diskUsage
+	// cpuUsage：节点CPU利用率
+	// diskUsage：节点磁盘利用率
 	SortElement *string `json:"SortElement,omitnil,omitempty" name:"SortElement"`
 
 	// 升序/降序
@@ -6599,26 +6617,26 @@ type DescribeRabbitMQNodeListRequestParams struct {
 type DescribeRabbitMQNodeListRequest struct {
 	*tchttp.BaseRequest
 	
-	// rabbitmq集群ID
+	// 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 偏移量
+	// 偏移量，默认值 0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 一页限制
+	// 一页限制,moren
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 模糊搜索节点名字
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// 过滤参数的名字和数值
-	// 现在只有一个nodeStatus
-	// running/down
-	// 数组类型，兼容后续添加过滤参数
+	// 过滤参数的名字和数值，当前仅支持根据节点状态筛选。
+	// "Name": "nodeStatus"
+	// "Value": running or down
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 按指定元素排序，现在只有2个
-	// cpuUsage/diskUsage
+	// cpuUsage：节点CPU利用率
+	// diskUsage：节点磁盘利用率
 	SortElement *string `json:"SortElement,omitnil,omitempty" name:"SortElement"`
 
 	// 升序/降序
@@ -6653,10 +6671,10 @@ func (r *DescribeRabbitMQNodeListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRabbitMQNodeListResponseParams struct {
-	// 集群列表数量
+	// 集群节点数量
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 集群列表
+	// 集群节点列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeList []*RabbitMQPrivateNode `json:"NodeList,omitnil,omitempty" name:"NodeList"`
 
@@ -11566,13 +11584,13 @@ func (r *ModifyPublicNetworkSecurityPolicyResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type ModifyRabbitMQPermissionRequestParams struct {
-	// 集群实例Id
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名，权限关联的用户
+	// 用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// vhost名称
+	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 权限类型，declare相关操作，该用户可操作该vhost下的资源名称正则表达式
@@ -11588,13 +11606,13 @@ type ModifyRabbitMQPermissionRequestParams struct {
 type ModifyRabbitMQPermissionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群实例Id
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名，权限关联的用户
+	// 用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// vhost名称
+	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 权限类型，declare相关操作，该用户可操作该vhost下的资源名称正则表达式
@@ -11655,19 +11673,20 @@ func (r *ModifyRabbitMQPermissionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRabbitMQUserRequestParams struct {
-	// 集群实例Id
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名，登录时使用
+	// 用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// 密码，登录时使用
+	// 密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&*_=|{}[]:;',.?/】中的两项
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 描述，不传则不修改
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 用户标签，用于决定改用户访问RabbitMQ Management的权限范围，不传则不修改
+	// 用户标签，用于决定改用户访问 RabbitMQ Management 的权限范围
+	// management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 该用户的最大连接数，不传则不修改
@@ -11680,19 +11699,20 @@ type ModifyRabbitMQUserRequestParams struct {
 type ModifyRabbitMQUserRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群实例Id
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名，登录时使用
+	// 用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// 密码，登录时使用
+	// 密码，登录时使用。规范：不能为空，8-64个字符，至少要包含小写字母、大写字母、数字、特殊字符【()`~!@#$%^&*_=|{}[]:;',.?/】中的两项
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 描述，不传则不修改
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 用户标签，用于决定改用户访问RabbitMQ Management的权限范围，不传则不修改
+	// 用户标签，用于决定改用户访问 RabbitMQ Management 的权限范围
+	// management：普通控制台用户，monitoring：管理型控制台用户，其他值：非控制台用户
 	Tags []*string `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 该用户的最大连接数，不传则不修改
@@ -11822,13 +11842,13 @@ func (r *ModifyRabbitMQVipInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRabbitMQVirtualHostRequestParams struct {
-	// 集群实例Id
+	// 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// vhost名
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
-	// 描述
+	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 消息轨迹开关,true打开,false关闭
@@ -11838,13 +11858,13 @@ type ModifyRabbitMQVirtualHostRequestParams struct {
 type ModifyRabbitMQVirtualHostRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群实例Id
+	// 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// vhost名
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
-	// 描述
+	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 消息轨迹开关,true打开,false关闭
@@ -13469,7 +13489,7 @@ type RabbitMQPrivateNode struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	// 节点状态
+	// 节点状态，running 运行中，down 异常
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeStatus *string `json:"NodeStatus,omitnil,omitempty" name:"NodeStatus"`
 

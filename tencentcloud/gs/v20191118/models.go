@@ -145,6 +145,14 @@ type AndroidInstanceImage struct {
 	AndroidInstanceImageZone *string `json:"AndroidInstanceImageZone,omitnil,omitempty" name:"AndroidInstanceImageZone"`
 }
 
+type AndroidInstanceInformation struct {
+	// 安卓实例 ID
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
+
+	// 实例名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
 type AndroidInstanceLabel struct {
 	// 标签键
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -2201,6 +2209,88 @@ func (r *ExecuteCommandOnAndroidInstancesResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type FetchAndroidInstancesLogsRequestParams struct {
+	// 安卓实例 ID 列表
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// cos 桶名称
+	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
+
+	// cos 桶区域
+	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
+
+	// cos 桶目录，默认为 /log/
+	BucketDirectory *string `json:"BucketDirectory,omitnil,omitempty" name:"BucketDirectory"`
+
+	// 下载最近几天的日志，默认值为 1
+	RecentDays *uint64 `json:"RecentDays,omitnil,omitempty" name:"RecentDays"`
+}
+
+type FetchAndroidInstancesLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 安卓实例 ID 列表
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// cos 桶名称
+	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
+
+	// cos 桶区域
+	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
+
+	// cos 桶目录，默认为 /log/
+	BucketDirectory *string `json:"BucketDirectory,omitnil,omitempty" name:"BucketDirectory"`
+
+	// 下载最近几天的日志，默认值为 1
+	RecentDays *uint64 `json:"RecentDays,omitnil,omitempty" name:"RecentDays"`
+}
+
+func (r *FetchAndroidInstancesLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FetchAndroidInstancesLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidInstanceIds")
+	delete(f, "BucketName")
+	delete(f, "BucketRegion")
+	delete(f, "BucketDirectory")
+	delete(f, "RecentDays")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FetchAndroidInstancesLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type FetchAndroidInstancesLogsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type FetchAndroidInstancesLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *FetchAndroidInstancesLogsResponseParams `json:"Response"`
+}
+
+func (r *FetchAndroidInstancesLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FetchAndroidInstancesLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Filter struct {
 	// 字段名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -2601,6 +2691,60 @@ func (r *ModifyAndroidInstanceResolutionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAndroidInstanceResolutionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAndroidInstancesInformationRequestParams struct {
+	// 安卓实例信息数据
+	AndroidInstanceInformations []*AndroidInstanceInformation `json:"AndroidInstanceInformations,omitnil,omitempty" name:"AndroidInstanceInformations"`
+}
+
+type ModifyAndroidInstancesInformationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 安卓实例信息数据
+	AndroidInstanceInformations []*AndroidInstanceInformation `json:"AndroidInstanceInformations,omitnil,omitempty" name:"AndroidInstanceInformations"`
+}
+
+func (r *ModifyAndroidInstancesInformationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAndroidInstancesInformationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidInstanceInformations")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAndroidInstancesInformationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAndroidInstancesInformationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAndroidInstancesInformationResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAndroidInstancesInformationResponseParams `json:"Response"`
+}
+
+func (r *ModifyAndroidInstancesInformationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAndroidInstancesInformationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

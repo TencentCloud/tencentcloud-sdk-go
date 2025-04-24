@@ -6813,7 +6813,12 @@ type StaffInfo struct {
 	RoleId *uint64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
 
 	// 用户角色id列表
+	//
+	// Deprecated: RoleIdList is deprecated.
 	RoleIdList *uint64 `json:"RoleIdList,omitnil,omitempty" name:"RoleIdList"`
+
+	// 用户角色id列表
+	RoleList []*uint64 `json:"RoleList,omitnil,omitempty" name:"RoleList"`
 
 	// 所属技能组列表
 	SkillGroupList []*SkillGroupItem `json:"SkillGroupList,omitnil,omitempty" name:"SkillGroupList"`

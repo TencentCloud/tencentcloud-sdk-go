@@ -13558,7 +13558,7 @@ type EditMediaRequestParams struct {
 	// <li>20：拼接时，以码率最高的输入为基准。</li>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字，如果要对生成的新视频执行任务流时填写。
+	// [任务流](https://cloud.tencent.com/document/product/266/33475#.E4.BB.BB.E5.8A.A1.E6.B5.81)名称，如果要对生成的新视频执行任务流时填写。
 	ProcedureName *string `json:"ProcedureName,omitnil,omitempty" name:"ProcedureName"`
 
 	// 编辑后生成的文件配置。
@@ -13597,7 +13597,7 @@ type EditMediaRequest struct {
 	// <li>20：拼接时，以码率最高的输入为基准。</li>
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
-	// [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字，如果要对生成的新视频执行任务流时填写。
+	// [任务流](https://cloud.tencent.com/document/product/266/33475#.E4.BB.BB.E5.8A.A1.E6.B5.81)名称，如果要对生成的新视频执行任务流时填写。
 	ProcedureName *string `json:"ProcedureName,omitnil,omitempty" name:"ProcedureName"`
 
 	// 编辑后生成的文件配置。
@@ -21104,7 +21104,7 @@ type ProcessMediaByProcedureRequestParams struct {
 	// 媒体文件 ID。
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
-	// [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字。
+	// [任务流](https://cloud.tencent.com/document/product/266/33475#.E4.BB.BB.E5.8A.A1.E6.B5.81)名称。
 	ProcedureName *string `json:"ProcedureName,omitnil,omitempty" name:"ProcedureName"`
 
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
@@ -21132,7 +21132,7 @@ type ProcessMediaByProcedureRequest struct {
 	// 媒体文件 ID。
 	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 
-	// [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字。
+	// [任务流](https://cloud.tencent.com/document/product/266/33475#.E4.BB.BB.E5.8A.A1.E6.B5.81)名称。
 	ProcedureName *string `json:"ProcedureName,omitnil,omitempty" name:"ProcedureName"`
 
 	// <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
@@ -25147,7 +25147,7 @@ type SplitMediaTaskConfig struct {
 	// <li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil,omitempty" name:"EndTimeOffset"`
 
-	// [任务流模板](/document/product/266/11700#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF)名字，如果要对生成的新视频执行任务流时填写。
+	// [任务流](https://cloud.tencent.com/document/product/266/33475#.E4.BB.BB.E5.8A.A1.E6.B5.81)名称。要对生成的新视频自动执行任务流时填写。
 	ProcedureName *string `json:"ProcedureName,omitnil,omitempty" name:"ProcedureName"`
 
 	// 视频拆条输出信息。

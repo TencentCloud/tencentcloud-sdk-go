@@ -731,6 +731,12 @@ type ConfigFile struct {
 
 	// 配置文件持久化
 	ConfigFilePersistent *ConfigFilePersistent `json:"ConfigFilePersistent,omitnil,omitempty" name:"ConfigFilePersistent"`
+
+	// 是否开启加密算法
+	Encrypted *bool `json:"Encrypted,omitnil,omitempty" name:"Encrypted"`
+
+	// 加密算法
+	EncryptAlgo *string `json:"EncryptAlgo,omitnil,omitempty" name:"EncryptAlgo"`
 }
 
 type ConfigFileGroup struct {
@@ -11898,6 +11904,9 @@ type ServiceGovernanceInfo struct {
 
 	// 引擎关联CLS日志主题信息
 	CLSTopics []*PolarisCLSTopicInfo `json:"CLSTopics,omitnil,omitempty" name:"CLSTopics"`
+
+	// 子用户密码
+	SubPassword *string `json:"SubPassword,omitnil,omitempty" name:"SubPassword"`
 }
 
 type ServiceWafStatus struct {

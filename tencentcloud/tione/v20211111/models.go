@@ -20,6 +20,39 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AuthToken struct {
+	// AuthToken 基础信息
+	Base *AuthTokenBase `json:"Base,omitnil,omitempty" name:"Base"`
+
+	// AuthToken 限流数组
+	Limits []*AuthTokenLimit `json:"Limits,omitnil,omitempty" name:"Limits"`
+}
+
+type AuthTokenBase struct {
+	// token 值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// token 别名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// token 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// token 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// token状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type AuthTokenLimit struct {
+	// 限频策略：PerMinute 每分钟限频；PerDay 每日限频
+	Strategy *string `json:"Strategy,omitnil,omitempty" name:"Strategy"`
+
+	// 上限值
+	Max *uint64 `json:"Max,omitnil,omitempty" name:"Max"`
+}
+
 type CBSConfig struct {
 	// 存储大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -549,6 +582,12 @@ type CreateModelServiceRequestParams struct {
 
 	// ["sleep","60"]
 	PreStopCommand []*string `json:"PreStopCommand,omitnil,omitempty" name:"PreStopCommand"`
+
+	// 是否启用 grpc 端口
+	GrpcEnable *bool `json:"GrpcEnable,omitnil,omitempty" name:"GrpcEnable"`
+
+	// 健康探针
+	HealthProbe *HealthProbe `json:"HealthProbe,omitnil,omitempty" name:"HealthProbe"`
 }
 
 type CreateModelServiceRequest struct {
@@ -687,6 +726,12 @@ type CreateModelServiceRequest struct {
 
 	// ["sleep","60"]
 	PreStopCommand []*string `json:"PreStopCommand,omitnil,omitempty" name:"PreStopCommand"`
+
+	// 是否启用 grpc 端口
+	GrpcEnable *bool `json:"GrpcEnable,omitnil,omitempty" name:"GrpcEnable"`
+
+	// 健康探针
+	HealthProbe *HealthProbe `json:"HealthProbe,omitnil,omitempty" name:"HealthProbe"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -738,6 +783,8 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "InstancePerReplicas")
 	delete(f, "TerminationGracePeriodSeconds")
 	delete(f, "PreStopCommand")
+	delete(f, "GrpcEnable")
+	delete(f, "HealthProbe")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -4358,6 +4405,22 @@ type HDFSConfig struct {
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 }
 
+type HTTPGetAction struct {
+	// http 路径
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+}
+
+type HealthProbe struct {
+	// 存活探针
+	LivenessProbe *Probe `json:"LivenessProbe,omitnil,omitempty" name:"LivenessProbe"`
+
+	// 就绪探针
+	ReadinessProbe *Probe `json:"ReadinessProbe,omitnil,omitempty" name:"ReadinessProbe"`
+
+	// 启动探针
+	StartupProbe *Probe `json:"StartupProbe,omitnil,omitempty" name:"StartupProbe"`
+}
+
 type HorizontalPodAutoscaler struct {
 	// 最小实例数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5106,6 +5169,12 @@ type ModifyModelServiceRequestParams struct {
 
 	// ["sleep","60"]
 	PreStopCommand []*string `json:"PreStopCommand,omitnil,omitempty" name:"PreStopCommand"`
+
+	// 是否启动grpc端口
+	GrpcEnable *bool `json:"GrpcEnable,omitnil,omitempty" name:"GrpcEnable"`
+
+	// 健康探针
+	HealthProbe *HealthProbe `json:"HealthProbe,omitnil,omitempty" name:"HealthProbe"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -5217,6 +5286,12 @@ type ModifyModelServiceRequest struct {
 
 	// ["sleep","60"]
 	PreStopCommand []*string `json:"PreStopCommand,omitnil,omitempty" name:"PreStopCommand"`
+
+	// 是否启动grpc端口
+	GrpcEnable *bool `json:"GrpcEnable,omitnil,omitempty" name:"GrpcEnable"`
+
+	// 健康探针
+	HealthProbe *HealthProbe `json:"HealthProbe,omitnil,omitempty" name:"HealthProbe"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -5259,6 +5334,8 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "InstancePerReplicas")
 	delete(f, "TerminationGracePeriodSeconds")
 	delete(f, "PreStopCommand")
+	delete(f, "GrpcEnable")
+	delete(f, "HealthProbe")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}
@@ -5678,6 +5755,34 @@ type PrivateLinkInfo struct {
 	// 私有连接状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// grpc内网调用地址
+	InnerGrpcAddr []*string `json:"InnerGrpcAddr,omitnil,omitempty" name:"InnerGrpcAddr"`
+}
+
+type Probe struct {
+	// 探针行为
+	ProbeAction *ProbeAction `json:"ProbeAction,omitnil,omitempty" name:"ProbeAction"`
+
+	// 等待服务启动的延迟
+	InitialDelaySeconds *int64 `json:"InitialDelaySeconds,omitnil,omitempty" name:"InitialDelaySeconds"`
+
+	// 轮询检查时间间隔
+	PeriodSeconds *int64 `json:"PeriodSeconds,omitnil,omitempty" name:"PeriodSeconds"`
+
+	// 检查超时时长
+	TimeoutSeconds *int64 `json:"TimeoutSeconds,omitnil,omitempty" name:"TimeoutSeconds"`
+
+	// 检测失败认定次数
+	FailureThreshold *int64 `json:"FailureThreshold,omitnil,omitempty" name:"FailureThreshold"`
+
+	// 检测成功认定次数，就绪默认 3，存活/启动默认 1
+	SuccessThreshold *int64 `json:"SuccessThreshold,omitnil,omitempty" name:"SuccessThreshold"`
+}
+
+type ProbeAction struct {
+	// http get 行为
+	HTTPGet *HTTPGetAction `json:"HTTPGet,omitnil,omitempty" name:"HTTPGet"`
 }
 
 // Predefined struct for user
@@ -6152,6 +6257,15 @@ type ServiceCallInfoV2 struct {
 	// 鉴权token，仅当AuthorizationEnable为true时有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthToken *string `json:"AuthToken,omitnil,omitempty" name:"AuthToken"`
+
+	// LLM token 列表
+	AuthTokens []*AuthToken `json:"AuthTokens,omitnil,omitempty" name:"AuthTokens"`
+
+	// 是否开启限流
+	EnableLimit *bool `json:"EnableLimit,omitnil,omitempty" name:"EnableLimit"`
+
+	// 访问grpc时需携带的虚拟Host
+	GrpcHost *string `json:"GrpcHost,omitnil,omitempty" name:"GrpcHost"`
 }
 
 type ServiceEIP struct {
@@ -6271,6 +6385,12 @@ type ServiceGroup struct {
 
 	// 服务组的app_id
 	AppId *int64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 是否开启鉴权
+	AuthorizationEnable *bool `json:"AuthorizationEnable,omitnil,omitempty" name:"AuthorizationEnable"`
+
+	// 限流鉴权 token 列表
+	AuthTokens []*AuthToken `json:"AuthTokens,omitnil,omitempty" name:"AuthTokens"`
 }
 
 type ServiceInfo struct {
@@ -6418,6 +6538,12 @@ type ServiceInfo struct {
 
 	// 服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
 	PreStopCommand []*string `json:"PreStopCommand,omitnil,omitempty" name:"PreStopCommand"`
+
+	// 是否启用grpc端口
+	GrpcEnable *bool `json:"GrpcEnable,omitnil,omitempty" name:"GrpcEnable"`
+
+	// 健康探针
+	HealthProbe *HealthProbe `json:"HealthProbe,omitnil,omitempty" name:"HealthProbe"`
 }
 
 type ServiceLimit struct {

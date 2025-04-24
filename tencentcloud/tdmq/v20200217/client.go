@@ -831,7 +831,7 @@ func NewCreateRabbitMQVipInstanceResponse() (response *CreateRabbitMQVipInstance
 }
 
 // CreateRabbitMQVipInstance
-// 创建RabbitMQ专享版实例
+// 创建 RabbitMQ 托管版实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -842,7 +842,7 @@ func (c *Client) CreateRabbitMQVipInstance(request *CreateRabbitMQVipInstanceReq
 }
 
 // CreateRabbitMQVipInstance
-// 创建RabbitMQ专享版实例
+// 创建 RabbitMQ 托管版实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2215,7 +2215,7 @@ func NewDeleteRabbitMQVipInstanceResponse() (response *DeleteRabbitMQVipInstance
 }
 
 // DeleteRabbitMQVipInstance
-// 删除RabbitMQ专享版实例
+// 删除 RabbitMQ 托管版实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2227,7 +2227,7 @@ func (c *Client) DeleteRabbitMQVipInstance(request *DeleteRabbitMQVipInstanceReq
 }
 
 // DeleteRabbitMQVipInstance
-// 删除RabbitMQ专享版实例
+// 删除 RabbitMQ 托管版实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4304,7 +4304,7 @@ func NewDescribeRabbitMQNodeListResponse() (response *DescribeRabbitMQNodeListRe
 }
 
 // DescribeRabbitMQNodeList
-// RabbitMQ专享版查询节点列表
+// 查询 RabbitMQ 托管版节点列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4314,7 +4314,7 @@ func (c *Client) DescribeRabbitMQNodeList(request *DescribeRabbitMQNodeListReque
 }
 
 // DescribeRabbitMQNodeList
-// RabbitMQ专享版查询节点列表
+// 查询 RabbitMQ 托管版节点列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

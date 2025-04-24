@@ -610,6 +610,18 @@ func (r *DescribeNodeGroupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNodeGroupsResponseParams struct {
+	// 树状节点列表，总共两级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeList []*NodeTree `json:"NodeList,omitnil,omitempty" name:"NodeList"`
+
+	// 省份或国家列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DistrictList []*DistinctOrNetServiceInfo `json:"DistrictList,omitnil,omitempty" name:"DistrictList"`
+
+	// 运营商列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetServiceList []*DistinctOrNetServiceInfo `json:"NetServiceList,omitnil,omitempty" name:"NetServiceList"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -1157,6 +1169,14 @@ type DetailedSingleDataDefine struct {
 	Fields []*Field `json:"Fields,omitnil,omitempty" name:"Fields"`
 }
 
+type DistinctOrNetServiceInfo struct {
+	// 省份(国际)或运营商ID
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
 type Field struct {
 	// 自定义字段编号
 	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
@@ -1273,6 +1293,36 @@ type NodeDefineExt struct {
 	// 节点支持的任务类型。1: 页面性能 2: 文件上传 3: 文件下载 4: 端口性能 5: 网络质量 6: 音视频体验
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskTypes []*int64 `json:"TaskTypes,omitnil,omitempty" name:"TaskTypes"`
+}
+
+type NodeInfoBase struct {
+	// 节点code
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 节点名称
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+type NodeLeaf struct {
+	// 子节点ID
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 子节点名称
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 节点列表
+	Children []*NodeInfoBase `json:"Children,omitnil,omitempty" name:"Children"`
+}
+
+type NodeTree struct {
+	// 节点ID
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 节点名称
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 子节点
+	Children []*NodeLeaf `json:"Children,omitnil,omitempty" name:"Children"`
 }
 
 type ProbeTask struct {

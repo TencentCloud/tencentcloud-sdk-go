@@ -70,6 +70,7 @@ func NewChatCompletionResponse() (response *ChatCompletionResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDAUTHTOKEN = "FailedOperation.InvalidAuthToken"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_MODELISOFFLINE = "InvalidParameter.ModelIsOffline"
 //  INVALIDPARAMETER_TGWINVALIDINTERFACE = "InvalidParameter.TgwInvalidInterface"
@@ -84,6 +85,7 @@ func (c *Client) ChatCompletion(request *ChatCompletionRequest) (response *ChatC
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDAUTHTOKEN = "FailedOperation.InvalidAuthToken"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_MODELISOFFLINE = "InvalidParameter.ModelIsOffline"
 //  INVALIDPARAMETER_TGWINVALIDINTERFACE = "InvalidParameter.TgwInvalidInterface"

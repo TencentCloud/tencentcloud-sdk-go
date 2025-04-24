@@ -116,6 +116,9 @@ const (
 	// 白名单免费配额不足。
 	FAILEDOPERATION_INSUFFICIENTWHITELISTQUOTA = "FailedOperation.InsufficientWhitelistQuota"
 
+	// 暂无可用的鉴权token。
+	FAILEDOPERATION_INVALIDAUTHTOKEN = "FailedOperation.InvalidAuthToken"
+
 	// 操作失败，用户类型异常。
 	FAILEDOPERATION_INVALIDUSERTYPE = "FailedOperation.InvalidUserType"
 

@@ -65,6 +65,9 @@ const (
 	// 【多人游戏】对应的角色人数超过限制。
 	LIMITEXCEEDED_ROLE = "LimitExceeded.Role"
 
+	// 缺少参数错误。
+	MISSINGPARAMETER = "MissingParameter"
+
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
