@@ -10547,11 +10547,16 @@ type SmartStructuralProRequestParams struct {
 	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，WORD，EXCEL，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前3页。
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
 
 	// 自定义结构化功能需返回的字段名称，例：若客户想新增返回姓名、性别两个字段的识别结果，则输入ItemNames=["姓名","性别"]
 	ItemNames []*string `json:"ItemNames,omitnil,omitempty" name:"ItemNames"`
+
+	// true：仅输出自定义字段
+	// flase：输出默认字段+自定义字段
+	// 默认true
+	ItemNamesShowMode *bool `json:"ItemNamesShowMode,omitnil,omitempty" name:"ItemNamesShowMode"`
 
 	// 是否开启全文字段识别
 	ReturnFullText *bool `json:"ReturnFullText,omitnil,omitempty" name:"ReturnFullText"`
@@ -10572,6 +10577,7 @@ type SmartStructuralProRequestParams struct {
 	// DispatchWeightNote -- 磅单发货单识别模板
 	// ReceiptWeightNote -- 磅单收货单识别模板
 	// ArticalRecognize -- 手写作文模版
+	// Table -- 表格模版
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 是否开启全文字段坐标值的识别
@@ -10593,11 +10599,16 @@ type SmartStructuralProRequest struct {
 	// 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，WORD，EXCEL，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。支持的图片像素：需介于20-10000px之间。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前3页。
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil,omitempty" name:"PdfPageNumber"`
 
 	// 自定义结构化功能需返回的字段名称，例：若客户想新增返回姓名、性别两个字段的识别结果，则输入ItemNames=["姓名","性别"]
 	ItemNames []*string `json:"ItemNames,omitnil,omitempty" name:"ItemNames"`
+
+	// true：仅输出自定义字段
+	// flase：输出默认字段+自定义字段
+	// 默认true
+	ItemNamesShowMode *bool `json:"ItemNamesShowMode,omitnil,omitempty" name:"ItemNamesShowMode"`
 
 	// 是否开启全文字段识别
 	ReturnFullText *bool `json:"ReturnFullText,omitnil,omitempty" name:"ReturnFullText"`
@@ -10618,6 +10629,7 @@ type SmartStructuralProRequest struct {
 	// DispatchWeightNote -- 磅单发货单识别模板
 	// ReceiptWeightNote -- 磅单收货单识别模板
 	// ArticalRecognize -- 手写作文模版
+	// Table -- 表格模版
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 是否开启全文字段坐标值的识别
@@ -10646,6 +10658,7 @@ func (r *SmartStructuralProRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "PdfPageNumber")
 	delete(f, "ItemNames")
+	delete(f, "ItemNamesShowMode")
 	delete(f, "ReturnFullText")
 	delete(f, "ConfigId")
 	delete(f, "EnableCoord")
