@@ -114,20 +114,28 @@ type Advice struct {
 
 // Predefined struct for user
 type AttachInstancesRequestParams struct {
-	// 伸缩组ID
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// CVM实例ID列表
+	// CVM实例ID列表。可以通过以下方式获取可用的实例ID：
+	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li>
+	// <li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
 type AttachInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// CVM实例ID列表
+	// CVM实例ID列表。可以通过以下方式获取可用的实例ID：
+	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li>
+	// <li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
@@ -411,20 +419,24 @@ type AutoScalingNotification struct {
 
 // Predefined struct for user
 type CancelInstanceRefreshRequestParams struct {
-	// 伸缩组ID。
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 刷新活动ID。
+	// 刷新活动ID。可以通过调用接口 [DescribeRefreshActivities](https://cloud.tencent.com/document/api/377/99175) ，取返回信息中的 RefreshActivityId 获取实例刷新活动ID。
 	RefreshActivityId *string `json:"RefreshActivityId,omitnil,omitempty" name:"RefreshActivityId"`
 }
 
 type CancelInstanceRefreshRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID。
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 刷新活动ID。
+	// 刷新活动ID。可以通过调用接口 [DescribeRefreshActivities](https://cloud.tencent.com/document/api/377/99175) ，取返回信息中的 RefreshActivityId 获取实例刷新活动ID。
 	RefreshActivityId *string `json:"RefreshActivityId,omitnil,omitempty" name:"RefreshActivityId"`
 }
 
@@ -472,7 +484,9 @@ func (r *CancelInstanceRefreshResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ClearLaunchConfigurationAttributesRequestParams struct {
-	// 启动配置ID。
+	// 启动配置ID。可通过如下方式获取：
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 查询启动配置ID。</li>
+	// <li>通过调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。</li>
 	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitnil,omitempty" name:"LaunchConfigurationId"`
 
 	// 是否清空数据盘信息，非必填，默认为 false。
@@ -502,7 +516,9 @@ type ClearLaunchConfigurationAttributesRequestParams struct {
 type ClearLaunchConfigurationAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 启动配置ID。
+	// 启动配置ID。可通过如下方式获取：
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 查询启动配置ID。</li>
+	// <li>通过调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。</li>
 	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitnil,omitempty" name:"LaunchConfigurationId"`
 
 	// 是否清空数据盘信息，非必填，默认为 false。
@@ -1697,7 +1713,9 @@ func (r *CreateScalingPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateScheduledActionRequestParams struct {
-	// 伸缩组ID
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
 	// 定时任务名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。同一伸缩组下必须唯一。
@@ -1718,14 +1736,16 @@ type CreateScheduledActionRequestParams struct {
 	// 定时任务的结束时间，取值为`北京时间`（UTC+8），按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ss+08:00`。<br><br>此参数与`Recurrence`需要同时指定，到达结束时间之后，定时任务将不再生效。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 定时任务的重复方式。为标准 Cron 格式<br><br>此参数与`EndTime`需要同时指定。
+	// 定时任务的重复方式。为标准 Cron 格式。定时任务中的 [Recurrence参数限制](https://cloud.tencent.com/document/product/377/88119) 为5个字段，由空格分开，结构为：分，小时，日期，月份，星期。此参数与`EndTime`需要同时指定。
 	Recurrence *string `json:"Recurrence,omitnil,omitempty" name:"Recurrence"`
 }
 
 type CreateScheduledActionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
 	// 定时任务名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。同一伸缩组下必须唯一。
@@ -1746,7 +1766,7 @@ type CreateScheduledActionRequest struct {
 	// 定时任务的结束时间，取值为`北京时间`（UTC+8），按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ss+08:00`。<br><br>此参数与`Recurrence`需要同时指定，到达结束时间之后，定时任务将不再生效。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 定时任务的重复方式。为标准 Cron 格式<br><br>此参数与`EndTime`需要同时指定。
+	// 定时任务的重复方式。为标准 Cron 格式。定时任务中的 [Recurrence参数限制](https://cloud.tencent.com/document/product/377/88119) 为5个字段，由空格分开，结构为：分，小时，日期，月份，星期。此参数与`EndTime`需要同时指定。
 	Recurrence *string `json:"Recurrence,omitnil,omitempty" name:"Recurrence"`
 }
 
@@ -2116,14 +2136,14 @@ func (r *DeleteScalingPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteScheduledActionRequestParams struct {
-	// 待删除的定时任务ID。
+	// 待删除的定时任务ID。可以通过调用接口 [DescribeScheduledActions](https://cloud.tencent.com/document/api/377/20450) ，取返回信息中的 ScheduledActionId 获取定时任务ID。
 	ScheduledActionId *string `json:"ScheduledActionId,omitnil,omitempty" name:"ScheduledActionId"`
 }
 
 type DeleteScheduledActionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待删除的定时任务ID。
+	// 待删除的定时任务ID。可以通过调用接口 [DescribeScheduledActions](https://cloud.tencent.com/document/api/377/20450) ，取返回信息中的 ScheduledActionId 获取定时任务ID。
 	ScheduledActionId *string `json:"ScheduledActionId,omitnil,omitempty" name:"ScheduledActionId"`
 }
 
@@ -3089,10 +3109,10 @@ func (r *DescribeScalingPoliciesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeScheduledActionsRequestParams struct {
-	// 按照一个或者多个定时任务ID查询。实例ID形如：asst-am691zxo。每次请求的实例的上限为100。参数不支持同时指定ScheduledActionIds和Filters。
+	// 按照一个或者多个定时任务ID查询。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 获取定时任务 ID。每次请求的实例的上限为100。参数不支持同时指定ScheduledActionIds和Filters。
 	ScheduledActionIds []*string `json:"ScheduledActionIds,omitnil,omitempty" name:"ScheduledActionIds"`
 
-	// 过滤条件。
+	// 过滤条件。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 获取定时任务 ID，定时任务名称，伸缩组 ID。
 	// <li> scheduled-action-id - String - 是否必填：否 -（过滤条件）按照定时任务ID过滤。</li>
 	// <li> scheduled-action-name - String - 是否必填：否 - （过滤条件） 按照定时任务名称过滤。</li>
 	// <li> auto-scaling-group-id - String - 是否必填：否 - （过滤条件） 按照伸缩组ID过滤。</li>
@@ -3108,10 +3128,10 @@ type DescribeScheduledActionsRequestParams struct {
 type DescribeScheduledActionsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 按照一个或者多个定时任务ID查询。实例ID形如：asst-am691zxo。每次请求的实例的上限为100。参数不支持同时指定ScheduledActionIds和Filters。
+	// 按照一个或者多个定时任务ID查询。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 获取定时任务 ID。每次请求的实例的上限为100。参数不支持同时指定ScheduledActionIds和Filters。
 	ScheduledActionIds []*string `json:"ScheduledActionIds,omitnil,omitempty" name:"ScheduledActionIds"`
 
-	// 过滤条件。
+	// 过滤条件。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 获取定时任务 ID，定时任务名称，伸缩组 ID。
 	// <li> scheduled-action-id - String - 是否必填：否 -（过滤条件）按照定时任务ID过滤。</li>
 	// <li> scheduled-action-name - String - 是否必填：否 - （过滤条件） 按照定时任务名称过滤。</li>
 	// <li> auto-scaling-group-id - String - 是否必填：否 - （过滤条件） 按照伸缩组ID过滤。</li>
@@ -3176,20 +3196,28 @@ func (r *DescribeScheduledActionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DetachInstancesRequestParams struct {
-	// 伸缩组ID
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// CVM实例ID列表
+	// CVM实例ID列表。可以通过以下方式获取可用的实例ID：
+	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li>
+	// <li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
 type DetachInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// CVM实例ID列表
+	// CVM实例ID列表。可以通过以下方式获取可用的实例ID：
+	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li>
+	// <li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
@@ -3458,20 +3486,28 @@ type EnhancedService struct {
 
 // Predefined struct for user
 type EnterStandbyRequestParams struct {
-	// 伸缩组 ID。
+	// 伸缩组 ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 运行中状态实例列表，不支持传入非运行中状态实例。
+	// 运行中状态实例列表，不支持传入非运行中状态实例。可以通过以下方式获取可用的实例ID：
+	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li>
+	// <li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
 type EnterStandbyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组 ID。
+	// 伸缩组 ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 运行中状态实例列表，不支持传入非运行中状态实例。
+	// 运行中状态实例列表，不支持传入非运行中状态实例。可以通过以下方式获取可用的实例ID：
+	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li>
+	// <li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
@@ -3593,20 +3629,28 @@ func (r *ExecuteScalingPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExitStandbyRequestParams struct {
-	// 伸缩组 ID。
+	// 伸缩组 ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 备用中状态 CVM 实例列表。
+	// 备用中状态 CVM 实例列表。可以通过以下方式获取可用的实例ID：
+	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li>
+	// <li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
 type ExitStandbyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组 ID。
+	// 伸缩组 ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 备用中状态 CVM 实例列表。
+	// 备用中状态 CVM 实例列表。可以通过以下方式获取可用的实例ID：
+	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li>
+	// <li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
@@ -4751,70 +4795,70 @@ func (r *ModifyLaunchConfigurationAttributesResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type ModifyLifecycleHookRequestParams struct {
-	// 生命周期挂钩ID。
+	// 生命周期挂钩ID。可以通过调用接口 [DescribeLifecycleHooks](https://cloud.tencent.com/document/api/377/34452) ，取返回信息中的 LifecycleHookId 获取生命周期挂钩ID。
 	LifecycleHookId *string `json:"LifecycleHookId,omitnil,omitempty" name:"LifecycleHookId"`
 
-	// 生命周期挂钩名称。
+	// 生命周期挂钩名称。名称仅支持中文、英文、数字、下划线（_）、短横线（-）、小数点（.），最大长度不能超128。
 	LifecycleHookName *string `json:"LifecycleHookName,omitnil,omitempty" name:"LifecycleHookName"`
 
-	// 进入生命周期挂钩场景，取值包括：
-	// <li> INSTANCE_LAUNCHING：实例启动后</li>
-	// <li> INSTANCE_TERMINATING：实例销毁前</li>
+	// 进入生命周期挂钩场景，取值范围如下:
+	// * INSTANCE_LAUNCHING: 扩容生命周期挂钩
+	// * INSTANCE_TERMINATING: 缩容生命周期挂钩
 	LifecycleTransition *string `json:"LifecycleTransition,omitnil,omitempty" name:"LifecycleTransition"`
 
-	// 定义伸缩组在生命周期挂钩超时的情况下应采取的操作，取值包括：
-	// <li> CONTINUE： 超时后继续伸缩活动</li> 
-	// <li> ABANDON：超时后终止伸缩活动</li> 
+	// 定义伸缩组在生命周期挂钩超时或 LifecycleCommand 执行失败时应采取的操作，取值范围如下：
+	// * CONTINUE: 默认值，表示继续执行扩缩容活动
+	// * ABANDON: 针对扩容挂钩，挂钩超时或 LifecycleCommand 执行失败的 CVM 实例会直接释放或移出；而针对缩容挂钩，会继续执行缩容活动。
 	DefaultResult *string `json:"DefaultResult,omitnil,omitempty" name:"DefaultResult"`
 
 	// 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从 30 到 7200 秒。
 	HeartbeatTimeout *uint64 `json:"HeartbeatTimeout,omitnil,omitempty" name:"HeartbeatTimeout"`
 
-	// 弹性伸缩向通知目标发送的附加信息。
+	// 弹性伸缩向通知目标发送的附加信息。NotificationMetadata 与 LifecycleCommand互斥，二者不可同时指定。
 	NotificationMetadata *string `json:"NotificationMetadata,omitnil,omitempty" name:"NotificationMetadata"`
 
 	// 进行生命周期挂钩的场景类型，取值范围包括`NORMAL`和 `EXTENSION`。说明：设置为`EXTENSION`值，在AttachInstances、DetachInstances、RemoveInstances 接口时会触发生命周期挂钩操作，值为`NORMAL`则不会在这些接口中触发生命周期挂钩。
 	LifecycleTransitionType *string `json:"LifecycleTransitionType,omitnil,omitempty" name:"LifecycleTransitionType"`
 
-	// 通知目标信息。
+	// 通知目标信息。NotificationTarget 与 LifecycleCommand互斥，二者不可同时指定。
 	NotificationTarget *NotificationTarget `json:"NotificationTarget,omitnil,omitempty" name:"NotificationTarget"`
 
-	// 远程命令执行对象。
+	// 远程命令执行对象。通知参数 NotificationMetadata、NotificationTarget 与 LifecycleCommand互斥，不可同时指定。
 	LifecycleCommand *LifecycleCommand `json:"LifecycleCommand,omitnil,omitempty" name:"LifecycleCommand"`
 }
 
 type ModifyLifecycleHookRequest struct {
 	*tchttp.BaseRequest
 	
-	// 生命周期挂钩ID。
+	// 生命周期挂钩ID。可以通过调用接口 [DescribeLifecycleHooks](https://cloud.tencent.com/document/api/377/34452) ，取返回信息中的 LifecycleHookId 获取生命周期挂钩ID。
 	LifecycleHookId *string `json:"LifecycleHookId,omitnil,omitempty" name:"LifecycleHookId"`
 
-	// 生命周期挂钩名称。
+	// 生命周期挂钩名称。名称仅支持中文、英文、数字、下划线（_）、短横线（-）、小数点（.），最大长度不能超128。
 	LifecycleHookName *string `json:"LifecycleHookName,omitnil,omitempty" name:"LifecycleHookName"`
 
-	// 进入生命周期挂钩场景，取值包括：
-	// <li> INSTANCE_LAUNCHING：实例启动后</li>
-	// <li> INSTANCE_TERMINATING：实例销毁前</li>
+	// 进入生命周期挂钩场景，取值范围如下:
+	// * INSTANCE_LAUNCHING: 扩容生命周期挂钩
+	// * INSTANCE_TERMINATING: 缩容生命周期挂钩
 	LifecycleTransition *string `json:"LifecycleTransition,omitnil,omitempty" name:"LifecycleTransition"`
 
-	// 定义伸缩组在生命周期挂钩超时的情况下应采取的操作，取值包括：
-	// <li> CONTINUE： 超时后继续伸缩活动</li> 
-	// <li> ABANDON：超时后终止伸缩活动</li> 
+	// 定义伸缩组在生命周期挂钩超时或 LifecycleCommand 执行失败时应采取的操作，取值范围如下：
+	// * CONTINUE: 默认值，表示继续执行扩缩容活动
+	// * ABANDON: 针对扩容挂钩，挂钩超时或 LifecycleCommand 执行失败的 CVM 实例会直接释放或移出；而针对缩容挂钩，会继续执行缩容活动。
 	DefaultResult *string `json:"DefaultResult,omitnil,omitempty" name:"DefaultResult"`
 
 	// 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从 30 到 7200 秒。
 	HeartbeatTimeout *uint64 `json:"HeartbeatTimeout,omitnil,omitempty" name:"HeartbeatTimeout"`
 
-	// 弹性伸缩向通知目标发送的附加信息。
+	// 弹性伸缩向通知目标发送的附加信息。NotificationMetadata 与 LifecycleCommand互斥，二者不可同时指定。
 	NotificationMetadata *string `json:"NotificationMetadata,omitnil,omitempty" name:"NotificationMetadata"`
 
 	// 进行生命周期挂钩的场景类型，取值范围包括`NORMAL`和 `EXTENSION`。说明：设置为`EXTENSION`值，在AttachInstances、DetachInstances、RemoveInstances 接口时会触发生命周期挂钩操作，值为`NORMAL`则不会在这些接口中触发生命周期挂钩。
 	LifecycleTransitionType *string `json:"LifecycleTransitionType,omitnil,omitempty" name:"LifecycleTransitionType"`
 
-	// 通知目标信息。
+	// 通知目标信息。NotificationTarget 与 LifecycleCommand互斥，二者不可同时指定。
 	NotificationTarget *NotificationTarget `json:"NotificationTarget,omitnil,omitempty" name:"NotificationTarget"`
 
-	// 远程命令执行对象。
+	// 远程命令执行对象。通知参数 NotificationMetadata、NotificationTarget 与 LifecycleCommand互斥，不可同时指定。
 	LifecycleCommand *LifecycleCommand `json:"LifecycleCommand,omitnil,omitempty" name:"LifecycleCommand"`
 }
 
@@ -5235,7 +5279,7 @@ func (r *ModifyScalingPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyScheduledActionRequestParams struct {
-	// 待修改的定时任务ID
+	// 待修改的定时任务ID。可以通过调用接口 [DescribeScheduledActions](https://cloud.tencent.com/document/api/377/20450) ，取返回信息中的 ScheduledActionId 获取定时任务ID。
 	ScheduledActionId *string `json:"ScheduledActionId,omitnil,omitempty" name:"ScheduledActionId"`
 
 	// 定时任务名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。同一伸缩组下必须唯一。
@@ -5256,14 +5300,14 @@ type ModifyScheduledActionRequestParams struct {
 	// 定时任务的结束时间，取值为`北京时间`（UTC+8），按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ss+08:00`。<br>此参数与`Recurrence`需要同时指定，到达结束时间之后，定时任务将不再生效。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 定时任务的重复方式。为标准 Cron 格式<br>此参数与`EndTime`需要同时指定。
+	// 定时任务的重复方式。为标准 Cron 格式，[Recurrence参数限制](https://cloud.tencent.com/document/product/377/88119)为5个字段，由空格分开，结构为：分，小时，日期，月份，星期。此参数与`EndTime`需要同时指定。
 	Recurrence *string `json:"Recurrence,omitnil,omitempty" name:"Recurrence"`
 }
 
 type ModifyScheduledActionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待修改的定时任务ID
+	// 待修改的定时任务ID。可以通过调用接口 [DescribeScheduledActions](https://cloud.tencent.com/document/api/377/20450) ，取返回信息中的 ScheduledActionId 获取定时任务ID。
 	ScheduledActionId *string `json:"ScheduledActionId,omitnil,omitempty" name:"ScheduledActionId"`
 
 	// 定时任务名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。同一伸缩组下必须唯一。
@@ -5284,7 +5328,7 @@ type ModifyScheduledActionRequest struct {
 	// 定时任务的结束时间，取值为`北京时间`（UTC+8），按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ss+08:00`。<br>此参数与`Recurrence`需要同时指定，到达结束时间之后，定时任务将不再生效。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 定时任务的重复方式。为标准 Cron 格式<br>此参数与`EndTime`需要同时指定。
+	// 定时任务的重复方式。为标准 Cron 格式，[Recurrence参数限制](https://cloud.tencent.com/document/product/377/88119)为5个字段，由空格分开，结构为：分，小时，日期，月份，星期。此参数与`EndTime`需要同时指定。
 	Recurrence *string `json:"Recurrence,omitnil,omitempty" name:"Recurrence"`
 }
 
@@ -5457,20 +5501,28 @@ type RelatedInstance struct {
 
 // Predefined struct for user
 type RemoveInstancesRequestParams struct {
-	// 伸缩组ID
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// CVM实例ID列表
+	// CVM实例ID列表。可以通过以下方式获取可用的实例ID：
+	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li>
+	// <li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
 type RemoveInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// CVM实例ID列表
+	// CVM实例ID列表。可以通过以下方式获取可用的实例ID：
+	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li>
+	// <li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
@@ -5521,10 +5573,12 @@ func (r *RemoveInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ResumeInstanceRefreshRequestParams struct {
-	// 伸缩组ID。
+	// 伸缩组ID。可通过如下方式获取：
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 刷新活动ID。
+	// 刷新活动ID。可以通过调用接口 [DescribeRefreshActivities](https://cloud.tencent.com/document/api/377/99175) ，取返回信息中的 RefreshActivityId 获取实例刷新活动ID。
 	RefreshActivityId *string `json:"RefreshActivityId,omitnil,omitempty" name:"RefreshActivityId"`
 
 	// 当前批次刷新失败实例的恢复方式，如不存在失败实例，该参数无效。默认值为RETRY，取值范围如下：<li>RETRY: 重试当前批次刷新失败实例</li><li>CONTINUE: 跳过当前批次刷新失败实例</li>
@@ -5534,10 +5588,12 @@ type ResumeInstanceRefreshRequestParams struct {
 type ResumeInstanceRefreshRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID。
+	// 伸缩组ID。可通过如下方式获取：
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 刷新活动ID。
+	// 刷新活动ID。可以通过调用接口 [DescribeRefreshActivities](https://cloud.tencent.com/document/api/377/99175) ，取返回信息中的 RefreshActivityId 获取实例刷新活动ID。
 	RefreshActivityId *string `json:"RefreshActivityId,omitnil,omitempty" name:"RefreshActivityId"`
 
 	// 当前批次刷新失败实例的恢复方式，如不存在失败实例，该参数无效。默认值为RETRY，取值范围如下：<li>RETRY: 重试当前批次刷新失败实例</li><li>CONTINUE: 跳过当前批次刷新失败实例</li>
@@ -5589,13 +5645,15 @@ func (r *ResumeInstanceRefreshResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RollbackInstanceRefreshRequestParams struct {
-	// 伸缩组ID。
+	// 伸缩组ID。可以通过以下方式获取可用的伸缩组ID： 
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
 	// 刷新设置。
 	RefreshSettings *RefreshSettings `json:"RefreshSettings,omitnil,omitempty" name:"RefreshSettings"`
 
-	// 原始刷新活动 ID。
+	// 原始刷新活动 ID。可以通过调用接口 [DescribeRefreshActivities](https://cloud.tencent.com/document/api/377/99175) ，取返回信息中的 OriginRefreshActivityId 获取原始刷新活动ID。
 	OriginRefreshActivityId *string `json:"OriginRefreshActivityId,omitnil,omitempty" name:"OriginRefreshActivityId"`
 
 	// 刷新模式，目前仅支持滚动更新，默认值为 ROLLING_UPDATE_RESET。
@@ -5605,13 +5663,15 @@ type RollbackInstanceRefreshRequestParams struct {
 type RollbackInstanceRefreshRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID。
+	// 伸缩组ID。可以通过以下方式获取可用的伸缩组ID： 
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
 	// 刷新设置。
 	RefreshSettings *RefreshSettings `json:"RefreshSettings,omitnil,omitempty" name:"RefreshSettings"`
 
-	// 原始刷新活动 ID。
+	// 原始刷新活动 ID。可以通过调用接口 [DescribeRefreshActivities](https://cloud.tencent.com/document/api/377/99175) ，取返回信息中的 OriginRefreshActivityId 获取原始刷新活动ID。
 	OriginRefreshActivityId *string `json:"OriginRefreshActivityId,omitnil,omitempty" name:"OriginRefreshActivityId"`
 
 	// 刷新模式，目前仅支持滚动更新，默认值为 ROLLING_UPDATE_RESET。
@@ -5900,7 +5960,7 @@ type ScheduledAction struct {
 	// 定时任务的开始时间。取值为`北京时间`（UTC+8），按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ss+08:00`。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 定时任务的重复方式。
+	// 定时任务的重复方式。定时任务中的[Recurrence参数限制](https://cloud.tencent.com/document/product/377/88119)为5个字段，由空格分开，结构为：分，小时，日期，月份，星期。
 	Recurrence *string `json:"Recurrence,omitnil,omitempty" name:"Recurrence"`
 
 	// 定时任务的结束时间。取值为`北京时间`（UTC+8），按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ss+08:00`。
@@ -5915,7 +5975,7 @@ type ScheduledAction struct {
 	// 定时任务设置的最小实例数。
 	MinSize *uint64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
-	// 定时任务的创建时间。取值为`UTC`时间，按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ssZ`。
+	// 定时任务的创建时间。取值为标准`UTC`时间，按照`ISO8601`标准，格式：`YYYY-MM-DDThh:mm:ssZ`。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 定时任务的执行类型。取值范围：
@@ -5954,10 +6014,14 @@ type ServiceSettings struct {
 
 // Predefined struct for user
 type SetInstancesProtectionRequestParams struct {
-	// 伸缩组ID。
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 实例ID。
+	// 实例ID。可以通过以下方式获取可用的实例ID：
+	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li>
+	// <li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 实例是否需要设置保护。
@@ -5967,10 +6031,14 @@ type SetInstancesProtectionRequestParams struct {
 type SetInstancesProtectionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID。
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 实例ID。
+	// 实例ID。可以通过以下方式获取可用的实例ID：
+	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li>
+	// <li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 实例是否需要设置保护。
@@ -6055,20 +6123,28 @@ type SpotMixedAllocationPolicy struct {
 
 // Predefined struct for user
 type StartAutoScalingInstancesRequestParams struct {
-	// 伸缩组ID
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 待开启的CVM实例ID列表
+	// 待开启的CVM实例ID列表。可以通过以下方式获取可用的实例ID：
+	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li>
+	// <li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
 type StartAutoScalingInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 待开启的CVM实例ID列表
+	// 待开启的CVM实例ID列表。可以通过以下方式获取可用的实例ID：
+	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li>
+	// <li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
@@ -6194,10 +6270,14 @@ func (r *StartInstanceRefreshResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopAutoScalingInstancesRequestParams struct {
-	// 伸缩组ID
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 待关闭的CVM实例ID列表
+	// 待关闭的CVM实例ID列表。可以通过以下方式获取可用的实例ID：
+	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li>
+	// <li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 关闭的实例是否收费，取值为：  
@@ -6210,10 +6290,14 @@ type StopAutoScalingInstancesRequestParams struct {
 type StopAutoScalingInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 待关闭的CVM实例ID列表
+	// 待关闭的CVM实例ID列表。可以通过以下方式获取可用的实例ID：
+	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li>
+	// <li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 关闭的实例是否收费，取值为：  
@@ -6271,20 +6355,24 @@ func (r *StopAutoScalingInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopInstanceRefreshRequestParams struct {
-	// 伸缩组ID。
+	// 伸缩组ID。可以通过以下方式获取可用的伸缩组ID：
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 刷新活动ID。
+	// 刷新活动ID。可以通过调用接口 [DescribeRefreshActivities](https://cloud.tencent.com/document/api/377/99175) ，取返回信息中的 RefreshActivityId 获取实例刷新活动ID。
 	RefreshActivityId *string `json:"RefreshActivityId,omitnil,omitempty" name:"RefreshActivityId"`
 }
 
 type StopInstanceRefreshRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID。
+	// 伸缩组ID。可以通过以下方式获取可用的伸缩组ID：
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 刷新活动ID。
+	// 刷新活动ID。可以通过调用接口 [DescribeRefreshActivities](https://cloud.tencent.com/document/api/377/99175) ，取返回信息中的 RefreshActivityId 获取实例刷新活动ID。
 	RefreshActivityId *string `json:"RefreshActivityId,omitnil,omitempty" name:"RefreshActivityId"`
 }
 
@@ -6586,22 +6674,26 @@ func (r *UpgradeLaunchConfigurationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpgradeLifecycleHookRequestParams struct {
-	// 生命周期挂钩ID
+	// 生命周期挂钩ID。可以通过调用接口 [DescribeLifecycleHooks](https://cloud.tencent.com/document/api/377/34452) ，取返回信息中的 LifecycleHookId 获取生命周期挂钩ID。
 	LifecycleHookId *string `json:"LifecycleHookId,omitnil,omitempty" name:"LifecycleHookId"`
 
-	// 生命周期挂钩名称
+	// 生命周期挂钩名称。名称仅支持中文、英文、数字、下划线（_）、短横线（-）、小数点（.），最大长度不能超128个字符。
 	LifecycleHookName *string `json:"LifecycleHookName,omitnil,omitempty" name:"LifecycleHookName"`
 
-	// 进行生命周期挂钩的场景，取值范围包括“INSTANCE_LAUNCHING”和“INSTANCE_TERMINATING”
+	// 进行生命周期挂钩的场景，取值范围如下:
+	// * INSTANCE_LAUNCHING: 扩容生命周期挂钩
+	// * INSTANCE_TERMINATING: 缩容生命周期挂钩
 	LifecycleTransition *string `json:"LifecycleTransition,omitnil,omitempty" name:"LifecycleTransition"`
 
-	// 定义伸缩组在生命周期挂钩超时的情况下应采取的操作，取值范围是“CONTINUE”或“ABANDON”，默认值为“CONTINUE”
+	// 定义伸缩组在生命周期挂钩超时或 LifecycleCommand 执行失败时应采取的操作，取值范围是如下：
+	// * CONTINUE: 默认值，表示继续执行扩缩容活动
+	// * ABANDON: 针对扩容挂钩，挂钩超时或 LifecycleCommand 执行失败的 CVM 实例会直接释放或移出；而针对缩容挂钩，会继续执行缩容活动。
 	DefaultResult *string `json:"DefaultResult,omitnil,omitempty" name:"DefaultResult"`
 
 	// 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到7200秒，默认值为300秒
 	HeartbeatTimeout *int64 `json:"HeartbeatTimeout,omitnil,omitempty" name:"HeartbeatTimeout"`
 
-	// 弹性伸缩向通知目标发送的附加信息，配置通知时使用，默认值为空字符串""
+	// 弹性伸缩向通知目标发送的附加信息，配置通知时使用，默认值为空字符串。NotificationMetadata 和 LifecycleCommand参数互斥，二者不可同时指定。
 	NotificationMetadata *string `json:"NotificationMetadata,omitnil,omitempty" name:"NotificationMetadata"`
 
 	// 通知目标。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
@@ -6610,29 +6702,33 @@ type UpgradeLifecycleHookRequestParams struct {
 	// 进行生命周期挂钩的场景类型，取值范围包括NORMAL 和 EXTENSION。说明：设置为EXTENSION值，在AttachInstances、DetachInstances、RemoveInstaces接口时会触发生命周期挂钩操作，值为NORMAL则不会在这些接口中触发生命周期挂钩。
 	LifecycleTransitionType *string `json:"LifecycleTransitionType,omitnil,omitempty" name:"LifecycleTransitionType"`
 
-	// 远程命令执行对象。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
+	// 远程命令执行对象。通知参数 NotificationMetadata、NotificationTarget 与 LifecycleCommand 互斥，不可同时指定。
 	LifecycleCommand *LifecycleCommand `json:"LifecycleCommand,omitnil,omitempty" name:"LifecycleCommand"`
 }
 
 type UpgradeLifecycleHookRequest struct {
 	*tchttp.BaseRequest
 	
-	// 生命周期挂钩ID
+	// 生命周期挂钩ID。可以通过调用接口 [DescribeLifecycleHooks](https://cloud.tencent.com/document/api/377/34452) ，取返回信息中的 LifecycleHookId 获取生命周期挂钩ID。
 	LifecycleHookId *string `json:"LifecycleHookId,omitnil,omitempty" name:"LifecycleHookId"`
 
-	// 生命周期挂钩名称
+	// 生命周期挂钩名称。名称仅支持中文、英文、数字、下划线（_）、短横线（-）、小数点（.），最大长度不能超128个字符。
 	LifecycleHookName *string `json:"LifecycleHookName,omitnil,omitempty" name:"LifecycleHookName"`
 
-	// 进行生命周期挂钩的场景，取值范围包括“INSTANCE_LAUNCHING”和“INSTANCE_TERMINATING”
+	// 进行生命周期挂钩的场景，取值范围如下:
+	// * INSTANCE_LAUNCHING: 扩容生命周期挂钩
+	// * INSTANCE_TERMINATING: 缩容生命周期挂钩
 	LifecycleTransition *string `json:"LifecycleTransition,omitnil,omitempty" name:"LifecycleTransition"`
 
-	// 定义伸缩组在生命周期挂钩超时的情况下应采取的操作，取值范围是“CONTINUE”或“ABANDON”，默认值为“CONTINUE”
+	// 定义伸缩组在生命周期挂钩超时或 LifecycleCommand 执行失败时应采取的操作，取值范围是如下：
+	// * CONTINUE: 默认值，表示继续执行扩缩容活动
+	// * ABANDON: 针对扩容挂钩，挂钩超时或 LifecycleCommand 执行失败的 CVM 实例会直接释放或移出；而针对缩容挂钩，会继续执行缩容活动。
 	DefaultResult *string `json:"DefaultResult,omitnil,omitempty" name:"DefaultResult"`
 
 	// 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到7200秒，默认值为300秒
 	HeartbeatTimeout *int64 `json:"HeartbeatTimeout,omitnil,omitempty" name:"HeartbeatTimeout"`
 
-	// 弹性伸缩向通知目标发送的附加信息，配置通知时使用，默认值为空字符串""
+	// 弹性伸缩向通知目标发送的附加信息，配置通知时使用，默认值为空字符串。NotificationMetadata 和 LifecycleCommand参数互斥，二者不可同时指定。
 	NotificationMetadata *string `json:"NotificationMetadata,omitnil,omitempty" name:"NotificationMetadata"`
 
 	// 通知目标。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
@@ -6641,7 +6737,7 @@ type UpgradeLifecycleHookRequest struct {
 	// 进行生命周期挂钩的场景类型，取值范围包括NORMAL 和 EXTENSION。说明：设置为EXTENSION值，在AttachInstances、DetachInstances、RemoveInstaces接口时会触发生命周期挂钩操作，值为NORMAL则不会在这些接口中触发生命周期挂钩。
 	LifecycleTransitionType *string `json:"LifecycleTransitionType,omitnil,omitempty" name:"LifecycleTransitionType"`
 
-	// 远程命令执行对象。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
+	// 远程命令执行对象。通知参数 NotificationMetadata、NotificationTarget 与 LifecycleCommand 互斥，不可同时指定。
 	LifecycleCommand *LifecycleCommand `json:"LifecycleCommand,omitnil,omitempty" name:"LifecycleCommand"`
 }
 

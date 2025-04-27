@@ -6737,6 +6737,15 @@ type CreateVulScanTaskRequestParams struct {
 
 	// 仓库镜像重新漏洞扫描时的任务ID
 	RegistryTaskID *int64 `json:"RegistryTaskID,omitnil,omitempty" name:"RegistryTaskID"`
+
+	// 本地镜像容器运行中
+	LocalImageContainerRunning *bool `json:"LocalImageContainerRunning,omitnil,omitempty" name:"LocalImageContainerRunning"`
+
+	// 仓库镜像容器运行中
+	RegistryImageContainerRunning *bool `json:"RegistryImageContainerRunning,omitnil,omitempty" name:"RegistryImageContainerRunning"`
+
+	// 仓库镜像是否是最新
+	IsLatest *bool `json:"IsLatest,omitnil,omitempty" name:"IsLatest"`
 }
 
 type CreateVulScanTaskRequest struct {
@@ -6759,6 +6768,15 @@ type CreateVulScanTaskRequest struct {
 
 	// 仓库镜像重新漏洞扫描时的任务ID
 	RegistryTaskID *int64 `json:"RegistryTaskID,omitnil,omitempty" name:"RegistryTaskID"`
+
+	// 本地镜像容器运行中
+	LocalImageContainerRunning *bool `json:"LocalImageContainerRunning,omitnil,omitempty" name:"LocalImageContainerRunning"`
+
+	// 仓库镜像容器运行中
+	RegistryImageContainerRunning *bool `json:"RegistryImageContainerRunning,omitnil,omitempty" name:"RegistryImageContainerRunning"`
+
+	// 仓库镜像是否是最新
+	IsLatest *bool `json:"IsLatest,omitnil,omitempty" name:"IsLatest"`
 }
 
 func (r *CreateVulScanTaskRequest) ToJsonString() string {
@@ -6779,6 +6797,9 @@ func (r *CreateVulScanTaskRequest) FromJsonString(s string) error {
 	delete(f, "RegistryImageIDs")
 	delete(f, "LocalTaskID")
 	delete(f, "RegistryTaskID")
+	delete(f, "LocalImageContainerRunning")
+	delete(f, "RegistryImageContainerRunning")
+	delete(f, "IsLatest")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVulScanTaskRequest has unknown keys!", "")
 	}

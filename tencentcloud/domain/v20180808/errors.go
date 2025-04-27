@@ -359,6 +359,9 @@ const (
 	// 当前域名未完成实名认证，无法完成该操作。
 	UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
 
+	// 当前域名存在安全锁,禁止修改
+	UNSUPPORTEDOPERATION_DOMAINUPDATESECURITYLOCKPROHIBIT = "UnsupportedOperation.DomainUpdateSecurityLockProhibit"
+
 	// 当前域名状态暂不支持该操作。
 	UNSUPPORTEDOPERATION_MODIFYDOMAININFOOPERATEUNSUPPORTED = "UnsupportedOperation.ModifyDomainInfoOperateUnsupported"
 

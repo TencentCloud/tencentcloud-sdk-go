@@ -9398,6 +9398,57 @@ func (c *Client) DescribeTemplateDimCountWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeTenantProjectsRequest() (request *DescribeTenantProjectsRequest) {
+    request = &DescribeTenantProjectsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTenantProjects")
+    
+    
+    return
+}
+
+func NewDescribeTenantProjectsResponse() (response *DescribeTenantProjectsResponse) {
+    response = &DescribeTenantProjectsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTenantProjects
+// 租户全局范围的项目列表，与用户查看范围无关.
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+func (c *Client) DescribeTenantProjects(request *DescribeTenantProjectsRequest) (response *DescribeTenantProjectsResponse, err error) {
+    return c.DescribeTenantProjectsWithContext(context.Background(), request)
+}
+
+// DescribeTenantProjects
+// 租户全局范围的项目列表，与用户查看范围无关.
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+func (c *Client) DescribeTenantProjectsWithContext(ctx context.Context, request *DescribeTenantProjectsRequest) (response *DescribeTenantProjectsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTenantProjectsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTenantProjects require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTenantProjectsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeThirdTaskRunLogRequest() (request *DescribeThirdTaskRunLogRequest) {
     request = &DescribeThirdTaskRunLogRequest{
         BaseRequest: &tchttp.BaseRequest{},

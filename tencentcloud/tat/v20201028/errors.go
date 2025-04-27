@@ -56,6 +56,12 @@ const (
 	// Command 名称重复。
 	INVALIDPARAMETERVALUE_COMMANDNAMEDUPLICATED = "InvalidParameterValue.CommandNameDuplicated"
 
+	// ID 格式错误。
+	INVALIDPARAMETERVALUE_ID = "InvalidParameterValue.ID"
+
+	// ID 数组中，ID 格式错误或格式不一致。
+	INVALIDPARAMETERVALUE_INCONSISTENTID = "InvalidParameterValue.InconsistentID"
+
 	// 实例类型不一致。
 	INVALIDPARAMETERVALUE_INCONSISTENTINSTANCE = "InvalidParameterValue.InconsistentInstance"
 

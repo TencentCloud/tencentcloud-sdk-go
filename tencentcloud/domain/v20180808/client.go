@@ -450,6 +450,7 @@ func NewCreateCustomDnsHostResponse() (response *CreateCustomDnsHostResponse) {
 //  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
 //  UNSUPPORTEDOPERATION_CUSTOMHOSTOVERLIMIT = "UnsupportedOperation.CustomHostOverLimit"
 //  UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
+//  UNSUPPORTEDOPERATION_DOMAINUPDATESECURITYLOCKPROHIBIT = "UnsupportedOperation.DomainUpdateSecurityLockProhibit"
 func (c *Client) CreateCustomDnsHost(request *CreateCustomDnsHostRequest) (response *CreateCustomDnsHostResponse, err error) {
     return c.CreateCustomDnsHostWithContext(context.Background(), request)
 }
@@ -472,6 +473,7 @@ func (c *Client) CreateCustomDnsHost(request *CreateCustomDnsHostRequest) (respo
 //  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
 //  UNSUPPORTEDOPERATION_CUSTOMHOSTOVERLIMIT = "UnsupportedOperation.CustomHostOverLimit"
 //  UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
+//  UNSUPPORTEDOPERATION_DOMAINUPDATESECURITYLOCKPROHIBIT = "UnsupportedOperation.DomainUpdateSecurityLockProhibit"
 func (c *Client) CreateCustomDnsHostWithContext(ctx context.Context, request *CreateCustomDnsHostRequest) (response *CreateCustomDnsHostResponse, err error) {
     if request == nil {
         request = NewCreateCustomDnsHostRequest()
@@ -591,7 +593,7 @@ func NewCreateDomainRedemptionResponse() (response *CreateDomainRedemptionRespon
 }
 
 // CreateDomainRedemption
-// 创建赎回订单。
+// 创建赎回订单。需要域名状态为：RedemptionPending：赎回期
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
@@ -600,7 +602,7 @@ func (c *Client) CreateDomainRedemption(request *CreateDomainRedemptionRequest) 
 }
 
 // CreateDomainRedemption
-// 创建赎回订单。
+// 创建赎回订单。需要域名状态为：RedemptionPending：赎回期
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
@@ -909,6 +911,7 @@ func NewDeleteCustomDnsHostResponse() (response *DeleteCustomDnsHostResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
 //  UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
+//  UNSUPPORTEDOPERATION_DOMAINUPDATESECURITYLOCKPROHIBIT = "UnsupportedOperation.DomainUpdateSecurityLockProhibit"
 func (c *Client) DeleteCustomDnsHost(request *DeleteCustomDnsHostRequest) (response *DeleteCustomDnsHostResponse, err error) {
     return c.DeleteCustomDnsHostWithContext(context.Background(), request)
 }
@@ -928,6 +931,7 @@ func (c *Client) DeleteCustomDnsHost(request *DeleteCustomDnsHostRequest) (respo
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
 //  UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
+//  UNSUPPORTEDOPERATION_DOMAINUPDATESECURITYLOCKPROHIBIT = "UnsupportedOperation.DomainUpdateSecurityLockProhibit"
 func (c *Client) DeleteCustomDnsHostWithContext(ctx context.Context, request *DeleteCustomDnsHostRequest) (response *DeleteCustomDnsHostResponse, err error) {
     if request == nil {
         request = NewDeleteCustomDnsHostRequest()
@@ -1650,6 +1654,8 @@ func NewDescribeCustomDnsHostSetResponse() (response *DescribeCustomDnsHostSetRe
 // DescribeCustomDnsHostSet
 // 查询自定义DNS Host
 //
+// 当前域名在任意状态下均可获取(根据域名当前状态，不一定能获取到具体数据)
+//
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1662,6 +1668,8 @@ func (c *Client) DescribeCustomDnsHostSet(request *DescribeCustomDnsHostSetReque
 
 // DescribeCustomDnsHostSet
 // 查询自定义DNS Host
+//
+// 当前域名在任意状态下均可获取(根据域名当前状态，不一定能获取到具体数据)
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2562,6 +2570,7 @@ func NewModifyCustomDnsHostResponse() (response *ModifyCustomDnsHostResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
 //  UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
+//  UNSUPPORTEDOPERATION_DOMAINUPDATESECURITYLOCKPROHIBIT = "UnsupportedOperation.DomainUpdateSecurityLockProhibit"
 func (c *Client) ModifyCustomDnsHost(request *ModifyCustomDnsHostRequest) (response *ModifyCustomDnsHostResponse, err error) {
     return c.ModifyCustomDnsHostWithContext(context.Background(), request)
 }
@@ -2583,6 +2592,7 @@ func (c *Client) ModifyCustomDnsHost(request *ModifyCustomDnsHostRequest) (respo
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_DOMAINNOTFOUND = "ResourceNotFound.DomainNotFound"
 //  UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
+//  UNSUPPORTEDOPERATION_DOMAINUPDATESECURITYLOCKPROHIBIT = "UnsupportedOperation.DomainUpdateSecurityLockProhibit"
 func (c *Client) ModifyCustomDnsHostWithContext(ctx context.Context, request *ModifyCustomDnsHostRequest) (response *ModifyCustomDnsHostResponse, err error) {
     if request == nil {
         request = NewModifyCustomDnsHostRequest()
@@ -3059,6 +3069,7 @@ func NewSendPhoneEmailCodeResponse() (response *SendPhoneEmailCodeResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROHIBITPHONEEMAIL = "FailedOperation.ProhibitPhoneEmail"
 //  FAILEDOPERATION_SENDTCBPHONEEMAILCODEFAILED = "FailedOperation.SendTcbPhoneEmailCodeFailed"
 //  FAILEDOPERATION_SENDVERIFYCODEISLIMITED = "FailedOperation.SendVerifyCodeIsLimited"
 //  FAILEDOPERATION_VERIFYUINISREALNAME = "FailedOperation.VerifyUinIsRealname"
@@ -3077,6 +3088,7 @@ func (c *Client) SendPhoneEmailCode(request *SendPhoneEmailCodeRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROHIBITPHONEEMAIL = "FailedOperation.ProhibitPhoneEmail"
 //  FAILEDOPERATION_SENDTCBPHONEEMAILCODEFAILED = "FailedOperation.SendTcbPhoneEmailCodeFailed"
 //  FAILEDOPERATION_SENDVERIFYCODEISLIMITED = "FailedOperation.SendVerifyCodeIsLimited"
 //  FAILEDOPERATION_VERIFYUINISREALNAME = "FailedOperation.VerifyUinIsRealname"
@@ -3124,6 +3136,8 @@ func NewSetDomainAutoRenewResponse() (response *SetDomainAutoRenewResponse) {
 // SetDomainAutoRenew
 // 本接口 ( SetDomainAutoRenew ) 用于设置域名自动续费。
 //
+// 当前操作暂不受域名状态限制
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CHECKDOMAINFAILED = "FailedOperation.CheckDomainFailed"
@@ -3142,6 +3156,8 @@ func (c *Client) SetDomainAutoRenew(request *SetDomainAutoRenewRequest) (respons
 
 // SetDomainAutoRenew
 // 本接口 ( SetDomainAutoRenew ) 用于设置域名自动续费。
+//
+// 当前操作暂不受域名状态限制
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3191,7 +3207,7 @@ func NewSyncCustomDnsHostResponse() (response *SyncCustomDnsHostResponse) {
 }
 
 // SyncCustomDnsHost
-// 同步自定义DNS Host
+// 同步自定义DNS Host，将域名已经设置的host配置数据从注册局同步下来
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3211,7 +3227,7 @@ func (c *Client) SyncCustomDnsHost(request *SyncCustomDnsHostRequest) (response 
 }
 
 // SyncCustomDnsHost
-// 同步自定义DNS Host
+// 同步自定义DNS Host，将域名已经设置的host配置数据从注册局同步下来
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

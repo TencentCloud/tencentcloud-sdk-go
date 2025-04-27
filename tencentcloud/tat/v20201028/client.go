@@ -265,12 +265,16 @@ func NewCreateInvokerResponse() (response *CreateInvokerResponse) {
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ID = "InvalidParameterValue.ID"
+//  INVALIDPARAMETERVALUE_INCONSISTENTID = "InvalidParameterValue.InconsistentID"
+//  INVALIDPARAMETERVALUE_INCONSISTENTINSTANCE = "InvalidParameterValue.InconsistentInstance"
 //  INVALIDPARAMETERVALUE_INVALIDCOMMANDID = "InvalidParameterValue.InvalidCommandId"
 //  INVALIDPARAMETERVALUE_INVALIDCRONEXPRESSION = "InvalidParameterValue.InvalidCronExpression"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  INVALIDPARAMETERVALUE_INVALIDTIMEFORMAT = "InvalidParameterValue.InvalidTimeFormat"
 //  INVALIDPARAMETERVALUE_INVOKETIMEEXPIRED = "InvalidParameterValue.InvokeTimeExpired"
 //  INVALIDPARAMETERVALUE_PARAMETERINVALIDJSONFORMAT = "InvalidParameterValue.ParameterInvalidJsonFormat"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND_COMMANDNOTFOUND = "ResourceNotFound.CommandNotFound"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
@@ -287,12 +291,16 @@ func (c *Client) CreateInvoker(request *CreateInvokerRequest) (response *CreateI
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ID = "InvalidParameterValue.ID"
+//  INVALIDPARAMETERVALUE_INCONSISTENTID = "InvalidParameterValue.InconsistentID"
+//  INVALIDPARAMETERVALUE_INCONSISTENTINSTANCE = "InvalidParameterValue.InconsistentInstance"
 //  INVALIDPARAMETERVALUE_INVALIDCOMMANDID = "InvalidParameterValue.InvalidCommandId"
 //  INVALIDPARAMETERVALUE_INVALIDCRONEXPRESSION = "InvalidParameterValue.InvalidCronExpression"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  INVALIDPARAMETERVALUE_INVALIDTIMEFORMAT = "InvalidParameterValue.InvalidTimeFormat"
 //  INVALIDPARAMETERVALUE_INVOKETIMEEXPIRED = "InvalidParameterValue.InvokeTimeExpired"
 //  INVALIDPARAMETERVALUE_PARAMETERINVALIDJSONFORMAT = "InvalidParameterValue.ParameterInvalidJsonFormat"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND_COMMANDNOTFOUND = "ResourceNotFound.CommandNotFound"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
@@ -535,6 +543,7 @@ func NewDeleteInvokerResponse() (response *DeleteInvokerResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETERVALUE_ID = "InvalidParameterValue.ID"
 //  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteInvoker(request *DeleteInvokerRequest) (response *DeleteInvokerResponse, err error) {
@@ -546,6 +555,7 @@ func (c *Client) DeleteInvoker(request *DeleteInvokerRequest) (response *DeleteI
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETERVALUE_ID = "InvalidParameterValue.ID"
 //  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteInvokerWithContext(ctx context.Context, request *DeleteInvokerRequest) (response *DeleteInvokerResponse, err error) {
@@ -989,7 +999,11 @@ func NewDescribeInvokerRecordsResponse() (response *DescribeInvokerRecordsRespon
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INCONSISTENTID = "InvalidParameterValue.InconsistentID"
 //  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeInvokerRecords(request *DescribeInvokerRecordsRequest) (response *DescribeInvokerRecordsResponse, err error) {
     return c.DescribeInvokerRecordsWithContext(context.Background(), request)
@@ -1001,7 +1015,11 @@ func (c *Client) DescribeInvokerRecords(request *DescribeInvokerRecordsRequest) 
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INCONSISTENTID = "InvalidParameterValue.InconsistentID"
 //  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeInvokerRecordsWithContext(ctx context.Context, request *DescribeInvokerRecordsRequest) (response *DescribeInvokerRecordsResponse, err error) {
     if request == nil {
@@ -1045,8 +1063,12 @@ func NewDescribeInvokersResponse() (response *DescribeInvokersResponse) {
 //  AUTHFAILURE = "AuthFailure"
 //  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INCONSISTENTID = "InvalidParameterValue.InconsistentID"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
 func (c *Client) DescribeInvokers(request *DescribeInvokersRequest) (response *DescribeInvokersResponse, err error) {
     return c.DescribeInvokersWithContext(context.Background(), request)
 }
@@ -1058,8 +1080,12 @@ func (c *Client) DescribeInvokers(request *DescribeInvokersRequest) (response *D
 //  AUTHFAILURE = "AuthFailure"
 //  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INCONSISTENTID = "InvalidParameterValue.InconsistentID"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
 func (c *Client) DescribeInvokersWithContext(ctx context.Context, request *DescribeInvokersRequest) (response *DescribeInvokersResponse, err error) {
     if request == nil {
         request = NewDescribeInvokersRequest()
@@ -1395,6 +1421,7 @@ func NewDisableInvokerResponse() (response *DisableInvokerResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETERVALUE_ID = "InvalidParameterValue.ID"
 //  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DisableInvoker(request *DisableInvokerRequest) (response *DisableInvokerResponse, err error) {
@@ -1406,6 +1433,7 @@ func (c *Client) DisableInvoker(request *DisableInvokerRequest) (response *Disab
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETERVALUE_ID = "InvalidParameterValue.ID"
 //  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DisableInvokerWithContext(ctx context.Context, request *DisableInvokerRequest) (response *DisableInvokerResponse, err error) {
@@ -1507,6 +1535,7 @@ func NewEnableInvokerResponse() (response *EnableInvokerResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETERVALUE_ID = "InvalidParameterValue.ID"
 //  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) EnableInvoker(request *EnableInvokerRequest) (response *EnableInvokerResponse, err error) {
@@ -1518,6 +1547,7 @@ func (c *Client) EnableInvoker(request *EnableInvokerRequest) (response *EnableI
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETERVALUE_ID = "InvalidParameterValue.ID"
 //  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) EnableInvokerWithContext(ctx context.Context, request *EnableInvokerRequest) (response *EnableInvokerResponse, err error) {
@@ -1797,11 +1827,19 @@ func NewModifyInvokerResponse() (response *ModifyInvokerResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ID = "InvalidParameterValue.ID"
+//  INVALIDPARAMETERVALUE_INCONSISTENTID = "InvalidParameterValue.InconsistentID"
 //  INVALIDPARAMETERVALUE_INCONSISTENTINSTANCE = "InvalidParameterValue.InconsistentInstance"
+//  INVALIDPARAMETERVALUE_INVALIDCRONEXPRESSION = "InvalidParameterValue.InvalidCronExpression"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
+//  INVALIDPARAMETERVALUE_INVALIDTIMEFORMAT = "InvalidParameterValue.InvalidTimeFormat"
+//  INVALIDPARAMETERVALUE_INVOKETIMEEXPIRED = "InvalidParameterValue.InvokeTimeExpired"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_PARAMETERDISABLED = "InvalidParameterValue.ParameterDisabled"
 //  INVALIDPARAMETERVALUE_PARAMETERINVALIDJSONFORMAT = "InvalidParameterValue.ParameterInvalidJsonFormat"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND_COMMANDNOTFOUND = "ResourceNotFound.CommandNotFound"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCEUNAVAILABLE_AGENTNOTINSTALLED = "ResourceUnavailable.AgentNotInstalled"
@@ -1815,11 +1853,19 @@ func (c *Client) ModifyInvoker(request *ModifyInvokerRequest) (response *ModifyI
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ID = "InvalidParameterValue.ID"
+//  INVALIDPARAMETERVALUE_INCONSISTENTID = "InvalidParameterValue.InconsistentID"
 //  INVALIDPARAMETERVALUE_INCONSISTENTINSTANCE = "InvalidParameterValue.InconsistentInstance"
+//  INVALIDPARAMETERVALUE_INVALIDCRONEXPRESSION = "InvalidParameterValue.InvalidCronExpression"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
+//  INVALIDPARAMETERVALUE_INVALIDTIMEFORMAT = "InvalidParameterValue.InvalidTimeFormat"
+//  INVALIDPARAMETERVALUE_INVOKETIMEEXPIRED = "InvalidParameterValue.InvokeTimeExpired"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_PARAMETERDISABLED = "InvalidParameterValue.ParameterDisabled"
 //  INVALIDPARAMETERVALUE_PARAMETERINVALIDJSONFORMAT = "InvalidParameterValue.ParameterInvalidJsonFormat"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND_COMMANDNOTFOUND = "ResourceNotFound.CommandNotFound"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCEUNAVAILABLE_AGENTNOTINSTALLED = "ResourceUnavailable.AgentNotInstalled"

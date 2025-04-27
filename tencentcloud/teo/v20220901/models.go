@@ -16998,17 +16998,25 @@ type UpstreamRequestQueryString struct {
 }
 
 type UpstreamURLRewriteParameters struct {
-	// 回源 URL 重写类型，仅支持填写 Path。
+	// 回源 URL 重写类型。仅支持填写 Path。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 回源 URL 重写动作。取值有：
-	// <li>replace：替换路径前缀；</li>
-	// <li>addPrefix：增加路径前缀；</li>
-	// <li>rmvPrefix：移除路径前缀。</li>
+	// <li><b>replace</b>：指替换完整路径。用于将完整的请求 URL Path 替换为指定路径。
+	// </li>
+	// <li><b>addPrefix</b>：指增加路径前缀。用于增加指定路径前缀至请求 URL Path。
+	// </li>
+	// <li><b>rmvPrefix</b>：指移除路径前缀。用于移除请求 URL Path 的指定路径前缀。
+	// </li>
+	// <li><b>regexReplace</b>：指正则替换完整路径。用于通过 Google RE2 正则表达式匹配和替换完整路径。
+	// </li>
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
-	// 回源 URL 重写值，最大长度 1024，必须以 / 开头。<br>注意：当 Action 为 addPrefix 时，不能以 / 结尾；当 Action 为 rmvPrefix 时，不能存在 *。
+	// 回源 URL 重写值。需要满足 URL Path 规范，且保证重写后的 Path 以 / 开头，以防止回源 URL 的 Host 被修改，长度范围为 1～1024。当 Action 为 addPrefix 时，不能以 / 结尾；当 Action 为 rmvPrefix 时，不能存在 *；当 Action 为 regexReplace 时，支持用 $NUM 引用正则捕获组，其中 NUM 代表组编号，如 $1，最多支持 $9。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 回源 URL 重写用于正则替换匹配完整路径的正则表达式。需要满足 Google RE2 规范，长度范围为 1～1024。当 Action 为 regexReplace 时，此字段必填，否则无需填写此字段。
+	Regex *string `json:"Regex,omitnil,omitempty" name:"Regex"`
 }
 
 type VanityNameServers struct {

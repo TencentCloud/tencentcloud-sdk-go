@@ -612,6 +612,10 @@ func NewCreateScdnDomainResponse() (response *CreateScdnDomainResponse) {
 }
 
 // CreateScdnDomain
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // CreateScdnDomain 用于创建 SCDN 加速域名
 //
 // 可能返回的错误码:
@@ -647,6 +651,10 @@ func (c *Client) CreateScdnDomain(request *CreateScdnDomainRequest) (response *C
 }
 
 // CreateScdnDomain
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // CreateScdnDomain 用于创建 SCDN 加速域名
 //
 // 可能返回的错误码:
@@ -713,6 +721,10 @@ func NewCreateScdnFailedLogTaskResponse() (response *CreateScdnFailedLogTaskResp
 }
 
 // CreateScdnFailedLogTask
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // CreateScdnFailedLogTask 用于重试创建失败的事件日志任务
 //
 // 可能返回的错误码:
@@ -732,6 +744,10 @@ func (c *Client) CreateScdnFailedLogTask(request *CreateScdnFailedLogTaskRequest
 }
 
 // CreateScdnFailedLogTask
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // CreateScdnFailedLogTask 用于重试创建失败的事件日志任务
 //
 // 可能返回的错误码:
@@ -782,6 +798,10 @@ func NewCreateScdnLogTaskResponse() (response *CreateScdnLogTaskResponse) {
 }
 
 // CreateScdnLogTask
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // CreateScdnLogTask 用于创建事件日志任务
 //
 // 可能返回的错误码:
@@ -805,6 +825,10 @@ func (c *Client) CreateScdnLogTask(request *CreateScdnLogTaskRequest) (response 
 }
 
 // CreateScdnLogTask
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // CreateScdnLogTask 用于创建事件日志任务
 //
 // 可能返回的错误码:
@@ -1132,6 +1156,10 @@ func NewDeleteScdnDomainResponse() (response *DeleteScdnDomainResponse) {
 }
 
 // DeleteScdnDomain
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // 删除SCDN域名
 //
 // 可能返回的错误码:
@@ -1156,6 +1184,10 @@ func (c *Client) DeleteScdnDomain(request *DeleteScdnDomainRequest) (response *D
 }
 
 // DeleteScdnDomain
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // 删除SCDN域名
 //
 // 可能返回的错误码:
@@ -3371,6 +3403,10 @@ func NewDescribeScdnBotDataResponse() (response *DescribeScdnBotDataResponse) {
 }
 
 // DescribeScdnBotData
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // 获取BOT统计数据列表
 //
 // 可能返回的错误码:
@@ -3391,6 +3427,10 @@ func (c *Client) DescribeScdnBotData(request *DescribeScdnBotDataRequest) (respo
 }
 
 // DescribeScdnBotData
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // 获取BOT统计数据列表
 //
 // 可能返回的错误码:
@@ -3442,6 +3482,10 @@ func NewDescribeScdnBotRecordsResponse() (response *DescribeScdnBotRecordsRespon
 }
 
 // DescribeScdnBotRecords
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // 查询BOT会话记录列表
 //
 // 可能返回的错误码:
@@ -3456,6 +3500,10 @@ func (c *Client) DescribeScdnBotRecords(request *DescribeScdnBotRecordsRequest) 
 }
 
 // DescribeScdnBotRecords
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // 查询BOT会话记录列表
 //
 // 可能返回的错误码:
@@ -3501,6 +3549,10 @@ func NewDescribeScdnConfigResponse() (response *DescribeScdnConfigResponse) {
 }
 
 // DescribeScdnConfig
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // DescribeScdnConfig 用于查询指定 SCDN 加速域名的安全相关配置
 //
 // 可能返回的错误码:
@@ -3518,6 +3570,10 @@ func (c *Client) DescribeScdnConfig(request *DescribeScdnConfigRequest) (respons
 }
 
 // DescribeScdnConfig
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // DescribeScdnConfig 用于查询指定 SCDN 加速域名的安全相关配置
 //
 // 可能返回的错误码:
@@ -3566,6 +3622,10 @@ func NewDescribeScdnIpStrategyResponse() (response *DescribeScdnIpStrategyRespon
 }
 
 // DescribeScdnIpStrategy
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // 查询在SCDN IP安全策略
 //
 // 可能返回的错误码:
@@ -3580,6 +3640,10 @@ func (c *Client) DescribeScdnIpStrategy(request *DescribeScdnIpStrategyRequest) 
 }
 
 // DescribeScdnIpStrategy
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // 查询在SCDN IP安全策略
 //
 // 可能返回的错误码:
@@ -3625,6 +3689,10 @@ func NewDescribeScdnTopDataResponse() (response *DescribeScdnTopDataResponse) {
 }
 
 // DescribeScdnTopData
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // 获取SCDN的Top数据
 //
 // 可能返回的错误码:
@@ -3645,6 +3713,10 @@ func (c *Client) DescribeScdnTopData(request *DescribeScdnTopDataRequest) (respo
 }
 
 // DescribeScdnTopData
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // 获取SCDN的Top数据
 //
 // 可能返回的错误码:
@@ -4965,6 +5037,10 @@ func NewListScdnDomainsResponse() (response *ListScdnDomainsResponse) {
 }
 
 // ListScdnDomains
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // ListScdnDomains 用于查询 SCDN 安全加速域名列表，及域名基本配置信息
 //
 // 可能返回的错误码:
@@ -4982,6 +5058,10 @@ func (c *Client) ListScdnDomains(request *ListScdnDomainsRequest) (response *Lis
 }
 
 // ListScdnDomains
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // ListScdnDomains 用于查询 SCDN 安全加速域名列表，及域名基本配置信息
 //
 // 可能返回的错误码:
@@ -5030,6 +5110,10 @@ func NewListScdnLogTasksResponse() (response *ListScdnLogTasksResponse) {
 }
 
 // ListScdnLogTasks
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // ListScdnLogTasks 用于查询SCDN日志下载任务列表,以及展示下载任务基本信息
 //
 // 可能返回的错误码:
@@ -5047,6 +5131,10 @@ func (c *Client) ListScdnLogTasks(request *ListScdnLogTasksRequest) (response *L
 }
 
 // ListScdnLogTasks
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // ListScdnLogTasks 用于查询SCDN日志下载任务列表,以及展示下载任务基本信息
 //
 // 可能返回的错误码:
@@ -5095,6 +5183,10 @@ func NewListScdnTopBotDataResponse() (response *ListScdnTopBotDataResponse) {
 }
 
 // ListScdnTopBotData
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // 获取Bot攻击的Top数据列表
 //
 // 可能返回的错误码:
@@ -5111,6 +5203,10 @@ func (c *Client) ListScdnTopBotData(request *ListScdnTopBotDataRequest) (respons
 }
 
 // ListScdnTopBotData
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // 获取Bot攻击的Top数据列表
 //
 // 可能返回的错误码:
@@ -6574,6 +6670,10 @@ func NewStartScdnDomainResponse() (response *StartScdnDomainResponse) {
 }
 
 // StartScdnDomain
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // StartScdnDomain 用于开启域名的安全防护配置
 //
 // 可能返回的错误码:
@@ -6601,6 +6701,10 @@ func (c *Client) StartScdnDomain(request *StartScdnDomainRequest) (response *Sta
 }
 
 // StartScdnDomain
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // StartScdnDomain 用于开启域名的安全防护配置
 //
 // 可能返回的错误码:
@@ -6754,6 +6858,10 @@ func NewStopScdnDomainResponse() (response *StopScdnDomainResponse) {
 }
 
 // StopScdnDomain
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // StopScdnDomain 用于关闭域名的安全防护配置
 //
 // 可能返回的错误码:
@@ -6781,6 +6889,10 @@ func (c *Client) StopScdnDomain(request *StopScdnDomainRequest) (response *StopS
 }
 
 // StopScdnDomain
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // StopScdnDomain 用于关闭域名的安全防护配置
 //
 // 可能返回的错误码:
@@ -7142,6 +7254,10 @@ func NewUpdateScdnDomainResponse() (response *UpdateScdnDomainResponse) {
 }
 
 // UpdateScdnDomain
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // UpdateScdnDomain 用于修改 SCDN 加速域名安全相关配置
 //
 // 可能返回的错误码:
@@ -7172,6 +7288,10 @@ func (c *Client) UpdateScdnDomain(request *UpdateScdnDomainRequest) (response *U
 }
 
 // UpdateScdnDomain
+// SCDN平台已经正式下线，接口开始预下线处理
+//
+// 
+//
 // UpdateScdnDomain 用于修改 SCDN 加速域名安全相关配置
 //
 // 可能返回的错误码:

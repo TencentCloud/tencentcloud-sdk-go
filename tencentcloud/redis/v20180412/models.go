@@ -6586,8 +6586,20 @@ func (r *InquiryPriceCreateInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquiryPriceCreateInstanceResponseParams struct {
-	// 价格，单位：分
+	// 价格
 	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
+
+	// 高精度价格
+	HighPrecisionPrice *float64 `json:"HighPrecisionPrice,omitnil,omitempty" name:"HighPrecisionPrice"`
+
+	// 币种
+	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
+
+	// 价格金额单位
+	// 
+	// - pent: 分
+	// - microPent: 微分
+	AmountUnit *string `json:"AmountUnit,omitnil,omitempty" name:"AmountUnit"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6650,8 +6662,20 @@ func (r *InquiryPriceRenewInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquiryPriceRenewInstanceResponseParams struct {
-	// 价格，单位：分。
+	// 价格
 	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
+
+	// 高精度价格
+	HighPrecisionPrice *float64 `json:"HighPrecisionPrice,omitnil,omitempty" name:"HighPrecisionPrice"`
+
+	// 币种
+	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
+
+	// 价格金额单位
+	// 
+	// - pent: 分
+	// - microPent: 微分
+	AmountUnit *string `json:"AmountUnit,omitnil,omitempty" name:"AmountUnit"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6728,8 +6752,20 @@ func (r *InquiryPriceUpgradeInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquiryPriceUpgradeInstanceResponseParams struct {
-	// 价格，单位：分
+	// 价格
 	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
+
+	// 高精度价格
+	HighPrecisionPrice *float64 `json:"HighPrecisionPrice,omitnil,omitempty" name:"HighPrecisionPrice"`
+
+	// 币种
+	Currency *string `json:"Currency,omitnil,omitempty" name:"Currency"`
+
+	// 价格金额单位
+	// 
+	// - pent: 分
+	// - microPent: 微分
+	AmountUnit *string `json:"AmountUnit,omitnil,omitempty" name:"AmountUnit"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

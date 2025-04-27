@@ -1255,7 +1255,7 @@ type DeviceDetail struct {
 	// NGN策略版本
 	NGNStrategyVer *string `json:"NGNStrategyVer,omitnil,omitempty" name:"NGNStrategyVer"`
 
-	// 最近登录账户的账号
+	// 最近登录账户的账号(账号系统用户账号)
 	IOAUserName *string `json:"IOAUserName,omitnil,omitempty" name:"IOAUserName"`
 
 	// 设备管控新策略
@@ -1282,11 +1282,14 @@ type DeviceDetail struct {
 	// 最近登录账号部门
 	AccountGroupName *string `json:"AccountGroupName,omitnil,omitempty" name:"AccountGroupName"`
 
-	// 最近登录账户的姓名
+	// 最近登录账户的姓名(账号系统用户姓名)
 	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
 
 	// 账号组id
 	AccountGroupId *int64 `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
+
+	// 终端备注名
+	RemarkName *string `json:"RemarkName,omitnil,omitempty" name:"RemarkName"`
 }
 
 type Filter struct {

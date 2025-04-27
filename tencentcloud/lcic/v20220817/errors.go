@@ -116,7 +116,7 @@ const (
 	// 资源不足。
 	RESOURCEINSUFFICIENT = "ResourceInsufficient"
 
-	// 存储空间已无剩余，无法使用存储功能。
+	// 录制功能因存储超量或账号欠费而受限。
 	RESOURCEINSUFFICIENT_RECORD = "ResourceInsufficient.Record"
 
 	// 打开课堂失败，请前往控制台查看用量情况。

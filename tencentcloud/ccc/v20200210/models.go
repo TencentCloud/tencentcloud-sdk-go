@@ -86,6 +86,9 @@ type AILatencyDetail struct {
 	// llm时延（毫秒）
 	LLMLatency *int64 `json:"LLMLatency,omitnil,omitempty" name:"LLMLatency"`
 
+	// llm首token时延(毫秒)
+	LLMFirstTokenLatency *int64 `json:"LLMFirstTokenLatency,omitnil,omitempty" name:"LLMFirstTokenLatency"`
+
 	// 端到端时延（毫秒）
 	ETELatency *int64 `json:"ETELatency,omitnil,omitempty" name:"ETELatency"`
 }

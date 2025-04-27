@@ -259,7 +259,9 @@ func NewCancelInstanceRefreshResponse() (response *CancelInstanceRefreshResponse
 // CancelInstanceRefresh
 // 取消伸缩组的实例刷新活动。
 //
-// * 已刷新/正在刷新的批次不受影响，待刷新批次被取消
+// * 已刷新的批次不受影响，待刷新批次被取消
+//
+// * 如存在正在刷新的批次，不允许取消；可先暂停活动，等待当前批次结束后再取消
 //
 // * 刷新失败的实例保持备用中状态，需用户手动处理后尝试退出备用中状态或销毁
 //
@@ -280,7 +282,9 @@ func (c *Client) CancelInstanceRefresh(request *CancelInstanceRefreshRequest) (r
 // CancelInstanceRefresh
 // 取消伸缩组的实例刷新活动。
 //
-// * 已刷新/正在刷新的批次不受影响，待刷新批次被取消
+// * 已刷新的批次不受影响，待刷新批次被取消
+//
+// * 如存在正在刷新的批次，不允许取消；可先暂停活动，等待当前批次结束后再取消
 //
 // * 刷新失败的实例保持备用中状态，需用户手动处理后尝试退出备用中状态或销毁
 //

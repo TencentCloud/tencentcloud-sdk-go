@@ -27,7 +27,7 @@ type AuctionInfo struct {
 	// 竞拍时间
 	AuctionTime *string `json:"AuctionTime,omitnil,omitempty" name:"AuctionTime"`
 
-	// 竞拍价格
+	// 竞拍价格 单位元
 	AuctionPrice *float64 `json:"AuctionPrice,omitnil,omitempty" name:"AuctionPrice"`
 
 	// 状态 up: 领先 down: 落后
@@ -39,7 +39,8 @@ type BatchModifyDomainInfoRequestParams struct {
 	// 批量修改的域名。
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// 模板ID(可从模板列表接口获取)
+	// 模板ID
+	// 可从DescribeTemplates接口获取
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// true： 开启60天内禁止转移注册商锁定
@@ -54,7 +55,8 @@ type BatchModifyDomainInfoRequest struct {
 	// 批量修改的域名。
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// 模板ID(可从模板列表接口获取)
+	// 模板ID
+	// 可从DescribeTemplates接口获取
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// true： 开启60天内禁止转移注册商锁定
@@ -117,19 +119,31 @@ type BatchStatus struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 批量任务类型
+	// new：注册域名
+	// renew：续费域名
+	// batch_transfer_prohibition_on：开启禁止转移锁
+	// batch_transfer_prohibition_off：关闭禁止转移锁
+	// batch_update_prohibition_on：开启禁止更新锁
+	// batch_update_prohibition_off：关闭禁止更新锁
+	// batch_modify_owner：域名转移
+	// batch_modify_domain_info：域名信息修改
+	// batch_transfer_in：域名转入
+	// batch_cancel_transfer_out：域名取消转出
 	BatchAction *string `json:"BatchAction,omitnil,omitempty" name:"BatchAction"`
 }
 
 // Predefined struct for user
 type BidDetailPageRequestParams struct {
-	// 业务ID
+	// 预约ID
+	// 可通过DescribeBiddingList接口获取
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 }
 
 type BidDetailPageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 业务ID
+	// 预约ID
+	// 可通过DescribeBiddingList接口获取
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 }
 
@@ -157,20 +171,20 @@ type BidDetailPageResponseParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 当前域名价格
+	// 当前域名价格 单位元
 	CurrentPrice *float64 `json:"CurrentPrice,omitnil,omitempty" name:"CurrentPrice"`
 
-	// 用户上次出价
+	// 用户上次出价 单位元
 	BidPrice *float64 `json:"BidPrice,omitnil,omitempty" name:"BidPrice"`
 
-	// 当前加价幅度
+	// 当前加价幅度 单位元
 	CurrentPriceScope *float64 `json:"CurrentPriceScope,omitnil,omitempty" name:"CurrentPriceScope"`
 
 	// 加价幅度区间配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PriceScope []*PriceScopeConf `json:"PriceScope,omitnil,omitempty" name:"PriceScope"`
 
-	// 用户当前已经支付了的保证金
+	// 用户当前已经支付了的保证金 单位元
 	DepositPrice *float64 `json:"DepositPrice,omitnil,omitempty" name:"DepositPrice"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -255,16 +269,16 @@ func (r *BidPreDomainsResponse) FromJsonString(s string) error {
 }
 
 type BiddingAppointResult struct {
-	// business_id
+	// 预约ID
 	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 预定价格
+	// 预定价格 单位元
 	AppointPrice *uint64 `json:"AppointPrice,omitnil,omitempty" name:"AppointPrice"`
 
-	// 预约保证金
+	// 预约保证金 单位元
 	AppointBondPrice *uint64 `json:"AppointBondPrice,omitnil,omitempty" name:"AppointBondPrice"`
 
 	// 预约结束时间
@@ -280,9 +294,10 @@ type BiddingAppointResult struct {
 // Predefined struct for user
 type BiddingPreReleaseRequestParams struct {
 	// 业务ID
+	// 可通过DescribeBiddingList接口获取
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
-	// 价格
+	// 价格 单位元
 	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
 }
 
@@ -290,9 +305,10 @@ type BiddingPreReleaseRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务ID
+	// 可通过DescribeBiddingList接口获取
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
-	// 价格
+	// 价格 单位元
 	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
 }
 
@@ -321,7 +337,7 @@ type BiddingPreReleaseResponseParams struct {
 	// 是否需要额外支付
 	IsNeedPay *bool `json:"IsNeedPay,omitnil,omitempty" name:"IsNeedPay"`
 
-	// 计费请求参数，以Json字符串的形式进行返回。
+	// 计费请求参数，以类Json字符串的形式进行返回。用于计费下单
 	BillingParam *string `json:"BillingParam,omitnil,omitempty" name:"BillingParam"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -345,22 +361,22 @@ func (r *BiddingPreReleaseResponse) FromJsonString(s string) error {
 }
 
 type BiddingResult struct {
-	// business_id
+	// 预约ID
 	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 当前价格
+	// 当前价格 单位元
 	CurrentPrice *uint64 `json:"CurrentPrice,omitnil,omitempty" name:"CurrentPrice"`
 
 	// 当前用户昵称
 	CurrentNickname *string `json:"CurrentNickname,omitnil,omitempty" name:"CurrentNickname"`
 
-	// 我的出价
+	// 我的出价 单位元
 	BiddingPrice *uint64 `json:"BiddingPrice,omitnil,omitempty" name:"BiddingPrice"`
 
-	// 竞价保证金
+	// 竞价保证金 单位元
 	BiddingBondPrice *uint64 `json:"BiddingBondPrice,omitnil,omitempty" name:"BiddingBondPrice"`
 
 	// 竞价结束时间
@@ -463,6 +479,15 @@ type CertificateInfo struct {
 // Predefined struct for user
 type CheckBatchStatusRequestParams struct {
 	// 操作日志 ID数组，最多 200 个
+	// 可通过任意批量操作接口获取，例如：
+	// BatchModifyDomainInfo
+	// ModifyDomainDNSBatch
+	// ModifyDomainOwnerBatch
+	// UpdateProhibitionBatch
+	// TransferProhibitionBatch
+	// TransferInDomainBatch
+	// TransferInDomainBatchBuy
+	// CancelTransferOutInBatch
 	LogIds []*uint64 `json:"LogIds,omitnil,omitempty" name:"LogIds"`
 }
 
@@ -470,6 +495,15 @@ type CheckBatchStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 操作日志 ID数组，最多 200 个
+	// 可通过任意批量操作接口获取，例如：
+	// BatchModifyDomainInfo
+	// ModifyDomainDNSBatch
+	// ModifyDomainOwnerBatch
+	// UpdateProhibitionBatch
+	// TransferProhibitionBatch
+	// TransferInDomainBatch
+	// TransferInDomainBatchBuy
+	// CancelTransferOutInBatch
 	LogIds []*uint64 `json:"LogIds,omitnil,omitempty" name:"LogIds"`
 }
 
@@ -674,12 +708,15 @@ type ContactInfo struct {
 // Predefined struct for user
 type CreateCustomDnsHostRequestParams struct {
 	// 域名实例ID
+	// 可通过DescribeDomainLIst接口获取
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// Dns名称
+	// 例如：<>.test.com;其中<>就是Dns名称，可以是任意域名允许的格式
 	DnsName *string `json:"DnsName,omitnil,omitempty" name:"DnsName"`
 
 	// IP地址列表
+	// 可选择：正常IP地址范围
 	IpSet []*string `json:"IpSet,omitnil,omitempty" name:"IpSet"`
 }
 
@@ -687,12 +724,15 @@ type CreateCustomDnsHostRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名实例ID
+	// 可通过DescribeDomainLIst接口获取
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// Dns名称
+	// 例如：<>.test.com;其中<>就是Dns名称，可以是任意域名允许的格式
 	DnsName *string `json:"DnsName,omitnil,omitempty" name:"DnsName"`
 
 	// IP地址列表
+	// 可选择：正常IP地址范围
 	IpSet []*string `json:"IpSet,omitnil,omitempty" name:"IpSet"`
 }
 
@@ -875,14 +915,16 @@ func (r *CreateDomainBatchResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateDomainRedemptionRequestParams struct {
-	// 域名 ID
+	// 域名ID
+	// 可通过DescribeDomainList接口获取
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 }
 
 type CreateDomainRedemptionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名 ID
+	// 域名ID
+	// 可通过DescribeDomainList接口获取
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 }
 
@@ -935,7 +977,8 @@ type CreatePhoneEmailRequestParams struct {
 	// 1：手机   2：邮箱
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 验证码(通过SendPhoneEmailCode发送到手机或邮箱的验证码)
+	// 验证码
+	// 通过调用SendPhoneEmailCode接口发送到手机或邮箱的验证码：https://cloud.tencent.com/document/api/242/62666
 	VerifyCode *string `json:"VerifyCode,omitnil,omitempty" name:"VerifyCode"`
 }
 
@@ -948,7 +991,8 @@ type CreatePhoneEmailRequest struct {
 	// 1：手机   2：邮箱
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 验证码(通过SendPhoneEmailCode发送到手机或邮箱的验证码)
+	// 验证码
+	// 通过调用SendPhoneEmailCode接口发送到手机或邮箱的验证码：https://cloud.tencent.com/document/api/242/62666
 	VerifyCode *string `json:"VerifyCode,omitnil,omitempty" name:"VerifyCode"`
 }
 
@@ -1069,14 +1113,16 @@ type CustomDnsHost struct {
 
 // Predefined struct for user
 type DeleteBiddingRequestParams struct {
-	// business_id
+	// 预约ID
+	// 可通过DescribeBiddingList接口获取
 	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
 type DeleteBiddingRequest struct {
 	*tchttp.BaseRequest
 	
-	// business_id
+	// 预约ID
+	// 可通过DescribeBiddingList接口获取
 	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
@@ -1124,9 +1170,11 @@ func (r *DeleteBiddingResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteCustomDnsHostRequestParams struct {
 	// 域名实例ID
+	// 可通过DescribeDomainList接口获取
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// DNS名称
+	// 例如：<>.test.com;其中<>就是Dns名称，可以是任意域名允许的格式
 	DnsName *string `json:"DnsName,omitnil,omitempty" name:"DnsName"`
 }
 
@@ -1134,9 +1182,11 @@ type DeleteCustomDnsHostRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名实例ID
+	// 可通过DescribeDomainList接口获取
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// DNS名称
+	// 例如：<>.test.com;其中<>就是Dns名称，可以是任意域名允许的格式
 	DnsName *string `json:"DnsName,omitnil,omitempty" name:"DnsName"`
 }
 
@@ -1302,14 +1352,16 @@ func (r *DeleteReservedPreDomainInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteTemplateRequestParams struct {
-	// 模板ID(可通过模板信息列表获取)
+	// 模板ID
+	// 可通过DescribeTemplates接口获取
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
 type DeleteTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模板ID(可通过模板信息列表获取)
+	// 模板ID
+	// 可通过DescribeTemplates接口获取
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
@@ -1359,10 +1411,10 @@ type DescribeAuctionListRequestParams struct {
 	// 业务ID，通过接口DescribeBiddingList返回结果中获取
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
-	// 条数，默认10条
+	// 条数，默认10，最大100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// 偏移量 默认0
 	OffSet *int64 `json:"OffSet,omitnil,omitempty" name:"OffSet"`
 }
 
@@ -1372,10 +1424,10 @@ type DescribeAuctionListRequest struct {
 	// 业务ID，通过接口DescribeBiddingList返回结果中获取
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
-	// 条数，默认10条
+	// 条数，默认10，最大100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 偏移量
+	// 偏移量 默认0
 	OffSet *int64 `json:"OffSet,omitnil,omitempty" name:"OffSet"`
 }
 
@@ -1571,14 +1623,16 @@ func (r *DescribeBatchOperationLogsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBiddingAppointDetailRequestParams struct {
-	// business_id
+	// 预约ID
+	// 可通过DescribeBiddingList接口获取
 	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
 type DescribeBiddingAppointDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// business_id
+	// 预约ID
+	// 可通过DescribeBiddingList接口获取
 	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
@@ -1624,10 +1678,10 @@ type DescribeBiddingAppointDetailResponseParams struct {
 	// 删除时间
 	DeleteTime *string `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
 
-	// 当前价格
+	// 当前价格 单位元
 	AppointPrice *uint64 `json:"AppointPrice,omitnil,omitempty" name:"AppointPrice"`
 
-	// 预约保证金
+	// 预约保证金 单位元
 	AppointBondPrice *uint64 `json:"AppointBondPrice,omitnil,omitempty" name:"AppointBondPrice"`
 
 	// 1 已预约，2 竞价中，3 等待出价 4 竞价失败 5 等待支付 6 等待转移，7 转移中 8 交易成功 9 预约持有者赎回 10 竞价持有者赎回 11 其他阶段持有者赎回 12 违约
@@ -1668,7 +1722,8 @@ type DescribeBiddingAppointListRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 状态： 1 已预约 9 预约持有者索回
+	// 状态：
+	// 1 已预约，2 竞价中，3 等待出价 4 竞价失败 5 等待支付 6 等待转移，7 转移中 8 交易成功 9 预约持有者赎回 10 竞价持有者赎回 11 其他阶段持有者赎回 12 违约
 	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 排序字段：AppointEndTime 预约结束时间
@@ -1690,7 +1745,8 @@ type DescribeBiddingAppointListRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 状态： 1 已预约 9 预约持有者索回
+	// 状态：
+	// 1 已预约，2 竞价中，3 等待出价 4 竞价失败 5 等待支付 6 等待转移，7 转移中 8 交易成功 9 预约持有者赎回 10 竞价持有者赎回 11 其他阶段持有者赎回 12 违约
 	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 排序字段：AppointEndTime 预约结束时间
@@ -1754,14 +1810,16 @@ func (r *DescribeBiddingAppointListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBiddingDetailRequestParams struct {
-	// business_id
+	// 预约ID
+	// 可通过DescribeBiddingList接口获取
 	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
 type DescribeBiddingDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// business_id
+	// 预约ID
+	// 可通过DescribeBiddingList接口获取
 	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
@@ -1807,13 +1865,13 @@ type DescribeBiddingDetailResponseParams struct {
 	// 删除时间
 	DeleteTime *string `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
 
-	// 当前价格
+	// 当前价格 单位元
 	CurrentPrice *uint64 `json:"CurrentPrice,omitnil,omitempty" name:"CurrentPrice"`
 
 	// 当前用户昵称
 	CurrentNickname *string `json:"CurrentNickname,omitnil,omitempty" name:"CurrentNickname"`
 
-	// 竞价保证金
+	// 竞价保证金 单位元
 	BiddingBondPrice *uint64 `json:"BiddingBondPrice,omitnil,omitempty" name:"BiddingBondPrice"`
 
 	// 2 竞价中  3 等待出价 4 竞价失败 10 竞价持有者赎回
@@ -1825,7 +1883,7 @@ type DescribeBiddingDetailResponseParams struct {
 	// 是否退款，yes表示退款，no表示不退款
 	BiddingBondRefund *string `json:"BiddingBondRefund,omitnil,omitempty" name:"BiddingBondRefund"`
 
-	// 我的出价
+	// 我的出价 单位元
 	BiddingPrice *uint64 `json:"BiddingPrice,omitnil,omitempty" name:"BiddingPrice"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1947,14 +2005,16 @@ func (r *DescribeBiddingListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBiddingSuccessfulDetailRequestParams struct {
-	// business_id
+	// 预约ID
+	// 可通过DescribeBiddingSuccessfulList接口获取
 	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
 type DescribeBiddingSuccessfulDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// business_id
+	// 预约ID
+	// 可通过DescribeBiddingSuccessfulList接口获取
 	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
@@ -1985,7 +2045,7 @@ type DescribeBiddingSuccessfulDetailResponseParams struct {
 	// 得标时间
 	SuccessfulTime *string `json:"SuccessfulTime,omitnil,omitempty" name:"SuccessfulTime"`
 
-	// 得标价格
+	// 得标价格 单位元
 	SuccessfulPrice *float64 `json:"SuccessfulPrice,omitnil,omitempty" name:"SuccessfulPrice"`
 
 	//  注册时间
@@ -2003,7 +2063,7 @@ type DescribeBiddingSuccessfulDetailResponseParams struct {
 	// 保证金，是否退款，yes表示退款，no表示不退款
 	BiddingBondRefund *string `json:"BiddingBondRefund,omitnil,omitempty" name:"BiddingBondRefund"`
 
-	// 保证金
+	// 保证金 单位元
 	BiddingBondPrice *float64 `json:"BiddingBondPrice,omitnil,omitempty" name:"BiddingBondPrice"`
 
 	// 状态：5 等待支付 6 等待转移， 7 转移中，8 交易成功，11 尾款阶段持有者索回，12 已违约
@@ -2126,7 +2186,8 @@ func (r *DescribeBiddingSuccessfulListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCustomDnsHostSetRequestParams struct {
-	// 域名实例ID(域名基本信息或我的域名列表接口可获取)
+	// 域名实例ID
+	// 可通过DescribeDomainList接口获取
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// 返回数量，默认为20，取值范围[1,100]
@@ -2139,7 +2200,8 @@ type DescribeCustomDnsHostSetRequestParams struct {
 type DescribeCustomDnsHostSetRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名实例ID(域名基本信息或我的域名列表接口可获取)
+	// 域名实例ID
+	// 可通过DescribeDomainList接口获取
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// 返回数量，默认为20，取值范围[1,100]
@@ -2467,6 +2529,7 @@ func (r *DescribeDomainSimpleInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePayWaitDetailRequestParams struct {
 	// 业务ID
+	// 可通过DescribeBiddingList接口获取
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 }
 
@@ -2474,6 +2537,7 @@ type DescribePayWaitDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务ID
+	// 可通过DescribeBiddingList接口获取
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 }
 
@@ -2502,6 +2566,10 @@ type DescribePayWaitDetailResponseParams struct {
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 域名类型
+	// pay：等待支持
+	// sub：已经预订
+	// wait：等待出价
+	// finish：完成出价
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 支付结束时间
@@ -2510,10 +2578,10 @@ type DescribePayWaitDetailResponseParams struct {
 	// 域名注册时间
 	RegTime *string `json:"RegTime,omitnil,omitempty" name:"RegTime"`
 
-	// 域名成交价格
+	// 域名成交价格 单位元
 	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
 
-	// 待退还保证金
+	// 待退还保证金 单位元
 	RetDeposit *float64 `json:"RetDeposit,omitnil,omitempty" name:"RetDeposit"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2619,20 +2687,20 @@ func (r *DescribePhoneEmailListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePreAuctionListRequestParams struct {
-	// 页码
+	// 页码 默认1
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 条数
+	// 条数 默认20 最大100
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 type DescribePreAuctionListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 页码
+	// 页码 默认1
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 条数
+	// 条数 默认20 最大100
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
@@ -2662,7 +2730,6 @@ type DescribePreAuctionListResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 预释放竞价列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreAuctionList []*PreAuctionInfo `json:"PreAuctionList,omitnil,omitempty" name:"PreAuctionList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3389,12 +3456,14 @@ type DescribeUnPreDomainDetailResponseParams struct {
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 域名状态
+	//  bid：出价
+	// noAction：无法操作
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 域名价格
+	// 域名价格 单位元
 	CurrentPrice *float64 `json:"CurrentPrice,omitnil,omitempty" name:"CurrentPrice"`
 
-	// 域名保证金
+	// 域名保证金 单位元
 	AppointBondPrice *float64 `json:"AppointBondPrice,omitnil,omitempty" name:"AppointBondPrice"`
 
 	// 是否已经预约
@@ -3517,7 +3586,17 @@ type DomainBatchDetailSet struct {
 	// 详情ID
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 类型  new: 注册域名 batch_transfer_prohibition_on:开启禁止转移  batch_transfer_prohibition_off:关闭禁止转移 batch_update_prohibition_on:开启禁止更新   batch_update_prohibition_off:关闭禁止更新
+	// 类型  
+	// new：注册域名
+	// renew：续费域名
+	// batch_transfer_prohibition_on：开启禁止转移锁
+	// batch_transfer_prohibition_off：关闭禁止转移锁
+	// batch_update_prohibition_on：开启禁止更新锁
+	// batch_update_prohibition_off：关闭禁止更新锁
+	// batch_modify_owner：域名转移
+	// batch_modify_domain_info：域名信息修改
+	// batch_transfer_in：域名转入
+	// batch_cancel_transfer_out：域名取消转出
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 
 	// 域名
@@ -3529,7 +3608,7 @@ type DomainBatchDetailSet struct {
 	// success  操作成功。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 失败原因
+	// 失败原因，如果状态成功(Status:success),则该字段为空
 	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 
 	// 创建时间
@@ -3866,9 +3945,10 @@ func (r *ModifyDomainDNSBatchResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDomainOwnerBatchRequestParams struct {
 	// 要过户的域名。
+	// 一次提交不大于4000个
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// 转入账户的uin。
+	// 转入账户的主uin。
 	NewOwnerUin *string `json:"NewOwnerUin,omitnil,omitempty" name:"NewOwnerUin"`
 
 	// 是否同时转移对应的 DNS 解析域名，默认false
@@ -3882,9 +3962,10 @@ type ModifyDomainOwnerBatchRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要过户的域名。
+	// 一次提交不大于4000个
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
-	// 转入账户的uin。
+	// 转入账户的主uin。
 	NewOwnerUin *string `json:"NewOwnerUin,omitnil,omitempty" name:"NewOwnerUin"`
 
 	// 是否同时转移对应的 DNS 解析域名，默认false
@@ -4104,13 +4185,15 @@ type PreAuctionInfo struct {
 	// 竞价倒计时
 	BiddingTime *string `json:"BiddingTime,omitnil,omitempty" name:"BiddingTime"`
 
-	// 出价次数
+	// 出价次数 单位元
 	BidCount *int64 `json:"BidCount,omitnil,omitempty" name:"BidCount"`
 
-	// 当前价格
+	// 当前价格 单位元
 	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
 
-	// 用户操作 bid：出价 "noAction"：无法操作
+	// 用户操作 
+	// bid：出价 
+	// noAction：无法操作
 	Op *string `json:"Op,omitnil,omitempty" name:"Op"`
 
 	// 业务ID
@@ -4167,25 +4250,26 @@ type PriceInfo struct {
 }
 
 type PriceScopeConf struct {
-	// 最高价格
+	// 最高价格 单位元
 	MaxPrice *float64 `json:"MaxPrice,omitnil,omitempty" name:"MaxPrice"`
 
-	// 最低价格
+	// 最低价格 单位元
 	MinPrice *float64 `json:"MinPrice,omitnil,omitempty" name:"MinPrice"`
 
-	// 价格幅度
+	// 价格幅度 单位元
 	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
 
-	// 保证金
+	// 保证金 单位元
 	DepositPrice *float64 `json:"DepositPrice,omitnil,omitempty" name:"DepositPrice"`
 }
 
 // Predefined struct for user
 type RenewDomainBatchRequestParams struct {
-	// 域名续费的年限。
+	// 域名续费的年限。取值范围[1,9]
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 批量续费的域名。
+	// 一次提交不大于4000个
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
 	// 付费模式 0手动在线付费，1使用余额付费，2使用特惠包。
@@ -4213,10 +4297,11 @@ type RenewDomainBatchRequestParams struct {
 type RenewDomainBatchRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名续费的年限。
+	// 域名续费的年限。取值范围[1,9]
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 批量续费的域名。
+	// 一次提交不大于4000个
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
 	// 付费模式 0手动在线付费，1使用余额付费，2使用特惠包。
@@ -4357,13 +4442,13 @@ type ReservedPreDomainsRequestParams struct {
 	// 预约预释放域名列表
 	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
 
-	// 模板ID
+	// 模板ID 可通过DescribeTemplates接口获取
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 结束后是否自动支付尾款，默认开启 传入1关闭
+	// 结束后是否自动支付尾款，默认1 开启 传入0关闭
 	IsAutoPay *int64 `json:"IsAutoPay,omitnil,omitempty" name:"IsAutoPay"`
 
-	// 结束后是否自动进行梯度保证金扣除，默认开启 传入1关闭
+	// 结束后是否自动进行梯度保证金扣除，默认1开启 传入0关闭
 	IsBidAutoPay *int64 `json:"IsBidAutoPay,omitnil,omitempty" name:"IsBidAutoPay"`
 }
 
@@ -4373,13 +4458,13 @@ type ReservedPreDomainsRequest struct {
 	// 预约预释放域名列表
 	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
 
-	// 模板ID
+	// 模板ID 可通过DescribeTemplates接口获取
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 结束后是否自动支付尾款，默认开启 传入1关闭
+	// 结束后是否自动支付尾款，默认1 开启 传入0关闭
 	IsAutoPay *int64 `json:"IsAutoPay,omitnil,omitempty" name:"IsAutoPay"`
 
-	// 结束后是否自动进行梯度保证金扣除，默认开启 传入1关闭
+	// 结束后是否自动进行梯度保证金扣除，默认1开启 传入0关闭
 	IsBidAutoPay *int64 `json:"IsBidAutoPay,omitnil,omitempty" name:"IsBidAutoPay"`
 }
 
@@ -4499,7 +4584,7 @@ func (r *SendPhoneEmailCodeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SetDomainAutoRenewRequestParams struct {
-	// 域名ID 例如：domain-123abc
+	// 域名ID 例如：domain-dwerewwq可通过DescribreDomainList接口获取
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// AutoRenew 有三个可选值：
@@ -4512,7 +4597,7 @@ type SetDomainAutoRenewRequestParams struct {
 type SetDomainAutoRenewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名ID 例如：domain-123abc
+	// 域名ID 例如：domain-dwerewwq可通过DescribreDomainList接口获取
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// AutoRenew 有三个可选值：
@@ -4574,14 +4659,14 @@ type SucDomainInfo struct {
 
 // Predefined struct for user
 type SyncCustomDnsHostRequestParams struct {
-	// 域名实例ID
+	// 域名实例ID，可以通过DescribeDomainList接口获取
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 }
 
 type SyncCustomDnsHostRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名实例ID
+	// 域名实例ID，可以通过DescribeDomainList接口获取
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 }
 
@@ -4633,7 +4718,12 @@ type TemplateInfo struct {
 	// 模板ID
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 认证状态：未实名认证:NotUpload, 实名审核中:InAudit，已实名认证:Approved，实名审核失败:Reject
+	// 认证状态:
+	// NotUpload: 未实名认证
+	// InAudit: 实名审核中
+	// Approved: 已实名认证
+	// Reject: 实名审核失败
+	// NotVerified: 实名信息待修改
 	AuditStatus *string `json:"AuditStatus,omitnil,omitempty" name:"AuditStatus"`
 
 	// 创建时间
@@ -4670,12 +4760,14 @@ type TemplateInfo struct {
 // Predefined struct for user
 type TransferInDomainBatchRequestParams struct {
 	// 转入的域名名称数组。
+	// 一次提交不大于4000个
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
 	// 域名转移码数组。
 	PassWords []*string `json:"PassWords,omitnil,omitempty" name:"PassWords"`
 
 	// 模板ID。
+	// 可通过DescribeTemplates接口获取
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 付费模式 0手动在线付费，1使用余额付费。
@@ -4711,12 +4803,14 @@ type TransferInDomainBatchRequest struct {
 	*tchttp.BaseRequest
 	
 	// 转入的域名名称数组。
+	// 一次提交不大于4000个
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
 	// 域名转移码数组。
 	PassWords []*string `json:"PassWords,omitnil,omitempty" name:"PassWords"`
 
 	// 模板ID。
+	// 可通过DescribeTemplates接口获取
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 付费模式 0手动在线付费，1使用余额付费。
@@ -4805,11 +4899,12 @@ func (r *TransferInDomainBatchResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type TransferProhibitionBatchRequestParams struct {
 	// 批量操作的域名。
+	// 一次提交不大于4000个
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
 	// 是否开启禁止域名转移。
-	// True: 开启禁止域名转移状态。
-	// False：关闭禁止域名转移状态。
+	// true: 开启禁止域名转移状态。
+	// false：关闭禁止域名转移状态。
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -4817,11 +4912,12 @@ type TransferProhibitionBatchRequest struct {
 	*tchttp.BaseRequest
 	
 	// 批量操作的域名。
+	// 一次提交不大于4000个
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
 	// 是否开启禁止域名转移。
-	// True: 开启禁止域名转移状态。
-	// False：关闭禁止域名转移状态。
+	// true: 开启禁止域名转移状态。
+	// false：关闭禁止域名转移状态。
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -4873,11 +4969,12 @@ func (r *TransferProhibitionBatchResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateProhibitionBatchRequestParams struct {
 	// 批量操作的域名。
+	// 一次提交不大于4000个
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
 	// 是否开启禁止域名更新。
-	// True:开启禁止域名更新状态。
-	// False：关闭禁止域名更新状态。
+	// true:开启禁止域名更新状态。
+	// false：关闭禁止域名更新状态。
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -4885,11 +4982,12 @@ type UpdateProhibitionBatchRequest struct {
 	*tchttp.BaseRequest
 	
 	// 批量操作的域名。
+	// 一次提交不大于4000个
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
 	// 是否开启禁止域名更新。
-	// True:开启禁止域名更新状态。
-	// False：关闭禁止域名更新状态。
+	// true:开启禁止域名更新状态。
+	// false：关闭禁止域名更新状态。
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 }
 

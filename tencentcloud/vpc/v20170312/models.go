@@ -23908,6 +23908,12 @@ type IPSECOptionsSpecification struct {
 }
 
 type ISPIPv6CidrBlock struct {
+	// IPv6 CIdr Block
+	IPv6CidrBlock *string `json:"IPv6CidrBlock,omitnil,omitempty" name:"IPv6CidrBlock"`
+
+	// 网络运营商类型 取值范围:'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调
+	ISPType *string `json:"ISPType,omitnil,omitempty" name:"ISPType"`
+
 	// IPv6 Cidr 的类型：`GUA`(全球单播地址), `ULA`(唯一本地地址)
 	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 }
@@ -24684,19 +24690,15 @@ type Ipv6SubnetCidrBlock struct {
 
 type ItemPrice struct {
 	// 按量计费后付费单价，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPrice *float64 `json:"UnitPrice,omitnil,omitempty" name:"UnitPrice"`
 
 	// 按量计费后付费计价单元，可取值范围： HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）： GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeUnit *string `json:"ChargeUnit,omitnil,omitempty" name:"ChargeUnit"`
 
 	// 预付费商品的原价，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalPrice *float64 `json:"OriginalPrice,omitnil,omitempty" name:"OriginalPrice"`
 
 	// 预付费商品的折扣价，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 }
 
@@ -30033,46 +30035,36 @@ type NatGateway struct {
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 绑定的专线网关ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DirectConnectGatewayIds []*string `json:"DirectConnectGatewayIds,omitnil,omitempty" name:"DirectConnectGatewayIds"`
 
 	// 所属子网ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 标签键值对。
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
 	// NAT网关绑定的安全组列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupSet []*string `json:"SecurityGroupSet,omitnil,omitempty" name:"SecurityGroupSet"`
 
 	// NAT网关的SNAT转发规则。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceIpTranslationNatRuleSet []*SourceIpTranslationNatRule `json:"SourceIpTranslationNatRuleSet,omitnil,omitempty" name:"SourceIpTranslationNatRuleSet"`
 
 	// 是否独享型NAT。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsExclusive *bool `json:"IsExclusive,omitnil,omitempty" name:"IsExclusive"`
 
 	// 独享型NAT所在的网关集群的带宽(单位:Mbps)，当IsExclusive为false时无此字段。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExclusiveGatewayBandwidth *uint64 `json:"ExclusiveGatewayBandwidth,omitnil,omitempty" name:"ExclusiveGatewayBandwidth"`
 
 	// NAT网关是否被封禁。“NORMAL”：未被封禁，“RESTRICTED”：已被封禁。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RestrictState *string `json:"RestrictState,omitnil,omitempty" name:"RestrictState"`
 
 	// NAT网关类型，1表示传统型NAT网关，2表示标准型NAT网关
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NatProductVersion *uint64 `json:"NatProductVersion,omitnil,omitempty" name:"NatProductVersion"`
 
 	// 是否启用根据目的网段选择SNAT使用的EIP功能	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SmartScheduleMode *bool `json:"SmartScheduleMode,omitnil,omitempty" name:"SmartScheduleMode"`
 
 	// NAT实例归属的专属集群id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 }
 
@@ -30110,15 +30102,12 @@ type NatGatewayDestinationIpPortTranslationNatRule struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// NAT网关的ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
 	// 私有网络VPC的ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// NAT网关转发规则创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 }
 
@@ -30625,15 +30614,12 @@ type PrivateIpAddressSpecification struct {
 
 type PrivateNatCrossDomainInfo struct {
 	// 跨域私网NAT关联的云联网ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
 	// 跨域私网NAT本端Vpc
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LocalVpcId *string `json:"LocalVpcId,omitnil,omitempty" name:"LocalVpcId"`
 
 	// 跨域私网NAT对端Vpc
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PeerVpcId *string `json:"PeerVpcId,omitnil,omitempty" name:"PeerVpcId"`
 }
 
@@ -30671,7 +30657,6 @@ type PrivateNatGateway struct {
 	NatGatewayName *string `json:"NatGatewayName,omitnil,omitempty" name:"NatGatewayName"`
 
 	// 私网网关关联`VPC`实例`ID`。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 私网网关当前状态。
@@ -30684,27 +30669,21 @@ type PrivateNatGateway struct {
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 标签键值对。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
 	// 专线网关唯一`ID`
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DirectConnectGatewayIds []*string `json:"DirectConnectGatewayIds,omitnil,omitempty" name:"DirectConnectGatewayIds"`
 
 	// 私网网关类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NatType *string `json:"NatType,omitnil,omitempty" name:"NatType"`
 
 	// 私网NAT跨域信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CrossDomainInfo *PrivateNatCrossDomainInfo `json:"CrossDomainInfo,omitnil,omitempty" name:"CrossDomainInfo"`
 
 	// 是否VPC型私网网关
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcType *bool `json:"VpcType,omitnil,omitempty" name:"VpcType"`
 
 	// 跨域私网NAT关联的云联网ID	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 }
 
@@ -33455,7 +33434,6 @@ type SourceIpTranslationNatRule struct {
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 资源类型，目前包含SUBNET、NETWORKINTERFACE、USERDEFINED
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 源IP/网段
@@ -33471,15 +33449,12 @@ type SourceIpTranslationNatRule struct {
 	NatGatewaySnatId *string `json:"NatGatewaySnatId,omitnil,omitempty" name:"NatGatewaySnatId"`
 
 	// NAT网关的ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NatGatewayId *string `json:"NatGatewayId,omitnil,omitempty" name:"NatGatewayId"`
 
 	// 私有网络VPC的ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// NAT网关SNAT规则创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 }
 
@@ -33786,21 +33761,17 @@ type SubnetInput struct {
 
 type Tag struct {
 	// 标签键
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 标签值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type Tags struct {
 	// 标签键
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 标签值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -34061,11 +34032,9 @@ type TranslationNatRule struct {
 	TranslationIp *string `json:"TranslationIp,omitnil,omitempty" name:"TranslationIp"`
 
 	// 转换规则描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 源`IP`,当转换规则类型为三层时有效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalIp *string `json:"OriginalIp,omitnil,omitempty" name:"OriginalIp"`
 
 	// 创建时间。

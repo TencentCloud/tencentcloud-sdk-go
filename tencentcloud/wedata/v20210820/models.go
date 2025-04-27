@@ -18714,6 +18714,119 @@ func (r *DescribeTemplateDimCountResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTenantProjectsRequestParams struct {
+	// 第几页
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 一页几条
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 是否展示关联执行组的信息。正常应该不是从项目列表里获取
+	DescribeExecutors *bool `json:"DescribeExecutors,omitnil,omitempty" name:"DescribeExecutors"`
+
+	// 是否展示项目管理员信息，减少默认返回的请求内容
+	DescribeAdminUsers *bool `json:"DescribeAdminUsers,omitnil,omitempty" name:"DescribeAdminUsers"`
+
+	// 统计项目人员数量。数据地图需求
+	DescribeMemberCount *bool `json:"DescribeMemberCount,omitnil,omitempty" name:"DescribeMemberCount"`
+
+	// 自定义条件查询
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+
+	// 默认不提供创建者信息，该参数与CAM交互比较耗时
+	DescribeCreator *bool `json:"DescribeCreator,omitnil,omitempty" name:"DescribeCreator"`
+
+	// 是否展示关联资源池信息
+	DescribeResourcePools *bool `json:"DescribeResourcePools,omitnil,omitempty" name:"DescribeResourcePools"`
+}
+
+type DescribeTenantProjectsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 第几页
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 一页几条
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 是否展示关联执行组的信息。正常应该不是从项目列表里获取
+	DescribeExecutors *bool `json:"DescribeExecutors,omitnil,omitempty" name:"DescribeExecutors"`
+
+	// 是否展示项目管理员信息，减少默认返回的请求内容
+	DescribeAdminUsers *bool `json:"DescribeAdminUsers,omitnil,omitempty" name:"DescribeAdminUsers"`
+
+	// 统计项目人员数量。数据地图需求
+	DescribeMemberCount *bool `json:"DescribeMemberCount,omitnil,omitempty" name:"DescribeMemberCount"`
+
+	// 自定义条件查询
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序字段
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+
+	// 默认不提供创建者信息，该参数与CAM交互比较耗时
+	DescribeCreator *bool `json:"DescribeCreator,omitnil,omitempty" name:"DescribeCreator"`
+
+	// 是否展示关联资源池信息
+	DescribeResourcePools *bool `json:"DescribeResourcePools,omitnil,omitempty" name:"DescribeResourcePools"`
+}
+
+func (r *DescribeTenantProjectsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTenantProjectsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "DescribeExecutors")
+	delete(f, "DescribeAdminUsers")
+	delete(f, "DescribeMemberCount")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	delete(f, "DescribeCreator")
+	delete(f, "DescribeResourcePools")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTenantProjectsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTenantProjectsResponseParams struct {
+	// 项目列表
+	Data *ProjectPage `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTenantProjectsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTenantProjectsResponseParams `json:"Response"`
+}
+
+func (r *DescribeTenantProjectsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTenantProjectsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeThirdTaskRunLogRequestParams struct {
 	// 任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -27250,6 +27363,28 @@ type ProjectBaseInfoOpsRequest struct {
 
 	// 是否admin
 	IsAdmin *bool `json:"IsAdmin,omitnil,omitempty" name:"IsAdmin"`
+}
+
+type ProjectPage struct {
+	// 分页页码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 数据源列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rows []*Project `json:"Rows,omitnil,omitempty" name:"Rows"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 总分页页码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPageNumber *uint64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
 }
 
 type ProjectUserRole struct {

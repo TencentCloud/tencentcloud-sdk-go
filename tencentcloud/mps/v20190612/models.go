@@ -9087,7 +9087,7 @@ func (r *DescribeSchedulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSmartSubtitleTemplatesRequestParams struct {
-	// 智能字幕模板唯一标识过滤条件，数组长度限制：10。
+	// 智能字幕模板唯一标识过滤条件，数组长度限制：100。
 	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
@@ -9108,7 +9108,7 @@ type DescribeSmartSubtitleTemplatesRequestParams struct {
 type DescribeSmartSubtitleTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 智能字幕模板唯一标识过滤条件，数组长度限制：10。
+	// 智能字幕模板唯一标识过滤条件，数组长度限制：100。
 	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
