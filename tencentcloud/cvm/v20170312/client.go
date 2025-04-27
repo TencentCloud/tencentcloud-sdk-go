@@ -4238,7 +4238,7 @@ func NewEnterRescueModeResponse() (response *EnterRescueModeResponse) {
 }
 
 // EnterRescueMode
-// 进入救援模式
+// 本接口（EnterRescueMode）用于进入救援模式。
 //
 // 可能返回的错误码:
 //  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
@@ -4271,7 +4271,7 @@ func (c *Client) EnterRescueMode(request *EnterRescueModeRequest) (response *Ent
 }
 
 // EnterRescueMode
-// 进入救援模式
+// 本接口（EnterRescueMode）用于进入救援模式。
 //
 // 可能返回的错误码:
 //  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"

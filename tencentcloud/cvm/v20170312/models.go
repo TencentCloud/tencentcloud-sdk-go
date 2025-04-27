@@ -4927,10 +4927,10 @@ type EnhancedService struct {
 
 // Predefined struct for user
 type EnterRescueModeRequestParams struct {
-	// 需要进入救援模式的实例id
+	// 需要进入救援模式的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 救援模式下系统密码
+	// 救援模式下系统密码。不同操作系统类型密码复杂度限制不一样，具体如下：<li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。</li><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]中的特殊符号。</li>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 救援模式下系统用户名
@@ -4948,10 +4948,10 @@ type EnterRescueModeRequestParams struct {
 type EnterRescueModeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要进入救援模式的实例id
+	// 需要进入救援模式的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 救援模式下系统密码
+	// 救援模式下系统密码。不同操作系统类型密码复杂度限制不一样，具体如下：<li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。</li><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]中的特殊符号。</li>
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 救援模式下系统用户名
@@ -5333,10 +5333,14 @@ type Image struct {
 	// 镜像操作系统
 	OsName *string `json:"OsName,omitnil,omitempty" name:"OsName"`
 
-	// 镜像类型
+	// 镜像类型。镜像类型返回值包括：
+	// * `PUBLIC_IMAGE` 公共镜像
+	// * `PRIVATE_IMAGE` 自定义镜像
+	// * `SHARED_IMAGE` 共享镜像
 	ImageType *string `json:"ImageType,omitnil,omitempty" name:"ImageType"`
 
-	// 镜像创建时间
+	// 镜像创建时间。
+	// 按照 ISO8601 标准表示，并且使用 UTC 时间，格式为：YYYY-MM-DDThh:mm:ssZ。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 镜像名称
@@ -5345,10 +5349,13 @@ type Image struct {
 	// 镜像描述
 	ImageDescription *string `json:"ImageDescription,omitnil,omitempty" name:"ImageDescription"`
 
-	// 镜像大小
+	// 镜像大小，单位 GiB。
 	ImageSize *int64 `json:"ImageSize,omitnil,omitempty" name:"ImageSize"`
 
-	// 镜像架构
+	// 镜像架构。镜像架构返回值包括：
+	// * `x86_64`
+	// * `arm`
+	// * `i386`
 	Architecture *string `json:"Architecture,omitnil,omitempty" name:"Architecture"`
 
 	// 镜像状态:
@@ -5367,7 +5374,10 @@ type Image struct {
 	// 镜像创建者
 	ImageCreator *string `json:"ImageCreator,omitnil,omitempty" name:"ImageCreator"`
 
-	// 镜像来源
+	// 镜像来源。镜像来源返回值包括：
+	// * `OFFICIAL` 官方镜像
+	// * `CREATE_IMAGE` 用户自建镜像
+	// * `EXTERNAL_IMPORT` 用户外部导入镜像
 	ImageSource *string `json:"ImageSource,omitnil,omitempty" name:"ImageSource"`
 
 	// 同步百分比
@@ -5383,7 +5393,9 @@ type Image struct {
 	// 镜像关联的标签列表。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 镜像许可类型
+	// 镜像许可类型。镜像许可类型返回值包括：
+	// * `TencentCloud` 腾讯云官方许可
+	// * `BYOL` 用户自带许可
 	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
 	// 镜像族
@@ -5391,6 +5403,9 @@ type Image struct {
 
 	// 镜像是否废弃
 	ImageDeprecated *bool `json:"ImageDeprecated,omitnil,omitempty" name:"ImageDeprecated"`
+
+	// CDC镜像缓存状态
+	CdcCacheStatus *string `json:"CdcCacheStatus,omitnil,omitempty" name:"CdcCacheStatus"`
 }
 
 type ImageOsList struct {
@@ -8529,10 +8544,10 @@ type RebootInstancesRequestParams struct {
 	// 一个或多个待操作的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 本参数已弃用，推荐使用StopType，不可以与参数StopType同时使用。表示是否在正常重启失败后选择强制重启实例。取值范围：<br><li>true：表示在正常重启失败后进行强制重启<br><li>false：表示在正常重启失败后不进行强制重启<br><br>默认取值：false。
+	// 本参数已弃用，推荐使用StopType，不可以与参数StopType同时使用。表示是否在正常重启失败后选择强制重启实例。取值范围：<br><li>true：表示在正常重启失败后进行强制重启</li><li>false：表示在正常重启失败后不进行强制重启</li><br>默认取值：false。
 	ForceReboot *bool `json:"ForceReboot,omitnil,omitempty" name:"ForceReboot"`
 
-	// 关机类型。取值范围：<br><li>SOFT：表示软关机<br><li>HARD：表示硬关机<br><li>SOFT_FIRST：表示优先软关机，失败再执行硬关机<br><br>默认取值：SOFT。
+	// 关机类型。取值范围：<br><li>SOFT：表示软关机</li><li>HARD：表示硬关机</li><li>SOFT_FIRST：表示优先软关机，失败再执行硬关机</li><br>默认取值：SOFT。
 	StopType *string `json:"StopType,omitnil,omitempty" name:"StopType"`
 }
 
@@ -8542,10 +8557,10 @@ type RebootInstancesRequest struct {
 	// 一个或多个待操作的实例ID。可通过 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 本参数已弃用，推荐使用StopType，不可以与参数StopType同时使用。表示是否在正常重启失败后选择强制重启实例。取值范围：<br><li>true：表示在正常重启失败后进行强制重启<br><li>false：表示在正常重启失败后不进行强制重启<br><br>默认取值：false。
+	// 本参数已弃用，推荐使用StopType，不可以与参数StopType同时使用。表示是否在正常重启失败后选择强制重启实例。取值范围：<br><li>true：表示在正常重启失败后进行强制重启</li><li>false：表示在正常重启失败后不进行强制重启</li><br>默认取值：false。
 	ForceReboot *bool `json:"ForceReboot,omitnil,omitempty" name:"ForceReboot"`
 
-	// 关机类型。取值范围：<br><li>SOFT：表示软关机<br><li>HARD：表示硬关机<br><li>SOFT_FIRST：表示优先软关机，失败再执行硬关机<br><br>默认取值：SOFT。
+	// 关机类型。取值范围：<br><li>SOFT：表示软关机</li><li>HARD：表示硬关机</li><li>SOFT_FIRST：表示优先软关机，失败再执行硬关机</li><br>默认取值：SOFT。
 	StopType *string `json:"StopType,omitnil,omitempty" name:"StopType"`
 }
 
@@ -9931,7 +9946,7 @@ type Snapshot struct {
 	// DATA_DISK：数据盘。
 	DiskUsage *string `json:"DiskUsage,omitnil,omitempty" name:"DiskUsage"`
 
-	// 创建此快照的云硬盘大小，单位GB。
+	// 创建此快照的云硬盘大小，单位 GiB。
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 }
 
