@@ -3060,14 +3060,12 @@ type CtsdbParam struct {
 
 type CvmAndIpInfo struct {
 	// ckafka集群实例Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CkafkaInstanceId *string `json:"CkafkaInstanceId,omitnil,omitempty" name:"CkafkaInstanceId"`
 
 	// CVM实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// IP地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 }
 
@@ -8499,11 +8497,9 @@ type KafkaParam struct {
 
 type ListCvmAndIpInfoRsp struct {
 	// cvm和IP 列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CvmList []*CvmAndIpInfo `json:"CvmList,omitnil,omitempty" name:"CvmList"`
 
 	// 实例数据量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 

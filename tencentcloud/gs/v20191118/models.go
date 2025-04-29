@@ -63,8 +63,11 @@ type AndroidAppVersionInfo struct {
 	// 安卓应用版本创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+	// shell 安装命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+	UninstallCommand *string `json:"UninstallCommand,omitnil,omitempty" name:"UninstallCommand"`
 }
 
 type AndroidInstance struct {
@@ -527,8 +530,11 @@ type CreateAndroidAppVersionRequestParams struct {
 	// 应用包下载地址
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
-	// shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+	// 应用 shell 安装命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// 应用 shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+	UninstallCommand *string `json:"UninstallCommand,omitnil,omitempty" name:"UninstallCommand"`
 }
 
 type CreateAndroidAppVersionRequest struct {
@@ -540,8 +546,11 @@ type CreateAndroidAppVersionRequest struct {
 	// 应用包下载地址
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
-	// shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+	// 应用 shell 安装命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// 应用 shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+	UninstallCommand *string `json:"UninstallCommand,omitnil,omitempty" name:"UninstallCommand"`
 }
 
 func (r *CreateAndroidAppVersionRequest) ToJsonString() string {
@@ -559,6 +568,7 @@ func (r *CreateAndroidAppVersionRequest) FromJsonString(s string) error {
 	delete(f, "AndroidAppId")
 	delete(f, "DownloadUrl")
 	delete(f, "Command")
+	delete(f, "UninstallCommand")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndroidAppVersionRequest has unknown keys!", "")
 	}
@@ -2464,8 +2474,11 @@ type ModifyAndroidAppVersionRequestParams struct {
 	// 安卓应用版本名称
 	AndroidAppVersionName *string `json:"AndroidAppVersionName,omitnil,omitempty" name:"AndroidAppVersionName"`
 
-	// shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+	// 应用 shell 安装命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// 应用 shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+	UninstallCommand *string `json:"UninstallCommand,omitnil,omitempty" name:"UninstallCommand"`
 }
 
 type ModifyAndroidAppVersionRequest struct {
@@ -2480,8 +2493,11 @@ type ModifyAndroidAppVersionRequest struct {
 	// 安卓应用版本名称
 	AndroidAppVersionName *string `json:"AndroidAppVersionName,omitnil,omitempty" name:"AndroidAppVersionName"`
 
-	// shell 命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+	// 应用 shell 安装命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// 应用 shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+	UninstallCommand *string `json:"UninstallCommand,omitnil,omitempty" name:"UninstallCommand"`
 }
 
 func (r *ModifyAndroidAppVersionRequest) ToJsonString() string {
@@ -2500,6 +2516,7 @@ func (r *ModifyAndroidAppVersionRequest) FromJsonString(s string) error {
 	delete(f, "AndroidAppVersion")
 	delete(f, "AndroidAppVersionName")
 	delete(f, "Command")
+	delete(f, "UninstallCommand")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAndroidAppVersionRequest has unknown keys!", "")
 	}

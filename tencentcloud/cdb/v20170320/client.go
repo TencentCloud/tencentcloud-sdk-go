@@ -417,7 +417,7 @@ func NewCheckMigrateClusterResponse() (response *CheckMigrateClusterResponse) {
 }
 
 // CheckMigrateCluster
-// 本接口（CheckMigrateCluster）用于高可用实例一键迁移到集群版校验。
+// 本接口（CheckMigrateCluster）用于高可用实例一键迁移到云盘版校验。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
@@ -432,7 +432,7 @@ func (c *Client) CheckMigrateCluster(request *CheckMigrateClusterRequest) (respo
 }
 
 // CheckMigrateCluster
-// 本接口（CheckMigrateCluster）用于高可用实例一键迁移到集群版校验。
+// 本接口（CheckMigrateCluster）用于高可用实例一键迁移到云盘版校验。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
@@ -4445,7 +4445,7 @@ func NewDescribeClusterInfoResponse() (response *DescribeClusterInfoResponse) {
 }
 
 // DescribeClusterInfo
-// 本接口（DescribeClusterInfo）用于查询集群版实例信息。
+// 本接口（DescribeClusterInfo）用于查询云盘版实例信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
@@ -4456,7 +4456,7 @@ func (c *Client) DescribeClusterInfo(request *DescribeClusterInfoRequest) (respo
 }
 
 // DescribeClusterInfo
-// 本接口（DescribeClusterInfo）用于查询集群版实例信息。
+// 本接口（DescribeClusterInfo）用于查询云盘版实例信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"

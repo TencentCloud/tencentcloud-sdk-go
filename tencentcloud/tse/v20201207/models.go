@@ -424,6 +424,9 @@ type CloudNativeAPIGatewayConfig struct {
 
 	// 网络 id
 	NetworkId *string `json:"NetworkId,omitnil,omitempty" name:"NetworkId"`
+
+	// 是否为新 ipv6 CLB
+	IPV6FullChain *bool `json:"IPV6FullChain,omitnil,omitempty" name:"IPV6FullChain"`
 }
 
 type CloudNativeAPIGatewayNode struct {
@@ -11320,6 +11323,12 @@ type NativeGatewayServerGroup struct {
 
 	// 弹性节点
 	ElasticNumber *uint64 `json:"ElasticNumber,omitnil,omitempty" name:"ElasticNumber"`
+
+	// 是否支持TOA
+	SupportTOA *bool `json:"SupportTOA,omitnil,omitempty" name:"SupportTOA"`
+
+	// 是否支持IPV6
+	SupportIPV6 *bool `json:"SupportIPV6,omitnil,omitempty" name:"SupportIPV6"`
 }
 
 type NativeGatewayServerGroups struct {

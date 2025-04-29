@@ -1994,6 +1994,9 @@ type DescribeUserProjectListRequestParams struct {
 
 	// 是否过滤掉当前用户
 	IsFilterCurrentUser *bool `json:"IsFilterCurrentUser,omitnil,omitempty" name:"IsFilterCurrentUser"`
+
+	// 关键字
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 }
 
 type DescribeUserProjectListRequest struct {
@@ -2016,6 +2019,9 @@ type DescribeUserProjectListRequest struct {
 
 	// 是否过滤掉当前用户
 	IsFilterCurrentUser *bool `json:"IsFilterCurrentUser,omitnil,omitempty" name:"IsFilterCurrentUser"`
+
+	// 关键字
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 }
 
 func (r *DescribeUserProjectListRequest) ToJsonString() string {
@@ -2036,6 +2042,7 @@ func (r *DescribeUserProjectListRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "IsFilterPerAuthUser")
 	delete(f, "IsFilterCurrentUser")
+	delete(f, "Keyword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserProjectListRequest has unknown keys!", "")
 	}

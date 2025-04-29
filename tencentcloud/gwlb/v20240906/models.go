@@ -153,11 +153,9 @@ func (r *CreateGatewayLoadBalancerRequest) FromJsonString(s string) error {
 type CreateGatewayLoadBalancerResponseParams struct {
 	// 由网关负载均衡实例唯一 ID 组成的数组。
 	// 存在某些场景，如创建出现延迟时，此字段可能返回为空；此时可以根据接口返回的RequestId或DealName参数，通过[DescribeTaskStatus](https://cloud.tencent.com/document/api/1782/111700)接口查询创建的资源ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
 	// 订单号。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1116,11 +1114,9 @@ func (r *InquirePriceCreateGatewayLoadBalancerResponse) FromJsonString(s string)
 
 type ItemPrice struct {
 	// 后付费单价，单位：元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPrice *float64 `json:"UnitPrice,omitnil,omitempty" name:"UnitPrice"`
 
 	// 后付费计价单元，可取值范围： HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChargeUnit *string `json:"ChargeUnit,omitnil,omitempty" name:"ChargeUnit"`
 
 	// 预支费用的原价，单位：元。
@@ -1132,11 +1128,9 @@ type ItemPrice struct {
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 
 	// 后付费的折扣单价，单位:元。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPriceDiscount *float64 `json:"UnitPriceDiscount,omitnil,omitempty" name:"UnitPriceDiscount"`
 
 	// 折扣，如20.0代表2折。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Discount *float64 `json:"Discount,omitnil,omitempty" name:"Discount"`
 }
 
@@ -1346,11 +1340,9 @@ func (r *ModifyTargetGroupInstancesWeightResponse) FromJsonString(s string) erro
 
 type Price struct {
 	// 描述了实例价格。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstancePrice *ItemPrice `json:"InstancePrice,omitnil,omitempty" name:"InstancePrice"`
 
 	// 描述了GLCU的价格。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LcuPrice *ItemPrice `json:"LcuPrice,omitnil,omitempty" name:"LcuPrice"`
 }
 
@@ -1448,19 +1440,15 @@ type TargetGroupBackend struct {
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
 	// 后端服务的外网 IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicIpAddresses []*string `json:"PublicIpAddresses,omitnil,omitempty" name:"PublicIpAddresses"`
 
 	// 后端服务的内网 IP
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitnil,omitempty" name:"PrivateIpAddresses"`
 
 	// 后端服务的实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 后端服务被绑定的时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegisteredTime *string `json:"RegisteredTime,omitnil,omitempty" name:"RegisteredTime"`
 
 	// 弹性网卡唯一ID

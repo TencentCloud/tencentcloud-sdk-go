@@ -1321,10 +1321,10 @@ type CheckMigrateClusterRequestParams struct {
 	// 磁盘类型。 CLOUD_SSD: SSD云硬盘; CLOUD_HSSD: 增强型SSD云硬盘
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 集群版节点拓扑配置。
+	// 云盘版节点拓扑配置。
 	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
 
-	// 迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 标准型集群版实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 加强型集群版实例。
+	// 迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 标准型云盘版实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 加强型云盘版实例。
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
 	// 只读实例信息
@@ -1349,10 +1349,10 @@ type CheckMigrateClusterRequest struct {
 	// 磁盘类型。 CLOUD_SSD: SSD云硬盘; CLOUD_HSSD: 增强型SSD云硬盘
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 集群版节点拓扑配置。
+	// 云盘版节点拓扑配置。
 	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
 
-	// 迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 标准型集群版实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 加强型集群版实例。
+	// 迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 标准型云盘版实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 加强型云盘版实例。
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
 	// 只读实例信息
@@ -6829,13 +6829,13 @@ type DescribeClusterInfoResponseParams struct {
 	// 实例名称。
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 集群读写地址信息。
+	// 云盘版实例的读写地址信息。
 	ReadWriteAddress *AddressInfo `json:"ReadWriteAddress,omitnil,omitempty" name:"ReadWriteAddress"`
 
-	// 集群只读地址信息。
+	// 云盘版实例的只读地址信息。
 	ReadOnlyAddress []*AddressInfo `json:"ReadOnlyAddress,omitnil,omitempty" name:"ReadOnlyAddress"`
 
-	// 集群节点列表信息。
+	// 云盘版实例的节点列表信息。
 	NodeList []*ClusterNodeInfo `json:"NodeList,omitnil,omitempty" name:"NodeList"`
 
 	// 只读空间保护阈值,单位GB

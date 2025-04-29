@@ -5360,6 +5360,7 @@ type GetWsTokenRequestParams struct {
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
 	// 访客ID（外部输入，建议唯一，标识当前接入会话的用户）
+	// 长度限制： string(64)
 	VisitorBizId *string `json:"VisitorBizId,omitnil,omitempty" name:"VisitorBizId"`
 
 	// 知识标签，用于知识库中知识的检索过滤。该字段即将下线，请使用对话端接口中的 custom_variables 字段替代该字段。
@@ -5376,6 +5377,7 @@ type GetWsTokenRequest struct {
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
 	// 访客ID（外部输入，建议唯一，标识当前接入会话的用户）
+	// 长度限制： string(64)
 	VisitorBizId *string `json:"VisitorBizId,omitnil,omitempty" name:"VisitorBizId"`
 
 	// 知识标签，用于知识库中知识的检索过滤。该字段即将下线，请使用对话端接口中的 custom_variables 字段替代该字段。
