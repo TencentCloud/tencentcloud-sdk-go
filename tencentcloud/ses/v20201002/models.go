@@ -2085,6 +2085,9 @@ type SendEmailRequestParams struct {
 
 	// smtp头中可以设置的其它字段
 	SmtpHeaders *string `json:"SmtpHeaders,omitnil,omitempty" name:"SmtpHeaders"`
+
+	// smtp头中的from字段，建议域名与FromEmailAddress保持一致
+	HeaderFrom *string `json:"HeaderFrom,omitnil,omitempty" name:"HeaderFrom"`
 }
 
 type SendEmailRequest struct {
@@ -2130,6 +2133,9 @@ type SendEmailRequest struct {
 
 	// smtp头中可以设置的其它字段
 	SmtpHeaders *string `json:"SmtpHeaders,omitnil,omitempty" name:"SmtpHeaders"`
+
+	// smtp头中的from字段，建议域名与FromEmailAddress保持一致
+	HeaderFrom *string `json:"HeaderFrom,omitnil,omitempty" name:"HeaderFrom"`
 }
 
 func (r *SendEmailRequest) ToJsonString() string {
@@ -2157,6 +2163,7 @@ func (r *SendEmailRequest) FromJsonString(s string) error {
 	delete(f, "TriggerType")
 	delete(f, "SmtpMessageId")
 	delete(f, "SmtpHeaders")
+	delete(f, "HeaderFrom")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendEmailRequest has unknown keys!", "")
 	}

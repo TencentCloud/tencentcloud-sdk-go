@@ -51,6 +51,77 @@ type ApplicationInfo struct {
 }
 
 // Predefined struct for user
+type CreateApplicationRequestParams struct {
+	// 需要制作自定义应用的HAI实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 自定义应用的应用名称
+	ApplicationName *string `json:"ApplicationName,omitnil,omitempty" name:"ApplicationName"`
+
+	// 自定义应用的描述
+	ApplicationDescription *string `json:"ApplicationDescription,omitnil,omitempty" name:"ApplicationDescription"`
+}
+
+type CreateApplicationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要制作自定义应用的HAI实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 自定义应用的应用名称
+	ApplicationName *string `json:"ApplicationName,omitnil,omitempty" name:"ApplicationName"`
+
+	// 自定义应用的描述
+	ApplicationDescription *string `json:"ApplicationDescription,omitnil,omitempty" name:"ApplicationDescription"`
+}
+
+func (r *CreateApplicationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateApplicationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ApplicationName")
+	delete(f, "ApplicationDescription")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApplicationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateApplicationResponseParams struct {
+	// HAI自定义应用ID
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateApplicationResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateApplicationResponseParams `json:"Response"`
+}
+
+func (r *CreateApplicationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateApplicationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateMuskPromptRequestParams struct {
 	// workgroup id
 	WorkgroupId *string `json:"WorkgroupId,omitnil,omitempty" name:"WorkgroupId"`

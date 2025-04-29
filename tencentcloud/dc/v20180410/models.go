@@ -22,14 +22,14 @@ import (
 
 // Predefined struct for user
 type AcceptDirectConnectTunnelRequestParams struct {
-	// 专用通道ID。可以通过[DescribeDirectConnectTunnel](https://cloud.tencent.com/document/product/216/19819)接口获取。
+	// 专用通道ID。可以通过[DescribeDirectConnectTunnels](https://cloud.tencent.com/document/product/216/19819)接口获取。
 	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitnil,omitempty" name:"DirectConnectTunnelId"`
 }
 
 type AcceptDirectConnectTunnelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 专用通道ID。可以通过[DescribeDirectConnectTunnel](https://cloud.tencent.com/document/product/216/19819)接口获取。
+	// 专用通道ID。可以通过[DescribeDirectConnectTunnels](https://cloud.tencent.com/document/product/216/19819)接口获取。
 	DirectConnectTunnelId *string `json:"DirectConnectTunnelId,omitnil,omitempty" name:"DirectConnectTunnelId"`
 }
 
@@ -212,7 +212,7 @@ type BGPStatus struct {
 
 type BgpPeer struct {
 	// 腾讯侧BGP ASN
-	CloudAsn *string `json:"CloudAsn,omitnil,omitempty" name:"CloudAsn"`
+	CloudAsn *int64 `json:"CloudAsn,omitnil,omitempty" name:"CloudAsn"`
 
 	// 用户侧BGP ASN
 	Asn *int64 `json:"Asn,omitnil,omitempty" name:"Asn"`
@@ -386,7 +386,7 @@ type CreateDirectConnectRequestParams struct {
 	DirectConnectName *string `json:"DirectConnectName,omitnil,omitempty" name:"DirectConnectName"`
 
 	// 物理专线所在的接入点。
-	// 您可以通过调用 DescribeAccessPoints接口获取地域ID。所选择的接入点必须存在且处于可接入的状态。
+	// 您可以通过调用[DescribeAccessPoints](https://cloud.tencent.com/document/product/216/34827)接口获取接入点ID。
 	AccessPointId *string `json:"AccessPointId,omitnil,omitempty" name:"AccessPointId"`
 
 	// 提供接入物理专线的运营商。
@@ -456,7 +456,7 @@ type CreateDirectConnectRequest struct {
 	DirectConnectName *string `json:"DirectConnectName,omitnil,omitempty" name:"DirectConnectName"`
 
 	// 物理专线所在的接入点。
-	// 您可以通过调用 DescribeAccessPoints接口获取地域ID。所选择的接入点必须存在且处于可接入的状态。
+	// 您可以通过调用[DescribeAccessPoints](https://cloud.tencent.com/document/product/216/34827)接口获取接入点ID。
 	AccessPointId *string `json:"AccessPointId,omitnil,omitempty" name:"AccessPointId"`
 
 	// 提供接入物理专线的运营商。
@@ -891,8 +891,7 @@ func (r *DeleteDirectConnectTunnelResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccessPointsRequestParams struct {
-	// 接入点所在的地域。使用DescribeRegions查询。
-	// 您可以通过调用 DescribeRegions接口获取地域ID。
+	// 接入点所在的地域。你可以通过调用[DescribeRegions](https://cloud.tencent.com/document/product/1596/77930)接口获取地域ID。
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
 	// 偏移量，默认为0。
@@ -908,8 +907,7 @@ type DescribeAccessPointsRequestParams struct {
 type DescribeAccessPointsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 接入点所在的地域。使用DescribeRegions查询。
-	// 您可以通过调用 DescribeRegions接口获取地域ID。
+	// 接入点所在的地域。你可以通过调用[DescribeRegions](https://cloud.tencent.com/document/product/1596/77930)接口获取地域ID。
 	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
 
 	// 偏移量，默认为0。
@@ -1120,7 +1118,7 @@ func (r *DescribeDirectConnectTunnelsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDirectConnectsRequestParams struct {
-	// 过滤条件。
+	// 过滤条件。direct-connect-id：物理专线ID，states：物理专线状态（AVAILABLE-就绪，PENDING-申请中，REJECTED-申请被拒绝，PENDINGPAY-待付款，PAID-付款完成，BUILDING-建设中，STOPED-建设终止，DELETED-删除完成）。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 物理专线 ID数组。
@@ -1136,7 +1134,7 @@ type DescribeDirectConnectsRequestParams struct {
 type DescribeDirectConnectsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件。
+	// 过滤条件。direct-connect-id：物理专线ID，states：物理专线状态（AVAILABLE-就绪，PENDING-申请中，REJECTED-申请被拒绝，PENDINGPAY-待付款，PAID-付款完成，BUILDING-建设中，STOPED-建设终止，DELETED-删除完成）。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 物理专线 ID数组。
@@ -1594,6 +1592,9 @@ type DirectConnect struct {
 
 	// 物理专线的接入点名称
 	AccessPointName *string `json:"AccessPointName,omitnil,omitempty" name:"AccessPointName"`
+
+	// 是否三层架构
+	IsThreeArch *bool `json:"IsThreeArch,omitnil,omitempty" name:"IsThreeArch"`
 }
 
 type DirectConnectTunnel struct {

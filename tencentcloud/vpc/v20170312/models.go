@@ -16158,7 +16158,6 @@ func (r *DescribeNatGatewaySourceIpTranslationNatRulesRequest) FromJsonString(s 
 // Predefined struct for user
 type DescribeNatGatewaySourceIpTranslationNatRulesResponseParams struct {
 	// NAT网关SNAT规则对象数组。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceIpTranslationNatRuleSet []*SourceIpTranslationNatRule `json:"SourceIpTranslationNatRuleSet,omitnil,omitempty" name:"SourceIpTranslationNatRuleSet"`
 
 	// 符合条件的NAT网关端口转发规则对象数目。

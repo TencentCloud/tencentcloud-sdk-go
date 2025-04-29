@@ -2835,16 +2835,31 @@ func (r *DescribePreDomainListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePreReleaseListRequestParams struct {
-	// 关键词
+	// 单独使用Keywords：使用域名关键词进行搜索
+	// Keywords+DomainStart（true）：使用域名开头关键词进行搜索
+	// Keywords+DomainEnd（true）：使用域名结尾关键词进行搜索
+	// Keywords+DomainStart（true）+DomainEnd（true）：使用域名开头或结尾关键词进行搜索
 	Keywords *string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
-	// 搜索关键字，开头
+	// 是否以域名开头关键词进行搜索
+	// true：是
+	// false：否
 	DomainStart *bool `json:"DomainStart,omitnil,omitempty" name:"DomainStart"`
 
-	// 搜索关键字结尾
+	// 是否以域名结尾关键词进行搜索
+	// true：是
+	// false：否
 	DomainEnd *bool `json:"DomainEnd,omitnil,omitempty" name:"DomainEnd"`
 
-	// 排序
+	// 不同排序规则：
+	// 1： 价格升序
+	// 2： 价格降序
+	// 3： 域名升序
+	// 4： 结束时间升序
+	// 5： 店铺推荐升序
+	// 6： 结束时间降序
+	// 15:  创建时间升序
+	// 其他：结束时间升序
 	Sort *int64 `json:"Sort,omitnil,omitempty" name:"Sort"`
 
 	// 起始价格
@@ -2859,62 +2874,201 @@ type DescribePreReleaseListRequestParams struct {
 	// 结束域名长度
 	LengthEnd *int64 `json:"LengthEnd,omitnil,omitempty" name:"LengthEnd"`
 
-	// 页码
+	// 页码（默认为1）
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页显示数
+	// 每页显示数（默认为20）
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 后缀
+	// 1="com"
+	// 2="net"
+	// 4="biz"
+	// 6="info"
+	// 7="co"
+	// 9="cn"
+	// 10="com.cn"
+	// 11="wang"
+	// 12="vip"
+	// 13="cc"
+	// 14="net.cn"
+	// 15="org.cn"
+	// 16="top"
+	// 17="asia"
+	// 18="tv"
+	// 19="club"
+	// 20="shop"
+	// 21 ="中国"
+	// 23="online"
+	// 24="xyz"
+	// 25="网店"
+	// 26="网址"
+	// 27="在线"
+	// 28="ltd"
+	// 29="fans"
+	// 30="ren"
+	// 31="icu"
 	Suffix []*int64 `json:"Suffix,omitnil,omitempty" name:"Suffix"`
 
 	// 一级分类
+	// 1:"纯数字"
+	// 2:"单数字"
+	// 3:"双数字"
+	// 4:"三数字"
+	// 5:"四数字"
+	// 6:"五数字"
+	// 7:"六数字"
+	// 9:"单字母"
+	// 10:"双字母"
+	// 11:"三字母"
+	// 12:"四字母"
+	// 13:"五字母"
+	// 14:"单拼"
+	// 15:"双拼"
+	// 16:"三拼"
+	// 17:"杂米"
+	// 18:"两杂"
+	// 19:"三杂"
+	// 20:"四杂"
 	ClassOne *int64 `json:"ClassOne,omitnil,omitempty" name:"ClassOne"`
 
 	// 二级分类
+	// 13:"0开或带4"
+	// 14:"非0开不带4"
+	// 15:"不带0,4"
+	// 0:"非全声母"
+	// 6:"全声母"
+	// 16:"不带0,4"
+	// 32:"全声母"
+	// 5010:"CVCV"
 	ClassTwo []*int64 `json:"ClassTwo,omitnil,omitempty" name:"ClassTwo"`
 
 	// 三级分类
+	// 111:"AAA"
+	// 401:"3A及以上"
+	// 402:"AA结尾"
+	// 1122:"AABB"
+	// 1123:"AABC"
+	// 1212:"ABAB"
+	// 1221:"ABBA"
+	// 1233:"ABCC"
+	// 501:"4A及以上"
+	// 502:"3A及以上"
+	// 503:"AAA开头"
+	// 504:"AAA结尾"
+	// 505:"AA开头"
+	// 506:"AA结尾"
+	// 507:"三顺子开头"
+	// 508:"三顺子结尾"
+	// 11223:"AABBC"
+	// 12233:"ABBCC"
+	// 601:"5A及以上"
+	// 602:"4A及以上"
+	// 603:"3A及以上"
+	// 604:"4A开头"
+	// 605:"4A结尾"
+	// 606:"AAA开头"
+	// 607:"AAA结尾"
+	// 608:"AA开头"
+	// 609:"AA结尾"
+	// 610:"ABAB开头"
+	// 611:"ABAB结尾"
+	// 612:"AABB开头"
+	// 613:"AABB结尾"
+	// 614:"四顺子开头"
+	// 615:"四顺子结尾"
+	// 616:"三顺子开头"
+	// 617:"三顺子结尾"
+	// 121212:"ABABAB"
+	// 112233:"AABBCC"
+	// 123123:"ABCABC"
+	// 211:"LNN"
+	// 221:"LLN"
+	// 121:"NLN"
+	// 212:"LNL"
+	// 122:"NLL"
+	// 1112:"NNNL"
+	// 2111:"LNNN"
+	// 1212:"NLNL"
+	// 2121:"LNLN"
+	// 1222:"NLLL"
+	// 2221:"LLLN"
+	// 1122:"NNLL"
+	// 2211:"LLNN"
+	// 31:"W结尾"
+	// 112:"AAB"
+	// 122:"ABB"
+	// 121:"ABA"
+	// 41:"W结尾"
+	// 1112:"AAAB"
+	// 1222:"ABBB"
+	// 1122:"AABB"
+	// 1212:"ABAB"
 	ClassThree []*int64 `json:"ClassThree,omitnil,omitempty" name:"ClassThree"`
 
 	// 四级分类
+	// 1:"仅含2种数字"
+	// 1:"仅含2种数字"
+	// 2:"仅含3种数字"
+	// 4:"仅含1种字母"
+	// 8:"仅含1种数字"
 	ClassFour []*int64 `json:"ClassFour,omitnil,omitempty" name:"ClassFour"`
 
-	// 排除关键字，开头
+	// 是否以域名开头排除关键词进行搜索
 	FilterStart *bool `json:"FilterStart,omitnil,omitempty" name:"FilterStart"`
 
-	// 排除关键字，结尾
+	// 是否以域名结尾排除关键词进行搜索
 	FilterEnd *bool `json:"FilterEnd,omitnil,omitempty" name:"FilterEnd"`
 
-	// 排除关键字
+	// 域名排除关键词
+	// 单独使用FilterWords：使用排除关键词进行搜索
+	// FilterWords+FilterStart（true）：使用域名开头排除关键词进行搜索
+	// FilterWords+FilterEnd（true）：使用域名结尾排除关键词进行搜索
+	// FilterWords+FilterStart（true）+FilterEnd（true）：使用域名开头或结尾排除关键词进行搜索
 	FilterWords *string `json:"FilterWords,omitnil,omitempty" name:"FilterWords"`
 
-	// 交易类型
+	// 交易类型（目前只支持10）
+	// 10: 预释放域名
 	TransType *int64 `json:"TransType,omitnil,omitempty" name:"TransType"`
 
-	// 搜索白金域名
+	// 是否搜索白金域名
 	IsTop *bool `json:"IsTop,omitnil,omitempty" name:"IsTop"`
 
-	// 结束时间排序啊 desc:倒序 asc:正序
+	// 结束时间排序 desc:倒序 asc:正序
 	EndTimeSort *string `json:"EndTimeSort,omitnil,omitempty" name:"EndTimeSort"`
 
-	// 结束时间
+	// 结束时间（YYYY-MM-DD）
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type DescribePreReleaseListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 关键词
+	// 单独使用Keywords：使用域名关键词进行搜索
+	// Keywords+DomainStart（true）：使用域名开头关键词进行搜索
+	// Keywords+DomainEnd（true）：使用域名结尾关键词进行搜索
+	// Keywords+DomainStart（true）+DomainEnd（true）：使用域名开头或结尾关键词进行搜索
 	Keywords *string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
-	// 搜索关键字，开头
+	// 是否以域名开头关键词进行搜索
+	// true：是
+	// false：否
 	DomainStart *bool `json:"DomainStart,omitnil,omitempty" name:"DomainStart"`
 
-	// 搜索关键字结尾
+	// 是否以域名结尾关键词进行搜索
+	// true：是
+	// false：否
 	DomainEnd *bool `json:"DomainEnd,omitnil,omitempty" name:"DomainEnd"`
 
-	// 排序
+	// 不同排序规则：
+	// 1： 价格升序
+	// 2： 价格降序
+	// 3： 域名升序
+	// 4： 结束时间升序
+	// 5： 店铺推荐升序
+	// 6： 结束时间降序
+	// 15:  创建时间升序
+	// 其他：结束时间升序
 	Sort *int64 `json:"Sort,omitnil,omitempty" name:"Sort"`
 
 	// 起始价格
@@ -2929,46 +3083,170 @@ type DescribePreReleaseListRequest struct {
 	// 结束域名长度
 	LengthEnd *int64 `json:"LengthEnd,omitnil,omitempty" name:"LengthEnd"`
 
-	// 页码
+	// 页码（默认为1）
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 每页显示数
+	// 每页显示数（默认为20）
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 后缀
+	// 1="com"
+	// 2="net"
+	// 4="biz"
+	// 6="info"
+	// 7="co"
+	// 9="cn"
+	// 10="com.cn"
+	// 11="wang"
+	// 12="vip"
+	// 13="cc"
+	// 14="net.cn"
+	// 15="org.cn"
+	// 16="top"
+	// 17="asia"
+	// 18="tv"
+	// 19="club"
+	// 20="shop"
+	// 21 ="中国"
+	// 23="online"
+	// 24="xyz"
+	// 25="网店"
+	// 26="网址"
+	// 27="在线"
+	// 28="ltd"
+	// 29="fans"
+	// 30="ren"
+	// 31="icu"
 	Suffix []*int64 `json:"Suffix,omitnil,omitempty" name:"Suffix"`
 
 	// 一级分类
+	// 1:"纯数字"
+	// 2:"单数字"
+	// 3:"双数字"
+	// 4:"三数字"
+	// 5:"四数字"
+	// 6:"五数字"
+	// 7:"六数字"
+	// 9:"单字母"
+	// 10:"双字母"
+	// 11:"三字母"
+	// 12:"四字母"
+	// 13:"五字母"
+	// 14:"单拼"
+	// 15:"双拼"
+	// 16:"三拼"
+	// 17:"杂米"
+	// 18:"两杂"
+	// 19:"三杂"
+	// 20:"四杂"
 	ClassOne *int64 `json:"ClassOne,omitnil,omitempty" name:"ClassOne"`
 
 	// 二级分类
+	// 13:"0开或带4"
+	// 14:"非0开不带4"
+	// 15:"不带0,4"
+	// 0:"非全声母"
+	// 6:"全声母"
+	// 16:"不带0,4"
+	// 32:"全声母"
+	// 5010:"CVCV"
 	ClassTwo []*int64 `json:"ClassTwo,omitnil,omitempty" name:"ClassTwo"`
 
 	// 三级分类
+	// 111:"AAA"
+	// 401:"3A及以上"
+	// 402:"AA结尾"
+	// 1122:"AABB"
+	// 1123:"AABC"
+	// 1212:"ABAB"
+	// 1221:"ABBA"
+	// 1233:"ABCC"
+	// 501:"4A及以上"
+	// 502:"3A及以上"
+	// 503:"AAA开头"
+	// 504:"AAA结尾"
+	// 505:"AA开头"
+	// 506:"AA结尾"
+	// 507:"三顺子开头"
+	// 508:"三顺子结尾"
+	// 11223:"AABBC"
+	// 12233:"ABBCC"
+	// 601:"5A及以上"
+	// 602:"4A及以上"
+	// 603:"3A及以上"
+	// 604:"4A开头"
+	// 605:"4A结尾"
+	// 606:"AAA开头"
+	// 607:"AAA结尾"
+	// 608:"AA开头"
+	// 609:"AA结尾"
+	// 610:"ABAB开头"
+	// 611:"ABAB结尾"
+	// 612:"AABB开头"
+	// 613:"AABB结尾"
+	// 614:"四顺子开头"
+	// 615:"四顺子结尾"
+	// 616:"三顺子开头"
+	// 617:"三顺子结尾"
+	// 121212:"ABABAB"
+	// 112233:"AABBCC"
+	// 123123:"ABCABC"
+	// 211:"LNN"
+	// 221:"LLN"
+	// 121:"NLN"
+	// 212:"LNL"
+	// 122:"NLL"
+	// 1112:"NNNL"
+	// 2111:"LNNN"
+	// 1212:"NLNL"
+	// 2121:"LNLN"
+	// 1222:"NLLL"
+	// 2221:"LLLN"
+	// 1122:"NNLL"
+	// 2211:"LLNN"
+	// 31:"W结尾"
+	// 112:"AAB"
+	// 122:"ABB"
+	// 121:"ABA"
+	// 41:"W结尾"
+	// 1112:"AAAB"
+	// 1222:"ABBB"
+	// 1122:"AABB"
+	// 1212:"ABAB"
 	ClassThree []*int64 `json:"ClassThree,omitnil,omitempty" name:"ClassThree"`
 
 	// 四级分类
+	// 1:"仅含2种数字"
+	// 1:"仅含2种数字"
+	// 2:"仅含3种数字"
+	// 4:"仅含1种字母"
+	// 8:"仅含1种数字"
 	ClassFour []*int64 `json:"ClassFour,omitnil,omitempty" name:"ClassFour"`
 
-	// 排除关键字，开头
+	// 是否以域名开头排除关键词进行搜索
 	FilterStart *bool `json:"FilterStart,omitnil,omitempty" name:"FilterStart"`
 
-	// 排除关键字，结尾
+	// 是否以域名结尾排除关键词进行搜索
 	FilterEnd *bool `json:"FilterEnd,omitnil,omitempty" name:"FilterEnd"`
 
-	// 排除关键字
+	// 域名排除关键词
+	// 单独使用FilterWords：使用排除关键词进行搜索
+	// FilterWords+FilterStart（true）：使用域名开头排除关键词进行搜索
+	// FilterWords+FilterEnd（true）：使用域名结尾排除关键词进行搜索
+	// FilterWords+FilterStart（true）+FilterEnd（true）：使用域名开头或结尾排除关键词进行搜索
 	FilterWords *string `json:"FilterWords,omitnil,omitempty" name:"FilterWords"`
 
-	// 交易类型
+	// 交易类型（目前只支持10）
+	// 10: 预释放域名
 	TransType *int64 `json:"TransType,omitnil,omitempty" name:"TransType"`
 
-	// 搜索白金域名
+	// 是否搜索白金域名
 	IsTop *bool `json:"IsTop,omitnil,omitempty" name:"IsTop"`
 
-	// 结束时间排序啊 desc:倒序 asc:正序
+	// 结束时间排序 desc:倒序 asc:正序
 	EndTimeSort *string `json:"EndTimeSort,omitnil,omitempty" name:"EndTimeSort"`
 
-	// 结束时间
+	// 结束时间（YYYY-MM-DD）
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -3297,14 +3575,16 @@ func (r *DescribeTemplateListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTemplateRequestParams struct {
-	// 模板ID(模板列表接口可获取)
+	// 模板ID
+	// 通过DescribeTemplateList接口获取:https://cloud.tencent.com/document/api/242/48940
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
 type DescribeTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模板ID(模板列表接口可获取)
+	// 模板ID
+	// 通过DescribeTemplateList接口获取:https://cloud.tencent.com/document/api/242/48940
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
@@ -4204,13 +4484,13 @@ type PreReleaseInfo struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 预订倒计时
+	// 预订倒计时(YYYY-MM-DD hh:mm:ss)
 	ReservationTime *string `json:"ReservationTime,omitnil,omitempty" name:"ReservationTime"`
 
-	// 域名注册时间
+	// 域名注册时间(YYYY-MM-DD hh:mm:ss)
 	RegTime *string `json:"RegTime,omitnil,omitempty" name:"RegTime"`
 
-	// 域名删除时间
+	// 域名删除时间(YYYY-MM-DD hh:mm:ss)
 	DelTime *string `json:"DelTime,omitnil,omitempty" name:"DelTime"`
 
 	// 当前人数
@@ -4220,15 +4500,21 @@ type PreReleaseInfo struct {
 	Price *float64 `json:"Price,omitnil,omitempty" name:"Price"`
 
 	// 是否收藏
+	// true：收藏
+	// false：未收藏
 	IsFollow *bool `json:"IsFollow,omitnil,omitempty" name:"IsFollow"`
 
 	// 是否已经预约
+	// true：预约
+	// false：未预约
 	IsAppoint *bool `json:"IsAppoint,omitnil,omitempty" name:"IsAppoint"`
 
 	// 业务ID
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 是否为原持有者
+	// true：是原持有人
+	// false：非原持有人
 	IsDomainUser *bool `json:"IsDomainUser,omitnil,omitempty" name:"IsDomainUser"`
 }
 

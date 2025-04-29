@@ -1,29 +1,10 @@
-# Release v1.0.1154
-
-## 云联络中心(ccc) 版本：2020-02-10
-
-### 第 96 次发布
-
-发布时间：2025-04-28 01:13:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [AILatencyDetail](https://cloud.tencent.com/document/api/679/47715#AILatencyDetail)
-
-	* 新增成员：LLMFirstTokenLatency
-
-
-
+# Release v1.0.1155
 
 ## 内容分发网络 CDN(cdn) 版本：2018-06-06
 
-### 第 133 次发布
+### 第 134 次发布
 
-发布时间：2025-04-28 01:15:16
+发布时间：2025-04-29 01:15:06
 
 本次发布包含了以下内容：
 
@@ -31,48 +12,22 @@
 
 <font color="#dd0000">**预下线接口**：</font>
 
-* CreateScdnDomain
-* CreateScdnFailedLogTask
-* CreateScdnLogTask
-* DeleteScdnDomain
-* DescribeScdnBotData
-* DescribeScdnBotRecords
-* DescribeScdnConfig
-* DescribeScdnIpStrategy
-* DescribeScdnTopData
-* ListScdnDomains
-* ListScdnLogTasks
-* ListScdnTopBotData
-* StartScdnDomain
-* StopScdnDomain
-* UpdateScdnDomain
+* DescribeCcData
+* DescribeDDoSData
+* DescribeEventLogData
+* DescribeWafData
+* ListTopBotData
+* ListTopCcData
+* ListTopDDoSData
+* ListTopWafData
 
 
 
-## 文件存储(cfs) 版本：2019-07-19
+## 云托付物理服务器(chc) 版本：2023-04-18
 
-### 第 35 次发布
+### 第 4 次发布
 
-发布时间：2025-04-28 01:17:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [SetUserQuota](https://cloud.tencent.com/document/api/582/82653)
-
-	* 新增出参：UserId
-
-
-
-
-## iOA 零信任安全管理系统(ioa) 版本：2022-06-01
-
-### 第 12 次发布
-
-发布时间：2025-04-28 01:38:31
+发布时间：2025-04-29 01:17:57
 
 本次发布包含了以下内容：
 
@@ -80,115 +35,18 @@
 
 修改数据结构：
 
-* [DeviceDetail](https://cloud.tencent.com/document/api/1092/102488#DeviceDetail)
+* [OrderStep](https://cloud.tencent.com/document/api/1448/117193#OrderStep)
 
-	* 新增成员：RemarkName
-
-
-
-
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
-
-### 第 104 次发布
-
-发布时间：2025-04-28 01:39:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [InvokeAISearchService](https://cloud.tencent.com/document/api/1081/118022)
-
-	* 新增入参：ChannelId
-
-	* 新增出参：VideoURL
-
-
-修改数据结构：
-
-* [CloudStorageAIServiceTask](https://cloud.tencent.com/document/api/1081/34988#CloudStorageAIServiceTask)
-
-	* 新增成员：StartTimeMs, EndTimeMs
-
-* [TargetInfo](https://cloud.tencent.com/document/api/1081/34988#TargetInfo)
-
-	* 新增成员：ChannelId, Thumbnail
+	* 新增成员：OwnerPhone
 
 
 
 
-## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
+## 专线接入(dc) 版本：2018-04-10
 
-### 第 20 次发布
+### 第 33 次发布
 
-发布时间：2025-04-28 01:41:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DeleteWarning](https://cloud.tencent.com/document/api/1361/67401)
-
-	* 新增出参：Cnt
-
-
-
-
-## 云数据库Redis(redis) 版本：2018-04-12
-
-### 第 86 次发布
-
-发布时间：2025-04-27 21:15:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [InquiryPriceCreateInstance](https://cloud.tencent.com/document/api/239/41159)
-
-	* 新增出参：HighPrecisionPrice, Currency, AmountUnit
-
-* [InquiryPriceRenewInstance](https://cloud.tencent.com/document/api/239/41158)
-
-	* 新增出参：HighPrecisionPrice, Currency, AmountUnit
-
-* [InquiryPriceUpgradeInstance](https://cloud.tencent.com/document/api/239/41157)
-
-	* 新增出参：HighPrecisionPrice, Currency, AmountUnit
-
-
-
-
-## 容器安全服务(tcss) 版本：2020-11-01
-
-### 第 74 次发布
-
-发布时间：2025-04-28 02:01:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateVulScanTask](https://cloud.tencent.com/document/api/1285/81658)
-
-	* 新增入参：LocalImageContainerRunning, RegistryImageContainerRunning, IsLatest
-
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-09-01
-
-### 第 101 次发布
-
-发布时间：2025-04-28 02:05:04
+发布时间：2025-04-29 01:27:14
 
 本次发布包含了以下内容：
 
@@ -196,45 +54,22 @@
 
 修改数据结构：
 
-* [UpstreamURLRewriteParameters](https://cloud.tencent.com/document/api/1552/80721#UpstreamURLRewriteParameters)
+* [BgpPeer](https://cloud.tencent.com/document/api/216/18418#BgpPeer)
 
-	* 新增成员：Regex
+	* <font color="#dd0000">**修改成员**：</font>CloudAsn
 
+* [DirectConnect](https://cloud.tencent.com/document/api/216/18418#DirectConnect)
 
-
-
-## 边缘安全加速平台(teo) 版本：2022-01-06
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 255 次发布
-
-发布时间：2025-04-28 02:15:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ISPIPv6CidrBlock](https://cloud.tencent.com/document/api/215/15824#ISPIPv6CidrBlock)
-
-	* 新增成员：IPv6CidrBlock, ISPType
-
-* [PrivateNatCrossDomainInfo](https://cloud.tencent.com/document/api/215/15824#PrivateNatCrossDomainInfo)
-
-	* <font color="#dd0000">**修改成员**：</font>CcnId, LocalVpcId, PeerVpcId
+	* 新增成员：IsThreeArch
 
 
 
 
-## 声音复刻(vrs) 版本：2020-08-24
+## 数据安全治理中心(dsgc) 版本：2019-07-23
 
-### 第 12 次发布
+### 第 28 次发布
 
-发布时间：2025-04-28 02:17:14
+发布时间：2025-04-29 01:30:08
 
 本次发布包含了以下内容：
 
@@ -242,18 +77,62 @@
 
 修改数据结构：
 
-* [DetectionEnvAndSoundQualityRespData](https://cloud.tencent.com/document/api/1283/90065#DetectionEnvAndSoundQualityRespData)
+* [ScanTaskResult](https://cloud.tencent.com/document/api/1087/96844#ScanTaskResult)
 
-	* <font color="#dd0000">**修改成员**：</font>AudioId, DetectionCode, DetectionMsg, DetectionTip
-
-
+	* 新增成员：Progress
 
 
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
 
-### 第 144 次发布
 
-发布时间：2025-04-28 02:18:43
+## 数据传输服务(dts) 版本：2021-12-06
+
+### 第 40 次发布
+
+发布时间：2025-04-29 01:31:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyConsumerGroupPassword](https://cloud.tencent.com/document/api/571/102938)
+
+	* <font color="#dd0000">**删除入参**：</font>OldPassword
+
+
+
+
+## 数据传输服务(dts) 版本：2018-03-30
+
+
+
+## 全站加速网络(ecdn) 版本：2019-10-12
+
+### 第 16 次发布
+
+发布时间：2025-04-29 01:31:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeDomains
+* DescribeDomainsConfig
+* DescribeEcdnDomainLogs
+* DescribeEcdnDomainStatistics
+* DescribeEcdnStatistics
+* DescribeIpStatus
+
+
+
+## 高性能应用服务(hai) 版本：2023-08-12
+
+### 第 11 次发布
+
+发布时间：2025-04-29 01:37:25
 
 本次发布包含了以下内容：
 
@@ -261,11 +140,231 @@
 
 新增接口：
 
-* [DescribeTenantProjects](https://cloud.tencent.com/document/api/1267/118301)
+* [CreateApplication](https://cloud.tencent.com/document/api/1721/118310)
+
+
+
+## 图片内容安全(ims) 版本：2020-12-29
+
+### 第 8 次发布
+
+发布时间：2025-04-29 01:38:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ImageModeration](https://cloud.tencent.com/document/api/1125/53273)
+
+	* 新增入参：Type
+
+
+
+
+## 图片内容安全(ims) 版本：2020-07-13
+
+
+
+## 智能视图计算平台(iss) 版本：2023-05-17
+
+### 第 27 次发布
+
+发布时间：2025-04-29 01:41:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BatchDeleteVideoDownloadTask](https://cloud.tencent.com/document/api/1344/118314)
+* [CreateVideoDownloadTask](https://cloud.tencent.com/document/api/1344/118312)
+* [DeleteTask](https://cloud.tencent.com/document/api/1344/118315)
+* [DescribeGBDeviceAddr](https://cloud.tencent.com/document/api/1344/118311)
+* [ListVideoDownloadTask](https://cloud.tencent.com/document/api/1344/118313)
 
 新增数据结构：
 
-* [ProjectPage](https://cloud.tencent.com/document/api/1267/76336#ProjectPage)
+* [DescribeDeviceAddrList](https://cloud.tencent.com/document/api/1344/95952#DescribeDeviceAddrList)
+* [ListVideoDownloadTaskData](https://cloud.tencent.com/document/api/1344/95952#ListVideoDownloadTaskData)
+* [RemoteAddrInfo](https://cloud.tencent.com/document/api/1344/95952#RemoteAddrInfo)
+* [VideoDownloadTask](https://cloud.tencent.com/document/api/1344/95952#VideoDownloadTask)
+* [VideoDownloadTaskData](https://cloud.tencent.com/document/api/1344/95952#VideoDownloadTaskData)
+
+
+
+## 云直播CSS(live) 版本：2018-08-01
+
+### 第 146 次发布
+
+发布时间：2025-04-29 01:44:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ForbidStreamInfo](https://cloud.tencent.com/document/api/267/20474#ForbidStreamInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>StreamName, CreateTime, ExpireTime, AppName, DomainName
+
+
+
+
+## 大模型知识引擎(lke) 版本：2023-11-30
+
+### 第 40 次发布
+
+发布时间：2025-04-29 01:45:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AgentProcedure](https://cloud.tencent.com/document/api/1759/105104#AgentProcedure)
+
+	* 新增成员：SourceAgentName, TargetAgentName
+
+* [ModelInfo](https://cloud.tencent.com/document/api/1759/105104#ModelInfo)
+
+	* 新增成员：IsDefault, RoleLenLimit
+
+
+
+
+## 知识引擎原子能力(lkeap) 版本：2024-05-22
+
+### 第 10 次发布
+
+发布时间：2025-04-29 00:22:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChatCompletions](https://cloud.tencent.com/document/api/1772/115963)
+
+	* 新增入参：EnableSearch
+
+
+新增数据结构：
+
+* [SearchResult](https://cloud.tencent.com/document/api/1772/115364#SearchResult)
+
+修改数据结构：
+
+* [DocumentUsage](https://cloud.tencent.com/document/api/1772/115364#DocumentUsage)
+
+	* 新增成员：SplitTokens, MllmTokens
+
+* [Message](https://cloud.tencent.com/document/api/1772/115364#Message)
+
+	* 新增成员：SearchResults
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 188 次发布
+
+发布时间：2025-04-29 01:51:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BankCardOCR](https://cloud.tencent.com/document/api/866/36216)
+
+	* 新增出参：CardCategory
+
+
+修改数据结构：
+
+* [BusInvoice](https://cloud.tencent.com/document/api/866/33527#BusInvoice)
+
+	* <font color="#dd0000">**修改成员**：</font>Title, QRCodeMark, Number, Code, Date, TimeGetOn, DateGetOn, StationGetOn, StationGetOff, Total, UserName, Kind, UserID, Province, City, PlaceGetOn, GateNumber, TicketType, VehicleType, SeatNumber, TrainNumber
+
+* [MedicalInvoice](https://cloud.tencent.com/document/api/866/33527#MedicalInvoice)
+
+	* <font color="#dd0000">**修改成员**：</font>Title, Code, Number, Total, TotalCn, Date, CheckCode, Place, Reviewer
+
+* [QuotaInvoice](https://cloud.tencent.com/document/api/866/33527#QuotaInvoice)
+
+	* <font color="#dd0000">**修改成员**：</font>Title, Code, Number, Total, TotalCn, Kind, Province, City, QRCodeMark, CompanySealMark
+
+* [TollInvoice](https://cloud.tencent.com/document/api/866/33527#TollInvoice)
+
+	* <font color="#dd0000">**修改成员**：</font>Title, Code, Number, Total, Kind, Date, Time, Entrance, Exit, HighwayMark, QRCodeMark
+
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 51 次发布
+
+发布时间：2025-04-29 01:53:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* CloseServerlessDBExtranetAccess
+* CreateServerlessDBInstance
+* DeleteServerlessDBInstance
+* DescribeServerlessDBInstances
+* OpenServerlessDBExtranetAccess
+
+
+
+## 邮件推送(ses) 版本：2020-10-02
+
+### 第 28 次发布
+
+发布时间：2025-04-29 01:56:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SendEmail](https://cloud.tencent.com/document/api/1288/51034)
+
+	* 新增入参：HeaderFrom
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 78 次发布
+
+发布时间：2025-04-29 11:33:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyNotebookTags](https://cloud.tencent.com/document/api/851/118331)
+
+
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
 
 
 

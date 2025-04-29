@@ -3582,7 +3582,7 @@ type DescribeCertDomainsRequestParams struct {
 	// PEM格式证书Base64编码后的字符串
 	Cert *string `json:"Cert,omitnil,omitempty" name:"Cert"`
 
-	// 托管证书ID，Cert和CertId不能均未空，都填写时以CerId为准。
+	// 托管证书ID，Cert和CertId不能均未空，都填写时以CertId为准。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 域名所属产品，cdn或ecdn，默认cdn。
@@ -3595,7 +3595,7 @@ type DescribeCertDomainsRequest struct {
 	// PEM格式证书Base64编码后的字符串
 	Cert *string `json:"Cert,omitnil,omitempty" name:"Cert"`
 
-	// 托管证书ID，Cert和CertId不能均未空，都填写时以CerId为准。
+	// 托管证书ID，Cert和CertId不能均未空，都填写时以CertId为准。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 域名所属产品，cdn或ecdn，默认cdn。
@@ -8871,7 +8871,7 @@ type ListTopClsLogDataRequestParams struct {
 	// 接入渠道，cdn或者ecdn，默认值为cdn
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
 
-	// 要查询的Top条数，最大值为100，默认为10
+	// 要查询的Top条数，建议最大值100，默认为10
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 按请求量排序， asc（升序）或者 desc（降序），默认为 desc
@@ -8905,7 +8905,7 @@ type ListTopClsLogDataRequest struct {
 	// 接入渠道，cdn或者ecdn，默认值为cdn
 	Channel *string `json:"Channel,omitnil,omitempty" name:"Channel"`
 
-	// 要查询的Top条数，最大值为100，默认为10
+	// 要查询的Top条数，建议最大值100，默认为10
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 按请求量排序， asc（升序）或者 desc（降序），默认为 desc

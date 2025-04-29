@@ -730,6 +730,85 @@ func (c *Client) AddUserDeviceWithContext(ctx context.Context, request *AddUserD
     return
 }
 
+func NewBatchDeleteVideoDownloadTaskRequest() (request *BatchDeleteVideoDownloadTaskRequest) {
+    request = &BatchDeleteVideoDownloadTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "BatchDeleteVideoDownloadTask")
+    
+    
+    return
+}
+
+func NewBatchDeleteVideoDownloadTaskResponse() (response *BatchDeleteVideoDownloadTaskResponse) {
+    response = &BatchDeleteVideoDownloadTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchDeleteVideoDownloadTask
+// 用于批量删除本地录像下载失败的任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDCLUSTERID = "InvalidParameterValue.InvalidClusterId"
+//  INVALIDPARAMETERVALUE_INVALIDDESCRIPTION = "InvalidParameterValue.InvalidDescription"
+//  INVALIDPARAMETERVALUE_INVALIDDEVICEPASSWORDLENGTH = "InvalidParameterValue.InvalidDevicePasswordLength"
+//  INVALIDPARAMETERVALUE_INVALIDGATEWAYPROTOCOLTYPE = "InvalidParameterValue.InvalidGatewayProtocolType"
+//  INVALIDPARAMETERVALUE_INVALIDIPV4 = "InvalidParameterValue.InvalidIpv4"
+//  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
+//  INVALIDPARAMETERVALUE_INVALIDRTMPAPPNAME = "InvalidParameterValue.InvalidRTMPAppName"
+//  INVALIDPARAMETERVALUE_INVALIDRTMPSTREAMNAME = "InvalidParameterValue.InvalidRTMPStreamName"
+//  INVALIDPARAMETERVALUE_INVALIDUSERNAME = "InvalidParameterValue.InvalidUsername"
+//  INVALIDPARAMETERVALUE_RTMPPUSHSTREAMPARAMREPEAT = "InvalidParameterValue.RTMPPushStreamParamRepeat"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDACCESSTYPE = "InvalidParameterValue.UnSupportedAccessType"
+//  REGIONERROR_RESOURCEUNREACHABLE = "RegionError.ResourceUnreachable"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOTFOUNDCLUSTER = "ResourceNotFound.NotFoundCluster"
+//  UNSUPPORTEDOPERATION_PUSHDOMAINNOTEXIST = "UnsupportedOperation.PushDomainNotExist"
+func (c *Client) BatchDeleteVideoDownloadTask(request *BatchDeleteVideoDownloadTaskRequest) (response *BatchDeleteVideoDownloadTaskResponse, err error) {
+    return c.BatchDeleteVideoDownloadTaskWithContext(context.Background(), request)
+}
+
+// BatchDeleteVideoDownloadTask
+// 用于批量删除本地录像下载失败的任务
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDCLUSTERID = "InvalidParameterValue.InvalidClusterId"
+//  INVALIDPARAMETERVALUE_INVALIDDESCRIPTION = "InvalidParameterValue.InvalidDescription"
+//  INVALIDPARAMETERVALUE_INVALIDDEVICEPASSWORDLENGTH = "InvalidParameterValue.InvalidDevicePasswordLength"
+//  INVALIDPARAMETERVALUE_INVALIDGATEWAYPROTOCOLTYPE = "InvalidParameterValue.InvalidGatewayProtocolType"
+//  INVALIDPARAMETERVALUE_INVALIDIPV4 = "InvalidParameterValue.InvalidIpv4"
+//  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
+//  INVALIDPARAMETERVALUE_INVALIDRTMPAPPNAME = "InvalidParameterValue.InvalidRTMPAppName"
+//  INVALIDPARAMETERVALUE_INVALIDRTMPSTREAMNAME = "InvalidParameterValue.InvalidRTMPStreamName"
+//  INVALIDPARAMETERVALUE_INVALIDUSERNAME = "InvalidParameterValue.InvalidUsername"
+//  INVALIDPARAMETERVALUE_RTMPPUSHSTREAMPARAMREPEAT = "InvalidParameterValue.RTMPPushStreamParamRepeat"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDACCESSTYPE = "InvalidParameterValue.UnSupportedAccessType"
+//  REGIONERROR_RESOURCEUNREACHABLE = "RegionError.ResourceUnreachable"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOTFOUNDCLUSTER = "ResourceNotFound.NotFoundCluster"
+//  UNSUPPORTEDOPERATION_PUSHDOMAINNOTEXIST = "UnsupportedOperation.PushDomainNotExist"
+func (c *Client) BatchDeleteVideoDownloadTaskWithContext(ctx context.Context, request *BatchDeleteVideoDownloadTaskRequest) (response *BatchDeleteVideoDownloadTaskResponse, err error) {
+    if request == nil {
+        request = NewBatchDeleteVideoDownloadTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchDeleteVideoDownloadTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchDeleteVideoDownloadTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchOperateDeviceRequest() (request *BatchOperateDeviceRequest) {
     request = &BatchOperateDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1266,6 +1345,81 @@ func (c *Client) ControlRecordTimelineWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateVideoDownloadTaskRequest() (request *CreateVideoDownloadTaskRequest) {
+    request = &CreateVideoDownloadTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "CreateVideoDownloadTask")
+    
+    
+    return
+}
+
+func NewCreateVideoDownloadTaskResponse() (response *CreateVideoDownloadTaskResponse) {
+    response = &CreateVideoDownloadTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateVideoDownloadTask
+// 创建本地录像下载任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEVICERESPONSETIMEOUT = "FailedOperation.DeviceResponseTimeOut"
+//  FAILEDOPERATION_DEVICERESULTTIMEOUT = "FailedOperation.DeviceResultTimeOut"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ENDTIMEZERO = "InvalidParameterValue.EndTimeZero"
+//  INVALIDPARAMETERVALUE_INVALIDCHANNELID = "InvalidParameterValue.InvalidChannelId"
+//  INVALIDPARAMETERVALUE_STARTOVERENDTIME = "InvalidParameterValue.StartOverEndTime"
+//  INVALIDPARAMETERVALUE_STARTOVERNOWTIME = "InvalidParameterValue.StartOverNowTime"
+//  INVALIDPARAMETERVALUE_STARTTIMEGREATERTHANOREQUALENDTIME = "InvalidParameterValue.StartTimeGreaterThanOrEqualEndTime"
+//  INVALIDPARAMETERVALUE_STARTTIMEZERO = "InvalidParameterValue.StartTimeZero"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDACCESSTYPE = "InvalidParameterValue.UnSupportedAccessType"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_DEVDISABLE = "ResourceUnavailable.DevDisable"
+//  RESOURCEUNAVAILABLE_DEVNOREGISTER = "ResourceUnavailable.DevNoRegister"
+//  RESOURCEUNAVAILABLE_DEVOFFLINE = "ResourceUnavailable.DevOffline"
+func (c *Client) CreateVideoDownloadTask(request *CreateVideoDownloadTaskRequest) (response *CreateVideoDownloadTaskResponse, err error) {
+    return c.CreateVideoDownloadTaskWithContext(context.Background(), request)
+}
+
+// CreateVideoDownloadTask
+// 创建本地录像下载任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DEVICERESPONSETIMEOUT = "FailedOperation.DeviceResponseTimeOut"
+//  FAILEDOPERATION_DEVICERESULTTIMEOUT = "FailedOperation.DeviceResultTimeOut"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ENDTIMEZERO = "InvalidParameterValue.EndTimeZero"
+//  INVALIDPARAMETERVALUE_INVALIDCHANNELID = "InvalidParameterValue.InvalidChannelId"
+//  INVALIDPARAMETERVALUE_STARTOVERENDTIME = "InvalidParameterValue.StartOverEndTime"
+//  INVALIDPARAMETERVALUE_STARTOVERNOWTIME = "InvalidParameterValue.StartOverNowTime"
+//  INVALIDPARAMETERVALUE_STARTTIMEGREATERTHANOREQUALENDTIME = "InvalidParameterValue.StartTimeGreaterThanOrEqualEndTime"
+//  INVALIDPARAMETERVALUE_STARTTIMEZERO = "InvalidParameterValue.StartTimeZero"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDACCESSTYPE = "InvalidParameterValue.UnSupportedAccessType"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_DEVDISABLE = "ResourceUnavailable.DevDisable"
+//  RESOURCEUNAVAILABLE_DEVNOREGISTER = "ResourceUnavailable.DevNoRegister"
+//  RESOURCEUNAVAILABLE_DEVOFFLINE = "ResourceUnavailable.DevOffline"
+func (c *Client) CreateVideoDownloadTaskWithContext(ctx context.Context, request *CreateVideoDownloadTaskRequest) (response *CreateVideoDownloadTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateVideoDownloadTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVideoDownloadTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVideoDownloadTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAITaskRequest() (request *DeleteAITaskRequest) {
     request = &DeleteAITaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1757,6 +1911,63 @@ func (c *Client) DeleteRecordTemplateWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDeleteTaskRequest() (request *DeleteTaskRequest) {
+    request = &DeleteTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "DeleteTask")
+    
+    
+    return
+}
+
+func NewDeleteTaskResponse() (response *DeleteTaskResponse) {
+    response = &DeleteTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTask
+// 用于删除执行完成的任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDBODYFORMAT = "InvalidParameter.InvalidBodyFormat"
+//  INVALIDPARAMETERVALUE_INVALIDTEMPLATEID = "InvalidParameterValue.InvalidTemplateId"
+//  RESOURCEINUSE_PLANLINKTEMPLATE = "ResourceInUse.PlanLinkTemplate"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DeleteTask(request *DeleteTaskRequest) (response *DeleteTaskResponse, err error) {
+    return c.DeleteTaskWithContext(context.Background(), request)
+}
+
+// DeleteTask
+// 用于删除执行完成的任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDBODYFORMAT = "InvalidParameter.InvalidBodyFormat"
+//  INVALIDPARAMETERVALUE_INVALIDTEMPLATEID = "InvalidParameterValue.InvalidTemplateId"
+//  RESOURCEINUSE_PLANLINKTEMPLATE = "ResourceInUse.PlanLinkTemplate"
+//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
+func (c *Client) DeleteTaskWithContext(ctx context.Context, request *DeleteTaskRequest) (response *DeleteTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteUserDeviceRequest() (request *DeleteUserDeviceRequest) {
     request = &DeleteUserDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2244,6 +2455,63 @@ func (c *Client) DescribeDomainRegionWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeDomainRegionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGBDeviceAddrRequest() (request *DescribeGBDeviceAddrRequest) {
+    request = &DescribeGBDeviceAddrRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "DescribeGBDeviceAddr")
+    
+    
+    return
+}
+
+func NewDescribeGBDeviceAddrResponse() (response *DescribeGBDeviceAddrResponse) {
+    response = &DescribeGBDeviceAddrResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGBDeviceAddr
+// 用于获取国标设备的公网地址
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CONTAININVALIDDEVICEID = "InvalidParameterValue.ContainInvalidDeviceId"
+//  LIMITEXCEEDED_GBDEVICENUMEXCEEDED = "LimitExceeded.GBDeviceNumExceeded"
+func (c *Client) DescribeGBDeviceAddr(request *DescribeGBDeviceAddrRequest) (response *DescribeGBDeviceAddrResponse, err error) {
+    return c.DescribeGBDeviceAddrWithContext(context.Background(), request)
+}
+
+// DescribeGBDeviceAddr
+// 用于获取国标设备的公网地址
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CONTAININVALIDDEVICEID = "InvalidParameterValue.ContainInvalidDeviceId"
+//  LIMITEXCEEDED_GBDEVICENUMEXCEEDED = "LimitExceeded.GBDeviceNumExceeded"
+func (c *Client) DescribeGBDeviceAddrWithContext(ctx context.Context, request *DescribeGBDeviceAddrRequest) (response *DescribeGBDeviceAddrResponse, err error) {
+    if request == nil {
+        request = NewDescribeGBDeviceAddrRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGBDeviceAddr require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGBDeviceAddrResponse()
     err = c.Send(request, response)
     return
 }
@@ -4235,6 +4503,69 @@ func (c *Client) ListTasksWithContext(ctx context.Context, request *ListTasksReq
     request.SetContext(ctx)
     
     response = NewListTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListVideoDownloadTaskRequest() (request *ListVideoDownloadTaskRequest) {
+    request = &ListVideoDownloadTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "ListVideoDownloadTask")
+    
+    
+    return
+}
+
+func NewListVideoDownloadTaskResponse() (response *ListVideoDownloadTaskResponse) {
+    response = &ListVideoDownloadTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListVideoDownloadTask
+// 查询本店里录像下载任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEERROR = "FailedOperation.DatabaseError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDACTION = "InvalidParameter.InvalidAction"
+//  INVALIDPARAMETER_INVALIDPARAMETERFORMAT = "InvalidParameter.InvalidParameterFormat"
+//  INVALIDPARAMETER_REQUIREDHEADERPARAMETEREMPTY = "InvalidParameter.RequiredHeaderParameterEmpty"
+//  INVALIDPARAMETERVALUE_INVALIDPAGEPARAMETER = "InvalidParameterValue.InvalidPageParameter"
+//  INVALIDPARAMETERVALUE_INVALIDSTATUS = "InvalidParameterValue.InvalidStatus"
+//  INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTED = "InvalidParameterValue.TaskTypeNotSupported"
+func (c *Client) ListVideoDownloadTask(request *ListVideoDownloadTaskRequest) (response *ListVideoDownloadTaskResponse, err error) {
+    return c.ListVideoDownloadTaskWithContext(context.Background(), request)
+}
+
+// ListVideoDownloadTask
+// 查询本店里录像下载任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEERROR = "FailedOperation.DatabaseError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDACTION = "InvalidParameter.InvalidAction"
+//  INVALIDPARAMETER_INVALIDPARAMETERFORMAT = "InvalidParameter.InvalidParameterFormat"
+//  INVALIDPARAMETER_REQUIREDHEADERPARAMETEREMPTY = "InvalidParameter.RequiredHeaderParameterEmpty"
+//  INVALIDPARAMETERVALUE_INVALIDPAGEPARAMETER = "InvalidParameterValue.InvalidPageParameter"
+//  INVALIDPARAMETERVALUE_INVALIDSTATUS = "InvalidParameterValue.InvalidStatus"
+//  INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTED = "InvalidParameterValue.TaskTypeNotSupported"
+func (c *Client) ListVideoDownloadTaskWithContext(ctx context.Context, request *ListVideoDownloadTaskRequest) (response *ListVideoDownloadTaskResponse, err error) {
+    if request == nil {
+        request = NewListVideoDownloadTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListVideoDownloadTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListVideoDownloadTaskResponse()
     err = c.Send(request, response)
     return
 }

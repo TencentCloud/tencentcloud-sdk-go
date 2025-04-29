@@ -13859,6 +13859,9 @@ type ScanTaskResult struct {
 
 	// 结果建议
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
+
+	// 扫描进度
+	Progress *float64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 }
 
 type SecurityProduct struct {

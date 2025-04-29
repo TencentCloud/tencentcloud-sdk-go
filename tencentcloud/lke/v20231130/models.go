@@ -74,6 +74,14 @@ type AgentProcedure struct {
 	// 用于展示思考放在哪个回复气泡中
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReplyIndex *uint64 `json:"ReplyIndex,omitnil,omitempty" name:"ReplyIndex"`
+
+	// 主agent
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceAgentName *string `json:"SourceAgentName,omitnil,omitempty" name:"SourceAgentName"`
+
+	// 挂号agent
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetAgentName *string `json:"TargetAgentName,omitnil,omitempty" name:"TargetAgentName"`
 }
 
 type AgentProcedureDebugging struct {
@@ -4993,7 +5001,7 @@ type GetMsgRecordRequestParams struct {
 	// 类型
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 数量
+	// 数量,  数量需大于2
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 会话sessionid
@@ -5002,7 +5010,7 @@ type GetMsgRecordRequestParams struct {
 	// 最后一条记录ID
 	LastRecordId *string `json:"LastRecordId,omitnil,omitempty" name:"LastRecordId"`
 
-	// 应用AppKey, 当Type=5[API访客]时, 该字段必填
+	// 应用AppKey, 当Type=5[API访客]时, 该字段必填  :</br>  获取方式:</br>   1、应用发布后在应用页面[发布管理]-[调用信息]-[API管理]处获取</br>   2、参考 https://cloud.tencent.com/document/product/1759/109469 第二项
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
 	// 场景, 体验: 1; 正式: 2
@@ -5018,7 +5026,7 @@ type GetMsgRecordRequest struct {
 	// 类型
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 数量
+	// 数量,  数量需大于2
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 会话sessionid
@@ -5027,7 +5035,7 @@ type GetMsgRecordRequest struct {
 	// 最后一条记录ID
 	LastRecordId *string `json:"LastRecordId,omitnil,omitempty" name:"LastRecordId"`
 
-	// 应用AppKey, 当Type=5[API访客]时, 该字段必填
+	// 应用AppKey, 当Type=5[API访客]时, 该字段必填  :</br>  获取方式:</br>   1、应用发布后在应用页面[发布管理]-[调用信息]-[API管理]处获取</br>   2、参考 https://cloud.tencent.com/document/product/1759/109469 第二项
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
 	// 场景, 体验: 1; 正式: 2
@@ -7996,6 +8004,12 @@ type ModelInfo struct {
 
 	// 模型类别 generate：生成模型，thought：思考模型
 	ModelCategory *string `json:"ModelCategory,omitnil,omitempty" name:"ModelCategory"`
+
+	// 是否默认模型
+	IsDefault *bool `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+
+	// 角色提示词输入长度限制
+	RoleLenLimit *uint64 `json:"RoleLenLimit,omitnil,omitempty" name:"RoleLenLimit"`
 }
 
 type ModelParameter struct {

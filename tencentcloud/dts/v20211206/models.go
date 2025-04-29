@@ -4473,9 +4473,6 @@ type ModifyConsumerGroupPasswordRequestParams struct {
 
 	// 新密码。字符长度不小于3，不大于32
 	NewPassword *string `json:"NewPassword,omitnil,omitempty" name:"NewPassword"`
-
-	// 旧密码，非必选
-	OldPassword *string `json:"OldPassword,omitnil,omitempty" name:"OldPassword"`
 }
 
 type ModifyConsumerGroupPasswordRequest struct {
@@ -4492,9 +4489,6 @@ type ModifyConsumerGroupPasswordRequest struct {
 
 	// 新密码。字符长度不小于3，不大于32
 	NewPassword *string `json:"NewPassword,omitnil,omitempty" name:"NewPassword"`
-
-	// 旧密码，非必选
-	OldPassword *string `json:"OldPassword,omitnil,omitempty" name:"OldPassword"`
 }
 
 func (r *ModifyConsumerGroupPasswordRequest) ToJsonString() string {
@@ -4513,7 +4507,6 @@ func (r *ModifyConsumerGroupPasswordRequest) FromJsonString(s string) error {
 	delete(f, "AccountName")
 	delete(f, "ConsumerGroupName")
 	delete(f, "NewPassword")
-	delete(f, "OldPassword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConsumerGroupPasswordRequest has unknown keys!", "")
 	}

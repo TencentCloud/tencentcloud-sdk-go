@@ -5368,6 +5368,67 @@ func (r *ModifyModelServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyNotebookTagsRequestParams struct {
+	// Notebook Id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// Notebook修改标签集合
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+type ModifyNotebookTagsRequest struct {
+	*tchttp.BaseRequest
+	
+	// Notebook Id
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// Notebook修改标签集合
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+}
+
+func (r *ModifyNotebookTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNotebookTagsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNotebookTagsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNotebookTagsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyNotebookTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyNotebookTagsResponseParams `json:"Response"`
+}
+
+func (r *ModifyNotebookTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNotebookTagsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MultiModalContent struct {
 	// 对话类型，text表示文本对话内容，image_url表示图片对话内容
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`

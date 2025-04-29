@@ -1346,6 +1346,10 @@ func NewDescribeCcDataResponse() (response *DescribeCcDataResponse) {
 }
 
 // DescribeCcData
+// SCDN平台下线，接口开始预下线处理
+//
+// 
+//
 // CC统计数据查询
 //
 // 可能返回的错误码:
@@ -1360,6 +1364,10 @@ func (c *Client) DescribeCcData(request *DescribeCcDataRequest) (response *Descr
 }
 
 // DescribeCcData
+// SCDN平台下线，接口开始预下线处理
+//
+// 
+//
 // CC统计数据查询
 //
 // 可能返回的错误码:
@@ -1898,6 +1906,10 @@ func NewDescribeDDoSDataResponse() (response *DescribeDDoSDataResponse) {
 }
 
 // DescribeDDoSData
+// SCDN平台下线，接口开始预下线处理
+//
+// 
+//
 // DDoS统计数据查询
 //
 // 可能返回的错误码:
@@ -1920,6 +1932,10 @@ func (c *Client) DescribeDDoSData(request *DescribeDDoSDataRequest) (response *D
 }
 
 // DescribeDDoSData
+// SCDN平台下线，接口开始预下线处理
+//
+// 
+//
 // DDoS统计数据查询
 //
 // 可能返回的错误码:
@@ -2368,6 +2384,10 @@ func NewDescribeEventLogDataResponse() (response *DescribeEventLogDataResponse) 
 }
 
 // DescribeEventLogData
+// SCDN平台下线，接口开始预下线处理
+//
+// 
+//
 // DescribeEventLogData 用于查询事件日志统计曲线
 //
 // 可能返回的错误码:
@@ -2382,6 +2402,10 @@ func (c *Client) DescribeEventLogData(request *DescribeEventLogDataRequest) (res
 }
 
 // DescribeEventLogData
+// SCDN平台下线，接口开始预下线处理
+//
+// 
+//
 // DescribeEventLogData 用于查询事件日志统计曲线
 //
 // 可能返回的错误码:
@@ -3976,7 +4000,7 @@ func NewDescribeUrlViolationsResponse() (response *DescribeUrlViolationsResponse
 // DescribeUrlViolations
 // DescribeUrlViolations 用于查询被 CDN 系统扫描到的域名违规 URL 列表及当前状态。
 //
-// 对应内容分发网络控制台【图片鉴黄】页面。
+// 对应内容分发网络控制台【内容合规】页面。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
@@ -3995,7 +4019,7 @@ func (c *Client) DescribeUrlViolations(request *DescribeUrlViolationsRequest) (r
 // DescribeUrlViolations
 // DescribeUrlViolations 用于查询被 CDN 系统扫描到的域名违规 URL 列表及当前状态。
 //
-// 对应内容分发网络控制台【图片鉴黄】页面。
+// 对应内容分发网络控制台【内容合规】页面。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
@@ -4043,6 +4067,10 @@ func NewDescribeWafDataResponse() (response *DescribeWafDataResponse) {
 }
 
 // DescribeWafData
+// SCDN平台下线，接口开始预下线处理
+//
+// 
+//
 // Waf统计数据查询
 //
 // 可能返回的错误码:
@@ -4071,6 +4099,10 @@ func (c *Client) DescribeWafData(request *DescribeWafDataRequest) (response *Des
 }
 
 // DescribeWafData
+// SCDN平台下线，接口开始预下线处理
+//
+// 
+//
 // Waf统计数据查询
 //
 // 可能返回的错误码:
@@ -5254,6 +5286,10 @@ func NewListTopBotDataResponse() (response *ListTopBotDataResponse) {
 }
 
 // ListTopBotData
+// SCDN平台下线，接口开始预下线处理
+//
+// 
+//
 // 获取Bot攻击的Top信息
 //
 // 可能返回的错误码:
@@ -5268,6 +5304,10 @@ func (c *Client) ListTopBotData(request *ListTopBotDataRequest) (response *ListT
 }
 
 // ListTopBotData
+// SCDN平台下线，接口开始预下线处理
+//
+// 
+//
 // 获取Bot攻击的Top信息
 //
 // 可能返回的错误码:
@@ -5313,6 +5353,10 @@ func NewListTopCcDataResponse() (response *ListTopCcDataResponse) {
 }
 
 // ListTopCcData
+// SCDN平台下线，接口开始预下线处理
+//
+// 
+//
 // 获取CC攻击Top数据
 //
 // 可能返回的错误码:
@@ -5328,6 +5372,10 @@ func (c *Client) ListTopCcData(request *ListTopCcDataRequest) (response *ListTop
 }
 
 // ListTopCcData
+// SCDN平台下线，接口开始预下线处理
+//
+// 
+//
 // 获取CC攻击Top数据
 //
 // 可能返回的错误码:
@@ -5491,6 +5539,10 @@ func NewListTopDDoSDataResponse() (response *ListTopDDoSDataResponse) {
 }
 
 // ListTopDDoSData
+// SCDN平台下线，接口开始预下线处理
+//
+// 
+//
 // 获取DDoS攻击Top数据
 //
 // 可能返回的错误码:
@@ -5512,6 +5564,10 @@ func (c *Client) ListTopDDoSData(request *ListTopDDoSDataRequest) (response *Lis
 }
 
 // ListTopDDoSData
+// SCDN平台下线，接口开始预下线处理
+//
+// 
+//
 // 获取DDoS攻击Top数据
 //
 // 可能返回的错误码:
@@ -5703,6 +5759,10 @@ func NewListTopWafDataResponse() (response *ListTopWafDataResponse) {
 }
 
 // ListTopWafData
+// SCDN平台下线，接口开始预下线处理
+//
+// 
+//
 // 获取Waf攻击Top数据
 //
 // 可能返回的错误码:
@@ -5728,6 +5788,10 @@ func (c *Client) ListTopWafData(request *ListTopWafDataRequest) (response *ListT
 }
 
 // ListTopWafData
+// SCDN平台下线，接口开始预下线处理
+//
+// 
+//
 // 获取Waf攻击Top数据
 //
 // 可能返回的错误码:

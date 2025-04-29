@@ -113,6 +113,9 @@ const (
 	// 包含无效的ChannelId
 	INVALIDPARAMETERVALUE_CONTAININVALIDCHANNELID = "InvalidParameterValue.ContainInvalidChannelId"
 
+	// 包含无效的设备ID
+	INVALIDPARAMETERVALUE_CONTAININVALIDDEVICEID = "InvalidParameterValue.ContainInvalidDeviceId"
+
 	// 周期超出限制（1-7）
 	INVALIDPARAMETERVALUE_DATAOUTOFRANGE = "InvalidParameterValue.DataOutOfRange"
 
@@ -421,6 +424,9 @@ const (
 
 	// 查询的通道数量不能超过3000个
 	LIMITEXCEEDED_CHANNELNUMEXCEEDED = "LimitExceeded.ChannelNumExceeded"
+
+	// 查询的国标设备数量不能超过500个
+	LIMITEXCEEDED_GBDEVICENUMEXCEEDED = "LimitExceeded.GBDeviceNumExceeded"
 
 	// 时间片段不存在
 	MISSINGPARAMETER_EMPTYTIMESECTION = "MissingParameter.EmptyTimeSection"

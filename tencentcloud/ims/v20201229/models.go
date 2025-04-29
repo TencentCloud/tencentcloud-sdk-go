@@ -185,6 +185,9 @@ type ImageModerationRequestParams struct {
 
 	// 该字段表示待检测对象对应的设备相关信息，若填入则可甄别相应违规风险设备。
 	Device *Device `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 该字段表示送审的数据类型，默认为通用图片，可以选择。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 type ImageModerationRequest struct {
@@ -213,6 +216,9 @@ type ImageModerationRequest struct {
 
 	// 该字段表示待检测对象对应的设备相关信息，若填入则可甄别相应违规风险设备。
 	Device *Device `json:"Device,omitnil,omitempty" name:"Device"`
+
+	// 该字段表示送审的数据类型，默认为通用图片，可以选择。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
 func (r *ImageModerationRequest) ToJsonString() string {
@@ -235,6 +241,7 @@ func (r *ImageModerationRequest) FromJsonString(s string) error {
 	delete(f, "MaxFrames")
 	delete(f, "User")
 	delete(f, "Device")
+	delete(f, "Type")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageModerationRequest has unknown keys!", "")
 	}
@@ -255,7 +262,9 @@ type ImageModerationResponseParams struct {
 	// 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表图片越有可能属于当前返回的标签；如：*色情 99*，则表明该图片非常有可能属于色情内容；*色情 0*，则表明该图片不属于色情内容。
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
-	// 该字段用于返回分类模型命中的恶意标签的详细识别结果，包括涉黄、广告等令人反感、不安全或不适宜的内容类型识别结果。
+	// 该字段用于返回检测结果(LabelResults)中所对应的优先级最高的恶意标签，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。
+	// 
+	// 返回值标签示例：Normal:正常，Porn:色情，Abuse:谩骂，Ad:广告（说明：文档仅示例了部分风险类型，更多返回类型请以实际值为准或咨询客服）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelResults []*LabelResult `json:"LabelResults,omitnil,omitempty" name:"LabelResults"`
 

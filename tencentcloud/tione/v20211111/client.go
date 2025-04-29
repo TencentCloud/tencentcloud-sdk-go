@@ -3147,6 +3147,63 @@ func (c *Client) ModifyModelServiceWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyNotebookTagsRequest() (request *ModifyNotebookTagsRequest) {
+    request = &ModifyNotebookTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "ModifyNotebookTags")
+    
+    
+    return
+}
+
+func NewModifyNotebookTagsResponse() (response *ModifyNotebookTagsResponse) {
+    response = &ModifyNotebookTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyNotebookTags
+// 修改Notebook标签
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BINDINGTAGSFAILED = "FailedOperation.BindingTagsFailed"
+//  INTERNALERROR_BINDINGTAGSFAILED = "InternalError.BindingTagsFailed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) ModifyNotebookTags(request *ModifyNotebookTagsRequest) (response *ModifyNotebookTagsResponse, err error) {
+    return c.ModifyNotebookTagsWithContext(context.Background(), request)
+}
+
+// ModifyNotebookTags
+// 修改Notebook标签
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BINDINGTAGSFAILED = "FailedOperation.BindingTagsFailed"
+//  INTERNALERROR_BINDINGTAGSFAILED = "InternalError.BindingTagsFailed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) ModifyNotebookTagsWithContext(ctx context.Context, request *ModifyNotebookTagsRequest) (response *ModifyNotebookTagsResponse, err error) {
+    if request == nil {
+        request = NewModifyNotebookTagsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNotebookTags require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNotebookTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPushTrainingMetricsRequest() (request *PushTrainingMetricsRequest) {
     request = &PushTrainingMetricsRequest{
         BaseRequest: &tchttp.BaseRequest{},

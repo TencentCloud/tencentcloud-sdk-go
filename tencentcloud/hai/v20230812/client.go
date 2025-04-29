@@ -45,6 +45,65 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateApplicationRequest() (request *CreateApplicationRequest) {
+    request = &CreateApplicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "CreateApplication")
+    
+    
+    return
+}
+
+func NewCreateApplicationResponse() (response *CreateApplicationResponse) {
+    response = &CreateApplicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateApplication
+// 本接口（CreateApplicaiton）用于对HAI实例制作自定义应用。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONNAMEDUPLICATE = "InvalidParameterValue.InvalidApplicationNameDuplicate"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNSUPPORTEDOPERATION_INSTANCECREATEAPPLICATIONNOTSUPPORT = "UnsupportedOperation.InstanceCreateApplicationNotSupport"
+func (c *Client) CreateApplication(request *CreateApplicationRequest) (response *CreateApplicationResponse, err error) {
+    return c.CreateApplicationWithContext(context.Background(), request)
+}
+
+// CreateApplication
+// 本接口（CreateApplicaiton）用于对HAI实例制作自定义应用。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONNAMEDUPLICATE = "InvalidParameterValue.InvalidApplicationNameDuplicate"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+//  UNSUPPORTEDOPERATION_INSTANCECREATEAPPLICATIONNOTSUPPORT = "UnsupportedOperation.InstanceCreateApplicationNotSupport"
+func (c *Client) CreateApplicationWithContext(ctx context.Context, request *CreateApplicationRequest) (response *CreateApplicationResponse, err error) {
+    if request == nil {
+        request = NewCreateApplicationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateApplication require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMuskPromptRequest() (request *CreateMuskPromptRequest) {
     request = &CreateMuskPromptRequest{
         BaseRequest: &tchttp.BaseRequest{},

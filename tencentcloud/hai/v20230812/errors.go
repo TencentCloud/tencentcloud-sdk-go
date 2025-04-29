@@ -62,6 +62,9 @@ const (
 	// 应用ID格式非法
 	INVALIDPARAMETERVALUE_INVALIDAPPLICATIONIDMALFORMED = "InvalidParameterValue.InvalidApplicationIdMalformed"
 
+	// 自定义应用名称重复
+	INVALIDPARAMETERVALUE_INVALIDAPPLICATIONNAMEDUPLICATE = "InvalidParameterValue.InvalidApplicationNameDuplicate"
+
 	// 应用类型application-type仅可以选择PUBLIC_APPLICATION,PRIVATE_APPLICATION或COMMUNITY_APPLICATION
 	INVALIDPARAMETERVALUE_INVALIDAPPLICATIONTYPE = "InvalidParameterValue.InvalidApplicationType"
 
@@ -124,6 +127,9 @@ const (
 
 	// 不允许同时操作预付费过期实例和未过期实例
 	UNSUPPORTEDOPERATION_CANNOTTERMINATEEXPIREDANDNOTEXPIREDINSTANCES = "UnsupportedOperation.CannotTerminateExpiredAndNotExpiredInstances"
+
+	// 实例不支持创建自定义应用
+	UNSUPPORTEDOPERATION_INSTANCECREATEAPPLICATIONNOTSUPPORT = "UnsupportedOperation.InstanceCreateApplicationNotSupport"
 
 	// 不支持对处于`Arrears`状态的实例执行当前操作。
 	UNSUPPORTEDOPERATION_INSTANCESTATEARREARS = "UnsupportedOperation.InstanceStateArrears"

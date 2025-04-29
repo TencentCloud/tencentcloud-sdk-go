@@ -78,6 +78,9 @@ type ChatCompletionsRequestParams struct {
 
 	// 最大生成的token数量，默认为4096，最大可设置为16384
 	MaxTokens *int64 `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
+
+	// 是否启用联网搜索
+	EnableSearch *bool `json:"EnableSearch,omitnil,omitempty" name:"EnableSearch"`
 }
 
 type ChatCompletionsRequest struct {
@@ -101,6 +104,9 @@ type ChatCompletionsRequest struct {
 
 	// 最大生成的token数量，默认为4096，最大可设置为16384
 	MaxTokens *int64 `json:"MaxTokens,omitnil,omitempty" name:"MaxTokens"`
+
+	// 是否启用联网搜索
+	EnableSearch *bool `json:"EnableSearch,omitnil,omitempty" name:"EnableSearch"`
 }
 
 func (r *ChatCompletionsRequest) ToJsonString() string {
@@ -120,6 +126,7 @@ func (r *ChatCompletionsRequest) FromJsonString(s string) error {
 	delete(f, "Stream")
 	delete(f, "Temperature")
 	delete(f, "MaxTokens")
+	delete(f, "EnableSearch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatCompletionsRequest has unknown keys!", "")
 	}
@@ -1079,6 +1086,12 @@ type DocumentUsage struct {
 
 	// 文档拆分任务消耗的总token数
 	TotalTokens *int64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
+
+	// 拆分消耗的token数
+	SplitTokens *int64 `json:"SplitTokens,omitnil,omitempty" name:"SplitTokens"`
+
+	// mllm消耗的token数
+	MllmTokens *int64 `json:"MllmTokens,omitnil,omitempty" name:"MllmTokens"`
 }
 
 type EmbeddingObject struct {
@@ -1679,6 +1692,9 @@ type Message struct {
 	// 思维链内容。
 	// ReasoningConent参数仅支持出参，且只有deepseek-r1模型会返回。
 	ReasoningContent *string `json:"ReasoningContent,omitnil,omitempty" name:"ReasoningContent"`
+
+	// 搜索结果
+	SearchResults []*SearchResult `json:"SearchResults,omitnil,omitempty" name:"SearchResults"`
 }
 
 // Predefined struct for user
@@ -2304,6 +2320,29 @@ func (r *RunRerankResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RunRerankResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchResult struct {
+	// 索引
+	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
+
+	// 链接地址
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 标题
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 摘要
+	Snippet *string `json:"Snippet,omitnil,omitempty" name:"Snippet"`
+
+	// 图标
+	Icon *string `json:"Icon,omitnil,omitempty" name:"Icon"`
+
+	// 站点
+	Site *string `json:"Site,omitnil,omitempty" name:"Site"`
+
+	// 1740412800
+	PublishedTime *int64 `json:"PublishedTime,omitnil,omitempty" name:"PublishedTime"`
 }
 
 type SegmentationConfig struct {

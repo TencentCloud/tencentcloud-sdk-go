@@ -1174,6 +1174,60 @@ type BaseAIResultInfo struct {
 	Location *Location `json:"Location,omitnil,omitempty" name:"Location"`
 }
 
+// Predefined struct for user
+type BatchDeleteVideoDownloadTaskRequestParams struct {
+	// 本地录像下载任务 ID 列表
+	DownloadTaskIds []*string `json:"DownloadTaskIds,omitnil,omitempty" name:"DownloadTaskIds"`
+}
+
+type BatchDeleteVideoDownloadTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 本地录像下载任务 ID 列表
+	DownloadTaskIds []*string `json:"DownloadTaskIds,omitnil,omitempty" name:"DownloadTaskIds"`
+}
+
+func (r *BatchDeleteVideoDownloadTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDeleteVideoDownloadTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DownloadTaskIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchDeleteVideoDownloadTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchDeleteVideoDownloadTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BatchDeleteVideoDownloadTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchDeleteVideoDownloadTaskResponseParams `json:"Response"`
+}
+
+func (r *BatchDeleteVideoDownloadTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDeleteVideoDownloadTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type BatchOperateDeviceData struct {
 	// 任务 ID（用于在查询任务的子任务列表接口ListSubTasks中查询任务进度）
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -1884,6 +1938,105 @@ func (r *ControlRecordTimelineResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateVideoDownloadTaskRequestParams struct {
+	// 通道ID
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 开始时间
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 默认1倍速，支持（1,2,4,8）倍速
+	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
+
+	// 转码后的mp4文件过期时间（支持7,15,30,60,90,180,365）
+	Expire *int64 `json:"Expire,omitnil,omitempty" name:"Expire"`
+
+	// 下载文件格式，当前仅支持（1：mp4）
+	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 完成策略（0：拉流失败但是录像不完整则认为任务失败，不生成 MP4；1：拉流失败但是录像不完整则认为任务成功，生成 mp4）
+	CompletionPolicy *int64 `json:"CompletionPolicy,omitnil,omitempty" name:"CompletionPolicy"`
+}
+
+type CreateVideoDownloadTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 通道ID
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 开始时间
+	BeginTime *int64 `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 默认1倍速，支持（1,2,4,8）倍速
+	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
+
+	// 转码后的mp4文件过期时间（支持7,15,30,60,90,180,365）
+	Expire *int64 `json:"Expire,omitnil,omitempty" name:"Expire"`
+
+	// 下载文件格式，当前仅支持（1：mp4）
+	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 完成策略（0：拉流失败但是录像不完整则认为任务失败，不生成 MP4；1：拉流失败但是录像不完整则认为任务成功，生成 mp4）
+	CompletionPolicy *int64 `json:"CompletionPolicy,omitnil,omitempty" name:"CompletionPolicy"`
+}
+
+func (r *CreateVideoDownloadTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVideoDownloadTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelId")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "Scale")
+	delete(f, "Expire")
+	delete(f, "FileType")
+	delete(f, "CompletionPolicy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVideoDownloadTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVideoDownloadTaskResponseParams struct {
+	// 下载任务返回结果
+	Data *VideoDownloadTaskData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateVideoDownloadTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVideoDownloadTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateVideoDownloadTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVideoDownloadTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAITaskRequestParams struct {
 	// AI任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -2370,6 +2523,60 @@ func (r *DeleteRecordTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteTaskRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DeleteTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteUserDeviceRequestParams struct {
 	// 设备ID（从获取设备列表ListDevices接口中获取）
 	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
@@ -2653,6 +2860,11 @@ func (r *DescribeCNAMEResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeCNAMEResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceAddrList struct {
+	// 设备地址列表
+	RemoteAddrs []*RemoteAddrInfo `json:"RemoteAddrs,omitnil,omitempty" name:"RemoteAddrs"`
 }
 
 type DescribeDeviceChannelData struct {
@@ -3114,6 +3326,63 @@ func (r *DescribeDomainResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGBDeviceAddrRequestParams struct {
+	// 设备ID列表
+	DeviceIds []*string `json:"DeviceIds,omitnil,omitempty" name:"DeviceIds"`
+}
+
+type DescribeGBDeviceAddrRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备ID列表
+	DeviceIds []*string `json:"DeviceIds,omitnil,omitempty" name:"DeviceIds"`
+}
+
+func (r *DescribeGBDeviceAddrRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGBDeviceAddrRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGBDeviceAddrRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGBDeviceAddrResponseParams struct {
+	// 无
+	Data *DescribeDeviceAddrList `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeGBDeviceAddrResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGBDeviceAddrResponseParams `json:"Response"`
+}
+
+func (r *DescribeGBDeviceAddrResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGBDeviceAddrResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6163,6 +6432,129 @@ func (r *ListTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ListVideoDownloadTaskData struct {
+	// 任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*VideoDownloadTask `json:"List,omitnil,omitempty" name:"List"`
+
+	// 任务总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+}
+
+// Predefined struct for user
+type ListVideoDownloadTaskRequestParams struct {
+	// 设备名称，用于模糊搜索
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 通道名称，用于模糊搜索
+	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
+
+	// 任务状态（0：准备中，1：执行中，2：已完成，3：失败）
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 排序规则（仅支持 StartTime，EndTime，倒序为-StartTime，-EndTime）
+	SortRule *string `json:"SortRule,omitnil,omitempty" name:"SortRule"`
+
+	// 响应是否携带预览地址(0:不携带；1:携带)
+	WithPreviewUrl *int64 `json:"WithPreviewUrl,omitnil,omitempty" name:"WithPreviewUrl"`
+
+	// 分页页数
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 下载任务 ID
+	DownloadTaskId *string `json:"DownloadTaskId,omitnil,omitempty" name:"DownloadTaskId"`
+
+	// 下载地址过期时间，单位秒，最大为 1 天， 86400秒
+	UrlExpires *int64 `json:"UrlExpires,omitnil,omitempty" name:"UrlExpires"`
+}
+
+type ListVideoDownloadTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备名称，用于模糊搜索
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 通道名称，用于模糊搜索
+	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
+
+	// 任务状态（0：准备中，1：执行中，2：已完成，3：失败）
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 排序规则（仅支持 StartTime，EndTime，倒序为-StartTime，-EndTime）
+	SortRule *string `json:"SortRule,omitnil,omitempty" name:"SortRule"`
+
+	// 响应是否携带预览地址(0:不携带；1:携带)
+	WithPreviewUrl *int64 `json:"WithPreviewUrl,omitnil,omitempty" name:"WithPreviewUrl"`
+
+	// 分页页数
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 下载任务 ID
+	DownloadTaskId *string `json:"DownloadTaskId,omitnil,omitempty" name:"DownloadTaskId"`
+
+	// 下载地址过期时间，单位秒，最大为 1 天， 86400秒
+	UrlExpires *int64 `json:"UrlExpires,omitnil,omitempty" name:"UrlExpires"`
+}
+
+func (r *ListVideoDownloadTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListVideoDownloadTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceName")
+	delete(f, "ChannelName")
+	delete(f, "Status")
+	delete(f, "SortRule")
+	delete(f, "WithPreviewUrl")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "DownloadTaskId")
+	delete(f, "UrlExpires")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListVideoDownloadTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListVideoDownloadTaskResponseParams struct {
+	// 本地录像下载任务列表
+	Data *ListVideoDownloadTaskData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListVideoDownloadTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ListVideoDownloadTaskResponseParams `json:"Response"`
+}
+
+func (r *ListVideoDownloadTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListVideoDownloadTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Location struct {
 	// 左上角 X 坐标轴
 	X *int64 `json:"X,omitnil,omitempty" name:"X"`
@@ -6625,6 +7017,14 @@ func (r *RefreshDeviceChannelResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RefreshDeviceChannelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RemoteAddrInfo struct {
+	// 设备Id
+	DeviceId *string `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// IP地址
+	Addr *string `json:"Addr,omitnil,omitempty" name:"Addr"`
 }
 
 // Predefined struct for user
@@ -7932,4 +8332,81 @@ func (r *UpgradeGatewayResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpgradeGatewayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type VideoDownloadTask struct {
+	// 下载任务 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownloadTaskId *string `json:"DownloadTaskId,omitnil,omitempty" name:"DownloadTaskId"`
+
+	// 通道 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 通道名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
+
+	// 通道编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelCode *string `json:"ChannelCode,omitnil,omitempty" name:"ChannelCode"`
+
+	// 设备名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 设备编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceCode *string `json:"DeviceCode,omitnil,omitempty" name:"DeviceCode"`
+
+	// 任务状态（0：未执行；1：执行中；2 任务完成；
+	// 3：任务失败）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 下载录像时间段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoTimeSection *string `json:"VideoTimeSection,omitnil,omitempty" name:"VideoTimeSection"`
+
+	// 倍速
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
+
+	// 下载时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownloadTime *int64 `json:"DownloadTime,omitnil,omitempty" name:"DownloadTime"`
+
+	// 录像大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoSize *int64 `json:"VideoSize,omitnil,omitempty" name:"VideoSize"`
+
+	// 任务开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 任务结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 文件下载地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileDownloadUrl *string `json:"FileDownloadUrl,omitnil,omitempty" name:"FileDownloadUrl"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedReason *string `json:"FailedReason,omitnil,omitempty" name:"FailedReason"`
+
+	// 生命周期规则，热存天数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Expire *int64 `json:"Expire,omitnil,omitempty" name:"Expire"`
+
+	// mp4预览地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PreviewUrl *string `json:"PreviewUrl,omitnil,omitempty" name:"PreviewUrl"`
+}
+
+type VideoDownloadTaskData struct {
+	// 下载任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownloadTaskId *string `json:"DownloadTaskId,omitnil,omitempty" name:"DownloadTaskId"`
 }

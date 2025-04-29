@@ -3420,6 +3420,9 @@ type OrderStep struct {
 	// 处理人
 	OwnerName *string `json:"OwnerName,omitnil,omitempty" name:"OwnerName"`
 
+	// 处理人手机号
+	OwnerPhone *string `json:"OwnerPhone,omitnil,omitempty" name:"OwnerPhone"`
+
 	// 完成时间
 	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
 
