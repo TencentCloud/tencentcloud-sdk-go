@@ -1452,11 +1452,9 @@ type TargetGroupBackend struct {
 	RegisteredTime *string `json:"RegisteredTime,omitnil,omitempty" name:"RegisteredTime"`
 
 	// 弹性网卡唯一ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EniId *string `json:"EniId,omitnil,omitempty" name:"EniId"`
 
 	// 后端服务的可用区ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *uint64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 }
 

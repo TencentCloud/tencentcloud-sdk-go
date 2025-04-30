@@ -1240,6 +1240,17 @@ type CreateLaunchTemplateRequestParams struct {
 
 	// 标签描述列表。通过指定该参数可以绑定标签到实例启动模板。
 	LaunchTemplateTagSpecification []*TagSpecification `json:"LaunchTemplateTagSpecification,omitnil,omitempty" name:"LaunchTemplateTagSpecification"`
+
+	// 自定义metadata，支持创建 CVM 时添加自定义元数据键值对。
+	// **注：内测中**。
+	Metadata *Metadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+
+	// 只允许传递 Update 和 Replace 参数，在模板使用自定义 Metadata 且在 RunInstances 也传递 Metadata 时生效。默认采用 Replace。
+	// 
+	// - Update：设模板 t含本参数值为Update、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k1:v1, k2:v3] 
+	// - Replace：模板 t含本参数值为Replace、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k2:v3] 
+	// **注：内测中**。
+	TemplateDataModifyAction *string `json:"TemplateDataModifyAction,omitnil,omitempty" name:"TemplateDataModifyAction"`
 }
 
 type CreateLaunchTemplateRequest struct {
@@ -1333,6 +1344,17 @@ type CreateLaunchTemplateRequest struct {
 
 	// 标签描述列表。通过指定该参数可以绑定标签到实例启动模板。
 	LaunchTemplateTagSpecification []*TagSpecification `json:"LaunchTemplateTagSpecification,omitnil,omitempty" name:"LaunchTemplateTagSpecification"`
+
+	// 自定义metadata，支持创建 CVM 时添加自定义元数据键值对。
+	// **注：内测中**。
+	Metadata *Metadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+
+	// 只允许传递 Update 和 Replace 参数，在模板使用自定义 Metadata 且在 RunInstances 也传递 Metadata 时生效。默认采用 Replace。
+	// 
+	// - Update：设模板 t含本参数值为Update、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k1:v1, k2:v3] 
+	// - Replace：模板 t含本参数值为Replace、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k2:v3] 
+	// **注：内测中**。
+	TemplateDataModifyAction *string `json:"TemplateDataModifyAction,omitnil,omitempty" name:"TemplateDataModifyAction"`
 }
 
 func (r *CreateLaunchTemplateRequest) ToJsonString() string {
@@ -1375,6 +1397,8 @@ func (r *CreateLaunchTemplateRequest) FromJsonString(s string) error {
 	delete(f, "InstanceChargePrepaid")
 	delete(f, "DisableApiTermination")
 	delete(f, "LaunchTemplateTagSpecification")
+	delete(f, "Metadata")
+	delete(f, "TemplateDataModifyAction")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLaunchTemplateRequest has unknown keys!", "")
 	}
@@ -1496,6 +1520,17 @@ type CreateLaunchTemplateVersionRequestParams struct {
 
 	// 实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：<br><li>TRUE：表示开启实例保护，不允许通过api接口删除实例</li><br><li>FALSE：表示关闭实例保护，允许通过api接口删除实例</li><br><br>默认取值：FALSE。
 	DisableApiTermination *bool `json:"DisableApiTermination,omitnil,omitempty" name:"DisableApiTermination"`
+
+	// 自定义metadata，支持创建 CVM 时添加自定义元数据键值对。
+	// **注：内测中**。
+	Metadata *Metadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+
+	// 只允许传递 Update 和 Replace 参数，在模板使用自定义 Metadata 且在 RunInstances 也传递 Metadata 时生效。默认采用 Replace。
+	// 
+	// - Update：设模板 t含本参数值为Update、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k1:v1, k2:v3] 
+	// - Replace：模板 t含本参数值为Replace、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k2:v3] 
+	// **注：内测中**。
+	TemplateDataModifyAction *string `json:"TemplateDataModifyAction,omitnil,omitempty" name:"TemplateDataModifyAction"`
 }
 
 type CreateLaunchTemplateVersionRequest struct {
@@ -1589,6 +1624,17 @@ type CreateLaunchTemplateVersionRequest struct {
 
 	// 实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：<br><li>TRUE：表示开启实例保护，不允许通过api接口删除实例</li><br><li>FALSE：表示关闭实例保护，允许通过api接口删除实例</li><br><br>默认取值：FALSE。
 	DisableApiTermination *bool `json:"DisableApiTermination,omitnil,omitempty" name:"DisableApiTermination"`
+
+	// 自定义metadata，支持创建 CVM 时添加自定义元数据键值对。
+	// **注：内测中**。
+	Metadata *Metadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+
+	// 只允许传递 Update 和 Replace 参数，在模板使用自定义 Metadata 且在 RunInstances 也传递 Metadata 时生效。默认采用 Replace。
+	// 
+	// - Update：设模板 t含本参数值为Update、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k1:v1, k2:v3] 
+	// - Replace：模板 t含本参数值为Replace、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k2:v3] 
+	// **注：内测中**。
+	TemplateDataModifyAction *string `json:"TemplateDataModifyAction,omitnil,omitempty" name:"TemplateDataModifyAction"`
 }
 
 func (r *CreateLaunchTemplateVersionRequest) ToJsonString() string {
@@ -1631,6 +1677,8 @@ func (r *CreateLaunchTemplateVersionRequest) FromJsonString(s string) error {
 	delete(f, "InstanceChargeType")
 	delete(f, "InstanceChargePrepaid")
 	delete(f, "DisableApiTermination")
+	delete(f, "Metadata")
+	delete(f, "TemplateDataModifyAction")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLaunchTemplateVersionRequest has unknown keys!", "")
 	}
@@ -6405,6 +6453,11 @@ type InquiryPriceRunInstancesRequestParams struct {
 	// 实例的市场相关选项，如竞价实例相关参数
 	InstanceMarketOptions *InstanceMarketOptionsRequest `json:"InstanceMarketOptions,omitnil,omitempty" name:"InstanceMarketOptions"`
 
+	// 自定义metadata，支持创建 CVM 时添加自定义元数据键值对。
+	// 
+	// **注：内测中**。
+	Metadata *Metadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+
 	// 高性能计算集群ID。
 	HpcClusterId *string `json:"HpcClusterId,omitnil,omitempty" name:"HpcClusterId"`
 
@@ -6475,6 +6528,11 @@ type InquiryPriceRunInstancesRequest struct {
 	// 实例的市场相关选项，如竞价实例相关参数
 	InstanceMarketOptions *InstanceMarketOptionsRequest `json:"InstanceMarketOptions,omitnil,omitempty" name:"InstanceMarketOptions"`
 
+	// 自定义metadata，支持创建 CVM 时添加自定义元数据键值对。
+	// 
+	// **注：内测中**。
+	Metadata *Metadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+
 	// 高性能计算集群ID。
 	HpcClusterId *string `json:"HpcClusterId,omitnil,omitempty" name:"HpcClusterId"`
 
@@ -6515,6 +6573,7 @@ func (r *InquiryPriceRunInstancesRequest) FromJsonString(s string) error {
 	delete(f, "HostName")
 	delete(f, "TagSpecification")
 	delete(f, "InstanceMarketOptions")
+	delete(f, "Metadata")
 	delete(f, "HpcClusterId")
 	delete(f, "CpuTopology")
 	delete(f, "LaunchTemplate")
@@ -7195,6 +7254,19 @@ type LoginSettings struct {
 
 	// 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为true。取值范围：<li>true：表示保持镜像的登录设置</li><li>false：表示不保持镜像的登录设置</li>默认取值：false。
 	KeepImageLogin *string `json:"KeepImageLogin,omitnil,omitempty" name:"KeepImageLogin"`
+}
+
+type Metadata struct {
+	// 自定义metadata键值对列表。
+	Items []*MetadataItem `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+type MetadataItem struct {
+	// 自定义metadata键，需符合正则 ^[a-zA-Z0-9_-]+$，长度 ≤128 字节（大小写敏感）；
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 自定义metadata值，支持任意数据（含二进制），大小 ≤256 KB（大小写敏感）；
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 // Predefined struct for user
@@ -9720,6 +9792,10 @@ type RunInstancesRequestParams struct {
 	// 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526)和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 
+	// 自定义metadata，支持创建 CVM 时添加自定义元数据键值对。
+	// **注：内测中**。
+	Metadata *Metadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+
 	// 是否只预检此次请求。
 	// true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和云服务器库存。
 	// 如果检查不通过，则返回对应错误码；
@@ -9818,6 +9894,10 @@ type RunInstancesRequest struct {
 	// 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526)和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 
+	// 自定义metadata，支持创建 CVM 时添加自定义元数据键值对。
+	// **注：内测中**。
+	Metadata *Metadata `json:"Metadata,omitnil,omitempty" name:"Metadata"`
+
 	// 是否只预检此次请求。
 	// true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和云服务器库存。
 	// 如果检查不通过，则返回对应错误码；
@@ -9880,6 +9960,7 @@ func (r *RunInstancesRequest) FromJsonString(s string) error {
 	delete(f, "TagSpecification")
 	delete(f, "InstanceMarketOptions")
 	delete(f, "UserData")
+	delete(f, "Metadata")
 	delete(f, "DryRun")
 	delete(f, "CpuTopology")
 	delete(f, "CamRoleName")

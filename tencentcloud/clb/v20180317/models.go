@@ -5557,7 +5557,7 @@ type HealthCheck struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpCheckPath *string `json:"HttpCheckPath,omitnil,omitempty" name:"HttpCheckPath"`
 
-	// 健康检查域名（仅适用于HTTP/HTTPS监听器和TCP监听器的HTTP健康检查方式。针对TCP监听器，当使用HTTP健康检查方式时，该参数为必填项）。
+	// 健康检查域名，将在HTTP协议 Host 头字段中携带。（仅适用于HTTP/HTTPS监听器和TCP监听器的HTTP健康检查方式。针对TCP监听器，当使用HTTP健康检查方式时，该参数为必填项）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HttpCheckDomain *string `json:"HttpCheckDomain,omitnil,omitempty" name:"HttpCheckDomain"`
 

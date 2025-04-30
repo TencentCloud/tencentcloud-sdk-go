@@ -9009,6 +9009,9 @@ type NodeHardwareInfo struct {
 
 	// 资源类型（HardwareResourceType）为pod时，对应的TKE集群id
 	TkeClusterId *string `json:"TkeClusterId,omitnil,omitempty" name:"TkeClusterId"`
+
+	// 新挂磁盘时可支持配置的服务名称列表
+	ConfigurableServices []*string `json:"ConfigurableServices,omitnil,omitempty" name:"ConfigurableServices"`
 }
 
 type NodeRenewPriceDetail struct {

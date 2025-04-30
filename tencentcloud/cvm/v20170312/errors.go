@@ -395,6 +395,15 @@ const (
 	// 重复标签。
 	INVALIDPARAMETERVALUE_DUPLICATETAGS = "InvalidParameterValue.DuplicateTags"
 
+	// 弹性网卡数据不存在
+	INVALIDPARAMETERVALUE_ELASTICNETWORKNOTEXIST = "InvalidParameterValue.ElasticNetworkNotExist"
+
+	// 弹性网卡数据vpc子网不匹配,必须为同vpc不同子网
+	INVALIDPARAMETERVALUE_ELASTICNETWORKVPCSUBNETMISMATCH = "InvalidParameterValue.ElasticNetworkVpcSubnetMismatch"
+
+	// 弹性网卡ID不合要求，请提供规范的弹性网卡ID，类似eni-xxxxxxxx，字母x代表小写字符或者数字
+	INVALIDPARAMETERVALUE_ENIIDMALFORMED = "InvalidParameterValue.EniIdMalformed"
+
 	// 实例的申请的外网IP个数超过了这种规格实例的外网ip配额。
 	INVALIDPARAMETERVALUE_EXTERNALIPQUOTALIMITED = "InvalidParameterValue.ExternalIpQuotaLimited"
 
@@ -427,6 +436,9 @@ const (
 
 	// 指定机型不存在
 	INVALIDPARAMETERVALUE_INSTANCETYPENOTFOUND = "InvalidParameterValue.InstanceTypeNotFound"
+
+	// 实例类型不支持弹性网卡数据
+	INVALIDPARAMETERVALUE_INSTANCETYPENOTSUPPORTELASTICNETWORKS = "InvalidParameterValue.InstanceTypeNotSupportElasticNetworks"
 
 	// 实例类型不可加入高性能计算集群。
 	INVALIDPARAMETERVALUE_INSTANCETYPENOTSUPPORTHPCCLUSTER = "InvalidParameterValue.InstanceTypeNotSupportHpcCluster"
@@ -560,6 +572,9 @@ const (
 	// 参数值必须为开启DHCP的VPC
 	INVALIDPARAMETERVALUE_MUSTDHCPENABLEDVPC = "InvalidParameterValue.MustDhcpEnabledVpc"
 
+	// 参数值必须为开启弹性rdma接口
+	INVALIDPARAMETERVALUE_MUSTENABLEDISRDMA = "InvalidParameterValue.MustEnabledIsRdma"
+
 	// 子网不属于该cdc集群。
 	INVALIDPARAMETERVALUE_NOTCDCSUBNET = "InvalidParameterValue.NotCdcSubnet"
 
@@ -589,6 +604,9 @@ const (
 
 	// 子网ID不合要求，请提供规范的子网ID，类似subnet-xxxxxxxx，字母x代表小写字符或者数字
 	INVALIDPARAMETERVALUE_SUBNETIDMALFORMED = "InvalidParameterValue.SubnetIdMalformed"
+
+	// 子网ID所在可用区与实例所在区不匹配。
+	INVALIDPARAMETERVALUE_SUBNETIDZONEIDNOTMATCH = "InvalidParameterValue.SubnetIdZoneIdNotMatch"
 
 	// 创建失败，您指定的子网不存在，请您重新指定
 	INVALIDPARAMETERVALUE_SUBNETNOTEXIST = "InvalidParameterValue.SubnetNotExist"
