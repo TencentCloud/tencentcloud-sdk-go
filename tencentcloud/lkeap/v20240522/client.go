@@ -101,6 +101,14 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 //     -  支持64K上下文长度，最大输出16k。
 //
+// - DeepSeek-Prover-V2（model 参数值为**deepseek-prover-v2**）
+//
+//     - DeepSeek-Prover-V2 为671B 参数 MoE 模型，在数学定理证明和复杂计算任务中表现出色。
+//
+//     -  支持64K上下文长度，最大输出16k。
+//
+// 
+//
 // 
 //
 // ### 计费说明
@@ -111,7 +119,7 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 // 
 //
-//     -   DeepSeek-R1 模型   | 输入：0.004元/千token | 输出（含思维链）：0.016元/千token
+//     -  DeepSeek-R1 模型   | 输入：0.004元/千token | 输出（含思维链）：0.016元/千token
 //
 // 
 //
@@ -120,6 +128,10 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 // 
 //
 //     - DeepSeek-V3-0324 模型 | 输入：0.002元/千token | 输出：0.008元/千token
+//
+// 
+//
+//     - DeepSeek-Prover-V2 模型 | 暂不计费
 //
 // 
 //
@@ -324,6 +336,14 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 //     -  支持64K上下文长度，最大输出16k。
 //
+// - DeepSeek-Prover-V2（model 参数值为**deepseek-prover-v2**）
+//
+//     - DeepSeek-Prover-V2 为671B 参数 MoE 模型，在数学定理证明和复杂计算任务中表现出色。
+//
+//     -  支持64K上下文长度，最大输出16k。
+//
+// 
+//
 // 
 //
 // ### 计费说明
@@ -334,7 +354,7 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 // 
 //
-//     -   DeepSeek-R1 模型   | 输入：0.004元/千token | 输出（含思维链）：0.016元/千token
+//     -  DeepSeek-R1 模型   | 输入：0.004元/千token | 输出（含思维链）：0.016元/千token
 //
 // 
 //
@@ -343,6 +363,10 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 // 
 //
 //     - DeepSeek-V3-0324 模型 | 输入：0.002元/千token | 输出：0.008元/千token
+//
+// 
+//
+//     - DeepSeek-Prover-V2 模型 | 暂不计费
 //
 // 
 //

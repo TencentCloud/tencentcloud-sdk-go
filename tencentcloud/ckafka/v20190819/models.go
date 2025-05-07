@@ -6054,6 +6054,91 @@ func (r *DescribeRouteResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSecurityGroupRoutesRequestParams struct {
+	// 路由信息
+	InstanceRoute *InstanceRoute `json:"InstanceRoute,omitnil,omitempty" name:"InstanceRoute"`
+
+	// 过滤器
+	Filters []*RouteFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页Offset,默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页Limit,默认20
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 关键词,可根据实例id/实例名称/vip模糊搜索
+	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
+}
+
+type DescribeSecurityGroupRoutesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 路由信息
+	InstanceRoute *InstanceRoute `json:"InstanceRoute,omitnil,omitempty" name:"InstanceRoute"`
+
+	// 过滤器
+	Filters []*RouteFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页Offset,默认0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页Limit,默认20
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 关键词,可根据实例id/实例名称/vip模糊搜索
+	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
+}
+
+func (r *DescribeSecurityGroupRoutesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSecurityGroupRoutesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceRoute")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchWord")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSecurityGroupRoutesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSecurityGroupRoutesResponseParams struct {
+	// 返回的安全组路由信息结果对象
+	Result *SecurityGroupRouteResp `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSecurityGroupRoutesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSecurityGroupRoutesResponseParams `json:"Response"`
+}
+
+func (r *DescribeSecurityGroupRoutesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSecurityGroupRoutesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTaskStatusRequestParams struct {
 	// 流程Id
 	FlowId *int64 `json:"FlowId,omitnil,omitempty" name:"FlowId"`
@@ -8292,6 +8377,16 @@ type InstanceResponse struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
+type InstanceRoute struct {
+	// ckafka集群实例Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 路由Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouteId *int64 `json:"RouteId,omitnil,omitempty" name:"RouteId"`
+}
+
 // Predefined struct for user
 type InstanceScalingDownRequestParams struct {
 	// ckafka集群实例Id
@@ -10337,6 +10432,20 @@ type RouteDTO struct {
 	RouteId *int64 `json:"RouteId,omitnil,omitempty" name:"RouteId"`
 }
 
+type RouteFilter struct {
+	// 过滤名称,目前支持security-group-id,按安全组关联过滤
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 过滤值,当过滤名称为security-group-id时仅支持传单个value
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+
+	// 过滤关系,支持IN和NOT_IN,默认为IN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Relation *string `json:"Relation,omitnil,omitempty" name:"Relation"`
+}
+
 type RouteResponse struct {
 	// 路由信息列表
 	Routers []*Route `json:"Routers,omitnil,omitempty" name:"Routers"`
@@ -10475,6 +10584,38 @@ type ScfParam struct {
 type SecondaryAnalyseParam struct {
 	// 分隔符
 	Regex *string `json:"Regex,omitnil,omitempty" name:"Regex"`
+}
+
+type SecurityGroupRoute struct {
+	// 路由信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceRoute *InstanceRoute `json:"InstanceRoute,omitnil,omitempty" name:"InstanceRoute"`
+
+	// 关联的安全组列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// ckafka集群实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 路由vpcId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 路由vip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
+}
+
+type SecurityGroupRouteResp struct {
+	// 符合条件的安全组路由信息总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 符合条件的安全组路由信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroupRoutes []*SecurityGroupRoute `json:"SecurityGroupRoutes,omitnil,omitempty" name:"SecurityGroupRoutes"`
 }
 
 // Predefined struct for user

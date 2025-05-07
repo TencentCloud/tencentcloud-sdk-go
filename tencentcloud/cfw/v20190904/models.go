@@ -587,6 +587,14 @@ type CfwNatDnatRule struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
+type Column struct {
+	// 列的名字
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 列的属性
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
 type CommonFilter struct {
 	// 检索的键值
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -7205,6 +7213,58 @@ type IpStatic struct {
 	StatTime *string `json:"StatTime,omitnil,omitempty" name:"StatTime"`
 }
 
+type LogInfo struct {
+	// 日志时间，单位ms
+	Time *int64 `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 日志主题名称
+	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
+
+	// 日志来源IP
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 日志文件名称
+	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 日志上报请求包的ID
+	PkgId *string `json:"PkgId,omitnil,omitempty" name:"PkgId"`
+
+	// 请求包内日志的ID
+	PkgLogId *string `json:"PkgLogId,omitnil,omitempty" name:"PkgLogId"`
+
+	// 日志内容的Json序列化字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogJson *string `json:"LogJson,omitnil,omitempty" name:"LogJson"`
+
+	// 日志来源主机名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
+
+	// 原始日志(仅在日志创建索引异常时有值)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RawLog *string `json:"RawLog,omitnil,omitempty" name:"RawLog"`
+
+	// 日志创建索引异常原因(仅在日志创建索引异常时有值)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexStatus *string `json:"IndexStatus,omitnil,omitempty" name:"IndexStatus"`
+}
+
+type LogItem struct {
+	// 日志Key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 日志Value
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type LogItems struct {
+	// 分析结果返回的KV数据对
+	Data []*LogItem `json:"Data,omitnil,omitempty" name:"Data"`
+}
+
 // Predefined struct for user
 type ModifyAcRuleRequestParams struct {
 	// 规则数组
@@ -9614,6 +9674,14 @@ func (r *ModifyVpcFwSequenceRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type MultiTopicSearchInformation struct {
+	// 要检索分析的日志主题ID
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+}
+
 type NatFwEipsInfo struct {
 	// 弹性公网ip
 	Eip *string `json:"Eip,omitnil,omitempty" name:"Eip"`
@@ -10195,6 +10263,287 @@ type ScanResultInfo struct {
 
 	// 暴露端口数量
 	PortNum *uint64 `json:"PortNum,omitnil,omitempty" name:"PortNum"`
+}
+
+type SearchLogErrors struct {
+	// 日志主题ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// 错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorCodeStr *string `json:"ErrorCodeStr,omitnil,omitempty" name:"ErrorCodeStr"`
+}
+
+type SearchLogInfos struct {
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// 日志存储生命周期
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+}
+
+// Predefined struct for user
+type SearchLogRequestParams struct {
+	// 要检索分析的日志的起始时间，Unix时间戳（毫秒）
+	From *int64 `json:"From,omitnil,omitempty" name:"From"`
+
+	// 要检索分析的日志的结束时间，Unix时间戳（毫秒）
+	To *int64 `json:"To,omitnil,omitempty" name:"To"`
+
+	// 检索分析语句，最大长度为12KB
+	// 语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
+	// 使用*或空字符串可查询所有日志
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 检索语法规则，默认值为0，推荐使用1 。
+	// 
+	// - 0：Lucene语法
+	// - 1：CQL语法（日志服务专用检索语法，控制台默认也使用该语法规则）。
+	// 
+	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
+
+	// - 要检索分析的日志主题ID，仅能指定一个日志主题。
+	// - 如需同时检索多个日志主题，请使用Topics参数。
+	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// - 要检索分析的日志主题列表，最大支持50个日志主题。
+	// - 检索单个日志主题时请使用TopicId。
+	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
+	Topics []*MultiTopicSearchInformation `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+	// 注意：
+	// * 仅当检索分析语句(Query)不包含SQL时有效
+	// * SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// 表示单次查询返回的原始日志条数，默认为100，最大值为1000。
+	// 注意：
+	// * 仅当检索分析语句(Query)不包含SQL时有效
+	// * SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+	// 
+	// 可通过两种方式获取后续更多日志：
+	// * Context:透传上次接口返回的Context值，获取后续更多日志，总计最多可获取1万条原始日志
+	// * Offset:偏移量，表示从第几行开始返回原始日志，无日志条数限制
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 查询原始日志的偏移量，表示从第几行开始返回原始日志，默认为0。 
+	// 注意：
+	// * 仅当检索分析语句(Query)不包含SQL时有效
+	// * 不能与Context参数同时使用
+	// * 仅适用于单日志主题检索
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
+	// 注意：
+	// * 透传该参数时，请勿修改除该参数外的其它参数
+	// * 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
+	// * 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// 执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。
+	// 0：自动采样;
+	// 0～1：按指定采样率采样，例如0.02;
+	// 1：不采样，即精确分析
+	// 默认值为1
+	SamplingRate *float64 `json:"SamplingRate,omitnil,omitempty" name:"SamplingRate"`
+
+	// 为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效
+	// 为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
+	// 两种返回方式在编码格式上有少量区别，建议使用true
+	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil,omitempty" name:"UseNewAnalysis"`
+}
+
+type SearchLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要检索分析的日志的起始时间，Unix时间戳（毫秒）
+	From *int64 `json:"From,omitnil,omitempty" name:"From"`
+
+	// 要检索分析的日志的结束时间，Unix时间戳（毫秒）
+	To *int64 `json:"To,omitnil,omitempty" name:"To"`
+
+	// 检索分析语句，最大长度为12KB
+	// 语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句
+	// 使用*或空字符串可查询所有日志
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 检索语法规则，默认值为0，推荐使用1 。
+	// 
+	// - 0：Lucene语法
+	// - 1：CQL语法（日志服务专用检索语法，控制台默认也使用该语法规则）。
+	// 
+	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil,omitempty" name:"SyntaxRule"`
+
+	// - 要检索分析的日志主题ID，仅能指定一个日志主题。
+	// - 如需同时检索多个日志主题，请使用Topics参数。
+	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
+	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
+
+	// - 要检索分析的日志主题列表，最大支持50个日志主题。
+	// - 检索单个日志主题时请使用TopicId。
+	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
+	Topics []*MultiTopicSearchInformation `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+	// 注意：
+	// * 仅当检索分析语句(Query)不包含SQL时有效
+	// * SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
+	Sort *string `json:"Sort,omitnil,omitempty" name:"Sort"`
+
+	// 表示单次查询返回的原始日志条数，默认为100，最大值为1000。
+	// 注意：
+	// * 仅当检索分析语句(Query)不包含SQL时有效
+	// * SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+	// 
+	// 可通过两种方式获取后续更多日志：
+	// * Context:透传上次接口返回的Context值，获取后续更多日志，总计最多可获取1万条原始日志
+	// * Offset:偏移量，表示从第几行开始返回原始日志，无日志条数限制
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 查询原始日志的偏移量，表示从第几行开始返回原始日志，默认为0。 
+	// 注意：
+	// * 仅当检索分析语句(Query)不包含SQL时有效
+	// * 不能与Context参数同时使用
+	// * 仅适用于单日志主题检索
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
+	// 注意：
+	// * 透传该参数时，请勿修改除该参数外的其它参数
+	// * 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
+	// * 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// 执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。
+	// 0：自动采样;
+	// 0～1：按指定采样率采样，例如0.02;
+	// 1：不采样，即精确分析
+	// 默认值为1
+	SamplingRate *float64 `json:"SamplingRate,omitnil,omitempty" name:"SamplingRate"`
+
+	// 为true代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效
+	// 为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
+	// 两种返回方式在编码格式上有少量区别，建议使用true
+	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil,omitempty" name:"UseNewAnalysis"`
+}
+
+func (r *SearchLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "From")
+	delete(f, "To")
+	delete(f, "Query")
+	delete(f, "SyntaxRule")
+	delete(f, "TopicId")
+	delete(f, "Topics")
+	delete(f, "Sort")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Context")
+	delete(f, "SamplingRate")
+	delete(f, "UseNewAnalysis")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchLogResponseParams struct {
+	// 透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时。
+	// 注意：
+	// * 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
+	Context *string `json:"Context,omitnil,omitempty" name:"Context"`
+
+	// 符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志
+	// 注意：仅当检索分析语句(Query)不包含SQL时有效
+	ListOver *bool `json:"ListOver,omitnil,omitempty" name:"ListOver"`
+
+	// 返回的是否为统计分析（即SQL）结果
+	Analysis *bool `json:"Analysis,omitnil,omitempty" name:"Analysis"`
+
+	// 匹配检索条件的原始日志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Results []*LogInfo `json:"Results,omitnil,omitempty" name:"Results"`
+
+	// 日志统计分析结果的列名
+	// 当UseNewAnalysis为false时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColNames []*string `json:"ColNames,omitnil,omitempty" name:"ColNames"`
+
+	// 日志统计分析结果
+	// 当UseNewAnalysis为false时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnalysisResults []*LogItems `json:"AnalysisResults,omitnil,omitempty" name:"AnalysisResults"`
+
+	// 日志统计分析结果
+	// 当UseNewAnalysis为true时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnalysisRecords []*string `json:"AnalysisRecords,omitnil,omitempty" name:"AnalysisRecords"`
+
+	// 日志统计分析结果的列属性
+	// 当UseNewAnalysis为true时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Columns []*Column `json:"Columns,omitnil,omitempty" name:"Columns"`
+
+	// 本次统计分析使用的采样率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SamplingRate *float64 `json:"SamplingRate,omitnil,omitempty" name:"SamplingRate"`
+
+	// 使用多日志主题检索时，各个日志主题的基本信息，例如报错信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Topics *SearchLogTopics `json:"Topics,omitnil,omitempty" name:"Topics"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SearchLogResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchLogResponseParams `json:"Response"`
+}
+
+func (r *SearchLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchLogTopics struct {
+	// 多日志主题检索对应的错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Errors []*SearchLogErrors `json:"Errors,omitnil,omitempty" name:"Errors"`
+
+	// 多日志主题检索各日志主题信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Infos []*SearchLogInfos `json:"Infos,omitnil,omitempty" name:"Infos"`
 }
 
 type SecurityGroupBothWayInfo struct {

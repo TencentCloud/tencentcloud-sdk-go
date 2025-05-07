@@ -2129,6 +2129,77 @@ func (c *Client) ModifyAndroidInstancesUserIdWithContext(ctx context.Context, re
     return
 }
 
+func NewRebootAndroidInstanceHostsRequest() (request *RebootAndroidInstanceHostsRequest) {
+    request = &RebootAndroidInstanceHostsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "RebootAndroidInstanceHosts")
+    
+    
+    return
+}
+
+func NewRebootAndroidInstanceHostsResponse() (response *RebootAndroidInstanceHostsResponse) {
+    response = &RebootAndroidInstanceHostsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RebootAndroidInstanceHosts
+// 重启安卓实例宿主机。请注意：
+//
+// 
+//
+// - 当前每 15 分钟只能重启一次
+//
+// - 一个宿主机可能有多个云手机实例，重启宿主机会影响运行在上面的所有实例，请确保该宿主机上的所有云手机实例未投入业务使用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RebootAndroidInstanceHosts(request *RebootAndroidInstanceHostsRequest) (response *RebootAndroidInstanceHostsResponse, err error) {
+    return c.RebootAndroidInstanceHostsWithContext(context.Background(), request)
+}
+
+// RebootAndroidInstanceHosts
+// 重启安卓实例宿主机。请注意：
+//
+// 
+//
+// - 当前每 15 分钟只能重启一次
+//
+// - 一个宿主机可能有多个云手机实例，重启宿主机会影响运行在上面的所有实例，请确保该宿主机上的所有云手机实例未投入业务使用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RebootAndroidInstanceHostsWithContext(ctx context.Context, request *RebootAndroidInstanceHostsRequest) (response *RebootAndroidInstanceHostsResponse, err error) {
+    if request == nil {
+        request = NewRebootAndroidInstanceHostsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RebootAndroidInstanceHosts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRebootAndroidInstanceHostsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRebootAndroidInstancesRequest() (request *RebootAndroidInstancesRequest) {
     request = &RebootAndroidInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

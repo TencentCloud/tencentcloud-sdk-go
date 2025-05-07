@@ -4133,6 +4133,65 @@ func (c *Client) DescribeRouteWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDescribeSecurityGroupRoutesRequest() (request *DescribeSecurityGroupRoutesRequest) {
+    request = &DescribeSecurityGroupRoutesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ckafka", APIVersion, "DescribeSecurityGroupRoutes")
+    
+    
+    return
+}
+
+func NewDescribeSecurityGroupRoutesResponse() (response *DescribeSecurityGroupRoutesResponse) {
+    response = &DescribeSecurityGroupRoutesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSecurityGroupRoutes
+// 获取安全组路由信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSecurityGroupRoutes(request *DescribeSecurityGroupRoutesRequest) (response *DescribeSecurityGroupRoutesResponse, err error) {
+    return c.DescribeSecurityGroupRoutesWithContext(context.Background(), request)
+}
+
+// DescribeSecurityGroupRoutes
+// 获取安全组路由信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeSecurityGroupRoutesWithContext(ctx context.Context, request *DescribeSecurityGroupRoutesRequest) (response *DescribeSecurityGroupRoutesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityGroupRoutesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityGroupRoutes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSecurityGroupRoutesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskStatusRequest() (request *DescribeTaskStatusRequest) {
     request = &DescribeTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

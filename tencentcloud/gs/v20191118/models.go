@@ -3004,6 +3004,63 @@ func (r *ModifyAndroidInstancesUserIdResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RebootAndroidInstanceHostsRequestParams struct {
+	// 宿主机序列号集合
+	HostSerialNumbers []*string `json:"HostSerialNumbers,omitnil,omitempty" name:"HostSerialNumbers"`
+}
+
+type RebootAndroidInstanceHostsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 宿主机序列号集合
+	HostSerialNumbers []*string `json:"HostSerialNumbers,omitnil,omitempty" name:"HostSerialNumbers"`
+}
+
+func (r *RebootAndroidInstanceHostsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RebootAndroidInstanceHostsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "HostSerialNumbers")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RebootAndroidInstanceHostsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RebootAndroidInstanceHostsResponseParams struct {
+	// 任务 ID 集合，以供任务状态查询，其中 InstanceId 为宿主机序列号
+	TaskSet []*AndroidInstanceTask `json:"TaskSet,omitnil,omitempty" name:"TaskSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RebootAndroidInstanceHostsResponse struct {
+	*tchttp.BaseResponse
+	Response *RebootAndroidInstanceHostsResponseParams `json:"Response"`
+}
+
+func (r *RebootAndroidInstanceHostsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RebootAndroidInstanceHostsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RebootAndroidInstancesRequestParams struct {
 	// 实例ID
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`

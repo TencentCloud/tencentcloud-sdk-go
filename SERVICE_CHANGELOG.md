@@ -1,57 +1,68 @@
-# Release v1.0.1158
+# Release v1.0.1159
 
-## 云服务器(cvm) 版本：2017-03-12
+## 云防火墙(cfw) 版本：2019-09-04
 
-### 第 151 次发布
+### 第 80 次发布
 
-发布时间：2025-05-01 01:12:49
+发布时间：2025-05-07 01:17:01
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [CreateLaunchTemplate](https://cloud.tencent.com/document/api/213/66327)
-
-	* 新增入参：Metadata, TemplateDataModifyAction
-
-* [CreateLaunchTemplateVersion](https://cloud.tencent.com/document/api/213/66326)
-
-	* 新增入参：Metadata, TemplateDataModifyAction
-
-* [InquiryPriceRunInstances](https://cloud.tencent.com/document/api/213/15726)
-
-	* 新增入参：Metadata
-
-* [RunInstances](https://cloud.tencent.com/document/api/213/15730)
-
-	* 新增入参：Metadata
-
+* [SearchLog](https://cloud.tencent.com/document/api/1132/118363)
 
 新增数据结构：
 
-* [Metadata](https://cloud.tencent.com/document/api/213/15753#Metadata)
-* [MetadataItem](https://cloud.tencent.com/document/api/213/15753#MetadataItem)
+* [Column](https://cloud.tencent.com/document/api/1132/49071#Column)
+* [LogInfo](https://cloud.tencent.com/document/api/1132/49071#LogInfo)
+* [LogItem](https://cloud.tencent.com/document/api/1132/49071#LogItem)
+* [LogItems](https://cloud.tencent.com/document/api/1132/49071#LogItems)
+* [MultiTopicSearchInformation](https://cloud.tencent.com/document/api/1132/49071#MultiTopicSearchInformation)
+* [SearchLogErrors](https://cloud.tencent.com/document/api/1132/49071#SearchLogErrors)
+* [SearchLogInfos](https://cloud.tencent.com/document/api/1132/49071#SearchLogInfos)
+* [SearchLogTopics](https://cloud.tencent.com/document/api/1132/49071#SearchLogTopics)
 
 
 
-## 弹性 MapReduce(emr) 版本：2019-01-03
+## 消息队列 CKafka 版(ckafka) 版本：2019-08-19
 
-### 第 99 次发布
+### 第 121 次发布
 
-发布时间：2025-05-01 01:16:56
+发布时间：2025-05-07 01:18:17
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [NodeHardwareInfo](https://cloud.tencent.com/document/api/589/33981#NodeHardwareInfo)
+* [DescribeSecurityGroupRoutes](https://cloud.tencent.com/document/api/597/118364)
 
-	* 新增成员：ConfigurableServices
+新增数据结构：
 
+* [InstanceRoute](https://cloud.tencent.com/document/api/597/40861#InstanceRoute)
+* [RouteFilter](https://cloud.tencent.com/document/api/597/40861#RouteFilter)
+* [SecurityGroupRoute](https://cloud.tencent.com/document/api/597/40861#SecurityGroupRoute)
+* [SecurityGroupRouteResp](https://cloud.tencent.com/document/api/597/40861#SecurityGroupRouteResp)
+
+
+
+## 云游戏(gs) 版本：2019-11-18
+
+### 第 32 次发布
+
+发布时间：2025-05-07 01:36:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [RebootAndroidInstanceHosts](https://cloud.tencent.com/document/api/1162/118366)
 
 
 
