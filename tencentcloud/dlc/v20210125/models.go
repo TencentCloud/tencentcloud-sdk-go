@@ -10049,6 +10049,9 @@ type DescribeUserRolesRequestParams struct {
 
 	// 正序或者倒序，例如：desc
 	Sorting *string `json:"Sorting,omitnil,omitempty" name:"Sorting"`
+
+	// 是否设置为常驻：1非常驻（默认）、2常驻（仅能设置一个常驻）
+	IsDefault *int64 `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 }
 
 type DescribeUserRolesRequest struct {
@@ -10068,6 +10071,9 @@ type DescribeUserRolesRequest struct {
 
 	// 正序或者倒序，例如：desc
 	Sorting *string `json:"Sorting,omitnil,omitempty" name:"Sorting"`
+
+	// 是否设置为常驻：1非常驻（默认）、2常驻（仅能设置一个常驻）
+	IsDefault *int64 `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 }
 
 func (r *DescribeUserRolesRequest) ToJsonString() string {
@@ -10087,6 +10093,7 @@ func (r *DescribeUserRolesRequest) FromJsonString(s string) error {
 	delete(f, "Fuzzy")
 	delete(f, "SortBy")
 	delete(f, "Sorting")
+	delete(f, "IsDefault")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserRolesRequest has unknown keys!", "")
 	}
@@ -15325,6 +15332,9 @@ type UserRole struct {
 
 	// cam策略json
 	PermissionJson *string `json:"PermissionJson,omitnil,omitempty" name:"PermissionJson"`
+
+	// 是否设置为常驻：1非常驻（默认）、2常驻（仅能设置一个常驻）
+	IsDefault *int64 `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
 }
 
 type Users struct {

@@ -4043,7 +4043,11 @@ type SnapshotGroup struct {
 	// 快照组包含的快照ID列表。
 	SnapshotIdSet []*string `json:"SnapshotIdSet,omitnil,omitempty" name:"SnapshotIdSet"`
 
-	// 快照组状态。<br><li>NORMAL: 正常<br><li>CREATING:创建中<br><li>ROLLBACKING:回滚中
+	// <ul>
+	//     <li>NORMAL: 正常</li>
+	//     <li>CREATING: 创建中</li>
+	//     <li>ROLLBACKING: 回滚中</li>
+	// </ul>
 	SnapshotGroupState *string `json:"SnapshotGroupState,omitnil,omitempty" name:"SnapshotGroupState"`
 
 	// 快照组创建进度。
@@ -4070,6 +4074,10 @@ type SnapshotGroup struct {
 	// 快照组到期时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeadlineTime *string `json:"DeadlineTime,omitnil,omitempty" name:"DeadlineTime"`
+
+	// 来源自动快照策略ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 }
 
 type Tag struct {

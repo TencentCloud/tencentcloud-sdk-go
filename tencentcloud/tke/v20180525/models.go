@@ -518,17 +518,17 @@ type BackupStorageLocation struct {
 }
 
 type CUDNN struct {
-	// cuDNN的版本
-	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
-
 	// cuDNN的名字
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// cuDNN的Doc名字
-	DocName *string `json:"DocName,omitnil,omitempty" name:"DocName"`
+	// cuDNN的版本
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 
 	// cuDNN的Dev名字
 	DevName *string `json:"DevName,omitnil,omitempty" name:"DevName"`
+
+	// cuDNN的Doc名字
+	DocName *string `json:"DocName,omitnil,omitempty" name:"DocName"`
 }
 
 // Predefined struct for user
@@ -13671,11 +13671,11 @@ func (r *DrainClusterVirtualNodeResponse) FromJsonString(s string) error {
 }
 
 type DriverVersion struct {
-	// GPU驱动或者CUDA的版本
-	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
-
 	// GPU驱动或者CUDA的名字
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// GPU驱动或者CUDA的版本
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 }
 
 type ECMEnhancedService struct {
@@ -14706,12 +14706,6 @@ func (r *ForwardTKEEdgeApplicationRequestV3Response) FromJsonString(s string) er
 }
 
 type GPUArgs struct {
-	// 是否启用MIG特性
-	MIGEnable *bool `json:"MIGEnable,omitnil,omitempty" name:"MIGEnable"`
-
-	// GPU驱动版本信息
-	Driver *DriverVersion `json:"Driver,omitnil,omitempty" name:"Driver"`
-
 	// CUDA版本信息
 	CUDA *DriverVersion `json:"CUDA,omitnil,omitempty" name:"CUDA"`
 
@@ -14720,6 +14714,12 @@ type GPUArgs struct {
 
 	// 自定义GPU驱动信息
 	CustomDriver *CustomDriver `json:"CustomDriver,omitnil,omitempty" name:"CustomDriver"`
+
+	// GPU驱动版本信息
+	Driver *DriverVersion `json:"Driver,omitnil,omitempty" name:"Driver"`
+
+	// 是否启用MIG特性
+	MIGEnable *bool `json:"MIGEnable,omitnil,omitempty" name:"MIGEnable"`
 }
 
 // Predefined struct for user

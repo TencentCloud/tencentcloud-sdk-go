@@ -1053,7 +1053,7 @@ type CreateReceivingWorkOrderRequestParams struct {
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 服务器收货列表
+	// 服务器收货列表。最大值：200
 	ServerDeviceList []*ServerReceivingInfo `json:"ServerDeviceList,omitnil,omitempty" name:"ServerDeviceList"`
 
 	// 网络设备收货列表
@@ -1064,6 +1064,21 @@ type CreateReceivingWorkOrderRequestParams struct {
 
 	// 其他设备收货列表
 	OtherDeviceList []*OtherDevReceivingInfo `json:"OtherDeviceList,omitnil,omitempty" name:"OtherDeviceList"`
+
+	// 收货后自动上架。此参数为true时，后台会自动提设备上架单
+	WithRackOn *bool `json:"WithRackOn,omitnil,omitempty" name:"WithRackOn"`
+
+	// 设备上架信息。当WithRackOn为true此参数必传，且sn需要和收货的列表一致
+	DeviceRackOnList []*DeviceRackOn `json:"DeviceRackOnList,omitnil,omitempty" name:"DeviceRackOnList"`
+
+	// 上架人员 1.自行解决 2.由腾讯IDC负责
+	StuffOption *string `json:"StuffOption,omitnil,omitempty" name:"StuffOption"`
+
+	// 自行解决信息。当StuffOption为1时，此参数必填
+	SelfOperationInfo *SelfOperation `json:"SelfOperationInfo,omitnil,omitempty" name:"SelfOperationInfo"`
+
+	// 上架后自动开电。此参数为true时，后台会自动提设备开电单
+	WithPowerOn *bool `json:"WithPowerOn,omitnil,omitempty" name:"WithPowerOn"`
 }
 
 type CreateReceivingWorkOrderRequest struct {
@@ -1090,7 +1105,7 @@ type CreateReceivingWorkOrderRequest struct {
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 服务器收货列表
+	// 服务器收货列表。最大值：200
 	ServerDeviceList []*ServerReceivingInfo `json:"ServerDeviceList,omitnil,omitempty" name:"ServerDeviceList"`
 
 	// 网络设备收货列表
@@ -1101,6 +1116,21 @@ type CreateReceivingWorkOrderRequest struct {
 
 	// 其他设备收货列表
 	OtherDeviceList []*OtherDevReceivingInfo `json:"OtherDeviceList,omitnil,omitempty" name:"OtherDeviceList"`
+
+	// 收货后自动上架。此参数为true时，后台会自动提设备上架单
+	WithRackOn *bool `json:"WithRackOn,omitnil,omitempty" name:"WithRackOn"`
+
+	// 设备上架信息。当WithRackOn为true此参数必传，且sn需要和收货的列表一致
+	DeviceRackOnList []*DeviceRackOn `json:"DeviceRackOnList,omitnil,omitempty" name:"DeviceRackOnList"`
+
+	// 上架人员 1.自行解决 2.由腾讯IDC负责
+	StuffOption *string `json:"StuffOption,omitnil,omitempty" name:"StuffOption"`
+
+	// 自行解决信息。当StuffOption为1时，此参数必填
+	SelfOperationInfo *SelfOperation `json:"SelfOperationInfo,omitnil,omitempty" name:"SelfOperationInfo"`
+
+	// 上架后自动开电。此参数为true时，后台会自动提设备开电单
+	WithPowerOn *bool `json:"WithPowerOn,omitnil,omitempty" name:"WithPowerOn"`
 }
 
 func (r *CreateReceivingWorkOrderRequest) ToJsonString() string {
@@ -1126,6 +1156,11 @@ func (r *CreateReceivingWorkOrderRequest) FromJsonString(s string) error {
 	delete(f, "NetDeviceList")
 	delete(f, "WireDeviceList")
 	delete(f, "OtherDeviceList")
+	delete(f, "WithRackOn")
+	delete(f, "DeviceRackOnList")
+	delete(f, "StuffOption")
+	delete(f, "SelfOperationInfo")
+	delete(f, "WithPowerOn")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateReceivingWorkOrderRequest has unknown keys!", "")
 	}

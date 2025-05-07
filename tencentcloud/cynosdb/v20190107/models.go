@@ -2030,6 +2030,9 @@ type CreateClustersRequestParams struct {
 	// 普通实例内存,单位GB
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
+	// 实例数量，数量范围为(0,16]，默认值为2（即一个rw实例+一个ro实例），传递的n表示1个rw实例+n-1个ro实例（规格相同），如需要更精确的集群组成搭配，请使用InstanceInitInfos
+	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
+
 	// 该参数无实际意义，已废弃。
 	// 存储大小，单位GB。
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
@@ -2071,9 +2074,6 @@ type CreateClustersRequestParams struct {
 	// 普通实例存储上限，单位GB
 	// 当DbType为MYSQL，且存储计费模式为预付费时，该参数需不大于cpu与memory对应存储规格上限
 	StorageLimit *int64 `json:"StorageLimit,omitnil,omitempty" name:"StorageLimit"`
-
-	// 实例数量，数量范围为(0,16]
-	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
 	// 包年包月购买时长
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
@@ -2179,6 +2179,9 @@ type CreateClustersRequest struct {
 	// 普通实例内存,单位GB
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
+	// 实例数量，数量范围为(0,16]，默认值为2（即一个rw实例+一个ro实例），传递的n表示1个rw实例+n-1个ro实例（规格相同），如需要更精确的集群组成搭配，请使用InstanceInitInfos
+	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
+
 	// 该参数无实际意义，已废弃。
 	// 存储大小，单位GB。
 	Storage *int64 `json:"Storage,omitnil,omitempty" name:"Storage"`
@@ -2220,9 +2223,6 @@ type CreateClustersRequest struct {
 	// 普通实例存储上限，单位GB
 	// 当DbType为MYSQL，且存储计费模式为预付费时，该参数需不大于cpu与memory对应存储规格上限
 	StorageLimit *int64 `json:"StorageLimit,omitnil,omitempty" name:"StorageLimit"`
-
-	// 实例数量，数量范围为(0,16]
-	InstanceCount *int64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
 	// 包年包月购买时长
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
@@ -2317,6 +2317,7 @@ func (r *CreateClustersRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "Cpu")
 	delete(f, "Memory")
+	delete(f, "InstanceCount")
 	delete(f, "Storage")
 	delete(f, "ClusterName")
 	delete(f, "AdminPassword")
@@ -2329,7 +2330,6 @@ func (r *CreateClustersRequest) FromJsonString(s string) error {
 	delete(f, "ExpectTime")
 	delete(f, "ExpectTimeThresh")
 	delete(f, "StorageLimit")
-	delete(f, "InstanceCount")
 	delete(f, "TimeSpan")
 	delete(f, "TimeUnit")
 	delete(f, "AutoRenewFlag")

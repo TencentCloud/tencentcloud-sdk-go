@@ -135,7 +135,7 @@ type BatchStatus struct {
 // Predefined struct for user
 type BidDetailPageRequestParams struct {
 	// 预约ID
-	// 可通过DescribeBiddingList接口获取
+	// 可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 }
 
@@ -143,7 +143,7 @@ type BidDetailPageRequest struct {
 	*tchttp.BaseRequest
 	
 	// 预约ID
-	// 可通过DescribeBiddingList接口获取
+	// 可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 }
 
@@ -293,8 +293,8 @@ type BiddingAppointResult struct {
 
 // Predefined struct for user
 type BiddingPreReleaseRequestParams struct {
-	// 业务ID
-	// 可通过DescribeBiddingList接口获取
+	// 业务ID(竞价域名的预约ID) 
+	// 可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 价格 单位元
@@ -304,8 +304,8 @@ type BiddingPreReleaseRequestParams struct {
 type BiddingPreReleaseRequest struct {
 	*tchttp.BaseRequest
 	
-	// 业务ID
-	// 可通过DescribeBiddingList接口获取
+	// 业务ID(竞价域名的预约ID) 
+	// 可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 价格 单位元
@@ -394,6 +394,7 @@ type BiddingResult struct {
 
 type BiddingSuccessfulResult struct {
 	// 支付结束时间
+	// 格式:YYYY-MM-DD HH:mm:ss
 	PayEndTime *string `json:"PayEndTime,omitnil,omitempty" name:"PayEndTime"`
 }
 
@@ -480,14 +481,12 @@ type CertificateInfo struct {
 type CheckBatchStatusRequestParams struct {
 	// 操作日志 ID数组，最多 200 个
 	// 可通过任意批量操作接口获取，例如：
-	// BatchModifyDomainInfo
-	// ModifyDomainDNSBatch
-	// ModifyDomainOwnerBatch
-	// UpdateProhibitionBatch
-	// TransferProhibitionBatch
-	// TransferInDomainBatch
-	// TransferInDomainBatchBuy
-	// CancelTransferOutInBatch
+	// [BatchModifyDomainInfo](https://cloud.tencent.com/document/product/242/49197)
+	// [ModifyDomainDNSBatch](https://cloud.tencent.com/document/product/242/49211)
+	// [ModifyDomainOwnerBatch](https://cloud.tencent.com/document/product/242/49196)
+	// [UpdateProhibitionBatch](https://cloud.tencent.com/document/api/242/49193)
+	// [TransferProhibitionBatch](https://cloud.tencent.com/document/api/242/49194)
+	// [TransferInDomainBatch](https://cloud.tencent.com/document/api/242/49195)
 	LogIds []*uint64 `json:"LogIds,omitnil,omitempty" name:"LogIds"`
 }
 
@@ -496,14 +495,12 @@ type CheckBatchStatusRequest struct {
 	
 	// 操作日志 ID数组，最多 200 个
 	// 可通过任意批量操作接口获取，例如：
-	// BatchModifyDomainInfo
-	// ModifyDomainDNSBatch
-	// ModifyDomainOwnerBatch
-	// UpdateProhibitionBatch
-	// TransferProhibitionBatch
-	// TransferInDomainBatch
-	// TransferInDomainBatchBuy
-	// CancelTransferOutInBatch
+	// [BatchModifyDomainInfo](https://cloud.tencent.com/document/product/242/49197)
+	// [ModifyDomainDNSBatch](https://cloud.tencent.com/document/product/242/49211)
+	// [ModifyDomainOwnerBatch](https://cloud.tencent.com/document/product/242/49196)
+	// [UpdateProhibitionBatch](https://cloud.tencent.com/document/api/242/49193)
+	// [TransferProhibitionBatch](https://cloud.tencent.com/document/api/242/49194)
+	// [TransferInDomainBatch](https://cloud.tencent.com/document/api/242/49195)
 	LogIds []*uint64 `json:"LogIds,omitnil,omitempty" name:"LogIds"`
 }
 
@@ -708,7 +705,7 @@ type ContactInfo struct {
 // Predefined struct for user
 type CreateCustomDnsHostRequestParams struct {
 	// 域名实例ID
-	// 可通过DescribeDomainLIst接口获取
+	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// Dns名称
@@ -724,7 +721,7 @@ type CreateCustomDnsHostRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名实例ID
-	// 可通过DescribeDomainLIst接口获取
+	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// Dns名称
@@ -1114,7 +1111,7 @@ type CustomDnsHost struct {
 // Predefined struct for user
 type DeleteBiddingRequestParams struct {
 	// 预约ID
-	// 可通过DescribeBiddingList接口获取
+	// 可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
 	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
@@ -1122,7 +1119,7 @@ type DeleteBiddingRequest struct {
 	*tchttp.BaseRequest
 	
 	// 预约ID
-	// 可通过DescribeBiddingList接口获取
+	// 可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
 	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
@@ -1170,7 +1167,7 @@ func (r *DeleteBiddingResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteCustomDnsHostRequestParams struct {
 	// 域名实例ID
-	// 可通过DescribeDomainList接口获取
+	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// DNS名称
@@ -1182,7 +1179,7 @@ type DeleteCustomDnsHostRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名实例ID
-	// 可通过DescribeDomainList接口获取
+	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// DNS名称
@@ -1408,7 +1405,8 @@ func (r *DeleteTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAuctionListRequestParams struct {
-	// 业务ID，通过接口DescribeBiddingList返回结果中获取
+	// 业务ID 
+	// 通过接口[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)返回结果中获取
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 条数，默认10，最大100
@@ -1421,7 +1419,8 @@ type DescribeAuctionListRequestParams struct {
 type DescribeAuctionListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 业务ID，通过接口DescribeBiddingList返回结果中获取
+	// 业务ID 
+	// 通过接口[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)返回结果中获取
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 
 	// 条数，默认10，最大100
@@ -1624,7 +1623,7 @@ func (r *DescribeBatchOperationLogsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBiddingAppointDetailRequestParams struct {
 	// 预约ID
-	// 可通过DescribeBiddingList接口获取
+	// 可通过[DescribeBiddingAppointList](https://cloud.tencent.com/document/api/242/106600)接口获取
 	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
@@ -1632,7 +1631,7 @@ type DescribeBiddingAppointDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 预约ID
-	// 可通过DescribeBiddingList接口获取
+	// 可通过[DescribeBiddingAppointList](https://cloud.tencent.com/document/api/242/106600)接口获取
 	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
@@ -1664,18 +1663,23 @@ type DescribeBiddingAppointDetailResponseParams struct {
 	AppointNum *uint64 `json:"AppointNum,omitnil,omitempty" name:"AppointNum"`
 
 	// 预约开始时间
+	// 格式:YYYY-MM-DD HH:mm:ss
 	AppointStartTime *string `json:"AppointStartTime,omitnil,omitempty" name:"AppointStartTime"`
 
 	// 预约结束时间
+	// 格式:YYYY-MM-DD HH:mm:ss
 	AppointEndTime *string `json:"AppointEndTime,omitnil,omitempty" name:"AppointEndTime"`
 
 	//  注册时间
+	// 格式:YYYY-MM-DD HH:mm:ss
 	RegTime *string `json:"RegTime,omitnil,omitempty" name:"RegTime"`
 
 	// 过期时间
+	// 格式:YYYY-MM-DD HH:mm:ss
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 删除时间
+	// 格式:YYYY-MM-DD HH:mm:ss
 	DeleteTime *string `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
 
 	// 当前价格 单位元
@@ -1714,9 +1718,11 @@ func (r *DescribeBiddingAppointDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBiddingAppointListRequestParams struct {
 	// 页码
+	// 默认值1
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
 	// 每页数量
+	// 默认：20 取值范围【1，200】
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 域名
@@ -1726,7 +1732,12 @@ type DescribeBiddingAppointListRequestParams struct {
 	// 1 已预约，2 竞价中，3 等待出价 4 竞价失败 5 等待支付 6 等待转移，7 转移中 8 交易成功 9 预约持有者赎回 10 竞价持有者赎回 11 其他阶段持有者赎回 12 违约
 	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 排序字段：AppointEndTime 预约结束时间
+	// 排序字段：
+	// 默认<空>，不排序
+	// 可选值：
+	// AppointEndTime 预约结束时间
+	// BiddingPrice 竞价保证金
+	// BiddingEndTime 竞价结束时间
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
 	// 排序规则：asc升序，desc降序
@@ -1737,9 +1748,11 @@ type DescribeBiddingAppointListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 页码
+	// 默认值1
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
 	// 每页数量
+	// 默认：20 取值范围【1，200】
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 域名
@@ -1749,7 +1762,12 @@ type DescribeBiddingAppointListRequest struct {
 	// 1 已预约，2 竞价中，3 等待出价 4 竞价失败 5 等待支付 6 等待转移，7 转移中 8 交易成功 9 预约持有者赎回 10 竞价持有者赎回 11 其他阶段持有者赎回 12 违约
 	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 排序字段：AppointEndTime 预约结束时间
+	// 排序字段：
+	// 默认<空>，不排序
+	// 可选值：
+	// AppointEndTime 预约结束时间
+	// BiddingPrice 竞价保证金
+	// BiddingEndTime 竞价结束时间
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
 	// 排序规则：asc升序，desc降序
@@ -1811,7 +1829,7 @@ func (r *DescribeBiddingAppointListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBiddingDetailRequestParams struct {
 	// 预约ID
-	// 可通过DescribeBiddingList接口获取
+	// 可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
 	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
@@ -1819,7 +1837,7 @@ type DescribeBiddingDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 预约ID
-	// 可通过DescribeBiddingList接口获取
+	// 可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
 	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
@@ -1851,18 +1869,23 @@ type DescribeBiddingDetailResponseParams struct {
 	BiddingNum *uint64 `json:"BiddingNum,omitnil,omitempty" name:"BiddingNum"`
 
 	// 竞价开始时间
+	// 格式:YYYY-MM-DD HH:mm:ss
 	BiddingStartTime *string `json:"BiddingStartTime,omitnil,omitempty" name:"BiddingStartTime"`
 
 	// 竞价结束时间
+	// 格式:YYYY-MM-DD HH:mm:ss
 	BiddingEndTime *string `json:"BiddingEndTime,omitnil,omitempty" name:"BiddingEndTime"`
 
 	//  注册时间
+	// 格式:YYYY-MM-DD HH:mm:ss
 	RegTime *string `json:"RegTime,omitnil,omitempty" name:"RegTime"`
 
 	// 过期时间
+	// 格式:YYYY-MM-DD HH:mm:ss
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 删除时间
+	// 格式:YYYY-MM-DD HH:mm:ss
 	DeleteTime *string `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
 
 	// 当前价格 单位元
@@ -2005,16 +2028,16 @@ func (r *DescribeBiddingListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBiddingSuccessfulDetailRequestParams struct {
-	// 预约ID
-	// 可通过DescribeBiddingSuccessfulList接口获取
+	// 预约ID 
+	// 可通过[DescribeBiddingSuccessfulList](https://cloud.tencent.com/document/api/242/106596)接口获取
 	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
 type DescribeBiddingSuccessfulDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 预约ID
-	// 可通过DescribeBiddingSuccessfulList接口获取
+	// 预约ID 
+	// 可通过[DescribeBiddingSuccessfulList](https://cloud.tencent.com/document/api/242/106596)接口获取
 	BusinessID *string `json:"BusinessID,omitnil,omitempty" name:"BusinessID"`
 }
 
@@ -2043,21 +2066,26 @@ type DescribeBiddingSuccessfulDetailResponseParams struct {
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 得标时间
+	// 格式:YYYY-MM-DD HH:mm:ss
 	SuccessfulTime *string `json:"SuccessfulTime,omitnil,omitempty" name:"SuccessfulTime"`
 
 	// 得标价格 单位元
 	SuccessfulPrice *float64 `json:"SuccessfulPrice,omitnil,omitempty" name:"SuccessfulPrice"`
 
 	//  注册时间
+	// 格式:YYYY-MM-DD HH:mm:ss
 	RegTime *string `json:"RegTime,omitnil,omitempty" name:"RegTime"`
 
 	// 过期时间
+	// 格式:YYYY-MM-DD HH:mm:ss
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 删除时间
+	// 格式:YYYY-MM-DD HH:mm:ss
 	DeleteTime *string `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
 
 	// 付款结束时间
+	// 格式:YYYY-MM-DD HH:mm:ss
 	PayEndTime *string `json:"PayEndTime,omitnil,omitempty" name:"PayEndTime"`
 
 	// 保证金，是否退款，yes表示退款，no表示不退款
@@ -2092,9 +2120,11 @@ func (r *DescribeBiddingSuccessfulDetailResponse) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeBiddingSuccessfulListRequestParams struct {
 	// 页码
+	// 默认：1
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
 	// 每页数量
+	// 默认：20 取值范围【1，200】
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 域名
@@ -2103,7 +2133,9 @@ type DescribeBiddingSuccessfulListRequestParams struct {
 	// 状态：5 等待支付 6 等待转移， 7 转移中，8 交易成功，11 尾款阶段持有者索回，12 已违约
 	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 排序字段：SuccessfulTime 预约结束时间
+	// 排序字段：
+	// 默认<空>，不排序
+	// SuccessfulTime 预约结束时间
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
 	// 排序规则：asc升序，desc降序
@@ -2114,9 +2146,11 @@ type DescribeBiddingSuccessfulListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 页码
+	// 默认：1
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
 	// 每页数量
+	// 默认：20 取值范围【1，200】
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 域名
@@ -2125,7 +2159,9 @@ type DescribeBiddingSuccessfulListRequest struct {
 	// 状态：5 等待支付 6 等待转移， 7 转移中，8 交易成功，11 尾款阶段持有者索回，12 已违约
 	Status []*uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 排序字段：SuccessfulTime 预约结束时间
+	// 排序字段：
+	// 默认<空>，不排序
+	// SuccessfulTime 预约结束时间
 	SortField *string `json:"SortField,omitnil,omitempty" name:"SortField"`
 
 	// 排序规则：asc升序，desc降序
@@ -2187,7 +2223,7 @@ func (r *DescribeBiddingSuccessfulListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCustomDnsHostSetRequestParams struct {
 	// 域名实例ID
-	// 可通过DescribeDomainList接口获取
+	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// 返回数量，默认为20，取值范围[1,100]
@@ -2201,7 +2237,7 @@ type DescribeCustomDnsHostSetRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名实例ID
-	// 可通过DescribeDomainList接口获取
+	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// 返回数量，默认为20，取值范围[1,100]
@@ -2263,6 +2299,7 @@ func (r *DescribeCustomDnsHostSetResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDomainBaseInfoRequestParams struct {
 	// 域名
+	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
@@ -2270,6 +2307,7 @@ type DescribeDomainBaseInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
+	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 }
 
@@ -2528,16 +2566,16 @@ func (r *DescribeDomainSimpleInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePayWaitDetailRequestParams struct {
-	// 业务ID
-	// 可通过DescribeBiddingList接口获取
+	// 业务ID(竞价域名的预约ID) 
+	// 可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 }
 
 type DescribePayWaitDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 业务ID
-	// 可通过DescribeBiddingList接口获取
+	// 业务ID(竞价域名的预约ID) 
+	// 可通过[DescribeBiddingList](https://cloud.tencent.com/document/api/242/106598)接口获取
 	BusinessId *string `json:"BusinessId,omitnil,omitempty" name:"BusinessId"`
 }
 
@@ -2572,10 +2610,12 @@ type DescribePayWaitDetailResponseParams struct {
 	// finish：完成出价
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 支付结束时间
+	// 支付结束时间 
+	// 格式:YYYY-MM-DD HH:mm:ss
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 域名注册时间
+	// 域名注册时间 
+	// 格式:YYYY-MM-DD HH:mm:ss
 	RegTime *string `json:"RegTime,omitnil,omitempty" name:"RegTime"`
 
 	// 域名成交价格 单位元
@@ -3726,13 +3766,16 @@ type DescribeUnPreDomainDetailResponseParams struct {
 	// 预约人数
 	PreCount *int64 `json:"PreCount,omitnil,omitempty" name:"PreCount"`
 
-	// 域名注册时间
+	// 域名注册时间 
+	// 格式:YYYY-MM-DD HH:mm:ss
 	RegTime *string `json:"RegTime,omitnil,omitempty" name:"RegTime"`
 
-	// 域名删除时间
+	// 域名删除时间 
+	// 格式:YYYY-MM-DD HH:mm:ss
 	DeleteTime *string `json:"DeleteTime,omitnil,omitempty" name:"DeleteTime"`
 
-	// 到期时间
+	// 到期时间 
+	// 格式:YYYY-MM-DD HH:mm:ss
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 域名状态
@@ -3790,7 +3833,7 @@ type DomainBaseInfo struct {
 	// NoAudit: 无需实名认证
 	RealNameAuditStatus *string `json:"RealNameAuditStatus,omitnil,omitempty" name:"RealNameAuditStatus"`
 
-	// 域名实名认证不通过原因。
+	// 域名实名认证不通过原因。<具体内容以实名审核机构返回为准>
 	RealNameAuditUnpassReason *string `json:"RealNameAuditUnpassReason,omitnil,omitempty" name:"RealNameAuditUnpassReason"`
 
 	// 域名命名审核状态。
@@ -3801,14 +3844,16 @@ type DomainBaseInfo struct {
 	// Rejected：域名命名审核拒绝
 	DomainNameAuditStatus *string `json:"DomainNameAuditStatus,omitnil,omitempty" name:"DomainNameAuditStatus"`
 
-	// 域名命名审核不通过原因。
+	// 域名命名审核不通过原因。<具体内容以实名审核机构返回为准>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainNameAuditUnpassReason *string `json:"DomainNameAuditUnpassReason,omitnil,omitempty" name:"DomainNameAuditUnpassReason"`
 
 	// 注册时间。
+	// 格式:YYYY-MM-DD
 	CreationDate *string `json:"CreationDate,omitnil,omitempty" name:"CreationDate"`
 
 	// 到期时间
+	// 格式:YYYY-MM-DD
 	ExpirationDate *string `json:"ExpirationDate,omitnil,omitempty" name:"ExpirationDate"`
 
 	// 域名状态。
@@ -3859,6 +3904,7 @@ type DomainBaseInfo struct {
 	LockTransfer *bool `json:"LockTransfer,omitnil,omitempty" name:"LockTransfer"`
 
 	// 锁定结束时间
+	// 格式:YYYY-MM-DD HH:mm:ss
 	LockEndTime *string `json:"LockEndTime,omitnil,omitempty" name:"LockEndTime"`
 }
 
@@ -3951,15 +3997,25 @@ type DomainList struct {
 	AutoRenew *uint64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
 	// 注册时间。
+	// 格式:YYYY-MM-DD HH:mm:ss
 	CreationDate *string `json:"CreationDate,omitnil,omitempty" name:"CreationDate"`
 
 	// 到期时间。
+	// 格式:YYYY-MM-DD HH:mm:ss
 	ExpirationDate *string `json:"ExpirationDate,omitnil,omitempty" name:"ExpirationDate"`
 
-	// 域名后缀
+	// 域名后缀，根据具体域名确定
+	// 例如:
+	// 123.com 后缀则为.com
+	// 123.com.cn 后缀则为.com.cn
+	// 123.中国 后缀则为.中国
 	Tld *string `json:"Tld,omitnil,omitempty" name:"Tld"`
 
-	// 编码后的后缀（中文会进行编码）
+	// 编码后的后缀（中文会进行Punycode编码）根据具体域名确定
+	// 例如:
+	// 123.com 后缀则为.com
+	// 123.com.cn 后缀则为.com.cn
+	// 123.中国 后缀则为.xn--fiqs8s
 	CodeTld *string `json:"CodeTld,omitnil,omitempty" name:"CodeTld"`
 
 	// 域名购买状态。
@@ -4090,12 +4146,13 @@ type FailReservedDomainInfo struct {
 // Predefined struct for user
 type ModifyCustomDnsHostRequestParams struct {
 	// 域名实例ID
+	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
-	// DNS名称
+	// Dns名称 例如：<>.test.com;其中<>就是Dns名称，可以是任意域名允许的格式
 	DnsName *string `json:"DnsName,omitnil,omitempty" name:"DnsName"`
 
-	// IP地址列表
+	// IP地址列表 可选择：正常IP地址范围
 	IpSet []*string `json:"IpSet,omitnil,omitempty" name:"IpSet"`
 }
 
@@ -4103,12 +4160,13 @@ type ModifyCustomDnsHostRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名实例ID
+	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
-	// DNS名称
+	// Dns名称 例如：<>.test.com;其中<>就是Dns名称，可以是任意域名允许的格式
 	DnsName *string `json:"DnsName,omitnil,omitempty" name:"DnsName"`
 
-	// IP地址列表
+	// IP地址列表 可选择：正常IP地址范围
 	IpSet []*string `json:"IpSet,omitnil,omitempty" name:"IpSet"`
 }
 
@@ -4161,9 +4219,11 @@ func (r *ModifyCustomDnsHostResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDomainDNSBatchRequestParams struct {
 	// 批量操作的域名。
+	// 一次提交不超过4000个
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
 	// 域名DNS 数组。
+	// 不少于2个，一般建议2-6个
 	Dns []*string `json:"Dns,omitnil,omitempty" name:"Dns"`
 }
 
@@ -4171,9 +4231,11 @@ type ModifyDomainDNSBatchRequest struct {
 	*tchttp.BaseRequest
 	
 	// 批量操作的域名。
+	// 一次提交不超过4000个
 	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
 
 	// 域名DNS 数组。
+	// 不少于2个，一般建议2-6个
 	Dns []*string `json:"Dns,omitnil,omitempty" name:"Dns"`
 }
 
@@ -4463,9 +4525,10 @@ type PreAuctionInfo struct {
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 竞价倒计时
+	// 格式:YYYY-MM-DD HH:mm:ss
 	BiddingTime *string `json:"BiddingTime,omitnil,omitempty" name:"BiddingTime"`
 
-	// 出价次数 单位元
+	// 出价次数
 	BidCount *int64 `json:"BidCount,omitnil,omitempty" name:"BidCount"`
 
 	// 当前价格 单位元
@@ -4728,7 +4791,8 @@ type ReservedPreDomainsRequestParams struct {
 	// 预约预释放域名列表
 	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
 
-	// 模板ID 可通过DescribeTemplates接口获取
+	// 模板ID 
+	// 可通过[DescribeTemplateList](https://cloud.tencent.com/document/api/242/48940)接口获取
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 结束后是否自动支付尾款，默认1 开启 传入0关闭
@@ -4744,7 +4808,8 @@ type ReservedPreDomainsRequest struct {
 	// 预约预释放域名列表
 	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
 
-	// 模板ID 可通过DescribeTemplates接口获取
+	// 模板ID 
+	// 可通过[DescribeTemplateList](https://cloud.tencent.com/document/api/242/48940)接口获取
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 结束后是否自动支付尾款，默认1 开启 传入0关闭
@@ -4870,7 +4935,8 @@ func (r *SendPhoneEmailCodeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SetDomainAutoRenewRequestParams struct {
-	// 域名ID 例如：domain-dwerewwq可通过DescribreDomainList接口获取
+	// 域名实例ID
+	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// AutoRenew 有三个可选值：
@@ -4883,7 +4949,8 @@ type SetDomainAutoRenewRequestParams struct {
 type SetDomainAutoRenewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名ID 例如：domain-dwerewwq可通过DescribreDomainList接口获取
+	// 域名实例ID
+	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// AutoRenew 有三个可选值：
@@ -4945,14 +5012,16 @@ type SucDomainInfo struct {
 
 // Predefined struct for user
 type SyncCustomDnsHostRequestParams struct {
-	// 域名实例ID，可以通过DescribeDomainList接口获取
+	// 域名实例ID
+	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 }
 
 type SyncCustomDnsHostRequest struct {
 	*tchttp.BaseRequest
 	
-	// 域名实例ID，可以通过DescribeDomainList接口获取
+	// 域名实例ID
+	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 }
 

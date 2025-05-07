@@ -848,6 +848,9 @@ const (
 	// 当前路由与已有路由的CIDR重叠，仅能开启其中一条路由。
 	UNSUPPORTEDOPERATION_CCNROUTECIDROVERLAP = "UnsupportedOperation.CcnRouteCidrOverlap"
 
+	// 云联网路由重叠功能不支持关闭
+	UNSUPPORTEDOPERATION_CCNROUTEOVERLAPFLAGDISABLENOTSUPPORTED = "UnsupportedOperation.CcnRouteOverlapFlagDisableNotSupported"
+
 	// 指定的路由表不存在。
 	UNSUPPORTEDOPERATION_CCNROUTETABLENOTEXIST = "UnsupportedOperation.CcnRouteTableNotExist"
 
@@ -899,6 +902,9 @@ const (
 	// 禁止删除已关联子网的路由表。
 	UNSUPPORTEDOPERATION_DELROUTEWITHSUBNET = "UnsupportedOperation.DelRouteWithSubnet"
 
+	// 当前云联网存在二层加速通道不支持删除。
+	UNSUPPORTEDOPERATION_DELETECCNEXISTCCNEXPRESSCONNECT = "UnsupportedOperation.DeleteCcnExistCcnExpressConnect"
+
 	// VPN通道状态为更新中/销毁中/创建中，不支持此操作。
 	UNSUPPORTEDOPERATION_DELETEVPNCONNINVALIDSTATE = "UnsupportedOperation.DeleteVpnConnInvalidState"
 
@@ -934,6 +940,12 @@ const (
 
 	// 终端节点服务本身不能是终端节点。
 	UNSUPPORTEDOPERATION_ENDPOINTSERVICE = "UnsupportedOperation.EndPointService"
+
+	// 存在云联网自定义路由表不允许删除该云联网
+	UNSUPPORTEDOPERATION_EXISTCCNCUSTOMROUTETABLESNOTSUPPORTDELETECCN = "UnsupportedOperation.ExistCcnCustomRouteTablesNotSupportDeleteCcn"
+
+	// 存在云联网关联实例不允许删除云联网
+	UNSUPPORTEDOPERATION_EXISTCCNINSTANCESNOTSUPPORTDELETECCN = "UnsupportedOperation.ExistCcnInstancesNotSupportDeleteCcn"
 
 	// 指定ResourceId对应的流日志已经创建
 	UNSUPPORTEDOPERATION_FLOWLOGINSTANCEEXISTED = "UnsupportedOperation.FlowLogInstanceExisted"

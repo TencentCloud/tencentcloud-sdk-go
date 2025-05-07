@@ -11883,7 +11883,7 @@ func NewModifyWorkflowScheduleResponse() (response *ModifyWorkflowScheduleRespon
 }
 
 // ModifyWorkflowSchedule
-// 更新工作流调度
+// 更新工作流调度。本接口已废弃，请使用接口RenewWorkflowSchedulerInfoDs。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -11892,7 +11892,7 @@ func (c *Client) ModifyWorkflowSchedule(request *ModifyWorkflowScheduleRequest) 
 }
 
 // ModifyWorkflowSchedule
-// 更新工作流调度
+// 更新工作流调度。本接口已废弃，请使用接口RenewWorkflowSchedulerInfoDs。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -12906,7 +12906,7 @@ func NewSubmitTaskResponse() (response *SubmitTaskResponse) {
 // SubmitTask
 // <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
-// 提交任务
+// 提交任务。本接口已废弃，请使用接口CreateTaskVersionDs。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -12940,7 +12940,7 @@ func (c *Client) SubmitTask(request *SubmitTaskRequest) (response *SubmitTaskRes
 // SubmitTask
 // <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
-// 提交任务
+// 提交任务。本接口已废弃，请使用接口CreateTaskVersionDs。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -13052,7 +13052,7 @@ func NewSubmitWorkflowResponse() (response *SubmitWorkflowResponse) {
 }
 
 // SubmitWorkflow
-// 提交工作流
+// 提交工作流。本接口已废弃，请使用接口BatchCreateTaskVersionAsync。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -13061,7 +13061,7 @@ func (c *Client) SubmitWorkflow(request *SubmitWorkflowRequest) (response *Submi
 }
 
 // SubmitWorkflow
-// 提交工作流
+// 提交工作流。本接口已废弃，请使用接口BatchCreateTaskVersionAsync。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -13288,7 +13288,7 @@ func NewTriggerEventResponse() (response *TriggerEventResponse) {
 // TriggerEvent
 // <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
-// 触发事件
+// 触发事件。本接口已废弃，请使用接口TriggerDsEvent。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -13299,7 +13299,7 @@ func (c *Client) TriggerEvent(request *TriggerEventRequest) (response *TriggerEv
 // TriggerEvent
 // <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
-// 触发事件
+// 触发事件。本接口已废弃，请使用接口TriggerDsEvent。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

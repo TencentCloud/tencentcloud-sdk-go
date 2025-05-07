@@ -379,6 +379,7 @@ func NewBindPluginResponse() (response *BindPluginResponse) {
 // 插件与网关分组/API批量绑定
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GATEWAYCOMMONERROR = "FailedOperation.GatewayCommonError"
 //  INTERNALERROR_GATEWAYCOMMONERROR = "InternalError.GatewayCommonError"
 //  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
@@ -390,6 +391,7 @@ func (c *Client) BindPlugin(request *BindPluginRequest) (response *BindPluginRes
 // 插件与网关分组/API批量绑定
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GATEWAYCOMMONERROR = "FailedOperation.GatewayCommonError"
 //  INTERNALERROR_GATEWAYCOMMONERROR = "InternalError.GatewayCommonError"
 //  INTERNALERROR_GATEWAYCONSULERROR = "InternalError.GatewayConsulError"
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"

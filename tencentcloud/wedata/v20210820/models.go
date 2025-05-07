@@ -20893,6 +20893,12 @@ type GenHiveTableDDLSqlRequestParams struct {
 
 	// doris写入模式配置
 	WriteMode *string `json:"WriteMode,omitnil,omitempty" name:"WriteMode"`
+
+	// 任务类型 201（实时）， 202（离线） 
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 目标端table名称
+	SinkTableName *string `json:"SinkTableName,omitnil,omitempty" name:"SinkTableName"`
 }
 
 type GenHiveTableDDLSqlRequest struct {
@@ -20975,6 +20981,12 @@ type GenHiveTableDDLSqlRequest struct {
 
 	// doris写入模式配置
 	WriteMode *string `json:"WriteMode,omitnil,omitempty" name:"WriteMode"`
+
+	// 任务类型 201（实时）， 202（离线） 
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 目标端table名称
+	SinkTableName *string `json:"SinkTableName,omitnil,omitempty" name:"SinkTableName"`
 }
 
 func (r *GenHiveTableDDLSqlRequest) ToJsonString() string {
@@ -21015,6 +21027,8 @@ func (r *GenHiveTableDDLSqlRequest) FromJsonString(s string) error {
 	delete(f, "SinkSchemaName")
 	delete(f, "Env")
 	delete(f, "WriteMode")
+	delete(f, "TaskType")
+	delete(f, "SinkTableName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenHiveTableDDLSqlRequest has unknown keys!", "")
 	}

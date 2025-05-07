@@ -6434,11 +6434,9 @@ func (r *ListTasksResponse) FromJsonString(s string) error {
 
 type ListVideoDownloadTaskData struct {
 	// 任务列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*VideoDownloadTask `json:"List,omitnil,omitempty" name:"List"`
 
 	// 任务总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
@@ -8336,77 +8334,59 @@ func (r *UpgradeGatewayResponse) FromJsonString(s string) error {
 
 type VideoDownloadTask struct {
 	// 下载任务 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadTaskId *string `json:"DownloadTaskId,omitnil,omitempty" name:"DownloadTaskId"`
 
 	// 通道 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelId *string `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
 	// 通道名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelName *string `json:"ChannelName,omitnil,omitempty" name:"ChannelName"`
 
 	// 通道编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelCode *string `json:"ChannelCode,omitnil,omitempty" name:"ChannelCode"`
 
 	// 设备名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 
 	// 设备编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceCode *string `json:"DeviceCode,omitnil,omitempty" name:"DeviceCode"`
 
 	// 任务状态（0：未执行；1：执行中；2 任务完成；
 	// 3：任务失败）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 下载录像时间段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoTimeSection *string `json:"VideoTimeSection,omitnil,omitempty" name:"VideoTimeSection"`
 
 	// 倍速
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scale *int64 `json:"Scale,omitnil,omitempty" name:"Scale"`
 
 	// 下载时长
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadTime *int64 `json:"DownloadTime,omitnil,omitempty" name:"DownloadTime"`
 
 	// 录像大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoSize *int64 `json:"VideoSize,omitnil,omitempty" name:"VideoSize"`
 
 	// 任务开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 任务结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 文件下载地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileDownloadUrl *string `json:"FileDownloadUrl,omitnil,omitempty" name:"FileDownloadUrl"`
 
 	// 失败原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedReason *string `json:"FailedReason,omitnil,omitempty" name:"FailedReason"`
 
 	// 生命周期规则，热存天数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Expire *int64 `json:"Expire,omitnil,omitempty" name:"Expire"`
 
 	// mp4预览地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewUrl *string `json:"PreviewUrl,omitnil,omitempty" name:"PreviewUrl"`
 }
 
 type VideoDownloadTaskData struct {
 	// 下载任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DownloadTaskId *string `json:"DownloadTaskId,omitnil,omitempty" name:"DownloadTaskId"`
 }

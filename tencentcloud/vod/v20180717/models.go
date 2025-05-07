@@ -21733,6 +21733,9 @@ type PullUploadRequestParams struct {
 	// 分类ID，用于对媒体进行分类管理，可通过[创建分类](https://cloud.tencent.com/document/product/266/7812)接口，创建分类，获得分类 ID。
 	ClassId *int64 `json:"ClassId,omitnil,omitempty" name:"ClassId"`
 
+	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
+
 	// 来源上下文，用于透传用户请求信息，当指定 Procedure 任务后，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 
@@ -21780,6 +21783,9 @@ type PullUploadRequest struct {
 	// 分类ID，用于对媒体进行分类管理，可通过[创建分类](https://cloud.tencent.com/document/product/266/7812)接口，创建分类，获得分类 ID。
 	ClassId *int64 `json:"ClassId,omitnil,omitempty" name:"ClassId"`
 
+	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
+
 	// 来源上下文，用于透传用户请求信息，当指定 Procedure 任务后，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
 
@@ -21814,6 +21820,7 @@ func (r *PullUploadRequest) FromJsonString(s string) error {
 	delete(f, "ExpireTime")
 	delete(f, "StorageRegion")
 	delete(f, "ClassId")
+	delete(f, "TasksPriority")
 	delete(f, "SessionContext")
 	delete(f, "SessionId")
 	delete(f, "ExtInfo")

@@ -1,68 +1,165 @@
-# Release v1.0.1159
+# Release v1.0.1160
 
-## 云防火墙(cfw) 版本：2019-09-04
+## 云硬盘(cbs) 版本：2017-03-12
 
-### 第 80 次发布
+### 第 68 次发布
 
-发布时间：2025-05-07 01:17:01
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [SearchLog](https://cloud.tencent.com/document/api/1132/118363)
-
-新增数据结构：
-
-* [Column](https://cloud.tencent.com/document/api/1132/49071#Column)
-* [LogInfo](https://cloud.tencent.com/document/api/1132/49071#LogInfo)
-* [LogItem](https://cloud.tencent.com/document/api/1132/49071#LogItem)
-* [LogItems](https://cloud.tencent.com/document/api/1132/49071#LogItems)
-* [MultiTopicSearchInformation](https://cloud.tencent.com/document/api/1132/49071#MultiTopicSearchInformation)
-* [SearchLogErrors](https://cloud.tencent.com/document/api/1132/49071#SearchLogErrors)
-* [SearchLogInfos](https://cloud.tencent.com/document/api/1132/49071#SearchLogInfos)
-* [SearchLogTopics](https://cloud.tencent.com/document/api/1132/49071#SearchLogTopics)
-
-
-
-## 消息队列 CKafka 版(ckafka) 版本：2019-08-19
-
-### 第 121 次发布
-
-发布时间：2025-05-07 01:18:17
+发布时间：2025-05-08 01:12:47
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [DescribeSecurityGroupRoutes](https://cloud.tencent.com/document/api/597/118364)
+* [SnapshotGroup](https://cloud.tencent.com/document/api/362/15669#SnapshotGroup)
 
-新增数据结构：
-
-* [InstanceRoute](https://cloud.tencent.com/document/api/597/40861#InstanceRoute)
-* [RouteFilter](https://cloud.tencent.com/document/api/597/40861#RouteFilter)
-* [SecurityGroupRoute](https://cloud.tencent.com/document/api/597/40861#SecurityGroupRoute)
-* [SecurityGroupRouteResp](https://cloud.tencent.com/document/api/597/40861#SecurityGroupRouteResp)
+	* 新增成员：AutoSnapshotPolicyId
 
 
 
-## 云游戏(gs) 版本：2019-11-18
 
-### 第 32 次发布
+## 云托付物理服务器(chc) 版本：2023-04-18
 
-发布时间：2025-05-07 01:36:13
+### 第 5 次发布
+
+发布时间：2025-05-08 01:17:25
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [RebootAndroidInstanceHosts](https://cloud.tencent.com/document/api/1162/118366)
+* [CreateReceivingWorkOrder](https://cloud.tencent.com/document/api/1448/117181)
+
+	* 新增入参：WithRackOn, DeviceRackOnList, StuffOption, SelfOperationInfo, WithPowerOn
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 127 次发布
+
+发布时间：2025-05-08 01:18:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyListener](https://cloud.tencent.com/document/api/214/30681)
+
+	* 新增入参：DataCompressMode
+
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 123 次发布
+
+发布时间：2025-05-08 01:27:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeUserRoles](https://cloud.tencent.com/document/api/1342/96019)
+
+	* 新增入参：IsDefault
+
+
+修改数据结构：
+
+* [UserRole](https://cloud.tencent.com/document/api/1342/53778#UserRole)
+
+	* 新增成员：IsDefault
+
+
+
+
+## 云开发低码(lowcode) 版本：2021-01-08
+
+### 第 4 次发布
+
+发布时间：2025-05-08 01:45:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UploadKnowledgeDocumentSet](https://cloud.tencent.com/document/api/1301/116428)
+
+	* 新增入参：Delimiter
+
+
+
+
+## 云点播(vod) 版本：2024-07-18
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 198 次发布
+
+发布时间：2025-05-08 02:10:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PullUpload](https://cloud.tencent.com/document/api/266/35575)
+
+	* 新增入参：TasksPriority
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 256 次发布
+
+发布时间：2025-05-08 02:12:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AddressTemplateSpecification](https://cloud.tencent.com/document/api/215/15824#AddressTemplateSpecification)
+
+	* <font color="#dd0000">**修改成员**：</font>AddressId, AddressGroupId
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 146 次发布
+
+发布时间：2025-05-08 02:16:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GenHiveTableDDLSql](https://cloud.tencent.com/document/api/1267/82483)
+
+	* 新增入参：TaskType, SinkTableName
+
 
 
 

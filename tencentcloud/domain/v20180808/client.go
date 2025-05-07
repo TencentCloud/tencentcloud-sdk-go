@@ -435,6 +435,10 @@ func NewCreateCustomDnsHostResponse() (response *CreateCustomDnsHostResponse) {
 // CreateCustomDnsHost
 // 创建自定义DNS Host
 //
+// 域名在“正常状态”下可创建，域名如果“未实名”则无法创建，账户如果未实名则无法创建。
+//
+// 默认每个域名 自定义DNS Host 数量不超过10个
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
@@ -457,6 +461,10 @@ func (c *Client) CreateCustomDnsHost(request *CreateCustomDnsHostRequest) (respo
 
 // CreateCustomDnsHost
 // 创建自定义DNS Host
+//
+// 域名在“正常状态”下可创建，域名如果“未实名”则无法创建，账户如果未实名则无法创建。
+//
+// 默认每个域名 自定义DNS Host 数量不超过10个
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -899,6 +907,8 @@ func NewDeleteCustomDnsHostResponse() (response *DeleteCustomDnsHostResponse) {
 // DeleteCustomDnsHost
 // 删除自定义DNS Host
 //
+// 仅能删除域名在“正常状态”下，已经创建过的自定义Host，域名如果“未实名”或账户未实名，则无法操作
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -918,6 +928,8 @@ func (c *Client) DeleteCustomDnsHost(request *DeleteCustomDnsHostRequest) (respo
 
 // DeleteCustomDnsHost
 // 删除自定义DNS Host
+//
+// 仅能删除域名在“正常状态”下，已经创建过的自定义Host，域名如果“未实名”或账户未实名，则无法操作
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2496,13 +2508,7 @@ func NewDescribeUnPreDomainDetailResponse() (response *DescribeUnPreDomainDetail
 // 查询预释放未预约域名详情接口
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DESCRIBETEMPLATEFAILED = "FailedOperation.DescribeTemplateFailed"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SEARCHINFO = "ResourceNotFound.SearchInfo"
 func (c *Client) DescribeUnPreDomainDetail(request *DescribeUnPreDomainDetailRequest) (response *DescribeUnPreDomainDetailResponse, err error) {
     return c.DescribeUnPreDomainDetailWithContext(context.Background(), request)
 }
@@ -2511,13 +2517,7 @@ func (c *Client) DescribeUnPreDomainDetail(request *DescribeUnPreDomainDetailReq
 // 查询预释放未预约域名详情接口
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DESCRIBETEMPLATEFAILED = "FailedOperation.DescribeTemplateFailed"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_SEARCHINFO = "ResourceNotFound.SearchInfo"
 func (c *Client) DescribeUnPreDomainDetailWithContext(ctx context.Context, request *DescribeUnPreDomainDetailRequest) (response *DescribeUnPreDomainDetailResponse, err error) {
     if request == nil {
         request = NewDescribeUnPreDomainDetailRequest()
@@ -2556,6 +2556,8 @@ func NewModifyCustomDnsHostResponse() (response *ModifyCustomDnsHostResponse) {
 // ModifyCustomDnsHost
 // 修改自定义DNS Host
 //
+// 域名在“正常状态”下可修改已经存在的自定义DNS Host，域名如果“未实名”则无法修改，账户如果未实名则无法修改。 默认每个域名 自定义DNS Host 数量不超过10个
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
@@ -2577,6 +2579,8 @@ func (c *Client) ModifyCustomDnsHost(request *ModifyCustomDnsHostRequest) (respo
 
 // ModifyCustomDnsHost
 // 修改自定义DNS Host
+//
+// 域名在“正常状态”下可修改已经存在的自定义DNS Host，域名如果“未实名”则无法修改，账户如果未实名则无法修改。 默认每个域名 自定义DNS Host 数量不超过10个
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

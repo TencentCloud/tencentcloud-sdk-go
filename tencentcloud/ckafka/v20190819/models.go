@@ -8379,11 +8379,9 @@ type InstanceResponse struct {
 
 type InstanceRoute struct {
 	// ckafka集群实例Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 路由Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RouteId *int64 `json:"RouteId,omitnil,omitempty" name:"RouteId"`
 }
 
@@ -10434,15 +10432,12 @@ type RouteDTO struct {
 
 type RouteFilter struct {
 	// 过滤名称,目前支持security-group-id,按安全组关联过滤
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 过滤值,当过滤名称为security-group-id时仅支持传单个value
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 
 	// 过滤关系,支持IN和NOT_IN,默认为IN
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Relation *string `json:"Relation,omitnil,omitempty" name:"Relation"`
 }
 
@@ -10588,33 +10583,26 @@ type SecondaryAnalyseParam struct {
 
 type SecurityGroupRoute struct {
 	// 路由信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceRoute *InstanceRoute `json:"InstanceRoute,omitnil,omitempty" name:"InstanceRoute"`
 
 	// 关联的安全组列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
 	// ckafka集群实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 路由vpcId
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 路由vip
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 }
 
 type SecurityGroupRouteResp struct {
 	// 符合条件的安全组路由信息总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 符合条件的安全组路由信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupRoutes []*SecurityGroupRoute `json:"SecurityGroupRoutes,omitnil,omitempty" name:"SecurityGroupRoutes"`
 }
 

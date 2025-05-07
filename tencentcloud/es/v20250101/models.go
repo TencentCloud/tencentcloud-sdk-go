@@ -22,19 +22,19 @@ import (
 
 // Predefined struct for user
 type ChatCompletionsRequestParams struct {
-	// 会话内容，按对话时间从旧到新在数组中排列，长度受模型窗口大小限制
+	// 会话内容，按对话时间从旧到新在数组中排列，长度受模型窗口大小限制。
 	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
 
-	// 模型名称
+	// 模型名称，可选模型列表：hunyuan-turbo，hunyuan-large，hunyuan-large-longcontext，hunyuan-standard，hunyuan-standard-256K，deepseek-r1，deepseek-v3，deepseek-r1-distill-qwen-32b。
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 是否以流式接口的形式返回数据，默认true
+	// 是否以流式接口的形式返回数据，默认true。
 	Stream *bool `json:"Stream,omitnil,omitempty" name:"Stream"`
 
-	// 取值区间为[0.0, 1.0], 非必要不建议使用, 不合理的取值会影响效果 
+	// 取值区间为[0.0, 1.0], 非必要不建议使用, 不合理的取值会影响效果 。
 	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
 
-	// 取值区间为[0.0, 2.0], 非必要不建议使用, 不合理的取值会影响效果 
+	// 取值区间为[0.0, 2.0], 非必要不建议使用, 不合理的取值会影响效果 。
 	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 
 	// 是否开启联网搜索。默认为 false。
@@ -47,19 +47,19 @@ type ChatCompletionsRequestParams struct {
 type ChatCompletionsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 会话内容，按对话时间从旧到新在数组中排列，长度受模型窗口大小限制
+	// 会话内容，按对话时间从旧到新在数组中排列，长度受模型窗口大小限制。
 	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
 
-	// 模型名称
+	// 模型名称，可选模型列表：hunyuan-turbo，hunyuan-large，hunyuan-large-longcontext，hunyuan-standard，hunyuan-standard-256K，deepseek-r1，deepseek-v3，deepseek-r1-distill-qwen-32b。
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 是否以流式接口的形式返回数据，默认true
+	// 是否以流式接口的形式返回数据，默认true。
 	Stream *bool `json:"Stream,omitnil,omitempty" name:"Stream"`
 
-	// 取值区间为[0.0, 1.0], 非必要不建议使用, 不合理的取值会影响效果 
+	// 取值区间为[0.0, 1.0], 非必要不建议使用, 不合理的取值会影响效果 。
 	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
 
-	// 取值区间为[0.0, 2.0], 非必要不建议使用, 不合理的取值会影响效果 
+	// 取值区间为[0.0, 2.0], 非必要不建议使用, 不合理的取值会影响效果 。
 	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
 
 	// 是否开启联网搜索。默认为 false。
@@ -156,35 +156,35 @@ type ChunkConfigAsync struct {
 }
 
 type ChunkDocument struct {
-	// 文件类型
+	// 文件类型，支持 MD，TXT 格式。
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
-	// 文件的 base64值
+	// 文本原文，使用字符串格式输入。
 	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
 }
 
 // Predefined struct for user
 type ChunkDocumentAsyncRequestParams struct {
-	// 文件信息
+	// 文件信息。
 	Document *Document `json:"Document,omitnil,omitempty" name:"Document"`
 
-	// 模型名称
+	// 模型名称，可选模型列表：doc-tree-chunk。
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 文件切片配置
+	// 文件切片配置。
 	Config *ChunkConfigAsync `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
 type ChunkDocumentAsyncRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件信息
+	// 文件信息。
 	Document *Document `json:"Document,omitnil,omitempty" name:"Document"`
 
-	// 模型名称
+	// 模型名称，可选模型列表：doc-tree-chunk。
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 文件切片配置
+	// 文件切片配置。
 	Config *ChunkConfigAsync `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
@@ -236,26 +236,26 @@ func (r *ChunkDocumentAsyncResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChunkDocumentRequestParams struct {
-	// 文件切片文件信息
+	// 切片文件信息。
 	Document *ChunkDocument `json:"Document,omitnil,omitempty" name:"Document"`
 
-	// 模型名称
+	// 模型名称，可选模型列表：doc-chunk。
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 文件切片配置
+	// 文件切片配置。
 	Config *ChunkConfig `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
 type ChunkDocumentRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件切片文件信息
+	// 切片文件信息。
 	Document *ChunkDocument `json:"Document,omitnil,omitempty" name:"Document"`
 
-	// 模型名称
+	// 模型名称，可选模型列表：doc-chunk。
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 文件切片配置
+	// 文件切片配置。
 	Config *ChunkConfig `json:"Config,omitnil,omitempty" name:"Config"`
 }
 
@@ -378,13 +378,13 @@ func (r *GetDocumentChunkResultRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetDocumentChunkResultResponseParams struct {
-	// 任务状态
+	// 任务状态，-1：失败，0：运行中，1：成功。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 切片结果
+	// 切片结果文件。
 	DocumentChunkResultUrl *string `json:"DocumentChunkResultUrl,omitnil,omitempty" name:"DocumentChunkResultUrl"`
 
-	// 用量
+	// Token用量。
 	Usage *DocumentChunkUsage `json:"Usage,omitnil,omitempty" name:"Usage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -441,13 +441,13 @@ func (r *GetDocumentParseResultRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetDocumentParseResultResponseParams struct {
-	// 任务状态
+	// 任务状态，-1：失败，0：运行中，1：成功。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 结果文件
+	// 结果文件。
 	DocumentParseResultUrl *string `json:"DocumentParseResultUrl,omitnil,omitempty" name:"DocumentParseResultUrl"`
 
-	// 失败的页码
+	// 失败的页码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedPages []*int64 `json:"FailedPages,omitnil,omitempty" name:"FailedPages"`
 
@@ -473,20 +473,20 @@ func (r *GetDocumentParseResultResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTextEmbeddingRequestParams struct {
-	// 模型名称
+	// 模型名称，可选模型列表：bge-base-zh-v1.5,conan-embedding-v1,bge-m3,KaLM-embedding-multilingual-mini-v1。
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 需进行向量化的文本集
+	// 需进行向量化的文本集。
 	Texts []*string `json:"Texts,omitnil,omitempty" name:"Texts"`
 }
 
 type GetTextEmbeddingRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模型名称
+	// 模型名称，可选模型列表：bge-base-zh-v1.5,conan-embedding-v1,bge-m3,KaLM-embedding-multilingual-mini-v1。
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 需进行向量化的文本集
+	// 需进行向量化的文本集。
 	Texts []*string `json:"Texts,omitnil,omitempty" name:"Texts"`
 }
 
@@ -515,7 +515,7 @@ type GetTextEmbeddingResponseParams struct {
 	// 结果集
 	Data []*EmbeddingData `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 消耗token数量
+	// 向量化消耗的token数量。
 	Usage *Usage `json:"Usage,omitnil,omitempty" name:"Usage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -582,20 +582,20 @@ type ParseDocument struct {
 
 // Predefined struct for user
 type ParseDocumentAsyncRequestParams struct {
-	// 文件信息
+	// 文件信息。
 	Document *Document `json:"Document,omitnil,omitempty" name:"Document"`
 
-	// 模型名称
+	// 模型名称，可选模型列表：doc-llm。
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 }
 
 type ParseDocumentAsyncRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件信息
+	// 文件信息。
 	Document *Document `json:"Document,omitnil,omitempty" name:"Document"`
 
-	// 模型名称
+	// 模型名称，可选模型列表：doc-llm。
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 }
 
@@ -649,7 +649,7 @@ type ParseDocumentRequestParams struct {
 	// 文件信息
 	Document *ParseDocument `json:"Document,omitnil,omitempty" name:"Document"`
 
-	// 模型名称
+	// 模型名称，doc-llm。
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 }
 
@@ -659,7 +659,7 @@ type ParseDocumentRequest struct {
 	// 文件信息
 	Document *ParseDocument `json:"Document,omitnil,omitempty" name:"Document"`
 
-	// 模型名称
+	// 模型名称，doc-llm。
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 }
 
@@ -685,13 +685,13 @@ func (r *ParseDocumentRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ParseDocumentResponseParams struct {
-	// 进度
+	// 进度：0-100。
 	Progress *string `json:"Progress,omitnil,omitempty" name:"Progress"`
 
-	//  解析文件结果
+	//  解析文件结果。
 	DocumentParseResultUrl *string `json:"DocumentParseResultUrl,omitnil,omitempty" name:"DocumentParseResultUrl"`
 
-	// 失败页码
+	// 失败页码。
 	FailedPages []*int64 `json:"FailedPages,omitnil,omitempty" name:"FailedPages"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
@@ -730,38 +730,38 @@ type RerankResult struct {
 
 // Predefined struct for user
 type RunRerankRequestParams struct {
-	// 模型名称
+	// 模型名称，可选模型列表：bge-reranker-large，bge-reranker-v2-m3。
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 查询文本
+	// 查询文本。
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 待排序的候选doc列表
+	// 待排序的候选doc列表。
 	Documents []*string `json:"Documents,omitnil,omitempty" name:"Documents"`
 
-	// 排序返回的top文档数量, 如果没有指定则返回全部候选doc，如果指定的top_n值大于输入的候选doc数量，返回全部doc
+	// 排序返回的top文档数量, 如果没有指定则返回全部候选doc，如果指定的top_n值大于输入的候选doc数量，返回全部doc。
 	TopN *int64 `json:"TopN,omitnil,omitempty" name:"TopN"`
 
-	// 返回的排序结果列表里面是否返回每一条document原文，默认值False
+	// 返回的排序结果列表里面是否返回每一条document原文，默认值False。
 	ReturnDocuments *bool `json:"ReturnDocuments,omitnil,omitempty" name:"ReturnDocuments"`
 }
 
 type RunRerankRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模型名称
+	// 模型名称，可选模型列表：bge-reranker-large，bge-reranker-v2-m3。
 	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
 
-	// 查询文本
+	// 查询文本。
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
-	// 待排序的候选doc列表
+	// 待排序的候选doc列表。
 	Documents []*string `json:"Documents,omitnil,omitempty" name:"Documents"`
 
-	// 排序返回的top文档数量, 如果没有指定则返回全部候选doc，如果指定的top_n值大于输入的候选doc数量，返回全部doc
+	// 排序返回的top文档数量, 如果没有指定则返回全部候选doc，如果指定的top_n值大于输入的候选doc数量，返回全部doc。
 	TopN *int64 `json:"TopN,omitnil,omitempty" name:"TopN"`
 
-	// 返回的排序结果列表里面是否返回每一条document原文，默认值False
+	// 返回的排序结果列表里面是否返回每一条document原文，默认值False。
 	ReturnDocuments *bool `json:"ReturnDocuments,omitnil,omitempty" name:"ReturnDocuments"`
 }
 
@@ -790,10 +790,10 @@ func (r *RunRerankRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RunRerankResponseParams struct {
-	// 输出结果集
+	// 输出结果集。
 	Data []*RerankResult `json:"Data,omitnil,omitempty" name:"Data"`
 
-	// 消耗token数量
+	// 消耗token数量。
 	Usage *Usage `json:"Usage,omitnil,omitempty" name:"Usage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

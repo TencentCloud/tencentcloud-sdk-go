@@ -365,7 +365,7 @@ type BasicTargetGroupInfo struct {
 	// 目标组名称
 	TargetGroupName *string `json:"TargetGroupName,omitnil,omitempty" name:"TargetGroupName"`
 
-	// 权重
+	// 目标组权重
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 
@@ -727,13 +727,14 @@ type CertInfo struct {
 }
 
 type CertificateInput struct {
-	// 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证
+	// 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证。
+	// 默认为 UNIDIRECTIONAL。
 	SSLMode *string `json:"SSLMode,omitnil,omitempty" name:"SSLMode"`
 
 	// 双向认证时，是否开启客户端认证，ON:开启，OPTIONAL:自适应，默认ON。
 	SSLVerifyClient *string `json:"SSLVerifyClient,omitnil,omitempty" name:"SSLVerifyClient"`
 
-	// 服务端证书的 ID，如果不填写此项则必须上传证书，包括 CertContent，CertKey，CertName。
+	// 服务端证书的 ID，如果不填写此项则必须上传证书，包括 CertContent（服务端证书内容），CertKey（服务端证书密钥），CertName（服务端证书名称）。
 	CertId *string `json:"CertId,omitnil,omitempty" name:"CertId"`
 
 	// 客户端证书的 ID，当监听器采用双向认证，即 SSLMode=MUTUAL 时，如果不填写此项则必须上传客户端证书，包括 CertCaContent，CertCaName。
@@ -887,25 +888,25 @@ type ClassicalTargetInfo struct {
 
 // Predefined struct for user
 type CloneLoadBalancerRequestParams struct {
-	// 负载均衡ID。
+	// 负载均衡ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 克隆出负载均衡实例的名称，规则：1-60 个英文、汉字、数字、连接线“-”或下划线“_”。
 	// 注意：如果名称与系统中已有负载均衡实例的名称相同，则系统将会自动生成此次创建的负载均衡实例的名称。
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
-	// 负载均衡实例所属的项目 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。不传此参数则视为默认项目。
+	// 负载均衡实例所属的项目 ID，默认项目 ID 为0，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。不传此参数则视为默认项目。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 仅适用于公网负载均衡。设置跨可用区容灾时的主可用区ID，例如 100001 或 ap-guangzhou-1
+	// 仅适用于公网负载均衡。设置跨可用区容灾时的主可用区ID，可用区 ID 和名称均支持，例如 100001 或 ap-guangzhou-1。
 	// 注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区，平台将为您自动选择最佳备可用区。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域的主可用区的列表。
 	MasterZoneId *string `json:"MasterZoneId,omitnil,omitempty" name:"MasterZoneId"`
 
-	// 仅适用于公网负载均衡。设置跨可用区容灾时的备可用区ID，例如 100001 或 ap-guangzhou-1
+	// 仅适用于公网负载均衡。设置跨可用区容灾时的备可用区ID，可用区 ID 和名称均支持，例如 100001 或 ap-guangzhou-1。
 	// 注：备可用区是主可用区故障后，需要承载流量的可用区。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域的主/备可用区的列表。
 	SlaveZoneId *string `json:"SlaveZoneId,omitnil,omitempty" name:"SlaveZoneId"`
 
-	// 仅适用于公网负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1。不传则查询所有可用区的 CVM 实例。如需指定可用区，可调用查询可用区列表[DescribeZones](https://cloud.tencent.com/document/product/213/15707)接口查询。
+	// 仅适用于公网负载均衡。可用区ID，可用区 ID 和名称均支持，指定可用区以创建负载均衡实例。如：100001 或 ap-guangzhou-1。不传则查询所有可用区的 CVM 实例。如需指定可用区，可调用查询可用区列表 [DescribeZones](https://cloud.tencent.com/document/product/213/15707) 接口查询。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 仅适用于公网负载均衡。负载均衡的网络计费模式。
@@ -923,7 +924,7 @@ type CloneLoadBalancerRequestParams struct {
 	// 独占集群信息。
 	ExclusiveCluster *ExclusiveCluster `json:"ExclusiveCluster,omitnil,omitempty" name:"ExclusiveCluster"`
 
-	// 带宽包ID，指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE）。
+	// 带宽包ID，可以通过 [DescribeBandwidthPackages](https://cloud.tencent.com/document/api/215/19209) 接口获取。指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE）。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
 	// 是否支持绑定跨地域/跨Vpc绑定IP的功能。
@@ -932,7 +933,7 @@ type CloneLoadBalancerRequestParams struct {
 	// 开启绑定跨地域/跨Vpc绑定IP的功能后，创建SnatIp。
 	SnatIps []*SnatIp `json:"SnatIps,omitnil,omitempty" name:"SnatIps"`
 
-	// 公网独占集群ID或者CDCId。
+	// 公网独占集群ID或者CDCId，可以通过 [DescribeExclusiveClusters](https://cloud.tencent.com/document/product/214/49278) 接口获取。
 	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
 
 	// 性能容量型规格。<li>clb.c2.medium（标准型）</li><li>clb.c3.small（高阶型1）</li><li>clb.c3.medium（高阶型2）</li><li>clb.c4.small（超强型1）</li><li>clb.c4.medium（超强型2）</li><li>clb.c4.large（超强型3）</li><li>clb.c4.xlarge（超强型4）</li>
@@ -944,32 +945,32 @@ type CloneLoadBalancerRequestParams struct {
 	// 仅适用于私有网络内网负载均衡。内网就近接入时，选择可用区下发。可调用[DescribeZones](https://cloud.tencent.com/document/product/213/15707)接口查询可用区列表。
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 
-	// EIP 的唯一 ID，形如：eip-11112222，仅适用于内网负载均衡绑定EIP。
+	// EIP 的唯一 ID，形如：eip-qhx8udkc，仅适用于内网负载均衡绑定EIP，可以通过 [DescribeAddresses](https://cloud.tencent.com/document/product/215/16702) 接口查询。
 	EipAddressId *string `json:"EipAddressId,omitnil,omitempty" name:"EipAddressId"`
 }
 
 type CloneLoadBalancerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡ID。
+	// 负载均衡ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 克隆出负载均衡实例的名称，规则：1-60 个英文、汉字、数字、连接线“-”或下划线“_”。
 	// 注意：如果名称与系统中已有负载均衡实例的名称相同，则系统将会自动生成此次创建的负载均衡实例的名称。
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
-	// 负载均衡实例所属的项目 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。不传此参数则视为默认项目。
+	// 负载均衡实例所属的项目 ID，默认项目 ID 为0，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。不传此参数则视为默认项目。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 仅适用于公网负载均衡。设置跨可用区容灾时的主可用区ID，例如 100001 或 ap-guangzhou-1
+	// 仅适用于公网负载均衡。设置跨可用区容灾时的主可用区ID，可用区 ID 和名称均支持，例如 100001 或 ap-guangzhou-1。
 	// 注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区，平台将为您自动选择最佳备可用区。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域的主可用区的列表。
 	MasterZoneId *string `json:"MasterZoneId,omitnil,omitempty" name:"MasterZoneId"`
 
-	// 仅适用于公网负载均衡。设置跨可用区容灾时的备可用区ID，例如 100001 或 ap-guangzhou-1
+	// 仅适用于公网负载均衡。设置跨可用区容灾时的备可用区ID，可用区 ID 和名称均支持，例如 100001 或 ap-guangzhou-1。
 	// 注：备可用区是主可用区故障后，需要承载流量的可用区。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域的主/备可用区的列表。
 	SlaveZoneId *string `json:"SlaveZoneId,omitnil,omitempty" name:"SlaveZoneId"`
 
-	// 仅适用于公网负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1。不传则查询所有可用区的 CVM 实例。如需指定可用区，可调用查询可用区列表[DescribeZones](https://cloud.tencent.com/document/product/213/15707)接口查询。
+	// 仅适用于公网负载均衡。可用区ID，可用区 ID 和名称均支持，指定可用区以创建负载均衡实例。如：100001 或 ap-guangzhou-1。不传则查询所有可用区的 CVM 实例。如需指定可用区，可调用查询可用区列表 [DescribeZones](https://cloud.tencent.com/document/product/213/15707) 接口查询。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 仅适用于公网负载均衡。负载均衡的网络计费模式。
@@ -987,7 +988,7 @@ type CloneLoadBalancerRequest struct {
 	// 独占集群信息。
 	ExclusiveCluster *ExclusiveCluster `json:"ExclusiveCluster,omitnil,omitempty" name:"ExclusiveCluster"`
 
-	// 带宽包ID，指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE）。
+	// 带宽包ID，可以通过 [DescribeBandwidthPackages](https://cloud.tencent.com/document/api/215/19209) 接口获取。指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE）。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
 	// 是否支持绑定跨地域/跨Vpc绑定IP的功能。
@@ -996,7 +997,7 @@ type CloneLoadBalancerRequest struct {
 	// 开启绑定跨地域/跨Vpc绑定IP的功能后，创建SnatIp。
 	SnatIps []*SnatIp `json:"SnatIps,omitnil,omitempty" name:"SnatIps"`
 
-	// 公网独占集群ID或者CDCId。
+	// 公网独占集群ID或者CDCId，可以通过 [DescribeExclusiveClusters](https://cloud.tencent.com/document/product/214/49278) 接口获取。
 	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
 
 	// 性能容量型规格。<li>clb.c2.medium（标准型）</li><li>clb.c3.small（高阶型1）</li><li>clb.c3.medium（高阶型2）</li><li>clb.c4.small（超强型1）</li><li>clb.c4.medium（超强型2）</li><li>clb.c4.large（超强型3）</li><li>clb.c4.xlarge（超强型4）</li>
@@ -1008,7 +1009,7 @@ type CloneLoadBalancerRequest struct {
 	// 仅适用于私有网络内网负载均衡。内网就近接入时，选择可用区下发。可调用[DescribeZones](https://cloud.tencent.com/document/product/213/15707)接口查询可用区列表。
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 
-	// EIP 的唯一 ID，形如：eip-11112222，仅适用于内网负载均衡绑定EIP。
+	// EIP 的唯一 ID，形如：eip-qhx8udkc，仅适用于内网负载均衡绑定EIP，可以通过 [DescribeAddresses](https://cloud.tencent.com/document/product/215/16702) 接口查询。
 	EipAddressId *string `json:"EipAddressId,omitnil,omitempty" name:"EipAddressId"`
 }
 
@@ -1307,10 +1308,11 @@ func (r *CreateClsLogSetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateListenerRequestParams struct {
-	// 负载均衡实例 ID。
+	// 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 要将监听器创建到哪些端口，每个端口对应一个新的监听器。
+	// 端口范围：1~65535
 	Ports []*int64 `json:"Ports,omitnil,omitempty" name:"Ports"`
 
 	// 监听器协议： TCP | UDP | HTTP | HTTPS | TCP_SSL | QUIC。
@@ -1327,11 +1329,11 @@ type CreateListenerRequestParams struct {
 	// <li>创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数MultiCertInfo至少需要传一个， 但不能同时传入。</li>
 	Certificate *CertificateInput `json:"Certificate,omitnil,omitempty" name:"Certificate"`
 
-	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。
+	// 会话保持时间，单位：秒。可选值：30~3600，默认为0，默认不开启。此参数仅适用于TCP/UDP监听器。
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 
-	// 监听器转发的方式。可选值：WRR、LEAST_CONN
-	// 分别表示按权重轮询、最小连接数， 默认为 WRR。此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。
+	// 监听器转发的方式。可选值：WRR（按权重轮询）、LEAST_CONN（按最小连接数）、IP_HASH（按 IP 地址哈希）
+	// 默认为 WRR。此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
 	// 是否开启SNI特性，此参数仅适用于HTTPS监听器。0表示未开启，1表示开启。
@@ -1364,32 +1366,33 @@ type CreateListenerRequestParams struct {
 	// 监听器最大新增连接数，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。基础网络实例不支持该参数。
 	MaxCps *int64 `json:"MaxCps,omitnil,omitempty" name:"MaxCps"`
 
-	// 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。取值范围：共享型实例和独占型实例支持：300-900，性能容量型实例支持：300-2000。如需设置请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)。
+	// 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。取值范围：共享型实例和独占型实例支持：300-900，性能容量型实例支持：300-1980。如需设置请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)。
 	IdleConnectTimeout *int64 `json:"IdleConnectTimeout,omitnil,omitempty" name:"IdleConnectTimeout"`
 
-	// 是否开启SNAT。
+	// 是否开启SNAT，True（开启）、False（关闭）
 	SnatEnable *bool `json:"SnatEnable,omitnil,omitempty" name:"SnatEnable"`
 
-	// 全端口段监听器的结束端口
+	// 全端口段监听器的结束端口，端口范围：2 - 65535
 	FullEndPorts []*int64 `json:"FullEndPorts,omitnil,omitempty" name:"FullEndPorts"`
 
-	// 内网http监听器开启h2c开关
+	// 内网http监听器开启h2c开关，True（开启）、False（关闭）
 	H2cSwitch *bool `json:"H2cSwitch,omitnil,omitempty" name:"H2cSwitch"`
 
-	// TCP_SSL监听器支持关闭SSL后仍然支持混绑，此参数为关闭开关
+	// TCP_SSL监听器支持关闭SSL后仍然支持混绑，此参数为关闭开关。True（关闭）、False（开启）
 	SslCloseSwitch *bool `json:"SslCloseSwitch,omitnil,omitempty" name:"SslCloseSwitch"`
 
-	// 数据压缩模式
+	// 数据压缩模式。可选值：transparent（透传模式）、compatibility（兼容模式）
 	DataCompressMode *string `json:"DataCompressMode,omitnil,omitempty" name:"DataCompressMode"`
 }
 
 type CreateListenerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡实例 ID。
+	// 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 要将监听器创建到哪些端口，每个端口对应一个新的监听器。
+	// 端口范围：1~65535
 	Ports []*int64 `json:"Ports,omitnil,omitempty" name:"Ports"`
 
 	// 监听器协议： TCP | UDP | HTTP | HTTPS | TCP_SSL | QUIC。
@@ -1406,11 +1409,11 @@ type CreateListenerRequest struct {
 	// <li>创建TCP_SSL监听器和未开启SNI特性的HTTPS监听器时，此参数和参数MultiCertInfo至少需要传一个， 但不能同时传入。</li>
 	Certificate *CertificateInput `json:"Certificate,omitnil,omitempty" name:"Certificate"`
 
-	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。
+	// 会话保持时间，单位：秒。可选值：30~3600，默认为0，默认不开启。此参数仅适用于TCP/UDP监听器。
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 
-	// 监听器转发的方式。可选值：WRR、LEAST_CONN
-	// 分别表示按权重轮询、最小连接数， 默认为 WRR。此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。
+	// 监听器转发的方式。可选值：WRR（按权重轮询）、LEAST_CONN（按最小连接数）、IP_HASH（按 IP 地址哈希）
+	// 默认为 WRR。此参数仅适用于TCP/UDP/TCP_SSL/QUIC监听器。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
 	// 是否开启SNI特性，此参数仅适用于HTTPS监听器。0表示未开启，1表示开启。
@@ -1443,22 +1446,22 @@ type CreateListenerRequest struct {
 	// 监听器最大新增连接数，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持，不传或者传-1表示监听器维度不限速。基础网络实例不支持该参数。
 	MaxCps *int64 `json:"MaxCps,omitnil,omitempty" name:"MaxCps"`
 
-	// 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。取值范围：共享型实例和独占型实例支持：300-900，性能容量型实例支持：300-2000。如需设置请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)。
+	// 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。取值范围：共享型实例和独占型实例支持：300-900，性能容量型实例支持：300-1980。如需设置请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)。
 	IdleConnectTimeout *int64 `json:"IdleConnectTimeout,omitnil,omitempty" name:"IdleConnectTimeout"`
 
-	// 是否开启SNAT。
+	// 是否开启SNAT，True（开启）、False（关闭）
 	SnatEnable *bool `json:"SnatEnable,omitnil,omitempty" name:"SnatEnable"`
 
-	// 全端口段监听器的结束端口
+	// 全端口段监听器的结束端口，端口范围：2 - 65535
 	FullEndPorts []*int64 `json:"FullEndPorts,omitnil,omitempty" name:"FullEndPorts"`
 
-	// 内网http监听器开启h2c开关
+	// 内网http监听器开启h2c开关，True（开启）、False（关闭）
 	H2cSwitch *bool `json:"H2cSwitch,omitnil,omitempty" name:"H2cSwitch"`
 
-	// TCP_SSL监听器支持关闭SSL后仍然支持混绑，此参数为关闭开关
+	// TCP_SSL监听器支持关闭SSL后仍然支持混绑，此参数为关闭开关。True（关闭）、False（开启）
 	SslCloseSwitch *bool `json:"SslCloseSwitch,omitnil,omitempty" name:"SslCloseSwitch"`
 
-	// 数据压缩模式
+	// 数据压缩模式。可选值：transparent（透传模式）、compatibility（兼容模式）
 	DataCompressMode *string `json:"DataCompressMode,omitnil,omitempty" name:"DataCompressMode"`
 }
 
@@ -1547,20 +1550,20 @@ type CreateLoadBalancerRequestParams struct {
 	// 在私有网络内购买内网负载均衡实例的情况下，必须指定子网 ID，内网负载均衡实例的 VIP 将从这个子网中产生。创建内网负载均衡实例时，此参数必填，创建公网IPv4负载均衡实例时，不支持指定该参数。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 负载均衡实例所属的项目 ID，可以通过 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 接口获取。不填此参数则视为默认项目。
+	// 负载均衡实例所属的项目 ID，默认项目 ID 为0。可以通过 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 接口获取。不填此参数则视为默认项目。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 仅适用于公网负载均衡。IP版本，可取值：IPV4、IPV6、IPv6FullChain，不区分大小写，默认值 IPV4。说明：取值为IPV6表示为IPV6 NAT64版本；取值为IPv6FullChain，表示为IPv6版本。
 	AddressIPVersion *string `json:"AddressIPVersion,omitnil,omitempty" name:"AddressIPVersion"`
 
-	// 创建负载均衡的个数，默认值 1。
+	// 创建负载均衡的个数，默认值 1。创建个数不能超过帐号所能创建的最大值，默认创建最大值为20。
 	Number *uint64 `json:"Number,omitnil,omitempty" name:"Number"`
 
-	// 仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的主可用区ID，例如 100001 或 ap-guangzhou-1
+	// 仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的主可用区ID， 可用区 ID 和名称均支持，例如 100001 或 ap-guangzhou-1
 	// 注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区。目前仅广州、上海、南京、北京、成都、深圳金融、中国香港、首尔、法兰克福、新加坡地域的 IPv4 版本的 CLB 支持主备可用区。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域的主可用区的列表。【如果您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】
 	MasterZoneId *string `json:"MasterZoneId,omitnil,omitempty" name:"MasterZoneId"`
 
-	// 仅适用于公网且IP版本为IPv4的负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1。
+	// 仅适用于公网且IP版本为IPv4的负载均衡。可用区ID，可用区 ID 和名称均支持，指定可用区以创建负载均衡实例。如：100001 或 ap-guangzhou-1。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 网络计费模式，最大出带宽。仅对内网属性的性能容量型实例和公网属性的所有实例生效。API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)
@@ -1576,7 +1579,7 @@ type CreateLoadBalancerRequestParams struct {
 	// 注意：当指定VIP创建内网实例、或公网IPv6 BGP实例时，若VIP不属于指定VPC子网的网段内时，会创建失败；若VIP已被占用，也会创建失败。
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 带宽包ID，指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE），带宽包的属性即为其结算方式。非上移用户购买的 IPv6 负载均衡实例，且运营商类型非 BGP 时 ，不支持指定具体带宽包id。
+	// 带宽包ID，可以通过 [DescribeBandwidthPackages](https://cloud.tencent.com/document/api/215/19209) 接口获取。指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE），带宽包的属性即为其结算方式。非上移用户购买的 IPv6 负载均衡实例，且运营商类型非 BGP 时 ，不支持指定具体带宽包id。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
 	// 独占型实例信息。若创建独占型的内网负载均衡实例，则此参数必填。
@@ -1601,11 +1604,11 @@ type CreateLoadBalancerRequestParams struct {
 	// Stgw独占集群的标签。
 	ClusterTag *string `json:"ClusterTag,omitnil,omitempty" name:"ClusterTag"`
 
-	// 仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的备可用区ID，例如 100001 或 ap-guangzhou-1
+	// 仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的备可用区ID，可用区 ID 和名称均支持，例如 100001 或 ap-guangzhou-1
 	// 注：备可用区是主可用区故障后，需要承载流量的可用区。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域的主/备可用区的列表。【如果您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】
 	SlaveZoneId *string `json:"SlaveZoneId,omitnil,omitempty" name:"SlaveZoneId"`
 
-	// EIP 的唯一 ID，形如：eip-11112222，仅适用于内网负载均衡绑定EIP。
+	// EIP 的唯一 ID，可以通过 [DescribeAddresses](https://cloud.tencent.com/document/product/215/16702) 接口查询。形如：eip-qhx8udkc，仅适用于内网负载均衡绑定EIP。
 	EipAddressId *string `json:"EipAddressId,omitnil,omitempty" name:"EipAddressId"`
 
 	// Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。
@@ -1647,20 +1650,20 @@ type CreateLoadBalancerRequest struct {
 	// 在私有网络内购买内网负载均衡实例的情况下，必须指定子网 ID，内网负载均衡实例的 VIP 将从这个子网中产生。创建内网负载均衡实例时，此参数必填，创建公网IPv4负载均衡实例时，不支持指定该参数。
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
-	// 负载均衡实例所属的项目 ID，可以通过 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 接口获取。不填此参数则视为默认项目。
+	// 负载均衡实例所属的项目 ID，默认项目 ID 为0。可以通过 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 接口获取。不填此参数则视为默认项目。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 仅适用于公网负载均衡。IP版本，可取值：IPV4、IPV6、IPv6FullChain，不区分大小写，默认值 IPV4。说明：取值为IPV6表示为IPV6 NAT64版本；取值为IPv6FullChain，表示为IPv6版本。
 	AddressIPVersion *string `json:"AddressIPVersion,omitnil,omitempty" name:"AddressIPVersion"`
 
-	// 创建负载均衡的个数，默认值 1。
+	// 创建负载均衡的个数，默认值 1。创建个数不能超过帐号所能创建的最大值，默认创建最大值为20。
 	Number *uint64 `json:"Number,omitnil,omitempty" name:"Number"`
 
-	// 仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的主可用区ID，例如 100001 或 ap-guangzhou-1
+	// 仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的主可用区ID， 可用区 ID 和名称均支持，例如 100001 或 ap-guangzhou-1
 	// 注：主可用区是需要承载流量的可用区，备可用区默认不承载流量，主可用区不可用时才使用备可用区。目前仅广州、上海、南京、北京、成都、深圳金融、中国香港、首尔、法兰克福、新加坡地域的 IPv4 版本的 CLB 支持主备可用区。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域的主可用区的列表。【如果您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】
 	MasterZoneId *string `json:"MasterZoneId,omitnil,omitempty" name:"MasterZoneId"`
 
-	// 仅适用于公网且IP版本为IPv4的负载均衡。可用区ID，指定可用区以创建负载均衡实例。如：ap-guangzhou-1。
+	// 仅适用于公网且IP版本为IPv4的负载均衡。可用区ID，可用区 ID 和名称均支持，指定可用区以创建负载均衡实例。如：100001 或 ap-guangzhou-1。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
 	// 网络计费模式，最大出带宽。仅对内网属性的性能容量型实例和公网属性的所有实例生效。API接口购买包年包月实例还在灰度中，如您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)
@@ -1676,7 +1679,7 @@ type CreateLoadBalancerRequest struct {
 	// 注意：当指定VIP创建内网实例、或公网IPv6 BGP实例时，若VIP不属于指定VPC子网的网段内时，会创建失败；若VIP已被占用，也会创建失败。
 	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
-	// 带宽包ID，指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE），带宽包的属性即为其结算方式。非上移用户购买的 IPv6 负载均衡实例，且运营商类型非 BGP 时 ，不支持指定具体带宽包id。
+	// 带宽包ID，可以通过 [DescribeBandwidthPackages](https://cloud.tencent.com/document/api/215/19209) 接口获取。指定此参数时，网络计费方式（InternetAccessible.InternetChargeType）只支持按带宽包计费（BANDWIDTH_PACKAGE），带宽包的属性即为其结算方式。非上移用户购买的 IPv6 负载均衡实例，且运营商类型非 BGP 时 ，不支持指定具体带宽包id。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
 
 	// 独占型实例信息。若创建独占型的内网负载均衡实例，则此参数必填。
@@ -1701,11 +1704,11 @@ type CreateLoadBalancerRequest struct {
 	// Stgw独占集群的标签。
 	ClusterTag *string `json:"ClusterTag,omitnil,omitempty" name:"ClusterTag"`
 
-	// 仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的备可用区ID，例如 100001 或 ap-guangzhou-1
+	// 仅适用于公网且IP版本为IPv4的负载均衡。设置跨可用区容灾时的备可用区ID，可用区 ID 和名称均支持，例如 100001 或 ap-guangzhou-1
 	// 注：备可用区是主可用区故障后，需要承载流量的可用区。可通过 [DescribeResources](https://cloud.tencent.com/document/api/214/70213) 接口查询一个地域的主/备可用区的列表。【如果您需要体验该功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】
 	SlaveZoneId *string `json:"SlaveZoneId,omitnil,omitempty" name:"SlaveZoneId"`
 
-	// EIP 的唯一 ID，形如：eip-11112222，仅适用于内网负载均衡绑定EIP。
+	// EIP 的唯一 ID，可以通过 [DescribeAddresses](https://cloud.tencent.com/document/product/215/16702) 接口查询。形如：eip-qhx8udkc，仅适用于内网负载均衡绑定EIP。
 	EipAddressId *string `json:"EipAddressId,omitnil,omitempty" name:"EipAddressId"`
 
 	// Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。
@@ -2237,20 +2240,20 @@ func (r *DeleteCustomizedConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteListenerRequestParams struct {
-	// 负载均衡实例ID。
+	// 负载均衡实例ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 要删除的监听器ID。
+	// 要删除的监听器ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 }
 
 type DeleteListenerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡实例ID。
+	// 负载均衡实例ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 要删除的监听器ID。
+	// 要删除的监听器ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 }
 
@@ -2298,20 +2301,20 @@ func (r *DeleteListenerResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLoadBalancerListenersRequestParams struct {
-	// 负载均衡实例ID。
+	// 负载均衡实例ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 指定删除的监听器ID数组，最大为20个。若不填则删除负载均衡的所有监听器。
+	// 指定删除的监听器ID数组，最大为20个。若不填则删除负载均衡的所有监听器，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	ListenerIds []*string `json:"ListenerIds,omitnil,omitempty" name:"ListenerIds"`
 }
 
 type DeleteLoadBalancerListenersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡实例ID。
+	// 负载均衡实例ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 指定删除的监听器ID数组，最大为20个。若不填则删除负载均衡的所有监听器。
+	// 指定删除的监听器ID数组，最大为20个。若不填则删除负载均衡的所有监听器，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	ListenerIds []*string `json:"ListenerIds,omitnil,omitempty" name:"ListenerIds"`
 }
 
@@ -2359,20 +2362,22 @@ func (r *DeleteLoadBalancerListenersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLoadBalancerRequestParams struct {
-	// 要删除的负载均衡实例 ID数组，数组大小最大支持20。
+	// 要删除的负载均衡实例 ID 数组，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取数组大小最大支持20。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
-	// 是否强制删除clb。为true表示强制删除，为false表示不是强制删除，需要做拦截校验。
+	// 是否强制删除clb。True表示强制删除，False表示不是强制删除，需要做拦截校验。
+	// 默认为 False
 	ForceDelete *bool `json:"ForceDelete,omitnil,omitempty" name:"ForceDelete"`
 }
 
 type DeleteLoadBalancerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要删除的负载均衡实例 ID数组，数组大小最大支持20。
+	// 要删除的负载均衡实例 ID 数组，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取数组大小最大支持20。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
-	// 是否强制删除clb。为true表示强制删除，为false表示不是强制删除，需要做拦截校验。
+	// 是否强制删除clb。True表示强制删除，False表示不是强制删除，需要做拦截校验。
+	// 默认为 False
 	ForceDelete *bool `json:"ForceDelete,omitnil,omitempty" name:"ForceDelete"`
 }
 
@@ -2556,44 +2561,44 @@ func (r *DeleteRewriteResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRuleRequestParams struct {
-	// 负载均衡实例ID。
+	// 负载均衡实例ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器ID。
+	// 负载均衡监听器ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 要删除的转发规则的ID组成的数组。
+	// 要删除的转发规则的ID组成的数组，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	LocationIds []*string `json:"LocationIds,omitnil,omitempty" name:"LocationIds"`
 
-	// 要删除的转发规则的域名，如果是多域名，可以指定多域名列表中的任意一个。
+	// 要删除的转发规则的域名，如果是多域名，可以指定多域名列表中的任意一个，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 要删除的转发规则的转发路径。
+	// 要删除的转发规则的转发路径，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 监听器下必须配置一个默认域名，当需要删除默认域名时，可以指定另一个域名作为新的默认域名，如果新的默认域名是多域名，可以指定多域名列表中的任意一个。
+	// 监听器下必须配置一个默认域名，当需要删除默认域名时，可以指定另一个域名作为新的默认域名，如果新的默认域名是多域名，可以指定多域名列表中的任意一个，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	NewDefaultServerDomain *string `json:"NewDefaultServerDomain,omitnil,omitempty" name:"NewDefaultServerDomain"`
 }
 
 type DeleteRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡实例ID。
+	// 负载均衡实例ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器ID。
+	// 负载均衡监听器ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 要删除的转发规则的ID组成的数组。
+	// 要删除的转发规则的ID组成的数组，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	LocationIds []*string `json:"LocationIds,omitnil,omitempty" name:"LocationIds"`
 
-	// 要删除的转发规则的域名，如果是多域名，可以指定多域名列表中的任意一个。
+	// 要删除的转发规则的域名，如果是多域名，可以指定多域名列表中的任意一个，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 要删除的转发规则的转发路径。
+	// 要删除的转发规则的转发路径，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
-	// 监听器下必须配置一个默认域名，当需要删除默认域名时，可以指定另一个域名作为新的默认域名，如果新的默认域名是多域名，可以指定多域名列表中的任意一个。
+	// 监听器下必须配置一个默认域名，当需要删除默认域名时，可以指定另一个域名作为新的默认域名，如果新的默认域名是多域名，可以指定多域名列表中的任意一个，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	NewDefaultServerDomain *string `json:"NewDefaultServerDomain,omitnil,omitempty" name:"NewDefaultServerDomain"`
 }
 
@@ -4020,32 +4025,32 @@ func (r *DescribeLBListenersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeListenersRequestParams struct {
-	// 负载均衡实例 ID。
+	// 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/api/214/30685) 接口获取。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 要查询的负载均衡监听器 ID 数组，最大为100个。
+	// 要查询的负载均衡监听器 ID 数组，最大为100个，可以通过 [DescribeListeners](https://cloud.tencent.com/document/api/214/30686) 接口获取。
 	ListenerIds []*string `json:"ListenerIds,omitnil,omitempty" name:"ListenerIds"`
 
 	// 要查询的监听器协议类型，取值 TCP | UDP | HTTP | HTTPS | TCP_SSL | QUIC。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 要查询的监听器的端口。
+	// 要查询的监听器的端口，端口范围：1-65535
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
 type DescribeListenersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡实例 ID。
+	// 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/api/214/30685) 接口获取。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 要查询的负载均衡监听器 ID 数组，最大为100个。
+	// 要查询的负载均衡监听器 ID 数组，最大为100个，可以通过 [DescribeListeners](https://cloud.tencent.com/document/api/214/30686) 接口获取。
 	ListenerIds []*string `json:"ListenerIds,omitnil,omitempty" name:"ListenerIds"`
 
 	// 要查询的监听器协议类型，取值 TCP | UDP | HTTP | HTTPS | TCP_SSL | QUIC。
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 要查询的监听器的端口。
+	// 要查询的监听器的端口，端口范围：1-65535
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
@@ -4291,16 +4296,53 @@ type DescribeLoadBalancersDetailRequestParams struct {
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
 	// 查询负载均衡详细信息列表条件，详细的过滤条件如下：
-	// <li> loadbalancer-id - String - 是否必填：否 - （过滤条件）按照 负载均衡ID 过滤，如："lb-12345678"。</li>
-	// <li> project-id - String - 是否必填：否 - （过滤条件）按照 项目ID 过滤，如："0","123"。</li>
-	// <li> network - String - 是否必填：否 - （过滤条件）按照 负载均衡网络类型 过滤，如："Public","Private"。</li>
-	// <li> vip - String - 是否必填：否 - （过滤条件）按照 负载均衡Vip 过滤，如："1.1.1.1","2204::22:3"。</li>
-	// <li> target-ip - String - 是否必填：否 - （过滤条件）按照 后端目标内网Ip 过滤，如："1.1.1.1","2203::214:4"。</li>
-	// <li> vpcid - String - 是否必填：否 - （过滤条件）按照 负载均衡所属vpcId 过滤，如："vpc-12345678"。</li>
-	// <li> zone - String - 是否必填：否 - （过滤条件）按照 负载均衡所属的可用区 过滤，如："ap-guangzhou-1"。</li>
-	// <li> tag-key - String - 是否必填：否 - （过滤条件）按照 负载均衡标签的标签键 过滤，如："name"。</li>
-	// <li> tag:* - String - 是否必填：否 - （过滤条件）按照 负载均衡的标签 过滤，':' 后面跟的是标签键。如：过滤标签键name，标签值zhangsan,lisi，{"Name": "tag:name","Values": ["zhangsan", "lisi"]}。</li>
-	// <li> fuzzy-search - String - 是否必填：否 - （过滤条件）按照 负载均衡Vip，负载均衡名称 模糊搜索，如："1.1"。</li>
+	// - loadbalancer-id
+	// 按照【负载均衡ID】进行过滤。例如：lb-rbw5skde。
+	// 类型：String
+	// 必选：否
+	// 获取方式：[DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459)
+	// - project-id
+	// 按照【项目ID】进行过滤。例如： "0"、"123"。
+	// 类型：String
+	// 必选：否
+	// 获取方式：[DescribeProject](https://cloud.tencent.com/document/api/651/78725)
+	// - network
+	// 按照【负载均衡网络类型】进行过滤。例如：Public。
+	// 类型：String
+	// 必选：否
+	// 可选值：Private（内网）、Public（公网）
+	// - vip
+	// 按照【负载均衡 VIP】进行过滤。例如："1.1.1.1","2204::22:3"。
+	// 类型：String
+	// 必选：否
+	// - vpcid
+	// 按照【负载均衡所属 VPCID】进行过滤。例如："vpc-12345678"。
+	// 类型：String
+	// 必选：否
+	// 获取方式：[DescribeZones](https://cloud.tencent.com/document/product/213/15707)
+	// - target-ip
+	// 按照【后端目标内网 IP】进行过滤。例如："1.1.1.1","2203::214:4"。
+	// 类型：String
+	// 必选：否
+	// - zone
+	// 按照【负载均衡所属的可用区】进行过滤。例如："ap-guangzhou-1"。
+	// 类型：String
+	// 必选：否
+	// 获取方式：[DescribeZones](https://cloud.tencent.com/document/product/213/15707)
+	// - tag-key
+	// 按照【负载均衡标签的标签键】进行过滤，例如："name"。
+	// 类型：String
+	// 必选：否
+	// 获取方式：[DescribeTags](https://cloud.tencent.com/document/api/651/35316)
+	// - tag:*
+	// 按照【负载均衡的标签】进行过滤，':' 后面跟的是标签键。如过滤标签键name，标签值zhangsan,lisi，{"Name": "tag:name","Values": ["zhangsan", "lisi"]}。
+	// 类型：String
+	// 必选：否
+	// 获取方式：[DescribeTagKeys](https://cloud.tencent.com/document/api/651/35318)
+	// - fuzzy-search
+	// 按照【负载均衡VIP，负载均衡名称】模糊搜索，例如："1.1"。
+	// 类型：String
+	// 必选：否
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -4320,16 +4362,53 @@ type DescribeLoadBalancersDetailRequest struct {
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
 	// 查询负载均衡详细信息列表条件，详细的过滤条件如下：
-	// <li> loadbalancer-id - String - 是否必填：否 - （过滤条件）按照 负载均衡ID 过滤，如："lb-12345678"。</li>
-	// <li> project-id - String - 是否必填：否 - （过滤条件）按照 项目ID 过滤，如："0","123"。</li>
-	// <li> network - String - 是否必填：否 - （过滤条件）按照 负载均衡网络类型 过滤，如："Public","Private"。</li>
-	// <li> vip - String - 是否必填：否 - （过滤条件）按照 负载均衡Vip 过滤，如："1.1.1.1","2204::22:3"。</li>
-	// <li> target-ip - String - 是否必填：否 - （过滤条件）按照 后端目标内网Ip 过滤，如："1.1.1.1","2203::214:4"。</li>
-	// <li> vpcid - String - 是否必填：否 - （过滤条件）按照 负载均衡所属vpcId 过滤，如："vpc-12345678"。</li>
-	// <li> zone - String - 是否必填：否 - （过滤条件）按照 负载均衡所属的可用区 过滤，如："ap-guangzhou-1"。</li>
-	// <li> tag-key - String - 是否必填：否 - （过滤条件）按照 负载均衡标签的标签键 过滤，如："name"。</li>
-	// <li> tag:* - String - 是否必填：否 - （过滤条件）按照 负载均衡的标签 过滤，':' 后面跟的是标签键。如：过滤标签键name，标签值zhangsan,lisi，{"Name": "tag:name","Values": ["zhangsan", "lisi"]}。</li>
-	// <li> fuzzy-search - String - 是否必填：否 - （过滤条件）按照 负载均衡Vip，负载均衡名称 模糊搜索，如："1.1"。</li>
+	// - loadbalancer-id
+	// 按照【负载均衡ID】进行过滤。例如：lb-rbw5skde。
+	// 类型：String
+	// 必选：否
+	// 获取方式：[DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459)
+	// - project-id
+	// 按照【项目ID】进行过滤。例如： "0"、"123"。
+	// 类型：String
+	// 必选：否
+	// 获取方式：[DescribeProject](https://cloud.tencent.com/document/api/651/78725)
+	// - network
+	// 按照【负载均衡网络类型】进行过滤。例如：Public。
+	// 类型：String
+	// 必选：否
+	// 可选值：Private（内网）、Public（公网）
+	// - vip
+	// 按照【负载均衡 VIP】进行过滤。例如："1.1.1.1","2204::22:3"。
+	// 类型：String
+	// 必选：否
+	// - vpcid
+	// 按照【负载均衡所属 VPCID】进行过滤。例如："vpc-12345678"。
+	// 类型：String
+	// 必选：否
+	// 获取方式：[DescribeZones](https://cloud.tencent.com/document/product/213/15707)
+	// - target-ip
+	// 按照【后端目标内网 IP】进行过滤。例如："1.1.1.1","2203::214:4"。
+	// 类型：String
+	// 必选：否
+	// - zone
+	// 按照【负载均衡所属的可用区】进行过滤。例如："ap-guangzhou-1"。
+	// 类型：String
+	// 必选：否
+	// 获取方式：[DescribeZones](https://cloud.tencent.com/document/product/213/15707)
+	// - tag-key
+	// 按照【负载均衡标签的标签键】进行过滤，例如："name"。
+	// 类型：String
+	// 必选：否
+	// 获取方式：[DescribeTags](https://cloud.tencent.com/document/api/651/35316)
+	// - tag:*
+	// 按照【负载均衡的标签】进行过滤，':' 后面跟的是标签键。如过滤标签键name，标签值zhangsan,lisi，{"Name": "tag:name","Values": ["zhangsan", "lisi"]}。
+	// 类型：String
+	// 必选：否
+	// 获取方式：[DescribeTagKeys](https://cloud.tencent.com/document/api/651/35318)
+	// - fuzzy-search
+	// 按照【负载均衡VIP，负载均衡名称】模糊搜索，例如："1.1"。
+	// 类型：String
+	// 必选：否
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -6031,10 +6110,10 @@ type Listener struct {
 	// 负载均衡监听器 ID
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 监听器协议
+	// 监听器协议，可选值：TCP、UDP、HTTP、HTTPS、TCP_SSL、QUIC
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
-	// 监听器端口
+	// 监听器端口，端口范围：1-65535
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 监听器绑定的证书信息
@@ -6049,7 +6128,7 @@ type Listener struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
-	// 会话保持时间
+	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，默认不开启。此参数仅适用于TCP/UDP监听器。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 
@@ -6066,10 +6145,10 @@ type Listener struct {
 	// 监听器的创建时间。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 端口段结束端口
+	// 端口段结束端口，端口范围：2-65535
 	EndPort *int64 `json:"EndPort,omitnil,omitempty" name:"EndPort"`
 
-	// 后端服务器类型
+	// 后端服务器类型，可选值：NODE、POLARIS、TARGETGROUP、TARGETGROUP-V2
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
@@ -6910,13 +6989,13 @@ func (r *ModifyCustomizedConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDomainAttributesRequestParams struct {
-	// 负载均衡实例ID。
+	// 负载均衡实例ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器ID。
+	// 负载均衡监听器ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 域名（必须是已经创建的转发规则下的域名），如果是多域名，可以指定多域名列表中的任意一个。
+	// 域名（必须是已经创建的转发规则下的域名），如果是多域名，可以指定多域名列表中的任意一个，可以通过[DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 要修改的新域名。NewDomain和NewDomains只能传一个。
@@ -6925,13 +7004,16 @@ type ModifyDomainAttributesRequestParams struct {
 	// 域名相关的证书信息，注意，仅对启用SNI的监听器适用，不可和MultiCertInfo 同时传入。
 	Certificate *CertificateInput `json:"Certificate,omitnil,omitempty" name:"Certificate"`
 
-	// 是否开启Http2，注意，只有HTTPS域名才能开启Http2。
+	// 是否开启HTTP2，注意，只有HTTPS域名才能开启HTTP2。
+	// True: 开启HTTP2，Fasle: 不开启HTTP2。
 	Http2 *bool `json:"Http2,omitnil,omitempty" name:"Http2"`
 
 	// 是否设为默认域名，注意，一个监听器下只能设置一个默认域名。
+	// True: 设为默认域名，Fasle: 不设置为默认域名。
 	DefaultServer *bool `json:"DefaultServer,omitnil,omitempty" name:"DefaultServer"`
 
-	// 是否开启Quic，注意，只有HTTPS域名才能开启Quic
+	// 是否开启 QUIC，注意，只有 HTTPS 域名才能开启 QUIC。
+	// True: 开启 QUIC，False: 不开启QUIC。
 	Quic *bool `json:"Quic,omitnil,omitempty" name:"Quic"`
 
 	// 监听器下必须配置一个默认域名，若要关闭原默认域名，必须同时指定另一个域名作为新的默认域名，如果新的默认域名是多域名，可以指定多域名列表中的任意一个。
@@ -6947,13 +7029,13 @@ type ModifyDomainAttributesRequestParams struct {
 type ModifyDomainAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡实例ID。
+	// 负载均衡实例ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器ID。
+	// 负载均衡监听器ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 域名（必须是已经创建的转发规则下的域名），如果是多域名，可以指定多域名列表中的任意一个。
+	// 域名（必须是已经创建的转发规则下的域名），如果是多域名，可以指定多域名列表中的任意一个，可以通过[DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 要修改的新域名。NewDomain和NewDomains只能传一个。
@@ -6962,13 +7044,16 @@ type ModifyDomainAttributesRequest struct {
 	// 域名相关的证书信息，注意，仅对启用SNI的监听器适用，不可和MultiCertInfo 同时传入。
 	Certificate *CertificateInput `json:"Certificate,omitnil,omitempty" name:"Certificate"`
 
-	// 是否开启Http2，注意，只有HTTPS域名才能开启Http2。
+	// 是否开启HTTP2，注意，只有HTTPS域名才能开启HTTP2。
+	// True: 开启HTTP2，Fasle: 不开启HTTP2。
 	Http2 *bool `json:"Http2,omitnil,omitempty" name:"Http2"`
 
 	// 是否设为默认域名，注意，一个监听器下只能设置一个默认域名。
+	// True: 设为默认域名，Fasle: 不设置为默认域名。
 	DefaultServer *bool `json:"DefaultServer,omitnil,omitempty" name:"DefaultServer"`
 
-	// 是否开启Quic，注意，只有HTTPS域名才能开启Quic
+	// 是否开启 QUIC，注意，只有 HTTPS 域名才能开启 QUIC。
+	// True: 开启 QUIC，False: 不开启QUIC。
 	Quic *bool `json:"Quic,omitnil,omitempty" name:"Quic"`
 
 	// 监听器下必须配置一个默认域名，若要关闭原默认域名，必须同时指定另一个域名作为新的默认域名，如果新的默认域名是多域名，可以指定多域名列表中的任意一个。
@@ -7034,13 +7119,13 @@ func (r *ModifyDomainAttributesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDomainRequestParams struct {
-	// 负载均衡实例 ID。
+	// 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器 ID。
+	// 负载均衡监听器 ID， 可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 监听器下的某个旧域名。
+	// 监听器下的某个旧域名， 可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 查询。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 新域名，	长度限制为：1-120。有三种使用格式：非正则表达式格式，通配符格式，正则表达式格式。非正则表达式格式只能使用字母、数字、‘-’、‘.’。通配符格式的使用 ‘*’ 只能在开头或者结尾。正则表达式以'~'开头。
@@ -7050,13 +7135,13 @@ type ModifyDomainRequestParams struct {
 type ModifyDomainRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡实例 ID。
+	// 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器 ID。
+	// 负载均衡监听器 ID， 可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 监听器下的某个旧域名。
+	// 监听器下的某个旧域名， 可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 查询。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 新域名，	长度限制为：1-120。有三种使用格式：非正则表达式格式，通配符格式，正则表达式格式。非正则表达式格式只能使用字母、数字、‘-’、‘.’。通配符格式的使用 ‘*’ 只能在开头或者结尾。正则表达式以'~'开头。
@@ -7198,13 +7283,13 @@ func (r *ModifyFunctionTargetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyListenerRequestParams struct {
-	// 负载均衡实例ID。
+	// 负载均衡实例ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器ID。
+	// 负载均衡监听器ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 新的监听器名称。
+	// 新的监听器名称，最大长度255。
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
 	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。
@@ -7216,7 +7301,7 @@ type ModifyListenerRequestParams struct {
 	// 证书相关信息，此参数仅适用于HTTPS/TCP_SSL/QUIC监听器；此参数和MultiCertInfo不能同时传入。
 	Certificate *CertificateInput `json:"Certificate,omitnil,omitempty" name:"Certificate"`
 
-	// 监听器转发的方式。可选值：WRR、LEAST_CONN
+	// 监听器转发的方式。可选值：WRR（按权重轮询）、LEAST_CONN（按最小连接数）、IP_HASH（按 IP 地址哈希）
 	// 分别表示按权重轮询、最小连接数， 默认为 WRR。
 	// 使用场景：适用于TCP/UDP/TCP_SSL/QUIC监听器。七层监听器的均衡方式应在转发规则中修改。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
@@ -7229,41 +7314,49 @@ type ModifyListenerRequestParams struct {
 
 	// 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器。
 	// 默认值0表示不开启，1表示开启。
+	// 若后端服务对连接数上限有限制，则建议谨慎开启。此功能目前处于内测中，如需使用，请提交 [内测申请](https://cloud.tencent.com/apply/p/tsodp6qm21)。
 	KeepaliveEnable *int64 `json:"KeepaliveEnable,omitnil,omitempty" name:"KeepaliveEnable"`
 
 	// 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
+	// True表示发送 RST 给客户端，False表示不发送 RST 给客户端。
 	DeregisterTargetRst *bool `json:"DeregisterTargetRst,omitnil,omitempty" name:"DeregisterTargetRst"`
 
 	// 会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
 	// 使用场景：适用于TCP/UDP/TCP_SSL/QUIC监听器。
+	// 默认为 NORMAL。
 	SessionType *string `json:"SessionType,omitnil,omitempty" name:"SessionType"`
 
 	// 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。
 	MultiCertInfo *MultiCertInfo `json:"MultiCertInfo,omitnil,omitempty" name:"MultiCertInfo"`
 
 	// 监听器粒度并发连接数上限，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持。取值范围：1-实例规格并发连接上限，其中-1表示关闭监听器粒度并发连接数限速。基础网络实例不支持该参数。
+	// 默认为 -1，表示不限速。
 	MaxConn *int64 `json:"MaxConn,omitnil,omitempty" name:"MaxConn"`
 
 	// 监听器粒度新建连接数上限，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持。取值范围：1-实例规格新建连接上限，其中-1表示关闭监听器粒度新建连接数限速。基础网络实例不支持该参数。
+	// 默认为 -1 表示不限速。
 	MaxCps *int64 `json:"MaxCps,omitnil,omitempty" name:"MaxCps"`
 
-	// 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。默认值：900，取值范围：共享型实例和独占型实例支持：300～900，性能容量型实例支持：300~2000。如需设置超过2000s，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category),最大可设置到3600s。
+	// 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。默认值：900，取值范围：共享型实例和独占型实例支持：300～900，性能容量型实例支持：300~1980。如需设置超过2000s，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category),最大可设置到3600s。
 	IdleConnectTimeout *int64 `json:"IdleConnectTimeout,omitnil,omitempty" name:"IdleConnectTimeout"`
 
-	// 是否开启SNAT。
+	// 是否开启SNAT， True 表示开启 SNAT，False 表示不开启 SNAT。
 	SnatEnable *bool `json:"SnatEnable,omitnil,omitempty" name:"SnatEnable"`
+
+	// 数据压缩模式
+	DataCompressMode *string `json:"DataCompressMode,omitnil,omitempty" name:"DataCompressMode"`
 }
 
 type ModifyListenerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡实例ID。
+	// 负载均衡实例ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器ID。
+	// 负载均衡监听器ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口查询。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 新的监听器名称。
+	// 新的监听器名称，最大长度255。
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
 	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。
@@ -7275,7 +7368,7 @@ type ModifyListenerRequest struct {
 	// 证书相关信息，此参数仅适用于HTTPS/TCP_SSL/QUIC监听器；此参数和MultiCertInfo不能同时传入。
 	Certificate *CertificateInput `json:"Certificate,omitnil,omitempty" name:"Certificate"`
 
-	// 监听器转发的方式。可选值：WRR、LEAST_CONN
+	// 监听器转发的方式。可选值：WRR（按权重轮询）、LEAST_CONN（按最小连接数）、IP_HASH（按 IP 地址哈希）
 	// 分别表示按权重轮询、最小连接数， 默认为 WRR。
 	// 使用场景：适用于TCP/UDP/TCP_SSL/QUIC监听器。七层监听器的均衡方式应在转发规则中修改。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
@@ -7288,29 +7381,37 @@ type ModifyListenerRequest struct {
 
 	// 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器。
 	// 默认值0表示不开启，1表示开启。
+	// 若后端服务对连接数上限有限制，则建议谨慎开启。此功能目前处于内测中，如需使用，请提交 [内测申请](https://cloud.tencent.com/apply/p/tsodp6qm21)。
 	KeepaliveEnable *int64 `json:"KeepaliveEnable,omitnil,omitempty" name:"KeepaliveEnable"`
 
 	// 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
+	// True表示发送 RST 给客户端，False表示不发送 RST 给客户端。
 	DeregisterTargetRst *bool `json:"DeregisterTargetRst,omitnil,omitempty" name:"DeregisterTargetRst"`
 
 	// 会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
 	// 使用场景：适用于TCP/UDP/TCP_SSL/QUIC监听器。
+	// 默认为 NORMAL。
 	SessionType *string `json:"SessionType,omitnil,omitempty" name:"SessionType"`
 
 	// 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。
 	MultiCertInfo *MultiCertInfo `json:"MultiCertInfo,omitnil,omitempty" name:"MultiCertInfo"`
 
 	// 监听器粒度并发连接数上限，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持。取值范围：1-实例规格并发连接上限，其中-1表示关闭监听器粒度并发连接数限速。基础网络实例不支持该参数。
+	// 默认为 -1，表示不限速。
 	MaxConn *int64 `json:"MaxConn,omitnil,omitempty" name:"MaxConn"`
 
 	// 监听器粒度新建连接数上限，当前仅性能容量型实例且仅TCP/UDP/TCP_SSL/QUIC监听器支持。取值范围：1-实例规格新建连接上限，其中-1表示关闭监听器粒度新建连接数限速。基础网络实例不支持该参数。
+	// 默认为 -1 表示不限速。
 	MaxCps *int64 `json:"MaxCps,omitnil,omitempty" name:"MaxCps"`
 
-	// 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。默认值：900，取值范围：共享型实例和独占型实例支持：300～900，性能容量型实例支持：300~2000。如需设置超过2000s，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category),最大可设置到3600s。
+	// 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。默认值：900，取值范围：共享型实例和独占型实例支持：300～900，性能容量型实例支持：300~1980。如需设置超过2000s，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category),最大可设置到3600s。
 	IdleConnectTimeout *int64 `json:"IdleConnectTimeout,omitnil,omitempty" name:"IdleConnectTimeout"`
 
-	// 是否开启SNAT。
+	// 是否开启SNAT， True 表示开启 SNAT，False 表示不开启 SNAT。
 	SnatEnable *bool `json:"SnatEnable,omitnil,omitempty" name:"SnatEnable"`
+
+	// 数据压缩模式
+	DataCompressMode *string `json:"DataCompressMode,omitnil,omitempty" name:"DataCompressMode"`
 }
 
 func (r *ModifyListenerRequest) ToJsonString() string {
@@ -7342,6 +7443,7 @@ func (r *ModifyListenerRequest) FromJsonString(s string) error {
 	delete(f, "MaxCps")
 	delete(f, "IdleConnectTimeout")
 	delete(f, "SnatEnable")
+	delete(f, "DataCompressMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyListenerRequest has unknown keys!", "")
 	}
@@ -7372,10 +7474,10 @@ func (r *ModifyListenerResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLoadBalancerAttributesRequestParams struct {
-	// 负载均衡的唯一ID
+	// 负载均衡的唯一ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡实例名称
+	// 负载均衡实例名称，规则：1-60 个英文、汉字、数字、连接线“-”或下划线“_”。
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
 	// 设置负载均衡跨地域绑定1.0的后端服务信息
@@ -7384,26 +7486,29 @@ type ModifyLoadBalancerAttributesRequestParams struct {
 	// 网络计费相关参数
 	InternetChargeInfo *InternetAccessible `json:"InternetChargeInfo,omitnil,omitempty" name:"InternetChargeInfo"`
 
-	// Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。
+	// Target是否放通来自CLB的流量。
+	// 开启放通（true）：只验证CLB上的安全组；
+	// 不开启放通（false）：需同时验证CLB和后端实例上的安全组。
+	// 不填则不修改。
 	LoadBalancerPassToTarget *bool `json:"LoadBalancerPassToTarget,omitnil,omitempty" name:"LoadBalancerPassToTarget"`
 
-	// 是否开启跨地域绑定2.0功能
+	// 是否开启跨地域绑定2.0功能。不填则不修改。
 	SnatPro *bool `json:"SnatPro,omitnil,omitempty" name:"SnatPro"`
 
-	// 是否开启删除保护
+	// 是否开启删除保护，不填则不修改。
 	DeleteProtect *bool `json:"DeleteProtect,omitnil,omitempty" name:"DeleteProtect"`
 
-	// 将负载均衡二级域名由mycloud.com改为tencentclb.com，子域名也会变换。修改后mycloud.com域名将失效。
+	// 将负载均衡二级域名由mycloud.com改为tencentclb.com，子域名也会变换，修改后mycloud.com域名将失效。不填则不修改。
 	ModifyClassicDomain *bool `json:"ModifyClassicDomain,omitnil,omitempty" name:"ModifyClassicDomain"`
 }
 
 type ModifyLoadBalancerAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡的唯一ID
+	// 负载均衡的唯一ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡实例名称
+	// 负载均衡实例名称，规则：1-60 个英文、汉字、数字、连接线“-”或下划线“_”。
 	LoadBalancerName *string `json:"LoadBalancerName,omitnil,omitempty" name:"LoadBalancerName"`
 
 	// 设置负载均衡跨地域绑定1.0的后端服务信息
@@ -7412,16 +7517,19 @@ type ModifyLoadBalancerAttributesRequest struct {
 	// 网络计费相关参数
 	InternetChargeInfo *InternetAccessible `json:"InternetChargeInfo,omitnil,omitempty" name:"InternetChargeInfo"`
 
-	// Target是否放通来自CLB的流量。开启放通（true）：只验证CLB上的安全组；不开启放通（false）：需同时验证CLB和后端实例上的安全组。
+	// Target是否放通来自CLB的流量。
+	// 开启放通（true）：只验证CLB上的安全组；
+	// 不开启放通（false）：需同时验证CLB和后端实例上的安全组。
+	// 不填则不修改。
 	LoadBalancerPassToTarget *bool `json:"LoadBalancerPassToTarget,omitnil,omitempty" name:"LoadBalancerPassToTarget"`
 
-	// 是否开启跨地域绑定2.0功能
+	// 是否开启跨地域绑定2.0功能。不填则不修改。
 	SnatPro *bool `json:"SnatPro,omitnil,omitempty" name:"SnatPro"`
 
-	// 是否开启删除保护
+	// 是否开启删除保护，不填则不修改。
 	DeleteProtect *bool `json:"DeleteProtect,omitnil,omitempty" name:"DeleteProtect"`
 
-	// 将负载均衡二级域名由mycloud.com改为tencentclb.com，子域名也会变换。修改后mycloud.com域名将失效。
+	// 将负载均衡二级域名由mycloud.com改为tencentclb.com，子域名也会变换，修改后mycloud.com域名将失效。不填则不修改。
 	ModifyClassicDomain *bool `json:"ModifyClassicDomain,omitnil,omitempty" name:"ModifyClassicDomain"`
 }
 
@@ -7662,13 +7770,13 @@ func (r *ModifyLoadBalancersProjectResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRuleRequestParams struct {
-	// 负载均衡实例 ID。
+	// 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器 ID。
+	// 负载均衡监听器 ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口获取。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 要修改的转发规则的 ID。
+	// 要修改的转发规则的 ID， 可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口获取。
 	LocationId *string `json:"LocationId,omitnil,omitempty" name:"LocationId"`
 
 	// 转发规则的新的转发路径，如不需修改Url，则不需提供此参数。
@@ -7682,6 +7790,7 @@ type ModifyRuleRequestParams struct {
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
 	// 会话保持时间。取值范围0或30-86400（单位：秒）。
+	// 默认为0。
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 
 	// 负载均衡实例与后端服务之间的转发协议，默认HTTP，可取值：HTTP、HTTPS、GRPC。仅HTTPS监听器该参数有效。
@@ -7700,13 +7809,13 @@ type ModifyRuleRequestParams struct {
 type ModifyRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡实例 ID。
+	// 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 负载均衡监听器 ID。
+	// 负载均衡监听器 ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口获取。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 要修改的转发规则的 ID。
+	// 要修改的转发规则的 ID， 可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口获取。
 	LocationId *string `json:"LocationId,omitnil,omitempty" name:"LocationId"`
 
 	// 转发规则的新的转发路径，如不需修改Url，则不需提供此参数。
@@ -7720,6 +7829,7 @@ type ModifyRuleRequest struct {
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
 	// 会话保持时间。取值范围0或30-86400（单位：秒）。
+	// 默认为0。
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 
 	// 负载均衡实例与后端服务之间的转发协议，默认HTTP，可取值：HTTP、HTTPS、GRPC。仅HTTPS监听器该参数有效。
@@ -8198,10 +8308,13 @@ type OAuth struct {
 	// 开启或关闭鉴权。
 	// True: 开启;
 	// False: 关闭
+	// 默认为关闭。
 	OAuthEnable *bool `json:"OAuthEnable,omitnil,omitempty" name:"OAuthEnable"`
 
-	// IAP全部故障后，拒绝请求还是放行。BYPASS:通过,
+	// IAP全部故障后，拒绝请求还是放行。
+	// BYPASS: 通过
 	// REJECT: 拒绝
+	// 默认为 BYPASS
 	OAuthFailureStatus *string `json:"OAuthFailureStatus,omitnil,omitempty" name:"OAuthFailureStatus"`
 }
 

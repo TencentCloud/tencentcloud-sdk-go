@@ -495,7 +495,7 @@ func NewAllocateAddressesResponse() (response *AllocateAddressesResponse) {
 //
 // * 您的 EIP 与腾讯云账户相关联，而不是与某个实例相关联。在您选择显式释放该地址，或欠费超过24小时之前，它会一直与您的腾讯云账户保持关联。
 //
-// * 一个腾讯云账户在每个地域能申请的 EIP 最大配额有所限制，可参见 [EIP 产品简介](https://cloud.tencent.com/document/product/213/5733)，上述配额可通过 DescribeAddressQuota 接口获取。
+// * 一个腾讯云账户在每个地域能申请的 EIP 最大配额有所限制，可参见 [EIP 产品简介](https://cloud.tencent.com/document/product/213/5733)，上述配额可通过 [DescribeAddressQuota](https://cloud.tencent.com/document/product/215/16701) 接口获取。
 //
 // 可能返回的错误码:
 //  ADDRESSQUOTALIMITEXCEEDED = "AddressQuotaLimitExceeded"
@@ -548,7 +548,7 @@ func (c *Client) AllocateAddresses(request *AllocateAddressesRequest) (response 
 //
 // * 您的 EIP 与腾讯云账户相关联，而不是与某个实例相关联。在您选择显式释放该地址，或欠费超过24小时之前，它会一直与您的腾讯云账户保持关联。
 //
-// * 一个腾讯云账户在每个地域能申请的 EIP 最大配额有所限制，可参见 [EIP 产品简介](https://cloud.tencent.com/document/product/213/5733)，上述配额可通过 DescribeAddressQuota 接口获取。
+// * 一个腾讯云账户在每个地域能申请的 EIP 最大配额有所限制，可参见 [EIP 产品简介](https://cloud.tencent.com/document/product/213/5733)，上述配额可通过 [DescribeAddressQuota](https://cloud.tencent.com/document/product/215/16701) 接口获取。
 //
 // 可能返回的错误码:
 //  ADDRESSQUOTALIMITEXCEEDED = "AddressQuotaLimitExceeded"
@@ -1150,7 +1150,7 @@ func NewAssociateAddressResponse() (response *AssociateAddressResponse) {
 //
 // * 将 EIP 绑定到内网型CLB实例的功能处于内测阶段，如需使用，请提交[内测申请](https://cloud.tencent.com/apply/p/4kxj7picqci)。
 //
-// * 将 EIP 绑定到NAT网关，请使用接口[AssociateNatGatewayAddress](https://cloud.tencent.com/document/product/215/36722)
+// * 将 EIP 绑定到NAT网关，请使用接口[AssociateNatGatewayAddress](https://cloud.tencent.com/document/product/215/36722)。
 //
 // * EIP 如果欠费或被封堵，则不能被绑定。
 //
@@ -1211,7 +1211,7 @@ func (c *Client) AssociateAddress(request *AssociateAddressRequest) (response *A
 //
 // * 将 EIP 绑定到内网型CLB实例的功能处于内测阶段，如需使用，请提交[内测申请](https://cloud.tencent.com/apply/p/4kxj7picqci)。
 //
-// * 将 EIP 绑定到NAT网关，请使用接口[AssociateNatGatewayAddress](https://cloud.tencent.com/document/product/215/36722)
+// * 将 EIP 绑定到NAT网关，请使用接口[AssociateNatGatewayAddress](https://cloud.tencent.com/document/product/215/36722)。
 //
 // * EIP 如果欠费或被封堵，则不能被绑定。
 //
@@ -7883,6 +7883,9 @@ func NewDeleteCcnResponse() (response *DeleteCcnResponse) {
 //  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
 //  UNSUPPORTEDOPERATION_BANDWIDTHNOTEXPIRED = "UnsupportedOperation.BandwidthNotExpired"
 //  UNSUPPORTEDOPERATION_CCNHASFLOWLOG = "UnsupportedOperation.CcnHasFlowLog"
+//  UNSUPPORTEDOPERATION_DELETECCNEXISTCCNEXPRESSCONNECT = "UnsupportedOperation.DeleteCcnExistCcnExpressConnect"
+//  UNSUPPORTEDOPERATION_EXISTCCNCUSTOMROUTETABLESNOTSUPPORTDELETECCN = "UnsupportedOperation.ExistCcnCustomRouteTablesNotSupportDeleteCcn"
+//  UNSUPPORTEDOPERATION_EXISTCCNINSTANCESNOTSUPPORTDELETECCN = "UnsupportedOperation.ExistCcnInstancesNotSupportDeleteCcn"
 //  UNSUPPORTEDOPERATION_ROUTETABLECANNOTDELETE = "UnsupportedOperation.RouteTableCanNotDelete"
 func (c *Client) DeleteCcn(request *DeleteCcnRequest) (response *DeleteCcnResponse, err error) {
     return c.DeleteCcnWithContext(context.Background(), request)
@@ -7905,6 +7908,9 @@ func (c *Client) DeleteCcn(request *DeleteCcnRequest) (response *DeleteCcnRespon
 //  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
 //  UNSUPPORTEDOPERATION_BANDWIDTHNOTEXPIRED = "UnsupportedOperation.BandwidthNotExpired"
 //  UNSUPPORTEDOPERATION_CCNHASFLOWLOG = "UnsupportedOperation.CcnHasFlowLog"
+//  UNSUPPORTEDOPERATION_DELETECCNEXISTCCNEXPRESSCONNECT = "UnsupportedOperation.DeleteCcnExistCcnExpressConnect"
+//  UNSUPPORTEDOPERATION_EXISTCCNCUSTOMROUTETABLESNOTSUPPORTDELETECCN = "UnsupportedOperation.ExistCcnCustomRouteTablesNotSupportDeleteCcn"
+//  UNSUPPORTEDOPERATION_EXISTCCNINSTANCESNOTSUPPORTDELETECCN = "UnsupportedOperation.ExistCcnInstancesNotSupportDeleteCcn"
 //  UNSUPPORTEDOPERATION_ROUTETABLECANNOTDELETE = "UnsupportedOperation.RouteTableCanNotDelete"
 func (c *Client) DeleteCcnWithContext(ctx context.Context, request *DeleteCcnRequest) (response *DeleteCcnResponse, err error) {
     if request == nil {
@@ -16083,7 +16089,7 @@ func NewDescribeTaskResultResponse() (response *DescribeTaskResultResponse) {
 }
 
 // DescribeTaskResult
-// 查询EIP异步任务执行结果
+// 本接口（DescribeTaskResult）用于查询EIP异步任务执行结果。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TASKFAILED = "FailedOperation.TaskFailed"
@@ -16095,7 +16101,7 @@ func (c *Client) DescribeTaskResult(request *DescribeTaskResultRequest) (respons
 }
 
 // DescribeTaskResult
-// 查询EIP异步任务执行结果
+// 本接口（DescribeTaskResult）用于查询EIP异步任务执行结果。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TASKFAILED = "FailedOperation.TaskFailed"
@@ -18251,9 +18257,9 @@ func NewDisassociateAddressResponse() (response *DisassociateAddressResponse) {
 // DisassociateAddress
 // 本接口 (DisassociateAddress) 用于解绑[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)（简称 EIP）。
 //
-// * 支持CVM实例，弹性网卡上的EIP解绑
+// * 支持CVM实例，弹性网卡上的EIP解绑。
 //
-// * 不支持NAT上的EIP解绑。NAT上的EIP解绑请参考[DisassociateNatGatewayAddress](https://cloud.tencent.com/document/api/215/36716)
+// * 不支持NAT上的EIP解绑。NAT上的EIP解绑请参考[DisassociateNatGatewayAddress](https://cloud.tencent.com/document/api/215/36716)。
 //
 // * 只有状态为 BIND 和 BIND_ENI 的 EIP 才能进行解绑定操作。
 //
@@ -18285,9 +18291,9 @@ func (c *Client) DisassociateAddress(request *DisassociateAddressRequest) (respo
 // DisassociateAddress
 // 本接口 (DisassociateAddress) 用于解绑[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)（简称 EIP）。
 //
-// * 支持CVM实例，弹性网卡上的EIP解绑
+// * 支持CVM实例，弹性网卡上的EIP解绑。
 //
-// * 不支持NAT上的EIP解绑。NAT上的EIP解绑请参考[DisassociateNatGatewayAddress](https://cloud.tencent.com/document/api/215/36716)
+// * 不支持NAT上的EIP解绑。NAT上的EIP解绑请参考[DisassociateNatGatewayAddress](https://cloud.tencent.com/document/api/215/36716)。
 //
 // * 只有状态为 BIND 和 BIND_ENI 的 EIP 才能进行解绑定操作。
 //
@@ -20301,7 +20307,7 @@ func NewModifyAddressInternetChargeTypeResponse() (response *ModifyAddressIntern
 // ModifyAddressInternetChargeType
 // 该接口用于调整具有带宽属性弹性公网IP的网络计费模式
 //
-// * 支持BANDWIDTH_PREPAID_BY_MONTH和TRAFFIC_POSTPAID_BY_HOUR两种网络计费模式之间的切换。
+// * 支持BANDWIDTH_PREPAID_BY_MONTH（包月按带宽预付费）和TRAFFIC_POSTPAID_BY_HOUR（流量按小时后付费）两种网络计费模式之间的切换。
 //
 // * 每个弹性公网IP支持调整两次，次数超出则无法调整。
 //
@@ -20335,7 +20341,7 @@ func (c *Client) ModifyAddressInternetChargeType(request *ModifyAddressInternetC
 // ModifyAddressInternetChargeType
 // 该接口用于调整具有带宽属性弹性公网IP的网络计费模式
 //
-// * 支持BANDWIDTH_PREPAID_BY_MONTH和TRAFFIC_POSTPAID_BY_HOUR两种网络计费模式之间的切换。
+// * 支持BANDWIDTH_PREPAID_BY_MONTH（包月按带宽预付费）和TRAFFIC_POSTPAID_BY_HOUR（流量按小时后付费）两种网络计费模式之间的切换。
 //
 // * 每个弹性公网IP支持调整两次，次数超出则无法调整。
 //
@@ -20946,6 +20952,7 @@ func NewModifyCcnAttributeResponse() (response *ModifyCcnAttributeResponse) {
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNROUTEOVERLAPFLAGDISABLENOTSUPPORTED = "UnsupportedOperation.CcnRouteOverlapFlagDisableNotSupported"
 func (c *Client) ModifyCcnAttribute(request *ModifyCcnAttributeRequest) (response *ModifyCcnAttributeResponse, err error) {
     return c.ModifyCcnAttributeWithContext(context.Background(), request)
 }
@@ -20957,6 +20964,7 @@ func (c *Client) ModifyCcnAttribute(request *ModifyCcnAttributeRequest) (respons
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_CCNROUTEOVERLAPFLAGDISABLENOTSUPPORTED = "UnsupportedOperation.CcnRouteOverlapFlagDisableNotSupported"
 func (c *Client) ModifyCcnAttributeWithContext(ctx context.Context, request *ModifyCcnAttributeRequest) (response *ModifyCcnAttributeResponse, err error) {
     if request == nil {
         request = NewModifyCcnAttributeRequest()
@@ -21986,7 +21994,7 @@ func NewModifyIp6AddressesBandwidthResponse() (response *ModifyIp6AddressesBandw
 //
 // - 仅支持对传统弹性公网 IPv6 实例的带宽上限进行调整。
 //
-// - 如需调整弹性公网 IPv6 实例的带宽上限，请使用 ModifyIPv6AddressesBandwidth 接口。
+// - 如需调整弹性公网 IPv6 实例的带宽上限，请使用 [ModifyIPv6AddressesBandwidth](https://cloud.tencent.com/document/product/215/113674) 接口。
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
@@ -22017,7 +22025,7 @@ func (c *Client) ModifyIp6AddressesBandwidth(request *ModifyIp6AddressesBandwidt
 //
 // - 仅支持对传统弹性公网 IPv6 实例的带宽上限进行调整。
 //
-// - 如需调整弹性公网 IPv6 实例的带宽上限，请使用 ModifyIPv6AddressesBandwidth 接口。
+// - 如需调整弹性公网 IPv6 实例的带宽上限，请使用 [ModifyIPv6AddressesBandwidth](https://cloud.tencent.com/document/product/215/113674) 接口。
 //
 // 可能返回的错误码:
 //  INTERNALSERVERERROR = "InternalServerError"
@@ -25005,7 +25013,7 @@ func NewReleaseIp6AddressesBandwidthResponse() (response *ReleaseIp6AddressesBan
 //
 // - 传统弹性公网 IPv6 实例关闭公网带宽后，仍具备 IPv6 内网通信能力。
 //
-// - 如需再次开通 IPv6 公网带宽，请使用 AllocateIp6AddressesBandwidth 接口进行开通。
+// - 如需再次开通 IPv6 公网带宽，请使用 [AllocateIp6AddressesBandwidth](https://cloud.tencent.com/document/product/215/40090) 接口进行开通。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TASKFAILED = "FailedOperation.TaskFailed"
@@ -25030,7 +25038,7 @@ func (c *Client) ReleaseIp6AddressesBandwidth(request *ReleaseIp6AddressesBandwi
 //
 // - 传统弹性公网 IPv6 实例关闭公网带宽后，仍具备 IPv6 内网通信能力。
 //
-// - 如需再次开通 IPv6 公网带宽，请使用 AllocateIp6AddressesBandwidth 接口进行开通。
+// - 如需再次开通 IPv6 公网带宽，请使用 [AllocateIp6AddressesBandwidth](https://cloud.tencent.com/document/product/215/40090) 接口进行开通。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TASKFAILED = "FailedOperation.TaskFailed"
@@ -25204,7 +25212,7 @@ func NewRenewAddressesResponse() (response *RenewAddressesResponse) {
 }
 
 // RenewAddresses
-// 该接口用于续费包月带宽计费模式的弹性公网IP
+// 本接口（RenewAddresses）用于续费包月带宽计费模式的弹性公网IP。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
@@ -25218,7 +25226,7 @@ func (c *Client) RenewAddresses(request *RenewAddressesRequest) (response *Renew
 }
 
 // RenewAddresses
-// 该接口用于续费包月带宽计费模式的弹性公网IP
+// 本接口（RenewAddresses）用于续费包月带宽计费模式的弹性公网IP。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
@@ -26976,7 +26984,7 @@ func NewTransformAddressResponse() (response *TransformAddressResponse) {
 // TransformAddress
 // 本接口 (TransformAddress) 用于将实例的普通公网 IP 转换为[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)（简称 EIP）。
 //
-// * 平台对用户每地域每日解绑 EIP 重新分配普通公网 IP 次数有所限制（可参见 [EIP 产品简介](/document/product/213/1941)）。上述配额可通过 [DescribeAddressQuota](https://cloud.tencent.com/document/api/213/1378) 接口获取。
+// * 平台对用户单地域每日解绑 EIP 重新分配普通公网 IP 次数有所限制（可参见 [EIP 产品简介](/document/product/213/1941)）。上述配额可通过 [DescribeAddressQuota](https://cloud.tencent.com/document/product/215/16701) 接口获取。
 //
 // 可能返回的错误码:
 //  ADDRESSQUOTALIMITEXCEEDED = "AddressQuotaLimitExceeded"
@@ -27002,7 +27010,7 @@ func (c *Client) TransformAddress(request *TransformAddressRequest) (response *T
 // TransformAddress
 // 本接口 (TransformAddress) 用于将实例的普通公网 IP 转换为[弹性公网IP](https://cloud.tencent.com/document/product/213/1941)（简称 EIP）。
 //
-// * 平台对用户每地域每日解绑 EIP 重新分配普通公网 IP 次数有所限制（可参见 [EIP 产品简介](/document/product/213/1941)）。上述配额可通过 [DescribeAddressQuota](https://cloud.tencent.com/document/api/213/1378) 接口获取。
+// * 平台对用户单地域每日解绑 EIP 重新分配普通公网 IP 次数有所限制（可参见 [EIP 产品简介](/document/product/213/1941)）。上述配额可通过 [DescribeAddressQuota](https://cloud.tencent.com/document/product/215/16701) 接口获取。
 //
 // 可能返回的错误码:
 //  ADDRESSQUOTALIMITEXCEEDED = "AddressQuotaLimitExceeded"

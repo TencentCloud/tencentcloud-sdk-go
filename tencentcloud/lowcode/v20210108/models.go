@@ -1299,11 +1299,14 @@ type UploadKnowledgeDocumentSetRequestParams struct {
 	// 文件标题
 	FileTitle *string `json:"FileTitle,omitnil,omitempty" name:"FileTitle"`
 
-	// 	文件元信息，为jsonstring
+	// 文件元信息，为jsonstring
 	FileMetaData *string `json:"FileMetaData,omitnil,omitempty" name:"FileMetaData"`
 
 	// 文件id
 	DocumentSetId *string `json:"DocumentSetId,omitnil,omitempty" name:"DocumentSetId"`
+
+	// 使用 regex 分割文档
+	Delimiter *string `json:"Delimiter,omitnil,omitempty" name:"Delimiter"`
 }
 
 type UploadKnowledgeDocumentSetRequest struct {
@@ -1330,11 +1333,14 @@ type UploadKnowledgeDocumentSetRequest struct {
 	// 文件标题
 	FileTitle *string `json:"FileTitle,omitnil,omitempty" name:"FileTitle"`
 
-	// 	文件元信息，为jsonstring
+	// 文件元信息，为jsonstring
 	FileMetaData *string `json:"FileMetaData,omitnil,omitempty" name:"FileMetaData"`
 
 	// 文件id
 	DocumentSetId *string `json:"DocumentSetId,omitnil,omitempty" name:"DocumentSetId"`
+
+	// 使用 regex 分割文档
+	Delimiter *string `json:"Delimiter,omitnil,omitempty" name:"Delimiter"`
 }
 
 func (r *UploadKnowledgeDocumentSetRequest) ToJsonString() string {
@@ -1358,6 +1364,7 @@ func (r *UploadKnowledgeDocumentSetRequest) FromJsonString(s string) error {
 	delete(f, "FileTitle")
 	delete(f, "FileMetaData")
 	delete(f, "DocumentSetId")
+	delete(f, "Delimiter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadKnowledgeDocumentSetRequest has unknown keys!", "")
 	}
