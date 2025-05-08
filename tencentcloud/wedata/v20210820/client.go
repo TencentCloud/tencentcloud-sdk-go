@@ -1996,7 +1996,7 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 }
 
 // CreateTask
-// 创建任务
+// 创建任务。本接口已废弃，请使用接口CreateTaskNew。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2005,7 +2005,7 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
 }
 
 // CreateTask
-// 创建任务
+// 创建任务。本接口已废弃，请使用接口CreateTaskNew。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2135,6 +2135,55 @@ func (c *Client) CreateTaskFolderWithContext(ctx context.Context, request *Creat
     request.SetContext(ctx)
     
     response = NewCreateTaskFolderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateTaskNewRequest() (request *CreateTaskNewRequest) {
+    request = &CreateTaskNewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CreateTaskNew")
+    
+    
+    return
+}
+
+func NewCreateTaskNewResponse() (response *CreateTaskNewResponse) {
+    response = &CreateTaskNewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateTaskNew
+// 聚合创建任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateTaskNew(request *CreateTaskNewRequest) (response *CreateTaskNewResponse, err error) {
+    return c.CreateTaskNewWithContext(context.Background(), request)
+}
+
+// CreateTaskNew
+// 聚合创建任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateTaskNewWithContext(ctx context.Context, request *CreateTaskNewRequest) (response *CreateTaskNewResponse, err error) {
+    if request == nil {
+        request = NewCreateTaskNewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTaskNew require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTaskNewResponse()
     err = c.Send(request, response)
     return
 }
@@ -11681,7 +11730,7 @@ func NewModifyTaskLinksResponse() (response *ModifyTaskLinksResponse) {
 // ModifyTaskLinks
 // <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
-// 添加父任务依赖
+// 添加父任务依赖。本接口已废弃，请使用接口ModifyTaskLinksDs。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -11692,7 +11741,7 @@ func (c *Client) ModifyTaskLinks(request *ModifyTaskLinksRequest) (response *Mod
 // ModifyTaskLinks
 // <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
-// 添加父任务依赖
+// 添加父任务依赖。本接口已废弃，请使用接口ModifyTaskLinksDs。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -11708,6 +11757,57 @@ func (c *Client) ModifyTaskLinksWithContext(ctx context.Context, request *Modify
     request.SetContext(ctx)
     
     response = NewModifyTaskLinksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTaskLinksDsRequest() (request *ModifyTaskLinksDsRequest) {
+    request = &ModifyTaskLinksDsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ModifyTaskLinksDs")
+    
+    
+    return
+}
+
+func NewModifyTaskLinksDsResponse() (response *ModifyTaskLinksDsResponse) {
+    response = &ModifyTaskLinksDsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTaskLinksDs
+// 添加父任务依赖
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
+func (c *Client) ModifyTaskLinksDs(request *ModifyTaskLinksDsRequest) (response *ModifyTaskLinksDsResponse, err error) {
+    return c.ModifyTaskLinksDsWithContext(context.Background(), request)
+}
+
+// ModifyTaskLinksDs
+// 添加父任务依赖
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
+func (c *Client) ModifyTaskLinksDsWithContext(ctx context.Context, request *ModifyTaskLinksDsRequest) (response *ModifyTaskLinksDsResponse, err error) {
+    if request == nil {
+        request = NewModifyTaskLinksDsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTaskLinksDs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTaskLinksDsResponse()
     err = c.Send(request, response)
     return
 }
@@ -11834,7 +11934,7 @@ func NewModifyWorkflowInfoResponse() (response *ModifyWorkflowInfoResponse) {
 }
 
 // ModifyWorkflowInfo
-// 更新工作流信息
+// 更新工作流信息。本接口已废弃，请使用接口UpdateWorkflowInfo。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -11843,7 +11943,7 @@ func (c *Client) ModifyWorkflowInfo(request *ModifyWorkflowInfoRequest) (respons
 }
 
 // ModifyWorkflowInfo
-// 更新工作流信息
+// 更新工作流信息。本接口已废弃，请使用接口UpdateWorkflowInfo。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -11961,6 +12061,55 @@ func (c *Client) MoveTasksToFolderWithContext(ctx context.Context, request *Move
     return
 }
 
+func NewRegisterDsEventRequest() (request *RegisterDsEventRequest) {
+    request = &RegisterDsEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "RegisterDsEvent")
+    
+    
+    return
+}
+
+func NewRegisterDsEventResponse() (response *RegisterDsEventResponse) {
+    response = &RegisterDsEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RegisterDsEvent
+// 注册事件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) RegisterDsEvent(request *RegisterDsEventRequest) (response *RegisterDsEventResponse, err error) {
+    return c.RegisterDsEventWithContext(context.Background(), request)
+}
+
+// RegisterDsEvent
+// 注册事件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) RegisterDsEventWithContext(ctx context.Context, request *RegisterDsEventRequest) (response *RegisterDsEventResponse, err error) {
+    if request == nil {
+        request = NewRegisterDsEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RegisterDsEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRegisterDsEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRegisterEventRequest() (request *RegisterEventRequest) {
     request = &RegisterEventRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11983,7 +12132,7 @@ func NewRegisterEventResponse() (response *RegisterEventResponse) {
 // RegisterEvent
 // <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
-// 注册事件
+// 注册事件。本接口已废弃，请使用接口RegisterDsEvent。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -11994,7 +12143,7 @@ func (c *Client) RegisterEvent(request *RegisterEventRequest) (response *Registe
 // RegisterEvent
 // <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
-// 注册事件
+// 注册事件。本接口已废弃，请使用接口RegisterDsEvent。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -12112,6 +12261,55 @@ func (c *Client) RemoveWorkflowDsWithContext(ctx context.Context, request *Remov
     request.SetContext(ctx)
     
     response = NewRemoveWorkflowDsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRenewWorkflowOwnerDsRequest() (request *RenewWorkflowOwnerDsRequest) {
+    request = &RenewWorkflowOwnerDsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "RenewWorkflowOwnerDs")
+    
+    
+    return
+}
+
+func NewRenewWorkflowOwnerDsResponse() (response *RenewWorkflowOwnerDsResponse) {
+    response = &RenewWorkflowOwnerDsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RenewWorkflowOwnerDs
+// 批量更新工作流下任务责任人
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) RenewWorkflowOwnerDs(request *RenewWorkflowOwnerDsRequest) (response *RenewWorkflowOwnerDsResponse, err error) {
+    return c.RenewWorkflowOwnerDsWithContext(context.Background(), request)
+}
+
+// RenewWorkflowOwnerDs
+// 批量更新工作流下任务责任人
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) RenewWorkflowOwnerDsWithContext(ctx context.Context, request *RenewWorkflowOwnerDsRequest) (response *RenewWorkflowOwnerDsResponse, err error) {
+    if request == nil {
+        request = NewRenewWorkflowOwnerDsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewWorkflowOwnerDs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRenewWorkflowOwnerDsResponse()
     err = c.Send(request, response)
     return
 }
@@ -13549,6 +13747,59 @@ func (c *Client) UpdateProjectUserRoleWithContext(ctx context.Context, request *
     return
 }
 
+func NewUpdateWorkflowInfoRequest() (request *UpdateWorkflowInfoRequest) {
+    request = &UpdateWorkflowInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "UpdateWorkflowInfo")
+    
+    
+    return
+}
+
+func NewUpdateWorkflowInfoResponse() (response *UpdateWorkflowInfoResponse) {
+    response = &UpdateWorkflowInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateWorkflowInfo
+// <p style="color:red;">[该接口为 ds 中开发]</p>
+//
+// 更新工作流（包括工作流基本信息与工作流参数）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) UpdateWorkflowInfo(request *UpdateWorkflowInfoRequest) (response *UpdateWorkflowInfoResponse, err error) {
+    return c.UpdateWorkflowInfoWithContext(context.Background(), request)
+}
+
+// UpdateWorkflowInfo
+// <p style="color:red;">[该接口为 ds 中开发]</p>
+//
+// 更新工作流（包括工作流基本信息与工作流参数）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) UpdateWorkflowInfoWithContext(ctx context.Context, request *UpdateWorkflowInfoRequest) (response *UpdateWorkflowInfoResponse, err error) {
+    if request == nil {
+        request = NewUpdateWorkflowInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateWorkflowInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateWorkflowInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateWorkflowOwnerRequest() (request *UpdateWorkflowOwnerRequest) {
     request = &UpdateWorkflowOwnerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13569,7 +13820,7 @@ func NewUpdateWorkflowOwnerResponse() (response *UpdateWorkflowOwnerResponse) {
 }
 
 // UpdateWorkflowOwner
-// 修改工作流责任人
+// 修改工作流责任人。本接口已废弃，请使用接口RenewWorkflowOwnerDs。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -13579,7 +13830,7 @@ func (c *Client) UpdateWorkflowOwner(request *UpdateWorkflowOwnerRequest) (respo
 }
 
 // UpdateWorkflowOwner
-// 修改工作流责任人
+// 修改工作流责任人。本接口已废弃，请使用接口RenewWorkflowOwnerDs。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

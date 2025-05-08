@@ -1237,8 +1237,6 @@ func NewDescribeFusionInstanceListResponse() (response *DescribeFusionInstanceLi
 //
 // 4. Version，集群版本查询
 //
-// 当使用TagFilters查询时，Filters参数失效。
-//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeFusionInstanceList(request *DescribeFusionInstanceListRequest) (response *DescribeFusionInstanceListResponse, err error) {
@@ -1255,8 +1253,6 @@ func (c *Client) DescribeFusionInstanceList(request *DescribeFusionInstanceListR
 // 3. InstanceType, 集群类型查询，支持多选
 //
 // 4. Version，集群版本查询
-//
-// 当使用TagFilters查询时，Filters参数失效。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

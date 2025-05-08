@@ -1182,6 +1182,7 @@ func NewDescribeWorkspacesResponse() (response *DescribeWorkspacesResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
 func (c *Client) DescribeWorkspaces(request *DescribeWorkspacesRequest) (response *DescribeWorkspacesResponse, err error) {
     return c.DescribeWorkspacesWithContext(context.Background(), request)
 }
@@ -1191,6 +1192,7 @@ func (c *Client) DescribeWorkspaces(request *DescribeWorkspacesRequest) (respons
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
 func (c *Client) DescribeWorkspacesWithContext(ctx context.Context, request *DescribeWorkspacesRequest) (response *DescribeWorkspacesResponse, err error) {
     if request == nil {
         request = NewDescribeWorkspacesRequest()
@@ -1231,6 +1233,7 @@ func NewDetachNodesResponse() (response *DetachNodesResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
 func (c *Client) DetachNodes(request *DetachNodesRequest) (response *DetachNodesResponse, err error) {
     return c.DetachNodesWithContext(context.Background(), request)
 }
@@ -1240,6 +1243,7 @@ func (c *Client) DetachNodes(request *DetachNodesRequest) (response *DetachNodes
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
 func (c *Client) DetachNodesWithContext(ctx context.Context, request *DetachNodesRequest) (response *DetachNodesResponse, err error) {
     if request == nil {
         request = NewDetachNodesRequest()

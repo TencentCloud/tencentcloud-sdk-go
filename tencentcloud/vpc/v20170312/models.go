@@ -412,10 +412,10 @@ type Address struct {
 	// 创建时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
-	// 绑定的弹性网卡ID
+	// 绑定的弹性网卡ID，null表示没有绑定弹性网卡。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
-	// 绑定的资源内网ip
+	// 绑定的资源内网ip，null表示没有绑定资源内网ip。
 	PrivateAddressIp *string `json:"PrivateAddressIp,omitnil,omitempty" name:"PrivateAddressIp"`
 
 	// 资源隔离状态。true表示eip处于隔离状态，false表示资源处于未隔离状态
@@ -436,10 +436,12 @@ type Address struct {
 	// EIP ALG开启的协议类型。
 	EipAlgType *AlgType `json:"EipAlgType,omitnil,omitempty" name:"EipAlgType"`
 
-	// 弹性公网IP的运营商信息，当前可能返回值包括"CMCC","CTCC","CUCC","BGP"
+	// 弹性公网IP的运营商信息，当前可能返回值包括"CMCC"(移动),"CTCC"(电信),"CUCC"(联通),"BGP"(常规BGP)。
 	InternetServiceProvider *string `json:"InternetServiceProvider,omitnil,omitempty" name:"InternetServiceProvider"`
 
-	// 是否本地带宽EIP
+	// 是否本地带宽EIP，可选值：
+	// <li>true：本地带宽EIP</li>
+	// <li>false：非本地带宽EIP</li>
 	LocalBgp *bool `json:"LocalBgp,omitnil,omitempty" name:"LocalBgp"`
 
 	// 弹性公网IP的带宽值。注意，传统账户类型账户的弹性公网IP没有带宽属性，值为空。
@@ -463,11 +465,20 @@ type Address struct {
 	// 弹性公网IP关联的标签列表。
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
-	// 到期时间。
+	// 预付费包月带宽IP到期时间。
+	// 时间格式：YYYY-MM-DDThh:mm:ssZ
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeadlineDate *string `json:"DeadlineDate,omitnil,omitempty" name:"DeadlineDate"`
 
-	// EIP绑定的实例类型。
+	// EIP绑定的实例类型。可选值：
+	// <li>CVM：云服务器</li>
+	// <li>NAT：NAT 网关</li>
+	// <li>HAVIP：高可用虚拟IP</li>
+	// <li>ENI：弹性网卡</li>
+	// <li>CLB：内网CLB</li>
+	// <li>DHCPIP：弹性内网IP</li>
+	// 
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
@@ -651,10 +662,14 @@ func (r *AdjustPublicAddressResponse) FromJsonString(s string) error {
 }
 
 type AlgType struct {
-	// Ftp协议Alg功能是否开启
+	// Ftp协议Alg功能是否开启，可选值：
+	// <li>true：开启Ftp协议Alg功能</li>
+	// <li>false：不开启Ftp协议Alg功能</li>
 	Ftp *bool `json:"Ftp,omitnil,omitempty" name:"Ftp"`
 
-	// Sip协议Alg功能是否开启
+	// Sip协议Alg功能是否开启，可选值：
+	// <li>true：开启Sip协议Alg功能</li>
+	// <li>false：不开启Sip协议Alg功能</li>
 	Sip *bool `json:"Sip,omitnil,omitempty" name:"Sip"`
 }
 
@@ -1466,7 +1481,6 @@ type AssistantCidr struct {
 	AssistantType *int64 `json:"AssistantType,omitnil,omitempty" name:"AssistantType"`
 
 	// 辅助CIDR拆分的子网。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetSet []*Subnet `json:"SubnetSet,omitnil,omitempty" name:"SubnetSet"`
 }
 
@@ -1693,26 +1707,26 @@ func (r *AssociateDirectConnectGatewayNatGatewayResponse) FromJsonString(s strin
 
 // Predefined struct for user
 type AssociateIPv6AddressRequestParams struct {
-	// 弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。
+	// 弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressId。
 	IPv6AddressId *string `json:"IPv6AddressId,omitnil,omitempty" name:"IPv6AddressId"`
 
-	// 要绑定的弹性网卡 ID。 弹性网卡 ID 形如：eni-11112222。NetworkInterfaceId 与 InstanceId 不可同时指定。弹性网卡 ID 可通过登录控制台查询，也可通过DescribeNetworkInterfaces接口返回值中的networkInterfaceId获取。
+	// 要绑定的弹性网卡 ID。 弹性网卡 ID 形如：eni-11112222。NetworkInterfaceId 与 InstanceId 不可同时指定。弹性网卡 ID 可通过登录[控制台](https://console.cloud.tencent.com/vpc/eni?rid=1)查询，也可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/15817)接口返回值中的networkInterfaceId获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
-	// 要绑定的内网 IPv6。如果指定了 NetworkInterfaceId 则也必须指定 PrivateIPv6Address ，表示将 EIP 绑定到指定弹性网卡的指定内网 IP 上。同时要确保指定的 PrivateIPv6Address 是指定的 NetworkInterfaceId 上的一个内网 IPv6。指定弹性网卡的内网 IPv6 可通过登录控制台查询，也可通过DescribeNetworkInterfaces接口返回值中的Ipv6AddressSet.Address获取。
+	// 要绑定的内网 IPv6。如果指定了 NetworkInterfaceId 则也必须指定 PrivateIPv6Address ，表示将 EIP 绑定到指定弹性网卡的指定内网 IP 上。同时要确保指定的 PrivateIPv6Address 是指定的 NetworkInterfaceId 上的一个内网 IPv6。指定弹性网卡的内网 IPv6 可通过登录[控制台](https://console.cloud.tencent.com/vpc/eni?rid=1)查询，也可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/15817)接口返回值中的Ipv6AddressSet.Address获取。
 	PrivateIPv6Address *string `json:"PrivateIPv6Address,omitnil,omitempty" name:"PrivateIPv6Address"`
 }
 
 type AssociateIPv6AddressRequest struct {
 	*tchttp.BaseRequest
 	
-	// 弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。
+	// 弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressId。
 	IPv6AddressId *string `json:"IPv6AddressId,omitnil,omitempty" name:"IPv6AddressId"`
 
-	// 要绑定的弹性网卡 ID。 弹性网卡 ID 形如：eni-11112222。NetworkInterfaceId 与 InstanceId 不可同时指定。弹性网卡 ID 可通过登录控制台查询，也可通过DescribeNetworkInterfaces接口返回值中的networkInterfaceId获取。
+	// 要绑定的弹性网卡 ID。 弹性网卡 ID 形如：eni-11112222。NetworkInterfaceId 与 InstanceId 不可同时指定。弹性网卡 ID 可通过登录[控制台](https://console.cloud.tencent.com/vpc/eni?rid=1)查询，也可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/15817)接口返回值中的networkInterfaceId获取。
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitnil,omitempty" name:"NetworkInterfaceId"`
 
-	// 要绑定的内网 IPv6。如果指定了 NetworkInterfaceId 则也必须指定 PrivateIPv6Address ，表示将 EIP 绑定到指定弹性网卡的指定内网 IP 上。同时要确保指定的 PrivateIPv6Address 是指定的 NetworkInterfaceId 上的一个内网 IPv6。指定弹性网卡的内网 IPv6 可通过登录控制台查询，也可通过DescribeNetworkInterfaces接口返回值中的Ipv6AddressSet.Address获取。
+	// 要绑定的内网 IPv6。如果指定了 NetworkInterfaceId 则也必须指定 PrivateIPv6Address ，表示将 EIP 绑定到指定弹性网卡的指定内网 IP 上。同时要确保指定的 PrivateIPv6Address 是指定的 NetworkInterfaceId 上的一个内网 IPv6。指定弹性网卡的内网 IPv6 可通过登录[控制台](https://console.cloud.tencent.com/vpc/eni?rid=1)查询，也可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/api/215/15817)接口返回值中的Ipv6AddressSet.Address获取。
 	PrivateIPv6Address *string `json:"PrivateIPv6Address,omitnil,omitempty" name:"PrivateIPv6Address"`
 }
 
@@ -11900,14 +11914,14 @@ func (r *DescribeAccountAttributesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAddressBandwidthRangeRequestParams struct {
-	// EIP资源ID列表，单次查询上限20。
+	// EIP资源ID列表，单次查询上限20，可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
 	AddressIds []*string `json:"AddressIds,omitnil,omitempty" name:"AddressIds"`
 }
 
 type DescribeAddressBandwidthRangeRequest struct {
 	*tchttp.BaseRequest
 	
-	// EIP资源ID列表，单次查询上限20。
+	// EIP资源ID列表，单次查询上限20，可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
 	AddressIds []*string `json:"AddressIds,omitnil,omitempty" name:"AddressIds"`
 }
 
@@ -15211,7 +15225,7 @@ func (r *DescribeHighPriorityRoutesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIPv6AddressesRequestParams struct {
-	// 标识 IPv6 的唯一 ID 列。
+	// 标识 IPv6 的唯一 ID 列。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressId。
 	// 
 	// - 传统弹性公网 IPv6 唯一 ID 形如：`eip-11112222`
 	// - 弹性公网 IPv6 唯一 ID 形如：`eipv6-11112222`
@@ -15228,16 +15242,19 @@ type DescribeIPv6AddressesRequestParams struct {
 	// - charge-type - String - 是否必填：否 - （过滤条件）按照计费类型过滤。
 	// - private-ipv6-address - String - 是否必填：否 - （过滤条件）按照绑定的内网 IPv6 地址过滤。
 	// - egress - String - 是否必填：否 - （过滤条件）按照出口过滤。
-	// - address-type - String - 是否必填：否 - （过滤条件）按照IPv6类型 进行过滤。可选值：'EIP6'，'EIPv6'，'WanIPv6'，'HighQualityEIPv6'。默认值是'EIPv6'。
-	// - address-isp - String - 是否必填：否 - （过滤条件）按照 运营商类型 进行过滤。可选值：'BGP'，'CMCC'，'CUCC', 'CTCC'。
-	// - address-status - String - 是否必填：否 - （过滤条件）按照 EIP 的状态过滤。状态包含：'CREATING'，'BINDING'，'BIND'，'UNBINDING'，'UNBIND'，'OFFLINING'，'BIND_ENI'，'PRIVATE'。
+	// - address-type - String - 是否必填：否 - （过滤条件）按照IPv6类型 进行过滤。可选值：'EIP6'：传统弹性公网 IPv6，'EIPv6'：弹性公网 IPv6，'WanIPv6'：普通公网 IPv6，'HighQualityEIPv6'：精品弹性公网 IPv6。默认值是'EIPv6'。
+	// - address-isp - String - 是否必填：否 - （过滤条件）按照 运营商类型 进行过滤。可选值：'BGP'：常规BGP，'CMCC'：移动，'CUCC'：联通, 'CTCC'：电信。
+	// - address-status - String - 是否必填：否 - （过滤条件）按照 EIP 的状态过滤。状态包含：'CREATING'：创建中，'BINDING'：绑定中，'BIND'：已绑，'UNBINDING'：解绑中，'UNBIND'：未绑定，'OFFLINING'：下线中，'BIND_ENI'：绑定了ENI，'PRIVATE'：仅开通内网的IPv6。
 	// - address-name - String - 是否必填：否 - （过滤条件）按照 EIP 名称过滤。不支持模糊过滤。
 	// - tag-key - String - 是否必填：否 - （过滤条件）按照标签键进行过滤。
 	// - tag-value - String - 是否必填：否 - （过滤条件）按照标签值进行过滤。
 	// - tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。tag-key使用具体的标签键进行替换。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 是否查询传统型IPv6地址信息。
+	// 是否查询传统型IPv6地址信息。可选值：
+	// <li>True：查询传统型IPv6地址信息</li>
+	// <li>False：不查询传统型IPv6地址信息</li>
+	// 默认值：False
 	Traditional *bool `json:"Traditional,omitnil,omitempty" name:"Traditional"`
 
 	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
@@ -15250,7 +15267,7 @@ type DescribeIPv6AddressesRequestParams struct {
 type DescribeIPv6AddressesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 标识 IPv6 的唯一 ID 列。
+	// 标识 IPv6 的唯一 ID 列。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressId。
 	// 
 	// - 传统弹性公网 IPv6 唯一 ID 形如：`eip-11112222`
 	// - 弹性公网 IPv6 唯一 ID 形如：`eipv6-11112222`
@@ -15267,16 +15284,19 @@ type DescribeIPv6AddressesRequest struct {
 	// - charge-type - String - 是否必填：否 - （过滤条件）按照计费类型过滤。
 	// - private-ipv6-address - String - 是否必填：否 - （过滤条件）按照绑定的内网 IPv6 地址过滤。
 	// - egress - String - 是否必填：否 - （过滤条件）按照出口过滤。
-	// - address-type - String - 是否必填：否 - （过滤条件）按照IPv6类型 进行过滤。可选值：'EIP6'，'EIPv6'，'WanIPv6'，'HighQualityEIPv6'。默认值是'EIPv6'。
-	// - address-isp - String - 是否必填：否 - （过滤条件）按照 运营商类型 进行过滤。可选值：'BGP'，'CMCC'，'CUCC', 'CTCC'。
-	// - address-status - String - 是否必填：否 - （过滤条件）按照 EIP 的状态过滤。状态包含：'CREATING'，'BINDING'，'BIND'，'UNBINDING'，'UNBIND'，'OFFLINING'，'BIND_ENI'，'PRIVATE'。
+	// - address-type - String - 是否必填：否 - （过滤条件）按照IPv6类型 进行过滤。可选值：'EIP6'：传统弹性公网 IPv6，'EIPv6'：弹性公网 IPv6，'WanIPv6'：普通公网 IPv6，'HighQualityEIPv6'：精品弹性公网 IPv6。默认值是'EIPv6'。
+	// - address-isp - String - 是否必填：否 - （过滤条件）按照 运营商类型 进行过滤。可选值：'BGP'：常规BGP，'CMCC'：移动，'CUCC'：联通, 'CTCC'：电信。
+	// - address-status - String - 是否必填：否 - （过滤条件）按照 EIP 的状态过滤。状态包含：'CREATING'：创建中，'BINDING'：绑定中，'BIND'：已绑，'UNBINDING'：解绑中，'UNBIND'：未绑定，'OFFLINING'：下线中，'BIND_ENI'：绑定了ENI，'PRIVATE'：仅开通内网的IPv6。
 	// - address-name - String - 是否必填：否 - （过滤条件）按照 EIP 名称过滤。不支持模糊过滤。
 	// - tag-key - String - 是否必填：否 - （过滤条件）按照标签键进行过滤。
 	// - tag-value - String - 是否必填：否 - （过滤条件）按照标签值进行过滤。
 	// - tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。tag-key使用具体的标签键进行替换。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 是否查询传统型IPv6地址信息。
+	// 是否查询传统型IPv6地址信息。可选值：
+	// <li>True：查询传统型IPv6地址信息</li>
+	// <li>False：不查询传统型IPv6地址信息</li>
+	// 默认值：False
 	Traditional *bool `json:"Traditional,omitnil,omitempty" name:"Traditional"`
 
 	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
@@ -22303,20 +22323,22 @@ func (r *DisassociateDirectConnectGatewayNatGatewayResponse) FromJsonString(s st
 
 // Predefined struct for user
 type DisassociateIPv6AddressRequestParams struct {
-	// 弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。
+	// 弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressId。
 	IPv6AddressId *string `json:"IPv6AddressId,omitnil,omitempty" name:"IPv6AddressId"`
 
-	// 解绑时是否保持绑定弹性网卡。
+	// 解绑时是否保持绑定弹性网卡。可选值：true、false。
+	// 默认值：false
 	KeepBindWithEni *bool `json:"KeepBindWithEni,omitnil,omitempty" name:"KeepBindWithEni"`
 }
 
 type DisassociateIPv6AddressRequest struct {
 	*tchttp.BaseRequest
 	
-	// 弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。
+	// 弹性公网IPv6唯一ID，EIPv6 唯一 ID 形如：eipv6-11112222。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressId。
 	IPv6AddressId *string `json:"IPv6AddressId,omitnil,omitempty" name:"IPv6AddressId"`
 
-	// 解绑时是否保持绑定弹性网卡。
+	// 解绑时是否保持绑定弹性网卡。可选值：true、false。
+	// 默认值：false
 	KeepBindWithEni *bool `json:"KeepBindWithEni,omitnil,omitempty" name:"KeepBindWithEni"`
 }
 
@@ -23210,7 +23232,7 @@ type EndPoint struct {
 	// 终端节点ID。
 	EndPointId *string `json:"EndPointId,omitnil,omitempty" name:"EndPointId"`
 
-	// VPCID。
+	// VPC唯一ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/1108/43663)接口获取。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 子网ID。
@@ -23237,22 +23259,19 @@ type EndPoint struct {
 	// 终端节点状态，ACTIVE：可用，PENDING：待接受，ACCEPTING：接受中，REJECTED：已拒绝，FAILED：失败。
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
-	// 创建时间。
+	// 创建时间。格式：YYYY-MM-DD HH:MM:SS。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 终端节点绑定的安全组实例ID列表。
 	GroupSet []*string `json:"GroupSet,omitnil,omitempty" name:"GroupSet"`
 
 	// 终端节点服务名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
 
 	// CDC 集群唯一 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 
 	// 标签键值对。	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
@@ -23272,40 +23291,34 @@ type EndPointService struct {
 	// 后端服务的VIP。
 	ServiceVip *string `json:"ServiceVip,omitnil,omitempty" name:"ServiceVip"`
 
-	// 后端服务的ID，比如lb-xxx。
+	// 后端服务的ID，比如lb-lip4e6bp。
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitnil,omitempty" name:"ServiceInstanceId"`
 
 	// 是否自动接受。
 	AutoAcceptFlag *bool `json:"AutoAcceptFlag,omitnil,omitempty" name:"AutoAcceptFlag"`
 
 	// 关联的终端节点个数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndPointCount *uint64 `json:"EndPointCount,omitnil,omitempty" name:"EndPointCount"`
 
 	// 终端节点对象数组。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndPointSet []*EndPoint `json:"EndPointSet,omitnil,omitempty" name:"EndPointSet"`
 
-	// 创建时间。
+	// 创建时间。格式为YYYY-MM-DD HH:MM:SS字符串。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 挂载的PAAS服务类型，CLB,CDB,CRS
+	// 挂载的PAAS服务类型，CLB（负载均衡），CDB（云数据库 MySQL），CRS（云数据库 Redis），GWLB（网关负载均衡）。
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// CDC 集群唯一 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 
-	// Uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 终端节点服务Uin。
 	ServiceUin *string `json:"ServiceUin,omitnil,omitempty" name:"ServiceUin"`
 
 	// 服务IP类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BusinessIpType *int64 `json:"BusinessIpType,omitnil,omitempty" name:"BusinessIpType"`
 
 	// 标签键值对。	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
@@ -23994,7 +24007,8 @@ type InquiryPriceAllocateAddressesRequestParams struct {
 	// <ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul>
 	// <li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费</li>
 	// <li>BANDWIDTH_PREPAID_BY_MONTH：包月按带宽预付费</li>
-	// <li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li></ul>默认值：TRAFFIC_POSTPAID_BY_HOUR。</li>
+	// <li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li>
+	// </ul></li>
 	// </ul>
 	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 
@@ -24010,13 +24024,9 @@ type InquiryPriceAllocateAddressesRequestParams struct {
 	AddressChargePrepaid *AddressChargePrepaid `json:"AddressChargePrepaid,omitnil,omitempty" name:"AddressChargePrepaid"`
 
 	// EIP类型。默认值：EIP。
-	// 
-	// <ul style="margin:0"><li>精品IP，可选值：<ul><li>HighQualityEIP：精品IP</li></ul>注意：仅部分地域支持精品IP。</li></ul><ul style="margin:0">
-	//         <li>高防IP，可选值：<ul>
-	//                 <li>AntiDDoSEIP：高防IP</li>
-	//             </ul>
-	//         </li>
-	//     </ul>
+	// <ul style="margin:0"><li>弹性公网IP，可选值：<ul><li>EIP：弹性公网IP</li></ul></li></ul>
+	// <ul style="margin:0"><li>精品IP，可选值：<ul><li>HighQualityEIP：精品IP</li></ul>注意：仅新加坡和中国香港支持精品IP。</li></ul>
+	// <ul style="margin:0"><li>高防IP，可选值：<ul><li>AntiDDoSEIP：高防IP</li></ul>注意：仅部分地域支持高防IP，详情可见弹性公网IP[产品概述](https://cloud.tencent.com/document/product/1199/41646)。</li></ul>
 	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 }
 
@@ -24027,7 +24037,8 @@ type InquiryPriceAllocateAddressesRequest struct {
 	// <ul style="margin:0"><li>账号为标准账户类型的用户，可选值：<ul>
 	// <li>BANDWIDTH_POSTPAID_BY_HOUR：带宽按小时后付费</li>
 	// <li>BANDWIDTH_PREPAID_BY_MONTH：包月按带宽预付费</li>
-	// <li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li></ul>默认值：TRAFFIC_POSTPAID_BY_HOUR。</li>
+	// <li>TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费</li>
+	// </ul></li>
 	// </ul>
 	InternetChargeType *string `json:"InternetChargeType,omitnil,omitempty" name:"InternetChargeType"`
 
@@ -24043,13 +24054,9 @@ type InquiryPriceAllocateAddressesRequest struct {
 	AddressChargePrepaid *AddressChargePrepaid `json:"AddressChargePrepaid,omitnil,omitempty" name:"AddressChargePrepaid"`
 
 	// EIP类型。默认值：EIP。
-	// 
-	// <ul style="margin:0"><li>精品IP，可选值：<ul><li>HighQualityEIP：精品IP</li></ul>注意：仅部分地域支持精品IP。</li></ul><ul style="margin:0">
-	//         <li>高防IP，可选值：<ul>
-	//                 <li>AntiDDoSEIP：高防IP</li>
-	//             </ul>
-	//         </li>
-	//     </ul>
+	// <ul style="margin:0"><li>弹性公网IP，可选值：<ul><li>EIP：弹性公网IP</li></ul></li></ul>
+	// <ul style="margin:0"><li>精品IP，可选值：<ul><li>HighQualityEIP：精品IP</li></ul>注意：仅新加坡和中国香港支持精品IP。</li></ul>
+	// <ul style="margin:0"><li>高防IP，可选值：<ul><li>AntiDDoSEIP：高防IP</li></ul>注意：仅部分地域支持高防IP，详情可见弹性公网IP[产品概述](https://cloud.tencent.com/document/product/1199/41646)。</li></ul>
 	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 }
 
@@ -24251,20 +24258,20 @@ func (r *InquiryPriceModifyAddressesBandwidthResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type InquiryPriceRenewAddressesRequestParams struct {
-	// 续费资源实例ID。
+	// 续费资源实例ID。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
 	AddressIds []*string `json:"AddressIds,omitnil,omitempty" name:"AddressIds"`
 
-	// 包月按带宽预付费EIP的计费参数。EIP为包月按带宽预付费时，该参数必传，其余场景不需传递。
+	// 包月按带宽预付费EIP的计费参数。EIP为包月按带宽预付费时，该参数必传，不支持其他计费模式。
 	AddressChargePrepaid *AddressChargePrepaid `json:"AddressChargePrepaid,omitnil,omitempty" name:"AddressChargePrepaid"`
 }
 
 type InquiryPriceRenewAddressesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 续费资源实例ID。
+	// 续费资源实例ID。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
 	AddressIds []*string `json:"AddressIds,omitnil,omitempty" name:"AddressIds"`
 
-	// 包月按带宽预付费EIP的计费参数。EIP为包月按带宽预付费时，该参数必传，其余场景不需传递。
+	// 包月按带宽预付费EIP的计费参数。EIP为包月按带宽预付费时，该参数必传，不支持其他计费模式。
 	AddressChargePrepaid *AddressChargePrepaid `json:"AddressChargePrepaid,omitnil,omitempty" name:"AddressChargePrepaid"`
 }
 
@@ -24515,7 +24522,7 @@ type InternetPriceDetail struct {
 	// 折扣后的价格，单位：元。
 	DiscountPrice *float64 `json:"DiscountPrice,omitnil,omitempty" name:"DiscountPrice"`
 
-	// 计价单元，可取值范围：<ul> <li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）。</li></ul>
+	// 计价单元，可取值范围：<ul> <li>HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）。</li><li> MONTH :表示计价单元是按月来计算。当前涉及该计价单元的场景有：包月按带宽预付费（BANDWIDTH_PREPAID_BY_MONTH）。</li></ul>
 	ChargeUnit *string `json:"ChargeUnit,omitnil,omitempty" name:"ChargeUnit"`
 
 	// 原价，单位：元，仅预付费价格查询返回。
@@ -25459,7 +25466,7 @@ func (r *ModifyAddressesBandwidthResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAddressesRenewFlagRequestParams struct {
-	// EIP唯一标识ID列表，形如'eip-xxxx'
+	// EIP唯一标识ID列表，形如'eip-xxxx'，可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
 	AddressIds []*string `json:"AddressIds,omitnil,omitempty" name:"AddressIds"`
 
 	// 自动续费标识。取值范围： NOTIFY_AND_AUTO_RENEW：通知过期且自动续费 NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费 DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费  若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。 示例值：NOTIFY_AND_AUTO_RENEW
@@ -25469,7 +25476,7 @@ type ModifyAddressesRenewFlagRequestParams struct {
 type ModifyAddressesRenewFlagRequest struct {
 	*tchttp.BaseRequest
 	
-	// EIP唯一标识ID列表，形如'eip-xxxx'
+	// EIP唯一标识ID列表，形如'eip-xxxx'，可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
 	AddressIds []*string `json:"AddressIds,omitnil,omitempty" name:"AddressIds"`
 
 	// 自动续费标识。取值范围： NOTIFY_AND_AUTO_RENEW：通知过期且自动续费 NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费 DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费  若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。 示例值：NOTIFY_AND_AUTO_RENEW
@@ -30205,11 +30212,9 @@ type NetDetect struct {
 	NextHopDestination *string `json:"NextHopDestination,omitnil,omitempty" name:"NextHopDestination"`
 
 	// 下一跳网关名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NextHopName *string `json:"NextHopName,omitnil,omitempty" name:"NextHopName"`
 
 	// 网络探测描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetDetectDescription *string `json:"NetDetectDescription,omitnil,omitempty" name:"NetDetectDescription"`
 
 	// 创建时间。
@@ -30423,27 +30428,21 @@ type NetworkInterface struct {
 	EniType *uint64 `json:"EniType,omitnil,omitempty" name:"EniType"`
 
 	// 网卡绑定的子机类型：cvm（普通CVM子机），eks（弹性容器服务Elastic Kubernetes Service）， hai（高性能应用服务Hyper Application Inventor）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
 
 	// 网卡所关联的CDC实例ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 
 	// 弹性网卡类型：0:标准型/1:扩展型。默认值为0。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttachType *uint64 `json:"AttachType,omitnil,omitempty" name:"AttachType"`
 
 	// 用于保留网卡主IP的资源ID用于保留网卡主IP的资源ID。用于删除网卡时作为入参数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 服务质量级别：
 	// PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 	// 
 	// 可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QosLevel *string `json:"QosLevel,omitnil,omitempty" name:"QosLevel"`
 }
 
@@ -31018,14 +31017,14 @@ func (r *ReleaseAddressesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ReleaseIPv6AddressesRequestParams struct {
-	// IPv6地址唯一ID。
+	// IPv6地址唯一ID。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressId。
 	IPv6AddressIds []*string `json:"IPv6AddressIds,omitnil,omitempty" name:"IPv6AddressIds"`
 }
 
 type ReleaseIPv6AddressesRequest struct {
 	*tchttp.BaseRequest
 	
-	// IPv6地址唯一ID。
+	// IPv6地址唯一ID。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressId。
 	IPv6AddressIds []*string `json:"IPv6AddressIds,omitnil,omitempty" name:"IPv6AddressIds"`
 }
 
@@ -32935,21 +32934,18 @@ type Route struct {
 	RouteTableId *string `json:"RouteTableId,omitnil,omitempty" name:"RouteTableId"`
 
 	// 创建IPv6目的网段，取值不能在私有网络网段内，例如：2402:4e00:1000:810b::/64。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DestinationIpv6CidrBlock *string `json:"DestinationIpv6CidrBlock,omitnil,omitempty" name:"DestinationIpv6CidrBlock"`
 
 	// 路由唯一策略ID。
 	RouteItemId *string `json:"RouteItemId,omitnil,omitempty" name:"RouteItemId"`
 
 	// 路由策略是否发布到云联网。该字段仅做出参使用，作为入参字段时此参数不生效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublishedToVbc *bool `json:"PublishedToVbc,omitnil,omitempty" name:"PublishedToVbc"`
 
 	// 路由策略创建时间
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// CDC 集群唯一 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 }
 
@@ -33422,7 +33418,6 @@ type SnapshotPolicy struct {
 	KeepTime *uint64 `json:"KeepTime,omitnil,omitempty" name:"KeepTime"`
 
 	// 是否创建新的cos桶，默认为False。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateNewCos *bool `json:"CreateNewCos,omitnil,omitempty" name:"CreateNewCos"`
 
 	// cos桶所在地域。
@@ -33435,18 +33430,15 @@ type SnapshotPolicy struct {
 	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitnil,omitempty" name:"SnapshotPolicyId"`
 
 	// 时间备份策略。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupPolicies []*BackupPolicy `json:"BackupPolicies,omitnil,omitempty" name:"BackupPolicies"`
 
 	// 启用状态，True-启用，False-停用，默认为True。
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 创建时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 标签键值对。	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 }
 
@@ -34674,28 +34666,26 @@ type Vpc struct {
 	TagSet []*Tag `json:"TagSet,omitnil,omitempty" name:"TagSet"`
 
 	// 辅助CIDR
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssistantCidrSet []*AssistantCidr `json:"AssistantCidrSet,omitnil,omitempty" name:"AssistantCidrSet"`
 
 	// 返回多运营商IPv6 Cidr Block
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv6CidrBlockSet []*ISPIPv6CidrBlock `json:"Ipv6CidrBlockSet,omitnil,omitempty" name:"Ipv6CidrBlockSet"`
 }
 
 type VpcEndPointServiceUser struct {
-	// AppId。
+	// AppId。可通过登录 腾讯云账号中心控制台 获取。
 	Owner *uint64 `json:"Owner,omitnil,omitempty" name:"Owner"`
 
-	// Uin。
+	// 用户Uin。可通过登录 腾讯云账号中心控制台 获取。
 	UserUin *string `json:"UserUin,omitnil,omitempty" name:"UserUin"`
 
 	// 描述信息。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 创建时间。
+	// 创建时间。格式为字符串YYYY-MM-DD HH:MM:SS。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 终端节点服务ID。
+	// 终端节点服务ID。可通过[DescribeVpcEndPointService](https://cloud.tencent.com/document/product/215/54678)接口获取。
 	EndPointServiceId *string `json:"EndPointServiceId,omitnil,omitempty" name:"EndPointServiceId"`
 }
 

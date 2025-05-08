@@ -4974,6 +4974,67 @@ func (c *Client) DescribeDSPADiscoveryTaskTablesWithContext(ctx context.Context,
     return
 }
 
+func NewDescribeDSPADiscoveryTasksRequest() (request *DescribeDSPADiscoveryTasksRequest) {
+    request = &DescribeDSPADiscoveryTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dsgc", APIVersion, "DescribeDSPADiscoveryTasks")
+    
+    
+    return
+}
+
+func NewDescribeDSPADiscoveryTasksResponse() (response *DescribeDSPADiscoveryTasksResponse) {
+    response = &DescribeDSPADiscoveryTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDSPADiscoveryTasks
+// 获取分类分级任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDSPADiscoveryTasks(request *DescribeDSPADiscoveryTasksRequest) (response *DescribeDSPADiscoveryTasksResponse, err error) {
+    return c.DescribeDSPADiscoveryTasksWithContext(context.Background(), request)
+}
+
+// DescribeDSPADiscoveryTasks
+// 获取分类分级任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeDSPADiscoveryTasksWithContext(ctx context.Context, request *DescribeDSPADiscoveryTasksRequest) (response *DescribeDSPADiscoveryTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeDSPADiscoveryTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDSPADiscoveryTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDSPADiscoveryTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDSPAESDataAssetByComplianceIdRequest() (request *DescribeDSPAESDataAssetByComplianceIdRequest) {
     request = &DescribeDSPAESDataAssetByComplianceIdRequest{
         BaseRequest: &tchttp.BaseRequest{},

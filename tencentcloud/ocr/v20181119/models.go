@@ -4505,7 +4505,6 @@ type IDCardOCRResponseParams struct {
 	// BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0 ~ 100，分数越低边框遮挡可能性越低，建议阈值≤50）;
 	// 
 	// WarnInfos，告警信息，Code 告警码列表和释义：
-	// -9100 身份证有效日期不合法告警，
 	// -9101 身份证边框不完整告警，
 	// 
 	// -9102 身份证复印件告警（黑白及彩色复印件）,
@@ -9712,6 +9711,9 @@ type ResultList struct {
 	// 答案
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Answer []*Element `json:"Answer,omitnil,omitempty" name:"Answer"`
+
+	// 解析
+	Parse []*Element `json:"Parse,omitnil,omitempty" name:"Parse"`
 
 	// 整题的坐标
 	// 注意：此字段可能返回 null，表示取不到有效值。

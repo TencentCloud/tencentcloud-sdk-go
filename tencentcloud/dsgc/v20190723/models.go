@@ -7788,6 +7788,122 @@ func (r *DescribeDSPADiscoveryTaskTablesResponse) FromJsonString(s string) error
 }
 
 // Predefined struct for user
+type DescribeDSPADiscoveryTasksRequestParams struct {
+	// DSPA实例ID
+	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
+
+	// 数据源类型，可取值如下：
+	// cdb 表示云数据库 MySQL,
+	// dcdb 表示TDSQL MySQL版,
+	// mariadb 表示云数据库 MariaDB,
+	// postgres 表示云数据库 PostgreSQL,
+	// cynosdbpg 表示TDSQL-C PostgreSQL版,
+	// cynosdbmysql 表示TDSQL-C MySQL版,
+	// selfbuilt-db 表示自建数据库
+	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
+
+	// 任务ID
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 任务扫描结果状态，可供选择的状态值有：-1待触发 0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
+	StatusList []*int64 `json:"StatusList,omitnil,omitempty" name:"StatusList"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeDSPADiscoveryTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// DSPA实例ID
+	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
+
+	// 数据源类型，可取值如下：
+	// cdb 表示云数据库 MySQL,
+	// dcdb 表示TDSQL MySQL版,
+	// mariadb 表示云数据库 MariaDB,
+	// postgres 表示云数据库 PostgreSQL,
+	// cynosdbpg 表示TDSQL-C PostgreSQL版,
+	// cynosdbmysql 表示TDSQL-C MySQL版,
+	// selfbuilt-db 表示自建数据库
+	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
+
+	// 任务ID
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 任务扫描结果状态，可供选择的状态值有：-1待触发 0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
+	StatusList []*int64 `json:"StatusList,omitnil,omitempty" name:"StatusList"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeDSPADiscoveryTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDSPADiscoveryTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DspaId")
+	delete(f, "DataSourceType")
+	delete(f, "TaskId")
+	delete(f, "Name")
+	delete(f, "StatusList")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPADiscoveryTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDSPADiscoveryTasksResponseParams struct {
+	// 任务列表
+	Items []*DspaDiscoveryTask `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 符合条件的任务列表数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDSPADiscoveryTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDSPADiscoveryTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeDSPADiscoveryTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDSPADiscoveryTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDSPAESDataAssetByComplianceIdRequestParams struct {
 	// dspa实例id
 	DspaId *string `json:"DspaId,omitnil,omitempty" name:"DspaId"`
@@ -9976,6 +10092,41 @@ type DspaDiscoveryRuleDetail struct {
 
 	// 0关闭，1开启
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type DspaDiscoveryTask struct {
+	// 任务名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 任务描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 执行周期，0单次 1每天 2每周 3每月
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 执行计划，0立即 1定时
+	Plan *int64 `json:"Plan,omitnil,omitempty" name:"Plan"`
+
+	// 任务开关；1 打开，0 关闭
+	Enable *int64 `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// 元数据对象信息
+	DataSourceInfo *DspaDiscoveryTaskDataSource `json:"DataSourceInfo,omitnil,omitempty" name:"DataSourceInfo"`
+
+	// 通用规则集开关，0 关闭，1 启用
+	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil,omitempty" name:"GeneralRuleSetEnable"`
+
+	// 任务最新的一次执行结果信息，该字段用于查询任务列表接口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *ScanTaskResult `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 定时开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimingStartTime *string `json:"TimingStartTime,omitnil,omitempty" name:"TimingStartTime"`
+
+	// 关联模板是否更新
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComplianceUpdate *bool `json:"ComplianceUpdate,omitnil,omitempty" name:"ComplianceUpdate"`
 }
 
 type DspaDiscoveryTaskCOSCondition struct {

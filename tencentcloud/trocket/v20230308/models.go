@@ -91,6 +91,23 @@ func (r *ChangeMigratingTopicToNextStageResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ClientSubscriptionInfo struct {
+	// 客户端ID
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// 客户端地址
+	ClientAddr *string `json:"ClientAddr,omitnil,omitempty" name:"ClientAddr"`
+
+	// 订阅主题
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
+
+	// 订阅表达式
+	SubString *string `json:"SubString,omitnil,omitempty" name:"SubString"`
+
+	// 订阅方式
+	ExpressionType *string `json:"ExpressionType,omitnil,omitempty" name:"ExpressionType"`
+}
+
 type ConsumeGroupItem struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -169,6 +186,9 @@ type CreateConsumerGroupRequestParams struct {
 
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 标签列表
+	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 type CreateConsumerGroupRequest struct {
@@ -192,6 +212,9 @@ type CreateConsumerGroupRequest struct {
 
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 标签列表
+	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 func (r *CreateConsumerGroupRequest) ToJsonString() string {
@@ -212,6 +235,7 @@ func (r *CreateConsumerGroupRequest) FromJsonString(s string) error {
 	delete(f, "ConsumeMessageOrderly")
 	delete(f, "ConsumerGroup")
 	delete(f, "Remark")
+	delete(f, "TagList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsumerGroupRequest has unknown keys!", "")
 	}
@@ -907,6 +931,9 @@ type CreateTopicRequestParams struct {
 
 	// 消息保留时长
 	MsgTTL *int64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
+
+	// 标签列表
+	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 type CreateTopicRequest struct {
@@ -934,6 +961,9 @@ type CreateTopicRequest struct {
 
 	// 消息保留时长
 	MsgTTL *int64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
+
+	// 标签列表
+	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 func (r *CreateTopicRequest) ToJsonString() string {
@@ -954,6 +984,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "QueueNum")
 	delete(f, "Remark")
 	delete(f, "MsgTTL")
+	delete(f, "TagList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRequest has unknown keys!", "")
 	}
@@ -1679,7 +1710,6 @@ func (r *DescribeConsumerGroupListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeConsumerGroupListResponseParams struct {
 	// 查询总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 消费组列表
@@ -1933,7 +1963,6 @@ func (r *DescribeFusionInstanceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFusionInstanceListResponseParams struct {
 	// 查询总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 实例列表
@@ -2015,7 +2044,6 @@ func (r *DescribeInstanceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceListResponseParams struct {
 	// 查询总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 实例列表
@@ -3276,7 +3304,6 @@ func (r *DescribeMessageListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMessageListResponseParams struct {
 	// 查询总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 消息记录列表
@@ -3871,7 +3898,6 @@ func (r *DescribeRoleListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRoleListResponseParams struct {
 	// 查询总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 角色信息列表
@@ -4041,7 +4067,6 @@ func (r *DescribeTopicListByGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTopicListByGroupResponseParams struct {
 	// 查询总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 主题列表
@@ -4507,6 +4532,10 @@ type FusionInstanceItem struct {
 	// 预销毁时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DestroyTime *int64 `json:"DestroyTime,omitnil,omitempty" name:"DestroyTime"`
+
+	// 所属可用区列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 }
 
 // Predefined struct for user
@@ -4750,6 +4779,9 @@ type InstanceItemExtraInfo struct {
 	// 4.0共享集群状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceStatus *int64 `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
+
+	// 是否已冻结
+	IsFrozen *bool `json:"IsFrozen,omitnil,omitempty" name:"IsFrozen"`
 }
 
 type IpRule struct {
@@ -6455,6 +6487,10 @@ type SubscriptionData struct {
 	// CLUSTERING 集群模式;
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageModel *string `json:"MessageModel,omitnil,omitempty" name:"MessageModel"`
+
+	// 订阅不一致的客户端列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientSubscriptionInfos []*ClientSubscriptionInfo `json:"ClientSubscriptionInfos,omitnil,omitempty" name:"ClientSubscriptionInfos"`
 }
 
 type Tag struct {

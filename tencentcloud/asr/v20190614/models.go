@@ -1449,6 +1449,8 @@ func (r *GetAsrKeyWordLibListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetAsrVocabListRequestParams struct {
 	// 标签信息，格式为“$TagKey : $TagValue ”，中间分隔符为“空格”+“:”+“空格”
+	//
+	// Deprecated: TagInfos is deprecated.
 	TagInfos []*string `json:"TagInfos,omitnil,omitempty" name:"TagInfos"`
 
 	// 分页Offset
@@ -1905,6 +1907,8 @@ type Model struct {
 
 	// 标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: TagInfos is deprecated.
 	TagInfos []*string `json:"TagInfos,omitnil,omitempty" name:"TagInfos"`
 }
 

@@ -2003,6 +2003,9 @@ type CreateRocketMQClusterRequestParams struct {
 
 	// 集群描述，128个字符以内
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 标签列表
+	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 type CreateRocketMQClusterRequest struct {
@@ -2013,6 +2016,9 @@ type CreateRocketMQClusterRequest struct {
 
 	// 集群描述，128个字符以内
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 标签列表
+	TagList []*Tag `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 func (r *CreateRocketMQClusterRequest) ToJsonString() string {
@@ -2029,6 +2035,7 @@ func (r *CreateRocketMQClusterRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Name")
 	delete(f, "Remark")
+	delete(f, "TagList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRocketMQClusterRequest has unknown keys!", "")
 	}
@@ -2860,6 +2867,12 @@ type CreateTopicRequestParams struct {
 
 	// 不传默认是原生策略，DefaultPolicy表示当订阅下达到最大未确认消息数 5000 时，服务端将不再向当前订阅下的所有消费者推送消息，DynamicPolicy表示动态调整订阅下的最大未确认消息数，具体配额是在 5000 和消费者数量*20之间取最大值。每个消费者默认最大 unack 消息数为 20，超过该限制时仅影响该消费者，不影响其他消费者。
 	UnackPolicy *string `json:"UnackPolicy,omitnil,omitempty" name:"UnackPolicy"`
+
+	// 是否开启异常消费者隔离
+	IsolateConsumerEnable *bool `json:"IsolateConsumerEnable,omitnil,omitempty" name:"IsolateConsumerEnable"`
+
+	// 消费者 Ack 超时时间，单位：秒，范围60-（3600*24）
+	AckTimeOut *int64 `json:"AckTimeOut,omitnil,omitempty" name:"AckTimeOut"`
 }
 
 type CreateTopicRequest struct {
@@ -2900,6 +2913,12 @@ type CreateTopicRequest struct {
 
 	// 不传默认是原生策略，DefaultPolicy表示当订阅下达到最大未确认消息数 5000 时，服务端将不再向当前订阅下的所有消费者推送消息，DynamicPolicy表示动态调整订阅下的最大未确认消息数，具体配额是在 5000 和消费者数量*20之间取最大值。每个消费者默认最大 unack 消息数为 20，超过该限制时仅影响该消费者，不影响其他消费者。
 	UnackPolicy *string `json:"UnackPolicy,omitnil,omitempty" name:"UnackPolicy"`
+
+	// 是否开启异常消费者隔离
+	IsolateConsumerEnable *bool `json:"IsolateConsumerEnable,omitnil,omitempty" name:"IsolateConsumerEnable"`
+
+	// 消费者 Ack 超时时间，单位：秒，范围60-（3600*24）
+	AckTimeOut *int64 `json:"AckTimeOut,omitnil,omitempty" name:"AckTimeOut"`
 }
 
 func (r *CreateTopicRequest) ToJsonString() string {
@@ -2923,6 +2942,8 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "PulsarTopicType")
 	delete(f, "MsgTTL")
 	delete(f, "UnackPolicy")
+	delete(f, "IsolateConsumerEnable")
+	delete(f, "AckTimeOut")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRequest has unknown keys!", "")
 	}
@@ -5570,6 +5591,9 @@ type DescribeMqMsgTraceRequestParams struct {
 
 	// 查询死信时该值为true，只对Rocketmq有效
 	QueryDlqMsg *bool `json:"QueryDlqMsg,omitnil,omitempty" name:"QueryDlqMsg"`
+
+	// 生产时间
+	ProduceTime *string `json:"ProduceTime,omitnil,omitempty" name:"ProduceTime"`
 }
 
 type DescribeMqMsgTraceRequest struct {
@@ -5598,6 +5622,9 @@ type DescribeMqMsgTraceRequest struct {
 
 	// 查询死信时该值为true，只对Rocketmq有效
 	QueryDlqMsg *bool `json:"QueryDlqMsg,omitnil,omitempty" name:"QueryDlqMsg"`
+
+	// 生产时间
+	ProduceTime *string `json:"ProduceTime,omitnil,omitempty" name:"ProduceTime"`
 }
 
 func (r *DescribeMqMsgTraceRequest) ToJsonString() string {
@@ -5620,6 +5647,7 @@ func (r *DescribeMqMsgTraceRequest) FromJsonString(s string) error {
 	delete(f, "QueueName")
 	delete(f, "GroupName")
 	delete(f, "QueryDlqMsg")
+	delete(f, "ProduceTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMqMsgTraceRequest has unknown keys!", "")
 	}
@@ -12691,6 +12719,12 @@ type ModifyTopicRequestParams struct {
 
 	// 不传默认是原生策略，DefaultPolicy表示当订阅下达到最大未确认消息数 5000 时，服务端将不再向当前订阅下的所有消费者推送消息，DynamicPolicy表示动态调整订阅下的最大未确认消息数，具体配额是在 5000 和消费者数量*20之间取最大值。每个消费者默认最大 unack 消息数为 20，超过该限制时仅影响该消费者，不影响其他消费者。
 	UnackPolicy *string `json:"UnackPolicy,omitnil,omitempty" name:"UnackPolicy"`
+
+	// 是否开启异常消费者隔离
+	IsolateConsumerEnable *bool `json:"IsolateConsumerEnable,omitnil,omitempty" name:"IsolateConsumerEnable"`
+
+	// 消费者 Ack 超时时间，单位：秒，范围60-（3600*24
+	AckTimeOut *int64 `json:"AckTimeOut,omitnil,omitempty" name:"AckTimeOut"`
 }
 
 type ModifyTopicRequest struct {
@@ -12716,6 +12750,12 @@ type ModifyTopicRequest struct {
 
 	// 不传默认是原生策略，DefaultPolicy表示当订阅下达到最大未确认消息数 5000 时，服务端将不再向当前订阅下的所有消费者推送消息，DynamicPolicy表示动态调整订阅下的最大未确认消息数，具体配额是在 5000 和消费者数量*20之间取最大值。每个消费者默认最大 unack 消息数为 20，超过该限制时仅影响该消费者，不影响其他消费者。
 	UnackPolicy *string `json:"UnackPolicy,omitnil,omitempty" name:"UnackPolicy"`
+
+	// 是否开启异常消费者隔离
+	IsolateConsumerEnable *bool `json:"IsolateConsumerEnable,omitnil,omitempty" name:"IsolateConsumerEnable"`
+
+	// 消费者 Ack 超时时间，单位：秒，范围60-（3600*24
+	AckTimeOut *int64 `json:"AckTimeOut,omitnil,omitempty" name:"AckTimeOut"`
 }
 
 func (r *ModifyTopicRequest) ToJsonString() string {
@@ -12737,6 +12777,8 @@ func (r *ModifyTopicRequest) FromJsonString(s string) error {
 	delete(f, "Remark")
 	delete(f, "MsgTTL")
 	delete(f, "UnackPolicy")
+	delete(f, "IsolateConsumerEnable")
+	delete(f, "AckTimeOut")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTopicRequest has unknown keys!", "")
 	}
@@ -13948,11 +13990,11 @@ type ResetRocketMQConsumerOffSetRequestParams struct {
 	// 消费组名称
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 主题名称
-	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
-
 	// 重置方式，0表示从最新位点开始，1表示从指定时间点开始
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 主题名称
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 重置指定的时间戳，仅在 Type 为1是生效，以毫秒为单位
 	ResetTimestamp *uint64 `json:"ResetTimestamp,omitnil,omitempty" name:"ResetTimestamp"`
@@ -13970,11 +14012,11 @@ type ResetRocketMQConsumerOffSetRequest struct {
 	// 消费组名称
 	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
 
-	// 主题名称
-	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
-
 	// 重置方式，0表示从最新位点开始，1表示从指定时间点开始
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 主题名称
+	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 重置指定的时间戳，仅在 Type 为1是生效，以毫秒为单位
 	ResetTimestamp *uint64 `json:"ResetTimestamp,omitnil,omitempty" name:"ResetTimestamp"`
@@ -13995,8 +14037,8 @@ func (r *ResetRocketMQConsumerOffSetRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "NamespaceId")
 	delete(f, "GroupId")
-	delete(f, "Topic")
 	delete(f, "Type")
+	delete(f, "Topic")
 	delete(f, "ResetTimestamp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetRocketMQConsumerOffSetRequest has unknown keys!", "")
@@ -14207,6 +14249,12 @@ type RocketMQClusterConfig struct {
 	// topic分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicDistribution []*RocketMQTopicDistribution `json:"TopicDistribution,omitnil,omitempty" name:"TopicDistribution"`
+
+	// 最大角色数量
+	MaxRoleNum *int64 `json:"MaxRoleNum,omitnil,omitempty" name:"MaxRoleNum"`
+
+	// TPS限额
+	MaxTpsLimit *int64 `json:"MaxTpsLimit,omitnil,omitempty" name:"MaxTpsLimit"`
 }
 
 type RocketMQClusterDetail struct {
@@ -14315,6 +14363,9 @@ type RocketMQClusterInfo struct {
 	// 集群节点所在的可用区，若该集群为跨可用区集群，则包含该集群节点所在的多个可用区。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneIds []*int64 `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
+
+	// 是否已冻结
+	IsFrozen *bool `json:"IsFrozen,omitnil,omitempty" name:"IsFrozen"`
 }
 
 type RocketMQClusterRecentStats struct {
@@ -15715,6 +15766,12 @@ type Topic struct {
 
 	// 用户自定义的租户别名，如果没有，会复用专业集群 ID
 	Tenant *string `json:"Tenant,omitnil,omitempty" name:"Tenant"`
+
+	// 是否开启异常消费者隔离
+	IsolateConsumerEnable *bool `json:"IsolateConsumerEnable,omitnil,omitempty" name:"IsolateConsumerEnable"`
+
+	// 消费者 Ack 超时时间，单位：秒
+	AckTimeOut *int64 `json:"AckTimeOut,omitnil,omitempty" name:"AckTimeOut"`
 }
 
 type TopicRecord struct {

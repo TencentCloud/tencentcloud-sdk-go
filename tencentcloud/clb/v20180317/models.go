@@ -154,14 +154,16 @@ func (r *AssociateCustomizedConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AssociateTargetGroupsRequestParams struct {
-	// 绑定的关系数组。一次请求最多支持20个。
+	// 绑定的关系数组，目标组类型需要一致。
+	// 一次请求最多支持20个。
 	Associations []*TargetGroupAssociation `json:"Associations,omitnil,omitempty" name:"Associations"`
 }
 
 type AssociateTargetGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 绑定的关系数组。一次请求最多支持20个。
+	// 绑定的关系数组，目标组类型需要一致。
+	// 一次请求最多支持20个。
 	Associations []*TargetGroupAssociation `json:"Associations,omitnil,omitempty" name:"Associations"`
 }
 
@@ -749,10 +751,10 @@ type CertificateInput struct {
 	// 上传服务端证书的内容，如果没有 CertId，则此项必传。
 	CertContent *string `json:"CertContent,omitnil,omitempty" name:"CertContent"`
 
-	// 上传客户端 CA 证书的名称，如果 SSLMode=mutual，如果没有 CertCaId，则此项必传。
+	// 上传客户端 CA 证书的名称，如果 SSLMode=MUTUAL，如果没有 CertCaId，则此项必传。
 	CertCaName *string `json:"CertCaName,omitnil,omitempty" name:"CertCaName"`
 
-	// 上传客户端证书的内容，如果 SSLMode=mutual，如果没有 CertCaId，则此项必传。
+	// 上传客户端证书的内容，如果 SSLMode=MUTUAL，如果没有 CertCaId，则此项必传。
 	CertCaContent *string `json:"CertCaContent,omitnil,omitempty" name:"CertCaContent"`
 }
 
@@ -1217,7 +1219,7 @@ type ConfigListItem struct {
 	// 配置ID
 	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
 
-	// 配置类型
+	// 配置类型， 可选值：CLB（实例维度配置）， SERVER（服务维度配置），LOCATION（规则维度配置）
 	ConfigType *string `json:"ConfigType,omitnil,omitempty" name:"ConfigType"`
 
 	// 配置名字
@@ -1226,10 +1228,12 @@ type ConfigListItem struct {
 	// 配置内容
 	ConfigContent *string `json:"ConfigContent,omitnil,omitempty" name:"ConfigContent"`
 
-	// 增加配置时间
+	// 配置的创建时间。
+	// 格式：YYYY-MM-DD HH:mm:ss
 	CreateTimestamp *string `json:"CreateTimestamp,omitnil,omitempty" name:"CreateTimestamp"`
 
-	// 修改配置时间
+	// 配置的修改时间。
+	// 格式：YYYY-MM-DD HH:mm:ss
 	UpdateTimestamp *string `json:"UpdateTimestamp,omitnil,omitempty" name:"UpdateTimestamp"`
 }
 
@@ -1811,10 +1815,10 @@ func (r *CreateLoadBalancerResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLoadBalancerSnatIpsRequestParams struct {
-	// 负载均衡唯一性ID，例如：lb-12345678。
+	// 负载均衡唯一性ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口查询。例如：lb-12345678。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 添加的SnatIp信息，可指定IP申请，或者指定子网自动申请。单个CLB实例可申请的默认上限为10个。
+	// 添加的SnatIp信息，可指定IP申请，或者指定子网自动申请。可以通过 [DescribeSubnets](https://cloud.tencent.com/document/api/215/15784) 查询获取，单个CLB实例可申请的默认上限为10个。
 	SnatIps []*SnatIp `json:"SnatIps,omitnil,omitempty" name:"SnatIps"`
 
 	// 添加的SnatIp的个数，可与SnatIps一起使用，但若指定IP时，则不能指定创建的SnatIp个数。默认值为1，数量上限与用户配置有关，默认上限为10。
@@ -1824,10 +1828,10 @@ type CreateLoadBalancerSnatIpsRequestParams struct {
 type CreateLoadBalancerSnatIpsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡唯一性ID，例如：lb-12345678。
+	// 负载均衡唯一性ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口查询。例如：lb-12345678。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 添加的SnatIp信息，可指定IP申请，或者指定子网自动申请。单个CLB实例可申请的默认上限为10个。
+	// 添加的SnatIp信息，可指定IP申请，或者指定子网自动申请。可以通过 [DescribeSubnets](https://cloud.tencent.com/document/api/215/15784) 查询获取，单个CLB实例可申请的默认上限为10个。
 	SnatIps []*SnatIp `json:"SnatIps,omitnil,omitempty" name:"SnatIps"`
 
 	// 添加的SnatIp的个数，可与SnatIps一起使用，但若指定IP时，则不能指定创建的SnatIp个数。默认值为1，数量上限与用户配置有关，默认上限为10。
@@ -1879,10 +1883,10 @@ func (r *CreateLoadBalancerSnatIpsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRuleRequestParams struct {
-	// 负载均衡实例 ID。
+	// 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 监听器 ID。
+	// 监听器 ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口获取
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
 	// 新建转发规则的信息。
@@ -1892,10 +1896,10 @@ type CreateRuleRequestParams struct {
 type CreateRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡实例 ID。
+	// 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 监听器 ID。
+	// 监听器 ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口获取
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
 	// 新建转发规则的信息。
@@ -1976,10 +1980,17 @@ type CreateTargetGroupRequestParams struct {
 	//     <li>取值范围[0, 100]</li>
 	//     <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li>
 	// </ul>
+	// v1 目标组类型不支持设置 Weight 参数。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
 	// 全监听目标组标识，为true表示是全监听目标组，false表示不是全监听目标组。
 	FullListenSwitch *bool `json:"FullListenSwitch,omitnil,omitempty" name:"FullListenSwitch"`
+
+	// 是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，0:关闭；1:开启， 默认关闭。
+	KeepaliveEnable *bool `json:"KeepaliveEnable,omitnil,omitempty" name:"KeepaliveEnable"`
+
+	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。TCP/UDP目标组不支持该参数。
+	SessionExpireTime *uint64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 }
 
 type CreateTargetGroupRequest struct {
@@ -2011,10 +2022,17 @@ type CreateTargetGroupRequest struct {
 	//     <li>取值范围[0, 100]</li>
 	//     <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li>
 	// </ul>
+	// v1 目标组类型不支持设置 Weight 参数。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
 	// 全监听目标组标识，为true表示是全监听目标组，false表示不是全监听目标组。
 	FullListenSwitch *bool `json:"FullListenSwitch,omitnil,omitempty" name:"FullListenSwitch"`
+
+	// 是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，0:关闭；1:开启， 默认关闭。
+	KeepaliveEnable *bool `json:"KeepaliveEnable,omitnil,omitempty" name:"KeepaliveEnable"`
+
+	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。TCP/UDP目标组不支持该参数。
+	SessionExpireTime *uint64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 }
 
 func (r *CreateTargetGroupRequest) ToJsonString() string {
@@ -2038,6 +2056,8 @@ func (r *CreateTargetGroupRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "Weight")
 	delete(f, "FullListenSwitch")
+	delete(f, "KeepaliveEnable")
+	delete(f, "SessionExpireTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTargetGroupRequest has unknown keys!", "")
 	}
@@ -2080,7 +2100,7 @@ type CreateTopicRequestParams struct {
 	// 日志类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
 	TopicType *string `json:"TopicType,omitnil,omitempty" name:"TopicType"`
 
-	// 存储时间，单位天
+	// 存储时间，单位天，默认为 30。
 	// - 日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
 	// - 日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
@@ -2101,7 +2121,7 @@ type CreateTopicRequest struct {
 	// 日志类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
 	TopicType *string `json:"TopicType,omitnil,omitempty" name:"TopicType"`
 
-	// 存储时间，单位天
+	// 存储时间，单位天，默认为 30。
 	// - 日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
 	// - 日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
@@ -2425,20 +2445,20 @@ func (r *DeleteLoadBalancerResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLoadBalancerSnatIpsRequestParams struct {
-	// 负载均衡唯一ID，例如：lb-12345678。
+	// 负载均衡唯一ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。例如：lb-12345678。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 删除SnatIp地址数组。
+	// 删除SnatIp地址数组，最大支持删除数量为20个。
 	Ips []*string `json:"Ips,omitnil,omitempty" name:"Ips"`
 }
 
 type DeleteLoadBalancerSnatIpsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡唯一ID，例如：lb-12345678。
+	// 负载均衡唯一ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。例如：lb-12345678。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 删除SnatIp地址数组。
+	// 删除SnatIp地址数组，最大支持删除数量为20个。
 	Ips []*string `json:"Ips,omitnil,omitempty" name:"Ips"`
 }
 
@@ -2796,7 +2816,7 @@ type DeregisterTargetGroupInstancesRequestParams struct {
 	// 目标组ID。
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
-	// 待解绑的服务器信息。
+	// 待解绑的服务器信息，支持批量解除绑定，单次批量解除数量最多为20个。
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitnil,omitempty" name:"TargetGroupInstances"`
 }
 
@@ -2806,7 +2826,7 @@ type DeregisterTargetGroupInstancesRequest struct {
 	// 目标组ID。
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
-	// 待解绑的服务器信息。
+	// 待解绑的服务器信息，支持批量解除绑定，单次批量解除数量最多为20个。
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitnil,omitempty" name:"TargetGroupInstances"`
 }
 
@@ -3706,21 +3726,29 @@ type DescribeCustomizedConfigListRequestParams struct {
 	// 配置类型:CLB 负载均衡维度。 SERVER 域名维度。 LOCATION 规则维度。
 	ConfigType *string `json:"ConfigType,omitnil,omitempty" name:"ConfigType"`
 
-	// 拉取页偏移，默认值0
+	// 拉取页偏移，默认值0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 拉取数目，默认值20
+	// 拉取数目，默认值20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 拉取指定配置名字，模糊匹配。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 配置ID
+	// 配置ID，可以通过 [DescribeCustomizedConfigList](https://cloud.tencent.com/document/api/214/60009) 接口查询。
 	UconfigIds []*string `json:"UconfigIds,omitnil,omitempty" name:"UconfigIds"`
 
 	// 过滤条件如下：
-	// <li> loadbalancer-id - String - 是否必填：否 - （过滤条件）按照 负载均衡ID 过滤，如："lb-12345678"。</li>
-	// <li> vip - String - 是否必填：否 - （过滤条件）按照 负载均衡Vip 过滤，如："1.1.1.1","2204::22:3"。</li>
+	// - loadbalancer-id
+	// 按照【负载均衡 ID】进行过滤。实例计费模式例如：lb-9vxezxza。
+	// 类型：String
+	// 必选：否
+	// 获取方式：[DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459)
+	// - vip
+	// 按照【负载均衡VIP】进行过滤。网络计费模式例如："1.1.1.1","2204::22:3"。
+	// 类型：String
+	// 必选：否
+	// 获取方式：[DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459)
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -3730,21 +3758,29 @@ type DescribeCustomizedConfigListRequest struct {
 	// 配置类型:CLB 负载均衡维度。 SERVER 域名维度。 LOCATION 规则维度。
 	ConfigType *string `json:"ConfigType,omitnil,omitempty" name:"ConfigType"`
 
-	// 拉取页偏移，默认值0
+	// 拉取页偏移，默认值0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 拉取数目，默认值20
+	// 拉取数目，默认值20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 拉取指定配置名字，模糊匹配。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 配置ID
+	// 配置ID，可以通过 [DescribeCustomizedConfigList](https://cloud.tencent.com/document/api/214/60009) 接口查询。
 	UconfigIds []*string `json:"UconfigIds,omitnil,omitempty" name:"UconfigIds"`
 
 	// 过滤条件如下：
-	// <li> loadbalancer-id - String - 是否必填：否 - （过滤条件）按照 负载均衡ID 过滤，如："lb-12345678"。</li>
-	// <li> vip - String - 是否必填：否 - （过滤条件）按照 负载均衡Vip 过滤，如："1.1.1.1","2204::22:3"。</li>
+	// - loadbalancer-id
+	// 按照【负载均衡 ID】进行过滤。实例计费模式例如：lb-9vxezxza。
+	// 类型：String
+	// 必选：否
+	// 获取方式：[DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459)
+	// - vip
+	// 按照【负载均衡VIP】进行过滤。网络计费模式例如："1.1.1.1","2204::22:3"。
+	// 类型：String
+	// 必选：否
+	// 获取方式：[DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459)
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -4106,14 +4142,16 @@ func (r *DescribeListenersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLoadBalancerListByCertIdRequestParams struct {
-	// 服务端证书的ID，或客户端证书的ID
+	// 服务端证书的ID，或客户端证书的ID。可以通过 [DescribeCertificate](https://cloud.tencent.com/document/api/400/41674) 接口查询。
+	// 数组最大长度为20。
 	CertIds []*string `json:"CertIds,omitnil,omitempty" name:"CertIds"`
 }
 
 type DescribeLoadBalancerListByCertIdRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务端证书的ID，或客户端证书的ID
+	// 服务端证书的ID，或客户端证书的ID。可以通过 [DescribeCertificate](https://cloud.tencent.com/document/api/400/41674) 接口查询。
+	// 数组最大长度为20。
 	CertIds []*string `json:"CertIds,omitnil,omitempty" name:"CertIds"`
 }
 
@@ -4831,8 +4869,20 @@ type DescribeResourcesRequestParams struct {
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 查询可用区资源列表条件，详细的过滤条件如下：
-	// <li>master-zone -- String - 是否必填：否 - （过滤条件）按照 地区 类型过滤，如："ap-guangzhou-2"。</li><li>ip-version -- String - 是否必填：否 - （过滤条件）按照 IP 类型过滤，可选值："IPv4"、"IPv6"、"IPv6_Nat"。</li>
-	// <li> isp -- String - 是否必填：否 - （过滤条件）按照 Isp 类型过滤，如："BGP","CMCC","CUCC","CTCC"。</li>
+	// - master-zone
+	// 按照【地域可用区】进行过滤，例如：ap-guangzhou-2。
+	// 类型：String
+	// 必选：否
+	// - ip-version
+	// 按照【IP 类型】进行过滤，例如：IPv4。
+	// 类型：String
+	// 必选：否
+	// 可选项：IPv4、IPv6、IPv6_Nat
+	// - isp
+	// 按照【ISP 类型】进行过滤，例如：BGP。
+	// 类型：String
+	// 必选：否
+	// 可选项：BGP、CMCC（中国移动）、CUCC（中国联通）、CTCC（中国电信）、BGP_PRO、INTERNAL（内网）
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -4846,8 +4896,20 @@ type DescribeResourcesRequest struct {
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 查询可用区资源列表条件，详细的过滤条件如下：
-	// <li>master-zone -- String - 是否必填：否 - （过滤条件）按照 地区 类型过滤，如："ap-guangzhou-2"。</li><li>ip-version -- String - 是否必填：否 - （过滤条件）按照 IP 类型过滤，可选值："IPv4"、"IPv6"、"IPv6_Nat"。</li>
-	// <li> isp -- String - 是否必填：否 - （过滤条件）按照 Isp 类型过滤，如："BGP","CMCC","CUCC","CTCC"。</li>
+	// - master-zone
+	// 按照【地域可用区】进行过滤，例如：ap-guangzhou-2。
+	// 类型：String
+	// 必选：否
+	// - ip-version
+	// 按照【IP 类型】进行过滤，例如：IPv4。
+	// 类型：String
+	// 必选：否
+	// 可选项：IPv4、IPv6、IPv6_Nat
+	// - isp
+	// 按照【ISP 类型】进行过滤，例如：BGP。
+	// 类型：String
+	// 必选：否
+	// 可选项：BGP、CMCC（中国移动）、CUCC（中国联通）、CTCC（中国电信）、BGP_PRO、INTERNAL（内网）
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -4973,7 +5035,7 @@ func (r *DescribeRewriteResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTargetGroupInstancesRequestParams struct {
-	// 过滤条件，当前仅支持TargetGroupId，BindIP，InstanceId过滤。
+	// 过滤条件，当前支持按照 TargetGroupId，BindIP，InstanceId 多个条件组合过滤。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 显示数量限制，默认20。
@@ -4986,7 +5048,7 @@ type DescribeTargetGroupInstancesRequestParams struct {
 type DescribeTargetGroupInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件，当前仅支持TargetGroupId，BindIP，InstanceId过滤。
+	// 过滤条件，当前支持按照 TargetGroupId，BindIP，InstanceId 多个条件组合过滤。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 显示数量限制，默认20。
@@ -5140,7 +5202,7 @@ type DescribeTargetGroupsRequestParams struct {
 	// 显示的偏移起始量。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件数组，与TargetGroupIds互斥，支持TargetGroupVpcId和TargetGroupName。
+	// 过滤条件数组，与TargetGroupIds互斥，支持 TargetGroupVpcId（私有网络 ID）和 TargetGroupName（目标组名称）以及 Tag（标签）。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -5156,7 +5218,7 @@ type DescribeTargetGroupsRequest struct {
 	// 显示的偏移起始量。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 过滤条件数组，与TargetGroupIds互斥，支持TargetGroupVpcId和TargetGroupName。
+	// 过滤条件数组，与TargetGroupIds互斥，支持 TargetGroupVpcId（私有网络 ID）和 TargetGroupName（目标组名称）以及 Tag（标签）。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -5509,14 +5571,14 @@ func (r *DisassociateCustomizedConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DisassociateTargetGroupsRequestParams struct {
-	// 待解绑的规则关系数组。
+	// 待解绑的规则关系数组，支持批量解绑多个监听器，单次批量解除最多20个。
 	Associations []*TargetGroupAssociation `json:"Associations,omitnil,omitempty" name:"Associations"`
 }
 
 type DisassociateTargetGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待解绑的规则关系数组。
+	// 待解绑的规则关系数组，支持批量解绑多个监听器，单次批量解除最多20个。
 	Associations []*TargetGroupAssociation `json:"Associations,omitnil,omitempty" name:"Associations"`
 }
 
@@ -5826,7 +5888,7 @@ func (r *InquiryPriceCreateLoadBalancerResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type InquiryPriceModifyLoadBalancerRequestParams struct {
-	// 负载均衡实例ID
+	// 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 修改后的网络带宽信息
@@ -5836,7 +5898,7 @@ type InquiryPriceModifyLoadBalancerRequestParams struct {
 type InquiryPriceModifyLoadBalancerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡实例ID
+	// 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 修改后的网络带宽信息
@@ -5947,7 +6009,7 @@ func (r *InquiryPriceRefundLoadBalancerResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type InquiryPriceRenewLoadBalancerRequestParams struct {
-	// 负载均衡实例ID
+	// 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 续费周期
@@ -5957,7 +6019,7 @@ type InquiryPriceRenewLoadBalancerRequestParams struct {
 type InquiryPriceRenewLoadBalancerRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡实例ID
+	// 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 续费周期
@@ -6083,9 +6145,11 @@ type LBItem struct {
 
 type LbRsItem struct {
 	// vpc的字符串id，只支持字符串id。
+	// 可以通过 [DescribeVpcs](https://cloud.tencent.com/document/api/215/15778) 接口查询。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 需要查询后端的内网ip，可以是cvm和弹性网卡。
+	// 需要查询后端的内网 IP，可以是 CVM 和弹性网卡。
+	// 可以通过 [DescribeAddresses](https://cloud.tencent.com/document/product/215/16702) 接口查询。
 	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
 }
 
@@ -6293,10 +6357,10 @@ type LoadBalancer struct {
 	// 高防 LB 的标识，1：高防负载均衡 0：非高防负载均衡。
 	OpenBgp *uint64 `json:"OpenBgp,omitnil,omitempty" name:"OpenBgp"`
 
-	// 在 2016 年 12 月份之前的传统型内网负载均衡都是开启了 snat 的。
+	// 是否开启 SNAT，在 2016 年 12 月份之前的传统型内网负载均衡都是开启了 SNAT 的。
 	Snat *bool `json:"Snat,omitnil,omitempty" name:"Snat"`
 
-	// 0：表示未被隔离，1：表示被隔离。
+	// 是否被隔离，0：表示未被隔离，1：表示被隔离。
 	Isolation *uint64 `json:"Isolation,omitnil,omitempty" name:"Isolation"`
 
 	// 用户开启日志的信息，日志只有公网属性创建了 HTTP 、HTTPS 监听器的负载均衡才会有日志。
@@ -7200,7 +7264,7 @@ type ModifyFunctionTargetsRequestParams struct {
 	// 负载均衡监听器ID。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 要修改的后端云函数服务列表。
+	// 要修改的后端云函数服务列表，仅支持 Event 函数类型。
 	FunctionTargets []*FunctionTarget `json:"FunctionTargets,omitnil,omitempty" name:"FunctionTargets"`
 
 	// 转发规则的ID，当绑定机器到七层转发规则时，必须提供此参数或Domain+Url两者之一。
@@ -7222,7 +7286,7 @@ type ModifyFunctionTargetsRequest struct {
 	// 负载均衡监听器ID。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 要修改的后端云函数服务列表。
+	// 要修改的后端云函数服务列表，仅支持 Event 函数类型。
 	FunctionTargets []*FunctionTarget `json:"FunctionTargets,omitnil,omitempty" name:"FunctionTargets"`
 
 	// 转发规则的ID，当绑定机器到七层转发规则时，必须提供此参数或Domain+Url两者之一。
@@ -7588,6 +7652,7 @@ func (r *ModifyLoadBalancerAttributesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyLoadBalancerMixIpTargetRequestParams struct {
 	// 负载均衡实例ID数组，默认支持20个负载均衡实例ID。
+	// 可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
 	// 开启/关闭IPv6FullChain负载均衡7层监听器支持混绑IPv4/IPv6目标特性。
@@ -7598,6 +7663,7 @@ type ModifyLoadBalancerMixIpTargetRequest struct {
 	*tchttp.BaseRequest
 	
 	// 负载均衡实例ID数组，默认支持20个负载均衡实例ID。
+	// 可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
 	// 开启/关闭IPv6FullChain负载均衡7层监听器支持混绑IPv4/IPv6目标特性。
@@ -7709,7 +7775,8 @@ func (r *ModifyLoadBalancerSlaResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLoadBalancersProjectRequestParams struct {
-	// 一个或多个待操作的负载均衡实例ID。
+	// 一个或多个待操作的负载均衡实例ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
+	// 列表支持最大长度为20。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
 	// 项目ID。可以通过 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 接口获取。
@@ -7719,7 +7786,8 @@ type ModifyLoadBalancersProjectRequestParams struct {
 type ModifyLoadBalancersProjectRequest struct {
 	*tchttp.BaseRequest
 	
-	// 一个或多个待操作的负载均衡实例ID。
+	// 一个或多个待操作的负载均衡实例ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
+	// 列表支持最大长度为20。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
 	// 项目ID。可以通过 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 接口获取。
@@ -7912,7 +7980,14 @@ type ModifyTargetGroupAttributeRequestParams struct {
 	//     <li>取值范围[0, 100]</li>
 	//     <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li> 
 	// </ul>
+	// v1目标组类型不支持设置Weight参数。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// 是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，true:关闭；false:开启， 默认关闭。
+	KeepaliveEnable *bool `json:"KeepaliveEnable,omitnil,omitempty" name:"KeepaliveEnable"`
+
+	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。TCP/UDP目标组不支持该参数。
+	SessionExpireTime *uint64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 }
 
 type ModifyTargetGroupAttributeRequest struct {
@@ -7932,7 +8007,14 @@ type ModifyTargetGroupAttributeRequest struct {
 	//     <li>取值范围[0, 100]</li>
 	//     <li>设置该值后，添加后端服务到目标组时， 若后端服务不单独设置权重， 则使用这里的默认权重。 </li> 
 	// </ul>
+	// v1目标组类型不支持设置Weight参数。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// 是否开启长连接，此参数仅适用于HTTP/HTTPS目标组，true:关闭；false:开启， 默认关闭。
+	KeepaliveEnable *bool `json:"KeepaliveEnable,omitnil,omitempty" name:"KeepaliveEnable"`
+
+	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。TCP/UDP目标组不支持该参数。
+	SessionExpireTime *uint64 `json:"SessionExpireTime,omitnil,omitempty" name:"SessionExpireTime"`
 }
 
 func (r *ModifyTargetGroupAttributeRequest) ToJsonString() string {
@@ -7951,6 +8033,8 @@ func (r *ModifyTargetGroupAttributeRequest) FromJsonString(s string) error {
 	delete(f, "TargetGroupName")
 	delete(f, "Port")
 	delete(f, "Weight")
+	delete(f, "KeepaliveEnable")
+	delete(f, "SessionExpireTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTargetGroupAttributeRequest has unknown keys!", "")
 	}
@@ -7984,7 +8068,7 @@ type ModifyTargetGroupInstancesPortRequestParams struct {
 	// 目标组ID。
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
-	// 待修改端口的服务器数组。
+	// 待修改端口的服务器数组，在这个接口 NewPort 和 Port 为必填项。
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitnil,omitempty" name:"TargetGroupInstances"`
 }
 
@@ -7994,7 +8078,7 @@ type ModifyTargetGroupInstancesPortRequest struct {
 	// 目标组ID。
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
-	// 待修改端口的服务器数组。
+	// 待修改端口的服务器数组，在这个接口 NewPort 和 Port 为必填项。
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitnil,omitempty" name:"TargetGroupInstances"`
 }
 
@@ -8045,7 +8129,7 @@ type ModifyTargetGroupInstancesWeightRequestParams struct {
 	// 目标组ID。
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
-	// 待修改权重的服务器数组。
+	// 待修改权重的服务器数组，在这个接口 Port 为必填项。
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitnil,omitempty" name:"TargetGroupInstances"`
 }
 
@@ -8055,7 +8139,7 @@ type ModifyTargetGroupInstancesWeightRequest struct {
 	// 目标组ID。
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
-	// 待修改权重的服务器数组。
+	// 待修改权重的服务器数组，在这个接口 Port 为必填项。
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitnil,omitempty" name:"TargetGroupInstances"`
 }
 
@@ -8338,8 +8422,9 @@ type Quota struct {
 	// <li> TOTAL_LISTENER_QUOTA：一个CLB下的监听器配额 </li>
 	// <li> TOTAL_LISTENER_RULE_QUOTA：一个监听器下的转发规则配额 </li>
 	// <li> TOTAL_TARGET_BIND_QUOTA：一条转发规则下可绑定设备的配额 </li>
-	// <li> TOTAL_SNAP_IP_QUOTA： 一个CLB实例下跨地域2.0的SNAT IP配额 </li>
+	// <li> TOTAL_SNAT_IP_QUOTA： 一个CLB实例下跨地域2.0的SNAT IP配额 </li>
 	// <li>TOTAL_ISP_CLB_QUOTA：用户当前地域下的三网CLB配额 </li>
+	// <li>TOTAL_FULL_PORT_RANGE_LISTENER_QUOTA：一个CLB实例下的单个协议全端口段监听器配额</li>
 	QuotaId *string `json:"QuotaId,omitnil,omitempty" name:"QuotaId"`
 
 	// 当前使用数量，为 null 时表示无意义。
@@ -8444,7 +8529,7 @@ type RegisterTargetGroupInstancesRequestParams struct {
 	// 目标组ID
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
-	// 服务器实例数组
+	// 服务器实例数组，服务器和目标组的 VPC 需相同。
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitnil,omitempty" name:"TargetGroupInstances"`
 }
 
@@ -8454,7 +8539,7 @@ type RegisterTargetGroupInstancesRequest struct {
 	// 目标组ID
 	TargetGroupId *string `json:"TargetGroupId,omitnil,omitempty" name:"TargetGroupId"`
 
-	// 服务器实例数组
+	// 服务器实例数组，服务器和目标组的 VPC 需相同。
 	TargetGroupInstances []*TargetGroupInstance `json:"TargetGroupInstances,omitnil,omitempty" name:"TargetGroupInstances"`
 }
 
@@ -8511,7 +8596,7 @@ type RegisterTargetsRequestParams struct {
 	// 待绑定的后端服务列表，数组长度最大支持20。
 	Targets []*Target `json:"Targets,omitnil,omitempty" name:"Targets"`
 
-	// 转发规则的ID，当绑定后端服务到七层转发规则时，必须提供此参数或Domain+Url两者之一。
+	// 转发规则的ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口获取，当绑定后端服务到七层转发规则时，必须提供此参数或Domain+Url两者之一。
 	LocationId *string `json:"LocationId,omitnil,omitempty" name:"LocationId"`
 
 	// 目标转发规则的域名，提供LocationId参数时本参数不生效。
@@ -8533,7 +8618,7 @@ type RegisterTargetsRequest struct {
 	// 待绑定的后端服务列表，数组长度最大支持20。
 	Targets []*Target `json:"Targets,omitnil,omitempty" name:"Targets"`
 
-	// 转发规则的ID，当绑定后端服务到七层转发规则时，必须提供此参数或Domain+Url两者之一。
+	// 转发规则的ID，可以通过 [DescribeListeners](https://cloud.tencent.com/document/product/214/30686) 接口获取，当绑定后端服务到七层转发规则时，必须提供此参数或Domain+Url两者之一。
 	LocationId *string `json:"LocationId,omitnil,omitempty" name:"LocationId"`
 
 	// 目标转发规则的域名，提供LocationId参数时本参数不生效。
@@ -8843,7 +8928,7 @@ type RuleInput struct {
 	// 分别表示按权重轮询、最小连接数、按IP哈希， 默认为 WRR。
 	Scheduler *string `json:"Scheduler,omitnil,omitempty" name:"Scheduler"`
 
-	// 负载均衡与后端服务之间的转发协议，目前支持 HTTP/HTTPS/GRPC/TRPC，TRPC暂未对外开放，默认HTTP。
+	// 负载均衡与后端服务之间的转发协议，目前支持 HTTP/HTTPS/GRPC/GRPCS/TRPC，TRPC暂未对外开放，默认HTTP。
 	ForwardType *string `json:"ForwardType,omitnil,omitempty" name:"ForwardType"`
 
 	// 是否将该域名设为默认域名，注意，一个监听器下只能设置一个默认域名。
@@ -8983,7 +9068,7 @@ type RulesItems struct {
 // Predefined struct for user
 type SetCustomizedConfigForLoadBalancerRequestParams struct {
 	// 操作类型。
-	// - ADD：添加
+	// - ADD：创建
 	// - DELETE：删除
 	// - UPDATE：修改
 	// - BIND：绑定
@@ -8993,13 +9078,15 @@ type SetCustomizedConfigForLoadBalancerRequestParams struct {
 	// 个性化配置ID。除了创建个性化配置外，必传此字段，如：pz-1234abcd
 	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
 
-	// 个性化配置内容。创建个性化配置或修改个性化配置的内容时，必传此字段
+	// 个性化配置内容。创建个性化配置或修改个性化配置的内容时，必传此字段。
+	// 具体限制查看 [七层个性化配置](https://cloud.tencent.com/document/product/214/15171)
 	ConfigContent *string `json:"ConfigContent,omitnil,omitempty" name:"ConfigContent"`
 
-	// 个性化配置名称。创建个性化配置或修改个性化配置的名字时，必传此字段
+	// 个性化配置名称。创建个性化配置或修改个性化配置的名字时，必传此字段。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 负载均衡实例ID。绑定解绑时，必传此字段
+	// 负载均衡实例ID。绑定解绑时，必传此字段。
+	// 可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 }
 
@@ -9007,7 +9094,7 @@ type SetCustomizedConfigForLoadBalancerRequest struct {
 	*tchttp.BaseRequest
 	
 	// 操作类型。
-	// - ADD：添加
+	// - ADD：创建
 	// - DELETE：删除
 	// - UPDATE：修改
 	// - BIND：绑定
@@ -9017,13 +9104,15 @@ type SetCustomizedConfigForLoadBalancerRequest struct {
 	// 个性化配置ID。除了创建个性化配置外，必传此字段，如：pz-1234abcd
 	UconfigId *string `json:"UconfigId,omitnil,omitempty" name:"UconfigId"`
 
-	// 个性化配置内容。创建个性化配置或修改个性化配置的内容时，必传此字段
+	// 个性化配置内容。创建个性化配置或修改个性化配置的内容时，必传此字段。
+	// 具体限制查看 [七层个性化配置](https://cloud.tencent.com/document/product/214/15171)
 	ConfigContent *string `json:"ConfigContent,omitnil,omitempty" name:"ConfigContent"`
 
-	// 个性化配置名称。创建个性化配置或修改个性化配置的名字时，必传此字段
+	// 个性化配置名称。创建个性化配置或修改个性化配置的名字时，必传此字段。
 	ConfigName *string `json:"ConfigName,omitnil,omitempty" name:"ConfigName"`
 
-	// 负载均衡实例ID。绑定解绑时，必传此字段
+	// 负载均衡实例ID。绑定解绑时，必传此字段。
+	// 可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 }
 
@@ -9077,7 +9166,7 @@ func (r *SetCustomizedConfigForLoadBalancerResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type SetLoadBalancerClsLogRequestParams struct {
-	// 负载均衡实例 ID。
+	// 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 日志服务(CLS)的日志集 ID。
@@ -9100,7 +9189,7 @@ type SetLoadBalancerClsLogRequestParams struct {
 type SetLoadBalancerClsLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡实例 ID。
+	// 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 日志服务(CLS)的日志集 ID。
@@ -9166,20 +9255,22 @@ func (r *SetLoadBalancerClsLogResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SetLoadBalancerSecurityGroupsRequestParams struct {
-	// 负载均衡实例 ID
+	// 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 安全组ID构成的数组，一个负载均衡实例最多可绑定50个安全组，如果要解绑所有安全组，可不传此参数。
+	// 可以通过 [DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808) 接口查询。
 	SecurityGroups []*string `json:"SecurityGroups,omitnil,omitempty" name:"SecurityGroups"`
 }
 
 type SetLoadBalancerSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡实例 ID
+	// 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 安全组ID构成的数组，一个负载均衡实例最多可绑定50个安全组，如果要解绑所有安全组，可不传此参数。
+	// 可以通过 [DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808) 接口查询。
 	SecurityGroups []*string `json:"SecurityGroups,omitnil,omitempty" name:"SecurityGroups"`
 }
 
@@ -9295,28 +9386,30 @@ func (r *SetLoadBalancerStartStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SetSecurityGroupForLoadbalancersRequestParams struct {
-	// 安全组ID，如 sg-12345678
+	// 安全组ID，如 sg-12345678。可以通过 [DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808) 接口获取。
 	SecurityGroup *string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
 	// ADD 绑定安全组；
 	// DEL 解绑安全组
 	OperationType *string `json:"OperationType,omitnil,omitempty" name:"OperationType"`
 
-	// 负载均衡实例ID数组
+	// 负载均衡实例ID数组，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
+	// 列表支持的最大长度为20。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 }
 
 type SetSecurityGroupForLoadbalancersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 安全组ID，如 sg-12345678
+	// 安全组ID，如 sg-12345678。可以通过 [DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808) 接口获取。
 	SecurityGroup *string `json:"SecurityGroup,omitnil,omitempty" name:"SecurityGroup"`
 
 	// ADD 绑定安全组；
 	// DEL 解绑安全组
 	OperationType *string `json:"OperationType,omitnil,omitempty" name:"OperationType"`
 
-	// 负载均衡实例ID数组
+	// 负载均衡实例ID数组，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
+	// 列表支持的最大长度为20。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 }
 
@@ -9364,7 +9457,8 @@ func (r *SetSecurityGroupForLoadbalancersResponse) FromJsonString(s string) erro
 }
 
 type SlaUpdateParam struct {
-	// lb的字符串ID
+	// 负载均衡实例 ID。
+	// 可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口查询。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
 	// 性能容量型规格，取值范围：
@@ -9536,8 +9630,8 @@ type TargetGroupInstance struct {
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 目标组实例的权重
-	// 
 	// v2目标组需要配置权重，调用CreateTargetGroup接口创建目标组时该参数与创建接口中的Weight参数必填其一。
+	// 取值范围：0-100
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
 	// 目标组实例的新端口，全监听目标组不支持传此字段。

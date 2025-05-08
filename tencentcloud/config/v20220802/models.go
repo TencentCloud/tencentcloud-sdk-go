@@ -31,48 +31,38 @@ type AggregateResourceInfo struct {
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 资源状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceStatus *string `json:"ResourceStatus,omitnil,omitempty" name:"ResourceStatus"`
 
 	// 是否删除 1:已删除 0:未删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceDelete *uint64 `json:"ResourceDelete,omitnil,omitempty" name:"ResourceDelete"`
 
 	// 资源创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceCreateTime *string `json:"ResourceCreateTime,omitnil,omitempty" name:"ResourceCreateTime"`
 
 	// 标签信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceZone *string `json:"ResourceZone,omitnil,omitempty" name:"ResourceZone"`
 
 	// 合规状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComplianceResult *string `json:"ComplianceResult,omitnil,omitempty" name:"ComplianceResult"`
 
 	// 资源所属用户ID
 	ResourceOwnerId *uint64 `json:"ResourceOwnerId,omitnil,omitempty" name:"ResourceOwnerId"`
 
 	// 用户昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceOwnerName *string `json:"ResourceOwnerName,omitnil,omitempty" name:"ResourceOwnerName"`
 }
 
 type Annotation struct {
 	// 资源当前实际配置。长度为0~256位字符，即资源不合规配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Configuration *string `json:"Configuration,omitnil,omitempty" name:"Configuration"`
 
 	// 资源期望配置。长度为0~256位字符，即资源合规配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DesiredValue *string `json:"DesiredValue,omitnil,omitempty" name:"DesiredValue"`
 
 	// 资源当前配置和期望配置之间的比较运算符。长度为0~16位字符，自定义规则上报评估结果此字段可能为空
@@ -84,119 +74,92 @@ type Annotation struct {
 
 type ConfigRule struct {
 	// 规则标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Identifier *string `json:"Identifier,omitnil,omitempty" name:"Identifier"`
 
 	// 规则名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
 
 	// 规则参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputParameter []*InputParameter `json:"InputParameter,omitnil,omitempty" name:"InputParameter"`
 
 	// 规则触发条件
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceCondition []*SourceConditionForManage `json:"SourceCondition,omitnil,omitempty" name:"SourceCondition"`
 
 	// 规则支持的资源类型，规则仅对指定资源类型的资源生效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceType []*string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 规则所属标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
 
 	// 规则风险等级
 	// 1:低风险
 	// 2:中风险
 	// 3:高风险
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevel *int64 `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
 	// 规则对应的函数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceFunction *string `json:"ServiceFunction,omitnil,omitempty" name:"ServiceFunction"`
 
 	// 创建时间
 	// 格式：YYYY-MM-DD h:i:s
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 规则描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// ACTIVE：启用
 	// NO_ACTIVE：停止
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 合规： 'COMPLIANT'
 	// 不合规： 'NON_COMPLIANT'
 	// 无法应用规则： 'NOT_APPLICABLE'
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComplianceResult *string `json:"ComplianceResult,omitnil,omitempty" name:"ComplianceResult"`
 
 	// ["",""]
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Annotation *Annotation `json:"Annotation,omitnil,omitempty" name:"Annotation"`
 
 	// 规则评估时间
 	// 格式：YYYY-MM-DD h:i:s
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigRuleInvokedTime *string `json:"ConfigRuleInvokedTime,omitnil,omitempty" name:"ConfigRuleInvokedTime"`
 
 	// 规则ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConfigRuleId *string `json:"ConfigRuleId,omitnil,omitempty" name:"ConfigRuleId"`
 
 	// CUSTOMIZE：自定义规则、
 	// SYSTEM：托管规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentifierType *string `json:"IdentifierType,omitnil,omitempty" name:"IdentifierType"`
 
 	// 合规包ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompliancePackId *string `json:"CompliancePackId,omitnil,omitempty" name:"CompliancePackId"`
 
 	// 触发类型
 	// ScheduledNotification：周期触发、
 	// ConfigurationItemChangeNotification：变更触发
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerType []*TriggerType `json:"TriggerType,omitnil,omitempty" name:"TriggerType"`
 
 	// 参数详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ManageInputParameter []*InputParameterForManage `json:"ManageInputParameter,omitnil,omitempty" name:"ManageInputParameter"`
 
 	// 合规包名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompliancePackName *string `json:"CompliancePackName,omitnil,omitempty" name:"CompliancePackName"`
 
 	// 关联地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionsScope []*string `json:"RegionsScope,omitnil,omitempty" name:"RegionsScope"`
 
 	// 关联标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagsScope []*Tag `json:"TagsScope,omitnil,omitempty" name:"TagsScope"`
 
 	//  规则对指定资源ID无效，即不对该资源执行评估。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExcludeResourceIdsScope []*string `json:"ExcludeResourceIdsScope,omitnil,omitempty" name:"ExcludeResourceIdsScope"`
 
 	// 账号组ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountGroupId *string `json:"AccountGroupId,omitnil,omitempty" name:"AccountGroupId"`
 
 	// 账号组名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountGroupName *string `json:"AccountGroupName,omitnil,omitempty" name:"AccountGroupName"`
 
 	// 规则所属用户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleOwnerId *uint64 `json:"RuleOwnerId,omitnil,omitempty" name:"RuleOwnerId"`
 
 	// 预设规则支持的触发方式
@@ -268,39 +231,30 @@ func (r *DescribeAggregateDiscoveredResourceRequest) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeAggregateDiscoveredResourceResponseParams struct {
 	// 资源Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 资源类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 资源名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
 	// 资源地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 资源可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceZone *string `json:"ResourceZone,omitnil,omitempty" name:"ResourceZone"`
 
 	// 资源配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Configuration *string `json:"Configuration,omitnil,omitempty" name:"Configuration"`
 
 	// 资源创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceCreateTime *string `json:"ResourceCreateTime,omitnil,omitempty" name:"ResourceCreateTime"`
 
 	// 资源标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 资源更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -372,39 +326,30 @@ func (r *DescribeDiscoveredResourceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDiscoveredResourceResponseParams struct {
 	// 资源Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 资源类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 资源名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
 
 	// 资源地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 资源可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceZone *string `json:"ResourceZone,omitnil,omitempty" name:"ResourceZone"`
 
 	// 资源配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Configuration *string `json:"Configuration,omitnil,omitempty" name:"Configuration"`
 
 	// 资源创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceCreateTime *string `json:"ResourceCreateTime,omitnil,omitempty" name:"ResourceCreateTime"`
 
 	// 资源标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 资源更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -465,29 +410,23 @@ type InputParameter struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 参数值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type InputParameterForManage struct {
 	// 值类型。数值：Integer， 字符串：String
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValueType *string `json:"ValueType,omitnil,omitempty" name:"ValueType"`
 
 	// 参数Key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ParameterKey *string `json:"ParameterKey,omitnil,omitempty" name:"ParameterKey"`
 
 	// 参数类型。必填类型：Require，可选类型：Optional。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 默认值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
 
 	// 描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -996,63 +935,49 @@ type ResourceListInfo struct {
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 资源状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceStatus *string `json:"ResourceStatus,omitnil,omitempty" name:"ResourceStatus"`
 
 	// 1 :已删除 2：未删除
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceDelete *uint64 `json:"ResourceDelete,omitnil,omitempty" name:"ResourceDelete"`
 
 	// 资源创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceCreateTime *string `json:"ResourceCreateTime,omitnil,omitempty" name:"ResourceCreateTime"`
 
 	// 标签信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceZone *string `json:"ResourceZone,omitnil,omitempty" name:"ResourceZone"`
 
 	// 合规状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComplianceResult *string `json:"ComplianceResult,omitnil,omitempty" name:"ComplianceResult"`
 }
 
 type SourceConditionForManage struct {
 	// 条件为空，合规：COMPLIANT，不合规：NON_COMPLIANT，无法应用：NOT_APPLICABLE
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EmptyAs *string `json:"EmptyAs,omitnil,omitempty" name:"EmptyAs"`
 
 	// 配置路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SelectPath *string `json:"SelectPath,omitnil,omitempty" name:"SelectPath"`
 
 	// 操作运算符
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 是否必须
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Required *bool `json:"Required,omitnil,omitempty" name:"Required"`
 
 	// 期望值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DesiredValue *string `json:"DesiredValue,omitnil,omitempty" name:"DesiredValue"`
 }
 
 type Tag struct {
 	// 标签key
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// 标签value
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
@@ -1061,6 +986,5 @@ type TriggerType struct {
 	MessageType *string `json:"MessageType,omitnil,omitempty" name:"MessageType"`
 
 	// 触发时间周期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitnil,omitempty" name:"MaximumExecutionFrequency"`
 }

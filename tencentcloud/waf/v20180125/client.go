@@ -9038,6 +9038,79 @@ func (c *Client) ModifyHostStatusWithContext(ctx context.Context, request *Modif
     return
 }
 
+func NewModifyInstanceAttackLogPostRequest() (request *ModifyInstanceAttackLogPostRequest) {
+    request = &ModifyInstanceAttackLogPostRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyInstanceAttackLogPost")
+    
+    
+    return
+}
+
+func NewModifyInstanceAttackLogPostResponse() (response *ModifyInstanceAttackLogPostResponse) {
+    response = &ModifyInstanceAttackLogPostResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyInstanceAttackLogPost
+// 修改实例攻击日志投递开关，企业版及以上版本可以开通，否则返回错误
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyInstanceAttackLogPost(request *ModifyInstanceAttackLogPostRequest) (response *ModifyInstanceAttackLogPostResponse, err error) {
+    return c.ModifyInstanceAttackLogPostWithContext(context.Background(), request)
+}
+
+// ModifyInstanceAttackLogPost
+// 修改实例攻击日志投递开关，企业版及以上版本可以开通，否则返回错误
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyInstanceAttackLogPostWithContext(ctx context.Context, request *ModifyInstanceAttackLogPostRequest) (response *ModifyInstanceAttackLogPostResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceAttackLogPostRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceAttackLogPost require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceAttackLogPostResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyInstanceElasticModeRequest() (request *ModifyInstanceElasticModeRequest) {
     request = &ModifyInstanceElasticModeRequest{
         BaseRequest: &tchttp.BaseRequest{},

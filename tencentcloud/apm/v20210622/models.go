@@ -254,6 +254,12 @@ type ApmInstanceDetail struct {
 	// 8: 账号欠费
 	// }
 	StopReason *int64 `json:"StopReason,omitnil,omitempty" name:"StopReason"`
+
+	// 是否开远程命令执行检测（0=关， 1=开）
+	IsRemoteCommandExecutionAnalysis *int64 `json:"IsRemoteCommandExecutionAnalysis,omitnil,omitempty" name:"IsRemoteCommandExecutionAnalysis"`
+
+	// 是否开内存马执行检测（0=关， 1=开）
+	IsMemoryHijackingAnalysis *int64 `json:"IsMemoryHijackingAnalysis,omitnil,omitempty" name:"IsMemoryHijackingAnalysis"`
 }
 
 type ApmMetricRecord struct {
@@ -1510,6 +1516,12 @@ type ModifyApmInstanceRequestParams struct {
 
 	// 是否开启组件漏洞检测（0=关,1=开）
 	IsInstrumentationVulnerabilityScan *int64 `json:"IsInstrumentationVulnerabilityScan,omitnil,omitempty" name:"IsInstrumentationVulnerabilityScan"`
+
+	// 是否开启远程命令攻击检测
+	IsRemoteCommandExecutionAnalysis *int64 `json:"IsRemoteCommandExecutionAnalysis,omitnil,omitempty" name:"IsRemoteCommandExecutionAnalysis"`
+
+	// 是否开启内存马检测
+	IsMemoryHijackingAnalysis *int64 `json:"IsMemoryHijackingAnalysis,omitnil,omitempty" name:"IsMemoryHijackingAnalysis"`
 }
 
 type ModifyApmInstanceRequest struct {
@@ -1586,6 +1598,12 @@ type ModifyApmInstanceRequest struct {
 
 	// 是否开启组件漏洞检测（0=关,1=开）
 	IsInstrumentationVulnerabilityScan *int64 `json:"IsInstrumentationVulnerabilityScan,omitnil,omitempty" name:"IsInstrumentationVulnerabilityScan"`
+
+	// 是否开启远程命令攻击检测
+	IsRemoteCommandExecutionAnalysis *int64 `json:"IsRemoteCommandExecutionAnalysis,omitnil,omitempty" name:"IsRemoteCommandExecutionAnalysis"`
+
+	// 是否开启内存马检测
+	IsMemoryHijackingAnalysis *int64 `json:"IsMemoryHijackingAnalysis,omitnil,omitempty" name:"IsMemoryHijackingAnalysis"`
 }
 
 func (r *ModifyApmInstanceRequest) ToJsonString() string {
@@ -1624,6 +1642,8 @@ func (r *ModifyApmInstanceRequest) FromJsonString(s string) error {
 	delete(f, "DashboardTopicID")
 	delete(f, "IsSqlInjectionAnalysis")
 	delete(f, "IsInstrumentationVulnerabilityScan")
+	delete(f, "IsRemoteCommandExecutionAnalysis")
+	delete(f, "IsMemoryHijackingAnalysis")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmInstanceRequest has unknown keys!", "")
 	}

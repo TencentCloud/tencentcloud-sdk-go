@@ -5233,6 +5233,141 @@ func (r *CreateTaskFolderResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateTaskNewRequestParams struct {
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流id
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 任务名
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 26离线同步，30Python，31PySpark，32DLC，33Impala，34Hive SQL，35Shell，36Spark SQL，39Spark，40CDW PG，92MapReduce
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 扩展属性
+	TaskExt []*TaskExtInfo `json:"TaskExt,omitnil,omitempty" name:"TaskExt"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// 任务实例初始化策略
+	InstanceInitStrategy *string `json:"InstanceInitStrategy,omitnil,omitempty" name:"InstanceInitStrategy"`
+
+	// 画布坐标横轴
+	LeftCoordinate *float64 `json:"LeftCoordinate,omitnil,omitempty" name:"LeftCoordinate"`
+
+	// 画布坐标纵轴
+	TopCoordinate *float64 `json:"TopCoordinate,omitnil,omitempty" name:"TopCoordinate"`
+
+	// 工作流目录ID
+	TaskFolderId *string `json:"TaskFolderId,omitnil,omitempty" name:"TaskFolderId"`
+
+	// 指定脚本内容，base64编码
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 代码模版ID
+	CodeTemplateId *string `json:"CodeTemplateId,omitnil,omitempty" name:"CodeTemplateId"`
+}
+
+type CreateTaskNewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 工作流id
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 任务名
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 26离线同步，30Python，31PySpark，32DLC，33Impala，34Hive SQL，35Shell，36Spark SQL，39Spark，40CDW PG，92MapReduce
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 扩展属性
+	TaskExt []*TaskExtInfo `json:"TaskExt,omitnil,omitempty" name:"TaskExt"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// 任务实例初始化策略
+	InstanceInitStrategy *string `json:"InstanceInitStrategy,omitnil,omitempty" name:"InstanceInitStrategy"`
+
+	// 画布坐标横轴
+	LeftCoordinate *float64 `json:"LeftCoordinate,omitnil,omitempty" name:"LeftCoordinate"`
+
+	// 画布坐标纵轴
+	TopCoordinate *float64 `json:"TopCoordinate,omitnil,omitempty" name:"TopCoordinate"`
+
+	// 工作流目录ID
+	TaskFolderId *string `json:"TaskFolderId,omitnil,omitempty" name:"TaskFolderId"`
+
+	// 指定脚本内容，base64编码
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 代码模版ID
+	CodeTemplateId *string `json:"CodeTemplateId,omitnil,omitempty" name:"CodeTemplateId"`
+}
+
+func (r *CreateTaskNewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTaskNewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "WorkflowId")
+	delete(f, "TaskName")
+	delete(f, "TaskType")
+	delete(f, "TaskExt")
+	delete(f, "ProductName")
+	delete(f, "InstanceInitStrategy")
+	delete(f, "LeftCoordinate")
+	delete(f, "TopCoordinate")
+	delete(f, "TaskFolderId")
+	delete(f, "Content")
+	delete(f, "CodeTemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskNewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTaskNewResponseParams struct {
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateTaskNewResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTaskNewResponseParams `json:"Response"`
+}
+
+func (r *CreateTaskNewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTaskNewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateTaskRequestParams struct {
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -20319,6 +20454,94 @@ type EventCaseOpsDto struct {
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
+type EventDsDto struct {
+	// 事件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 事件类型GENERAL、TIME_SERIES
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
+
+	// 存活时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeToLive *int64 `json:"TimeToLive,omitnil,omitempty" name:"TimeToLive"`
+
+	// 存活时间单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
+
+	// 事件分割类型 SECOND、MIN、HOUR、DAY
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventSubType *string `json:"EventSubType,omitnil,omitempty" name:"EventSubType"`
+
+	// 事件广播类型SINGLE、BROADCAST
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventBroadcastType *string `json:"EventBroadcastType,omitnil,omitempty" name:"EventBroadcastType"`
+
+	// 时间格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DimensionFormat *string `json:"DimensionFormat,omitnil,omitempty" name:"DimensionFormat"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreationTs *string `json:"CreationTs,omitnil,omitempty" name:"CreationTs"`
+
+	// 事件所属人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// 属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Properties *string `json:"Properties,omitnil,omitempty" name:"Properties"`
+
+	// 描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 事件监听者信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Listeners []*EventListenerDTO `json:"Listeners,omitnil,omitempty" name:"Listeners"`
+
+	// 项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 项目名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
+}
+
+type EventListenerDTO struct {
+	// 关键字，一般为任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// REST_API、KAFKA
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreationTs *string `json:"CreationTs,omitnil,omitempty" name:"CreationTs"`
+
+	// 配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PropertiesList []*ParamInfoDs `json:"PropertiesList,omitnil,omitempty" name:"PropertiesList"`
+
+	// 事件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventName *string `json:"EventName,omitnil,omitempty" name:"EventName"`
+
+	// 监听者任务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskInfo *EventListenerTaskInfo `json:"TaskInfo,omitnil,omitempty" name:"TaskInfo"`
+
+	// 事件所属项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventProjectId *string `json:"EventProjectId,omitnil,omitempty" name:"EventProjectId"`
+}
+
 type EventListenerOpsDto struct {
 	// 事件名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -20339,6 +20562,40 @@ type EventListenerOpsDto struct {
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreationTimestamp *string `json:"CreationTimestamp,omitnil,omitempty" name:"CreationTimestamp"`
+}
+
+type EventListenerTaskInfo struct {
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 工作流id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 工作流名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 任务类型id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskTypeId *int64 `json:"TaskTypeId,omitnil,omitempty" name:"TaskTypeId"`
+
+	// 任务类型名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务周期类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
 }
 
 type EventOpsDto struct {
@@ -26070,6 +26327,159 @@ func (r *ModifyTaskInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyTaskLinksDsRequestParams struct {
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 父任务ID
+	TaskFrom *string `json:"TaskFrom,omitnil,omitempty" name:"TaskFrom"`
+
+	// 子任务ID
+	TaskTo *string `json:"TaskTo,omitnil,omitempty" name:"TaskTo"`
+
+	// 子任务工作流
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 父任务工作流
+	RealFromWorkflowId *string `json:"RealFromWorkflowId,omitnil,omitempty" name:"RealFromWorkflowId"`
+
+	// 请求来源，WEB 前端；CLIENT 客户端
+	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
+
+	// 父子任务之间的依赖关系
+	//     正常的依赖父任务全部实例  启用
+	//     normal_all(1),
+	//     normal_first_one(2), 正常的依赖父任务 第一个
+	//     normal_last_one(3), 正常的依赖父任务 最后一个
+	//     normal_any_one(4), 正常的依赖父任务 任意一个
+	//     normal_specific_one(5), 正常的依赖父任务 指定的一个
+	//     self(6), 自身依赖，可能用不到
+	// 
+	//      非正常的依赖父任务全部实例  启用（向前依赖  明天)
+	//     non_normal_all_forward(11),
+	//     non_normal_first_one_forward(12), 非正常的依赖父任务 第一个
+	//     non_normal_last_one_forward(13), 非正常的依赖父任务 最后一个
+	//     non_normal_any_one_forward(14), 非正常的依赖父任务 任意一个
+	//     non_normal_specific_one_forward(15),非正常的依赖父任务 指定一个
+	// 
+	//     非正常的依赖父任务全部实例  启用（向后依赖 昨天）
+	//     non_normal_all_backward(21),
+	//     non_normal_first_one_backward(22), 非正常的依赖父任务 第一个
+	//     non_normal_last_one_backward(23), 非正常的依赖父任务 最后一个
+	//     non_normal_any_one_backward(24), 非正常的依赖父任务 任意一个
+	//     non_normal_specific_one_backward(25) 非正常的依赖父任务 指定一个
+	LinkDependencyType *string `json:"LinkDependencyType,omitnil,omitempty" name:"LinkDependencyType"`
+
+	// 额外的属性信息 如分支节点、归并节点信息
+	LinkExt *string `json:"LinkExt,omitnil,omitempty" name:"LinkExt"`
+}
+
+type ModifyTaskLinksDsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 父任务ID
+	TaskFrom *string `json:"TaskFrom,omitnil,omitempty" name:"TaskFrom"`
+
+	// 子任务ID
+	TaskTo *string `json:"TaskTo,omitnil,omitempty" name:"TaskTo"`
+
+	// 子任务工作流
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 父任务工作流
+	RealFromWorkflowId *string `json:"RealFromWorkflowId,omitnil,omitempty" name:"RealFromWorkflowId"`
+
+	// 请求来源，WEB 前端；CLIENT 客户端
+	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
+
+	// 父子任务之间的依赖关系
+	//     正常的依赖父任务全部实例  启用
+	//     normal_all(1),
+	//     normal_first_one(2), 正常的依赖父任务 第一个
+	//     normal_last_one(3), 正常的依赖父任务 最后一个
+	//     normal_any_one(4), 正常的依赖父任务 任意一个
+	//     normal_specific_one(5), 正常的依赖父任务 指定的一个
+	//     self(6), 自身依赖，可能用不到
+	// 
+	//      非正常的依赖父任务全部实例  启用（向前依赖  明天)
+	//     non_normal_all_forward(11),
+	//     non_normal_first_one_forward(12), 非正常的依赖父任务 第一个
+	//     non_normal_last_one_forward(13), 非正常的依赖父任务 最后一个
+	//     non_normal_any_one_forward(14), 非正常的依赖父任务 任意一个
+	//     non_normal_specific_one_forward(15),非正常的依赖父任务 指定一个
+	// 
+	//     非正常的依赖父任务全部实例  启用（向后依赖 昨天）
+	//     non_normal_all_backward(21),
+	//     non_normal_first_one_backward(22), 非正常的依赖父任务 第一个
+	//     non_normal_last_one_backward(23), 非正常的依赖父任务 最后一个
+	//     non_normal_any_one_backward(24), 非正常的依赖父任务 任意一个
+	//     non_normal_specific_one_backward(25) 非正常的依赖父任务 指定一个
+	LinkDependencyType *string `json:"LinkDependencyType,omitnil,omitempty" name:"LinkDependencyType"`
+
+	// 额外的属性信息 如分支节点、归并节点信息
+	LinkExt *string `json:"LinkExt,omitnil,omitempty" name:"LinkExt"`
+}
+
+func (r *ModifyTaskLinksDsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTaskLinksDsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskFrom")
+	delete(f, "TaskTo")
+	delete(f, "WorkflowId")
+	delete(f, "RealFromWorkflowId")
+	delete(f, "RequestFromSource")
+	delete(f, "LinkDependencyType")
+	delete(f, "LinkExt")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTaskLinksDsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTaskLinksDsResponseParams struct {
+	// 成功或失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *bool `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// linkID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LinkId *string `json:"LinkId,omitnil,omitempty" name:"LinkId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyTaskLinksDsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyTaskLinksDsResponseParams `json:"Response"`
+}
+
+func (r *ModifyTaskLinksDsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTaskLinksDsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyTaskLinksRequestParams struct {
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -27590,6 +28000,133 @@ type RecordsSpeed struct {
 }
 
 // Predefined struct for user
+type RegisterDsEventRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 事件名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 事件周期类型 1、分钟：MIN    2、小时 ：HOUR    3、天：DAY	
+	EventSubType *string `json:"EventSubType,omitnil,omitempty" name:"EventSubType"`
+
+	// 事件存活时间，值为大于0的整数
+	TimeToLive *string `json:"TimeToLive,omitnil,omitempty" name:"TimeToLive"`
+
+	// 事件存活时间单位	1、天：DAYS    2、分钟：MINUTES
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
+
+	// 事件所属人，账号昵称	
+	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// 事件描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 事件类型GENERAL、TIME_SERIES
+	//
+	// Deprecated: EventType is deprecated.
+	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
+
+	// 事件广播类型SINGLE、BROADCAST	
+	//
+	// Deprecated: EventBroadcastType is deprecated.
+	EventBroadcastType *string `json:"EventBroadcastType,omitnil,omitempty" name:"EventBroadcastType"`
+
+	// 时间格式	
+	//
+	// Deprecated: DimensionFormat is deprecated.
+	DimensionFormat *string `json:"DimensionFormat,omitnil,omitempty" name:"DimensionFormat"`
+}
+
+type RegisterDsEventRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 事件名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 事件周期类型 1、分钟：MIN    2、小时 ：HOUR    3、天：DAY	
+	EventSubType *string `json:"EventSubType,omitnil,omitempty" name:"EventSubType"`
+
+	// 事件存活时间，值为大于0的整数
+	TimeToLive *string `json:"TimeToLive,omitnil,omitempty" name:"TimeToLive"`
+
+	// 事件存活时间单位	1、天：DAYS    2、分钟：MINUTES
+	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
+
+	// 事件所属人，账号昵称	
+	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// 事件描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 事件类型GENERAL、TIME_SERIES
+	EventType *string `json:"EventType,omitnil,omitempty" name:"EventType"`
+
+	// 事件广播类型SINGLE、BROADCAST	
+	EventBroadcastType *string `json:"EventBroadcastType,omitnil,omitempty" name:"EventBroadcastType"`
+
+	// 时间格式	
+	DimensionFormat *string `json:"DimensionFormat,omitnil,omitempty" name:"DimensionFormat"`
+}
+
+func (r *RegisterDsEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RegisterDsEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "Name")
+	delete(f, "EventSubType")
+	delete(f, "TimeToLive")
+	delete(f, "TimeUnit")
+	delete(f, "Owner")
+	delete(f, "Description")
+	delete(f, "EventType")
+	delete(f, "EventBroadcastType")
+	delete(f, "DimensionFormat")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RegisterDsEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RegisterDsEventResponseParams struct {
+	// 事件信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *EventDsDto `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RegisterDsEventResponse struct {
+	*tchttp.BaseResponse
+	Response *RegisterDsEventResponseParams `json:"Response"`
+}
+
+func (r *RegisterDsEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RegisterDsEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RegisterEventListenerRequestParams struct {
 	// 关键字，如果是任务，则传任务Id
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -27878,6 +28415,84 @@ func (r *RemoveWorkflowDsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RemoveWorkflowDsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RenewWorkflowOwnerDsRequestParams struct {
+	// 工作流ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 责任人
+	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// 责任人ID
+	OwnerId *string `json:"OwnerId,omitnil,omitempty" name:"OwnerId"`
+
+	// 工作流ID列表
+	WorkflowIds []*string `json:"WorkflowIds,omitnil,omitempty" name:"WorkflowIds"`
+}
+
+type RenewWorkflowOwnerDsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作流ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 责任人
+	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// 责任人ID
+	OwnerId *string `json:"OwnerId,omitnil,omitempty" name:"OwnerId"`
+
+	// 工作流ID列表
+	WorkflowIds []*string `json:"WorkflowIds,omitnil,omitempty" name:"WorkflowIds"`
+}
+
+func (r *RenewWorkflowOwnerDsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewWorkflowOwnerDsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "Owner")
+	delete(f, "OwnerId")
+	delete(f, "WorkflowIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewWorkflowOwnerDsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RenewWorkflowOwnerDsResponseParams struct {
+	// 执行结果
+	Data *BatchResultDs `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RenewWorkflowOwnerDsResponse struct {
+	*tchttp.BaseResponse
+	Response *RenewWorkflowOwnerDsResponseParams `json:"Response"`
+}
+
+func (r *RenewWorkflowOwnerDsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewWorkflowOwnerDsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -34070,6 +34685,140 @@ func (r *UpdateProjectUserRoleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateProjectUserRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateWorkflowInfoRequestParams struct {
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 操作者名称
+	OperatorName *string `json:"OperatorName,omitnil,omitempty" name:"OperatorName"`
+
+	// 工作流id
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 责任人
+	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// 责任人id
+	OwnerId *string `json:"OwnerId,omitnil,omitempty" name:"OwnerId"`
+
+	// 备注
+	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
+
+	// 工作流名称
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 所属文件夹id
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+
+	// 工作流所属用户分组id  若有多个,分号隔开: a;b;c
+	UserGroupId *string `json:"UserGroupId,omitnil,omitempty" name:"UserGroupId"`
+
+	// 工作流所属用户分组名称  若有多个,分号隔开: a;b;c
+	UserGroupName *string `json:"UserGroupName,omitnil,omitempty" name:"UserGroupName"`
+
+	// 工作流参数列表
+	WorkflowParams []*ParamInfo `json:"WorkflowParams,omitnil,omitempty" name:"WorkflowParams"`
+
+	// 用于配置优化参数（线程、内存、CPU核数等），仅作用于Spark SQL节点。多个参数用英文分号分隔。
+	GeneralTaskParams []*GeneralTaskParam `json:"GeneralTaskParams,omitnil,omitempty" name:"GeneralTaskParams"`
+}
+
+type UpdateWorkflowInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 操作者名称
+	OperatorName *string `json:"OperatorName,omitnil,omitempty" name:"OperatorName"`
+
+	// 工作流id
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 责任人
+	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// 责任人id
+	OwnerId *string `json:"OwnerId,omitnil,omitempty" name:"OwnerId"`
+
+	// 备注
+	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
+
+	// 工作流名称
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 所属文件夹id
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+
+	// 工作流所属用户分组id  若有多个,分号隔开: a;b;c
+	UserGroupId *string `json:"UserGroupId,omitnil,omitempty" name:"UserGroupId"`
+
+	// 工作流所属用户分组名称  若有多个,分号隔开: a;b;c
+	UserGroupName *string `json:"UserGroupName,omitnil,omitempty" name:"UserGroupName"`
+
+	// 工作流参数列表
+	WorkflowParams []*ParamInfo `json:"WorkflowParams,omitnil,omitempty" name:"WorkflowParams"`
+
+	// 用于配置优化参数（线程、内存、CPU核数等），仅作用于Spark SQL节点。多个参数用英文分号分隔。
+	GeneralTaskParams []*GeneralTaskParam `json:"GeneralTaskParams,omitnil,omitempty" name:"GeneralTaskParams"`
+}
+
+func (r *UpdateWorkflowInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateWorkflowInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "OperatorName")
+	delete(f, "WorkflowId")
+	delete(f, "Owner")
+	delete(f, "OwnerId")
+	delete(f, "WorkflowDesc")
+	delete(f, "WorkflowName")
+	delete(f, "FolderId")
+	delete(f, "UserGroupId")
+	delete(f, "UserGroupName")
+	delete(f, "WorkflowParams")
+	delete(f, "GeneralTaskParams")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateWorkflowInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateWorkflowInfoResponseParams struct {
+	// true代表成功，false代表失败
+	Data *bool `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateWorkflowInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateWorkflowInfoResponseParams `json:"Response"`
+}
+
+func (r *UpdateWorkflowInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateWorkflowInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

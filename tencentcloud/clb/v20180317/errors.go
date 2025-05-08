@@ -35,6 +35,9 @@ const (
 	// 没有监听器的实例不允许停止。
 	FAILEDOPERATION_NOLISTENERINLB = "FailedOperation.NoListenerInLB"
 
+	// 指定的资源正在克隆中，请稍后重试。
+	FAILEDOPERATION_RESOURCEINCLONING = "FailedOperation.ResourceInCloning"
+
 	// 正在操作指定的资源，请稍后重试。
 	FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 

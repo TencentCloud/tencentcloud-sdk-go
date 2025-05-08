@@ -10901,7 +10901,7 @@ func NewDescribeAddressBandwidthRangeResponse() (response *DescribeAddressBandwi
 }
 
 // DescribeAddressBandwidthRange
-// 查询指定EIP的带宽上下限范围。
+// 本接口（DescribeAddressBandwidthRange）用于查询指定EIP的带宽上下限范围。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -10914,7 +10914,7 @@ func (c *Client) DescribeAddressBandwidthRange(request *DescribeAddressBandwidth
 }
 
 // DescribeAddressBandwidthRange
-// 查询指定EIP的带宽上下限范围。
+// 本接口（DescribeAddressBandwidthRange）用于查询指定EIP的带宽上下限范围。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -19740,7 +19740,7 @@ func NewInquiryPriceRenewAddressesResponse() (response *InquiryPriceRenewAddress
 }
 
 // InquiryPriceRenewAddresses
-// 本接口（InquiryPriceRenewAddresses）用于续费预付费弹性公网IP询价。
+// 本接口（InquiryPriceRenewAddresses）用于续费预付费弹性公网IP询价，只支持包月按带宽预付费的计费模式。
 //
 // 可能返回的错误码:
 //  INVALIDADDRESSID_NOTFOUND = "InvalidAddressId.NotFound"
@@ -19751,7 +19751,7 @@ func (c *Client) InquiryPriceRenewAddresses(request *InquiryPriceRenewAddressesR
 }
 
 // InquiryPriceRenewAddresses
-// 本接口（InquiryPriceRenewAddresses）用于续费预付费弹性公网IP询价。
+// 本接口（InquiryPriceRenewAddresses）用于续费预付费弹性公网IP询价，只支持包月按带宽预付费的计费模式。
 //
 // 可能返回的错误码:
 //  INVALIDADDRESSID_NOTFOUND = "InvalidAddressId.NotFound"
@@ -20637,7 +20637,7 @@ func NewModifyAddressesRenewFlagResponse() (response *ModifyAddressesRenewFlagRe
 }
 
 // ModifyAddressesRenewFlag
-// 调整EIP续费标识
+// 本接口（ModifyAddressesRenewFlag）用于调整EIP续费标识。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -20650,7 +20650,7 @@ func (c *Client) ModifyAddressesRenewFlag(request *ModifyAddressesRenewFlagReque
 }
 
 // ModifyAddressesRenewFlag
-// 调整EIP续费标识
+// 本接口（ModifyAddressesRenewFlag）用于调整EIP续费标识。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

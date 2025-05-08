@@ -8492,7 +8492,6 @@ type PolicyDetail struct {
 	PolicyId *int64 `json:"PolicyId,omitnil,omitempty" name:"PolicyId"`
 
 	// 策略名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 }
 
@@ -9024,7 +9023,6 @@ type RoleConfigurationProvisionings struct {
 
 type RolePolicie struct {
 	// 策略ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RolePolicyId *int64 `json:"RolePolicyId,omitnil,omitempty" name:"RolePolicyId"`
 
 	// 权限策略名称
@@ -9054,15 +9052,12 @@ type RoleProvisioningsTask struct {
 	TargetUin *int64 `json:"TargetUin,omitnil,omitempty" name:"TargetUin"`
 
 	// 同步的集团账号目标账号的类型，ManagerUin管理账号;MemberUin成员账号
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
 	// 任务类型。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
 
 	// 任务状态：InProgress: 进行中，Failed: 失败 3:Success: 成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 }
 
@@ -9418,7 +9413,6 @@ type TaskInfo struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 失败原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailureReason *string `json:"FailureReason,omitnil,omitempty" name:"FailureReason"`
 }
 

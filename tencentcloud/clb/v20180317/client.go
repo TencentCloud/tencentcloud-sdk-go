@@ -189,7 +189,15 @@ func NewAssociateTargetGroupsResponse() (response *AssociateTargetGroupsResponse
 // AssociateTargetGroups
 // 本接口(AssociateTargetGroups)用来将目标组绑定到负载均衡的监听器（四层协议）或转发规则（七层协议）上。
 //
-// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
+//
+// 限制说明：
+//
+// - 四层监听器绑定旧版目标组需要监听器开启后端目标组。
+//
+// - 七层绑定目标组，数据结构 TargetGroupAssosication 中 LocationId 为必填项。
+//
+// - 负载均衡的 VPC 需要和目标组的 VPC 一致。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -206,7 +214,15 @@ func (c *Client) AssociateTargetGroups(request *AssociateTargetGroupsRequest) (r
 // AssociateTargetGroups
 // 本接口(AssociateTargetGroups)用来将目标组绑定到负载均衡的监听器（四层协议）或转发规则（七层协议）上。
 //
-// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
+//
+// 限制说明：
+//
+// - 四层监听器绑定旧版目标组需要监听器开启后端目标组。
+//
+// - 七层绑定目标组，数据结构 TargetGroupAssosication 中 LocationId 为必填项。
+//
+// - 负载均衡的 VPC 需要和目标组的 VPC 一致。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1011,10 +1027,11 @@ func NewCreateLoadBalancerSnatIpsResponse() (response *CreateLoadBalancerSnatIps
 // CreateLoadBalancerSnatIps
 // 针对SnatPro负载均衡，这个接口用于添加SnatIp，如果负载均衡没有开启SnatPro，添加SnatIp后会自动开启。
 //
-// 本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+// 本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -1030,10 +1047,11 @@ func (c *Client) CreateLoadBalancerSnatIps(request *CreateLoadBalancerSnatIpsReq
 // CreateLoadBalancerSnatIps
 // 针对SnatPro负载均衡，这个接口用于添加SnatIp，如果负载均衡没有开启SnatPro，添加SnatIp后会自动开启。
 //
-// 本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+// 本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -1080,10 +1098,11 @@ func NewCreateRuleResponse() (response *CreateRuleResponse) {
 // CreateRule
 // CreateRule 接口用于在一个已存在的负载均衡七层监听器下创建转发规则，七层监听器中，后端服务必须绑定到规则上而非监听器上。
 //
-// 本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
+// 本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -1100,10 +1119,11 @@ func (c *Client) CreateRule(request *CreateRuleRequest) (response *CreateRuleRes
 // CreateRule
 // CreateRule 接口用于在一个已存在的负载均衡七层监听器下创建转发规则，七层监听器中，后端服务必须绑定到规则上而非监听器上。
 //
-// 本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
+// 本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -1557,10 +1577,11 @@ func NewDeleteLoadBalancerSnatIpsResponse() (response *DeleteLoadBalancerSnatIps
 // DeleteLoadBalancerSnatIps
 // 这个接口用于删除SnatPro的负载均衡的SnatIp。
 //
-// 本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+// 本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -1574,10 +1595,11 @@ func (c *Client) DeleteLoadBalancerSnatIps(request *DeleteLoadBalancerSnatIpsReq
 // DeleteLoadBalancerSnatIps
 // 这个接口用于删除SnatPro的负载均衡的SnatIp。
 //
-// 本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+// 本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -1762,7 +1784,7 @@ func NewDeleteTargetGroupsResponse() (response *DeleteTargetGroupsResponse) {
 }
 
 // DeleteTargetGroups
-// 删除目标组
+// 删除目标组，支持批量删除目标组，单次最多批量删除 20 个目标组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1775,7 +1797,7 @@ func (c *Client) DeleteTargetGroups(request *DeleteTargetGroupsRequest) (respons
 }
 
 // DeleteTargetGroups
-// 删除目标组
+// 删除目标组，支持批量删除目标组，单次最多批量删除 20 个目标组。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4033,6 +4055,8 @@ func NewDisassociateTargetGroupsResponse() (response *DisassociateTargetGroupsRe
 //
 // 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
 //
+// 当解绑七层转发规则时，LocationId 为必填项。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
@@ -4048,6 +4072,8 @@ func (c *Client) DisassociateTargetGroups(request *DisassociateTargetGroupsReque
 // 解除规则的目标组关联关系。
 //
 // 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+//
+// 当解绑七层转发规则时，LocationId 为必填项。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4206,7 +4232,7 @@ func NewInquiryPriceRefundLoadBalancerResponse() (response *InquiryPriceRefundLo
 }
 
 // InquiryPriceRefundLoadBalancer
-// InquiryPriceRefundLoadBalancer接口查询负载均衡退费价格。
+// InquiryPriceRefundLoadBalancer接口查询负载均衡退费价格，只支持预付费类型的负载均衡实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4219,7 +4245,7 @@ func (c *Client) InquiryPriceRefundLoadBalancer(request *InquiryPriceRefundLoadB
 }
 
 // InquiryPriceRefundLoadBalancer
-// InquiryPriceRefundLoadBalancer接口查询负载均衡退费价格。
+// InquiryPriceRefundLoadBalancer接口查询负载均衡退费价格，只支持预付费类型的负载均衡实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4734,6 +4760,10 @@ func NewModifyFunctionTargetsResponse() (response *ModifyFunctionTargetsResponse
 // ModifyFunctionTargets
 // 修改负载均衡转发规则上所绑定的云函数。
 //
+// 限制说明：
+//
+// - 仅支持绑定“Event 函数”类型的云函数。
+//
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
@@ -4751,6 +4781,10 @@ func (c *Client) ModifyFunctionTargets(request *ModifyFunctionTargetsRequest) (r
 
 // ModifyFunctionTargets
 // 修改负载均衡转发规则上所绑定的云函数。
+//
+// 限制说明：
+//
+// - 仅支持绑定“Event 函数”类型的云函数。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5424,6 +5458,7 @@ func NewModifyTargetPortResponse() (response *ModifyTargetPortResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -5442,6 +5477,7 @@ func (c *Client) ModifyTargetPort(request *ModifyTargetPortRequest) (response *M
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -5574,6 +5610,8 @@ func NewRegisterFunctionTargetsResponse() (response *RegisterFunctionTargetsResp
 //
 // - CLB 绑定 SCF 仅支持绑定“Event 函数”类型的云函数。
 //
+// - 一个转发规则只支持绑定一个云函数。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
@@ -5617,6 +5655,8 @@ func (c *Client) RegisterFunctionTargets(request *RegisterFunctionTargetsRequest
 // - 仅七层（HTTP、HTTPS）监听器支持绑定 SCF，四层（TCP、UDP、TCP SSL）监听器和七层 QUIC 监听器不支持。
 //
 // - CLB 绑定 SCF 仅支持绑定“Event 函数”类型的云函数。
+//
+// - 一个转发规则只支持绑定一个云函数。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5738,10 +5778,11 @@ func NewRegisterTargetsResponse() (response *RegisterTargetsResponse) {
 // RegisterTargets
 // RegisterTargets 接口用来将一台或多台后端服务绑定到负载均衡的监听器（或7层转发规则），在此之前您需要先行创建相关的4层监听器或7层转发规则。对于四层监听器（TCP、UDP），只需指定监听器ID即可，对于七层监听器（HTTP、HTTPS），还需通过LocationId或者Domain+Url指定转发规则。
 //
-// 本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
+// 本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -5759,10 +5800,11 @@ func (c *Client) RegisterTargets(request *RegisterTargetsRequest) (response *Reg
 // RegisterTargets
 // RegisterTargets 接口用来将一台或多台后端服务绑定到负载均衡的监听器（或7层转发规则），在此之前您需要先行创建相关的4层监听器或7层转发规则。对于四层监听器（TCP、UDP），只需指定监听器ID即可，对于七层监听器（HTTP、HTTPS），还需通过LocationId或者Domain+Url指定转发规则。
 //
-// 本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
+// 本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -5949,6 +5991,7 @@ func NewSetCustomizedConfigForLoadBalancerResponse() (response *SetCustomizedCon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINCLONING = "FailedOperation.ResourceInCloning"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -5967,6 +6010,7 @@ func (c *Client) SetCustomizedConfigForLoadBalancer(request *SetCustomizedConfig
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINCLONING = "FailedOperation.ResourceInCloning"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -6079,7 +6123,7 @@ func NewSetLoadBalancerSecurityGroupsResponse() (response *SetLoadBalancerSecuri
 }
 
 // SetLoadBalancerSecurityGroups
-// SetLoadBalancerSecurityGroups 接口支持对一个公网负载均衡实例执行设置（绑定、解绑）安全组操作。查询一个负载均衡实例目前已绑定的安全组，可使用 DescribeLoadBalancers 接口。本接口是set语义，
+// SetLoadBalancerSecurityGroups 接口支持对一个公网负载均衡实例执行设置（绑定、解绑）安全组操作。查询一个负载均衡实例目前已绑定的安全组，可使用 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口。本接口是set语义，
 //
 // 绑定操作时，入参需要传入负载均衡实例要绑定的所有安全组（已绑定的+新增绑定的）。
 //
@@ -6100,7 +6144,7 @@ func (c *Client) SetLoadBalancerSecurityGroups(request *SetLoadBalancerSecurityG
 }
 
 // SetLoadBalancerSecurityGroups
-// SetLoadBalancerSecurityGroups 接口支持对一个公网负载均衡实例执行设置（绑定、解绑）安全组操作。查询一个负载均衡实例目前已绑定的安全组，可使用 DescribeLoadBalancers 接口。本接口是set语义，
+// SetLoadBalancerSecurityGroups 接口支持对一个公网负载均衡实例执行设置（绑定、解绑）安全组操作。查询一个负载均衡实例目前已绑定的安全组，可使用 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/1108/48459) 接口。本接口是set语义，
 //
 // 绑定操作时，入参需要传入负载均衡实例要绑定的所有安全组（已绑定的+新增绑定的）。
 //
@@ -6227,10 +6271,11 @@ func NewSetSecurityGroupForLoadbalancersResponse() (response *SetSecurityGroupFo
 }
 
 // SetSecurityGroupForLoadbalancers
-// 绑定或解绑一个安全组到多个公网负载均衡实例。注意：内网负载均衡不支持绑定安全组。
+// 绑定或解绑一个安全组到多个公网负载均衡实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -6243,10 +6288,11 @@ func (c *Client) SetSecurityGroupForLoadbalancers(request *SetSecurityGroupForLo
 }
 
 // SetSecurityGroupForLoadbalancers
-// 绑定或解绑一个安全组到多个公网负载均衡实例。注意：内网负载均衡不支持绑定安全组。
+// 绑定或解绑一个安全组到多个公网负载均衡实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
