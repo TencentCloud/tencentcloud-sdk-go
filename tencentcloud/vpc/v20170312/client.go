@@ -19683,7 +19683,7 @@ func NewInquiryPriceModifyAddressesBandwidthResponse() (response *InquiryPriceMo
 }
 
 // InquiryPriceModifyAddressesBandwidth
-// EIP修改带宽询价
+// 本接口（InquiryPriceModifyAddressesBandwidth）用于EIP修改带宽询价。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_ADDRESSNOTFOUND = "InvalidParameterValue.AddressNotFound"
@@ -19696,7 +19696,7 @@ func (c *Client) InquiryPriceModifyAddressesBandwidth(request *InquiryPriceModif
 }
 
 // InquiryPriceModifyAddressesBandwidth
-// EIP修改带宽询价
+// 本接口（InquiryPriceModifyAddressesBandwidth）用于EIP修改带宽询价。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_ADDRESSNOTFOUND = "InvalidParameterValue.AddressNotFound"

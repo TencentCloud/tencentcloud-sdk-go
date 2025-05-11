@@ -3657,6 +3657,63 @@ func (c *Client) DescribeApproveTypeListWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeBaseBizCatalogsRequest() (request *DescribeBaseBizCatalogsRequest) {
+    request = &DescribeBaseBizCatalogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeBaseBizCatalogs")
+    
+    
+    return
+}
+
+func NewDescribeBaseBizCatalogsResponse() (response *DescribeBaseBizCatalogsResponse) {
+    response = &DescribeBaseBizCatalogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBaseBizCatalogs
+// 数据地图-信息配置 数据类目列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeBaseBizCatalogs(request *DescribeBaseBizCatalogsRequest) (response *DescribeBaseBizCatalogsResponse, err error) {
+    return c.DescribeBaseBizCatalogsWithContext(context.Background(), request)
+}
+
+// DescribeBaseBizCatalogs
+// 数据地图-信息配置 数据类目列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeBaseBizCatalogsWithContext(ctx context.Context, request *DescribeBaseBizCatalogsRequest) (response *DescribeBaseBizCatalogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaseBizCatalogsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaseBizCatalogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaseBizCatalogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBatchOperateTaskRequest() (request *DescribeBatchOperateTaskRequest) {
     request = &DescribeBatchOperateTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

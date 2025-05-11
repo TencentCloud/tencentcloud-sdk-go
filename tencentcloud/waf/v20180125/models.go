@@ -14211,12 +14211,21 @@ func (r *ModifyHostStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstanceAttackLogPostRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
+	// 攻击日志投递开关
+	AttackLogPost *int64 `json:"AttackLogPost,omitnil,omitempty" name:"AttackLogPost"`
 }
 
 type ModifyInstanceAttackLogPostRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 攻击日志投递开关
+	AttackLogPost *int64 `json:"AttackLogPost,omitnil,omitempty" name:"AttackLogPost"`
 }
 
 func (r *ModifyInstanceAttackLogPostRequest) ToJsonString() string {
@@ -14231,7 +14240,8 @@ func (r *ModifyInstanceAttackLogPostRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
+	delete(f, "AttackLogPost")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceAttackLogPostRequest has unknown keys!", "")
 	}

@@ -868,6 +868,111 @@ func (r *DescribeProbeMetricDataResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeProbeMetricTagValuesRequestParams struct {
+	// 分析任务类型，支持以下几种类型：
+	// AnalyzeTaskType_Network：网络质量
+	// AnalyzeTaskType_Browse：页面性能 
+	// AnalyzeTaskType_Transport：端口性能
+	// AnalyzeTaskType_UploadDownload：文件传输
+	// AnalyzeTaskType_MediaStream：音视频体验
+	AnalyzeTaskType *string `json:"AnalyzeTaskType,omitnil,omitempty" name:"AnalyzeTaskType"`
+
+	// 维度标签值，参考：
+	// host：任务域名
+	// errorInfo：状态类型
+	// area：拨测点地区
+	// operator：拨测点运营商
+	// taskId：任务ID
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 过滤条件，可以传单个过滤条件也可以拼接多个参数，支持正则匹配
+	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 过滤条件数组
+	Filters []*string `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 时间范围
+	TimeRange *string `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
+}
+
+type DescribeProbeMetricTagValuesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分析任务类型，支持以下几种类型：
+	// AnalyzeTaskType_Network：网络质量
+	// AnalyzeTaskType_Browse：页面性能 
+	// AnalyzeTaskType_Transport：端口性能
+	// AnalyzeTaskType_UploadDownload：文件传输
+	// AnalyzeTaskType_MediaStream：音视频体验
+	AnalyzeTaskType *string `json:"AnalyzeTaskType,omitnil,omitempty" name:"AnalyzeTaskType"`
+
+	// 维度标签值，参考：
+	// host：任务域名
+	// errorInfo：状态类型
+	// area：拨测点地区
+	// operator：拨测点运营商
+	// taskId：任务ID
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 过滤条件，可以传单个过滤条件也可以拼接多个参数，支持正则匹配
+	Filter *string `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 过滤条件数组
+	Filters []*string `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 时间范围
+	TimeRange *string `json:"TimeRange,omitnil,omitempty" name:"TimeRange"`
+}
+
+func (r *DescribeProbeMetricTagValuesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProbeMetricTagValuesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AnalyzeTaskType")
+	delete(f, "Key")
+	delete(f, "Filter")
+	delete(f, "Filters")
+	delete(f, "TimeRange")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProbeMetricTagValuesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProbeMetricTagValuesResponseParams struct {
+	// 标签值序列化后的字符串
+	TagValueSet *string `json:"TagValueSet,omitnil,omitempty" name:"TagValueSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeProbeMetricTagValuesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeProbeMetricTagValuesResponseParams `json:"Response"`
+}
+
+func (r *DescribeProbeMetricTagValuesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProbeMetricTagValuesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeProbeNodesRequestParams struct {
 	// 节点类型
 	// <li> 1 = IDC </li>

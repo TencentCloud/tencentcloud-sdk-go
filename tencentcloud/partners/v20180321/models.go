@@ -634,6 +634,17 @@ type DealGoodsPriceNewElem struct {
 	OriginalTotalCost *int64 `json:"OriginalTotalCost,omitnil,omitempty" name:"OriginalTotalCost"`
 }
 
+type DealPriceDetail struct {
+	// 子订单号
+	DealName *string `json:"DealName,omitnil,omitempty" name:"DealName"`
+
+	// 订单归属人uin（代客uin）
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+
+	// 子产品价格详情列表
+	SubProductPriceDetail []*SubProductPriceDetail `json:"SubProductPriceDetail,omitnil,omitempty" name:"SubProductPriceDetail"`
+}
+
 // Predefined struct for user
 type DescribeAgentAuditedClientsRequestParams struct {
 	// 客户账号ID
@@ -1175,6 +1186,77 @@ func (r *DescribeAgentDealsByCacheResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAgentDealsByCacheResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAgentDealsPriceDetailByDealNameRequestParams struct {
+	// 下单年份（订单创建时间归属年份）
+	DealCreatYear *uint64 `json:"DealCreatYear,omitnil,omitempty" name:"DealCreatYear"`
+
+	// 子订单号，每个请求最多查询100条
+	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
+
+	// 订单归属代客uin
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+}
+
+type DescribeAgentDealsPriceDetailByDealNameRequest struct {
+	*tchttp.BaseRequest
+	
+	// 下单年份（订单创建时间归属年份）
+	DealCreatYear *uint64 `json:"DealCreatYear,omitnil,omitempty" name:"DealCreatYear"`
+
+	// 子订单号，每个请求最多查询100条
+	DealNames []*string `json:"DealNames,omitnil,omitempty" name:"DealNames"`
+
+	// 订单归属代客uin
+	OwnerUin *string `json:"OwnerUin,omitnil,omitempty" name:"OwnerUin"`
+}
+
+func (r *DescribeAgentDealsPriceDetailByDealNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentDealsPriceDetailByDealNameRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DealCreatYear")
+	delete(f, "DealNames")
+	delete(f, "OwnerUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentDealsPriceDetailByDealNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAgentDealsPriceDetailByDealNameResponseParams struct {
+	// 子订单的费用详情
+	DealList []*DealPriceDetail `json:"DealList,omitnil,omitempty" name:"DealList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAgentDealsPriceDetailByDealNameResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAgentDealsPriceDetailByDealNameResponseParams `json:"Response"`
+}
+
+func (r *DescribeAgentDealsPriceDetailByDealNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentDealsPriceDetailByDealNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2167,6 +2249,20 @@ func (r *RemovePayRelationForClientResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RemovePayRelationForClientResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SubProductPriceDetail struct {
+	// 子产品名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 折扣值，=100时表示无折扣，=85时表示8.5折
+	DiscountValue *float64 `json:"DiscountValue,omitnil,omitempty" name:"DiscountValue"`
+
+	// 原价，折扣前价格，单位：分
+	TotalCost *int64 `json:"TotalCost,omitnil,omitempty" name:"TotalCost"`
+
+	// 折后价，单位：分
+	RealTotalCost *int64 `json:"RealTotalCost,omitnil,omitempty" name:"RealTotalCost"`
 }
 
 type UnbindClientElem struct {

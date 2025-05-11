@@ -29,6 +29,9 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// agent执行脚本失败。
+	INTERNALERROR_AGENTRUNSCRIPTFAIL = "InternalError.AgentRunScriptFail"
+
 	// CAM服务调用失败。
 	INTERNALERROR_CALLCAM = "InternalError.CallCAM"
 
@@ -37,6 +40,9 @@ const (
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
+
+	// 参数互斥，最多只能传入一个参数
+	INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
 
 	// 参数格式有误。
 	INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"

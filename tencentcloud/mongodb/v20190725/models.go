@@ -4274,6 +4274,8 @@ type ModifyDBInstanceSpecRequestParams struct {
 	// 实例配置变更后 Oplog 的大小。
 	// - 单位：GB。
 	// - 默认 Oplog 占用容量为磁盘空间的10%。系统允许设置的 Oplog 容量范围为磁盘空间的[10%,90%]。
+	//
+	// Deprecated: OplogSize is deprecated.
 	OplogSize *uint64 `json:"OplogSize,omitnil,omitempty" name:"OplogSize"`
 
 	// 实例变更后mongod的节点数（不包含readonly节点数）。

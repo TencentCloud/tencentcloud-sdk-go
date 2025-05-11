@@ -38,11 +38,17 @@ const (
 	// 配置文件Condition表达式值的项不能为空。
 	FAILEDOPERATION_CONFIGCONDITIONVALUEEMPTYERROR = "FailedOperation.ConfigConditionValueEmptyError"
 
+	// 配置文件不允许重复的关键字。
+	FAILEDOPERATION_CONFIGDUPLICATEKEYERROR = "FailedOperation.ConfigDuplicateKeyError"
+
 	// 配置文件存在类型不匹配的字段。
 	FAILEDOPERATION_CONFIGFIELDTYPEERROR = "FailedOperation.ConfigFieldTypeError"
 
 	// 配置文件存在语法错误。
 	FAILEDOPERATION_CONFIGFORMATERROR = "FailedOperation.ConfigFormatError"
+
+	// 版本管理配置文件JSON格式错误
+	FAILEDOPERATION_CONFIGJSONFORMATERROR = "FailedOperation.ConfigJSONFormatError"
 
 	// 配置文件内容格式错误，无法解析。
 	FAILEDOPERATION_CONFIGMALFORMEDCONTENT = "FailedOperation.ConfigMalformedContent"
@@ -50,8 +56,14 @@ const (
 	// 配置文件参数校验错误。
 	FAILEDOPERATION_CONFIGPARAMVALIDATEERRORS = "FailedOperation.ConfigParamValidateErrors"
 
+	// 时间格式解析错误
+	FAILEDOPERATION_CONFIGTIMEPARSINGERROR = "FailedOperation.ConfigTimeParsingError"
+
 	// 配置文件无法识别的字段：存在拼写错误，或者该字段所在的层级出错。
 	FAILEDOPERATION_CONFIGUNKNOWNFIELD = "FailedOperation.ConfigUnknownField"
+
+	// 不支持的配置项Action
+	FAILEDOPERATION_CONFIGUNSUPPORTEDACTION = "FailedOperation.ConfigUnsupportedAction"
 
 	// 当前不支持该配置文件版本。
 	FAILEDOPERATION_CONFIGUNSUPPORTEDFORMATVERSION = "FailedOperation.ConfigUnsupportedFormatVersion"

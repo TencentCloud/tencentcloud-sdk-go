@@ -2321,6 +2321,32 @@ func (r *BatchUpdateIntegrationTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BizCatalogsInfo struct {
+	// 应用id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 类目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 类目层级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
+
+	// 类目名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 上级类目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+
+	// 类目顺序
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Position *int64 `json:"Position,omitnil,omitempty" name:"Position"`
+}
+
 type BytesSpeed struct {
 	// 节点类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -8418,6 +8444,61 @@ func (r *DescribeApproveTypeListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeApproveTypeListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBaseBizCatalogsRequestParams struct {
+
+}
+
+type DescribeBaseBizCatalogsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeBaseBizCatalogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaseBizCatalogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBaseBizCatalogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBaseBizCatalogsResponseParams struct {
+	// 类目列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*BizCatalogsInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBaseBizCatalogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBaseBizCatalogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeBaseBizCatalogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaseBizCatalogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -488,6 +488,57 @@ func (c *Client) DescribeProbeMetricDataWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeProbeMetricTagValuesRequest() (request *DescribeProbeMetricTagValuesRequest) {
+    request = &DescribeProbeMetricTagValuesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cat", APIVersion, "DescribeProbeMetricTagValues")
+    
+    
+    return
+}
+
+func NewDescribeProbeMetricTagValuesResponse() (response *DescribeProbeMetricTagValuesResponse) {
+    response = &DescribeProbeMetricTagValuesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeProbeMetricTagValues
+// 查询同个任务类型下的维度标签值，包括查询用户任务信息，具体任务下的多个维度标签信息。（通过为DescribeProbeMetricData接口的Filters参数添加维度筛选条件，可实现多维数据分析）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+func (c *Client) DescribeProbeMetricTagValues(request *DescribeProbeMetricTagValuesRequest) (response *DescribeProbeMetricTagValuesResponse, err error) {
+    return c.DescribeProbeMetricTagValuesWithContext(context.Background(), request)
+}
+
+// DescribeProbeMetricTagValues
+// 查询同个任务类型下的维度标签值，包括查询用户任务信息，具体任务下的多个维度标签信息。（通过为DescribeProbeMetricData接口的Filters参数添加维度筛选条件，可实现多维数据分析）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+func (c *Client) DescribeProbeMetricTagValuesWithContext(ctx context.Context, request *DescribeProbeMetricTagValuesRequest) (response *DescribeProbeMetricTagValuesResponse, err error) {
+    if request == nil {
+        request = NewDescribeProbeMetricTagValuesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProbeMetricTagValues require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProbeMetricTagValuesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProbeNodesRequest() (request *DescribeProbeNodesRequest) {
     request = &DescribeProbeNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},

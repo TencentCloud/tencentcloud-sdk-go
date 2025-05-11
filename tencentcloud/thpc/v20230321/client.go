@@ -204,6 +204,7 @@ func NewAddQueueResponse() (response *AddQueueResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_AGENTRUNSCRIPTFAIL = "InternalError.AgentRunScriptFail"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
@@ -231,6 +232,7 @@ func (c *Client) AddQueue(request *AddQueueRequest) (response *AddQueueResponse,
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_AGENTRUNSCRIPTFAIL = "InternalError.AgentRunScriptFail"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
@@ -285,6 +287,7 @@ func NewAttachNodesResponse() (response *AttachNodesResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_AGENTRUNSCRIPTFAIL = "InternalError.AgentRunScriptFail"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
@@ -308,6 +311,7 @@ func (c *Client) AttachNodes(request *AttachNodesRequest) (response *AttachNodes
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_AGENTRUNSCRIPTFAIL = "InternalError.AgentRunScriptFail"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
@@ -1181,6 +1185,7 @@ func NewDescribeWorkspacesResponse() (response *DescribeWorkspacesResponse) {
 // 本接口（DescribeWorkspaces）用于查询工作空间列表。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
 func (c *Client) DescribeWorkspaces(request *DescribeWorkspacesRequest) (response *DescribeWorkspacesResponse, err error) {
@@ -1191,6 +1196,7 @@ func (c *Client) DescribeWorkspaces(request *DescribeWorkspacesRequest) (respons
 // 本接口（DescribeWorkspaces）用于查询工作空间列表。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
 func (c *Client) DescribeWorkspacesWithContext(ctx context.Context, request *DescribeWorkspacesRequest) (response *DescribeWorkspacesResponse, err error) {
@@ -1232,6 +1238,7 @@ func NewDetachNodesResponse() (response *DetachNodesResponse) {
 // 本接口 (DetachNodes) 用于将一个或者多个计算节点从集群中移除，但是不销毁指定计算资源。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
 func (c *Client) DetachNodes(request *DetachNodesRequest) (response *DetachNodesResponse, err error) {
@@ -1242,6 +1249,7 @@ func (c *Client) DetachNodes(request *DetachNodesRequest) (response *DetachNodes
 // 本接口 (DetachNodes) 用于将一个或者多个计算节点从集群中移除，但是不销毁指定计算资源。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
 func (c *Client) DetachNodesWithContext(ctx context.Context, request *DetachNodesRequest) (response *DetachNodesResponse, err error) {

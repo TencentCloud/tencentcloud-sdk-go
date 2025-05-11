@@ -292,7 +292,7 @@ type AddQueueRequestParams struct {
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 队列名称。<br><li>最多支持32个字符。
+	// 队列名称。<br><li>最多支持32个字符。</li>
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 }
 
@@ -302,7 +302,7 @@ type AddQueueRequest struct {
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 队列名称。<br><li>最多支持32个字符。
+	// 队列名称。<br><li>最多支持32个字符。</li>
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 }
 

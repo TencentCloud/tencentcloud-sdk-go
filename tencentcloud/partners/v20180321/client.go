@@ -589,6 +589,61 @@ func (c *Client) DescribeAgentDealsByCacheWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeAgentDealsPriceDetailByDealNameRequest() (request *DescribeAgentDealsPriceDetailByDealNameRequest) {
+    request = &DescribeAgentDealsPriceDetailByDealNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentDealsPriceDetailByDealName")
+    
+    
+    return
+}
+
+func NewDescribeAgentDealsPriceDetailByDealNameResponse() (response *DescribeAgentDealsPriceDetailByDealNameResponse) {
+    response = &DescribeAgentDealsPriceDetailByDealNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAgentDealsPriceDetailByDealName
+// 供代理商使用名下有效普通代客的预付费子订单号查询订单费用详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAgentDealsPriceDetailByDealName(request *DescribeAgentDealsPriceDetailByDealNameRequest) (response *DescribeAgentDealsPriceDetailByDealNameResponse, err error) {
+    return c.DescribeAgentDealsPriceDetailByDealNameWithContext(context.Background(), request)
+}
+
+// DescribeAgentDealsPriceDetailByDealName
+// 供代理商使用名下有效普通代客的预付费子订单号查询订单费用详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAgentDealsPriceDetailByDealNameWithContext(ctx context.Context, request *DescribeAgentDealsPriceDetailByDealNameRequest) (response *DescribeAgentDealsPriceDetailByDealNameResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentDealsPriceDetailByDealNameRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgentDealsPriceDetailByDealName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAgentDealsPriceDetailByDealNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAgentPayDealsV2Request() (request *DescribeAgentPayDealsV2Request) {
     request = &DescribeAgentPayDealsV2Request{
         BaseRequest: &tchttp.BaseRequest{},
