@@ -38,6 +38,9 @@ const (
 	// CLS内部错误。
 	FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
 
+	// 证书不存在
+	FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+
 	// 操作CH数据库失败
 	FAILEDOPERATION_CLICKHOUSEOPERATIONFAILED = "FailedOperation.ClickHouseOperationFailed"
 
@@ -68,6 +71,9 @@ const (
 	// DBErr
 	INTERNALERROR_DBERR = "InternalError.DBErr"
 
+	// 调用SSL证书接口发生内部错误
+	INTERNALERROR_SSLCALLFAILED = "InternalError.SSLCallFailed"
+
 	// 存在内部错误，请联系我们
 	INTERNALERROR_UNKNOWNERR = "InternalError.UnknownErr"
 
@@ -79,6 +85,9 @@ const (
 
 	// Bot场景不存在
 	INVALIDPARAMETER_BOTSCENENOTEXISTERR = "InvalidParameter.BotSceneNotExistErr"
+
+	// 证书和私钥检查不通过
+	INVALIDPARAMETER_CERTIFICATECHECKERR = "InvalidParameter.CertificateCheckErr"
 
 	// 证书信息参数错误
 	INVALIDPARAMETER_CERTIFICATIONPARAMETERERR = "InvalidParameter.CertificationParameterErr"
@@ -175,6 +184,9 @@ const (
 
 	// IPV6网络正在分配，请耐心等待
 	RESOURCEUNAVAILABLE_DOMAINIPV6INCONFIGERR = "ResourceUnavailable.DomainIpv6InConfigErr"
+
+	// SSL证书ID关联的证书内容错误
+	RESOURCEUNAVAILABLE_SSLCERTIFICATEERR = "ResourceUnavailable.SSLCertificateErr"
 
 	// 资源售罄。
 	RESOURCESSOLDOUT = "ResourcesSoldOut"

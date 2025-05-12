@@ -10095,6 +10095,9 @@ type DspaDiscoveryRuleDetail struct {
 }
 
 type DspaDiscoveryTask struct {
+	// 任务ID
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
 	// 任务名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 

@@ -693,6 +693,9 @@ type CreateRecTaskRequestParams struct {
 
 	// 关键词识别ID列表，默认空为不进行识别，最多10个
 	KeyWordLibIdList []*string `json:"KeyWordLibIdList,omitnil,omitempty" name:"KeyWordLibIdList"`
+
+	// 替换词汇表id,  适用于热词和自学习场景也无法解决的极端case词组,  会对识别结果强制替换。具体可参考[配置控制台](https://console.cloud.tencent.com/asr/replaceword);强制替换功能可能会影响正常识别结果，请谨慎使用
+	ReplaceTextId *string `json:"ReplaceTextId,omitnil,omitempty" name:"ReplaceTextId"`
 }
 
 type CreateRecTaskRequest struct {
@@ -906,6 +909,9 @@ type CreateRecTaskRequest struct {
 
 	// 关键词识别ID列表，默认空为不进行识别，最多10个
 	KeyWordLibIdList []*string `json:"KeyWordLibIdList,omitnil,omitempty" name:"KeyWordLibIdList"`
+
+	// 替换词汇表id,  适用于热词和自学习场景也无法解决的极端case词组,  会对识别结果强制替换。具体可参考[配置控制台](https://console.cloud.tencent.com/asr/replaceword);强制替换功能可能会影响正常识别结果，请谨慎使用
+	ReplaceTextId *string `json:"ReplaceTextId,omitnil,omitempty" name:"ReplaceTextId"`
 }
 
 func (r *CreateRecTaskRequest) ToJsonString() string {
@@ -943,6 +949,7 @@ func (r *CreateRecTaskRequest) FromJsonString(s string) error {
 	delete(f, "Extra")
 	delete(f, "HotwordList")
 	delete(f, "KeyWordLibIdList")
+	delete(f, "ReplaceTextId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRecTaskRequest has unknown keys!", "")
 	}

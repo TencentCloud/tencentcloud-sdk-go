@@ -2700,6 +2700,21 @@ type DeployResourceRequestParams struct {
 
 	// 需要开通实例所属的CDC集群ID
 	CdcClusterId *string `json:"CdcClusterId,omitnil,omitempty" name:"CdcClusterId"`
+
+	// 开通堡垒机指定共享的clbId
+	ShareClbId *string `json:"ShareClbId,omitnil,omitempty" name:"ShareClbId"`
+
+	// 0-关闭web访问堡垒机，1-开启web访问堡垒机
+	WebAccess *uint64 `json:"WebAccess,omitnil,omitempty" name:"WebAccess"`
+
+	// 0-关闭客户端访问堡垒机，1-开启客户端访问堡垒机
+	ClientAccess *uint64 `json:"ClientAccess,omitnil,omitempty" name:"ClientAccess"`
+
+	// 0-关闭内网访问堡垒机，1-开启内网访问堡垒机
+	IntranetAccess *uint64 `json:"IntranetAccess,omitnil,omitempty" name:"IntranetAccess"`
+
+	// 0-关闭公网访问堡垒机，1-开启公网访问堡垒机
+	ExternalAccess *uint64 `json:"ExternalAccess,omitnil,omitempty" name:"ExternalAccess"`
 }
 
 type DeployResourceRequest struct {
@@ -2734,6 +2749,21 @@ type DeployResourceRequest struct {
 
 	// 需要开通实例所属的CDC集群ID
 	CdcClusterId *string `json:"CdcClusterId,omitnil,omitempty" name:"CdcClusterId"`
+
+	// 开通堡垒机指定共享的clbId
+	ShareClbId *string `json:"ShareClbId,omitnil,omitempty" name:"ShareClbId"`
+
+	// 0-关闭web访问堡垒机，1-开启web访问堡垒机
+	WebAccess *uint64 `json:"WebAccess,omitnil,omitempty" name:"WebAccess"`
+
+	// 0-关闭客户端访问堡垒机，1-开启客户端访问堡垒机
+	ClientAccess *uint64 `json:"ClientAccess,omitnil,omitempty" name:"ClientAccess"`
+
+	// 0-关闭内网访问堡垒机，1-开启内网访问堡垒机
+	IntranetAccess *uint64 `json:"IntranetAccess,omitnil,omitempty" name:"IntranetAccess"`
+
+	// 0-关闭公网访问堡垒机，1-开启公网访问堡垒机
+	ExternalAccess *uint64 `json:"ExternalAccess,omitnil,omitempty" name:"ExternalAccess"`
 }
 
 func (r *DeployResourceRequest) ToJsonString() string {
@@ -2758,6 +2788,11 @@ func (r *DeployResourceRequest) FromJsonString(s string) error {
 	delete(f, "VpcCidrBlock")
 	delete(f, "SubnetName")
 	delete(f, "CdcClusterId")
+	delete(f, "ShareClbId")
+	delete(f, "WebAccess")
+	delete(f, "ClientAccess")
+	delete(f, "IntranetAccess")
+	delete(f, "ExternalAccess")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployResourceRequest has unknown keys!", "")
 	}
@@ -3388,6 +3423,9 @@ func (r *DescribeDeviceAccountsRequest) FromJsonString(s string) error {
 type DescribeDeviceAccountsResponseParams struct {
 	// 记录总数
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 账号信息列表
+	DeviceAccountSet []*DeviceAccount `json:"DeviceAccountSet,omitnil,omitempty" name:"DeviceAccountSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4632,6 +4670,23 @@ type Device struct {
 	SSLCertName *string `json:"SSLCertName,omitnil,omitempty" name:"SSLCertName"`
 }
 
+type DeviceAccount struct {
+	// 账号ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 主机ID
+	DeviceId *uint64 `json:"DeviceId,omitnil,omitempty" name:"DeviceId"`
+
+	// 账号名
+	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
+
+	// true-已托管密码，false-未托管密码
+	BoundPassword *bool `json:"BoundPassword,omitnil,omitempty" name:"BoundPassword"`
+
+	// true-已托管私钥，false-未托管私钥
+	BoundPrivateKey *bool `json:"BoundPrivateKey,omitnil,omitempty" name:"BoundPrivateKey"`
+}
+
 type Domain struct {
 	// 自增id
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -5705,7 +5760,9 @@ type ModifyResourceRequestParams struct {
 	// 需要开通服务的资源ID
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 已废弃
+	// 状态
+	//
+	// Deprecated: Status is deprecated.
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 实例版本
@@ -5733,7 +5790,7 @@ type ModifyResourceRequest struct {
 	// 需要开通服务的资源ID
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
-	// 已废弃
+	// 状态
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 实例版本
@@ -6329,6 +6386,30 @@ type Resource struct {
 
 	// 开通内网访问vpc的网段
 	IntranetVpcCidr *string `json:"IntranetVpcCidr,omitnil,omitempty" name:"IntranetVpcCidr"`
+
+	// 是否共享clb，true-共享clb，false-独享clb
+	ShareClb *bool `json:"ShareClb,omitnil,omitempty" name:"ShareClb"`
+
+	// 共享clb id
+	OpenClbId *string `json:"OpenClbId,omitnil,omitempty" name:"OpenClbId"`
+
+	// 运营商信息
+	LbVipIsp *string `json:"LbVipIsp,omitnil,omitempty" name:"LbVipIsp"`
+
+	// linux资产命令行运维端口
+	TUICmdPort *int64 `json:"TUICmdPort,omitnil,omitempty" name:"TUICmdPort"`
+
+	// linux资产直连端口
+	TUIDirectPort *int64 `json:"TUIDirectPort,omitnil,omitempty" name:"TUIDirectPort"`
+
+	// 1 默认值，web访问开启，0 web访问关闭，2 web访问开通中，3 web访问关闭中
+	WebAccess *uint64 `json:"WebAccess,omitnil,omitempty" name:"WebAccess"`
+
+	// 1 默认值，客户单访问开启，0 客户端访问关闭，2 客户端访问开通中，3 客户端访问关闭中
+	ClientAccess *uint64 `json:"ClientAccess,omitnil,omitempty" name:"ClientAccess"`
+
+	// 1 默认值，外网访问开启，0 外网访问关闭，2 外网访问开通中，3 外网访问关闭中
+	ExternalAccess *uint64 `json:"ExternalAccess,omitnil,omitempty" name:"ExternalAccess"`
 }
 
 type RunChangePwdTaskDetail struct {

@@ -893,6 +893,8 @@ type DescribeInstanceBackupsResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 废弃字段。
+	//
+	// Deprecated: BackupSet is deprecated.
 	BackupSet []*BinlogInfo `json:"BackupSet,omitnil,omitempty" name:"BackupSet"`
 
 	// 实例备份信息列表。

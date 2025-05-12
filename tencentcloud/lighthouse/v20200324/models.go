@@ -3719,7 +3719,7 @@ type DescribeFirewallTemplatesRequestParams struct {
 	// <li>template-type</li>按照【防火墙模板的类型】进行过滤。
 	// 类型：String
 	// 必选：否
-	// 取值: "PRIVATE"(个人模版)
+	// 取值: "PRIVATE"(个人模板)
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 TemplateIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -3746,7 +3746,7 @@ type DescribeFirewallTemplatesRequest struct {
 	// <li>template-type</li>按照【防火墙模板的类型】进行过滤。
 	// 类型：String
 	// 必选：否
-	// 取值: "PRIVATE"(个人模版)
+	// 取值: "PRIVATE"(个人模板)
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 TemplateIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -5700,7 +5700,7 @@ type FirewallTemplate struct {
 	// 模板名称。
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
-	// 模板类型。取值: "PRIVATE"(个人模版)
+	// 模板类型。取值: "PRIVATE"(个人模板)
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
 	// 模板状态。取值: "NORMAL"(正常)

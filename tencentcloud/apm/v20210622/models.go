@@ -1522,6 +1522,12 @@ type ModifyApmInstanceRequestParams struct {
 
 	// 是否开启内存马检测
 	IsMemoryHijackingAnalysis *int64 `json:"IsMemoryHijackingAnalysis,omitnil,omitempty" name:"IsMemoryHijackingAnalysis"`
+
+	// 0=全文索引，1=键值索引
+	LogIndexType *int64 `json:"LogIndexType,omitnil,omitempty" name:"LogIndexType"`
+
+	// traceId的索引key
+	LogTraceIdKey *string `json:"LogTraceIdKey,omitnil,omitempty" name:"LogTraceIdKey"`
 }
 
 type ModifyApmInstanceRequest struct {
@@ -1604,6 +1610,12 @@ type ModifyApmInstanceRequest struct {
 
 	// 是否开启内存马检测
 	IsMemoryHijackingAnalysis *int64 `json:"IsMemoryHijackingAnalysis,omitnil,omitempty" name:"IsMemoryHijackingAnalysis"`
+
+	// 0=全文索引，1=键值索引
+	LogIndexType *int64 `json:"LogIndexType,omitnil,omitempty" name:"LogIndexType"`
+
+	// traceId的索引key
+	LogTraceIdKey *string `json:"LogTraceIdKey,omitnil,omitempty" name:"LogTraceIdKey"`
 }
 
 func (r *ModifyApmInstanceRequest) ToJsonString() string {
@@ -1644,6 +1656,8 @@ func (r *ModifyApmInstanceRequest) FromJsonString(s string) error {
 	delete(f, "IsInstrumentationVulnerabilityScan")
 	delete(f, "IsRemoteCommandExecutionAnalysis")
 	delete(f, "IsMemoryHijackingAnalysis")
+	delete(f, "LogIndexType")
+	delete(f, "LogTraceIdKey")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmInstanceRequest has unknown keys!", "")
 	}

@@ -2165,13 +2165,19 @@ func (r *DescribeBackupUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBackupUrlResponseParams struct {
 	// 外网下载地址（6小时内链接有效），该字段正在逐步废弃中。
+	//
+	// Deprecated: DownloadUrl is deprecated.
 	DownloadUrl []*string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 内网下载地址（6小时内链接有效），该字段正在逐步废弃中。
+	//
+	// Deprecated: InnerDownloadUrl is deprecated.
 	InnerDownloadUrl []*string `json:"InnerDownloadUrl,omitnil,omitempty" name:"InnerDownloadUrl"`
 
 	// 文件名称，该字段正在逐步废弃中。
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: Filenames is deprecated.
 	Filenames []*string `json:"Filenames,omitnil,omitempty" name:"Filenames"`
 
 	// 备份文件信息列表。
@@ -5602,6 +5608,8 @@ type DescribeSlowLogResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 已废弃，该参数存在命名不规范问题，后续用参数InstanceSlowLogDetail取代。慢查询详情。
+	//
+	// Deprecated: InstanceSlowlogDetail is deprecated.
 	InstanceSlowlogDetail []*InstanceSlowlogDetail `json:"InstanceSlowlogDetail,omitnil,omitempty" name:"InstanceSlowlogDetail"`
 
 	// 慢查询详情。
@@ -5794,6 +5802,8 @@ type DescribeTaskListRequestParams struct {
 	Result []*int64 `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 该字段已废弃，使用OperateUin代替，请忽略。
+	//
+	// Deprecated: OperatorUin is deprecated.
 	OperatorUin []*int64 `json:"OperatorUin,omitnil,omitempty" name:"OperatorUin"`
 
 	// 操作者账号 ID，UIN。
@@ -6340,6 +6350,8 @@ func (r *EnableReplicaReadonlyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EnableReplicaReadonlyResponseParams struct {
 	// 错误：ERROR，正确OK（已废弃）
+	//
+	// Deprecated: Status is deprecated.
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 任务ID
@@ -7065,6 +7077,8 @@ type InstanceSet struct {
 	Size *float64 `json:"Size,omitnil,omitempty" name:"Size"`
 
 	// 该字段已废弃。请使用腾讯云可观测平台API 接口 [GetMonitorData](https://cloud.tencent.com/document/product/248/31014) 获取实例已使用的内存容量。
+	//
+	// Deprecated: SizeUsed is deprecated.
 	SizeUsed *float64 `json:"SizeUsed,omitnil,omitempty" name:"SizeUsed"`
 
 	// 实例类型。
@@ -8639,12 +8653,18 @@ type ModifyInstanceRequestParams struct {
 	AutoRenews []*int64 `json:"AutoRenews,omitnil,omitempty" name:"AutoRenews"`
 
 	// 目前在废弃中，存量用户还可以使用，建议新用户使用 InstanceIds。
+	//
+	// Deprecated: InstanceId is deprecated.
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 已经废弃
+	//
+	// Deprecated: InstanceName is deprecated.
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 已经废弃。
+	//
+	// Deprecated: AutoRenew is deprecated.
 	AutoRenew *int64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 }
 
@@ -9269,6 +9289,8 @@ type ProductConf struct {
 	// 该参数名因存在拼写不规范的问题，建议使用**EnableReplicaReadOnly**参数取代。其含义为是否支持副本只读。
 	// - true：支持副本只读。
 	// - false：不支持。
+	//
+	// Deprecated: EnableRepicaReadOnly is deprecated.
 	EnableRepicaReadOnly *bool `json:"EnableRepicaReadOnly,omitnil,omitempty" name:"EnableRepicaReadOnly"`
 
 	// 是否支持副本只读。
@@ -10071,6 +10093,8 @@ func (r *StartupInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type StartupInstanceResponseParams struct {
 	// 该字段已废弃，请通过查询实例接口获取到的状态来判断实例是否已解隔离
+	//
+	// Deprecated: TaskId is deprecated.
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

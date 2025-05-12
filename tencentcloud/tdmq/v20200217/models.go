@@ -6621,7 +6621,7 @@ type DescribeRabbitMQNodeListRequestParams struct {
 	// 偏移量，默认值 0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 一页限制,moren
+	// 一页限制，默认值 20
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 模糊搜索节点名字
@@ -6651,7 +6651,7 @@ type DescribeRabbitMQNodeListRequest struct {
 	// 偏移量，默认值 0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 一页限制,moren
+	// 一页限制，默认值 20
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 模糊搜索节点名字
@@ -11873,10 +11873,10 @@ type ModifyRabbitMQVirtualHostRequestParams struct {
 	// 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// vhost名
+	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
-	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
+	// Virtual Host 描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 消息轨迹开关,true打开,false关闭
@@ -11889,10 +11889,10 @@ type ModifyRabbitMQVirtualHostRequest struct {
 	// 实例 ID，形如amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// vhost名
+	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
-	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
+	// Virtual Host 描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 消息轨迹开关,true打开,false关闭

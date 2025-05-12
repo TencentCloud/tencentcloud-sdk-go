@@ -1023,10 +1023,10 @@ type Component struct {
 	// 2.  <font color="red">页面编号不能超过PDF文件的页码总数</font>。如果指定的页码超过了PDF文件的页码总数，在填写和签署时会出现错误，导致无法正常进行操作。
 	ComponentPage *int64 `json:"ComponentPage,omitnil,omitempty" name:"ComponentPage"`
 
-	// **在绝对定位方式和关键字定位方式下**，可以指定控件横向位置的位置，单位为pt（点）。
+	// **在绝对定位方式下**，可以指定控件横向位置的位置，单位为pt（点）。
 	ComponentPosX *float64 `json:"ComponentPosX,omitnil,omitempty" name:"ComponentPosX"`
 
-	// **在绝对定位方式和关键字定位方式下**，可以指定控件纵向位置的位置，单位为pt（点）。
+	// **在绝对定位方式下**，可以指定控件纵向位置的位置，单位为pt（点）。
 	ComponentPosY *float64 `json:"ComponentPosY,omitnil,omitempty" name:"ComponentPosY"`
 
 	// <font color="red">【暂未使用】</font>控件所属文件的序号（取值为：0-N）。 目前单文件的情况下，值一直为0
@@ -6188,6 +6188,9 @@ type CreateOrganizationBatchSignUrlRequestParams struct {
 	// 您可以通过查询合同接口（DescribeFlowInfo）查询此参数。
 	// 若传了此参数，则可以不传 UserId, Name, Mobile等参数
 	RecipientIds []*string `json:"RecipientIds,omitnil,omitempty" name:"RecipientIds"`
+
+	// 合同组Id，传入此参数则可以不传FlowIds
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 }
 
 type CreateOrganizationBatchSignUrlRequest struct {
@@ -6230,6 +6233,9 @@ type CreateOrganizationBatchSignUrlRequest struct {
 	// 您可以通过查询合同接口（DescribeFlowInfo）查询此参数。
 	// 若传了此参数，则可以不传 UserId, Name, Mobile等参数
 	RecipientIds []*string `json:"RecipientIds,omitnil,omitempty" name:"RecipientIds"`
+
+	// 合同组Id，传入此参数则可以不传FlowIds
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 }
 
 func (r *CreateOrganizationBatchSignUrlRequest) ToJsonString() string {
@@ -6251,6 +6257,7 @@ func (r *CreateOrganizationBatchSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Mobile")
 	delete(f, "RecipientIds")
+	delete(f, "FlowGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationBatchSignUrlRequest has unknown keys!", "")
 	}
@@ -6699,6 +6706,98 @@ func (r *CreatePersonAuthCertificateImageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreatePersonAuthCertificateImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrepareFlowGroupRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+	FlowGroupName *string `json:"FlowGroupName,omitnil,omitempty" name:"FlowGroupName"`
+
+	// 合同（流程）组的子合同信息，支持2-50个子合同
+	FlowGroupInfos []*FlowGroupInfo `json:"FlowGroupInfos,omitnil,omitempty" name:"FlowGroupInfos"`
+
+	// 资源类型，取值有： <ul><li> **1**：模板</li> <li> **2**：文件</li></ul>
+	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type CreatePrepareFlowGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+	FlowGroupName *string `json:"FlowGroupName,omitnil,omitempty" name:"FlowGroupName"`
+
+	// 合同（流程）组的子合同信息，支持2-50个子合同
+	FlowGroupInfos []*FlowGroupInfo `json:"FlowGroupInfos,omitnil,omitempty" name:"FlowGroupInfos"`
+
+	// 资源类型，取值有： <ul><li> **1**：模板</li> <li> **2**：文件</li></ul>
+	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *CreatePrepareFlowGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrepareFlowGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "FlowGroupName")
+	delete(f, "FlowGroupInfos")
+	delete(f, "ResourceType")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrepareFlowGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrepareFlowGroupResponseParams struct {
+	// 合同(流程)组的合同组Id
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
+
+	// 嵌入式合同组发起链接
+	PrepareUrl *string `json:"PrepareUrl,omitnil,omitempty" name:"PrepareUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreatePrepareFlowGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePrepareFlowGroupResponseParams `json:"Response"`
+}
+
+func (r *CreatePrepareFlowGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrepareFlowGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

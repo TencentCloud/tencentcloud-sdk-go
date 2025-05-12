@@ -3538,12 +3538,16 @@ func NewDescribeCertificateVerifyResultResponse() (response *DescribeCertificate
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SSLCALLFAILED = "InternalError.SSLCallFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTIFICATECHECKERR = "InvalidParameter.CertificateCheckErr"
 //  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
 //  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_SSLCERTIFICATEERR = "ResourceUnavailable.SSLCertificateErr"
 func (c *Client) DescribeCertificateVerifyResult(request *DescribeCertificateVerifyResultRequest) (response *DescribeCertificateVerifyResultResponse, err error) {
     return c.DescribeCertificateVerifyResultWithContext(context.Background(), request)
 }
@@ -3553,12 +3557,16 @@ func (c *Client) DescribeCertificateVerifyResult(request *DescribeCertificateVer
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_SSLCALLFAILED = "InternalError.SSLCallFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTIFICATECHECKERR = "InvalidParameter.CertificateCheckErr"
 //  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
 //  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_SSLCERTIFICATEERR = "ResourceUnavailable.SSLCertificateErr"
 func (c *Client) DescribeCertificateVerifyResultWithContext(ctx context.Context, request *DescribeCertificateVerifyResultRequest) (response *DescribeCertificateVerifyResultResponse, err error) {
     if request == nil {
         request = NewDescribeCertificateVerifyResultRequest()

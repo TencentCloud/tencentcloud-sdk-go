@@ -4097,6 +4097,9 @@ type DescribeEnterpriseSGRuleProgressResponseParams struct {
 	// 0-100，代表下发进度百分比
 	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 
+	// 是否用户中止 用户中止返回true
+	UserStopped *bool `json:"UserStopped,omitnil,omitempty" name:"UserStopped"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -10747,7 +10750,7 @@ type SecurityGroupRule struct {
 	// 规则顺序，-1表示最低，1表示最高，请勿和外层Type冲突（和外层的Type配合使用，当中间插入时，指定添加位置）
 	OrderIndex *string `json:"OrderIndex,omitnil,omitempty" name:"OrderIndex"`
 
-	// 协议；TCP/UDP/ICMP/ANY
+	// 协议；TCP/UDP/ICMP/ICMPv6/ANY
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 访问控制策略的端口。取值：

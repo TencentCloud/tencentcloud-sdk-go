@@ -2090,6 +2090,9 @@ type CCRuleItems struct {
 
 	// 创建时间
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 限频方式
+	LimitMethod *string `json:"LimitMethod,omitnil,omitempty" name:"LimitMethod"`
 }
 
 type CCRuleLists struct {
@@ -2258,6 +2261,12 @@ type ClbObject struct {
 
 	// 数值形式的私有网络 ID
 	NumericalVpcId *int64 `json:"NumericalVpcId,omitnil,omitempty" name:"NumericalVpcId"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 创建时间
+	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 }
 
 type ClbWafRegionItem struct {
@@ -2632,7 +2641,7 @@ func (r *CreateDealsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateHostRequestParams struct {
-	// 防护域名配置信息
+	// 防护域名配置信息。内网负载均衡器必须携带对应的NumericalVpcId。
 	Host *HostRecord `json:"Host,omitnil,omitempty" name:"Host"`
 
 	// 实例id
@@ -2642,7 +2651,7 @@ type CreateHostRequestParams struct {
 type CreateHostRequest struct {
 	*tchttp.BaseRequest
 	
-	// 防护域名配置信息
+	// 防护域名配置信息。内网负载均衡器必须携带对应的NumericalVpcId。
 	Host *HostRecord `json:"Host,omitnil,omitempty" name:"Host"`
 
 	// 实例id
@@ -5595,6 +5604,9 @@ type DescribeBotSceneListRequestParams struct {
 
 	// 是否仅显示生效场景
 	IsValid *bool `json:"IsValid,omitnil,omitempty" name:"IsValid"`
+
+	// 要查询的场景id
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
 }
 
 type DescribeBotSceneListRequest struct {
@@ -5620,6 +5632,9 @@ type DescribeBotSceneListRequest struct {
 
 	// 是否仅显示生效场景
 	IsValid *bool `json:"IsValid,omitnil,omitempty" name:"IsValid"`
+
+	// 要查询的场景id
+	SceneId *string `json:"SceneId,omitnil,omitempty" name:"SceneId"`
 }
 
 func (r *DescribeBotSceneListRequest) ToJsonString() string {
@@ -5641,6 +5656,7 @@ func (r *DescribeBotSceneListRequest) FromJsonString(s string) error {
 	delete(f, "SceneName")
 	delete(f, "IsDefault")
 	delete(f, "IsValid")
+	delete(f, "SceneId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBotSceneListRequest has unknown keys!", "")
 	}
@@ -5722,7 +5738,6 @@ type DescribeBotSceneOverviewResponseParams struct {
 	ValidSceneCount *int64 `json:"ValidSceneCount,omitnil,omitempty" name:"ValidSceneCount"`
 
 	// 当前开启的、匹配范围为全局、优先级最高的场景
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentGlobalScene *GlobalSceneInfo `json:"CurrentGlobalScene,omitnil,omitempty" name:"CurrentGlobalScene"`
 
 	// 自定义规则总数，不包括BOT白名单
@@ -5779,6 +5794,9 @@ type DescribeBotSceneUCBRuleRequestParams struct {
 
 	// 0-全部 1-生效中 2-已过期
 	ValidStatus *uint64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
+
+	// 规则id
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 type DescribeBotSceneUCBRuleRequest struct {
@@ -5813,6 +5831,9 @@ type DescribeBotSceneUCBRuleRequest struct {
 
 	// 0-全部 1-生效中 2-已过期
 	ValidStatus *uint64 `json:"ValidStatus,omitnil,omitempty" name:"ValidStatus"`
+
+	// 规则id
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 func (r *DescribeBotSceneUCBRuleRequest) ToJsonString() string {
@@ -5837,6 +5858,7 @@ func (r *DescribeBotSceneUCBRuleRequest) FromJsonString(s string) error {
 	delete(f, "VersionFlag")
 	delete(f, "TimerType")
 	delete(f, "ValidStatus")
+	delete(f, "RuleId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBotSceneUCBRuleRequest has unknown keys!", "")
 	}
@@ -5846,7 +5868,6 @@ func (r *DescribeBotSceneUCBRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBotSceneUCBRuleResponseParams struct {
 	// 返回数据包
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *DescribeBotUCBRuleRsp `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6123,7 +6144,7 @@ type DescribeCertificateVerifyResultRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 证书类型。 0：不检测国际标准证书 1：证书来源为自有证书 2：证书来源为托管证书
+	// 证书类型，此参数和GmCertType不可同时为0。 0：不检测国际标准证书 1：证书来源为自有证书 2：证书来源为托管证书
 	CertType *int64 `json:"CertType,omitnil,omitempty" name:"CertType"`
 
 	// CertType为1时，需要填充此参数，表示自有证书的证书链
@@ -6135,7 +6156,7 @@ type DescribeCertificateVerifyResultRequestParams struct {
 	// CertType为1时，需要填充此参数，表示自有证书的私钥
 	PrivateKey *string `json:"PrivateKey,omitnil,omitempty" name:"PrivateKey"`
 
-	// 国密证书类型。0：不检测国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+	// 国密证书类型，此参数和CertType不可同时为0。0：不检测国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
 	GmCertType *int64 `json:"GmCertType,omitnil,omitempty" name:"GmCertType"`
 
 	// GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
@@ -6160,7 +6181,7 @@ type DescribeCertificateVerifyResultRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// 证书类型。 0：不检测国际标准证书 1：证书来源为自有证书 2：证书来源为托管证书
+	// 证书类型，此参数和GmCertType不可同时为0。 0：不检测国际标准证书 1：证书来源为自有证书 2：证书来源为托管证书
 	CertType *int64 `json:"CertType,omitnil,omitempty" name:"CertType"`
 
 	// CertType为1时，需要填充此参数，表示自有证书的证书链
@@ -6172,7 +6193,7 @@ type DescribeCertificateVerifyResultRequest struct {
 	// CertType为1时，需要填充此参数，表示自有证书的私钥
 	PrivateKey *string `json:"PrivateKey,omitnil,omitempty" name:"PrivateKey"`
 
-	// 国密证书类型。0：不检测国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
+	// 国密证书类型，此参数和CertType不可同时为0。0：不检测国密证书 1：证书来源为自有国密证书 2：证书来源为托管国密证书
 	GmCertType *int64 `json:"GmCertType,omitnil,omitempty" name:"GmCertType"`
 
 	// GmCertType为1时，需要填充此参数，表示自有国密证书的证书链
@@ -8067,6 +8088,12 @@ func (r *DescribeModuleStatusResponse) FromJsonString(s string) error {
 type DescribeObjectsRequestParams struct {
 	// 支持的过滤器:	ObjectId: clb实例ID	VIP: clb实例的公网IP	InstanceId: waf实例ID	Domain: 精准域名	Status: waf防护开关状态: 0关闭，1开启	ClsStatus: waf日志开关: 0关闭，1开启   
 	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序方式，支持asc或者desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 根据哪个字段排序
+	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 type DescribeObjectsRequest struct {
@@ -8074,6 +8101,12 @@ type DescribeObjectsRequest struct {
 	
 	// 支持的过滤器:	ObjectId: clb实例ID	VIP: clb实例的公网IP	InstanceId: waf实例ID	Domain: 精准域名	Status: waf防护开关状态: 0关闭，1开启	ClsStatus: waf日志开关: 0关闭，1开启   
 	Filters []*FiltersItemNew `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 排序方式，支持asc或者desc
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 根据哪个字段排序
+	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 func (r *DescribeObjectsRequest) ToJsonString() string {
@@ -8089,6 +8122,8 @@ func (r *DescribeObjectsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeObjectsRequest has unknown keys!", "")
 	}
@@ -11538,6 +11573,9 @@ type InOutputBotUCBRule struct {
 
 	// 当Action=intercept时，此字段必填
 	ActionList []*UCBActionProportion `json:"ActionList,omitnil,omitempty" name:"ActionList"`
+
+	// 惩罚时间
+	DelayTime *int64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
 }
 
 type InOutputUCBRuleEntry struct {
@@ -11567,6 +11605,9 @@ type InOutputUCBRuleEntry struct {
 
 	// 语言环境
 	Lang *string `json:"Lang,omitnil,omitempty" name:"Lang"`
+
+	// 参数匹配
+	ParamCompareList []*ParamCompareList `json:"ParamCompareList,omitnil,omitempty" name:"ParamCompareList"`
 }
 
 type InstanceInfo struct {
@@ -11839,9 +11880,6 @@ type LoadBalancer struct {
 	// 负载均衡监听器的名称
 	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
 
-	// 负载均衡实例的IP
-	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
-
 	// 负载均衡实例的端口
 	Vport *uint64 `json:"Vport,omitnil,omitempty" name:"Vport"`
 
@@ -11853,6 +11891,9 @@ type LoadBalancer struct {
 
 	// 负载均衡监听器所在的zone
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 负载均衡实例的IP。域名化CLB VIP可填空。
+	Vip *string `json:"Vip,omitnil,omitempty" name:"Vip"`
 
 	// 负载均衡的VPCID，公网为-1，内网按实际填写
 	NumericalVpcId *int64 `json:"NumericalVpcId,omitnil,omitempty" name:"NumericalVpcId"`
@@ -12983,6 +13024,9 @@ func (r *ModifyBotSceneUCBRuleRequest) FromJsonString(s string) error {
 type ModifyBotSceneUCBRuleResponseParams struct {
 	// 正常情况下为null
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// ["1231"]
+	RuleIdList []*string `json:"RuleIdList,omitnil,omitempty" name:"RuleIdList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -15863,6 +15907,14 @@ func (r *ModifyWebshellStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ParamCompareList struct {
+	// 请求参数比对的匹配参数
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 请求参数比对的匹配值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type PeakPointsItem struct {
 	// 秒级别时间戳
 	Time *uint64 `json:"Time,omitnil,omitempty" name:"Time"`
@@ -16658,7 +16710,7 @@ type SessionItem struct {
 }
 
 type SpartaProtectionPort struct {
-	// 分配的服务器id
+	// 分配的服务器id。首次接入的域名和端口该参数填0，已接入的域名和端口分配的id可以通过DescribeDomainDetailsSaas或DescribeDomains接口获取。
 	NginxServerId *uint64 `json:"NginxServerId,omitnil,omitempty" name:"NginxServerId"`
 
 	// 端口
@@ -17145,7 +17197,7 @@ type UpsertCCRuleRequestParams struct {
 	// 动作有效时间
 	ValidTime *int64 `json:"ValidTime,omitnil,omitempty" name:"ValidTime"`
 
-	// CC的匹配条件JSON序列化的字符串，示例：[{\"key\":\"Method\",\"args\":[\"=R0VU\"],\"match\":\"0\",\"encodeflag\":true}] Key可选值为 Method、Post、Referer、Cookie、User-Agent、CustomHeader match可选值为，当Key为Method的时候可选值为0（等于）、3（不等于）。 Key为Post的时候可选值为0（等于）、3（不等于），Key为Cookie的时候可选值为0（等于）、2（包含），3（不等于）、7（不包含）、 当Key为Referer的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为Cookie的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为User-Agent的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为CustomHeader的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）。 args用来表示匹配内容，需要设置encodeflag为true，当Key为Post、Cookie、CustomHeader时，用等号=来分别串接Key和Value，并分别用Base64编码，类似YWJj=YWJj。当Key为Referer、User-Agent时，用等号=来串接Value，类似=YWJj。
+	// CC的匹配条件JSON序列化的字符串，示例：[{\"key\":\"Method\",\"args\":[\"=R0VU\"],\"match\":\"0\",\"encodeflag\":true}] Key可选值为 Method、Post、Referer、Cookie、User-Agent、CustomHeader match可选值为，当Key为Method的时候可选值为0（等于）、3（不等于）。 Key为Post的时候可选值为0（等于）、3（不等于），Key为Cookie的时候可选值为0（等于）、2（包含），3（不等于）、7（不包含）、 当Key为Referer的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为Cookie的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为User-Agent的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为CustomHeader的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）。 Key为IPLocation时，可选值为13（属于）、14（不属于）。args用来表示匹配内容，需要设置encodeflag为true，当Key为Post、Cookie、CustomHeader时，用等号=来分别串接Key和Value，并分别用Base64编码，类似YWJj=YWJj。当Key为Referer、User-Agent时，用等号=来串接Value，类似=YWJj。
 	OptionsArr *string `json:"OptionsArr,omitnil,omitempty" name:"OptionsArr"`
 
 	// waf版本，sparta-waf或者clb-waf
@@ -17168,6 +17220,9 @@ type UpsertCCRuleRequestParams struct {
 
 	// url长度
 	Length *uint64 `json:"Length,omitnil,omitempty" name:"Length"`
+
+	// 限频方式
+	LimitMethod *string `json:"LimitMethod,omitnil,omitempty" name:"LimitMethod"`
 }
 
 type UpsertCCRuleRequest struct {
@@ -17206,7 +17261,7 @@ type UpsertCCRuleRequest struct {
 	// 动作有效时间
 	ValidTime *int64 `json:"ValidTime,omitnil,omitempty" name:"ValidTime"`
 
-	// CC的匹配条件JSON序列化的字符串，示例：[{\"key\":\"Method\",\"args\":[\"=R0VU\"],\"match\":\"0\",\"encodeflag\":true}] Key可选值为 Method、Post、Referer、Cookie、User-Agent、CustomHeader match可选值为，当Key为Method的时候可选值为0（等于）、3（不等于）。 Key为Post的时候可选值为0（等于）、3（不等于），Key为Cookie的时候可选值为0（等于）、2（包含），3（不等于）、7（不包含）、 当Key为Referer的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为Cookie的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为User-Agent的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为CustomHeader的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）。 args用来表示匹配内容，需要设置encodeflag为true，当Key为Post、Cookie、CustomHeader时，用等号=来分别串接Key和Value，并分别用Base64编码，类似YWJj=YWJj。当Key为Referer、User-Agent时，用等号=来串接Value，类似=YWJj。
+	// CC的匹配条件JSON序列化的字符串，示例：[{\"key\":\"Method\",\"args\":[\"=R0VU\"],\"match\":\"0\",\"encodeflag\":true}] Key可选值为 Method、Post、Referer、Cookie、User-Agent、CustomHeader match可选值为，当Key为Method的时候可选值为0（等于）、3（不等于）。 Key为Post的时候可选值为0（等于）、3（不等于），Key为Cookie的时候可选值为0（等于）、2（包含），3（不等于）、7（不包含）、 当Key为Referer的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为Cookie的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为User-Agent的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为CustomHeader的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）。 Key为IPLocation时，可选值为13（属于）、14（不属于）。args用来表示匹配内容，需要设置encodeflag为true，当Key为Post、Cookie、CustomHeader时，用等号=来分别串接Key和Value，并分别用Base64编码，类似YWJj=YWJj。当Key为Referer、User-Agent时，用等号=来串接Value，类似=YWJj。
 	OptionsArr *string `json:"OptionsArr,omitnil,omitempty" name:"OptionsArr"`
 
 	// waf版本，sparta-waf或者clb-waf
@@ -17229,6 +17284,9 @@ type UpsertCCRuleRequest struct {
 
 	// url长度
 	Length *uint64 `json:"Length,omitnil,omitempty" name:"Length"`
+
+	// 限频方式
+	LimitMethod *string `json:"LimitMethod,omitnil,omitempty" name:"LimitMethod"`
 }
 
 func (r *UpsertCCRuleRequest) ToJsonString() string {
@@ -17262,6 +17320,7 @@ func (r *UpsertCCRuleRequest) FromJsonString(s string) error {
 	delete(f, "RuleId")
 	delete(f, "CreateTime")
 	delete(f, "Length")
+	delete(f, "LimitMethod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpsertCCRuleRequest has unknown keys!", "")
 	}

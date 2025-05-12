@@ -1326,6 +1326,114 @@ func (c *Client) CountOpsInstanceStateWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateCodeTemplateRequest() (request *CreateCodeTemplateRequest) {
+    request = &CreateCodeTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CreateCodeTemplate")
+    
+    
+    return
+}
+
+func NewCreateCodeTemplateResponse() (response *CreateCodeTemplateResponse) {
+    response = &CreateCodeTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCodeTemplate
+// 创建代码模版
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateCodeTemplate(request *CreateCodeTemplateRequest) (response *CreateCodeTemplateResponse, err error) {
+    return c.CreateCodeTemplateWithContext(context.Background(), request)
+}
+
+// CreateCodeTemplate
+// 创建代码模版
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateCodeTemplateWithContext(ctx context.Context, request *CreateCodeTemplateRequest) (response *CreateCodeTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateCodeTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCodeTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCodeTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCodeTemplateVersionRequest() (request *CreateCodeTemplateVersionRequest) {
+    request = &CreateCodeTemplateVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CreateCodeTemplateVersion")
+    
+    
+    return
+}
+
+func NewCreateCodeTemplateVersionResponse() (response *CreateCodeTemplateVersionResponse) {
+    response = &CreateCodeTemplateVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCodeTemplateVersion
+// 提交代码模版
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateCodeTemplateVersion(request *CreateCodeTemplateVersionRequest) (response *CreateCodeTemplateVersionResponse, err error) {
+    return c.CreateCodeTemplateVersionWithContext(context.Background(), request)
+}
+
+// CreateCodeTemplateVersion
+// 提交代码模版
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateCodeTemplateVersionWithContext(ctx context.Context, request *CreateCodeTemplateVersionRequest) (response *CreateCodeTemplateVersionResponse, err error) {
+    if request == nil {
+        request = NewCreateCodeTemplateVersionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCodeTemplateVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCodeTemplateVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCustomFunctionRequest() (request *CreateCustomFunctionRequest) {
     request = &CreateCustomFunctionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2341,6 +2449,55 @@ func (c *Client) DagInstancesWithContext(ctx context.Context, request *DagInstan
     request.SetContext(ctx)
     
     response = NewDagInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCodeTemplateRequest() (request *DeleteCodeTemplateRequest) {
+    request = &DeleteCodeTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DeleteCodeTemplate")
+    
+    
+    return
+}
+
+func NewDeleteCodeTemplateResponse() (response *DeleteCodeTemplateResponse) {
+    response = &DeleteCodeTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCodeTemplate
+// 删除代码模版
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteCodeTemplate(request *DeleteCodeTemplateRequest) (response *DeleteCodeTemplateResponse, err error) {
+    return c.DeleteCodeTemplateWithContext(context.Background(), request)
+}
+
+// DeleteCodeTemplate
+// 删除代码模版
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteCodeTemplateWithContext(ctx context.Context, request *DeleteCodeTemplateRequest) (response *DeleteCodeTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteCodeTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCodeTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCodeTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -5017,6 +5174,55 @@ func (c *Client) DescribeFolderWorkflowListWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeFolderWorkflowListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFormVersionParamRequest() (request *DescribeFormVersionParamRequest) {
+    request = &DescribeFormVersionParamRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeFormVersionParam")
+    
+    
+    return
+}
+
+func NewDescribeFormVersionParamResponse() (response *DescribeFormVersionParamResponse) {
+    response = &DescribeFormVersionParamResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFormVersionParam
+// 查询模版关联的任务和可填充参数，为下一步代码模版提交做准备
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeFormVersionParam(request *DescribeFormVersionParamRequest) (response *DescribeFormVersionParamResponse, err error) {
+    return c.DescribeFormVersionParamWithContext(context.Background(), request)
+}
+
+// DescribeFormVersionParam
+// 查询模版关联的任务和可填充参数，为下一步代码模版提交做准备
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeFormVersionParamWithContext(ctx context.Context, request *DescribeFormVersionParamRequest) (response *DescribeFormVersionParamResponse, err error) {
+    if request == nil {
+        request = NewDescribeFormVersionParamRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFormVersionParam require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFormVersionParamResponse()
     err = c.Send(request, response)
     return
 }
@@ -8483,6 +8689,9 @@ func NewDescribeTableInfoListResponse() (response *DescribeTableInfoListResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeTableInfoList(request *DescribeTableInfoListRequest) (response *DescribeTableInfoListResponse, err error) {
     return c.DescribeTableInfoListWithContext(context.Background(), request)
 }
@@ -8492,6 +8701,9 @@ func (c *Client) DescribeTableInfoList(request *DescribeTableInfoListRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeTableInfoListWithContext(ctx context.Context, request *DescribeTableInfoListRequest) (response *DescribeTableInfoListResponse, err error) {
     if request == nil {
         request = NewDescribeTableInfoListRequest()
@@ -9449,6 +9661,57 @@ func (c *Client) DescribeTaskTableMetricOverviewWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewDescribeTaskTableMetricOverviewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTasksForCodeTemplateRequest() (request *DescribeTasksForCodeTemplateRequest) {
+    request = &DescribeTasksForCodeTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTasksForCodeTemplate")
+    
+    
+    return
+}
+
+func NewDescribeTasksForCodeTemplateResponse() (response *DescribeTasksForCodeTemplateResponse) {
+    response = &DescribeTasksForCodeTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTasksForCodeTemplate
+// 分页查询引用模板的任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeTasksForCodeTemplate(request *DescribeTasksForCodeTemplateRequest) (response *DescribeTasksForCodeTemplateResponse, err error) {
+    return c.DescribeTasksForCodeTemplateWithContext(context.Background(), request)
+}
+
+// DescribeTasksForCodeTemplate
+// 分页查询引用模板的任务列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeTasksForCodeTemplateWithContext(ctx context.Context, request *DescribeTasksForCodeTemplateRequest) (response *DescribeTasksForCodeTemplateResponse, err error) {
+    if request == nil {
+        request = NewDescribeTasksForCodeTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTasksForCodeTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTasksForCodeTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -12420,6 +12683,55 @@ func (c *Client) RenewWorkflowSchedulerInfoDsWithContext(ctx context.Context, re
     return
 }
 
+func NewReportTaskLineageRequest() (request *ReportTaskLineageRequest) {
+    request = &ReportTaskLineageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ReportTaskLineage")
+    
+    
+    return
+}
+
+func NewReportTaskLineageResponse() (response *ReportTaskLineageResponse) {
+    response = &ReportTaskLineageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReportTaskLineage
+// 血缘上报接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ReportTaskLineage(request *ReportTaskLineageRequest) (response *ReportTaskLineageResponse, err error) {
+    return c.ReportTaskLineageWithContext(context.Background(), request)
+}
+
+// ReportTaskLineage
+// 血缘上报接口
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ReportTaskLineageWithContext(ctx context.Context, request *ReportTaskLineageRequest) (response *ReportTaskLineageResponse, err error) {
+    if request == nil {
+        request = NewReportTaskLineageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReportTaskLineage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReportTaskLineageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResumeIntegrationTaskRequest() (request *ResumeIntegrationTaskRequest) {
     request = &ResumeIntegrationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13700,6 +14012,57 @@ func (c *Client) UnlockIntegrationTaskWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewUnlockIntegrationTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateCodeTemplateRequest() (request *UpdateCodeTemplateRequest) {
+    request = &UpdateCodeTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "UpdateCodeTemplate")
+    
+    
+    return
+}
+
+func NewUpdateCodeTemplateResponse() (response *UpdateCodeTemplateResponse) {
+    response = &UpdateCodeTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateCodeTemplate
+// 更新模版
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
+func (c *Client) UpdateCodeTemplate(request *UpdateCodeTemplateRequest) (response *UpdateCodeTemplateResponse, err error) {
+    return c.UpdateCodeTemplateWithContext(context.Background(), request)
+}
+
+// UpdateCodeTemplate
+// 更新模版
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
+func (c *Client) UpdateCodeTemplateWithContext(ctx context.Context, request *UpdateCodeTemplateRequest) (response *UpdateCodeTemplateResponse, err error) {
+    if request == nil {
+        request = NewUpdateCodeTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateCodeTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateCodeTemplateResponse()
     err = c.Send(request, response)
     return
 }

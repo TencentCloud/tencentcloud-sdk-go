@@ -1085,6 +1085,14 @@ type ServerBaseConfig struct {
 
 	// 内网域名
 	InternalDomain *string `json:"InternalDomain,omitnil,omitempty" name:"InternalDomain"`
+
+	// 运行模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperationMode *string `json:"OperationMode,omitnil,omitempty" name:"OperationMode"`
+
+	// 定时扩缩容配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimerScale []*TimerScale `json:"TimerScale,omitnil,omitempty" name:"TimerScale"`
 }
 
 type ServerBaseInfo struct {
@@ -1227,6 +1235,32 @@ type TaskStepInfo struct {
 
 	// 失败原因
 	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
+}
+
+type TimerScale struct {
+	// 循环类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CycleType *string `json:"CycleType,omitnil,omitempty" name:"CycleType"`
+
+	// 循环起始
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
+
+	// 循环结束
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
+
+	// 起始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 副本个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplicaNum *uint64 `json:"ReplicaNum,omitnil,omitempty" name:"ReplicaNum"`
 }
 
 // Predefined struct for user

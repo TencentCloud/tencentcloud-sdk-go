@@ -351,6 +351,12 @@ type BaseFlowInfo struct {
 
 	// 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
 	FlowDisplayType *int64 `json:"FlowDisplayType,omitnil,omitempty" name:"FlowDisplayType"`
+
+	// 签署文件资源Id列表，目前仅支持单个文件
+	FileIds []*string `json:"FileIds,omitnil,omitempty" name:"FileIds"`
+
+	// 合同签署人信息
+	Approvers []*CommonFlowApprover `json:"Approvers,omitnil,omitempty" name:"Approvers"`
 }
 
 type CancelFailureFlow struct {
@@ -3256,6 +3262,9 @@ type ChannelCreateOrganizationBatchSignUrlRequestParams struct {
 
 	// 员工手机号，必须与姓名一起使用。 如果OpenId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。	
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
+
+	// 合同组Id，传入此参数则可以不传FlowIds
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 }
 
 type ChannelCreateOrganizationBatchSignUrlRequest struct {
@@ -3283,6 +3292,9 @@ type ChannelCreateOrganizationBatchSignUrlRequest struct {
 
 	// 员工手机号，必须与姓名一起使用。 如果OpenId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。	
 	Mobile *string `json:"Mobile,omitnil,omitempty" name:"Mobile"`
+
+	// 合同组Id，传入此参数则可以不传FlowIds
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 }
 
 func (r *ChannelCreateOrganizationBatchSignUrlRequest) ToJsonString() string {
@@ -3302,6 +3314,7 @@ func (r *ChannelCreateOrganizationBatchSignUrlRequest) FromJsonString(s string) 
 	delete(f, "OpenId")
 	delete(f, "Name")
 	delete(f, "Mobile")
+	delete(f, "FlowGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateOrganizationBatchSignUrlRequest has unknown keys!", "")
 	}
@@ -3407,6 +3420,106 @@ func (r *ChannelCreateOrganizationModifyQrCodeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ChannelCreateOrganizationModifyQrCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreatePrepareFlowGroupRequestParams struct {
+	// 合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。
+	BaseFlowInfos []*BaseFlowInfo `json:"BaseFlowInfos,omitnil,omitempty" name:"BaseFlowInfos"`
+
+	// 合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+	FlowGroupName *string `json:"FlowGroupName,omitnil,omitempty" name:"FlowGroupName"`
+
+	// 资源类型，取值有： <ul><li> **1**：模板</li> <li> **2**：文件</li></ul>
+	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a>
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识: <a href="https://qcloudimg.tencent-cloud.cn/raw/a71872de3d540d55451e3e73a2ad1a6e.png" target="_blank">Agent.AppId</a></li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId（合同的发起企业）</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId （合同的发起人）</li>
+	// </ul>
+	// 
+	// 合同的发起企业和发起人必需已经完成实名，并加入企业
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type ChannelCreatePrepareFlowGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。
+	BaseFlowInfos []*BaseFlowInfo `json:"BaseFlowInfos,omitnil,omitempty" name:"BaseFlowInfos"`
+
+	// 合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+	FlowGroupName *string `json:"FlowGroupName,omitnil,omitempty" name:"FlowGroupName"`
+
+	// 资源类型，取值有： <ul><li> **1**：模板</li> <li> **2**：文件</li></ul>
+	ResourceType *int64 `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a>
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识: <a href="https://qcloudimg.tencent-cloud.cn/raw/a71872de3d540d55451e3e73a2ad1a6e.png" target="_blank">Agent.AppId</a></li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId（合同的发起企业）</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId （合同的发起人）</li>
+	// </ul>
+	// 
+	// 合同的发起企业和发起人必需已经完成实名，并加入企业
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *ChannelCreatePrepareFlowGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreatePrepareFlowGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BaseFlowInfos")
+	delete(f, "FlowGroupName")
+	delete(f, "ResourceType")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreatePrepareFlowGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreatePrepareFlowGroupResponseParams struct {
+	// 合同组ID，为32位字符串。
+	// 建议开发者妥善保存此合同组ID，以便于顺利进行后续操作。
+	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
+
+	// 嵌入式发起链接
+	PrepareUrl *string `json:"PrepareUrl,omitnil,omitempty" name:"PrepareUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ChannelCreatePrepareFlowGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCreatePrepareFlowGroupResponseParams `json:"Response"`
+}
+
+func (r *ChannelCreatePrepareFlowGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreatePrepareFlowGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6550,10 +6663,10 @@ type Component struct {
 	// 2.  <font color="red">页面编号不能超过PDF文件的页码总数</font>。如果指定的页码超过了PDF文件的页码总数，在填写和签署时会出现错误，导致无法正常进行操作。
 	ComponentPage *int64 `json:"ComponentPage,omitnil,omitempty" name:"ComponentPage"`
 
-	// **在绝对定位方式和关键字定位方式下**，可以指定控件横向位置的位置，单位为pt（点）。
+	// **在绝对定位方式下**，可以指定控件横向位置的位置，单位为pt（点）。
 	ComponentPosX *float64 `json:"ComponentPosX,omitnil,omitempty" name:"ComponentPosX"`
 
-	// **在绝对定位方式和关键字定位方式下**，可以指定控件纵向位置的位置，单位为pt（点）。
+	// **在绝对定位方式下**，可以指定控件纵向位置的位置，单位为pt（点）。
 	ComponentPosY *float64 `json:"ComponentPosY,omitnil,omitempty" name:"ComponentPosY"`
 
 	// **在所有的定位方式下**，控件的扩展参数，为<font color="red">JSON格式</font>，不同类型的控件会有部分非通用参数。

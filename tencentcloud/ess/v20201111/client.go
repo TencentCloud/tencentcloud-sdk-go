@@ -6663,6 +6663,335 @@ func (c *Client) CreatePrepareFlowWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreatePrepareFlowGroupRequest() (request *CreatePrepareFlowGroupRequest) {
+    request = &CreatePrepareFlowGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreatePrepareFlowGroup")
+    
+    
+    return
+}
+
+func NewCreatePrepareFlowGroupResponse() (response *CreatePrepareFlowGroupResponse) {
+    response = &CreatePrepareFlowGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreatePrepareFlowGroup
+// 接口（CreatePrepareFlowGroup）用于创建嵌入式合同组签署流程。
+//
+// 
+//
+// - 该接口当前仅支持文件发起
+//
+// - 该接口能力和CreateFlowGroupByFiles，~~CreateFlowGroupByTemplates~~保持一致。
+//
+// - 返回的FlowGroupId 为临时id，只有在页面内成功发起后FlowGroupId才会有效。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
+//  FAILEDOPERATION_FLOWHASDOCUMENT = "FailedOperation.FlowHasDocument"
+//  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
+//  FAILEDOPERATION_NOSIGNREVIEWPASS = "FailedOperation.NoSignReviewPass"
+//  FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
+//  FAILEDOPERATION_ORGANIZATIONNAMECHANGED = "FailedOperation.OrganizationNameChanged"
+//  FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
+//  FAILEDOPERATION_PREVIEWURLFAIL = "FailedOperation.PreViewUrlFail"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  FAILEDOPERATION_USERINFONOMATCH = "FailedOperation.UserInfoNoMatch"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_JSONMARSHAL = "InternalError.JsonMarshal"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_CCNUM = "InvalidParameter.CcNum"
+//  INVALIDPARAMETER_CLIENTTOKEN = "InvalidParameter.ClientToken"
+//  INVALIDPARAMETER_COMPONENTFILEINDEX = "InvalidParameter.ComponentFileIndex"
+//  INVALIDPARAMETER_COMPONENTPAGE = "InvalidParameter.ComponentPage"
+//  INVALIDPARAMETER_COMPONENTPOSITION = "InvalidParameter.ComponentPosition"
+//  INVALIDPARAMETER_COMPONENTTYPENOMATCHVALUE = "InvalidParameter.ComponentTypeNoMatchValue"
+//  INVALIDPARAMETER_COMPONENTVALUE = "InvalidParameter.ComponentValue"
+//  INVALIDPARAMETER_CUSTOMSHOWMAP = "InvalidParameter.CustomShowMap"
+//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
+//  INVALIDPARAMETER_FLOWCALLBACKURL = "InvalidParameter.FlowCallbackUrl"
+//  INVALIDPARAMETER_FLOWDEADLINE = "InvalidParameter.FlowDeadLine"
+//  INVALIDPARAMETER_FLOWDESCRIPTION = "InvalidParameter.FlowDescription"
+//  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
+//  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
+//  INVALIDPARAMETER_FLOWUSERDATA = "InvalidParameter.FlowUserData"
+//  INVALIDPARAMETER_FROMSOURCE = "InvalidParameter.FromSource"
+//  INVALIDPARAMETER_IDCARDVALIDITYOVERLIMIT = "InvalidParameter.IdCardValidityOverLimit"
+//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+//  INVALIDPARAMETER_INVALIDID = "InvalidParameter.InvalidId"
+//  INVALIDPARAMETER_INVALIDMOBILE = "InvalidParameter.InvalidMobile"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_INVALIDORGANIZATIONNAME = "InvalidParameter.InvalidOrganizationName"
+//  INVALIDPARAMETER_INVALIDVERIFYCHANNEL = "InvalidParameter.InvalidVerifyChannel"
+//  INVALIDPARAMETER_MISSINGREQUIREDCOMPONENTVALUE = "InvalidParameter.MissingRequiredComponentValue"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTIFYTYPE = "InvalidParameter.NotifyType"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_PERSONAUTOSIGNTAG = "InvalidParameter.PersonAutoSignTag"
+//  INVALIDPARAMETER_PREREADTIME = "InvalidParameter.PreReadTime"
+//  INVALIDPARAMETER_SEALID = "InvalidParameter.SealId"
+//  INVALIDPARAMETER_SIGNCOMPONENTS = "InvalidParameter.SignComponents"
+//  INVALIDPARAMETER_VERIFYCHANNEL = "InvalidParameter.VerifyChannel"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_APPROVERMOBILE = "MissingParameter.ApproverMobile"
+//  MISSINGPARAMETER_APPROVERNAME = "MissingParameter.ApproverName"
+//  MISSINGPARAMETER_APPROVERORGANIZATIONINFO = "MissingParameter.ApproverOrganizationInfo"
+//  MISSINGPARAMETER_APPROVERROLE = "MissingParameter.ApproverRole"
+//  MISSINGPARAMETER_APPROVERSIGNCOMPONENT = "MissingParameter.ApproverSignComponent"
+//  MISSINGPARAMETER_FIELD = "MissingParameter.Field"
+//  MISSINGPARAMETER_FILENAMES = "MissingParameter.FileNames"
+//  MISSINGPARAMETER_FLOWAPPROVER = "MissingParameter.FlowApprover"
+//  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  MISSINGPARAMETER_KEYWORD = "MissingParameter.KeyWord"
+//  MISSINGPARAMETER_RECIPIENT = "MissingParameter.Recipient"
+//  MISSINGPARAMETER_RESOURCEID = "MissingParameter.ResourceId"
+//  MISSINGPARAMETER_SERVERSIGNSEALID = "MissingParameter.ServerSignSealId"
+//  MISSINGPARAMETER_SIGNCOMPONENTS = "MissingParameter.SignComponents"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_APPROVERNOMATCHTEMPLATE = "OperationDenied.ApproverNoMatchTemplate"
+//  OPERATIONDENIED_APPROVERREPEAT = "OperationDenied.ApproverRepeat"
+//  OPERATIONDENIED_BRANCHSENDFLOWTOPARENTNOTALLOW = "OperationDenied.BranchSendFlowToParentNotAllow"
+//  OPERATIONDENIED_CCFORBID = "OperationDenied.CcForbid"
+//  OPERATIONDENIED_CCUSERREPEAT = "OperationDenied.CcUserRepeat"
+//  OPERATIONDENIED_ERRNOSUPPORTINDIVIDUALHASORGANIZATIONNAME = "OperationDenied.ErrNoSupportIndividualHasOrganizationName"
+//  OPERATIONDENIED_FILEDELETED = "OperationDenied.FileDeleted"
+//  OPERATIONDENIED_FILENOMATCHRESOURCE = "OperationDenied.FileNoMatchResource"
+//  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
+//  OPERATIONDENIED_MANYRESOURCEID = "OperationDenied.ManyResourceId"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
+//  OPERATIONDENIED_NOPERMISSIONUSERESOURCE = "OperationDenied.NoPermissionUseResource"
+//  OPERATIONDENIED_NOPERMISSIONUSESERVERSIGNSEAL = "OperationDenied.NoPermissionUseServerSignSeal"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  OPERATIONDENIED_NOSUPPORTCOMPONENTTYPE = "OperationDenied.NoSupportComponentType"
+//  OPERATIONDENIED_NOSUPPORTJUMPPAGE = "OperationDenied.NoSupportJumpPage"
+//  OPERATIONDENIED_ORGUNIFORMSOCIALCREDITCODEERR = "OperationDenied.OrgUniformSocialCreditCodeErr"
+//  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
+//  OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
+//  OPERATIONDENIED_OVERSEAFORBID = "OperationDenied.OverSeaForbid"
+//  OPERATIONDENIED_PERSONHASNOSIGNATURE = "OperationDenied.PersonHasNoSignature"
+//  OPERATIONDENIED_PERSONNOOPENSERVERSIGN = "OperationDenied.PersonNoOpenServerSign"
+//  OPERATIONDENIED_PERSONSERVERSIGNFORBID = "OperationDenied.PersonServerSignForbid"
+//  OPERATIONDENIED_REQUIREDCOMPONENTNOTFILL = "OperationDenied.RequiredComponentNotFill"
+//  OPERATIONDENIED_SERVERSIGNNOALLOWCOMPONENT = "OperationDenied.ServerSignNoAllowComponent"
+//  OPERATIONDENIED_SERVERSIGNNOSUPPORTSIGNATURE = "OperationDenied.ServerSignNoSupportSignature"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_AUTHACTIVEORGANIZATION = "ResourceNotFound.AuthActiveOrganization"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  RESOURCENOTFOUND_ERRNOTEXISTROLE = "ResourceNotFound.ErrNotExistRole"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
+//  RESOURCENOTFOUND_NOTEXISTDOCUMENT = "ResourceNotFound.NotExistDocument"
+//  RESOURCENOTFOUND_NOTEXISTFLOW = "ResourceNotFound.NotExistFlow"
+//  RESOURCENOTFOUND_NOTEXISTRESOURCE = "ResourceNotFound.NotExistResource"
+//  RESOURCENOTFOUND_NOTEXISTTEMPLATE = "ResourceNotFound.NotExistTemplate"
+//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
+//  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
+//  RESOURCENOTFOUND_SUPERADMIN = "ResourceNotFound.SuperAdmin"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreatePrepareFlowGroup(request *CreatePrepareFlowGroupRequest) (response *CreatePrepareFlowGroupResponse, err error) {
+    return c.CreatePrepareFlowGroupWithContext(context.Background(), request)
+}
+
+// CreatePrepareFlowGroup
+// 接口（CreatePrepareFlowGroup）用于创建嵌入式合同组签署流程。
+//
+// 
+//
+// - 该接口当前仅支持文件发起
+//
+// - 该接口能力和CreateFlowGroupByFiles，~~CreateFlowGroupByTemplates~~保持一致。
+//
+// - 返回的FlowGroupId 为临时id，只有在页面内成功发起后FlowGroupId才会有效。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
+//  FAILEDOPERATION_FLOWHASDOCUMENT = "FailedOperation.FlowHasDocument"
+//  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
+//  FAILEDOPERATION_NOSIGNREVIEWPASS = "FailedOperation.NoSignReviewPass"
+//  FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
+//  FAILEDOPERATION_ORGANIZATIONNAMECHANGED = "FailedOperation.OrganizationNameChanged"
+//  FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
+//  FAILEDOPERATION_PREVIEWURLFAIL = "FailedOperation.PreViewUrlFail"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  FAILEDOPERATION_USERINFONOMATCH = "FailedOperation.UserInfoNoMatch"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_JSONMARSHAL = "InternalError.JsonMarshal"
+//  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_CCNUM = "InvalidParameter.CcNum"
+//  INVALIDPARAMETER_CLIENTTOKEN = "InvalidParameter.ClientToken"
+//  INVALIDPARAMETER_COMPONENTFILEINDEX = "InvalidParameter.ComponentFileIndex"
+//  INVALIDPARAMETER_COMPONENTPAGE = "InvalidParameter.ComponentPage"
+//  INVALIDPARAMETER_COMPONENTPOSITION = "InvalidParameter.ComponentPosition"
+//  INVALIDPARAMETER_COMPONENTTYPENOMATCHVALUE = "InvalidParameter.ComponentTypeNoMatchValue"
+//  INVALIDPARAMETER_COMPONENTVALUE = "InvalidParameter.ComponentValue"
+//  INVALIDPARAMETER_CUSTOMSHOWMAP = "InvalidParameter.CustomShowMap"
+//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
+//  INVALIDPARAMETER_FLOWCALLBACKURL = "InvalidParameter.FlowCallbackUrl"
+//  INVALIDPARAMETER_FLOWDEADLINE = "InvalidParameter.FlowDeadLine"
+//  INVALIDPARAMETER_FLOWDESCRIPTION = "InvalidParameter.FlowDescription"
+//  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
+//  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
+//  INVALIDPARAMETER_FLOWUSERDATA = "InvalidParameter.FlowUserData"
+//  INVALIDPARAMETER_FROMSOURCE = "InvalidParameter.FromSource"
+//  INVALIDPARAMETER_IDCARDVALIDITYOVERLIMIT = "InvalidParameter.IdCardValidityOverLimit"
+//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+//  INVALIDPARAMETER_INVALIDID = "InvalidParameter.InvalidId"
+//  INVALIDPARAMETER_INVALIDMOBILE = "InvalidParameter.InvalidMobile"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_INVALIDORGANIZATIONNAME = "InvalidParameter.InvalidOrganizationName"
+//  INVALIDPARAMETER_INVALIDVERIFYCHANNEL = "InvalidParameter.InvalidVerifyChannel"
+//  INVALIDPARAMETER_MISSINGREQUIREDCOMPONENTVALUE = "InvalidParameter.MissingRequiredComponentValue"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTIFYTYPE = "InvalidParameter.NotifyType"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_PERSONAUTOSIGNTAG = "InvalidParameter.PersonAutoSignTag"
+//  INVALIDPARAMETER_PREREADTIME = "InvalidParameter.PreReadTime"
+//  INVALIDPARAMETER_SEALID = "InvalidParameter.SealId"
+//  INVALIDPARAMETER_SIGNCOMPONENTS = "InvalidParameter.SignComponents"
+//  INVALIDPARAMETER_VERIFYCHANNEL = "InvalidParameter.VerifyChannel"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_APPROVERMOBILE = "MissingParameter.ApproverMobile"
+//  MISSINGPARAMETER_APPROVERNAME = "MissingParameter.ApproverName"
+//  MISSINGPARAMETER_APPROVERORGANIZATIONINFO = "MissingParameter.ApproverOrganizationInfo"
+//  MISSINGPARAMETER_APPROVERROLE = "MissingParameter.ApproverRole"
+//  MISSINGPARAMETER_APPROVERSIGNCOMPONENT = "MissingParameter.ApproverSignComponent"
+//  MISSINGPARAMETER_FIELD = "MissingParameter.Field"
+//  MISSINGPARAMETER_FILENAMES = "MissingParameter.FileNames"
+//  MISSINGPARAMETER_FLOWAPPROVER = "MissingParameter.FlowApprover"
+//  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  MISSINGPARAMETER_KEYWORD = "MissingParameter.KeyWord"
+//  MISSINGPARAMETER_RECIPIENT = "MissingParameter.Recipient"
+//  MISSINGPARAMETER_RESOURCEID = "MissingParameter.ResourceId"
+//  MISSINGPARAMETER_SERVERSIGNSEALID = "MissingParameter.ServerSignSealId"
+//  MISSINGPARAMETER_SIGNCOMPONENTS = "MissingParameter.SignComponents"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_APPROVERNOMATCHTEMPLATE = "OperationDenied.ApproverNoMatchTemplate"
+//  OPERATIONDENIED_APPROVERREPEAT = "OperationDenied.ApproverRepeat"
+//  OPERATIONDENIED_BRANCHSENDFLOWTOPARENTNOTALLOW = "OperationDenied.BranchSendFlowToParentNotAllow"
+//  OPERATIONDENIED_CCFORBID = "OperationDenied.CcForbid"
+//  OPERATIONDENIED_CCUSERREPEAT = "OperationDenied.CcUserRepeat"
+//  OPERATIONDENIED_ERRNOSUPPORTINDIVIDUALHASORGANIZATIONNAME = "OperationDenied.ErrNoSupportIndividualHasOrganizationName"
+//  OPERATIONDENIED_FILEDELETED = "OperationDenied.FileDeleted"
+//  OPERATIONDENIED_FILENOMATCHRESOURCE = "OperationDenied.FileNoMatchResource"
+//  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
+//  OPERATIONDENIED_MANYRESOURCEID = "OperationDenied.ManyResourceId"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
+//  OPERATIONDENIED_NOPERMISSIONUSERESOURCE = "OperationDenied.NoPermissionUseResource"
+//  OPERATIONDENIED_NOPERMISSIONUSESERVERSIGNSEAL = "OperationDenied.NoPermissionUseServerSignSeal"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  OPERATIONDENIED_NOSUPPORTCOMPONENTTYPE = "OperationDenied.NoSupportComponentType"
+//  OPERATIONDENIED_NOSUPPORTJUMPPAGE = "OperationDenied.NoSupportJumpPage"
+//  OPERATIONDENIED_ORGUNIFORMSOCIALCREDITCODEERR = "OperationDenied.OrgUniformSocialCreditCodeErr"
+//  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
+//  OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
+//  OPERATIONDENIED_OVERSEAFORBID = "OperationDenied.OverSeaForbid"
+//  OPERATIONDENIED_PERSONHASNOSIGNATURE = "OperationDenied.PersonHasNoSignature"
+//  OPERATIONDENIED_PERSONNOOPENSERVERSIGN = "OperationDenied.PersonNoOpenServerSign"
+//  OPERATIONDENIED_PERSONSERVERSIGNFORBID = "OperationDenied.PersonServerSignForbid"
+//  OPERATIONDENIED_REQUIREDCOMPONENTNOTFILL = "OperationDenied.RequiredComponentNotFill"
+//  OPERATIONDENIED_SERVERSIGNNOALLOWCOMPONENT = "OperationDenied.ServerSignNoAllowComponent"
+//  OPERATIONDENIED_SERVERSIGNNOSUPPORTSIGNATURE = "OperationDenied.ServerSignNoSupportSignature"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_AUTHACTIVEORGANIZATION = "ResourceNotFound.AuthActiveOrganization"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  RESOURCENOTFOUND_ERRNOTEXISTROLE = "ResourceNotFound.ErrNotExistRole"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
+//  RESOURCENOTFOUND_NOTEXISTDOCUMENT = "ResourceNotFound.NotExistDocument"
+//  RESOURCENOTFOUND_NOTEXISTFLOW = "ResourceNotFound.NotExistFlow"
+//  RESOURCENOTFOUND_NOTEXISTRESOURCE = "ResourceNotFound.NotExistResource"
+//  RESOURCENOTFOUND_NOTEXISTTEMPLATE = "ResourceNotFound.NotExistTemplate"
+//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
+//  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
+//  RESOURCENOTFOUND_SUPERADMIN = "ResourceNotFound.SuperAdmin"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreatePrepareFlowGroupWithContext(ctx context.Context, request *CreatePrepareFlowGroupRequest) (response *CreatePrepareFlowGroupResponse, err error) {
+    if request == nil {
+        request = NewCreatePrepareFlowGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePrepareFlowGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePrepareFlowGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePreparedPersonalEsignRequest() (request *CreatePreparedPersonalEsignRequest) {
     request = &CreatePreparedPersonalEsignRequest{
         BaseRequest: &tchttp.BaseRequest{},

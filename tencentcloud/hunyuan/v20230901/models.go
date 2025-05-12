@@ -727,7 +727,7 @@ type File3D struct {
 	// 3D文件的格式。取值范围：GIF, OBJ
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 文件的Url
+	// 文件的Url（有效期24小时）
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
@@ -2587,10 +2587,16 @@ type SubmitHunyuanTo3DJobRequestParams struct {
 	// 3D内容的描述，中文正向提示词。最多支持200个 utf-8 字符，ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// 输入图 Base64 数据。最多支持200个 utf-8 字符，ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
+	// 输入图 Base64 数据。
+	// 大小：单边分辨率要求不小于50，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
+	// 格式：jpg，png，jpeg，webp。
+	// ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 输入图Url。最多支持200个 utf-8 字符，ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
+	// 输入图Url。
+	// 大小：单边分辨率要求不小于50，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
+	// 格式：jpg，png，jpeg，webp。
+	// ImageBase64/ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
 	// 生成数量。默认1，当前限制只能为1。
@@ -2603,10 +2609,16 @@ type SubmitHunyuanTo3DJobRequest struct {
 	// 3D内容的描述，中文正向提示词。最多支持200个 utf-8 字符，ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
 	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
 
-	// 输入图 Base64 数据。最多支持200个 utf-8 字符，ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
+	// 输入图 Base64 数据。
+	// 大小：单边分辨率要求不小于50，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
+	// 格式：jpg，png，jpeg，webp。
+	// ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 输入图Url。最多支持200个 utf-8 字符，ImageBase64、ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
+	// 输入图Url。
+	// 大小：单边分辨率要求不小于50，不大于5000。大小不超过8m（base64编码后会大30%左右，建议实际输入图片不超过6m）
+	// 格式：jpg，png，jpeg，webp。
+	// ImageBase64/ImageUrl和 Prompt必填其一，且Prompt和ImageBase64/ImageUrl不能同时存在。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
 	// 生成数量。默认1，当前限制只能为1。
@@ -2637,7 +2649,7 @@ func (r *SubmitHunyuanTo3DJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SubmitHunyuanTo3DJobResponseParams struct {
-	// 任务id
+	// 任务id（有效期24小时）
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

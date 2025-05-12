@@ -3324,6 +3324,171 @@ func (c *Client) ChannelCreatePrepareFlowWithContext(ctx context.Context, reques
     return
 }
 
+func NewChannelCreatePrepareFlowGroupRequest() (request *ChannelCreatePrepareFlowGroupRequest) {
+    request = &ChannelCreatePrepareFlowGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreatePrepareFlowGroup")
+    
+    
+    return
+}
+
+func NewChannelCreatePrepareFlowGroupResponse() (response *ChannelCreatePrepareFlowGroupResponse) {
+    response = &ChannelCreatePrepareFlowGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ChannelCreatePrepareFlowGroup
+// 接口（ChannelCreatePrepareFlowGroup）用于创建嵌入式合同组签署流程。
+//
+// 
+//
+// - 该接口当前仅支持文件发起
+//
+// - 该接口能力和ChannelCreateFlowGroupByFiles，~~ChannelCreateFlowGroupByTemplates~~保持一致。
+//
+// - 返回的FlowGroupId 为临时id，只有在页面内成功发起后FlowGroupId才会有效。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
+//  INVALIDPARAMETER_APPROVERVERIFYTYPE = "InvalidParameter.ApproverVerifyType"
+//  INVALIDPARAMETER_BIZAPPROVERALREADYEXISTS = "InvalidParameter.BizApproverAlreadyExists"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_CUSTOMSHOWMAP = "InvalidParameter.CustomShowMap"
+//  INVALIDPARAMETER_CUSTOMERDATA = "InvalidParameter.CustomerData"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_FLOWAPPROVERINFOS = "InvalidParameter.FlowApproverInfos"
+//  INVALIDPARAMETER_FLOWAPPROVERS = "InvalidParameter.FlowApprovers"
+//  INVALIDPARAMETER_FLOWCALLBACKURL = "InvalidParameter.FlowCallbackUrl"
+//  INVALIDPARAMETER_FLOWDEADLINE = "InvalidParameter.FlowDeadLine"
+//  INVALIDPARAMETER_FLOWDESCRIPTION = "InvalidParameter.FlowDescription"
+//  INVALIDPARAMETER_FLOWFILEIDS = "InvalidParameter.FlowFileIds"
+//  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
+//  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NONSUPPORTMOBILE = "InvalidParameter.NonsupportMobile"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SIGNCOMPONENTTYPE = "InvalidParameter.SignComponentType"
+//  INVALIDPARAMETER_UNORDERED = "InvalidParameter.Unordered"
+//  INVALIDPARAMETER_UNSUPPORTEDCOMPONENTTYPE = "InvalidParameter.UnsupportedComponentType"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSCOMPONENTNAME = "MissingParameter.MissComponentName"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BYFILESSERVERSIGNFORBID = "OperationDenied.ByFilesServerSignForbid"
+//  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
+//  OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
+//  OPERATIONDENIED_NOAPPROVERMOBILECHECKPERMISSION = "OperationDenied.NoApproverMobileCheckPermission"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  OPERATIONDENIED_OVERSEAABILITYNOTOPEN = "OperationDenied.OverseaAbilityNotOpen"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
+//  RESOURCENOTFOUND_SEAL = "ResourceNotFound.Seal"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelCreatePrepareFlowGroup(request *ChannelCreatePrepareFlowGroupRequest) (response *ChannelCreatePrepareFlowGroupResponse, err error) {
+    return c.ChannelCreatePrepareFlowGroupWithContext(context.Background(), request)
+}
+
+// ChannelCreatePrepareFlowGroup
+// 接口（ChannelCreatePrepareFlowGroup）用于创建嵌入式合同组签署流程。
+//
+// 
+//
+// - 该接口当前仅支持文件发起
+//
+// - 该接口能力和ChannelCreateFlowGroupByFiles，~~ChannelCreateFlowGroupByTemplates~~保持一致。
+//
+// - 返回的FlowGroupId 为临时id，只有在页面内成功发起后FlowGroupId才会有效。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
+//  INVALIDPARAMETER_APPROVERVERIFYTYPE = "InvalidParameter.ApproverVerifyType"
+//  INVALIDPARAMETER_BIZAPPROVERALREADYEXISTS = "InvalidParameter.BizApproverAlreadyExists"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_CUSTOMSHOWMAP = "InvalidParameter.CustomShowMap"
+//  INVALIDPARAMETER_CUSTOMERDATA = "InvalidParameter.CustomerData"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_FLOWAPPROVERINFOS = "InvalidParameter.FlowApproverInfos"
+//  INVALIDPARAMETER_FLOWAPPROVERS = "InvalidParameter.FlowApprovers"
+//  INVALIDPARAMETER_FLOWCALLBACKURL = "InvalidParameter.FlowCallbackUrl"
+//  INVALIDPARAMETER_FLOWDEADLINE = "InvalidParameter.FlowDeadLine"
+//  INVALIDPARAMETER_FLOWDESCRIPTION = "InvalidParameter.FlowDescription"
+//  INVALIDPARAMETER_FLOWFILEIDS = "InvalidParameter.FlowFileIds"
+//  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
+//  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NONSUPPORTMOBILE = "InvalidParameter.NonsupportMobile"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SIGNCOMPONENTTYPE = "InvalidParameter.SignComponentType"
+//  INVALIDPARAMETER_UNORDERED = "InvalidParameter.Unordered"
+//  INVALIDPARAMETER_UNSUPPORTEDCOMPONENTTYPE = "InvalidParameter.UnsupportedComponentType"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSCOMPONENTNAME = "MissingParameter.MissComponentName"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BYFILESSERVERSIGNFORBID = "OperationDenied.ByFilesServerSignForbid"
+//  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
+//  OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
+//  OPERATIONDENIED_NOAPPROVERMOBILECHECKPERMISSION = "OperationDenied.NoApproverMobileCheckPermission"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  OPERATIONDENIED_OVERSEAABILITYNOTOPEN = "OperationDenied.OverseaAbilityNotOpen"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
+//  RESOURCENOTFOUND_SEAL = "ResourceNotFound.Seal"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelCreatePrepareFlowGroupWithContext(ctx context.Context, request *ChannelCreatePrepareFlowGroupRequest) (response *ChannelCreatePrepareFlowGroupResponse, err error) {
+    if request == nil {
+        request = NewChannelCreatePrepareFlowGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreatePrepareFlowGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreatePrepareFlowGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelCreatePreparedPersonalEsignRequest() (request *ChannelCreatePreparedPersonalEsignRequest) {
     request = &ChannelCreatePreparedPersonalEsignRequest{
         BaseRequest: &tchttp.BaseRequest{},
