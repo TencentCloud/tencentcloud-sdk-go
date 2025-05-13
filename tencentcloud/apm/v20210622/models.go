@@ -260,6 +260,12 @@ type ApmInstanceDetail struct {
 
 	// 是否开内存马执行检测（0=关， 1=开）
 	IsMemoryHijackingAnalysis *int64 `json:"IsMemoryHijackingAnalysis,omitnil,omitempty" name:"IsMemoryHijackingAnalysis"`
+
+	// CLS索引类型(0=全文索引，1=键值索引)
+	LogIndexType *int64 `json:"LogIndexType,omitnil,omitempty" name:"LogIndexType"`
+
+	// traceId的索引key: 当CLS索引类型为键值索引时生效
+	LogTraceIdKey *string `json:"LogTraceIdKey,omitnil,omitempty" name:"LogTraceIdKey"`
 }
 
 type ApmMetricRecord struct {
@@ -1523,10 +1529,10 @@ type ModifyApmInstanceRequestParams struct {
 	// 是否开启内存马检测
 	IsMemoryHijackingAnalysis *int64 `json:"IsMemoryHijackingAnalysis,omitnil,omitempty" name:"IsMemoryHijackingAnalysis"`
 
-	// 0=全文索引，1=键值索引
+	// CLS索引类型(0=全文索引，1=键值索引)
 	LogIndexType *int64 `json:"LogIndexType,omitnil,omitempty" name:"LogIndexType"`
 
-	// traceId的索引key
+	// traceId的索引key: 当CLS索引类型为键值索引时生效
 	LogTraceIdKey *string `json:"LogTraceIdKey,omitnil,omitempty" name:"LogTraceIdKey"`
 }
 
@@ -1611,10 +1617,10 @@ type ModifyApmInstanceRequest struct {
 	// 是否开启内存马检测
 	IsMemoryHijackingAnalysis *int64 `json:"IsMemoryHijackingAnalysis,omitnil,omitempty" name:"IsMemoryHijackingAnalysis"`
 
-	// 0=全文索引，1=键值索引
+	// CLS索引类型(0=全文索引，1=键值索引)
 	LogIndexType *int64 `json:"LogIndexType,omitnil,omitempty" name:"LogIndexType"`
 
-	// traceId的索引key
+	// traceId的索引key: 当CLS索引类型为键值索引时生效
 	LogTraceIdKey *string `json:"LogTraceIdKey,omitnil,omitempty" name:"LogTraceIdKey"`
 }
 

@@ -7386,7 +7386,7 @@ func NewResizeDisksResponse() (response *ResizeDisksResponse) {
 }
 
 // ResizeDisks
-// 本接口(ResizeDisks)用于扩容云硬盘。该操作目前仅支持云硬盘类型为数据盘的云硬盘。
+// 本接口(ResizeDisks)用于扩容云硬盘。该操作目前仅支持云硬盘类型为数据盘且状态处于ATTACHED（已挂载）或 UNATTACHED（待挂载）的云硬盘。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
@@ -7408,7 +7408,7 @@ func (c *Client) ResizeDisks(request *ResizeDisksRequest) (response *ResizeDisks
 }
 
 // ResizeDisks
-// 本接口(ResizeDisks)用于扩容云硬盘。该操作目前仅支持云硬盘类型为数据盘的云硬盘。
+// 本接口(ResizeDisks)用于扩容云硬盘。该操作目前仅支持云硬盘类型为数据盘且状态处于ATTACHED（已挂载）或 UNATTACHED（待挂载）的云硬盘。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"

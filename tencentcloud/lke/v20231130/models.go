@@ -360,6 +360,9 @@ type AttrLabelDetail struct {
 	// 状态描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
+
+	// 标签值总数
+	LabelTotalCount *string `json:"LabelTotalCount,omitnil,omitempty" name:"LabelTotalCount"`
 }
 
 type AttrLabelRefer struct {
@@ -2266,6 +2269,9 @@ type DescribeAttributeLabelRequestParams struct {
 
 	// 滚动加载游标的标签ID
 	LastLabelBizId *string `json:"LastLabelBizId,omitnil,omitempty" name:"LastLabelBizId"`
+
+	// 查询范围 all(或者传空):标准词和相似词 standard:标准词 similar:相似词
+	QueryScope *string `json:"QueryScope,omitnil,omitempty" name:"QueryScope"`
 }
 
 type DescribeAttributeLabelRequest struct {
@@ -2291,6 +2297,9 @@ type DescribeAttributeLabelRequest struct {
 
 	// 滚动加载游标的标签ID
 	LastLabelBizId *string `json:"LastLabelBizId,omitnil,omitempty" name:"LastLabelBizId"`
+
+	// 查询范围 all(或者传空):标准词和相似词 standard:标准词 similar:相似词
+	QueryScope *string `json:"QueryScope,omitnil,omitempty" name:"QueryScope"`
 }
 
 func (r *DescribeAttributeLabelRequest) ToJsonString() string {
@@ -2312,6 +2321,7 @@ func (r *DescribeAttributeLabelRequest) FromJsonString(s string) error {
 	delete(f, "LoginSubAccountUin")
 	delete(f, "Query")
 	delete(f, "LastLabelBizId")
+	delete(f, "QueryScope")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAttributeLabelRequest has unknown keys!", "")
 	}
@@ -2849,6 +2859,12 @@ type DescribeDocResponseParams struct {
 
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
+
+	// 文档的用户自定义ID
+	CustomerKnowledgeId *string `json:"CustomerKnowledgeId,omitnil,omitempty" name:"CustomerKnowledgeId"`
+
+	// 文档的属性标记，0: 不做用户外部权限校验
+	AttributeFlags []*uint64 `json:"AttributeFlags,omitnil,omitempty" name:"AttributeFlags"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6282,6 +6298,9 @@ type ListAttributeLabelRequestParams struct {
 
 	// 查询内容
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 每个属性同步拉取的标签值数量
+	LabelSize *uint64 `json:"LabelSize,omitnil,omitempty" name:"LabelSize"`
 }
 
 type ListAttributeLabelRequest struct {
@@ -6304,6 +6323,9 @@ type ListAttributeLabelRequest struct {
 
 	// 查询内容
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 每个属性同步拉取的标签值数量
+	LabelSize *uint64 `json:"LabelSize,omitnil,omitempty" name:"LabelSize"`
 }
 
 func (r *ListAttributeLabelRequest) ToJsonString() string {
@@ -6324,6 +6346,7 @@ func (r *ListAttributeLabelRequest) FromJsonString(s string) error {
 	delete(f, "LoginUin")
 	delete(f, "LoginSubAccountUin")
 	delete(f, "Query")
+	delete(f, "LabelSize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAttributeLabelRequest has unknown keys!", "")
 	}
@@ -6542,6 +6565,12 @@ type ListDocItem struct {
 
 	// 文档所属分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
+
+	// 文档的用户自定义ID
+	CustomerKnowledgeId *string `json:"CustomerKnowledgeId,omitnil,omitempty" name:"CustomerKnowledgeId"`
+
+	// 文档的属性标记，0: 不做用户外部权限校验
+	AttributeFlags []*uint64 `json:"AttributeFlags,omitnil,omitempty" name:"AttributeFlags"`
 }
 
 // Predefined struct for user
@@ -8012,6 +8041,9 @@ type ModelInfo struct {
 
 	// 角色提示词输入长度限制
 	RoleLenLimit *uint64 `json:"RoleLenLimit,omitnil,omitempty" name:"RoleLenLimit"`
+
+	// 是否专属并发模型
+	IsExclusive *bool `json:"IsExclusive,omitnil,omitempty" name:"IsExclusive"`
 }
 
 type ModelParameter struct {
@@ -8404,6 +8436,12 @@ type ModifyDocRequestParams struct {
 
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
+
+	// 文档的用户自定义ID
+	CustomerKnowledgeId *string `json:"CustomerKnowledgeId,omitnil,omitempty" name:"CustomerKnowledgeId"`
+
+	// 文档的属性标记，0: 不做用户外部权限校验
+	AttributeFlags []*uint64 `json:"AttributeFlags,omitnil,omitempty" name:"AttributeFlags"`
 }
 
 type ModifyDocRequest struct {
@@ -8445,6 +8483,12 @@ type ModifyDocRequest struct {
 
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
+
+	// 文档的用户自定义ID
+	CustomerKnowledgeId *string `json:"CustomerKnowledgeId,omitnil,omitempty" name:"CustomerKnowledgeId"`
+
+	// 文档的属性标记，0: 不做用户外部权限校验
+	AttributeFlags []*uint64 `json:"AttributeFlags,omitnil,omitempty" name:"AttributeFlags"`
 }
 
 func (r *ModifyDocRequest) ToJsonString() string {
@@ -8471,6 +8515,8 @@ func (r *ModifyDocRequest) FromJsonString(s string) error {
 	delete(f, "ExpireStart")
 	delete(f, "ExpireEnd")
 	delete(f, "CateBizId")
+	delete(f, "CustomerKnowledgeId")
+	delete(f, "AttributeFlags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDocRequest has unknown keys!", "")
 	}
@@ -10059,7 +10105,12 @@ type SaveDocRequestParams struct {
 	// 文件名
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 文件类型(md|txt|docx|pdf|xlsx)
+	// 文档支持下面类型
+	// pdf、doc、docx、ppt、mhtml、pptx、wps、ppsx，单个文件不超过200MB；
+	// xlsx、xls、md、txt、csv、html，单个文件不超过20MB；
+	// 
+	// 图片支持下面类型：
+	// jpg、png、jpeg、tiff、bmp、gif，单个文件不超过50MB
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
 	// 平台cos路径，与DescribeStorageCredential接口查询UploadPath参数保持一致
@@ -10108,6 +10159,12 @@ type SaveDocRequestParams struct {
 
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
+
+	// 文档的用户自定义ID
+	CustomerKnowledgeId *string `json:"CustomerKnowledgeId,omitnil,omitempty" name:"CustomerKnowledgeId"`
+
+	// 文档的属性标记，0: 不做用户外部权限校验
+	AttributeFlags []*uint64 `json:"AttributeFlags,omitnil,omitempty" name:"AttributeFlags"`
 }
 
 type SaveDocRequest struct {
@@ -10119,7 +10176,12 @@ type SaveDocRequest struct {
 	// 文件名
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 文件类型(md|txt|docx|pdf|xlsx)
+	// 文档支持下面类型
+	// pdf、doc、docx、ppt、mhtml、pptx、wps、ppsx，单个文件不超过200MB；
+	// xlsx、xls、md、txt、csv、html，单个文件不超过20MB；
+	// 
+	// 图片支持下面类型：
+	// jpg、png、jpeg、tiff、bmp、gif，单个文件不超过50MB
 	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
 
 	// 平台cos路径，与DescribeStorageCredential接口查询UploadPath参数保持一致
@@ -10168,6 +10230,12 @@ type SaveDocRequest struct {
 
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
+
+	// 文档的用户自定义ID
+	CustomerKnowledgeId *string `json:"CustomerKnowledgeId,omitnil,omitempty" name:"CustomerKnowledgeId"`
+
+	// 文档的属性标记，0: 不做用户外部权限校验
+	AttributeFlags []*uint64 `json:"AttributeFlags,omitnil,omitempty" name:"AttributeFlags"`
 }
 
 func (r *SaveDocRequest) ToJsonString() string {
@@ -10199,6 +10267,8 @@ func (r *SaveDocRequest) FromJsonString(s string) error {
 	delete(f, "IsRefer")
 	delete(f, "Opt")
 	delete(f, "CateBizId")
+	delete(f, "CustomerKnowledgeId")
+	delete(f, "AttributeFlags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SaveDocRequest has unknown keys!", "")
 	}

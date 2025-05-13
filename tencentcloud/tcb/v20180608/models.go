@@ -5466,6 +5466,12 @@ type DescribeEnvsRequestParams struct {
 
 	// 渠道列表，代表可见或不可见渠道由IsVisible参数指定
 	Channels []*string `json:"Channels,omitnil,omitempty" name:"Channels"`
+
+	// 分页参数，单页限制个数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页参数，偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type DescribeEnvsRequest struct {
@@ -5480,6 +5486,12 @@ type DescribeEnvsRequest struct {
 
 	// 渠道列表，代表可见或不可见渠道由IsVisible参数指定
 	Channels []*string `json:"Channels,omitnil,omitempty" name:"Channels"`
+
+	// 分页参数，单页限制个数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页参数，偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *DescribeEnvsRequest) ToJsonString() string {
@@ -5497,6 +5509,8 @@ func (r *DescribeEnvsRequest) FromJsonString(s string) error {
 	delete(f, "EnvId")
 	delete(f, "IsVisible")
 	delete(f, "Channels")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnvsRequest has unknown keys!", "")
 	}

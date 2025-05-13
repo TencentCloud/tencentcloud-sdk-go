@@ -1974,14 +1974,14 @@ func (r *DeleteLaunchConfigurationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLifecycleHookRequestParams struct {
-	// 生命周期挂钩ID
+	// 生命周期挂钩ID。可以通过调用接口 [DescribeLifecycleHooks](https://cloud.tencent.com/document/api/377/34452) ，取返回信息中的 LifecycleHookId 获取生命周期挂钩ID。
 	LifecycleHookId *string `json:"LifecycleHookId,omitnil,omitempty" name:"LifecycleHookId"`
 }
 
 type DeleteLifecycleHookRequest struct {
 	*tchttp.BaseRequest
 	
-	// 生命周期挂钩ID
+	// 生命周期挂钩ID。可以通过调用接口 [DescribeLifecycleHooks](https://cloud.tencent.com/document/api/377/34452) ，取返回信息中的 LifecycleHookId 获取生命周期挂钩ID。
 	LifecycleHookId *string `json:"LifecycleHookId,omitnil,omitempty" name:"LifecycleHookId"`
 }
 
@@ -2417,6 +2417,9 @@ func (r *DescribeAutoScalingAdvicesResponse) FromJsonString(s string) error {
 type DescribeAutoScalingGroupLastActivitiesRequestParams struct {
 	// 伸缩组ID列表
 	AutoScalingGroupIds []*string `json:"AutoScalingGroupIds,omitnil,omitempty" name:"AutoScalingGroupIds"`
+
+	// 查询时排除取消类型活动。默认值为 false，表示不排除取消类型活动。
+	ExcludeCancelledActivity *bool `json:"ExcludeCancelledActivity,omitnil,omitempty" name:"ExcludeCancelledActivity"`
 }
 
 type DescribeAutoScalingGroupLastActivitiesRequest struct {
@@ -2424,6 +2427,9 @@ type DescribeAutoScalingGroupLastActivitiesRequest struct {
 	
 	// 伸缩组ID列表
 	AutoScalingGroupIds []*string `json:"AutoScalingGroupIds,omitnil,omitempty" name:"AutoScalingGroupIds"`
+
+	// 查询时排除取消类型活动。默认值为 false，表示不排除取消类型活动。
+	ExcludeCancelledActivity *bool `json:"ExcludeCancelledActivity,omitnil,omitempty" name:"ExcludeCancelledActivity"`
 }
 
 func (r *DescribeAutoScalingGroupLastActivitiesRequest) ToJsonString() string {
@@ -2439,6 +2445,7 @@ func (r *DescribeAutoScalingGroupLastActivitiesRequest) FromJsonString(s string)
 		return err
 	}
 	delete(f, "AutoScalingGroupIds")
+	delete(f, "ExcludeCancelledActivity")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAutoScalingGroupLastActivitiesRequest has unknown keys!", "")
 	}
@@ -4096,25 +4103,30 @@ type LifecycleHook struct {
 	// 伸缩组ID
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 生命周期挂钩默认结果
+	// 定义伸缩组在生命周期挂钩超时或 LifecycleCommand 执行失败时应采取的操作，取值范围如下：
+	// - CONTINUE: 默认值，表示继续执行扩缩容活动
+	// - ABANDON: 针对扩容挂钩，挂钩超时或 LifecycleCommand 执行失败的 CVM 实例会直接释放或移出；而针对缩容挂钩，会继续执行缩容活动
 	DefaultResult *string `json:"DefaultResult,omitnil,omitempty" name:"DefaultResult"`
 
-	// 生命周期挂钩等待超时时间
+	// 生命周期挂钩超时等待时间（以秒为单位），范围从 30 到 7200 秒。
 	HeartbeatTimeout *int64 `json:"HeartbeatTimeout,omitnil,omitempty" name:"HeartbeatTimeout"`
 
-	// 生命周期挂钩适用场景
+	// 生命周期挂钩场景，取值范围如下:
+	// - INSTANCE_LAUNCHING: 扩容生命周期挂钩
+	// - INSTANCE_TERMINATING: 缩容生命周期挂钩
 	LifecycleTransition *string `json:"LifecycleTransition,omitnil,omitempty" name:"LifecycleTransition"`
 
 	// 通知目标的附加信息
 	NotificationMetadata *string `json:"NotificationMetadata,omitnil,omitempty" name:"NotificationMetadata"`
 
-	// 创建时间
+	// 创建时间，采用 UTC 标准计时
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 通知目标
 	NotificationTarget *NotificationTarget `json:"NotificationTarget,omitnil,omitempty" name:"NotificationTarget"`
 
-	// 生命周期挂钩适用场景
+	// 进行生命周期挂钩的场景类型，取值范围包括 NORMAL 和 EXTENSION，默认值为 NORMAL。
+	// 说明：设置为EXTENSION值，在AttachInstances、DetachInstances、RemoveInstances 接口时会触发生命周期挂钩操作，值为NORMAL则不会在这些接口中触发生命周期挂钩。
 	LifecycleTransitionType *string `json:"LifecycleTransitionType,omitnil,omitempty" name:"LifecycleTransitionType"`
 
 	// 远程命令执行对象
@@ -5770,20 +5782,24 @@ type RunSecurityServiceEnabled struct {
 
 // Predefined struct for user
 type ScaleInInstancesRequestParams struct {
-	// 伸缩组ID。
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 希望缩容的实例数量。
+	// 希望缩容的实例数量。该参数的静态取值范围是 [1,2000]，同时该参数不得大于期望数与最小值的差值。例如伸缩组期望数为 100，最小值为 20，此时可取值范围为 [1,80]。
 	ScaleInNumber *uint64 `json:"ScaleInNumber,omitnil,omitempty" name:"ScaleInNumber"`
 }
 
 type ScaleInInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID。
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 希望缩容的实例数量。
+	// 希望缩容的实例数量。该参数的静态取值范围是 [1,2000]，同时该参数不得大于期望数与最小值的差值。例如伸缩组期望数为 100，最小值为 20，此时可取值范围为 [1,80]。
 	ScaleInNumber *uint64 `json:"ScaleInNumber,omitnil,omitempty" name:"ScaleInNumber"`
 }
 

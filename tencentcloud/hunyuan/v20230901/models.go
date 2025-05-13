@@ -74,6 +74,23 @@ func (r *ActivateServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Approximate struct {
+	// 表示 ISO 国家代码
+	Country *string `json:"Country,omitnil,omitempty" name:"Country"`
+
+	// 表示城市名称
+	City *string `json:"City,omitnil,omitempty" name:"City"`
+
+	// 表示区域名称
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 表示IANA时区
+	Timezone *string `json:"Timezone,omitnil,omitempty" name:"Timezone"`
+
+	// 表示详细地址
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+}
+
 type Character struct {
 	// 人物名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -200,6 +217,9 @@ type ChatCompletionsRequestParams struct {
 
 	// 是否开启深度阅读，默认是false，在值为true时，会返回深度阅读的结果信息。说明:1.深度阅读需要开启插件增强,即设置EnableEnhancement为true,当设置EnableDeepRead为true时EnableEnhancement默认为true；2.目前暂时只支持单文档单轮的深度阅读；3.深度阅读功能的文件上传可以使用FilesUploads接口，具体参数详见FilesUploads接口文档
 	EnableDeepRead *bool `json:"EnableDeepRead,omitnil,omitempty" name:"EnableDeepRead"`
+
+	// 知识注入相关的参数信息
+	WebSearchOptions *WebSearchOptions `json:"WebSearchOptions,omitnil,omitempty" name:"WebSearchOptions"`
 }
 
 type ChatCompletionsRequest struct {
@@ -321,6 +341,9 @@ type ChatCompletionsRequest struct {
 
 	// 是否开启深度阅读，默认是false，在值为true时，会返回深度阅读的结果信息。说明:1.深度阅读需要开启插件增强,即设置EnableEnhancement为true,当设置EnableDeepRead为true时EnableEnhancement默认为true；2.目前暂时只支持单文档单轮的深度阅读；3.深度阅读功能的文件上传可以使用FilesUploads接口，具体参数详见FilesUploads接口文档
 	EnableDeepRead *bool `json:"EnableDeepRead,omitnil,omitempty" name:"EnableDeepRead"`
+
+	// 知识注入相关的参数信息
+	WebSearchOptions *WebSearchOptions `json:"WebSearchOptions,omitnil,omitempty" name:"WebSearchOptions"`
 }
 
 func (r *ChatCompletionsRequest) ToJsonString() string {
@@ -355,6 +378,7 @@ func (r *ChatCompletionsRequest) FromJsonString(s string) error {
 	delete(f, "Stop")
 	delete(f, "EnableRecommendedQuestions")
 	delete(f, "EnableDeepRead")
+	delete(f, "WebSearchOptions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatCompletionsRequest has unknown keys!", "")
 	}
@@ -1689,6 +1713,11 @@ type ImageUrl struct {
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
+type Knowledge struct {
+	// 表示具体的知识信息文本
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
 type LogoParam struct {
 	// 水印url
 	LogoUrl *string `json:"LogoUrl,omitnil,omitempty" name:"LogoUrl"`
@@ -2969,4 +2998,20 @@ type Usage struct {
 
 	// 总 Token 数量。
 	TotalTokens *int64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
+}
+
+type UserLocation struct {
+	// 表示位置类型
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 用户近似位置的详细信息
+	Approximate *Approximate `json:"Approximate,omitnil,omitempty" name:"Approximate"`
+}
+
+type WebSearchOptions struct {
+	// 表示用户注入的知识信息
+	Knowledge []*Knowledge `json:"Knowledge,omitnil,omitempty" name:"Knowledge"`
+
+	// 用户位置详细信息
+	UserLocation *UserLocation `json:"UserLocation,omitnil,omitempty" name:"UserLocation"`
 }

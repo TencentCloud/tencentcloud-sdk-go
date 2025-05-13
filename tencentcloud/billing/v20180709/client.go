@@ -45,6 +45,65 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateAllocationRuleRequest() (request *CreateAllocationRuleRequest) {
+    request = &CreateAllocationRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "CreateAllocationRule")
+    
+    
+    return
+}
+
+func NewCreateAllocationRuleResponse() (response *CreateAllocationRuleResponse) {
+    response = &CreateAllocationRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAllocationRule
+// 创建公摊规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NUMLIMITERROR = "FailedOperation.NumLimitError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateAllocationRule(request *CreateAllocationRuleRequest) (response *CreateAllocationRuleResponse, err error) {
+    return c.CreateAllocationRuleWithContext(context.Background(), request)
+}
+
+// CreateAllocationRule
+// 创建公摊规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NUMLIMITERROR = "FailedOperation.NumLimitError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateAllocationRuleWithContext(ctx context.Context, request *CreateAllocationRuleRequest) (response *CreateAllocationRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateAllocationRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAllocationRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAllocationRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAllocationTagRequest() (request *CreateAllocationTagRequest) {
     request = &CreateAllocationTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -98,6 +157,177 @@ func (c *Client) CreateAllocationTagWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateAllocationUnitRequest() (request *CreateAllocationUnitRequest) {
+    request = &CreateAllocationUnitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "CreateAllocationUnit")
+    
+    
+    return
+}
+
+func NewCreateAllocationUnitResponse() (response *CreateAllocationUnitResponse) {
+    response = &CreateAllocationUnitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAllocationUnit
+// 创建分账单元
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NUMLIMITERROR = "FailedOperation.NumLimitError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateAllocationUnit(request *CreateAllocationUnitRequest) (response *CreateAllocationUnitResponse, err error) {
+    return c.CreateAllocationUnitWithContext(context.Background(), request)
+}
+
+// CreateAllocationUnit
+// 创建分账单元
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NUMLIMITERROR = "FailedOperation.NumLimitError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateAllocationUnitWithContext(ctx context.Context, request *CreateAllocationUnitRequest) (response *CreateAllocationUnitResponse, err error) {
+    if request == nil {
+        request = NewCreateAllocationUnitRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAllocationUnit require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAllocationUnitResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateGatherRuleRequest() (request *CreateGatherRuleRequest) {
+    request = &CreateGatherRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "CreateGatherRule")
+    
+    
+    return
+}
+
+func NewCreateGatherRuleResponse() (response *CreateGatherRuleResponse) {
+    response = &CreateGatherRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateGatherRule
+// 创建归集规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NUMLIMITERROR = "FailedOperation.NumLimitError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateGatherRule(request *CreateGatherRuleRequest) (response *CreateGatherRuleResponse, err error) {
+    return c.CreateGatherRuleWithContext(context.Background(), request)
+}
+
+// CreateGatherRule
+// 创建归集规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NUMLIMITERROR = "FailedOperation.NumLimitError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateGatherRuleWithContext(ctx context.Context, request *CreateGatherRuleRequest) (response *CreateGatherRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateGatherRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGatherRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGatherRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAllocationRuleRequest() (request *DeleteAllocationRuleRequest) {
+    request = &DeleteAllocationRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DeleteAllocationRule")
+    
+    
+    return
+}
+
+func NewDeleteAllocationRuleResponse() (response *DeleteAllocationRuleResponse) {
+    response = &DeleteAllocationRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAllocationRule
+// 公摊规则删除接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+func (c *Client) DeleteAllocationRule(request *DeleteAllocationRuleRequest) (response *DeleteAllocationRuleResponse, err error) {
+    return c.DeleteAllocationRuleWithContext(context.Background(), request)
+}
+
+// DeleteAllocationRule
+// 公摊规则删除接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+func (c *Client) DeleteAllocationRuleWithContext(ctx context.Context, request *DeleteAllocationRuleRequest) (response *DeleteAllocationRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteAllocationRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAllocationRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAllocationRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAllocationTagRequest() (request *DeleteAllocationTagRequest) {
     request = &DeleteAllocationTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -147,6 +377,114 @@ func (c *Client) DeleteAllocationTagWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDeleteAllocationTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAllocationUnitRequest() (request *DeleteAllocationUnitRequest) {
+    request = &DeleteAllocationUnitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DeleteAllocationUnit")
+    
+    
+    return
+}
+
+func NewDeleteAllocationUnitResponse() (response *DeleteAllocationUnitResponse) {
+    response = &DeleteAllocationUnitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAllocationUnit
+// 删除分账单元
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteAllocationUnit(request *DeleteAllocationUnitRequest) (response *DeleteAllocationUnitResponse, err error) {
+    return c.DeleteAllocationUnitWithContext(context.Background(), request)
+}
+
+// DeleteAllocationUnit
+// 删除分账单元
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteAllocationUnitWithContext(ctx context.Context, request *DeleteAllocationUnitRequest) (response *DeleteAllocationUnitResponse, err error) {
+    if request == nil {
+        request = NewDeleteAllocationUnitRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAllocationUnit require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAllocationUnitResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGatherRuleRequest() (request *DeleteGatherRuleRequest) {
+    request = &DeleteGatherRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DeleteGatherRule")
+    
+    
+    return
+}
+
+func NewDeleteGatherRuleResponse() (response *DeleteGatherRuleResponse) {
+    response = &DeleteGatherRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteGatherRule
+// 删除归集规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+func (c *Client) DeleteGatherRule(request *DeleteGatherRuleRequest) (response *DeleteGatherRuleResponse, err error) {
+    return c.DeleteGatherRuleWithContext(context.Background(), request)
+}
+
+// DeleteGatherRule
+// 删除归集规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+func (c *Client) DeleteGatherRuleWithContext(ctx context.Context, request *DeleteGatherRuleRequest) (response *DeleteGatherRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteGatherRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGatherRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGatherRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -505,6 +843,116 @@ func (c *Client) DescribeAllocationOverviewWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeAllocationRuleDetailRequest() (request *DescribeAllocationRuleDetailRequest) {
+    request = &DescribeAllocationRuleDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeAllocationRuleDetail")
+    
+    
+    return
+}
+
+func NewDescribeAllocationRuleDetailResponse() (response *DescribeAllocationRuleDetailResponse) {
+    response = &DescribeAllocationRuleDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAllocationRuleDetail
+// 查询公摊规则详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAllocationRuleDetail(request *DescribeAllocationRuleDetailRequest) (response *DescribeAllocationRuleDetailResponse, err error) {
+    return c.DescribeAllocationRuleDetailWithContext(context.Background(), request)
+}
+
+// DescribeAllocationRuleDetail
+// 查询公摊规则详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAllocationRuleDetailWithContext(ctx context.Context, request *DescribeAllocationRuleDetailRequest) (response *DescribeAllocationRuleDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllocationRuleDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllocationRuleDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAllocationRuleDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAllocationRuleSummaryRequest() (request *DescribeAllocationRuleSummaryRequest) {
+    request = &DescribeAllocationRuleSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeAllocationRuleSummary")
+    
+    
+    return
+}
+
+func NewDescribeAllocationRuleSummaryResponse() (response *DescribeAllocationRuleSummaryResponse) {
+    response = &DescribeAllocationRuleSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAllocationRuleSummary
+// 查询所有公摊规则概览
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAllocationRuleSummary(request *DescribeAllocationRuleSummaryRequest) (response *DescribeAllocationRuleSummaryResponse, err error) {
+    return c.DescribeAllocationRuleSummaryWithContext(context.Background(), request)
+}
+
+// DescribeAllocationRuleSummary
+// 查询所有公摊规则概览
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAllocationRuleSummaryWithContext(ctx context.Context, request *DescribeAllocationRuleSummaryRequest) (response *DescribeAllocationRuleSummaryResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllocationRuleSummaryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllocationRuleSummary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAllocationRuleSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAllocationSummaryByBusinessRequest() (request *DescribeAllocationSummaryByBusinessRequest) {
     request = &DescribeAllocationSummaryByBusinessRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -682,6 +1130,61 @@ func (c *Client) DescribeAllocationSummaryByResourceWithContext(ctx context.Cont
     return
 }
 
+func NewDescribeAllocationTreeRequest() (request *DescribeAllocationTreeRequest) {
+    request = &DescribeAllocationTreeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeAllocationTree")
+    
+    
+    return
+}
+
+func NewDescribeAllocationTreeResponse() (response *DescribeAllocationTreeResponse) {
+    response = &DescribeAllocationTreeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAllocationTree
+// 查询分账目录树
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAllocationTree(request *DescribeAllocationTreeRequest) (response *DescribeAllocationTreeResponse, err error) {
+    return c.DescribeAllocationTreeWithContext(context.Background(), request)
+}
+
+// DescribeAllocationTree
+// 查询分账目录树
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAllocationTreeWithContext(ctx context.Context, request *DescribeAllocationTreeRequest) (response *DescribeAllocationTreeResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllocationTreeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllocationTree require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAllocationTreeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAllocationTrendByMonthRequest() (request *DescribeAllocationTrendByMonthRequest) {
     request = &DescribeAllocationTrendByMonthRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -705,12 +1208,10 @@ func NewDescribeAllocationTrendByMonthResponse() (response *DescribeAllocationTr
 // 查询分账账单费用趋势
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAllocationTrendByMonth(request *DescribeAllocationTrendByMonthRequest) (response *DescribeAllocationTrendByMonthResponse, err error) {
     return c.DescribeAllocationTrendByMonthWithContext(context.Background(), request)
 }
@@ -719,12 +1220,10 @@ func (c *Client) DescribeAllocationTrendByMonth(request *DescribeAllocationTrend
 // 查询分账账单费用趋势
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAllocationTrendByMonthWithContext(ctx context.Context, request *DescribeAllocationTrendByMonthRequest) (response *DescribeAllocationTrendByMonthResponse, err error) {
     if request == nil {
         request = NewDescribeAllocationTrendByMonthRequest()
@@ -737,6 +1236,59 @@ func (c *Client) DescribeAllocationTrendByMonthWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewDescribeAllocationTrendByMonthResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAllocationUnitDetailRequest() (request *DescribeAllocationUnitDetailRequest) {
+    request = &DescribeAllocationUnitDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeAllocationUnitDetail")
+    
+    
+    return
+}
+
+func NewDescribeAllocationUnitDetailResponse() (response *DescribeAllocationUnitDetailResponse) {
+    response = &DescribeAllocationUnitDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAllocationUnitDetail
+// 查询分账单元详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAllocationUnitDetail(request *DescribeAllocationUnitDetailRequest) (response *DescribeAllocationUnitDetailResponse, err error) {
+    return c.DescribeAllocationUnitDetailWithContext(context.Background(), request)
+}
+
+// DescribeAllocationUnitDetail
+// 查询分账单元详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAllocationUnitDetailWithContext(ctx context.Context, request *DescribeAllocationUnitDetailRequest) (response *DescribeAllocationUnitDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeAllocationUnitDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAllocationUnitDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAllocationUnitDetailResponse()
     err = c.Send(request, response)
     return
 }
@@ -2120,6 +2672,61 @@ func (c *Client) DescribeGatherResourceWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeGatherRuleDetailRequest() (request *DescribeGatherRuleDetailRequest) {
+    request = &DescribeGatherRuleDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeGatherRuleDetail")
+    
+    
+    return
+}
+
+func NewDescribeGatherRuleDetailResponse() (response *DescribeGatherRuleDetailResponse) {
+    response = &DescribeGatherRuleDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGatherRuleDetail
+// 查询归集规则详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeGatherRuleDetail(request *DescribeGatherRuleDetailRequest) (response *DescribeGatherRuleDetailResponse, err error) {
+    return c.DescribeGatherRuleDetailWithContext(context.Background(), request)
+}
+
+// DescribeGatherRuleDetail
+// 查询归集规则详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeGatherRuleDetailWithContext(ctx context.Context, request *DescribeGatherRuleDetailRequest) (response *DescribeGatherRuleDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeGatherRuleDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGatherRuleDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGatherRuleDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSavingPlanResourceInfoRequest() (request *DescribeSavingPlanResourceInfoRequest) {
     request = &DescribeSavingPlanResourceInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2334,6 +2941,177 @@ func (c *Client) DescribeVoucherUsageDetailsWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeVoucherUsageDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAllocationRuleRequest() (request *ModifyAllocationRuleRequest) {
+    request = &ModifyAllocationRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "ModifyAllocationRule")
+    
+    
+    return
+}
+
+func NewModifyAllocationRuleResponse() (response *ModifyAllocationRuleResponse) {
+    response = &ModifyAllocationRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAllocationRule
+// 编辑公摊规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NUMLIMITERROR = "FailedOperation.NumLimitError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyAllocationRule(request *ModifyAllocationRuleRequest) (response *ModifyAllocationRuleResponse, err error) {
+    return c.ModifyAllocationRuleWithContext(context.Background(), request)
+}
+
+// ModifyAllocationRule
+// 编辑公摊规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NUMLIMITERROR = "FailedOperation.NumLimitError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyAllocationRuleWithContext(ctx context.Context, request *ModifyAllocationRuleRequest) (response *ModifyAllocationRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyAllocationRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAllocationRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAllocationRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAllocationUnitRequest() (request *ModifyAllocationUnitRequest) {
+    request = &ModifyAllocationUnitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "ModifyAllocationUnit")
+    
+    
+    return
+}
+
+func NewModifyAllocationUnitResponse() (response *ModifyAllocationUnitResponse) {
+    response = &ModifyAllocationUnitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAllocationUnit
+// 修改分账单元信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyAllocationUnit(request *ModifyAllocationUnitRequest) (response *ModifyAllocationUnitResponse, err error) {
+    return c.ModifyAllocationUnitWithContext(context.Background(), request)
+}
+
+// ModifyAllocationUnit
+// 修改分账单元信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyAllocationUnitWithContext(ctx context.Context, request *ModifyAllocationUnitRequest) (response *ModifyAllocationUnitResponse, err error) {
+    if request == nil {
+        request = NewModifyAllocationUnitRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAllocationUnit require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAllocationUnitResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyGatherRuleRequest() (request *ModifyGatherRuleRequest) {
+    request = &ModifyGatherRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "ModifyGatherRule")
+    
+    
+    return
+}
+
+func NewModifyGatherRuleResponse() (response *ModifyGatherRuleResponse) {
+    response = &ModifyGatherRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyGatherRule
+// 编辑归集规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NUMLIMITERROR = "FailedOperation.NumLimitError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyGatherRule(request *ModifyGatherRuleRequest) (response *ModifyGatherRuleResponse, err error) {
+    return c.ModifyGatherRuleWithContext(context.Background(), request)
+}
+
+// ModifyGatherRule
+// 编辑归集规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NUMLIMITERROR = "FailedOperation.NumLimitError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATERROR = "InternalError.DbOperatError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyGatherRuleWithContext(ctx context.Context, request *ModifyGatherRuleRequest) (response *ModifyGatherRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyGatherRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGatherRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGatherRuleResponse()
     err = c.Send(request, response)
     return
 }

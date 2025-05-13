@@ -207,7 +207,6 @@ type AclConfig struct {
 	AclUserRules []*AclUserRule `json:"AclUserRules,omitnil,omitempty" name:"AclUserRules"`
 
 	// 托管定制规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Customizes []*AclUserRule `json:"Customizes,omitnil,omitempty" name:"Customizes"`
 }
 
@@ -391,7 +390,6 @@ type AlgDetectRule struct {
 	AlgConditions []*AclCondition `json:"AlgConditions,omitnil,omitempty" name:"AlgConditions"`
 
 	// Cookie校验和会话行为分析。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlgDetectSession *AlgDetectSession `json:"AlgDetectSession,omitnil,omitempty" name:"AlgDetectSession"`
 
 	// 客户端行为校验。
@@ -10527,11 +10525,9 @@ type DropPageConfig struct {
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
 	// Waf(托管规则)模块的拦截页面配置。如果为null，默认使用历史配置。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WafDropPageDetail *DropPageDetail `json:"WafDropPageDetail,omitnil,omitempty" name:"WafDropPageDetail"`
 
 	// 自定义页面的拦截页面配置。如果为null，默认使用历史配置。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AclDropPageDetail *DropPageDetail `json:"AclDropPageDetail,omitnil,omitempty" name:"AclDropPageDetail"`
 }
 
@@ -11520,11 +11516,9 @@ type IntelligenceRule struct {
 	// 开关，取值有：
 	// <li>on：开启；</li>
 	// <li>off：关闭。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
 	// 规则详情。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntelligenceRuleItems []*IntelligenceRuleItem `json:"IntelligenceRuleItems,omitnil,omitempty" name:"IntelligenceRuleItems"`
 }
 
@@ -16550,7 +16544,6 @@ type SkipCondition struct {
 	MatchFromType *string `json:"MatchFromType,omitnil,omitempty" name:"MatchFromType"`
 
 	// 匹配Key的值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MatchFrom []*string `json:"MatchFrom,omitnil,omitempty" name:"MatchFrom"`
 
 	// 匹配Content所使用的匹配方式，取值为：
@@ -16559,7 +16552,6 @@ type SkipCondition struct {
 	MatchContentType *string `json:"MatchContentType,omitnil,omitempty" name:"MatchContentType"`
 
 	// 匹配Value的值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MatchContent []*string `json:"MatchContent,omitnil,omitempty" name:"MatchContent"`
 }
 
@@ -16595,11 +16587,9 @@ type SlowRateConfig struct {
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
 	// 统计的间隔，单位是秒，即在首段包传输结束后，将数据传输轴按照本参数切分，每个分片独立计算慢速攻击。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Interval *uint64 `json:"Interval,omitnil,omitempty" name:"Interval"`
 
 	// 统计时应用的速率阈值，单位是bps，即如果本分片中的传输速率没达到本参数的值，则判定为慢速攻击，应用慢速攻击的处置方式。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Threshold *uint64 `json:"Threshold,omitnil,omitempty" name:"Threshold"`
 }
 

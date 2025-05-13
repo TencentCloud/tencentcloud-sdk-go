@@ -638,7 +638,7 @@ type DescribeResourceTagsByResourceIdsRequestParams struct {
 	// 资源ID数组，大小不超过50
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
+	// 资源所在地域，示例：ap-guangzhou，不区分地域的资源该字段传空字符串，区分地域的资源必填
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
@@ -663,7 +663,7 @@ type DescribeResourceTagsByResourceIdsRequest struct {
 	// 资源ID数组，大小不超过50
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
+	// 资源所在地域，示例：ap-guangzhou，不区分地域的资源该字段传空字符串，区分地域的资源必填
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
@@ -746,7 +746,7 @@ type DescribeResourceTagsByResourceIdsSeqRequestParams struct {
 	// 资源唯一标记
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
+	// 资源所在地域，示例：ap-guangzhou, 不区分地域的资源该字段传空字符串，区分地域的资源必填
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
@@ -768,7 +768,7 @@ type DescribeResourceTagsByResourceIdsSeqRequest struct {
 	// 资源唯一标记
 	ResourceIds []*string `json:"ResourceIds,omitnil,omitempty" name:"ResourceIds"`
 
-	// 资源所在地域，示例：ap-guangzhou 不区分地域的资源不需要传入该字段，区分地域的资源必填
+	// 资源所在地域，示例：ap-guangzhou, 不区分地域的资源该字段传空字符串，区分地域的资源必填
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
@@ -2233,10 +2233,10 @@ type ModifyResourceTagsRequestParams struct {
 	// [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
-	// 需要增加或修改的标签集合。如果Resource描述的资源未关联输入的标签键，则增加关联；若已关联，则将该资源关联的键对应的标签值修改为输入值。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。
+	// 需要增加或修改的标签集合。如果Resource描述的资源未关联输入的标签键，则增加关联；若已关联，则将该资源关联的键对应的标签值修改为输入值。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。标签数量不超过10个。
 	ReplaceTags []*Tag `json:"ReplaceTags,omitnil,omitempty" name:"ReplaceTags"`
 
-	// 需要解关联的标签集合。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。
+	// 需要解关联的标签集合。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。标签数量不超过10个。
 	DeleteTags []*TagKeyObject `json:"DeleteTags,omitnil,omitempty" name:"DeleteTags"`
 }
 
@@ -2246,10 +2246,10 @@ type ModifyResourceTagsRequest struct {
 	// [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
-	// 需要增加或修改的标签集合。如果Resource描述的资源未关联输入的标签键，则增加关联；若已关联，则将该资源关联的键对应的标签值修改为输入值。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。
+	// 需要增加或修改的标签集合。如果Resource描述的资源未关联输入的标签键，则增加关联；若已关联，则将该资源关联的键对应的标签值修改为输入值。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。标签数量不超过10个。
 	ReplaceTags []*Tag `json:"ReplaceTags,omitnil,omitempty" name:"ReplaceTags"`
 
-	// 需要解关联的标签集合。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。
+	// 需要解关联的标签集合。本接口中ReplaceTags和DeleteTags二者必须存在其一，且二者不能包含相同的标签键。可以不传该参数，但不能是空数组。标签数量不超过10个。
 	DeleteTags []*TagKeyObject `json:"DeleteTags,omitnil,omitempty" name:"DeleteTags"`
 }
 

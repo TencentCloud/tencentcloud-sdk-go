@@ -4331,6 +4331,11 @@ type EnvVar struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type ExecAction struct {
+	// 执行命令列表
+	Command []*string `json:"Command,omitnil,omitempty" name:"Command"`
+}
+
 type Filter struct {
 	// 过滤字段名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -4408,6 +4413,9 @@ type HDFSConfig struct {
 type HTTPGetAction struct {
 	// http 路径
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 调用端口
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
 type HealthProbe struct {
@@ -5719,6 +5727,14 @@ type NotebookSetItem struct {
 	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 }
 
+type NumOrPercent struct {
+	// Num,Percent ,分别表示数量和百分比，默认为 Num
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 数值
+	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
 type Option struct {
 	// 指标名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -5844,6 +5860,15 @@ type Probe struct {
 type ProbeAction struct {
 	// http get 行为
 	HTTPGet *HTTPGetAction `json:"HTTPGet,omitnil,omitempty" name:"HTTPGet"`
+
+	// 执行命令检查 行为
+	Exec *ExecAction `json:"Exec,omitnil,omitempty" name:"Exec"`
+
+	// tcp socket 检查行为
+	TCPSocket *TCPSocketAction `json:"TCPSocket,omitnil,omitempty" name:"TCPSocket"`
+
+	// 探针类型，默认 HTTPGet，可选值：HTTPGet、Exec、TCPSocket
+	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 }
 
 // Predefined struct for user
@@ -6083,6 +6108,14 @@ type ResourceInstanceRunningJobInfo struct {
 	// 任务自定义名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+}
+
+type RollingUpdate struct {
+	// 滚动更新的最大不可用
+	MaxUnavailable *NumOrPercent `json:"MaxUnavailable,omitnil,omitempty" name:"MaxUnavailable"`
+
+	// 滚动更新的最大新增实例
+	MaxSurge *NumOrPercent `json:"MaxSurge,omitnil,omitempty" name:"MaxSurge"`
 }
 
 type SSHConfig struct {
@@ -6452,6 +6485,9 @@ type ServiceGroup struct {
 
 	// 限流鉴权 token 列表
 	AuthTokens []*AuthToken `json:"AuthTokens,omitnil,omitempty" name:"AuthTokens"`
+
+	// 用于监控的创建来源字段
+	MonitorSource *string `json:"MonitorSource,omitnil,omitempty" name:"MonitorSource"`
 }
 
 type ServiceInfo struct {
@@ -6605,6 +6641,9 @@ type ServiceInfo struct {
 
 	// 健康探针
 	HealthProbe *HealthProbe `json:"HealthProbe,omitnil,omitempty" name:"HealthProbe"`
+
+	// 滚动更新配置
+	RollingUpdate *RollingUpdate `json:"RollingUpdate,omitnil,omitempty" name:"RollingUpdate"`
 }
 
 type ServiceLimit struct {
@@ -6989,6 +7028,11 @@ func (r *StopTrainingTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopTrainingTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TCPSocketAction struct {
+	// 调用端口
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 }
 
 type TJCallInfo struct {

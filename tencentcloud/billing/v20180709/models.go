@@ -499,12 +499,93 @@ type AllocationOverviewTotal struct {
 	TransferPayAmount *string `json:"TransferPayAmount,omitnil,omitempty" name:"TransferPayAmount"`
 }
 
+type AllocationRationExpression struct {
+	// 公摊规则所属分账单元ID
+	NodeId *uint64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// 分账单元所占公摊比例，按占比分摊传0
+	Ratio *float64 `json:"Ratio,omitnil,omitempty" name:"Ratio"`
+}
+
 type AllocationRule struct {
 	// 公摊规则ID
 	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 公摊规则名称
 	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+}
+
+type AllocationRuleExpression struct {
+	// RuleKey：分账维度
+	// 枚举值：
+	// ownerUin - 使用者UIN,
+	// operateUin - 操作者UIN,
+	// businessCode - 产品一层编码,
+	// productCode - 产品二层编码,
+	// itemCode - 产品四层编码,
+	// projectId - 项目ID,
+	// regionId - 地域ID,
+	// resourceId - 资源ID,
+	// tag - 标签键值对,
+	// payMode - 计费模式,
+	// instanceType - 实例类型,
+	// actionType - 交易类型
+	RuleKey *string `json:"RuleKey,omitnil,omitempty" name:"RuleKey"`
+
+	// 分账维度规则
+	// 枚举值：
+	// in - 是
+	// not in - 不是
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 分账维度值，例如当RuleKey为businessCode时，["p_cbs","p_sqlserver"]表示产品一层是"p_cbs","p_sqlserver"的费用
+	RuleValue []*string `json:"RuleValue,omitnil,omitempty" name:"RuleValue"`
+
+	// 分账逻辑连接词，枚举值如下：
+	// and - 且
+	// or - 或
+	Connectors *string `json:"Connectors,omitnil,omitempty" name:"Connectors"`
+
+	// 嵌套规则
+	Children []*AllocationRuleExpression `json:"Children,omitnil,omitempty" name:"Children"`
+}
+
+type AllocationRuleOverview struct {
+	// 公摊规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 公摊规则名称
+	RuleName *string `json:"RuleName,omitnil,omitempty" name:"RuleName"`
+
+	// 公摊策略类型
+	// 枚举值：
+	// 1 - 自定义分摊占比 
+	// 2 - 等比分摊 
+	// 3 - 按占比分摊
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 公摊规则最后更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 分账单元概览
+	AllocationNode []*AllocationUnit `json:"AllocationNode,omitnil,omitempty" name:"AllocationNode"`
+}
+
+type AllocationRulesSummary struct {
+	// 新增公摊规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 公摊策略类型，枚举值如下：
+	// 1 - 自定义分摊占比 
+	// 2 - 等比分摊
+	// 3 - 按占比分摊
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 公摊规则表达式
+	RuleDetail *AllocationRuleExpression `json:"RuleDetail,omitnil,omitempty" name:"RuleDetail"`
+
+	// 公摊比例表达式，按占比分摊不传
+	RatioDetail []*AllocationRationExpression `json:"RatioDetail,omitnil,omitempty" name:"RatioDetail"`
 }
 
 type AllocationStat struct {
@@ -970,11 +1051,33 @@ type AllocationSummaryByResource struct {
 	BillMonth *string `json:"BillMonth,omitnil,omitempty" name:"BillMonth"`
 }
 
+type AllocationTree struct {
+	// 分账单元ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 分账单元名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 分账单元唯一标识
+	TreeNodeUniqKey *string `json:"TreeNodeUniqKey,omitnil,omitempty" name:"TreeNodeUniqKey"`
+
+	// 子树
+	Children []*AllocationTree `json:"Children,omitnil,omitempty" name:"Children"`
+}
+
 type AllocationTreeNode struct {
 	// 分账单元唯一标识
 	TreeNodeUniqKey *string `json:"TreeNodeUniqKey,omitnil,omitempty" name:"TreeNodeUniqKey"`
 
 	// 分账单元名称
+	TreeNodeUniqKeyName *string `json:"TreeNodeUniqKeyName,omitnil,omitempty" name:"TreeNodeUniqKeyName"`
+}
+
+type AllocationUnit struct {
+	// 分账单元ID
+	NodeId *uint64 `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// 分账规则名称
 	TreeNodeUniqKeyName *string `json:"TreeNodeUniqKeyName,omitnil,omitempty" name:"TreeNodeUniqKeyName"`
 }
 
@@ -2316,6 +2419,70 @@ type CostDetail struct {
 }
 
 // Predefined struct for user
+type CreateAllocationRuleRequestParams struct {
+	// 公摊规则列表
+	RuleList *AllocationRulesSummary `json:"RuleList,omitnil,omitempty" name:"RuleList"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+type CreateAllocationRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 公摊规则列表
+	RuleList *AllocationRulesSummary `json:"RuleList,omitnil,omitempty" name:"RuleList"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+func (r *CreateAllocationRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAllocationRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleList")
+	delete(f, "Month")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAllocationRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAllocationRuleResponseParams struct {
+	// 新增公摊规则ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAllocationRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAllocationRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateAllocationRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAllocationRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateAllocationTagRequestParams struct {
 	// 用户分账标签键
 	TagKey []*string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
@@ -2366,6 +2533,151 @@ func (r *CreateAllocationTagResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAllocationTagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAllocationUnitRequestParams struct {
+	// 新增分账单元父节点ID
+	ParentId *uint64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+
+	// 新增分账单元名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+type CreateAllocationUnitRequest struct {
+	*tchttp.BaseRequest
+	
+	// 新增分账单元父节点ID
+	ParentId *uint64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+
+	// 新增分账单元名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+func (r *CreateAllocationUnitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAllocationUnitRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ParentId")
+	delete(f, "Name")
+	delete(f, "Month")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAllocationUnitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAllocationUnitResponseParams struct {
+	// 新增分账单元ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 分账单元唯一标识
+	TreeNodeUniqKey *string `json:"TreeNodeUniqKey,omitnil,omitempty" name:"TreeNodeUniqKey"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAllocationUnitResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAllocationUnitResponseParams `json:"Response"`
+}
+
+func (r *CreateAllocationUnitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAllocationUnitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGatherRuleRequestParams struct {
+	// 规则所属分账单元ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 归集规则详情
+	RuleList *GatherRuleSummary `json:"RuleList,omitnil,omitempty" name:"RuleList"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+type CreateGatherRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则所属分账单元ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 归集规则详情
+	RuleList *GatherRuleSummary `json:"RuleList,omitnil,omitempty" name:"RuleList"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+func (r *CreateGatherRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGatherRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "RuleList")
+	delete(f, "Month")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGatherRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGatherRuleResponseParams struct {
+	// 归集规则ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateGatherRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateGatherRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateGatherRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGatherRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2463,6 +2775,67 @@ type Deal struct {
 }
 
 // Predefined struct for user
+type DeleteAllocationRuleRequestParams struct {
+	// 所删除公摊规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+type DeleteAllocationRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 所删除公摊规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+func (r *DeleteAllocationRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAllocationRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleId")
+	delete(f, "Month")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAllocationRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAllocationRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAllocationRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAllocationRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteAllocationRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAllocationRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAllocationTagRequestParams struct {
 	// 用户分账标签键
 	TagKey []*string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
@@ -2513,6 +2886,128 @@ func (r *DeleteAllocationTagResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAllocationTagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAllocationUnitRequestParams struct {
+	// 所删除分账单元ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+type DeleteAllocationUnitRequest struct {
+	*tchttp.BaseRequest
+	
+	// 所删除分账单元ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+func (r *DeleteAllocationUnitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAllocationUnitRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Month")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAllocationUnitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAllocationUnitResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAllocationUnitResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAllocationUnitResponseParams `json:"Response"`
+}
+
+func (r *DeleteAllocationUnitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAllocationUnitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGatherRuleRequestParams struct {
+	// 所删除归集规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+type DeleteGatherRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 所删除归集规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+func (r *DeleteGatherRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGatherRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleId")
+	delete(f, "Month")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGatherRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGatherRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteGatherRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteGatherRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteGatherRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGatherRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3347,6 +3842,184 @@ func (r *DescribeAllocationOverviewResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAllocationRuleDetailRequestParams struct {
+	// 所查询公摊规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+type DescribeAllocationRuleDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 所查询公摊规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+func (r *DescribeAllocationRuleDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAllocationRuleDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleId")
+	delete(f, "Month")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAllocationRuleDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAllocationRuleDetailResponseParams struct {
+	// 公摊规则ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 公摊规则所属UIN
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 公摊规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 公摊策略类型，枚举值如下：
+	// 1 - 自定义分摊占比 
+	// 2 - 等比分摊 
+	// 3 - 按占比分摊
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 公摊规则表达式
+	RuleDetail *AllocationRuleExpression `json:"RuleDetail,omitnil,omitempty" name:"RuleDetail"`
+
+	// 公摊比例表达式，Type为1和2时返回
+	RatioDetail []*AllocationRationExpression `json:"RatioDetail,omitnil,omitempty" name:"RatioDetail"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAllocationRuleDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAllocationRuleDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeAllocationRuleDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAllocationRuleDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAllocationRuleSummaryRequestParams struct {
+	// 每次获取数据量，最大值1000
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+
+	// 公摊策略类型，用于筛选。
+	// 枚举值如下： 
+	// 1 - 自定义分摊占比 
+	// 2 - 等比分摊 
+	// 3 - 按占比分摊
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 公摊规则名称或分账单元名称，用于模糊筛选。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type DescribeAllocationRuleSummaryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每次获取数据量，最大值1000
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+
+	// 公摊策略类型，用于筛选。
+	// 枚举值如下： 
+	// 1 - 自定义分摊占比 
+	// 2 - 等比分摊 
+	// 3 - 按占比分摊
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 公摊规则名称或分账单元名称，用于模糊筛选。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+func (r *DescribeAllocationRuleSummaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAllocationRuleSummaryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Month")
+	delete(f, "Type")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAllocationRuleSummaryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAllocationRuleSummaryResponseParams struct {
+	// 公摊规则表达式
+	RuleList []*AllocationRuleOverview `json:"RuleList,omitnil,omitempty" name:"RuleList"`
+
+	// 规则总数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAllocationRuleSummaryResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAllocationRuleSummaryResponseParams `json:"Response"`
+}
+
+func (r *DescribeAllocationRuleSummaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAllocationRuleSummaryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAllocationSummaryByBusinessRequestParams struct {
 	// 数量，最大值为1000
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -3999,6 +4672,72 @@ func (r *DescribeAllocationSummaryByResourceResponse) FromJsonString(s string) e
 }
 
 // Predefined struct for user
+type DescribeAllocationTreeRequestParams struct {
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+type DescribeAllocationTreeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+func (r *DescribeAllocationTreeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAllocationTreeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Month")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAllocationTreeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAllocationTreeResponseParams struct {
+	// 分账单元ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 分账单元名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 分账单元唯一标识
+	TreeNodeUniqKey *string `json:"TreeNodeUniqKey,omitnil,omitempty" name:"TreeNodeUniqKey"`
+
+	// 子树
+	Children []*AllocationTree `json:"Children,omitnil,omitempty" name:"Children"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAllocationTreeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAllocationTreeResponseParams `json:"Response"`
+}
+
+func (r *DescribeAllocationTreeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAllocationTreeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAllocationTrendByMonthRequestParams struct {
 	// 账单月份，格式为2024-02，不传默认当前月
 	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
@@ -4072,6 +4811,94 @@ func (r *DescribeAllocationTrendByMonthResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAllocationTrendByMonthResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAllocationUnitDetailRequestParams struct {
+	// 所查询分账单元Id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+type DescribeAllocationUnitDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 所查询分账单元Id
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+func (r *DescribeAllocationUnitDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAllocationUnitDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Month")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAllocationUnitDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAllocationUnitDetailResponseParams struct {
+	// 分账单元ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 分账单元所属UIN
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 分账单元名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 分账单元父节点ID
+	ParentId *uint64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+
+	// 源组织名称
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// 源组织ID
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// 备注说明
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 分账单元标识
+	TreeNodeUniqKey *string `json:"TreeNodeUniqKey,omitnil,omitempty" name:"TreeNodeUniqKey"`
+
+	// 若分账单元设置归集规则，返回归集规则ID，若无分账规则，则不返回
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAllocationUnitDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAllocationUnitDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeAllocationUnitDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAllocationUnitDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4392,6 +5219,8 @@ type DescribeBillDetailRequestParams struct {
 	NeedRecordNum *int64 `json:"NeedRecordNum,omitnil,omitempty" name:"NeedRecordNum"`
 
 	// 已废弃参数，未开放
+	//
+	// Deprecated: ProductCode is deprecated.
 	ProductCode *string `json:"ProductCode,omitnil,omitempty" name:"ProductCode"`
 
 	// 付费模式 prePay(表示包年包月)/postPay(表示按时按量)
@@ -7256,6 +8085,79 @@ func (r *DescribeGatherResourceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeGatherRuleDetailRequestParams struct {
+	// 所查询归集规则ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+type DescribeGatherRuleDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 所查询归集规则ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+func (r *DescribeGatherRuleDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGatherRuleDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Month")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGatherRuleDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGatherRuleDetailResponseParams struct {
+	// 归集规则ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 归集规则所属UIN
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 归集规则最后更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 归集规则详情
+	RuleDetail *AllocationRuleExpression `json:"RuleDetail,omitnil,omitempty" name:"RuleDetail"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeGatherRuleDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGatherRuleDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeGatherRuleDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGatherRuleDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSavingPlanResourceInfoRequestParams struct {
 	// 数量，最大值为100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -7963,12 +8865,263 @@ type GatherResourceSummary struct {
 	SplitItemName *string `json:"SplitItemName,omitnil,omitempty" name:"SplitItemName"`
 }
 
+type GatherRuleSummary struct {
+	// 分账规则表达式
+	RuleDetail *AllocationRuleExpression `json:"RuleDetail,omitnil,omitempty" name:"RuleDetail"`
+}
+
 type JsonObject struct {
 	// key值
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// value值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+// Predefined struct for user
+type ModifyAllocationRuleRequestParams struct {
+	// 所编辑公摊规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 编辑后公摊规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 公摊策略类型，枚举值如下： 1 - 自定义分摊占比 2 - 等比分摊 3 - 按占比分摊
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 编辑后公摊规则表达式
+	RuleDetail *AllocationRuleExpression `json:"RuleDetail,omitnil,omitempty" name:"RuleDetail"`
+
+	// 编辑后公摊比例表达式
+	RatioDetail []*AllocationRationExpression `json:"RatioDetail,omitnil,omitempty" name:"RatioDetail"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+type ModifyAllocationRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 所编辑公摊规则ID
+	RuleId *uint64 `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+
+	// 编辑后公摊规则名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 公摊策略类型，枚举值如下： 1 - 自定义分摊占比 2 - 等比分摊 3 - 按占比分摊
+	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 编辑后公摊规则表达式
+	RuleDetail *AllocationRuleExpression `json:"RuleDetail,omitnil,omitempty" name:"RuleDetail"`
+
+	// 编辑后公摊比例表达式
+	RatioDetail []*AllocationRationExpression `json:"RatioDetail,omitnil,omitempty" name:"RatioDetail"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+func (r *ModifyAllocationRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAllocationRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleId")
+	delete(f, "Name")
+	delete(f, "Type")
+	delete(f, "RuleDetail")
+	delete(f, "RatioDetail")
+	delete(f, "Month")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAllocationRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAllocationRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAllocationRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAllocationRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyAllocationRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAllocationRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAllocationUnitRequestParams struct {
+	// 所修改分账单元ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 修改后分账单元名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 修改后分账单元源组织名称
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// 修改后分账单元源组织ID
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// 分账单元备注说明
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+type ModifyAllocationUnitRequest struct {
+	*tchttp.BaseRequest
+	
+	// 所修改分账单元ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 修改后分账单元名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 修改后分账单元源组织名称
+	SourceName *string `json:"SourceName,omitnil,omitempty" name:"SourceName"`
+
+	// 修改后分账单元源组织ID
+	SourceId *string `json:"SourceId,omitnil,omitempty" name:"SourceId"`
+
+	// 分账单元备注说明
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+func (r *ModifyAllocationUnitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAllocationUnitRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Name")
+	delete(f, "SourceName")
+	delete(f, "SourceId")
+	delete(f, "Remark")
+	delete(f, "Month")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAllocationUnitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAllocationUnitResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAllocationUnitResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAllocationUnitResponseParams `json:"Response"`
+}
+
+func (r *ModifyAllocationUnitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAllocationUnitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGatherRuleRequestParams struct {
+	// 所编辑归集规则ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 所编辑分账规则详情
+	RuleDetail *AllocationRuleExpression `json:"RuleDetail,omitnil,omitempty" name:"RuleDetail"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+type ModifyGatherRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 所编辑归集规则ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 所编辑分账规则详情
+	RuleDetail *AllocationRuleExpression `json:"RuleDetail,omitnil,omitempty" name:"RuleDetail"`
+
+	// 月份，不传默认当前月
+	Month *string `json:"Month,omitnil,omitempty" name:"Month"`
+}
+
+func (r *ModifyGatherRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGatherRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "RuleDetail")
+	delete(f, "Month")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyGatherRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGatherRuleResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyGatherRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyGatherRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyGatherRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGatherRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

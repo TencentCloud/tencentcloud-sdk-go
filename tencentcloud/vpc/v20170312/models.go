@@ -26896,7 +26896,7 @@ type ModifyIPv6AddressesBandwidthRequestParams struct {
 	// 弹性公网IPv6地址唯一ID，可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressId。
 	IPv6AddressIds []*string `json:"IPv6AddressIds,omitnil,omitempty" name:"IPv6AddressIds"`
 
-	// 弹性公网IPv6地址网络带宽，可调整的带宽上限值参考产品文档中[IPv6 计费限制说明](https://cloud.tencent.com/document/product/1142/38369)。
+	// 弹性公网IPv6地址网络带宽，可调整的带宽上限值参考产品文档中[IPv6 计费限制说明](https://write.woa.com/document/123652708247588864#IPv6)。
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 }
 
@@ -26906,7 +26906,7 @@ type ModifyIPv6AddressesBandwidthRequest struct {
 	// 弹性公网IPv6地址唯一ID，可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressId。
 	IPv6AddressIds []*string `json:"IPv6AddressIds,omitnil,omitempty" name:"IPv6AddressIds"`
 
-	// 弹性公网IPv6地址网络带宽，可调整的带宽上限值参考产品文档中[IPv6 计费限制说明](https://cloud.tencent.com/document/product/1142/38369)。
+	// 弹性公网IPv6地址网络带宽，可调整的带宽上限值参考产品文档中[IPv6 计费限制说明](https://write.woa.com/document/123652708247588864#IPv6)。
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 }
 
@@ -26954,7 +26954,7 @@ func (r *ModifyIPv6AddressesBandwidthResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyIp6AddressesBandwidthRequestParams struct {
-	// 修改的目标带宽，单位Mbps。可调整的带宽上限值参考产品文档中[IPv6 计费限制说明](https://cloud.tencent.com/document/product/1142/38369)。
+	// 修改的目标带宽，单位Mbps。可调整的带宽上限值参考产品文档中[IPv6 计费限制说明](https://write.woa.com/document/123652708247588864#IPv6)。
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
 	// IPv6地址。可以使用[DescribeIp6Addresses](https://cloud.tencent.com/document/product/215/40089)接口查询Ip6Addresses。Ip6Addresses和Ip6AddressIds必须且只能传一个。
@@ -26967,7 +26967,7 @@ type ModifyIp6AddressesBandwidthRequestParams struct {
 type ModifyIp6AddressesBandwidthRequest struct {
 	*tchttp.BaseRequest
 	
-	// 修改的目标带宽，单位Mbps。可调整的带宽上限值参考产品文档中[IPv6 计费限制说明](https://cloud.tencent.com/document/product/1142/38369)。
+	// 修改的目标带宽，单位Mbps。可调整的带宽上限值参考产品文档中[IPv6 计费限制说明](https://write.woa.com/document/123652708247588864#IPv6)。
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
 	// IPv6地址。可以使用[DescribeIp6Addresses](https://cloud.tencent.com/document/product/215/40089)接口查询Ip6Addresses。Ip6Addresses和Ip6AddressIds必须且只能传一个。
