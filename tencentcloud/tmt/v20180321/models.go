@@ -20,6 +20,20 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type BoundingBox struct {
+	// 左上顶点x坐标
+	X *int64 `json:"X,omitnil,omitempty" name:"X"`
+
+	// 左上顶点y坐标
+	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
+
+	// 宽
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 高
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
+}
+
 // Predefined struct for user
 type FileTranslateRequestParams struct {
 	// 源语言，支持
@@ -281,6 +295,66 @@ func (r *GetFileTranslateResponse) FromJsonString(s string) error {
 type ImageRecord struct {
 	// 图片翻译结果
 	Value []*ItemValue `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+// Predefined struct for user
+type ImageTranslateLLMRequestParams struct {
+	// 输入图 Url。 使用Url的时候，Data参数需要传入""。 图片限制：小于 10MB，分辨率建议600*800以上，格式支持 jpg、jpeg、png。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
+type ImageTranslateLLMRequest struct {
+	*tchttp.BaseRequest
+	
+	// 输入图 Url。 使用Url的时候，Data参数需要传入""。 图片限制：小于 10MB，分辨率建议600*800以上，格式支持 jpg、jpeg、png。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
+func (r *ImageTranslateLLMRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImageTranslateLLMRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Url")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageTranslateLLMRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImageTranslateLLMResponseParams struct {
+	// 逆时针图片角度，取值范围为0-359
+	Angle *float64 `json:"Angle,omitnil,omitempty" name:"Angle"`
+
+	// 翻译详情信息
+	TransDetails []*TransDetail `json:"TransDetails,omitnil,omitempty" name:"TransDetails"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ImageTranslateLLMResponse struct {
+	*tchttp.BaseResponse
+	Response *ImageTranslateLLMResponseParams `json:"Response"`
+}
+
+func (r *ImageTranslateLLMResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImageTranslateLLMResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1006,4 +1080,24 @@ func (r *TextTranslateResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *TextTranslateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TransDetail struct {
+	// 当前行的原文本
+	SourceLineText *string `json:"SourceLineText,omitnil,omitempty" name:"SourceLineText"`
+
+	// 当前行的译文
+	TargetLineText *string `json:"TargetLineText,omitnil,omitempty" name:"TargetLineText"`
+
+	// 段落文本框位置
+	BoundingBox *BoundingBox `json:"BoundingBox,omitnil,omitempty" name:"BoundingBox"`
+
+	// 行数
+	LinesCount *int64 `json:"LinesCount,omitnil,omitempty" name:"LinesCount"`
+
+	// 行高
+	LineHeight *int64 `json:"LineHeight,omitnil,omitempty" name:"LineHeight"`
+
+	// 正常段落spam_code字段为0；如果存在spam_code字段且值大于0（1: 命中垃圾检查；2: 命中安全策略；3: 其他。），则命中安全检查被过滤。
+	SpamCode *int64 `json:"SpamCode,omitnil,omitempty" name:"SpamCode"`
 }

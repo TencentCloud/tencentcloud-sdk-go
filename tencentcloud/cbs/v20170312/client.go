@@ -500,7 +500,7 @@ func NewCopySnapshotCrossRegionsResponse() (response *CopySnapshotCrossRegionsRe
 //
 // * 本接口为异步接口，当跨地域复制的请求下发成功后会返回一个新的快照ID，此时快照未立即复制到目标地域，可请求目标地域的[DescribeSnapshots](/document/product/362/15647)接口查询新快照的状态，判断是否复制完成。如果快照的状态为“NORMAL”，表示快照复制完成。
 //
-// * 本接口实现的快照跨地域复制操作将产生跨地域流量，预计2022年第三季度会针对此功能进行商业化计费；请留意后续站内信公告，避免产生预期外扣费。
+// * 本接口实现的快照跨地域复制操作将产生跨地域流量，预计2025年第三季度会针对此功能进行商业化计费；请留意后续站内信公告，避免产生预期外扣费。
 //
 // 可能返回的错误码:
 //  INSUFFICIENTSNAPSHOTQUOTA = "InsufficientSnapshotQuota"
@@ -523,7 +523,7 @@ func (c *Client) CopySnapshotCrossRegions(request *CopySnapshotCrossRegionsReque
 //
 // * 本接口为异步接口，当跨地域复制的请求下发成功后会返回一个新的快照ID，此时快照未立即复制到目标地域，可请求目标地域的[DescribeSnapshots](/document/product/362/15647)接口查询新快照的状态，判断是否复制完成。如果快照的状态为“NORMAL”，表示快照复制完成。
 //
-// * 本接口实现的快照跨地域复制操作将产生跨地域流量，预计2022年第三季度会针对此功能进行商业化计费；请留意后续站内信公告，避免产生预期外扣费。
+// * 本接口实现的快照跨地域复制操作将产生跨地域流量，预计2025年第三季度会针对此功能进行商业化计费；请留意后续站内信公告，避免产生预期外扣费。
 //
 // 可能返回的错误码:
 //  INSUFFICIENTSNAPSHOTQUOTA = "InsufficientSnapshotQuota"

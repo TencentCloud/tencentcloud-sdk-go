@@ -109,6 +109,58 @@ type BatchRecordInfo struct {
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
+type BatchSearchDomainInfo struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 域名 ID
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// 域名套餐等级
+	DomainGrade *string `json:"DomainGrade,omitnil,omitempty" name:"DomainGrade"`
+
+	// 记录信息列表
+	RecordList []*BatchSearchRecordInfo `json:"RecordList,omitnil,omitempty" name:"RecordList"`
+}
+
+type BatchSearchRecordInfo struct {
+	// 解析记录 ID
+	RecordId *uint64 `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// 解析线路
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 记录备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// TTL(秒)
+	TTL *uint64 `json:"TTL,omitnil,omitempty" name:"TTL"`
+
+	// 记录类型
+	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
+
+	// 记录是否启用
+	Enabled *uint64 `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 权重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// 记录分组 ID
+	GroupId *uint64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 子域名
+	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
+
+	// 解析值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// MX优先级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MX *uint64 `json:"MX,omitnil,omitempty" name:"MX"`
+}
+
 // Predefined struct for user
 type CheckRecordSnapshotRollbackRequestParams struct {
 	// 域名
@@ -2717,6 +2769,130 @@ func (r *DescribeDomainAnalyticsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDomainAnalyticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDomainAndRecordListRequestParams struct {
+	// 搜索所有域名。AllDomain、GroupIdList、DomainList、DomainIdList 参数传任一个即可。优先级为：AllDomain > GroupIdList  > DomainList > DomainIdList。
+	AllDomain *string `json:"AllDomain,omitnil,omitempty" name:"AllDomain"`
+
+	// 要搜索的域名列表。
+	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
+
+	// 要搜索的域名 ID 列表。
+	DomainIdList []*uint64 `json:"DomainIdList,omitnil,omitempty" name:"DomainIdList"`
+
+	// 要搜索的域名分组 ID 列表。
+	GroupIdList []*uint64 `json:"GroupIdList,omitnil,omitempty" name:"GroupIdList"`
+
+	// 记录类型筛选
+	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
+
+	// 子域名筛选
+	SubKeyword *string `json:"SubKeyword,omitnil,omitempty" name:"SubKeyword"`
+
+	// 记录值筛选
+	ValueKeyword *string `json:"ValueKeyword,omitnil,omitempty" name:"ValueKeyword"`
+
+	// 线路筛选
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 备注筛选
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 记录状态筛选
+	// 1：正常
+	// 0：暂停
+	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+type DescribeDomainAndRecordListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 搜索所有域名。AllDomain、GroupIdList、DomainList、DomainIdList 参数传任一个即可。优先级为：AllDomain > GroupIdList  > DomainList > DomainIdList。
+	AllDomain *string `json:"AllDomain,omitnil,omitempty" name:"AllDomain"`
+
+	// 要搜索的域名列表。
+	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
+
+	// 要搜索的域名 ID 列表。
+	DomainIdList []*uint64 `json:"DomainIdList,omitnil,omitempty" name:"DomainIdList"`
+
+	// 要搜索的域名分组 ID 列表。
+	GroupIdList []*uint64 `json:"GroupIdList,omitnil,omitempty" name:"GroupIdList"`
+
+	// 记录类型筛选
+	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
+
+	// 子域名筛选
+	SubKeyword *string `json:"SubKeyword,omitnil,omitempty" name:"SubKeyword"`
+
+	// 记录值筛选
+	ValueKeyword *string `json:"ValueKeyword,omitnil,omitempty" name:"ValueKeyword"`
+
+	// 线路筛选
+	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 备注筛选
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 记录状态筛选
+	// 1：正常
+	// 0：暂停
+	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+}
+
+func (r *DescribeDomainAndRecordListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainAndRecordListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AllDomain")
+	delete(f, "DomainList")
+	delete(f, "DomainIdList")
+	delete(f, "GroupIdList")
+	delete(f, "RecordType")
+	delete(f, "SubKeyword")
+	delete(f, "ValueKeyword")
+	delete(f, "Area")
+	delete(f, "Remark")
+	delete(f, "Enabled")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainAndRecordListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDomainAndRecordListResponseParams struct {
+	// 域名列表
+	DetailList []*BatchSearchDomainInfo `json:"DetailList,omitnil,omitempty" name:"DetailList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDomainAndRecordListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDomainAndRecordListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDomainAndRecordListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainAndRecordListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

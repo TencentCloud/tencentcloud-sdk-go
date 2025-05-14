@@ -50,11 +50,20 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 告警接收地址不存在。
+	INVALIDPARAMETER_ALARMRECEIVEADDRESSNOTEXIST = "InvalidParameter.AlarmReceiveAddressNotExist"
+
+	// ClientIp未被授权。
+	INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
+
 	// 数据引擎实例不存在。
 	INVALIDPARAMETER_DATAENGINEINSTANCENOTEXISTS = "InvalidParameter.DataEngineInstanceNotExists"
 
 	// 名称重复。
 	INVALIDPARAMETER_DUPLICATENAME = "InvalidParameter.DuplicateName"
+
+	// 告警接收地址不合法。
+	INVALIDPARAMETER_INVALIDALARMURL = "InvalidParameter.InvalidAlarmUrl"
 
 	// 查询过滤条件参数错误。
 	INVALIDPARAMETER_INVALIDFILTERPARAMETER = "InvalidParameter.InvalidFilterParameter"

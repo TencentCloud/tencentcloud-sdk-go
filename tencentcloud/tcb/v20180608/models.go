@@ -2968,7 +2968,7 @@ type DescribeCbrServerVersionResponseParams struct {
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// Dockefile的路径
+	// Dockerfile的路径
 	DockerfilePath *string `json:"DockerfilePath,omitnil,omitempty" name:"DockerfilePath"`
 
 	// DockerBuild的目录
@@ -4155,7 +4155,7 @@ type DescribeCloudBaseRunServerVersionResponseParams struct {
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// Dockefile的路径
+	// Dockerfile的路径
 	DockerfilePath *string `json:"DockerfilePath,omitnil,omitempty" name:"DockerfilePath"`
 
 	// DockerBuild的目录

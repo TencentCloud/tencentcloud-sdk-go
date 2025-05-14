@@ -1356,6 +1356,7 @@ func NewDescribeCbrServerVersionResponse() (response *DescribeCbrServerVersionRe
 // 查询服务版本的详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
@@ -1370,6 +1371,7 @@ func (c *Client) DescribeCbrServerVersion(request *DescribeCbrServerVersionReque
 // 查询服务版本的详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
@@ -2063,6 +2065,7 @@ func NewDescribeCloudBaseRunServerVersionResponse() (response *DescribeCloudBase
 // 查询服务版本的详情，CPU和MEM  请使用CPUSize和MemSize
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
@@ -2077,6 +2080,7 @@ func (c *Client) DescribeCloudBaseRunServerVersion(request *DescribeCloudBaseRun
 // 查询服务版本的详情，CPU和MEM  请使用CPUSize和MemSize
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"

@@ -2508,6 +2508,7 @@ func NewDescribeUnPreDomainDetailResponse() (response *DescribeUnPreDomainDetail
 // 查询预释放未预约域名详情接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEUNPREDOMAINDETAILERR = "FailedOperation.DescribeUnPreDomainDetailErr"
 //  RESOURCENOTFOUND_SEARCHINFO = "ResourceNotFound.SearchInfo"
 func (c *Client) DescribeUnPreDomainDetail(request *DescribeUnPreDomainDetailRequest) (response *DescribeUnPreDomainDetailResponse, err error) {
     return c.DescribeUnPreDomainDetailWithContext(context.Background(), request)
@@ -2517,6 +2518,7 @@ func (c *Client) DescribeUnPreDomainDetail(request *DescribeUnPreDomainDetailReq
 // 查询预释放未预约域名详情接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEUNPREDOMAINDETAILERR = "FailedOperation.DescribeUnPreDomainDetailErr"
 //  RESOURCENOTFOUND_SEARCHINFO = "ResourceNotFound.SearchInfo"
 func (c *Client) DescribeUnPreDomainDetailWithContext(ctx context.Context, request *DescribeUnPreDomainDetailRequest) (response *DescribeUnPreDomainDetailResponse, err error) {
     if request == nil {

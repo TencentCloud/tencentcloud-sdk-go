@@ -98,8 +98,14 @@ const (
 	// 上传的msgID错误。
 	FAILEDOPERATION_MESSAGEIDERROR = "FailedOperation.MessageIDError"
 
+	// 修改集群失败
+	FAILEDOPERATION_MODIFYCLUSTER = "FailedOperation.ModifyCluster"
+
 	// 必须先清除关联命名空间才能继续操作。
 	FAILEDOPERATION_NAMESPACEINUSE = "FailedOperation.NamespaceInUse"
+
+	// 产品信息不存在
+	FAILEDOPERATION_PRODUCTNOTEXIST = "FailedOperation.ProductNotExist"
 
 	// PulsarAdminClient错误。
 	FAILEDOPERATION_PULSARADMINERROR = "FailedOperation.PulsarAdminError"
@@ -121,6 +127,9 @@ const (
 
 	// 消息发送超时。
 	FAILEDOPERATION_SENDMESSAGETIMEOUTERROR = "FailedOperation.SendMessageTimeoutError"
+
+	// 发送消息失败
+	FAILEDOPERATION_SENDMSG = "FailedOperation.SendMsg"
 
 	// 发送消息失败。
 	FAILEDOPERATION_SENDMSGFAILED = "FailedOperation.SendMsgFailed"
@@ -188,8 +197,14 @@ const (
 	// 没有获取到正确的 token。
 	INVALIDPARAMETER_TOKENNOTFOUND = "InvalidParameter.TokenNotFound"
 
+	// 无效的 vpc 信息或者子网信息
+	INVALIDPARAMETER_VPC = "InvalidParameter.Vpc"
+
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
+	// AckTime参数错误
+	INVALIDPARAMETERVALUE_ACKTIME = "InvalidParameterValue.AckTime"
 
 	// 至少需要提供一个参数。
 	INVALIDPARAMETERVALUE_ATLEASTONE = "InvalidParameterValue.AtLeastOne"
@@ -218,6 +233,9 @@ const (
 	// 实例下环境数量超过限制。
 	LIMITEXCEEDED_ENVIRONMENTS = "LimitExceeded.Environments"
 
+	// 消息轨迹查询时间周期太长
+	LIMITEXCEEDED_MSGTIME = "LimitExceeded.MsgTime"
+
 	// 实例下命名空间数量超过限额。
 	LIMITEXCEEDED_NAMESPACES = "LimitExceeded.Namespaces"
 
@@ -238,6 +256,9 @@ const (
 
 	// 必要参数没有传递。
 	MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
+
+	// 标签信息缺失
+	MISSINGPARAMETER_TAG = "MissingParameter.Tag"
 
 	// 订阅仍在消费中。
 	OPERATIONDENIED_CONSUMERRUNNING = "OperationDenied.ConsumerRunning"
@@ -332,9 +353,15 @@ const (
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"
 
+	// Policy 参数错误
+	UNKNOWNPARAMETER_POLICY = "UnknownParameter.Policy"
+
 	// 操作不支持。
 	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 
 	// 该实例不支持降配操作。
 	UNSUPPORTEDOPERATION_INSTANCEDOWNGRADE = "UnsupportedOperation.InstanceDowngrade"
+
+	// 当前集群不支持Unack 操作
+	UNSUPPORTEDOPERATION_TOPICUNACK = "UnsupportedOperation.TopicUnack"
 )

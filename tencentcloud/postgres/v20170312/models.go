@@ -1780,7 +1780,9 @@ type CreateReadOnlyDBInstanceRequestParams struct {
 	// 实例名(后续支持)
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 【废弃】不再需要指定，内核版本号与主实例保持一致
+	// 不再需要指定，内核版本号与主实例保持一致
+	//
+	// Deprecated: DBVersion is deprecated.
 	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
 
 	// 专属集群ID
@@ -1862,7 +1864,7 @@ type CreateReadOnlyDBInstanceRequest struct {
 	// 实例名(后续支持)
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// 【废弃】不再需要指定，内核版本号与主实例保持一致
+	// 不再需要指定，内核版本号与主实例保持一致
 	DBVersion *string `json:"DBVersion,omitnil,omitempty" name:"DBVersion"`
 
 	// 专属集群ID
@@ -6948,7 +6950,9 @@ type InquiryPriceUpgradeDBInstanceRequestParams struct {
 	// 实例ID，形如postgres-hez4fh0v
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 【废弃参数，不再生效】，实例计费类型。
+	// 实例计费类型。
+	//
+	// Deprecated: InstanceChargeType is deprecated.
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 实例的Cpu大小，单位Core
@@ -6967,7 +6971,7 @@ type InquiryPriceUpgradeDBInstanceRequest struct {
 	// 实例ID，形如postgres-hez4fh0v
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 【废弃参数，不再生效】，实例计费类型。
+	// 实例计费类型。
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 实例的Cpu大小，单位Core

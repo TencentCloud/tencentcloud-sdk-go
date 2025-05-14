@@ -1956,7 +1956,7 @@ func NewDeregisterTargetGroupInstancesResponse() (response *DeregisterTargetGrou
 // DeregisterTargetGroupInstances
 // 从目标组中解绑服务器。
 //
-// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1972,7 +1972,7 @@ func (c *Client) DeregisterTargetGroupInstances(request *DeregisterTargetGroupIn
 // DeregisterTargetGroupInstances
 // 从目标组中解绑服务器。
 //
-// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+// 本接口为异步接口，本接口返回成功后需以返回的 RequestID 为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4904,7 +4904,7 @@ func NewModifyLoadBalancerAttributesResponse() (response *ModifyLoadBalancerAttr
 // ModifyLoadBalancerAttributes
 // 修改负载均衡实例的属性。支持修改负载均衡实例的名称、设置负载均衡的跨域属性。
 //
-// 注意：非带宽上移用户的 CLB 实例必须加入带宽包才可以设置跨域属性。
+// 注意：非带宽上移用户的 CLB 实例必须加入带宽包才可以设置跨域属性。修改网络计费模式请到控制台操作。
 //
 // 本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
 //
@@ -4930,7 +4930,7 @@ func (c *Client) ModifyLoadBalancerAttributes(request *ModifyLoadBalancerAttribu
 // ModifyLoadBalancerAttributes
 // 修改负载均衡实例的属性。支持修改负载均衡实例的名称、设置负载均衡的跨域属性。
 //
-// 注意：非带宽上移用户的 CLB 实例必须加入带宽包才可以设置跨域属性。
+// 注意：非带宽上移用户的 CLB 实例必须加入带宽包才可以设置跨域属性。修改网络计费模式请到控制台操作。
 //
 // 本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
 //
@@ -5054,13 +5054,13 @@ func NewModifyLoadBalancerSlaResponse() (response *ModifyLoadBalancerSlaResponse
 }
 
 // ModifyLoadBalancerSla
-// 本接口（ModifyLoadBalancerSla）用于将按量计费模式的共享型实例升级为性能容量型实例。<br/>
+// 本接口（ModifyLoadBalancerSla）用于调整按量计费模式实例的性能容量型规格，如共享型升级性能容量型，性能容量型实例规格调整。<br/>
 //
 // 限制条件：
 //
-// - 本接口只支持升级按量计费的CLB实例，包年包月的CLB实例升级请通过控制台进行升级。
+// - 本接口只支持调整按量计费的CLB实例，包年包月的CLB实例升级请通过控制台进行调整。
 //
-// - 升级为性能容量型实例后，不支持再回退到共享型实例。
+// - 共享型升级为性能容量型实例后，不支持再回退到共享型实例。
 //
 // - 传统型负载均衡实例不支持升级为性能容量型实例。
 //
@@ -5078,13 +5078,13 @@ func (c *Client) ModifyLoadBalancerSla(request *ModifyLoadBalancerSlaRequest) (r
 }
 
 // ModifyLoadBalancerSla
-// 本接口（ModifyLoadBalancerSla）用于将按量计费模式的共享型实例升级为性能容量型实例。<br/>
+// 本接口（ModifyLoadBalancerSla）用于调整按量计费模式实例的性能容量型规格，如共享型升级性能容量型，性能容量型实例规格调整。<br/>
 //
 // 限制条件：
 //
-// - 本接口只支持升级按量计费的CLB实例，包年包月的CLB实例升级请通过控制台进行升级。
+// - 本接口只支持调整按量计费的CLB实例，包年包月的CLB实例升级请通过控制台进行调整。
 //
-// - 升级为性能容量型实例后，不支持再回退到共享型实例。
+// - 共享型升级为性能容量型实例后，不支持再回退到共享型实例。
 //
 // - 传统型负载均衡实例不支持升级为性能容量型实例。
 //
@@ -5523,10 +5523,11 @@ func NewModifyTargetWeightResponse() (response *ModifyTargetWeightResponse) {
 // ModifyTargetWeight
 // ModifyTargetWeight 接口用于修改负载均衡绑定的后端服务的转发权重。
 //
-// 本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
+// 本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -5541,10 +5542,11 @@ func (c *Client) ModifyTargetWeight(request *ModifyTargetWeightRequest) (respons
 // ModifyTargetWeight
 // ModifyTargetWeight 接口用于修改负载均衡绑定的后端服务的转发权重。
 //
-// 本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用DescribeTaskStatus接口查询本次任务是否成功。
+// 本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEINOPERATING = "FailedOperation.ResourceInOperating"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -6198,7 +6200,7 @@ func NewSetLoadBalancerStartStatusResponse() (response *SetLoadBalancerStartStat
 // SetLoadBalancerStartStatus
 // 启停负载均衡实例或者监听器。
 //
-// 本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+// 本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
 //
 // 该功能正在内测中，如需使用，请通过[工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1)。
 //
@@ -6220,7 +6222,7 @@ func (c *Client) SetLoadBalancerStartStatus(request *SetLoadBalancerStartStatusR
 // SetLoadBalancerStartStatus
 // 启停负载均衡实例或者监听器。
 //
-// 本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用 DescribeTaskStatus 接口查询本次任务是否成功。
+// 本接口为异步接口，接口返回成功后，需以得到的 RequestID 为入参，调用  [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683)  接口查询本次任务是否成功。
 //
 // 该功能正在内测中，如需使用，请通过[工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20LB&step=1)。
 //

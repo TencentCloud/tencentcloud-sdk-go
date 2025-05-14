@@ -9665,6 +9665,55 @@ func (c *Client) DescribeTaskTableMetricOverviewWithContext(ctx context.Context,
     return
 }
 
+func NewDescribeTaskTemplatesRequest() (request *DescribeTaskTemplatesRequest) {
+    request = &DescribeTaskTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTaskTemplates")
+    
+    
+    return
+}
+
+func NewDescribeTaskTemplatesResponse() (response *DescribeTaskTemplatesResponse) {
+    response = &DescribeTaskTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTaskTemplates
+// 查询项目下所有任务列表,包括虚拟任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeTaskTemplates(request *DescribeTaskTemplatesRequest) (response *DescribeTaskTemplatesResponse, err error) {
+    return c.DescribeTaskTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeTaskTemplates
+// 查询项目下所有任务列表,包括虚拟任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeTaskTemplatesWithContext(ctx context.Context, request *DescribeTaskTemplatesRequest) (response *DescribeTaskTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskTemplatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTaskTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTasksForCodeTemplateRequest() (request *DescribeTasksForCodeTemplateRequest) {
     request = &DescribeTasksForCodeTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10308,6 +10357,91 @@ func (c *Client) DiagnoseProWithContext(ctx context.Context, request *DiagnosePr
     request.SetContext(ctx)
     
     response = NewDiagnoseProResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDownloadLogByLineRequest() (request *DownloadLogByLineRequest) {
+    request = &DownloadLogByLineRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DownloadLogByLine")
+    
+    
+    return
+}
+
+func NewDownloadLogByLineResponse() (response *DownloadLogByLineResponse) {
+    response = &DownloadLogByLineResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DownloadLogByLine
+// 按行下载日志信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
+//  INTERNALERROR_INTERNALCALLCLOUDAPIERROR = "InternalError.InternalCallCloudApiError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALARMRECEIVEADDRESSNOTEXIST = "InvalidParameter.AlarmReceiveAddressNotExist"
+//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
+//  INVALIDPARAMETER_DATAENGINEINSTANCENOTEXISTS = "InvalidParameter.DataEngineInstanceNotExists"
+//  INVALIDPARAMETER_DUPLICATENAME = "InvalidParameter.DuplicateName"
+//  INVALIDPARAMETER_INVALIDALARMURL = "InvalidParameter.InvalidAlarmUrl"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DownloadLogByLine(request *DownloadLogByLineRequest) (response *DownloadLogByLineResponse, err error) {
+    return c.DownloadLogByLineWithContext(context.Background(), request)
+}
+
+// DownloadLogByLine
+// 按行下载日志信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLSCHEDULERAPIERROR = "InternalError.CallSchedulerApiError"
+//  INTERNALERROR_INTERNALCALLCLOUDAPIERROR = "InternalError.InternalCallCloudApiError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ALARMRECEIVEADDRESSNOTEXIST = "InvalidParameter.AlarmReceiveAddressNotExist"
+//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
+//  INVALIDPARAMETER_DATAENGINEINSTANCENOTEXISTS = "InvalidParameter.DataEngineInstanceNotExists"
+//  INVALIDPARAMETER_DUPLICATENAME = "InvalidParameter.DuplicateName"
+//  INVALIDPARAMETER_INVALIDALARMURL = "InvalidParameter.InvalidAlarmUrl"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DownloadLogByLineWithContext(ctx context.Context, request *DownloadLogByLineRequest) (response *DownloadLogByLineResponse, err error) {
+    if request == nil {
+        request = NewDownloadLogByLineRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DownloadLogByLine require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDownloadLogByLineResponse()
     err = c.Send(request, response)
     return
 }

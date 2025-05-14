@@ -1,29 +1,10 @@
-# Release v1.0.1164
+# Release v1.0.1165
 
-## 应用性能监控(apm) 版本：2021-06-22
+## 负载均衡(clb) 版本：2018-03-17
 
-### 第 36 次发布
+### 第 129 次发布
 
-发布时间：2025-05-14 01:09:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ApmInstanceDetail](https://cloud.tencent.com/document/api/1463/64927#ApmInstanceDetail)
-
-	* 新增成员：LogIndexType, LogTraceIdKey
-
-
-
-
-## 弹性伸缩(as) 版本：2018-04-19
-
-### 第 84 次发布
-
-发布时间：2025-05-14 01:09:15
+发布时间：2025-05-15 01:18:56
 
 本次发布包含了以下内容：
 
@@ -31,18 +12,18 @@
 
 修改接口：
 
-* [DescribeAutoScalingGroupLastActivities](https://cloud.tencent.com/document/api/377/37652)
+* [ModifyTargetWeight](https://cloud.tencent.com/document/api/214/30677)
 
-	* 新增入参：ExcludeCancelledActivity
-
-
+	* <font color="#dd0000">**修改入参**：</font>Targets
 
 
-## 费用中心(billing) 版本：2018-07-09
 
-### 第 75 次发布
 
-发布时间：2025-05-14 01:11:06
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 44 次发布
+
+发布时间：2025-05-15 01:26:19
 
 本次发布包含了以下内容：
 
@@ -50,138 +31,68 @@
 
 新增接口：
 
-* [CreateAllocationRule](https://cloud.tencent.com/document/api/555/118451)
-* [CreateAllocationUnit](https://cloud.tencent.com/document/api/555/118450)
-* [CreateGatherRule](https://cloud.tencent.com/document/api/555/118449)
-* [DeleteAllocationRule](https://cloud.tencent.com/document/api/555/118448)
-* [DeleteAllocationUnit](https://cloud.tencent.com/document/api/555/118447)
-* [DeleteGatherRule](https://cloud.tencent.com/document/api/555/118446)
-* [DescribeAllocationRuleDetail](https://cloud.tencent.com/document/api/555/118445)
-* [DescribeAllocationRuleSummary](https://cloud.tencent.com/document/api/555/118444)
-* [DescribeAllocationTree](https://cloud.tencent.com/document/api/555/118443)
-* [DescribeAllocationUnitDetail](https://cloud.tencent.com/document/api/555/118442)
-* [DescribeGatherRuleDetail](https://cloud.tencent.com/document/api/555/118441)
-* [ModifyAllocationRule](https://cloud.tencent.com/document/api/555/118440)
-* [ModifyAllocationUnit](https://cloud.tencent.com/document/api/555/118439)
-* [ModifyGatherRule](https://cloud.tencent.com/document/api/555/118438)
-
-修改接口：
-
-* [DescribeBillDetail](https://cloud.tencent.com/document/api/555/19182)
-
-
-新增数据结构：
-
-* [AllocationRationExpression](https://cloud.tencent.com/document/api/555/19183#AllocationRationExpression)
-* [AllocationRuleExpression](https://cloud.tencent.com/document/api/555/19183#AllocationRuleExpression)
-* [AllocationRuleOverview](https://cloud.tencent.com/document/api/555/19183#AllocationRuleOverview)
-* [AllocationRulesSummary](https://cloud.tencent.com/document/api/555/19183#AllocationRulesSummary)
-* [AllocationTree](https://cloud.tencent.com/document/api/555/19183#AllocationTree)
-* [AllocationUnit](https://cloud.tencent.com/document/api/555/19183#AllocationUnit)
-* [GatherRuleSummary](https://cloud.tencent.com/document/api/555/19183#GatherRuleSummary)
+* [CancelDBAutonomyEvent](https://cloud.tencent.com/document/api/1130/118477)
+* [DescribeDBAutonomyAction](https://cloud.tencent.com/document/api/1130/118476)
 
 
 
-## 腾讯混元大模型(hunyuan) 版本：2023-09-01
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+
+
+## DNSPod(dnspod) 版本：2021-03-23
 
 ### 第 41 次发布
 
-发布时间：2025-05-14 01:36:21
+发布时间：2025-05-15 01:28:39
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [ChatCompletions](https://cloud.tencent.com/document/api/1729/105701)
-
-	* 新增入参：WebSearchOptions
-
+* [DescribeDomainAndRecordList](https://cloud.tencent.com/document/api/1427/118478)
 
 新增数据结构：
 
-* [Approximate](https://cloud.tencent.com/document/api/1729/101838#Approximate)
-* [Knowledge](https://cloud.tencent.com/document/api/1729/101838#Knowledge)
-* [UserLocation](https://cloud.tencent.com/document/api/1729/101838#UserLocation)
-* [WebSearchOptions](https://cloud.tencent.com/document/api/1729/101838#WebSearchOptions)
+* [BatchSearchDomainInfo](https://cloud.tencent.com/document/api/1427/56185#BatchSearchDomainInfo)
+* [BatchSearchRecordInfo](https://cloud.tencent.com/document/api/1427/56185#BatchSearchRecordInfo)
 
 
 
-## 大模型知识引擎(lke) 版本：2023-11-30
+## 图片内容安全(ims) 版本：2020-12-29
 
-### 第 41 次发布
+### 第 9 次发布
 
-发布时间：2025-05-14 01:44:28
+发布时间：2025-05-15 01:38:44
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-修改接口：
-
-* [DescribeAttributeLabel](https://cloud.tencent.com/document/api/1759/105043)
-
-	* 新增入参：QueryScope
-
-* [DescribeDoc](https://cloud.tencent.com/document/api/1759/105071)
-
-	* 新增出参：CustomerKnowledgeId, AttributeFlags
-
-* [ListAttributeLabel](https://cloud.tencent.com/document/api/1759/105041)
-
-	* 新增入参：LabelSize
-
-* [ModifyDoc](https://cloud.tencent.com/document/api/1759/105058)
-
-	* 新增入参：CustomerKnowledgeId, AttributeFlags
-
-* [SaveDoc](https://cloud.tencent.com/document/api/1759/105054)
-
-	* 新增入参：CustomerKnowledgeId, AttributeFlags
-
 
 修改数据结构：
 
-* [AttrLabelDetail](https://cloud.tencent.com/document/api/1759/105104#AttrLabelDetail)
+* [ObjectDetail](https://cloud.tencent.com/document/api/1125/53274#ObjectDetail)
 
-	* 新增成员：LabelTotalCount
+	* <font color="#dd0000">**修改成员**：</font>ObjectId
 
-* [ListDocItem](https://cloud.tencent.com/document/api/1759/105104#ListDocItem)
+* [RecognitionTag](https://cloud.tencent.com/document/api/1125/53274#RecognitionTag)
 
-	* 新增成员：CustomerKnowledgeId, AttributeFlags
-
-* [ModelInfo](https://cloud.tencent.com/document/api/1759/105104#ModelInfo)
-
-	* 新增成员：IsExclusive
+	* <font color="#dd0000">**修改成员**：</font>Name, Score, Location
 
 
 
 
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 112 次发布
-
-发布时间：2025-05-14 01:58:00
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeEnvs](https://cloud.tencent.com/document/api/876/34820)
-
-	* 新增入参：Limit, Offset
+## 图片内容安全(ims) 版本：2020-07-13
 
 
 
+## 媒体处理(mps) 版本：2019-06-12
 
-## TI-ONE 训练平台(tione) 版本：2021-11-11
+### 第 120 次发布
 
-### 第 79 次发布
-
-发布时间：2025-05-14 02:04:39
+发布时间：2025-05-15 01:48:56
 
 本次发布包含了以下内容：
 
@@ -189,45 +100,92 @@
 
 新增数据结构：
 
-* [ExecAction](https://cloud.tencent.com/document/api/851/75051#ExecAction)
-* [NumOrPercent](https://cloud.tencent.com/document/api/851/75051#NumOrPercent)
-* [RollingUpdate](https://cloud.tencent.com/document/api/851/75051#RollingUpdate)
-* [TCPSocketAction](https://cloud.tencent.com/document/api/851/75051#TCPSocketAction)
+* [ImageAreaBoxInfo](https://cloud.tencent.com/document/api/862/37615#ImageAreaBoxInfo)
+* [ImageEraseConfig](https://cloud.tencent.com/document/api/862/37615#ImageEraseConfig)
+* [ImageEraseLogoConfig](https://cloud.tencent.com/document/api/862/37615#ImageEraseLogoConfig)
 
 修改数据结构：
 
-* [HTTPGetAction](https://cloud.tencent.com/document/api/851/75051#HTTPGetAction)
+* [ImageEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#ImageEnhanceConfig)
 
-	* 新增成员：Port
+	* 新增成员：ImageQualityEnhance
 
-* [ProbeAction](https://cloud.tencent.com/document/api/851/75051#ProbeAction)
+* [ImageTaskInput](https://cloud.tencent.com/document/api/862/37615#ImageTaskInput)
 
-	* 新增成员：Exec, TCPSocket, ActionType
-
-* [ServiceGroup](https://cloud.tencent.com/document/api/851/75051#ServiceGroup)
-
-	* 新增成员：MonitorSource
-
-* [ServiceInfo](https://cloud.tencent.com/document/api/851/75051#ServiceInfo)
-
-	* 新增成员：RollingUpdate
-
-* [SpecPrice](https://cloud.tencent.com/document/api/851/75051#SpecPrice)
-
-	* <font color="#dd0000">**修改成员**：</font>SpecCount
+	* 新增成员：EraseConfig
 
 
 
 
-## TI-ONE 训练平台(tione) 版本：2019-10-22
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 53 次发布
+
+发布时间：2025-05-15 01:53:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateReadOnlyDBInstance](https://cloud.tencent.com/document/api/409/52602)
+
+* [InquiryPriceUpgradeDBInstance](https://cloud.tencent.com/document/api/409/18102)
 
 
 
-## 实时音视频(trtc) 版本：2019-07-22
 
-### 第 108 次发布
+## 高性能计算平台(thpc) 版本：2023-03-21
 
-发布时间：2025-05-14 02:08:03
+### 第 24 次发布
+
+发布时间：2025-05-15 02:06:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyWorkspacesRenewFlag](https://cloud.tencent.com/document/api/1527/118479)
+
+
+
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+
+
+## 机器翻译(tmt) 版本：2018-03-21
+
+### 第 12 次发布
+
+发布时间：2025-05-15 02:08:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ImageTranslateLLM](https://cloud.tencent.com/document/api/551/118482)
+
+新增数据结构：
+
+* [BoundingBox](https://cloud.tencent.com/document/api/551/17233#BoundingBox)
+* [TransDetail](https://cloud.tencent.com/document/api/551/17233#TransDetail)
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 119 次发布
+
+发布时间：2025-05-15 02:17:12
 
 本次发布包含了以下内容：
 
@@ -235,10 +193,41 @@
 
 修改数据结构：
 
-* [RecognizeConfig](https://cloud.tencent.com/document/api/647/44055#RecognizeConfig)
+* [InstanceInfo](https://cloud.tencent.com/document/api/627/53609#InstanceInfo)
 
-	* 新增成员：HotWordList
+	* 新增成员：BasicFlag
 
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 150 次发布
+
+发布时间：2025-05-15 02:18:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTaskTemplates](https://cloud.tencent.com/document/api/1267/118483)
+* [DownloadLogByLine](https://cloud.tencent.com/document/api/1267/118484)
+
+修改接口：
+
+* [UpdateCodeTemplate](https://cloud.tencent.com/document/api/1267/118404)
+
+	* 新增入参：Content
+
+
+新增数据结构：
+
+* [CodeTemplateDetail](https://cloud.tencent.com/document/api/1267/76336#CodeTemplateDetail)
+* [InstanceLogByLine](https://cloud.tencent.com/document/api/1267/76336#InstanceLogByLine)
+* [JobLogErrorTip](https://cloud.tencent.com/document/api/1267/76336#JobLogErrorTip)
+* [PageTaskTemplateInfo](https://cloud.tencent.com/document/api/1267/76336#PageTaskTemplateInfo)
 
 
 

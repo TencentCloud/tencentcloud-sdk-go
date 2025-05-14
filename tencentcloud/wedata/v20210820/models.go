@@ -2699,6 +2699,76 @@ func (r *CheckTaskNameExistResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CodeTemplateDetail struct {
+	// 项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 模版名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeTemplateName *string `json:"CodeTemplateName,omitnil,omitempty" name:"CodeTemplateName"`
+
+	// 任务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskType *int64 `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 代码模版描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeTemplateDesc *string `json:"CodeTemplateDesc,omitnil,omitempty" name:"CodeTemplateDesc"`
+
+	// 文件夹id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FolderId *string `json:"FolderId,omitnil,omitempty" name:"FolderId"`
+
+	// 文件夹名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FolderName *string `json:"FolderName,omitnil,omitempty" name:"FolderName"`
+
+	// 责任人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InCharge *string `json:"InCharge,omitnil,omitempty" name:"InCharge"`
+
+	// 责任人id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InChargeId *string `json:"InChargeId,omitnil,omitempty" name:"InChargeId"`
+
+	// 扩展信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ext *TaskExtDsVO `json:"Ext,omitnil,omitempty" name:"Ext"`
+
+	// 模版id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeTemplateId *string `json:"CodeTemplateId,omitnil,omitempty" name:"CodeTemplateId"`
+
+	// 最后更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateTime *string `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
+
+	// 更新人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateUser *string `json:"UpdateUser,omitnil,omitempty" name:"UpdateUser"`
+
+	// 更新人id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateUserId *string `json:"UpdateUserId,omitnil,omitempty" name:"UpdateUserId"`
+
+	// 执行ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
+
+	// 资源组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroup *string `json:"ResourceGroup,omitnil,omitempty" name:"ResourceGroup"`
+
+	// 是否提交
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Submit *bool `json:"Submit,omitnil,omitempty" name:"Submit"`
+
+	// 任务脚本是否发生变化
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScriptChange *bool `json:"ScriptChange,omitnil,omitempty" name:"ScriptChange"`
+}
+
 type CollectionFolderOpsDto struct {
 	// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -19261,6 +19331,111 @@ func (r *DescribeTaskTableMetricOverviewResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTaskTemplatesRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 页号
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 排序字段, 仅支持更新时间, 取值示例
+	// 
+	// - UpdateTime
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+
+	// 过滤条件, 取值列表
+	// 
+	// - TemplateName    模版名称
+	// - TaskType    支持任务类型
+	// - InCharge    责任人
+	// - FolderId    文件夹id
+	// - Status    提交状态
+	// - UpdateStartTime    更新时间,时间区间查询
+	// - UpdateEndTime    更新时间,时间区间查询
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeTaskTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 页号
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 排序字段, 仅支持更新时间, 取值示例
+	// 
+	// - UpdateTime
+	OrderFields []*OrderField `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+
+	// 过滤条件, 取值列表
+	// 
+	// - TemplateName    模版名称
+	// - TaskType    支持任务类型
+	// - InCharge    责任人
+	// - FolderId    文件夹id
+	// - Status    提交状态
+	// - UpdateStartTime    更新时间,时间区间查询
+	// - UpdateEndTime    更新时间,时间区间查询
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeTaskTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "OrderFields")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskTemplatesResponseParams struct {
+	// 查询项目下所有任务信息,不包括虚拟任务和离线任务
+	Data *PageTaskTemplateInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeTaskTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeTasksForCodeTemplatePage struct {
 	// 总页码数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -20516,6 +20691,141 @@ type DlcRewriteDataInfo struct {
 	// 数据重排布治理运行周期，单位为分钟
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntervalMin *uint64 `json:"IntervalMin,omitnil,omitempty" name:"IntervalMin"`
+}
+
+// Predefined struct for user
+type DownloadLogByLineRequestParams struct {
+	// 开始行
+	StartLine *int64 `json:"StartLine,omitnil,omitempty" name:"StartLine"`
+
+	// 读取行
+	LineCount *int64 `json:"LineCount,omitnil,omitempty" name:"LineCount"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 实例运行时间
+	CurRunDate *string `json:"CurRunDate,omitnil,omitempty" name:"CurRunDate"`
+
+	// 任务详情id，用于读取切分的日志文件
+	DetailId *string `json:"DetailId,omitnil,omitempty" name:"DetailId"`
+
+	// base64编码的文件路径
+	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
+
+	// 任务记录id
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// 子job id
+	SubJobId *string `json:"SubJobId,omitnil,omitempty" name:"SubJobId"`
+
+	// hiveSql:34,sparkSql:36 dlcSql: 32
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// true:解析错误信息。false:不解析错误信息
+	ParseErrorTip *bool `json:"ParseErrorTip,omitnil,omitempty" name:"ParseErrorTip"`
+
+	// log 0 code 1 result 2 custo 3
+	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
+}
+
+type DownloadLogByLineRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始行
+	StartLine *int64 `json:"StartLine,omitnil,omitempty" name:"StartLine"`
+
+	// 读取行
+	LineCount *int64 `json:"LineCount,omitnil,omitempty" name:"LineCount"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务id
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 实例运行时间
+	CurRunDate *string `json:"CurRunDate,omitnil,omitempty" name:"CurRunDate"`
+
+	// 任务详情id，用于读取切分的日志文件
+	DetailId *string `json:"DetailId,omitnil,omitempty" name:"DetailId"`
+
+	// base64编码的文件路径
+	FilePath *string `json:"FilePath,omitnil,omitempty" name:"FilePath"`
+
+	// 任务记录id
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// 子job id
+	SubJobId *string `json:"SubJobId,omitnil,omitempty" name:"SubJobId"`
+
+	// hiveSql:34,sparkSql:36 dlcSql: 32
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// true:解析错误信息。false:不解析错误信息
+	ParseErrorTip *bool `json:"ParseErrorTip,omitnil,omitempty" name:"ParseErrorTip"`
+
+	// log 0 code 1 result 2 custo 3
+	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
+}
+
+func (r *DownloadLogByLineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadLogByLineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartLine")
+	delete(f, "LineCount")
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "CurRunDate")
+	delete(f, "DetailId")
+	delete(f, "FilePath")
+	delete(f, "RecordId")
+	delete(f, "SubJobId")
+	delete(f, "JobType")
+	delete(f, "ParseErrorTip")
+	delete(f, "FileType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadLogByLineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DownloadLogByLineResponseParams struct {
+	// 日志信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *InstanceLogByLine `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DownloadLogByLineResponse struct {
+	*tchttp.BaseResponse
+	Response *DownloadLogByLineResponseParams `json:"Response"`
+}
+
+func (r *DownloadLogByLineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DownloadLogByLineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DrInstanceOpsDto struct {
@@ -23108,6 +23418,40 @@ type InstanceList struct {
 	TryLimit *int64 `json:"TryLimit,omitnil,omitempty" name:"TryLimit"`
 }
 
+type InstanceLogByLine struct {
+	// 返回行数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 文件是否读取完
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Over *bool `json:"Over,omitnil,omitempty" name:"Over"`
+
+	// 实例状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceState *string `json:"InstanceState,omitnil,omitempty" name:"InstanceState"`
+
+	// 实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 执行机类型 0:老执行机loader 1:新执行机woker
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkerType *int64 `json:"WorkerType,omitnil,omitempty" name:"WorkerType"`
+
+	// 日志sql错误信息，包含行列信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobLogErrorTip *JobLogErrorTip `json:"JobLogErrorTip,omitnil,omitempty" name:"JobLogErrorTip"`
+}
+
 type InstanceLogInfo struct {
 	// 任务id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -24211,6 +24555,20 @@ type IntegrationTaskInfo struct {
 	// 当前同步位点
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentSyncPosition *int64 `json:"CurrentSyncPosition,omitnil,omitempty" name:"CurrentSyncPosition"`
+}
+
+type JobLogErrorTip struct {
+	// 执行日志错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 对应sql的行下标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LineNum *uint64 `json:"LineNum,omitnil,omitempty" name:"LineNum"`
+
+	// 对应sql的列下标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnNum *uint64 `json:"ColumnNum,omitnil,omitempty" name:"ColumnNum"`
 }
 
 // Predefined struct for user
@@ -28262,6 +28620,23 @@ type PageRoles struct {
 	// 总分页页码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalPageNumber *int64 `json:"TotalPageNumber,omitnil,omitempty" name:"TotalPageNumber"`
+}
+
+type PageTaskTemplateInfo struct {
+	// 任务集合信息
+	Items []*CodeTemplateDetail `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 总页数
+	PageCount *uint64 `json:"PageCount,omitnil,omitempty" name:"PageCount"`
+
+	// 总数量
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 当前页
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页显示数
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 }
 
 type Pair struct {
@@ -35391,6 +35766,9 @@ type UpdateCodeTemplateRequestParams struct {
 
 	// 脚本是否发生变化
 	ScriptChange *bool `json:"ScriptChange,omitnil,omitempty" name:"ScriptChange"`
+
+	// 转Base64的代码内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 type UpdateCodeTemplateRequest struct {
@@ -35428,6 +35806,9 @@ type UpdateCodeTemplateRequest struct {
 
 	// 脚本是否发生变化
 	ScriptChange *bool `json:"ScriptChange,omitnil,omitempty" name:"ScriptChange"`
+
+	// 转Base64的代码内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 func (r *UpdateCodeTemplateRequest) ToJsonString() string {
@@ -35453,6 +35834,7 @@ func (r *UpdateCodeTemplateRequest) FromJsonString(s string) error {
 	delete(f, "CodeTemplateDesc")
 	delete(f, "RequestFromSource")
 	delete(f, "ScriptChange")
+	delete(f, "Content")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCodeTemplateRequest has unknown keys!", "")
 	}

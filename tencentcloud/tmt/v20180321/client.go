@@ -266,6 +266,111 @@ func (c *Client) ImageTranslateWithContext(ctx context.Context, request *ImageTr
     return
 }
 
+func NewImageTranslateLLMRequest() (request *ImageTranslateLLMRequest) {
+    request = &ImageTranslateLLMRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tmt", APIVersion, "ImageTranslateLLM")
+    
+    
+    return
+}
+
+func NewImageTranslateLLMResponse() (response *ImageTranslateLLMResponse) {
+    response = &ImageTranslateLLMResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImageTranslateLLM
+// 提供18种语言的图片翻译服务，可自动识别图片中的文本内容并翻译成目标语言，识别后的文本按行翻译，后续会提供可按段落翻译的版本。
+//
+// 
+//
+// - 输入图片格式：png、jpg、jpeg等常用图片格式，不支持gif动图。
+//
+// - 输出图片格式：jpg。
+//
+// 
+//
+// 提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERR = "FailedOperation.DownloadErr"
+//  FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
+//  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
+//  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
+//  FAILEDOPERATION_STOPUSING = "FailedOperation.StopUsing"
+//  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeout"
+//  INTERNALERROR_ERRORUNKNOWN = "InternalError.ErrorUnknown"
+//  INTERNALERROR_REQUESTFAILED = "InternalError.RequestFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_ACTIONNOTFOUND = "UnauthorizedOperation.ActionNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDTARGETLANGUAGE = "UnsupportedOperation.UnSupportedTargetLanguage"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDLANGUAGE = "UnsupportedOperation.UnsupportedLanguage"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDSOURCELANGUAGE = "UnsupportedOperation.UnsupportedSourceLanguage"
+func (c *Client) ImageTranslateLLM(request *ImageTranslateLLMRequest) (response *ImageTranslateLLMResponse, err error) {
+    return c.ImageTranslateLLMWithContext(context.Background(), request)
+}
+
+// ImageTranslateLLM
+// 提供18种语言的图片翻译服务，可自动识别图片中的文本内容并翻译成目标语言，识别后的文本按行翻译，后续会提供可按段落翻译的版本。
+//
+// 
+//
+// - 输入图片格式：png、jpg、jpeg等常用图片格式，不支持gif动图。
+//
+// - 输出图片格式：jpg。
+//
+// 
+//
+// 提示：对于一般开发者，我们建议优先使用SDK接入简化开发。SDK使用介绍请直接查看 5. 开发者资源 部分。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERR = "FailedOperation.DownloadErr"
+//  FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
+//  FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
+//  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
+//  FAILEDOPERATION_STOPUSING = "FailedOperation.StopUsing"
+//  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeout"
+//  INTERNALERROR_ERRORUNKNOWN = "InternalError.ErrorUnknown"
+//  INTERNALERROR_REQUESTFAILED = "InternalError.RequestFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_ACTIONNOTFOUND = "UnauthorizedOperation.ActionNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDTARGETLANGUAGE = "UnsupportedOperation.UnSupportedTargetLanguage"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDLANGUAGE = "UnsupportedOperation.UnsupportedLanguage"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDSOURCELANGUAGE = "UnsupportedOperation.UnsupportedSourceLanguage"
+func (c *Client) ImageTranslateLLMWithContext(ctx context.Context, request *ImageTranslateLLMRequest) (response *ImageTranslateLLMResponse, err error) {
+    if request == nil {
+        request = NewImageTranslateLLMRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImageTranslateLLM require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImageTranslateLLMResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewLanguageDetectRequest() (request *LanguageDetectRequest) {
     request = &LanguageDetectRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -2949,6 +2949,73 @@ func (c *Client) DescribeDomainAnalyticsWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeDomainAndRecordListRequest() (request *DescribeDomainAndRecordListRequest) {
+    request = &DescribeDomainAndRecordListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomainAndRecordList")
+    
+    
+    return
+}
+
+func NewDescribeDomainAndRecordListResponse() (response *DescribeDomainAndRecordListResponse) {
+    response = &DescribeDomainAndRecordListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDomainAndRecordList
+// 批量操作中搜索域名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_BATCHRECORDREMOVEACTIONERROR = "InvalidParameter.BatchRecordRemoveActionError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETER_DOMAINSEMPTY = "InvalidParameter.DomainsEmpty"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+//  RESOURCENOTFOUND_NODATAOFDOMAIN = "ResourceNotFound.NoDataOfDomain"
+func (c *Client) DescribeDomainAndRecordList(request *DescribeDomainAndRecordListRequest) (response *DescribeDomainAndRecordListResponse, err error) {
+    return c.DescribeDomainAndRecordListWithContext(context.Background(), request)
+}
+
+// DescribeDomainAndRecordList
+// 批量操作中搜索域名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_BATCHRECORDREMOVEACTIONERROR = "InvalidParameter.BatchRecordRemoveActionError"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETER_DOMAINSEMPTY = "InvalidParameter.DomainsEmpty"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+//  OPERATIONDENIED_NOPERMISSIONTOOPERATEDOMAIN = "OperationDenied.NoPermissionToOperateDomain"
+//  RESOURCENOTFOUND_NODATAOFDOMAIN = "ResourceNotFound.NoDataOfDomain"
+func (c *Client) DescribeDomainAndRecordListWithContext(ctx context.Context, request *DescribeDomainAndRecordListRequest) (response *DescribeDomainAndRecordListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainAndRecordListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainAndRecordList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainAndRecordListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDomainCustomLineListRequest() (request *DescribeDomainCustomLineListRequest) {
     request = &DescribeDomainCustomLineListRequest{
         BaseRequest: &tchttp.BaseRequest{},

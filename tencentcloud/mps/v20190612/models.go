@@ -12153,8 +12153,22 @@ type HighlightSegmentItem struct {
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
+type ImageAreaBoxInfo struct {
+	// 图片框选区域类型，可选值：
+	// <li>logo：图标；</li>
+	// <li>text：文字。</li>
+	// 默认值：logo。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 图片框选区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+	// 示例值：[101, 85, 111, 95]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitnil,omitempty" name:"AreaCoordSet"`
+}
+
 type ImageEncodeConfig struct {
-	// 图片格式，取值范围：JPG、BMP、GIF、PNG、WebP，缺省为原图格式。
+	// 图片格式，取值范围：JPEG、PNG、BMP、WebP，缺省为原图格式。不支持动画。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
 
@@ -12168,6 +12182,10 @@ type ImageEnhanceConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuperResolution *SuperResolutionConfig `json:"SuperResolution,omitnil,omitempty" name:"SuperResolution"`
 
+	// 综合增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageQualityEnhance *ImageQualityEnhanceConfig `json:"ImageQualityEnhance,omitnil,omitempty" name:"ImageQualityEnhance"`
+
 	// 色彩增强配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColorEnhance *ColorEnhanceConfig `json:"ColorEnhance,omitnil,omitempty" name:"ColorEnhance"`
@@ -12179,6 +12197,26 @@ type ImageEnhanceConfig struct {
 	// 人脸增强配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FaceEnhance *FaceEnhanceConfig `json:"FaceEnhance,omitnil,omitempty" name:"FaceEnhance"`
+}
+
+type ImageEraseConfig struct {
+	// 图标擦除配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageEraseLogo *ImageEraseLogoConfig `json:"ImageEraseLogo,omitnil,omitempty" name:"ImageEraseLogo"`
+}
+
+type ImageEraseLogoConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 需要擦除的多个框选区域，注意：参数数组长度最大为2。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageAreaBoxes []*ImageAreaBoxInfo `json:"ImageAreaBoxes,omitnil,omitempty" name:"ImageAreaBoxes"`
 }
 
 type ImageQualityEnhanceConfig struct {
@@ -12296,6 +12334,10 @@ type ImageTaskInput struct {
 	// 图片增强配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnhanceConfig *ImageEnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
+
+	// 图片擦除配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EraseConfig *ImageEraseConfig `json:"EraseConfig,omitnil,omitempty" name:"EraseConfig"`
 }
 
 type ImageWatermarkInput struct {

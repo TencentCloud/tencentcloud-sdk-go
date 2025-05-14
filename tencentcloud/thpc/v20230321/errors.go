@@ -65,6 +65,9 @@ const (
 	// 字段不支持此值。
 	INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
 
+	// 工作空间实例查找失败
+	INVALIDPARAMETERVALUE_SPACEIDNOTFOUND = "InvalidParameterValue.SpaceIdNotFound"
+
 	// 参数值过大。
 	INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 
@@ -152,6 +155,12 @@ const (
 	// 队列内存在节点，不支持此操作。
 	UNSUPPORTEDOPERATION_QUEUENOTEMPTY = "UnsupportedOperation.QueueNotEmpty"
 
+	// 实例的付费模式不支持当前操作。
+	UNSUPPORTEDOPERATION_SPACECHARGETYPE = "UnsupportedOperation.SpaceChargeType"
+
 	// vpc冲突，不支持当前操作。
 	UNSUPPORTEDOPERATION_VPCIDCONFLICT = "UnsupportedOperation.VpcIdConflict"
+
+	// 隔离状态的工作空间实例不支持当前操作。
+	UNSUPPORTEDOPERATION_WORKSPACESTATEARREARS = "UnsupportedOperation.WorkspaceStateArrears"
 )

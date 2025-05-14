@@ -59,6 +59,9 @@ const (
 	// 查询模板操作失败。
 	FAILEDOPERATION_DESCRIBETEMPLATEFAILED = "FailedOperation.DescribeTemplateFailed"
 
+	// 当前域名已经不属于预约状态
+	FAILEDOPERATION_DESCRIBEUNPREDOMAINDETAILERR = "FailedOperation.DescribeUnPreDomainDetailErr"
+
 	// 域名已过期，不允许操作。
 	FAILEDOPERATION_DOMAINEXPIREDUNSUPPORTED = "FailedOperation.DomainExpiredUnsupported"
 

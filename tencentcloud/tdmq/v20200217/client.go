@@ -659,17 +659,9 @@ func NewCreateProClusterResponse() (response *CreateProClusterResponse) {
 // 创建专业集群——预付费，仅通过api调用
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CREATEENVIRONMENTROLE = "FailedOperation.CreateEnvironmentRole"
-//  FAILEDOPERATION_UPDATEENVIRONMENTROLE = "FailedOperation.UpdateEnvironmentRole"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
-//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINUSE_ENVIRONMENTROLE = "ResourceInUse.EnvironmentRole"
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
-//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+//  FAILEDOPERATION_PRODUCTNOTEXIST = "FailedOperation.ProductNotExist"
+//  INVALIDPARAMETER_VPC = "InvalidParameter.Vpc"
+//  MISSINGPARAMETER_TAG = "MissingParameter.Tag"
 func (c *Client) CreateProCluster(request *CreateProClusterRequest) (response *CreateProClusterResponse, err error) {
     return c.CreateProClusterWithContext(context.Background(), request)
 }
@@ -678,17 +670,9 @@ func (c *Client) CreateProCluster(request *CreateProClusterRequest) (response *C
 // 创建专业集群——预付费，仅通过api调用
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CREATEENVIRONMENTROLE = "FailedOperation.CreateEnvironmentRole"
-//  FAILEDOPERATION_UPDATEENVIRONMENTROLE = "FailedOperation.UpdateEnvironmentRole"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
-//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINUSE_ENVIRONMENTROLE = "ResourceInUse.EnvironmentRole"
-//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
-//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+//  FAILEDOPERATION_PRODUCTNOTEXIST = "FailedOperation.ProductNotExist"
+//  INVALIDPARAMETER_VPC = "InvalidParameter.Vpc"
+//  MISSINGPARAMETER_TAG = "MissingParameter.Tag"
 func (c *Client) CreateProClusterWithContext(ctx context.Context, request *CreateProClusterRequest) (response *CreateProClusterResponse, err error) {
     if request == nil {
         request = NewCreateProClusterRequest()
@@ -1556,6 +1540,7 @@ func NewCreateTopicResponse() (response *CreateTopicResponse) {
 //  FAILEDOPERATION_CREATETOPIC = "FailedOperation.CreateTopic"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACKTIME = "InvalidParameterValue.AckTime"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  LIMITEXCEEDED_TOPICS = "LimitExceeded.Topics"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
@@ -1565,6 +1550,8 @@ func NewCreateTopicResponse() (response *CreateTopicResponse) {
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 //  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
+//  UNKNOWNPARAMETER_POLICY = "UnknownParameter.Policy"
+//  UNSUPPORTEDOPERATION_TOPICUNACK = "UnsupportedOperation.TopicUnack"
 func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopicResponse, err error) {
     return c.CreateTopicWithContext(context.Background(), request)
 }
@@ -1578,6 +1565,7 @@ func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopic
 //  FAILEDOPERATION_CREATETOPIC = "FailedOperation.CreateTopic"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACKTIME = "InvalidParameterValue.AckTime"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  LIMITEXCEEDED_TOPICS = "LimitExceeded.Topics"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
@@ -1587,6 +1575,8 @@ func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopic
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 //  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
+//  UNKNOWNPARAMETER_POLICY = "UnknownParameter.Policy"
+//  UNSUPPORTEDOPERATION_TOPICUNACK = "UnsupportedOperation.TopicUnack"
 func (c *Client) CreateTopicWithContext(ctx context.Context, request *CreateTopicRequest) (response *CreateTopicResponse, err error) {
     if request == nil {
         request = NewCreateTopicRequest()
@@ -6346,6 +6336,7 @@ func NewDescribeTopicMsgsResponse() (response *DescribeTopicMsgsResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  LIMITEXCEEDED_MSGTIME = "LimitExceeded.MsgTime"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
@@ -6360,6 +6351,7 @@ func (c *Client) DescribeTopicMsgs(request *DescribeTopicMsgsRequest) (response 
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
+//  LIMITEXCEEDED_MSGTIME = "LimitExceeded.MsgTime"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  RESOURCENOTFOUND_BROKERCLUSTER = "ResourceNotFound.BrokerCluster"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
@@ -6718,6 +6710,7 @@ func NewModifyClusterResponse() (response *ModifyClusterResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MODIFYCLUSTER = "FailedOperation.ModifyCluster"
 //  INVALIDPARAMETERVALUE_CLUSTERNAMEDUPLICATION = "InvalidParameterValue.ClusterNameDuplication"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
@@ -6730,6 +6723,7 @@ func (c *Client) ModifyCluster(request *ModifyClusterRequest) (response *ModifyC
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MODIFYCLUSTER = "FailedOperation.ModifyCluster"
 //  INVALIDPARAMETERVALUE_CLUSTERNAMEDUPLICATION = "InvalidParameterValue.ClusterNameDuplication"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
@@ -8574,6 +8568,7 @@ func NewSendMsgResponse() (response *SendMsgResponse) {
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_GETTOPICPARTITIONSFAILED = "FailedOperation.GetTopicPartitionsFailed"
+//  FAILEDOPERATION_SENDMSG = "FailedOperation.SendMsg"
 //  FAILEDOPERATION_SENDMSGFAILED = "FailedOperation.SendMsgFailed"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
@@ -8592,6 +8587,7 @@ func (c *Client) SendMsg(request *SendMsgRequest) (response *SendMsgResponse, er
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_GETTOPICPARTITIONSFAILED = "FailedOperation.GetTopicPartitionsFailed"
+//  FAILEDOPERATION_SENDMSG = "FailedOperation.SendMsg"
 //  FAILEDOPERATION_SENDMSGFAILED = "FailedOperation.SendMsgFailed"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"

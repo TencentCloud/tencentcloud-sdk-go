@@ -36,7 +36,7 @@ type Activity struct {
 	// 起因
 	Cause *string `json:"Cause,omitnil,omitempty" name:"Cause"`
 
-	// 活动状态
+	// 活动状态。取值范围：<br><li>SUBMITTED：已提交</li><li>PROCESSING：处理中</li><li>SUCCEED：成功</li><li>FAILED：失败</li>
 	ActivityState *string `json:"ActivityState,omitnil,omitempty" name:"ActivityState"`
 
 	// 状态原因
@@ -81,7 +81,7 @@ type Application struct {
 	// 应用程序的交付方式，包括PACKAGE、LOCAL 两种取值，分别指远程存储的软件包、计算环境本地。
 	DeliveryForm *string `json:"DeliveryForm,omitnil,omitempty" name:"DeliveryForm"`
 
-	// 任务执行命令。与Commands不能同时指定。
+	// 松耦合任务执行命令。与Commands不能同时指定，一般使用Command字段提交任务。
 	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
 
 	// 应用程序软件包的远程存储路径
@@ -90,26 +90,26 @@ type Application struct {
 	// 应用使用Docker的相关配置。在使用Docker配置的情况下，DeliveryForm 为 LOCAL 表示直接使用Docker镜像内部的应用软件，通过Docker方式运行；DeliveryForm 为 PACKAGE，表示将远程应用包注入到Docker镜像后，通过Docker方式运行。为避免Docker不同版本的兼容性问题，Docker安装包及相关依赖由Batch统一负责，对于已安装Docker的自定义镜像，请卸载后再使用Docker特性。
 	Docker *Docker `json:"Docker,omitnil,omitempty" name:"Docker"`
 
-	// 任务执行命令信息。与Command不能同时指定。
+	// 紧耦合任务执行命令信息。与Command不能同时指定。Command和Commands必须指定一个。
 	Commands []*CommandLine `json:"Commands,omitnil,omitempty" name:"Commands"`
 }
 
 // Predefined struct for user
 type AttachInstancesRequestParams struct {
-	// 计算环境ID
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 加入计算环境实例列表
+	// 加入计算环境实例列表，每次请求的实例的上限为100。
 	Instances []*Instance `json:"Instances,omitnil,omitempty" name:"Instances"`
 }
 
 type AttachInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算环境ID
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 加入计算环境实例列表
+	// 加入计算环境实例列表，每次请求的实例的上限为100。
 	Instances []*Instance `json:"Instances,omitnil,omitempty" name:"Instances"`
 }
 
@@ -254,7 +254,7 @@ type ComputeNode struct {
 	// 计算节点实例ID，对于CVM场景，即为CVM的InstanceId
 	ComputeNodeInstanceId *string `json:"ComputeNodeInstanceId,omitnil,omitempty" name:"ComputeNodeInstanceId"`
 
-	// 计算节点状态
+	// 计算节点状态。取值范围：<br><li>PENDING：表示创建中</li><li>SUBMITTED：表示已提交创建</li><li>CREATING：表示创建中</li><li>CREATED：表示创建完成</li><li>CREATION_FAILED：表示创建失败。</li><li>RUNNING：表示运行中。</li><li>ABNORMAL：表示节点异常。</li><li>DELETING：表示删除中。</li>
 	ComputeNodeState *string `json:"ComputeNodeState,omitnil,omitempty" name:"ComputeNodeState"`
 
 	// CPU核数
@@ -382,13 +382,13 @@ func (r *CreateComputeEnvResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTaskTemplateRequestParams struct {
-	// 任务模板名称
+	// 任务模板名称，最大长度限制60个字符。
 	TaskTemplateName *string `json:"TaskTemplateName,omitnil,omitempty" name:"TaskTemplateName"`
 
 	// 任务模板内容，参数要求与任务一致
 	TaskTemplateInfo *Task `json:"TaskTemplateInfo,omitnil,omitempty" name:"TaskTemplateInfo"`
 
-	// 任务模板描述
+	// 任务模板描述，最大长度限制200个字符。
 	TaskTemplateDescription *string `json:"TaskTemplateDescription,omitnil,omitempty" name:"TaskTemplateDescription"`
 
 	// 标签列表。通过指定该参数可以支持绑定标签到任务模板。每个任务模板最多绑定10个标签。
@@ -398,13 +398,13 @@ type CreateTaskTemplateRequestParams struct {
 type CreateTaskTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务模板名称
+	// 任务模板名称，最大长度限制60个字符。
 	TaskTemplateName *string `json:"TaskTemplateName,omitnil,omitempty" name:"TaskTemplateName"`
 
 	// 任务模板内容，参数要求与任务一致
 	TaskTemplateInfo *Task `json:"TaskTemplateInfo,omitnil,omitempty" name:"TaskTemplateInfo"`
 
-	// 任务模板描述
+	// 任务模板描述，最大长度限制200个字符。
 	TaskTemplateDescription *string `json:"TaskTemplateDescription,omitnil,omitempty" name:"TaskTemplateDescription"`
 
 	// 标签列表。通过指定该参数可以支持绑定标签到任务模板。每个任务模板最多绑定10个标签。
@@ -501,14 +501,14 @@ type DataDisk struct {
 
 // Predefined struct for user
 type DeleteComputeEnvRequestParams struct {
-	// 计算环境ID
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 }
 
 type DeleteComputeEnvRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算环境ID
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 }
 
@@ -555,14 +555,14 @@ func (r *DeleteComputeEnvResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteJobRequestParams struct {
-	// 作业ID
+	// 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
 type DeleteJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 作业ID
+	// 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
@@ -609,14 +609,14 @@ func (r *DeleteJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteTaskTemplatesRequestParams struct {
-	// 用于删除任务模板信息
+	// 用于删除任务模板信息，最大数量上限100，环境模版ID通过调用接口 [DescribeTaskTemplates](https://cloud.tencent.com/document/api/599/15902)获取。
 	TaskTemplateIds []*string `json:"TaskTemplateIds,omitnil,omitempty" name:"TaskTemplateIds"`
 }
 
 type DeleteTaskTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用于删除任务模板信息
+	// 用于删除任务模板信息，最大数量上限100，环境模版ID通过调用接口 [DescribeTaskTemplates](https://cloud.tencent.com/document/api/599/15902)获取。
 	TaskTemplateIds []*string `json:"TaskTemplateIds,omitnil,omitempty" name:"TaskTemplateIds"`
 }
 
@@ -672,8 +672,8 @@ type Dependence struct {
 // Predefined struct for user
 type DescribeAvailableCvmInstanceTypesRequestParams struct {
 	// 过滤条件。
-	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
-	// <li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
+	// <li> zone - String - 是否必填：否 -（过滤条件）按照[可用区](https://cloud.tencent.com/document/product/213/15707)过滤。</li>
+	// <li> instance-family String - 是否必填：否 -（过滤条件）按照[机型系列](https://cloud.tencent.com/document/product/213/15748)过滤。实例机型系列形如：S1、I1、M1等。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -681,8 +681,8 @@ type DescribeAvailableCvmInstanceTypesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 过滤条件。
-	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
-	// <li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
+	// <li> zone - String - 是否必填：否 -（过滤条件）按照[可用区](https://cloud.tencent.com/document/product/213/15707)过滤。</li>
+	// <li> instance-family String - 是否必填：否 -（过滤条件）按照[机型系列](https://cloud.tencent.com/document/product/213/15748)过滤。实例机型系列形如：S1、I1、M1等。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -732,13 +732,13 @@ func (r *DescribeAvailableCvmInstanceTypesResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeComputeEnvActivitiesRequestParams struct {
-	// 计算环境ID
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 偏移量
+	// 偏移量，默认为0.
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量
+	// 返回数量，默认值20，最大值100.
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 过滤条件
@@ -749,13 +749,13 @@ type DescribeComputeEnvActivitiesRequestParams struct {
 type DescribeComputeEnvActivitiesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算环境ID
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 偏移量
+	// 偏移量，默认为0.
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量
+	// 返回数量，默认值20，最大值100.
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 过滤条件
@@ -815,14 +815,14 @@ func (r *DescribeComputeEnvActivitiesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeComputeEnvCreateInfoRequestParams struct {
-	// 计算环境ID
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 }
 
 type DescribeComputeEnvCreateInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算环境ID
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 }
 
@@ -903,40 +903,32 @@ func (r *DescribeComputeEnvCreateInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeComputeEnvCreateInfosRequestParams struct {
-	// 计算环境ID列表，与Filters参数不能同时指定。
+	// 计算环境ID列表，与Filters参数不能同时指定，最大限制100。环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvIds []*string `json:"EnvIds,omitnil,omitempty" name:"EnvIds"`
 
-	// 过滤条件
-	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
-	// <li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li>
-	// <li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>
-	// 与EnvIds参数不能同时指定。
+	// 过滤条件<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤，可用区通过调用接口 [DescribeZones](https://cloud.tencent.com/document/api/213/15707)获取。</li><li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li><li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>与EnvIds参数不能同时指定。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量
+	// 返回数量，默认值20，最大值100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeComputeEnvCreateInfosRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算环境ID列表，与Filters参数不能同时指定。
+	// 计算环境ID列表，与Filters参数不能同时指定，最大限制100。环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvIds []*string `json:"EnvIds,omitnil,omitempty" name:"EnvIds"`
 
-	// 过滤条件
-	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
-	// <li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li>
-	// <li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>
-	// 与EnvIds参数不能同时指定。
+	// 过滤条件<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤，可用区通过调用接口 [DescribeZones](https://cloud.tencent.com/document/api/213/15707)获取。</li><li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li><li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>与EnvIds参数不能同时指定。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量
+	// 返回数量，默认值20，最大值100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -1024,7 +1016,7 @@ func (r *DescribeComputeEnvRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeComputeEnvResponseParams struct {
-	// 计算环境ID
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// 计算环境名称
@@ -1045,13 +1037,13 @@ type DescribeComputeEnvResponseParams struct {
 	// 计算节点期望个数
 	DesiredComputeNodeCount *uint64 `json:"DesiredComputeNodeCount,omitnil,omitempty" name:"DesiredComputeNodeCount"`
 
-	// 计算环境类型
+	// 计算环境管理类型，枚举如下： MANAGED: 由客户在Batch平台主动创建； THPC_QUEUE: 由thpc平台创建，关联thpc平台集群队列。
 	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
 
 	// 计算环境资源类型，当前为CVM和CPM（黑石）
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
-	// 下一步动作
+	// 下一步的动作，枚举如下： DELETING: 删除中
 	NextAction *string `json:"NextAction,omitnil,omitempty" name:"NextAction"`
 
 	// 用户添加到计算环境中的计算节点个数
@@ -1083,48 +1075,32 @@ func (r *DescribeComputeEnvResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeComputeEnvsRequestParams struct {
-	// 计算环境ID列表，与Filters参数不能同时指定。
+	// 计算环境ID列表，与Filters参数不能同时指定。最大数量上限100，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvIds []*string `json:"EnvIds,omitnil,omitempty" name:"EnvIds"`
 
-	// 过滤条件
-	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
-	// <li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li>
-	// <li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>
-	// <li> resource-type - String - 是否必填：否 -（过滤条件）按照计算资源类型过滤，取值CVM或者CPM(黑石)。</li>
-	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
-	// <li>tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
-	// <li>tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
-	// 与EnvIds参数不能同时指定。
+	// 过滤条件<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤，可用区通过调用接口 [DescribeZones](https://cloud.tencent.com/document/api/213/15707)获取。</li><li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li><li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li><li> resource-type - String - 是否必填：否 -（过滤条件）按照计算资源类型过滤，取值CVM或者CPM(黑石)。</li><li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li><li>tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li><li>tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>与EnvIds参数不能同时指定。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量
+	// 返回数量，默认值20，最大值100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeComputeEnvsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算环境ID列表，与Filters参数不能同时指定。
+	// 计算环境ID列表，与Filters参数不能同时指定。最大数量上限100，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvIds []*string `json:"EnvIds,omitnil,omitempty" name:"EnvIds"`
 
-	// 过滤条件
-	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
-	// <li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li>
-	// <li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>
-	// <li> resource-type - String - 是否必填：否 -（过滤条件）按照计算资源类型过滤，取值CVM或者CPM(黑石)。</li>
-	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
-	// <li>tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
-	// <li>tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
-	// 与EnvIds参数不能同时指定。
+	// 过滤条件<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤，可用区通过调用接口 [DescribeZones](https://cloud.tencent.com/document/api/213/15707)获取。</li><li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li><li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li><li> resource-type - String - 是否必填：否 -（过滤条件）按照计算资源类型过滤，取值CVM或者CPM(黑石)。</li><li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li><li>tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li><li>tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>与EnvIds参数不能同时指定。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量
+	// 返回数量，默认值20，最大值100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -1181,9 +1157,9 @@ func (r *DescribeComputeEnvsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCvmZoneInstanceConfigInfosRequestParams struct {
 	// 过滤条件。
-	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
-	// <li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
-	// <li> instance-type - String - 是否必填：否 - （过滤条件）按照机型过滤。</li>
+	// <li> zone - String - 是否必填：否 -（过滤条件）按照[可用区](https://cloud.tencent.com/document/product/213/15707)过滤。</li>
+	// <li> instance-family String - 是否必填：否 -（过滤条件）按照[机型系列](https://cloud.tencent.com/document/product/213/15748)过滤。实例机型系列形如：S1、I1、M1等。</li>
+	// <li> instance-type - String - 是否必填：否 - （过滤条件）按照[机型](https://cloud.tencent.com/document/product/213/15749)过滤。实例机型形如：：S5.12XLARGE128、S5.12XLARGE96等。</li>
 	// <li> instance-charge-type - String - 是否必填：否 -（过滤条件）按照实例计费模式过滤。 ( POSTPAID_BY_HOUR：表示后付费，即按量计费机型 | SPOTPAID：表示竞价付费机型。 )  </li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
@@ -1192,9 +1168,9 @@ type DescribeCvmZoneInstanceConfigInfosRequest struct {
 	*tchttp.BaseRequest
 	
 	// 过滤条件。
-	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
-	// <li> instance-family String - 是否必填：否 -（过滤条件）按照机型系列过滤。实例机型系列形如：S1、I1、M1等。</li>
-	// <li> instance-type - String - 是否必填：否 - （过滤条件）按照机型过滤。</li>
+	// <li> zone - String - 是否必填：否 -（过滤条件）按照[可用区](https://cloud.tencent.com/document/product/213/15707)过滤。</li>
+	// <li> instance-family String - 是否必填：否 -（过滤条件）按照[机型系列](https://cloud.tencent.com/document/product/213/15748)过滤。实例机型系列形如：S1、I1、M1等。</li>
+	// <li> instance-type - String - 是否必填：否 - （过滤条件）按照[机型](https://cloud.tencent.com/document/product/213/15749)过滤。实例机型形如：：S5.12XLARGE128、S5.12XLARGE96等。</li>
 	// <li> instance-charge-type - String - 是否必填：否 -（过滤条件）按照实例计费模式过滤。 ( POSTPAID_BY_HOUR：表示后付费，即按量计费机型 | SPOTPAID：表示竞价付费机型。 )  </li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
@@ -1299,14 +1275,14 @@ func (r *DescribeInstanceCategoriesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeJobRequestParams struct {
-	// 作业标识
+	// 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
 type DescribeJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 作业标识
+	// 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
@@ -1346,10 +1322,10 @@ type DescribeJobResponseParams struct {
 	// 作业状态
 	JobState *string `json:"JobState,omitnil,omitempty" name:"JobState"`
 
-	// 创建时间
+	// 创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 结束时间
+	// 结束时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 任务视图信息
@@ -1479,7 +1455,17 @@ type DescribeJobsRequestParams struct {
 	// <li> job-id - String - 是否必填：否 -（过滤条件）按照作业ID过滤。</li>
 	// <li> job-name - String - 是否必填：否 -（过滤条件）按照作业名称过滤。</li>
 	// <li> job-state - String - 是否必填：否 -（过滤条件）按照作业状态过滤。</li>
-	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+	// 
+	//     - SUBMITTED：已提交；
+	//     - PENDING：等待中；
+	//     - RUNNABLE：可运行；
+	//     - STARTING：启动中；
+	//     - RUNNING：运行中；
+	//     - SUCCEED：成功；
+	//     - FAILED：失败；
+	//     - FAILED_INTERRUPTED：失败后保留实例。
+	// 
+	// <li> zone - String - 是否必填：否 -（过滤条件）按照[可用区](https://cloud.tencent.com/document/product/213/15707)过滤。</li>
 	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
 	// <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
 	// <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
@@ -1489,7 +1475,7 @@ type DescribeJobsRequestParams struct {
 	// 偏移量
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量
+	// 返回job数量限制，最大值: 100，默认值: 20.
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -1503,7 +1489,17 @@ type DescribeJobsRequest struct {
 	// <li> job-id - String - 是否必填：否 -（过滤条件）按照作业ID过滤。</li>
 	// <li> job-name - String - 是否必填：否 -（过滤条件）按照作业名称过滤。</li>
 	// <li> job-state - String - 是否必填：否 -（过滤条件）按照作业状态过滤。</li>
-	// <li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。</li>
+	// 
+	//     - SUBMITTED：已提交；
+	//     - PENDING：等待中；
+	//     - RUNNABLE：可运行；
+	//     - STARTING：启动中；
+	//     - RUNNING：运行中；
+	//     - SUCCEED：成功；
+	//     - FAILED：失败；
+	//     - FAILED_INTERRUPTED：失败后保留实例。
+	// 
+	// <li> zone - String - 是否必填：否 -（过滤条件）按照[可用区](https://cloud.tencent.com/document/product/213/15707)过滤。</li>
 	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
 	// <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
 	// <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>
@@ -1513,7 +1509,7 @@ type DescribeJobsRequest struct {
 	// 偏移量
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回数量
+	// 返回job数量限制，最大值: 100，默认值: 20.
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -1569,38 +1565,38 @@ func (r *DescribeJobsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskLogsRequestParams struct {
-	// 作业ID
+	// 作业ID。JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 任务名称
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 任务实例集合
+	// 任务实例集合；与Offset不能同时指定。
 	TaskInstanceIndexes []*uint64 `json:"TaskInstanceIndexes,omitnil,omitempty" name:"TaskInstanceIndexes"`
 
-	// 起始任务实例
+	// 起始任务实例。与TaskInstanceIndexes参数不能同时指定。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 最大任务实例数
+	// 最大任务实例数, 最大值为10.
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeTaskLogsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 作业ID
+	// 作业ID。JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 任务名称
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 任务实例集合
+	// 任务实例集合；与Offset不能同时指定。
 	TaskInstanceIndexes []*uint64 `json:"TaskInstanceIndexes,omitnil,omitempty" name:"TaskInstanceIndexes"`
 
-	// 起始任务实例
+	// 起始任务实例。与TaskInstanceIndexes参数不能同时指定。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 最大任务实例数
+	// 最大任务实例数, 最大值为10.
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -1657,7 +1653,7 @@ func (r *DescribeTaskLogsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTaskRequestParams struct {
-	// 作业ID
+	// 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 任务名称
@@ -1670,14 +1666,23 @@ type DescribeTaskRequestParams struct {
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 过滤条件，详情如下：
-	// <li> task-instance-type - String - 是否必填： 否 - 按照任务实例状态进行过滤（SUBMITTED：已提交；PENDING：等待中；RUNNABLE：可运行；STARTING：启动中；RUNNING：运行中；SUCCEED：成功；FAILED：失败；FAILED_INTERRUPTED：失败后保留实例）。</li>
+	// task-instance-state     - String - 是否必填： 否 - 按照任务实例状态进行过滤（
+	// 
+	// - SUBMITTED：已提交；
+	// - PENDING：等待中；
+	// - RUNNABLE：可运行；
+	// - STARTING：启动中；
+	// - RUNNING：运行中；
+	// - SUCCEED：成功；
+	// - FAILED：失败；
+	// - FAILED_INTERRUPTED：失败后保留实例）。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 作业ID
+	// 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 任务名称
@@ -1690,7 +1695,16 @@ type DescribeTaskRequest struct {
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 过滤条件，详情如下：
-	// <li> task-instance-type - String - 是否必填： 否 - 按照任务实例状态进行过滤（SUBMITTED：已提交；PENDING：等待中；RUNNABLE：可运行；STARTING：启动中；RUNNING：运行中；SUCCEED：成功；FAILED：失败；FAILED_INTERRUPTED：失败后保留实例）。</li>
+	// task-instance-state     - String - 是否必填： 否 - 按照任务实例状态进行过滤（
+	// 
+	// - SUBMITTED：已提交；
+	// - PENDING：等待中；
+	// - RUNNABLE：可运行；
+	// - STARTING：启动中；
+	// - RUNNING：运行中；
+	// - SUCCEED：成功；
+	// - FAILED：失败；
+	// - FAILED_INTERRUPTED：失败后保留实例）。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -1856,20 +1870,20 @@ func (r *DescribeTaskTemplatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DetachInstancesRequestParams struct {
-	// 计算环境ID
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 实例ID列表
+	// 实例ID列表，实例ID通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728)获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
 type DetachInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算环境ID
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 实例ID列表
+	// 实例ID列表，实例ID通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728)获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
@@ -2266,13 +2280,13 @@ type Job struct {
 	// 任务信息
 	Tasks []*Task `json:"Tasks,omitnil,omitempty" name:"Tasks"`
 
-	// 作业名称
+	// 作业名称; 字符串长度限制60.
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
-	// 作业描述
+	// 作业描述；字符串长度限制200.
 	JobDescription *string `json:"JobDescription,omitnil,omitempty" name:"JobDescription"`
 
-	// 作业优先级，任务（Task）和任务实例（TaskInstance）会继承作业优先级
+	// 作业优先级，任务（Task）和任务实例（TaskInstance）会继承作业优先级；范围0～100，数值越大，优先级越高。
 	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 
 	// 依赖信息
@@ -2298,13 +2312,21 @@ type Job struct {
 }
 
 type JobView struct {
-	// 作业ID
+	// 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 作业名称
 	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
 
-	// 作业状态
+	// 作业状态:
+	// - SUBMITTED：已提交；
+	// - PENDING：等待中；
+	// - RUNNABLE：可运行；
+	// - STARTING：启动中；
+	// - RUNNING：运行中；
+	// - SUCCEED：成功；
+	// - FAILED：失败；
+	// - FAILED_INTERRUPTED：失败后保留实例。
 	JobState *string `json:"JobState,omitnil,omitempty" name:"JobState"`
 
 	// 作业优先级
@@ -2313,10 +2335,10 @@ type JobView struct {
 	// 位置信息
 	Placement *Placement `json:"Placement,omitnil,omitempty" name:"Placement"`
 
-	// 创建时间
+	// 创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 结束时间
+	// 结束时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 任务统计指标
@@ -2357,10 +2379,10 @@ type LoginSettings struct {
 
 // Predefined struct for user
 type ModifyComputeEnvRequestParams struct {
-	// 计算环境ID
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 计算节点期望个数
+	// 计算节点期望个数，最大上限2000。
 	DesiredComputeNodeCount *int64 `json:"DesiredComputeNodeCount,omitnil,omitempty" name:"DesiredComputeNodeCount"`
 
 	// 计算环境名称
@@ -2376,10 +2398,10 @@ type ModifyComputeEnvRequestParams struct {
 type ModifyComputeEnvRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算环境ID
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 计算节点期望个数
+	// 计算节点期望个数，最大上限2000。
 	DesiredComputeNodeCount *int64 `json:"DesiredComputeNodeCount,omitnil,omitempty" name:"DesiredComputeNodeCount"`
 
 	// 计算环境名称
@@ -2439,13 +2461,13 @@ func (r *ModifyComputeEnvResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTaskTemplateRequestParams struct {
-	// 任务模板ID
+	// 任务模板ID; 详见[任务模版](https://cloud.tencent.com/document/product/599/15902)。
 	TaskTemplateId *string `json:"TaskTemplateId,omitnil,omitempty" name:"TaskTemplateId"`
 
-	// 任务模板名称
+	// 任务模板名称；字节长度限制60。
 	TaskTemplateName *string `json:"TaskTemplateName,omitnil,omitempty" name:"TaskTemplateName"`
 
-	// 任务模板描述
+	// 任务模板描述；字节长度限制200。
 	TaskTemplateDescription *string `json:"TaskTemplateDescription,omitnil,omitempty" name:"TaskTemplateDescription"`
 
 	// 任务模板信息
@@ -2455,13 +2477,13 @@ type ModifyTaskTemplateRequestParams struct {
 type ModifyTaskTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务模板ID
+	// 任务模板ID; 详见[任务模版](https://cloud.tencent.com/document/product/599/15902)。
 	TaskTemplateId *string `json:"TaskTemplateId,omitnil,omitempty" name:"TaskTemplateId"`
 
-	// 任务模板名称
+	// 任务模板名称；字节长度限制60。
 	TaskTemplateName *string `json:"TaskTemplateName,omitnil,omitempty" name:"TaskTemplateName"`
 
-	// 任务模板描述
+	// 任务模板描述；字节长度限制200。
 	TaskTemplateDescription *string `json:"TaskTemplateDescription,omitnil,omitempty" name:"TaskTemplateDescription"`
 
 	// 任务模板信息
@@ -2524,13 +2546,15 @@ type NamedComputeEnv struct {
 	// 计算环境名称
 	EnvName *string `json:"EnvName,omitnil,omitempty" name:"EnvName"`
 
-	// 计算节点期望个数
+	// 计算节点期望个数，最大上限2000.
 	DesiredComputeNodeCount *int64 `json:"DesiredComputeNodeCount,omitnil,omitempty" name:"DesiredComputeNodeCount"`
 
 	// 计算环境描述
 	EnvDescription *string `json:"EnvDescription,omitnil,omitempty" name:"EnvDescription"`
 
-	// 计算环境管理类型
+	// 计算环境管理类型，枚举如下：
+	// MANAGED: 由客户在Batch平台主动创建；
+	// THPC_QUEUE: 由THPC平台创建，关联THPC平台的集群队列。
 	EnvType *string `json:"EnvType,omitnil,omitempty" name:"EnvType"`
 
 	// 计算环境具体参数
@@ -2648,14 +2672,14 @@ type RedirectLocalInfo struct {
 
 // Predefined struct for user
 type RetryJobsRequestParams struct {
-	// 作业ID列表。
+	// 作业ID列表。最大重试作业数100；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)。
 	JobIds []*string `json:"JobIds,omitnil,omitempty" name:"JobIds"`
 }
 
 type RetryJobsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 作业ID列表。
+	// 作业ID列表。最大重试作业数100；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)。
 	JobIds []*string `json:"JobIds,omitnil,omitempty" name:"JobIds"`
 }
 
@@ -2956,7 +2980,14 @@ type TaskInstanceView struct {
 	// 任务实例索引
 	TaskInstanceIndex *int64 `json:"TaskInstanceIndex,omitnil,omitempty" name:"TaskInstanceIndex"`
 
-	// 任务实例状态
+	// 任务实例状态: 
+	// - PENDING：等待中；
+	// - RUNNABLE：可运行；
+	// - STARTING：启动中；
+	// - RUNNING：运行中；
+	// - SUCCEED：成功；
+	// - FAILED：失败；
+	// - FAILED_INTERRUPTED：失败后保留实例。
 	TaskInstanceState *string `json:"TaskInstanceState,omitnil,omitempty" name:"TaskInstanceState"`
 
 	// 应用程序执行结束的exit code
@@ -2968,16 +2999,16 @@ type TaskInstanceView struct {
 	// 任务实例运行时所在计算节点（例如CVM）的InstanceId。任务实例未运行或者完结时，本字段为空。任务实例重试时，本字段会随之变化
 	ComputeNodeInstanceId *string `json:"ComputeNodeInstanceId,omitnil,omitempty" name:"ComputeNodeInstanceId"`
 
-	// 创建时间
+	// 创建时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 启动时间
+	// 启动时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	LaunchTime *string `json:"LaunchTime,omitnil,omitempty" name:"LaunchTime"`
 
-	// 开始运行时间
+	// 开始运行时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	RunningTime *string `json:"RunningTime,omitnil,omitempty" name:"RunningTime"`
 
-	// 结束时间
+	// 结束时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 重定向信息
@@ -3038,33 +3069,40 @@ type TaskView struct {
 	// 任务名称
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 任务状态
+	// 任务状态:
+	// - PENDING：等待中；
+	// - RUNNABLE：可运行；
+	// - STARTING：启动中；
+	// - RUNNING：运行中；
+	// - SUCCEED：成功；
+	// - FAILED：失败；
+	// - FAILED_INTERRUPTED：失败后保留实例。
 	TaskState *string `json:"TaskState,omitnil,omitempty" name:"TaskState"`
 
-	// 开始时间
+	// 开始时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 结束时间
+	// 结束时间。按照ISO8601标准表示，并且使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 // Predefined struct for user
 type TerminateComputeNodeRequestParams struct {
-	// 计算环境ID
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 计算节点ID
+	// 计算节点ID，节点ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	ComputeNodeId *string `json:"ComputeNodeId,omitnil,omitempty" name:"ComputeNodeId"`
 }
 
 type TerminateComputeNodeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算环境ID
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 计算节点ID
+	// 计算节点ID，节点ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	ComputeNodeId *string `json:"ComputeNodeId,omitnil,omitempty" name:"ComputeNodeId"`
 }
 
@@ -3112,20 +3150,20 @@ func (r *TerminateComputeNodeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type TerminateComputeNodesRequestParams struct {
-	// 计算环境ID
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 计算节点ID列表
+	// 计算节点ID列表，最大数量上限100，节点ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	ComputeNodeIds []*string `json:"ComputeNodeIds,omitnil,omitempty" name:"ComputeNodeIds"`
 }
 
 type TerminateComputeNodesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算环境ID
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
-	// 计算节点ID列表
+	// 计算节点ID列表，最大数量上限100，节点ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
 	ComputeNodeIds []*string `json:"ComputeNodeIds,omitnil,omitempty" name:"ComputeNodeIds"`
 }
 
@@ -3173,14 +3211,14 @@ func (r *TerminateComputeNodesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type TerminateJobRequestParams struct {
-	// 作业ID
+	// 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
 type TerminateJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 作业ID
+	// 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 }
 
@@ -3227,10 +3265,10 @@ func (r *TerminateJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type TerminateTaskInstanceRequestParams struct {
-	// 作业ID
+	// 作业ID；详见[作业列表](https://cloud.tencent.com/document/product/599/15909)。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 任务名称
+	// 任务名称；详见[作业提交信息](https://cloud.tencent.com/document/product/599/15910)
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
 	// 任务实例索引
@@ -3240,10 +3278,10 @@ type TerminateTaskInstanceRequestParams struct {
 type TerminateTaskInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 作业ID
+	// 作业ID；详见[作业列表](https://cloud.tencent.com/document/product/599/15909)。
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
-	// 任务名称
+	// 任务名称；详见[作业提交信息](https://cloud.tencent.com/document/product/599/15910)
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
 	// 任务实例索引

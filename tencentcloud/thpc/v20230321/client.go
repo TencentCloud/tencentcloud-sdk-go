@@ -1366,6 +1366,65 @@ func (c *Client) ModifyWorkspacesAttributeWithContext(ctx context.Context, reque
     return
 }
 
+func NewModifyWorkspacesRenewFlagRequest() (request *ModifyWorkspacesRenewFlagRequest) {
+    request = &ModifyWorkspacesRenewFlagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "ModifyWorkspacesRenewFlag")
+    
+    
+    return
+}
+
+func NewModifyWorkspacesRenewFlagResponse() (response *ModifyWorkspacesRenewFlagResponse) {
+    response = &ModifyWorkspacesRenewFlagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyWorkspacesRenewFlag
+// 本接口 (ModifyWorkspacesAttribute) 用于修改工作空间的属性（目前只支持修改工作空间的名称）。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
+//  INVALIDPARAMETERVALUE_SPACEIDNOTFOUND = "InvalidParameterValue.SpaceIdNotFound"
+//  INVALIDPARAMETERVALUE_VALUEDUPLICATED = "InvalidParameterValue.ValueDuplicated"
+//  UNSUPPORTEDOPERATION_SPACECHARGETYPE = "UnsupportedOperation.SpaceChargeType"
+//  UNSUPPORTEDOPERATION_WORKSPACESTATEARREARS = "UnsupportedOperation.WorkspaceStateArrears"
+func (c *Client) ModifyWorkspacesRenewFlag(request *ModifyWorkspacesRenewFlagRequest) (response *ModifyWorkspacesRenewFlagResponse, err error) {
+    return c.ModifyWorkspacesRenewFlagWithContext(context.Background(), request)
+}
+
+// ModifyWorkspacesRenewFlag
+// 本接口 (ModifyWorkspacesAttribute) 用于修改工作空间的属性（目前只支持修改工作空间的名称）。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_INVALIDSPACEIDMALFORMED = "InvalidParameterValue.InvalidSpaceIdMalformed"
+//  INVALIDPARAMETERVALUE_SPACEIDNOTFOUND = "InvalidParameterValue.SpaceIdNotFound"
+//  INVALIDPARAMETERVALUE_VALUEDUPLICATED = "InvalidParameterValue.ValueDuplicated"
+//  UNSUPPORTEDOPERATION_SPACECHARGETYPE = "UnsupportedOperation.SpaceChargeType"
+//  UNSUPPORTEDOPERATION_WORKSPACESTATEARREARS = "UnsupportedOperation.WorkspaceStateArrears"
+func (c *Client) ModifyWorkspacesRenewFlagWithContext(ctx context.Context, request *ModifyWorkspacesRenewFlagRequest) (response *ModifyWorkspacesRenewFlagResponse, err error) {
+    if request == nil {
+        request = NewModifyWorkspacesRenewFlagRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyWorkspacesRenewFlag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyWorkspacesRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetAutoScalingConfigurationRequest() (request *SetAutoScalingConfigurationRequest) {
     request = &SetAutoScalingConfigurationRequest{
         BaseRequest: &tchttp.BaseRequest{},

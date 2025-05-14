@@ -241,7 +241,7 @@ type CreateClusterRequestParams struct {
 	// 指定计算节点的数量。默认取值：0。
 	ComputeNodeCount *int64 `json:"ComputeNodeCount,omitnil,omitempty" name:"ComputeNodeCount"`
 
-	// 调度器类型。<br><li>SGE：SGE调度器。</li><br><li>SLURM：SLURM调度器。</li>
+	// 调度器类型。<br><li>SLURM：SLURM调度器。</li>
 	SchedulerType *string `json:"SchedulerType,omitnil,omitempty" name:"SchedulerType"`
 
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像。
@@ -305,7 +305,7 @@ type CreateClusterRequest struct {
 	// 指定计算节点的数量。默认取值：0。
 	ComputeNodeCount *int64 `json:"ComputeNodeCount,omitnil,omitempty" name:"ComputeNodeCount"`
 
-	// 调度器类型。<br><li>SGE：SGE调度器。</li><br><li>SLURM：SLURM调度器。</li>
+	// 调度器类型。<br><li>SLURM：SLURM调度器。</li>
 	SchedulerType *string `json:"SchedulerType,omitnil,omitempty" name:"SchedulerType"`
 
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像。

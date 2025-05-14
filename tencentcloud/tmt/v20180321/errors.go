@@ -20,6 +20,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 图片下载出错
+	FAILEDOPERATION_DOWNLOADERR = "FailedOperation.DownloadErr"
+
 	// 用户区域与请求服务区域不一致。
 	FAILEDOPERATION_ERRORUSERAREA = "FailedOperation.ErrorUserArea"
 

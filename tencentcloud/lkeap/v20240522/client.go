@@ -99,7 +99,7 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 //     - DeepSeek-R1为671B模型，使用强化学习训练，推理过程包含大量反思和验证，思维链长度可达数万字。 该系列模型在数学、代码以及各种复杂逻辑推理任务上推理效果优异，并为用户展现了完整的思考过程。
 //
-//     -  支持64K上下文长度，最大输出16k。
+//     -  支持96K上下文长度，最大输入长度64k，最大输出16k（默认4k），最大思维链输出长度32k。
 //
 // - DeepSeek-Prover-V2（model 参数值为**deepseek-prover-v2**）
 //
@@ -334,7 +334,7 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 //     - DeepSeek-R1为671B模型，使用强化学习训练，推理过程包含大量反思和验证，思维链长度可达数万字。 该系列模型在数学、代码以及各种复杂逻辑推理任务上推理效果优异，并为用户展现了完整的思考过程。
 //
-//     -  支持64K上下文长度，最大输出16k。
+//     -  支持96K上下文长度，最大输入长度64k，最大输出16k（默认4k），最大思维链输出长度32k。
 //
 // - DeepSeek-Prover-V2（model 参数值为**deepseek-prover-v2**）
 //

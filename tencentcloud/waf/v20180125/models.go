@@ -11752,6 +11752,9 @@ type InstanceInfo struct {
 
 	// 重保增强包
 	MajorEventsProPkg *MajorEventsProPkg `json:"MajorEventsProPkg,omitnil,omitempty" name:"MajorEventsProPkg"`
+
+	// 1是基础2025版本；0不是
+	BasicFlag *uint64 `json:"BasicFlag,omitnil,omitempty" name:"BasicFlag"`
 }
 
 type IpAccessControlData struct {
