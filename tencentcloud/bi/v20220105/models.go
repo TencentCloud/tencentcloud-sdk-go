@@ -690,6 +690,9 @@ type CreateEmbedTokenRequestParams struct {
 
 	// 一次创建的token数
 	TokenNum *int64 `json:"TokenNum,omitnil,omitempty" name:"TokenNum"`
+
+	// 嵌出显示配置，目前为ChatBI嵌出场景用，TableFilter表示数据表列表过滤，SqlView表示sql查看功能
+	ConfigParam *string `json:"ConfigParam,omitnil,omitempty" name:"ConfigParam"`
 }
 
 type CreateEmbedTokenRequest struct {
@@ -770,6 +773,9 @@ type CreateEmbedTokenRequest struct {
 
 	// 一次创建的token数
 	TokenNum *int64 `json:"TokenNum,omitnil,omitempty" name:"TokenNum"`
+
+	// 嵌出显示配置，目前为ChatBI嵌出场景用，TableFilter表示数据表列表过滤，SqlView表示sql查看功能
+	ConfigParam *string `json:"ConfigParam,omitnil,omitempty" name:"ConfigParam"`
 }
 
 func (r *CreateEmbedTokenRequest) ToJsonString() string {
@@ -796,6 +802,7 @@ func (r *CreateEmbedTokenRequest) FromJsonString(s string) error {
 	delete(f, "GlobalParam")
 	delete(f, "TokenType")
 	delete(f, "TokenNum")
+	delete(f, "ConfigParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEmbedTokenRequest has unknown keys!", "")
 	}
@@ -2382,6 +2389,10 @@ type EmbedTokenInfo struct {
 	// 是否单用户多token
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SingleUserMultiToken *bool `json:"SingleUserMultiToken,omitnil,omitempty" name:"SingleUserMultiToken"`
+
+	// 嵌出显示配置，目前为ChatBI嵌出场景用，TableFilter表示数据表列表过滤，SqlView表示sql查看功能
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigParam *string `json:"ConfigParam,omitnil,omitempty" name:"ConfigParam"`
 }
 
 type ErrorInfo struct {

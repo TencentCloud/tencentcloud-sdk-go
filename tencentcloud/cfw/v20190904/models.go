@@ -6769,12 +6769,12 @@ type EnterpriseSecurityGroupRuleRuleInfo struct {
 	// 源规则类型 
 	// 取值范围 0/1/2/3/4/5/6/7/8/9/100
 	// 0表示ip(net),
-	// 1表示VPC实例(intance)
-	// 2表示子网实例(intance)
-	// 3表示CVM实例(intance)
-	// 4表示CLB实例(intance)
-	// 5表示ENI实例(intance)
-	// 6表示数据库实例(intance)
+	// 1表示VPC实例(instance)
+	// 2表示子网实例(instance)
+	// 3表示CVM实例(instance)
+	// 4表示CLB实例(instance)
+	// 5表示ENI实例(instance)
+	// 6表示数据库实例(instance)
 	// 7表示模版(template)
 	// 8表示标签(tag)
 	// 9表示地域(region)
@@ -6787,12 +6787,12 @@ type EnterpriseSecurityGroupRuleRuleInfo struct {
 	// 目的规则类型 
 	// 取值范围 0/1/2/3/4/5/6/7/8/9/100
 	// 0表示ip(net),
-	// 1表示VPC实例(intance)
-	// 2表示子网实例(intance)
-	// 3表示CVM实例(intance)
-	// 4表示CLB实例(intance)
-	// 5表示ENI实例(intance)
-	// 6表示数据库实例(intance)
+	// 1表示VPC实例(instance)
+	// 2表示子网实例(instance)
+	// 3表示CVM实例(instance)
+	// 4表示CLB实例(instance)
+	// 5表示ENI实例(instance)
+	// 6表示数据库实例(instance)
 	// 7表示模版(template)
 	// 8表示标签(tag)
 	// 9表示地域(region)

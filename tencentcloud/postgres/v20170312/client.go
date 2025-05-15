@@ -765,6 +765,10 @@ func NewCreateDBInstancesResponse() (response *CreateDBInstancesResponse) {
 }
 
 // CreateDBInstances
+// 早期接口，不规范，已提供新接口 CreateInstances 替换
+//
+// 
+//
 // 本接口（CreateDBInstances）用于创建一个或者多个PostgreSQL实例,仅发货实例不会进行初始化。本接口已废弃，推荐使用接口[CreateInstances](https://cloud.tencent.com/document/api/409/56107)替代。
 //
 // 可能返回的错误码:
@@ -846,6 +850,10 @@ func (c *Client) CreateDBInstances(request *CreateDBInstancesRequest) (response 
 }
 
 // CreateDBInstances
+// 早期接口，不规范，已提供新接口 CreateInstances 替换
+//
+// 
+//
 // 本接口（CreateDBInstances）用于创建一个或者多个PostgreSQL实例,仅发货实例不会进行初始化。本接口已废弃，推荐使用接口[CreateInstances](https://cloud.tencent.com/document/api/409/56107)替代。
 //
 // 可能返回的错误码:
@@ -3745,6 +3753,10 @@ func NewDescribeDBSlowlogsResponse() (response *DescribeDBSlowlogsResponse) {
 }
 
 // DescribeDBSlowlogs
+// 早期接口不规范，已提供新接口 DescribeSlowQueryList 替换
+//
+// 
+//
 // 本接口（DescribeDBSlowlogs）用于获取慢查询日志。本接口已于2021.09.01日废弃，后续此接口将不再返回任何数据，推荐使用接口[DescribeSlowQueryList](https://cloud.tencent.com/document/api/409/60540)替代。
 //
 // 可能返回的错误码:
@@ -3769,6 +3781,10 @@ func (c *Client) DescribeDBSlowlogs(request *DescribeDBSlowlogsRequest) (respons
 }
 
 // DescribeDBSlowlogs
+// 早期接口不规范，已提供新接口 DescribeSlowQueryList 替换
+//
+// 
+//
 // 本接口（DescribeDBSlowlogs）用于获取慢查询日志。本接口已于2021.09.01日废弃，后续此接口将不再返回任何数据，推荐使用接口[DescribeSlowQueryList](https://cloud.tencent.com/document/api/409/60540)替代。
 //
 // 可能返回的错误码:
@@ -5513,6 +5529,10 @@ func NewInitDBInstancesResponse() (response *InitDBInstancesResponse) {
 }
 
 // InitDBInstances
+// 早期接口，不规范，已提供新接口 CreateInstances 替换
+//
+// 
+//
 // 本接口（InitDBInstances）用于初始化云数据库PostgreSQL实例。本接口已废弃，推荐使用接口[CreateInstances](https://cloud.tencent.com/document/api/409/56107)替代。
 //
 // 可能返回的错误码:
@@ -5551,6 +5571,10 @@ func (c *Client) InitDBInstances(request *InitDBInstancesRequest) (response *Ini
 }
 
 // InitDBInstances
+// 早期接口，不规范，已提供新接口 CreateInstances 替换
+//
+// 
+//
 // 本接口（InitDBInstances）用于初始化云数据库PostgreSQL实例。本接口已废弃，推荐使用接口[CreateInstances](https://cloud.tencent.com/document/api/409/56107)替代。
 //
 // 可能返回的错误码:
@@ -7661,135 +7685,6 @@ func (c *Client) OpenDBExtranetAccessWithContext(ctx context.Context, request *O
     return
 }
 
-func NewOpenServerlessDBExtranetAccessRequest() (request *OpenServerlessDBExtranetAccessRequest) {
-    request = &OpenServerlessDBExtranetAccessRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("postgres", APIVersion, "OpenServerlessDBExtranetAccess")
-    
-    
-    return
-}
-
-func NewOpenServerlessDBExtranetAccessResponse() (response *OpenServerlessDBExtranetAccessResponse) {
-    response = &OpenServerlessDBExtranetAccessResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// OpenServerlessDBExtranetAccess
-// 该产品形态需要下线，已完成客户实例全部下线、后端服务下线等
-//
-// 
-//
-// 【接口下线中，请勿使用】本接口（OpenServerlessDBExtranetAccess）用于开通serverlessDB实例公网地址。
-//
-// 可能返回的错误码:
-//  ACCOUNTNOTEXIST = "AccountNotExist"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  DBERROR = "DBError"
-//  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
-//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
-//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
-//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
-//  FAILEDOPERATION_QUERYVPCFALIED = "FailedOperation.QueryVpcFalied"
-//  FLOWERROR = "FlowError"
-//  INSTANCENOTEXIST = "InstanceNotExist"
-//  INTERFACENAMENOTFOUND = "InterfaceNameNotFound"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_FLOWERROR = "InternalError.FlowError"
-//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INTERNALERROR_VPCERROR = "InternalError.VpcError"
-//  INVALIDACCOUNTSTATUS = "InvalidAccountStatus"
-//  INVALIDINSTANCESTATUS = "InvalidInstanceStatus"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
-//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
-//  INVALIDPARAMETERVALUE_INTERFACENAMENOTFOUND = "InvalidParameterValue.InterfaceNameNotFound"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-//  INVALIDPARAMETERVALUE_PARAMETERHANDLEERROR = "InvalidParameterValue.ParameterHandleError"
-//  INVALIDPARAMETERVALUE_STRUCTPARSEFAILED = "InvalidParameterValue.StructParseFailed"
-//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
-//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
-//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
-//  RESOURCEUNAVAILABLE_INVALIDINSTANCESTATUS = "ResourceUnavailable.InvalidInstanceStatus"
-//  RESOURCEUNAVAILABLE_RESOURCENOPERMISSION = "ResourceUnavailable.ResourceNoPermission"
-//  RESOURCEUNAVAILABLE_VPCRESOURCENOTFOUND = "ResourceUnavailable.VpcResourceNotFound"
-//  STRUCTPARSEFAILED = "StructParseFailed"
-//  SYSTEMERROR = "SystemError"
-//  UNKNOWNERROR = "UnknownError"
-//  VPCERROR = "VpcError"
-func (c *Client) OpenServerlessDBExtranetAccess(request *OpenServerlessDBExtranetAccessRequest) (response *OpenServerlessDBExtranetAccessResponse, err error) {
-    return c.OpenServerlessDBExtranetAccessWithContext(context.Background(), request)
-}
-
-// OpenServerlessDBExtranetAccess
-// 该产品形态需要下线，已完成客户实例全部下线、后端服务下线等
-//
-// 
-//
-// 【接口下线中，请勿使用】本接口（OpenServerlessDBExtranetAccess）用于开通serverlessDB实例公网地址。
-//
-// 可能返回的错误码:
-//  ACCOUNTNOTEXIST = "AccountNotExist"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  DBERROR = "DBError"
-//  FAILEDOPERATION_CAMSIGANDAUTHERROR = "FailedOperation.CamSigAndAuthError"
-//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
-//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
-//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
-//  FAILEDOPERATION_QUERYVPCFALIED = "FailedOperation.QueryVpcFalied"
-//  FLOWERROR = "FlowError"
-//  INSTANCENOTEXIST = "InstanceNotExist"
-//  INTERFACENAMENOTFOUND = "InterfaceNameNotFound"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_FLOWERROR = "InternalError.FlowError"
-//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INTERNALERROR_VPCERROR = "InternalError.VpcError"
-//  INVALIDACCOUNTSTATUS = "InvalidAccountStatus"
-//  INVALIDINSTANCESTATUS = "InvalidInstanceStatus"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
-//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
-//  INVALIDPARAMETERVALUE_INTERFACENAMENOTFOUND = "InvalidParameterValue.InterfaceNameNotFound"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-//  INVALIDPARAMETERVALUE_PARAMETERHANDLEERROR = "InvalidParameterValue.ParameterHandleError"
-//  INVALIDPARAMETERVALUE_STRUCTPARSEFAILED = "InvalidParameterValue.StructParseFailed"
-//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
-//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
-//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
-//  RESOURCEUNAVAILABLE_INVALIDINSTANCESTATUS = "ResourceUnavailable.InvalidInstanceStatus"
-//  RESOURCEUNAVAILABLE_RESOURCENOPERMISSION = "ResourceUnavailable.ResourceNoPermission"
-//  RESOURCEUNAVAILABLE_VPCRESOURCENOTFOUND = "ResourceUnavailable.VpcResourceNotFound"
-//  STRUCTPARSEFAILED = "StructParseFailed"
-//  SYSTEMERROR = "SystemError"
-//  UNKNOWNERROR = "UnknownError"
-//  VPCERROR = "VpcError"
-func (c *Client) OpenServerlessDBExtranetAccessWithContext(ctx context.Context, request *OpenServerlessDBExtranetAccessRequest) (response *OpenServerlessDBExtranetAccessResponse, err error) {
-    if request == nil {
-        request = NewOpenServerlessDBExtranetAccessRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("OpenServerlessDBExtranetAccess require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewOpenServerlessDBExtranetAccessResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewRebalanceReadOnlyGroupRequest() (request *RebalanceReadOnlyGroupRequest) {
     request = &RebalanceReadOnlyGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8571,6 +8466,10 @@ func NewUpgradeDBInstanceResponse() (response *UpgradeDBInstanceResponse) {
 }
 
 // UpgradeDBInstance
+// 早期接口，不规范，已提供新接口 ModifyDBInstanceSpec 替换
+//
+// 
+//
 // 本接口（UpgradeDBInstance）用于升级实例配置。本接口已废弃，推荐使用接口[ModifyDBInstanceSpec](https://cloud.tencent.com/document/api/409/63689)替代。
 //
 // 可能返回的错误码:
@@ -8607,6 +8506,10 @@ func (c *Client) UpgradeDBInstance(request *UpgradeDBInstanceRequest) (response 
 }
 
 // UpgradeDBInstance
+// 早期接口，不规范，已提供新接口 ModifyDBInstanceSpec 替换
+//
+// 
+//
 // 本接口（UpgradeDBInstance）用于升级实例配置。本接口已废弃，推荐使用接口[ModifyDBInstanceSpec](https://cloud.tencent.com/document/api/409/63689)替代。
 //
 // 可能返回的错误码:

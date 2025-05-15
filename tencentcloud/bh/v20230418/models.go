@@ -504,6 +504,9 @@ type AssetSyncStatus struct {
 
 	// 同步任务是否正在进行中
 	InProcess *bool `json:"InProcess,omitnil,omitempty" name:"InProcess"`
+
+	// 任务错误消息
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 }
 
 // Predefined struct for user
@@ -4499,7 +4502,7 @@ type DescribeUsersRequestParams struct {
 	// 查询具有指定应用资产ID访问权限的用户
 	AuthorizedAppAssetIdSet []*uint64 `json:"AuthorizedAppAssetIdSet,omitnil,omitempty" name:"AuthorizedAppAssetIdSet"`
 
-	// 认证方式，0 - 本地, 1 - LDAP, 2 - OAuth, 不传为全部
+	// 认证方式，0 - 本地, 1 - LDAP, 2 - OAuth, 3-ioa 不传为全部
 	AuthTypeSet []*uint64 `json:"AuthTypeSet,omitnil,omitempty" name:"AuthTypeSet"`
 
 	// 部门ID，用于过滤属于某个部门的用户
@@ -4507,6 +4510,12 @@ type DescribeUsersRequestParams struct {
 
 	// 参数过滤数组
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 是否获取cam用户, 0-否，1-是
+	IsCamUser *uint64 `json:"IsCamUser,omitnil,omitempty" name:"IsCamUser"`
+
+	// 用户来源，0-bh，1-ioa,不传为全部
+	UserFromSet []*uint64 `json:"UserFromSet,omitnil,omitempty" name:"UserFromSet"`
 }
 
 type DescribeUsersRequest struct {
@@ -4540,7 +4549,7 @@ type DescribeUsersRequest struct {
 	// 查询具有指定应用资产ID访问权限的用户
 	AuthorizedAppAssetIdSet []*uint64 `json:"AuthorizedAppAssetIdSet,omitnil,omitempty" name:"AuthorizedAppAssetIdSet"`
 
-	// 认证方式，0 - 本地, 1 - LDAP, 2 - OAuth, 不传为全部
+	// 认证方式，0 - 本地, 1 - LDAP, 2 - OAuth, 3-ioa 不传为全部
 	AuthTypeSet []*uint64 `json:"AuthTypeSet,omitnil,omitempty" name:"AuthTypeSet"`
 
 	// 部门ID，用于过滤属于某个部门的用户
@@ -4548,6 +4557,12 @@ type DescribeUsersRequest struct {
 
 	// 参数过滤数组
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 是否获取cam用户, 0-否，1-是
+	IsCamUser *uint64 `json:"IsCamUser,omitnil,omitempty" name:"IsCamUser"`
+
+	// 用户来源，0-bh，1-ioa,不传为全部
+	UserFromSet []*uint64 `json:"UserFromSet,omitnil,omitempty" name:"UserFromSet"`
 }
 
 func (r *DescribeUsersRequest) ToJsonString() string {
@@ -4574,6 +4589,8 @@ func (r *DescribeUsersRequest) FromJsonString(s string) error {
 	delete(f, "AuthTypeSet")
 	delete(f, "DepartmentId")
 	delete(f, "Filters")
+	delete(f, "IsCamUser")
+	delete(f, "UserFromSet")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUsersRequest has unknown keys!", "")
 	}
@@ -4668,6 +4685,9 @@ type Device struct {
 
 	// 已上传的SSL证书名称
 	SSLCertName *string `json:"SSLCertName,omitnil,omitempty" name:"SSLCertName"`
+
+	// IOA侧的资源ID
+	IOAId *int64 `json:"IOAId,omitnil,omitempty" name:"IOAId"`
 }
 
 type DeviceAccount struct {
@@ -4767,6 +4787,23 @@ type Group struct {
 
 	// 个数
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
+}
+
+type IOAUserGroup struct {
+	// ioa用户组织id
+	OrgId *uint64 `json:"OrgId,omitnil,omitempty" name:"OrgId"`
+
+	// ioa用户组织名称
+	OrgName *string `json:"OrgName,omitnil,omitempty" name:"OrgName"`
+
+	// ioa用户组织id路径	
+	OrgIdPath *string `json:"OrgIdPath,omitnil,omitempty" name:"OrgIdPath"`
+
+	// ioa用户组织名称路径	
+	OrgNamePath *string `json:"OrgNamePath,omitnil,omitempty" name:"OrgNamePath"`
+
+	// ioa关联用户源类型
+	Source *uint64 `json:"Source,omitnil,omitempty" name:"Source"`
 }
 
 // Predefined struct for user
@@ -6410,6 +6447,15 @@ type Resource struct {
 
 	// 1 默认值，外网访问开启，0 外网访问关闭，2 外网访问开通中，3 外网访问关闭中
 	ExternalAccess *uint64 `json:"ExternalAccess,omitnil,omitempty" name:"ExternalAccess"`
+
+	// 0默认值。0-免费版（试用版）ioa，1-付费版ioa
+	IOAResource *uint64 `json:"IOAResource,omitnil,omitempty" name:"IOAResource"`
+
+	// 零信任堡垒机用户扩展包个数。1个扩展包对应20个用户数
+	PackageIOAUserCount *uint64 `json:"PackageIOAUserCount,omitnil,omitempty" name:"PackageIOAUserCount"`
+
+	//  零信任堡垒机带宽扩展包个数。一个扩展包表示4M带宽
+	PackageIOABandwidth *uint64 `json:"PackageIOABandwidth,omitnil,omitempty" name:"PackageIOABandwidth"`
 }
 
 type RunChangePwdTaskDetail struct {
@@ -7927,4 +7973,10 @@ type User struct {
 
 	// 权限版本
 	AclVersion *uint64 `json:"AclVersion,omitnil,omitempty" name:"AclVersion"`
+
+	// 用户来源，0-bh,1-ioa
+	UserFrom *uint64 `json:"UserFrom,omitnil,omitempty" name:"UserFrom"`
+
+	// ioa同步过来的用户相关信息
+	IOAUserGroup *IOAUserGroup `json:"IOAUserGroup,omitnil,omitempty" name:"IOAUserGroup"`
 }

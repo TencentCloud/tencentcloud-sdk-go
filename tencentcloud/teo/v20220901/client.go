@@ -5546,6 +5546,57 @@ func (c *Client) DescribeOverviewL7DataWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribePlansRequest() (request *DescribePlansRequest) {
+    request = &DescribePlansRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribePlans")
+    
+    
+    return
+}
+
+func NewDescribePlansResponse() (response *DescribePlansResponse) {
+    response = &DescribePlansResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePlans
+// 查询套餐信息列表，支持分页。
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DescribePlans(request *DescribePlansRequest) (response *DescribePlansResponse, err error) {
+    return c.DescribePlansWithContext(context.Background(), request)
+}
+
+// DescribePlans
+// 查询套餐信息列表，支持分页。
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DescribePlansWithContext(ctx context.Context, request *DescribePlansRequest) (response *DescribePlansResponse, err error) {
+    if request == nil {
+        request = NewDescribePlansRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePlans require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePlansResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePrefetchTasksRequest() (request *DescribePrefetchTasksRequest) {
     request = &DescribePrefetchTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -12037,6 +12037,9 @@ type UserInfoForUserManager struct {
 
 	// 备注
 	ReMark *string `json:"ReMark,omitnil,omitempty" name:"ReMark"`
+
+	// 用户副组
+	Groups []*string `json:"Groups,omitnil,omitempty" name:"Groups"`
 }
 
 type UserManagerFilter struct {
@@ -12045,6 +12048,9 @@ type UserManagerFilter struct {
 
 	// 用户来源
 	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
+
+	// 组名
+	Groups *string `json:"Groups,omitnil,omitempty" name:"Groups"`
 }
 
 type UserManagerUserBriefInfo struct {

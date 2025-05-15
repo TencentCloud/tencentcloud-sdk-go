@@ -584,6 +584,9 @@ type AuditLogFile struct {
 
 	// 错误信息。
 	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
+
+	// 日志下载进度。
+	ProgressRate *int64 `json:"ProgressRate,omitnil,omitempty" name:"ProgressRate"`
 }
 
 type AuditLogFilter struct {
@@ -12923,7 +12926,9 @@ type OpenAuditServiceRequestParams struct {
 	// 高频日志保留时长。
 	HighLogExpireDay *uint64 `json:"HighLogExpireDay,omitnil,omitempty" name:"HighLogExpireDay"`
 
-	// 审计规则。同RuleTemplateIds都不填是全审计。
+	// 审计规则(废弃)。
+	//
+	// Deprecated: AuditRuleFilters is deprecated.
 	AuditRuleFilters []*AuditRuleFilters `json:"AuditRuleFilters,omitnil,omitempty" name:"AuditRuleFilters"`
 
 	// 规则模板ID。同AuditRuleFilters都不填是全审计。
@@ -12945,7 +12950,7 @@ type OpenAuditServiceRequest struct {
 	// 高频日志保留时长。
 	HighLogExpireDay *uint64 `json:"HighLogExpireDay,omitnil,omitempty" name:"HighLogExpireDay"`
 
-	// 审计规则。同RuleTemplateIds都不填是全审计。
+	// 审计规则(废弃)。
 	AuditRuleFilters []*AuditRuleFilters `json:"AuditRuleFilters,omitnil,omitempty" name:"AuditRuleFilters"`
 
 	// 规则模板ID。同AuditRuleFilters都不填是全审计。

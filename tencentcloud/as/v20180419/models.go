@@ -58,13 +58,13 @@ type Activity struct {
 	// 伸缩活动描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 伸缩活动开始时间。
+	// 伸缩活动开始时间，为 `UTC` 标准时间。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 伸缩活动结束时间。
+	// 伸缩活动结束时间，为 `UTC` 标准时间。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 伸缩活动创建时间。
+	// 伸缩活动创建时间，为 `UTC` 标准时间。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 该参数已废弃，请勿使用。
@@ -186,26 +186,26 @@ func (r *AttachInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AttachLoadBalancersRequestParams struct {
-	// 伸缩组ID
+	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 传统型负载均衡器ID列表，每个伸缩组绑定传统型负载均衡器数量上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+	// 传统型负载均衡器ID列表，每个伸缩组绑定传统型负载均衡器数量上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
-	// 应用型负载均衡器列表，每个伸缩组绑定应用型负载均衡器数量上限为100，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+	// 负载均衡器列表，每个伸缩组绑定应用型负载均衡器数量上限为100，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	ForwardLoadBalancers []*ForwardLoadBalancer `json:"ForwardLoadBalancers,omitnil,omitempty" name:"ForwardLoadBalancers"`
 }
 
 type AttachLoadBalancersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID
+	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 传统型负载均衡器ID列表，每个伸缩组绑定传统型负载均衡器数量上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+	// 传统型负载均衡器ID列表，每个伸缩组绑定传统型负载均衡器数量上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
-	// 应用型负载均衡器列表，每个伸缩组绑定应用型负载均衡器数量上限为100，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+	// 负载均衡器列表，每个伸缩组绑定应用型负载均衡器数量上限为100，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	ForwardLoadBalancers []*ForwardLoadBalancer `json:"ForwardLoadBalancers,omitnil,omitempty" name:"ForwardLoadBalancers"`
 }
 
@@ -331,16 +331,21 @@ type AutoScalingGroup struct {
 	// 子网ID列表
 	SubnetIdSet []*string `json:"SubnetIdSet,omitnil,omitempty" name:"SubnetIdSet"`
 
-	// 销毁策略
+	// 销毁策略。取值范围如下：
+	// <li>OLDEST_INSTANCE：优先销毁伸缩组中最旧的实例，默认取值。</li>
+	// <li>NEWEST_INSTANCE：优先销毁伸缩组中最新的实例。</li>
 	TerminationPolicySet []*string `json:"TerminationPolicySet,omitnil,omitempty" name:"TerminationPolicySet"`
 
-	// VPC标识
+	// 私有网络ID。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 可用区列表
 	ZoneSet []*string `json:"ZoneSet,omitnil,omitempty" name:"ZoneSet"`
 
-	// 重试策略
+	// 重试策略，部分成功的伸缩活动判定为一次失败活动。取值范围如下：
+	// <li>IMMEDIATE_RETRY：默认取值，表示立即重试，在较短时间内快速重试，连续失败超过一定次数（5次）后不再重试。</li>
+	// <li>INCREMENTAL_INTERVALS：间隔递增重试，随着连续失败次数的增加，重试间隔逐渐增大。前 10 次重试为快速重试，后续重试间隔逐步递增至 10 分钟、30 分钟、60 分钟、一天。</li>
+	// <li>NO_RETRY，不进行重试，直到再次收到用户调用或者告警信息后才会重试。</li>
 	RetryPolicy *string `json:"RetryPolicy,omitnil,omitempty" name:"RetryPolicy"`
 
 	// 伸缩组是否处于伸缩活动中，`IN_ACTIVITY`表示处于伸缩活动中，`NOT_IN_ACTIVITY`表示不处于伸缩活动中。
@@ -352,7 +357,7 @@ type AutoScalingGroup struct {
 	// 服务设置
 	ServiceSettings *ServiceSettings `json:"ServiceSettings,omitnil,omitempty" name:"ServiceSettings"`
 
-	// 实例具有IPv6地址数量的配置
+	// 实例具有IPv6地址数量的配置，取值包括0、1。默认值为 0，表示实例不分配 IPv6 地址。需使用支持 IPv6 的私有网络，需在子网中开启 IPv6 CIDR，其他使用限制可参考 [IPv6使用限制](https://cloud.tencent.com/document/product/1142/38369)。
 	Ipv6AddressCount *int64 `json:"Ipv6AddressCount,omitnil,omitempty" name:"Ipv6AddressCount"`
 
 	// 多可用区/子网策略。
@@ -365,7 +370,8 @@ type AutoScalingGroup struct {
 	// <li>CLB：根据 CLB 的健康检查状态判断实例是否处于不健康状态，CLB健康检查原理可参考[健康检查](https://cloud.tencent.com/document/product/214/6097)</li>
 	HealthCheckType *string `json:"HealthCheckType,omitnil,omitempty" name:"HealthCheckType"`
 
-	// CLB健康检查宽限期
+	// CLB健康检查宽限期.当扩容的实例进入IN_SERVICE后，在宽限期时间范围内将不会被标记为不健康CLB_UNHEALTHY。
+	// 默认值：0。取值范围[0, 7200]，单位：秒。
 	LoadBalancerHealthCheckGracePeriod *uint64 `json:"LoadBalancerHealthCheckGracePeriod,omitnil,omitempty" name:"LoadBalancerHealthCheckGracePeriod"`
 
 	// 实例分配策略，取值包括 LAUNCH_CONFIGURATION 和 SPOT_MIXED。
@@ -401,19 +407,30 @@ type AutoScalingNotification struct {
 	// 用户组ID列表。
 	NotificationUserGroupIds []*string `json:"NotificationUserGroupIds,omitnil,omitempty" name:"NotificationUserGroupIds"`
 
-	// 通知事件列表。
+	// 通知事件列表。取值范围如下:
+	// <li>SCALE_OUT_SUCCESSFUL：扩容成功</li>
+	// <li>SCALE_OUT_FAILED：扩容失败</li>
+	// <li>SCALE_IN_SUCCESSFUL：缩容成功</li>
+	// <li>SCALE_IN_FAILED：缩容失败</li>
+	// <li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL：替换不健康子机成功</li>
+	// <li>REPLACE_UNHEALTHY_INSTANCE_FAILED：替换不健康子机失败</li>
 	NotificationTypes []*string `json:"NotificationTypes,omitnil,omitempty" name:"NotificationTypes"`
 
 	// 事件通知ID。
 	AutoScalingNotificationId *string `json:"AutoScalingNotificationId,omitnil,omitempty" name:"AutoScalingNotificationId"`
 
-	// 通知接收端类型。
+	// 通知接收端类型。取值范围如下：
+	// USER_GROUP：用户组
+	// TDMQ_CMQ_TOPIC：TDMQ CMQ 主题
+	// TDMQ_CMQ_QUEUE：TDMQ CMQ 队列
+	// CMQ_QUEUE：CMQ 队列，[CMQ 接口已下线](https://cloud.tencent.com/document/product/1496/83970)，已无法选用
+	// CMQ_TOPIC：CMQ 主题，[CMQ 接口已下线](https://cloud.tencent.com/document/product/1496/83970)，已无法选用
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
-	// CMQ 队列名。
+	// TDMQ CMQ 队列名。
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 
-	// CMQ 主题名。
+	// TDMQ CMQ 主题名。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 }
 
@@ -594,32 +611,38 @@ func (r *ClearLaunchConfigurationAttributesResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type CompleteLifecycleActionRequestParams struct {
-	// 生命周期挂钩ID
+	// 生命周期挂钩ID。可以通过调用接口 [DescribeLifecycleHooks](https://cloud.tencent.com/document/api/377/34452) ，取返回信息中的 LifecycleHookId 获取生命周期挂钩ID。
 	LifecycleHookId *string `json:"LifecycleHookId,omitnil,omitempty" name:"LifecycleHookId"`
 
-	// 生命周期动作的结果，取值范围为“CONTINUE”或“ABANDON”
+	// 生命周期动作的结果，取值范围如下：
+	// <li>CONTINUE: 默认值，表示继续执行扩缩容活动</li>
+	// <li>ABANDON: 针对扩容挂钩，挂钩超时或 LifecycleCommand 执行失败的 CVM 实例会直接释放或移出；而针对缩容挂钩，会继续执行缩容活动。</li>
 	LifecycleActionResult *string `json:"LifecycleActionResult,omitnil,omitempty" name:"LifecycleActionResult"`
 
-	// 实例ID，“InstanceId”和“LifecycleActionToken”必须填充其中一个
+	// 实例ID，`InstanceId` 和 `LifecycleActionToken` 参数必须填写其中一个。可通过登录 [控制台](https://console.cloud.tencent.com/cvm/index) 或调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// “InstanceId”和“LifecycleActionToken”必须填充其中一个
+	// 生命周期动作令牌，`InstanceId` 和 `LifecycleActionToken` 必须填充其中一个。
+	// 该参数获取方式如下：配置 `NotificationTarget ` 参数的挂钩被触发时，向  `NotificationTarget `  参数中指定的消息队列投递包含令牌的消息，消息队列的消费者可从消息中获取令牌。
 	LifecycleActionToken *string `json:"LifecycleActionToken,omitnil,omitempty" name:"LifecycleActionToken"`
 }
 
 type CompleteLifecycleActionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 生命周期挂钩ID
+	// 生命周期挂钩ID。可以通过调用接口 [DescribeLifecycleHooks](https://cloud.tencent.com/document/api/377/34452) ，取返回信息中的 LifecycleHookId 获取生命周期挂钩ID。
 	LifecycleHookId *string `json:"LifecycleHookId,omitnil,omitempty" name:"LifecycleHookId"`
 
-	// 生命周期动作的结果，取值范围为“CONTINUE”或“ABANDON”
+	// 生命周期动作的结果，取值范围如下：
+	// <li>CONTINUE: 默认值，表示继续执行扩缩容活动</li>
+	// <li>ABANDON: 针对扩容挂钩，挂钩超时或 LifecycleCommand 执行失败的 CVM 实例会直接释放或移出；而针对缩容挂钩，会继续执行缩容活动。</li>
 	LifecycleActionResult *string `json:"LifecycleActionResult,omitnil,omitempty" name:"LifecycleActionResult"`
 
-	// 实例ID，“InstanceId”和“LifecycleActionToken”必须填充其中一个
+	// 实例ID，`InstanceId` 和 `LifecycleActionToken` 参数必须填写其中一个。可通过登录 [控制台](https://console.cloud.tencent.com/cvm/index) 或调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// “InstanceId”和“LifecycleActionToken”必须填充其中一个
+	// 生命周期动作令牌，`InstanceId` 和 `LifecycleActionToken` 必须填充其中一个。
+	// 该参数获取方式如下：配置 `NotificationTarget ` 参数的挂钩被触发时，向  `NotificationTarget `  参数中指定的消息队列投递包含令牌的消息，消息队列的消费者可从消息中获取令牌。
 	LifecycleActionToken *string `json:"LifecycleActionToken,omitnil,omitempty" name:"LifecycleActionToken"`
 }
 
@@ -672,16 +695,16 @@ type CreateAutoScalingGroupFromInstanceRequestParams struct {
 	// 伸缩组名称，在您账号中必须唯一。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超55个字节。
 	AutoScalingGroupName *string `json:"AutoScalingGroupName,omitnil,omitempty" name:"AutoScalingGroupName"`
 
-	// 实例ID
+	// 实例ID。可通过登录[控制台](https://console.cloud.tencent.com/cvm/index)或调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 最小实例数，取值范围为0-2000。
+	// 最小实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
 	MinSize *int64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
-	// 最大实例数，取值范围为0-2000。
+	// 最大实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
 	MaxSize *int64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 期望实例数，大小介于最小实例数和最大实例数之间。
+	// 期望实例数，大小介于最小实例数和最大实例数之间。不传入时默认值等于最小值。
 	DesiredCapacity *int64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
 
 	// 是否继承实例标签，默认值为False
@@ -694,16 +717,16 @@ type CreateAutoScalingGroupFromInstanceRequest struct {
 	// 伸缩组名称，在您账号中必须唯一。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超55个字节。
 	AutoScalingGroupName *string `json:"AutoScalingGroupName,omitnil,omitempty" name:"AutoScalingGroupName"`
 
-	// 实例ID
+	// 实例ID。可通过登录[控制台](https://console.cloud.tencent.com/cvm/index)或调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 最小实例数，取值范围为0-2000。
+	// 最小实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
 	MinSize *int64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
-	// 最大实例数，取值范围为0-2000。
+	// 最大实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
 	MaxSize *int64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 期望实例数，大小介于最小实例数和最大实例数之间。
+	// 期望实例数，大小介于最小实例数和最大实例数之间。不传入时默认值等于最小值。
 	DesiredCapacity *int64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
 
 	// 是否继承实例标签，默认值为False
@@ -764,34 +787,34 @@ type CreateAutoScalingGroupRequestParams struct {
 	// 伸缩组名称，在您账号中必须唯一。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超55个字节。
 	AutoScalingGroupName *string `json:"AutoScalingGroupName,omitnil,omitempty" name:"AutoScalingGroupName"`
 
-	// 启动配置ID
+	// 启动配置ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 或调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。
 	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitnil,omitempty" name:"LaunchConfigurationId"`
 
-	// 最大实例数，取值范围为0-2000。
+	// 最大实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 最小实例数，取值范围为0-2000。
+	// 最小实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
 	MinSize *uint64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
-	// VPC ID，基础网络则填空字符串
+	// 私有网络ID。有效的VpcId可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc)查询；也可以调用接口 [DescribeVpc](https://cloud.tencent.com/document/api/215/15778) ，从接口返回中的VpcId字段获取。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 默认冷却时间，单位秒，默认值为300
+	// 默认冷却时间，单位秒，默认值为300。取值范围为 [0,3600]。
 	DefaultCooldown *uint64 `json:"DefaultCooldown,omitnil,omitempty" name:"DefaultCooldown"`
 
-	// 期望实例数，大小介于最小实例数和最大实例数之间
+	// 期望实例数，取值范围 [0,2000]，默认值为最小值。需满足最大值大于等于期望值，期望值大于等于最小值。
 	DesiredCapacity *uint64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
 
-	// 传统负载均衡器ID列表，目前长度上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+	// 传统负载均衡器ID列表，目前长度上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
-	// 伸缩组内实例所属项目ID。不填为默认项目。
+	// 伸缩组内实例所属项目ID。默认值为0，表示使用默认项目。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 应用型负载均衡器列表，目前长度上限为100，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+	// 负载均衡器列表，目前长度上限为100，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
 	ForwardLoadBalancers []*ForwardLoadBalancer `json:"ForwardLoadBalancers,omitnil,omitempty" name:"ForwardLoadBalancers"`
 
-	// 子网ID列表，VPC场景下必须指定子网。多个子网以填写顺序为优先级，依次进行尝试，直至可以成功创建实例。
+	// 子网ID列表，VPC场景下必须指定子网。多个子网以填写顺序为优先级，依次进行尝试，直至可以成功创建实例。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet)查询；也可以调用接口 [DescribeSubnets](https://cloud.tencent.com/document/product/215/15784) ，从接口返回中的SubnetId字段获取。
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
 	// 销毁策略，目前长度上限为1。取值包括 OLDEST_INSTANCE 和 NEWEST_INSTANCE，默认取值为 OLDEST_INSTANCE。
@@ -816,13 +839,13 @@ type CreateAutoScalingGroupRequestParams struct {
 	// 如果 Zones/SubnetIds 中可用区或者子网不存在，则无论 ZonesCheckPolicy 采用何种取值，都会校验报错。
 	ZonesCheckPolicy *string `json:"ZonesCheckPolicy,omitnil,omitempty" name:"ZonesCheckPolicy"`
 
-	// 标签描述列表。通过指定该参数可以支持绑定标签到伸缩组。同时绑定标签到相应的资源实例。每个伸缩组最多支持30个标签。
+	// 标签描述列表。通过指定该参数可以支持绑定标签到伸缩组。同时绑定标签到相应的资源实例。每个伸缩组最多支持30个标签。可通过调用接口 [GetTags](https://cloud.tencent.com/document/product/651/72275) ，根据回参获取已有的标签键值对信息。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 服务设置，包括云监控不健康替换等服务设置。
 	ServiceSettings *ServiceSettings `json:"ServiceSettings,omitnil,omitempty" name:"ServiceSettings"`
 
-	// 实例具有IPv6地址数量的配置，取值包括 0、1，默认值为0。
+	// 实例具有IPv6地址数量的配置，取值包括0、1。默认值为 0，表示实例不分配 IPv6 地址。需使用支持 IPv6 的私有网络，需在子网中开启 IPv6 CIDR，其他使用限制可参考 [IPv6使用限制](https://cloud.tencent.com/document/product/1142/38369)。
 	Ipv6AddressCount *int64 `json:"Ipv6AddressCount,omitnil,omitempty" name:"Ipv6AddressCount"`
 
 	// 多可用区/子网策略，取值包括 PRIORITY 和 EQUALITY，默认为 PRIORITY。
@@ -869,34 +892,34 @@ type CreateAutoScalingGroupRequest struct {
 	// 伸缩组名称，在您账号中必须唯一。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超55个字节。
 	AutoScalingGroupName *string `json:"AutoScalingGroupName,omitnil,omitempty" name:"AutoScalingGroupName"`
 
-	// 启动配置ID
+	// 启动配置ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 或调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。
 	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitnil,omitempty" name:"LaunchConfigurationId"`
 
-	// 最大实例数，取值范围为0-2000。
+	// 最大实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 最小实例数，取值范围为0-2000。
+	// 最小实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
 	MinSize *uint64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
-	// VPC ID，基础网络则填空字符串
+	// 私有网络ID。有效的VpcId可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc)查询；也可以调用接口 [DescribeVpc](https://cloud.tencent.com/document/api/215/15778) ，从接口返回中的VpcId字段获取。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 默认冷却时间，单位秒，默认值为300
+	// 默认冷却时间，单位秒，默认值为300。取值范围为 [0,3600]。
 	DefaultCooldown *uint64 `json:"DefaultCooldown,omitnil,omitempty" name:"DefaultCooldown"`
 
-	// 期望实例数，大小介于最小实例数和最大实例数之间
+	// 期望实例数，取值范围 [0,2000]，默认值为最小值。需满足最大值大于等于期望值，期望值大于等于最小值。
 	DesiredCapacity *uint64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
 
-	// 传统负载均衡器ID列表，目前长度上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+	// 传统负载均衡器ID列表，目前长度上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
-	// 伸缩组内实例所属项目ID。不填为默认项目。
+	// 伸缩组内实例所属项目ID。默认值为0，表示使用默认项目。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 应用型负载均衡器列表，目前长度上限为100，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+	// 负载均衡器列表，目前长度上限为100，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
 	ForwardLoadBalancers []*ForwardLoadBalancer `json:"ForwardLoadBalancers,omitnil,omitempty" name:"ForwardLoadBalancers"`
 
-	// 子网ID列表，VPC场景下必须指定子网。多个子网以填写顺序为优先级，依次进行尝试，直至可以成功创建实例。
+	// 子网ID列表，VPC场景下必须指定子网。多个子网以填写顺序为优先级，依次进行尝试，直至可以成功创建实例。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet)查询；也可以调用接口 [DescribeSubnets](https://cloud.tencent.com/document/product/215/15784) ，从接口返回中的SubnetId字段获取。
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
 	// 销毁策略，目前长度上限为1。取值包括 OLDEST_INSTANCE 和 NEWEST_INSTANCE，默认取值为 OLDEST_INSTANCE。
@@ -921,13 +944,13 @@ type CreateAutoScalingGroupRequest struct {
 	// 如果 Zones/SubnetIds 中可用区或者子网不存在，则无论 ZonesCheckPolicy 采用何种取值，都会校验报错。
 	ZonesCheckPolicy *string `json:"ZonesCheckPolicy,omitnil,omitempty" name:"ZonesCheckPolicy"`
 
-	// 标签描述列表。通过指定该参数可以支持绑定标签到伸缩组。同时绑定标签到相应的资源实例。每个伸缩组最多支持30个标签。
+	// 标签描述列表。通过指定该参数可以支持绑定标签到伸缩组。同时绑定标签到相应的资源实例。每个伸缩组最多支持30个标签。可通过调用接口 [GetTags](https://cloud.tencent.com/document/product/651/72275) ，根据回参获取已有的标签键值对信息。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 服务设置，包括云监控不健康替换等服务设置。
 	ServiceSettings *ServiceSettings `json:"ServiceSettings,omitnil,omitempty" name:"ServiceSettings"`
 
-	// 实例具有IPv6地址数量的配置，取值包括 0、1，默认值为0。
+	// 实例具有IPv6地址数量的配置，取值包括0、1。默认值为 0，表示实例不分配 IPv6 地址。需使用支持 IPv6 的私有网络，需在子网中开启 IPv6 CIDR，其他使用限制可参考 [IPv6使用限制](https://cloud.tencent.com/document/product/1142/38369)。
 	Ipv6AddressCount *int64 `json:"Ipv6AddressCount,omitnil,omitempty" name:"Ipv6AddressCount"`
 
 	// 多可用区/子网策略，取值包括 PRIORITY 和 EQUALITY，默认为 PRIORITY。
@@ -1044,7 +1067,7 @@ type CreateLaunchConfigurationRequestParams struct {
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像Id与镜像族名称，二者必填一个且只能填写一个。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
-	// 启动配置所属项目ID。不填为默认项目。
+	// 启动配置所属项目ID。默认值为0，表示使用默认项目。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。
 	// 注意：伸缩组内实例所属项目ID取伸缩组项目ID，与这里取值无关。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
@@ -1084,13 +1107,13 @@ type CreateLaunchConfigurationRequestParams struct {
 	InstanceMarketOptions *InstanceMarketOptionsRequest `json:"InstanceMarketOptions,omitnil,omitempty" name:"InstanceMarketOptions"`
 
 	// 实例机型列表，不同实例机型指定了不同的资源规格，最多支持10种实例机型。
-	// `InstanceType`和`InstanceTypes`参数互斥，二者必填一个且只能填写一个。
+	// `InstanceType`和`InstanceTypes`参数互斥，二者必填一个且只能填写一个。具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格描述](https://cloud.tencent.com/document/product/213/11518)。
 	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 
-	// CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+	// CAM角色名称。可通过[DescribeRoleList](https://cloud.tencent.com/document/product/598/36223)接口返回值中的roleName获取。
 	CamRoleName *string `json:"CamRoleName,omitnil,omitempty" name:"CamRoleName"`
 
-	// 实例类型校验策略，取值包括 ALL 和 ANY，默认取值为ANY。
+	// 实例类型校验策略，取值包括 ALL 和 ANY，默认取值为ANY。该参数仅在 InstanceTypes 入参包含多个机型时生效。
 	// <li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。</li>
 	// <li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。</li>
 	// 
@@ -1119,7 +1142,7 @@ type CreateLaunchConfigurationRequestParams struct {
 	// <li>AUTOMATIC：自动选择当前可用的云盘类型</li>
 	DiskTypePolicy *string `json:"DiskTypePolicy,omitnil,omitempty" name:"DiskTypePolicy"`
 
-	// 高性能计算集群ID。<br>
+	// 高性能计算集群ID。可通过调用[DescribeHpcClusters](https://cloud.tencent.com/document/product/213/83220)接口获取该参数。
 	// 注意：此字段默认为空。
 	HpcClusterId *string `json:"HpcClusterId,omitnil,omitempty" name:"HpcClusterId"`
 
@@ -1129,10 +1152,10 @@ type CreateLaunchConfigurationRequestParams struct {
 	// 置放群组id，仅支持指定一个。
 	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitnil,omitempty" name:"DisasterRecoverGroupIds"`
 
-	// 镜像族名称。镜像Id与镜像族名称，二者必填一个且只能填写一个。
+	// 镜像族名称。镜像Id与镜像族名称，二者必填一个且只能填写一个。可通过调用[DescribeImages](https://cloud.tencent.com/document/product/213/15715)接口获取该参数。
 	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
 
-	// 本地专用集群ID。
+	// 本地专用集群ID。可通过 [DescribeDedicatedClusters](https://cloud.tencent.com/document/product/1346/73758) 接口获取该参数。
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 
 	// 自定义metadata。
@@ -1148,7 +1171,7 @@ type CreateLaunchConfigurationRequest struct {
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像Id与镜像族名称，二者必填一个且只能填写一个。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
-	// 启动配置所属项目ID。不填为默认项目。
+	// 启动配置所属项目ID。默认值为0，表示使用默认项目。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。
 	// 注意：伸缩组内实例所属项目ID取伸缩组项目ID，与这里取值无关。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
@@ -1188,13 +1211,13 @@ type CreateLaunchConfigurationRequest struct {
 	InstanceMarketOptions *InstanceMarketOptionsRequest `json:"InstanceMarketOptions,omitnil,omitempty" name:"InstanceMarketOptions"`
 
 	// 实例机型列表，不同实例机型指定了不同的资源规格，最多支持10种实例机型。
-	// `InstanceType`和`InstanceTypes`参数互斥，二者必填一个且只能填写一个。
+	// `InstanceType`和`InstanceTypes`参数互斥，二者必填一个且只能填写一个。具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格描述](https://cloud.tencent.com/document/product/213/11518)。
 	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 
-	// CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+	// CAM角色名称。可通过[DescribeRoleList](https://cloud.tencent.com/document/product/598/36223)接口返回值中的roleName获取。
 	CamRoleName *string `json:"CamRoleName,omitnil,omitempty" name:"CamRoleName"`
 
-	// 实例类型校验策略，取值包括 ALL 和 ANY，默认取值为ANY。
+	// 实例类型校验策略，取值包括 ALL 和 ANY，默认取值为ANY。该参数仅在 InstanceTypes 入参包含多个机型时生效。
 	// <li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。</li>
 	// <li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。</li>
 	// 
@@ -1223,7 +1246,7 @@ type CreateLaunchConfigurationRequest struct {
 	// <li>AUTOMATIC：自动选择当前可用的云盘类型</li>
 	DiskTypePolicy *string `json:"DiskTypePolicy,omitnil,omitempty" name:"DiskTypePolicy"`
 
-	// 高性能计算集群ID。<br>
+	// 高性能计算集群ID。可通过调用[DescribeHpcClusters](https://cloud.tencent.com/document/product/213/83220)接口获取该参数。
 	// 注意：此字段默认为空。
 	HpcClusterId *string `json:"HpcClusterId,omitnil,omitempty" name:"HpcClusterId"`
 
@@ -1233,10 +1256,10 @@ type CreateLaunchConfigurationRequest struct {
 	// 置放群组id，仅支持指定一个。
 	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitnil,omitempty" name:"DisasterRecoverGroupIds"`
 
-	// 镜像族名称。镜像Id与镜像族名称，二者必填一个且只能填写一个。
+	// 镜像族名称。镜像Id与镜像族名称，二者必填一个且只能填写一个。可通过调用[DescribeImages](https://cloud.tencent.com/document/product/213/15715)接口获取该参数。
 	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
 
-	// 本地专用集群ID。
+	// 本地专用集群ID。可通过 [DescribeDedicatedClusters](https://cloud.tencent.com/document/product/1346/73758) 接口获取该参数。
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 
 	// 自定义metadata。
@@ -1316,62 +1339,76 @@ func (r *CreateLaunchConfigurationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateLifecycleHookRequestParams struct {
-	// 伸缩组ID
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
 	// 生命周期挂钩名称。名称仅支持中文、英文、数字、下划线（_）、短横线（-）、小数点（.），最大长度不能超128个字节。
 	LifecycleHookName *string `json:"LifecycleHookName,omitnil,omitempty" name:"LifecycleHookName"`
 
-	// 进行生命周期挂钩的场景，取值范围包括 INSTANCE_LAUNCHING 和 INSTANCE_TERMINATING
+	// 进行生命周期挂钩的场景，取值范围如下:
+	// <li> INSTANCE_LAUNCHING: 扩容生命周期挂钩</li>
+	// <li>INSTANCE_TERMINATING: 缩容生命周期挂钩</li>
 	LifecycleTransition *string `json:"LifecycleTransition,omitnil,omitempty" name:"LifecycleTransition"`
 
-	// 定义伸缩组在生命周期挂钩超时的情况下应采取的操作，取值范围是 CONTINUE 或 ABANDON，默认值为 CONTINUE
+	// 定义伸缩组在生命周期挂钩超时或 LifecycleCommand 执行失败时应采取的操作，取值范围如下：
+	// <li>CONTINUE: 默认值，表示继续执行扩缩容活动</li>
+	// <li>ABANDON: 针对扩容挂钩，挂钩超时或 LifecycleCommand 执行失败的 CVM 实例会直接释放或移出；而针对缩容挂钩，会继续执行缩容活动。</li>
 	DefaultResult *string `json:"DefaultResult,omitnil,omitempty" name:"DefaultResult"`
 
 	// 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到7200秒，默认值为300秒
 	HeartbeatTimeout *int64 `json:"HeartbeatTimeout,omitnil,omitempty" name:"HeartbeatTimeout"`
 
-	// 弹性伸缩向通知目标发送的附加信息，配置通知时使用,默认值为空字符串""。最大长度不能超过1024个字节。
+	// 弹性伸缩向通知目标发送的附加信息，配置通知时使用，默认值为空字符串，最长不超过 1024 字符。NotificationMetadata 和 LifecycleCommand参数互斥，二者不可同时指定。
 	NotificationMetadata *string `json:"NotificationMetadata,omitnil,omitempty" name:"NotificationMetadata"`
 
 	// 通知目标。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
 	NotificationTarget *NotificationTarget `json:"NotificationTarget,omitnil,omitempty" name:"NotificationTarget"`
 
-	// 进行生命周期挂钩的场景类型，取值范围包括NORMAL 和 EXTENSION。说明：设置为EXTENSION值，在AttachInstances、DetachInstances、RemoveInstaces接口时会触发生命周期挂钩操作，值为NORMAL则不会在这些接口中触发生命周期挂钩。
+	// 进行生命周期挂钩的场景类型，取值范围包括 NORMAL 和 EXTENSION，默认值为 NORMAL。
+	// 说明：设置为EXTENSION值，在 [AttachInstances](https://cloud.tencent.com/document/api/377/20441)、[DetachInstances](https://cloud.tencent.com/document/api/377/20436)、[RemoveInstaces](https://cloud.tencent.com/document/api/377/20431)、[StopAutoScalingInstances](https://cloud.tencent.com/document/api/377/40286)、[StartAutoScalingInstances](https://cloud.tencent.com/document/api/377/40287)、[StartInstanceRefresh](https://cloud.tencent.com/document/api/377/99172) 接口时会触发生命周期挂钩操作，值为NORMAL则不会在这些接口中触发生命周期挂钩。
 	LifecycleTransitionType *string `json:"LifecycleTransitionType,omitnil,omitempty" name:"LifecycleTransitionType"`
 
-	// 远程命令执行对象。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
+	// 远程命令执行对象。通知相关参数（NotificationTarget、NotificationMetadata）与该参数互斥，二者不可同时指定。
 	LifecycleCommand *LifecycleCommand `json:"LifecycleCommand,omitnil,omitempty" name:"LifecycleCommand"`
 }
 
 type CreateLifecycleHookRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
 	// 生命周期挂钩名称。名称仅支持中文、英文、数字、下划线（_）、短横线（-）、小数点（.），最大长度不能超128个字节。
 	LifecycleHookName *string `json:"LifecycleHookName,omitnil,omitempty" name:"LifecycleHookName"`
 
-	// 进行生命周期挂钩的场景，取值范围包括 INSTANCE_LAUNCHING 和 INSTANCE_TERMINATING
+	// 进行生命周期挂钩的场景，取值范围如下:
+	// <li> INSTANCE_LAUNCHING: 扩容生命周期挂钩</li>
+	// <li>INSTANCE_TERMINATING: 缩容生命周期挂钩</li>
 	LifecycleTransition *string `json:"LifecycleTransition,omitnil,omitempty" name:"LifecycleTransition"`
 
-	// 定义伸缩组在生命周期挂钩超时的情况下应采取的操作，取值范围是 CONTINUE 或 ABANDON，默认值为 CONTINUE
+	// 定义伸缩组在生命周期挂钩超时或 LifecycleCommand 执行失败时应采取的操作，取值范围如下：
+	// <li>CONTINUE: 默认值，表示继续执行扩缩容活动</li>
+	// <li>ABANDON: 针对扩容挂钩，挂钩超时或 LifecycleCommand 执行失败的 CVM 实例会直接释放或移出；而针对缩容挂钩，会继续执行缩容活动。</li>
 	DefaultResult *string `json:"DefaultResult,omitnil,omitempty" name:"DefaultResult"`
 
 	// 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到7200秒，默认值为300秒
 	HeartbeatTimeout *int64 `json:"HeartbeatTimeout,omitnil,omitempty" name:"HeartbeatTimeout"`
 
-	// 弹性伸缩向通知目标发送的附加信息，配置通知时使用,默认值为空字符串""。最大长度不能超过1024个字节。
+	// 弹性伸缩向通知目标发送的附加信息，配置通知时使用，默认值为空字符串，最长不超过 1024 字符。NotificationMetadata 和 LifecycleCommand参数互斥，二者不可同时指定。
 	NotificationMetadata *string `json:"NotificationMetadata,omitnil,omitempty" name:"NotificationMetadata"`
 
 	// 通知目标。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
 	NotificationTarget *NotificationTarget `json:"NotificationTarget,omitnil,omitempty" name:"NotificationTarget"`
 
-	// 进行生命周期挂钩的场景类型，取值范围包括NORMAL 和 EXTENSION。说明：设置为EXTENSION值，在AttachInstances、DetachInstances、RemoveInstaces接口时会触发生命周期挂钩操作，值为NORMAL则不会在这些接口中触发生命周期挂钩。
+	// 进行生命周期挂钩的场景类型，取值范围包括 NORMAL 和 EXTENSION，默认值为 NORMAL。
+	// 说明：设置为EXTENSION值，在 [AttachInstances](https://cloud.tencent.com/document/api/377/20441)、[DetachInstances](https://cloud.tencent.com/document/api/377/20436)、[RemoveInstaces](https://cloud.tencent.com/document/api/377/20431)、[StopAutoScalingInstances](https://cloud.tencent.com/document/api/377/40286)、[StartAutoScalingInstances](https://cloud.tencent.com/document/api/377/40287)、[StartInstanceRefresh](https://cloud.tencent.com/document/api/377/99172) 接口时会触发生命周期挂钩操作，值为NORMAL则不会在这些接口中触发生命周期挂钩。
 	LifecycleTransitionType *string `json:"LifecycleTransitionType,omitnil,omitempty" name:"LifecycleTransitionType"`
 
-	// 远程命令执行对象。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
+	// 远程命令执行对象。通知相关参数（NotificationTarget、NotificationMetadata）与该参数互斥，二者不可同时指定。
 	LifecycleCommand *LifecycleCommand `json:"LifecycleCommand,omitnil,omitempty" name:"LifecycleCommand"`
 }
 
@@ -1429,7 +1466,7 @@ func (r *CreateLifecycleHookResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateNotificationConfigurationRequestParams struct {
-	// 伸缩组ID。
+	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
 	// 通知类型，即为需要订阅的通知类型集合，取值范围如下：
@@ -1441,30 +1478,30 @@ type CreateNotificationConfigurationRequestParams struct {
 	// <li>REPLACE_UNHEALTHY_INSTANCE_FAILED：替换不健康子机失败</li>
 	NotificationTypes []*string `json:"NotificationTypes,omitnil,omitempty" name:"NotificationTypes"`
 
-	// 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
+	// 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。该参数仅在 TargetType 为 USER_GROUP 时生效。
 	NotificationUserGroupIds []*string `json:"NotificationUserGroupIds,omitnil,omitempty" name:"NotificationUserGroupIds"`
 
-	// 通知接收端类型，取值如下
-	// <br><li>USER_GROUP：用户组
-	// <br><li>CMQ_QUEUE：CMQ 队列
-	// <br><li>CMQ_TOPIC：CMQ 主题
-	// <br><li>TDMQ_CMQ_TOPIC：TDMQ CMQ 主题
-	// <br><li>TDMQ_CMQ_QUEUE：TDMQ CMQ 队列
+	// 通知接收端类型，取值如下：
+	// <li>USER_GROUP：用户组</li>
+	// <li>TDMQ_CMQ_TOPIC：TDMQ CMQ 主题</li>
+	// <li>TDMQ_CMQ_QUEUE：TDMQ CMQ 队列</li>
+	// <li>CMQ_QUEUE：CMQ 队列，[CMQ已下线](https://cloud.tencent.com/document/product/1496/83970)，目前仅推荐使用  TDMQ CMQ。</li>
+	// <li>CMQ_TOPIC：CMQ 主题，[CMQ已下线](https://cloud.tencent.com/document/product/1496/83970)，目前仅推荐使用  TDMQ CMQ。</li>
 	// 
 	// 默认值为：`USER_GROUP`。
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
-	// CMQ 队列名称，如 TargetType 取值为 `CMQ_QUEUE` 或 `TDMQ_CMQ_QUEUE` 时，该字段必填。
+	// TDMQ CMQ 队列名，如 TargetType 取值为 `TDMQ_CMQ_QUEUE` ，该字段必填。
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 
-	// CMQ 主题名称，如 TargetType 取值为 `CMQ_TOPIC` 或 `TDMQ_CMQ_TOPIC` 时，该字段必填。
+	// TDMQ CMQ 主题名，如 TargetType 取值为 `TDMQ_CMQ_TOPIC` ，该字段必填。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 }
 
 type CreateNotificationConfigurationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID。
+	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
 	// 通知类型，即为需要订阅的通知类型集合，取值范围如下：
@@ -1476,23 +1513,23 @@ type CreateNotificationConfigurationRequest struct {
 	// <li>REPLACE_UNHEALTHY_INSTANCE_FAILED：替换不健康子机失败</li>
 	NotificationTypes []*string `json:"NotificationTypes,omitnil,omitempty" name:"NotificationTypes"`
 
-	// 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
+	// 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。该参数仅在 TargetType 为 USER_GROUP 时生效。
 	NotificationUserGroupIds []*string `json:"NotificationUserGroupIds,omitnil,omitempty" name:"NotificationUserGroupIds"`
 
-	// 通知接收端类型，取值如下
-	// <br><li>USER_GROUP：用户组
-	// <br><li>CMQ_QUEUE：CMQ 队列
-	// <br><li>CMQ_TOPIC：CMQ 主题
-	// <br><li>TDMQ_CMQ_TOPIC：TDMQ CMQ 主题
-	// <br><li>TDMQ_CMQ_QUEUE：TDMQ CMQ 队列
+	// 通知接收端类型，取值如下：
+	// <li>USER_GROUP：用户组</li>
+	// <li>TDMQ_CMQ_TOPIC：TDMQ CMQ 主题</li>
+	// <li>TDMQ_CMQ_QUEUE：TDMQ CMQ 队列</li>
+	// <li>CMQ_QUEUE：CMQ 队列，[CMQ已下线](https://cloud.tencent.com/document/product/1496/83970)，目前仅推荐使用  TDMQ CMQ。</li>
+	// <li>CMQ_TOPIC：CMQ 主题，[CMQ已下线](https://cloud.tencent.com/document/product/1496/83970)，目前仅推荐使用  TDMQ CMQ。</li>
 	// 
 	// 默认值为：`USER_GROUP`。
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
 
-	// CMQ 队列名称，如 TargetType 取值为 `CMQ_QUEUE` 或 `TDMQ_CMQ_QUEUE` 时，该字段必填。
+	// TDMQ CMQ 队列名，如 TargetType 取值为 `TDMQ_CMQ_QUEUE` ，该字段必填。
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 
-	// CMQ 主题名称，如 TargetType 取值为 `CMQ_TOPIC` 或 `TDMQ_CMQ_TOPIC` 时，该字段必填。
+	// TDMQ CMQ 主题名，如 TargetType 取值为 `TDMQ_CMQ_TOPIC` ，该字段必填。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 }
 
@@ -1547,19 +1584,24 @@ func (r *CreateNotificationConfigurationResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type CreateScalingPolicyRequestParams struct {
-	// 伸缩组ID。
+	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 告警触发策略名称。
+	// 告警策略名称，在您账号中必须唯一。名称长度不能超过60，名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点。
 	ScalingPolicyName *string `json:"ScalingPolicyName,omitnil,omitempty" name:"ScalingPolicyName"`
 
-	// 告警触发策略类型，默认类型为SIMPLE。取值范围：<br><li>SIMPLE：简单策略</li><li>TARGET_TRACKING：目标追踪策略</li>
+	// 告警触发策略类型，默认类型为SIMPLE。取值范围：
+	// <li>SIMPLE：简单策略</li>
+	// <li>TARGET_TRACKING：目标追踪策略</li>
 	ScalingPolicyType *string `json:"ScalingPolicyType,omitnil,omitempty" name:"ScalingPolicyType"`
 
-	// 告警触发后，期望实例数修改方式，仅适用于简单策略。取值范围：<br><li>CHANGE_IN_CAPACITY：增加或减少若干期望实例数</li><li>EXACT_CAPACITY：调整至指定期望实例数</li> <li>PERCENT_CHANGE_IN_CAPACITY：按百分比调整期望实例数</li>
+	// 告警触发后，期望实例数修改方式，仅适用于简单策略，在简单策略场景下必填。取值范围：
+	// <li>CHANGE_IN_CAPACITY：增加或减少若干期望实例数</li>
+	// <li>EXACT_CAPACITY：调整至指定期望实例数</li>
+	// <li>PERCENT_CHANGE_IN_CAPACITY：按百分比调整期望实例数</li>
 	AdjustmentType *string `json:"AdjustmentType,omitnil,omitempty" name:"AdjustmentType"`
 
-	// 告警触发后，期望实例数的调整值，仅适用于简单策略。
+	// 告警触发后，期望实例数的调整值，仅适用于简单策略，在简单策略场景下必填。
 	// <li>当 AdjustmentType 为 CHANGE_IN_CAPACITY 时，AdjustmentValue 为正数表示告警触发后增加实例，为负数表示告警触发后减少实例 </li> 
 	// <li> 当 AdjustmentType 为 EXACT_CAPACITY 时，AdjustmentValue 的值即为告警触发后新的期望实例数，需要大于或等于0 </li> 
 	// <li> 当 AdjustmentType 为 PERCENT_CHANGE_IN_CAPACITY 时，AdjusmentValue 为正数表示告警触发后按百分比增加实例，为负数表示告警触发后按百分比减少实例，单位是：%。</li>
@@ -1568,10 +1610,10 @@ type CreateScalingPolicyRequestParams struct {
 	// 冷却时间，单位为秒，仅适用于简单策略。默认冷却时间300秒。
 	Cooldown *uint64 `json:"Cooldown,omitnil,omitempty" name:"Cooldown"`
 
-	// 告警监控指标，仅适用于简单策略。
+	// 告警监控指标，仅适用于简单策略，在简单策略场景下必填。
 	MetricAlarm *MetricAlarm `json:"MetricAlarm,omitnil,omitempty" name:"MetricAlarm"`
 
-	// 预定义监控项，仅适用于目标追踪策略。取值范围：
+	// 预定义监控项，仅适用于目标追踪策略，在目标追踪策略场景下必填。取值范围：
 	// <li>ASG_AVG_CPU_UTILIZATION：平均CPU使用率</li>
 	// <li>ASG_AVG_LAN_TRAFFIC_OUT：平均内网出带宽</li>
 	// <li>ASG_AVG_LAN_TRAFFIC_IN：平均内网入带宽</li>
@@ -1579,7 +1621,7 @@ type CreateScalingPolicyRequestParams struct {
 	// <li>ASG_AVG_WAN_TRAFFIC_IN：平均外网入带宽</li>
 	PredefinedMetricType *string `json:"PredefinedMetricType,omitnil,omitempty" name:"PredefinedMetricType"`
 
-	// 目标值，仅适用于目标追踪策略。
+	// 目标值，仅适用于目标追踪策略，在目标追踪策略场景下必填。
 	// <li>ASG_AVG_CPU_UTILIZATION：[1, 100)，单位：%</li>
 	// <li>ASG_AVG_LAN_TRAFFIC_OUT：>0，单位：Mbps</li>
 	// <li>ASG_AVG_LAN_TRAFFIC_IN：>0，单位：Mbps</li>
@@ -1603,19 +1645,24 @@ type CreateScalingPolicyRequestParams struct {
 type CreateScalingPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID。
+	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 告警触发策略名称。
+	// 告警策略名称，在您账号中必须唯一。名称长度不能超过60，名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点。
 	ScalingPolicyName *string `json:"ScalingPolicyName,omitnil,omitempty" name:"ScalingPolicyName"`
 
-	// 告警触发策略类型，默认类型为SIMPLE。取值范围：<br><li>SIMPLE：简单策略</li><li>TARGET_TRACKING：目标追踪策略</li>
+	// 告警触发策略类型，默认类型为SIMPLE。取值范围：
+	// <li>SIMPLE：简单策略</li>
+	// <li>TARGET_TRACKING：目标追踪策略</li>
 	ScalingPolicyType *string `json:"ScalingPolicyType,omitnil,omitempty" name:"ScalingPolicyType"`
 
-	// 告警触发后，期望实例数修改方式，仅适用于简单策略。取值范围：<br><li>CHANGE_IN_CAPACITY：增加或减少若干期望实例数</li><li>EXACT_CAPACITY：调整至指定期望实例数</li> <li>PERCENT_CHANGE_IN_CAPACITY：按百分比调整期望实例数</li>
+	// 告警触发后，期望实例数修改方式，仅适用于简单策略，在简单策略场景下必填。取值范围：
+	// <li>CHANGE_IN_CAPACITY：增加或减少若干期望实例数</li>
+	// <li>EXACT_CAPACITY：调整至指定期望实例数</li>
+	// <li>PERCENT_CHANGE_IN_CAPACITY：按百分比调整期望实例数</li>
 	AdjustmentType *string `json:"AdjustmentType,omitnil,omitempty" name:"AdjustmentType"`
 
-	// 告警触发后，期望实例数的调整值，仅适用于简单策略。
+	// 告警触发后，期望实例数的调整值，仅适用于简单策略，在简单策略场景下必填。
 	// <li>当 AdjustmentType 为 CHANGE_IN_CAPACITY 时，AdjustmentValue 为正数表示告警触发后增加实例，为负数表示告警触发后减少实例 </li> 
 	// <li> 当 AdjustmentType 为 EXACT_CAPACITY 时，AdjustmentValue 的值即为告警触发后新的期望实例数，需要大于或等于0 </li> 
 	// <li> 当 AdjustmentType 为 PERCENT_CHANGE_IN_CAPACITY 时，AdjusmentValue 为正数表示告警触发后按百分比增加实例，为负数表示告警触发后按百分比减少实例，单位是：%。</li>
@@ -1624,10 +1671,10 @@ type CreateScalingPolicyRequest struct {
 	// 冷却时间，单位为秒，仅适用于简单策略。默认冷却时间300秒。
 	Cooldown *uint64 `json:"Cooldown,omitnil,omitempty" name:"Cooldown"`
 
-	// 告警监控指标，仅适用于简单策略。
+	// 告警监控指标，仅适用于简单策略，在简单策略场景下必填。
 	MetricAlarm *MetricAlarm `json:"MetricAlarm,omitnil,omitempty" name:"MetricAlarm"`
 
-	// 预定义监控项，仅适用于目标追踪策略。取值范围：
+	// 预定义监控项，仅适用于目标追踪策略，在目标追踪策略场景下必填。取值范围：
 	// <li>ASG_AVG_CPU_UTILIZATION：平均CPU使用率</li>
 	// <li>ASG_AVG_LAN_TRAFFIC_OUT：平均内网出带宽</li>
 	// <li>ASG_AVG_LAN_TRAFFIC_IN：平均内网入带宽</li>
@@ -1635,7 +1682,7 @@ type CreateScalingPolicyRequest struct {
 	// <li>ASG_AVG_WAN_TRAFFIC_IN：平均外网入带宽</li>
 	PredefinedMetricType *string `json:"PredefinedMetricType,omitnil,omitempty" name:"PredefinedMetricType"`
 
-	// 目标值，仅适用于目标追踪策略。
+	// 目标值，仅适用于目标追踪策略，在目标追踪策略场景下必填。
 	// <li>ASG_AVG_CPU_UTILIZATION：[1, 100)，单位：%</li>
 	// <li>ASG_AVG_LAN_TRAFFIC_OUT：>0，单位：Mbps</li>
 	// <li>ASG_AVG_LAN_TRAFFIC_IN：>0，单位：Mbps</li>
@@ -1830,13 +1877,14 @@ type DataDisk struct {
 	// <li>CLOUD_SSD：SSD云硬盘</li>
 	// <li>CLOUD_HSSD：增强型SSD云硬盘</li>
 	// <li>CLOUD_TSSD：极速型SSD云硬盘</li>
+	// <li>CLOUD_BSSD：通用型SSD云硬盘</li>
 	// 默认取值与系统盘类型（SystemDisk.DiskType）保持一致。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
+	// 数据盘大小，单位：GB。不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
 	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 数据盘快照 ID，类似 `snap-l8psqwnt`。
+	// 数据盘快照 ID，可通过 [DescribeSnapshots](https://cloud.tencent.com/document/product/362/15647) 接口获取该参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
@@ -1857,8 +1905,7 @@ type DataDisk struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 
-	// 突发性能。是否开启突发性能，默认取值为 false。
-	// 
+	// 突发性能。是否开启突发性能，默认取值为 false。当前该参数仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）且需容量 > 460GB。
 	// 注：内测中，需提单申请后使用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BurstPerformance *bool `json:"BurstPerformance,omitnil,omitempty" name:"BurstPerformance"`
@@ -1866,14 +1913,14 @@ type DataDisk struct {
 
 // Predefined struct for user
 type DeleteAutoScalingGroupRequestParams struct {
-	// 伸缩组ID
+	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 }
 
 type DeleteAutoScalingGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID
+	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 }
 
@@ -1920,14 +1967,14 @@ func (r *DeleteAutoScalingGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLaunchConfigurationRequestParams struct {
-	// 需要删除的启动配置ID。
+	// 需要删除的启动配置ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 或调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。
 	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitnil,omitempty" name:"LaunchConfigurationId"`
 }
 
 type DeleteLaunchConfigurationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要删除的启动配置ID。
+	// 需要删除的启动配置ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 或调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。
 	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitnil,omitempty" name:"LaunchConfigurationId"`
 }
 
@@ -2028,14 +2075,14 @@ func (r *DeleteLifecycleHookResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteNotificationConfigurationRequestParams struct {
-	// 待删除的通知ID。
+	// 待删除的通知ID，目前为必填参数。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeNotificationConfigurations](https://cloud.tencent.com/document/api/377/33183) ，取返回信息中的 AutoScalingNotificationId 获取通知ID。
 	AutoScalingNotificationId *string `json:"AutoScalingNotificationId,omitnil,omitempty" name:"AutoScalingNotificationId"`
 }
 
 type DeleteNotificationConfigurationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待删除的通知ID。
+	// 待删除的通知ID，目前为必填参数。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeNotificationConfigurations](https://cloud.tencent.com/document/api/377/33183) ，取返回信息中的 AutoScalingNotificationId 获取通知ID。
 	AutoScalingNotificationId *string `json:"AutoScalingNotificationId,omitnil,omitempty" name:"AutoScalingNotificationId"`
 }
 
@@ -2082,14 +2129,14 @@ func (r *DeleteNotificationConfigurationResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DeleteScalingPolicyRequestParams struct {
-	// 待删除的告警策略ID。
+	// 待删除的告警策略ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeScalingPolicies](https://cloud.tencent.com/document/api/377/33178) ，取返回信息中的 AutoScalingPolicyId 获取告警策略ID。
 	AutoScalingPolicyId *string `json:"AutoScalingPolicyId,omitnil,omitempty" name:"AutoScalingPolicyId"`
 }
 
 type DeleteScalingPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待删除的告警策略ID。
+	// 待删除的告警策略ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeScalingPolicies](https://cloud.tencent.com/document/api/377/33178) ，取返回信息中的 AutoScalingPolicyId 获取告警策略ID。
 	AutoScalingPolicyId *string `json:"AutoScalingPolicyId,omitnil,omitempty" name:"AutoScalingPolicyId"`
 }
 
@@ -2257,7 +2304,7 @@ type DescribeAutoScalingActivitiesRequestParams struct {
 	ActivityIds []*string `json:"ActivityIds,omitnil,omitempty" name:"ActivityIds"`
 
 	// 过滤条件。
-	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	// <li> activity-status-code - String - 是否必填：否 -（过滤条件）按照伸缩活动状态过滤。（INIT：初始化中|RUNNING：运行中|SUCCESSFUL：活动成功|PARTIALLY_SUCCESSFUL：活动部分成功|FAILED：活动失败|CANCELLED：活动取消）</li>
 	// <li> activity-type - String - 是否必填：否 -（过滤条件）按照伸缩活动类型过滤。（SCALE_OUT：扩容活动|SCALE_IN：缩容活动|ATTACH_INSTANCES：添加实例|REMOVE_INSTANCES：销毁实例|DETACH_INSTANCES：移出实例|TERMINATE_INSTANCES_UNEXPECTEDLY：实例在CVM控制台被销毁|REPLACE_UNHEALTHY_INSTANCE：替换不健康实例|UPDATE_LOAD_BALANCERS：更新负载均衡器）</li>
 	// <li> activity-id - String - 是否必填：否 -（过滤条件）按照伸缩活动ID过滤。</li>
@@ -2284,7 +2331,7 @@ type DescribeAutoScalingActivitiesRequest struct {
 	ActivityIds []*string `json:"ActivityIds,omitnil,omitempty" name:"ActivityIds"`
 
 	// 过滤条件。
-	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	// <li> activity-status-code - String - 是否必填：否 -（过滤条件）按照伸缩活动状态过滤。（INIT：初始化中|RUNNING：运行中|SUCCESSFUL：活动成功|PARTIALLY_SUCCESSFUL：活动部分成功|FAILED：活动失败|CANCELLED：活动取消）</li>
 	// <li> activity-type - String - 是否必填：否 -（过滤条件）按照伸缩活动类型过滤。（SCALE_OUT：扩容活动|SCALE_IN：缩容活动|ATTACH_INSTANCES：添加实例|REMOVE_INSTANCES：销毁实例|DETACH_INSTANCES：移出实例|TERMINATE_INSTANCES_UNEXPECTEDLY：实例在CVM控制台被销毁|REPLACE_UNHEALTHY_INSTANCE：替换不健康实例|UPDATE_LOAD_BALANCERS：更新负载均衡器）</li>
 	// <li> activity-id - String - 是否必填：否 -（过滤条件）按照伸缩活动ID过滤。</li>
@@ -2358,14 +2405,14 @@ func (r *DescribeAutoScalingActivitiesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAutoScalingAdvicesRequestParams struct {
-	// 待查询的伸缩组列表，上限100。
+	// 待查询的伸缩组列表，上限100。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupIds []*string `json:"AutoScalingGroupIds,omitnil,omitempty" name:"AutoScalingGroupIds"`
 }
 
 type DescribeAutoScalingAdvicesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待查询的伸缩组列表，上限100。
+	// 待查询的伸缩组列表，上限100。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupIds []*string `json:"AutoScalingGroupIds,omitnil,omitempty" name:"AutoScalingGroupIds"`
 }
 
@@ -2415,7 +2462,7 @@ func (r *DescribeAutoScalingAdvicesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAutoScalingGroupLastActivitiesRequestParams struct {
-	// 伸缩组ID列表
+	// 伸缩组ID列表。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupIds []*string `json:"AutoScalingGroupIds,omitnil,omitempty" name:"AutoScalingGroupIds"`
 
 	// 查询时排除取消类型活动。默认值为 false，表示不排除取消类型活动。
@@ -2425,7 +2472,7 @@ type DescribeAutoScalingGroupLastActivitiesRequestParams struct {
 type DescribeAutoScalingGroupLastActivitiesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID列表
+	// 伸缩组ID列表。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupIds []*string `json:"AutoScalingGroupIds,omitnil,omitempty" name:"AutoScalingGroupIds"`
 
 	// 查询时排除取消类型活动。默认值为 false，表示不排除取消类型活动。
@@ -2483,13 +2530,14 @@ type DescribeAutoScalingGroupsRequestParams struct {
 	AutoScalingGroupIds []*string `json:"AutoScalingGroupIds,omitnil,omitempty" name:"AutoScalingGroupIds"`
 
 	// 过滤条件。
-	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。
+	// 可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	// <li> auto-scaling-group-name - String - 是否必填：否 -（过滤条件）按照伸缩组名称过滤。</li>
 	// <li> vague-auto-scaling-group-name - String - 是否必填：否 -（过滤条件）按照伸缩组名称模糊搜索。</li>
-	// <li> launch-configuration-id - String - 是否必填：否 -（过滤条件）按照启动配置ID过滤。</li>
-	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
-	// <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
-	// <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2</li>
+	// <li> launch-configuration-id - String - 是否必填：否 -（过滤条件）按照启动配置ID过滤。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 或调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。</li>
+	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。可通过调用接口 [GetTags](https://cloud.tencent.com/document/product/651/72275) ，取返回信息中的 TagKey 获取标签键。</li>
+	// <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。可通过调用接口 [GetTags](https://cloud.tencent.com/document/product/651/72275) ，取返回信息中的 TagValue 获取标签值。</li>
+	// <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换，请参考示例2。可通过调用接口 [GetTags](https://cloud.tencent.com/document/product/651/72275) ，取返回信息中的 TagKey 获取标签键。</li>
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AutoScalingGroupIds`和`Filters`。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -2507,13 +2555,14 @@ type DescribeAutoScalingGroupsRequest struct {
 	AutoScalingGroupIds []*string `json:"AutoScalingGroupIds,omitnil,omitempty" name:"AutoScalingGroupIds"`
 
 	// 过滤条件。
-	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。
+	// 可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	// <li> auto-scaling-group-name - String - 是否必填：否 -（过滤条件）按照伸缩组名称过滤。</li>
 	// <li> vague-auto-scaling-group-name - String - 是否必填：否 -（过滤条件）按照伸缩组名称模糊搜索。</li>
-	// <li> launch-configuration-id - String - 是否必填：否 -（过滤条件）按照启动配置ID过滤。</li>
-	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
-	// <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
-	// <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2</li>
+	// <li> launch-configuration-id - String - 是否必填：否 -（过滤条件）按照启动配置ID过滤。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 或调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。</li>
+	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。可通过调用接口 [GetTags](https://cloud.tencent.com/document/product/651/72275) ，取返回信息中的 TagKey 获取标签键。</li>
+	// <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。可通过调用接口 [GetTags](https://cloud.tencent.com/document/product/651/72275) ，取返回信息中的 TagValue 获取标签值。</li>
+	// <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换，请参考示例2。可通过调用接口 [GetTags](https://cloud.tencent.com/document/product/651/72275) ，取返回信息中的 TagKey 获取标签键。</li>
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AutoScalingGroupIds`和`Filters`。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -2576,12 +2625,15 @@ func (r *DescribeAutoScalingGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAutoScalingInstancesRequestParams struct {
-	// 待查询云服务器（CVM）的实例ID。每次请求的上限为100。参数不支持同时指定InstanceIds和Filters。
+	// 待查询云服务器（CVM）的实例ID列表，列表长度上限为100，不支持同时指定 InstanceIds 和 Filters。
+	// 可以通过以下方式获取可用的实例ID：
+	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li>
+	// <li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 过滤条件。
-	// <li> instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。</li>
-	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+	// <li> instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。可通过登录[控制台](https://console.cloud.tencent.com/cvm/index)或调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
+	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`InstanceIds`和`Filters`。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -2595,12 +2647,15 @@ type DescribeAutoScalingInstancesRequestParams struct {
 type DescribeAutoScalingInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待查询云服务器（CVM）的实例ID。每次请求的上限为100。参数不支持同时指定InstanceIds和Filters。
+	// 待查询云服务器（CVM）的实例ID列表，列表长度上限为100，不支持同时指定 InstanceIds 和 Filters。
+	// 可以通过以下方式获取可用的实例ID：
+	// <li>通过登录[控制台](https://console.cloud.tencent.com/cvm/index)查询实例ID。</li>
+	// <li>通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 过滤条件。
-	// <li> instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。</li>
-	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+	// <li> instance-id - String - 是否必填：否 -（过滤条件）按照实例ID过滤。可通过登录[控制台](https://console.cloud.tencent.com/cvm/index)或调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。</li>
+	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`InstanceIds`和`Filters`。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -2847,7 +2902,7 @@ func (r *DescribeLifecycleHooksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNotificationConfigurationsRequestParams struct {
-	// 按照一个或者多个通知ID查询。实例ID形如：asn-2sestqbr。每次请求的实例的上限为100。参数不支持同时指定`AutoScalingNotificationIds`和`Filters`。
+	// 按照一个或者多个通知ID查询，列表长度上限为100。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 获取通知ID。参数不支持同时指定`AutoScalingNotificationIds`和`Filters`。
 	AutoScalingNotificationIds []*string `json:"AutoScalingNotificationIds,omitnil,omitempty" name:"AutoScalingNotificationIds"`
 
 	// 过滤条件。
@@ -2866,7 +2921,7 @@ type DescribeNotificationConfigurationsRequestParams struct {
 type DescribeNotificationConfigurationsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 按照一个或者多个通知ID查询。实例ID形如：asn-2sestqbr。每次请求的实例的上限为100。参数不支持同时指定`AutoScalingNotificationIds`和`Filters`。
+	// 按照一个或者多个通知ID查询，列表长度上限为100。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 获取通知ID。参数不支持同时指定`AutoScalingNotificationIds`和`Filters`。
 	AutoScalingNotificationIds []*string `json:"AutoScalingNotificationIds,omitnil,omitempty" name:"AutoScalingNotificationIds"`
 
 	// 过滤条件。
@@ -3030,9 +3085,9 @@ type DescribeScalingPoliciesRequestParams struct {
 
 	// 过滤条件。
 	// <li> auto-scaling-policy-id - String - 是否必填：否 -（过滤条件）按照告警策略ID过滤。</li>
-	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	// <li> scaling-policy-name - String - 是否必填：否 -（过滤条件）按照告警策略名称过滤。</li>
-	// <li> scaling-policy-type - String - 是否必填：否 -（过滤条件）按照告警策略类型过滤，取值范围为SIMPLE，TARGET_TRACKING。</li>
+	// <li> scaling-policy-type - String - 是否必填：否 -（过滤条件）按照告警策略类型过滤，取值范围为SIMPLE，TARGET_TRACKING。两者分别表示简单策略和目标追踪策略。</li>
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AutoScalingPolicyIds`和`Filters`。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -3051,9 +3106,9 @@ type DescribeScalingPoliciesRequest struct {
 
 	// 过滤条件。
 	// <li> auto-scaling-policy-id - String - 是否必填：否 -（过滤条件）按照告警策略ID过滤。</li>
-	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	// <li> scaling-policy-name - String - 是否必填：否 -（过滤条件）按照告警策略名称过滤。</li>
-	// <li> scaling-policy-type - String - 是否必填：否 -（过滤条件）按照告警策略类型过滤，取值范围为SIMPLE，TARGET_TRACKING。</li>
+	// <li> scaling-policy-type - String - 是否必填：否 -（过滤条件）按照告警策略类型过滤，取值范围为SIMPLE，TARGET_TRACKING。两者分别表示简单策略和目标追踪策略。</li>
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`AutoScalingPolicyIds`和`Filters`。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
@@ -3275,26 +3330,26 @@ func (r *DetachInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DetachLoadBalancersRequestParams struct {
-	// 伸缩组ID
+	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 传统负载均衡器ID列表，列表长度上限为20，LoadBalancerIds 和 ForwardLoadBalancerIdentifications 二者同时最多只能指定一个
+	// 传统负载均衡器ID列表，列表长度上限为20，LoadBalancerIds 和 ForwardLoadBalancerIdentifications 二者同时最多只能指定一个。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
-	// 应用型负载均衡器标识信息列表，列表长度上限为100，LoadBalancerIds 和 ForwardLoadBalancerIdentifications二者同时最多只能指定一个
+	// 负载均衡器标识信息列表，列表长度上限为100，LoadBalancerIds 和 ForwardLoadBalancerIdentifications二者同时最多只能指定一个。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	ForwardLoadBalancerIdentifications []*ForwardLoadBalancerIdentification `json:"ForwardLoadBalancerIdentifications,omitnil,omitempty" name:"ForwardLoadBalancerIdentifications"`
 }
 
 type DetachLoadBalancersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID
+	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 传统负载均衡器ID列表，列表长度上限为20，LoadBalancerIds 和 ForwardLoadBalancerIdentifications 二者同时最多只能指定一个
+	// 传统负载均衡器ID列表，列表长度上限为20，LoadBalancerIds 和 ForwardLoadBalancerIdentifications 二者同时最多只能指定一个。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
-	// 应用型负载均衡器标识信息列表，列表长度上限为100，LoadBalancerIds 和 ForwardLoadBalancerIdentifications二者同时最多只能指定一个
+	// 负载均衡器标识信息列表，列表长度上限为100，LoadBalancerIds 和 ForwardLoadBalancerIdentifications二者同时最多只能指定一个。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	ForwardLoadBalancerIdentifications []*ForwardLoadBalancerIdentification `json:"ForwardLoadBalancerIdentifications,omitnil,omitempty" name:"ForwardLoadBalancerIdentifications"`
 }
 
@@ -3369,14 +3424,14 @@ type DetailedStatusMessage struct {
 
 // Predefined struct for user
 type DisableAutoScalingGroupRequestParams struct {
-	// 伸缩组ID
+	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 }
 
 type DisableAutoScalingGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID
+	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 }
 
@@ -3423,14 +3478,14 @@ func (r *DisableAutoScalingGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type EnableAutoScalingGroupRequestParams struct {
-	// 伸缩组ID
+	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 }
 
 type EnableAutoScalingGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID
+	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 }
 
@@ -3565,7 +3620,7 @@ func (r *EnterStandbyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExecuteScalingPolicyRequestParams struct {
-	// 告警伸缩策略ID，不支持目标追踪策略。
+	// 告警伸缩策略ID，不支持目标追踪策略。可通过 [DescribeScalingPolicies](https://cloud.tencent.com/document/api/377/33178) 接口返回的 `ScalingPolicyType ` 参数获取告警策略类型。
 	AutoScalingPolicyId *string `json:"AutoScalingPolicyId,omitnil,omitempty" name:"AutoScalingPolicyId"`
 
 	// 是否检查伸缩组活动处于冷却时间内，默认值为false
@@ -3578,7 +3633,7 @@ type ExecuteScalingPolicyRequestParams struct {
 type ExecuteScalingPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 告警伸缩策略ID，不支持目标追踪策略。
+	// 告警伸缩策略ID，不支持目标追踪策略。可通过 [DescribeScalingPolicies](https://cloud.tencent.com/document/api/377/33178) 接口返回的 `ScalingPolicyType ` 参数获取告警策略类型。
 	AutoScalingPolicyId *string `json:"AutoScalingPolicyId,omitnil,omitempty" name:"AutoScalingPolicyId"`
 
 	// 是否检查伸缩组活动处于冷却时间内，默认值为false
@@ -3715,16 +3770,16 @@ type Filter struct {
 }
 
 type ForwardLoadBalancer struct {
-	// 负载均衡器ID
+	// 负载均衡器ID。作为入参时，该参数必填。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 
-	// 应用型负载均衡监听器 ID
+	// 负载均衡监听器 ID。作为入参时，该参数必填。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
 
-	// 目标规则属性列表
+	// 目标规则属性列表。作为入参时，该参数必填。
 	TargetAttributes []*TargetAttribute `json:"TargetAttributes,omitnil,omitempty" name:"TargetAttributes"`
 
-	// 转发规则ID，注意：针对七层监听器此参数必填
+	// 转发规则ID，注意：针对七层监听器此参数必填。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	LocationId *string `json:"LocationId,omitnil,omitempty" name:"LocationId"`
 
 	// 负载均衡实例所属地域，默认取AS服务所在地域。格式与公共参数Region相同，如："ap-guangzhou"。
@@ -3816,7 +3871,10 @@ type Instance struct {
 	// <li>IN_TERMINATING_HOOK：缩容生命周期挂钩中</li>
 	LifeCycleState *string `json:"LifeCycleState,omitnil,omitempty" name:"LifeCycleState"`
 
-	// 健康状态，取值包括HEALTHY和UNHEALTHY
+	// 健康状态，取值范围如下：
+	// <li>HEALTHY：实例处于健康状态</li>
+	// <li>UNHEALTHY：实例 ping 不可达</li>
+	// <li>CLB_UNHEALTHY：CLB 监听的实例端口不健康</li>
 	HealthStatus *string `json:"HealthStatus,omitnil,omitempty" name:"HealthStatus"`
 
 	// 是否加入缩容保护
@@ -3828,7 +3886,7 @@ type Instance struct {
 	// 创建类型，取值包括AUTO_CREATION, MANUAL_ATTACHING。
 	CreationType *string `json:"CreationType,omitnil,omitempty" name:"CreationType"`
 
-	// 实例加入时间
+	// 实例加入时间，按照ISO8601标准表示，并且使用UTC时间。
 	AddTime *string `json:"AddTime,omitnil,omitempty" name:"AddTime"`
 
 	// 实例类型
@@ -3976,7 +4034,7 @@ type LaunchConfiguration struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 
-	// 启动配置创建时间。
+	// 启动配置创建时间，为标准`UTC`时间。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 实例的增强服务启用情况与其设置。
@@ -3988,7 +4046,11 @@ type LaunchConfiguration struct {
 	// 启动配置当前状态。取值范围：<li>NORMAL：正常</li><li>IMAGE_ABNORMAL：启动配置镜像异常</li><li>CBS_SNAP_ABNORMAL：启动配置数据盘快照异常</li><li>SECURITY_GROUP_ABNORMAL：启动配置安全组异常</li>
 	LaunchConfigurationStatus *string `json:"LaunchConfigurationStatus,omitnil,omitempty" name:"LaunchConfigurationStatus"`
 
-	// 实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。<li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li>
+	// 实例计费类型，取值范围如下：
+	// <li>POSTPAID_BY_HOUR：按小时后付费</li>
+	// <li>SPOTPAID：竞价付费</li>
+	// <li>PREPAID：预付费，即包年包月</li>
+	// <li>CDCPAID：专用集群付费</li>
 	InstanceChargeType *string `json:"InstanceChargeType,omitnil,omitempty" name:"InstanceChargeType"`
 
 	// 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
@@ -4001,16 +4063,16 @@ type LaunchConfiguration struct {
 	// 实例标签列表。扩容出来的实例会自动带上标签，最多支持10个标签。
 	InstanceTags []*InstanceTag `json:"InstanceTags,omitnil,omitempty" name:"InstanceTags"`
 
-	// 标签列表。
+	// 标签列表，该参数内的标签仅用于绑定启动配置，不会传递给基于该启动配置扩容的 CVM 实例。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
 	// 版本号。
 	VersionNumber *int64 `json:"VersionNumber,omitnil,omitempty" name:"VersionNumber"`
 
-	// 更新时间。
+	// 更新时间，为标准`UTC`时间。
 	UpdatedTime *string `json:"UpdatedTime,omitnil,omitempty" name:"UpdatedTime"`
 
-	// CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+	// CAM角色名称。可通过[DescribeRoleList](https://cloud.tencent.com/document/product/598/36223)接口返回值中的roleName获取。
 	CamRoleName *string `json:"CamRoleName,omitnil,omitempty" name:"CamRoleName"`
 
 	// 上次操作时，InstanceTypesCheckPolicy 取值。
@@ -4146,7 +4208,7 @@ type LoginSettings struct {
 	// 特殊符号的取值范围： [( ) ` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? / ]
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口DescribeKeyPairs获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。
+	// 密钥ID列表。关联密钥后，就可以通过对应的私钥来访问实例；KeyId可通过接口[DescribeKeyPairs](https://cloud.tencent.com/document/api/213/15699)获取，密钥与密码不能同时指定，同时Windows操作系统不支持指定密钥。当前仅支持购买的时候指定一个密钥。
 	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
 
 	// 保持镜像的原始设置。该参数与Password或KeyIds.N不能同时指定。只有使用自定义镜像、共享镜像或外部导入镜像创建实例时才能指定该参数为TRUE。取值范围：
@@ -4193,31 +4255,35 @@ type MetricAlarm struct {
 
 // Predefined struct for user
 type ModifyAutoScalingGroupRequestParams struct {
-	// 伸缩组ID
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
 	// 伸缩组名称，在您账号中必须唯一。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超55个字节。
 	AutoScalingGroupName *string `json:"AutoScalingGroupName,omitnil,omitempty" name:"AutoScalingGroupName"`
 
-	// 默认冷却时间，单位秒，默认值为300
+	// 默认冷却时间，单位秒，取值范围 [0,3600]，默认值为300。
 	DefaultCooldown *uint64 `json:"DefaultCooldown,omitnil,omitempty" name:"DefaultCooldown"`
 
-	// 期望实例数，大小介于最小实例数和最大实例数之间
+	// 期望实例数，取值范围 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。
 	DesiredCapacity *uint64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
 
-	// 启动配置ID
+	// 启动配置ID。可以通过如下方式获取可用的启动配置ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 查询启动配置ID。</li>
+	// <li>通过调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。</li>
 	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitnil,omitempty" name:"LaunchConfigurationId"`
 
-	// 最大实例数，取值范围为0-2000。
+	// 最大实例数，取值范围为 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 最小实例数，取值范围为0-2000。
+	// 最小实例数，取值范围为 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。
 	MinSize *uint64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
-	// 项目ID
+	// 项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 ProjectId 字段来获取。默认值为 0，表示使用默认项目。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 子网ID列表
+	// 子网ID列表。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet)查询；也可以调用接口 [DescribeSubnets](https://cloud.tencent.com/document/product/215/15784) ，从接口返回中的SubnetId字段获取。
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
 	// 销毁策略，目前长度上限为1。取值包括 OLDEST_INSTANCE 和 NEWEST_INSTANCE。
@@ -4225,7 +4291,7 @@ type ModifyAutoScalingGroupRequestParams struct {
 	// <li> NEWEST_INSTANCE，优先销毁伸缩组中最新的实例。</li>
 	TerminationPolicies []*string `json:"TerminationPolicies,omitnil,omitempty" name:"TerminationPolicies"`
 
-	// VPC ID，基础网络则填空字符串。修改为具体VPC ID时，需指定相应的SubnetIds；修改为基础网络时，需指定相应的Zones。
+	// 私有网络ID。修改私有网络时，需将 SubnetIds 参数同步修改为该私有网络的子网。有效的 VpcId 可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc)查询；也可以调用接口 [DescribeVpc](https://cloud.tencent.com/document/api/215/15778) ，从接口返回中的 VpcId 字段获取。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 可用区列表
@@ -4248,7 +4314,7 @@ type ModifyAutoScalingGroupRequestParams struct {
 	// 服务设置，包括云监控不健康替换等服务设置。
 	ServiceSettings *ServiceSettings `json:"ServiceSettings,omitnil,omitempty" name:"ServiceSettings"`
 
-	// 实例具有IPv6地址数量的配置，取值包括0、1。
+	// 实例具有IPv6地址数量的配置，取值包括0、1。默认值为 0，表示实例不分配 IPv6 地址。需使用支持 IPv6 的私有网络，需在子网中开启 IPv6 CIDR，其他使用限制可参考 [IPv6使用限制](https://cloud.tencent.com/document/product/1142/38369)。
 	Ipv6AddressCount *int64 `json:"Ipv6AddressCount,omitnil,omitempty" name:"Ipv6AddressCount"`
 
 	// 多可用区/子网策略，取值包括 PRIORITY 和 EQUALITY，默认为 PRIORITY。
@@ -4290,31 +4356,35 @@ type ModifyAutoScalingGroupRequestParams struct {
 type ModifyAutoScalingGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID
+	// 伸缩组ID。可以通过如下方式获取可用的伸缩组ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 查询伸缩组ID。</li>
+	// <li>通过调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
 	// 伸缩组名称，在您账号中必须唯一。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超55个字节。
 	AutoScalingGroupName *string `json:"AutoScalingGroupName,omitnil,omitempty" name:"AutoScalingGroupName"`
 
-	// 默认冷却时间，单位秒，默认值为300
+	// 默认冷却时间，单位秒，取值范围 [0,3600]，默认值为300。
 	DefaultCooldown *uint64 `json:"DefaultCooldown,omitnil,omitempty" name:"DefaultCooldown"`
 
-	// 期望实例数，大小介于最小实例数和最大实例数之间
+	// 期望实例数，取值范围 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。
 	DesiredCapacity *uint64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
 
-	// 启动配置ID
+	// 启动配置ID。可以通过如下方式获取可用的启动配置ID:
+	// <li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 查询启动配置ID。</li>
+	// <li>通过调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。</li>
 	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitnil,omitempty" name:"LaunchConfigurationId"`
 
-	// 最大实例数，取值范围为0-2000。
+	// 最大实例数，取值范围为 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 最小实例数，取值范围为0-2000。
+	// 最小实例数，取值范围为 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。
 	MinSize *uint64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
-	// 项目ID
+	// 项目ID。该参数可以通过调用 [DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 ProjectId 字段来获取。默认值为 0，表示使用默认项目。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 子网ID列表
+	// 子网ID列表。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet)查询；也可以调用接口 [DescribeSubnets](https://cloud.tencent.com/document/product/215/15784) ，从接口返回中的SubnetId字段获取。
 	SubnetIds []*string `json:"SubnetIds,omitnil,omitempty" name:"SubnetIds"`
 
 	// 销毁策略，目前长度上限为1。取值包括 OLDEST_INSTANCE 和 NEWEST_INSTANCE。
@@ -4322,7 +4392,7 @@ type ModifyAutoScalingGroupRequest struct {
 	// <li> NEWEST_INSTANCE，优先销毁伸缩组中最新的实例。</li>
 	TerminationPolicies []*string `json:"TerminationPolicies,omitnil,omitempty" name:"TerminationPolicies"`
 
-	// VPC ID，基础网络则填空字符串。修改为具体VPC ID时，需指定相应的SubnetIds；修改为基础网络时，需指定相应的Zones。
+	// 私有网络ID。修改私有网络时，需将 SubnetIds 参数同步修改为该私有网络的子网。有效的 VpcId 可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc)查询；也可以调用接口 [DescribeVpc](https://cloud.tencent.com/document/api/215/15778) ，从接口返回中的 VpcId 字段获取。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// 可用区列表
@@ -4345,7 +4415,7 @@ type ModifyAutoScalingGroupRequest struct {
 	// 服务设置，包括云监控不健康替换等服务设置。
 	ServiceSettings *ServiceSettings `json:"ServiceSettings,omitnil,omitempty" name:"ServiceSettings"`
 
-	// 实例具有IPv6地址数量的配置，取值包括0、1。
+	// 实例具有IPv6地址数量的配置，取值包括0、1。默认值为 0，表示实例不分配 IPv6 地址。需使用支持 IPv6 的私有网络，需在子网中开启 IPv6 CIDR，其他使用限制可参考 [IPv6使用限制](https://cloud.tencent.com/document/product/1142/38369)。
 	Ipv6AddressCount *int64 `json:"Ipv6AddressCount,omitnil,omitempty" name:"Ipv6AddressCount"`
 
 	// 多可用区/子网策略，取值包括 PRIORITY 和 EQUALITY，默认为 PRIORITY。
@@ -4449,32 +4519,32 @@ func (r *ModifyAutoScalingGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDesiredCapacityRequestParams struct {
-	// 伸缩组ID
+	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 期望实例数
+	// 期望实例数，取值范围 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。
 	DesiredCapacity *uint64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
 
-	// 最小实例数，取值范围为0-2000。
+	// 最小实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
 	MinSize *uint64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
-	// 最大实例数，取值范围为0-2000。
+	// 最大实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 }
 
 type ModifyDesiredCapacityRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID
+	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 期望实例数
+	// 期望实例数，取值范围 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。
 	DesiredCapacity *uint64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
 
-	// 最小实例数，取值范围为0-2000。
+	// 最小实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
 	MinSize *uint64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
-	// 最大实例数，取值范围为0-2000。
+	// 最大实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 }
 
@@ -4524,14 +4594,14 @@ func (r *ModifyDesiredCapacityResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLaunchConfigurationAttributesRequestParams struct {
-	// 启动配置ID
+	// 启动配置ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 或调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。
 	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitnil,omitempty" name:"LaunchConfigurationId"`
 
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
 	// 实例类型列表，不同实例机型指定了不同的资源规格，最多支持10种实例机型。
-	// InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定多实例类型，并使原有的InstanceType失效。
+	// InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定多实例类型，并使原有的InstanceType失效。具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格描述](https://cloud.tencent.com/document/product/213/11518)。
 	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 
 	// 实例类型校验策略，在实际修改 InstanceTypes 时发挥作用，取值包括 ALL 和 ANY，默认取值为ANY。
@@ -4600,17 +4670,17 @@ type ModifyLaunchConfigurationAttributesRequestParams struct {
 	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。
 	EnhancedService *EnhancedService `json:"EnhancedService,omitnil,omitempty" name:"EnhancedService"`
 
-	// CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+	// CAM角色名称。可通过[DescribeRoleList](https://cloud.tencent.com/document/product/598/36223)接口返回值中的roleName获取。
 	CamRoleName *string `json:"CamRoleName,omitnil,omitempty" name:"CamRoleName"`
 
-	// 高性能计算集群ID。<br>
+	// 高性能计算集群ID。可通过调用[DescribeHpcClusters](https://cloud.tencent.com/document/product/213/83220)接口获取该参数。
 	// 注意：此字段默认为空。
 	HpcClusterId *string `json:"HpcClusterId,omitnil,omitempty" name:"HpcClusterId"`
 
 	// IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
 	IPv6InternetAccessible *IPv6InternetAccessible `json:"IPv6InternetAccessible,omitnil,omitempty" name:"IPv6InternetAccessible"`
 
-	// 置放群组id，仅支持指定一个。
+	// 置放群组id，仅支持指定一个。可通过调用[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/product/213/17810)接口获取该参数。
 	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitnil,omitempty" name:"DisasterRecoverGroupIds"`
 
 	// 实例登录设置，包括密码、密钥或保持镜像的原始登录设置。<br>请注意，指定新的登录设置会覆盖原有登录设置。例如，如果您之前使用密码登录，使用该参数将登录设置修改为密钥，则原有密码被清除。
@@ -4620,7 +4690,7 @@ type ModifyLaunchConfigurationAttributesRequestParams struct {
 	// 该参数会覆盖原有的实例标签列表，如需新增标签，需将新标签和原有标签一并传入。
 	InstanceTags []*InstanceTag `json:"InstanceTags,omitnil,omitempty" name:"InstanceTags"`
 
-	// 镜像族名称。
+	// 镜像族名称。可通过调用[DescribeImages](https://cloud.tencent.com/document/product/213/15715)接口获取该参数。
 	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
 
 	// 本地专用集群ID。
@@ -4633,14 +4703,14 @@ type ModifyLaunchConfigurationAttributesRequestParams struct {
 type ModifyLaunchConfigurationAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 启动配置ID
+	// 启动配置ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 或调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。
 	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitnil,omitempty" name:"LaunchConfigurationId"`
 
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
 	// 实例类型列表，不同实例机型指定了不同的资源规格，最多支持10种实例机型。
-	// InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定多实例类型，并使原有的InstanceType失效。
+	// InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定多实例类型，并使原有的InstanceType失效。具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格描述](https://cloud.tencent.com/document/product/213/11518)。
 	InstanceTypes []*string `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
 
 	// 实例类型校验策略，在实际修改 InstanceTypes 时发挥作用，取值包括 ALL 和 ANY，默认取值为ANY。
@@ -4709,17 +4779,17 @@ type ModifyLaunchConfigurationAttributesRequest struct {
 	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。
 	EnhancedService *EnhancedService `json:"EnhancedService,omitnil,omitempty" name:"EnhancedService"`
 
-	// CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+	// CAM角色名称。可通过[DescribeRoleList](https://cloud.tencent.com/document/product/598/36223)接口返回值中的roleName获取。
 	CamRoleName *string `json:"CamRoleName,omitnil,omitempty" name:"CamRoleName"`
 
-	// 高性能计算集群ID。<br>
+	// 高性能计算集群ID。可通过调用[DescribeHpcClusters](https://cloud.tencent.com/document/product/213/83220)接口获取该参数。
 	// 注意：此字段默认为空。
 	HpcClusterId *string `json:"HpcClusterId,omitnil,omitempty" name:"HpcClusterId"`
 
 	// IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
 	IPv6InternetAccessible *IPv6InternetAccessible `json:"IPv6InternetAccessible,omitnil,omitempty" name:"IPv6InternetAccessible"`
 
-	// 置放群组id，仅支持指定一个。
+	// 置放群组id，仅支持指定一个。可通过调用[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/product/213/17810)接口获取该参数。
 	DisasterRecoverGroupIds []*string `json:"DisasterRecoverGroupIds,omitnil,omitempty" name:"DisasterRecoverGroupIds"`
 
 	// 实例登录设置，包括密码、密钥或保持镜像的原始登录设置。<br>请注意，指定新的登录设置会覆盖原有登录设置。例如，如果您之前使用密码登录，使用该参数将登录设置修改为密钥，则原有密码被清除。
@@ -4729,7 +4799,7 @@ type ModifyLaunchConfigurationAttributesRequest struct {
 	// 该参数会覆盖原有的实例标签列表，如需新增标签，需将新标签和原有标签一并传入。
 	InstanceTags []*InstanceTag `json:"InstanceTags,omitnil,omitempty" name:"InstanceTags"`
 
-	// 镜像族名称。
+	// 镜像族名称。可通过调用[DescribeImages](https://cloud.tencent.com/document/product/213/15715)接口获取该参数。
 	ImageFamily *string `json:"ImageFamily,omitnil,omitempty" name:"ImageFamily"`
 
 	// 本地专用集群ID。
@@ -4925,20 +4995,20 @@ func (r *ModifyLifecycleHookResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLoadBalancerTargetAttributesRequestParams struct {
-	// 伸缩组ID
+	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 需修改目标规则属性的应用型负载均衡器列表，列表长度上限为100
+	// 需修改目标规则属性的负载均衡器列表，列表长度上限为100。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	ForwardLoadBalancers []*ForwardLoadBalancer `json:"ForwardLoadBalancers,omitnil,omitempty" name:"ForwardLoadBalancers"`
 }
 
 type ModifyLoadBalancerTargetAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID
+	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 需修改目标规则属性的应用型负载均衡器列表，列表长度上限为100
+	// 需修改目标规则属性的负载均衡器列表，列表长度上限为100。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	ForwardLoadBalancers []*ForwardLoadBalancer `json:"ForwardLoadBalancers,omitnil,omitempty" name:"ForwardLoadBalancers"`
 }
 
@@ -4989,13 +5059,13 @@ func (r *ModifyLoadBalancerTargetAttributesResponse) FromJsonString(s string) er
 
 // Predefined struct for user
 type ModifyLoadBalancersRequestParams struct {
-	// 伸缩组ID
+	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 传统负载均衡器ID列表，目前长度上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+	// 传统负载均衡器ID列表，目前长度上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
-	// 应用型负载均衡器列表，目前长度上限为100，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+	// 负载均衡器列表，目前长度上限为100，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	ForwardLoadBalancers []*ForwardLoadBalancer `json:"ForwardLoadBalancers,omitnil,omitempty" name:"ForwardLoadBalancers"`
 
 	// 负载均衡器校验策略，取值包括 ALL 和 DIFF，默认取值为 ALL。
@@ -5007,13 +5077,13 @@ type ModifyLoadBalancersRequestParams struct {
 type ModifyLoadBalancersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 伸缩组ID
+	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 传统负载均衡器ID列表，目前长度上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+	// 传统负载均衡器ID列表，目前长度上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
 
-	// 应用型负载均衡器列表，目前长度上限为100，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个
+	// 负载均衡器列表，目前长度上限为100，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
 	ForwardLoadBalancers []*ForwardLoadBalancer `json:"ForwardLoadBalancers,omitnil,omitempty" name:"ForwardLoadBalancers"`
 
 	// 负载均衡器校验策略，取值包括 ALL 和 DIFF，默认取值为 ALL。
@@ -5071,7 +5141,7 @@ func (r *ModifyLoadBalancersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNotificationConfigurationRequestParams struct {
-	// 待修改的通知ID。
+	// 待修改的通知ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeNotificationConfigurations](https://cloud.tencent.com/document/api/377/33183) ，取返回信息中的 AutoScalingNotificationId 获取通知ID。
 	AutoScalingNotificationId *string `json:"AutoScalingNotificationId,omitnil,omitempty" name:"AutoScalingNotificationId"`
 
 	// 通知类型，即为需要订阅的通知类型集合，取值范围如下：
@@ -5083,20 +5153,20 @@ type ModifyNotificationConfigurationRequestParams struct {
 	// <li>REPLACE_UNHEALTHY_INSTANCE_FAILED：替换不健康子机失败</li>
 	NotificationTypes []*string `json:"NotificationTypes,omitnil,omitempty" name:"NotificationTypes"`
 
-	// 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
+	// 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。该参数仅在 `TargetType ` 为 `USER_GROUP ` 时生效。
 	NotificationUserGroupIds []*string `json:"NotificationUserGroupIds,omitnil,omitempty" name:"NotificationUserGroupIds"`
 
-	// CMQ 队列或 TDMQ CMQ 队列名。
+	//  TDMQ CMQ 队列名。[原CMQ已下线](https://cloud.tencent.com/document/product/1496/83970)，目前仅推荐使用  TDMQ CMQ。该参数仅在 `TargetType ` 为 `TDMQ_CMQ_QUEUE ` 时生效。
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 
-	// CMQ 主题或 TDMQ CMQ 主题名。
+	// TDMQ CMQ 主题名。[原CMQ已下线](https://cloud.tencent.com/document/product/1496/83970)，目前仅推荐使用  TDMQ CMQ。该参数仅在 `TargetType ` 为 `TDMQ_CMQ_TOPIC ` 时生效。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 }
 
 type ModifyNotificationConfigurationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待修改的通知ID。
+	// 待修改的通知ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeNotificationConfigurations](https://cloud.tencent.com/document/api/377/33183) ，取返回信息中的 AutoScalingNotificationId 获取通知ID。
 	AutoScalingNotificationId *string `json:"AutoScalingNotificationId,omitnil,omitempty" name:"AutoScalingNotificationId"`
 
 	// 通知类型，即为需要订阅的通知类型集合，取值范围如下：
@@ -5108,13 +5178,13 @@ type ModifyNotificationConfigurationRequest struct {
 	// <li>REPLACE_UNHEALTHY_INSTANCE_FAILED：替换不健康子机失败</li>
 	NotificationTypes []*string `json:"NotificationTypes,omitnil,omitempty" name:"NotificationTypes"`
 
-	// 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。
+	// 通知组ID，即为用户组ID集合，用户组ID可以通过[ListGroups](https://cloud.tencent.com/document/product/598/34589)查询。该参数仅在 `TargetType ` 为 `USER_GROUP ` 时生效。
 	NotificationUserGroupIds []*string `json:"NotificationUserGroupIds,omitnil,omitempty" name:"NotificationUserGroupIds"`
 
-	// CMQ 队列或 TDMQ CMQ 队列名。
+	//  TDMQ CMQ 队列名。[原CMQ已下线](https://cloud.tencent.com/document/product/1496/83970)，目前仅推荐使用  TDMQ CMQ。该参数仅在 `TargetType ` 为 `TDMQ_CMQ_QUEUE ` 时生效。
 	QueueName *string `json:"QueueName,omitnil,omitempty" name:"QueueName"`
 
-	// CMQ 主题或 TDMQ CMQ 主题名。
+	// TDMQ CMQ 主题名。[原CMQ已下线](https://cloud.tencent.com/document/product/1496/83970)，目前仅推荐使用  TDMQ CMQ。该参数仅在 `TargetType ` 为 `TDMQ_CMQ_TOPIC ` 时生效。
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 }
 
@@ -5165,10 +5235,10 @@ func (r *ModifyNotificationConfigurationResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type ModifyScalingPolicyRequestParams struct {
-	// 告警策略ID。
+	// 告警策略ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeScalingPolicies](https://cloud.tencent.com/document/api/377/33178) ，取返回信息中的 AutoScalingPolicyId 获取告警策略ID。
 	AutoScalingPolicyId *string `json:"AutoScalingPolicyId,omitnil,omitempty" name:"AutoScalingPolicyId"`
 
-	// 告警策略名称。
+	// 告警策略名称，在您账号中必须唯一。名称长度不能超过60，名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点。
 	ScalingPolicyName *string `json:"ScalingPolicyName,omitnil,omitempty" name:"ScalingPolicyName"`
 
 	// 告警触发后，期望实例数修改方式，仅适用于简单策略。取值范围：<br><li>CHANGE_IN_CAPACITY：增加或减少若干期望实例数</li><li>EXACT_CAPACITY：调整至指定期望实例数</li> <li>PERCENT_CHANGE_IN_CAPACITY：按百分比调整期望实例数</li>
@@ -5203,10 +5273,10 @@ type ModifyScalingPolicyRequestParams struct {
 type ModifyScalingPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 告警策略ID。
+	// 告警策略ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeScalingPolicies](https://cloud.tencent.com/document/api/377/33178) ，取返回信息中的 AutoScalingPolicyId 获取告警策略ID。
 	AutoScalingPolicyId *string `json:"AutoScalingPolicyId,omitnil,omitempty" name:"AutoScalingPolicyId"`
 
-	// 告警策略名称。
+	// 告警策略名称，在您账号中必须唯一。名称长度不能超过60，名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点。
 	ScalingPolicyName *string `json:"ScalingPolicyName,omitnil,omitempty" name:"ScalingPolicyName"`
 
 	// 告警触发后，期望实例数修改方式，仅适用于简单策略。取值范围：<br><li>CHANGE_IN_CAPACITY：增加或减少若干期望实例数</li><li>EXACT_CAPACITY：调整至指定期望实例数</li> <li>PERCENT_CHANGE_IN_CAPACITY：按百分比调整期望实例数</li>
@@ -5394,8 +5464,8 @@ func (r *ModifyScheduledActionResponse) FromJsonString(s string) error {
 
 type NotificationTarget struct {
 	// 目标类型，取值范围包括`CMQ_QUEUE`、`CMQ_TOPIC`、`TDMQ_CMQ_QUEUE`、`TDMQ_CMQ_TOPIC`。
-	// <li> CMQ_QUEUE，指腾讯云消息队列-队列模型。</li>
-	// <li> CMQ_TOPIC，指腾讯云消息队列-主题模型。</li>
+	// <li> CMQ_QUEUE，指腾讯云消息队列-队列模型，对应产品已下线，[建议切换](https://cloud.tencent.com/document/product/1496/83970) TDMQ_CMQ_QUEUE 使用。</li>
+	// <li> CMQ_TOPIC，指腾讯云消息队列-主题模型，对应产品已下线，[建议切换](https://cloud.tencent.com/document/product/1496/83970) TDMQ_CMQ_TOPIC 使用。</li>
 	// <li> TDMQ_CMQ_QUEUE，指腾讯云 TDMQ 消息队列-队列模型。</li>
 	// <li> TDMQ_CMQ_TOPIC，指腾讯云 TDMQ 消息队列-主题模型。</li>
 	TargetType *string `json:"TargetType,omitnil,omitempty" name:"TargetType"`
@@ -5420,7 +5490,9 @@ type RefreshActivity struct {
 	// 刷新批次信息列表。
 	RefreshBatchSet []*RefreshBatch `json:"RefreshBatchSet,omitnil,omitempty" name:"RefreshBatchSet"`
 
-	// 刷新模式。
+	// 刷新模式。取值范围如下：
+	// <li>ROLLING_UPDATE_RESET：重装系统进行滚动更新</li>
+	// <li>ROLLING_UPDATE_REPLACE：新建实例替换进行滚动更新，该模式暂不支持回滚接口</li>
 	RefreshMode *string `json:"RefreshMode,omitnil,omitempty" name:"RefreshMode"`
 
 	// 实例更新设置参数。
@@ -5445,15 +5517,15 @@ type RefreshActivity struct {
 	// 当前刷新批次序号。例如，2 表示当前活动正在刷新第二批次的实例。
 	CurrentRefreshBatchNum *uint64 `json:"CurrentRefreshBatchNum,omitnil,omitempty" name:"CurrentRefreshBatchNum"`
 
-	// 刷新活动开始时间。
+	// 刷新活动开始时间，为标准 `UTC` 时间，格式形如 `YYYY-MM-DDTHH:mm:ssZ`。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 刷新活动结束时间。
+	// 刷新活动结束时间，为标准 `UTC` 时间，格式形如 `YYYY-MM-DDTHH:mm:ssZ`。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 刷新活动创建时间。
+	// 刷新活动创建时间，为标准 `UTC` 时间，格式形如 `YYYY-MM-DDTHH:mm:ssZ`。
 	CreatedTime *string `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 }
 
@@ -5933,7 +6005,7 @@ type ScalingPolicy struct {
 	// 告警触发后，期望实例数的调整值，仅适用于简单策略。
 	AdjustmentValue *int64 `json:"AdjustmentValue,omitnil,omitempty" name:"AdjustmentValue"`
 
-	// 冷却时间，仅适用于简单策略。
+	// 冷却时间，单位为秒，仅适用于简单策略。取值范围 [0,3600]，默认冷却时间300秒。
 	Cooldown *uint64 `json:"Cooldown,omitnil,omitempty" name:"Cooldown"`
 
 	// 简单告警触发策略告警监控指标，仅适用于简单策略。
@@ -6441,6 +6513,9 @@ type SystemDisk struct {
 	// <li>CLOUD_BASIC：普通云硬盘</li>
 	// <li>CLOUD_PREMIUM：高性能云硬盘</li>
 	// <li>CLOUD_SSD：SSD云硬盘</li>
+	// <li>CLOUD_BSSD：通用型SSD云硬盘</li>
+	// <li>CLOUD_HSSD：增强型SSD云硬盘</li>
+	// <li>CLOUD_TSSD：极速型SSD云硬盘</li>
 	// <li>默认取值：CLOUD_PREMIUM。</li>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
@@ -6455,15 +6530,15 @@ type Tag struct {
 	// 标签值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 
-	// 标签绑定的资源类型，当前支持类型："auto-scaling-group", "launch-configuration"
+	// 标签绑定的资源类型，当前支持类型："auto-scaling-group", "launch-configuration"。分别表示：伸缩组资源，启动配置资源。
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 }
 
 type TargetAttribute struct {
-	// 端口
+	// 端口。取值范围为 [1,65535]。作为入参时，该参数必填。
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
 
-	// 权重
+	// 权重。取值范围为 [0,100]。作为入参时，该参数必填。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 

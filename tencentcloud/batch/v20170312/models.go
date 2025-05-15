@@ -1577,7 +1577,7 @@ type DescribeTaskLogsRequestParams struct {
 	// 起始任务实例。与TaskInstanceIndexes参数不能同时指定。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 最大任务实例数, 最大值为10.
+	// 最大任务实例数；默认值为5， 最大值为10。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -1596,7 +1596,7 @@ type DescribeTaskLogsRequest struct {
 	// 起始任务实例。与TaskInstanceIndexes参数不能同时指定。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 最大任务实例数, 最大值为10.
+	// 最大任务实例数；默认值为5， 最大值为10。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 

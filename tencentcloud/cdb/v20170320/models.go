@@ -10904,6 +10904,9 @@ type Inbound struct {
 	// 地址模块
 	AddressModule *string `json:"AddressModule,omitnil,omitempty" name:"AddressModule"`
 
+	// 规则ID，嵌套安全组的规则ID
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
 	// 规则描述
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 }
@@ -14220,7 +14223,7 @@ type OpenAuditServiceRequestParams struct {
 	// 30 - 一个月；
 	HighLogExpireDay *uint64 `json:"HighLogExpireDay,omitnil,omitempty" name:"HighLogExpireDay"`
 
-	// 审计规则。同RuleTemplateIds都不填是全审计。
+	// 审计规则（该参数已废弃，不再生效）。
 	AuditRuleFilters []*AuditRuleFilters `json:"AuditRuleFilters,omitnil,omitempty" name:"AuditRuleFilters"`
 
 	// 规则模板ID。同AuditRuleFilters都不填是全审计。
@@ -14251,7 +14254,7 @@ type OpenAuditServiceRequest struct {
 	// 30 - 一个月；
 	HighLogExpireDay *uint64 `json:"HighLogExpireDay,omitnil,omitempty" name:"HighLogExpireDay"`
 
-	// 审计规则。同RuleTemplateIds都不填是全审计。
+	// 审计规则（该参数已废弃，不再生效）。
 	AuditRuleFilters []*AuditRuleFilters `json:"AuditRuleFilters,omitnil,omitempty" name:"AuditRuleFilters"`
 
 	// 规则模板ID。同AuditRuleFilters都不填是全审计。
@@ -15425,6 +15428,9 @@ type RoInstanceInfo struct {
 
 	// RO实例计费类型，可能返回值：0-包年包月，1-按量计费，2-后付费月结
 	PayType *int64 `json:"PayType,omitnil,omitempty" name:"PayType"`
+
+	// RO延迟复制状态。
+	ReplicationStatus *string `json:"ReplicationStatus,omitnil,omitempty" name:"ReplicationStatus"`
 }
 
 type RoVipInfo struct {

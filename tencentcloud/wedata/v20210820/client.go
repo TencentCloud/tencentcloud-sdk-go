@@ -3922,6 +3922,57 @@ func (c *Client) DescribeBatchOperateTaskWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeCodeTemplateDetailRequest() (request *DescribeCodeTemplateDetailRequest) {
+    request = &DescribeCodeTemplateDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeCodeTemplateDetail")
+    
+    
+    return
+}
+
+func NewDescribeCodeTemplateDetailResponse() (response *DescribeCodeTemplateDetailResponse) {
+    response = &DescribeCodeTemplateDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCodeTemplateDetail
+// 查询代码模版具体详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
+func (c *Client) DescribeCodeTemplateDetail(request *DescribeCodeTemplateDetailRequest) (response *DescribeCodeTemplateDetailResponse, err error) {
+    return c.DescribeCodeTemplateDetailWithContext(context.Background(), request)
+}
+
+// DescribeCodeTemplateDetail
+// 查询代码模版具体详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
+func (c *Client) DescribeCodeTemplateDetailWithContext(ctx context.Context, request *DescribeCodeTemplateDetailRequest) (response *DescribeCodeTemplateDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCodeTemplateDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCodeTemplateDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCodeTemplateDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeColumnLineageRequest() (request *DescribeColumnLineageRequest) {
     request = &DescribeColumnLineageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10723,6 +10774,55 @@ func (c *Client) GenHiveTableDDLSqlWithContext(ctx context.Context, request *Gen
     return
 }
 
+func NewGetBatchDetailErrorLogRequest() (request *GetBatchDetailErrorLogRequest) {
+    request = &GetBatchDetailErrorLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "GetBatchDetailErrorLog")
+    
+    
+    return
+}
+
+func NewGetBatchDetailErrorLogResponse() (response *GetBatchDetailErrorLogResponse) {
+    response = &GetBatchDetailErrorLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetBatchDetailErrorLog
+// 获取批量操作错误日志
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) GetBatchDetailErrorLog(request *GetBatchDetailErrorLogRequest) (response *GetBatchDetailErrorLogResponse, err error) {
+    return c.GetBatchDetailErrorLogWithContext(context.Background(), request)
+}
+
+// GetBatchDetailErrorLog
+// 获取批量操作错误日志
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) GetBatchDetailErrorLogWithContext(ctx context.Context, request *GetBatchDetailErrorLogRequest) (response *GetBatchDetailErrorLogResponse, err error) {
+    if request == nil {
+        request = NewGetBatchDetailErrorLogRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetBatchDetailErrorLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetBatchDetailErrorLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetCosTokenRequest() (request *GetCosTokenRequest) {
     request = &GetCosTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11285,6 +11385,55 @@ func (c *Client) KillScheduleInstancesWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewKillScheduleInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListBatchDetailRequest() (request *ListBatchDetailRequest) {
+    request = &ListBatchDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ListBatchDetail")
+    
+    
+    return
+}
+
+func NewListBatchDetailResponse() (response *ListBatchDetailResponse) {
+    response = &ListBatchDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListBatchDetail
+// 获取批量操作详情列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ListBatchDetail(request *ListBatchDetailRequest) (response *ListBatchDetailResponse, err error) {
+    return c.ListBatchDetailWithContext(context.Background(), request)
+}
+
+// ListBatchDetail
+// 获取批量操作详情列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ListBatchDetailWithContext(ctx context.Context, request *ListBatchDetailRequest) (response *ListBatchDetailResponse, err error) {
+    if request == nil {
+        request = NewListBatchDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListBatchDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListBatchDetailResponse()
     err = c.Send(request, response)
     return
 }

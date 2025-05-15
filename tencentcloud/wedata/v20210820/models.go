@@ -593,6 +593,24 @@ type ApproveType struct {
 	Classification *string `json:"Classification,omitnil,omitempty" name:"Classification"`
 }
 
+type AsyncResourceVO struct {
+	// 处理Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessId *uint64 `json:"ProcessId,omitnil,omitempty" name:"ProcessId"`
+
+	// 资源Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
+
+	// 自定义信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraInfo []*ParamInfo `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
+}
+
 type AttributeItemDTO struct {
 	// key
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2764,9 +2782,13 @@ type CodeTemplateDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Submit *bool `json:"Submit,omitnil,omitempty" name:"Submit"`
 
-	// 任务脚本是否发生变化
+	// 模版脚本是否发生变化
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScriptChange *bool `json:"ScriptChange,omitnil,omitempty" name:"ScriptChange"`
+
+	// 代码模版脚本，base64编码返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 type CollectionFolderOpsDto struct {
@@ -9182,6 +9204,78 @@ func (r *DescribeBatchOperateTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBatchOperateTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCodeTemplateDetailRequestParams struct {
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 模版Id
+	CodeTemplateId *string `json:"CodeTemplateId,omitnil,omitempty" name:"CodeTemplateId"`
+
+	// 是否需要返回脚本内容，默认false。
+	NeedReturnScriptContent *bool `json:"NeedReturnScriptContent,omitnil,omitempty" name:"NeedReturnScriptContent"`
+}
+
+type DescribeCodeTemplateDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 模版Id
+	CodeTemplateId *string `json:"CodeTemplateId,omitnil,omitempty" name:"CodeTemplateId"`
+
+	// 是否需要返回脚本内容，默认false。
+	NeedReturnScriptContent *bool `json:"NeedReturnScriptContent,omitnil,omitempty" name:"NeedReturnScriptContent"`
+}
+
+func (r *DescribeCodeTemplateDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCodeTemplateDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "CodeTemplateId")
+	delete(f, "NeedReturnScriptContent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCodeTemplateDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCodeTemplateDetailResponseParams struct {
+	// 代码详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *CodeTemplateDetail `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCodeTemplateDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCodeTemplateDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeCodeTemplateDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCodeTemplateDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -22248,6 +22342,78 @@ type GeneralTaskParam struct {
 }
 
 // Predefined struct for user
+type GetBatchDetailErrorLogRequestParams struct {
+	// 批量操作ID
+	JobId *uint64 `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 资源对象ID
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+type GetBatchDetailErrorLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// 批量操作ID
+	JobId *uint64 `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 资源对象ID
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+func (r *GetBatchDetailErrorLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetBatchDetailErrorLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "ResourceId")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetBatchDetailErrorLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetBatchDetailErrorLogResponseParams struct {
+	// 日志返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetBatchDetailErrorLogResponse struct {
+	*tchttp.BaseResponse
+	Response *GetBatchDetailErrorLogResponseParams `json:"Response"`
+}
+
+func (r *GetBatchDetailErrorLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetBatchDetailErrorLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetCosTokenRequestParams struct {
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
@@ -24979,6 +25145,119 @@ type LinkOpsDto struct {
 	// 工作流id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+}
+
+// Predefined struct for user
+type ListBatchDetailRequestParams struct {
+	// 批量操作历史Id
+	JobId *uint64 `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+type ListBatchDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 批量操作历史Id
+	JobId *uint64 `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+}
+
+func (r *ListBatchDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListBatchDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListBatchDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListBatchDetailResponseParams struct {
+	// 批量操作ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobId *uint64 `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 运行类型：
+	// ASYNC-异步
+	// SYNC-同步
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunType *string `json:"RunType,omitnil,omitempty" name:"RunType"`
+
+	// 成功列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessResource []*AsyncResourceVO `json:"SuccessResource,omitnil,omitempty" name:"SuccessResource"`
+
+	// 失败列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailResource []*AsyncResourceVO `json:"FailResource,omitnil,omitempty" name:"FailResource"`
+
+	// job类型
+	// BATCH_DELETE --批量删除：1、任务名称：ResourceName
+	// BATCH_CREATE_VERSION --批量提交：1、任务名称：ResourceId 2、资源组：GroupId
+	// BATCH_MODIFY_DATASOURCE --批量修改数据源：1、任务名称：ResourceName
+	// BATCH_MODIFY_INCHARGE --批量修改责任人：1、任务名称：ResourceName
+	// BATCH_MODIFY_PARAMETER --批量修改参数：1、任务名称：ResourceName
+	// BATCH_MODIFY_SCHEDULE --批量修改调度计划：1、任务名称：ResourceName
+	// BATCH_MODIFY_GROUPID --批量修改资源组：1、任务名称：ResourceName
+	// BATCH_MODIFY_CONFIG --批量修改高级配置：1、任务名称：ResourceName
+	// BATCH_MODIFY_SCHEDULE_PARAMETER --批量修改调度参数：1、任务名称：ResourceName
+	// FORM_CREATE_VERSION--模版提交
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobType *string `json:"JobType,omitnil,omitempty" name:"JobType"`
+
+	// CREATING("CREATING", "创建中"),
+	// INIT("INIT", "已被创建"),
+	// RUNNING("RUNNING", "运行中"),
+	// SUCCESS("SUCCESS", "成功"),
+	// FAIL("FAIL", "失败"),
+	// PART_SUCCESS("PART_SUCCESS", "部分成功"),
+	// PART_SUCCESS_WITH_ALARM("PART_SUCCESS_WITH_ALARM", "部分成功有告警"),
+	// SUCCESS_WITH_ALARM("SUCCESS_WITH_ALARM", "成功有告警"),
+	// UNKNOWN("UNKNOWN", "未知状态");
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobStatus *string `json:"JobStatus,omitnil,omitempty" name:"JobStatus"`
+
+	// 资源总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalResource *uint64 `json:"TotalResource,omitnil,omitempty" name:"TotalResource"`
+
+	// 批量提交是是否需要审批，其他的批量操作默认为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NeedApprove *bool `json:"NeedApprove,omitnil,omitempty" name:"NeedApprove"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListBatchDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *ListBatchDetailResponseParams `json:"Response"`
+}
+
+func (r *ListBatchDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListBatchDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

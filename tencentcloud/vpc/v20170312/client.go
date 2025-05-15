@@ -10392,7 +10392,7 @@ func NewDeleteVpcEndPointServiceResponse() (response *DeleteVpcEndPointServiceRe
 }
 
 // DeleteVpcEndPointService
-// 本接口（DeleteVpcEndPointService）用于删除终端节点服务。
+// 本接口（DeleteVpcEndPointService）用于删除终端节点服务。限制：当有终端节点关联到终端节点服务时，无法删除终端节点服务。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -10404,7 +10404,7 @@ func (c *Client) DeleteVpcEndPointService(request *DeleteVpcEndPointServiceReque
 }
 
 // DeleteVpcEndPointService
-// 本接口（DeleteVpcEndPointService）用于删除终端节点服务。
+// 本接口（DeleteVpcEndPointService）用于删除终端节点服务。限制：当有终端节点关联到终端节点服务时，无法删除终端节点服务。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"

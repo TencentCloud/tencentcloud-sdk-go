@@ -7071,6 +7071,8 @@ func NewModifyPublicNetworkSecurityPolicyResponse() (response *ModifyPublicNetwo
 // 修改pulsar专业版公网安全策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDEXISTPUBLICACCESSPOINTERROR = "FailedOperation.InvalidExistPublicAccessPointError"
+//  FAILEDOPERATION_INVALIDWHITELISTERROR = "FailedOperation.InvalidWhiteListError"
 //  INTERNALERROR = "InternalError"
 func (c *Client) ModifyPublicNetworkSecurityPolicy(request *ModifyPublicNetworkSecurityPolicyRequest) (response *ModifyPublicNetworkSecurityPolicyResponse, err error) {
     return c.ModifyPublicNetworkSecurityPolicyWithContext(context.Background(), request)
@@ -7080,6 +7082,8 @@ func (c *Client) ModifyPublicNetworkSecurityPolicy(request *ModifyPublicNetworkS
 // 修改pulsar专业版公网安全策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDEXISTPUBLICACCESSPOINTERROR = "FailedOperation.InvalidExistPublicAccessPointError"
+//  FAILEDOPERATION_INVALIDWHITELISTERROR = "FailedOperation.InvalidWhiteListError"
 //  INTERNALERROR = "InternalError"
 func (c *Client) ModifyPublicNetworkSecurityPolicyWithContext(ctx context.Context, request *ModifyPublicNetworkSecurityPolicyRequest) (response *ModifyPublicNetworkSecurityPolicyResponse, err error) {
     if request == nil {

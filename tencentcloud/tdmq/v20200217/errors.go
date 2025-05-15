@@ -92,6 +92,12 @@ const (
 	// 实例尚未就绪，请稍后再试。
 	FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 
+	// 存量公网禁止修改
+	FAILEDOPERATION_INVALIDEXISTPUBLICACCESSPOINTERROR = "FailedOperation.InvalidExistPublicAccessPointError"
+
+	// 参数不合法
+	FAILEDOPERATION_INVALIDWHITELISTERROR = "FailedOperation.InvalidWhiteListError"
+
 	// 最大消息超过1MB。
 	FAILEDOPERATION_MAXMESSAGESIZEERROR = "FailedOperation.MaxMessageSizeError"
 

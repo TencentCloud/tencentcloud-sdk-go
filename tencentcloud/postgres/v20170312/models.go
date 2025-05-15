@@ -9026,67 +9026,6 @@ func (r *OpenDBExtranetAccessResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-// Predefined struct for user
-type OpenServerlessDBExtranetAccessRequestParams struct {
-	// 实例的唯一标识符
-	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
-
-	// 实例名称
-	DBInstanceName *string `json:"DBInstanceName,omitnil,omitempty" name:"DBInstanceName"`
-}
-
-type OpenServerlessDBExtranetAccessRequest struct {
-	*tchttp.BaseRequest
-	
-	// 实例的唯一标识符
-	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
-
-	// 实例名称
-	DBInstanceName *string `json:"DBInstanceName,omitnil,omitempty" name:"DBInstanceName"`
-}
-
-func (r *OpenServerlessDBExtranetAccessRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *OpenServerlessDBExtranetAccessRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "DBInstanceId")
-	delete(f, "DBInstanceName")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenServerlessDBExtranetAccessRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type OpenServerlessDBExtranetAccessResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type OpenServerlessDBExtranetAccessResponse struct {
-	*tchttp.BaseResponse
-	Response *OpenServerlessDBExtranetAccessResponseParams `json:"Response"`
-}
-
-func (r *OpenServerlessDBExtranetAccessResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *OpenServerlessDBExtranetAccessResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ParamEntry struct {
 	// 参数名
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
