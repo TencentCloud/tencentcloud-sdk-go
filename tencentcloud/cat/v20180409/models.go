@@ -62,6 +62,9 @@ type CreateProbeTasksRequestParams struct {
 
 	// 供应商子账户同步标志
 	SubSyncFlag *int64 `json:"SubSyncFlag,omitnil,omitempty" name:"SubSyncFlag"`
+
+	// 创建者名称
+	RtxName *string `json:"RtxName,omitnil,omitempty" name:"RtxName"`
 }
 
 type CreateProbeTasksRequest struct {
@@ -107,6 +110,9 @@ type CreateProbeTasksRequest struct {
 
 	// 供应商子账户同步标志
 	SubSyncFlag *int64 `json:"SubSyncFlag,omitnil,omitempty" name:"SubSyncFlag"`
+
+	// 创建者名称
+	RtxName *string `json:"RtxName,omitnil,omitempty" name:"RtxName"`
 }
 
 func (r *CreateProbeTasksRequest) ToJsonString() string {
@@ -134,6 +140,7 @@ func (r *CreateProbeTasksRequest) FromJsonString(s string) error {
 	delete(f, "ClientNum")
 	delete(f, "NodeIpType")
 	delete(f, "SubSyncFlag")
+	delete(f, "RtxName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProbeTasksRequest has unknown keys!", "")
 	}

@@ -195,7 +195,7 @@ func NewAssociateTargetGroupsResponse() (response *AssociateTargetGroupsResponse
 //
 // - 四层监听器绑定旧版目标组需要监听器开启后端目标组。
 //
-// - 七层绑定目标组，数据结构 TargetGroupAssosication 中 LocationId 为必填项。
+// - 七层绑定目标组，数据结构 TargetGroupAssociation 中 LocationId 为必填项。
 //
 // - 负载均衡的 VPC 需要和目标组的 VPC 一致。
 //
@@ -220,7 +220,7 @@ func (c *Client) AssociateTargetGroups(request *AssociateTargetGroupsRequest) (r
 //
 // - 四层监听器绑定旧版目标组需要监听器开启后端目标组。
 //
-// - 七层绑定目标组，数据结构 TargetGroupAssosication 中 LocationId 为必填项。
+// - 七层绑定目标组，数据结构 TargetGroupAssociation 中 LocationId 为必填项。
 //
 // - 负载均衡的 VPC 需要和目标组的 VPC 一致。
 //

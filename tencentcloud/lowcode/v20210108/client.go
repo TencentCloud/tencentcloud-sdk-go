@@ -117,6 +117,7 @@ func NewDeleteKnowledgeDocumentSetResponse() (response *DeleteKnowledgeDocumentS
 // 删除知识库下文档
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DOCPARSINGNOTDELETE = "FailedOperation.DocParsingNotDelete"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteKnowledgeDocumentSet(request *DeleteKnowledgeDocumentSetRequest) (response *DeleteKnowledgeDocumentSetResponse, err error) {
     return c.DeleteKnowledgeDocumentSetWithContext(context.Background(), request)
@@ -126,6 +127,7 @@ func (c *Client) DeleteKnowledgeDocumentSet(request *DeleteKnowledgeDocumentSetR
 // 删除知识库下文档
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DOCPARSINGNOTDELETE = "FailedOperation.DocParsingNotDelete"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteKnowledgeDocumentSetWithContext(ctx context.Context, request *DeleteKnowledgeDocumentSetRequest) (response *DeleteKnowledgeDocumentSetResponse, err error) {
     if request == nil {

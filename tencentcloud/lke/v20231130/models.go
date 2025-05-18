@@ -6193,7 +6193,7 @@ func (r *ListAppKnowledgeDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListAppRequestParams struct {
-	// 应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classifys-知识标签提取
+	// 应用类型；knowledge_qa - 知识问答管理 
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 
 	// 每页数目，整型
@@ -6212,7 +6212,7 @@ type ListAppRequestParams struct {
 type ListAppRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classifys-知识标签提取
+	// 应用类型；knowledge_qa - 知识问答管理 
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 
 	// 每页数目，整型

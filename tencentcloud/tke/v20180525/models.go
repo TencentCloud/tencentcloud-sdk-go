@@ -13879,10 +13879,10 @@ type EksCi struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EipAddress *string `json:"EipAddress,omitnil,omitempty" name:"EipAddress"`
 
-	// EKS Cotainer Instance Id
+	// EKS Container Instance Id
 	EksCiId *string `json:"EksCiId,omitnil,omitempty" name:"EksCiId"`
 
-	// EKS Cotainer Instance Name
+	// EKS Container Instance Name
 	EksCiName *string `json:"EksCiName,omitnil,omitempty" name:"EksCiName"`
 
 	// 数据卷信息

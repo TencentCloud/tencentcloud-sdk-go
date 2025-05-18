@@ -23,6 +23,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 文档正在解析中不允许删除
+	FAILEDOPERATION_DOCPARSINGNOTDELETE = "FailedOperation.DocParsingNotDelete"
+
 	// 低码用户不存在。
 	FAILEDOPERATION_LOWCODEUSERNOTEXIST = "FailedOperation.LowcodeUserNotExist"
 

@@ -698,13 +698,13 @@ type CreateAutoScalingGroupFromInstanceRequestParams struct {
 	// 实例ID。可通过登录[控制台](https://console.cloud.tencent.com/cvm/index)或调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 最小实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// 最小实例数，取值范围为 [0,2000]，同时需满足 MaxSize >= DesiredCapacity >= MinSize 。
 	MinSize *int64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
-	// 最大实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// 最大实例数，取值范围为 [0,2000]，同时需满足 MaxSize >= DesiredCapacity >= MinSize 。
 	MaxSize *int64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 期望实例数，大小介于最小实例数和最大实例数之间。不传入时默认值等于最小值。
+	// 期望实例数，取值范围 [0,2000]，默认值等于当前 MinSize，同时需满足 MaxSize >= DesiredCapacity >= MinSize 。
 	DesiredCapacity *int64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
 
 	// 是否继承实例标签，默认值为False
@@ -720,13 +720,13 @@ type CreateAutoScalingGroupFromInstanceRequest struct {
 	// 实例ID。可通过登录[控制台](https://console.cloud.tencent.com/cvm/index)或调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) ，取返回信息中的 `InstanceId` 获取实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 最小实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// 最小实例数，取值范围为 [0,2000]，同时需满足 MaxSize >= DesiredCapacity >= MinSize 。
 	MinSize *int64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
-	// 最大实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// 最大实例数，取值范围为 [0,2000]，同时需满足 MaxSize >= DesiredCapacity >= MinSize 。
 	MaxSize *int64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 期望实例数，大小介于最小实例数和最大实例数之间。不传入时默认值等于最小值。
+	// 期望实例数，取值范围 [0,2000]，默认值等于当前 MinSize，同时需满足 MaxSize >= DesiredCapacity >= MinSize 。
 	DesiredCapacity *int64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
 
 	// 是否继承实例标签，默认值为False
@@ -790,10 +790,10 @@ type CreateAutoScalingGroupRequestParams struct {
 	// 启动配置ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 或调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。
 	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitnil,omitempty" name:"LaunchConfigurationId"`
 
-	// 最大实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// 最大实例数，取值范围为 [0,2000]，同时需满足 MaxSize >= DesiredCapacity >= MinSize 。
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 最小实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// 最小实例数，取值范围为 [0,2000]，同时需满足 MaxSize >= DesiredCapacity >= MinSize 。
 	MinSize *uint64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
 	// 私有网络ID。有效的VpcId可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc)查询；也可以调用接口 [DescribeVpc](https://cloud.tencent.com/document/api/215/15778) ，从接口返回中的VpcId字段获取。
@@ -802,7 +802,7 @@ type CreateAutoScalingGroupRequestParams struct {
 	// 默认冷却时间，单位秒，默认值为300。取值范围为 [0,3600]。
 	DefaultCooldown *uint64 `json:"DefaultCooldown,omitnil,omitempty" name:"DefaultCooldown"`
 
-	// 期望实例数，取值范围 [0,2000]，默认值为最小值。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// 期望实例数，取值范围 [0,2000]，默认值等于当前 MinSize，同时需满足 MaxSize >= DesiredCapacity >= MinSize 。
 	DesiredCapacity *uint64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
 
 	// 传统负载均衡器ID列表，目前长度上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
@@ -895,10 +895,10 @@ type CreateAutoScalingGroupRequest struct {
 	// 启动配置ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 或调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。
 	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitnil,omitempty" name:"LaunchConfigurationId"`
 
-	// 最大实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// 最大实例数，取值范围为 [0,2000]，同时需满足 MaxSize >= DesiredCapacity >= MinSize 。
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 
-	// 最小实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// 最小实例数，取值范围为 [0,2000]，同时需满足 MaxSize >= DesiredCapacity >= MinSize 。
 	MinSize *uint64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
 	// 私有网络ID。有效的VpcId可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc)查询；也可以调用接口 [DescribeVpc](https://cloud.tencent.com/document/api/215/15778) ，从接口返回中的VpcId字段获取。
@@ -907,7 +907,7 @@ type CreateAutoScalingGroupRequest struct {
 	// 默认冷却时间，单位秒，默认值为300。取值范围为 [0,3600]。
 	DefaultCooldown *uint64 `json:"DefaultCooldown,omitnil,omitempty" name:"DefaultCooldown"`
 
-	// 期望实例数，取值范围 [0,2000]，默认值为最小值。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// 期望实例数，取值范围 [0,2000]，默认值等于当前 MinSize，同时需满足 MaxSize >= DesiredCapacity >= MinSize 。
 	DesiredCapacity *uint64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
 
 	// 传统负载均衡器ID列表，目前长度上限为20，LoadBalancerIds 和 ForwardLoadBalancers 二者同时最多只能指定一个。可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/product/214/30685) 接口获取。
@@ -4522,13 +4522,13 @@ type ModifyDesiredCapacityRequestParams struct {
 	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 期望实例数，取值范围 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// 期望实例数，取值范围 [0,2000]，同时需满足 MaxSize >= DesiredCapacity >= MinSize 。
 	DesiredCapacity *uint64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
 
-	// 最小实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// 最小实例数，取值范围为 [0,2000]，同时需满足 MaxSize >= DesiredCapacity >= MinSize 。
 	MinSize *uint64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
-	// 最大实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// 最大实例数，取值范围为 [0,2000]，同时需满足 MaxSize >= DesiredCapacity >= MinSize 。
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 }
 
@@ -4538,13 +4538,13 @@ type ModifyDesiredCapacityRequest struct {
 	// 伸缩组ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil,omitempty" name:"AutoScalingGroupId"`
 
-	// 期望实例数，取值范围 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// 期望实例数，取值范围 [0,2000]，同时需满足 MaxSize >= DesiredCapacity >= MinSize 。
 	DesiredCapacity *uint64 `json:"DesiredCapacity,omitnil,omitempty" name:"DesiredCapacity"`
 
-	// 最小实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// 最小实例数，取值范围为 [0,2000]，同时需满足 MaxSize >= DesiredCapacity >= MinSize 。
 	MinSize *uint64 `json:"MinSize,omitnil,omitempty" name:"MinSize"`
 
-	// 最大实例数，取值范围为0-2000。需满足最大值大于等于期望值，期望值大于等于最小值。
+	// 最大实例数，取值范围为 [0,2000]，同时需满足 MaxSize >= DesiredCapacity >= MinSize 。
 	MaxSize *uint64 `json:"MaxSize,omitnil,omitempty" name:"MaxSize"`
 }
 
