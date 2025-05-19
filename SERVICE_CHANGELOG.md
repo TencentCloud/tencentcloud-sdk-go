@@ -1,10 +1,10 @@
-# Release v1.0.1167
+# Release v1.0.1168
 
-## 云拨测(cat) 版本：2018-04-09
+## 媒体处理(mps) 版本：2019-06-12
 
-### 第 23 次发布
+### 第 122 次发布
 
-发布时间：2025-05-19 01:12:56
+发布时间：2025-05-19 17:27:56
 
 本次发布包含了以下内容：
 
@@ -12,37 +12,30 @@
 
 修改接口：
 
-* [CreateProbeTasks](https://cloud.tencent.com/document/api/280/66213)
+* [BatchProcessMedia](https://cloud.tencent.com/document/api/862/118508)
 
-	* 新增入参：RtxName
-
-
+	* <font color="#dd0000">**删除入参**：</font>SessionId
 
 
-## 边缘安全加速平台(teo) 版本：2022-09-01
+### 第 121 次发布
 
-### 第 103 次发布
-
-发布时间：2025-05-19 02:03:56
+发布时间：2025-05-19 10:42:38
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增接口：
+
+* [BatchProcessMedia](https://cloud.tencent.com/document/api/862/118508)
+* [DescribeBatchTaskDetail](https://cloud.tencent.com/document/api/862/118510)
+* [DescribeImageTaskDetail](https://cloud.tencent.com/document/api/862/118509)
+
 新增数据结构：
 
-* [VaryParameters](https://cloud.tencent.com/document/api/1552/80721#VaryParameters)
-
-修改数据结构：
-
-* [RuleEngineAction](https://cloud.tencent.com/document/api/1552/80721#RuleEngineAction)
-
-	* 新增成员：VaryParameters
-
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-01-06
+* [BatchSmartSubtitlesResult](https://cloud.tencent.com/document/api/862/37615#BatchSmartSubtitlesResult)
+* [BatchSubTaskResult](https://cloud.tencent.com/document/api/862/37615#BatchSubTaskResult)
+* [SmartSubtitleTaskBatchOutput](https://cloud.tencent.com/document/api/862/37615#SmartSubtitleTaskBatchOutput)
 
 
 

@@ -2400,6 +2400,139 @@ func (r *BatchDeleteStreamLinkFlowResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type BatchProcessMediaRequestParams struct {
+	// 媒体处理的文件输入信息。
+	InputInfo []*MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
+
+	// 媒体处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。
+	// 注意：当InputInfo.Type为URL时，该参数是必填项
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
+
+	// 媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
+	// 如果不填，表示与 InputInfo 中文件所在的目录一致。
+	OutputDir *string `json:"OutputDir,omitnil,omitempty" name:"OutputDir"`
+
+	// 智能字幕
+	SmartSubtitlesTask *SmartSubtitlesTaskInput `json:"SmartSubtitlesTask,omitnil,omitempty" name:"SmartSubtitlesTask"`
+
+	// 任务的事件通知信息，不填代表不获取事件通知。
+	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
+
+	// 任务流的优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
+	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
+
+	// 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 是否跳过元信息获取，可选值： 
+	// 0：表示不跳过 
+	// 1：表示跳过 
+	// 默认值：0	
+	SkipMateData *int64 `json:"SkipMateData,omitnil,omitempty" name:"SkipMateData"`
+}
+
+type BatchProcessMediaRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体处理的文件输入信息。
+	InputInfo []*MediaInputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
+
+	// 媒体处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。
+	// 注意：当InputInfo.Type为URL时，该参数是必填项
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
+
+	// 媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
+	// 如果不填，表示与 InputInfo 中文件所在的目录一致。
+	OutputDir *string `json:"OutputDir,omitnil,omitempty" name:"OutputDir"`
+
+	// 智能字幕
+	SmartSubtitlesTask *SmartSubtitlesTaskInput `json:"SmartSubtitlesTask,omitnil,omitempty" name:"SmartSubtitlesTask"`
+
+	// 任务的事件通知信息，不填代表不获取事件通知。
+	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
+
+	// 任务流的优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
+	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
+
+	// 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 是否跳过元信息获取，可选值： 
+	// 0：表示不跳过 
+	// 1：表示跳过 
+	// 默认值：0	
+	SkipMateData *int64 `json:"SkipMateData,omitnil,omitempty" name:"SkipMateData"`
+}
+
+func (r *BatchProcessMediaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchProcessMediaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InputInfo")
+	delete(f, "OutputStorage")
+	delete(f, "OutputDir")
+	delete(f, "SmartSubtitlesTask")
+	delete(f, "TaskNotifyConfig")
+	delete(f, "TasksPriority")
+	delete(f, "SessionContext")
+	delete(f, "ResourceId")
+	delete(f, "SkipMateData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchProcessMediaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchProcessMediaResponseParams struct {
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BatchProcessMediaResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchProcessMediaResponseParams `json:"Response"`
+}
+
+func (r *BatchProcessMediaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchProcessMediaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchSmartSubtitlesResult struct {
+	// 智能字幕任务输入信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Input *SmartSubtitleTaskResultInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 智能字幕输出信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Outputs []*SmartSubtitleTaskBatchOutput `json:"Outputs,omitnil,omitempty" name:"Outputs"`
+}
+
+// Predefined struct for user
 type BatchStartStreamLinkFlowRequestParams struct {
 	// EventId。
 	EventId *string `json:"EventId,omitnil,omitempty" name:"EventId"`
@@ -2519,6 +2652,20 @@ func (r *BatchStopStreamLinkFlowResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *BatchStopStreamLinkFlowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type BatchSubTaskResult struct {
+	// 批量任务输入信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputInfos []*MediaInputInfo `json:"InputInfos,omitnil,omitempty" name:"InputInfos"`
+
+	// 原始视频的元信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Metadatas []*MediaMetaData `json:"Metadatas,omitnil,omitempty" name:"Metadatas"`
+
+	// 智能字幕任务的执行结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SmartSubtitlesTaskResult *BatchSmartSubtitlesResult `json:"SmartSubtitlesTaskResult,omitnil,omitempty" name:"SmartSubtitlesTaskResult"`
 }
 
 type ClassificationConfigureInfo struct {
@@ -7878,6 +8025,102 @@ func (r *DescribeAsrHotwordsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBatchTaskDetailRequestParams struct {
+	// 视频处理任务的任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeBatchTaskDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 视频处理任务的任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeBatchTaskDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBatchTaskDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBatchTaskDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBatchTaskDetailResponseParams struct {
+	// 任务类型，目前取值有：
+	// <li>BatchTask：视频工作流批量处理任务。</li>
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 任务状态，取值：
+	// <li>WAITING：等待中；</li>
+	// <li>PROCESSING：处理中；</li>
+	// <li>FINISH：已完成。</li>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务的创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitnil,omitempty" name:"BeginProcessTime"`
+
+	// 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// 媒体处理任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 视频处理任务信息，仅当 TaskType 为 BatchTask，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchTaskResult *BatchSubTaskResult `json:"BatchTaskResult,omitnil,omitempty" name:"BatchTaskResult"`
+
+	// 任务的事件通知信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
+
+	// 任务流的优先级，取值范围为 [-10, 10]。
+	TasksPriority *int64 `json:"TasksPriority,omitnil,omitempty" name:"TasksPriority"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长50个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长1000个字符。
+	SessionContext *string `json:"SessionContext,omitnil,omitempty" name:"SessionContext"`
+
+	// 扩展信息字段，仅用于特定场景。
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBatchTaskDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBatchTaskDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeBatchTaskDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBatchTaskDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeContentReviewTemplatesRequestParams struct {
 	// 智能审核模板唯一标识过滤条件，数组长度限制：50。
 	Definitions []*int64 `json:"Definitions,omitnil,omitempty" name:"Definitions"`
@@ -8185,6 +8428,81 @@ func (r *DescribeImageSpriteTemplatesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeImageSpriteTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImageTaskDetailRequestParams struct {
+	// 图片处理任务的任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeImageTaskDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片处理任务的任务 ID。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeImageTaskDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageTaskDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageTaskDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImageTaskDetailResponseParams struct {
+	// 任务类型，目前取值有：
+	// <li>WorkflowTask：工作流处理任务。</li>
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskType *string `json:"TaskType,omitnil,omitempty" name:"TaskType"`
+
+	// 任务状态，取值：
+	// <li>WAITING：等待中；</li>
+	// <li>PROCESSING：处理中；</li>
+	// <li>FINISH：已完成。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务的创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeImageTaskDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeImageTaskDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeImageTaskDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageTaskDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -18577,6 +18895,28 @@ type SmartSubtitleTaskAsrFullTextSegmentItem struct {
 	// 字词时间戳信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Wordlist []*WordResult `json:"Wordlist,omitnil,omitempty" name:"Wordlist"`
+}
+
+type SmartSubtitleTaskBatchOutput struct {
+	// 任务进度。
+	Progress *uint64 `json:"Progress,omitnil,omitempty" name:"Progress"`
+
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 翻译任务输出信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransTextTask *SmartSubtitleTaskTransTextResultOutput `json:"TransTextTask,omitnil,omitempty" name:"TransTextTask"`
+
+	// 语音全文识别任务输出信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrFullTextTask *SmartSubtitleTaskAsrFullTextResultOutput `json:"AsrFullTextTask,omitnil,omitempty" name:"AsrFullTextTask"`
 }
 
 type SmartSubtitleTaskResultInput struct {

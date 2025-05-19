@@ -100,6 +100,71 @@ func (c *Client) BatchDeleteStreamLinkFlowWithContext(ctx context.Context, reque
     return
 }
 
+func NewBatchProcessMediaRequest() (request *BatchProcessMediaRequest) {
+    request = &BatchProcessMediaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "BatchProcessMedia")
+    
+    
+    return
+}
+
+func NewBatchProcessMediaResponse() (response *BatchProcessMediaResponse) {
+    response = &BatchProcessMediaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BatchProcessMedia
+// 对 URL视频链接批量发起处理任务，功能包括：
+//
+// 智能字幕（语音全文、语音热词、语音翻译）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+func (c *Client) BatchProcessMedia(request *BatchProcessMediaRequest) (response *BatchProcessMediaResponse, err error) {
+    return c.BatchProcessMediaWithContext(context.Background(), request)
+}
+
+// BatchProcessMedia
+// 对 URL视频链接批量发起处理任务，功能包括：
+//
+// 智能字幕（语音全文、语音热词、语音翻译）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+func (c *Client) BatchProcessMediaWithContext(ctx context.Context, request *BatchProcessMediaRequest) (response *BatchProcessMediaResponse, err error) {
+    if request == nil {
+        request = NewBatchProcessMediaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchProcessMedia require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchProcessMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBatchStartStreamLinkFlowRequest() (request *BatchStartStreamLinkFlowRequest) {
     request = &BatchStartStreamLinkFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3473,6 +3538,63 @@ func (c *Client) DescribeAsrHotwordsListWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeBatchTaskDetailRequest() (request *DescribeBatchTaskDetailRequest) {
+    request = &DescribeBatchTaskDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeBatchTaskDetail")
+    
+    
+    return
+}
+
+func NewDescribeBatchTaskDetailResponse() (response *DescribeBatchTaskDetailResponse) {
+    response = &DescribeBatchTaskDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBatchTaskDetail
+// 通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询7天之内提交的任务）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeBatchTaskDetail(request *DescribeBatchTaskDetailRequest) (response *DescribeBatchTaskDetailResponse, err error) {
+    return c.DescribeBatchTaskDetailWithContext(context.Background(), request)
+}
+
+// DescribeBatchTaskDetail
+// 通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询7天之内提交的任务）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeBatchTaskDetailWithContext(ctx context.Context, request *DescribeBatchTaskDetailRequest) (response *DescribeBatchTaskDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeBatchTaskDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBatchTaskDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBatchTaskDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeContentReviewTemplatesRequest() (request *DescribeContentReviewTemplatesRequest) {
     request = &DescribeContentReviewTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3632,6 +3754,63 @@ func (c *Client) DescribeImageSpriteTemplatesWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeImageSpriteTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageTaskDetailRequest() (request *DescribeImageTaskDetailRequest) {
+    request = &DescribeImageTaskDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "DescribeImageTaskDetail")
+    
+    
+    return
+}
+
+func NewDescribeImageTaskDetailResponse() (response *DescribeImageTaskDetailResponse) {
+    response = &DescribeImageTaskDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeImageTaskDetail
+// 通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询7天之内提交的任务）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeImageTaskDetail(request *DescribeImageTaskDetailRequest) (response *DescribeImageTaskDetailResponse, err error) {
+    return c.DescribeImageTaskDetailWithContext(context.Background(), request)
+}
+
+// DescribeImageTaskDetail
+// 通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询7天之内提交的任务）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeImageTaskDetailWithContext(ctx context.Context, request *DescribeImageTaskDetailRequest) (response *DescribeImageTaskDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageTaskDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageTaskDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageTaskDetailResponse()
     err = c.Send(request, response)
     return
 }
