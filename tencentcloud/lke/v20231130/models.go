@@ -20,6 +20,28 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AICallConfig struct {
+	// 启用语音互动功能
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableVoiceInteract *bool `json:"EnableVoiceInteract,omitnil,omitempty" name:"EnableVoiceInteract"`
+
+	// 启用语音通话
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableVoiceCall *bool `json:"EnableVoiceCall,omitnil,omitempty" name:"EnableVoiceCall"`
+
+	// 启用数智人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableDigitalHuman *bool `json:"EnableDigitalHuman,omitnil,omitempty" name:"EnableDigitalHuman"`
+
+	// 音色配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Voice *VoiceConfig `json:"Voice,omitnil,omitempty" name:"Voice"`
+
+	// 数智人配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DigitalHuman *DigitalHumanConfig `json:"DigitalHuman,omitnil,omitempty" name:"DigitalHuman"`
+}
+
 type AgentDebugInfo struct {
 	// 工具、大模型的输入信息，json
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -82,6 +104,10 @@ type AgentProcedure struct {
 	// 挂号agent
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetAgentName *string `json:"TargetAgentName,omitnil,omitempty" name:"TargetAgentName"`
+
+	// Agent的图标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentIcon *string `json:"AgentIcon,omitnil,omitempty" name:"AgentIcon"`
 }
 
 type AgentProcedureDebugging struct {
@@ -104,6 +130,18 @@ type AgentProcedureDebugging struct {
 	// 具体的参考来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	References []*AgentReference `json:"References,omitnil,omitempty" name:"References"`
+
+	// 展示正在执行的状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisplayStatus *string `json:"DisplayStatus,omitnil,omitempty" name:"DisplayStatus"`
+
+	// 云桌面的URL地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SandboxUrl *string `json:"SandboxUrl,omitnil,omitempty" name:"SandboxUrl"`
+
+	// 云桌面里面通过浏览器打开的URL地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisplayUrl *string `json:"DisplayUrl,omitnil,omitempty" name:"DisplayUrl"`
 }
 
 type AgentReference struct {
@@ -180,6 +218,10 @@ type AgentThought struct {
 	// TraceId
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TraceId *string `json:"TraceId,omitnil,omitempty" name:"TraceId"`
+
+	// 文件信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Files []*FileInfo `json:"Files,omitnil,omitempty" name:"Files"`
 }
 
 type ApiVarAttrInfo struct {
@@ -1693,6 +1735,10 @@ type Credentials struct {
 	// 临时证书密钥Key
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TmpSecretKey *string `json:"TmpSecretKey,omitnil,omitempty" name:"TmpSecretKey"`
+
+	// 临时证书appid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
 }
 
 // Predefined struct for user
@@ -4019,6 +4065,17 @@ func (r *DescribeUnsatisfiedReplyContextResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DigitalHumanConfig struct {
+	// 数智人资产key
+	AssetKey *string `json:"AssetKey,omitnil,omitempty" name:"AssetKey"`
+
+	// 数智人名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 图像
+	Avatar *string `json:"Avatar,omitnil,omitempty" name:"Avatar"`
+}
+
 type DocFilterFlag struct {
 	// 标识位
 	Flag *string `json:"Flag,omitnil,omitempty" name:"Flag"`
@@ -4404,6 +4461,10 @@ type FileInfo struct {
 	// 解析后返回的DocID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocId *string `json:"DocId,omitnil,omitempty" name:"DocId"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 }
 
 type Filters struct {
@@ -5904,6 +5965,10 @@ type KnowledgeQaConfig struct {
 	// 是否开启图文检索
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageTextRetrieval *bool `json:"ImageTextRetrieval,omitnil,omitempty" name:"ImageTextRetrieval"`
+
+	// 配置语音通话参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AiCall *AICallConfig `json:"AiCall,omitnil,omitempty" name:"AiCall"`
 }
 
 type KnowledgeQaOutput struct {
@@ -6016,6 +6081,9 @@ type KnowledgeQaSingleWorkflow struct {
 
 	// 工作流是否启用
 	IsEnable *bool `json:"IsEnable,omitnil,omitempty" name:"IsEnable"`
+
+	// 是否开启异步调用工作流
+	AsyncWorkflow *bool `json:"AsyncWorkflow,omitnil,omitempty" name:"AsyncWorkflow"`
 }
 
 type KnowledgeSummary struct {
@@ -8044,6 +8112,9 @@ type ModelInfo struct {
 
 	// 是否专属并发模型
 	IsExclusive *bool `json:"IsExclusive,omitnil,omitempty" name:"IsExclusive"`
+
+	// 模型支持智能通话效果
+	SupportAiCallStatus *uint64 `json:"SupportAiCallStatus,omitnil,omitempty" name:"SupportAiCallStatus"`
 }
 
 type ModelParameter struct {
@@ -9022,6 +9093,10 @@ type MsgRecord struct {
 	// 扩展信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraInfo *ExtraInfo `json:"ExtraInfo,omitnil,omitempty" name:"ExtraInfo"`
+
+	// 工作流信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkFlow *WorkflowInfo `json:"WorkFlow,omitnil,omitempty" name:"WorkFlow"`
 }
 
 type MsgRecordReference struct {
@@ -9066,7 +9141,7 @@ type PluginToolReqParam struct {
 	// 参数描述
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
 
-	// 参数类型，0:string, 1:int, 2:float，3:bool 4:object 5:array_string, 6:array_int, 7:array_float, 8:array_bool, 9:array_object
+	// 参数类型，0:string, 1:int, 2:float，3:bool 4:object 5:array_string, 6:array_int, 7:array_float, 8:array_bool, 9:array_object, 99:null, 100:upspecified
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 参数是否必填
@@ -9080,6 +9155,12 @@ type PluginToolReqParam struct {
 
 	// 插件参数配置是否隐藏不可见，true-隐藏不可见，false-可见
 	GlobalHidden *bool `json:"GlobalHidden,omitnil,omitempty" name:"GlobalHidden"`
+
+	// OneOf类型参数
+	OneOf []*PluginToolReqParam `json:"OneOf,omitnil,omitempty" name:"OneOf"`
+
+	// AnyOf类型参数
+	AnyOf []*PluginToolReqParam `json:"AnyOf,omitnil,omitempty" name:"AnyOf"`
 }
 
 type Polygon struct {
@@ -9150,6 +9231,9 @@ type ProcedureDebugging struct {
 	// Agent调试信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Agent *AgentDebugInfo `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 自定义参数
+	CustomVariables []*string `json:"CustomVariables,omitnil,omitempty" name:"CustomVariables"`
 }
 
 type QACate struct {
@@ -10855,6 +10939,20 @@ func (r *VerifyQAResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type VoiceConfig struct {
+	// 公有云音色id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoiceType *uint64 `json:"VoiceType,omitnil,omitempty" name:"VoiceType"`
+
+	// 音色key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimbreKey *string `json:"TimbreKey,omitnil,omitempty" name:"TimbreKey"`
+
+	// 音色名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VoiceName *string `json:"VoiceName,omitnil,omitempty" name:"VoiceName"`
+}
+
 type WordRecognizeInfo struct {
 	// 输入文件的页码数
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -10881,6 +10979,44 @@ type WorkFlowSummary struct {
 	// 节点信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RunNodes []*WorkflowRunNodeInfo `json:"RunNodes,omitnil,omitempty" name:"RunNodes"`
+
+	// 选项卡
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OptionCards []*string `json:"OptionCards,omitnil,omitempty" name:"OptionCards"`
+
+	// 多气泡的输出结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Outputs []*string `json:"Outputs,omitnil,omitempty" name:"Outputs"`
+
+	// 工作流发布时间，unix时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowReleaseTime *string `json:"WorkflowReleaseTime,omitnil,omitempty" name:"WorkflowReleaseTime"`
+}
+
+type WorkflowInfo struct {
+	// 工作流ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 工作流名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 工作流运行ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
+
+	// 选项卡
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OptionCards []*string `json:"OptionCards,omitnil,omitempty" name:"OptionCards"`
+
+	// 多气泡的输出结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Outputs []*string `json:"Outputs,omitnil,omitempty" name:"Outputs"`
+
+	// 工作流发布时间，unix时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowReleaseTime *string `json:"WorkflowReleaseTime,omitnil,omitempty" name:"WorkflowReleaseTime"`
 }
 
 type WorkflowRunNodeInfo struct {

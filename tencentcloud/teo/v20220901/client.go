@@ -452,6 +452,8 @@ func NewCreateAliasDomainResponse() (response *CreateAliasDomainResponse) {
 // CreateAliasDomain
 // 创建别称域名。
 //
+// 该功能仅企业版套餐支持，并且该功能当前仍在内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service?from=connect-us)。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
@@ -486,6 +488,8 @@ func (c *Client) CreateAliasDomain(request *CreateAliasDomainRequest) (response 
 
 // CreateAliasDomain
 // 创建别称域名。
+//
+// 该功能仅企业版套餐支持，并且该功能当前仍在内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service?from=connect-us)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2667,6 +2671,8 @@ func NewDeleteAliasDomainResponse() (response *DeleteAliasDomainResponse) {
 // DeleteAliasDomain
 // 删除别称域名。
 //
+// 该功能仅企业版套餐支持，并且该功能当前仍在内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service?from=connect-us)。
+//
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  OPERATIONDENIED = "OperationDenied"
@@ -2678,6 +2684,8 @@ func (c *Client) DeleteAliasDomain(request *DeleteAliasDomainRequest) (response 
 
 // DeleteAliasDomain
 // 删除别称域名。
+//
+// 该功能仅企业版套餐支持，并且该功能当前仍在内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service?from=connect-us)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3861,6 +3869,8 @@ func NewDescribeAliasDomainsResponse() (response *DescribeAliasDomainsResponse) 
 // DescribeAliasDomains
 // 查询别称域名信息列表。
 //
+// 该功能仅企业版套餐支持，并且该功能当前仍在内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service?from=connect-us)。
+//
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
@@ -3873,6 +3883,8 @@ func (c *Client) DescribeAliasDomains(request *DescribeAliasDomainsRequest) (res
 
 // DescribeAliasDomains
 // 查询别称域名信息列表。
+//
+// 该功能仅企业版套餐支持，并且该功能当前仍在内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service?from=connect-us)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -7248,6 +7260,8 @@ func NewModifyAliasDomainResponse() (response *ModifyAliasDomainResponse) {
 // ModifyAliasDomain
 // 修改别称域名。
 //
+// 该功能仅企业版套餐支持，并且该功能当前仍在内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service?from=connect-us)。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
@@ -7259,6 +7273,8 @@ func (c *Client) ModifyAliasDomain(request *ModifyAliasDomainRequest) (response 
 
 // ModifyAliasDomain
 // 修改别称域名。
+//
+// 该功能仅企业版套餐支持，并且该功能当前仍在内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service?from=connect-us)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7303,6 +7319,8 @@ func NewModifyAliasDomainStatusResponse() (response *ModifyAliasDomainStatusResp
 // ModifyAliasDomainStatus
 // 修改别称域名状态。
 //
+// 该功能仅企业版套餐支持，并且该功能当前仍在内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service?from=connect-us)。
+//
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  OPERATIONDENIED = "OperationDenied"
@@ -7313,6 +7331,8 @@ func (c *Client) ModifyAliasDomainStatus(request *ModifyAliasDomainStatusRequest
 
 // ModifyAliasDomainStatus
 // 修改别称域名状态。
+//
+// 该功能仅企业版套餐支持，并且该功能当前仍在内测中，如需使用，请[联系我们](https://cloud.tencent.com/online-service?from=connect-us)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

@@ -4781,10 +4781,10 @@ func (r *CreateDirectConnectGatewayResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowLogRequestParams struct {
-	// 流日志实例名字。长度为不超过60个字节。
+	// 流日志实例名称。长度为不超过60个字符。
 	FlowLogName *string `json:"FlowLogName,omitnil,omitempty" name:"FlowLogName"`
 
-	// 流日志所属资源类型，VPC(私有网络)，SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。当选择VPC， SUBNET，CCN，DCG时，请通过工单加入白名单。
+	// 流日志所属资源类型，VPC（私有网络），SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。当选择VPC，SUBNET，CCN，DCG时，请通过工单加入白名单。
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 资源唯一ID。
@@ -4796,18 +4796,18 @@ type CreateFlowLogRequestParams struct {
 	// 私用网络唯一ID。当ResourceType为CCN时不填，其他类型必填。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 流日志实例描述。
+	// 流日志实例描述。长度不超过512个字符。
 	FlowLogDescription *string `json:"FlowLogDescription,omitnil,omitempty" name:"FlowLogDescription"`
 
 	// 流日志存储ID（cls的日志主题ID，
-	// 可通过[DescribeTopics](https://cloud.tencent.com/document/api/1179/46086)接口获取。
+	// 可通过[DescribeTopics](https://cloud.tencent.com/document/product/614/56454)接口获取。
 	// ）。当StorageType为cls时，CloudLogId为必选。
 	CloudLogId *string `json:"CloudLogId,omitnil,omitempty" name:"CloudLogId"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 消费端类型：cls、ckafka。默认值cls。当选择kafka时，请通过工单加入白名单。
+	// 消费端类型：cls、ckafka。默认值cls。当选择ckafka时，请通过工单加入白名单。
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
 	// 流日志消费端信息，当消费端类型为ckafka时，必填。
@@ -4820,10 +4820,10 @@ type CreateFlowLogRequestParams struct {
 type CreateFlowLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 流日志实例名字。长度为不超过60个字节。
+	// 流日志实例名称。长度为不超过60个字符。
 	FlowLogName *string `json:"FlowLogName,omitnil,omitempty" name:"FlowLogName"`
 
-	// 流日志所属资源类型，VPC(私有网络)，SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。当选择VPC， SUBNET，CCN，DCG时，请通过工单加入白名单。
+	// 流日志所属资源类型，VPC（私有网络），SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。当选择VPC，SUBNET，CCN，DCG时，请通过工单加入白名单。
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 资源唯一ID。
@@ -4835,18 +4835,18 @@ type CreateFlowLogRequest struct {
 	// 私用网络唯一ID。当ResourceType为CCN时不填，其他类型必填。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 流日志实例描述。
+	// 流日志实例描述。长度不超过512个字符。
 	FlowLogDescription *string `json:"FlowLogDescription,omitnil,omitempty" name:"FlowLogDescription"`
 
 	// 流日志存储ID（cls的日志主题ID，
-	// 可通过[DescribeTopics](https://cloud.tencent.com/document/api/1179/46086)接口获取。
+	// 可通过[DescribeTopics](https://cloud.tencent.com/document/product/614/56454)接口获取。
 	// ）。当StorageType为cls时，CloudLogId为必选。
 	CloudLogId *string `json:"CloudLogId,omitnil,omitempty" name:"CloudLogId"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 消费端类型：cls、ckafka。默认值cls。当选择kafka时，请通过工单加入白名单。
+	// 消费端类型：cls、ckafka。默认值cls。当选择ckafka时，请通过工单加入白名单。
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
 	// 流日志消费端信息，当消费端类型为ckafka时，必填。
@@ -14485,10 +14485,10 @@ type DescribeFlowLogsRequestParams struct {
 	// 流日志唯一ID。可通过[CreateFlowLog](https://cloud.tencent.com/document/product/215/35015)接口创建。
 	FlowLogId *string `json:"FlowLogId,omitnil,omitempty" name:"FlowLogId"`
 
-	// 流日志实例名字。
+	// 流日志实例名称。长度不超过60个字符。
 	FlowLogName *string `json:"FlowLogName,omitnil,omitempty" name:"FlowLogName"`
 
-	// 流日志所属资源类型：VPC(私有网络)，SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。
+	// 流日志所属资源类型，VPC（私有网络），SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 资源唯一ID。
@@ -14533,10 +14533,10 @@ type DescribeFlowLogsRequest struct {
 	// 流日志唯一ID。可通过[CreateFlowLog](https://cloud.tencent.com/document/product/215/35015)接口创建。
 	FlowLogId *string `json:"FlowLogId,omitnil,omitempty" name:"FlowLogId"`
 
-	// 流日志实例名字。
+	// 流日志实例名称。长度不超过60个字符。
 	FlowLogName *string `json:"FlowLogName,omitnil,omitempty" name:"FlowLogName"`
 
-	// 流日志所属资源类型：VPC(私有网络)，SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。
+	// 流日志所属资源类型，VPC（私有网络），SUBNET（子网），NETWORKINTERFACE（网卡），CCN（云联网），NAT（网络地址转化），DCG（专线网关）。
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
 
 	// 资源唯一ID。
@@ -26337,10 +26337,10 @@ type ModifyFlowLogAttributeRequestParams struct {
 	// 私用网络唯一ID。修改云联网流日志属性时可不填，其他流日志类型必填。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 流日志实例名字。长度为不超过60字节。
+	// 流日志实例名称。长度为不超过60字符。
 	FlowLogName *string `json:"FlowLogName,omitnil,omitempty" name:"FlowLogName"`
 
-	// 流日志实例描述。长度为不超过512字节。
+	// 流日志实例描述。长度为不超过512个字符。
 	FlowLogDescription *string `json:"FlowLogDescription,omitnil,omitempty" name:"FlowLogDescription"`
 }
 
@@ -26353,10 +26353,10 @@ type ModifyFlowLogAttributeRequest struct {
 	// 私用网络唯一ID。修改云联网流日志属性时可不填，其他流日志类型必填。
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 流日志实例名字。长度为不超过60字节。
+	// 流日志实例名称。长度为不超过60字符。
 	FlowLogName *string `json:"FlowLogName,omitnil,omitempty" name:"FlowLogName"`
 
-	// 流日志实例描述。长度为不超过512字节。
+	// 流日志实例描述。长度为不超过512个字符。
 	FlowLogDescription *string `json:"FlowLogDescription,omitnil,omitempty" name:"FlowLogDescription"`
 }
 

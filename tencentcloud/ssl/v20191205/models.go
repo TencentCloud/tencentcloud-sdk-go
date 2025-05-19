@@ -2077,13 +2077,98 @@ func (r *CreateCertificateByPackageResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCertificateRequestParams struct {
-	// 证书商品ID，3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = Wotrus 国密域名型证书，34 = Wotrus 国密域名型多域名证书，35 = Wotrus 国密域名型通配符证书，37 = Wotrus 国密企业型证书，38 = Wotrus 国密企业型多域名证书，39 = Wotrus 国密企业型通配符证书，40 = Wotrus 国密增强型证书，41 = Wotrus 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书，43 = DNSPod-企业型(OV)SSL证书，44 = DNSPod-企业型(OV)通配符SSL证书，45 = DNSPod-企业型(OV)多域名SSL证书， 46 = DNSPod-增强型(EV)SSL证书，47 = DNSPod-增强型(EV)多域名SSL证书，48 = DNSPod-域名型(DV)SSL证书，49 = DNSPod-域名型(DV)通配符SSL证书，50 = DNSPod-域名型(DV)多域名SSL证书，51 = DNSPod（国密）-企业型(OV)SSL证书，52 = DNSPod（国密）-企业型(OV)通配符SSL证书，53 = DNSPod（国密）-企业型(OV)多域名SSL证书，54 = DNSPod（国密）-域名型(DV)SSL证书，55 = DNSPod（国密）-域名型(DV)通配符SSL证书， 56 = DNSPod（国密）-域名型(DV)多域名SSL证书，57 = SecureSite 企业型专业版多域名(OV Pro)，58 = SecureSite 企业型多域名(OV)，59 = SecureSite 增强型专业版多域名(EV Pro)，60 = SecureSite 增强型多域名(EV)，61 = Geotrust 增强型多域名(EV)
+	// 证书套餐类型：
+	// 3：SecureSite 增强型企业版（EV Pro）， 
+	// 4：SecureSite 增强型（EV）， 
+	// 5：SecureSite 企业型专业版（OV Pro），
+	// 6：SecureSite 企业型（OV）， 
+	// 7：SecureSite 企业型（OV）通配符， 
+	// 8：Geotrust 增强型（EV）， 
+	// 9：Geotrust 企业型（OV）， 
+	// 10：Geotrust 企业型（OV）通配符， 
+	// 11：TrustAsia 域名型多域名 SSL 证书， 
+	// 12：TrustAsia 域名型（DV）通配符， 
+	// 13：TrustAsia 企业型通配符（OV）SSL 证书（D3）， 
+	// 14：TrustAsia 企业型（OV）SSL 证书（D3）， 
+	// 15：TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 
+	// 16：TrustAsia 增强型 （EV）SSL 证书（D3）， 
+	// 17：TrustAsia 增强型多域名（EV）SSL 证书（D3）， 
+	// 18：GlobalSign 企业型（OV）SSL 证书， 
+	// 19：GlobalSign 企业型通配符 （OV）SSL 证书， 
+	// 20：GlobalSign 增强型 （EV）SSL 证书， 
+	// 21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 
+	// 22：GlobalSign 企业型多域名（OV）SSL 证书， 
+	// 23：GlobalSign 企业型通配符多域名（OV）SSL 证书，
+	// 24：GlobalSign 增强型多域名（EV）SSL 证书，
+	// 25：Wotrus 域名型证书，
+	// 26：Wotrus 域名型多域名证书，
+	// 27：Wotrus 域名型通配符证书，
+	// 28：Wotrus 企业型证书，
+	// 29：Wotrus 企业型多域名证书，
+	// 30：Wotrus 企业型通配符证书，
+	// 31：Wotrus 增强型证书，
+	// 32：Wotrus 增强型多域名证书，
+	// 33：WoTrus-国密域名型证书，
+	// 34：WoTrus-国密域名型证书（多域名），
+	// 35：WoTrus-国密域名型证书（通配符），
+	// 37：WoTrus-国密企业型证书，
+	// 38：WoTrus-国密企业型证书（多域名），
+	// 39：WoTrus-国密企业型证书（通配符），
+	// 40：WoTrus-国密增强型证书，
+	// 41：WoTrus-国密增强型证书（多域名），
+	// 42：TrustAsia-域名型证书（通配符多域名），
+	// 43：DNSPod-企业型(OV)SSL证书
+	// 44：DNSPod-企业型(OV)通配符SSL证书
+	// 45：DNSPod-企业型(OV)多域名SSL证书
+	// 46：DNSPod-增强型(EV)SSL证书
+	// 47：DNSPod-增强型(EV)多域名SSL证书
+	// 48：DNSPod-域名型(DV)SSL证书
+	// 49：DNSPod-域名型(DV)通配符SSL证书
+	// 50：DNSPod-域名型(DV)多域名SSL证书
+	// 51：DNSPod（国密）-企业型(OV)SSL证书
+	// 52：DNSPod（国密）-企业型(OV)通配符SSL证书
+	// 53：DNSPod（国密）-企业型(OV)多域名SSL证书
+	// 54：DNSPod（国密）-域名型(DV)SSL证书
+	// 55：DNSPod（国密）-域名型(DV)通配符SSL证书
+	// 56：DNSPod（国密）-域名型(DV)多域名SSL证书
+	// 57：SecureSite 企业型专业版多域名(OV Pro)
+	// 58：SecureSite 企业型多域名(OV)
+	// 59：SecureSite 增强型专业版多域名(EV Pro)
+	// 60：SecureSite 增强型多域名(EV)
+	// 61：Geotrust 增强型多域名(EV)
+	// 75：SecureSite 企业型(OV)
+	// 76：SecureSite 企业型(OV)通配符
+	// 77：SecureSite 增强型(EV)
+	// 78：Geotrust 企业型(OV)
+	// 79：Geotrust 企业型(OV)通配符
+	// 80：Geotrust 增强型(EV)
+	// 81：GlobalSign 企业型（OV）SSL证书
+	// 82：GlobalSign 企业型通配符 （OV）SSL证书
+	// 85：GlobalSign 增强型 （EV）SSL证书
+	// 88：GlobalSign 企业型通配符多域名 （OV）SSL证书
+	// 89：GlobalSign 企业型多域名 （OV）SSL证书
+	// 90：GlobalSign 增强型多域名（EV） SSL证书
+	// 91：Geotrust 增强型多域名(EV)
+	// 92：SecureSite 企业型专业版多域名(OV Pro)
+	// 93：SecureSite 企业型多域名(OV)
+	// 94：SecureSite 增强型专业版多域名(EV Pro)
+	// 95：SecureSite 增强型多域名(EV)
+	// 96：SecureSite 增强型专业版(EV Pro)
+	// 97：SecureSite 企业型专业版(OV Pro)
+	// 98：CFCA 企业型(OV)SSL证书
+	// 99：CFCA 企业型多域名(OV)SSL证书，不支持多年期
+	// 100：CFCA 企业型通配符(OV)SSL证书，不支持多年期
+	// 101：CFCA 增强型(EV)SSL证书，不支持多年期
+	// 102:  Rapid-域名型(DV)SSL证书
+	// 103: Rapid-域名型(DV)SSL证书(通配符)
+	// 104: TrustAsia-域名型(单域名)
+	// 105: SSL单域名证书(一年期)
 	ProductId *int64 `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 证书包含的域名数量
+	// 证书包含的域名数量。 多域名或者多泛域名证书类型必须大于1
 	DomainNum *int64 `json:"DomainNum,omitnil,omitempty" name:"DomainNum"`
 
-	// 证书年限
+	// 证书年限。 支持多年期的证书才可以大于1年
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
 	// 是否自动使用代金券：1是，0否；默认为1
@@ -2096,13 +2181,98 @@ type CreateCertificateRequestParams struct {
 type CreateCertificateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 证书商品ID，3 = SecureSite 增强型企业版（EV Pro）， 4 = SecureSite 增强型（EV）， 5 = SecureSite 企业型专业版（OV Pro）， 6 = SecureSite 企业型（OV）， 7 = SecureSite 企业型（OV）通配符， 8 = Geotrust 增强型（EV）， 9 = Geotrust 企业型（OV）， 10 = Geotrust 企业型（OV）通配符， 11 = TrustAsia 域名型多域名 SSL 证书， 12 = TrustAsia 域名型（DV）通配符， 13 = TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14 = TrustAsia 企业型（OV）SSL 证书（D3）， 15 = TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16 = TrustAsia 增强型 （EV）SSL 证书（D3）， 17 = TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18 = GlobalSign 企业型（OV）SSL 证书， 19 = GlobalSign 企业型通配符 （OV）SSL 证书， 20 = GlobalSign 增强型 （EV）SSL 证书， 21 = TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22 = GlobalSign 企业型多域名（OV）SSL 证书， 23 = GlobalSign 企业型通配符多域名（OV）SSL 证书， 24 = GlobalSign 增强型多域名（EV）SSL 证书，25 = Wotrus 域名型证书，26 = Wotrus 域名型多域名证书，27 = Wotrus 域名型通配符证书，28 = Wotrus 企业型证书，29 = Wotrus 企业型多域名证书，30 = Wotrus 企业型通配符证书，31 = Wotrus 增强型证书，32 = Wotrus 增强型多域名证书，33 = Wotrus 国密域名型证书，34 = Wotrus 国密域名型多域名证书，35 = Wotrus 国密域名型通配符证书，37 = Wotrus 国密企业型证书，38 = Wotrus 国密企业型多域名证书，39 = Wotrus 国密企业型通配符证书，40 = Wotrus 国密增强型证书，41 = Wotrus 国密增强型多域名证书，42 = TrustAsia 域名型通配符多域名证书，43 = DNSPod-企业型(OV)SSL证书，44 = DNSPod-企业型(OV)通配符SSL证书，45 = DNSPod-企业型(OV)多域名SSL证书， 46 = DNSPod-增强型(EV)SSL证书，47 = DNSPod-增强型(EV)多域名SSL证书，48 = DNSPod-域名型(DV)SSL证书，49 = DNSPod-域名型(DV)通配符SSL证书，50 = DNSPod-域名型(DV)多域名SSL证书，51 = DNSPod（国密）-企业型(OV)SSL证书，52 = DNSPod（国密）-企业型(OV)通配符SSL证书，53 = DNSPod（国密）-企业型(OV)多域名SSL证书，54 = DNSPod（国密）-域名型(DV)SSL证书，55 = DNSPod（国密）-域名型(DV)通配符SSL证书， 56 = DNSPod（国密）-域名型(DV)多域名SSL证书，57 = SecureSite 企业型专业版多域名(OV Pro)，58 = SecureSite 企业型多域名(OV)，59 = SecureSite 增强型专业版多域名(EV Pro)，60 = SecureSite 增强型多域名(EV)，61 = Geotrust 增强型多域名(EV)
+	// 证书套餐类型：
+	// 3：SecureSite 增强型企业版（EV Pro）， 
+	// 4：SecureSite 增强型（EV）， 
+	// 5：SecureSite 企业型专业版（OV Pro），
+	// 6：SecureSite 企业型（OV）， 
+	// 7：SecureSite 企业型（OV）通配符， 
+	// 8：Geotrust 增强型（EV）， 
+	// 9：Geotrust 企业型（OV）， 
+	// 10：Geotrust 企业型（OV）通配符， 
+	// 11：TrustAsia 域名型多域名 SSL 证书， 
+	// 12：TrustAsia 域名型（DV）通配符， 
+	// 13：TrustAsia 企业型通配符（OV）SSL 证书（D3）， 
+	// 14：TrustAsia 企业型（OV）SSL 证书（D3）， 
+	// 15：TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 
+	// 16：TrustAsia 增强型 （EV）SSL 证书（D3）， 
+	// 17：TrustAsia 增强型多域名（EV）SSL 证书（D3）， 
+	// 18：GlobalSign 企业型（OV）SSL 证书， 
+	// 19：GlobalSign 企业型通配符 （OV）SSL 证书， 
+	// 20：GlobalSign 增强型 （EV）SSL 证书， 
+	// 21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 
+	// 22：GlobalSign 企业型多域名（OV）SSL 证书， 
+	// 23：GlobalSign 企业型通配符多域名（OV）SSL 证书，
+	// 24：GlobalSign 增强型多域名（EV）SSL 证书，
+	// 25：Wotrus 域名型证书，
+	// 26：Wotrus 域名型多域名证书，
+	// 27：Wotrus 域名型通配符证书，
+	// 28：Wotrus 企业型证书，
+	// 29：Wotrus 企业型多域名证书，
+	// 30：Wotrus 企业型通配符证书，
+	// 31：Wotrus 增强型证书，
+	// 32：Wotrus 增强型多域名证书，
+	// 33：WoTrus-国密域名型证书，
+	// 34：WoTrus-国密域名型证书（多域名），
+	// 35：WoTrus-国密域名型证书（通配符），
+	// 37：WoTrus-国密企业型证书，
+	// 38：WoTrus-国密企业型证书（多域名），
+	// 39：WoTrus-国密企业型证书（通配符），
+	// 40：WoTrus-国密增强型证书，
+	// 41：WoTrus-国密增强型证书（多域名），
+	// 42：TrustAsia-域名型证书（通配符多域名），
+	// 43：DNSPod-企业型(OV)SSL证书
+	// 44：DNSPod-企业型(OV)通配符SSL证书
+	// 45：DNSPod-企业型(OV)多域名SSL证书
+	// 46：DNSPod-增强型(EV)SSL证书
+	// 47：DNSPod-增强型(EV)多域名SSL证书
+	// 48：DNSPod-域名型(DV)SSL证书
+	// 49：DNSPod-域名型(DV)通配符SSL证书
+	// 50：DNSPod-域名型(DV)多域名SSL证书
+	// 51：DNSPod（国密）-企业型(OV)SSL证书
+	// 52：DNSPod（国密）-企业型(OV)通配符SSL证书
+	// 53：DNSPod（国密）-企业型(OV)多域名SSL证书
+	// 54：DNSPod（国密）-域名型(DV)SSL证书
+	// 55：DNSPod（国密）-域名型(DV)通配符SSL证书
+	// 56：DNSPod（国密）-域名型(DV)多域名SSL证书
+	// 57：SecureSite 企业型专业版多域名(OV Pro)
+	// 58：SecureSite 企业型多域名(OV)
+	// 59：SecureSite 增强型专业版多域名(EV Pro)
+	// 60：SecureSite 增强型多域名(EV)
+	// 61：Geotrust 增强型多域名(EV)
+	// 75：SecureSite 企业型(OV)
+	// 76：SecureSite 企业型(OV)通配符
+	// 77：SecureSite 增强型(EV)
+	// 78：Geotrust 企业型(OV)
+	// 79：Geotrust 企业型(OV)通配符
+	// 80：Geotrust 增强型(EV)
+	// 81：GlobalSign 企业型（OV）SSL证书
+	// 82：GlobalSign 企业型通配符 （OV）SSL证书
+	// 85：GlobalSign 增强型 （EV）SSL证书
+	// 88：GlobalSign 企业型通配符多域名 （OV）SSL证书
+	// 89：GlobalSign 企业型多域名 （OV）SSL证书
+	// 90：GlobalSign 增强型多域名（EV） SSL证书
+	// 91：Geotrust 增强型多域名(EV)
+	// 92：SecureSite 企业型专业版多域名(OV Pro)
+	// 93：SecureSite 企业型多域名(OV)
+	// 94：SecureSite 增强型专业版多域名(EV Pro)
+	// 95：SecureSite 增强型多域名(EV)
+	// 96：SecureSite 增强型专业版(EV Pro)
+	// 97：SecureSite 企业型专业版(OV Pro)
+	// 98：CFCA 企业型(OV)SSL证书
+	// 99：CFCA 企业型多域名(OV)SSL证书，不支持多年期
+	// 100：CFCA 企业型通配符(OV)SSL证书，不支持多年期
+	// 101：CFCA 增强型(EV)SSL证书，不支持多年期
+	// 102:  Rapid-域名型(DV)SSL证书
+	// 103: Rapid-域名型(DV)SSL证书(通配符)
+	// 104: TrustAsia-域名型(单域名)
+	// 105: SSL单域名证书(一年期)
 	ProductId *int64 `json:"ProductId,omitnil,omitempty" name:"ProductId"`
 
-	// 证书包含的域名数量
+	// 证书包含的域名数量。 多域名或者多泛域名证书类型必须大于1
 	DomainNum *int64 `json:"DomainNum,omitnil,omitempty" name:"DomainNum"`
 
-	// 证书年限
+	// 证书年限。 支持多年期的证书才可以大于1年
 	TimeSpan *int64 `json:"TimeSpan,omitnil,omitempty" name:"TimeSpan"`
 
 	// 是否自动使用代金券：1是，0否；默认为1

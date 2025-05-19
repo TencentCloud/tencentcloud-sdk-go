@@ -110,6 +110,9 @@ const (
 	// 数据库新增记录出错。
 	INTERNALERROR_DBINSERT = "InternalError.DbInsert"
 
+	// 没有找到传递的数据，请检查核对参数，再重新调用
+	INTERNALERROR_DBNOROWFOUND = "InternalError.DbNoRowFound"
+
 	// 内部错误,数据库查询失败,请稍后重试。
 	INTERNALERROR_DBREAD = "InternalError.DbRead"
 
@@ -428,6 +431,9 @@ const (
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
+	// 当前用户创建的数据已经存在了，不需要重复调用。
+	OPERATIONDENIED_ALREADYHAS = "OperationDenied.AlreadyHas"
+
 	// 签署人设置与模板中签署人配置信息不一致，请检查模板修改参数后重试。
 	OPERATIONDENIED_APPROVERNOMATCHTEMPLATE = "OperationDenied.ApproverNoMatchTemplate"
 
@@ -571,6 +577,9 @@ const (
 
 	// 子企业暂未加入。
 	OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
+
+	// 您加入企业的员工加入申请正在审核中。
+	OPERATIONDENIED_USERNOAUDIT = "OperationDenied.UserNoAudit"
 
 	// 用户不归属于当前企业，无法操作，请检查后重试。
 	OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"

@@ -1633,6 +1633,8 @@ type CreateAuditLogFileRequestParams struct {
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 已废弃。
+	//
+	// Deprecated: Filter is deprecated.
 	Filter *AuditLogFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// 审计日志过滤条件
@@ -2218,6 +2220,12 @@ type CreateClustersRequestParams struct {
 
 	// 实例初始化配置信息，主要用于购买集群时选不同规格实例
 	InstanceInitInfos []*InstanceInitInfo `json:"InstanceInitInfos,omitnil,omitempty" name:"InstanceInitInfos"`
+
+	// 全球数据库唯一标识
+	GdnId *string `json:"GdnId,omitnil,omitempty" name:"GdnId"`
+
+	// 数据库代理配置
+	ProxyConfig *ProxyConfig `json:"ProxyConfig,omitnil,omitempty" name:"ProxyConfig"`
 }
 
 type CreateClustersRequest struct {
@@ -2367,6 +2375,12 @@ type CreateClustersRequest struct {
 
 	// 实例初始化配置信息，主要用于购买集群时选不同规格实例
 	InstanceInitInfos []*InstanceInitInfo `json:"InstanceInitInfos,omitnil,omitempty" name:"InstanceInitInfos"`
+
+	// 全球数据库唯一标识
+	GdnId *string `json:"GdnId,omitnil,omitempty" name:"GdnId"`
+
+	// 数据库代理配置
+	ProxyConfig *ProxyConfig `json:"ProxyConfig,omitnil,omitempty" name:"ProxyConfig"`
 }
 
 func (r *CreateClustersRequest) ToJsonString() string {
@@ -2422,6 +2436,8 @@ func (r *CreateClustersRequest) FromJsonString(s string) error {
 	delete(f, "ParamTemplateId")
 	delete(f, "SlaveZone")
 	delete(f, "InstanceInitInfos")
+	delete(f, "GdnId")
+	delete(f, "ProxyConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClustersRequest has unknown keys!", "")
 	}
@@ -3156,6 +3172,9 @@ type CynosdbCluster struct {
 
 	// 实例绑定资源包信息（此处只返回存储资源包，即packageType=DISK）	
 	ResourcePackages []*ResourcePackage `json:"ResourcePackages,omitnil,omitempty" name:"ResourcePackages"`
+
+	// 全球数据库唯一标识
+	GdnId *string `json:"GdnId,omitnil,omitempty" name:"GdnId"`
 }
 
 type CynosdbClusterDetail struct {
@@ -3315,6 +3334,15 @@ type CynosdbClusterDetail struct {
 
 	// 版本标签
 	CynosVersionTag *string `json:"CynosVersionTag,omitnil,omitempty" name:"CynosVersionTag"`
+
+	// 全球数据库网络唯一标识
+	GdnId *string `json:"GdnId,omitnil,omitempty" name:"GdnId"`
+
+	// 集群在全球数据网络中的角色。
+	// 主集群- primary
+	// 从集群 - standby
+	// 如为空，该字段无效
+	GdnRole *string `json:"GdnRole,omitnil,omitempty" name:"GdnRole"`
 }
 
 type CynosdbErrorLogItem struct {
@@ -3507,6 +3535,9 @@ type CynosdbInstance struct {
 
 	// libradb 节点信息
 	NodeList []*string `json:"NodeList,omitnil,omitempty" name:"NodeList"`
+
+	// 全球数据库唯一标识
+	GdnId *string `json:"GdnId,omitnil,omitempty" name:"GdnId"`
 }
 
 type CynosdbInstanceDetail struct {
@@ -4726,6 +4757,8 @@ type DescribeAuditLogsRequestParams struct {
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 已废弃。
+	//
+	// Deprecated: Filter is deprecated.
 	Filter *AuditLogFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// 分页参数，单次返回的数据条数。默认值为100，最大值为100。
@@ -13847,6 +13880,32 @@ type PolicyRule struct {
 
 	// 描述
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+}
+
+type ProxyConfig struct {
+	// 数据库代理组节点个数（该参数不再建议使用，建议使用ProxyZones)
+	ProxyCount *int64 `json:"ProxyCount,omitnil,omitempty" name:"ProxyCount"`
+
+	// cpu核数
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 内存
+	Mem *int64 `json:"Mem,omitnil,omitempty" name:"Mem"`
+
+	// 连接池类型：SessionConnectionPool(会话级别连接池 )
+	ConnectionPoolType *string `json:"ConnectionPoolType,omitnil,omitempty" name:"ConnectionPoolType"`
+
+	// 是否开启连接池,yes-开启，no-不开启
+	OpenConnectionPool *string `json:"OpenConnectionPool,omitnil,omitempty" name:"OpenConnectionPool"`
+
+	// 连接池阈值：单位（秒）
+	ConnectionPoolTimeOut *int64 `json:"ConnectionPoolTimeOut,omitnil,omitempty" name:"ConnectionPoolTimeOut"`
+
+	// 描述说明
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 数据库节点信息（该参数与ProxyCount需要任选一个输入）
+	ProxyZones []*ProxyZone `json:"ProxyZones,omitnil,omitempty" name:"ProxyZones"`
 }
 
 type ProxyConnectionPoolInfo struct {

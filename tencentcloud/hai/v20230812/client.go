@@ -177,7 +177,7 @@ func NewDescribeApplicationsResponse() (response *DescribeApplicationsResponse) 
 }
 
 // DescribeApplications
-// 查询应用
+// 本接口（DescribeApplications）用于查询应用
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -193,7 +193,7 @@ func (c *Client) DescribeApplications(request *DescribeApplicationsRequest) (res
 }
 
 // DescribeApplications
-// 查询应用
+// 本接口（DescribeApplications）用于查询应用
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -240,7 +240,7 @@ func NewDescribeInstanceNetworkStatusResponse() (response *DescribeInstanceNetwo
 }
 
 // DescribeInstanceNetworkStatus
-// 查询实例的网络配置及消耗情况
+// 本接口（DescribeInstanceNetworkStatus）用于查询实例的网络配置及消耗情况
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -251,7 +251,7 @@ func (c *Client) DescribeInstanceNetworkStatus(request *DescribeInstanceNetworkS
 }
 
 // DescribeInstanceNetworkStatus
-// 查询实例的网络配置及消耗情况
+// 本接口（DescribeInstanceNetworkStatus）用于查询实例的网络配置及消耗情况
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -293,7 +293,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 }
 
 // DescribeInstances
-// 查询实例
+// 本接口（DescribeInstances）用户查询实例
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -307,7 +307,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 }
 
 // DescribeInstances
-// 查询实例
+// 本接口（DescribeInstances）用户查询实例
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -405,7 +405,7 @@ func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
 }
 
 // DescribeRegions
-// 查询地域列表
+// 本接口（DescribeRegions）用于查询地域列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -415,7 +415,7 @@ func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *Des
 }
 
 // DescribeRegions
-// 查询地域列表
+// 本接口（DescribeRegions）用于查询地域列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -456,7 +456,7 @@ func NewDescribeScenesResponse() (response *DescribeScenesResponse) {
 }
 
 // DescribeScenes
-// 查询场景
+// 本接口（DescribeScenes）用于查询场景
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -468,7 +468,7 @@ func (c *Client) DescribeScenes(request *DescribeScenesRequest) (response *Descr
 }
 
 // DescribeScenes
-// 查询场景
+// 本接口（DescribeScenes）用于查询场景
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -511,7 +511,7 @@ func NewDescribeServiceLoginSettingsResponse() (response *DescribeServiceLoginSe
 }
 
 // DescribeServiceLoginSettings
-// 查询服务登录配置
+// 本接口（DescribeServiceLoginSettings）用于查询服务登录配置
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -521,7 +521,7 @@ func (c *Client) DescribeServiceLoginSettings(request *DescribeServiceLoginSetti
 }
 
 // DescribeServiceLoginSettings
-// 查询服务登录配置
+// 本接口（DescribeServiceLoginSettings）用于查询服务登录配置
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -728,6 +728,8 @@ func NewStartInstanceResponse() (response *StartInstanceResponse) {
 // StartInstance
 // 本接口 (StartInstance) 用于主动启动实例。
 //
+// ‘运行中’、‘预付费’的实例不支持启动实例
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATEINSTANCEREPEATEDLY = "FailedOperation.OperateInstanceRepeatedly"
 //  INTERNALERROR = "InternalError"
@@ -747,6 +749,8 @@ func (c *Client) StartInstance(request *StartInstanceRequest) (response *StartIn
 
 // StartInstance
 // 本接口 (StartInstance) 用于主动启动实例。
+//
+// ‘运行中’、‘预付费’的实例不支持启动实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATEINSTANCEREPEATEDLY = "FailedOperation.OperateInstanceRepeatedly"
@@ -799,6 +803,8 @@ func NewStopInstanceResponse() (response *StopInstanceResponse) {
 // StopInstance
 // 本接口 (StopInstance) 用于主动关闭实例。
 //
+// ‘已关机’、‘预付费’的实例不支持关机
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATEINSTANCEREPEATEDLY = "FailedOperation.OperateInstanceRepeatedly"
 //  INTERNALERROR = "InternalError"
@@ -817,6 +823,8 @@ func (c *Client) StopInstance(request *StopInstanceRequest) (response *StopInsta
 
 // StopInstance
 // 本接口 (StopInstance) 用于主动关闭实例。
+//
+// ‘已关机’、‘预付费’的实例不支持关机
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATEINSTANCEREPEATEDLY = "FailedOperation.OperateInstanceRepeatedly"

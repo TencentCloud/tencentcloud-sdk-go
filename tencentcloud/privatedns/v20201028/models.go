@@ -21,16 +21,16 @@ import (
 )
 
 type AccountVpcInfo struct {
-	// VpcId： vpc-xadsafsdasd
+	// VpcId
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
-	// Vpc所属地区: ap-guangzhou, ap-shanghai
+	// Vpc所属地区
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// Vpc所属账号: 123456789
+	// Vpc所属账号
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// vpc资源名称：testname
+	// vpc资源名称
 	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
 }
 

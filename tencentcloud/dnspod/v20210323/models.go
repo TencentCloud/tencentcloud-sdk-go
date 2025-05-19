@@ -131,7 +131,6 @@ type BatchSearchRecordInfo struct {
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
 	// 记录备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// TTL(秒)

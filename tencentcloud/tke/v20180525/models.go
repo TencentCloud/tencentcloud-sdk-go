@@ -14516,105 +14516,6 @@ type Filter struct {
 }
 
 // Predefined struct for user
-type ForwardApplicationRequestV3RequestParams struct {
-	// 请求集群addon的访问
-	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
-
-	// 请求集群addon的路径
-	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
-
-	// 请求集群addon后允许接收的数据格式
-	Accept *string `json:"Accept,omitnil,omitempty" name:"Accept"`
-
-	// 请求集群addon的数据格式
-	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
-
-	// 请求集群addon的数据
-	RequestBody *string `json:"RequestBody,omitnil,omitempty" name:"RequestBody"`
-
-	// 集群名称
-	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
-
-	// 是否编码请求内容
-	EncodedBody *string `json:"EncodedBody,omitnil,omitempty" name:"EncodedBody"`
-}
-
-type ForwardApplicationRequestV3Request struct {
-	*tchttp.BaseRequest
-	
-	// 请求集群addon的访问
-	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
-
-	// 请求集群addon的路径
-	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
-
-	// 请求集群addon后允许接收的数据格式
-	Accept *string `json:"Accept,omitnil,omitempty" name:"Accept"`
-
-	// 请求集群addon的数据格式
-	ContentType *string `json:"ContentType,omitnil,omitempty" name:"ContentType"`
-
-	// 请求集群addon的数据
-	RequestBody *string `json:"RequestBody,omitnil,omitempty" name:"RequestBody"`
-
-	// 集群名称
-	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
-
-	// 是否编码请求内容
-	EncodedBody *string `json:"EncodedBody,omitnil,omitempty" name:"EncodedBody"`
-}
-
-func (r *ForwardApplicationRequestV3Request) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ForwardApplicationRequestV3Request) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Method")
-	delete(f, "Path")
-	delete(f, "Accept")
-	delete(f, "ContentType")
-	delete(f, "RequestBody")
-	delete(f, "ClusterName")
-	delete(f, "EncodedBody")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ForwardApplicationRequestV3Request has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ForwardApplicationRequestV3ResponseParams struct {
-	// 请求集群addon后返回的数据
-	ResponseBody *string `json:"ResponseBody,omitnil,omitempty" name:"ResponseBody"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type ForwardApplicationRequestV3Response struct {
-	*tchttp.BaseResponse
-	Response *ForwardApplicationRequestV3ResponseParams `json:"Response"`
-}
-
-func (r *ForwardApplicationRequestV3Response) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ForwardApplicationRequestV3Response) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type ForwardTKEEdgeApplicationRequestV3RequestParams struct {
 	// 请求集群addon的访问
 	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
@@ -17680,11 +17581,11 @@ type OSImage struct {
 }
 
 type OpenConstraintInfo struct {
-	// 策略实例名称
-	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
-
 	// 策略实例关联事件数
 	EventNums *uint64 `json:"EventNums,omitnil,omitempty" name:"EventNums"`
+
+	// 策略实例名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 实例yaml详情base64编码
 	YamlDetail *string `json:"YamlDetail,omitnil,omitempty" name:"YamlDetail"`

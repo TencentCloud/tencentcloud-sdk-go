@@ -112,6 +112,12 @@ type AndroidInstance struct {
 
 	// 内网 IP
 	PrivateIP *string `json:"PrivateIP,omitnil,omitempty" name:"PrivateIP"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 机箱 ID
+	HostServerSerialNumber *string `json:"HostServerSerialNumber,omitnil,omitempty" name:"HostServerSerialNumber"`
 }
 
 type AndroidInstanceAppInfo struct {

@@ -518,6 +518,9 @@ const (
 	// 辅助Cidr与自定义子网路由目的Cidr网段完全重叠。
 	INVALIDPARAMETERVALUE_VPCCIDROVERLAPROUTE = "InvalidParameterValue.VpcCidrOverlapRoute"
 
+	// 流日志不能输入VPC唯一ID。
+	INVALIDPARAMETERVALUE_VPCIDNOTNEEDEDFORFLOWLOG = "InvalidParameterValue.VpcIdNotNeededForFlowLog"
+
 	// 当前功能不支持此专线网关。
 	INVALIDPARAMETERVALUE_VPGTYPENOTMATCH = "InvalidParameterValue.VpgTypeNotMatch"
 
@@ -940,6 +943,9 @@ const (
 
 	// 终端节点服务本身不能是终端节点。
 	UNSUPPORTEDOPERATION_ENDPOINTSERVICE = "UnsupportedOperation.EndPointService"
+
+	// 终端节点服务负载均衡类型不为内网负载均衡。
+	UNSUPPORTEDOPERATION_ENDPOINTSERVICELOADBALANCERINVALIDTYPE = "UnsupportedOperation.EndPointServiceLoadBalancerInvalidType"
 
 	// 存在云联网自定义路由表不允许删除该云联网
 	UNSUPPORTEDOPERATION_EXISTCCNCUSTOMROUTETABLESNOTSUPPORTDELETECCN = "UnsupportedOperation.ExistCcnCustomRouteTablesNotSupportDeleteCcn"

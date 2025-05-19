@@ -366,19 +366,19 @@ type CreateCfsFileSystemRequestParams struct {
 	// 网络类型，可选值为 VPC，CCN；其中 VPC 为私有网络， CCN 为云联网。通用标准型/性能型请选择VPC，Turbo标准型/性能型请选择CCN。
 	NetInterface *string `json:"NetInterface,omitnil,omitempty" name:"NetInterface"`
 
-	// 权限组 ID
+	// 权限组 ID,pgroupbasic 是默认权限组
 	PGroupId *string `json:"PGroupId,omitnil,omitempty" name:"PGroupId"`
 
-	// 文件系统协议类型， 值为 NFS、CIFS、TURBO ; 若留空则默认为 NFS协议，turbo系列必须选择turbo，不支持NFS、CIFS
+	// 文件系统协议类型， 值为 NFS、CIFS、TURBO ; 若留空则默认为 NFS协议，turbo系列必须选择TURBO，不支持NFS、CIFS
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 文件系统存储类型，默认值为 SD ；其中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填。
+	// 私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填.通过查询私有网络接口获取
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网 ID，若网络类型选择的是VPC，该字段为必填。
+	// 子网 ID，若网络类型选择的是VPC，该字段为必填。通过查询子网接口获取
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 指定IP地址，仅VPC网络支持；若不填写、将在该子网下随机分配 IP，Turbo系列当前不支持指定
@@ -393,7 +393,7 @@ type CreateCfsFileSystemRequestParams struct {
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。用于保证请求幂等性的字符串失效时间为2小时。
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
-	// 云联网ID， 若网络类型选择的是CCN，该字段为必填
+	// 云联网ID， 若网络类型选择的是CCN，该字段为必填;通过查询云联网列表接口获取
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
 	// 云联网中CFS使用的网段， 若网络类型选择的是Ccn，该字段为必填，且不能和Ccn中已经绑定的网段冲突
@@ -402,13 +402,13 @@ type CreateCfsFileSystemRequestParams struct {
 	// 文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售20TiB，即20480 GiB；扩容步长20TiB，即20480 GiB。turbo性能型起售10TiB，即10240 GiB；扩容步长10TiB，10240 GiB。
 	Capacity *uint64 `json:"Capacity,omitnil,omitempty" name:"Capacity"`
 
-	// 文件系统快照ID
+	// 文件系统快照ID，通过查询快照列表获取该参数
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
-	// 定期快照策略ID
+	// 定期快照策略ID，通过查询快照策略信息获取
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 
-	// 是否开启默认扩容，仅Turbo类型文件存储支持
+	// 是否开启默认扩容，仅turbo类型文件存储支持
 	EnableAutoScaleUp *bool `json:"EnableAutoScaleUp,omitnil,omitempty" name:"EnableAutoScaleUp"`
 
 	// v1.5：创建普通版的通用文件系统；
@@ -426,19 +426,19 @@ type CreateCfsFileSystemRequest struct {
 	// 网络类型，可选值为 VPC，CCN；其中 VPC 为私有网络， CCN 为云联网。通用标准型/性能型请选择VPC，Turbo标准型/性能型请选择CCN。
 	NetInterface *string `json:"NetInterface,omitnil,omitempty" name:"NetInterface"`
 
-	// 权限组 ID
+	// 权限组 ID,pgroupbasic 是默认权限组
 	PGroupId *string `json:"PGroupId,omitnil,omitempty" name:"PGroupId"`
 
-	// 文件系统协议类型， 值为 NFS、CIFS、TURBO ; 若留空则默认为 NFS协议，turbo系列必须选择turbo，不支持NFS、CIFS
+	// 文件系统协议类型， 值为 NFS、CIFS、TURBO ; 若留空则默认为 NFS协议，turbo系列必须选择TURBO，不支持NFS、CIFS
 	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
 
 	// 文件系统存储类型，默认值为 SD ；其中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填。
+	// 私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填.通过查询私有网络接口获取
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网 ID，若网络类型选择的是VPC，该字段为必填。
+	// 子网 ID，若网络类型选择的是VPC，该字段为必填。通过查询子网接口获取
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 指定IP地址，仅VPC网络支持；若不填写、将在该子网下随机分配 IP，Turbo系列当前不支持指定
@@ -453,7 +453,7 @@ type CreateCfsFileSystemRequest struct {
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。用于保证请求幂等性的字符串失效时间为2小时。
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
-	// 云联网ID， 若网络类型选择的是CCN，该字段为必填
+	// 云联网ID， 若网络类型选择的是CCN，该字段为必填;通过查询云联网列表接口获取
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
 	// 云联网中CFS使用的网段， 若网络类型选择的是Ccn，该字段为必填，且不能和Ccn中已经绑定的网段冲突
@@ -462,13 +462,13 @@ type CreateCfsFileSystemRequest struct {
 	// 文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售20TiB，即20480 GiB；扩容步长20TiB，即20480 GiB。turbo性能型起售10TiB，即10240 GiB；扩容步长10TiB，10240 GiB。
 	Capacity *uint64 `json:"Capacity,omitnil,omitempty" name:"Capacity"`
 
-	// 文件系统快照ID
+	// 文件系统快照ID，通过查询快照列表获取该参数
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
-	// 定期快照策略ID
+	// 定期快照策略ID，通过查询快照策略信息获取
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 
-	// 是否开启默认扩容，仅Turbo类型文件存储支持
+	// 是否开启默认扩容，仅turbo类型文件存储支持
 	EnableAutoScaleUp *bool `json:"EnableAutoScaleUp,omitnil,omitempty" name:"EnableAutoScaleUp"`
 
 	// v1.5：创建普通版的通用文件系统；
@@ -978,14 +978,14 @@ func (r *CreateMigrationTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAutoSnapshotPolicyRequestParams struct {
-	// 快照策略ID
+	// 快照策略ID，查询快照策略接口获取
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 }
 
 type DeleteAutoSnapshotPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 快照策略ID
+	// 快照策略ID，查询快照策略接口获取
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 }
 
@@ -2099,12 +2099,12 @@ type DescribeCfsSnapshotsRequestParams struct {
 	// <br>FileSystemId - Array of String - 是否必填：否 -（过滤条件）按文件系统ID过滤。
 	// <br>FsName - Array of String - 是否必填：否 -（过滤条件）按文件系统名过滤。
 	// <br>Status - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤
-	// (creating：表示创建中 | available：表示可用。| rollbacking：表示回滚。| rollbacking_new：表示由快照创建新文件系统中）
+	// (creating：表示创建中 | available：表示可用。| rollbacking：表示回滚。| rollbacking_new：表示由快照创建新文件系统中| create-failed 创建失败）
 	// <br>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。
 	// <br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序取值
+	// 按创建时间排序取值CreationTime
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
 	// 排序 升序或者降序
@@ -2132,12 +2132,12 @@ type DescribeCfsSnapshotsRequest struct {
 	// <br>FileSystemId - Array of String - 是否必填：否 -（过滤条件）按文件系统ID过滤。
 	// <br>FsName - Array of String - 是否必填：否 -（过滤条件）按文件系统名过滤。
 	// <br>Status - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤
-	// (creating：表示创建中 | available：表示可用。| rollbacking：表示回滚。| rollbacking_new：表示由快照创建新文件系统中）
+	// (creating：表示创建中 | available：表示可用。| rollbacking：表示回滚。| rollbacking_new：表示由快照创建新文件系统中| create-failed 创建失败）
 	// <br>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。
 	// <br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 排序取值
+	// 按创建时间排序取值CreationTime
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
 	// 排序 升序或者降序
@@ -2438,36 +2438,36 @@ func (r *DescribeSnapshotOperationLogsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserQuotaRequestParams struct {
-	// 文件系统 ID
+	// 文件系统 ID,通过查询文件系统列表获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 过滤条件。
-	// UserType - Array of String - 是否必填：否 -（过滤条件）按配额类型过滤。(Uid|Gid|Dir )
-	// UserId- Array of String - 是否必填：否 -（过滤条件）按id过滤。
+	// UserType - Array of String - 是否必填：否 -（过滤条件）按配额类型过滤。(Uid|Gid|Dir，分别对应用户，用户组，目录 )
+	// UserId- Array of String - 是否必填：否 -（过滤条件）按用户id过滤。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// Offset 分页码
+	// Offset 分页码，默认值0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// Limit 页面大小，可填范围为大于0的整数
+	// Limit 页面大小，可填范围为大于0的整数，默认值是10
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeUserQuotaRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统 ID
+	// 文件系统 ID,通过查询文件系统列表获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 过滤条件。
-	// UserType - Array of String - 是否必填：否 -（过滤条件）按配额类型过滤。(Uid|Gid|Dir )
-	// UserId- Array of String - 是否必填：否 -（过滤条件）按id过滤。
+	// UserType - Array of String - 是否必填：否 -（过滤条件）按配额类型过滤。(Uid|Gid|Dir，分别对应用户，用户组，目录 )
+	// UserId- Array of String - 是否必填：否 -（过滤条件）按用户id过滤。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// Offset 分页码
+	// Offset 分页码，默认值0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// Limit 页面大小，可填范围为大于0的整数
+	// Limit 页面大小，可填范围为大于0的整数，默认值是10
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -2743,7 +2743,7 @@ type MigrationTaskInfo struct {
 
 // Predefined struct for user
 type ModifyFileSystemAutoScaleUpRuleRequestParams struct {
-	// 文件系统id
+	// 文件系统id,通过查询文件系统列表获取该参数
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 扩容阈值，范围[10-90]
@@ -2752,14 +2752,14 @@ type ModifyFileSystemAutoScaleUpRuleRequestParams struct {
 	// 扩容后目标阈值,范围[10-90],该值要小于ScaleUpThreshold
 	TargetThreshold *uint64 `json:"TargetThreshold,omitnil,omitempty" name:"TargetThreshold"`
 
-	// 规则状态0:关闭，1 开启
+	// 规则状态0:关闭，1 开启；不传保留原状态
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type ModifyFileSystemAutoScaleUpRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统id
+	// 文件系统id,通过查询文件系统列表获取该参数
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 扩容阈值，范围[10-90]
@@ -2768,7 +2768,7 @@ type ModifyFileSystemAutoScaleUpRuleRequest struct {
 	// 扩容后目标阈值,范围[10-90],该值要小于ScaleUpThreshold
 	TargetThreshold *uint64 `json:"TargetThreshold,omitnil,omitempty" name:"TargetThreshold"`
 
-	// 规则状态0:关闭，1 开启
+	// 规则状态0:关闭，1 开启；不传保留原状态
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -2915,7 +2915,7 @@ type PGroupRuleInfo struct {
 
 // Predefined struct for user
 type ScaleUpFileSystemRequestParams struct {
-	// 文件系统Id
+	// 文件系统Id,该参数通过查询文件系统列表接口获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 扩容的目标容量（单位GiB）
@@ -2925,7 +2925,7 @@ type ScaleUpFileSystemRequestParams struct {
 type ScaleUpFileSystemRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统Id
+	// 文件系统Id,该参数通过查询文件系统列表接口获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 扩容的目标容量（单位GiB）
@@ -2982,7 +2982,7 @@ func (r *ScaleUpFileSystemResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SetUserQuotaRequestParams struct {
-	// 文件系统 ID
+	// 文件系统 ID,通过查询文件系统列表获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 指定配额类型，包括Uid、Gid，Dir，分别代表用户配额，用户组配额，目录配额
@@ -3004,7 +3004,7 @@ type SetUserQuotaRequestParams struct {
 type SetUserQuotaRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统 ID
+	// 文件系统 ID,通过查询文件系统列表获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 指定配额类型，包括Uid、Gid，Dir，分别代表用户配额，用户组配额，目录配额
@@ -3151,7 +3151,7 @@ type SnapshotInfo struct {
 	// 保留时长天
 	AliveDay *uint64 `json:"AliveDay,omitnil,omitempty" name:"AliveDay"`
 
-	// 快照进度百分比，1表示1%
+	// 快照进度百分比，1表示1% 范围1-100
 	Percent *uint64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
 	// 账号ID
@@ -3599,7 +3599,7 @@ type UpdateCfsFileSystemSizeLimitRequestParams struct {
 	// 文件系统容量限制大小，输入范围0-1073741824, 单位为GB；其中输入值为0时，表示不限制文件系统容量。
 	FsLimit *uint64 `json:"FsLimit,omitnil,omitempty" name:"FsLimit"`
 
-	// 文件系统ID，目前仅支持标准型文件系统。
+	// 文件系统ID，目前仅支持标准型文件系统。该参数通过查询文件系统列表获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
@@ -3609,7 +3609,7 @@ type UpdateCfsFileSystemSizeLimitRequest struct {
 	// 文件系统容量限制大小，输入范围0-1073741824, 单位为GB；其中输入值为0时，表示不限制文件系统容量。
 	FsLimit *uint64 `json:"FsLimit,omitnil,omitempty" name:"FsLimit"`
 
-	// 文件系统ID，目前仅支持标准型文件系统。
+	// 文件系统ID，目前仅支持标准型文件系统。该参数通过查询文件系统列表获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
@@ -3920,7 +3920,7 @@ func (r *UpdateCfsSnapshotAttributeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateFileSystemBandwidthLimitRequestParams struct {
-	// 文件系统 ID
+	// 文件系统 ID,通过查询文件系统列表获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 文件系统带宽，仅吞吐型可填。单位MiB/s，最小为1GiB/s，最大200GiB/s。
@@ -3930,7 +3930,7 @@ type UpdateFileSystemBandwidthLimitRequestParams struct {
 type UpdateFileSystemBandwidthLimitRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统 ID
+	// 文件系统 ID,通过查询文件系统列表获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 文件系统带宽，仅吞吐型可填。单位MiB/s，最小为1GiB/s，最大200GiB/s。

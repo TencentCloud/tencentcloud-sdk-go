@@ -3672,7 +3672,7 @@ func NewDescribeBackupConfigResponse() (response *DescribeBackupConfigResponse) 
 }
 
 // DescribeBackupConfig
-// 本接口(DescribeBackupConfig)用于查询数据库备份配置信息。
+// 本接口（DescribeBackupConfig）用于查询数据库备份配置信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CDBCGWERROR = "InternalError.CdbCgwError"
@@ -3689,7 +3689,7 @@ func (c *Client) DescribeBackupConfig(request *DescribeBackupConfigRequest) (res
 }
 
 // DescribeBackupConfig
-// 本接口(DescribeBackupConfig)用于查询数据库备份配置信息。
+// 本接口（DescribeBackupConfig）用于查询数据库备份配置信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CDBCGWERROR = "InternalError.CdbCgwError"

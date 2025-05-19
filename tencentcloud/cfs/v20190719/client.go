@@ -2163,7 +2163,7 @@ func NewModifyFileSystemAutoScaleUpRuleResponse() (response *ModifyFileSystemAut
 }
 
 // ModifyFileSystemAutoScaleUpRule
-// 用来设置文件系统扩容策略
+// 用来设置文件系统扩容策略，，该接口只支持turbo文件系统
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_GETROLEFAILED = "AuthFailure.GetRoleFailed"
@@ -2177,7 +2177,7 @@ func (c *Client) ModifyFileSystemAutoScaleUpRule(request *ModifyFileSystemAutoSc
 }
 
 // ModifyFileSystemAutoScaleUpRule
-// 用来设置文件系统扩容策略
+// 用来设置文件系统扩容策略，，该接口只支持turbo文件系统
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_GETROLEFAILED = "AuthFailure.GetRoleFailed"
@@ -2222,7 +2222,7 @@ func NewScaleUpFileSystemResponse() (response *ScaleUpFileSystemResponse) {
 }
 
 // ScaleUpFileSystem
-// 该接口用于对turbo 文件系统扩容使用
+// 该接口用于对turbo 文件系统扩容使用,该接口只支持扩容不支持缩容。turbo标准型扩容步长是10240GIB，turbo性能型扩容步长是5120GIB
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -2243,7 +2243,7 @@ func (c *Client) ScaleUpFileSystem(request *ScaleUpFileSystemRequest) (response 
 }
 
 // ScaleUpFileSystem
-// 该接口用于对turbo 文件系统扩容使用
+// 该接口用于对turbo 文件系统扩容使用,该接口只支持扩容不支持缩容。turbo标准型扩容步长是10240GIB，turbo性能型扩容步长是5120GIB
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"

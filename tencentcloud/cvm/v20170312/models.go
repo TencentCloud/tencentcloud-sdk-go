@@ -5479,40 +5479,50 @@ type ImportImageDataDisk struct {
 
 // Predefined struct for user
 type ImportImageRequestParams struct {
-	// 导入镜像的操作系统架构，`x86_64` 或 `i386`
+	// 导入镜像的操作系统架构。
+	// 取值范围包括：`x86_64` 、`i386`、`arm_64`
 	Architecture *string `json:"Architecture,omitnil,omitempty" name:"Architecture"`
 
-	// 导入镜像的操作系统类型，通过`DescribeImportImageOs`获取
+	// 导入镜像的操作系统类型 。
+	// 可通过 [DescribeImportImageOs](https://cloud.tencent.com/document/api/213/15718) 接口返回值中的`ImportImageOsListSupported`获取。
 	OsType *string `json:"OsType,omitnil,omitempty" name:"OsType"`
 
-	// 导入镜像的操作系统版本，通过`DescribeImportImageOs`获取
+	// 导入镜像的操作系统版本。
+	// 可通过 [DescribeImportImageOs](https://cloud.tencent.com/document/api/213/15718) 接口返回值中的`ImportImageOsVersionSet`获取。
 	OsVersion *string `json:"OsVersion,omitnil,omitempty" name:"OsVersion"`
 
 	// 导入镜像存放的cos地址
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 镜像名称
+	// 镜像名称。
+	// 最多支持 60 个字符。
 	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
 
-	// 镜像描述
+	// 镜像描述。
+	// 最多支持 256 个字符。
 	ImageDescription *string `json:"ImageDescription,omitnil,omitempty" name:"ImageDescription"`
 
-	// 只检查参数，不执行任务
+	// 只检查参数，不执行任务。
+	// 默认值：false
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
 	// 是否强制导入，参考[强制导入镜像](https://cloud.tencent.com/document/product/213/12849)
+	// 默认值：false
 	Force *bool `json:"Force,omitnil,omitempty" name:"Force"`
 
 	// 标签描述列表。通过指定该参数可以同时绑定标签到自定义镜像。
 	TagSpecification []*TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 
 	// 导入镜像后，激活操作系统采用的许可证类型。
-	// 可选项：
+	// 默认值：TencentCloud
+	// 取值范围：
 	// TencentCloud: 腾讯云官方许可
 	// BYOL: 自带许可（Bring Your Own License）
 	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
-	// 启动模式
+	// 启动模式。
+	// 取值范围：`Legacy BIOS`、`UEFI`
+	// 默认值：Legacy BIOS
 	BootMode *string `json:"BootMode,omitnil,omitempty" name:"BootMode"`
 
 	//  镜像族
@@ -5525,40 +5535,50 @@ type ImportImageRequestParams struct {
 type ImportImageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 导入镜像的操作系统架构，`x86_64` 或 `i386`
+	// 导入镜像的操作系统架构。
+	// 取值范围包括：`x86_64` 、`i386`、`arm_64`
 	Architecture *string `json:"Architecture,omitnil,omitempty" name:"Architecture"`
 
-	// 导入镜像的操作系统类型，通过`DescribeImportImageOs`获取
+	// 导入镜像的操作系统类型 。
+	// 可通过 [DescribeImportImageOs](https://cloud.tencent.com/document/api/213/15718) 接口返回值中的`ImportImageOsListSupported`获取。
 	OsType *string `json:"OsType,omitnil,omitempty" name:"OsType"`
 
-	// 导入镜像的操作系统版本，通过`DescribeImportImageOs`获取
+	// 导入镜像的操作系统版本。
+	// 可通过 [DescribeImportImageOs](https://cloud.tencent.com/document/api/213/15718) 接口返回值中的`ImportImageOsVersionSet`获取。
 	OsVersion *string `json:"OsVersion,omitnil,omitempty" name:"OsVersion"`
 
 	// 导入镜像存放的cos地址
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
-	// 镜像名称
+	// 镜像名称。
+	// 最多支持 60 个字符。
 	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
 
-	// 镜像描述
+	// 镜像描述。
+	// 最多支持 256 个字符。
 	ImageDescription *string `json:"ImageDescription,omitnil,omitempty" name:"ImageDescription"`
 
-	// 只检查参数，不执行任务
+	// 只检查参数，不执行任务。
+	// 默认值：false
 	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
 
 	// 是否强制导入，参考[强制导入镜像](https://cloud.tencent.com/document/product/213/12849)
+	// 默认值：false
 	Force *bool `json:"Force,omitnil,omitempty" name:"Force"`
 
 	// 标签描述列表。通过指定该参数可以同时绑定标签到自定义镜像。
 	TagSpecification []*TagSpecification `json:"TagSpecification,omitnil,omitempty" name:"TagSpecification"`
 
 	// 导入镜像后，激活操作系统采用的许可证类型。
-	// 可选项：
+	// 默认值：TencentCloud
+	// 取值范围：
 	// TencentCloud: 腾讯云官方许可
 	// BYOL: 自带许可（Bring Your Own License）
 	LicenseType *string `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
-	// 启动模式
+	// 启动模式。
+	// 取值范围：`Legacy BIOS`、`UEFI`
+	// 默认值：Legacy BIOS
 	BootMode *string `json:"BootMode,omitnil,omitempty" name:"BootMode"`
 
 	//  镜像族

@@ -125,8 +125,8 @@ const (
 	// 记录不存在。
 	INVALIDPARAMETER_RECORDNOTEXIST = "InvalidParameter.RecordNotExist"
 
-	// 记录负载均衡数量超过限制。
-	INVALIDPARAMETER_RECORDROLLLIMITCOUNTEXCEED = "InvalidParameter.RecordRolllimitCountExceed"
+	// 记录负载均衡数量超过限制
+	INVALIDPARAMETER_RECORDROLLLIMITCOUNTEXCEED = "InvalidParameter.RecordRollLimitCountExceed"
 
 	// TXT记录负载均衡数量超过10。
 	INVALIDPARAMETER_RECORDTXTCOUNTEXCEED = "InvalidParameter.RecordTXTCountExceed"

@@ -41,6 +41,9 @@ const (
 	// 请求的文本格式错误（需要base64编码格式的文本）。
 	INVALIDPARAMETERVALUE_ERRTEXTCONTENTTYPE = "InvalidParameterValue.ErrTextContentType"
 
+	// Type参数值不支持
+	INVALIDPARAMETERVALUE_ERRTYPE = "InvalidParameterValue.ErrType"
+
 	// 请求的次数超过了频率限制。
 	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 

@@ -10764,7 +10764,7 @@ type SecurityGroupRule struct {
 	// （入参时无需填写，自动生成）规则对应的唯一id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// （入参时、Enable已弃用；由通用配置中新增规则启用状态控制）
+	// （入参时Enable无意义；由通用配置中新增规则启用状态控制）
 	// 规则状态，true表示启用，false表示禁用
 	Enable *string `json:"Enable,omitnil,omitempty" name:"Enable"`
 

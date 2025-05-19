@@ -5851,9 +5851,13 @@ func (r *DescribeBackupConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBackupConfigResponseParams struct {
 	// 自动备份开始的最早时间点，单位为时刻。例如，2 - 凌晨 2:00。（该字段已废弃，建议使用 BackupTimeWindow 字段）
+	//
+	// Deprecated: StartTimeMin is deprecated.
 	StartTimeMin *int64 `json:"StartTimeMin,omitnil,omitempty" name:"StartTimeMin"`
 
 	// 自动备份开始的最晚时间点，单位为时刻。例如，6 - 凌晨 6:00。（该字段已废弃，建议使用 BackupTimeWindow 字段）
+	//
+	// Deprecated: StartTimeMax is deprecated.
 	StartTimeMax *int64 `json:"StartTimeMax,omitnil,omitempty" name:"StartTimeMax"`
 
 	// 备份文件保留时间，单位为天。
@@ -11321,6 +11325,8 @@ func (r *IsolateDBInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type IsolateDBInstanceResponseParams struct {
 	// 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。(该返回字段目前已废弃，可以通过 DescribeDBInstances 接口查询实例的隔离状态)
+	//
+	// Deprecated: AsyncRequestId is deprecated.
 	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13330,6 +13336,8 @@ func (r *ModifyDBInstanceVipVportRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDBInstanceVipVportResponseParams struct {
 	// 异步任务ID。(该返回字段目前已废弃)
+	//
+	// Deprecated: AsyncRequestId is deprecated.
 	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13973,6 +13981,8 @@ type ModifyRoGroupInfoRequestParams struct {
 	IsBalanceRoLoad *int64 `json:"IsBalanceRoLoad,omitnil,omitempty" name:"IsBalanceRoLoad"`
 
 	// 废弃参数，无意义。
+	//
+	// Deprecated: ReplicationDelayTime is deprecated.
 	ReplicationDelayTime *int64 `json:"ReplicationDelayTime,omitnil,omitempty" name:"ReplicationDelayTime"`
 }
 

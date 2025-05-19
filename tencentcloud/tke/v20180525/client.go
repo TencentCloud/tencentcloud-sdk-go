@@ -8606,12 +8606,7 @@ func NewDescribeOpenPolicyListResponse() (response *DescribeOpenPolicyListRespon
 // 查询opa策略列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
-//  FAILEDOPERATION_POLICYSERVERCOMMONERROR = "FailedOperation.PolicyServerCommonError"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
-//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND_LOGCOLLECTORCLSLOGTOPICNOTEXISTS = "ResourceNotFound.LogCollectorClsLogTopicNotExists"
 func (c *Client) DescribeOpenPolicyList(request *DescribeOpenPolicyListRequest) (response *DescribeOpenPolicyListResponse, err error) {
     return c.DescribeOpenPolicyListWithContext(context.Background(), request)
 }
@@ -8620,12 +8615,7 @@ func (c *Client) DescribeOpenPolicyList(request *DescribeOpenPolicyListRequest) 
 // 查询opa策略列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
-//  FAILEDOPERATION_POLICYSERVERCOMMONERROR = "FailedOperation.PolicyServerCommonError"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
-//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND_LOGCOLLECTORCLSLOGTOPICNOTEXISTS = "ResourceNotFound.LogCollectorClsLogTopicNotExists"
 func (c *Client) DescribeOpenPolicyListWithContext(ctx context.Context, request *DescribeOpenPolicyListRequest) (response *DescribeOpenPolicyListResponse, err error) {
     if request == nil {
         request = NewDescribeOpenPolicyListRequest()
@@ -11698,83 +11688,6 @@ func (c *Client) EnableVpcCniNetworkTypeWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewEnableVpcCniNetworkTypeResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewForwardApplicationRequestV3Request() (request *ForwardApplicationRequestV3Request) {
-    request = &ForwardApplicationRequestV3Request{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("tke", APIVersion, "ForwardApplicationRequestV3")
-    
-    
-    return
-}
-
-func NewForwardApplicationRequestV3Response() (response *ForwardApplicationRequestV3Response) {
-    response = &ForwardApplicationRequestV3Response{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ForwardApplicationRequestV3
-// 操作TKE集群的addon
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-//  UNSUPPORTEDOPERATION_NOTINWHITELIST = "UnsupportedOperation.NotInWhitelist"
-func (c *Client) ForwardApplicationRequestV3(request *ForwardApplicationRequestV3Request) (response *ForwardApplicationRequestV3Response, err error) {
-    return c.ForwardApplicationRequestV3WithContext(context.Background(), request)
-}
-
-// ForwardApplicationRequestV3
-// 操作TKE集群的addon
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-//  UNSUPPORTEDOPERATION_NOTINWHITELIST = "UnsupportedOperation.NotInWhitelist"
-func (c *Client) ForwardApplicationRequestV3WithContext(ctx context.Context, request *ForwardApplicationRequestV3Request) (response *ForwardApplicationRequestV3Response, err error) {
-    if request == nil {
-        request = NewForwardApplicationRequestV3Request()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ForwardApplicationRequestV3 require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewForwardApplicationRequestV3Response()
     err = c.Send(request, response)
     return
 }

@@ -2833,6 +2833,12 @@ type DescribeInstanceStateResponseParams struct {
 	// 集群流程错误信息，例如：“创建失败，资源不足”
 	FlowMsg *string `json:"FlowMsg,omitnil,omitempty" name:"FlowMsg"`
 
+	// 流程ProcessId
+	ProcessId *string `json:"ProcessId,omitnil,omitempty" name:"ProcessId"`
+
+	// Job名称
+	JobName *string `json:"JobName,omitnil,omitempty" name:"JobName"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

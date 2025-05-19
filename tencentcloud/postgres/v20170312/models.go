@@ -581,67 +581,6 @@ func (r *CloseDBExtranetAccessResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type CloseServerlessDBExtranetAccessRequestParams struct {
-	// 实例唯一标识符
-	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
-
-	// 实例名称
-	DBInstanceName *string `json:"DBInstanceName,omitnil,omitempty" name:"DBInstanceName"`
-}
-
-type CloseServerlessDBExtranetAccessRequest struct {
-	*tchttp.BaseRequest
-	
-	// 实例唯一标识符
-	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
-
-	// 实例名称
-	DBInstanceName *string `json:"DBInstanceName,omitnil,omitempty" name:"DBInstanceName"`
-}
-
-func (r *CloseServerlessDBExtranetAccessRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CloseServerlessDBExtranetAccessRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "DBInstanceId")
-	delete(f, "DBInstanceName")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloseServerlessDBExtranetAccessRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CloseServerlessDBExtranetAccessResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type CloseServerlessDBExtranetAccessResponse struct {
-	*tchttp.BaseResponse
-	Response *CloseServerlessDBExtranetAccessResponseParams `json:"Response"`
-}
-
-func (r *CloseServerlessDBExtranetAccessResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CloseServerlessDBExtranetAccessResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type CreateAccountRequestParams struct {
 	// 实例ID。
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
@@ -3084,67 +3023,6 @@ func (r *DeleteReadOnlyGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteReadOnlyGroupResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteServerlessDBInstanceRequestParams struct {
-	// DB实例名称，实例名和实例ID必须至少传一个，如果同时存在，将只以实例ID为准。
-	DBInstanceName *string `json:"DBInstanceName,omitnil,omitempty" name:"DBInstanceName"`
-
-	// DB实例ID，实例名和实例ID必须至少传一个，如果同时存在，将只以实例ID为准。
-	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
-}
-
-type DeleteServerlessDBInstanceRequest struct {
-	*tchttp.BaseRequest
-	
-	// DB实例名称，实例名和实例ID必须至少传一个，如果同时存在，将只以实例ID为准。
-	DBInstanceName *string `json:"DBInstanceName,omitnil,omitempty" name:"DBInstanceName"`
-
-	// DB实例ID，实例名和实例ID必须至少传一个，如果同时存在，将只以实例ID为准。
-	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
-}
-
-func (r *DeleteServerlessDBInstanceRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteServerlessDBInstanceRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "DBInstanceName")
-	delete(f, "DBInstanceId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteServerlessDBInstanceRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteServerlessDBInstanceResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DeleteServerlessDBInstanceResponse struct {
-	*tchttp.BaseResponse
-	Response *DeleteServerlessDBInstanceResponseParams `json:"Response"`
-}
-
-func (r *DeleteServerlessDBInstanceResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteServerlessDBInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -33,20 +33,20 @@ type ApplicationInfo struct {
 	// 应用的环境配置
 	ConfigEnvironment *string `json:"ConfigEnvironment,omitnil,omitempty" name:"ConfigEnvironment"`
 
-	// 系统盘大小下限
+	// 系统盘大小下限，单位GB
 	MinSystemDiskSize *int64 `json:"MinSystemDiskSize,omitnil,omitempty" name:"MinSystemDiskSize"`
 
-	// 应用类型，目前该项取值可以为PRIVATE_APPLICATION或者PUBLIC_APPLICATION
+	// 应用类型，目前该项取值可以为PUBLIC_APPLICATION（公共应用）；PRIVATE_APPLICATION（自定义应用）；COMMUNITY_APPLICATION（社区应用）
 	ApplicationType *string `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
 
 	// 应用状态：CREATING-创建中；ONLINE -正常在线；DELETING -删除中；ARREARS - 欠费隔离
 	// 示例值：ONLINE
 	ApplicationState *string `json:"ApplicationState,omitnil,omitempty" name:"ApplicationState"`
 
-	// 应用创建时间
+	// 应用创建时间，格式：%Y-%m-%d %H:%M:%S
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 应用大小
+	// 应用大小，单位GB
 	ApplicationSize *int64 `json:"ApplicationSize,omitnil,omitempty" name:"ApplicationSize"`
 }
 
@@ -197,19 +197,13 @@ type DescribeApplicationsRequestParams struct {
 	// 应用id列表
 	ApplicationIds []*string `json:"ApplicationIds,omitnil,omitempty" name:"ApplicationIds"`
 
-	// 过滤器，跟ApplicationIds不能共用，支持的filter主要有：
-	// application-id: 精确匹配;
-	// scene-id: 精确匹配;
-	// application-name: 模糊匹配;
-	// application-type: 精确匹配;
+	// 过滤器，跟ApplicationIds不能共用，支持的filter主要有：application-id: 精确匹配;scene-id: 精确匹配，通过调用接口 [DescribeScenes](https://cloud.tencent.com/document/api/1721/101608)获取;application-name: 模糊匹配;application-type: 精确匹配，枚举类型如下：PUBLIC_APPLICATION（公共应用）/ PRIVATE_APPLICATION（自定义应用）/ COMMUNITY_APPLICATION（社区应用）;
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0
+	// 偏移量，不得小于0，默认为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回量，默认为20
-	// MC：1000
-	// 用户：100
+	// 返回量，不得大于100，默认为20
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 应用列表排序的依据字段。取值范围："CREATED_TIME"：依据应用的创建时间排序。 "APPLICATION_SIZE"：依据应用的大小排序。默认按应用的创建时间排序。
@@ -225,19 +219,13 @@ type DescribeApplicationsRequest struct {
 	// 应用id列表
 	ApplicationIds []*string `json:"ApplicationIds,omitnil,omitempty" name:"ApplicationIds"`
 
-	// 过滤器，跟ApplicationIds不能共用，支持的filter主要有：
-	// application-id: 精确匹配;
-	// scene-id: 精确匹配;
-	// application-name: 模糊匹配;
-	// application-type: 精确匹配;
+	// 过滤器，跟ApplicationIds不能共用，支持的filter主要有：application-id: 精确匹配;scene-id: 精确匹配，通过调用接口 [DescribeScenes](https://cloud.tencent.com/document/api/1721/101608)获取;application-name: 模糊匹配;application-type: 精确匹配，枚举类型如下：PUBLIC_APPLICATION（公共应用）/ PRIVATE_APPLICATION（自定义应用）/ COMMUNITY_APPLICATION（社区应用）;
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0
+	// 偏移量，不得小于0，默认为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回量，默认为20
-	// MC：1000
-	// 用户：100
+	// 返回量，不得大于100，默认为20
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 应用列表排序的依据字段。取值范围："CREATED_TIME"：依据应用的创建时间排序。 "APPLICATION_SIZE"：依据应用的大小排序。默认按应用的创建时间排序。
@@ -301,14 +289,14 @@ func (r *DescribeApplicationsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceNetworkStatusRequestParams struct {
-	// 实例ID数组，单次请求最多不超过100个实例
+	// 实例ID数组，单次请求最多不超过100个实例；实例ID通过调用接口[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612)获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
 type DescribeInstanceNetworkStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID数组，单次请求最多不超过100个实例
+	// 实例ID数组，单次请求最多不超过100个实例；实例ID通过调用接口[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612)获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 }
 
@@ -361,32 +349,32 @@ func (r *DescribeInstanceNetworkStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesRequestParams struct {
-	// 实例元组
+	// 实例元组，数量上限100
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有：instance-id，实例id；instance-state，实例状态；charge-type，付费方式；public-ip-address，公网IP过滤
+	// 描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有： instance-id，实例id； instance-state，实例状态：RUNNING，PENDING，STOPPED，ARREARS，STOPPED_NO_CHARGE； charge-type，付费方式：PREPAID_BY_MONTH，POSTPAID_BY_HOUR； public-ip-address，公网IP过滤
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0
+	// 偏移量，默认为0，不得大于100
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回量，默认为20
+	// 返回量，默认为20，不能小于0
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例元组
+	// 实例元组，数量上限100
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有：instance-id，实例id；instance-state，实例状态；charge-type，付费方式；public-ip-address，公网IP过滤
+	// 描述键值对过滤器，用于条件过滤查询。目前支持的过滤器有： instance-id，实例id； instance-state，实例状态：RUNNING，PENDING，STOPPED，ARREARS，STOPPED_NO_CHARGE； charge-type，付费方式：PREPAID_BY_MONTH，POSTPAID_BY_HOUR； public-ip-address，公网IP过滤
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0
+	// 偏移量，默认为0，不得大于100
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 返回量，默认为20
+	// 返回量，默认为20，不能小于0
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -584,14 +572,14 @@ func (r *DescribeRegionsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeScenesRequestParams struct {
-	// 场景id列表
+	// 场景id列表，单次能查询100个场景id
 	SceneIds []*string `json:"SceneIds,omitnil,omitempty" name:"SceneIds"`
 }
 
 type DescribeScenesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 场景id列表
+	// 场景id列表，单次能查询100个场景id
 	SceneIds []*string `json:"SceneIds,omitnil,omitempty" name:"SceneIds"`
 }
 
@@ -641,7 +629,7 @@ func (r *DescribeScenesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeServiceLoginSettingsRequestParams struct {
-	// 实例id
+	// 实例ID通过调用接口[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612)获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 服务名称
@@ -651,7 +639,7 @@ type DescribeServiceLoginSettingsRequestParams struct {
 type DescribeServiceLoginSettingsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// 实例ID通过调用接口[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612)获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 服务名称
@@ -713,19 +701,19 @@ type Filter struct {
 
 // Predefined struct for user
 type InquirePriceRunInstancesRequestParams struct {
-	// 应用ID
+	// 应用ID通过调用接口[DescribeApplications](https://cloud.tencent.com/document/api/1721/101609)获取。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 算力套餐类型
+	// 算力套餐类型, 枚举：XL,XL_2X, 3XL, 3XL_2X, 4XL, 24GB_A.
 	BundleType *string `json:"BundleType,omitnil,omitempty" name:"BundleType"`
 
 	// 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
 	SystemDisk *SystemDisk `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
 
-	// 购买实例数量。
+	// 购买实例数量，单次请求实例数量上限为10。
 	InstanceCount *uint64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
-	// 实例显示名称
+	// 实例显示名称，名称长度限制为128个字符。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 幂等请求token
@@ -744,19 +732,19 @@ type InquirePriceRunInstancesRequestParams struct {
 type InquirePriceRunInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID通过调用接口[DescribeApplications](https://cloud.tencent.com/document/api/1721/101609)获取。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 算力套餐类型
+	// 算力套餐类型, 枚举：XL,XL_2X, 3XL, 3XL_2X, 4XL, 24GB_A.
 	BundleType *string `json:"BundleType,omitnil,omitempty" name:"BundleType"`
 
 	// 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
 	SystemDisk *SystemDisk `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
 
-	// 购买实例数量。
+	// 购买实例数量，单次请求实例数量上限为10。
 	InstanceCount *uint64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
-	// 实例显示名称
+	// 实例显示名称，名称长度限制为128个字符。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 幂等请求token
@@ -853,13 +841,13 @@ type Instance struct {
 	// 算力
 	GPUPerformance *string `json:"GPUPerformance,omitnil,omitempty" name:"GPUPerformance"`
 
-	// 显存
+	// 显存，单位：GB
 	GPUMemory *string `json:"GPUMemory,omitnil,omitempty" name:"GPUMemory"`
 
-	// CPU核数
+	// CPU核数，单位：核
 	CPU *string `json:"CPU,omitnil,omitempty" name:"CPU"`
 
-	// 内存
+	// 内存，单位：GB
 	Memory *string `json:"Memory,omitnil,omitempty" name:"Memory"`
 
 	// 系统盘数据
@@ -883,13 +871,13 @@ type Instance struct {
 	// FAILED：表示操作失败
 	LatestOperationState *string `json:"LatestOperationState,omitnil,omitempty" name:"LatestOperationState"`
 
-	// 实例创建时间
+	// 实例创建时间，时间格式："YYYY-MM-DD HH:MM:SS"
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 公网出带宽上限，默认10Mbps
+	// 公网出带宽上限，默认10Mbps，单位：Mbps
 	MaxOutBandwidth *string `json:"MaxOutBandwidth,omitnil,omitempty" name:"MaxOutBandwidth"`
 
-	// 每月免费流量，默认500G
+	// 每月免费流量，默认500G，单位：GB
 	MaxFreeTraffic *string `json:"MaxFreeTraffic,omitnil,omitempty" name:"MaxFreeTraffic"`
 
 	// 应用配置环境
@@ -898,7 +886,7 @@ type Instance struct {
 	// 实例包含的登录服务详情
 	LoginServices []*LoginService `json:"LoginServices,omitnil,omitempty" name:"LoginServices"`
 
-	// 应用服务的操作系统类型
+	// 应用服务的操作系统类型；参数：linux、windows
 	OSType *string `json:"OSType,omitnil,omitempty" name:"OSType"`
 }
 
@@ -1024,10 +1012,10 @@ type Price struct {
 }
 
 type RegionInfo struct {
-	// ap-guangzhou
+	// 地域
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 华南地区(广州)
+	// 地域名称
 	RegionName *string `json:"RegionName,omitnil,omitempty" name:"RegionName"`
 
 	// 地域是否可用状态
@@ -1035,25 +1023,25 @@ type RegionInfo struct {
 	RegionState *string `json:"RegionState,omitnil,omitempty" name:"RegionState"`
 
 	// 学术加速是否支持：
-	// NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_SUPPORT表示已经支持。对于ALREADY_SUPPORT的地域才需进一步调用DescribeScholarRocketStatus查看学术加速是开启还是关闭
+	// NO_NEED_SUPPORT表示不需支持；NOT_SUPPORT_YET表示暂未支持；ALREADY_SUPPORT表示已经支持。
 	ScholarRocketSupportState *string `json:"ScholarRocketSupportState,omitnil,omitempty" name:"ScholarRocketSupportState"`
 }
 
 // Predefined struct for user
 type RunInstancesRequestParams struct {
-	// 应用ID
+	// 应用ID通过调用接口[DescribeApplications](https://cloud.tencent.com/document/api/1721/101609)获取。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 算力套餐类型
+	// 算力套餐类型, 枚举：XL,XL_2X, 3XL, 3XL_2X, 4XL, 24GB_A
 	BundleType *string `json:"BundleType,omitnil,omitempty" name:"BundleType"`
 
 	// 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
 	SystemDisk *SystemDisk `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
 
-	// 购买实例数量。
+	// 购买实例数量，单次请求实例数量上限为10.
 	InstanceCount *uint64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
-	// 实例显示名称
+	// 实例显示名称，名称长度限制为128个字符.
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 幂等请求的token
@@ -1066,19 +1054,19 @@ type RunInstancesRequestParams struct {
 type RunInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用ID
+	// 应用ID通过调用接口[DescribeApplications](https://cloud.tencent.com/document/api/1721/101609)获取。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
-	// 算力套餐类型
+	// 算力套餐类型, 枚举：XL,XL_2X, 3XL, 3XL_2X, 4XL, 24GB_A
 	BundleType *string `json:"BundleType,omitnil,omitempty" name:"BundleType"`
 
 	// 实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。
 	SystemDisk *SystemDisk `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
 
-	// 购买实例数量。
+	// 购买实例数量，单次请求实例数量上限为10.
 	InstanceCount *uint64 `json:"InstanceCount,omitnil,omitempty" name:"InstanceCount"`
 
-	// 实例显示名称
+	// 实例显示名称，名称长度限制为128个字符.
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 幂等请求的token
@@ -1149,6 +1137,7 @@ type SceneInfo struct {
 // Predefined struct for user
 type StartInstanceRequestParams struct {
 	// 实例ID
+	// 可通过DescribeInstances获取实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 默认为False，True代表只验证接口连通性
@@ -1159,6 +1148,7 @@ type StartInstanceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID
+	// 可通过DescribeInstances获取实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 默认为False，True代表只验证接口连通性
@@ -1213,6 +1203,7 @@ func (r *StartInstanceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type StopInstanceRequestParams struct {
 	// 实例ID
+	// 可通过DescribeInstances获取实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// hai实例关机的模式，目前仅支持关机不收费：
@@ -1228,6 +1219,7 @@ type StopInstanceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID
+	// 可通过DescribeInstances获取实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// hai实例关机的模式，目前仅支持关机不收费：
@@ -1289,7 +1281,7 @@ type SystemDisk struct {
 	// 系统盘类型。取值范围：<li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_HSSD：增强型SSD云盘</li>默认取值：当前有库存的硬盘类型。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 系统盘大小，单位：GB。默认值为 80
+	// 系统盘大小，单位：GB。默认值为 80，取值范围：80-1000
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
 	// 系统盘分区盘符
@@ -1299,6 +1291,7 @@ type SystemDisk struct {
 // Predefined struct for user
 type TerminateInstancesRequestParams struct {
 	// 实例ID列表
+	// 可通过DescribeInstances接口获取ID列表.单次能查询100个InstanceId
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 默认为False，True代表只验证接口连通性
@@ -1309,6 +1302,7 @@ type TerminateInstancesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID列表
+	// 可通过DescribeInstances接口获取ID列表.单次能查询100个InstanceId
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 默认为False，True代表只验证接口连通性
