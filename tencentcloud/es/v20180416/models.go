@@ -930,6 +930,12 @@ type CreateLogstashInstanceRequestParams struct {
 
 	// 可维护时间段
 	OperationDuration *OperationDuration `json:"OperationDuration,omitnil,omitempty" name:"OperationDuration"`
+
+	// 多可用区部署时可用区的详细信息
+	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitnil,omitempty" name:"MultiZoneInfo"`
+
+	// 部署模式，0：单可用区、1：多可用区
+	DeployMode *uint64 `json:"DeployMode,omitnil,omitempty" name:"DeployMode"`
 }
 
 type CreateLogstashInstanceRequest struct {
@@ -988,6 +994,12 @@ type CreateLogstashInstanceRequest struct {
 
 	// 可维护时间段
 	OperationDuration *OperationDuration `json:"OperationDuration,omitnil,omitempty" name:"OperationDuration"`
+
+	// 多可用区部署时可用区的详细信息
+	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitnil,omitempty" name:"MultiZoneInfo"`
+
+	// 部署模式，0：单可用区、1：多可用区
+	DeployMode *uint64 `json:"DeployMode,omitnil,omitempty" name:"DeployMode"`
 }
 
 func (r *CreateLogstashInstanceRequest) ToJsonString() string {
@@ -1020,6 +1032,8 @@ func (r *CreateLogstashInstanceRequest) FromJsonString(s string) error {
 	delete(f, "LicenseType")
 	delete(f, "TagList")
 	delete(f, "OperationDuration")
+	delete(f, "MultiZoneInfo")
+	delete(f, "DeployMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLogstashInstanceRequest has unknown keys!", "")
 	}
@@ -5000,6 +5014,12 @@ type LogstashInstanceInfo struct {
 	// 内存大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemSize *uint64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
+
+	// 部署模式，0：单可用区、1：多可用区
+	DeployMode *uint64 `json:"DeployMode,omitnil,omitempty" name:"DeployMode"`
+
+	// 多可用区部署时可用区的详细信息
+	MultiZoneInfo []*ZoneDetail `json:"MultiZoneInfo,omitnil,omitempty" name:"MultiZoneInfo"`
 }
 
 type LogstashNodeInfo struct {
@@ -7969,4 +7989,8 @@ type ZoneDetail struct {
 
 	// 子网ID
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 是否为隐藏可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hidden *bool `json:"Hidden,omitnil,omitempty" name:"Hidden"`
 }

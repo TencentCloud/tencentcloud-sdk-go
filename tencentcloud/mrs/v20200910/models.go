@@ -383,6 +383,9 @@ type Block struct {
 
 	// 体检报告信息
 	PhysicalExamination *PhysicalExaminationV1 `json:"PhysicalExamination,omitnil,omitempty" name:"PhysicalExamination"`
+
+	// 内窥镜报告V2
+	EndoscopyV2 []*Check `json:"EndoscopyV2,omitnil,omitempty" name:"EndoscopyV2"`
 }
 
 type BlockInfo struct {
@@ -2414,6 +2417,9 @@ type IndicatorItem struct {
 
 	// 推测结果是否异常
 	InferNormal *string `json:"InferNormal,omitnil,omitempty" name:"InferNormal"`
+
+	// 标本
+	Sample *string `json:"Sample,omitnil,omitempty" name:"Sample"`
 }
 
 type IndicatorItemV2 struct {
@@ -4572,6 +4578,9 @@ type Template struct {
 
 	// 时间轴
 	Timeline *TimelineInformation `json:"Timeline,omitnil,omitempty" name:"Timeline"`
+
+	// 内窥镜报告V2
+	EndoscopyV2 *Check `json:"EndoscopyV2,omitnil,omitempty" name:"EndoscopyV2"`
 }
 
 // Predefined struct for user

@@ -71,6 +71,7 @@ func NewAcquireClusterAdminRoleResponse() (response *AcquireClusterAdminRoleResp
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
 //  FAILEDOPERATION_KUBERNETESGETOPERATIONERROR = "FailedOperation.KubernetesGetOperationError"
+//  FAILEDOPERATION_KUBERNETESRESOURCEEXISTED = "FailedOperation.KubernetesResourceExisted"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INTERNALERROR_KUBERNETESCLIENTBUILDERROR = "InternalError.KubernetesClientBuildError"
@@ -96,6 +97,7 @@ func (c *Client) AcquireClusterAdminRole(request *AcquireClusterAdminRoleRequest
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
 //  FAILEDOPERATION_KUBERNETESGETOPERATIONERROR = "FailedOperation.KubernetesGetOperationError"
+//  FAILEDOPERATION_KUBERNETESRESOURCEEXISTED = "FailedOperation.KubernetesResourceExisted"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
 //  INTERNALERROR_KUBERNETESCLIENTBUILDERROR = "InternalError.KubernetesClientBuildError"
@@ -6041,6 +6043,7 @@ func NewDescribeClusterKubeconfigResponse() (response *DescribeClusterKubeconfig
 //  RESOURCENOTFOUND_KUBERNETESRESOURCENOTFOUND = "ResourceNotFound.KubernetesResourceNotFound"
 //  RESOURCEUNAVAILABLE_CLUSTERINABNORMALSTAT = "ResourceUnavailable.ClusterInAbnormalStat"
 //  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNAUTHORIZEDOPERATION_NORBACPERMISSIONS = "UnauthorizedOperation.NoRBACPermissions"
 func (c *Client) DescribeClusterKubeconfig(request *DescribeClusterKubeconfigRequest) (response *DescribeClusterKubeconfigResponse, err error) {
     return c.DescribeClusterKubeconfigWithContext(context.Background(), request)
 }
@@ -6071,6 +6074,7 @@ func (c *Client) DescribeClusterKubeconfig(request *DescribeClusterKubeconfigReq
 //  RESOURCENOTFOUND_KUBERNETESRESOURCENOTFOUND = "ResourceNotFound.KubernetesResourceNotFound"
 //  RESOURCEUNAVAILABLE_CLUSTERINABNORMALSTAT = "ResourceUnavailable.ClusterInAbnormalStat"
 //  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNAUTHORIZEDOPERATION_NORBACPERMISSIONS = "UnauthorizedOperation.NoRBACPermissions"
 func (c *Client) DescribeClusterKubeconfigWithContext(ctx context.Context, request *DescribeClusterKubeconfigRequest) (response *DescribeClusterKubeconfigResponse, err error) {
     if request == nil {
         request = NewDescribeClusterKubeconfigRequest()
@@ -6220,6 +6224,7 @@ func NewDescribeClusterNodePoolDetailResponse() (response *DescribeClusterNodePo
 // 查询节点池详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NODEPOOLQUERYFAILED = "FailedOperation.NodePoolQueryFailed"
 //  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -6233,6 +6238,7 @@ func (c *Client) DescribeClusterNodePoolDetail(request *DescribeClusterNodePoolD
 // 查询节点池详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NODEPOOLQUERYFAILED = "FailedOperation.NodePoolQueryFailed"
 //  INTERNALERROR_CLUSTERNOTFOUND = "InternalError.ClusterNotFound"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -6277,6 +6283,7 @@ func NewDescribeClusterNodePoolsResponse() (response *DescribeClusterNodePoolsRe
 // 查询节点池列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NODEPOOLQUERYFAILED = "FailedOperation.NodePoolQueryFailed"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -6290,6 +6297,7 @@ func (c *Client) DescribeClusterNodePools(request *DescribeClusterNodePoolsReque
 // 查询节点池列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NODEPOOLQUERYFAILED = "FailedOperation.NodePoolQueryFailed"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -8235,6 +8243,7 @@ func NewDescribeIPAMDResponse() (response *DescribeIPAMDResponse) {
 //  FAILEDOPERATION_ENABLEVPCCNIFAILED = "FailedOperation.EnableVPCCNIFailed"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEINUSE_TKEAPISERVERGETERROR = "ResourceInUse.TKEAPIServerGetError"
 func (c *Client) DescribeIPAMD(request *DescribeIPAMDRequest) (response *DescribeIPAMDResponse, err error) {
     return c.DescribeIPAMDWithContext(context.Background(), request)
 }
@@ -8246,6 +8255,7 @@ func (c *Client) DescribeIPAMD(request *DescribeIPAMDRequest) (response *Describ
 //  FAILEDOPERATION_ENABLEVPCCNIFAILED = "FailedOperation.EnableVPCCNIFailed"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEINUSE_TKEAPISERVERGETERROR = "ResourceInUse.TKEAPIServerGetError"
 func (c *Client) DescribeIPAMDWithContext(ctx context.Context, request *DescribeIPAMDRequest) (response *DescribeIPAMDResponse, err error) {
     if request == nil {
         request = NewDescribeIPAMDRequest()
@@ -14191,6 +14201,7 @@ func NewSetNodePoolNodeProtectionResponse() (response *SetNodePoolNodeProtection
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SetNodePoolNodeProtection(request *SetNodePoolNodeProtectionRequest) (response *SetNodePoolNodeProtectionResponse, err error) {
     return c.SetNodePoolNodeProtectionWithContext(context.Background(), request)
@@ -14211,6 +14222,7 @@ func (c *Client) SetNodePoolNodeProtection(request *SetNodePoolNodeProtectionReq
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SetNodePoolNodeProtectionWithContext(ctx context.Context, request *SetNodePoolNodeProtectionRequest) (response *SetNodePoolNodeProtectionResponse, err error) {
     if request == nil {

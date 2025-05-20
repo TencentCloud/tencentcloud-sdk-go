@@ -2155,6 +2155,100 @@ type RetrievalSetting struct {
 }
 
 // Predefined struct for user
+type RetrieveKnowledgeRealtimeRequestParams struct {
+	// 知识库ID。
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// 用于检索的文本。
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 实时文件ID列表。
+	DocIds []*string `json:"DocIds,omitnil,omitempty" name:"DocIds"`
+
+	// 检索方法，默认使用`HYBRID`混合检索。
+	// - `SEMANTIC`：语义检索
+	// - `FULL_TEXT`：全文检索
+	// - `HYBRID`：混合检索
+	RetrievalMethod *string `json:"RetrievalMethod,omitnil,omitempty" name:"RetrievalMethod"`
+
+	// 检索设置。
+	RetrievalSetting *RetrievalSetting `json:"RetrievalSetting,omitnil,omitempty" name:"RetrievalSetting"`
+}
+
+type RetrieveKnowledgeRealtimeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 知识库ID。
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
+
+	// 用于检索的文本。
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 实时文件ID列表。
+	DocIds []*string `json:"DocIds,omitnil,omitempty" name:"DocIds"`
+
+	// 检索方法，默认使用`HYBRID`混合检索。
+	// - `SEMANTIC`：语义检索
+	// - `FULL_TEXT`：全文检索
+	// - `HYBRID`：混合检索
+	RetrievalMethod *string `json:"RetrievalMethod,omitnil,omitempty" name:"RetrievalMethod"`
+
+	// 检索设置。
+	RetrievalSetting *RetrievalSetting `json:"RetrievalSetting,omitnil,omitempty" name:"RetrievalSetting"`
+}
+
+func (r *RetrieveKnowledgeRealtimeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RetrieveKnowledgeRealtimeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KnowledgeBaseId")
+	delete(f, "Query")
+	delete(f, "DocIds")
+	delete(f, "RetrievalMethod")
+	delete(f, "RetrievalSetting")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RetrieveKnowledgeRealtimeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RetrieveKnowledgeRealtimeResponseParams struct {
+	// 检索结果
+	Records []*RetrievalRecord `json:"Records,omitnil,omitempty" name:"Records"`
+
+	// 检索结果数量
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RetrieveKnowledgeRealtimeResponse struct {
+	*tchttp.BaseResponse
+	Response *RetrieveKnowledgeRealtimeResponseParams `json:"Response"`
+}
+
+func (r *RetrieveKnowledgeRealtimeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RetrieveKnowledgeRealtimeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RetrieveKnowledgeRequestParams struct {
 	// 知识库ID。
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
@@ -2354,108 +2448,6 @@ type SplitDocumentFailedPage struct {
 	// 失败页码	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
-}
-
-// Predefined struct for user
-type UploadDocRealtimeRequestParams struct {
-	// 知识库ID
-	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
-
-	// 文件名，可选。
-	// **需带文件类型后缀**，当文件名无法从传入的`FileUrl`获取时需要通过该字段来明确。
-	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
-
-	// 文件类型。
-	// **支持的文件类型：**
-	// - `PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`
-	// 
-	// **支持的文件大小：**
-	//  - `PDF`、`DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M 
-	//  - `TXT`、`MD` 最大10M 
-	//  - 其他 最大20M
-	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
-
-	// 文件的 URL 地址。
-	// 文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
-	// 参考：[腾讯云COS文档](https://cloud.tencent.com/document/product/436/7749)
-	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
-
-	// 过期时间的秒数，最长24小时，默认24小时
-	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
-}
-
-type UploadDocRealtimeRequest struct {
-	*tchttp.BaseRequest
-	
-	// 知识库ID
-	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitnil,omitempty" name:"KnowledgeBaseId"`
-
-	// 文件名，可选。
-	// **需带文件类型后缀**，当文件名无法从传入的`FileUrl`获取时需要通过该字段来明确。
-	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
-
-	// 文件类型。
-	// **支持的文件类型：**
-	// - `PDF`、`DOC`、`DOCX`、`XLS`、`XLSX`、`PPT`、`PPTX`、`MD`、`TXT`、`PNG`、`JPG`、`JPEG`、`CSV`、`HTML`、`EPUB`
-	// 
-	// **支持的文件大小：**
-	//  - `PDF`、`DOCX`、`DOC`、`PPT`、`PPTX` 最大 200M 
-	//  - `TXT`、`MD` 最大10M 
-	//  - 其他 最大20M
-	FileType *string `json:"FileType,omitnil,omitempty" name:"FileType"`
-
-	// 文件的 URL 地址。
-	// 文件存储于腾讯云的 URL 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 URL 速度和稳定性可能受一定影响。
-	// 参考：[腾讯云COS文档](https://cloud.tencent.com/document/product/436/7749)
-	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
-
-	// 过期时间的秒数，最长24小时，默认24小时
-	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
-}
-
-func (r *UploadDocRealtimeRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *UploadDocRealtimeRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "KnowledgeBaseId")
-	delete(f, "FileName")
-	delete(f, "FileType")
-	delete(f, "FileUrl")
-	delete(f, "ExpireTime")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadDocRealtimeRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type UploadDocRealtimeResponseParams struct {
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type UploadDocRealtimeResponse struct {
-	tchttp.BaseSSEResponse `json:"-"`
-	Response *UploadDocRealtimeResponseParams `json:"Response"`
-}
-
-func (r *UploadDocRealtimeResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *UploadDocRealtimeResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

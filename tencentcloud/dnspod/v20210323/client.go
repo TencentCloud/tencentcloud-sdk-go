@@ -2709,7 +2709,7 @@ func NewDescribeBatchTaskResponse() (response *DescribeBatchTaskResponse) {
 }
 
 // DescribeBatchTask
-// 获取任务详情
+// 获取批量操作任务执行详情
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2722,7 +2722,7 @@ func (c *Client) DescribeBatchTask(request *DescribeBatchTaskRequest) (response 
 }
 
 // DescribeBatchTask
-// 获取任务详情
+// 获取批量操作任务执行详情
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5586,6 +5586,7 @@ func NewModifyDomainOwnerResponse() (response *ModifyDomainOwnerResponse) {
 //  INVALIDPARAMETER_OPERATEFAILED = "InvalidParameter.OperateFailed"
 //  INVALIDPARAMETER_OTHERACCOUNTUNREALNAME = "InvalidParameter.OtherAccountUnrealName"
 //  INVALIDPARAMETER_QCLOUDUININVALID = "InvalidParameter.QcloudUinInvalid"
+//  INVALIDPARAMETER_TRANSFERACCOUNTISBANNED = "InvalidParameter.TransferAccountIsBanned"
 //  INVALIDPARAMETER_USERAREAINVALID = "InvalidParameter.UserAreaInvalid"
 //  INVALIDPARAMETER_USERNOTEXISTS = "InvalidParameter.UserNotExists"
 //  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
@@ -5614,6 +5615,7 @@ func (c *Client) ModifyDomainOwner(request *ModifyDomainOwnerRequest) (response 
 //  INVALIDPARAMETER_OPERATEFAILED = "InvalidParameter.OperateFailed"
 //  INVALIDPARAMETER_OTHERACCOUNTUNREALNAME = "InvalidParameter.OtherAccountUnrealName"
 //  INVALIDPARAMETER_QCLOUDUININVALID = "InvalidParameter.QcloudUinInvalid"
+//  INVALIDPARAMETER_TRANSFERACCOUNTISBANNED = "InvalidParameter.TransferAccountIsBanned"
 //  INVALIDPARAMETER_USERAREAINVALID = "InvalidParameter.UserAreaInvalid"
 //  INVALIDPARAMETER_USERNOTEXISTS = "InvalidParameter.UserNotExists"
 //  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"

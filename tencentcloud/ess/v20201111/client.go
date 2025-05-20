@@ -7858,6 +7858,71 @@ func (c *Client) CreateUserMobileChangeUrlWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateUserNameChangeUrlRequest() (request *CreateUserNameChangeUrlRequest) {
+    request = &CreateUserNameChangeUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateUserNameChangeUrl")
+    
+    
+    return
+}
+
+func NewCreateUserNameChangeUrlResponse() (response *CreateUserNameChangeUrlResponse) {
+    response = &CreateUserNameChangeUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateUserNameChangeUrl
+// 生成个人用户实名更名链接，个人用户点击此链接进入更名流程（若用户未完成实名认证，则直接进入实名页面实名后再进行更名）。此链接为通用链接，任何点击生成链接的用户将会被引导至小程序个人更名页面完成更名。
+//
+// 
+//
+// 注： 调用此接口需要购买<font color="red"><b>单独的实名套餐包</b></font>。使用前请联系对接的客户经理沟通。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BALANCENOTENOUGH = "FailedOperation.BalanceNotEnough"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateUserNameChangeUrl(request *CreateUserNameChangeUrlRequest) (response *CreateUserNameChangeUrlResponse, err error) {
+    return c.CreateUserNameChangeUrlWithContext(context.Background(), request)
+}
+
+// CreateUserNameChangeUrl
+// 生成个人用户实名更名链接，个人用户点击此链接进入更名流程（若用户未完成实名认证，则直接进入实名页面实名后再进行更名）。此链接为通用链接，任何点击生成链接的用户将会被引导至小程序个人更名页面完成更名。
+//
+// 
+//
+// 注： 调用此接口需要购买<font color="red"><b>单独的实名套餐包</b></font>。使用前请联系对接的客户经理沟通。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BALANCENOTENOUGH = "FailedOperation.BalanceNotEnough"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateUserNameChangeUrlWithContext(ctx context.Context, request *CreateUserNameChangeUrlRequest) (response *CreateUserNameChangeUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateUserNameChangeUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserNameChangeUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserNameChangeUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateUserVerifyUrlRequest() (request *CreateUserVerifyUrlRequest) {
     request = &CreateUserVerifyUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7886,10 +7951,10 @@ func NewCreateUserVerifyUrlResponse() (response *CreateUserVerifyUrlResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  FAILEDOPERATION_BALANCENOTENOUGH = "FailedOperation.BalanceNotEnough"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) CreateUserVerifyUrl(request *CreateUserVerifyUrlRequest) (response *CreateUserVerifyUrlResponse, err error) {
     return c.CreateUserVerifyUrlWithContext(context.Background(), request)
 }
@@ -7903,10 +7968,10 @@ func (c *Client) CreateUserVerifyUrl(request *CreateUserVerifyUrlRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  FAILEDOPERATION_BALANCENOTENOUGH = "FailedOperation.BalanceNotEnough"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) CreateUserVerifyUrlWithContext(ctx context.Context, request *CreateUserVerifyUrlRequest) (response *CreateUserVerifyUrlResponse, err error) {
     if request == nil {
         request = NewCreateUserVerifyUrlRequest()

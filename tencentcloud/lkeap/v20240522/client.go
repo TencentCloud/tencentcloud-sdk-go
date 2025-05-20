@@ -1825,6 +1825,75 @@ func (c *Client) RetrieveKnowledgeWithContext(ctx context.Context, request *Retr
     return
 }
 
+func NewRetrieveKnowledgeRealtimeRequest() (request *RetrieveKnowledgeRealtimeRequest) {
+    request = &RetrieveKnowledgeRealtimeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lkeap", APIVersion, "RetrieveKnowledgeRealtime")
+    
+    
+    return
+}
+
+func NewRetrieveKnowledgeRealtimeResponse() (response *RetrieveKnowledgeRealtimeResponse) {
+    response = &RetrieveKnowledgeRealtimeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RetrieveKnowledgeRealtime
+// 用于实时检索在UploadDocRealtime接口上传的实时文档内容。 使用场景：适用于在会话中对文档进行问答的场景
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NONSUPPORTPARSE = "FailedOperation.NonsupportParse"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  FAILEDOPERATION_UPLOADRESULTFILEFAILED = "FailedOperation.UploadResultFileFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RetrieveKnowledgeRealtime(request *RetrieveKnowledgeRealtimeRequest) (response *RetrieveKnowledgeRealtimeResponse, err error) {
+    return c.RetrieveKnowledgeRealtimeWithContext(context.Background(), request)
+}
+
+// RetrieveKnowledgeRealtime
+// 用于实时检索在UploadDocRealtime接口上传的实时文档内容。 使用场景：适用于在会话中对文档进行问答的场景
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NONSUPPORTPARSE = "FailedOperation.NonsupportParse"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  FAILEDOPERATION_UPLOADRESULTFILEFAILED = "FailedOperation.UploadResultFileFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_EXCEEDEDMAXPAGESERROR = "LimitExceeded.ExceededMaxPagesError"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RetrieveKnowledgeRealtimeWithContext(ctx context.Context, request *RetrieveKnowledgeRealtimeRequest) (response *RetrieveKnowledgeRealtimeResponse, err error) {
+    if request == nil {
+        request = NewRetrieveKnowledgeRealtimeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RetrieveKnowledgeRealtime require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRetrieveKnowledgeRealtimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRunRerankRequest() (request *RunRerankRequest) {
     request = &RunRerankRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1923,61 +1992,6 @@ func (c *Client) UploadDocWithContext(ctx context.Context, request *UploadDocReq
     request.SetContext(ctx)
     
     response = NewUploadDocResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewUploadDocRealtimeRequest() (request *UploadDocRealtimeRequest) {
-    request = &UploadDocRealtimeRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("lkeap", APIVersion, "UploadDocRealtime")
-    
-    
-    return
-}
-
-func NewUploadDocRealtimeResponse() (response *UploadDocRealtimeResponse) {
-    response = &UploadDocRealtimeResponse{} 
-    return
-
-}
-
-// UploadDocRealtime
-// 用于上传实时文档内容。
-//
-// 实时文档在上传后可以立即通过SearchRealtime进行实时检索，适用于在会话中对文档进行问答的场景。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) UploadDocRealtime(request *UploadDocRealtimeRequest) (response *UploadDocRealtimeResponse, err error) {
-    return c.UploadDocRealtimeWithContext(context.Background(), request)
-}
-
-// UploadDocRealtime
-// 用于上传实时文档内容。
-//
-// 实时文档在上传后可以立即通过SearchRealtime进行实时检索，适用于在会话中对文档进行问答的场景。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) UploadDocRealtimeWithContext(ctx context.Context, request *UploadDocRealtimeRequest) (response *UploadDocRealtimeResponse, err error) {
-    if request == nil {
-        request = NewUploadDocRealtimeRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("UploadDocRealtime require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewUploadDocRealtimeResponse()
     err = c.Send(request, response)
     return
 }

@@ -2032,10 +2032,6 @@ func NewGetSnapOverviewResponse() (response *GetSnapOverviewResponse) {
 }
 
 // GetSnapOverview
-// 为进一步规范化API命名，该接口决定预下线，新接口命名为：DescribeSnapshotOverview
-//
-// 
-//
 // 获取快照概览信息
 //
 // 可能返回的错误码:
@@ -2046,10 +2042,6 @@ func (c *Client) GetSnapOverview(request *GetSnapOverviewRequest) (response *Get
 }
 
 // GetSnapOverview
-// 为进一步规范化API命名，该接口决定预下线，新接口命名为：DescribeSnapshotOverview
-//
-// 
-//
 // 获取快照概览信息
 //
 // 可能返回的错误码:

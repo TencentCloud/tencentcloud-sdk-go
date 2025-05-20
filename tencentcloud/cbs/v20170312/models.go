@@ -1503,7 +1503,7 @@ type DescribeDiskBackupsRequestParams struct {
 	// 要查询备份点的ID列表。参数不支持同时指定 DiskBackupIds 和 Filters。
 	DiskBackupIds []*string `json:"DiskBackupIds,omitnil,omitempty" name:"DiskBackupIds"`
 
-	// 过滤条件，参数不支持同时指定 DiskBackupIds 和 Filters。过滤条件：<br><li>disk-backup-id - Array of String - 是否必填：否 -（过滤条件）按照备份点的ID过滤。备份点ID形如：dbp-11112222。</li><br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照创建备份点的云硬盘ID过滤。</li><br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按创建备份点的云硬盘类型过滤。 (SYSTEM_DISK：代表系统盘 | DATA_DISK：代表数据盘。)</li>
+	// 过滤条件，参数不支持同时指定 DiskBackupIds 和 Filters。过滤条件：<br><li>disk-backup-id - Array of String - 是否必填：否 -（过滤条件）按照备份点的ID过滤。备份点ID形如：dbp-11112222。</li><br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照创建备份点的云硬盘ID过滤。云硬盘ID形如：disk-srftydert。</li><br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按创建备份点的云硬盘类型过滤。 (SYSTEM_DISK：代表系统盘 | DATA_DISK：代表数据盘。)</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
@@ -1525,7 +1525,7 @@ type DescribeDiskBackupsRequest struct {
 	// 要查询备份点的ID列表。参数不支持同时指定 DiskBackupIds 和 Filters。
 	DiskBackupIds []*string `json:"DiskBackupIds,omitnil,omitempty" name:"DiskBackupIds"`
 
-	// 过滤条件，参数不支持同时指定 DiskBackupIds 和 Filters。过滤条件：<br><li>disk-backup-id - Array of String - 是否必填：否 -（过滤条件）按照备份点的ID过滤。备份点ID形如：dbp-11112222。</li><br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照创建备份点的云硬盘ID过滤。</li><br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按创建备份点的云硬盘类型过滤。 (SYSTEM_DISK：代表系统盘 | DATA_DISK：代表数据盘。)</li>
+	// 过滤条件，参数不支持同时指定 DiskBackupIds 和 Filters。过滤条件：<br><li>disk-backup-id - Array of String - 是否必填：否 -（过滤条件）按照备份点的ID过滤。备份点ID形如：dbp-11112222。</li><br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照创建备份点的云硬盘ID过滤。云硬盘ID形如：disk-srftydert。</li><br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按创建备份点的云硬盘类型过滤。 (SYSTEM_DISK：代表系统盘 | DATA_DISK：代表数据盘。)</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
@@ -1595,25 +1595,25 @@ func (r *DescribeDiskBackupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDiskConfigQuotaRequestParams struct {
-	// 查询类别，取值范围。<br><li>INQUIRY_CBS_CONFIG：查询云盘配置列表<br><li>INQUIRY_CVM_CONFIG：查询云盘与实例搭配的配置列表。
+	// 查询类别，取值范围。<br> INQUIRY_CBS_CONFIG：查询云盘配置列表<br> INQUIRY_CVM_CONFIG：查询云盘与实例搭配的配置列表。
 	InquiryType *string `json:"InquiryType,omitnil,omitempty" name:"InquiryType"`
 
-	// 付费模式。取值范围：<br><li>PREPAID：预付费<br><li>POSTPAID_BY_HOUR：后付费。
+	// 付费模式。取值范围：<br> PREPAID：预付费<br> POSTPAID_BY_HOUR：后付费。
 	DiskChargeType *string `json:"DiskChargeType,omitnil,omitempty" name:"DiskChargeType"`
 
 	// 按照实例机型系列过滤。实例机型系列形如：S1、I1、M1等。详见[实例类型](https://cloud.tencent.com/document/product/213/11518)
 	InstanceFamilies []*string `json:"InstanceFamilies,omitnil,omitempty" name:"InstanceFamilies"`
 
-	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘。
+	// 硬盘介质类型。取值范围：<br> CLOUD_BASIC：表示普通云硬盘<br> CLOUD_PREMIUM：表示高性能云硬盘<br> CLOUD_SSD：表示SSD云硬盘<br> CLOUD_HSSD：表示增强型SSD云硬盘。
 	DiskTypes []*string `json:"DiskTypes,omitnil,omitempty" name:"DiskTypes"`
 
 	// 查询一个或多个[可用区](/document/product/213/15753#ZoneInfo)下的配置。
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 
-	// 实例内存大小。
+	// 实例内存大小,单位GB。
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 系统盘或数据盘。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
+	// 系统盘或数据盘。取值范围：<br> SYSTEM_DISK：表示系统盘<br> DATA_DISK：表示数据盘。
 	DiskUsage *string `json:"DiskUsage,omitnil,omitempty" name:"DiskUsage"`
 
 	// 实例CPU核数。
@@ -1626,25 +1626,25 @@ type DescribeDiskConfigQuotaRequestParams struct {
 type DescribeDiskConfigQuotaRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询类别，取值范围。<br><li>INQUIRY_CBS_CONFIG：查询云盘配置列表<br><li>INQUIRY_CVM_CONFIG：查询云盘与实例搭配的配置列表。
+	// 查询类别，取值范围。<br> INQUIRY_CBS_CONFIG：查询云盘配置列表<br> INQUIRY_CVM_CONFIG：查询云盘与实例搭配的配置列表。
 	InquiryType *string `json:"InquiryType,omitnil,omitempty" name:"InquiryType"`
 
-	// 付费模式。取值范围：<br><li>PREPAID：预付费<br><li>POSTPAID_BY_HOUR：后付费。
+	// 付费模式。取值范围：<br> PREPAID：预付费<br> POSTPAID_BY_HOUR：后付费。
 	DiskChargeType *string `json:"DiskChargeType,omitnil,omitempty" name:"DiskChargeType"`
 
 	// 按照实例机型系列过滤。实例机型系列形如：S1、I1、M1等。详见[实例类型](https://cloud.tencent.com/document/product/213/11518)
 	InstanceFamilies []*string `json:"InstanceFamilies,omitnil,omitempty" name:"InstanceFamilies"`
 
-	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘。
+	// 硬盘介质类型。取值范围：<br> CLOUD_BASIC：表示普通云硬盘<br> CLOUD_PREMIUM：表示高性能云硬盘<br> CLOUD_SSD：表示SSD云硬盘<br> CLOUD_HSSD：表示增强型SSD云硬盘。
 	DiskTypes []*string `json:"DiskTypes,omitnil,omitempty" name:"DiskTypes"`
 
 	// 查询一个或多个[可用区](/document/product/213/15753#ZoneInfo)下的配置。
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
 
-	// 实例内存大小。
+	// 实例内存大小,单位GB。
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 系统盘或数据盘。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
+	// 系统盘或数据盘。取值范围：<br> SYSTEM_DISK：表示系统盘<br> DATA_DISK：表示数据盘。
 	DiskUsage *string `json:"DiskUsage,omitnil,omitempty" name:"DiskUsage"`
 
 	// 实例CPU核数。
@@ -2504,36 +2504,49 @@ type DiskBackup struct {
 	// 云硬盘备份点关联的云硬盘ID。
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 
-	// 云硬盘大小，单位GB。
+	// 云硬盘大小，单位GiB。
 	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 云硬盘类型。取值范围：<br><li>SYSTEM_DISK：系统盘<br><li>DATA_DISK：数据盘。
+	// 云硬盘类型。取值范围：<br>
+	// <li>SYSTEM_DISK：系统盘</li>
+	// <li>DATA_DISK：数据盘。</li>
 	DiskUsage *string `json:"DiskUsage,omitnil,omitempty" name:"DiskUsage"`
 
 	// 备份点名称。
 	DiskBackupName *string `json:"DiskBackupName,omitnil,omitempty" name:"DiskBackupName"`
 
-	// 云硬盘备份点状态。取值范围：<br><li>NORMAL：正常<br><li>CREATING：创建中<br><li>ROLLBACKING：回滚中
+	// <p>云硬盘备份点状态。取值范围：</p>
+	// <ul>
+	//   <li>NORMAL：正常</li>
+	//   <li>CREATING：创建中</li>
+	//   <li>ROLLBACKING：回滚中</li>
+	// </ul>
 	DiskBackupState *string `json:"DiskBackupState,omitnil,omitempty" name:"DiskBackupState"`
 
-	// 云硬盘创建进度百分比。
+	// 云硬盘备份点创建百分比。
 	Percent *uint64 `json:"Percent,omitnil,omitempty" name:"Percent"`
 
 	// 云硬盘备份点的创建时间。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 云盘是否为加密盘。取值范围：<br><li>false:表示非加密盘<br><li>true:表示加密盘。
+	// 云盘是否为加密盘。取值范围：<br><li>false:表示非加密盘<br></li>true:表示加密盘。
 	Encrypt *bool `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
 }
 
 type DiskChargePrepaid struct {
-	// 购买云盘的时长，默认单位为月，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
+	// 购买云硬盘的时长，默认单位为月，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 自动续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费<br><br>默认取值：NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费。
+	// 自动续费标识。取值范围：
+	// <ul>
+	//   <li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
+	//   <li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li>
+	//   <li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
+	// </ul>
+	// 默认取值：NOTIFY_AND_MANUAL_RENEW。
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 需要将云盘的到期时间与挂载的子机对齐时，可传入该参数。该参数表示子机当前的到期时间，此时Period如果传入，则表示子机需要续费的时长，云盘会自动按对齐到子机续费后的到期时间续费，示例取值：2018-03-30 20:15:03。
+	// 需要将云硬盘的到期时间与挂载的子机对齐时，可传入该参数。该参数表示子机当前的到期时间，此时Period如果传入，则表示子机需要续费的时长，云盘会自动按对齐到子机续费后的到期时间续费.
 	CurInstanceDeadline *string `json:"CurInstanceDeadline,omitnil,omitempty" name:"CurInstanceDeadline"`
 }
 
@@ -2551,10 +2564,16 @@ type DiskConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceFamily *string `json:"InstanceFamily,omitnil,omitempty" name:"InstanceFamily"`
 
-	// 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘</li><br><li>CLOUD_PREMIUM：表示高性能云硬盘</li><br><li>CLOUD_SSD：SSD表示SSD云硬盘。</li>
+	// 云盘介质类型。取值范围：<br>
+	// CLOUD_BASIC：表示普通云硬盘<br>
+	// CLOUD_PREMIUM：表示高性能云硬盘<br>
+	// CLOUD_BSSD：表示通用型SSD云硬盘<br>
+	// CLOUD_SSD：表示SSD云硬盘<br>
+	// CLOUD_HSSD：表示增强型SSD云硬盘<br>
+	// CLOUD_TSSD：表示极速型SSD云硬盘。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 云盘大小变化的最小步长，单位GB。
+	// 云盘大小变化的最小步长，单位GiB。
 	StepSize *uint64 `json:"StepSize,omitnil,omitempty" name:"StepSize"`
 
 	// 额外的性能区间。
@@ -2568,10 +2587,10 @@ type DiskConfig struct {
 	// 云盘类型。取值范围：<br><li>SYSTEM_DISK：表示系统盘</li><br><li>DATA_DISK：表示数据盘。</li>
 	DiskUsage *string `json:"DiskUsage,omitnil,omitempty" name:"DiskUsage"`
 
-	// 最小可配置云盘大小，单位GB。
+	// 最小可配置云盘大小，单位GiB。
 	MinDiskSize *uint64 `json:"MinDiskSize,omitnil,omitempty" name:"MinDiskSize"`
 
-	// 最大可配置云盘大小，单位GB。
+	// 最大可配置云盘大小，单位GiB。
 	MaxDiskSize *uint64 `json:"MaxDiskSize,omitnil,omitempty" name:"MaxDiskSize"`
 
 	// 描述预付费或后付费云盘的价格。
@@ -2777,7 +2796,7 @@ func (r *InquirePriceModifyDiskBackupQuotaResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type InquirePriceModifyDiskExtraPerformanceRequestParams struct {
-	// 额外购买的云硬盘性能值，单位MB/s。
+	// 额外购买的云硬盘性能值，单位MiB/s。仅大小超过460GiB的增强型SSD（CLOUD_HSSD）和极速型SSD（CLOUD_TSSD）云硬盘才支持购买额外性能。
 	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 
 	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
@@ -2787,7 +2806,7 @@ type InquirePriceModifyDiskExtraPerformanceRequestParams struct {
 type InquirePriceModifyDiskExtraPerformanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 额外购买的云硬盘性能值，单位MB/s。
+	// 额外购买的云硬盘性能值，单位MiB/s。仅大小超过460GiB的增强型SSD（CLOUD_HSSD）和极速型SSD（CLOUD_TSSD）云硬盘才支持购买额外性能。
 	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 
 	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
@@ -2841,22 +2860,22 @@ func (r *InquirePriceModifyDiskExtraPerformanceResponse) FromJsonString(s string
 
 // Predefined struct for user
 type InquiryPriceCreateDisksRequestParams struct {
-	// 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费
+	// 云硬盘计费类型： <ul>   <li>PREPAID：预付费，即包年包月</li>   <li>POSTPAID_BY_HOUR：按小时后付费</li> </ul>
 	DiskChargeType *string `json:"DiskChargeType,omitnil,omitempty" name:"DiskChargeType"`
 
-	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
+	// 硬盘介质类型。取值范围： <ul>   <li>CLOUD_PREMIUM：表示高性能云硬盘</li>   <li>CLOUD_SSD：表示SSD云硬盘</li>   <li>CLOUD_HSSD：表示增强型SSD云硬盘</li>   <li>CLOUD_TSSD：表示极速型SSD云硬盘</li> </ul>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 云硬盘大小，单位为GB。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
+	// 云硬盘大小，单位为GiB。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
 	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 云盘所属项目ID。
+	// 云硬盘所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 购买云盘的数量。不填则默认为1。
+	// 购买云硬盘的数量。不填则默认为1。
 	DiskCount *uint64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
 
-	// 额外购买的云硬盘性能值，单位MB/s。<br>目前仅支持增强型SSD云硬盘（CLOUD_HSSD）和极速型SSD云硬盘（CLOUD_TSSD）
+	// 额外购买的云硬盘性能值，单位MiB/s。仅大小超过460GiB的增强型SSD（CLOUD_HSSD）和极速型SSD（CLOUD_TSSD）云硬盘才支持购买额外性能。
 	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。<br>创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。
@@ -2869,22 +2888,22 @@ type InquiryPriceCreateDisksRequestParams struct {
 type InquiryPriceCreateDisksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费
+	// 云硬盘计费类型： <ul>   <li>PREPAID：预付费，即包年包月</li>   <li>POSTPAID_BY_HOUR：按小时后付费</li> </ul>
 	DiskChargeType *string `json:"DiskChargeType,omitnil,omitempty" name:"DiskChargeType"`
 
-	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
+	// 硬盘介质类型。取值范围： <ul>   <li>CLOUD_PREMIUM：表示高性能云硬盘</li>   <li>CLOUD_SSD：表示SSD云硬盘</li>   <li>CLOUD_HSSD：表示增强型SSD云硬盘</li>   <li>CLOUD_TSSD：表示极速型SSD云硬盘</li> </ul>
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 云硬盘大小，单位为GB。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
+	// 云硬盘大小，单位为GiB。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
 	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
-	// 云盘所属项目ID。
+	// 云硬盘所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。不填为默认项目。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 购买云盘的数量。不填则默认为1。
+	// 购买云硬盘的数量。不填则默认为1。
 	DiskCount *uint64 `json:"DiskCount,omitnil,omitempty" name:"DiskCount"`
 
-	// 额外购买的云硬盘性能值，单位MB/s。<br>目前仅支持增强型SSD云硬盘（CLOUD_HSSD）和极速型SSD云硬盘（CLOUD_TSSD）
+	// 额外购买的云硬盘性能值，单位MiB/s。仅大小超过460GiB的增强型SSD（CLOUD_HSSD）和极速型SSD（CLOUD_TSSD）云硬盘才支持购买额外性能。
 	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitnil,omitempty" name:"ThroughputPerformance"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。<br>创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。
@@ -2953,10 +2972,10 @@ type InquiryPriceRenewDisksRequestParams struct {
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的购买时长。如果在该参数中指定CurInstanceDeadline，则会按对齐到子机到期时间来续费。如果是批量续费询价，该参数与Disks参数一一对应，元素数量需保持一致。
 	DiskChargePrepaids []*DiskChargePrepaid `json:"DiskChargePrepaids,omitnil,omitempty" name:"DiskChargePrepaids"`
 
-	// 指定云盘新的到期时间，形式如：2017-12-17 00:00:00。参数`NewDeadline`和`DiskChargePrepaids`是两种指定询价时长的方式，两者必传一个。
+	// 指定云硬盘新的到期时间，形式如：2017-12-17 00:00:00。参数`NewDeadline`和`DiskChargePrepaids`是两种指定询价时长的方式，两者必传一个。
 	NewDeadline *string `json:"NewDeadline,omitnil,omitempty" name:"NewDeadline"`
 
-	// 云盘所属项目ID。 如传入则仅用于鉴权。
+	// 云硬盘所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。 如传入则仅用于鉴权。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -2969,10 +2988,10 @@ type InquiryPriceRenewDisksRequest struct {
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的购买时长。如果在该参数中指定CurInstanceDeadline，则会按对齐到子机到期时间来续费。如果是批量续费询价，该参数与Disks参数一一对应，元素数量需保持一致。
 	DiskChargePrepaids []*DiskChargePrepaid `json:"DiskChargePrepaids,omitnil,omitempty" name:"DiskChargePrepaids"`
 
-	// 指定云盘新的到期时间，形式如：2017-12-17 00:00:00。参数`NewDeadline`和`DiskChargePrepaids`是两种指定询价时长的方式，两者必传一个。
+	// 指定云硬盘新的到期时间，形式如：2017-12-17 00:00:00。参数`NewDeadline`和`DiskChargePrepaids`是两种指定询价时长的方式，两者必传一个。
 	NewDeadline *string `json:"NewDeadline,omitnil,omitempty" name:"NewDeadline"`
 
-	// 云盘所属项目ID。 如传入则仅用于鉴权。
+	// 云硬盘所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。 如传入则仅用于鉴权。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -3025,26 +3044,26 @@ func (r *InquiryPriceRenewDisksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquiryPriceResizeDiskRequestParams struct {
-	// 云硬盘扩容后的大小，单位为GB，不得小于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
+	// 云硬盘扩容后的大小，单位为GiB，不得小于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
 	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
 	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 
-	// 云盘所属项目ID。 如传入则仅用于鉴权。
+	// 云硬盘所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。 如传入则仅用于鉴权。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
 type InquiryPriceResizeDiskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘扩容后的大小，单位为GB，不得小于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
+	// 云硬盘扩容后的大小，单位为GiB，不得小于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
 	DiskSize *uint64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
 	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 
-	// 云盘所属项目ID。 如传入则仅用于鉴权。
+	// 云硬盘所属项目ID。该参数可以通过调用[DescribeProject](https://cloud.tencent.com/document/api/651/78725) 的返回值中的 projectId 字段来获取。 如传入则仅用于鉴权。
 	ProjectId *uint64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -3477,26 +3496,26 @@ func (r *ModifyDisksChargeTypeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDisksRenewFlagRequestParams struct {
-	// 一个或多个待操作的云硬盘ID。
+	// 一个或多个待操作的云硬盘ID，该参数可以通过[DescribeDisks](/document/product/362/16315)接口查询。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
-	// 	云硬盘的自动续费标识。取值范围：<ul><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li></ul>
+	// 云硬盘的自动续费标识。取值范围：<ul><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li></ul>
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 该参数支持设置云硬盘的自动续费周期，单位为月。
+	// 该参数支持设置云硬盘的自动续费周期，单位为月。取值范围：[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36]
 	AutoRenewPeriod *uint64 `json:"AutoRenewPeriod,omitnil,omitempty" name:"AutoRenewPeriod"`
 }
 
 type ModifyDisksRenewFlagRequest struct {
 	*tchttp.BaseRequest
 	
-	// 一个或多个待操作的云硬盘ID。
+	// 一个或多个待操作的云硬盘ID，该参数可以通过[DescribeDisks](/document/product/362/16315)接口查询。
 	DiskIds []*string `json:"DiskIds,omitnil,omitempty" name:"DiskIds"`
 
-	// 	云硬盘的自动续费标识。取值范围：<ul><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li></ul>
+	// 云硬盘的自动续费标识。取值范围：<ul><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li></ul>
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 该参数支持设置云硬盘的自动续费周期，单位为月。
+	// 该参数支持设置云硬盘的自动续费周期，单位为月。取值范围：[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36]
 	AutoRenewPeriod *uint64 `json:"AutoRenewPeriod,omitnil,omitempty" name:"AutoRenewPeriod"`
 }
 

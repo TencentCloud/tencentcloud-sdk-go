@@ -5078,14 +5078,11 @@ type GetMsgRecordRequestParams struct {
 	// 类型
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 数量,  数量需大于2
+	// 数量,  数量需大于2, 最大1000
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 会话sessionid
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
-
-	// 最后一条记录ID
-	LastRecordId *string `json:"LastRecordId,omitnil,omitempty" name:"LastRecordId"`
 
 	// 应用AppKey, 当Type=5[API访客]时, 该字段必填  :</br>  获取方式:</br>   1、应用发布后在应用页面[发布管理]-[调用信息]-[API管理]处获取</br>   2、参考 https://cloud.tencent.com/document/product/1759/109469 第二项
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
@@ -5093,7 +5090,14 @@ type GetMsgRecordRequestParams struct {
 	// 场景, 体验: 1; 正式: 2
 	Scene *uint64 `json:"Scene,omitnil,omitempty" name:"Scene"`
 
+	// 最后一条记录ID， 消息从后往前获取
+	// 
+	// MidRecordId与LastRecordId只能选择一个
+	LastRecordId *string `json:"LastRecordId,omitnil,omitempty" name:"LastRecordId"`
+
 	// 传该值，代表拉取该记录id的前后总共count条消息记录
+	// 
+	// MidRecordId与LastRecordId只能选择一个
 	MidRecordId *string `json:"MidRecordId,omitnil,omitempty" name:"MidRecordId"`
 }
 
@@ -5103,14 +5107,11 @@ type GetMsgRecordRequest struct {
 	// 类型
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 数量,  数量需大于2
+	// 数量,  数量需大于2, 最大1000
 	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
 
 	// 会话sessionid
 	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
-
-	// 最后一条记录ID
-	LastRecordId *string `json:"LastRecordId,omitnil,omitempty" name:"LastRecordId"`
 
 	// 应用AppKey, 当Type=5[API访客]时, 该字段必填  :</br>  获取方式:</br>   1、应用发布后在应用页面[发布管理]-[调用信息]-[API管理]处获取</br>   2、参考 https://cloud.tencent.com/document/product/1759/109469 第二项
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
@@ -5118,7 +5119,14 @@ type GetMsgRecordRequest struct {
 	// 场景, 体验: 1; 正式: 2
 	Scene *uint64 `json:"Scene,omitnil,omitempty" name:"Scene"`
 
+	// 最后一条记录ID， 消息从后往前获取
+	// 
+	// MidRecordId与LastRecordId只能选择一个
+	LastRecordId *string `json:"LastRecordId,omitnil,omitempty" name:"LastRecordId"`
+
 	// 传该值，代表拉取该记录id的前后总共count条消息记录
+	// 
+	// MidRecordId与LastRecordId只能选择一个
 	MidRecordId *string `json:"MidRecordId,omitnil,omitempty" name:"MidRecordId"`
 }
 
@@ -5137,9 +5145,9 @@ func (r *GetMsgRecordRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "Count")
 	delete(f, "SessionId")
-	delete(f, "LastRecordId")
 	delete(f, "BotAppKey")
 	delete(f, "Scene")
+	delete(f, "LastRecordId")
 	delete(f, "MidRecordId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetMsgRecordRequest has unknown keys!", "")

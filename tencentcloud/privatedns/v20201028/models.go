@@ -35,7 +35,7 @@ type AccountVpcInfo struct {
 }
 
 type AccountVpcInfoOut struct {
-	// VpcId： vpc-xadsafsdasd
+	// VpcId
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
 	// Vpc所属地区: ap-guangzhou, ap-shanghai
@@ -2056,7 +2056,7 @@ type TldQuota struct {
 }
 
 type VpcInfo struct {
-	// VpcId： vpc-xadsafsdasd
+	// VpcId
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
 	// Vpc所属地区: ap-guangzhou, ap-shanghai

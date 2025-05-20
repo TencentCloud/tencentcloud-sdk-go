@@ -419,9 +419,6 @@ const (
 	// 参数不满足规则，请修改后重试。
 	INVALIDPARAMETERVALUE_PARAMETERCHARACTERLIMITERROR = "InvalidParameterValue.ParameterCharacterLimitError"
 
-	// 参数前缀设置不符合规则要求，请修改后重试。
-	INVALIDPARAMETERVALUE_PARAMETERCHARACTERPRELIMITERROR = "InvalidParameterValue.ParameterCharacterPreLimitError"
-
 	// 参数处理失败，请检参数值设置是否有效。
 	INVALIDPARAMETERVALUE_PARAMETERHANDLEERROR = "InvalidParameterValue.ParameterHandleError"
 

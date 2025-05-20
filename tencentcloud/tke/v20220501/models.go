@@ -1462,11 +1462,14 @@ type NativeNodeInfo struct {
 	// 自动续费标识
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 节点计费模式（已弃用）
+	// 节点计费模式
 	PayMode *string `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
 	// 节点内存容量，单位：`GB`
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 节点系统盘配置信息
+	SystemDisk *Disk `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
 
 	// 公网带宽相关信息设置
 	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitnil,omitempty" name:"InternetAccessible"`
@@ -1484,6 +1487,22 @@ type NativeNodeInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpiredTime *string `json:"ExpiredTime,omitnil,omitempty" name:"ExpiredTime"`
 
+	// 节点外网 IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanIp *string `json:"WanIp,omitnil,omitempty" name:"WanIp"`
+
+	// 节点密钥 ID 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyIds []*string `json:"KeyIds,omitnil,omitempty" name:"KeyIds"`
+
+	// 节点GPU相关配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GPUParams *GPUParams `json:"GPUParams,omitnil,omitempty" name:"GPUParams"`
+
+	// 数据盘列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataDisks []*DataDisk `json:"DataDisks,omitnil,omitempty" name:"DataDisks"`
+
 	// 安全组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecurityGroupIDs []*string `json:"SecurityGroupIDs,omitnil,omitempty" name:"SecurityGroupIDs"`
@@ -1497,6 +1516,12 @@ type NativeNodeInfo struct {
 	// OS的名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OsImage *string `json:"OsImage,omitnil,omitempty" name:"OsImage"`
+
+	// **原生节点的 Machine 类型**
+	// 
+	// - Native 表示 CXM 类型的原生节点
+	// - NativeCVM 表示 CVM 类型的原生节点
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 
 	// **原生节点对应的实例 ID**
 	// 

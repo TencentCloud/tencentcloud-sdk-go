@@ -702,6 +702,9 @@ type AddCustomWhiteRuleRequestParams struct {
 
 	// 定时任务配置
 	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 }
 
 type AddCustomWhiteRuleRequest struct {
@@ -730,6 +733,9 @@ type AddCustomWhiteRuleRequest struct {
 
 	// 定时任务配置
 	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 }
 
 func (r *AddCustomWhiteRuleRequest) ToJsonString() string {
@@ -752,6 +758,7 @@ func (r *AddCustomWhiteRuleRequest) FromJsonString(s string) error {
 	delete(f, "ExpireTime")
 	delete(f, "JobType")
 	delete(f, "JobDateTime")
+	delete(f, "LogicalOp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCustomWhiteRuleRequest has unknown keys!", "")
 	}
@@ -2093,6 +2100,12 @@ type CCRuleItems struct {
 
 	// 限频方式
 	LimitMethod *string `json:"LimitMethod,omitnil,omitempty" name:"LimitMethod"`
+
+	// cel表达式
+	CelRule *string `json:"CelRule,omitnil,omitempty" name:"CelRule"`
+
+	// 逻辑操作符
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 }
 
 type CCRuleLists struct {
@@ -3405,7 +3418,6 @@ func (r *DeleteBotSceneUCBRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteBotSceneUCBRuleResponseParams struct {
 	// 正常情况下为null
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13442,6 +13454,9 @@ type ModifyCustomWhiteRuleRequestParams struct {
 
 	// 定时任务配置
 	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 }
 
 type ModifyCustomWhiteRuleRequest struct {
@@ -13473,6 +13488,9 @@ type ModifyCustomWhiteRuleRequest struct {
 
 	// 定时任务配置
 	JobDateTime *JobDateTime `json:"JobDateTime,omitnil,omitempty" name:"JobDateTime"`
+
+	// 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 }
 
 func (r *ModifyCustomWhiteRuleRequest) ToJsonString() string {
@@ -13496,6 +13514,7 @@ func (r *ModifyCustomWhiteRuleRequest) FromJsonString(s string) error {
 	delete(f, "Strategies")
 	delete(f, "JobType")
 	delete(f, "JobDateTime")
+	delete(f, "LogicalOp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCustomWhiteRuleRequest has unknown keys!", "")
 	}
@@ -17185,12 +17204,6 @@ type UpsertCCRuleRequestParams struct {
 	// CC检测周期
 	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 检测Url
-	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
-
-	// 匹配方法，0表示等于，1表示前缀匹配，2表示包含，3表示不等于，6表示后缀匹配，7表示不包含
-	MatchFunc *int64 `json:"MatchFunc,omitnil,omitempty" name:"MatchFunc"`
-
 	// 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截，26表示精准人机识别，27表示JS校验
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
@@ -17199,6 +17212,12 @@ type UpsertCCRuleRequestParams struct {
 
 	// 动作有效时间
 	ValidTime *int64 `json:"ValidTime,omitnil,omitempty" name:"ValidTime"`
+
+	// 检测Url
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 匹配方法，0表示等于，1表示前缀匹配，2表示包含，3表示不等于，6表示后缀匹配，7表示不包含
+	MatchFunc *int64 `json:"MatchFunc,omitnil,omitempty" name:"MatchFunc"`
 
 	// CC的匹配条件JSON序列化的字符串，示例：[{\"key\":\"Method\",\"args\":[\"=R0VU\"],\"match\":\"0\",\"encodeflag\":true}] Key可选值为 Method、Post、Referer、Cookie、User-Agent、CustomHeader match可选值为，当Key为Method的时候可选值为0（等于）、3（不等于）。 Key为Post的时候可选值为0（等于）、3（不等于），Key为Cookie的时候可选值为0（等于）、2（包含），3（不等于）、7（不包含）、 当Key为Referer的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为Cookie的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为User-Agent的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为CustomHeader的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）。 Key为IPLocation时，可选值为13（属于）、14（不属于）。args用来表示匹配内容，需要设置encodeflag为true，当Key为Post、Cookie、CustomHeader时，用等号=来分别串接Key和Value，并分别用Base64编码，类似YWJj=YWJj。当Key为Referer、User-Agent时，用等号=来串接Value，类似=YWJj。
 	OptionsArr *string `json:"OptionsArr,omitnil,omitempty" name:"OptionsArr"`
@@ -17226,6 +17245,12 @@ type UpsertCCRuleRequestParams struct {
 
 	// 限频方式
 	LimitMethod *string `json:"LimitMethod,omitnil,omitempty" name:"LimitMethod"`
+
+	// cel表达式
+	CelRule *string `json:"CelRule,omitnil,omitempty" name:"CelRule"`
+
+	// 配置方式的逻辑操作符，and或者or
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 }
 
 type UpsertCCRuleRequest struct {
@@ -17249,12 +17274,6 @@ type UpsertCCRuleRequest struct {
 	// CC检测周期
 	Interval *string `json:"Interval,omitnil,omitempty" name:"Interval"`
 
-	// 检测Url
-	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
-
-	// 匹配方法，0表示等于，1表示前缀匹配，2表示包含，3表示不等于，6表示后缀匹配，7表示不包含
-	MatchFunc *int64 `json:"MatchFunc,omitnil,omitempty" name:"MatchFunc"`
-
 	// 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截，26表示精准人机识别，27表示JS校验
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
 
@@ -17263,6 +17282,12 @@ type UpsertCCRuleRequest struct {
 
 	// 动作有效时间
 	ValidTime *int64 `json:"ValidTime,omitnil,omitempty" name:"ValidTime"`
+
+	// 检测Url
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 匹配方法，0表示等于，1表示前缀匹配，2表示包含，3表示不等于，6表示后缀匹配，7表示不包含
+	MatchFunc *int64 `json:"MatchFunc,omitnil,omitempty" name:"MatchFunc"`
 
 	// CC的匹配条件JSON序列化的字符串，示例：[{\"key\":\"Method\",\"args\":[\"=R0VU\"],\"match\":\"0\",\"encodeflag\":true}] Key可选值为 Method、Post、Referer、Cookie、User-Agent、CustomHeader match可选值为，当Key为Method的时候可选值为0（等于）、3（不等于）。 Key为Post的时候可选值为0（等于）、3（不等于），Key为Cookie的时候可选值为0（等于）、2（包含），3（不等于）、7（不包含）、 当Key为Referer的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为Cookie的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为User-Agent的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为CustomHeader的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）。 Key为IPLocation时，可选值为13（属于）、14（不属于）。args用来表示匹配内容，需要设置encodeflag为true，当Key为Post、Cookie、CustomHeader时，用等号=来分别串接Key和Value，并分别用Base64编码，类似YWJj=YWJj。当Key为Referer、User-Agent时，用等号=来串接Value，类似=YWJj。
 	OptionsArr *string `json:"OptionsArr,omitnil,omitempty" name:"OptionsArr"`
@@ -17290,6 +17315,12 @@ type UpsertCCRuleRequest struct {
 
 	// 限频方式
 	LimitMethod *string `json:"LimitMethod,omitnil,omitempty" name:"LimitMethod"`
+
+	// cel表达式
+	CelRule *string `json:"CelRule,omitnil,omitempty" name:"CelRule"`
+
+	// 配置方式的逻辑操作符，and或者or
+	LogicalOp *string `json:"LogicalOp,omitnil,omitempty" name:"LogicalOp"`
 }
 
 func (r *UpsertCCRuleRequest) ToJsonString() string {
@@ -17310,11 +17341,11 @@ func (r *UpsertCCRuleRequest) FromJsonString(s string) error {
 	delete(f, "Advance")
 	delete(f, "Limit")
 	delete(f, "Interval")
-	delete(f, "Url")
-	delete(f, "MatchFunc")
 	delete(f, "ActionType")
 	delete(f, "Priority")
 	delete(f, "ValidTime")
+	delete(f, "Url")
+	delete(f, "MatchFunc")
 	delete(f, "OptionsArr")
 	delete(f, "Edition")
 	delete(f, "Type")
@@ -17324,6 +17355,8 @@ func (r *UpsertCCRuleRequest) FromJsonString(s string) error {
 	delete(f, "CreateTime")
 	delete(f, "Length")
 	delete(f, "LimitMethod")
+	delete(f, "CelRule")
+	delete(f, "LogicalOp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpsertCCRuleRequest has unknown keys!", "")
 	}

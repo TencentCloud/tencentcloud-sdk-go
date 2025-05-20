@@ -2901,7 +2901,11 @@ type Task struct {
 	// 授权信息
 	Authentications []*Authentication `json:"Authentications,omitnil,omitempty" name:"Authentications"`
 
-	// TaskInstance失败后处理方式，取值包括TERMINATE（默认）、INTERRUPT、FAST_INTERRUPT。
+	// TaskInstance失败后处理方式，取值包括
+	// 
+	// - TERMINATE：销毁计算实例（默认）、
+	// - INTERRUPT：中断任务，保留计算实例、
+	// - FAST_INTERRUPT： 快速中断任务， 保留计算实例。
 	FailedAction *string `json:"FailedAction,omitnil,omitempty" name:"FailedAction"`
 
 	// 任务失败后的最大重试次数，默认为0

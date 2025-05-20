@@ -1171,7 +1171,7 @@ func (r *DeleteBiddingResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteCustomDnsHostRequestParams struct {
 	// 域名实例ID
-	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+	// 可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// DNS名称
@@ -1183,7 +1183,7 @@ type DeleteCustomDnsHostRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名实例ID
-	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+	// 可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// DNS名称
@@ -2239,7 +2239,7 @@ func (r *DescribeBiddingSuccessfulListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCustomDnsHostSetRequestParams struct {
 	// 域名实例ID
-	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+	// 可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// 返回数量，默认为20，取值范围[1,100]
@@ -2253,7 +2253,7 @@ type DescribeCustomDnsHostSetRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名实例ID
-	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+	// 可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// 返回数量，默认为20，取值范围[1,100]
@@ -3064,7 +3064,6 @@ type DescribePreReleaseListRequestParams struct {
 
 	// 四级分类
 	// 1:"仅含2种数字"
-	// 1:"仅含2种数字"
 	// 2:"仅含3种数字"
 	// 4:"仅含1种字母"
 	// 8:"仅含1种数字"
@@ -3087,7 +3086,7 @@ type DescribePreReleaseListRequestParams struct {
 	// 10: 预释放域名
 	TransType *int64 `json:"TransType,omitnil,omitempty" name:"TransType"`
 
-	// 是否搜索白金域名
+	// 是否搜索白金域名（默认值为false）
 	IsTop *bool `json:"IsTop,omitnil,omitempty" name:"IsTop"`
 
 	// 结束时间排序 desc:倒序 asc:正序
@@ -3273,7 +3272,6 @@ type DescribePreReleaseListRequest struct {
 
 	// 四级分类
 	// 1:"仅含2种数字"
-	// 1:"仅含2种数字"
 	// 2:"仅含3种数字"
 	// 4:"仅含1种字母"
 	// 8:"仅含1种数字"
@@ -3296,7 +3294,7 @@ type DescribePreReleaseListRequest struct {
 	// 10: 预释放域名
 	TransType *int64 `json:"TransType,omitnil,omitempty" name:"TransType"`
 
-	// 是否搜索白金域名
+	// 是否搜索白金域名（默认值为false）
 	IsTop *bool `json:"IsTop,omitnil,omitempty" name:"IsTop"`
 
 	// 结束时间排序 desc:倒序 asc:正序
@@ -4162,7 +4160,7 @@ type FailReservedDomainInfo struct {
 // Predefined struct for user
 type ModifyCustomDnsHostRequestParams struct {
 	// 域名实例ID
-	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+	// 可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// Dns名称 例如：<>.test.com;其中<>就是Dns名称，可以是任意域名允许的格式
@@ -4176,7 +4174,7 @@ type ModifyCustomDnsHostRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名实例ID
-	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+	// 可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 
 	// Dns名称 例如：<>.test.com;其中<>就是Dns名称，可以是任意域名允许的格式
@@ -5029,7 +5027,7 @@ type SucDomainInfo struct {
 // Predefined struct for user
 type SyncCustomDnsHostRequestParams struct {
 	// 域名实例ID
-	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+	// 可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 }
 
@@ -5037,7 +5035,7 @@ type SyncCustomDnsHostRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名实例ID
-	// 可通过DescribeDomainNameList接口获取(https://cloud.tencent.com/document/api/242/48941)
+	// 可通过[DescribeDomainNameList](https://cloud.tencent.com/document/api/242/48941)接口获取
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
 }
 

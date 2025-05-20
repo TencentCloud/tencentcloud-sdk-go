@@ -5603,6 +5603,9 @@ type CreateTranscodeTemplateRequestParams struct {
 
 	// 音视频增强配置。
 	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
+
+	// 扩展参数，序列化的 json 字符串。
+	StdExtInfo *string `json:"StdExtInfo,omitnil,omitempty" name:"StdExtInfo"`
 }
 
 type CreateTranscodeTemplateRequest struct {
@@ -5640,6 +5643,9 @@ type CreateTranscodeTemplateRequest struct {
 
 	// 音视频增强配置。
 	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
+
+	// 扩展参数，序列化的 json 字符串。
+	StdExtInfo *string `json:"StdExtInfo,omitnil,omitempty" name:"StdExtInfo"`
 }
 
 func (r *CreateTranscodeTemplateRequest) ToJsonString() string {
@@ -5663,6 +5669,7 @@ func (r *CreateTranscodeTemplateRequest) FromJsonString(s string) error {
 	delete(f, "AudioTemplate")
 	delete(f, "TEHDConfig")
 	delete(f, "EnhanceConfig")
+	delete(f, "StdExtInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTranscodeTemplateRequest has unknown keys!", "")
 	}
@@ -8477,6 +8484,10 @@ type DescribeImageTaskDetailResponseParams struct {
 	// <li>FINISH：已完成。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 图片处理任务的执行状态与结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageProcessTaskResultSet []*ImageProcessTaskResult `json:"ImageProcessTaskResultSet,omitnil,omitempty" name:"ImageProcessTaskResultSet"`
 
 	// 任务的创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -12485,6 +12496,21 @@ type ImageAreaBoxInfo struct {
 	AreaCoordSet []*int64 `json:"AreaCoordSet,omitnil,omitempty" name:"AreaCoordSet"`
 }
 
+type ImageDenoiseConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 类型，可选值：
+	// <li>weak</li>
+	// <li>strong</li>
+	// 默认值：weak。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
 type ImageEncodeConfig struct {
 	// 图片格式，取值范围：JPEG、PNG、BMP、WebP，缺省为原图格式。不支持动画。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -12499,6 +12525,10 @@ type ImageEnhanceConfig struct {
 	// 超分配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SuperResolution *SuperResolutionConfig `json:"SuperResolution,omitnil,omitempty" name:"SuperResolution"`
+
+	// 降噪配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Denoise *ImageDenoiseConfig `json:"Denoise,omitnil,omitempty" name:"Denoise"`
 
 	// 综合增强配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -12515,6 +12545,10 @@ type ImageEnhanceConfig struct {
 	// 人脸增强配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FaceEnhance *FaceEnhanceConfig `json:"FaceEnhance,omitnil,omitempty" name:"FaceEnhance"`
+
+	// 低光照增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LowLightEnhance *LowLightEnhanceConfig `json:"LowLightEnhance,omitnil,omitempty" name:"LowLightEnhance"`
 }
 
 type ImageEraseConfig struct {
@@ -12535,6 +12569,34 @@ type ImageEraseLogoConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageAreaBoxes []*ImageAreaBoxInfo `json:"ImageAreaBoxes,omitnil,omitempty" name:"ImageAreaBoxes"`
+}
+
+type ImageProcessTaskOutput struct {
+	// 输出文件的路径。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 输出文件的存储位置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
+}
+
+type ImageProcessTaskResult struct {
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 转码任务的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *ImageProcessTaskOutput `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// 转码进度，取值范围 [0-100]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *int64 `json:"Progress,omitnil,omitempty" name:"Progress"`
 }
 
 type ImageQualityEnhanceConfig struct {
@@ -18077,6 +18139,14 @@ type RawTranscodeParameter struct {
 
 	// 极速高清转码参数。
 	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitnil,omitempty" name:"TEHDConfig"`
+
+	// 扩展参数，序列化的 json 字符串。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StdExtInfo *string `json:"StdExtInfo,omitnil,omitempty" name:"StdExtInfo"`
+
+	// 音视频增强配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitnil,omitempty" name:"EnhanceConfig"`
 }
 
 type RawWatermarkParameter struct {

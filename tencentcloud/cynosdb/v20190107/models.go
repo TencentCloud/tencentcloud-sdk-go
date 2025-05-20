@@ -3105,6 +3105,9 @@ type CynosdbCluster struct {
 	// cynos内核版本
 	CynosVersion *string `json:"CynosVersion,omitnil,omitempty" name:"CynosVersion"`
 
+	// cynos版本标签
+	CynosVersionTag *string `json:"CynosVersionTag,omitnil,omitempty" name:"CynosVersionTag"`
+
 	// 存储容量
 	StorageLimit *int64 `json:"StorageLimit,omitnil,omitempty" name:"StorageLimit"`
 
@@ -3175,6 +3178,9 @@ type CynosdbCluster struct {
 
 	// 全球数据库唯一标识
 	GdnId *string `json:"GdnId,omitnil,omitempty" name:"GdnId"`
+
+	// 集群角色。主集群- primary，从集群 - standby，如果 GdnId为空，该字段无效。
+	GdnRole *string `json:"GdnRole,omitnil,omitempty" name:"GdnRole"`
 }
 
 type CynosdbClusterDetail struct {
@@ -14783,10 +14789,10 @@ type RollbackData struct {
 	// 快照时间
 	SnapshotTime *string `json:"SnapshotTime,omitnil,omitempty" name:"SnapshotTime"`
 
-	// 回档到serverlessls集群时最小CPU
+	// 回档到 Serverless 集群时最小 CPU
 	MinCpu *int64 `json:"MinCpu,omitnil,omitempty" name:"MinCpu"`
 
-	// 回档到serverlessls集群时最大CPU
+	// 回档到 Serverless 集群时最大 CPU
 	MaxCpu *int64 `json:"MaxCpu,omitnil,omitempty" name:"MaxCpu"`
 
 	// 快照ID

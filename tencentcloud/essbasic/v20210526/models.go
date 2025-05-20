@@ -11077,6 +11077,8 @@ type FillApproverInfo struct {
 	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
 	// 指定企业经办签署人OpenId
+	// 
+	// 注: `签署人OpenId未实名时，需要传入签署人姓名以及手机号码。`
 	OpenId *string `json:"OpenId,omitnil,omitempty" name:"OpenId"`
 
 	// 签署人姓名
@@ -13138,6 +13140,8 @@ type SignUrlInfo struct {
 	FlowGroupId *string `json:"FlowGroupId,omitnil,omitempty" name:"FlowGroupId"`
 
 	// 二维码，在生成动态签署人跳转封面页链接时返回
+	// 
+	// 注：`此二维码下载链接有效期为5分钟，可下载二维码后本地保存。`
 	SignQrcodeUrl *string `json:"SignQrcodeUrl,omitnil,omitempty" name:"SignQrcodeUrl"`
 }
 

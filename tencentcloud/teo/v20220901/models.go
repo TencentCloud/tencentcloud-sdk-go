@@ -3236,6 +3236,19 @@ type CreatePrefetchTaskRequestParams struct {
 
 	// 附带的http头部信息。
 	Headers []*Header `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// 媒体分片预热控制，取值有：
+	// <li>on：开启分片预热，预热描述文件，并递归解析描述文件分片进行预热；</li>
+	// <li>off：仅预热提交的描述文件；</li>不填写时，默认值为 off。
+	// 
+	// 注意事项：
+	// 1. 支持的描述文件为 M3U8，对应分片为 TS；
+	// 2. 要求描述文件能正常请求，并按行业标准描述分片路径；
+	// 3. 递归解析深度不超过 3 层；
+	// 4. 解析获取的分片会正常累加每日预热用量，当用量超出配额时，会静默处理，不再执行预热。
+	// 
+	// 该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
+	PrefetchMediaSegments *string `json:"PrefetchMediaSegments,omitnil,omitempty" name:"PrefetchMediaSegments"`
 }
 
 type CreatePrefetchTaskRequest struct {
@@ -3255,6 +3268,19 @@ type CreatePrefetchTaskRequest struct {
 
 	// 附带的http头部信息。
 	Headers []*Header `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// 媒体分片预热控制，取值有：
+	// <li>on：开启分片预热，预热描述文件，并递归解析描述文件分片进行预热；</li>
+	// <li>off：仅预热提交的描述文件；</li>不填写时，默认值为 off。
+	// 
+	// 注意事项：
+	// 1. 支持的描述文件为 M3U8，对应分片为 TS；
+	// 2. 要求描述文件能正常请求，并按行业标准描述分片路径；
+	// 3. 递归解析深度不超过 3 层；
+	// 4. 解析获取的分片会正常累加每日预热用量，当用量超出配额时，会静默处理，不再执行预热。
+	// 
+	// 该参数为白名单功能，如有需要，请联系腾讯云工程师处理。
+	PrefetchMediaSegments *string `json:"PrefetchMediaSegments,omitnil,omitempty" name:"PrefetchMediaSegments"`
 }
 
 func (r *CreatePrefetchTaskRequest) ToJsonString() string {
@@ -3273,6 +3299,7 @@ func (r *CreatePrefetchTaskRequest) FromJsonString(s string) error {
 	delete(f, "Targets")
 	delete(f, "EncodeUrl")
 	delete(f, "Headers")
+	delete(f, "PrefetchMediaSegments")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrefetchTaskRequest has unknown keys!", "")
 	}
@@ -14149,15 +14176,15 @@ type ModifyOriginParameters struct {
 	// <li>follow：协议跟随。</li>
 	OriginProtocol *string `json:"OriginProtocol,omitnil,omitempty" name:"OriginProtocol"`
 
-	// HTTP 回源端口，取值范围 1～65535。该参数仅当回源协议 OriginProtocol 为 http 或者 follow 时生效。
+	// HTTP 回源端口，取值范围 1～65535。当回源协议 OriginProtocol 为 http 或者 follow 时该参数必填。
 	HTTPOriginPort *int64 `json:"HTTPOriginPort,omitnil,omitempty" name:"HTTPOriginPort"`
 
-	// HTTPS 回源端口，取值范围 1～65535。该参数仅当回源协议 OriginProtocol 为 https 或者 follow 时生效。
+	// HTTPS 回源端口，取值范围 1～65535。当回源协议 OriginProtocol 为 https 或者 follow 时该参数必填。
 	HTTPSOriginPort *int64 `json:"HTTPSOriginPort,omitnil,omitempty" name:"HTTPSOriginPort"`
 
-	// 指定是否允许访问私有对象存储源站，该参数仅当源站类型 OriginType = COS 或 AWSS3 时会生效，取值有：
+	// 指定是否允许访问私有对象存储源站，当源站类型 OriginType = COS 或 AWSS3 时该参数必填，取值有：
 	// <li>on：使用私有鉴权；</li>
-	// <li>off：不使用私有鉴权。</li>不填写时，默认值为off。
+	// <li>off：不使用私有鉴权。</li>
 	PrivateAccess *string `json:"PrivateAccess,omitnil,omitempty" name:"PrivateAccess"`
 
 	// 私有鉴权使用参数，该参数仅当 OriginType = AWSS3 且 PrivateAccess = on 时会生效。
@@ -15146,6 +15173,9 @@ type OriginDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateParameters []*PrivateParameter `json:"PrivateParameters,omitnil,omitempty" name:"PrivateParameters"`
 
+	// 当前配置的回源 HOST 头。
+	HostHeader *string `json:"HostHeader,omitnil,omitempty" name:"HostHeader"`
+
 	// MO 子应用 ID
 	//
 	// Deprecated: VodeoSubAppId is deprecated.
@@ -15296,6 +15326,12 @@ type OriginInfo struct {
 
 	// 私有鉴权使用参数，该参数仅当源站类型 PrivateAccess = on 时会生效。
 	PrivateParameters []*PrivateParameter `json:"PrivateParameters,omitnil,omitempty" name:"PrivateParameters"`
+
+	// 自定义回源 HOST 头，该参数仅当 OriginType=IP_DOMAIN 时生效。
+	// 如果 OriginType=COS 或 AWS_S3 时，回源 HOST 头将与源站域名保持一致。
+	// 如果OriginType=ORIGIN_GROUP 或 LB 时，回源 HOST 头遵循源站组内配置，如果没有配置则默认为加速域名。
+	// 如果 OriginType=VOD 或 SPACE 时，无需配置该头部，按对应的回源域名生效。
+	HostHeader *string `json:"HostHeader,omitnil,omitempty" name:"HostHeader"`
 
 	// VODEO 子应用 ID。该参数当 OriginType = VODEO 时必填。
 	//
@@ -16197,7 +16233,7 @@ type RuleEngineAction struct {
 	// <li>ModifyRequestHeader：修改 HTTP 节点请求头；</li>
 	// <li>ResponseSpeedLimit：单连接下载限速；</li>
 	// <li>SetContentIdentifier：设置内容标识符；</li>
-	// <li>Vary：Vary 特性配置。该功能灰度中，如需使用，请联系腾讯云客服。</li>
+	// <li>Vary：Vary 特性配置。</li>
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 节点缓存 TTL 配置参数，当 Name 取值为 Cache 时，该参数必填。
@@ -16338,7 +16374,6 @@ type RuleEngineAction struct {
 	SetContentIdentifierParameters *SetContentIdentifierParameters `json:"SetContentIdentifierParameters,omitnil,omitempty" name:"SetContentIdentifierParameters"`
 
 	// Vary 特性配置参数，当 Name 取值为 Vary 时，该参数必填。
-	// 该功能灰度中，如需使用，请联系腾讯云客服。
 	VaryParameters *VaryParameters `json:"VaryParameters,omitnil,omitempty" name:"VaryParameters"`
 }
 

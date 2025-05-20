@@ -65,7 +65,7 @@ func NewCreateApplicationResponse() (response *CreateApplicationResponse) {
 }
 
 // CreateApplication
-// 本接口（CreateApplicaiton）用于对HAI实例制作自定义应用。
+// 本接口（CreateApplication）用于对HAI实例制作自定义应用。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -79,7 +79,7 @@ func (c *Client) CreateApplication(request *CreateApplicationRequest) (response 
 }
 
 // CreateApplication
-// 本接口（CreateApplicaiton）用于对HAI实例制作自定义应用。
+// 本接口（CreateApplication）用于对HAI实例制作自定义应用。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

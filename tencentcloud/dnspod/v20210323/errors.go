@@ -536,6 +536,9 @@ const (
 	// 域名无效。
 	INVALIDPARAMETER_TOOLSDOMAININVALID = "InvalidParameter.ToolsDomainInvalid"
 
+	// 您要过户到的账号已被系统封禁，如果您有任何疑问请与我们联系。
+	INVALIDPARAMETER_TRANSFERACCOUNTISBANNED = "InvalidParameter.TransferAccountIsBanned"
+
 	// 解锁代码已失效。
 	INVALIDPARAMETER_UNLOCKCODEEXPIRED = "InvalidParameter.UnLockCodeExpired"
 

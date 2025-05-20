@@ -98,6 +98,9 @@ const (
 	// 参数不合法
 	FAILEDOPERATION_INVALIDWHITELISTERROR = "FailedOperation.InvalidWhiteListError"
 
+	// 当前集群不支持设置该参数
+	FAILEDOPERATION_ISOLATECONSUMERENABLE = "FailedOperation.IsolateConsumerEnable"
+
 	// 最大消息超过1MB。
 	FAILEDOPERATION_MAXMESSAGESIZEERROR = "FailedOperation.MaxMessageSizeError"
 

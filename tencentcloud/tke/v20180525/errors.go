@@ -164,6 +164,9 @@ const (
 	// Kubernetes patch 操作失败。
 	FAILEDOPERATION_KUBERNETESPATCHOPERATIONERROR = "FailedOperation.KubernetesPatchOperationError"
 
+	// k8s 资源不存在
+	FAILEDOPERATION_KUBERNETESRESOURCEEXISTED = "FailedOperation.KubernetesResourceExisted"
+
 	// Kubernetes没有找到。
 	FAILEDOPERATION_KUBERNETESRESOURCENOTFOUND = "FailedOperation.KubernetesResourceNotFound"
 
@@ -190,6 +193,9 @@ const (
 
 	// 节点存在辅助网卡
 	FAILEDOPERATION_NODEEXISTSSECONDARYNETWORKINTERFACE = "FailedOperation.NodeExistsSecondaryNetworkInterface"
+
+	// 节点池查询失败
+	FAILEDOPERATION_NODEPOOLQUERYFAILED = "FailedOperation.NodePoolQueryFailed"
 
 	// 镜像OS不支持。
 	FAILEDOPERATION_OSNOTSUPPORT = "FailedOperation.OsNotSupport"
@@ -539,6 +545,9 @@ const (
 	// 客户创建参数中，k8s 版本、运行时版本或 tke-eni-agent 版本不支持客户选择的操作系统中的CgroupV2。
 	INVALIDPARAMETER_VERSIONNOTSUPPORTCGROUPV2 = "InvalidParameter.VersionNotSupportCgroupV2"
 
+	// 超出配额
+	INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+
 	// 参数值中数量错误。
 	INVALIDPARAMETERVALUE_SIZE = "InvalidParameterValue.Size"
 
@@ -565,6 +574,9 @@ const (
 
 	// 所选子网已存在。
 	RESOURCEINUSE_SUBNETALREADYEXIST = "ResourceInUse.SubnetAlreadyExist"
+
+	// 获取 tke apiserver 失败
+	RESOURCEINUSE_TKEAPISERVERGETERROR = "ResourceInUse.TKEAPIServerGetError"
 
 	// 资源不足。
 	RESOURCEINSUFFICIENT = "ResourceInsufficient"
@@ -619,6 +631,9 @@ const (
 
 	// 无该接口CAM权限。
 	UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+
+	// 没有RBAC权限
+	UNAUTHORIZEDOPERATION_NORBACPERMISSIONS = "UnauthorizedOperation.NoRBACPermissions"
 
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"

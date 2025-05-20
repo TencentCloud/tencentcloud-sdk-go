@@ -463,7 +463,9 @@ type AnalyzeAuditLogsRequestParams struct {
 	// 聚合维度的排序条件。
 	AggregationConditions []*AggregationCondition `json:"AggregationConditions,omitnil,omitempty" name:"AggregationConditions"`
 
-	// 已废弃。该过滤条件下的审计日志结果集作为分析日志。
+	// 已废弃。
+	//
+	// Deprecated: AuditLogFilter is deprecated.
 	AuditLogFilter *AuditLogFilter `json:"AuditLogFilter,omitnil,omitempty" name:"AuditLogFilter"`
 
 	// 该过滤条件下的审计日志结果集作为分析日志。
@@ -485,7 +487,7 @@ type AnalyzeAuditLogsRequest struct {
 	// 聚合维度的排序条件。
 	AggregationConditions []*AggregationCondition `json:"AggregationConditions,omitnil,omitempty" name:"AggregationConditions"`
 
-	// 已废弃。该过滤条件下的审计日志结果集作为分析日志。
+	// 已废弃。
 	AuditLogFilter *AuditLogFilter `json:"AuditLogFilter,omitnil,omitempty" name:"AuditLogFilter"`
 
 	// 该过滤条件下的审计日志结果集作为分析日志。
@@ -1955,6 +1957,8 @@ type CreateAuditLogFileRequestParams struct {
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 已废弃。
+	//
+	// Deprecated: Filter is deprecated.
 	Filter *AuditLogFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
 	// 过滤条件。可按设置的过滤条件过滤日志。
@@ -3068,6 +3072,7 @@ type CreateDBInstanceHourRequestParams struct {
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 参数列表，参数格式如 ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过 [查询默认的可设置参数列表](https://cloud.tencent.com/document/api/236/32662) 查询支持设置的参数。
+	// 说明：表名大小写敏感的开启和关闭可通过参数 lower_case_table_names 进行设置，参数值为0表示开启，参数值为1表示关闭，若不设置则此参数默认值为0。若您创建的是 MySQL 8.0 版本的实例，则需要在创建实例时通过设置 lower_case_table_names 参数来开启或关闭表名大小写敏感，创建实例后无法修改参数，即创建后无法修改表名大小写敏感。其他数据库版本的实例支持在创建实例后修改 lower_case_table_names 参数。创建实例时设置表名大小写敏感的 API 调用方法请参见本文中的示例2。
 	ParamList []*ParamInfo `json:"ParamList,omitnil,omitempty" name:"ParamList"`
 
 	// 数据复制方式，默认为 0，支持值包括：0 - 表示异步复制，1 - 表示半同步复制，2 - 表示强同步复制，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义。
@@ -3205,6 +3210,7 @@ type CreateDBInstanceHourRequest struct {
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
 	// 参数列表，参数格式如 ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过 [查询默认的可设置参数列表](https://cloud.tencent.com/document/api/236/32662) 查询支持设置的参数。
+	// 说明：表名大小写敏感的开启和关闭可通过参数 lower_case_table_names 进行设置，参数值为0表示开启，参数值为1表示关闭，若不设置则此参数默认值为0。若您创建的是 MySQL 8.0 版本的实例，则需要在创建实例时通过设置 lower_case_table_names 参数来开启或关闭表名大小写敏感，创建实例后无法修改参数，即创建后无法修改表名大小写敏感。其他数据库版本的实例支持在创建实例后修改 lower_case_table_names 参数。创建实例时设置表名大小写敏感的 API 调用方法请参见本文中的示例2。
 	ParamList []*ParamInfo `json:"ParamList,omitnil,omitempty" name:"ParamList"`
 
 	// 数据复制方式，默认为 0，支持值包括：0 - 表示异步复制，1 - 表示半同步复制，2 - 表示强同步复制，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义。
@@ -3438,6 +3444,7 @@ type CreateDBInstanceRequestParams struct {
 	SlaveZone *string `json:"SlaveZone,omitnil,omitempty" name:"SlaveZone"`
 
 	// 参数列表，参数格式如 ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过 [查询默认的可设置参数列表](https://cloud.tencent.com/document/api/236/32662) 查询支持设置的参数。
+	// 说明：表名大小写敏感的开启和关闭可通过参数 lower_case_table_names 进行设置，参数值为0表示开启，参数值为1表示关闭，若不设置则此参数默认值为0。若您创建的是 MySQL 8.0 版本的实例，则需要在创建实例时通过设置 lower_case_table_names 参数来开启或关闭表名大小写敏感，创建实例后无法修改参数，即创建后无法修改表名大小写敏感。其他数据库版本的实例支持在创建实例后修改 lower_case_table_names 参数。创建实例时设置表名大小写敏感的 API 调用方法请参见本文中的示例3。
 	ParamList []*ParamInfo `json:"ParamList,omitnil,omitempty" name:"ParamList"`
 
 	// 备库 2 的可用区信息，默认为空，购买三节点主实例时可指定该参数。
@@ -3576,6 +3583,7 @@ type CreateDBInstanceRequest struct {
 	SlaveZone *string `json:"SlaveZone,omitnil,omitempty" name:"SlaveZone"`
 
 	// 参数列表，参数格式如 ParamList.0.Name=auto_increment&ParamList.0.Value=1。可通过 [查询默认的可设置参数列表](https://cloud.tencent.com/document/api/236/32662) 查询支持设置的参数。
+	// 说明：表名大小写敏感的开启和关闭可通过参数 lower_case_table_names 进行设置，参数值为0表示开启，参数值为1表示关闭，若不设置则此参数默认值为0。若您创建的是 MySQL 8.0 版本的实例，则需要在创建实例时通过设置 lower_case_table_names 参数来开启或关闭表名大小写敏感，创建实例后无法修改参数，即创建后无法修改表名大小写敏感。其他数据库版本的实例支持在创建实例后修改 lower_case_table_names 参数。创建实例时设置表名大小写敏感的 API 调用方法请参见本文中的示例3。
 	ParamList []*ParamInfo `json:"ParamList,omitnil,omitempty" name:"ParamList"`
 
 	// 备库 2 的可用区信息，默认为空，购买三节点主实例时可指定该参数。
@@ -12164,7 +12172,9 @@ type ModifyAuditServiceRequestParams struct {
 	// 修改实例审计规则为全审计。
 	AuditAll *bool `json:"AuditAll,omitnil,omitempty" name:"AuditAll"`
 
-	// 审计规则。
+	// 废弃。
+	//
+	// Deprecated: AuditRuleFilters is deprecated.
 	AuditRuleFilters []*AuditRuleFilters `json:"AuditRuleFilters,omitnil,omitempty" name:"AuditRuleFilters"`
 
 	// 规则模板ID。
@@ -12186,7 +12196,7 @@ type ModifyAuditServiceRequest struct {
 	// 修改实例审计规则为全审计。
 	AuditAll *bool `json:"AuditAll,omitnil,omitempty" name:"AuditAll"`
 
-	// 审计规则。
+	// 废弃。
 	AuditRuleFilters []*AuditRuleFilters `json:"AuditRuleFilters,omitnil,omitempty" name:"AuditRuleFilters"`
 
 	// 规则模板ID。
@@ -14234,6 +14244,8 @@ type OpenAuditServiceRequestParams struct {
 	HighLogExpireDay *uint64 `json:"HighLogExpireDay,omitnil,omitempty" name:"HighLogExpireDay"`
 
 	// 审计规则（该参数已废弃，不再生效）。
+	//
+	// Deprecated: AuditRuleFilters is deprecated.
 	AuditRuleFilters []*AuditRuleFilters `json:"AuditRuleFilters,omitnil,omitempty" name:"AuditRuleFilters"`
 
 	// 规则模板ID。同AuditRuleFilters都不填是全审计。

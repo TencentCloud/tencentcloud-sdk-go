@@ -8465,6 +8465,112 @@ func (r *CreateUserMobileChangeUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateUserNameChangeUrlRequestParams struct {
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 要跳转的链接类型
+	// 
+	// <ul>
+	// <li><strong>HTTP</strong>：适用于短信通知或H5跳转的电子签小程序HTTP长链接</li>
+	// <li><strong>HTTP_SHORT_URL</strong>：适用于短信通知或H5跳转的电子签小程序HTTP短链接</li>
+	// <li><strong>APP</strong>：（默认类型）适用于第三方APP或小程序跳转的电子签小程序路径</li>
+	// </ul>
+	// 
+	// 注：如果不传递，默认值是 <font color="red"> HTTP </font>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// 在用户完成改名后，其自定义数据将通过[企业引导个人更名后回调](https://qian.tencent.com/developers/company/callback_types_staffs#%E5%8D%81%E5%85%AB-%E4%BC%81%E4%B8%9A%E5%BC%95%E5%AF%BC%E4%B8%AA%E4%BA%BA%E6%9B%B4%E5%90%8D%E5%90%8E%E5%9B%9E%E8%B0%83)返回，以便用户确认其个人数据信息。请注意，自定义数据的字符长度上限为1000，且必须采用base64编码格式。
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+}
+
+type CreateUserNameChangeUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 要跳转的链接类型
+	// 
+	// <ul>
+	// <li><strong>HTTP</strong>：适用于短信通知或H5跳转的电子签小程序HTTP长链接</li>
+	// <li><strong>HTTP_SHORT_URL</strong>：适用于短信通知或H5跳转的电子签小程序HTTP短链接</li>
+	// <li><strong>APP</strong>：（默认类型）适用于第三方APP或小程序跳转的电子签小程序路径</li>
+	// </ul>
+	// 
+	// 注：如果不传递，默认值是 <font color="red"> HTTP </font>
+	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// 在用户完成改名后，其自定义数据将通过[企业引导个人更名后回调](https://qian.tencent.com/developers/company/callback_types_staffs#%E5%8D%81%E5%85%AB-%E4%BC%81%E4%B8%9A%E5%BC%95%E5%AF%BC%E4%B8%AA%E4%BA%BA%E6%9B%B4%E5%90%8D%E5%90%8E%E5%9B%9E%E8%B0%83)返回，以便用户确认其个人数据信息。请注意，自定义数据的字符长度上限为1000，且必须采用base64编码格式。
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+}
+
+func (r *CreateUserNameChangeUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserNameChangeUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Endpoint")
+	delete(f, "UserData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserNameChangeUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateUserNameChangeUrlResponseParams struct {
+	// 腾讯电子签小程序的个人更名链接。
+	// 如果没有传递，默认值是 HTTP。 链接的有效期均是 7 天。
+	// 
+	// <strong>1.如果EndPoint是APP</strong>：
+	// 得到的链接类似于<a href="">pages/guide/index?to=MP_PERSONAL_VERIFY&shortKey=yDCZHUyOcExAlcOvNod0</a>, 用法可以参考描述中的"跳转到小程序的实现"
+	// 
+	// <strong>2.如果EndPoint是HTTP</strong>：
+	// 得到的链接类似于 <a href="">https://res.ess.tencent.cn/cdn/h5-activity/jump-mp.html?to=TAG_VERIFY&shortKey=yDCZHUyOcChrfpaswT0d</a>，点击后会跳转到腾讯电子签小程序进行签署
+	// 
+	// <strong>3.如果EndPoint是HTTP_SHORT_URL</strong>：
+	// 得到的链接类似于<a href="">https://essurl.cn/2n**42Nd</a>，点击后会跳转到腾讯电子签小程序进行签署
+	// 
+	// 
+	// `注：` <font color="red">生成的链路后面不能再增加参数，防止出错重复参数覆盖原有的参数</font>
+	UserVerifyUrl *string `json:"UserVerifyUrl,omitnil,omitempty" name:"UserVerifyUrl"`
+
+	// 链接过期时间，为Unix时间戳（单位为秒）。
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 小程序appid，用于半屏拉起电子签小程序， 仅在 Endpoint 设置为 APP 的时候返回
+	MiniAppId *string `json:"MiniAppId,omitnil,omitempty" name:"MiniAppId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateUserNameChangeUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateUserNameChangeUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateUserNameChangeUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateUserNameChangeUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateUserVerifyUrlRequestParams struct {
 	// 操作人信息
 	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
