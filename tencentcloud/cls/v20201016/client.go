@@ -6833,7 +6833,9 @@ func NewModifyMachineGroupResponse() (response *ModifyMachineGroupResponse) {
 }
 
 // ModifyMachineGroup
-// 修改机器组
+// 修改机器组。
+//
+// 注意：修改接口直接覆盖历史数据，改为本次合法入参数据，请谨慎调用此接口。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6856,7 +6858,9 @@ func (c *Client) ModifyMachineGroup(request *ModifyMachineGroupRequest) (respons
 }
 
 // ModifyMachineGroup
-// 修改机器组
+// 修改机器组。
+//
+// 注意：修改接口直接覆盖历史数据，改为本次合法入参数据，请谨慎调用此接口。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

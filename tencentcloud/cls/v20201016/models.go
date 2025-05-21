@@ -11018,7 +11018,9 @@ type ModifyMachineGroupRequestParams struct {
 	// 机器组名称
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 机器组类型。Type：ip，Values中为ip字符串列表机器组；Type：label，Values中为标签字符串列表机器组。
+	// 机器组类型。 
+	// Type：ip，Values中为ip字符串列表机器组；
+	// Type：label，Values中为标签字符串列表机器组。
 	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil,omitempty" name:"MachineGroupType"`
 
 	// 标签列表
@@ -11052,7 +11054,9 @@ type ModifyMachineGroupRequest struct {
 	// 机器组名称
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 机器组类型。Type：ip，Values中为ip字符串列表机器组；Type：label，Values中为标签字符串列表机器组。
+	// 机器组类型。 
+	// Type：ip，Values中为ip字符串列表机器组；
+	// Type：label，Values中为标签字符串列表机器组。
 	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitnil,omitempty" name:"MachineGroupType"`
 
 	// 标签列表
@@ -12556,6 +12560,9 @@ type ScheduledSqlTaskInfo struct {
 
 	// 是否开启投递服务日志。1：关闭，2：开启。
 	HasServicesLog *uint64 `json:"HasServicesLog,omitnil,omitempty" name:"HasServicesLog"`
+
+	// 全文检索标记。1：关闭，2：打开。
+	FullQuery *uint64 `json:"FullQuery,omitnil,omitempty" name:"FullQuery"`
 }
 
 // Predefined struct for user

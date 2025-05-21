@@ -8616,6 +8616,7 @@ func NewDescribeOpenPolicyListResponse() (response *DescribeOpenPolicyListRespon
 // 查询opa策略列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_KUBECLIENTCREATE = "FailedOperation.KubeClientCreate"
 //  RESOURCENOTFOUND_LOGCOLLECTORCLSLOGTOPICNOTEXISTS = "ResourceNotFound.LogCollectorClsLogTopicNotExists"
 func (c *Client) DescribeOpenPolicyList(request *DescribeOpenPolicyListRequest) (response *DescribeOpenPolicyListResponse, err error) {
     return c.DescribeOpenPolicyListWithContext(context.Background(), request)
@@ -8625,6 +8626,7 @@ func (c *Client) DescribeOpenPolicyList(request *DescribeOpenPolicyListRequest) 
 // 查询opa策略列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_KUBECLIENTCREATE = "FailedOperation.KubeClientCreate"
 //  RESOURCENOTFOUND_LOGCOLLECTORCLSLOGTOPICNOTEXISTS = "ResourceNotFound.LogCollectorClsLogTopicNotExists"
 func (c *Client) DescribeOpenPolicyListWithContext(ctx context.Context, request *DescribeOpenPolicyListRequest) (response *DescribeOpenPolicyListResponse, err error) {
     if request == nil {

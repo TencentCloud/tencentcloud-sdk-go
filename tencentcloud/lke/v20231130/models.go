@@ -2906,12 +2906,6 @@ type DescribeDocResponseParams struct {
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 
-	// 文档的用户自定义ID
-	CustomerKnowledgeId *string `json:"CustomerKnowledgeId,omitnil,omitempty" name:"CustomerKnowledgeId"`
-
-	// 文档的属性标记，0: 不做用户外部权限校验
-	AttributeFlags []*uint64 `json:"AttributeFlags,omitnil,omitempty" name:"AttributeFlags"`
-
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -8515,12 +8509,6 @@ type ModifyDocRequestParams struct {
 
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
-
-	// 文档的用户自定义ID
-	CustomerKnowledgeId *string `json:"CustomerKnowledgeId,omitnil,omitempty" name:"CustomerKnowledgeId"`
-
-	// 文档的属性标记，0: 不做用户外部权限校验
-	AttributeFlags []*uint64 `json:"AttributeFlags,omitnil,omitempty" name:"AttributeFlags"`
 }
 
 type ModifyDocRequest struct {
@@ -8562,12 +8550,6 @@ type ModifyDocRequest struct {
 
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
-
-	// 文档的用户自定义ID
-	CustomerKnowledgeId *string `json:"CustomerKnowledgeId,omitnil,omitempty" name:"CustomerKnowledgeId"`
-
-	// 文档的属性标记，0: 不做用户外部权限校验
-	AttributeFlags []*uint64 `json:"AttributeFlags,omitnil,omitempty" name:"AttributeFlags"`
 }
 
 func (r *ModifyDocRequest) ToJsonString() string {
@@ -8594,8 +8576,6 @@ func (r *ModifyDocRequest) FromJsonString(s string) error {
 	delete(f, "ExpireStart")
 	delete(f, "ExpireEnd")
 	delete(f, "CateBizId")
-	delete(f, "CustomerKnowledgeId")
-	delete(f, "AttributeFlags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDocRequest has unknown keys!", "")
 	}
@@ -10251,12 +10231,6 @@ type SaveDocRequestParams struct {
 
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
-
-	// 文档的用户自定义ID
-	CustomerKnowledgeId *string `json:"CustomerKnowledgeId,omitnil,omitempty" name:"CustomerKnowledgeId"`
-
-	// 文档的属性标记，0: 不做用户外部权限校验
-	AttributeFlags []*uint64 `json:"AttributeFlags,omitnil,omitempty" name:"AttributeFlags"`
 }
 
 type SaveDocRequest struct {
@@ -10322,12 +10296,6 @@ type SaveDocRequest struct {
 
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
-
-	// 文档的用户自定义ID
-	CustomerKnowledgeId *string `json:"CustomerKnowledgeId,omitnil,omitempty" name:"CustomerKnowledgeId"`
-
-	// 文档的属性标记，0: 不做用户外部权限校验
-	AttributeFlags []*uint64 `json:"AttributeFlags,omitnil,omitempty" name:"AttributeFlags"`
 }
 
 func (r *SaveDocRequest) ToJsonString() string {
@@ -10359,8 +10327,6 @@ func (r *SaveDocRequest) FromJsonString(s string) error {
 	delete(f, "IsRefer")
 	delete(f, "Opt")
 	delete(f, "CateBizId")
-	delete(f, "CustomerKnowledgeId")
-	delete(f, "AttributeFlags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SaveDocRequest has unknown keys!", "")
 	}

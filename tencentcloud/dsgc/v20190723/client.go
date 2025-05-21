@@ -423,6 +423,10 @@ func NewCreateClassificationRuleResponse() (response *CreateClassificationRuleRe
 }
 
 // CreateClassificationRule
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 创建识别规则
 //
 // 可能返回的错误码:
@@ -432,6 +436,10 @@ func (c *Client) CreateClassificationRule(request *CreateClassificationRuleReque
 }
 
 // CreateClassificationRule
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 创建识别规则
 //
 // 可能返回的错误码:
@@ -1402,6 +1410,10 @@ func NewCreateNewClassificationResponse() (response *CreateNewClassificationResp
 }
 
 // CreateNewClassification
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 创建新分类
 //
 // 可能返回的错误码:
@@ -1411,6 +1423,10 @@ func (c *Client) CreateNewClassification(request *CreateNewClassificationRequest
 }
 
 // CreateNewClassification
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 创建新分类
 //
 // 可能返回的错误码:
@@ -1451,6 +1467,10 @@ func NewCreateOrCopyStandardResponse() (response *CreateOrCopyStandardResponse) 
 }
 
 // CreateOrCopyStandard
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 创建或复制分级分类模板
 //
 // 可能返回的错误码:
@@ -1460,6 +1480,10 @@ func (c *Client) CreateOrCopyStandard(request *CreateOrCopyStandardRequest) (res
 }
 
 // CreateOrCopyStandard
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 创建或复制分级分类模板
 //
 // 可能返回的错误码:
@@ -2204,6 +2228,10 @@ func NewDescribeClassificationInfoResponse() (response *DescribeClassificationIn
 }
 
 // DescribeClassificationInfo
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 查询分类信息
 //
 // 可能返回的错误码:
@@ -2213,6 +2241,10 @@ func (c *Client) DescribeClassificationInfo(request *DescribeClassificationInfoR
 }
 
 // DescribeClassificationInfo
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 查询分类信息
 //
 // 可能返回的错误码:
@@ -2253,6 +2285,10 @@ func NewDescribeClassificationRuleCountResponse() (response *DescribeClassificat
 }
 
 // DescribeClassificationRuleCount
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 查询标准下所有分类的识别规则数量(不算子分类下的识别规则)
 //
 // 可能返回的错误码:
@@ -2262,6 +2298,10 @@ func (c *Client) DescribeClassificationRuleCount(request *DescribeClassification
 }
 
 // DescribeClassificationRuleCount
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 查询标准下所有分类的识别规则数量(不算子分类下的识别规则)
 //
 // 可能返回的错误码:
@@ -5777,6 +5817,10 @@ func NewDescribeLeafClassificationResponse() (response *DescribeLeafClassificati
 }
 
 // DescribeLeafClassification
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 查询标准下所有叶子节点分类
 //
 // 可能返回的错误码:
@@ -5786,6 +5830,10 @@ func (c *Client) DescribeLeafClassification(request *DescribeLeafClassificationR
 }
 
 // DescribeLeafClassification
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 查询标准下所有叶子节点分类
 //
 // 可能返回的错误码:
@@ -6022,6 +6070,10 @@ func NewDescribeRuleListResponse() (response *DescribeRuleListResponse) {
 }
 
 // DescribeRuleList
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 查询分类下规则列表
 //
 // 可能返回的错误码:
@@ -6033,6 +6085,10 @@ func (c *Client) DescribeRuleList(request *DescribeRuleListRequest) (response *D
 }
 
 // DescribeRuleList
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 查询分类下规则列表
 //
 // 可能返回的错误码:
@@ -6753,6 +6809,10 @@ func NewModifyClassificationRuleResponse() (response *ModifyClassificationRuleRe
 }
 
 // ModifyClassificationRule
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 编辑识别规则
 //
 // 可能返回的错误码:
@@ -6762,6 +6822,10 @@ func (c *Client) ModifyClassificationRule(request *ModifyClassificationRuleReque
 }
 
 // ModifyClassificationRule
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 编辑识别规则
 //
 // 可能返回的错误码:
@@ -6802,6 +6866,10 @@ func NewModifyClassificationRuleStateResponse() (response *ModifyClassificationR
 }
 
 // ModifyClassificationRuleState
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 修改识别规则状态
 //
 // 可能返回的错误码:
@@ -6811,6 +6879,10 @@ func (c *Client) ModifyClassificationRuleState(request *ModifyClassificationRule
 }
 
 // ModifyClassificationRuleState
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 修改识别规则状态
 //
 // 可能返回的错误码:
@@ -7717,6 +7789,10 @@ func NewModifyLevelInfoResponse() (response *ModifyLevelInfoResponse) {
 }
 
 // ModifyLevelInfo
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 修改敏感级别信息
 //
 // 可能返回的错误码:
@@ -7726,6 +7802,10 @@ func (c *Client) ModifyLevelInfo(request *ModifyLevelInfoRequest) (response *Mod
 }
 
 // ModifyLevelInfo
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 修改敏感级别信息
 //
 // 可能返回的错误码:
@@ -7766,6 +7846,10 @@ func NewModifyLevelNameResponse() (response *ModifyLevelNameResponse) {
 }
 
 // ModifyLevelName
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 修改级别名称
 //
 // 可能返回的错误码:
@@ -7775,6 +7859,10 @@ func (c *Client) ModifyLevelName(request *ModifyLevelNameRequest) (response *Mod
 }
 
 // ModifyLevelName
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 修改级别名称
 //
 // 可能返回的错误码:
@@ -7815,6 +7903,10 @@ func NewModifyLevelStateResponse() (response *ModifyLevelStateResponse) {
 }
 
 // ModifyLevelState
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 开启级别或关闭级别
 //
 // 可能返回的错误码:
@@ -7824,6 +7916,10 @@ func (c *Client) ModifyLevelState(request *ModifyLevelStateRequest) (response *M
 }
 
 // ModifyLevelState
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 开启级别或关闭级别
 //
 // 可能返回的错误码:
@@ -7864,6 +7960,10 @@ func NewModifyMergeClassificationResponse() (response *ModifyMergeClassification
 }
 
 // ModifyMergeClassification
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 一个分类合并到另一个分类中（分类拖拽功能）
 //
 // 可能返回的错误码:
@@ -7873,6 +7973,10 @@ func (c *Client) ModifyMergeClassification(request *ModifyMergeClassificationReq
 }
 
 // ModifyMergeClassification
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 一个分类合并到另一个分类中（分类拖拽功能）
 //
 // 可能返回的错误码:
@@ -7913,6 +8017,10 @@ func NewModifyNewClassificationResponse() (response *ModifyNewClassificationResp
 }
 
 // ModifyNewClassification
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 修改分类信息
 //
 // 可能返回的错误码:
@@ -7922,6 +8030,10 @@ func (c *Client) ModifyNewClassification(request *ModifyNewClassificationRequest
 }
 
 // ModifyNewClassification
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 修改分类信息
 //
 // 可能返回的错误码:
@@ -7962,6 +8074,10 @@ func NewModifyStandardInfoResponse() (response *ModifyStandardInfoResponse) {
 }
 
 // ModifyStandardInfo
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 修改分级分类模板信息
 //
 // 可能返回的错误码:
@@ -7971,6 +8087,10 @@ func (c *Client) ModifyStandardInfo(request *ModifyStandardInfoRequest) (respons
 }
 
 // ModifyStandardInfo
+// 旧版本DSGC接口下线
+//
+// 
+//
 // 修改分级分类模板信息
 //
 // 可能返回的错误码:

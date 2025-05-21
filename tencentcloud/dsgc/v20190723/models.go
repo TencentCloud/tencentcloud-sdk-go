@@ -5345,7 +5345,12 @@ func (r *DescribeDSPAAssessmentRiskSideListRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskSideListResponseParams struct {
 	// 风险面列表
+	//
+	// Deprecated: RiskSideItmeList is deprecated.
 	RiskSideItmeList []*Note `json:"RiskSideItmeList,omitnil,omitempty" name:"RiskSideItmeList"`
+
+	// 风险面列表
+	RiskSideItemList []*Note `json:"RiskSideItemList,omitnil,omitempty" name:"RiskSideItemList"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -10120,7 +10125,6 @@ type DspaDiscoveryTask struct {
 	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil,omitempty" name:"GeneralRuleSetEnable"`
 
 	// 任务最新的一次执行结果信息，该字段用于查询任务列表接口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *ScanTaskResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 定时开始时间
@@ -10128,7 +10132,6 @@ type DspaDiscoveryTask struct {
 	TimingStartTime *string `json:"TimingStartTime,omitnil,omitempty" name:"TimingStartTime"`
 
 	// 关联模板是否更新
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComplianceUpdate *bool `json:"ComplianceUpdate,omitnil,omitempty" name:"ComplianceUpdate"`
 }
 

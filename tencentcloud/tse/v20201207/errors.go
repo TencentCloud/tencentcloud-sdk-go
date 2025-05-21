@@ -98,6 +98,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// json转换失败
+	INVALIDPARAMETER_PARSEJSONERROR = "InvalidParameter.ParseJsonError"
+
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 

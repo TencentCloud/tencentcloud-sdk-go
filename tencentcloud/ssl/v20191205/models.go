@@ -596,6 +596,12 @@ type CertificateInfoSubmitRequestParams struct {
 
 	// 联系人职位。若没有传ManagerId， 则此字段必传
 	TechTitle *string `json:"TechTitle,omitnil,omitempty" name:"TechTitle"`
+
+	// 证书类型
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 只针对Dnspod系列证书有效，ca机构类型可为sectigo和digicert
+	CaType *string `json:"CaType,omitnil,omitempty" name:"CaType"`
 }
 
 type CertificateInfoSubmitRequest struct {
@@ -737,6 +743,12 @@ type CertificateInfoSubmitRequest struct {
 
 	// 联系人职位。若没有传ManagerId， 则此字段必传
 	TechTitle *string `json:"TechTitle,omitnil,omitempty" name:"TechTitle"`
+
+	// 证书类型
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 只针对Dnspod系列证书有效，ca机构类型可为sectigo和digicert
+	CaType *string `json:"CaType,omitnil,omitempty" name:"CaType"`
 }
 
 func (r *CertificateInfoSubmitRequest) ToJsonString() string {
@@ -789,6 +801,8 @@ func (r *CertificateInfoSubmitRequest) FromJsonString(s string) error {
 	delete(f, "TechPhone")
 	delete(f, "TechEmail")
 	delete(f, "TechTitle")
+	delete(f, "Type")
+	delete(f, "CaType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CertificateInfoSubmitRequest has unknown keys!", "")
 	}

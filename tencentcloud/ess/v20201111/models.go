@@ -7669,7 +7669,7 @@ type CreateSchemeUrlResponseParams struct {
 	// 注： <font color="red">生成的链路后面不能再增加参数</font>
 	SchemeUrl *string `json:"SchemeUrl,omitnil,omitempty" name:"SchemeUrl"`
 
-	// 二维码，在生成动态签署人跳转封面页链接时返回
+	// 二维码，在生成动态签署人跳转封面页链接时返回  注：`此二维码下载链接有效期为5分钟，可下载二维码后本地保存。`
 	SchemeQrcodeUrl *string `json:"SchemeQrcodeUrl,omitnil,omitempty" name:"SchemeQrcodeUrl"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

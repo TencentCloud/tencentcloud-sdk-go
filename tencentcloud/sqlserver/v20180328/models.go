@@ -12830,7 +12830,7 @@ func (r *RecycleReadOnlyGroupResponse) FromJsonString(s string) error {
 }
 
 type RegionInfo struct {
-	// 地域英文ID，类似ap-guanghou
+	// 地域英文ID，类似ap-guangzhou
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 地域中文名称

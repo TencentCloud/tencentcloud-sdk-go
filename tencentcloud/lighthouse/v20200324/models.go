@@ -7768,6 +7768,8 @@ func (r *RenameDockerContainerResponse) FromJsonString(s string) error {
 
 type RenewDiskChargePrepaid struct {
 	// 续费周期。
+	// 单位：月。
+	// 取值范围: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36]
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 自动续费标识。

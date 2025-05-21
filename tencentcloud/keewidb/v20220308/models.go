@@ -1420,11 +1420,16 @@ type DescribeInstancesRequestParams struct {
 	// 内部参数，用户可忽略。
 	MonitorVersion *string `json:"MonitorVersion,omitnil,omitempty" name:"MonitorVersion"`
 
-	// 根据标签的 Key 和 Value 筛选资源。该参数不配置或者数组设置为空值，则不根据标签进行过滤。
+	// 废弃字段。请使用TagList传参。
+	//
+	// Deprecated: InstanceTags is deprecated.
 	InstanceTags *InstanceTagInfo `json:"InstanceTags,omitnil,omitempty" name:"InstanceTags"`
 
 	// 根据标签的 Key 筛选资源，该参数不配置或者数组设置为空值，则不根据标签Key进行过滤。
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
+
+	// 根据标签的 Key 和 Value 筛选资源。该参数不配置或者数组设置为空值，则不根据标签进行过滤。
+	TagList []*InstanceTagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 type DescribeInstancesRequest struct {
@@ -1488,11 +1493,14 @@ type DescribeInstancesRequest struct {
 	// 内部参数，用户可忽略。
 	MonitorVersion *string `json:"MonitorVersion,omitnil,omitempty" name:"MonitorVersion"`
 
-	// 根据标签的 Key 和 Value 筛选资源。该参数不配置或者数组设置为空值，则不根据标签进行过滤。
+	// 废弃字段。请使用TagList传参。
 	InstanceTags *InstanceTagInfo `json:"InstanceTags,omitnil,omitempty" name:"InstanceTags"`
 
 	// 根据标签的 Key 筛选资源，该参数不配置或者数组设置为空值，则不根据标签Key进行过滤。
 	TagKeys []*string `json:"TagKeys,omitnil,omitempty" name:"TagKeys"`
+
+	// 根据标签的 Key 和 Value 筛选资源。该参数不配置或者数组设置为空值，则不根据标签进行过滤。
+	TagList []*InstanceTagInfo `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -1528,6 +1536,7 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 	delete(f, "MonitorVersion")
 	delete(f, "InstanceTags")
 	delete(f, "TagKeys")
+	delete(f, "TagList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesRequest has unknown keys!", "")
 	}

@@ -901,15 +901,15 @@ type InstanceChargePrepaid struct {
 	// 默认值：NOTIFY_AND_MANUAL_RENEW
 	RenewFlag *string `json:"RenewFlag,omitnil,omitempty" name:"RenewFlag"`
 
-	// 时长单位，默认值MONTH
+	// 时长单位，枚举： MONTH, DAY, HOUR；释义：月，日，小时
 	TimeUnit *string `json:"TimeUnit,omitnil,omitempty" name:"TimeUnit"`
 }
 
 type ItemPrice struct {
-	// 原单价
+	// 原单价，元
 	UnitPrice *float64 `json:"UnitPrice,omitnil,omitempty" name:"UnitPrice"`
 
-	// 折扣后单价
+	// 折扣后单价，元
 	DiscountUnitPrice *float64 `json:"DiscountUnitPrice,omitnil,omitempty" name:"DiscountUnitPrice"`
 
 	// 折扣

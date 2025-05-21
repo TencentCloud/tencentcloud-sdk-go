@@ -140,6 +140,9 @@ const (
 	// 连接用户Kubernetes集群失败。
 	FAILEDOPERATION_KUBECLIENTCONNECTION = "FailedOperation.KubeClientConnection"
 
+	// 创建kube client失败
+	FAILEDOPERATION_KUBECLIENTCREATE = "FailedOperation.KubeClientCreate"
+
 	// KubernetesAPI错误。
 	FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 

@@ -575,6 +575,98 @@ func (r *CreateFileSystemResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateFilesetRequestParams struct {
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// Fileset名称
+	FsetName *string `json:"FsetName,omitnil,omitempty" name:"FsetName"`
+
+	// Fileset目录
+	FsetDir *string `json:"FsetDir,omitnil,omitempty" name:"FsetDir"`
+
+	// Fileset容量配额（需带单位G）
+	QuotaSizeLimit *string `json:"QuotaSizeLimit,omitnil,omitempty" name:"QuotaSizeLimit"`
+
+	// Fileset文件数配额
+	QuotaFilesLimit *string `json:"QuotaFilesLimit,omitnil,omitempty" name:"QuotaFilesLimit"`
+
+	// Fileset文件删除操作审计
+	AuditState *string `json:"AuditState,omitnil,omitempty" name:"AuditState"`
+}
+
+type CreateFilesetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// Fileset名称
+	FsetName *string `json:"FsetName,omitnil,omitempty" name:"FsetName"`
+
+	// Fileset目录
+	FsetDir *string `json:"FsetDir,omitnil,omitempty" name:"FsetDir"`
+
+	// Fileset容量配额（需带单位G）
+	QuotaSizeLimit *string `json:"QuotaSizeLimit,omitnil,omitempty" name:"QuotaSizeLimit"`
+
+	// Fileset文件数配额
+	QuotaFilesLimit *string `json:"QuotaFilesLimit,omitnil,omitempty" name:"QuotaFilesLimit"`
+
+	// Fileset文件删除操作审计
+	AuditState *string `json:"AuditState,omitnil,omitempty" name:"AuditState"`
+}
+
+func (r *CreateFilesetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFilesetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "FsetName")
+	delete(f, "FsetDir")
+	delete(f, "QuotaSizeLimit")
+	delete(f, "QuotaFilesLimit")
+	delete(f, "AuditState")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFilesetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFilesetResponseParams struct {
+	// Fileset id
+	FsetId *string `json:"FsetId,omitnil,omitempty" name:"FsetId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateFilesetResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFilesetResponseParams `json:"Response"`
+}
+
+func (r *CreateFilesetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFilesetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteCrossVpcSubnetSupportForClientNodeRequestParams struct {
 	// 文件系统ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
@@ -686,6 +778,67 @@ func (r *DeleteFileSystemResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteFileSystemResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteFilesetRequestParams struct {
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// Fileset id
+	FsetId *string `json:"FsetId,omitnil,omitempty" name:"FsetId"`
+}
+
+type DeleteFilesetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// Fileset id
+	FsetId *string `json:"FsetId,omitnil,omitempty" name:"FsetId"`
+}
+
+func (r *DeleteFilesetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteFilesetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "FsetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteFilesetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteFilesetResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteFilesetResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteFilesetResponseParams `json:"Response"`
+}
+
+func (r *DeleteFilesetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteFilesetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1129,6 +1282,137 @@ func (r *DescribeFileSystemsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeFilesetGeneralConfigRequestParams struct {
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+type DescribeFilesetGeneralConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+}
+
+func (r *DescribeFilesetGeneralConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFilesetGeneralConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFilesetGeneralConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFilesetGeneralConfigResponseParams struct {
+	// 配额对root用户生效
+	EnforceQuotaOnRoot *string `json:"EnforceQuotaOnRoot,omitnil,omitempty" name:"EnforceQuotaOnRoot"`
+
+	// 配置状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFilesetGeneralConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFilesetGeneralConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeFilesetGeneralConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFilesetGeneralConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFilesetsRequestParams struct {
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// FsetId列表
+	FilesetIds []*string `json:"FilesetIds,omitnil,omitempty" name:"FilesetIds"`
+
+	// FsetDir列表
+	FilesetDirs []*string `json:"FilesetDirs,omitnil,omitempty" name:"FilesetDirs"`
+}
+
+type DescribeFilesetsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// FsetId列表
+	FilesetIds []*string `json:"FilesetIds,omitnil,omitempty" name:"FilesetIds"`
+
+	// FsetDir列表
+	FilesetDirs []*string `json:"FilesetDirs,omitnil,omitempty" name:"FilesetDirs"`
+}
+
+func (r *DescribeFilesetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFilesetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "FilesetIds")
+	delete(f, "FilesetDirs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFilesetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFilesetsResponseParams struct {
+	// Fileset列表
+	FilesetList []*FilesetInfo `json:"FilesetList,omitnil,omitempty" name:"FilesetList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeFilesetsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFilesetsResponseParams `json:"Response"`
+}
+
+func (r *DescribeFilesetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFilesetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DetachFileSystemBucketRequestParams struct {
 	// 文件系统ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
@@ -1296,6 +1580,47 @@ type FSAttribute struct {
 
 	// 文件系统付费信息
 	ChargeAttribute *ChargeAttribute `json:"ChargeAttribute,omitnil,omitempty" name:"ChargeAttribute"`
+}
+
+type FilesetInfo struct {
+	// Fileset id
+	FsetId *string `json:"FsetId,omitnil,omitempty" name:"FsetId"`
+
+	// Fileset名称
+	FsetName *string `json:"FsetName,omitnil,omitempty" name:"FsetName"`
+
+	// Fileset目录
+	FsetDir *string `json:"FsetDir,omitnil,omitempty" name:"FsetDir"`
+
+	// Fileset容量配额限定值
+	QuotaSizeLimit *string `json:"QuotaSizeLimit,omitnil,omitempty" name:"QuotaSizeLimit"`
+
+	// 已使用容量配额
+	QuotaSizeUsed *string `json:"QuotaSizeUsed,omitnil,omitempty" name:"QuotaSizeUsed"`
+
+	// 容量配额使用占比
+	QuotaSizeUsedPercent *string `json:"QuotaSizeUsedPercent,omitnil,omitempty" name:"QuotaSizeUsedPercent"`
+
+	// Fileset文件数配额限定值
+	QuotaFilesLimit *string `json:"QuotaFilesLimit,omitnil,omitempty" name:"QuotaFilesLimit"`
+
+	// 已使用文件数配额
+	QuotaFilesUsed *string `json:"QuotaFilesUsed,omitnil,omitempty" name:"QuotaFilesUsed"`
+
+	// 文件数配额使用占比
+	QuotaFilesUsedPercent *string `json:"QuotaFilesUsedPercent,omitnil,omitempty" name:"QuotaFilesUsedPercent"`
+
+	// Fileset审计
+	AuditState *string `json:"AuditState,omitnil,omitempty" name:"AuditState"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// Fileset状态：creating 配置中 active 已生效 modify 修改中
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type GooseFSxAttribute struct {
@@ -1579,4 +1904,147 @@ type Tag struct {
 
 	// 标签值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+// Predefined struct for user
+type UpdateFilesetGeneralConfigRequestParams struct {
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 配额对root用户生效
+	EnforceQuotaOnRoot *string `json:"EnforceQuotaOnRoot,omitnil,omitempty" name:"EnforceQuotaOnRoot"`
+}
+
+type UpdateFilesetGeneralConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// 配额对root用户生效
+	EnforceQuotaOnRoot *string `json:"EnforceQuotaOnRoot,omitnil,omitempty" name:"EnforceQuotaOnRoot"`
+}
+
+func (r *UpdateFilesetGeneralConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateFilesetGeneralConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "EnforceQuotaOnRoot")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFilesetGeneralConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateFilesetGeneralConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateFilesetGeneralConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateFilesetGeneralConfigResponseParams `json:"Response"`
+}
+
+func (r *UpdateFilesetGeneralConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateFilesetGeneralConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateFilesetRequestParams struct {
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// Fileset id
+	FsetId *string `json:"FsetId,omitnil,omitempty" name:"FsetId"`
+
+	// 容量配额限定值
+	QuotaSizeLimit *string `json:"QuotaSizeLimit,omitnil,omitempty" name:"QuotaSizeLimit"`
+
+	// 文件数配额限定值
+	QuotaFilesLimit *string `json:"QuotaFilesLimit,omitnil,omitempty" name:"QuotaFilesLimit"`
+
+	// Fileset文件删除操作审计
+	AuditState *string `json:"AuditState,omitnil,omitempty" name:"AuditState"`
+}
+
+type UpdateFilesetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
+
+	// Fileset id
+	FsetId *string `json:"FsetId,omitnil,omitempty" name:"FsetId"`
+
+	// 容量配额限定值
+	QuotaSizeLimit *string `json:"QuotaSizeLimit,omitnil,omitempty" name:"QuotaSizeLimit"`
+
+	// 文件数配额限定值
+	QuotaFilesLimit *string `json:"QuotaFilesLimit,omitnil,omitempty" name:"QuotaFilesLimit"`
+
+	// Fileset文件删除操作审计
+	AuditState *string `json:"AuditState,omitnil,omitempty" name:"AuditState"`
+}
+
+func (r *UpdateFilesetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateFilesetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "FsetId")
+	delete(f, "QuotaSizeLimit")
+	delete(f, "QuotaFilesLimit")
+	delete(f, "AuditState")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateFilesetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateFilesetResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateFilesetResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateFilesetResponseParams `json:"Response"`
+}
+
+func (r *UpdateFilesetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateFilesetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }

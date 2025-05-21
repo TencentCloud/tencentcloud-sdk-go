@@ -283,9 +283,11 @@ func NewCertificateInfoSubmitResponse() (response *CertificateInfoSubmitResponse
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEINFOSUBMITCONTACTEMAILEMPTY = "FailedOperation.CertificateInfoSubmitContactEmailEmpty"
 //  FAILEDOPERATION_CERTIFICATEINFOSUBMITDOMAININVALID = "FailedOperation.CertificateInfoSubmitDomainInvalid"
 //  FAILEDOPERATION_CERTIFICATEINFOSUBMITSTATUSINVALID = "FailedOperation.CertificateInfoSubmitStatusInvalid"
 //  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_CERTIFICATEORDERSUBMITROOTCAINVALID = "FailedOperation.CertificateOrderSubmitRootCAInvalid"
 //  FAILEDOPERATION_EXCEEDSFREELIMIT = "FailedOperation.ExceedsFreeLimit"
 //  FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = "FailedOperation.InvalidCertificateStatusCode"
 //  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
@@ -303,9 +305,11 @@ func (c *Client) CertificateInfoSubmit(request *CertificateInfoSubmitRequest) (r
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CERTIFICATEINFOSUBMITCONTACTEMAILEMPTY = "FailedOperation.CertificateInfoSubmitContactEmailEmpty"
 //  FAILEDOPERATION_CERTIFICATEINFOSUBMITDOMAININVALID = "FailedOperation.CertificateInfoSubmitDomainInvalid"
 //  FAILEDOPERATION_CERTIFICATEINFOSUBMITSTATUSINVALID = "FailedOperation.CertificateInfoSubmitStatusInvalid"
 //  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_CERTIFICATEORDERSUBMITROOTCAINVALID = "FailedOperation.CertificateOrderSubmitRootCAInvalid"
 //  FAILEDOPERATION_EXCEEDSFREELIMIT = "FailedOperation.ExceedsFreeLimit"
 //  FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = "FailedOperation.InvalidCertificateStatusCode"
 //  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"

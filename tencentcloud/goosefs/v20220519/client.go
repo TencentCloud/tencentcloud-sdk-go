@@ -303,6 +303,49 @@ func (c *Client) CreateFileSystemWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreateFilesetRequest() (request *CreateFilesetRequest) {
+    request = &CreateFilesetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "CreateFileset")
+    
+    
+    return
+}
+
+func NewCreateFilesetResponse() (response *CreateFilesetResponse) {
+    response = &CreateFilesetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateFileset
+// 创建Fileset
+func (c *Client) CreateFileset(request *CreateFilesetRequest) (response *CreateFilesetResponse, err error) {
+    return c.CreateFilesetWithContext(context.Background(), request)
+}
+
+// CreateFileset
+// 创建Fileset
+func (c *Client) CreateFilesetWithContext(ctx context.Context, request *CreateFilesetRequest) (response *CreateFilesetResponse, err error) {
+    if request == nil {
+        request = NewCreateFilesetRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFileset require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFilesetResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCrossVpcSubnetSupportForClientNodeRequest() (request *DeleteCrossVpcSubnetSupportForClientNodeRequest) {
     request = &DeleteCrossVpcSubnetSupportForClientNodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -385,6 +428,49 @@ func (c *Client) DeleteFileSystemWithContext(ctx context.Context, request *Delet
     request.SetContext(ctx)
     
     response = NewDeleteFileSystemResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteFilesetRequest() (request *DeleteFilesetRequest) {
+    request = &DeleteFilesetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "DeleteFileset")
+    
+    
+    return
+}
+
+func NewDeleteFilesetResponse() (response *DeleteFilesetResponse) {
+    response = &DeleteFilesetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteFileset
+// 删除Fileset
+func (c *Client) DeleteFileset(request *DeleteFilesetRequest) (response *DeleteFilesetResponse, err error) {
+    return c.DeleteFilesetWithContext(context.Background(), request)
+}
+
+// DeleteFileset
+// 删除Fileset
+func (c *Client) DeleteFilesetWithContext(ctx context.Context, request *DeleteFilesetRequest) (response *DeleteFilesetResponse, err error) {
+    if request == nil {
+        request = NewDeleteFilesetRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteFileset require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteFilesetResponse()
     err = c.Send(request, response)
     return
 }
@@ -690,6 +776,92 @@ func (c *Client) DescribeFileSystemsWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeFilesetGeneralConfigRequest() (request *DescribeFilesetGeneralConfigRequest) {
+    request = &DescribeFilesetGeneralConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "DescribeFilesetGeneralConfig")
+    
+    
+    return
+}
+
+func NewDescribeFilesetGeneralConfigResponse() (response *DescribeFilesetGeneralConfigResponse) {
+    response = &DescribeFilesetGeneralConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFilesetGeneralConfig
+// 查询Fileset通用配置
+func (c *Client) DescribeFilesetGeneralConfig(request *DescribeFilesetGeneralConfigRequest) (response *DescribeFilesetGeneralConfigResponse, err error) {
+    return c.DescribeFilesetGeneralConfigWithContext(context.Background(), request)
+}
+
+// DescribeFilesetGeneralConfig
+// 查询Fileset通用配置
+func (c *Client) DescribeFilesetGeneralConfigWithContext(ctx context.Context, request *DescribeFilesetGeneralConfigRequest) (response *DescribeFilesetGeneralConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeFilesetGeneralConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFilesetGeneralConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFilesetGeneralConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFilesetsRequest() (request *DescribeFilesetsRequest) {
+    request = &DescribeFilesetsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "DescribeFilesets")
+    
+    
+    return
+}
+
+func NewDescribeFilesetsResponse() (response *DescribeFilesetsResponse) {
+    response = &DescribeFilesetsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeFilesets
+// 查询Fileset列表
+func (c *Client) DescribeFilesets(request *DescribeFilesetsRequest) (response *DescribeFilesetsResponse, err error) {
+    return c.DescribeFilesetsWithContext(context.Background(), request)
+}
+
+// DescribeFilesets
+// 查询Fileset列表
+func (c *Client) DescribeFilesetsWithContext(ctx context.Context, request *DescribeFilesetsRequest) (response *DescribeFilesetsResponse, err error) {
+    if request == nil {
+        request = NewDescribeFilesetsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFilesets require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFilesetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDetachFileSystemBucketRequest() (request *DetachFileSystemBucketRequest) {
     request = &DetachFileSystemBucketRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -901,6 +1073,92 @@ func (c *Client) QueryDataRepositoryBandwidthWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewQueryDataRepositoryBandwidthResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateFilesetRequest() (request *UpdateFilesetRequest) {
+    request = &UpdateFilesetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "UpdateFileset")
+    
+    
+    return
+}
+
+func NewUpdateFilesetResponse() (response *UpdateFilesetResponse) {
+    response = &UpdateFilesetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateFileset
+// 修改FIleset
+func (c *Client) UpdateFileset(request *UpdateFilesetRequest) (response *UpdateFilesetResponse, err error) {
+    return c.UpdateFilesetWithContext(context.Background(), request)
+}
+
+// UpdateFileset
+// 修改FIleset
+func (c *Client) UpdateFilesetWithContext(ctx context.Context, request *UpdateFilesetRequest) (response *UpdateFilesetResponse, err error) {
+    if request == nil {
+        request = NewUpdateFilesetRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateFileset require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateFilesetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateFilesetGeneralConfigRequest() (request *UpdateFilesetGeneralConfigRequest) {
+    request = &UpdateFilesetGeneralConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "UpdateFilesetGeneralConfig")
+    
+    
+    return
+}
+
+func NewUpdateFilesetGeneralConfigResponse() (response *UpdateFilesetGeneralConfigResponse) {
+    response = &UpdateFilesetGeneralConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateFilesetGeneralConfig
+// 修改Fileset通用配置
+func (c *Client) UpdateFilesetGeneralConfig(request *UpdateFilesetGeneralConfigRequest) (response *UpdateFilesetGeneralConfigResponse, err error) {
+    return c.UpdateFilesetGeneralConfigWithContext(context.Background(), request)
+}
+
+// UpdateFilesetGeneralConfig
+// 修改Fileset通用配置
+func (c *Client) UpdateFilesetGeneralConfigWithContext(ctx context.Context, request *UpdateFilesetGeneralConfigRequest) (response *UpdateFilesetGeneralConfigResponse, err error) {
+    if request == nil {
+        request = NewUpdateFilesetGeneralConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateFilesetGeneralConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateFilesetGeneralConfigResponse()
     err = c.Send(request, response)
     return
 }

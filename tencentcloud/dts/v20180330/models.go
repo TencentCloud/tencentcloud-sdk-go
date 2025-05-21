@@ -1055,9 +1055,13 @@ type DstInfo struct {
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 目标实例vip。已废弃，无需填写
+	//
+	// Deprecated: Ip is deprecated.
 	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
 
 	// 目标实例vport。已废弃，无需填写
+	//
+	// Deprecated: Port is deprecated.
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 目前只对MySQL有效。当为整实例迁移时，1-只读，0-可读写。

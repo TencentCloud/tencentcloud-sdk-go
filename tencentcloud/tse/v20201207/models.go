@@ -8630,6 +8630,10 @@ type GovernanceAlias struct {
 
 	// 该服务别名是否可以编辑
 	Editable *bool `json:"Editable,omitnil,omitempty" name:"Editable"`
+
+	// 元数据信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Metadatas []*Metadata `json:"Metadatas,omitnil,omitempty" name:"Metadatas"`
 }
 
 type GovernanceInstance struct {
@@ -8838,6 +8842,10 @@ type GovernanceNamespace struct {
 
 	// 是否开启同步到全局注册中心	
 	SyncToGlobalRegistry *bool `json:"SyncToGlobalRegistry,omitnil,omitempty" name:"SyncToGlobalRegistry"`
+
+	// 元数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Metadatas []*Metadata `json:"Metadatas,omitnil,omitempty" name:"Metadatas"`
 }
 
 type GovernanceNamespaceInput struct {
@@ -8961,6 +8969,10 @@ type GovernanceServiceContract struct {
 
 	// 契约接口列表
 	Interfaces []*GovernanceInterfaceDescription `json:"Interfaces,omitnil,omitempty" name:"Interfaces"`
+
+	// 元数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Metadatas []*Metadata `json:"Metadatas,omitnil,omitempty" name:"Metadatas"`
 }
 
 type GovernanceServiceContractVersion struct {
@@ -11884,6 +11896,18 @@ type SREInstance struct {
 
 	// 部署架构
 	DeployMode *string `json:"DeployMode,omitnil,omitempty" name:"DeployMode"`
+
+	// 全局属性
+	GlobalType *string `json:"GlobalType,omitnil,omitempty" name:"GlobalType"`
+
+	// 所属组类型
+	GroupType *string `json:"GroupType,omitnil,omitempty" name:"GroupType"`
+
+	// 组id
+	GroupId []*string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 是否为主地域
+	IsMainRegion *bool `json:"IsMainRegion,omitnil,omitempty" name:"IsMainRegion"`
 }
 
 type ServiceGovernanceInfo struct {

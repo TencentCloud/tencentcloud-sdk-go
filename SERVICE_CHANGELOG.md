@@ -1,10 +1,10 @@
-# Release v1.0.1170
+# Release v1.0.1171
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 腾讯云数据仓库 TCHouse-D(cdwdoris) 版本：2021-12-28
 
-### 第 193 次发布
+### 第 48 次发布
 
-发布时间：2025-05-21 01:10:22
+发布时间：2025-05-22 01:10:52
 
 本次发布包含了以下内容：
 
@@ -12,22 +12,26 @@
 
 修改接口：
 
-* [AnalyzeAuditLogs](https://cloud.tencent.com/document/api/236/89112)
+* [ReduceInstance](https://cloud.tencent.com/document/api/1387/109429)
 
-* [CreateAuditLogFile](https://cloud.tencent.com/document/api/236/45461)
+	* 新增入参：CheckAuth
 
-* [ModifyAuditService](https://cloud.tencent.com/document/api/236/101809)
+* [ScaleOutInstance](https://cloud.tencent.com/document/api/1387/102607)
 
-* [OpenAuditService](https://cloud.tencent.com/document/api/236/76408)
+	* 新增入参：CheckAuth
+
+* [ScaleUpInstance](https://cloud.tencent.com/document/api/1387/102606)
+
+	* 新增入参：CheckAuth, RollingRestart
 
 
 
 
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+## 日志服务(cls) 版本：2020-10-16
 
-### 第 134 次发布
+### 第 128 次发布
 
-发布时间：2025-05-21 01:15:11
+发布时间：2025-05-22 01:12:28
 
 本次发布包含了以下内容：
 
@@ -35,52 +39,76 @@
 
 修改数据结构：
 
-* [CynosdbCluster](https://cloud.tencent.com/document/api/1003/48097#CynosdbCluster)
+* [ScheduledSqlTaskInfo](https://cloud.tencent.com/document/api/614/56471#ScheduledSqlTaskInfo)
 
-	* 新增成员：CynosVersionTag, GdnRole
-
-
-
-
-## Elasticsearch Service(es) 版本：2025-01-01
+	* 新增成员：FullQuery
 
 
 
-## Elasticsearch Service(es) 版本：2018-04-16
 
-### 第 81 次发布
+## 数据安全治理中心(dsgc) 版本：2019-07-23
 
-发布时间：2025-05-21 01:18:51
+### 第 31 次发布
+
+发布时间：2025-05-22 01:16:35
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+<font color="#dd0000">**预下线接口**：</font>
+
+* CreateClassificationRule
+* CreateNewClassification
+* CreateOrCopyStandard
+* DescribeClassificationInfo
+* DescribeClassificationRuleCount
+* DescribeLeafClassification
+* DescribeRuleList
+* ModifyClassificationRule
+* ModifyClassificationRuleState
+* ModifyLevelInfo
+* ModifyLevelName
+* ModifyLevelState
+* ModifyMergeClassification
+* ModifyNewClassification
+* ModifyStandardInfo
+
 修改接口：
 
-* [CreateLogstashInstance](https://cloud.tencent.com/document/api/845/77244)
+* [DescribeDSPAAssessmentRiskSideList](https://cloud.tencent.com/document/api/1087/97606)
 
-	* 新增入参：MultiZoneInfo, DeployMode
+	* 新增出参：RiskSideItemList
 
+
+
+
+## 数据传输服务(dts) 版本：2021-12-06
+
+
+
+## 数据传输服务(dts) 版本：2018-03-30
+
+### 第 23 次发布
+
+发布时间：2025-05-22 01:17:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [LogstashInstanceInfo](https://cloud.tencent.com/document/api/845/30634#LogstashInstanceInfo)
-
-	* 新增成员：DeployMode, MultiZoneInfo
-
-* [ZoneDetail](https://cloud.tencent.com/document/api/845/30634#ZoneDetail)
-
-	* 新增成员：Hidden
+* [DstInfo](https://cloud.tencent.com/document/api/571/18131#DstInfo)
 
 
 
 
-## 腾讯电子签企业版(ess) 版本：2020-11-11
+## 数据加速器 GooseFS(goosefs) 版本：2022-05-19
 
-### 第 222 次发布
+### 第 13 次发布
 
-发布时间：2025-05-21 01:19:08
+发布时间：2025-05-22 01:19:23
 
 本次发布包含了以下内容：
 
@@ -88,75 +116,24 @@
 
 新增接口：
 
-* [CreateUserNameChangeUrl](https://cloud.tencent.com/document/api/1323/118524)
-
-
-
-## 知识引擎原子能力(lkeap) 版本：2024-05-22
-
-### 第 11 次发布
-
-发布时间：2025-05-21 01:24:26
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [RetrieveKnowledgeRealtime](https://cloud.tencent.com/document/api/1772/118525)
-
-<font color="#dd0000">**删除接口**：</font>
-
-* UploadDocRealtime
-
-
-
-## 媒体处理(mps) 版本：2019-06-12
-
-### 第 123 次发布
-
-发布时间：2025-05-21 01:25:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateTranscodeTemplate](https://cloud.tencent.com/document/api/862/37605)
-
-	* 新增入参：StdExtInfo
-
-* [DescribeImageTaskDetail](https://cloud.tencent.com/document/api/862/118509)
-
-	* 新增出参：ImageProcessTaskResultSet
-
+* [CreateFileset](https://cloud.tencent.com/document/api/1424/118627)
+* [DeleteFileset](https://cloud.tencent.com/document/api/1424/118626)
+* [DescribeFilesetGeneralConfig](https://cloud.tencent.com/document/api/1424/118625)
+* [DescribeFilesets](https://cloud.tencent.com/document/api/1424/118624)
+* [UpdateFileset](https://cloud.tencent.com/document/api/1424/118623)
+* [UpdateFilesetGeneralConfig](https://cloud.tencent.com/document/api/1424/118622)
 
 新增数据结构：
 
-* [ImageDenoiseConfig](https://cloud.tencent.com/document/api/862/37615#ImageDenoiseConfig)
-* [ImageProcessTaskOutput](https://cloud.tencent.com/document/api/862/37615#ImageProcessTaskOutput)
-* [ImageProcessTaskResult](https://cloud.tencent.com/document/api/862/37615#ImageProcessTaskResult)
-
-修改数据结构：
-
-* [ImageEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#ImageEnhanceConfig)
-
-	* 新增成员：Denoise, LowLightEnhance
-
-* [RawTranscodeParameter](https://cloud.tencent.com/document/api/862/37615#RawTranscodeParameter)
-
-	* 新增成员：StdExtInfo, EnhanceConfig
+* [FilesetInfo](https://cloud.tencent.com/document/api/1424/95076#FilesetInfo)
 
 
 
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
 
-## 医疗报告结构化(mrs) 版本：2020-09-10
+### 第 105 次发布
 
-### 第 35 次发布
-
-发布时间：2025-05-21 01:26:13
+发布时间：2025-05-22 01:20:15
 
 本次发布包含了以下内容：
 
@@ -164,26 +141,64 @@
 
 修改数据结构：
 
-* [Block](https://cloud.tencent.com/document/api/1314/56230#Block)
+* [VisionRecognitionResult](https://cloud.tencent.com/document/api/1081/34988#VisionRecognitionResult)
 
-	* 新增成员：EndoscopyV2
+	* 新增成员：AlternativeSummary
 
-* [IndicatorItem](https://cloud.tencent.com/document/api/1314/56230#IndicatorItem)
 
-	* 新增成员：Sample
 
-* [Template](https://cloud.tencent.com/document/api/1314/56230#Template)
 
-	* 新增成员：EndoscopyV2
+## 云数据库 KeeWiDB(keewidb) 版本：2022-03-08
+
+### 第 9 次发布
+
+发布时间：2025-05-22 01:21:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeInstances](https://cloud.tencent.com/document/api/1520/86205)
+
+	* 新增入参：TagList
+
+
+
+
+## 腾讯云智能体开发平台(lke) 版本：2023-11-30
+
+### 第 43 次发布
+
+发布时间：2025-05-22 01:22:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDoc](https://cloud.tencent.com/document/api/1759/105071)
+
+	* <font color="#dd0000">**删除出参**：</font>CustomerKnowledgeId, AttributeFlags
+
+* [ModifyDoc](https://cloud.tencent.com/document/api/1759/105058)
+
+	* <font color="#dd0000">**删除入参**：</font>CustomerKnowledgeId, AttributeFlags
+
+* [SaveDoc](https://cloud.tencent.com/document/api/1759/105054)
+
+	* <font color="#dd0000">**删除入参**：</font>CustomerKnowledgeId, AttributeFlags
 
 
 
 
 ## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
 
-### 第 56 次发布
+### 第 57 次发布
 
-发布时间：2025-05-21 01:27:30
+发布时间：2025-05-22 01:26:04
 
 本次发布包含了以下内容：
 
@@ -191,72 +206,15 @@
 
 <font color="#dd0000">**删除接口**：</font>
 
-* InitDBInstances
+* UpgradeDBInstance
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-09-01
+## SSL 证书(ssl) 版本：2019-12-05
 
-### 第 104 次发布
+### 第 82 次发布
 
-发布时间：2025-05-21 01:32:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreatePrefetchTask](https://cloud.tencent.com/document/api/1552/80704)
-
-	* 新增入参：PrefetchMediaSegments
-
-
-修改数据结构：
-
-* [OriginDetail](https://cloud.tencent.com/document/api/1552/80721#OriginDetail)
-
-	* 新增成员：HostHeader
-
-* [OriginInfo](https://cloud.tencent.com/document/api/1552/80721#OriginInfo)
-
-	* 新增成员：HostHeader
-
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-01-06
-
-
-
-## 容器服务(tke) 版本：2022-05-01
-
-### 第 10 次发布
-
-发布时间：2025-05-21 01:33:41
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [NativeNodeInfo](https://cloud.tencent.com/document/api/457/103206#NativeNodeInfo)
-
-	* 新增成员：SystemDisk, WanIp, KeyIds, GPUParams, DataDisks, MachineType
-
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-
-
-## Web 应用防火墙(waf) 版本：2018-01-25
-
-### 第 120 次发布
-
-发布时间：2025-05-21 01:37:18
+发布时间：2025-05-22 01:27:51
 
 本次发布包含了以下内容：
 
@@ -264,26 +222,63 @@
 
 修改接口：
 
-* [AddCustomWhiteRule](https://cloud.tencent.com/document/api/627/90325)
+* [CertificateInfoSubmit](https://cloud.tencent.com/document/api/400/116033)
 
-	* 新增入参：LogicalOp
+	* 新增入参：Type, CaType
 
-* [ModifyCustomWhiteRule](https://cloud.tencent.com/document/api/627/90323)
 
-	* 新增入参：LogicalOp
 
-* [UpsertCCRule](https://cloud.tencent.com/document/api/627/97646)
 
-	* 新增入参：CelRule, LogicalOp
+## 实时音视频(trtc) 版本：2019-07-22
 
-	* <font color="#dd0000">**修改入参**：</font>Url, MatchFunc
+### 第 109 次发布
 
+发布时间：2025-05-22 01:32:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [CCRuleItems](https://cloud.tencent.com/document/api/627/53609#CCRuleItems)
+* [ServerPushText](https://cloud.tencent.com/document/api/647/44055#ServerPushText)
 
-	* 新增成员：CelRule, LogicalOp
+	* 新增成员：DropMode, Priority
+
+
+
+
+## 微服务引擎(tse) 版本：2020-12-07
+
+### 第 95 次发布
+
+发布时间：2025-05-22 01:32:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [GovernanceAlias](https://cloud.tencent.com/document/api/1364/54942#GovernanceAlias)
+
+	* 新增成员：Metadatas
+
+* [GovernanceNamespace](https://cloud.tencent.com/document/api/1364/54942#GovernanceNamespace)
+
+	* 新增成员：Metadatas
+
+* [GovernanceServiceContract](https://cloud.tencent.com/document/api/1364/54942#GovernanceServiceContract)
+
+	* 新增成员：Metadatas
+
+* [KVPair](https://cloud.tencent.com/document/api/1364/54942#KVPair)
+
+	* <font color="#dd0000">**修改成员**：</font>Key, Value
+
+* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
+
+	* 新增成员：GlobalType, GroupType, GroupId, IsMainRegion
 
 
 

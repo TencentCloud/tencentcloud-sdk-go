@@ -5522,6 +5522,9 @@ type ReduceInstanceRequestParams struct {
 
 	// 缩容后集群高可用类型：0：非高可用，1：读高可用，2：读写高可用。
 	HaType *int64 `json:"HaType,omitnil,omitempty" name:"HaType"`
+
+	// 前端鉴权使用
+	CheckAuth *bool `json:"CheckAuth,omitnil,omitempty" name:"CheckAuth"`
 }
 
 type ReduceInstanceRequest struct {
@@ -5538,6 +5541,9 @@ type ReduceInstanceRequest struct {
 
 	// 缩容后集群高可用类型：0：非高可用，1：读高可用，2：读写高可用。
 	HaType *int64 `json:"HaType,omitnil,omitempty" name:"HaType"`
+
+	// 前端鉴权使用
+	CheckAuth *bool `json:"CheckAuth,omitnil,omitempty" name:"CheckAuth"`
 }
 
 func (r *ReduceInstanceRequest) ToJsonString() string {
@@ -5556,6 +5562,7 @@ func (r *ReduceInstanceRequest) FromJsonString(s string) error {
 	delete(f, "DelHosts")
 	delete(f, "Type")
 	delete(f, "HaType")
+	delete(f, "CheckAuth")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReduceInstanceRequest has unknown keys!", "")
 	}
@@ -5988,6 +5995,9 @@ type ScaleOutInstanceRequestParams struct {
 
 	// 扩容后集群高可用类型：0：非高可用，1：读高可用，2：读写高可用。
 	HaType *int64 `json:"HaType,omitnil,omitempty" name:"HaType"`
+
+	// 前端鉴权使用
+	CheckAuth *bool `json:"CheckAuth,omitnil,omitempty" name:"CheckAuth"`
 }
 
 type ScaleOutInstanceRequest struct {
@@ -6004,6 +6014,9 @@ type ScaleOutInstanceRequest struct {
 
 	// 扩容后集群高可用类型：0：非高可用，1：读高可用，2：读写高可用。
 	HaType *int64 `json:"HaType,omitnil,omitempty" name:"HaType"`
+
+	// 前端鉴权使用
+	CheckAuth *bool `json:"CheckAuth,omitnil,omitempty" name:"CheckAuth"`
 }
 
 func (r *ScaleOutInstanceRequest) ToJsonString() string {
@@ -6022,6 +6035,7 @@ func (r *ScaleOutInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "NodeCount")
 	delete(f, "HaType")
+	delete(f, "CheckAuth")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleOutInstanceRequest has unknown keys!", "")
 	}
@@ -6067,8 +6081,14 @@ type ScaleUpInstanceRequestParams struct {
 	// 节点规格
 	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
 
-	// 角色（MATER/CORE），MASTER 对应 FE，CORE对应BE
+	// 角色（MASTER/CORE），MASTER 对应 FE，CORE对应BE
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 前端鉴权使用，后端API调用传false，传true不会执行变配
+	CheckAuth *bool `json:"CheckAuth,omitnil,omitempty" name:"CheckAuth"`
+
+	// 是否滚动重启
+	RollingRestart *bool `json:"RollingRestart,omitnil,omitempty" name:"RollingRestart"`
 }
 
 type ScaleUpInstanceRequest struct {
@@ -6080,8 +6100,14 @@ type ScaleUpInstanceRequest struct {
 	// 节点规格
 	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
 
-	// 角色（MATER/CORE），MASTER 对应 FE，CORE对应BE
+	// 角色（MASTER/CORE），MASTER 对应 FE，CORE对应BE
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 前端鉴权使用，后端API调用传false，传true不会执行变配
+	CheckAuth *bool `json:"CheckAuth,omitnil,omitempty" name:"CheckAuth"`
+
+	// 是否滚动重启
+	RollingRestart *bool `json:"RollingRestart,omitnil,omitempty" name:"RollingRestart"`
 }
 
 func (r *ScaleUpInstanceRequest) ToJsonString() string {
@@ -6099,6 +6125,8 @@ func (r *ScaleUpInstanceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "SpecName")
 	delete(f, "Type")
+	delete(f, "CheckAuth")
+	delete(f, "RollingRestart")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleUpInstanceRequest has unknown keys!", "")
 	}

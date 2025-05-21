@@ -401,9 +401,6 @@ const (
 	// 弹性网卡数据vpc子网不匹配,必须为同vpc不同子网
 	INVALIDPARAMETERVALUE_ELASTICNETWORKVPCSUBNETMISMATCH = "InvalidParameterValue.ElasticNetworkVpcSubnetMismatch"
 
-	// 弹性网卡ID不合要求，请提供规范的弹性网卡ID，类似eni-xxxxxxxx，字母x代表小写字符或者数字
-	INVALIDPARAMETERVALUE_ENIIDMALFORMED = "InvalidParameterValue.EniIdMalformed"
-
 	// 实例的申请的外网IP个数超过了这种规格实例的外网ip配额。
 	INVALIDPARAMETERVALUE_EXTERNALIPQUOTALIMITED = "InvalidParameterValue.ExternalIpQuotaLimited"
 
@@ -512,6 +509,9 @@ const (
 	// 许可证类型不可用。
 	INVALIDPARAMETERVALUE_INVALIDLICENSETYPE = "InvalidParameterValue.InvalidLicenseType"
 
+	// 指定的弹性网卡id非vrdma网卡
+	INVALIDPARAMETERVALUE_INVALIDNETWORKINTERFACEID = "InvalidParameterValue.InvalidNetworkInterfaceId"
+
 	// 参数值错误。
 	INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 
@@ -529,6 +529,9 @@ const (
 
 	// 无效的模糊查询字符串。
 	INVALIDPARAMETERVALUE_INVALIDVAGUENAME = "InvalidParameterValue.InvalidVagueName"
+
+	// 这个特别的VpcId or SubnetId在弹性网库数据结构未发现
+	INVALIDPARAMETERVALUE_INVALIDVPCIDSUBNETIDNOTFOUND = "InvalidParameterValue.InvalidVpcIdSubnetIdNotFound"
 
 	// 边缘可用区不支持这个运营商。
 	INVALIDPARAMETERVALUE_ISPNOTSUPPORTFOREDGEZONE = "InvalidParameterValue.IspNotSupportForEdgeZone"
@@ -634,6 +637,9 @@ const (
 
 	// 指定的VpcId不存在。
 	INVALIDPARAMETERVALUE_VPCIDNOTEXIST = "InvalidParameterValue.VpcIdNotExist"
+
+	// 指定的VpcId和SubnetId不匹配。
+	INVALIDPARAMETERVALUE_VPCIDSUBNETIDNOTMATCH = "InvalidParameterValue.VpcIdSubnetIdNotMatch"
 
 	// VPC网络与实例不在同一可用区
 	INVALIDPARAMETERVALUE_VPCIDZONEIDNOTMATCH = "InvalidParameterValue.VpcIdZoneIdNotMatch"
@@ -1012,6 +1018,9 @@ const (
 
 	// 请求不支持正在销毁的实例
 	UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = "UnsupportedOperation.InstanceStateTerminating"
+
+	// 实例类型不支持设置`Confidentiality` 状态
+	UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTCONFIDENTIALITY = "UnsupportedOperation.InstanceTypeNotSupportConfidentiality"
 
 	// 实例类型不支持设置`GridDriverService` 状态
 	UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTGRIDLICENCE = "UnsupportedOperation.InstanceTypeNotSupportGridLicence"

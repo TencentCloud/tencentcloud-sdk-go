@@ -101,6 +101,9 @@ const (
 	// 云资源类型无效。
 	FAILEDOPERATION_CERTIFICATEHOSTRESOURCETYPEINVALID = "FailedOperation.CertificateHostResourceTypeInvalid"
 
+	// 邮箱不能为空
+	FAILEDOPERATION_CERTIFICATEINFOSUBMITCONTACTEMAILEMPTY = "FailedOperation.CertificateInfoSubmitContactEmailEmpty"
+
 	// 您输入的域名%s格式有误，请您核对后重新提交
 	FAILEDOPERATION_CERTIFICATEINFOSUBMITDOMAININVALID = "FailedOperation.CertificateInfoSubmitDomainInvalid"
 
@@ -133,6 +136,9 @@ const (
 
 	// 订单正在处理中，请您耐心等待
 	FAILEDOPERATION_CERTIFICATEORDERSUBMITPROCESSING = "FailedOperation.CertificateOrderSubmitProcessing"
+
+	// 当前选择的根证书无效，请您重新选择
+	FAILEDOPERATION_CERTIFICATEORDERSUBMITROOTCAINVALID = "FailedOperation.CertificateOrderSubmitRootCAInvalid"
 
 	// 解析失败，请检查证书是否符合标准，请留意是否有多余的空格
 	FAILEDOPERATION_CERTIFICATEPARSEERROR = "FailedOperation.CertificateParseError"

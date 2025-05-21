@@ -14642,7 +14642,7 @@ type VideoLicenseEntity struct {
 }
 
 type VisionRecognitionResult struct {
-	// 任务状态（1：失败；2：成功但结果为空；3：成功且结果非空）
+	// 任务状态（1：分析失败；2：下载/读取视频/图片失败；3：成功）
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 识别到的目标类型。可能取值：
@@ -14657,8 +14657,11 @@ type VisionRecognitionResult struct {
 	// - `license_plate`：车牌
 	DetectedClassifications []*string `json:"DetectedClassifications,omitnil,omitempty" name:"DetectedClassifications"`
 
-	// 视频摘要文本
+	// 摘要文本
 	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// 摘要文本（次选语言）
+	AlternativeSummary *string `json:"AlternativeSummary,omitnil,omitempty" name:"AlternativeSummary"`
 }
 
 type WXDeviceInfo struct {

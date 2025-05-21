@@ -2874,7 +2874,7 @@ type ImageConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
 
-	// 参数已废弃
+	// 该参数即将下线，不推荐用户使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EntryPoint *string `json:"EntryPoint,omitnil,omitempty" name:"EntryPoint"`
 
@@ -4708,7 +4708,7 @@ type Result struct {
 	// 此次函数执行的Id
 	FunctionRequestId *string `json:"FunctionRequestId,omitnil,omitempty" name:"FunctionRequestId"`
 
-	// 请求 Invoke 接口，该参数已弃用。请求 InvokeFunction 接口，该参数值为请求执行[状态码](https://cloud.tencent.com/document/product/583/42611)。
+	// 该参数不再维护，不推荐用户继续使用。
 	InvokeResult *int64 `json:"InvokeResult,omitnil,omitempty" name:"InvokeResult"`
 }
 
