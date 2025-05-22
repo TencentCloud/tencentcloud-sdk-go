@@ -340,6 +340,9 @@ func (r *CreateEmailAddressResponse) FromJsonString(s string) error {
 type CreateEmailIdentityRequestParams struct {
 	// 您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。
 	EmailIdentity *string `json:"EmailIdentity,omitnil,omitempty" name:"EmailIdentity"`
+
+	// 生成的dkim密钥长度。0:1024，1:2048
+	DKIMOption *uint64 `json:"DKIMOption,omitnil,omitempty" name:"DKIMOption"`
 }
 
 type CreateEmailIdentityRequest struct {
@@ -347,6 +350,9 @@ type CreateEmailIdentityRequest struct {
 	
 	// 您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。
 	EmailIdentity *string `json:"EmailIdentity,omitnil,omitempty" name:"EmailIdentity"`
+
+	// 生成的dkim密钥长度。0:1024，1:2048
+	DKIMOption *uint64 `json:"DKIMOption,omitnil,omitempty" name:"DKIMOption"`
 }
 
 func (r *CreateEmailIdentityRequest) ToJsonString() string {
@@ -362,6 +368,7 @@ func (r *CreateEmailIdentityRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "EmailIdentity")
+	delete(f, "DKIMOption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEmailIdentityRequest has unknown keys!", "")
 	}

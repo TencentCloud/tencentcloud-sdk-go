@@ -2046,7 +2046,7 @@ type AsrHotwordsSet struct {
 	HotwordsId *string `json:"HotwordsId,omitnil,omitempty" name:"HotwordsId"`
 
 	// 当前热词库状态，数值表示绑定该热词库的智能字幕模板数量。
-	// Status 为 0 ，表示该热词库没有被智能字幕模版引用可以删除；
+	// Status 为 0 ，表示该热词库没有被智能字幕模板引用可以删除；
 	// Status 不为 0，表示该热词库不能被删除。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
@@ -12485,7 +12485,7 @@ type HighlightSegmentItem struct {
 type ImageAreaBoxInfo struct {
 	// 图片框选区域类型，可选值：
 	// <li>logo：图标；</li>
-	// <li>text：文字。</li>
+	// <li>text：文字；</li>
 	// 默认值：logo。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -12494,6 +12494,12 @@ type ImageAreaBoxInfo struct {
 	// 示例值：[101, 85, 111, 95]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AreaCoordSet []*int64 `json:"AreaCoordSet,omitnil,omitempty" name:"AreaCoordSet"`
+
+	// 图片框选区域坐标，[x1, y1, x2, y2]，即左上角坐标、右下角坐标， 当AreaCoordSet未指定时生效。
+	// - [0.1, 0.1, 0.3, 0.3] :  表示比例 （数值小于1）
+	// - [50, 50, 350, 280] : 表示像素 （数值大于等于1）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BoundingBox []*float64 `json:"BoundingBox,omitnil,omitempty" name:"BoundingBox"`
 }
 
 type ImageDenoiseConfig struct {
@@ -14719,8 +14725,8 @@ func (r *ModifyAnimatedGraphicsTemplateResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type ModifyAsrHotwordsRequestParams struct {
 	// 热词库 id 
-	// 如果热词库是文本热词：Name 和 Content 至少填一个 
-	// 如果热词库是：Name、FileContent 和 FileName 至少填一个 
+	// 如果热词库是临时热词：Name 和 Content 至少填一个 
+	// 如果热词库是文件热词：Name、FileContent 和 FileName 至少填一个 
 	HotwordsId *string `json:"HotwordsId,omitnil,omitempty" name:"HotwordsId"`
 
 	// 热词库名称
@@ -14742,8 +14748,8 @@ type ModifyAsrHotwordsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 热词库 id 
-	// 如果热词库是文本热词：Name 和 Content 至少填一个 
-	// 如果热词库是：Name、FileContent 和 FileName 至少填一个 
+	// 如果热词库是临时热词：Name 和 Content 至少填一个 
+	// 如果热词库是文件热词：Name、FileContent 和 FileName 至少填一个 
 	HotwordsId *string `json:"HotwordsId,omitnil,omitempty" name:"HotwordsId"`
 
 	// 热词库名称

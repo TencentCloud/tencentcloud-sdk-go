@@ -407,8 +407,6 @@ func NewTextToVoiceResponse() (response *TextToVoiceResponse) {
 //
 // 大模型音色：默认10并发
 //
-// 一句话复刻音色：默认5并发
-//
 // 超自然大模型音色：暂不支持
 //
 // 可能返回的错误码:
@@ -465,8 +463,6 @@ func (c *Client) TextToVoice(request *TextToVoiceRequest) (response *TextToVoice
 // 精品音色和标准音色：默认20并发
 //
 // 大模型音色：默认10并发
-//
-// 一句话复刻音色：默认5并发
 //
 // 超自然大模型音色：暂不支持
 //

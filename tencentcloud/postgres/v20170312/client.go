@@ -2909,7 +2909,7 @@ func NewDescribeDBBackupsResponse() (response *DescribeDBBackupsResponse) {
 }
 
 // DescribeDBBackups
-// 本接口（DescribeDBBackups）用于查询实例备份列表。本接口已废弃，推荐使用接口[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)替代。
+// 本接口（DescribeDBBackups）用于查询实例备份列表。**本接口属于早期接口，已停止功能迭代，推荐使用接口**[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)**替代**。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -2938,7 +2938,7 @@ func (c *Client) DescribeDBBackups(request *DescribeDBBackupsRequest) (response 
 }
 
 // DescribeDBBackups
-// 本接口（DescribeDBBackups）用于查询实例备份列表。本接口已废弃，推荐使用接口[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)替代。
+// 本接口（DescribeDBBackups）用于查询实例备份列表。**本接口属于早期接口，已停止功能迭代，推荐使用接口**[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)**替代**。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -3667,7 +3667,7 @@ func NewDescribeDBXlogsResponse() (response *DescribeDBXlogsResponse) {
 }
 
 // DescribeDBXlogs
-// 本接口（DescribeDBXlogs）用于获取实例Xlog列表。本接口已废弃，推荐使用接口[DescribeLogBackups](https://cloud.tencent.com/document/api/409/89021)替代。
+// 本接口（DescribeDBXlogs）用于获取实例Xlog列表。 **本接口属于早期接口，已停止功能迭代，推荐使用接口**[DescribeLogBackups](https://cloud.tencent.com/document/api/409/89021)**替代**。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -3696,7 +3696,7 @@ func (c *Client) DescribeDBXlogs(request *DescribeDBXlogsRequest) (response *Des
 }
 
 // DescribeDBXlogs
-// 本接口（DescribeDBXlogs）用于获取实例Xlog列表。本接口已废弃，推荐使用接口[DescribeLogBackups](https://cloud.tencent.com/document/api/409/89021)替代。
+// 本接口（DescribeDBXlogs）用于获取实例Xlog列表。 **本接口属于早期接口，已停止功能迭代，推荐使用接口**[DescribeLogBackups](https://cloud.tencent.com/document/api/409/89021)**替代**。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -4443,7 +4443,7 @@ func NewDescribeProductConfigResponse() (response *DescribeProductConfigResponse
 }
 
 // DescribeProductConfig
-// 本接口（DescribeProductConfig）用于查询售卖规格配置。本接口已废弃，推荐使用新接口[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)。
+// 本接口（DescribeProductConfig）用于查询售卖规格配置。**本接口属于早期接口，已停止功能迭代，推荐使用新接口**[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)**替代**。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -4468,7 +4468,7 @@ func (c *Client) DescribeProductConfig(request *DescribeProductConfigRequest) (r
 }
 
 // DescribeProductConfig
-// 本接口（DescribeProductConfig）用于查询售卖规格配置。本接口已废弃，推荐使用新接口[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)。
+// 本接口（DescribeProductConfig）用于查询售卖规格配置。**本接口属于早期接口，已停止功能迭代，推荐使用新接口**[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)**替代**。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"

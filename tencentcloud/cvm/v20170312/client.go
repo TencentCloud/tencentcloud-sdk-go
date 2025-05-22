@@ -1178,6 +1178,8 @@ func NewCreateLaunchTemplateVersionResponse() (response *CreateLaunchTemplateVer
 // CreateLaunchTemplateVersion
 // 本接口（CreateLaunchTemplateVersion）根据指定的实例模板ID以及对应的模板版本号创建新的实例启动模板，若未指定模板版本号则使用默认版本号。每个实例启动模板最多创建30个版本。
 //
+// * 新实例模板中未显式指定的参数值，使用指定版本号对应参数值覆盖。
+//
 // 可能返回的错误码:
 //  AUTHFAILURE_CAMROLENAMEAUTHENTICATEFAILED = "AuthFailure.CamRoleNameAuthenticateFailed"
 //  FAILEDOPERATION_DISASTERRECOVERGROUPNOTFOUND = "FailedOperation.DisasterRecoverGroupNotFound"
@@ -1261,6 +1263,8 @@ func (c *Client) CreateLaunchTemplateVersion(request *CreateLaunchTemplateVersio
 
 // CreateLaunchTemplateVersion
 // 本接口（CreateLaunchTemplateVersion）根据指定的实例模板ID以及对应的模板版本号创建新的实例启动模板，若未指定模板版本号则使用默认版本号。每个实例启动模板最多创建30个版本。
+//
+// * 新实例模板中未显式指定的参数值，使用指定版本号对应参数值覆盖。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_CAMROLENAMEAUTHENTICATEFAILED = "AuthFailure.CamRoleNameAuthenticateFailed"

@@ -10780,6 +10780,7 @@ type DeleteSecurityGroupPoliciesRequestParams struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 
 	// 安全组规则集合。一个请求中只能删除单个方向的一条或多条规则。支持指定索引（PolicyIndex） 匹配删除和安全组规则匹配删除两种方式，一个请求中只能使用一种匹配方式。
+	// 使用安全组规则匹配删除时，需要填写`Action`， `Protocol`， `CidrBlock`， `Port`参数。
 	SecurityGroupPolicySet *SecurityGroupPolicySet `json:"SecurityGroupPolicySet,omitnil,omitempty" name:"SecurityGroupPolicySet"`
 }
 
@@ -10790,6 +10791,7 @@ type DeleteSecurityGroupPoliciesRequest struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 
 	// 安全组规则集合。一个请求中只能删除单个方向的一条或多条规则。支持指定索引（PolicyIndex） 匹配删除和安全组规则匹配删除两种方式，一个请求中只能使用一种匹配方式。
+	// 使用安全组规则匹配删除时，需要填写`Action`， `Protocol`， `CidrBlock`， `Port`参数。
 	SecurityGroupPolicySet *SecurityGroupPolicySet `json:"SecurityGroupPolicySet,omitnil,omitempty" name:"SecurityGroupPolicySet"`
 }
 
@@ -31884,7 +31886,7 @@ func (r *ReplaceRoutesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ReplaceSecurityGroupPoliciesRequestParams struct {
-	// 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 
 	// 安全组规则集合对象。
@@ -31897,7 +31899,7 @@ type ReplaceSecurityGroupPoliciesRequestParams struct {
 type ReplaceSecurityGroupPoliciesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 
 	// 安全组规则集合对象。

@@ -1325,7 +1325,7 @@ type BillDetail struct {
 	// 交易类型，如包年包月新购、包年包月续费、按量计费扣费等类型
 	ActionTypeName *string `json:"ActionTypeName,omitnil,omitempty" name:"ActionTypeName"`
 
-	// 订单ID：包年包月计费模式下订购的订单号
+	// 订单ID：包年包月计费模式下对应子订单号。后付费计费模式下账单费用不存在订单概念，可忽略此参数。
 	OrderId *string `json:"OrderId,omitnil,omitempty" name:"OrderId"`
 
 	// 交易ID：结算扣费单号

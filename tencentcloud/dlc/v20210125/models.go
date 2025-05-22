@@ -3077,6 +3077,9 @@ type CreateSparkAppRequestParams struct {
 
 	// 是否使用session脚本的sql运行任务：false：否，true：是
 	IsSessionStarted *bool `json:"IsSessionStarted,omitnil,omitempty" name:"IsSessionStarted"`
+
+	// 依赖包信息
+	DependencyPackages []*DependencyPackage `json:"DependencyPackages,omitnil,omitempty" name:"DependencyPackages"`
 }
 
 type CreateSparkAppRequest struct {
@@ -3168,6 +3171,9 @@ type CreateSparkAppRequest struct {
 
 	// 是否使用session脚本的sql运行任务：false：否，true：是
 	IsSessionStarted *bool `json:"IsSessionStarted,omitnil,omitempty" name:"IsSessionStarted"`
+
+	// 依赖包信息
+	DependencyPackages []*DependencyPackage `json:"DependencyPackages,omitnil,omitempty" name:"DependencyPackages"`
 }
 
 func (r *CreateSparkAppRequest) ToJsonString() string {
@@ -3211,6 +3217,7 @@ func (r *CreateSparkAppRequest) FromJsonString(s string) error {
 	delete(f, "SessionId")
 	delete(f, "IsInherit")
 	delete(f, "IsSessionStarted")
+	delete(f, "DependencyPackages")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSparkAppRequest has unknown keys!", "")
 	}
@@ -5544,6 +5551,40 @@ func (r *DeleteWorkGroupResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DeleteWorkGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DependencyPackage struct {
+	// 依赖包类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageSource *string `json:"PackageSource,omitnil,omitempty" name:"PackageSource"`
+
+	// 依赖包信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MavenPackage *string `json:"MavenPackage,omitnil,omitempty" name:"MavenPackage"`
+
+	// 依赖包仓库
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MavenRepository *string `json:"MavenRepository,omitnil,omitempty" name:"MavenRepository"`
+
+	// maven包exclusion信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MavenExclusion *string `json:"MavenExclusion,omitnil,omitempty" name:"MavenExclusion"`
+
+	// pypi包信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PypiPackage *string `json:"PypiPackage,omitnil,omitempty" name:"PypiPackage"`
+
+	// pypi索引地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PypiIndexUrl *string `json:"PypiIndexUrl,omitnil,omitempty" name:"PypiIndexUrl"`
+
+	// 文件包的类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
+
+	// 文件包的路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackagePath *string `json:"PackagePath,omitnil,omitempty" name:"PackagePath"`
 }
 
 // Predefined struct for user
@@ -12125,6 +12166,9 @@ type ModifySparkAppRequestParams struct {
 
 	// 是否使用session脚本的sql运行任务：false：否，true：是
 	IsSessionStarted *bool `json:"IsSessionStarted,omitnil,omitempty" name:"IsSessionStarted"`
+
+	// 标准引擎依赖包
+	DependencyPackages []*DependencyPackage `json:"DependencyPackages,omitnil,omitempty" name:"DependencyPackages"`
 }
 
 type ModifySparkAppRequest struct {
@@ -12219,6 +12263,9 @@ type ModifySparkAppRequest struct {
 
 	// 是否使用session脚本的sql运行任务：false：否，true：是
 	IsSessionStarted *bool `json:"IsSessionStarted,omitnil,omitempty" name:"IsSessionStarted"`
+
+	// 标准引擎依赖包
+	DependencyPackages []*DependencyPackage `json:"DependencyPackages,omitnil,omitempty" name:"DependencyPackages"`
 }
 
 func (r *ModifySparkAppRequest) ToJsonString() string {
@@ -12263,6 +12310,7 @@ func (r *ModifySparkAppRequest) FromJsonString(s string) error {
 	delete(f, "SessionId")
 	delete(f, "IsInherit")
 	delete(f, "IsSessionStarted")
+	delete(f, "DependencyPackages")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySparkAppRequest has unknown keys!", "")
 	}

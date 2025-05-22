@@ -191,7 +191,7 @@ type AudioSegments struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *AudioResult `json:"Result,omitnil,omitempty" name:"Result"`
 
-	// 创建时间
+	// 入库时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 }
@@ -1048,10 +1048,8 @@ type TextResult struct {
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 自定义词库的类型，自定义词库相关的信息可登录控制台中查看；
-	// 
 	// 1：自定义黑白库；
-	// 
-	// 2：自定义库；
+	// 2：公库；
 	LibType *int64 `json:"LibType,omitnil,omitempty" name:"LibType"`
 
 	// 该字段用于返回当前标签（Lable）下的二级标签。

@@ -8009,9 +8009,7 @@ func NewDescribeEncryptionStatusResponse() (response *DescribeEncryptionStatusRe
 // 查询etcd数据是否进行加密
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_ENABLEVPCCNIFAILED = "FailedOperation.EnableVPCCNIFailed"
-//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
-//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  FAILEDOPERATION_GETCLUSTERFAILED = "FailedOperation.GetClusterFailed"
 func (c *Client) DescribeEncryptionStatus(request *DescribeEncryptionStatusRequest) (response *DescribeEncryptionStatusResponse, err error) {
     return c.DescribeEncryptionStatusWithContext(context.Background(), request)
 }
@@ -8020,9 +8018,7 @@ func (c *Client) DescribeEncryptionStatus(request *DescribeEncryptionStatusReque
 // 查询etcd数据是否进行加密
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_ENABLEVPCCNIFAILED = "FailedOperation.EnableVPCCNIFailed"
-//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
-//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  FAILEDOPERATION_GETCLUSTERFAILED = "FailedOperation.GetClusterFailed"
 func (c *Client) DescribeEncryptionStatusWithContext(ctx context.Context, request *DescribeEncryptionStatusRequest) (response *DescribeEncryptionStatusResponse, err error) {
     if request == nil {
         request = NewDescribeEncryptionStatusRequest()

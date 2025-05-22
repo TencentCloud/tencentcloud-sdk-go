@@ -926,6 +926,10 @@ type Disk struct {
 
 	// 挂载目录
 	MountTarget *string `json:"MountTarget,omitnil,omitempty" name:"MountTarget"`
+
+	// 云盘ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 }
 
 type ExternalNodeInfo struct {

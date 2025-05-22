@@ -7606,6 +7606,8 @@ func NewProcessImageResponse() (response *ProcessImageResponse) {
 //
 // 2. 图像增强；
 //
+// 3. 图像擦除;
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
@@ -7623,6 +7625,8 @@ func (c *Client) ProcessImage(request *ProcessImageRequest) (response *ProcessIm
 // 1. 格式转换；
 //
 // 2. 图像增强；
+//
+// 3. 图像擦除;
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"

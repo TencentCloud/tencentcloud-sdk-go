@@ -588,6 +588,12 @@ type CreateModelServiceRequestParams struct {
 
 	// 健康探针
 	HealthProbe *HealthProbe `json:"HealthProbe,omitnil,omitempty" name:"HealthProbe"`
+
+	// 滚动更新策略
+	RollingUpdate *RollingUpdate `json:"RollingUpdate,omitnil,omitempty" name:"RollingUpdate"`
+
+	// sidecar配置
+	Sidecar *SidecarSpec `json:"Sidecar,omitnil,omitempty" name:"Sidecar"`
 }
 
 type CreateModelServiceRequest struct {
@@ -732,6 +738,12 @@ type CreateModelServiceRequest struct {
 
 	// 健康探针
 	HealthProbe *HealthProbe `json:"HealthProbe,omitnil,omitempty" name:"HealthProbe"`
+
+	// 滚动更新策略
+	RollingUpdate *RollingUpdate `json:"RollingUpdate,omitnil,omitempty" name:"RollingUpdate"`
+
+	// sidecar配置
+	Sidecar *SidecarSpec `json:"Sidecar,omitnil,omitempty" name:"Sidecar"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -785,6 +797,8 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "PreStopCommand")
 	delete(f, "GrpcEnable")
 	delete(f, "HealthProbe")
+	delete(f, "RollingUpdate")
+	delete(f, "Sidecar")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -2976,6 +2990,164 @@ func (r *DescribeDatasetsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEventsRequestParams struct {
+	// 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测
+	// 枚举值：
+	// - TRAIN
+	// - NOTEBOOK
+	// - INFER
+	// - BATCH
+	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
+
+	// 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
+	// - Service类型为TRAIN：
+	//   调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId
+	// - Service类型为NOTEBOOK：
+	//   调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName
+	// - Service类型为INFER：
+	//   调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId
+	// - Service类型为BATCH：
+	//   调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 查询事件最早发生的时间（RFC3339格式的时间字符串），默认值为当前时间的前一天
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询事件最晚发生的时间（RFC3339格式的时间字符串），默认值为当前时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 分页Limit，默认值为100，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页Offset，默认值为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排列顺序（可选值为ASC, DESC ），默认为DESC
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序的依据字段（可选值为FirstTimestamp, LastTimestamp），默认值为LastTimestamp
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 过滤条件
+	// 注意: 
+	// 1. Filter.Name：目前支持ResourceKind（按事件关联的资源类型过滤）；Type（按事件类型过滤）
+	// 2. Filter.Values：
+	// 对于Name为ResourceKind，Values的可选取值为Deployment, Replicaset, Pod等K8S资源类型；
+	// 对于Name为Type，Values的可选取值仅为Normal或者Warning；
+	// Values为多个的时候表示同时满足
+	// 3. Filter. Negative和Filter. Fuzzy没有使用
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeEventsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测
+	// 枚举值：
+	// - TRAIN
+	// - NOTEBOOK
+	// - INFER
+	// - BATCH
+	Service *string `json:"Service,omitnil,omitempty" name:"Service"`
+
+	// 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
+	// - Service类型为TRAIN：
+	//   调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId
+	// - Service类型为NOTEBOOK：
+	//   调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName
+	// - Service类型为INFER：
+	//   调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId
+	// - Service类型为BATCH：
+	//   调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+	ServiceId *string `json:"ServiceId,omitnil,omitempty" name:"ServiceId"`
+
+	// 查询事件最早发生的时间（RFC3339格式的时间字符串），默认值为当前时间的前一天
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询事件最晚发生的时间（RFC3339格式的时间字符串），默认值为当前时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 分页Limit，默认值为100，最大值为100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页Offset，默认值为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排列顺序（可选值为ASC, DESC ），默认为DESC
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序的依据字段（可选值为FirstTimestamp, LastTimestamp），默认值为LastTimestamp
+	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
+
+	// 过滤条件
+	// 注意: 
+	// 1. Filter.Name：目前支持ResourceKind（按事件关联的资源类型过滤）；Type（按事件类型过滤）
+	// 2. Filter.Values：
+	// 对于Name为ResourceKind，Values的可选取值为Deployment, Replicaset, Pod等K8S资源类型；
+	// 对于Name为Type，Values的可选取值仅为Normal或者Warning；
+	// Values为多个的时候表示同时满足
+	// 3. Filter. Negative和Filter. Fuzzy没有使用
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEventsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Service")
+	delete(f, "ServiceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "OrderField")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEventsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEventsResponseParams struct {
+	// 事件的列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Events []*Event `json:"Events,omitnil,omitempty" name:"Events"`
+
+	// 此次查询的事件的个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEventsResponseParams `json:"Response"`
+}
+
+func (r *DescribeEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInferTemplatesRequestParams struct {
 
 }
@@ -4331,6 +4503,40 @@ type EnvVar struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type Event struct {
+	// 事件的id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 事件的具体信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 事件第一次发生的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstTimestamp *string `json:"FirstTimestamp,omitnil,omitempty" name:"FirstTimestamp"`
+
+	// 事件最后一次发生的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastTimestamp *string `json:"LastTimestamp,omitnil,omitempty" name:"LastTimestamp"`
+
+	// 事件发生的次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *uint64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 事件的类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 事件关联的资源的类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceKind *string `json:"ResourceKind,omitnil,omitempty" name:"ResourceKind"`
+
+	// 事件关联的资源的名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceName *string `json:"ResourceName,omitnil,omitempty" name:"ResourceName"`
+}
+
 type ExecAction struct {
 	// 执行命令列表
 	Command []*string `json:"Command,omitnil,omitempty" name:"Command"`
@@ -5183,6 +5389,12 @@ type ModifyModelServiceRequestParams struct {
 
 	// 健康探针
 	HealthProbe *HealthProbe `json:"HealthProbe,omitnil,omitempty" name:"HealthProbe"`
+
+	// 滚动更新策略
+	RollingUpdate *RollingUpdate `json:"RollingUpdate,omitnil,omitempty" name:"RollingUpdate"`
+
+	// sidecar配置
+	Sidecar *SidecarSpec `json:"Sidecar,omitnil,omitempty" name:"Sidecar"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -5300,6 +5512,12 @@ type ModifyModelServiceRequest struct {
 
 	// 健康探针
 	HealthProbe *HealthProbe `json:"HealthProbe,omitnil,omitempty" name:"HealthProbe"`
+
+	// 滚动更新策略
+	RollingUpdate *RollingUpdate `json:"RollingUpdate,omitnil,omitempty" name:"RollingUpdate"`
+
+	// sidecar配置
+	Sidecar *SidecarSpec `json:"Sidecar,omitnil,omitempty" name:"Sidecar"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -5344,6 +5562,8 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "PreStopCommand")
 	delete(f, "GrpcEnable")
 	delete(f, "HealthProbe")
+	delete(f, "RollingUpdate")
+	delete(f, "Sidecar")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}
@@ -5719,6 +5939,10 @@ type NotebookSetItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VolumeSourceGooseFS *GooseFS `json:"VolumeSourceGooseFS,omitnil,omitempty" name:"VolumeSourceGooseFS"`
 
+	// 子用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
+
 	// 子用户名称
 	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
 
@@ -5810,6 +6034,10 @@ type PodInfo struct {
 	// pod资源配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceConfigInfo *ResourceConfigInfo `json:"ResourceConfigInfo,omitnil,omitempty" name:"ResourceConfigInfo"`
+
+	// Pod所属任务的SubUin信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
 }
 
 type PrivateLinkInfo struct {
@@ -6660,6 +6888,11 @@ type ServiceLimit struct {
 	InstanceReqLimit *int64 `json:"InstanceReqLimit,omitnil,omitempty" name:"InstanceReqLimit"`
 }
 
+type SidecarSpec struct {
+	// 镜像配置
+	ImageInfo *ImageInfo `json:"ImageInfo,omitnil,omitempty" name:"ImageInfo"`
+}
+
 type Spec struct {
 	// 计费项标签
 	SpecId *string `json:"SpecId,omitnil,omitempty" name:"SpecId"`
@@ -7414,6 +7647,14 @@ type TrainingTaskSetItem struct {
 	// 回调地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallbackUrl *string `json:"CallbackUrl,omitnil,omitempty" name:"CallbackUrl"`
+
+	// 任务subUin信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
+
+	// 任务创建者名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
 }
 
 type Usage struct {

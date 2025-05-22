@@ -1830,6 +1830,57 @@ func (c *Client) DescribeDatasetsWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeEventsRequest() (request *DescribeEventsRequest) {
+    request = &DescribeEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeEvents")
+    
+    
+    return
+}
+
+func NewDescribeEventsResponse() (response *DescribeEventsResponse) {
+    response = &DescribeEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeEvents
+// 获取任务式建模训练任务，Notebook，在线服务和批量预测任务的事件API
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeEvents(request *DescribeEventsRequest) (response *DescribeEventsResponse, err error) {
+    return c.DescribeEventsWithContext(context.Background(), request)
+}
+
+// DescribeEvents
+// 获取任务式建模训练任务，Notebook，在线服务和批量预测任务的事件API
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeEventsWithContext(ctx context.Context, request *DescribeEventsRequest) (response *DescribeEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEventsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEvents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInferTemplatesRequest() (request *DescribeInferTemplatesRequest) {
     request = &DescribeInferTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},

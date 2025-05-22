@@ -5031,6 +5031,9 @@ type LogstashNodeInfo struct {
 
 	// 节点端口
 	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 节点所在zone
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 type LogstashPipeline struct {

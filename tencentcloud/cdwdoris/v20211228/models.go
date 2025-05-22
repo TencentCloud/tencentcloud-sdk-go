@@ -5106,6 +5106,15 @@ type NodeInfo struct {
 
 	// Id
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// RIP
+	RIp *string `json:"RIp,omitnil,omitempty" name:"RIp"`
+
+	// 计算组ID
+	ComputeGroupId *string `json:"ComputeGroupId,omitnil,omitempty" name:"ComputeGroupId"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type NodeInfos struct {

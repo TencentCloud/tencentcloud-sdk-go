@@ -4458,6 +4458,7 @@ type ModifyTemplateRequestParams struct {
 	ContactInfo *ContactInfo `json:"ContactInfo,omitnil,omitempty" name:"ContactInfo"`
 
 	// 模板ID
+	// 可通过接口: [DescribeTemplateList](https://cloud.tencent.com/document/product/242/48940)
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
@@ -4471,6 +4472,7 @@ type ModifyTemplateRequest struct {
 	ContactInfo *ContactInfo `json:"ContactInfo,omitnil,omitempty" name:"ContactInfo"`
 
 	// 模板ID
+	// 可通过接口: [DescribeTemplateList](https://cloud.tencent.com/document/product/242/48940)
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 

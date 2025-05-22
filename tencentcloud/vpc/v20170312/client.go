@@ -5830,6 +5830,7 @@ func NewCreateSecurityGroupPoliciesResponse() (response *CreateSecurityGroupPoli
 //  LIMITEXCEEDED_SECURITYGROUPPOLICYSET = "LimitExceeded.SecurityGroupPolicySet"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION_BPAASRESOURCES = "UnsupportedOperation.BpaasResources"
 //  UNSUPPORTEDOPERATION_CLBPOLICYEXCEEDLIMIT = "UnsupportedOperation.ClbPolicyExceedLimit"
 //  UNSUPPORTEDOPERATION_CLBPOLICYLIMIT = "UnsupportedOperation.ClbPolicyLimit"
 //  UNSUPPORTEDOPERATION_DUPLICATEPOLICY = "UnsupportedOperation.DuplicatePolicy"
@@ -5889,6 +5890,7 @@ func (c *Client) CreateSecurityGroupPolicies(request *CreateSecurityGroupPolicie
 //  LIMITEXCEEDED_SECURITYGROUPPOLICYSET = "LimitExceeded.SecurityGroupPolicySet"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION_BPAASRESOURCES = "UnsupportedOperation.BpaasResources"
 //  UNSUPPORTEDOPERATION_CLBPOLICYEXCEEDLIMIT = "UnsupportedOperation.ClbPolicyExceedLimit"
 //  UNSUPPORTEDOPERATION_CLBPOLICYLIMIT = "UnsupportedOperation.ClbPolicyLimit"
 //  UNSUPPORTEDOPERATION_DUPLICATEPOLICY = "UnsupportedOperation.DuplicatePolicy"
@@ -6448,6 +6450,7 @@ func NewCreateSubnetsResponse() (response *CreateSubnetsResponse) {
 //  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
 //  UNSUPPORTEDOPERATION_CDCVPGNOTEXISTS = "UnsupportedOperation.CdcVpgNotExists"
 //  UNSUPPORTEDOPERATION_DCGATEWAYSNOTFOUNDINVPC = "UnsupportedOperation.DcGatewaysNotFoundInVpc"
+//  UNSUPPORTEDOPERATION_NOCDCDCGW = "UnsupportedOperation.NoCdcDcGw"
 //  UNSUPPORTEDOPERATION_RECORDEXISTS = "UnsupportedOperation.RecordExists"
 //  UNSUPPORTEDOPERATION_TAGALLOCATE = "UnsupportedOperation.TagAllocate"
 //  UNSUPPORTEDOPERATION_TAGFREE = "UnsupportedOperation.TagFree"
@@ -6506,6 +6509,7 @@ func (c *Client) CreateSubnets(request *CreateSubnetsRequest) (response *CreateS
 //  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
 //  UNSUPPORTEDOPERATION_CDCVPGNOTEXISTS = "UnsupportedOperation.CdcVpgNotExists"
 //  UNSUPPORTEDOPERATION_DCGATEWAYSNOTFOUNDINVPC = "UnsupportedOperation.DcGatewaysNotFoundInVpc"
+//  UNSUPPORTEDOPERATION_NOCDCDCGW = "UnsupportedOperation.NoCdcDcGw"
 //  UNSUPPORTEDOPERATION_RECORDEXISTS = "UnsupportedOperation.RecordExists"
 //  UNSUPPORTEDOPERATION_TAGALLOCATE = "UnsupportedOperation.TagAllocate"
 //  UNSUPPORTEDOPERATION_TAGFREE = "UnsupportedOperation.TagFree"
@@ -9798,7 +9802,7 @@ func NewDeleteSecurityGroupPoliciesResponse() (response *DeleteSecurityGroupPoli
 }
 
 // DeleteSecurityGroupPolicies
-// 本接口（DeleteSecurityGroupPolicies）用于用于删除安全组规则（SecurityGroupPolicy）。
+// 本接口（DeleteSecurityGroupPolicies）用于删除安全组规则（SecurityGroupPolicy）。
 //
 // * SecurityGroupPolicySet.Version 用于指定要操作的安全组的版本。传入 Version 版本号若不等于当前安全组的最新版本，将返回失败；若不传 Version 则直接删除指定PolicyIndex的规则。
 //
@@ -9814,6 +9818,7 @@ func NewDeleteSecurityGroupPoliciesResponse() (response *DeleteSecurityGroupPoli
 //  INVALIDPARAMETERVALUE_MEMBERAPPROVALAPPLICATIONSTARTED = "InvalidParameterValue.MemberApprovalApplicationStarted"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_BPAASRESOURCES = "UnsupportedOperation.BpaasResources"
 //  UNSUPPORTEDOPERATION_LOCKEDRESOURCES = "UnsupportedOperation.LockedResources"
 //  UNSUPPORTEDOPERATION_VERSIONMISMATCH = "UnsupportedOperation.VersionMismatch"
 func (c *Client) DeleteSecurityGroupPolicies(request *DeleteSecurityGroupPoliciesRequest) (response *DeleteSecurityGroupPoliciesResponse, err error) {
@@ -9821,7 +9826,7 @@ func (c *Client) DeleteSecurityGroupPolicies(request *DeleteSecurityGroupPolicie
 }
 
 // DeleteSecurityGroupPolicies
-// 本接口（DeleteSecurityGroupPolicies）用于用于删除安全组规则（SecurityGroupPolicy）。
+// 本接口（DeleteSecurityGroupPolicies）用于删除安全组规则（SecurityGroupPolicy）。
 //
 // * SecurityGroupPolicySet.Version 用于指定要操作的安全组的版本。传入 Version 版本号若不等于当前安全组的最新版本，将返回失败；若不传 Version 则直接删除指定PolicyIndex的规则。
 //
@@ -9837,6 +9842,7 @@ func (c *Client) DeleteSecurityGroupPolicies(request *DeleteSecurityGroupPolicie
 //  INVALIDPARAMETERVALUE_MEMBERAPPROVALAPPLICATIONSTARTED = "InvalidParameterValue.MemberApprovalApplicationStarted"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_BPAASRESOURCES = "UnsupportedOperation.BpaasResources"
 //  UNSUPPORTEDOPERATION_LOCKEDRESOURCES = "UnsupportedOperation.LockedResources"
 //  UNSUPPORTEDOPERATION_VERSIONMISMATCH = "UnsupportedOperation.VersionMismatch"
 func (c *Client) DeleteSecurityGroupPoliciesWithContext(ctx context.Context, request *DeleteSecurityGroupPoliciesRequest) (response *DeleteSecurityGroupPoliciesResponse, err error) {
@@ -10350,6 +10356,7 @@ func NewDeleteVpcEndPointResponse() (response *DeleteVpcEndPointResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_ENDPOINTHADGWLBEIPUNASSOCIATE = "UnsupportedOperation.EndPointHadGwlbEipUnassociate"
 func (c *Client) DeleteVpcEndPoint(request *DeleteVpcEndPointRequest) (response *DeleteVpcEndPointResponse, err error) {
     return c.DeleteVpcEndPointWithContext(context.Background(), request)
 }
@@ -10362,6 +10369,7 @@ func (c *Client) DeleteVpcEndPoint(request *DeleteVpcEndPointRequest) (response 
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_ENDPOINTHADGWLBEIPUNASSOCIATE = "UnsupportedOperation.EndPointHadGwlbEipUnassociate"
 func (c *Client) DeleteVpcEndPointWithContext(ctx context.Context, request *DeleteVpcEndPointRequest) (response *DeleteVpcEndPointResponse, err error) {
     if request == nil {
         request = NewDeleteVpcEndPointRequest()
@@ -17815,6 +17823,7 @@ func NewDetachNetworkInterfaceResponse() (response *DetachNetworkInterfaceRespon
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_IDEMPOTENTPARAMETERMISMATCH = "UnsupportedOperation.IdempotentParameterMismatch"
 //  UNSUPPORTEDOPERATION_IDEMPOTENTPROCESSING = "UnsupportedOperation.IdempotentProcessing"
+//  UNSUPPORTEDOPERATION_INSTANCEASSOCIATEHAVIP = "UnsupportedOperation.InstanceAssociateHavip"
 //  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
 func (c *Client) DetachNetworkInterface(request *DetachNetworkInterfaceRequest) (response *DetachNetworkInterfaceResponse, err error) {
     return c.DetachNetworkInterfaceWithContext(context.Background(), request)
@@ -17835,6 +17844,7 @@ func (c *Client) DetachNetworkInterface(request *DetachNetworkInterfaceRequest) 
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_IDEMPOTENTPARAMETERMISMATCH = "UnsupportedOperation.IdempotentParameterMismatch"
 //  UNSUPPORTEDOPERATION_IDEMPOTENTPROCESSING = "UnsupportedOperation.IdempotentProcessing"
+//  UNSUPPORTEDOPERATION_INSTANCEASSOCIATEHAVIP = "UnsupportedOperation.InstanceAssociateHavip"
 //  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
 func (c *Client) DetachNetworkInterfaceWithContext(ctx context.Context, request *DetachNetworkInterfaceRequest) (response *DetachNetworkInterfaceResponse, err error) {
     if request == nil {
@@ -23493,6 +23503,7 @@ func NewModifySecurityGroupPoliciesResponse() (response *ModifySecurityGroupPoli
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_BPAASRESOURCES = "UnsupportedOperation.BpaasResources"
 //  UNSUPPORTEDOPERATION_CLBPOLICYEXCEEDLIMIT = "UnsupportedOperation.ClbPolicyExceedLimit"
 //  UNSUPPORTEDOPERATION_DUPLICATEPOLICY = "UnsupportedOperation.DuplicatePolicy"
 //  UNSUPPORTEDOPERATION_LOCKEDRESOURCES = "UnsupportedOperation.LockedResources"
@@ -23547,6 +23558,7 @@ func (c *Client) ModifySecurityGroupPolicies(request *ModifySecurityGroupPolicie
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_BPAASRESOURCES = "UnsupportedOperation.BpaasResources"
 //  UNSUPPORTEDOPERATION_CLBPOLICYEXCEEDLIMIT = "UnsupportedOperation.ClbPolicyExceedLimit"
 //  UNSUPPORTEDOPERATION_DUPLICATEPOLICY = "UnsupportedOperation.DuplicatePolicy"
 //  UNSUPPORTEDOPERATION_LOCKEDRESOURCES = "UnsupportedOperation.LockedResources"
@@ -23958,6 +23970,7 @@ func NewModifyVpcAttributeResponse() (response *ModifyVpcAttributeResponse) {
 //  UNSUPPORTEDOPERATION_CDCPUBLISHNEEDCDCID = "UnsupportedOperation.CdcPublishNeedCdcId"
 //  UNSUPPORTEDOPERATION_ENABLEMULTICAST = "UnsupportedOperation.EnableMulticast"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTEDUPDATECCNROUTEPUBLISH = "UnsupportedOperation.NotSupportedUpdateCcnRoutePublish"
+//  UNSUPPORTEDOPERATION_SUBNETMISMATCHVPCCDCID = "UnsupportedOperation.SubnetMismatchVpcCdcId"
 func (c *Client) ModifyVpcAttribute(request *ModifyVpcAttributeRequest) (response *ModifyVpcAttributeResponse, err error) {
     return c.ModifyVpcAttributeWithContext(context.Background(), request)
 }
@@ -23975,6 +23988,7 @@ func (c *Client) ModifyVpcAttribute(request *ModifyVpcAttributeRequest) (respons
 //  UNSUPPORTEDOPERATION_CDCPUBLISHNEEDCDCID = "UnsupportedOperation.CdcPublishNeedCdcId"
 //  UNSUPPORTEDOPERATION_ENABLEMULTICAST = "UnsupportedOperation.EnableMulticast"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTEDUPDATECCNROUTEPUBLISH = "UnsupportedOperation.NotSupportedUpdateCcnRoutePublish"
+//  UNSUPPORTEDOPERATION_SUBNETMISMATCHVPCCDCID = "UnsupportedOperation.SubnetMismatchVpcCdcId"
 func (c *Client) ModifyVpcAttributeWithContext(ctx context.Context, request *ModifyVpcAttributeRequest) (response *ModifyVpcAttributeResponse, err error) {
     if request == nil {
         request = NewModifyVpcAttributeRequest()
@@ -25861,6 +25875,7 @@ func NewReplaceRoutesResponse() (response *ReplaceRoutesResponse) {
 //  UNSUPPORTEDOPERATION_ECMP = "UnsupportedOperation.Ecmp"
 //  UNSUPPORTEDOPERATION_NORMALSUBNETNOTSUPPORTLOCALGATEWAY = "UnsupportedOperation.NormalSubnetNotSupportLocalGateway"
 //  UNSUPPORTEDOPERATION_RECORDNOTEXISTS = "UnsupportedOperation.RecordNotExists"
+//  UNSUPPORTEDOPERATION_ROUTEPVGW2 = "UnsupportedOperation.RoutePvgw2"
 //  UNSUPPORTEDOPERATION_SYSTEMROUTE = "UnsupportedOperation.SystemRoute"
 func (c *Client) ReplaceRoutes(request *ReplaceRoutesRequest) (response *ReplaceRoutesResponse, err error) {
     return c.ReplaceRoutesWithContext(context.Background(), request)
@@ -25886,6 +25901,7 @@ func (c *Client) ReplaceRoutes(request *ReplaceRoutesRequest) (response *Replace
 //  UNSUPPORTEDOPERATION_ECMP = "UnsupportedOperation.Ecmp"
 //  UNSUPPORTEDOPERATION_NORMALSUBNETNOTSUPPORTLOCALGATEWAY = "UnsupportedOperation.NormalSubnetNotSupportLocalGateway"
 //  UNSUPPORTEDOPERATION_RECORDNOTEXISTS = "UnsupportedOperation.RecordNotExists"
+//  UNSUPPORTEDOPERATION_ROUTEPVGW2 = "UnsupportedOperation.RoutePvgw2"
 //  UNSUPPORTEDOPERATION_SYSTEMROUTE = "UnsupportedOperation.SystemRoute"
 func (c *Client) ReplaceRoutesWithContext(ctx context.Context, request *ReplaceRoutesRequest) (response *ReplaceRoutesResponse, err error) {
     if request == nil {
@@ -25943,6 +25959,7 @@ func NewReplaceSecurityGroupPoliciesResponse() (response *ReplaceSecurityGroupPo
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_BPAASRESOURCES = "UnsupportedOperation.BpaasResources"
 //  UNSUPPORTEDOPERATION_CLBPOLICYEXCEEDLIMIT = "UnsupportedOperation.ClbPolicyExceedLimit"
 //  UNSUPPORTEDOPERATION_CLBPOLICYLIMIT = "UnsupportedOperation.ClbPolicyLimit"
 //  UNSUPPORTEDOPERATION_DUPLICATEPOLICY = "UnsupportedOperation.DuplicatePolicy"
@@ -25973,6 +25990,7 @@ func (c *Client) ReplaceSecurityGroupPolicies(request *ReplaceSecurityGroupPolic
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_BPAASRESOURCES = "UnsupportedOperation.BpaasResources"
 //  UNSUPPORTEDOPERATION_CLBPOLICYEXCEEDLIMIT = "UnsupportedOperation.ClbPolicyExceedLimit"
 //  UNSUPPORTEDOPERATION_CLBPOLICYLIMIT = "UnsupportedOperation.ClbPolicyLimit"
 //  UNSUPPORTEDOPERATION_DUPLICATEPOLICY = "UnsupportedOperation.DuplicatePolicy"

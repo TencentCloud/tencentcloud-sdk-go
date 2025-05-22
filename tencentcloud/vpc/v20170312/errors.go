@@ -815,6 +815,9 @@ const (
 	// 已绑定EIP。
 	UNSUPPORTEDOPERATION_BINDEIP = "UnsupportedOperation.BindEIP"
 
+	// 资源在BPAAS审批中。
+	UNSUPPORTEDOPERATION_BPAASRESOURCES = "UnsupportedOperation.BpaasResources"
+
 	// 添加 community 时，传播条件只支持 vpg 类型或 vpg 实例
 	UNSUPPORTEDOPERATION_BROADCASTCONDITIONMUSTBEVPGTYPEORVPGINSTANCE = "UnsupportedOperation.BroadcastConditionMustBeVpgTypeOrVpgInstance"
 
@@ -944,6 +947,9 @@ const (
 	// 当前地域不支持启用组播。
 	UNSUPPORTEDOPERATION_ENABLEMULTICAST = "UnsupportedOperation.EnableMulticast"
 
+	// 终端节点需要先解绑 GWLB EIP。
+	UNSUPPORTEDOPERATION_ENDPOINTHADGWLBEIPUNASSOCIATE = "UnsupportedOperation.EndPointHadGwlbEipUnassociate"
+
 	// 终端节点和终端节点服务的CdcId不一致。
 	UNSUPPORTEDOPERATION_ENDPOINTMISMATCHENDPOINTSERVICECDCID = "UnsupportedOperation.EndPointMismatchEndPointServiceCdcId"
 
@@ -982,6 +988,9 @@ const (
 
 	// 用户配置的实例和路由表不匹配。
 	UNSUPPORTEDOPERATION_INSTANCEANDRTBNOTMATCH = "UnsupportedOperation.InstanceAndRtbNotMatch"
+
+	// 实例在Havip漂移范围内，需要先解绑定关联。
+	UNSUPPORTEDOPERATION_INSTANCEASSOCIATEHAVIP = "UnsupportedOperation.InstanceAssociateHavip"
 
 	// 当前云联网`%(value)s`的CdcId与传入实例的CdcId不一致，不支持关联。
 	UNSUPPORTEDOPERATION_INSTANCECDCIDNOTMATCHCCNCDCID = "UnsupportedOperation.InstanceCdcIdNotMatchCcnCdcId"
@@ -1078,6 +1087,9 @@ const (
 
 	// NAT实例不支持该操作。
 	UNSUPPORTEDOPERATION_NATNOTSUPPORTED = "UnsupportedOperation.NatNotSupported"
+
+	// 没有CDC专线网关。
+	UNSUPPORTEDOPERATION_NOCDCDCGW = "UnsupportedOperation.NoCdcDcGw"
 
 	// 指定的子网不支持创建本地网关类型的路由。
 	UNSUPPORTEDOPERATION_NORMALSUBNETNOTSUPPORTLOCALGATEWAY = "UnsupportedOperation.NormalSubnetNotSupportLocalGateway"
@@ -1187,6 +1199,9 @@ const (
 	// 未找到相关角色，请确认角色是否授权。
 	UNSUPPORTEDOPERATION_ROLENOTFOUND = "UnsupportedOperation.RoleNotFound"
 
+	// 只支持自研VPC创建或修改PVGW2类型路由。
+	UNSUPPORTEDOPERATION_ROUTEPVGW2 = "UnsupportedOperation.RoutePvgw2"
+
 	// 当前路由表删除失败，请先检查是否存在关联的策略。
 	UNSUPPORTEDOPERATION_ROUTETABLECANNOTDELETE = "UnsupportedOperation.RouteTableCanNotDelete"
 
@@ -1243,6 +1258,9 @@ const (
 
 	// 中继网卡不支持该操作。
 	UNSUPPORTEDOPERATION_SUBENINOTSUPPORTTRUNKING = "UnsupportedOperation.SubEniNotSupportTrunking"
+
+	// 子网与Vpc配置的CdcId不一致。
+	UNSUPPORTEDOPERATION_SUBNETMISMATCHVPCCDCID = "UnsupportedOperation.SubnetMismatchVpcCdcId"
 
 	// 子网不存在。
 	UNSUPPORTEDOPERATION_SUBNETNOTEXISTS = "UnsupportedOperation.SubnetNotExists"

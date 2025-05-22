@@ -2684,6 +2684,7 @@ func NewDescribeDBSpaceStatusResponse() (response *DescribeDBSpaceStatusResponse
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2705,6 +2706,7 @@ func (c *Client) DescribeDBSpaceStatus(request *DescribeDBSpaceStatusRequest) (r
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -4466,6 +4468,7 @@ func NewDescribeSlowLogUserHostStatsResponse() (response *DescribeSlowLogUserHos
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -4487,6 +4490,7 @@ func (c *Client) DescribeSlowLogUserHostStats(request *DescribeSlowLogUserHostSt
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -4539,6 +4543,7 @@ func NewDescribeSlowLogsResponse() (response *DescribeSlowLogsResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -4560,6 +4565,7 @@ func (c *Client) DescribeSlowLogs(request *DescribeSlowLogsRequest) (response *D
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

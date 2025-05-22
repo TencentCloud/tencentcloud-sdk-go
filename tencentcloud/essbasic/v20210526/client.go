@@ -677,6 +677,8 @@ func NewChannelCreateBatchQuickSignUrlResponse() (response *ChannelCreateBatchQu
 //
 // 6. 因h5涉及人脸身份认证能力基于慧眼人脸核身，对Android和iOS系统均有一定要求， 因此<font color='red'>App嵌入H5签署合同需要按照慧眼提供的<a href="https://cloud.tencent.com/document/product/1007/61076">慧眼人脸核身兼容性文档</a>做兼容性适配</font>。
 //
+// 7. H5签署现在仅支持中国大陆身份证和中国港澳台居民居住证。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -701,6 +703,8 @@ func (c *Client) ChannelCreateBatchQuickSignUrl(request *ChannelCreateBatchQuick
 // 跳转到小程序的实现，参考微信官方文档(分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式)，如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>。
 //
 // 6. 因h5涉及人脸身份认证能力基于慧眼人脸核身，对Android和iOS系统均有一定要求， 因此<font color='red'>App嵌入H5签署合同需要按照慧眼提供的<a href="https://cloud.tencent.com/document/product/1007/61076">慧眼人脸核身兼容性文档</a>做兼容性适配</font>。
+//
+// 7. H5签署现在仅支持中国大陆身份证和中国港澳台居民居住证。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2777,6 +2781,8 @@ func NewChannelCreateFlowSignUrlResponse() (response *ChannelCreateFlowSignUrlRe
 //
 // 3. 因h5涉及人脸身份认证能力基于慧眼人脸核身，对Android和iOS系统均有一定要求， 因此<font color='red'>App嵌入H5签署合同需要按照慧眼提供的<a href="https://cloud.tencent.com/document/product/1007/61076">慧眼人脸核身兼容性文档</a>做兼容性适配</font>。
 //
+// 4. H5签署现在仅支持中国大陆身份证和中国港澳台居民居住证。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
@@ -2804,6 +2810,8 @@ func (c *Client) ChannelCreateFlowSignUrl(request *ChannelCreateFlowSignUrlReque
 // 如需跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>。
 //
 // 3. 因h5涉及人脸身份认证能力基于慧眼人脸核身，对Android和iOS系统均有一定要求， 因此<font color='red'>App嵌入H5签署合同需要按照慧眼提供的<a href="https://cloud.tencent.com/document/product/1007/61076">慧眼人脸核身兼容性文档</a>做兼容性适配</font>。
+//
+// 4. H5签署现在仅支持中国大陆身份证和中国港澳台居民居住证。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

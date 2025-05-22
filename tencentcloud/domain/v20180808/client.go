@@ -2844,7 +2844,7 @@ func NewModifyTemplateResponse() (response *ModifyTemplateResponse) {
 }
 
 // ModifyTemplate
-// 修改模板信息
+// 修改模板信息,仅能修改模板未通过审核的，即[模板详情](https://cloud.tencent.com/document/product/242/50018)中：AuditStatus不为Approved状态的
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2882,7 +2882,7 @@ func (c *Client) ModifyTemplate(request *ModifyTemplateRequest) (response *Modif
 }
 
 // ModifyTemplate
-// 修改模板信息
+// 修改模板信息,仅能修改模板未通过审核的，即[模板详情](https://cloud.tencent.com/document/product/242/50018)中：AuditStatus不为Approved状态的
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

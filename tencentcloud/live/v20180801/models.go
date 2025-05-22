@@ -17819,6 +17819,9 @@ type PushQualityData struct {
 
 	// 推流服务端 IP。
 	ServerIp *string `json:"ServerIp,omitnil,omitempty" name:"ServerIp"`
+
+	// 关键帧间隔 GOP ，单位：ms。
+	GopSize *int64 `json:"GopSize,omitnil,omitempty" name:"GopSize"`
 }
 
 type RecentPullInfo struct {

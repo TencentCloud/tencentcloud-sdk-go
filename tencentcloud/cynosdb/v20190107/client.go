@@ -8412,6 +8412,7 @@ func NewOpenAuditServiceResponse() (response *OpenAuditServiceResponse) {
 // 本接口（OpenAuditService）用于为实例开通数据库审计服务。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCEQUERYERROR = "FailedOperation.InstanceQueryError"
 //  INTERNALERROR_LISTINSTANCESERROR = "InternalError.ListInstancesError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
@@ -8424,6 +8425,7 @@ func (c *Client) OpenAuditService(request *OpenAuditServiceRequest) (response *O
 // 本接口（OpenAuditService）用于为实例开通数据库审计服务。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCEQUERYERROR = "FailedOperation.InstanceQueryError"
 //  INTERNALERROR_LISTINSTANCESERROR = "InternalError.ListInstancesError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"

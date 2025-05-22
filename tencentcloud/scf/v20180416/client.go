@@ -268,22 +268,7 @@ func NewCreateCustomDomainResponse() (response *CreateCustomDomainResponse) {
 // 创建自定义域名
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CREATEALIAS = "FailedOperation.CreateAlias"
-//  INTERNALERROR_SYSTEM = "InternalError.System"
-//  INVALIDPARAMETER_ROUTINGCONFIG = "InvalidParameter.RoutingConfig"
-//  INVALIDPARAMETERVALUE_ADDITIONALVERSIONWEIGHTS = "InvalidParameterValue.AdditionalVersionWeights"
-//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
-//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
-//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
-//  INVALIDPARAMETERVALUE_ROUTINGCONFIG = "InvalidParameterValue.RoutingConfig"
-//  LIMITEXCEEDED_ALIAS = "LimitExceeded.Alias"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINUSE_ALIAS = "ResourceInUse.Alias"
-//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
-//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
-//  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
-//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  INVALIDPARAMETERVALUE_CERTCONFIG_EMPTY = "InvalidParameterValue.CertConfig.empty"
 func (c *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (response *CreateCustomDomainResponse, err error) {
     return c.CreateCustomDomainWithContext(context.Background(), request)
 }
@@ -292,22 +277,7 @@ func (c *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (respons
 // 创建自定义域名
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CREATEALIAS = "FailedOperation.CreateAlias"
-//  INTERNALERROR_SYSTEM = "InternalError.System"
-//  INVALIDPARAMETER_ROUTINGCONFIG = "InvalidParameter.RoutingConfig"
-//  INVALIDPARAMETERVALUE_ADDITIONALVERSIONWEIGHTS = "InvalidParameterValue.AdditionalVersionWeights"
-//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
-//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
-//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
-//  INVALIDPARAMETERVALUE_ROUTINGCONFIG = "InvalidParameterValue.RoutingConfig"
-//  LIMITEXCEEDED_ALIAS = "LimitExceeded.Alias"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINUSE_ALIAS = "ResourceInUse.Alias"
-//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
-//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
-//  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
-//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  INVALIDPARAMETERVALUE_CERTCONFIG_EMPTY = "InvalidParameterValue.CertConfig.empty"
 func (c *Client) CreateCustomDomainWithContext(ctx context.Context, request *CreateCustomDomainRequest) (response *CreateCustomDomainResponse, err error) {
     if request == nil {
         request = NewCreateCustomDomainRequest()
@@ -350,6 +320,7 @@ func NewCreateFunctionResponse() (response *CreateFunctionResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCOUNTINSUFFICIENT = "FailedOperation.AccountInsufficient"
 //  FAILEDOPERATION_APMCONFIGINSTANCEID = "FailedOperation.ApmConfigInstanceId"
+//  FAILEDOPERATION_BINDPLUGIN = "FailedOperation.BindPlugin"
 //  FAILEDOPERATION_CALLNETDEPLOYFAILED = "FailedOperation.CallNetDeployFailed"
 //  FAILEDOPERATION_CALLROLEFAILED = "FailedOperation.CallRoleFailed"
 //  FAILEDOPERATION_CLSSERVICEUNREGISTERED = "FailedOperation.ClsServiceUnregistered"
@@ -482,6 +453,7 @@ func (c *Client) CreateFunction(request *CreateFunctionRequest) (response *Creat
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCOUNTINSUFFICIENT = "FailedOperation.AccountInsufficient"
 //  FAILEDOPERATION_APMCONFIGINSTANCEID = "FailedOperation.ApmConfigInstanceId"
+//  FAILEDOPERATION_BINDPLUGIN = "FailedOperation.BindPlugin"
 //  FAILEDOPERATION_CALLNETDEPLOYFAILED = "FailedOperation.CallNetDeployFailed"
 //  FAILEDOPERATION_CALLROLEFAILED = "FailedOperation.CallRoleFailed"
 //  FAILEDOPERATION_CLSSERVICEUNREGISTERED = "FailedOperation.ClsServiceUnregistered"
@@ -737,6 +709,7 @@ func NewCreateTriggerResponse() (response *CreateTriggerResponse) {
 //  INVALIDPARAMETERVALUE_COSNOTIFYRULECONFLICT = "InvalidParameterValue.CosNotifyRuleConflict"
 //  INVALIDPARAMETERVALUE_CUSTOMARGUMENT = "InvalidParameterValue.CustomArgument"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+//  INVALIDPARAMETERVALUE_EASCONFIG = "InvalidParameterValue.EASConfig"
 //  INVALIDPARAMETERVALUE_ENABLE = "InvalidParameterValue.Enable"
 //  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
 //  INVALIDPARAMETERVALUE_SECRETINFO = "InvalidParameterValue.SecretInfo"
@@ -799,6 +772,7 @@ func (c *Client) CreateTrigger(request *CreateTriggerRequest) (response *CreateT
 //  INVALIDPARAMETERVALUE_COSNOTIFYRULECONFLICT = "InvalidParameterValue.CosNotifyRuleConflict"
 //  INVALIDPARAMETERVALUE_CUSTOMARGUMENT = "InvalidParameterValue.CustomArgument"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+//  INVALIDPARAMETERVALUE_EASCONFIG = "InvalidParameterValue.EASConfig"
 //  INVALIDPARAMETERVALUE_ENABLE = "InvalidParameterValue.Enable"
 //  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
 //  INVALIDPARAMETERVALUE_SECRETINFO = "InvalidParameterValue.SecretInfo"
@@ -1439,6 +1413,7 @@ func NewDeleteTriggerResponse() (response *DeleteTriggerResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CREATETRIGGER = "FailedOperation.CreateTrigger"
 //  FAILEDOPERATION_DELETETRIGGER = "FailedOperation.DeleteTrigger"
+//  FAILEDOPERATION_DELETETRIGGER_URLUSED = "FailedOperation.DeleteTrigger.UrlUsed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1474,6 +1449,7 @@ func (c *Client) DeleteTrigger(request *DeleteTriggerRequest) (response *DeleteT
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CREATETRIGGER = "FailedOperation.CreateTrigger"
 //  FAILEDOPERATION_DELETETRIGGER = "FailedOperation.DeleteTrigger"
+//  FAILEDOPERATION_DELETETRIGGER_URLUSED = "FailedOperation.DeleteTrigger.UrlUsed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1714,10 +1690,7 @@ func NewGetCustomDomainResponse() (response *GetCustomDomainResponse) {
 // 查看云函数自定义域名详情
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_ASYNCEVENTSTATUS = "FailedOperation.AsyncEventStatus"
-//  RESOURCENOTFOUND_ASYNCEVENT = "ResourceNotFound.AsyncEvent"
-//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
-//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  FAILEDOPERATION_DOMAIN_UNEXIST = "FailedOperation.Domain.UnExist"
 func (c *Client) GetCustomDomain(request *GetCustomDomainRequest) (response *GetCustomDomainResponse, err error) {
     return c.GetCustomDomainWithContext(context.Background(), request)
 }
@@ -1726,10 +1699,7 @@ func (c *Client) GetCustomDomain(request *GetCustomDomainRequest) (response *Get
 // 查看云函数自定义域名详情
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_ASYNCEVENTSTATUS = "FailedOperation.AsyncEventStatus"
-//  RESOURCENOTFOUND_ASYNCEVENT = "ResourceNotFound.AsyncEvent"
-//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
-//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  FAILEDOPERATION_DOMAIN_UNEXIST = "FailedOperation.Domain.UnExist"
 func (c *Client) GetCustomDomainWithContext(ctx context.Context, request *GetCustomDomainRequest) (response *GetCustomDomainResponse, err error) {
     if request == nil {
         request = NewGetCustomDomainRequest()
@@ -1774,6 +1744,7 @@ func NewGetFunctionResponse() (response *GetFunctionResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_EXCEPTION = "InternalError.Exception"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_FUNCTIONNAMEORRESOURCEIDREQUIRED = "InvalidParameter.FunctionNameOrResourceIdRequired"
 //  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_CODESECRET = "InvalidParameterValue.CodeSecret"
@@ -1800,6 +1771,7 @@ func (c *Client) GetFunction(request *GetFunctionRequest) (response *GetFunction
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_EXCEPTION = "InternalError.Exception"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_FUNCTIONNAMEORRESOURCEIDREQUIRED = "InvalidParameter.FunctionNameOrResourceIdRequired"
 //  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_CODESECRET = "InvalidParameterValue.CodeSecret"
@@ -3675,24 +3647,7 @@ func NewUpdateCustomDomainResponse() (response *UpdateCustomDomainResponse) {
 // 更新自定义域名相关配置
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_UPDATEALIAS = "FailedOperation.UpdateAlias"
-//  INTERNALERROR_SYSTEM = "InternalError.System"
-//  INVALIDPARAMETER_ROUTINGCONFIG = "InvalidParameter.RoutingConfig"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_ADDITIONALVERSIONWEIGHTS = "InvalidParameterValue.AdditionalVersionWeights"
-//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
-//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
-//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
-//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
-//  INVALIDPARAMETERVALUE_ROUTINGCONFIG = "InvalidParameterValue.RoutingConfig"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND_ALIAS = "ResourceNotFound.Alias"
-//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
-//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
-//  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
-//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
-//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  FAILEDOPERATION_SSL = "FailedOperation.Ssl"
 func (c *Client) UpdateCustomDomain(request *UpdateCustomDomainRequest) (response *UpdateCustomDomainResponse, err error) {
     return c.UpdateCustomDomainWithContext(context.Background(), request)
 }
@@ -3701,24 +3656,7 @@ func (c *Client) UpdateCustomDomain(request *UpdateCustomDomainRequest) (respons
 // 更新自定义域名相关配置
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_UPDATEALIAS = "FailedOperation.UpdateAlias"
-//  INTERNALERROR_SYSTEM = "InternalError.System"
-//  INVALIDPARAMETER_ROUTINGCONFIG = "InvalidParameter.RoutingConfig"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_ADDITIONALVERSIONWEIGHTS = "InvalidParameterValue.AdditionalVersionWeights"
-//  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
-//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
-//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
-//  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
-//  INVALIDPARAMETERVALUE_ROUTINGCONFIG = "InvalidParameterValue.RoutingConfig"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND_ALIAS = "ResourceNotFound.Alias"
-//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
-//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
-//  RESOURCENOTFOUND_FUNCTIONVERSION = "ResourceNotFound.FunctionVersion"
-//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
-//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+//  FAILEDOPERATION_SSL = "FailedOperation.Ssl"
 func (c *Client) UpdateCustomDomainWithContext(ctx context.Context, request *UpdateCustomDomainRequest) (response *UpdateCustomDomainResponse, err error) {
     if request == nil {
         request = NewUpdateCustomDomainRequest()
@@ -3904,6 +3842,7 @@ func NewUpdateFunctionConfigurationResponse() (response *UpdateFunctionConfigura
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCOUNTINSUFFICIENT = "FailedOperation.AccountInsufficient"
 //  FAILEDOPERATION_APMCONFIGINSTANCEID = "FailedOperation.ApmConfigInstanceId"
+//  FAILEDOPERATION_BINDPLUGIN = "FailedOperation.BindPlugin"
 //  FAILEDOPERATION_CALLNETDEPLOYFAILED = "FailedOperation.CallNetDeployFailed"
 //  FAILEDOPERATION_CLSSERVICEUNREGISTERED = "FailedOperation.ClsServiceUnregistered"
 //  FAILEDOPERATION_DEBUGMODEUPDATETIMEOUTFAIL = "FailedOperation.DebugModeUpdateTimeOutFail"
@@ -3991,6 +3930,7 @@ func (c *Client) UpdateFunctionConfiguration(request *UpdateFunctionConfiguratio
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ACCOUNTINSUFFICIENT = "FailedOperation.AccountInsufficient"
 //  FAILEDOPERATION_APMCONFIGINSTANCEID = "FailedOperation.ApmConfigInstanceId"
+//  FAILEDOPERATION_BINDPLUGIN = "FailedOperation.BindPlugin"
 //  FAILEDOPERATION_CALLNETDEPLOYFAILED = "FailedOperation.CallNetDeployFailed"
 //  FAILEDOPERATION_CLSSERVICEUNREGISTERED = "FailedOperation.ClsServiceUnregistered"
 //  FAILEDOPERATION_DEBUGMODEUPDATETIMEOUTFAIL = "FailedOperation.DebugModeUpdateTimeOutFail"
@@ -4280,6 +4220,7 @@ func NewUpdateTriggerResponse() (response *UpdateTriggerResponse) {
 //  INTERNALERROR_CMQ = "InternalError.Cmq"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+//  INVALIDPARAMETERVALUE_CORS = "InvalidParameterValue.Cors"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_ENABLE = "InvalidParameterValue.Enable"
 //  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
@@ -4337,6 +4278,7 @@ func (c *Client) UpdateTrigger(request *UpdateTriggerRequest) (response *UpdateT
 //  INTERNALERROR_CMQ = "InternalError.Cmq"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+//  INVALIDPARAMETERVALUE_CORS = "InvalidParameterValue.Cors"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_ENABLE = "InvalidParameterValue.Enable"
 //  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"

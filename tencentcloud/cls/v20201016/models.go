@@ -1406,7 +1406,9 @@ type CreateAlarmRequestParams struct {
 	// 默认值为true
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 该参数已废弃，请使用Status参数控制是否开启告警策略。
+	// 请使用Status参数控制是否开启告警策略。
+	//
+	// Deprecated: Enable is deprecated.
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 用户自定义告警内容
@@ -1486,7 +1488,7 @@ type CreateAlarmRequest struct {
 	// 默认值为true
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 该参数已废弃，请使用Status参数控制是否开启告警策略。
+	// 请使用Status参数控制是否开启告警策略。
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 用户自定义告警内容
@@ -1875,9 +1877,11 @@ type CreateConfigExtraRequestParams struct {
 	// 容器标准输出类型配置。
 	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil,omitempty" name:"ContainerStdout"`
 
-	// 日志格式化方式，用于容器采集场景。 - 已废弃
+	// 日志格式化方式，用于容器采集场景。
 	// - stdout-docker-json：用于docker容器采集场景
 	// - stdout-containerd：用于containerd容器采集场景
+	//
+	// Deprecated: LogFormat is deprecated.
 	LogFormat *string `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
@@ -1952,7 +1956,7 @@ type CreateConfigExtraRequest struct {
 	// 容器标准输出类型配置。
 	ContainerStdout *ContainerStdoutInfo `json:"ContainerStdout,omitnil,omitempty" name:"ContainerStdout"`
 
-	// 日志格式化方式，用于容器采集场景。 - 已废弃
+	// 日志格式化方式，用于容器采集场景。
 	// - stdout-docker-json：用于docker容器采集场景
 	// - stdout-containerd：用于containerd容器采集场景
 	LogFormat *string `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
@@ -3971,18 +3975,18 @@ type DashboardNoticeMode struct {
 	ReceiverType *string `json:"ReceiverType,omitnil,omitempty" name:"ReceiverType"`
 
 	// 知方式对应的值。
-	// <br> <li/> 当ReceiverType不是 Wecom 时，Values必填。
+	// <br> <li/> 当ReceiverType不是 WeCom 时，Values必填。
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 
 	// 仪表盘通知渠道。
 	// <br><li/> 支持：["Email","Sms","WeChat","Phone"]。
-	// <br><li/> 当ReceiverType是 Email 或 Wecom 时，ReceiverChannels不能赋值。
+	// <br><li/> 当ReceiverType是 Email 或 WeCom 时，ReceiverChannels不能赋值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReceiverChannels []*string `json:"ReceiverChannels,omitnil,omitempty" name:"ReceiverChannels"`
 
 	// 回调Url。
-	// <br><li/> 当ReceiverType是 Wecom 时，Url必填。
-	// <br><li/> 当ReceiverType不是 Wecom 时，Url不能填写。
+	// <br><li/> 当ReceiverType是 WeCom 时，Url必填。
+	// <br><li/> 当ReceiverType不是 WeCom 时，Url不能填写。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
@@ -9461,6 +9465,8 @@ type ModifyAlarmRequestParams struct {
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 该参数已废弃，请使用Status参数控制是否开启告警策略。
+	//
+	// Deprecated: Enable is deprecated.
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
 	// 用户自定义告警内容
@@ -9871,9 +9877,11 @@ type ModifyConfigExtraRequestParams struct {
 	// - user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）。
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
-	// 日志格式化方式，用于容器采集场景。目前已经废弃
+	// 日志格式化方式，用于容器采集场景。
 	// - stdout-docker-json：用于docker容器采集场景
 	// - stdout-containerd：用于containerd容器采集场景
+	//
+	// Deprecated: LogFormat is deprecated.
 	LogFormat *string `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
 
 	// 提取规则，如果设置了ExtractRule，则必须设置LogType
@@ -9945,7 +9953,7 @@ type ModifyConfigExtraRequest struct {
 	// - user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）。
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
-	// 日志格式化方式，用于容器采集场景。目前已经废弃
+	// 日志格式化方式，用于容器采集场景。
 	// - stdout-docker-json：用于docker容器采集场景
 	// - stdout-containerd：用于containerd容器采集场景
 	LogFormat *string `json:"LogFormat,omitnil,omitempty" name:"LogFormat"`
@@ -13457,10 +13465,14 @@ type WebCallback struct {
 	UserIds []*string `json:"UserIds,omitnil,omitempty" name:"UserIds"`
 
 	// 该参数已废弃，请使用NoticeContentId。
+	//
+	// Deprecated: Headers is deprecated.
 	Headers []*string `json:"Headers,omitnil,omitempty" name:"Headers"`
 
 	// 该参数已废弃，请使用NoticeContentId。
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: Body is deprecated.
 	Body *string `json:"Body,omitnil,omitempty" name:"Body"`
 
 	// 序号。

@@ -131,6 +131,9 @@ const (
 	// 获取CLS日志主题失败。
 	FAILEDOPERATION_GETCLSTOPIC = "FailedOperation.GetClsTopic"
 
+	// 获取集群失败
+	FAILEDOPERATION_GETCLUSTERFAILED = "FailedOperation.GetClusterFailed"
+
 	// Kubernetes client建立失败。
 	FAILEDOPERATION_K8SCLIENTBUILDERROR = "FailedOperation.K8sClientBuildError"
 

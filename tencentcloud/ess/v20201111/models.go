@@ -12583,7 +12583,7 @@ type FlowCreateApprover struct {
 
 	// 签署意愿确认渠道，默认为WEIXINAPP:人脸识别
 	// 
-	// 注: <font color="red">将要废弃</font >, `用ApproverSignTypes签署人签署合同时的认证方式代替, 新客户可请用ApproverSignTypes来设置`
+	// 注: <font color="red">不再使用</font >, `用ApproverSignTypes签署人签署合同时的认证方式代替, 新客户可请用ApproverSignTypes来设置`
 	VerifyChannel []*string `json:"VerifyChannel,omitnil,omitempty" name:"VerifyChannel"`
 
 	// 通知签署方经办人的方式,  有以下途径:
@@ -12612,7 +12612,7 @@ type FlowCreateApprover struct {
 	// 如果传进来的<font color="red">UserId已经实名， 则忽略ApproverName，ApproverIdCardType，ApproverIdCardNumber，ApproverMobile这四个入参</font>（会用此UserId实名的身份证和登录的手机号覆盖）
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 
-	// <font color="red">字段已经废弃</font>，当前只支持true，默认为true
+	// <font color="red">字段不再使用</font>，当前只支持true，默认为true
 	Required *bool `json:"Required,omitnil,omitempty" name:"Required"`
 
 	// 在企微场景下使用，需设置参数为**WEWORKAPP**，以表明合同来源于企微。
@@ -12624,7 +12624,7 @@ type FlowCreateApprover struct {
 	// 如果或签签署人为本方企业微信参与人，则需要指定ApproverSource参数为WEWORKAPP。
 	CustomApproverTag *string `json:"CustomApproverTag,omitnil,omitempty" name:"CustomApproverTag"`
 
-	// 已经废弃, 快速注册相关信息
+	// <font color="red">不再使用</font >, 快速注册相关信息
 	RegisterInfo *RegisterInfo `json:"RegisterInfo,omitnil,omitempty" name:"RegisterInfo"`
 
 	// 签署人个性化能力值，如是否可以转发他人处理、是否可以拒签、是否为动态补充签署人等功能开关。

@@ -403,63 +403,6 @@ func (c *Client) CreateAssetSortingReportTaskWithContext(ctx context.Context, re
     return
 }
 
-func NewCreateClassificationRuleRequest() (request *CreateClassificationRuleRequest) {
-    request = &CreateClassificationRuleRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("dsgc", APIVersion, "CreateClassificationRule")
-    
-    
-    return
-}
-
-func NewCreateClassificationRuleResponse() (response *CreateClassificationRuleResponse) {
-    response = &CreateClassificationRuleResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateClassificationRule
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 创建识别规则
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CreateClassificationRule(request *CreateClassificationRuleRequest) (response *CreateClassificationRuleResponse, err error) {
-    return c.CreateClassificationRuleWithContext(context.Background(), request)
-}
-
-// CreateClassificationRule
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 创建识别规则
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CreateClassificationRuleWithContext(ctx context.Context, request *CreateClassificationRuleRequest) (response *CreateClassificationRuleResponse, err error) {
-    if request == nil {
-        request = NewCreateClassificationRuleRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateClassificationRule require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateClassificationRuleResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateDSPAAssessmentRiskLevelRequest() (request *CreateDSPAAssessmentRiskLevelRequest) {
     request = &CreateDSPAAssessmentRiskLevelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -483,7 +426,13 @@ func NewCreateDSPAAssessmentRiskLevelResponse() (response *CreateDSPAAssessmentR
 // 风险项页面---创建风险等级
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateDSPAAssessmentRiskLevel(request *CreateDSPAAssessmentRiskLevelRequest) (response *CreateDSPAAssessmentRiskLevelResponse, err error) {
     return c.CreateDSPAAssessmentRiskLevelWithContext(context.Background(), request)
 }
@@ -492,7 +441,13 @@ func (c *Client) CreateDSPAAssessmentRiskLevel(request *CreateDSPAAssessmentRisk
 // 风险项页面---创建风险等级
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateDSPAAssessmentRiskLevelWithContext(ctx context.Context, request *CreateDSPAAssessmentRiskLevelRequest) (response *CreateDSPAAssessmentRiskLevelResponse, err error) {
     if request == nil {
         request = NewCreateDSPAAssessmentRiskLevelRequest()
@@ -532,7 +487,13 @@ func NewCreateDSPAAssessmentRiskTemplateResponse() (response *CreateDSPAAssessme
 // 风险评估模板---创建风险评估模板
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateDSPAAssessmentRiskTemplate(request *CreateDSPAAssessmentRiskTemplateRequest) (response *CreateDSPAAssessmentRiskTemplateResponse, err error) {
     return c.CreateDSPAAssessmentRiskTemplateWithContext(context.Background(), request)
 }
@@ -541,7 +502,13 @@ func (c *Client) CreateDSPAAssessmentRiskTemplate(request *CreateDSPAAssessmentR
 // 风险评估模板---创建风险评估模板
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateDSPAAssessmentRiskTemplateWithContext(ctx context.Context, request *CreateDSPAAssessmentRiskTemplateRequest) (response *CreateDSPAAssessmentRiskTemplateResponse, err error) {
     if request == nil {
         request = NewCreateDSPAAssessmentRiskTemplateRequest()
@@ -1390,120 +1357,6 @@ func (c *Client) CreateIdentifyRuleAnotherNameWithContext(ctx context.Context, r
     return
 }
 
-func NewCreateNewClassificationRequest() (request *CreateNewClassificationRequest) {
-    request = &CreateNewClassificationRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("dsgc", APIVersion, "CreateNewClassification")
-    
-    
-    return
-}
-
-func NewCreateNewClassificationResponse() (response *CreateNewClassificationResponse) {
-    response = &CreateNewClassificationResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateNewClassification
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 创建新分类
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CreateNewClassification(request *CreateNewClassificationRequest) (response *CreateNewClassificationResponse, err error) {
-    return c.CreateNewClassificationWithContext(context.Background(), request)
-}
-
-// CreateNewClassification
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 创建新分类
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CreateNewClassificationWithContext(ctx context.Context, request *CreateNewClassificationRequest) (response *CreateNewClassificationResponse, err error) {
-    if request == nil {
-        request = NewCreateNewClassificationRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateNewClassification require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateNewClassificationResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewCreateOrCopyStandardRequest() (request *CreateOrCopyStandardRequest) {
-    request = &CreateOrCopyStandardRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("dsgc", APIVersion, "CreateOrCopyStandard")
-    
-    
-    return
-}
-
-func NewCreateOrCopyStandardResponse() (response *CreateOrCopyStandardResponse) {
-    response = &CreateOrCopyStandardResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateOrCopyStandard
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 创建或复制分级分类模板
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CreateOrCopyStandard(request *CreateOrCopyStandardRequest) (response *CreateOrCopyStandardResponse, err error) {
-    return c.CreateOrCopyStandardWithContext(context.Background(), request)
-}
-
-// CreateOrCopyStandard
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 创建或复制分级分类模板
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CreateOrCopyStandardWithContext(ctx context.Context, request *CreateOrCopyStandardRequest) (response *CreateOrCopyStandardResponse, err error) {
-    if request == nil {
-        request = NewCreateOrCopyStandardRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateOrCopyStandard require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateOrCopyStandardResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDecribeSuggestRiskLevelMatrixRequest() (request *DecribeSuggestRiskLevelMatrixRequest) {
     request = &DecribeSuggestRiskLevelMatrixRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1527,7 +1380,13 @@ func NewDecribeSuggestRiskLevelMatrixResponse() (response *DecribeSuggestRiskLev
 // 风险等级的定义页面-创建风险等级的时候生成的一个默认的矩阵
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DecribeSuggestRiskLevelMatrix(request *DecribeSuggestRiskLevelMatrixRequest) (response *DecribeSuggestRiskLevelMatrixResponse, err error) {
     return c.DecribeSuggestRiskLevelMatrixWithContext(context.Background(), request)
 }
@@ -1536,7 +1395,13 @@ func (c *Client) DecribeSuggestRiskLevelMatrix(request *DecribeSuggestRiskLevelM
 // 风险等级的定义页面-创建风险等级的时候生成的一个默认的矩阵
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DecribeSuggestRiskLevelMatrixWithContext(ctx context.Context, request *DecribeSuggestRiskLevelMatrixRequest) (response *DecribeSuggestRiskLevelMatrixResponse, err error) {
     if request == nil {
         request = NewDecribeSuggestRiskLevelMatrixRequest()
@@ -2208,120 +2073,6 @@ func (c *Client) DescribeCOSAssetSensitiveDistributionWithContext(ctx context.Co
     return
 }
 
-func NewDescribeClassificationInfoRequest() (request *DescribeClassificationInfoRequest) {
-    request = &DescribeClassificationInfoRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("dsgc", APIVersion, "DescribeClassificationInfo")
-    
-    
-    return
-}
-
-func NewDescribeClassificationInfoResponse() (response *DescribeClassificationInfoResponse) {
-    response = &DescribeClassificationInfoResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeClassificationInfo
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 查询分类信息
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeClassificationInfo(request *DescribeClassificationInfoRequest) (response *DescribeClassificationInfoResponse, err error) {
-    return c.DescribeClassificationInfoWithContext(context.Background(), request)
-}
-
-// DescribeClassificationInfo
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 查询分类信息
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeClassificationInfoWithContext(ctx context.Context, request *DescribeClassificationInfoRequest) (response *DescribeClassificationInfoResponse, err error) {
-    if request == nil {
-        request = NewDescribeClassificationInfoRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeClassificationInfo require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeClassificationInfoResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeClassificationRuleCountRequest() (request *DescribeClassificationRuleCountRequest) {
-    request = &DescribeClassificationRuleCountRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("dsgc", APIVersion, "DescribeClassificationRuleCount")
-    
-    
-    return
-}
-
-func NewDescribeClassificationRuleCountResponse() (response *DescribeClassificationRuleCountResponse) {
-    response = &DescribeClassificationRuleCountResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeClassificationRuleCount
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 查询标准下所有分类的识别规则数量(不算子分类下的识别规则)
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeClassificationRuleCount(request *DescribeClassificationRuleCountRequest) (response *DescribeClassificationRuleCountResponse, err error) {
-    return c.DescribeClassificationRuleCountWithContext(context.Background(), request)
-}
-
-// DescribeClassificationRuleCount
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 查询标准下所有分类的识别规则数量(不算子分类下的识别规则)
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeClassificationRuleCountWithContext(ctx context.Context, request *DescribeClassificationRuleCountRequest) (response *DescribeClassificationRuleCountResponse, err error) {
-    if request == nil {
-        request = NewDescribeClassificationRuleCountRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeClassificationRuleCount require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeClassificationRuleCountResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeDSPAAssessmentHighRiskTop10OverviewRequest() (request *DescribeDSPAAssessmentHighRiskTop10OverviewRequest) {
     request = &DescribeDSPAAssessmentHighRiskTop10OverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2345,7 +2096,7 @@ func NewDescribeDSPAAssessmentHighRiskTop10OverviewResponse() (response *Describ
 // 查询高风险资产的top10
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDSPAAssessmentHighRiskTop10Overview(request *DescribeDSPAAssessmentHighRiskTop10OverviewRequest) (response *DescribeDSPAAssessmentHighRiskTop10OverviewResponse, err error) {
     return c.DescribeDSPAAssessmentHighRiskTop10OverviewWithContext(context.Background(), request)
 }
@@ -2354,7 +2105,7 @@ func (c *Client) DescribeDSPAAssessmentHighRiskTop10Overview(request *DescribeDS
 // 查询高风险资产的top10
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDSPAAssessmentHighRiskTop10OverviewWithContext(ctx context.Context, request *DescribeDSPAAssessmentHighRiskTop10OverviewRequest) (response *DescribeDSPAAssessmentHighRiskTop10OverviewResponse, err error) {
     if request == nil {
         request = NewDescribeDSPAAssessmentHighRiskTop10OverviewRequest()
@@ -2394,7 +2145,7 @@ func NewDescribeDSPAAssessmentLatestRiskDetailInfoResponse() (response *Describe
 // 查询最新风险项详情数据
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDSPAAssessmentLatestRiskDetailInfo(request *DescribeDSPAAssessmentLatestRiskDetailInfoRequest) (response *DescribeDSPAAssessmentLatestRiskDetailInfoResponse, err error) {
     return c.DescribeDSPAAssessmentLatestRiskDetailInfoWithContext(context.Background(), request)
 }
@@ -2403,7 +2154,7 @@ func (c *Client) DescribeDSPAAssessmentLatestRiskDetailInfo(request *DescribeDSP
 // 查询最新风险项详情数据
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDSPAAssessmentLatestRiskDetailInfoWithContext(ctx context.Context, request *DescribeDSPAAssessmentLatestRiskDetailInfoRequest) (response *DescribeDSPAAssessmentLatestRiskDetailInfoResponse, err error) {
     if request == nil {
         request = NewDescribeDSPAAssessmentLatestRiskDetailInfoRequest()
@@ -2443,7 +2194,7 @@ func NewDescribeDSPAAssessmentLatestRiskListResponse() (response *DescribeDSPAAs
 // 查询最新的风险详情列表数据
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDSPAAssessmentLatestRiskList(request *DescribeDSPAAssessmentLatestRiskListRequest) (response *DescribeDSPAAssessmentLatestRiskListResponse, err error) {
     return c.DescribeDSPAAssessmentLatestRiskListWithContext(context.Background(), request)
 }
@@ -2452,7 +2203,7 @@ func (c *Client) DescribeDSPAAssessmentLatestRiskList(request *DescribeDSPAAsses
 // 查询最新的风险详情列表数据
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDSPAAssessmentLatestRiskListWithContext(ctx context.Context, request *DescribeDSPAAssessmentLatestRiskListRequest) (response *DescribeDSPAAssessmentLatestRiskListResponse, err error) {
     if request == nil {
         request = NewDescribeDSPAAssessmentLatestRiskListRequest()
@@ -2492,7 +2243,7 @@ func NewDescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse() (response *Des
 // 风险概览-查询新发现风险统计数
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDSPAAssessmentNewDiscoveredRiskOverview(request *DescribeDSPAAssessmentNewDiscoveredRiskOverviewRequest) (response *DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse, err error) {
     return c.DescribeDSPAAssessmentNewDiscoveredRiskOverviewWithContext(context.Background(), request)
 }
@@ -2501,7 +2252,7 @@ func (c *Client) DescribeDSPAAssessmentNewDiscoveredRiskOverview(request *Descri
 // 风险概览-查询新发现风险统计数
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDSPAAssessmentNewDiscoveredRiskOverviewWithContext(ctx context.Context, request *DescribeDSPAAssessmentNewDiscoveredRiskOverviewRequest) (response *DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeDSPAAssessmentNewDiscoveredRiskOverviewRequest()
@@ -2541,7 +2292,7 @@ func NewDescribeDSPAAssessmentPendingRiskOverviewResponse() (response *DescribeD
 // 风险概览-查询待处理风险统计数
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDSPAAssessmentPendingRiskOverview(request *DescribeDSPAAssessmentPendingRiskOverviewRequest) (response *DescribeDSPAAssessmentPendingRiskOverviewResponse, err error) {
     return c.DescribeDSPAAssessmentPendingRiskOverviewWithContext(context.Background(), request)
 }
@@ -2550,7 +2301,7 @@ func (c *Client) DescribeDSPAAssessmentPendingRiskOverview(request *DescribeDSPA
 // 风险概览-查询待处理风险统计数
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDSPAAssessmentPendingRiskOverviewWithContext(ctx context.Context, request *DescribeDSPAAssessmentPendingRiskOverviewRequest) (response *DescribeDSPAAssessmentPendingRiskOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeDSPAAssessmentPendingRiskOverviewRequest()
@@ -2590,7 +2341,7 @@ func NewDescribeDSPAAssessmentProcessingRiskOverviewResponse() (response *Descri
 // 风险概览-查询处理中风险统计数
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDSPAAssessmentProcessingRiskOverview(request *DescribeDSPAAssessmentProcessingRiskOverviewRequest) (response *DescribeDSPAAssessmentProcessingRiskOverviewResponse, err error) {
     return c.DescribeDSPAAssessmentProcessingRiskOverviewWithContext(context.Background(), request)
 }
@@ -2599,7 +2350,7 @@ func (c *Client) DescribeDSPAAssessmentProcessingRiskOverview(request *DescribeD
 // 风险概览-查询处理中风险统计数
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDSPAAssessmentProcessingRiskOverviewWithContext(ctx context.Context, request *DescribeDSPAAssessmentProcessingRiskOverviewRequest) (response *DescribeDSPAAssessmentProcessingRiskOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeDSPAAssessmentProcessingRiskOverviewRequest()
@@ -2639,7 +2390,7 @@ func NewDescribeDSPAAssessmentRiskAmountOverviewResponse() (response *DescribeDS
 // 风险概览页风险数量和受影响资产数概览统计
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDSPAAssessmentRiskAmountOverview(request *DescribeDSPAAssessmentRiskAmountOverviewRequest) (response *DescribeDSPAAssessmentRiskAmountOverviewResponse, err error) {
     return c.DescribeDSPAAssessmentRiskAmountOverviewWithContext(context.Background(), request)
 }
@@ -2648,7 +2399,7 @@ func (c *Client) DescribeDSPAAssessmentRiskAmountOverview(request *DescribeDSPAA
 // 风险概览页风险数量和受影响资产数概览统计
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDSPAAssessmentRiskAmountOverviewWithContext(ctx context.Context, request *DescribeDSPAAssessmentRiskAmountOverviewRequest) (response *DescribeDSPAAssessmentRiskAmountOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeDSPAAssessmentRiskAmountOverviewRequest()
@@ -5797,63 +5548,6 @@ func (c *Client) DescribeExportTaskResultWithContext(ctx context.Context, reques
     return
 }
 
-func NewDescribeLeafClassificationRequest() (request *DescribeLeafClassificationRequest) {
-    request = &DescribeLeafClassificationRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("dsgc", APIVersion, "DescribeLeafClassification")
-    
-    
-    return
-}
-
-func NewDescribeLeafClassificationResponse() (response *DescribeLeafClassificationResponse) {
-    response = &DescribeLeafClassificationResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeLeafClassification
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 查询标准下所有叶子节点分类
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeLeafClassification(request *DescribeLeafClassificationRequest) (response *DescribeLeafClassificationResponse, err error) {
-    return c.DescribeLeafClassificationWithContext(context.Background(), request)
-}
-
-// DescribeLeafClassification
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 查询标准下所有叶子节点分类
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeLeafClassificationWithContext(ctx context.Context, request *DescribeLeafClassificationRequest) (response *DescribeLeafClassificationResponse, err error) {
-    if request == nil {
-        request = NewDescribeLeafClassificationRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeLeafClassification require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeLeafClassificationResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeMongoAssetSensitiveDistributionRequest() (request *DescribeMongoAssetSensitiveDistributionRequest) {
     request = &DescribeMongoAssetSensitiveDistributionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5877,7 +5571,13 @@ func NewDescribeMongoAssetSensitiveDistributionResponse() (response *DescribeMon
 // 数据资产报告-查询mongo 的敏感资产报告，包含（数据库资产，设敏级别数据库top10，资产详情）
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeMongoAssetSensitiveDistribution(request *DescribeMongoAssetSensitiveDistributionRequest) (response *DescribeMongoAssetSensitiveDistributionResponse, err error) {
     return c.DescribeMongoAssetSensitiveDistributionWithContext(context.Background(), request)
 }
@@ -5886,7 +5586,13 @@ func (c *Client) DescribeMongoAssetSensitiveDistribution(request *DescribeMongoA
 // 数据资产报告-查询mongo 的敏感资产报告，包含（数据库资产，设敏级别数据库top10，资产详情）
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeMongoAssetSensitiveDistributionWithContext(ctx context.Context, request *DescribeMongoAssetSensitiveDistributionRequest) (response *DescribeMongoAssetSensitiveDistributionResponse, err error) {
     if request == nil {
         request = NewDescribeMongoAssetSensitiveDistributionRequest()
@@ -5926,7 +5632,13 @@ func NewDescribeRDBAssetSensitiveDistributionResponse() (response *DescribeRDBAs
 // 数据资产报告-查询rbd 的敏感资产报告，包含（数据库资产，设敏级别数据库top10，资产详情）
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeRDBAssetSensitiveDistribution(request *DescribeRDBAssetSensitiveDistributionRequest) (response *DescribeRDBAssetSensitiveDistributionResponse, err error) {
     return c.DescribeRDBAssetSensitiveDistributionWithContext(context.Background(), request)
 }
@@ -5935,7 +5647,13 @@ func (c *Client) DescribeRDBAssetSensitiveDistribution(request *DescribeRDBAsset
 // 数据资产报告-查询rbd 的敏感资产报告，包含（数据库资产，设敏级别数据库top10，资产详情）
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeRDBAssetSensitiveDistributionWithContext(ctx context.Context, request *DescribeRDBAssetSensitiveDistributionRequest) (response *DescribeRDBAssetSensitiveDistributionResponse, err error) {
     if request == nil {
         request = NewDescribeRDBAssetSensitiveDistributionRequest()
@@ -5975,7 +5693,13 @@ func NewDescribeReportTaskDownloadUrlResponse() (response *DescribeReportTaskDow
 // 获取报表下载链接
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeReportTaskDownloadUrl(request *DescribeReportTaskDownloadUrlRequest) (response *DescribeReportTaskDownloadUrlResponse, err error) {
     return c.DescribeReportTaskDownloadUrlWithContext(context.Background(), request)
 }
@@ -5984,7 +5708,13 @@ func (c *Client) DescribeReportTaskDownloadUrl(request *DescribeReportTaskDownlo
 // 获取报表下载链接
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeReportTaskDownloadUrlWithContext(ctx context.Context, request *DescribeReportTaskDownloadUrlRequest) (response *DescribeReportTaskDownloadUrlResponse, err error) {
     if request == nil {
         request = NewDescribeReportTaskDownloadUrlRequest()
@@ -6024,7 +5754,13 @@ func NewDescribeReportTasksResponse() (response *DescribeReportTasksResponse) {
 // 获取资产报表任务列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeReportTasks(request *DescribeReportTasksRequest) (response *DescribeReportTasksResponse, err error) {
     return c.DescribeReportTasksWithContext(context.Background(), request)
 }
@@ -6033,7 +5769,13 @@ func (c *Client) DescribeReportTasks(request *DescribeReportTasksRequest) (respo
 // 获取资产报表任务列表
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeReportTasksWithContext(ctx context.Context, request *DescribeReportTasksRequest) (response *DescribeReportTasksResponse, err error) {
     if request == nil {
         request = NewDescribeReportTasksRequest()
@@ -6046,67 +5788,6 @@ func (c *Client) DescribeReportTasksWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeReportTasksResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeRuleListRequest() (request *DescribeRuleListRequest) {
-    request = &DescribeRuleListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("dsgc", APIVersion, "DescribeRuleList")
-    
-    
-    return
-}
-
-func NewDescribeRuleListResponse() (response *DescribeRuleListResponse) {
-    response = &DescribeRuleListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeRuleList
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 查询分类下规则列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) DescribeRuleList(request *DescribeRuleListRequest) (response *DescribeRuleListResponse, err error) {
-    return c.DescribeRuleListWithContext(context.Background(), request)
-}
-
-// DescribeRuleList
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 查询分类下规则列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) DescribeRuleListWithContext(ctx context.Context, request *DescribeRuleListRequest) (response *DescribeRuleListResponse, err error) {
-    if request == nil {
-        request = NewDescribeRuleListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeRuleList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeRuleListResponse()
     err = c.Send(request, response)
     return
 }
@@ -6134,9 +5815,13 @@ func NewDescribeSensitiveCOSDataDistributionResponse() (response *DescribeSensit
 // 数据资产报告-查询cos的敏感数据分布（分级分布 分类分布 敏感规则分布详情列表）
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeSensitiveCOSDataDistribution(request *DescribeSensitiveCOSDataDistributionRequest) (response *DescribeSensitiveCOSDataDistributionResponse, err error) {
     return c.DescribeSensitiveCOSDataDistributionWithContext(context.Background(), request)
 }
@@ -6145,9 +5830,13 @@ func (c *Client) DescribeSensitiveCOSDataDistribution(request *DescribeSensitive
 // 数据资产报告-查询cos的敏感数据分布（分级分布 分类分布 敏感规则分布详情列表）
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeSensitiveCOSDataDistributionWithContext(ctx context.Context, request *DescribeSensitiveCOSDataDistributionRequest) (response *DescribeSensitiveCOSDataDistributionResponse, err error) {
     if request == nil {
         request = NewDescribeSensitiveCOSDataDistributionRequest()
@@ -6187,9 +5876,13 @@ func NewDescribeSensitiveRDBDataDistributionResponse() (response *DescribeSensit
 // 数据资产报告-查询rdb的敏感数据分布-敏感规则字段分布-敏感分布详情
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeSensitiveRDBDataDistribution(request *DescribeSensitiveRDBDataDistributionRequest) (response *DescribeSensitiveRDBDataDistributionResponse, err error) {
     return c.DescribeSensitiveRDBDataDistributionWithContext(context.Background(), request)
 }
@@ -6198,9 +5891,13 @@ func (c *Client) DescribeSensitiveRDBDataDistribution(request *DescribeSensitive
 // 数据资产报告-查询rdb的敏感数据分布-敏感规则字段分布-敏感分布详情
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeSensitiveRDBDataDistributionWithContext(ctx context.Context, request *DescribeSensitiveRDBDataDistributionRequest) (response *DescribeSensitiveRDBDataDistributionResponse, err error) {
     if request == nil {
         request = NewDescribeSensitiveRDBDataDistributionRequest()
@@ -6785,120 +6482,6 @@ func (c *Client) ListDSPAMetaResourcesWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewListDSPAMetaResourcesResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifyClassificationRuleRequest() (request *ModifyClassificationRuleRequest) {
-    request = &ModifyClassificationRuleRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("dsgc", APIVersion, "ModifyClassificationRule")
-    
-    
-    return
-}
-
-func NewModifyClassificationRuleResponse() (response *ModifyClassificationRuleResponse) {
-    response = &ModifyClassificationRuleResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ModifyClassificationRule
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 编辑识别规则
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyClassificationRule(request *ModifyClassificationRuleRequest) (response *ModifyClassificationRuleResponse, err error) {
-    return c.ModifyClassificationRuleWithContext(context.Background(), request)
-}
-
-// ModifyClassificationRule
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 编辑识别规则
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyClassificationRuleWithContext(ctx context.Context, request *ModifyClassificationRuleRequest) (response *ModifyClassificationRuleResponse, err error) {
-    if request == nil {
-        request = NewModifyClassificationRuleRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyClassificationRule require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyClassificationRuleResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifyClassificationRuleStateRequest() (request *ModifyClassificationRuleStateRequest) {
-    request = &ModifyClassificationRuleStateRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("dsgc", APIVersion, "ModifyClassificationRuleState")
-    
-    
-    return
-}
-
-func NewModifyClassificationRuleStateResponse() (response *ModifyClassificationRuleStateResponse) {
-    response = &ModifyClassificationRuleStateResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ModifyClassificationRuleState
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 修改识别规则状态
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyClassificationRuleState(request *ModifyClassificationRuleStateRequest) (response *ModifyClassificationRuleStateResponse, err error) {
-    return c.ModifyClassificationRuleStateWithContext(context.Background(), request)
-}
-
-// ModifyClassificationRuleState
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 修改识别规则状态
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyClassificationRuleStateWithContext(ctx context.Context, request *ModifyClassificationRuleStateRequest) (response *ModifyClassificationRuleStateResponse, err error) {
-    if request == nil {
-        request = NewModifyClassificationRuleStateRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyClassificationRuleState require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyClassificationRuleStateResponse()
     err = c.Send(request, response)
     return
 }
@@ -7765,348 +7348,6 @@ func (c *Client) ModifyDSPATaskResultWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyDSPATaskResultResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifyLevelInfoRequest() (request *ModifyLevelInfoRequest) {
-    request = &ModifyLevelInfoRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("dsgc", APIVersion, "ModifyLevelInfo")
-    
-    
-    return
-}
-
-func NewModifyLevelInfoResponse() (response *ModifyLevelInfoResponse) {
-    response = &ModifyLevelInfoResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ModifyLevelInfo
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 修改敏感级别信息
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyLevelInfo(request *ModifyLevelInfoRequest) (response *ModifyLevelInfoResponse, err error) {
-    return c.ModifyLevelInfoWithContext(context.Background(), request)
-}
-
-// ModifyLevelInfo
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 修改敏感级别信息
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyLevelInfoWithContext(ctx context.Context, request *ModifyLevelInfoRequest) (response *ModifyLevelInfoResponse, err error) {
-    if request == nil {
-        request = NewModifyLevelInfoRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyLevelInfo require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyLevelInfoResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifyLevelNameRequest() (request *ModifyLevelNameRequest) {
-    request = &ModifyLevelNameRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("dsgc", APIVersion, "ModifyLevelName")
-    
-    
-    return
-}
-
-func NewModifyLevelNameResponse() (response *ModifyLevelNameResponse) {
-    response = &ModifyLevelNameResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ModifyLevelName
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 修改级别名称
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyLevelName(request *ModifyLevelNameRequest) (response *ModifyLevelNameResponse, err error) {
-    return c.ModifyLevelNameWithContext(context.Background(), request)
-}
-
-// ModifyLevelName
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 修改级别名称
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyLevelNameWithContext(ctx context.Context, request *ModifyLevelNameRequest) (response *ModifyLevelNameResponse, err error) {
-    if request == nil {
-        request = NewModifyLevelNameRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyLevelName require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyLevelNameResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifyLevelStateRequest() (request *ModifyLevelStateRequest) {
-    request = &ModifyLevelStateRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("dsgc", APIVersion, "ModifyLevelState")
-    
-    
-    return
-}
-
-func NewModifyLevelStateResponse() (response *ModifyLevelStateResponse) {
-    response = &ModifyLevelStateResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ModifyLevelState
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 开启级别或关闭级别
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyLevelState(request *ModifyLevelStateRequest) (response *ModifyLevelStateResponse, err error) {
-    return c.ModifyLevelStateWithContext(context.Background(), request)
-}
-
-// ModifyLevelState
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 开启级别或关闭级别
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyLevelStateWithContext(ctx context.Context, request *ModifyLevelStateRequest) (response *ModifyLevelStateResponse, err error) {
-    if request == nil {
-        request = NewModifyLevelStateRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyLevelState require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyLevelStateResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifyMergeClassificationRequest() (request *ModifyMergeClassificationRequest) {
-    request = &ModifyMergeClassificationRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("dsgc", APIVersion, "ModifyMergeClassification")
-    
-    
-    return
-}
-
-func NewModifyMergeClassificationResponse() (response *ModifyMergeClassificationResponse) {
-    response = &ModifyMergeClassificationResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ModifyMergeClassification
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 一个分类合并到另一个分类中（分类拖拽功能）
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyMergeClassification(request *ModifyMergeClassificationRequest) (response *ModifyMergeClassificationResponse, err error) {
-    return c.ModifyMergeClassificationWithContext(context.Background(), request)
-}
-
-// ModifyMergeClassification
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 一个分类合并到另一个分类中（分类拖拽功能）
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyMergeClassificationWithContext(ctx context.Context, request *ModifyMergeClassificationRequest) (response *ModifyMergeClassificationResponse, err error) {
-    if request == nil {
-        request = NewModifyMergeClassificationRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyMergeClassification require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyMergeClassificationResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifyNewClassificationRequest() (request *ModifyNewClassificationRequest) {
-    request = &ModifyNewClassificationRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("dsgc", APIVersion, "ModifyNewClassification")
-    
-    
-    return
-}
-
-func NewModifyNewClassificationResponse() (response *ModifyNewClassificationResponse) {
-    response = &ModifyNewClassificationResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ModifyNewClassification
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 修改分类信息
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyNewClassification(request *ModifyNewClassificationRequest) (response *ModifyNewClassificationResponse, err error) {
-    return c.ModifyNewClassificationWithContext(context.Background(), request)
-}
-
-// ModifyNewClassification
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 修改分类信息
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyNewClassificationWithContext(ctx context.Context, request *ModifyNewClassificationRequest) (response *ModifyNewClassificationResponse, err error) {
-    if request == nil {
-        request = NewModifyNewClassificationRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyNewClassification require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyNewClassificationResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifyStandardInfoRequest() (request *ModifyStandardInfoRequest) {
-    request = &ModifyStandardInfoRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("dsgc", APIVersion, "ModifyStandardInfo")
-    
-    
-    return
-}
-
-func NewModifyStandardInfoResponse() (response *ModifyStandardInfoResponse) {
-    response = &ModifyStandardInfoResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ModifyStandardInfo
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 修改分级分类模板信息
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyStandardInfo(request *ModifyStandardInfoRequest) (response *ModifyStandardInfoResponse, err error) {
-    return c.ModifyStandardInfoWithContext(context.Background(), request)
-}
-
-// ModifyStandardInfo
-// 旧版本DSGC接口下线
-//
-// 
-//
-// 修改分级分类模板信息
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) ModifyStandardInfoWithContext(ctx context.Context, request *ModifyStandardInfoRequest) (response *ModifyStandardInfoResponse, err error) {
-    if request == nil {
-        request = NewModifyStandardInfoRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyStandardInfo require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyStandardInfoResponse()
     err = c.Send(request, response)
     return
 }
