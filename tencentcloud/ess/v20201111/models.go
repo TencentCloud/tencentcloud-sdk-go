@@ -93,6 +93,8 @@ type ApproverInfo struct {
 	// <ul><li> 个人签名/印章</li>
 	// <li> 企业印章</li>
 	// <li> 骑缝章等签署控件</li></ul>
+	// 
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/91757a7f9188ccf3057a4a8979cf3f93.png)
 	SignComponents []*Component `json:"SignComponents,omitnil,omitempty" name:"SignComponents"`
 
 	// 签署方经办人的证件类型，支持以下类型，样式可以参考<a href="https://qian.tencent.com/developers/partner/id_card_support/" target="_blank">常见个人证件类型介绍</a>
@@ -231,6 +233,8 @@ type ApproverInfo struct {
 	// 具体使用说明可参考[为签署方指定填写控件](https://qian.tencent.cn/developers/company/createFlowByFiles/#指定签署方填写控件)
 	// 
 	// 注：`此参数仅在通过文件发起合同或者合同组时生效`
+	// 
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/e004195ee4cb98a7f9bc12eb4a0a0b77.png)
 	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
 
 	// 进入签署流程的限制，目前支持以下选项：
@@ -456,6 +460,8 @@ type AutoSignConfig struct {
 	// 是否回调证书信息:
 	// <ul><li>**false**: 不需要(默认)</li>
 	// <li>**true**:需要</li></ul>
+	// 
+	// 注：`该字段已经失效，请勿设置此参数。`
 	CertInfoCallback *bool `json:"CertInfoCallback,omitnil,omitempty" name:"CertInfoCallback"`
 
 	// 是否支持用户自定义签名印章:
@@ -477,7 +483,7 @@ type AutoSignConfig struct {
 
 	// 开通时候的身份验证方式, 取值为：
 	// <ul><li>**WEIXINAPP** : 微信人脸识别</li>
-	// <li>**INSIGHT** : 慧眼人脸认别</li>
+	// <li>**INSIGHT** : 慧眼人脸识别</li>
 	// <li>**TELECOM** : 运营商三要素验证</li></ul>
 	// 注：
 	// <ul><li>如果是小程序开通链接，支持传 WEIXINAPP / TELECOM。为空默认 WEIXINAPP</li>
@@ -487,6 +493,8 @@ type AutoSignConfig struct {
 	// 设置用户自动签合同的扣费方式。
 	// 
 	// <ul><li><b>1</b>: (默认)使用合同份额进行扣减</li></ul>
+	// 
+	// 注：`该字段已经失效，请勿设置此参数。`
 	LicenseType *int64 `json:"LicenseType,omitnil,omitempty" name:"LicenseType"`
 
 	// 开通成功后前端页面跳转的url，此字段的用法场景请联系客户经理确认。
@@ -3436,6 +3444,8 @@ type CreateFlowByFilesRequestParams struct {
 	// <li> 图片控件          </li>
 	// <li> 水印控件等          </li>
 	// </ul>
+	// 
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/e004195ee4cb98a7f9bc12eb4a0a0b77.png)
 	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
@@ -3577,6 +3587,8 @@ type CreateFlowByFilesRequest struct {
 	// <li> 图片控件          </li>
 	// <li> 水印控件等          </li>
 	// </ul>
+	// 
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/e004195ee4cb98a7f9bc12eb4a0a0b77.png)
 	Components []*Component `json:"Components,omitnil,omitempty" name:"Components"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。

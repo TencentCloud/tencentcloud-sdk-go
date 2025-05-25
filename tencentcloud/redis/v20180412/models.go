@@ -10496,8 +10496,8 @@ type UpgradeInstanceRequestParams struct {
 	NodeSet []*RedisNodeInfo `json:"NodeSet,omitnil,omitempty" name:"NodeSet"`
 
 	// 切换时间。 
-	// - 1：维护时间窗操作：在设置的维护时间窗内执行操作。请通过接口[DescribeMaintenanceWindow](https://cloud.tencent.com/document/product/239/46336)查询设置的维护时间窗时间段。缩副本、扩缩分片、扩内存均支持在维护时间窗执行操作。
-	// - 2：立即操作：默认切换时刻。操作将立即执行，无需等待维护时间窗。
+	// - 1：维护时间窗操作：指升级规格在设置的维护时间窗内执行。请通过接口[DescribeMaintenanceWindow](https://cloud.tencent.com/document/product/239/46336)查询设置的维护时间窗时间段。增减副本、增减分片、扩缩内存均支持在维护时间窗执行操作。维护时间窗升级规格正在分地域逐步测试发布中，部分区域已支持，未覆盖地域若需紧急接入，请[提交工单](https://console.cloud.tencent.com/workorder/category)申请白名单。
+	// - 2：立即操作：操作将立即执行，无需等待维护时间窗。系统默认设置为立即操作。
 	SwitchOption *uint64 `json:"SwitchOption,omitnil,omitempty" name:"SwitchOption"`
 }
 
@@ -10520,8 +10520,8 @@ type UpgradeInstanceRequest struct {
 	NodeSet []*RedisNodeInfo `json:"NodeSet,omitnil,omitempty" name:"NodeSet"`
 
 	// 切换时间。 
-	// - 1：维护时间窗操作：在设置的维护时间窗内执行操作。请通过接口[DescribeMaintenanceWindow](https://cloud.tencent.com/document/product/239/46336)查询设置的维护时间窗时间段。缩副本、扩缩分片、扩内存均支持在维护时间窗执行操作。
-	// - 2：立即操作：默认切换时刻。操作将立即执行，无需等待维护时间窗。
+	// - 1：维护时间窗操作：指升级规格在设置的维护时间窗内执行。请通过接口[DescribeMaintenanceWindow](https://cloud.tencent.com/document/product/239/46336)查询设置的维护时间窗时间段。增减副本、增减分片、扩缩内存均支持在维护时间窗执行操作。维护时间窗升级规格正在分地域逐步测试发布中，部分区域已支持，未覆盖地域若需紧急接入，请[提交工单](https://console.cloud.tencent.com/workorder/category)申请白名单。
+	// - 2：立即操作：操作将立即执行，无需等待维护时间窗。系统默认设置为立即操作。
 	SwitchOption *uint64 `json:"SwitchOption,omitnil,omitempty" name:"SwitchOption"`
 }
 

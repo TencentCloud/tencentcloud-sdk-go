@@ -7655,6 +7655,9 @@ type TrainingTaskSetItem struct {
 	// 任务创建者名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
+
+	// 任务AppId
+	AppId *string `json:"AppId,omitnil,omitempty" name:"AppId"`
 }
 
 type Usage struct {

@@ -36,20 +36,11 @@ type AddRecordBatch struct {
 	// 解析记录的线路 ID，RecordLine和RecordLineId都有时，系统优先取 RecordLineId。
 	RecordLineId *string `json:"RecordLineId,omitnil,omitempty" name:"RecordLineId"`
 
-	// 记录权重值(暂未支持)。
-	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
-
 	// 记录的 MX 记录值，非 MX 记录类型，默认为 0，MX记录则必选。
 	MX *uint64 `json:"MX,omitnil,omitempty" name:"MX"`
 
 	// 记录的 TTL 值，默认600。
 	TTL *uint64 `json:"TTL,omitnil,omitempty" name:"TTL"`
-
-	// 记录状态(暂未支持)。0表示禁用，1表示启用。默认启用。
-	Enabled *uint64 `json:"Enabled,omitnil,omitempty" name:"Enabled"`
-
-	// 记录备注(暂未支持)。
-	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type BatchRecordInfo struct {

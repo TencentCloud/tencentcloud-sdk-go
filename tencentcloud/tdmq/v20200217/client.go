@@ -513,8 +513,12 @@ func NewCreateEnvironmentResponse() (response *CreateEnvironmentResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_CREATEENVIRONMENT = "FailedOperation.CreateEnvironment"
 //  FAILEDOPERATION_CREATENAMESPACE = "FailedOperation.CreateNamespace"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
+//  FAILEDOPERATION_REPLICATIONDESTCHECKFAILEDERROR = "FailedOperation.ReplicationDestCheckFailedError"
+//  FAILEDOPERATION_REPLICATIONSOURCECHECKFAILEDERROR = "FailedOperation.ReplicationSourceCheckFailedError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  INVALIDPARAMETERVALUE_TTL = "InvalidParameterValue.TTL"
@@ -537,8 +541,12 @@ func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response 
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_CREATEENVIRONMENT = "FailedOperation.CreateEnvironment"
 //  FAILEDOPERATION_CREATENAMESPACE = "FailedOperation.CreateNamespace"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
+//  FAILEDOPERATION_REPLICATIONDESTCHECKFAILEDERROR = "FailedOperation.ReplicationDestCheckFailedError"
+//  FAILEDOPERATION_REPLICATIONSOURCECHECKFAILEDERROR = "FailedOperation.ReplicationSourceCheckFailedError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  INVALIDPARAMETERVALUE_TTL = "InvalidParameterValue.TTL"
@@ -592,7 +600,9 @@ func NewCreateEnvironmentRoleResponse() (response *CreateEnvironmentRoleResponse
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_CREATEENVIRONMENTROLE = "FailedOperation.CreateEnvironmentRole"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_UPDATEENVIRONMENTROLE = "FailedOperation.UpdateEnvironmentRole"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
@@ -611,7 +621,9 @@ func (c *Client) CreateEnvironmentRole(request *CreateEnvironmentRoleRequest) (r
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_CREATEENVIRONMENTROLE = "FailedOperation.CreateEnvironmentRole"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_UPDATEENVIRONMENTROLE = "FailedOperation.UpdateEnvironmentRole"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
@@ -659,6 +671,8 @@ func NewCreateProClusterResponse() (response *CreateProClusterResponse) {
 // 创建专业集群——预付费，仅通过api调用
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_PRODUCTNOTEXIST = "FailedOperation.ProductNotExist"
 //  INVALIDPARAMETER_VPC = "InvalidParameter.Vpc"
 //  MISSINGPARAMETER_TAG = "MissingParameter.Tag"
@@ -670,6 +684,8 @@ func (c *Client) CreateProCluster(request *CreateProClusterRequest) (response *C
 // 创建专业集群——预付费，仅通过api调用
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_PRODUCTNOTEXIST = "FailedOperation.ProductNotExist"
 //  INVALIDPARAMETER_VPC = "InvalidParameter.Vpc"
 //  MISSINGPARAMETER_TAG = "MissingParameter.Tag"
@@ -1462,8 +1478,12 @@ func NewCreateSubscriptionResponse() (response *CreateSubscriptionResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_CREATESUBSCRIPTION = "FailedOperation.CreateSubscription"
 //  FAILEDOPERATION_GETTOPICPARTITIONSFAILED = "FailedOperation.GetTopicPartitionsFailed"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
+//  FAILEDOPERATION_REPLICATIONDESTCHECKFAILEDERROR = "FailedOperation.ReplicationDestCheckFailedError"
+//  FAILEDOPERATION_REPLICATIONSOURCECHECKFAILEDERROR = "FailedOperation.ReplicationSourceCheckFailedError"
 //  INTERNALERROR_RETRY = "InternalError.Retry"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
@@ -1484,8 +1504,12 @@ func (c *Client) CreateSubscription(request *CreateSubscriptionRequest) (respons
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_CREATESUBSCRIPTION = "FailedOperation.CreateSubscription"
 //  FAILEDOPERATION_GETTOPICPARTITIONSFAILED = "FailedOperation.GetTopicPartitionsFailed"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
+//  FAILEDOPERATION_REPLICATIONDESTCHECKFAILEDERROR = "FailedOperation.ReplicationDestCheckFailedError"
+//  FAILEDOPERATION_REPLICATIONSOURCECHECKFAILEDERROR = "FailedOperation.ReplicationSourceCheckFailedError"
 //  INTERNALERROR_RETRY = "InternalError.Retry"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
@@ -1537,8 +1561,12 @@ func NewCreateTopicResponse() (response *CreateTopicResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_CREATETOPIC = "FailedOperation.CreateTopic"
 //  FAILEDOPERATION_ISOLATECONSUMERENABLE = "FailedOperation.IsolateConsumerEnable"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
+//  FAILEDOPERATION_REPLICATIONDESTCHECKFAILEDERROR = "FailedOperation.ReplicationDestCheckFailedError"
+//  FAILEDOPERATION_REPLICATIONSOURCECHECKFAILEDERROR = "FailedOperation.ReplicationSourceCheckFailedError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ACKTIME = "InvalidParameterValue.AckTime"
@@ -1563,8 +1591,12 @@ func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopic
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_CREATETOPIC = "FailedOperation.CreateTopic"
 //  FAILEDOPERATION_ISOLATECONSUMERENABLE = "FailedOperation.IsolateConsumerEnable"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
+//  FAILEDOPERATION_REPLICATIONDESTCHECKFAILEDERROR = "FailedOperation.ReplicationDestCheckFailedError"
+//  FAILEDOPERATION_REPLICATIONSOURCECHECKFAILEDERROR = "FailedOperation.ReplicationSourceCheckFailedError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_ACKTIME = "InvalidParameterValue.AckTime"
@@ -1619,8 +1651,10 @@ func NewDeleteClusterResponse() (response *DeleteClusterResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_DELETECLUSTER = "FailedOperation.DeleteCluster"
 //  FAILEDOPERATION_NAMESPACEINUSE = "FailedOperation.NamespaceInUse"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_ROLEINUSE = "FailedOperation.RoleInUse"
 //  FAILEDOPERATION_VPCINUSE = "FailedOperation.VpcInUse"
 //  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
@@ -1634,8 +1668,10 @@ func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteC
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_DELETECLUSTER = "FailedOperation.DeleteCluster"
 //  FAILEDOPERATION_NAMESPACEINUSE = "FailedOperation.NamespaceInUse"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_ROLEINUSE = "FailedOperation.RoleInUse"
 //  FAILEDOPERATION_VPCINUSE = "FailedOperation.VpcInUse"
 //  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
@@ -1912,8 +1948,10 @@ func NewDeleteEnvironmentsResponse() (response *DeleteEnvironmentsResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_DELETEENVIRONMENTS = "FailedOperation.DeleteEnvironments"
 //  FAILEDOPERATION_DELETENAMESPACE = "FailedOperation.DeleteNamespace"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_ROLEINUSE = "FailedOperation.RoleInUse"
 //  FAILEDOPERATION_TOPICINUSE = "FailedOperation.TopicInUse"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -1932,8 +1970,10 @@ func (c *Client) DeleteEnvironments(request *DeleteEnvironmentsRequest) (respons
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_DELETEENVIRONMENTS = "FailedOperation.DeleteEnvironments"
 //  FAILEDOPERATION_DELETENAMESPACE = "FailedOperation.DeleteNamespace"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_ROLEINUSE = "FailedOperation.RoleInUse"
 //  FAILEDOPERATION_TOPICINUSE = "FailedOperation.TopicInUse"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -1983,8 +2023,10 @@ func NewDeleteProClusterResponse() (response *DeleteProClusterResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_DELETEENVIRONMENTS = "FailedOperation.DeleteEnvironments"
 //  FAILEDOPERATION_DELETENAMESPACE = "FailedOperation.DeleteNamespace"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_ROLEINUSE = "FailedOperation.RoleInUse"
 //  FAILEDOPERATION_TOPICINUSE = "FailedOperation.TopicInUse"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -2003,8 +2045,10 @@ func (c *Client) DeleteProCluster(request *DeleteProClusterRequest) (response *D
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_DELETEENVIRONMENTS = "FailedOperation.DeleteEnvironments"
 //  FAILEDOPERATION_DELETENAMESPACE = "FailedOperation.DeleteNamespace"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_ROLEINUSE = "FailedOperation.RoleInUse"
 //  FAILEDOPERATION_TOPICINUSE = "FailedOperation.TopicInUse"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -2865,7 +2909,9 @@ func NewDeleteTopicsResponse() (response *DeleteTopicsResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_DELETETOPICS = "FailedOperation.DeleteTopics"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
@@ -2883,7 +2929,9 @@ func (c *Client) DeleteTopics(request *DeleteTopicsRequest) (response *DeleteTop
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_DELETETOPICS = "FailedOperation.DeleteTopics"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
@@ -3223,6 +3271,8 @@ func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
 // 获取集群列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *DescribeClustersResponse, err error) {
     return c.DescribeClustersWithContext(context.Background(), request)
@@ -3232,6 +3282,8 @@ func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *D
 // 获取集群列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DescribeClustersWithContext(ctx context.Context, request *DescribeClustersRequest) (response *DescribeClustersResponse, err error) {
     if request == nil {
@@ -3989,6 +4041,8 @@ func NewDescribePublisherSummaryResponse() (response *DescribePublisherSummaryRe
 // 获取消息生产概览信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DescribePublisherSummary(request *DescribePublisherSummaryRequest) (response *DescribePublisherSummaryResponse, err error) {
     return c.DescribePublisherSummaryWithContext(context.Background(), request)
@@ -3998,6 +4052,8 @@ func (c *Client) DescribePublisherSummary(request *DescribePublisherSummaryReque
 // 获取消息生产概览信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DescribePublisherSummaryWithContext(ctx context.Context, request *DescribePublisherSummaryRequest) (response *DescribePublisherSummaryResponse, err error) {
     if request == nil {
@@ -4038,6 +4094,8 @@ func NewDescribePublishersResponse() (response *DescribePublishersResponse) {
 // 获取生产者信息列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DescribePublishers(request *DescribePublishersRequest) (response *DescribePublishersResponse, err error) {
     return c.DescribePublishersWithContext(context.Background(), request)
@@ -4047,6 +4105,8 @@ func (c *Client) DescribePublishers(request *DescribePublishersRequest) (respons
 // 获取生产者信息列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DescribePublishersWithContext(ctx context.Context, request *DescribePublishersRequest) (response *DescribePublishersResponse, err error) {
     if request == nil {
@@ -4088,6 +4148,8 @@ func NewDescribePulsarProInstanceDetailResponse() (response *DescribePulsarProIn
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -4101,6 +4163,8 @@ func (c *Client) DescribePulsarProInstanceDetail(request *DescribePulsarProInsta
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -4145,6 +4209,8 @@ func NewDescribePulsarProInstancesResponse() (response *DescribePulsarProInstanc
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 func (c *Client) DescribePulsarProInstances(request *DescribePulsarProInstancesRequest) (response *DescribePulsarProInstancesResponse, err error) {
     return c.DescribePulsarProInstancesWithContext(context.Background(), request)
 }
@@ -4154,6 +4220,8 @@ func (c *Client) DescribePulsarProInstances(request *DescribePulsarProInstancesR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 func (c *Client) DescribePulsarProInstancesWithContext(ctx context.Context, request *DescribePulsarProInstancesRequest) (response *DescribePulsarProInstancesResponse, err error) {
     if request == nil {
         request = NewDescribePulsarProInstancesRequest()
@@ -6337,6 +6405,8 @@ func NewDescribeTopicMsgsResponse() (response *DescribeTopicMsgsResponse) {
 // 消息查询
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  LIMITEXCEEDED_MSGTIME = "LimitExceeded.MsgTime"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
@@ -6352,6 +6422,8 @@ func (c *Client) DescribeTopicMsgs(request *DescribeTopicMsgsRequest) (response 
 // 消息查询
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
 //  LIMITEXCEEDED_MSGTIME = "LimitExceeded.MsgTime"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
@@ -6712,7 +6784,9 @@ func NewModifyClusterResponse() (response *ModifyClusterResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_MODIFYCLUSTER = "FailedOperation.ModifyCluster"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  INVALIDPARAMETERVALUE_CLUSTERNAMEDUPLICATION = "InvalidParameterValue.ClusterNameDuplication"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
@@ -6725,7 +6799,9 @@ func (c *Client) ModifyCluster(request *ModifyClusterRequest) (response *ModifyC
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_MODIFYCLUSTER = "FailedOperation.ModifyCluster"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  INVALIDPARAMETERVALUE_CLUSTERNAMEDUPLICATION = "InvalidParameterValue.ClusterNameDuplication"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
@@ -7073,8 +7149,10 @@ func NewModifyPublicNetworkSecurityPolicyResponse() (response *ModifyPublicNetwo
 // 修改pulsar专业版公网安全策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_INVALIDEXISTPUBLICACCESSPOINTERROR = "FailedOperation.InvalidExistPublicAccessPointError"
 //  FAILEDOPERATION_INVALIDWHITELISTERROR = "FailedOperation.InvalidWhiteListError"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  INTERNALERROR = "InternalError"
 func (c *Client) ModifyPublicNetworkSecurityPolicy(request *ModifyPublicNetworkSecurityPolicyRequest) (response *ModifyPublicNetworkSecurityPolicyResponse, err error) {
     return c.ModifyPublicNetworkSecurityPolicyWithContext(context.Background(), request)
@@ -7084,8 +7162,10 @@ func (c *Client) ModifyPublicNetworkSecurityPolicy(request *ModifyPublicNetworkS
 // 修改pulsar专业版公网安全策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_INVALIDEXISTPUBLICACCESSPOINTERROR = "FailedOperation.InvalidExistPublicAccessPointError"
 //  FAILEDOPERATION_INVALIDWHITELISTERROR = "FailedOperation.InvalidWhiteListError"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  INTERNALERROR = "InternalError"
 func (c *Client) ModifyPublicNetworkSecurityPolicyWithContext(ctx context.Context, request *ModifyPublicNetworkSecurityPolicyRequest) (response *ModifyPublicNetworkSecurityPolicyResponse, err error) {
     if request == nil {
@@ -7881,7 +7961,9 @@ func NewModifyTopicResponse() (response *ModifyTopicResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_GETTOPICPARTITIONSFAILED = "FailedOperation.GetTopicPartitionsFailed"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_UPDATETOPIC = "FailedOperation.UpdateTopic"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
@@ -7898,7 +7980,9 @@ func (c *Client) ModifyTopic(request *ModifyTopicRequest) (response *ModifyTopic
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_GETTOPICPARTITIONSFAILED = "FailedOperation.GetTopicPartitionsFailed"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_UPDATETOPIC = "FailedOperation.UpdateTopic"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
@@ -8573,7 +8657,9 @@ func NewSendMsgResponse() (response *SendMsgResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_GETTOPICPARTITIONSFAILED = "FailedOperation.GetTopicPartitionsFailed"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_SENDMSG = "FailedOperation.SendMsg"
 //  FAILEDOPERATION_SENDMSGFAILED = "FailedOperation.SendMsgFailed"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -8592,7 +8678,9 @@ func (c *Client) SendMsg(request *SendMsgRequest) (response *SendMsgResponse, er
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
 //  FAILEDOPERATION_GETTOPICPARTITIONSFAILED = "FailedOperation.GetTopicPartitionsFailed"
+//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_SENDMSG = "FailedOperation.SendMsg"
 //  FAILEDOPERATION_SENDMSGFAILED = "FailedOperation.SendMsgFailed"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"

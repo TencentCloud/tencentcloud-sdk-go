@@ -4600,6 +4600,7 @@ func NewModifyDatabaseACLResponse() (response *ModifyDatabaseACLResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEINUSE_FSACLJOBUNDONE = "ResourceInUse.FsACLJobUnDone"
 func (c *Client) ModifyDatabaseACL(request *ModifyDatabaseACLRequest) (response *ModifyDatabaseACLResponse, err error) {
     return c.ModifyDatabaseACLWithContext(context.Background(), request)
 }
@@ -4612,6 +4613,7 @@ func (c *Client) ModifyDatabaseACL(request *ModifyDatabaseACLRequest) (response 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEINUSE_FSACLJOBUNDONE = "ResourceInUse.FsACLJobUnDone"
 func (c *Client) ModifyDatabaseACLWithContext(ctx context.Context, request *ModifyDatabaseACLRequest) (response *ModifyDatabaseACLResponse, err error) {
     if request == nil {
         request = NewModifyDatabaseACLRequest()
