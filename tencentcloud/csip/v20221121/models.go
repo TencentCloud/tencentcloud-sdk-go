@@ -1244,10 +1244,10 @@ type CVMAssetVO struct {
 	// 资产创建时间
 	AssetCreateTime *string `json:"AssetCreateTime,omitnil,omitempty" name:"AssetCreateTime"`
 
-	// 公网ip
+	// 公网IP
 	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
-	// 私网ip
+	// 私网IP
 	PrivateIp *string `json:"PrivateIp,omitnil,omitempty" name:"PrivateIp"`
 
 	// vpc id
@@ -1277,10 +1277,10 @@ type CVMAssetVO struct {
 	// 子网名
 	SubnetName *string `json:"SubnetName,omitnil,omitempty" name:"SubnetName"`
 
-	// uuid
+	// 主机安全Agent UUID
 	InstanceUuid *string `json:"InstanceUuid,omitnil,omitempty" name:"InstanceUuid"`
 
-	// qquid
+	// 云主机 CVM UUID
 	InstanceQUuid *string `json:"InstanceQUuid,omitnil,omitempty" name:"InstanceQUuid"`
 
 	// os名
@@ -5046,7 +5046,7 @@ type DomainAssetVO struct {
 	// 关联实例类型
 	SourceType *string `json:"SourceType,omitnil,omitempty" name:"SourceType"`
 
-	// memberiD
+	// memberId信息
 	MemberId *string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// cc攻击
@@ -5221,7 +5221,7 @@ type IpAssetListVO struct {
 	// 资产创建时间
 	AssetCreateTime *string `json:"AssetCreateTime,omitnil,omitempty" name:"AssetCreateTime"`
 
-	// 公网ip
+	// 公网IP
 	PublicIp *string `json:"PublicIp,omitnil,omitempty" name:"PublicIp"`
 
 	// 公网ip类型
@@ -5296,7 +5296,7 @@ type IpAssetListVO struct {
 	// eip主键
 	AddressId *string `json:"AddressId,omitnil,omitempty" name:"AddressId"`
 
-	// memberid信息
+	// MemberId信息
 	MemberId *string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 风险服务暴露
@@ -6472,8 +6472,7 @@ func (r *StopRiskCenterTaskResponse) FromJsonString(s string) error {
 }
 
 type SubUserInfo struct {
-	// 主键ID，无业务意义
-	// 仅作为唯一键
+	// 主键ID，无业务意义仅作为唯一键
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// 子账号Appid
@@ -6494,7 +6493,7 @@ type SubUserInfo struct {
 	// 主账号名称
 	OwnerNickName *string `json:"OwnerNickName,omitnil,omitempty" name:"OwnerNickName"`
 
-	// 所属主账号memberid
+	// 所属主账号memberId信息
 	OwnerMemberID *string `json:"OwnerMemberID,omitnil,omitempty" name:"OwnerMemberID"`
 
 	// 账户类型，0为腾讯云账户，1为AWS账户

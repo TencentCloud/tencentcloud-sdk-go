@@ -1534,6 +1534,70 @@ func (r *CreateClusterResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateGroupsSTDRequestParams struct {
+	// 集群名称
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 批量用户组信息
+	Groups []*GroupInfo `json:"Groups,omitnil,omitempty" name:"Groups"`
+}
+
+type CreateGroupsSTDRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群名称
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 批量用户组信息
+	Groups []*GroupInfo `json:"Groups,omitnil,omitempty" name:"Groups"`
+}
+
+func (r *CreateGroupsSTDRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGroupsSTDRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Groups")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGroupsSTDRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGroupsSTDResponseParams struct {
+	// 每个用户组的输出结果
+	Data []*ResultItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateGroupsSTDResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateGroupsSTDResponseParams `json:"Response"`
+}
+
+func (r *CreateGroupsSTDResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGroupsSTDResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateInstanceRequestParams struct {
 	// 产品ID，不同产品ID表示不同的EMR产品版本。取值范围：
 	// 51:表示STARROCKS-V1.4.0
@@ -2152,6 +2216,70 @@ func (r *DeleteAutoScaleStrategyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAutoScaleStrategyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGroupsSTDRequestParams struct {
+	// 集群名称
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 用户组名称数组
+	GroupNames []*string `json:"GroupNames,omitnil,omitempty" name:"GroupNames"`
+}
+
+type DeleteGroupsSTDRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群名称
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 用户组名称数组
+	GroupNames []*string `json:"GroupNames,omitnil,omitempty" name:"GroupNames"`
+}
+
+func (r *DeleteGroupsSTDRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGroupsSTDRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "GroupNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGroupsSTDRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGroupsSTDResponseParams struct {
+	// 删除返回结果
+	Data []*ResultItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteGroupsSTDResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteGroupsSTDResponseParams `json:"Response"`
+}
+
+func (r *DeleteGroupsSTDResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGroupsSTDResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6208,6 +6336,17 @@ type GroupGlobalConfs struct {
 	CurrentSpotPaidNodes *int64 `json:"CurrentSpotPaidNodes,omitnil,omitempty" name:"CurrentSpotPaidNodes"`
 }
 
+type GroupInfo struct {
+	// 组名
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 备注
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 用户列表
+	Users []*string `json:"Users,omitnil,omitempty" name:"Users"`
+}
+
 type HealthStatus struct {
 	// 运行正常
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
@@ -8517,6 +8656,81 @@ func (r *ModifySLInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyUserGroupRequestParams struct {
+	// 用户信息列表
+	Users []*string `json:"Users,omitnil,omitempty" name:"Users"`
+
+	// 用户主组，cvm集群为必填参数，tke集群选填
+	UserGroup *string `json:"UserGroup,omitnil,omitempty" name:"UserGroup"`
+
+	// 用户副组
+	Groups []*string `json:"Groups,omitnil,omitempty" name:"Groups"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type ModifyUserGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户信息列表
+	Users []*string `json:"Users,omitnil,omitempty" name:"Users"`
+
+	// 用户主组，cvm集群为必填参数，tke集群选填
+	UserGroup *string `json:"UserGroup,omitnil,omitempty" name:"UserGroup"`
+
+	// 用户副组
+	Groups []*string `json:"Groups,omitnil,omitempty" name:"Groups"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+func (r *ModifyUserGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Users")
+	delete(f, "UserGroup")
+	delete(f, "Groups")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUserGroupResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyUserGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyUserGroupResponseParams `json:"Response"`
+}
+
+func (r *ModifyUserGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyUserManagerPwdRequestParams struct {
 	// 集群实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -8581,6 +8795,105 @@ func (r *ModifyUserManagerPwdResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyUserManagerPwdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUsersOfGroupSTDRequestParams struct {
+	// 集群名称
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 用户组名
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// 用户列表
+	Users []*string `json:"Users,omitnil,omitempty" name:"Users"`
+
+	// 用户组描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 枚举类, ADD, DELETE, SYNC
+	// 
+	// 
+	// 枚举类说明:
+	// - ADD: 新增的批量用户, 多次新增相同的用户不会报错
+	// - DELETE: 从用户组里删除的批量用户, 删除不存在的用户不会报错
+	// - SYNC: 用于同步整个用户组, 当列表为空时代表清空整个用户组
+	// 默认为SYNC
+	OperateAction *string `json:"OperateAction,omitnil,omitempty" name:"OperateAction"`
+}
+
+type ModifyUsersOfGroupSTDRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群名称
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 用户组名
+	Group *string `json:"Group,omitnil,omitempty" name:"Group"`
+
+	// 用户列表
+	Users []*string `json:"Users,omitnil,omitempty" name:"Users"`
+
+	// 用户组描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 枚举类, ADD, DELETE, SYNC
+	// 
+	// 
+	// 枚举类说明:
+	// - ADD: 新增的批量用户, 多次新增相同的用户不会报错
+	// - DELETE: 从用户组里删除的批量用户, 删除不存在的用户不会报错
+	// - SYNC: 用于同步整个用户组, 当列表为空时代表清空整个用户组
+	// 默认为SYNC
+	OperateAction *string `json:"OperateAction,omitnil,omitempty" name:"OperateAction"`
+}
+
+func (r *ModifyUsersOfGroupSTDRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUsersOfGroupSTDRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Group")
+	delete(f, "Users")
+	delete(f, "Description")
+	delete(f, "OperateAction")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUsersOfGroupSTDRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUsersOfGroupSTDResponseParams struct {
+	// 是否修改成功
+	Data *bool `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyUsersOfGroupSTDResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyUsersOfGroupSTDResponseParams `json:"Response"`
+}
+
+func (r *ModifyUsersOfGroupSTDResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUsersOfGroupSTDResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10114,6 +10427,17 @@ type RestartPolicy struct {
 
 	// 是否是默认策略。
 	IsDefault *string `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+}
+
+type ResultItem struct {
+	// 此处为用户组名
+	Item *string `json:"Item,omitnil,omitempty" name:"Item"`
+
+	// 创建用户组是否成功
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 若是创建失败, 提供失败原因
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
 }
 
 // Predefined struct for user

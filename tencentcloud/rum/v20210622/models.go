@@ -2665,6 +2665,9 @@ type DescribeDataPerformancePageRequestParams struct {
 
 	// 网络状态
 	NetStatus *string `json:"NetStatus,omitnil,omitempty" name:"NetStatus"`
+
+	// 是否返回webvitals数据
+	WebVitals *bool `json:"WebVitals,omitnil,omitempty" name:"WebVitals"`
 }
 
 type DescribeDataPerformancePageRequest struct {
@@ -2738,6 +2741,9 @@ type DescribeDataPerformancePageRequest struct {
 
 	// 网络状态
 	NetStatus *string `json:"NetStatus,omitnil,omitempty" name:"NetStatus"`
+
+	// 是否返回webvitals数据
+	WebVitals *bool `json:"WebVitals,omitnil,omitempty" name:"WebVitals"`
 }
 
 func (r *DescribeDataPerformancePageRequest) ToJsonString() string {
@@ -2775,6 +2781,7 @@ func (r *DescribeDataPerformancePageRequest) FromJsonString(s string) error {
 	delete(f, "CostType")
 	delete(f, "Env")
 	delete(f, "NetStatus")
+	delete(f, "WebVitals")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataPerformancePageRequest has unknown keys!", "")
 	}

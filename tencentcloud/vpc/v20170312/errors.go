@@ -812,6 +812,9 @@ const (
 	// 该带宽包不支持此操作。
 	UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
 
+	// 绑定了防火墙，请先到防火墙页面解绑。
+	UNSUPPORTEDOPERATION_BINDCLOUDFIREWALL = "UnsupportedOperation.BindCloudFirewall"
+
 	// 已绑定EIP。
 	UNSUPPORTEDOPERATION_BINDEIP = "UnsupportedOperation.BindEIP"
 
@@ -1135,6 +1138,9 @@ const (
 
 	// 不支持创建后付费流量计费类型云联网
 	UNSUPPORTEDOPERATION_NOTSUPPORTEDCREATETRAFFICMETERINGTYPECCN = "UnsupportedOperation.NotSupportedCreateTrafficMeteringTypeCcn"
+
+	// 当前VPN网关不支持指定客户端网段类型
+	UNSUPPORTEDOPERATION_NOTSUPPORTEDLOCALADDRESSTYPE = "UnsupportedOperation.NotSupportedLocalAddressType"
 
 	// 此地域没有上线出口二资源，请到北京/广州/南京购买。
 	UNSUPPORTEDOPERATION_NOTSUPPORTEDPURCHASECENTEREGRESSRESOURCE = "UnsupportedOperation.NotSupportedPurchaseCenterEgressResource"

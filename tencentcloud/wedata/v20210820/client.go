@@ -7191,6 +7191,55 @@ func (c *Client) DescribeRealTimeTaskSpeedWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeRealViewSchemaPageRequest() (request *DescribeRealViewSchemaPageRequest) {
+    request = &DescribeRealViewSchemaPageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRealViewSchemaPage")
+    
+    
+    return
+}
+
+func NewDescribeRealViewSchemaPageResponse() (response *DescribeRealViewSchemaPageResponse) {
+    response = &DescribeRealViewSchemaPageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRealViewSchemaPage
+// 数据集成分页获取数据库SCHEMA信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeRealViewSchemaPage(request *DescribeRealViewSchemaPageRequest) (response *DescribeRealViewSchemaPageResponse, err error) {
+    return c.DescribeRealViewSchemaPageWithContext(context.Background(), request)
+}
+
+// DescribeRealViewSchemaPage
+// 数据集成分页获取数据库SCHEMA信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeRealViewSchemaPageWithContext(ctx context.Context, request *DescribeRealViewSchemaPageRequest) (response *DescribeRealViewSchemaPageResponse, err error) {
+    if request == nil {
+        request = NewDescribeRealViewSchemaPageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRealViewSchemaPage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRealViewSchemaPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeReportTaskDetailRequest() (request *DescribeReportTaskDetailRequest) {
     request = &DescribeReportTaskDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

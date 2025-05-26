@@ -665,6 +665,9 @@ const (
 	// 播放列表长度太大。
 	LIMITEXCEEDED_PLAYLIST = "LimitExceeded.PlayList"
 
+	// 播单列表长度超过上限。
+	LIMITEXCEEDED_ROUNDPLAYLIST = "LimitExceeded.RoundPlaylist"
+
 	// 超过播单总数限制。
 	LIMITEXCEEDED_ROUNDPLAYS = "LimitExceeded.RoundPlays"
 

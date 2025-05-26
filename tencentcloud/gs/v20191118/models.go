@@ -3211,6 +3211,9 @@ type RestartAndroidInstancesAppRequestParams struct {
 
 	// 应用包名
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
+
+	// 启动页。建议指定启动页来启动应用，避免启动失败。如果启动页为空，系统尝试根据 PackageName 启动，但不保证成功。
+	Activity *string `json:"Activity,omitnil,omitempty" name:"Activity"`
 }
 
 type RestartAndroidInstancesAppRequest struct {
@@ -3221,6 +3224,9 @@ type RestartAndroidInstancesAppRequest struct {
 
 	// 应用包名
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
+
+	// 启动页。建议指定启动页来启动应用，避免启动失败。如果启动页为空，系统尝试根据 PackageName 启动，但不保证成功。
+	Activity *string `json:"Activity,omitnil,omitempty" name:"Activity"`
 }
 
 func (r *RestartAndroidInstancesAppRequest) ToJsonString() string {
@@ -3237,6 +3243,7 @@ func (r *RestartAndroidInstancesAppRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AndroidInstanceIds")
 	delete(f, "PackageName")
+	delete(f, "Activity")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartAndroidInstancesAppRequest has unknown keys!", "")
 	}
@@ -3432,6 +3439,9 @@ type StartAndroidInstancesAppRequestParams struct {
 
 	// 应用包名
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
+
+	// 启动页。建议指定启动页来启动应用，避免启动失败。如果启动页为空，系统尝试根据 PackageName 启动，但不保证成功。
+	Activity *string `json:"Activity,omitnil,omitempty" name:"Activity"`
 }
 
 type StartAndroidInstancesAppRequest struct {
@@ -3442,6 +3452,9 @@ type StartAndroidInstancesAppRequest struct {
 
 	// 应用包名
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
+
+	// 启动页。建议指定启动页来启动应用，避免启动失败。如果启动页为空，系统尝试根据 PackageName 启动，但不保证成功。
+	Activity *string `json:"Activity,omitnil,omitempty" name:"Activity"`
 }
 
 func (r *StartAndroidInstancesAppRequest) ToJsonString() string {
@@ -3458,6 +3471,7 @@ func (r *StartAndroidInstancesAppRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AndroidInstanceIds")
 	delete(f, "PackageName")
+	delete(f, "Activity")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartAndroidInstancesAppRequest has unknown keys!", "")
 	}

@@ -834,6 +834,15 @@ type CreateInstanceNewRequestParams struct {
 
 	// 开启多可用区后，用户的所有可用区和子网信息
 	UserMultiZoneInfoArr []*NetworkInfo `json:"UserMultiZoneInfoArr,omitnil,omitempty" name:"UserMultiZoneInfoArr"`
+
+	// 是否存算分离
+	IsSSC *bool `json:"IsSSC,omitnil,omitempty" name:"IsSSC"`
+
+	// CU数
+	SSCCU *int64 `json:"SSCCU,omitnil,omitempty" name:"SSCCU"`
+
+	// 缓存盘大小
+	CacheDiskSize *string `json:"CacheDiskSize,omitnil,omitempty" name:"CacheDiskSize"`
 }
 
 type CreateInstanceNewRequest struct {
@@ -889,6 +898,15 @@ type CreateInstanceNewRequest struct {
 
 	// 开启多可用区后，用户的所有可用区和子网信息
 	UserMultiZoneInfoArr []*NetworkInfo `json:"UserMultiZoneInfoArr,omitnil,omitempty" name:"UserMultiZoneInfoArr"`
+
+	// 是否存算分离
+	IsSSC *bool `json:"IsSSC,omitnil,omitempty" name:"IsSSC"`
+
+	// CU数
+	SSCCU *int64 `json:"SSCCU,omitnil,omitempty" name:"SSCCU"`
+
+	// 缓存盘大小
+	CacheDiskSize *string `json:"CacheDiskSize,omitnil,omitempty" name:"CacheDiskSize"`
 }
 
 func (r *CreateInstanceNewRequest) ToJsonString() string {
@@ -919,6 +937,9 @@ func (r *CreateInstanceNewRequest) FromJsonString(s string) error {
 	delete(f, "EnableMultiZones")
 	delete(f, "UserMultiZoneInfos")
 	delete(f, "UserMultiZoneInfoArr")
+	delete(f, "IsSSC")
+	delete(f, "SSCCU")
+	delete(f, "CacheDiskSize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceNewRequest has unknown keys!", "")
 	}

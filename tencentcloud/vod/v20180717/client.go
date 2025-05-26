@@ -7970,7 +7970,7 @@ func NewFastEditMediaResponse() (response *FastEditMediaResponse) {
 //
 // 
 //
-// <font color='red'>注意：</font>通过 ModifyEventConfig 接口启用接收剪辑固化事件通知，固化成功后将会收到一个 PersitenceComplete 类型的事件通知。在收到这个事件通知之前，不应该对原始输入的视频进行删除、降冷等操作，否则拼接剪辑生成的视频播放可能出现异常。
+// <font color='red'>注意：</font>通过 ModifyEventConfig 接口启用接收剪辑固化事件通知，固化成功后将会收到一个 PersistenceComplete 类型的事件通知。在收到这个事件通知之前，不应该对原始输入的视频进行删除、降冷等操作，否则拼接剪辑生成的视频播放可能出现异常。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7989,7 +7989,7 @@ func (c *Client) FastEditMedia(request *FastEditMediaRequest) (response *FastEdi
 //
 // 
 //
-// <font color='red'>注意：</font>通过 ModifyEventConfig 接口启用接收剪辑固化事件通知，固化成功后将会收到一个 PersitenceComplete 类型的事件通知。在收到这个事件通知之前，不应该对原始输入的视频进行删除、降冷等操作，否则拼接剪辑生成的视频播放可能出现异常。
+// <font color='red'>注意：</font>通过 ModifyEventConfig 接口启用接收剪辑固化事件通知，固化成功后将会收到一个 PersistenceComplete 类型的事件通知。在收到这个事件通知之前，不应该对原始输入的视频进行删除、降冷等操作，否则拼接剪辑生成的视频播放可能出现异常。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -8112,6 +8112,7 @@ func NewHandleCurrentPlaylistResponse() (response *HandleCurrentPlaylistResponse
 //  INVALIDPARAMETERVALUE_ROUNDPLAYLIST = "InvalidParameterValue.RoundPlaylist"
 //  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
 //  LIMITEXCEEDED_PLAYLIST = "LimitExceeded.PlayList"
+//  LIMITEXCEEDED_ROUNDPLAYLIST = "LimitExceeded.RoundPlaylist"
 func (c *Client) HandleCurrentPlaylist(request *HandleCurrentPlaylistRequest) (response *HandleCurrentPlaylistResponse, err error) {
     return c.HandleCurrentPlaylistWithContext(context.Background(), request)
 }
@@ -8127,6 +8128,7 @@ func (c *Client) HandleCurrentPlaylist(request *HandleCurrentPlaylistRequest) (r
 //  INVALIDPARAMETERVALUE_ROUNDPLAYLIST = "InvalidParameterValue.RoundPlaylist"
 //  INVALIDPARAMETERVALUE_SUBAPPID = "InvalidParameterValue.SubAppId"
 //  LIMITEXCEEDED_PLAYLIST = "LimitExceeded.PlayList"
+//  LIMITEXCEEDED_ROUNDPLAYLIST = "LimitExceeded.RoundPlaylist"
 func (c *Client) HandleCurrentPlaylistWithContext(ctx context.Context, request *HandleCurrentPlaylistRequest) (response *HandleCurrentPlaylistResponse, err error) {
     if request == nil {
         request = NewHandleCurrentPlaylistRequest()
@@ -8260,7 +8262,7 @@ func NewLiveRealTimeClipResponse() (response *LiveRealTimeClipResponse) {
 //
 // 
 //
-// <font color='red'>注意：</font>如果剪辑时指定进行固化，通过 ModifyEventConfig 接口启用接收剪辑固化事件通知，固化成功后将会收到一个 PersitenceComplete 类型的事件通知。在收到这个事件通知之前，不应该对直播录制视频进行删除、降冷等操作，否则剪辑生成的视频播放可能出现异常。
+// <font color='red'>注意：</font>如果剪辑时指定进行固化，通过 ModifyEventConfig 接口启用接收剪辑固化事件通知，固化成功后将会收到一个 PersistenceComplete 类型的事件通知。在收到这个事件通知之前，不应该对直播录制视频进行删除、降冷等操作，否则剪辑生成的视频播放可能出现异常。
 //
 // 
 //
@@ -8328,7 +8330,7 @@ func (c *Client) LiveRealTimeClip(request *LiveRealTimeClipRequest) (response *L
 //
 // 
 //
-// <font color='red'>注意：</font>如果剪辑时指定进行固化，通过 ModifyEventConfig 接口启用接收剪辑固化事件通知，固化成功后将会收到一个 PersitenceComplete 类型的事件通知。在收到这个事件通知之前，不应该对直播录制视频进行删除、降冷等操作，否则剪辑生成的视频播放可能出现异常。
+// <font color='red'>注意：</font>如果剪辑时指定进行固化，通过 ModifyEventConfig 接口启用接收剪辑固化事件通知，固化成功后将会收到一个 PersistenceComplete 类型的事件通知。在收到这个事件通知之前，不应该对直播录制视频进行删除、降冷等操作，否则剪辑生成的视频播放可能出现异常。
 //
 // 
 //
@@ -12262,7 +12264,7 @@ func NewSimpleHlsClipResponse() (response *SimpleHlsClipResponse) {
 //
 // 
 //
-// <font color='red'>注意：</font>如果剪辑时指定进行固化，通过 ModifyEventConfig 接口启用接收剪辑固化事件通知，固化成功后将会收到一个 PersitenceComplete 类型的事件通知。在收到这个事件通知之前，不应该对原始输入的视频进行删除、降冷等操作，否则剪辑生成的视频播放可能出现异常。
+// <font color='red'>注意：</font>如果剪辑时指定进行固化，通过 ModifyEventConfig 接口启用接收剪辑固化事件通知，固化成功后将会收到一个 PersistenceComplete 类型的事件通知。在收到这个事件通知之前，不应该对原始输入的视频进行删除、降冷等操作，否则剪辑生成的视频播放可能出现异常。
 //
 // 
 //
@@ -12332,7 +12334,7 @@ func (c *Client) SimpleHlsClip(request *SimpleHlsClipRequest) (response *SimpleH
 //
 // 
 //
-// <font color='red'>注意：</font>如果剪辑时指定进行固化，通过 ModifyEventConfig 接口启用接收剪辑固化事件通知，固化成功后将会收到一个 PersitenceComplete 类型的事件通知。在收到这个事件通知之前，不应该对原始输入的视频进行删除、降冷等操作，否则剪辑生成的视频播放可能出现异常。
+// <font color='red'>注意：</font>如果剪辑时指定进行固化，通过 ModifyEventConfig 接口启用接收剪辑固化事件通知，固化成功后将会收到一个 PersistenceComplete 类型的事件通知。在收到这个事件通知之前，不应该对原始输入的视频进行删除、降冷等操作，否则剪辑生成的视频播放可能出现异常。
 //
 // 
 //

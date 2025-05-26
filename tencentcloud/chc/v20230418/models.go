@@ -1369,11 +1369,19 @@ type CustomerReceipt struct {
 	// 自提人电话
 	PickUpStuffContact *string `json:"PickUpStuffContact,omitnil,omitempty" name:"PickUpStuffContact"`
 
-	// 自提人身份证号
+	// 自提人证件号码
 	PickUpStuffIDCard *string `json:"PickUpStuffIDCard,omitnil,omitempty" name:"PickUpStuffIDCard"`
 
 	// 自提时间
 	PickUpTime *string `json:"PickUpTime,omitnil,omitempty" name:"PickUpTime"`
+
+	// 证件类型，非必传，默认为IDENTITY_CARD。
+	// 对应关系如下：IDENTITY_CARD: 身份证,
+	// HONG_KONG_AND_MACAO_PASS: 港澳通行证',
+	// PASSPORT: 护照,
+	// DRIVING_LICENSE: 驾照,
+	// OTHER: 其他
+	IDCardType *string `json:"IDCardType,omitnil,omitempty" name:"IDCardType"`
 }
 
 // Predefined struct for user
@@ -2555,6 +2563,9 @@ type DescribeRacksRequestParams struct {
 
 	// 传入目标服务，返回允许进行此服务的机架列表；可以和Filters一起使用。允许的值：('rackPowerOn', 'rackPowerOff')
 	DstService *string `json:"DstService,omitnil,omitempty" name:"DstService"`
+
+	// 机架名称关键字实现模糊搜索
+	RackName *string `json:"RackName,omitnil,omitempty" name:"RackName"`
 }
 
 type DescribeRacksRequest struct {
@@ -2602,6 +2613,9 @@ type DescribeRacksRequest struct {
 
 	// 传入目标服务，返回允许进行此服务的机架列表；可以和Filters一起使用。允许的值：('rackPowerOn', 'rackPowerOff')
 	DstService *string `json:"DstService,omitnil,omitempty" name:"DstService"`
+
+	// 机架名称关键字实现模糊搜索
+	RackName *string `json:"RackName,omitnil,omitempty" name:"RackName"`
 }
 
 func (r *DescribeRacksRequest) ToJsonString() string {
@@ -2620,6 +2634,7 @@ func (r *DescribeRacksRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Filters")
 	delete(f, "DstService")
+	delete(f, "RackName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRacksRequest has unknown keys!", "")
 	}
@@ -3645,7 +3660,7 @@ type SelfOperation struct {
 	// 联系人员电话
 	StuffContact *string `json:"StuffContact,omitnil,omitempty" name:"StuffContact"`
 
-	// 身份证号
+	// 证件号码
 	StuffIDCard *string `json:"StuffIDCard,omitnil,omitempty" name:"StuffIDCard"`
 
 	// 人员姓名
@@ -3653,6 +3668,14 @@ type SelfOperation struct {
 
 	// 上门时间
 	OperationTime *string `json:"OperationTime,omitnil,omitempty" name:"OperationTime"`
+
+	// 证件类型，非必传，默认为IDENTITY_CARD。
+	// 对应关系如下：IDENTITY_CARD: 身份证,
+	// HONG_KONG_AND_MACAO_PASS: 港澳通行证',
+	// PASSPORT: 护照,
+	// DRIVING_LICENSE: 驾照,
+	// OTHER: 其他
+	IDCardType *string `json:"IDCardType,omitnil,omitempty" name:"IDCardType"`
 }
 
 type ServerModel struct {

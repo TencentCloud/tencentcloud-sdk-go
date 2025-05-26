@@ -32,6 +32,9 @@ const (
 	// 直播录制功能暂未对使用腾讯云点播存储的平台开放。
 	FAILEDOPERATION_RECORDNOTSUPPORT = "FailedOperation.RecordNotSupport"
 
+	// 转推部分失败。
+	FAILEDOPERATION_STARTSTREAMCONNECTPARTLYERR = "FailedOperation.StartStreamConnectPartlyErr"
+
 	// 转推操作失败。
 	FAILEDOPERATION_STREAMCONNECT = "FailedOperation.StreamConnect"
 
@@ -46,6 +49,9 @@ const (
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
+
+	// Id 无效。
+	INVALIDPARAMETER_ID = "InvalidParameter.Id"
 
 	// 平台参数非法。
 	INVALIDPARAMETER_PLATFORM = "InvalidParameter.Platform"

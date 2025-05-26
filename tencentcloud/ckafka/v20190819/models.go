@@ -1540,6 +1540,8 @@ type CreateDatahubTaskRequestParams struct {
 	TransformParam *TransformParam `json:"TransformParam,omitnil,omitempty" name:"TransformParam"`
 
 	// 实例连接参数【已废弃】
+	//
+	// Deprecated: PrivateLinkParam is deprecated.
 	PrivateLinkParam *PrivateLinkParam `json:"PrivateLinkParam,omitnil,omitempty" name:"PrivateLinkParam"`
 
 	// 选择所要绑定的SchemaId
@@ -1553,6 +1555,9 @@ type CreateDatahubTaskRequestParams struct {
 
 	// 标签列表
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 任务描述信息
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type CreateDatahubTaskRequest struct {
@@ -1587,6 +1592,9 @@ type CreateDatahubTaskRequest struct {
 
 	// 标签列表
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 任务描述信息
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *CreateDatahubTaskRequest) ToJsonString() string {
@@ -1611,6 +1619,7 @@ func (r *CreateDatahubTaskRequest) FromJsonString(s string) error {
 	delete(f, "TransformsParam")
 	delete(f, "TaskId")
 	delete(f, "Tags")
+	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDatahubTaskRequest has unknown keys!", "")
 	}
@@ -5659,6 +5668,8 @@ type DescribeInstancesDetailRequestParams struct {
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 已经废弃， 使用InstanceIdList
+	//
+	// Deprecated: InstanceIds is deprecated.
 	InstanceIds *string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 按照实例ID过滤
@@ -5773,6 +5784,8 @@ type DescribeInstancesRequestParams struct {
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 已废弃。匹配标签key值。
+	//
+	// Deprecated: TagKey is deprecated.
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
 
 	// （查询条件）私有网络Id
@@ -7259,7 +7272,7 @@ type EventBusParam struct {
 }
 
 type FailureParam struct {
-	// 类型，DLQ死信队列，IGNORE_ERROR保留，DROP废弃
+	// 类型，DLQ死信队列，IGNORE_ERROR保留，DROP丢弃
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// Ckafka类型死信队列

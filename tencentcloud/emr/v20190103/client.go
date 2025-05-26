@@ -633,6 +633,111 @@ func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateCl
     return
 }
 
+func NewCreateGroupsSTDRequest() (request *CreateGroupsSTDRequest) {
+    request = &CreateGroupsSTDRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "CreateGroupsSTD")
+    
+    
+    return
+}
+
+func NewCreateGroupsSTDResponse() (response *CreateGroupsSTDResponse) {
+    response = &CreateGroupsSTDResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateGroupsSTD
+// 用户管理-批量创建用户组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GETCVMSERVERFAILED = "FailedOperation.GetCvmServerFailed"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_CVMERROR = "InternalError.CvmError"
+//  INTERNALERROR_TRADECGWERROR = "InternalError.TradeCgwError"
+//  INVALIDPARAMETER_HALESSMASTERCOUNT = "InvalidParameter.HALessMasterCount"
+//  INVALIDPARAMETER_INCORRECTMASTERCOUNT = "InvalidParameter.IncorrectMasterCount"
+//  INVALIDPARAMETER_INVALIDALLNODERESOURCESPEC = "InvalidParameter.InvalidAllNodeResourceSpec"
+//  INVALIDPARAMETER_INVALIDCOMPONENT = "InvalidParameter.InvalidComponent"
+//  INVALIDPARAMETER_INVALIDCORECOUNT = "InvalidParameter.InvalidCoreCount"
+//  INVALIDPARAMETER_INVALIDCOREDISKTYPE = "InvalidParameter.InvalidCoreDiskType"
+//  INVALIDPARAMETER_INVALIDCOSBUCKET = "InvalidParameter.InvalidCosBucket"
+//  INVALIDPARAMETER_INVALIDDEPENDSERVICEANDENABLEKERBEROSCONFLICT = "InvalidParameter.InvalidDependServiceAndEnableKerberosConflict"
+//  INVALIDPARAMETER_INVALIDDISKNUM = "InvalidParameter.InvalidDiskNum"
+//  INVALIDPARAMETER_INVALIDINSTANCECHARGETYPE = "InvalidParameter.InvalidInstanceChargeType"
+//  INVALIDPARAMETER_INVALIDINSTANCETYPE = "InvalidParameter.InvalidInstanceType"
+//  INVALIDPARAMETER_INVALIDMASTERDISKTYPE = "InvalidParameter.InvalidMasterDiskType"
+//  INVALIDPARAMETER_INVALIDMETATYPE = "InvalidParameter.InvalidMetaType"
+//  INVALIDPARAMETER_INVALIDPASSWORD = "InvalidParameter.InvalidPassword"
+//  INVALIDPARAMETER_INVALIDPRODUCTVERSION = "InvalidParameter.InvalidProductVersion"
+//  INVALIDPARAMETER_INVALIDRENEWFLAG = "InvalidParameter.InvalidRenewFlag"
+//  INVALIDPARAMETER_INVALIDRESOURCESPEC = "InvalidParameter.InvalidResourceSpec"
+//  INVALIDPARAMETER_INVALIDSCRIPTBOOTSTRAPACTIONCONFIG = "InvalidParameter.InvalidScriptBootstrapActionConfig"
+//  INVALIDPARAMETER_INVALIDSOFTINFO = "InvalidParameter.InvalidSoftInfo"
+//  INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
+//  INVALIDPARAMETER_KERBEROSSUPPORT = "InvalidParameter.KerberosSupport"
+//  RESOURCEINSUFFICIENT_INSTANCEINSUFFICIENT = "ResourceInsufficient.InstanceInsufficient"
+//  RESOURCENOTFOUND_SUBNETNOTFOUND = "ResourceNotFound.SubnetNotFound"
+//  RESOURCESSOLDOUT_CVMSOLDOUT = "ResourcesSoldOut.CvmSoldOut"
+func (c *Client) CreateGroupsSTD(request *CreateGroupsSTDRequest) (response *CreateGroupsSTDResponse, err error) {
+    return c.CreateGroupsSTDWithContext(context.Background(), request)
+}
+
+// CreateGroupsSTD
+// 用户管理-批量创建用户组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GETCVMSERVERFAILED = "FailedOperation.GetCvmServerFailed"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_CVMERROR = "InternalError.CvmError"
+//  INTERNALERROR_TRADECGWERROR = "InternalError.TradeCgwError"
+//  INVALIDPARAMETER_HALESSMASTERCOUNT = "InvalidParameter.HALessMasterCount"
+//  INVALIDPARAMETER_INCORRECTMASTERCOUNT = "InvalidParameter.IncorrectMasterCount"
+//  INVALIDPARAMETER_INVALIDALLNODERESOURCESPEC = "InvalidParameter.InvalidAllNodeResourceSpec"
+//  INVALIDPARAMETER_INVALIDCOMPONENT = "InvalidParameter.InvalidComponent"
+//  INVALIDPARAMETER_INVALIDCORECOUNT = "InvalidParameter.InvalidCoreCount"
+//  INVALIDPARAMETER_INVALIDCOREDISKTYPE = "InvalidParameter.InvalidCoreDiskType"
+//  INVALIDPARAMETER_INVALIDCOSBUCKET = "InvalidParameter.InvalidCosBucket"
+//  INVALIDPARAMETER_INVALIDDEPENDSERVICEANDENABLEKERBEROSCONFLICT = "InvalidParameter.InvalidDependServiceAndEnableKerberosConflict"
+//  INVALIDPARAMETER_INVALIDDISKNUM = "InvalidParameter.InvalidDiskNum"
+//  INVALIDPARAMETER_INVALIDINSTANCECHARGETYPE = "InvalidParameter.InvalidInstanceChargeType"
+//  INVALIDPARAMETER_INVALIDINSTANCETYPE = "InvalidParameter.InvalidInstanceType"
+//  INVALIDPARAMETER_INVALIDMASTERDISKTYPE = "InvalidParameter.InvalidMasterDiskType"
+//  INVALIDPARAMETER_INVALIDMETATYPE = "InvalidParameter.InvalidMetaType"
+//  INVALIDPARAMETER_INVALIDPASSWORD = "InvalidParameter.InvalidPassword"
+//  INVALIDPARAMETER_INVALIDPRODUCTVERSION = "InvalidParameter.InvalidProductVersion"
+//  INVALIDPARAMETER_INVALIDRENEWFLAG = "InvalidParameter.InvalidRenewFlag"
+//  INVALIDPARAMETER_INVALIDRESOURCESPEC = "InvalidParameter.InvalidResourceSpec"
+//  INVALIDPARAMETER_INVALIDSCRIPTBOOTSTRAPACTIONCONFIG = "InvalidParameter.InvalidScriptBootstrapActionConfig"
+//  INVALIDPARAMETER_INVALIDSOFTINFO = "InvalidParameter.InvalidSoftInfo"
+//  INVALIDPARAMETER_INVALIDZONE = "InvalidParameter.InvalidZone"
+//  INVALIDPARAMETER_KERBEROSSUPPORT = "InvalidParameter.KerberosSupport"
+//  RESOURCEINSUFFICIENT_INSTANCEINSUFFICIENT = "ResourceInsufficient.InstanceInsufficient"
+//  RESOURCENOTFOUND_SUBNETNOTFOUND = "ResourceNotFound.SubnetNotFound"
+//  RESOURCESSOLDOUT_CVMSOLDOUT = "ResourcesSoldOut.CvmSoldOut"
+func (c *Client) CreateGroupsSTDWithContext(ctx context.Context, request *CreateGroupsSTDRequest) (response *CreateGroupsSTDResponse, err error) {
+    if request == nil {
+        request = NewCreateGroupsSTDRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGroupsSTD require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGroupsSTDResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateInstanceRequest() (request *CreateInstanceRequest) {
     request = &CreateInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -980,6 +1085,61 @@ func (c *Client) DeleteAutoScaleStrategyWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDeleteAutoScaleStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGroupsSTDRequest() (request *DeleteGroupsSTDRequest) {
+    request = &DeleteGroupsSTDRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DeleteGroupsSTD")
+    
+    
+    return
+}
+
+func NewDeleteGroupsSTDResponse() (response *DeleteGroupsSTDResponse) {
+    response = &DeleteGroupsSTDResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteGroupsSTD
+// 批量删除用户组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INVALIDPARAMETER_INVALIDSTRATEGYTYPE = "InvalidParameter.InvalidStrategyType"
+//  RESOURCENOTFOUND_STRATEGYNOTFOUND = "ResourceNotFound.StrategyNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) DeleteGroupsSTD(request *DeleteGroupsSTDRequest) (response *DeleteGroupsSTDResponse, err error) {
+    return c.DeleteGroupsSTDWithContext(context.Background(), request)
+}
+
+// DeleteGroupsSTD
+// 批量删除用户组
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INVALIDPARAMETER_INVALIDSTRATEGYTYPE = "InvalidParameter.InvalidStrategyType"
+//  RESOURCENOTFOUND_STRATEGYNOTFOUND = "ResourceNotFound.StrategyNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) DeleteGroupsSTDWithContext(ctx context.Context, request *DeleteGroupsSTDRequest) (response *DeleteGroupsSTDResponse, err error) {
+    if request == nil {
+        request = NewDeleteGroupsSTDRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGroupsSTD require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGroupsSTDResponse()
     err = c.Send(request, response)
     return
 }
@@ -4850,6 +5010,65 @@ func (c *Client) ModifySLInstanceBasicWithContext(ctx context.Context, request *
     return
 }
 
+func NewModifyUserGroupRequest() (request *ModifyUserGroupRequest) {
+    request = &ModifyUserGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "ModifyUserGroup")
+    
+    
+    return
+}
+
+func NewModifyUserGroupResponse() (response *ModifyUserGroupResponse) {
+    response = &ModifyUserGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyUserGroup
+// 用户管理-修改用户组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INVALIDPARAMETER_INVALIDJOBFLOW = "InvalidParameter.InvalidJobFlow"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) ModifyUserGroup(request *ModifyUserGroupRequest) (response *ModifyUserGroupResponse, err error) {
+    return c.ModifyUserGroupWithContext(context.Background(), request)
+}
+
+// ModifyUserGroup
+// 用户管理-修改用户组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INVALIDPARAMETER_INVALIDJOBFLOW = "InvalidParameter.InvalidJobFlow"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) ModifyUserGroupWithContext(ctx context.Context, request *ModifyUserGroupRequest) (response *ModifyUserGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyUserGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyUserManagerPwdRequest() (request *ModifyUserManagerPwdRequest) {
     request = &ModifyUserManagerPwdRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4903,6 +5122,63 @@ func (c *Client) ModifyUserManagerPwdWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyUserManagerPwdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyUsersOfGroupSTDRequest() (request *ModifyUsersOfGroupSTDRequest) {
+    request = &ModifyUsersOfGroupSTDRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "ModifyUsersOfGroupSTD")
+    
+    
+    return
+}
+
+func NewModifyUsersOfGroupSTDResponse() (response *ModifyUsersOfGroupSTDResponse) {
+    response = &ModifyUsersOfGroupSTDResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyUsersOfGroupSTD
+// 变更用户组用户信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) ModifyUsersOfGroupSTD(request *ModifyUsersOfGroupSTDRequest) (response *ModifyUsersOfGroupSTDResponse, err error) {
+    return c.ModifyUsersOfGroupSTDWithContext(context.Background(), request)
+}
+
+// ModifyUsersOfGroupSTD
+// 变更用户组用户信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) ModifyUsersOfGroupSTDWithContext(ctx context.Context, request *ModifyUsersOfGroupSTDRequest) (response *ModifyUsersOfGroupSTDResponse, err error) {
+    if request == nil {
+        request = NewModifyUsersOfGroupSTDRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUsersOfGroupSTD require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUsersOfGroupSTDResponse()
     err = c.Send(request, response)
     return
 }

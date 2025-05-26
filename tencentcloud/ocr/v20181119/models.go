@@ -11492,6 +11492,9 @@ type TextVehicleBack struct {
 
 	// 发证机关
 	IssueAuthorityElectronic *string `json:"IssueAuthorityElectronic,omitnil,omitempty" name:"IssueAuthorityElectronic"`
+
+	// 车身颜色
+	CarBodyColor *string `json:"CarBodyColor,omitnil,omitempty" name:"CarBodyColor"`
 }
 
 type TextVehicleFront struct {

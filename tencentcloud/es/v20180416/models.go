@@ -7994,6 +7994,5 @@ type ZoneDetail struct {
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 是否为隐藏可用区
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Hidden *bool `json:"Hidden,omitnil,omitempty" name:"Hidden"`
 }

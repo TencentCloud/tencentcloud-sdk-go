@@ -6700,6 +6700,16 @@ type DatabaseMeta struct {
 	DatabaseGuid *string `json:"DatabaseGuid,omitnil,omitempty" name:"DatabaseGuid"`
 }
 
+type DatabaseSchemaIInfo struct {
+	// schema名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaName *string `json:"SchemaName,omitnil,omitempty" name:"SchemaName"`
+
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginDatabaseName *string `json:"OriginDatabaseName,omitnil,omitempty" name:"OriginDatabaseName"`
+}
+
 type DatasourceBaseInfo struct {
 	// 若数据源列表为绑定数据库，则为db名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -15118,6 +15128,139 @@ func (r *DescribeRealTimeTaskSpeedResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRealTimeTaskSpeedResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRealViewSchemaPageRequestParams struct {
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页记录数
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 数据库名称
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 数据源id
+	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 数据type
+	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 环境信息
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 项目model
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// dev的数据源Id
+	DevDatasourceId *string `json:"DevDatasourceId,omitnil,omitempty" name:"DevDatasourceId"`
+
+	// 过滤字段
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+}
+
+type DescribeRealViewSchemaPageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页记录数
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 数据库名称
+	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
+
+	// 数据源id
+	DatasourceId *string `json:"DatasourceId,omitnil,omitempty" name:"DatasourceId"`
+
+	// 数据type
+	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 环境信息
+	Env *string `json:"Env,omitnil,omitempty" name:"Env"`
+
+	// 项目model
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// dev的数据源Id
+	DevDatasourceId *string `json:"DevDatasourceId,omitnil,omitempty" name:"DevDatasourceId"`
+
+	// 过滤字段
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+}
+
+func (r *DescribeRealViewSchemaPageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRealViewSchemaPageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "DatabaseName")
+	delete(f, "DatasourceId")
+	delete(f, "DataSourceType")
+	delete(f, "ProjectId")
+	delete(f, "Env")
+	delete(f, "Model")
+	delete(f, "DevDatasourceId")
+	delete(f, "Keyword")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRealViewSchemaPageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRealViewSchemaPageResponseParams struct {
+	// 数据库schema信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*DatabaseSchemaIInfo `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页记录数
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 总记录数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 总页数
+	TotalPage *uint64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRealViewSchemaPageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRealViewSchemaPageResponseParams `json:"Response"`
+}
+
+func (r *DescribeRealViewSchemaPageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRealViewSchemaPageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

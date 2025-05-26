@@ -271,7 +271,7 @@ type CreateAutoSnapshotPolicyRequestParams struct {
 	// 快照重复时间点,0-23，小时
 	Hour *string `json:"Hour,omitnil,omitempty" name:"Hour"`
 
-	// 策略名称
+	// 策略名称,限制64个字符数量仅支持输入中文、字母、数字、_或-
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
 	// 快照重复日期，星期一到星期日。 1代表星期一、7代表星期天，与DayOfMonth，IntervalDays 三者选一
@@ -280,7 +280,7 @@ type CreateAutoSnapshotPolicyRequestParams struct {
 	// 快照保留时长，单位天，默认永久0
 	AliveDays *uint64 `json:"AliveDays,omitnil,omitempty" name:"AliveDays"`
 
-	// 快照按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照。与DayOfWeek，IntervalDays 三者选一
+	// 快照按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照；例如1 代表1号；与DayOfWeek，IntervalDays 三者选一
 	DayOfMonth *string `json:"DayOfMonth,omitnil,omitempty" name:"DayOfMonth"`
 
 	// 间隔天数，与DayOfWeek，DayOfMonth 三者选一
@@ -293,7 +293,7 @@ type CreateAutoSnapshotPolicyRequest struct {
 	// 快照重复时间点,0-23，小时
 	Hour *string `json:"Hour,omitnil,omitempty" name:"Hour"`
 
-	// 策略名称
+	// 策略名称,限制64个字符数量仅支持输入中文、字母、数字、_或-
 	PolicyName *string `json:"PolicyName,omitnil,omitempty" name:"PolicyName"`
 
 	// 快照重复日期，星期一到星期日。 1代表星期一、7代表星期天，与DayOfMonth，IntervalDays 三者选一
@@ -302,7 +302,7 @@ type CreateAutoSnapshotPolicyRequest struct {
 	// 快照保留时长，单位天，默认永久0
 	AliveDays *uint64 `json:"AliveDays,omitnil,omitempty" name:"AliveDays"`
 
-	// 快照按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照。与DayOfWeek，IntervalDays 三者选一
+	// 快照按月重复，每月1-31号，选择一天，每月将在这一天自动创建快照；例如1 代表1号；与DayOfWeek，IntervalDays 三者选一
 	DayOfMonth *string `json:"DayOfMonth,omitnil,omitempty" name:"DayOfMonth"`
 
 	// 间隔天数，与DayOfWeek，DayOfMonth 三者选一
@@ -366,7 +366,7 @@ type CreateCfsFileSystemRequestParams struct {
 	// 网络类型，可选值为 VPC，CCN；其中 VPC 为私有网络， CCN 为云联网。通用标准型/性能型请选择VPC，Turbo标准型/性能型请选择CCN。
 	NetInterface *string `json:"NetInterface,omitnil,omitempty" name:"NetInterface"`
 
-	// 权限组 ID,pgroupbasic 是默认权限组
+	// 权限组 ID,pgroupbasic 是默认权限组，通过控制查询权限组列表接口获取[DescribeCfsPGroups](https://cloud.tencent.com/document/product/582/38157)
 	PGroupId *string `json:"PGroupId,omitnil,omitempty" name:"PGroupId"`
 
 	// 文件系统协议类型， 值为 NFS、CIFS、TURBO ; 若留空则默认为 NFS协议，turbo系列必须选择TURBO，不支持NFS、CIFS
@@ -375,10 +375,12 @@ type CreateCfsFileSystemRequestParams struct {
 	// 文件系统存储类型，默认值为 SD ；其中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填.通过查询私有网络接口获取
+	// 私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填.通过查询私有网络接口获取，
+	// [DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网 ID，若网络类型选择的是VPC，该字段为必填。通过查询子网接口获取
+	// 子网 ID，若网络类型选择的是VPC，该字段为必填。通过查询子网接口获取，
+	// [DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 指定IP地址，仅VPC网络支持；若不填写、将在该子网下随机分配 IP，Turbo系列当前不支持指定
@@ -393,7 +395,8 @@ type CreateCfsFileSystemRequestParams struct {
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。用于保证请求幂等性的字符串失效时间为2小时。
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
-	// 云联网ID， 若网络类型选择的是CCN，该字段为必填;通过查询云联网列表接口获取
+	// 云联网ID， 若网络类型选择的是CCN，该字段为必填;通过查询云联网列表接口获取，通过接口
+	// [DescribeCcns](https://cloud.tencent.com/document/product/215/19199)
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
 	// 云联网中CFS使用的网段， 若网络类型选择的是Ccn，该字段为必填，且不能和Ccn中已经绑定的网段冲突
@@ -402,10 +405,12 @@ type CreateCfsFileSystemRequestParams struct {
 	// 文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售20TiB，即20480 GiB；扩容步长20TiB，即20480 GiB。turbo性能型起售10TiB，即10240 GiB；扩容步长10TiB，10240 GiB。
 	Capacity *uint64 `json:"Capacity,omitnil,omitempty" name:"Capacity"`
 
-	// 文件系统快照ID，通过查询快照列表获取该参数
+	// 文件系统快照ID，通过查询快照列表获取该参数，
+	// [DescribeCfsSnapshots](https://cloud.tencent.com/document/product/582/80206)
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
-	// 定期快照策略ID，通过查询快照策略信息获取
+	// 定期快照策略ID，通过查询快照策略信息获取,
+	// [DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/product/582/38157)
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 
 	// 是否开启默认扩容，仅turbo类型文件存储支持
@@ -426,7 +431,7 @@ type CreateCfsFileSystemRequest struct {
 	// 网络类型，可选值为 VPC，CCN；其中 VPC 为私有网络， CCN 为云联网。通用标准型/性能型请选择VPC，Turbo标准型/性能型请选择CCN。
 	NetInterface *string `json:"NetInterface,omitnil,omitempty" name:"NetInterface"`
 
-	// 权限组 ID,pgroupbasic 是默认权限组
+	// 权限组 ID,pgroupbasic 是默认权限组，通过控制查询权限组列表接口获取[DescribeCfsPGroups](https://cloud.tencent.com/document/product/582/38157)
 	PGroupId *string `json:"PGroupId,omitnil,omitempty" name:"PGroupId"`
 
 	// 文件系统协议类型， 值为 NFS、CIFS、TURBO ; 若留空则默认为 NFS协议，turbo系列必须选择TURBO，不支持NFS、CIFS
@@ -435,10 +440,12 @@ type CreateCfsFileSystemRequest struct {
 	// 文件系统存储类型，默认值为 SD ；其中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。
 	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
 
-	// 私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填.通过查询私有网络接口获取
+	// 私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填.通过查询私有网络接口获取，
+	// [DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 子网 ID，若网络类型选择的是VPC，该字段为必填。通过查询子网接口获取
+	// 子网 ID，若网络类型选择的是VPC，该字段为必填。通过查询子网接口获取，
+	// [DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)
 	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
 
 	// 指定IP地址，仅VPC网络支持；若不填写、将在该子网下随机分配 IP，Turbo系列当前不支持指定
@@ -453,7 +460,8 @@ type CreateCfsFileSystemRequest struct {
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。用于保证请求幂等性的字符串失效时间为2小时。
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
 
-	// 云联网ID， 若网络类型选择的是CCN，该字段为必填;通过查询云联网列表接口获取
+	// 云联网ID， 若网络类型选择的是CCN，该字段为必填;通过查询云联网列表接口获取，通过接口
+	// [DescribeCcns](https://cloud.tencent.com/document/product/215/19199)
 	CcnId *string `json:"CcnId,omitnil,omitempty" name:"CcnId"`
 
 	// 云联网中CFS使用的网段， 若网络类型选择的是Ccn，该字段为必填，且不能和Ccn中已经绑定的网段冲突
@@ -462,10 +470,12 @@ type CreateCfsFileSystemRequest struct {
 	// 文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售20TiB，即20480 GiB；扩容步长20TiB，即20480 GiB。turbo性能型起售10TiB，即10240 GiB；扩容步长10TiB，10240 GiB。
 	Capacity *uint64 `json:"Capacity,omitnil,omitempty" name:"Capacity"`
 
-	// 文件系统快照ID，通过查询快照列表获取该参数
+	// 文件系统快照ID，通过查询快照列表获取该参数，
+	// [DescribeCfsSnapshots](https://cloud.tencent.com/document/product/582/80206)
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
-	// 定期快照策略ID，通过查询快照策略信息获取
+	// 定期快照策略ID，通过查询快照策略信息获取,
+	// [DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/product/582/38157)
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 
 	// 是否开启默认扩容，仅turbo类型文件存储支持

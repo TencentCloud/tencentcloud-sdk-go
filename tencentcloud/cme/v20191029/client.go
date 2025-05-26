@@ -1805,6 +1805,7 @@ func NewDescribeVideoEncodingPresetsResponse() (response *DescribeVideoEncodingP
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) DescribeVideoEncodingPresets(request *DescribeVideoEncodingPresetsRequest) (response *DescribeVideoEncodingPresetsResponse, err error) {
@@ -1817,6 +1818,7 @@ func (c *Client) DescribeVideoEncodingPresets(request *DescribeVideoEncodingPres
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) DescribeVideoEncodingPresetsWithContext(ctx context.Context, request *DescribeVideoEncodingPresetsRequest) (response *DescribeVideoEncodingPresetsResponse, err error) {
@@ -2545,6 +2547,7 @@ func NewHandleStreamConnectProjectResponse() (response *HandleStreamConnectProje
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_STARTSTREAMCONNECTPARTLYERR = "FailedOperation.StartStreamConnectPartlyErr"
 //  FAILEDOPERATION_STREAMCONNECT = "FailedOperation.StreamConnect"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -2604,6 +2607,7 @@ func (c *Client) HandleStreamConnectProject(request *HandleStreamConnectProjectR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_STARTSTREAMCONNECTPARTLYERR = "FailedOperation.StartStreamConnectPartlyErr"
 //  FAILEDOPERATION_STREAMCONNECT = "FailedOperation.StreamConnect"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"

@@ -6521,28 +6521,28 @@ type LoadBalancer struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
 
-	// 负载均衡的属性，按位来决定是否开启
-	// 2^0: 删除保护，开启后防止负载均衡被误删除。 
-	// 2^1: 用户不可见，控制负载均衡对用户的可见性。 
-	// 2^2: 阻塞状态，可能用于限制负载均衡的某些操作或流量。 
-	// 2^3: 禁用负载均衡的NAT功能，可能用于特定场景下的流量直接转发。 
-	// 2^4: 封禁状态，可能用于暂停负载均衡服务或限制访问。 
-	// 2^5: 升配标志，可能用于标识负载均衡需要升级配置或性能。 
-	// 2^6: 停止状态，开启后负载均衡暂停服务。 
-	// 2^7: 不使用VPC网关，可能用于绕过VPC网关直接处理流量。 
-	// 2^8: 安全组在TGW（Transit Gateway）中，涉及网络安全策略配置。 
-	// 2^9: 共享限制标志，可能用于控制负载均衡的共享资源限制。 
-	// 2^10: Web应用防火墙（WAF）标志，开启后启用WAF保护。 
-	// 2^11: 域名型负载均衡，标识负载均衡是否基于域名进行流量分发。 
-	// 2^12: IPv6源地址转换（SNAT），用于IPv6网络的源地址处理。 
-	// 2^13: 隐藏域名，可能用于隐私保护或特定场景下不暴露域名。 
-	// 2^14: 巨型帧支持，开启后支持更大的数据帧以提高网络效率。 
-	// 2^15: 四层IP直连无NAT，可能用于四层负载均衡直接转发IP流量。 
-	// 2^16: VPC网关三层服务，可能涉及三层网络服务的网关功能。 
-	// 2^17: IPv6扩展标志，可能用于特定的IPv6功能支持。 
-	// 2^18: IPv6独占标志，可能用于专属IPv6流量处理。 
-	// 2^19: BGP专业版支持，可能涉及高级BGP路由功能。 
-	// 2^20: TOA（TCP Option Address）清理，清除TCP选项中的地址信息。 
+	// 负载均衡的属性，传入字符串数组来决定是否开启
+	// DeleteProtect: 删除保护，开启后防止负载均衡被误删除。 
+	// UserInVisible: 用户不可见，控制负载均衡对用户的可见性。 
+	// BlockStatus: 阻塞状态，用于限制负载均衡的某些操作或流量。 
+	// NoLBNat: 禁用负载均衡的NAT功能，用于特定场景下的流量直接转发。 
+	// BanStatus: 封禁状态，用于暂停负载均衡服务或限制访问。 
+	// ShiftupFlag: 升配标志，用于标识负载均衡需要升级配置或性能。 
+	// Stop: 停止状态，开启后负载均衡暂停服务。 
+	// NoVpcGw: 不使用VPC网关，用于绕过VPC网关直接处理流量。 
+	// SgInTgw: 安全组在TGW（Transit Gateway）中，涉及网络安全策略配置。 
+	// SharedLimitFlag: 共享限制标志，用于控制负载均衡的共享资源限制。 
+	// WafFlag: Web应用防火墙（WAF）标志，开启后启用WAF保护。 
+	// IsDomainCLB: 域名型负载均衡，标识负载均衡是否基于域名进行流量分发。 
+	// IPv6Snat: IPv6源地址转换（SNAT），用于IPv6网络的源地址处理。 
+	// HideDomain: 隐藏域名，用于隐私保护或特定场景下不暴露域名。 
+	// JumboFrame: 巨型帧支持，开启后支持更大的数据帧以提高网络效率。 
+	// NoLBNatL4IPdc: 四层IP直连无NAT，用于四层负载均衡直接转发IP流量。 
+	// VpcGwL3Service: VPC网关三层服务，涉及三层网络服务的网关功能。 
+	// Ipv62Flag: IPv6扩展标志，用于特定的IPv6功能支持。 
+	// Ipv62ExclusiveFlag: IPv6独占标志，用于专属IPv6流量处理。 
+	// BgpPro: BGP Pro 支持。 
+	// ToaClean: TOA（TCP Option Address）清理，清除TCP选项中的地址信息。 
 	AttributeFlags []*string `json:"AttributeFlags,omitnil,omitempty" name:"AttributeFlags"`
 
 	// 负载均衡实例的域名。
