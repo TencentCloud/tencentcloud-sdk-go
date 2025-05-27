@@ -1090,6 +1090,7 @@ func NewCreateDataTransformResponse() (response *CreateDataTransformResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATAFROMTASKCONFLICT = "InvalidParameter.DataFromTaskConflict"
@@ -1111,6 +1112,7 @@ func (c *Client) CreateDataTransform(request *CreateDataTransformRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATAFROMTASKCONFLICT = "InvalidParameter.DataFromTaskConflict"
@@ -5274,6 +5276,7 @@ func NewDescribeScheduledSqlInfoResponse() (response *DescribeScheduledSqlInfoRe
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  OPERATIONDENIED = "OperationDenied"
@@ -5293,6 +5296,7 @@ func (c *Client) DescribeScheduledSqlInfo(request *DescribeScheduledSqlInfoReque
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  OPERATIONDENIED = "OperationDenied"
@@ -5487,6 +5491,7 @@ func NewDescribeTopicsResponse() (response *DescribeTopicsResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -5510,6 +5515,7 @@ func (c *Client) DescribeTopics(request *DescribeTopicsRequest) (response *Descr
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -8252,6 +8258,7 @@ func NewUploadLogResponse() (response *UploadLogResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_MISSINGCONTENT = "FailedOperation.MissingContent"
 //  FAILEDOPERATION_READQPSLIMIT = "FailedOperation.ReadQpsLimit"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  FAILEDOPERATION_TOPICCLOSED = "FailedOperation.TopicClosed"
 //  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
 //  FAILEDOPERATION_WRITEQPSLIMIT = "FailedOperation.WriteQpsLimit"
@@ -8565,6 +8572,7 @@ func (c *Client) UploadLog(request *UploadLogRequest, data []byte) (response *Up
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_MISSINGCONTENT = "FailedOperation.MissingContent"
 //  FAILEDOPERATION_READQPSLIMIT = "FailedOperation.ReadQpsLimit"
+//  FAILEDOPERATION_TIMEOUT = "FailedOperation.Timeout"
 //  FAILEDOPERATION_TOPICCLOSED = "FailedOperation.TopicClosed"
 //  FAILEDOPERATION_TOPICISOLATED = "FailedOperation.TopicIsolated"
 //  FAILEDOPERATION_WRITEQPSLIMIT = "FailedOperation.WriteQpsLimit"

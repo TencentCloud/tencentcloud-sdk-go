@@ -712,7 +712,7 @@ type AllocateAddressesRequestParams struct {
 	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 
 	// Anycast发布域。
-	// <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li><li><b>[已废弃]</b> ANYCAST_ZONE_A：发布域A（已更新为全球发布域）</li><li><b>[已废弃]</b> ANYCAST_ZONE_B：发布域B（已更新为全球发布域）</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
+	// <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
 	AnycastZone *string `json:"AnycastZone,omitnil,omitempty" name:"AnycastZone"`
 
 	// 指定IP地址申请EIP，每个账户每个月只有三次配额
@@ -722,6 +722,8 @@ type AllocateAddressesRequestParams struct {
 	// AnycastEIP是否用于绑定负载均衡。
 	// <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>TRUE：AnycastEIP可绑定对象为负载均衡</li>
 	// <li>FALSE：AnycastEIP可绑定对象为云服务器、NAT网关、高可用虚拟IP等</li></ul>默认值：FALSE。</li></ul>
+	//
+	// Deprecated: ApplicableForCLB is deprecated.
 	ApplicableForCLB *bool `json:"ApplicableForCLB,omitnil,omitempty" name:"ApplicableForCLB"`
 
 	// 需要关联的标签列表。
@@ -793,7 +795,7 @@ type AllocateAddressesRequest struct {
 	AddressType *string `json:"AddressType,omitnil,omitempty" name:"AddressType"`
 
 	// Anycast发布域。
-	// <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li><li><b>[已废弃]</b> ANYCAST_ZONE_A：发布域A（已更新为全球发布域）</li><li><b>[已废弃]</b> ANYCAST_ZONE_B：发布域B（已更新为全球发布域）</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
+	// <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>ANYCAST_ZONE_GLOBAL：全球发布域（需要额外开通Anycast全球加速白名单）</li><li>ANYCAST_ZONE_OVERSEAS：境外发布域</li></ul>默认值：ANYCAST_ZONE_OVERSEAS。</li></ul>
 	AnycastZone *string `json:"AnycastZone,omitnil,omitempty" name:"AnycastZone"`
 
 	// 指定IP地址申请EIP，每个账户每个月只有三次配额
@@ -25425,9 +25427,13 @@ type ModifyAddressesBandwidthRequestParams struct {
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil,omitempty" name:"InternetMaxBandwidthOut"`
 
 	// 包月带宽起始时间(已废弃，输入无效)
+	//
+	// Deprecated: StartTime is deprecated.
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 包月带宽结束时间(已废弃，输入无效)
+	//
+	// Deprecated: EndTime is deprecated.
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 

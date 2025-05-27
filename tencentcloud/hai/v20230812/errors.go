@@ -32,6 +32,9 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 计费异常
+	INTERNALERROR_TRADEERROR = "InternalError.TradeError"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 

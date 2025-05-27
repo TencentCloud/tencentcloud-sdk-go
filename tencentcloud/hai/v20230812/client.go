@@ -566,6 +566,7 @@ func NewInquirePriceRunInstancesResponse() (response *InquirePriceRunInstancesRe
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_APPLICATIONIDNOTFOUND = "InvalidParameterValue.ApplicationIdNotFound"
 //  INVALIDPARAMETERVALUE_BUNDLETYPENOTFOUND = "InvalidParameterValue.BundleTypeNotFound"
@@ -589,6 +590,7 @@ func (c *Client) InquirePriceRunInstances(request *InquirePriceRunInstancesReque
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_APPLICATIONIDNOTFOUND = "InvalidParameterValue.ApplicationIdNotFound"
 //  INVALIDPARAMETERVALUE_BUNDLETYPENOTFOUND = "InvalidParameterValue.BundleTypeNotFound"
@@ -644,6 +646,7 @@ func NewRunInstancesResponse() (response *RunInstancesResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_ARREARSACCOUNTCANNOTRUNINSTANCES = "FailedOperation.ArrearsAccountCannotRunInstances"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
 //  INVALIDPARAMETERVALUE_APPLICATIONIDNOTFOUND = "InvalidParameterValue.ApplicationIdNotFound"
 //  INVALIDPARAMETERVALUE_BUNDLETYPENOTFOUND = "InvalidParameterValue.BundleTypeNotFound"
 //  INVALIDPARAMETERVALUE_DISKSIZEMUSTLARGERTHANAPPLICATIONMINREQUIREDSIZE = "InvalidParameterValue.DiskSizeMustLargerThanApplicationMinRequiredSize"
@@ -672,6 +675,7 @@ func (c *Client) RunInstances(request *RunInstancesRequest) (response *RunInstan
 // 可能返回的错误码:
 //  FAILEDOPERATION_ARREARSACCOUNTCANNOTRUNINSTANCES = "FailedOperation.ArrearsAccountCannotRunInstances"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_TRADEERROR = "InternalError.TradeError"
 //  INVALIDPARAMETERVALUE_APPLICATIONIDNOTFOUND = "InvalidParameterValue.ApplicationIdNotFound"
 //  INVALIDPARAMETERVALUE_BUNDLETYPENOTFOUND = "InvalidParameterValue.BundleTypeNotFound"
 //  INVALIDPARAMETERVALUE_DISKSIZEMUSTLARGERTHANAPPLICATIONMINREQUIREDSIZE = "InvalidParameterValue.DiskSizeMustLargerThanApplicationMinRequiredSize"

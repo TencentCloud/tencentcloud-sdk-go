@@ -5302,7 +5302,6 @@ type LoginActionFlag struct {
 	Mail *uint64 `json:"Mail,omitnil,omitempty" name:"Mail"`
 
 	// 0: 非u2f硬件token 1: u2f硬件token
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	U2FToken *uint64 `json:"U2FToken,omitnil,omitempty" name:"U2FToken"`
 }
 
@@ -5326,7 +5325,6 @@ type LoginActionFlagIntl struct {
 	Mail *uint64 `json:"Mail,omitnil,omitempty" name:"Mail"`
 
 	// u2f硬件token
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	U2FToken *uint64 `json:"U2FToken,omitnil,omitempty" name:"U2FToken"`
 }
 
@@ -5893,11 +5891,9 @@ type SubAccountInfo struct {
 	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NickName *string `json:"NickName,omitnil,omitempty" name:"NickName"`
 }
 

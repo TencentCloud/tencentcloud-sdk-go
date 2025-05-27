@@ -1034,7 +1034,6 @@ type DescribeResourceTagsResponseParams struct {
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 资源标签
@@ -1150,7 +1149,6 @@ type DescribeResourcesByTagsResponseParams struct {
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 每页大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 资源标签
@@ -2404,33 +2402,26 @@ type Project struct {
 
 type ResourceIdTag struct {
 	// 资源唯一标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 标签键值对
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKeyValues []*Tag `json:"TagKeyValues,omitnil,omitempty" name:"TagKeyValues"`
 }
 
 type ResourceTag struct {
 	// 资源所在地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
 
 	// 业务类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 资源前缀
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourcePrefix *string `json:"ResourcePrefix,omitnil,omitempty" name:"ResourcePrefix"`
 
 	// 资源唯一标记
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 资源标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
@@ -2451,7 +2442,6 @@ type Tag struct {
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 
 	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 }
 
@@ -2485,11 +2475,9 @@ type TagResource struct {
 	TagValueMd5 *string `json:"TagValueMd5,omitnil,omitempty" name:"TagValueMd5"`
 
 	// 资源类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 标签类型。取值： Custom：自定义标签。 System：系统标签。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 }
 
@@ -2580,7 +2568,6 @@ type TagWithDelete struct {
 	CanDelete *uint64 `json:"CanDelete,omitnil,omitempty" name:"CanDelete"`
 
 	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Category *string `json:"Category,omitnil,omitempty" name:"Category"`
 }
 

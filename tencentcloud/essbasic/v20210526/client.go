@@ -3586,7 +3586,7 @@ func NewChannelCreateReleaseFlowResponse() (response *ChannelCreateReleaseFlowRe
 //
 // <li>发起解除协议同发起其他企业合同一样，也会参与合同<code>扣费</code>，扣费标准同其他类型合同。</li>
 //
-// <li>在解除协议签署完毕后，原合同及解除协议均变为已解除状态。</li>
+// <li>在解除协议签署完毕后，原合同变为已解除状态。</li>
 //
 // <li>非原合同企业参与人发起解除协议时，需要有<code>解除合同的权限</code>。</li>
 //
@@ -3635,7 +3635,7 @@ func (c *Client) ChannelCreateReleaseFlow(request *ChannelCreateReleaseFlowReque
 //
 // <li>发起解除协议同发起其他企业合同一样，也会参与合同<code>扣费</code>，扣费标准同其他类型合同。</li>
 //
-// <li>在解除协议签署完毕后，原合同及解除协议均变为已解除状态。</li>
+// <li>在解除协议签署完毕后，原合同变为已解除状态。</li>
 //
 // <li>非原合同企业参与人发起解除协议时，需要有<code>解除合同的权限</code>。</li>
 //

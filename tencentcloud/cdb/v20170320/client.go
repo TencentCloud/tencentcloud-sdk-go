@@ -4482,6 +4482,59 @@ func (c *Client) DescribeClusterInfoWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeCpuExpandHistoryRequest() (request *DescribeCpuExpandHistoryRequest) {
+    request = &DescribeCpuExpandHistoryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeCpuExpandHistory")
+    
+    
+    return
+}
+
+func NewDescribeCpuExpandHistoryResponse() (response *DescribeCpuExpandHistoryResponse) {
+    response = &DescribeCpuExpandHistoryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCpuExpandHistory
+// 本接口（DescribeCpuExpandHistory）用于查询扩容历史。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeCpuExpandHistory(request *DescribeCpuExpandHistoryRequest) (response *DescribeCpuExpandHistoryResponse, err error) {
+    return c.DescribeCpuExpandHistoryWithContext(context.Background(), request)
+}
+
+// DescribeCpuExpandHistory
+// 本接口（DescribeCpuExpandHistory）用于查询扩容历史。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeCpuExpandHistoryWithContext(ctx context.Context, request *DescribeCpuExpandHistoryRequest) (response *DescribeCpuExpandHistoryResponse, err error) {
+    if request == nil {
+        request = NewDescribeCpuExpandHistoryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCpuExpandHistory require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCpuExpandHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBFeaturesRequest() (request *DescribeDBFeaturesRequest) {
     request = &DescribeDBFeaturesRequest{
         BaseRequest: &tchttp.BaseRequest{},

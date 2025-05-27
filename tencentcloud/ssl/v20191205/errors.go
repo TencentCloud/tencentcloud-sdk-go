@@ -119,6 +119,9 @@ const (
 	// 证书与私钥不对应。
 	FAILEDOPERATION_CERTIFICATEMISMATCH = "FailedOperation.CertificateMismatch"
 
+	// 该证书已设置成不允许下载。
+	FAILEDOPERATION_CERTIFICATENOTALLOWDOWNLOAD = "FailedOperation.CertificateNotAllowDownload"
+
 	// 证书不可用，请检查后再试。
 	FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
 

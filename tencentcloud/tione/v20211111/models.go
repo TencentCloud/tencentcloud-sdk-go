@@ -6008,6 +6008,12 @@ type Pod struct {
 
 	// 实例的状态信息
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 实例的开始调度时间
+	StartScheduleTime *string `json:"StartScheduleTime,omitnil,omitempty" name:"StartScheduleTime"`
+
+	// 实例状态的补充信息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }
 
 type PodInfo struct {
@@ -6527,6 +6533,10 @@ type Service struct {
 	// 单副本下的实例数，仅在部署类型为DIST时生效，默认1
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstancePerReplicas *string `json:"InstancePerReplicas,omitnil,omitempty" name:"InstancePerReplicas"`
+
+	// 用于监控查询的Source
+	// 枚举值，部分情况下与CreateSource不同，通过该字段兼容
+	MonitorSource *string `json:"MonitorSource,omitnil,omitempty" name:"MonitorSource"`
 }
 
 type ServiceCallInfo struct {
@@ -6716,6 +6726,9 @@ type ServiceGroup struct {
 
 	// 用于监控的创建来源字段
 	MonitorSource *string `json:"MonitorSource,omitnil,omitempty" name:"MonitorSource"`
+
+	// 子用户的 nickname
+	SubUinName *string `json:"SubUinName,omitnil,omitempty" name:"SubUinName"`
 }
 
 type ServiceInfo struct {

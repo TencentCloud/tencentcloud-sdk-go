@@ -648,6 +648,24 @@ type BindDeviceResourceRequestParams struct {
 
 	// 网络域ID
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// K8S集群托管账号维度。1-集群，2-命名空间，3-工作负载
+	ManageDimension *uint64 `json:"ManageDimension,omitnil,omitempty" name:"ManageDimension"`
+
+	// K8S集群托管账号id
+	ManageAccountId *int64 `json:"ManageAccountId,omitnil,omitempty" name:"ManageAccountId"`
+
+	// K8S集群托管账号名称
+	ManageAccount *string `json:"ManageAccount,omitnil,omitempty" name:"ManageAccount"`
+
+	// K8S集群托管账号凭证
+	ManageKubeconfig *string `json:"ManageKubeconfig,omitnil,omitempty" name:"ManageKubeconfig"`
+
+	// K8S集群托管的namespace
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// K8S集群托管的workload
+	Workload *string `json:"Workload,omitnil,omitempty" name:"Workload"`
 }
 
 type BindDeviceResourceRequest struct {
@@ -661,6 +679,24 @@ type BindDeviceResourceRequest struct {
 
 	// 网络域ID
 	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// K8S集群托管账号维度。1-集群，2-命名空间，3-工作负载
+	ManageDimension *uint64 `json:"ManageDimension,omitnil,omitempty" name:"ManageDimension"`
+
+	// K8S集群托管账号id
+	ManageAccountId *int64 `json:"ManageAccountId,omitnil,omitempty" name:"ManageAccountId"`
+
+	// K8S集群托管账号名称
+	ManageAccount *string `json:"ManageAccount,omitnil,omitempty" name:"ManageAccount"`
+
+	// K8S集群托管账号凭证
+	ManageKubeconfig *string `json:"ManageKubeconfig,omitnil,omitempty" name:"ManageKubeconfig"`
+
+	// K8S集群托管的namespace
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// K8S集群托管的workload
+	Workload *string `json:"Workload,omitnil,omitempty" name:"Workload"`
 }
 
 func (r *BindDeviceResourceRequest) ToJsonString() string {
@@ -678,6 +714,12 @@ func (r *BindDeviceResourceRequest) FromJsonString(s string) error {
 	delete(f, "DeviceIdSet")
 	delete(f, "ResourceId")
 	delete(f, "DomainId")
+	delete(f, "ManageDimension")
+	delete(f, "ManageAccountId")
+	delete(f, "ManageAccount")
+	delete(f, "ManageKubeconfig")
+	delete(f, "Namespace")
+	delete(f, "Workload")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindDeviceResourceRequest has unknown keys!", "")
 	}
@@ -1707,6 +1749,9 @@ type CreateResourceRequestParams struct {
 
 	// 0非试用版，1试用版
 	Trial *uint64 `json:"Trial,omitnil,omitempty" name:"Trial"`
+
+	// 是否共享clb，0：不共享，1：共享
+	ShareClb *uint64 `json:"ShareClb,omitnil,omitempty" name:"ShareClb"`
 }
 
 type CreateResourceRequest struct {
@@ -1744,6 +1789,9 @@ type CreateResourceRequest struct {
 
 	// 0非试用版，1试用版
 	Trial *uint64 `json:"Trial,omitnil,omitempty" name:"Trial"`
+
+	// 是否共享clb，0：不共享，1：共享
+	ShareClb *uint64 `json:"ShareClb,omitnil,omitempty" name:"ShareClb"`
 }
 
 func (r *CreateResourceRequest) ToJsonString() string {
@@ -1769,6 +1817,7 @@ func (r *CreateResourceRequest) FromJsonString(s string) error {
 	delete(f, "AutoRenewFlag")
 	delete(f, "DeployZone")
 	delete(f, "Trial")
+	delete(f, "ShareClb")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateResourceRequest has unknown keys!", "")
 	}
@@ -4688,6 +4737,24 @@ type Device struct {
 
 	// IOA侧的资源ID
 	IOAId *int64 `json:"IOAId,omitnil,omitempty" name:"IOAId"`
+
+	// K8S集群托管维度。1-集群，2-命名空间，3-工作负载
+	ManageDimension *uint64 `json:"ManageDimension,omitnil,omitempty" name:"ManageDimension"`
+
+	// K8S集群托管账号id	
+	ManageAccountId *uint64 `json:"ManageAccountId,omitnil,omitempty" name:"ManageAccountId"`
+
+	// K8S集群命名空间	
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// K8S集群工作负载	
+	Workload *string `json:"Workload,omitnil,omitempty" name:"Workload"`
+
+	// K8S集群pod已同步数量
+	SyncPodCount *uint64 `json:"SyncPodCount,omitnil,omitempty" name:"SyncPodCount"`
+
+	// K8S集群pod总数量	
+	TotalPodCount *uint64 `json:"TotalPodCount,omitnil,omitempty" name:"TotalPodCount"`
 }
 
 type DeviceAccount struct {
@@ -4705,6 +4772,12 @@ type DeviceAccount struct {
 
 	// true-已托管私钥，false-未托管私钥
 	BoundPrivateKey *bool `json:"BoundPrivateKey,omitnil,omitempty" name:"BoundPrivateKey"`
+
+	// 是否托管凭证, true-托管，false-未托管
+	BoundKubeconfig *bool `json:"BoundKubeconfig,omitnil,omitempty" name:"BoundKubeconfig"`
+
+	// 是否为k8s资产管理账号	
+	IsK8SManageAccount *bool `json:"IsK8SManageAccount,omitnil,omitempty" name:"IsK8SManageAccount"`
 }
 
 type Domain struct {
@@ -6456,6 +6529,9 @@ type Resource struct {
 
 	//  零信任堡垒机带宽扩展包个数。一个扩展包表示4M带宽
 	PackageIOABandwidth *uint64 `json:"PackageIOABandwidth,omitnil,omitempty" name:"PackageIOABandwidth"`
+
+	// 堡垒机实例对应的零信任实例id
+	IOAResourceId *string `json:"IOAResourceId,omitnil,omitempty" name:"IOAResourceId"`
 }
 
 type RunChangePwdTaskDetail struct {
@@ -6972,6 +7048,9 @@ type SearchCommandResult struct {
 
 	// 签名值
 	SignValue *string `json:"SignValue,omitnil,omitempty" name:"SignValue"`
+
+	// 资产类型
+	DeviceKind *string `json:"DeviceKind,omitnil,omitempty" name:"DeviceKind"`
 }
 
 // Predefined struct for user
@@ -7881,6 +7960,18 @@ type SessionResult struct {
 
 	// 回放类型 默认0, 1-rfb 2-mp4 3-ssh
 	ReplayType *uint64 `json:"ReplayType,omitnil,omitempty" name:"ReplayType"`
+
+	// 会话资产类型
+	DeviceKind *string `json:"DeviceKind,omitnil,omitempty" name:"DeviceKind"`
+
+	// K8S集群命名空间
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// K8S集群工作负载
+	Workload *string `json:"Workload,omitnil,omitempty" name:"Workload"`
+
+	// K8S集群容器名称
+	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
 }
 
 type TagFilter struct {

@@ -96,7 +96,7 @@ type Application struct {
 
 // Predefined struct for user
 type AttachInstancesRequestParams struct {
-	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// 加入计算环境实例列表，每次请求的实例的上限为100。
@@ -106,7 +106,7 @@ type AttachInstancesRequestParams struct {
 type AttachInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// 加入计算环境实例列表，每次请求的实例的上限为100。
@@ -501,14 +501,14 @@ type DataDisk struct {
 
 // Predefined struct for user
 type DeleteComputeEnvRequestParams struct {
-	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取，不能对状态处于删除中或者存在计算实例未销毁的环境发起删除动作。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 }
 
 type DeleteComputeEnvRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取，不能对状态处于删除中或者存在计算实例未销毁的环境发起删除动作。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 }
 
@@ -732,7 +732,7 @@ func (r *DescribeAvailableCvmInstanceTypesResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeComputeEnvActivitiesRequestParams struct {
-	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// 偏移量，默认为0.
@@ -741,15 +741,14 @@ type DescribeComputeEnvActivitiesRequestParams struct {
 	// 返回数量，默认值20，最大值100.
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件
-	// <li> compute-node-id - String - 是否必填：否 -（过滤条件）按照计算节点ID过滤。</li>
+	// 过滤条件<li> compute-node-id - String - 是否必填：否 -（过滤条件）按照计算节点ID过滤，节点ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。</li>
 	Filters *Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeComputeEnvActivitiesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// 偏移量，默认为0.
@@ -758,8 +757,7 @@ type DescribeComputeEnvActivitiesRequest struct {
 	// 返回数量，默认值20，最大值100.
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 过滤条件
-	// <li> compute-node-id - String - 是否必填：否 -（过滤条件）按照计算节点ID过滤。</li>
+	// 过滤条件<li> compute-node-id - String - 是否必填：否 -（过滤条件）按照计算节点ID过滤，节点ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。</li>
 	Filters *Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -903,7 +901,7 @@ func (r *DescribeComputeEnvCreateInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeComputeEnvCreateInfosRequestParams struct {
-	// 计算环境ID列表，与Filters参数不能同时指定，最大限制100。环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+	// 计算环境ID列表，与Filters参数不能同时指定，最大限制100，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
 	EnvIds []*string `json:"EnvIds,omitnil,omitempty" name:"EnvIds"`
 
 	// 过滤条件<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤，可用区通过调用接口 [DescribeZones](https://cloud.tencent.com/document/api/213/15707)获取。</li><li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li><li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>与EnvIds参数不能同时指定。
@@ -919,7 +917,7 @@ type DescribeComputeEnvCreateInfosRequestParams struct {
 type DescribeComputeEnvCreateInfosRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算环境ID列表，与Filters参数不能同时指定，最大限制100。环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+	// 计算环境ID列表，与Filters参数不能同时指定，最大限制100，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
 	EnvIds []*string `json:"EnvIds,omitnil,omitempty" name:"EnvIds"`
 
 	// 过滤条件<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤，可用区通过调用接口 [DescribeZones](https://cloud.tencent.com/document/api/213/15707)获取。</li><li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li><li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li>与EnvIds参数不能同时指定。
@@ -984,14 +982,14 @@ func (r *DescribeComputeEnvCreateInfosResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeComputeEnvRequestParams struct {
-	// 计算环境ID
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 }
 
 type DescribeComputeEnvRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算环境ID
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 }
 
@@ -1075,7 +1073,7 @@ func (r *DescribeComputeEnvResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeComputeEnvsRequestParams struct {
-	// 计算环境ID列表，与Filters参数不能同时指定。最大数量上限100，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+	// 计算环境ID列表，与Filters参数不能同时指定。最大数量上限100。
 	EnvIds []*string `json:"EnvIds,omitnil,omitempty" name:"EnvIds"`
 
 	// 过滤条件<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤，可用区通过调用接口 [DescribeZones](https://cloud.tencent.com/document/api/213/15707)获取。</li><li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li><li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li><li> resource-type - String - 是否必填：否 -（过滤条件）按照计算资源类型过滤，取值CVM或者CPM(黑石)。</li><li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li><li>tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li><li>tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>与EnvIds参数不能同时指定。
@@ -1091,7 +1089,7 @@ type DescribeComputeEnvsRequestParams struct {
 type DescribeComputeEnvsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算环境ID列表，与Filters参数不能同时指定。最大数量上限100，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+	// 计算环境ID列表，与Filters参数不能同时指定。最大数量上限100。
 	EnvIds []*string `json:"EnvIds,omitnil,omitempty" name:"EnvIds"`
 
 	// 过滤条件<li> zone - String - 是否必填：否 -（过滤条件）按照可用区过滤，可用区通过调用接口 [DescribeZones](https://cloud.tencent.com/document/api/213/15707)获取。</li><li> env-id - String - 是否必填：否 -（过滤条件）按照计算环境ID过滤。</li><li> env-name - String - 是否必填：否 -（过滤条件）按照计算环境名称过滤。</li><li> resource-type - String - 是否必填：否 -（过滤条件）按照计算资源类型过滤，取值CVM或者CPM(黑石)。</li><li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li><li>tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li><li>tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。</li>与EnvIds参数不能同时指定。
@@ -1870,7 +1868,7 @@ func (r *DescribeTaskTemplatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DetachInstancesRequestParams struct {
-	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// 实例ID列表，实例ID通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728)获取。
@@ -1880,7 +1878,7 @@ type DetachInstancesRequestParams struct {
 type DetachInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// 实例ID列表，实例ID通过调用接口 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728)获取。
@@ -2068,10 +2066,10 @@ type InputMapping struct {
 }
 
 type Instance struct {
-	// 实例ID
+	// 实例ID，可通过调用接口[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 镜像ID
+	// 镜像ID，可通过调用接口[DescribeImages](https://cloud.tencent.com/document/product/213/15715)获取。
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
 
 	// 实例登录设置。
@@ -2379,7 +2377,7 @@ type LoginSettings struct {
 
 // Predefined struct for user
 type ModifyComputeEnvRequestParams struct {
-	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// 计算节点期望个数，最大上限2000。
@@ -2398,7 +2396,7 @@ type ModifyComputeEnvRequestParams struct {
 type ModifyComputeEnvRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// 计算节点期望个数，最大上限2000。
@@ -3093,7 +3091,7 @@ type TaskView struct {
 
 // Predefined struct for user
 type TerminateComputeNodeRequestParams struct {
-	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// 计算节点ID，节点ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
@@ -3103,7 +3101,7 @@ type TerminateComputeNodeRequestParams struct {
 type TerminateComputeNodeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。
+	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取。
 	EnvId *string `json:"EnvId,omitnil,omitempty" name:"EnvId"`
 
 	// 计算节点ID，节点ID通过调用接口 [DescribeComputeEnv](https://cloud.tencent.com/document/api/599/15892)获取。

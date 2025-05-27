@@ -20,6 +20,17 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AddressUnsubscribeConfigData struct {
+	// 发信地址
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// 退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+	UnsubscribeConfig *string `json:"UnsubscribeConfig,omitnil,omitempty" name:"UnsubscribeConfig"`
+
+	// 0:关闭，1:开启
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
 type Attachment struct {
 	// 附件名称，最大支持255个字符长度，不支持部分附件类型，详情请参考[附件类型](https://cloud.tencent.com/document/product/1288/51951)。
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
@@ -1361,6 +1372,73 @@ func (r *GetStatisticsReportResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetStatisticsReportResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAddressUnsubscribeConfigRequestParams struct {
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 拉取最大条数，不超过100
+	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type ListAddressUnsubscribeConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 拉取最大条数，不超过100
+	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *ListAddressUnsubscribeConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAddressUnsubscribeConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListAddressUnsubscribeConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListAddressUnsubscribeConfigResponseParams struct {
+	// 地址级退订配置
+	AddressUnsubscribeConfigList []*AddressUnsubscribeConfigData `json:"AddressUnsubscribeConfigList,omitnil,omitempty" name:"AddressUnsubscribeConfigList"`
+
+	// 总数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListAddressUnsubscribeConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ListAddressUnsubscribeConfigResponseParams `json:"Response"`
+}
+
+func (r *ListAddressUnsubscribeConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListAddressUnsubscribeConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

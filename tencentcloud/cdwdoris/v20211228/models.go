@@ -842,7 +842,12 @@ type CreateInstanceNewRequestParams struct {
 	SSCCU *int64 `json:"SSCCU,omitnil,omitempty" name:"SSCCU"`
 
 	// 缓存盘大小
+	//
+	// Deprecated: CacheDiskSize is deprecated.
 	CacheDiskSize *string `json:"CacheDiskSize,omitnil,omitempty" name:"CacheDiskSize"`
+
+	// 缓存盘大小
+	CacheDataDiskSize *int64 `json:"CacheDataDiskSize,omitnil,omitempty" name:"CacheDataDiskSize"`
 }
 
 type CreateInstanceNewRequest struct {
@@ -907,6 +912,9 @@ type CreateInstanceNewRequest struct {
 
 	// 缓存盘大小
 	CacheDiskSize *string `json:"CacheDiskSize,omitnil,omitempty" name:"CacheDiskSize"`
+
+	// 缓存盘大小
+	CacheDataDiskSize *int64 `json:"CacheDataDiskSize,omitnil,omitempty" name:"CacheDataDiskSize"`
 }
 
 func (r *CreateInstanceNewRequest) ToJsonString() string {
@@ -940,6 +948,7 @@ func (r *CreateInstanceNewRequest) FromJsonString(s string) error {
 	delete(f, "IsSSC")
 	delete(f, "SSCCU")
 	delete(f, "CacheDiskSize")
+	delete(f, "CacheDataDiskSize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceNewRequest has unknown keys!", "")
 	}

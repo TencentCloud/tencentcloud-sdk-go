@@ -1219,6 +1219,65 @@ func (c *Client) GetStatisticsReportWithContext(ctx context.Context, request *Ge
     return
 }
 
+func NewListAddressUnsubscribeConfigRequest() (request *ListAddressUnsubscribeConfigRequest) {
+    request = &ListAddressUnsubscribeConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ses", APIVersion, "ListAddressUnsubscribeConfig")
+    
+    
+    return
+}
+
+func NewListAddressUnsubscribeConfigResponse() (response *ListAddressUnsubscribeConfigResponse) {
+    response = &ListAddressUnsubscribeConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListAddressUnsubscribeConfig
+// 获取地址级退订配置列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_WRONGDATE = "InvalidParameterValue.WrongDate"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) ListAddressUnsubscribeConfig(request *ListAddressUnsubscribeConfigRequest) (response *ListAddressUnsubscribeConfigResponse, err error) {
+    return c.ListAddressUnsubscribeConfigWithContext(context.Background(), request)
+}
+
+// ListAddressUnsubscribeConfig
+// 获取地址级退订配置列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_WRONGDATE = "InvalidParameterValue.WrongDate"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) ListAddressUnsubscribeConfigWithContext(ctx context.Context, request *ListAddressUnsubscribeConfigRequest) (response *ListAddressUnsubscribeConfigResponse, err error) {
+    if request == nil {
+        request = NewListAddressUnsubscribeConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListAddressUnsubscribeConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListAddressUnsubscribeConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListBlackEmailAddressRequest() (request *ListBlackEmailAddressRequest) {
     request = &ListBlackEmailAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -10005,6 +10005,9 @@ type DescribeStreamLinkFlowMediaStatisticsRequestParams struct {
 	// 统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
 	// UTC时间，如'2020-01-01T12:00:00Z'。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 对端客户端或者服务端的IP地址
+	RemoteIp *string `json:"RemoteIp,omitnil,omitempty" name:"RemoteIp"`
 }
 
 type DescribeStreamLinkFlowMediaStatisticsRequest struct {
@@ -10032,6 +10035,9 @@ type DescribeStreamLinkFlowMediaStatisticsRequest struct {
 	// 统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
 	// UTC时间，如'2020-01-01T12:00:00Z'。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 对端客户端或者服务端的IP地址
+	RemoteIp *string `json:"RemoteIp,omitnil,omitempty" name:"RemoteIp"`
 }
 
 func (r *DescribeStreamLinkFlowMediaStatisticsRequest) ToJsonString() string {
@@ -10053,6 +10059,7 @@ func (r *DescribeStreamLinkFlowMediaStatisticsRequest) FromJsonString(s string) 
 	delete(f, "Period")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "RemoteIp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamLinkFlowMediaStatisticsRequest has unknown keys!", "")
 	}
@@ -10239,6 +10246,9 @@ type DescribeStreamLinkFlowSRTStatisticsRequestParams struct {
 
 	// 查询间隔，可选[5s|1min|5min|15min]。
 	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 对端客户端或者服务端的IP地址
+	RemoteIp *string `json:"RemoteIp,omitnil,omitempty" name:"RemoteIp"`
 }
 
 type DescribeStreamLinkFlowSRTStatisticsRequest struct {
@@ -10266,6 +10276,9 @@ type DescribeStreamLinkFlowSRTStatisticsRequest struct {
 
 	// 查询间隔，可选[5s|1min|5min|15min]。
 	Period *string `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 对端客户端或者服务端的IP地址
+	RemoteIp *string `json:"RemoteIp,omitnil,omitempty" name:"RemoteIp"`
 }
 
 func (r *DescribeStreamLinkFlowSRTStatisticsRequest) ToJsonString() string {
@@ -10287,6 +10300,7 @@ func (r *DescribeStreamLinkFlowSRTStatisticsRequest) FromJsonString(s string) er
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "Period")
+	delete(f, "RemoteIp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamLinkFlowSRTStatisticsRequest has unknown keys!", "")
 	}
@@ -10342,6 +10356,9 @@ type DescribeStreamLinkFlowStatisticsRequestParams struct {
 	// 统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
 	// UTC时间，如'2020-01-01T12:00:00Z'。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 对端客户端或者服务端的IP地址
+	RemoteIp *string `json:"RemoteIp,omitnil,omitempty" name:"RemoteIp"`
 }
 
 type DescribeStreamLinkFlowStatisticsRequest struct {
@@ -10369,6 +10386,9 @@ type DescribeStreamLinkFlowStatisticsRequest struct {
 	// 统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
 	// UTC时间，如'2020-01-01T12:00:00Z'。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 对端客户端或者服务端的IP地址
+	RemoteIp *string `json:"RemoteIp,omitnil,omitempty" name:"RemoteIp"`
 }
 
 func (r *DescribeStreamLinkFlowStatisticsRequest) ToJsonString() string {
@@ -10390,6 +10410,7 @@ func (r *DescribeStreamLinkFlowStatisticsRequest) FromJsonString(s string) error
 	delete(f, "Period")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "RemoteIp")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamLinkFlowStatisticsRequest has unknown keys!", "")
 	}

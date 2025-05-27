@@ -1932,6 +1932,7 @@ func NewDescribeDownloadCertificateUrlResponse() (response *DescribeDownloadCert
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CERTIFICATEDOWNLOADSERVICETYPENOTSUPPORT = "FailedOperation.CertificateDownloadServiceTypeNotSupport"
+//  FAILEDOPERATION_CERTIFICATENOTALLOWDOWNLOAD = "FailedOperation.CertificateNotAllowDownload"
 //  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
 //  FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWDOWNLOAD = "FailedOperation.CertificateStatusNotAllowDownload"
 //  FAILEDOPERATION_CERTIFICATETYPEINFONOTFOUND = "FailedOperation.CertificateTypeInfoNotFound"
@@ -1945,6 +1946,7 @@ func (c *Client) DescribeDownloadCertificateUrl(request *DescribeDownloadCertifi
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CERTIFICATEDOWNLOADSERVICETYPENOTSUPPORT = "FailedOperation.CertificateDownloadServiceTypeNotSupport"
+//  FAILEDOPERATION_CERTIFICATENOTALLOWDOWNLOAD = "FailedOperation.CertificateNotAllowDownload"
 //  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
 //  FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWDOWNLOAD = "FailedOperation.CertificateStatusNotAllowDownload"
 //  FAILEDOPERATION_CERTIFICATETYPEINFONOTFOUND = "FailedOperation.CertificateTypeInfoNotFound"

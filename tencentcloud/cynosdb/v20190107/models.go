@@ -939,6 +939,9 @@ type BizTaskInfo struct {
 
 	// 任务进度信息
 	TaskProgressInfo *TaskProgressInfo `json:"TaskProgressInfo,omitnil,omitempty" name:"TaskProgressInfo"`
+
+	// 全球数据库网络任务
+	GdnTaskInfo *GdnTaskInfo `json:"GdnTaskInfo,omitnil,omitempty" name:"GdnTaskInfo"`
 }
 
 type BizTaskModifyInstanceParam struct {
@@ -3347,6 +3350,15 @@ type CynosdbClusterDetail struct {
 	// 从集群 - standby
 	// 如为空，该字段无效
 	GdnRole *string `json:"GdnRole,omitnil,omitempty" name:"GdnRole"`
+
+	// 二级存储使用量，单位：G
+	UsedArchiveStorage *int64 `json:"UsedArchiveStorage,omitnil,omitempty" name:"UsedArchiveStorage"`
+
+	// 归档状态，枚举值<li>normal:正常</li><li>archiving:归档中</li><li>resuming:恢复中</li><li>archived :已归档</li>
+	ArchiveStatus *string `json:"ArchiveStatus,omitnil,omitempty" name:"ArchiveStatus"`
+
+	// 归档进度，百分比。
+	ArchiveProgress *int64 `json:"ArchiveProgress,omitnil,omitempty" name:"ArchiveProgress"`
 }
 
 type CynosdbErrorLogItem struct {
@@ -8703,6 +8715,9 @@ type DescribeServerlessStrategyResponseParams struct {
 	// 集群是否允许向下缩容，可选范围<li>yes</li><li>no</li>
 	AutoScaleDown *string `json:"AutoScaleDown,omitnil,omitempty" name:"AutoScaleDown"`
 
+	// 是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
+	AutoArchive *string `json:"AutoArchive,omitnil,omitempty" name:"AutoArchive"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -9469,6 +9484,29 @@ func (r *ExportResourcePackageDeductDetailsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ExportResourcePackageDeductDetailsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type GdnTaskInfo struct {
+	// 全球数据库唯一标识
+	GdnId *string `json:"GdnId,omitnil,omitempty" name:"GdnId"`
+
+	// 全球数据库唯一别名
+	GdnName *string `json:"GdnName,omitnil,omitempty" name:"GdnName"`
+
+	// 主集群ID
+	PrimaryClusterId *string `json:"PrimaryClusterId,omitnil,omitempty" name:"PrimaryClusterId"`
+
+	// 主集群所在地域
+	PrimaryClusterRegion *string `json:"PrimaryClusterRegion,omitnil,omitempty" name:"PrimaryClusterRegion"`
+
+	// 从集群所在地域
+	StandbyClusterRegion *string `json:"StandbyClusterRegion,omitnil,omitempty" name:"StandbyClusterRegion"`
+
+	// 从集群ID
+	StandbyClusterId *string `json:"StandbyClusterId,omitnil,omitempty" name:"StandbyClusterId"`
+
+	// 从集群别名
+	StandbyClusterName *string `json:"StandbyClusterName,omitnil,omitempty" name:"StandbyClusterName"`
 }
 
 // Predefined struct for user
@@ -12545,6 +12583,9 @@ type ModifyServerlessStrategyRequestParams struct {
 
 	// 只读节点最大个数
 	MaxRoCount *int64 `json:"MaxRoCount,omitnil,omitempty" name:"MaxRoCount"`
+
+	// 是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
+	AutoArchive *string `json:"AutoArchive,omitnil,omitempty" name:"AutoArchive"`
 }
 
 type ModifyServerlessStrategyRequest struct {
@@ -12584,6 +12625,9 @@ type ModifyServerlessStrategyRequest struct {
 
 	// 只读节点最大个数
 	MaxRoCount *int64 `json:"MaxRoCount,omitnil,omitempty" name:"MaxRoCount"`
+
+	// 是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
+	AutoArchive *string `json:"AutoArchive,omitnil,omitempty" name:"AutoArchive"`
 }
 
 func (r *ModifyServerlessStrategyRequest) ToJsonString() string {
@@ -12609,6 +12653,7 @@ func (r *ModifyServerlessStrategyRequest) FromJsonString(s string) error {
 	delete(f, "MaxRoCpu")
 	delete(f, "MinRoCount")
 	delete(f, "MaxRoCount")
+	delete(f, "AutoArchive")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyServerlessStrategyRequest has unknown keys!", "")
 	}
@@ -13887,7 +13932,7 @@ type PolicyRule struct {
 }
 
 type ProxyConfig struct {
-	// 数据库代理组节点个数（该参数不再建议使用，建议使用ProxyZones)
+	// 数据库代理组节点个数。该参数不再建议使用,建议使用ProxyZones
 	ProxyCount *int64 `json:"ProxyCount,omitnil,omitempty" name:"ProxyCount"`
 
 	// cpu核数
@@ -13896,13 +13941,13 @@ type ProxyConfig struct {
 	// 内存
 	Mem *int64 `json:"Mem,omitnil,omitempty" name:"Mem"`
 
-	// 连接池类型：SessionConnectionPool(会话级别连接池 )
+	// 连接池类型:SessionConnectionPool(会话级别连接池 )
 	ConnectionPoolType *string `json:"ConnectionPoolType,omitnil,omitempty" name:"ConnectionPoolType"`
 
 	// 是否开启连接池,yes-开启，no-不开启
 	OpenConnectionPool *string `json:"OpenConnectionPool,omitnil,omitempty" name:"OpenConnectionPool"`
 
-	// 连接池阈值：单位（秒）
+	// 连接池阈值:单位（秒）
 	ConnectionPoolTimeOut *int64 `json:"ConnectionPoolTimeOut,omitnil,omitempty" name:"ConnectionPoolTimeOut"`
 
 	// 描述说明
@@ -15014,6 +15059,9 @@ type RollbackToNewClusterRequestParams struct {
 
 	// 项目id
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
+	AutoArchive *string `json:"AutoArchive,omitnil,omitempty" name:"AutoArchive"`
 }
 
 type RollbackToNewClusterRequest struct {
@@ -15108,6 +15156,9 @@ type RollbackToNewClusterRequest struct {
 
 	// 项目id
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
+	AutoArchive *string `json:"AutoArchive,omitnil,omitempty" name:"AutoArchive"`
 }
 
 func (r *RollbackToNewClusterRequest) ToJsonString() string {
@@ -15149,6 +15200,7 @@ func (r *RollbackToNewClusterRequest) FromJsonString(s string) error {
 	delete(f, "RollbackTables")
 	delete(f, "OriginalROInstanceList")
 	delete(f, "ProjectId")
+	delete(f, "AutoArchive")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RollbackToNewClusterRequest has unknown keys!", "")
 	}

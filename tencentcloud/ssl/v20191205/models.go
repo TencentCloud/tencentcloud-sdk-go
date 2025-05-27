@@ -1360,6 +1360,9 @@ type ClbInstanceDetail struct {
 
 	// CLB监听器列表
 	Listeners []*ClbListener `json:"Listeners,omitnil,omitempty" name:"Listeners"`
+
+	// 负载均衡类型，0 传统型负载均衡； 1 应用型负载均衡
+	Forward *int64 `json:"Forward,omitnil,omitempty" name:"Forward"`
 }
 
 type ClbInstanceList struct {

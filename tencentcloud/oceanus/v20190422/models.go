@@ -148,7 +148,7 @@ type Cluster struct {
 	// 创建者 UIN
 	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
 
-	// 集群状态, 1 未初始化,，3 初始化中，2 运行中
+	// 集群状态, 1 未初始化,3 初始化中，2 运行中
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 描述
@@ -315,6 +315,10 @@ type Cluster struct {
 
 	// 运行的内存
 	RunningMem *float64 `json:"RunningMem,omitnil,omitempty" name:"RunningMem"`
+
+	// setats集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Setats *Setats `json:"Setats,omitnil,omitempty" name:"Setats"`
 }
 
 type ClusterGroupSetItem struct {
@@ -2536,6 +2540,9 @@ type DescribeJobsRequestParams struct {
 
 	// 查询额外的作业信息,例如 JobEventInfo	
 	ExtraResult []*string `json:"ExtraResult,omitnil,omitempty" name:"ExtraResult"`
+
+	// 查询引用connector
+	ConnectorOptions *string `json:"ConnectorOptions,omitnil,omitempty" name:"ConnectorOptions"`
 }
 
 type DescribeJobsRequest struct {
@@ -2558,6 +2565,9 @@ type DescribeJobsRequest struct {
 
 	// 查询额外的作业信息,例如 JobEventInfo	
 	ExtraResult []*string `json:"ExtraResult,omitnil,omitempty" name:"ExtraResult"`
+
+	// 查询引用connector
+	ConnectorOptions *string `json:"ConnectorOptions,omitnil,omitempty" name:"ConnectorOptions"`
 }
 
 func (r *DescribeJobsRequest) ToJsonString() string {
@@ -2578,6 +2588,7 @@ func (r *DescribeJobsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "WorkSpaceId")
 	delete(f, "ExtraResult")
+	delete(f, "ConnectorOptions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobsRequest has unknown keys!", "")
 	}
@@ -4483,6 +4494,32 @@ type ResourceRefJobInfo struct {
 	ResourceVersion *int64 `json:"ResourceVersion,omitnil,omitempty" name:"ResourceVersion"`
 }
 
+type ResourceRefLatest struct {
+	// 资源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *int64 `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 资源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 空间id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkspaceId *string `json:"WorkspaceId,omitnil,omitempty" name:"WorkspaceId"`
+
+	// 资源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
 type ResultColumn struct {
 	// 名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4792,6 +4829,95 @@ type SessionClusterRefItem struct {
 	// 引用类型，0:用户资源
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type Setats struct {
+	// setats serialId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SetatsSerialId *string `json:"SetatsSerialId,omitnil,omitempty" name:"SetatsSerialId"`
+
+	// 1  // 停止
+	// 2  // 运行中
+	// 3  // 初始化中
+	// 4  // 扩容中
+	// 5  // Warehoouse未配置
+	// 6  // Warehoouse配置中
+	// 7  // 重启中
+	// -2 // 已删除(集群被销毁时更新为此状态)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// setats warehouse
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Warehouse *Warehouse `json:"Warehouse,omitnil,omitempty" name:"Warehouse"`
+
+	// setats master 机器规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MasterInfo *SetatsCvmInfo `json:"MasterInfo,omitnil,omitempty" name:"MasterInfo"`
+
+	// setats worker规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkerInfo *SetatsCvmInfo `json:"WorkerInfo,omitnil,omitempty" name:"WorkerInfo"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 自动续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+
+	// 过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 过期时间 秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecondsUntilExpiry *string `json:"SecondsUntilExpiry,omitnil,omitempty" name:"SecondsUntilExpiry"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// manager url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ManagerUrl *string `json:"ManagerUrl,omitnil,omitempty" name:"ManagerUrl"`
+
+	// 隔离时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsolatedTime *string `json:"IsolatedTime,omitnil,omitempty" name:"IsolatedTime"`
+}
+
+type SetatsCvmInfo struct {
+	// setats机器cpu
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// setats机器内存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mem *float64 `json:"Mem,omitnil,omitempty" name:"Mem"`
+
+	// setats worker 并行度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultParallelism *int64 `json:"DefaultParallelism,omitnil,omitempty" name:"DefaultParallelism"`
+
+	// setats 机器磁盘
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Disk *SetatsDisk `json:"Disk,omitnil,omitempty" name:"Disk"`
+}
+
+type SetatsDisk struct {
+	// 磁盘类型
+	// CLOUD_BSSD
+	// CLOUD_SSD
+	// CLOUD_HSSD
+	// CLOUD_PREMIUM
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// 磁盘大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 }
 
 type SlotSharingGroup struct {
@@ -5190,6 +5316,44 @@ func (r *TriggerJobSavepointResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *TriggerJobSavepointResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Warehouse struct {
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// location
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
+
+	// catalogtype
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CatalogType *string `json:"CatalogType,omitnil,omitempty" name:"CatalogType"`
+
+	// uri
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uri *string `json:"Uri,omitnil,omitempty" name:"Uri"`
+
+	// warehouse url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarehouseUrl *string `json:"WarehouseUrl,omitnil,omitempty" name:"WarehouseUrl"`
+
+	// 认证方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Authentication *string `json:"Authentication,omitnil,omitempty" name:"Authentication"`
+
+	// 资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceRefs []*ResourceRefLatest `json:"ResourceRefs,omitnil,omitempty" name:"ResourceRefs"`
+
+	// hive warehouse uri
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HiveUri *string `json:"HiveUri,omitnil,omitempty" name:"HiveUri"`
+
+	// 高级参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Properties []*Property `json:"Properties,omitnil,omitempty" name:"Properties"`
 }
 
 type WorkSpaceClusterItem struct {

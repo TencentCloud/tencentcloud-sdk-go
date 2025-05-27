@@ -70,6 +70,8 @@ func NewAddUserResponse() (response *AddUserResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXISTHIGHRISKOPERATIONS = "FailedOperation.ExistHighRiskOperations"
+//  FAILEDOPERATION_FORBIDADD = "FailedOperation.ForbidAdd"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_PASSWORDVIOLATEDRULES = "InvalidParameter.PasswordViolatedRules"
 //  INVALIDPARAMETER_SUBUSERFULL = "InvalidParameter.SubUserFull"
@@ -86,6 +88,8 @@ func (c *Client) AddUser(request *AddUserRequest) (response *AddUserResponse, er
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXISTHIGHRISKOPERATIONS = "FailedOperation.ExistHighRiskOperations"
+//  FAILEDOPERATION_FORBIDADD = "FailedOperation.ForbidAdd"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_PASSWORDVIOLATEDRULES = "InvalidParameter.PasswordViolatedRules"
 //  INVALIDPARAMETER_SUBUSERFULL = "InvalidParameter.SubUserFull"
@@ -5426,7 +5430,9 @@ func NewUpdateUserResponse() (response *UpdateUserResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXISTHIGHRISKOPERATIONS = "FailedOperation.ExistHighRiskOperations"
 //  FAILEDOPERATION_UNMODIFIABLE = "FailedOperation.Unmodifiable"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PASSWORDVIOLATEDRULES = "InvalidParameter.PasswordViolatedRules"
 //  INVALIDPARAMETER_USERNAMEILLEGAL = "InvalidParameter.UserNameIllegal"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
@@ -5440,7 +5446,9 @@ func (c *Client) UpdateUser(request *UpdateUserRequest) (response *UpdateUserRes
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXISTHIGHRISKOPERATIONS = "FailedOperation.ExistHighRiskOperations"
 //  FAILEDOPERATION_UNMODIFIABLE = "FailedOperation.Unmodifiable"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PASSWORDVIOLATEDRULES = "InvalidParameter.PasswordViolatedRules"
 //  INVALIDPARAMETER_USERNAMEILLEGAL = "InvalidParameter.UserNameIllegal"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"

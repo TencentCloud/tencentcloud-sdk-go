@@ -7099,7 +7099,7 @@ func NewCreateReleaseFlowResponse() (response *CreateReleaseFlowResponse) {
 //
 // <li><strong>完成原合同签署后方可发起解除协议：</strong>只有在原合同所有签署人完成签署后，才可以启动解除协议的流程。</li>
 //
-// <li><strong>原合同状态更新：</strong>解除协议一旦签署完毕，原合同及解除协议状态将更新为“已解除”。</li>
+// <li><strong>原合同状态更新：</strong>解除协议一旦签署完毕，原合同状态将更新为“已解除”。</li>
 //
 // <li><strong>解除协议的个人参与要求：</strong>原合同中的个人参与者必须直接参与解除协议，禁止替换为其他第三方个人。</li>
 //
@@ -7205,7 +7205,7 @@ func (c *Client) CreateReleaseFlow(request *CreateReleaseFlowRequest) (response 
 //
 // <li><strong>完成原合同签署后方可发起解除协议：</strong>只有在原合同所有签署人完成签署后，才可以启动解除协议的流程。</li>
 //
-// <li><strong>原合同状态更新：</strong>解除协议一旦签署完毕，原合同及解除协议状态将更新为“已解除”。</li>
+// <li><strong>原合同状态更新：</strong>解除协议一旦签署完毕，原合同状态将更新为“已解除”。</li>
 //
 // <li><strong>解除协议的个人参与要求：</strong>原合同中的个人参与者必须直接参与解除协议，禁止替换为其他第三方个人。</li>
 //

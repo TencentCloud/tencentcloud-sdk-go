@@ -369,6 +369,7 @@ func NewCreateInstancesResponse() (response *CreateInstancesResponse) {
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  INVALIDPARAMETERVALUE_PASSWORDFREEDENIED = "InvalidParameterValue.PasswordFreeDenied"
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDTYPE = "InvalidParameterValue.UnSupportedType"
+//  INVALIDPARAMETERVALUE_UNVPCIDNOTEXISTS = "InvalidParameterValue.UnVpcIdNotExists"
 //  LIMITEXCEEDED_INVALIDSIZE = "LimitExceeded.InvalidSize"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) CreateInstances(request *CreateInstancesRequest) (response *CreateInstancesResponse, err error) {
@@ -385,6 +386,7 @@ func (c *Client) CreateInstances(request *CreateInstancesRequest) (response *Cre
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  INVALIDPARAMETERVALUE_PASSWORDFREEDENIED = "InvalidParameterValue.PasswordFreeDenied"
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDTYPE = "InvalidParameterValue.UnSupportedType"
+//  INVALIDPARAMETERVALUE_UNVPCIDNOTEXISTS = "InvalidParameterValue.UnVpcIdNotExists"
 //  LIMITEXCEEDED_INVALIDSIZE = "LimitExceeded.InvalidSize"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) CreateInstancesWithContext(ctx context.Context, request *CreateInstancesRequest) (response *CreateInstancesResponse, err error) {

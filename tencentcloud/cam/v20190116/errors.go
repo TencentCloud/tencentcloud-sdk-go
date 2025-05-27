@@ -32,8 +32,14 @@ const (
 	// CIC的身份提供商禁止操作
 	FAILEDOPERATION_CICIDENTITYFORBIDDEN = "FailedOperation.CICIdentityForbidden"
 
+	// 存在高风险操作。
+	FAILEDOPERATION_EXISTHIGHRISKOPERATIONS = "FailedOperation.ExistHighRiskOperations"
+
 	// 凭据操作失败。
 	FAILEDOPERATION_FLOWAUTHILLEGAL = "FailedOperation.FlowAuthIllegal"
+
+	// 禁止当前用户创建子账号。
+	FAILEDOPERATION_FORBIDADD = "FailedOperation.ForbidAdd"
 
 	// 获取用户地域信息失败
 	FAILEDOPERATION_GETUSERAREAERROR = "FailedOperation.GetUserAreaError"

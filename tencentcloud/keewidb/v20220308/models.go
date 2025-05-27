@@ -416,10 +416,10 @@ type CreateInstancesRequestParams struct {
 	// KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。
 	MachineMemory *int64 `json:"MachineMemory,omitnil,omitempty" name:"MachineMemory"`
 
-	// 实例所属的可用区ID。<ul><li>具体取值，请参见[地域和可用区](https://cloud.tencent.com/document/product/239/4106)获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></u>
+	// 实例所属的可用区ID。<ul><li>具体取值，请参见[地域和可用区](https://cloud.tencent.com/document/product/239/4106)获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></ul>
 	ZoneId *uint64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 实例所属的可用区名称。<ul><li>具体取值，请参见[地域和可用区](https://cloud.tencent.com/document/product/239/4106)获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></u>
+	// 实例所属的可用区名称。<ul><li>具体取值，请参见[地域和可用区](https://cloud.tencent.com/document/product/239/4106)获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></ul>
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 
 	// 创建实例的名称。
@@ -436,7 +436,7 @@ type CreateInstancesRequestParams struct {
 	// 自定义端口。默认为6379，范围[1024,65535]。
 	VPort *uint64 `json:"VPort,omitnil,omitempty" name:"VPort"`
 
-	// 包年包月计费的续费模式。<ul><li>0：默认状态，指手动续费。</li><li>1：自动续费。</li><li>2：到期不再续费。</ul>
+	// 包年包月计费的续费模式。<ul><li>0：默认状态，指手动续费。</li><li>1：自动续费。</li><li>2：到期不再续费。</li></ul>
 	AutoRenew *uint64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
 	// 给实例设置安全组 ID 数组。
@@ -459,7 +459,7 @@ type CreateInstancesRequestParams struct {
 	// 项目id，取值以用户账户>用户账户相关接口查询>项目列表返回的projectId为准。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 数据压缩开关。<ul><li>ON：开启，默认开启压缩。</li><li>OFF：关闭。</li>
+	// 数据压缩开关。<ul><li>ON：开启，默认开启压缩。</li><li>OFF：关闭。</li></ul>
 	Compression *string `json:"Compression,omitnil,omitempty" name:"Compression"`
 }
 
@@ -497,10 +497,10 @@ type CreateInstancesRequest struct {
 	// KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。
 	MachineMemory *int64 `json:"MachineMemory,omitnil,omitempty" name:"MachineMemory"`
 
-	// 实例所属的可用区ID。<ul><li>具体取值，请参见[地域和可用区](https://cloud.tencent.com/document/product/239/4106)获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></u>
+	// 实例所属的可用区ID。<ul><li>具体取值，请参见[地域和可用区](https://cloud.tencent.com/document/product/239/4106)获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></ul>
 	ZoneId *uint64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 实例所属的可用区名称。<ul><li>具体取值，请参见[地域和可用区](https://cloud.tencent.com/document/product/239/4106)获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></u>
+	// 实例所属的可用区名称。<ul><li>具体取值，请参见[地域和可用区](https://cloud.tencent.com/document/product/239/4106)获取。</li><li>参数<b>ZoneId</b>和<b>ZoneName</b>至少配置其中一个。</li></ul>
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
 
 	// 创建实例的名称。
@@ -517,7 +517,7 @@ type CreateInstancesRequest struct {
 	// 自定义端口。默认为6379，范围[1024,65535]。
 	VPort *uint64 `json:"VPort,omitnil,omitempty" name:"VPort"`
 
-	// 包年包月计费的续费模式。<ul><li>0：默认状态，指手动续费。</li><li>1：自动续费。</li><li>2：到期不再续费。</ul>
+	// 包年包月计费的续费模式。<ul><li>0：默认状态，指手动续费。</li><li>1：自动续费。</li><li>2：到期不再续费。</li></ul>
 	AutoRenew *uint64 `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
 
 	// 给实例设置安全组 ID 数组。
@@ -540,7 +540,7 @@ type CreateInstancesRequest struct {
 	// 项目id，取值以用户账户>用户账户相关接口查询>项目列表返回的projectId为准。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// 数据压缩开关。<ul><li>ON：开启，默认开启压缩。</li><li>OFF：关闭。</li>
+	// 数据压缩开关。<ul><li>ON：开启，默认开启压缩。</li><li>OFF：关闭。</li></ul>
 	Compression *string `json:"Compression,omitnil,omitempty" name:"Compression"`
 }
 

@@ -75,7 +75,7 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 // #### 在线体验
 //
-// 如您希望在网页内直接体验 DeepSeek 模型对话，推荐您前往[腾讯云大模型知识引擎](https://cloud.tencent.com/product/lke)，使用[ DeepSeek 联网助手](https://lke.cloud.tencent.com/webim_exp/#/chat/wQrAwR)。
+// 如您希望在网页内直接体验 DeepSeek 模型对话，推荐您前往[腾讯云智能体开发平台](https://cloud.tencent.com/product/lke)，使用[ DeepSeek 联网助手](https://lke.cloud.tencent.com/webim_exp/#/chat/wQrAwR)。
 //
 // 
 //
@@ -310,7 +310,7 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 // #### 在线体验
 //
-// 如您希望在网页内直接体验 DeepSeek 模型对话，推荐您前往[腾讯云大模型知识引擎](https://cloud.tencent.com/product/lke)，使用[ DeepSeek 联网助手](https://lke.cloud.tencent.com/webim_exp/#/chat/wQrAwR)。
+// 如您希望在网页内直接体验 DeepSeek 模型对话，推荐您前往[腾讯云智能体开发平台](https://cloud.tencent.com/product/lke)，使用[ DeepSeek 联网助手](https://lke.cloud.tencent.com/webim_exp/#/chat/wQrAwR)。
 //
 // 
 //

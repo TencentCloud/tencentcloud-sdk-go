@@ -3400,7 +3400,7 @@ type CommonId struct {
 }
 
 type CommonIdOpsDto struct {
-	// 返回补录计划id
+	// 返回补录计划名称_ok
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 }
@@ -4925,6 +4925,15 @@ type CreateOpsMakePlanRequestParams struct {
 
 	// 补录扩展属性
 	SelfWorkflowDependency *string `json:"SelfWorkflowDependency,omitnil,omitempty" name:"SelfWorkflowDependency"`
+
+	// 任务 TASK； 项目： PROJECT
+	MakeType *string `json:"MakeType,omitnil,omitempty" name:"MakeType"`
+
+	// 任务状态
+	StatusList *string `json:"StatusList,omitnil,omitempty" name:"StatusList"`
+
+	// 补录是否跳过事件检查
+	MakeCheckEventType *string `json:"MakeCheckEventType,omitnil,omitempty" name:"MakeCheckEventType"`
 }
 
 type CreateOpsMakePlanRequest struct {
@@ -5010,6 +5019,15 @@ type CreateOpsMakePlanRequest struct {
 
 	// 补录扩展属性
 	SelfWorkflowDependency *string `json:"SelfWorkflowDependency,omitnil,omitempty" name:"SelfWorkflowDependency"`
+
+	// 任务 TASK； 项目： PROJECT
+	MakeType *string `json:"MakeType,omitnil,omitempty" name:"MakeType"`
+
+	// 任务状态
+	StatusList *string `json:"StatusList,omitnil,omitempty" name:"StatusList"`
+
+	// 补录是否跳过事件检查
+	MakeCheckEventType *string `json:"MakeCheckEventType,omitnil,omitempty" name:"MakeCheckEventType"`
 }
 
 func (r *CreateOpsMakePlanRequest) ToJsonString() string {
@@ -5050,6 +5068,9 @@ func (r *CreateOpsMakePlanRequest) FromJsonString(s string) error {
 	delete(f, "MakeExtList")
 	delete(f, "SameSelfWorkflowDependType")
 	delete(f, "SelfWorkflowDependency")
+	delete(f, "MakeType")
+	delete(f, "StatusList")
+	delete(f, "MakeCheckEventType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOpsMakePlanRequest has unknown keys!", "")
 	}
@@ -20967,6 +20988,12 @@ type DownloadLogByLineRequestParams struct {
 
 	// log 0 code 1 result 2 custo 3
 	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 查询文件标志：0: 从执行机获取，1: 从cos获取，获取不到会再从执行机获取
+	QueryFileFlag *int64 `json:"QueryFileFlag,omitnil,omitempty" name:"QueryFileFlag"`
+
+	// 透传字段，如果queryFileFlag为1，则ext回作为上一页的分页标识offset
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
 type DownloadLogByLineRequest struct {
@@ -21007,6 +21034,12 @@ type DownloadLogByLineRequest struct {
 
 	// log 0 code 1 result 2 custo 3
 	FileType *int64 `json:"FileType,omitnil,omitempty" name:"FileType"`
+
+	// 查询文件标志：0: 从执行机获取，1: 从cos获取，获取不到会再从执行机获取
+	QueryFileFlag *int64 `json:"QueryFileFlag,omitnil,omitempty" name:"QueryFileFlag"`
+
+	// 透传字段，如果queryFileFlag为1，则ext回作为上一页的分页标识offset
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
 func (r *DownloadLogByLineRequest) ToJsonString() string {
@@ -21033,6 +21066,8 @@ func (r *DownloadLogByLineRequest) FromJsonString(s string) error {
 	delete(f, "JobType")
 	delete(f, "ParseErrorTip")
 	delete(f, "FileType")
+	delete(f, "QueryFileFlag")
+	delete(f, "ExtInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadLogByLineRequest has unknown keys!", "")
 	}
@@ -21826,6 +21861,20 @@ type ExtResourceFlagDto struct {
 	// 离线任务信息获取标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OfflineSyncTask *string `json:"OfflineSyncTask,omitnil,omitempty" name:"OfflineSyncTask"`
+}
+
+type ExtensionInfoVO struct {
+	// key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// value
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type FailMessage struct {
@@ -23759,6 +23808,14 @@ type InstanceLogByLine struct {
 	// 日志sql错误信息，包含行列信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobLogErrorTip *JobLogErrorTip `json:"JobLogErrorTip,omitnil,omitempty" name:"JobLogErrorTip"`
+
+	// 执行实例的扩展属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionExtendedProps []*ExtensionInfoVO `json:"ExecutionExtendedProps,omitnil,omitempty" name:"ExecutionExtendedProps"`
+
+	// 如果queryFileFlag为1，则ext返回当前页数据的结束行信息，下一页把这个extInfo透传过来
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtInfo *string `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
 }
 
 type InstanceLogInfo struct {

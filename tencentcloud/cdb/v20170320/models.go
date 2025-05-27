@@ -45,6 +45,8 @@ type AccountInfo struct {
 	ModifyPasswordTime *string `json:"ModifyPasswordTime,omitnil,omitempty" name:"ModifyPasswordTime"`
 
 	// 该值已废弃
+	//
+	// Deprecated: CreateTime is deprecated.
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
 	// 用户最大可用实例连接数
@@ -447,6 +449,32 @@ type AggregationCondition struct {
 
 	// 该聚合字段下要返回聚合桶的数量，最大100。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type AnalysisNodeInfo struct {
+	// 节点ID
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// 节点状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 数据加载状态
+	DataStatus *string `json:"DataStatus,omitnil,omitempty" name:"DataStatus"`
+
+	// cpu核数，单位：核
+	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 内存大小，单位: MB
+	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 磁盘大小，单位：GB
+	Storage *uint64 `json:"Storage,omitnil,omitempty" name:"Storage"`
+
+	// 节点所在可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 数据同步错误信息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }
 
 // Predefined struct for user
@@ -6877,6 +6905,108 @@ func (r *DescribeClusterInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCpuExpandHistoryRequestParams struct {
+	// 实例 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 扩容策略，值包括：all，manual，auto
+	ExpandStrategy *string `json:"ExpandStrategy,omitnil,omitempty" name:"ExpandStrategy"`
+
+	// 扩容状态，值包括：all，extend，reduce，extend_failed
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 查询的开始时间。只能查看30天内的扩容历史
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询的结束时间。只能查看30天内的扩容历史
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 分页入参
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页入参
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeCpuExpandHistoryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 扩容策略，值包括：all，manual，auto
+	ExpandStrategy *string `json:"ExpandStrategy,omitnil,omitempty" name:"ExpandStrategy"`
+
+	// 扩容状态，值包括：all，extend，reduce，extend_failed
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 查询的开始时间。只能查看30天内的扩容历史
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询的结束时间。只能查看30天内的扩容历史
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 分页入参
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页入参
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeCpuExpandHistoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCpuExpandHistoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ExpandStrategy")
+	delete(f, "Status")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCpuExpandHistoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCpuExpandHistoryResponseParams struct {
+	// 满足查询要求的扩容历史
+	Items []*HistoryJob `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 总数出参
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCpuExpandHistoryResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCpuExpandHistoryResponseParams `json:"Response"`
+}
+
+func (r *DescribeCpuExpandHistoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCpuExpandHistoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDBFeaturesRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -10856,6 +10986,32 @@ type ErrlogItem struct {
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
+type HistoryJob struct {
+	// 操作类型
+	OperationType *string `json:"OperationType,omitnil,omitempty" name:"OperationType"`
+
+	// 扩容类型
+	ExpandType *string `json:"ExpandType,omitnil,omitempty" name:"ExpandType"`
+
+	// 扩容开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 扩容结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 扩容前核数
+	OldCpu *int64 `json:"OldCpu,omitnil,omitempty" name:"OldCpu"`
+
+	// 扩容后核数
+	NewCpu *int64 `json:"NewCpu,omitnil,omitempty" name:"NewCpu"`
+
+	// 增减的cpu数
+	ExtendCPUNum *int64 `json:"ExtendCPUNum,omitnil,omitempty" name:"ExtendCPUNum"`
+
+	// extend_failed操作上报
+	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
+}
+
 type ImportRecord struct {
 	// 状态值
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
@@ -11274,6 +11430,12 @@ type InstanceInfo struct {
 
 	// 实例集群版节点信息
 	ClusterInfo []*ClusterInfo `json:"ClusterInfo,omitnil,omitempty" name:"ClusterInfo"`
+
+	// 分析引擎节点列表
+	AnalysisNodeInfos []*AnalysisNodeInfo `json:"AnalysisNodeInfos,omitnil,omitempty" name:"AnalysisNodeInfos"`
+
+	// 设备带宽，单位G。当DeviceClass不为空时此参数才有效。例：25-表示当前设备带宽为25G；10-表示当前设备带宽为10G。
+	DeviceBandwidth *uint64 `json:"DeviceBandwidth,omitnil,omitempty" name:"DeviceBandwidth"`
 }
 
 type InstanceRebootTime struct {
@@ -14707,6 +14869,14 @@ type ParameterDetail struct {
 	IsNotSupportEdit *bool `json:"IsNotSupportEdit,omitnil,omitempty" name:"IsNotSupportEdit"`
 }
 
+type PeriodStrategy struct {
+	// 扩容周期
+	TimeCycle *TImeCycle `json:"TimeCycle,omitnil,omitempty" name:"TimeCycle"`
+
+	// 时间间隔
+	TimeInterval *TimeInterval `json:"TimeInterval,omitnil,omitempty" name:"TimeInterval"`
+}
+
 type ProxyAddress struct {
 	// 代理组地址ID
 	ProxyAddressId *string `json:"ProxyAddressId,omitnil,omitempty" name:"ProxyAddressId"`
@@ -15807,6 +15977,12 @@ type StartCpuExpandRequestParams struct {
 
 	// 自动扩容策略。Type 为 auto 时必传。
 	AutoStrategy *AutoStrategy `json:"AutoStrategy,omitnil,omitempty" name:"AutoStrategy"`
+
+	// 按时间段扩容策略
+	TimeIntervalStrategy *TimeIntervalStrategy `json:"TimeIntervalStrategy,omitnil,omitempty" name:"TimeIntervalStrategy"`
+
+	// 按周期扩容策略
+	PeriodStrategy *PeriodStrategy `json:"PeriodStrategy,omitnil,omitempty" name:"PeriodStrategy"`
 }
 
 type StartCpuExpandRequest struct {
@@ -15824,6 +16000,12 @@ type StartCpuExpandRequest struct {
 
 	// 自动扩容策略。Type 为 auto 时必传。
 	AutoStrategy *AutoStrategy `json:"AutoStrategy,omitnil,omitempty" name:"AutoStrategy"`
+
+	// 按时间段扩容策略
+	TimeIntervalStrategy *TimeIntervalStrategy `json:"TimeIntervalStrategy,omitnil,omitempty" name:"TimeIntervalStrategy"`
+
+	// 按周期扩容策略
+	PeriodStrategy *PeriodStrategy `json:"PeriodStrategy,omitnil,omitempty" name:"PeriodStrategy"`
 }
 
 func (r *StartCpuExpandRequest) ToJsonString() string {
@@ -15842,6 +16024,8 @@ func (r *StartCpuExpandRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "ExpandCpu")
 	delete(f, "AutoStrategy")
+	delete(f, "TimeIntervalStrategy")
+	delete(f, "PeriodStrategy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartCpuExpandRequest has unknown keys!", "")
 	}
@@ -16476,6 +16660,29 @@ func (r *SwitchForUpgradeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type TImeCycle struct {
+	// 周一的扩容时间段
+	Monday *bool `json:"Monday,omitnil,omitempty" name:"Monday"`
+
+	// 周二的扩容时间段
+	Tuesday *bool `json:"Tuesday,omitnil,omitempty" name:"Tuesday"`
+
+	// 周三的扩容时间段
+	Wednesday *bool `json:"Wednesday,omitnil,omitempty" name:"Wednesday"`
+
+	// 周四的扩容时间段
+	Thursday *bool `json:"Thursday,omitnil,omitempty" name:"Thursday"`
+
+	// 周五的扩容时间段
+	Friday *bool `json:"Friday,omitnil,omitempty" name:"Friday"`
+
+	// 周六的扩容时间段
+	Saturday *bool `json:"Saturday,omitnil,omitempty" name:"Saturday"`
+
+	// 周日的扩容时间段
+	Sunday *bool `json:"Sunday,omitnil,omitempty" name:"Sunday"`
+}
+
 type TablePrivilege struct {
 	// 数据库名
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
@@ -16591,6 +16798,22 @@ type TaskDetail struct {
 
 	// 任务的附加信息。
 	TaskAttachInfo []*TaskAttachInfo `json:"TaskAttachInfo,omitnil,omitempty" name:"TaskAttachInfo"`
+}
+
+type TimeInterval struct {
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type TimeIntervalStrategy struct {
+	// 开始扩容时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束扩容时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 // Predefined struct for user
