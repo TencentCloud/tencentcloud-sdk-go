@@ -1913,6 +1913,65 @@ func (c *Client) DescribeGlobalConfigWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeGroupsSTDRequest() (request *DescribeGroupsSTDRequest) {
+    request = &DescribeGroupsSTDRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeGroupsSTD")
+    
+    
+    return
+}
+
+func NewDescribeGroupsSTDResponse() (response *DescribeGroupsSTDResponse) {
+    response = &DescribeGroupsSTDResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeGroupsSTD
+// 查询用户组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeGroupsSTD(request *DescribeGroupsSTDRequest) (response *DescribeGroupsSTDResponse, err error) {
+    return c.DescribeGroupsSTDWithContext(context.Background(), request)
+}
+
+// DescribeGroupsSTD
+// 查询用户组
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeGroupsSTDWithContext(ctx context.Context, request *DescribeGroupsSTDRequest) (response *DescribeGroupsSTDResponse, err error) {
+    if request == nil {
+        request = NewDescribeGroupsSTDRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGroupsSTD require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGroupsSTDResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeHBaseTableOverviewRequest() (request *DescribeHBaseTableOverviewRequest) {
     request = &DescribeHBaseTableOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1982,6 +1982,7 @@ func NewListRabbitMQServerlessInstancesResponse() (response *ListRabbitMQServerl
 // 获取实例列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1996,6 +1997,7 @@ func (c *Client) ListRabbitMQServerlessInstances(request *ListRabbitMQServerless
 // 获取实例列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

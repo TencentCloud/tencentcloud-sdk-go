@@ -10204,10 +10204,10 @@ type SaveDocRequestParams struct {
 	// 标签适用范围，需要传参为1
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
-	// 来源(0 源文件导入 1 网页导入)
+	// 来源（0 从本地文档导入），默认值为0
 	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 网页(或自定义链接)地址
+	// 自定义链接地址, IsRefer为true的时候，该值才有意义
 	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
 
 	// 标签引用
@@ -10269,10 +10269,10 @@ type SaveDocRequest struct {
 	// 标签适用范围，需要传参为1
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
-	// 来源(0 源文件导入 1 网页导入)
+	// 来源（0 从本地文档导入），默认值为0
 	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 
-	// 网页(或自定义链接)地址
+	// 自定义链接地址, IsRefer为true的时候，该值才有意义
 	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
 
 	// 标签引用

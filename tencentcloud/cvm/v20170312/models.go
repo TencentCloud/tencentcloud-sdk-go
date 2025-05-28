@@ -10381,6 +10381,7 @@ type SystemDisk struct {
 	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
 
 	// 所属的独享集群ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 
 	// 磁盘名称，长度不超过128 个字符。

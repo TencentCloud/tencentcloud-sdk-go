@@ -1403,6 +1403,67 @@ func (c *Client) AssociateDirectConnectGatewayNatGatewayWithContext(ctx context.
     return
 }
 
+func NewAssociateHaVipInstanceRequest() (request *AssociateHaVipInstanceRequest) {
+    request = &AssociateHaVipInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "AssociateHaVipInstance")
+    
+    
+    return
+}
+
+func NewAssociateHaVipInstanceResponse() (response *AssociateHaVipInstanceResponse) {
+    response = &AssociateHaVipInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// AssociateHaVipInstance
+// 本接口（AssociateHaVipInstance）用于HAVIP绑定子机或网卡（限制HaVip的飘移范围）。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) AssociateHaVipInstance(request *AssociateHaVipInstanceRequest) (response *AssociateHaVipInstanceResponse, err error) {
+    return c.AssociateHaVipInstanceWithContext(context.Background(), request)
+}
+
+// AssociateHaVipInstance
+// 本接口（AssociateHaVipInstance）用于HAVIP绑定子机或网卡（限制HaVip的飘移范围）。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) AssociateHaVipInstanceWithContext(ctx context.Context, request *AssociateHaVipInstanceRequest) (response *AssociateHaVipInstanceResponse, err error) {
+    if request == nil {
+        request = NewAssociateHaVipInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AssociateHaVipInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAssociateHaVipInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAssociateIPv6AddressRequest() (request *AssociateIPv6AddressRequest) {
     request = &AssociateIPv6AddressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -18470,6 +18531,67 @@ func (c *Client) DisassociateDirectConnectGatewayNatGatewayWithContext(ctx conte
     request.SetContext(ctx)
     
     response = NewDisassociateDirectConnectGatewayNatGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisassociateHaVipInstanceRequest() (request *DisassociateHaVipInstanceRequest) {
+    request = &DisassociateHaVipInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DisassociateHaVipInstance")
+    
+    
+    return
+}
+
+func NewDisassociateHaVipInstanceResponse() (response *DisassociateHaVipInstanceResponse) {
+    response = &DisassociateHaVipInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisassociateHaVipInstance
+// 本接口（DisassociateHaVipInstance）用于HAVIP解绑子机或网卡（去掉HaVip飘移范围）。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DisassociateHaVipInstance(request *DisassociateHaVipInstanceRequest) (response *DisassociateHaVipInstanceResponse, err error) {
+    return c.DisassociateHaVipInstanceWithContext(context.Background(), request)
+}
+
+// DisassociateHaVipInstance
+// 本接口（DisassociateHaVipInstance）用于HAVIP解绑子机或网卡（去掉HaVip飘移范围）。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DisassociateHaVipInstanceWithContext(ctx context.Context, request *DisassociateHaVipInstanceRequest) (response *DisassociateHaVipInstanceResponse, err error) {
+    if request == nil {
+        request = NewDisassociateHaVipInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisassociateHaVipInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisassociateHaVipInstanceResponse()
     err = c.Send(request, response)
     return
 }

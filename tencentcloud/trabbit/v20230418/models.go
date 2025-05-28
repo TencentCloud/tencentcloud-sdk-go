@@ -2920,6 +2920,9 @@ type RabbitMQClusterSpecInfo struct {
 
 	// 公网带宽，已废弃
 	PublicNetworkTps *uint64 `json:"PublicNetworkTps,omitnil,omitempty" name:"PublicNetworkTps"`
+
+	// 实例对应的功能列表，true表示支持，false 表示不支持
+	Features *string `json:"Features,omitnil,omitempty" name:"Features"`
 }
 
 type RabbitMQConnection struct {
@@ -3178,6 +3181,9 @@ type RabbitMQServerlessInstance struct {
 
 	// 隔离时间
 	IsolatedTime *uint64 `json:"IsolatedTime,omitnil,omitempty" name:"IsolatedTime"`
+
+	// Serverless 扩展字段
+	ServerlessExt *string `json:"ServerlessExt,omitnil,omitempty" name:"ServerlessExt"`
 }
 
 type RabbitMQServerlessWhiteListInfo struct {

@@ -1138,6 +1138,10 @@ func (r *CreateUserRoleResponse) FromJsonString(s string) error {
 type Data struct {
 	// 项目Id
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EditUrl *string `json:"EditUrl,omitnil,omitempty" name:"EditUrl"`
 }
 
 type DataId struct {
@@ -2225,6 +2229,12 @@ type DescribeUserRoleProjectListRequestParams struct {
 
 	// 角色编码
 	RoleCode *string `json:"RoleCode,omitnil,omitempty" name:"RoleCode"`
+
+	// 用户id列表
+	UserIdList []*string `json:"UserIdList,omitnil,omitempty" name:"UserIdList"`
+
+	// 搜索关键词
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 }
 
 type DescribeUserRoleProjectListRequest struct {
@@ -2247,6 +2257,12 @@ type DescribeUserRoleProjectListRequest struct {
 
 	// 角色编码
 	RoleCode *string `json:"RoleCode,omitnil,omitempty" name:"RoleCode"`
+
+	// 用户id列表
+	UserIdList []*string `json:"UserIdList,omitnil,omitempty" name:"UserIdList"`
+
+	// 搜索关键词
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
 }
 
 func (r *DescribeUserRoleProjectListRequest) ToJsonString() string {
@@ -2267,6 +2283,8 @@ func (r *DescribeUserRoleProjectListRequest) FromJsonString(s string) error {
 	delete(f, "IsOnlyBindAppUser")
 	delete(f, "AllPage")
 	delete(f, "RoleCode")
+	delete(f, "UserIdList")
+	delete(f, "Keyword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserRoleProjectListRequest has unknown keys!", "")
 	}
@@ -3519,6 +3537,22 @@ type Project struct {
 	// 所属人
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerName *string `json:"OwnerName,omitnil,omitempty" name:"OwnerName"`
+
+	// 仪表盘页面数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NormalCount *int64 `json:"NormalCount,omitnil,omitempty" name:"NormalCount"`
+
+	// 自由画布页面数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FreeCount *int64 `json:"FreeCount,omitnil,omitempty" name:"FreeCount"`
+
+	// 即席分析页面数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdhocCount *int64 `json:"AdhocCount,omitnil,omitempty" name:"AdhocCount"`
+
+	// 简报页面数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BriefingCount *int64 `json:"BriefingCount,omitnil,omitempty" name:"BriefingCount"`
 }
 
 type ProjectConfigList struct {

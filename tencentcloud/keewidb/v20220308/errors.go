@@ -110,10 +110,13 @@ const (
 	// 设置密码时，MC 传入的 old password 与先前设定密码不同。
 	INVALIDPARAMETERVALUE_PASSWORDRULEERROR = "InvalidParameterValue.PasswordRuleError"
 
+	// 请求参数错误，安全组id不存在。
+	INVALIDPARAMETERVALUE_SECURITYGROUPIDSNOTEXISTS = "InvalidParameterValue.SecurityGroupIdsNotExists"
+
 	// 实例类型不支持。
 	INVALIDPARAMETERVALUE_UNSUPPORTEDTYPE = "InvalidParameterValue.UnSupportedType"
 
-	// 私有网络id不存在。
+	// 请求参数错误，私有网络id不存在。
 	INVALIDPARAMETERVALUE_UNVPCIDNOTEXISTS = "InvalidParameterValue.UnVpcIdNotExists"
 
 	// weekday输入无效数据。

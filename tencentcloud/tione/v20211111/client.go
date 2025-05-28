@@ -67,6 +67,12 @@ func NewChatCompletionResponse() (response *ChatCompletionResponse) {
 // ChatCompletion
 // 该接口支持与自行部署的大模型的聊天。
 //
+// 
+//
+// 使用该接口调用时需要携带腾讯云的密钥信息用于身份信息鉴权，建议通过腾讯云的云 API SDK调用，具体可以参考
+//
+// https://cloud.tencent.com/document/product/1278/85305
+//
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
@@ -81,6 +87,12 @@ func (c *Client) ChatCompletion(request *ChatCompletionRequest) (response *ChatC
 
 // ChatCompletion
 // 该接口支持与自行部署的大模型的聊天。
+//
+// 
+//
+// 使用该接口调用时需要携带腾讯云的密钥信息用于身份信息鉴权，建议通过腾讯云的云 API SDK调用，具体可以参考
+//
+// https://cloud.tencent.com/document/product/1278/85305
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

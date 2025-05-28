@@ -10318,6 +10318,24 @@ type SearchLogRequestParams struct {
 	// - 要检索分析的日志主题ID，仅能指定一个日志主题。
 	// - 如需同时检索多个日志主题，请使用Topics参数。
 	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
+	// 各日志主题ID如下
+	// 访问控制-互联网边界 cfw_rule_acl
+	// 访问控制-NAT边界 cfw_rule_nat_acl
+	// 访问控制-VPC边界 cfw_rule_vpc_acl
+	// 访问控制-DNS开关 cfw_rule_dns_acl
+	// 入侵防御 cfw_rule_threatinfo
+	// 全流量检测与响应日志-流量分析 cfw_netflow_nta
+	// 全流量检测与响应日志-流量告警 cfw_rule_ndr_threatinfo
+	// 零信任运维-数据库登录 cfw_operate_db
+	// 零信任运维-服务器访问 operate_remote_om
+	// 零信任运维-Web服务访问 operate_web_access
+	// 零信任运维-行为审计 remoteom_commands
+	// 流量日志-互联网边界 cfw_netflow_border
+	// 流量日志-NAT边界 cfw_netflow_nat
+	// 流量日志-VPC边界 cfw_netflow_vpc
+	// 流量日志-DNS开关 cfw_netflow_dns
+	// 流量日志-内网流量 cfw_netflow_fl
+	// 操作日志 operate_log_all
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// - 要检索分析的日志主题列表，最大支持50个日志主题。
@@ -10393,6 +10411,24 @@ type SearchLogRequest struct {
 	// - 要检索分析的日志主题ID，仅能指定一个日志主题。
 	// - 如需同时检索多个日志主题，请使用Topics参数。
 	// - TopicId 和 Topics 不能同时使用，在一次请求中有且只能选择一个。
+	// 各日志主题ID如下
+	// 访问控制-互联网边界 cfw_rule_acl
+	// 访问控制-NAT边界 cfw_rule_nat_acl
+	// 访问控制-VPC边界 cfw_rule_vpc_acl
+	// 访问控制-DNS开关 cfw_rule_dns_acl
+	// 入侵防御 cfw_rule_threatinfo
+	// 全流量检测与响应日志-流量分析 cfw_netflow_nta
+	// 全流量检测与响应日志-流量告警 cfw_rule_ndr_threatinfo
+	// 零信任运维-数据库登录 cfw_operate_db
+	// 零信任运维-服务器访问 operate_remote_om
+	// 零信任运维-Web服务访问 operate_web_access
+	// 零信任运维-行为审计 remoteom_commands
+	// 流量日志-互联网边界 cfw_netflow_border
+	// 流量日志-NAT边界 cfw_netflow_nat
+	// 流量日志-VPC边界 cfw_netflow_vpc
+	// 流量日志-DNS开关 cfw_netflow_dns
+	// 流量日志-内网流量 cfw_netflow_fl
+	// 操作日志 operate_log_all
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
 	// - 要检索分析的日志主题列表，最大支持50个日志主题。

@@ -17894,6 +17894,7 @@ type RecordParam struct {
 	ClassId *int64 `json:"ClassId,omitnil,omitempty" name:"ClassId"`
 
 	// 存储至 cos 的 bucket 桶名称。
+	// 注：CosBucketName参数值不能包含-[appid] 部分。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosBucketName *string `json:"CosBucketName,omitnil,omitempty" name:"CosBucketName"`
 

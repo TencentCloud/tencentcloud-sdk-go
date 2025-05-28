@@ -3983,7 +3983,7 @@ type DescribeDomainsConfigRequestParams struct {
 	// 分页查询偏移量，默认为 0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页查询限制数目，默认为 100，最大可设置为 1000
+	// 分页查询限制数目，默认为 100，最大可设置为 100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 查询条件过滤器，复杂类型
@@ -3999,7 +3999,7 @@ type DescribeDomainsConfigRequest struct {
 	// 分页查询偏移量，默认为 0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页查询限制数目，默认为 100，最大可设置为 1000
+	// 分页查询限制数目，默认为 100，最大可设置为 100
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 查询条件过滤器，复杂类型

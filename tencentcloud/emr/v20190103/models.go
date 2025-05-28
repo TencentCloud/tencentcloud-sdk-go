@@ -3457,6 +3457,94 @@ func (r *DescribeGlobalConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeGroupsSTDRequestParams struct {
+	// 集群名称
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 描述键值对过滤器，用于条件过滤查询
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 描述排序，用于排序
+	OrderFields *Order `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+
+	// 返回数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页参数
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeGroupsSTDRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群名称
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 描述键值对过滤器，用于条件过滤查询
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 描述排序，用于排序
+	OrderFields *Order `json:"OrderFields,omitnil,omitempty" name:"OrderFields"`
+
+	// 返回数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页参数
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeGroupsSTDRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGroupsSTDRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGroupsSTDRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGroupsSTDResponseParams struct {
+	// 用户组信息
+	Data []*GroupInfos `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 符合条件的用户组数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeGroupsSTDResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGroupsSTDResponseParams `json:"Response"`
+}
+
+func (r *DescribeGroupsSTDResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGroupsSTDResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeHBaseTableOverviewRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -6286,6 +6374,14 @@ type FairGlobalConfig struct {
 	UserMaxAppsDefault *int64 `json:"UserMaxAppsDefault,omitnil,omitempty" name:"UserMaxAppsDefault"`
 }
 
+type Filter struct {
+	// 需要过滤的字段。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 字段的过滤值。
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
 type Filters struct {
 	// 字段名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -6345,6 +6441,26 @@ type GroupInfo struct {
 
 	// 用户列表
 	Users []*string `json:"Users,omitnil,omitempty" name:"Users"`
+}
+
+type GroupInfos struct {
+	// 用户组名称
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 用户名称列表
+	Users []*string `json:"Users,omitnil,omitempty" name:"Users"`
+
+	// 备注
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 用户组类型
+	GroupType *int64 `json:"GroupType,omitnil,omitempty" name:"GroupType"`
+
+	// 用户组类型描述
+	GroupTypeDesc *string `json:"GroupTypeDesc,omitnil,omitempty" name:"GroupTypeDesc"`
 }
 
 type HealthStatus struct {
@@ -9449,6 +9565,14 @@ type OpScope struct {
 	// 操作范围，要操作的服务信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceInfoList []*ServiceBasicRestartInfo `json:"ServiceInfoList,omitnil,omitempty" name:"ServiceInfoList"`
+}
+
+type Order struct {
+	// 排序字段。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// Desc or Asc。
+	Direction *string `json:"Direction,omitnil,omitempty" name:"Direction"`
 }
 
 type OutterResource struct {

@@ -919,6 +919,9 @@ type AvailableZoneScatterScheduleRule struct {
 
 	// -
 	IsForceSchedule *bool `json:"IsForceSchedule,omitnil,omitempty" name:"IsForceSchedule"`
+
+	// -
+	Paths []*CommonOption `json:"Paths,omitnil,omitempty" name:"Paths"`
 }
 
 // Predefined struct for user
