@@ -61,11 +61,9 @@ type CmqRegionInfo struct {
 
 type CosRegionInfo struct {
 	// cos地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosRegion *string `json:"CosRegion,omitnil,omitempty" name:"CosRegion"`
 
 	// 地域描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosRegionName *string `json:"CosRegionName,omitnil,omitempty" name:"CosRegionName"`
 }
 

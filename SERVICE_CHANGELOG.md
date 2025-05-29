@@ -1,100 +1,67 @@
-# Release v1.0.1176
+# Release v1.0.1177
 
-## 商业智能分析 BI(bi) 版本：2022-01-05
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
-### 第 27 次发布
+### 第 136 次发布
 
-发布时间：2025-05-29 01:10:56
+发布时间：2025-05-30 01:25:57
 
 本次发布包含了以下内容：
 
 改善已有的文档。
+
+新增接口：
+
+* [DescribeBackupDownloadRestriction](https://cloud.tencent.com/document/api/1003/118922)
+* [DescribeBackupDownloadUserRestriction](https://cloud.tencent.com/document/api/1003/118921)
+* [DescribeClusterReadOnly](https://cloud.tencent.com/document/api/1003/118924)
+* [ModifyBackupDownloadRestriction](https://cloud.tencent.com/document/api/1003/118920)
+* [ModifyBackupDownloadUserRestriction](https://cloud.tencent.com/document/api/1003/118919)
+* [ModifyClusterReadOnly](https://cloud.tencent.com/document/api/1003/118923)
 
 修改接口：
 
-* [DescribeUserRoleProjectList](https://cloud.tencent.com/document/api/590/100532)
+* [DescribeBackupDownloadUrl](https://cloud.tencent.com/document/api/1003/76374)
 
-	* 新增入参：UserIdList, Keyword
+	* 新增入参：DownloadRestriction
 
+* [DescribeBinlogDownloadUrl](https://cloud.tencent.com/document/api/1003/76373)
 
-修改数据结构：
-
-* [Data](https://cloud.tencent.com/document/api/590/73726#Data)
-
-	* 新增成员：EditUrl
-
-* [Project](https://cloud.tencent.com/document/api/590/73726#Project)
-
-	* 新增成员：NormalCount, FreeCount, AdhocCount, BriefingCount
+	* 新增入参：DownloadRestriction
 
 
+新增数据结构：
 
-
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 195 次发布
-
-发布时间：2025-05-29 01:13:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeCPUExpandStrategyInfo](https://cloud.tencent.com/document/api/236/116999)
-
-	* 新增出参：PeriodStrategy, TimeIntervalStrategy
-
-
-
-
-## 云应用(cloudapp) 版本：2022-05-30
-
-### 第 4 次发布
-
-发布时间：2025-05-29 01:19:33
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [License](https://cloud.tencent.com/document/api/1689/108875#License)
-
-	* 新增成员：LicenseLevel
-
+* [BackupLimitClusterRestriction](https://cloud.tencent.com/document/api/1003/48097#BackupLimitClusterRestriction)
+* [BackupLimitRestriction](https://cloud.tencent.com/document/api/1003/48097#BackupLimitRestriction)
+* [BackupLimitVpcItem](https://cloud.tencent.com/document/api/1003/48097#BackupLimitVpcItem)
+* [ClusterReadOnlyValue](https://cloud.tencent.com/document/api/1003/48097#ClusterReadOnlyValue)
+* [ClusterTaskId](https://cloud.tencent.com/document/api/1003/48097#ClusterTaskId)
 
 
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
 
-### 第 103 次发布
+### 第 104 次发布
 
-发布时间：2025-05-29 01:32:22
+发布时间：2025-05-30 01:33:30
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+<font color="#dd0000">**预下线接口**：</font>
 
-* [DescribeGroupsSTD](https://cloud.tencent.com/document/api/589/118880)
-
-新增数据结构：
-
-* [Filter](https://cloud.tencent.com/document/api/589/33981#Filter)
-* [GroupInfos](https://cloud.tencent.com/document/api/589/33981#GroupInfos)
-* [Order](https://cloud.tencent.com/document/api/589/33981#Order)
+* ModifyResourceScheduleConfig
+* ModifyYarnDeploy
 
 
 
-## 云游戏(gs) 版本：2019-11-18
+## 文字识别(ocr) 版本：2018-11-19
 
-### 第 35 次发布
+### 第 191 次发布
 
-发布时间：2025-05-29 01:36:35
+发布时间：2025-05-30 01:51:27
 
 本次发布包含了以下内容：
 
@@ -102,60 +69,37 @@
 
 修改接口：
 
-* [CreateAndroidInstanceWebShell](https://cloud.tencent.com/document/api/1162/117266)
+* [RecognizeGeneralInvoice](https://cloud.tencent.com/document/api/866/90802)
 
-	* 新增出参：ConnectUrl
-
-
+	* 新增入参：EnableQRCode
 
 
-## 消息队列 RabbitMQ Serverless 版(trabbit) 版本：2023-04-18
+新增数据结构：
 
-### 第 3 次发布
-
-发布时间：2025-05-29 02:06:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [CustomsDeclaration](https://cloud.tencent.com/document/api/866/33527#CustomsDeclaration)
+* [OnlineTaxiItinerary](https://cloud.tencent.com/document/api/866/33527#OnlineTaxiItinerary)
+* [OverseasInvoice](https://cloud.tencent.com/document/api/866/33527#OverseasInvoice)
+* [SaleInventory](https://cloud.tencent.com/document/api/866/33527#SaleInventory)
+* [ShoppingReceipt](https://cloud.tencent.com/document/api/866/33527#ShoppingReceipt)
 
 修改数据结构：
 
-* [RabbitMQClusterSpecInfo](https://cloud.tencent.com/document/api/1495/116155#RabbitMQClusterSpecInfo)
+* [InvoiceItem](https://cloud.tencent.com/document/api/866/33527#InvoiceItem)
 
-	* 新增成员：Features
+	* 新增成员：QRCode
 
-* [RabbitMQServerlessInstance](https://cloud.tencent.com/document/api/1495/116155#RabbitMQServerlessInstance)
+* [SingleInvoiceItem](https://cloud.tencent.com/document/api/866/33527#SingleInvoiceItem)
 
-	* 新增成员：ServerlessExt
-
-
-
-
-## 微服务平台(tsf) 版本：2018-03-26
-
-### 第 124 次发布
-
-发布时间：2025-05-29 02:09:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [AvailableZoneScatterScheduleRule](https://cloud.tencent.com/document/api/649/36099#AvailableZoneScatterScheduleRule)
-
-	* 新增成员：Paths
+	* 新增成员：OnlineTaxiItinerary, CustomsDeclaration, OverseasInvoice, ShoppingReceipt, SaleInventory
 
 
 
 
-## 私有网络(vpc) 版本：2017-03-12
+## 邮件推送(ses) 版本：2020-10-02
 
-### 第 260 次发布
+### 第 31 次发布
 
-发布时间：2025-05-29 02:13:01
+发布时间：2025-05-30 01:56:10
 
 本次发布包含了以下内容：
 
@@ -163,8 +107,9 @@
 
 新增接口：
 
-* [AssociateHaVipInstance](https://cloud.tencent.com/document/api/215/118882)
-* [DisassociateHaVipInstance](https://cloud.tencent.com/document/api/215/118881)
+* [CreateAddressUnsubscribeConfig](https://cloud.tencent.com/document/api/1288/118927)
+* [DeleteAddressUnsubscribeConfig](https://cloud.tencent.com/document/api/1288/118926)
+* [UpdateAddressUnsubscribeConfig](https://cloud.tencent.com/document/api/1288/118925)
 
 
 

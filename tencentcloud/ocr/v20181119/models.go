@@ -1510,6 +1510,14 @@ type Coord struct {
 	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
 }
 
+type CustomsDeclaration struct {
+	// 发票名称
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 识别出的字段名称(关键字)
+	Content []*OtherInvoiceItem `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
 type CustomsPaymentReceipt struct {
 	// 发票名称
 	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
@@ -5081,6 +5089,9 @@ type InvoiceItem struct {
 
 	// 该发票中所有字段坐标信息。包括字段英文名称、字段值所在位置四点坐标、字段所属行号，具体内容请点击左侧链接。
 	ItemPolygon []*ItemPolygonInfo `json:"ItemPolygon,omitnil,omitempty" name:"ItemPolygon"`
+
+	// 二维码数据。
+	QRCode *string `json:"QRCode,omitnil,omitempty" name:"QRCode"`
 }
 
 type ItemCoord struct {
@@ -6357,6 +6368,14 @@ type OCRResult struct {
 	IDCardResult *IDCardResult `json:"IDCardResult,omitnil,omitempty" name:"IDCardResult"`
 }
 
+type OnlineTaxiItinerary struct {
+	// 发票名称
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 识别出的字段名称(关键字)
+	Content []*OtherInvoiceItem `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
 type OnlineTaxiItineraryInfo struct {
 	// 识别出的字段名称(关键字)，支持以下字段：
 	// 发票代码、 机打代码、 发票号码、 发动机号码、 合格证号、 机打号码、 价税合计(小写)、 销货单位名称、 身份证号码/组织机构代码、 购买方名称、 销售方纳税人识别号、 购买方纳税人识别号、主管税务机关、 主管税务机关代码、 开票日期、 不含税价(小写)、 吨位、增值税税率或征收率、 车辆识别代号/车架号码、 增值税税额、 厂牌型号、 省、 市、 发票消费类型、 销售方电话、 销售方账号、 产地、 进口证明书号、 车辆类型、 机器编号、备注、开票人、限乘人数、商检单号、销售方地址、销售方开户银行、价税合计、发票类型。
@@ -6484,6 +6503,14 @@ type OtherInvoiceItem struct {
 type OtherInvoiceList struct {
 	// 列表
 	OtherInvoiceItemList []*OtherInvoiceItem `json:"OtherInvoiceItemList,omitnil,omitempty" name:"OtherInvoiceItemList"`
+}
+
+type OverseasInvoice struct {
+	// 发票名称
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 识别出的字段名称(关键字)
+	Content []*OtherInvoiceItem `json:"Content,omitnil,omitempty" name:"Content"`
 }
 
 type PassInvoiceInfo struct {
@@ -8204,6 +8231,11 @@ type RecognizeGeneralInvoiceRequestParams struct {
 	// 18：完税凭证
 	// 19：海关缴款书
 	// 20：银行回单
+	// 21：网约车行程单
+	// 22：海关进/出口货物报关单
+	// 23：海外发票
+	// 24：购物小票
+	// 25：销货清单
 	// -1：其他发票
 	Types []*int64 `json:"Types,omitnil,omitempty" name:"Types"`
 
@@ -8224,6 +8256,9 @@ type RecognizeGeneralInvoiceRequestParams struct {
 
 	// 是否打开字段坐标返回。默认为false。
 	EnableItemPolygon *bool `json:"EnableItemPolygon,omitnil,omitempty" name:"EnableItemPolygon"`
+
+	// 是否开启二维码识别。
+	EnableQRCode *bool `json:"EnableQRCode,omitnil,omitempty" name:"EnableQRCode"`
 }
 
 type RecognizeGeneralInvoiceRequest struct {
@@ -8254,6 +8289,11 @@ type RecognizeGeneralInvoiceRequest struct {
 	// 18：完税凭证
 	// 19：海关缴款书
 	// 20：银行回单
+	// 21：网约车行程单
+	// 22：海关进/出口货物报关单
+	// 23：海外发票
+	// 24：购物小票
+	// 25：销货清单
 	// -1：其他发票
 	Types []*int64 `json:"Types,omitnil,omitempty" name:"Types"`
 
@@ -8274,6 +8314,9 @@ type RecognizeGeneralInvoiceRequest struct {
 
 	// 是否打开字段坐标返回。默认为false。
 	EnableItemPolygon *bool `json:"EnableItemPolygon,omitnil,omitempty" name:"EnableItemPolygon"`
+
+	// 是否开启二维码识别。
+	EnableQRCode *bool `json:"EnableQRCode,omitnil,omitempty" name:"EnableQRCode"`
 }
 
 func (r *RecognizeGeneralInvoiceRequest) ToJsonString() string {
@@ -8297,6 +8340,7 @@ func (r *RecognizeGeneralInvoiceRequest) FromJsonString(s string) error {
 	delete(f, "EnableMultiplePage")
 	delete(f, "EnableCutImage")
 	delete(f, "EnableItemPolygon")
+	delete(f, "EnableQRCode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeGeneralInvoiceRequest has unknown keys!", "")
 	}
@@ -9883,6 +9927,14 @@ func (r *RideHailingTransportLicenseOCRResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SaleInventory struct {
+	// 发票名称
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 识别出的字段名称(关键字)
+	Content []*OtherInvoiceItem `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
 type SealInfo struct {
 	// 印章主体内容
 	SealBody *string `json:"SealBody,omitnil,omitempty" name:"SealBody"`
@@ -10152,6 +10204,14 @@ type ShippingInvoice struct {
 	CurrencyCode *string `json:"CurrencyCode,omitnil,omitempty" name:"CurrencyCode"`
 }
 
+type ShoppingReceipt struct {
+	// 发票名称
+	Title *string `json:"Title,omitnil,omitempty" name:"Title"`
+
+	// 识别出的字段名称(关键字)
+	Content []*OtherInvoiceItem `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
 type SingleInvoiceInfo struct {
 	// 识别出的字段名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -10283,6 +10343,26 @@ type SingleInvoiceItem struct {
 	// 银行回单
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BankSlip *BankSlip `json:"BankSlip,omitnil,omitempty" name:"BankSlip"`
+
+	// 网约车行程单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnlineTaxiItinerary *OnlineTaxiItinerary `json:"OnlineTaxiItinerary,omitnil,omitempty" name:"OnlineTaxiItinerary"`
+
+	// 海关进/出口货物报关单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomsDeclaration *CustomsDeclaration `json:"CustomsDeclaration,omitnil,omitempty" name:"CustomsDeclaration"`
+
+	// 海外发票
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OverseasInvoice *OverseasInvoice `json:"OverseasInvoice,omitnil,omitempty" name:"OverseasInvoice"`
+
+	// 购物小票
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShoppingReceipt *ShoppingReceipt `json:"ShoppingReceipt,omitnil,omitempty" name:"ShoppingReceipt"`
+
+	// 销货清单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SaleInventory *SaleInventory `json:"SaleInventory,omitnil,omitempty" name:"SaleInventory"`
 }
 
 // Predefined struct for user

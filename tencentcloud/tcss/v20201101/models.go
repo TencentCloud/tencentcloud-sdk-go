@@ -8485,7 +8485,7 @@ func (r *DescribeAccessControlEventsExportRequest) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeAccessControlEventsExportResponseParams struct {
-	// execle下载地址
+	// excel下载地址
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 任务id
@@ -19123,7 +19123,7 @@ func (r *DescribeReverseShellEventsExportRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeReverseShellEventsExportResponseParams struct {
-	// execle下载地址
+	// excel下载地址
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
 	// 任务ID

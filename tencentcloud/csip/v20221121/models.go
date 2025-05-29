@@ -1082,7 +1082,7 @@ type AssetViewVULRiskData struct {
 	// 引擎来源
 	EngineSource *string `json:"EngineSource,omitnil,omitempty" name:"EngineSource"`
 
-	// 新的漏洞风险id(同全网漏洞表的riskid)
+	// 新的漏洞风险id(同全网漏洞表的RiskId)
 	VulRiskId *string `json:"VulRiskId,omitnil,omitempty" name:"VulRiskId"`
 
 	// 新版漏洞id

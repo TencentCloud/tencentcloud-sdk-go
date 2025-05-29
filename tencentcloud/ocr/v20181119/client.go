@@ -5650,6 +5650,56 @@ func NewRecognizeGeneralInvoiceResponse() (response *RecognizeGeneralInvoiceResp
 //
 //         <tr>
 //
+//           <td> OnlineTaxiItinerary </td>
+//
+//           <td> 网约车行程单 </td>
+//
+//           <td> 21 </td>
+//
+//         </tr>
+//
+//         <tr>
+//
+//           <td> CustomsDeclaration </td>
+//
+//           <td> 海关进/出口货物报关单 </td>
+//
+//           <td> 22 </td>
+//
+//         </tr>
+//
+//         <tr>
+//
+//           <td> OverseasInvoice </td>
+//
+//           <td> 海外发票 </td>
+//
+//           <td> 23 </td>
+//
+//         </tr>
+//
+//         <tr>
+//
+//           <td> ShoppingReceipt </td>
+//
+//           <td> 购物小票 </td>
+//
+//           <td> 24 </td>
+//
+//         </tr>
+//
+//         <tr>
+//
+//           <td> SaleInventory </td>
+//
+//           <td> 销货清单 </td>
+//
+//           <td> 25 </td>
+//
+//         </tr>
+//
+//         <tr>
+//
 //           <td> OtherInvoice </td>
 //
 //           <td> 其他发票 </td>
@@ -5996,6 +6046,56 @@ func (c *Client) RecognizeGeneralInvoice(request *RecognizeGeneralInvoiceRequest
 //           <td> 银行回单 </td>
 //
 //           <td> 20 </td>
+//
+//         </tr>
+//
+//         <tr>
+//
+//           <td> OnlineTaxiItinerary </td>
+//
+//           <td> 网约车行程单 </td>
+//
+//           <td> 21 </td>
+//
+//         </tr>
+//
+//         <tr>
+//
+//           <td> CustomsDeclaration </td>
+//
+//           <td> 海关进/出口货物报关单 </td>
+//
+//           <td> 22 </td>
+//
+//         </tr>
+//
+//         <tr>
+//
+//           <td> OverseasInvoice </td>
+//
+//           <td> 海外发票 </td>
+//
+//           <td> 23 </td>
+//
+//         </tr>
+//
+//         <tr>
+//
+//           <td> ShoppingReceipt </td>
+//
+//           <td> 购物小票 </td>
+//
+//           <td> 24 </td>
+//
+//         </tr>
+//
+//         <tr>
+//
+//           <td> SaleInventory </td>
+//
+//           <td> 销货清单 </td>
+//
+//           <td> 25 </td>
 //
 //         </tr>
 //

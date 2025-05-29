@@ -977,6 +977,9 @@ const (
 	// 不支持创建流日志：当前弹性网卡未绑定实例。
 	UNSUPPORTEDOPERATION_FLOWLOGSNOTSUPPORTNULLINSTANCEENI = "UnsupportedOperation.FlowLogsNotSupportNullInstanceEni"
 
+	// GUA类型的网段不支持分配给CDC子网。
+	UNSUPPORTEDOPERATION_GUANOTSUPPORTALLOCATECDCSUBNET = "UnsupportedOperation.GUANotSupportAllocateCdcSubnet"
+
 	// TGW还没有投放IPv6网段
 	UNSUPPORTEDOPERATION_IPV6CIDRNOTDEPLOYED = "UnsupportedOperation.IPV6CidrNotDeployed"
 

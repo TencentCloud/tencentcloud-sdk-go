@@ -705,6 +705,41 @@ type BackupFileInfo struct {
 	BackupName *string `json:"BackupName,omitnil,omitempty" name:"BackupName"`
 }
 
+type BackupLimitClusterRestriction struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 下载限制配置
+	BackupLimitRestriction *BackupLimitRestriction `json:"BackupLimitRestriction,omitnil,omitempty" name:"BackupLimitRestriction"`
+}
+
+type BackupLimitRestriction struct {
+	// 限制类型
+	LimitType *string `json:"LimitType,omitnil,omitempty" name:"LimitType"`
+
+	// 该参数仅支持 In， 表示 LimitVpc 指定的vpc可以下载。默认为In
+	VpcComparisonSymbol *string `json:"VpcComparisonSymbol,omitnil,omitempty" name:"VpcComparisonSymbol"`
+
+	// In: 指定的ip可以下载； NotIn: 指定的ip不可以下载
+	IpComparisonSymbol *string `json:"IpComparisonSymbol,omitnil,omitempty" name:"IpComparisonSymbol"`
+
+	// 限制下载的vpc设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LimitVpcs []*BackupLimitVpcItem `json:"LimitVpcs,omitnil,omitempty" name:"LimitVpcs"`
+
+	// 限制下载的ip设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LimitIps []*string `json:"LimitIps,omitnil,omitempty" name:"LimitIps"`
+}
+
+type BackupLimitVpcItem struct {
+	// 限制下载来源的地域。目前仅支持当前地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 限制下载的vpc列表
+	VpcList []*string `json:"VpcList,omitnil,omitempty" name:"VpcList"`
+}
+
 type BillingResourceInfo struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -1466,6 +1501,14 @@ type ClusterParamModifyLog struct {
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
+type ClusterReadOnlyValue struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 只读开关值
+	ReadOnlyValue *string `json:"ReadOnlyValue,omitnil,omitempty" name:"ReadOnlyValue"`
+}
+
 type ClusterSlaveData struct {
 	// 旧主可用区
 	OldMasterZone *string `json:"OldMasterZone,omitnil,omitempty" name:"OldMasterZone"`
@@ -1486,6 +1529,14 @@ type ClusterSlaveData struct {
 
 	// 旧可用区属性
 	OldSlaveZoneAttr []*SlaveZoneAttrItem `json:"OldSlaveZoneAttr,omitnil,omitempty" name:"OldSlaveZoneAttr"`
+}
+
+type ClusterTaskId struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 // Predefined struct for user
@@ -5111,12 +5162,73 @@ func (r *DescribeBackupConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBackupDownloadRestrictionRequestParams struct {
+	// 集群ID
+	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
+}
+
+type DescribeBackupDownloadRestrictionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
+}
+
+func (r *DescribeBackupDownloadRestrictionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupDownloadRestrictionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupDownloadRestrictionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupDownloadRestrictionResponseParams struct {
+	// 集群备份下载限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupLimitClusterRestrictions []*BackupLimitClusterRestriction `json:"BackupLimitClusterRestrictions,omitnil,omitempty" name:"BackupLimitClusterRestrictions"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBackupDownloadRestrictionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackupDownloadRestrictionResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackupDownloadRestrictionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupDownloadRestrictionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBackupDownloadUrlRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 备份ID
 	BackupId *int64 `json:"BackupId,omitnil,omitempty" name:"BackupId"`
+
+	// 备份下载来源限制条件
+	DownloadRestriction *BackupLimitRestriction `json:"DownloadRestriction,omitnil,omitempty" name:"DownloadRestriction"`
 }
 
 type DescribeBackupDownloadUrlRequest struct {
@@ -5127,6 +5239,9 @@ type DescribeBackupDownloadUrlRequest struct {
 
 	// 备份ID
 	BackupId *int64 `json:"BackupId,omitnil,omitempty" name:"BackupId"`
+
+	// 备份下载来源限制条件
+	DownloadRestriction *BackupLimitRestriction `json:"DownloadRestriction,omitnil,omitempty" name:"DownloadRestriction"`
 }
 
 func (r *DescribeBackupDownloadUrlRequest) ToJsonString() string {
@@ -5143,6 +5258,7 @@ func (r *DescribeBackupDownloadUrlRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ClusterId")
 	delete(f, "BackupId")
+	delete(f, "DownloadRestriction")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupDownloadUrlRequest has unknown keys!", "")
 	}
@@ -5171,6 +5287,81 @@ func (r *DescribeBackupDownloadUrlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBackupDownloadUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupDownloadUserRestrictionRequestParams struct {
+	// 分页大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 是否只查询用户级别下载限制，true-是，false-否
+	OnlyUserRestriction *bool `json:"OnlyUserRestriction,omitnil,omitempty" name:"OnlyUserRestriction"`
+}
+
+type DescribeBackupDownloadUserRestrictionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页大小
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 是否只查询用户级别下载限制，true-是，false-否
+	OnlyUserRestriction *bool `json:"OnlyUserRestriction,omitnil,omitempty" name:"OnlyUserRestriction"`
+}
+
+func (r *DescribeBackupDownloadUserRestrictionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupDownloadUserRestrictionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "OnlyUserRestriction")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupDownloadUserRestrictionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackupDownloadUserRestrictionResponseParams struct {
+	// 集群备份下载限制信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupLimitClusterRestrictions []*BackupLimitClusterRestriction `json:"BackupLimitClusterRestrictions,omitnil,omitempty" name:"BackupLimitClusterRestrictions"`
+
+	// 总条数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeBackupDownloadUserRestrictionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackupDownloadUserRestrictionResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackupDownloadUserRestrictionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackupDownloadUserRestrictionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5401,6 +5592,9 @@ type DescribeBinlogDownloadUrlRequestParams struct {
 
 	// Binlog文件ID
 	BinlogId *int64 `json:"BinlogId,omitnil,omitempty" name:"BinlogId"`
+
+	// 备份下载来源限制条件
+	DownloadRestriction *BackupLimitRestriction `json:"DownloadRestriction,omitnil,omitempty" name:"DownloadRestriction"`
 }
 
 type DescribeBinlogDownloadUrlRequest struct {
@@ -5411,6 +5605,9 @@ type DescribeBinlogDownloadUrlRequest struct {
 
 	// Binlog文件ID
 	BinlogId *int64 `json:"BinlogId,omitnil,omitempty" name:"BinlogId"`
+
+	// 备份下载来源限制条件
+	DownloadRestriction *BackupLimitRestriction `json:"DownloadRestriction,omitnil,omitempty" name:"DownloadRestriction"`
 }
 
 func (r *DescribeBinlogDownloadUrlRequest) ToJsonString() string {
@@ -5427,6 +5624,7 @@ func (r *DescribeBinlogDownloadUrlRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ClusterId")
 	delete(f, "BinlogId")
+	delete(f, "DownloadRestriction")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBinlogDownloadUrlRequest has unknown keys!", "")
 	}
@@ -6354,6 +6552,63 @@ func (r *DescribeClusterPasswordComplexityResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeClusterPasswordComplexityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterReadOnlyRequestParams struct {
+	// 集群ID列表
+	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
+}
+
+type DescribeClusterReadOnlyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID列表
+	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
+}
+
+func (r *DescribeClusterReadOnlyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterReadOnlyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterReadOnlyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterReadOnlyResponseParams struct {
+	// 集群只读开关列表
+	ClusterReadOnlyValues []*ClusterReadOnlyValue `json:"ClusterReadOnlyValues,omitnil,omitempty" name:"ClusterReadOnlyValues"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterReadOnlyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterReadOnlyResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterReadOnlyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterReadOnlyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10939,6 +11194,177 @@ func (r *ModifyBackupConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyBackupDownloadRestrictionRequestParams struct {
+	// 集群ID
+	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
+
+	// 下载限制类型，NoLimit-不限制,LimitOnlyIntranet-限制内网 ,Customize-自定义
+	LimitType *string `json:"LimitType,omitnil,omitempty" name:"LimitType"`
+
+	// 该参数仅支持 In， 表示 LimitVpc 指定的vpc可以下载。默认为In
+	VpcComparisonSymbol *string `json:"VpcComparisonSymbol,omitnil,omitempty" name:"VpcComparisonSymbol"`
+
+	// In: 指定的ip可以下载； NotIn: 指定的ip不可以下载
+	IpComparisonSymbol *string `json:"IpComparisonSymbol,omitnil,omitempty" name:"IpComparisonSymbol"`
+
+	// 限制下载的vpc设置
+	LimitVpcs []*BackupLimitVpcItem `json:"LimitVpcs,omitnil,omitempty" name:"LimitVpcs"`
+
+	// 限制下载的ip设置
+	LimitIps []*string `json:"LimitIps,omitnil,omitempty" name:"LimitIps"`
+}
+
+type ModifyBackupDownloadRestrictionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
+
+	// 下载限制类型，NoLimit-不限制,LimitOnlyIntranet-限制内网 ,Customize-自定义
+	LimitType *string `json:"LimitType,omitnil,omitempty" name:"LimitType"`
+
+	// 该参数仅支持 In， 表示 LimitVpc 指定的vpc可以下载。默认为In
+	VpcComparisonSymbol *string `json:"VpcComparisonSymbol,omitnil,omitempty" name:"VpcComparisonSymbol"`
+
+	// In: 指定的ip可以下载； NotIn: 指定的ip不可以下载
+	IpComparisonSymbol *string `json:"IpComparisonSymbol,omitnil,omitempty" name:"IpComparisonSymbol"`
+
+	// 限制下载的vpc设置
+	LimitVpcs []*BackupLimitVpcItem `json:"LimitVpcs,omitnil,omitempty" name:"LimitVpcs"`
+
+	// 限制下载的ip设置
+	LimitIps []*string `json:"LimitIps,omitnil,omitempty" name:"LimitIps"`
+}
+
+func (r *ModifyBackupDownloadRestrictionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBackupDownloadRestrictionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterIds")
+	delete(f, "LimitType")
+	delete(f, "VpcComparisonSymbol")
+	delete(f, "IpComparisonSymbol")
+	delete(f, "LimitVpcs")
+	delete(f, "LimitIps")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupDownloadRestrictionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBackupDownloadRestrictionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBackupDownloadRestrictionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBackupDownloadRestrictionResponseParams `json:"Response"`
+}
+
+func (r *ModifyBackupDownloadRestrictionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBackupDownloadRestrictionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBackupDownloadUserRestrictionRequestParams struct {
+	// 下载限制类型，NoLimit-不限制,LimitOnlyIntranet-限制内网 ,Customize-自定义
+	LimitType *string `json:"LimitType,omitnil,omitempty" name:"LimitType"`
+
+	// 该参数仅支持 In， 表示 LimitVpc 指定的vpc可以下载。默认为In
+	VpcComparisonSymbol *string `json:"VpcComparisonSymbol,omitnil,omitempty" name:"VpcComparisonSymbol"`
+
+	// In: 指定的ip可以下载； NotIn: 指定的ip不可以下载
+	IpComparisonSymbol *string `json:"IpComparisonSymbol,omitnil,omitempty" name:"IpComparisonSymbol"`
+
+	// 限制下载的vpc设置
+	LimitVpcs []*BackupLimitVpcItem `json:"LimitVpcs,omitnil,omitempty" name:"LimitVpcs"`
+
+	// 限制下载的ip设置
+	LimitIps []*string `json:"LimitIps,omitnil,omitempty" name:"LimitIps"`
+}
+
+type ModifyBackupDownloadUserRestrictionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 下载限制类型，NoLimit-不限制,LimitOnlyIntranet-限制内网 ,Customize-自定义
+	LimitType *string `json:"LimitType,omitnil,omitempty" name:"LimitType"`
+
+	// 该参数仅支持 In， 表示 LimitVpc 指定的vpc可以下载。默认为In
+	VpcComparisonSymbol *string `json:"VpcComparisonSymbol,omitnil,omitempty" name:"VpcComparisonSymbol"`
+
+	// In: 指定的ip可以下载； NotIn: 指定的ip不可以下载
+	IpComparisonSymbol *string `json:"IpComparisonSymbol,omitnil,omitempty" name:"IpComparisonSymbol"`
+
+	// 限制下载的vpc设置
+	LimitVpcs []*BackupLimitVpcItem `json:"LimitVpcs,omitnil,omitempty" name:"LimitVpcs"`
+
+	// 限制下载的ip设置
+	LimitIps []*string `json:"LimitIps,omitnil,omitempty" name:"LimitIps"`
+}
+
+func (r *ModifyBackupDownloadUserRestrictionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBackupDownloadUserRestrictionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LimitType")
+	delete(f, "VpcComparisonSymbol")
+	delete(f, "IpComparisonSymbol")
+	delete(f, "LimitVpcs")
+	delete(f, "LimitIps")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupDownloadUserRestrictionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBackupDownloadUserRestrictionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyBackupDownloadUserRestrictionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBackupDownloadUserRestrictionResponseParams `json:"Response"`
+}
+
+func (r *ModifyBackupDownloadUserRestrictionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBackupDownloadUserRestrictionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyBackupNameRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -11438,6 +11864,77 @@ func (r *ModifyClusterPasswordComplexityResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyClusterPasswordComplexityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyClusterReadOnlyRequestParams struct {
+	// 集群ID列表
+	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
+
+	// 集群只读开关，可选值：ON，OFF
+	ReadOnlyOperation *string `json:"ReadOnlyOperation,omitnil,omitempty" name:"ReadOnlyOperation"`
+
+	// yes：在运维时间窗内修改，no：立即执行（默认值）
+	IsInMaintainPeriod *string `json:"IsInMaintainPeriod,omitnil,omitempty" name:"IsInMaintainPeriod"`
+}
+
+type ModifyClusterReadOnlyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID列表
+	ClusterIds []*string `json:"ClusterIds,omitnil,omitempty" name:"ClusterIds"`
+
+	// 集群只读开关，可选值：ON，OFF
+	ReadOnlyOperation *string `json:"ReadOnlyOperation,omitnil,omitempty" name:"ReadOnlyOperation"`
+
+	// yes：在运维时间窗内修改，no：立即执行（默认值）
+	IsInMaintainPeriod *string `json:"IsInMaintainPeriod,omitnil,omitempty" name:"IsInMaintainPeriod"`
+}
+
+func (r *ModifyClusterReadOnlyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterReadOnlyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterIds")
+	delete(f, "ReadOnlyOperation")
+	delete(f, "IsInMaintainPeriod")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterReadOnlyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyClusterReadOnlyResponseParams struct {
+	// 集群任务ID列表
+	ClusterTaskIds []*ClusterTaskId `json:"ClusterTaskIds,omitnil,omitempty" name:"ClusterTaskIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyClusterReadOnlyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyClusterReadOnlyResponseParams `json:"Response"`
+}
+
+func (r *ModifyClusterReadOnlyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterReadOnlyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

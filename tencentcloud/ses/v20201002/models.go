@@ -211,6 +211,74 @@ type BlackEmailAddress struct {
 }
 
 // Predefined struct for user
+type CreateAddressUnsubscribeConfigRequestParams struct {
+	// 发信地址
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// 退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+	UnsubscribeConfig *string `json:"UnsubscribeConfig,omitnil,omitempty" name:"UnsubscribeConfig"`
+
+	// 0:关闭，1:打开
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type CreateAddressUnsubscribeConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 发信地址
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// 退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+	UnsubscribeConfig *string `json:"UnsubscribeConfig,omitnil,omitempty" name:"UnsubscribeConfig"`
+
+	// 0:关闭，1:打开
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *CreateAddressUnsubscribeConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAddressUnsubscribeConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Address")
+	delete(f, "UnsubscribeConfig")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAddressUnsubscribeConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAddressUnsubscribeConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAddressUnsubscribeConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAddressUnsubscribeConfigResponseParams `json:"Response"`
+}
+
+func (r *CreateAddressUnsubscribeConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAddressUnsubscribeConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateCustomBlacklistRequestParams struct {
 	// 添加到黑名单的邮件地址
 	Emails []*string `json:"Emails,omitnil,omitempty" name:"Emails"`
@@ -723,6 +791,60 @@ type DNSAttributes struct {
 
 	// 检测是否通过，创建时默认为false
 	Status *bool `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+// Predefined struct for user
+type DeleteAddressUnsubscribeConfigRequestParams struct {
+	// 需要操作的发信地址
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+}
+
+type DeleteAddressUnsubscribeConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要操作的发信地址
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+}
+
+func (r *DeleteAddressUnsubscribeConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAddressUnsubscribeConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Address")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAddressUnsubscribeConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAddressUnsubscribeConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAddressUnsubscribeConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAddressUnsubscribeConfigResponseParams `json:"Response"`
+}
+
+func (r *DeleteAddressUnsubscribeConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAddressUnsubscribeConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -2447,6 +2569,74 @@ type TemplatesMetadata struct {
 type TimedEmailParam struct {
 	// 定时发送邮件的开始时间
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
+}
+
+// Predefined struct for user
+type UpdateAddressUnsubscribeConfigRequestParams struct {
+	// 发信地址
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// 退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+	UnsubscribeConfig *string `json:"UnsubscribeConfig,omitnil,omitempty" name:"UnsubscribeConfig"`
+
+	// 0:关闭配置，1:打开配置
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+type UpdateAddressUnsubscribeConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 发信地址
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// 退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+	UnsubscribeConfig *string `json:"UnsubscribeConfig,omitnil,omitempty" name:"UnsubscribeConfig"`
+
+	// 0:关闭配置，1:打开配置
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
+func (r *UpdateAddressUnsubscribeConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAddressUnsubscribeConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Address")
+	delete(f, "UnsubscribeConfig")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAddressUnsubscribeConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateAddressUnsubscribeConfigResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateAddressUnsubscribeConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateAddressUnsubscribeConfigResponseParams `json:"Response"`
+}
+
+func (r *UpdateAddressUnsubscribeConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAddressUnsubscribeConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

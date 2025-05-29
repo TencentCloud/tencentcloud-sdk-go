@@ -4772,6 +4772,10 @@ func NewModifyResourceScheduleConfigResponse() (response *ModifyResourceSchedule
 }
 
 // ModifyResourceScheduleConfig
+// 已废弃，请使用ModifyYarnQueueV2来修改队列配置，近一年无相关日志
+//
+// 
+//
 // 修改YARN资源调度的资源配置。已废弃，请使用`ModifyYarnQueueV2`来修改队列配置
 //
 // 可能返回的错误码:
@@ -4787,6 +4791,10 @@ func (c *Client) ModifyResourceScheduleConfig(request *ModifyResourceScheduleCon
 }
 
 // ModifyResourceScheduleConfig
+// 已废弃，请使用ModifyYarnQueueV2来修改队列配置，近一年无相关日志
+//
+// 
+//
 // 修改YARN资源调度的资源配置。已废弃，请使用`ModifyYarnQueueV2`来修改队列配置
 //
 // 可能返回的错误码:
@@ -5262,6 +5270,10 @@ func NewModifyYarnDeployResponse() (response *ModifyYarnDeployResponse) {
 }
 
 // ModifyYarnDeploy
+// 该接口已废弃，请使用DeployYarnConf完成部署生效
+//
+// 
+//
 // 部署生效。已废弃，请使用`DeployYarnConf`接口进行部署生效
 //
 // 可能返回的错误码:
@@ -5274,6 +5286,10 @@ func (c *Client) ModifyYarnDeploy(request *ModifyYarnDeployRequest) (response *M
 }
 
 // ModifyYarnDeploy
+// 该接口已废弃，请使用DeployYarnConf完成部署生效
+//
+// 
+//
 // 部署生效。已废弃，请使用`DeployYarnConf`接口进行部署生效
 //
 // 可能返回的错误码:

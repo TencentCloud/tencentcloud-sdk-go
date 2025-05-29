@@ -980,6 +980,7 @@ func NewAssignIpv6SubnetCidrBlockResponse() (response *AssignIpv6SubnetCidrBlock
 //  LIMITEXCEEDED_SUBNETCIDRBLOCK = "LimitExceeded.SubnetCidrBlock"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_GUANOTSUPPORTALLOCATECDCSUBNET = "UnsupportedOperation.GUANotSupportAllocateCdcSubnet"
 func (c *Client) AssignIpv6SubnetCidrBlock(request *AssignIpv6SubnetCidrBlockRequest) (response *AssignIpv6SubnetCidrBlockResponse, err error) {
     return c.AssignIpv6SubnetCidrBlockWithContext(context.Background(), request)
 }
@@ -999,6 +1000,7 @@ func (c *Client) AssignIpv6SubnetCidrBlock(request *AssignIpv6SubnetCidrBlockReq
 //  LIMITEXCEEDED_SUBNETCIDRBLOCK = "LimitExceeded.SubnetCidrBlock"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_GUANOTSUPPORTALLOCATECDCSUBNET = "UnsupportedOperation.GUANotSupportAllocateCdcSubnet"
 func (c *Client) AssignIpv6SubnetCidrBlockWithContext(ctx context.Context, request *AssignIpv6SubnetCidrBlockRequest) (response *AssignIpv6SubnetCidrBlockResponse, err error) {
     if request == nil {
         request = NewAssignIpv6SubnetCidrBlockRequest()
