@@ -6618,6 +6618,7 @@ type Component struct {
 	// <ul><li> <b>SIGN_SEAL</b> : 签署印章控件；</li>
 	// <li> <b>SIGN_DATE</b> : 签署日期控件；</li>
 	// <li> <b>SIGN_SIGNATURE</b> : 用户签名控件；</li>
+	// <li> <b>SIGN_PAGING_SIGNATURE</b> : 用户签名骑缝章控件；若文件发起，需要对应填充ComponentPosY、ComponentWidth、ComponentHeight</li>
 	// <li> <b>SIGN_PAGING_SEAL</b> : 骑缝章；若文件发起，需要对应填充ComponentPosY、ComponentWidth、ComponentHeight</li>
 	// <li> <b>SIGN_OPINION</b> : 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认；</li>
 	// <li> <b>SIGN_VIRTUAL_COMBINATION</b> : 签批控件。内部最多组合4个特定控件（SIGN_SIGNATURE，SIGN_DATA,SIGN_MULTI_LINE_TEXT,SIGN_SELECTOR），本身不填充任何文字内容</li>
@@ -6629,6 +6630,7 @@ type Component struct {
 	// * 个人方
 	// <ul><li> <b>SIGN_DATE</b> : 签署日期控件；</li>
 	// <li> <b>SIGN_SIGNATURE</b> : 用户签名控件；</li>
+	// <li> <b>SIGN_PAGING_SIGNATURE</b> : 用户签名骑缝章控件；</li>
 	// <li> <b>SIGN_OPINION</b> : 签署意见控件，用户需要根据配置的签署意见内容，完成对意见内容的确认；</li>
 	// <li> <b>SIGN_VIRTUAL_COMBINATION</b> : 签批控件。内部包含最多4个特定控件（SIGN_SIGNATURE，SIGN_DATA,SIGN_MULTI_LINE_TEXT,SIGN_SELECTOR），本身不填充任何文字内容</li>
 	// <li> <b>SIGN_MULTI_LINE_TEXT</b> : 多行文本，<font color="red">仅可用在签批控件内部作为组合控件，单独无法使用</font>，常用作批注附言</li>
@@ -6703,7 +6705,7 @@ type Component struct {
 	// <ul><li> <b>NotMakeImageCenter</b>：bool。是否设置图片居中。false：居中（默认）。 true : 不居中</li>
 	// <li> <b>FillMethod</b> : int. 填充方式。0-铺满（默认）；1-等比例缩放</li></ul>
 	// 
-	// <font color="red">ComponentType为SIGN_SIGNATURE类型时</font>，可以**ComponentTypeLimit**参数控制签署方式
+	// <font color="red">ComponentType为SIGN_SIGNATURE、SIGN_PAGING_SIGNATURE类型时</font>，可以**ComponentTypeLimit**参数控制签署方式
 	// <ul><li> <b>HANDWRITE</b> : 需要实时手写的手写签名</li>
 	// <li> <b>HANDWRITTEN_ESIGN</b> : 长效手写签名， 是使用保存到个人中心的印章列表的手写签名(并且包含HANDWRITE)</li>
 	// <li> <b>OCR_ESIGN</b> : AI智能识别手写签名</li>

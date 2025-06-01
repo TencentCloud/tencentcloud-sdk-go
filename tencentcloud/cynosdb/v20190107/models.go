@@ -9135,7 +9135,7 @@ type DescribeTasksRequestParams struct {
 	// 任务开始时间结束值
 	StartTimeEnd *string `json:"StartTimeEnd,omitnil,omitempty" name:"StartTimeEnd"`
 
-	// 过滤条件
+	// 过滤条件，支持的搜索字段："ClusterId"、"ClusterName"、"InstanceId"、"InstanceName"、"Status"、"TaskId"、"TaskType"
 	Filters []*QueryFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 查询列表长度
@@ -9154,7 +9154,7 @@ type DescribeTasksRequest struct {
 	// 任务开始时间结束值
 	StartTimeEnd *string `json:"StartTimeEnd,omitnil,omitempty" name:"StartTimeEnd"`
 
-	// 过滤条件
+	// 过滤条件，支持的搜索字段："ClusterId"、"ClusterName"、"InstanceId"、"InstanceName"、"Status"、"TaskId"、"TaskType"
 	Filters []*QueryFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 查询列表长度
@@ -14616,11 +14616,11 @@ type ProxyZone struct {
 }
 
 type QueryFilter struct {
-	// 搜索字段，目前支持："InstanceId", "ProjectId", "InstanceName", "Vip"
-	Names []*string `json:"Names,omitnil,omitempty" name:"Names"`
-
 	// 搜索字符串
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+
+	// 搜索字段，目前支持："InstanceId", "ProjectId", "InstanceName", "Vip"
+	Names []*string `json:"Names,omitnil,omitempty" name:"Names"`
 
 	// 是否精确匹配
 	ExactMatch *bool `json:"ExactMatch,omitnil,omitempty" name:"ExactMatch"`

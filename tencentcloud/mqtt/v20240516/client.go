@@ -221,6 +221,8 @@ func NewCreateAuthorizationPolicyResponse() (response *CreateAuthorizationPolicy
 // 创建MQTT实例的性能测试任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DUPLICATEPOLICY = "FailedOperation.DuplicatePolicy"
+//  FAILEDOPERATION_DUPLICATEPRIORITY = "FailedOperation.DuplicatePriority"
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) CreateAuthorizationPolicy(request *CreateAuthorizationPolicyRequest) (response *CreateAuthorizationPolicyResponse, err error) {
@@ -231,6 +233,8 @@ func (c *Client) CreateAuthorizationPolicy(request *CreateAuthorizationPolicyReq
 // 创建MQTT实例的性能测试任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DUPLICATEPOLICY = "FailedOperation.DuplicatePolicy"
+//  FAILEDOPERATION_DUPLICATEPRIORITY = "FailedOperation.DuplicatePriority"
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) CreateAuthorizationPolicyWithContext(ctx context.Context, request *CreateAuthorizationPolicyRequest) (response *CreateAuthorizationPolicyResponse, err error) {
@@ -324,7 +328,7 @@ func NewCreateInsPublicEndpointResponse() (response *CreateInsPublicEndpointResp
 }
 
 // CreateInsPublicEndpoint
-// 为MQTT实例创建公网接入点
+// 为MQTT实例创建公网接入点，未开启公网的集群可调用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -336,7 +340,7 @@ func (c *Client) CreateInsPublicEndpoint(request *CreateInsPublicEndpointRequest
 }
 
 // CreateInsPublicEndpoint
-// 为MQTT实例创建公网接入点
+// 为MQTT实例创建公网接入点，未开启公网的集群可调用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -383,6 +387,10 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INSTANCETYPENOTMATCH = "InvalidParameter.InstanceTypeNotMatch"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PUBLICNETWORKINVALIDPARAMETERVALUE = "InvalidParameterValue.PublicNetworkInvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
     return c.CreateInstanceWithContext(context.Background(), request)
 }
@@ -392,6 +400,10 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INSTANCETYPENOTMATCH = "InvalidParameter.InstanceTypeNotMatch"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_PUBLICNETWORKINVALIDPARAMETERVALUE = "InvalidParameterValue.PublicNetworkInvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
     if request == nil {
         request = NewCreateInstanceRequest()
@@ -765,6 +777,7 @@ func NewDeleteAuthenticatorResponse() (response *DeleteAuthenticatorResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_NOAUTHENTICATOR = "ResourceNotFound.NoAuthenticator"
 //  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 func (c *Client) DeleteAuthenticator(request *DeleteAuthenticatorRequest) (response *DeleteAuthenticatorResponse, err error) {
     return c.DeleteAuthenticatorWithContext(context.Background(), request)
@@ -776,6 +789,7 @@ func (c *Client) DeleteAuthenticator(request *DeleteAuthenticatorRequest) (respo
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_NOAUTHENTICATOR = "ResourceNotFound.NoAuthenticator"
 //  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 func (c *Client) DeleteAuthenticatorWithContext(ctx context.Context, request *DeleteAuthenticatorRequest) (response *DeleteAuthenticatorResponse, err error) {
     if request == nil {
@@ -871,6 +885,7 @@ func NewDeleteCaCertificateResponse() (response *DeleteCaCertificateResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  FAILEDOPERATION_RELATEDDEVICECERTIFICATEEXISTS = "FailedOperation.RelatedDeviceCertificateExists"
+//  RESOURCENOTFOUND_CA = "ResourceNotFound.Ca"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DeleteCaCertificate(request *DeleteCaCertificateRequest) (response *DeleteCaCertificateResponse, err error) {
     return c.DeleteCaCertificateWithContext(context.Background(), request)
@@ -882,6 +897,7 @@ func (c *Client) DeleteCaCertificate(request *DeleteCaCertificateRequest) (respo
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  FAILEDOPERATION_RELATEDDEVICECERTIFICATEEXISTS = "FailedOperation.RelatedDeviceCertificateExists"
+//  RESOURCENOTFOUND_CA = "ResourceNotFound.Ca"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DeleteCaCertificateWithContext(ctx context.Context, request *DeleteCaCertificateRequest) (response *DeleteCaCertificateResponse, err error) {
     if request == nil {
@@ -1719,6 +1735,57 @@ func (c *Client) DescribeInstanceListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeMessageByTopicRequest() (request *DescribeMessageByTopicRequest) {
+    request = &DescribeMessageByTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DescribeMessageByTopic")
+    
+    
+    return
+}
+
+func NewDescribeMessageByTopicResponse() (response *DescribeMessageByTopicResponse) {
+    response = &DescribeMessageByTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMessageByTopic
+// 根据订阅查询消息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeMessageByTopic(request *DescribeMessageByTopicRequest) (response *DescribeMessageByTopicResponse, err error) {
+    return c.DescribeMessageByTopicWithContext(context.Background(), request)
+}
+
+// DescribeMessageByTopic
+// 根据订阅查询消息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeMessageByTopicWithContext(ctx context.Context, request *DescribeMessageByTopicRequest) (response *DescribeMessageByTopicResponse, err error) {
+    if request == nil {
+        request = NewDescribeMessageByTopicRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMessageByTopic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMessageByTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMessageListRequest() (request *DescribeMessageListRequest) {
     request = &DescribeMessageListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2057,18 +2124,22 @@ func NewModifyAuthorizationPolicyResponse() (response *ModifyAuthorizationPolicy
 }
 
 // ModifyAuthorizationPolicy
-// 修改策略规则
+// 修改策略规则，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DUPLICATEPOLICY = "FailedOperation.DuplicatePolicy"
+//  FAILEDOPERATION_DUPLICATEPRIORITY = "FailedOperation.DuplicatePriority"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) ModifyAuthorizationPolicy(request *ModifyAuthorizationPolicyRequest) (response *ModifyAuthorizationPolicyResponse, err error) {
     return c.ModifyAuthorizationPolicyWithContext(context.Background(), request)
 }
 
 // ModifyAuthorizationPolicy
-// 修改策略规则
+// 修改策略规则，可参考 [数据面授权策略说明](https://cloud.tencent.com/document/product/1778/109715)
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DUPLICATEPOLICY = "FailedOperation.DuplicatePolicy"
+//  FAILEDOPERATION_DUPLICATEPRIORITY = "FailedOperation.DuplicatePriority"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) ModifyAuthorizationPolicyWithContext(ctx context.Context, request *ModifyAuthorizationPolicyRequest) (response *ModifyAuthorizationPolicyResponse, err error) {
     if request == nil {
@@ -2322,7 +2393,7 @@ func NewModifyJWKSAuthenticatorResponse() (response *ModifyJWKSAuthenticatorResp
 }
 
 // ModifyJWKSAuthenticator
-// 修改MQTT JWKS 认证器
+// 修改MQTT JWKS 认证器，全量配置修改，需要提交完整的修改后配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2331,7 +2402,7 @@ func (c *Client) ModifyJWKSAuthenticator(request *ModifyJWKSAuthenticatorRequest
 }
 
 // ModifyJWKSAuthenticator
-// 修改MQTT JWKS 认证器
+// 修改MQTT JWKS 认证器，全量配置修改，需要提交完整的修改后配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2630,6 +2701,7 @@ func NewRegisterDeviceCertificateResponse() (response *RegisterDeviceCertificate
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_CA = "ResourceNotFound.Ca"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) RegisterDeviceCertificate(request *RegisterDeviceCertificateRequest) (response *RegisterDeviceCertificateResponse, err error) {
     return c.RegisterDeviceCertificateWithContext(context.Background(), request)
@@ -2640,6 +2712,7 @@ func (c *Client) RegisterDeviceCertificate(request *RegisterDeviceCertificateReq
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_CA = "ResourceNotFound.Ca"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) RegisterDeviceCertificateWithContext(ctx context.Context, request *RegisterDeviceCertificateRequest) (response *RegisterDeviceCertificateResponse, err error) {
     if request == nil {
@@ -2681,6 +2754,7 @@ func NewRevokedDeviceCertificateResponse() (response *RevokedDeviceCertificateRe
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_CERTIFICATE = "ResourceNotFound.Certificate"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) RevokedDeviceCertificate(request *RevokedDeviceCertificateRequest) (response *RevokedDeviceCertificateResponse, err error) {
     return c.RevokedDeviceCertificateWithContext(context.Background(), request)
@@ -2691,6 +2765,7 @@ func (c *Client) RevokedDeviceCertificate(request *RevokedDeviceCertificateReque
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_CERTIFICATE = "ResourceNotFound.Certificate"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) RevokedDeviceCertificateWithContext(ctx context.Context, request *RevokedDeviceCertificateRequest) (response *RevokedDeviceCertificateResponse, err error) {
     if request == nil {

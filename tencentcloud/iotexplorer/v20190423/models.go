@@ -2473,7 +2473,7 @@ type CreateStudioProductRequestParams struct {
 	// 产品类型 填写 ( 0 普通产品 ， 5 网关产品)
 	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 
-	// 加密类型 ，1表示证书认证，2表示秘钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
+	// 加密类型 ，1表示证书认证，2表示密钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
 	EncryptionType *string `json:"EncryptionType,omitnil,omitempty" name:"EncryptionType"`
 
 	// 连接类型 可以填写 wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh
@@ -2507,7 +2507,7 @@ type CreateStudioProductRequest struct {
 	// 产品类型 填写 ( 0 普通产品 ， 5 网关产品)
 	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
 
-	// 加密类型 ，1表示证书认证，2表示秘钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
+	// 加密类型 ，1表示证书认证，2表示密钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
 	EncryptionType *string `json:"EncryptionType,omitnil,omitempty" name:"EncryptionType"`
 
 	// 连接类型 可以填写 wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh

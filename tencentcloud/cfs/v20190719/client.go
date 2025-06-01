@@ -2163,7 +2163,7 @@ func NewModifyFileSystemAutoScaleUpRuleResponse() (response *ModifyFileSystemAut
 }
 
 // ModifyFileSystemAutoScaleUpRule
-// 用来设置文件系统扩容策略，，该接口只支持turbo文件系统
+// 用来设置文件系统扩容策略，该接口只支持turbo文件系统
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_GETROLEFAILED = "AuthFailure.GetRoleFailed"
@@ -2177,7 +2177,7 @@ func (c *Client) ModifyFileSystemAutoScaleUpRule(request *ModifyFileSystemAutoSc
 }
 
 // ModifyFileSystemAutoScaleUpRule
-// 用来设置文件系统扩容策略，，该接口只支持turbo文件系统
+// 用来设置文件系统扩容策略，该接口只支持turbo文件系统
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_GETROLEFAILED = "AuthFailure.GetRoleFailed"
@@ -2423,7 +2423,7 @@ func NewStopMigrationTaskResponse() (response *StopMigrationTaskResponse) {
 }
 
 // StopMigrationTask
-// 用于终止迁移任务。
+// 用于终止迁移任务，非运行中状态不支持终止。
 //
 // 此接口需提交工单，开启白名单之后才能使用。
 //
@@ -2434,7 +2434,7 @@ func (c *Client) StopMigrationTask(request *StopMigrationTaskRequest) (response 
 }
 
 // StopMigrationTask
-// 用于终止迁移任务。
+// 用于终止迁移任务，非运行中状态不支持终止。
 //
 // 此接口需提交工单，开启白名单之后才能使用。
 //

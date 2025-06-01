@@ -1383,6 +1383,7 @@ func NewDescribeBillingResourceGroupResponse() (response *DescribeBillingResourc
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_RESOURCEGROUPNOTFOUND = "ResourceNotFound.ResourceGroupNotFound"
 func (c *Client) DescribeBillingResourceGroup(request *DescribeBillingResourceGroupRequest) (response *DescribeBillingResourceGroupResponse, err error) {
     return c.DescribeBillingResourceGroupWithContext(context.Background(), request)
 }
@@ -1408,6 +1409,7 @@ func (c *Client) DescribeBillingResourceGroup(request *DescribeBillingResourceGr
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_RESOURCEGROUPNOTFOUND = "ResourceNotFound.ResourceGroupNotFound"
 func (c *Client) DescribeBillingResourceGroupWithContext(ctx context.Context, request *DescribeBillingResourceGroupRequest) (response *DescribeBillingResourceGroupResponse, err error) {
     if request == nil {
         request = NewDescribeBillingResourceGroupRequest()

@@ -647,7 +647,7 @@ func (r *CreateCfsPGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCfsRuleRequestParams struct {
-	// 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
+	// 权限组 ID，可通过[DescribeCfsPGroups接口](https://cloud.tencent.com/document/api/582/38157)获取
 	PGroupId *string `json:"PGroupId,omitnil,omitempty" name:"PGroupId"`
 
 	// 可以填写单个 IP 或者单个网段，例如 10.1.10.11 或者 10.10.1.0/24。默认来访地址为*表示允许所有。同时需要注意，此处需填写 CVM 的内网 IP。
@@ -659,7 +659,7 @@ type CreateCfsRuleRequestParams struct {
 	// 读写权限, 值为 RO、RW；其中 RO 为只读，RW 为读写，不填默认为只读
 	RWPermission *string `json:"RWPermission,omitnil,omitempty" name:"RWPermission"`
 
-	// 用户权限，值为 all_squash、no_all_squash、root_squash、no_root_squash。
+	// 用户权限，值为 all_squash、no_all_squash、root_squash、no_root_squash。默认值为root_squash
 	// all_squash：所有访问用户（含 root 用户）都会被映射为匿名用户或用户组。
 	// no_all_squash：所有访问用户（含 root 用户）均保持原有的 UID/GID 信息。
 	// root_squash：将来访的 root 用户映射为匿名用户或用户组，非 root 用户保持原有的 UID/GID 信息。
@@ -670,7 +670,7 @@ type CreateCfsRuleRequestParams struct {
 type CreateCfsRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
+	// 权限组 ID，可通过[DescribeCfsPGroups接口](https://cloud.tencent.com/document/api/582/38157)获取
 	PGroupId *string `json:"PGroupId,omitnil,omitempty" name:"PGroupId"`
 
 	// 可以填写单个 IP 或者单个网段，例如 10.1.10.11 或者 10.10.1.0/24。默认来访地址为*表示允许所有。同时需要注意，此处需填写 CVM 的内网 IP。
@@ -682,7 +682,7 @@ type CreateCfsRuleRequest struct {
 	// 读写权限, 值为 RO、RW；其中 RO 为只读，RW 为读写，不填默认为只读
 	RWPermission *string `json:"RWPermission,omitnil,omitempty" name:"RWPermission"`
 
-	// 用户权限，值为 all_squash、no_all_squash、root_squash、no_root_squash。
+	// 用户权限，值为 all_squash、no_all_squash、root_squash、no_root_squash。默认值为root_squash
 	// all_squash：所有访问用户（含 root 用户）都会被映射为匿名用户或用户组。
 	// no_all_squash：所有访问用户（含 root 用户）均保持原有的 UID/GID 信息。
 	// root_squash：将来访的 root 用户映射为匿名用户或用户组，非 root 用户保持原有的 UID/GID 信息。
@@ -755,10 +755,10 @@ func (r *CreateCfsRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCfsSnapshotRequestParams struct {
-	// 文件系统 ID，通过查询文件系统接口获取
+	// 文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 快照名称，不超过64字符
+	// 快照名称，支持不超过64字符长度，支持中文、数字、_、-
 	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
 
 	// 快照标签
@@ -768,10 +768,10 @@ type CreateCfsSnapshotRequestParams struct {
 type CreateCfsSnapshotRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统 ID，通过查询文件系统接口获取
+	// 文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 快照名称，不超过64字符
+	// 快照名称，支持不超过64字符长度，支持中文、数字、_、-
 	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
 
 	// 快照标签
@@ -988,14 +988,14 @@ func (r *CreateMigrationTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAutoSnapshotPolicyRequestParams struct {
-	// 快照策略ID，查询快照策略接口获取
+	// 快照策略ID，查询快照策略接口获取,[DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/api/582/80208)
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 }
 
 type DeleteAutoSnapshotPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 快照策略ID，查询快照策略接口获取
+	// 快照策略ID，查询快照策略接口获取,[DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/api/582/80208)
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 }
 
@@ -1045,14 +1045,14 @@ func (r *DeleteAutoSnapshotPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteCfsFileSystemRequestParams struct {
-	// 文件系统 ID。说明，进行删除文件系统操作前需要先调用 DeleteMountTarget 接口删除该文件系统的挂载点，否则会删除失败。
+	// 文件系统 ID，通过[查询文件系统接口](https://cloud.tencent.com/document/api/582/38170)获取。说明，进行删除文件系统操作前需要先调用 DeleteMountTarget 接口删除该文件系统的挂载点，否则会删除失败。
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
 type DeleteCfsFileSystemRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统 ID。说明，进行删除文件系统操作前需要先调用 DeleteMountTarget 接口删除该文件系统的挂载点，否则会删除失败。
+	// 文件系统 ID，通过[查询文件系统接口](https://cloud.tencent.com/document/api/582/38170)获取。说明，进行删除文件系统操作前需要先调用 DeleteMountTarget 接口删除该文件系统的挂载点，否则会删除失败。
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
@@ -1099,14 +1099,14 @@ func (r *DeleteCfsFileSystemResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteCfsPGroupRequestParams struct {
-	// 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
+	// 权限组 ID，可通过[DescribeCfsPGroups接口](https://cloud.tencent.com/document/api/582/38157)获取
 	PGroupId *string `json:"PGroupId,omitnil,omitempty" name:"PGroupId"`
 }
 
 type DeleteCfsPGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
+	// 权限组 ID，可通过[DescribeCfsPGroups接口](https://cloud.tencent.com/document/api/582/38157)获取
 	PGroupId *string `json:"PGroupId,omitnil,omitempty" name:"PGroupId"`
 }
 
@@ -1159,20 +1159,20 @@ func (r *DeleteCfsPGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteCfsRuleRequestParams struct {
-	// 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
+	// 权限组 ID，可通过[DescribeCfsPGroups接口](https://cloud.tencent.com/document/api/582/38157)获取
 	PGroupId *string `json:"PGroupId,omitnil,omitempty" name:"PGroupId"`
 
-	// 规则 ID，通过查询权限组规则接口获取
+	// 规则 ID，可通过[DescribeCfsRules](https://cloud.tencent.com/document/api/582/38156)接口获取
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
 type DeleteCfsRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
+	// 权限组 ID，可通过[DescribeCfsPGroups接口](https://cloud.tencent.com/document/api/582/38157)获取
 	PGroupId *string `json:"PGroupId,omitnil,omitempty" name:"PGroupId"`
 
-	// 规则 ID，通过查询权限组规则接口获取
+	// 规则 ID，可通过[DescribeCfsRules](https://cloud.tencent.com/document/api/582/38156)接口获取
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 }
 
@@ -1226,20 +1226,22 @@ func (r *DeleteCfsRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteCfsSnapshotRequestParams struct {
-	// 文件系统快照id，可通过查询快照列表接口获取
+	// 快照ID，可以通过[DescribeCfsSnapshots](https://cloud.tencent.com/document/api/582/80206) 查询获取
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
 	// 需要删除的文件系统快照ID 列表，快照ID，跟ID列表至少填一项
+	// 快照ID，可以通过[DescribeCfsSnapshots](https://cloud.tencent.com/document/api/582/80206) 查询获取
 	SnapshotIds []*string `json:"SnapshotIds,omitnil,omitempty" name:"SnapshotIds"`
 }
 
 type DeleteCfsSnapshotRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统快照id，可通过查询快照列表接口获取
+	// 快照ID，可以通过[DescribeCfsSnapshots](https://cloud.tencent.com/document/api/582/80206) 查询获取
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
 	// 需要删除的文件系统快照ID 列表，快照ID，跟ID列表至少填一项
+	// 快照ID，可以通过[DescribeCfsSnapshots](https://cloud.tencent.com/document/api/582/80206) 查询获取
 	SnapshotIds []*string `json:"SnapshotIds,omitnil,omitempty" name:"SnapshotIds"`
 }
 
@@ -1405,7 +1407,7 @@ func (r *DeleteMountTargetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteUserQuotaRequestParams struct {
-	// 文件系统 ID，通过查询文件系统接口获取
+	// 文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 指定配额类型，包括Uid（按用户ID限制）、Gid（按用户组ID限制）、Dir（按目录限制）
@@ -1421,7 +1423,7 @@ type DeleteUserQuotaRequestParams struct {
 type DeleteUserQuotaRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统 ID，通过查询文件系统接口获取
+	// 文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 指定配额类型，包括Uid（按用户ID限制）、Gid（按用户组ID限制）、Dir（按目录限制）
@@ -1703,7 +1705,7 @@ func (r *DescribeBucketListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfsFileSystemClientsRequestParams struct {
-	// 文件系统 ID，通过查询文件系统接口获取
+	// 文件系统 ID，通过[查询文件系统接口](https://cloud.tencent.com/document/api/582/38170)获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// Offset 分页码，默认为0
@@ -1716,7 +1718,7 @@ type DescribeCfsFileSystemClientsRequestParams struct {
 type DescribeCfsFileSystemClientsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统 ID，通过查询文件系统接口获取
+	// 文件系统 ID，通过[查询文件系统接口](https://cloud.tencent.com/document/api/582/38170)获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// Offset 分页码，默认为0
@@ -1926,14 +1928,14 @@ func (r *DescribeCfsPGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfsRulesRequestParams struct {
-	// 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
+	// 权限组 ID，可通过[DescribeCfsPGroups接口](https://cloud.tencent.com/document/api/582/38157)获取
 	PGroupId *string `json:"PGroupId,omitnil,omitempty" name:"PGroupId"`
 }
 
 type DescribeCfsRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
+	// 权限组 ID，可通过[DescribeCfsPGroups接口](https://cloud.tencent.com/document/api/582/38157)获取
 	PGroupId *string `json:"PGroupId,omitnil,omitempty" name:"PGroupId"`
 }
 
@@ -2114,7 +2116,7 @@ type DescribeCfsSnapshotsRequestParams struct {
 	// <br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 按创建时间排序取值CreationTime
+	// 按创建时间排序取值
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
 	// 排序 升序或者降序
@@ -2147,7 +2149,7 @@ type DescribeCfsSnapshotsRequest struct {
 	// <br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 按创建时间排序取值CreationTime
+	// 按创建时间排序取值
 	OrderField *string `json:"OrderField,omitnil,omitempty" name:"OrderField"`
 
 	// 排序 升序或者降序
@@ -2218,21 +2220,7 @@ type DescribeMigrationTasksRequestParams struct {
 	// 分页单页限制数目，默认值为20，最大值100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <br><li> taskId
-	// 
-	// 按照【迁移任务id】进行过滤。
-	// 类型：String
-	// 
-	// 必选：否
-	// 
-	// <br><li> taskName
-	// 
-	// 按照【迁移任务名字】进行模糊搜索过滤。
-	// 类型：String
-	// 
-	// 必选：否
-	// 
-	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
+	// <br><li> taskId按照【迁移任务id】进行过滤。类型：String必选：否<br></li><br><li>  taskName按照【迁移任务名字】进行模糊搜索过滤。类型：String必选：否每次请求的Filters的上限为10，Filter.Values的上限为100。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -2245,21 +2233,7 @@ type DescribeMigrationTasksRequest struct {
 	// 分页单页限制数目，默认值为20，最大值100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// <br><li> taskId
-	// 
-	// 按照【迁移任务id】进行过滤。
-	// 类型：String
-	// 
-	// 必选：否
-	// 
-	// <br><li> taskName
-	// 
-	// 按照【迁移任务名字】进行模糊搜索过滤。
-	// 类型：String
-	// 
-	// 必选：否
-	// 
-	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
+	// <br><li> taskId按照【迁移任务id】进行过滤。类型：String必选：否<br></li><br><li>  taskName按照【迁移任务名字】进行模糊搜索过滤。类型：String必选：否每次请求的Filters的上限为10，Filter.Values的上限为100。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -2286,7 +2260,7 @@ func (r *DescribeMigrationTasksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMigrationTasksResponseParams struct {
-	// 迁移任务的数量
+	// 迁移任务的总数量
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 迁移任务详情
@@ -2314,14 +2288,14 @@ func (r *DescribeMigrationTasksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeMountTargetsRequestParams struct {
-	// 文件系统 ID，查询文件系统列表可以获得id
+	// 文件系统 ID，[查询文件系统列表](https://cloud.tencent.com/document/api/582/38170)可以获得id
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
 type DescribeMountTargetsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统 ID，查询文件系统列表可以获得id
+	// 文件系统 ID，[查询文件系统列表](https://cloud.tencent.com/document/api/582/38170)可以获得id
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
@@ -2374,26 +2348,26 @@ func (r *DescribeMountTargetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSnapshotOperationLogsRequestParams struct {
-	// 文件系统快照ID，通过快照创建接口获得
+	// 快照ID，可以通过[DescribeCfsSnapshots](https://cloud.tencent.com/document/api/582/80206) 查询获取
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
-	// 起始时间
+	// 起始时间，格式“YYYY-MM-DD hh:mm:ss”
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间，格式“YYYY-MM-DD hh:mm:ss”
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type DescribeSnapshotOperationLogsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统快照ID，通过快照创建接口获得
+	// 快照ID，可以通过[DescribeCfsSnapshots](https://cloud.tencent.com/document/api/582/80206) 查询获取
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
-	// 起始时间
+	// 起始时间，格式“YYYY-MM-DD hh:mm:ss”
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间，格式“YYYY-MM-DD hh:mm:ss”
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -2448,7 +2422,7 @@ func (r *DescribeSnapshotOperationLogsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserQuotaRequestParams struct {
-	// 文件系统 ID,通过查询文件系统列表获取
+	// 文件系统 ID,通过[查询文件系统列表](https://cloud.tencent.com/document/api/582/38170)获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 过滤条件。
@@ -2466,7 +2440,7 @@ type DescribeUserQuotaRequestParams struct {
 type DescribeUserQuotaRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统 ID,通过查询文件系统列表获取
+	// 文件系统 ID,通过[查询文件系统列表](https://cloud.tencent.com/document/api/582/38170)获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 过滤条件。
@@ -2564,7 +2538,7 @@ type FileSystemClient struct {
 	// 文件系统所属VPCID
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 可用区名称，例如ap-beijing-1，请参考 概览文档中的地域与可用区列表
+	// 可用区名称，例如ap-beijing-1，参考[简介](https://cloud.tencent.com/document/api/582/38144)文档中的地域与可用区列表
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 可用区中文名称
@@ -2753,7 +2727,7 @@ type MigrationTaskInfo struct {
 
 // Predefined struct for user
 type ModifyFileSystemAutoScaleUpRuleRequestParams struct {
-	// 文件系统id,通过查询文件系统列表获取该参数
+	// 文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 扩容阈值，范围[10-90]
@@ -2769,7 +2743,7 @@ type ModifyFileSystemAutoScaleUpRuleRequestParams struct {
 type ModifyFileSystemAutoScaleUpRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统id,通过查询文件系统列表获取该参数
+	// 文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 扩容阈值，范围[10-90]
@@ -2992,7 +2966,7 @@ func (r *ScaleUpFileSystemResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SetUserQuotaRequestParams struct {
-	// 文件系统 ID,通过查询文件系统列表获取
+	// 文件系统 ID,通过[查询文件系统列表](https://cloud.tencent.com/document/api/582/38170)获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 指定配额类型，包括Uid、Gid，Dir，分别代表用户配额，用户组配额，目录配额
@@ -3014,7 +2988,7 @@ type SetUserQuotaRequestParams struct {
 type SetUserQuotaRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统 ID,通过查询文件系统列表获取
+	// 文件系统 ID,通过[查询文件系统列表](https://cloud.tencent.com/document/api/582/38170)获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 指定配额类型，包括Uid、Gid，Dir，分别代表用户配额，用户组配额，目录配额
@@ -3299,20 +3273,20 @@ type TieringDetailInfo struct {
 
 // Predefined struct for user
 type UnbindAutoSnapshotPolicyRequestParams struct {
-	// 需要解绑的文件系统ID列表，用"," 分割，文件系统id 通创建文件系统接口获得
+	// 需要解绑的文件系统ID列表，用"," 分割，文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
 	FileSystemIds *string `json:"FileSystemIds,omitnil,omitempty" name:"FileSystemIds"`
 
-	// 解绑的快照ID，通过创建快照策略接口获得
+	// 解绑的快照策略ID，可以通过[DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/api/582/80208) 查询获取
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 }
 
 type UnbindAutoSnapshotPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要解绑的文件系统ID列表，用"," 分割，文件系统id 通创建文件系统接口获得
+	// 需要解绑的文件系统ID列表，用"," 分割，文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
 	FileSystemIds *string `json:"FileSystemIds,omitnil,omitempty" name:"FileSystemIds"`
 
-	// 解绑的快照ID，通过创建快照策略接口获得
+	// 解绑的快照策略ID，可以通过[DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/api/582/80208) 查询获取
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 }
 
@@ -3363,7 +3337,7 @@ func (r *UnbindAutoSnapshotPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateAutoSnapshotPolicyRequestParams struct {
-	// 快照策略ID,查询快照策略列表获取
+	// 解绑的快照策略ID，可以通过[DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/api/582/80208) 查询获取
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 
 	// 快照策略名称，不超过64个字符
@@ -3391,7 +3365,7 @@ type UpdateAutoSnapshotPolicyRequestParams struct {
 type UpdateAutoSnapshotPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 快照策略ID,查询快照策略列表获取
+	// 解绑的快照策略ID，可以通过[DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/api/582/80208) 查询获取
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 
 	// 快照策略名称，不超过64个字符
@@ -3469,20 +3443,20 @@ func (r *UpdateAutoSnapshotPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateCfsFileSystemNameRequestParams struct {
-	// 文件系统 ID
+	// 文件系统 ID,通过[查询文件系统接口](https://cloud.tencent.com/document/api/582/38170)获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 用户自定义文件系统名称
+	// 用户自定义文件系统名称，64字节内的中文字母数字或者 _,-,与CreationToken 至少填一个
 	FsName *string `json:"FsName,omitnil,omitempty" name:"FsName"`
 }
 
 type UpdateCfsFileSystemNameRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统 ID
+	// 文件系统 ID,通过[查询文件系统接口](https://cloud.tencent.com/document/api/582/38170)获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 用户自定义文件系统名称
+	// 用户自定义文件系统名称，64字节内的中文字母数字或者 _,-,与CreationToken 至少填一个
 	FsName *string `json:"FsName,omitnil,omitempty" name:"FsName"`
 }
 
@@ -3539,20 +3513,20 @@ func (r *UpdateCfsFileSystemNameResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateCfsFileSystemPGroupRequestParams struct {
-	// 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
+	// 权限组 ID，可通过[DescribeCfsPGroups接口](https://cloud.tencent.com/document/api/582/38157)获取
 	PGroupId *string `json:"PGroupId,omitnil,omitempty" name:"PGroupId"`
 
-	// 文件系统 ID，通过查询文件系统接口获取
+	// 文件系统 ID，通过[查询文件系统接口](https://cloud.tencent.com/document/api/582/38170)获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
 type UpdateCfsFileSystemPGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
+	// 权限组 ID，可通过[DescribeCfsPGroups接口](https://cloud.tencent.com/document/api/582/38157)获取
 	PGroupId *string `json:"PGroupId,omitnil,omitempty" name:"PGroupId"`
 
-	// 文件系统 ID，通过查询文件系统接口获取
+	// 文件系统 ID，通过[查询文件系统接口](https://cloud.tencent.com/document/api/582/38170)获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 }
 
@@ -3667,7 +3641,7 @@ func (r *UpdateCfsFileSystemSizeLimitResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateCfsPGroupRequestParams struct {
-	// 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
+	// 权限组 ID，可通过[DescribeCfsPGroups接口](https://cloud.tencent.com/document/api/582/38157)获取
 	PGroupId *string `json:"PGroupId,omitnil,omitempty" name:"PGroupId"`
 
 	// 权限组名称，1-64个字符且只能为中文，字母，数字，下划线或横线
@@ -3680,7 +3654,7 @@ type UpdateCfsPGroupRequestParams struct {
 type UpdateCfsPGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
+	// 权限组 ID，可通过[DescribeCfsPGroups接口](https://cloud.tencent.com/document/api/582/38157)获取
 	PGroupId *string `json:"PGroupId,omitnil,omitempty" name:"PGroupId"`
 
 	// 权限组名称，1-64个字符且只能为中文，字母，数字，下划线或横线
@@ -3744,10 +3718,10 @@ func (r *UpdateCfsPGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateCfsRuleRequestParams struct {
-	// 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
+	// 权限组 ID，可通过[DescribeCfsPGroups接口](https://cloud.tencent.com/document/api/582/38157)获取
 	PGroupId *string `json:"PGroupId,omitnil,omitempty" name:"PGroupId"`
 
-	// 规则 ID，通过查询权限组规则接口获取
+	// 规则 ID，可通过[DescribeCfsRules](https://cloud.tencent.com/document/api/582/38156)接口获取
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 可以填写单个 IP 或者单个网段，例如 10.1.10.11 或者 10.10.1.0/24。默认来访地址为*表示允许所有。同时需要注意，此处需填写 CVM 的内网 IP。
@@ -3770,10 +3744,10 @@ type UpdateCfsRuleRequestParams struct {
 type UpdateCfsRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 权限组 ID，通过创建权限组接口或者创建权限组规则接口获取
+	// 权限组 ID，可通过[DescribeCfsPGroups接口](https://cloud.tencent.com/document/api/582/38157)获取
 	PGroupId *string `json:"PGroupId,omitnil,omitempty" name:"PGroupId"`
 
-	// 规则 ID，通过查询权限组规则接口获取
+	// 规则 ID，可通过[DescribeCfsRules](https://cloud.tencent.com/document/api/582/38156)接口获取
 	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
 
 	// 可以填写单个 IP 或者单个网段，例如 10.1.10.11 或者 10.10.1.0/24。默认来访地址为*表示允许所有。同时需要注意，此处需填写 CVM 的内网 IP。
@@ -3859,10 +3833,10 @@ func (r *UpdateCfsRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateCfsSnapshotAttributeRequestParams struct {
-	// 文件系统快照ID,查询文件系统快照列表获取
+	// 快照ID，可以通过[DescribeCfsSnapshots](https://cloud.tencent.com/document/api/582/80206) 查询获取
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
-	// 文件系统快照名称，与AliveDays 必须填一个
+	// 文件系统快照名称，与AliveDays 必须填一个，快照名称，支持不超过64字符长度，支持中文、数字、_、-
 	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
 
 	// 文件系统快照保留天数，与SnapshotName必须填一个，如果原来是永久保留时间，不允许修改成短期有效期
@@ -3872,10 +3846,10 @@ type UpdateCfsSnapshotAttributeRequestParams struct {
 type UpdateCfsSnapshotAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统快照ID,查询文件系统快照列表获取
+	// 快照ID，可以通过[DescribeCfsSnapshots](https://cloud.tencent.com/document/api/582/80206) 查询获取
 	SnapshotId *string `json:"SnapshotId,omitnil,omitempty" name:"SnapshotId"`
 
-	// 文件系统快照名称，与AliveDays 必须填一个
+	// 文件系统快照名称，与AliveDays 必须填一个，快照名称，支持不超过64字符长度，支持中文、数字、_、-
 	SnapshotName *string `json:"SnapshotName,omitnil,omitempty" name:"SnapshotName"`
 
 	// 文件系统快照保留天数，与SnapshotName必须填一个，如果原来是永久保留时间，不允许修改成短期有效期
@@ -3930,7 +3904,7 @@ func (r *UpdateCfsSnapshotAttributeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateFileSystemBandwidthLimitRequestParams struct {
-	// 文件系统 ID,通过查询文件系统列表获取
+	// 文件系统 ID,可通过[DescribeCfsFileSystems](https://cloud.tencent.com/document/api/582/38170)接口获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 文件系统带宽，仅吞吐型可填。单位MiB/s，最小为1GiB/s，最大200GiB/s。
@@ -3940,7 +3914,7 @@ type UpdateFileSystemBandwidthLimitRequestParams struct {
 type UpdateFileSystemBandwidthLimitRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统 ID,通过查询文件系统列表获取
+	// 文件系统 ID,可通过[DescribeCfsFileSystems](https://cloud.tencent.com/document/api/582/38170)接口获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 文件系统带宽，仅吞吐型可填。单位MiB/s，最小为1GiB/s，最大200GiB/s。
