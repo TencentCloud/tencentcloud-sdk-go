@@ -194,7 +194,7 @@ func (r *CreateMuskPromptResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeApplicationsRequestParams struct {
-	// 应用id列表
+	// 应用id列表。单次请求数量上限为100个。
 	ApplicationIds []*string `json:"ApplicationIds,omitnil,omitempty" name:"ApplicationIds"`
 
 	// 过滤器，跟ApplicationIds不能共用，支持的filter主要有：application-id: 精确匹配;scene-id: 精确匹配，通过调用接口 [DescribeScenes](https://cloud.tencent.com/document/api/1721/101608)获取;application-name: 模糊匹配;application-type: 精确匹配，枚举类型如下：PUBLIC_APPLICATION（公共应用）/ PRIVATE_APPLICATION（自定义应用）/ COMMUNITY_APPLICATION（社区应用）;
@@ -216,7 +216,7 @@ type DescribeApplicationsRequestParams struct {
 type DescribeApplicationsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用id列表
+	// 应用id列表。单次请求数量上限为100个。
 	ApplicationIds []*string `json:"ApplicationIds,omitnil,omitempty" name:"ApplicationIds"`
 
 	// 过滤器，跟ApplicationIds不能共用，支持的filter主要有：application-id: 精确匹配;scene-id: 精确匹配，通过调用接口 [DescribeScenes](https://cloud.tencent.com/document/api/1721/101608)获取;application-name: 模糊匹配;application-type: 精确匹配，枚举类型如下：PUBLIC_APPLICATION（公共应用）/ PRIVATE_APPLICATION（自定义应用）/ COMMUNITY_APPLICATION（社区应用）;
@@ -1136,8 +1136,7 @@ type SceneInfo struct {
 
 // Predefined struct for user
 type StartInstanceRequestParams struct {
-	// 实例ID
-	// 可通过DescribeInstances获取实例ID
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612) API获取实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 默认为False，True代表只验证接口连通性
@@ -1147,8 +1146,7 @@ type StartInstanceRequestParams struct {
 type StartInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
-	// 可通过DescribeInstances获取实例ID
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612) API获取实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 默认为False，True代表只验证接口连通性
@@ -1202,8 +1200,7 @@ func (r *StartInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopInstanceRequestParams struct {
-	// 实例ID
-	// 可通过DescribeInstances获取实例ID
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612) API获取实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// hai实例关机的模式，目前仅支持关机不收费：
@@ -1218,8 +1215,7 @@ type StopInstanceRequestParams struct {
 type StopInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
-	// 可通过DescribeInstances获取实例ID
+	// 实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612) API获取实例ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// hai实例关机的模式，目前仅支持关机不收费：
@@ -1290,8 +1286,7 @@ type SystemDisk struct {
 
 // Predefined struct for user
 type TerminateInstancesRequestParams struct {
-	// 实例ID列表
-	// 可通过DescribeInstances接口获取ID列表.单次能查询100个InstanceId
+	// 实例ID列表。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612) API获取实例ID列表。单次能查询100个InstanceId。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 默认为False，True代表只验证接口连通性
@@ -1301,8 +1296,7 @@ type TerminateInstancesRequestParams struct {
 type TerminateInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID列表
-	// 可通过DescribeInstances接口获取ID列表.单次能查询100个InstanceId
+	// 实例ID列表。可通过[DescribeInstances](https://cloud.tencent.com/document/api/1721/101612) API获取实例ID列表。单次能查询100个InstanceId。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 默认为False，True代表只验证接口连通性

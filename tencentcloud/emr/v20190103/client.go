@@ -241,9 +241,12 @@ func NewAddUsersForUserManagerResponse() (response *AddUsersForUserManagerRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBEXCEPTION = "FailedOperation.DBException"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
 //  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  LIMITEXCEEDED_REQUESTBACKLOGEXCEEDSLIMIT = "LimitExceeded.RequestBacklogExceedsLimit"
+//  LIMITEXCEEDED_USERCOUNTEXCEEDSLIMIT = "LimitExceeded.UserCountExceedsLimit"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 func (c *Client) AddUsersForUserManager(request *AddUsersForUserManagerRequest) (response *AddUsersForUserManagerResponse, err error) {
     return c.AddUsersForUserManagerWithContext(context.Background(), request)
@@ -256,9 +259,12 @@ func (c *Client) AddUsersForUserManager(request *AddUsersForUserManagerRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBEXCEPTION = "FailedOperation.DBException"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
 //  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
+//  LIMITEXCEEDED_REQUESTBACKLOGEXCEEDSLIMIT = "LimitExceeded.RequestBacklogExceedsLimit"
+//  LIMITEXCEEDED_USERCOUNTEXCEEDSLIMIT = "LimitExceeded.UserCountExceedsLimit"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 func (c *Client) AddUsersForUserManagerWithContext(ctx context.Context, request *AddUsersForUserManagerRequest) (response *AddUsersForUserManagerResponse, err error) {
     if request == nil {

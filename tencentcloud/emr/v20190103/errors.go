@@ -23,6 +23,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION_CHECKIFSUPPORTPODSTRETCH = "FailedOperation.CheckIfSupportPodStretch"
 
+	// DB异常
+	FAILEDOPERATION_DBEXCEPTION = "FailedOperation.DBException"
+
 	// 拉取资源标签失败
 	FAILEDOPERATION_DESCRIBERESOURCETAGSFAILED = "FailedOperation.DescribeResourceTagsFailed"
 
@@ -464,8 +467,14 @@ const (
 	// Pod 内存请求数量超过集群限制。
 	LIMITEXCEEDED_PODMEMORYLIMITEXCEEDEDAVAILABLEMEMORY = "LimitExceeded.PodMemoryLimitExceededAvailableMemory"
 
+	// 请求已经积压并超过了限制
+	LIMITEXCEEDED_REQUESTBACKLOGEXCEEDSLIMIT = "LimitExceeded.RequestBacklogExceedsLimit"
+
 	// 安全组数量超过限制。
 	LIMITEXCEEDED_SECURITYGROUPNUMLIMITEXCEEDED = "LimitExceeded.SecurityGroupNumLimitExceeded"
+
+	// 用户数量超过了限制
+	LIMITEXCEEDED_USERCOUNTEXCEEDSLIMIT = "LimitExceeded.UserCountExceedsLimit"
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"

@@ -6009,6 +6009,59 @@ func (c *Client) DescribeTableWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDescribeTablePartitionsRequest() (request *DescribeTablePartitionsRequest) {
+    request = &DescribeTablePartitionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeTablePartitions")
+    
+    
+    return
+}
+
+func NewDescribeTablePartitionsResponse() (response *DescribeTablePartitionsResponse) {
+    response = &DescribeTablePartitionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTablePartitions
+// 本接口（DescribeTablePartitions）用于查询数据表分区信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeTablePartitions(request *DescribeTablePartitionsRequest) (response *DescribeTablePartitionsResponse, err error) {
+    return c.DescribeTablePartitionsWithContext(context.Background(), request)
+}
+
+// DescribeTablePartitions
+// 本接口（DescribeTablePartitions）用于查询数据表分区信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeTablePartitionsWithContext(ctx context.Context, request *DescribeTablePartitionsRequest) (response *DescribeTablePartitionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTablePartitionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTablePartitions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTablePartitionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTablesRequest() (request *DescribeTablesRequest) {
     request = &DescribeTablesRequest{
         BaseRequest: &tchttp.BaseRequest{},

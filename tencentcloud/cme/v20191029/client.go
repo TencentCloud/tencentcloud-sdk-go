@@ -339,8 +339,6 @@ func NewCreateProjectResponse() (response *CreateProjectResponse) {
 //
 // <li>录制回放项目：用于直播录制回放；</li>
 //
-// <li>云转推项目：用于直播云转推<font color=red>（废弃，可使用媒体转推项目替代）</font>；</li>
-//
 // <li>媒体转推项目：用于媒体文件转直播输出。</li>
 //
 // 可能返回的错误码:
@@ -380,8 +378,6 @@ func (c *Client) CreateProject(request *CreateProjectRequest) (response *CreateP
 // <li>视频拆条：用于视频拆条；</li>
 //
 // <li>录制回放项目：用于直播录制回放；</li>
-//
-// <li>云转推项目：用于直播云转推<font color=red>（废弃，可使用媒体转推项目替代）</font>；</li>
 //
 // <li>媒体转推项目：用于媒体文件转直播输出。</li>
 //

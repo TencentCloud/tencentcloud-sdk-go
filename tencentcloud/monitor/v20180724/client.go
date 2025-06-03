@@ -4360,6 +4360,55 @@ func (c *Client) DescribeExporterIntegrationsWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeExternalClusterRegisterCommandRequest() (request *DescribeExternalClusterRegisterCommandRequest) {
+    request = &DescribeExternalClusterRegisterCommandRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeExternalClusterRegisterCommand")
+    
+    
+    return
+}
+
+func NewDescribeExternalClusterRegisterCommandResponse() (response *DescribeExternalClusterRegisterCommandResponse) {
+    response = &DescribeExternalClusterRegisterCommandResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeExternalClusterRegisterCommand
+// 查看外部集群注册命令
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeExternalClusterRegisterCommand(request *DescribeExternalClusterRegisterCommandRequest) (response *DescribeExternalClusterRegisterCommandResponse, err error) {
+    return c.DescribeExternalClusterRegisterCommandWithContext(context.Background(), request)
+}
+
+// DescribeExternalClusterRegisterCommand
+// 查看外部集群注册命令
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeExternalClusterRegisterCommandWithContext(ctx context.Context, request *DescribeExternalClusterRegisterCommandRequest) (response *DescribeExternalClusterRegisterCommandResponse, err error) {
+    if request == nil {
+        request = NewDescribeExternalClusterRegisterCommandRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExternalClusterRegisterCommand require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExternalClusterRegisterCommandResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGrafanaChannelsRequest() (request *DescribeGrafanaChannelsRequest) {
     request = &DescribeGrafanaChannelsRequest{
         BaseRequest: &tchttp.BaseRequest{},

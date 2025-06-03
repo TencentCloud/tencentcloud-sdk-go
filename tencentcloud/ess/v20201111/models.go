@@ -1265,8 +1265,8 @@ type Component struct {
 	LockComponentValue *bool `json:"LockComponentValue,omitnil,omitempty" name:"LockComponentValue"`
 
 	// **web嵌入发起合同场景下**，是否禁止移动和删除填写和签署控件
-	// <ul><li> <b>false（默认）</b> :不禁止移动和删除控件</li>
-	// <li> <b>true</b> : 可以移动和删除控件</li></ul>
+	// <ul><li> <b>false（默认）</b> :可以移动和删除控件</li>
+	// <li> <b>true</b> : 禁止移动和删除控件</li></ul>
 	ForbidMoveAndDelete *bool `json:"ForbidMoveAndDelete,omitnil,omitempty" name:"ForbidMoveAndDelete"`
 
 	// <font color="red">【暂未使用】</font>日期签署控件的字号，默认为 12
@@ -4354,13 +4354,16 @@ type CreateFlowOption struct {
 	//   禁止设置设置签署流程属性 (顺序、合同签署认证方式等)，若为true则在发起流程的可嵌入页面隐藏签署流程设置面板
 	ForbidEditFlowProperties *bool `json:"ForbidEditFlowProperties,omitnil,omitempty" name:"ForbidEditFlowProperties"`
 
-	// 在发起流程的可嵌入页面要隐藏的控件列表，和 ShowComponentTypes 参数 只能二选一使用，具体的控件类型如下
+	// 在发起流程的可嵌入页面要隐藏的控件列表，和 ShowComponentTypes 参数 只能二选一使用（注: 
+	// <font color='red'>空数组代表未指定</font>），具体的控件类型如下
+	// 
 	// <ul><li>SIGN_SIGNATURE : 个人签名/印章</li>
 	// <li>SIGN_SEAL : 企业印章</li>
 	// <li>SIGN_PAGING_SEAL : 骑缝章</li>
 	// <li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li>
 	// <li>SIGN_APPROVE : 签批</li>
 	// <li>SIGN_OPINION : 签署意见</li>
+	// <li>SIGN_PAGING_SIGNATURE : 手写签名骑缝控件</li>
 	// <li>BUSI-FULL-NAME  : 企业全称</li>
 	// <li>BUSI-CREDIT-CODE : 统一社会信用代码</li>
 	// <li>BUSI-LEGAL-NAME : 法人/经营者姓名</li>
@@ -4383,13 +4386,15 @@ type CreateFlowOption struct {
 	// <li>DISTRICT : 省市区</li></ul>
 	HideComponentTypes []*string `json:"HideComponentTypes,omitnil,omitempty" name:"HideComponentTypes"`
 
-	// 在发起流程的可嵌入页面要显示的控件列表，和 HideComponentTypes 参数 只能二选一使用，具体的控件类型如下
+	// 在发起流程的可嵌入页面要显示的控件列表，和 HideComponentTypes 参数 只能二选一使用（注: 
+	// <font color='red'>空数组代表未指定</font>），具体的控件类型如下
 	// <ul><li>SIGN_SIGNATURE : 个人签名/印章</li>
 	// <li>SIGN_SEAL : 企业印章</li>
 	// <li>SIGN_PAGING_SEAL : 骑缝章</li>
 	// <li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li>
 	// <li>SIGN_APPROVE : 签批</li>
 	// <li>SIGN_OPINION : 签署意见</li>
+	// <li>SIGN_PAGING_SIGNATURE : 手写签名骑缝控件</li>
 	// <li>BUSI-FULL-NAME  : 企业全称</li>
 	// <li>BUSI-CREDIT-CODE : 统一社会信用代码</li>
 	// <li>BUSI-LEGAL-NAME : 法人/经营者姓名</li>

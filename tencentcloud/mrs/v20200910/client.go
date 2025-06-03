@@ -161,6 +161,8 @@ func NewImageMaskAsyncResponse() (response *ImageMaskAsyncResponse) {
 // ImageMaskAsync
 // 图片脱敏-异步接口
 //
+// 短时间大批量调用（例如>100上传/10分钟），如果遇到错误码“FalledOperation.AsyncQueueFullError”，请于数分钟后再次尝试提交。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_ASYNCQUEUEFULLERROR = "FailedOperation.AsyncQueueFullError"
 func (c *Client) ImageMaskAsync(request *ImageMaskAsyncRequest) (response *ImageMaskAsyncResponse, err error) {
@@ -169,6 +171,8 @@ func (c *Client) ImageMaskAsync(request *ImageMaskAsyncRequest) (response *Image
 
 // ImageMaskAsync
 // 图片脱敏-异步接口
+//
+// 短时间大批量调用（例如>100上传/10分钟），如果遇到错误码“FalledOperation.AsyncQueueFullError”，请于数分钟后再次尝试提交。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ASYNCQUEUEFULLERROR = "FailedOperation.AsyncQueueFullError"
@@ -210,6 +214,8 @@ func NewImageMaskAsyncGetResultResponse() (response *ImageMaskAsyncGetResultResp
 // ImageMaskAsyncGetResult
 // 图片脱敏-异步获取结果接口
 //
+// 请于上传请求后24小时内获取结果。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_ASYNCTASKERROR = "FailedOperation.AsyncTaskError"
 //  FAILEDOPERATION_ASYNCTASKHANDLING = "FailedOperation.AsyncTaskHandling"
@@ -220,6 +226,8 @@ func (c *Client) ImageMaskAsyncGetResult(request *ImageMaskAsyncGetResultRequest
 
 // ImageMaskAsyncGetResult
 // 图片脱敏-异步获取结果接口
+//
+// 请于上传请求后24小时内获取结果。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ASYNCTASKERROR = "FailedOperation.AsyncTaskError"

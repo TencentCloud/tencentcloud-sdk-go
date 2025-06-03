@@ -1520,6 +1520,65 @@ func (c *Client) DestroyAndroidInstancesWithContext(ctx context.Context, request
     return
 }
 
+func NewDistributeFileToAndroidInstancesRequest() (request *DistributeFileToAndroidInstancesRequest) {
+    request = &DistributeFileToAndroidInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "DistributeFileToAndroidInstances")
+    
+    
+    return
+}
+
+func NewDistributeFileToAndroidInstancesResponse() (response *DistributeFileToAndroidInstancesResponse) {
+    response = &DistributeFileToAndroidInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DistributeFileToAndroidInstances
+// 分发文件到安卓实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DistributeFileToAndroidInstances(request *DistributeFileToAndroidInstancesRequest) (response *DistributeFileToAndroidInstancesResponse, err error) {
+    return c.DistributeFileToAndroidInstancesWithContext(context.Background(), request)
+}
+
+// DistributeFileToAndroidInstances
+// 分发文件到安卓实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DistributeFileToAndroidInstancesWithContext(ctx context.Context, request *DistributeFileToAndroidInstancesRequest) (response *DistributeFileToAndroidInstancesResponse, err error) {
+    if request == nil {
+        request = NewDistributeFileToAndroidInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DistributeFileToAndroidInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDistributeFileToAndroidInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExecuteCommandOnAndroidInstancesRequest() (request *ExecuteCommandOnAndroidInstancesRequest) {
     request = &ExecuteCommandOnAndroidInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3353,6 +3412,65 @@ func (c *Client) UploadFileToAndroidInstancesWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewUploadFileToAndroidInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUploadFilesToAndroidInstancesRequest() (request *UploadFilesToAndroidInstancesRequest) {
+    request = &UploadFilesToAndroidInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "UploadFilesToAndroidInstances")
+    
+    
+    return
+}
+
+func NewUploadFilesToAndroidInstancesResponse() (response *UploadFilesToAndroidInstancesResponse) {
+    response = &UploadFilesToAndroidInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UploadFilesToAndroidInstances
+// 批量上传文件到安卓实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UploadFilesToAndroidInstances(request *UploadFilesToAndroidInstancesRequest) (response *UploadFilesToAndroidInstancesResponse, err error) {
+    return c.UploadFilesToAndroidInstancesWithContext(context.Background(), request)
+}
+
+// UploadFilesToAndroidInstances
+// 批量上传文件到安卓实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UploadFilesToAndroidInstancesWithContext(ctx context.Context, request *UploadFilesToAndroidInstancesRequest) (response *UploadFilesToAndroidInstancesResponse, err error) {
+    if request == nil {
+        request = NewUploadFilesToAndroidInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadFilesToAndroidInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUploadFilesToAndroidInstancesResponse()
     err = c.Send(request, response)
     return
 }

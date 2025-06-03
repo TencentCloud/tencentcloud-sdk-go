@@ -163,6 +163,12 @@ type AdjustJobSpeedRequestParams struct {
 
 	// 目标 RPS。其取值应大于起始 RPS，并且小于最大 RPS
 	TargetRequestsPerSecond *int64 `json:"TargetRequestsPerSecond,omitnil,omitempty" name:"TargetRequestsPerSecond"`
+
+	// 压测项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 测试场景ID
+	ScenarioId *string `json:"ScenarioId,omitnil,omitempty" name:"ScenarioId"`
 }
 
 type AdjustJobSpeedRequest struct {
@@ -173,6 +179,12 @@ type AdjustJobSpeedRequest struct {
 
 	// 目标 RPS。其取值应大于起始 RPS，并且小于最大 RPS
 	TargetRequestsPerSecond *int64 `json:"TargetRequestsPerSecond,omitnil,omitempty" name:"TargetRequestsPerSecond"`
+
+	// 压测项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 测试场景ID
+	ScenarioId *string `json:"ScenarioId,omitnil,omitempty" name:"ScenarioId"`
 }
 
 func (r *AdjustJobSpeedRequest) ToJsonString() string {
@@ -189,6 +201,8 @@ func (r *AdjustJobSpeedRequest) FromJsonString(s string) error {
 	}
 	delete(f, "JobId")
 	delete(f, "TargetRequestsPerSecond")
+	delete(f, "ProjectId")
+	delete(f, "ScenarioId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AdjustJobSpeedRequest has unknown keys!", "")
 	}

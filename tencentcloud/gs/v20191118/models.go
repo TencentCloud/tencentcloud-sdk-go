@@ -201,6 +201,17 @@ type AndroidInstanceTaskStatus struct {
 	CompleteTime *string `json:"CompleteTime,omitnil,omitempty" name:"CompleteTime"`
 }
 
+type AndroidInstanceUploadFile struct {
+	// 安卓实例 ID
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
+
+	// 文件上传 URL
+	FileURL *string `json:"FileURL,omitnil,omitempty" name:"FileURL"`
+
+	// 上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
+	DestinationDirectory *string `json:"DestinationDirectory,omitnil,omitempty" name:"DestinationDirectory"`
+}
+
 // Predefined struct for user
 type BackUpAndroidInstanceToStorageRequestParams struct {
 	// 安卓实例ID
@@ -2161,6 +2172,77 @@ func (r *DestroyAndroidInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DestroyAndroidInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DistributeFileToAndroidInstancesRequestParams struct {
+	// 安卓实例 ID 列表
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 文件下载 URL
+	FileURL *string `json:"FileURL,omitnil,omitempty" name:"FileURL"`
+
+	// 上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
+	DestinationDirectory *string `json:"DestinationDirectory,omitnil,omitempty" name:"DestinationDirectory"`
+}
+
+type DistributeFileToAndroidInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 安卓实例 ID 列表
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 文件下载 URL
+	FileURL *string `json:"FileURL,omitnil,omitempty" name:"FileURL"`
+
+	// 上传目标目录，只能上传到 /sdcard/ 目录或其子目录下
+	DestinationDirectory *string `json:"DestinationDirectory,omitnil,omitempty" name:"DestinationDirectory"`
+}
+
+func (r *DistributeFileToAndroidInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeFileToAndroidInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidInstanceIds")
+	delete(f, "FileURL")
+	delete(f, "DestinationDirectory")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributeFileToAndroidInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DistributeFileToAndroidInstancesResponseParams struct {
+	// 实例任务集合
+	TaskSet []*AndroidInstanceTask `json:"TaskSet,omitnil,omitempty" name:"TaskSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DistributeFileToAndroidInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DistributeFileToAndroidInstancesResponseParams `json:"Response"`
+}
+
+func (r *DistributeFileToAndroidInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributeFileToAndroidInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4365,5 +4447,62 @@ func (r *UploadFileToAndroidInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UploadFileToAndroidInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UploadFilesToAndroidInstancesRequestParams struct {
+	// 上传文件信息列表
+	Files []*AndroidInstanceUploadFile `json:"Files,omitnil,omitempty" name:"Files"`
+}
+
+type UploadFilesToAndroidInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 上传文件信息列表
+	Files []*AndroidInstanceUploadFile `json:"Files,omitnil,omitempty" name:"Files"`
+}
+
+func (r *UploadFilesToAndroidInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadFilesToAndroidInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Files")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadFilesToAndroidInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UploadFilesToAndroidInstancesResponseParams struct {
+	// 实例任务集合
+	TaskSet []*AndroidInstanceTask `json:"TaskSet,omitnil,omitempty" name:"TaskSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UploadFilesToAndroidInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *UploadFilesToAndroidInstancesResponseParams `json:"Response"`
+}
+
+func (r *UploadFilesToAndroidInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadFilesToAndroidInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

@@ -6863,6 +6863,10 @@ type DescribeDatabasesRequestParams struct {
 
 	// 排序类型：false：降序（默认）、true：升序
 	Asc *bool `json:"Asc,omitnil,omitempty" name:"Asc"`
+
+	// 查询类型：all：全部数据（默认）、permission：有权限的数据
+	// 注意：此字段需要开启白名单使用，如果需要使用，请提交工单联系我们。
+	DescribeType *string `json:"DescribeType,omitnil,omitempty" name:"DescribeType"`
 }
 
 type DescribeDatabasesRequest struct {
@@ -6885,6 +6889,10 @@ type DescribeDatabasesRequest struct {
 
 	// 排序类型：false：降序（默认）、true：升序
 	Asc *bool `json:"Asc,omitnil,omitempty" name:"Asc"`
+
+	// 查询类型：all：全部数据（默认）、permission：有权限的数据
+	// 注意：此字段需要开启白名单使用，如果需要使用，请提交工单联系我们。
+	DescribeType *string `json:"DescribeType,omitnil,omitempty" name:"DescribeType"`
 }
 
 func (r *DescribeDatabasesRequest) ToJsonString() string {
@@ -6905,6 +6913,7 @@ func (r *DescribeDatabasesRequest) FromJsonString(s string) error {
 	delete(f, "DatasourceConnectionName")
 	delete(f, "Sort")
 	delete(f, "Asc")
+	delete(f, "DescribeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabasesRequest has unknown keys!", "")
 	}
@@ -8645,6 +8654,57 @@ func (r *DescribeSubUserAccessPolicyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTablePartitionsRequestParams struct {
+
+}
+
+type DescribeTablePartitionsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeTablePartitionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTablePartitionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTablePartitionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTablePartitionsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTablePartitionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTablePartitionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeTablePartitionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTablePartitionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTableRequestParams struct {
 	// 查询对象表名称
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
@@ -8885,6 +8945,10 @@ type DescribeTablesRequestParams struct {
 
 	// 筛选字段-表格式：不传（默认）为查全部；LAKEFS：托管表；ICEBERG：非托管iceberg表；HIVE：非托管hive表；OTHER：非托管其它；
 	TableFormat *string `json:"TableFormat,omitnil,omitempty" name:"TableFormat"`
+
+	// 查询类型：all：全部数据（默认）、permission：有权限的数据
+	// 注意：此字段需要开启白名单使用，如果需要使用，请提交工单联系我们。
+	DescribeType *string `json:"DescribeType,omitnil,omitempty" name:"DescribeType"`
 }
 
 type DescribeTablesRequest struct {
@@ -8924,6 +8988,10 @@ type DescribeTablesRequest struct {
 
 	// 筛选字段-表格式：不传（默认）为查全部；LAKEFS：托管表；ICEBERG：非托管iceberg表；HIVE：非托管hive表；OTHER：非托管其它；
 	TableFormat *string `json:"TableFormat,omitnil,omitempty" name:"TableFormat"`
+
+	// 查询类型：all：全部数据（默认）、permission：有权限的数据
+	// 注意：此字段需要开启白名单使用，如果需要使用，请提交工单联系我们。
+	DescribeType *string `json:"DescribeType,omitnil,omitempty" name:"DescribeType"`
 }
 
 func (r *DescribeTablesRequest) ToJsonString() string {
@@ -8949,6 +9017,7 @@ func (r *DescribeTablesRequest) FromJsonString(s string) error {
 	delete(f, "Asc")
 	delete(f, "TableType")
 	delete(f, "TableFormat")
+	delete(f, "DescribeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTablesRequest has unknown keys!", "")
 	}
@@ -10351,6 +10420,10 @@ type DescribeViewsRequestParams struct {
 
 	// 按视图更新时间筛选，结束时间，如2021-11-12 00:00:00
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 查询类型：all：全部数据（默认）、permission：有权限的数据
+	// 注意：此字段需要开启白名单使用，如果需要使用，请提交工单联系我们。
+	DescribeType *string `json:"DescribeType,omitnil,omitempty" name:"DescribeType"`
 }
 
 type DescribeViewsRequest struct {
@@ -10384,6 +10457,10 @@ type DescribeViewsRequest struct {
 
 	// 按视图更新时间筛选，结束时间，如2021-11-12 00:00:00
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 查询类型：all：全部数据（默认）、permission：有权限的数据
+	// 注意：此字段需要开启白名单使用，如果需要使用，请提交工单联系我们。
+	DescribeType *string `json:"DescribeType,omitnil,omitempty" name:"DescribeType"`
 }
 
 func (r *DescribeViewsRequest) ToJsonString() string {
@@ -10407,6 +10484,7 @@ func (r *DescribeViewsRequest) FromJsonString(s string) error {
 	delete(f, "Asc")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "DescribeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeViewsRequest has unknown keys!", "")
 	}

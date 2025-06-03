@@ -584,6 +584,8 @@ type CreateProjectRequestParams struct {
 
 	// 画布宽高比。
 	// 该字段已经废弃，请使用具体项目输入中的 AspectRatio 字段。
+	//
+	// Deprecated: AspectRatio is deprecated.
 	AspectRatio *string `json:"AspectRatio,omitnil,omitempty" name:"AspectRatio"`
 
 	// 项目描述信息。
@@ -3246,6 +3248,8 @@ type ExternalMediaInfo struct {
 	MediaKey *string `json:"MediaKey,omitnil,omitempty" name:"MediaKey"`
 
 	// 该字段废弃，请勿使用。
+	//
+	// Deprecated: Definition is deprecated.
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
 	// 媒资挂载的存储 Id。
@@ -4276,6 +4280,8 @@ type MaterialBasicInfo struct {
 	// 媒体绑定的标签信息列表 。
 	// 该字段已废弃。
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: TagInfoSet is deprecated.
 	TagInfoSet []*MaterialTagInfo `json:"TagInfoSet,omitnil,omitempty" name:"TagInfoSet"`
 }
 
@@ -5847,6 +5853,8 @@ type StorageNewFileCreatedEvent struct {
 	MaterialId *string `json:"MaterialId,omitnil,omitempty" name:"MaterialId"`
 
 	// 操作者 Id。（废弃，请勿使用）
+	//
+	// Deprecated: Operator is deprecated.
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
 	// 操作类型，可取值有：

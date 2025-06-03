@@ -510,87 +510,6 @@ func (c *Client) CreateQACateWithContext(ctx context.Context, request *CreateQAC
     return
 }
 
-func NewCreateReconstructDocumentFlowRequest() (request *CreateReconstructDocumentFlowRequest) {
-    request = &CreateReconstructDocumentFlowRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("lke", APIVersion, "CreateReconstructDocumentFlow")
-    
-    
-    return
-}
-
-func NewCreateReconstructDocumentFlowResponse() (response *CreateReconstructDocumentFlowResponse) {
-    response = &CreateReconstructDocumentFlowResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateReconstructDocumentFlow
-// 本接口为异步接口的发起请求接口，用于发起文档解析任务。
-//
-// 文档解析支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
-//
-// 
-//
-// 体验期间单账号限制qps仅为1，若有正式接入需要请与产研团队沟通开放。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) CreateReconstructDocumentFlow(request *CreateReconstructDocumentFlowRequest) (response *CreateReconstructDocumentFlowResponse, err error) {
-    return c.CreateReconstructDocumentFlowWithContext(context.Background(), request)
-}
-
-// CreateReconstructDocumentFlow
-// 本接口为异步接口的发起请求接口，用于发起文档解析任务。
-//
-// 文档解析支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
-//
-// 
-//
-// 体验期间单账号限制qps仅为1，若有正式接入需要请与产研团队沟通开放。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) CreateReconstructDocumentFlowWithContext(ctx context.Context, request *CreateReconstructDocumentFlowRequest) (response *CreateReconstructDocumentFlowResponse, err error) {
-    if request == nil {
-        request = NewCreateReconstructDocumentFlowRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateReconstructDocumentFlow require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateReconstructDocumentFlowResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateRejectedQuestionRequest() (request *CreateRejectedQuestionRequest) {
     request = &CreateRejectedQuestionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -614,17 +533,7 @@ func NewCreateRejectedQuestionResponse() (response *CreateRejectedQuestionRespon
 // 创建拒答问题
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateRejectedQuestion(request *CreateRejectedQuestionRequest) (response *CreateRejectedQuestionResponse, err error) {
     return c.CreateRejectedQuestionWithContext(context.Background(), request)
 }
@@ -633,17 +542,7 @@ func (c *Client) CreateRejectedQuestion(request *CreateRejectedQuestionRequest) 
 // 创建拒答问题
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateRejectedQuestionWithContext(ctx context.Context, request *CreateRejectedQuestionRequest) (response *CreateRejectedQuestionResponse, err error) {
     if request == nil {
         request = NewCreateRejectedQuestionRequest()

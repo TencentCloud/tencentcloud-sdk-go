@@ -712,8 +712,6 @@ func NewCreateMigrationTaskResponse() (response *CreateMigrationTaskResponse) {
 // CreateMigrationTask
 // 用于创建迁移任务。
 //
-// 此接口需提交工单，开启白名单之后才能使用。
-//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
@@ -725,8 +723,6 @@ func (c *Client) CreateMigrationTask(request *CreateMigrationTaskRequest) (respo
 
 // CreateMigrationTask
 // 用于创建迁移任务。
-//
-// 此接口需提交工单，开启白名单之后才能使用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1122,9 +1118,7 @@ func NewDeleteMigrationTaskResponse() (response *DeleteMigrationTaskResponse) {
 }
 
 // DeleteMigrationTask
-// 用于删除迁移任务。
-//
-// 此接口需提交工单，开启白名单之后才能使用。
+// 用于删除迁移任务。不支持删除等待中、创建中、运行中、取消中、终止中状态的任务。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1140,9 +1134,7 @@ func (c *Client) DeleteMigrationTask(request *DeleteMigrationTaskRequest) (respo
 }
 
 // DeleteMigrationTask
-// 用于删除迁移任务。
-//
-// 此接口需提交工单，开启白名单之后才能使用。
+// 用于删除迁移任务。不支持删除等待中、创建中、运行中、取消中、终止中状态的任务。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1435,8 +1427,6 @@ func NewDescribeBucketListResponse() (response *DescribeBucketListResponse) {
 // DescribeBucketList
 // 用于获取数据源桶列表。
 //
-// 此接口需提交工单，开启白名单之后才能使用。
-//
 // 可能返回的错误码:
 //  AUTHFAILURE_GETROLEFAILED = "AuthFailure.GetRoleFailed"
 //  INTERNALERROR = "InternalError"
@@ -1450,8 +1440,6 @@ func (c *Client) DescribeBucketList(request *DescribeBucketListRequest) (respons
 
 // DescribeBucketList
 // 用于获取数据源桶列表。
-//
-// 此接口需提交工单，开启白名单之后才能使用。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_GETROLEFAILED = "AuthFailure.GetRoleFailed"
@@ -2423,9 +2411,7 @@ func NewStopMigrationTaskResponse() (response *StopMigrationTaskResponse) {
 }
 
 // StopMigrationTask
-// 用于终止迁移任务，非运行中状态不支持终止。
-//
-// 此接口需提交工单，开启白名单之后才能使用。
+// 用于终止迁移任务，可以终止等待中、运行中状态的任务。
 //
 // 可能返回的错误码:
 //  RESOURCEINUSE = "ResourceInUse"
@@ -2434,9 +2420,7 @@ func (c *Client) StopMigrationTask(request *StopMigrationTaskRequest) (response 
 }
 
 // StopMigrationTask
-// 用于终止迁移任务，非运行中状态不支持终止。
-//
-// 此接口需提交工单，开启白名单之后才能使用。
+// 用于终止迁移任务，可以终止等待中、运行中状态的任务。
 //
 // 可能返回的错误码:
 //  RESOURCEINUSE = "ResourceInUse"
