@@ -889,6 +889,15 @@ type KnowledgeDocumentSet struct {
 
 	// 作者
 	Author *string `json:"Author,omitnil,omitempty" name:"Author"`
+
+	// 上传文件状态
+	DocStatus *string `json:"DocStatus,omitnil,omitempty" name:"DocStatus"`
+
+	// 文件上传失败的具体原因
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
+
+	// Cos存储文件ID
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 }
 
 type KnowledgeDocumentSetInfo struct {
@@ -1013,6 +1022,15 @@ type QureyKnowledgeDocumentSet struct {
 
 	// 作者
 	Author *string `json:"Author,omitnil,omitempty" name:"Author"`
+
+	// 文档上传状态
+	DocStatus *string `json:"DocStatus,omitnil,omitempty" name:"DocStatus"`
+
+	// 上传文件失败时具体的错误消息
+	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
+
+	// Cos存储文件ID
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 }
 
 type QureyKnowledgeDocumentSetInfo struct {

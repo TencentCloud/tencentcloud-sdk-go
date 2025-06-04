@@ -1344,6 +1344,70 @@ func (r *DescribeQuotaUsageResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRecordRequestParams struct {
+	// 私有域ID
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 记录ID
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+}
+
+type DescribeRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私有域ID
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 记录ID
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+}
+
+func (r *DescribeRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "RecordId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRecordResponseParams struct {
+	// 记录信息
+	RecordInfo *RecordInfo `json:"RecordInfo,omitnil,omitempty" name:"RecordInfo"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRecordResponseParams `json:"Response"`
+}
+
+func (r *DescribeRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRequestDataRequestParams struct {
 	// 请求量统计起始时间，格式：2020-11-22 00:00:00
 	TimeRangeBegin *string `json:"TimeRangeBegin,omitnil,omitempty" name:"TimeRangeBegin"`
@@ -1977,6 +2041,44 @@ func (r *QueryAsyncBindVpcStatusResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *QueryAsyncBindVpcStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RecordInfo struct {
+	// 记录id
+	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
+
+	// 私有域id: zone-xxxxxxxx
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 子域名
+	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
+
+	// 记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
+	RecordType *string `json:"RecordType,omitnil,omitempty" name:"RecordType"`
+
+	// 记录值
+	RecordValue *string `json:"RecordValue,omitnil,omitempty" name:"RecordValue"`
+
+	// 记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
+	TTL *int64 `json:"TTL,omitnil,omitempty" name:"TTL"`
+
+	// MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
+	MX *int64 `json:"MX,omitnil,omitempty" name:"MX"`
+
+	// 记录权重，值为1-100
+	Weight *int64 `json:"Weight,omitnil,omitempty" name:"Weight"`
+
+	// 记录创建时间
+	CreatedOn *string `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
+
+	// 记录更新时间
+	UpdatedOn *string `json:"UpdatedOn,omitnil,omitempty" name:"UpdatedOn"`
+
+	// 0暂停，1启用
+	Enabled *uint64 `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 // Predefined struct for user

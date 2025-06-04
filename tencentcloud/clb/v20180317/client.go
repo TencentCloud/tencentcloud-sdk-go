@@ -3047,6 +3047,73 @@ func (c *Client) DescribeLBListenersWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeLBOperateProtectRequest() (request *DescribeLBOperateProtectRequest) {
+    request = &DescribeLBOperateProtectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeLBOperateProtect")
+    
+    
+    return
+}
+
+func NewDescribeLBOperateProtectResponse() (response *DescribeLBOperateProtectResponse) {
+    response = &DescribeLBOperateProtectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLBOperateProtect
+// 查询负载均衡的操作保护信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETER_REGIONNOTFOUND = "InvalidParameter.RegionNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeLBOperateProtect(request *DescribeLBOperateProtectRequest) (response *DescribeLBOperateProtectResponse, err error) {
+    return c.DescribeLBOperateProtectWithContext(context.Background(), request)
+}
+
+// DescribeLBOperateProtect
+// 查询负载均衡的操作保护信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETER_REGIONNOTFOUND = "InvalidParameter.RegionNotFound"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeLBOperateProtectWithContext(ctx context.Context, request *DescribeLBOperateProtectRequest) (response *DescribeLBOperateProtectResponse, err error) {
+    if request == nil {
+        request = NewDescribeLBOperateProtectRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLBOperateProtect require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLBOperateProtectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeListenersRequest() (request *DescribeListenersRequest) {
     request = &DescribeListenersRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -989,14 +989,8 @@ type TaskInput struct {
 }
 
 type TaskLabel struct {
-	// 命中的标签
-	// Porn 色情
-	// Sexy 性感
-	// Polity 政治
-	// Illegal 违法
-	// Abuse 谩骂
-	// Terror 暴恐
-	// Ad 广告
+	// 该字段用于返回检测结果所对应的恶意标签。
+	// 返回值：Porn：色情，Abuse：谩骂，Ad：广告；以及其他令人反感、不安全或不适宜的内容类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 

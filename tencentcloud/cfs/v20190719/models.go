@@ -138,20 +138,20 @@ type AvailableZone struct {
 
 // Predefined struct for user
 type BindAutoSnapshotPolicyRequestParams struct {
-	// 快照策略ID，通过快照策略列表获取
+	// 需要解绑的文件系统ID列表，用"," 分割，文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 
-	// 文件系统id列表，用“,”分隔，文件系统id通过查询文件系统列表获得
+	// 解绑的快照策略ID，可以通过[DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/api/582/80208) 查询获取
 	FileSystemIds *string `json:"FileSystemIds,omitnil,omitempty" name:"FileSystemIds"`
 }
 
 type BindAutoSnapshotPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 快照策略ID，通过快照策略列表获取
+	// 需要解绑的文件系统ID列表，用"," 分割，文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitnil,omitempty" name:"AutoSnapshotPolicyId"`
 
-	// 文件系统id列表，用“,”分隔，文件系统id通过查询文件系统列表获得
+	// 解绑的快照策略ID，可以通过[DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/api/582/80208) 查询获取
 	FileSystemIds *string `json:"FileSystemIds,omitnil,omitempty" name:"FileSystemIds"`
 }
 
@@ -2111,7 +2111,7 @@ type DescribeCfsSnapshotsRequestParams struct {
 	// <br>FileSystemId - Array of String - 是否必填：否 -（过滤条件）按文件系统ID过滤。
 	// <br>FsName - Array of String - 是否必填：否 -（过滤条件）按文件系统名过滤。
 	// <br>Status - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤
-	// (creating：表示创建中 | available：表示可用。| rollbacking：表示回滚。| rollbacking_new：表示由快照创建新文件系统中| create-failed 创建失败）
+	// (creating：表示创建中 | available：表示可用。rollbacking_new：表示由快照创建新文件系统中| create-failed 创建失败）
 	// <br>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。
 	// <br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -2144,7 +2144,7 @@ type DescribeCfsSnapshotsRequest struct {
 	// <br>FileSystemId - Array of String - 是否必填：否 -（过滤条件）按文件系统ID过滤。
 	// <br>FsName - Array of String - 是否必填：否 -（过滤条件）按文件系统名过滤。
 	// <br>Status - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤
-	// (creating：表示创建中 | available：表示可用。| rollbacking：表示回滚。| rollbacking_new：表示由快照创建新文件系统中| create-failed 创建失败）
+	// (creating：表示创建中 | available：表示可用。rollbacking_new：表示由快照创建新文件系统中| create-failed 创建失败）
 	// <br>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。
 	// <br>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
@@ -3197,14 +3197,14 @@ type SnapshotStatistics struct {
 
 // Predefined struct for user
 type StopMigrationTaskRequestParams struct {
-	// 迁移任务名称
+	// 迁移任务Id
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
 type StopMigrationTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 迁移任务名称
+	// 迁移任务Id
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 

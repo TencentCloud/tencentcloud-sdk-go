@@ -1285,7 +1285,7 @@ func NewDescribeJobEventsResponse() (response *DescribeJobEventsResponse) {
 }
 
 // DescribeJobEvents
-// 获取指定作业的事件，包括作业启动停止、运行失败、快照失败、作业异常等各种事件类型
+// 请求参数不包含 "RunningOrderIds"时，接口获取指定作业的事件，包括作业启动停止、运行失败、快照失败、作业异常等各种事件类型;请求参数不包含 "RunningOrderIds"时，接口为查询作业实例ID接口,获取作业实例
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1303,7 +1303,7 @@ func (c *Client) DescribeJobEvents(request *DescribeJobEventsRequest) (response 
 }
 
 // DescribeJobEvents
-// 获取指定作业的事件，包括作业启动停止、运行失败、快照失败、作业异常等各种事件类型
+// 请求参数不包含 "RunningOrderIds"时，接口获取指定作业的事件，包括作业启动停止、运行失败、快照失败、作业异常等各种事件类型;请求参数不包含 "RunningOrderIds"时，接口为查询作业实例ID接口,获取作业实例
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

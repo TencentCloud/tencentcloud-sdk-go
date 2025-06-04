@@ -586,15 +586,23 @@ type DedicatedClusterOrder struct {
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil,omitempty" name:"DedicatedClusterId"`
 
 	// 专用集群类型id（移到下一层级，已经废弃，后续将删除）
+	//
+	// Deprecated: DedicatedClusterTypeId is deprecated.
 	DedicatedClusterTypeId *string `json:"DedicatedClusterTypeId,omitnil,omitempty" name:"DedicatedClusterTypeId"`
 
 	// 支持的存储类型列表（移到下一层级，已经废弃，后续将删除）
+	//
+	// Deprecated: SupportedStorageType is deprecated.
 	SupportedStorageType []*string `json:"SupportedStorageType,omitnil,omitempty" name:"SupportedStorageType"`
 
 	// 支持的上连交换机的链路传输速率(GiB)（移到下一层级，已经废弃，后续将删除）
+	//
+	// Deprecated: SupportedUplinkSpeed is deprecated.
 	SupportedUplinkSpeed []*int64 `json:"SupportedUplinkSpeed,omitnil,omitempty" name:"SupportedUplinkSpeed"`
 
 	// 支持的实例族列表（移到下一层级，已经废弃，后续将删除）
+	//
+	// Deprecated: SupportedInstanceFamily is deprecated.
 	SupportedInstanceFamily []*string `json:"SupportedInstanceFamily,omitnil,omitempty" name:"SupportedInstanceFamily"`
 
 	// 地板承重要求(KG)
@@ -1933,6 +1941,8 @@ type HostDetailInfo struct {
 
 type HostInfo struct {
 	// 宿主机IP（废弃）
+	//
+	// Deprecated: HostIp is deprecated.
 	HostIp *string `json:"HostIp,omitnil,omitempty" name:"HostIp"`
 
 	// 云服务类型

@@ -68,6 +68,9 @@ type AndroidAppVersionInfo struct {
 
 	// shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
 	UninstallCommand *string `json:"UninstallCommand,omitnil,omitempty" name:"UninstallCommand"`
+
+	// 应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。
+	CleanupMode *string `json:"CleanupMode,omitnil,omitempty" name:"CleanupMode"`
 }
 
 type AndroidInstance struct {
@@ -140,6 +143,14 @@ type AndroidInstanceAppInfo struct {
 	PackageLabel *string `json:"PackageLabel,omitnil,omitempty" name:"PackageLabel"`
 }
 
+type AndroidInstanceDevice struct {
+	// 品牌
+	Brand *string `json:"Brand,omitnil,omitempty" name:"Brand"`
+
+	// 型号
+	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
+}
+
 type AndroidInstanceImage struct {
 	// 镜像 ID
 	AndroidInstanceImageId *string `json:"AndroidInstanceImageId,omitnil,omitempty" name:"AndroidInstanceImageId"`
@@ -167,6 +178,14 @@ type AndroidInstanceLabel struct {
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
 	// 标签值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type AndroidInstanceProperty struct {
+	// 属性键
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 属性值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
@@ -552,6 +571,9 @@ type CreateAndroidAppVersionRequestParams struct {
 
 	// 应用 shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
 	UninstallCommand *string `json:"UninstallCommand,omitnil,omitempty" name:"UninstallCommand"`
+
+	// 应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。
+	CleanupMode *string `json:"CleanupMode,omitnil,omitempty" name:"CleanupMode"`
 }
 
 type CreateAndroidAppVersionRequest struct {
@@ -568,6 +590,9 @@ type CreateAndroidAppVersionRequest struct {
 
 	// 应用 shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
 	UninstallCommand *string `json:"UninstallCommand,omitnil,omitempty" name:"UninstallCommand"`
+
+	// 应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。
+	CleanupMode *string `json:"CleanupMode,omitnil,omitempty" name:"CleanupMode"`
 }
 
 func (r *CreateAndroidAppVersionRequest) ToJsonString() string {
@@ -586,6 +611,7 @@ func (r *CreateAndroidAppVersionRequest) FromJsonString(s string) error {
 	delete(f, "DownloadUrl")
 	delete(f, "Command")
 	delete(f, "UninstallCommand")
+	delete(f, "CleanupMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndroidAppVersionRequest has unknown keys!", "")
 	}
@@ -614,6 +640,75 @@ func (r *CreateAndroidAppVersionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAndroidAppVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAndroidInstanceADBRequestParams struct {
+	// 安卓实例 ID
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
+}
+
+type CreateAndroidInstanceADBRequest struct {
+	*tchttp.BaseRequest
+	
+	// 安卓实例 ID
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
+}
+
+func (r *CreateAndroidInstanceADBRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAndroidInstanceADBRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndroidInstanceADBRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAndroidInstanceADBResponseParams struct {
+	// 连接私钥，需要保存为文件形式，例如 private_key.pem
+	PrivateKey *string `json:"PrivateKey,omitnil,omitempty" name:"PrivateKey"`
+
+	// 用户名称
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 连接地址
+	HostName *string `json:"HostName,omitnil,omitempty" name:"HostName"`
+
+	// 连接端口
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 连接参考命令
+	ConnectCommand *string `json:"ConnectCommand,omitnil,omitempty" name:"ConnectCommand"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAndroidInstanceADBResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAndroidInstanceADBResponseParams `json:"Response"`
+}
+
+func (r *CreateAndroidInstanceADBResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAndroidInstanceADBResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2471,6 +2566,71 @@ func (r *InstallAndroidInstancesAppResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type InstallAndroidInstancesAppWithURLRequestParams struct {
+	// 实例ID
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 安卓应用下载 URL
+	AndroidAppURL *string `json:"AndroidAppURL,omitnil,omitempty" name:"AndroidAppURL"`
+}
+
+type InstallAndroidInstancesAppWithURLRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 安卓应用下载 URL
+	AndroidAppURL *string `json:"AndroidAppURL,omitnil,omitempty" name:"AndroidAppURL"`
+}
+
+func (r *InstallAndroidInstancesAppWithURLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InstallAndroidInstancesAppWithURLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidInstanceIds")
+	delete(f, "AndroidAppURL")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InstallAndroidInstancesAppWithURLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InstallAndroidInstancesAppWithURLResponseParams struct {
+	// 任务集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskSet []*AndroidInstanceTask `json:"TaskSet,omitnil,omitempty" name:"TaskSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InstallAndroidInstancesAppWithURLResponse struct {
+	*tchttp.BaseResponse
+	Response *InstallAndroidInstancesAppWithURLResponseParams `json:"Response"`
+}
+
+func (r *InstallAndroidInstancesAppWithURLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InstallAndroidInstancesAppWithURLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type LabelRequirement struct {
 	// 标签键
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -2921,6 +3081,74 @@ func (r *ModifyAndroidInstancesLabelsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAndroidInstancesLabelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAndroidInstancesPropertiesRequestParams struct {
+	// 安卓实例 ID 列表
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 安卓实例设备
+	AndroidInstanceDevice *AndroidInstanceDevice `json:"AndroidInstanceDevice,omitnil,omitempty" name:"AndroidInstanceDevice"`
+
+	// 安卓实例其它属性列表
+	AndroidInstanceProperties []*AndroidInstanceProperty `json:"AndroidInstanceProperties,omitnil,omitempty" name:"AndroidInstanceProperties"`
+}
+
+type ModifyAndroidInstancesPropertiesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 安卓实例 ID 列表
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 安卓实例设备
+	AndroidInstanceDevice *AndroidInstanceDevice `json:"AndroidInstanceDevice,omitnil,omitempty" name:"AndroidInstanceDevice"`
+
+	// 安卓实例其它属性列表
+	AndroidInstanceProperties []*AndroidInstanceProperty `json:"AndroidInstanceProperties,omitnil,omitempty" name:"AndroidInstanceProperties"`
+}
+
+func (r *ModifyAndroidInstancesPropertiesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAndroidInstancesPropertiesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidInstanceIds")
+	delete(f, "AndroidInstanceDevice")
+	delete(f, "AndroidInstanceProperties")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAndroidInstancesPropertiesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAndroidInstancesPropertiesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAndroidInstancesPropertiesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAndroidInstancesPropertiesResponseParams `json:"Response"`
+}
+
+func (r *ModifyAndroidInstancesPropertiesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAndroidInstancesPropertiesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -7445,6 +7445,9 @@ type InspectionTaskSettings struct {
 
 	// 是否开启监控
 	Enable *string `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// 事件Json模板
+	SettingsJson *string `json:"SettingsJson,omitnil,omitempty" name:"SettingsJson"`
 }
 
 type InstanceChargePrepaid struct {
@@ -9656,6 +9659,9 @@ type OverviewRow struct {
 
 	// regions，点击可跳转
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// StoreFile数量
+	StoreFileNum *float64 `json:"StoreFileNum,omitnil,omitempty" name:"StoreFileNum"`
 }
 
 type PartDetailPriceItem struct {

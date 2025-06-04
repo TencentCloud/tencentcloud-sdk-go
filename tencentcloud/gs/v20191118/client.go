@@ -65,7 +65,7 @@ func NewBackUpAndroidInstanceToStorageResponse() (response *BackUpAndroidInstanc
 }
 
 // BackUpAndroidInstanceToStorage
-// 备份云手机到指定存储
+// 备份云手机数据到指定存储，支持 COS 和兼容 AWS S3 协议的对象存储服务。如果是备份到 COS 时，会使用公网流量，授权 COS bucket 请在控制台中操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -79,7 +79,7 @@ func (c *Client) BackUpAndroidInstanceToStorage(request *BackUpAndroidInstanceTo
 }
 
 // BackUpAndroidInstanceToStorage
-// 备份云手机到指定存储
+// 备份云手机数据到指定存储，支持 COS 和兼容 AWS S3 协议的对象存储服务。如果是备份到 COS 时，会使用公网流量，授权 COS bucket 请在控制台中操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -181,7 +181,7 @@ func NewCopyAndroidInstanceResponse() (response *CopyAndroidInstanceResponse) {
 // CopyAndroidInstance
 // 复制安卓实例：
 //
-// 1. 排除和包含文件只能指定/data下的文件，不指定时复制整个/data目录
+// 1. 排除和包含文件只能指定 /data 下的文件，不指定时复制整个 /data 目录
 //
 // 2. 源实例和目的实例必须在同一区域
 //
@@ -203,7 +203,7 @@ func (c *Client) CopyAndroidInstance(request *CopyAndroidInstanceRequest) (respo
 // CopyAndroidInstance
 // 复制安卓实例：
 //
-// 1. 排除和包含文件只能指定/data下的文件，不指定时复制整个/data目录
+// 1. 排除和包含文件只能指定 /data 下的文件，不指定时复制整个 /data 目录
 //
 // 2. 源实例和目的实例必须在同一区域
 //
@@ -350,6 +350,61 @@ func (c *Client) CreateAndroidAppVersionWithContext(ctx context.Context, request
     return
 }
 
+func NewCreateAndroidInstanceADBRequest() (request *CreateAndroidInstanceADBRequest) {
+    request = &CreateAndroidInstanceADBRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "CreateAndroidInstanceADB")
+    
+    
+    return
+}
+
+func NewCreateAndroidInstanceADBResponse() (response *CreateAndroidInstanceADBResponse) {
+    response = &CreateAndroidInstanceADBResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAndroidInstanceADB
+// 创建云手机实例 ADB 连接信息，请将返回结果的 PrivateKey 字段保存为 pem 文件，并将 pem 文件权限设置为 600，再参考返回结果的 ConnectCommand 使用 adb 连接实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CreateAndroidInstanceADB(request *CreateAndroidInstanceADBRequest) (response *CreateAndroidInstanceADBResponse, err error) {
+    return c.CreateAndroidInstanceADBWithContext(context.Background(), request)
+}
+
+// CreateAndroidInstanceADB
+// 创建云手机实例 ADB 连接信息，请将返回结果的 PrivateKey 字段保存为 pem 文件，并将 pem 文件权限设置为 600，再参考返回结果的 ConnectCommand 使用 adb 连接实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CreateAndroidInstanceADBWithContext(ctx context.Context, request *CreateAndroidInstanceADBRequest) (response *CreateAndroidInstanceADBResponse, err error) {
+    if request == nil {
+        request = NewCreateAndroidInstanceADBRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAndroidInstanceADB require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAndroidInstanceADBResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAndroidInstanceImageRequest() (request *CreateAndroidInstanceImageRequest) {
     request = &CreateAndroidInstanceImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -492,7 +547,7 @@ func NewCreateAndroidInstanceSSHResponse() (response *CreateAndroidInstanceSSHRe
 }
 
 // CreateAndroidInstanceSSH
-// 创建安卓实例 SSH 连接
+// 创建安卓实例 SSH 连接信息，请将返回结果的 PrivateKey 字段保存为 pem 文件，并将 pem 文件权限设置为 600，再参考返回结果的 ConnectCommand 使用 ssh 连接实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -502,7 +557,7 @@ func (c *Client) CreateAndroidInstanceSSH(request *CreateAndroidInstanceSSHReque
 }
 
 // CreateAndroidInstanceSSH
-// 创建安卓实例 SSH 连接
+// 创建安卓实例 SSH 连接信息，请将返回结果的 PrivateKey 字段保存为 pem 文件，并将 pem 文件权限设置为 600，再参考返回结果的 ConnectCommand 使用 ssh 连接实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -543,7 +598,7 @@ func NewCreateAndroidInstanceWebShellResponse() (response *CreateAndroidInstance
 }
 
 // CreateAndroidInstanceWebShell
-// 创建安卓实例 WebShell 连接
+// 创建安卓实例 WebShell 连接信息，返回的 ConnectUrl 可通过浏览器直接打开访问，链接有效期 1 小时，链接打开后可持续使用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -553,7 +608,7 @@ func (c *Client) CreateAndroidInstanceWebShell(request *CreateAndroidInstanceWeb
 }
 
 // CreateAndroidInstanceWebShell
-// 创建安卓实例 WebShell 连接
+// 创建安卓实例 WebShell 连接信息，返回的 ConnectUrl 可通过浏览器直接打开访问，链接有效期 1 小时，链接打开后可持续使用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1540,7 +1595,7 @@ func NewDistributeFileToAndroidInstancesResponse() (response *DistributeFileToAn
 }
 
 // DistributeFileToAndroidInstances
-// 分发文件到安卓实例
+// 将一个文件批量分发到多个实例，一次接口调用触发一次文件分发，一次文件分发只会从公网下载一次，然后文件会走内网分发到实例列表中的实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1554,7 +1609,7 @@ func (c *Client) DistributeFileToAndroidInstances(request *DistributeFileToAndro
 }
 
 // DistributeFileToAndroidInstances
-// 分发文件到安卓实例
+// 将一个文件批量分发到多个实例，一次接口调用触发一次文件分发，一次文件分发只会从公网下载一次，然后文件会走内网分发到实例列表中的实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1658,7 +1713,7 @@ func NewFetchAndroidInstancesLogsResponse() (response *FetchAndroidInstancesLogs
 }
 
 // FetchAndroidInstancesLogs
-// 批量获取安卓实例日志
+// 批量将实例的 logcat 日志文件上传到您已授权的 COS bucket 中，授权 COS bucket 请在控制台中操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1672,7 +1727,7 @@ func (c *Client) FetchAndroidInstancesLogs(request *FetchAndroidInstancesLogsReq
 }
 
 // FetchAndroidInstancesLogs
-// 批量获取安卓实例日志
+// 批量将实例的 logcat 日志文件上传到您已授权的 COS bucket 中，授权 COS bucket 请在控制台中操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1754,6 +1809,67 @@ func (c *Client) InstallAndroidInstancesAppWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewInstallAndroidInstancesAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInstallAndroidInstancesAppWithURLRequest() (request *InstallAndroidInstancesAppWithURLRequest) {
+    request = &InstallAndroidInstancesAppWithURLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "InstallAndroidInstancesAppWithURL")
+    
+    
+    return
+}
+
+func NewInstallAndroidInstancesAppWithURLResponse() (response *InstallAndroidInstancesAppWithURLResponse) {
+    response = &InstallAndroidInstancesAppWithURLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InstallAndroidInstancesAppWithURL
+// 安装安卓实例应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) InstallAndroidInstancesAppWithURL(request *InstallAndroidInstancesAppWithURLRequest) (response *InstallAndroidInstancesAppWithURLResponse, err error) {
+    return c.InstallAndroidInstancesAppWithURLWithContext(context.Background(), request)
+}
+
+// InstallAndroidInstancesAppWithURL
+// 安装安卓实例应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) InstallAndroidInstancesAppWithURLWithContext(ctx context.Context, request *InstallAndroidInstancesAppWithURLRequest) (response *InstallAndroidInstancesAppWithURLResponse, err error) {
+    if request == nil {
+        request = NewInstallAndroidInstancesAppWithURLRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InstallAndroidInstancesAppWithURL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInstallAndroidInstancesAppWithURLResponse()
     err = c.Send(request, response)
     return
 }
@@ -2082,6 +2198,57 @@ func (c *Client) ModifyAndroidInstancesLabelsWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewModifyAndroidInstancesLabelsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAndroidInstancesPropertiesRequest() (request *ModifyAndroidInstancesPropertiesRequest) {
+    request = &ModifyAndroidInstancesPropertiesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "ModifyAndroidInstancesProperties")
+    
+    
+    return
+}
+
+func NewModifyAndroidInstancesPropertiesResponse() (response *ModifyAndroidInstancesPropertiesResponse) {
+    response = &ModifyAndroidInstancesPropertiesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAndroidInstancesProperties
+// 批量修改安卓实例属性
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyAndroidInstancesProperties(request *ModifyAndroidInstancesPropertiesRequest) (response *ModifyAndroidInstancesPropertiesResponse, err error) {
+    return c.ModifyAndroidInstancesPropertiesWithContext(context.Background(), request)
+}
+
+// ModifyAndroidInstancesProperties
+// 批量修改安卓实例属性
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyAndroidInstancesPropertiesWithContext(ctx context.Context, request *ModifyAndroidInstancesPropertiesRequest) (response *ModifyAndroidInstancesPropertiesResponse, err error) {
+    if request == nil {
+        request = NewModifyAndroidInstancesPropertiesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAndroidInstancesProperties require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAndroidInstancesPropertiesResponse()
     err = c.Send(request, response)
     return
 }
@@ -2462,7 +2629,7 @@ func NewRestoreAndroidInstanceFromStorageResponse() (response *RestoreAndroidIns
 }
 
 // RestoreAndroidInstanceFromStorage
-// 指定存储还原云手机
+// 使用指定存储数据还原云手机，支持 COS 和兼容 AWS S3 协议的对象存储服务。如果还原数据来自 COS 时，会使用公网流量，授权 COS bucket 请在控制台中操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2476,7 +2643,7 @@ func (c *Client) RestoreAndroidInstanceFromStorage(request *RestoreAndroidInstan
 }
 
 // RestoreAndroidInstanceFromStorage
-// 指定存储还原云手机
+// 使用指定存储数据还原云手机，支持 COS 和兼容 AWS S3 协议的对象存储服务。如果还原数据来自 COS 时，会使用公网流量，授权 COS bucket 请在控制台中操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3377,7 +3544,7 @@ func NewUploadFileToAndroidInstancesResponse() (response *UploadFileToAndroidIns
 }
 
 // UploadFileToAndroidInstances
-// 上传文件到安卓实例
+// 将文件下载到指定实例列表的实例上，每个实例都会从公网下载文件。如果您需要将同一个文件分发到多个实例，建议使用 DistributeFileToAndroidInstances 接口减少公网下载的流量。如果您需要将不同的文件下载到不同的实例，可考虑使用 UploadFilesToAndroidInstances 接口批量将不同文件下载到不同的实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3391,7 +3558,7 @@ func (c *Client) UploadFileToAndroidInstances(request *UploadFileToAndroidInstan
 }
 
 // UploadFileToAndroidInstances
-// 上传文件到安卓实例
+// 将文件下载到指定实例列表的实例上，每个实例都会从公网下载文件。如果您需要将同一个文件分发到多个实例，建议使用 DistributeFileToAndroidInstances 接口减少公网下载的流量。如果您需要将不同的文件下载到不同的实例，可考虑使用 UploadFilesToAndroidInstances 接口批量将不同文件下载到不同的实例。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3436,7 +3603,7 @@ func NewUploadFilesToAndroidInstancesResponse() (response *UploadFilesToAndroidI
 }
 
 // UploadFilesToAndroidInstances
-// 批量上传文件到安卓实例
+// 批量将不同的文件下载到不同的实例，每个实例下载文件都是从公网下载，建议只用在文件下载使用一次的场景。如果您需要将同一个文件分发到不同实例，建议使用 DistributeFileToAndroidInstances 接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3450,7 +3617,7 @@ func (c *Client) UploadFilesToAndroidInstances(request *UploadFilesToAndroidInst
 }
 
 // UploadFilesToAndroidInstances
-// 批量上传文件到安卓实例
+// 批量将不同的文件下载到不同的实例，每个实例下载文件都是从公网下载，建议只用在文件下载使用一次的场景。如果您需要将同一个文件分发到不同实例，建议使用 DistributeFileToAndroidInstances 接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

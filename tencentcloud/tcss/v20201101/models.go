@@ -2379,6 +2379,9 @@ type ClusterInfoItem struct {
 
 	// 集群审计开关失败信息
 	ClusterAuditFailedInfo *string `json:"ClusterAuditFailedInfo,omitnil,omitempty" name:"ClusterAuditFailedInfo"`
+
+	// 所有者名称
+	OwnerName *string `json:"OwnerName,omitnil,omitempty" name:"OwnerName"`
 }
 
 type ClusterNodeInfo struct {
@@ -7399,6 +7402,12 @@ func (r *DeleteK8sApiAbnormalRuleResponse) FromJsonString(s string) error {
 type DeleteMachineRequestParams struct {
 	// 客户端Uuid
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
+
+	// 超级节点唯一id
+	NodeUniqueIds []*string `json:"NodeUniqueIds,omitnil,omitempty" name:"NodeUniqueIds"`
+
+	// uuid列表
+	UUIDs []*string `json:"UUIDs,omitnil,omitempty" name:"UUIDs"`
 }
 
 type DeleteMachineRequest struct {
@@ -7406,6 +7415,12 @@ type DeleteMachineRequest struct {
 	
 	// 客户端Uuid
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
+
+	// 超级节点唯一id
+	NodeUniqueIds []*string `json:"NodeUniqueIds,omitnil,omitempty" name:"NodeUniqueIds"`
+
+	// uuid列表
+	UUIDs []*string `json:"UUIDs,omitnil,omitempty" name:"UUIDs"`
 }
 
 func (r *DeleteMachineRequest) ToJsonString() string {
@@ -7421,6 +7436,8 @@ func (r *DeleteMachineRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Uuid")
+	delete(f, "NodeUniqueIds")
+	delete(f, "UUIDs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMachineRequest has unknown keys!", "")
 	}
@@ -8578,6 +8595,12 @@ type DescribeAccessControlEventsResponseParams struct {
 
 	// 访问控制事件数组
 	EventSet []*AccessControlEventInfo `json:"EventSet,omitnil,omitempty" name:"EventSet"`
+
+	// 支持的内核版本
+	SupportCoreVersion *string `json:"SupportCoreVersion,omitnil,omitempty" name:"SupportCoreVersion"`
+
+	// 拦截失败可能的原因
+	InterceptionFailureTip *string `json:"InterceptionFailureTip,omitnil,omitempty" name:"InterceptionFailureTip"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -10780,6 +10803,9 @@ type DescribeAssetImageRegistryListExportResponseParams struct {
 	// excel文件下载地址
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
+	// 导出任务id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -11530,6 +11556,9 @@ type DescribeAssetImageRegistryVirusListExportResponseParams struct {
 	// excel文件下载地址
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
 
+	// 导出任务id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -11717,6 +11746,9 @@ func (r *DescribeAssetImageRegistryVulListExportRequest) FromJsonString(s string
 type DescribeAssetImageRegistryVulListExportResponseParams struct {
 	// excel文件下载地址
 	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
+
+	// 导出任务id
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -13147,6 +13179,12 @@ type DescribeAssetSyncLastTimeResponseParams struct {
 	// 任务进度(百分比)
 	TaskProcess *int64 `json:"TaskProcess,omitnil,omitempty" name:"TaskProcess"`
 
+	// 失败主机数
+	FailedHostCount *uint64 `json:"FailedHostCount,omitnil,omitempty" name:"FailedHostCount"`
+
+	// 任务id
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -13538,6 +13576,9 @@ type DescribeClusterDetailResponseParams struct {
 
 	// 主节点的ip列表
 	MasterIps *string `json:"MasterIps,omitnil,omitempty" name:"MasterIps"`
+
+	// 所有者名称
+	OwnerName *string `json:"OwnerName,omitnil,omitempty" name:"OwnerName"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -22711,6 +22752,9 @@ type DescribeVirusDetailResponseParams struct {
 	// 工作负载类型
 	WorkloadType *string `json:"WorkloadType,omitnil,omitempty" name:"WorkloadType"`
 
+	// 容器状态
+	ContainerStatus *string `json:"ContainerStatus,omitnil,omitempty" name:"ContainerStatus"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -30677,6 +30721,12 @@ type RiskDnsEventInfo struct {
 
 	// 集群名称
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 镜像ID
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// 容器ID
+	ContainerId *string `json:"ContainerId,omitnil,omitempty" name:"ContainerId"`
 }
 
 type RiskSyscallEventDescription struct {
@@ -30999,6 +31049,9 @@ type RunTimeEventBaseInfo struct {
 
 	// WorkloadType
 	WorkloadType *string `json:"WorkloadType,omitnil,omitempty" name:"WorkloadType"`
+
+	// 容器运行状态
+	ContainerStatus *string `json:"ContainerStatus,omitnil,omitempty" name:"ContainerStatus"`
 }
 
 type RunTimeFilters struct {
@@ -32950,6 +33003,9 @@ type VirusInfo struct {
 
 	// 集群名称
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
+
+	// 节点内网IP，同innerIP
+	HostIP *string `json:"HostIP,omitnil,omitempty" name:"HostIP"`
 }
 
 type VirusTaskInfo struct {

@@ -4076,6 +4076,63 @@ func (r *DescribeLBListenersResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLBOperateProtectRequestParams struct {
+	// 负载均衡实例ID。
+	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
+}
+
+type DescribeLBOperateProtectRequest struct {
+	*tchttp.BaseRequest
+	
+	// 负载均衡实例ID。
+	LoadBalancerIds []*string `json:"LoadBalancerIds,omitnil,omitempty" name:"LoadBalancerIds"`
+}
+
+func (r *DescribeLBOperateProtectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLBOperateProtectRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLBOperateProtectRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLBOperateProtectResponseParams struct {
+	// 返回的负载均衡操作保护信息数组。
+	LoadBalancerSet []*LBOperateProtectInfo `json:"LoadBalancerSet,omitnil,omitempty" name:"LoadBalancerSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLBOperateProtectResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLBOperateProtectResponseParams `json:"Response"`
+}
+
+func (r *DescribeLBOperateProtectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLBOperateProtectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeListenersRequestParams struct {
 	// 负载均衡实例 ID，可以通过 [DescribeLoadBalancers](https://cloud.tencent.com/document/api/214/30685) 接口获取。
 	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
@@ -6157,6 +6214,26 @@ type LBItem struct {
 
 	// LB所在地域
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+}
+
+type LBOperateProtectInfo struct {
+	// 负载均衡实例 ID。
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
+
+	// 保护状态，true：表示开启了操作保护，false：表示未开启操作保护。
+	ProtectState *bool `json:"ProtectState,omitnil,omitempty" name:"ProtectState"`
+
+	// 操作保护的设置uin。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorUin *string `json:"OperatorUin,omitnil,omitempty" name:"OperatorUin"`
+
+	// 设置操作保护时的描述信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 最后修改时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 }
 
 type LbRsItem struct {

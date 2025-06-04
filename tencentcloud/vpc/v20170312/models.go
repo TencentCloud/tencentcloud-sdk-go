@@ -4853,8 +4853,7 @@ type CreateFlowLogRequestParams struct {
 	FlowLogDescription *string `json:"FlowLogDescription,omitnil,omitempty" name:"FlowLogDescription"`
 
 	// 流日志存储ID（cls的日志主题ID，
-	// 可通过[DescribeTopics](https://cloud.tencent.com/document/product/614/56454)接口获取。
-	// ）。当StorageType为cls时，CloudLogId为必选。
+	// 可通过[DescribeTopics](https://cloud.tencent.com/document/product/614/56454)接口获取）。当StorageType为cls时，CloudLogId为必选。
 	CloudLogId *string `json:"CloudLogId,omitnil,omitempty" name:"CloudLogId"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
@@ -4892,8 +4891,7 @@ type CreateFlowLogRequest struct {
 	FlowLogDescription *string `json:"FlowLogDescription,omitnil,omitempty" name:"FlowLogDescription"`
 
 	// 流日志存储ID（cls的日志主题ID，
-	// 可通过[DescribeTopics](https://cloud.tencent.com/document/product/614/56454)接口获取。
-	// ）。当StorageType为cls时，CloudLogId为必选。
+	// 可通过[DescribeTopics](https://cloud.tencent.com/document/product/614/56454)接口获取）。当StorageType为cls时，CloudLogId为必选。
 	CloudLogId *string `json:"CloudLogId,omitnil,omitempty" name:"CloudLogId"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
@@ -15838,7 +15836,11 @@ func (r *DescribeIpGeolocationInfosResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLocalGatewayRequestParams struct {
-	// 支持的过滤条件如下:\n<li>vpc-id:按照VPCID过滤。</li>\n<li>local-gateway-name:本地网关名称,支持模糊查询。</li>\n<li>local-gateway-id:本地网关实例ID。</li>\n<li>cdc-id:cdc实例ID。</li>
+	// 支持的过滤条件如下:
+	// <li>vpc-id:按照VPCID过滤。</li>
+	// <li>local-gateway-name:本地网关名称,支持模糊查询。</li>
+	// <li>local-gateway-id:本地网关实例ID。</li>
+	// <li>cdc-id:cdc实例ID。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
@@ -15851,7 +15853,11 @@ type DescribeLocalGatewayRequestParams struct {
 type DescribeLocalGatewayRequest struct {
 	*tchttp.BaseRequest
 	
-	// 支持的过滤条件如下:\n<li>vpc-id:按照VPCID过滤。</li>\n<li>local-gateway-name:本地网关名称,支持模糊查询。</li>\n<li>local-gateway-id:本地网关实例ID。</li>\n<li>cdc-id:cdc实例ID。</li>
+	// 支持的过滤条件如下:
+	// <li>vpc-id:按照VPCID过滤。</li>
+	// <li>local-gateway-name:本地网关名称,支持模糊查询。</li>
+	// <li>local-gateway-id:本地网关实例ID。</li>
+	// <li>cdc-id:cdc实例ID。</li>
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。

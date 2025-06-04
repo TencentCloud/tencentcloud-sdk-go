@@ -651,6 +651,67 @@ func (c *Client) CreateExporterIntegrationWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateExternalClusterRequest() (request *CreateExternalClusterRequest) {
+    request = &CreateExternalClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "CreateExternalCluster")
+    
+    
+    return
+}
+
+func NewCreateExternalClusterResponse() (response *CreateExternalClusterResponse) {
+    response = &CreateExternalClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateExternalCluster
+// 注册外部集群到云上 TMP 实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_INSTANCENOTRUNNING = "FailedOperation.InstanceNotRunning"
+//  FAILEDOPERATION_RESOURCECONFLICT = "FailedOperation.ResourceConflict"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_RESOURCEOPERATING = "FailedOperation.ResourceOperating"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateExternalCluster(request *CreateExternalClusterRequest) (response *CreateExternalClusterResponse, err error) {
+    return c.CreateExternalClusterWithContext(context.Background(), request)
+}
+
+// CreateExternalCluster
+// 注册外部集群到云上 TMP 实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_INSTANCENOTRUNNING = "FailedOperation.InstanceNotRunning"
+//  FAILEDOPERATION_RESOURCECONFLICT = "FailedOperation.ResourceConflict"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_RESOURCEOPERATING = "FailedOperation.ResourceOperating"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateExternalClusterWithContext(ctx context.Context, request *CreateExternalClusterRequest) (response *CreateExternalClusterResponse, err error) {
+    if request == nil {
+        request = NewCreateExternalClusterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateExternalCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateExternalClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateGrafanaInstanceRequest() (request *CreateGrafanaInstanceRequest) {
     request = &CreateGrafanaInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4405,6 +4466,55 @@ func (c *Client) DescribeExternalClusterRegisterCommandWithContext(ctx context.C
     request.SetContext(ctx)
     
     response = NewDescribeExternalClusterRegisterCommandResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExternalClusterUninstallCommandRequest() (request *DescribeExternalClusterUninstallCommandRequest) {
+    request = &DescribeExternalClusterUninstallCommandRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeExternalClusterUninstallCommand")
+    
+    
+    return
+}
+
+func NewDescribeExternalClusterUninstallCommandResponse() (response *DescribeExternalClusterUninstallCommandResponse) {
+    response = &DescribeExternalClusterUninstallCommandResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeExternalClusterUninstallCommand
+// 查看外部集群 Agent 卸载命令
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeExternalClusterUninstallCommand(request *DescribeExternalClusterUninstallCommandRequest) (response *DescribeExternalClusterUninstallCommandResponse, err error) {
+    return c.DescribeExternalClusterUninstallCommandWithContext(context.Background(), request)
+}
+
+// DescribeExternalClusterUninstallCommand
+// 查看外部集群 Agent 卸载命令
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeExternalClusterUninstallCommandWithContext(ctx context.Context, request *DescribeExternalClusterUninstallCommandRequest) (response *DescribeExternalClusterUninstallCommandResponse, err error) {
+    if request == nil {
+        request = NewDescribeExternalClusterUninstallCommandRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExternalClusterUninstallCommand require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExternalClusterUninstallCommandResponse()
     err = c.Send(request, response)
     return
 }

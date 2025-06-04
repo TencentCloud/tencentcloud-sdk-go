@@ -11000,9 +11000,11 @@ type HistoryJob struct {
 	ExpandType *string `json:"ExpandType,omitnil,omitempty" name:"ExpandType"`
 
 	// 扩容开始时间
+	// 说明：此项显示的格式是 int 类型的 unix 时间戳
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 扩容结束时间
+	// 说明：此项显示的格式是 int 类型的 unix 时间戳
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 扩容前核数
