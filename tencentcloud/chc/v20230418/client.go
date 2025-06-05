@@ -1593,6 +1593,59 @@ func (c *Client) DescribeWorkOrderTypesWithContext(ctx context.Context, request 
     return
 }
 
+func NewExportCustomerWorkOrderDetailRequest() (request *ExportCustomerWorkOrderDetailRequest) {
+    request = &ExportCustomerWorkOrderDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("chc", APIVersion, "ExportCustomerWorkOrderDetail")
+    
+    
+    return
+}
+
+func NewExportCustomerWorkOrderDetailResponse() (response *ExportCustomerWorkOrderDetailResponse) {
+    response = &ExportCustomerWorkOrderDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ExportCustomerWorkOrderDetail
+// 导出工单详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_ENDTIMELOWERTHANSTARTTIME = "InvalidParameterValue.EndTimeLowerThanStartTime"
+//  INVALIDPARAMETERVALUE_INVALIDTIMEFORMAT = "InvalidParameterValue.InvalidTimeFormat"
+//  INVALIDPARAMETERVALUE_INVALIDWORKORDERTYPE = "InvalidParameterValue.InvalidWorkOrderType"
+func (c *Client) ExportCustomerWorkOrderDetail(request *ExportCustomerWorkOrderDetailRequest) (response *ExportCustomerWorkOrderDetailResponse, err error) {
+    return c.ExportCustomerWorkOrderDetailWithContext(context.Background(), request)
+}
+
+// ExportCustomerWorkOrderDetail
+// 导出工单详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_ENDTIMELOWERTHANSTARTTIME = "InvalidParameterValue.EndTimeLowerThanStartTime"
+//  INVALIDPARAMETERVALUE_INVALIDTIMEFORMAT = "InvalidParameterValue.InvalidTimeFormat"
+//  INVALIDPARAMETERVALUE_INVALIDWORKORDERTYPE = "InvalidParameterValue.InvalidWorkOrderType"
+func (c *Client) ExportCustomerWorkOrderDetailWithContext(ctx context.Context, request *ExportCustomerWorkOrderDetailRequest) (response *ExportCustomerWorkOrderDetailResponse, err error) {
+    if request == nil {
+        request = NewExportCustomerWorkOrderDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportCustomerWorkOrderDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportCustomerWorkOrderDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyWorkOrderTypeCollectFlagRequest() (request *ModifyWorkOrderTypeCollectFlagRequest) {
     request = &ModifyWorkOrderTypeCollectFlagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1614,12 +1667,22 @@ func NewModifyWorkOrderTypeCollectFlagResponse() (response *ModifyWorkOrderTypeC
 
 // ModifyWorkOrderTypeCollectFlag
 // 如果当前该工单类型是收藏状态，调用接口后变成未收藏状态，如果是未收藏状态，调用该接口变为收藏状态
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_ENDTIMELOWERTHANSTARTTIME = "InvalidParameterValue.EndTimeLowerThanStartTime"
+//  INVALIDPARAMETERVALUE_INVALIDTIMEFORMAT = "InvalidParameterValue.InvalidTimeFormat"
+//  INVALIDPARAMETERVALUE_INVALIDWORKORDERTYPE = "InvalidParameterValue.InvalidWorkOrderType"
 func (c *Client) ModifyWorkOrderTypeCollectFlag(request *ModifyWorkOrderTypeCollectFlagRequest) (response *ModifyWorkOrderTypeCollectFlagResponse, err error) {
     return c.ModifyWorkOrderTypeCollectFlagWithContext(context.Background(), request)
 }
 
 // ModifyWorkOrderTypeCollectFlag
 // 如果当前该工单类型是收藏状态，调用接口后变成未收藏状态，如果是未收藏状态，调用该接口变为收藏状态
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_ENDTIMELOWERTHANSTARTTIME = "InvalidParameterValue.EndTimeLowerThanStartTime"
+//  INVALIDPARAMETERVALUE_INVALIDTIMEFORMAT = "InvalidParameterValue.InvalidTimeFormat"
+//  INVALIDPARAMETERVALUE_INVALIDWORKORDERTYPE = "InvalidParameterValue.InvalidWorkOrderType"
 func (c *Client) ModifyWorkOrderTypeCollectFlagWithContext(ctx context.Context, request *ModifyWorkOrderTypeCollectFlagRequest) (response *ModifyWorkOrderTypeCollectFlagResponse, err error) {
     if request == nil {
         request = NewModifyWorkOrderTypeCollectFlagRequest()

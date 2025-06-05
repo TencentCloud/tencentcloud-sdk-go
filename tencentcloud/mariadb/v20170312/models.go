@@ -877,16 +877,22 @@ type CreateDedicatedClusterDBInstanceRequestParams struct {
 	// 独享集群集群uuid
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// （废弃）可用区
+	// 可用区
+	//
+	// Deprecated: Zone is deprecated.
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 项目ID
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// （废弃）Pid，可通过获取独享集群售卖配置接口得到
+	// Pid，可通过获取独享集群售卖配置接口得到
+	//
+	// Deprecated: Pid is deprecated.
 	Pid *int64 `json:"Pid,omitnil,omitempty" name:"Pid"`
 
-	// （废弃）机型
+	// 机型
+	//
+	// Deprecated: Machine is deprecated.
 	Machine *string `json:"Machine,omitnil,omitempty" name:"Machine"`
 
 	// 网络Id
@@ -898,10 +904,14 @@ type CreateDedicatedClusterDBInstanceRequestParams struct {
 	// db类型，不传默认8.0
 	DbVersionId *string `json:"DbVersionId,omitnil,omitempty" name:"DbVersionId"`
 
-	// （废弃）是否手动指定一组服务器分配, 运维使用
+	// 是否手动指定一组服务器分配, 运维使用
+	//
+	// Deprecated: Manual is deprecated.
 	Manual *int64 `json:"Manual,omitnil,omitempty" name:"Manual"`
 
-	// （废弃）DeviceNo参数
+	// DeviceNo参数
+	//
+	// Deprecated: DeviceNo is deprecated.
 	DeviceNo *string `json:"DeviceNo,omitnil,omitempty" name:"DeviceNo"`
 
 	// 安全组ID
@@ -959,16 +969,16 @@ type CreateDedicatedClusterDBInstanceRequest struct {
 	// 独享集群集群uuid
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// （废弃）可用区
+	// 可用区
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 项目ID
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
-	// （废弃）Pid，可通过获取独享集群售卖配置接口得到
+	// Pid，可通过获取独享集群售卖配置接口得到
 	Pid *int64 `json:"Pid,omitnil,omitempty" name:"Pid"`
 
-	// （废弃）机型
+	// 机型
 	Machine *string `json:"Machine,omitnil,omitempty" name:"Machine"`
 
 	// 网络Id
@@ -980,10 +990,10 @@ type CreateDedicatedClusterDBInstanceRequest struct {
 	// db类型，不传默认8.0
 	DbVersionId *string `json:"DbVersionId,omitnil,omitempty" name:"DbVersionId"`
 
-	// （废弃）是否手动指定一组服务器分配, 运维使用
+	// 是否手动指定一组服务器分配, 运维使用
 	Manual *int64 `json:"Manual,omitnil,omitempty" name:"Manual"`
 
-	// （废弃）DeviceNo参数
+	// DeviceNo参数
 	DeviceNo *string `json:"DeviceNo,omitnil,omitempty" name:"DeviceNo"`
 
 	// 安全组ID

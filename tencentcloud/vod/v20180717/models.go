@@ -2152,6 +2152,8 @@ type AsrFullTextConfigureInfo struct {
 	// <li>vtt：生成 WebVTT 字幕文件；</li>
 	// <li>srt：生成 SRT 字幕文件。</li>
 	// <font color='red'>注意：此字段已废弃，建议使用 SubtitleFormats。</font>
+	//
+	// Deprecated: SubtitleFormat is deprecated.
 	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
 
 	// 媒体源语言，取值范围：
@@ -2180,6 +2182,8 @@ type AsrFullTextConfigureInfoForUpdate struct {
 	// <li>vtt：生成 WebVTT 字幕文件；</li>
 	// <li>srt：生成 SRT 字幕文件。</li>
 	// <font color='red'>注意：此字段已废弃，建议使用 SubtitleFormatsOperation。</font>
+	//
+	// Deprecated: SubtitleFormat is deprecated.
 	SubtitleFormat *string `json:"SubtitleFormat,omitnil,omitempty" name:"SubtitleFormat"`
 
 	// 媒体源语言，取值范围：
@@ -12011,6 +12015,8 @@ type DescribeRoundPlaysRequestParams struct {
 	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
 
 	// 分页偏移量，默认值：0。已经废弃，请根据 ScrollToken 参数进行分批次查询。
+	//
+	// Deprecated: Offset is deprecated.
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 返回记录条数，默认值：10，最大值：100。
@@ -12074,6 +12080,8 @@ func (r *DescribeRoundPlaysRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRoundPlaysResponseParams struct {
 	// 符合过滤条件的轮播播单总数。已经废弃，分批次查询请请使用 ScrollToken 参数。
+	//
+	// Deprecated: TotalCount is deprecated.
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 轮播播单详情列表。
@@ -14565,6 +14573,8 @@ type ExtractTraceWatermarkTaskOutput struct {
 	Uv *string `json:"Uv,omitnil,omitempty" name:"Uv"`
 
 	// 该字段已废弃。
+	//
+	// Deprecated: Uid is deprecated.
 	Uid *string `json:"Uid,omitnil,omitempty" name:"Uid"`
 }
 
@@ -16073,6 +16083,8 @@ type MediaContentReviewPoliticalSegmentItem struct {
 	AreaCoordSet []*int64 `json:"AreaCoordSet,omitnil,omitempty" name:"AreaCoordSet"`
 
 	// 该字段已废弃，请使用 PicUrlExpireTime。
+	//
+	// Deprecated: PicUrlExpireTimeStamp is deprecated.
 	PicUrlExpireTimeStamp *int64 `json:"PicUrlExpireTimeStamp,omitnil,omitempty" name:"PicUrlExpireTimeStamp"`
 
 	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
@@ -23478,9 +23490,13 @@ type RestoreMediaTask struct {
 	RestoreDay *int64 `json:"RestoreDay,omitnil,omitempty" name:"RestoreDay"`
 
 	// 该字段已废弃。
+	//
+	// Deprecated: Status is deprecated.
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 该字段已废弃。
+	//
+	// Deprecated: Message is deprecated.
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }
 
@@ -23782,6 +23798,8 @@ func (r *ReviewImageRequest) FromJsonString(s string) error {
 type ReviewImageResponseParams struct {
 	// 图片审核任务结果。
 	// <font color=red>注意：该字段已废弃，建议使用 MediaReviewResult。</font> 
+	//
+	// Deprecated: ReviewResultSet is deprecated.
 	ReviewResultSet []*ContentReviewResult `json:"ReviewResultSet,omitnil,omitempty" name:"ReviewResultSet"`
 
 	// 图片审核任务结果。
@@ -25785,6 +25803,8 @@ type TraceWatermarkInput struct {
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
 	// 该字段已废弃，请勿使用。
+	//
+	// Deprecated: Definition is deprecated.
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 }
 

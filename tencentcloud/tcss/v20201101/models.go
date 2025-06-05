@@ -776,6 +776,9 @@ type AddAssetImageRegistryRegistryDetailRequestParams struct {
 
 	// webhook接入token
 	WebhookToken *string `json:"WebhookToken,omitnil,omitempty" name:"WebhookToken"`
+
+	// tcr实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type AddAssetImageRegistryRegistryDetailRequest struct {
@@ -825,6 +828,9 @@ type AddAssetImageRegistryRegistryDetailRequest struct {
 
 	// webhook接入token
 	WebhookToken *string `json:"WebhookToken,omitnil,omitempty" name:"WebhookToken"`
+
+	// tcr实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 func (r *AddAssetImageRegistryRegistryDetailRequest) ToJsonString() string {
@@ -854,6 +860,7 @@ func (r *AddAssetImageRegistryRegistryDetailRequest) FromJsonString(s string) er
 	delete(f, "SyncMode")
 	delete(f, "WebhookUrl")
 	delete(f, "WebhookToken")
+	delete(f, "InstanceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddAssetImageRegistryRegistryDetailRequest has unknown keys!", "")
 	}
@@ -27594,21 +27601,39 @@ func (r *ModifyAssetImageScanStopResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAssetRequestParams struct {
-	// 全部同步，俩参数必选一个 All优先
+	// 同步全部普通节点
 	All *bool `json:"All,omitnil,omitempty" name:"All"`
 
-	// 要同步的主机列表uuid ，俩参数必选一个 All优先
+	// 要同步的主机列表uuid 
 	Hosts []*string `json:"Hosts,omitnil,omitempty" name:"Hosts"`
+
+	// 同步全部超级节点
+	AllSuperHost *bool `json:"AllSuperHost,omitnil,omitempty" name:"AllSuperHost"`
+
+	// 要同步的超级节点唯一id
+	NodeUniqueIds []*string `json:"NodeUniqueIds,omitnil,omitempty" name:"NodeUniqueIds"`
+
+	// 超时时间(秒) 最低3600s
+	TimeoutSec *uint64 `json:"TimeoutSec,omitnil,omitempty" name:"TimeoutSec"`
 }
 
 type ModifyAssetRequest struct {
 	*tchttp.BaseRequest
 	
-	// 全部同步，俩参数必选一个 All优先
+	// 同步全部普通节点
 	All *bool `json:"All,omitnil,omitempty" name:"All"`
 
-	// 要同步的主机列表uuid ，俩参数必选一个 All优先
+	// 要同步的主机列表uuid 
 	Hosts []*string `json:"Hosts,omitnil,omitempty" name:"Hosts"`
+
+	// 同步全部超级节点
+	AllSuperHost *bool `json:"AllSuperHost,omitnil,omitempty" name:"AllSuperHost"`
+
+	// 要同步的超级节点唯一id
+	NodeUniqueIds []*string `json:"NodeUniqueIds,omitnil,omitempty" name:"NodeUniqueIds"`
+
+	// 超时时间(秒) 最低3600s
+	TimeoutSec *uint64 `json:"TimeoutSec,omitnil,omitempty" name:"TimeoutSec"`
 }
 
 func (r *ModifyAssetRequest) ToJsonString() string {
@@ -27625,6 +27650,9 @@ func (r *ModifyAssetRequest) FromJsonString(s string) error {
 	}
 	delete(f, "All")
 	delete(f, "Hosts")
+	delete(f, "AllSuperHost")
+	delete(f, "NodeUniqueIds")
+	delete(f, "TimeoutSec")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAssetRequest has unknown keys!", "")
 	}
@@ -27635,6 +27663,9 @@ func (r *ModifyAssetRequest) FromJsonString(s string) error {
 type ModifyAssetResponseParams struct {
 	// 同步任务发送结果
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务id
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -32360,6 +32391,9 @@ type UpdateAssetImageRegistryRegistryDetailRequestParams struct {
 
 	// 是否自动授权&扫描，选择增量同步时参数生效，包含所有新增镜像
 	NeedScan *bool `json:"NeedScan,omitnil,omitempty" name:"NeedScan"`
+
+	// tcr实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type UpdateAssetImageRegistryRegistryDetailRequest struct {
@@ -32406,6 +32440,9 @@ type UpdateAssetImageRegistryRegistryDetailRequest struct {
 
 	// 是否自动授权&扫描，选择增量同步时参数生效，包含所有新增镜像
 	NeedScan *bool `json:"NeedScan,omitnil,omitempty" name:"NeedScan"`
+
+	// tcr实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 func (r *UpdateAssetImageRegistryRegistryDetailRequest) ToJsonString() string {
@@ -32434,6 +32471,7 @@ func (r *UpdateAssetImageRegistryRegistryDetailRequest) FromJsonString(s string)
 	delete(f, "RegistryId")
 	delete(f, "SyncMode")
 	delete(f, "NeedScan")
+	delete(f, "InstanceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAssetImageRegistryRegistryDetailRequest has unknown keys!", "")
 	}

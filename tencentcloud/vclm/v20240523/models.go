@@ -277,6 +277,72 @@ func (r *DescribePortraitSingJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTemplateToVideoJobRequestParams struct {
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+type DescribeTemplateToVideoJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+}
+
+func (r *DescribeTemplateToVideoJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTemplateToVideoJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTemplateToVideoJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTemplateToVideoJobResponseParams struct {
+	// 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+	ErrorCode *string `json:"ErrorCode,omitnil,omitempty" name:"ErrorCode"`
+
+	// 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+	ErrorMessage *string `json:"ErrorMessage,omitnil,omitempty" name:"ErrorMessage"`
+
+	// 结果视频 URL。有效期 24 小时。
+	ResultVideoUrl *string `json:"ResultVideoUrl,omitnil,omitempty" name:"ResultVideoUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeTemplateToVideoJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTemplateToVideoJobResponseParams `json:"Response"`
+}
+
+func (r *DescribeTemplateToVideoJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTemplateToVideoJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeVideoStylizationJobRequestParams struct {
 	// 任务ID
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -350,6 +416,14 @@ func (r *DescribeVideoStylizationJobResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeVideoStylizationJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Image struct {
+	// 图片Base64
+	Base64 *string `json:"Base64,omitnil,omitempty" name:"Base64"`
+
+	// 图片Url
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 }
 
 type LogoParam struct {
@@ -662,6 +736,124 @@ func (r *SubmitPortraitSingJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SubmitPortraitSingJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitTemplateToVideoJobRequestParams struct {
+	// 特效模板名称。
+	// 枚举值：
+	// hug ：拥抱
+	// kiss ：亲吻
+	// heart ： 比心
+	// fuzzy ： 毛茸茸
+	// befigure：变手办风
+	// longhair：金色长发
+	// morphlab：膨胀
+	// bloom：万物生花
+	// pinch：捏捏
+	// balloonfly：飞走了
+	// dragme：被拽走了
+	Template *string `json:"Template,omitnil,omitempty" name:"Template"`
+
+	// 参考图像，最多输入2张图。
+	// - 支持传入图片Base64编码或图片URL（确保可访问）
+	// - 图片格式：支持png、jpg、jpeg、webp、bmp、tiff
+	// - 图片文件：大小不能超过10MB（base64后），图片分辨率不小于300\*300px，不大于4096\*4096，图片宽高比应在1:4 ~ 4:1之间
+	Images []*Image `json:"Images,omitnil,omitempty" name:"Images"`
+
+	// 为生成视频添加标识的开关，默认为1。
+	// 1：添加标识。
+	// 0：不添加标识。
+	// 其他数值：默认按1处理。
+	// 建议您使用显著标识来提示，该视频是 AI 生成的视频。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。
+	// 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+}
+
+type SubmitTemplateToVideoJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 特效模板名称。
+	// 枚举值：
+	// hug ：拥抱
+	// kiss ：亲吻
+	// heart ： 比心
+	// fuzzy ： 毛茸茸
+	// befigure：变手办风
+	// longhair：金色长发
+	// morphlab：膨胀
+	// bloom：万物生花
+	// pinch：捏捏
+	// balloonfly：飞走了
+	// dragme：被拽走了
+	Template *string `json:"Template,omitnil,omitempty" name:"Template"`
+
+	// 参考图像，最多输入2张图。
+	// - 支持传入图片Base64编码或图片URL（确保可访问）
+	// - 图片格式：支持png、jpg、jpeg、webp、bmp、tiff
+	// - 图片文件：大小不能超过10MB（base64后），图片分辨率不小于300\*300px，不大于4096\*4096，图片宽高比应在1:4 ~ 4:1之间
+	Images []*Image `json:"Images,omitnil,omitempty" name:"Images"`
+
+	// 为生成视频添加标识的开关，默认为1。
+	// 1：添加标识。
+	// 0：不添加标识。
+	// 其他数值：默认按1处理。
+	// 建议您使用显著标识来提示，该视频是 AI 生成的视频。
+	LogoAdd *int64 `json:"LogoAdd,omitnil,omitempty" name:"LogoAdd"`
+
+	// 标识内容设置。
+	// 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
+	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+}
+
+func (r *SubmitTemplateToVideoJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitTemplateToVideoJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Template")
+	delete(f, "Images")
+	delete(f, "LogoAdd")
+	delete(f, "LogoParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitTemplateToVideoJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitTemplateToVideoJobResponseParams struct {
+	// 任务ID。
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SubmitTemplateToVideoJobResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitTemplateToVideoJobResponseParams `json:"Response"`
+}
+
+func (r *SubmitTemplateToVideoJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitTemplateToVideoJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -3197,6 +3197,77 @@ type Distribution struct {
 	RackUsageSet []*RackUsage `json:"RackUsageSet,omitnil,omitempty" name:"RackUsageSet"`
 }
 
+// Predefined struct for user
+type ExportCustomerWorkOrderDetailRequestParams struct {
+	// 服务工单类型
+	WorkOrderType []*string `json:"WorkOrderType,omitnil,omitempty" name:"WorkOrderType"`
+
+	// 要导出的工单的起始时间
+	BeginDateTime *string `json:"BeginDateTime,omitnil,omitempty" name:"BeginDateTime"`
+
+	// 要导出的工单的结束时间
+	EndDateTime *string `json:"EndDateTime,omitnil,omitempty" name:"EndDateTime"`
+}
+
+type ExportCustomerWorkOrderDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务工单类型
+	WorkOrderType []*string `json:"WorkOrderType,omitnil,omitempty" name:"WorkOrderType"`
+
+	// 要导出的工单的起始时间
+	BeginDateTime *string `json:"BeginDateTime,omitnil,omitempty" name:"BeginDateTime"`
+
+	// 要导出的工单的结束时间
+	EndDateTime *string `json:"EndDateTime,omitnil,omitempty" name:"EndDateTime"`
+}
+
+func (r *ExportCustomerWorkOrderDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportCustomerWorkOrderDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkOrderType")
+	delete(f, "BeginDateTime")
+	delete(f, "EndDateTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportCustomerWorkOrderDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExportCustomerWorkOrderDetailResponseParams struct {
+	// 返回下载地址
+	DownloadUrl *string `json:"DownloadUrl,omitnil,omitempty" name:"DownloadUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ExportCustomerWorkOrderDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *ExportCustomerWorkOrderDetailResponseParams `json:"Response"`
+}
+
+func (r *ExportCustomerWorkOrderDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportCustomerWorkOrderDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ExpressDelivery struct {
 	// 物流公司
 	LogisticsCompany *string `json:"LogisticsCompany,omitnil,omitempty" name:"LogisticsCompany"`

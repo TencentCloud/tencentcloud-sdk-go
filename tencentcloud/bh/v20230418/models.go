@@ -7574,6 +7574,9 @@ type SearchSessionRequestParams struct {
 
 	// 应用资产Url
 	AppAssetUrl *string `json:"AppAssetUrl,omitnil,omitempty" name:"AppAssetUrl"`
+
+	// 资产类型
+	DeviceKind *string `json:"DeviceKind,omitnil,omitempty" name:"DeviceKind"`
 }
 
 type SearchSessionRequest struct {
@@ -7626,6 +7629,9 @@ type SearchSessionRequest struct {
 
 	// 应用资产Url
 	AppAssetUrl *string `json:"AppAssetUrl,omitnil,omitempty" name:"AppAssetUrl"`
+
+	// 资产类型
+	DeviceKind *string `json:"DeviceKind,omitnil,omitempty" name:"DeviceKind"`
 }
 
 func (r *SearchSessionRequest) ToJsonString() string {
@@ -7656,6 +7662,7 @@ func (r *SearchSessionRequest) FromJsonString(s string) error {
 	delete(f, "Id")
 	delete(f, "AppAssetKindSet")
 	delete(f, "AppAssetUrl")
+	delete(f, "DeviceKind")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchSessionRequest has unknown keys!", "")
 	}

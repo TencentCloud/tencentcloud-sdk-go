@@ -104,6 +104,65 @@ func (c *Client) BackUpAndroidInstanceToStorageWithContext(ctx context.Context, 
     return
 }
 
+func NewCleanAndroidInstancesAppDataRequest() (request *CleanAndroidInstancesAppDataRequest) {
+    request = &CleanAndroidInstancesAppDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "CleanAndroidInstancesAppData")
+    
+    
+    return
+}
+
+func NewCleanAndroidInstancesAppDataResponse() (response *CleanAndroidInstancesAppDataResponse) {
+    response = &CleanAndroidInstancesAppDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CleanAndroidInstancesAppData
+// 批量清理安卓实例应用数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CleanAndroidInstancesAppData(request *CleanAndroidInstancesAppDataRequest) (response *CleanAndroidInstancesAppDataResponse, err error) {
+    return c.CleanAndroidInstancesAppDataWithContext(context.Background(), request)
+}
+
+// CleanAndroidInstancesAppData
+// 批量清理安卓实例应用数据
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CleanAndroidInstancesAppDataWithContext(ctx context.Context, request *CleanAndroidInstancesAppDataRequest) (response *CleanAndroidInstancesAppDataResponse, err error) {
+    if request == nil {
+        request = NewCleanAndroidInstancesAppDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CleanAndroidInstancesAppData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCleanAndroidInstancesAppDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewConnectAndroidInstanceRequest() (request *ConnectAndroidInstanceRequest) {
     request = &ConnectAndroidInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -425,7 +484,7 @@ func NewCreateAndroidInstanceImageResponse() (response *CreateAndroidInstanceIma
 }
 
 // CreateAndroidInstanceImage
-// 创建安卓实例镜像
+// 使用指定的安卓实例创建镜像，创建镜像时指定的实例会关机，镜像创建完成后实例会自动开机。当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像创建完成处于可用状态。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -440,7 +499,7 @@ func (c *Client) CreateAndroidInstanceImage(request *CreateAndroidInstanceImageR
 }
 
 // CreateAndroidInstanceImage
-// 创建安卓实例镜像
+// 使用指定的安卓实例创建镜像，创建镜像时指定的实例会关机，镜像创建完成后实例会自动开机。当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像创建完成处于可用状态。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1245,7 +1304,7 @@ func NewDescribeAndroidInstanceImagesResponse() (response *DescribeAndroidInstan
 }
 
 // DescribeAndroidInstanceImages
-// 查询安卓实例镜像
+// 查询安卓实例镜像信息，当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像处于可用状态。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1260,7 +1319,7 @@ func (c *Client) DescribeAndroidInstanceImages(request *DescribeAndroidInstanceI
 }
 
 // DescribeAndroidInstanceImages
-// 查询安卓实例镜像
+// 查询安卓实例镜像信息，当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像处于可用状态。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1575,6 +1634,59 @@ func (c *Client) DestroyAndroidInstancesWithContext(ctx context.Context, request
     return
 }
 
+func NewDisableAndroidInstancesAppRequest() (request *DisableAndroidInstancesAppRequest) {
+    request = &DisableAndroidInstancesAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "DisableAndroidInstancesApp")
+    
+    
+    return
+}
+
+func NewDisableAndroidInstancesAppResponse() (response *DisableAndroidInstancesAppResponse) {
+    response = &DisableAndroidInstancesAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisableAndroidInstancesApp
+// 批量禁用安卓实例应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DisableAndroidInstancesApp(request *DisableAndroidInstancesAppRequest) (response *DisableAndroidInstancesAppResponse, err error) {
+    return c.DisableAndroidInstancesAppWithContext(context.Background(), request)
+}
+
+// DisableAndroidInstancesApp
+// 批量禁用安卓实例应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DisableAndroidInstancesAppWithContext(ctx context.Context, request *DisableAndroidInstancesAppRequest) (response *DisableAndroidInstancesAppResponse, err error) {
+    if request == nil {
+        request = NewDisableAndroidInstancesAppRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableAndroidInstancesApp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableAndroidInstancesAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDistributeFileToAndroidInstancesRequest() (request *DistributeFileToAndroidInstancesRequest) {
     request = &DistributeFileToAndroidInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1630,6 +1742,65 @@ func (c *Client) DistributeFileToAndroidInstancesWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewDistributeFileToAndroidInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableAndroidInstancesAppRequest() (request *EnableAndroidInstancesAppRequest) {
+    request = &EnableAndroidInstancesAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "EnableAndroidInstancesApp")
+    
+    
+    return
+}
+
+func NewEnableAndroidInstancesAppResponse() (response *EnableAndroidInstancesAppResponse) {
+    response = &EnableAndroidInstancesAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableAndroidInstancesApp
+// 批量启用安卓实例应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) EnableAndroidInstancesApp(request *EnableAndroidInstancesAppRequest) (response *EnableAndroidInstancesAppResponse, err error) {
+    return c.EnableAndroidInstancesAppWithContext(context.Background(), request)
+}
+
+// EnableAndroidInstancesApp
+// 批量启用安卓实例应用
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) EnableAndroidInstancesAppWithContext(ctx context.Context, request *EnableAndroidInstancesAppRequest) (response *EnableAndroidInstancesAppResponse, err error) {
+    if request == nil {
+        request = NewEnableAndroidInstancesAppRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableAndroidInstancesApp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableAndroidInstancesAppResponse()
     err = c.Send(request, response)
     return
 }
@@ -3298,7 +3469,7 @@ func NewSyncAndroidInstanceImageResponse() (response *SyncAndroidInstanceImageRe
 }
 
 // SyncAndroidInstanceImage
-// 同步安卓实例镜像
+// 同步安卓实例镜像到其他区域，当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像已经同步完成处于可用状态。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3314,7 +3485,7 @@ func (c *Client) SyncAndroidInstanceImage(request *SyncAndroidInstanceImageReque
 }
 
 // SyncAndroidInstanceImage
-// 同步安卓实例镜像
+// 同步安卓实例镜像到其他区域，当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像已经同步完成处于可用状态。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

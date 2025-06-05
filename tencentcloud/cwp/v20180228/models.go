@@ -35909,6 +35909,9 @@ type FileTamperRule struct {
 	// <li>write 修改文件</li>
 	// <li>read-write 读取修改文件</li>
 	FileAction *string `json:"FileAction,omitnil,omitempty" name:"FileAction"`
+
+	// 命令行参数 没有填*
+	Args *string `json:"Args,omitnil,omitempty" name:"Args"`
 }
 
 type FileTamperRuleCount struct {
@@ -46710,6 +46713,21 @@ type VulEffectHostList struct {
 
 	// 主机额外信息
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitnil,omitempty" name:"MachineExtraInfo"`
+
+	// 主机类型
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
+
+	// 可用区ID
+	RegionId *uint64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// 修复任务是否创建了快照： 0-未创建，其他-已创建
+	HasSnapshot *uint64 `json:"HasSnapshot,omitnil,omitempty" name:"HasSnapshot"`
+
+	// 最后修复时间
+	LatestFixTime *string `json:"LatestFixTime,omitnil,omitempty" name:"LatestFixTime"`
+
+	// 说明
+	DescriptionEn *string `json:"DescriptionEn,omitnil,omitempty" name:"DescriptionEn"`
 }
 
 type VulEffectModuleInfo struct {
@@ -46814,11 +46832,14 @@ type VulFixStatusSnapshotInfo struct {
 	// 记录唯一id
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
 
-	// 快照状态 0-初始状态1-快照创建成功；2-快照创建失败；
+	// 快照状态 0-初始状态1-快照创建成功；2-快照创建失败；10-不支持，11-无需创建
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 快照创建失败原因
 	FailReason *string `json:"FailReason,omitnil,omitempty" name:"FailReason"`
+
+	// 主机类型
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 }
 
 type VulHostTopInfo struct {
@@ -46864,6 +46885,9 @@ type VulInfoHostInfo struct {
 
 	// 主机InstanceId
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 主机类型
+	MachineType *string `json:"MachineType,omitnil,omitempty" name:"MachineType"`
 }
 
 type VulInfoList struct {
@@ -46955,6 +46979,9 @@ type VulInfoList struct {
 
 	// 漏洞是否支持修复 0不支持，1支持
 	VulFixSwitch *uint64 `json:"VulFixSwitch,omitnil,omitempty" name:"VulFixSwitch"`
+
+	// 最近修复时间
+	LatestFixTime *string `json:"LatestFixTime,omitnil,omitempty" name:"LatestFixTime"`
 }
 
 type VulLevelCountInfo struct {

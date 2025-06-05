@@ -2815,6 +2815,12 @@ type CreateCloneInstanceRequestParams struct {
 
 	// 集群版节点拓扑配置。
 	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
+
+	// 原实例所在地域名，当传入异地备份时为必选项，例：ap-guangzhou
+	SrcRegion *string `json:"SrcRegion,omitnil,omitempty" name:"SrcRegion"`
+
+	// 异地数据备份id
+	SpecifiedSubBackupId *int64 `json:"SpecifiedSubBackupId,omitnil,omitempty" name:"SpecifiedSubBackupId"`
 }
 
 type CreateCloneInstanceRequest struct {
@@ -2893,6 +2899,12 @@ type CreateCloneInstanceRequest struct {
 
 	// 集群版节点拓扑配置。
 	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
+
+	// 原实例所在地域名，当传入异地备份时为必选项，例：ap-guangzhou
+	SrcRegion *string `json:"SrcRegion,omitnil,omitempty" name:"SrcRegion"`
+
+	// 异地数据备份id
+	SpecifiedSubBackupId *int64 `json:"SpecifiedSubBackupId,omitnil,omitempty" name:"SpecifiedSubBackupId"`
 }
 
 func (r *CreateCloneInstanceRequest) ToJsonString() string {
@@ -2931,6 +2943,8 @@ func (r *CreateCloneInstanceRequest) FromJsonString(s string) error {
 	delete(f, "PayType")
 	delete(f, "Period")
 	delete(f, "ClusterTopology")
+	delete(f, "SrcRegion")
+	delete(f, "SpecifiedSubBackupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloneInstanceRequest has unknown keys!", "")
 	}
