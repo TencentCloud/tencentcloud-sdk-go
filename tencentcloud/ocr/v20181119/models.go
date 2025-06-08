@@ -3214,14 +3214,10 @@ func (r *FormulaOCRResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GeneralAccurateOCRRequestParams struct {
-	// 图片的 Base64 值。
-	// 要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// 图片/PDF的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。
-	// 要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。图片下载时间不超过 3 秒。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
 	// 是否返回单字信息，默认关
@@ -3243,14 +3239,10 @@ type GeneralAccurateOCRRequestParams struct {
 type GeneralAccurateOCRRequest struct {
 	*tchttp.BaseRequest
 	
-	// 图片的 Base64 值。
-	// 要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。
-	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	// 图片/PDF的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
 	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
 
-	// 图片的 Url 地址。
-	// 要求图片经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。图片下载时间不超过 3 秒。
-	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	// 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
 
 	// 是否返回单字信息，默认关
@@ -5072,7 +5064,7 @@ type InvoiceItem struct {
 	// 识别到的内容。
 	SingleInvoiceInfos *SingleInvoiceItem `json:"SingleInvoiceInfos,omitnil,omitempty" name:"SingleInvoiceInfos"`
 
-	// 发票处于识别图片或PDF文件中的页教，默认从1开始。
+	// 发票处于识别图片或PDF文件中的页码，默认从1开始。
 	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
 
 	// 发票详细类型，详见票据识别（高级版）接口文档说明中 SubType 返回值说明
@@ -5092,6 +5084,23 @@ type InvoiceItem struct {
 
 	// 二维码数据。
 	QRCode *string `json:"QRCode,omitnil,omitempty" name:"QRCode"`
+
+	// 印章信息
+	InvoiceSealInfo *InvoiceSealInfo `json:"InvoiceSealInfo,omitnil,omitempty" name:"InvoiceSealInfo"`
+}
+
+type InvoiceSealInfo struct {
+	// 是否有公司印章（0：没有，1：有）
+	CompanySealMark *string `json:"CompanySealMark,omitnil,omitempty" name:"CompanySealMark"`
+
+	// 是否有监制印章（0：没有，1：有）
+	SupervisionSealMark *string `json:"SupervisionSealMark,omitnil,omitempty" name:"SupervisionSealMark"`
+
+	// 公司印章信息
+	CompanySealMarkInfo []*string `json:"CompanySealMarkInfo,omitnil,omitempty" name:"CompanySealMarkInfo"`
+
+	// 监制印章信息
+	SupervisionSealMarkInfo []*string `json:"SupervisionSealMarkInfo,omitnil,omitempty" name:"SupervisionSealMarkInfo"`
 }
 
 type ItemCoord struct {
@@ -5668,7 +5677,9 @@ type MainlandPermitOCRRequestParams struct {
 	RetProfile *bool `json:"RetProfile,omitnil,omitempty" name:"RetProfile"`
 
 	// 图片正反面
-	// FRONT：正面、BACK：反面，默认为FRONT
+	// FRONT：正面
+	// BACK：反面
+	// 默认为FRONT
 	CardSide *string `json:"CardSide,omitnil,omitempty" name:"CardSide"`
 }
 
@@ -5692,7 +5703,9 @@ type MainlandPermitOCRRequest struct {
 	RetProfile *bool `json:"RetProfile,omitnil,omitempty" name:"RetProfile"`
 
 	// 图片正反面
-	// FRONT：正面、BACK：反面，默认为FRONT
+	// FRONT：正面
+	// BACK：反面
+	// 默认为FRONT
 	CardSide *string `json:"CardSide,omitnil,omitempty" name:"CardSide"`
 }
 
@@ -5747,7 +5760,7 @@ type MainlandPermitOCRResponseParams struct {
 	// 签发次数
 	IssueNumber *string `json:"IssueNumber,omitnil,omitempty" name:"IssueNumber"`
 
-	// 证件类别， 如：台湾居民来往大陆通行证、港澳居民来往内地通行证。
+	// 证件类别， 如：台湾居民来往大陆通行证、港澳居民来往内地通行证、往来港澳通行证。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// RetProfile为True时返回头像字段， Base64编码
@@ -8259,6 +8272,9 @@ type RecognizeGeneralInvoiceRequestParams struct {
 
 	// 是否开启二维码识别。
 	EnableQRCode *bool `json:"EnableQRCode,omitnil,omitempty" name:"EnableQRCode"`
+
+	// 是否开启印章识别，默认为false
+	EnableSeal *bool `json:"EnableSeal,omitnil,omitempty" name:"EnableSeal"`
 }
 
 type RecognizeGeneralInvoiceRequest struct {
@@ -8317,6 +8333,9 @@ type RecognizeGeneralInvoiceRequest struct {
 
 	// 是否开启二维码识别。
 	EnableQRCode *bool `json:"EnableQRCode,omitnil,omitempty" name:"EnableQRCode"`
+
+	// 是否开启印章识别，默认为false
+	EnableSeal *bool `json:"EnableSeal,omitnil,omitempty" name:"EnableSeal"`
 }
 
 func (r *RecognizeGeneralInvoiceRequest) ToJsonString() string {
@@ -8341,6 +8360,7 @@ func (r *RecognizeGeneralInvoiceRequest) FromJsonString(s string) error {
 	delete(f, "EnableCutImage")
 	delete(f, "EnableItemPolygon")
 	delete(f, "EnableQRCode")
+	delete(f, "EnableSeal")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeGeneralInvoiceRequest has unknown keys!", "")
 	}
@@ -10663,6 +10683,8 @@ type SmartStructuralProRequestParams struct {
 	// ReceiptWeightNote -- 磅单收货单识别模板
 	// ArticalRecognize -- 手写作文模版
 	// Table -- 表格模版
+	// SteelLabel -- 实物标签识别模板
+	// CarInsurance -- 车辆保险单识别模板
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 是否开启全文字段坐标值的识别
@@ -10715,6 +10737,8 @@ type SmartStructuralProRequest struct {
 	// ReceiptWeightNote -- 磅单收货单识别模板
 	// ArticalRecognize -- 手写作文模版
 	// Table -- 表格模版
+	// SteelLabel -- 实物标签识别模板
+	// CarInsurance -- 车辆保险单识别模板
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 是否开启全文字段坐标值的识别

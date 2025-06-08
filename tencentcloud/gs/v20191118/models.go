@@ -123,6 +123,15 @@ type AndroidInstance struct {
 	HostServerSerialNumber *string `json:"HostServerSerialNumber,omitnil,omitempty" name:"HostServerSerialNumber"`
 }
 
+type AndroidInstanceAppBlacklist struct {
+	// 安卓实例 ID
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
+
+	// 应用黑名单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppBlacklist []*string `json:"AppBlacklist,omitnil,omitempty" name:"AppBlacklist"`
+}
+
 type AndroidInstanceAppInfo struct {
 	// 应用id
 	AndroidAppId *string `json:"AndroidAppId,omitnil,omitempty" name:"AndroidAppId"`
@@ -2091,6 +2100,138 @@ func (r *DescribeAndroidInstanceTasksStatusResponse) FromJsonString(s string) er
 }
 
 // Predefined struct for user
+type DescribeAndroidInstancesAppBlacklistRequestParams struct {
+	// 实例 ID 列表，数量上限 100
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+}
+
+type DescribeAndroidInstancesAppBlacklistRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID 列表，数量上限 100
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+}
+
+func (r *DescribeAndroidInstancesAppBlacklistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAndroidInstancesAppBlacklistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidInstanceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAndroidInstancesAppBlacklistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAndroidInstancesAppBlacklistResponseParams struct {
+	// 黑名单集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppBlacklistSet []*AndroidInstanceAppBlacklist `json:"AppBlacklistSet,omitnil,omitempty" name:"AppBlacklistSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAndroidInstancesAppBlacklistResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAndroidInstancesAppBlacklistResponseParams `json:"Response"`
+}
+
+func (r *DescribeAndroidInstancesAppBlacklistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAndroidInstancesAppBlacklistResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAndroidInstancesByAppsRequestParams struct {
+	// 偏移量，默认为 0	
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制量，默认为20，最大值为100	
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 应用 ID 列表。通过应用 ID 做集合查询
+	AndroidAppIds []*string `json:"AndroidAppIds,omitnil,omitempty" name:"AndroidAppIds"`
+}
+
+type DescribeAndroidInstancesByAppsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量，默认为 0	
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制量，默认为20，最大值为100	
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 应用 ID 列表。通过应用 ID 做集合查询
+	AndroidAppIds []*string `json:"AndroidAppIds,omitnil,omitempty" name:"AndroidAppIds"`
+}
+
+func (r *DescribeAndroidInstancesByAppsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAndroidInstancesByAppsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "AndroidAppIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAndroidInstancesByAppsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAndroidInstancesByAppsResponseParams struct {
+	// 实例总数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 实例列表	
+	AndroidInstances []*AndroidInstance `json:"AndroidInstances,omitnil,omitempty" name:"AndroidInstances"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAndroidInstancesByAppsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAndroidInstancesByAppsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAndroidInstancesByAppsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAndroidInstancesByAppsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAndroidInstancesRequestParams struct {
 	// 偏移量，默认为 0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -2704,6 +2845,97 @@ type Filter struct {
 }
 
 // Predefined struct for user
+type ImportAndroidInstanceImageRequestParams struct {
+	// 镜像名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 镜像文件下载地址，要求是 tgz 压缩文件
+	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
+
+	// 镜像文件 MD5 值
+	MD5 *string `json:"MD5,omitnil,omitempty" name:"MD5"`
+
+	// 安卓版本。
+	// ANDROID10：默认值，安卓10
+	// ANDROID12：安卓12
+	// ANDROID14：安卓14
+	AndroidVersion *string `json:"AndroidVersion,omitnil,omitempty" name:"AndroidVersion"`
+
+	// 镜像可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+}
+
+type ImportAndroidInstanceImageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 镜像名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 镜像文件下载地址，要求是 tgz 压缩文件
+	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
+
+	// 镜像文件 MD5 值
+	MD5 *string `json:"MD5,omitnil,omitempty" name:"MD5"`
+
+	// 安卓版本。
+	// ANDROID10：默认值，安卓10
+	// ANDROID12：安卓12
+	// ANDROID14：安卓14
+	AndroidVersion *string `json:"AndroidVersion,omitnil,omitempty" name:"AndroidVersion"`
+
+	// 镜像可用区
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+}
+
+func (r *ImportAndroidInstanceImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportAndroidInstanceImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "URL")
+	delete(f, "MD5")
+	delete(f, "AndroidVersion")
+	delete(f, "Zone")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportAndroidInstanceImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImportAndroidInstanceImageResponseParams struct {
+	// 安卓实例镜像 ID
+	AndroidInstanceImageId *string `json:"AndroidInstanceImageId,omitnil,omitempty" name:"AndroidInstanceImageId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ImportAndroidInstanceImageResponse struct {
+	*tchttp.BaseResponse
+	Response *ImportAndroidInstanceImageResponseParams `json:"Response"`
+}
+
+func (r *ImportAndroidInstanceImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportAndroidInstanceImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type InstallAndroidInstancesAppRequestParams struct {
 	// 实例ID
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
@@ -3171,6 +3403,77 @@ func (r *ModifyAndroidInstanceResolutionResponse) FromJsonString(s string) error
 }
 
 // Predefined struct for user
+type ModifyAndroidInstancesAppBlacklistRequestParams struct {
+	// 实例ID列表，数量上限100
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 应用列表
+	AppList []*string `json:"AppList,omitnil,omitempty" name:"AppList"`
+
+	// ADD、REMOVE、CLEAR
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+}
+
+type ModifyAndroidInstancesAppBlacklistRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID列表，数量上限100
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 应用列表
+	AppList []*string `json:"AppList,omitnil,omitempty" name:"AppList"`
+
+	// ADD、REMOVE、CLEAR
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+}
+
+func (r *ModifyAndroidInstancesAppBlacklistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAndroidInstancesAppBlacklistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidInstanceIds")
+	delete(f, "AppList")
+	delete(f, "Operation")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAndroidInstancesAppBlacklistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAndroidInstancesAppBlacklistResponseParams struct {
+	// 任务集合
+	TaskSet []*AndroidInstanceTask `json:"TaskSet,omitnil,omitempty" name:"TaskSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAndroidInstancesAppBlacklistResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAndroidInstancesAppBlacklistResponseParams `json:"Response"`
+}
+
+func (r *ModifyAndroidInstancesAppBlacklistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAndroidInstancesAppBlacklistResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyAndroidInstancesInformationRequestParams struct {
 	// 安卓实例信息数据
 	AndroidInstanceInformations []*AndroidInstanceInformation `json:"AndroidInstanceInformations,omitnil,omitempty" name:"AndroidInstanceInformations"`
@@ -3466,6 +3769,70 @@ func (r *ModifyAndroidInstancesResolutionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAndroidInstancesResolutionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAndroidInstancesResourcesRequestParams struct {
+	// 安卓实例 ID 列表（最大100条数据）
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 内存配额（单位 MB）
+	MemoryQuota *int64 `json:"MemoryQuota,omitnil,omitempty" name:"MemoryQuota"`
+}
+
+type ModifyAndroidInstancesResourcesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 安卓实例 ID 列表（最大100条数据）
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 内存配额（单位 MB）
+	MemoryQuota *int64 `json:"MemoryQuota,omitnil,omitempty" name:"MemoryQuota"`
+}
+
+func (r *ModifyAndroidInstancesResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAndroidInstancesResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidInstanceIds")
+	delete(f, "MemoryQuota")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAndroidInstancesResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAndroidInstancesResourcesResponseParams struct {
+	// 任务集合
+	TaskSet []*AndroidInstanceTask `json:"TaskSet,omitnil,omitempty" name:"TaskSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAndroidInstancesResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAndroidInstancesResourcesResponseParams `json:"Response"`
+}
+
+func (r *ModifyAndroidInstancesResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAndroidInstancesResourcesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3950,6 +4317,148 @@ func (r *SaveGameArchiveResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SaveGameArchiveResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetAndroidInstancesBGAppKeepAliveRequestParams struct {
+	// 安卓实例 ID 列表（最大100条数据）
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 操作类型，取值：ADD 添加应用到后台保活列表、REMOVE 从后台保活列表中移除应用、SET 全量设置后台保活列表，替换当前列表。
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// 应用包名列表
+	PackageNames []*string `json:"PackageNames,omitnil,omitempty" name:"PackageNames"`
+}
+
+type SetAndroidInstancesBGAppKeepAliveRequest struct {
+	*tchttp.BaseRequest
+	
+	// 安卓实例 ID 列表（最大100条数据）
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 操作类型，取值：ADD 添加应用到后台保活列表、REMOVE 从后台保活列表中移除应用、SET 全量设置后台保活列表，替换当前列表。
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// 应用包名列表
+	PackageNames []*string `json:"PackageNames,omitnil,omitempty" name:"PackageNames"`
+}
+
+func (r *SetAndroidInstancesBGAppKeepAliveRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetAndroidInstancesBGAppKeepAliveRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidInstanceIds")
+	delete(f, "Operation")
+	delete(f, "PackageNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetAndroidInstancesBGAppKeepAliveRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetAndroidInstancesBGAppKeepAliveResponseParams struct {
+	// 错误列表。如果实例操作都成功，则响应没有这个字段；如果有实例操作失败，该字段包含了实例操作的错误信息
+	AndroidInstanceErrors []*AndroidInstanceError `json:"AndroidInstanceErrors,omitnil,omitempty" name:"AndroidInstanceErrors"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SetAndroidInstancesBGAppKeepAliveResponse struct {
+	*tchttp.BaseResponse
+	Response *SetAndroidInstancesBGAppKeepAliveResponseParams `json:"Response"`
+}
+
+func (r *SetAndroidInstancesBGAppKeepAliveResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetAndroidInstancesBGAppKeepAliveResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetAndroidInstancesFGAppKeepAliveRequestParams struct {
+	// 安卓实例 ID 列表（最大100条数据）
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 操作类型，取值：ENABLE 开启保活、DISABLE 关闭保活。当关闭保活时，PackageName 参数传空即可
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// 应用包名，开启保活时，必须传入 PackageName
+	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
+}
+
+type SetAndroidInstancesFGAppKeepAliveRequest struct {
+	*tchttp.BaseRequest
+	
+	// 安卓实例 ID 列表（最大100条数据）
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 操作类型，取值：ENABLE 开启保活、DISABLE 关闭保活。当关闭保活时，PackageName 参数传空即可
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// 应用包名，开启保活时，必须传入 PackageName
+	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
+}
+
+func (r *SetAndroidInstancesFGAppKeepAliveRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetAndroidInstancesFGAppKeepAliveRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidInstanceIds")
+	delete(f, "Operation")
+	delete(f, "PackageName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetAndroidInstancesFGAppKeepAliveRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetAndroidInstancesFGAppKeepAliveResponseParams struct {
+	// 错误列表。如果实例操作都成功，则响应没有这个字段；如果有实例操作失败，该字段包含了实例操作的错误信息
+	AndroidInstanceErrors []*AndroidInstanceError `json:"AndroidInstanceErrors,omitnil,omitempty" name:"AndroidInstanceErrors"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SetAndroidInstancesFGAppKeepAliveResponse struct {
+	*tchttp.BaseResponse
+	Response *SetAndroidInstancesFGAppKeepAliveResponseParams `json:"Response"`
+}
+
+func (r *SetAndroidInstancesFGAppKeepAliveResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetAndroidInstancesFGAppKeepAliveResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

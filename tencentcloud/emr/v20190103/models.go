@@ -459,6 +459,11 @@ func (r *AttachDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AutoScaleGroupAdvanceAttrs struct {
+	// 计算资源高级设置
+	ComputeResourceAdvanceParams *ComputeResourceAdvanceParams `json:"ComputeResourceAdvanceParams,omitnil,omitempty" name:"ComputeResourceAdvanceParams"`
+}
+
 type AutoScaleRecord struct {
 	// 扩缩容规则名。
 	StrategyName *string `json:"StrategyName,omitnil,omitempty" name:"StrategyName"`
@@ -522,7 +527,7 @@ type AutoScaleResourceConf struct {
 	// 扩容规则类型，1为按负载指标扩容规则，2为按时间扩容规则
 	StrategyType *int64 `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
 
-	// 下次能可扩容时间。
+	// 下次可扩容时间。
 	NextTimeCanScale *uint64 `json:"NextTimeCanScale,omitnil,omitempty" name:"NextTimeCanScale"`
 
 	// 优雅缩容开关
@@ -537,7 +542,7 @@ type AutoScaleResourceConf struct {
 	// 竞价实例优先的场景下，按量计费资源数量的最低百分比，整数
 	PostPayPercentMin *int64 `json:"PostPayPercentMin,omitnil,omitempty" name:"PostPayPercentMin"`
 
-	// 预设资源类型为HOST时，支持勾选“资源不足时切换POD”；支持取消勾选；默认不勾选（0），勾选（1)
+	// 预设资源类型为HOST时，支持勾选“资源不足时切换POD”；支持取消勾选；0表示默认不勾选（0），1表示勾选
 	ChangeToPod *int64 `json:"ChangeToPod,omitnil,omitempty" name:"ChangeToPod"`
 
 	// 伸缩组名
@@ -554,6 +559,9 @@ type AutoScaleResourceConf struct {
 
 	// 是否支持MNode
 	EnableMNode *int64 `json:"EnableMNode,omitnil,omitempty" name:"EnableMNode"`
+
+	// 伸缩组更多设置
+	ExtraAdvanceAttrs *AutoScaleGroupAdvanceAttrs `json:"ExtraAdvanceAttrs,omitnil,omitempty" name:"ExtraAdvanceAttrs"`
 }
 
 type BootstrapAction struct {
@@ -1000,6 +1008,20 @@ type ComponentBasicRestartInfo struct {
 	// 操作的IP列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpList []*string `json:"IpList,omitnil,omitempty" name:"IpList"`
+}
+
+type ComputeResourceAdvanceParams struct {
+	// 节点Label数组
+	Labels []*TkeLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// 节点污点
+	Taints []*Taint `json:"Taints,omitnil,omitempty" name:"Taints"`
+
+	// base64 编码的用户脚本，在初始化节点之前执行
+	PreStartUserScript *string `json:"PreStartUserScript,omitnil,omitempty" name:"PreStartUserScript"`
+
+	// base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看
+	UserScript *string `json:"UserScript,omitnil,omitempty" name:"UserScript"`
 }
 
 type ConfigModifyInfoV2 struct {
@@ -11108,6 +11130,9 @@ type ScaleOutInstanceRequestParams struct {
 
 	// 计算资源id
 	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
+
+	// 计算资源高级设置
+	ComputeResourceAdvanceParams *ComputeResourceAdvanceParams `json:"ComputeResourceAdvanceParams,omitnil,omitempty" name:"ComputeResourceAdvanceParams"`
 }
 
 type ScaleOutInstanceRequest struct {
@@ -11207,6 +11232,9 @@ type ScaleOutInstanceRequest struct {
 
 	// 计算资源id
 	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
+
+	// 计算资源高级设置
+	ComputeResourceAdvanceParams *ComputeResourceAdvanceParams `json:"ComputeResourceAdvanceParams,omitnil,omitempty" name:"ComputeResourceAdvanceParams"`
 }
 
 func (r *ScaleOutInstanceRequest) ToJsonString() string {
@@ -11249,6 +11277,7 @@ func (r *ScaleOutInstanceRequest) FromJsonString(s string) error {
 	delete(f, "AutoRenew")
 	delete(f, "ResourceBaseType")
 	delete(f, "ComputeResourceId")
+	delete(f, "ComputeResourceAdvanceParams")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleOutInstanceRequest has unknown keys!", "")
 	}
@@ -12009,6 +12038,17 @@ type Tag struct {
 	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
+type Taint struct {
+	// Taint Key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// Taint Value
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// Taint Effect
+	Effect *string `json:"Effect,omitnil,omitempty" name:"Effect"`
+}
+
 type TaskSettings struct {
 	// 参数名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
@@ -12378,6 +12418,17 @@ type TimeAutoScaleStrategy struct {
 
 	// 伸缩组id
 	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 优雅缩容业务pod标签，当node不存在上述pod或超过优雅缩容时间时，缩容节点
+	GraceDownLabel []*TkeLabel `json:"GraceDownLabel,omitnil,omitempty" name:"GraceDownLabel"`
+}
+
+type TkeLabel struct {
+	// Label Name
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// Label Value
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type TopologyInfo struct {

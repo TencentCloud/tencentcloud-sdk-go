@@ -5131,6 +5131,55 @@ func (c *Client) DescribeExecStrategyWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeExecutorGroupMetricRequest() (request *DescribeExecutorGroupMetricRequest) {
+    request = &DescribeExecutorGroupMetricRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeExecutorGroupMetric")
+    
+    
+    return
+}
+
+func NewDescribeExecutorGroupMetricResponse() (response *DescribeExecutorGroupMetricResponse) {
+    response = &DescribeExecutorGroupMetricResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeExecutorGroupMetric
+// 商业化版本：根据id查询执行资源组指标
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeExecutorGroupMetric(request *DescribeExecutorGroupMetricRequest) (response *DescribeExecutorGroupMetricResponse, err error) {
+    return c.DescribeExecutorGroupMetricWithContext(context.Background(), request)
+}
+
+// DescribeExecutorGroupMetric
+// 商业化版本：根据id查询执行资源组指标
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeExecutorGroupMetricWithContext(ctx context.Context, request *DescribeExecutorGroupMetricRequest) (response *DescribeExecutorGroupMetricResponse, err error) {
+    if request == nil {
+        request = NewDescribeExecutorGroupMetricRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExecutorGroupMetric require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExecutorGroupMetricResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFieldBasicInfoRequest() (request *DescribeFieldBasicInfoRequest) {
     request = &DescribeFieldBasicInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -16115,6 +16115,8 @@ type MediaContentReviewSegmentItem struct {
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 该字段已废弃，请使用 PicUrlExpireTime。
+	//
+	// Deprecated: PicUrlExpireTimeStamp is deprecated.
 	PicUrlExpireTimeStamp *int64 `json:"PicUrlExpireTimeStamp,omitnil,omitempty" name:"PicUrlExpireTimeStamp"`
 
 	// 嫌疑图片 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。

@@ -11451,6 +11451,113 @@ func (r *DescribeExecStrategyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeExecutorGroupMetricRequestParams struct {
+	// 执行资源组id
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitnil,omitempty" name:"ExecutorGroupId"`
+
+	// 使用趋势开始时间(毫秒)
+	TrendStartTime *int64 `json:"TrendStartTime,omitnil,omitempty" name:"TrendStartTime"`
+
+	// 使用趋势结束时间(毫秒)
+	TrendEndTime *int64 `json:"TrendEndTime,omitnil,omitempty" name:"TrendEndTime"`
+
+	// 执行资源组类型
+	ExecutorGroupType *string `json:"ExecutorGroupType,omitnil,omitempty" name:"ExecutorGroupType"`
+
+	// 执行资源类型
+	ExecutorResourceType *string `json:"ExecutorResourceType,omitnil,omitempty" name:"ExecutorResourceType"`
+
+	// 执行机ID
+	LoaderId *string `json:"LoaderId,omitnil,omitempty" name:"LoaderId"`
+
+	// 指标维度
+	MetricType *string `json:"MetricType,omitnil,omitempty" name:"MetricType"`
+
+	// 指标采集粒度
+	Granularity *int64 `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+type DescribeExecutorGroupMetricRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行资源组id
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitnil,omitempty" name:"ExecutorGroupId"`
+
+	// 使用趋势开始时间(毫秒)
+	TrendStartTime *int64 `json:"TrendStartTime,omitnil,omitempty" name:"TrendStartTime"`
+
+	// 使用趋势结束时间(毫秒)
+	TrendEndTime *int64 `json:"TrendEndTime,omitnil,omitempty" name:"TrendEndTime"`
+
+	// 执行资源组类型
+	ExecutorGroupType *string `json:"ExecutorGroupType,omitnil,omitempty" name:"ExecutorGroupType"`
+
+	// 执行资源类型
+	ExecutorResourceType *string `json:"ExecutorResourceType,omitnil,omitempty" name:"ExecutorResourceType"`
+
+	// 执行机ID
+	LoaderId *string `json:"LoaderId,omitnil,omitempty" name:"LoaderId"`
+
+	// 指标维度
+	MetricType *string `json:"MetricType,omitnil,omitempty" name:"MetricType"`
+
+	// 指标采集粒度
+	Granularity *int64 `json:"Granularity,omitnil,omitempty" name:"Granularity"`
+}
+
+func (r *DescribeExecutorGroupMetricRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExecutorGroupMetricRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ExecutorGroupId")
+	delete(f, "TrendStartTime")
+	delete(f, "TrendEndTime")
+	delete(f, "ExecutorGroupType")
+	delete(f, "ExecutorResourceType")
+	delete(f, "LoaderId")
+	delete(f, "MetricType")
+	delete(f, "Granularity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExecutorGroupMetricRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExecutorGroupMetricResponseParams struct {
+	// 执行组指标信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ExecutorResourceGroupInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeExecutorGroupMetricResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeExecutorGroupMetricResponseParams `json:"Response"`
+}
+
+func (r *DescribeExecutorGroupMetricResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExecutorGroupMetricResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeFieldBasicInfoRequestParams struct {
 	// 分页页码
 	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
@@ -21833,6 +21940,391 @@ type EventOpsDto struct {
 	EventCases []*EventCaseOpsDto `json:"EventCases,omitnil,omitempty" name:"EventCases"`
 }
 
+type ExecutorResourceGroupInfo struct {
+	// 执行组id, 仅更新资源时需要传
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitnil,omitempty" name:"ExecutorGroupId"`
+
+	// 执行组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorGroupName *string `json:"ExecutorGroupName,omitnil,omitempty" name:"ExecutorGroupName"`
+
+	// 执行组描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorGroupDesc *string `json:"ExecutorGroupDesc,omitnil,omitempty" name:"ExecutorGroupDesc"`
+
+	// SCHEDULER （标准调度资源组），CUSTOM_SCHEDULER （自定义调度资源），INTEGRATION（集成资源组），DATA_SERVICE（数据服务资源组）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorResourceType *int64 `json:"ExecutorResourceType,omitnil,omitempty" name:"ExecutorResourceType"`
+
+	// 区域中文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// vpcId, 托管服务时需要传递
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// subnetId, 托管服务时需要传递
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 基础资源包，资源组至少包含一个基础资源包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BasicResourcePackage *ExecutorResourcePackageInfo `json:"BasicResourcePackage,omitnil,omitempty" name:"BasicResourcePackage"`
+
+	// 增强资源包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdvanceResourcePackage *ExecutorResourcePackageInfo `json:"AdvanceResourcePackage,omitnil,omitempty" name:"AdvanceResourcePackage"`
+
+	// 是否自动续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+
+	// 区域英文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionEn *string `json:"RegionEn,omitnil,omitempty" name:"RegionEn"`
+
+	// 区域Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// 项目名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectName *string `json:"ProjectName,omitnil,omitempty" name:"ProjectName"`
+
+	// 项目展示名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectDisplayName *string `json:"ProjectDisplayName,omitnil,omitempty" name:"ProjectDisplayName"`
+
+	// 资源组关联项目数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssociateProjectNums *int64 `json:"AssociateProjectNums,omitnil,omitempty" name:"AssociateProjectNums"`
+
+	// 是否锁定，false为未锁定，true为锁定
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsLocked *bool `json:"IsLocked,omitnil,omitempty" name:"IsLocked"`
+
+	// 来源类型，0为系统默认，1为自定义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceType *int64 `json:"SourceType,omitnil,omitempty" name:"SourceType"`
+
+	// 队列资源包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MQPackageVO *MQPackageVO `json:"MQPackageVO,omitnil,omitempty" name:"MQPackageVO"`
+
+	// 是否首选
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstChoice *bool `json:"FirstChoice,omitnil,omitempty" name:"FirstChoice"`
+
+	// 资源组python版本绑定详情
+	PythonSubVersions []*string `json:"PythonSubVersions,omitnil,omitempty" name:"PythonSubVersions"`
+}
+
+type ExecutorResourcePackageExtInfo struct {
+	// 集成资源组：InLong集群id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InlongGroupId *string `json:"InlongGroupId,omitnil,omitempty" name:"InlongGroupId"`
+
+	// 集成资源组：oceanus集群id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OceanusClusterId *string `json:"OceanusClusterId,omitnil,omitempty" name:"OceanusClusterId"`
+
+	// 计费相关：产品资源id列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductResourceIdList []*string `json:"ProductResourceIdList,omitnil,omitempty" name:"ProductResourceIdList"`
+
+	// 当前资源包对应订单是否发货成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingSuccess *bool `json:"BillingSuccess,omitnil,omitempty" name:"BillingSuccess"`
+
+	// apigw服务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApigwServiceId *string `json:"ApigwServiceId,omitnil,omitempty" name:"ApigwServiceId"`
+
+	// apigw服务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApigwServiceName *string `json:"ApigwServiceName,omitnil,omitempty" name:"ApigwServiceName"`
+
+	// 数据集成相关：dataProxy配置规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataProxySpec *int64 `json:"DataProxySpec,omitnil,omitempty" name:"DataProxySpec"`
+
+	// dataProxy数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataProxyNum *int64 `json:"DataProxyNum,omitnil,omitempty" name:"DataProxyNum"`
+
+	// dataProxy状态，同ExecutorGroupStatus
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataProxyStatus *int64 `json:"DataProxyStatus,omitnil,omitempty" name:"DataProxyStatus"`
+
+	// inlongManager地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InLongManagerUrl *string `json:"InLongManagerUrl,omitnil,omitempty" name:"InLongManagerUrl"`
+
+	// inlong版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InLongVersion *string `json:"InLongVersion,omitnil,omitempty" name:"InLongVersion"`
+
+	// 私有化资源组相关: 执行及机器ip列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorMachineIpList *string `json:"ExecutorMachineIpList,omitnil,omitempty" name:"ExecutorMachineIpList"`
+}
+
+type ExecutorResourcePackageInfo struct {
+	// 资源包规格相关：资源包个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourcePackageNum *int64 `json:"ResourcePackageNum,omitnil,omitempty" name:"ResourcePackageNum"`
+
+	// 资源包规格相关：cpu个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuNum *int64 `json:"CpuNum,omitnil,omitempty" name:"CpuNum"`
+
+	// 资源包id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorResourcePackageId *string `json:"ExecutorResourcePackageId,omitnil,omitempty" name:"ExecutorResourcePackageId"`
+
+	// 资源包规格相关：内存大小，单位:G
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemSize *int64 `json:"MemSize,omitnil,omitempty" name:"MemSize"`
+
+	// 资源包状态， /**
+	//      * 初始化中
+	//      */
+	//     INIT(0),
+	//     /**
+	//      * 运行中
+	//      */
+	//     RUNNING(1),
+	//     /**
+	//      * 运行异常
+	//      */
+	//     RUNNING_FAILED(2),
+	//     /**
+	//      * 释放中
+	//      */
+	//     DELETEING(3),
+	//     /**
+	//      * 已释放
+	//      */
+	//     DELETED(4),
+	//     /**
+	//      * 创建中
+	//      */
+	//     CREATING(5),
+	//     /**
+	//      * 创建失败
+	//      */
+	//     CREATE_FAILED(6),
+	//     /**
+	//      * 更新中
+	//      */
+	//     UPDATING(7),
+	//     /**
+	//      * 更新失败
+	//      */
+	//     UPDATE_FAILED(8),
+	//     /**
+	//      * 已到期
+	//      */
+	//     EXPIRED(9);
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 资源包状态描述：保存创建失败，运行异常和更新失败的原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusDescription *string `json:"StatusDescription,omitnil,omitempty" name:"StatusDescription"`
+
+	// 资源包到期时间，时间戳毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 资源包额外属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtInfo *ExecutorResourcePackageExtInfo `json:"ExtInfo,omitnil,omitempty" name:"ExtInfo"`
+
+	// 绑定的项目id，可为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 资源组绑定的时间，时间戳毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectBindTime *int64 `json:"ProjectBindTime,omitnil,omitempty" name:"ProjectBindTime"`
+
+	// 资源包使用状态: cpu使用，内存使用及趋势
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourcePackageUsage *ExecutorResourcePackageUsageInfo `json:"ResourcePackageUsage,omitnil,omitempty" name:"ResourcePackageUsage"`
+
+	// 计费相关：产品资源id列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductResourceIdList []*int64 `json:"ProductResourceIdList,omitnil,omitempty" name:"ProductResourceIdList"`
+
+	// 生命周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LifeTime *int64 `json:"LifeTime,omitnil,omitempty" name:"LifeTime"`
+
+	// 私有网络Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 私有网络名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcName *string `json:"VpcName,omitnil,omitempty" name:"VpcName"`
+
+	// 子网Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 子网名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetName *string `json:"SubnetName,omitnil,omitempty" name:"SubnetName"`
+
+	// 执行资源相关：资源规格描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceStandard *string `json:"ResourceStandard,omitnil,omitempty" name:"ResourceStandard"`
+
+	// 内存总数
+	TotalMemory *uint64 `json:"TotalMemory,omitnil,omitempty" name:"TotalMemory"`
+}
+
+type ExecutorResourcePackageUsageInfo struct {
+	// CPU占用百分比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuUsagePercent *float64 `json:"CpuUsagePercent,omitnil,omitempty" name:"CpuUsagePercent"`
+
+	// 内存占用百分比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemUsagePercent *float64 `json:"MemUsagePercent,omitnil,omitempty" name:"MemUsagePercent"`
+
+	// 资源包状态, /**
+	//      * 初始化中
+	//      */
+	//     INIT(0),
+	//     /**
+	//      * 运行中
+	//      */
+	//     RUNNING(1),
+	//     /**
+	//      * 运行异常
+	//      */
+	//     RUNNING_FAILED(2),
+	//     /**
+	//      * 释放中
+	//      */
+	//     DELETEING(3),
+	//     /**
+	//      * 已释放
+	//      */
+	//     DELETED(4),
+	//     /**
+	//      * 创建中
+	//      */
+	//     CREATING(5),
+	//     /**
+	//      * 创建失败
+	//      */
+	//     CREATE_FAILED(6),
+	//     /**
+	//      * 更新中
+	//      */
+	//     UPDATING(7),
+	//     /**
+	//      * 更新失败
+	//      */
+	//     UPDATE_FAILED(8),
+	//     /**
+	//      * 已到期
+	//      */
+	//     EXPIRED(9);
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *float64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// /**
+	//      * 初始化中
+	//      */
+	//     INIT(0),
+	//     /**
+	//      * 运行中
+	//      */
+	//     RUNNING(1),
+	//     /**
+	//      * 运行异常
+	//      */
+	//     RUNNING_FAILED(2),
+	//     /**
+	//      * 释放中
+	//      */
+	//     DELETEING(3),
+	//     /**
+	//      * 已释放
+	//      */
+	//     DELETED(4),
+	//     /**
+	//      * 创建中
+	//      */
+	//     CREATING(5),
+	//     /**
+	//      * 创建失败
+	//      */
+	//     CREATE_FAILED(6),
+	//     /**
+	//      * 更新中
+	//      */
+	//     UPDATING(7),
+	//     /**
+	//      * 更新失败
+	//      */
+	//     UPDATE_FAILED(8),
+	//     /**
+	//      * 已到期
+	//      */
+	// 运行中的任务数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunningTaskNum *int64 `json:"RunningTaskNum,omitnil,omitempty" name:"RunningTaskNum"`
+
+	// 等待中的任务数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WaitingTaskNum *int64 `json:"WaitingTaskNum,omitnil,omitempty" name:"WaitingTaskNum"`
+
+	// 资源使用趋势: 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsageTrendStartTime *string `json:"UsageTrendStartTime,omitnil,omitempty" name:"UsageTrendStartTime"`
+
+	// 资源使用趋势: 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsageTrendEndTime *string `json:"UsageTrendEndTime,omitnil,omitempty" name:"UsageTrendEndTime"`
+
+	// 资源使用趋势列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsageTrendList []*ExecutorUsageTrendInfo `json:"UsageTrendList,omitnil,omitempty" name:"UsageTrendList"`
+}
+
+type ExecutorUsageTrendInfo struct {
+	// 时间戳，单位：毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *int64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
+
+	// CPU占用百分比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuUsagePercent *float64 `json:"CpuUsagePercent,omitnil,omitempty" name:"CpuUsagePercent"`
+
+	// 内存占用百分比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemUsagePercent *float64 `json:"MemUsagePercent,omitnil,omitempty" name:"MemUsagePercent"`
+
+	// 当前并发度使用百分比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConcurrencyUsage *float64 `json:"ConcurrencyUsage,omitnil,omitempty" name:"ConcurrencyUsage"`
+
+	// oceanus CU使用百分比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OceanusCuUsage *float64 `json:"OceanusCuUsage,omitnil,omitempty" name:"OceanusCuUsage"`
+}
+
 type ExtParam struct {
 	// key
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
@@ -25840,6 +26332,64 @@ type LogContentInfo struct {
 	// 日志所属的容器名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerName *string `json:"ContainerName,omitnil,omitempty" name:"ContainerName"`
+}
+
+type MQPackageVO struct {
+	// ckafka消息队列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 实例Id/集群Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名称/集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 局域网Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// 子网Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// 资源状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 资源状态描述：保存创建失败，运行异常和更新失败的原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusDescription *string `json:"StatusDescription,omitnil,omitempty" name:"StatusDescription"`
+
+	// DataProxy规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataProxySpec *string `json:"DataProxySpec,omitnil,omitempty" name:"DataProxySpec"`
+
+	// DataProxy数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataProxyNum *int64 `json:"DataProxyNum,omitnil,omitempty" name:"DataProxyNum"`
+
+	// DataProxy状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataProxyStatus *int64 `json:"DataProxyStatus,omitnil,omitempty" name:"DataProxyStatus"`
+
+	// DataProxy状态描述：保存创建失败，运行异常和更新失败的原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataProxyStatusDescription *string `json:"DataProxyStatusDescription,omitnil,omitempty" name:"DataProxyStatusDescription"`
+
+	// 计费类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingType *string `json:"BillingType,omitnil,omitempty" name:"BillingType"`
+
+	// 资源到期时间，时间戳毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 资源生命周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LifeTime *int64 `json:"LifeTime,omitnil,omitempty" name:"LifeTime"`
 }
 
 type MakePlanInstanceOpsDtoCollection struct {

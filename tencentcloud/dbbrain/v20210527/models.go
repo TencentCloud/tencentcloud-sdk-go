@@ -3601,10 +3601,10 @@ type DescribeIndexRecommendAggregationSlowLogsRequestParams struct {
 	// 数据库名称。
 	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
 
-	// 表明。
+	// 表名。
 	Collection *string `json:"Collection,omitnil,omitempty" name:"Collection"`
 
-	// 签名。
+	// 签名。这个值是DescribelndexRecommendInfo接口返回
 	Signs []*string `json:"Signs,omitnil,omitempty" name:"Signs"`
 }
 
@@ -3620,10 +3620,10 @@ type DescribeIndexRecommendAggregationSlowLogsRequest struct {
 	// 数据库名称。
 	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
 
-	// 表明。
+	// 表名。
 	Collection *string `json:"Collection,omitnil,omitempty" name:"Collection"`
 
-	// 签名。
+	// 签名。这个值是DescribelndexRecommendInfo接口返回
 	Signs []*string `json:"Signs,omitnil,omitempty" name:"Signs"`
 }
 

@@ -4405,6 +4405,117 @@ func (r *ModifyEnvironmentResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyGatewayIngressRequestParams struct {
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
+
+	// 网关名称
+	GatewayName *string `json:"GatewayName,omitnil,omitempty" name:"GatewayName"`
+
+	// 网关类型，如 clb
+	GatewayType *string `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+
+	// 转发配置名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// rules 配置
+	Rules []*IngressRule `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// 是否混合 https，默认 false，可选值 true 代表有 https 协议监听
+	Mixed *bool `json:"Mixed,omitnil,omitempty" name:"Mixed"`
+
+	// tls 配置
+	Tls []*IngressTls `json:"Tls,omitnil,omitempty" name:"Tls"`
+
+	// 重定向模式，可选值：
+	// - AUTO（自动重定向http到https）
+	// - NONE（不使用重定向）
+	RewriteType *string `json:"RewriteType,omitnil,omitempty" name:"RewriteType"`
+}
+
+type ModifyGatewayIngressRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitnil,omitempty" name:"EnvironmentId"`
+
+	// 网关名称
+	GatewayName *string `json:"GatewayName,omitnil,omitempty" name:"GatewayName"`
+
+	// 网关类型，如 clb
+	GatewayType *string `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+
+	// 转发配置名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// rules 配置
+	Rules []*IngressRule `json:"Rules,omitnil,omitempty" name:"Rules"`
+
+	// 是否混合 https，默认 false，可选值 true 代表有 https 协议监听
+	Mixed *bool `json:"Mixed,omitnil,omitempty" name:"Mixed"`
+
+	// tls 配置
+	Tls []*IngressTls `json:"Tls,omitnil,omitempty" name:"Tls"`
+
+	// 重定向模式，可选值：
+	// - AUTO（自动重定向http到https）
+	// - NONE（不使用重定向）
+	RewriteType *string `json:"RewriteType,omitnil,omitempty" name:"RewriteType"`
+}
+
+func (r *ModifyGatewayIngressRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGatewayIngressRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "GatewayName")
+	delete(f, "GatewayType")
+	delete(f, "Name")
+	delete(f, "Rules")
+	delete(f, "Mixed")
+	delete(f, "Tls")
+	delete(f, "RewriteType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyGatewayIngressRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGatewayIngressResponseParams struct {
+	// 是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *bool `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyGatewayIngressResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyGatewayIngressResponseParams `json:"Response"`
+}
+
+func (r *ModifyGatewayIngressResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGatewayIngressResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyIngressRequestParams struct {
 	// Ingress 规则配置
 	Ingress *IngressInfo `json:"Ingress,omitnil,omitempty" name:"Ingress"`

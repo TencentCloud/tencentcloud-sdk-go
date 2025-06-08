@@ -2749,6 +2749,59 @@ func (c *Client) ModifyEnvironmentWithContext(ctx context.Context, request *Modi
     return
 }
 
+func NewModifyGatewayIngressRequest() (request *ModifyGatewayIngressRequest) {
+    request = &ModifyGatewayIngressRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tem", APIVersion, "ModifyGatewayIngress")
+    
+    
+    return
+}
+
+func NewModifyGatewayIngressResponse() (response *ModifyGatewayIngressResponse) {
+    response = &ModifyGatewayIngressResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyGatewayIngress
+// 修改网关的转发配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MODIFYGATEWAYINGRESSERROR = "InternalError.ModifyGatewayIngressError"
+//  INVALIDPARAMETERVALUE_INGRESSRULESCONFLICT = "InvalidParameterValue.IngressRulesConflict"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ModifyGatewayIngress(request *ModifyGatewayIngressRequest) (response *ModifyGatewayIngressResponse, err error) {
+    return c.ModifyGatewayIngressWithContext(context.Background(), request)
+}
+
+// ModifyGatewayIngress
+// 修改网关的转发配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MODIFYGATEWAYINGRESSERROR = "InternalError.ModifyGatewayIngressError"
+//  INVALIDPARAMETERVALUE_INGRESSRULESCONFLICT = "InvalidParameterValue.IngressRulesConflict"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) ModifyGatewayIngressWithContext(ctx context.Context, request *ModifyGatewayIngressRequest) (response *ModifyGatewayIngressResponse, err error) {
+    if request == nil {
+        request = NewModifyGatewayIngressRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGatewayIngress require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGatewayIngressResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyIngressRequest() (request *ModifyIngressRequest) {
     request = &ModifyIngressRequest{
         BaseRequest: &tchttp.BaseRequest{},

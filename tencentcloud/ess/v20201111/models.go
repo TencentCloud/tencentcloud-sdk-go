@@ -2270,6 +2270,97 @@ func (r *CreateBatchSignUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateContractDiffTaskWebUrlRequestParams struct {
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 是否跳过文件上传确认页。
+	// 当该参数值为`false`时，`OriginalFileResourceId`和`DiffFileResourceId`参数不需要传值，需要在生成的web页面中上传对比文件；
+	// 当该参数值为`true`时，`OriginalFileResourceId`和`DiffFileResourceId`参数必填，生成的web页面将跳过上传页面显示对比结果。
+	SkipFileUpload *bool `json:"SkipFileUpload,omitnil,omitempty" name:"SkipFileUpload"`
+
+	// 需要对比的原合同文件资源ID，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+	OriginalFileResourceId *string `json:"OriginalFileResourceId,omitnil,omitempty" name:"OriginalFileResourceId"`
+
+	// 需要对比的新合同文件资源ID，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+	DiffFileResourceId *string `json:"DiffFileResourceId,omitnil,omitempty" name:"DiffFileResourceId"`
+}
+
+type CreateContractDiffTaskWebUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 是否跳过文件上传确认页。
+	// 当该参数值为`false`时，`OriginalFileResourceId`和`DiffFileResourceId`参数不需要传值，需要在生成的web页面中上传对比文件；
+	// 当该参数值为`true`时，`OriginalFileResourceId`和`DiffFileResourceId`参数必填，生成的web页面将跳过上传页面显示对比结果。
+	SkipFileUpload *bool `json:"SkipFileUpload,omitnil,omitempty" name:"SkipFileUpload"`
+
+	// 需要对比的原合同文件资源ID，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+	OriginalFileResourceId *string `json:"OriginalFileResourceId,omitnil,omitempty" name:"OriginalFileResourceId"`
+
+	// 需要对比的新合同文件资源ID，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">UploadFiles</a>接口获取文件资源ID。
+	DiffFileResourceId *string `json:"DiffFileResourceId,omitnil,omitempty" name:"DiffFileResourceId"`
+}
+
+func (r *CreateContractDiffTaskWebUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateContractDiffTaskWebUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "SkipFileUpload")
+	delete(f, "OriginalFileResourceId")
+	delete(f, "DiffFileResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateContractDiffTaskWebUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateContractDiffTaskWebUrlResponseParams struct {
+	// 接口返回的合同对比任务ID，可以调用接口<a href="https://qian.tencent.com/developers/companyApis/embedPages/DescribeContractDiffTaskWebUrl" target="_blank">获取合同对比结果web页面</a>查看对比任务的结果。
+	// 当`SkipFileUpload`参数为`true`时才会返回值，否则为空。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 合同对比嵌入式web页面链接，有效期：5分钟
+	// 链接仅能使用一次
+	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateContractDiffTaskWebUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateContractDiffTaskWebUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateContractDiffTaskWebUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateContractDiffTaskWebUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateConvertTaskApiRequestParams struct {
 	// 需要进行转换的资源文件类型
 	// 支持的文件类型如下：
@@ -9780,6 +9871,75 @@ func (r *DescribeCancelFlowsTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCancelFlowsTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeContractDiffTaskWebUrlRequestParams struct {
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同对比任务ID，该参数通过调用接口<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreateContractDiffTaskWebUrl" target="_blank">创建合同对比web页面</a>获取。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeContractDiffTaskWebUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 合同对比任务ID，该参数通过调用接口<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreateContractDiffTaskWebUrl" target="_blank">创建合同对比web页面</a>获取。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeContractDiffTaskWebUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContractDiffTaskWebUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeContractDiffTaskWebUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeContractDiffTaskWebUrlResponseParams struct {
+	// 合同对比嵌入式web页面链接，有效期：5分钟
+	// 链接仅能使用一次
+	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeContractDiffTaskWebUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeContractDiffTaskWebUrlResponseParams `json:"Response"`
+}
+
+func (r *DescribeContractDiffTaskWebUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeContractDiffTaskWebUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

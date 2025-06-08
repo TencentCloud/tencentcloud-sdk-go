@@ -2448,7 +2448,7 @@ func NewDeleteProjectResponse() (response *DeleteProjectResponse) {
 }
 
 // DeleteProject
-// 提供删除某个项目的能力
+// 提供删除某个项目的能力。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
@@ -2462,7 +2462,7 @@ func (c *Client) DeleteProject(request *DeleteProjectRequest) (response *DeleteP
 }
 
 // DeleteProject
-// 提供删除某个项目的能力
+// 提供删除某个项目的能力。
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
@@ -8546,7 +8546,7 @@ func NewModifyProjectResponse() (response *ModifyProjectResponse) {
 }
 
 // ModifyProject
-// 修改项目
+// 修改项目。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -8562,7 +8562,7 @@ func (c *Client) ModifyProject(request *ModifyProjectRequest) (response *ModifyP
 }
 
 // ModifyProject
-// 修改项目
+// 修改项目。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

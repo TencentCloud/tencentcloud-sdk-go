@@ -473,8 +473,11 @@ type DescribeApmInstancesRequestParams struct {
 	// Tag 列表
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 按业务系统名过滤
+	// 按业务系统名过滤，支持模糊检索
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 按业务系统 ID 过滤，支持模糊检索
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 按业务系统 ID 过滤
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
@@ -492,8 +495,11 @@ type DescribeApmInstancesRequest struct {
 	// Tag 列表
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
 
-	// 按业务系统名过滤
+	// 按业务系统名过滤，支持模糊检索
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 按业务系统 ID 过滤，支持模糊检索
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 按业务系统 ID 过滤
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
@@ -519,6 +525,7 @@ func (r *DescribeApmInstancesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Tags")
 	delete(f, "InstanceName")
+	delete(f, "InstanceId")
 	delete(f, "InstanceIds")
 	delete(f, "DemoInstanceFlag")
 	delete(f, "AllRegionsFlag")

@@ -1528,6 +1528,122 @@ func (c *Client) DescribeAndroidInstancesWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeAndroidInstancesAppBlacklistRequest() (request *DescribeAndroidInstancesAppBlacklistRequest) {
+    request = &DescribeAndroidInstancesAppBlacklistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "DescribeAndroidInstancesAppBlacklist")
+    
+    
+    return
+}
+
+func NewDescribeAndroidInstancesAppBlacklistResponse() (response *DescribeAndroidInstancesAppBlacklistResponse) {
+    response = &DescribeAndroidInstancesAppBlacklistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAndroidInstancesAppBlacklist
+// 查询安卓实例黑名单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAndroidInstancesAppBlacklist(request *DescribeAndroidInstancesAppBlacklistRequest) (response *DescribeAndroidInstancesAppBlacklistResponse, err error) {
+    return c.DescribeAndroidInstancesAppBlacklistWithContext(context.Background(), request)
+}
+
+// DescribeAndroidInstancesAppBlacklist
+// 查询安卓实例黑名单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAndroidInstancesAppBlacklistWithContext(ctx context.Context, request *DescribeAndroidInstancesAppBlacklistRequest) (response *DescribeAndroidInstancesAppBlacklistResponse, err error) {
+    if request == nil {
+        request = NewDescribeAndroidInstancesAppBlacklistRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAndroidInstancesAppBlacklist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAndroidInstancesAppBlacklistResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAndroidInstancesByAppsRequest() (request *DescribeAndroidInstancesByAppsRequest) {
+    request = &DescribeAndroidInstancesByAppsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "DescribeAndroidInstancesByApps")
+    
+    
+    return
+}
+
+func NewDescribeAndroidInstancesByAppsResponse() (response *DescribeAndroidInstancesByAppsResponse) {
+    response = &DescribeAndroidInstancesByAppsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAndroidInstancesByApps
+// 查询安装指定应用的安卓实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAndroidInstancesByApps(request *DescribeAndroidInstancesByAppsRequest) (response *DescribeAndroidInstancesByAppsResponse, err error) {
+    return c.DescribeAndroidInstancesByAppsWithContext(context.Background(), request)
+}
+
+// DescribeAndroidInstancesByApps
+// 查询安装指定应用的安卓实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAndroidInstancesByAppsWithContext(ctx context.Context, request *DescribeAndroidInstancesByAppsRequest) (response *DescribeAndroidInstancesByAppsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAndroidInstancesByAppsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAndroidInstancesByApps require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAndroidInstancesByAppsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstancesCountRequest() (request *DescribeInstancesCountRequest) {
     request = &DescribeInstancesCountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1923,6 +2039,67 @@ func (c *Client) FetchAndroidInstancesLogsWithContext(ctx context.Context, reque
     return
 }
 
+func NewImportAndroidInstanceImageRequest() (request *ImportAndroidInstanceImageRequest) {
+    request = &ImportAndroidInstanceImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "ImportAndroidInstanceImage")
+    
+    
+    return
+}
+
+func NewImportAndroidInstanceImageResponse() (response *ImportAndroidInstanceImageResponse) {
+    response = &ImportAndroidInstanceImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImportAndroidInstanceImage
+// 导入安卓实例镜像，当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像导入完成处于可用状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ImportAndroidInstanceImage(request *ImportAndroidInstanceImageRequest) (response *ImportAndroidInstanceImageResponse, err error) {
+    return c.ImportAndroidInstanceImageWithContext(context.Background(), request)
+}
+
+// ImportAndroidInstanceImage
+// 导入安卓实例镜像，当镜像的 AndroidInstanceImageState 为 NORMAL 时，镜像导入完成处于可用状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ImportAndroidInstanceImageWithContext(ctx context.Context, request *ImportAndroidInstanceImageRequest) (response *ImportAndroidInstanceImageResponse, err error) {
+    if request == nil {
+        request = NewImportAndroidInstanceImageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportAndroidInstanceImage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImportAndroidInstanceImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInstallAndroidInstancesAppRequest() (request *InstallAndroidInstancesAppRequest) {
     request = &InstallAndroidInstancesAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2271,6 +2448,61 @@ func (c *Client) ModifyAndroidInstanceResolutionWithContext(ctx context.Context,
     return
 }
 
+func NewModifyAndroidInstancesAppBlacklistRequest() (request *ModifyAndroidInstancesAppBlacklistRequest) {
+    request = &ModifyAndroidInstancesAppBlacklistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "ModifyAndroidInstancesAppBlacklist")
+    
+    
+    return
+}
+
+func NewModifyAndroidInstancesAppBlacklistResponse() (response *ModifyAndroidInstancesAppBlacklistResponse) {
+    response = &ModifyAndroidInstancesAppBlacklistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAndroidInstancesAppBlacklist
+// 修改安卓实例应用黑名单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAndroidInstancesAppBlacklist(request *ModifyAndroidInstancesAppBlacklistRequest) (response *ModifyAndroidInstancesAppBlacklistResponse, err error) {
+    return c.ModifyAndroidInstancesAppBlacklistWithContext(context.Background(), request)
+}
+
+// ModifyAndroidInstancesAppBlacklist
+// 修改安卓实例应用黑名单
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAndroidInstancesAppBlacklistWithContext(ctx context.Context, request *ModifyAndroidInstancesAppBlacklistRequest) (response *ModifyAndroidInstancesAppBlacklistResponse, err error) {
+    if request == nil {
+        request = NewModifyAndroidInstancesAppBlacklistRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAndroidInstancesAppBlacklist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAndroidInstancesAppBlacklistResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAndroidInstancesInformationRequest() (request *ModifyAndroidInstancesInformationRequest) {
     request = &ModifyAndroidInstancesInformationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2471,6 +2703,57 @@ func (c *Client) ModifyAndroidInstancesResolutionWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewModifyAndroidInstancesResolutionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAndroidInstancesResourcesRequest() (request *ModifyAndroidInstancesResourcesRequest) {
+    request = &ModifyAndroidInstancesResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "ModifyAndroidInstancesResources")
+    
+    
+    return
+}
+
+func NewModifyAndroidInstancesResourcesResponse() (response *ModifyAndroidInstancesResourcesResponse) {
+    response = &ModifyAndroidInstancesResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAndroidInstancesResources
+// 批量修改安卓实例资源限制
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyAndroidInstancesResources(request *ModifyAndroidInstancesResourcesRequest) (response *ModifyAndroidInstancesResourcesResponse, err error) {
+    return c.ModifyAndroidInstancesResourcesWithContext(context.Background(), request)
+}
+
+// ModifyAndroidInstancesResources
+// 批量修改安卓实例资源限制
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyAndroidInstancesResourcesWithContext(ctx context.Context, request *ModifyAndroidInstancesResourcesRequest) (response *ModifyAndroidInstancesResourcesResponse, err error) {
+    if request == nil {
+        request = NewModifyAndroidInstancesResourcesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAndroidInstancesResources require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAndroidInstancesResourcesResponse()
     err = c.Send(request, response)
     return
 }
@@ -2898,6 +3181,132 @@ func (c *Client) SaveGameArchiveWithContext(ctx context.Context, request *SaveGa
     request.SetContext(ctx)
     
     response = NewSaveGameArchiveResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetAndroidInstancesBGAppKeepAliveRequest() (request *SetAndroidInstancesBGAppKeepAliveRequest) {
+    request = &SetAndroidInstancesBGAppKeepAliveRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "SetAndroidInstancesBGAppKeepAlive")
+    
+    
+    return
+}
+
+func NewSetAndroidInstancesBGAppKeepAliveResponse() (response *SetAndroidInstancesBGAppKeepAliveResponse) {
+    response = &SetAndroidInstancesBGAppKeepAliveResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetAndroidInstancesBGAppKeepAlive
+// 批量设置安卓实例应用后台保活，开启应用保活，只是降低应用被杀死或回收的优先级，并不能保证应用不会被杀死或回收（如出现内存不足等资源限制时，应用也有概率被杀死或回收）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
+//  FAILEDOPERATION_TOOFREQUENTLY = "FailedOperation.TooFrequently"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+func (c *Client) SetAndroidInstancesBGAppKeepAlive(request *SetAndroidInstancesBGAppKeepAliveRequest) (response *SetAndroidInstancesBGAppKeepAliveResponse, err error) {
+    return c.SetAndroidInstancesBGAppKeepAliveWithContext(context.Background(), request)
+}
+
+// SetAndroidInstancesBGAppKeepAlive
+// 批量设置安卓实例应用后台保活，开启应用保活，只是降低应用被杀死或回收的优先级，并不能保证应用不会被杀死或回收（如出现内存不足等资源限制时，应用也有概率被杀死或回收）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
+//  FAILEDOPERATION_TOOFREQUENTLY = "FailedOperation.TooFrequently"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+func (c *Client) SetAndroidInstancesBGAppKeepAliveWithContext(ctx context.Context, request *SetAndroidInstancesBGAppKeepAliveRequest) (response *SetAndroidInstancesBGAppKeepAliveResponse, err error) {
+    if request == nil {
+        request = NewSetAndroidInstancesBGAppKeepAliveRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetAndroidInstancesBGAppKeepAlive require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetAndroidInstancesBGAppKeepAliveResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetAndroidInstancesFGAppKeepAliveRequest() (request *SetAndroidInstancesFGAppKeepAliveRequest) {
+    request = &SetAndroidInstancesFGAppKeepAliveRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "SetAndroidInstancesFGAppKeepAlive")
+    
+    
+    return
+}
+
+func NewSetAndroidInstancesFGAppKeepAliveResponse() (response *SetAndroidInstancesFGAppKeepAliveResponse) {
+    response = &SetAndroidInstancesFGAppKeepAliveResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetAndroidInstancesFGAppKeepAlive
+// 批量设置安卓实例应用前台保活，开启应用保活，只是降低应用被杀死或回收的优先级，并不能保证应用不会被杀死或回收（如出现内存不足等资源限制时，应用也有概率被杀死或回收）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
+//  FAILEDOPERATION_TOOFREQUENTLY = "FailedOperation.TooFrequently"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+func (c *Client) SetAndroidInstancesFGAppKeepAlive(request *SetAndroidInstancesFGAppKeepAliveRequest) (response *SetAndroidInstancesFGAppKeepAliveResponse, err error) {
+    return c.SetAndroidInstancesFGAppKeepAliveWithContext(context.Background(), request)
+}
+
+// SetAndroidInstancesFGAppKeepAlive
+// 批量设置安卓实例应用前台保活，开启应用保活，只是降低应用被杀死或回收的优先级，并不能保证应用不会被杀死或回收（如出现内存不足等资源限制时，应用也有概率被杀死或回收）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
+//  FAILEDOPERATION_TOOFREQUENTLY = "FailedOperation.TooFrequently"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+func (c *Client) SetAndroidInstancesFGAppKeepAliveWithContext(ctx context.Context, request *SetAndroidInstancesFGAppKeepAliveRequest) (response *SetAndroidInstancesFGAppKeepAliveResponse, err error) {
+    if request == nil {
+        request = NewSetAndroidInstancesFGAppKeepAliveRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetAndroidInstancesFGAppKeepAlive require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetAndroidInstancesFGAppKeepAliveResponse()
     err = c.Send(request, response)
     return
 }

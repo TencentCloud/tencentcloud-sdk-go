@@ -1174,6 +1174,83 @@ func (c *Client) CreateBatchSignUrlWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateContractDiffTaskWebUrlRequest() (request *CreateContractDiffTaskWebUrlRequest) {
+    request = &CreateContractDiffTaskWebUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateContractDiffTaskWebUrl")
+    
+    
+    return
+}
+
+func NewCreateContractDiffTaskWebUrlResponse() (response *CreateContractDiffTaskWebUrlResponse) {
+    response = &CreateContractDiffTaskWebUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateContractDiffTaskWebUrl
+// 接口（CreateContractDiffTaskWebUrl）用于创建合同对比的可嵌入web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+//
+// 注：本接口生成的web页面暂不支持<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreateWebThemeConfig" target="_blank">设置本企业嵌入式页面主题配置</a>
+//
+// 
+//
+// 未跳过上传确认的嵌入页面长相如下：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/32f3526ad7152757202a7e4e760356db.jpg)
+//
+// 跳过上传确认的嵌入页面长相如下：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/c68047feddbc106e261870687b6ab89d.jpg)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateContractDiffTaskWebUrl(request *CreateContractDiffTaskWebUrlRequest) (response *CreateContractDiffTaskWebUrlResponse, err error) {
+    return c.CreateContractDiffTaskWebUrlWithContext(context.Background(), request)
+}
+
+// CreateContractDiffTaskWebUrl
+// 接口（CreateContractDiffTaskWebUrl）用于创建合同对比的可嵌入web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+//
+// 注：本接口生成的web页面暂不支持<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreateWebThemeConfig" target="_blank">设置本企业嵌入式页面主题配置</a>
+//
+// 
+//
+// 未跳过上传确认的嵌入页面长相如下：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/32f3526ad7152757202a7e4e760356db.jpg)
+//
+// 跳过上传确认的嵌入页面长相如下：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/c68047feddbc106e261870687b6ab89d.jpg)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateContractDiffTaskWebUrlWithContext(ctx context.Context, request *CreateContractDiffTaskWebUrlRequest) (response *CreateContractDiffTaskWebUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateContractDiffTaskWebUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateContractDiffTaskWebUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateContractDiffTaskWebUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateConvertTaskApiRequest() (request *CreateConvertTaskApiRequest) {
     request = &CreateConvertTaskApiRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8769,6 +8846,77 @@ func (c *Client) DescribeCancelFlowsTaskWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeCancelFlowsTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeContractDiffTaskWebUrlRequest() (request *DescribeContractDiffTaskWebUrlRequest) {
+    request = &DescribeContractDiffTaskWebUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeContractDiffTaskWebUrl")
+    
+    
+    return
+}
+
+func NewDescribeContractDiffTaskWebUrlResponse() (response *DescribeContractDiffTaskWebUrlResponse) {
+    response = &DescribeContractDiffTaskWebUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeContractDiffTaskWebUrl
+// 接口（DescribeContractDiffTaskWebUrl）用于获取合同对比结果可嵌入的web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+//
+// 注：本接口生成的web页面暂不支持<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreateWebThemeConfig" target="_blank">设置本企业嵌入式页面主题配置</a>
+//
+// 
+//
+// 嵌入页面长相如下：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/c68047feddbc106e261870687b6ab89d.jpg)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeContractDiffTaskWebUrl(request *DescribeContractDiffTaskWebUrlRequest) (response *DescribeContractDiffTaskWebUrlResponse, err error) {
+    return c.DescribeContractDiffTaskWebUrlWithContext(context.Background(), request)
+}
+
+// DescribeContractDiffTaskWebUrl
+// 接口（DescribeContractDiffTaskWebUrl）用于获取合同对比结果可嵌入的web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
+//
+// 注：本接口生成的web页面暂不支持<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreateWebThemeConfig" target="_blank">设置本企业嵌入式页面主题配置</a>
+//
+// 
+//
+// 嵌入页面长相如下：
+//
+// ![image](https://qcloudimg.tencent-cloud.cn/raw/c68047feddbc106e261870687b6ab89d.jpg)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeContractDiffTaskWebUrlWithContext(ctx context.Context, request *DescribeContractDiffTaskWebUrlRequest) (response *DescribeContractDiffTaskWebUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeContractDiffTaskWebUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeContractDiffTaskWebUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeContractDiffTaskWebUrlResponse()
     err = c.Send(request, response)
     return
 }

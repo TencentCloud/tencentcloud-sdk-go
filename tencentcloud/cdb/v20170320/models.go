@@ -2753,7 +2753,7 @@ type CreateCloneInstanceRequestParams struct {
 	// 说明：如果是克隆双节点、三节点实例，备份文件为物理备份，如果是克隆单节点、集群版实例，备份文件为快照备份。
 	SpecifiedBackupId *int64 `json:"SpecifiedBackupId,omitnil,omitempty" name:"SpecifiedBackupId"`
 
-	// 私有网络 ID，如果不传则默认选择基础网络，请使用 [查询私有网络列表](/document/api/215/15778) 。
+	// 私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
 	// 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 [查询子网列表](/document/api/215/15784)。
@@ -2837,7 +2837,7 @@ type CreateCloneInstanceRequest struct {
 	// 说明：如果是克隆双节点、三节点实例，备份文件为物理备份，如果是克隆单节点、集群版实例，备份文件为快照备份。
 	SpecifiedBackupId *int64 `json:"SpecifiedBackupId,omitnil,omitempty" name:"SpecifiedBackupId"`
 
-	// 私有网络 ID，如果不传则默认选择基础网络，请使用 [查询私有网络列表](/document/api/215/15778) 。
+	// 私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
 	// 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 [查询子网列表](/document/api/215/15784)。
@@ -3083,7 +3083,7 @@ type CreateDBInstanceHourRequestParams struct {
 	// 说明：创建非集群版实例时，请根据需要指定实例版本（推荐5.7或8.0），若此参数不填，则默认值为5.6；若创建的是集群版实例，则此参数仅能指定为5.7或8.0。
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
-	// 私有网络 ID，如果不传则默认选择基础网络，请使用 [查询私有网络列表](/document/api/215/15778) 。
+	// 私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
 	// 说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
@@ -3221,7 +3221,7 @@ type CreateDBInstanceHourRequest struct {
 	// 说明：创建非集群版实例时，请根据需要指定实例版本（推荐5.7或8.0），若此参数不填，则默认值为5.6；若创建的是集群版实例，则此参数仅能指定为5.7或8.0。
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
-	// 私有网络 ID，如果不传则默认选择基础网络，请使用 [查询私有网络列表](/document/api/215/15778) 。
+	// 私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
 	// 说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
@@ -3448,7 +3448,7 @@ type CreateDBInstanceRequestParams struct {
 	// 说明：若您创建单节点、双节点、三节点实例，此参数为必填项，请指定可用区，若不指定可用区，则系统会自动选择一个可用区（可能不是您希望部署的可用区）；若您创建集群版实例，此参数不填，请通过参数 ClusterTopology 进行读写节点和只读节点的可用区配置。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 私有网络 ID，如果不传则默认选择基础网络，请使用 [查询私有网络列表](/document/api/215/15778)。
+	// 私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
 	// 说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
@@ -3587,7 +3587,7 @@ type CreateDBInstanceRequest struct {
 	// 说明：若您创建单节点、双节点、三节点实例，此参数为必填项，请指定可用区，若不指定可用区，则系统会自动选择一个可用区（可能不是您希望部署的可用区）；若您创建集群版实例，此参数不填，请通过参数 ClusterTopology 进行读写节点和只读节点的可用区配置。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 私有网络 ID，如果不传则默认选择基础网络，请使用 [查询私有网络列表](/document/api/215/15778)。
+	// 私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
 	// 说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
