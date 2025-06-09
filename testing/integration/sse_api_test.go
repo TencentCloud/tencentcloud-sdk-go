@@ -15,10 +15,14 @@
 package integration
 
 import (
+	"context"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/regions"
+	es "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/es/v20250101"
 	hunyuan "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hunyuan/v20230901"
+	"net"
+	"net/http/httptrace"
 	"os"
 	"testing"
 )
@@ -83,4 +87,130 @@ func TestChatCompletionsNonStream(t *testing.T) {
 	}
 
 	t.Log(response.ToJsonString())
+}
+
+func TestUseAIDomainByDefault(t *testing.T) {
+	const expectHost = "es.ai.tencentcloudapi.com"
+	credential := common.NewCredential(
+		os.Getenv("TENCENTCLOUD_SECRET_ID"),
+		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
+	)
+
+	cpf := profile.NewClientProfile()
+	client, _ := es.NewClient(credential, regions.Guangzhou, cpf)
+
+	request := es.NewParseDocumentRequest()
+
+	var requestedHost string
+	trace := &httptrace.ClientTrace{
+		GetConn: func(hostPort string) {
+			var err error
+			requestedHost, _, err = net.SplitHostPort(hostPort)
+			if err != nil {
+				panic(err)
+			}
+		},
+	}
+	ctx := httptrace.WithClientTrace(context.Background(), trace)
+	client.ParseDocumentWithContext(ctx, request)
+
+	if requestedHost != expectHost {
+		t.Fatalf("expected host: %s, got: %s", expectHost, requestedHost)
+	}
+}
+
+func TestAIDomainOverrideByDomain(t *testing.T) {
+	const expectHost = "custom-domain.com"
+	credential := common.NewCredential(
+		os.Getenv("TENCENTCLOUD_SECRET_ID"),
+		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
+	)
+
+	cpf := profile.NewClientProfile()
+	client, _ := es.NewClient(credential, regions.Guangzhou, cpf)
+
+	request := es.NewParseDocumentRequest()
+	request.SetDomain(expectHost)
+
+	var requestedHost string
+	trace := &httptrace.ClientTrace{
+		GetConn: func(hostPort string) {
+			var err error
+			requestedHost, _, err = net.SplitHostPort(hostPort)
+			if err != nil {
+				panic(err)
+			}
+		},
+	}
+	ctx := httptrace.WithClientTrace(context.Background(), trace)
+	client.ParseDocumentWithContext(ctx, request)
+
+	if requestedHost != expectHost {
+		t.Fatalf("expected host: %s, got: %s", expectHost, requestedHost)
+	}
+}
+
+func TestAIDomainOverrideByProfile(t *testing.T) {
+	const expectHost = "custom-domain.com"
+	credential := common.NewCredential(
+		os.Getenv("TENCENTCLOUD_SECRET_ID"),
+		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
+	)
+
+	cpf := profile.NewClientProfile()
+	cpf.HttpProfile.Endpoint = expectHost
+	client, _ := es.NewClient(credential, regions.Guangzhou, cpf)
+
+	request := es.NewParseDocumentRequest()
+
+	var requestedHost string
+	trace := &httptrace.ClientTrace{
+		GetConn: func(hostPort string) {
+			var err error
+			requestedHost, _, err = net.SplitHostPort(hostPort)
+			if err != nil {
+				panic(err)
+			}
+		},
+	}
+	ctx := httptrace.WithClientTrace(context.Background(), trace)
+	client.ParseDocumentWithContext(ctx, request)
+
+	if requestedHost != expectHost {
+		t.Fatalf("expected host: %s, got: %s", expectHost, requestedHost)
+	}
+}
+
+func TestAIDomainOverrideByRootDomain(t *testing.T) {
+	const (
+		rootDomain = "custom-domain.com"
+		expectHost = "es." + rootDomain
+	)
+	credential := common.NewCredential(
+		os.Getenv("TENCENTCLOUD_SECRET_ID"),
+		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
+	)
+
+	cpf := profile.NewClientProfile()
+	client, _ := es.NewClient(credential, regions.Guangzhou, cpf)
+
+	request := es.NewParseDocumentRequest()
+	request.SetRootDomain(rootDomain)
+
+	var requestedHost string
+	trace := &httptrace.ClientTrace{
+		GetConn: func(hostPort string) {
+			var err error
+			requestedHost, _, err = net.SplitHostPort(hostPort)
+			if err != nil {
+				panic(err)
+			}
+		},
+	}
+	ctx := httptrace.WithClientTrace(context.Background(), trace)
+	client.ParseDocumentWithContext(ctx, request)
+
+	if requestedHost != expectHost {
+		t.Fatalf("expected host: %s, got: %s", expectHost, requestedHost)
+	}
 }
