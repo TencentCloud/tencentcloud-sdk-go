@@ -211,11 +211,8 @@ func TestAIDomainOverrideByProfile(t *testing.T) {
 	}
 }
 
-func TestAIDomainOverrideByRootDomain(t *testing.T) {
-	const (
-		rootDomain = "localhost"
-		expectHost = "es." + rootDomain
-	)
+func TestAIDomainNotOverrideByRootDomain(t *testing.T) {
+	const expectHost = "es.ai.tencentcloudapi.com"
 
 	signMethods := []string{"TC3-HMAC-SHA256", "HmacSHA256", "HmacSHA1"}
 	reqMethods := []string{"GET", "POST"}
@@ -233,7 +230,7 @@ func TestAIDomainOverrideByRootDomain(t *testing.T) {
 			client, _ := es.NewClient(credential, regions.Guangzhou, cpf)
 
 			request := es.NewParseDocumentRequest()
-			request.SetRootDomain(rootDomain)
+			request.SetRootDomain("localhost")
 
 			var requestedHost string
 			trace := &httptrace.ClientTrace{
