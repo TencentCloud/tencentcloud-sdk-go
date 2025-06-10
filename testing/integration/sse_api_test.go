@@ -91,126 +91,166 @@ func TestChatCompletionsNonStream(t *testing.T) {
 
 func TestUseAIDomainByDefault(t *testing.T) {
 	const expectHost = "es.ai.tencentcloudapi.com"
-	credential := common.NewCredential(
-		os.Getenv("TENCENTCLOUD_SECRET_ID"),
-		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
-	)
 
-	cpf := profile.NewClientProfile()
-	client, _ := es.NewClient(credential, regions.Guangzhou, cpf)
+	signMethods := []string{"TC3-HMAC-SHA256", "HmacSHA256", "HmacSHA1"}
+	reqMethods := []string{"GET", "POST"}
 
-	request := es.NewParseDocumentRequest()
+	for _, signMethod := range signMethods {
+		for _, reqMethod := range reqMethods {
+			credential := common.NewCredential(
+				os.Getenv("TENCENTCLOUD_SECRET_ID"),
+				os.Getenv("TENCENTCLOUD_SECRET_KEY"),
+			)
 
-	var requestedHost string
-	trace := &httptrace.ClientTrace{
-		GetConn: func(hostPort string) {
-			var err error
-			requestedHost, _, err = net.SplitHostPort(hostPort)
-			if err != nil {
-				panic(err)
+			cpf := profile.NewClientProfile()
+			cpf.SignMethod = signMethod
+			cpf.HttpProfile.ReqMethod = reqMethod
+			client, _ := es.NewClient(credential, regions.Guangzhou, cpf)
+
+			request := es.NewParseDocumentRequest()
+
+			var requestedHost string
+			trace := &httptrace.ClientTrace{
+				GetConn: func(hostPort string) {
+					var err error
+					requestedHost, _, err = net.SplitHostPort(hostPort)
+					if err != nil {
+						panic(err)
+					}
+				},
 			}
-		},
-	}
-	ctx := httptrace.WithClientTrace(context.Background(), trace)
-	client.ParseDocumentWithContext(ctx, request)
+			ctx := httptrace.WithClientTrace(context.Background(), trace)
+			client.ParseDocumentWithContext(ctx, request)
 
-	if requestedHost != expectHost {
-		t.Fatalf("expected host: %s, got: %s", expectHost, requestedHost)
+			if requestedHost != expectHost {
+				t.Fatalf("expected host: %s, got: %s", expectHost, requestedHost)
+			}
+		}
 	}
 }
 
 func TestAIDomainOverrideByDomain(t *testing.T) {
-	const expectHost = "custom-domain.com"
-	credential := common.NewCredential(
-		os.Getenv("TENCENTCLOUD_SECRET_ID"),
-		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
-	)
+	const expectHost = "localhost"
 
-	cpf := profile.NewClientProfile()
-	client, _ := es.NewClient(credential, regions.Guangzhou, cpf)
+	signMethods := []string{"TC3-HMAC-SHA256", "HmacSHA256", "HmacSHA1"}
+	reqMethods := []string{"GET", "POST"}
 
-	request := es.NewParseDocumentRequest()
-	request.SetDomain(expectHost)
+	for _, signMethod := range signMethods {
+		for _, reqMethod := range reqMethods {
+			credential := common.NewCredential(
+				os.Getenv("TENCENTCLOUD_SECRET_ID"),
+				os.Getenv("TENCENTCLOUD_SECRET_KEY"),
+			)
 
-	var requestedHost string
-	trace := &httptrace.ClientTrace{
-		GetConn: func(hostPort string) {
-			var err error
-			requestedHost, _, err = net.SplitHostPort(hostPort)
-			if err != nil {
-				panic(err)
+			cpf := profile.NewClientProfile()
+			cpf.SignMethod = signMethod
+			cpf.HttpProfile.ReqMethod = reqMethod
+			client, _ := es.NewClient(credential, regions.Guangzhou, cpf)
+
+			request := es.NewParseDocumentRequest()
+			request.SetDomain(expectHost)
+
+			var requestedHost string
+			trace := &httptrace.ClientTrace{
+				GetConn: func(hostPort string) {
+					var err error
+					requestedHost, _, err = net.SplitHostPort(hostPort)
+					if err != nil {
+						panic(err)
+					}
+				},
 			}
-		},
-	}
-	ctx := httptrace.WithClientTrace(context.Background(), trace)
-	client.ParseDocumentWithContext(ctx, request)
+			ctx := httptrace.WithClientTrace(context.Background(), trace)
+			client.ParseDocumentWithContext(ctx, request)
 
-	if requestedHost != expectHost {
-		t.Fatalf("expected host: %s, got: %s", expectHost, requestedHost)
+			if requestedHost != expectHost {
+				t.Fatalf("expected host: %s, got: %s", expectHost, requestedHost)
+			}
+		}
 	}
 }
 
 func TestAIDomainOverrideByProfile(t *testing.T) {
-	const expectHost = "custom-domain.com"
-	credential := common.NewCredential(
-		os.Getenv("TENCENTCLOUD_SECRET_ID"),
-		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
-	)
+	const expectHost = "localhost"
 
-	cpf := profile.NewClientProfile()
-	cpf.HttpProfile.Endpoint = expectHost
-	client, _ := es.NewClient(credential, regions.Guangzhou, cpf)
+	signMethods := []string{"TC3-HMAC-SHA256", "HmacSHA256", "HmacSHA1"}
+	reqMethods := []string{"GET", "POST"}
 
-	request := es.NewParseDocumentRequest()
+	for _, signMethod := range signMethods {
+		for _, reqMethod := range reqMethods {
+			credential := common.NewCredential(
+				os.Getenv("TENCENTCLOUD_SECRET_ID"),
+				os.Getenv("TENCENTCLOUD_SECRET_KEY"),
+			)
 
-	var requestedHost string
-	trace := &httptrace.ClientTrace{
-		GetConn: func(hostPort string) {
-			var err error
-			requestedHost, _, err = net.SplitHostPort(hostPort)
-			if err != nil {
-				panic(err)
+			cpf := profile.NewClientProfile()
+			cpf.SignMethod = signMethod
+			cpf.HttpProfile.ReqMethod = reqMethod
+			cpf.HttpProfile.Endpoint = expectHost
+			client, _ := es.NewClient(credential, regions.Guangzhou, cpf)
+
+			request := es.NewParseDocumentRequest()
+
+			var requestedHost string
+			trace := &httptrace.ClientTrace{
+				GetConn: func(hostPort string) {
+					var err error
+					requestedHost, _, err = net.SplitHostPort(hostPort)
+					if err != nil {
+						panic(err)
+					}
+				},
 			}
-		},
-	}
-	ctx := httptrace.WithClientTrace(context.Background(), trace)
-	client.ParseDocumentWithContext(ctx, request)
+			ctx := httptrace.WithClientTrace(context.Background(), trace)
+			client.ParseDocumentWithContext(ctx, request)
 
-	if requestedHost != expectHost {
-		t.Fatalf("expected host: %s, got: %s", expectHost, requestedHost)
+			if requestedHost != expectHost {
+				t.Fatalf("expected host: %s, got: %s", expectHost, requestedHost)
+			}
+		}
 	}
 }
 
 func TestAIDomainOverrideByRootDomain(t *testing.T) {
 	const (
-		rootDomain = "custom-domain.com"
+		rootDomain = "localhost"
 		expectHost = "es." + rootDomain
 	)
-	credential := common.NewCredential(
-		os.Getenv("TENCENTCLOUD_SECRET_ID"),
-		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
-	)
 
-	cpf := profile.NewClientProfile()
-	client, _ := es.NewClient(credential, regions.Guangzhou, cpf)
+	signMethods := []string{"TC3-HMAC-SHA256", "HmacSHA256", "HmacSHA1"}
+	reqMethods := []string{"GET", "POST"}
 
-	request := es.NewParseDocumentRequest()
-	request.SetRootDomain(rootDomain)
+	for _, signMethod := range signMethods {
+		for _, reqMethod := range reqMethods {
+			credential := common.NewCredential(
+				os.Getenv("TENCENTCLOUD_SECRET_ID"),
+				os.Getenv("TENCENTCLOUD_SECRET_KEY"),
+			)
 
-	var requestedHost string
-	trace := &httptrace.ClientTrace{
-		GetConn: func(hostPort string) {
-			var err error
-			requestedHost, _, err = net.SplitHostPort(hostPort)
-			if err != nil {
-				panic(err)
+			cpf := profile.NewClientProfile()
+			cpf.SignMethod = signMethod
+			cpf.HttpProfile.ReqMethod = reqMethod
+			client, _ := es.NewClient(credential, regions.Guangzhou, cpf)
+
+			request := es.NewParseDocumentRequest()
+			request.SetRootDomain(rootDomain)
+
+			var requestedHost string
+			trace := &httptrace.ClientTrace{
+				GetConn: func(hostPort string) {
+					var err error
+					requestedHost, _, err = net.SplitHostPort(hostPort)
+					if err != nil {
+						panic(err)
+					}
+				},
 			}
-		},
-	}
-	ctx := httptrace.WithClientTrace(context.Background(), trace)
-	client.ParseDocumentWithContext(ctx, request)
+			ctx := httptrace.WithClientTrace(context.Background(), trace)
+			client.ParseDocumentWithContext(ctx, request)
 
-	if requestedHost != expectHost {
-		t.Fatalf("expected host: %s, got: %s", expectHost, requestedHost)
+			if requestedHost != expectHost {
+				t.Fatalf("expected host: %s, got: %s", expectHost, requestedHost)
+			}
+		}
 	}
 }
