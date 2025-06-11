@@ -619,12 +619,20 @@ func main() {
 > 注入的 `ClientToken` 在 `100000/s` 并发量以下提供全局唯一性。
 
 ## 空数组和omitempty
+
 在 v1.0.738 以及之前的版本, SDK使用`omitempty`标签来序列化请求, 这会导致 nil 数组和 长度为0的空数组 都无法被序列化。
 这在您希望发送一个空数组的时候会造成不便, 在之前您需要使用 CommonClient 来解决这个问题。
 
 在 >= v1.0.739 的版本, SDK使用`omitnil`标签来序列化请求, 此时nil数组会被忽略掉, 但是空数组可以被正常发送。
 
 在 >= v1.0.885 版本中我们对这一特性增加了开关, 当你不希望发送一个空数组时, 可以通过 `json.OmitBehaviour = json.OmitEmpty` 来关闭该特性, 参考[示例](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/examples/common/omitempty.go)
+
+## EOF 报错
+
+若您遇到错误 `Code=ClientError.NetworkError, Message=Fail to get response because Post "https://xxx.tencentcloudapi.com/": EOF`, 可能与长连接有关。SDK 默认使用 HTTP POST 且开启了长连接，服务器对长连接启用了空闲超时等相关设置, 满足条件服务器会主动在当前请求完成后关闭连接。但有可能服务器 TCP FIN 包尚未到达客户端, 客户端仍尝试在已被关闭的连接上发送请求，此时将导致服务器返回 TCP RST 包。通常客户端自动重试请求即可解决，但 Golang net/http 库认为 POST 请求非幂等不会重试，从而导致该错误。解决办法有如下几种：
+
+- 如果请求包都很小，不需要通过 POST 发送大请求包，可以将 SDK 默认 HTTP 方法改为 GET ；
+- 启用 `ClientProfile.UnsafeRetryOnConnectionFailure`, 在连接关闭时自动重试，请确保请求具备幂等性（如只读接口），避免因重试导致非预期的行为；
 
 # 支持产品列表
 
