@@ -236,7 +236,7 @@ func NewBindProductsResponse() (response *BindProductsResponse) {
 }
 
 // BindProducts
-// 批量绑定子产品
+// 批量绑定子产品。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SOMEPRODUCTISALREADYBINDED = "FailedOperation.SomeProductIsAlreadyBinded"
@@ -256,7 +256,7 @@ func (c *Client) BindProducts(request *BindProductsRequest) (response *BindProdu
 }
 
 // BindProducts
-// 批量绑定子产品
+// 批量绑定子产品。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SOMEPRODUCTISALREADYBINDED = "FailedOperation.SomeProductIsAlreadyBinded"
@@ -4981,7 +4981,7 @@ func NewDescribeGatewaySubProductsResponse() (response *DescribeGatewaySubProduc
 }
 
 // DescribeGatewaySubProducts
-// 用于获取网关可绑定或解绑的子产品
+// 用于获取网关可绑定或解绑的子产品。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4997,7 +4997,7 @@ func (c *Client) DescribeGatewaySubProducts(request *DescribeGatewaySubProductsR
 }
 
 // DescribeGatewaySubProducts
-// 用于获取网关可绑定或解绑的子产品
+// 用于获取网关可绑定或解绑的子产品。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -10046,7 +10046,7 @@ func NewUnbindProductsResponse() (response *UnbindProductsResponse) {
 }
 
 // UnbindProducts
-// 批量解绑子产品
+// 批量解绑子产品。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -10061,7 +10061,7 @@ func (c *Client) UnbindProducts(request *UnbindProductsRequest) (response *Unbin
 }
 
 // UnbindProducts
-// 批量解绑子产品
+// 批量解绑子产品。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

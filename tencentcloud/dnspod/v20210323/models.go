@@ -1632,7 +1632,7 @@ func (r *CreateSubdomainValidateTXTValueRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type CreateSubdomainValidateTXTValueResponseParams struct {
-	// 需要添加 TXT 记录的域名。
+	// 需要添加 TXT 记录的主域名。
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
 	// 需要添加 TXT 记录的主机记录。
@@ -1643,6 +1643,9 @@ type CreateSubdomainValidateTXTValueResponseParams struct {
 
 	// 需要添加 TXT 记录的记录值。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 需要添加 TXT 记录的上级域名(可选，主域名和上级域名任选一个添加即可)。
+	ParentDomain *string `json:"ParentDomain,omitnil,omitempty" name:"ParentDomain"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3701,6 +3704,101 @@ func (r *DescribeDomainShareUserListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDomainVipListRequestParams struct {
+	// 偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制数量，默认值为20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 通过关键字搜索域名关联的套餐，默认值为空，为空时不作为筛选条件。
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 使用资源ID列表查询
+	ResourceIdList []*string `json:"ResourceIdList,omitnil,omitempty" name:"ResourceIdList"`
+
+	// 需要筛选的套餐版本
+	GradeList []*string `json:"GradeList,omitnil,omitempty" name:"GradeList"`
+
+	// 是否只获取未绑定域名套餐
+	GetUnbindResource *bool `json:"GetUnbindResource,omitnil,omitempty" name:"GetUnbindResource"`
+}
+
+type DescribeDomainVipListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制数量，默认值为20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 通过关键字搜索域名关联的套餐，默认值为空，为空时不作为筛选条件。
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+
+	// 使用资源ID列表查询
+	ResourceIdList []*string `json:"ResourceIdList,omitnil,omitempty" name:"ResourceIdList"`
+
+	// 需要筛选的套餐版本
+	GradeList []*string `json:"GradeList,omitnil,omitempty" name:"GradeList"`
+
+	// 是否只获取未绑定域名套餐
+	GetUnbindResource *bool `json:"GetUnbindResource,omitnil,omitempty" name:"GetUnbindResource"`
+}
+
+func (r *DescribeDomainVipListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainVipListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Keyword")
+	delete(f, "ResourceIdList")
+	delete(f, "GradeList")
+	delete(f, "GetUnbindResource")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainVipListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDomainVipListResponseParams struct {
+	// 符合筛选条件的套餐总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 套餐信息列表
+	PackageList []*PackageListItem `json:"PackageList,omitnil,omitempty" name:"PackageList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDomainVipListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDomainVipListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDomainVipListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainVipListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDomainWhoisRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -5430,6 +5528,94 @@ func (r *DescribeVASStatisticResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeVASStatisticResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVasListRequestParams struct {
+	// 偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制数量，默认值为20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 域名ID
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// 使用资源 ID 列表查询
+	ResourceIdList []*string `json:"ResourceIdList,omitnil,omitempty" name:"ResourceIdList"`
+
+	// 增值服务类型
+	LimitType *string `json:"LimitType,omitnil,omitempty" name:"LimitType"`
+}
+
+type DescribeVasListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 限制数量，默认值为20。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 域名ID
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// 使用资源 ID 列表查询
+	ResourceIdList []*string `json:"ResourceIdList,omitnil,omitempty" name:"ResourceIdList"`
+
+	// 增值服务类型
+	LimitType *string `json:"LimitType,omitnil,omitempty" name:"LimitType"`
+}
+
+func (r *DescribeVasListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVasListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "DomainId")
+	delete(f, "ResourceIdList")
+	delete(f, "LimitType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVasListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVasListResponseParams struct {
+	// 符合筛选条件的套餐总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 增值服务信息列表
+	VasList []*VasListItem `json:"VasList,omitnil,omitempty" name:"VasList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVasListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVasListResponseParams `json:"Response"`
+}
+
+func (r *DescribeVasListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVasListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7745,6 +7931,57 @@ type PackageDetailItem struct {
 	DomainGrade *string `json:"DomainGrade,omitnil,omitempty" name:"DomainGrade"`
 }
 
+type PackageListItem struct {
+	// 域名ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+
+	// 域名的原始格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 套餐等级代码
+	Grade *string `json:"Grade,omitnil,omitempty" name:"Grade"`
+
+	// 套餐名称
+	GradeTitle *string `json:"GradeTitle,omitnil,omitempty" name:"GradeTitle"`
+
+	// 付费套餐开通时间
+	VipStartAt *string `json:"VipStartAt,omitnil,omitempty" name:"VipStartAt"`
+
+	// 付费套餐到期时间
+	VipEndAt *string `json:"VipEndAt,omitnil,omitempty" name:"VipEndAt"`
+
+	// 域名是否开通VIP自动续费，是：YES，否：NO，默认：DEFAULT
+	VipAutoRenew *string `json:"VipAutoRenew,omitnil,omitempty" name:"VipAutoRenew"`
+
+	// 套餐剩余换绑/绑定域名次数
+	RemainTimes *uint64 `json:"RemainTimes,omitnil,omitempty" name:"RemainTimes"`
+
+	// 套餐资源ID
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 域名等级代号
+	GradeLevel *uint64 `json:"GradeLevel,omitnil,omitempty" name:"GradeLevel"`
+
+	// 套餐绑定的域名的状态
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 套餐是否处于宽限期
+	IsGracePeriod *string `json:"IsGracePeriod,omitnil,omitempty" name:"IsGracePeriod"`
+
+	// 是否降级
+	Downgrade *bool `json:"Downgrade,omitnil,omitempty" name:"Downgrade"`
+
+	// 关联安全防护信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityInfo *SecurityInfo `json:"SecurityInfo,omitnil,omitempty" name:"SecurityInfo"`
+
+	// 套餐绑定的域名是否为子域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSubDomain *bool `json:"IsSubDomain,omitnil,omitempty" name:"IsSubDomain"`
+}
+
 // Predefined struct for user
 type PayOrderWithBalanceRequestParams struct {
 	// 需要支付的大订单号数组
@@ -8137,6 +8374,17 @@ func (r *RollbackSnapshotResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SecurityInfo struct {
+	// 是否是免费赠送：yes-是；no-不是
+	IsDefendFree *string `json:"IsDefendFree,omitnil,omitempty" name:"IsDefendFree"`
+
+	// 防护类型
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 资源 ID
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
 type SnapshotConfig struct {
 	// 配置类型：空字符串-不备份，half_hour-每半小时，hourly-每小时，daily-每天，monthly-每月
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
@@ -8325,6 +8573,41 @@ type VASStatisticItem struct {
 
 	// 增值服务已使用的用量
 	UseCount *uint64 `json:"UseCount,omitnil,omitempty" name:"UseCount"`
+}
+
+type VasListItem struct {
+	// 规格总数
+	LimitNumber *uint64 `json:"LimitNumber,omitnil,omitempty" name:"LimitNumber"`
+
+	// 购买时间
+	StartedAt *string `json:"StartedAt,omitnil,omitempty" name:"StartedAt"`
+
+	// 到期时间
+	EndedAt *string `json:"EndedAt,omitnil,omitempty" name:"EndedAt"`
+
+	// 资源唯一 ID
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 自动续费标识
+	AutoRenew *string `json:"AutoRenew,omitnil,omitempty" name:"AutoRenew"`
+
+	// 已绑定的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 绑定类型
+	BindType *string `json:"BindType,omitnil,omitempty" name:"BindType"`
+
+	// 增值服务类型
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 增值服务名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 是否可续费
+	CanRenew *bool `json:"CanRenew,omitnil,omitempty" name:"CanRenew"`
+
+	// 是否只允许付费套餐域名可购买
+	VipDomain *bool `json:"VipDomain,omitnil,omitempty" name:"VipDomain"`
 }
 
 type WhoisContact struct {

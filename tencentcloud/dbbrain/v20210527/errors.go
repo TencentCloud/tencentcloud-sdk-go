@@ -26,11 +26,20 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 实例审计未开启
+	FAILEDOPERATION_AUDITNOTOPENED = "FailedOperation.AuditNotOpened"
+
+	// paas 侧商业审计状态未开启
+	FAILEDOPERATION_PAASAUDITNOTOPENED = "FailedOperation.PaasAuditNotOpened"
+
 	// 数据加载中
 	FAILEDOPERATION_SEGMENTLOADING = "FailedOperation.SegmentLoading"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
+
+	// 数据库操作失败
+	INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"

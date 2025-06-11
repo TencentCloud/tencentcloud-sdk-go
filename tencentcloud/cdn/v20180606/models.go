@@ -5206,7 +5206,7 @@ func (r *DescribePurgeTasksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePurgeTasksResponseParams struct {
-	// 详细刷新记录
+	// 详细刷新纪录
 	PurgeLogs []*PurgeTask `json:"PurgeLogs,omitnil,omitempty" name:"PurgeLogs"`
 
 	// 任务总数，用于分页

@@ -12076,7 +12076,7 @@ type LoadBalancer struct {
 	// <li>Running：已生效。</li>
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 该负载均衡实例绑的定四层层代理实例的列表。
+	// 该负载均衡实例绑的四层代理实例的列表。
 	L4UsedList []*string `json:"L4UsedList,omitnil,omitempty" name:"L4UsedList"`
 
 	// 该负载均衡实例绑定的七层域名列表。

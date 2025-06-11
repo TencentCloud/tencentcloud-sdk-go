@@ -149,6 +149,9 @@ const (
 	// 您的账号已被系统封禁，如果您有任何疑问请与我们联系。
 	INVALIDPARAMETER_ACCOUNTISBANNED = "InvalidParameter.AccountIsBanned"
 
+	// 域名正在取回，请勿重复操作。
+	INVALIDPARAMETER_ACQUIREHASHEXSITS = "InvalidParameter.AcquireHashExsits"
+
 	// 无效的操作。
 	INVALIDPARAMETER_ACTIONINVALID = "InvalidParameter.ActionInvalid"
 
@@ -467,6 +470,12 @@ const (
 	// 鉴权失败。
 	INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 
+	// 无效的 IP 地址。
+	INVALIDPARAMETER_PTRINVALIDPUBLICIP = "InvalidParameter.PtrInvalidPublicIp"
+
+	// 你不是该 IP 的所有者，无法进行此操作。
+	INVALIDPARAMETER_PTRIPNOTOWNER = "InvalidParameter.PtrIpNotOwner"
+
 	// 用户UIN无效。
 	INVALIDPARAMETER_QCLOUDUININVALID = "InvalidParameter.QcloudUinInvalid"
 
@@ -509,6 +518,9 @@ const (
 	// 搜索结果大于500条，请增加关键字。
 	INVALIDPARAMETER_RESULTMORETHAN500 = "InvalidParameter.ResultMoreThan500"
 
+	// 已经存在此共享记录。
+	INVALIDPARAMETER_SHAREUSEREXISTS = "InvalidParameter.ShareUserExists"
+
 	// 共享用户中包含未实名认证用户。
 	INVALIDPARAMETER_SHAREDUSERSUNREALNAME = "InvalidParameter.SharedUsersUnrealName"
 
@@ -535,6 +547,9 @@ const (
 
 	// 域名无效。
 	INVALIDPARAMETER_TOOLSDOMAININVALID = "InvalidParameter.ToolsDomainInvalid"
+
+	// 域名未注册。
+	INVALIDPARAMETER_TOOLSDOMAINNOTREGED = "InvalidParameter.ToolsDomainNotReged"
 
 	// 您要过户到的账号已被系统封禁，如果您有任何疑问请与我们联系。
 	INVALIDPARAMETER_TRANSFERACCOUNTISBANNED = "InvalidParameter.TransferAccountIsBanned"

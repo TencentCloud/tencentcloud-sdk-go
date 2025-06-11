@@ -609,7 +609,7 @@ type DescribeDeviceHardwareInfoListRequestParams struct {
 	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
 	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
 
-	// 过滤条件参数（字段含义请参考接口返回值） - Name, 类型String，支持操作：【eq，like，ilike】，支持排序 - UserName, 类型String，支持操作：【eq，like，ilike】，支持排序 - IoaUserName，类型String，支持操作：【eq，like，ilike】，支持排序 - MacAddr, 类型String，支持操作：【eq，like，ilike】，支持排序 - Ip, 类型String，支持操作：【eq，like，ilike】，支持排序 ，支持排序分页参数- PageNum 从1开始，小于等于0时使用默认参数- PageSize 最大值5000，最好不超过100
+	// 过滤条件参数（字段含义请参考接口返回值）  - Name, 类型String，支持操作：【eq，like，ilike】，支持排序  - UserName, 类型String，支持操作：【eq，like，ilike】，支持排序  - IoaUserName，类型String，支持操作：【eq，like，ilike】，支持排序  - MacAddr, 类型String，支持操作：【eq，like，ilike】，支持排序  - Ip, 类型String，支持操作：【eq，like，ilike】，支持排序  - Mid, 类型String，支持操作：【eq，like，ilike】，支持排序  ，支持排序分页参数  - PageNum 从1开始，小于等于0时使用默认参数 - PageSize 最大值5000，最好不超过100
 	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
 }
 
@@ -625,7 +625,7 @@ type DescribeDeviceHardwareInfoListRequest struct {
 	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
 	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
 
-	// 过滤条件参数（字段含义请参考接口返回值） - Name, 类型String，支持操作：【eq，like，ilike】，支持排序 - UserName, 类型String，支持操作：【eq，like，ilike】，支持排序 - IoaUserName，类型String，支持操作：【eq，like，ilike】，支持排序 - MacAddr, 类型String，支持操作：【eq，like，ilike】，支持排序 - Ip, 类型String，支持操作：【eq，like，ilike】，支持排序 ，支持排序分页参数- PageNum 从1开始，小于等于0时使用默认参数- PageSize 最大值5000，最好不超过100
+	// 过滤条件参数（字段含义请参考接口返回值）  - Name, 类型String，支持操作：【eq，like，ilike】，支持排序  - UserName, 类型String，支持操作：【eq，like，ilike】，支持排序  - IoaUserName，类型String，支持操作：【eq，like，ilike】，支持排序  - MacAddr, 类型String，支持操作：【eq，like，ilike】，支持排序  - Ip, 类型String，支持操作：【eq，like，ilike】，支持排序  - Mid, 类型String，支持操作：【eq，like，ilike】，支持排序  ，支持排序分页参数  - PageNum 从1开始，小于等于0时使用默认参数 - PageSize 最大值5000，最好不超过100
 	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
 }
 
@@ -1294,6 +1294,80 @@ func (r *DescribeSoftCensusListByDeviceResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeSoftwareInformationPageData struct {
+	// 软件详情响应对象集合
+	Items []*SoftwareInformationData `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 分页公共对象
+	Page *Paging `json:"Page,omitnil,omitempty" name:"Page"`
+}
+
+// Predefined struct for user
+type DescribeSoftwareInformationRequestParams struct {
+	// 终端唯一标识Mid
+	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+
+	// 过滤条件、分页参数
+	// <li>Name - String - 过滤支持：是 - 操作符:eq,like - 排序支持：是 。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+}
+
+type DescribeSoftwareInformationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 终端唯一标识Mid
+	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+
+	// 过滤条件、分页参数
+	// <li>Name - String - 过滤支持：是 - 操作符:eq,like - 排序支持：是 。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+}
+
+func (r *DescribeSoftwareInformationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSoftwareInformationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Mid")
+	delete(f, "Condition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSoftwareInformationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSoftwareInformationResponseParams struct {
+	// 业务响应数据
+	Data *DescribeSoftwareInformationPageData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSoftwareInformationResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSoftwareInformationResponseParams `json:"Response"`
+}
+
+func (r *DescribeSoftwareInformationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSoftwareInformationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DeviceDetail struct {
 	// 设备ID
 	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -1539,6 +1613,32 @@ type SimpleRule struct {
 
 	// 表达式间逻辑关系
 	Relation *string `json:"Relation,omitnil,omitempty" name:"Relation"`
+}
+
+type SoftwareInformationData struct {
+	// 软件名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 安装时间
+	InstallDate *string `json:"InstallDate,omitnil,omitempty" name:"InstallDate"`
+
+	// 软件列表id(只支持32位)
+	SoftwareId *int64 `json:"SoftwareId,omitnil,omitempty" name:"SoftwareId"`
+
+	// 唯一标识Mid
+	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+
+	// 软件版本
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 公司名
+	CorpName *string `json:"CorpName,omitnil,omitempty" name:"CorpName"`
+
+	// 列表Id(只支持32位)
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 盗版风险（0:未支持，1:风险，2:未发现，3:未开启）
+	PiracyRisk *int64 `json:"PiracyRisk,omitnil,omitempty" name:"PiracyRisk"`
 }
 
 type Sort struct {

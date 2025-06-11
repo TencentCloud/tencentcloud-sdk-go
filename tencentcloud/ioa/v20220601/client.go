@@ -624,3 +624,54 @@ func (c *Client) DescribeSoftCensusListByDeviceWithContext(ctx context.Context, 
     err = c.Send(request, response)
     return
 }
+
+func NewDescribeSoftwareInformationRequest() (request *DescribeSoftwareInformationRequest) {
+    request = &DescribeSoftwareInformationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeSoftwareInformation")
+    
+    
+    return
+}
+
+func NewDescribeSoftwareInformationResponse() (response *DescribeSoftwareInformationResponse) {
+    response = &DescribeSoftwareInformationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSoftwareInformation
+// 查看指定终端的软件详情列表,私有化调用path为：capi/Software/DescribeSoftwareInformation
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) DescribeSoftwareInformation(request *DescribeSoftwareInformationRequest) (response *DescribeSoftwareInformationResponse, err error) {
+    return c.DescribeSoftwareInformationWithContext(context.Background(), request)
+}
+
+// DescribeSoftwareInformation
+// 查看指定终端的软件详情列表,私有化调用path为：capi/Software/DescribeSoftwareInformation
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) DescribeSoftwareInformationWithContext(ctx context.Context, request *DescribeSoftwareInformationRequest) (response *DescribeSoftwareInformationResponse, err error) {
+    if request == nil {
+        request = NewDescribeSoftwareInformationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSoftwareInformation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSoftwareInformationResponse()
+    err = c.Send(request, response)
+    return
+}

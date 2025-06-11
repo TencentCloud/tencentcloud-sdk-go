@@ -1373,6 +1373,9 @@ type CreateListenerRequestParams struct {
 	// 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。取值范围：共享型实例和独占型实例支持：300-900，性能容量型实例支持：300-1980。如需设置请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)。
 	IdleConnectTimeout *int64 `json:"IdleConnectTimeout,omitnil,omitempty" name:"IdleConnectTimeout"`
 
+	// TCP_SSL和QUIC是否支持PP
+	ProxyProtocol *bool `json:"ProxyProtocol,omitnil,omitempty" name:"ProxyProtocol"`
+
 	// 是否开启SNAT，True（开启）、False（关闭）。
 	// 默认为关闭。
 	SnatEnable *bool `json:"SnatEnable,omitnil,omitempty" name:"SnatEnable"`
@@ -1456,6 +1459,9 @@ type CreateListenerRequest struct {
 	// 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。取值范围：共享型实例和独占型实例支持：300-900，性能容量型实例支持：300-1980。如需设置请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)。
 	IdleConnectTimeout *int64 `json:"IdleConnectTimeout,omitnil,omitempty" name:"IdleConnectTimeout"`
 
+	// TCP_SSL和QUIC是否支持PP
+	ProxyProtocol *bool `json:"ProxyProtocol,omitnil,omitempty" name:"ProxyProtocol"`
+
 	// 是否开启SNAT，True（开启）、False（关闭）。
 	// 默认为关闭。
 	SnatEnable *bool `json:"SnatEnable,omitnil,omitempty" name:"SnatEnable"`
@@ -1505,6 +1511,7 @@ func (r *CreateListenerRequest) FromJsonString(s string) error {
 	delete(f, "MaxConn")
 	delete(f, "MaxCps")
 	delete(f, "IdleConnectTimeout")
+	delete(f, "ProxyProtocol")
 	delete(f, "SnatEnable")
 	delete(f, "FullEndPorts")
 	delete(f, "H2cSwitch")
@@ -7498,6 +7505,9 @@ type ModifyListenerRequestParams struct {
 	// 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。默认值：900，取值范围：共享型实例和独占型实例支持：300～900，性能容量型实例支持：300~1980。如需设置超过2000s，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category),最大可设置到3600s。
 	IdleConnectTimeout *int64 `json:"IdleConnectTimeout,omitnil,omitempty" name:"IdleConnectTimeout"`
 
+	// TCP_SSL和QUIC是否支持PP
+	ProxyProtocol *bool `json:"ProxyProtocol,omitnil,omitempty" name:"ProxyProtocol"`
+
 	// 是否开启SNAT， True 表示开启 SNAT，False 表示不开启 SNAT。
 	// 不传则表示不修改。
 	SnatEnable *bool `json:"SnatEnable,omitnil,omitempty" name:"SnatEnable"`
@@ -7567,6 +7577,9 @@ type ModifyListenerRequest struct {
 	// 空闲连接超时时间，此参数仅适用于TCP监听器，单位：秒。默认值：900，取值范围：共享型实例和独占型实例支持：300～900，性能容量型实例支持：300~1980。如需设置超过2000s，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category),最大可设置到3600s。
 	IdleConnectTimeout *int64 `json:"IdleConnectTimeout,omitnil,omitempty" name:"IdleConnectTimeout"`
 
+	// TCP_SSL和QUIC是否支持PP
+	ProxyProtocol *bool `json:"ProxyProtocol,omitnil,omitempty" name:"ProxyProtocol"`
+
 	// 是否开启SNAT， True 表示开启 SNAT，False 表示不开启 SNAT。
 	// 不传则表示不修改。
 	SnatEnable *bool `json:"SnatEnable,omitnil,omitempty" name:"SnatEnable"`
@@ -7603,6 +7616,7 @@ func (r *ModifyListenerRequest) FromJsonString(s string) error {
 	delete(f, "MaxConn")
 	delete(f, "MaxCps")
 	delete(f, "IdleConnectTimeout")
+	delete(f, "ProxyProtocol")
 	delete(f, "SnatEnable")
 	delete(f, "DataCompressMode")
 	if len(f) > 0 {

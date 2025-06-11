@@ -950,6 +950,9 @@ type KnowledgeSet struct {
 
 	// 知识库的meta信息
 	Meta *string `json:"Meta,omitnil,omitempty" name:"Meta"`
+
+	// 知识库容量,单位字节
+	TotalSize *string `json:"TotalSize,omitnil,omitempty" name:"TotalSize"`
 }
 
 type KnowledgeSetRsp struct {
@@ -1098,6 +1101,9 @@ type SearchDocInfo struct {
 
 	// 文档大小
 	FileSize *uint64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+
+	// Cos存储文件ID
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 }
 
 // Predefined struct for user
@@ -1325,6 +1331,9 @@ type UploadKnowledgeDocumentSetRequestParams struct {
 
 	// 使用 regex 分割文档
 	Delimiter *string `json:"Delimiter,omitnil,omitempty" name:"Delimiter"`
+
+	// Cos存储文件ID
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 }
 
 type UploadKnowledgeDocumentSetRequest struct {
@@ -1359,6 +1368,9 @@ type UploadKnowledgeDocumentSetRequest struct {
 
 	// 使用 regex 分割文档
 	Delimiter *string `json:"Delimiter,omitnil,omitempty" name:"Delimiter"`
+
+	// Cos存储文件ID
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 }
 
 func (r *UploadKnowledgeDocumentSetRequest) ToJsonString() string {
@@ -1383,6 +1395,7 @@ func (r *UploadKnowledgeDocumentSetRequest) FromJsonString(s string) error {
 	delete(f, "FileMetaData")
 	delete(f, "DocumentSetId")
 	delete(f, "Delimiter")
+	delete(f, "FileId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadKnowledgeDocumentSetRequest has unknown keys!", "")
 	}
@@ -1416,6 +1429,8 @@ func (r *UploadKnowledgeDocumentSetResponse) FromJsonString(s string) error {
 
 type UploadKnowledgeDocumentSetRsp struct {
 	// 给文件分配的 ID 信息。
+	//
+	// Deprecated: DocumentSetId is deprecated.
 	DocumentSetId *string `json:"DocumentSetId,omitnil,omitempty" name:"DocumentSetId"`
 
 	// 文件名
@@ -1426,4 +1441,7 @@ type UploadKnowledgeDocumentSetRsp struct {
 
 	// 文件元信息，为jsonstring
 	FileMetaData *string `json:"FileMetaData,omitnil,omitempty" name:"FileMetaData"`
+
+	// Cos存储文件ID
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 }
