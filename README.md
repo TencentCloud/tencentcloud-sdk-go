@@ -630,7 +630,7 @@ func main() {
 在使用 GO SDK 请求腾讯云 API 时, 若您遇到该错误 `Code=ClientError.NetworkError, Message=Fail to get response because Post "https://xxx.tencentcloudapi.com/": EOF"`, 可参考以下文档
 
 ### 问题原因
-该问题与腾讯云API server 的长连接超时机制 `keepalive_timeout: 60s` 有关, 如果服务器触发 KeepAlive 60 秒超时并关闭连接, 但 TCP 关闭包尚未到达客户端, 此时在该连接上尝试发送请求将导致该错误.
+该问题与腾讯云API server 的长连接超时机制(keepalive)有关, 如果服务器触发 KeepAlive 超时并关闭连接, 但 TCP 关闭包尚未到达客户端, 此时在该连接上尝试发送请求将导致该错误.
 
 ### 解决方法
 通过启用 `ClientProfile.UnsafeRetryOnConnectionFailure`, 在连接关闭时自动重试, 从而避免错误. 请确保请求具备幂等性(如只读接口)，以避免因重试导致的非预期结果.
