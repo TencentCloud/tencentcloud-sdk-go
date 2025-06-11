@@ -545,7 +545,7 @@ func NewCreateAndroidInstanceLabelResponse() (response *CreateAndroidInstanceLab
 }
 
 // CreateAndroidInstanceLabel
-// 创建安卓实例
+// 创建安卓实例标签
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -560,7 +560,7 @@ func (c *Client) CreateAndroidInstanceLabel(request *CreateAndroidInstanceLabelR
 }
 
 // CreateAndroidInstanceLabel
-// 创建安卓实例
+// 创建安卓实例标签
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1133,7 +1133,7 @@ func NewDeleteAndroidInstanceLabelResponse() (response *DeleteAndroidInstanceLab
 }
 
 // DeleteAndroidInstanceLabel
-// 创建安卓实例
+// 删除安卓实例标签
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1148,7 +1148,7 @@ func (c *Client) DeleteAndroidInstanceLabel(request *DeleteAndroidInstanceLabelR
 }
 
 // DeleteAndroidInstanceLabel
-// 创建安卓实例
+// 删除安卓实例标签
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1365,7 +1365,7 @@ func NewDescribeAndroidInstanceLabelsResponse() (response *DescribeAndroidInstan
 }
 
 // DescribeAndroidInstanceLabels
-// 创建安卓实例
+// 查询安卓实例标签
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1380,7 +1380,7 @@ func (c *Client) DescribeAndroidInstanceLabels(request *DescribeAndroidInstanceL
 }
 
 // DescribeAndroidInstanceLabels
-// 创建安卓实例
+// 查询安卓实例标签
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1862,6 +1862,65 @@ func (c *Client) DistributeFileToAndroidInstancesWithContext(ctx context.Context
     return
 }
 
+func NewDistributePhotoToAndroidInstancesRequest() (request *DistributePhotoToAndroidInstancesRequest) {
+    request = &DistributePhotoToAndroidInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "DistributePhotoToAndroidInstances")
+    
+    
+    return
+}
+
+func NewDistributePhotoToAndroidInstancesResponse() (response *DistributePhotoToAndroidInstancesResponse) {
+    response = &DistributePhotoToAndroidInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DistributePhotoToAndroidInstances
+// 将一张照片批量分发到多个实例的相册中，一次接口调用触发一次照片分发，一次照片分发只会从公网下载一次，然后照片会走内网分发到实例列表中的实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DistributePhotoToAndroidInstances(request *DistributePhotoToAndroidInstancesRequest) (response *DistributePhotoToAndroidInstancesResponse, err error) {
+    return c.DistributePhotoToAndroidInstancesWithContext(context.Background(), request)
+}
+
+// DistributePhotoToAndroidInstances
+// 将一张照片批量分发到多个实例的相册中，一次接口调用触发一次照片分发，一次照片分发只会从公网下载一次，然后照片会走内网分发到实例列表中的实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DistributePhotoToAndroidInstancesWithContext(ctx context.Context, request *DistributePhotoToAndroidInstancesRequest) (response *DistributePhotoToAndroidInstancesResponse, err error) {
+    if request == nil {
+        request = NewDistributePhotoToAndroidInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DistributePhotoToAndroidInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDistributePhotoToAndroidInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEnableAndroidInstancesAppRequest() (request *EnableAndroidInstancesAppRequest) {
     request = &EnableAndroidInstancesAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2181,7 +2240,7 @@ func NewInstallAndroidInstancesAppWithURLResponse() (response *InstallAndroidIns
 }
 
 // InstallAndroidInstancesAppWithURL
-// 安装安卓实例应用
+// 通过 URL 安装安卓实例应用
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2196,7 +2255,7 @@ func (c *Client) InstallAndroidInstancesAppWithURL(request *InstallAndroidInstan
 }
 
 // InstallAndroidInstancesAppWithURL
-// 安装安卓实例应用
+// 通过 URL 安装安卓实例应用
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2574,7 +2633,7 @@ func NewModifyAndroidInstancesLabelsResponse() (response *ModifyAndroidInstances
 }
 
 // ModifyAndroidInstancesLabels
-// 修改安卓实例分辨率。需要注意的是该接口可能导致正在运行的应用出现闪退，所以建议在实例维护时期才进行调用。
+// 批量修改安卓实例的标签
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2584,7 +2643,7 @@ func (c *Client) ModifyAndroidInstancesLabels(request *ModifyAndroidInstancesLab
 }
 
 // ModifyAndroidInstancesLabels
-// 修改安卓实例分辨率。需要注意的是该接口可能导致正在运行的应用出现闪退，所以建议在实例维护时期才进行调用。
+// 批量修改安卓实例的标签
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -3022,7 +3081,7 @@ func NewRestartAndroidInstancesAppResponse() (response *RestartAndroidInstancesA
 }
 
 // RestartAndroidInstancesApp
-// 启动安卓实例应用
+// 重启安卓实例应用
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3037,7 +3096,7 @@ func (c *Client) RestartAndroidInstancesApp(request *RestartAndroidInstancesAppR
 }
 
 // RestartAndroidInstancesApp
-// 启动安卓实例应用
+// 重启安卓实例应用
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3331,7 +3390,7 @@ func NewStartAndroidInstancesResponse() (response *StartAndroidInstancesResponse
 }
 
 // StartAndroidInstances
-// 重启安卓实例
+// 开机安卓实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3346,7 +3405,7 @@ func (c *Client) StartAndroidInstances(request *StartAndroidInstancesRequest) (r
 }
 
 // StartAndroidInstances
-// 重启安卓实例
+// 开机安卓实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3575,7 +3634,7 @@ func NewStopAndroidInstancesResponse() (response *StopAndroidInstancesResponse) 
 }
 
 // StopAndroidInstances
-// 重启安卓实例
+// 关机安卓实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3590,7 +3649,7 @@ func (c *Client) StopAndroidInstances(request *StopAndroidInstancesRequest) (res
 }
 
 // StopAndroidInstances
-// 重启安卓实例
+// 关机安卓实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

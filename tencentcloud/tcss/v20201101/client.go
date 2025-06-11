@@ -17840,6 +17840,77 @@ func (c *Client) ModifyReverseShellStatusWithContext(ctx context.Context, reques
     return
 }
 
+func NewModifyRiskDnsEventStatusRequest() (request *ModifyRiskDnsEventStatusRequest) {
+    request = &ModifyRiskDnsEventStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "ModifyRiskDnsEventStatus")
+    
+    
+    return
+}
+
+func NewModifyRiskDnsEventStatusResponse() (response *ModifyRiskDnsEventStatusResponse) {
+    response = &ModifyRiskDnsEventStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRiskDnsEventStatus
+// 编辑恶意请求事件状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRIPNOVALID = "InvalidParameter.ErrIpNoValid"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyRiskDnsEventStatus(request *ModifyRiskDnsEventStatusRequest) (response *ModifyRiskDnsEventStatusResponse, err error) {
+    return c.ModifyRiskDnsEventStatusWithContext(context.Background(), request)
+}
+
+// ModifyRiskDnsEventStatus
+// 编辑恶意请求事件状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRIPNOVALID = "InvalidParameter.ErrIpNoValid"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyRiskDnsEventStatusWithContext(ctx context.Context, request *ModifyRiskDnsEventStatusRequest) (response *ModifyRiskDnsEventStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyRiskDnsEventStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRiskDnsEventStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRiskDnsEventStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRiskSyscallStatusRequest() (request *ModifyRiskSyscallStatusRequest) {
     request = &ModifyRiskSyscallStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

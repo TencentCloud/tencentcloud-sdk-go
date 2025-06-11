@@ -8246,6 +8246,21 @@ type DevicesItem struct {
 	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
 }
 
+type DiarySHLConfig struct {
+	// 每个视频偏移时长，单位秒
+	StartOffset *uint64 `json:"StartOffset,omitnil,omitempty" name:"StartOffset"`
+
+	// 视频浓缩倍数，支持1,2,4之间
+	PlaySpeed *uint64 `json:"PlaySpeed,omitnil,omitempty" name:"PlaySpeed"`
+
+	// 单个视频最小提取时长，单位秒
+	MiniExtract *uint64 `json:"MiniExtract,omitnil,omitempty" name:"MiniExtract"`
+
+	// 每天最终输出视频时长，单位秒
+	// 注：免费版固定10s
+	OutDuration *uint64 `json:"OutDuration,omitnil,omitempty" name:"OutDuration"`
+}
+
 // Predefined struct for user
 type DirectBindDeviceInFamilyRequestParams struct {
 	// 小程序appid
@@ -11345,6 +11360,7 @@ type ModifyCloudStorageAIServiceRequestParams struct {
 	// 云存 AI 服务类型。可选值：
 	// - `RealtimeObjectDetect`：目标检测
 	// - `Highlight`：视频浓缩
+	// - `SimpleHighlight`：TrueX SimpleHighlight
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 视频分析启用状态
@@ -11355,6 +11371,9 @@ type ModifyCloudStorageAIServiceRequestParams struct {
 
 	// 视频分析配置参数
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// SimpleHighlight 算法配置参数
+	SHLConfig *DiarySHLConfig `json:"SHLConfig,omitnil,omitempty" name:"SHLConfig"`
 }
 
 type ModifyCloudStorageAIServiceRequest struct {
@@ -11369,6 +11388,7 @@ type ModifyCloudStorageAIServiceRequest struct {
 	// 云存 AI 服务类型。可选值：
 	// - `RealtimeObjectDetect`：目标检测
 	// - `Highlight`：视频浓缩
+	// - `SimpleHighlight`：TrueX SimpleHighlight
 	ServiceType *string `json:"ServiceType,omitnil,omitempty" name:"ServiceType"`
 
 	// 视频分析启用状态
@@ -11379,6 +11399,9 @@ type ModifyCloudStorageAIServiceRequest struct {
 
 	// 视频分析配置参数
 	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// SimpleHighlight 算法配置参数
+	SHLConfig *DiarySHLConfig `json:"SHLConfig,omitnil,omitempty" name:"SHLConfig"`
 }
 
 func (r *ModifyCloudStorageAIServiceRequest) ToJsonString() string {
@@ -11399,6 +11422,7 @@ func (r *ModifyCloudStorageAIServiceRequest) FromJsonString(s string) error {
 	delete(f, "Enabled")
 	delete(f, "ROI")
 	delete(f, "Config")
+	delete(f, "SHLConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudStorageAIServiceRequest has unknown keys!", "")
 	}

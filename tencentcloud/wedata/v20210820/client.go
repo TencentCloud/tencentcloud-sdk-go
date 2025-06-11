@@ -2271,6 +2271,8 @@ func NewCreateTaskNewResponse() (response *CreateTaskNewResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateTaskNew(request *CreateTaskNewRequest) (response *CreateTaskNewResponse, err error) {
     return c.CreateTaskNewWithContext(context.Background(), request)
 }
@@ -2280,6 +2282,8 @@ func (c *Client) CreateTaskNew(request *CreateTaskNewRequest) (response *CreateT
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateTaskNewWithContext(ctx context.Context, request *CreateTaskNewRequest) (response *CreateTaskNewResponse, err error) {
     if request == nil {
         request = NewCreateTaskNewRequest()
@@ -2970,6 +2974,57 @@ func (c *Client) DeleteIntegrationTaskWithContext(ctx context.Context, request *
     return
 }
 
+func NewDeleteLinkRequest() (request *DeleteLinkRequest) {
+    request = &DeleteLinkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DeleteLink")
+    
+    
+    return
+}
+
+func NewDeleteLinkResponse() (response *DeleteLinkResponse) {
+    response = &DeleteLinkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteLink
+// 删除任务连接
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
+func (c *Client) DeleteLink(request *DeleteLinkRequest) (response *DeleteLinkResponse, err error) {
+    return c.DeleteLinkWithContext(context.Background(), request)
+}
+
+// DeleteLink
+// 删除任务连接
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
+func (c *Client) DeleteLinkWithContext(ctx context.Context, request *DeleteLinkRequest) (response *DeleteLinkResponse, err error) {
+    if request == nil {
+        request = NewDeleteLinkRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLink require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLinkResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteOfflineTaskRequest() (request *DeleteOfflineTaskRequest) {
     request = &DeleteOfflineTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3145,7 +3200,7 @@ func NewDeleteResourceResponse() (response *DeleteResourceResponse) {
 }
 
 // DeleteResource
-// 资源管理删除资源
+// 资源管理删除资源。本接口已废弃，请使用接口DeleteResourceFile。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3154,7 +3209,7 @@ func (c *Client) DeleteResource(request *DeleteResourceRequest) (response *Delet
 }
 
 // DeleteResource
-// 资源管理删除资源
+// 资源管理删除资源。本接口已废弃，请使用接口DeleteResourceFile。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6820,6 +6875,63 @@ func (c *Client) DescribeOrganizationalFunctionsWithContext(ctx context.Context,
     return
 }
 
+func NewDescribeParentTaskRequest() (request *DescribeParentTaskRequest) {
+    request = &DescribeParentTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeParentTask")
+    
+    
+    return
+}
+
+func NewDescribeParentTaskResponse() (response *DescribeParentTaskResponse) {
+    response = &DescribeParentTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeParentTask
+// 查询任务父依赖
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeParentTask(request *DescribeParentTaskRequest) (response *DescribeParentTaskResponse, err error) {
+    return c.DescribeParentTaskWithContext(context.Background(), request)
+}
+
+// DescribeParentTask
+// 查询任务父依赖
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeParentTaskWithContext(ctx context.Context, request *DescribeParentTaskRequest) (response *DescribeParentTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeParentTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeParentTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeParentTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePendingSubmitTaskListRequest() (request *DescribePendingSubmitTaskListRequest) {
     request = &DescribePendingSubmitTaskListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7289,6 +7401,63 @@ func (c *Client) DescribeRealViewSchemaPageWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeRelatedTasksByTaskIdRequest() (request *DescribeRelatedTasksByTaskIdRequest) {
+    request = &DescribeRelatedTasksByTaskIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeRelatedTasksByTaskId")
+    
+    
+    return
+}
+
+func NewDescribeRelatedTasksByTaskIdResponse() (response *DescribeRelatedTasksByTaskIdResponse) {
+    response = &DescribeRelatedTasksByTaskIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeRelatedTasksByTaskId
+// 根据任务ID分页查询任务绑定监听的事件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRelatedTasksByTaskId(request *DescribeRelatedTasksByTaskIdRequest) (response *DescribeRelatedTasksByTaskIdResponse, err error) {
+    return c.DescribeRelatedTasksByTaskIdWithContext(context.Background(), request)
+}
+
+// DescribeRelatedTasksByTaskId
+// 根据任务ID分页查询任务绑定监听的事件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeRelatedTasksByTaskIdWithContext(ctx context.Context, request *DescribeRelatedTasksByTaskIdRequest) (response *DescribeRelatedTasksByTaskIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeRelatedTasksByTaskIdRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRelatedTasksByTaskId require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRelatedTasksByTaskIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeReportTaskDetailRequest() (request *DescribeReportTaskDetailRequest) {
     request = &DescribeReportTaskDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7312,7 +7481,11 @@ func NewDescribeReportTaskDetailResponse() (response *DescribeReportTaskDetailRe
 // 查询上报任务详情
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeReportTaskDetail(request *DescribeReportTaskDetailRequest) (response *DescribeReportTaskDetailResponse, err error) {
     return c.DescribeReportTaskDetailWithContext(context.Background(), request)
 }
@@ -7321,7 +7494,11 @@ func (c *Client) DescribeReportTaskDetail(request *DescribeReportTaskDetailReque
 // 查询上报任务详情
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeReportTaskDetailWithContext(ctx context.Context, request *DescribeReportTaskDetailRequest) (response *DescribeReportTaskDetailResponse, err error) {
     if request == nil {
         request = NewDescribeReportTaskDetailRequest()
@@ -7361,7 +7538,11 @@ func NewDescribeReportTaskListResponse() (response *DescribeReportTaskListRespon
 // 查询上报任务列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeReportTaskList(request *DescribeReportTaskListRequest) (response *DescribeReportTaskListResponse, err error) {
     return c.DescribeReportTaskListWithContext(context.Background(), request)
 }
@@ -7370,7 +7551,11 @@ func (c *Client) DescribeReportTaskList(request *DescribeReportTaskListRequest) 
 // 查询上报任务列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeReportTaskListWithContext(ctx context.Context, request *DescribeReportTaskListRequest) (response *DescribeReportTaskListResponse, err error) {
     if request == nil {
         request = NewDescribeReportTaskListRequest()
@@ -9555,6 +9740,61 @@ func (c *Client) DescribeTaskByStatusReportWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeTaskDetailDsRequest() (request *DescribeTaskDetailDsRequest) {
+    request = &DescribeTaskDetailDsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTaskDetailDs")
+    
+    
+    return
+}
+
+func NewDescribeTaskDetailDsResponse() (response *DescribeTaskDetailDsResponse) {
+    response = &DescribeTaskDetailDsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTaskDetailDs
+// 查询任务具体详情【新】
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeTaskDetailDs(request *DescribeTaskDetailDsRequest) (response *DescribeTaskDetailDsResponse, err error) {
+    return c.DescribeTaskDetailDsWithContext(context.Background(), request)
+}
+
+// DescribeTaskDetailDs
+// 查询任务具体详情【新】
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeTaskDetailDsWithContext(ctx context.Context, request *DescribeTaskDetailDsRequest) (response *DescribeTaskDetailDsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskDetailDsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskDetailDs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTaskDetailDsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskLineageRequest() (request *DescribeTaskLineageRequest) {
     request = &DescribeTaskLineageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9579,6 +9819,9 @@ func NewDescribeTaskLineageResponse() (response *DescribeTaskLineageResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeTaskLineage(request *DescribeTaskLineageRequest) (response *DescribeTaskLineageResponse, err error) {
     return c.DescribeTaskLineageWithContext(context.Background(), request)
 }
@@ -9588,6 +9831,9 @@ func (c *Client) DescribeTaskLineage(request *DescribeTaskLineageRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_CLIENTIPNOTAUTHORIZED = "InvalidParameter.ClientIpNotAuthorized"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeTaskLineageWithContext(ctx context.Context, request *DescribeTaskLineageRequest) (response *DescribeTaskLineageResponse, err error) {
     if request == nil {
         request = NewDescribeTaskLineageRequest()
@@ -10163,6 +10409,57 @@ func (c *Client) DescribeTrendStatWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeTrendStatResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWorkflowByFordIdsRequest() (request *DescribeWorkflowByFordIdsRequest) {
+    request = &DescribeWorkflowByFordIdsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeWorkflowByFordIds")
+    
+    
+    return
+}
+
+func NewDescribeWorkflowByFordIdsResponse() (response *DescribeWorkflowByFordIdsResponse) {
+    response = &DescribeWorkflowByFordIdsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWorkflowByFordIds
+// 根据文件夹查询工作流
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeWorkflowByFordIds(request *DescribeWorkflowByFordIdsRequest) (response *DescribeWorkflowByFordIdsResponse, err error) {
+    return c.DescribeWorkflowByFordIdsWithContext(context.Background(), request)
+}
+
+// DescribeWorkflowByFordIds
+// 根据文件夹查询工作流
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeWorkflowByFordIdsWithContext(ctx context.Context, request *DescribeWorkflowByFordIdsRequest) (response *DescribeWorkflowByFordIdsResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkflowByFordIdsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWorkflowByFordIds require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWorkflowByFordIdsResponse()
     err = c.Send(request, response)
     return
 }
@@ -12378,10 +12675,11 @@ func NewModifyTaskInfoResponse() (response *ModifyTaskInfoResponse) {
 // ModifyTaskInfo
 // <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
-// 更新任务
+// 更新任务。本接口已废弃，请使用接口ModifyTaskInfoDs。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyTaskInfo(request *ModifyTaskInfoRequest) (response *ModifyTaskInfoResponse, err error) {
     return c.ModifyTaskInfoWithContext(context.Background(), request)
 }
@@ -12389,10 +12687,11 @@ func (c *Client) ModifyTaskInfo(request *ModifyTaskInfoRequest) (response *Modif
 // ModifyTaskInfo
 // <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
-// 更新任务
+// 更新任务。本接口已废弃，请使用接口ModifyTaskInfoDs。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyTaskInfoWithContext(ctx context.Context, request *ModifyTaskInfoRequest) (response *ModifyTaskInfoResponse, err error) {
     if request == nil {
         request = NewModifyTaskInfoRequest()
@@ -12435,6 +12734,7 @@ func NewModifyTaskLinksResponse() (response *ModifyTaskLinksResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyTaskLinks(request *ModifyTaskLinksRequest) (response *ModifyTaskLinksResponse, err error) {
     return c.ModifyTaskLinksWithContext(context.Background(), request)
 }
@@ -12446,6 +12746,7 @@ func (c *Client) ModifyTaskLinks(request *ModifyTaskLinksRequest) (response *Mod
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyTaskLinksWithContext(ctx context.Context, request *ModifyTaskLinksRequest) (response *ModifyTaskLinksResponse, err error) {
     if request == nil {
         request = NewModifyTaskLinksRequest()
@@ -12811,6 +13112,57 @@ func (c *Client) RegisterDsEventWithContext(ctx context.Context, request *Regist
     return
 }
 
+func NewRegisterDsEventListenerRequest() (request *RegisterDsEventListenerRequest) {
+    request = &RegisterDsEventListenerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "RegisterDsEventListener")
+    
+    
+    return
+}
+
+func NewRegisterDsEventListenerResponse() (response *RegisterDsEventListenerResponse) {
+    response = &RegisterDsEventListenerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RegisterDsEventListener
+// 注册事件监听者
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
+func (c *Client) RegisterDsEventListener(request *RegisterDsEventListenerRequest) (response *RegisterDsEventListenerResponse, err error) {
+    return c.RegisterDsEventListenerWithContext(context.Background(), request)
+}
+
+// RegisterDsEventListener
+// 注册事件监听者
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
+func (c *Client) RegisterDsEventListenerWithContext(ctx context.Context, request *RegisterDsEventListenerRequest) (response *RegisterDsEventListenerResponse, err error) {
+    if request == nil {
+        request = NewRegisterDsEventListenerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RegisterDsEventListener require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRegisterDsEventListenerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRegisterEventRequest() (request *RegisterEventRequest) {
     request = &RegisterEventRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12886,7 +13238,7 @@ func NewRegisterEventListenerResponse() (response *RegisterEventListenerResponse
 // RegisterEventListener
 // <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
-// 注册事件监听器
+// 注册事件监听器。本接口已废弃，请使用接口RegisterDsEventListener。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -12897,7 +13249,7 @@ func (c *Client) RegisterEventListener(request *RegisterEventListenerRequest) (r
 // RegisterEventListener
 // <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
-// 注册事件监听器
+// 注册事件监听器。本接口已废弃，请使用接口RegisterDsEventListener。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

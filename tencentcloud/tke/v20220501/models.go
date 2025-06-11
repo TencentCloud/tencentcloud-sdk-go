@@ -348,6 +348,81 @@ type DataDisk struct {
 }
 
 // Predefined struct for user
+type DeleteClusterMachinesRequestParams struct {
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 节点名列表
+	MachineNames []*string `json:"MachineNames,omitnil,omitempty" name:"MachineNames"`
+
+	// 删除节点时是否缩容节点池，true为缩容
+	EnableScaleDown *bool `json:"EnableScaleDown,omitnil,omitempty" name:"EnableScaleDown"`
+
+	// 集群实例删除时的策略：terminate（销毁实例，仅支持按量计费云主机实例）retain（仅移除，保留实例）
+	InstanceDeleteMode *string `json:"InstanceDeleteMode,omitnil,omitempty" name:"InstanceDeleteMode"`
+}
+
+type DeleteClusterMachinesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 节点名列表
+	MachineNames []*string `json:"MachineNames,omitnil,omitempty" name:"MachineNames"`
+
+	// 删除节点时是否缩容节点池，true为缩容
+	EnableScaleDown *bool `json:"EnableScaleDown,omitnil,omitempty" name:"EnableScaleDown"`
+
+	// 集群实例删除时的策略：terminate（销毁实例，仅支持按量计费云主机实例）retain（仅移除，保留实例）
+	InstanceDeleteMode *string `json:"InstanceDeleteMode,omitnil,omitempty" name:"InstanceDeleteMode"`
+}
+
+func (r *DeleteClusterMachinesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteClusterMachinesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "MachineNames")
+	delete(f, "EnableScaleDown")
+	delete(f, "InstanceDeleteMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteClusterMachinesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteClusterMachinesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteClusterMachinesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteClusterMachinesResponseParams `json:"Response"`
+}
+
+func (r *DeleteClusterMachinesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteClusterMachinesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteHealthCheckPolicyRequestParams struct {
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`

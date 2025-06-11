@@ -234,6 +234,15 @@ type ApiVarAttrInfo struct {
 	AttrBizId *string `json:"AttrBizId,omitnil,omitempty" name:"AttrBizId"`
 }
 
+type AppBaseInfo struct {
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 应用名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+}
+
 type AppConfig struct {
 	// 知识问答管理应用配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -435,6 +444,14 @@ type AttributeLabel struct {
 	// 同义词名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SimilarLabels []*string `json:"SimilarLabels,omitnil,omitempty" name:"SimilarLabels"`
+}
+
+type AttributeLabelRefByWorkflow struct {
+	// 标签值id
+	AttributeLabelBizId *string `json:"AttributeLabelBizId,omitnil,omitempty" name:"AttributeLabelBizId"`
+
+	// 标签值引用的工作流列表
+	WorkflowList []*WorkflowRef `json:"WorkflowList,omitnil,omitempty" name:"WorkflowList"`
 }
 
 type BaseConfig struct {
@@ -692,6 +709,10 @@ type CheckAttributeLabelReferResponseParams struct {
 	// 是否引用
 	IsRefer *bool `json:"IsRefer,omitnil,omitempty" name:"IsRefer"`
 
+	// 引用的工作流详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*AttributeLabelRefByWorkflow `json:"List,omitnil,omitempty" name:"List"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -866,6 +887,9 @@ type CreateAppRequestParams struct {
 
 	// 应用基础配置
 	BaseConfig *BaseConfig `json:"BaseConfig,omitnil,omitempty" name:"BaseConfig"`
+
+	// 应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
 }
 
 type CreateAppRequest struct {
@@ -876,6 +900,9 @@ type CreateAppRequest struct {
 
 	// 应用基础配置
 	BaseConfig *BaseConfig `json:"BaseConfig,omitnil,omitempty" name:"BaseConfig"`
+
+	// 应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
 }
 
 func (r *CreateAppRequest) ToJsonString() string {
@@ -892,6 +919,7 @@ func (r *CreateAppRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AppType")
 	delete(f, "BaseConfig")
+	delete(f, "Pattern")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAppRequest has unknown keys!", "")
 	}
@@ -1536,6 +1564,77 @@ func (r *CreateReleaseResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateSharedKnowledgeRequestParams struct {
+	// 共享知识库名称，字符数量范围：[1, 50]
+	KnowledgeName *string `json:"KnowledgeName,omitnil,omitempty" name:"KnowledgeName"`
+
+	// 共享知识库描述，字符数量上限2000
+	KnowledgeDescription *string `json:"KnowledgeDescription,omitnil,omitempty" name:"KnowledgeDescription"`
+
+	// Embedding模型，字符数量上限128
+	EmbeddingModel *string `json:"EmbeddingModel,omitnil,omitempty" name:"EmbeddingModel"`
+}
+
+type CreateSharedKnowledgeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享知识库名称，字符数量范围：[1, 50]
+	KnowledgeName *string `json:"KnowledgeName,omitnil,omitempty" name:"KnowledgeName"`
+
+	// 共享知识库描述，字符数量上限2000
+	KnowledgeDescription *string `json:"KnowledgeDescription,omitnil,omitempty" name:"KnowledgeDescription"`
+
+	// Embedding模型，字符数量上限128
+	EmbeddingModel *string `json:"EmbeddingModel,omitnil,omitempty" name:"EmbeddingModel"`
+}
+
+func (r *CreateSharedKnowledgeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSharedKnowledgeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KnowledgeName")
+	delete(f, "KnowledgeDescription")
+	delete(f, "EmbeddingModel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSharedKnowledgeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSharedKnowledgeResponseParams struct {
+	// 共享知识库业务ID
+	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateSharedKnowledgeResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSharedKnowledgeResponseParams `json:"Response"`
+}
+
+func (r *CreateSharedKnowledgeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSharedKnowledgeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateVarRequestParams struct {
 	// 应用ID
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
@@ -1548,6 +1647,12 @@ type CreateVarRequestParams struct {
 
 	// 变量类型定义，支持类型如下：(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO);传输过程是json字符串，标签中仅支持"STRING"类型使用
 	VarType *string `json:"VarType,omitnil,omitempty" name:"VarType"`
+
+	// 自定义变量默认值
+	VarDefaultValue *string `json:"VarDefaultValue,omitnil,omitempty" name:"VarDefaultValue"`
+
+	// 自定义变量文件默认名称
+	VarDefaultFileName *string `json:"VarDefaultFileName,omitnil,omitempty" name:"VarDefaultFileName"`
 }
 
 type CreateVarRequest struct {
@@ -1564,6 +1669,12 @@ type CreateVarRequest struct {
 
 	// 变量类型定义，支持类型如下：(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO);传输过程是json字符串，标签中仅支持"STRING"类型使用
 	VarType *string `json:"VarType,omitnil,omitempty" name:"VarType"`
+
+	// 自定义变量默认值
+	VarDefaultValue *string `json:"VarDefaultValue,omitnil,omitempty" name:"VarDefaultValue"`
+
+	// 自定义变量文件默认名称
+	VarDefaultFileName *string `json:"VarDefaultFileName,omitnil,omitempty" name:"VarDefaultFileName"`
 }
 
 func (r *CreateVarRequest) ToJsonString() string {
@@ -1582,6 +1693,8 @@ func (r *CreateVarRequest) FromJsonString(s string) error {
 	delete(f, "VarName")
 	delete(f, "VarDesc")
 	delete(f, "VarType")
+	delete(f, "VarDefaultValue")
+	delete(f, "VarDefaultFileName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVarRequest has unknown keys!", "")
 	}
@@ -2077,6 +2190,63 @@ func (r *DeleteRejectedQuestionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteSharedKnowledgeRequestParams struct {
+	// 共享知识库业务ID
+	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
+}
+
+type DeleteSharedKnowledgeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享知识库业务ID
+	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
+}
+
+func (r *DeleteSharedKnowledgeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSharedKnowledgeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KnowledgeBizId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSharedKnowledgeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSharedKnowledgeResponseParams struct {
+	// 共享知识库业务ID
+	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteSharedKnowledgeResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSharedKnowledgeResponseParams `json:"Response"`
+}
+
+func (r *DeleteSharedKnowledgeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSharedKnowledgeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAppRequestParams struct {
 	// 应用ID
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
@@ -2329,6 +2499,9 @@ type DescribeCallStatsGraphRequestParams struct {
 
 	// 筛选子场景(文档解析场景使用)
 	SubScenes []*string `json:"SubScenes,omitnil,omitempty" name:"SubScenes"`
+
+	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
+	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 }
 
 type DescribeCallStatsGraphRequest struct {
@@ -2360,6 +2533,9 @@ type DescribeCallStatsGraphRequest struct {
 
 	// 筛选子场景(文档解析场景使用)
 	SubScenes []*string `json:"SubScenes,omitnil,omitempty" name:"SubScenes"`
+
+	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
+	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 }
 
 func (r *DescribeCallStatsGraphRequest) ToJsonString() string {
@@ -2383,6 +2559,7 @@ func (r *DescribeCallStatsGraphRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "AppBizIds")
 	delete(f, "SubScenes")
+	delete(f, "AppType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCallStatsGraphRequest has unknown keys!", "")
 	}
@@ -2796,6 +2973,9 @@ type DescribeDocResponseParams struct {
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
 
+	// 文档是否停用，false:未停用，true:已停用
+	IsDisabled *bool `json:"IsDisabled,omitnil,omitempty" name:"IsDisabled"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3063,6 +3243,9 @@ type DescribeQAResponseParams struct {
 
 	// 问题描述
 	QuestionDesc *string `json:"QuestionDesc,omitnil,omitempty" name:"QuestionDesc"`
+
+	// 问答是否停用，false:未停用，true已停用
+	IsDisabled *bool `json:"IsDisabled,omitnil,omitempty" name:"IsDisabled"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -3531,6 +3714,64 @@ func (r *DescribeSegmentsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSharedKnowledgeRequestParams struct {
+	// 共享知识库业务ID
+	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
+}
+
+type DescribeSharedKnowledgeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享知识库业务ID
+	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
+}
+
+func (r *DescribeSharedKnowledgeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSharedKnowledgeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KnowledgeBizId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSharedKnowledgeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSharedKnowledgeResponseParams struct {
+	// 知识库列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Info *KnowledgeDetailInfo `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSharedKnowledgeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSharedKnowledgeResponseParams `json:"Response"`
+}
+
+func (r *DescribeSharedKnowledgeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSharedKnowledgeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeStorageCredentialRequestParams struct {
 	// 应用ID，参数非必填不代表不需要填写，下面不同的参数组合会获取到不同的权限，具体请参考 https://cloud.tencent.com/document/product/1759/116238
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
@@ -3654,6 +3895,9 @@ type DescribeTokenUsageGraphRequestParams struct {
 
 	// 应用id列表
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+
+	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
+	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 }
 
 type DescribeTokenUsageGraphRequest struct {
@@ -3676,6 +3920,9 @@ type DescribeTokenUsageGraphRequest struct {
 
 	// 应用id列表
 	AppBizIds []*string `json:"AppBizIds,omitnil,omitempty" name:"AppBizIds"`
+
+	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
+	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 }
 
 func (r *DescribeTokenUsageGraphRequest) ToJsonString() string {
@@ -3696,6 +3943,7 @@ func (r *DescribeTokenUsageGraphRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "AppBizIds")
+	delete(f, "AppType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTokenUsageGraphRequest has unknown keys!", "")
 	}
@@ -3761,6 +4009,9 @@ type DescribeTokenUsageRequestParams struct {
 
 	// 筛选子场景(文档解析场景使用)
 	SubScenes []*string `json:"SubScenes,omitnil,omitempty" name:"SubScenes"`
+
+	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
+	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 }
 
 type DescribeTokenUsageRequest struct {
@@ -3792,6 +4043,9 @@ type DescribeTokenUsageRequest struct {
 
 	// 筛选子场景(文档解析场景使用)
 	SubScenes []*string `json:"SubScenes,omitnil,omitempty" name:"SubScenes"`
+
+	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
+	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 }
 
 func (r *DescribeTokenUsageRequest) ToJsonString() string {
@@ -3815,6 +4069,7 @@ func (r *DescribeTokenUsageRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "AppBizIds")
 	delete(f, "SubScenes")
+	delete(f, "AppType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTokenUsageRequest has unknown keys!", "")
 	}
@@ -3958,6 +4213,9 @@ type DigitalHumanConfig struct {
 
 	// 图像
 	Avatar *string `json:"Avatar,omitnil,omitempty" name:"Avatar"`
+
+	// 预览图
+	PreviewUrl *string `json:"PreviewUrl,omitnil,omitempty" name:"PreviewUrl"`
 }
 
 type DocFilterFlag struct {
@@ -5757,6 +6015,30 @@ func (r *IsTransferIntentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type KnowledgeBaseInfo struct {
+	// 共享知识库业务ID
+	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
+
+	// 共享知识库名称
+	KnowledgeName *string `json:"KnowledgeName,omitnil,omitempty" name:"KnowledgeName"`
+
+	// 共享知识库描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KnowledgeDescription *string `json:"KnowledgeDescription,omitnil,omitempty" name:"KnowledgeDescription"`
+
+	// Embedding模型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmbeddingModel *string `json:"EmbeddingModel,omitnil,omitempty" name:"EmbeddingModel"`
+
+	// 问答提取模型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QaExtractModel *string `json:"QaExtractModel,omitnil,omitempty" name:"QaExtractModel"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
 type KnowledgeCapacityPieGraphDetail struct {
 	// 当前应用名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5787,6 +6069,20 @@ type KnowledgeDetail struct {
 	// 超量字符数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExceedCharSize *string `json:"ExceedCharSize,omitnil,omitempty" name:"ExceedCharSize"`
+}
+
+type KnowledgeDetailInfo struct {
+	// 知识库信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Knowledge *KnowledgeBaseInfo `json:"Knowledge,omitnil,omitempty" name:"Knowledge"`
+
+	// 应用列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppList []*AppBaseInfo `json:"AppList,omitnil,omitempty" name:"AppList"`
+
+	// 用户信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *UserBaseInfo `json:"User,omitnil,omitempty" name:"User"`
 }
 
 type KnowledgeQaConfig struct {
@@ -5861,6 +6157,9 @@ type KnowledgeQaConfig struct {
 	// 配置语音通话参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiCall *AICallConfig `json:"AiCall,omitnil,omitempty" name:"AiCall"`
+
+	// 共享知识库关联配置
+	ShareKnowledgeBases []*ShareKnowledgeBase `json:"ShareKnowledgeBases,omitnil,omitempty" name:"ShareKnowledgeBases"`
 }
 
 type KnowledgeQaOutput struct {
@@ -5921,7 +6220,7 @@ type KnowledgeQaPlugin struct {
 }
 
 type KnowledgeQaSearch struct {
-	// 知识来源 doc：文档，qa：问答  taskflow：业务流程，search：搜索增强
+	// 知识来源 doc：文档，qa：问答  taskflow：业务流程，search：搜索增强，database:数据库
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
@@ -5986,6 +6285,23 @@ type KnowledgeSummary struct {
 	// 知识内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+type KnowledgeUpdateInfo struct {
+	// 共享知识库名称
+	KnowledgeName *string `json:"KnowledgeName,omitnil,omitempty" name:"KnowledgeName"`
+
+	// 共享知识库描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KnowledgeDescription *string `json:"KnowledgeDescription,omitnil,omitempty" name:"KnowledgeDescription"`
+
+	// Embedding模型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmbeddingModel *string `json:"EmbeddingModel,omitnil,omitempty" name:"EmbeddingModel"`
+
+	// 问答提取模型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QaExtractModel *string `json:"QaExtractModel,omitnil,omitempty" name:"QaExtractModel"`
 }
 
 type KnowledgeWorkflow struct {
@@ -6531,6 +6847,9 @@ type ListDocItem struct {
 
 	// 文档的属性标记，0: 不做用户外部权限校验
 	AttributeFlags []*uint64 `json:"AttributeFlags,omitnil,omitempty" name:"AttributeFlags"`
+
+	// false:未停用，ture:已停用
+	IsDisabled *bool `json:"IsDisabled,omitnil,omitempty" name:"IsDisabled"`
 }
 
 // Predefined struct for user
@@ -6545,6 +6864,8 @@ type ListDocRequestParams struct {
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 查询内容
+	// 
+	// 输入特定标识 lke:system:untagged  将查询所有未关联标签的文档
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功  7-审核中  8-审核失败 9-审核成功  10-待发布  11-发布中  12-已发布  13-学习中  14-学习失败  15-更新中  16-更新失败  17-解析中  18-解析失败  19-导入失败   20-已过期 21-超量失效 22-超量失效恢复
@@ -6561,6 +6882,9 @@ type ListDocRequestParams struct {
 
 	// 文档列表筛选标识位
 	FilterFlag []*DocFilterFlag `json:"FilterFlag,omitnil,omitempty" name:"FilterFlag"`
+
+	// 是否只展示当前分类的数据 0不是，1是
+	ShowCurrCate *uint64 `json:"ShowCurrCate,omitnil,omitempty" name:"ShowCurrCate"`
 }
 
 type ListDocRequest struct {
@@ -6576,6 +6900,8 @@ type ListDocRequest struct {
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 查询内容
+	// 
+	// 输入特定标识 lke:system:untagged  将查询所有未关联标签的文档
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功  7-审核中  8-审核失败 9-审核成功  10-待发布  11-发布中  12-已发布  13-学习中  14-学习失败  15-更新中  16-更新失败  17-解析中  18-解析失败  19-导入失败   20-已过期 21-超量失效 22-超量失效恢复
@@ -6592,6 +6918,9 @@ type ListDocRequest struct {
 
 	// 文档列表筛选标识位
 	FilterFlag []*DocFilterFlag `json:"FilterFlag,omitnil,omitempty" name:"FilterFlag"`
+
+	// 是否只展示当前分类的数据 0不是，1是
+	ShowCurrCate *uint64 `json:"ShowCurrCate,omitnil,omitempty" name:"ShowCurrCate"`
 }
 
 func (r *ListDocRequest) ToJsonString() string {
@@ -6615,6 +6944,7 @@ func (r *ListDocRequest) FromJsonString(s string) error {
 	delete(f, "CateBizId")
 	delete(f, "FileTypes")
 	delete(f, "FilterFlag")
+	delete(f, "ShowCurrCate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListDocRequest has unknown keys!", "")
 	}
@@ -6803,6 +7133,8 @@ type ListQARequestParams struct {
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 查询问题
+	// 
+	// 输入特定标识 lke:system:untagged  将查询所有未关联标签的问答
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 校验状态(1未校验2采纳3不采纳)
@@ -6828,6 +7160,9 @@ type ListQARequestParams struct {
 
 	// 查询类型 filename 名称、 attribute 标签
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+
+	// 是否只展示当前分类的数据 0不是，1是
+	ShowCurrCate *uint64 `json:"ShowCurrCate,omitnil,omitempty" name:"ShowCurrCate"`
 }
 
 type ListQARequest struct {
@@ -6843,6 +7178,8 @@ type ListQARequest struct {
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// 查询问题
+	// 
+	// 输入特定标识 lke:system:untagged  将查询所有未关联标签的问答
 	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
 
 	// 校验状态(1未校验2采纳3不采纳)
@@ -6868,6 +7205,9 @@ type ListQARequest struct {
 
 	// 查询类型 filename 名称、 attribute 标签
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+
+	// 是否只展示当前分类的数据 0不是，1是
+	ShowCurrCate *uint64 `json:"ShowCurrCate,omitnil,omitempty" name:"ShowCurrCate"`
 }
 
 func (r *ListQARequest) ToJsonString() string {
@@ -6894,6 +7234,7 @@ func (r *ListQARequest) FromJsonString(s string) error {
 	delete(f, "CateBizId")
 	delete(f, "QaBizIds")
 	delete(f, "QueryType")
+	delete(f, "ShowCurrCate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListQARequest has unknown keys!", "")
 	}
@@ -7006,6 +7347,80 @@ type ListQaItem struct {
 
 	// 返回问答关联的相似问,联动搜索,仅展示一条
 	SimilarQuestionTips *string `json:"SimilarQuestionTips,omitnil,omitempty" name:"SimilarQuestionTips"`
+
+	// 问答是否停用，false:未停用，ture:已停用
+	IsDisabled *bool `json:"IsDisabled,omitnil,omitempty" name:"IsDisabled"`
+}
+
+// Predefined struct for user
+type ListReferShareKnowledgeRequestParams struct {
+	// 应用业务id
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 登录用户主账号(集成商模式必填)
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+type ListReferShareKnowledgeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用业务id
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 登录用户主账号(集成商模式必填)
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+func (r *ListReferShareKnowledgeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListReferShareKnowledgeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppBizId")
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListReferShareKnowledgeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListReferShareKnowledgeResponseParams struct {
+	// 共享知识库信息列表
+	List []*KnowledgeBaseInfo `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListReferShareKnowledgeResponse struct {
+	*tchttp.BaseResponse
+	Response *ListReferShareKnowledgeResponseParams `json:"Response"`
+}
+
+func (r *ListReferShareKnowledgeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListReferShareKnowledgeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -7714,6 +8129,81 @@ func (r *ListSelectDocResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ListSharedKnowledgeRequestParams struct {
+	// 分页序号，编码从1开始
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小，有效范围为[1,200]
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 搜索关键字
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+}
+
+type ListSharedKnowledgeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页序号，编码从1开始
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 分页大小，有效范围为[1,200]
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 搜索关键字
+	Keyword *string `json:"Keyword,omitnil,omitempty" name:"Keyword"`
+}
+
+func (r *ListSharedKnowledgeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListSharedKnowledgeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Keyword")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListSharedKnowledgeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListSharedKnowledgeResponseParams struct {
+	// 累计数量
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 知识库列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KnowledgeList []*KnowledgeDetailInfo `json:"KnowledgeList,omitnil,omitempty" name:"KnowledgeList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListSharedKnowledgeResponse struct {
+	*tchttp.BaseResponse
+	Response *ListSharedKnowledgeResponseParams `json:"Response"`
+}
+
+func (r *ListSharedKnowledgeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListSharedKnowledgeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ListUnsatisfiedReplyRequestParams struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
@@ -7844,6 +8334,9 @@ type ListUsageCallDetailRequestParams struct {
 
 	// 筛选子场景
 	SubScenes []*string `json:"SubScenes,omitnil,omitempty" name:"SubScenes"`
+
+	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
+	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 }
 
 type ListUsageCallDetailRequest struct {
@@ -7875,6 +8368,9 @@ type ListUsageCallDetailRequest struct {
 
 	// 筛选子场景
 	SubScenes []*string `json:"SubScenes,omitnil,omitempty" name:"SubScenes"`
+
+	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
+	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 }
 
 func (r *ListUsageCallDetailRequest) ToJsonString() string {
@@ -7898,6 +8394,7 @@ func (r *ListUsageCallDetailRequest) FromJsonString(s string) error {
 	delete(f, "AppBizIds")
 	delete(f, "CallType")
 	delete(f, "SubScenes")
+	delete(f, "AppType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListUsageCallDetailRequest has unknown keys!", "")
 	}
@@ -8007,6 +8504,9 @@ type ModelInfo struct {
 
 	// 模型支持智能通话效果
 	SupportAiCallStatus *uint64 `json:"SupportAiCallStatus,omitnil,omitempty" name:"SupportAiCallStatus"`
+
+	// 专属并发数
+	Concurrency *uint64 `json:"Concurrency,omitnil,omitempty" name:"Concurrency"`
 }
 
 type ModelParameter struct {
@@ -9529,6 +10029,84 @@ type ReferDetail struct {
 	// 文档ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
+
+	// 知识库ID
+	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
+}
+
+// Predefined struct for user
+type ReferShareKnowledgeRequestParams struct {
+	// 应用业务id
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 共享知识库业务id列表
+	KnowledgeBizId []*string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
+
+	// 登录用户主账号(集成商模式必填)
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+type ReferShareKnowledgeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用业务id
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 共享知识库业务id列表
+	KnowledgeBizId []*string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
+
+	// 登录用户主账号(集成商模式必填)
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+func (r *ReferShareKnowledgeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReferShareKnowledgeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppBizId")
+	delete(f, "KnowledgeBizId")
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReferShareKnowledgeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReferShareKnowledgeResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ReferShareKnowledgeResponse struct {
+	*tchttp.BaseResponse
+	Response *ReferShareKnowledgeResponseParams `json:"Response"`
+}
+
+func (r *ReferShareKnowledgeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReferShareKnowledgeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RejectedQuestion struct {
@@ -10277,6 +10855,14 @@ type SearchStrategy struct {
 	TableEnhancement *bool `json:"TableEnhancement,omitnil,omitempty" name:"TableEnhancement"`
 }
 
+type ShareKnowledgeBase struct {
+	// 共享知识库ID
+	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
+
+	// 检索范围
+	SearchRange *SearchRange `json:"SearchRange,omitnil,omitempty" name:"SearchRange"`
+}
+
 type SimilarQuestion struct {
 	// 相似问ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -10451,6 +11037,12 @@ type TaskFLowVar struct {
 
 	// 变量类型 (STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO)
 	VarType *string `json:"VarType,omitnil,omitempty" name:"VarType"`
+
+	// 自定义变量默认值
+	VarDefaultValue *string `json:"VarDefaultValue,omitnil,omitempty" name:"VarDefaultValue"`
+
+	// 自定义变量文件默认名称
+	VarDefaultFileName *string `json:"VarDefaultFileName,omitnil,omitempty" name:"VarDefaultFileName"`
 }
 
 type TaskFlowInfo struct {
@@ -10576,6 +11168,70 @@ type UnsatisfiedReply struct {
 }
 
 // Predefined struct for user
+type UpdateSharedKnowledgeRequestParams struct {
+	// 共享知识库业务ID
+	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
+
+	// 共享知识库更新信息
+	Info *KnowledgeUpdateInfo `json:"Info,omitnil,omitempty" name:"Info"`
+}
+
+type UpdateSharedKnowledgeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享知识库业务ID
+	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
+
+	// 共享知识库更新信息
+	Info *KnowledgeUpdateInfo `json:"Info,omitnil,omitempty" name:"Info"`
+}
+
+func (r *UpdateSharedKnowledgeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateSharedKnowledgeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "KnowledgeBizId")
+	delete(f, "Info")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateSharedKnowledgeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateSharedKnowledgeResponseParams struct {
+	// 共享知识库业务ID
+	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateSharedKnowledgeResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateSharedKnowledgeResponseParams `json:"Response"`
+}
+
+func (r *UpdateSharedKnowledgeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateSharedKnowledgeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UploadAttributeLabelRequestParams struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
@@ -10692,6 +11348,15 @@ type Usage struct {
 
 	// 总token数
 	TotalTokens *int64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
+}
+
+type UserBaseInfo struct {
+	// 用户ID
+	UserBizId *string `json:"UserBizId,omitnil,omitempty" name:"UserBizId"`
+
+	// 用户名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
 }
 
 type ValueInfo struct {
@@ -10881,6 +11546,23 @@ type WorkflowInfo struct {
 	// 工作流发布时间，unix时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkflowReleaseTime *string `json:"WorkflowReleaseTime,omitnil,omitempty" name:"WorkflowReleaseTime"`
+}
+
+type WorkflowRef struct {
+	// 任务流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 任务流名称
+	WorkflowName *string `json:"WorkflowName,omitnil,omitempty" name:"WorkflowName"`
+
+	// 任务流描述
+	WorkflowDesc *string `json:"WorkflowDesc,omitnil,omitempty" name:"WorkflowDesc"`
+
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 更新时间
+	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type WorkflowRunNodeInfo struct {

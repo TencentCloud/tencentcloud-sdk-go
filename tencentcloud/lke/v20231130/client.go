@@ -608,6 +608,55 @@ func (c *Client) CreateReleaseWithContext(ctx context.Context, request *CreateRe
     return
 }
 
+func NewCreateSharedKnowledgeRequest() (request *CreateSharedKnowledgeRequest) {
+    request = &CreateSharedKnowledgeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "CreateSharedKnowledge")
+    
+    
+    return
+}
+
+func NewCreateSharedKnowledgeResponse() (response *CreateSharedKnowledgeResponse) {
+    response = &CreateSharedKnowledgeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateSharedKnowledge
+// 创建共享知识库。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateSharedKnowledge(request *CreateSharedKnowledgeRequest) (response *CreateSharedKnowledgeResponse, err error) {
+    return c.CreateSharedKnowledgeWithContext(context.Background(), request)
+}
+
+// CreateSharedKnowledge
+// 创建共享知识库。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateSharedKnowledgeWithContext(ctx context.Context, request *CreateSharedKnowledgeRequest) (response *CreateSharedKnowledgeResponse, err error) {
+    if request == nil {
+        request = NewCreateSharedKnowledgeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateSharedKnowledge require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateSharedKnowledgeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateVarRequest() (request *CreateVarRequest) {
     request = &CreateVarRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1006,6 +1055,55 @@ func (c *Client) DeleteRejectedQuestionWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDeleteRejectedQuestionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSharedKnowledgeRequest() (request *DeleteSharedKnowledgeRequest) {
+    request = &DeleteSharedKnowledgeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "DeleteSharedKnowledge")
+    
+    
+    return
+}
+
+func NewDeleteSharedKnowledgeResponse() (response *DeleteSharedKnowledgeResponse) {
+    response = &DeleteSharedKnowledgeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteSharedKnowledge
+// 删除共享知识库。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteSharedKnowledge(request *DeleteSharedKnowledgeRequest) (response *DeleteSharedKnowledgeResponse, err error) {
+    return c.DeleteSharedKnowledgeWithContext(context.Background(), request)
+}
+
+// DeleteSharedKnowledge
+// 删除共享知识库。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteSharedKnowledgeWithContext(ctx context.Context, request *DeleteSharedKnowledgeRequest) (response *DeleteSharedKnowledgeResponse, err error) {
+    if request == nil {
+        request = NewDeleteSharedKnowledgeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSharedKnowledge require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSharedKnowledgeResponse()
     err = c.Send(request, response)
     return
 }
@@ -1790,6 +1888,55 @@ func (c *Client) DescribeSegmentsWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeSegmentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSharedKnowledgeRequest() (request *DescribeSharedKnowledgeRequest) {
+    request = &DescribeSharedKnowledgeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "DescribeSharedKnowledge")
+    
+    
+    return
+}
+
+func NewDescribeSharedKnowledgeResponse() (response *DescribeSharedKnowledgeResponse) {
+    response = &DescribeSharedKnowledgeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSharedKnowledge
+// 查询共享知识库。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeSharedKnowledge(request *DescribeSharedKnowledgeRequest) (response *DescribeSharedKnowledgeResponse, err error) {
+    return c.DescribeSharedKnowledgeWithContext(context.Background(), request)
+}
+
+// DescribeSharedKnowledge
+// 查询共享知识库。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeSharedKnowledgeWithContext(ctx context.Context, request *DescribeSharedKnowledgeRequest) (response *DescribeSharedKnowledgeResponse, err error) {
+    if request == nil {
+        request = NewDescribeSharedKnowledgeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSharedKnowledge require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSharedKnowledgeResponse()
     err = c.Send(request, response)
     return
 }
@@ -3410,6 +3557,55 @@ func (c *Client) ListQACateWithContext(ctx context.Context, request *ListQACateR
     return
 }
 
+func NewListReferShareKnowledgeRequest() (request *ListReferShareKnowledgeRequest) {
+    request = &ListReferShareKnowledgeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "ListReferShareKnowledge")
+    
+    
+    return
+}
+
+func NewListReferShareKnowledgeResponse() (response *ListReferShareKnowledgeResponse) {
+    response = &ListReferShareKnowledgeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListReferShareKnowledge
+// 查看应用引用了哪些共享知识库，可以看到共享知识库的基础信息，包括名称，id等
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ListReferShareKnowledge(request *ListReferShareKnowledgeRequest) (response *ListReferShareKnowledgeResponse, err error) {
+    return c.ListReferShareKnowledgeWithContext(context.Background(), request)
+}
+
+// ListReferShareKnowledge
+// 查看应用引用了哪些共享知识库，可以看到共享知识库的基础信息，包括名称，id等
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ListReferShareKnowledgeWithContext(ctx context.Context, request *ListReferShareKnowledgeRequest) (response *ListReferShareKnowledgeResponse, err error) {
+    if request == nil {
+        request = NewListReferShareKnowledgeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListReferShareKnowledge require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListReferShareKnowledgeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListRejectedQuestionRequest() (request *ListRejectedQuestionRequest) {
     request = &ListRejectedQuestionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3749,6 +3945,55 @@ func (c *Client) ListSelectDocWithContext(ctx context.Context, request *ListSele
     request.SetContext(ctx)
     
     response = NewListSelectDocResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListSharedKnowledgeRequest() (request *ListSharedKnowledgeRequest) {
+    request = &ListSharedKnowledgeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "ListSharedKnowledge")
+    
+    
+    return
+}
+
+func NewListSharedKnowledgeResponse() (response *ListSharedKnowledgeResponse) {
+    response = &ListSharedKnowledgeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListSharedKnowledge
+// 列举共享知识库。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ListSharedKnowledge(request *ListSharedKnowledgeRequest) (response *ListSharedKnowledgeResponse, err error) {
+    return c.ListSharedKnowledgeWithContext(context.Background(), request)
+}
+
+// ListSharedKnowledge
+// 列举共享知识库。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ListSharedKnowledgeWithContext(ctx context.Context, request *ListSharedKnowledgeRequest) (response *ListSharedKnowledgeResponse, err error) {
+    if request == nil {
+        request = NewListSharedKnowledgeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListSharedKnowledge require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListSharedKnowledgeResponse()
     err = c.Send(request, response)
     return
 }
@@ -4473,6 +4718,67 @@ func (c *Client) ReconstructDocumentWithContext(ctx context.Context, request *Re
     return
 }
 
+func NewReferShareKnowledgeRequest() (request *ReferShareKnowledgeRequest) {
+    request = &ReferShareKnowledgeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "ReferShareKnowledge")
+    
+    
+    return
+}
+
+func NewReferShareKnowledgeResponse() (response *ReferShareKnowledgeResponse) {
+    response = &ReferShareKnowledgeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReferShareKnowledge
+// 应用引用共享知识库，可以引用一个或多个，每次都是全量覆盖
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) ReferShareKnowledge(request *ReferShareKnowledgeRequest) (response *ReferShareKnowledgeResponse, err error) {
+    return c.ReferShareKnowledgeWithContext(context.Background(), request)
+}
+
+// ReferShareKnowledge
+// 应用引用共享知识库，可以引用一个或多个，每次都是全量覆盖
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) ReferShareKnowledgeWithContext(ctx context.Context, request *ReferShareKnowledgeRequest) (response *ReferShareKnowledgeResponse, err error) {
+    if request == nil {
+        request = NewReferShareKnowledgeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReferShareKnowledge require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReferShareKnowledgeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRenameDocRequest() (request *RenameDocRequest) {
     request = &RenameDocRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4844,6 +5150,55 @@ func (c *Client) StopDocParseWithContext(ctx context.Context, request *StopDocPa
     request.SetContext(ctx)
     
     response = NewStopDocParseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateSharedKnowledgeRequest() (request *UpdateSharedKnowledgeRequest) {
+    request = &UpdateSharedKnowledgeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "UpdateSharedKnowledge")
+    
+    
+    return
+}
+
+func NewUpdateSharedKnowledgeResponse() (response *UpdateSharedKnowledgeResponse) {
+    response = &UpdateSharedKnowledgeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateSharedKnowledge
+// 更新共享知识库。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) UpdateSharedKnowledge(request *UpdateSharedKnowledgeRequest) (response *UpdateSharedKnowledgeResponse, err error) {
+    return c.UpdateSharedKnowledgeWithContext(context.Background(), request)
+}
+
+// UpdateSharedKnowledge
+// 更新共享知识库。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) UpdateSharedKnowledgeWithContext(ctx context.Context, request *UpdateSharedKnowledgeRequest) (response *UpdateSharedKnowledgeResponse, err error) {
+    if request == nil {
+        request = NewUpdateSharedKnowledgeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateSharedKnowledge require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateSharedKnowledgeResponse()
     err = c.Send(request, response)
     return
 }

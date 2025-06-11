@@ -606,6 +606,71 @@ func (c *Client) DeletePictureWithContext(ctx context.Context, request *DeletePi
     return
 }
 
+func NewDeleteVoicePrintRequest() (request *DeleteVoicePrintRequest) {
+    request = &DeleteVoicePrintRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DeleteVoicePrint")
+    
+    
+    return
+}
+
+func NewDeleteVoicePrintResponse() (response *DeleteVoicePrintResponse) {
+    response = &DeleteVoicePrintResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteVoicePrint
+// 传入声纹ID，删除之前注册的声纹信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
+//  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
+//  FAILEDOPERATION_GENVOICEPRINTIDFAILED = "FailedOperation.GenVoicePrintIdFailed"
+//  FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
+//  FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
+//  FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = "FailedOperation.VoicePrintRegistrationLimit"
+//  INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
+//  INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
+//  MISSINGPARAMETER_MISSINGVOICEPRINTIDLIST = "MissingParameter.MissingVoicePrintIdList"
+func (c *Client) DeleteVoicePrint(request *DeleteVoicePrintRequest) (response *DeleteVoicePrintResponse, err error) {
+    return c.DeleteVoicePrintWithContext(context.Background(), request)
+}
+
+// DeleteVoicePrint
+// 传入声纹ID，删除之前注册的声纹信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
+//  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
+//  FAILEDOPERATION_GENVOICEPRINTIDFAILED = "FailedOperation.GenVoicePrintIdFailed"
+//  FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
+//  FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
+//  FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = "FailedOperation.VoicePrintRegistrationLimit"
+//  INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
+//  INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
+//  MISSINGPARAMETER_MISSINGVOICEPRINTIDLIST = "MissingParameter.MissingVoicePrintIdList"
+func (c *Client) DeleteVoicePrintWithContext(ctx context.Context, request *DeleteVoicePrintRequest) (response *DeleteVoicePrintResponse, err error) {
+    if request == nil {
+        request = NewDeleteVoicePrintRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVoicePrint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteVoicePrintResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAIConversationRequest() (request *DescribeAIConversationRequest) {
     request = &DescribeAIConversationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2606,6 +2671,69 @@ func (c *Client) DescribeUserInfoWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeVoicePrintRequest() (request *DescribeVoicePrintRequest) {
+    request = &DescribeVoicePrintRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeVoicePrint")
+    
+    
+    return
+}
+
+func NewDescribeVoicePrintResponse() (response *DescribeVoicePrintResponse) {
+    response = &DescribeVoicePrintResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVoicePrint
+// 查询先前注册的声纹信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
+//  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
+//  FAILEDOPERATION_GENVOICEPRINTIDFAILED = "FailedOperation.GenVoicePrintIdFailed"
+//  FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
+//  FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
+//  FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = "FailedOperation.VoicePrintRegistrationLimit"
+//  INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
+//  MISSINGPARAMETER_MISSINGVOICEPRINTIDLIST = "MissingParameter.MissingVoicePrintIdList"
+func (c *Client) DescribeVoicePrint(request *DescribeVoicePrintRequest) (response *DescribeVoicePrintResponse, err error) {
+    return c.DescribeVoicePrintWithContext(context.Background(), request)
+}
+
+// DescribeVoicePrint
+// 查询先前注册的声纹信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
+//  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
+//  FAILEDOPERATION_GENVOICEPRINTIDFAILED = "FailedOperation.GenVoicePrintIdFailed"
+//  FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
+//  FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
+//  FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = "FailedOperation.VoicePrintRegistrationLimit"
+//  INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
+//  MISSINGPARAMETER_MISSINGVOICEPRINTIDLIST = "MissingParameter.MissingVoicePrintIdList"
+func (c *Client) DescribeVoicePrintWithContext(ctx context.Context, request *DescribeVoicePrintRequest) (response *DescribeVoicePrintResponse, err error) {
+    if request == nil {
+        request = NewDescribeVoicePrintRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVoicePrint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVoicePrintResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWebRecordRequest() (request *DescribeWebRecordRequest) {
     request = &DescribeWebRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2919,6 +3047,71 @@ func (c *Client) ModifyPictureWithContext(ctx context.Context, request *ModifyPi
     request.SetContext(ctx)
     
     response = NewModifyPictureResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRegisterVoicePrintRequest() (request *RegisterVoicePrintRequest) {
+    request = &RegisterVoicePrintRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "RegisterVoicePrint")
+    
+    
+    return
+}
+
+func NewRegisterVoicePrintResponse() (response *RegisterVoicePrintResponse) {
+    response = &RegisterVoicePrintResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RegisterVoicePrint
+// 传入音频base64串，注册声纹信息，返回声纹ID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
+//  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
+//  FAILEDOPERATION_GENVOICEPRINTIDFAILED = "FailedOperation.GenVoicePrintIdFailed"
+//  FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
+//  FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
+//  FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = "FailedOperation.VoicePrintRegistrationLimit"
+//  INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
+//  INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
+//  MISSINGPARAMETER_MISSINGVOICEPRINTIDLIST = "MissingParameter.MissingVoicePrintIdList"
+func (c *Client) RegisterVoicePrint(request *RegisterVoicePrintRequest) (response *RegisterVoicePrintResponse, err error) {
+    return c.RegisterVoicePrintWithContext(context.Background(), request)
+}
+
+// RegisterVoicePrint
+// 传入音频base64串，注册声纹信息，返回声纹ID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
+//  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
+//  FAILEDOPERATION_GENVOICEPRINTIDFAILED = "FailedOperation.GenVoicePrintIdFailed"
+//  FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
+//  FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
+//  FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = "FailedOperation.VoicePrintRegistrationLimit"
+//  INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
+//  INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
+//  MISSINGPARAMETER_MISSINGVOICEPRINTIDLIST = "MissingParameter.MissingVoicePrintIdList"
+func (c *Client) RegisterVoicePrintWithContext(ctx context.Context, request *RegisterVoicePrintRequest) (response *RegisterVoicePrintResponse, err error) {
+    if request == nil {
+        request = NewRegisterVoicePrintRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RegisterVoicePrint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRegisterVoicePrintResponse()
     err = c.Send(request, response)
     return
 }
@@ -4478,6 +4671,71 @@ func (c *Client) UpdateStreamIngestWithContext(ctx context.Context, request *Upd
     request.SetContext(ctx)
     
     response = NewUpdateStreamIngestResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateVoicePrintRequest() (request *UpdateVoicePrintRequest) {
+    request = &UpdateVoicePrintRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "UpdateVoicePrint")
+    
+    
+    return
+}
+
+func NewUpdateVoicePrintResponse() (response *UpdateVoicePrintResponse) {
+    response = &UpdateVoicePrintResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateVoicePrint
+// 传入声纹ID以及对应音频信息，更新对应声纹信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
+//  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
+//  FAILEDOPERATION_GENVOICEPRINTIDFAILED = "FailedOperation.GenVoicePrintIdFailed"
+//  FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
+//  FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
+//  FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = "FailedOperation.VoicePrintRegistrationLimit"
+//  INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
+//  INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
+//  MISSINGPARAMETER_MISSINGVOICEPRINTIDLIST = "MissingParameter.MissingVoicePrintIdList"
+func (c *Client) UpdateVoicePrint(request *UpdateVoicePrintRequest) (response *UpdateVoicePrintResponse, err error) {
+    return c.UpdateVoicePrintWithContext(context.Background(), request)
+}
+
+// UpdateVoicePrint
+// 传入声纹ID以及对应音频信息，更新对应声纹信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
+//  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
+//  FAILEDOPERATION_GENVOICEPRINTIDFAILED = "FailedOperation.GenVoicePrintIdFailed"
+//  FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
+//  FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
+//  FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = "FailedOperation.VoicePrintRegistrationLimit"
+//  INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
+//  INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
+//  MISSINGPARAMETER_MISSINGVOICEPRINTIDLIST = "MissingParameter.MissingVoicePrintIdList"
+func (c *Client) UpdateVoicePrintWithContext(ctx context.Context, request *UpdateVoicePrintRequest) (response *UpdateVoicePrintResponse, err error) {
+    if request == nil {
+        request = NewUpdateVoicePrintRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateVoicePrint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateVoicePrintResponse()
     err = c.Send(request, response)
     return
 }

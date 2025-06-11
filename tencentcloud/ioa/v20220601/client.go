@@ -342,6 +342,67 @@ func (c *Client) DescribeDLPFileDetectResultWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeDeviceHardwareInfoListRequest() (request *DescribeDeviceHardwareInfoListRequest) {
+    request = &DescribeDeviceHardwareInfoListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeDeviceHardwareInfoList")
+    
+    
+    return
+}
+
+func NewDescribeDeviceHardwareInfoListResponse() (response *DescribeDeviceHardwareInfoListResponse) {
+    response = &DescribeDeviceHardwareInfoListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeviceHardwareInfoList
+// 查询满足条件的查询终端硬件信息列表，私有化调用path为：/capi/Assets/Device/DescribeDeviceHardwareInfoList
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDeviceHardwareInfoList(request *DescribeDeviceHardwareInfoListRequest) (response *DescribeDeviceHardwareInfoListResponse, err error) {
+    return c.DescribeDeviceHardwareInfoListWithContext(context.Background(), request)
+}
+
+// DescribeDeviceHardwareInfoList
+// 查询满足条件的查询终端硬件信息列表，私有化调用path为：/capi/Assets/Device/DescribeDeviceHardwareInfoList
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDeviceHardwareInfoListWithContext(ctx context.Context, request *DescribeDeviceHardwareInfoListRequest) (response *DescribeDeviceHardwareInfoListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceHardwareInfoListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceHardwareInfoList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceHardwareInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
     request = &DescribeDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},

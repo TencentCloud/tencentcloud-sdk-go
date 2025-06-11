@@ -3958,8 +3958,11 @@ type DescribeBackupFilesRequestParams struct {
 	// 按照备份的库名称筛选，不填则不筛选此项
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
-	// 列表项排序，目前只按照备份大小排序（desc-降序，asc-升序），默认desc
+	// 列表项排序，desc-降序、asc-升序，按size排序默认desc，按database排序默认asc
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 排序字段（Size-按备份大小排序，DBs-按数据库名称排序），默认size
+	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 }
 
 type DescribeBackupFilesRequest struct {
@@ -3980,8 +3983,11 @@ type DescribeBackupFilesRequest struct {
 	// 按照备份的库名称筛选，不填则不筛选此项
 	DatabaseName *string `json:"DatabaseName,omitnil,omitempty" name:"DatabaseName"`
 
-	// 列表项排序，目前只按照备份大小排序（desc-降序，asc-升序），默认desc
+	// 列表项排序，desc-降序、asc-升序，按size排序默认desc，按database排序默认asc
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 排序字段（Size-按备份大小排序，DBs-按数据库名称排序），默认size
+	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 }
 
 func (r *DescribeBackupFilesRequest) ToJsonString() string {
@@ -4002,6 +4008,7 @@ func (r *DescribeBackupFilesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "DatabaseName")
 	delete(f, "OrderBy")
+	delete(f, "OrderByType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupFilesRequest has unknown keys!", "")
 	}
@@ -5856,6 +5863,9 @@ type DescribeDBsRequestParams struct {
 
 	// 是否已开启TDE加密，enable-已加密，disable-未加密
 	Encryption *string `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// 排序字段（Name-按名称排序，CreateTime-按创建时间排序），默认CreateTime
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 }
 
 type DescribeDBsRequest struct {
@@ -5878,6 +5888,9 @@ type DescribeDBsRequest struct {
 
 	// 是否已开启TDE加密，enable-已加密，disable-未加密
 	Encryption *string `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// 排序字段（Name-按名称排序，CreateTime-按创建时间排序），默认CreateTime
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 }
 
 func (r *DescribeDBsRequest) ToJsonString() string {
@@ -5898,6 +5911,7 @@ func (r *DescribeDBsRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "OrderByType")
 	delete(f, "Encryption")
+	delete(f, "OrderBy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBsRequest has unknown keys!", "")
 	}
@@ -6078,6 +6092,9 @@ type DescribeDatabasesRequestParams struct {
 
 	// 是否已开启TDE加密，enable-已加密，disable-未加密
 	Encryption *string `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// 排序字段（Name-按名称排序，CreateTime-按创建时间排序），默认CreateTime
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 }
 
 type DescribeDatabasesRequest struct {
@@ -6100,6 +6117,9 @@ type DescribeDatabasesRequest struct {
 
 	// 是否已开启TDE加密，enable-已加密，disable-未加密
 	Encryption *string `json:"Encryption,omitnil,omitempty" name:"Encryption"`
+
+	// 排序字段（Name-按名称排序，CreateTime-按创建时间排序），默认CreateTime
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 }
 
 func (r *DescribeDatabasesRequest) ToJsonString() string {
@@ -6120,6 +6140,7 @@ func (r *DescribeDatabasesRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "OrderByType")
 	delete(f, "Encryption")
+	delete(f, "OrderBy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabasesRequest has unknown keys!", "")
 	}

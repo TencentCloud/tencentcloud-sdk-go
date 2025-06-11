@@ -1028,6 +1028,138 @@ type RegionInfo struct {
 }
 
 // Predefined struct for user
+type ResetInstancesPasswordRequestParams struct {
+	// 实例ID列表
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 实例密码必须8-30位，推荐使用12位以上密码，不能以“/”开头，至少包含以下字符中的三种不同字符，字符种类：<br><li>小写字母：[a-z]</li><br><li>大写字母：[A-Z]</li><br><li>数字：0-9</li><br><li>特殊字符： ()\`\~!@#$%^&\*-+=\_|{}[]:;'<>,.?/</li>
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 默认为False，True代表只验证接口连通性
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+}
+
+type ResetInstancesPasswordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID列表
+	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 实例密码必须8-30位，推荐使用12位以上密码，不能以“/”开头，至少包含以下字符中的三种不同字符，字符种类：<br><li>小写字母：[a-z]</li><br><li>大写字母：[A-Z]</li><br><li>数字：0-9</li><br><li>特殊字符： ()\`\~!@#$%^&\*-+=\_|{}[]:;'<>,.?/</li>
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
+
+	// 默认为False，True代表只验证接口连通性
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+}
+
+func (r *ResetInstancesPasswordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetInstancesPasswordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "Password")
+	delete(f, "DryRun")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetInstancesPasswordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetInstancesPasswordResponseParams struct {
+	// task任务id
+	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ResetInstancesPasswordResponse struct {
+	*tchttp.BaseResponse
+	Response *ResetInstancesPasswordResponseParams `json:"Response"`
+}
+
+func (r *ResetInstancesPasswordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetInstancesPasswordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResizeInstanceDiskRequestParams struct {
+	// 需要扩容云盘的HAI实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 扩容云硬盘大小，单位为GB，必须大于当前云硬盘大小。
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+}
+
+type ResizeInstanceDiskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要扩容云盘的HAI实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 扩容云硬盘大小，单位为GB，必须大于当前云硬盘大小。
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+}
+
+func (r *ResizeInstanceDiskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResizeInstanceDiskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "DiskSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResizeInstanceDiskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResizeInstanceDiskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ResizeInstanceDiskResponse struct {
+	*tchttp.BaseResponse
+	Response *ResizeInstanceDiskResponseParams `json:"Response"`
+}
+
+func (r *ResizeInstanceDiskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResizeInstanceDiskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RunInstancesRequestParams struct {
 	// 应用ID通过调用接口[DescribeApplications](https://cloud.tencent.com/document/api/1721/101609)获取。
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`

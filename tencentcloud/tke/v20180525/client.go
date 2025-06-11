@@ -2760,6 +2760,7 @@ func NewCreateReservedInstancesResponse() (response *CreateReservedInstancesResp
 // 预留券实例的购买会预先扣除本次实例购买所需金额，在调用本接口前请确保账户余额充足。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_INSUFFICIENTBALANCE = "InternalError.InsufficientBalance"
 //  INTERNALERROR_NOPAYMENTACCESS = "InternalError.NoPaymentAccess"
 //  INTERNALERROR_NOTVERIFIED = "InternalError.NotVerified"
@@ -2774,6 +2775,7 @@ func (c *Client) CreateReservedInstances(request *CreateReservedInstancesRequest
 // 预留券实例的购买会预先扣除本次实例购买所需金额，在调用本接口前请确保账户余额充足。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_INSUFFICIENTBALANCE = "InternalError.InsufficientBalance"
 //  INTERNALERROR_NOPAYMENTACCESS = "InternalError.NoPaymentAccess"
 //  INTERNALERROR_NOTVERIFIED = "InternalError.NotVerified"
@@ -4764,6 +4766,7 @@ func NewDeleteReservedInstancesResponse() (response *DeleteReservedInstancesResp
 // 预留券实例如符合退还规则，可通过本接口主动退还。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_TRADECOMMON = "InternalError.TradeCommon"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -4776,6 +4779,7 @@ func (c *Client) DeleteReservedInstances(request *DeleteReservedInstancesRequest
 // 预留券实例如符合退还规则，可通过本接口主动退还。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_TRADECOMMON = "InternalError.TradeCommon"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -8663,6 +8667,7 @@ func NewDescribePodChargeInfoResponse() (response *DescribePodChargeInfoResponse
 // 查询正在运行中Pod的计费信息。可以通过 Namespace 和 Name 来查询某个 Pod 的信息，也可以通过 Pod 的 Uid 批量查询。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 func (c *Client) DescribePodChargeInfo(request *DescribePodChargeInfoRequest) (response *DescribePodChargeInfoResponse, err error) {
@@ -8673,6 +8678,7 @@ func (c *Client) DescribePodChargeInfo(request *DescribePodChargeInfoRequest) (r
 // 查询正在运行中Pod的计费信息。可以通过 Namespace 和 Name 来查询某个 Pod 的信息，也可以通过 Pod 的 Uid 批量查询。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 func (c *Client) DescribePodChargeInfoWithContext(ctx context.Context, request *DescribePodChargeInfoRequest) (response *DescribePodChargeInfoResponse, err error) {
@@ -8714,6 +8720,7 @@ func NewDescribePodDeductionRateResponse() (response *DescribePodDeductionRateRe
 // 查询各个规格的 Pod 的抵扣率
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 func (c *Client) DescribePodDeductionRate(request *DescribePodDeductionRateRequest) (response *DescribePodDeductionRateResponse, err error) {
@@ -8724,6 +8731,7 @@ func (c *Client) DescribePodDeductionRate(request *DescribePodDeductionRateReque
 // 查询各个规格的 Pod 的抵扣率
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 func (c *Client) DescribePodDeductionRateWithContext(ctx context.Context, request *DescribePodDeductionRateRequest) (response *DescribePodDeductionRateResponse, err error) {
@@ -8765,6 +8773,7 @@ func NewDescribePodsBySpecResponse() (response *DescribePodsBySpecResponse) {
 // 查询可以用预留券抵扣的 Pod 信息。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 func (c *Client) DescribePodsBySpec(request *DescribePodsBySpecRequest) (response *DescribePodsBySpecResponse, err error) {
@@ -8775,6 +8784,7 @@ func (c *Client) DescribePodsBySpec(request *DescribePodsBySpecRequest) (respons
 // 查询可以用预留券抵扣的 Pod 信息。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 func (c *Client) DescribePodsBySpecWithContext(ctx context.Context, request *DescribePodsBySpecRequest) (response *DescribePodsBySpecResponse, err error) {
@@ -8816,6 +8826,7 @@ func NewDescribePostNodeResourcesResponse() (response *DescribePostNodeResources
 // 包括 Pod 资源统计和绑定的预留券资源统计。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
 func (c *Client) DescribePostNodeResources(request *DescribePostNodeResourcesRequest) (response *DescribePostNodeResourcesResponse, err error) {
@@ -8826,6 +8837,7 @@ func (c *Client) DescribePostNodeResources(request *DescribePostNodeResourcesReq
 // 包括 Pod 资源统计和绑定的预留券资源统计。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
 func (c *Client) DescribePostNodeResourcesWithContext(ctx context.Context, request *DescribePostNodeResourcesRequest) (response *DescribePostNodeResourcesResponse, err error) {
@@ -10080,6 +10092,7 @@ func NewDescribeRIUtilizationDetailResponse() (response *DescribeRIUtilizationDe
 // 预留实例用量查询
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -10093,6 +10106,7 @@ func (c *Client) DescribeRIUtilizationDetail(request *DescribeRIUtilizationDetai
 // 预留实例用量查询
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -10220,6 +10234,7 @@ func NewDescribeReservedInstanceUtilizationRateResponse() (response *DescribeRes
 // 查询各种规格类型的预留券使用率
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION_PARAM = "FailedOperation.Param"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
@@ -10232,6 +10247,7 @@ func (c *Client) DescribeReservedInstanceUtilizationRate(request *DescribeReserv
 // 查询各种规格类型的预留券使用率
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION_PARAM = "FailedOperation.Param"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
@@ -10275,6 +10291,7 @@ func NewDescribeReservedInstancesResponse() (response *DescribeReservedInstances
 // 查询预留实例列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
@@ -10289,6 +10306,7 @@ func (c *Client) DescribeReservedInstances(request *DescribeReservedInstancesReq
 // 查询预留实例列表
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
@@ -13728,6 +13746,7 @@ func NewModifyReservedInstanceScopeResponse() (response *ModifyReservedInstanceS
 // 修改预留券的抵扣范围，抵扣范围取值：Region、Zone 和 Node。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
@@ -13739,6 +13758,7 @@ func (c *Client) ModifyReservedInstanceScope(request *ModifyReservedInstanceScop
 // 修改预留券的抵扣范围，抵扣范围取值：Region、Zone 和 Node。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
@@ -13836,6 +13856,7 @@ func NewRenewReservedInstancesResponse() (response *RenewReservedInstancesRespon
 // 续费时请确保账户余额充足。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_INSUFFICIENTBALANCE = "InternalError.InsufficientBalance"
 //  INTERNALERROR_NOPAYMENTACCESS = "InternalError.NoPaymentAccess"
 //  INTERNALERROR_NOTVERIFIED = "InternalError.NotVerified"
@@ -13850,6 +13871,7 @@ func (c *Client) RenewReservedInstances(request *RenewReservedInstancesRequest) 
 // 续费时请确保账户余额充足。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_INSUFFICIENTBALANCE = "InternalError.InsufficientBalance"
 //  INTERNALERROR_NOPAYMENTACCESS = "InternalError.NoPaymentAccess"
 //  INTERNALERROR_NOTVERIFIED = "InternalError.NotVerified"

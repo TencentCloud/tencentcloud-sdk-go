@@ -342,6 +342,74 @@ type AutoCalloutTaskInfo struct {
 }
 
 // Predefined struct for user
+type BindNumberCallInInterfaceRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 待绑定的号码
+	Number *string `json:"Number,omitnil,omitempty" name:"Number"`
+
+	// 待绑定的回调地址
+	CallInInterface *Interface `json:"CallInInterface,omitnil,omitempty" name:"CallInInterface"`
+}
+
+type BindNumberCallInInterfaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 待绑定的号码
+	Number *string `json:"Number,omitnil,omitempty" name:"Number"`
+
+	// 待绑定的回调地址
+	CallInInterface *Interface `json:"CallInInterface,omitnil,omitempty" name:"CallInInterface"`
+}
+
+func (r *BindNumberCallInInterfaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindNumberCallInInterfaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Number")
+	delete(f, "CallInInterface")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindNumberCallInInterfaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindNumberCallInInterfaceResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type BindNumberCallInInterfaceResponse struct {
+	*tchttp.BaseResponse
+	Response *BindNumberCallInInterfaceResponseParams `json:"Response"`
+}
+
+func (r *BindNumberCallInInterfaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindNumberCallInInterfaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type BindNumberCallOutSkillGroupRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -578,6 +646,14 @@ type CarrierPrivilegeNumberApplicant struct {
 
 	// 更新时间，unix时间戳(秒)
 	UpdateTime *int64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type ClientInfo struct {
+	// 登录的端类型，"Web"表示web工作台，"WeChatMiniProgram"表示微信小程序
+	ClientType *string `json:"ClientType,omitnil,omitempty" name:"ClientType"`
+
+	// 当前登录的端是否在前台。若登录的端是Web，则该值为true；若登录的端是WeChatMiniProgram，true表示打开着微信小程序，false表示微信小程序退到后台
+	IsConnected *bool `json:"IsConnected,omitnil,omitempty" name:"IsConnected"`
 }
 
 type CompanyApplyInfo struct {
@@ -5799,6 +5875,11 @@ type IVRKeyPressedElement struct {
 	TTSPrompt *string `json:"TTSPrompt,omitnil,omitempty" name:"TTSPrompt"`
 }
 
+type Interface struct {
+	// 接口地址
+	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
+}
+
 type Message struct {
 	// 消息类型
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -6899,6 +6980,9 @@ type StaffStatusMetrics struct {
 	// 最近一次状态时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastStatusTimestamp *int64 `json:"LastStatusTimestamp,omitnil,omitempty" name:"LastStatusTimestamp"`
+
+	// 客服登录的端信息
+	ClientInfo []*ClientInfo `json:"ClientInfo,omitnil,omitempty" name:"ClientInfo"`
 }
 
 // Predefined struct for user

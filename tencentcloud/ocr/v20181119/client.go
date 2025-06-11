@@ -3130,12 +3130,6 @@ func NewIDCardOCRResponse() (response *IDCardOCRResponse) {
 //
 //           <td rowspan="9">告警功能</td>
 //
-//           <td>身份证有效日期不合法，即有效日期不符合5年、10年、20年、长期期限
-//
-// 
-//
-// </td>
-//
 //         </tr>
 //
 //         <tr>
@@ -3254,12 +3248,6 @@ func (c *Client) IDCardOCR(request *IDCardOCRRequest) (response *IDCardOCRRespon
 //         <tr>
 //
 //           <td rowspan="9">告警功能</td>
-//
-//           <td>身份证有效日期不合法，即有效日期不符合5年、10年、20年、长期期限
-//
-// 
-//
-// </td>
 //
 //         </tr>
 //

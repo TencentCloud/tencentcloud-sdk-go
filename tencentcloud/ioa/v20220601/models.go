@@ -548,6 +548,142 @@ func (r *DescribeDLPFileDetectResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeDeviceHardwareInfoItem struct {
+	// 设备ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 设备唯一标识符
+	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+
+	// OS平台 0 Windows 1 Linux 2 macOS 4 Android 5 iOS
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+
+	// 终端名
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 终端用户名
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 授权状态（ 4未授权 5已授权）
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 设备所属分组ID
+	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 设备所属分组名
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 设备所属分组路径
+	GroupNamePath *string `json:"GroupNamePath,omitnil,omitempty" name:"GroupNamePath"`
+
+	// 最近登录账户的姓名
+	AccountName *string `json:"AccountName,omitnil,omitempty" name:"AccountName"`
+
+	// 出口IP
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// MAC地址
+	MacAddr *string `json:"MacAddr,omitnil,omitempty" name:"MacAddr"`
+
+	// CPU品牌型号
+	Cpu *string `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 内存信息
+	Memory *string `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 硬盘信息
+	HardDiskSize *string `json:"HardDiskSize,omitnil,omitempty" name:"HardDiskSize"`
+
+	// 显示器品牌型号
+	Monitor *string `json:"Monitor,omitnil,omitempty" name:"Monitor"`
+}
+
+// Predefined struct for user
+type DescribeDeviceHardwareInfoListRequestParams struct {
+	// 【必填】设备分组id（需要和OsType匹配），下面是私有化场景下默认id：id-名称-操作系统1	全网终端	Win2	未分组终端	Win30000000	服务器	Win40000101	全网终端	Linux40000102	未分组终端	Linux40000103	服务器	Linux40000201	全网终端	macOS40000202	未分组终端	macOS40000203	服务器	macOS40000401	全网终端	Android40000402	未分组终端	Android40000501	全网终端	iOS40000502	未分组终端	iOSSaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
+	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 【必填】操作系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// 过滤条件参数（字段含义请参考接口返回值） - Name, 类型String，支持操作：【eq，like，ilike】，支持排序 - UserName, 类型String，支持操作：【eq，like，ilike】，支持排序 - IoaUserName，类型String，支持操作：【eq，like，ilike】，支持排序 - MacAddr, 类型String，支持操作：【eq，like，ilike】，支持排序 - Ip, 类型String，支持操作：【eq，like，ilike】，支持排序 ，支持排序分页参数- PageNum 从1开始，小于等于0时使用默认参数- PageSize 最大值5000，最好不超过100
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+}
+
+type DescribeDeviceHardwareInfoListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 【必填】设备分组id（需要和OsType匹配），下面是私有化场景下默认id：id-名称-操作系统1	全网终端	Win2	未分组终端	Win30000000	服务器	Win40000101	全网终端	Linux40000102	未分组终端	Linux40000103	服务器	Linux40000201	全网终端	macOS40000202	未分组终端	macOS40000203	服务器	macOS40000401	全网终端	Android40000402	未分组终端	Android40000501	全网终端	iOS40000502	未分组终端	iOSSaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
+	GroupId *int64 `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 【必填】操作系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// 过滤条件参数（字段含义请参考接口返回值） - Name, 类型String，支持操作：【eq，like，ilike】，支持排序 - UserName, 类型String，支持操作：【eq，like，ilike】，支持排序 - IoaUserName，类型String，支持操作：【eq，like，ilike】，支持排序 - MacAddr, 类型String，支持操作：【eq，like，ilike】，支持排序 - Ip, 类型String，支持操作：【eq，like，ilike】，支持排序 ，支持排序分页参数- PageNum 从1开始，小于等于0时使用默认参数- PageSize 最大值5000，最好不超过100
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+}
+
+func (r *DescribeDeviceHardwareInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceHardwareInfoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "OsType")
+	delete(f, "DomainInstanceId")
+	delete(f, "Condition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceHardwareInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceHardwareInfoListResponseParams struct {
+	// 分页的data数据
+	Data *DescribeDeviceHardwareInfoListRspData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeviceHardwareInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeviceHardwareInfoListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeviceHardwareInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceHardwareInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceHardwareInfoListRspData struct {
+	// 分页数据
+	Page *Paging `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 终端硬件信息数据数组
+	Items []*DescribeDeviceHardwareInfoItem `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
 type DescribeDevicesPageRsp struct {
 	// 数据分页信息
 	Paging *Paging `json:"Paging,omitnil,omitempty" name:"Paging"`

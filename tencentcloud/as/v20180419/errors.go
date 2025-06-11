@@ -290,6 +290,9 @@ const (
 	// 子网信息不合法。
 	INVALIDPARAMETERVALUE_SUBNETIDS = "InvalidParameterValue.SubnetIds"
 
+	// 子网不在指定本地专用集群中。
+	INVALIDPARAMETERVALUE_SUBNETNOTINDEDICATEDCLUSTER = "InvalidParameterValue.SubnetNotInDedicatedCluster"
+
 	// 负载均衡器四层监听器的后端端口重复。
 	INVALIDPARAMETERVALUE_TARGETPORTDUPLICATED = "InvalidParameterValue.TargetPortDuplicated"
 

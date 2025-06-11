@@ -2993,7 +2993,7 @@ type DescribeRefreshActivitiesRequestParams struct {
 	RefreshActivityIds []*string `json:"RefreshActivityIds,omitnil,omitempty" name:"RefreshActivityIds"`
 
 	// 过滤条件。
-	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	// <li> refresh-activity-status-code - String - 是否必填：否 -（过滤条件）按照刷新活动状态过滤。（INIT：初始化中 | RUNNING：运行中 | SUCCESSFUL：活动成功 | FAILED_PAUSE：失败暂停 | AUTO_PAUSE：自动暂停 | MANUAL_PAUSE：手动暂停 | CANCELLED：活动取消 | FAILED：活动失败）</li>
 	// <li> refresh-activity-type - String - 是否必填：否 -（过滤条件）按照刷新活动类型过滤。（NORMAL：正常刷新活动 | ROLLBACK：回滚刷新活动）</li>
 	// <li> refresh-activity-id - String - 是否必填：否 -（过滤条件）按照刷新活动ID过滤。</li>
@@ -3014,7 +3014,7 @@ type DescribeRefreshActivitiesRequest struct {
 	RefreshActivityIds []*string `json:"RefreshActivityIds,omitnil,omitempty" name:"RefreshActivityIds"`
 
 	// 过滤条件。
-	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/group) 或调用接口 [DescribeAutoScalingGroups](https://cloud.tencent.com/document/api/377/20438) ，取返回信息中的 AutoScalingGroupId 获取伸缩组ID。</li>
 	// <li> refresh-activity-status-code - String - 是否必填：否 -（过滤条件）按照刷新活动状态过滤。（INIT：初始化中 | RUNNING：运行中 | SUCCESSFUL：活动成功 | FAILED_PAUSE：失败暂停 | AUTO_PAUSE：自动暂停 | MANUAL_PAUSE：手动暂停 | CANCELLED：活动取消 | FAILED：活动失败）</li>
 	// <li> refresh-activity-type - String - 是否必填：否 -（过滤条件）按照刷新活动类型过滤。（NORMAL：正常刷新活动 | ROLLBACK：回滚刷新活动）</li>
 	// <li> refresh-activity-id - String - 是否必填：否 -（过滤条件）按照刷新活动ID过滤。</li>
@@ -6289,7 +6289,7 @@ type StartInstanceRefreshRequestParams struct {
 	// 刷新设置。
 	RefreshSettings *RefreshSettings `json:"RefreshSettings,omitnil,omitempty" name:"RefreshSettings"`
 
-	// 刷新模式。取值范围：
+	// 刷新模式。默认值为 ROLLING_UPDATE_RESET，取值范围：
 	// <li>ROLLING_UPDATE_RESET：重装系统进行滚动更新</li>
 	// <li>ROLLING_UPDATE_REPLACE：新建实例替换进行滚动更新，该模式暂不支持回滚接口</li>
 	RefreshMode *string `json:"RefreshMode,omitnil,omitempty" name:"RefreshMode"`
@@ -6304,7 +6304,7 @@ type StartInstanceRefreshRequest struct {
 	// 刷新设置。
 	RefreshSettings *RefreshSettings `json:"RefreshSettings,omitnil,omitempty" name:"RefreshSettings"`
 
-	// 刷新模式。取值范围：
+	// 刷新模式。默认值为 ROLLING_UPDATE_RESET，取值范围：
 	// <li>ROLLING_UPDATE_RESET：重装系统进行滚动更新</li>
 	// <li>ROLLING_UPDATE_REPLACE：新建实例替换进行滚动更新，该模式暂不支持回滚接口</li>
 	RefreshMode *string `json:"RefreshMode,omitnil,omitempty" name:"RefreshMode"`

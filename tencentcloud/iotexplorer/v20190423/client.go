@@ -2635,7 +2635,7 @@ func NewDeleteTopicRuleResponse() (response *DeleteTopicRuleResponse) {
 }
 
 // DeleteTopicRule
-// 删除规则
+// 删除规则。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2648,7 +2648,7 @@ func (c *Client) DeleteTopicRule(request *DeleteTopicRuleRequest) (response *Del
 }
 
 // DeleteTopicRule
-// 删除规则
+// 删除规则。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

@@ -8942,6 +8942,9 @@ type ModifyDatahubTaskRequestParams struct {
 
 	// 任务名称
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 任务描述信息
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type ModifyDatahubTaskRequest struct {
@@ -8952,6 +8955,9 @@ type ModifyDatahubTaskRequest struct {
 
 	// 任务名称
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 任务描述信息
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *ModifyDatahubTaskRequest) ToJsonString() string {
@@ -8968,6 +8974,7 @@ func (r *ModifyDatahubTaskRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TaskId")
 	delete(f, "TaskName")
+	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDatahubTaskRequest has unknown keys!", "")
 	}

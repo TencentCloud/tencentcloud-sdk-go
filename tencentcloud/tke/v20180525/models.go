@@ -1601,6 +1601,9 @@ type CreateClusterEndpointRequestParams struct {
 	// VipIsp含义：CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通，如果不指定本参数，则默认使用BGP。可通过 DescribeSingleIsp 接口查询一个地域所支持的Isp。如果指定运营商，则网络计费式只能使用按带宽包计费BANDWIDTH_PACKAGE。
 	// BandwidthPackageId含义：带宽包ID，指定此参数时，网络计费方式InternetAccessible.InternetChargeType只支持按带宽包计费BANDWIDTH_PACKAGE。
 	ExtensiveParameters *string `json:"ExtensiveParameters,omitnil,omitempty" name:"ExtensiveParameters"`
+
+	// 使用已有clb开启内网或外网访问
+	ExistedLoadBalancerId *string `json:"ExistedLoadBalancerId,omitnil,omitempty" name:"ExistedLoadBalancerId"`
 }
 
 type CreateClusterEndpointRequest struct {
@@ -1628,6 +1631,9 @@ type CreateClusterEndpointRequest struct {
 	// VipIsp含义：CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通，如果不指定本参数，则默认使用BGP。可通过 DescribeSingleIsp 接口查询一个地域所支持的Isp。如果指定运营商，则网络计费式只能使用按带宽包计费BANDWIDTH_PACKAGE。
 	// BandwidthPackageId含义：带宽包ID，指定此参数时，网络计费方式InternetAccessible.InternetChargeType只支持按带宽包计费BANDWIDTH_PACKAGE。
 	ExtensiveParameters *string `json:"ExtensiveParameters,omitnil,omitempty" name:"ExtensiveParameters"`
+
+	// 使用已有clb开启内网或外网访问
+	ExistedLoadBalancerId *string `json:"ExistedLoadBalancerId,omitnil,omitempty" name:"ExistedLoadBalancerId"`
 }
 
 func (r *CreateClusterEndpointRequest) ToJsonString() string {
@@ -1648,6 +1654,7 @@ func (r *CreateClusterEndpointRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "SecurityGroup")
 	delete(f, "ExtensiveParameters")
+	delete(f, "ExistedLoadBalancerId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterEndpointRequest has unknown keys!", "")
 	}
@@ -19548,6 +19555,18 @@ type SuperNodeResource struct {
 
 	// 节点上的总 GPU 卡数
 	Gpu *float64 `json:"Gpu,omitnil,omitempty" name:"Gpu"`
+
+	// 节点资源的配额类型，exact表示精确配额，fuzzy 表示模糊配额。
+	QuotaType *string `json:"QuotaType,omitnil,omitempty" name:"QuotaType"`
+
+	// 配额的计费类型，PREPAID表示包月，POSTPAID_BY_HOUR表示按量。
+	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// QuotaType为 exact 时，此字段有效，表示精确配额的资源类型。
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 置放群组 ID
+	DisasterRecoverGroupId *string `json:"DisasterRecoverGroupId,omitnil,omitempty" name:"DisasterRecoverGroupId"`
 }
 
 type Switch struct {

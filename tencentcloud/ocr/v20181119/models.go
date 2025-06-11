@@ -4396,6 +4396,8 @@ type IDCardOCRRequestParams struct {
 	EnableReflectDetail *bool `json:"EnableReflectDetail,omitnil,omitempty" name:"EnableReflectDetail"`
 
 	// 用于控制是否开启日期校验，默认值为true，打开会进行日期校验。
+	//
+	// Deprecated: EnableDateVerify is deprecated.
 	EnableDateVerify *bool `json:"EnableDateVerify,omitnil,omitempty" name:"EnableDateVerify"`
 }
 
@@ -8196,6 +8198,18 @@ type RecognizeGeneralCardWarnResponseParams struct {
 
 	// 翻拍件信息
 	Reprint *GeneralCardWarnInfo `json:"Reprint,omitnil,omitempty" name:"Reprint"`
+
+	// 是否截图
+	Screenshot *GeneralCardWarnInfo `json:"Screenshot,omitnil,omitempty" name:"Screenshot"`
+
+	// 是否遮挡
+	Cover *GeneralCardWarnInfo `json:"Cover,omitnil,omitempty" name:"Cover"`
+
+	// 是否重叠
+	Overlap *GeneralCardWarnInfo `json:"Overlap,omitnil,omitempty" name:"Overlap"`
+
+	// 是否水印
+	Watermark *GeneralCardWarnInfo `json:"Watermark,omitnil,omitempty" name:"Watermark"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

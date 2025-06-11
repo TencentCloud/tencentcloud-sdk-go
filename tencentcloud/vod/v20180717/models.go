@@ -2582,7 +2582,7 @@ type AudioTemplateInfo struct {
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
 	// 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。
-	// 当取值为 0，表示音频码率和原始音频保持一致。
+	// 当取值为 0，表示由云点播自动设置码率。
 	Bitrate *uint64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 
 	// 音频流的采样率，可选值：
@@ -2625,7 +2625,7 @@ type AudioTemplateInfoForUpdate struct {
 	// <li>pcm16。</li>
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
-	// 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。 当取值为 0，表示音频码率和原始音频保持一致。
+	// 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。 当取值为 0，表示由云点播自动设置码率。
 	Bitrate *uint64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 
 	// 音频流的采样率，可选值：
@@ -13696,7 +13696,7 @@ type EditMediaTEHDConfig struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 视频码率上限，当 Type 指定了极速高清类型时有效。
-	// 不填或填0表示不设视频码率上限。
+	// 不填或填0表示由云点播自动设置码率上限。
 	MaxVideoBitrate *uint64 `json:"MaxVideoBitrate,omitnil,omitempty" name:"MaxVideoBitrate"`
 }
 
@@ -13787,7 +13787,7 @@ type EditMediaVideoStream struct {
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
 	// 视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
-	// 当取值为 0 或不填时，表示自动选择最佳视频码率。
+	// 当取值为 0 或不填时，表示由云点播自动设置码率。
 	Bitrate *uint64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 
 	// 分辨率自适应，可选值：
@@ -20933,9 +20933,13 @@ type ProcedureTask struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 已弃用，请使用各个具体任务的 ErrCode。
+	//
+	// Deprecated: ErrCode is deprecated.
 	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 
 	// 已弃用，请使用各个具体任务的 Message。
+	//
+	// Deprecated: Message is deprecated.
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 媒体文件 ID
@@ -22603,7 +22607,7 @@ type RebuildMediaTargetAudioStream struct {
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
 	// 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。
-	// 当取值为 0，表示音频码率和原始音频保持一致。
+	// 当取值为 0，表示由云点播自动设置码率。
 	Bitrate *int64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 
 	// 音频流的采样率，可选值：
@@ -22671,7 +22675,7 @@ type RebuildMediaTargetVideoStream struct {
 	Codec *string `json:"Codec,omitnil,omitempty" name:"Codec"`
 
 	// 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
-	// 当取值为 0，表示视频码率和原始视频保持一致。
+	// 当取值为 0，表示由云点播自动设置码率。
 	Bitrate *int64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 
 	// 视频帧率，取值范围：[0, 100]，单位：Hz。 当取值为 0，表示帧率和原始视频保持一致。
@@ -25449,7 +25453,7 @@ type TEHDConfig struct {
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 视频码率上限，当 Type 指定了极速高清类型时有效。
-	// 不填或填0表示不设视频码率上限。
+	// 不填或填0表示由云点播自动设置码率上限。
 	MaxVideoBitrate *uint64 `json:"MaxVideoBitrate,omitnil,omitempty" name:"MaxVideoBitrate"`
 }
 
@@ -26297,7 +26301,7 @@ type VideoConfigureInfo struct {
 	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitnil,omitempty" name:"ResolutionAdaptive"`
 
 	// 视频流的码率，取值范围：0 和 [128, 10000]，单位：kbps。
-	// 当取值为 0，表示视频码率和原始视频保持一致。
+	// 当取值为 0，表示由云点播自动设置码率。
 	Bitrate *int64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 }
 
@@ -26328,7 +26332,7 @@ type VideoConfigureInfoForUpdate struct {
 	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitnil,omitempty" name:"ResolutionAdaptive"`
 
 	// 视频流的码率，取值范围：0 和 [128, 10000]，单位：kbps。
-	// 当取值为 0，表示视频码率和原始视频保持一致。
+	// 当取值为 0，表示由云点播自动设置码率。
 	Bitrate *int64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 }
 
@@ -26371,7 +26375,7 @@ type VideoTemplateInfo struct {
 	Fps *uint64 `json:"Fps,omitnil,omitempty" name:"Fps"`
 
 	// 视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
-	// 当取值为 0，表示视频码率和原始视频保持一致。
+	// 当取值为 0，表示由云点播自动设置码率。
 	Bitrate *uint64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 
 	// 分辨率自适应，可选值：
@@ -26445,7 +26449,7 @@ type VideoTemplateInfoForUpdate struct {
 	Fps *uint64 `json:"Fps,omitnil,omitempty" name:"Fps"`
 
 	// 视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
-	// 当取值为 0，表示视频码率和原始视频保持一致。
+	// 当取值为 0，表示由云点播自动设置码率。
 	Bitrate *uint64 `json:"Bitrate,omitnil,omitempty" name:"Bitrate"`
 
 	// 分辨率自适应，可选值：

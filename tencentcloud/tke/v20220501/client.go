@@ -155,6 +155,65 @@ func (c *Client) CreateNodePoolWithContext(ctx context.Context, request *CreateN
     return
 }
 
+func NewDeleteClusterMachinesRequest() (request *DeleteClusterMachinesRequest) {
+    request = &DeleteClusterMachinesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteClusterMachines")
+    
+    
+    return
+}
+
+func NewDeleteClusterMachinesResponse() (response *DeleteClusterMachinesResponse) {
+    response = &DeleteClusterMachinesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteClusterMachines
+// 删除原生节点池节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteClusterMachines(request *DeleteClusterMachinesRequest) (response *DeleteClusterMachinesResponse, err error) {
+    return c.DeleteClusterMachinesWithContext(context.Background(), request)
+}
+
+// DeleteClusterMachines
+// 删除原生节点池节点
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteClusterMachinesWithContext(ctx context.Context, request *DeleteClusterMachinesRequest) (response *DeleteClusterMachinesResponse, err error) {
+    if request == nil {
+        request = NewDeleteClusterMachinesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteClusterMachines require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteClusterMachinesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteHealthCheckPolicyRequest() (request *DeleteHealthCheckPolicyRequest) {
     request = &DeleteHealthCheckPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},

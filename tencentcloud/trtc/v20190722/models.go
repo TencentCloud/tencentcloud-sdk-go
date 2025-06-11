@@ -86,6 +86,12 @@ type AgentConfig struct {
 	// 5：英文花括号{}
 	// 默认值为空，表示不进行过滤。
 	FilterBracketsContent *uint64 `json:"FilterBracketsContent,omitnil,omitempty" name:"FilterBracketsContent"`
+
+	// 环境音设置
+	AmbientSound *AmbientSound `json:"AmbientSound,omitnil,omitempty" name:"AmbientSound"`
+
+	// 声纹配置
+	VoicePrint *VoicePrint `json:"VoicePrint,omitnil,omitempty" name:"VoicePrint"`
 }
 
 type AgentParams struct {
@@ -97,6 +103,14 @@ type AgentParams struct {
 
 	// 所有参与混流转推的主播持续离开TRTC房间或切换成观众超过MaxIdleTime的时长，自动停止转推，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。
 	MaxIdleTime *uint64 `json:"MaxIdleTime,omitnil,omitempty" name:"MaxIdleTime"`
+}
+
+type AmbientSound struct {
+	// 环境场景选择
+	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
+
+	// 控制环境音的音量。取值的范围是 [0,2]。值越低，环境音越小；值越高，环境音越响亮。如果未设置，则使用默认值 1。
+	Volume *float64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 }
 
 type AudioEncode struct {
@@ -793,6 +807,60 @@ func (r *DeletePictureResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeletePictureResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVoicePrintRequestParams struct {
+	// 声纹信息ID
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+}
+
+type DeleteVoicePrintRequest struct {
+	*tchttp.BaseRequest
+	
+	// 声纹信息ID
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+}
+
+func (r *DeleteVoicePrintRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVoicePrintRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VoicePrintId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVoicePrintRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVoicePrintResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteVoicePrintResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteVoicePrintResponseParams `json:"Response"`
+}
+
+func (r *DeleteVoicePrintResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVoicePrintResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3000,6 +3068,87 @@ func (r *DescribeUserInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeVoicePrintRequestParams struct {
+	// 查询方式，0表示查询特定VoicePrintId，1表示分页查询
+	DescribeMode *uint64 `json:"DescribeMode,omitnil,omitempty" name:"DescribeMode"`
+
+	// 声纹ID
+	VoicePrintIdList []*string `json:"VoicePrintIdList,omitnil,omitempty" name:"VoicePrintIdList"`
+
+	// 当前页码,从1开始,DescribeMode为1时填写
+	PageIndex *uint64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
+
+	// 每页条数 最少20,DescribeMode为1时填写
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeVoicePrintRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询方式，0表示查询特定VoicePrintId，1表示分页查询
+	DescribeMode *uint64 `json:"DescribeMode,omitnil,omitempty" name:"DescribeMode"`
+
+	// 声纹ID
+	VoicePrintIdList []*string `json:"VoicePrintIdList,omitnil,omitempty" name:"VoicePrintIdList"`
+
+	// 当前页码,从1开始,DescribeMode为1时填写
+	PageIndex *uint64 `json:"PageIndex,omitnil,omitempty" name:"PageIndex"`
+
+	// 每页条数 最少20,DescribeMode为1时填写
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeVoicePrintRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVoicePrintRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DescribeMode")
+	delete(f, "VoicePrintIdList")
+	delete(f, "PageIndex")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVoicePrintRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVoicePrintResponseParams struct {
+	// 总的条数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 声纹信息
+	Data []*VoicePrintInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeVoicePrintResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVoicePrintResponseParams `json:"Response"`
+}
+
+func (r *DescribeVoicePrintResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVoicePrintResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeWebRecordRequestParams struct {
 	// 开始页面录制时返回的任务id
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -4078,6 +4227,9 @@ type RecognizeConfig struct {
 	// - "zh": 中文（简体）
 	// - "zh-TW": 中文（繁体）
 	// - "en": 英语
+	// - "16k_zh_edu"：中文教育
+	// - "16k_zh_medical"：中文医疗
+	// - "16k_zh_court"：中文法庭
 	// 
 	// **标准版：**
 	// - "8k_zh_large": 普方大模型引擎. 当前模型同时支持中文等语言的识别，模型参数量极大，语言模型性能增强，针对电话音频中各类场景、各类中文方言的识别准确率极大提升.
@@ -4206,6 +4358,91 @@ type RecordUsage struct {
 
 	// 语音时长，单位：秒。
 	AudioTime *uint64 `json:"AudioTime,omitnil,omitempty" name:"AudioTime"`
+}
+
+// Predefined struct for user
+type RegisterVoicePrintRequestParams struct {
+	// 整个wav音频文件的base64字符串,其中wav文件限定为16k或8k采样率, 16bit位深, 单声道, 8到18秒有效音频时长,编码数据大小不超过2M
+	Audio *string `json:"Audio,omitnil,omitempty" name:"Audio"`
+
+	// 毫秒时间戳
+	ReqTimestamp *uint64 `json:"ReqTimestamp,omitnil,omitempty" name:"ReqTimestamp"`
+
+	// 音频格式,目前只支持0,代表wav
+	AudioFormat *uint64 `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+
+	// 音频名称,长度不要超过32
+	AudioName *string `json:"AudioName,omitnil,omitempty" name:"AudioName"`
+
+	// 和声纹绑定的MetaInfo，长度最大不超过512
+	AudioMetaInfo *string `json:"AudioMetaInfo,omitnil,omitempty" name:"AudioMetaInfo"`
+}
+
+type RegisterVoicePrintRequest struct {
+	*tchttp.BaseRequest
+	
+	// 整个wav音频文件的base64字符串,其中wav文件限定为16k或8k采样率, 16bit位深, 单声道, 8到18秒有效音频时长,编码数据大小不超过2M
+	Audio *string `json:"Audio,omitnil,omitempty" name:"Audio"`
+
+	// 毫秒时间戳
+	ReqTimestamp *uint64 `json:"ReqTimestamp,omitnil,omitempty" name:"ReqTimestamp"`
+
+	// 音频格式,目前只支持0,代表wav
+	AudioFormat *uint64 `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+
+	// 音频名称,长度不要超过32
+	AudioName *string `json:"AudioName,omitnil,omitempty" name:"AudioName"`
+
+	// 和声纹绑定的MetaInfo，长度最大不超过512
+	AudioMetaInfo *string `json:"AudioMetaInfo,omitnil,omitempty" name:"AudioMetaInfo"`
+}
+
+func (r *RegisterVoicePrintRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RegisterVoicePrintRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Audio")
+	delete(f, "ReqTimestamp")
+	delete(f, "AudioFormat")
+	delete(f, "AudioName")
+	delete(f, "AudioMetaInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RegisterVoicePrintRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RegisterVoicePrintResponseParams struct {
+	// 声纹信息ID
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RegisterVoicePrintResponse struct {
+	*tchttp.BaseResponse
+	Response *RegisterVoicePrintResponseParams `json:"Response"`
+}
+
+func (r *RegisterVoicePrintResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RegisterVoicePrintResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -6235,6 +6472,88 @@ func (r *UpdateStreamIngestResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateVoicePrintRequestParams struct {
+	// 声纹信息ID
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// 毫秒时间戳
+	ReqTimestamp *uint64 `json:"ReqTimestamp,omitnil,omitempty" name:"ReqTimestamp"`
+
+	// 音频格式,目前只支持0,代表wav
+	AudioFormat *uint64 `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+
+	// 整个wav音频文件的base64字符串,其中wav文件限定为16k或8k采样率, 16bit位深, 单声道, 8到18秒有效音频时长,编码数据大小不超过2M
+	Audio *string `json:"Audio,omitnil,omitempty" name:"Audio"`
+
+	// 和声纹绑定的MetaInfo，长度最大不超过512
+	AudioMetaInfo *string `json:"AudioMetaInfo,omitnil,omitempty" name:"AudioMetaInfo"`
+}
+
+type UpdateVoicePrintRequest struct {
+	*tchttp.BaseRequest
+	
+	// 声纹信息ID
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// 毫秒时间戳
+	ReqTimestamp *uint64 `json:"ReqTimestamp,omitnil,omitempty" name:"ReqTimestamp"`
+
+	// 音频格式,目前只支持0,代表wav
+	AudioFormat *uint64 `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+
+	// 整个wav音频文件的base64字符串,其中wav文件限定为16k或8k采样率, 16bit位深, 单声道, 8到18秒有效音频时长,编码数据大小不超过2M
+	Audio *string `json:"Audio,omitnil,omitempty" name:"Audio"`
+
+	// 和声纹绑定的MetaInfo，长度最大不超过512
+	AudioMetaInfo *string `json:"AudioMetaInfo,omitnil,omitempty" name:"AudioMetaInfo"`
+}
+
+func (r *UpdateVoicePrintRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateVoicePrintRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VoicePrintId")
+	delete(f, "ReqTimestamp")
+	delete(f, "AudioFormat")
+	delete(f, "Audio")
+	delete(f, "AudioMetaInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateVoicePrintRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateVoicePrintResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateVoicePrintResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateVoicePrintResponseParams `json:"Response"`
+}
+
+func (r *UpdateVoicePrintResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateVoicePrintResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type UserInformation struct {
 	// 房间号
 	RoomStr *string `json:"RoomStr,omitnil,omitempty" name:"RoomStr"`
@@ -6318,6 +6637,40 @@ type VideoParams struct {
 
 	// 视频关键帧时间间隔，单位秒，默认值10秒。
 	Gop *uint64 `json:"Gop,omitnil,omitempty" name:"Gop"`
+}
+
+type VoicePrint struct {
+	// 默认为0，表示不启用声纹。1表示使用固定声纹，且需要填写voiceprint id。2表示使用动态声纹，不需要使用voiceprint id，内部动态选择主讲人声纹
+	Mode *uint64 `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// 只有当VoicePrint Mode为1时需要填写，目前仅支持填写一个声纹id
+	IdList []*string `json:"IdList,omitnil,omitempty" name:"IdList"`
+}
+
+type VoicePrintInfo struct {
+	// 声纹ID
+	VoicePrintId *string `json:"VoicePrintId,omitnil,omitempty" name:"VoicePrintId"`
+
+	// 应用id
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 和声纹绑定的MetaInfo
+	VoicePrintMetaInfo *string `json:"VoicePrintMetaInfo,omitnil,omitempty" name:"VoicePrintMetaInfo"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 音频格式,当前只有0(代表wav)
+	AudioFormat *uint64 `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
+
+	// 音频名称
+	AudioName *string `json:"AudioName,omitnil,omitempty" name:"AudioName"`
+
+	// 请求毫秒时间戳
+	ReqTimestamp *uint64 `json:"ReqTimestamp,omitnil,omitempty" name:"ReqTimestamp"`
 }
 
 type WaterMark struct {

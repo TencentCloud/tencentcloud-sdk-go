@@ -486,7 +486,7 @@ func (r *DescribeTaskDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTasksRequestParams struct {
-	// 该参数表示任务列表每页展示的任务条数，**默认值为10**（每页展示10条任务）。
+	// 该参数表示任务列表每页展示的任务条数，**默认值为10，最大值为100**（每页展示10条任务）。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 该参数表示任务筛选器的输入参数，可根据业务类型、审核文件类型、处理建议及任务状态筛选想要查看的审核任务，具体参数内容请参见TaskFilter数据结构的详细描述。
@@ -505,7 +505,7 @@ type DescribeTasksRequestParams struct {
 type DescribeTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 该参数表示任务列表每页展示的任务条数，**默认值为10**（每页展示10条任务）。
+	// 该参数表示任务列表每页展示的任务条数，**默认值为10，最大值为100**（每页展示10条任务）。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 该参数表示任务筛选器的输入参数，可根据业务类型、审核文件类型、处理建议及任务状态筛选想要查看的审核任务，具体参数内容请参见TaskFilter数据结构的详细描述。

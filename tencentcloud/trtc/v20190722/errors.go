@@ -38,6 +38,15 @@ const (
 	// 云端切片方法不支持。
 	FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
 
+	// Cos上传出现异常。
+	FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
+
+	// 数据库处理出现异常。
+	FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
+
+	// VoicePrintId生成出现异常。
+	FAILEDOPERATION_GENVOICEPRINTIDFAILED = "FailedOperation.GenVoicePrintIdFailed"
+
 	// 房间中没有设置混流模板。
 	FAILEDOPERATION_MIXSESSIONNOTEXIST = "FailedOperation.MixSessionNotExist"
 
@@ -76,6 +85,15 @@ const (
 
 	// 任务不存在或已结束
 	FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+
+	// VoicePrintId不存在。
+	FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
+
+	// 声纹音频检测出现异常。
+	FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
+
+	// 单用户声纹注册数量受限,请联系我们调整到合理值。
+	FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = "FailedOperation.VoicePrintRegistrationLimit"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
@@ -139,6 +157,9 @@ const (
 
 	// EndTs参数错误。
 	INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
+
+	// Audio 参数不合法。
+	INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
 
 	// invalid sdkAppId
 	INVALIDPARAMETER_INVALIDSDKAPPID = "InvalidParameter.InvalidSdkAppId"
@@ -277,6 +298,9 @@ const (
 
 	// 缺少endTS_s参数。
 	MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
+
+	// 缺少VoicePrintIdList 参数。
+	MISSINGPARAMETER_MISSINGVOICEPRINTIDLIST = "MissingParameter.MissingVoicePrintIdList"
 
 	// 缺少OutputParams参数。
 	MISSINGPARAMETER_OUTPUTPARAMS = "MissingParameter.OutputParams"

@@ -201,6 +201,7 @@ type ApplySnapshotRequestParams struct {
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 
 	// 回滚前是否执行自动关机，仅支持回滚快照至已挂载的云硬盘时传入。
+	// 此参数为true时，AutoStartInstance才能为true。
 	AutoStopInstance *bool `json:"AutoStopInstance,omitnil,omitempty" name:"AutoStopInstance"`
 
 	// 回滚完成后是否自动开机，仅支持回滚快照至已挂载的云硬盘时传入。该参数传入时，需要同时传入AutoStopInstance参数。
@@ -217,6 +218,7 @@ type ApplySnapshotRequest struct {
 	DiskId *string `json:"DiskId,omitnil,omitempty" name:"DiskId"`
 
 	// 回滚前是否执行自动关机，仅支持回滚快照至已挂载的云硬盘时传入。
+	// 此参数为true时，AutoStartInstance才能为true。
 	AutoStopInstance *bool `json:"AutoStopInstance,omitnil,omitempty" name:"AutoStopInstance"`
 
 	// 回滚完成后是否自动开机，仅支持回滚快照至已挂载的云硬盘时传入。该参数传入时，需要同时传入AutoStopInstance参数。
@@ -366,6 +368,7 @@ type AutoMountConfiguration struct {
 
 type AutoSnapshotPolicy struct {
 	// 已绑定当前定期快照策略的云盘ID列表。
+	// DescribeDiskAssociatedAutoSnapshotPolicy场景下该字段返回为空。
 	DiskIdSet []*string `json:"DiskIdSet,omitnil,omitempty" name:"DiskIdSet"`
 
 	// 定期快照策略是否激活。
@@ -378,7 +381,7 @@ type AutoSnapshotPolicy struct {
 	// </ul>
 	AutoSnapshotPolicyState *string `json:"AutoSnapshotPolicyState,omitnil,omitempty" name:"AutoSnapshotPolicyState"`
 
-	// 是否是跨账号复制快照快照, 1：是, 0: 不是
+	// 是否是跨账号复制快照, 1：是, 0: 不是
 	IsCopyToRemote *uint64 `json:"IsCopyToRemote,omitnil,omitempty" name:"IsCopyToRemote"`
 
 	// 使用该定期快照策略创建出来的快照是否永久保留。
@@ -812,7 +815,7 @@ type CreateDisksRequestParams struct {
 	// 指定云硬盘备份点配额。
 	DiskBackupQuota *uint64 `json:"DiskBackupQuota,omitnil,omitempty" name:"DiskBackupQuota"`
 
-	// 创建云盘时是否开启性能突发。当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）。
+	// 创建云盘时是否开启性能突发。当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）且云盘大小不小于460GiB。
 	BurstPerformance *bool `json:"BurstPerformance,omitnil,omitempty" name:"BurstPerformance"`
 
 	// 指定云硬盘加密类型，取值为ENCRYPT_V1和ENCRYPT_V2，分别表示第一代和第二代加密技术，两种加密技术互不兼容。推荐优先使用第二代加密技术ENCRYPT_V2，第一代加密技术仅支持在部分老旧机型使用。该参数仅当创建加密云硬盘时有效。
@@ -873,7 +876,7 @@ type CreateDisksRequest struct {
 	// 指定云硬盘备份点配额。
 	DiskBackupQuota *uint64 `json:"DiskBackupQuota,omitnil,omitempty" name:"DiskBackupQuota"`
 
-	// 创建云盘时是否开启性能突发。当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）。
+	// 创建云盘时是否开启性能突发。当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）且云盘大小不小于460GiB。
 	BurstPerformance *bool `json:"BurstPerformance,omitnil,omitempty" name:"BurstPerformance"`
 
 	// 指定云硬盘加密类型，取值为ENCRYPT_V1和ENCRYPT_V2，分别表示第一代和第二代加密技术，两种加密技术互不兼容。推荐优先使用第二代加密技术ENCRYPT_V2，第一代加密技术仅支持在部分老旧机型使用。该参数仅当创建加密云硬盘时有效。
@@ -1512,7 +1515,7 @@ type DescribeDiskBackupsRequestParams struct {
 	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 输出云硬盘备份点列表的排列顺序。取值范围：<br><li>ASC：升序排列</li><br><li>DESC：降序排列。</li>
+	// 输出云硬盘备份点列表的排列顺序，默认排序：ASC。取值范围：<br><li>ASC：升序排列</li><br><li>DESC：降序排列。</li>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
 	// 云硬盘备份点列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据云硬盘备份点的创建时间排序</li><br>默认按创建时间排序。
@@ -1534,7 +1537,7 @@ type DescribeDiskBackupsRequest struct {
 	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 输出云硬盘备份点列表的排列顺序。取值范围：<br><li>ASC：升序排列</li><br><li>DESC：降序排列。</li>
+	// 输出云硬盘备份点列表的排列顺序，默认排序：ASC。取值范围：<br><li>ASC：升序排列</li><br><li>DESC：降序排列。</li>
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
 	// 云硬盘备份点列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据云硬盘备份点的创建时间排序</li><br>默认按创建时间排序。
@@ -3709,7 +3712,7 @@ type Placement struct {
 	// 云硬盘所属的[可用区](/document/product/213/15753#ZoneInfo)。该参数也可以通过调用  [DescribeZones](/document/product/213/15707) 的返回值中的Zone字段来获取。
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 围笼Id。作为入参时，表示对指定的CageId的资源进行操作，可为空。 作为出参时，表示资源所属围笼ID，可为空。
+	// 围笼Id，可通过 [DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143) 获取。作为入参时，表示对指定的CageId的资源进行操作，可为空。 作为出参时，表示资源所属围笼ID，可为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CageId *string `json:"CageId,omitnil,omitempty" name:"CageId"`
 
@@ -3724,7 +3727,7 @@ type Placement struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcName *string `json:"CdcName,omitnil,omitempty" name:"CdcName"`
 
-	// 实例所属的独享集群ID。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
+	// 实例所属的独享集群ID。可通过 [DescribeDiskStoragePool](https://cloud.tencent.com/document/api/362/62143) 获取。作为入参时，表示对指定的CdcId独享集群的资源进行操作，可为空。 作为出参时，表示资源所属的独享集群的ID，可为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcId *string `json:"CdcId,omitnil,omitempty" name:"CdcId"`
 

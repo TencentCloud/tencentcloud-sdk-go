@@ -1312,6 +1312,9 @@ type ChannelCreateBatchSignUrlRequestParams struct {
 	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>
 	// 注：`1. 合同组暂不支持批量拒签功能。2. 如果是链接直接跳转至详情页（JumpToDetail参数为true），也不支持批量拒签功能`
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
+
+	// 是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>注：`1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 使用此功能时，FlowIds参数必传。3. 对于企业签署方，如果有签名控件，则会使用用户首次选择的签名类型签署所有含有签名控件的合同。`
+	CanSkipReadFlow *bool `json:"CanSkipReadFlow,omitnil,omitempty" name:"CanSkipReadFlow"`
 }
 
 type ChannelCreateBatchSignUrlRequest struct {
@@ -1435,6 +1438,9 @@ type ChannelCreateBatchSignUrlRequest struct {
 	// 是否允许此链接中签署方批量拒签。 <ul><li>false (默认): 不允许批量拒签</li> <li>true : 允许批量拒签。</li></ul>
 	// 注：`1. 合同组暂不支持批量拒签功能。2. 如果是链接直接跳转至详情页（JumpToDetail参数为true），也不支持批量拒签功能`
 	CanBatchReject *bool `json:"CanBatchReject,omitnil,omitempty" name:"CanBatchReject"`
+
+	// 是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul>注：`1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 使用此功能时，FlowIds参数必传。3. 对于企业签署方，如果有签名控件，则会使用用户首次选择的签名类型签署所有含有签名控件的合同。`
+	CanSkipReadFlow *bool `json:"CanSkipReadFlow,omitnil,omitempty" name:"CanSkipReadFlow"`
 }
 
 func (r *ChannelCreateBatchSignUrlRequest) ToJsonString() string {
@@ -1466,6 +1472,7 @@ func (r *ChannelCreateBatchSignUrlRequest) FromJsonString(s string) error {
 	delete(f, "AutoJumpBack")
 	delete(f, "UrlUseEnv")
 	delete(f, "CanBatchReject")
+	delete(f, "CanSkipReadFlow")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateBatchSignUrlRequest has unknown keys!", "")
 	}
@@ -3571,7 +3578,9 @@ type ChannelCreatePrepareFlowRequestParams struct {
 	// 合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑
 	FlowOption *CreateFlowOption `json:"FlowOption,omitnil,omitempty" name:"FlowOption"`
 
-	// 合同签署人信息
+	// 已废弃，请用FlowInfo.Approvers
+	//
+	// Deprecated: FlowApproverList is deprecated.
 	FlowApproverList []*CommonFlowApprover `json:"FlowApproverList,omitnil,omitempty" name:"FlowApproverList"`
 
 	// 合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接
@@ -3635,7 +3644,7 @@ type ChannelCreatePrepareFlowRequest struct {
 	// 合同流程配置信息，用于配置发起合同时定制化如是否允许修改，某些按钮的隐藏等逻辑
 	FlowOption *CreateFlowOption `json:"FlowOption,omitnil,omitempty" name:"FlowOption"`
 
-	// 合同签署人信息
+	// 已废弃，请用FlowInfo.Approvers
 	FlowApproverList []*CommonFlowApprover `json:"FlowApproverList,omitnil,omitempty" name:"FlowApproverList"`
 
 	// 合同Id：用于通过一个已发起的合同快速生成一个发起流程web链接
@@ -12434,6 +12443,7 @@ type OperateTemplateRequestParams struct {
 	// <li>DELETE:  删除</li>
 	// <li>ENABLE: 启用</li>
 	// <li>DISABLE: 停用</li>
+	// <li>COPY: 复制新建</li>
 	// </ul>
 	OperateType *string `json:"OperateType,omitnil,omitempty" name:"OperateType"`
 }
@@ -12459,6 +12469,7 @@ type OperateTemplateRequest struct {
 	// <li>DELETE:  删除</li>
 	// <li>ENABLE: 启用</li>
 	// <li>DISABLE: 停用</li>
+	// <li>COPY: 复制新建</li>
 	// </ul>
 	OperateType *string `json:"OperateType,omitnil,omitempty" name:"OperateType"`
 }

@@ -1171,6 +1171,9 @@ type Certificates struct {
 	// 托管配置信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostingConfig *HostingConfig `json:"HostingConfig,omitnil,omitempty" name:"HostingConfig"`
+
+	// 是否是上传托管续费证书
+	IsHostingUploadRenewCert *bool `json:"IsHostingUploadRenewCert,omitnil,omitempty" name:"IsHostingUploadRenewCert"`
 }
 
 // Predefined struct for user
@@ -3451,6 +3454,12 @@ type DescribeCertificateDetailResponseParams struct {
 	// 证书链信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertChainInfo []*CertBasicInfo `json:"CertChainInfo,omitnil,omitempty" name:"CertChainInfo"`
+
+	// 证书域名类型， 1（单域名）；2（多域名）；3（泛域名）；4（多泛域名）
+	DomainType *uint64 `json:"DomainType,omitnil,omitempty" name:"DomainType"`
+
+	// 证书类型，DV（域名型）；OV（企业型）；EV（增强型）
+	CertType *string `json:"CertType,omitnil,omitempty" name:"CertType"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6372,6 +6381,17 @@ type ManagerInfo struct {
 	Tags []*Tags `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
+type ManagerPreAuditDomain struct {
+	// 预审核域名信息
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 预审核域名创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 预审核域名过期时间
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+}
+
 type ManagerStatusInfo struct {
 	// 审核类型，枚举值：ov,ev
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
@@ -6384,6 +6404,9 @@ type ManagerStatusInfo struct {
 
 	// 过期时间
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 管理人预审核的域名列表
+	ManagerPreAuditDomains []*ManagerPreAuditDomain `json:"ManagerPreAuditDomains,omitnil,omitempty" name:"ManagerPreAuditDomains"`
 }
 
 // Predefined struct for user

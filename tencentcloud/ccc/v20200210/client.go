@@ -147,6 +147,55 @@ func (c *Client) AbortPredictiveDialingCampaignWithContext(ctx context.Context, 
     return
 }
 
+func NewBindNumberCallInInterfaceRequest() (request *BindNumberCallInInterfaceRequest) {
+    request = &BindNumberCallInInterfaceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "BindNumberCallInInterface")
+    
+    
+    return
+}
+
+func NewBindNumberCallInInterfaceResponse() (response *BindNumberCallInInterfaceResponse) {
+    response = &BindNumberCallInInterfaceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BindNumberCallInInterface
+// 绑定号码呼入回调接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+func (c *Client) BindNumberCallInInterface(request *BindNumberCallInInterfaceRequest) (response *BindNumberCallInInterfaceResponse, err error) {
+    return c.BindNumberCallInInterfaceWithContext(context.Background(), request)
+}
+
+// BindNumberCallInInterface
+// 绑定号码呼入回调接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+func (c *Client) BindNumberCallInInterfaceWithContext(ctx context.Context, request *BindNumberCallInInterfaceRequest) (response *BindNumberCallInInterfaceResponse, err error) {
+    if request == nil {
+        request = NewBindNumberCallInInterfaceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindNumberCallInInterface require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindNumberCallInInterfaceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindNumberCallOutSkillGroupRequest() (request *BindNumberCallOutSkillGroupRequest) {
     request = &BindNumberCallOutSkillGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},

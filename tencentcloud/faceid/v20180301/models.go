@@ -1543,6 +1543,10 @@ type DetectInfoVideoData struct {
 	// 活体视频的base64编码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LivenessVideo *string `json:"LivenessVideo,omitnil,omitempty" name:"LivenessVideo"`
+
+	// 当次token中所有用户活体视频的COS存储路径，仅当您开启数据存储服务且“IsReturnAllVideo”入参取值为true 时返回。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LivenessVideos []*VideoDetailData `json:"LivenessVideos,omitnil,omitempty" name:"LivenessVideos"`
 }
 
 type EidInfo struct {
@@ -1789,6 +1793,9 @@ type GetDetectInfoEnhancedRequestParams struct {
 
 	// 是否对回包整体进行加密。
 	IsEncryptResponse *bool `json:"IsEncryptResponse,omitnil,omitempty" name:"IsEncryptResponse"`
+
+	// 是否需要返回认证中间过程的刷脸重试视频，默认不开启，多段视频需要存储到COS空间中，因此开启后还需要额外开启数据存储服务才可生效。详见[数据存储指引](https://cloud.tencent.com/document/product/1007/104229)。
+	IsReturnAllVideo *bool `json:"IsReturnAllVideo,omitnil,omitempty" name:"IsReturnAllVideo"`
 }
 
 type GetDetectInfoEnhancedRequest struct {
@@ -1832,6 +1839,9 @@ type GetDetectInfoEnhancedRequest struct {
 
 	// 是否对回包整体进行加密。
 	IsEncryptResponse *bool `json:"IsEncryptResponse,omitnil,omitempty" name:"IsEncryptResponse"`
+
+	// 是否需要返回认证中间过程的刷脸重试视频，默认不开启，多段视频需要存储到COS空间中，因此开启后还需要额外开启数据存储服务才可生效。详见[数据存储指引](https://cloud.tencent.com/document/product/1007/104229)。
+	IsReturnAllVideo *bool `json:"IsReturnAllVideo,omitnil,omitempty" name:"IsReturnAllVideo"`
 }
 
 func (r *GetDetectInfoEnhancedRequest) ToJsonString() string {
@@ -1855,6 +1865,7 @@ func (r *GetDetectInfoEnhancedRequest) FromJsonString(s string) error {
 	delete(f, "IsEncrypt")
 	delete(f, "Encryption")
 	delete(f, "IsEncryptResponse")
+	delete(f, "IsReturnAllVideo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDetectInfoEnhancedRequest has unknown keys!", "")
 	}
@@ -4940,6 +4951,16 @@ type RuleIdConfig struct {
 	// 2：固定1.2倍速
 	// 3：固定1.5倍速
 	Speed *uint64 `json:"Speed,omitnil,omitempty" name:"Speed"`
+}
+
+type VideoDetailData struct {
+	// 本次活体一比一请求的唯一标记。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Seq *string `json:"Seq,omitnil,omitempty" name:"Seq"`
+
+	// 活体视频的base64编码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Video *string `json:"Video,omitnil,omitempty" name:"Video"`
 }
 
 type WeChatBillDetail struct {

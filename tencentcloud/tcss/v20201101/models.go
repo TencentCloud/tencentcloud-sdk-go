@@ -28535,6 +28535,109 @@ func (r *ModifyReverseShellStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyRiskDnsEventStatusRequestParams struct {
+	// 恶意请求事件ID数组。加白时必需，否则Filters和EventIDSet二者选其一。
+	EventIDSet []*uint64 `json:"EventIDSet,omitnil,omitempty" name:"EventIDSet"`
+
+	// 标记事件的状态：
+	// EVENT_UNDEAL:未处理（取消忽略），
+	// EVENT_DEALED:已处理，
+	// EVENT_IGNORE:忽略，
+	// EVENT_DELETE：已删除
+	// EVENT_ADD_WHITE：加白
+	// EVENT_ISOLATE_CONTAINER：隔离容器
+	// EVENT_RESOTRE_CONTAINER：恢复容器
+	EventStatus *string `json:"EventStatus,omitnil,omitempty" name:"EventStatus"`
+
+	// 白名单域名/IP
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 相同的请求域名/IP事件加白处理
+	AllSameEventAddWhite *bool `json:"AllSameEventAddWhite,omitnil,omitempty" name:"AllSameEventAddWhite"`
+
+	// 加白的事件类型，恶意域名请求：DOMAIN，恶意IP请求：IP
+	AddWhiteEventType *string `json:"AddWhiteEventType,omitnil,omitempty" name:"AddWhiteEventType"`
+}
+
+type ModifyRiskDnsEventStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 恶意请求事件ID数组。加白时必需，否则Filters和EventIDSet二者选其一。
+	EventIDSet []*uint64 `json:"EventIDSet,omitnil,omitempty" name:"EventIDSet"`
+
+	// 标记事件的状态：
+	// EVENT_UNDEAL:未处理（取消忽略），
+	// EVENT_DEALED:已处理，
+	// EVENT_IGNORE:忽略，
+	// EVENT_DELETE：已删除
+	// EVENT_ADD_WHITE：加白
+	// EVENT_ISOLATE_CONTAINER：隔离容器
+	// EVENT_RESOTRE_CONTAINER：恢复容器
+	EventStatus *string `json:"EventStatus,omitnil,omitempty" name:"EventStatus"`
+
+	// 白名单域名/IP
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 相同的请求域名/IP事件加白处理
+	AllSameEventAddWhite *bool `json:"AllSameEventAddWhite,omitnil,omitempty" name:"AllSameEventAddWhite"`
+
+	// 加白的事件类型，恶意域名请求：DOMAIN，恶意IP请求：IP
+	AddWhiteEventType *string `json:"AddWhiteEventType,omitnil,omitempty" name:"AddWhiteEventType"`
+}
+
+func (r *ModifyRiskDnsEventStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRiskDnsEventStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EventIDSet")
+	delete(f, "EventStatus")
+	delete(f, "Address")
+	delete(f, "Remark")
+	delete(f, "AllSameEventAddWhite")
+	delete(f, "AddWhiteEventType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRiskDnsEventStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRiskDnsEventStatusResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyRiskDnsEventStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRiskDnsEventStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyRiskDnsEventStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRiskDnsEventStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyRiskSyscallStatusRequestParams struct {
 	// 处理事件ids
 	EventIdSet []*string `json:"EventIdSet,omitnil,omitempty" name:"EventIdSet"`

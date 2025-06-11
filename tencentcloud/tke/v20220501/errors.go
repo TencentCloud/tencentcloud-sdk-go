@@ -73,4 +73,7 @@ const (
 
 	// 集群状态不支持该操作。
 	RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+
+	// 操作不支持。
+	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 )

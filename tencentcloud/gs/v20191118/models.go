@@ -2257,6 +2257,8 @@ type DescribeAndroidInstancesRequestParams struct {
 	// 字段过滤器。Filter 的 Name 有以下值：
 	// Name：实例名称
 	// UserId：实例用户ID
+	// HostSerialNumber：宿主机序列号
+	// HostServerSerialNumber：机箱序列号
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -2287,6 +2289,8 @@ type DescribeAndroidInstancesRequest struct {
 	// 字段过滤器。Filter 的 Name 有以下值：
 	// Name：实例名称
 	// UserId：实例用户ID
+	// HostSerialNumber：宿主机序列号
+	// HostServerSerialNumber：机箱序列号
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -2615,6 +2619,70 @@ func (r *DistributeFileToAndroidInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DistributeFileToAndroidInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DistributePhotoToAndroidInstancesRequestParams struct {
+	// 安卓实例 ID 列表
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 照片下载 URL
+	PhotoURL *string `json:"PhotoURL,omitnil,omitempty" name:"PhotoURL"`
+}
+
+type DistributePhotoToAndroidInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 安卓实例 ID 列表
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 照片下载 URL
+	PhotoURL *string `json:"PhotoURL,omitnil,omitempty" name:"PhotoURL"`
+}
+
+func (r *DistributePhotoToAndroidInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributePhotoToAndroidInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidInstanceIds")
+	delete(f, "PhotoURL")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DistributePhotoToAndroidInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DistributePhotoToAndroidInstancesResponseParams struct {
+	// 实例任务集合
+	TaskSet []*AndroidInstanceTask `json:"TaskSet,omitnil,omitempty" name:"TaskSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DistributePhotoToAndroidInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DistributePhotoToAndroidInstancesResponseParams `json:"Response"`
+}
+
+func (r *DistributePhotoToAndroidInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DistributePhotoToAndroidInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

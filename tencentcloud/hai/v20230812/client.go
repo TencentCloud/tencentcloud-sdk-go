@@ -621,6 +621,124 @@ func (c *Client) InquirePriceRunInstancesWithContext(ctx context.Context, reques
     return
 }
 
+func NewResetInstancesPasswordRequest() (request *ResetInstancesPasswordRequest) {
+    request = &ResetInstancesPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "ResetInstancesPassword")
+    
+    
+    return
+}
+
+func NewResetInstancesPasswordResponse() (response *ResetInstancesPasswordResponse) {
+    response = &ResetInstancesPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResetInstancesPassword
+// 本接口 (ResetInstancesPassword) 用于重置实例的用户密码。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDPASSWORD = "InvalidParameterValue.InvalidPassword"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+func (c *Client) ResetInstancesPassword(request *ResetInstancesPasswordRequest) (response *ResetInstancesPasswordResponse, err error) {
+    return c.ResetInstancesPasswordWithContext(context.Background(), request)
+}
+
+// ResetInstancesPassword
+// 本接口 (ResetInstancesPassword) 用于重置实例的用户密码。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+//  INVALIDPARAMETERVALUE_INVALIDPASSWORD = "InvalidParameterValue.InvalidPassword"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+func (c *Client) ResetInstancesPasswordWithContext(ctx context.Context, request *ResetInstancesPasswordRequest) (response *ResetInstancesPasswordResponse, err error) {
+    if request == nil {
+        request = NewResetInstancesPasswordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetInstancesPassword require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetInstancesPasswordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResizeInstanceDiskRequest() (request *ResizeInstanceDiskRequest) {
+    request = &ResizeInstanceDiskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("hai", APIVersion, "ResizeInstanceDisk")
+    
+    
+    return
+}
+
+func NewResizeInstanceDiskResponse() (response *ResizeInstanceDiskResponse) {
+    response = &ResizeInstanceDiskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ResizeInstanceDisk
+// 本接口（ResizeInstanceDisk）用于对指定HAI实例进行扩容云硬盘操作。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DISKSIZEMUSTLARGETHANCURRENTDISKSIZE = "InvalidParameterValue.DiskSizeMustLargeThanCurrentDiskSize"
+//  INVALIDPARAMETERVALUE_DISKSIZEREACHLIMIT = "InvalidParameterValue.DiskSizeReachLimit"
+//  INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+func (c *Client) ResizeInstanceDisk(request *ResizeInstanceDiskRequest) (response *ResizeInstanceDiskResponse, err error) {
+    return c.ResizeInstanceDiskWithContext(context.Background(), request)
+}
+
+// ResizeInstanceDisk
+// 本接口（ResizeInstanceDisk）用于对指定HAI实例进行扩容云硬盘操作。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_DISKSIZEMUSTLARGETHANCURRENTDISKSIZE = "InvalidParameterValue.DiskSizeMustLargeThanCurrentDiskSize"
+//  INVALIDPARAMETERVALUE_DISKSIZEREACHLIMIT = "InvalidParameterValue.DiskSizeReachLimit"
+//  INVALIDPARAMETERVALUE_INSTANCEIDNOTFOUND = "InvalidParameterValue.InstanceIdNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDINSTANCEIDMALFORMED = "InvalidParameterValue.InvalidInstanceIdMalformed"
+//  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
+func (c *Client) ResizeInstanceDiskWithContext(ctx context.Context, request *ResizeInstanceDiskRequest) (response *ResizeInstanceDiskResponse, err error) {
+    if request == nil {
+        request = NewResizeInstanceDiskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResizeInstanceDisk require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResizeInstanceDiskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRunInstancesRequest() (request *RunInstancesRequest) {
     request = &RunInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
