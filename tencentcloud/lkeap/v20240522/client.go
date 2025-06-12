@@ -542,6 +542,7 @@ func (c *Client) ChatCompletionsWithContext(ctx context.Context, request *ChatCo
     }
 
     request.SetContext(ctx)
+    request.SetRootDomain("ai." + tchttp.RootDomain)
     
     response = NewChatCompletionsResponse()
     err = c.Send(request, response)
@@ -1754,6 +1755,7 @@ func (c *Client) ReconstructDocumentSSEWithContext(ctx context.Context, request 
     }
 
     request.SetContext(ctx)
+    request.SetRootDomain("ai." + tchttp.RootDomain)
     
     response = NewReconstructDocumentSSEResponse()
     err = c.Send(request, response)

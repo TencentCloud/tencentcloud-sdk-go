@@ -191,6 +191,7 @@ func (c *Client) ChatCompletionsWithContext(ctx context.Context, request *ChatCo
     }
 
     request.SetContext(ctx)
+    request.SetRootDomain("ai." + tchttp.RootDomain)
     
     response = NewChatCompletionsResponse()
     err = c.Send(request, response)
@@ -282,6 +283,7 @@ func (c *Client) ChatTranslationsWithContext(ctx context.Context, request *ChatT
     }
 
     request.SetContext(ctx)
+    request.SetRootDomain("ai." + tchttp.RootDomain)
     
     response = NewChatTranslationsResponse()
     err = c.Send(request, response)
@@ -369,6 +371,7 @@ func (c *Client) CreateThreadWithContext(ctx context.Context, request *CreateThr
     }
 
     request.SetContext(ctx)
+    request.SetRootDomain("ai." + tchttp.RootDomain)
     
     response = NewCreateThreadResponse()
     err = c.Send(request, response)
@@ -436,6 +439,7 @@ func (c *Client) FilesDeletionsWithContext(ctx context.Context, request *FilesDe
     }
 
     request.SetContext(ctx)
+    request.SetRootDomain("ai." + tchttp.RootDomain)
     
     response = NewFilesDeletionsResponse()
     err = c.Send(request, response)
@@ -503,6 +507,7 @@ func (c *Client) FilesListWithContext(ctx context.Context, request *FilesListReq
     }
 
     request.SetContext(ctx)
+    request.SetRootDomain("ai." + tchttp.RootDomain)
     
     response = NewFilesListResponse()
     err = c.Send(request, response)
@@ -574,6 +579,7 @@ func (c *Client) FilesUploadsWithContext(ctx context.Context, request *FilesUplo
     }
 
     request.SetContext(ctx)
+    request.SetRootDomain("ai." + tchttp.RootDomain)
     
     response = NewFilesUploadsResponse()
     err = c.Send(request, response)
@@ -714,6 +720,7 @@ func (c *Client) GetThreadWithContext(ctx context.Context, request *GetThreadReq
     }
 
     request.SetContext(ctx)
+    request.SetRootDomain("ai." + tchttp.RootDomain)
     
     response = NewGetThreadResponse()
     err = c.Send(request, response)
@@ -801,6 +808,7 @@ func (c *Client) GetThreadMessageWithContext(ctx context.Context, request *GetTh
     }
 
     request.SetContext(ctx)
+    request.SetRootDomain("ai." + tchttp.RootDomain)
     
     response = NewGetThreadMessageResponse()
     err = c.Send(request, response)
@@ -888,6 +896,7 @@ func (c *Client) GetThreadMessageListWithContext(ctx context.Context, request *G
     }
 
     request.SetContext(ctx)
+    request.SetRootDomain("ai." + tchttp.RootDomain)
     
     response = NewGetThreadMessageListResponse()
     err = c.Send(request, response)
@@ -1032,6 +1041,7 @@ func (c *Client) GroupChatCompletionsWithContext(ctx context.Context, request *G
     }
 
     request.SetContext(ctx)
+    request.SetRootDomain("ai." + tchttp.RootDomain)
     
     response = NewGroupChatCompletionsResponse()
     err = c.Send(request, response)
@@ -1127,6 +1137,7 @@ func (c *Client) ImageQuestionWithContext(ctx context.Context, request *ImageQue
     }
 
     request.SetContext(ctx)
+    request.SetRootDomain("ai." + tchttp.RootDomain)
     
     response = NewImageQuestionResponse()
     err = c.Send(request, response)
@@ -1391,6 +1402,7 @@ func (c *Client) RunThreadWithContext(ctx context.Context, request *RunThreadReq
     }
 
     request.SetContext(ctx)
+    request.SetRootDomain("ai." + tchttp.RootDomain)
     
     response = NewRunThreadResponse()
     err = c.Send(request, response)

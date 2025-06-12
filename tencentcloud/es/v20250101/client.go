@@ -98,6 +98,7 @@ func (c *Client) ChatCompletionsWithContext(ctx context.Context, request *ChatCo
     }
 
     request.SetContext(ctx)
+    request.SetRootDomain("ai." + tchttp.RootDomain)
     
     response = NewChatCompletionsResponse()
     err = c.Send(request, response)
@@ -448,6 +449,7 @@ func (c *Client) ParseDocumentWithContext(ctx context.Context, request *ParseDoc
     }
 
     request.SetContext(ctx)
+    request.SetRootDomain("ai." + tchttp.RootDomain)
     
     response = NewParseDocumentResponse()
     err = c.Send(request, response)
