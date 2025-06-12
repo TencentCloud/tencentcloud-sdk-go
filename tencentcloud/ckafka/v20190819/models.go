@@ -3192,6 +3192,9 @@ type DatahubTaskInfo struct {
 
 	// 步骤列表
 	StepList []*string `json:"StepList,omitnil,omitempty" name:"StepList"`
+
+	// 任务描述信息
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type DatahubTopicDTO struct {

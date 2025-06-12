@@ -6587,14 +6587,14 @@ func (r *DescribeBinlogsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCPUExpandStrategyInfoRequestParams struct {
-	// 实例 ID 。
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeCPUExpandStrategyInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID 。
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -6619,22 +6619,22 @@ func (r *DescribeCPUExpandStrategyInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCPUExpandStrategyInfoResponseParams struct {
-	// 策略类型。可选值 auto、manual。如果返回为NULL说明尚未开通弹性扩容策略
+	// 策略类型。输出值 auto、manual。如果返回为 NULL 说明尚未开通弹性扩容策略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 手动扩容的 CPU 。Type为 manual 时有效。
+	// 手动扩容的 CPU 。Type 为 manual 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpandCpu *int64 `json:"ExpandCpu,omitnil,omitempty" name:"ExpandCpu"`
 
-	// 自动扩容策略。Type 为 auto 时有效
+	// 自动扩容策略。Type 为 auto 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoStrategy *AutoStrategy `json:"AutoStrategy,omitnil,omitempty" name:"AutoStrategy"`
 
 	// 按周期扩容策略。
 	PeriodStrategy *PeriodStrategy `json:"PeriodStrategy,omitnil,omitempty" name:"PeriodStrategy"`
 
-	// 按时间段扩容策略
+	// 按时间段扩容策略。
 	TimeIntervalStrategy *TimeIntervalStrategy `json:"TimeIntervalStrategy,omitnil,omitempty" name:"TimeIntervalStrategy"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -15987,10 +15987,10 @@ func (r *StartBatchRollbackResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StartCpuExpandRequestParams struct {
-	// 实例 ID 。
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 扩容类型。auto 自动  manual 立即生效 timeInterval 按时间段 period 按周期
+	// 扩容类型。auto 自动  manual 立即生效 timeInterval 按时间段 period 按周期。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 手动扩容时，扩容的 CPU 核心数。
@@ -16000,20 +16000,20 @@ type StartCpuExpandRequestParams struct {
 	// 自动扩容策略。Type 为 auto 时必传。
 	AutoStrategy *AutoStrategy `json:"AutoStrategy,omitnil,omitempty" name:"AutoStrategy"`
 
-	// 按时间段扩容策略
+	// 按时间段扩容策略。
 	TimeIntervalStrategy *TimeIntervalStrategy `json:"TimeIntervalStrategy,omitnil,omitempty" name:"TimeIntervalStrategy"`
 
-	// 按周期扩容策略
+	// 按周期扩容策略。
 	PeriodStrategy *PeriodStrategy `json:"PeriodStrategy,omitnil,omitempty" name:"PeriodStrategy"`
 }
 
 type StartCpuExpandRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID 。
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 扩容类型。auto 自动  manual 立即生效 timeInterval 按时间段 period 按周期
+	// 扩容类型。auto 自动  manual 立即生效 timeInterval 按时间段 period 按周期。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 手动扩容时，扩容的 CPU 核心数。
@@ -16023,10 +16023,10 @@ type StartCpuExpandRequest struct {
 	// 自动扩容策略。Type 为 auto 时必传。
 	AutoStrategy *AutoStrategy `json:"AutoStrategy,omitnil,omitempty" name:"AutoStrategy"`
 
-	// 按时间段扩容策略
+	// 按时间段扩容策略。
 	TimeIntervalStrategy *TimeIntervalStrategy `json:"TimeIntervalStrategy,omitnil,omitempty" name:"TimeIntervalStrategy"`
 
-	// 按周期扩容策略
+	// 按周期扩容策略。
 	PeriodStrategy *PeriodStrategy `json:"PeriodStrategy,omitnil,omitempty" name:"PeriodStrategy"`
 }
 
@@ -16683,25 +16683,32 @@ func (r *SwitchForUpgradeResponse) FromJsonString(s string) error {
 }
 
 type TImeCycle struct {
-	// 周一的扩容时间段
+	// 按周期扩容时，是否选择周一扩容。
+	// 说明：取值 true，表示选择，取值 false，表示不选择。
 	Monday *bool `json:"Monday,omitnil,omitempty" name:"Monday"`
 
-	// 周二的扩容时间段
+	// 按周期扩容时，是否选择周二扩容。
+	// 说明：取值 true，表示选择，取值 false，表示不选择。
 	Tuesday *bool `json:"Tuesday,omitnil,omitempty" name:"Tuesday"`
 
-	// 周三的扩容时间段
+	// 按周期扩容时，是否选择周三扩容。
+	// 说明：取值 true，表示选择，取值 false，表示不选择。
 	Wednesday *bool `json:"Wednesday,omitnil,omitempty" name:"Wednesday"`
 
-	// 周四的扩容时间段
+	// 按周期扩容时，是否选择周四扩容。
+	// 说明：取值 true，表示选择，取值 false，表示不选择。
 	Thursday *bool `json:"Thursday,omitnil,omitempty" name:"Thursday"`
 
-	// 周五的扩容时间段
+	// 按周期扩容时，是否选择周五扩容。
+	// 说明：取值 true，表示选择，取值 false，表示不选择。
 	Friday *bool `json:"Friday,omitnil,omitempty" name:"Friday"`
 
-	// 周六的扩容时间段
+	// 按周期扩容时，是否选择周六扩容。
+	// 说明：取值 true，表示选择，取值 false，表示不选择。
 	Saturday *bool `json:"Saturday,omitnil,omitempty" name:"Saturday"`
 
-	// 周日的扩容时间段
+	// 按周期扩容时，是否选择周日扩容。
+	// 说明：取值 true，表示选择，取值 false，表示不选择。
 	Sunday *bool `json:"Sunday,omitnil,omitempty" name:"Sunday"`
 }
 
@@ -16823,18 +16830,20 @@ type TaskDetail struct {
 }
 
 type TimeInterval struct {
-	// 开始时间
+	// 开始时间。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type TimeIntervalStrategy struct {
-	// 开始扩容时间
+	// 开始扩容时间。
+	// 说明：此值的格式为 Integer 的时间戳。
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束扩容时间
+	// 结束扩容时间。
+	// 说明：此值的格式为 Integer 的时间戳。
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 

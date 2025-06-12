@@ -1,10 +1,46 @@
-# Release v1.0.1185
+# Release v1.0.1186
 
-## 负载均衡(clb) 版本：2018-03-17
+## 消息队列 CKafka 版(ckafka) 版本：2019-08-19
 
-### 第 131 次发布
+### 第 124 次发布
 
-发布时间：2025-06-12 01:19:14
+发布时间：2025-06-13 01:17:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DatahubTaskInfo](https://cloud.tencent.com/document/api/597/40861#DatahubTaskInfo)
+
+	* 新增成员：Description
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 147 次发布
+
+发布时间：2025-06-13 01:22:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* CancelIgnoreVul
+* IgnoreImpactedHosts
+
+
+
+## 专线接入(dc) 版本：2018-04-10
+
+### 第 34 次发布
+
+发布时间：2025-06-13 01:26:37
 
 本次发布包含了以下内容：
 
@@ -12,107 +48,45 @@
 
 修改接口：
 
-* [CreateListener](https://cloud.tencent.com/document/api/214/30693)
+* [CreateDirectConnect](https://cloud.tencent.com/document/api/216/34829)
 
-	* 新增入参：ProxyProtocol
-
-* [ModifyListener](https://cloud.tencent.com/document/api/214/30681)
-
-	* 新增入参：ProxyProtocol
-
-
-
-
-## DNSPod(dnspod) 版本：2021-03-23
-
-### 第 44 次发布
-
-发布时间：2025-06-12 01:28:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeDomainVipList](https://cloud.tencent.com/document/api/1427/119491)
-* [DescribeVasList](https://cloud.tencent.com/document/api/1427/119490)
-
-修改接口：
-
-* [CreateSubdomainValidateTXTValue](https://cloud.tencent.com/document/api/1427/113012)
-
-	* 新增出参：ParentDomain
-
-
-新增数据结构：
-
-* [PackageListItem](https://cloud.tencent.com/document/api/1427/56185#PackageListItem)
-* [SecurityInfo](https://cloud.tencent.com/document/api/1427/56185#SecurityInfo)
-* [VasListItem](https://cloud.tencent.com/document/api/1427/56185#VasListItem)
-
-
-
-## iOA 零信任安全管理系统(ioa) 版本：2022-06-01
-
-### 第 14 次发布
-
-发布时间：2025-06-12 01:38:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeSoftwareInformation](https://cloud.tencent.com/document/api/1092/119493)
-
-新增数据结构：
-
-* [DescribeSoftwareInformationPageData](https://cloud.tencent.com/document/api/1092/102488#DescribeSoftwareInformationPageData)
-* [SoftwareInformationData](https://cloud.tencent.com/document/api/1092/102488#SoftwareInformationData)
-
-
-
-## 云开发低码(lowcode) 版本：2021-01-08
-
-### 第 6 次发布
-
-发布时间：2025-06-12 01:46:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [UploadKnowledgeDocumentSet](https://cloud.tencent.com/document/api/1301/116428)
-
-	* 新增入参：FileId
+	* 新增入参：IsMacSec
 
 
 修改数据结构：
 
-* [KnowledgeSet](https://cloud.tencent.com/document/api/1301/68878#KnowledgeSet)
+* [AccessPoint](https://cloud.tencent.com/document/api/216/18418#AccessPoint)
 
-	* 新增成员：TotalSize
+	* 新增成员：IsMacSec
 
-* [SearchDocInfo](https://cloud.tencent.com/document/api/1301/68878#SearchDocInfo)
+* [DirectConnect](https://cloud.tencent.com/document/api/216/18418#DirectConnect)
 
-	* 新增成员：FileId
-
-* [UploadKnowledgeDocumentSetRsp](https://cloud.tencent.com/document/api/1301/68878#UploadKnowledgeDocumentSetRsp)
-
-	* 新增成员：FileId
+	* 新增成员：IsMacSec, PortSpecification
 
 
 
 
-## 文字识别(ocr) 版本：2018-11-19
+## 弹性 MapReduce(emr) 版本：2019-01-03
 
-### 第 195 次发布
+### 第 108 次发布
 
-发布时间：2025-06-11 16:47:37
+发布时间：2025-06-13 01:32:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* ModifyResourcePools
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 225 次发布
+
+发布时间：2025-06-13 01:33:31
 
 本次发布包含了以下内容：
 
@@ -120,17 +94,51 @@
 
 新增接口：
 
-* [ExtractDocBasic](https://cloud.tencent.com/document/api/866/119452)
-* [ExtractDocMulti](https://cloud.tencent.com/document/api/866/119451)
-* [ExtractDocMultiPro](https://cloud.tencent.com/document/api/866/119450)
-* [HandwritingEssayOCR](https://cloud.tencent.com/document/api/866/119449)
+* [OperateSeals](https://cloud.tencent.com/document/api/1323/119564)
 
-修改接口：
 
-* [SmartStructuralPro](https://cloud.tencent.com/document/api/866/112179)
 
-	* 新增出参：TokenNum
+## 数据加速器 GooseFS(goosefs) 版本：2022-05-19
 
+### 第 14 次发布
+
+发布时间：2025-06-13 01:36:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeClusterRoles
+
+
+
+## 腾讯云智能体开发平台(lke) 版本：2023-11-30
+
+### 第 47 次发布
+
+发布时间：2025-06-13 01:44:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateWorkflowRun](https://cloud.tencent.com/document/api/1759/119570)
+* [DescribeNodeRun](https://cloud.tencent.com/document/api/1759/119569)
+* [DescribeWorkflowRun](https://cloud.tencent.com/document/api/1759/119568)
+* [ListWorkflowRuns](https://cloud.tencent.com/document/api/1759/119567)
+* [StopWorkflowRun](https://cloud.tencent.com/document/api/1759/119566)
+
+新增数据结构：
+
+* [CustomVariable](https://cloud.tencent.com/document/api/1759/105104#CustomVariable)
+* [NodeRunBase](https://cloud.tencent.com/document/api/1759/105104#NodeRunBase)
+* [NodeRunDetail](https://cloud.tencent.com/document/api/1759/105104#NodeRunDetail)
+* [WorkflowRunBase](https://cloud.tencent.com/document/api/1759/105104#WorkflowRunBase)
+* [WorkflowRunDetail](https://cloud.tencent.com/document/api/1759/105104#WorkflowRunDetail)
 
 
 

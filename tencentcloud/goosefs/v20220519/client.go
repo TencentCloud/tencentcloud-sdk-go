@@ -624,12 +624,20 @@ func NewDescribeClusterRolesResponse() (response *DescribeClusterRolesResponse) 
 }
 
 // DescribeClusterRoles
+// 接口废弃
+//
+// 
+//
 // 查询GooseFS集群角色
 func (c *Client) DescribeClusterRoles(request *DescribeClusterRolesRequest) (response *DescribeClusterRolesResponse, err error) {
     return c.DescribeClusterRolesWithContext(context.Background(), request)
 }
 
 // DescribeClusterRoles
+// 接口废弃
+//
+// 
+//
 // 查询GooseFS集群角色
 func (c *Client) DescribeClusterRolesWithContext(ctx context.Context, request *DescribeClusterRolesRequest) (response *DescribeClusterRolesResponse, err error) {
     if request == nil {

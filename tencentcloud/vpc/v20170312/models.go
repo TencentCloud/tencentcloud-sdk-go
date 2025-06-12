@@ -16030,10 +16030,10 @@ type DescribeNatGatewayDirectConnectGatewayRouteRequestParams struct {
 	// vpc的唯一标识
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 0到200之间
+	// 查询NAT网关绑定的路由数量，可选值0-200，默认为10
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 大于0
+	// 数据偏移量，默认为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
@@ -16046,10 +16046,10 @@ type DescribeNatGatewayDirectConnectGatewayRouteRequest struct {
 	// vpc的唯一标识
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
 
-	// 0到200之间
+	// 查询NAT网关绑定的路由数量，可选值0-200，默认为10
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 大于0
+	// 数据偏移量，默认为0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 

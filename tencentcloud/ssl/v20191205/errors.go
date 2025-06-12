@@ -146,6 +146,9 @@ const (
 	// 解析失败，请检查证书是否符合标准，请留意是否有多余的空格
 	FAILEDOPERATION_CERTIFICATEPARSEERROR = "FailedOperation.CertificateParseError"
 
+	// 您输入的邮箱格式有误，请您核对后重新提交
+	FAILEDOPERATION_CERTIFICATEPREVERIFYEMAILINVALID = "FailedOperation.CertificatePreVerifyEmailInvalid"
+
 	// 当前证书状态不允许下载。
 	FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWDOWNLOAD = "FailedOperation.CertificateStatusNotAllowDownload"
 
@@ -254,6 +257,12 @@ const (
 	// 计费中心错误。
 	FAILEDOPERATION_TRADEERROR = "FailedOperation.TradeError"
 
+	// 当前接口不支持上传确认函功能，请去腾讯云控制台进行操作
+	FAILEDOPERATION_UPLOADCONFIRMCERTIFICATENOTSUPPORT = "FailedOperation.UploadConfirmCertificateNotSupport"
+
+	// 当前证书是DV证书，不支持上传确认函
+	FAILEDOPERATION_UPLOADCONFIRMCERTIFICATENOTSUPPORTDV = "FailedOperation.UploadConfirmCertificateNotSupportDV"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -295,6 +304,9 @@ const (
 
 	// 产品PID无效。
 	INVALIDPARAMETER_PRODUCTPIDINVALID = "InvalidParameter.ProductPidInvalid"
+
+	// Region不允许为空
+	INVALIDPARAMETER_REGIONNOTEMPTY = "InvalidParameter.RegionNotEmpty"
 
 	// 算法无效。
 	INVALIDPARAMETER_RENEWALGORITHMINVALID = "InvalidParameter.RenewAlgorithmInvalid"

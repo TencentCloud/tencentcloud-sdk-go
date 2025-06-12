@@ -113,6 +113,9 @@ type AccessPoint struct {
 
 	// 接入点地址。
 	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// 是否MACsec
+	IsMacSec *bool `json:"IsMacSec,omitnil,omitempty" name:"IsMacSec"`
 }
 
 // Predefined struct for user
@@ -447,6 +450,9 @@ type CreateDirectConnectRequestParams struct {
 
 	// 标签键值对
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 是否MACsec需求
+	IsMacSec *bool `json:"IsMacSec,omitnil,omitempty" name:"IsMacSec"`
 }
 
 type CreateDirectConnectRequest struct {
@@ -517,6 +523,9 @@ type CreateDirectConnectRequest struct {
 
 	// 标签键值对
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 是否MACsec需求
+	IsMacSec *bool `json:"IsMacSec,omitnil,omitempty" name:"IsMacSec"`
 }
 
 func (r *CreateDirectConnectRequest) ToJsonString() string {
@@ -549,6 +558,7 @@ func (r *CreateDirectConnectRequest) FromJsonString(s string) error {
 	delete(f, "FaultReportContactNumber")
 	delete(f, "SignLaw")
 	delete(f, "Tags")
+	delete(f, "IsMacSec")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDirectConnectRequest has unknown keys!", "")
 	}
@@ -1595,6 +1605,12 @@ type DirectConnect struct {
 
 	// 是否三层架构
 	IsThreeArch *bool `json:"IsThreeArch,omitnil,omitempty" name:"IsThreeArch"`
+
+	// 是否MACsec
+	IsMacSec *bool `json:"IsMacSec,omitnil,omitempty" name:"IsMacSec"`
+
+	// 端口规格(Mbps)
+	PortSpecification *uint64 `json:"PortSpecification,omitnil,omitempty" name:"PortSpecification"`
 }
 
 type DirectConnectTunnel struct {

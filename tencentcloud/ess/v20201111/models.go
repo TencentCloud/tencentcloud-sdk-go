@@ -14005,6 +14005,85 @@ type OccupiedSeal struct {
 }
 
 // Predefined struct for user
+type OperateSealsRequestParams struct {
+	// 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 操作类型，int，目前支持传入以下类型：
+	// <ul><li>1：启用印章</li></ul>
+	// <ul><li>2：停用印章</li></ul>
+	Act *int64 `json:"Act,omitnil,omitempty" name:"Act"`
+
+	// 需要操作的印章ID，数组形式，印章ID可从【web控制台->印章 】获取。
+	SealIds []*string `json:"SealIds,omitnil,omitempty" name:"SealIds"`
+}
+
+type OperateSealsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	Operator *UserInfo `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 操作类型，int，目前支持传入以下类型：
+	// <ul><li>1：启用印章</li></ul>
+	// <ul><li>2：停用印章</li></ul>
+	Act *int64 `json:"Act,omitnil,omitempty" name:"Act"`
+
+	// 需要操作的印章ID，数组形式，印章ID可从【web控制台->印章 】获取。
+	SealIds []*string `json:"SealIds,omitnil,omitempty" name:"SealIds"`
+}
+
+func (r *OperateSealsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OperateSealsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "Agent")
+	delete(f, "Act")
+	delete(f, "SealIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OperateSealsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OperateSealsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type OperateSealsResponse struct {
+	*tchttp.BaseResponse
+	Response *OperateSealsResponseParams `json:"Response"`
+}
+
+func (r *OperateSealsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OperateSealsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type OperateTemplateRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`

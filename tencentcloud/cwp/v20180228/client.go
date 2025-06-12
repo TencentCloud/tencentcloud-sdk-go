@@ -128,6 +128,10 @@ func NewCancelIgnoreVulResponse() (response *CancelIgnoreVulResponse) {
 }
 
 // CancelIgnoreVul
+// 产品变动切换到了\\n切换到 AddVulIgnoreRule / ModifyVulIgnoreRule  CancelVulIgnoreRule\\n相关接口
+//
+// 
+//
 // 取消漏洞忽略
 //
 // 可能返回的错误码:
@@ -142,6 +146,10 @@ func (c *Client) CancelIgnoreVul(request *CancelIgnoreVulRequest) (response *Can
 }
 
 // CancelIgnoreVul
+// 产品变动切换到了\\n切换到 AddVulIgnoreRule / ModifyVulIgnoreRule  CancelVulIgnoreRule\\n相关接口
+//
+// 
+//
 // 取消漏洞忽略
 //
 // 可能返回的错误码:
@@ -24839,6 +24847,10 @@ func NewIgnoreImpactedHostsResponse() (response *IgnoreImpactedHostsResponse) {
 }
 
 // IgnoreImpactedHosts
+// 产品变动切换到了\\n切换到 AddVulIgnoreRule / ModifyVulIgnoreRule  CancelVulIgnoreRule\\n相关接口
+//
+// 
+//
 // 本接口 (IgnoreImpactedHosts) 用于忽略漏洞。
 //
 // 可能返回的错误码:
@@ -24856,6 +24868,10 @@ func (c *Client) IgnoreImpactedHosts(request *IgnoreImpactedHostsRequest) (respo
 }
 
 // IgnoreImpactedHosts
+// 产品变动切换到了\\n切换到 AddVulIgnoreRule / ModifyVulIgnoreRule  CancelVulIgnoreRule\\n相关接口
+//
+// 
+//
 // 本接口 (IgnoreImpactedHosts) 用于忽略漏洞。
 //
 // 可能返回的错误码:

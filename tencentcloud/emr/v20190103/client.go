@@ -4717,6 +4717,10 @@ func NewModifyResourcePoolsResponse() (response *ModifyResourcePoolsResponse) {
 }
 
 // ModifyResourcePools
+// 已废弃，请使用DeployYarnConf\\n，近一年未被调用
+//
+// 
+//
 // 刷新YARN的动态资源池。已废弃，请使用`DeployYarnConf`
 //
 // 可能返回的错误码:
@@ -4732,6 +4736,10 @@ func (c *Client) ModifyResourcePools(request *ModifyResourcePoolsRequest) (respo
 }
 
 // ModifyResourcePools
+// 已废弃，请使用DeployYarnConf\\n，近一年未被调用
+//
+// 
+//
 // 刷新YARN的动态资源池。已废弃，请使用`DeployYarnConf`
 //
 // 可能返回的错误码:

@@ -1726,6 +1726,99 @@ func (r *CreateVarResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateWorkflowRunRequestParams struct {
+	// 运行环境。0: 测试环境； 1: 正式环境
+	RunEnv *uint64 `json:"RunEnv,omitnil,omitempty" name:"RunEnv"`
+
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 用户输入的内容
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// API参数配置
+	CustomVariables []*CustomVariable `json:"CustomVariables,omitnil,omitempty" name:"CustomVariables"`
+}
+
+type CreateWorkflowRunRequest struct {
+	*tchttp.BaseRequest
+	
+	// 运行环境。0: 测试环境； 1: 正式环境
+	RunEnv *uint64 `json:"RunEnv,omitnil,omitempty" name:"RunEnv"`
+
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 用户输入的内容
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// API参数配置
+	CustomVariables []*CustomVariable `json:"CustomVariables,omitnil,omitempty" name:"CustomVariables"`
+}
+
+func (r *CreateWorkflowRunRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWorkflowRunRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RunEnv")
+	delete(f, "AppBizId")
+	delete(f, "Query")
+	delete(f, "CustomVariables")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWorkflowRunRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateWorkflowRunResponseParams struct {
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 工作流运行实例的ID
+	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
+
+	// 运行环境。0: 测试环境； 1: 正式环境
+	RunEnv *uint64 `json:"RunEnv,omitnil,omitempty" name:"RunEnv"`
+
+	// 用户输入的内容
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// API参数配置
+	CustomVariables []*CustomVariable `json:"CustomVariables,omitnil,omitempty" name:"CustomVariables"`
+
+	// 创建时间（毫秒时间戳）
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateWorkflowRunResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateWorkflowRunResponseParams `json:"Response"`
+}
+
+func (r *CreateWorkflowRunResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWorkflowRunResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Credentials struct {
 	// token
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1742,6 +1835,14 @@ type Credentials struct {
 	// 临时证书appid
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+}
+
+type CustomVariable struct {
+	// 参数名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 参数的值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 // Predefined struct for user
@@ -3117,6 +3218,63 @@ func (r *DescribeKnowledgeUsageResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeNodeRunRequestParams struct {
+	// 节点运行实例ID
+	NodeRunId *string `json:"NodeRunId,omitnil,omitempty" name:"NodeRunId"`
+}
+
+type DescribeNodeRunRequest struct {
+	*tchttp.BaseRequest
+	
+	// 节点运行实例ID
+	NodeRunId *string `json:"NodeRunId,omitnil,omitempty" name:"NodeRunId"`
+}
+
+func (r *DescribeNodeRunRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNodeRunRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NodeRunId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNodeRunRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNodeRunResponseParams struct {
+	// 节点运行实例详情
+	NodeRun *NodeRunDetail `json:"NodeRun,omitnil,omitempty" name:"NodeRun"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNodeRunResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNodeRunResponseParams `json:"Response"`
+}
+
+func (r *DescribeNodeRunResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNodeRunResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeQARequestParams struct {
 	// QA业务ID
 	QaBizId *string `json:"QaBizId,omitnil,omitempty" name:"QaBizId"`
@@ -4201,6 +4359,66 @@ func (r *DescribeUnsatisfiedReplyContextResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeUnsatisfiedReplyContextResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkflowRunRequestParams struct {
+	// 工作流运行实例ID
+	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
+}
+
+type DescribeWorkflowRunRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作流运行实例ID
+	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
+}
+
+func (r *DescribeWorkflowRunRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkflowRunRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkflowRunId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkflowRunRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkflowRunResponseParams struct {
+	// 总数
+	WorkflowRun *WorkflowRunDetail `json:"WorkflowRun,omitnil,omitempty" name:"WorkflowRun"`
+
+	// 节点列表
+	NodeRuns []*NodeRunBase `json:"NodeRuns,omitnil,omitempty" name:"NodeRuns"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeWorkflowRunResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWorkflowRunResponseParams `json:"Response"`
+}
+
+func (r *DescribeWorkflowRunResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkflowRunResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8429,6 +8647,101 @@ func (r *ListUsageCallDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListWorkflowRunsRequestParams struct {
+	// 运行环境。0: 测试环境； 1: 正式环境
+	RunEnv *uint64 `json:"RunEnv,omitnil,omitempty" name:"RunEnv"`
+
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 页码
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 每页数量
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 登录用户主账号(集成商模式必填)
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+type ListWorkflowRunsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 运行环境。0: 测试环境； 1: 正式环境
+	RunEnv *uint64 `json:"RunEnv,omitnil,omitempty" name:"RunEnv"`
+
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 页码
+	Page *uint64 `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 每页数量
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 登录用户主账号(集成商模式必填)
+	LoginUin *string `json:"LoginUin,omitnil,omitempty" name:"LoginUin"`
+
+	// 登录用户子账号(集成商模式必填)
+	LoginSubAccountUin *string `json:"LoginSubAccountUin,omitnil,omitempty" name:"LoginSubAccountUin"`
+}
+
+func (r *ListWorkflowRunsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListWorkflowRunsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RunEnv")
+	delete(f, "AppBizId")
+	delete(f, "Page")
+	delete(f, "PageSize")
+	delete(f, "LoginUin")
+	delete(f, "LoginSubAccountUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListWorkflowRunsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListWorkflowRunsResponseParams struct {
+	// 总数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 工作流运行列表
+	WorkflowRuns []*WorkflowRunBase `json:"WorkflowRuns,omitnil,omitempty" name:"WorkflowRuns"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListWorkflowRunsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListWorkflowRunsResponseParams `json:"Response"`
+}
+
+func (r *ListWorkflowRunsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListWorkflowRunsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Message struct {
 	// role表示角色  user标识用户提问，assistant标识返回的答案
 	// 
@@ -9492,6 +9805,141 @@ type MsgRecordReference struct {
 
 	// 来源文档ID
 	DocId *string `json:"DocId,omitnil,omitempty" name:"DocId"`
+}
+
+type NodeRunBase struct {
+	// 节点运行的ID
+	NodeRunId *string `json:"NodeRunId,omitnil,omitempty" name:"NodeRunId"`
+
+	// 节点ID
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// 工作流运行实例的ID
+	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
+
+	// 节点名称
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// 节点类型。
+	// 1： 开始节点
+	// 2：参数提取节点
+	// 3：大模型节点
+	// 4：知识问答节点
+	// 5：知识检索节点
+	// 6：标签提取节点
+	// 7：代码执行节点
+	// 8：工具节点
+	// 9：逻辑判断节点
+	// 10：回复节点
+	// 11：选项卡节点
+	// 12：循环节点
+	// 13：意图识别节点
+	// 14：工作流节点
+	// 15：插件节点
+	// 16：结束节点
+	// 17: 变量聚合节点数据
+	// 18: 批处理节点
+	// 19: 消息队列节点
+	NodeType *uint64 `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 运行状态。0: 初始状态；1: 运行中；2: 运行成功； 3: 运行失败； 4: 已取消
+	State *uint64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// 错误码
+	FailCode *string `json:"FailCode,omitnil,omitempty" name:"FailCode"`
+
+	// 错误信息
+	FailMessage *string `json:"FailMessage,omitnil,omitempty" name:"FailMessage"`
+
+	// 消耗时间（毫秒）
+	CostMilliseconds *uint64 `json:"CostMilliseconds,omitnil,omitempty" name:"CostMilliseconds"`
+
+	// 消耗的token总数
+	TotalTokens *uint64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
+}
+
+type NodeRunDetail struct {
+	// 节点运行的ID
+	NodeRunId *string `json:"NodeRunId,omitnil,omitempty" name:"NodeRunId"`
+
+	// 节点ID
+	NodeId *string `json:"NodeId,omitnil,omitempty" name:"NodeId"`
+
+	// 工作流运行实例的ID
+	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
+
+	// 节点名称
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// 节点类型。
+	// 1： 开始节点
+	// 2：参数提取节点
+	// 3：大模型节点
+	// 4：知识问答节点
+	// 5：知识检索节点
+	// 6：标签提取节点
+	// 7：代码执行节点
+	// 8：工具节点
+	// 9：逻辑判断节点
+	// 10：回复节点
+	// 11：选项卡节点
+	// 12：循环节点
+	// 13：意图识别节点
+	// 14：工作流节点
+	// 15：插件节点
+	// 16：结束节点
+	// 17: 变量聚合节点数据
+	// 18: 批处理节点
+	// 19: 消息队列节点
+	NodeType *uint64 `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 运行状态。0: 初始状态；1: 运行中；2: 运行成功； 3: 运行失败； 4: 已取消
+	State *uint64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// 错误码
+	FailCode *string `json:"FailCode,omitnil,omitempty" name:"FailCode"`
+
+	// 错误信息
+	FailMessage *string `json:"FailMessage,omitnil,omitempty" name:"FailMessage"`
+
+	// 消耗时间（毫秒）
+	CostMilliseconds *uint64 `json:"CostMilliseconds,omitnil,omitempty" name:"CostMilliseconds"`
+
+	// 消耗的token总数
+	TotalTokens *uint64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
+
+	// 输入变量信息
+	Input *string `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 节点的输入的完整内容的链接。（当Input内容超过限制的时候此字段才有值）
+	InputRef *string `json:"InputRef,omitnil,omitempty" name:"InputRef"`
+
+	// 输出变量信息
+	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
+
+	// 节点的输出的完整内容的链接。（当Output内容超过限制的时候此字段才有值）
+	OutputRef *string `json:"OutputRef,omitnil,omitempty" name:"OutputRef"`
+
+	// 原始输出信息。部分节点才有值，如工具节点、代码节点
+	TaskOutput *string `json:"TaskOutput,omitnil,omitempty" name:"TaskOutput"`
+
+	// 任务的原始输出的完整内容的链接。（当TaskOutput内容超过限制的时候此字段才有值）
+	TaskOutputRef *string `json:"TaskOutputRef,omitnil,omitempty" name:"TaskOutputRef"`
+
+	// 节点的日志
+	Log *string `json:"Log,omitnil,omitempty" name:"Log"`
+
+	// 节点的日志的完整内容的链接志（当Log内容超过限制的时候才有值）
+	LogRef *string `json:"LogRef,omitnil,omitempty" name:"LogRef"`
+
+	// 开始时间戳（毫秒）
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间戳（毫秒）
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// LLM统计信息。
+	StatisticInfos []*StatisticInfo `json:"StatisticInfos,omitnil,omitempty" name:"StatisticInfos"`
 }
 
 type Option struct {
@@ -10985,6 +11433,60 @@ func (r *StopDocParseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StopWorkflowRunRequestParams struct {
+	// 工作流运行实例ID
+	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
+}
+
+type StopWorkflowRunRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作流运行实例ID
+	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
+}
+
+func (r *StopWorkflowRunRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopWorkflowRunRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkflowRunId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopWorkflowRunRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopWorkflowRunResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StopWorkflowRunResponse struct {
+	*tchttp.BaseResponse
+	Response *StopWorkflowRunResponseParams `json:"Response"`
+}
+
+func (r *StopWorkflowRunResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopWorkflowRunResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type StrValue struct {
 	// 名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -11563,6 +12065,88 @@ type WorkflowRef struct {
 
 	// 更新时间
 	UpdateTime *uint64 `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type WorkflowRunBase struct {
+	// 运行环境。0: 测试环境； 1: 正式环境
+	RunEnv *uint64 `json:"RunEnv,omitnil,omitempty" name:"RunEnv"`
+
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 工作流运行实例的ID
+	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
+
+	// 所属工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 运行状态。0: 排队中；1: 运行中；2: 运行成功；3: 运行失败； 4: 已取消
+	State *uint64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// 错误信息
+	FailMessage *string `json:"FailMessage,omitnil,omitempty" name:"FailMessage"`
+
+	// 消耗的token总数
+	TotalTokens *uint64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
+
+	// 创建时间（毫秒时间戳）
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 开始时间（毫秒时间戳）
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间（毫秒时间戳）
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type WorkflowRunDetail struct {
+	// 运行环境。0: 测试环境； 1: 正式环境
+	RunEnv *uint64 `json:"RunEnv,omitnil,omitempty" name:"RunEnv"`
+
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 工作流运行实例的ID
+	WorkflowRunId *string `json:"WorkflowRunId,omitnil,omitempty" name:"WorkflowRunId"`
+
+	// 所属工作流ID
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 运行状态。0: 排队中；1: 运行中；2: 运行成功；3: 运行失败； 4: 已取消
+	State *uint64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// 错误信息
+	FailMessage *string `json:"FailMessage,omitnil,omitempty" name:"FailMessage"`
+
+	// 消耗的token总数
+	TotalTokens *uint64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
+
+	// 创建时间（毫秒时间戳）
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 开始时间（毫秒时间戳）
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间（毫秒时间戳）
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 工作流画布Json
+	DialogJson *string `json:"DialogJson,omitnil,omitempty" name:"DialogJson"`
+
+	// 用户的输入
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 主模型名称
+	MainModelName *string `json:"MainModelName,omitnil,omitempty" name:"MainModelName"`
+
+	// API参数配置
+	CustomVariables []*CustomVariable `json:"CustomVariables,omitnil,omitempty" name:"CustomVariables"`
 }
 
 type WorkflowRunNodeInfo struct {

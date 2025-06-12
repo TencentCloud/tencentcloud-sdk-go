@@ -227,6 +227,9 @@ const (
 	// 值超过上限。
 	INVALIDPARAMETERVALUE_EIPBRANDWIDTHOUTINVALID = "InvalidParameterValue.EIPBrandWidthOutInvalid"
 
+	// 出口不一致
+	INVALIDPARAMETERVALUE_EGRESSCONFLICT = "InvalidParameterValue.EgressConflict"
+
 	// 缺少参数。
 	INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 
@@ -280,6 +283,9 @@ const (
 
 	// 传入的DedicatedClusterId有误。
 	INVALIDPARAMETERVALUE_INVALIDDEDICATEDCLUSTERID = "InvalidParameterValue.InvalidDedicatedClusterId"
+
+	// egress的值无效。
+	INVALIDPARAMETERVALUE_INVALIDEGRESS = "InvalidParameterValue.InvalidEgress"
 
 	// 该IP只能绑定小时流量后付费和带宽包实例。
 	INVALIDPARAMETERVALUE_INVALIDINSTANCEINTERNETCHARGETYPE = "InvalidParameterValue.InvalidInstanceInternetChargeType"
@@ -505,6 +511,9 @@ const (
 
 	// 该可用区不可用。
 	INVALIDPARAMETERVALUE_UNAVAILABLEZONE = "InvalidParameterValue.UnavailableZone"
+
+	// 账号不支持该egress
+	INVALIDPARAMETERVALUE_UNSUPPORTEDEGRESS = "InvalidParameterValue.UnsupportedEgress"
 
 	// 当前公网IP所在的地区不支持流量采集。
 	INVALIDPARAMETERVALUE_UNSUPPORTEDLBTRAFFICMIRRORAZ = "InvalidParameterValue.UnsupportedLbTrafficMirrorAz"

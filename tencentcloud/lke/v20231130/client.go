@@ -708,6 +708,61 @@ func (c *Client) CreateVarWithContext(ctx context.Context, request *CreateVarReq
     return
 }
 
+func NewCreateWorkflowRunRequest() (request *CreateWorkflowRunRequest) {
+    request = &CreateWorkflowRunRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "CreateWorkflowRun")
+    
+    
+    return
+}
+
+func NewCreateWorkflowRunResponse() (response *CreateWorkflowRunResponse) {
+    response = &CreateWorkflowRunResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateWorkflowRun
+// 本接口用来创建工作流的异步运行实例，创建成功后工作流会在后台异步运行，接口返回工作流运行实例ID（WorkflowRunId）等信息。后面可通过调用DescribeWorkflowRun接口查工作流运行的详情。
+//
+// 注意：工作流的异步运行是基于应用的，需要先把对应的应用配置成“单工作流模式”，并且打开“异步调用”的开关，才能创建成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateWorkflowRun(request *CreateWorkflowRunRequest) (response *CreateWorkflowRunResponse, err error) {
+    return c.CreateWorkflowRunWithContext(context.Background(), request)
+}
+
+// CreateWorkflowRun
+// 本接口用来创建工作流的异步运行实例，创建成功后工作流会在后台异步运行，接口返回工作流运行实例ID（WorkflowRunId）等信息。后面可通过调用DescribeWorkflowRun接口查工作流运行的详情。
+//
+// 注意：工作流的异步运行是基于应用的，需要先把对应的应用配置成“单工作流模式”，并且打开“异步调用”的开关，才能创建成功。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateWorkflowRunWithContext(ctx context.Context, request *CreateWorkflowRunRequest) (response *CreateWorkflowRunResponse, err error) {
+    if request == nil {
+        request = NewCreateWorkflowRunRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateWorkflowRun require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateWorkflowRunResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAppRequest() (request *DeleteAppRequest) {
     request = &DeleteAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1549,6 +1604,57 @@ func (c *Client) DescribeKnowledgeUsagePieGraphWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeNodeRunRequest() (request *DescribeNodeRunRequest) {
+    request = &DescribeNodeRunRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "DescribeNodeRun")
+    
+    
+    return
+}
+
+func NewDescribeNodeRunResponse() (response *DescribeNodeRunResponse) {
+    response = &DescribeNodeRunResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeNodeRun
+// 通过DescribeWorkflowRun接口获取了工作流异步运行的整体内容，其中包含了基本的节点信息，再通用本接口可查看节点的运行详情（包括输入、输出、日志等）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeNodeRun(request *DescribeNodeRunRequest) (response *DescribeNodeRunResponse, err error) {
+    return c.DescribeNodeRunWithContext(context.Background(), request)
+}
+
+// DescribeNodeRun
+// 通过DescribeWorkflowRun接口获取了工作流异步运行的整体内容，其中包含了基本的节点信息，再通用本接口可查看节点的运行详情（包括输入、输出、日志等）。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeNodeRunWithContext(ctx context.Context, request *DescribeNodeRunRequest) (response *DescribeNodeRunResponse, err error) {
+    if request == nil {
+        request = NewDescribeNodeRunRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNodeRun require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNodeRunResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeQARequest() (request *DescribeQARequest) {
     request = &DescribeQARequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1573,6 +1679,7 @@ func NewDescribeQAResponse() (response *DescribeQAResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeQA(request *DescribeQARequest) (response *DescribeQAResponse, err error) {
     return c.DescribeQAWithContext(context.Background(), request)
 }
@@ -1582,6 +1689,7 @@ func (c *Client) DescribeQA(request *DescribeQARequest) (response *DescribeQARes
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeQAWithContext(ctx context.Context, request *DescribeQARequest) (response *DescribeQAResponse, err error) {
     if request == nil {
         request = NewDescribeQARequest()
@@ -1622,6 +1730,7 @@ func NewDescribeReferResponse() (response *DescribeReferResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeRefer(request *DescribeReferRequest) (response *DescribeReferResponse, err error) {
     return c.DescribeReferWithContext(context.Background(), request)
 }
@@ -1631,6 +1740,7 @@ func (c *Client) DescribeRefer(request *DescribeReferRequest) (response *Describ
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeReferWithContext(ctx context.Context, request *DescribeReferRequest) (response *DescribeReferResponse, err error) {
     if request == nil {
         request = NewDescribeReferRequest()
@@ -1671,6 +1781,7 @@ func NewDescribeReleaseResponse() (response *DescribeReleaseResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeRelease(request *DescribeReleaseRequest) (response *DescribeReleaseResponse, err error) {
     return c.DescribeReleaseWithContext(context.Background(), request)
 }
@@ -1680,6 +1791,7 @@ func (c *Client) DescribeRelease(request *DescribeReleaseRequest) (response *Des
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeReleaseWithContext(ctx context.Context, request *DescribeReleaseRequest) (response *DescribeReleaseResponse, err error) {
     if request == nil {
         request = NewDescribeReleaseRequest()
@@ -1720,6 +1832,7 @@ func NewDescribeReleaseInfoResponse() (response *DescribeReleaseInfoResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeReleaseInfo(request *DescribeReleaseInfoRequest) (response *DescribeReleaseInfoResponse, err error) {
     return c.DescribeReleaseInfoWithContext(context.Background(), request)
 }
@@ -1729,6 +1842,7 @@ func (c *Client) DescribeReleaseInfo(request *DescribeReleaseInfoRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeReleaseInfoWithContext(ctx context.Context, request *DescribeReleaseInfoRequest) (response *DescribeReleaseInfoResponse, err error) {
     if request == nil {
         request = NewDescribeReleaseInfoRequest()
@@ -2139,6 +2253,57 @@ func (c *Client) DescribeUnsatisfiedReplyContextWithContext(ctx context.Context,
     return
 }
 
+func NewDescribeWorkflowRunRequest() (request *DescribeWorkflowRunRequest) {
+    request = &DescribeWorkflowRunRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "DescribeWorkflowRun")
+    
+    
+    return
+}
+
+func NewDescribeWorkflowRunResponse() (response *DescribeWorkflowRunResponse) {
+    response = &DescribeWorkflowRunResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWorkflowRun
+// 创建了工作流的异步运行实例后，通过本接口可以查询整体的运行详情。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeWorkflowRun(request *DescribeWorkflowRunRequest) (response *DescribeWorkflowRunResponse, err error) {
+    return c.DescribeWorkflowRunWithContext(context.Background(), request)
+}
+
+// DescribeWorkflowRun
+// 创建了工作流的异步运行实例后，通过本接口可以查询整体的运行详情。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeWorkflowRunWithContext(ctx context.Context, request *DescribeWorkflowRunRequest) (response *DescribeWorkflowRunResponse, err error) {
+    if request == nil {
+        request = NewDescribeWorkflowRunRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWorkflowRun require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWorkflowRunResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExportAttributeLabelRequest() (request *ExportAttributeLabelRequest) {
     request = &ExportAttributeLabelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2163,7 +2328,7 @@ func NewExportAttributeLabelResponse() (response *ExportAttributeLabelResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ExportAttributeLabel(request *ExportAttributeLabelRequest) (response *ExportAttributeLabelResponse, err error) {
     return c.ExportAttributeLabelWithContext(context.Background(), request)
 }
@@ -2173,7 +2338,7 @@ func (c *Client) ExportAttributeLabel(request *ExportAttributeLabelRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ExportAttributeLabelWithContext(ctx context.Context, request *ExportAttributeLabelRequest) (response *ExportAttributeLabelResponse, err error) {
     if request == nil {
         request = NewExportAttributeLabelRequest()
@@ -2214,7 +2379,7 @@ func NewExportQAListResponse() (response *ExportQAListResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ExportQAList(request *ExportQAListRequest) (response *ExportQAListResponse, err error) {
     return c.ExportQAListWithContext(context.Background(), request)
 }
@@ -2224,7 +2389,7 @@ func (c *Client) ExportQAList(request *ExportQAListRequest) (response *ExportQAL
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ExportQAListWithContext(ctx context.Context, request *ExportQAListRequest) (response *ExportQAListResponse, err error) {
     if request == nil {
         request = NewExportQAListRequest()
@@ -2265,7 +2430,7 @@ func NewExportUnsatisfiedReplyResponse() (response *ExportUnsatisfiedReplyRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ExportUnsatisfiedReply(request *ExportUnsatisfiedReplyRequest) (response *ExportUnsatisfiedReplyResponse, err error) {
     return c.ExportUnsatisfiedReplyWithContext(context.Background(), request)
 }
@@ -2275,7 +2440,7 @@ func (c *Client) ExportUnsatisfiedReply(request *ExportUnsatisfiedReplyRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ExportUnsatisfiedReplyWithContext(ctx context.Context, request *ExportUnsatisfiedReplyRequest) (response *ExportUnsatisfiedReplyResponse, err error) {
     if request == nil {
         request = NewExportUnsatisfiedReplyRequest()
@@ -4100,6 +4265,57 @@ func (c *Client) ListUsageCallDetailWithContext(ctx context.Context, request *Li
     return
 }
 
+func NewListWorkflowRunsRequest() (request *ListWorkflowRunsRequest) {
+    request = &ListWorkflowRunsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "ListWorkflowRuns")
+    
+    
+    return
+}
+
+func NewListWorkflowRunsResponse() (response *ListWorkflowRunsResponse) {
+    response = &ListWorkflowRunsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListWorkflowRuns
+// 此接口可查询已创建的所有工作流异步运行实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ListWorkflowRuns(request *ListWorkflowRunsRequest) (response *ListWorkflowRunsResponse, err error) {
+    return c.ListWorkflowRunsWithContext(context.Background(), request)
+}
+
+// ListWorkflowRuns
+// 此接口可查询已创建的所有工作流异步运行实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ListWorkflowRunsWithContext(ctx context.Context, request *ListWorkflowRunsRequest) (response *ListWorkflowRunsResponse, err error) {
+    if request == nil {
+        request = NewListWorkflowRunsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListWorkflowRuns require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListWorkflowRunsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAppRequest() (request *ModifyAppRequest) {
     request = &ModifyAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4124,7 +4340,7 @@ func NewModifyAppResponse() (response *ModifyAppResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyApp(request *ModifyAppRequest) (response *ModifyAppResponse, err error) {
     return c.ModifyAppWithContext(context.Background(), request)
 }
@@ -4134,7 +4350,7 @@ func (c *Client) ModifyApp(request *ModifyAppRequest) (response *ModifyAppRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyAppWithContext(ctx context.Context, request *ModifyAppRequest) (response *ModifyAppResponse, err error) {
     if request == nil {
         request = NewModifyAppRequest()
@@ -4175,7 +4391,7 @@ func NewModifyAttributeLabelResponse() (response *ModifyAttributeLabelResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyAttributeLabel(request *ModifyAttributeLabelRequest) (response *ModifyAttributeLabelResponse, err error) {
     return c.ModifyAttributeLabelWithContext(context.Background(), request)
 }
@@ -4185,7 +4401,7 @@ func (c *Client) ModifyAttributeLabel(request *ModifyAttributeLabelRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyAttributeLabelWithContext(ctx context.Context, request *ModifyAttributeLabelRequest) (response *ModifyAttributeLabelResponse, err error) {
     if request == nil {
         request = NewModifyAttributeLabelRequest()
@@ -4226,7 +4442,7 @@ func NewModifyDocResponse() (response *ModifyDocResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyDoc(request *ModifyDocRequest) (response *ModifyDocResponse, err error) {
     return c.ModifyDocWithContext(context.Background(), request)
 }
@@ -4236,7 +4452,7 @@ func (c *Client) ModifyDoc(request *ModifyDocRequest) (response *ModifyDocRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyDocWithContext(ctx context.Context, request *ModifyDocRequest) (response *ModifyDocResponse, err error) {
     if request == nil {
         request = NewModifyDocRequest()
@@ -5154,6 +5370,57 @@ func (c *Client) StopDocParseWithContext(ctx context.Context, request *StopDocPa
     return
 }
 
+func NewStopWorkflowRunRequest() (request *StopWorkflowRunRequest) {
+    request = &StopWorkflowRunRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "StopWorkflowRun")
+    
+    
+    return
+}
+
+func NewStopWorkflowRunResponse() (response *StopWorkflowRunResponse) {
+    response = &StopWorkflowRunResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// StopWorkflowRun
+// 此接口用来停止正在进行的工作流异步运行实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) StopWorkflowRun(request *StopWorkflowRunRequest) (response *StopWorkflowRunResponse, err error) {
+    return c.StopWorkflowRunWithContext(context.Background(), request)
+}
+
+// StopWorkflowRun
+// 此接口用来停止正在进行的工作流异步运行实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) StopWorkflowRunWithContext(ctx context.Context, request *StopWorkflowRunRequest) (response *StopWorkflowRunResponse, err error) {
+    if request == nil {
+        request = NewStopWorkflowRunRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopWorkflowRun require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopWorkflowRunResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateSharedKnowledgeRequest() (request *UpdateSharedKnowledgeRequest) {
     request = &UpdateSharedKnowledgeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5178,6 +5445,7 @@ func NewUpdateSharedKnowledgeResponse() (response *UpdateSharedKnowledgeResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) UpdateSharedKnowledge(request *UpdateSharedKnowledgeRequest) (response *UpdateSharedKnowledgeResponse, err error) {
     return c.UpdateSharedKnowledgeWithContext(context.Background(), request)
 }
@@ -5187,6 +5455,7 @@ func (c *Client) UpdateSharedKnowledge(request *UpdateSharedKnowledgeRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) UpdateSharedKnowledgeWithContext(ctx context.Context, request *UpdateSharedKnowledgeRequest) (response *UpdateSharedKnowledgeResponse, err error) {
     if request == nil {
         request = NewUpdateSharedKnowledgeRequest()
@@ -5227,6 +5496,7 @@ func NewUploadAttributeLabelResponse() (response *UploadAttributeLabelResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) UploadAttributeLabel(request *UploadAttributeLabelRequest) (response *UploadAttributeLabelResponse, err error) {
     return c.UploadAttributeLabelWithContext(context.Background(), request)
 }
@@ -5236,6 +5506,7 @@ func (c *Client) UploadAttributeLabel(request *UploadAttributeLabelRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) UploadAttributeLabelWithContext(ctx context.Context, request *UploadAttributeLabelRequest) (response *UploadAttributeLabelResponse, err error) {
     if request == nil {
         request = NewUploadAttributeLabelRequest()
@@ -5276,6 +5547,7 @@ func NewVerifyQAResponse() (response *VerifyQAResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) VerifyQA(request *VerifyQARequest) (response *VerifyQAResponse, err error) {
     return c.VerifyQAWithContext(context.Background(), request)
 }
@@ -5285,6 +5557,7 @@ func (c *Client) VerifyQA(request *VerifyQARequest) (response *VerifyQAResponse,
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) VerifyQAWithContext(ctx context.Context, request *VerifyQARequest) (response *VerifyQAResponse, err error) {
     if request == nil {
         request = NewVerifyQARequest()

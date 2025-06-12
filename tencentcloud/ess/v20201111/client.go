@@ -11578,6 +11578,69 @@ func (c *Client) ModifyIntegrationRoleWithContext(ctx context.Context, request *
     return
 }
 
+func NewOperateSealsRequest() (request *OperateSealsRequest) {
+    request = &OperateSealsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "OperateSeals")
+    
+    
+    return
+}
+
+func NewOperateSealsResponse() (response *OperateSealsResponse) {
+    response = &OperateSealsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// OperateSeals
+// 修改印章状态（停用、启用）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) OperateSeals(request *OperateSealsRequest) (response *OperateSealsResponse, err error) {
+    return c.OperateSealsWithContext(context.Background(), request)
+}
+
+// OperateSeals
+// 修改印章状态（停用、启用）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) OperateSealsWithContext(ctx context.Context, request *OperateSealsRequest) (response *OperateSealsResponse, err error) {
+    if request == nil {
+        request = NewOperateSealsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OperateSeals require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOperateSealsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOperateTemplateRequest() (request *OperateTemplateRequest) {
     request = &OperateTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
