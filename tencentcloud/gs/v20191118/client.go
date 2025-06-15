@@ -739,6 +739,67 @@ func (c *Client) CreateAndroidInstancesWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreateAndroidInstancesAccessTokenRequest() (request *CreateAndroidInstancesAccessTokenRequest) {
+    request = &CreateAndroidInstancesAccessTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "CreateAndroidInstancesAccessToken")
+    
+    
+    return
+}
+
+func NewCreateAndroidInstancesAccessTokenResponse() (response *CreateAndroidInstancesAccessTokenResponse) {
+    response = &CreateAndroidInstancesAccessTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAndroidInstancesAccessToken
+// 创建安卓实例访问Token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateAndroidInstancesAccessToken(request *CreateAndroidInstancesAccessTokenRequest) (response *CreateAndroidInstancesAccessTokenResponse, err error) {
+    return c.CreateAndroidInstancesAccessTokenWithContext(context.Background(), request)
+}
+
+// CreateAndroidInstancesAccessToken
+// 创建安卓实例访问Token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateAndroidInstancesAccessTokenWithContext(ctx context.Context, request *CreateAndroidInstancesAccessTokenRequest) (response *CreateAndroidInstancesAccessTokenResponse, err error) {
+    if request == nil {
+        request = NewCreateAndroidInstancesAccessTokenRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAndroidInstancesAccessToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAndroidInstancesAccessTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAndroidInstancesScreenshotRequest() (request *CreateAndroidInstancesScreenshotRequest) {
     request = &CreateAndroidInstancesScreenshotRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1048,6 +1109,65 @@ func (c *Client) DeleteAndroidAppVersionWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDeleteAndroidAppVersionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAndroidInstanceBackupFilesRequest() (request *DeleteAndroidInstanceBackupFilesRequest) {
+    request = &DeleteAndroidInstanceBackupFilesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "DeleteAndroidInstanceBackupFiles")
+    
+    
+    return
+}
+
+func NewDeleteAndroidInstanceBackupFilesResponse() (response *DeleteAndroidInstanceBackupFilesResponse) {
+    response = &DeleteAndroidInstanceBackupFilesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAndroidInstanceBackupFiles
+// 删除安卓实例备份文件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAndroidInstanceBackupFiles(request *DeleteAndroidInstanceBackupFilesRequest) (response *DeleteAndroidInstanceBackupFilesResponse, err error) {
+    return c.DeleteAndroidInstanceBackupFilesWithContext(context.Background(), request)
+}
+
+// DeleteAndroidInstanceBackupFiles
+// 删除安卓实例备份文件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAndroidInstanceBackupFilesWithContext(ctx context.Context, request *DeleteAndroidInstanceBackupFilesRequest) (response *DeleteAndroidInstanceBackupFilesResponse, err error) {
+    if request == nil {
+        request = NewDeleteAndroidInstanceBackupFilesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAndroidInstanceBackupFiles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAndroidInstanceBackupFilesResponse()
     err = c.Send(request, response)
     return
 }
@@ -2996,6 +3116,67 @@ func (c *Client) RebootAndroidInstancesWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewRebootAndroidInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRenewAndroidInstancesAccessTokenRequest() (request *RenewAndroidInstancesAccessTokenRequest) {
+    request = &RenewAndroidInstancesAccessTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gs", APIVersion, "RenewAndroidInstancesAccessToken")
+    
+    
+    return
+}
+
+func NewRenewAndroidInstancesAccessTokenResponse() (response *RenewAndroidInstancesAccessTokenResponse) {
+    response = &RenewAndroidInstancesAccessTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RenewAndroidInstancesAccessToken
+// 续期安卓实例访问Token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RenewAndroidInstancesAccessToken(request *RenewAndroidInstancesAccessTokenRequest) (response *RenewAndroidInstancesAccessTokenResponse, err error) {
+    return c.RenewAndroidInstancesAccessTokenWithContext(context.Background(), request)
+}
+
+// RenewAndroidInstancesAccessToken
+// 续期安卓实例访问Token
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RenewAndroidInstancesAccessTokenWithContext(ctx context.Context, request *RenewAndroidInstancesAccessTokenRequest) (response *RenewAndroidInstancesAccessTokenResponse, err error) {
+    if request == nil {
+        request = NewRenewAndroidInstancesAccessTokenRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewAndroidInstancesAccessToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRenewAndroidInstancesAccessTokenResponse()
     err = c.Send(request, response)
     return
 }

@@ -100,6 +100,69 @@ func (c *Client) CreateDLPFileDetectionTaskWithContext(ctx context.Context, requ
     return
 }
 
+func NewCreateDeviceTaskRequest() (request *CreateDeviceTaskRequest) {
+    request = &CreateDeviceTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "CreateDeviceTask")
+    
+    
+    return
+}
+
+func NewCreateDeviceTaskResponse() (response *CreateDeviceTaskResponse) {
+    response = &CreateDeviceTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateDeviceTask
+// 创建获取终端进程网络服务信息任务，私有化调用path为：capi/Assets/Device/DescribeDeviceInfo
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  FAILEDOPERATION_RPCSERVICECALLFAILED = "FailedOperation.RPCServiceCallFailed"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateDeviceTask(request *CreateDeviceTaskRequest) (response *CreateDeviceTaskResponse, err error) {
+    return c.CreateDeviceTaskWithContext(context.Background(), request)
+}
+
+// CreateDeviceTask
+// 创建获取终端进程网络服务信息任务，私有化调用path为：capi/Assets/Device/DescribeDeviceInfo
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  FAILEDOPERATION_RPCSERVICECALLFAILED = "FailedOperation.RPCServiceCallFailed"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateDeviceTaskWithContext(ctx context.Context, request *CreateDeviceTaskRequest) (response *CreateDeviceTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateDeviceTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDeviceTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDeviceTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDeviceVirtualGroupRequest() (request *CreateDeviceVirtualGroupRequest) {
     request = &CreateDeviceVirtualGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -399,6 +462,67 @@ func (c *Client) DescribeDeviceHardwareInfoListWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewDescribeDeviceHardwareInfoListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDeviceInfoRequest() (request *DescribeDeviceInfoRequest) {
+    request = &DescribeDeviceInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeDeviceInfo")
+    
+    
+    return
+}
+
+func NewDescribeDeviceInfoResponse() (response *DescribeDeviceInfoResponse) {
+    response = &DescribeDeviceInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeviceInfo
+// 获取终端进程网络服务信息，私有化调用path为：capi/Assets/Device/DescribeDeviceInfo
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDeviceInfo(request *DescribeDeviceInfoRequest) (response *DescribeDeviceInfoResponse, err error) {
+    return c.DescribeDeviceInfoWithContext(context.Background(), request)
+}
+
+// DescribeDeviceInfo
+// 获取终端进程网络服务信息，私有化调用path为：capi/Assets/Device/DescribeDeviceInfo
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeDeviceInfoWithContext(ctx context.Context, request *DescribeDeviceInfoRequest) (response *DescribeDeviceInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceInfoResponse()
     err = c.Send(request, response)
     return
 }

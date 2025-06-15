@@ -516,6 +516,9 @@ type CallDetail struct {
 	// 筛选子场景
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubScene *string `json:"SubScene,omitnil,omitempty" name:"SubScene"`
+
+	// 账单明细对应的自定义tag
+	BillingTag *string `json:"BillingTag,omitnil,omitempty" name:"BillingTag"`
 }
 
 type CateInfo struct {
@@ -2433,6 +2436,9 @@ type DescribeAppResponseParams struct {
 
 	// 状态说明
 	AppStatusDesc *string `json:"AppStatusDesc,omitnil,omitempty" name:"AppStatusDesc"`
+
+	// 应用是否在复制中
+	IsCopying *bool `json:"IsCopying,omitnil,omitempty" name:"IsCopying"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -8535,10 +8541,10 @@ type ListUsageCallDetailRequestParams struct {
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 页码
+	// 页码（从1开始）
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 分页数量
+	// 分页数量(最大值1000)
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// uin列表
@@ -8555,6 +8561,9 @@ type ListUsageCallDetailRequestParams struct {
 
 	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
+
+	// 账单明细对应的自定义tag
+	BillingTag *string `json:"BillingTag,omitnil,omitempty" name:"BillingTag"`
 }
 
 type ListUsageCallDetailRequest struct {
@@ -8569,10 +8578,10 @@ type ListUsageCallDetailRequest struct {
 	// 结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 页码
+	// 页码（从1开始）
 	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
 
-	// 分页数量
+	// 分页数量(最大值1000)
 	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
 	// uin列表
@@ -8589,6 +8598,9 @@ type ListUsageCallDetailRequest struct {
 
 	// 应用类型(knowledge_qa应用管理， shared_knowlege 共享知识库)
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
+
+	// 账单明细对应的自定义tag
+	BillingTag *string `json:"BillingTag,omitnil,omitempty" name:"BillingTag"`
 }
 
 func (r *ListUsageCallDetailRequest) ToJsonString() string {
@@ -8613,6 +8625,7 @@ func (r *ListUsageCallDetailRequest) FromJsonString(s string) error {
 	delete(f, "CallType")
 	delete(f, "SubScenes")
 	delete(f, "AppType")
+	delete(f, "BillingTag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListUsageCallDetailRequest has unknown keys!", "")
 	}

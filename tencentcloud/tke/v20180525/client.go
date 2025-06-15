@@ -8534,6 +8534,73 @@ func (c *Client) DescribeLogSwitchesWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeMasterComponentRequest() (request *DescribeMasterComponentRequest) {
+    request = &DescribeMasterComponentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeMasterComponent")
+    
+    
+    return
+}
+
+func NewDescribeMasterComponentResponse() (response *DescribeMasterComponentResponse) {
+    response = &DescribeMasterComponentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMasterComponent
+// 进行master组件停机故障演练时，获取master组件运行状态，支持kube-apiserver、kube-scheduler、kube-controller-manager
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_KUBERNETESCLIENTBUILDERROR = "InternalError.KubernetesClientBuildError"
+//  INTERNALERROR_KUBERNETESGETOPERATIONERROR = "InternalError.KubernetesGetOperationError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) DescribeMasterComponent(request *DescribeMasterComponentRequest) (response *DescribeMasterComponentResponse, err error) {
+    return c.DescribeMasterComponentWithContext(context.Background(), request)
+}
+
+// DescribeMasterComponent
+// 进行master组件停机故障演练时，获取master组件运行状态，支持kube-apiserver、kube-scheduler、kube-controller-manager
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
+//  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_KUBERNETESCLIENTBUILDERROR = "InternalError.KubernetesClientBuildError"
+//  INTERNALERROR_KUBERNETESGETOPERATIONERROR = "InternalError.KubernetesGetOperationError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) DescribeMasterComponentWithContext(ctx context.Context, request *DescribeMasterComponentRequest) (response *DescribeMasterComponentResponse, err error) {
+    if request == nil {
+        request = NewDescribeMasterComponentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMasterComponent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMasterComponentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOSImagesRequest() (request *DescribeOSImagesRequest) {
     request = &DescribeOSImagesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13000,6 +13067,63 @@ func (c *Client) ModifyClusterVirtualNodePoolWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewModifyClusterVirtualNodePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMasterComponentRequest() (request *ModifyMasterComponentRequest) {
+    request = &ModifyMasterComponentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyMasterComponent")
+    
+    
+    return
+}
+
+func NewModifyMasterComponentResponse() (response *ModifyMasterComponentResponse) {
+    response = &ModifyMasterComponentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMasterComponent
+// 修改master组件，支持kube-apiserver、kube-scheduler、kube-controller-manager副本数调整为0和恢复
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NODEPOOLSTATENOTNORMAL = "ResourceUnavailable.NodePoolStateNotNormal"
+func (c *Client) ModifyMasterComponent(request *ModifyMasterComponentRequest) (response *ModifyMasterComponentResponse, err error) {
+    return c.ModifyMasterComponentWithContext(context.Background(), request)
+}
+
+// ModifyMasterComponent
+// 修改master组件，支持kube-apiserver、kube-scheduler、kube-controller-manager副本数调整为0和恢复
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_NODEPOOLSTATENOTNORMAL = "ResourceUnavailable.NodePoolStateNotNormal"
+func (c *Client) ModifyMasterComponentWithContext(ctx context.Context, request *ModifyMasterComponentRequest) (response *ModifyMasterComponentResponse, err error) {
+    if request == nil {
+        request = NewModifyMasterComponentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMasterComponent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMasterComponentResponse()
     err = c.Send(request, response)
     return
 }

@@ -140,6 +140,60 @@ func (r *CreateDLPFileDetectionTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDeviceTaskRequestParams struct {
+	// 终端id
+	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+}
+
+type CreateDeviceTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 终端id
+	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+}
+
+func (r *CreateDeviceTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDeviceTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Mid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDeviceTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDeviceTaskResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateDeviceTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDeviceTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateDeviceTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDeviceTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDeviceVirtualGroupRequestParams struct {
 	// 必填，终端自定义分组名
 	DeviceVirtualGroupName *string `json:"DeviceVirtualGroupName,omitnil,omitempty" name:"DeviceVirtualGroupName"`
@@ -682,6 +736,85 @@ type DescribeDeviceHardwareInfoListRspData struct {
 
 	// 终端硬件信息数据数组
 	Items []*DescribeDeviceHardwareInfoItem `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+// Predefined struct for user
+type DescribeDeviceInfoRequestParams struct {
+	// 终端id
+	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+
+	// 查询类型  process_list network_list service_list
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type DescribeDeviceInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 终端id
+	Mid *string `json:"Mid,omitnil,omitempty" name:"Mid"`
+
+	// 查询类型  process_list network_list service_list
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+func (r *DescribeDeviceInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Mid")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceInfoResponseParams struct {
+	// 业务响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DescribeDeviceInfoRspData `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeviceInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeviceInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeviceInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceInfoRspData struct {
+	// 分页的具体数据对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessList []*DeviceProcessInfo `json:"ProcessList,omitnil,omitempty" name:"ProcessList"`
+
+	// 分页的具体数据对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkList []*DeviceNetworkInfo `json:"NetworkList,omitnil,omitempty" name:"NetworkList"`
+
+	// 分页的具体数据对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceList []*DeviceServiceInfo `json:"ServiceList,omitnil,omitempty" name:"ServiceList"`
 }
 
 type DescribeDevicesPageRsp struct {
@@ -1500,6 +1633,96 @@ type DeviceDetail struct {
 
 	// 终端备注名
 	RemarkName *string `json:"RemarkName,omitnil,omitempty" name:"RemarkName"`
+}
+
+type DeviceNetworkInfo struct {
+	// 本地地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalAddr *string `json:"LocalAddr,omitnil,omitempty" name:"LocalAddr"`
+
+	// 本地端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalPort *int64 `json:"LocalPort,omitnil,omitempty" name:"LocalPort"`
+
+	// 进程id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessId *int64 `json:"ProcessId,omitnil,omitempty" name:"ProcessId"`
+
+	// 进程名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessName *string `json:"ProcessName,omitnil,omitempty" name:"ProcessName"`
+
+	// 协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 远程地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemoteAddr *string `json:"RemoteAddr,omitnil,omitempty" name:"RemoteAddr"`
+
+	// 远程端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemotePort *int64 `json:"RemotePort,omitnil,omitempty" name:"RemotePort"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *int64 `json:"State,omitnil,omitempty" name:"State"`
+}
+
+type DeviceProcessInfo struct {
+	// 命令行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CmdLine *string `json:"CmdLine,omitnil,omitempty" name:"CmdLine"`
+
+	// 内存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Memory *string `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 进程id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessId *int64 `json:"ProcessId,omitnil,omitempty" name:"ProcessId"`
+
+	// 启动用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+}
+
+type DeviceServiceInfo struct {
+	// 命令行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CmdLine *string `json:"CmdLine,omitnil,omitempty" name:"CmdLine"`
+
+	// 内存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 进程id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessId *int64 `json:"ProcessId,omitnil,omitempty" name:"ProcessId"`
+
+	// 启动类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartType *int64 `json:"StartType,omitnil,omitempty" name:"StartType"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *int64 `json:"State,omitnil,omitempty" name:"State"`
+
+	// 启动用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *string `json:"User,omitnil,omitempty" name:"User"`
 }
 
 type Filter struct {

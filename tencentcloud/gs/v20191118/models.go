@@ -180,6 +180,9 @@ type AndroidInstanceImage struct {
 
 	// 镜像可用区
 	AndroidInstanceImageZone *string `json:"AndroidInstanceImageZone,omitnil,omitempty" name:"AndroidInstanceImageZone"`
+
+	// 安卓10
+	AndroidVersion *string `json:"AndroidVersion,omitnil,omitempty" name:"AndroidVersion"`
 }
 
 type AndroidInstanceInformation struct {
@@ -1061,6 +1064,76 @@ func (r *CreateAndroidInstanceWebShellResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateAndroidInstancesAccessTokenRequestParams struct {
+	// 实例 ID 列表。每次请求的实例的上限为 500。
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 有效期，默认为 12 小时，最大为 24 小时。支持 s（秒）、m（分）、h（小时）等单位，比如 12h 表示 12 小时，1h2m3s 表示一小时两分三秒
+	ExpirationDuration *string `json:"ExpirationDuration,omitnil,omitempty" name:"ExpirationDuration"`
+}
+
+type CreateAndroidInstancesAccessTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID 列表。每次请求的实例的上限为 500。
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
+
+	// 有效期，默认为 12 小时，最大为 24 小时。支持 s（秒）、m（分）、h（小时）等单位，比如 12h 表示 12 小时，1h2m3s 表示一小时两分三秒
+	ExpirationDuration *string `json:"ExpirationDuration,omitnil,omitempty" name:"ExpirationDuration"`
+}
+
+func (r *CreateAndroidInstancesAccessTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAndroidInstancesAccessTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AndroidInstanceIds")
+	delete(f, "ExpirationDuration")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndroidInstancesAccessTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAndroidInstancesAccessTokenResponseParams struct {
+	// token
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// 访问信息
+	AccessInfo *string `json:"AccessInfo,omitnil,omitempty" name:"AccessInfo"`
+
+	// 安卓实例错误列表。列表包含有问题的安卓实例 ID，生成的 Token 对这些有问题的实例无效。
+	AndroidInstanceErrors []*AndroidInstanceError `json:"AndroidInstanceErrors,omitnil,omitempty" name:"AndroidInstanceErrors"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAndroidInstancesAccessTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAndroidInstancesAccessTokenResponseParams `json:"Response"`
+}
+
+func (r *CreateAndroidInstancesAccessTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAndroidInstancesAccessTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateAndroidInstancesRequestParams struct {
 	// 安卓实例可用区。
 	// ap-guangzhou-3：广州三区
@@ -1607,6 +1680,88 @@ func (r *DeleteAndroidAppVersionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAndroidAppVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAndroidInstanceBackupFilesRequestParams struct {
+	// 文件对象键列表
+	ObjectKeys []*string `json:"ObjectKeys,omitnil,omitempty" name:"ObjectKeys"`
+
+	// 存储服务器类型，如 COS、S3。注意：使用 COS 和 S3 都将占用外网带宽。
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// COS协议选项
+	COSOptions *COSOptions `json:"COSOptions,omitnil,omitempty" name:"COSOptions"`
+
+	// S3存储协议选项
+	S3Options *S3Options `json:"S3Options,omitnil,omitempty" name:"S3Options"`
+
+	// 安卓实例可用区。StorageType 为 S3 时，需要填写该字段；StorageType 为 COS 时，不需要填写该字段
+	AndroidInstanceZone *string `json:"AndroidInstanceZone,omitnil,omitempty" name:"AndroidInstanceZone"`
+}
+
+type DeleteAndroidInstanceBackupFilesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件对象键列表
+	ObjectKeys []*string `json:"ObjectKeys,omitnil,omitempty" name:"ObjectKeys"`
+
+	// 存储服务器类型，如 COS、S3。注意：使用 COS 和 S3 都将占用外网带宽。
+	StorageType *string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// COS协议选项
+	COSOptions *COSOptions `json:"COSOptions,omitnil,omitempty" name:"COSOptions"`
+
+	// S3存储协议选项
+	S3Options *S3Options `json:"S3Options,omitnil,omitempty" name:"S3Options"`
+
+	// 安卓实例可用区。StorageType 为 S3 时，需要填写该字段；StorageType 为 COS 时，不需要填写该字段
+	AndroidInstanceZone *string `json:"AndroidInstanceZone,omitnil,omitempty" name:"AndroidInstanceZone"`
+}
+
+func (r *DeleteAndroidInstanceBackupFilesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAndroidInstanceBackupFilesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ObjectKeys")
+	delete(f, "StorageType")
+	delete(f, "COSOptions")
+	delete(f, "S3Options")
+	delete(f, "AndroidInstanceZone")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAndroidInstanceBackupFilesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAndroidInstanceBackupFilesResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAndroidInstanceBackupFilesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAndroidInstanceBackupFilesResponseParams `json:"Response"`
+}
+
+func (r *DeleteAndroidInstanceBackupFilesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAndroidInstanceBackupFilesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3711,6 +3866,9 @@ func (r *ModifyAndroidInstancesPropertiesRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type ModifyAndroidInstancesPropertiesResponseParams struct {
+	// 安卓实例错误列表
+	AndroidInstanceErrors []*AndroidInstanceError `json:"AndroidInstanceErrors,omitnil,omitempty" name:"AndroidInstanceErrors"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3820,6 +3978,9 @@ func (r *ModifyAndroidInstancesResolutionRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type ModifyAndroidInstancesResolutionResponseParams struct {
+	// 安卓实例错误列表
+	AndroidInstanceErrors []*AndroidInstanceError `json:"AndroidInstanceErrors,omitnil,omitempty" name:"AndroidInstanceErrors"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4076,6 +4237,67 @@ func (r *RebootAndroidInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RebootAndroidInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RenewAndroidInstancesAccessTokenRequestParams struct {
+	// token
+	AccessToken *string `json:"AccessToken,omitnil,omitempty" name:"AccessToken"`
+
+	// 有效期，默认为 12 小时，最大为 24 小时。支持 s（秒）、m（分）、h（小时）等单位，比如 12h 表示 12 小时，1h2m3s 表示一小时两分三秒
+	ExpirationDuration *string `json:"ExpirationDuration,omitnil,omitempty" name:"ExpirationDuration"`
+}
+
+type RenewAndroidInstancesAccessTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// token
+	AccessToken *string `json:"AccessToken,omitnil,omitempty" name:"AccessToken"`
+
+	// 有效期，默认为 12 小时，最大为 24 小时。支持 s（秒）、m（分）、h（小时）等单位，比如 12h 表示 12 小时，1h2m3s 表示一小时两分三秒
+	ExpirationDuration *string `json:"ExpirationDuration,omitnil,omitempty" name:"ExpirationDuration"`
+}
+
+func (r *RenewAndroidInstancesAccessTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewAndroidInstancesAccessTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AccessToken")
+	delete(f, "ExpirationDuration")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewAndroidInstancesAccessTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RenewAndroidInstancesAccessTokenResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RenewAndroidInstancesAccessTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *RenewAndroidInstancesAccessTokenResponseParams `json:"Response"`
+}
+
+func (r *RenewAndroidInstancesAccessTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewAndroidInstancesAccessTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

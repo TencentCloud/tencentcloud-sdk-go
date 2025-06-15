@@ -116,7 +116,7 @@ const (
 	// 批量删除实例限制。
 	UNSUPPORTEDOPERATION_BATCHDELINSTANCELIMIT = "UnsupportedOperation.BatchDelInstanceLimit"
 
-	// 删除主题频率过快
+	// 创建Topic成功后，60s后才能删除该Topic
 	UNSUPPORTEDOPERATION_FREQUENCYTOPICDELETEOPERATE = "UnsupportedOperation.FrequencyTopicDeleteOperate"
 
 	// Oss拒绝该操作。

@@ -1789,6 +1789,7 @@ func NewDescribeDomainNameListResponse() (response *DescribeDomainNameListRespon
 // 本接口 (  DescribeDomainNameList ) 我的域名列表。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION_DESCRIBEDOMAINLISTFAILED = "FailedOperation.DescribeDomainListFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDomainNameList(request *DescribeDomainNameListRequest) (response *DescribeDomainNameListResponse, err error) {
@@ -1799,6 +1800,7 @@ func (c *Client) DescribeDomainNameList(request *DescribeDomainNameListRequest) 
 // 本接口 (  DescribeDomainNameList ) 我的域名列表。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION_DESCRIBEDOMAINLISTFAILED = "FailedOperation.DescribeDomainListFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeDomainNameListWithContext(ctx context.Context, request *DescribeDomainNameListRequest) (response *DescribeDomainNameListResponse, err error) {

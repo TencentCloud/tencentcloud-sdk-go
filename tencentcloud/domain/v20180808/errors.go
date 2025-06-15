@@ -17,6 +17,9 @@ package v20180808
 const (
 	// 此产品的特有错误码
 
+	// 操作未授权，请检查CAM策略。
+	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 

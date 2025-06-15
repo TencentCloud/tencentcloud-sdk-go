@@ -12208,13 +12208,13 @@ type TextVehicleFront struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Seal *string `json:"Seal,omitnil,omitempty" name:"Seal"`
 
-	// 状态
+	// 状态，该字段仅支持电子行驶证返回
 	StateElectronic *string `json:"StateElectronic,omitnil,omitempty" name:"StateElectronic"`
 
-	// 检验有效期
+	// 检验有效期，该字段仅支持电子行驶证返回
 	InspectionValidityTimeElectronic *string `json:"InspectionValidityTimeElectronic,omitnil,omitempty" name:"InspectionValidityTimeElectronic"`
 
-	// 生成时间
+	// 生成时间，该字段仅支持电子行驶证返回
 	GenerationTimeElectronic *string `json:"GenerationTimeElectronic,omitnil,omitempty" name:"GenerationTimeElectronic"`
 }
 

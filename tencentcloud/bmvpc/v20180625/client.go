@@ -126,6 +126,10 @@ func NewAsyncRegisterIpsResponse() (response *AsyncRegisterIpsResponse) {
 }
 
 // AsyncRegisterIps
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 批量注册虚拟IP，异步接口。通过接口来查询任务进度。每次请求最多注册256个IP
 //
 // 可能返回的错误码:
@@ -135,6 +139,10 @@ func (c *Client) AsyncRegisterIps(request *AsyncRegisterIpsRequest) (response *A
 }
 
 // AsyncRegisterIps
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 批量注册虚拟IP，异步接口。通过接口来查询任务进度。每次请求最多注册256个IP
 //
 // 可能返回的错误码:
@@ -230,6 +238,10 @@ func NewBindIpsToNatGatewayResponse() (response *BindIpsToNatGatewayResponse) {
 }
 
 // BindIpsToNatGateway
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 可用于将子网的部分IP绑定到NAT网关
 //
 // 可能返回的错误码:
@@ -243,6 +255,10 @@ func (c *Client) BindIpsToNatGateway(request *BindIpsToNatGatewayRequest) (respo
 }
 
 // BindIpsToNatGateway
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 可用于将子网的部分IP绑定到NAT网关
 //
 // 可能返回的错误码:
@@ -287,6 +303,10 @@ func NewBindSubnetsToNatGatewayResponse() (response *BindSubnetsToNatGatewayResp
 }
 
 // BindSubnetsToNatGateway
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // NAT网关绑定子网后，该子网内全部IP可出公网
 //
 // 可能返回的错误码:
@@ -300,6 +320,10 @@ func (c *Client) BindSubnetsToNatGateway(request *BindSubnetsToNatGatewayRequest
 }
 
 // BindSubnetsToNatGateway
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // NAT网关绑定子网后，该子网内全部IP可出公网
 //
 // 可能返回的错误码:
@@ -344,6 +368,10 @@ func NewCreateCustomerGatewayResponse() (response *CreateCustomerGatewayResponse
 }
 
 // CreateCustomerGateway
+// 90天无调用
+//
+// 
+//
 // 本接口（CreateCustomerGateway）用于创建对端网关。
 //
 // 可能返回的错误码:
@@ -358,6 +386,10 @@ func (c *Client) CreateCustomerGateway(request *CreateCustomerGatewayRequest) (r
 }
 
 // CreateCustomerGateway
+// 90天无调用
+//
+// 
+//
 // 本接口（CreateCustomerGateway）用于创建对端网关。
 //
 // 可能返回的错误码:
@@ -454,6 +486,10 @@ func NewCreateHostedInterfaceResponse() (response *CreateHostedInterfaceResponse
 }
 
 // CreateHostedInterface
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 本接口（CreateHostedInterface）用于黑石托管机器加入带VLANID不为5的子网。
 //
 // 
@@ -473,6 +509,10 @@ func (c *Client) CreateHostedInterface(request *CreateHostedInterfaceRequest) (r
 }
 
 // CreateHostedInterface
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 本接口（CreateHostedInterface）用于黑石托管机器加入带VLANID不为5的子网。
 //
 // 
@@ -580,6 +620,10 @@ func NewCreateNatGatewayResponse() (response *CreateNatGatewayResponse) {
 }
 
 // CreateNatGateway
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 创建NAT网关接口，可针对网段方式、子网全部IP、子网部分IP这三种方式创建NAT网关
 //
 // 可能返回的错误码:
@@ -594,6 +638,10 @@ func (c *Client) CreateNatGateway(request *CreateNatGatewayRequest) (response *C
 }
 
 // CreateNatGateway
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 创建NAT网关接口，可针对网段方式、子网全部IP、子网部分IP这三种方式创建NAT网关
 //
 // 可能返回的错误码:
@@ -639,6 +687,10 @@ func NewCreateRoutePoliciesResponse() (response *CreateRoutePoliciesResponse) {
 }
 
 // CreateRoutePolicies
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 创建黑石路由表的路由规则
 //
 // 可能返回的错误码:
@@ -653,6 +705,10 @@ func (c *Client) CreateRoutePolicies(request *CreateRoutePoliciesRequest) (respo
 }
 
 // CreateRoutePolicies
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 创建黑石路由表的路由规则
 //
 // 可能返回的错误码:
@@ -808,6 +864,10 @@ func NewCreateVpcResponse() (response *CreateVpcResponse) {
 }
 
 // CreateVpc
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 创建黑石私有网络
 //
 // 可能返回的错误码:
@@ -819,6 +879,10 @@ func (c *Client) CreateVpc(request *CreateVpcRequest) (response *CreateVpcRespon
 }
 
 // CreateVpc
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 创建黑石私有网络
 //
 // 可能返回的错误码:
@@ -861,6 +925,10 @@ func NewCreateVpcPeerConnectionResponse() (response *CreateVpcPeerConnectionResp
 }
 
 // CreateVpcPeerConnection
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 创建对等连接
 //
 // 可能返回的错误码:
@@ -877,6 +945,10 @@ func (c *Client) CreateVpcPeerConnection(request *CreateVpcPeerConnectionRequest
 }
 
 // CreateVpcPeerConnection
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 创建对等连接
 //
 // 可能返回的错误码:
@@ -1154,6 +1226,10 @@ func NewDeleteNatGatewayResponse() (response *DeleteNatGatewayResponse) {
 }
 
 // DeleteNatGateway
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 删除NAT网关
 //
 // 可能返回的错误码:
@@ -1166,6 +1242,10 @@ func (c *Client) DeleteNatGateway(request *DeleteNatGatewayRequest) (response *D
 }
 
 // DeleteNatGateway
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 删除NAT网关
 //
 // 可能返回的错误码:
@@ -1209,6 +1289,10 @@ func NewDeleteRoutePolicyResponse() (response *DeleteRoutePolicyResponse) {
 }
 
 // DeleteRoutePolicy
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 删除黑石路由表路由规则
 //
 // 可能返回的错误码:
@@ -1222,6 +1306,10 @@ func (c *Client) DeleteRoutePolicy(request *DeleteRoutePolicyRequest) (response 
 }
 
 // DeleteRoutePolicy
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 删除黑石路由表路由规则
 //
 // 可能返回的错误码:
@@ -1634,6 +1722,10 @@ func NewDeregisterIpsResponse() (response *DeregisterIpsResponse) {
 }
 
 // DeregisterIps
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 注销私有网络IP为空闲
 //
 // 可能返回的错误码:
@@ -1646,6 +1738,10 @@ func (c *Client) DeregisterIps(request *DeregisterIpsRequest) (response *Deregis
 }
 
 // DeregisterIps
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 注销私有网络IP为空闲
 //
 // 可能返回的错误码:
@@ -2586,6 +2682,10 @@ func NewDownloadCustomerGatewayConfigurationResponse() (response *DownloadCustom
 }
 
 // DownloadCustomerGatewayConfiguration
+// 90天无调用
+//
+// 
+//
 // 本接口(DownloadCustomerGatewayConfiguration)用于下载VPN通道配置。
 //
 // 可能返回的错误码:
@@ -2597,6 +2697,10 @@ func (c *Client) DownloadCustomerGatewayConfiguration(request *DownloadCustomerG
 }
 
 // DownloadCustomerGatewayConfiguration
+// 90天无调用
+//
+// 
+//
 // 本接口(DownloadCustomerGatewayConfiguration)用于下载VPN通道配置。
 //
 // 可能返回的错误码:
@@ -2698,6 +2802,10 @@ func NewModifyRoutePolicyResponse() (response *ModifyRoutePolicyResponse) {
 }
 
 // ModifyRoutePolicy
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 修改自定义路由
 //
 // 可能返回的错误码:
@@ -2711,6 +2819,10 @@ func (c *Client) ModifyRoutePolicy(request *ModifyRoutePolicyRequest) (response 
 }
 
 // ModifyRoutePolicy
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 修改自定义路由
 //
 // 可能返回的错误码:
@@ -2755,6 +2867,10 @@ func NewModifyRouteTableResponse() (response *ModifyRouteTableResponse) {
 }
 
 // ModifyRouteTable
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 修改路由表
 //
 // 可能返回的错误码:
@@ -2767,6 +2883,10 @@ func (c *Client) ModifyRouteTable(request *ModifyRouteTableRequest) (response *M
 }
 
 // ModifyRouteTable
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 修改路由表
 //
 // 可能返回的错误码:
@@ -3339,6 +3459,10 @@ func NewUnbindIpsFromNatGatewayResponse() (response *UnbindIpsFromNatGatewayResp
 }
 
 // UnbindIpsFromNatGateway
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // NAT网关解绑IP接口，可将子网的部分IP从NAT网关中解绑
 //
 // 可能返回的错误码:
@@ -3351,6 +3475,10 @@ func (c *Client) UnbindIpsFromNatGateway(request *UnbindIpsFromNatGatewayRequest
 }
 
 // UnbindIpsFromNatGateway
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // NAT网关解绑IP接口，可将子网的部分IP从NAT网关中解绑
 //
 // 可能返回的错误码:
@@ -3394,6 +3522,10 @@ func NewUnbindSubnetsFromNatGatewayResponse() (response *UnbindSubnetsFromNatGat
 }
 
 // UnbindSubnetsFromNatGateway
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // NAT网关解绑子网接口，可将子网解绑NAT网关
 //
 // 可能返回的错误码:
@@ -3406,6 +3538,10 @@ func (c *Client) UnbindSubnetsFromNatGateway(request *UnbindSubnetsFromNatGatewa
 }
 
 // UnbindSubnetsFromNatGateway
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // NAT网关解绑子网接口，可将子网解绑NAT网关
 //
 // 可能返回的错误码:
@@ -3449,6 +3585,10 @@ func NewUpgradeNatGatewayResponse() (response *UpgradeNatGatewayResponse) {
 }
 
 // UpgradeNatGateway
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 升级NAT网关接口，可NAT网关修改为小型NAT网关、中型NAT网关、以及大型NAT网关
 //
 // 可能返回的错误码:
@@ -3461,6 +3601,10 @@ func (c *Client) UpgradeNatGateway(request *UpgradeNatGatewayRequest) (response 
 }
 
 // UpgradeNatGateway
+// 黑石1.0接口，业务已下线，90天无调用
+//
+// 
+//
 // 升级NAT网关接口，可NAT网关修改为小型NAT网关、中型NAT网关、以及大型NAT网关
 //
 // 可能返回的错误码:

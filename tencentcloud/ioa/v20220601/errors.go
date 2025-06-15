@@ -20,6 +20,9 @@ const (
 	// 查询数据失败。
 	FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
 
+	// RPC服务调用失败。
+	FAILEDOPERATION_RPCSERVICECALLFAILED = "FailedOperation.RPCServiceCallFailed"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 

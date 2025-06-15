@@ -10272,6 +10272,73 @@ func (r *DescribeLogSwitchesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMasterComponentRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// master组件名称，支持kube-apiserver、kube-scheduler、kube-controller-manager
+	Component *string `json:"Component,omitnil,omitempty" name:"Component"`
+}
+
+type DescribeMasterComponentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// master组件名称，支持kube-apiserver、kube-scheduler、kube-controller-manager
+	Component *string `json:"Component,omitnil,omitempty" name:"Component"`
+}
+
+func (r *DescribeMasterComponentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMasterComponentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Component")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMasterComponentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMasterComponentResponseParams struct {
+	// master组件名称
+	Component *string `json:"Component,omitnil,omitempty" name:"Component"`
+
+	// master组件状态，三种状态：running、updating、shutdown
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMasterComponentResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMasterComponentResponseParams `json:"Response"`
+}
+
+func (r *DescribeMasterComponentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMasterComponentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeOSImagesRequestParams struct {
 
 }
@@ -16610,6 +16677,81 @@ func (r *ModifyClusterVirtualNodePoolResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyClusterVirtualNodePoolResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMasterComponentRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// master组件名称，支持kube-apiserver、kube-scheduler、kube-controller-manager
+	Component *string `json:"Component,omitnil,omitempty" name:"Component"`
+
+	// 停机或恢复，值只能为：shutdown或restore
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// 为true时，不真正执行停机或恢复操作	
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+}
+
+type ModifyMasterComponentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// master组件名称，支持kube-apiserver、kube-scheduler、kube-controller-manager
+	Component *string `json:"Component,omitnil,omitempty" name:"Component"`
+
+	// 停机或恢复，值只能为：shutdown或restore
+	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// 为true时，不真正执行停机或恢复操作	
+	DryRun *bool `json:"DryRun,omitnil,omitempty" name:"DryRun"`
+}
+
+func (r *ModifyMasterComponentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMasterComponentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "Component")
+	delete(f, "Operation")
+	delete(f, "DryRun")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMasterComponentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMasterComponentResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyMasterComponentResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyMasterComponentResponseParams `json:"Response"`
+}
+
+func (r *ModifyMasterComponentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMasterComponentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
