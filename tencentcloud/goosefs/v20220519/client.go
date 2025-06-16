@@ -217,6 +217,49 @@ func (c *Client) BatchDeleteClientNodesWithContext(ctx context.Context, request 
     return
 }
 
+func NewBuildClientNodeMountCommandRequest() (request *BuildClientNodeMountCommandRequest) {
+    request = &BuildClientNodeMountCommandRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("goosefs", APIVersion, "BuildClientNodeMountCommand")
+    
+    
+    return
+}
+
+func NewBuildClientNodeMountCommandResponse() (response *BuildClientNodeMountCommandResponse) {
+    response = &BuildClientNodeMountCommandResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BuildClientNodeMountCommand
+// 生成客户端的挂载命令
+func (c *Client) BuildClientNodeMountCommand(request *BuildClientNodeMountCommandRequest) (response *BuildClientNodeMountCommandResponse, err error) {
+    return c.BuildClientNodeMountCommandWithContext(context.Background(), request)
+}
+
+// BuildClientNodeMountCommand
+// 生成客户端的挂载命令
+func (c *Client) BuildClientNodeMountCommandWithContext(ctx context.Context, request *BuildClientNodeMountCommandRequest) (response *BuildClientNodeMountCommandResponse, err error) {
+    if request == nil {
+        request = NewBuildClientNodeMountCommandRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BuildClientNodeMountCommand require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBuildClientNodeMountCommandResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDataRepositoryTaskRequest() (request *CreateDataRepositoryTaskRequest) {
     request = &CreateDataRepositoryTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

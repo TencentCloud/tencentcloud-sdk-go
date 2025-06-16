@@ -1,146 +1,166 @@
-# Release v1.0.1187
+# Release v1.0.1188
 
-## 黑石私有网络(bmvpc) 版本：2018-06-25
+## 云安全一体化平台(csip) 版本：2022-11-21
 
-### 第 6 次发布
+### 第 51 次发布
 
-发布时间：2025-06-16 01:09:07
+发布时间：2025-06-17 01:21:21
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**预下线接口**：</font>
+新增接口：
 
-* AsyncRegisterIps
-* BindIpsToNatGateway
-* BindSubnetsToNatGateway
-* CreateCustomerGateway
-* CreateHostedInterface
-* CreateNatGateway
-* CreateRoutePolicies
-* CreateVpc
-* CreateVpcPeerConnection
-* DeleteNatGateway
-* DeleteRoutePolicy
-* DeregisterIps
-* DownloadCustomerGatewayConfiguration
-* ModifyRoutePolicy
-* ModifyRouteTable
-* UnbindIpsFromNatGateway
-* UnbindSubnetsFromNatGateway
-* UpgradeNatGateway
+* [DescribeExposures](https://cloud.tencent.com/document/api/664/119762)
+
+修改接口：
+
+* [DescribeTopAttackInfo](https://cloud.tencent.com/document/api/664/104060)
+
+	* 新增入参：StartTime, EndTime, QueryType, AssetName, AssetType
+
+
+新增数据结构：
+
+* [ExposesItem](https://cloud.tencent.com/document/api/664/90825#ExposesItem)
+* [Filters](https://cloud.tencent.com/document/api/664/90825#Filters)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 226 次发布
+
+发布时间：2025-06-17 01:34:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [OperateTemplate](https://cloud.tencent.com/document/api/1323/117837)
+
+	* 新增入参：TemplateName
+
+	* 新增出参：TemplateId, TemplateName
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 221 次发布
+
+发布时间：2025-06-17 01:35:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [OperateTemplate](https://cloud.tencent.com/document/api/1420/117838)
+
+	* 新增入参：TemplateName
+
+	* 新增出参：TemplateId, TemplateName
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 数据加速器 GooseFS(goosefs) 版本：2022-05-19
+
+### 第 15 次发布
+
+发布时间：2025-06-17 01:37:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BuildClientNodeMountCommand](https://cloud.tencent.com/document/api/1424/119763)
 
 
 
 ## 云游戏(gs) 版本：2019-11-18
 
-### 第 41 次发布
+### 第 42 次发布
 
-发布时间：2025-06-16 01:19:43
+发布时间：2025-06-17 01:37:31
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [CreateAndroidInstancesAccessToken](https://cloud.tencent.com/document/api/1162/119708)
-* [DeleteAndroidInstanceBackupFiles](https://cloud.tencent.com/document/api/1162/119709)
-* [RenewAndroidInstancesAccessToken](https://cloud.tencent.com/document/api/1162/119707)
-
-修改接口：
-
-* [ModifyAndroidInstancesProperties](https://cloud.tencent.com/document/api/1162/118980)
-
-	* 新增出参：AndroidInstanceErrors
-
-* [ModifyAndroidInstancesResolution](https://cloud.tencent.com/document/api/1162/118032)
-
-	* 新增出参：AndroidInstanceErrors
-
 
 修改数据结构：
 
-* [AndroidInstanceImage](https://cloud.tencent.com/document/api/1162/40743#AndroidInstanceImage)
+* [AndroidAppVersionInfo](https://cloud.tencent.com/document/api/1162/40743#AndroidAppVersionInfo)
 
-	* 新增成员：AndroidVersion
-
-
+	* 新增成员：AndroidAppVersionName
 
 
-## iOA 零信任安全管理系统(ioa) 版本：2022-06-01
 
-### 第 15 次发布
 
-发布时间：2025-06-16 01:20:22
+## 腾讯混元大模型(hunyuan) 版本：2023-09-01
+
+### 第 42 次发布
+
+发布时间：2025-06-16 22:17:48
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [CreateDeviceTask](https://cloud.tencent.com/document/api/1092/119711)
-* [DescribeDeviceInfo](https://cloud.tencent.com/document/api/1092/119710)
+* [ChatCompletions](https://cloud.tencent.com/document/api/1729/105701)
+
+	* 新增入参：TopicChoice
+
+	* 新增出参：Processes
+
 
 新增数据结构：
 
-* [DescribeDeviceInfoRspData](https://cloud.tencent.com/document/api/1092/102488#DescribeDeviceInfoRspData)
-* [DeviceNetworkInfo](https://cloud.tencent.com/document/api/1092/102488#DeviceNetworkInfo)
-* [DeviceProcessInfo](https://cloud.tencent.com/document/api/1092/102488#DeviceProcessInfo)
-* [DeviceServiceInfo](https://cloud.tencent.com/document/api/1092/102488#DeviceServiceInfo)
-
-
-
-## 腾讯云智能体开发平台(lke) 版本：2023-11-30
-
-### 第 48 次发布
-
-发布时间：2025-06-16 01:23:17
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeApp](https://cloud.tencent.com/document/api/1759/105072)
-
-	* 新增出参：IsCopying
-
-* [ListUsageCallDetail](https://cloud.tencent.com/document/api/1759/113595)
-
-	* 新增入参：BillingTag
-
+* [Processes](https://cloud.tencent.com/document/api/1729/101838#Processes)
 
 修改数据结构：
 
-* [CallDetail](https://cloud.tencent.com/document/api/1759/105104#CallDetail)
+* [WebSearchOptions](https://cloud.tencent.com/document/api/1729/101838#WebSearchOptions)
 
-	* 新增成员：BillingTag
-
-
-
-
-## 容器服务(tke) 版本：2022-05-01
+	* 新增成员：Processes
 
 
 
-## 容器服务(tke) 版本：2018-05-25
 
-### 第 198 次发布
+## 实时音视频(trtc) 版本：2019-07-22
 
-发布时间：2025-06-16 01:32:10
+### 第 113 次发布
+
+发布时间：2025-06-17 02:10:52
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+新增数据结构：
 
-* [DescribeMasterComponent](https://cloud.tencent.com/document/api/457/119713)
-* [ModifyMasterComponent](https://cloud.tencent.com/document/api/457/119712)
+* [TurnDetection](https://cloud.tencent.com/document/api/647/44055#TurnDetection)
+
+修改数据结构：
+
+* [AgentConfig](https://cloud.tencent.com/document/api/647/44055#AgentConfig)
+
+	* 新增成员：TurnDetection
+
 
 
 

@@ -1255,7 +1255,7 @@ type ChannelCreateBatchSignUrlRequestParams struct {
 	// </ul>
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
-	// 批量签署的合同流程ID数组。
+	// 批量签署的合同流程ID数组。<font color="red">此参数必传。</font>
 	// 注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
 	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
@@ -1382,7 +1382,7 @@ type ChannelCreateBatchSignUrlRequest struct {
 	// </ul>
 	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 
-	// 批量签署的合同流程ID数组。
+	// 批量签署的合同流程ID数组。<font color="red">此参数必传。</font>
 	// 注: `在调用此接口时，请确保合同流程均为本企业发起，且合同数量不超过100个。`
 	FlowIds []*string `json:"FlowIds,omitnil,omitempty" name:"FlowIds"`
 
@@ -7711,11 +7711,6 @@ type CreateConsoleLoginUrlRequestParams struct {
 	// 可选的此企业允许的授权方式, 可以设置的方式有:
 	// <ul><li>1：上传授权书</li>
 	// <li>2：转法定代表人授权</li>
-	// <li>4：企业实名认证（信任第三方认证源）（此项有排他性, 选择后不能增添其他的方式）</li></ul>
-	// 注:<ul>
-	// <li>未选择信任第三方认证源时，如果是法人进行企业激活，仅支持法人扫脸直接授权，该配置不对此法人生效`</li>
-	// <li>选择信任第三方认证源时，请先通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/SyncProxyOrganization" target="_blank">同步企业信息</a>接口同步信息。</li>
-	// <li>该参数仅在企业未激活时生效</li>
 	// </ul>
 	AuthorizationTypes []*int64 `json:"AuthorizationTypes,omitnil,omitempty" name:"AuthorizationTypes"`
 
@@ -7846,11 +7841,6 @@ type CreateConsoleLoginUrlRequest struct {
 	// 可选的此企业允许的授权方式, 可以设置的方式有:
 	// <ul><li>1：上传授权书</li>
 	// <li>2：转法定代表人授权</li>
-	// <li>4：企业实名认证（信任第三方认证源）（此项有排他性, 选择后不能增添其他的方式）</li></ul>
-	// 注:<ul>
-	// <li>未选择信任第三方认证源时，如果是法人进行企业激活，仅支持法人扫脸直接授权，该配置不对此法人生效`</li>
-	// <li>选择信任第三方认证源时，请先通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/SyncProxyOrganization" target="_blank">同步企业信息</a>接口同步信息。</li>
-	// <li>该参数仅在企业未激活时生效</li>
 	// </ul>
 	AuthorizationTypes []*int64 `json:"AuthorizationTypes,omitnil,omitempty" name:"AuthorizationTypes"`
 
@@ -12450,6 +12440,10 @@ type OperateTemplateRequestParams struct {
 	// <li>COPY: 复制新建</li>
 	// </ul>
 	OperateType *string `json:"OperateType,omitnil,omitempty" name:"OperateType"`
+
+	// 模板名称，长度不超过64字符。<br>
+	// 模板复制时指定有效，若为空，则复制后模板名称为 **原模板名称_副本**。
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 }
 
 type OperateTemplateRequest struct {
@@ -12476,6 +12470,10 @@ type OperateTemplateRequest struct {
 	// <li>COPY: 复制新建</li>
 	// </ul>
 	OperateType *string `json:"OperateType,omitnil,omitempty" name:"OperateType"`
+
+	// 模板名称，长度不超过64字符。<br>
+	// 模板复制时指定有效，若为空，则复制后模板名称为 **原模板名称_副本**。
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 }
 
 func (r *OperateTemplateRequest) ToJsonString() string {
@@ -12493,6 +12491,7 @@ func (r *OperateTemplateRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "TemplateId")
 	delete(f, "OperateType")
+	delete(f, "TemplateName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OperateTemplateRequest has unknown keys!", "")
 	}
@@ -12501,6 +12500,12 @@ func (r *OperateTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type OperateTemplateResponseParams struct {
+	// 模板ID，为32位字符串，模板复制新建时返回
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// 模板名称，模板复制新建时返回
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

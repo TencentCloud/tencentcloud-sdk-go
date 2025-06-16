@@ -220,6 +220,9 @@ type ChatCompletionsRequestParams struct {
 
 	// 知识注入相关的参数信息
 	WebSearchOptions *WebSearchOptions `json:"WebSearchOptions,omitnil,omitempty" name:"WebSearchOptions"`
+
+	// 用户传入Topic
+	TopicChoice *string `json:"TopicChoice,omitnil,omitempty" name:"TopicChoice"`
 }
 
 type ChatCompletionsRequest struct {
@@ -344,6 +347,9 @@ type ChatCompletionsRequest struct {
 
 	// 知识注入相关的参数信息
 	WebSearchOptions *WebSearchOptions `json:"WebSearchOptions,omitnil,omitempty" name:"WebSearchOptions"`
+
+	// 用户传入Topic
+	TopicChoice *string `json:"TopicChoice,omitnil,omitempty" name:"TopicChoice"`
 }
 
 func (r *ChatCompletionsRequest) ToJsonString() string {
@@ -379,6 +385,7 @@ func (r *ChatCompletionsRequest) FromJsonString(s string) error {
 	delete(f, "EnableRecommendedQuestions")
 	delete(f, "EnableDeepRead")
 	delete(f, "WebSearchOptions")
+	delete(f, "TopicChoice")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatCompletionsRequest has unknown keys!", "")
 	}
@@ -424,6 +431,9 @@ type ChatCompletionsResponseParams struct {
 
 	// 推荐问答。
 	RecommendedQuestions []*string `json:"RecommendedQuestions,omitnil,omitempty" name:"RecommendedQuestions"`
+
+	// AI搜索返回状态
+	Processes *Processes `json:"Processes,omitnil,omitempty" name:"Processes"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1821,6 +1831,19 @@ type Multimedia struct {
 	Ext *SongExt `json:"Ext,omitnil,omitempty" name:"Ext"`
 }
 
+type Processes struct {
+	// 输出信息
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// plan:开始获取资料…
+	// recall:找到 n 篇相关资料
+	// quote:引用 n 篇资料作为参考
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 当状态是recall和quote，会给出来相关数量
+	Num *uint64 `json:"Num,omitnil,omitempty" name:"Num"`
+}
+
 // Predefined struct for user
 type QueryHunyuanImageChatJobRequestParams struct {
 	// 任务 ID。
@@ -3014,4 +3037,7 @@ type WebSearchOptions struct {
 
 	// 用户位置详细信息
 	UserLocation *UserLocation `json:"UserLocation,omitnil,omitempty" name:"UserLocation"`
+
+	// 打开开关，会返回搜索状态
+	Processes *bool `json:"Processes,omitnil,omitempty" name:"Processes"`
 }

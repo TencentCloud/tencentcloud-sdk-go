@@ -629,15 +629,8 @@ func NewDeleteVoicePrintResponse() (response *DeleteVoicePrintResponse) {
 // 传入声纹ID，删除之前注册的声纹信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
 //  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
-//  FAILEDOPERATION_GENVOICEPRINTIDFAILED = "FailedOperation.GenVoicePrintIdFailed"
 //  FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
-//  FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
-//  FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = "FailedOperation.VoicePrintRegistrationLimit"
-//  INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
-//  INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
-//  MISSINGPARAMETER_MISSINGVOICEPRINTIDLIST = "MissingParameter.MissingVoicePrintIdList"
 func (c *Client) DeleteVoicePrint(request *DeleteVoicePrintRequest) (response *DeleteVoicePrintResponse, err error) {
     return c.DeleteVoicePrintWithContext(context.Background(), request)
 }
@@ -646,15 +639,8 @@ func (c *Client) DeleteVoicePrint(request *DeleteVoicePrintRequest) (response *D
 // 传入声纹ID，删除之前注册的声纹信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
 //  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
-//  FAILEDOPERATION_GENVOICEPRINTIDFAILED = "FailedOperation.GenVoicePrintIdFailed"
 //  FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
-//  FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
-//  FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = "FailedOperation.VoicePrintRegistrationLimit"
-//  INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
-//  INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
-//  MISSINGPARAMETER_MISSINGVOICEPRINTIDLIST = "MissingParameter.MissingVoicePrintIdList"
 func (c *Client) DeleteVoicePrintWithContext(ctx context.Context, request *DeleteVoicePrintRequest) (response *DeleteVoicePrintResponse, err error) {
     if request == nil {
         request = NewDeleteVoicePrintRequest()
@@ -2694,14 +2680,8 @@ func NewDescribeVoicePrintResponse() (response *DescribeVoicePrintResponse) {
 // 查询先前注册的声纹信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
 //  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
-//  FAILEDOPERATION_GENVOICEPRINTIDFAILED = "FailedOperation.GenVoicePrintIdFailed"
-//  FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
-//  FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
-//  FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = "FailedOperation.VoicePrintRegistrationLimit"
-//  INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
-//  MISSINGPARAMETER_MISSINGVOICEPRINTIDLIST = "MissingParameter.MissingVoicePrintIdList"
+//  INVALIDPARAMETER_INVALIDVOICEPRINTIDLIST = "InvalidParameter.InvalidVoicePrintIdList"
 func (c *Client) DescribeVoicePrint(request *DescribeVoicePrintRequest) (response *DescribeVoicePrintResponse, err error) {
     return c.DescribeVoicePrintWithContext(context.Background(), request)
 }
@@ -2710,14 +2690,8 @@ func (c *Client) DescribeVoicePrint(request *DescribeVoicePrintRequest) (respons
 // 查询先前注册的声纹信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
 //  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
-//  FAILEDOPERATION_GENVOICEPRINTIDFAILED = "FailedOperation.GenVoicePrintIdFailed"
-//  FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
-//  FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
-//  FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = "FailedOperation.VoicePrintRegistrationLimit"
-//  INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
-//  MISSINGPARAMETER_MISSINGVOICEPRINTIDLIST = "MissingParameter.MissingVoicePrintIdList"
+//  INVALIDPARAMETER_INVALIDVOICEPRINTIDLIST = "InvalidParameter.InvalidVoicePrintIdList"
 func (c *Client) DescribeVoicePrintWithContext(ctx context.Context, request *DescribeVoicePrintRequest) (response *DescribeVoicePrintResponse, err error) {
     if request == nil {
         request = NewDescribeVoicePrintRequest()
@@ -3077,12 +3051,9 @@ func NewRegisterVoicePrintResponse() (response *RegisterVoicePrintResponse) {
 //  FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
 //  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
 //  FAILEDOPERATION_GENVOICEPRINTIDFAILED = "FailedOperation.GenVoicePrintIdFailed"
-//  FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
 //  FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
 //  FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = "FailedOperation.VoicePrintRegistrationLimit"
 //  INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
-//  INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
-//  MISSINGPARAMETER_MISSINGVOICEPRINTIDLIST = "MissingParameter.MissingVoicePrintIdList"
 func (c *Client) RegisterVoicePrint(request *RegisterVoicePrintRequest) (response *RegisterVoicePrintResponse, err error) {
     return c.RegisterVoicePrintWithContext(context.Background(), request)
 }
@@ -3094,12 +3065,9 @@ func (c *Client) RegisterVoicePrint(request *RegisterVoicePrintRequest) (respons
 //  FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
 //  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
 //  FAILEDOPERATION_GENVOICEPRINTIDFAILED = "FailedOperation.GenVoicePrintIdFailed"
-//  FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
 //  FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
 //  FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = "FailedOperation.VoicePrintRegistrationLimit"
 //  INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
-//  INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
-//  MISSINGPARAMETER_MISSINGVOICEPRINTIDLIST = "MissingParameter.MissingVoicePrintIdList"
 func (c *Client) RegisterVoicePrintWithContext(ctx context.Context, request *RegisterVoicePrintRequest) (response *RegisterVoicePrintResponse, err error) {
     if request == nil {
         request = NewRegisterVoicePrintRequest()
@@ -4700,13 +4668,10 @@ func NewUpdateVoicePrintResponse() (response *UpdateVoicePrintResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
 //  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
-//  FAILEDOPERATION_GENVOICEPRINTIDFAILED = "FailedOperation.GenVoicePrintIdFailed"
 //  FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
 //  FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
-//  FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = "FailedOperation.VoicePrintRegistrationLimit"
 //  INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
-//  INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
-//  MISSINGPARAMETER_MISSINGVOICEPRINTIDLIST = "MissingParameter.MissingVoicePrintIdList"
+//  MISSINGPARAMETER_MISSINGVOICEPRINTUPDATEPARAMS = "MissingParameter.MissingVoicePrintUpdateParams"
 func (c *Client) UpdateVoicePrint(request *UpdateVoicePrintRequest) (response *UpdateVoicePrintResponse, err error) {
     return c.UpdateVoicePrintWithContext(context.Background(), request)
 }
@@ -4717,13 +4682,10 @@ func (c *Client) UpdateVoicePrint(request *UpdateVoicePrintRequest) (response *U
 // 可能返回的错误码:
 //  FAILEDOPERATION_COSOPERATIONFAILED = "FailedOperation.CosOperationFailed"
 //  FAILEDOPERATION_DBOPERATIONFAILED = "FailedOperation.DbOperationFailed"
-//  FAILEDOPERATION_GENVOICEPRINTIDFAILED = "FailedOperation.GenVoicePrintIdFailed"
 //  FAILEDOPERATION_UPDATEVOICEPRINTIDNOTFOUND = "FailedOperation.UpdateVoicePrintIdNotFound"
 //  FAILEDOPERATION_VOICEPRINTAUDIOCHECKFAILED = "FailedOperation.VoicePrintAudioCheckFailed"
-//  FAILEDOPERATION_VOICEPRINTREGISTRATIONLIMIT = "FailedOperation.VoicePrintRegistrationLimit"
 //  INVALIDPARAMETER_INVALIDAUDIOINPUT = "InvalidParameter.InvalidAudioInput"
-//  INVALIDPARAMETER_USERSIG = "InvalidParameter.UserSig"
-//  MISSINGPARAMETER_MISSINGVOICEPRINTIDLIST = "MissingParameter.MissingVoicePrintIdList"
+//  MISSINGPARAMETER_MISSINGVOICEPRINTUPDATEPARAMS = "MissingParameter.MissingVoicePrintUpdateParams"
 func (c *Client) UpdateVoicePrintWithContext(ctx context.Context, request *UpdateVoicePrintRequest) (response *UpdateVoicePrintResponse, err error) {
     if request == nil {
         request = NewUpdateVoicePrintRequest()

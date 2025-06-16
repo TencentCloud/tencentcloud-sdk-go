@@ -2823,6 +2823,101 @@ func (r *DescribeDomainAssetsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeExposuresRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 过滤内容
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序类型
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+type DescribeExposuresRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 过滤内容
+	Filters []*Filters `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 排序类型
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitnil,omitempty" name:"By"`
+}
+
+func (r *DescribeExposuresRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExposuresRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExposuresRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExposuresResponseParams struct {
+	// 互联网暴露资产数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 互联网暴露资产列表
+	ExposeList []*ExposesItem `json:"ExposeList,omitnil,omitempty" name:"ExposeList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeExposuresResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeExposuresResponseParams `json:"Response"`
+}
+
+func (r *DescribeExposuresResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExposuresResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeGatewayAssetsRequestParams struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
@@ -4492,21 +4587,51 @@ func (r *DescribeTaskLogURLResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopAttackInfoRequestParams struct {
+	// 起始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 1:攻击类型 2:攻击者
+	QueryType *int64 `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 被调用的集团账号的成员id
 	OperatedMemberId []*string `json:"OperatedMemberId,omitnil,omitempty" name:"OperatedMemberId"`
+
+	// 资产名称
+	AssetName *string `json:"AssetName,omitnil,omitempty" name:"AssetName"`
+
+	// 0: 默认全部 1:资产ID 2:域名
+	AssetType *int64 `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 type DescribeTopAttackInfoRequest struct {
 	*tchttp.BaseRequest
 	
+	// 起始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 1:攻击类型 2:攻击者
+	QueryType *int64 `json:"QueryType,omitnil,omitempty" name:"QueryType"`
+
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
 
 	// 被调用的集团账号的成员id
 	OperatedMemberId []*string `json:"OperatedMemberId,omitnil,omitempty" name:"OperatedMemberId"`
+
+	// 资产名称
+	AssetName *string `json:"AssetName,omitnil,omitempty" name:"AssetName"`
+
+	// 0: 默认全部 1:资产ID 2:域名
+	AssetType *int64 `json:"AssetType,omitnil,omitempty" name:"AssetType"`
 }
 
 func (r *DescribeTopAttackInfoRequest) ToJsonString() string {
@@ -4521,8 +4646,13 @@ func (r *DescribeTopAttackInfoRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "QueryType")
 	delete(f, "MemberId")
 	delete(f, "OperatedMemberId")
+	delete(f, "AssetName")
+	delete(f, "AssetType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopAttackInfoRequest has unknown keys!", "")
 	}
@@ -5082,6 +5212,92 @@ type Element struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type ExposesItem struct {
+	// 云厂商
+	Provider *string `json:"Provider,omitnil,omitempty" name:"Provider"`
+
+	// 云账号名称
+	CloudAccountName *string `json:"CloudAccountName,omitnil,omitempty" name:"CloudAccountName"`
+
+	// 云账号
+	CloudAccountId *string `json:"CloudAccountId,omitnil,omitempty" name:"CloudAccountId"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// IP
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 端口或者端口范围
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 开放
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 风险类型
+	RiskType *string `json:"RiskType,omitnil,omitempty" name:"RiskType"`
+
+	// acl类型
+	AclType *string `json:"AclType,omitnil,omitempty" name:"AclType"`
+
+	// acl列表
+	AclList *string `json:"AclList,omitnil,omitempty" name:"AclList"`
+
+	// 资产ID
+	AssetId *string `json:"AssetId,omitnil,omitempty" name:"AssetId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 资产类型
+	AssetType *string `json:"AssetType,omitnil,omitempty" name:"AssetType"`
+
+	// 端口服务数量
+	PortServiceCount *uint64 `json:"PortServiceCount,omitnil,omitempty" name:"PortServiceCount"`
+
+	// 高危端口数量
+	HighRiskPortServiceCount *uint64 `json:"HighRiskPortServiceCount,omitnil,omitempty" name:"HighRiskPortServiceCount"`
+
+	// web应用数量
+	WebAppCount *uint64 `json:"WebAppCount,omitnil,omitempty" name:"WebAppCount"`
+
+	// 有风险web应用数量
+	RiskWebAppCount *uint64 `json:"RiskWebAppCount,omitnil,omitempty" name:"RiskWebAppCount"`
+
+	// 弱口令数量
+	WeakPasswordCount *uint64 `json:"WeakPasswordCount,omitnil,omitempty" name:"WeakPasswordCount"`
+
+	// 漏洞数量
+	VulCount *uint64 `json:"VulCount,omitnil,omitempty" name:"VulCount"`
+
+	// 首次发现时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 最近更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 实例类型名称
+	AssetTypeName *string `json:"AssetTypeName,omitnil,omitempty" name:"AssetTypeName"`
+
+	// 开放状态
+	DisplayStatus *string `json:"DisplayStatus,omitnil,omitempty" name:"DisplayStatus"`
+
+	// 端口状态
+	DisplayRiskType *string `json:"DisplayRiskType,omitnil,omitempty" name:"DisplayRiskType"`
+
+	// 扫描任务状态
+	ScanTaskStatus *string `json:"ScanTaskStatus,omitnil,omitempty" name:"ScanTaskStatus"`
+
+	// uuid
+	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
+
+	// 是否进行过安全体检
+	HasScan *string `json:"HasScan,omitnil,omitempty" name:"HasScan"`
+
+	// 租户ID
+	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+}
+
 type Filter struct {
 	// 查询数量限制
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
@@ -5111,6 +5327,20 @@ type FilterDataObject struct {
 
 	// 中文翻译
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type Filters struct {
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+
+	// 模糊匹配
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExactMatch *string `json:"ExactMatch,omitnil,omitempty" name:"ExactMatch"`
 }
 
 type GateWayAsset struct {

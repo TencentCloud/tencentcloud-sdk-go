@@ -92,6 +92,9 @@ type AgentConfig struct {
 
 	// 声纹配置
 	VoicePrint *VoicePrint `json:"VoicePrint,omitnil,omitempty" name:"VoicePrint"`
+
+	// 语义断句检测
+	TurnDetection *TurnDetection `json:"TurnDetection,omitnil,omitempty" name:"TurnDetection"`
 }
 
 type AgentParams struct {
@@ -4362,7 +4365,7 @@ type RecordUsage struct {
 
 // Predefined struct for user
 type RegisterVoicePrintRequestParams struct {
-	// 整个wav音频文件的base64字符串,其中wav文件限定为16k或8k采样率, 16bit位深, 单声道, 8到18秒有效音频时长,编码数据大小不超过2M
+	// 整个wav音频文件的base64字符串,其中wav文件限定为16k采样率, 16bit位深, 单声道, 8到18秒音频时长,有效音频不小于6秒(不能有太多静音段),编码数据大小不超过2M
 	Audio *string `json:"Audio,omitnil,omitempty" name:"Audio"`
 
 	// 毫秒时间戳
@@ -4381,7 +4384,7 @@ type RegisterVoicePrintRequestParams struct {
 type RegisterVoicePrintRequest struct {
 	*tchttp.BaseRequest
 	
-	// 整个wav音频文件的base64字符串,其中wav文件限定为16k或8k采样率, 16bit位深, 单声道, 8到18秒有效音频时长,编码数据大小不超过2M
+	// 整个wav音频文件的base64字符串,其中wav文件限定为16k采样率, 16bit位深, 单声道, 8到18秒音频时长,有效音频不小于6秒(不能有太多静音段),编码数据大小不超过2M
 	Audio *string `json:"Audio,omitnil,omitempty" name:"Audio"`
 
 	// 毫秒时间戳
@@ -6176,6 +6179,27 @@ type TrtcUsage struct {
 	UsageValue []*float64 `json:"UsageValue,omitnil,omitempty" name:"UsageValue"`
 }
 
+type TurnDetection struct {
+	// TurnDetectionMode为3时生效，语义断句的灵敏程度
+	// 
+	// 
+	// 功能简介：根据用户所说的话来判断其已完成发言来分割音频
+	// 
+	// 
+	// 可选: "low" | "medium" | "high" | "auto"
+	// 
+	// 
+	// auto 是默认值，与 medium 相同。
+	// low 将让用户有足够的时间说话。
+	// high 将尽快对音频进行分块。
+	// 
+	// 
+	// 如果您希望模型在对话模式下更频繁地响应，可以将 SemanticEagerness 设置为 high
+	// 如果您希望在用户停顿时，AI能够等待片刻，可以将 SemanticEagerness 设置为 low
+	// 无论什么模式，最终都会分割送个大模型进行回复
+	SemanticEagerness *string `json:"SemanticEagerness,omitnil,omitempty" name:"SemanticEagerness"`
+}
+
 // Predefined struct for user
 type UpdateAIConversationRequestParams struct {
 	// 唯一标识一个任务
@@ -6483,7 +6507,7 @@ type UpdateVoicePrintRequestParams struct {
 	// 音频格式,目前只支持0,代表wav
 	AudioFormat *uint64 `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
 
-	// 整个wav音频文件的base64字符串,其中wav文件限定为16k或8k采样率, 16bit位深, 单声道, 8到18秒有效音频时长,编码数据大小不超过2M
+	// 整个wav音频文件的base64字符串,其中wav文件限定为16k采样率, 16bit位深, 单声道, 8到18秒音频时长,有效音频不小于6秒(不能有太多静音段),编码数据大小不超过2M
 	Audio *string `json:"Audio,omitnil,omitempty" name:"Audio"`
 
 	// 和声纹绑定的MetaInfo，长度最大不超过512
@@ -6502,7 +6526,7 @@ type UpdateVoicePrintRequest struct {
 	// 音频格式,目前只支持0,代表wav
 	AudioFormat *uint64 `json:"AudioFormat,omitnil,omitempty" name:"AudioFormat"`
 
-	// 整个wav音频文件的base64字符串,其中wav文件限定为16k或8k采样率, 16bit位深, 单声道, 8到18秒有效音频时长,编码数据大小不超过2M
+	// 整个wav音频文件的base64字符串,其中wav文件限定为16k采样率, 16bit位深, 单声道, 8到18秒音频时长,有效音频不小于6秒(不能有太多静音段),编码数据大小不超过2M
 	Audio *string `json:"Audio,omitnil,omitempty" name:"Audio"`
 
 	// 和声纹绑定的MetaInfo，长度最大不超过512

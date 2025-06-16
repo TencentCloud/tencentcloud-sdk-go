@@ -71,6 +71,9 @@ type AndroidAppVersionInfo struct {
 
 	// 应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。
 	CleanupMode *string `json:"CleanupMode,omitnil,omitempty" name:"CleanupMode"`
+
+	// 安卓应用版本名称
+	AndroidAppVersionName *string `json:"AndroidAppVersionName,omitnil,omitempty" name:"AndroidAppVersionName"`
 }
 
 type AndroidInstance struct {
@@ -1891,7 +1894,7 @@ type DescribeAndroidAppsRequestParams struct {
 	// 应用ID数组
 	AndroidAppIds []*string `json:"AndroidAppIds,omitnil,omitempty" name:"AndroidAppIds"`
 
-	// 过滤条件
+	// 过滤条件，支持过滤的字段有：UserId
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -1907,7 +1910,7 @@ type DescribeAndroidAppsRequest struct {
 	// 应用ID数组
 	AndroidAppIds []*string `json:"AndroidAppIds,omitnil,omitempty" name:"AndroidAppIds"`
 
-	// 过滤条件
+	// 过滤条件，支持过滤的字段有：UserId
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
