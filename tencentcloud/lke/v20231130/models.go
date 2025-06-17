@@ -10255,7 +10255,7 @@ type RateMsgRecordRequestParams struct {
 	// 应用appKey
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
-	// 消息ID
+	// 消息ID 【大模型回复答案的RecordID】
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
 	// 1点赞2点踩
@@ -10271,7 +10271,7 @@ type RateMsgRecordRequest struct {
 	// 应用appKey
 	BotAppKey *string `json:"BotAppKey,omitnil,omitempty" name:"BotAppKey"`
 
-	// 消息ID
+	// 消息ID 【大模型回复答案的RecordID】
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
 	// 1点赞2点踩

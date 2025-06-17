@@ -158,6 +158,12 @@ const (
 	// 证书当前状态不允许进行域名验证。
 	FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWVERIFY = "FailedOperation.CertificateStatusNotAllowVerify"
 
+	// 上传证书的托管续费证书不能手动提交订单
+	FAILEDOPERATION_CERTIFICATESUBMITHOSTINGCERTERROR = "FailedOperation.CertificateSubmitHostingCertError"
+
+	// 证书操作参数无效，证书ID数量超过100。
+	FAILEDOPERATION_CERTIFICATESYNCTASKCERTIFICATEIDCOUNTINVALID = "FailedOperation.CertificateSyncTaskCertificateIdCountInvalid"
+
 	// 证书关联云资源查询任务ID无效
 	FAILEDOPERATION_CERTIFICATESYNCTASKIDINVALID = "FailedOperation.CertificateSyncTaskIdInvalid"
 

@@ -385,6 +385,19 @@ type AdaptiveStreamTemplate struct {
 	AudioList []*AudioTemplateInfo `json:"AudioList,omitnil,omitempty" name:"AudioList"`
 }
 
+type AddBlindWatermarkConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+
+	// 盲水印嵌入数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmbedInfo *BlindWatermarkEmbedInfo `json:"EmbedInfo,omitnil,omitempty" name:"EmbedInfo"`
+}
+
 type AddOnSubtitle struct {
 	// 插入形式，可选值：
 	// <li>subtitle-stream：插入字幕轨道</li>
@@ -2666,6 +2679,26 @@ type BatchSubTaskResult struct {
 	// 智能字幕任务的执行结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SmartSubtitlesTaskResult *BatchSmartSubtitlesResult `json:"SmartSubtitlesTaskResult,omitnil,omitempty" name:"SmartSubtitlesTaskResult"`
+}
+
+type BlindWatermarkConfig struct {
+	// 增加盲水印
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddBlindWatermark *AddBlindWatermarkConfig `json:"AddBlindWatermark,omitnil,omitempty" name:"AddBlindWatermark"`
+
+	// 提取盲水印
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtractBlindWatermark *ExtractBlindWatermarkConfig `json:"ExtractBlindWatermark,omitnil,omitempty" name:"ExtractBlindWatermark"`
+
+	// 移除盲水印
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemoveBlindWatermark *RemoveBlindWatermarkConfig `json:"RemoveBlindWatermark,omitnil,omitempty" name:"RemoveBlindWatermark"`
+}
+
+type BlindWatermarkEmbedInfo struct {
+	// 盲水印文字，需要经过 URL 安全的 Base64 编码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmbedText *string `json:"EmbedText,omitnil,omitempty" name:"EmbedText"`
 }
 
 type ClassificationConfigureInfo struct {
@@ -12057,6 +12090,15 @@ type ExpressionConfigInfo struct {
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 }
 
+type ExtractBlindWatermarkConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+}
+
 type FaceConfigureInfo struct {
 	// 人脸识别任务开关，可选值：
 	// <li>ON：开启智能人脸识别任务；</li>
@@ -12751,6 +12793,10 @@ type ImageTaskInput struct {
 	// 图片擦除配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EraseConfig *ImageEraseConfig `json:"EraseConfig,omitnil,omitempty" name:"EraseConfig"`
+
+	// 盲水印配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlindWatermarkConfig *BlindWatermarkConfig `json:"BlindWatermarkConfig,omitnil,omitempty" name:"BlindWatermarkConfig"`
 }
 
 type ImageWatermarkInput struct {
@@ -18282,6 +18328,15 @@ func (r *RecognizeMediaForZhiXueResponse) FromJsonString(s string) error {
 type RegionInfo struct {
 	// 地区名称。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+}
+
+type RemoveBlindWatermarkConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 }
 
 // Predefined struct for user
