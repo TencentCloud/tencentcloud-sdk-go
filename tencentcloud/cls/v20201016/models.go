@@ -3096,6 +3096,9 @@ type CreateLogsetRequestParams struct {
 
 	// 标签描述列表。最大支持10个标签键值对，并且不能有重复的键值对
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 日志集ID，格式为：用户自定义部分-用户appid，用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符，尾部需要使用-拼接用户appid
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 }
 
 type CreateLogsetRequest struct {
@@ -3106,6 +3109,9 @@ type CreateLogsetRequest struct {
 
 	// 标签描述列表。最大支持10个标签键值对，并且不能有重复的键值对
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 日志集ID，格式为：用户自定义部分-用户appid，用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符，尾部需要使用-拼接用户appid
+	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
 }
 
 func (r *CreateLogsetRequest) ToJsonString() string {
@@ -3122,6 +3128,7 @@ func (r *CreateLogsetRequest) FromJsonString(s string) error {
 	}
 	delete(f, "LogsetName")
 	delete(f, "Tags")
+	delete(f, "LogsetId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLogsetRequest has unknown keys!", "")
 	}

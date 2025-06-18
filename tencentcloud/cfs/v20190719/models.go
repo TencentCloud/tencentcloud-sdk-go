@@ -2727,32 +2727,32 @@ type MigrationTaskInfo struct {
 
 // Predefined struct for user
 type ModifyFileSystemAutoScaleUpRuleRequestParams struct {
-	// 文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
+	// 文件系统 ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 扩容阈值，范围[10-90]
 	ScaleUpThreshold *uint64 `json:"ScaleUpThreshold,omitnil,omitempty" name:"ScaleUpThreshold"`
 
-	// 扩容后目标阈值,范围[10-90],该值要小于ScaleUpThreshold
+	// 扩容后目标阈值，范围[1-90]，该值要小于 ScaleUpThreshold
 	TargetThreshold *uint64 `json:"TargetThreshold,omitnil,omitempty" name:"TargetThreshold"`
 
-	// 规则状态0:关闭，1 开启；不传保留原状态
+	// 规则状态 0：关闭，1：开启；不传保留原状态
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
 type ModifyFileSystemAutoScaleUpRuleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
+	// 文件系统 ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 扩容阈值，范围[10-90]
 	ScaleUpThreshold *uint64 `json:"ScaleUpThreshold,omitnil,omitempty" name:"ScaleUpThreshold"`
 
-	// 扩容后目标阈值,范围[10-90],该值要小于ScaleUpThreshold
+	// 扩容后目标阈值，范围[1-90]，该值要小于 ScaleUpThreshold
 	TargetThreshold *uint64 `json:"TargetThreshold,omitnil,omitempty" name:"TargetThreshold"`
 
-	// 规则状态0:关闭，1 开启；不传保留原状态
+	// 规则状态 0：关闭，1：开启；不传保留原状态
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 }
 
@@ -2780,16 +2780,16 @@ func (r *ModifyFileSystemAutoScaleUpRuleRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type ModifyFileSystemAutoScaleUpRuleResponseParams struct {
-	// 文件系统id
+	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
-	// 规则状态0:关闭，1 开启
+	// 规则状态 0：关闭，1：开启
 	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 扩容阈值,范围[10-90]
+	// 扩容阈值，范围[10-90]
 	ScaleUpThreshold *uint64 `json:"ScaleUpThreshold,omitnil,omitempty" name:"ScaleUpThreshold"`
 
-	// 扩容后达到阈值,范围[1-90]
+	// 扩容后达到阈值，范围[1-90]
 	TargetThreshold *uint64 `json:"TargetThreshold,omitnil,omitempty" name:"TargetThreshold"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

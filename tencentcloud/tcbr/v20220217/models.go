@@ -1091,6 +1091,12 @@ type ServerBaseConfig struct {
 
 	// 定时扩缩容配置
 	TimerScale []*TimerScale `json:"TimerScale,omitnil,omitempty" name:"TimerScale"`
+
+	// Dockerfile EntryPoint 参数
+	EntryPoint []*string `json:"EntryPoint,omitnil,omitempty" name:"EntryPoint"`
+
+	// Dockerfile Cmd 参数
+	Cmd []*string `json:"Cmd,omitnil,omitempty" name:"Cmd"`
 }
 
 type ServerBaseInfo struct {

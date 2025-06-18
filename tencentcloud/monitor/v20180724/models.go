@@ -3573,6 +3573,67 @@ func (r *DeleteAlarmPolicyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteAlarmShieldsRequestParams struct {
+	// 模块名，这里填“monitor”
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 屏蔽策略Id列表
+	Shields []*string `json:"Shields,omitnil,omitempty" name:"Shields"`
+}
+
+type DeleteAlarmShieldsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模块名，这里填“monitor”
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 屏蔽策略Id列表
+	Shields []*string `json:"Shields,omitnil,omitempty" name:"Shields"`
+}
+
+func (r *DeleteAlarmShieldsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAlarmShieldsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Module")
+	delete(f, "Shields")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAlarmShieldsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAlarmShieldsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAlarmShieldsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAlarmShieldsResponseParams `json:"Response"`
+}
+
+func (r *DeleteAlarmShieldsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAlarmShieldsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAlertRulesRequestParams struct {
 	// 规则 ID 列表
 	RuleIds []*string `json:"RuleIds,omitnil,omitempty" name:"RuleIds"`

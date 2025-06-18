@@ -20,6 +20,17 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AISearchInfo struct {
+	// 基于搜索结果的总结
+	Summary *string `json:"Summary,omitnil,omitempty" name:"Summary"`
+
+	// 视频结果集
+	Targets []*TargetInfo `json:"Targets,omitnil,omitempty" name:"Targets"`
+
+	// 视频回放URL
+	VideoURL *string `json:"VideoURL,omitnil,omitempty" name:"VideoURL"`
+}
+
 type ActivateDeviceInfo struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -1073,6 +1084,91 @@ type CountDataInfo struct {
 
 	// 事件上报成功率
 	EventSuccessRate *string `json:"EventSuccessRate,omitnil,omitempty" name:"EventSuccessRate"`
+}
+
+// Predefined struct for user
+type CreateAISearchTaskAsyncRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 自然语言查询
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 搜索结果总结的语言类型，支持的类型有：en-US、zh-CN、id-ID、th-TH
+	SummaryLang *string `json:"SummaryLang,omitnil,omitempty" name:"SummaryLang"`
+
+	// 通道ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+type CreateAISearchTaskAsyncRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 自然语言查询
+	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
+
+	// 搜索结果总结的语言类型，支持的类型有：en-US、zh-CN、id-ID、th-TH
+	SummaryLang *string `json:"SummaryLang,omitnil,omitempty" name:"SummaryLang"`
+
+	// 通道ID
+	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+}
+
+func (r *CreateAISearchTaskAsyncRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAISearchTaskAsyncRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "Query")
+	delete(f, "SummaryLang")
+	delete(f, "ChannelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAISearchTaskAsyncRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAISearchTaskAsyncResponseParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAISearchTaskAsyncResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAISearchTaskAsyncResponseParams `json:"Response"`
+}
+
+func (r *CreateAISearchTaskAsyncResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAISearchTaskAsyncResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -3648,6 +3744,66 @@ func (r *DeleteTopicRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTopicRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAISearchTaskAsyncRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeAISearchTaskAsyncRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeAISearchTaskAsyncRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAISearchTaskAsyncRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAISearchTaskAsyncRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAISearchTaskAsyncResponseParams struct {
+	// 状态。0-初始状态；1-正在处理；2-处理失败；3-成功
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 任务处理结果数据
+	Data *AISearchInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAISearchTaskAsyncResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAISearchTaskAsyncResponseParams `json:"Response"`
+}
+
+func (r *DescribeAISearchTaskAsyncResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAISearchTaskAsyncResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

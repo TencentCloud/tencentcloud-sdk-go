@@ -3593,6 +3593,36 @@ type ProjectListData struct {
 	TotalPages *uint64 `json:"TotalPages,omitnil,omitempty" name:"TotalPages"`
 }
 
+type UserGroupDTO struct {
+	// id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 用户组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 父节点id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentId *int64 `json:"ParentId,omitnil,omitempty" name:"ParentId"`
+
+	// 是否为默认
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDefault *int64 `json:"IsDefault,omitnil,omitempty" name:"IsDefault"`
+
+	// 管理员用户id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdminUserId *string `json:"AdminUserId,omitnil,omitempty" name:"AdminUserId"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 定位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *int64 `json:"Location,omitnil,omitempty" name:"Location"`
+}
+
 type UserIdAndUserName struct {
 	// 用户ID
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
@@ -3841,6 +3871,10 @@ type UserRoleListDataUserRoleInfo struct {
 	// 邮箱激活状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EmailActivationStatus *int64 `json:"EmailActivationStatus,omitnil,omitempty" name:"EmailActivationStatus"`
+
+	// 用户组信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserGroupList []*UserGroupDTO `json:"UserGroupList,omitnil,omitempty" name:"UserGroupList"`
 }
 
 type WidgetListVO struct {

@@ -1943,6 +1943,65 @@ func (c *Client) DeleteAlarmPolicyWithContext(ctx context.Context, request *Dele
     return
 }
 
+func NewDeleteAlarmShieldsRequest() (request *DeleteAlarmShieldsRequest) {
+    request = &DeleteAlarmShieldsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DeleteAlarmShields")
+    
+    
+    return
+}
+
+func NewDeleteAlarmShieldsResponse() (response *DeleteAlarmShieldsResponse) {
+    response = &DeleteAlarmShieldsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAlarmShields
+// 删除告警屏蔽规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAlarmShields(request *DeleteAlarmShieldsRequest) (response *DeleteAlarmShieldsResponse, err error) {
+    return c.DeleteAlarmShieldsWithContext(context.Background(), request)
+}
+
+// DeleteAlarmShields
+// 删除告警屏蔽规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteAlarmShieldsWithContext(ctx context.Context, request *DeleteAlarmShieldsRequest) (response *DeleteAlarmShieldsResponse, err error) {
+    if request == nil {
+        request = NewDeleteAlarmShieldsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAlarmShields require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAlarmShieldsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAlertRulesRequest() (request *DeleteAlertRulesRequest) {
     request = &DeleteAlertRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},

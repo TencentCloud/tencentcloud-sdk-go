@@ -693,6 +693,97 @@ func (c *Client) ControlDeviceDataWithContext(ctx context.Context, request *Cont
     return
 }
 
+func NewCreateAISearchTaskAsyncRequest() (request *CreateAISearchTaskAsyncRequest) {
+    request = &CreateAISearchTaskAsyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateAISearchTaskAsync")
+    
+    
+    return
+}
+
+func NewCreateAISearchTaskAsyncResponse() (response *CreateAISearchTaskAsyncResponse) {
+    response = &CreateAISearchTaskAsyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAISearchTaskAsync
+// 创建视频语义异步搜索任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODELDEFINEEVENTPROPNAMEERROR = "InvalidParameterValue.ModelDefineEventPropNameError"
+//  INVALIDPARAMETERVALUE_MODELDEFINEINVALID = "InvalidParameterValue.ModelDefineInvalid"
+//  INVALIDPARAMETERVALUE_MODELDEFINENIL = "InvalidParameterValue.ModelDefineNil"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_PRODUCTORDEVICENOTEXIST = "ResourceNotFound.ProductOrDeviceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNAUTHORIZEDOPERATION_NOVERIFIED = "UnauthorizedOperation.NoVerified"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+//  UNSUPPORTEDOPERATION_LORANOUPLINK = "UnsupportedOperation.LoRaNoUpLink"
+//  UNSUPPORTEDOPERATION_LORANOTACTIVATE = "UnsupportedOperation.LoRaNotActivate"
+func (c *Client) CreateAISearchTaskAsync(request *CreateAISearchTaskAsyncRequest) (response *CreateAISearchTaskAsyncResponse, err error) {
+    return c.CreateAISearchTaskAsyncWithContext(context.Background(), request)
+}
+
+// CreateAISearchTaskAsync
+// 创建视频语义异步搜索任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MODELDEFINEEVENTPROPNAMEERROR = "InvalidParameterValue.ModelDefineEventPropNameError"
+//  INVALIDPARAMETERVALUE_MODELDEFINEINVALID = "InvalidParameterValue.ModelDefineInvalid"
+//  INVALIDPARAMETERVALUE_MODELDEFINENIL = "InvalidParameterValue.ModelDefineNil"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_PRODUCTORDEVICENOTEXIST = "ResourceNotFound.ProductOrDeviceNotExist"
+//  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOPRODUCT = "UnauthorizedOperation.NoPermissionToStudioProduct"
+//  UNAUTHORIZEDOPERATION_NOVERIFIED = "UnauthorizedOperation.NoVerified"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+//  UNSUPPORTEDOPERATION_LORANOUPLINK = "UnsupportedOperation.LoRaNoUpLink"
+//  UNSUPPORTEDOPERATION_LORANOTACTIVATE = "UnsupportedOperation.LoRaNotActivate"
+func (c *Client) CreateAISearchTaskAsyncWithContext(ctx context.Context, request *CreateAISearchTaskAsyncRequest) (response *CreateAISearchTaskAsyncResponse, err error) {
+    if request == nil {
+        request = NewCreateAISearchTaskAsyncRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAISearchTaskAsync require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAISearchTaskAsyncResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBatchProductionRequest() (request *CreateBatchProductionRequest) {
     request = &CreateBatchProductionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2668,6 +2759,63 @@ func (c *Client) DeleteTopicRuleWithContext(ctx context.Context, request *Delete
     request.SetContext(ctx)
     
     response = NewDeleteTopicRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAISearchTaskAsyncRequest() (request *DescribeAISearchTaskAsyncRequest) {
+    request = &DescribeAISearchTaskAsyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeAISearchTaskAsync")
+    
+    
+    return
+}
+
+func NewDescribeAISearchTaskAsyncResponse() (response *DescribeAISearchTaskAsyncResponse) {
+    response = &DescribeAISearchTaskAsyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAISearchTaskAsync
+// 获取视频语义异步搜索任务详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAISearchTaskAsync(request *DescribeAISearchTaskAsyncRequest) (response *DescribeAISearchTaskAsyncResponse, err error) {
+    return c.DescribeAISearchTaskAsyncWithContext(context.Background(), request)
+}
+
+// DescribeAISearchTaskAsync
+// 获取视频语义异步搜索任务详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_TOPICRULENOTEXIST = "ResourceNotFound.TopicRuleNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAISearchTaskAsyncWithContext(ctx context.Context, request *DescribeAISearchTaskAsyncRequest) (response *DescribeAISearchTaskAsyncResponse, err error) {
+    if request == nil {
+        request = NewDescribeAISearchTaskAsyncRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAISearchTaskAsync require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAISearchTaskAsyncResponse()
     err = c.Send(request, response)
     return
 }

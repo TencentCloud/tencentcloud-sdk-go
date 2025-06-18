@@ -6293,6 +6293,10 @@ type KnowledgeDetail struct {
 	// 超量字符数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExceedCharSize *string `json:"ExceedCharSize,omitnil,omitempty" name:"ExceedCharSize"`
+
+	// 是否共享知识库类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSharedKnowledge *bool `json:"IsSharedKnowledge,omitnil,omitempty" name:"IsSharedKnowledge"`
 }
 
 type KnowledgeDetailInfo struct {
@@ -9198,7 +9202,7 @@ type ModifyDocRequestParams struct {
 	// 是否引用链接
 	IsRefer *bool `json:"IsRefer,omitnil,omitempty" name:"IsRefer"`
 
-	// 标签适用范围 1：全部，2：按条件
+	// 标签适用范围，需要传参为1
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -9225,6 +9229,9 @@ type ModifyDocRequestParams struct {
 
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
+
+	// 是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义
+	IsDownload *bool `json:"IsDownload,omitnil,omitempty" name:"IsDownload"`
 }
 
 type ModifyDocRequest struct {
@@ -9239,7 +9246,7 @@ type ModifyDocRequest struct {
 	// 是否引用链接
 	IsRefer *bool `json:"IsRefer,omitnil,omitempty" name:"IsRefer"`
 
-	// 标签适用范围 1：全部，2：按条件
+	// 标签适用范围，需要传参为1
 	AttrRange *uint64 `json:"AttrRange,omitnil,omitempty" name:"AttrRange"`
 
 	// 登录用户主账号(集成商模式必填)
@@ -9266,6 +9273,9 @@ type ModifyDocRequest struct {
 
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
+
+	// 是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义
+	IsDownload *bool `json:"IsDownload,omitnil,omitempty" name:"IsDownload"`
 }
 
 func (r *ModifyDocRequest) ToJsonString() string {
@@ -9292,6 +9302,7 @@ func (r *ModifyDocRequest) FromJsonString(s string) error {
 	delete(f, "ExpireStart")
 	delete(f, "ExpireEnd")
 	delete(f, "CateBizId")
+	delete(f, "IsDownload")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDocRequest has unknown keys!", "")
 	}

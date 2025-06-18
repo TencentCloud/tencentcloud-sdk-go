@@ -2951,13 +2951,9 @@ type ExtractDocMultiRequestParams struct {
 	// MedicalMeter -- 血压仪表识别
 	// BillOfLading -- 海运提单
 	// EntrustmentBook -- 海运托书
-	// WordRecognize -- 手写英文作文模版
 	// Statement -- 对账单识别模板
 	// BookingConfirmation -- 配舱通知书识别模板
 	// AirWayBill -- 航空运单识别模板
-	// DispatchWeightNote -- 磅单发货单识别模板
-	// ReceiptWeightNote -- 磅单收货单识别模板
-	// ArticalRecognize -- 手写作文模版
 	// Table -- 表格模版
 	// SteelLabel -- 实物标签识别模板
 	// CarInsurance -- 车辆保险单识别模板
@@ -3005,13 +3001,9 @@ type ExtractDocMultiRequest struct {
 	// MedicalMeter -- 血压仪表识别
 	// BillOfLading -- 海运提单
 	// EntrustmentBook -- 海运托书
-	// WordRecognize -- 手写英文作文模版
 	// Statement -- 对账单识别模板
 	// BookingConfirmation -- 配舱通知书识别模板
 	// AirWayBill -- 航空运单识别模板
-	// DispatchWeightNote -- 磅单发货单识别模板
-	// ReceiptWeightNote -- 磅单收货单识别模板
-	// ArticalRecognize -- 手写作文模版
 	// Table -- 表格模版
 	// SteelLabel -- 实物标签识别模板
 	// CarInsurance -- 车辆保险单识别模板
