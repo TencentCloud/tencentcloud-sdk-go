@@ -2647,9 +2647,13 @@ type CreateApplicationRequestParams struct {
 	ApplicationDesc *string `json:"ApplicationDesc,omitnil,omitempty" name:"ApplicationDesc"`
 
 	// 应用日志配置项，废弃参数
+	//
+	// Deprecated: ApplicationLogConfig is deprecated.
 	ApplicationLogConfig *string `json:"ApplicationLogConfig,omitnil,omitempty" name:"ApplicationLogConfig"`
 
 	// 应用资源类型，废弃参数
+	//
+	// Deprecated: ApplicationResourceType is deprecated.
 	ApplicationResourceType *string `json:"ApplicationResourceType,omitnil,omitempty" name:"ApplicationResourceType"`
 
 	// 应用runtime类型

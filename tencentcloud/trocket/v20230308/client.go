@@ -2342,6 +2342,73 @@ func (c *Client) DescribeMigratingTopicStatsWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeMigrationTaskListRequest() (request *DescribeMigrationTaskListRequest) {
+    request = &DescribeMigrationTaskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeMigrationTaskList")
+    
+    
+    return
+}
+
+func NewDescribeMigrationTaskListResponse() (response *DescribeMigrationTaskListResponse) {
+    response = &DescribeMigrationTaskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMigrationTaskList
+// 获取数据迁移任务列表，Filter参数使用说明如下：
+//
+// 
+//
+// TaskId，根据任务ID精确查找
+//
+// InstanceId，根据实例ID精确查找
+//
+// Type，根据任务类型精确查找
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeMigrationTaskList(request *DescribeMigrationTaskListRequest) (response *DescribeMigrationTaskListResponse, err error) {
+    return c.DescribeMigrationTaskListWithContext(context.Background(), request)
+}
+
+// DescribeMigrationTaskList
+// 获取数据迁移任务列表，Filter参数使用说明如下：
+//
+// 
+//
+// TaskId，根据任务ID精确查找
+//
+// InstanceId，根据实例ID精确查找
+//
+// Type，根据任务类型精确查找
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeMigrationTaskListWithContext(ctx context.Context, request *DescribeMigrationTaskListRequest) (response *DescribeMigrationTaskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeMigrationTaskListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMigrationTaskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMigrationTaskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProductSKUsRequest() (request *DescribeProductSKUsRequest) {
     request = &DescribeProductSKUsRequest{
         BaseRequest: &tchttp.BaseRequest{},

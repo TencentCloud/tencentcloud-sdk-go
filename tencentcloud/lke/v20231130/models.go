@@ -2351,6 +2351,67 @@ func (r *DeleteSharedKnowledgeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteVarRequestParams struct {
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 变量ID
+	VarId *string `json:"VarId,omitnil,omitempty" name:"VarId"`
+}
+
+type DeleteVarRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 变量ID
+	VarId *string `json:"VarId,omitnil,omitempty" name:"VarId"`
+}
+
+func (r *DeleteVarRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVarRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppBizId")
+	delete(f, "VarId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVarRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVarResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteVarResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteVarResponseParams `json:"Response"`
+}
+
+func (r *DeleteVarResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVarResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAppRequestParams struct {
 	// 应用ID
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
@@ -11754,6 +11815,105 @@ func (r *UpdateSharedKnowledgeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateSharedKnowledgeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateVarRequestParams struct {
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 变量ID
+	VarId *string `json:"VarId,omitnil,omitempty" name:"VarId"`
+
+	// 变量名称，最大支持50个字符
+	VarName *string `json:"VarName,omitnil,omitempty" name:"VarName"`
+
+	// 参数描述
+	VarDesc *string `json:"VarDesc,omitnil,omitempty" name:"VarDesc"`
+
+	// 参数类型
+	VarType *string `json:"VarType,omitnil,omitempty" name:"VarType"`
+
+	// 自定义变量默认值
+	VarDefaultValue *string `json:"VarDefaultValue,omitnil,omitempty" name:"VarDefaultValue"`
+
+	// 自定义变量文件默认名称
+	VarDefaultFileName *string `json:"VarDefaultFileName,omitnil,omitempty" name:"VarDefaultFileName"`
+}
+
+type UpdateVarRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 变量ID
+	VarId *string `json:"VarId,omitnil,omitempty" name:"VarId"`
+
+	// 变量名称，最大支持50个字符
+	VarName *string `json:"VarName,omitnil,omitempty" name:"VarName"`
+
+	// 参数描述
+	VarDesc *string `json:"VarDesc,omitnil,omitempty" name:"VarDesc"`
+
+	// 参数类型
+	VarType *string `json:"VarType,omitnil,omitempty" name:"VarType"`
+
+	// 自定义变量默认值
+	VarDefaultValue *string `json:"VarDefaultValue,omitnil,omitempty" name:"VarDefaultValue"`
+
+	// 自定义变量文件默认名称
+	VarDefaultFileName *string `json:"VarDefaultFileName,omitnil,omitempty" name:"VarDefaultFileName"`
+}
+
+func (r *UpdateVarRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateVarRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppBizId")
+	delete(f, "VarId")
+	delete(f, "VarName")
+	delete(f, "VarDesc")
+	delete(f, "VarType")
+	delete(f, "VarDefaultValue")
+	delete(f, "VarDefaultFileName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateVarRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateVarResponseParams struct {
+	// 变量ID
+	VarId *string `json:"VarId,omitnil,omitempty" name:"VarId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateVarResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateVarResponseParams `json:"Response"`
+}
+
+func (r *UpdateVarResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateVarResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

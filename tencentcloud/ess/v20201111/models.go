@@ -1676,6 +1676,17 @@ type CreateBatchOrganizationRegistrationTasksRequestParams struct {
 	// <li>SHORT_H5：生成H5跳转短链</li>
 	// </ul>
 	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// 认证链接使用单链接还是多链接模式
+	// 
+	// <ul>
+	// <li>0 - 多链接(默认)，指批量生成链接， 每一个企业会拥有一个认证链接，然后分别认证</li>
+	// <li>1 - 单链接 ， 指批量生成链接，然后会将多个链接聚合成一个链接，进行认证</li>
+	// </ul>
+	// 
+	// p.s.
+	// 请注意， 如果使用单链接的模式并且认证方式是授权书方式的时候，必须在接口中传递超管授权书。
+	BatchAuthMethod *uint64 `json:"BatchAuthMethod,omitnil,omitempty" name:"BatchAuthMethod"`
 }
 
 type CreateBatchOrganizationRegistrationTasksRequest struct {
@@ -1703,6 +1714,17 @@ type CreateBatchOrganizationRegistrationTasksRequest struct {
 	// <li>SHORT_H5：生成H5跳转短链</li>
 	// </ul>
 	Endpoint *string `json:"Endpoint,omitnil,omitempty" name:"Endpoint"`
+
+	// 认证链接使用单链接还是多链接模式
+	// 
+	// <ul>
+	// <li>0 - 多链接(默认)，指批量生成链接， 每一个企业会拥有一个认证链接，然后分别认证</li>
+	// <li>1 - 单链接 ， 指批量生成链接，然后会将多个链接聚合成一个链接，进行认证</li>
+	// </ul>
+	// 
+	// p.s.
+	// 请注意， 如果使用单链接的模式并且认证方式是授权书方式的时候，必须在接口中传递超管授权书。
+	BatchAuthMethod *uint64 `json:"BatchAuthMethod,omitnil,omitempty" name:"BatchAuthMethod"`
 }
 
 func (r *CreateBatchOrganizationRegistrationTasksRequest) ToJsonString() string {
@@ -1721,6 +1743,7 @@ func (r *CreateBatchOrganizationRegistrationTasksRequest) FromJsonString(s strin
 	delete(f, "RegistrationOrganizations")
 	delete(f, "Agent")
 	delete(f, "Endpoint")
+	delete(f, "BatchAuthMethod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchOrganizationRegistrationTasksRequest has unknown keys!", "")
 	}

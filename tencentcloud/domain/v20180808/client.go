@@ -2166,9 +2166,7 @@ func NewDescribePreReleaseListResponse() (response *DescribePreReleaseListRespon
 // 接口用于预释放页面查询
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
-//  INTERNALERROR_DESCRIBEPREDOMAINLISTNOTBEGIN = "InternalError.DescribePreDomainListNotBegin"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  FAILEDOPERATION_DESCRIBEPRERELEASELIST = "FailedOperation.DescribePreReleaseList"
 func (c *Client) DescribePreReleaseList(request *DescribePreReleaseListRequest) (response *DescribePreReleaseListResponse, err error) {
     return c.DescribePreReleaseListWithContext(context.Background(), request)
 }
@@ -2177,9 +2175,7 @@ func (c *Client) DescribePreReleaseList(request *DescribePreReleaseListRequest) 
 // 接口用于预释放页面查询
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_UINNOTWHITELISTERR = "FailedOperation.UinNotWhiteListErr"
-//  INTERNALERROR_DESCRIBEPREDOMAINLISTNOTBEGIN = "InternalError.DescribePreDomainListNotBegin"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
+//  FAILEDOPERATION_DESCRIBEPRERELEASELIST = "FailedOperation.DescribePreReleaseList"
 func (c *Client) DescribePreReleaseListWithContext(ctx context.Context, request *DescribePreReleaseListRequest) (response *DescribePreReleaseListResponse, err error) {
     if request == nil {
         request = NewDescribePreReleaseListRequest()
@@ -2782,6 +2778,7 @@ func NewModifyIntlCustomDnsHostResponse() (response *ModifyIntlCustomDnsHostResp
 // 国际站-修改DNS Host
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FORBIDDENREQUEST = "FailedOperation.ForbiddenRequest"
 //  INTERNALERROR_DNSHOSTIPCHECKERR = "InternalError.DNSHostIPCheckErr"
 //  INTERNALERROR_DESCRIBEDOMAININFOERR = "InternalError.DescribeDomainInfoErr"
 //  INTERNALERROR_FORBIDDENREQUEST = "InternalError.ForbiddenRequest"
@@ -2800,6 +2797,7 @@ func (c *Client) ModifyIntlCustomDnsHost(request *ModifyIntlCustomDnsHostRequest
 // 国际站-修改DNS Host
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FORBIDDENREQUEST = "FailedOperation.ForbiddenRequest"
 //  INTERNALERROR_DNSHOSTIPCHECKERR = "InternalError.DNSHostIPCheckErr"
 //  INTERNALERROR_DESCRIBEDOMAININFOERR = "InternalError.DescribeDomainInfoErr"
 //  INTERNALERROR_FORBIDDENREQUEST = "InternalError.ForbiddenRequest"

@@ -413,7 +413,7 @@ const (
 	// 镜像OS不支持。
 	INTERNALERROR_OSNOTSUPPORT = "InternalError.OsNotSupport"
 
-	// Param。
+	// 参数错误。
 	INTERNALERROR_PARAM = "InternalError.Param"
 
 	// Pod未找到。

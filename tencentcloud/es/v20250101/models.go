@@ -334,6 +334,12 @@ type DocumentChunkUsage struct {
 	TotalTokens *int64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
 }
 
+type DocumentParseConfig struct {
+	// 0:图片以链接形式返回
+	// 1:返回图片中提取的文本内容
+	ImageResponseType *uint64 `json:"ImageResponseType,omitnil,omitempty" name:"ImageResponseType"`
+}
+
 type EmbeddingData struct {
 	// embedding 内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -578,6 +584,15 @@ type ParseDocument struct {
 	// 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过3秒。
 	// 支持的图片像素：单边介于20-10000px之间。
 	FileContent *string `json:"FileContent,omitnil,omitempty" name:"FileContent"`
+
+	// 文档解析配置
+	DocumentParseConfig *DocumentParseConfig `json:"DocumentParseConfig,omitnil,omitempty" name:"DocumentParseConfig"`
+
+	// 文档的起始页码
+	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
+
+	// 文档的结束页码
+	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
 }
 
 // Predefined struct for user

@@ -448,6 +448,74 @@ func (r *CreateDatasetResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateModelServiceAuthTokenRequestParams struct {
+	// 服务组 id
+	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
+
+	// token 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// Description 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type CreateModelServiceAuthTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务组 id
+	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
+
+	// token 名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// Description 描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *CreateModelServiceAuthTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateModelServiceAuthTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceGroupId")
+	delete(f, "Name")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceAuthTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateModelServiceAuthTokenResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateModelServiceAuthTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateModelServiceAuthTokenResponseParams `json:"Response"`
+}
+
+func (r *CreateModelServiceAuthTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateModelServiceAuthTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateModelServiceRequestParams struct {
 	// 新增版本时需要填写
 	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
@@ -2032,6 +2100,67 @@ func (r *DeleteDatasetResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteDatasetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteModelServiceAuthTokenRequestParams struct {
+	// 服务组 id
+	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
+
+	// token 值
+	AuthTokenValue *string `json:"AuthTokenValue,omitnil,omitempty" name:"AuthTokenValue"`
+}
+
+type DeleteModelServiceAuthTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务组 id
+	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
+
+	// token 值
+	AuthTokenValue *string `json:"AuthTokenValue,omitnil,omitempty" name:"AuthTokenValue"`
+}
+
+func (r *DeleteModelServiceAuthTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteModelServiceAuthTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceGroupId")
+	delete(f, "AuthTokenValue")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteModelServiceAuthTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteModelServiceAuthTokenResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteModelServiceAuthTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteModelServiceAuthTokenResponseParams `json:"Response"`
+}
+
+func (r *DeleteModelServiceAuthTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteModelServiceAuthTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5273,6 +5402,135 @@ type ModelSource struct {
 	// 自定义推理环境
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReasoningImageInfo *ImageInfo `json:"ReasoningImageInfo,omitnil,omitempty" name:"ReasoningImageInfo"`
+}
+
+// Predefined struct for user
+type ModifyModelServiceAuthTokenRequestParams struct {
+	// 服务组 id
+	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
+
+	// 是否需要重置，如果为 true，重置 token 值
+	NeedReset *bool `json:"NeedReset,omitnil,omitempty" name:"NeedReset"`
+
+	// AuthToken 数据
+	AuthToken *AuthToken `json:"AuthToken,omitnil,omitempty" name:"AuthToken"`
+}
+
+type ModifyModelServiceAuthTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务组 id
+	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
+
+	// 是否需要重置，如果为 true，重置 token 值
+	NeedReset *bool `json:"NeedReset,omitnil,omitempty" name:"NeedReset"`
+
+	// AuthToken 数据
+	AuthToken *AuthToken `json:"AuthToken,omitnil,omitempty" name:"AuthToken"`
+}
+
+func (r *ModifyModelServiceAuthTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyModelServiceAuthTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceGroupId")
+	delete(f, "NeedReset")
+	delete(f, "AuthToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceAuthTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyModelServiceAuthTokenResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyModelServiceAuthTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyModelServiceAuthTokenResponseParams `json:"Response"`
+}
+
+func (r *ModifyModelServiceAuthTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyModelServiceAuthTokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyModelServiceAuthorizationRequestParams struct {
+	// 服务组Id
+	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
+
+	// 是否开启鉴权,true表示开启
+	AuthorizationEnable *bool `json:"AuthorizationEnable,omitnil,omitempty" name:"AuthorizationEnable"`
+}
+
+type ModifyModelServiceAuthorizationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务组Id
+	ServiceGroupId *string `json:"ServiceGroupId,omitnil,omitempty" name:"ServiceGroupId"`
+
+	// 是否开启鉴权,true表示开启
+	AuthorizationEnable *bool `json:"AuthorizationEnable,omitnil,omitempty" name:"AuthorizationEnable"`
+}
+
+func (r *ModifyModelServiceAuthorizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyModelServiceAuthorizationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceGroupId")
+	delete(f, "AuthorizationEnable")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceAuthorizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyModelServiceAuthorizationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyModelServiceAuthorizationResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyModelServiceAuthorizationResponseParams `json:"Response"`
+}
+
+func (r *ModifyModelServiceAuthorizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyModelServiceAuthorizationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

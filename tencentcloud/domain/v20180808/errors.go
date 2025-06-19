@@ -59,6 +59,9 @@ const (
 	// 获取域名信息操作失败，请稍后重试。
 	FAILEDOPERATION_DESCRIBEDOMAINLISTFAILED = "FailedOperation.DescribeDomainListFailed"
 
+	// 获取列表异常
+	FAILEDOPERATION_DESCRIBEPRERELEASELIST = "FailedOperation.DescribePreReleaseList"
+
 	// 查询模板操作失败。
 	FAILEDOPERATION_DESCRIBETEMPLATEFAILED = "FailedOperation.DescribeTemplateFailed"
 
@@ -73,6 +76,9 @@ const (
 
 	// 当前账号下已有相同的手机/邮箱，无需重复添加。
 	FAILEDOPERATION_DUPLICATEPHONEEMAIL = "FailedOperation.DuplicatePhoneEmail"
+
+	// 禁止请求
+	FAILEDOPERATION_FORBIDDENREQUEST = "FailedOperation.ForbiddenRequest"
 
 	// 获取域名价格失败。
 	FAILEDOPERATION_GETDOMAINPRICEFAILED = "FailedOperation.GetDomainPriceFailed"

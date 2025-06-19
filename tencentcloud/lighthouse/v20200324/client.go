@@ -1232,6 +1232,7 @@ func NewCreateInstancesResponse() (response *CreateInstancesResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_BUNDLEANDBLUEPRINTNOTMATCH = "InvalidParameter.BundleAndBlueprintNotMatch"
 //  INVALIDPARAMETER_BUNDLEIDNOTFOUND = "InvalidParameter.BundleIdNotFound"
+//  INVALIDPARAMETER_CREATINGGAMEPORTALINSTANCENOTSUPPORTPARAMETER = "InvalidParameter.CreatingGamePortalInstanceNotSupportParameter"
 //  INVALIDPARAMETERVALUE_BLUEPRINTID = "InvalidParameterValue.BlueprintId"
 //  INVALIDPARAMETERVALUE_BLUEPRINTIDMALFORMED = "InvalidParameterValue.BlueprintIdMalformed"
 //  INVALIDPARAMETERVALUE_BUNDLEANDBLUEPRINTNOTMATCH = "InvalidParameterValue.BundleAndBlueprintNotMatch"
@@ -1281,6 +1282,7 @@ func (c *Client) CreateInstances(request *CreateInstancesRequest) (response *Cre
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_BUNDLEANDBLUEPRINTNOTMATCH = "InvalidParameter.BundleAndBlueprintNotMatch"
 //  INVALIDPARAMETER_BUNDLEIDNOTFOUND = "InvalidParameter.BundleIdNotFound"
+//  INVALIDPARAMETER_CREATINGGAMEPORTALINSTANCENOTSUPPORTPARAMETER = "InvalidParameter.CreatingGamePortalInstanceNotSupportParameter"
 //  INVALIDPARAMETERVALUE_BLUEPRINTID = "InvalidParameterValue.BlueprintId"
 //  INVALIDPARAMETERVALUE_BLUEPRINTIDMALFORMED = "InvalidParameterValue.BlueprintIdMalformed"
 //  INVALIDPARAMETERVALUE_BUNDLEANDBLUEPRINTNOTMATCH = "InvalidParameterValue.BundleAndBlueprintNotMatch"
@@ -8010,6 +8012,111 @@ func (c *Client) StopInstancesWithContext(ctx context.Context, request *StopInst
     request.SetContext(ctx)
     
     response = NewStopInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSyncBlueprintRequest() (request *SyncBlueprintRequest) {
+    request = &SyncBlueprintRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "SyncBlueprint")
+    
+    
+    return
+}
+
+func NewSyncBlueprintResponse() (response *SyncBlueprintResponse) {
+    response = &SyncBlueprintResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SyncBlueprint
+// 本接口 (SyncBlueprint) 用于将自定义镜像同步到其它地域。
+//
+// 
+//
+// * 支持向多个地域同步。最多10个地域。
+//
+// * 不支持向源地域同步。
+//
+// * 只支持NORMAL状态的镜像进行同步。
+//
+// * 不支持中国大陆地域和非中国大陆地域之间同步。
+//
+// * 可以通过[DescribeBlueprints](https://cloud.tencent.com/document/api/1207/47689)查询镜像状态，当镜像状态为NORMAL时表示源地域同步结束。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DESCRIBEBLUEPRINTQUOTAFAILED = "FailedOperation.DescribeBlueprintQuotaFailed"
+//  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
+//  FAILEDOPERATION_UNABLETOSYNCBLUEPRINT = "FailedOperation.UnableToSyncBlueprint"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_BLUEPRINTIDMALFORMED = "InvalidParameterValue.BlueprintIdMalformed"
+//  INVALIDPARAMETERVALUE_DESTINATIONREGIONSAMEASSOURCEREGION = "InvalidParameterValue.DestinationRegionSameAsSourceRegion"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTCROSSBORDERSYNCBLUEPRINT = "InvalidParameterValue.NotSupportCrossBorderSyncBlueprint"
+//  INVALIDPARAMETERVALUE_UNAVAILABLEREGION = "InvalidParameterValue.UnavailableRegion"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_SYNCBLUEPRINTQUOTALIMITEXCEEDED = "LimitExceeded.SyncBlueprintQuotaLimitExceeded"
+//  OPERATIONDENIED_BLUEPRINTOPERATIONINPROGRESS = "OperationDenied.BlueprintOperationInProgress"
+//  RESOURCENOTFOUND_PRIVATEBLUEPRINTNOTFOUND = "ResourceNotFound.PrivateBlueprintNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_BLUEPRINTCURSTATEINVALID = "UnsupportedOperation.BlueprintCurStateInvalid"
+//  UNSUPPORTEDOPERATION_BLUEPRINTLATESTOPERATIONUNFINISHED = "UnsupportedOperation.BlueprintLatestOperationUnfinished"
+func (c *Client) SyncBlueprint(request *SyncBlueprintRequest) (response *SyncBlueprintResponse, err error) {
+    return c.SyncBlueprintWithContext(context.Background(), request)
+}
+
+// SyncBlueprint
+// 本接口 (SyncBlueprint) 用于将自定义镜像同步到其它地域。
+//
+// 
+//
+// * 支持向多个地域同步。最多10个地域。
+//
+// * 不支持向源地域同步。
+//
+// * 只支持NORMAL状态的镜像进行同步。
+//
+// * 不支持中国大陆地域和非中国大陆地域之间同步。
+//
+// * 可以通过[DescribeBlueprints](https://cloud.tencent.com/document/api/1207/47689)查询镜像状态，当镜像状态为NORMAL时表示源地域同步结束。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DESCRIBEBLUEPRINTQUOTAFAILED = "FailedOperation.DescribeBlueprintQuotaFailed"
+//  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
+//  FAILEDOPERATION_UNABLETOSYNCBLUEPRINT = "FailedOperation.UnableToSyncBlueprint"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_BLUEPRINTIDMALFORMED = "InvalidParameterValue.BlueprintIdMalformed"
+//  INVALIDPARAMETERVALUE_DESTINATIONREGIONSAMEASSOURCEREGION = "InvalidParameterValue.DestinationRegionSameAsSourceRegion"
+//  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
+//  INVALIDPARAMETERVALUE_NOTSUPPORTCROSSBORDERSYNCBLUEPRINT = "InvalidParameterValue.NotSupportCrossBorderSyncBlueprint"
+//  INVALIDPARAMETERVALUE_UNAVAILABLEREGION = "InvalidParameterValue.UnavailableRegion"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_SYNCBLUEPRINTQUOTALIMITEXCEEDED = "LimitExceeded.SyncBlueprintQuotaLimitExceeded"
+//  OPERATIONDENIED_BLUEPRINTOPERATIONINPROGRESS = "OperationDenied.BlueprintOperationInProgress"
+//  RESOURCENOTFOUND_PRIVATEBLUEPRINTNOTFOUND = "ResourceNotFound.PrivateBlueprintNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNSUPPORTEDOPERATION_BLUEPRINTCURSTATEINVALID = "UnsupportedOperation.BlueprintCurStateInvalid"
+//  UNSUPPORTEDOPERATION_BLUEPRINTLATESTOPERATIONUNFINISHED = "UnsupportedOperation.BlueprintLatestOperationUnfinished"
+func (c *Client) SyncBlueprintWithContext(ctx context.Context, request *SyncBlueprintRequest) (response *SyncBlueprintResponse, err error) {
+    if request == nil {
+        request = NewSyncBlueprintRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SyncBlueprint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSyncBlueprintResponse()
     err = c.Send(request, response)
     return
 }

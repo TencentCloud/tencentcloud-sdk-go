@@ -4527,6 +4527,7 @@ func NewDescribeRabbitMQQueuesResponse() (response *DescribeRabbitMQQueuesRespon
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeRabbitMQQueues(request *DescribeRabbitMQQueuesRequest) (response *DescribeRabbitMQQueuesResponse, err error) {
     return c.DescribeRabbitMQQueuesWithContext(context.Background(), request)
 }
@@ -4538,6 +4539,7 @@ func (c *Client) DescribeRabbitMQQueues(request *DescribeRabbitMQQueuesRequest) 
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeRabbitMQQueuesWithContext(ctx context.Context, request *DescribeRabbitMQQueuesRequest) (response *DescribeRabbitMQQueuesResponse, err error) {
     if request == nil {
         request = NewDescribeRabbitMQQueuesRequest()

@@ -220,7 +220,7 @@ type BackupStatus struct {
 	// 备份实例id
 	BackupJobId *int64 `json:"BackupJobId,omitnil,omitempty" name:"BackupJobId"`
 
-	// 实例对应snapshoit的id
+	// 实例对应Snapshot的id
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 }
 
@@ -6452,7 +6452,7 @@ type ZoneInfo struct {
 	// 可用区唯一标记
 	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// Encryptid
+	// Encrypted
 	Encrypt *int64 `json:"Encrypt,omitnil,omitempty" name:"Encrypt"`
 
 	// 是否为主力园区

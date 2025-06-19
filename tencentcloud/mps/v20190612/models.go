@@ -2696,7 +2696,7 @@ type BlindWatermarkConfig struct {
 }
 
 type BlindWatermarkEmbedInfo struct {
-	// 盲水印文字，需要经过 URL 安全的 Base64 编码。
+	// 盲水印文字，经过URL安全的Base64编码的4Byte数据。Base64解码之后，少于4Byte将会填充0x00到4Byte，超过4Byte将会截断为4Byte。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EmbedText *string `json:"EmbedText,omitnil,omitempty" name:"EmbedText"`
 }
@@ -4285,6 +4285,9 @@ type CreateInputSRTSettings struct {
 
 	// SRT对端地址，当Mode为CALLER时必填，且只能填1组。
 	SourceAddresses []*SRTSourceAddressReq `json:"SourceAddresses,omitnil,omitempty" name:"SourceAddresses"`
+
+	// SRT FEC 设置
+	FEC *SRTFECSimpleOptions `json:"FEC,omitnil,omitempty" name:"FEC"`
 }
 
 // Predefined struct for user
@@ -4486,6 +4489,9 @@ type CreateOutputSRTSettings struct {
 
 	// SRT模式，可选[LISTENER|CALLER]，默认为CALLER。
 	Mode *string `json:"Mode,omitnil,omitempty" name:"Mode"`
+
+	// SRT FEC 设置
+	FEC *SRTFECFullOptions `json:"FEC,omitnil,omitempty" name:"FEC"`
 }
 
 type CreateOutputSRTSettingsDestinations struct {
@@ -8692,6 +8698,9 @@ type DescribeInputSRTSettings struct {
 	// SRT对端地址。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceAddresses []*SRTSourceAddressResp `json:"SourceAddresses,omitnil,omitempty" name:"SourceAddresses"`
+
+	// FEC  设置
+	FEC *SRTFECSimpleOptions `json:"FEC,omitnil,omitempty" name:"FEC"`
 }
 
 // Predefined struct for user
@@ -9039,6 +9048,9 @@ type DescribeOutputSRTSettings struct {
 	// 服务器监听地址，SRT模式为LISTENER时使用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceAddresses []*OutputSRTSourceAddressResp `json:"SourceAddresses,omitnil,omitempty" name:"SourceAddresses"`
+
+	// FEC 配置
+	FEC *SRTFECFullOptions `json:"FEC,omitnil,omitempty" name:"FEC"`
 }
 
 // Predefined struct for user
@@ -18524,6 +18536,28 @@ type SRTAddressDestination struct {
 
 	// 目标地址的端口。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+}
+
+type SRTFECFullOptions struct {
+	// 是否开启 FEC
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// FEC 数据包 Layout 列数量. 取值范围>0
+	Cols *int64 `json:"Cols,omitnil,omitempty" name:"Cols"`
+
+	// FEC 数据包 Layout 行数量. 取值范围 >=2 或者 <=-2
+	Rows *int64 `json:"Rows,omitnil,omitempty" name:"Rows"`
+
+	// FEC 开启的情况下，ARQ的策略。取值 "always", "onreq", "never"
+	ARQ *string `json:"ARQ,omitnil,omitempty" name:"ARQ"`
+
+	// FEC 数据包 Layout 组织形式，取值 "even", "staircase" 
+	Layout *string `json:"Layout,omitnil,omitempty" name:"Layout"`
+}
+
+type SRTFECSimpleOptions struct {
+	// 是否开启 FEC
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 }
 
 type SRTSourceAddressReq struct {

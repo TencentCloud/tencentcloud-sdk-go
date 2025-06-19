@@ -5296,6 +5296,9 @@ type ExposesItem struct {
 
 	// 租户ID
 	AppId *uint64 `json:"AppId,omitnil,omitempty" name:"AppId"`
+
+	// 租户ID字符串
+	AppIdStr *string `json:"AppIdStr,omitnil,omitempty" name:"AppIdStr"`
 }
 
 type Filter struct {

@@ -318,6 +318,65 @@ func (c *Client) CreateModelServiceWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateModelServiceAuthTokenRequest() (request *CreateModelServiceAuthTokenRequest) {
+    request = &CreateModelServiceAuthTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "CreateModelServiceAuthToken")
+    
+    
+    return
+}
+
+func NewCreateModelServiceAuthTokenResponse() (response *CreateModelServiceAuthTokenResponse) {
+    response = &CreateModelServiceAuthTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateModelServiceAuthToken
+// 创建一个 AuthToken
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateModelServiceAuthToken(request *CreateModelServiceAuthTokenRequest) (response *CreateModelServiceAuthTokenResponse, err error) {
+    return c.CreateModelServiceAuthTokenWithContext(context.Background(), request)
+}
+
+// CreateModelServiceAuthToken
+// 创建一个 AuthToken
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateModelServiceAuthTokenWithContext(ctx context.Context, request *CreateModelServiceAuthTokenRequest) (response *CreateModelServiceAuthTokenResponse, err error) {
+    if request == nil {
+        request = NewCreateModelServiceAuthTokenRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateModelServiceAuthToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateModelServiceAuthTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNotebookRequest() (request *CreateNotebookRequest) {
     request = &CreateNotebookRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -978,6 +1037,69 @@ func (c *Client) DeleteModelServiceWithContext(ctx context.Context, request *Del
     request.SetContext(ctx)
     
     response = NewDeleteModelServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteModelServiceAuthTokenRequest() (request *DeleteModelServiceAuthTokenRequest) {
+    request = &DeleteModelServiceAuthTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DeleteModelServiceAuthToken")
+    
+    
+    return
+}
+
+func NewDeleteModelServiceAuthTokenResponse() (response *DeleteModelServiceAuthTokenResponse) {
+    response = &DeleteModelServiceAuthTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteModelServiceAuthToken
+// 删除一个 AuthToken
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteModelServiceAuthToken(request *DeleteModelServiceAuthTokenRequest) (response *DeleteModelServiceAuthTokenResponse, err error) {
+    return c.DeleteModelServiceAuthTokenWithContext(context.Background(), request)
+}
+
+// DeleteModelServiceAuthToken
+// 删除一个 AuthToken
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteModelServiceAuthTokenWithContext(ctx context.Context, request *DeleteModelServiceAuthTokenRequest) (response *DeleteModelServiceAuthTokenResponse, err error) {
+    if request == nil {
+        request = NewDeleteModelServiceAuthTokenRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteModelServiceAuthToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteModelServiceAuthTokenResponse()
     err = c.Send(request, response)
     return
 }
@@ -3208,6 +3330,132 @@ func (c *Client) ModifyModelServiceWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyModelServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyModelServiceAuthTokenRequest() (request *ModifyModelServiceAuthTokenRequest) {
+    request = &ModifyModelServiceAuthTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "ModifyModelServiceAuthToken")
+    
+    
+    return
+}
+
+func NewModifyModelServiceAuthTokenResponse() (response *ModifyModelServiceAuthTokenResponse) {
+    response = &ModifyModelServiceAuthTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyModelServiceAuthToken
+// 修改一个 AuthToken
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyModelServiceAuthToken(request *ModifyModelServiceAuthTokenRequest) (response *ModifyModelServiceAuthTokenResponse, err error) {
+    return c.ModifyModelServiceAuthTokenWithContext(context.Background(), request)
+}
+
+// ModifyModelServiceAuthToken
+// 修改一个 AuthToken
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyModelServiceAuthTokenWithContext(ctx context.Context, request *ModifyModelServiceAuthTokenRequest) (response *ModifyModelServiceAuthTokenResponse, err error) {
+    if request == nil {
+        request = NewModifyModelServiceAuthTokenRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyModelServiceAuthToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyModelServiceAuthTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyModelServiceAuthorizationRequest() (request *ModifyModelServiceAuthorizationRequest) {
+    request = &ModifyModelServiceAuthorizationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "ModifyModelServiceAuthorization")
+    
+    
+    return
+}
+
+func NewModifyModelServiceAuthorizationResponse() (response *ModifyModelServiceAuthorizationResponse) {
+    response = &ModifyModelServiceAuthorizationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyModelServiceAuthorization
+// 修改服务鉴权配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyModelServiceAuthorization(request *ModifyModelServiceAuthorizationRequest) (response *ModifyModelServiceAuthorizationResponse, err error) {
+    return c.ModifyModelServiceAuthorizationWithContext(context.Background(), request)
+}
+
+// ModifyModelServiceAuthorization
+// 修改服务鉴权配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyModelServiceAuthorizationWithContext(ctx context.Context, request *ModifyModelServiceAuthorizationRequest) (response *ModifyModelServiceAuthorizationResponse, err error) {
+    if request == nil {
+        request = NewModifyModelServiceAuthorizationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyModelServiceAuthorization require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyModelServiceAuthorizationResponse()
     err = c.Send(request, response)
     return
 }

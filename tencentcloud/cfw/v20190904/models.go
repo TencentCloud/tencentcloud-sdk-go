@@ -953,6 +953,9 @@ type CreateAlertCenterOmitRequestParams struct {
 	// 忽略数据来源：
 	// AlertTable 告警中心  InterceptionTable拦截列表
 	TableType *string `json:"TableType,omitnil,omitempty" name:"TableType"`
+
+	// 处置对象,事件ID列表
+	HandleEventIdList []*string `json:"HandleEventIdList,omitnil,omitempty" name:"HandleEventIdList"`
 }
 
 type CreateAlertCenterOmitRequest struct {
@@ -964,6 +967,9 @@ type CreateAlertCenterOmitRequest struct {
 	// 忽略数据来源：
 	// AlertTable 告警中心  InterceptionTable拦截列表
 	TableType *string `json:"TableType,omitnil,omitempty" name:"TableType"`
+
+	// 处置对象,事件ID列表
+	HandleEventIdList []*string `json:"HandleEventIdList,omitnil,omitempty" name:"HandleEventIdList"`
 }
 
 func (r *CreateAlertCenterOmitRequest) ToJsonString() string {
@@ -980,6 +986,7 @@ func (r *CreateAlertCenterOmitRequest) FromJsonString(s string) error {
 	}
 	delete(f, "HandleIdList")
 	delete(f, "TableType")
+	delete(f, "HandleEventIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlertCenterOmitRequest has unknown keys!", "")
 	}

@@ -6816,10 +6816,10 @@ func (r *DescribeRabbitMQPermissionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRabbitMQQueueDetailRequestParams struct {
-	// 实例Id
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Vhost参数
+	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到 Vhost 名称
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 队列名称
@@ -6829,10 +6829,10 @@ type DescribeRabbitMQQueueDetailRequestParams struct {
 type DescribeRabbitMQQueueDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Vhost参数
+	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到 Vhost 名称
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 队列名称
@@ -6974,6 +6974,12 @@ type DescribeRabbitMQQueueDetailResponseParams struct {
 	// 扩展参数 key-value
 	Arguments *string `json:"Arguments,omitnil,omitempty" name:"Arguments"`
 
+	// 创建时间时间戳
+	CreateTs *uint64 `json:"CreateTs,omitnil,omitempty" name:"CreateTs"`
+
+	// 修改时间时间戳
+	ModifyTs *uint64 `json:"ModifyTs,omitnil,omitempty" name:"ModifyTs"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -6996,22 +7002,22 @@ func (r *DescribeRabbitMQQueueDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRabbitMQQueuesRequestParams struct {
-	// 实例Id
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Vhost参数
+	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
-	// 分页Offset
+	// 分页 Offset，默认 0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页Limit
+	// 分页 Limit，默认 20
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 搜索关键词
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 队列类型筛选，不填或 "all"：classic 和 quorum 队列；"classic"：筛选 classic 队列；"quorum"：筛选 quorum 队列
+	// 队列类型筛选，不填或 "all"：筛选普通队列 和 quorum 队列；"classic"：筛选 classic(普通) 队列；"quorum"：筛选 quorum 队列
 	QueueType *string `json:"QueueType,omitnil,omitempty" name:"QueueType"`
 
 	// 排序依据的字段：
@@ -7023,28 +7029,30 @@ type DescribeRabbitMQQueuesRequestParams struct {
 	SortElement *string `json:"SortElement,omitnil,omitempty" name:"SortElement"`
 
 	// 排序顺序，ascend 或 descend
+	// ascend：升序
+	// descend：降序
 	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
 }
 
 type DescribeRabbitMQQueuesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// Vhost参数
+	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到Vhost名称。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
-	// 分页Offset
+	// 分页 Offset，默认 0
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页Limit
+	// 分页 Limit，默认 20
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 搜索关键词
 	SearchWord *string `json:"SearchWord,omitnil,omitempty" name:"SearchWord"`
 
-	// 队列类型筛选，不填或 "all"：classic 和 quorum 队列；"classic"：筛选 classic 队列；"quorum"：筛选 quorum 队列
+	// 队列类型筛选，不填或 "all"：筛选普通队列 和 quorum 队列；"classic"：筛选 classic(普通) 队列；"quorum"：筛选 quorum 队列
 	QueueType *string `json:"QueueType,omitnil,omitempty" name:"QueueType"`
 
 	// 排序依据的字段：
@@ -7056,6 +7064,8 @@ type DescribeRabbitMQQueuesRequest struct {
 	SortElement *string `json:"SortElement,omitnil,omitempty" name:"SortElement"`
 
 	// 排序顺序，ascend 或 descend
+	// ascend：升序
+	// descend：降序
 	SortOrder *string `json:"SortOrder,omitnil,omitempty" name:"SortOrder"`
 }
 
@@ -7087,10 +7097,10 @@ func (r *DescribeRabbitMQQueuesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRabbitMQQueuesResponseParams struct {
-	// 列表信息
+	// 队列列表信息
 	QueueInfoList []*RabbitMQQueueListInfo `json:"QueueInfoList,omitnil,omitempty" name:"QueueInfoList"`
 
-	// 数量
+	// 队列数量
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13254,7 +13264,7 @@ type RabbitMQBindingListInfo struct {
 	// 路由关系id
 	BindingId *int64 `json:"BindingId,omitnil,omitempty" name:"BindingId"`
 
-	// Vhost参数
+	// VhostName
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 源exchange名称
@@ -13277,6 +13287,12 @@ type RabbitMQBindingListInfo struct {
 
 	// 修改时间
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 创建时间时间戳
+	CreateTs *uint64 `json:"CreateTs,omitnil,omitempty" name:"CreateTs"`
+
+	// 修改时间时间戳
+	ModifyTs *uint64 `json:"ModifyTs,omitnil,omitempty" name:"ModifyTs"`
 }
 
 type RabbitMQClusterAccessInfo struct {
@@ -13446,7 +13462,7 @@ type RabbitMQClusterWhiteListInfo struct {
 }
 
 type RabbitMQExchangeListInfo struct {
-	// exchange 名
+	// exchange 名称
 	ExchangeName *string `json:"ExchangeName,omitnil,omitempty" name:"ExchangeName"`
 
 	// 备注说明
@@ -13456,7 +13472,7 @@ type RabbitMQExchangeListInfo struct {
 	// exchange 类型, 支持 "fanout","direct","topic","headers"
 	ExchangeType *string `json:"ExchangeType,omitnil,omitempty" name:"ExchangeType"`
 
-	// VHost参数
+	// 交换机所属 Virtual Host 名称
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// exchange 创建者, "system":"系统创建", "user":"用户创建"
@@ -13498,16 +13514,22 @@ type RabbitMQExchangeListInfo struct {
 	// 未调度的延时消息数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessagesDelayed *uint64 `json:"MessagesDelayed,omitnil,omitempty" name:"MessagesDelayed"`
+
+	// 创建时间时间戳
+	CreateTs *uint64 `json:"CreateTs,omitnil,omitempty" name:"CreateTs"`
+
+	// 修改时间时间戳
+	ModifyTs *uint64 `json:"ModifyTs,omitnil,omitempty" name:"ModifyTs"`
 }
 
 type RabbitMQPermission struct {
-	// 集群实例Id
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 用户名，权限关联的用户
+	// 用户名，形如 admin。有效的 User 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，点击集群列表中的集群，进入集群详情，并在用户与权限页签中找到用户列表，从而找到用户名称。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
 
-	// vhost名
+	// VirtualHost 名称，形如 testvhost。有效的 VirtualHost 名称可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询，在左侧导航栏点击 Vhost，并在 Vhost 列表中找到 Vhost 名称。
 	VirtualHost *string `json:"VirtualHost,omitnil,omitempty" name:"VirtualHost"`
 
 	// 权限类型，declare相关操作，该用户可操作该vhost下的资源名称正则表达式
@@ -13524,6 +13546,12 @@ type RabbitMQPermission struct {
 
 	// 修改时间
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 创建时间时间戳
+	CreateTs *uint64 `json:"CreateTs,omitnil,omitempty" name:"CreateTs"`
+
+	// 修改时间时间戳
+	ModifyTs *uint64 `json:"ModifyTs,omitnil,omitempty" name:"ModifyTs"`
 }
 
 type RabbitMQPrivateNode struct {
@@ -13614,10 +13642,16 @@ type RabbitMQQueueListInfo struct {
 
 	// 是否独占队列
 	Exclusive *bool `json:"Exclusive,omitnil,omitempty" name:"Exclusive"`
+
+	// 创建时间时间戳
+	CreateTs *uint64 `json:"CreateTs,omitnil,omitempty" name:"CreateTs"`
+
+	// 修改时间时间戳
+	ModifyTs *uint64 `json:"ModifyTs,omitnil,omitempty" name:"ModifyTs"`
 }
 
 type RabbitMQUser struct {
-	// 集群实例Id
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 用户名，登录时使用
@@ -13648,6 +13682,12 @@ type RabbitMQUser struct {
 	// 单个用户最大可用通道数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxChannels *int64 `json:"MaxChannels,omitnil,omitempty" name:"MaxChannels"`
+
+	// 创建时间时间戳
+	CreateTs *uint64 `json:"CreateTs,omitnil,omitempty" name:"CreateTs"`
+
+	// 修改时间时间戳
+	ModifyTs *uint64 `json:"ModifyTs,omitnil,omitempty" name:"ModifyTs"`
 }
 
 type RabbitMQVipInstance struct {
@@ -13757,6 +13797,12 @@ type RabbitMQVirtualHostInfo struct {
 
 	// 是否存在镜像队列策略，true 为存在，false 为不存
 	MirrorQueuePolicyFlag *bool `json:"MirrorQueuePolicyFlag,omitnil,omitempty" name:"MirrorQueuePolicyFlag"`
+
+	// 创建时间时间戳
+	CreateTs *uint64 `json:"CreateTs,omitnil,omitempty" name:"CreateTs"`
+
+	// 修改时间时间戳
+	ModifyTs *uint64 `json:"ModifyTs,omitnil,omitempty" name:"ModifyTs"`
 }
 
 type RabbitMQVirtualHostStatistics struct {

@@ -8981,6 +8981,67 @@ type SupportIpv6Detail struct {
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }
 
+// Predefined struct for user
+type SyncBlueprintRequestParams struct {
+	// 镜像ID。
+	BlueprintId *string `json:"BlueprintId,omitnil,omitempty" name:"BlueprintId"`
+
+	// 同步镜像的目的地域列表。
+	DestinationRegions []*string `json:"DestinationRegions,omitnil,omitempty" name:"DestinationRegions"`
+}
+
+type SyncBlueprintRequest struct {
+	*tchttp.BaseRequest
+	
+	// 镜像ID。
+	BlueprintId *string `json:"BlueprintId,omitnil,omitempty" name:"BlueprintId"`
+
+	// 同步镜像的目的地域列表。
+	DestinationRegions []*string `json:"DestinationRegions,omitnil,omitempty" name:"DestinationRegions"`
+}
+
+func (r *SyncBlueprintRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncBlueprintRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BlueprintId")
+	delete(f, "DestinationRegions")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncBlueprintRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SyncBlueprintResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SyncBlueprintResponse struct {
+	*tchttp.BaseResponse
+	Response *SyncBlueprintResponseParams `json:"Response"`
+}
+
+func (r *SyncBlueprintResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncBlueprintResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SystemDisk struct {
 	// 系统盘类型。
 	// 取值范围： 

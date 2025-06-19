@@ -3788,6 +3788,81 @@ func (r *DescribeMigratingTopicStatsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMigrationTaskListRequestParams struct {
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribeMigrationTaskListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribeMigrationTaskListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMigrationTaskListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMigrationTaskListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMigrationTaskListResponseParams struct {
+	// 查询总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 迁移任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tasks []*MigrationTaskItem `json:"Tasks,omitnil,omitempty" name:"Tasks"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMigrationTaskListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMigrationTaskListResponseParams `json:"Response"`
+}
+
+func (r *DescribeMigrationTaskListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMigrationTaskListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeProductSKUsRequestParams struct {
 
 }
@@ -5066,7 +5141,12 @@ type MigratingTopic struct {
 	// 主题名称
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
-	// 迁移状态 S_RW_D_NA 源集群读写 S_RW_D_R 源集群读写目标集群读 S_RW_D_RW 源集群读写目标集群读写 S_R_D_RW 源集群读目标集群读写 S_NA_D_RW 目标集群读写
+	// 迁移状态 
+	// S_RW_D_NA 源集群读写，
+	// S_RW_D_R 源集群读写目标集群读，
+	// S_RW_D_RW 源集群读写目标集群读写，
+	// S_R_D_RW 源集群读目标集群读写，
+	// S_NA_D_RW 目标集群读写
 	MigrationStatus *string `json:"MigrationStatus,omitnil,omitempty" name:"MigrationStatus"`
 
 	// 是否完成健康检查	
@@ -5092,6 +5172,30 @@ type MigratingTopic struct {
 
 	// 上次健康检查返回的错误列表
 	HealthCheckErrorList []*string `json:"HealthCheckErrorList,omitnil,omitempty" name:"HealthCheckErrorList"`
+}
+
+type MigrationTaskItem struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 0 - 未指定（存量）
+	// 1 - 元数据导入
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 主题总数
+	TopicNum *int64 `json:"TopicNum,omitnil,omitempty" name:"TopicNum"`
+
+	// 消费组总数
+	GroupNum *int64 `json:"GroupNum,omitnil,omitempty" name:"GroupNum"`
+
+	// 任务状态： 0，迁移中 1，迁移成功 2，迁移完成，只有部分数据完成迁移
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 创建时间
+	CreateTime *int64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 // Predefined struct for user

@@ -1163,6 +1163,55 @@ func (c *Client) DeleteSharedKnowledgeWithContext(ctx context.Context, request *
     return
 }
 
+func NewDeleteVarRequest() (request *DeleteVarRequest) {
+    request = &DeleteVarRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "DeleteVar")
+    
+    
+    return
+}
+
+func NewDeleteVarResponse() (response *DeleteVarResponse) {
+    response = &DeleteVarResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteVar
+// 删除变量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteVar(request *DeleteVarRequest) (response *DeleteVarResponse, err error) {
+    return c.DeleteVarWithContext(context.Background(), request)
+}
+
+// DeleteVar
+// 删除变量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteVarWithContext(ctx context.Context, request *DeleteVarRequest) (response *DeleteVarResponse, err error) {
+    if request == nil {
+        request = NewDeleteVarRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVar require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteVarResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAppRequest() (request *DescribeAppRequest) {
     request = &DescribeAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5468,6 +5517,57 @@ func (c *Client) UpdateSharedKnowledgeWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewUpdateSharedKnowledgeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateVarRequest() (request *UpdateVarRequest) {
+    request = &UpdateVarRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "UpdateVar")
+    
+    
+    return
+}
+
+func NewUpdateVarResponse() (response *UpdateVarResponse) {
+    response = &UpdateVarResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateVar
+// 更新变量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) UpdateVar(request *UpdateVarRequest) (response *UpdateVarResponse, err error) {
+    return c.UpdateVarWithContext(context.Background(), request)
+}
+
+// UpdateVar
+// 更新变量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) UpdateVarWithContext(ctx context.Context, request *UpdateVarRequest) (response *UpdateVarResponse, err error) {
+    if request == nil {
+        request = NewUpdateVarRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateVar require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateVarResponse()
     err = c.Send(request, response)
     return
 }

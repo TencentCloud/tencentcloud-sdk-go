@@ -1158,20 +1158,24 @@ func (r *GetCharacterUsageResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetEmbeddingRequestParams struct {
-	// 模型名称
+	// 说明：选择生成向量的模型
+	// 备注：仅一个模型可选
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 需要 embedding 的文本, 单条文本最大长度500个字符, 总条数最大7条
+	// 说明：需要 embedding 的文本
+	// 备注：单条query最多2000个字符，总条数最多7条
 	Inputs []*string `json:"Inputs,omitnil,omitempty" name:"Inputs"`
 }
 
 type GetEmbeddingRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模型名称
+	// 说明：选择生成向量的模型
+	// 备注：仅一个模型可选
 	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
 
-	// 需要 embedding 的文本, 单条文本最大长度500个字符, 总条数最大7条
+	// 说明：需要 embedding 的文本
+	// 备注：单条query最多2000个字符，总条数最多7条
 	Inputs []*string `json:"Inputs,omitnil,omitempty" name:"Inputs"`
 }
 

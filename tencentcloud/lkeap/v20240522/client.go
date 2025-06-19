@@ -117,7 +117,7 @@ func NewChatCompletionsResponse() (response *ChatCompletionsResponse) {
 //
 // 
 //
-// - 标准计费（2025年2月26日起生效），计费模式为后付费小时结，为保证您账户资源的正常使用，请提前[开通后付费](https://lke.cloud.tencent.com/lke#/app/system/charge/postpaid)并及时[充值](https://console.cloud.tencent.com/expense/recharge)。
+// - 标准计费（2025年2月26日起生效），计费模式为后付费小时结，为保证您账户资源的正常使用，请提前[开通后付费](https://console.cloud.tencent.com/lkeap/settings)并及时[充值](https://console.cloud.tencent.com/expense/recharge)。
 //
 // 
 //
@@ -354,7 +354,7 @@ func (c *Client) ChatCompletions(request *ChatCompletionsRequest) (response *Cha
 //
 // 
 //
-// - 标准计费（2025年2月26日起生效），计费模式为后付费小时结，为保证您账户资源的正常使用，请提前[开通后付费](https://lke.cloud.tencent.com/lke#/app/system/charge/postpaid)并及时[充值](https://console.cloud.tencent.com/expense/recharge)。
+// - 标准计费（2025年2月26日起生效），计费模式为后付费小时结，为保证您账户资源的正常使用，请提前[开通后付费](https://console.cloud.tencent.com/lkeap/settings)并及时[充值](https://console.cloud.tencent.com/expense/recharge)。
 //
 // 
 //
