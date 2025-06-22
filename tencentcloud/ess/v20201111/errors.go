@@ -26,6 +26,9 @@ const (
 	// 年龄限制无法使用电子签服务，请联系客服咨询处理。
 	FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
 
+	// 授权认证已经被删除了
+	FAILEDOPERATION_AUTHORIZATIONINFOHASBEENDELETED = "FailedOperation.AuthorizationInfoHasBeenDeleted"
+
 	// 套餐余额不足。
 	FAILEDOPERATION_BALANCENOTENOUGH = "FailedOperation.BalanceNotEnough"
 

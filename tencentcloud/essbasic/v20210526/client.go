@@ -7663,6 +7663,81 @@ func (c *Client) CreateLegalSealQrCodeWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateModifyAdminAuthorizationUrlRequest() (request *CreateModifyAdminAuthorizationUrlRequest) {
+    request = &CreateModifyAdminAuthorizationUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "CreateModifyAdminAuthorizationUrl")
+    
+    
+    return
+}
+
+func NewCreateModifyAdminAuthorizationUrlResponse() (response *CreateModifyAdminAuthorizationUrlResponse) {
+    response = &CreateModifyAdminAuthorizationUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateModifyAdminAuthorizationUrl
+// 本接口（CreateModifyAdminAuthorizationUrl）用于重新上传超管授权书。
+//
+// 
+//
+// 注意:
+//
+// 1. 重新上传超管授权书，必须是审核失败的情况下才能重新上传,可以通过回调[!授权书审核结果回调](https://qian.tencent.com/developers/partner/callback_types_staffs#%E5%9B%9B-%E6%8E%88%E6%9D%83%E4%B9%A6%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)得到
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOROLEAUTH = "FailedOperation.NoRoleAuth"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateModifyAdminAuthorizationUrl(request *CreateModifyAdminAuthorizationUrlRequest) (response *CreateModifyAdminAuthorizationUrlResponse, err error) {
+    return c.CreateModifyAdminAuthorizationUrlWithContext(context.Background(), request)
+}
+
+// CreateModifyAdminAuthorizationUrl
+// 本接口（CreateModifyAdminAuthorizationUrl）用于重新上传超管授权书。
+//
+// 
+//
+// 注意:
+//
+// 1. 重新上传超管授权书，必须是审核失败的情况下才能重新上传,可以通过回调[!授权书审核结果回调](https://qian.tencent.com/developers/partner/callback_types_staffs#%E5%9B%9B-%E6%8E%88%E6%9D%83%E4%B9%A6%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)得到
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOROLEAUTH = "FailedOperation.NoRoleAuth"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateModifyAdminAuthorizationUrlWithContext(ctx context.Context, request *CreateModifyAdminAuthorizationUrlRequest) (response *CreateModifyAdminAuthorizationUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateModifyAdminAuthorizationUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateModifyAdminAuthorizationUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateModifyAdminAuthorizationUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOrganizationAuthFileRequest() (request *CreateOrganizationAuthFileRequest) {
     request = &CreateOrganizationAuthFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8289,6 +8364,69 @@ func (c *Client) DeleteOrganizationAuthorizationsWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewDeleteOrganizationAuthorizationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBatchOrganizationRegistrationTasksRequest() (request *DescribeBatchOrganizationRegistrationTasksRequest) {
+    request = &DescribeBatchOrganizationRegistrationTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "DescribeBatchOrganizationRegistrationTasks")
+    
+    
+    return
+}
+
+func NewDescribeBatchOrganizationRegistrationTasksResponse() (response *DescribeBatchOrganizationRegistrationTasksResponse) {
+    response = &DescribeBatchOrganizationRegistrationTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBatchOrganizationRegistrationTasks
+// 本接口（DescribeBatchOrganizationRegistrationTasks）用于查询企业批量认证任务状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOROLEAUTH = "FailedOperation.NoRoleAuth"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DescribeBatchOrganizationRegistrationTasks(request *DescribeBatchOrganizationRegistrationTasksRequest) (response *DescribeBatchOrganizationRegistrationTasksResponse, err error) {
+    return c.DescribeBatchOrganizationRegistrationTasksWithContext(context.Background(), request)
+}
+
+// DescribeBatchOrganizationRegistrationTasks
+// 本接口（DescribeBatchOrganizationRegistrationTasks）用于查询企业批量认证任务状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOROLEAUTH = "FailedOperation.NoRoleAuth"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) DescribeBatchOrganizationRegistrationTasksWithContext(ctx context.Context, request *DescribeBatchOrganizationRegistrationTasksRequest) (response *DescribeBatchOrganizationRegistrationTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeBatchOrganizationRegistrationTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBatchOrganizationRegistrationTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBatchOrganizationRegistrationTasksResponse()
     err = c.Send(request, response)
     return
 }
@@ -10222,6 +10360,10 @@ func NewPrepareFlowsResponse() (response *PrepareFlowsResponse) {
 }
 
 // PrepareFlows
+// 已经不再使用
+//
+// 
+//
 // 该接口 (PrepareFlows) 用于创建待发起文件
 //
 // 用户通过该接口进入签署流程发起的确认页面，进行发起信息二次确认， 如果确认则进行正常发起。
@@ -10252,6 +10394,10 @@ func (c *Client) PrepareFlows(request *PrepareFlowsRequest) (response *PrepareFl
 }
 
 // PrepareFlows
+// 已经不再使用
+//
+// 
+//
 // 该接口 (PrepareFlows) 用于创建待发起文件
 //
 // 用户通过该接口进入签署流程发起的确认页面，进行发起信息二次确认， 如果确认则进行正常发起。

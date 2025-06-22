@@ -3999,6 +3999,82 @@ func (r *DescribeRoleListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSmoothMigrationTaskListRequestParams struct {
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeSmoothMigrationTaskListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeSmoothMigrationTaskListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSmoothMigrationTaskListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSmoothMigrationTaskListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSmoothMigrationTaskListResponseParams struct {
+	// 查询总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 任务列表	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*SmoothMigrationTaskItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSmoothMigrationTaskListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSmoothMigrationTaskListResponseParams `json:"Response"`
+}
+
+func (r *DescribeSmoothMigrationTaskListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSmoothMigrationTaskListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSourceClusterGroupListRequestParams struct {
 	// 任务ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
@@ -6427,6 +6503,45 @@ func (r *RollbackMigratingTopicStageResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RollbackMigratingTopicStageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SmoothMigrationTaskItem struct {
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 任务名称	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 源集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceClusterName *string `json:"SourceClusterName,omitnil,omitempty" name:"SourceClusterName"`
+
+	// 目标集群实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 网络连接类型， 
+	// PUBLIC 公网 
+	// VPC 私有网络 
+	// OTHER 其他
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectionType *string `json:"ConnectionType,omitnil,omitempty" name:"ConnectionType"`
+
+	// 源集群NameServer地址	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceNameServer *string `json:"SourceNameServer,omitnil,omitempty" name:"SourceNameServer"`
+
+	// 任务状态 Configuration 迁移配置 SourceConnecting 连接源集群中 MetaDataImport 元数据导入 EndpointSetup 切换接入点 ServiceMigration 切流中 Completed 已完成 Cancelled 已取消
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
+
+	// 目标集群实例版本，
+	// 4 表示4.x版本
+	// 5 表示5.x版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceVersion *string `json:"InstanceVersion,omitnil,omitempty" name:"InstanceVersion"`
 }
 
 type SourceClusterGroupConfig struct {

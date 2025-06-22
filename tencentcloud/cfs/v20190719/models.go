@@ -27,7 +27,7 @@ type AutoScaleUpRule struct {
 	// 集群用量占比，到达这个值后开始扩容,范围[10-90]
 	ScaleThreshold *uint64 `json:"ScaleThreshold,omitnil,omitempty" name:"ScaleThreshold"`
 
-	// 扩容后使用量跟集群总量比例,范围[1-90]
+	// 扩容后使用量跟集群总量比例,范围[10-90]
 	TargetThreshold *uint64 `json:"TargetThreshold,omitnil,omitempty" name:"TargetThreshold"`
 }
 
@@ -2733,7 +2733,7 @@ type ModifyFileSystemAutoScaleUpRuleRequestParams struct {
 	// 扩容阈值，范围[10-90]
 	ScaleUpThreshold *uint64 `json:"ScaleUpThreshold,omitnil,omitempty" name:"ScaleUpThreshold"`
 
-	// 扩容后目标阈值，范围[1-90]，该值要小于 ScaleUpThreshold
+	// 扩容后目标阈值，范围[10-90]，该值要小于 ScaleUpThreshold
 	TargetThreshold *uint64 `json:"TargetThreshold,omitnil,omitempty" name:"TargetThreshold"`
 
 	// 规则状态 0：关闭，1：开启；不传保留原状态
@@ -2749,7 +2749,7 @@ type ModifyFileSystemAutoScaleUpRuleRequest struct {
 	// 扩容阈值，范围[10-90]
 	ScaleUpThreshold *uint64 `json:"ScaleUpThreshold,omitnil,omitempty" name:"ScaleUpThreshold"`
 
-	// 扩容后目标阈值，范围[1-90]，该值要小于 ScaleUpThreshold
+	// 扩容后目标阈值，范围[10-90]，该值要小于 ScaleUpThreshold
 	TargetThreshold *uint64 `json:"TargetThreshold,omitnil,omitempty" name:"TargetThreshold"`
 
 	// 规则状态 0：关闭，1：开启；不传保留原状态
@@ -2789,7 +2789,7 @@ type ModifyFileSystemAutoScaleUpRuleResponseParams struct {
 	// 扩容阈值，范围[10-90]
 	ScaleUpThreshold *uint64 `json:"ScaleUpThreshold,omitnil,omitempty" name:"ScaleUpThreshold"`
 
-	// 扩容后达到阈值，范围[1-90]
+	// 扩容后达到阈值，范围[10-90]
 	TargetThreshold *uint64 `json:"TargetThreshold,omitnil,omitempty" name:"TargetThreshold"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

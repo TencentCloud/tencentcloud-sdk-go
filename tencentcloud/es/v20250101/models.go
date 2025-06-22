@@ -148,6 +148,9 @@ type ChunkConfig struct {
 
 	// 分隔符列表
 	Delimiters []*string `json:"Delimiters,omitnil,omitempty" name:"Delimiters"`
+
+	// 相邻切片重合字符数，需要小于分片长度
+	ChunkOverlap *uint64 `json:"ChunkOverlap,omitnil,omitempty" name:"ChunkOverlap"`
 }
 
 type ChunkConfigAsync struct {
@@ -284,6 +287,9 @@ func (r *ChunkDocumentRequest) FromJsonString(s string) error {
 type ChunkDocumentResponseParams struct {
 	// 无
 	Chunks []*Chunk `json:"Chunks,omitnil,omitempty" name:"Chunks"`
+
+	// token消耗量
+	Usage *Usage `json:"Usage,omitnil,omitempty" name:"Usage"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

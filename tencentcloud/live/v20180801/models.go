@@ -1431,6 +1431,32 @@ type ClientIpPlaySumInfo struct {
 	CountryArea *string `json:"CountryArea,omitnil,omitempty" name:"CountryArea"`
 }
 
+type CloudEffectInfo struct {
+	// 云端特效 ID。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 云端特效描述词。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 云端特效标签。
+	Flag *string `json:"Flag,omitnil,omitempty" name:"Flag"`
+
+	// 云端特效预览图片。
+	PreviewImageUrl *string `json:"PreviewImageUrl,omitnil,omitempty" name:"PreviewImageUrl"`
+
+	// 云端特效类型。
+	// PGC : 官方精品特效。
+	// AIGC : AI生成的特效。
+	// UGC : 用户上传特效。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 云端特效创建时间。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 云端特效更新时间。
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
 type CommonMixControlParams struct {
 	// 取值范围[0,1]。
 	// 填1时，当参数中图层分辨率参数与视频实际分辨率不一致时，自动从视频中按图层设置的分辨率比例进行裁剪。
@@ -8358,6 +8384,84 @@ func (r *DescribeLiveCertsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLiveCloudEffectListRequestParams struct {
+	// 云端特效ID。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 云端特效描述词。由用户原始输入的描述词。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 云端特效标签。对云端特效进行分类标签，可用于分类搜索。
+	Flag *string `json:"Flag,omitnil,omitempty" name:"Flag"`
+
+	// 云端特效类型, 默认不填，返回全部。PGC: 特效库中的特效；AICG : AI生成的特效；UGC：用户自定义上传的特效；
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type DescribeLiveCloudEffectListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云端特效ID。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 云端特效描述词。由用户原始输入的描述词。
+	Prompt *string `json:"Prompt,omitnil,omitempty" name:"Prompt"`
+
+	// 云端特效标签。对云端特效进行分类标签，可用于分类搜索。
+	Flag *string `json:"Flag,omitnil,omitempty" name:"Flag"`
+
+	// 云端特效类型, 默认不填，返回全部。PGC: 特效库中的特效；AICG : AI生成的特效；UGC：用户自定义上传的特效；
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+func (r *DescribeLiveCloudEffectListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveCloudEffectListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Prompt")
+	delete(f, "Flag")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveCloudEffectListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveCloudEffectListResponseParams struct {
+	// 云端特效信息列表。
+	InfoList []*CloudEffectInfo `json:"InfoList,omitnil,omitempty" name:"InfoList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveCloudEffectListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveCloudEffectListResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveCloudEffectListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveCloudEffectListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLiveDelayInfoListRequestParams struct {
 
 }
@@ -9310,6 +9414,103 @@ func (r *DescribeLivePadRulesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLivePadRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLivePadStreamListRequestParams struct {
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// 您的推流域名。
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// 流名称。
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+
+	// 分页页数。
+	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页个数。
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeLivePadStreamListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// 您的推流域名。
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// 流名称。
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+
+	// 分页页数。
+	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 每页个数。
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeLivePadStreamListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLivePadStreamListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "DomainName")
+	delete(f, "StreamName")
+	delete(f, "PageNum")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLivePadStreamListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLivePadStreamListResponseParams struct {
+	// 当前正在拉取垫片的流信息列表。
+	StreamInfoList []*PadStreamInfo `json:"StreamInfoList,omitnil,omitempty" name:"StreamInfoList"`
+
+	// 传入的分页页数。
+	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 传入的分页个数。
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 查询到的总个数。
+	TotalNum *int64 `json:"TotalNum,omitnil,omitempty" name:"TotalNum"`
+
+	// 可以分的总页数。
+	TotalPage *int64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLivePadStreamListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLivePadStreamListResponseParams `json:"Response"`
+}
+
+func (r *DescribeLivePadStreamListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLivePadStreamListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -17304,6 +17505,25 @@ type MonitorStreamPlayInfo struct {
 	Request *uint64 `json:"Request,omitnil,omitempty" name:"Request"`
 }
 
+type PadStreamInfo struct {
+	// 流名称。
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+
+	// 应用名称。
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// 推流域名。
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// 垫片流类型。
+	// 0-自动垫片；
+	// 1-手动切入垫片。
+	PadStreamType *string `json:"PadStreamType,omitnil,omitempty" name:"PadStreamType"`
+
+	// 垫片流开始时间。UTC时间，示例：2025-04-10T00:01:00Z。注意：该时间与北京时间相差八小时。
+	PublishTime *string `json:"PublishTime,omitnil,omitempty" name:"PublishTime"`
+}
+
 type PadTemplate struct {
 	// 模板id。
 	TemplateId *uint64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
@@ -18294,6 +18514,115 @@ type ScreenshotTask struct {
 	Stopped *uint64 `json:"Stopped,omitnil,omitempty" name:"Stopped"`
 }
 
+// Predefined struct for user
+type SendLiveCloudEffectRequestParams struct {
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// 您的推流域名。
+	PushDomainName *string `json:"PushDomainName,omitnil,omitempty" name:"PushDomainName"`
+
+	// 流名称。
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+
+	// 云端特效 ID。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 操作人备注信息。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 缩小比例，默认0 不缩放。
+	// 可选值：0-9， 值越大，越缩小。
+	ZoomFactor *int64 `json:"ZoomFactor,omitnil,omitempty" name:"ZoomFactor"`
+
+	// 指定云端特效渲染位置百分比。默认居中显示。
+	// 原点为画面左上角，该参数指定特效渲染离原点的横向比例，可选值 0 - 100。
+	XPosition *string `json:"XPosition,omitnil,omitempty" name:"XPosition"`
+
+	// 指定云端特效渲染位置百分比。默认居中显示。
+	// 原点为画面左上角，该参数指定特效渲染离原点的纵向比例，可选值 0 - 100。
+	YPosition *string `json:"YPosition,omitnil,omitempty" name:"YPosition"`
+}
+
+type SendLiveCloudEffectRequest struct {
+	*tchttp.BaseRequest
+	
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// 您的推流域名。
+	PushDomainName *string `json:"PushDomainName,omitnil,omitempty" name:"PushDomainName"`
+
+	// 流名称。
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+
+	// 云端特效 ID。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 操作人备注信息。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 缩小比例，默认0 不缩放。
+	// 可选值：0-9， 值越大，越缩小。
+	ZoomFactor *int64 `json:"ZoomFactor,omitnil,omitempty" name:"ZoomFactor"`
+
+	// 指定云端特效渲染位置百分比。默认居中显示。
+	// 原点为画面左上角，该参数指定特效渲染离原点的横向比例，可选值 0 - 100。
+	XPosition *string `json:"XPosition,omitnil,omitempty" name:"XPosition"`
+
+	// 指定云端特效渲染位置百分比。默认居中显示。
+	// 原点为画面左上角，该参数指定特效渲染离原点的纵向比例，可选值 0 - 100。
+	YPosition *string `json:"YPosition,omitnil,omitempty" name:"YPosition"`
+}
+
+func (r *SendLiveCloudEffectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendLiveCloudEffectRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "PushDomainName")
+	delete(f, "StreamName")
+	delete(f, "Id")
+	delete(f, "Operator")
+	delete(f, "ZoomFactor")
+	delete(f, "XPosition")
+	delete(f, "YPosition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendLiveCloudEffectRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SendLiveCloudEffectResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SendLiveCloudEffectResponse struct {
+	*tchttp.BaseResponse
+	Response *SendLiveCloudEffectResponseParams `json:"Response"`
+}
+
+func (r *SendLiveCloudEffectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendLiveCloudEffectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SnapshotTemplateInfo struct {
 	// 模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
@@ -18334,6 +18663,81 @@ type SnapshotTemplateInfo struct {
 	// Cos 文件名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CosFileName *string `json:"CosFileName,omitnil,omitempty" name:"CosFileName"`
+}
+
+// Predefined struct for user
+type StartLivePadStreamRequestParams struct {
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// 您的推流域名。
+	PushDomainName *string `json:"PushDomainName,omitnil,omitempty" name:"PushDomainName"`
+
+	// 流名称。
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+
+	// 操作人备注信息。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+type StartLivePadStreamRequest struct {
+	*tchttp.BaseRequest
+	
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// 您的推流域名。
+	PushDomainName *string `json:"PushDomainName,omitnil,omitempty" name:"PushDomainName"`
+
+	// 流名称。
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+
+	// 操作人备注信息。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+func (r *StartLivePadStreamRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartLivePadStreamRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "PushDomainName")
+	delete(f, "StreamName")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartLivePadStreamRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartLivePadStreamResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StartLivePadStreamResponse struct {
+	*tchttp.BaseResponse
+	Response *StartLivePadStreamResponseParams `json:"Response"`
+}
+
+func (r *StartLivePadStreamResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartLivePadStreamResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -18584,6 +18988,81 @@ func (r *StopLivePadProcessorResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StopLivePadProcessorResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopLivePadStreamRequestParams struct {
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// 您的推流域名。
+	PushDomainName *string `json:"PushDomainName,omitnil,omitempty" name:"PushDomainName"`
+
+	// 流名称。
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+
+	// 操作人备注信息。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+type StopLivePadStreamRequest struct {
+	*tchttp.BaseRequest
+	
+	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
+	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
+
+	// 您的推流域名。
+	PushDomainName *string `json:"PushDomainName,omitnil,omitempty" name:"PushDomainName"`
+
+	// 流名称。
+	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
+
+	// 操作人备注信息。
+	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
+}
+
+func (r *StopLivePadStreamRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopLivePadStreamRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "PushDomainName")
+	delete(f, "StreamName")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopLivePadStreamRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopLivePadStreamResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type StopLivePadStreamResponse struct {
+	*tchttp.BaseResponse
+	Response *StopLivePadStreamResponseParams `json:"Response"`
+}
+
+func (r *StopLivePadStreamResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopLivePadStreamResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

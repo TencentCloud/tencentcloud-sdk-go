@@ -5695,6 +5695,91 @@ func (c *Client) CreateLegalSealQrCodeWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateModifyAdminAuthorizationUrlRequest() (request *CreateModifyAdminAuthorizationUrlRequest) {
+    request = &CreateModifyAdminAuthorizationUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateModifyAdminAuthorizationUrl")
+    
+    
+    return
+}
+
+func NewCreateModifyAdminAuthorizationUrlResponse() (response *CreateModifyAdminAuthorizationUrlResponse) {
+    response = &CreateModifyAdminAuthorizationUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateModifyAdminAuthorizationUrl
+// 本接口（CreateModifyAdminAuthorizationUrl）用于重新上传超管授权书。
+//
+// 
+//
+// 注意:
+//
+// 1. 重新上传超管授权书，必须是审核失败的情况下才能重新上传,可以通过回调[!授权书认证审核结果回调](https://qian.tencent.com/developers/company/callback_types_staffs#%E5%8D%81%E5%85%AD-%E6%8E%88%E6%9D%83%E4%B9%A6%E8%AE%A4%E8%AF%81%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)得到
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHORIZATIONINFOHASBEENDELETED = "FailedOperation.AuthorizationInfoHasBeenDeleted"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
+func (c *Client) CreateModifyAdminAuthorizationUrl(request *CreateModifyAdminAuthorizationUrlRequest) (response *CreateModifyAdminAuthorizationUrlResponse, err error) {
+    return c.CreateModifyAdminAuthorizationUrlWithContext(context.Background(), request)
+}
+
+// CreateModifyAdminAuthorizationUrl
+// 本接口（CreateModifyAdminAuthorizationUrl）用于重新上传超管授权书。
+//
+// 
+//
+// 注意:
+//
+// 1. 重新上传超管授权书，必须是审核失败的情况下才能重新上传,可以通过回调[!授权书认证审核结果回调](https://qian.tencent.com/developers/company/callback_types_staffs#%E5%8D%81%E5%85%AD-%E6%8E%88%E6%9D%83%E4%B9%A6%E8%AE%A4%E8%AF%81%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)得到
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHORIZATIONINFOHASBEENDELETED = "FailedOperation.AuthorizationInfoHasBeenDeleted"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
+func (c *Client) CreateModifyAdminAuthorizationUrlWithContext(ctx context.Context, request *CreateModifyAdminAuthorizationUrlRequest) (response *CreateModifyAdminAuthorizationUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateModifyAdminAuthorizationUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateModifyAdminAuthorizationUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateModifyAdminAuthorizationUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMultiFlowSignQRCodeRequest() (request *CreateMultiFlowSignQRCodeRequest) {
     request = &CreateMultiFlowSignQRCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8612,6 +8697,77 @@ func (c *Client) DeleteSealPoliciesWithContext(ctx context.Context, request *Del
     return
 }
 
+func NewDescribeBatchOrganizationRegistrationTasksRequest() (request *DescribeBatchOrganizationRegistrationTasksRequest) {
+    request = &DescribeBatchOrganizationRegistrationTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeBatchOrganizationRegistrationTasks")
+    
+    
+    return
+}
+
+func NewDescribeBatchOrganizationRegistrationTasksResponse() (response *DescribeBatchOrganizationRegistrationTasksResponse) {
+    response = &DescribeBatchOrganizationRegistrationTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeBatchOrganizationRegistrationTasks
+// 本接口（DescribeBatchOrganizationRegistrationTasks）用于查询企业批量认证任务状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
+func (c *Client) DescribeBatchOrganizationRegistrationTasks(request *DescribeBatchOrganizationRegistrationTasksRequest) (response *DescribeBatchOrganizationRegistrationTasksResponse, err error) {
+    return c.DescribeBatchOrganizationRegistrationTasksWithContext(context.Background(), request)
+}
+
+// DescribeBatchOrganizationRegistrationTasks
+// 本接口（DescribeBatchOrganizationRegistrationTasks）用于查询企业批量认证任务状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
+func (c *Client) DescribeBatchOrganizationRegistrationTasksWithContext(ctx context.Context, request *DescribeBatchOrganizationRegistrationTasksRequest) (response *DescribeBatchOrganizationRegistrationTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeBatchOrganizationRegistrationTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBatchOrganizationRegistrationTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBatchOrganizationRegistrationTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBatchOrganizationRegistrationUrlsRequest() (request *DescribeBatchOrganizationRegistrationUrlsRequest) {
     request = &DescribeBatchOrganizationRegistrationUrlsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8643,13 +8799,18 @@ func NewDescribeBatchOrganizationRegistrationUrlsResponse() (response *DescribeB
 // 异步任务的处理完成时间视当前已提交的任务量、任务的复杂程度等因素决定，正常情况下 3~5 秒即可完成，但也可能需要更长的时间
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
 func (c *Client) DescribeBatchOrganizationRegistrationUrls(request *DescribeBatchOrganizationRegistrationUrlsRequest) (response *DescribeBatchOrganizationRegistrationUrlsResponse, err error) {
     return c.DescribeBatchOrganizationRegistrationUrlsWithContext(context.Background(), request)
 }
@@ -8666,13 +8827,18 @@ func (c *Client) DescribeBatchOrganizationRegistrationUrls(request *DescribeBatc
 // 异步任务的处理完成时间视当前已提交的任务量、任务的复杂程度等因素决定，正常情况下 3~5 秒即可完成，但也可能需要更长的时间
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
 func (c *Client) DescribeBatchOrganizationRegistrationUrlsWithContext(ctx context.Context, request *DescribeBatchOrganizationRegistrationUrlsRequest) (response *DescribeBatchOrganizationRegistrationUrlsResponse, err error) {
     if request == nil {
         request = NewDescribeBatchOrganizationRegistrationUrlsRequest()

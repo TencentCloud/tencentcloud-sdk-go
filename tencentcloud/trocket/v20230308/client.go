@@ -2523,6 +2523,81 @@ func (c *Client) DescribeRoleListWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeSmoothMigrationTaskListRequest() (request *DescribeSmoothMigrationTaskListRequest) {
+    request = &DescribeSmoothMigrationTaskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeSmoothMigrationTaskList")
+    
+    
+    return
+}
+
+func NewDescribeSmoothMigrationTaskListResponse() (response *DescribeSmoothMigrationTaskListResponse) {
+    response = &DescribeSmoothMigrationTaskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSmoothMigrationTaskList
+// 用于查询平滑迁移任务列表
+//
+// 
+//
+// 查询参数Filters， 支持的字段如下：
+//
+// TaskStatus, 支持多选 
+//
+// ConnectionType，支持多选 
+//
+// InstanceId，精确搜索 
+//
+// TaskName，支持模糊搜索
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeSmoothMigrationTaskList(request *DescribeSmoothMigrationTaskListRequest) (response *DescribeSmoothMigrationTaskListResponse, err error) {
+    return c.DescribeSmoothMigrationTaskListWithContext(context.Background(), request)
+}
+
+// DescribeSmoothMigrationTaskList
+// 用于查询平滑迁移任务列表
+//
+// 
+//
+// 查询参数Filters， 支持的字段如下：
+//
+// TaskStatus, 支持多选 
+//
+// ConnectionType，支持多选 
+//
+// InstanceId，精确搜索 
+//
+// TaskName，支持模糊搜索
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeSmoothMigrationTaskListWithContext(ctx context.Context, request *DescribeSmoothMigrationTaskListRequest) (response *DescribeSmoothMigrationTaskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeSmoothMigrationTaskListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSmoothMigrationTaskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSmoothMigrationTaskListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSourceClusterGroupListRequest() (request *DescribeSourceClusterGroupListRequest) {
     request = &DescribeSourceClusterGroupListRequest{
         BaseRequest: &tchttp.BaseRequest{},
