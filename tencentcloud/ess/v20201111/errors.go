@@ -104,11 +104,17 @@ const (
 	// 回调错误。
 	INTERNALERROR_CALLBACK = "InternalError.Callback"
 
+	// 文件上传到文件存储失败
+	INTERNALERROR_COS = "InternalError.Cos"
+
 	// 数据库异常。
 	INTERNALERROR_DB = "InternalError.Db"
 
 	// 数据库连接出错。
 	INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+
+	// 数据已经被删除
+	INTERNALERROR_DBDATADELETED = "InternalError.DbDataDeleted"
 
 	// 数据库新增记录出错。
 	INTERNALERROR_DBINSERT = "InternalError.DbInsert"
@@ -133,6 +139,12 @@ const (
 
 	// Json序列化失败。
 	INTERNALERROR_JSONMARSHAL = "InternalError.JsonMarshal"
+
+	// 数据json反编译失败
+	INTERNALERROR_JSONUNMARSHAL = "InternalError.JsonUnmarshal"
+
+	// 消息队列失败
+	INTERNALERROR_MQ = "InternalError.Mq"
 
 	// Pdf错误。
 	INTERNALERROR_PDF = "InternalError.Pdf"
@@ -176,11 +188,17 @@ const (
 	// 不合法的控件所在文件序号，请检查文件资源与控件的对应关系，并在修改后重试。
 	INVALIDPARAMETER_COMPONENTFILEINDEX = "InvalidParameter.ComponentFileIndex"
 
+	// 控件非法
+	INVALIDPARAMETER_COMPONENTINVALID = "InvalidParameter.ComponentInvalid"
+
 	// 不合法的控件页码，请与文件资源检查，并在修改后重试。
 	INVALIDPARAMETER_COMPONENTPAGE = "InvalidParameter.ComponentPage"
 
 	// 不合法的控件大小或坐标，请检查控件坐标，大小是否合理，并在修改后重试。
 	INVALIDPARAMETER_COMPONENTPOSITION = "InvalidParameter.ComponentPosition"
+
+	// 控件类型非法
+	INVALIDPARAMETER_COMPONENTTYPE = "InvalidParameter.ComponentType"
 
 	// 控件的类型与输入值不匹配，请检查参数修改后重试。
 	INVALIDPARAMETER_COMPONENTTYPENOMATCHVALUE = "InvalidParameter.ComponentTypeNoMatchValue"
@@ -209,6 +227,9 @@ const (
 	// 不合法的EndPoint，请检查修改后重试。
 	INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
 
+	// 文件类型不合法
+	INVALIDPARAMETER_FILETYPE = "InvalidParameter.FileType"
+
 	// 不合法的合同过期时间
 	INVALIDPARAMETER_FLOWAPPROVERDEADLINE = "InvalidParameter.FlowApproverDeadline"
 
@@ -220,6 +241,9 @@ const (
 
 	// 不合法的签署流程描述，请修改后重试。
 	INVALIDPARAMETER_FLOWDESCRIPTION = "InvalidParameter.FlowDescription"
+
+	// 文件ID不合法
+	INVALIDPARAMETER_FLOWFILEIDS = "InvalidParameter.FlowFileIds"
 
 	// 不合法的签署流程名称，请修改后重试。
 	INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
@@ -494,6 +518,9 @@ const (
 	// 签署人年龄限制无法使用电子签服务。
 	OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
 
+	// 子企业的license已经过期
+	OPERATIONDENIED_LICENSEHASEXPIRED = "OperationDenied.LicenseHasExpired"
+
 	// 资源id超过使用上限限制，请联系客服了解规则，并在修改后重试。
 	OPERATIONDENIED_MANYRESOURCEID = "OperationDenied.ManyResourceId"
 
@@ -541,6 +568,9 @@ const (
 
 	// 此社会信用编码未查询到结果，请检查后重试。
 	OPERATIONDENIED_ORGUNIFORMSOCIALCREDITCODEERR = "OperationDenied.OrgUniformSocialCreditCodeErr"
+
+	// 企业注销中
+	OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 
 	// 企业未激活。
 	OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"

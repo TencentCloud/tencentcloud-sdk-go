@@ -368,8 +368,14 @@ const (
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
+	// 腾讯云CDN已全面升级为边缘安全加速平台
+	OPERATIONDENIED_PRODUCTUPGRADED = "OperationDenied.ProductUpgraded"
+
 	// 所选目标域名与当前域名平台不一致，请重新选择或联系腾讯云技术支持
 	OPERATIONDENIED_SHARECACHEAREADNSNOTMATCH = "OperationDenied.ShareCacheAreaDnsNotMatch"
+
+	// 此账号正迁移EdgeOne，若有疑问请联系售后客服！
+	OPERATIONDENIED_USERMIGRATING = "OperationDenied.UserMigrating"
 
 	// 请求的次数超过了频率限制。
 	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
@@ -445,6 +451,9 @@ const (
 
 	// 域名未备案，请将域名备案。备案同步周期为2小时，若域名已备案，可稍后重新接入。
 	RESOURCEUNAVAILABLE_CDNHOSTNOICP = "ResourceUnavailable.CdnHostNoIcp"
+
+	// 您的账号存在合规安全风险
+	RESOURCEUNAVAILABLE_CHECKUSERHIGHRISK = "ResourceUnavailable.CheckUserHighRisk"
 
 	// 该域名已在云点播内接入，请先在云点播内删除域名后再接入。
 	RESOURCEUNAVAILABLE_HOSTEXISTINVOD = "ResourceUnavailable.HostExistInVod"

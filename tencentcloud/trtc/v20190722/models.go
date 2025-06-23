@@ -3913,10 +3913,10 @@ type MixLayoutParams struct {
 	// 图片的url地址，只支持jpg, png, jpeg，大小限制不超过5M。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
 	BackgroundImageUrl *string `json:"BackgroundImageUrl,omitnil,omitempty" name:"BackgroundImageUrl"`
 
-	// 设置为1时代表启用占位图功能，0时代表不启用占位图功能，默认为0。启用占位图功能时，在预设位置的用户没有上行视频时可显示对应的占位图。
+	// 设置为1时代表启用占位图功能，0时代表不启用占位图功能，默认为0。启用占位图功能时，在预设位置的用户没有上行音视频时可显示对应的占位图。
 	PlaceHolderMode *uint64 `json:"PlaceHolderMode,omitnil,omitempty" name:"PlaceHolderMode"`
 
-	// 背景画面宽高比不一致的时候处理方案，与MixLayoufList定义的RenderMode一致。
+	// 背景画面宽高比不一致的时候处理方案，与MixLayoutList定义的RenderMode一致。
 	BackgroundImageRenderMode *uint64 `json:"BackgroundImageRenderMode,omitnil,omitempty" name:"BackgroundImageRenderMode"`
 
 	// 子画面占位图url地址，只支持jpg, png, jpeg，大小限制不超过5M。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
@@ -3925,7 +3925,7 @@ type MixLayoutParams struct {
 	// 水印布局参数， 最多支持25个。
 	WaterMarkList []*WaterMark `json:"WaterMarkList,omitnil,omitempty" name:"WaterMarkList"`
 
-	// 模板布局下，背景画面宽高比不一致的时候处理方案。自定义布局不生效，与MixLayoufList定义的RenderMode一致。
+	// 模板布局下，背景画面宽高比不一致的时候处理方案。自定义布局不生效，与MixLayoutList定义的RenderMode一致。
 	RenderMode *uint64 `json:"RenderMode,omitnil,omitempty" name:"RenderMode"`
 
 	// 屏幕分享模板有效。设置为1时代表大画面居右，小画面居左布局。默认为0。

@@ -1494,6 +1494,9 @@ type DBEndpointInfo struct {
 
 	// tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，Info中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，Info中需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。
 	ConnectType *string `json:"ConnectType,omitnil,omitempty" name:"ConnectType"`
+
+	// 云联网网关所属账号，如果云联网网关为其他账号资源需要填写
+	CcnOwnerUin *string `json:"CcnOwnerUin,omitnil,omitempty" name:"CcnOwnerUin"`
 }
 
 type DBInfo struct {

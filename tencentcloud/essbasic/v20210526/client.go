@@ -3223,6 +3223,7 @@ func NewChannelCreatePrepareFlowResponse() (response *ChannelCreatePrepareFlowRe
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_COMPONENTVALUE = "InvalidParameter.ComponentValue"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SENSITIVE = "InvalidParameter.Sensitive"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
@@ -3315,6 +3316,7 @@ func (c *Client) ChannelCreatePrepareFlow(request *ChannelCreatePrepareFlowReque
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_COMPONENTVALUE = "InvalidParameter.ComponentValue"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SENSITIVE = "InvalidParameter.Sensitive"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
@@ -4485,6 +4487,7 @@ func NewChannelDescribeEmployeesResponse() (response *ChannelDescribeEmployeesRe
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
@@ -4513,6 +4516,7 @@ func (c *Client) ChannelDescribeEmployees(request *ChannelDescribeEmployeesReque
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
@@ -4854,17 +4858,8 @@ func NewChannelDescribeRolesResponse() (response *ChannelDescribeRolesResponse) 
 // 附件：<a href="https://dyn.ess.tencent.cn/guide/apivideo/roles.xlsx" target="_blank">点击下载角色对应的权限点的excel文档</a>
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_LIMIT = "InvalidParameter.Limit"
-//  INVALIDPARAMETER_OFFSET = "InvalidParameter.Offset"
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  INVALIDPARAMETER_OPERATORID = "InvalidParameter.OperatorId"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 func (c *Client) ChannelDescribeRoles(request *ChannelDescribeRolesRequest) (response *ChannelDescribeRolesResponse, err error) {
     return c.ChannelDescribeRolesWithContext(context.Background(), request)
 }
@@ -4897,17 +4892,8 @@ func (c *Client) ChannelDescribeRoles(request *ChannelDescribeRolesRequest) (res
 // 附件：<a href="https://dyn.ess.tencent.cn/guide/apivideo/roles.xlsx" target="_blank">点击下载角色对应的权限点的excel文档</a>
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_LIMIT = "InvalidParameter.Limit"
-//  INVALIDPARAMETER_OFFSET = "InvalidParameter.Offset"
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+//  INVALIDPARAMETER_OPERATORID = "InvalidParameter.OperatorId"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 func (c *Client) ChannelDescribeRolesWithContext(ctx context.Context, request *ChannelDescribeRolesRequest) (response *ChannelDescribeRolesResponse, err error) {
     if request == nil {
         request = NewChannelDescribeRolesRequest()
@@ -8465,6 +8451,7 @@ func NewDescribeBatchOrganizationRegistrationUrlsResponse() (response *DescribeB
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeBatchOrganizationRegistrationUrls(request *DescribeBatchOrganizationRegistrationUrlsRequest) (response *DescribeBatchOrganizationRegistrationUrlsResponse, err error) {
     return c.DescribeBatchOrganizationRegistrationUrlsWithContext(context.Background(), request)
@@ -8485,6 +8472,7 @@ func (c *Client) DescribeBatchOrganizationRegistrationUrls(request *DescribeBatc
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeBatchOrganizationRegistrationUrlsWithContext(ctx context.Context, request *DescribeBatchOrganizationRegistrationUrlsRequest) (response *DescribeBatchOrganizationRegistrationUrlsResponse, err error) {
     if request == nil {
@@ -9191,6 +9179,7 @@ func NewDescribeResourceUrlsByFlowsResponse() (response *DescribeResourceUrlsByF
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
 //  MISSINGPARAMETER_USEROPENID = "MissingParameter.UserOpenId"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -9275,6 +9264,7 @@ func (c *Client) DescribeResourceUrlsByFlows(request *DescribeResourceUrlsByFlow
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
 //  MISSINGPARAMETER_USEROPENID = "MissingParameter.UserOpenId"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -10050,6 +10040,105 @@ func (c *Client) ModifyFlowDeadlineWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyFlowDeadlineResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPartnerAutoSignAuthUrlRequest() (request *ModifyPartnerAutoSignAuthUrlRequest) {
+    request = &ModifyPartnerAutoSignAuthUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ModifyPartnerAutoSignAuthUrl")
+    
+    
+    return
+}
+
+func NewModifyPartnerAutoSignAuthUrlResponse() (response *ModifyPartnerAutoSignAuthUrlResponse) {
+    response = &ModifyPartnerAutoSignAuthUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyPartnerAutoSignAuthUrl
+// 创建一个用于更新他方自动签授权的链接（可选择他方授权或我方授权）。通过这个链接，合作方企业可以直接进入小程序，进行自动签更新授权（印章）操作。
+//
+// 
+//
+// 如果授权企业尚未开通企业自动签功能，该链接还将引导他们首先开通本企业的自动签服务
+//
+// 
+//
+// 
+//
+// 注: 
+//
+// 1. <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Agent.ProxyOperator.OpenId 需要传递超管或者法人的OpenId)
+//
+// 2. 2. 只能更新授权的印章，被授权的企业无法更新
+//
+// 3. 授权企业和被授权企业必须都是已认证企业
+//
+// 4. <font color='red'>需要授权企业或被授权企业的超管或者法人打开链接</font>走开通逻辑。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ModifyPartnerAutoSignAuthUrl(request *ModifyPartnerAutoSignAuthUrlRequest) (response *ModifyPartnerAutoSignAuthUrlResponse, err error) {
+    return c.ModifyPartnerAutoSignAuthUrlWithContext(context.Background(), request)
+}
+
+// ModifyPartnerAutoSignAuthUrl
+// 创建一个用于更新他方自动签授权的链接（可选择他方授权或我方授权）。通过这个链接，合作方企业可以直接进入小程序，进行自动签更新授权（印章）操作。
+//
+// 
+//
+// 如果授权企业尚未开通企业自动签功能，该链接还将引导他们首先开通本企业的自动签服务
+//
+// 
+//
+// 
+//
+// 注: 
+//
+// 1. <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Agent.ProxyOperator.OpenId 需要传递超管或者法人的OpenId)
+//
+// 2. 2. 只能更新授权的印章，被授权的企业无法更新
+//
+// 3. 授权企业和被授权企业必须都是已认证企业
+//
+// 4. <font color='red'>需要授权企业或被授权企业的超管或者法人打开链接</font>走开通逻辑。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ModifyPartnerAutoSignAuthUrlWithContext(ctx context.Context, request *ModifyPartnerAutoSignAuthUrlRequest) (response *ModifyPartnerAutoSignAuthUrlResponse, err error) {
+    if request == nil {
+        request = NewModifyPartnerAutoSignAuthUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPartnerAutoSignAuthUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPartnerAutoSignAuthUrlResponse()
     err = c.Send(request, response)
     return
 }

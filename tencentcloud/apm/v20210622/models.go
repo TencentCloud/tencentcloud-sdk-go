@@ -266,6 +266,9 @@ type ApmInstanceDetail struct {
 
 	// traceId的索引key: 当CLS索引类型为键值索引时生效
 	LogTraceIdKey *string `json:"LogTraceIdKey,omitnil,omitempty" name:"LogTraceIdKey"`
+
+	// 业务系统鉴权 token
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
 }
 
 type ApmMetricRecord struct {

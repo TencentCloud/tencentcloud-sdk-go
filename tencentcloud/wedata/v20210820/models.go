@@ -13798,6 +13798,117 @@ func (r *DescribeIntegrationVersionNodesInfoResponse) FromJsonString(s string) e
 }
 
 // Predefined struct for user
+type DescribeManualTriggerRecordPageRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 触发运行名称
+	TriggerName *string `json:"TriggerName,omitnil,omitempty" name:"TriggerName"`
+
+	// 工作流过滤关键字，工作流名称 or 工作流ID
+	WorkflowKeyword *string `json:"WorkflowKeyword,omitnil,omitempty" name:"WorkflowKeyword"`
+
+	// 触发运行提交人过滤，多个提交人用英文逗号分割
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// 触发提交创建时间过滤，起始时间
+	TriggerStartTime *string `json:"TriggerStartTime,omitnil,omitempty" name:"TriggerStartTime"`
+
+	// 触发提交创建时间过滤，结束时间
+	TriggerEndTime *string `json:"TriggerEndTime,omitnil,omitempty" name:"TriggerEndTime"`
+
+	// 页码，整型
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页数目，整型
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeManualTriggerRecordPageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 触发运行名称
+	TriggerName *string `json:"TriggerName,omitnil,omitempty" name:"TriggerName"`
+
+	// 工作流过滤关键字，工作流名称 or 工作流ID
+	WorkflowKeyword *string `json:"WorkflowKeyword,omitnil,omitempty" name:"WorkflowKeyword"`
+
+	// 触发运行提交人过滤，多个提交人用英文逗号分割
+	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// 触发提交创建时间过滤，起始时间
+	TriggerStartTime *string `json:"TriggerStartTime,omitnil,omitempty" name:"TriggerStartTime"`
+
+	// 触发提交创建时间过滤，结束时间
+	TriggerEndTime *string `json:"TriggerEndTime,omitnil,omitempty" name:"TriggerEndTime"`
+
+	// 页码，整型
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 每页数目，整型
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeManualTriggerRecordPageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeManualTriggerRecordPageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TriggerName")
+	delete(f, "WorkflowKeyword")
+	delete(f, "Creator")
+	delete(f, "TriggerStartTime")
+	delete(f, "TriggerEndTime")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeManualTriggerRecordPageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeManualTriggerRecordPageResponseParams struct {
+	// 请求来源，WEB 前端；CLIENT 客户端
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestFromSource *string `json:"RequestFromSource,omitnil,omitempty" name:"RequestFromSource"`
+
+	// 详情结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ManualTriggerRecordOpsDtoPage `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeManualTriggerRecordPageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeManualTriggerRecordPageResponseParams `json:"Response"`
+}
+
+func (r *DescribeManualTriggerRecordPageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeManualTriggerRecordPageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeOfflineTaskTokenRequestParams struct {
 
 }
@@ -18834,7 +18945,110 @@ type DescribeTableMetasRequestParams struct {
 	// 分页大小
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 过滤字段
+	// 过滤字段:
+	// dbName-数据库名称
+	// bizCatalogIds-资产目录ID
+	// DataLayerUuid-数仓分层ID
+	// ownerAccount-负责人ID
+	// assetStatus-资产状态：1-已上架 0-未上架
+	// assetLevel-资产等级：40-核心30-重要 20-一般 10-临时 
+	// msTypes-数据源类型：例如TENCENT_MYSQL-腾讯云MySQL，数据源类型ID可参考
+	// [
+	//   {
+	//     "DisplayName": "TCHouse-P",
+	//     "Id": "TCHOUSE_P"
+	//   },
+	//   {
+	//     "DisplayName": "Iceberg",
+	//     "Id": "ICEBERG"
+	//   },
+	//   {
+	//     "DisplayName": "Hive",
+	//     "Id": "HIVE"
+	//   },
+	//   {
+	//     "DisplayName": "HBase",
+	//     "Id": "HBASE"
+	//   },
+	//   {
+	//     "DisplayName": "DLC",
+	//     "Id": "DLC"
+	//   },
+	//   {
+	//     "DisplayName": "腾讯云MySQL",
+	//     "Id": "TENCENT_MYSQL"
+	//   },
+	//   {
+	//     "DisplayName": "TCHouse-D",
+	//     "Id": "TCHOUSE_D"
+	//   },
+	//   {
+	//     "DisplayName": "TCHouse-C",
+	//     "Id": "TCHOUSE_C"
+	//   },
+	//   {
+	//     "DisplayName": "EMR StarRocks",
+	//     "Id": "EMR_STARROCKS"
+	//   },
+	//   {
+	//     "DisplayName": "Doris",
+	//     "Id": "DORIS"
+	//   },
+	//   {
+	//     "DisplayName": "MySQL",
+	//     "Id": "MYSQL"
+	//   },
+	//   {
+	//     "DisplayName": "Oracle",
+	//     "Id": "ORACLE"
+	//   },
+	//   {
+	//     "DisplayName": "PostgreSQL",
+	//     "Id": "POSTGRE"
+	//   },
+	//   {
+	//     "DisplayName": "SQL Server",
+	//     "Id": "SQLSERVER"
+	//   },
+	//   {
+	//     "DisplayName": "TDSQL PostgreSQL",
+	//     "Id": "TDSQL_POSTGRE"
+	//   },
+	//   {
+	//     "DisplayName": "Greenplum",
+	//     "Id": "GREENPLUM"
+	//   },
+	//   {
+	//     "DisplayName": "StarRocks",
+	//     "Id": "STARROCKS"
+	//   },
+	//   {
+	//     "DisplayName": "ClickHouse",
+	//     "Id": "CLICKHOUSE"
+	//   },
+	//   {
+	//     "DisplayName": "INFLUXDB",
+	//     "Id": "INFLUXDB"
+	//   },
+	//   {
+	//     "DisplayName": "达梦DM",
+	//     "Id": "DM"
+	//   },
+	//   {
+	//     "DisplayName": "OceanBase",
+	//     "Id": "OCEANBASE"
+	//   },
+	//   {
+	//     "DisplayName": "TDSQL MySQL",
+	//     "Id": "TDSQL_MYSQL"
+	//   },
+	//   {
+	//     "DisplayName": "GaussDB",
+	//     "Id": "GAUSSDB"
+	//   }
+	// ]
+	// projectIds-归属项目ID
+	// keyword-关键字，支持表名/表中文名/数据库名
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序字段
@@ -18850,7 +19064,110 @@ type DescribeTableMetasRequest struct {
 	// 分页大小
 	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
 
-	// 过滤字段
+	// 过滤字段:
+	// dbName-数据库名称
+	// bizCatalogIds-资产目录ID
+	// DataLayerUuid-数仓分层ID
+	// ownerAccount-负责人ID
+	// assetStatus-资产状态：1-已上架 0-未上架
+	// assetLevel-资产等级：40-核心30-重要 20-一般 10-临时 
+	// msTypes-数据源类型：例如TENCENT_MYSQL-腾讯云MySQL，数据源类型ID可参考
+	// [
+	//   {
+	//     "DisplayName": "TCHouse-P",
+	//     "Id": "TCHOUSE_P"
+	//   },
+	//   {
+	//     "DisplayName": "Iceberg",
+	//     "Id": "ICEBERG"
+	//   },
+	//   {
+	//     "DisplayName": "Hive",
+	//     "Id": "HIVE"
+	//   },
+	//   {
+	//     "DisplayName": "HBase",
+	//     "Id": "HBASE"
+	//   },
+	//   {
+	//     "DisplayName": "DLC",
+	//     "Id": "DLC"
+	//   },
+	//   {
+	//     "DisplayName": "腾讯云MySQL",
+	//     "Id": "TENCENT_MYSQL"
+	//   },
+	//   {
+	//     "DisplayName": "TCHouse-D",
+	//     "Id": "TCHOUSE_D"
+	//   },
+	//   {
+	//     "DisplayName": "TCHouse-C",
+	//     "Id": "TCHOUSE_C"
+	//   },
+	//   {
+	//     "DisplayName": "EMR StarRocks",
+	//     "Id": "EMR_STARROCKS"
+	//   },
+	//   {
+	//     "DisplayName": "Doris",
+	//     "Id": "DORIS"
+	//   },
+	//   {
+	//     "DisplayName": "MySQL",
+	//     "Id": "MYSQL"
+	//   },
+	//   {
+	//     "DisplayName": "Oracle",
+	//     "Id": "ORACLE"
+	//   },
+	//   {
+	//     "DisplayName": "PostgreSQL",
+	//     "Id": "POSTGRE"
+	//   },
+	//   {
+	//     "DisplayName": "SQL Server",
+	//     "Id": "SQLSERVER"
+	//   },
+	//   {
+	//     "DisplayName": "TDSQL PostgreSQL",
+	//     "Id": "TDSQL_POSTGRE"
+	//   },
+	//   {
+	//     "DisplayName": "Greenplum",
+	//     "Id": "GREENPLUM"
+	//   },
+	//   {
+	//     "DisplayName": "StarRocks",
+	//     "Id": "STARROCKS"
+	//   },
+	//   {
+	//     "DisplayName": "ClickHouse",
+	//     "Id": "CLICKHOUSE"
+	//   },
+	//   {
+	//     "DisplayName": "INFLUXDB",
+	//     "Id": "INFLUXDB"
+	//   },
+	//   {
+	//     "DisplayName": "达梦DM",
+	//     "Id": "DM"
+	//   },
+	//   {
+	//     "DisplayName": "OceanBase",
+	//     "Id": "OCEANBASE"
+	//   },
+	//   {
+	//     "DisplayName": "TDSQL MySQL",
+	//     "Id": "TDSQL_MYSQL"
+	//   },
+	//   {
+	//     "DisplayName": "GaussDB",
+	//     "Id": "GAUSSDB"
+	//   }
+	// ]
+	// projectIds-归属项目ID
+	// keyword-关键字，支持表名/表中文名/数据库名
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 排序字段
@@ -27254,6 +27571,32 @@ type ManualTriggerRecordOpsDto struct {
 	TimeType *string `json:"TimeType,omitnil,omitempty" name:"TimeType"`
 }
 
+type ManualTriggerRecordOpsDtoPage struct {
+	// 页号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *uint64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
+
+	// 页大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *uint64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 手动工作流触发运行记录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*ManualTriggerRecordOpsDto `json:"Items,omitnil,omitempty" name:"Items"`
+
+	// 总页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPage *uint64 `json:"TotalPage,omitnil,omitempty" name:"TotalPage"`
+
+	// 页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageCount *uint64 `json:"PageCount,omitnil,omitempty" name:"PageCount"`
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+}
+
 // Predefined struct for user
 type ModifyApproveStatusRequestParams struct {
 	// 审批单ids
@@ -28614,6 +28957,308 @@ func (r *ModifyTaskAlarmRegularResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyTaskAlarmRegularResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTaskInfoDsRequestParams struct {
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 执行时间，单位分钟，天/周/月/年调度才有。比如天调度，每天的02:00点执行一次，delayTime就是120分钟
+	DelayTime *int64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
+
+	// 启动时间：该字段已废弃，无需填写
+	StartupTime *int64 `json:"StartupTime,omitnil,omitempty" name:"StartupTime"`
+
+	// 自依赖类型  1:有序串行 一次一个 排队  2: 无序串行 一次一个 不排队 3:并行 一次多个；暂不支持其他值
+	SelfDepend *int64 `json:"SelfDepend,omitnil,omitempty" name:"SelfDepend"`
+
+	// 生效开始时间，格式 yyyy-MM-dd HH:mm:ss
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 生效结束时间，格式 yyyy-MM-dd HH:mm:ss
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 调度配置-弹性周期配置，小时/周/月/年调度才有，小时任务指定每天的0点3点4点跑，则为 0,3,4。设置该值时，请把CycleStep字段设置为1（如果原始值不为1）。
+	TaskAction *string `json:"TaskAction,omitnil,omitempty" name:"TaskAction"`
+
+	// 周期类型  0:crontab类型, 1:分钟，2:小时，3:天，4:周，5:月，6:一次性，7:用户驱动，10:弹性周期 周,11:弹性周期 月,12:年,13:即时触发Instant类型，与正常周期调度任务逻辑隔离
+	CycleType *int64 `json:"CycleType,omitnil,omitempty" name:"CycleType"`
+
+	// 小时和分钟任务才有；分钟任务：5、10、15、20、30，表示每隔5【或其他值】分钟执行一次；小时任务：1、2、3、4、5、6、7、8、9、10、11、12，表示每隔1【或其他值】小时执行一次。该值大于1时，请把TaskAction字段设置为空字符串。
+	CycleStep *int64 `json:"CycleStep,omitnil,omitempty" name:"CycleStep"`
+
+	// cron表达式  周期类型为crontab调度才需要
+	CrontabExpression *string `json:"CrontabExpression,omitnil,omitempty" name:"CrontabExpression"`
+
+	// 执行时间左闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效
+	ExecutionStartTime *string `json:"ExecutionStartTime,omitnil,omitempty" name:"ExecutionStartTime"`
+
+	// 执行时间右闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效
+	ExecutionEndTime *string `json:"ExecutionEndTime,omitnil,omitempty" name:"ExecutionEndTime"`
+
+	// 任务名，该字段废弃，请勿使用该字段重命名任务
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 失败重试间隔,单位分钟，创建任务的时候已经给了默认值
+	RetryWait *int64 `json:"RetryWait,omitnil,omitempty" name:"RetryWait"`
+
+	// 失败重试次数，创建任务的时候已经给了默认值
+	TryLimit *int64 `json:"TryLimit,omitnil,omitempty" name:"TryLimit"`
+
+	// 是否可重试，0代码不可重试，1代表可以重试；暂不支持其他值
+	Retriable *int64 `json:"Retriable,omitnil,omitempty" name:"Retriable"`
+
+	// 运行优先级，4高 5中 6低；暂不支持其他值
+	RunPriority *int64 `json:"RunPriority,omitnil,omitempty" name:"RunPriority"`
+
+	// 任务的扩展配置
+	TaskExt []*TaskExtInfo `json:"TaskExt,omitnil,omitempty" name:"TaskExt"`
+
+	// 执行资源组Id，需要去资源管理服务上创建调度资源组，并且绑定cvm机器
+	ResourceGroup *string `json:"ResourceGroup,omitnil,omitempty" name:"ResourceGroup"`
+
+	// 资源池队列名称
+	YarnQueue *string `json:"YarnQueue,omitnil,omitempty" name:"YarnQueue"`
+
+	// 资源组下具体执行机，any 表示可以跑在任意一台。
+	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
+
+	// 责任人，多个责任人请用分号隔开
+	InCharge *string `json:"InCharge,omitnil,omitempty" name:"InCharge"`
+
+	// 任务备注
+	Notes *string `json:"Notes,omitnil,omitempty" name:"Notes"`
+
+	// 任务参数
+	TaskParamInfos []*ParamInfo `json:"TaskParamInfos,omitnil,omitempty" name:"TaskParamInfos"`
+
+	// 源数据源Id
+	SourceServer *string `json:"SourceServer,omitnil,omitempty" name:"SourceServer"`
+
+	// 目标数据源Id
+	TargetServer *string `json:"TargetServer,omitnil,omitempty" name:"TargetServer"`
+
+	// 是否支持工作流依赖 yes / no 默认 no
+	DependencyWorkflow *string `json:"DependencyWorkflow,omitnil,omitempty" name:"DependencyWorkflow"`
+
+	// 依赖配置,仅可修改上游任务实例配置方法
+	DependencyConfigDTOs []*DependencyConfig `json:"DependencyConfigDTOs,omitnil,omitempty" name:"DependencyConfigDTOs"`
+
+	// 运行耗时超时时间分钟数
+	ExecutionTTL *int64 `json:"ExecutionTTL,omitnil,omitempty" name:"ExecutionTTL"`
+
+	// 脚本是否改变
+	ScriptChange *bool `json:"ScriptChange,omitnil,omitempty" name:"ScriptChange"`
+
+	// 任务时区，仅支持整数时区配置
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// 0 正常调度 1 空跑调度；暂不支持其他值
+	ScheduleRunType *uint64 `json:"ScheduleRunType,omitnil,omitempty" name:"ScheduleRunType"`
+
+	// 0 并发度达到上限时，本次排队等待 1 并发度达到上限时，本次不执行，直接kill；暂不支持其他值
+	ConcurrentStrategy *uint64 `json:"ConcurrentStrategy,omitnil,omitempty" name:"ConcurrentStrategy"`
+
+	// shell任务发布事件
+	RegisterDsEventPublisherRequest *RegisterDsEventPublisherReq `json:"RegisterDsEventPublisherRequest,omitnil,omitempty" name:"RegisterDsEventPublisherRequest"`
+
+	// base64编码后脚本内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+type ModifyTaskInfoDsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 执行时间，单位分钟，天/周/月/年调度才有。比如天调度，每天的02:00点执行一次，delayTime就是120分钟
+	DelayTime *int64 `json:"DelayTime,omitnil,omitempty" name:"DelayTime"`
+
+	// 启动时间：该字段已废弃，无需填写
+	StartupTime *int64 `json:"StartupTime,omitnil,omitempty" name:"StartupTime"`
+
+	// 自依赖类型  1:有序串行 一次一个 排队  2: 无序串行 一次一个 不排队 3:并行 一次多个；暂不支持其他值
+	SelfDepend *int64 `json:"SelfDepend,omitnil,omitempty" name:"SelfDepend"`
+
+	// 生效开始时间，格式 yyyy-MM-dd HH:mm:ss
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 生效结束时间，格式 yyyy-MM-dd HH:mm:ss
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 调度配置-弹性周期配置，小时/周/月/年调度才有，小时任务指定每天的0点3点4点跑，则为 0,3,4。设置该值时，请把CycleStep字段设置为1（如果原始值不为1）。
+	TaskAction *string `json:"TaskAction,omitnil,omitempty" name:"TaskAction"`
+
+	// 周期类型  0:crontab类型, 1:分钟，2:小时，3:天，4:周，5:月，6:一次性，7:用户驱动，10:弹性周期 周,11:弹性周期 月,12:年,13:即时触发Instant类型，与正常周期调度任务逻辑隔离
+	CycleType *int64 `json:"CycleType,omitnil,omitempty" name:"CycleType"`
+
+	// 小时和分钟任务才有；分钟任务：5、10、15、20、30，表示每隔5【或其他值】分钟执行一次；小时任务：1、2、3、4、5、6、7、8、9、10、11、12，表示每隔1【或其他值】小时执行一次。该值大于1时，请把TaskAction字段设置为空字符串。
+	CycleStep *int64 `json:"CycleStep,omitnil,omitempty" name:"CycleStep"`
+
+	// cron表达式  周期类型为crontab调度才需要
+	CrontabExpression *string `json:"CrontabExpression,omitnil,omitempty" name:"CrontabExpression"`
+
+	// 执行时间左闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效
+	ExecutionStartTime *string `json:"ExecutionStartTime,omitnil,omitempty" name:"ExecutionStartTime"`
+
+	// 执行时间右闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效
+	ExecutionEndTime *string `json:"ExecutionEndTime,omitnil,omitempty" name:"ExecutionEndTime"`
+
+	// 任务名，该字段废弃，请勿使用该字段重命名任务
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 失败重试间隔,单位分钟，创建任务的时候已经给了默认值
+	RetryWait *int64 `json:"RetryWait,omitnil,omitempty" name:"RetryWait"`
+
+	// 失败重试次数，创建任务的时候已经给了默认值
+	TryLimit *int64 `json:"TryLimit,omitnil,omitempty" name:"TryLimit"`
+
+	// 是否可重试，0代码不可重试，1代表可以重试；暂不支持其他值
+	Retriable *int64 `json:"Retriable,omitnil,omitempty" name:"Retriable"`
+
+	// 运行优先级，4高 5中 6低；暂不支持其他值
+	RunPriority *int64 `json:"RunPriority,omitnil,omitempty" name:"RunPriority"`
+
+	// 任务的扩展配置
+	TaskExt []*TaskExtInfo `json:"TaskExt,omitnil,omitempty" name:"TaskExt"`
+
+	// 执行资源组Id，需要去资源管理服务上创建调度资源组，并且绑定cvm机器
+	ResourceGroup *string `json:"ResourceGroup,omitnil,omitempty" name:"ResourceGroup"`
+
+	// 资源池队列名称
+	YarnQueue *string `json:"YarnQueue,omitnil,omitempty" name:"YarnQueue"`
+
+	// 资源组下具体执行机，any 表示可以跑在任意一台。
+	BrokerIp *string `json:"BrokerIp,omitnil,omitempty" name:"BrokerIp"`
+
+	// 责任人，多个责任人请用分号隔开
+	InCharge *string `json:"InCharge,omitnil,omitempty" name:"InCharge"`
+
+	// 任务备注
+	Notes *string `json:"Notes,omitnil,omitempty" name:"Notes"`
+
+	// 任务参数
+	TaskParamInfos []*ParamInfo `json:"TaskParamInfos,omitnil,omitempty" name:"TaskParamInfos"`
+
+	// 源数据源Id
+	SourceServer *string `json:"SourceServer,omitnil,omitempty" name:"SourceServer"`
+
+	// 目标数据源Id
+	TargetServer *string `json:"TargetServer,omitnil,omitempty" name:"TargetServer"`
+
+	// 是否支持工作流依赖 yes / no 默认 no
+	DependencyWorkflow *string `json:"DependencyWorkflow,omitnil,omitempty" name:"DependencyWorkflow"`
+
+	// 依赖配置,仅可修改上游任务实例配置方法
+	DependencyConfigDTOs []*DependencyConfig `json:"DependencyConfigDTOs,omitnil,omitempty" name:"DependencyConfigDTOs"`
+
+	// 运行耗时超时时间分钟数
+	ExecutionTTL *int64 `json:"ExecutionTTL,omitnil,omitempty" name:"ExecutionTTL"`
+
+	// 脚本是否改变
+	ScriptChange *bool `json:"ScriptChange,omitnil,omitempty" name:"ScriptChange"`
+
+	// 任务时区，仅支持整数时区配置
+	ScheduleTimeZone *string `json:"ScheduleTimeZone,omitnil,omitempty" name:"ScheduleTimeZone"`
+
+	// 0 正常调度 1 空跑调度；暂不支持其他值
+	ScheduleRunType *uint64 `json:"ScheduleRunType,omitnil,omitempty" name:"ScheduleRunType"`
+
+	// 0 并发度达到上限时，本次排队等待 1 并发度达到上限时，本次不执行，直接kill；暂不支持其他值
+	ConcurrentStrategy *uint64 `json:"ConcurrentStrategy,omitnil,omitempty" name:"ConcurrentStrategy"`
+
+	// shell任务发布事件
+	RegisterDsEventPublisherRequest *RegisterDsEventPublisherReq `json:"RegisterDsEventPublisherRequest,omitnil,omitempty" name:"RegisterDsEventPublisherRequest"`
+
+	// base64编码后脚本内容
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+func (r *ModifyTaskInfoDsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTaskInfoDsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "DelayTime")
+	delete(f, "StartupTime")
+	delete(f, "SelfDepend")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "TaskAction")
+	delete(f, "CycleType")
+	delete(f, "CycleStep")
+	delete(f, "CrontabExpression")
+	delete(f, "ExecutionStartTime")
+	delete(f, "ExecutionEndTime")
+	delete(f, "TaskName")
+	delete(f, "RetryWait")
+	delete(f, "TryLimit")
+	delete(f, "Retriable")
+	delete(f, "RunPriority")
+	delete(f, "TaskExt")
+	delete(f, "ResourceGroup")
+	delete(f, "YarnQueue")
+	delete(f, "BrokerIp")
+	delete(f, "InCharge")
+	delete(f, "Notes")
+	delete(f, "TaskParamInfos")
+	delete(f, "SourceServer")
+	delete(f, "TargetServer")
+	delete(f, "DependencyWorkflow")
+	delete(f, "DependencyConfigDTOs")
+	delete(f, "ExecutionTTL")
+	delete(f, "ScriptChange")
+	delete(f, "ScheduleTimeZone")
+	delete(f, "ScheduleRunType")
+	delete(f, "ConcurrentStrategy")
+	delete(f, "RegisterDsEventPublisherRequest")
+	delete(f, "Content")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTaskInfoDsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTaskInfoDsResponseParams struct {
+	// 执行结果
+	Data *bool `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyTaskInfoDsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyTaskInfoDsResponseParams `json:"Response"`
+}
+
+func (r *ModifyTaskInfoDsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTaskInfoDsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -30823,6 +31468,23 @@ func (r *RegisterDsEventListenerResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RegisterDsEventListenerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RegisterDsEventPublisherReq struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务id
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 类型 REST_API、KAFKA
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 配置信息
+	Properties []*ParamInfoDs `json:"Properties,omitnil,omitempty" name:"Properties"`
+
+	// 描述信息
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 // Predefined struct for user
@@ -36129,6 +36791,10 @@ type TaskAlarmInfo struct {
 	// alarm message rule
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmMessageRule *string `json:"AlarmMessageRule,omitnil,omitempty" name:"AlarmMessageRule"`
+
+	//  0- wedata, 1-inlong
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportTarget *int64 `json:"ReportTarget,omitnil,omitempty" name:"ReportTarget"`
 }
 
 type TaskByCycle struct {

@@ -420,6 +420,11 @@ type CreateCfsFileSystemRequestParams struct {
 	// v3.1：创建增强版的通用文件系统
 	// 说明：增强版的通用系统需要开通白名单才能使用，如有需要请提交工单与我们联系。
 	CfsVersion *string `json:"CfsVersion,omitnil,omitempty" name:"CfsVersion"`
+
+	// turbo文件系统元数据属性
+	// basic：创建标准型的元数据
+	// enhanced：创建增强型的元数据
+	MetaType *string `json:"MetaType,omitnil,omitempty" name:"MetaType"`
 }
 
 type CreateCfsFileSystemRequest struct {
@@ -485,6 +490,11 @@ type CreateCfsFileSystemRequest struct {
 	// v3.1：创建增强版的通用文件系统
 	// 说明：增强版的通用系统需要开通白名单才能使用，如有需要请提交工单与我们联系。
 	CfsVersion *string `json:"CfsVersion,omitnil,omitempty" name:"CfsVersion"`
+
+	// turbo文件系统元数据属性
+	// basic：创建标准型的元数据
+	// enhanced：创建增强型的元数据
+	MetaType *string `json:"MetaType,omitnil,omitempty" name:"MetaType"`
 }
 
 func (r *CreateCfsFileSystemRequest) ToJsonString() string {
@@ -517,6 +527,7 @@ func (r *CreateCfsFileSystemRequest) FromJsonString(s string) error {
 	delete(f, "AutoSnapshotPolicyId")
 	delete(f, "EnableAutoScaleUp")
 	delete(f, "CfsVersion")
+	delete(f, "MetaType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCfsFileSystemRequest has unknown keys!", "")
 	}

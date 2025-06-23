@@ -233,6 +233,18 @@ type CosBackup struct {
 
 	// 自动备份执行时间（精确到小时）, e.g. "22:00"
 	BackupTime *string `json:"BackupTime,omitnil,omitempty" name:"BackupTime"`
+
+	// 0 腾讯云仓库; 1 客户仓库
+	EsRepositoryType *uint64 `json:"EsRepositoryType,omitnil,omitempty" name:"EsRepositoryType"`
+
+	// 客户快照仓库名称
+	UserEsRepository *string `json:"UserEsRepository,omitnil,omitempty" name:"UserEsRepository"`
+
+	// 快照存储周期 单位天
+	StorageDuration *uint64 `json:"StorageDuration,omitnil,omitempty" name:"StorageDuration"`
+
+	// 自动备份频率单位小时
+	AutoBackupInterval *uint64 `json:"AutoBackupInterval,omitnil,omitempty" name:"AutoBackupInterval"`
 }
 
 type CosSnapShotInfo struct {
@@ -6256,6 +6268,10 @@ type Snapshots struct {
 	// 快照Uuid
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
+
+	// 仓库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Repository *string `json:"Repository,omitnil,omitempty" name:"Repository"`
 
 	// 该快照所属集群的版本号
 	// 注意：此字段可能返回 null，表示取不到有效值。

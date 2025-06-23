@@ -1553,6 +1553,21 @@ type DeviceDetail struct {
 	// 未修复高危漏洞数(只支持32位)
 	CriticalVulListCount *int64 `json:"CriticalVulListCount,omitnil,omitempty" name:"CriticalVulListCount"`
 
+	// 操作系统名称
+	Os *string `json:"Os,omitnil,omitempty" name:"Os"`
+
+	// 操作系统位数
+	OsBits *int64 `json:"OsBits,omitnil,omitempty" name:"OsBits"`
+
+	// 操作系统版本
+	OsVersion *string `json:"OsVersion,omitnil,omitempty" name:"OsVersion"`
+
+	// 操作系统语言
+	OsLanguage *string `json:"OsLanguage,omitnil,omitempty" name:"OsLanguage"`
+
+	// 操作系统安装时间
+	OsInstallDate *string `json:"OsInstallDate,omitnil,omitempty" name:"OsInstallDate"`
+
 	// 设备名，和Name相同
 	ComputerName *string `json:"ComputerName,omitnil,omitempty" name:"ComputerName"`
 

@@ -10934,6 +10934,14 @@ type SingleInvoiceItem struct {
 	// 销货清单
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SaleInventory *SaleInventory `json:"SaleInventory,omitnil,omitempty" name:"SaleInventory"`
+
+	// 机动车销售统一发票（电子）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MotorVehicleSaleInvoiceElectronic *MotorVehicleSaleInvoice `json:"MotorVehicleSaleInvoiceElectronic,omitnil,omitempty" name:"MotorVehicleSaleInvoiceElectronic"`
+
+	// 二手车销售统一发票（电子）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsedCarPurchaseInvoiceElectronic *UsedCarPurchaseInvoice `json:"UsedCarPurchaseInvoiceElectronic,omitnil,omitempty" name:"UsedCarPurchaseInvoiceElectronic"`
 }
 
 // Predefined struct for user

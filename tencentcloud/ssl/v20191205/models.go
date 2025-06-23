@@ -2860,6 +2860,32 @@ func (r *DeployCertificateRecordRollbackResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DeployRecord struct {
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 成功总数
+	SuccessTotalCount *int64 `json:"SuccessTotalCount,omitnil,omitempty" name:"SuccessTotalCount"`
+
+	// 失败总数
+	FailedTotalCount *int64 `json:"FailedTotalCount,omitnil,omitempty" name:"FailedTotalCount"`
+
+	// 部署中总数
+	RunningTotalCount *int64 `json:"RunningTotalCount,omitnil,omitempty" name:"RunningTotalCount"`
+
+	// 部署记录类型 0 为部署， 1 为回滚
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 部署记录详情列表
+	RecordDetailList []*DeployRecordList `json:"RecordDetailList,omitnil,omitempty" name:"RecordDetailList"`
+
+	// 托管资源部署状态：0 等待部署， 1 部署成功， 2 部署失败 3 部署中， 4 回滚成功， 5 回滚失败
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 托管资源创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
 type DeployRecordDetail struct {
 	// 部署记录详情ID
 	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
@@ -2949,6 +2975,83 @@ type DeployRecordInfo struct {
 
 	// 最近一次更新时间
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+}
+
+type DeployRecordItem struct {
+	// 部署记录详情ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 原绑定证书ID
+	OldCertId *string `json:"OldCertId,omitnil,omitempty" name:"OldCertId"`
+
+	// 部署实例ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 部署实例名称
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 部署监听器ID
+	ListenerId *string `json:"ListenerId,omitnil,omitempty" name:"ListenerId"`
+
+	// 部署域名列表
+	Domains []*string `json:"Domains,omitnil,omitempty" name:"Domains"`
+
+	// 部署监听器协议
+	Protocol *string `json:"Protocol,omitnil,omitempty" name:"Protocol"`
+
+	// 部署状态
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 部署错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// 部署记录详情创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 部署记录详情最后一次更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 部署监听器名称
+	ListenerName *string `json:"ListenerName,omitnil,omitempty" name:"ListenerName"`
+
+	// 是否开启SNI
+	SniSwitch *int64 `json:"SniSwitch,omitnil,omitempty" name:"SniSwitch"`
+
+	// COS存储桶名称
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// 命名空间名称
+	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
+
+	// secret名称
+	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
+
+	// 端口
+	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 部署的TCB地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 负载均衡类型，0 传统型负载均衡； 1 应用型负载均衡
+	Forward *int64 `json:"Forward,omitnil,omitempty" name:"Forward"`
+
+	// 证书认证模式：UNIDIRECTIONAL单向认证，MUTUAL双向认证
+	SSLMode *string `json:"SSLMode,omitnil,omitempty" name:"SSLMode"`
+
+	// 部署资源类型
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+}
+
+type DeployRecordList struct {
+	// 部署资源类型
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 部署资源详情列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*DeployRecordItem `json:"List,omitnil,omitempty" name:"List"`
+
+	// 该部署资源总数
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 }
 
 type DeployedResources struct {
@@ -5565,6 +5668,151 @@ func (r *DescribeHostUpdateRecordResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeHostUpdateRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostUploadUpdateRecordDetailRequestParams struct {
+	// 托管记录ID
+	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
+
+	// 每页数量，默认为10，最大为200， 超过200则为200
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+type DescribeHostUploadUpdateRecordDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 托管记录ID
+	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
+
+	// 每页数量，默认为10，最大为200， 超过200则为200
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+}
+
+func (r *DescribeHostUploadUpdateRecordDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostUploadUpdateRecordDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeployRecordId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostUploadUpdateRecordDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostUploadUpdateRecordDetailResponseParams struct {
+	// 托管记录详情列表
+	DeployRecordDetail []*DeployRecord `json:"DeployRecordDetail,omitnil,omitempty" name:"DeployRecordDetail"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHostUploadUpdateRecordDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostUploadUpdateRecordDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostUploadUpdateRecordDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostUploadUpdateRecordDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostUploadUpdateRecordRequestParams struct {
+	// 分页偏移量，从0开始。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页数量，默认10。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 原证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
+}
+
+type DescribeHostUploadUpdateRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页偏移量，从0开始。
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 每页数量，默认10。
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 原证书ID
+	OldCertificateId *string `json:"OldCertificateId,omitnil,omitempty" name:"OldCertificateId"`
+}
+
+func (r *DescribeHostUploadUpdateRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostUploadUpdateRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OldCertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostUploadUpdateRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostUploadUpdateRecordResponseParams struct {
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 证书部署记录列表
+	DeployRecordList []*UploadUpdateRecordInfo `json:"DeployRecordList,omitnil,omitempty" name:"DeployRecordList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeHostUploadUpdateRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostUploadUpdateRecordResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostUploadUpdateRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostUploadUpdateRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8460,6 +8708,141 @@ func (r *UploadUpdateCertificateInstanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UploadUpdateCertificateInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UploadUpdateCertificateRecordRetryRequestParams struct {
+	// 待重试部署记录ID,通过UpdateCertificateInstance得到部署记录ID。 本参数不传的话，则DeployRecordDetailId必传
+	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
+
+	// 待重试部署记录详情ID,通过DescribeHostUpdateRecordDetail接口获得， 本参数不传的话， 则DeployRecordId必传
+	DeployRecordDetailId *int64 `json:"DeployRecordDetailId,omitnil,omitempty" name:"DeployRecordDetailId"`
+}
+
+type UploadUpdateCertificateRecordRetryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待重试部署记录ID,通过UpdateCertificateInstance得到部署记录ID。 本参数不传的话，则DeployRecordDetailId必传
+	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
+
+	// 待重试部署记录详情ID,通过DescribeHostUpdateRecordDetail接口获得， 本参数不传的话， 则DeployRecordId必传
+	DeployRecordDetailId *int64 `json:"DeployRecordDetailId,omitnil,omitempty" name:"DeployRecordDetailId"`
+}
+
+func (r *UploadUpdateCertificateRecordRetryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadUpdateCertificateRecordRetryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeployRecordId")
+	delete(f, "DeployRecordDetailId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadUpdateCertificateRecordRetryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UploadUpdateCertificateRecordRetryResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UploadUpdateCertificateRecordRetryResponse struct {
+	*tchttp.BaseResponse
+	Response *UploadUpdateCertificateRecordRetryResponseParams `json:"Response"`
+}
+
+func (r *UploadUpdateCertificateRecordRetryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadUpdateCertificateRecordRetryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UploadUpdateCertificateRecordRollbackRequestParams struct {
+	// 更新证书待回滚的记录ID, 通过UpdateCertificateInstance获得
+	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
+}
+
+type UploadUpdateCertificateRecordRollbackRequest struct {
+	*tchttp.BaseRequest
+	
+	// 更新证书待回滚的记录ID, 通过UpdateCertificateInstance获得
+	DeployRecordId *int64 `json:"DeployRecordId,omitnil,omitempty" name:"DeployRecordId"`
+}
+
+func (r *UploadUpdateCertificateRecordRollbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadUpdateCertificateRecordRollbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeployRecordId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadUpdateCertificateRecordRollbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UploadUpdateCertificateRecordRollbackResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UploadUpdateCertificateRecordRollbackResponse struct {
+	*tchttp.BaseResponse
+	Response *UploadUpdateCertificateRecordRollbackResponseParams `json:"Response"`
+}
+
+func (r *UploadUpdateCertificateRecordRollbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadUpdateCertificateRecordRollbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadUpdateRecordInfo struct {
+	// 记录ID
+	Id *uint64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 原证书ID
+	OldCertId *string `json:"OldCertId,omitnil,omitempty" name:"OldCertId"`
+
+	// 部署资源类型列表
+	ResourceTypes []*string `json:"ResourceTypes,omitnil,omitempty" name:"ResourceTypes"`
+
+	// 部署状态
+	Status *uint64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 部署时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 最后一次更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
 }
 
 type VODInstanceList struct {

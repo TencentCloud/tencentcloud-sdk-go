@@ -66,12 +66,18 @@ func NewChangeMigratingTopicToNextStageResponse() (response *ChangeMigratingTopi
 
 // ChangeMigratingTopicToNextStage
 // 修改迁移中的Topic状态进入下一步
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
 func (c *Client) ChangeMigratingTopicToNextStage(request *ChangeMigratingTopicToNextStageRequest) (response *ChangeMigratingTopicToNextStageResponse, err error) {
     return c.ChangeMigratingTopicToNextStageWithContext(context.Background(), request)
 }
 
 // ChangeMigratingTopicToNextStage
 // 修改迁移中的Topic状态进入下一步
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
 func (c *Client) ChangeMigratingTopicToNextStageWithContext(ctx context.Context, request *ChangeMigratingTopicToNextStageRequest) (response *ChangeMigratingTopicToNextStageResponse, err error) {
     if request == nil {
         request = NewChangeMigratingTopicToNextStageRequest()
@@ -2256,11 +2262,16 @@ func NewDescribeMigratingTopicListResponse() (response *DescribeMigratingTopicLi
 //
 // 
 //
-// 查询过滤器，支持TopicName、MigrationStatus、Namespace查询
+// Filters字段为查询过滤器，支持以下条件：
+//
+// TopicName 主题名称，支持模糊查询，
+//
+// MigrationStatus 迁移状态，可参考MigratingTopic数据结构，
+//
+// Namespace 命名空间，仅4.x集群有效，
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
-//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
 func (c *Client) DescribeMigratingTopicList(request *DescribeMigratingTopicListRequest) (response *DescribeMigratingTopicListResponse, err error) {
     return c.DescribeMigratingTopicListWithContext(context.Background(), request)
 }
@@ -2270,11 +2281,16 @@ func (c *Client) DescribeMigratingTopicList(request *DescribeMigratingTopicListR
 //
 // 
 //
-// 查询过滤器，支持TopicName、MigrationStatus、Namespace查询
+// Filters字段为查询过滤器，支持以下条件：
+//
+// TopicName 主题名称，支持模糊查询，
+//
+// MigrationStatus 迁移状态，可参考MigratingTopic数据结构，
+//
+// Namespace 命名空间，仅4.x集群有效，
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
-//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
 func (c *Client) DescribeMigratingTopicListWithContext(ctx context.Context, request *DescribeMigratingTopicListRequest) (response *DescribeMigratingTopicListResponse, err error) {
     if request == nil {
         request = NewDescribeMigratingTopicListRequest()
@@ -2315,6 +2331,8 @@ func NewDescribeMigratingTopicStatsResponse() (response *DescribeMigratingTopicS
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeMigratingTopicStats(request *DescribeMigratingTopicStatsRequest) (response *DescribeMigratingTopicStatsResponse, err error) {
     return c.DescribeMigratingTopicStatsWithContext(context.Background(), request)
@@ -2325,6 +2343,8 @@ func (c *Client) DescribeMigratingTopicStats(request *DescribeMigratingTopicStat
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeMigratingTopicStatsWithContext(ctx context.Context, request *DescribeMigratingTopicStatsRequest) (response *DescribeMigratingTopicStatsResponse, err error) {
     if request == nil {
@@ -2374,6 +2394,8 @@ func NewDescribeMigrationTaskListResponse() (response *DescribeMigrationTaskList
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeMigrationTaskList(request *DescribeMigrationTaskListRequest) (response *DescribeMigrationTaskListResponse, err error) {
     return c.DescribeMigrationTaskListWithContext(context.Background(), request)
@@ -2392,6 +2414,8 @@ func (c *Client) DescribeMigrationTaskList(request *DescribeMigrationTaskListReq
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeMigrationTaskListWithContext(ctx context.Context, request *DescribeMigrationTaskListRequest) (response *DescribeMigrationTaskListResponse, err error) {
     if request == nil {
@@ -2433,6 +2457,8 @@ func NewDescribeProductSKUsResponse() (response *DescribeProductSKUsResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeProductSKUs(request *DescribeProductSKUsRequest) (response *DescribeProductSKUsResponse, err error) {
     return c.DescribeProductSKUsWithContext(context.Background(), request)
@@ -2443,6 +2469,8 @@ func (c *Client) DescribeProductSKUs(request *DescribeProductSKUsRequest) (respo
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeProductSKUsWithContext(ctx context.Context, request *DescribeProductSKUsRequest) (response *DescribeProductSKUsResponse, err error) {
     if request == nil {
@@ -2490,6 +2518,8 @@ func NewDescribeRoleListResponse() (response *DescribeRoleListResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeRoleList(request *DescribeRoleListRequest) (response *DescribeRoleListResponse, err error) {
     return c.DescribeRoleListWithContext(context.Background(), request)
@@ -2506,6 +2536,8 @@ func (c *Client) DescribeRoleList(request *DescribeRoleListRequest) (response *D
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeRoleListWithContext(ctx context.Context, request *DescribeRoleListRequest) (response *DescribeRoleListResponse, err error) {
     if request == nil {
@@ -2549,16 +2581,18 @@ func NewDescribeSmoothMigrationTaskListResponse() (response *DescribeSmoothMigra
 //
 // 查询参数Filters， 支持的字段如下：
 //
-// TaskStatus, 支持多选 
+// TaskStatus, 任务状态，支持多选 
 //
-// ConnectionType，支持多选 
+// ConnectionType，网络连接类型，支持多选 
 //
-// InstanceId，精确搜索 
+// InstanceId，实例ID，精确搜索 
 //
-// TaskName，支持模糊搜索
+// TaskName，任务名称，支持模糊搜索
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeSmoothMigrationTaskList(request *DescribeSmoothMigrationTaskListRequest) (response *DescribeSmoothMigrationTaskListResponse, err error) {
     return c.DescribeSmoothMigrationTaskListWithContext(context.Background(), request)
@@ -2571,16 +2605,18 @@ func (c *Client) DescribeSmoothMigrationTaskList(request *DescribeSmoothMigratio
 //
 // 查询参数Filters， 支持的字段如下：
 //
-// TaskStatus, 支持多选 
+// TaskStatus, 任务状态，支持多选 
 //
-// ConnectionType，支持多选 
+// ConnectionType，网络连接类型，支持多选 
 //
-// InstanceId，精确搜索 
+// InstanceId，实例ID，精确搜索 
 //
-// TaskName，支持模糊搜索
+// TaskName，任务名称，支持模糊搜索
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeSmoothMigrationTaskListWithContext(ctx context.Context, request *DescribeSmoothMigrationTaskListRequest) (response *DescribeSmoothMigrationTaskListResponse, err error) {
     if request == nil {
@@ -2622,7 +2658,7 @@ func NewDescribeSourceClusterGroupListResponse() (response *DescribeSourceCluste
 //
 // 
 //
-// 查询过滤器，支持字段
+// Filters字段为查询过滤器，支持以下字段：
 //
 // GroupName，消费组名称模糊搜索
 //
@@ -2634,6 +2670,8 @@ func NewDescribeSourceClusterGroupListResponse() (response *DescribeSourceCluste
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeSourceClusterGroupList(request *DescribeSourceClusterGroupListRequest) (response *DescribeSourceClusterGroupListResponse, err error) {
     return c.DescribeSourceClusterGroupListWithContext(context.Background(), request)
@@ -2644,7 +2682,7 @@ func (c *Client) DescribeSourceClusterGroupList(request *DescribeSourceClusterGr
 //
 // 
 //
-// 查询过滤器，支持字段
+// Filters字段为查询过滤器，支持以下字段：
 //
 // GroupName，消费组名称模糊搜索
 //
@@ -2656,6 +2694,8 @@ func (c *Client) DescribeSourceClusterGroupList(request *DescribeSourceClusterGr
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MIGRATIONTASK = "ResourceNotFound.MigrationTask"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeSourceClusterGroupListWithContext(ctx context.Context, request *DescribeSourceClusterGroupListRequest) (response *DescribeSourceClusterGroupListResponse, err error) {
     if request == nil {

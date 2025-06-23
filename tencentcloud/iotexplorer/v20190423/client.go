@@ -1212,7 +1212,7 @@ func NewCreateFenceBindResponse() (response *CreateFenceBindResponse) {
 }
 
 // CreateFenceBind
-// 创建围栏绑定信息
+// > 创建围栏绑定信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1226,7 +1226,7 @@ func (c *Client) CreateFenceBind(request *CreateFenceBindRequest) (response *Cre
 }
 
 // CreateFenceBind
-// 创建围栏绑定信息
+// > 创建围栏绑定信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1487,7 +1487,7 @@ func NewCreatePositionFenceResponse() (response *CreatePositionFenceResponse) {
 }
 
 // CreatePositionFence
-// 创建围栏
+// 创建围栏。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1502,7 +1502,7 @@ func (c *Client) CreatePositionFence(request *CreatePositionFenceRequest) (respo
 }
 
 // CreatePositionFence
-// 创建围栏
+// 创建围栏。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2242,7 +2242,7 @@ func NewDeleteFenceBindResponse() (response *DeleteFenceBindResponse) {
 }
 
 // DeleteFenceBind
-// 删除围栏绑定信息
+// 删除围栏绑定信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2256,7 +2256,7 @@ func (c *Client) DeleteFenceBind(request *DeleteFenceBindRequest) (response *Del
 }
 
 // DeleteFenceBind
-// 删除围栏绑定信息
+// 删除围栏绑定信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2417,7 +2417,7 @@ func NewDeletePositionFenceResponse() (response *DeletePositionFenceResponse) {
 }
 
 // DeletePositionFence
-// 删除围栏
+// 删除围栏。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2433,7 +2433,7 @@ func (c *Client) DeletePositionFence(request *DeletePositionFenceRequest) (respo
 }
 
 // DeletePositionFence
-// 删除围栏
+// 删除围栏。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2480,7 +2480,7 @@ func NewDeletePositionSpaceResponse() (response *DeletePositionSpaceResponse) {
 }
 
 // DeletePositionSpace
-// 删除位置空间
+// 删除位置空间。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2494,7 +2494,7 @@ func (c *Client) DeletePositionSpace(request *DeletePositionSpaceRequest) (respo
 }
 
 // DeletePositionSpace
-// 删除位置空间
+// 删除位置空间。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4653,7 +4653,7 @@ func NewDescribeFenceBindListResponse() (response *DescribeFenceBindListResponse
 }
 
 // DescribeFenceBindList
-// 获取围栏绑定信息列表
+// 获取围栏绑定信息列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4667,7 +4667,7 @@ func (c *Client) DescribeFenceBindList(request *DescribeFenceBindListRequest) (r
 }
 
 // DescribeFenceBindList
-// 获取围栏绑定信息列表
+// 获取围栏绑定信息列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4712,7 +4712,7 @@ func NewDescribeFenceEventListResponse() (response *DescribeFenceEventListRespon
 }
 
 // DescribeFenceEventList
-// 获取围栏告警事件列表
+// 获取围栏告警事件列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4730,7 +4730,7 @@ func (c *Client) DescribeFenceEventList(request *DescribeFenceEventListRequest) 
 }
 
 // DescribeFenceEventList
-// 获取围栏告警事件列表
+// 获取围栏告警事件列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -5749,7 +5749,7 @@ func NewDescribeSpaceFenceEventListResponse() (response *DescribeSpaceFenceEvent
 }
 
 // DescribeSpaceFenceEventList
-// 获取位置空间中围栏告警事件列表
+// 获取位置空间中围栏告警事件列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -5764,7 +5764,7 @@ func (c *Client) DescribeSpaceFenceEventList(request *DescribeSpaceFenceEventLis
 }
 
 // DescribeSpaceFenceEventList
-// 获取位置空间中围栏告警事件列表
+// 获取位置空间中围栏告警事件列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -7771,6 +7771,61 @@ func (c *Client) InvokeTWeSeeRecognitionTaskWithContext(ctx context.Context, req
     return
 }
 
+func NewInvokeVideosKeywordsAnalyzerRequest() (request *InvokeVideosKeywordsAnalyzerRequest) {
+    request = &InvokeVideosKeywordsAnalyzerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "InvokeVideosKeywordsAnalyzer")
+    
+    
+    return
+}
+
+func NewInvokeVideosKeywordsAnalyzerResponse() (response *InvokeVideosKeywordsAnalyzerResponse) {
+    response = &InvokeVideosKeywordsAnalyzerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// InvokeVideosKeywordsAnalyzer
+// 获取某个时间段的视频内容关键字
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) InvokeVideosKeywordsAnalyzer(request *InvokeVideosKeywordsAnalyzerRequest) (response *InvokeVideosKeywordsAnalyzerResponse, err error) {
+    return c.InvokeVideosKeywordsAnalyzerWithContext(context.Background(), request)
+}
+
+// InvokeVideosKeywordsAnalyzer
+// 获取某个时间段的视频内容关键字
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINSUFFICIENT_CLOUDSTORAGEAISERVICETASKQUOTAINSUFFICIENT = "ResourceInsufficient.CloudStorageAIServiceTaskQuotaInsufficient"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) InvokeVideosKeywordsAnalyzerWithContext(ctx context.Context, request *InvokeVideosKeywordsAnalyzerRequest) (response *InvokeVideosKeywordsAnalyzerResponse, err error) {
+    if request == nil {
+        request = NewInvokeVideosKeywordsAnalyzerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InvokeVideosKeywordsAnalyzer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInvokeVideosKeywordsAnalyzerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListEventHistoryRequest() (request *ListEventHistoryRequest) {
     request = &ListEventHistoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8191,7 +8246,7 @@ func NewModifyFenceBindResponse() (response *ModifyFenceBindResponse) {
 }
 
 // ModifyFenceBind
-// 更新围栏绑定信息
+// 更新围栏绑定信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -8205,7 +8260,7 @@ func (c *Client) ModifyFenceBind(request *ModifyFenceBindRequest) (response *Mod
 }
 
 // ModifyFenceBind
-// 更新围栏绑定信息
+// 更新围栏绑定信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -8521,7 +8576,7 @@ func NewModifyPositionFenceResponse() (response *ModifyPositionFenceResponse) {
 }
 
 // ModifyPositionFence
-// 更新围栏
+// 更新围栏。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -8535,7 +8590,7 @@ func (c *Client) ModifyPositionFence(request *ModifyPositionFenceRequest) (respo
 }
 
 // ModifyPositionFence
-// 更新围栏
+// 更新围栏。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -8580,7 +8635,7 @@ func NewModifyPositionSpaceResponse() (response *ModifyPositionSpaceResponse) {
 }
 
 // ModifyPositionSpace
-// 更新位置空间
+// 更新位置空间。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -8594,7 +8649,7 @@ func (c *Client) ModifyPositionSpace(request *ModifyPositionSpaceRequest) (respo
 }
 
 // ModifyPositionSpace
-// 更新位置空间
+// 更新位置空间。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

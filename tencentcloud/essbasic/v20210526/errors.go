@@ -242,11 +242,11 @@ const (
 	// 不支持的手机号。
 	INVALIDPARAMETER_NONSUPPORTMOBILE = "InvalidParameter.NonsupportMobile"
 
-	// 参数Offset不正确
-	INVALIDPARAMETER_OFFSET = "InvalidParameter.Offset"
-
 	// OpenId不合法。
 	INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
+
+	// 用户ID不正确
+	INVALIDPARAMETER_OPERATORID = "InvalidParameter.OperatorId"
 
 	// OrganizationId不合法。
 	INVALIDPARAMETER_ORGANIZATIONID = "InvalidParameter.OrganizationId"
@@ -262,6 +262,9 @@ const (
 
 	// 角色ID不正确
 	INVALIDPARAMETER_ROLEID = "InvalidParameter.RoleId"
+
+	// 存在敏感词
+	INVALIDPARAMETER_SENSITIVE = "InvalidParameter.Sensitive"
 
 	// 上传的文件包含敏感（不合规）的内容，请确认。
 	INVALIDPARAMETER_SENSITIVEFILECONTENT = "InvalidParameter.SensitiveFileContent"
@@ -445,6 +448,9 @@ const (
 
 	// 操作者权限不足。
 	OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
+
+	// 企业已经注销中
+	OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 
 	// 超出查询上限。
 	OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"

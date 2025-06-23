@@ -4240,6 +4240,9 @@ type DescribeCloudStorageAIServiceResponseParams struct {
 	// 视频分析识别区域
 	ROI *string `json:"ROI,omitnil,omitempty" name:"ROI"`
 
+	// 云存 AI 套餐 ID
+	PackageId *string `json:"PackageId,omitnil,omitempty" name:"PackageId"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -10380,6 +10383,31 @@ type InvokeAISearchServiceRequestParams struct {
 
 	// 通道ID
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 是否需要返回总结，默认为False；  开启后会加大接口响应时长
+	EnableSummary *bool `json:"EnableSummary,omitnil,omitempty" name:"EnableSummary"`
+
+	// 开始时间。
+	// 
+	// 注：
+	// 1. 单位为毫秒（ms）
+	// 2. 如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后7天内的数据， 反之EndTimeMs也一样）
+	// 3. 只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为"过去三天关于猫咪的视频"， 则会将"过去三天忽略"）
+	StartTimeMs *int64 `json:"StartTimeMs,omitnil,omitempty" name:"StartTimeMs"`
+
+	// 结束时间。
+	// 
+	// 注：
+	// 1. 单位为毫秒（ms）
+	// 2. 如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后7天内的数据， 反之EndTimeMs也一样）
+	// 3. 只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为"过去三天关于猫咪的视频"， 则会将"过去三天忽略"）
+	EndTimeMs *int64 `json:"EndTimeMs,omitnil,omitempty" name:"EndTimeMs"`
+
+	// 时区。默认值：Asia/Shanghai
+	// 
+	// 注：
+	// 符合iana标准 https://www.iana.org/time-zones，例如Asia/Shanghai、Asia/Bangkok
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 }
 
 type InvokeAISearchServiceRequest struct {
@@ -10399,6 +10427,31 @@ type InvokeAISearchServiceRequest struct {
 
 	// 通道ID
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
+
+	// 是否需要返回总结，默认为False；  开启后会加大接口响应时长
+	EnableSummary *bool `json:"EnableSummary,omitnil,omitempty" name:"EnableSummary"`
+
+	// 开始时间。
+	// 
+	// 注：
+	// 1. 单位为毫秒（ms）
+	// 2. 如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后7天内的数据， 反之EndTimeMs也一样）
+	// 3. 只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为"过去三天关于猫咪的视频"， 则会将"过去三天忽略"）
+	StartTimeMs *int64 `json:"StartTimeMs,omitnil,omitempty" name:"StartTimeMs"`
+
+	// 结束时间。
+	// 
+	// 注：
+	// 1. 单位为毫秒（ms）
+	// 2. 如果同时指定了StartTimeMs与EndTimeMs，时间区间不能大于7天；如果只指定其中一个（例如只指定StartTimeMs，则查询自StartTimeMs后7天内的数据， 反之EndTimeMs也一样）
+	// 3. 只要指定了其中一个参数，接口则会忽略Query参数中关于时间的描述；（例如Query为"过去三天关于猫咪的视频"， 则会将"过去三天忽略"）
+	EndTimeMs *int64 `json:"EndTimeMs,omitnil,omitempty" name:"EndTimeMs"`
+
+	// 时区。默认值：Asia/Shanghai
+	// 
+	// 注：
+	// 符合iana标准 https://www.iana.org/time-zones，例如Asia/Shanghai、Asia/Bangkok
+	TimeZone *string `json:"TimeZone,omitnil,omitempty" name:"TimeZone"`
 }
 
 func (r *InvokeAISearchServiceRequest) ToJsonString() string {
@@ -10418,6 +10471,10 @@ func (r *InvokeAISearchServiceRequest) FromJsonString(s string) error {
 	delete(f, "Query")
 	delete(f, "SummaryLang")
 	delete(f, "ChannelId")
+	delete(f, "EnableSummary")
+	delete(f, "StartTimeMs")
+	delete(f, "EndTimeMs")
+	delete(f, "TimeZone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeAISearchServiceRequest has unknown keys!", "")
 	}
@@ -10833,6 +10890,107 @@ func (r *InvokeTWeSeeRecognitionTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *InvokeTWeSeeRecognitionTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InvokeVideosKeywordsAnalyzerRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 开始时间。
+	// 
+	// 注：
+	// 1. 单位为毫秒（ms）
+	// 2. 时间区间必须控制在某一个自然天内，不支持跨天
+	StartTimeMs *int64 `json:"StartTimeMs,omitnil,omitempty" name:"StartTimeMs"`
+
+	// 结束时间。
+	// 
+	// 注：
+	// 1. 单位为毫秒（ms）
+	// 2. 时间区间必须控制在某一个自然天内，不支持跨天
+	EndTimeMs *int64 `json:"EndTimeMs,omitnil,omitempty" name:"EndTimeMs"`
+
+	// 返回的关键字最大数量，默认为5；最大不能超过10
+	KeywordsMaxNum *uint64 `json:"KeywordsMaxNum,omitnil,omitempty" name:"KeywordsMaxNum"`
+}
+
+type InvokeVideosKeywordsAnalyzerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitnil,omitempty" name:"DeviceName"`
+
+	// 开始时间。
+	// 
+	// 注：
+	// 1. 单位为毫秒（ms）
+	// 2. 时间区间必须控制在某一个自然天内，不支持跨天
+	StartTimeMs *int64 `json:"StartTimeMs,omitnil,omitempty" name:"StartTimeMs"`
+
+	// 结束时间。
+	// 
+	// 注：
+	// 1. 单位为毫秒（ms）
+	// 2. 时间区间必须控制在某一个自然天内，不支持跨天
+	EndTimeMs *int64 `json:"EndTimeMs,omitnil,omitempty" name:"EndTimeMs"`
+
+	// 返回的关键字最大数量，默认为5；最大不能超过10
+	KeywordsMaxNum *uint64 `json:"KeywordsMaxNum,omitnil,omitempty" name:"KeywordsMaxNum"`
+}
+
+func (r *InvokeVideosKeywordsAnalyzerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InvokeVideosKeywordsAnalyzerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "StartTimeMs")
+	delete(f, "EndTimeMs")
+	delete(f, "KeywordsMaxNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvokeVideosKeywordsAnalyzerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InvokeVideosKeywordsAnalyzerResponseParams struct {
+	// 基于搜索结果的总结
+	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type InvokeVideosKeywordsAnalyzerResponse struct {
+	*tchttp.BaseResponse
+	Response *InvokeVideosKeywordsAnalyzerResponseParams `json:"Response"`
+}
+
+func (r *InvokeVideosKeywordsAnalyzerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InvokeVideosKeywordsAnalyzerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -1097,6 +1097,10 @@ type ServerBaseConfig struct {
 
 	// Dockerfile Cmd 参数
 	Cmd []*string `json:"Cmd,omitnil,omitempty" name:"Cmd"`
+
+	// 会话亲和性开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionAffinity *string `json:"SessionAffinity,omitnil,omitempty" name:"SessionAffinity"`
 }
 
 type ServerBaseInfo struct {

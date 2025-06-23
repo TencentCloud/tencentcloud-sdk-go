@@ -9300,70 +9300,6 @@ func (r *DescribeLivePackageInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeLivePadProcessorListRequestParams struct {
-	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
-	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
-
-	// 您的推流域名。
-	PushDomainName *string `json:"PushDomainName,omitnil,omitempty" name:"PushDomainName"`
-}
-
-type DescribeLivePadProcessorListRequest struct {
-	*tchttp.BaseRequest
-	
-	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
-	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
-
-	// 您的推流域名。
-	PushDomainName *string `json:"PushDomainName,omitnil,omitempty" name:"PushDomainName"`
-}
-
-func (r *DescribeLivePadProcessorListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeLivePadProcessorListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "AppName")
-	delete(f, "PushDomainName")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLivePadProcessorListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeLivePadProcessorListResponseParams struct {
-	// 当前正在拉取垫片的流名称列表。
-	StreamNameList []*string `json:"StreamNameList,omitnil,omitempty" name:"StreamNameList"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeLivePadProcessorListResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeLivePadProcessorListResponseParams `json:"Response"`
-}
-
-func (r *DescribeLivePadProcessorListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeLivePadProcessorListResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeLivePadRulesRequestParams struct {
 
 }
@@ -17850,33 +17786,26 @@ type PullStreamTaskInfo struct {
 	// 备源类型：
 	// PullLivePushLive -直播，
 	// PullVodPushLive -点播。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupSourceType *string `json:"BackupSourceType,omitnil,omitempty" name:"BackupSourceType"`
 
 	// 备源URL。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupSourceUrl *string `json:"BackupSourceUrl,omitnil,omitempty" name:"BackupSourceUrl"`
 
 	// 水印信息列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WatermarkList []*PullPushWatermarkInfo `json:"WatermarkList,omitnil,omitempty" name:"WatermarkList"`
 
 	// 点播源是否启用本地推流模式，默认0，不启用。
 	// 0 - 不启用。
 	// 1 - 启用。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	VodLocalMode *int64 `json:"VodLocalMode,omitnil,omitempty" name:"VodLocalMode"`
 
 	// 录制模板 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordTemplateId *string `json:"RecordTemplateId,omitnil,omitempty" name:"RecordTemplateId"`
 
 	// 新增的推流地址。用于单任务推两路场景。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupToUrl *string `json:"BackupToUrl,omitnil,omitempty" name:"BackupToUrl"`
 
 	// 直播转码模板。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TranscodeTemplateName *string `json:"TranscodeTemplateName,omitnil,omitempty" name:"TranscodeTemplateName"`
 }
 
@@ -18910,84 +18839,6 @@ func (r *StopCasterPvwResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StopCasterPvwResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type StopLivePadProcessorRequestParams struct {
-	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
-	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
-
-	// 您的推流域名。
-	PushDomainName *string `json:"PushDomainName,omitnil,omitempty" name:"PushDomainName"`
-
-	// 流名称。
-	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
-
-	// 操作人备注信息。
-	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
-}
-
-type StopLivePadProcessorRequest struct {
-	*tchttp.BaseRequest
-	
-	// 推流路径，与推流和播放地址中的AppName保持一致，默认为 live。
-	AppName *string `json:"AppName,omitnil,omitempty" name:"AppName"`
-
-	// 您的推流域名。
-	PushDomainName *string `json:"PushDomainName,omitnil,omitempty" name:"PushDomainName"`
-
-	// 流名称。
-	StreamName *string `json:"StreamName,omitnil,omitempty" name:"StreamName"`
-
-	// 操作人备注信息。
-	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
-}
-
-func (r *StopLivePadProcessorRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *StopLivePadProcessorRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "AppName")
-	delete(f, "PushDomainName")
-	delete(f, "StreamName")
-	delete(f, "Operator")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopLivePadProcessorRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type StopLivePadProcessorResponseParams struct {
-	// 处理结果信息。
-	ResultMessage *string `json:"ResultMessage,omitnil,omitempty" name:"ResultMessage"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type StopLivePadProcessorResponse struct {
-	*tchttp.BaseResponse
-	Response *StopLivePadProcessorResponseParams `json:"Response"`
-}
-
-func (r *StopLivePadProcessorResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *StopLivePadProcessorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

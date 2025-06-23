@@ -6748,6 +6748,16 @@ type Component struct {
 	// <li> <b>FontSize</b>： 范围6 :72</li></ul>
 	// <b>参数样例</b>：`{"FontColor":"255,0,0","FontSize":12}`
 	// 
+	// <font color="red">ComponentType为WATERMARK时</font>，支持以下参数：
+	// <ul><li> <b>Font</b>：目前只支持黑体、宋体、仿宋</li>
+	// <li> <b>FontSize</b>： 范围6 :72</li>
+	// <li> <b>Opacity</b>： 透明度，范围0 :1</li>
+	// <li> <b>Rotate</b>： 水印旋转角度，范围0 :359</li>
+	// <li> <b>Density</b>： 水印样式，1-宽松，2-标准（默认值），3-密集，</li>
+	// <li> <b>Position</b>： 水印位置，None-平铺（默认值），LeftTop-左上，LeftBottom-左下，RightTop-右上，RightBottom-右下，Center-居中</li>
+	// <li> <b>SubType</b>： 水印类型：CUSTOM_WATERMARK-自定义内容，PERSON_INFO_WATERMARK-访问者信息</li></ul>
+	// <b>参数样例</b>：`"{\"Font\":\"黑体\",\"FontSize\":20,\"Opacity\":0.1,\"Density\":2,\"SubType\":\"PERSON_INFO_WATERMARK\"}"`
+	// 
 	// <font color="red">ComponentType为FILL_IMAGE时</font>，支持以下参数：
 	// <ul><li> <b>NotMakeImageCenter</b>：bool。是否设置图片居中。false：居中（默认）。 true : 不居中</li>
 	// <li> <b>FillMethod</b> : int. 填充方式。0-铺满（默认）；1-等比例缩放</li></ul>
@@ -7752,8 +7762,9 @@ type CreateConsoleLoginUrlRequestParams struct {
 	AutoJumpBackEvent *string `json:"AutoJumpBackEvent,omitnil,omitempty" name:"AutoJumpBackEvent"`
 
 	// 可选的此企业允许的授权方式, 可以设置的方式有:
-	// <ul><li>1：上传授权书</li>
+	// <ul>
 	// <li>2：转法定代表人授权</li>
+	// <li>5：授权书+对公打款</li>
 	// </ul>
 	AuthorizationTypes []*int64 `json:"AuthorizationTypes,omitnil,omitempty" name:"AuthorizationTypes"`
 
@@ -7882,8 +7893,9 @@ type CreateConsoleLoginUrlRequest struct {
 	AutoJumpBackEvent *string `json:"AutoJumpBackEvent,omitnil,omitempty" name:"AutoJumpBackEvent"`
 
 	// 可选的此企业允许的授权方式, 可以设置的方式有:
-	// <ul><li>1：上传授权书</li>
+	// <ul>
 	// <li>2：转法定代表人授权</li>
+	// <li>5：授权书+对公打款</li>
 	// </ul>
 	AuthorizationTypes []*int64 `json:"AuthorizationTypes,omitnil,omitempty" name:"AuthorizationTypes"`
 
@@ -12362,6 +12374,147 @@ func (r *ModifyFlowDeadlineResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyFlowDeadlineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPartnerAutoSignAuthUrlRequestParams struct {
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationName二选一传入。
+	// 
+	// 注：`被授权企业必须和当前企业在同一应用号下`
+	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil,omitempty" name:"AuthorizedOrganizationId"`
+
+	// 被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。
+	// 
+	// 注: 
+	// 1. 如果名称中包含英文括号()，请使用中文括号（）代替。
+	// 2. 被授权企业必须和当前企业在同一应用号下
+	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil,omitempty" name:"AuthorizedOrganizationName"`
+
+	// 是否给平台应用授权
+	// 
+	// <ul>
+	// <li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationId</code>和<code>AuthorizedOrganizationName</code>。</li>
+	// <li><strong>false</strong>: （默认）表示否，不是授权平台应用。</li>
+	// </ul>
+	// 
+	//  注：授权给平台应用需要开通【基于子客授权第三方应用可文件发起子客自动签署】白名单，请联系运营经理开通。
+	PlatformAppAuthorization *bool `json:"PlatformAppAuthorization,omitnil,omitempty" name:"PlatformAppAuthorization"`
+
+	// 在处理授权关系时，授权的方向
+	// <ul>
+	// <li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
+	// <li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li>
+	// </ul>
+	AuthToMe *bool `json:"AuthToMe,omitnil,omitempty" name:"AuthToMe"`
+}
+
+type ModifyPartnerAutoSignAuthUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.AppId</li>
+	// <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
+	// </ul>
+	// 第三方平台子客企业和员工必须已经经过实名认证
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+
+	// 被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationName二选一传入。
+	// 
+	// 注：`被授权企业必须和当前企业在同一应用号下`
+	AuthorizedOrganizationId *string `json:"AuthorizedOrganizationId,omitnil,omitempty" name:"AuthorizedOrganizationId"`
+
+	// 被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。
+	// 
+	// 注: 
+	// 1. 如果名称中包含英文括号()，请使用中文括号（）代替。
+	// 2. 被授权企业必须和当前企业在同一应用号下
+	AuthorizedOrganizationName *string `json:"AuthorizedOrganizationName,omitnil,omitempty" name:"AuthorizedOrganizationName"`
+
+	// 是否给平台应用授权
+	// 
+	// <ul>
+	// <li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationId</code>和<code>AuthorizedOrganizationName</code>。</li>
+	// <li><strong>false</strong>: （默认）表示否，不是授权平台应用。</li>
+	// </ul>
+	// 
+	//  注：授权给平台应用需要开通【基于子客授权第三方应用可文件发起子客自动签署】白名单，请联系运营经理开通。
+	PlatformAppAuthorization *bool `json:"PlatformAppAuthorization,omitnil,omitempty" name:"PlatformAppAuthorization"`
+
+	// 在处理授权关系时，授权的方向
+	// <ul>
+	// <li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
+	// <li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li>
+	// </ul>
+	AuthToMe *bool `json:"AuthToMe,omitnil,omitempty" name:"AuthToMe"`
+}
+
+func (r *ModifyPartnerAutoSignAuthUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPartnerAutoSignAuthUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "AuthorizedOrganizationId")
+	delete(f, "AuthorizedOrganizationName")
+	delete(f, "PlatformAppAuthorization")
+	delete(f, "AuthToMe")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPartnerAutoSignAuthUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPartnerAutoSignAuthUrlResponseParams struct {
+	// 授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
+	MiniAppPath *string `json:"MiniAppPath,omitnil,omitempty" name:"MiniAppPath"`
+
+	// 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+	ExpireTime *int64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyPartnerAutoSignAuthUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyPartnerAutoSignAuthUrlResponseParams `json:"Response"`
+}
+
+func (r *ModifyPartnerAutoSignAuthUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPartnerAutoSignAuthUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

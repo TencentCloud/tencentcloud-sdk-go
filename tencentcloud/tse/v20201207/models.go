@@ -5363,6 +5363,9 @@ type DescribeCloudNativeAPIGatewayResult struct {
 
 	// 公网IP地址列表
 	PublicIpAddresses []*string `json:"PublicIpAddresses,omitnil,omitempty" name:"PublicIpAddresses"`
+
+	// 是否开启删除保护
+	DeleteProtect *bool `json:"DeleteProtect,omitnil,omitempty" name:"DeleteProtect"`
 }
 
 // Predefined struct for user
@@ -9815,6 +9818,9 @@ type ModifyCloudNativeAPIGatewayRequestParams struct {
 
 	// 公网计费模式。可选取值 BANDWIDTH | TRAFFIC ，表示按带宽和按流量计费。
 	InternetPayMode *string `json:"InternetPayMode,omitnil,omitempty" name:"InternetPayMode"`
+
+	// 是否开启实例删除保护,默认false
+	DeleteProtect *bool `json:"DeleteProtect,omitnil,omitempty" name:"DeleteProtect"`
 }
 
 type ModifyCloudNativeAPIGatewayRequest struct {
@@ -9834,6 +9840,9 @@ type ModifyCloudNativeAPIGatewayRequest struct {
 
 	// 公网计费模式。可选取值 BANDWIDTH | TRAFFIC ，表示按带宽和按流量计费。
 	InternetPayMode *string `json:"InternetPayMode,omitnil,omitempty" name:"InternetPayMode"`
+
+	// 是否开启实例删除保护,默认false
+	DeleteProtect *bool `json:"DeleteProtect,omitnil,omitempty" name:"DeleteProtect"`
 }
 
 func (r *ModifyCloudNativeAPIGatewayRequest) ToJsonString() string {
@@ -9853,6 +9862,7 @@ func (r *ModifyCloudNativeAPIGatewayRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "EnableCls")
 	delete(f, "InternetPayMode")
+	delete(f, "DeleteProtect")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudNativeAPIGatewayRequest has unknown keys!", "")
 	}

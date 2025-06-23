@@ -288,6 +288,7 @@ func NewCancelFlowResponse() (response *CancelFlowResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_LICENSEHASEXPIRED = "OperationDenied.LicenseHasExpired"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
@@ -338,6 +339,7 @@ func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowRes
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_LICENSEHASEXPIRED = "OperationDenied.LicenseHasExpired"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
@@ -1458,11 +1460,14 @@ func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
 //  FAILEDOPERATION_TEMPLATEHASNORESOURCE = "FailedOperation.TemplateHasNoResource"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_COS = "InternalError.Cos"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+//  INTERNALERROR_DBDATADELETED = "InternalError.DbDataDeleted"
 //  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
 //  INTERNALERROR_DBNOROWFOUND = "InternalError.DbNoRowFound"
 //  INTERNALERROR_JSONMARSHAL = "InternalError.JsonMarshal"
+//  INTERNALERROR_JSONUNMARSHAL = "InternalError.JsonUnmarshal"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
@@ -1594,11 +1599,14 @@ func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *Creat
 //  FAILEDOPERATION_TEMPLATEHASNORESOURCE = "FailedOperation.TemplateHasNoResource"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_COS = "InternalError.Cos"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+//  INTERNALERROR_DBDATADELETED = "InternalError.DbDataDeleted"
 //  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
 //  INTERNALERROR_DBNOROWFOUND = "InternalError.DbNoRowFound"
 //  INTERNALERROR_JSONMARSHAL = "InternalError.JsonMarshal"
+//  INTERNALERROR_JSONUNMARSHAL = "InternalError.JsonUnmarshal"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
@@ -1830,6 +1838,8 @@ func NewCreateEmbedWebUrlResponse() (response *CreateEmbedWebUrlResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_LICENSEHASEXPIRED = "OperationDenied.LicenseHasExpired"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -1875,6 +1885,8 @@ func (c *Client) CreateEmbedWebUrl(request *CreateEmbedWebUrlRequest) (response 
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_LICENSEHASEXPIRED = "OperationDenied.LicenseHasExpired"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -3148,6 +3160,7 @@ func NewCreateFlowByFilesResponse() (response *CreateFlowByFilesResponse) {
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INTERNALERROR_JSONMARSHAL = "InternalError.JsonMarshal"
+//  INTERNALERROR_MQ = "InternalError.Mq"
 //  INTERNALERROR_PDF = "InternalError.Pdf"
 //  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -3157,8 +3170,10 @@ func NewCreateFlowByFilesResponse() (response *CreateFlowByFilesResponse) {
 //  INVALIDPARAMETER_CCNUM = "InvalidParameter.CcNum"
 //  INVALIDPARAMETER_CLIENTTOKEN = "InvalidParameter.ClientToken"
 //  INVALIDPARAMETER_COMPONENTFILEINDEX = "InvalidParameter.ComponentFileIndex"
+//  INVALIDPARAMETER_COMPONENTINVALID = "InvalidParameter.ComponentInvalid"
 //  INVALIDPARAMETER_COMPONENTPAGE = "InvalidParameter.ComponentPage"
 //  INVALIDPARAMETER_COMPONENTPOSITION = "InvalidParameter.ComponentPosition"
+//  INVALIDPARAMETER_COMPONENTTYPE = "InvalidParameter.ComponentType"
 //  INVALIDPARAMETER_COMPONENTTYPENOMATCHVALUE = "InvalidParameter.ComponentTypeNoMatchValue"
 //  INVALIDPARAMETER_COMPONENTVALUE = "InvalidParameter.ComponentValue"
 //  INVALIDPARAMETER_CUSTOMSHOWMAP = "InvalidParameter.CustomShowMap"
@@ -3232,6 +3247,7 @@ func NewCreateFlowByFilesResponse() (response *CreateFlowByFilesResponse) {
 //  OPERATIONDENIED_NOSUPPORTCOMPONENTTYPE = "OperationDenied.NoSupportComponentType"
 //  OPERATIONDENIED_NOSUPPORTJUMPPAGE = "OperationDenied.NoSupportJumpPage"
 //  OPERATIONDENIED_ORGUNIFORMSOCIALCREDITCODEERR = "OperationDenied.OrgUniformSocialCreditCodeErr"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
 //  OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
 //  OPERATIONDENIED_OVERSEAFORBID = "OperationDenied.OverSeaForbid"
@@ -3383,6 +3399,7 @@ func (c *Client) CreateFlowByFiles(request *CreateFlowByFilesRequest) (response 
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INTERNALERROR_JSONMARSHAL = "InternalError.JsonMarshal"
+//  INTERNALERROR_MQ = "InternalError.Mq"
 //  INTERNALERROR_PDF = "InternalError.Pdf"
 //  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -3392,8 +3409,10 @@ func (c *Client) CreateFlowByFiles(request *CreateFlowByFilesRequest) (response 
 //  INVALIDPARAMETER_CCNUM = "InvalidParameter.CcNum"
 //  INVALIDPARAMETER_CLIENTTOKEN = "InvalidParameter.ClientToken"
 //  INVALIDPARAMETER_COMPONENTFILEINDEX = "InvalidParameter.ComponentFileIndex"
+//  INVALIDPARAMETER_COMPONENTINVALID = "InvalidParameter.ComponentInvalid"
 //  INVALIDPARAMETER_COMPONENTPAGE = "InvalidParameter.ComponentPage"
 //  INVALIDPARAMETER_COMPONENTPOSITION = "InvalidParameter.ComponentPosition"
+//  INVALIDPARAMETER_COMPONENTTYPE = "InvalidParameter.ComponentType"
 //  INVALIDPARAMETER_COMPONENTTYPENOMATCHVALUE = "InvalidParameter.ComponentTypeNoMatchValue"
 //  INVALIDPARAMETER_COMPONENTVALUE = "InvalidParameter.ComponentValue"
 //  INVALIDPARAMETER_CUSTOMSHOWMAP = "InvalidParameter.CustomShowMap"
@@ -3467,6 +3486,7 @@ func (c *Client) CreateFlowByFiles(request *CreateFlowByFilesRequest) (response 
 //  OPERATIONDENIED_NOSUPPORTCOMPONENTTYPE = "OperationDenied.NoSupportComponentType"
 //  OPERATIONDENIED_NOSUPPORTJUMPPAGE = "OperationDenied.NoSupportJumpPage"
 //  OPERATIONDENIED_ORGUNIFORMSOCIALCREDITCODEERR = "OperationDenied.OrgUniformSocialCreditCodeErr"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
 //  OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
 //  OPERATIONDENIED_OVERSEAFORBID = "OperationDenied.OverSeaForbid"
@@ -3809,6 +3829,7 @@ func NewCreateFlowGroupByFilesResponse() (response *CreateFlowGroupByFilesRespon
 //  INVALIDPARAMETER_FLOWCALLBACKURL = "InvalidParameter.FlowCallbackUrl"
 //  INVALIDPARAMETER_FLOWDEADLINE = "InvalidParameter.FlowDeadLine"
 //  INVALIDPARAMETER_FLOWDESCRIPTION = "InvalidParameter.FlowDescription"
+//  INVALIDPARAMETER_FLOWFILEIDS = "InvalidParameter.FlowFileIds"
 //  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
 //  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
 //  INVALIDPARAMETER_FLOWUSERDATA = "InvalidParameter.FlowUserData"
@@ -3986,6 +4007,7 @@ func (c *Client) CreateFlowGroupByFiles(request *CreateFlowGroupByFilesRequest) 
 //  INVALIDPARAMETER_FLOWCALLBACKURL = "InvalidParameter.FlowCallbackUrl"
 //  INVALIDPARAMETER_FLOWDEADLINE = "InvalidParameter.FlowDeadLine"
 //  INVALIDPARAMETER_FLOWDESCRIPTION = "InvalidParameter.FlowDescription"
+//  INVALIDPARAMETER_FLOWFILEIDS = "InvalidParameter.FlowFileIds"
 //  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
 //  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
 //  INVALIDPARAMETER_FLOWUSERDATA = "InvalidParameter.FlowUserData"
@@ -6082,6 +6104,7 @@ func NewCreateOrganizationAuthUrlResponse() (response *CreateOrganizationAuthUrl
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_AUTHORIZATIONTYPE = "InvalidParameter.AuthorizationType"
 //  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
+//  INVALIDPARAMETER_FILETYPE = "InvalidParameter.FileType"
 //  INVALIDPARAMETER_JUMPURL = "InvalidParameter.JumpUrl"
 //  MISSINGPARAMETER_ORGANIZATIONID = "MissingParameter.OrganizationId"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
@@ -6126,6 +6149,7 @@ func (c *Client) CreateOrganizationAuthUrl(request *CreateOrganizationAuthUrlReq
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_AUTHORIZATIONTYPE = "InvalidParameter.AuthorizationType"
 //  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
+//  INVALIDPARAMETER_FILETYPE = "InvalidParameter.FileType"
 //  INVALIDPARAMETER_JUMPURL = "InvalidParameter.JumpUrl"
 //  MISSINGPARAMETER_ORGANIZATIONID = "MissingParameter.OrganizationId"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
@@ -11756,6 +11780,93 @@ func (c *Client) ModifyIntegrationRoleWithContext(ctx context.Context, request *
     return
 }
 
+func NewModifyPartnerAutoSignAuthUrlRequest() (request *ModifyPartnerAutoSignAuthUrlRequest) {
+    request = &ModifyPartnerAutoSignAuthUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "ModifyPartnerAutoSignAuthUrl")
+    
+    
+    return
+}
+
+func NewModifyPartnerAutoSignAuthUrlResponse() (response *ModifyPartnerAutoSignAuthUrlResponse) {
+    response = &ModifyPartnerAutoSignAuthUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyPartnerAutoSignAuthUrl
+// 创建一个用于更新他方自动签授权的链接（可选择他方授权或我方授权）。通过这个链接，合作方企业可以直接进入小程序，进行自动签授权的更新（更新印章）操作。
+//
+// 
+//
+// 如果授权企业尚未开通企业自动签功能，该链接还将引导他们首先开通本企业的自动签服务
+//
+// 
+//
+// 注: 
+//
+// 1. <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Operator.UserId 需要传递超管或者法人的UserId)
+//
+// 2. 只能更新授权的印章，被授权的企业无法更新
+//
+// 3. 授权企业和被授权企业必须都是已认证企业
+//
+// 4. <font color='red'>需要授权企业或被授权企业的超管或者法人打开链接</font>走开通逻辑。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ModifyPartnerAutoSignAuthUrl(request *ModifyPartnerAutoSignAuthUrlRequest) (response *ModifyPartnerAutoSignAuthUrlResponse, err error) {
+    return c.ModifyPartnerAutoSignAuthUrlWithContext(context.Background(), request)
+}
+
+// ModifyPartnerAutoSignAuthUrl
+// 创建一个用于更新他方自动签授权的链接（可选择他方授权或我方授权）。通过这个链接，合作方企业可以直接进入小程序，进行自动签授权的更新（更新印章）操作。
+//
+// 
+//
+// 如果授权企业尚未开通企业自动签功能，该链接还将引导他们首先开通本企业的自动签服务
+//
+// 
+//
+// 注: 
+//
+// 1. <font color='red'>所在企业的超管、法人才有权限调用此接口</font>(Operator.UserId 需要传递超管或者法人的UserId)
+//
+// 2. 只能更新授权的印章，被授权的企业无法更新
+//
+// 3. 授权企业和被授权企业必须都是已认证企业
+//
+// 4. <font color='red'>需要授权企业或被授权企业的超管或者法人打开链接</font>走开通逻辑。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ModifyPartnerAutoSignAuthUrlWithContext(ctx context.Context, request *ModifyPartnerAutoSignAuthUrlRequest) (response *ModifyPartnerAutoSignAuthUrlResponse, err error) {
+    if request == nil {
+        request = NewModifyPartnerAutoSignAuthUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPartnerAutoSignAuthUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPartnerAutoSignAuthUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOperateSealsRequest() (request *OperateSealsRequest) {
     request = &OperateSealsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11780,12 +11891,8 @@ func NewOperateSealsResponse() (response *OperateSealsResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) OperateSeals(request *OperateSealsRequest) (response *OperateSealsResponse, err error) {
     return c.OperateSealsWithContext(context.Background(), request)
@@ -11796,12 +11903,8 @@ func (c *Client) OperateSeals(request *OperateSealsRequest) (response *OperateSe
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) OperateSealsWithContext(ctx context.Context, request *OperateSealsRequest) (response *OperateSealsResponse, err error) {
     if request == nil {

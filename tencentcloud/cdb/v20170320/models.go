@@ -58,7 +58,7 @@ type AccountInfo struct {
 
 // Predefined struct for user
 type AddTimeWindowRequestParams struct {
-	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 星期一的可维护时间段，其中每一个时间段的格式形如：10:00-12:00；起始时间按半个小时对齐；最短半个小时，最长三个小时；可设置多个时间段。 一周中应至少设置一天的时间窗。下同。
@@ -82,14 +82,14 @@ type AddTimeWindowRequestParams struct {
 	// 星期日的可维护时间窗口。 一周中应至少设置一天的时间窗。
 	Sunday []*string `json:"Sunday,omitnil,omitempty" name:"Sunday"`
 
-	// 最大延迟阈值，仅对主实例和灾备实例有效。
+	// 最大延迟阈值（秒），仅对主实例和灾备实例有效。默认值：10，取值范围：1-10的整数。
 	MaxDelayTime *uint64 `json:"MaxDelayTime,omitnil,omitempty" name:"MaxDelayTime"`
 }
 
 type AddTimeWindowRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 星期一的可维护时间段，其中每一个时间段的格式形如：10:00-12:00；起始时间按半个小时对齐；最短半个小时，最长三个小时；可设置多个时间段。 一周中应至少设置一天的时间窗。下同。
@@ -113,7 +113,7 @@ type AddTimeWindowRequest struct {
 	// 星期日的可维护时间窗口。 一周中应至少设置一天的时间窗。
 	Sunday []*string `json:"Sunday,omitnil,omitempty" name:"Sunday"`
 
-	// 最大延迟阈值，仅对主实例和灾备实例有效。
+	// 最大延迟阈值（秒），仅对主实例和灾备实例有效。默认值：10，取值范围：1-10的整数。
 	MaxDelayTime *uint64 `json:"MaxDelayTime,omitnil,omitempty" name:"MaxDelayTime"`
 }
 
@@ -955,10 +955,10 @@ type AutoStrategy struct {
 	// Deprecated: ShrinkPeriod is deprecated.
 	ShrinkPeriod *int64 `json:"ShrinkPeriod,omitnil,omitempty" name:"ShrinkPeriod"`
 
-	// 弹性扩容观测周期（秒级）
+	// 弹性扩容观测周期（秒级），可取值为：5，30，45，60，180，300，600，900，1800。
 	ExpandSecondPeriod *int64 `json:"ExpandSecondPeriod,omitnil,omitempty" name:"ExpandSecondPeriod"`
 
-	// 缩容观测周期（秒级）
+	// 缩容观测周期（秒级），可取值为：300。
 	ShrinkSecondPeriod *int64 `json:"ShrinkSecondPeriod,omitnil,omitempty" name:"ShrinkSecondPeriod"`
 }
 
@@ -1094,14 +1094,14 @@ type BackupSummaryItem struct {
 
 // Predefined struct for user
 type BalanceRoGroupLoadRequestParams struct {
-	// RO 组的 ID，格式如：cdbrg-c1nl9rpv。
+	// RO 组的 ID，格式如：cdbrg-c1nl9rpv。可通过 [DescribeRoGroups](https://cloud.tencent.com/document/api/236/40939) 获取。
 	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
 }
 
 type BalanceRoGroupLoadRequest struct {
 	*tchttp.BaseRequest
 	
-	// RO 组的 ID，格式如：cdbrg-c1nl9rpv。
+	// RO 组的 ID，格式如：cdbrg-c1nl9rpv。可通过 [DescribeRoGroups](https://cloud.tencent.com/document/api/236/40939) 获取。
 	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
 }
 
@@ -1735,20 +1735,20 @@ func (r *CloseSSLResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CloseWanServiceRequestParams struct {
-	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。可传入只读组 ID 关闭只读组外网访问。 
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 变更集群版实例只读组时，InstanceId传实例id，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+	// 变更云盘版实例只读组时，InstanceId 传实例 ID，需要额外指定该参数表示操作只读组。如果操作读写节点则不需指定该参数。
 	OpResourceId *string `json:"OpResourceId,omitnil,omitempty" name:"OpResourceId"`
 }
 
 type CloseWanServiceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。可传入只读组 ID 关闭只读组外网访问。 
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 变更集群版实例只读组时，InstanceId传实例id，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+	// 变更云盘版实例只读组时，InstanceId 传实例 ID，需要额外指定该参数表示操作只读组。如果操作读写节点则不需指定该参数。
 	OpResourceId *string `json:"OpResourceId,omitnil,omitempty" name:"OpResourceId"`
 }
 
@@ -13257,6 +13257,7 @@ type ModifyDBInstanceProjectRequestParams struct {
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 实例所属项目的 ID，可在账号中心下的项目管理页面查询。
+	// 说明：此项为必填。
 	NewProjectId *int64 `json:"NewProjectId,omitnil,omitempty" name:"NewProjectId"`
 }
 
@@ -13272,6 +13273,7 @@ type ModifyDBInstanceProjectRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 实例所属项目的 ID，可在账号中心下的项目管理页面查询。
+	// 说明：此项为必填。
 	NewProjectId *int64 `json:"NewProjectId,omitnil,omitempty" name:"NewProjectId"`
 }
 
@@ -13460,10 +13462,10 @@ type ModifyDBInstanceVipVportRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c2nl9rpv 或者 cdbrg-c3nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 目标 IP。该参数和 DstPort 参数，两者必传一个。
+	// 目标 IP。
 	DstIp *string `json:"DstIp,omitnil,omitempty" name:"DstIp"`
 
-	// 目标端口，支持范围为：[1024-65535]。该参数和 DstIp 参数，两者必传一个。
+	// 目标端口，支持范围为：[1024-65535]。
 	DstPort *int64 `json:"DstPort,omitnil,omitempty" name:"DstPort"`
 
 	// 私有网络统一 ID。
@@ -13485,10 +13487,10 @@ type ModifyDBInstanceVipVportRequest struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c2nl9rpv 或者 cdbrg-c3nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 目标 IP。该参数和 DstPort 参数，两者必传一个。
+	// 目标 IP。
 	DstIp *string `json:"DstIp,omitnil,omitempty" name:"DstIp"`
 
-	// 目标端口，支持范围为：[1024-65535]。该参数和 DstIp 参数，两者必传一个。
+	// 目标端口，支持范围为：[1024-65535]。
 	DstPort *int64 `json:"DstPort,omitnil,omitempty" name:"DstPort"`
 
 	// 私有网络统一 ID。
@@ -14251,7 +14253,7 @@ func (r *ModifyRoGroupInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTimeWindowRequestParams struct {
-	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 修改后的可维护时间段，其中每一个时间段的格式形如：10:00-12:00；起止时间按半个小时对齐；最短半个小时，最长三个小时；最多设置两个时间段；起止时间范围为：[00:00, 24:00]。
@@ -14270,14 +14272,14 @@ type ModifyTimeWindowRequestParams struct {
 	//   ]
 	Weekdays []*string `json:"Weekdays,omitnil,omitempty" name:"Weekdays"`
 
-	// 数据延迟阈值，仅对主实例和灾备实例有效，不传默认修改为10
+	// 数据延迟阈值（秒），仅对主实例和灾备实例有效。不传默认不修改，保持原来的阈值，取值范围：1-10的整数。
 	MaxDelayTime *uint64 `json:"MaxDelayTime,omitnil,omitempty" name:"MaxDelayTime"`
 }
 
 type ModifyTimeWindowRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 修改后的可维护时间段，其中每一个时间段的格式形如：10:00-12:00；起止时间按半个小时对齐；最短半个小时，最长三个小时；最多设置两个时间段；起止时间范围为：[00:00, 24:00]。
@@ -14296,7 +14298,7 @@ type ModifyTimeWindowRequest struct {
 	//   ]
 	Weekdays []*string `json:"Weekdays,omitnil,omitempty" name:"Weekdays"`
 
-	// 数据延迟阈值，仅对主实例和灾备实例有效，不传默认修改为10
+	// 数据延迟阈值（秒），仅对主实例和灾备实例有效。不传默认不修改，保持原来的阈值，取值范围：1-10的整数。
 	MaxDelayTime *uint64 `json:"MaxDelayTime,omitnil,omitempty" name:"MaxDelayTime"`
 }
 
@@ -15510,6 +15512,7 @@ type RoGroup struct {
 	RoGroupMode *string `json:"RoGroupMode,omitnil,omitempty" name:"RoGroupMode"`
 
 	// 只读组 ID。
+	// 说明：若此数据结构在购买实例操作中被使用，则当只读组模式选择 join 时，此项为必填。
 	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
 
 	// 只读组名称。
@@ -15518,7 +15521,7 @@ type RoGroup struct {
 	// 是否启用延迟超限剔除功能，启用该功能后，只读实例与主实例的延迟超过延迟阈值，只读实例将被隔离。可选值：1-启用；0-不启用。
 	RoOfflineDelay *int64 `json:"RoOfflineDelay,omitnil,omitempty" name:"RoOfflineDelay"`
 
-	// 延迟阈值。
+	// 延迟阈值。单位：秒。值范围：1-10000，整数。
 	RoMaxDelayTime *int64 `json:"RoMaxDelayTime,omitnil,omitempty" name:"RoMaxDelayTime"`
 
 	// 最少实例保留个数，若购买只读实例数量小于设置数量将不做剔除。
@@ -15551,7 +15554,7 @@ type RoGroup struct {
 	// 只读组所在的可用区。
 	RoGroupZone *string `json:"RoGroupZone,omitnil,omitempty" name:"RoGroupZone"`
 
-	// 延迟复制时间。
+	// 延迟复制时间。单位：秒。值范围：1-259200，整数。
 	DelayReplicationTime *int64 `json:"DelayReplicationTime,omitnil,omitempty" name:"DelayReplicationTime"`
 }
 
@@ -16085,14 +16088,14 @@ func (r *StartCpuExpandResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StartReplicationRequestParams struct {
-	// 实例 ID。仅支持只读实例。
+	// 实例 ID。仅支持只读实例。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type StartReplicationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。仅支持只读实例。
+	// 实例 ID。仅支持只读实例。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -16142,14 +16145,14 @@ func (r *StartReplicationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopCpuExpandRequestParams struct {
-	// 实例 ID 。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type StopCpuExpandRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID 。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -16174,7 +16177,7 @@ func (r *StopCpuExpandRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopCpuExpandResponseParams struct {
-	// 异步任务 ID 。可以调用DescribeAsyncRequest 传入该 ID ，进行任务执行进度的查询
+	// 异步任务 ID。在调用 [DescribeAsyncRequestInfo](https://cloud.tencent.com/document/api/236/20410) 进行任务执行进度的查询时，可以传入该 ID。
 	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16253,14 +16256,14 @@ func (r *StopDBImportJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type StopReplicationRequestParams struct {
-	// 实例 ID。仅支持只读实例。
+	// 实例 ID。仅支持只读实例。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type StopReplicationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。仅支持只读实例。
+	// 实例 ID。仅支持只读实例。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -16843,11 +16846,11 @@ type TimeInterval struct {
 
 type TimeIntervalStrategy struct {
 	// 开始扩容时间。
-	// 说明：此值的格式为 Integer 的时间戳。
+	// 说明：此值的格式为 Integer 的时间戳（秒级）。
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束扩容时间。
-	// 说明：此值的格式为 Integer 的时间戳。
+	// 说明：此值的格式为 Integer 的时间戳（秒级）。
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 

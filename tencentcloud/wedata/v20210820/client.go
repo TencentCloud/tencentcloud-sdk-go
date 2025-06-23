@@ -6451,6 +6451,87 @@ func (c *Client) DescribeIntegrationVersionNodesInfoWithContext(ctx context.Cont
     return
 }
 
+func NewDescribeManualTriggerRecordPageRequest() (request *DescribeManualTriggerRecordPageRequest) {
+    request = &DescribeManualTriggerRecordPageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeManualTriggerRecordPage")
+    
+    
+    return
+}
+
+func NewDescribeManualTriggerRecordPageResponse() (response *DescribeManualTriggerRecordPageResponse) {
+    response = &DescribeManualTriggerRecordPageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeManualTriggerRecordPage
+// 查询手动任务触发记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeManualTriggerRecordPage(request *DescribeManualTriggerRecordPageRequest) (response *DescribeManualTriggerRecordPageResponse, err error) {
+    return c.DescribeManualTriggerRecordPageWithContext(context.Background(), request)
+}
+
+// DescribeManualTriggerRecordPage
+// 查询手动任务触发记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeManualTriggerRecordPageWithContext(ctx context.Context, request *DescribeManualTriggerRecordPageRequest) (response *DescribeManualTriggerRecordPageResponse, err error) {
+    if request == nil {
+        request = NewDescribeManualTriggerRecordPageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeManualTriggerRecordPage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeManualTriggerRecordPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOfflineTaskTokenRequest() (request *DescribeOfflineTaskTokenRequest) {
     request = &DescribeOfflineTaskTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12708,6 +12789,55 @@ func (c *Client) ModifyTaskInfoWithContext(ctx context.Context, request *ModifyT
     return
 }
 
+func NewModifyTaskInfoDsRequest() (request *ModifyTaskInfoDsRequest) {
+    request = &ModifyTaskInfoDsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ModifyTaskInfoDs")
+    
+    
+    return
+}
+
+func NewModifyTaskInfoDsResponse() (response *ModifyTaskInfoDsResponse) {
+    response = &ModifyTaskInfoDsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyTaskInfoDs
+// 更新任务Ds
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyTaskInfoDs(request *ModifyTaskInfoDsRequest) (response *ModifyTaskInfoDsResponse, err error) {
+    return c.ModifyTaskInfoDsWithContext(context.Background(), request)
+}
+
+// ModifyTaskInfoDs
+// 更新任务Ds
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyTaskInfoDsWithContext(ctx context.Context, request *ModifyTaskInfoDsRequest) (response *ModifyTaskInfoDsResponse, err error) {
+    if request == nil {
+        request = NewModifyTaskInfoDsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTaskInfoDs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTaskInfoDsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyTaskLinksRequest() (request *ModifyTaskLinksRequest) {
     request = &ModifyTaskLinksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12734,7 +12864,6 @@ func NewModifyTaskLinksResponse() (response *ModifyTaskLinksResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyTaskLinks(request *ModifyTaskLinksRequest) (response *ModifyTaskLinksResponse, err error) {
     return c.ModifyTaskLinksWithContext(context.Background(), request)
 }
@@ -12746,7 +12875,6 @@ func (c *Client) ModifyTaskLinks(request *ModifyTaskLinksRequest) (response *Mod
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) ModifyTaskLinksWithContext(ctx context.Context, request *ModifyTaskLinksRequest) (response *ModifyTaskLinksResponse, err error) {
     if request == nil {
         request = NewModifyTaskLinksRequest()

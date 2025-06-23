@@ -8243,6 +8243,9 @@ type InstanceAttributesResponse struct {
 
 	// 集群topic默认 unclean.leader.election.enable配置: 1 开启 0 关闭
 	UncleanLeaderElectionEnable *int64 `json:"UncleanLeaderElectionEnable,omitnil,omitempty" name:"UncleanLeaderElectionEnable"`
+
+	// 实例删除保护开关: 1 开启 0 关闭
+	DeleteProtectionEnable *int64 `json:"DeleteProtectionEnable,omitnil,omitempty" name:"DeleteProtectionEnable"`
 }
 
 type InstanceChargeParam struct {
@@ -9237,6 +9240,9 @@ type ModifyInstanceAttributesRequestParams struct {
 
 	// 集群topic默认 unclean.leader.election.enable配置: 1 开启  0 关闭
 	UncleanLeaderElectionEnable *int64 `json:"UncleanLeaderElectionEnable,omitnil,omitempty" name:"UncleanLeaderElectionEnable"`
+
+	// 实例删除保护开关: 1 开启  0 关闭
+	DeleteProtectionEnable *int64 `json:"DeleteProtectionEnable,omitnil,omitempty" name:"DeleteProtectionEnable"`
 }
 
 type ModifyInstanceAttributesRequest struct {
@@ -9271,6 +9277,9 @@ type ModifyInstanceAttributesRequest struct {
 
 	// 集群topic默认 unclean.leader.election.enable配置: 1 开启  0 关闭
 	UncleanLeaderElectionEnable *int64 `json:"UncleanLeaderElectionEnable,omitnil,omitempty" name:"UncleanLeaderElectionEnable"`
+
+	// 实例删除保护开关: 1 开启  0 关闭
+	DeleteProtectionEnable *int64 `json:"DeleteProtectionEnable,omitnil,omitempty" name:"DeleteProtectionEnable"`
 }
 
 func (r *ModifyInstanceAttributesRequest) ToJsonString() string {
@@ -9295,6 +9304,7 @@ func (r *ModifyInstanceAttributesRequest) FromJsonString(s string) error {
 	delete(f, "DynamicDiskConfig")
 	delete(f, "MaxMessageByte")
 	delete(f, "UncleanLeaderElectionEnable")
+	delete(f, "DeleteProtectionEnable")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceAttributesRequest has unknown keys!", "")
 	}

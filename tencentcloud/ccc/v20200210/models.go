@@ -5738,6 +5738,31 @@ func (r *ForceMemberOfflineResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ForwardingConfig struct {
+	// 是否启用
+	Enabled *bool `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 1 无条件呼转 2 有条件呼转
+	Condition *int64 `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 呼转目标
+	Target *ForwardingTarget `json:"Target,omitnil,omitempty" name:"Target"`
+}
+
+type ForwardingTarget struct {
+	// 呼转目标类型 1 座席 2 技能组 3 分机
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 呼转目标为座席的账号 Type 为 1 时填写
+	StaffUserId *string `json:"StaffUserId,omitnil,omitempty" name:"StaffUserId"`
+
+	// 呼转目标为技能组的 ID，Type 为 2 时填写
+	SkillGroupId *int64 `json:"SkillGroupId,omitnil,omitempty" name:"SkillGroupId"`
+
+	// 呼转目标为分机的账号，Type 为 3 时填写
+	Extension *string `json:"Extension,omitnil,omitempty" name:"Extension"`
+}
+
 // Predefined struct for user
 type HangUpCallRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
@@ -6890,8 +6915,7 @@ type StaffInfo struct {
 	// 座席工号
 	StaffNumber *string `json:"StaffNumber,omitnil,omitempty" name:"StaffNumber"`
 
-	// 用户角色id
-	// 一个用户绑定了多个角色时以RoleIdList为准
+	// 用户角色 ID，一个用户绑定了多个角色时以RoleIdList为准
 	//
 	// Deprecated: RoleId is deprecated.
 	RoleId *uint64 `json:"RoleId,omitnil,omitempty" name:"RoleId"`
@@ -6912,6 +6936,9 @@ type StaffInfo struct {
 
 	// 座席分机号（1 到 8 打头，4 - 6 位）
 	ExtensionNumber *string `json:"ExtensionNumber,omitnil,omitempty" name:"ExtensionNumber"`
+
+	// 呼叫转移配置
+	ForwardingConfig *ForwardingConfig `json:"ForwardingConfig,omitnil,omitempty" name:"ForwardingConfig"`
 }
 
 type StaffSkillGroupList struct {

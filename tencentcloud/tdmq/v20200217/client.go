@@ -4631,7 +4631,7 @@ func NewDescribeRabbitMQVipInstanceResponse() (response *DescribeRabbitMQVipInst
 }
 
 // DescribeRabbitMQVipInstance
-// 获取单个RabbitMQ专享实例信息
+// 获取单个 RabbitMQ 托管版实例信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4644,7 +4644,7 @@ func (c *Client) DescribeRabbitMQVipInstance(request *DescribeRabbitMQVipInstanc
 }
 
 // DescribeRabbitMQVipInstance
-// 获取单个RabbitMQ专享实例信息
+// 获取单个 RabbitMQ 托管版实例信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4688,7 +4688,7 @@ func NewDescribeRabbitMQVipInstancesResponse() (response *DescribeRabbitMQVipIns
 }
 
 // DescribeRabbitMQVipInstances
-// 查询用户已购的RabbitMQ专享实例列表
+// 查询用户已购的 RabbitMQ 托管版实例列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4701,7 +4701,7 @@ func (c *Client) DescribeRabbitMQVipInstances(request *DescribeRabbitMQVipInstan
 }
 
 // DescribeRabbitMQVipInstances
-// 查询用户已购的RabbitMQ专享实例列表
+// 查询用户已购的 RabbitMQ 托管版实例列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
