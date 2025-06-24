@@ -1695,6 +1695,8 @@ func NewCreateDynamicFlowApproverResponse() (response *CreateDynamicFlowApprover
 //
 // - 此接口只能在合同处于非终态时调用。一旦合同进入终态（例如：过期、拒签或撤销），将无法通过此接口添加新的签署方。
 //
+// - 此接口补充的动态签署人暂不支持他方企业自动签署。
+//
 // 
 //
 // 
@@ -1741,6 +1743,8 @@ func (c *Client) CreateDynamicFlowApprover(request *CreateDynamicFlowApproverReq
 // - 在发起合同时，必须将OpenDynamicSignFlow参数设置为true，以确保合同以动态签署方2.0的方式处理，否则默认处理为普通合同。
 //
 // - 此接口只能在合同处于非终态时调用。一旦合同进入终态（例如：过期、拒签或撤销），将无法通过此接口添加新的签署方。
+//
+// - 此接口补充的动态签署人暂不支持他方企业自动签署。
 //
 // 
 //
@@ -7566,6 +7570,7 @@ func NewCreateSchemeUrlResponse() (response *CreateSchemeUrlResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PATHTYPEERROR = "FailedOperation.PathTypeError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBREAD = "InternalError.DbRead"
@@ -7579,6 +7584,7 @@ func NewCreateSchemeUrlResponse() (response *CreateSchemeUrlResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_LICENSEHASEXPIRED = "OperationDenied.LicenseHasExpired"
 //  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
@@ -7631,6 +7637,7 @@ func (c *Client) CreateSchemeUrl(request *CreateSchemeUrlRequest) (response *Cre
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PATHTYPEERROR = "FailedOperation.PathTypeError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBREAD = "InternalError.DbRead"
@@ -7644,6 +7651,7 @@ func (c *Client) CreateSchemeUrl(request *CreateSchemeUrlRequest) (response *Cre
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_LICENSEHASEXPIRED = "OperationDenied.LicenseHasExpired"
 //  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
@@ -7703,6 +7711,9 @@ func NewCreateSealResponse() (response *CreateSealResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FAILEDCONVERTOQIWEIUSERID = "FailedOperation.FailedConverToQiWeiUserId"
+//  FAILEDOPERATION_FAILEDOPENWKAPPREVIEW = "FailedOperation.FailedOpenWkAppReview"
+//  FAILEDOPERATION_FAILEDUPDATETEMPLATEOPERATION = "FailedOperation.FailedUpdateTemplateOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
@@ -7714,7 +7725,9 @@ func NewCreateSealResponse() (response *CreateSealResponse) {
 //  OPERATIONDENIED_ALREADYHAS = "OperationDenied.AlreadyHas"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
+//  RESOURCENOTFOUND_WEWORKUSER = "ResourceNotFound.WeWorkUser"
 func (c *Client) CreateSeal(request *CreateSealRequest) (response *CreateSealResponse, err error) {
     return c.CreateSealWithContext(context.Background(), request)
 }
@@ -7734,6 +7747,9 @@ func (c *Client) CreateSeal(request *CreateSealRequest) (response *CreateSealRes
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FAILEDCONVERTOQIWEIUSERID = "FailedOperation.FailedConverToQiWeiUserId"
+//  FAILEDOPERATION_FAILEDOPENWKAPPREVIEW = "FailedOperation.FailedOpenWkAppReview"
+//  FAILEDOPERATION_FAILEDUPDATETEMPLATEOPERATION = "FailedOperation.FailedUpdateTemplateOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
@@ -7745,7 +7761,9 @@ func (c *Client) CreateSeal(request *CreateSealRequest) (response *CreateSealRes
 //  OPERATIONDENIED_ALREADYHAS = "OperationDenied.AlreadyHas"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
+//  RESOURCENOTFOUND_WEWORKUSER = "ResourceNotFound.WeWorkUser"
 func (c *Client) CreateSealWithContext(ctx context.Context, request *CreateSealRequest) (response *CreateSealResponse, err error) {
     if request == nil {
         request = NewCreateSealRequest()
@@ -7791,6 +7809,7 @@ func NewCreateSealPolicyResponse() (response *CreateSealPolicyResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -7808,6 +7827,7 @@ func (c *Client) CreateSealPolicy(request *CreateSealPolicyRequest) (response *C
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -9263,6 +9283,7 @@ func NewDescribeExtendedServiceAuthInfosResponse() (response *DescribeExtendedSe
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeExtendedServiceAuthInfos(request *DescribeExtendedServiceAuthInfosRequest) (response *DescribeExtendedServiceAuthInfosResponse, err error) {
@@ -9317,6 +9338,7 @@ func (c *Client) DescribeExtendedServiceAuthInfos(request *DescribeExtendedServi
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeExtendedServiceAuthInfosWithContext(ctx context.Context, request *DescribeExtendedServiceAuthInfosRequest) (response *DescribeExtendedServiceAuthInfosResponse, err error) {
@@ -10269,8 +10291,11 @@ func NewDescribeIntegrationEmployeesResponse() (response *DescribeIntegrationEmp
 //  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_LICENSEHASEXPIRED = "OperationDenied.LicenseHasExpired"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_NOTFOUNDLICENSE = "OperationDenied.NotFoundLicense"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -10294,8 +10319,11 @@ func (c *Client) DescribeIntegrationEmployees(request *DescribeIntegrationEmploy
 //  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_LICENSEHASEXPIRED = "OperationDenied.LicenseHasExpired"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_NOTFOUNDLICENSE = "OperationDenied.NotFoundLicense"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -10348,6 +10376,7 @@ func NewDescribeIntegrationRolesResponse() (response *DescribeIntegrationRolesRe
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
@@ -10368,6 +10397,7 @@ func (c *Client) DescribeIntegrationRoles(request *DescribeIntegrationRolesReque
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
@@ -10542,7 +10572,9 @@ func NewDescribeOrganizationSealsResponse() (response *DescribeOrganizationSeals
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_NOTFOUNDLICENSE = "OperationDenied.NotFoundLicense"
 //  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -10569,7 +10601,9 @@ func (c *Client) DescribeOrganizationSeals(request *DescribeOrganizationSealsReq
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_NOTFOUNDLICENSE = "OperationDenied.NotFoundLicense"
 //  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -11178,6 +11212,7 @@ func NewDisableUserAutoSignResponse() (response *DisableUserAutoSignResponse) {
 //  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOTINAUTOSIGNWHITELIST = "OperationDenied.NotInAutoSignWhiteList"
 func (c *Client) DisableUserAutoSign(request *DisableUserAutoSignRequest) (response *DisableUserAutoSignResponse, err error) {
     return c.DisableUserAutoSignWithContext(context.Background(), request)
 }
@@ -11210,6 +11245,7 @@ func (c *Client) DisableUserAutoSign(request *DisableUserAutoSignRequest) (respo
 //  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOTINAUTOSIGNWHITELIST = "OperationDenied.NotInAutoSignWhiteList"
 func (c *Client) DisableUserAutoSignWithContext(ctx context.Context, request *DisableUserAutoSignRequest) (response *DisableUserAutoSignResponse, err error) {
     if request == nil {
         request = NewDisableUserAutoSignRequest()
@@ -12206,6 +12242,7 @@ func NewStartFlowResponse() (response *StartFlowResponse) {
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  OPERATIONDENIED_PAYDEADLINE = "OperationDenied.PayDeadline"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -12276,6 +12313,7 @@ func (c *Client) StartFlow(request *StartFlowRequest) (response *StartFlowRespon
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  OPERATIONDENIED_PAYDEADLINE = "OperationDenied.PayDeadline"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"

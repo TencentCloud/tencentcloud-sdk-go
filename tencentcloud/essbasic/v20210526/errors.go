@@ -149,6 +149,12 @@ const (
 	// 证件类型错误。
 	INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
 
+	// 控件的位置错误
+	INVALIDPARAMETER_COMPONENTPOSITION = "InvalidParameter.ComponentPosition"
+
+	// 控件类型错误
+	INVALIDPARAMETER_COMPONENTTYPE = "InvalidParameter.ComponentType"
+
 	// 参数错误,控件内容无效。
 	INVALIDPARAMETER_COMPONENTVALUE = "InvalidParameter.ComponentValue"
 
@@ -220,6 +226,9 @@ const (
 
 	// Id不存在或者符合规范。
 	INVALIDPARAMETER_INVALIDID = "InvalidParameter.InvalidId"
+
+	// 关键字格式错误或者不存在。
+	INVALIDPARAMETER_KEYWORD = "InvalidParameter.Keyword"
 
 	// 参数Limit不正确
 	INVALIDPARAMETER_LIMIT = "InvalidParameter.Limit"
@@ -353,6 +362,9 @@ const (
 	// ProxyOperatorOpenId不存在。
 	MISSINGPARAMETER_PROXYOPERATOROPENID = "MissingParameter.ProxyOperatorOpenId"
 
+	// reportApplicant 不存在
+	MISSINGPARAMETER_REPORTAPPLICANT = "MissingParameter.ReportApplicant"
+
 	// 资源名称错误。
 	MISSINGPARAMETER_RESOURCENAME = "MissingParameter.ResourceName"
 
@@ -434,11 +446,17 @@ const (
 	// 无权限进行操作
 	OPERATIONDENIED_NOPERMISSIONUSERESOURCE = "OperationDenied.NoPermissionUseResource"
 
+	// 本企业自动签印章无权限使用
+	OPERATIONDENIED_NOPERMISSIONUSESERVERSIGNSEAL = "OperationDenied.NoPermissionUseServerSignSeal"
+
 	// 流程配额不足。
 	OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
 
 	// 不属于企业超管或者法人。
 	OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
+
+	// 不在此业务白名单中
+	OPERATIONDENIED_NOTINAUTOSIGNWHITELIST = "OperationDenied.NotInAutoSignWhiteList"
 
 	// 不支持的企业类型
 	OPERATIONDENIED_NOTSUPPORTORGTYPE = "OperationDenied.NotSupportOrgType"
@@ -469,6 +487,9 @@ const (
 
 	// 必填控件未填
 	OPERATIONDENIED_REQUIREDCOMPONENTNOTFILL = "OperationDenied.RequiredComponentNotFill"
+
+	// 存在敏感词
+	OPERATIONDENIED_SENSITIVE = "OperationDenied.Sensitive"
 
 	// 用户不归属于当前企业，无法操作，请检查后重试。
 	OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
@@ -511,6 +532,9 @@ const (
 
 	// 资源不存在。
 	RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
+
+	// 合同组不存在
+	RESOURCENOTFOUND_SAVEFLOWGROUP = "ResourceNotFound.SaveFlowGroup"
 
 	// 印章不存在，请检查后重试。
 	RESOURCENOTFOUND_SEAL = "ResourceNotFound.Seal"

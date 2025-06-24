@@ -6116,6 +6116,9 @@ type InquiryPriceResetInstanceRequestParams struct {
 
 	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
 	EnhancedService *EnhancedService `json:"EnhancedService,omitnil,omitempty" name:"EnhancedService"`
+
+	// 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526)和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 }
 
 type InquiryPriceResetInstanceRequest struct {
@@ -6135,6 +6138,9 @@ type InquiryPriceResetInstanceRequest struct {
 
 	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
 	EnhancedService *EnhancedService `json:"EnhancedService,omitnil,omitempty" name:"EnhancedService"`
+
+	// 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526)和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 }
 
 func (r *InquiryPriceResetInstanceRequest) ToJsonString() string {
@@ -6154,6 +6160,7 @@ func (r *InquiryPriceResetInstanceRequest) FromJsonString(s string) error {
 	delete(f, "SystemDisk")
 	delete(f, "LoginSettings")
 	delete(f, "EnhancedService")
+	delete(f, "UserData")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceResetInstanceRequest has unknown keys!", "")
 	}

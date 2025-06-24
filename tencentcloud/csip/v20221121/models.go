@@ -3405,7 +3405,6 @@ func (r *DescribeExposePathRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeExposePathResponseParams struct {
 	// 暴露路径节点内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3890,6 +3889,9 @@ func (r *DescribeOrganizationUserInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOtherCloudAssetsRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// -
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -3900,6 +3902,9 @@ type DescribeOtherCloudAssetsRequestParams struct {
 type DescribeOtherCloudAssetsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// -
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 
@@ -3919,6 +3924,7 @@ func (r *DescribeOtherCloudAssetsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	delete(f, "AssetTypes")
 	if len(f) > 0 {
@@ -4067,6 +4073,9 @@ func (r *DescribePublicIpAssetsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRepositoryImageAssetsRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// filter过滤条件
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
@@ -4074,6 +4083,9 @@ type DescribeRepositoryImageAssetsRequestParams struct {
 type DescribeRepositoryImageAssetsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// filter过滤条件
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
@@ -4090,6 +4102,7 @@ func (r *DescribeRepositoryImageAssetsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRepositoryImageAssetsRequest has unknown keys!", "")
@@ -4490,6 +4503,9 @@ func (r *DescribeRiskCenterAssetViewWeakPasswordRiskListResponse) FromJsonString
 
 // Predefined struct for user
 type DescribeRiskCenterCFGViewCFGRiskListRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
@@ -4497,6 +4513,9 @@ type DescribeRiskCenterCFGViewCFGRiskListRequestParams struct {
 type DescribeRiskCenterCFGViewCFGRiskListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
 }
@@ -4513,6 +4532,7 @@ func (r *DescribeRiskCenterCFGViewCFGRiskListRequest) FromJsonString(s string) e
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "MemberId")
 	delete(f, "Filter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskCenterCFGViewCFGRiskListRequest has unknown keys!", "")
@@ -5039,7 +5059,6 @@ func (r *DescribeRiskRuleDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRiskRuleDetailResponseParams struct {
 	// 风险规则ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskRuleId *string `json:"RiskRuleId,omitnil,omitempty" name:"RiskRuleId"`
 
 	// 云厂商

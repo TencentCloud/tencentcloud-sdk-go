@@ -1074,10 +1074,10 @@ type DescribeAgentDealsByCacheRequestParams struct {
 	// 限制数目 最大200
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 下单时间范围起始点【请保持时间范围最大90天】
+	// 下单时间范围起始点【*请必传并控制时间范围最大90天，避免出现超时】
 	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitnil,omitempty" name:"CreatTimeRangeStart"`
 
-	// 下单时间范围终止点【请保持时间范围最大90天】
+	// 下单时间范围终止点【*请必传并控制时间范围最大90天，避免出现超时】
 	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitnil,omitempty" name:"CreatTimeRangeEnd"`
 
 	// 0:下单时间降序；其他：下单时间升序
@@ -1108,10 +1108,10 @@ type DescribeAgentDealsByCacheRequest struct {
 	// 限制数目 最大200
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 下单时间范围起始点【请保持时间范围最大90天】
+	// 下单时间范围起始点【*请必传并控制时间范围最大90天，避免出现超时】
 	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitnil,omitempty" name:"CreatTimeRangeStart"`
 
-	// 下单时间范围终止点【请保持时间范围最大90天】
+	// 下单时间范围终止点【*请必传并控制时间范围最大90天，避免出现超时】
 	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitnil,omitempty" name:"CreatTimeRangeEnd"`
 
 	// 0:下单时间降序；其他：下单时间升序

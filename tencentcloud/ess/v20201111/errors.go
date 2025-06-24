@@ -32,6 +32,15 @@ const (
 	// 套餐余额不足。
 	FAILEDOPERATION_BALANCENOTENOUGH = "FailedOperation.BalanceNotEnough"
 
+	// 发起人未在企微实名
+	FAILEDOPERATION_FAILEDCONVERTOQIWEIUSERID = "FailedOperation.FailedConverToQiWeiUserId"
+
+	// 企业未开启审批功能，客户自己设置关闭了
+	FAILEDOPERATION_FAILEDOPENWKAPPREVIEW = "FailedOperation.FailedOpenWkAppReview"
+
+	// 未更新模板
+	FAILEDOPERATION_FAILEDUPDATETEMPLATEOPERATION = "FailedOperation.FailedUpdateTemplateOperation"
+
 	// 签署流程已有关联文档，请检查参数修改后重试。
 	FAILEDOPERATION_FLOWHASDOCUMENT = "FailedOperation.FlowHasDocument"
 
@@ -61,6 +70,9 @@ const (
 
 	// 企业名称与工商局信息不符,需要超管修改。
 	FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
+
+	// 路径类型错误
+	FAILEDOPERATION_PATHTYPEERROR = "FailedOperation.PathTypeError"
 
 	// 创建签署流程预览链接失败，请稍后重试。
 	FAILEDOPERATION_PREVIEWURLFAIL = "FailedOperation.PreViewUrlFail"
@@ -563,6 +575,12 @@ const (
 	// 不属于企业超管或者法人。
 	OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
 
+	// 没有发现可以用的license
+	OPERATIONDENIED_NOTFOUNDLICENSE = "OperationDenied.NotFoundLicense"
+
+	// 未加入此功能的白名单
+	OPERATIONDENIED_NOTINAUTOSIGNWHITELIST = "OperationDenied.NotInAutoSignWhiteList"
+
 	// 操作者权限不足。
 	OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
 
@@ -580,6 +598,9 @@ const (
 
 	// 当前不支持境外用户，请联系客服咨询处理。
 	OPERATIONDENIED_OVERSEAFORBID = "OperationDenied.OverSeaForbid"
+
+	// 支付订单已经超时
+	OPERATIONDENIED_PAYDEADLINE = "OperationDenied.PayDeadline"
 
 	// 个人名下没用可使用的签名，请联系个人配置签名后重试。
 	OPERATIONDENIED_PERSONHASNOSIGNATURE = "OperationDenied.PersonHasNoSignature"
@@ -688,6 +709,9 @@ const (
 
 	// 用户或者员工未完成实名认证，请检查参数后重试。
 	RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
+
+	// 所有审批人未在企微实名
+	RESOURCENOTFOUND_WEWORKUSER = "ResourceNotFound.WeWorkUser"
 
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"

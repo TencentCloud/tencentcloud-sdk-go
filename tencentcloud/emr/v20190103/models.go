@@ -5311,6 +5311,94 @@ func (r *DescribeServiceNodeInfosResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSparkApplicationsRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 查询开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 每一页条数
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 第几页
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+}
+
+type DescribeSparkApplicationsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 查询开始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 每一页条数
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 第几页
+	Page *int64 `json:"Page,omitnil,omitempty" name:"Page"`
+}
+
+func (r *DescribeSparkApplicationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSparkApplicationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PageSize")
+	delete(f, "Page")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSparkApplicationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSparkApplicationsResponseParams struct {
+	// 返回数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// spark应用列表
+	ResultList []*SparkApplicationsList `json:"ResultList,omitnil,omitempty" name:"ResultList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSparkApplicationsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSparkApplicationsResponseParams `json:"Response"`
+}
+
+func (r *DescribeSparkApplicationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSparkApplicationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSparkQueriesRequestParams struct {
 	// 集群ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -11638,6 +11726,41 @@ type SoftDependInfo struct {
 
 	// 是否必选
 	Required *bool `json:"Required,omitnil,omitempty" name:"Required"`
+}
+
+type SparkApplicationsList struct {
+	// 应用id
+	ID *string `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 应用名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 用户
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// 起始时间
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 持续时间
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 状态
+	State *string `json:"State,omitnil,omitempty" name:"State"`
+
+	// 类型
+	ApplicationType *string `json:"ApplicationType,omitnil,omitempty" name:"ApplicationType"`
+
+	// 核数*秒
+	CoreSeconds *int64 `json:"CoreSeconds,omitnil,omitempty" name:"CoreSeconds"`
+
+	// 内存MB*秒
+	MemorySeconds *string `json:"MemorySeconds,omitnil,omitempty" name:"MemorySeconds"`
+
+	// 洞察结果
+	Insight *string `json:"Insight,omitnil,omitempty" name:"Insight"`
 }
 
 type SparkQuery struct {

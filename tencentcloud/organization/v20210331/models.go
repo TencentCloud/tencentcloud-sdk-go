@@ -10704,6 +10704,9 @@ type UserInfo struct {
 
 	// 是否选中
 	IsSelected *bool `json:"IsSelected,omitnil,omitempty" name:"IsSelected"`
+
+	// 用户密码
+	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 }
 
 type UserProvisioning struct {

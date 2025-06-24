@@ -18457,6 +18457,9 @@ type SendLiveCloudEffectRequestParams struct {
 	// 云端特效 ID。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
 
+	// 默认随系统配置，云端特效循环 少于5次。可自定义指定礼物循环次数，不超过100次。
+	LoopTimes *int64 `json:"LoopTimes,omitnil,omitempty" name:"LoopTimes"`
+
 	// 操作人备注信息。
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
 
@@ -18487,6 +18490,9 @@ type SendLiveCloudEffectRequest struct {
 
 	// 云端特效 ID。
 	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 默认随系统配置，云端特效循环 少于5次。可自定义指定礼物循环次数，不超过100次。
+	LoopTimes *int64 `json:"LoopTimes,omitnil,omitempty" name:"LoopTimes"`
 
 	// 操作人备注信息。
 	Operator *string `json:"Operator,omitnil,omitempty" name:"Operator"`
@@ -18520,6 +18526,7 @@ func (r *SendLiveCloudEffectRequest) FromJsonString(s string) error {
 	delete(f, "PushDomainName")
 	delete(f, "StreamName")
 	delete(f, "Id")
+	delete(f, "LoopTimes")
 	delete(f, "Operator")
 	delete(f, "ZoomFactor")
 	delete(f, "XPosition")

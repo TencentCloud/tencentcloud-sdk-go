@@ -822,6 +822,9 @@ type ChangePwdTaskInfo struct {
 
 	// 下次执行时间
 	NextTime *string `json:"NextTime,omitnil,omitempty" name:"NextTime"`
+
+	// 上次执行时间
+	LastTime *string `json:"LastTime,omitnil,omitempty" name:"LastTime"`
 }
 
 type Clb struct {

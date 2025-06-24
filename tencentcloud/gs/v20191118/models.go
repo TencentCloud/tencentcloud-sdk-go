@@ -2029,6 +2029,9 @@ type DescribeAndroidInstanceImagesRequestParams struct {
 	// 镜像 ID 列表
 	AndroidInstanceImageIds []*string `json:"AndroidInstanceImageIds,omitnil,omitempty" name:"AndroidInstanceImageIds"`
 
+	// 镜像可用区列表
+	AndroidInstanceImageZones []*string `json:"AndroidInstanceImageZones,omitnil,omitempty" name:"AndroidInstanceImageZones"`
+
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
@@ -2041,6 +2044,9 @@ type DescribeAndroidInstanceImagesRequest struct {
 	
 	// 镜像 ID 列表
 	AndroidInstanceImageIds []*string `json:"AndroidInstanceImageIds,omitnil,omitempty" name:"AndroidInstanceImageIds"`
+
+	// 镜像可用区列表
+	AndroidInstanceImageZones []*string `json:"AndroidInstanceImageZones,omitnil,omitempty" name:"AndroidInstanceImageZones"`
 
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
@@ -2062,6 +2068,7 @@ func (r *DescribeAndroidInstanceImagesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "AndroidInstanceImageIds")
+	delete(f, "AndroidInstanceImageZones")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	if len(f) > 0 {

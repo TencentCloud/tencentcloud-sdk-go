@@ -1153,6 +1153,8 @@ func NewChannelCreateDynamicFlowApproverResponse() (response *ChannelCreateDynam
 //
 // <li>此接口补充的动态签署人传参规则，请参考接口：<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>的签署人传参规则</li>
 //
+// <li>此接口补充的动态签署人暂不支持他方企业自动签署。</li>
+//
 // </ul>
 //
 // 可能返回的错误码:
@@ -1186,6 +1188,8 @@ func (c *Client) ChannelCreateDynamicFlowApprover(request *ChannelCreateDynamicF
 // <li>此接口需要保证：合同发起时指定开启了动态合同</li>
 //
 // <li>此接口补充的动态签署人传参规则，请参考接口：<a href="https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>的签署人传参规则</li>
+//
+// <li>此接口补充的动态签署人暂不支持他方企业自动签署。</li>
 //
 // </ul>
 //
@@ -1559,6 +1563,7 @@ func NewChannelCreateFlowByFilesResponse() (response *ChannelCreateFlowByFilesRe
 //  INVALIDPARAMETER_APPROVERVERIFYTYPE = "InvalidParameter.ApproverVerifyType"
 //  INVALIDPARAMETER_BIZAPPROVERALREADYEXISTS = "InvalidParameter.BizApproverAlreadyExists"
 //  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_COMPONENTTYPE = "InvalidParameter.ComponentType"
 //  INVALIDPARAMETER_COMPONENTVALUE = "InvalidParameter.ComponentValue"
 //  INVALIDPARAMETER_CUSTOMSHOWMAP = "InvalidParameter.CustomShowMap"
 //  INVALIDPARAMETER_CUSTOMERDATA = "InvalidParameter.CustomerData"
@@ -1571,6 +1576,7 @@ func NewChannelCreateFlowByFilesResponse() (response *ChannelCreateFlowByFilesRe
 //  INVALIDPARAMETER_FLOWFILEIDS = "InvalidParameter.FlowFileIds"
 //  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
 //  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
+//  INVALIDPARAMETER_KEYWORD = "InvalidParameter.Keyword"
 //  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
 //  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  INVALIDPARAMETER_NONSUPPORTMOBILE = "InvalidParameter.NonsupportMobile"
@@ -1685,6 +1691,7 @@ func (c *Client) ChannelCreateFlowByFiles(request *ChannelCreateFlowByFilesReque
 //  INVALIDPARAMETER_APPROVERVERIFYTYPE = "InvalidParameter.ApproverVerifyType"
 //  INVALIDPARAMETER_BIZAPPROVERALREADYEXISTS = "InvalidParameter.BizApproverAlreadyExists"
 //  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_COMPONENTTYPE = "InvalidParameter.ComponentType"
 //  INVALIDPARAMETER_COMPONENTVALUE = "InvalidParameter.ComponentValue"
 //  INVALIDPARAMETER_CUSTOMSHOWMAP = "InvalidParameter.CustomShowMap"
 //  INVALIDPARAMETER_CUSTOMERDATA = "InvalidParameter.CustomerData"
@@ -1697,6 +1704,7 @@ func (c *Client) ChannelCreateFlowByFiles(request *ChannelCreateFlowByFilesReque
 //  INVALIDPARAMETER_FLOWFILEIDS = "InvalidParameter.FlowFileIds"
 //  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
 //  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
+//  INVALIDPARAMETER_KEYWORD = "InvalidParameter.Keyword"
 //  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
 //  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  INVALIDPARAMETER_NONSUPPORTMOBILE = "InvalidParameter.NonsupportMobile"
@@ -2322,17 +2330,23 @@ func NewChannelCreateFlowGroupByTemplatesResponse() (response *ChannelCreateFlow
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
 //  INVALIDPARAMETER_APPROVERVERIFYTYPE = "InvalidParameter.ApproverVerifyType"
 //  INVALIDPARAMETER_BIZAPPROVERALREADYEXISTS = "InvalidParameter.BizApproverAlreadyExists"
+//  INVALIDPARAMETER_COMPONENTPOSITION = "InvalidParameter.ComponentPosition"
+//  INVALIDPARAMETER_COMPONENTTYPE = "InvalidParameter.ComponentType"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  INVALIDPARAMETER_FLOWINFOS = "InvalidParameter.FlowInfos"
 //  INVALIDPARAMETER_MISSINGREQUIREDPARAMETERVALUE = "InvalidParameter.MissingRequiredParameterValue"
 //  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_OPERATORID = "InvalidParameter.OperatorId"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SENSITIVE = "InvalidParameter.Sensitive"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_CREATEFLOWNUM = "LimitExceeded.CreateFlowNum"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
+//  OPERATIONDENIED_SENSITIVE = "OperationDenied.Sensitive"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
@@ -2488,17 +2502,23 @@ func (c *Client) ChannelCreateFlowGroupByTemplates(request *ChannelCreateFlowGro
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
 //  INVALIDPARAMETER_APPROVERVERIFYTYPE = "InvalidParameter.ApproverVerifyType"
 //  INVALIDPARAMETER_BIZAPPROVERALREADYEXISTS = "InvalidParameter.BizApproverAlreadyExists"
+//  INVALIDPARAMETER_COMPONENTPOSITION = "InvalidParameter.ComponentPosition"
+//  INVALIDPARAMETER_COMPONENTTYPE = "InvalidParameter.ComponentType"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  INVALIDPARAMETER_FLOWINFOS = "InvalidParameter.FlowInfos"
 //  INVALIDPARAMETER_MISSINGREQUIREDPARAMETERVALUE = "InvalidParameter.MissingRequiredParameterValue"
 //  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_OPERATORID = "InvalidParameter.OperatorId"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SENSITIVE = "InvalidParameter.Sensitive"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_CREATEFLOWNUM = "LimitExceeded.CreateFlowNum"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
+//  OPERATIONDENIED_SENSITIVE = "OperationDenied.Sensitive"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
@@ -3221,11 +3241,14 @@ func NewChannelCreatePrepareFlowResponse() (response *ChannelCreatePrepareFlowRe
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_COMPONENTPOSITION = "InvalidParameter.ComponentPosition"
 //  INVALIDPARAMETER_COMPONENTVALUE = "InvalidParameter.ComponentValue"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_SENSITIVE = "InvalidParameter.Sensitive"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOPERMISSIONUSESERVERSIGNSEAL = "OperationDenied.NoPermissionUseServerSignSeal"
+//  OPERATIONDENIED_SENSITIVE = "OperationDenied.Sensitive"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
@@ -3314,11 +3337,14 @@ func (c *Client) ChannelCreatePrepareFlow(request *ChannelCreatePrepareFlowReque
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_COMPONENTPOSITION = "InvalidParameter.ComponentPosition"
 //  INVALIDPARAMETER_COMPONENTVALUE = "InvalidParameter.ComponentValue"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_SENSITIVE = "InvalidParameter.Sensitive"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOPERMISSIONUSESERVERSIGNSEAL = "OperationDenied.NoPermissionUseServerSignSeal"
+//  OPERATIONDENIED_SENSITIVE = "OperationDenied.Sensitive"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
@@ -4770,6 +4796,7 @@ func NewChannelDescribeOrganizationSealsResponse() (response *ChannelDescribeOrg
 //  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelDescribeOrganizationSeals(request *ChannelDescribeOrganizationSealsRequest) (response *ChannelDescribeOrganizationSealsResponse, err error) {
@@ -4793,6 +4820,7 @@ func (c *Client) ChannelDescribeOrganizationSeals(request *ChannelDescribeOrgani
 //  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelDescribeOrganizationSealsWithContext(ctx context.Context, request *ChannelDescribeOrganizationSealsRequest) (response *ChannelDescribeOrganizationSealsResponse, err error) {
@@ -5109,6 +5137,7 @@ func NewChannelDisableUserAutoSignResponse() (response *ChannelDisableUserAutoSi
 //  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOTINAUTOSIGNWHITELIST = "OperationDenied.NotInAutoSignWhiteList"
 func (c *Client) ChannelDisableUserAutoSign(request *ChannelDisableUserAutoSignRequest) (response *ChannelDisableUserAutoSignResponse, err error) {
     return c.ChannelDisableUserAutoSignWithContext(context.Background(), request)
 }
@@ -5139,6 +5168,7 @@ func (c *Client) ChannelDisableUserAutoSign(request *ChannelDisableUserAutoSignR
 //  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOTINAUTOSIGNWHITELIST = "OperationDenied.NotInAutoSignWhiteList"
 func (c *Client) ChannelDisableUserAutoSignWithContext(ctx context.Context, request *ChannelDisableUserAutoSignRequest) (response *ChannelDisableUserAutoSignResponse, err error) {
     if request == nil {
         request = NewChannelDisableUserAutoSignRequest()
@@ -5899,6 +5929,7 @@ func NewCreateChannelFlowEvidenceReportResponse() (response *CreateChannelFlowEv
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  MISSINGPARAMETER_REPORTAPPLICANT = "MissingParameter.ReportApplicant"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
 //  OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
@@ -5941,6 +5972,7 @@ func (c *Client) CreateChannelFlowEvidenceReport(request *CreateChannelFlowEvide
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  MISSINGPARAMETER_REPORTAPPLICANT = "MissingParameter.ReportApplicant"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
 //  OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
@@ -6538,6 +6570,7 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 //  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
 //  OPERATIONDENIED_ERRNOTOPENWEAKAUTHORIZATION = "OperationDenied.ErrNotOpenWeakAuthorization"
 //  OPERATIONDENIED_NOTSUPPORTORGTYPE = "OperationDenied.NotSupportOrgType"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
@@ -6658,6 +6691,7 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 //  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
 //  OPERATIONDENIED_ERRNOTOPENWEAKAUTHORIZATION = "OperationDenied.ErrNotOpenWeakAuthorization"
 //  OPERATIONDENIED_NOTSUPPORTORGTYPE = "OperationDenied.NotSupportOrgType"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
@@ -8181,10 +8215,12 @@ func NewCreateSignUrlsResponse() (response *CreateSignUrlsResponse) {
 //  MISSINGPARAMETER_FLOWIDSORFLOWGROUPID = "MissingParameter.FlowIdsOrFlowGroupId"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_FLOWGROUP = "ResourceNotFound.FlowGroup"
+//  RESOURCENOTFOUND_SAVEFLOWGROUP = "ResourceNotFound.SaveFlowGroup"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
@@ -8244,10 +8280,12 @@ func (c *Client) CreateSignUrls(request *CreateSignUrlsRequest) (response *Creat
 //  MISSINGPARAMETER_FLOWIDSORFLOWGROUPID = "MissingParameter.FlowIdsOrFlowGroupId"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_FLOWGROUP = "ResourceNotFound.FlowGroup"
+//  RESOURCENOTFOUND_SAVEFLOWGROUP = "ResourceNotFound.SaveFlowGroup"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
@@ -8924,6 +8962,7 @@ func NewDescribeExtendedServiceAuthInfoResponse() (response *DescribeExtendedSer
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeExtendedServiceAuthInfo(request *DescribeExtendedServiceAuthInfoRequest) (response *DescribeExtendedServiceAuthInfoResponse, err error) {
@@ -8966,6 +9005,7 @@ func (c *Client) DescribeExtendedServiceAuthInfo(request *DescribeExtendedServic
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeExtendedServiceAuthInfoWithContext(ctx context.Context, request *DescribeExtendedServiceAuthInfoRequest) (response *DescribeExtendedServiceAuthInfoResponse, err error) {
@@ -9389,6 +9429,7 @@ func NewDescribeTemplatesResponse() (response *DescribeTemplatesResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
@@ -9480,6 +9521,7 @@ func (c *Client) DescribeTemplates(request *DescribeTemplatesRequest) (response 
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
@@ -10739,6 +10781,7 @@ func NewSyncProxyOrganizationOperatorsResponse() (response *SyncProxyOrganizatio
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
 //  OPERATIONDENIED_OPERATETYPE = "OperationDenied.OperateType"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
@@ -10794,6 +10837,7 @@ func (c *Client) SyncProxyOrganizationOperators(request *SyncProxyOrganizationOp
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
 //  OPERATIONDENIED_OPERATETYPE = "OperationDenied.OperateType"
+//  OPERATIONDENIED_ORGANIZATIONCLOSING = "OperationDenied.OrganizationClosing"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"

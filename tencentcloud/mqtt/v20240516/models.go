@@ -2684,6 +2684,18 @@ type DescribeInstanceResponseParams struct {
 	// 授权策略开关
 	AuthorizationPolicy *bool `json:"AuthorizationPolicy,omitnil,omitempty" name:"AuthorizationPolicy"`
 
+	// 共享订阅组数最大限制
+	SharedSubscriptionGroupLimit *int64 `json:"SharedSubscriptionGroupLimit,omitnil,omitempty" name:"SharedSubscriptionGroupLimit"`
+
+	// 单个共享订阅组TopicFilter数限制
+	MaxTopicFilterPerSharedSubscriptionGroup *int64 `json:"MaxTopicFilterPerSharedSubscriptionGroup,omitnil,omitempty" name:"MaxTopicFilterPerSharedSubscriptionGroup"`
+
+	// 自动订阅规则条数限制
+	AutoSubscriptionPolicyLimit *int64 `json:"AutoSubscriptionPolicyLimit,omitnil,omitempty" name:"AutoSubscriptionPolicyLimit"`
+
+	// 单条自动订阅规则TopicFilter数限制
+	MaxTopicFilterPerAutoSubscriptionPolicy *int64 `json:"MaxTopicFilterPerAutoSubscriptionPolicy,omitnil,omitempty" name:"MaxTopicFilterPerAutoSubscriptionPolicy"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3524,6 +3536,18 @@ type MQTTInstanceItem struct {
 
 	// 最大订阅数
 	MaxSubscription *int64 `json:"MaxSubscription,omitnil,omitempty" name:"MaxSubscription"`
+
+	// 共享订阅组数最大限制
+	SharedSubscriptionGroupLimit *int64 `json:"SharedSubscriptionGroupLimit,omitnil,omitempty" name:"SharedSubscriptionGroupLimit"`
+
+	// 单个共享订阅组TopicFilter数限制
+	MaxTopicFilterPerSharedSubscriptionGroup *int64 `json:"MaxTopicFilterPerSharedSubscriptionGroup,omitnil,omitempty" name:"MaxTopicFilterPerSharedSubscriptionGroup"`
+
+	// 自动订阅规则条数限制
+	AutoSubscriptionPolicyLimit *int64 `json:"AutoSubscriptionPolicyLimit,omitnil,omitempty" name:"AutoSubscriptionPolicyLimit"`
+
+	// 单条自动订阅规则TopicFilter数限制
+	MaxTopicFilterPerAutoSubscriptionPolicy *int64 `json:"MaxTopicFilterPerAutoSubscriptionPolicy,omitnil,omitempty" name:"MaxTopicFilterPerAutoSubscriptionPolicy"`
 }
 
 type MQTTMessage struct {

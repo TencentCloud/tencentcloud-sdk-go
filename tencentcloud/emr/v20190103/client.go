@@ -3306,6 +3306,57 @@ func (c *Client) DescribeServiceNodeInfosWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeSparkApplicationsRequest() (request *DescribeSparkApplicationsRequest) {
+    request = &DescribeSparkApplicationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeSparkApplications")
+    
+    
+    return
+}
+
+func NewDescribeSparkApplicationsResponse() (response *DescribeSparkApplicationsResponse) {
+    response = &DescribeSparkApplicationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeSparkApplications
+// 获取spark应用列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeSparkApplications(request *DescribeSparkApplicationsRequest) (response *DescribeSparkApplicationsResponse, err error) {
+    return c.DescribeSparkApplicationsWithContext(context.Background(), request)
+}
+
+// DescribeSparkApplications
+// 获取spark应用列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+func (c *Client) DescribeSparkApplicationsWithContext(ctx context.Context, request *DescribeSparkApplicationsRequest) (response *DescribeSparkApplicationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSparkApplicationsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSparkApplications require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSparkApplicationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSparkQueriesRequest() (request *DescribeSparkQueriesRequest) {
     request = &DescribeSparkQueriesRequest{
         BaseRequest: &tchttp.BaseRequest{},
