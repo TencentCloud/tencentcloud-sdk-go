@@ -2044,6 +2044,9 @@ type CreateDSPADiscoveryTaskRequestParams struct {
 
 	// 抽样的排序字段
 	GlobalOrderField *string `json:"GlobalOrderField,omitnil,omitempty" name:"GlobalOrderField"`
+
+	// full:全量扫描 incre:变更扫描
+	ScanRange *string `json:"ScanRange,omitnil,omitempty" name:"ScanRange"`
 }
 
 type CreateDSPADiscoveryTaskRequest struct {
@@ -2104,6 +2107,9 @@ type CreateDSPADiscoveryTaskRequest struct {
 
 	// 抽样的排序字段
 	GlobalOrderField *string `json:"GlobalOrderField,omitnil,omitempty" name:"GlobalOrderField"`
+
+	// full:全量扫描 incre:变更扫描
+	ScanRange *string `json:"ScanRange,omitnil,omitempty" name:"ScanRange"`
 }
 
 func (r *CreateDSPADiscoveryTaskRequest) ToJsonString() string {
@@ -2134,6 +2140,7 @@ func (r *CreateDSPADiscoveryTaskRequest) FromJsonString(s string) error {
 	delete(f, "Order")
 	delete(f, "Rows")
 	delete(f, "GlobalOrderField")
+	delete(f, "ScanRange")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDSPADiscoveryTaskRequest has unknown keys!", "")
 	}
@@ -5938,7 +5945,12 @@ type DescribeDSPACOSDiscoveryTaskFilesRequestParams struct {
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 扫描Bucket任务结果ID
+	//
+	// Deprecated: BucketResultId is deprecated.
 	BucketResultId *int64 `json:"BucketResultId,omitnil,omitempty" name:"BucketResultId"`
+
+	// 扫描结果id
+	ScanResultId *int64 `json:"ScanResultId,omitnil,omitempty" name:"ScanResultId"`
 }
 
 type DescribeDSPACOSDiscoveryTaskFilesRequest struct {
@@ -5952,6 +5964,9 @@ type DescribeDSPACOSDiscoveryTaskFilesRequest struct {
 
 	// 扫描Bucket任务结果ID
 	BucketResultId *int64 `json:"BucketResultId,omitnil,omitempty" name:"BucketResultId"`
+
+	// 扫描结果id
+	ScanResultId *int64 `json:"ScanResultId,omitnil,omitempty" name:"ScanResultId"`
 }
 
 func (r *DescribeDSPACOSDiscoveryTaskFilesRequest) ToJsonString() string {
@@ -5969,6 +5984,7 @@ func (r *DescribeDSPACOSDiscoveryTaskFilesRequest) FromJsonString(s string) erro
 	delete(f, "DspaId")
 	delete(f, "TaskId")
 	delete(f, "BucketResultId")
+	delete(f, "ScanResultId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPACOSDiscoveryTaskFilesRequest has unknown keys!", "")
 	}
@@ -6019,6 +6035,15 @@ type DescribeDSPACOSDiscoveryTaskResultRequestParams struct {
 	// ResourceRegion：资源所在地域
 	// 每项过滤条件最多支持5个。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 是否查询历史结果
+	FetchHistory *bool `json:"FetchHistory,omitnil,omitempty" name:"FetchHistory"`
 }
 
 type DescribeDSPACOSDiscoveryTaskResultRequest struct {
@@ -6041,6 +6066,15 @@ type DescribeDSPACOSDiscoveryTaskResultRequest struct {
 	// ResourceRegion：资源所在地域
 	// 每项过滤条件最多支持5个。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 是否查询历史结果
+	FetchHistory *bool `json:"FetchHistory,omitnil,omitempty" name:"FetchHistory"`
 }
 
 func (r *DescribeDSPACOSDiscoveryTaskResultRequest) ToJsonString() string {
@@ -6059,6 +6093,9 @@ func (r *DescribeDSPACOSDiscoveryTaskResultRequest) FromJsonString(s string) err
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "FetchHistory")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPACOSDiscoveryTaskResultRequest has unknown keys!", "")
 	}
@@ -6072,6 +6109,9 @@ type DescribeDSPACOSDiscoveryTaskResultResponseParams struct {
 
 	// 符合条件的数据结果数目
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 最大展示扫描结果次数
+	MaxCount *int64 `json:"MaxCount,omitnil,omitempty" name:"MaxCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -6196,11 +6236,13 @@ type DescribeDSPACOSTaskResultDetailRequestParams struct {
 	// 任务ID
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 扫描Bucket结果ID
-	BucketResultId *int64 `json:"BucketResultId,omitnil,omitempty" name:"BucketResultId"`
-
 	// 合规组ID
 	ComplianceId *int64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// 扫描Bucket结果ID
+	//
+	// Deprecated: BucketResultId is deprecated.
+	BucketResultId *int64 `json:"BucketResultId,omitnil,omitempty" name:"BucketResultId"`
 
 	// 文件名
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
@@ -6222,6 +6264,9 @@ type DescribeDSPACOSTaskResultDetailRequestParams struct {
 
 	// 多级分类的分类ID集合
 	CategoryIdList []*int64 `json:"CategoryIdList,omitnil,omitempty" name:"CategoryIdList"`
+
+	// 扫描结果id
+	ScanResultId *int64 `json:"ScanResultId,omitnil,omitempty" name:"ScanResultId"`
 }
 
 type DescribeDSPACOSTaskResultDetailRequest struct {
@@ -6233,11 +6278,11 @@ type DescribeDSPACOSTaskResultDetailRequest struct {
 	// 任务ID
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
-	// 扫描Bucket结果ID
-	BucketResultId *int64 `json:"BucketResultId,omitnil,omitempty" name:"BucketResultId"`
-
 	// 合规组ID
 	ComplianceId *int64 `json:"ComplianceId,omitnil,omitempty" name:"ComplianceId"`
+
+	// 扫描Bucket结果ID
+	BucketResultId *int64 `json:"BucketResultId,omitnil,omitempty" name:"BucketResultId"`
 
 	// 文件名
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
@@ -6259,6 +6304,9 @@ type DescribeDSPACOSTaskResultDetailRequest struct {
 
 	// 多级分类的分类ID集合
 	CategoryIdList []*int64 `json:"CategoryIdList,omitnil,omitempty" name:"CategoryIdList"`
+
+	// 扫描结果id
+	ScanResultId *int64 `json:"ScanResultId,omitnil,omitempty" name:"ScanResultId"`
 }
 
 func (r *DescribeDSPACOSTaskResultDetailRequest) ToJsonString() string {
@@ -6275,8 +6323,8 @@ func (r *DescribeDSPACOSTaskResultDetailRequest) FromJsonString(s string) error 
 	}
 	delete(f, "DspaId")
 	delete(f, "TaskId")
-	delete(f, "BucketResultId")
 	delete(f, "ComplianceId")
+	delete(f, "BucketResultId")
 	delete(f, "FileName")
 	delete(f, "CategoryId")
 	delete(f, "LevelId")
@@ -6284,6 +6332,7 @@ func (r *DescribeDSPACOSTaskResultDetailRequest) FromJsonString(s string) error 
 	delete(f, "Limit")
 	delete(f, "BucketName")
 	delete(f, "CategoryIdList")
+	delete(f, "ScanResultId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPACOSTaskResultDetailRequest has unknown keys!", "")
 	}
@@ -7233,6 +7282,9 @@ type DescribeDSPADiscoveryTaskResultDetailRequestParams struct {
 
 	// 多级分类的分类ID集合
 	CategoryIdList []*int64 `json:"CategoryIdList,omitnil,omitempty" name:"CategoryIdList"`
+
+	// 任务扫描id
+	ScanResultId *int64 `json:"ScanResultId,omitnil,omitempty" name:"ScanResultId"`
 }
 
 type DescribeDSPADiscoveryTaskResultDetailRequest struct {
@@ -7270,6 +7322,9 @@ type DescribeDSPADiscoveryTaskResultDetailRequest struct {
 
 	// 多级分类的分类ID集合
 	CategoryIdList []*int64 `json:"CategoryIdList,omitnil,omitempty" name:"CategoryIdList"`
+
+	// 任务扫描id
+	ScanResultId *int64 `json:"ScanResultId,omitnil,omitempty" name:"ScanResultId"`
 }
 
 func (r *DescribeDSPADiscoveryTaskResultDetailRequest) ToJsonString() string {
@@ -7295,6 +7350,7 @@ func (r *DescribeDSPADiscoveryTaskResultDetailRequest) FromJsonString(s string) 
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "CategoryIdList")
+	delete(f, "ScanResultId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPADiscoveryTaskResultDetailRequest has unknown keys!", "")
 	}
@@ -7364,6 +7420,15 @@ type DescribeDSPADiscoveryTaskResultRequestParams struct {
 
 	// 资源所在地域
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 是否查询历史结果
+	FetchHistory *bool `json:"FetchHistory,omitnil,omitempty" name:"FetchHistory"`
 }
 
 type DescribeDSPADiscoveryTaskResultRequest struct {
@@ -7402,6 +7467,15 @@ type DescribeDSPADiscoveryTaskResultRequest struct {
 
 	// 资源所在地域
 	ResourceRegion *string `json:"ResourceRegion,omitnil,omitempty" name:"ResourceRegion"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 是否查询历史结果
+	FetchHistory *bool `json:"FetchHistory,omitnil,omitempty" name:"FetchHistory"`
 }
 
 func (r *DescribeDSPADiscoveryTaskResultRequest) ToJsonString() string {
@@ -7425,6 +7499,9 @@ func (r *DescribeDSPADiscoveryTaskResultRequest) FromJsonString(s string) error 
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "ResourceRegion")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "FetchHistory")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPADiscoveryTaskResultRequest has unknown keys!", "")
 	}
@@ -7438,6 +7515,9 @@ type DescribeDSPADiscoveryTaskResultResponseParams struct {
 
 	// 符合条件的扫描任务结果记录数
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 最大展示扫描结果次数
+	MaxCount *int64 `json:"MaxCount,omitnil,omitempty" name:"MaxCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -7468,10 +7548,15 @@ type DescribeDSPADiscoveryTaskTablesRequestParams struct {
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 数据库扫描结果ID
+	//
+	// Deprecated: DbResultId is deprecated.
 	DbResultId *int64 `json:"DbResultId,omitnil,omitempty" name:"DbResultId"`
 
 	// db名称
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+
+	// 任务扫描id
+	ScanResultId *int64 `json:"ScanResultId,omitnil,omitempty" name:"ScanResultId"`
 }
 
 type DescribeDSPADiscoveryTaskTablesRequest struct {
@@ -7488,6 +7573,9 @@ type DescribeDSPADiscoveryTaskTablesRequest struct {
 
 	// db名称
 	DbName *string `json:"DbName,omitnil,omitempty" name:"DbName"`
+
+	// 任务扫描id
+	ScanResultId *int64 `json:"ScanResultId,omitnil,omitempty" name:"ScanResultId"`
 }
 
 func (r *DescribeDSPADiscoveryTaskTablesRequest) ToJsonString() string {
@@ -7506,6 +7594,7 @@ func (r *DescribeDSPADiscoveryTaskTablesRequest) FromJsonString(s string) error 
 	delete(f, "TaskId")
 	delete(f, "DbResultId")
 	delete(f, "DbName")
+	delete(f, "ScanResultId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPADiscoveryTaskTablesRequest has unknown keys!", "")
 	}
@@ -9432,6 +9521,12 @@ type DspaCOSDiscoveryTaskResult struct {
 
 	// 是否超额
 	OverSize *string `json:"OverSize,omitnil,omitempty" name:"OverSize"`
+
+	// 任务实例id
+	TaskInstanceId *string `json:"TaskInstanceId,omitnil,omitempty" name:"TaskInstanceId"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 }
 
 type DspaCloudResourceMeta struct {
@@ -9776,6 +9871,9 @@ type DspaDiscoveryTask struct {
 
 	// 关联模板是否更新
 	ComplianceUpdate *bool `json:"ComplianceUpdate,omitnil,omitempty" name:"ComplianceUpdate"`
+
+	// 	full:全量扫描 incre:变更扫描
+	ScanRange *string `json:"ScanRange,omitnil,omitempty" name:"ScanRange"`
 }
 
 type DspaDiscoveryTaskCOSCondition struct {
@@ -9854,6 +9952,15 @@ type DspaDiscoveryTaskDbResult struct {
 
 	// 总的字段数
 	TotalField *int64 `json:"TotalField,omitnil,omitempty" name:"TotalField"`
+
+	// 任务实例id
+	TaskInstanceId *string `json:"TaskInstanceId,omitnil,omitempty" name:"TaskInstanceId"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 扫描范围（full:全量扫描 incre：变更扫描）
+	ScanRange *string `json:"ScanRange,omitnil,omitempty" name:"ScanRange"`
 }
 
 type DspaDiscoveryTaskDetail struct {
@@ -9886,6 +9993,9 @@ type DspaDiscoveryTaskDetail struct {
 
 	// 定时开始时间
 	TimingStartTime *string `json:"TimingStartTime,omitnil,omitempty" name:"TimingStartTime"`
+
+	// full:全量扫描 incre:变更扫描
+	ScanRange *string `json:"ScanRange,omitnil,omitempty" name:"ScanRange"`
 }
 
 type DspaDiscoveryTaskResultDetail struct {
@@ -12247,6 +12357,9 @@ type ModifyDSPADiscoveryTaskRequestParams struct {
 	// cynosdbmysql 表示TDSQL-C MySQL版,
 	// selfbuilt-db 表示自建数据库
 	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
+
+	// 	full:全量扫描 incre:变更扫描
+	ScanRange *string `json:"ScanRange,omitnil,omitempty" name:"ScanRange"`
 }
 
 type ModifyDSPADiscoveryTaskRequest struct {
@@ -12301,6 +12414,9 @@ type ModifyDSPADiscoveryTaskRequest struct {
 	// cynosdbmysql 表示TDSQL-C MySQL版,
 	// selfbuilt-db 表示自建数据库
 	DataSourceType *string `json:"DataSourceType,omitnil,omitempty" name:"DataSourceType"`
+
+	// 	full:全量扫描 incre:变更扫描
+	ScanRange *string `json:"ScanRange,omitnil,omitempty" name:"ScanRange"`
 }
 
 func (r *ModifyDSPADiscoveryTaskRequest) ToJsonString() string {
@@ -12329,6 +12445,7 @@ func (r *ModifyDSPADiscoveryTaskRequest) FromJsonString(s string) error {
 	delete(f, "TimingStartTime")
 	delete(f, "ResourceRegion")
 	delete(f, "DataSourceType")
+	delete(f, "ScanRange")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDSPADiscoveryTaskRequest has unknown keys!", "")
 	}

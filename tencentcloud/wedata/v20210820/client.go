@@ -4886,6 +4886,104 @@ func (c *Client) DescribeDsParentFolderTreeWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeDsTaskVersionInfoRequest() (request *DescribeDsTaskVersionInfoRequest) {
+    request = &DescribeDsTaskVersionInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDsTaskVersionInfo")
+    
+    
+    return
+}
+
+func NewDescribeDsTaskVersionInfoResponse() (response *DescribeDsTaskVersionInfoResponse) {
+    response = &DescribeDsTaskVersionInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDsTaskVersionInfo
+// 查看任务版本详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDsTaskVersionInfo(request *DescribeDsTaskVersionInfoRequest) (response *DescribeDsTaskVersionInfoResponse, err error) {
+    return c.DescribeDsTaskVersionInfoWithContext(context.Background(), request)
+}
+
+// DescribeDsTaskVersionInfo
+// 查看任务版本详细信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDsTaskVersionInfoWithContext(ctx context.Context, request *DescribeDsTaskVersionInfoRequest) (response *DescribeDsTaskVersionInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDsTaskVersionInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDsTaskVersionInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDsTaskVersionInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDsTaskVersionListRequest() (request *DescribeDsTaskVersionListRequest) {
+    request = &DescribeDsTaskVersionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDsTaskVersionList")
+    
+    
+    return
+}
+
+func NewDescribeDsTaskVersionListResponse() (response *DescribeDsTaskVersionListResponse) {
+    response = &DescribeDsTaskVersionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDsTaskVersionList
+// 拉取任务版本列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDsTaskVersionList(request *DescribeDsTaskVersionListRequest) (response *DescribeDsTaskVersionListResponse, err error) {
+    return c.DescribeDsTaskVersionListWithContext(context.Background(), request)
+}
+
+// DescribeDsTaskVersionList
+// 拉取任务版本列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDsTaskVersionListWithContext(ctx context.Context, request *DescribeDsTaskVersionListRequest) (response *DescribeDsTaskVersionListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDsTaskVersionListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDsTaskVersionList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDsTaskVersionListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDutyScheduleDetailsRequest() (request *DescribeDutyScheduleDetailsRequest) {
     request = &DescribeDutyScheduleDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10051,7 +10149,7 @@ func NewDescribeTaskScriptResponse() (response *DescribeTaskScriptResponse) {
 }
 
 // DescribeTaskScript
-// 查询任务脚本
+// 查询任务脚本。本接口已废弃，请使用接口GetPaginationTaskScript。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -10060,7 +10158,7 @@ func (c *Client) DescribeTaskScript(request *DescribeTaskScriptRequest) (respons
 }
 
 // DescribeTaskScript
-// 查询任务脚本
+// 查询任务脚本。本接口已废弃，请使用接口GetPaginationTaskScript。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -12813,6 +12911,9 @@ func NewModifyTaskInfoDsResponse() (response *ModifyTaskInfoDsResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyTaskInfoDs(request *ModifyTaskInfoDsRequest) (response *ModifyTaskInfoDsResponse, err error) {
     return c.ModifyTaskInfoDsWithContext(context.Background(), request)
 }
@@ -12822,6 +12923,9 @@ func (c *Client) ModifyTaskInfoDs(request *ModifyTaskInfoDsRequest) (response *M
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyTaskInfoDsWithContext(ctx context.Context, request *ModifyTaskInfoDsRequest) (response *ModifyTaskInfoDsResponse, err error) {
     if request == nil {
         request = NewModifyTaskInfoDsRequest()
@@ -12864,6 +12968,9 @@ func NewModifyTaskLinksResponse() (response *ModifyTaskLinksResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyTaskLinks(request *ModifyTaskLinksRequest) (response *ModifyTaskLinksResponse, err error) {
     return c.ModifyTaskLinksWithContext(context.Background(), request)
 }
@@ -12875,6 +12982,9 @@ func (c *Client) ModifyTaskLinks(request *ModifyTaskLinksRequest) (response *Mod
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) ModifyTaskLinksWithContext(ctx context.Context, request *ModifyTaskLinksRequest) (response *ModifyTaskLinksResponse, err error) {
     if request == nil {
         request = NewModifyTaskLinksRequest()
@@ -13013,7 +13123,7 @@ func NewModifyTaskScriptResponse() (response *ModifyTaskScriptResponse) {
 // ModifyTaskScript
 // <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
-// 修改任务脚本
+// 修改任务脚本。本接口已废弃，请使用接口ModifyTaskInfoDs。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -13024,7 +13134,7 @@ func (c *Client) ModifyTaskScript(request *ModifyTaskScriptRequest) (response *M
 // ModifyTaskScript
 // <p style="color:red;">[注意：该版本只满足广州区部分白名单客户使用]</p>
 //
-// 修改任务脚本
+// 修改任务脚本。本接口已废弃，请使用接口ModifyTaskInfoDs。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

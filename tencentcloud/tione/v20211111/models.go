@@ -6272,6 +6272,9 @@ type Pod struct {
 
 	// 实例状态的补充信息
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 当前实例所在的节点 IP
+	NodeIP *string `json:"NodeIP,omitnil,omitempty" name:"NodeIP"`
 }
 
 type PodInfo struct {

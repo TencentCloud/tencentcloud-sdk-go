@@ -32,11 +32,17 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 更新ACL失败
+	FAILEDOPERATION_ACCESSCONTROLLIST = "FailedOperation.AccessControlList"
+
 	// 关闭数据层失败，至少要保留热层和温层其中一层。
 	FAILEDOPERATION_CLOSEDATATIER = "FailedOperation.CloseDataTier"
 
 	// 集群资源配额限制错误。
 	FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
+
+	// cos融合迁移失败
+	FAILEDOPERATION_COSMIGRATE = "FailedOperation.CosMigrate"
 
 	// 节点磁盘块数参数检查失败。
 	FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
@@ -59,6 +65,12 @@ const (
 	// 获取实例的标签列表错误。
 	FAILEDOPERATION_GETTAGINFOERROR = "FailedOperation.GetTagInfoError"
 
+	// 获取user失败
+	FAILEDOPERATION_GETUSER = "FailedOperation.GetUser"
+
+	// 获取快照列表失败
+	FAILEDOPERATION_GETUSERCOSSNAPSHOTLIST = "FailedOperation.GetUserCosSnapshotList"
+
 	// 账户未绑定信用卡或paypal，无法支付。
 	FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
 
@@ -80,11 +92,17 @@ const (
 	// 请求超时。
 	FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeOut"
 
+	// 变更space的kibana语言信息失败
+	FAILEDOPERATION_SPACELANGUAGE = "FailedOperation.SpaceLanguage"
+
 	// 生成询价或者下单签名有误。
 	FAILEDOPERATION_TRADESIGNERROR = "FailedOperation.TradeSignError"
 
 	// 不支持对本地盘集群通过滚动重启方式扩缩容。
 	FAILEDOPERATION_UNSUPPORTEDLOCALDISKROLLUPSCALEUPORDOWN = "FailedOperation.UnsupportedLocalDiskRollUpScaleUpOrDown"
+
+	// 不支持开启低频存储
+	FAILEDOPERATION_UNSUPPORTEDOPENLOWFREQUENCY = "FailedOperation.UnsupportedOpenLowFrequency"
 
 	// 不支持在滚动重启扩容计算资源同时扩容磁盘数量。
 	FAILEDOPERATION_UNSUPPORTEDRESETNODETYPEANDSCALEOUTDISK = "FailedOperation.UnsupportedResetNodeTypeAndScaleOutDisk"
@@ -94,6 +112,9 @@ const (
 
 	// 不支持反向调节节点配置和磁盘容量。
 	FAILEDOPERATION_UNSUPPORTEDREVERSEREGULATIONNODETYPEANDDISK = "FailedOperation.UnsupportedReverseRegulationNodeTypeAndDisk"
+
+	// 变更space的vpc信息失败
+	FAILEDOPERATION_UPDATEVPC = "FailedOperation.UpdateVpc"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
@@ -250,6 +271,15 @@ const (
 
 	// 安全组id列表SecurityGroupIds的取值和预期不符。
 	INVALIDPARAMETER_INVALIDSECURITYGROUPIDS = "InvalidParameter.InvalidSecurityGroupIds"
+
+	// ES serverless的serverlessId未找到
+	INVALIDPARAMETER_INVALIDSERVERLESSID = "InvalidParameter.InvalidServerlessId"
+
+	// ES Serverless的spaceId未找到
+	INVALIDPARAMETER_INVALIDSPACEID = "InvalidParameter.InvalidSpaceId"
+
+	// space的名称错误
+	INVALIDPARAMETER_INVALIDSPACENAMES = "InvalidParameter.InvalidSpaceNames"
 
 	// 子网ID SubnetId的取值与预期不符。
 	INVALIDPARAMETER_INVALIDSUBNETID = "InvalidParameter.InvalidSubnetId"
@@ -437,6 +467,12 @@ const (
 	// cvm份额不足。
 	RESOURCEINSUFFICIENT_CVMQUOTA = "ResourceInsufficient.CVMQuota"
 
+	// clb资源不足
+	RESOURCEINSUFFICIENT_CLB = "ResourceInsufficient.Clb"
+
+	// es资源不足
+	RESOURCEINSUFFICIENT_ES = "ResourceInsufficient.Es"
+
 	// 隐藏可用区专用主节点资源不足。
 	RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
 
@@ -448,6 +484,9 @@ const (
 
 	// 可用区资源不足。
 	RESOURCEINSUFFICIENT_ZONE = "ResourceInsufficient.Zone"
+
+	// 资源不存在。
+	RESOURCENOTFOUND = "ResourceNotFound"
 
 	// 账户信息未找到。
 	RESOURCENOTFOUND_ACCOUNTINFONOTFOUND = "ResourceNotFound.AccountInfoNotFound"
@@ -478,6 +517,9 @@ const (
 
 	// 磁盘相关资源获取失败。
 	RESOURCENOTFOUND_DISKINFONOTFOUND = "ResourceNotFound.DiskInfoNotFound"
+
+	// 集群信息获取失败
+	RESOURCENOTFOUND_ESINFONOTFOUND = "ResourceNotFound.EsInfoNotFound"
 
 	// 密钥管理系统资源获取失败。
 	RESOURCENOTFOUND_KMSNOTFOUND = "ResourceNotFound.KMSNotFound"

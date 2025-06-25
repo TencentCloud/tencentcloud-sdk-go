@@ -603,7 +603,7 @@ func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
 }
 
 // DeleteInstance
-// 删除 RocketMQ 5.x 集群。
+// 删除 RocketMQ 5.x 集群，删除前请先删除正在使用的主题、消费组和角色信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -614,7 +614,7 @@ func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *Delet
 }
 
 // DeleteInstance
-// 删除 RocketMQ 5.x 集群。
+// 删除 RocketMQ 5.x 集群，删除前请先删除正在使用的主题、消费组和角色信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1048,6 +1048,55 @@ func (c *Client) DescribeConsumerClientWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeConsumerClientResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConsumerClientListRequest() (request *DescribeConsumerClientListRequest) {
+    request = &DescribeConsumerClientListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeConsumerClientList")
+    
+    
+    return
+}
+
+func NewDescribeConsumerClientListResponse() (response *DescribeConsumerClientListResponse) {
+    response = &DescribeConsumerClientListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeConsumerClientList
+// 查询消费组下的客户端连接列表。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeConsumerClientList(request *DescribeConsumerClientListRequest) (response *DescribeConsumerClientListResponse, err error) {
+    return c.DescribeConsumerClientListWithContext(context.Background(), request)
+}
+
+// DescribeConsumerClientList
+// 查询消费组下的客户端连接列表。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeConsumerClientListWithContext(ctx context.Context, request *DescribeConsumerClientListRequest) (response *DescribeConsumerClientListResponse, err error) {
+    if request == nil {
+        request = NewDescribeConsumerClientListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConsumerClientList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConsumerClientListResponse()
     err = c.Send(request, response)
     return
 }
@@ -3178,7 +3227,7 @@ func NewModifyInstanceResponse() (response *ModifyInstanceResponse) {
 }
 
 // ModifyInstance
-// 修改 RocketMQ 5.x 集群属性。
+// 修改 RocketMQ 5.x 集群属性，仅支持修改运行中的集群。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3190,7 +3239,7 @@ func (c *Client) ModifyInstance(request *ModifyInstanceRequest) (response *Modif
 }
 
 // ModifyInstance
-// 修改 RocketMQ 5.x 集群属性。
+// 修改 RocketMQ 5.x 集群属性，仅支持修改运行中的集群。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3233,7 +3282,7 @@ func NewModifyInstanceEndpointResponse() (response *ModifyInstanceEndpointRespon
 }
 
 // ModifyInstanceEndpoint
-// 修改 RocketMQ 5.x 集群接入点。
+// 修改 RocketMQ 5.x 集群接入点，操作前请先确认接入点已存在。
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
@@ -3244,7 +3293,7 @@ func (c *Client) ModifyInstanceEndpoint(request *ModifyInstanceEndpointRequest) 
 }
 
 // ModifyInstanceEndpoint
-// 修改 RocketMQ 5.x 集群接入点。
+// 修改 RocketMQ 5.x 集群接入点，操作前请先确认接入点已存在。
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"

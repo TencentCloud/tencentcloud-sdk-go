@@ -120,7 +120,7 @@ func NewAdjustCdbProxyResponse() (response *AdjustCdbProxyResponse) {
 }
 
 // AdjustCdbProxy
-// 调整数据库代理配置
+// 本接口（AdjustCdbProxy）用于调整数据库代理配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
@@ -132,7 +132,7 @@ func (c *Client) AdjustCdbProxy(request *AdjustCdbProxyRequest) (response *Adjus
 }
 
 // AdjustCdbProxy
-// 调整数据库代理配置
+// 本接口（AdjustCdbProxy）用于调整数据库代理配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
@@ -590,7 +590,7 @@ func NewCloseCdbProxyAddressResponse() (response *CloseCdbProxyAddressResponse) 
 }
 
 // CloseCdbProxyAddress
-// 请求关闭数据库代理地址
+// 本接口（CloseCdbProxyAddress）用于请求关闭数据库代理地址。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
@@ -603,7 +603,7 @@ func (c *Client) CloseCdbProxyAddress(request *CloseCdbProxyAddressRequest) (res
 }
 
 // CloseCdbProxyAddress
-// 请求关闭数据库代理地址
+// 本接口（CloseCdbProxyAddress）用于请求关闭数据库代理地址。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
@@ -647,7 +647,7 @@ func NewCloseSSLResponse() (response *CloseSSLResponse) {
 }
 
 // CloseSSL
-// 关闭SSL连接功能。
+// 本接口（CloseSSL）用于关闭 SSL 连接功能。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -658,7 +658,7 @@ func (c *Client) CloseSSL(request *CloseSSLRequest) (response *CloseSSLResponse,
 }
 
 // CloseSSL
-// 关闭SSL连接功能。
+// 本接口（CloseSSL）用于关闭 SSL 连接功能。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -1919,7 +1919,9 @@ func NewCreateParamTemplateResponse() (response *CreateParamTemplateResponse) {
 }
 
 // CreateParamTemplate
-// 该接口（CreateParamTemplate）用于创建参数模板，全地域公共参数 Region 均为 ap-guangzhou。
+// 该接口（CreateParamTemplate）用于创建参数模板。
+//
+// 说明：参数模板为公共组件，配置完成后全地域生效。接口调用配置地域可选择广州、新加坡。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1936,7 +1938,9 @@ func (c *Client) CreateParamTemplate(request *CreateParamTemplateRequest) (respo
 }
 
 // CreateParamTemplate
-// 该接口（CreateParamTemplate）用于创建参数模板，全地域公共参数 Region 均为 ap-guangzhou。
+// 该接口（CreateParamTemplate）用于创建参数模板。
+//
+// 说明：参数模板为公共组件，配置完成后全地域生效。接口调用配置地域可选择广州、新加坡。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2712,7 +2716,9 @@ func NewDeleteParamTemplateResponse() (response *DeleteParamTemplateResponse) {
 }
 
 // DeleteParamTemplate
-// 该接口（DeleteParamTemplate）用于删除参数模板，全地域公共参数 Region 均为 ap-guangzhou。
+// 该接口（DeleteParamTemplate）用于删除参数模板。
+//
+// 说明：参数模板为公共组件，配置完成后全地域生效。接口调用配置地域可选择广州、新加坡。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2724,7 +2730,9 @@ func (c *Client) DeleteParamTemplate(request *DeleteParamTemplateRequest) (respo
 }
 
 // DeleteParamTemplate
-// 该接口（DeleteParamTemplate）用于删除参数模板，全地域公共参数 Region 均为 ap-guangzhou。
+// 该接口（DeleteParamTemplate）用于删除参数模板。
+//
+// 说明：参数模板为公共组件，配置完成后全地域生效。接口调用配置地域可选择广州、新加坡。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2875,7 +2883,7 @@ func NewDescribeAccountPrivilegesResponse() (response *DescribeAccountPrivileges
 }
 
 // DescribeAccountPrivileges
-// 本接口(DescribeAccountPrivileges)用于查询云数据库账户支持的权限信息。
+// 本接口（DescribeAccountPrivileges）用于查询云数据库账户支持的权限信息。
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
@@ -2910,14 +2918,14 @@ func NewDescribeAccountPrivilegesResponse() (response *DescribeAccountPrivileges
 //  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
 //  OPERATIONDENIED_NOTSUPPORTMODIFYLOCALROOTHOSTERROR = "OperationDenied.NotSupportModifyLocalRootHostError"
 //  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
-//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 //  UNSUPPORTEDOPERATION_PRIVILEGESUNSUPPORTEDERROR = "UnsupportedOperation.PrivilegesUnsupportedError"
 func (c *Client) DescribeAccountPrivileges(request *DescribeAccountPrivilegesRequest) (response *DescribeAccountPrivilegesResponse, err error) {
     return c.DescribeAccountPrivilegesWithContext(context.Background(), request)
 }
 
 // DescribeAccountPrivileges
-// 本接口(DescribeAccountPrivileges)用于查询云数据库账户支持的权限信息。
+// 本接口（DescribeAccountPrivileges）用于查询云数据库账户支持的权限信息。
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
@@ -2952,7 +2960,7 @@ func (c *Client) DescribeAccountPrivileges(request *DescribeAccountPrivilegesReq
 //  OPERATIONDENIED_INSTANCESTATUSERROR = "OperationDenied.InstanceStatusError"
 //  OPERATIONDENIED_NOTSUPPORTMODIFYLOCALROOTHOSTERROR = "OperationDenied.NotSupportModifyLocalRootHostError"
 //  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
-//  RESOURCENOTFOUND_INSTANCENOTFUNDERROR = "ResourceNotFound.InstanceNotFundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 //  UNSUPPORTEDOPERATION_PRIVILEGESUNSUPPORTEDERROR = "UnsupportedOperation.PrivilegesUnsupportedError"
 func (c *Client) DescribeAccountPrivilegesWithContext(ctx context.Context, request *DescribeAccountPrivilegesRequest) (response *DescribeAccountPrivilegesResponse, err error) {
     if request == nil {
@@ -6176,7 +6184,9 @@ func NewDescribeParamTemplatesResponse() (response *DescribeParamTemplatesRespon
 }
 
 // DescribeParamTemplates
-// 该接口（DescribeParamTemplates）查询参数模板列表，全地域公共参数Region均为ap-guangzhou。
+// 该接口（DescribeParamTemplates）查询参数模板列表。
+//
+// 说明：参数模板为公共组件，配置完成后全地域生效。接口调用配置地域可选择广州、新加坡。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6190,7 +6200,9 @@ func (c *Client) DescribeParamTemplates(request *DescribeParamTemplatesRequest) 
 }
 
 // DescribeParamTemplates
-// 该接口（DescribeParamTemplates）查询参数模板列表，全地域公共参数Region均为ap-guangzhou。
+// 该接口（DescribeParamTemplates）查询参数模板列表。
+//
+// 说明：参数模板为公共组件，配置完成后全地域生效。接口调用配置地域可选择广州、新加坡。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6347,7 +6359,7 @@ func NewDescribeProxySupportParamResponse() (response *DescribeProxySupportParam
 }
 
 // DescribeProxySupportParam
-// 查询实例支持代理版本和参数
+// 本接口（DescribeProxySupportParam）用于查询实例支持代理版本和参数。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
@@ -6361,7 +6373,7 @@ func (c *Client) DescribeProxySupportParam(request *DescribeProxySupportParamReq
 }
 
 // DescribeProxySupportParam
-// 查询实例支持代理版本和参数
+// 本接口（DescribeProxySupportParam）用于查询实例支持代理版本和参数。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
@@ -8605,7 +8617,7 @@ func NewModifyCdbProxyAddressDescResponse() (response *ModifyCdbProxyAddressDesc
 }
 
 // ModifyCdbProxyAddressDesc
-// 修改代理地址描述信息
+// 本接口（ModifyCdbProxyAddressDesc）用于修改代理地址描述信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -8614,7 +8626,7 @@ func (c *Client) ModifyCdbProxyAddressDesc(request *ModifyCdbProxyAddressDescReq
 }
 
 // ModifyCdbProxyAddressDesc
-// 修改代理地址描述信息
+// 本接口（ModifyCdbProxyAddressDesc）用于修改代理地址描述信息。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -8654,7 +8666,7 @@ func NewModifyCdbProxyAddressVipAndVPortResponse() (response *ModifyCdbProxyAddr
 }
 
 // ModifyCdbProxyAddressVipAndVPort
-// 修改数据库代理地址VPC信息
+// 本接口（ModifyCdbProxyAddressVipAndVPort）用于修改数据库代理地址VPC信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
@@ -8668,7 +8680,7 @@ func (c *Client) ModifyCdbProxyAddressVipAndVPort(request *ModifyCdbProxyAddress
 }
 
 // ModifyCdbProxyAddressVipAndVPort
-// 修改数据库代理地址VPC信息
+// 本接口（ModifyCdbProxyAddressVipAndVPort）用于修改数据库代理地址VPC信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
@@ -8713,7 +8725,7 @@ func NewModifyCdbProxyParamResponse() (response *ModifyCdbProxyParamResponse) {
 }
 
 // ModifyCdbProxyParam
-// 配置数据库代理参数
+// 本接口（ModifyCdbProxyParam）用于配置数据库代理参数。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
@@ -8724,7 +8736,7 @@ func (c *Client) ModifyCdbProxyParam(request *ModifyCdbProxyParamRequest) (respo
 }
 
 // ModifyCdbProxyParam
-// 配置数据库代理参数
+// 本接口（ModifyCdbProxyParam）用于配置数据库代理参数。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
@@ -9483,7 +9495,9 @@ func NewModifyParamTemplateResponse() (response *ModifyParamTemplateResponse) {
 }
 
 // ModifyParamTemplate
-// 该接口（ModifyParamTemplate）用于修改参数模板，全地域公共参数Region均为ap-guangzhou。
+// 该接口（ModifyParamTemplate）用于修改参数模板。
+//
+// 说明：参数模板为公共组件，配置完成后全地域生效。接口调用配置地域可选择广州、新加坡。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -9498,7 +9512,9 @@ func (c *Client) ModifyParamTemplate(request *ModifyParamTemplateRequest) (respo
 }
 
 // ModifyParamTemplate
-// 该接口（ModifyParamTemplate）用于修改参数模板，全地域公共参数Region均为ap-guangzhou。
+// 该接口（ModifyParamTemplate）用于修改参数模板。
+//
+// 说明：参数模板为公共组件，配置完成后全地域生效。接口调用配置地域可选择广州、新加坡。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -9875,7 +9891,7 @@ func NewOpenAuditServiceResponse() (response *OpenAuditServiceResponse) {
 }
 
 // OpenAuditService
-// CDB实例开通审计服务
+// 本接口（OpenAuditService）用 CDB 实例开通审计服务。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEAUDITFAILERROR = "FailedOperation.CreateAuditFailError"
@@ -9896,7 +9912,7 @@ func (c *Client) OpenAuditService(request *OpenAuditServiceRequest) (response *O
 }
 
 // OpenAuditService
-// CDB实例开通审计服务
+// 本接口（OpenAuditService）用 CDB 实例开通审计服务。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEAUDITFAILERROR = "FailedOperation.CreateAuditFailError"
@@ -9966,9 +9982,11 @@ func NewOpenDBInstanceEncryptionResponse() (response *OpenDBInstanceEncryptionRe
 //
 // 3、对云数据库(MySQL)[授予访问KMS密钥的权限](https://console.cloud.tencent.com/cam/role)，角色名为MySQL_QCSRole，预设策略名为QcloudAccessForMySQLRole；
 //
+// 4、开启加密后不允许关闭。
+//
 // 
 //
-// 该 API 耗时可能到10s，客户端可能超时，如果调用 API 返回 InternalError ，请您调用DescribeDBInstanceInfo 确认后端加密是否开通成功。
+// 该 API 耗时可能到10s，客户端可能超时，如果调用 API 返回 InternalError ，请您调用 [DescribeDBInstanceInfo](https://cloud.tencent.com/document/product/236/44160) 确认后端加密是否开通成功，调用后参数 Encryption 为 YES 表示已开通成功。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -10002,9 +10020,11 @@ func (c *Client) OpenDBInstanceEncryption(request *OpenDBInstanceEncryptionReque
 //
 // 3、对云数据库(MySQL)[授予访问KMS密钥的权限](https://console.cloud.tencent.com/cam/role)，角色名为MySQL_QCSRole，预设策略名为QcloudAccessForMySQLRole；
 //
+// 4、开启加密后不允许关闭。
+//
 // 
 //
-// 该 API 耗时可能到10s，客户端可能超时，如果调用 API 返回 InternalError ，请您调用DescribeDBInstanceInfo 确认后端加密是否开通成功。
+// 该 API 耗时可能到10s，客户端可能超时，如果调用 API 返回 InternalError ，请您调用 [DescribeDBInstanceInfo](https://cloud.tencent.com/document/product/236/44160) 确认后端加密是否开通成功，调用后参数 Encryption 为 YES 表示已开通成功。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -10106,11 +10126,11 @@ func NewOpenSSLResponse() (response *OpenSSLResponse) {
 }
 
 // OpenSSL
-// 开启SSL连接功能。
+// 本接口（OpenSSL）用于开启 SSL 连接功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBOPERATIONACTIONERROR = "FailedOperation.DBOperationActionError"
-//  FAILEDOPERATION_OPERATIONINCONFLICTERR = "FailedOperation.OperationInConflictErr"
+//  FAILEDOPERATION_OPERATIONINCONFLICTERROR = "FailedOperation.OperationInConflictError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  MISSINGPARAMETER_MISSINGPARAMERROR = "MissingParameter.MissingParamError"
 //  OPERATIONDENIED_INSTANCELOCKERCONFLICT = "OperationDenied.InstanceLockerConflict"
@@ -10119,11 +10139,11 @@ func (c *Client) OpenSSL(request *OpenSSLRequest) (response *OpenSSLResponse, er
 }
 
 // OpenSSL
-// 开启SSL连接功能。
+// 本接口（OpenSSL）用于开启 SSL 连接功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DBOPERATIONACTIONERROR = "FailedOperation.DBOperationActionError"
-//  FAILEDOPERATION_OPERATIONINCONFLICTERR = "FailedOperation.OperationInConflictErr"
+//  FAILEDOPERATION_OPERATIONINCONFLICTERROR = "FailedOperation.OperationInConflictError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  MISSINGPARAMETER_MISSINGPARAMERROR = "MissingParameter.MissingParamError"
 //  OPERATIONDENIED_INSTANCELOCKERCONFLICT = "OperationDenied.InstanceLockerConflict"
@@ -10860,7 +10880,9 @@ func NewStopDBImportJobResponse() (response *StopDBImportJobResponse) {
 }
 
 // StopDBImportJob
-// 本接口(StopDBImportJob)用于终止数据导入任务。
+// 本接口（StopDBImportJob）用于终止数据导入任务。
+//
+// 说明：只有未完成的导入任务支持被终止，且终止后已执行的 SQL 部分会被保留。
 //
 // 可能返回的错误码:
 //  CDBERROR_IMPORTERROR = "CdbError.ImportError"
@@ -10874,7 +10896,9 @@ func (c *Client) StopDBImportJob(request *StopDBImportJobRequest) (response *Sto
 }
 
 // StopDBImportJob
-// 本接口(StopDBImportJob)用于终止数据导入任务。
+// 本接口（StopDBImportJob）用于终止数据导入任务。
+//
+// 说明：只有未完成的导入任务支持被终止，且终止后已执行的 SQL 部分会被保留。
 //
 // 可能返回的错误码:
 //  CDBERROR_IMPORTERROR = "CdbError.ImportError"
@@ -11100,7 +11124,7 @@ func NewSwitchCDBProxyResponse() (response *SwitchCDBProxyResponse) {
 }
 
 // SwitchCDBProxy
-// 数据库代理配置变更或则升级版本后手动发起立即切换
+// 本接口（SwitchCDBProxy）用于数据库代理配置变更或者升级版本后手动发起立即切换。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
@@ -11112,7 +11136,7 @@ func (c *Client) SwitchCDBProxy(request *SwitchCDBProxyRequest) (response *Switc
 }
 
 // SwitchCDBProxy
-// 数据库代理配置变更或则升级版本后手动发起立即切换
+// 本接口（SwitchCDBProxy）用于数据库代理配置变更或者升级版本后手动发起立即切换。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
@@ -11334,7 +11358,7 @@ func NewUpgradeCDBProxyVersionResponse() (response *UpgradeCDBProxyVersionRespon
 }
 
 // UpgradeCDBProxyVersion
-// 升级数据库代理版本
+// 本接口（UpgradeCDBProxyVersion）用于升级数据库代理版本。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
@@ -11345,7 +11369,7 @@ func (c *Client) UpgradeCDBProxyVersion(request *UpgradeCDBProxyVersionRequest) 
 }
 
 // UpgradeCDBProxyVersion
-// 升级数据库代理版本
+// 本接口（UpgradeCDBProxyVersion）用于升级数据库代理版本。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
@@ -11387,7 +11411,7 @@ func NewUpgradeDBInstanceResponse() (response *UpgradeDBInstanceResponse) {
 }
 
 // UpgradeDBInstance
-// 本接口(UpgradeDBInstance)用于升级或降级云数据库实例的配置，实例类型支持主实例、灾备实例和只读实例。如果进行迁移业务，请一定填写实例规格（CPU、内存），不然系统会默认以最小允许规格传参。
+// 本接口（UpgradeDBInstance）用于升级或降级云数据库实例的配置，实例类型支持主实例、灾备实例和只读实例。如果进行迁移业务，请一定填写实例规格（CPU、内存），不然系统会默认以最小允许规格传参。
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
@@ -11407,7 +11431,7 @@ func (c *Client) UpgradeDBInstance(request *UpgradeDBInstanceRequest) (response 
 }
 
 // UpgradeDBInstance
-// 本接口(UpgradeDBInstance)用于升级或降级云数据库实例的配置，实例类型支持主实例、灾备实例和只读实例。如果进行迁移业务，请一定填写实例规格（CPU、内存），不然系统会默认以最小允许规格传参。
+// 本接口（UpgradeDBInstance）用于升级或降级云数据库实例的配置，实例类型支持主实例、灾备实例和只读实例。如果进行迁移业务，请一定填写实例规格（CPU、内存），不然系统会默认以最小允许规格传参。
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"

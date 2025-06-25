@@ -168,11 +168,11 @@ func NewCreateCosMigrateToServerlessInstanceResponse() (response *CreateCosMigra
 // cos迁移流程
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
-//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
-//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
-//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
-//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_COSMIGRATE = "FailedOperation.CosMigrate"
+//  INVALIDPARAMETER_INVALIDSERVERLESSID = "InvalidParameter.InvalidServerlessId"
+//  RESOURCENOTFOUND_ESINFONOTFOUND = "ResourceNotFound.EsInfoNotFound"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 func (c *Client) CreateCosMigrateToServerlessInstance(request *CreateCosMigrateToServerlessInstanceRequest) (response *CreateCosMigrateToServerlessInstanceResponse, err error) {
     return c.CreateCosMigrateToServerlessInstanceWithContext(context.Background(), request)
 }
@@ -181,11 +181,11 @@ func (c *Client) CreateCosMigrateToServerlessInstance(request *CreateCosMigrateT
 // cos迁移流程
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
-//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
-//  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
-//  INVALIDPARAMETER_INVALIDUIN = "InvalidParameter.InvalidUin"
-//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_COSMIGRATE = "FailedOperation.CosMigrate"
+//  INVALIDPARAMETER_INVALIDSERVERLESSID = "InvalidParameter.InvalidServerlessId"
+//  RESOURCENOTFOUND_ESINFONOTFOUND = "ResourceNotFound.EsInfoNotFound"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 func (c *Client) CreateCosMigrateToServerlessInstanceWithContext(ctx context.Context, request *CreateCosMigrateToServerlessInstanceRequest) (response *CreateCosMigrateToServerlessInstanceResponse, err error) {
     if request == nil {
         request = NewCreateCosMigrateToServerlessInstanceRequest()
@@ -699,6 +699,7 @@ func NewCreateServerlessInstanceResponse() (response *CreateServerlessInstanceRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INDEXNAMEEXIST = "InvalidParameter.IndexNameExist"
 //  INVALIDPARAMETER_INDEXNAMEINVALID = "InvalidParameter.IndexNameInvalid"
+//  INVALIDPARAMETER_INVALIDOPTYPE = "InvalidParameter.InvalidOpType"
 //  INVALIDPARAMETER_USERNAMEEXIST = "InvalidParameter.UsernameExist"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_INDEXCOUNT = "LimitExceeded.IndexCount"
@@ -710,6 +711,7 @@ func NewCreateServerlessInstanceResponse() (response *CreateServerlessInstanceRe
 //  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
 //  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
 //  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+//  RESOURCENOTFOUND_TRADECGWNOTFOUND = "ResourceNotFound.TradeCgwNotFound"
 func (c *Client) CreateServerlessInstance(request *CreateServerlessInstanceRequest) (response *CreateServerlessInstanceResponse, err error) {
     return c.CreateServerlessInstanceWithContext(context.Background(), request)
 }
@@ -727,6 +729,7 @@ func (c *Client) CreateServerlessInstance(request *CreateServerlessInstanceReque
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INDEXNAMEEXIST = "InvalidParameter.IndexNameExist"
 //  INVALIDPARAMETER_INDEXNAMEINVALID = "InvalidParameter.IndexNameInvalid"
+//  INVALIDPARAMETER_INVALIDOPTYPE = "InvalidParameter.InvalidOpType"
 //  INVALIDPARAMETER_USERNAMEEXIST = "InvalidParameter.UsernameExist"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_INDEXCOUNT = "LimitExceeded.IndexCount"
@@ -738,6 +741,7 @@ func (c *Client) CreateServerlessInstance(request *CreateServerlessInstanceReque
 //  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
 //  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
 //  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+//  RESOURCENOTFOUND_TRADECGWNOTFOUND = "ResourceNotFound.TradeCgwNotFound"
 func (c *Client) CreateServerlessInstanceWithContext(ctx context.Context, request *CreateServerlessInstanceRequest) (response *CreateServerlessInstanceResponse, err error) {
     if request == nil {
         request = NewCreateServerlessInstanceRequest()
@@ -778,12 +782,14 @@ func NewCreateServerlessSpaceV2Response() (response *CreateServerlessSpaceV2Resp
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
 //  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
 //  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
 //  INVALIDPARAMETER_SPACENAMEEXIST = "InvalidParameter.SpaceNameExist"
 //  INVALIDPARAMETER_SPACENAMEINVALID = "InvalidParameter.SpaceNameInvalid"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -794,6 +800,8 @@ func NewCreateServerlessSpaceV2Response() (response *CreateServerlessSpaceV2Resp
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_CLB = "ResourceInsufficient.Clb"
+//  RESOURCEINSUFFICIENT_ES = "ResourceInsufficient.Es"
 //  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
 //  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
 func (c *Client) CreateServerlessSpaceV2(request *CreateServerlessSpaceV2Request) (response *CreateServerlessSpaceV2Response, err error) {
@@ -805,12 +813,14 @@ func (c *Client) CreateServerlessSpaceV2(request *CreateServerlessSpaceV2Request
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
 //  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
 //  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
 //  INVALIDPARAMETER_SPACENAMEEXIST = "InvalidParameter.SpaceNameExist"
 //  INVALIDPARAMETER_SPACENAMEINVALID = "InvalidParameter.SpaceNameInvalid"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -821,6 +831,8 @@ func (c *Client) CreateServerlessSpaceV2(request *CreateServerlessSpaceV2Request
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_CLB = "ResourceInsufficient.Clb"
+//  RESOURCEINSUFFICIENT_ES = "ResourceInsufficient.Es"
 //  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
 //  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
 func (c *Client) CreateServerlessSpaceV2WithContext(ctx context.Context, request *CreateServerlessSpaceV2Request) (response *CreateServerlessSpaceV2Response, err error) {
@@ -863,12 +875,14 @@ func NewDeleteClusterSnapshotResponse() (response *DeleteClusterSnapshotResponse
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
 //  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
 //  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
 //  INVALIDPARAMETER_SPACENAMEEXIST = "InvalidParameter.SpaceNameExist"
 //  INVALIDPARAMETER_SPACENAMEINVALID = "InvalidParameter.SpaceNameInvalid"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -879,6 +893,8 @@ func NewDeleteClusterSnapshotResponse() (response *DeleteClusterSnapshotResponse
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_CLB = "ResourceInsufficient.Clb"
+//  RESOURCEINSUFFICIENT_ES = "ResourceInsufficient.Es"
 //  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
 //  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
 func (c *Client) DeleteClusterSnapshot(request *DeleteClusterSnapshotRequest) (response *DeleteClusterSnapshotResponse, err error) {
@@ -890,12 +906,14 @@ func (c *Client) DeleteClusterSnapshot(request *DeleteClusterSnapshotRequest) (r
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
 //  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
 //  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
 //  INVALIDPARAMETER_SPACENAMEEXIST = "InvalidParameter.SpaceNameExist"
 //  INVALIDPARAMETER_SPACENAMEINVALID = "InvalidParameter.SpaceNameInvalid"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -906,6 +924,8 @@ func (c *Client) DeleteClusterSnapshot(request *DeleteClusterSnapshotRequest) (r
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
+//  RESOURCEINSUFFICIENT_CLB = "ResourceInsufficient.Clb"
+//  RESOURCEINSUFFICIENT_ES = "ResourceInsufficient.Es"
 //  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
 //  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
 func (c *Client) DeleteClusterSnapshotWithContext(ctx context.Context, request *DeleteClusterSnapshotRequest) (response *DeleteClusterSnapshotResponse, err error) {
@@ -1192,11 +1212,14 @@ func NewDeleteServerlessInstanceResponse() (response *DeleteServerlessInstanceRe
 //  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDSERVERLESSID = "InvalidParameter.InvalidServerlessId"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
 //  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
 //  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 func (c *Client) DeleteServerlessInstance(request *DeleteServerlessInstanceRequest) (response *DeleteServerlessInstanceResponse, err error) {
     return c.DeleteServerlessInstanceWithContext(context.Background(), request)
 }
@@ -1212,11 +1235,14 @@ func (c *Client) DeleteServerlessInstance(request *DeleteServerlessInstanceReque
 //  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDSERVERLESSID = "InvalidParameter.InvalidServerlessId"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
 //  RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
 //  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 func (c *Client) DeleteServerlessInstanceWithContext(ctx context.Context, request *DeleteServerlessInstanceRequest) (response *DeleteServerlessInstanceResponse, err error) {
     if request == nil {
         request = NewDeleteServerlessInstanceRequest()
@@ -2072,10 +2098,17 @@ func NewDescribeServerlessInstancesResponse() (response *DescribeServerlessInsta
 //  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDSERVERLESSID = "InvalidParameter.InvalidServerlessId"
+//  INVALIDPARAMETER_INVALIDSPACEID = "InvalidParameter.InvalidSpaceId"
+//  INVALIDPARAMETER_INVALIDTAGINFO = "InvalidParameter.InvalidTagInfo"
+//  INVALIDPARAMETER_INVALIDTAGLIST = "InvalidParameter.InvalidTagList"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CAMINFONOTFOUND = "ResourceNotFound.CAMInfoNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -2094,10 +2127,17 @@ func (c *Client) DescribeServerlessInstances(request *DescribeServerlessInstance
 //  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
+//  INVALIDPARAMETER_INVALIDSERVERLESSID = "InvalidParameter.InvalidServerlessId"
+//  INVALIDPARAMETER_INVALIDSPACEID = "InvalidParameter.InvalidSpaceId"
+//  INVALIDPARAMETER_INVALIDTAGINFO = "InvalidParameter.InvalidTagInfo"
+//  INVALIDPARAMETER_INVALIDTAGLIST = "InvalidParameter.InvalidTagList"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CAMINFONOTFOUND = "ResourceNotFound.CAMInfoNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -2198,10 +2238,12 @@ func NewDescribeServerlessSpaceUserResponse() (response *DescribeServerlessSpace
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
 //  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_GETUSER = "FailedOperation.GetUser"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
 //  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSPACEID = "InvalidParameter.InvalidSpaceId"
 //  INVALIDPARAMETER_USERNAMEEXIST = "InvalidParameter.UsernameExist"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_INDEXCOUNT = "LimitExceeded.IndexCount"
@@ -2224,10 +2266,12 @@ func (c *Client) DescribeServerlessSpaceUser(request *DescribeServerlessSpaceUse
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  FAILEDOPERATION_CLUSTERRESOURCELIMITERROR = "FailedOperation.ClusterResourceLimitError"
 //  FAILEDOPERATION_DISKCOUNTPARAMERROR = "FailedOperation.DiskCountParamError"
+//  FAILEDOPERATION_GETUSER = "FailedOperation.GetUser"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
 //  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSPACEID = "InvalidParameter.InvalidSpaceId"
 //  INVALIDPARAMETER_USERNAMEEXIST = "InvalidParameter.UsernameExist"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_INDEXCOUNT = "LimitExceeded.IndexCount"
@@ -2283,12 +2327,15 @@ func NewDescribeServerlessSpacesResponse() (response *DescribeServerlessSpacesRe
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  FAILEDOPERATION_GETTAGINFOERROR = "FailedOperation.GetTagInfoError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_CAMINFONOTFOUND = "ResourceNotFound.CAMInfoNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -2305,12 +2352,15 @@ func (c *Client) DescribeServerlessSpaces(request *DescribeServerlessSpacesReque
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  FAILEDOPERATION_GETTAGINFOERROR = "FailedOperation.GetTagInfoError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_CAMINFONOTFOUND = "ResourceNotFound.CAMInfoNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -2353,20 +2403,7 @@ func NewDescribeSpaceKibanaToolsResponse() (response *DescribeSpaceKibanaToolsRe
 // space维度的kibana获取登录token
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
-//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeSpaceKibanaTools(request *DescribeSpaceKibanaToolsRequest) (response *DescribeSpaceKibanaToolsResponse, err error) {
     return c.DescribeSpaceKibanaToolsWithContext(context.Background(), request)
 }
@@ -2375,20 +2412,7 @@ func (c *Client) DescribeSpaceKibanaTools(request *DescribeSpaceKibanaToolsReque
 // space维度的kibana获取登录token
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
-//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeSpaceKibanaToolsWithContext(ctx context.Context, request *DescribeSpaceKibanaToolsRequest) (response *DescribeSpaceKibanaToolsResponse, err error) {
     if request == nil {
         request = NewDescribeSpaceKibanaToolsRequest()
@@ -2428,20 +2452,8 @@ func NewDescribeUserCosSnapshotListResponse() (response *DescribeUserCosSnapshot
 // 查询快照信息接口
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
-//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION_GETUSERCOSSNAPSHOTLIST = "FailedOperation.GetUserCosSnapshotList"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUserCosSnapshotList(request *DescribeUserCosSnapshotListRequest) (response *DescribeUserCosSnapshotListResponse, err error) {
     return c.DescribeUserCosSnapshotListWithContext(context.Background(), request)
 }
@@ -2450,20 +2462,8 @@ func (c *Client) DescribeUserCosSnapshotList(request *DescribeUserCosSnapshotLis
 // 查询快照信息接口
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
-//  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
-//  INTERNALERROR = "InternalError"
+//  FAILEDOPERATION_GETUSERCOSSNAPSHOTLIST = "FailedOperation.GetUserCosSnapshotList"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUserCosSnapshotListWithContext(ctx context.Context, request *DescribeUserCosSnapshotListRequest) (response *DescribeUserCosSnapshotListResponse, err error) {
     if request == nil {
         request = NewDescribeUserCosSnapshotListRequest()
@@ -4212,16 +4212,28 @@ func NewUpdateServerlessInstanceResponse() (response *UpdateServerlessInstanceRe
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCESSCONTROLLIST = "FailedOperation.AccessControlList"
 //  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  FAILEDOPERATION_SPACELANGUAGE = "FailedOperation.SpaceLanguage"
+//  FAILEDOPERATION_UNSUPPORTEDOPENLOWFREQUENCY = "FailedOperation.UnsupportedOpenLowFrequency"
+//  FAILEDOPERATION_UPDATEVPC = "FailedOperation.UpdateVpc"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDESACL = "InvalidParameter.InvalidEsACL"
+//  INVALIDPARAMETER_INVALIDINDEXMETAJSON = "InvalidParameter.InvalidIndexMetaJson"
+//  INVALIDPARAMETER_INVALIDOPTYPE = "InvalidParameter.InvalidOpType"
+//  INVALIDPARAMETER_INVALIDPRIVATEACCESS = "InvalidParameter.InvalidPrivateAccess"
+//  INVALIDPARAMETER_INVALIDPUBLICACCESS = "InvalidParameter.InvalidPublicAccess"
+//  INVALIDPARAMETER_INVALIDSERVERLESSID = "InvalidParameter.InvalidServerlessId"
+//  INVALIDPARAMETER_INVALIDUPDATEMETAJSON = "InvalidParameter.InvalidUpdateMetaJson"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_ISOLATEDSTATUS = "ResourceInUse.IsolatedStatus"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UINNOTINWHITELIST = "UnauthorizedOperation.UinNotInWhiteList"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateServerlessInstance(request *UpdateServerlessInstanceRequest) (response *UpdateServerlessInstanceResponse, err error) {
@@ -4235,16 +4247,28 @@ func (c *Client) UpdateServerlessInstance(request *UpdateServerlessInstanceReque
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCESSCONTROLLIST = "FailedOperation.AccessControlList"
 //  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+//  FAILEDOPERATION_SPACELANGUAGE = "FailedOperation.SpaceLanguage"
+//  FAILEDOPERATION_UNSUPPORTEDOPENLOWFREQUENCY = "FailedOperation.UnsupportedOpenLowFrequency"
+//  FAILEDOPERATION_UPDATEVPC = "FailedOperation.UpdateVpc"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDESACL = "InvalidParameter.InvalidEsACL"
+//  INVALIDPARAMETER_INVALIDINDEXMETAJSON = "InvalidParameter.InvalidIndexMetaJson"
+//  INVALIDPARAMETER_INVALIDOPTYPE = "InvalidParameter.InvalidOpType"
+//  INVALIDPARAMETER_INVALIDPRIVATEACCESS = "InvalidParameter.InvalidPrivateAccess"
+//  INVALIDPARAMETER_INVALIDPUBLICACCESS = "InvalidParameter.InvalidPublicAccess"
+//  INVALIDPARAMETER_INVALIDSERVERLESSID = "InvalidParameter.InvalidServerlessId"
+//  INVALIDPARAMETER_INVALIDUPDATEMETAJSON = "InvalidParameter.InvalidUpdateMetaJson"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_ISOLATEDSTATUS = "ResourceInUse.IsolatedStatus"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UINNOTINWHITELIST = "UnauthorizedOperation.UinNotInWhiteList"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateServerlessInstanceWithContext(ctx context.Context, request *UpdateServerlessInstanceRequest) (response *UpdateServerlessInstanceResponse, err error) {
@@ -4289,17 +4313,26 @@ func NewUpdateServerlessSpaceResponse() (response *UpdateServerlessSpaceResponse
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCESSCONTROLLIST = "FailedOperation.AccessControlList"
 //  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDNODENAMES = "InvalidParameter.InvalidNodeNames"
+//  INVALIDPARAMETER_INVALIDOPTYPE = "InvalidParameter.InvalidOpType"
+//  INVALIDPARAMETER_INVALIDPUBLICACCESS = "InvalidParameter.InvalidPublicAccess"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_INVALIDSPACEID = "InvalidParameter.InvalidSpaceId"
+//  INVALIDPARAMETER_INVALIDSPACENAMES = "InvalidParameter.InvalidSpaceNames"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT_SUBNETIP = "ResourceInsufficient.SubnetIp"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 func (c *Client) UpdateServerlessSpace(request *UpdateServerlessSpaceRequest) (response *UpdateServerlessSpaceResponse, err error) {
     return c.UpdateServerlessSpaceWithContext(context.Background(), request)
 }
@@ -4311,17 +4344,26 @@ func (c *Client) UpdateServerlessSpace(request *UpdateServerlessSpaceRequest) (r
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCESSCONTROLLIST = "FailedOperation.AccessControlList"
 //  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDNODENAMES = "InvalidParameter.InvalidNodeNames"
+//  INVALIDPARAMETER_INVALIDOPTYPE = "InvalidParameter.InvalidOpType"
+//  INVALIDPARAMETER_INVALIDPUBLICACCESS = "InvalidParameter.InvalidPublicAccess"
+//  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
+//  INVALIDPARAMETER_INVALIDSPACEID = "InvalidParameter.InvalidSpaceId"
+//  INVALIDPARAMETER_INVALIDSPACENAMES = "InvalidParameter.InvalidSpaceNames"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT_SUBNETIP = "ResourceInsufficient.SubnetIp"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 func (c *Client) UpdateServerlessSpaceWithContext(ctx context.Context, request *UpdateServerlessSpaceRequest) (response *UpdateServerlessSpaceResponse, err error) {
     if request == nil {
         request = NewUpdateServerlessSpaceRequest()

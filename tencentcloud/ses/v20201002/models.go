@@ -2504,7 +2504,6 @@ type SendTaskData struct {
 	Subject *string `json:"Subject,omitnil,omitempty" name:"Subject"`
 
 	// 模板和模板数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Template *Template `json:"Template,omitnil,omitempty" name:"Template"`
 
 	// 周期任务参数
@@ -2516,7 +2515,6 @@ type SendTaskData struct {
 	TimedParam *TimedEmailParam `json:"TimedParam,omitnil,omitempty" name:"TimedParam"`
 
 	// 任务异常信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrMsg *string `json:"ErrMsg,omitnil,omitempty" name:"ErrMsg"`
 
 	// 收件人列表名称
@@ -2901,7 +2899,6 @@ func (r *UpdateEmailTemplateResponse) FromJsonString(s string) error {
 
 type Volume struct {
 	// 日期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SendDate *string `json:"SendDate,omitnil,omitempty" name:"SendDate"`
 
 	// 邮件请求数量
@@ -2923,6 +2920,5 @@ type Volume struct {
 	BounceCount *uint64 `json:"BounceCount,omitnil,omitempty" name:"BounceCount"`
 
 	// 取消订阅的用户数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnsubscribeCount *uint64 `json:"UnsubscribeCount,omitnil,omitempty" name:"UnsubscribeCount"`
 }

@@ -847,7 +847,7 @@ type CreateWorkspacesRequestParams struct {
 	// 公网带宽相关信息设置
 	InternetAccessible *SpaceInternetAccessible `json:"InternetAccessible,omitnil,omitempty" name:"InternetAccessible"`
 
-	// 购买工作空间数量
+	// 购买工作空间实例的数量
 	SpaceCount *int64 `json:"SpaceCount,omitnil,omitempty" name:"SpaceCount"`
 
 	// 工作空间显示名称
@@ -917,7 +917,7 @@ type CreateWorkspacesRequest struct {
 	// 公网带宽相关信息设置
 	InternetAccessible *SpaceInternetAccessible `json:"InternetAccessible,omitnil,omitempty" name:"InternetAccessible"`
 
-	// 购买工作空间数量
+	// 购买工作空间实例的数量
 	SpaceCount *int64 `json:"SpaceCount,omitnil,omitempty" name:"SpaceCount"`
 
 	// 工作空间显示名称
@@ -2369,6 +2369,9 @@ type NodeActivity struct {
 }
 
 type NodeOverview struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
 	// 节点实例ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -2403,6 +2406,12 @@ type NodeOverview struct {
 
 	// 节点的工作状态
 	NodeAllocateState *string `json:"NodeAllocateState,omitnil,omitempty" name:"NodeAllocateState"`
+
+	// 节点的名称
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// 节点的创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type NodeScript struct {

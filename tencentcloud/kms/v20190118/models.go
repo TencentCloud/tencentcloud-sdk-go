@@ -292,6 +292,63 @@ func (r *BindCloudResourceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CancelDataKeyDeletionRequestParams struct {
+	// 数据密钥的唯一标志符
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+}
+
+type CancelDataKeyDeletionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据密钥的唯一标志符
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+}
+
+func (r *CancelDataKeyDeletionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelDataKeyDeletionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataKeyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelDataKeyDeletionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelDataKeyDeletionResponseParams struct {
+	// 唯一标志被计划删除的数据密钥
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CancelDataKeyDeletionResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelDataKeyDeletionResponseParams `json:"Response"`
+}
+
+func (r *CancelDataKeyDeletionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelDataKeyDeletionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CancelKeyArchiveRequestParams struct {
 	// CMK唯一标识符
 	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
@@ -608,6 +665,52 @@ func (r *CreateWhiteBoxKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DataKey struct {
+	// DataKey的全局唯一标识。
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+}
+
+type DataKeyMetadata struct {
+	// DataKey的全局唯一标识
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+
+	// CMK的全局唯一标识
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// 作为密钥更容易辨识，更容易被人看懂的数据密钥名称
+	DataKeyName *string `json:"DataKeyName,omitnil,omitempty" name:"DataKeyName"`
+
+	// 数据密钥的长度,单位字节
+	NumberOfBytes *uint64 `json:"NumberOfBytes,omitnil,omitempty" name:"NumberOfBytes"`
+
+	// 密钥创建时间
+	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// DataKey的描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// DataKey的状态， 取值为：Enabled | Disabled | PendingDelete
+	KeyState *string `json:"KeyState,omitnil,omitempty" name:"KeyState"`
+
+	// 创建者
+	CreatorUin *uint64 `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
+
+	// 数据密钥的创建者，用户创建的为 user，授权各云产品自动创建的为对应的产品名
+	Owner *string `json:"Owner,omitnil,omitempty" name:"Owner"`
+
+	// 计划删除的时间
+	DeletionDate *uint64 `json:"DeletionDate,omitnil,omitempty" name:"DeletionDate"`
+
+	// DataKey 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL
+	Origin *string `json:"Origin,omitnil,omitempty" name:"Origin"`
+
+	// HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
+	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
+
+	// 资源ID，格式：creatorUin/$creatorUin/$dataKeyId
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
 // Predefined struct for user
 type DecryptRequestParams struct {
 	// 待解密的密文数据
@@ -795,6 +898,120 @@ func (r *DeleteWhiteBoxKeyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteWhiteBoxKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataKeyRequestParams struct {
+	// 数据密钥全局唯一标识符
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+}
+
+type DescribeDataKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据密钥全局唯一标识符
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+}
+
+func (r *DescribeDataKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataKeyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataKeyResponseParams struct {
+	// 数据密钥属性信息
+	DataKeyMetadata *DataKeyMetadata `json:"DataKeyMetadata,omitnil,omitempty" name:"DataKeyMetadata"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataKeyResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataKeysRequestParams struct {
+	// 查询DataKey的ID列表，批量查询一次最多支持100个DataKeyId
+	DataKeyIds []*string `json:"DataKeyIds,omitnil,omitempty" name:"DataKeyIds"`
+}
+
+type DescribeDataKeysRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询DataKey的ID列表，批量查询一次最多支持100个DataKeyId
+	DataKeyIds []*string `json:"DataKeyIds,omitnil,omitempty" name:"DataKeyIds"`
+}
+
+func (r *DescribeDataKeysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataKeysRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataKeyIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataKeysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataKeysResponseParams struct {
+	// 返回数据密钥属性信息列表
+	DataKeyMetadatas []*DataKeyMetadata `json:"DataKeyMetadatas,omitnil,omitempty" name:"DataKeyMetadatas"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDataKeysResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataKeysResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataKeysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataKeysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1227,6 +1444,114 @@ type DeviceFingerprint struct {
 }
 
 // Predefined struct for user
+type DisableDataKeyRequestParams struct {
+	// 数据密钥唯一标识符
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+}
+
+type DisableDataKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据密钥唯一标识符
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+}
+
+func (r *DisableDataKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableDataKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataKeyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableDataKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisableDataKeyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DisableDataKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *DisableDataKeyResponseParams `json:"Response"`
+}
+
+func (r *DisableDataKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableDataKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisableDataKeysRequestParams struct {
+	// 需要批量禁用的DataKey Id 列表，数据密钥数量最大支持100
+	DataKeyIds []*string `json:"DataKeyIds,omitnil,omitempty" name:"DataKeyIds"`
+}
+
+type DisableDataKeysRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要批量禁用的DataKey Id 列表，数据密钥数量最大支持100
+	DataKeyIds []*string `json:"DataKeyIds,omitnil,omitempty" name:"DataKeyIds"`
+}
+
+func (r *DisableDataKeysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableDataKeysRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataKeyIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableDataKeysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisableDataKeysResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DisableDataKeysResponse struct {
+	*tchttp.BaseResponse
+	Response *DisableDataKeysResponseParams `json:"Response"`
+}
+
+func (r *DisableDataKeysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableDataKeysResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DisableKeyRequestParams struct {
 	// CMK唯一标识符
 	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
@@ -1493,6 +1818,114 @@ func (r *DisableWhiteBoxKeysResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DisableWhiteBoxKeysResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableDataKeyRequestParams struct {
+	// 数据密钥唯一标识符
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+}
+
+type EnableDataKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据密钥唯一标识符
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+}
+
+func (r *EnableDataKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableDataKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataKeyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableDataKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableDataKeyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EnableDataKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *EnableDataKeyResponseParams `json:"Response"`
+}
+
+func (r *EnableDataKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableDataKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableDataKeysRequestParams struct {
+	// 需要批量启用的DataKey Id 列表， 数据密钥数量最大支持100
+	DataKeyIds []*string `json:"DataKeyIds,omitnil,omitempty" name:"DataKeyIds"`
+}
+
+type EnableDataKeysRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要批量启用的DataKey Id 列表， 数据密钥数量最大支持100
+	DataKeyIds []*string `json:"DataKeyIds,omitnil,omitempty" name:"DataKeyIds"`
+}
+
+func (r *EnableDataKeysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableDataKeysRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataKeyIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableDataKeysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableDataKeysResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type EnableDataKeysResponse struct {
+	*tchttp.BaseResponse
+	Response *EnableDataKeysResponseParams `json:"Response"`
+}
+
+func (r *EnableDataKeysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableDataKeysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1948,6 +2381,20 @@ type GenerateDataKeyRequestParams struct {
 
 	// 非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（以 C1C3C2 格式返回密文），SM2_C1C3C2_ASN1 （以 C1C3C2 ASN1 格式返回密文），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
 	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitnil,omitempty" name:"EncryptionAlgorithm"`
+
+	// 表示生成的数据密钥是否被KMS托管。1:表示被KMS托管保存,0:表示KMS不托管。表示生成的数据密钥是否被KMS托管。1:表示被KMS托管保存,0:表示KMS不托管。
+	IsHostedByKms *uint64 `json:"IsHostedByKms,omitnil,omitempty" name:"IsHostedByKms"`
+
+	// 数据密钥的名称，当IsHostedByKms为1时,必须填写。当IsHostedByKms为0时,可以不填，KMS不托管。
+	DataKeyName *string `json:"DataKeyName,omitnil,omitempty" name:"DataKeyName"`
+
+	// 数据密钥 的描述，最大100字节
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// KMS 独享版对应的 HSM 集群 ID。
+	// 当KeyId 没有传入时有效，如果指定HsmClusterId,会默认在此集群下生成根密钥，然后利用创建的根密钥产生数据密钥。
+	// 如果没有指定HsmClusterId，则会在公有云共享集群下创建一个根密钥，然后利用创建的根密钥产生数据密钥。
+	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
 }
 
 type GenerateDataKeyRequest struct {
@@ -1970,6 +2417,20 @@ type GenerateDataKeyRequest struct {
 
 	// 非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（以 C1C3C2 格式返回密文），SM2_C1C3C2_ASN1 （以 C1C3C2 ASN1 格式返回密文），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
 	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitnil,omitempty" name:"EncryptionAlgorithm"`
+
+	// 表示生成的数据密钥是否被KMS托管。1:表示被KMS托管保存,0:表示KMS不托管。表示生成的数据密钥是否被KMS托管。1:表示被KMS托管保存,0:表示KMS不托管。
+	IsHostedByKms *uint64 `json:"IsHostedByKms,omitnil,omitempty" name:"IsHostedByKms"`
+
+	// 数据密钥的名称，当IsHostedByKms为1时,必须填写。当IsHostedByKms为0时,可以不填，KMS不托管。
+	DataKeyName *string `json:"DataKeyName,omitnil,omitempty" name:"DataKeyName"`
+
+	// 数据密钥 的描述，最大100字节
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// KMS 独享版对应的 HSM 集群 ID。
+	// 当KeyId 没有传入时有效，如果指定HsmClusterId,会默认在此集群下生成根密钥，然后利用创建的根密钥产生数据密钥。
+	// 如果没有指定HsmClusterId，则会在公有云共享集群下创建一个根密钥，然后利用创建的根密钥产生数据密钥。
+	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
 }
 
 func (r *GenerateDataKeyRequest) ToJsonString() string {
@@ -1990,6 +2451,10 @@ func (r *GenerateDataKeyRequest) FromJsonString(s string) error {
 	delete(f, "EncryptionContext")
 	delete(f, "EncryptionPublicKey")
 	delete(f, "EncryptionAlgorithm")
+	delete(f, "IsHostedByKms")
+	delete(f, "DataKeyName")
+	delete(f, "Description")
+	delete(f, "HsmClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateDataKeyRequest has unknown keys!", "")
 	}
@@ -2007,6 +2472,9 @@ type GenerateDataKeyResponseParams struct {
 
 	// 数据密钥DataKey加密后的密文，用户需要自行保存该密文，KMS不托管用户的数据密钥。可以通过Decrypt接口从CiphertextBlob中获取数据密钥DataKey明文
 	CiphertextBlob *string `json:"CiphertextBlob,omitnil,omitempty" name:"CiphertextBlob"`
+
+	// DataKey的全局唯一标识,当KMS托管数据密钥时返回。
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -2082,6 +2550,134 @@ func (r *GenerateRandomResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GenerateRandomResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetDataKeyCiphertextBlobRequestParams struct {
+	// 数据密钥的唯一标志符
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+}
+
+type GetDataKeyCiphertextBlobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据密钥的唯一标志符
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+}
+
+func (r *GetDataKeyCiphertextBlobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDataKeyCiphertextBlobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataKeyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDataKeyCiphertextBlobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetDataKeyCiphertextBlobResponseParams struct {
+	// 数据密钥的密文
+	CiphertextBlob *string `json:"CiphertextBlob,omitnil,omitempty" name:"CiphertextBlob"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetDataKeyCiphertextBlobResponse struct {
+	*tchttp.BaseResponse
+	Response *GetDataKeyCiphertextBlobResponseParams `json:"Response"`
+}
+
+func (r *GetDataKeyCiphertextBlobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDataKeyCiphertextBlobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetDataKeyPlaintextRequestParams struct {
+	// 数据密钥的唯一标志符
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+
+	// PEM 格式公钥字符串，支持 RSA2048 和 SM2 公钥，用于对返回数据中的 Plaintext 值进行加密。若为空，则不对 Plaintext 值加密。
+	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitnil,omitempty" name:"EncryptionPublicKey"`
+
+	// 非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（以 C1C3C2 格式返回密文），SM2_C1C3C2_ASN1 （以 C1C3C2 ASN1 格式返回密文），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
+	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitnil,omitempty" name:"EncryptionAlgorithm"`
+}
+
+type GetDataKeyPlaintextRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据密钥的唯一标志符
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+
+	// PEM 格式公钥字符串，支持 RSA2048 和 SM2 公钥，用于对返回数据中的 Plaintext 值进行加密。若为空，则不对 Plaintext 值加密。
+	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitnil,omitempty" name:"EncryptionPublicKey"`
+
+	// 非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（以 C1C3C2 格式返回密文），SM2_C1C3C2_ASN1 （以 C1C3C2 ASN1 格式返回密文），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
+	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitnil,omitempty" name:"EncryptionAlgorithm"`
+}
+
+func (r *GetDataKeyPlaintextRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDataKeyPlaintextRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataKeyId")
+	delete(f, "EncryptionPublicKey")
+	delete(f, "EncryptionAlgorithm")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDataKeyPlaintextRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetDataKeyPlaintextResponseParams struct {
+	// 若调用时未提供 EncryptionPublicKey，该字段值为 Base64 编码的明文，需进行 Base64 解码以获取明文。 若调用时提供了 EncryptionPublicKey，则该字段值为使用 EncryptionPublicKey 公钥进行非对称加密后的 Base64 编码的密文。需在 Base64 解码后，使用用户上传的公钥对应的私钥进行进一步解密，以获取明文。
+	Plaintext *string `json:"Plaintext,omitnil,omitempty" name:"Plaintext"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetDataKeyPlaintextResponse struct {
+	*tchttp.BaseResponse
+	Response *GetDataKeyPlaintextResponseParams `json:"Response"`
+}
+
+func (r *GetDataKeyPlaintextResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDataKeyPlaintextResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2385,7 +2981,7 @@ type GetServiceStatusResponseParams struct {
 	// 旗舰版是否自动续费：0-不自动续费，1-自动续费
 	ProRenewFlag *uint64 `json:"ProRenewFlag,omitnil,omitempty" name:"ProRenewFlag"`
 
-	// 旗舰版购买记录的唯一性标识。如果为开通旗舰版，则返回值为空
+	// 旗舰版购买记录的唯一性标识。如果未开通旗舰版，则返回值为空
 	ProResourceId *string `json:"ProResourceId,omitnil,omitempty" name:"ProResourceId"`
 
 	// 是否开通 KMS 托管版
@@ -2406,6 +3002,18 @@ type GetServiceStatusResponseParams struct {
 	// 返回独享集群组
 	ExclusiveHSMList []*ExclusiveHSM `json:"ExclusiveHSMList,omitnil,omitempty" name:"ExclusiveHSMList"`
 
+	// 是否支持数据密钥托管。1:支持，0:不支持。
+	IsAllowedDataKeyHosted *bool `json:"IsAllowedDataKeyHosted,omitnil,omitempty" name:"IsAllowedDataKeyHosted"`
+
+	// IsAllowedDataKeyHosted为1时有效，数据密钥的购买额度
+	DataKeyLimit *uint64 `json:"DataKeyLimit,omitnil,omitempty" name:"DataKeyLimit"`
+
+	// IsAllowedDataKeyHosted为1时有效，数据密钥免费额度。
+	FreeDataKeyLimit *uint64 `json:"FreeDataKeyLimit,omitnil,omitempty" name:"FreeDataKeyLimit"`
+
+	// IsAllowedDataKeyHosted为1时有效，已使用的数据密钥数量。
+	DataKeyUsedCount *uint64 `json:"DataKeyUsedCount,omitnil,omitempty" name:"DataKeyUsedCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -2423,6 +3031,111 @@ func (r *GetServiceStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetServiceStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImportDataKeyRequestParams struct {
+	// 数据密钥的名称
+	DataKeyName *string `json:"DataKeyName,omitnil,omitempty" name:"DataKeyName"`
+
+	// 如果导入的是明文数据密钥，则是base64 转换后的明文数据密钥，  如果导入的是密文数据密钥，则是由KMS GenerateDataKey接口生成的密文数据密钥。
+	ImportKeyMaterial *string `json:"ImportKeyMaterial,omitnil,omitempty" name:"ImportKeyMaterial"`
+
+	// 1:密文导入(由KMS接口生成的密文数据密钥)，2:明文导入。
+	ImportType *uint64 `json:"ImportType,omitnil,omitempty" name:"ImportType"`
+
+	// 数据密钥 的描述，最大100字节
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 当导入密文数据密钥时，无需传入根密钥,如果传入也会忽略。
+	// 当KeyId 为空，如果指定了独享集群HsmClusterId，则会在独享集群下创建一个根密钥，根据生成的根密钥加密数据密钥。
+	// 如果没有指定独享集群HsmClusterId,则会在公有云共享集群下创建一个根密钥，根据生成的根密钥加密数据密钥。
+	// 如果KeyId 不为空，根据指定的根密钥加密数据密钥。
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// KMS 独享版对应的 HSM 集群 ID。
+	// 当KeyId 没有传入时有效，如果指定了独享集群HsmClusterId，则会在独享集群下创建一个根密钥，根据产生的根密钥加密数据密钥。
+	// 如果没有指定独享集群HsmClusterId,则会在公有云共享集群下创建一个根密钥，根据产生的根密钥加密数据密钥。
+	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
+}
+
+type ImportDataKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据密钥的名称
+	DataKeyName *string `json:"DataKeyName,omitnil,omitempty" name:"DataKeyName"`
+
+	// 如果导入的是明文数据密钥，则是base64 转换后的明文数据密钥，  如果导入的是密文数据密钥，则是由KMS GenerateDataKey接口生成的密文数据密钥。
+	ImportKeyMaterial *string `json:"ImportKeyMaterial,omitnil,omitempty" name:"ImportKeyMaterial"`
+
+	// 1:密文导入(由KMS接口生成的密文数据密钥)，2:明文导入。
+	ImportType *uint64 `json:"ImportType,omitnil,omitempty" name:"ImportType"`
+
+	// 数据密钥 的描述，最大100字节
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 当导入密文数据密钥时，无需传入根密钥,如果传入也会忽略。
+	// 当KeyId 为空，如果指定了独享集群HsmClusterId，则会在独享集群下创建一个根密钥，根据生成的根密钥加密数据密钥。
+	// 如果没有指定独享集群HsmClusterId,则会在公有云共享集群下创建一个根密钥，根据生成的根密钥加密数据密钥。
+	// 如果KeyId 不为空，根据指定的根密钥加密数据密钥。
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// KMS 独享版对应的 HSM 集群 ID。
+	// 当KeyId 没有传入时有效，如果指定了独享集群HsmClusterId，则会在独享集群下创建一个根密钥，根据产生的根密钥加密数据密钥。
+	// 如果没有指定独享集群HsmClusterId,则会在公有云共享集群下创建一个根密钥，根据产生的根密钥加密数据密钥。
+	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
+}
+
+func (r *ImportDataKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportDataKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataKeyName")
+	delete(f, "ImportKeyMaterial")
+	delete(f, "ImportType")
+	delete(f, "Description")
+	delete(f, "KeyId")
+	delete(f, "HsmClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportDataKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImportDataKeyResponseParams struct {
+	// CMK的全局唯一标识
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// DataKey的全局唯一标识  否  官网/国内&国际站展示
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ImportDataKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *ImportDataKeyResponseParams `json:"Response"`
+}
+
+func (r *ImportDataKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportDataKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2619,6 +3332,210 @@ func (r *ListAlgorithmsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListAlgorithmsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListDataKeyDetailRequestParams struct {
+	// 含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 含义跟 SQL 查询的 Limit 一致，表示本次最多获取 Limit 个元素。缺省值为10，最大值为200
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 根据创建者角色筛选，默认 0 表示用户自己创建的数据密钥， 1 表示授权其它云产品自动创建的数据密钥
+	Role *uint64 `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 根据DataKey创建时间排序， 0 表示按照降序排序，1表示按照升序排序
+	OrderType *uint64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// 根据DataKey状态筛选， 0表示全部DataKey， 1 表示仅查询Enabled DataKey， 2 表示仅查询Disabled DataKey，3 表示查询PendingDelete 状态的DataKey(处于计划删除状态的Key)。
+	KeyState *uint64 `json:"KeyState,omitnil,omitempty" name:"KeyState"`
+
+	// 根据DataKeyId或者DataKeyName进行模糊匹配查询
+	SearchKeyAlias *string `json:"SearchKeyAlias,omitnil,omitempty" name:"SearchKeyAlias"`
+
+	// 根据DateKey类型筛选， "TENCENT_KMS" 表示筛选密钥材料由KMS创建的数据密钥， "EXTERNAL" 表示筛选密钥材料需要用户导入的 EXTERNAL类型数据密钥，"ALL" 或者不设置表示两种类型都查询，大小写敏感。
+	Origin *string `json:"Origin,omitnil,omitempty" name:"Origin"`
+
+	// KMS 高级版对应的 HSM 集群 ID。
+	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
+
+	// 根密钥全局唯一标识符
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// 数据密钥的长度
+	DataKeyLen *uint64 `json:"DataKeyLen,omitnil,omitempty" name:"DataKeyLen"`
+}
+
+type ListDataKeyDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 含义跟 SQL 查询的 Limit 一致，表示本次最多获取 Limit 个元素。缺省值为10，最大值为200
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 根据创建者角色筛选，默认 0 表示用户自己创建的数据密钥， 1 表示授权其它云产品自动创建的数据密钥
+	Role *uint64 `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// 根据DataKey创建时间排序， 0 表示按照降序排序，1表示按照升序排序
+	OrderType *uint64 `json:"OrderType,omitnil,omitempty" name:"OrderType"`
+
+	// 根据DataKey状态筛选， 0表示全部DataKey， 1 表示仅查询Enabled DataKey， 2 表示仅查询Disabled DataKey，3 表示查询PendingDelete 状态的DataKey(处于计划删除状态的Key)。
+	KeyState *uint64 `json:"KeyState,omitnil,omitempty" name:"KeyState"`
+
+	// 根据DataKeyId或者DataKeyName进行模糊匹配查询
+	SearchKeyAlias *string `json:"SearchKeyAlias,omitnil,omitempty" name:"SearchKeyAlias"`
+
+	// 根据DateKey类型筛选， "TENCENT_KMS" 表示筛选密钥材料由KMS创建的数据密钥， "EXTERNAL" 表示筛选密钥材料需要用户导入的 EXTERNAL类型数据密钥，"ALL" 或者不设置表示两种类型都查询，大小写敏感。
+	Origin *string `json:"Origin,omitnil,omitempty" name:"Origin"`
+
+	// KMS 高级版对应的 HSM 集群 ID。
+	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
+
+	// 根密钥全局唯一标识符
+	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
+
+	// 数据密钥的长度
+	DataKeyLen *uint64 `json:"DataKeyLen,omitnil,omitempty" name:"DataKeyLen"`
+}
+
+func (r *ListDataKeyDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListDataKeyDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Role")
+	delete(f, "OrderType")
+	delete(f, "KeyState")
+	delete(f, "SearchKeyAlias")
+	delete(f, "Origin")
+	delete(f, "HsmClusterId")
+	delete(f, "KeyId")
+	delete(f, "DataKeyLen")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListDataKeyDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListDataKeyDetailResponseParams struct {
+	// 返回的属性信息列表。
+	DataKeyMetadatas []*DataKeyMetadata `json:"DataKeyMetadatas,omitnil,omitempty" name:"DataKeyMetadatas"`
+
+	// DataKey的总数量
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListDataKeyDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *ListDataKeyDetailResponseParams `json:"Response"`
+}
+
+func (r *ListDataKeyDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListDataKeyDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListDataKeysRequestParams struct {
+	// 含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 含义跟 SQL 查询的 Limit 一致，表示本次最多获取 Limit 个元素。缺省值为10，最大值为200
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 根据创建者角色筛选，默认 0 表示用户自己创建的数据密钥， 1 表示授权其它云产品自动创建的数据密钥
+	Role *uint64 `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// KMS 高级版对应的 HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
+	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
+}
+
+type ListDataKeysRequest struct {
+	*tchttp.BaseRequest
+	
+	// 含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 含义跟 SQL 查询的 Limit 一致，表示本次最多获取 Limit 个元素。缺省值为10，最大值为200
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 根据创建者角色筛选，默认 0 表示用户自己创建的数据密钥， 1 表示授权其它云产品自动创建的数据密钥
+	Role *uint64 `json:"Role,omitnil,omitempty" name:"Role"`
+
+	// KMS 高级版对应的 HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
+	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
+}
+
+func (r *ListDataKeysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListDataKeysRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Role")
+	delete(f, "HsmClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListDataKeysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListDataKeysResponseParams struct {
+	// 数据密钥Id列表数组
+	DataKeys []*DataKey `json:"DataKeys,omitnil,omitempty" name:"DataKeys"`
+
+	// 数据密钥的总数量
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ListDataKeysResponse struct {
+	*tchttp.BaseResponse
+	Response *ListDataKeysResponseParams `json:"Response"`
+}
+
+func (r *ListDataKeysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListDataKeysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3252,6 +4169,73 @@ func (r *ReEncryptResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ScheduleDataKeyDeletionRequestParams struct {
+	// 数据密钥的唯一标志符
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+
+	// 计划删除时间区间[7,30]
+	PendingWindowInDays *uint64 `json:"PendingWindowInDays,omitnil,omitempty" name:"PendingWindowInDays"`
+}
+
+type ScheduleDataKeyDeletionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据密钥的唯一标志符
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+
+	// 计划删除时间区间[7,30]
+	PendingWindowInDays *uint64 `json:"PendingWindowInDays,omitnil,omitempty" name:"PendingWindowInDays"`
+}
+
+func (r *ScheduleDataKeyDeletionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScheduleDataKeyDeletionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataKeyId")
+	delete(f, "PendingWindowInDays")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScheduleDataKeyDeletionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ScheduleDataKeyDeletionResponseParams struct {
+	// 计划删除执行时间
+	DeletionDate *uint64 `json:"DeletionDate,omitnil,omitempty" name:"DeletionDate"`
+
+	// 唯一标志被计划删除的数据密钥
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ScheduleDataKeyDeletionResponse struct {
+	*tchttp.BaseResponse
+	Response *ScheduleDataKeyDeletionResponseParams `json:"Response"`
+}
+
+func (r *ScheduleDataKeyDeletionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ScheduleDataKeyDeletionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ScheduleKeyDeletionRequestParams struct {
 	// CMK的唯一标志
 	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
@@ -3538,6 +4522,128 @@ func (r *UpdateAliasResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateAliasResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateDataKeyDescriptionRequestParams struct {
+	// 数据密钥的唯一标志符
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+
+	// 数据密钥 的描述，最大100字节
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+type UpdateDataKeyDescriptionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据密钥的唯一标志符
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+
+	// 数据密钥 的描述，最大100字节
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+}
+
+func (r *UpdateDataKeyDescriptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDataKeyDescriptionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataKeyId")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDataKeyDescriptionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateDataKeyDescriptionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateDataKeyDescriptionResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateDataKeyDescriptionResponseParams `json:"Response"`
+}
+
+func (r *UpdateDataKeyDescriptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDataKeyDescriptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateDataKeyNameRequestParams struct {
+	// 数据密钥的唯一标志符
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+
+	// 数据密钥的名称
+	DataKeyName *string `json:"DataKeyName,omitnil,omitempty" name:"DataKeyName"`
+}
+
+type UpdateDataKeyNameRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据密钥的唯一标志符
+	DataKeyId *string `json:"DataKeyId,omitnil,omitempty" name:"DataKeyId"`
+
+	// 数据密钥的名称
+	DataKeyName *string `json:"DataKeyName,omitnil,omitempty" name:"DataKeyName"`
+}
+
+func (r *UpdateDataKeyNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDataKeyNameRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataKeyId")
+	delete(f, "DataKeyName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDataKeyNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateDataKeyNameResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UpdateDataKeyNameResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateDataKeyNameResponseParams `json:"Response"`
+}
+
+func (r *UpdateDataKeyNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDataKeyNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

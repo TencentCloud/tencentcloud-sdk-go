@@ -42,6 +42,44 @@ type AICallConfig struct {
 	DigitalHuman *DigitalHumanConfig `json:"DigitalHuman,omitnil,omitempty" name:"DigitalHuman"`
 }
 
+type Agent struct {
+	// AgentID
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// WorkflowID，非空则当前Agent从workflow转换而来
+	WorkflowId *string `json:"WorkflowId,omitnil,omitempty" name:"WorkflowId"`
+
+	// Agent名称，同一个应用内，Agent名称不能重复
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 插件图标url
+	IconUrl *string `json:"IconUrl,omitnil,omitempty" name:"IconUrl"`
+
+	// Agent指令；当该Agent被调用时，将作为“系统提示词”使用，描述Agent应执行的操作和响应方式
+	Instructions *string `json:"Instructions,omitnil,omitempty" name:"Instructions"`
+
+	// 当Agent作为转交目标时的描述，用于让其他Agent的LLM理解其功能和转交时机
+	HandoffDescription *string `json:"HandoffDescription,omitnil,omitempty" name:"HandoffDescription"`
+
+	// Agent可转交的子AgentId列表
+	Handoffs []*string `json:"Handoffs,omitnil,omitempty" name:"Handoffs"`
+
+	// Agent调用LLM时使用的模型配置
+	Model *AgentModelInfo `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// Agent可使用的工具列表
+	Tools []*AgentToolInfo `json:"Tools,omitnil,omitempty" name:"Tools"`
+
+	// Agent可使用的插件列表
+	Plugins []*AgentPluginInfo `json:"Plugins,omitnil,omitempty" name:"Plugins"`
+
+	// 当前Agent是否是启动Agent
+	IsStartingAgent *bool `json:"IsStartingAgent,omitnil,omitempty" name:"IsStartingAgent"`
+
+	// Agent类型; 0: 未指定类型; 1: 知识库检索Agent
+	AgentType *uint64 `json:"AgentType,omitnil,omitempty" name:"AgentType"`
+}
+
 type AgentDebugInfo struct {
 	// 工具、大模型的输入信息，json
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -50,6 +88,136 @@ type AgentDebugInfo struct {
 	// 工具、大模型的输出信息，json
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *string `json:"Output,omitnil,omitempty" name:"Output"`
+}
+
+type AgentInput struct {
+	// 输入来源类型：0 用户输入，3 自定义变量（API参数）
+	InputType *uint64 `json:"InputType,omitnil,omitempty" name:"InputType"`
+
+	// 用户手写输入
+	UserInputValue *AgentInputUserInputValue `json:"UserInputValue,omitnil,omitempty" name:"UserInputValue"`
+
+	// 自定义变量（API参数）
+	CustomVarId *string `json:"CustomVarId,omitnil,omitempty" name:"CustomVarId"`
+}
+
+type AgentInputUserInputValue struct {
+	// 用户输入的值
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
+type AgentKnowledgeAttrLabel struct {
+	// 属性ID
+	AttributeBizId *string `json:"AttributeBizId,omitnil,omitempty" name:"AttributeBizId"`
+
+	// 标签值，标签值之间是或的关系，只有匹配的，才会进行知识检索，否则报检索不到
+	Inputs []*AgentInput `json:"Inputs,omitnil,omitempty" name:"Inputs"`
+}
+
+type AgentKnowledgeFilter struct {
+	// 知识检索筛选方式; 0: 全部知识; 1:按文档和问答; 2: 按标签
+	FilterType *uint64 `json:"FilterType,omitnil,omitempty" name:"FilterType"`
+
+	// 文档和问答过滤器
+	DocAndAnswer *AgentKnowledgeFilterDocAndAnswer `json:"DocAndAnswer,omitnil,omitempty" name:"DocAndAnswer"`
+
+	// 标签过滤器
+	Tag *AgentKnowledgeFilterTag `json:"Tag,omitnil,omitempty" name:"Tag"`
+}
+
+type AgentKnowledgeFilterDocAndAnswer struct {
+	// 文档ID列表
+	DocBizIds []*string `json:"DocBizIds,omitnil,omitempty" name:"DocBizIds"`
+
+	// 问答
+	AllQa *bool `json:"AllQa,omitnil,omitempty" name:"AllQa"`
+}
+
+type AgentKnowledgeFilterTag struct {
+	// 标签之间的关系;0:AND, 1:OR
+	Operator *uint64 `json:"Operator,omitnil,omitempty" name:"Operator"`
+
+	// 标签
+	Labels []*AgentKnowledgeAttrLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
+}
+
+type AgentKnowledgeQAPlugin struct {
+	// 知识检索筛选范围
+	Filter *AgentKnowledgeFilter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+type AgentMCPServerInfo struct {
+	// mcp server URL地址
+	McpServerUrl *string `json:"McpServerUrl,omitnil,omitempty" name:"McpServerUrl"`
+
+	// mcp server header信息
+	Headers []*AgentPluginHeader `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// 超时时间，单位秒
+	Timeout *int64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
+
+	// sse服务超时时间，单位秒
+	SseReadTimeout *int64 `json:"SseReadTimeout,omitnil,omitempty" name:"SseReadTimeout"`
+}
+
+type AgentModelInfo struct {
+	// 模型名称
+	ModelName *string `json:"ModelName,omitnil,omitempty" name:"ModelName"`
+
+	// 模型别名
+	ModelAliasName *string `json:"ModelAliasName,omitnil,omitempty" name:"ModelAliasName"`
+
+	// 模型温度
+	Temperature *float64 `json:"Temperature,omitnil,omitempty" name:"Temperature"`
+
+	// 模型TopP
+	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
+
+	// 模型是否可用
+	IsEnabled *bool `json:"IsEnabled,omitnil,omitempty" name:"IsEnabled"`
+
+	// 对话历史条数限制
+	HistoryLimit *uint64 `json:"HistoryLimit,omitnil,omitempty" name:"HistoryLimit"`
+
+	// 模型上下文长度字符限制
+	ModelContextWordsLimit *string `json:"ModelContextWordsLimit,omitnil,omitempty" name:"ModelContextWordsLimit"`
+
+	// 指令长度字符限制
+	InstructionsWordsLimit *uint64 `json:"InstructionsWordsLimit,omitnil,omitempty" name:"InstructionsWordsLimit"`
+}
+
+type AgentPluginHeader struct {
+	// 参数名称
+	ParamName *string `json:"ParamName,omitnil,omitempty" name:"ParamName"`
+
+	// 参数值
+	ParamValue *string `json:"ParamValue,omitnil,omitempty" name:"ParamValue"`
+
+	// header参数配置是否隐藏不可见
+	GlobalHidden *bool `json:"GlobalHidden,omitnil,omitempty" name:"GlobalHidden"`
+
+	// 输入的值
+	Input *AgentInput `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 参数是否可以为空
+	IsRequired *bool `json:"IsRequired,omitnil,omitempty" name:"IsRequired"`
+}
+
+type AgentPluginInfo struct {
+	// 插件id
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+
+	// 应用配置的插件header信息
+	Headers []*AgentPluginHeader `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// 插件调用LLM时使用的模型配置，一般用于指定知识库问答插件的生成模型
+	Model *AgentModelInfo `json:"Model,omitnil,omitempty" name:"Model"`
+
+	// 插件信息类型; 0: 未指定类型; 1: 知识库问答插件
+	PluginInfoType *uint64 `json:"PluginInfoType,omitnil,omitempty" name:"PluginInfoType"`
+
+	// 知识库问答插件配置
+	KnowledgeQa *AgentKnowledgeQAPlugin `json:"KnowledgeQa,omitnil,omitempty" name:"KnowledgeQa"`
 }
 
 type AgentProcedure struct {
@@ -222,6 +390,114 @@ type AgentThought struct {
 	// 文件信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Files []*FileInfo `json:"Files,omitnil,omitempty" name:"Files"`
+}
+
+type AgentToolInfo struct {
+	// 插件id
+	PluginId *string `json:"PluginId,omitnil,omitempty" name:"PluginId"`
+
+	// 插件名称
+	PluginName *string `json:"PluginName,omitnil,omitempty" name:"PluginName"`
+
+	// 插件图标url
+	IconUrl *string `json:"IconUrl,omitnil,omitempty" name:"IconUrl"`
+
+	// 0 自定义插件
+	// 1 官方插件
+	// 2 第三方插件 目前用于第三方实现的mcp server
+	PluginType *uint64 `json:"PluginType,omitnil,omitempty" name:"PluginType"`
+
+	// 工具id
+	ToolId *string `json:"ToolId,omitnil,omitempty" name:"ToolId"`
+
+	// 工具名称
+	ToolName *string `json:"ToolName,omitnil,omitempty" name:"ToolName"`
+
+	// 工具描述
+	ToolDesc *string `json:"ToolDesc,omitnil,omitempty" name:"ToolDesc"`
+
+	// 输入参数
+	Inputs []*AgentToolReqParam `json:"Inputs,omitnil,omitempty" name:"Inputs"`
+
+	// 输出参数
+	Outputs []*AgentToolRspParam `json:"Outputs,omitnil,omitempty" name:"Outputs"`
+
+	// 创建方式，0:服务创建，1:代码创建，2:MCP创建	
+	CreateType *int64 `json:"CreateType,omitnil,omitempty" name:"CreateType"`
+
+	// MCP插件的配置信息
+	McpServer *AgentMCPServerInfo `json:"McpServer,omitnil,omitempty" name:"McpServer"`
+
+	// 该工具是否和知识库绑定
+	IsBindingKnowledge *bool `json:"IsBindingKnowledge,omitnil,omitempty" name:"IsBindingKnowledge"`
+
+	// 插件状态，1:可用，2:不可用	
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// header信息
+	Headers []*AgentPluginHeader `json:"Headers,omitnil,omitempty" name:"Headers"`
+
+	// NON_STREAMING: 非流式  STREAMIN: 流式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CallingMethod *string `json:"CallingMethod,omitnil,omitempty" name:"CallingMethod"`
+}
+
+type AgentToolReqParam struct {
+	// 参数名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 参数描述
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 参数类型，0:string, 1:int, 2:float，3:bool 4:object 5:array_string, 6:array_int, 7:array_float, 8:array_bool, 9:array_object
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 参数是否必填
+	IsRequired *bool `json:"IsRequired,omitnil,omitempty" name:"IsRequired"`
+
+	// 参数默认值
+	DefaultValue *string `json:"DefaultValue,omitnil,omitempty" name:"DefaultValue"`
+
+	// 子参数,ParamType 是OBJECT 或 ARRAY<>类型有用
+	SubParams []*AgentToolReqParam `json:"SubParams,omitnil,omitempty" name:"SubParams"`
+
+	// 是否隐藏不可见
+	GlobalHidden *bool `json:"GlobalHidden,omitnil,omitempty" name:"GlobalHidden"`
+
+	// agent模式下模型是否可见
+	AgentHidden *bool `json:"AgentHidden,omitnil,omitempty" name:"AgentHidden"`
+
+	// 其中任意
+	AnyOf []*AgentToolReqParam `json:"AnyOf,omitnil,omitempty" name:"AnyOf"`
+
+	// 其中一个
+	OneOf []*AgentToolReqParam `json:"OneOf,omitnil,omitempty" name:"OneOf"`
+
+	// 输入
+	Input *AgentInput `json:"Input,omitnil,omitempty" name:"Input"`
+}
+
+type AgentToolRspParam struct {
+	// 参数名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 参数描述
+	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 参数类型，0:string, 1:int, 2:float，3:bool 4:object 5:array_string, 6:array_int, 7:array_float, 8:array_bool, 9:array_object
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 子参数,ParamType 是OBJECT 或 ARRAY<>类型有用
+	SubParams []*AgentToolRspParam `json:"SubParams,omitnil,omitempty" name:"SubParams"`
+
+	// agent模式下模型是否可见
+	AgentHidden *bool `json:"AgentHidden,omitnil,omitempty" name:"AgentHidden"`
+
+	// 是否隐藏不可见
+	GlobalHidden *bool `json:"GlobalHidden,omitnil,omitempty" name:"GlobalHidden"`
+
+	// COVER: 覆盖解析 INCREMENT:增量解析
+	AnalysisMethod *string `json:"AnalysisMethod,omitnil,omitempty" name:"AnalysisMethod"`
 }
 
 type ApiVarAttrInfo struct {
@@ -881,6 +1157,70 @@ type Coord struct {
 
 	// 纵坐标
 	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
+}
+
+// Predefined struct for user
+type CreateAgentRequestParams struct {
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 要增加的Agent的信息
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type CreateAgentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 要增加的Agent的信息
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *CreateAgentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAgentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppBizId")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAgentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAgentResponseParams struct {
+	// 新建的AgentID
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAgentResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAgentResponseParams `json:"Response"`
+}
+
+func (r *CreateAgentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAgentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1849,6 +2189,70 @@ type CustomVariable struct {
 }
 
 // Predefined struct for user
+type DeleteAgentRequestParams struct {
+	// Agent的ID
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+}
+
+type DeleteAgentRequest struct {
+	*tchttp.BaseRequest
+	
+	// Agent的ID
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+}
+
+func (r *DeleteAgentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAgentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AgentId")
+	delete(f, "AppBizId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAgentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAgentResponseParams struct {
+	// Agent的ID
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAgentResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAgentResponseParams `json:"Response"`
+}
+
+func (r *DeleteAgentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAgentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteAppRequestParams struct {
 	// 应用ID
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
@@ -2408,6 +2812,66 @@ func (r *DeleteVarResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteVarResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAppAgentListRequestParams struct {
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+}
+
+type DescribeAppAgentListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+}
+
+func (r *DescribeAppAgentListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppAgentListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppBizId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAppAgentListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAppAgentListResponseParams struct {
+	// 入口启动AgentID
+	StaringAgentId *string `json:"StaringAgentId,omitnil,omitempty" name:"StaringAgentId"`
+
+	// 应用Agent信息列表
+	Agents []*Agent `json:"Agents,omitnil,omitempty" name:"Agents"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAppAgentListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAppAgentListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAppAgentListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAppAgentListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3143,6 +3607,10 @@ type DescribeDocResponseParams struct {
 
 	// 文档是否停用，false:未停用，true:已停用
 	IsDisabled *bool `json:"IsDisabled,omitnil,omitempty" name:"IsDisabled"`
+
+	// 是否支持下载
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDownload *bool `json:"IsDownload,omitnil,omitempty" name:"IsDownload"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -4551,6 +5019,9 @@ type DocSegment struct {
 	// 文档链接
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocUrl *string `json:"DocUrl,omitnil,omitempty" name:"DocUrl"`
+
+	// 文档的自定义链接
+	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
 }
 
 type DocumentElement struct {
@@ -5295,6 +5766,10 @@ type GetDocPreviewResponseParams struct {
 
 	// 文件md结果cos临时地址
 	ParseResultCosUrl *string `json:"ParseResultCosUrl,omitnil,omitempty" name:"ParseResultCosUrl"`
+
+	// 是否可下载
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDownload *bool `json:"IsDownload,omitnil,omitempty" name:"IsDownload"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -8915,6 +9390,70 @@ type ModelParameter struct {
 }
 
 // Predefined struct for user
+type ModifyAgentRequestParams struct {
+	// 需要修改的应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 修改后的Agent的信息
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+type ModifyAgentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要修改的应用ID
+	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
+
+	// 修改后的Agent的信息
+	Agent *Agent `json:"Agent,omitnil,omitempty" name:"Agent"`
+}
+
+func (r *ModifyAgentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAgentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppBizId")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAgentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAgentResponseParams struct {
+	// 修改的AgentId
+	AgentId *string `json:"AgentId,omitnil,omitempty" name:"AgentId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyAgentResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAgentResponseParams `json:"Response"`
+}
+
+func (r *ModifyAgentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAgentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyAppRequestParams struct {
 	// 应用 ID
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
@@ -9890,6 +10429,18 @@ type MsgRecordReference struct {
 
 	// 来源文档ID
 	DocId *string `json:"DocId,omitnil,omitempty" name:"DocId"`
+
+	// 知识库名称
+	KnowledgeName *string `json:"KnowledgeName,omitnil,omitempty" name:"KnowledgeName"`
+
+	// 知识库业务id
+	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
+
+	// 文档业务id
+	DocBizId *string `json:"DocBizId,omitnil,omitempty" name:"DocBizId"`
+
+	// 问答业务id
+	QaBizId *string `json:"QaBizId,omitnil,omitempty" name:"QaBizId"`
 }
 
 type NodeRunBase struct {
@@ -11232,6 +11783,9 @@ type SaveDocRequestParams struct {
 
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
+
+	// 是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义
+	IsDownload *bool `json:"IsDownload,omitnil,omitempty" name:"IsDownload"`
 }
 
 type SaveDocRequest struct {
@@ -11297,6 +11851,9 @@ type SaveDocRequest struct {
 
 	// 分类ID
 	CateBizId *string `json:"CateBizId,omitnil,omitempty" name:"CateBizId"`
+
+	// 是否可下载，IsRefer为true并且ReferUrlType为0时，该值才有意义
+	IsDownload *bool `json:"IsDownload,omitnil,omitempty" name:"IsDownload"`
 }
 
 func (r *SaveDocRequest) ToJsonString() string {
@@ -11328,6 +11885,7 @@ func (r *SaveDocRequest) FromJsonString(s string) error {
 	delete(f, "IsRefer")
 	delete(f, "Opt")
 	delete(f, "CateBizId")
+	delete(f, "IsDownload")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SaveDocRequest has unknown keys!", "")
 	}

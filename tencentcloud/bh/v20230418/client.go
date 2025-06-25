@@ -411,6 +411,91 @@ func (c *Client) BindDeviceResourceWithContext(ctx context.Context, request *Bin
     return
 }
 
+func NewCheckLDAPConnectionRequest() (request *CheckLDAPConnectionRequest) {
+    request = &CheckLDAPConnectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "CheckLDAPConnection")
+    
+    
+    return
+}
+
+func NewCheckLDAPConnectionResponse() (response *CheckLDAPConnectionResponse) {
+    response = &CheckLDAPConnectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CheckLDAPConnection
+// 测试LDAP连接
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHFAILED = "FailedOperation.AuthFailed"
+//  FAILEDOPERATION_CONNECTIONFAILED = "FailedOperation.ConnectionFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CheckLDAPConnection(request *CheckLDAPConnectionRequest) (response *CheckLDAPConnectionResponse, err error) {
+    return c.CheckLDAPConnectionWithContext(context.Background(), request)
+}
+
+// CheckLDAPConnection
+// 测试LDAP连接
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHFAILED = "FailedOperation.AuthFailed"
+//  FAILEDOPERATION_CONNECTIONFAILED = "FailedOperation.ConnectionFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CheckLDAPConnectionWithContext(ctx context.Context, request *CheckLDAPConnectionRequest) (response *CheckLDAPConnectionResponse, err error) {
+    if request == nil {
+        request = NewCheckLDAPConnectionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckLDAPConnection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckLDAPConnectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAccessWhiteListRuleRequest() (request *CreateAccessWhiteListRuleRequest) {
     request = &CreateAccessWhiteListRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2598,6 +2683,93 @@ func (c *Client) DescribeDomainsWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeLDAPUnitSetRequest() (request *DescribeLDAPUnitSetRequest) {
+    request = &DescribeLDAPUnitSetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "DescribeLDAPUnitSet")
+    
+    
+    return
+}
+
+func NewDescribeLDAPUnitSetResponse() (response *DescribeLDAPUnitSetResponse) {
+    response = &DescribeLDAPUnitSetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLDAPUnitSet
+// 获取LDAP ou 列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHFAILED = "FailedOperation.AuthFailed"
+//  FAILEDOPERATION_CONNECTIONFAILED = "FailedOperation.ConnectionFailed"
+//  FAILEDOPERATION_SEARCHFAILED = "FailedOperation.SearchFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeLDAPUnitSet(request *DescribeLDAPUnitSetRequest) (response *DescribeLDAPUnitSetResponse, err error) {
+    return c.DescribeLDAPUnitSetWithContext(context.Background(), request)
+}
+
+// DescribeLDAPUnitSet
+// 获取LDAP ou 列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHFAILED = "FailedOperation.AuthFailed"
+//  FAILEDOPERATION_CONNECTIONFAILED = "FailedOperation.ConnectionFailed"
+//  FAILEDOPERATION_SEARCHFAILED = "FailedOperation.SearchFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeLDAPUnitSetWithContext(ctx context.Context, request *DescribeLDAPUnitSetRequest) (response *DescribeLDAPUnitSetResponse, err error) {
+    if request == nil {
+        request = NewDescribeLDAPUnitSetRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLDAPUnitSet require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLDAPUnitSetResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLoginEventRequest() (request *DescribeLoginEventRequest) {
     request = &DescribeLoginEventRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3503,6 +3675,87 @@ func (c *Client) ModifyDeviceGroupWithContext(ctx context.Context, request *Modi
     return
 }
 
+func NewModifyLDAPSettingRequest() (request *ModifyLDAPSettingRequest) {
+    request = &ModifyLDAPSettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "ModifyLDAPSetting")
+    
+    
+    return
+}
+
+func NewModifyLDAPSettingResponse() (response *ModifyLDAPSettingResponse) {
+    response = &ModifyLDAPSettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyLDAPSetting
+// 修改LDAP配置信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyLDAPSetting(request *ModifyLDAPSettingRequest) (response *ModifyLDAPSettingResponse, err error) {
+    return c.ModifyLDAPSettingWithContext(context.Background(), request)
+}
+
+// ModifyLDAPSetting
+// 修改LDAP配置信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyLDAPSettingWithContext(ctx context.Context, request *ModifyLDAPSettingRequest) (response *ModifyLDAPSettingResponse, err error) {
+    if request == nil {
+        request = NewModifyLDAPSettingRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLDAPSetting require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLDAPSettingResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyOAuthSettingRequest() (request *ModifyOAuthSettingRequest) {
     request = &ModifyOAuthSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3860,6 +4113,63 @@ func (c *Client) ModifyUserGroupWithContext(ctx context.Context, request *Modify
     request.SetContext(ctx)
     
     response = NewModifyUserGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReplaySessionRequest() (request *ReplaySessionRequest) {
+    request = &ReplaySessionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "ReplaySession")
+    
+    
+    return
+}
+
+func NewReplaySessionResponse() (response *ReplaySessionResponse) {
+    response = &ReplaySessionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReplaySession
+// 会话回放
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ReplaySession(request *ReplaySessionRequest) (response *ReplaySessionResponse, err error) {
+    return c.ReplaySessionWithContext(context.Background(), request)
+}
+
+// ReplaySession
+// 会话回放
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ReplaySessionWithContext(ctx context.Context, request *ReplaySessionRequest) (response *ReplaySessionResponse, err error) {
+    if request == nil {
+        request = NewReplaySessionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReplaySession require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReplaySessionResponse()
     err = c.Send(request, response)
     return
 }
@@ -4640,6 +4950,126 @@ func (c *Client) SearchTaskResultWithContext(ctx context.Context, request *Searc
     request.SetContext(ctx)
     
     response = NewSearchTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetLDAPSyncFlagRequest() (request *SetLDAPSyncFlagRequest) {
+    request = &SetLDAPSyncFlagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "SetLDAPSyncFlag")
+    
+    
+    return
+}
+
+func NewSetLDAPSyncFlagResponse() (response *SetLDAPSyncFlagResponse) {
+    response = &SetLDAPSyncFlagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetLDAPSyncFlag
+// 设置LDAP 立即同步标记
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SetLDAPSyncFlag(request *SetLDAPSyncFlagRequest) (response *SetLDAPSyncFlagResponse, err error) {
+    return c.SetLDAPSyncFlagWithContext(context.Background(), request)
+}
+
+// SetLDAPSyncFlag
+// 设置LDAP 立即同步标记
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SetLDAPSyncFlagWithContext(ctx context.Context, request *SetLDAPSyncFlagRequest) (response *SetLDAPSyncFlagResponse, err error) {
+    if request == nil {
+        request = NewSetLDAPSyncFlagRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetLDAPSyncFlag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetLDAPSyncFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnlockUserRequest() (request *UnlockUserRequest) {
+    request = &UnlockUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bh", APIVersion, "UnlockUser")
+    
+    
+    return
+}
+
+func NewUnlockUserResponse() (response *UnlockUserResponse) {
+    response = &UnlockUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UnlockUser
+// 解锁用户
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) UnlockUser(request *UnlockUserRequest) (response *UnlockUserResponse, err error) {
+    return c.UnlockUserWithContext(context.Background(), request)
+}
+
+// UnlockUser
+// 解锁用户
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) UnlockUserWithContext(ctx context.Context, request *UnlockUserRequest) (response *UnlockUserResponse, err error) {
+    if request == nil {
+        request = NewUnlockUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnlockUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnlockUserResponse()
     err = c.Send(request, response)
     return
 }

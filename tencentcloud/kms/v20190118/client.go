@@ -299,6 +299,69 @@ func (c *Client) BindCloudResourceWithContext(ctx context.Context, request *Bind
     return
 }
 
+func NewCancelDataKeyDeletionRequest() (request *CancelDataKeyDeletionRequest) {
+    request = &CancelDataKeyDeletionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("kms", APIVersion, "CancelDataKeyDeletion")
+    
+    
+    return
+}
+
+func NewCancelDataKeyDeletionResponse() (response *CancelDataKeyDeletionResponse) {
+    response = &CancelDataKeyDeletionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CancelDataKeyDeletion
+// 取消计划删除数据密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  LIMITEXCEEDED_DATAKEYLIMITEXCEEDED = "LimitExceeded.DataKeyLimitExceeded"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTPENDINGDELETE = "ResourceUnavailable.DataKeyNotPendingDelete"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CancelDataKeyDeletion(request *CancelDataKeyDeletionRequest) (response *CancelDataKeyDeletionResponse, err error) {
+    return c.CancelDataKeyDeletionWithContext(context.Background(), request)
+}
+
+// CancelDataKeyDeletion
+// 取消计划删除数据密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  LIMITEXCEEDED_DATAKEYLIMITEXCEEDED = "LimitExceeded.DataKeyLimitExceeded"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTPENDINGDELETE = "ResourceUnavailable.DataKeyNotPendingDelete"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CancelDataKeyDeletionWithContext(ctx context.Context, request *CancelDataKeyDeletionRequest) (response *CancelDataKeyDeletionResponse, err error) {
+    if request == nil {
+        request = NewCancelDataKeyDeletionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelDataKeyDeletion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelDataKeyDeletionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelKeyArchiveRequest() (request *CancelKeyArchiveRequest) {
     request = &CancelKeyArchiveRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -744,6 +807,118 @@ func (c *Client) DeleteWhiteBoxKeyWithContext(ctx context.Context, request *Dele
     return
 }
 
+func NewDescribeDataKeyRequest() (request *DescribeDataKeyRequest) {
+    request = &DescribeDataKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("kms", APIVersion, "DescribeDataKey")
+    
+    
+    return
+}
+
+func NewDescribeDataKeyResponse() (response *DescribeDataKeyResponse) {
+    response = &DescribeDataKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDataKey
+// 获取数据密钥的详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+func (c *Client) DescribeDataKey(request *DescribeDataKeyRequest) (response *DescribeDataKeyResponse, err error) {
+    return c.DescribeDataKeyWithContext(context.Background(), request)
+}
+
+// DescribeDataKey
+// 获取数据密钥的详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+func (c *Client) DescribeDataKeyWithContext(ctx context.Context, request *DescribeDataKeyRequest) (response *DescribeDataKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataKeyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDataKeysRequest() (request *DescribeDataKeysRequest) {
+    request = &DescribeDataKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("kms", APIVersion, "DescribeDataKeys")
+    
+    
+    return
+}
+
+func NewDescribeDataKeysResponse() (response *DescribeDataKeysResponse) {
+    response = &DescribeDataKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDataKeys
+// 返回数据密钥属性信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATEDDATAKEYID = "InvalidParameterValue.DuplicatedDataKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+func (c *Client) DescribeDataKeys(request *DescribeDataKeysRequest) (response *DescribeDataKeysResponse, err error) {
+    return c.DescribeDataKeysWithContext(context.Background(), request)
+}
+
+// DescribeDataKeys
+// 返回数据密钥属性信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATEDDATAKEYID = "InvalidParameterValue.DuplicatedDataKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+func (c *Client) DescribeDataKeysWithContext(ctx context.Context, request *DescribeDataKeysRequest) (response *DescribeDataKeysResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataKeysRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataKeys require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeKeyRequest() (request *DescribeKeyRequest) {
     request = &DescribeKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1139,6 +1314,120 @@ func (c *Client) DescribeWhiteBoxServiceStatusWithContext(ctx context.Context, r
     return
 }
 
+func NewDisableDataKeyRequest() (request *DisableDataKeyRequest) {
+    request = &DisableDataKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("kms", APIVersion, "DisableDataKey")
+    
+    
+    return
+}
+
+func NewDisableDataKeyResponse() (response *DisableDataKeyResponse) {
+    response = &DisableDataKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisableDataKey
+// 禁用数据密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+//  RESOURCEUNAVAILABLE_DATAKEYSTATENOTSUPPORT = "ResourceUnavailable.DataKeyStateNotSupport"
+func (c *Client) DisableDataKey(request *DisableDataKeyRequest) (response *DisableDataKeyResponse, err error) {
+    return c.DisableDataKeyWithContext(context.Background(), request)
+}
+
+// DisableDataKey
+// 禁用数据密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+//  RESOURCEUNAVAILABLE_DATAKEYSTATENOTSUPPORT = "ResourceUnavailable.DataKeyStateNotSupport"
+func (c *Client) DisableDataKeyWithContext(ctx context.Context, request *DisableDataKeyRequest) (response *DisableDataKeyResponse, err error) {
+    if request == nil {
+        request = NewDisableDataKeyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableDataKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableDataKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisableDataKeysRequest() (request *DisableDataKeysRequest) {
+    request = &DisableDataKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("kms", APIVersion, "DisableDataKeys")
+    
+    
+    return
+}
+
+func NewDisableDataKeysResponse() (response *DisableDataKeysResponse) {
+    response = &DisableDataKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisableDataKeys
+// 批量禁用数据密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATEDDATAKEYID = "InvalidParameterValue.DuplicatedDataKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+//  RESOURCEUNAVAILABLE_DATAKEYSTATENOTSUPPORT = "ResourceUnavailable.DataKeyStateNotSupport"
+func (c *Client) DisableDataKeys(request *DisableDataKeysRequest) (response *DisableDataKeysResponse, err error) {
+    return c.DisableDataKeysWithContext(context.Background(), request)
+}
+
+// DisableDataKeys
+// 批量禁用数据密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATEDDATAKEYID = "InvalidParameterValue.DuplicatedDataKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+//  RESOURCEUNAVAILABLE_DATAKEYSTATENOTSUPPORT = "ResourceUnavailable.DataKeyStateNotSupport"
+func (c *Client) DisableDataKeysWithContext(ctx context.Context, request *DisableDataKeysRequest) (response *DisableDataKeysResponse, err error) {
+    if request == nil {
+        request = NewDisableDataKeysRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableDataKeys require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableDataKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisableKeyRequest() (request *DisableKeyRequest) {
     request = &DisableKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1438,6 +1727,128 @@ func (c *Client) DisableWhiteBoxKeysWithContext(ctx context.Context, request *Di
     request.SetContext(ctx)
     
     response = NewDisableWhiteBoxKeysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableDataKeyRequest() (request *EnableDataKeyRequest) {
+    request = &EnableDataKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("kms", APIVersion, "EnableDataKey")
+    
+    
+    return
+}
+
+func NewEnableDataKeyResponse() (response *EnableDataKeyResponse) {
+    response = &EnableDataKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableDataKey
+// 启用数据密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+func (c *Client) EnableDataKey(request *EnableDataKeyRequest) (response *EnableDataKeyResponse, err error) {
+    return c.EnableDataKeyWithContext(context.Background(), request)
+}
+
+// EnableDataKey
+// 启用数据密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+func (c *Client) EnableDataKeyWithContext(ctx context.Context, request *EnableDataKeyRequest) (response *EnableDataKeyResponse, err error) {
+    if request == nil {
+        request = NewEnableDataKeyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableDataKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableDataKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableDataKeysRequest() (request *EnableDataKeysRequest) {
+    request = &EnableDataKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("kms", APIVersion, "EnableDataKeys")
+    
+    
+    return
+}
+
+func NewEnableDataKeysResponse() (response *EnableDataKeysResponse) {
+    response = &EnableDataKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableDataKeys
+// 批量启用数据密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATEDDATAKEYID = "InvalidParameterValue.DuplicatedDataKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+//  RESOURCEUNAVAILABLE_DATAKEYSTATENOTSUPPORT = "ResourceUnavailable.DataKeyStateNotSupport"
+func (c *Client) EnableDataKeys(request *EnableDataKeysRequest) (response *EnableDataKeysResponse, err error) {
+    return c.EnableDataKeysWithContext(context.Background(), request)
+}
+
+// EnableDataKeys
+// 批量启用数据密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_DUPLICATEDDATAKEYID = "InvalidParameterValue.DuplicatedDataKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+//  RESOURCEUNAVAILABLE_DATAKEYSTATENOTSUPPORT = "ResourceUnavailable.DataKeyStateNotSupport"
+func (c *Client) EnableDataKeysWithContext(ctx context.Context, request *EnableDataKeysRequest) (response *EnableDataKeysResponse, err error) {
+    if request == nil {
+        request = NewEnableDataKeysRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableDataKeys require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableDataKeysResponse()
     err = c.Send(request, response)
     return
 }
@@ -1899,7 +2310,14 @@ func NewGenerateDataKeyResponse() (response *GenerateDataKeyResponse) {
 //  FAILEDOPERATION_ENCRYPTIONERROR = "FailedOperation.EncryptionError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DATAKEYNAMEALREADYEXISTS = "InvalidParameterValue.DataKeyNameAlreadyExists"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYNAME = "InvalidParameterValue.InvalidDataKeyName"
+//  INVALIDPARAMETERVALUE_INVALIDHSMCLUSTERID = "InvalidParameterValue.InvalidHsmClusterId"
 //  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDKEYUSAGE = "InvalidParameterValue.InvalidKeyUsage"
+//  INVALIDPARAMETERVALUE_INVALIDTYPE = "InvalidParameterValue.InvalidType"
+//  LIMITEXCEEDED_CMKLIMITEXCEEDED = "LimitExceeded.CmkLimitExceeded"
+//  LIMITEXCEEDED_DATAKEYLIMITEXCEEDED = "LimitExceeded.DataKeyLimitExceeded"
 //  RESOURCEUNAVAILABLE_CMKDISABLED = "ResourceUnavailable.CmkDisabled"
 //  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
 //  RESOURCEUNAVAILABLE_KEYPENDINGDELETE = "ResourceUnavailable.KeyPendingDelete"
@@ -1915,7 +2333,14 @@ func (c *Client) GenerateDataKey(request *GenerateDataKeyRequest) (response *Gen
 //  FAILEDOPERATION_ENCRYPTIONERROR = "FailedOperation.EncryptionError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DATAKEYNAMEALREADYEXISTS = "InvalidParameterValue.DataKeyNameAlreadyExists"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYNAME = "InvalidParameterValue.InvalidDataKeyName"
+//  INVALIDPARAMETERVALUE_INVALIDHSMCLUSTERID = "InvalidParameterValue.InvalidHsmClusterId"
 //  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDKEYUSAGE = "InvalidParameterValue.InvalidKeyUsage"
+//  INVALIDPARAMETERVALUE_INVALIDTYPE = "InvalidParameterValue.InvalidType"
+//  LIMITEXCEEDED_CMKLIMITEXCEEDED = "LimitExceeded.CmkLimitExceeded"
+//  LIMITEXCEEDED_DATAKEYLIMITEXCEEDED = "LimitExceeded.DataKeyLimitExceeded"
 //  RESOURCEUNAVAILABLE_CMKDISABLED = "ResourceUnavailable.CmkDisabled"
 //  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
 //  RESOURCEUNAVAILABLE_KEYPENDINGDELETE = "ResourceUnavailable.KeyPendingDelete"
@@ -1985,6 +2410,134 @@ func (c *Client) GenerateRandomWithContext(ctx context.Context, request *Generat
     request.SetContext(ctx)
     
     response = NewGenerateRandomResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetDataKeyCiphertextBlobRequest() (request *GetDataKeyCiphertextBlobRequest) {
+    request = &GetDataKeyCiphertextBlobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("kms", APIVersion, "GetDataKeyCiphertextBlob")
+    
+    
+    return
+}
+
+func NewGetDataKeyCiphertextBlobResponse() (response *GetDataKeyCiphertextBlobResponse) {
+    response = &GetDataKeyCiphertextBlobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetDataKeyCiphertextBlob
+// 下载数据密钥密文
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+//  RESOURCEUNAVAILABLE_DATAKEYSTATENOTSUPPORT = "ResourceUnavailable.DataKeyStateNotSupport"
+func (c *Client) GetDataKeyCiphertextBlob(request *GetDataKeyCiphertextBlobRequest) (response *GetDataKeyCiphertextBlobResponse, err error) {
+    return c.GetDataKeyCiphertextBlobWithContext(context.Background(), request)
+}
+
+// GetDataKeyCiphertextBlob
+// 下载数据密钥密文
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+//  RESOURCEUNAVAILABLE_DATAKEYSTATENOTSUPPORT = "ResourceUnavailable.DataKeyStateNotSupport"
+func (c *Client) GetDataKeyCiphertextBlobWithContext(ctx context.Context, request *GetDataKeyCiphertextBlobRequest) (response *GetDataKeyCiphertextBlobResponse, err error) {
+    if request == nil {
+        request = NewGetDataKeyCiphertextBlobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDataKeyCiphertextBlob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetDataKeyCiphertextBlobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetDataKeyPlaintextRequest() (request *GetDataKeyPlaintextRequest) {
+    request = &GetDataKeyPlaintextRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("kms", APIVersion, "GetDataKeyPlaintext")
+    
+    
+    return
+}
+
+func NewGetDataKeyPlaintextResponse() (response *GetDataKeyPlaintextResponse) {
+    response = &GetDataKeyPlaintextResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetDataKeyPlaintext
+// 获取数据密钥明文
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_ENCRYPTIONERROR = "FailedOperation.EncryptionError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDTYPE = "InvalidParameterValue.InvalidType"
+//  RESOURCEUNAVAILABLE_CMKDISABLED = "ResourceUnavailable.CmkDisabled"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  RESOURCEUNAVAILABLE_DATAKEYDISABLED = "ResourceUnavailable.DataKeyDisabled"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+//  RESOURCEUNAVAILABLE_DATAKEYPENDINGDELETE = "ResourceUnavailable.DataKeyPendingDelete"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) GetDataKeyPlaintext(request *GetDataKeyPlaintextRequest) (response *GetDataKeyPlaintextResponse, err error) {
+    return c.GetDataKeyPlaintextWithContext(context.Background(), request)
+}
+
+// GetDataKeyPlaintext
+// 获取数据密钥明文
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_ENCRYPTIONERROR = "FailedOperation.EncryptionError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDTYPE = "InvalidParameterValue.InvalidType"
+//  RESOURCEUNAVAILABLE_CMKDISABLED = "ResourceUnavailable.CmkDisabled"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  RESOURCEUNAVAILABLE_DATAKEYDISABLED = "ResourceUnavailable.DataKeyDisabled"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+//  RESOURCEUNAVAILABLE_DATAKEYPENDINGDELETE = "ResourceUnavailable.DataKeyPendingDelete"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) GetDataKeyPlaintextWithContext(ctx context.Context, request *GetDataKeyPlaintextRequest) (response *GetDataKeyPlaintextResponse, err error) {
+    if request == nil {
+        request = NewGetDataKeyPlaintextRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDataKeyPlaintext require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetDataKeyPlaintextResponse()
     err = c.Send(request, response)
     return
 }
@@ -2266,6 +2819,87 @@ func (c *Client) GetServiceStatusWithContext(ctx context.Context, request *GetSe
     return
 }
 
+func NewImportDataKeyRequest() (request *ImportDataKeyRequest) {
+    request = &ImportDataKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("kms", APIVersion, "ImportDataKey")
+    
+    
+    return
+}
+
+func NewImportDataKeyResponse() (response *ImportDataKeyResponse) {
+    response = &ImportDataKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ImportDataKey
+// 数据密钥导入接口，并托管到KMS
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYNAME = "InvalidParameterValue.InvalidDataKeyName"
+//  INVALIDPARAMETERVALUE_INVALIDIMPORTKEYMATERIAL = "InvalidParameterValue.InvalidImportKeyMaterial"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDKEYUSAGE = "InvalidParameterValue.InvalidKeyUsage"
+//  INVALIDPARAMETERVALUE_INVALIDPLAINTEXT = "InvalidParameterValue.InvalidPlaintext"
+//  INVALIDPARAMETERVALUE_INVALIDTYPE = "InvalidParameterValue.InvalidType"
+//  LIMITEXCEEDED_CMKLIMITEXCEEDED = "LimitExceeded.CmkLimitExceeded"
+//  LIMITEXCEEDED_DATAKEYLIMITEXCEEDED = "LimitExceeded.DataKeyLimitExceeded"
+//  RESOURCEUNAVAILABLE_CMKARCHIVED = "ResourceUnavailable.CmkArchived"
+//  RESOURCEUNAVAILABLE_CMKDISABLED = "ResourceUnavailable.CmkDisabled"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  RESOURCEUNAVAILABLE_KEYPENDINGDELETE = "ResourceUnavailable.KeyPendingDelete"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ImportDataKey(request *ImportDataKeyRequest) (response *ImportDataKeyResponse, err error) {
+    return c.ImportDataKeyWithContext(context.Background(), request)
+}
+
+// ImportDataKey
+// 数据密钥导入接口，并托管到KMS
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYNAME = "InvalidParameterValue.InvalidDataKeyName"
+//  INVALIDPARAMETERVALUE_INVALIDIMPORTKEYMATERIAL = "InvalidParameterValue.InvalidImportKeyMaterial"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDKEYUSAGE = "InvalidParameterValue.InvalidKeyUsage"
+//  INVALIDPARAMETERVALUE_INVALIDPLAINTEXT = "InvalidParameterValue.InvalidPlaintext"
+//  INVALIDPARAMETERVALUE_INVALIDTYPE = "InvalidParameterValue.InvalidType"
+//  LIMITEXCEEDED_CMKLIMITEXCEEDED = "LimitExceeded.CmkLimitExceeded"
+//  LIMITEXCEEDED_DATAKEYLIMITEXCEEDED = "LimitExceeded.DataKeyLimitExceeded"
+//  RESOURCEUNAVAILABLE_CMKARCHIVED = "ResourceUnavailable.CmkArchived"
+//  RESOURCEUNAVAILABLE_CMKDISABLED = "ResourceUnavailable.CmkDisabled"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  RESOURCEUNAVAILABLE_CMKSTATENOTSUPPORT = "ResourceUnavailable.CmkStateNotSupport"
+//  RESOURCEUNAVAILABLE_KEYPENDINGDELETE = "ResourceUnavailable.KeyPendingDelete"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ImportDataKeyWithContext(ctx context.Context, request *ImportDataKeyRequest) (response *ImportDataKeyResponse, err error) {
+    if request == nil {
+        request = NewImportDataKeyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportDataKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImportDataKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewImportKeyMaterialRequest() (request *ImportKeyMaterialRequest) {
     request = &ImportKeyMaterialRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2384,6 +3018,122 @@ func (c *Client) ListAlgorithmsWithContext(ctx context.Context, request *ListAlg
     request.SetContext(ctx)
     
     response = NewListAlgorithmsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListDataKeyDetailRequest() (request *ListDataKeyDetailRequest) {
+    request = &ListDataKeyDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("kms", APIVersion, "ListDataKeyDetail")
+    
+    
+    return
+}
+
+func NewListDataKeyDetailResponse() (response *ListDataKeyDetailResponse) {
+    response = &ListDataKeyDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListDataKeyDetail
+// 根据指定Offset和Limit获取数据密钥列表详情。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDHSMCLUSTERID = "InvalidParameterValue.InvalidHsmClusterId"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ListDataKeyDetail(request *ListDataKeyDetailRequest) (response *ListDataKeyDetailResponse, err error) {
+    return c.ListDataKeyDetailWithContext(context.Background(), request)
+}
+
+// ListDataKeyDetail
+// 根据指定Offset和Limit获取数据密钥列表详情。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDHSMCLUSTERID = "InvalidParameterValue.InvalidHsmClusterId"
+//  INVALIDPARAMETERVALUE_INVALIDKEYID = "InvalidParameterValue.InvalidKeyId"
+//  RESOURCEUNAVAILABLE_CMKNOTFOUND = "ResourceUnavailable.CmkNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ListDataKeyDetailWithContext(ctx context.Context, request *ListDataKeyDetailRequest) (response *ListDataKeyDetailResponse, err error) {
+    if request == nil {
+        request = NewListDataKeyDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListDataKeyDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListDataKeyDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListDataKeysRequest() (request *ListDataKeysRequest) {
+    request = &ListDataKeysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("kms", APIVersion, "ListDataKeys")
+    
+    
+    return
+}
+
+func NewListDataKeysResponse() (response *ListDataKeysResponse) {
+    response = &ListDataKeysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ListDataKeys
+// 用于查询数据密钥的列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDHSMCLUSTERID = "InvalidParameterValue.InvalidHsmClusterId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ListDataKeys(request *ListDataKeysRequest) (response *ListDataKeysResponse, err error) {
+    return c.ListDataKeysWithContext(context.Background(), request)
+}
+
+// ListDataKeys
+// 用于查询数据密钥的列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDHSMCLUSTERID = "InvalidParameterValue.InvalidHsmClusterId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ListDataKeysWithContext(ctx context.Context, request *ListDataKeysRequest) (response *ListDataKeysResponse, err error) {
+    if request == nil {
+        request = NewListDataKeysRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListDataKeys require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListDataKeysResponse()
     err = c.Send(request, response)
     return
 }
@@ -2864,6 +3614,63 @@ func (c *Client) ReEncryptWithContext(ctx context.Context, request *ReEncryptReq
     return
 }
 
+func NewScheduleDataKeyDeletionRequest() (request *ScheduleDataKeyDeletionRequest) {
+    request = &ScheduleDataKeyDeletionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("kms", APIVersion, "ScheduleDataKeyDeletion")
+    
+    
+    return
+}
+
+func NewScheduleDataKeyDeletionResponse() (response *ScheduleDataKeyDeletionResponse) {
+    response = &ScheduleDataKeyDeletionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ScheduleDataKeyDeletion
+// 计划删除数据密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDPENDINGWINDOWINDAYS = "InvalidParameter.InvalidPendingWindowInDays"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+//  RESOURCEUNAVAILABLE_DATAKEYSTATENOTSUPPORT = "ResourceUnavailable.DataKeyStateNotSupport"
+func (c *Client) ScheduleDataKeyDeletion(request *ScheduleDataKeyDeletionRequest) (response *ScheduleDataKeyDeletionResponse, err error) {
+    return c.ScheduleDataKeyDeletionWithContext(context.Background(), request)
+}
+
+// ScheduleDataKeyDeletion
+// 计划删除数据密钥
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDPENDINGWINDOWINDAYS = "InvalidParameter.InvalidPendingWindowInDays"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+//  RESOURCEUNAVAILABLE_DATAKEYSTATENOTSUPPORT = "ResourceUnavailable.DataKeyStateNotSupport"
+func (c *Client) ScheduleDataKeyDeletionWithContext(ctx context.Context, request *ScheduleDataKeyDeletionRequest) (response *ScheduleDataKeyDeletionResponse, err error) {
+    if request == nil {
+        request = NewScheduleDataKeyDeletionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ScheduleDataKeyDeletion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewScheduleDataKeyDeletionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewScheduleKeyDeletionRequest() (request *ScheduleKeyDeletionRequest) {
     request = &ScheduleKeyDeletionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3114,6 +3921,116 @@ func (c *Client) UpdateAliasWithContext(ctx context.Context, request *UpdateAlia
     request.SetContext(ctx)
     
     response = NewUpdateAliasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateDataKeyDescriptionRequest() (request *UpdateDataKeyDescriptionRequest) {
+    request = &UpdateDataKeyDescriptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("kms", APIVersion, "UpdateDataKeyDescription")
+    
+    
+    return
+}
+
+func NewUpdateDataKeyDescriptionResponse() (response *UpdateDataKeyDescriptionResponse) {
+    response = &UpdateDataKeyDescriptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateDataKeyDescription
+// 修改数据密钥描述
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYNAME = "InvalidParameterValue.InvalidDataKeyName"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+func (c *Client) UpdateDataKeyDescription(request *UpdateDataKeyDescriptionRequest) (response *UpdateDataKeyDescriptionResponse, err error) {
+    return c.UpdateDataKeyDescriptionWithContext(context.Background(), request)
+}
+
+// UpdateDataKeyDescription
+// 修改数据密钥描述
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYNAME = "InvalidParameterValue.InvalidDataKeyName"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+func (c *Client) UpdateDataKeyDescriptionWithContext(ctx context.Context, request *UpdateDataKeyDescriptionRequest) (response *UpdateDataKeyDescriptionResponse, err error) {
+    if request == nil {
+        request = NewUpdateDataKeyDescriptionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateDataKeyDescription require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateDataKeyDescriptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateDataKeyNameRequest() (request *UpdateDataKeyNameRequest) {
+    request = &UpdateDataKeyNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("kms", APIVersion, "UpdateDataKeyName")
+    
+    
+    return
+}
+
+func NewUpdateDataKeyNameResponse() (response *UpdateDataKeyNameResponse) {
+    response = &UpdateDataKeyNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UpdateDataKeyName
+// 修改数据密钥名称
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+func (c *Client) UpdateDataKeyName(request *UpdateDataKeyNameRequest) (response *UpdateDataKeyNameResponse, err error) {
+    return c.UpdateDataKeyNameWithContext(context.Background(), request)
+}
+
+// UpdateDataKeyName
+// 修改数据密钥名称
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDDATAKEYID = "InvalidParameterValue.InvalidDataKeyId"
+//  RESOURCEUNAVAILABLE_DATAKEYNOTFOUND = "ResourceUnavailable.DataKeyNotFound"
+func (c *Client) UpdateDataKeyNameWithContext(ctx context.Context, request *UpdateDataKeyNameRequest) (response *UpdateDataKeyNameResponse, err error) {
+    if request == nil {
+        request = NewUpdateDataKeyNameRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateDataKeyName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateDataKeyNameResponse()
     err = c.Send(request, response)
     return
 }

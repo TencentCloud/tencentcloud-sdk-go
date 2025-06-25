@@ -14843,7 +14843,7 @@ type RecipientComponentInfo struct {
 }
 
 type RegisterInfo struct {
-	// 法人姓名
+	// <font color="red">字段不再使用</font>，法人姓名
 	LegalName *string `json:"LegalName,omitnil,omitempty" name:"LegalName"`
 
 	// 社会统一信用代码
@@ -14852,7 +14852,7 @@ type RegisterInfo struct {
 	// Deprecated: Uscc is deprecated.
 	Uscc *string `json:"Uscc,omitnil,omitempty" name:"Uscc"`
 
-	// 社会统一信用代码
+	// <font color="red">字段不再使用</font>，社会统一信用代码
 	UnifiedSocialCreditCode *string `json:"UnifiedSocialCreditCode,omitnil,omitempty" name:"UnifiedSocialCreditCode"`
 
 	// 指定企业认证的授权方式 支持多选:
@@ -14861,7 +14861,17 @@ type RegisterInfo struct {
 	// <li><strong>2</strong>: 法人授权方式</li>
 	// <li><strong>5</strong>: 授权书+对公打款方式</li>
 	// </ul>
+	//
+	// Deprecated: AuthorizationTypes is deprecated.
 	AuthorizationTypes []*uint64 `json:"AuthorizationTypes,omitnil,omitempty" name:"AuthorizationTypes"`
+
+	// 指定企业认证的授权方式 支持多选:
+	// 
+	// <ul>
+	// <li><strong>2</strong>: 法人授权方式</li>
+	// <li><strong>5</strong>: 授权书+对公打款方式</li>
+	// </ul>
+	AuthorizationType *int64 `json:"AuthorizationType,omitnil,omitempty" name:"AuthorizationType"`
 }
 
 type RegistrationOrganizationInfo struct {

@@ -827,6 +827,116 @@ type ChangePwdTaskInfo struct {
 	LastTime *string `json:"LastTime,omitnil,omitempty" name:"LastTime"`
 }
 
+// Predefined struct for user
+type CheckLDAPConnectionRequestParams struct {
+	// 是否开启LDAP认证，必须为true
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// 服务器地址
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 服务端口
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 是否开启SSL，false-不开启，true-开启
+	EnableSSL *bool `json:"EnableSSL,omitnil,omitempty" name:"EnableSSL"`
+
+	// Base DN
+	BaseDN *string `json:"BaseDN,omitnil,omitempty" name:"BaseDN"`
+
+	// 管理员账号
+	AdminAccount *string `json:"AdminAccount,omitnil,omitempty" name:"AdminAccount"`
+
+	// 管理员密码
+	AdminPassword *string `json:"AdminPassword,omitnil,omitempty" name:"AdminPassword"`
+
+	// 备用服务器地址
+	IpBackup *string `json:"IpBackup,omitnil,omitempty" name:"IpBackup"`
+
+	// 网络域id
+	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+type CheckLDAPConnectionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 是否开启LDAP认证，必须为true
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// 服务器地址
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 服务端口
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 是否开启SSL，false-不开启，true-开启
+	EnableSSL *bool `json:"EnableSSL,omitnil,omitempty" name:"EnableSSL"`
+
+	// Base DN
+	BaseDN *string `json:"BaseDN,omitnil,omitempty" name:"BaseDN"`
+
+	// 管理员账号
+	AdminAccount *string `json:"AdminAccount,omitnil,omitempty" name:"AdminAccount"`
+
+	// 管理员密码
+	AdminPassword *string `json:"AdminPassword,omitnil,omitempty" name:"AdminPassword"`
+
+	// 备用服务器地址
+	IpBackup *string `json:"IpBackup,omitnil,omitempty" name:"IpBackup"`
+
+	// 网络域id
+	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+func (r *CheckLDAPConnectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckLDAPConnectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Enable")
+	delete(f, "Ip")
+	delete(f, "Port")
+	delete(f, "EnableSSL")
+	delete(f, "BaseDN")
+	delete(f, "AdminAccount")
+	delete(f, "AdminPassword")
+	delete(f, "IpBackup")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckLDAPConnectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckLDAPConnectionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CheckLDAPConnectionResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckLDAPConnectionResponseParams `json:"Response"`
+}
+
+func (r *CheckLDAPConnectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckLDAPConnectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Clb struct {
 	// 负载均衡IP	
 	ClbIp *string `json:"ClbIp,omitnil,omitempty" name:"ClbIp"`
@@ -3941,6 +4051,133 @@ func (r *DescribeDomainsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLDAPUnitSetRequestParams struct {
+	// 是否开启LDAP认证，true-开启
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// 服务器地址
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 服务端口
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 是否开启SSL，false-不开启，true-开启
+	EnableSSL *bool `json:"EnableSSL,omitnil,omitempty" name:"EnableSSL"`
+
+	// Base DN
+	BaseDN *string `json:"BaseDN,omitnil,omitempty" name:"BaseDN"`
+
+	// 管理员账号
+	AdminAccount *string `json:"AdminAccount,omitnil,omitempty" name:"AdminAccount"`
+
+	// 管理员密码
+	AdminPassword *string `json:"AdminPassword,omitnil,omitempty" name:"AdminPassword"`
+
+	// 用户名映射属性
+	AttributeUserName *string `json:"AttributeUserName,omitnil,omitempty" name:"AttributeUserName"`
+
+	// 部门过滤
+	AttributeUnit *string `json:"AttributeUnit,omitnil,omitempty" name:"AttributeUnit"`
+
+	// 备用服务器地址
+	IpBackup *string `json:"IpBackup,omitnil,omitempty" name:"IpBackup"`
+
+	// 网络域Id
+	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+type DescribeLDAPUnitSetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 是否开启LDAP认证，true-开启
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// 服务器地址
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 服务端口
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 是否开启SSL，false-不开启，true-开启
+	EnableSSL *bool `json:"EnableSSL,omitnil,omitempty" name:"EnableSSL"`
+
+	// Base DN
+	BaseDN *string `json:"BaseDN,omitnil,omitempty" name:"BaseDN"`
+
+	// 管理员账号
+	AdminAccount *string `json:"AdminAccount,omitnil,omitempty" name:"AdminAccount"`
+
+	// 管理员密码
+	AdminPassword *string `json:"AdminPassword,omitnil,omitempty" name:"AdminPassword"`
+
+	// 用户名映射属性
+	AttributeUserName *string `json:"AttributeUserName,omitnil,omitempty" name:"AttributeUserName"`
+
+	// 部门过滤
+	AttributeUnit *string `json:"AttributeUnit,omitnil,omitempty" name:"AttributeUnit"`
+
+	// 备用服务器地址
+	IpBackup *string `json:"IpBackup,omitnil,omitempty" name:"IpBackup"`
+
+	// 网络域Id
+	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+func (r *DescribeLDAPUnitSetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLDAPUnitSetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Enable")
+	delete(f, "Ip")
+	delete(f, "Port")
+	delete(f, "EnableSSL")
+	delete(f, "BaseDN")
+	delete(f, "AdminAccount")
+	delete(f, "AdminPassword")
+	delete(f, "AttributeUserName")
+	delete(f, "AttributeUnit")
+	delete(f, "IpBackup")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLDAPUnitSetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLDAPUnitSetResponseParams struct {
+	// ou 列表
+	UnitSet []*string `json:"UnitSet,omitnil,omitempty" name:"UnitSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLDAPUnitSetResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLDAPUnitSetResponseParams `json:"Response"`
+}
+
+func (r *DescribeLDAPUnitSetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLDAPUnitSetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLoginEventRequestParams struct {
 	// 用户名，如果不包含其他条件时对user_name or real_name两个字段模糊查询
 	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
@@ -5649,6 +5886,193 @@ func (r *ModifyDeviceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyLDAPSettingRequestParams struct {
+	// 是否开启LDAP认证，false-不开启，true-开启
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// 服务器地址
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 备用服务器地址
+	IpBackup *string `json:"IpBackup,omitnil,omitempty" name:"IpBackup"`
+
+	// 服务端口
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 是否开启SSL，false-不开启，true-开启
+	EnableSSL *bool `json:"EnableSSL,omitnil,omitempty" name:"EnableSSL"`
+
+	// Base DN
+	BaseDN *string `json:"BaseDN,omitnil,omitempty" name:"BaseDN"`
+
+	// 管理员账号
+	AdminAccount *string `json:"AdminAccount,omitnil,omitempty" name:"AdminAccount"`
+
+	// 管理员密码
+	AdminPassword *string `json:"AdminPassword,omitnil,omitempty" name:"AdminPassword"`
+
+	// 用户属性
+	AttributeUser *string `json:"AttributeUser,omitnil,omitempty" name:"AttributeUser"`
+
+	// 用户名属性
+	AttributeUserName *string `json:"AttributeUserName,omitnil,omitempty" name:"AttributeUserName"`
+
+	// 自动同步，false-不开启，true-开启
+	AutoSync *bool `json:"AutoSync,omitnil,omitempty" name:"AutoSync"`
+
+	// 覆盖用户信息，false-不开启，true-开启
+	Overwrite *bool `json:"Overwrite,omitnil,omitempty" name:"Overwrite"`
+
+	// 同步周期，30～60000之间的整数
+	SyncPeriod *uint64 `json:"SyncPeriod,omitnil,omitempty" name:"SyncPeriod"`
+
+	// 是否同步全部，false-不开启，true-开启
+	SyncAll *bool `json:"SyncAll,omitnil,omitempty" name:"SyncAll"`
+
+	// 同步OU列表，SyncAll为false时必传
+	SyncUnitSet []*string `json:"SyncUnitSet,omitnil,omitempty" name:"SyncUnitSet"`
+
+	// 组织单元属性
+	AttributeUnit *string `json:"AttributeUnit,omitnil,omitempty" name:"AttributeUnit"`
+
+	// 用户姓名属性
+	AttributeRealName *string `json:"AttributeRealName,omitnil,omitempty" name:"AttributeRealName"`
+
+	// 手机号属性
+	AttributePhone *string `json:"AttributePhone,omitnil,omitempty" name:"AttributePhone"`
+
+	// 邮箱属性
+	AttributeEmail *string `json:"AttributeEmail,omitnil,omitempty" name:"AttributeEmail"`
+
+	// 网络域Id
+	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+type ModifyLDAPSettingRequest struct {
+	*tchttp.BaseRequest
+	
+	// 是否开启LDAP认证，false-不开启，true-开启
+	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
+
+	// 服务器地址
+	Ip *string `json:"Ip,omitnil,omitempty" name:"Ip"`
+
+	// 备用服务器地址
+	IpBackup *string `json:"IpBackup,omitnil,omitempty" name:"IpBackup"`
+
+	// 服务端口
+	Port *uint64 `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 是否开启SSL，false-不开启，true-开启
+	EnableSSL *bool `json:"EnableSSL,omitnil,omitempty" name:"EnableSSL"`
+
+	// Base DN
+	BaseDN *string `json:"BaseDN,omitnil,omitempty" name:"BaseDN"`
+
+	// 管理员账号
+	AdminAccount *string `json:"AdminAccount,omitnil,omitempty" name:"AdminAccount"`
+
+	// 管理员密码
+	AdminPassword *string `json:"AdminPassword,omitnil,omitempty" name:"AdminPassword"`
+
+	// 用户属性
+	AttributeUser *string `json:"AttributeUser,omitnil,omitempty" name:"AttributeUser"`
+
+	// 用户名属性
+	AttributeUserName *string `json:"AttributeUserName,omitnil,omitempty" name:"AttributeUserName"`
+
+	// 自动同步，false-不开启，true-开启
+	AutoSync *bool `json:"AutoSync,omitnil,omitempty" name:"AutoSync"`
+
+	// 覆盖用户信息，false-不开启，true-开启
+	Overwrite *bool `json:"Overwrite,omitnil,omitempty" name:"Overwrite"`
+
+	// 同步周期，30～60000之间的整数
+	SyncPeriod *uint64 `json:"SyncPeriod,omitnil,omitempty" name:"SyncPeriod"`
+
+	// 是否同步全部，false-不开启，true-开启
+	SyncAll *bool `json:"SyncAll,omitnil,omitempty" name:"SyncAll"`
+
+	// 同步OU列表，SyncAll为false时必传
+	SyncUnitSet []*string `json:"SyncUnitSet,omitnil,omitempty" name:"SyncUnitSet"`
+
+	// 组织单元属性
+	AttributeUnit *string `json:"AttributeUnit,omitnil,omitempty" name:"AttributeUnit"`
+
+	// 用户姓名属性
+	AttributeRealName *string `json:"AttributeRealName,omitnil,omitempty" name:"AttributeRealName"`
+
+	// 手机号属性
+	AttributePhone *string `json:"AttributePhone,omitnil,omitempty" name:"AttributePhone"`
+
+	// 邮箱属性
+	AttributeEmail *string `json:"AttributeEmail,omitnil,omitempty" name:"AttributeEmail"`
+
+	// 网络域Id
+	DomainId *string `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+func (r *ModifyLDAPSettingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLDAPSettingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Enable")
+	delete(f, "Ip")
+	delete(f, "IpBackup")
+	delete(f, "Port")
+	delete(f, "EnableSSL")
+	delete(f, "BaseDN")
+	delete(f, "AdminAccount")
+	delete(f, "AdminPassword")
+	delete(f, "AttributeUser")
+	delete(f, "AttributeUserName")
+	delete(f, "AutoSync")
+	delete(f, "Overwrite")
+	delete(f, "SyncPeriod")
+	delete(f, "SyncAll")
+	delete(f, "SyncUnitSet")
+	delete(f, "AttributeUnit")
+	delete(f, "AttributeRealName")
+	delete(f, "AttributePhone")
+	delete(f, "AttributeEmail")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLDAPSettingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLDAPSettingResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLDAPSettingResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLDAPSettingResponseParams `json:"Response"`
+}
+
+func (r *ModifyLDAPSettingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLDAPSettingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyOAuthSettingRequestParams struct {
 	// 是否开启OAuth认证，false-不开启，true-开启。
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
@@ -6215,6 +6639,60 @@ type OperationTask struct {
 
 	// 下一次执行时间
 	FirstTime *string `json:"FirstTime,omitnil,omitempty" name:"FirstTime"`
+}
+
+// Predefined struct for user
+type ReplaySessionRequestParams struct {
+	// 会话Sid
+	Sid *string `json:"Sid,omitnil,omitempty" name:"Sid"`
+}
+
+type ReplaySessionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 会话Sid
+	Sid *string `json:"Sid,omitnil,omitempty" name:"Sid"`
+}
+
+func (r *ReplaySessionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReplaySessionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Sid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReplaySessionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReplaySessionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ReplaySessionResponse struct {
+	*tchttp.BaseResponse
+	Response *ReplaySessionResponseParams `json:"Response"`
+}
+
+func (r *ReplaySessionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReplaySessionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -7984,6 +8462,57 @@ type SessionResult struct {
 	PodName *string `json:"PodName,omitnil,omitempty" name:"PodName"`
 }
 
+// Predefined struct for user
+type SetLDAPSyncFlagRequestParams struct {
+
+}
+
+type SetLDAPSyncFlagRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *SetLDAPSyncFlagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetLDAPSyncFlagRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetLDAPSyncFlagRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetLDAPSyncFlagResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type SetLDAPSyncFlagResponse struct {
+	*tchttp.BaseResponse
+	Response *SetLDAPSyncFlagResponseParams `json:"Response"`
+}
+
+func (r *SetLDAPSyncFlagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetLDAPSyncFlagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type TagFilter struct {
 	// 标签键
 	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
@@ -8019,6 +8548,60 @@ type TaskResult struct {
 
 	// 运维任务结束时间
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+// Predefined struct for user
+type UnlockUserRequestParams struct {
+	// 用户id
+	IdSet []*uint64 `json:"IdSet,omitnil,omitempty" name:"IdSet"`
+}
+
+type UnlockUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户id
+	IdSet []*uint64 `json:"IdSet,omitnil,omitempty" name:"IdSet"`
+}
+
+func (r *UnlockUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnlockUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnlockUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnlockUserResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type UnlockUserResponse struct {
+	*tchttp.BaseResponse
+	Response *UnlockUserResponseParams `json:"Response"`
+}
+
+func (r *UnlockUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnlockUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type User struct {

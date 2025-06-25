@@ -202,6 +202,69 @@ func (c *Client) ConvertDocumentWithContext(ctx context.Context, request *Conver
     return
 }
 
+func NewCreateAgentRequest() (request *CreateAgentRequest) {
+    request = &CreateAgentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "CreateAgent")
+    
+    
+    return
+}
+
+func NewCreateAgentResponse() (response *CreateAgentResponse) {
+    response = &CreateAgentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAgent
+// 你创建一个Agent
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) CreateAgent(request *CreateAgentRequest) (response *CreateAgentResponse, err error) {
+    return c.CreateAgentWithContext(context.Background(), request)
+}
+
+// CreateAgent
+// 你创建一个Agent
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) CreateAgentWithContext(ctx context.Context, request *CreateAgentRequest) (response *CreateAgentResponse, err error) {
+    if request == nil {
+        request = NewCreateAgentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAgent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAgentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAppRequest() (request *CreateAppRequest) {
     request = &CreateAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -763,6 +826,55 @@ func (c *Client) CreateWorkflowRunWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewDeleteAgentRequest() (request *DeleteAgentRequest) {
+    request = &DeleteAgentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "DeleteAgent")
+    
+    
+    return
+}
+
+func NewDeleteAgentResponse() (response *DeleteAgentResponse) {
+    response = &DeleteAgentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAgent
+// 删除Agent
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteAgent(request *DeleteAgentRequest) (response *DeleteAgentResponse, err error) {
+    return c.DeleteAgentWithContext(context.Background(), request)
+}
+
+// DeleteAgent
+// 删除Agent
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteAgentWithContext(ctx context.Context, request *DeleteAgentRequest) (response *DeleteAgentResponse, err error) {
+    if request == nil {
+        request = NewDeleteAgentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAgent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAgentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAppRequest() (request *DeleteAppRequest) {
     request = &DeleteAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -787,7 +899,6 @@ func NewDeleteAppResponse() (response *DeleteAppResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteApp(request *DeleteAppRequest) (response *DeleteAppResponse, err error) {
     return c.DeleteAppWithContext(context.Background(), request)
 }
@@ -797,7 +908,6 @@ func (c *Client) DeleteApp(request *DeleteAppRequest) (response *DeleteAppRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteAppWithContext(ctx context.Context, request *DeleteAppRequest) (response *DeleteAppResponse, err error) {
     if request == nil {
         request = NewDeleteAppRequest()
@@ -838,7 +948,6 @@ func NewDeleteAttributeLabelResponse() (response *DeleteAttributeLabelResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteAttributeLabel(request *DeleteAttributeLabelRequest) (response *DeleteAttributeLabelResponse, err error) {
     return c.DeleteAttributeLabelWithContext(context.Background(), request)
 }
@@ -848,7 +957,6 @@ func (c *Client) DeleteAttributeLabel(request *DeleteAttributeLabelRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteAttributeLabelWithContext(ctx context.Context, request *DeleteAttributeLabelRequest) (response *DeleteAttributeLabelResponse, err error) {
     if request == nil {
         request = NewDeleteAttributeLabelRequest()
@@ -889,7 +997,6 @@ func NewDeleteDocResponse() (response *DeleteDocResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteDoc(request *DeleteDocRequest) (response *DeleteDocResponse, err error) {
     return c.DeleteDocWithContext(context.Background(), request)
 }
@@ -899,7 +1006,6 @@ func (c *Client) DeleteDoc(request *DeleteDocRequest) (response *DeleteDocRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteDocWithContext(ctx context.Context, request *DeleteDocRequest) (response *DeleteDocResponse, err error) {
     if request == nil {
         request = NewDeleteDocRequest()
@@ -940,7 +1046,6 @@ func NewDeleteDocCateResponse() (response *DeleteDocCateResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteDocCate(request *DeleteDocCateRequest) (response *DeleteDocCateResponse, err error) {
     return c.DeleteDocCateWithContext(context.Background(), request)
 }
@@ -950,7 +1055,6 @@ func (c *Client) DeleteDocCate(request *DeleteDocCateRequest) (response *DeleteD
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DeleteDocCateWithContext(ctx context.Context, request *DeleteDocCateRequest) (response *DeleteDocCateResponse, err error) {
     if request == nil {
         request = NewDeleteDocCateRequest()
@@ -1257,6 +1361,55 @@ func (c *Client) DescribeAppWithContext(ctx context.Context, request *DescribeAp
     request.SetContext(ctx)
     
     response = NewDescribeAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAppAgentListRequest() (request *DescribeAppAgentListRequest) {
+    request = &DescribeAppAgentListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "DescribeAppAgentList")
+    
+    
+    return
+}
+
+func NewDescribeAppAgentListResponse() (response *DescribeAppAgentListResponse) {
+    response = &DescribeAppAgentListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAppAgentList
+// 查询指定应用下的Agent列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeAppAgentList(request *DescribeAppAgentListRequest) (response *DescribeAppAgentListResponse, err error) {
+    return c.DescribeAppAgentListWithContext(context.Background(), request)
+}
+
+// DescribeAppAgentList
+// 查询指定应用下的Agent列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeAppAgentListWithContext(ctx context.Context, request *DescribeAppAgentListRequest) (response *DescribeAppAgentListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAppAgentListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAppAgentList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAppAgentListResponse()
     err = c.Send(request, response)
     return
 }
@@ -4361,6 +4514,57 @@ func (c *Client) ListWorkflowRunsWithContext(ctx context.Context, request *ListW
     request.SetContext(ctx)
     
     response = NewListWorkflowRunsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAgentRequest() (request *ModifyAgentRequest) {
+    request = &ModifyAgentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lke", APIVersion, "ModifyAgent")
+    
+    
+    return
+}
+
+func NewModifyAgentResponse() (response *ModifyAgentResponse) {
+    response = &ModifyAgentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyAgent
+// 修改Agent信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyAgent(request *ModifyAgentRequest) (response *ModifyAgentResponse, err error) {
+    return c.ModifyAgentWithContext(context.Background(), request)
+}
+
+// ModifyAgent
+// 修改Agent信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyAgentWithContext(ctx context.Context, request *ModifyAgentRequest) (response *ModifyAgentResponse, err error) {
+    if request == nil {
+        request = NewModifyAgentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAgent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAgentResponse()
     err = c.Send(request, response)
     return
 }

@@ -2278,6 +2278,12 @@ type CreateClustersRequestParams struct {
 
 	// 数据库代理配置
 	ProxyConfig *ProxyConfig `json:"ProxyConfig,omitnil,omitempty" name:"ProxyConfig"`
+
+	// 是否自动归档
+	AutoArchive *string `json:"AutoArchive,omitnil,omitempty" name:"AutoArchive"`
+
+	// 暂停后的归档处理时间
+	AutoArchiveDelayHours *int64 `json:"AutoArchiveDelayHours,omitnil,omitempty" name:"AutoArchiveDelayHours"`
 }
 
 type CreateClustersRequest struct {
@@ -2433,6 +2439,12 @@ type CreateClustersRequest struct {
 
 	// 数据库代理配置
 	ProxyConfig *ProxyConfig `json:"ProxyConfig,omitnil,omitempty" name:"ProxyConfig"`
+
+	// 是否自动归档
+	AutoArchive *string `json:"AutoArchive,omitnil,omitempty" name:"AutoArchive"`
+
+	// 暂停后的归档处理时间
+	AutoArchiveDelayHours *int64 `json:"AutoArchiveDelayHours,omitnil,omitempty" name:"AutoArchiveDelayHours"`
 }
 
 func (r *CreateClustersRequest) ToJsonString() string {
@@ -2490,6 +2502,8 @@ func (r *CreateClustersRequest) FromJsonString(s string) error {
 	delete(f, "InstanceInitInfos")
 	delete(f, "GdnId")
 	delete(f, "ProxyConfig")
+	delete(f, "AutoArchive")
+	delete(f, "AutoArchiveDelayHours")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClustersRequest has unknown keys!", "")
 	}
@@ -7455,6 +7469,9 @@ type DescribeInstancesRequestParams struct {
 
 	// 实例id列表
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 集群类型，取值范围<li> CYNOSDB：事务集群 </li><li> LIBRADB：分析集群 </li><li> ALL：全部 </li>，缺省为 ALL
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 type DescribeInstancesRequest struct {
@@ -7494,6 +7511,9 @@ type DescribeInstancesRequest struct {
 
 	// 实例id列表
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
+
+	// 集群类型，取值范围<li> CYNOSDB：事务集群 </li><li> LIBRADB：分析集群 </li><li> ALL：全部 </li>，缺省为 ALL
+	ClusterType *string `json:"ClusterType,omitnil,omitempty" name:"ClusterType"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -7516,6 +7536,7 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 	delete(f, "DbType")
 	delete(f, "Status")
 	delete(f, "InstanceIds")
+	delete(f, "ClusterType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesRequest has unknown keys!", "")
 	}

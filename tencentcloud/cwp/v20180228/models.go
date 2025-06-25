@@ -18116,6 +18116,12 @@ type DescribeJavaMemShellListRequestParams struct {
 
 	// 需要返回的数量，默认为10，最大值为100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序，大小写无关：asc 升序，desc降序
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序列，严格相等：最近检测时间RecentFoundTime
+	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 type DescribeJavaMemShellListRequest struct {
@@ -18131,6 +18137,12 @@ type DescribeJavaMemShellListRequest struct {
 
 	// 需要返回的数量，默认为10，最大值为100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序，大小写无关：asc 升序，desc降序
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序列，严格相等：最近检测时间RecentFoundTime
+	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 func (r *DescribeJavaMemShellListRequest) ToJsonString() string {
@@ -18148,6 +18160,8 @@ func (r *DescribeJavaMemShellListRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "By")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJavaMemShellListRequest has unknown keys!", "")
 	}
@@ -18613,6 +18627,12 @@ type DescribeLicenseGeneralResponseParams struct {
 
 	// 自动加购是否自动续费开关,true 开启,false 关闭
 	RepurchaseRenewSwitch *bool `json:"RepurchaseRenewSwitch,omitnil,omitempty" name:"RepurchaseRenewSwitch"`
+
+	// 是否自动新增机器绑定rasp防护,false 关闭 true 开启
+	AutoBindRaspSwitch *bool `json:"AutoBindRaspSwitch,omitnil,omitempty" name:"AutoBindRaspSwitch"`
+
+	// 是否自动新增机器开启rasp防护,false 关闭 true 开启
+	AutoOpenRaspSwitch *bool `json:"AutoOpenRaspSwitch,omitnil,omitempty" name:"AutoOpenRaspSwitch"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -28712,6 +28732,9 @@ type DescribeVulInfoCvssResponseParams struct {
 	// 修复是否支持：0-windows/linux均不支持修复 ;1-windows/linux 均支持修复 ;2-仅linux支持修复;3-仅windows支持修复
 	FixSwitch *int64 `json:"FixSwitch,omitnil,omitempty" name:"FixSwitch"`
 
+	// 是否支持防御： 0-不支持 1-支持
+	SupportDefence *int64 `json:"SupportDefence,omitnil,omitempty" name:"SupportDefence"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -33716,6 +33739,12 @@ type ExportJavaMemShellsRequestParams struct {
 
 	// 导出字段
 	Where []*string `json:"Where,omitnil,omitempty" name:"Where"`
+
+	// 排序，大小写无关：asc 升序，desc降序
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序列，严格相等：最近检测时间RecentFoundTime
+	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 type ExportJavaMemShellsRequest struct {
@@ -33728,6 +33757,12 @@ type ExportJavaMemShellsRequest struct {
 
 	// 导出字段
 	Where []*string `json:"Where,omitnil,omitempty" name:"Where"`
+
+	// 排序，大小写无关：asc 升序，desc降序
+	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 排序列，严格相等：最近检测时间RecentFoundTime
+	By *string `json:"By,omitnil,omitempty" name:"By"`
 }
 
 func (r *ExportJavaMemShellsRequest) ToJsonString() string {
@@ -33744,6 +33779,8 @@ func (r *ExportJavaMemShellsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Filters")
 	delete(f, "Where")
+	delete(f, "Order")
+	delete(f, "By")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportJavaMemShellsRequest has unknown keys!", "")
 	}
@@ -37576,6 +37613,12 @@ type ModifyAutoOpenProVersionConfigRequestParams struct {
 
 	// 手动购买的订单是否自动续费,默认0, 0关闭 ,1 开启
 	RepurchaseRenewSwitch *uint64 `json:"RepurchaseRenewSwitch,omitnil,omitempty" name:"RepurchaseRenewSwitch"`
+
+	// 新增机器自动绑定rasp,0 关闭 1开启
+	AutoBindRaspSwitch *uint64 `json:"AutoBindRaspSwitch,omitnil,omitempty" name:"AutoBindRaspSwitch"`
+
+	// 新增机器自动开启rasp防护,默认关闭,0 关闭 1开启
+	AutoOpenRaspSwitch *uint64 `json:"AutoOpenRaspSwitch,omitnil,omitempty" name:"AutoOpenRaspSwitch"`
 }
 
 type ModifyAutoOpenProVersionConfigRequest struct {
@@ -37594,6 +37637,12 @@ type ModifyAutoOpenProVersionConfigRequest struct {
 
 	// 手动购买的订单是否自动续费,默认0, 0关闭 ,1 开启
 	RepurchaseRenewSwitch *uint64 `json:"RepurchaseRenewSwitch,omitnil,omitempty" name:"RepurchaseRenewSwitch"`
+
+	// 新增机器自动绑定rasp,0 关闭 1开启
+	AutoBindRaspSwitch *uint64 `json:"AutoBindRaspSwitch,omitnil,omitempty" name:"AutoBindRaspSwitch"`
+
+	// 新增机器自动开启rasp防护,默认关闭,0 关闭 1开启
+	AutoOpenRaspSwitch *uint64 `json:"AutoOpenRaspSwitch,omitnil,omitempty" name:"AutoOpenRaspSwitch"`
 }
 
 func (r *ModifyAutoOpenProVersionConfigRequest) ToJsonString() string {
@@ -37612,6 +37661,8 @@ func (r *ModifyAutoOpenProVersionConfigRequest) FromJsonString(s string) error {
 	delete(f, "AutoRepurchaseSwitch")
 	delete(f, "AutoRepurchaseRenewSwitch")
 	delete(f, "RepurchaseRenewSwitch")
+	delete(f, "AutoBindRaspSwitch")
+	delete(f, "AutoOpenRaspSwitch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAutoOpenProVersionConfigRequest has unknown keys!", "")
 	}
@@ -46765,6 +46816,12 @@ type VulEmergentMsgInfo struct {
 
 	// 漏洞名,英文描述
 	NameEn *string `json:"NameEn,omitnil,omitempty" name:"NameEn"`
+
+	// 是否支持自动修复 0:不支持 >0: 支持
+	SupportFix *int64 `json:"SupportFix,omitnil,omitempty" name:"SupportFix"`
+
+	// 是否支持自动防御 0:不支持 1:支持
+	SupportDefense *int64 `json:"SupportDefense,omitnil,omitempty" name:"SupportDefense"`
 }
 
 type VulFixStatusHostInfo struct {

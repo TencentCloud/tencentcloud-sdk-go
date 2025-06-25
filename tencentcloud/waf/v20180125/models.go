@@ -937,7 +937,9 @@ type AddSpartaProtectionRequestParams struct {
 	// CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
 	SSLId *string `json:"SSLId,omitnil,omitempty" name:"SSLId"`
 
-	// 待废弃，可不填。Waf的资源ID。
+	// Waf的资源ID。
+	//
+	// Deprecated: ResourceId is deprecated.
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// IsCdn为3时，需要填此参数，表示自定义header
@@ -951,10 +953,14 @@ type AddSpartaProtectionRequestParams struct {
 	// HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
 	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitnil,omitempty" name:"HttpsUpstreamPort"`
 
-	// 待废弃，可不填。是否开启灰度，0表示不开启灰度。
+	// 是否开启灰度，0表示不开启灰度。
+	//
+	// Deprecated: IsGray is deprecated.
 	IsGray *int64 `json:"IsGray,omitnil,omitempty" name:"IsGray"`
 
-	// 待废弃，可不填。灰度的地区
+	// 灰度的地区
+	//
+	// Deprecated: GrayAreas is deprecated.
 	GrayAreas []*string `json:"GrayAreas,omitnil,omitempty" name:"GrayAreas"`
 
 	// 必填项，是否开启HTTP强制跳转到HTTPS。
@@ -973,13 +979,17 @@ type AddSpartaProtectionRequestParams struct {
 	// 1：开启
 	IsHttp2 *int64 `json:"IsHttp2,omitnil,omitempty" name:"IsHttp2"`
 
-	// 待废弃，可不填。WAF实例类型。
+	// WAF实例类型。
 	// sparta-waf：SAAS型WAF
 	// clb-waf：负载均衡型WAF
 	// cdn-waf：CDN上的Web防护能力
+	//
+	// Deprecated: Edition is deprecated.
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 待废弃，目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
+	// 目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
+	//
+	// Deprecated: Anycast is deprecated.
 	Anycast *int64 `json:"Anycast,omitnil,omitempty" name:"Anycast"`
 
 	// 回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
@@ -1060,6 +1070,9 @@ type AddSpartaProtectionRequestParams struct {
 
 	// 分流回源时生效，分流回源的规则。
 	UpstreamRules []*UpstreamRule `json:"UpstreamRules,omitnil,omitempty" name:"UpstreamRules"`
+
+	// 业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
+	UseCase *int64 `json:"UseCase,omitnil,omitempty" name:"UseCase"`
 }
 
 type AddSpartaProtectionRequest struct {
@@ -1122,7 +1135,7 @@ type AddSpartaProtectionRequest struct {
 	// CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
 	SSLId *string `json:"SSLId,omitnil,omitempty" name:"SSLId"`
 
-	// 待废弃，可不填。Waf的资源ID。
+	// Waf的资源ID。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// IsCdn为3时，需要填此参数，表示自定义header
@@ -1136,10 +1149,10 @@ type AddSpartaProtectionRequest struct {
 	// HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
 	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitnil,omitempty" name:"HttpsUpstreamPort"`
 
-	// 待废弃，可不填。是否开启灰度，0表示不开启灰度。
+	// 是否开启灰度，0表示不开启灰度。
 	IsGray *int64 `json:"IsGray,omitnil,omitempty" name:"IsGray"`
 
-	// 待废弃，可不填。灰度的地区
+	// 灰度的地区
 	GrayAreas []*string `json:"GrayAreas,omitnil,omitempty" name:"GrayAreas"`
 
 	// 必填项，是否开启HTTP强制跳转到HTTPS。
@@ -1158,13 +1171,13 @@ type AddSpartaProtectionRequest struct {
 	// 1：开启
 	IsHttp2 *int64 `json:"IsHttp2,omitnil,omitempty" name:"IsHttp2"`
 
-	// 待废弃，可不填。WAF实例类型。
+	// WAF实例类型。
 	// sparta-waf：SAAS型WAF
 	// clb-waf：负载均衡型WAF
 	// cdn-waf：CDN上的Web防护能力
 	Edition *string `json:"Edition,omitnil,omitempty" name:"Edition"`
 
-	// 待废弃，目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
+	// 目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
 	Anycast *int64 `json:"Anycast,omitnil,omitempty" name:"Anycast"`
 
 	// 回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
@@ -1245,6 +1258,9 @@ type AddSpartaProtectionRequest struct {
 
 	// 分流回源时生效，分流回源的规则。
 	UpstreamRules []*UpstreamRule `json:"UpstreamRules,omitnil,omitempty" name:"UpstreamRules"`
+
+	// 业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
+	UseCase *int64 `json:"UseCase,omitnil,omitempty" name:"UseCase"`
 }
 
 func (r *AddSpartaProtectionRequest) ToJsonString() string {
@@ -1306,6 +1322,7 @@ func (r *AddSpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "GmSSLId")
 	delete(f, "UpstreamPolicy")
 	delete(f, "UpstreamRules")
+	delete(f, "UseCase")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddSpartaProtectionRequest has unknown keys!", "")
 	}
@@ -2203,6 +2220,9 @@ type ClbDomainsInfo struct {
 
 	// 域名标签
 	Labels []*string `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// clbwaf接入状态，0代表“尚无流量接入”，1代表“流量接入”，2代表“CLB监听器已注销”，3代表“配置生效中”，4代表“配置下发失败中”
+	AccessStatus *int64 `json:"AccessStatus,omitnil,omitempty" name:"AccessStatus"`
 }
 
 type ClbObject struct {
@@ -10293,7 +10313,7 @@ type DomainInfo struct {
 	// 安全组ID
 	SgID *string `json:"SgID,omitnil,omitempty" name:"SgID"`
 
-	// clbwaf接入状态
+	// clbwaf接入状态，0代表“尚无流量接入”，1代表“流量接入”，2代表“CLB监听器已注销”，3代表“配置生效中”，4代表“配置下发失败中”
 	AccessStatus *int64 `json:"AccessStatus,omitnil,omitempty" name:"AccessStatus"`
 
 	// 域名标签
@@ -10383,7 +10403,9 @@ type DomainsPartInfo struct {
 	// 3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
 	IsCdn *uint64 `json:"IsCdn,omitnil,omitempty" name:"IsCdn"`
 
-	// 是否开启灰度，已废弃。
+	// 是否开启灰度。
+	//
+	// Deprecated: IsGray is deprecated.
 	IsGray *uint64 `json:"IsGray,omitnil,omitempty" name:"IsGray"`
 
 	// 是否开启HTTP2，需要开启HTTPS协议支持。
@@ -10542,6 +10564,9 @@ type DomainsPartInfo struct {
 
 	// 分流回源策略
 	UpstreamRules []*UpstreamRule `json:"UpstreamRules,omitnil,omitempty" name:"UpstreamRules"`
+
+	// 业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
+	UseCase *int64 `json:"UseCase,omitnil,omitempty" name:"UseCase"`
 }
 
 type DownloadAttackRecordInfo struct {
@@ -15119,7 +15144,9 @@ type ModifySpartaProtectionRequestParams struct {
 	// 回源负载均衡策略。0：轮询1：IP hash2：加权轮询
 	LoadBalance *int64 `json:"LoadBalance,omitnil,omitempty" name:"LoadBalance"`
 
-	// 待废弃，可不填。是否开启灰度，0表示不开启灰度。
+	// 是否开启灰度，0表示不开启灰度。
+	//
+	// Deprecated: IsGray is deprecated.
 	IsGray *int64 `json:"IsGray,omitnil,omitempty" name:"IsGray"`
 
 	// 域名所属实例类型
@@ -15131,7 +15158,9 @@ type ModifySpartaProtectionRequestParams struct {
 	// 是否开启长连接。0： 短连接1： 长连接
 	IsKeepAlive *string `json:"IsKeepAlive,omitnil,omitempty" name:"IsKeepAlive"`
 
-	// 待废弃。目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
+	// 目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
+	//
+	// Deprecated: Anycast is deprecated.
 	Anycast *int64 `json:"Anycast,omitnil,omitempty" name:"Anycast"`
 
 	// 回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
@@ -15209,6 +15238,9 @@ type ModifySpartaProtectionRequestParams struct {
 
 	// 分流回源时生效，分流回源的规则。
 	UpstreamRules []*UpstreamRule `json:"UpstreamRules,omitnil,omitempty" name:"UpstreamRules"`
+
+	// 业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
+	UseCase *int64 `json:"UseCase,omitnil,omitempty" name:"UseCase"`
 }
 
 type ModifySpartaProtectionRequest struct {
@@ -15267,7 +15299,7 @@ type ModifySpartaProtectionRequest struct {
 	// 回源负载均衡策略。0：轮询1：IP hash2：加权轮询
 	LoadBalance *int64 `json:"LoadBalance,omitnil,omitempty" name:"LoadBalance"`
 
-	// 待废弃，可不填。是否开启灰度，0表示不开启灰度。
+	// 是否开启灰度，0表示不开启灰度。
 	IsGray *int64 `json:"IsGray,omitnil,omitempty" name:"IsGray"`
 
 	// 域名所属实例类型
@@ -15279,7 +15311,7 @@ type ModifySpartaProtectionRequest struct {
 	// 是否开启长连接。0： 短连接1： 长连接
 	IsKeepAlive *string `json:"IsKeepAlive,omitnil,omitempty" name:"IsKeepAlive"`
 
-	// 待废弃。目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
+	// 目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
 	Anycast *int64 `json:"Anycast,omitnil,omitempty" name:"Anycast"`
 
 	// 回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
@@ -15357,6 +15389,9 @@ type ModifySpartaProtectionRequest struct {
 
 	// 分流回源时生效，分流回源的规则。
 	UpstreamRules []*UpstreamRule `json:"UpstreamRules,omitnil,omitempty" name:"UpstreamRules"`
+
+	// 业务场景。0：默认值，表示常规业务场景 1：大模型业务场景
+	UseCase *int64 `json:"UseCase,omitnil,omitempty" name:"UseCase"`
 }
 
 func (r *ModifySpartaProtectionRequest) ToJsonString() string {
@@ -15417,6 +15452,7 @@ func (r *ModifySpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "GmSSLId")
 	delete(f, "UpstreamPolicy")
 	delete(f, "UpstreamRules")
+	delete(f, "UseCase")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySpartaProtectionRequest has unknown keys!", "")
 	}

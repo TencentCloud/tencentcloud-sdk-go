@@ -958,7 +958,7 @@ type CreateAICallRequestParams struct {
 	// 1:   使用ai根据prompt自动生成welcomeMessage并先说话
 	WelcomeType *int64 `json:"WelcomeType,omitnil,omitempty" name:"WelcomeType"`
 
-	// 0: 默认可打断， 1：高优先不可打断
+	// 0: 默认可打断， 2：高优先不可打断
 	WelcomeMessagePriority *int64 `json:"WelcomeMessagePriority,omitnil,omitempty" name:"WelcomeMessagePriority"`
 
 	// 最大等待时长(毫秒)，默认60秒，超过这个时间用户没说话，自动挂断
@@ -1221,7 +1221,7 @@ type CreateAICallRequest struct {
 	// 1:   使用ai根据prompt自动生成welcomeMessage并先说话
 	WelcomeType *int64 `json:"WelcomeType,omitnil,omitempty" name:"WelcomeType"`
 
-	// 0: 默认可打断， 1：高优先不可打断
+	// 0: 默认可打断， 2：高优先不可打断
 	WelcomeMessagePriority *int64 `json:"WelcomeMessagePriority,omitnil,omitempty" name:"WelcomeMessagePriority"`
 
 	// 最大等待时长(毫秒)，默认60秒，超过这个时间用户没说话，自动挂断

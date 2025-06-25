@@ -102,9 +102,6 @@ const (
 	FAILEDOPERATION_NOTDELAYRO = "FailedOperation.NotDelayRo"
 
 	// 实例正在执行其他操作，请稍后重试。
-	FAILEDOPERATION_OPERATIONINCONFLICTERR = "FailedOperation.OperationInConflictErr"
-
-	// 实例正在执行其他操作，请稍后重试。
 	FAILEDOPERATION_OPERATIONINCONFLICTERROR = "FailedOperation.OperationInConflictError"
 
 	// 执行的权限修改操作非法。您可以参照产品文档，了解当前实例支持哪些权限修改操作，如有疑问，请您咨询客服进行处理。

@@ -1406,6 +1406,9 @@ type CreateClusterRequestParams struct {
 
 	// cos桶路径，创建StarRocks存算分离集群时用到
 	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
+
+	// 节点标识信息，目前只提供给tf平台使用
+	NodeMarks []*NodeMark `json:"NodeMarks,omitnil,omitempty" name:"NodeMarks"`
 }
 
 type CreateClusterRequest struct {
@@ -1492,6 +1495,9 @@ type CreateClusterRequest struct {
 
 	// cos桶路径，创建StarRocks存算分离集群时用到
 	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
+
+	// 节点标识信息，目前只提供给tf平台使用
+	NodeMarks []*NodeMark `json:"NodeMarks,omitnil,omitempty" name:"NodeMarks"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -1527,6 +1533,7 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "DependService")
 	delete(f, "ZoneResourceConfiguration")
 	delete(f, "CosBucket")
+	delete(f, "NodeMarks")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
 	}
@@ -1761,6 +1768,9 @@ type CreateInstanceRequestParams struct {
 
 	// cos桶路径，创建StarRocks存算分离集群时用到
 	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
+
+	// 节点标识信息，目前只提供给tf平台使用
+	NodeMarks []*NodeMark `json:"NodeMarks,omitnil,omitempty" name:"NodeMarks"`
 }
 
 type CreateInstanceRequest struct {
@@ -1903,6 +1913,9 @@ type CreateInstanceRequest struct {
 
 	// cos桶路径，创建StarRocks存算分离集群时用到
 	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
+
+	// 节点标识信息，目前只提供给tf平台使用
+	NodeMarks []*NodeMark `json:"NodeMarks,omitnil,omitempty" name:"NodeMarks"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -1950,6 +1963,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "MultiZone")
 	delete(f, "MultiZoneSettings")
 	delete(f, "CosBucket")
+	delete(f, "NodeMarks")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -9564,6 +9578,20 @@ type NodeHardwareInfo struct {
 
 	// 新挂磁盘时可支持配置的服务名称列表
 	ConfigurableServices []*string `json:"ConfigurableServices,omitnil,omitempty" name:"ConfigurableServices"`
+
+	// 节点标注信息，目前只提供给tf平台使用
+	NodeMark *string `json:"NodeMark,omitnil,omitempty" name:"NodeMark"`
+}
+
+type NodeMark struct {
+	// 节点类型：master,core,task,router
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 节点标记信息，目前只提供给tf平台使用，作为入参区分同类型节点信息
+	NodeNames []*string `json:"NodeNames,omitnil,omitempty" name:"NodeNames"`
+
+	// 可用区名称
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 }
 
 type NodeRenewPriceDetail struct {
@@ -10975,6 +11003,9 @@ type ScaleOutClusterRequestParams struct {
 
 	// 扩容指定配置组
 	ScaleOutServiceConfGroupsInfo []*ScaleOutServiceConfGroupsInfo `json:"ScaleOutServiceConfGroupsInfo,omitnil,omitempty" name:"ScaleOutServiceConfGroupsInfo"`
+
+	// 节点标记信息，当前只提供给tf平台使用
+	NodeMarks *NodeMark `json:"NodeMarks,omitnil,omitempty" name:"NodeMarks"`
 }
 
 type ScaleOutClusterRequest struct {
@@ -11045,6 +11076,9 @@ type ScaleOutClusterRequest struct {
 
 	// 扩容指定配置组
 	ScaleOutServiceConfGroupsInfo []*ScaleOutServiceConfGroupsInfo `json:"ScaleOutServiceConfGroupsInfo,omitnil,omitempty" name:"ScaleOutServiceConfGroupsInfo"`
+
+	// 节点标记信息，当前只提供给tf平台使用
+	NodeMarks *NodeMark `json:"NodeMarks,omitnil,omitempty" name:"NodeMarks"`
 }
 
 func (r *ScaleOutClusterRequest) ToJsonString() string {
@@ -11079,6 +11113,7 @@ func (r *ScaleOutClusterRequest) FromJsonString(s string) error {
 	delete(f, "Zone")
 	delete(f, "SubnetId")
 	delete(f, "ScaleOutServiceConfGroupsInfo")
+	delete(f, "NodeMarks")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleOutClusterRequest has unknown keys!", "")
 	}
@@ -11225,6 +11260,9 @@ type ScaleOutInstanceRequestParams struct {
 
 	// 计算资源高级设置
 	ComputeResourceAdvanceParams *ComputeResourceAdvanceParams `json:"ComputeResourceAdvanceParams,omitnil,omitempty" name:"ComputeResourceAdvanceParams"`
+
+	// 节点标记信息，目前只提供tf平台使用
+	NodeMarks *NodeMark `json:"NodeMarks,omitnil,omitempty" name:"NodeMarks"`
 }
 
 type ScaleOutInstanceRequest struct {
@@ -11327,6 +11365,9 @@ type ScaleOutInstanceRequest struct {
 
 	// 计算资源高级设置
 	ComputeResourceAdvanceParams *ComputeResourceAdvanceParams `json:"ComputeResourceAdvanceParams,omitnil,omitempty" name:"ComputeResourceAdvanceParams"`
+
+	// 节点标记信息，目前只提供tf平台使用
+	NodeMarks *NodeMark `json:"NodeMarks,omitnil,omitempty" name:"NodeMarks"`
 }
 
 func (r *ScaleOutInstanceRequest) ToJsonString() string {
@@ -11370,6 +11411,7 @@ func (r *ScaleOutInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ResourceBaseType")
 	delete(f, "ComputeResourceId")
 	delete(f, "ComputeResourceAdvanceParams")
+	delete(f, "NodeMarks")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleOutInstanceRequest has unknown keys!", "")
 	}
