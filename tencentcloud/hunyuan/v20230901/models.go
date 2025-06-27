@@ -157,7 +157,7 @@ type ChatCompletionsRequestParams struct {
 	// 5. 2025-04-20 00:00:00起，由默认开启状态转为默认关闭状态。
 	EnableEnhancement *bool `json:"EnableEnhancement,omitnil,omitempty" name:"EnableEnhancement"`
 
-	// 可调用的工具列表，仅对 hunyuan-turbo、hunyuan-functioncall 模型生效。
+	// 可调用的工具列表，仅对 hunyuan-turbos、hunyuan-t1、hunyuan-functioncall 模型生效。
 	Tools []*Tool `json:"Tools,omitnil,omitempty" name:"Tools"`
 
 	// 工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-turbo、hunyuan-functioncall 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto
@@ -225,6 +225,9 @@ type ChatCompletionsRequestParams struct {
 
 	// 用户传入Topic
 	TopicChoice *string `json:"TopicChoice,omitnil,omitempty" name:"TopicChoice"`
+
+	// 模型思维链开关 说明： 1. 未传值时默认开启，打开模型思维链推理能力。 2. 关闭后，关闭模型思维链推理能力。  开关当前仅对hunyuan-a13b模型生效 示例值：ture
+	EnableThinking *bool `json:"EnableThinking,omitnil,omitempty" name:"EnableThinking"`
 }
 
 type ChatCompletionsRequest struct {
@@ -286,7 +289,7 @@ type ChatCompletionsRequest struct {
 	// 5. 2025-04-20 00:00:00起，由默认开启状态转为默认关闭状态。
 	EnableEnhancement *bool `json:"EnableEnhancement,omitnil,omitempty" name:"EnableEnhancement"`
 
-	// 可调用的工具列表，仅对 hunyuan-turbo、hunyuan-functioncall 模型生效。
+	// 可调用的工具列表，仅对 hunyuan-turbos、hunyuan-t1、hunyuan-functioncall 模型生效。
 	Tools []*Tool `json:"Tools,omitnil,omitempty" name:"Tools"`
 
 	// 工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-turbo、hunyuan-functioncall 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto
@@ -354,6 +357,9 @@ type ChatCompletionsRequest struct {
 
 	// 用户传入Topic
 	TopicChoice *string `json:"TopicChoice,omitnil,omitempty" name:"TopicChoice"`
+
+	// 模型思维链开关 说明： 1. 未传值时默认开启，打开模型思维链推理能力。 2. 关闭后，关闭模型思维链推理能力。  开关当前仅对hunyuan-a13b模型生效 示例值：ture
+	EnableThinking *bool `json:"EnableThinking,omitnil,omitempty" name:"EnableThinking"`
 }
 
 func (r *ChatCompletionsRequest) ToJsonString() string {
@@ -390,6 +396,7 @@ func (r *ChatCompletionsRequest) FromJsonString(s string) error {
 	delete(f, "EnableDeepRead")
 	delete(f, "WebSearchOptions")
 	delete(f, "TopicChoice")
+	delete(f, "EnableThinking")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatCompletionsRequest has unknown keys!", "")
 	}

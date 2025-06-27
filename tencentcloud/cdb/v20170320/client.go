@@ -759,7 +759,7 @@ func NewCreateAccountsResponse() (response *CreateAccountsResponse) {
 }
 
 // CreateAccounts
-// 本接口(CreateAccounts)用于创建云数据库的账户，需要指定新的账户名和域名，以及所对应的密码，同时可以设置账号的备注信息以及最大可用连接数。
+// 本接口（CreateAccounts）用于创建云数据库的账户，需要指定新的账户名和域名，以及所对应的密码，同时可以设置账号的备注信息以及最大可用连接数。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEACCOUNTERROR = "FailedOperation.CreateAccountError"
@@ -800,7 +800,7 @@ func (c *Client) CreateAccounts(request *CreateAccountsRequest) (response *Creat
 }
 
 // CreateAccounts
-// 本接口(CreateAccounts)用于创建云数据库的账户，需要指定新的账户名和域名，以及所对应的密码，同时可以设置账号的备注信息以及最大可用连接数。
+// 本接口（CreateAccounts）用于创建云数据库的账户，需要指定新的账户名和域名，以及所对应的密码，同时可以设置账号的备注信息以及最大可用连接数。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEACCOUNTERROR = "FailedOperation.CreateAccountError"
@@ -7800,7 +7800,7 @@ func NewModifyAccountMaxUserConnectionsResponse() (response *ModifyAccountMaxUse
 }
 
 // ModifyAccountMaxUserConnections
-// 本接口(ModifyAccountMaxUserConnections)用于修改云数据库账户最大可用连接数。
+// 本接口（ModifyAccountMaxUserConnections）用于修改云数据库账户最大可用连接数。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ASYNCTASKSTATUSERROR = "FailedOperation.AsyncTaskStatusError"
@@ -7814,7 +7814,7 @@ func (c *Client) ModifyAccountMaxUserConnections(request *ModifyAccountMaxUserCo
 }
 
 // ModifyAccountMaxUserConnections
-// 本接口(ModifyAccountMaxUserConnections)用于修改云数据库账户最大可用连接数。
+// 本接口（ModifyAccountMaxUserConnections）用于修改云数据库账户最大可用连接数。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ASYNCTASKSTATUSERROR = "FailedOperation.AsyncTaskStatusError"

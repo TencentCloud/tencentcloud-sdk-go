@@ -1457,6 +1457,9 @@ type Line struct {
 
 	// 维度列表
 	Tags []*ApmTag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 指标数据单位
+	MetricUnit *string `json:"MetricUnit,omitnil,omitempty" name:"MetricUnit"`
 }
 
 // Predefined struct for user

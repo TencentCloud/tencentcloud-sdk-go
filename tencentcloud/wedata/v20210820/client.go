@@ -11767,6 +11767,87 @@ func (c *Client) GetOfflineInstanceListWithContext(ctx context.Context, request 
     return
 }
 
+func NewGetPaginationTaskScriptRequest() (request *GetPaginationTaskScriptRequest) {
+    request = &GetPaginationTaskScriptRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "GetPaginationTaskScript")
+    
+    
+    return
+}
+
+func NewGetPaginationTaskScriptResponse() (response *GetPaginationTaskScriptResponse) {
+    response = &GetPaginationTaskScriptResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetPaginationTaskScript
+// 获取带分页的任务脚本
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetPaginationTaskScript(request *GetPaginationTaskScriptRequest) (response *GetPaginationTaskScriptResponse, err error) {
+    return c.GetPaginationTaskScriptWithContext(context.Background(), request)
+}
+
+// GetPaginationTaskScript
+// 获取带分页的任务脚本
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetPaginationTaskScriptWithContext(ctx context.Context, request *GetPaginationTaskScriptRequest) (response *GetPaginationTaskScriptResponse, err error) {
+    if request == nil {
+        request = NewGetPaginationTaskScriptRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetPaginationTaskScript require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetPaginationTaskScriptResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetTaskInstanceRequest() (request *GetTaskInstanceRequest) {
     request = &GetTaskInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

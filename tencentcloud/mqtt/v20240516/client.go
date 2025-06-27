@@ -1786,6 +1786,57 @@ func (c *Client) DescribeMessageByTopicWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeMessageDetailsRequest() (request *DescribeMessageDetailsRequest) {
+    request = &DescribeMessageDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mqtt", APIVersion, "DescribeMessageDetails")
+    
+    
+    return
+}
+
+func NewDescribeMessageDetailsResponse() (response *DescribeMessageDetailsResponse) {
+    response = &DescribeMessageDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMessageDetails
+// 查询MQTT消息详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
+func (c *Client) DescribeMessageDetails(request *DescribeMessageDetailsRequest) (response *DescribeMessageDetailsResponse, err error) {
+    return c.DescribeMessageDetailsWithContext(context.Background(), request)
+}
+
+// DescribeMessageDetails
+// 查询MQTT消息详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
+func (c *Client) DescribeMessageDetailsWithContext(ctx context.Context, request *DescribeMessageDetailsRequest) (response *DescribeMessageDetailsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMessageDetailsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMessageDetails require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMessageDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMessageListRequest() (request *DescribeMessageListRequest) {
     request = &DescribeMessageListRequest{
         BaseRequest: &tchttp.BaseRequest{},

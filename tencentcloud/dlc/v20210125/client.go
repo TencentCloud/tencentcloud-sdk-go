@@ -2914,6 +2914,10 @@ func NewCreateTasksInOrderResponse() (response *CreateTasksInOrderResponse) {
 }
 
 // CreateTasksInOrder
+// 废弃接口，申请下线
+//
+// 
+//
 // 按顺序创建任务（已经废弃，后期不再维护，请使用接口CreateTasks）
 //
 // 可能返回的错误码:
@@ -2926,6 +2930,10 @@ func (c *Client) CreateTasksInOrder(request *CreateTasksInOrderRequest) (respons
 }
 
 // CreateTasksInOrder
+// 废弃接口，申请下线
+//
+// 
+//
 // 按顺序创建任务（已经废弃，后期不再维护，请使用接口CreateTasks）
 //
 // 可能返回的错误码:

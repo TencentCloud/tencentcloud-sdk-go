@@ -4935,7 +4935,7 @@ type GenerateSignedVideoURLRequestParams struct {
 	// 视频播放原始URL地址
 	VideoURL *string `json:"VideoURL,omitnil,omitempty" name:"VideoURL"`
 
-	// 播放链接过期时间
+	// 播放链接过期时间（时间戳，单位秒）
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 }
 
@@ -4945,7 +4945,7 @@ type GenerateSignedVideoURLRequest struct {
 	// 视频播放原始URL地址
 	VideoURL *string `json:"VideoURL,omitnil,omitempty" name:"VideoURL"`
 
-	// 播放链接过期时间
+	// 播放链接过期时间（时间戳，单位秒）
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 }
 

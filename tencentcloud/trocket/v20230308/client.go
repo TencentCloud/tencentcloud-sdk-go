@@ -552,7 +552,7 @@ func NewDeleteConsumerGroupResponse() (response *DeleteConsumerGroupResponse) {
 }
 
 // DeleteConsumerGroup
-// 删除消费组
+// 删除消费组。消费者组删除后，消费者组的所有配置和相关数据都会被清空，且无法找回。删除后，在线的消费者客户端会出现报错，建议您提前下线客户端。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -562,7 +562,7 @@ func (c *Client) DeleteConsumerGroup(request *DeleteConsumerGroupRequest) (respo
 }
 
 // DeleteConsumerGroup
-// 删除消费组
+// 删除消费组。消费者组删除后，消费者组的所有配置和相关数据都会被清空，且无法找回。删除后，在线的消费者客户端会出现报错，建议您提前下线客户端。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -972,7 +972,7 @@ func NewDeleteTopicResponse() (response *DeleteTopicResponse) {
 }
 
 // DeleteTopic
-// 删除主题
+// 删除主题。主题删除后，主题的所有配置和相关数据都会被清空，且无法找回。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -982,7 +982,7 @@ func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopic
 }
 
 // DeleteTopic
-// 删除主题
+// 删除主题。主题删除后，主题的所有配置和相关数据都会被清空，且无法找回。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3600,6 +3600,8 @@ func NewModifyRoleResponse() (response *ModifyRoleResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 func (c *Client) ModifyRole(request *ModifyRoleRequest) (response *ModifyRoleResponse, err error) {
     return c.ModifyRoleWithContext(context.Background(), request)
 }
@@ -3609,6 +3611,8 @@ func (c *Client) ModifyRole(request *ModifyRoleRequest) (response *ModifyRoleRes
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 func (c *Client) ModifyRoleWithContext(ctx context.Context, request *ModifyRoleRequest) (response *ModifyRoleResponse, err error) {
     if request == nil {
         request = NewModifyRoleRequest()

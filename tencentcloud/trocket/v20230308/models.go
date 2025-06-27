@@ -173,10 +173,10 @@ type ConsumerClient struct {
 
 // Predefined struct for user
 type CreateConsumerGroupRequestParams struct {
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 最大重试次数
+	// 最大重试次数，取值范围0～1000
 	MaxRetryTimes *int64 `json:"MaxRetryTimes,omitnil,omitempty" name:"MaxRetryTimes"`
 
 	// 是否开启消费
@@ -186,10 +186,10 @@ type CreateConsumerGroupRequestParams struct {
 	// 并发投递：false
 	ConsumeMessageOrderly *bool `json:"ConsumeMessageOrderly,omitnil,omitempty" name:"ConsumeMessageOrderly"`
 
-	// 消费组名称
+	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
-	// 备注
+	// 备注信息，最多 128 个字符
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 标签列表
@@ -199,10 +199,10 @@ type CreateConsumerGroupRequestParams struct {
 type CreateConsumerGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 最大重试次数
+	// 最大重试次数，取值范围0～1000
 	MaxRetryTimes *int64 `json:"MaxRetryTimes,omitnil,omitempty" name:"MaxRetryTimes"`
 
 	// 是否开启消费
@@ -212,10 +212,10 @@ type CreateConsumerGroupRequest struct {
 	// 并发投递：false
 	ConsumeMessageOrderly *bool `json:"ConsumeMessageOrderly,omitnil,omitempty" name:"ConsumeMessageOrderly"`
 
-	// 消费组名称
+	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
-	// 备注
+	// 备注信息，最多 128 个字符
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 标签列表
@@ -837,7 +837,7 @@ func (r *CreateMQTTUserResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRoleRequestParams struct {
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 角色名称
@@ -855,14 +855,14 @@ type CreateRoleRequestParams struct {
 	// 权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
 	PermType *string `json:"PermType,omitnil,omitempty" name:"PermType"`
 
-	// Topic&Group维度权限配置
+	// Topic&Group维度权限配置，权限类型为 TopicAndGroup 时必填
 	DetailedPerms []*DetailedRolePerm `json:"DetailedPerms,omitnil,omitempty" name:"DetailedPerms"`
 }
 
 type CreateRoleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 角色名称
@@ -880,7 +880,7 @@ type CreateRoleRequest struct {
 	// 权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
 	PermType *string `json:"PermType,omitnil,omitempty" name:"PermType"`
 
-	// Topic&Group维度权限配置
+	// Topic&Group维度权限配置，权限类型为 TopicAndGroup 时必填
 	DetailedPerms []*DetailedRolePerm `json:"DetailedPerms,omitnil,omitempty" name:"DetailedPerms"`
 }
 
@@ -936,10 +936,10 @@ func (r *CreateRoleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTopicRequestParams struct {
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 主题类型
@@ -950,13 +950,13 @@ type CreateTopicRequestParams struct {
 	// TRANSACTION:事务消息
 	TopicType *string `json:"TopicType,omitnil,omitempty" name:"TopicType"`
 
-	// 队列数量
+	// 队列数量，取值范围3～16
 	QueueNum *int64 `json:"QueueNum,omitnil,omitempty" name:"QueueNum"`
 
-	// 备注
+	// 备注，最多 128 字符
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 消息保留时长
+	// 消息保留时长（单位：小时）
 	MsgTTL *int64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
 
 	// 标签列表
@@ -966,10 +966,10 @@ type CreateTopicRequestParams struct {
 type CreateTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
 	// 主题类型
@@ -980,13 +980,13 @@ type CreateTopicRequest struct {
 	// TRANSACTION:事务消息
 	TopicType *string `json:"TopicType,omitnil,omitempty" name:"TopicType"`
 
-	// 队列数量
+	// 队列数量，取值范围3～16
 	QueueNum *int64 `json:"QueueNum,omitnil,omitempty" name:"QueueNum"`
 
-	// 备注
+	// 备注，最多 128 字符
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 消息保留时长
+	// 消息保留时长（单位：小时）
 	MsgTTL *int64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
 
 	// 标签列表
@@ -1058,20 +1058,20 @@ type CustomMapEntry struct {
 
 // Predefined struct for user
 type DeleteConsumerGroupRequestParams struct {
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消费组名称
+	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 }
 
 type DeleteConsumerGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消费组名称
+	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 }
 
@@ -1403,20 +1403,20 @@ func (r *DeleteMQTTUserResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteRoleRequestParams struct {
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 角色名称
+	// 角色名称，从 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862) 接口或控制台获得。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 }
 
 type DeleteRoleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 角色名称
+	// 角色名称，从 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862) 接口或控制台获得。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 }
 
@@ -1518,20 +1518,20 @@ func (r *DeleteSmoothMigrationTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteTopicRequestParams struct {
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 }
 
 type DeleteTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 }
 
@@ -1579,38 +1579,38 @@ func (r *DeleteTopicResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConsumerClientListRequestParams struct {
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消费组名称
+	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
-	// 查询条件列表
+	// 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 查询起始位置
+	// 查询起始位置，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询结果限制数量
+	// 查询结果限制数量，默认20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeConsumerClientListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消费组名称
+	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
-	// 查询条件列表
+	// 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 查询起始位置
+	// 查询起始位置，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询结果限制数量
+	// 查询结果限制数量，默认20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -1667,44 +1667,44 @@ func (r *DescribeConsumerClientListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConsumerClientRequestParams struct {
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 客户端ID
+	// 客户端ID，从 [DescribeConsumerClientList](https://cloud.tencent.com/document/api/1493/120140) 接口中的 [ConsumerClient](https://cloud.tencent.com/document/api/1493/96031#ConsumerClient) 出参中获得。
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
-	// 查询条件列表
+	// 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 查询起始位置
+	// 查询起始位置，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询结果限制数量
+	// 查询结果限制数量，默认20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 消费组名称
+	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 }
 
 type DescribeConsumerClientRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 客户端ID
+	// 客户端ID，从 [DescribeConsumerClientList](https://cloud.tencent.com/document/api/1493/120140) 接口中的 [ConsumerClient](https://cloud.tencent.com/document/api/1493/96031#ConsumerClient) 出参中获得。
 	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
 
-	// 查询条件列表
+	// 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 查询起始位置
+	// 查询起始位置，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询结果限制数量
+	// 查询结果限制数量，默认20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 消费组名称
+	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 }
 
@@ -1852,20 +1852,20 @@ func (r *DescribeConsumerGroupListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConsumerGroupRequestParams struct {
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消费组名称
+	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 }
 
 type DescribeConsumerGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消费组名称
+	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 }
 
@@ -1900,10 +1900,14 @@ type DescribeConsumerGroupResponseParams struct {
 	// 消息堆积数量
 	ConsumerLag *int64 `json:"ConsumerLag,omitnil,omitempty" name:"ConsumerLag"`
 
-	// 消费者类型
+	// 消费类型，枚举值如下：
+	// 
+	// - PULL：PULL 消费类型
+	// - PUSH：PUSH 消费类型
+	// - POP：POP 消费类型
 	ConsumeType *string `json:"ConsumeType,omitnil,omitempty" name:"ConsumeType"`
 
-	// 创建时间，秒为单位
+	// 创建时间，**Unix时间戳（毫秒）**
 	CreatedTime *int64 `json:"CreatedTime,omitnil,omitempty" name:"CreatedTime"`
 
 	// 顺序投递：true
@@ -1946,32 +1950,32 @@ func (r *DescribeConsumerGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeConsumerLagRequestParams struct {
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消费组名称
+	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
-	// 命名空间，4.x集群必填
+	// 命名空间，4.x集群必填，从 [DescribeRocketMQNamespaces](https://cloud.tencent.com/document/api/1179/63419) 接口或控制台获得。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 订阅主题，不为空则查询订阅了该主题的消费组的堆积
+	// 订阅主题，不为空则查询订阅了该主题的消费组的堆积，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
 	SubscribeTopic *string `json:"SubscribeTopic,omitnil,omitempty" name:"SubscribeTopic"`
 }
 
 type DescribeConsumerLagRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消费组名称
+	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
-	// 命名空间，4.x集群必填
+	// 命名空间，4.x集群必填，从 [DescribeRocketMQNamespaces](https://cloud.tencent.com/document/api/1179/63419) 接口或控制台获得。
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 订阅主题，不为空则查询订阅了该主题的消费组的堆积
+	// 订阅主题，不为空则查询订阅了该主题的消费组的堆积，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
 	SubscribeTopic *string `json:"SubscribeTopic,omitnil,omitempty" name:"SubscribeTopic"`
 }
 
@@ -4287,38 +4291,38 @@ func (r *DescribeSourceClusterGroupListResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeTopicListByGroupRequestParams struct {
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 查询起始位置
+	// 查询起始位置，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询结果限制数量
+	// 查询结果限制数量，默认20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 消费组名称
+	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
-	// 查询条件列表
+	// 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeTopicListByGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 查询起始位置
+	// 查询起始位置，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询结果限制数量
+	// 查询结果限制数量，默认20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 消费组名称
+	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
-	// 查询条件列表
+	// 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -4456,38 +4460,38 @@ func (r *DescribeTopicListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopicRequestParams struct {
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 查询条件列表
+	// 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 查询起始位置
+	// 查询起始位置，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询结果限制数量
+	// 查询结果限制数量，默认20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 查询条件列表
+	// 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 查询起始位置
+	// 查询起始位置，默认为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 查询结果限制数量
+	// 查询结果限制数量，默认20。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -4570,6 +4574,8 @@ func (r *DescribeTopicResponse) FromJsonString(s string) error {
 
 type DetailedRolePerm struct {
 	// 权限对应的资源
+	// 可以是主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
+	// 可以是消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
 	Resource *string `json:"Resource,omitnil,omitempty" name:"Resource"`
 
 	// 是否开启生产权限
@@ -5426,10 +5432,10 @@ type MigrationTaskItem struct {
 
 // Predefined struct for user
 type ModifyConsumerGroupRequestParams struct {
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消费组名称
+	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
 	// 是否开启消费
@@ -5439,20 +5445,20 @@ type ModifyConsumerGroupRequestParams struct {
 	// 并发投递：false
 	ConsumeMessageOrderly *bool `json:"ConsumeMessageOrderly,omitnil,omitempty" name:"ConsumeMessageOrderly"`
 
-	// 最大重试次数
+	// 最大重试次数，取值范围0～1000
 	MaxRetryTimes *int64 `json:"MaxRetryTimes,omitnil,omitempty" name:"MaxRetryTimes"`
 
-	// 备注
+	// 备注信息，最多 128 个字符
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
 type ModifyConsumerGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 消费组名称
+	// 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口或控制台获得。
 	ConsumerGroup *string `json:"ConsumerGroup,omitnil,omitempty" name:"ConsumerGroup"`
 
 	// 是否开启消费
@@ -5462,10 +5468,10 @@ type ModifyConsumerGroupRequest struct {
 	// 并发投递：false
 	ConsumeMessageOrderly *bool `json:"ConsumeMessageOrderly,omitnil,omitempty" name:"ConsumeMessageOrderly"`
 
-	// 最大重试次数
+	// 最大重试次数，取值范围0～1000
 	MaxRetryTimes *int64 `json:"MaxRetryTimes,omitnil,omitempty" name:"MaxRetryTimes"`
 
-	// 备注
+	// 备注信息，最多 128 个字符
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 }
 
@@ -6093,10 +6099,10 @@ func (r *ModifyMQTTUserResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRoleRequestParams struct {
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 角色名称
+	// 角色名称，从 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862) 接口或控制台获得。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
 	// 是否开启消费
@@ -6111,17 +6117,17 @@ type ModifyRoleRequestParams struct {
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// Topic&Group维度权限配置
+	// Topic&Group维度权限配置，权限类型为 TopicAndGroup 时必填
 	DetailedPerms []*DetailedRolePerm `json:"DetailedPerms,omitnil,omitempty" name:"DetailedPerms"`
 }
 
 type ModifyRoleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 角色名称
+	// 角色名称，从 [DescribeRoleList](https://cloud.tencent.com/document/api/1493/98862) 接口或控制台获得。
 	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
 
 	// 是否开启消费
@@ -6136,7 +6142,7 @@ type ModifyRoleRequest struct {
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// Topic&Group维度权限配置
+	// Topic&Group维度权限配置，权限类型为 TopicAndGroup 时必填
 	DetailedPerms []*DetailedRolePerm `json:"DetailedPerms,omitnil,omitempty" name:"DetailedPerms"`
 }
 
@@ -6189,38 +6195,38 @@ func (r *ModifyRoleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyTopicRequestParams struct {
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 队列数量
+	// 队列数量，取值范围3～16
 	QueueNum *int64 `json:"QueueNum,omitnil,omitempty" name:"QueueNum"`
 
-	// 备注信息
+	// 备注信息，最多 128 个字符
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 消息保留时长
+	// 消息保留时长（单位：小时）
 	MsgTTL *int64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
 }
 
 type ModifyTopicRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 腾讯云 RocketMQ 实例 ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028) 接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称
+	// 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口或控制台获得。
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 队列数量
+	// 队列数量，取值范围3～16
 	QueueNum *int64 `json:"QueueNum,omitnil,omitempty" name:"QueueNum"`
 
-	// 备注信息
+	// 备注信息，最多 128 个字符
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 消息保留时长
+	// 消息保留时长（单位：小时）
 	MsgTTL *int64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
 }
 
@@ -6842,7 +6848,11 @@ type SubscriptionData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsOnline *bool `json:"IsOnline,omitnil,omitempty" name:"IsOnline"`
 
-	// 消费类型
+	// 消费类型，枚举值如下：
+	// 
+	// - PULL：PULL 消费类型
+	// - PUSH：PUSH 消费类型
+	// - POP：POP 消费类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsumeType *string `json:"ConsumeType,omitnil,omitempty" name:"ConsumeType"`
 
@@ -6854,7 +6864,10 @@ type SubscriptionData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpressionType *string `json:"ExpressionType,omitnil,omitempty" name:"ExpressionType"`
 
-	// 订阅一致性
+	// 订阅一致性，枚举如下：
+	// 
+	// - 0: 订阅一致
+	// - 1: 订阅不一致
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Consistency *int64 `json:"Consistency,omitnil,omitempty" name:"Consistency"`
 
@@ -6907,7 +6920,12 @@ type TopicConsumeStats struct {
 	// 主题名称
 	Topic *string `json:"Topic,omitnil,omitempty" name:"Topic"`
 
-	// 主题类型
+	// 主题类型，枚举值如下：
+	// 
+	// - NORMAL：普通消息主题
+	// - FIFO：顺序消息主题
+	// - DELAY：延迟消息主题
+	// - TRANSACTION：事务消息主题
 	TopicType *string `json:"TopicType,omitnil,omitempty" name:"TopicType"`
 
 	// 单节点主题队列数量
@@ -6916,10 +6934,10 @@ type TopicConsumeStats struct {
 	// 消费堆积
 	ConsumerLag *int64 `json:"ConsumerLag,omitnil,omitempty" name:"ConsumerLag"`
 
-	// 订阅规则
+	// 订阅规则，`*`表示订阅全部TAG
 	SubString *string `json:"SubString,omitnil,omitempty" name:"SubString"`
 
-	// 最后消费进度更新时间
+	// 最后消费进度更新时间，**Unix时间戳（毫秒）**
 	LastUpdateTime *int64 `json:"LastUpdateTime,omitnil,omitempty" name:"LastUpdateTime"`
 }
 
@@ -6940,7 +6958,7 @@ type TopicItem struct {
 	// 队列数量
 	QueueNum *int64 `json:"QueueNum,omitnil,omitempty" name:"QueueNum"`
 
-	// 描述
+	// 备注信息
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 4.x的集群id
@@ -6960,7 +6978,6 @@ type TopicItem struct {
 	FullNamespaceV4 *string `json:"FullNamespaceV4,omitnil,omitempty" name:"FullNamespaceV4"`
 
 	// 消息保留时长
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MsgTTL *int64 `json:"MsgTTL,omitnil,omitempty" name:"MsgTTL"`
 }
 

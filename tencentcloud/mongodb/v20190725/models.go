@@ -5244,6 +5244,9 @@ type SlowLogPattern struct {
 	// 慢日志模式
 	Pattern *string `json:"Pattern,omitnil,omitempty" name:"Pattern"`
 
+	// queryHash
+	QueryHash *string `json:"QueryHash,omitnil,omitempty" name:"QueryHash"`
+
 	// 最大执行时间
 	MaxTime *uint64 `json:"MaxTime,omitnil,omitempty" name:"MaxTime"`
 

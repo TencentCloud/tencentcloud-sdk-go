@@ -7092,7 +7092,7 @@ type GenerateSignedVideoURLRequestParams struct {
 	// 视频播放原始URL地址
 	VideoURL *string `json:"VideoURL,omitnil,omitempty" name:"VideoURL"`
 
-	// 播放链接过期时间
+	// 播放链接过期时间（时间戳，单位秒）
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 通道ID 非NVR设备不填 NVR设备必填 默认为无	
@@ -7105,7 +7105,7 @@ type GenerateSignedVideoURLRequest struct {
 	// 视频播放原始URL地址
 	VideoURL *string `json:"VideoURL,omitnil,omitempty" name:"VideoURL"`
 
-	// 播放链接过期时间
+	// 播放链接过期时间（时间戳，单位秒）
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 通道ID 非NVR设备不填 NVR设备必填 默认为无	

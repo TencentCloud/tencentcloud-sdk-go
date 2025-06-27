@@ -2795,6 +2795,95 @@ func (r *DescribeMessageByTopicResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMessageDetailsRequestParams struct {
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 消息ID
+	MessageId *string `json:"MessageId,omitnil,omitempty" name:"MessageId"`
+
+	// 订阅表达式
+	Subscription *string `json:"Subscription,omitnil,omitempty" name:"Subscription"`
+}
+
+type DescribeMessageDetailsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 消息ID
+	MessageId *string `json:"MessageId,omitnil,omitempty" name:"MessageId"`
+
+	// 订阅表达式
+	Subscription *string `json:"Subscription,omitnil,omitempty" name:"Subscription"`
+}
+
+func (r *DescribeMessageDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMessageDetailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "MessageId")
+	delete(f, "Subscription")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMessageDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMessageDetailsResponseParams struct {
+	// 消息体
+	Body *string `json:"Body,omitnil,omitempty" name:"Body"`
+
+	// 用户自定义属性
+	UserProperties []*UserProperty `json:"UserProperties,omitnil,omitempty" name:"UserProperties"`
+
+	// 消息存储时间，毫秒级时间戳。
+	StoreTimestamp *int64 `json:"StoreTimestamp,omitnil,omitempty" name:"StoreTimestamp"`
+
+	// 消息ID
+	MessageId *string `json:"MessageId,omitnil,omitempty" name:"MessageId"`
+
+	// 生产者地址
+	ClientId *string `json:"ClientId,omitnil,omitempty" name:"ClientId"`
+
+	// Topic
+	Qos *string `json:"Qos,omitnil,omitempty" name:"Qos"`
+
+	// 源topic
+	OriginTopic *string `json:"OriginTopic,omitnil,omitempty" name:"OriginTopic"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMessageDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMessageDetailsResponseParams `json:"Response"`
+}
+
+func (r *DescribeMessageDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMessageDetailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeMessageListRequestParams struct {
 	// 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -5029,6 +5118,14 @@ func (r *UpdateAuthorizationPolicyPriorityResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpdateAuthorizationPolicyPriorityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type UserProperty struct {
+	// key
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// value
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
 type VpcInfo struct {

@@ -86,6 +86,9 @@ const (
 	// ResourceNotFound.Instance
 	RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 
+	// ResourceNotFound.Message
+	RESOURCENOTFOUND_MESSAGE = "ResourceNotFound.Message"
+
 	// NoAuthenticator
 	RESOURCENOTFOUND_NOAUTHENTICATOR = "ResourceNotFound.NoAuthenticator"
 

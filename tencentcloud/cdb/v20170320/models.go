@@ -1893,9 +1893,13 @@ type CreateAccountsRequestParams struct {
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 
 	// 新账户的密码。
+	// 说明：
+	// 1. 在8 ～ 64位字符数以内（推荐12位以上）。
+	// 2. 至少包含其中两项：小写字母 a ~ z 或 大写字母 A ～ Z。数字0 ～ 9。_+-,&=!@#$%^*().|。
+	// 3. 不能包含非法字符。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 备注信息。
+	// 备注信息。最多支持输入255个字符。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 新账户最大可用连接数，默认值为10240，最大可设置值为10240。
@@ -1912,9 +1916,13 @@ type CreateAccountsRequest struct {
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 
 	// 新账户的密码。
+	// 说明：
+	// 1. 在8 ～ 64位字符数以内（推荐12位以上）。
+	// 2. 至少包含其中两项：小写字母 a ~ z 或 大写字母 A ～ Z。数字0 ～ 9。_+-,&=!@#$%^*().|。
+	// 3. 不能包含非法字符。
 	Password *string `json:"Password,omitnil,omitempty" name:"Password"`
 
-	// 备注信息。
+	// 备注信息。最多支持输入255个字符。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
 	// 新账户最大可用连接数，默认值为10240，最大可设置值为10240。
@@ -11831,7 +11839,7 @@ func (r *ModifyAccountHostResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAccountMaxUserConnectionsRequestParams struct {
-	// 云数据库账号。
+	// 云数据库账号。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
@@ -11844,7 +11852,7 @@ type ModifyAccountMaxUserConnectionsRequestParams struct {
 type ModifyAccountMaxUserConnectionsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云数据库账号。
+	// 云数据库账号。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
@@ -11908,7 +11916,7 @@ type ModifyAccountPasswordRequestParams struct {
 	// 数据库账号的新密码。密码应至少包含字母、数字和字符（_+-&=!@#$%^*()）中的两种，长度为8-64个字符。
 	NewPassword *string `json:"NewPassword,omitnil,omitempty" name:"NewPassword"`
 
-	// 云数据库账号。
+	// 云数据库账号。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 }
 
@@ -11921,7 +11929,7 @@ type ModifyAccountPasswordRequest struct {
 	// 数据库账号的新密码。密码应至少包含字母、数字和字符（_+-&=!@#$%^*()）中的两种，长度为8-64个字符。
 	NewPassword *string `json:"NewPassword,omitnil,omitempty" name:"NewPassword"`
 
-	// 云数据库账号。
+	// 云数据库账号。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 }
 
@@ -11976,7 +11984,7 @@ type ModifyAccountPrivilegesRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 数据库的账号，包括用户名和域名。
+	// 数据库的账号，包括用户名和域名。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 
 	// 全局权限。其中，GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER","CREATE USER","RELOAD","REPLICATION CLIENT","REPLICATION SLAVE"。
@@ -12005,7 +12013,7 @@ type ModifyAccountPrivilegesRequest struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 数据库的账号，包括用户名和域名。
+	// 数据库的账号，包括用户名和域名。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 
 	// 全局权限。其中，GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER","CREATE USER","RELOAD","REPLICATION CLIENT","REPLICATION SLAVE"。
@@ -14210,13 +14218,13 @@ func (r *ModifyRemoteBackupConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyRoGroupInfoRequestParams struct {
-	// RO 组的 ID。
+	// RO 组的 ID。可通过 [DescribeRoGroups](https://cloud.tencent.com/document/api/236/40939) 接口获取。
 	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
 
 	// RO 组的详细信息。
 	RoGroupInfo *RoGroupAttr `json:"RoGroupInfo,omitnil,omitempty" name:"RoGroupInfo"`
 
-	// RO 组内实例的权重。若修改 RO 组的权重模式为用户自定义模式（custom），则必须设置该参数，且需要设置每个 RO 实例的权重值。
+	// RO 组内实例的权重。若修改 RO 组的权重模式为用户自定义模式（custom），则必须设置该参数，且需要设置每个 RO 实例的权重值。RO 实例 ID 可通过 [DescribeRoGroups](https://cloud.tencent.com/document/api/236/40939) 接口获取。
 	RoWeightValues []*RoWeightValue `json:"RoWeightValues,omitnil,omitempty" name:"RoWeightValues"`
 
 	// 是否重新均衡 RO 组内的 RO 实例的负载。支持值包括：1 - 重新均衡负载；0 - 不重新均衡负载。默认值为 0。注意，设置为重新均衡负载时，RO 组内 RO 实例会有一次数据库连接瞬断，请确保应用程序能重连数据库。
@@ -14231,13 +14239,13 @@ type ModifyRoGroupInfoRequestParams struct {
 type ModifyRoGroupInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// RO 组的 ID。
+	// RO 组的 ID。可通过 [DescribeRoGroups](https://cloud.tencent.com/document/api/236/40939) 接口获取。
 	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
 
 	// RO 组的详细信息。
 	RoGroupInfo *RoGroupAttr `json:"RoGroupInfo,omitnil,omitempty" name:"RoGroupInfo"`
 
-	// RO 组内实例的权重。若修改 RO 组的权重模式为用户自定义模式（custom），则必须设置该参数，且需要设置每个 RO 实例的权重值。
+	// RO 组内实例的权重。若修改 RO 组的权重模式为用户自定义模式（custom），则必须设置该参数，且需要设置每个 RO 实例的权重值。RO 实例 ID 可通过 [DescribeRoGroups](https://cloud.tencent.com/document/api/236/40939) 接口获取。
 	RoWeightValues []*RoWeightValue `json:"RoWeightValues,omitnil,omitempty" name:"RoWeightValues"`
 
 	// 是否重新均衡 RO 组内的 RO 实例的负载。支持值包括：1 - 重新均衡负载；0 - 不重新均衡负载。默认值为 0。注意，设置为重新均衡负载时，RO 组内 RO 实例会有一次数据库连接瞬断，请确保应用程序能重连数据库。

@@ -22,28 +22,22 @@ import (
 
 type AudioResult struct {
 	// 该字段用于返回审核内容是否命中审核模型；取值：0（**未命中**）、1（**命中**）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	HitFlag *int64 `json:"HitFlag,omitnil,omitempty" name:"HitFlag"`
 
 	// 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
 	// 返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 该字段用于返回音频文件经ASR识别后的文本信息。最长可识别**5小时**的音频文件，若超出时长限制，接口将会报错。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
 
 	// 该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 该字段用于返回音频文件的时长，单位为毫秒。
@@ -62,11 +56,9 @@ type AudioResult struct {
 	LanguageResults []*AudioResultDetailLanguageResult `json:"LanguageResults,omitnil,omitempty" name:"LanguageResults"`
 
 	// 该字段用于返回当前标签（Lable）下的二级标签。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
 
 	// 识别类标签结果信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecognitionResults []*RecognitionResult `json:"RecognitionResults,omitnil,omitempty" name:"RecognitionResults"`
 
 	// 说话人结果
@@ -83,27 +75,25 @@ type AudioResult struct {
 
 	// 三级标签码
 	SubTagCode *string `json:"SubTagCode,omitnil,omitempty" name:"SubTagCode"`
+
+	// 审核检测类型
+	HitType *string `json:"HitType,omitnil,omitempty" name:"HitType"`
 }
 
 type AudioResultDetailLanguageResult struct {
 	// 该字段用于返回对应的语言种类信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 该参数用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表音频越有可能属于当前返回的语种标签；
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 该参数用于返回对应语种标签的片段在音频文件内的开始时间，单位为秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *float64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 该参数用于返回对应语种标签的片段在音频文件内的结束时间，单位为秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *float64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// *内测中，敬请期待*
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabelCode *string `json:"SubLabelCode,omitnil,omitempty" name:"SubLabelCode"`
 }
 
@@ -184,29 +174,23 @@ type AudioResultDetailTextResult struct {
 
 type AudioSegments struct {
 	// 该字段用于返回音频片段的开始时间，单位为秒。对于点播文件，该参数代表对应音频相对于完整音轨的偏移时间，如0（代表不偏移），5（音轨开始后5秒），10（音轨开始后10秒）；对于直播文件，该参数则返回对应音频片段开始时的Unix时间戳，如：1594650717。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OffsetTime *string `json:"OffsetTime,omitnil,omitempty" name:"OffsetTime"`
 
 	// 该字段用于返回音频片段的具体审核结果，详细内容敬请参考AudioResult数据结构的描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *AudioResult `json:"Result,omitnil,omitempty" name:"Result"`
 
 	// 入库时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 }
 
 type BucketInfo struct {
 	// 该字段用于标识腾讯云对象存储的存储桶名称,关于文件桶的详细信息敬请参考 [腾讯云存储相关说明](https://cloud.tencent.com/document/product/436/44352)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
 
 	// 该字段用于标识腾讯云对象存储的托管机房的分布地区，对象存储 COS 的数据存放在这些地域的存储桶中。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
 	// 该字段用于标识腾讯云对象存储的对象Key,对象作为基本单元被存放在存储桶中；用户可以通过腾讯云控制台、API、SDK 等多种方式管理对象。有关对象的详细描述敬请参阅相应 [产品文档](https://cloud.tencent.com/document/product/436/13324)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Object *string `json:"Object,omitnil,omitempty" name:"Object"`
 }
 
@@ -492,7 +476,6 @@ func (r *CreateAudioModerationTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAudioModerationTaskResponseParams struct {
 	// 该字段用于返回任务创建的结果，具体输出内容请参见TaskResult数据结构的详细描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Results []*TaskResult `json:"Results,omitnil,omitempty" name:"Results"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -559,72 +542,55 @@ func (r *DescribeTaskDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTaskDetailResponseParams struct {
 	// 该字段用于返回创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 该字段用于返回调用音频审核接口时在Tasks参数内传入的数据ID参数，方便数据的辨别和管理。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
 	// 该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 该字段用于返回调用音频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 该字段用于返回所查询内容的任务状态。
 	// <br>取值：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：**AUDIO**（点播音频）和**LIVE_AUDIO**（直播音频），默认值为AUDIO。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Labels []*TaskLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
 
 	// 该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputInfo *InputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
 
 	// 该字段用于返回音频文件识别出的对应文本内容，最大支持**前1000个字符**。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioText *string `json:"AudioText,omitnil,omitempty" name:"AudioText"`
 
 	// 该字段用于返回音频片段的审核结果，主要包括开始时间和音频审核的相应结果。<br>具体输出内容请参见AudioSegments及AudioResult数据结构的详细描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioSegments []*AudioSegments `json:"AudioSegments,omitnil,omitempty" name:"AudioSegments"`
 
 	// 当任务状态为Error时，该字段用于返回对应错误的类型；任务状态非Error时，默认返回为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorType *string `json:"ErrorType,omitnil,omitempty" name:"ErrorType"`
 
 	// 当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorDescription *string `json:"ErrorDescription,omitnil,omitempty" name:"ErrorDescription"`
 
 	// 该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 媒体信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaInfo *MediaInfo `json:"MediaInfo,omitnil,omitempty" name:"MediaInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -710,15 +676,12 @@ func (r *DescribeTasksRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTasksResponseParams struct {
 	// 该字段用于返回当前查询的任务总量，格式为int字符串。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *string `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 该字段用于返回当前页的任务详细数据，具体输出内容请参见TaskData数据结构的详细描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*TaskData `json:"Data,omitnil,omitempty" name:"Data"`
 
 	// 该字段用于返回翻页时使用的Token信息，由系统自动生成，并在翻页时向下一个生成的页面传递此参数，以方便快速翻页功能的实现。当到最后一页时，该字段为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PageToken *string `json:"PageToken,omitnil,omitempty" name:"PageToken"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -757,11 +720,9 @@ type HitInfo struct {
 
 type InputInfo struct {
 	// 该字段表示文件访问类型，取值为**URL**（资源链接）和**COS** (腾讯云对象存储)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 该字段表示文件访问的链接地址，格式为标准URL格式。<br> 备注：当Type为URL时此字段不为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 该字段表示文件访问的腾讯云存储桶信息。<br> 备注：当Type为COS时此字段不为空。
@@ -771,31 +732,24 @@ type InputInfo struct {
 
 type LabelResults struct {
 	// 场景
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 
 	// 建议
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *int64 `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 名称：歌曲名，语种名，说话人名 等
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 得分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *float64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *float64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -818,7 +772,6 @@ type MediaInfo struct {
 
 type MoanResult struct {
 	// 固定取值为Moan（呻吟/娇喘），如音频中无复杂类型「MoanResult」的返回则代表该音频中无呻吟/娇喘相关违规内容；
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 机器判断当前分类的置信度，取值范围：0~100。分数越高，表示越有可能属于当前分类。
@@ -836,8 +789,6 @@ type MoanResult struct {
 	EndTime *float64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 该字段用于返回当前标签（Lable）下的二级标签。
-	// 注意：此字段可能返回null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
 }
 
@@ -851,29 +802,23 @@ type Position struct {
 
 type RecognitionResult struct {
 	// 可能的取值有：Teenager 、Gender
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 识别标签列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type SpeakerResults struct {
 	// 标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 得分
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *float64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -892,25 +837,20 @@ type Tag struct {
 	// 根据Label字段确定具体名称：
 	// 当Label 为Teenager 时 Name可能取值有：Teenager 
 	// 当Label 为Gender 时 Name可能取值有：Male 、Female
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 置信分：0～100，数值越大表示置信度越高
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 识别开始偏移时间，单位：毫秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *float64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 识别结束偏移时间，单位：毫秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *float64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type TaskData struct {
 	// 该字段用于返回音频审核任务数据所对应的数据ID，方便后续查询和管理审核任务。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
 	// 该字段用于返回音频审核任务所生成的任务ID，用于标识具体审核任务，方便后续查询和管理。
@@ -921,38 +861,30 @@ type TaskData struct {
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 该字段用于返回音频审核任务所对应的任务名称，方便后续查询和管理审核任务。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BizType *string `json:"BizType,omitnil,omitempty" name:"BizType"`
 
 	// 该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：**AUDIO**（点播音频）和**LIVE_AUDIO**（直播音频），默认值为AUDIO。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 输入信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaInfo *MediaInfo `json:"MediaInfo,omitnil,omitempty" name:"MediaInfo"`
 
 	// 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Labels []*TaskLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
 
 	// 该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
 	CreatedAt *string `json:"CreatedAt,omitnil,omitempty" name:"CreatedAt"`
 
 	// 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *string `json:"UpdatedAt,omitnil,omitempty" name:"UpdatedAt"`
 
 	// 任务信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InputInfo *InputInfo `json:"InputInfo,omitnil,omitempty" name:"InputInfo"`
 }
 
@@ -983,37 +915,29 @@ type TaskInput struct {
 
 type TaskLabel struct {
 	// 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 该字段用于返回当前标签对应的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 该字段用于返回当前标签（Lable）下的二级标签。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
 }
 
 type TaskResult struct {
 	// 该字段用于返回创建音频审核任务时在TaskInput结构内传入的DataId，用于标识具体审核任务。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataId *string `json:"DataId,omitnil,omitempty" name:"DataId"`
 
 	// 该字段用于返回音频审核任务所生成的任务ID，用于标识具体审核任务，方便后续查询和管理。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 该字段用于返回任务创建的状态，如返回OK则代表任务创建成功，其他返回值可参考公共错误码。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *string `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// **仅在Code的返回值为错误码时生效**，用于返回错误的详情内容。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 }
 
@@ -1022,29 +946,23 @@ type TextResult struct {
 	// 以及其他令人反感、不安全或不适宜的内容类型。
 	// 
 	// 如音频中无复杂类型「TextResults」的返回则代表该音频中无相关违规内容；
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 命中的关键词，为空则代表该违规内容出自于模型的判断；
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Keywords []*string `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
 	// 命中关键词库的库标识；
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibId *string `json:"LibId,omitnil,omitempty" name:"LibId"`
 
 	// 命中关键词库的名字；
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibName *string `json:"LibName,omitnil,omitempty" name:"LibName"`
 
 	// 机器判断当前分类的置信度，取值范围：0~100。分数越高，表示越有可能属于当前分类。
 	// （如：Porn 99，则该样本属于色情的置信度非常高。）
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 建议您拿到判断结果后的执行操作。
 	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 自定义词库的类型，自定义词库相关的信息可登录控制台中查看；
@@ -1053,8 +971,6 @@ type TextResult struct {
 	LibType *int64 `json:"LibType,omitnil,omitempty" name:"LibType"`
 
 	// 该字段用于返回当前标签（Lable）下的二级标签。
-	// 注意：此字段可能返回null，表示取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
 
 	// 该字段用于返回违规文本命中信息
@@ -1063,31 +979,24 @@ type TextResult struct {
 
 type TravelResults struct {
 	// 一级标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 二级标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
 
 	// 风险等级
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskLevel *string `json:"RiskLevel,omitnil,omitempty" name:"RiskLevel"`
 
 	// 出行音频角色
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioRole *string `json:"AudioRole,omitnil,omitempty" name:"AudioRole"`
 
 	// 出行语音文本
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioText *string `json:"AudioText,omitnil,omitempty" name:"AudioText"`
 
 	// 开始时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *float64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 结束时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *float64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 

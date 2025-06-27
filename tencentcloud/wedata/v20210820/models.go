@@ -24705,6 +24705,104 @@ func (r *GetOfflineInstanceListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetPaginationTaskScriptRequestParams struct {
+	// 项目编号
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务编号
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 页码（从1开始）
+	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+}
+
+type GetPaginationTaskScriptRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目编号
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务编号
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 页码（从1开始）
+	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+}
+
+func (r *GetPaginationTaskScriptRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetPaginationTaskScriptRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "PageNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetPaginationTaskScriptRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetPaginationTaskScriptResponseParams struct {
+	// 返回数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*GetPaginationTaskScriptResponseInfo `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type GetPaginationTaskScriptResponse struct {
+	*tchttp.BaseResponse
+	Response *GetPaginationTaskScriptResponseParams `json:"Response"`
+}
+
+func (r *GetPaginationTaskScriptResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetPaginationTaskScriptResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type GetPaginationTaskScriptResponseInfo struct {
+	// 项目编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
+
+	// 任务编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 页内尺寸
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+
+	// 页码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNum *int64 `json:"PageNum,omitnil,omitempty" name:"PageNum"`
+
+	// 总页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageTotal *int64 `json:"PageTotal,omitnil,omitempty" name:"PageTotal"`
+
+	// 分页内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Base64ScriptContent *string `json:"Base64ScriptContent,omitnil,omitempty" name:"Base64ScriptContent"`
+}
+
+// Predefined struct for user
 type GetTaskInstanceRequestParams struct {
 	// **项目ID**
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`

@@ -6811,6 +6811,9 @@ type KnowledgeCapacityPieGraphDetail struct {
 	// 当前应用对于总用量的占比
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Proportion *float64 `json:"Proportion,omitnil,omitempty" name:"Proportion"`
+
+	// 知识库类型:0默认1共享
+	KnowledgeType *int64 `json:"KnowledgeType,omitnil,omitempty" name:"KnowledgeType"`
 }
 
 type KnowledgeDetail struct {
@@ -6830,9 +6833,12 @@ type KnowledgeDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExceedCharSize *string `json:"ExceedCharSize,omitnil,omitempty" name:"ExceedCharSize"`
 
-	// 是否共享知识库类型
+	// 废弃
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSharedKnowledge *bool `json:"IsSharedKnowledge,omitnil,omitempty" name:"IsSharedKnowledge"`
+
+	// 知识库类型:0默认1共享
+	KnowledgeType *int64 `json:"KnowledgeType,omitnil,omitempty" name:"KnowledgeType"`
 }
 
 type KnowledgeDetailInfo struct {

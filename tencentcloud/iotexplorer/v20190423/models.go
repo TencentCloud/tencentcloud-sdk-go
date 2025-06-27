@@ -8969,7 +8969,7 @@ type GenerateSignedVideoURLRequestParams struct {
 	// 视频播放原始URL地址
 	VideoURL *string `json:"VideoURL,omitnil,omitempty" name:"VideoURL"`
 
-	// 播放链接过期时间
+	// 播放链接过期时间（时间戳，单位秒）
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 通道ID 非NVR设备不填 NVR设备必填 默认为无	
@@ -8982,7 +8982,7 @@ type GenerateSignedVideoURLRequest struct {
 	// 视频播放原始URL地址
 	VideoURL *string `json:"VideoURL,omitnil,omitempty" name:"VideoURL"`
 
-	// 播放链接过期时间
+	// 播放链接过期时间（时间戳，单位秒）
 	ExpireTime *uint64 `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 
 	// 通道ID 非NVR设备不填 NVR设备必填 默认为无	
@@ -10384,7 +10384,7 @@ type InvokeAISearchServiceRequestParams struct {
 	// 通道ID
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 是否需要返回总结，默认为False；  开启后会加大接口响应时长
+	// 是否需要返回总结，默认为True；  开启后会加大接口响应时长
 	EnableSummary *bool `json:"EnableSummary,omitnil,omitempty" name:"EnableSummary"`
 
 	// 开始时间。
@@ -10428,7 +10428,7 @@ type InvokeAISearchServiceRequest struct {
 	// 通道ID
 	ChannelId *uint64 `json:"ChannelId,omitnil,omitempty" name:"ChannelId"`
 
-	// 是否需要返回总结，默认为False；  开启后会加大接口响应时长
+	// 是否需要返回总结，默认为True；  开启后会加大接口响应时长
 	EnableSummary *bool `json:"EnableSummary,omitnil,omitempty" name:"EnableSummary"`
 
 	// 开始时间。
