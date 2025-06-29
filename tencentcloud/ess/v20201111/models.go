@@ -1302,7 +1302,7 @@ type Component struct {
 
 	// **web嵌入发起合同场景下**， 是否锁定填写和签署控件值不允许嵌入页面进行编辑
 	// <ul><li>false（默认）：不锁定控件值，允许在页面编辑控件值</li>
-	// <li>true：锁定控件值，在页面编辑控件值</li></ul>
+	// <li>true：锁定控件值，在页面无法编辑控件值</li></ul>
 	LockComponentValue *bool `json:"LockComponentValue,omitnil,omitempty" name:"LockComponentValue"`
 
 	// **web嵌入发起合同场景下**，是否禁止移动和删除填写和签署控件

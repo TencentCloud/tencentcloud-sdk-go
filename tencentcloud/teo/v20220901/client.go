@@ -275,6 +275,63 @@ func (c *Client) CheckCnameStatusWithContext(ctx context.Context, request *Check
     return
 }
 
+func NewConfirmOriginACLUpdateRequest() (request *ConfirmOriginACLUpdateRequest) {
+    request = &ConfirmOriginACLUpdateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ConfirmOriginACLUpdate")
+    
+    
+    return
+}
+
+func NewConfirmOriginACLUpdateResponse() (response *ConfirmOriginACLUpdateResponse) {
+    response = &ConfirmOriginACLUpdateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ConfirmOriginACLUpdate
+// 本接口用于回源 IP 网段发生变更时，确认已将最新回源 IP 网段更新至源站防火墙。确认已更新至最新的回源 IP 网段后，相关变更通知将会停止推送。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_LATESTVERSIONNOW = "OperationDenied.LatestVersionNow"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) ConfirmOriginACLUpdate(request *ConfirmOriginACLUpdateRequest) (response *ConfirmOriginACLUpdateResponse, err error) {
+    return c.ConfirmOriginACLUpdateWithContext(context.Background(), request)
+}
+
+// ConfirmOriginACLUpdate
+// 本接口用于回源 IP 网段发生变更时，确认已将最新回源 IP 网段更新至源站防火墙。确认已更新至最新的回源 IP 网段后，相关变更通知将会停止推送。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_LATESTVERSIONNOW = "OperationDenied.LatestVersionNow"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) ConfirmOriginACLUpdateWithContext(ctx context.Context, request *ConfirmOriginACLUpdateRequest) (response *ConfirmOriginACLUpdateResponse, err error) {
+    if request == nil {
+        request = NewConfirmOriginACLUpdateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ConfirmOriginACLUpdate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewConfirmOriginACLUpdateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAccelerationDomainRequest() (request *CreateAccelerationDomainRequest) {
     request = &CreateAccelerationDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5332,6 +5389,63 @@ func (c *Client) DescribeLoadBalancerListWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeOriginACLRequest() (request *DescribeOriginACLRequest) {
+    request = &DescribeOriginACLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeOriginACL")
+    
+    
+    return
+}
+
+func NewDescribeOriginACLResponse() (response *DescribeOriginACLResponse) {
+    response = &DescribeOriginACLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeOriginACL
+// 本接口用于查询站点下的七层加速域名/四层代理实例与回源 IP 网段的绑定关系，以及回源 IP 网段详情。如果您想通过自动化脚本定期获取回源 IP 网段的最新版本，可以较低频率（建议每三天一次）轮询本接口，若 NextOriginACL 字段有返回值，则将最新的回源 IP 网段同步到源站防火墙配置中。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) DescribeOriginACL(request *DescribeOriginACLRequest) (response *DescribeOriginACLResponse, err error) {
+    return c.DescribeOriginACLWithContext(context.Background(), request)
+}
+
+// DescribeOriginACL
+// 本接口用于查询站点下的七层加速域名/四层代理实例与回源 IP 网段的绑定关系，以及回源 IP 网段详情。如果您想通过自动化脚本定期获取回源 IP 网段的最新版本，可以较低频率（建议每三天一次）轮询本接口，若 NextOriginACL 字段有返回值，则将最新的回源 IP 网段同步到源站防火墙配置中。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) DescribeOriginACLWithContext(ctx context.Context, request *DescribeOriginACLRequest) (response *DescribeOriginACLResponse, err error) {
+    if request == nil {
+        request = NewDescribeOriginACLRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOriginACL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOriginACLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOriginGroupRequest() (request *DescribeOriginGroupRequest) {
     request = &DescribeOriginGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6667,6 +6781,61 @@ func (c *Client) DestroyPlanWithContext(ctx context.Context, request *DestroyPla
     return
 }
 
+func NewDisableOriginACLRequest() (request *DisableOriginACLRequest) {
+    request = &DisableOriginACLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DisableOriginACL")
+    
+    
+    return
+}
+
+func NewDisableOriginACLResponse() (response *DisableOriginACLResponse) {
+    response = &DisableOriginACLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisableOriginACL
+// 本接口用于关闭站点的源站防护功能。停用后，相关资源不再仅使用「源站防护」提供的回源 IP 网段请求您的源站，同时停止发送回源 IP 网段更新通知。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DisableOriginACL(request *DisableOriginACLRequest) (response *DisableOriginACLResponse, err error) {
+    return c.DisableOriginACLWithContext(context.Background(), request)
+}
+
+// DisableOriginACL
+// 本接口用于关闭站点的源站防护功能。停用后，相关资源不再仅使用「源站防护」提供的回源 IP 网段请求您的源站，同时停止发送回源 IP 网段更新通知。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DisableOriginACLWithContext(ctx context.Context, request *DisableOriginACLRequest) (response *DisableOriginACLResponse, err error) {
+    if request == nil {
+        request = NewDisableOriginACLRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableOriginACL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableOriginACLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDownloadL4LogsRequest() (request *DownloadL4LogsRequest) {
     request = &DownloadL4LogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6769,6 +6938,71 @@ func (c *Client) DownloadL7LogsWithContext(ctx context.Context, request *Downloa
     return
 }
 
+func NewEnableOriginACLRequest() (request *EnableOriginACLRequest) {
+    request = &EnableOriginACLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "EnableOriginACL")
+    
+    
+    return
+}
+
+func NewEnableOriginACLResponse() (response *EnableOriginACLResponse) {
+    response = &EnableOriginACLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableOriginACL
+// 开启回源白名单功能，按照4/7层实例开启。当前启用时候的实例数有上限设置，七层域名为200，四层转发实例为100，总实例个数不超过200，超过会提醒报错；可以先最大数量开启，超过的数量用ModifyOriginACL接口来设置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDOMAINS = "InvalidParameter.InvalidDomains"
+//  INVALIDPARAMETER_INVALIDPROXIES = "InvalidParameter.InvalidProxies"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_UNSUPPORTEDPLAN = "OperationDenied.UnsupportedPlan"
+//  OPERATIONDENIED_VERSIONCONTROLISGRAYING = "OperationDenied.VersionControlIsGraying"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) EnableOriginACL(request *EnableOriginACLRequest) (response *EnableOriginACLResponse, err error) {
+    return c.EnableOriginACLWithContext(context.Background(), request)
+}
+
+// EnableOriginACL
+// 开启回源白名单功能，按照4/7层实例开启。当前启用时候的实例数有上限设置，七层域名为200，四层转发实例为100，总实例个数不超过200，超过会提醒报错；可以先最大数量开启，超过的数量用ModifyOriginACL接口来设置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDOMAINS = "InvalidParameter.InvalidDomains"
+//  INVALIDPARAMETER_INVALIDPROXIES = "InvalidParameter.InvalidProxies"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_UNSUPPORTEDPLAN = "OperationDenied.UnsupportedPlan"
+//  OPERATIONDENIED_VERSIONCONTROLISGRAYING = "OperationDenied.VersionControlIsGraying"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) EnableOriginACLWithContext(ctx context.Context, request *EnableOriginACLRequest) (response *EnableOriginACLResponse, err error) {
+    if request == nil {
+        request = NewEnableOriginACLRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableOriginACL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableOriginACLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExportZoneConfigRequest() (request *ExportZoneConfigRequest) {
     request = &ExportZoneConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6792,8 +7026,14 @@ func NewExportZoneConfigResponse() (response *ExportZoneConfigResponse) {
 // 导出站点配置接口，本接口支持用户根据需要的配置项进行配置导出，导出的配置用于导入站点配置接口（ImportZoneConfig）进行配置导入。该功能仅支持标准版和企业版套餐站点使用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDOMAINS = "InvalidParameter.InvalidDomains"
+//  INVALIDPARAMETER_INVALIDPROXIES = "InvalidParameter.InvalidProxies"
 //  OPERATIONDENIED = "OperationDenied"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  OPERATIONDENIED_UNSUPPORTEDPLAN = "OperationDenied.UnsupportedPlan"
+//  OPERATIONDENIED_VERSIONCONTROLISGRAYING = "OperationDenied.VersionControlIsGraying"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) ExportZoneConfig(request *ExportZoneConfigRequest) (response *ExportZoneConfigResponse, err error) {
     return c.ExportZoneConfigWithContext(context.Background(), request)
@@ -6803,8 +7043,14 @@ func (c *Client) ExportZoneConfig(request *ExportZoneConfigRequest) (response *E
 // 导出站点配置接口，本接口支持用户根据需要的配置项进行配置导出，导出的配置用于导入站点配置接口（ImportZoneConfig）进行配置导入。该功能仅支持标准版和企业版套餐站点使用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDOMAINS = "InvalidParameter.InvalidDomains"
+//  INVALIDPARAMETER_INVALIDPROXIES = "InvalidParameter.InvalidProxies"
 //  OPERATIONDENIED = "OperationDenied"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  OPERATIONDENIED_UNSUPPORTEDPLAN = "OperationDenied.UnsupportedPlan"
+//  OPERATIONDENIED_VERSIONCONTROLISGRAYING = "OperationDenied.VersionControlIsGraying"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) ExportZoneConfigWithContext(ctx context.Context, request *ExportZoneConfigRequest) (response *ExportZoneConfigResponse, err error) {
     if request == nil {
@@ -8916,6 +9162,67 @@ func (c *Client) ModifyLoadBalancerWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyLoadBalancerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyOriginACLRequest() (request *ModifyOriginACLRequest) {
+    request = &ModifyOriginACLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyOriginACL")
+    
+    
+    return
+}
+
+func NewModifyOriginACLResponse() (response *ModifyOriginACLResponse) {
+    response = &ModifyOriginACLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyOriginACL
+// 本接口用于对七层加速域名/四层代理实例启用/关闭特定回源 IP 网段回源。单次支持提交的七层加速域名的数量最大为 200，四层代理实例的数量最大为 100，支持七层加速域名/四层代理实例混合提交，总实例个数最大为 200。如需变更超过 200 个实例，请通过本接口分批提交。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDOMAINS = "InvalidParameter.InvalidDomains"
+//  INVALIDPARAMETER_INVALIDPROXIES = "InvalidParameter.InvalidProxies"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_UNSUPPORTEDPLAN = "OperationDenied.UnsupportedPlan"
+//  OPERATIONDENIED_UPDATEIPWHITELISTFIRST = "OperationDenied.UpdateIPWhitelistFirst"
+func (c *Client) ModifyOriginACL(request *ModifyOriginACLRequest) (response *ModifyOriginACLResponse, err error) {
+    return c.ModifyOriginACLWithContext(context.Background(), request)
+}
+
+// ModifyOriginACL
+// 本接口用于对七层加速域名/四层代理实例启用/关闭特定回源 IP 网段回源。单次支持提交的七层加速域名的数量最大为 200，四层代理实例的数量最大为 100，支持七层加速域名/四层代理实例混合提交，总实例个数最大为 200。如需变更超过 200 个实例，请通过本接口分批提交。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDDOMAINS = "InvalidParameter.InvalidDomains"
+//  INVALIDPARAMETER_INVALIDPROXIES = "InvalidParameter.InvalidProxies"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_UNSUPPORTEDPLAN = "OperationDenied.UnsupportedPlan"
+//  OPERATIONDENIED_UPDATEIPWHITELISTFIRST = "OperationDenied.UpdateIPWhitelistFirst"
+func (c *Client) ModifyOriginACLWithContext(ctx context.Context, request *ModifyOriginACLRequest) (response *ModifyOriginACLResponse, err error) {
+    if request == nil {
+        request = NewModifyOriginACLRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyOriginACL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyOriginACLResponse()
     err = c.Send(request, response)
     return
 }

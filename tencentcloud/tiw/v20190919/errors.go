@@ -105,7 +105,7 @@ const (
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
 	// 资源不可用，接口未授权。
-	RESOURCEUNAVAILABLE_INTERFACEUNAUTHORIZEC = "ResourceUnavailable.InterfaceUnAuthorizec"
+	RESOURCEUNAVAILABLE_INTERFACEUNAUTHORIZED = "ResourceUnavailable.InterfaceUnAuthorized"
 
 	// 未开通互动白板。
 	RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"

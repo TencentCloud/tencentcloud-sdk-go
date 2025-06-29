@@ -1375,6 +1375,69 @@ func (c *Client) DescribeDBInstancesWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeDetailedSlowLogsRequest() (request *DescribeDetailedSlowLogsRequest) {
+    request = &DescribeDetailedSlowLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeDetailedSlowLogs")
+    
+    
+    return
+}
+
+func NewDescribeDetailedSlowLogsResponse() (response *DescribeDetailedSlowLogsResponse) {
+    response = &DescribeDetailedSlowLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDetailedSlowLogs
+// 查询实例慢日志详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_LIMITPARAOUTOFRANGE = "InvalidParameterValue.LimitParaOutOfRange"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_OFFSETPARAOUTOFRANGE = "InvalidParameterValue.OffsetParaOutOfRange"
+//  INVALIDPARAMETERVALUE_QUERYTIMERANGEBEYONDLIMIT = "InvalidParameterValue.QueryTimeRangeBeyondLimit"
+//  INVALIDPARAMETERVALUE_SLOWMSBELOWLIMIT = "InvalidParameterValue.SlowMSBelowLimit"
+//  INVALIDPARAMETERVALUE_STARTTIMENOTBEFORETHANENDTIME = "InvalidParameterValue.StartTimeNotBeforeThanEndTime"
+//  INVALIDPARAMETERVALUE_TIMEFORMATERR = "InvalidParameterValue.TimeFormatErr"
+func (c *Client) DescribeDetailedSlowLogs(request *DescribeDetailedSlowLogsRequest) (response *DescribeDetailedSlowLogsResponse, err error) {
+    return c.DescribeDetailedSlowLogsWithContext(context.Background(), request)
+}
+
+// DescribeDetailedSlowLogs
+// 查询实例慢日志详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_LIMITPARAOUTOFRANGE = "InvalidParameterValue.LimitParaOutOfRange"
+//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+//  INVALIDPARAMETERVALUE_OFFSETPARAOUTOFRANGE = "InvalidParameterValue.OffsetParaOutOfRange"
+//  INVALIDPARAMETERVALUE_QUERYTIMERANGEBEYONDLIMIT = "InvalidParameterValue.QueryTimeRangeBeyondLimit"
+//  INVALIDPARAMETERVALUE_SLOWMSBELOWLIMIT = "InvalidParameterValue.SlowMSBelowLimit"
+//  INVALIDPARAMETERVALUE_STARTTIMENOTBEFORETHANENDTIME = "InvalidParameterValue.StartTimeNotBeforeThanEndTime"
+//  INVALIDPARAMETERVALUE_TIMEFORMATERR = "InvalidParameterValue.TimeFormatErr"
+func (c *Client) DescribeDetailedSlowLogsWithContext(ctx context.Context, request *DescribeDetailedSlowLogsRequest) (response *DescribeDetailedSlowLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDetailedSlowLogsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDetailedSlowLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDetailedSlowLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceParamsRequest() (request *DescribeInstanceParamsRequest) {
     request = &DescribeInstanceParamsRequest{
         BaseRequest: &tchttp.BaseRequest{},

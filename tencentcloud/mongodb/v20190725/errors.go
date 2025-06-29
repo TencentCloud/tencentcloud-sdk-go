@@ -98,6 +98,9 @@ const (
 	// 计费相关错误，不允许对当前实例进行对应的新购/续费/配置变更操作。
 	INVALIDPARAMETERVALUE_INVALIDTRADEOPERATION = "InvalidParameterValue.InvalidTradeOperation"
 
+	// limit取值范围[1,100]。
+	INVALIDPARAMETERVALUE_LIMITPARAOUTOFRANGE = "InvalidParameterValue.LimitParaOutOfRange"
+
 	// 实例锁定失败。
 	INVALIDPARAMETERVALUE_LOCKFAILED = "InvalidParameterValue.LockFailed"
 
@@ -121,6 +124,9 @@ const (
 
 	// 未找到实例。
 	INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
+
+	// offset取值范围[0, 10000]。
+	INVALIDPARAMETERVALUE_OFFSETPARAOUTOFRANGE = "InvalidParameterValue.OffsetParaOutOfRange"
 
 	// OplogSize参数设置错误，应介于磁盘容量的10%和90%之间。
 	INVALIDPARAMETERVALUE_OPLOGSIZEOUTOFRANGE = "InvalidParameterValue.OplogSizeOutOfRange"
@@ -187,6 +193,9 @@ const (
 
 	// 未找到指定的标签。
 	INVALIDPARAMETERVALUE_TAGNOTFOUND = "InvalidParameterValue.TagNotFound"
+
+	// 非法的时间格式。
+	INVALIDPARAMETERVALUE_TIMEFORMATERR = "InvalidParameterValue.TimeFormatErr"
 
 	// 用户账户不存在。
 	INVALIDPARAMETERVALUE_USERNOTFOUND = "InvalidParameterValue.UserNotFound"

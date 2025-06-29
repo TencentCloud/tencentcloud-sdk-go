@@ -15462,14 +15462,14 @@ func (r *ResetPasswordResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ResetRootAccountRequestParams struct {
-	// 实例id
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type ResetRootAccountRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例id
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 

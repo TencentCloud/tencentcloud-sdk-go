@@ -404,6 +404,9 @@ const (
 	// 无效的回源配置，源站类型为对象存储时，源站地址必须为对象存储域名。
 	INVALIDPARAMETER_INVALIDCOSDOMAIN = "InvalidParameter.InvalidCosDomain"
 
+	// 域名非法，请检查入参中是否传入不存在的域名。
+	INVALIDPARAMETER_INVALIDDOMAINS = "InvalidParameter.InvalidDomains"
+
 	// 无效的智能加速。
 	INVALIDPARAMETER_INVALIDDYNAMICROUTINE = "InvalidParameter.InvalidDynamicRoutine"
 
@@ -496,6 +499,9 @@ const (
 
 	// 请指定PrivateAccess参数值为on/off。
 	INVALIDPARAMETER_INVALIDPRIVATEACCESSSWITCH = "InvalidParameter.InvalidPrivateAccessSwitch"
+
+	// 四层代理非法，请检查入参中是否传入不存在的代理。
+	INVALIDPARAMETER_INVALIDPROXIES = "InvalidParameter.InvalidProxies"
 
 	// 套餐包不支持Quic配置。
 	INVALIDPARAMETER_INVALIDQUICBILLING = "InvalidParameter.InvalidQuicBilling"
@@ -1064,6 +1070,9 @@ const (
 	// 存在加速域名处于部署中状态，暂不支持停用站点。
 	OPERATIONDENIED_L7HOSTINPROCESSSTATUS = "OperationDenied.L7HostInProcessStatus"
 
+	// 回源白名单已经是最新版本，无需更新。
+	OPERATIONDENIED_LATESTVERSIONNOW = "OperationDenied.LatestVersionNow"
+
 	// 绑定负载均衡有处于非运行中的状态，禁止操作。
 	OPERATIONDENIED_LOADBALANCESTATUSNOTINONLINE = "OperationDenied.LoadBalanceStatusNotInOnline"
 
@@ -1150,6 +1159,12 @@ const (
 
 	// 当前并不支持关闭回源双向认证，如需关闭，请通过将边缘 HTTPS 证书更改为不配置来关闭。
 	OPERATIONDENIED_UNSUPPORTTOCLOSEUPSTREAMMTLS = "OperationDenied.UnSupportToCloseUpstreamMTLS"
+
+	// 套餐不支持。
+	OPERATIONDENIED_UNSUPPORTEDPLAN = "OperationDenied.UnsupportedPlan"
+
+	// 请先更新IP白名单。
+	OPERATIONDENIED_UPDATEIPWHITELISTFIRST = "OperationDenied.UpdateIPWhitelistFirst"
 
 	// 如需启用回源双向认证，请先配置边缘 HTTPS 证书。
 	OPERATIONDENIED_USEUPSTREAMMTLSNEEDOPENHTTPS = "OperationDenied.UseUpstreamMTLSNeedOpenHttps"

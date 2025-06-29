@@ -275,7 +275,7 @@ func NewCreateVideoGenerationTaskResponse() (response *CreateVideoGenerationTask
 //  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
 //  LIMITEXCEEDED_TASKCONCURRENCY = "LimitExceeded.TaskConcurrency"
 //  RESOURCEINUSE_RECORDUSERID = "ResourceInUse.RecordUserId"
-//  RESOURCEUNAVAILABLE_INTERFACEUNAUTHORIZEC = "ResourceUnavailable.InterfaceUnAuthorizec"
+//  RESOURCEUNAVAILABLE_INTERFACEUNAUTHORIZED = "ResourceUnavailable.InterfaceUnAuthorized"
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) CreateVideoGenerationTask(request *CreateVideoGenerationTaskRequest) (response *CreateVideoGenerationTaskResponse, err error) {
@@ -294,7 +294,7 @@ func (c *Client) CreateVideoGenerationTask(request *CreateVideoGenerationTaskReq
 //  INVALIDPARAMETER_SDKAPPIDNOTFOUND = "InvalidParameter.SdkAppIdNotFound"
 //  LIMITEXCEEDED_TASKCONCURRENCY = "LimitExceeded.TaskConcurrency"
 //  RESOURCEINUSE_RECORDUSERID = "ResourceInUse.RecordUserId"
-//  RESOURCEUNAVAILABLE_INTERFACEUNAUTHORIZEC = "ResourceUnavailable.InterfaceUnAuthorizec"
+//  RESOURCEUNAVAILABLE_INTERFACEUNAUTHORIZED = "ResourceUnavailable.InterfaceUnAuthorized"
 //  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) CreateVideoGenerationTaskWithContext(ctx context.Context, request *CreateVideoGenerationTaskRequest) (response *CreateVideoGenerationTaskResponse, err error) {

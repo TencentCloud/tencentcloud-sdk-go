@@ -776,6 +776,10 @@ func NewAttachDisksResponse() (response *AttachDisksResponse) {
 }
 
 // AttachDisks
+// CBS在ECM早已下线
+//
+// 
+//
 // 本接口（AttachDisks）用于挂载云硬盘。
 //
 //  
@@ -806,6 +810,10 @@ func (c *Client) AttachDisks(request *AttachDisksRequest) (response *AttachDisks
 }
 
 // AttachDisks
+// CBS在ECM早已下线
+//
+// 
+//
 // 本接口（AttachDisks）用于挂载云硬盘。
 //
 //  
@@ -1163,6 +1171,10 @@ func NewCreateDisksResponse() (response *CreateDisksResponse) {
 }
 
 // CreateDisks
+// CBS在ECM早已下线
+//
+// 
+//
 // 本接口（CreateDisks）用于创建云硬盘。
 //
 // 
@@ -1192,6 +1204,10 @@ func (c *Client) CreateDisks(request *CreateDisksRequest) (response *CreateDisks
 }
 
 // CreateDisks
+// CBS在ECM早已下线
+//
+// 
+//
 // 本接口（CreateDisks）用于创建云硬盘。
 //
 // 
@@ -2928,6 +2944,10 @@ func NewDeleteSnapshotsResponse() (response *DeleteSnapshotsResponse) {
 }
 
 // DeleteSnapshots
+// CBS在ECM早已下线
+//
+// 
+//
 // 本接口（DeleteSnapshots）用于删除快照。
 //
 // 
@@ -2950,6 +2970,10 @@ func (c *Client) DeleteSnapshots(request *DeleteSnapshotsRequest) (response *Del
 }
 
 // DeleteSnapshots
+// CBS在ECM早已下线
+//
+// 
+//
 // 本接口（DeleteSnapshots）用于删除快照。
 //
 // 
@@ -3485,6 +3509,10 @@ func NewDescribeDisksResponse() (response *DescribeDisksResponse) {
 }
 
 // DescribeDisks
+// CBS在ECM早已下线
+//
+// 
+//
 // 本接口（DescribeDisks）用于查询云硬盘列表。
 //
 // 
@@ -3503,6 +3531,10 @@ func (c *Client) DescribeDisks(request *DescribeDisksRequest) (response *Describ
 }
 
 // DescribeDisks
+// CBS在ECM早已下线
+//
+// 
+//
 // 本接口（DescribeDisks）用于查询云硬盘列表。
 //
 // 
@@ -5146,6 +5178,10 @@ func NewDescribeSnapshotsResponse() (response *DescribeSnapshotsResponse) {
 }
 
 // DescribeSnapshots
+// CBS在ECM早已下线
+//
+// 
+//
 // 本接口（DescribeSnapshots）用于查询快照的详细信息。
 //
 // 
@@ -5164,6 +5200,10 @@ func (c *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (response 
 }
 
 // DescribeSnapshots
+// CBS在ECM早已下线
+//
+// 
+//
 // 本接口（DescribeSnapshots）用于查询快照的详细信息。
 //
 // 
@@ -5591,6 +5631,10 @@ func NewDetachDisksResponse() (response *DetachDisksResponse) {
 }
 
 // DetachDisks
+// CBS在ECM早已下线
+//
+// 
+//
 // 本接口（DetachDisks）用于卸载云硬盘。
 //
 // 
@@ -5618,6 +5662,10 @@ func (c *Client) DetachDisks(request *DetachDisksRequest) (response *DetachDisks
 }
 
 // DetachDisks
+// CBS在ECM早已下线
+//
+// 
+//
 // 本接口（DetachDisks）用于卸载云硬盘。
 //
 // 
@@ -9221,6 +9269,10 @@ func NewTerminateDisksResponse() (response *TerminateDisksResponse) {
 }
 
 // TerminateDisks
+// CBS在ECM早已下线
+//
+// 
+//
 // 本接口（TerminateDisks）用于退还云硬盘。
 //
 // 
@@ -9247,6 +9299,10 @@ func (c *Client) TerminateDisks(request *TerminateDisksRequest) (response *Termi
 }
 
 // TerminateDisks
+// CBS在ECM早已下线
+//
+// 
+//
 // 本接口（TerminateDisks）用于退还云硬盘。
 //
 // 

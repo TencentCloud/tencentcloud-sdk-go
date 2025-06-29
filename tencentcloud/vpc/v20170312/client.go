@@ -7383,7 +7383,10 @@ func NewCreateVpnGatewayResponse() (response *CreateVpnGatewayResponse) {
 // 本接口（CreateVpnGateway）用于创建VPN网关。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATEVPNGATEWAYFAILED = "FailedOperation.CreateVpnGatewayFailed"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACCESSSUBNETMASK = "InvalidParameterValue.AccessSubnetMask"
+//  INVALIDPARAMETERVALUE_ACCESSSUBNETPREFIX = "InvalidParameterValue.AccessSubnetPrefix"
 //  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
 //  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -7414,6 +7417,10 @@ func NewCreateVpnGatewayResponse() (response *CreateVpnGatewayResponse) {
 //  UNAUTHORIZEDOPERATION_NOREALNAMEAUTHENTICATION = "UnauthorizedOperation.NoRealNameAuthentication"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = "UnsupportedOperation.InsufficientFunds"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTCREATEIPV6VPNGATEWAY = "UnsupportedOperation.NotSupportCreateIpv6VpnGateway"
+//  UNSUPPORTEDOPERATION_PRIVATEBGPVPNGATEWAY = "UnsupportedOperation.PrivateBgpVpnGateway"
+//  UNSUPPORTEDOPERATION_PRIVATESSLVPNGATEWAY = "UnsupportedOperation.PrivateSslVpnGateway"
+//  UNSUPPORTEDOPERATION_PRIVATEVPNGATEWAY = "UnsupportedOperation.PrivateVpnGateway"
 //  UNSUPPORTEDOPERATION_TAGALLOCATE = "UnsupportedOperation.TagAllocate"
 //  UNSUPPORTEDOPERATION_TAGFREE = "UnsupportedOperation.TagFree"
 //  UNSUPPORTEDOPERATION_TAGNOTPERMIT = "UnsupportedOperation.TagNotPermit"
@@ -7428,7 +7435,10 @@ func (c *Client) CreateVpnGateway(request *CreateVpnGatewayRequest) (response *C
 // 本接口（CreateVpnGateway）用于创建VPN网关。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATEVPNGATEWAYFAILED = "FailedOperation.CreateVpnGatewayFailed"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACCESSSUBNETMASK = "InvalidParameterValue.AccessSubnetMask"
+//  INVALIDPARAMETERVALUE_ACCESSSUBNETPREFIX = "InvalidParameterValue.AccessSubnetPrefix"
 //  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
 //  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
@@ -7459,6 +7469,10 @@ func (c *Client) CreateVpnGateway(request *CreateVpnGatewayRequest) (response *C
 //  UNAUTHORIZEDOPERATION_NOREALNAMEAUTHENTICATION = "UnauthorizedOperation.NoRealNameAuthentication"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INSUFFICIENTFUNDS = "UnsupportedOperation.InsufficientFunds"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTCREATEIPV6VPNGATEWAY = "UnsupportedOperation.NotSupportCreateIpv6VpnGateway"
+//  UNSUPPORTEDOPERATION_PRIVATEBGPVPNGATEWAY = "UnsupportedOperation.PrivateBgpVpnGateway"
+//  UNSUPPORTEDOPERATION_PRIVATESSLVPNGATEWAY = "UnsupportedOperation.PrivateSslVpnGateway"
+//  UNSUPPORTEDOPERATION_PRIVATEVPNGATEWAY = "UnsupportedOperation.PrivateVpnGateway"
 //  UNSUPPORTEDOPERATION_TAGALLOCATE = "UnsupportedOperation.TagAllocate"
 //  UNSUPPORTEDOPERATION_TAGFREE = "UnsupportedOperation.TagFree"
 //  UNSUPPORTEDOPERATION_TAGNOTPERMIT = "UnsupportedOperation.TagNotPermit"

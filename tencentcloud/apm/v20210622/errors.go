@@ -38,6 +38,12 @@ const (
 	// 访问标签失败。
 	FAILEDOPERATION_ACCESSTAGFAIL = "FailedOperation.AccessTagFail"
 
+	// 未检测到探针在线
+	FAILEDOPERATION_AGENTNOTONLINEERROR = "FailedOperation.AgentNotOnlineError"
+
+	// 当前探针版本不支持此功能
+	FAILEDOPERATION_AGENTVERSIONNOTSUPPORTERROR = "FailedOperation.AgentVersionNotSupportError"
+
 	// token信息不存在。
 	FAILEDOPERATION_APMCREDENTIALNOTEXIST = "FailedOperation.ApmCredentialNotExist"
 

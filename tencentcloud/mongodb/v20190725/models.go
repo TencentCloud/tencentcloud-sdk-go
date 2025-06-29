@@ -2520,6 +2520,143 @@ func (r *DescribeDBInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDetailedSlowLogsRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 待查询慢日志的开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 待慢日志的结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 过滤执行时间大于此值的慢日志，单位ms，默认值100
+	ExecTime *int64 `json:"ExecTime,omitnil,omitempty" name:"ExecTime"`
+
+	// 过滤慢日志的命令类型
+	Commands []*string `json:"Commands,omitnil,omitempty" name:"Commands"`
+
+	// 全文搜索关键字，多个关键字间为或关系
+	Texts []*string `json:"Texts,omitnil,omitempty" name:"Texts"`
+
+	// 根据节点名过滤
+	NodeNames []*string `json:"NodeNames,omitnil,omitempty" name:"NodeNames"`
+
+	// 根据queryHash过滤
+	QueryHash []*string `json:"QueryHash,omitnil,omitempty" name:"QueryHash"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序条件，只支持StartTime(按慢日志生成时间)和ExecTime(慢日志执行时间)
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 排序。desc倒排，asc正排
+	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+}
+
+type DescribeDetailedSlowLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 待查询慢日志的开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 待慢日志的结束时间
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+
+	// 过滤执行时间大于此值的慢日志，单位ms，默认值100
+	ExecTime *int64 `json:"ExecTime,omitnil,omitempty" name:"ExecTime"`
+
+	// 过滤慢日志的命令类型
+	Commands []*string `json:"Commands,omitnil,omitempty" name:"Commands"`
+
+	// 全文搜索关键字，多个关键字间为或关系
+	Texts []*string `json:"Texts,omitnil,omitempty" name:"Texts"`
+
+	// 根据节点名过滤
+	NodeNames []*string `json:"NodeNames,omitnil,omitempty" name:"NodeNames"`
+
+	// 根据queryHash过滤
+	QueryHash []*string `json:"QueryHash,omitnil,omitempty" name:"QueryHash"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回条数
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 排序条件，只支持StartTime(按慢日志生成时间)和ExecTime(慢日志执行时间)
+	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
+
+	// 排序。desc倒排，asc正排
+	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
+}
+
+func (r *DescribeDetailedSlowLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDetailedSlowLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ExecTime")
+	delete(f, "Commands")
+	delete(f, "Texts")
+	delete(f, "NodeNames")
+	delete(f, "QueryHash")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDetailedSlowLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDetailedSlowLogsResponseParams struct {
+	// 满足条件的慢日志数量
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 慢日志详情
+	DetailedSlowLogs []*SlowLogItem `json:"DetailedSlowLogs,omitnil,omitempty" name:"DetailedSlowLogs"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDetailedSlowLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDetailedSlowLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDetailedSlowLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDetailedSlowLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceParamsRequestParams struct {
 	// 指定待查询参数列表的实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -5238,6 +5375,17 @@ type ShardInfo struct {
 
 	// 分片物理id
 	RealReplicaSetId *string `json:"RealReplicaSetId,omitnil,omitempty" name:"RealReplicaSetId"`
+}
+
+type SlowLogItem struct {
+	// 慢日志
+	Log *string `json:"Log,omitnil,omitempty" name:"Log"`
+
+	// 节点名称
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// queryHash
+	QueryHash *string `json:"QueryHash,omitnil,omitempty" name:"QueryHash"`
 }
 
 type SlowLogPattern struct {

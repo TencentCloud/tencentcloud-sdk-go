@@ -102,6 +102,63 @@ func (c *Client) CreateApmInstanceWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateProfileTaskRequest() (request *CreateProfileTaskRequest) {
+    request = &CreateProfileTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "CreateProfileTask")
+    
+    
+    return
+}
+
+func NewCreateProfileTaskResponse() (response *CreateProfileTaskResponse) {
+    response = &CreateProfileTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateProfileTask
+// 创建事件任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENTNOTONLINEERROR = "FailedOperation.AgentNotOnlineError"
+//  FAILEDOPERATION_AGENTVERSIONNOTSUPPORTERROR = "FailedOperation.AgentVersionNotSupportError"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_INVALIDREQUEST = "FailedOperation.InvalidRequest"
+func (c *Client) CreateProfileTask(request *CreateProfileTaskRequest) (response *CreateProfileTaskResponse, err error) {
+    return c.CreateProfileTaskWithContext(context.Background(), request)
+}
+
+// CreateProfileTask
+// 创建事件任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENTNOTONLINEERROR = "FailedOperation.AgentNotOnlineError"
+//  FAILEDOPERATION_AGENTVERSIONNOTSUPPORTERROR = "FailedOperation.AgentVersionNotSupportError"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_INVALIDREQUEST = "FailedOperation.InvalidRequest"
+func (c *Client) CreateProfileTaskWithContext(ctx context.Context, request *CreateProfileTaskRequest) (response *CreateProfileTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateProfileTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProfileTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateProfileTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApmAgentRequest() (request *DescribeApmAgentRequest) {
     request = &DescribeApmAgentRequest{
         BaseRequest: &tchttp.BaseRequest{},

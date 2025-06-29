@@ -387,6 +387,112 @@ func (r *CreateApmInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateProfileTaskRequestParams struct {
+	// 应用名称
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// APM业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 应用实例（在线）
+	ServiceInstance *string `json:"ServiceInstance,omitnil,omitempty" name:"ServiceInstance"`
+
+	// 事件类型（cpu、alloc）
+	Event *string `json:"Event,omitnil,omitempty" name:"Event"`
+
+	// 任务持续时长(单位：毫秒)，范围限制在5~180秒
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 执行次数，范围限制在1~100次
+	AllTimes *int64 `json:"AllTimes,omitnil,omitempty" name:"AllTimes"`
+
+	// 开始时间戳，0代表从当前开始(单位：秒)
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 任务执行间隔(单位：毫秒)，范围限制在10~600秒，不可小于1.5倍的Duration
+	TaskInterval *int64 `json:"TaskInterval,omitnil,omitempty" name:"TaskInterval"`
+}
+
+type CreateProfileTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用名称
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// APM业务系统ID
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 应用实例（在线）
+	ServiceInstance *string `json:"ServiceInstance,omitnil,omitempty" name:"ServiceInstance"`
+
+	// 事件类型（cpu、alloc）
+	Event *string `json:"Event,omitnil,omitempty" name:"Event"`
+
+	// 任务持续时长(单位：毫秒)，范围限制在5~180秒
+	Duration *int64 `json:"Duration,omitnil,omitempty" name:"Duration"`
+
+	// 执行次数，范围限制在1~100次
+	AllTimes *int64 `json:"AllTimes,omitnil,omitempty" name:"AllTimes"`
+
+	// 开始时间戳，0代表从当前开始(单位：秒)
+	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 任务执行间隔(单位：毫秒)，范围限制在10~600秒，不可小于1.5倍的Duration
+	TaskInterval *int64 `json:"TaskInterval,omitnil,omitempty" name:"TaskInterval"`
+}
+
+func (r *CreateProfileTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateProfileTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceName")
+	delete(f, "InstanceId")
+	delete(f, "ServiceInstance")
+	delete(f, "Event")
+	delete(f, "Duration")
+	delete(f, "AllTimes")
+	delete(f, "StartTime")
+	delete(f, "TaskInterval")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProfileTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateProfileTaskResponseParams struct {
+	// 任务ID
+	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateProfileTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateProfileTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateProfileTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateProfileTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeApmAgentRequestParams struct {
 	// 业务系统 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
