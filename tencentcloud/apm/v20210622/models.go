@@ -267,6 +267,42 @@ type ApmInstanceDetail struct {
 	// traceId的索引key: 当CLS索引类型为键值索引时生效
 	LogTraceIdKey *string `json:"LogTraceIdKey,omitnil,omitempty" name:"LogTraceIdKey"`
 
+	// 是否开启删除任意文件检测（0-关闭，1-开启）
+	IsDeleteAnyFileAnalysis *int64 `json:"IsDeleteAnyFileAnalysis,omitnil,omitempty" name:"IsDeleteAnyFileAnalysis"`
+
+	// 是否开启读取任意文件检测（0-关闭，1-开启）
+	IsReadAnyFileAnalysis *int64 `json:"IsReadAnyFileAnalysis,omitnil,omitempty" name:"IsReadAnyFileAnalysis"`
+
+	// 是否开启上传任意文件检测（0-关闭，1-开启）
+	IsUploadAnyFileAnalysis *int64 `json:"IsUploadAnyFileAnalysis,omitnil,omitempty" name:"IsUploadAnyFileAnalysis"`
+
+	// 是否开启包含任意文件检测（0-关闭，1-开启）
+	IsIncludeAnyFileAnalysis *int64 `json:"IsIncludeAnyFileAnalysis,omitnil,omitempty" name:"IsIncludeAnyFileAnalysis"`
+
+	// 是否开启目录遍历检测（0-关闭，1-开启）
+	IsDirectoryTraversalAnalysis *int64 `json:"IsDirectoryTraversalAnalysis,omitnil,omitempty" name:"IsDirectoryTraversalAnalysis"`
+
+	// 是否开启模板引擎注入检测（0-关闭，1-开启）
+	IsTemplateEngineInjectionAnalysis *int64 `json:"IsTemplateEngineInjectionAnalysis,omitnil,omitempty" name:"IsTemplateEngineInjectionAnalysis"`
+
+	// 是否开启脚本引擎注入检测（0-关闭，1-开启）
+	IsScriptEngineInjectionAnalysis *int64 `json:"IsScriptEngineInjectionAnalysis,omitnil,omitempty" name:"IsScriptEngineInjectionAnalysis"`
+
+	// 是否开启表达式注入检测（0-关闭，1-开启）
+	IsExpressionInjectionAnalysis *int64 `json:"IsExpressionInjectionAnalysis,omitnil,omitempty" name:"IsExpressionInjectionAnalysis"`
+
+	// 是否开启JNDI注入检测（0-关闭，1-开启）
+	IsJNDIInjectionAnalysis *int64 `json:"IsJNDIInjectionAnalysis,omitnil,omitempty" name:"IsJNDIInjectionAnalysis"`
+
+	// 是否开启JNI注入检测（0-关闭，1-开启）
+	IsJNIInjectionAnalysis *int64 `json:"IsJNIInjectionAnalysis,omitnil,omitempty" name:"IsJNIInjectionAnalysis"`
+
+	// 是否开启Webshell后门检测（0-关闭，1-开启）
+	IsWebshellBackdoorAnalysis *int64 `json:"IsWebshellBackdoorAnalysis,omitnil,omitempty" name:"IsWebshellBackdoorAnalysis"`
+
+	// 是否开启反序列化检测（0-关闭，1-开启）
+	IsDeserializationAnalysis *int64 `json:"IsDeserializationAnalysis,omitnil,omitempty" name:"IsDeserializationAnalysis"`
+
 	// 业务系统鉴权 token
 	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
 }
@@ -1653,6 +1689,42 @@ type ModifyApmInstanceRequestParams struct {
 
 	// traceId的索引key: 当CLS索引类型为键值索引时生效
 	LogTraceIdKey *string `json:"LogTraceIdKey,omitnil,omitempty" name:"LogTraceIdKey"`
+
+	// 是否开启删除任意文件检测（0-关闭，1-开启）
+	IsDeleteAnyFileAnalysis *int64 `json:"IsDeleteAnyFileAnalysis,omitnil,omitempty" name:"IsDeleteAnyFileAnalysis"`
+
+	// 是否开启读取任意文件检测（0-关闭，1-开启）
+	IsReadAnyFileAnalysis *int64 `json:"IsReadAnyFileAnalysis,omitnil,omitempty" name:"IsReadAnyFileAnalysis"`
+
+	// 是否开启上传任意文件检测（0-关闭，1-开启）
+	IsUploadAnyFileAnalysis *int64 `json:"IsUploadAnyFileAnalysis,omitnil,omitempty" name:"IsUploadAnyFileAnalysis"`
+
+	// 是否开启包含任意文件检测（0-关闭，1-开启）
+	IsIncludeAnyFileAnalysis *int64 `json:"IsIncludeAnyFileAnalysis,omitnil,omitempty" name:"IsIncludeAnyFileAnalysis"`
+
+	// 是否开启目录遍历检测（0-关闭，1-开启）
+	IsDirectoryTraversalAnalysis *int64 `json:"IsDirectoryTraversalAnalysis,omitnil,omitempty" name:"IsDirectoryTraversalAnalysis"`
+
+	// 是否开启模板引擎注入检测（0-关闭，1-开启）
+	IsTemplateEngineInjectionAnalysis *int64 `json:"IsTemplateEngineInjectionAnalysis,omitnil,omitempty" name:"IsTemplateEngineInjectionAnalysis"`
+
+	// 是否开启脚本引擎注入检测（0-关闭，1-开启）
+	IsScriptEngineInjectionAnalysis *int64 `json:"IsScriptEngineInjectionAnalysis,omitnil,omitempty" name:"IsScriptEngineInjectionAnalysis"`
+
+	// 是否开启表达式注入检测（0-关闭，1-开启）
+	IsExpressionInjectionAnalysis *int64 `json:"IsExpressionInjectionAnalysis,omitnil,omitempty" name:"IsExpressionInjectionAnalysis"`
+
+	// 是否开启JNDI注入检测（0-关闭，1-开启）
+	IsJNDIInjectionAnalysis *int64 `json:"IsJNDIInjectionAnalysis,omitnil,omitempty" name:"IsJNDIInjectionAnalysis"`
+
+	// 是否开启JNI注入检测（0-关闭，1-开启）
+	IsJNIInjectionAnalysis *int64 `json:"IsJNIInjectionAnalysis,omitnil,omitempty" name:"IsJNIInjectionAnalysis"`
+
+	// 是否开启Webshell后门检测（0-关闭，1-开启）
+	IsWebshellBackdoorAnalysis *int64 `json:"IsWebshellBackdoorAnalysis,omitnil,omitempty" name:"IsWebshellBackdoorAnalysis"`
+
+	// 是否开启反序列化检测（0-关闭，1-开启）
+	IsDeserializationAnalysis *int64 `json:"IsDeserializationAnalysis,omitnil,omitempty" name:"IsDeserializationAnalysis"`
 }
 
 type ModifyApmInstanceRequest struct {
@@ -1741,6 +1813,42 @@ type ModifyApmInstanceRequest struct {
 
 	// traceId的索引key: 当CLS索引类型为键值索引时生效
 	LogTraceIdKey *string `json:"LogTraceIdKey,omitnil,omitempty" name:"LogTraceIdKey"`
+
+	// 是否开启删除任意文件检测（0-关闭，1-开启）
+	IsDeleteAnyFileAnalysis *int64 `json:"IsDeleteAnyFileAnalysis,omitnil,omitempty" name:"IsDeleteAnyFileAnalysis"`
+
+	// 是否开启读取任意文件检测（0-关闭，1-开启）
+	IsReadAnyFileAnalysis *int64 `json:"IsReadAnyFileAnalysis,omitnil,omitempty" name:"IsReadAnyFileAnalysis"`
+
+	// 是否开启上传任意文件检测（0-关闭，1-开启）
+	IsUploadAnyFileAnalysis *int64 `json:"IsUploadAnyFileAnalysis,omitnil,omitempty" name:"IsUploadAnyFileAnalysis"`
+
+	// 是否开启包含任意文件检测（0-关闭，1-开启）
+	IsIncludeAnyFileAnalysis *int64 `json:"IsIncludeAnyFileAnalysis,omitnil,omitempty" name:"IsIncludeAnyFileAnalysis"`
+
+	// 是否开启目录遍历检测（0-关闭，1-开启）
+	IsDirectoryTraversalAnalysis *int64 `json:"IsDirectoryTraversalAnalysis,omitnil,omitempty" name:"IsDirectoryTraversalAnalysis"`
+
+	// 是否开启模板引擎注入检测（0-关闭，1-开启）
+	IsTemplateEngineInjectionAnalysis *int64 `json:"IsTemplateEngineInjectionAnalysis,omitnil,omitempty" name:"IsTemplateEngineInjectionAnalysis"`
+
+	// 是否开启脚本引擎注入检测（0-关闭，1-开启）
+	IsScriptEngineInjectionAnalysis *int64 `json:"IsScriptEngineInjectionAnalysis,omitnil,omitempty" name:"IsScriptEngineInjectionAnalysis"`
+
+	// 是否开启表达式注入检测（0-关闭，1-开启）
+	IsExpressionInjectionAnalysis *int64 `json:"IsExpressionInjectionAnalysis,omitnil,omitempty" name:"IsExpressionInjectionAnalysis"`
+
+	// 是否开启JNDI注入检测（0-关闭，1-开启）
+	IsJNDIInjectionAnalysis *int64 `json:"IsJNDIInjectionAnalysis,omitnil,omitempty" name:"IsJNDIInjectionAnalysis"`
+
+	// 是否开启JNI注入检测（0-关闭，1-开启）
+	IsJNIInjectionAnalysis *int64 `json:"IsJNIInjectionAnalysis,omitnil,omitempty" name:"IsJNIInjectionAnalysis"`
+
+	// 是否开启Webshell后门检测（0-关闭，1-开启）
+	IsWebshellBackdoorAnalysis *int64 `json:"IsWebshellBackdoorAnalysis,omitnil,omitempty" name:"IsWebshellBackdoorAnalysis"`
+
+	// 是否开启反序列化检测（0-关闭，1-开启）
+	IsDeserializationAnalysis *int64 `json:"IsDeserializationAnalysis,omitnil,omitempty" name:"IsDeserializationAnalysis"`
 }
 
 func (r *ModifyApmInstanceRequest) ToJsonString() string {
@@ -1783,6 +1891,18 @@ func (r *ModifyApmInstanceRequest) FromJsonString(s string) error {
 	delete(f, "IsMemoryHijackingAnalysis")
 	delete(f, "LogIndexType")
 	delete(f, "LogTraceIdKey")
+	delete(f, "IsDeleteAnyFileAnalysis")
+	delete(f, "IsReadAnyFileAnalysis")
+	delete(f, "IsUploadAnyFileAnalysis")
+	delete(f, "IsIncludeAnyFileAnalysis")
+	delete(f, "IsDirectoryTraversalAnalysis")
+	delete(f, "IsTemplateEngineInjectionAnalysis")
+	delete(f, "IsScriptEngineInjectionAnalysis")
+	delete(f, "IsExpressionInjectionAnalysis")
+	delete(f, "IsJNDIInjectionAnalysis")
+	delete(f, "IsJNIInjectionAnalysis")
+	delete(f, "IsWebshellBackdoorAnalysis")
+	delete(f, "IsDeserializationAnalysis")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApmInstanceRequest has unknown keys!", "")
 	}

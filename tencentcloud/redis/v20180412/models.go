@@ -7625,6 +7625,9 @@ type ModifyAutoBackupConfigRequestParams struct {
 
 	// 自动备份类型。目前仅能配置为：1 ，指定时备份。
 	AutoBackupType *int64 `json:"AutoBackupType,omitnil,omitempty" name:"AutoBackupType"`
+
+	// 全量备份文件保存天数。单位：天。
+	BackupStorageDays *int64 `json:"BackupStorageDays,omitnil,omitempty" name:"BackupStorageDays"`
 }
 
 type ModifyAutoBackupConfigRequest struct {
@@ -7641,6 +7644,9 @@ type ModifyAutoBackupConfigRequest struct {
 
 	// 自动备份类型。目前仅能配置为：1 ，指定时备份。
 	AutoBackupType *int64 `json:"AutoBackupType,omitnil,omitempty" name:"AutoBackupType"`
+
+	// 全量备份文件保存天数。单位：天。
+	BackupStorageDays *int64 `json:"BackupStorageDays,omitnil,omitempty" name:"BackupStorageDays"`
 }
 
 func (r *ModifyAutoBackupConfigRequest) ToJsonString() string {
@@ -7659,6 +7665,7 @@ func (r *ModifyAutoBackupConfigRequest) FromJsonString(s string) error {
 	delete(f, "WeekDays")
 	delete(f, "TimePeriod")
 	delete(f, "AutoBackupType")
+	delete(f, "BackupStorageDays")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAutoBackupConfigRequest has unknown keys!", "")
 	}

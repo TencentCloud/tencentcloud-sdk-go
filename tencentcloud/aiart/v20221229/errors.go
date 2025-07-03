@@ -44,6 +44,9 @@ const (
 	// 任务不存在。
 	FAILEDOPERATION_JOBNOTEXIST = "FailedOperation.JobNotExist"
 
+	// 审核失败
+	FAILEDOPERATION_MODERATIONFAILED = "FailedOperation.ModerationFailed"
+
 	// 整个请求体太大（通常主要是图片）。
 	FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
 

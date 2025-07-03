@@ -12932,6 +12932,7 @@ type FlowBrief struct {
 	FlowDescription *string `json:"FlowDescription,omitnil,omitempty" name:"FlowDescription"`
 
 	// 合同流程的类别分类（如销售合同/入职合同等）。
+	// 该字段将被废弃，不建议使用。	请使用 UserFlowType。
 	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
 
 	// 合同流程当前的签署状态, 会存在下列的状态值
@@ -12960,6 +12961,15 @@ type FlowBrief struct {
 
 	// 合同流程的签署截止时间，格式为Unix标准时间戳（秒）。
 	Deadline *int64 `json:"Deadline,omitnil,omitempty" name:"Deadline"`
+
+	// 用户合同的自定义分类。
+	// 
+	// 自定义合同类型的位置，在下图所示地方:
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/00d72934c31bd49115a566e4e1a4530d.png)
+	UserFlowType *UserFlowType `json:"UserFlowType,omitnil,omitempty" name:"UserFlowType"`
+
+	// 发起模板时,使用的模板Id
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
 type FlowCreateApprover struct {
@@ -13184,7 +13194,8 @@ type FlowDetailInfo struct {
 	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
-	// 合同流程的类别分类（如销售合同/入职合同等）。	
+	// 合同流程的类别分类（如销售合同/入职合同等）。
+	// 该字段将被废弃，不建议使用。	
 	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
 
 	// 合同流程当前的签署状态, 会存在下列的状态值 <ul><li> **0** : 未开启流程(合同中不存在填写环节)</li> <li> **1** : 待签署</li> <li> **2** : 部分签署</li> <li> **3** : 已拒签</li> <li> **4** : 已签署</li> <li> **5** : 已过期</li> <li> **6** : 已撤销</li> <li> **7** : 未开启流程(合同中存在填写环节)</li> <li> **8** : 等待填写</li> <li> **9** : 部分填写</li> <li> **10** : 已拒填</li> <li> **16** : 已失效（可能因为参与方修改姓名等原因）</li> <li> **21** : 已解除</li></ul>	
@@ -13207,6 +13218,15 @@ type FlowDetailInfo struct {
 
 	// 合同流程发起方的员工编号, 即员工在腾讯电子签平台的唯一身份标识。	
 	Creator *string `json:"Creator,omitnil,omitempty" name:"Creator"`
+
+	// 用户合同的自定义分类。
+	// 
+	// 自定义合同类型的位置，在下图所示地方:
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/00d72934c31bd49115a566e4e1a4530d.png)
+	UserFlowType *UserFlowType `json:"UserFlowType,omitnil,omitempty" name:"UserFlowType"`
+
+	// 发起模板时,使用的模板Id
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
 type FlowForwardInfo struct {

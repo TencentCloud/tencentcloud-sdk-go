@@ -10890,6 +10890,9 @@ type PriceResource struct {
 
 	// 本地盘的数量
 	LocalDiskNum *int64 `json:"LocalDiskNum,omitnil,omitempty" name:"LocalDiskNum"`
+
+	// GPU信息
+	GpuDesc *string `json:"GpuDesc,omitnil,omitempty" name:"GpuDesc"`
 }
 
 type PriceResult struct {
@@ -11200,6 +11203,9 @@ type Resource struct {
 
 	// 本地盘数量，如2
 	DiskNum *uint64 `json:"DiskNum,omitnil,omitempty" name:"DiskNum"`
+
+	// GPU信息
+	GpuDesc *string `json:"GpuDesc,omitnil,omitempty" name:"GpuDesc"`
 }
 
 type ResourceDetail struct {

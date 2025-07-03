@@ -672,6 +672,7 @@ func NewCreateProClusterResponse() (response *CreateProClusterResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
+//  FAILEDOPERATION_GENERATEDEALSANDPAYERROR = "FailedOperation.GenerateDealsAndPayError"
 //  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_PRODUCTNOTEXIST = "FailedOperation.ProductNotExist"
 //  INVALIDPARAMETER_VPC = "InvalidParameter.Vpc"
@@ -685,6 +686,7 @@ func (c *Client) CreateProCluster(request *CreateProClusterRequest) (response *C
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
+//  FAILEDOPERATION_GENERATEDEALSANDPAYERROR = "FailedOperation.GenerateDealsAndPayError"
 //  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
 //  FAILEDOPERATION_PRODUCTNOTEXIST = "FailedOperation.ProductNotExist"
 //  INVALIDPARAMETER_VPC = "InvalidParameter.Vpc"
@@ -2022,20 +2024,10 @@ func NewDeleteProClusterResponse() (response *DeleteProClusterResponse) {
 // 删除专业集群——预付费，仅通过API 调用
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
-//  FAILEDOPERATION_DELETEENVIRONMENTS = "FailedOperation.DeleteEnvironments"
-//  FAILEDOPERATION_DELETENAMESPACE = "FailedOperation.DeleteNamespace"
-//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
-//  FAILEDOPERATION_ROLEINUSE = "FailedOperation.RoleInUse"
-//  FAILEDOPERATION_TOPICINUSE = "FailedOperation.TopicInUse"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
-//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
-//  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
+//  FAILEDOPERATION_DELETECLUSTERPROTECTION = "FailedOperation.DeleteClusterProtection"
+//  FAILEDOPERATION_INSTANCECANNOTDELETE = "FailedOperation.InstanceCanNotDelete"
+//  FAILEDOPERATION_ONLINEREFUNDRESOURCENOTEXIT = "FailedOperation.OnlineRefundResourceNotExit"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) DeleteProCluster(request *DeleteProClusterRequest) (response *DeleteProClusterResponse, err error) {
     return c.DeleteProClusterWithContext(context.Background(), request)
 }
@@ -2044,20 +2036,10 @@ func (c *Client) DeleteProCluster(request *DeleteProClusterRequest) (response *D
 // 删除专业集群——预付费，仅通过API 调用
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-//  FAILEDOPERATION_CLOUDSERVICE = "FailedOperation.CloudService"
-//  FAILEDOPERATION_DELETEENVIRONMENTS = "FailedOperation.DeleteEnvironments"
-//  FAILEDOPERATION_DELETENAMESPACE = "FailedOperation.DeleteNamespace"
-//  FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
-//  FAILEDOPERATION_ROLEINUSE = "FailedOperation.RoleInUse"
-//  FAILEDOPERATION_TOPICINUSE = "FailedOperation.TopicInUse"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMS = "InvalidParameterValue.InvalidParams"
-//  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
-//  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
+//  FAILEDOPERATION_DELETECLUSTERPROTECTION = "FailedOperation.DeleteClusterProtection"
+//  FAILEDOPERATION_INSTANCECANNOTDELETE = "FailedOperation.InstanceCanNotDelete"
+//  FAILEDOPERATION_ONLINEREFUNDRESOURCENOTEXIT = "FailedOperation.OnlineRefundResourceNotExit"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
-//  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) DeleteProClusterWithContext(ctx context.Context, request *DeleteProClusterRequest) (response *DeleteProClusterResponse, err error) {
     if request == nil {
         request = NewDeleteProClusterRequest()

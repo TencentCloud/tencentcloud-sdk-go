@@ -11715,6 +11715,7 @@ type FlowDetailInfo struct {
 	FlowName *string `json:"FlowName,omitnil,omitempty" name:"FlowName"`
 
 	// 合同流程的类别分类（如销售合同/入职合同等）。
+	// 该字段将被废弃，不建议使用。	请使用 UserFlowType
 	FlowType *string `json:"FlowType,omitnil,omitempty" name:"FlowType"`
 
 	// 合同流程当前的签署状态, 会存在下列的状态值
@@ -11751,6 +11752,15 @@ type FlowDetailInfo struct {
 	// <ul><li>当NeedCreateReview为true，表明当前流程是需要发起前审核的合同，可能无法进行查看，签署操作，需要等审核完成后，才可以继续后续流程</li>
 	// <li>当NeedCreateReview为false，不需要发起前审核的合同</li></ul>
 	NeedCreateReview *bool `json:"NeedCreateReview,omitnil,omitempty" name:"NeedCreateReview"`
+
+	// 用户合同的自定义分类。
+	// 
+	// 自定义合同类型的位置，在下图所示地方:
+	// ![image](https://qcloudimg.tencent-cloud.cn/raw/37138cc5f3c38e6f788f4b82f695cebf.png)
+	UserFlowType *UserFlowType `json:"UserFlowType,omitnil,omitempty" name:"UserFlowType"`
+
+	// 发起模板时,使用的模板Id
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
 type FlowFileInfo struct {

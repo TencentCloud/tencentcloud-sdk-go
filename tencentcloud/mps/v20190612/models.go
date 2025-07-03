@@ -13707,7 +13707,7 @@ type MediaAnimatedGraphicsItem struct {
 	// 转动图的文件路径。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
-	// 转动图模板 ID，参见[转动图参数模板](https://cloud.tencent.com/document/product/862/37042#.E9.A2.84.E7.BD.AE.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+	// 转动图模板 ID，参见[转动图参数模板](https://cloud.tencent.com/document/product/862/77168#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF.5B.5D(id.3Amove))。
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 
 	// 动图格式，如 gif。
@@ -18287,8 +18287,11 @@ type RawWatermarkParameter struct {
 	// <li>image：图片水印。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
-	// 原点位置，目前仅支持：
+	// 原点位置，可选值：
 	// <li>TopLeft：表示坐标原点位于视频图像左上角，水印原点为图片或文字的左上角。</li>
+	// <li>TopRight：表示坐标原点位于视频图像的右上角，水印原点为图片或文字的右上角；</li>
+	// <li>BottomLeft：表示坐标原点位于视频图像的左下角，水印原点为图片或文字的左下角；</li>
+	// <li>BottomRight：表示坐标原点位于视频图像的右下角，水印原点为图片或文字的右下角。</li>
 	// 默认值：TopLeft。
 	CoordinateOrigin *string `json:"CoordinateOrigin,omitnil,omitempty" name:"CoordinateOrigin"`
 

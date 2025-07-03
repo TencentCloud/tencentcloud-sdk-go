@@ -757,6 +757,85 @@ type CompanyStateInfo struct {
 }
 
 // Predefined struct for user
+type ControlAIConversationRequestParams struct {
+	// 会话 ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 控制命令，目前支持命令如下：
+	// 
+	// - ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// 服务端发送播报文本命令，当Command为ServerPushText时必填
+	ServerPushText *ServerPushText `json:"ServerPushText,omitnil,omitempty" name:"ServerPushText"`
+}
+
+type ControlAIConversationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 会话 ID
+	SessionId *string `json:"SessionId,omitnil,omitempty" name:"SessionId"`
+
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 控制命令，目前支持命令如下：
+	// 
+	// - ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本
+	Command *string `json:"Command,omitnil,omitempty" name:"Command"`
+
+	// 服务端发送播报文本命令，当Command为ServerPushText时必填
+	ServerPushText *ServerPushText `json:"ServerPushText,omitnil,omitempty" name:"ServerPushText"`
+}
+
+func (r *ControlAIConversationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ControlAIConversationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	delete(f, "SdkAppId")
+	delete(f, "Command")
+	delete(f, "ServerPushText")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ControlAIConversationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ControlAIConversationResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ControlAIConversationResponse struct {
+	*tchttp.BaseResponse
+	Response *ControlAIConversationResponseParams `json:"Response"`
+}
+
+func (r *ControlAIConversationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ControlAIConversationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateAIAgentCallRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -6847,6 +6926,36 @@ type ServeParticipant struct {
 
 	// 录音转存第三方COS地址
 	CustomRecordURL *string `json:"CustomRecordURL,omitnil,omitempty" name:"CustomRecordURL"`
+}
+
+type ServerPushText struct {
+	// 服务端推送播报文本
+	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+
+	// 是否允许该文本打断机器人说话
+	Interrupt *bool `json:"Interrupt,omitnil,omitempty" name:"Interrupt"`
+
+	// 播报完文本后，是否自动关闭对话任务
+	StopAfterPlay *bool `json:"StopAfterPlay,omitnil,omitempty" name:"StopAfterPlay"`
+
+	// 服务端推送播报音频
+	//     格式说明：音频必须为单声道，采样率必须跟对应TTS的采样率保持一致，编码为Base64字符串。
+	//     输入规则：当提供Audio字段时，将不接受Text字段的输入。系统将直接播放Audio字段中的音频内容。
+	Audio *string `json:"Audio,omitnil,omitempty" name:"Audio"`
+
+	// 默认为0，仅在Interrupt为false时有效
+	// - 0表示当前有交互发生时，会丢弃Interrupt为false的消息
+	// - 1表示当前有交互发生时，不会丢弃Interrupt为false的消息，而是缓存下来，等待当前交互结束后，再去处理
+	// 
+	// 注意：DropMode为1时，允许缓存多个消息，如果后续出现了打断，缓存的消息会被清空
+	DropMode *uint64 `json:"DropMode,omitnil,omitempty" name:"DropMode"`
+
+	// ServerPushText消息的优先级，0表示可被打断，1表示不会被打断。**目前仅支持传入0，如果需要传入1，请提工单联系我们添加权限。**
+	// 注意：在接收到Priority=1的消息后，后续其他任何消息都会被忽略（包括Priority=1的消息），直到Priority=1的消息处理结束。该字段可与Interrupt、DropMode字段配合使用。
+	// 例子：
+	// - Priority=1、Interrupt=true，会打断现有交互，立刻播报，播报过程中不会被打断
+	// - Priority=1、Interrupt=false、DropMode=1，会等待当前交互结束，再进行播报，播报过程中不会被打断
+	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
 }
 
 type SkillGroupInfoItem struct {

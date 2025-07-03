@@ -11792,6 +11792,9 @@ type InstanceInfo struct {
 
 	// 1是基础2025版本；0不是
 	BasicFlag *uint64 `json:"BasicFlag,omitnil,omitempty" name:"BasicFlag"`
+
+	// 实例的网络配置
+	NetworkConfig *NetworkConfig `json:"NetworkConfig,omitnil,omitempty" name:"NetworkConfig"`
 }
 
 type IpAccessControlData struct {
@@ -15963,6 +15966,21 @@ func (r *ModifyWebshellStatusResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyWebshellStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type NetworkConfig struct {
+	// 高防EIP地址
+	AntiDDosEip *string `json:"AntiDDosEip,omitnil,omitempty" name:"AntiDDosEip"`
+
+	// 高防EIP绑定状态。
+	// 0：解绑
+	// 1：绑定
+	AntiDDosEipStatus *uint64 `json:"AntiDDosEipStatus,omitnil,omitempty" name:"AntiDDosEipStatus"`
+
+	// WAF原生VIP绑定状态。
+	// 0：解绑
+	// 1：绑定
+	VipStatus *uint64 `json:"VipStatus,omitnil,omitempty" name:"VipStatus"`
 }
 
 type ParamCompareList struct {

@@ -20,6 +20,98 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type AKInfo struct {
+	// ak对应id
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// ak具体值
+	// 临时密钥时返回临时密钥
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 所属账号
+	User *string `json:"User,omitnil,omitempty" name:"User"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+}
+
+type AccessKeyAlarmInfo struct {
+	// 告警类型/风险类型
+	// 告警类型：
+	// 0异常调用
+	// 1泄漏检测
+	// 2自定义
+	// 
+	// 风险类型：
+	// 0：配置风险
+	// 1: 自定义风险
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 告警数量/风险数量
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+}
+
+type AccessKeyAsset struct {
+	// AK 的id
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// AK名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 账号所属APPID
+	AppID *int64 `json:"AppID,omitnil,omitempty" name:"AppID"`
+
+	// 所属主账号Uin
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 主账号昵称
+	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
+
+	// 所属子账号Uin
+	SubUin *string `json:"SubUin,omitnil,omitempty" name:"SubUin"`
+
+	// 所属子账号昵称
+	SubNickname *string `json:"SubNickname,omitnil,omitempty" name:"SubNickname"`
+
+	// 0 主账号AK
+	// 1 子账号AK
+	// 2 临时密钥
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 安全建议 枚举
+	// 0 正常
+	// 1 立即处理
+	// 2 建议加固
+	Advice *int64 `json:"Advice,omitnil,omitempty" name:"Advice"`
+
+	// 告警信息列表
+	AccessKeyAlarmList []*AccessKeyAlarmInfo `json:"AccessKeyAlarmList,omitnil,omitempty" name:"AccessKeyAlarmList"`
+
+	// 风险信息列表
+	AccessKeyRiskList []*AccessKeyAlarmInfo `json:"AccessKeyRiskList,omitnil,omitempty" name:"AccessKeyRiskList"`
+
+	// 源IP数量
+	IPCount *int64 `json:"IPCount,omitnil,omitempty" name:"IPCount"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 最近访问时间
+	LastAccessTime *string `json:"LastAccessTime,omitnil,omitempty" name:"LastAccessTime"`
+
+	// AK状态 
+	// 0:禁用
+	// 1:已启用
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 0 表示已检测
+	// 1 表示检测中
+	CheckStatus *int64 `json:"CheckStatus,omitnil,omitempty" name:"CheckStatus"`
+}
+
 // Predefined struct for user
 type AddNewBindRoleUserRequestParams struct {
 
@@ -1583,6 +1675,84 @@ type CVMAssetVO struct {
 	OfflineTime *string `json:"OfflineTime,omitnil,omitempty" name:"OfflineTime"`
 }
 
+type CallRecord struct {
+	// 调用记录ID
+	CallID *string `json:"CallID,omitnil,omitempty" name:"CallID"`
+
+	// 访问密钥
+	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
+
+	// 访问密钥备注
+	AccessKeyRemark *string `json:"AccessKeyRemark,omitnil,omitempty" name:"AccessKeyRemark"`
+
+	// 访问密钥ID
+	AccessKeyID *uint64 `json:"AccessKeyID,omitnil,omitempty" name:"AccessKeyID"`
+
+	// 调用源IP
+	SourceIP *string `json:"SourceIP,omitnil,omitempty" name:"SourceIP"`
+
+	// 调用源IP备注
+	SourceIPRemark *string `json:"SourceIPRemark,omitnil,omitempty" name:"SourceIPRemark"`
+
+	// 调用源IP地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// IP类型 0:账号内（未备注） 1:账号外（未备注） 2:账号内 (已备注) 3:账号外 (已备注)
+	IPType *int64 `json:"IPType,omitnil,omitempty" name:"IPType"`
+
+	// 调用接口名称
+	EventName *string `json:"EventName,omitnil,omitempty" name:"EventName"`
+
+	// 调用产品名称
+	ProductName *string `json:"ProductName,omitnil,omitempty" name:"ProductName"`
+
+	// 调用类型
+	// 0:控制台调用
+	// 1:API
+	EventType *int64 `json:"EventType,omitnil,omitempty" name:"EventType"`
+
+	// 用户类型
+	// CAMUser/root/AssumedRole
+	UserType *string `json:"UserType,omitnil,omitempty" name:"UserType"`
+
+	// 用户/角色名称
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 策略列表
+	PolicySet []*string `json:"PolicySet,omitnil,omitempty" name:"PolicySet"`
+
+	// 调用次数
+	CallCount *int64 `json:"CallCount,omitnil,omitempty" name:"CallCount"`
+
+	// 调用错误码
+	// 0表示成功
+	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
+
+	// 首次调用时间
+	FirstCallTime *string `json:"FirstCallTime,omitnil,omitempty" name:"FirstCallTime"`
+
+	// 最后调用时间
+	LastCallTime *string `json:"LastCallTime,omitnil,omitempty" name:"LastCallTime"`
+
+	// IP关联资产ID，如果为空字符串，表示没有关联
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// IP关联资产名称
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 聚合日期
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
+
+	// appid
+	AppID *int64 `json:"AppID,omitnil,omitempty" name:"AppID"`
+
+	// 展示状态
+	ShowStatus *bool `json:"ShowStatus,omitnil,omitempty" name:"ShowStatus"`
+
+	// 运营商
+	ISP *string `json:"ISP,omitnil,omitempty" name:"ISP"`
+}
+
 type CheckViewRiskItem struct {
 	// 检查项规则ID
 	RiskRuleId *string `json:"RiskRuleId,omitnil,omitempty" name:"RiskRuleId"`
@@ -2238,6 +2408,73 @@ func (r *DeleteRiskScanTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteRiskScanTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAccessKeyAssetRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 过滤器
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+type DescribeAccessKeyAssetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 过滤器
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+func (r *DescribeAccessKeyAssetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccessKeyAssetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessKeyAssetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAccessKeyAssetResponseParams struct {
+	// 访问密钥资产列表
+	Data []*AccessKeyAsset `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 全部数量
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAccessKeyAssetResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAccessKeyAssetResponseParams `json:"Response"`
+}
+
+func (r *DescribeAccessKeyAssetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccessKeyAssetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2925,6 +3162,87 @@ func (r *DescribeCVMAssetsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCVMAssetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCallRecordRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 访问密钥的ID
+	AccessKeyID *uint64 `json:"AccessKeyID,omitnil,omitempty" name:"AccessKeyID"`
+
+	// 调用源IP的ID
+	SourceIPID *uint64 `json:"SourceIPID,omitnil,omitempty" name:"SourceIPID"`
+
+	// 过滤器
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+type DescribeCallRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 访问密钥的ID
+	AccessKeyID *uint64 `json:"AccessKeyID,omitnil,omitempty" name:"AccessKeyID"`
+
+	// 调用源IP的ID
+	SourceIPID *uint64 `json:"SourceIPID,omitnil,omitempty" name:"SourceIPID"`
+
+	// 过滤器
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+func (r *DescribeCallRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCallRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "AccessKeyID")
+	delete(f, "SourceIPID")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCallRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCallRecordResponseParams struct {
+	// 调用记录列表
+	Data []*CallRecord `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 调用记录总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCallRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCallRecordResponseParams `json:"Response"`
+}
+
+func (r *DescribeCallRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCallRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5736,6 +6054,73 @@ func (r *DescribeSearchBugInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSourceIPAssetRequestParams struct {
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 过滤器
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+type DescribeSourceIPAssetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集团账号的成员id
+	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
+
+	// 过滤器
+	Filter *Filter `json:"Filter,omitnil,omitempty" name:"Filter"`
+}
+
+func (r *DescribeSourceIPAssetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSourceIPAssetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberId")
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSourceIPAssetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSourceIPAssetResponseParams struct {
+	// 访问密钥资产列表
+	Data []*SourceIPAsset `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 全部数量
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeSourceIPAssetResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSourceIPAssetResponseParams `json:"Response"`
+}
+
+func (r *DescribeSourceIPAssetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSourceIPAssetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSubUserInfoRequestParams struct {
 	// 集团账号的成员id
 	MemberId []*string `json:"MemberId,omitnil,omitempty" name:"MemberId"`
@@ -8464,6 +8849,65 @@ type ServiceSupport struct {
 
 	// 是否支持该产品1支持；0不支持
 	IsSupport *bool `json:"IsSupport,omitnil,omitempty" name:"IsSupport"`
+}
+
+type SourceIPAsset struct {
+	// 源IP id
+	ID *uint64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 源IP
+	SourceIP *string `json:"SourceIP,omitnil,omitempty" name:"SourceIP"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 账号所属APPID
+	AppID *int64 `json:"AppID,omitnil,omitempty" name:"AppID"`
+
+	// IP地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 调用方式
+	// 0:控制台调用
+	// 1:API
+	EventType *int64 `json:"EventType,omitnil,omitempty" name:"EventType"`
+
+	// IP类型
+	// 0:账号内（未备注）
+	// 1:账号外（未备注）
+	// 2:账号内   (已备注)
+	// 3:账号外   (已备注)
+	IPType *int64 `json:"IPType,omitnil,omitempty" name:"IPType"`
+
+	// 告警信息列表
+	AccessKeyAlarmList []*AccessKeyAlarmInfo `json:"AccessKeyAlarmList,omitnil,omitempty" name:"AccessKeyAlarmList"`
+
+	// ak信息列表
+	AKInfo []*AKInfo `json:"AKInfo,omitnil,omitempty" name:"AKInfo"`
+
+	// 调用接口数量
+	ActionCount *int64 `json:"ActionCount,omitnil,omitempty" name:"ActionCount"`
+
+	// 最近访问时间
+	LastAccessTime *string `json:"LastAccessTime,omitnil,omitempty" name:"LastAccessTime"`
+
+	// IP关联实例ID，如果为空字符串，代表非账号内资产
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// IP关联实例名称
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 账号所属Uin
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 昵称
+	Nickname *string `json:"Nickname,omitnil,omitempty" name:"Nickname"`
+
+	// 展示状态
+	ShowStatus *bool `json:"ShowStatus,omitnil,omitempty" name:"ShowStatus"`
+
+	// 运营商字段
+	ISP *string `json:"ISP,omitnil,omitempty" name:"ISP"`
 }
 
 type StatisticalFilter struct {

@@ -319,6 +319,10 @@ type Cluster struct {
 	// setats集群
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Setats *Setats `json:"Setats,omitnil,omitempty" name:"Setats"`
+
+	// []
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Yarns []*HadoopYarnItem `json:"Yarns,omitnil,omitempty" name:"Yarns"`
 }
 
 type ClusterGroupSetItem struct {
@@ -793,6 +797,15 @@ type CreateJobConfigRequestParams struct {
 
 	// TaskManager 内存
 	TaskManagerMem *float64 `json:"TaskManagerMem,omitnil,omitempty" name:"TaskManagerMem"`
+
+	// 0=默认使用老的 1=使用新的
+	UseOldSystemConnector *int64 `json:"UseOldSystemConnector,omitnil,omitempty" name:"UseOldSystemConnector"`
+
+	// 压缩参数
+	ProgramArgsAfterGzip *string `json:"ProgramArgsAfterGzip,omitnil,omitempty" name:"ProgramArgsAfterGzip"`
+
+	// checkpoint 超时时间
+	CheckpointTimeoutSecond *int64 `json:"CheckpointTimeoutSecond,omitnil,omitempty" name:"CheckpointTimeoutSecond"`
 }
 
 type CreateJobConfigRequest struct {
@@ -896,6 +909,15 @@ type CreateJobConfigRequest struct {
 
 	// TaskManager 内存
 	TaskManagerMem *float64 `json:"TaskManagerMem,omitnil,omitempty" name:"TaskManagerMem"`
+
+	// 0=默认使用老的 1=使用新的
+	UseOldSystemConnector *int64 `json:"UseOldSystemConnector,omitnil,omitempty" name:"UseOldSystemConnector"`
+
+	// 压缩参数
+	ProgramArgsAfterGzip *string `json:"ProgramArgsAfterGzip,omitnil,omitempty" name:"ProgramArgsAfterGzip"`
+
+	// checkpoint 超时时间
+	CheckpointTimeoutSecond *int64 `json:"CheckpointTimeoutSecond,omitnil,omitempty" name:"CheckpointTimeoutSecond"`
 }
 
 func (r *CreateJobConfigRequest) ToJsonString() string {
@@ -943,6 +965,9 @@ func (r *CreateJobConfigRequest) FromJsonString(s string) error {
 	delete(f, "JobManagerMem")
 	delete(f, "TaskManagerCpu")
 	delete(f, "TaskManagerMem")
+	delete(f, "UseOldSystemConnector")
+	delete(f, "ProgramArgsAfterGzip")
+	delete(f, "CheckpointTimeoutSecond")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobConfigRequest has unknown keys!", "")
 	}
@@ -3568,6 +3593,34 @@ func (r *GetMetaTableResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type HadoopYarnItem struct {
+	// ClusterGroupSerialId
+	ClusterGroupSerialId *string `json:"ClusterGroupSerialId,omitnil,omitempty" name:"ClusterGroupSerialId"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// cpu
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// mem
+	Mem *float64 `json:"Mem,omitnil,omitempty" name:"Mem"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 配置文件内容
+	Config *string `json:"Config,omitnil,omitempty" name:"Config"`
+
+	// CreatorUin
+	CreatorUin *string `json:"CreatorUin,omitnil,omitempty" name:"CreatorUin"`
+}
+
 type JobConfig struct {
 	// 作业Id
 	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
@@ -3717,6 +3770,9 @@ type JobConfig struct {
 	// 运行中配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobConfigItem *JobConfig `json:"JobConfigItem,omitnil,omitempty" name:"JobConfigItem"`
+
+	// checkpoint 超时时间
+	CheckpointTimeoutSecond *int64 `json:"CheckpointTimeoutSecond,omitnil,omitempty" name:"CheckpointTimeoutSecond"`
 }
 
 type JobEvent struct {
@@ -3964,6 +4020,9 @@ type JobV1 struct {
 	// 操作中描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProgressDesc *string `json:"ProgressDesc,omitnil,omitempty" name:"ProgressDesc"`
+
+	// 停止持续告警
+	ContinueAlarm *int64 `json:"ContinueAlarm,omitnil,omitempty" name:"ContinueAlarm"`
 }
 
 type LogContent struct {
@@ -4109,6 +4168,9 @@ type ModifyJobRequestParams struct {
 
 	// 作业描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 停止持续告警
+	ContinueAlarm *int64 `json:"ContinueAlarm,omitnil,omitempty" name:"ContinueAlarm"`
 }
 
 type ModifyJobRequest struct {
@@ -4131,6 +4193,9 @@ type ModifyJobRequest struct {
 
 	// 作业描述
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 停止持续告警
+	ContinueAlarm *int64 `json:"ContinueAlarm,omitnil,omitempty" name:"ContinueAlarm"`
 }
 
 func (r *ModifyJobRequest) ToJsonString() string {
@@ -4151,6 +4216,7 @@ func (r *ModifyJobRequest) FromJsonString(s string) error {
 	delete(f, "TargetFolderId")
 	delete(f, "WorkSpaceId")
 	delete(f, "Description")
+	delete(f, "ContinueAlarm")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyJobRequest has unknown keys!", "")
 	}

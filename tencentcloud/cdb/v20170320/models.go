@@ -1341,56 +1341,56 @@ type CdbZoneSellConf struct {
 
 // Predefined struct for user
 type CheckMigrateClusterRequestParams struct {
-	// 实例Id。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例CPU核数
+	// 实例 CPU 核数。当 InstanceId 为主实例时必传。
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 实例内存大小，单位：MB
+	// 实例内存大小，单位：MB。当 InstanceId 为主实例时必传。
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例硬盘大小，单位：GB
+	// 实例硬盘大小，单位：GB。
 	Volume *int64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
-	// 磁盘类型。 CLOUD_SSD: SSD云硬盘; CLOUD_HSSD: 增强型SSD云硬盘
+	// 磁盘类型。 CLOUD_SSD: SSD 云硬盘; CLOUD_HSSD: 增强型 SSD 云硬盘。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 云盘版节点拓扑配置。
+	// 云盘版节点拓扑配置。当 InstanceId 为主实例时必传。
 	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
 
 	// 迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 标准型云盘版实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 加强型云盘版实例。
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 只读实例信息
+	// 只读实例信息。
 	RoInfo []*MigrateClusterRoInfo `json:"RoInfo,omitnil,omitempty" name:"RoInfo"`
 }
 
 type CheckMigrateClusterRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例CPU核数
+	// 实例 CPU 核数。当 InstanceId 为主实例时必传。
 	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 实例内存大小，单位：MB
+	// 实例内存大小，单位：MB。当 InstanceId 为主实例时必传。
 	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 实例硬盘大小，单位：GB
+	// 实例硬盘大小，单位：GB。
 	Volume *int64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
-	// 磁盘类型。 CLOUD_SSD: SSD云硬盘; CLOUD_HSSD: 增强型SSD云硬盘
+	// 磁盘类型。 CLOUD_SSD: SSD 云硬盘; CLOUD_HSSD: 增强型 SSD 云硬盘。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
-	// 云盘版节点拓扑配置。
+	// 云盘版节点拓扑配置。当 InstanceId 为主实例时必传。
 	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
 
 	// 迁移实例类型。支持值包括： "CLOUD_NATIVE_CLUSTER" - 标准型云盘版实例， "CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 加强型云盘版实例。
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 只读实例信息
+	// 只读实例信息。
 	RoInfo []*MigrateClusterRoInfo `json:"RoInfo,omitnil,omitempty" name:"RoInfo"`
 }
 
@@ -1981,22 +1981,19 @@ func (r *CreateAccountsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAuditLogFileRequestParams struct {
-	// 实例 ID，与云数据库控制台页面中显示的实例 ID 相同。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 开始时间。
+	// 开始时间(建议开始到结束时间区间最大7天)。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。
+	// 结束时间(建议开始到结束时间区间最大7天）。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 排序方式。支持值包括："ASC" - 升序，"DESC" - 降序。
+	// 排序方式。支持值包括："ASC" - 升序，"DESC" - 降序，默认降序排序。
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段。支持值包括：
-	// "timestamp" - 时间戳；
-	// "affectRows" - 影响行数；
-	// "execTime" - 执行时间。
+	// 排序字段。支持值包括(默认按照时间戳排序)： "timestamp" - 时间戳； "affectRows" - 影响行数； "execTime" - 执行时间。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 已废弃。
@@ -2014,22 +2011,19 @@ type CreateAuditLogFileRequestParams struct {
 type CreateAuditLogFileRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，与云数据库控制台页面中显示的实例 ID 相同。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 开始时间。
+	// 开始时间(建议开始到结束时间区间最大7天)。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。
+	// 结束时间(建议开始到结束时间区间最大7天）。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 排序方式。支持值包括："ASC" - 升序，"DESC" - 降序。
+	// 排序方式。支持值包括："ASC" - 升序，"DESC" - 降序，默认降序排序。
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段。支持值包括：
-	// "timestamp" - 时间戳；
-	// "affectRows" - 影响行数；
-	// "execTime" - 执行时间。
+	// 排序字段。支持值包括(默认按照时间戳排序)： "timestamp" - 时间戳； "affectRows" - 影响行数； "execTime" - 执行时间。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
 	// 已废弃。
@@ -4485,14 +4479,14 @@ func (r *DeleteAuditRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAuditRuleTemplatesRequestParams struct {
-	// 审计规则模板ID。
+	// 审计规则模板ID,可通过[DescribeAuditRuleTemplates](https://cloud.tencent.com/document/api/236/101811)接口获取，单次允许最多删除5个规则模板。
 	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil,omitempty" name:"RuleTemplateIds"`
 }
 
 type DeleteAuditRuleTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 审计规则模板ID。
+	// 审计规则模板ID,可通过[DescribeAuditRuleTemplates](https://cloud.tencent.com/document/api/236/101811)接口获取，单次允许最多删除5个规则模板。
 	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil,omitempty" name:"RuleTemplateIds"`
 }
 
@@ -5391,13 +5385,13 @@ func (r *DescribeAuditLogFilesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAuditLogsRequestParams struct {
-	// 实例 ID。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 开始时间。
+	// 开始时间(建议开始到结束时间区间最大7天)。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。
+	// 结束时间(建议开始到结束时间区间最大7天）。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 分页参数，单次返回的数据条数。默认值为100，最大值为100。
@@ -5406,10 +5400,10 @@ type DescribeAuditLogsRequestParams struct {
 	// 日志偏移量，最多支持偏移查询65535条日志。可填写范围：0 - 65535。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序方式。支持值包括："ASC" - 升序，"DESC" - 降序。
+	// 排序方式。支持值包括："ASC" - 升序，"DESC" - 降序，默认降序排序。
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段。支持值包括：
+	// 排序字段。支持值包括(默认按照时间戳排序)：
 	// "timestamp" - 时间戳；
 	// "affectRows" - 影响行数；
 	// "execTime" - 执行时间。
@@ -5422,13 +5416,13 @@ type DescribeAuditLogsRequestParams struct {
 type DescribeAuditLogsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 开始时间。
+	// 开始时间(建议开始到结束时间区间最大7天)。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。
+	// 结束时间(建议开始到结束时间区间最大7天）。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 分页参数，单次返回的数据条数。默认值为100，最大值为100。
@@ -5437,10 +5431,10 @@ type DescribeAuditLogsRequest struct {
 	// 日志偏移量，最多支持偏移查询65535条日志。可填写范围：0 - 65535。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序方式。支持值包括："ASC" - 升序，"DESC" - 降序。
+	// 排序方式。支持值包括："ASC" - 升序，"DESC" - 降序，默认降序排序。
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 排序字段。支持值包括：
+	// 排序字段。支持值包括(默认按照时间戳排序)：
 	// "timestamp" - 时间戳；
 	// "affectRows" - 影响行数；
 	// "execTime" - 执行时间。
@@ -5611,7 +5605,7 @@ func (r *DescribeAuditPoliciesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAuditRuleTemplateModifyHistoryRequestParams struct {
-	// 模板ID
+	// 审计规则模板ID,可通过[DescribeAuditRuleTemplates](https://cloud.tencent.com/document/api/236/101811)接口获取。
 	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil,omitempty" name:"RuleTemplateIds"`
 
 	// 查询范围的开始时间。
@@ -5620,20 +5614,20 @@ type DescribeAuditRuleTemplateModifyHistoryRequestParams struct {
 	// 查询范围的结束时间。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 返回条数。
+	// 返回条数,默认值-20，最大值-1000。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序方式。DESC-按修改时间倒排，ASC-正序。
+	// 排序方式，DESC-按修改时间倒排，ASC-正序，默认：DESC。
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
 type DescribeAuditRuleTemplateModifyHistoryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模板ID
+	// 审计规则模板ID,可通过[DescribeAuditRuleTemplates](https://cloud.tencent.com/document/api/236/101811)接口获取。
 	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil,omitempty" name:"RuleTemplateIds"`
 
 	// 查询范围的开始时间。
@@ -5642,13 +5636,13 @@ type DescribeAuditRuleTemplateModifyHistoryRequest struct {
 	// 查询范围的结束时间。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
-	// 返回条数。
+	// 返回条数,默认值-20，最大值-1000。
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序方式。DESC-按修改时间倒排，ASC-正序。
+	// 排序方式，DESC-按修改时间倒排，ASC-正序，默认：DESC。
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 }
 
@@ -6944,7 +6938,7 @@ func (r *DescribeClusterInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCpuExpandHistoryRequestParams struct {
-	// 实例 ID
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 扩容策略，值包括：all，manual，auto
@@ -6953,10 +6947,10 @@ type DescribeCpuExpandHistoryRequestParams struct {
 	// 扩容状态，值包括：all，extend，reduce，extend_failed
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 查询的开始时间。只能查看30天内的扩容历史
+	// 查询的开始时间。只能查看30天内的扩容历史，格式为 Integer 的时间戳（秒级）。
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 查询的结束时间。只能查看30天内的扩容历史
+	// 查询的结束时间。只能查看30天内的扩容历史，格式为 Integer 的时间戳（秒级）。
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 分页入参
@@ -6969,7 +6963,7 @@ type DescribeCpuExpandHistoryRequestParams struct {
 type DescribeCpuExpandHistoryRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 扩容策略，值包括：all，manual，auto
@@ -6978,10 +6972,10 @@ type DescribeCpuExpandHistoryRequest struct {
 	// 扩容状态，值包括：all，extend，reduce，extend_failed
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 查询的开始时间。只能查看30天内的扩容历史
+	// 查询的开始时间。只能查看30天内的扩容历史，格式为 Integer 的时间戳（秒级）。
 	StartTime *int64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 查询的结束时间。只能查看30天内的扩容历史
+	// 查询的结束时间。只能查看30天内的扩容历史，格式为 Integer 的时间戳（秒级）。
 	EndTime *int64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 分页入参
@@ -9044,86 +9038,86 @@ func (r *DescribeInstanceUpgradeCheckJobResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeInstanceUpgradeTypeRequestParams struct {
-	// 实例 ID。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 目标实例 CPU 的核数。
+	// 目标实例 CPU 的核数。为保证传入值有效，请使用 [DescribeCdbZoneConfig](https://cloud.tencent.com/document/product/236/80281) 获取实例可售卖的 CPU 值范围。
 	DstCpu *float64 `json:"DstCpu,omitnil,omitempty" name:"DstCpu"`
 
-	// 目标实例内存大小，单位：MB。
+	// 目标实例内存大小，单位：MB。为保证传入值有效，请使用 [DescribeCdbZoneConfig](https://cloud.tencent.com/document/product/236/80281) 获取实例可售卖的内存大小范围。
 	DstMemory *uint64 `json:"DstMemory,omitnil,omitempty" name:"DstMemory"`
 
-	// 目标实例磁盘大小，单位：GB。
+	// 目标实例磁盘大小，单位：GB。为保证传入值有效，请使用 [DescribeCdbZoneConfig](https://cloud.tencent.com/document/product/236/80281) 获取实例可售卖的磁盘大小范围。
 	DstDisk *uint64 `json:"DstDisk,omitnil,omitempty" name:"DstDisk"`
 
-	// 目标实例数据库版本。
+	// 目标实例数据库版本。可选值：5.6，5.7，8.0。
 	DstVersion *string `json:"DstVersion,omitnil,omitempty" name:"DstVersion"`
 
-	// 目标实例部署模型。
+	// 目标实例部署模型。默认为0，支持值包括：0 - 表示单可用区，1 - 表示多可用区。
 	DstDeployMode *int64 `json:"DstDeployMode,omitnil,omitempty" name:"DstDeployMode"`
 
-	// 目标实例复制类型。
+	// 目标实例复制类型，支持值包括：0 - 表示异步复制，1 - 表示半同步复制，2 - 表示强同步复制。
 	DstProtectMode *int64 `json:"DstProtectMode,omitnil,omitempty" name:"DstProtectMode"`
 
-	// 目标实例备机1可用区。
+	// 目标实例备机1可用区 ID。可使用 [DescribeCdbZoneConfig](https://cloud.tencent.com/document/product/236/80281) 获取可用区 ID。
 	DstSlaveZone *int64 `json:"DstSlaveZone,omitnil,omitempty" name:"DstSlaveZone"`
 
-	// 目标实例备机2可用区。
+	// 目标实例备机2可用区 ID。可使用 [DescribeCdbZoneConfig](https://cloud.tencent.com/document/product/236/80281) 获取可用区 ID。
 	DstBackupZone *int64 `json:"DstBackupZone,omitnil,omitempty" name:"DstBackupZone"`
 
-	// 目标实例类型。
+	// 目标实例类型。支持值包括："CUSTOM" - 通用型实例，"EXCLUSIVE" - 独享型实例，"ONTKE" - ONTKE 单节点实例，"CLOUD_NATIVE_CLUSTER" - 云盘版标准型，"CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 云盘版加强型。
 	DstCdbType *string `json:"DstCdbType,omitnil,omitempty" name:"DstCdbType"`
 
-	// 目标实例主可用区。
+	// 目标实例主可用区 ID。可使用 [DescribeCdbZoneConfig](https://cloud.tencent.com/document/product/236/80281) 获取可用区 ID。
 	DstZoneId *int64 `json:"DstZoneId,omitnil,omitempty" name:"DstZoneId"`
 
 	// 独享集群 CDB 实例的节点分布情况。
 	NodeDistribution *NodeDistribution `json:"NodeDistribution,omitnil,omitempty" name:"NodeDistribution"`
 
-	// 集群版的节点拓扑配置
+	// 集群版的节点拓扑配置。Nodeld信息可通过 [DescribeClusterInfo](https://cloud.tencent.com/document/api/236/105116) 接口获取。
 	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
 }
 
 type DescribeInstanceUpgradeTypeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 目标实例 CPU 的核数。
+	// 目标实例 CPU 的核数。为保证传入值有效，请使用 [DescribeCdbZoneConfig](https://cloud.tencent.com/document/product/236/80281) 获取实例可售卖的 CPU 值范围。
 	DstCpu *float64 `json:"DstCpu,omitnil,omitempty" name:"DstCpu"`
 
-	// 目标实例内存大小，单位：MB。
+	// 目标实例内存大小，单位：MB。为保证传入值有效，请使用 [DescribeCdbZoneConfig](https://cloud.tencent.com/document/product/236/80281) 获取实例可售卖的内存大小范围。
 	DstMemory *uint64 `json:"DstMemory,omitnil,omitempty" name:"DstMemory"`
 
-	// 目标实例磁盘大小，单位：GB。
+	// 目标实例磁盘大小，单位：GB。为保证传入值有效，请使用 [DescribeCdbZoneConfig](https://cloud.tencent.com/document/product/236/80281) 获取实例可售卖的磁盘大小范围。
 	DstDisk *uint64 `json:"DstDisk,omitnil,omitempty" name:"DstDisk"`
 
-	// 目标实例数据库版本。
+	// 目标实例数据库版本。可选值：5.6，5.7，8.0。
 	DstVersion *string `json:"DstVersion,omitnil,omitempty" name:"DstVersion"`
 
-	// 目标实例部署模型。
+	// 目标实例部署模型。默认为0，支持值包括：0 - 表示单可用区，1 - 表示多可用区。
 	DstDeployMode *int64 `json:"DstDeployMode,omitnil,omitempty" name:"DstDeployMode"`
 
-	// 目标实例复制类型。
+	// 目标实例复制类型，支持值包括：0 - 表示异步复制，1 - 表示半同步复制，2 - 表示强同步复制。
 	DstProtectMode *int64 `json:"DstProtectMode,omitnil,omitempty" name:"DstProtectMode"`
 
-	// 目标实例备机1可用区。
+	// 目标实例备机1可用区 ID。可使用 [DescribeCdbZoneConfig](https://cloud.tencent.com/document/product/236/80281) 获取可用区 ID。
 	DstSlaveZone *int64 `json:"DstSlaveZone,omitnil,omitempty" name:"DstSlaveZone"`
 
-	// 目标实例备机2可用区。
+	// 目标实例备机2可用区 ID。可使用 [DescribeCdbZoneConfig](https://cloud.tencent.com/document/product/236/80281) 获取可用区 ID。
 	DstBackupZone *int64 `json:"DstBackupZone,omitnil,omitempty" name:"DstBackupZone"`
 
-	// 目标实例类型。
+	// 目标实例类型。支持值包括："CUSTOM" - 通用型实例，"EXCLUSIVE" - 独享型实例，"ONTKE" - ONTKE 单节点实例，"CLOUD_NATIVE_CLUSTER" - 云盘版标准型，"CLOUD_NATIVE_CLUSTER_EXCLUSIVE" - 云盘版加强型。
 	DstCdbType *string `json:"DstCdbType,omitnil,omitempty" name:"DstCdbType"`
 
-	// 目标实例主可用区。
+	// 目标实例主可用区 ID。可使用 [DescribeCdbZoneConfig](https://cloud.tencent.com/document/product/236/80281) 获取可用区 ID。
 	DstZoneId *int64 `json:"DstZoneId,omitnil,omitempty" name:"DstZoneId"`
 
 	// 独享集群 CDB 实例的节点分布情况。
 	NodeDistribution *NodeDistribution `json:"NodeDistribution,omitnil,omitempty" name:"NodeDistribution"`
 
-	// 集群版的节点拓扑配置
+	// 集群版的节点拓扑配置。Nodeld信息可通过 [DescribeClusterInfo](https://cloud.tencent.com/document/api/236/105116) 接口获取。
 	ClusterTopology *ClusterTopology `json:"ClusterTopology,omitnil,omitempty" name:"ClusterTopology"`
 }
 
@@ -9163,7 +9157,7 @@ type DescribeInstanceUpgradeTypeResponseParams struct {
 	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例升级类型。
+	// 实例升级类型。Trsf - 迁移升级，InPlace - 原地升级，Topology - 架构升级。
 	UpgradeType *string `json:"UpgradeType,omitnil,omitempty" name:"UpgradeType"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10926,26 +10920,26 @@ type DeviceNetInfo struct {
 
 // Predefined struct for user
 type DisassociateSecurityGroupsRequestParams struct {
-	// 安全组 ID。
+	// 安全组 ID。可通过 [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/236/15854) 接口获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 
-	// 实例 ID 列表，一个或者多个实例 ID 组成的数组。
+	// 实例 ID 列表，一个或者多个实例 ID 组成的数组。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 当传入只读实例ID时，默认操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True
+	// 当传入只读实例 ID 时，默认操作的是对应只读组的安全组。如果需要操作只读实例 ID 的安全组，需要将该入参置为 True，默认为 False。
 	ForReadonlyInstance *bool `json:"ForReadonlyInstance,omitnil,omitempty" name:"ForReadonlyInstance"`
 }
 
 type DisassociateSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 安全组 ID。
+	// 安全组 ID。可通过 [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/236/15854) 接口获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 
-	// 实例 ID 列表，一个或者多个实例 ID 组成的数组。
+	// 实例 ID 列表，一个或者多个实例 ID 组成的数组。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
-	// 当传入只读实例ID时，默认操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True
+	// 当传入只读实例 ID 时，默认操作的是对应只读组的安全组。如果需要操作只读实例 ID 的安全组，需要将该入参置为 True，默认为 False。
 	ForReadonlyInstance *bool `json:"ForReadonlyInstance,omitnil,omitempty" name:"ForReadonlyInstance"`
 }
 
@@ -11293,22 +11287,37 @@ type InstanceDbAuditStatus struct {
 	// 任务状态。0-无任务；1-审计开启中，2-审计关闭中。
 	AuditTask *uint64 `json:"AuditTask,omitnil,omitempty" name:"AuditTask"`
 
-	// 日志保留时长。
+	// 日志保留时长。支持值包括：
+	// 7 - 一周；
+	// 30 - 一个月；
+	// 90 - 三个月；
+	// 180 - 六个月；
+	// 365 - 一年；
+	// 1095 - 三年；
+	// 1825 - 五年。
 	LogExpireDay *uint64 `json:"LogExpireDay,omitnil,omitempty" name:"LogExpireDay"`
 
-	// 高频存储时长。
+	// 高频存储时长。支持值包括：
+	// 3 - 3天；
+	// 7 - 一周；
+	// 30 - 一个月；
+	// 90 - 三个月；
+	// 180 - 六个月；
+	// 365 - 一年；
+	// 1095 - 三年；
+	// 1825 - 五年。
 	HighLogExpireDay *uint64 `json:"HighLogExpireDay,omitnil,omitempty" name:"HighLogExpireDay"`
 
-	// 低频存储时长。
+	// 低频存储时长。单位：天，等于日志保存时长减去高频存储时长。
 	LowLogExpireDay *uint64 `json:"LowLogExpireDay,omitnil,omitempty" name:"LowLogExpireDay"`
 
-	// 日志存储量。
+	// 日志存储量(单位：GB)。
 	BillingAmount *float64 `json:"BillingAmount,omitnil,omitempty" name:"BillingAmount"`
 
-	// 高频存储量。
+	// 高频存储量(单位：GB)。
 	HighRealStorage *float64 `json:"HighRealStorage,omitnil,omitempty" name:"HighRealStorage"`
 
-	// 低频存储量。
+	// 低频存储量(单位：GB)。
 	LowRealStorage *float64 `json:"LowRealStorage,omitnil,omitempty" name:"LowRealStorage"`
 
 	// 是否为全审计。true-表示全审计。
@@ -11320,7 +11329,7 @@ type InstanceDbAuditStatus struct {
 	// 实例相关信息
 	InstanceInfo *AuditInstanceInfo `json:"InstanceInfo,omitnil,omitempty" name:"InstanceInfo"`
 
-	// 总存储量。
+	// 总存储量(单位：GB)。
 	RealStorage *float64 `json:"RealStorage,omitnil,omitempty" name:"RealStorage"`
 
 	// 是否包含审计策略
@@ -11697,10 +11706,10 @@ type ModifyAccountDescriptionRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 云数据库账号。
+	// 云数据库账号。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 
-	// 数据库账号的备注信息。
+	// 数据库账号的备注信息。最多支持输入255个字符。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -11710,10 +11719,10 @@ type ModifyAccountDescriptionRequest struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 云数据库账号。
+	// 云数据库账号。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
 	Accounts []*Account `json:"Accounts,omitnil,omitempty" name:"Accounts"`
 
-	// 数据库账号的备注信息。
+	// 数据库账号的备注信息。最多支持输入255个字符。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
@@ -13441,14 +13450,14 @@ type ModifyDBInstanceSecurityGroupsRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。
+	// 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。可通过 [DescribeDBSecurityGroups](hhttps://cloud.tencent.com/document/api/236/15854) 接口获取。输入的安全组 ID 数组无长度限制。
 	// 注意：该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 当传入只读实例ID时，默认操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True
+	// 当传入只读实例 ID 时，默认操作的是对应只读组的安全组。如果需要操作只读实例 ID 的安全组， 需要将该入参置为 True。默认为 False。
 	ForReadonlyInstance *bool `json:"ForReadonlyInstance,omitnil,omitempty" name:"ForReadonlyInstance"`
 
-	// 变更集群版实例只读组时，InstanceId传实例id，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+	// 变更集群版实例只读组时，InstanceId 传实例 ID，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
 	OpResourceId *string `json:"OpResourceId,omitnil,omitempty" name:"OpResourceId"`
 }
 
@@ -13458,14 +13467,14 @@ type ModifyDBInstanceSecurityGroupsRequest struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。
+	// 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。可通过 [DescribeDBSecurityGroups](hhttps://cloud.tencent.com/document/api/236/15854) 接口获取。输入的安全组 ID 数组无长度限制。
 	// 注意：该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 
-	// 当传入只读实例ID时，默认操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True
+	// 当传入只读实例 ID 时，默认操作的是对应只读组的安全组。如果需要操作只读实例 ID 的安全组， 需要将该入参置为 True。默认为 False。
 	ForReadonlyInstance *bool `json:"ForReadonlyInstance,omitnil,omitempty" name:"ForReadonlyInstance"`
 
-	// 变更集群版实例只读组时，InstanceId传实例id，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
+	// 变更集群版实例只读组时，InstanceId 传实例 ID，需要额外指定该参数表示操作只读组。 如果操作读写节点则不需指定该参数。
 	OpResourceId *string `json:"OpResourceId,omitnil,omitempty" name:"OpResourceId"`
 }
 
@@ -15049,10 +15058,10 @@ type ProxyGroupInfo struct {
 	// 代理支持升级版本
 	SupportUpgradeProxyVersion *string `json:"SupportUpgradeProxyVersion,omitnil,omitempty" name:"SupportUpgradeProxyVersion"`
 
-	// 代理状态
+	// 代理状态。0 - 初始化中，1 - 在线中，2 - 在线中-读写分离中，3 - 下线，4 - 销毁。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 代理任务状态
+	// 代理任务状态，Upgrading - 升级中，UpgradeTo - 升级待切换，UpgradeSwitching - 升级切换中，ProxyCreateAddress - 配置地址中，ProxyModifyAddress - 修改地址中，ProxyCloseAddress - 关闭地址中。
 	TaskStatus *string `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
 
 	// 代理组节点信息
@@ -15239,20 +15248,20 @@ type ReleaseResult struct {
 
 // Predefined struct for user
 type ReloadBalanceProxyNodeRequestParams struct {
-	// 代理组ID
+	// 代理组 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。
 	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
 
-	// 代理组地址ID
+	// 代理组地址 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。如果不传则会对所有代理组地址进行负载均衡。
 	ProxyAddressId *string `json:"ProxyAddressId,omitnil,omitempty" name:"ProxyAddressId"`
 }
 
 type ReloadBalanceProxyNodeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 代理组ID
+	// 代理组 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。
 	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
 
-	// 代理组地址ID
+	// 代理组地址 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。如果不传则会对所有代理组地址进行负载均衡。
 	ProxyAddressId *string `json:"ProxyAddressId,omitnil,omitempty" name:"ProxyAddressId"`
 }
 
@@ -16857,7 +16866,7 @@ type TaskAttachInfo struct {
 }
 
 type TaskDetail struct {
-	// 错误码。
+	// 错误码。0代表成功，其他对应不同的报错场景。
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
 	// 错误信息。

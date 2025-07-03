@@ -300,6 +300,61 @@ func (c *Client) BindStaffSkillGroupListWithContext(ctx context.Context, request
     return
 }
 
+func NewControlAIConversationRequest() (request *ControlAIConversationRequest) {
+    request = &ControlAIConversationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "ControlAIConversation")
+    
+    
+    return
+}
+
+func NewControlAIConversationResponse() (response *ControlAIConversationResponse) {
+    response = &ControlAIConversationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ControlAIConversation
+// 提供服务端控制机器人的功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONTROLAICONVERSATION = "FailedOperation.ControlAIConversation"
+//  FAILEDOPERATION_SESSIONNOTEXISTS = "FailedOperation.SessionNotExists"
+//  FAILEDOPERATION_SESSIONNOTINCONTROLSTATE = "FailedOperation.SessionNotInControlState"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) ControlAIConversation(request *ControlAIConversationRequest) (response *ControlAIConversationResponse, err error) {
+    return c.ControlAIConversationWithContext(context.Background(), request)
+}
+
+// ControlAIConversation
+// 提供服务端控制机器人的功能
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CONTROLAICONVERSATION = "FailedOperation.ControlAIConversation"
+//  FAILEDOPERATION_SESSIONNOTEXISTS = "FailedOperation.SessionNotExists"
+//  FAILEDOPERATION_SESSIONNOTINCONTROLSTATE = "FailedOperation.SessionNotInControlState"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) ControlAIConversationWithContext(ctx context.Context, request *ControlAIConversationRequest) (response *ControlAIConversationResponse, err error) {
+    if request == nil {
+        request = NewControlAIConversationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ControlAIConversation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewControlAIConversationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAIAgentCallRequest() (request *CreateAIAgentCallRequest) {
     request = &CreateAIAgentCallRequest{
         BaseRequest: &tchttp.BaseRequest{},

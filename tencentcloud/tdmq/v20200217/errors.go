@@ -65,6 +65,9 @@ const (
 	// 删除集群失败。
 	FAILEDOPERATION_DELETECLUSTER = "FailedOperation.DeleteCluster"
 
+	// 群集删除保护已打开，删除群集失败。
+	FAILEDOPERATION_DELETECLUSTERPROTECTION = "FailedOperation.DeleteClusterProtection"
+
 	// 删除环境角色失败。
 	FAILEDOPERATION_DELETEENVIRONMENTROLES = "FailedOperation.DeleteEnvironmentRoles"
 
@@ -86,11 +89,17 @@ const (
 	// 查询订阅数据失败。
 	FAILEDOPERATION_DESCRIBESUBSCRIPTION = "FailedOperation.DescribeSubscription"
 
+	// 参数异常，下单失败
+	FAILEDOPERATION_GENERATEDEALSANDPAYERROR = "FailedOperation.GenerateDealsAndPayError"
+
 	// 获取环境属性失败。
 	FAILEDOPERATION_GETENVIRONMENTATTRIBUTESFAILED = "FailedOperation.GetEnvironmentAttributesFailed"
 
 	// 获取主题分区数失败。
 	FAILEDOPERATION_GETTOPICPARTITIONSFAILED = "FailedOperation.GetTopicPartitionsFailed"
+
+	// 实例已开启删除保护功能，如需进行删除操作，请关闭删除保护。
+	FAILEDOPERATION_INSTANCECANNOTDELETE = "FailedOperation.InstanceCanNotDelete"
 
 	// 实例尚未就绪，请稍后再试。
 	FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
@@ -115,6 +124,9 @@ const (
 
 	// 必须先清除关联命名空间才能继续操作。
 	FAILEDOPERATION_NAMESPACEINUSE = "FailedOperation.NamespaceInUse"
+
+	// 删除资源不存在
+	FAILEDOPERATION_ONLINEREFUNDRESOURCENOTEXIT = "FailedOperation.OnlineRefundResourceNotExit"
 
 	// 任务进行中，请稍后重试
 	FAILEDOPERATION_OPERATELATER = "FailedOperation.OperateLater"
