@@ -6543,7 +6543,7 @@ type DescribeDDoSAttackDataRequestParams struct {
 	// 开始时间。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。
+	// 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 统计指标列表，取值有：
@@ -6553,7 +6553,7 @@ type DescribeDDoSAttackDataRequestParams struct {
 	// <li>ddos_attackPackageRate：攻击包速率曲线。</li>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
-	// 站点集合，此参数必填。
+	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// DDoS策略组ID列表，不填默认选择全部策略ID。
@@ -6579,7 +6579,7 @@ type DescribeDDoSAttackDataRequest struct {
 	// 开始时间。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。
+	// 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 统计指标列表，取值有：
@@ -6589,7 +6589,7 @@ type DescribeDDoSAttackDataRequest struct {
 	// <li>ddos_attackPackageRate：攻击包速率曲线。</li>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
-	// 站点集合，此参数必填。
+	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// DDoS策略组ID列表，不填默认选择全部策略ID。
@@ -6668,13 +6668,13 @@ type DescribeDDoSAttackEventRequestParams struct {
 	// 开始时间，时间范围为 30 天。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间，时间范围为 30 天。
+	// 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// ddos策略组集合，不填默认选择全部策略。
 	PolicyIds []*int64 `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
 
-	// 站点集合，此参数必填。
+	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 分页查询的限制数目，默认值为20，最大查询条目为1000。
@@ -6709,13 +6709,13 @@ type DescribeDDoSAttackEventRequest struct {
 	// 开始时间，时间范围为 30 天。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间，时间范围为 30 天。
+	// 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// ddos策略组集合，不填默认选择全部策略。
 	PolicyIds []*int64 `json:"PolicyIds,omitnil,omitempty" name:"PolicyIds"`
 
-	// 站点集合，此参数必填。
+	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 分页查询的限制数目，默认值为20，最大查询条目为1000。
@@ -6806,7 +6806,7 @@ type DescribeDDoSAttackTopDataRequestParams struct {
 	// 开始时间。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。
+	// 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 查询的统计指标，取值有：
@@ -6818,7 +6818,7 @@ type DescribeDDoSAttackTopDataRequestParams struct {
 	// <li>ddos_attackFlux_sregion：按攻击源地区的攻击数量排行。</li>
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
-	// 站点ID集合，此参数必填。
+	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// DDoS策略组ID集合，不填默认选择全部策略ID。
@@ -6854,7 +6854,7 @@ type DescribeDDoSAttackTopDataRequest struct {
 	// 开始时间。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。
+	// 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 查询的统计指标，取值有：
@@ -6866,7 +6866,7 @@ type DescribeDDoSAttackTopDataRequest struct {
 	// <li>ddos_attackFlux_sregion：按攻击源地区的攻击数量排行。</li>
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
-	// 站点ID集合，此参数必填。
+	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// DDoS策略组ID集合，不填默认选择全部策略ID。
@@ -9375,7 +9375,7 @@ type DescribeTimingL4DataRequestParams struct {
 	// 开始时间。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。
+	// 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 查询指标，取值有：
@@ -9387,7 +9387,7 @@ type DescribeTimingL4DataRequestParams struct {
 	// <li>l4Flow_outBandwidth: 访问出向带宽峰值。</li>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
-	// 站点 ID 集合，此参数必填。
+	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 四层实例列表, 不填表示选择全部实例。
@@ -9415,7 +9415,7 @@ type DescribeTimingL4DataRequest struct {
 	// 开始时间。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。
+	// 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 查询指标，取值有：
@@ -9427,7 +9427,7 @@ type DescribeTimingL4DataRequest struct {
 	// <li>l4Flow_outBandwidth: 访问出向带宽峰值。</li>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
-	// 站点 ID 集合，此参数必填。
+	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 四层实例列表, 不填表示选择全部实例。
@@ -9509,7 +9509,7 @@ type DescribeTimingL7AnalysisDataRequestParams struct {
 	// 开始时间。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。
+	// 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 指标列表，取值有:
@@ -9524,7 +9524,7 @@ type DescribeTimingL7AnalysisDataRequestParams struct {
 	// <li> l7Flow_avgFirstByteResponseTime: L7 访问平均首字节响应耗时，单位：ms。</li>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
-	// 站点 ID 集合，此参数必填。
+	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 查询时间粒度，取值有：
@@ -9565,7 +9565,7 @@ type DescribeTimingL7AnalysisDataRequest struct {
 	// 开始时间。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。
+	// 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 指标列表，取值有:
@@ -9580,7 +9580,7 @@ type DescribeTimingL7AnalysisDataRequest struct {
 	// <li> l7Flow_avgFirstByteResponseTime: L7 访问平均首字节响应耗时，单位：ms。</li>
 	MetricNames []*string `json:"MetricNames,omitnil,omitempty" name:"MetricNames"`
 
-	// 站点 ID 集合，此参数必填。
+	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 查询时间粒度，取值有：
@@ -9811,7 +9811,7 @@ type DescribeTopL7AnalysisDataRequestParams struct {
 	// 开始时间。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。
+	// 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 查询的指标，取值有：
@@ -9842,7 +9842,7 @@ type DescribeTopL7AnalysisDataRequestParams struct {
 	// 
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
-	// 站点 ID 集合，此参数必填。
+	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 查询前多少个 top 数据，最大值为1000。不填默认为10，表示查询 top10 的数据。
@@ -9886,7 +9886,7 @@ type DescribeTopL7AnalysisDataRequest struct {
 	// 开始时间。
 	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
-	// 结束时间。
+	// 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 
 	// 查询的指标，取值有：
@@ -9917,7 +9917,7 @@ type DescribeTopL7AnalysisDataRequest struct {
 	// 
 	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
 
-	// 站点 ID 集合，此参数必填。
+	// 站点 ID 集合，此参数必填。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
 	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
 
 	// 查询前多少个 top 数据，最大值为1000。不填默认为10，表示查询 top10 的数据。
@@ -10926,50 +10926,46 @@ type DropPageDetail struct {
 
 // Predefined struct for user
 type EnableOriginACLRequestParams struct {
-	// 站点ID。
+	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 七层加速域名开启回源白名单的模式。
-	// <li>all：为站点下的所有七层加速域名开启回源白名单。</li>
-	// <li>specific：为站点下指定的七层加速域名开启回源白名单。</li>
-	// 当参数为空时，默认为specific。
+	// 七层加速域名开启源站防护的模式。
+	// <li>all：针对站点下的所有七层加速域名开启。</li>
+	// <li>specific：针对站点下指定的七层加速域名开启。</li>当参数为空时，默认为 specific。
 	L7EnableMode *string `json:"L7EnableMode,omitnil,omitempty" name:"L7EnableMode"`
 
-	// 开启回源白名单的七层加速域名列表，当请求参数 L7EnableMode 为 all 时必须为空。
+	// 开启源站防护的七层加速域名列表，仅当参数 L7EnableMode 为 specific 时生效。L7EnableMode 为 all 时，请保留此参数为空。单次最大仅支持填写 200 个七层加速域名。
 	L7Hosts []*string `json:"L7Hosts,omitnil,omitempty" name:"L7Hosts"`
 
-	// 四层代理 ID 开启回源白名单的模式。
-	// <li>all：为站点下的所有四层代理开启回源白名单。</li>
-	// <li>specific：为站点下指定的四层代理 ID 开启回源白名单。</li>
-	// 当参数为空时，默认为specific。
+	// 四层代理实例开启源站防护的模式。
+	// <li>all：针对站点下的所有四层代理实例开启。</li>
+	// <li>specific：针对站点下指定的四层代理实例开启。</li>当参数为空时，默认为 specific。
 	L4EnableMode *string `json:"L4EnableMode,omitnil,omitempty" name:"L4EnableMode"`
 
-	// 开启回源白名单的四层代理 ID 列表，当请求参数 L4EnableMode 为 all 时必须为空。单次最多支持 200 个实例。
+	// 开启源站防护的四层代理实例列表，仅当参数 L4EnableMode 为 specific 时生效。L4EnableMode 为 all 时，请保留此参数为空。单次最大仅支持填写 100 个四层代理实例。
 	L4ProxyIds []*string `json:"L4ProxyIds,omitnil,omitempty" name:"L4ProxyIds"`
 }
 
 type EnableOriginACLRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点ID。
+	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
 
-	// 七层加速域名开启回源白名单的模式。
-	// <li>all：为站点下的所有七层加速域名开启回源白名单。</li>
-	// <li>specific：为站点下指定的七层加速域名开启回源白名单。</li>
-	// 当参数为空时，默认为specific。
+	// 七层加速域名开启源站防护的模式。
+	// <li>all：针对站点下的所有七层加速域名开启。</li>
+	// <li>specific：针对站点下指定的七层加速域名开启。</li>当参数为空时，默认为 specific。
 	L7EnableMode *string `json:"L7EnableMode,omitnil,omitempty" name:"L7EnableMode"`
 
-	// 开启回源白名单的七层加速域名列表，当请求参数 L7EnableMode 为 all 时必须为空。
+	// 开启源站防护的七层加速域名列表，仅当参数 L7EnableMode 为 specific 时生效。L7EnableMode 为 all 时，请保留此参数为空。单次最大仅支持填写 200 个七层加速域名。
 	L7Hosts []*string `json:"L7Hosts,omitnil,omitempty" name:"L7Hosts"`
 
-	// 四层代理 ID 开启回源白名单的模式。
-	// <li>all：为站点下的所有四层代理开启回源白名单。</li>
-	// <li>specific：为站点下指定的四层代理 ID 开启回源白名单。</li>
-	// 当参数为空时，默认为specific。
+	// 四层代理实例开启源站防护的模式。
+	// <li>all：针对站点下的所有四层代理实例开启。</li>
+	// <li>specific：针对站点下指定的四层代理实例开启。</li>当参数为空时，默认为 specific。
 	L4EnableMode *string `json:"L4EnableMode,omitnil,omitempty" name:"L4EnableMode"`
 
-	// 开启回源白名单的四层代理 ID 列表，当请求参数 L4EnableMode 为 all 时必须为空。单次最多支持 200 个实例。
+	// 开启源站防护的四层代理实例列表，仅当参数 L4EnableMode 为 specific 时生效。L4EnableMode 为 all 时，请保留此参数为空。单次最大仅支持填写 100 个四层代理实例。
 	L4ProxyIds []*string `json:"L4ProxyIds,omitnil,omitempty" name:"L4ProxyIds"`
 }
 
@@ -16015,9 +16011,14 @@ type Plan struct {
 
 	// 服务区域，取值有：
 	// <li>mainland: 中国大陆；</li>
-	// <li>overseas: 全球（不包括中国大陆)；</li>
-	// <li>global: 全球（包括中国大陆)。</li>
+	// <li>overseas: 全球（不包括中国大陆）；</li>
+	// <li>global: 全球（包括中国大陆）。</li>
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
+
+	// 自动续费开关。取值有：
+	// <li>true: 已开启自动续费；</li>
+	// <li>false: 未开启自动续费。</li>
+	AutoRenewal *bool `json:"AutoRenewal,omitnil,omitempty" name:"AutoRenewal"`
 
 	// 套餐状态，取值有：
 	// <li>normal：正常状态；</li>

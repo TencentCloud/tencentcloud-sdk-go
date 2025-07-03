@@ -376,6 +376,12 @@ type AttachDisksRequestParams struct {
 
 	// 新挂磁盘时可支持配置的服务名称列表
 	SelectiveConfServices []*string `json:"SelectiveConfServices,omitnil,omitempty" name:"SelectiveConfServices"`
+
+	// 磁盘计费类型（1包月、3包销）
+	ChargeType *int64 `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// 磁盘包销购买时长（仅支持12、24、36、48、60）
+	UnderWriteDuration *int64 `json:"UnderWriteDuration,omitnil,omitempty" name:"UnderWriteDuration"`
 }
 
 type AttachDisksRequest struct {
@@ -406,6 +412,12 @@ type AttachDisksRequest struct {
 
 	// 新挂磁盘时可支持配置的服务名称列表
 	SelectiveConfServices []*string `json:"SelectiveConfServices,omitnil,omitempty" name:"SelectiveConfServices"`
+
+	// 磁盘计费类型（1包月、3包销）
+	ChargeType *int64 `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
+
+	// 磁盘包销购买时长（仅支持12、24、36、48、60）
+	UnderWriteDuration *int64 `json:"UnderWriteDuration,omitnil,omitempty" name:"UnderWriteDuration"`
 }
 
 func (r *AttachDisksRequest) ToJsonString() string {
@@ -428,6 +440,8 @@ func (r *AttachDisksRequest) FromJsonString(s string) error {
 	delete(f, "DiskSpec")
 	delete(f, "DeleteWithInstance")
 	delete(f, "SelectiveConfServices")
+	delete(f, "ChargeType")
+	delete(f, "UnderWriteDuration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachDisksRequest has unknown keys!", "")
 	}
@@ -627,6 +641,9 @@ type CBSInstance struct {
 
 	// emr节点ID
 	EmrResourceId *string `json:"EmrResourceId,omitnil,omitempty" name:"EmrResourceId"`
+
+	// 包销到期时间
+	UnderwriteExpiredTime *string `json:"UnderwriteExpiredTime,omitnil,omitempty" name:"UnderwriteExpiredTime"`
 }
 
 type CLBSetting struct {
@@ -944,6 +961,9 @@ type ClusterInstancesInfo struct {
 	// rss集群的绑定列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterRelationInfoList []*ClusterRelationMeta `json:"ClusterRelationInfoList,omitnil,omitempty" name:"ClusterRelationInfoList"`
+
+	// Redis信息
+	RedisId *string `json:"RedisId,omitnil,omitempty" name:"RedisId"`
 }
 
 type ClusterRelationMeta struct {
@@ -1137,6 +1157,78 @@ type Configuration struct {
 
 	// 配置参数通过KV的形式传入，部分文件支持自定义，可以通过特殊的键"content"传入所有内容。
 	Properties *string `json:"Properties,omitnil,omitempty" name:"Properties"`
+}
+
+type ConfigurationItem struct {
+	// 配置项名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 配置项值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 所在的配置文件名
+	InFile *string `json:"InFile,omitnil,omitempty" name:"InFile"`
+}
+
+// Predefined struct for user
+type ConvertPreToPostClusterRequestParams struct {
+	// 集群实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 5min内不可重入标识，订单标识
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+}
+
+type ConvertPreToPostClusterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例ID。
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 5min内不可重入标识，订单标识
+	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+}
+
+func (r *ConvertPreToPostClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ConvertPreToPostClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ClientToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ConvertPreToPostClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ConvertPreToPostClusterResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ConvertPreToPostClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *ConvertPreToPostClusterResponseParams `json:"Response"`
+}
+
+func (r *ConvertPreToPostClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ConvertPreToPostClusterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1771,6 +1863,9 @@ type CreateInstanceRequestParams struct {
 
 	// 节点标识信息，目前只提供给tf平台使用
 	NodeMarks []*NodeMark `json:"NodeMarks,omitnil,omitempty" name:"NodeMarks"`
+
+	// CLB id
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 }
 
 type CreateInstanceRequest struct {
@@ -1916,6 +2011,9 @@ type CreateInstanceRequest struct {
 
 	// 节点标识信息，目前只提供给tf平台使用
 	NodeMarks []*NodeMark `json:"NodeMarks,omitnil,omitempty" name:"NodeMarks"`
+
+	// CLB id
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -1964,6 +2062,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "MultiZoneSettings")
 	delete(f, "CosBucket")
 	delete(f, "NodeMarks")
+	delete(f, "LoadBalancerId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -4811,6 +4910,240 @@ func (r *DescribeNodeResourceConfigFastResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeNodeSpec struct {
+	// 节点类型
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 节点类型名称
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// Types数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Types []*NodeSpecType `json:"Types,omitnil,omitempty" name:"Types"`
+
+	// 云托管节点机型规格列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CmnTypes []*NodeSpecType `json:"CmnTypes,omitnil,omitempty" name:"CmnTypes"`
+}
+
+// Predefined struct for user
+type DescribeNodeSpecRequestParams struct {
+	// 可用区Id，可以通过https://document.capi.woa.com/document/api/1605/76892查询相关信息
+	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 0,按量，1包年包月，99按量+包年包月，错填将不会展示费用信息
+	CvmPayMode *uint64 `json:"CvmPayMode,omitnil,omitempty" name:"CvmPayMode"`
+
+	// 节点类型,Master,Core,Task,Router,All
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 0:旧计费页面,1:新计费页面。 错填，默认为旧计费
+	TradeType *uint64 `json:"TradeType,omitnil,omitempty" name:"TradeType"`
+
+	// 产品Id，不填为0，则表示所有productId，前台使用必填
+	// 
+	// 44	EMR	V3.5.0
+	// 43	EMR	V3.4.0.tlinux
+	// 42	EMR	V2.7.0.tlinux
+	// 41	DRUID	V1.1.0
+	// 67	STARROCKS	V2.2.0
+	// 45	DRUID	V1.1.0.tlinux
+	// 40	EMRCLOUD	v3.2.0
+	// 47	EMR	V4.0.0
+	// 48	STARROCKS	V1.2.0
+	// 49	STARROCKS	V1.3.0
+	// 50	KAFKA	V2.0.0
+	// 51	STARROCKS	V1.4.0
+	// 52	EMR-TKE	V1.0.0
+	// 53	EMR	V3.6.0
+	// 54	STARROCKS	V2.0.0
+	// 55	EMR-TKE	V1.0.1
+	// 56	EMR-TKE	DLCV1.0.0
+	// 57	EMR	V2.8.0
+	// 58	EMR	V3.6.1
+	// 59	SERVERLESS	V1.0.0
+	// 60	EMR-TKE	V1.1.0
+	// 62	STARROCKS	V2.1.1
+	// 63	STARROCKS	V2.1.1.tlinux
+	// 64	EMR-TKE	TCCV1.0.0
+	// 65	EMR-TKE-AI	V1.0.0
+	// 66	RSS	V1.0.0
+	// 24	EMR	TianQiong-V1.0.0
+	// 3	EMR	V2.0.1.tlinux
+	// 4	EMR	V2.1.0
+	// 7	EMR	V3.0.0
+	// 8	EMR	V3.0.0.tlinux
+	// 9	EMR	V2.2.0
+	// 11	CLICKHOUSE	V1.0.0
+	// 12	CLICKHOUSE	V1.0.0.tlinux
+	// 16	EMR	V2.3.0
+	// 17	CLICKHOUSE	V1.1.0
+	// 18	CLICKHOUSE	V1.1.0.tlinux
+	// 19	EMR	V2.4.0
+	// 20	EMR	V2.5.0
+	// 21	USERCUSTOM	V1.0.0
+	// 22	CLICKHOUSE	V1.2.0
+	// 39	STARROCKS	V1.1.0
+	// 25	EMR	V3.1.0
+	// 26	DORIS	V1.0.0
+	// 27	KAFKA	V1.0.0
+	// 28	EMR	V3.2.0
+	// 29	EMR	V2.5.1
+	// 30	EMR	V2.6.0
+	// 32	DORIS	V1.1.0
+	// 33	EMR	V3.2.1
+	// 34	EMR	V3.3.0
+	// 35	DORIS	V1.2.0
+	// 36	STARROCKS	V1.0.0
+	// 37	EMR	V3.4.0
+	// 38	EMR	V2.7.0
+	ProductId *uint64 `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 场景名
+	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
+
+	// 类型为ComputeResource和EMR以及默认，默认为EMR
+	ResourceBaseType *string `json:"ResourceBaseType,omitnil,omitempty" name:"ResourceBaseType"`
+
+	// 计算资源id
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
+}
+
+type DescribeNodeSpecRequest struct {
+	*tchttp.BaseRequest
+	
+	// 可用区Id，可以通过https://document.capi.woa.com/document/api/1605/76892查询相关信息
+	ZoneId *int64 `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 0,按量，1包年包月，99按量+包年包月，错填将不会展示费用信息
+	CvmPayMode *uint64 `json:"CvmPayMode,omitnil,omitempty" name:"CvmPayMode"`
+
+	// 节点类型,Master,Core,Task,Router,All
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 0:旧计费页面,1:新计费页面。 错填，默认为旧计费
+	TradeType *uint64 `json:"TradeType,omitnil,omitempty" name:"TradeType"`
+
+	// 产品Id，不填为0，则表示所有productId，前台使用必填
+	// 
+	// 44	EMR	V3.5.0
+	// 43	EMR	V3.4.0.tlinux
+	// 42	EMR	V2.7.0.tlinux
+	// 41	DRUID	V1.1.0
+	// 67	STARROCKS	V2.2.0
+	// 45	DRUID	V1.1.0.tlinux
+	// 40	EMRCLOUD	v3.2.0
+	// 47	EMR	V4.0.0
+	// 48	STARROCKS	V1.2.0
+	// 49	STARROCKS	V1.3.0
+	// 50	KAFKA	V2.0.0
+	// 51	STARROCKS	V1.4.0
+	// 52	EMR-TKE	V1.0.0
+	// 53	EMR	V3.6.0
+	// 54	STARROCKS	V2.0.0
+	// 55	EMR-TKE	V1.0.1
+	// 56	EMR-TKE	DLCV1.0.0
+	// 57	EMR	V2.8.0
+	// 58	EMR	V3.6.1
+	// 59	SERVERLESS	V1.0.0
+	// 60	EMR-TKE	V1.1.0
+	// 62	STARROCKS	V2.1.1
+	// 63	STARROCKS	V2.1.1.tlinux
+	// 64	EMR-TKE	TCCV1.0.0
+	// 65	EMR-TKE-AI	V1.0.0
+	// 66	RSS	V1.0.0
+	// 24	EMR	TianQiong-V1.0.0
+	// 3	EMR	V2.0.1.tlinux
+	// 4	EMR	V2.1.0
+	// 7	EMR	V3.0.0
+	// 8	EMR	V3.0.0.tlinux
+	// 9	EMR	V2.2.0
+	// 11	CLICKHOUSE	V1.0.0
+	// 12	CLICKHOUSE	V1.0.0.tlinux
+	// 16	EMR	V2.3.0
+	// 17	CLICKHOUSE	V1.1.0
+	// 18	CLICKHOUSE	V1.1.0.tlinux
+	// 19	EMR	V2.4.0
+	// 20	EMR	V2.5.0
+	// 21	USERCUSTOM	V1.0.0
+	// 22	CLICKHOUSE	V1.2.0
+	// 39	STARROCKS	V1.1.0
+	// 25	EMR	V3.1.0
+	// 26	DORIS	V1.0.0
+	// 27	KAFKA	V1.0.0
+	// 28	EMR	V3.2.0
+	// 29	EMR	V2.5.1
+	// 30	EMR	V2.6.0
+	// 32	DORIS	V1.1.0
+	// 33	EMR	V3.2.1
+	// 34	EMR	V3.3.0
+	// 35	DORIS	V1.2.0
+	// 36	STARROCKS	V1.0.0
+	// 37	EMR	V3.4.0
+	// 38	EMR	V2.7.0
+	ProductId *uint64 `json:"ProductId,omitnil,omitempty" name:"ProductId"`
+
+	// 场景名
+	SceneName *string `json:"SceneName,omitnil,omitempty" name:"SceneName"`
+
+	// 类型为ComputeResource和EMR以及默认，默认为EMR
+	ResourceBaseType *string `json:"ResourceBaseType,omitnil,omitempty" name:"ResourceBaseType"`
+
+	// 计算资源id
+	ComputeResourceId *string `json:"ComputeResourceId,omitnil,omitempty" name:"ComputeResourceId"`
+}
+
+func (r *DescribeNodeSpecRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNodeSpecRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "CvmPayMode")
+	delete(f, "NodeType")
+	delete(f, "TradeType")
+	delete(f, "ProductId")
+	delete(f, "SceneName")
+	delete(f, "ResourceBaseType")
+	delete(f, "ComputeResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNodeSpecRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNodeSpecResponseParams struct {
+	// 节点规格类型
+	NodeSpecs []*DescribeNodeSpec `json:"NodeSpecs,omitnil,omitempty" name:"NodeSpecs"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeNodeSpecResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNodeSpecResponseParams `json:"Response"`
+}
+
+func (r *DescribeNodeSpecResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNodeSpecResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeResourceConfig struct {
 	// 规格管理类型
 	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
@@ -5148,6 +5481,94 @@ func (r *DescribeSLInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSLInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServiceConfGroupInfosRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 组件名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 配置组名称
+	ConfGroupName *string `json:"ConfGroupName,omitnil,omitempty" name:"ConfGroupName"`
+
+	// 页码，从1开始
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+type DescribeServiceConfGroupInfosRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 组件名
+	ServiceName *string `json:"ServiceName,omitnil,omitempty" name:"ServiceName"`
+
+	// 配置组名称
+	ConfGroupName *string `json:"ConfGroupName,omitnil,omitempty" name:"ConfGroupName"`
+
+	// 页码，从1开始
+	PageNo *int64 `json:"PageNo,omitnil,omitempty" name:"PageNo"`
+
+	// 页大小
+	PageSize *int64 `json:"PageSize,omitnil,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeServiceConfGroupInfosRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServiceConfGroupInfosRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "ServiceName")
+	delete(f, "ConfGroupName")
+	delete(f, "PageNo")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServiceConfGroupInfosRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServiceConfGroupInfosResponseParams struct {
+	// 列表大小
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 配置项key value列表
+	ConfItemKVList []*ConfigurationItem `json:"ConfItemKVList,omitnil,omitempty" name:"ConfItemKVList"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeServiceConfGroupInfosResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeServiceConfGroupInfosResponseParams `json:"Response"`
+}
+
+func (r *DescribeServiceConfGroupInfosResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServiceConfGroupInfosResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7809,6 +8230,10 @@ type LoadMetricsConditions struct {
 	// 触发规则条件
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadMetrics []*LoadMetricsCondition `json:"LoadMetrics,omitnil,omitempty" name:"LoadMetrics"`
+
+	// 0:所有条件满足
+	// 1：满足任意一个
+	Match *int64 `json:"Match,omitnil,omitempty" name:"Match"`
 }
 
 type LoginSettings struct {
@@ -9581,6 +10006,12 @@ type NodeHardwareInfo struct {
 
 	// 节点标注信息，目前只提供给tf平台使用
 	NodeMark *string `json:"NodeMark,omitnil,omitempty" name:"NodeMark"`
+
+	// 包销资源是否支持设置自动续费
+	UnderwriteSetAutoRenew *bool `json:"UnderwriteSetAutoRenew,omitnil,omitempty" name:"UnderwriteSetAutoRenew"`
+
+	// Gpu信息
+	GpuDesc *string `json:"GpuDesc,omitnil,omitempty" name:"GpuDesc"`
 }
 
 type NodeMark struct {
@@ -9690,6 +10121,20 @@ type NodeSelectorTerm struct {
 	MatchExpressions []*NodeSelectorRequirement `json:"MatchExpressions,omitnil,omitempty" name:"MatchExpressions"`
 }
 
+type NodeSpecDisk struct {
+	// 数量
+	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
+
+	// 名字
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 磁盘类型
+	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// 指定磁盘大小
+	DefaultDiskSize *int64 `json:"DefaultDiskSize,omitnil,omitempty" name:"DefaultDiskSize"`
+}
+
 type NodeSpecDiskV2 struct {
 	// 数量
 	Count *int64 `json:"Count,omitnil,omitempty" name:"Count"`
@@ -9702,6 +10147,105 @@ type NodeSpecDiskV2 struct {
 
 	// 指定磁盘大小
 	DefaultDiskSize *int64 `json:"DefaultDiskSize,omitnil,omitempty" name:"DefaultDiskSize"`
+}
+
+type NodeSpecFamily struct {
+	// 机型
+	InstanceFamily *string `json:"InstanceFamily,omitnil,omitempty" name:"InstanceFamily"`
+
+	// 机型名称
+	FamilyName *string `json:"FamilyName,omitnil,omitempty" name:"FamilyName"`
+
+	// 排序
+	Order *int64 `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// InstanceType的列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceTypes []*NodeSpecInstanceType `json:"InstanceTypes,omitnil,omitempty" name:"InstanceTypes"`
+}
+
+type NodeSpecInstanceType struct {
+	// 规格
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 4
+	Cpu *int64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
+
+	// 8，单位G
+	Memory *int64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 排序，越小排的越前
+	Order *int64 `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// 数量
+	Num *int64 `json:"Num,omitnil,omitempty" name:"Num"`
+
+	// 售罄原因
+	SellOutReason *string `json:"SellOutReason,omitnil,omitempty" name:"SellOutReason"`
+
+	// 系统盘
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SystemDisk []*NodeSpecDisk `json:"SystemDisk,omitnil,omitempty" name:"SystemDisk"`
+
+	// 数据盘
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataDisk []*NodeSpecDisk `json:"DataDisk,omitnil,omitempty" name:"DataDisk"`
+
+	// 本地数据盘
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalDataDisk []*NodeSpecDisk `json:"LocalDataDisk,omitnil,omitempty" name:"LocalDataDisk"`
+
+	// 售罄原因
+	SoldOutReason *string `json:"SoldOutReason,omitnil,omitempty" name:"SoldOutReason"`
+
+	// 机型类别
+	InstanceFamily *string `json:"InstanceFamily,omitnil,omitempty" name:"InstanceFamily"`
+
+	// 节点名称
+	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
+
+	// 节点类型
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// 类别
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 类别名称
+	TypeName *string `json:"TypeName,omitnil,omitempty" name:"TypeName"`
+
+	// 类别分类
+	FamilyName *string `json:"FamilyName,omitnil,omitempty" name:"FamilyName"`
+
+	// cpu类型
+	CpuType *string `json:"CpuType,omitnil,omitempty" name:"CpuType"`
+
+	// 售罄 RunOut、库存少 Less、充足 Enough
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 原价
+	OriginPrice *float64 `json:"OriginPrice,omitnil,omitempty" name:"OriginPrice"`
+
+	// 包销计费机型支持的购买时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrepaidUnderwritePeriods []*int64 `json:"PrepaidUnderwritePeriods,omitnil,omitempty" name:"PrepaidUnderwritePeriods"`
+
+	// GPU信息
+	GpuDesc *string `json:"GpuDesc,omitnil,omitempty" name:"GpuDesc"`
+}
+
+type NodeSpecType struct {
+	// 机型序列
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 机型序列名字
+	TypeName *string `json:"TypeName,omitnil,omitempty" name:"TypeName"`
+
+	// 排序
+	Order *int64 `json:"Order,omitnil,omitempty" name:"Order"`
+
+	// InstanceFamily数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceFamilies []*NodeSpecFamily `json:"InstanceFamilies,omitnil,omitempty" name:"InstanceFamilies"`
 }
 
 type NotRepeatStrategy struct {

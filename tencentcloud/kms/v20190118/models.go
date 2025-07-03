@@ -2382,7 +2382,7 @@ type GenerateDataKeyRequestParams struct {
 	// 非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（以 C1C3C2 格式返回密文），SM2_C1C3C2_ASN1 （以 C1C3C2 ASN1 格式返回密文），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
 	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitnil,omitempty" name:"EncryptionAlgorithm"`
 
-	// 表示生成的数据密钥是否被KMS托管。1:表示被KMS托管保存,0:表示KMS不托管。表示生成的数据密钥是否被KMS托管。1:表示被KMS托管保存,0:表示KMS不托管。
+	// 表示生成的数据密钥是否被KMS托管。1:表示被KMS托管保存,0:表示KMS不托管。
 	IsHostedByKms *uint64 `json:"IsHostedByKms,omitnil,omitempty" name:"IsHostedByKms"`
 
 	// 数据密钥的名称，当IsHostedByKms为1时,必须填写。当IsHostedByKms为0时,可以不填，KMS不托管。
@@ -2391,9 +2391,7 @@ type GenerateDataKeyRequestParams struct {
 	// 数据密钥 的描述，最大100字节
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// KMS 独享版对应的 HSM 集群 ID。
-	// 当KeyId 没有传入时有效，如果指定HsmClusterId,会默认在此集群下生成根密钥，然后利用创建的根密钥产生数据密钥。
-	// 如果没有指定HsmClusterId，则会在公有云共享集群下创建一个根密钥，然后利用创建的根密钥产生数据密钥。
+	// KMS 独享版对应的 HSM 集群 ID。如果指定HsmClusterId，表明根密钥在此集群里，会校验KeyId是否和HsmClusterId对应。
 	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
 }
 
@@ -2418,7 +2416,7 @@ type GenerateDataKeyRequest struct {
 	// 非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（以 C1C3C2 格式返回密文），SM2_C1C3C2_ASN1 （以 C1C3C2 ASN1 格式返回密文），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
 	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitnil,omitempty" name:"EncryptionAlgorithm"`
 
-	// 表示生成的数据密钥是否被KMS托管。1:表示被KMS托管保存,0:表示KMS不托管。表示生成的数据密钥是否被KMS托管。1:表示被KMS托管保存,0:表示KMS不托管。
+	// 表示生成的数据密钥是否被KMS托管。1:表示被KMS托管保存,0:表示KMS不托管。
 	IsHostedByKms *uint64 `json:"IsHostedByKms,omitnil,omitempty" name:"IsHostedByKms"`
 
 	// 数据密钥的名称，当IsHostedByKms为1时,必须填写。当IsHostedByKms为0时,可以不填，KMS不托管。
@@ -2427,9 +2425,7 @@ type GenerateDataKeyRequest struct {
 	// 数据密钥 的描述，最大100字节
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// KMS 独享版对应的 HSM 集群 ID。
-	// 当KeyId 没有传入时有效，如果指定HsmClusterId,会默认在此集群下生成根密钥，然后利用创建的根密钥产生数据密钥。
-	// 如果没有指定HsmClusterId，则会在公有云共享集群下创建一个根密钥，然后利用创建的根密钥产生数据密钥。
+	// KMS 独享版对应的 HSM 集群 ID。如果指定HsmClusterId，表明根密钥在此集群里，会校验KeyId是否和HsmClusterId对应。
 	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
 }
 
@@ -3048,15 +3044,11 @@ type ImportDataKeyRequestParams struct {
 	// 数据密钥 的描述，最大100字节
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 当导入密文数据密钥时，无需传入根密钥,如果传入也会忽略。
-	// 当KeyId 为空，如果指定了独享集群HsmClusterId，则会在独享集群下创建一个根密钥，根据生成的根密钥加密数据密钥。
-	// 如果没有指定独享集群HsmClusterId,则会在公有云共享集群下创建一个根密钥，根据生成的根密钥加密数据密钥。
-	// 如果KeyId 不为空，根据指定的根密钥加密数据密钥。
+	// 当导入密文数据密钥时，无需传入根密钥,如果传入会校验此KeyId是否和密文中一致。
+	// 当导入明文数据密钥，KeyId 不能为空，会根据指定的根密钥加密数据密钥。
 	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
 
-	// KMS 独享版对应的 HSM 集群 ID。
-	// 当KeyId 没有传入时有效，如果指定了独享集群HsmClusterId，则会在独享集群下创建一个根密钥，根据产生的根密钥加密数据密钥。
-	// 如果没有指定独享集群HsmClusterId,则会在公有云共享集群下创建一个根密钥，根据产生的根密钥加密数据密钥。
+	// KMS 独享版对应的 HSM 集群 ID。如果指定HsmClusterId，表明根密钥在此集群里，会校验KeyId是否和HsmClusterId对应。
 	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
 }
 
@@ -3075,15 +3067,11 @@ type ImportDataKeyRequest struct {
 	// 数据密钥 的描述，最大100字节
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// 当导入密文数据密钥时，无需传入根密钥,如果传入也会忽略。
-	// 当KeyId 为空，如果指定了独享集群HsmClusterId，则会在独享集群下创建一个根密钥，根据生成的根密钥加密数据密钥。
-	// 如果没有指定独享集群HsmClusterId,则会在公有云共享集群下创建一个根密钥，根据生成的根密钥加密数据密钥。
-	// 如果KeyId 不为空，根据指定的根密钥加密数据密钥。
+	// 当导入密文数据密钥时，无需传入根密钥,如果传入会校验此KeyId是否和密文中一致。
+	// 当导入明文数据密钥，KeyId 不能为空，会根据指定的根密钥加密数据密钥。
 	KeyId *string `json:"KeyId,omitnil,omitempty" name:"KeyId"`
 
-	// KMS 独享版对应的 HSM 集群 ID。
-	// 当KeyId 没有传入时有效，如果指定了独享集群HsmClusterId，则会在独享集群下创建一个根密钥，根据产生的根密钥加密数据密钥。
-	// 如果没有指定独享集群HsmClusterId,则会在公有云共享集群下创建一个根密钥，根据产生的根密钥加密数据密钥。
+	// KMS 独享版对应的 HSM 集群 ID。如果指定HsmClusterId，表明根密钥在此集群里，会校验KeyId是否和HsmClusterId对应。
 	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
 }
 

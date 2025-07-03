@@ -165,6 +165,33 @@ type BindCluster struct {
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 }
 
+type CertificateInfo struct {
+	// SSL证书管理中的id
+	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
+
+	// 证书到期时间
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 证书绑定的域名
+	DomainName *string `json:"DomainName,omitnil,omitempty" name:"DomainName"`
+
+	// 证书状态：0 已签发
+	// 1 即将过期
+	// 2 未启用
+	// 3 已过期
+	// 4 不可用
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 证书类型：0：根证书，1：服务端证书
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// TencentCloud：SSL证书；Default：TDMQ官方默认证书
+	Origin *string `json:"Origin,omitnil,omitempty" name:"Origin"`
+
+	// 证书添加/更新时间
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+}
+
 // Predefined struct for user
 type ClearCmqQueueRequestParams struct {
 	// 队列名字，在单个地域同一账号下唯一。队列名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)。
@@ -1786,6 +1813,9 @@ type CreateRabbitMQVipInstanceRequestParams struct {
 
 	// 是否打开公网接入，不传默认为false
 	EnablePublicAccess *bool `json:"EnablePublicAccess,omitnil,omitempty" name:"EnablePublicAccess"`
+
+	// 是否打开集群删除保护，不传默认为 false
+	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
 }
 
 type CreateRabbitMQVipInstanceRequest struct {
@@ -1847,6 +1877,9 @@ type CreateRabbitMQVipInstanceRequest struct {
 
 	// 是否打开公网接入，不传默认为false
 	EnablePublicAccess *bool `json:"EnablePublicAccess,omitnil,omitempty" name:"EnablePublicAccess"`
+
+	// 是否打开集群删除保护，不传默认为 false
+	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
 }
 
 func (r *CreateRabbitMQVipInstanceRequest) ToJsonString() string {
@@ -1877,6 +1910,7 @@ func (r *CreateRabbitMQVipInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ResourceTags")
 	delete(f, "Bandwidth")
 	delete(f, "EnablePublicAccess")
+	delete(f, "EnableDeletionProtection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRabbitMQVipInstanceRequest has unknown keys!", "")
 	}
@@ -7226,14 +7260,14 @@ func (r *DescribeRabbitMQUserResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRabbitMQVipInstanceRequestParams struct {
-	// 集群 ID
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
 type DescribeRabbitMQVipInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群 ID
+	// 实例 ID，形如 amqp-xxxxxxxx。有效的 InstanceId 可通过登录 [TDMQ RabbitMQ 控制台](https://console.cloud.tencent.com/trabbitmq/cluster?rid=1)查询。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 }
 
@@ -7278,6 +7312,9 @@ type DescribeRabbitMQVipInstanceResponseParams struct {
 
 	// queue配额信息
 	QueueQuota *QueueQuota `json:"QueueQuota,omitnil,omitempty" name:"QueueQuota"`
+
+	// 用户配额信息
+	UserQuota *RabbitMQUserQuota `json:"UserQuota,omitnil,omitempty" name:"UserQuota"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -11818,11 +11855,14 @@ type ModifyRabbitMQVipInstanceRequestParams struct {
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 集群名称
+	// 集群名称，不填则不修改。非空字符串时必须 3-64 个字符，只能包含数字、字母、“-”和“_”
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 备注
+	// 备注，不填则不修改
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 是否开启删除保护，不填则不修改
+	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
 }
 
 type ModifyRabbitMQVipInstanceRequest struct {
@@ -11831,11 +11871,14 @@ type ModifyRabbitMQVipInstanceRequest struct {
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 集群名称
+	// 集群名称，不填则不修改。非空字符串时必须 3-64 个字符，只能包含数字、字母、“-”和“_”
 	ClusterName *string `json:"ClusterName,omitnil,omitempty" name:"ClusterName"`
 
-	// 备注
+	// 备注，不填则不修改
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 是否开启删除保护，不填则不修改
+	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
 }
 
 func (r *ModifyRabbitMQVipInstanceRequest) ToJsonString() string {
@@ -11853,6 +11896,7 @@ func (r *ModifyRabbitMQVipInstanceRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "ClusterName")
 	delete(f, "Remark")
+	delete(f, "EnableDeletionProtection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRabbitMQVipInstanceRequest has unknown keys!", "")
 	}
@@ -13114,6 +13158,12 @@ type PulsarNetworkAccessPointInfo struct {
 	// 可用区信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneName *string `json:"ZoneName,omitnil,omitempty" name:"ZoneName"`
+
+	// 是否开启TLS加密
+	Tls *bool `json:"Tls,omitnil,omitempty" name:"Tls"`
+
+	// 接入点自定义域名
+	CustomUrl *string `json:"CustomUrl,omitnil,omitempty" name:"CustomUrl"`
 }
 
 type PulsarProClusterInfo struct {
@@ -13263,6 +13313,9 @@ type PulsarProInstance struct {
 
 	// 自定义租户
 	Tenant *string `json:"Tenant,omitnil,omitempty" name:"Tenant"`
+
+	// 集群的证书列表
+	CertificateList []*CertificateInfo `json:"CertificateList,omitnil,omitempty" name:"CertificateList"`
 }
 
 type QueueQuota struct {
@@ -13352,6 +13405,9 @@ type RabbitMQClusterAccessInfo struct {
 
 	// 控制面所使用的VPC信息
 	ControlPlaneEndpointInfo *VpcEndpointInfo `json:"ControlPlaneEndpointInfo,omitnil,omitempty" name:"ControlPlaneEndpointInfo"`
+
+	// TLS加密的数据流公网接入点
+	PublicTlsAccessEndpoint *string `json:"PublicTlsAccessEndpoint,omitnil,omitempty" name:"PublicTlsAccessEndpoint"`
 }
 
 type RabbitMQClusterInfo struct {
@@ -13433,6 +13489,12 @@ type RabbitMQClusterInfo struct {
 
 	// 是否为容器实例，默认 true
 	Container *bool `json:"Container,omitnil,omitempty" name:"Container"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 是否已开启删除保护
+	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
 }
 
 type RabbitMQClusterSpecInfo struct {
@@ -13703,6 +13765,14 @@ type RabbitMQUser struct {
 	ModifyTs *uint64 `json:"ModifyTs,omitnil,omitempty" name:"ModifyTs"`
 }
 
+type RabbitMQUserQuota struct {
+	// 最大可创建用户数
+	MaxUser *int64 `json:"MaxUser,omitnil,omitempty" name:"MaxUser"`
+
+	// 已使用用户数
+	UsedUser *int64 `json:"UsedUser,omitnil,omitempty" name:"UsedUser"`
+}
+
 type RabbitMQVipInstance struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
@@ -13773,11 +13843,17 @@ type RabbitMQVipInstance struct {
 	// 创建时间，毫秒为单位。unix 时间戳
 	CreateTime *uint64 `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 实例类型，0 专享版、1 Serverless 版
+	// 实例类型，0 托管版、1 Serverless 版
 	InstanceType *uint64 `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
-	// 隔离时间，毫秒为单位
+	// 隔离时间，毫秒为单位。unix 时间戳
 	IsolatedTime *uint64 `json:"IsolatedTime,omitnil,omitempty" name:"IsolatedTime"`
+
+	// 是否已开启删除保护
+	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitnil,omitempty" name:"EnableDeletionProtection"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type RabbitMQVirtualHostInfo struct {
@@ -16046,6 +16122,15 @@ type VirtualHostQuota struct {
 
 	// 已创建vhost数
 	UsedVirtualHost *int64 `json:"UsedVirtualHost,omitnil,omitempty" name:"UsedVirtualHost"`
+
+	// 单个 vhost 下允许的最大连接数
+	MaxConnectionPerVhost *int64 `json:"MaxConnectionPerVhost,omitnil,omitempty" name:"MaxConnectionPerVhost"`
+
+	// 单个 vhost 下允许的最大交换机数
+	MaxExchangePerVhost *int64 `json:"MaxExchangePerVhost,omitnil,omitempty" name:"MaxExchangePerVhost"`
+
+	// 单个 vhost 下允许的最大队列机数
+	MaxQueuePerVhost *int64 `json:"MaxQueuePerVhost,omitnil,omitempty" name:"MaxQueuePerVhost"`
 }
 
 type VpcBindRecord struct {
@@ -16089,6 +16174,9 @@ type VpcEndpointInfo struct {
 
 	// vpc接入点状态 OFF/ON/CREATING/DELETING
 	VpcDataStreamEndpointStatus *string `json:"VpcDataStreamEndpointStatus,omitnil,omitempty" name:"VpcDataStreamEndpointStatus"`
+
+	// TLS加密的数据流接入点
+	VpcTlsEndpoint *string `json:"VpcTlsEndpoint,omitnil,omitempty" name:"VpcTlsEndpoint"`
 }
 
 type VpcInfo struct {

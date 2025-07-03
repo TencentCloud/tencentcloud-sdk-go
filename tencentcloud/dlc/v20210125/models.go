@@ -4181,6 +4181,14 @@ type CrontabResumeSuspendStrategy struct {
 	SuspendStrategy *int64 `json:"SuspendStrategy,omitnil,omitempty" name:"SuspendStrategy"`
 }
 
+type CustomConfig struct {
+	// 自定义参数名
+	ConfigKey *string `json:"ConfigKey,omitnil,omitempty" name:"ConfigKey"`
+
+	// 自定义参数值
+	ConfigValue *string `json:"ConfigValue,omitnil,omitempty" name:"ConfigValue"`
+}
+
 type DLCCatalogAccess struct {
 	// VPCID
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
@@ -4977,6 +4985,12 @@ type DatasourceConnectionInfo struct {
 
 	// 连通性测试提示信息
 	ConnectivityTips *string `json:"ConnectivityTips,omitnil,omitempty" name:"ConnectivityTips"`
+
+	// 自定义参数
+	CustomConfig []*CustomConfig `json:"CustomConfig,omitnil,omitempty" name:"CustomConfig"`
+
+	// 是否允许回退
+	AllowRollback *bool `json:"AllowRollback,omitnil,omitempty" name:"AllowRollback"`
 }
 
 type DatasourceConnectionLocation struct {
@@ -12735,6 +12749,9 @@ type NetworkConnection struct {
 	// 数据源SubnetCidrBlock
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatasourceConnectionSubnetCidrBlock *string `json:"DatasourceConnectionSubnetCidrBlock,omitnil,omitempty" name:"DatasourceConnectionSubnetCidrBlock"`
+
+	// 支持 eg
+	EGSupport *int64 `json:"EGSupport,omitnil,omitempty" name:"EGSupport"`
 }
 
 type NotebookSessionInfo struct {

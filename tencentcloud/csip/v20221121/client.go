@@ -469,6 +469,89 @@ func (c *Client) DescribeAlertListWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeAssetProcessListRequest() (request *DescribeAssetProcessListRequest) {
+    request = &DescribeAssetProcessListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeAssetProcessList")
+    
+    
+    return
+}
+
+func NewDescribeAssetProcessListResponse() (response *DescribeAssetProcessListResponse) {
+    response = &DescribeAssetProcessListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAssetProcessList
+// 查询云边界分析-暴露路径下主机节点的进程列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAssetProcessList(request *DescribeAssetProcessListRequest) (response *DescribeAssetProcessListResponse, err error) {
+    return c.DescribeAssetProcessListWithContext(context.Background(), request)
+}
+
+// DescribeAssetProcessList
+// 查询云边界分析-暴露路径下主机节点的进程列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAssetProcessListWithContext(ctx context.Context, request *DescribeAssetProcessListRequest) (response *DescribeAssetProcessListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetProcessListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetProcessList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetProcessListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetRiskListRequest() (request *DescribeAssetRiskListRequest) {
     request = &DescribeAssetRiskListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1485,7 +1568,7 @@ func NewDescribeExposeAssetCategoryResponse() (response *DescribeExposeAssetCate
 }
 
 // DescribeExposeAssetCategory
-// 暴露面资产分类
+// 云边界分析资产分类
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1511,7 +1594,7 @@ func (c *Client) DescribeExposeAssetCategory(request *DescribeExposeAssetCategor
 }
 
 // DescribeExposeAssetCategory
-// 暴露面资产分类
+// 云边界分析资产分类
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1568,7 +1651,7 @@ func NewDescribeExposePathResponse() (response *DescribeExposePathResponse) {
 }
 
 // DescribeExposePath
-// 查询互联网暴露节点
+// 查询云边界分析路径节点
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1594,7 +1677,7 @@ func (c *Client) DescribeExposePath(request *DescribeExposePathRequest) (respons
 }
 
 // DescribeExposePath
-// 查询互联网暴露节点
+// 查询云边界分析路径节点
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1651,7 +1734,7 @@ func NewDescribeExposuresResponse() (response *DescribeExposuresResponse) {
 }
 
 // DescribeExposures
-// 互联网暴露资产列表
+// 云边界分析资产列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1677,7 +1760,7 @@ func (c *Client) DescribeExposures(request *DescribeExposuresRequest) (response 
 }
 
 // DescribeExposures
-// 互联网暴露资产列表
+// 云边界分析资产列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1793,6 +1876,89 @@ func (c *Client) DescribeGatewayAssetsWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeGatewayAssetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHighBaseLineRiskListRequest() (request *DescribeHighBaseLineRiskListRequest) {
+    request = &DescribeHighBaseLineRiskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeHighBaseLineRiskList")
+    
+    
+    return
+}
+
+func NewDescribeHighBaseLineRiskListResponse() (response *DescribeHighBaseLineRiskListResponse) {
+    response = &DescribeHighBaseLineRiskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeHighBaseLineRiskList
+// 查询云边界分析-暴露路径下主机节点的高危基线风险列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeHighBaseLineRiskList(request *DescribeHighBaseLineRiskListRequest) (response *DescribeHighBaseLineRiskListResponse, err error) {
+    return c.DescribeHighBaseLineRiskListWithContext(context.Background(), request)
+}
+
+// DescribeHighBaseLineRiskList
+// 查询云边界分析-暴露路径下主机节点的高危基线风险列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeHighBaseLineRiskListWithContext(ctx context.Context, request *DescribeHighBaseLineRiskListRequest) (response *DescribeHighBaseLineRiskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeHighBaseLineRiskListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHighBaseLineRiskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHighBaseLineRiskListResponse()
     err = c.Send(request, response)
     return
 }
@@ -3537,7 +3703,7 @@ func NewDescribeScanStatisticResponse() (response *DescribeScanStatisticResponse
 }
 
 // DescribeScanStatistic
-// 查询互联网暴露扫描结果统计信息
+// 查询云边界分析扫描结果统计信息
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3563,7 +3729,7 @@ func (c *Client) DescribeScanStatistic(request *DescribeScanStatisticRequest) (r
 }
 
 // DescribeScanStatistic
-// 查询互联网暴露扫描结果统计信息
+// 查询云边界分析扫描结果统计信息
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4592,6 +4758,89 @@ func (c *Client) DescribeVpcAssetsWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeVpcAssetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVulRiskListRequest() (request *DescribeVulRiskListRequest) {
+    request = &DescribeVulRiskListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("csip", APIVersion, "DescribeVulRiskList")
+    
+    
+    return
+}
+
+func NewDescribeVulRiskListResponse() (response *DescribeVulRiskListResponse) {
+    response = &DescribeVulRiskListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVulRiskList
+// 查询云边界分析-暴露路径下主机节点的漏洞列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVulRiskList(request *DescribeVulRiskListRequest) (response *DescribeVulRiskListResponse, err error) {
+    return c.DescribeVulRiskListWithContext(context.Background(), request)
+}
+
+// DescribeVulRiskList
+// 查询云边界分析-暴露路径下主机节点的漏洞列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVulRiskListWithContext(ctx context.Context, request *DescribeVulRiskListRequest) (response *DescribeVulRiskListResponse, err error) {
+    if request == nil {
+        request = NewDescribeVulRiskListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVulRiskList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVulRiskListResponse()
     err = c.Send(request, response)
     return
 }

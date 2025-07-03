@@ -158,6 +158,7 @@ import (
 	iev20200304 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ie/v20200304"
 	iecpv20210914 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iecp/v20210914"
 	igv20210518 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ig/v20210518"
+	igtmv20231024 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/igtm/v20231024"
 	iirv20200417 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iir/v20200417"
 	imsv20200713 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ims/v20200713"
 	imsv20201229 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ims/v20201229"
@@ -218,6 +219,7 @@ import (
 	regionv20220627 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/region/v20220627"
 	rumv20210622 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rum/v20210622"
 	scfv20180416 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/scf/v20180416"
+	securitylakev20240117 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/securitylake/v20240117"
 	sesv20201002 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ses/v20201002"
 	smhv20210712 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smh/v20210712"
 	smopv20201203 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/smop/v20201203"
@@ -2111,6 +2113,19 @@ func TestIgv20210518Import(t *testing.T) {
     }
 }
 
+func TestIgtmv20231024Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := igtmv20231024.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init igtm_v20231024 client: %v", err)
+    }
+}
+
 func TestIirv20200417Import(t *testing.T) {
     credential := common.NewCredential(
         os.Getenv("TENCENTCLOUD_SECRET_ID"),
@@ -2888,6 +2903,19 @@ func TestScfv20180416Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init scf_v20180416 client: %v", err)
+    }
+}
+
+func TestSecuritylakev20240117Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := securitylakev20240117.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init securitylake_v20240117 client: %v", err)
     }
 }
 

@@ -5412,8 +5412,7 @@ type Image struct {
 	// CREATING-创建中
 	// NORMAL-正常
 	// CREATEFAILED-创建失败
-	// USING-使用中
-	// SYNCING-同步中
+	// SYNCING-复制中
 	// IMPORTING-导入中
 	// IMPORTFAILED-导入失败
 	ImageState *string `json:"ImageState,omitnil,omitempty" name:"ImageState"`
@@ -9873,6 +9872,9 @@ type RunInstancesRequestParams struct {
 
 	// 实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：<br><li>true：表示开启实例保护，不允许通过api接口删除实例</li><br><li>false：表示关闭实例保护，允许通过api接口删除实例</li><br><br>默认取值：false。
 	DisableApiTermination *bool `json:"DisableApiTermination,omitnil,omitempty" name:"DisableApiTermination"`
+
+	// 实例是否开启巨型帧，取值范围：<br><li/> true：表示实例开启巨型帧，只有支持巨型帧的机型可设置为true。<br><li/>false：表示实例关闭巨型帧，只有支持巨型帧的机型可设置为false。<br> 支持巨型帧的实例规格： [实例规格](https://cloud.tencent.com/document/product/213/11518)
+	EnableJumboFrame *bool `json:"EnableJumboFrame,omitnil,omitempty" name:"EnableJumboFrame"`
 }
 
 type RunInstancesRequest struct {
@@ -9975,6 +9977,9 @@ type RunInstancesRequest struct {
 
 	// 实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：<br><li>true：表示开启实例保护，不允许通过api接口删除实例</li><br><li>false：表示关闭实例保护，允许通过api接口删除实例</li><br><br>默认取值：false。
 	DisableApiTermination *bool `json:"DisableApiTermination,omitnil,omitempty" name:"DisableApiTermination"`
+
+	// 实例是否开启巨型帧，取值范围：<br><li/> true：表示实例开启巨型帧，只有支持巨型帧的机型可设置为true。<br><li/>false：表示实例关闭巨型帧，只有支持巨型帧的机型可设置为false。<br> 支持巨型帧的实例规格： [实例规格](https://cloud.tencent.com/document/product/213/11518)
+	EnableJumboFrame *bool `json:"EnableJumboFrame,omitnil,omitempty" name:"EnableJumboFrame"`
 }
 
 func (r *RunInstancesRequest) ToJsonString() string {
@@ -10019,6 +10024,7 @@ func (r *RunInstancesRequest) FromJsonString(s string) error {
 	delete(f, "DedicatedClusterId")
 	delete(f, "ChcIds")
 	delete(f, "DisableApiTermination")
+	delete(f, "EnableJumboFrame")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunInstancesRequest has unknown keys!", "")
 	}

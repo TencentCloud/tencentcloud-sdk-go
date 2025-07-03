@@ -677,6 +677,9 @@ type DescribeInstancesRequestParams struct {
 
 	// 任务状态：1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中
 	TaskStatus []*int64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
+
+	// 根据实例vip搜索实例
+	Networks []*string `json:"Networks,omitnil,omitempty" name:"Networks"`
 }
 
 type DescribeInstancesRequest struct {
@@ -726,6 +729,9 @@ type DescribeInstancesRequest struct {
 
 	// 任务状态：1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中
 	TaskStatus []*int64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
+
+	// 根据实例vip搜索实例
+	Networks []*string `json:"Networks,omitnil,omitempty" name:"Networks"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -755,6 +761,7 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "ResourceTags")
 	delete(f, "TaskStatus")
+	delete(f, "Networks")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesRequest has unknown keys!", "")
 	}
@@ -1015,6 +1022,15 @@ type InstanceInfo struct {
 	// 是否不过期(永久)。
 	IsNoExpired *bool `json:"IsNoExpired,omitnil,omitempty" name:"IsNoExpired"`
 
+	// 产品版本，0-标准版，1-容量增强版
+	ProductType *int64 `json:"ProductType,omitnil,omitempty" name:"ProductType"`
+
+	// 实例类型
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 节点类型
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
 	// 外网地址。
 	WanAddress *string `json:"WanAddress,omitnil,omitempty" name:"WanAddress"`
 
@@ -1026,6 +1042,9 @@ type InstanceInfo struct {
 
 	// 任务状态：0-无任务；1-待执行任务；2-密钥更新中；3-网络变更中；4-参数变更中；5-embedding变更中；6-ai套件变更中；7-滚动升级中；8-纵向扩容中；9-纵向缩容中；10-横向扩容中；11-横向缩容中
 	TaskStatus *int64 `json:"TaskStatus,omitnil,omitempty" name:"TaskStatus"`
+
+	// 绑定的安全组id
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
 }
 
 // Predefined struct for user

@@ -486,7 +486,7 @@ type AutoSignConfig struct {
 	// <li>**INSIGHT** : 慧眼人脸识别</li>
 	// <li>**TELECOM** : 运营商三要素验证</li></ul>
 	// 注：
-	// <ul><li>如果是小程序开通链接，支持传 WEIXINAPP / TELECOM。为空默认 WEIXINAPP</li>
+	// <ul><li>如果是小程序开通链接，仅支持 WEIXINAPP 。为空默认 WEIXINAPP</li>
 	// <li>如果是 H5 开通链接，支持传 INSIGHT / TELECOM。为空默认 INSIGHT </li></ul>
 	VerifyChannels []*string `json:"VerifyChannels,omitnil,omitempty" name:"VerifyChannels"`
 
@@ -12714,7 +12714,7 @@ type FileUrl struct {
 type FillApproverInfo struct {
 	// 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
 	// 模板发起合同时，该参数为必填项。
-	// 文件发起合同是，该参数无需传值。
+	// 文件发起合同时，该参数无需传值。
 	// 如果开发者后序用合同模板发起合同，建议保存此值，在用合同模板发起合同中需此值绑定对应的签署经办人 。
 	RecipientId *string `json:"RecipientId,omitnil,omitempty" name:"RecipientId"`
 
@@ -12728,9 +12728,15 @@ type FillApproverInfo struct {
 	CustomUserId *string `json:"CustomUserId,omitnil,omitempty" name:"CustomUserId"`
 
 	// 补充企业签署人员工姓名
+	// <ul>
+	// <li>ApproverSource!=WEWORKAPP时，必传</li>
+	// </ul>
 	ApproverName *string `json:"ApproverName,omitnil,omitempty" name:"ApproverName"`
 
 	// 补充企业签署人员工手机号
+	// <ul>
+	// <li>ApproverSource!=WEWORKAPP时，必传</li>
+	// </ul>
 	ApproverMobile *string `json:"ApproverMobile,omitnil,omitempty" name:"ApproverMobile"`
 
 	// 补充企业动态签署人时，需要指定对应企业名称
@@ -12748,8 +12754,8 @@ type FillApproverInfo struct {
 
 	// 签署方经办人的证件号码，应符合以下规则
 	// <ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。。</li>
-	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+	// <li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字</li>
+	// <li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串</li></ul>
 	// 
 	// 注：`补充个人签署方时，若该用户已在电子签完成实名则可通过指定姓名和证件类型、证件号码完成补充。`
 	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil,omitempty" name:"ApproverIdCardNumber"`
@@ -12758,6 +12764,18 @@ type FillApproverInfo struct {
 	// - 补充合同组子合同动态签署人时必传。
 	// - 补充普通合同时，请阅读：<a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowApprovers/" target="_blank">补充签署人接口</a>的接口使用说明
 	FlowId *string `json:"FlowId,omitnil,omitempty" name:"FlowId"`
+
+	// 通知类型：
+	// <li>当FillApproverType =0，或签场景补充签署人时，指定是否发送或签领取短信</li>
+	// 
+	// <li>SMS：开启或签领取短信通知</li>
+	// 
+	// <li>NONE：关闭或签领取短信通知</li>
+	// 
+	// <li>当NotifyType=NONE时，可调用<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateSchemeUrl" target="_blank" rel="noopener noreferrer">获取跳转至腾讯电子签小程序的签署链接</a>接口生成签署链接来完成或签领取</li>
+	// 
+	// 
+	NotifyType *string `json:"NotifyType,omitnil,omitempty" name:"NotifyType"`
 }
 
 type FillError struct {
@@ -14865,7 +14883,7 @@ type RegisterInfo struct {
 	// Deprecated: AuthorizationTypes is deprecated.
 	AuthorizationTypes []*uint64 `json:"AuthorizationTypes,omitnil,omitempty" name:"AuthorizationTypes"`
 
-	// 指定企业认证的授权方式 支持多选:
+	// 指定企业认证的授权方式:
 	// 
 	// <ul>
 	// <li><strong>2</strong>: 法人授权方式</li>

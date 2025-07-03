@@ -4612,6 +4612,10 @@ type CreateQualityControlTemplateRequestParams struct {
 
 	// 媒体质检模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 录制文件格式。可选值：
+	// <li>PNG: PNG图片</li>
+	RecordFormat *string `json:"RecordFormat,omitnil,omitempty" name:"RecordFormat"`
 }
 
 type CreateQualityControlTemplateRequest struct {
@@ -4625,6 +4629,10 @@ type CreateQualityControlTemplateRequest struct {
 
 	// 媒体质检模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
+
+	// 录制文件格式。可选值：
+	// <li>PNG: PNG图片</li>
+	RecordFormat *string `json:"RecordFormat,omitnil,omitempty" name:"RecordFormat"`
 }
 
 func (r *CreateQualityControlTemplateRequest) ToJsonString() string {
@@ -4642,6 +4650,7 @@ func (r *CreateQualityControlTemplateRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "QualityControlItemSet")
 	delete(f, "Comment")
+	delete(f, "RecordFormat")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQualityControlTemplateRequest has unknown keys!", "")
 	}
@@ -13300,6 +13309,10 @@ type LiveStreamAsrFullTextRecognitionResult struct {
 	// 稳态标记。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SteadyState *bool `json:"SteadyState,omitnil,omitempty" name:"SteadyState"`
+
+	// websocket与trtc识别结果的UserId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
 type LiveStreamAsrWordsRecognitionResult struct {
@@ -13505,6 +13518,10 @@ type LiveStreamTransTextRecognitionResult struct {
 	// 稳态标记。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SteadyState *bool `json:"SteadyState,omitnil,omitempty" name:"SteadyState"`
+
+	// websocket与trtc实时翻译的UserId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
 }
 
 type LowLightEnhanceConfig struct {
@@ -15476,6 +15493,10 @@ type ModifyQualityControlTemplateRequestParams struct {
 
 	// 媒体质检配置参数。
 	QualityControlItemSet []*QualityControlItemConfig `json:"QualityControlItemSet,omitnil,omitempty" name:"QualityControlItemSet"`
+
+	// 录制文件格式。可选值：
+	// <li>PNG: PNG图片</li>
+	RecordFormat *string `json:"RecordFormat,omitnil,omitempty" name:"RecordFormat"`
 }
 
 type ModifyQualityControlTemplateRequest struct {
@@ -15492,6 +15513,10 @@ type ModifyQualityControlTemplateRequest struct {
 
 	// 媒体质检配置参数。
 	QualityControlItemSet []*QualityControlItemConfig `json:"QualityControlItemSet,omitnil,omitempty" name:"QualityControlItemSet"`
+
+	// 录制文件格式。可选值：
+	// <li>PNG: PNG图片</li>
+	RecordFormat *string `json:"RecordFormat,omitnil,omitempty" name:"RecordFormat"`
 }
 
 func (r *ModifyQualityControlTemplateRequest) ToJsonString() string {
@@ -15510,6 +15535,7 @@ func (r *ModifyQualityControlTemplateRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Comment")
 	delete(f, "QualityControlItemSet")
+	delete(f, "RecordFormat")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyQualityControlTemplateRequest has unknown keys!", "")
 	}
@@ -17494,7 +17520,13 @@ func (r *ProcessImageResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ProcessLiveStreamRequestParams struct {
-	// 直播流 URL（必须是直播文件地址，支持 rtmp，hls 和 flv 等）。
+	// 直播流 URL（必须是直播文件地址，支持 rtmp，hls 和 flv, trtc 等）。
+	// trtc地址如下：
+	//  trtc: //trtc.rtc.qq.com/mps/`<roomid>`?sdkappid=`<sdkappid>`&userid=`<userid>`&usersig=<`usersig>`
+	// `<roomid>` 为trtc的房间号id, 为数字
+	// `<sdkappid>` 为trtc的sdk app id
+	// `<userid>` 为服务进入房间的用户id,可以区分谁是机器人
+	// <`usersig>` 为trtc 用户的签名
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 任务的事件通知信息，用于指定直播流处理的结果。
@@ -17535,7 +17567,13 @@ type ProcessLiveStreamRequestParams struct {
 type ProcessLiveStreamRequest struct {
 	*tchttp.BaseRequest
 	
-	// 直播流 URL（必须是直播文件地址，支持 rtmp，hls 和 flv 等）。
+	// 直播流 URL（必须是直播文件地址，支持 rtmp，hls 和 flv, trtc 等）。
+	// trtc地址如下：
+	//  trtc: //trtc.rtc.qq.com/mps/`<roomid>`?sdkappid=`<sdkappid>`&userid=`<userid>`&usersig=<`usersig>`
+	// `<roomid>` 为trtc的房间号id, 为数字
+	// `<sdkappid>` 为trtc的sdk app id
+	// `<userid>` 为服务进入房间的用户id,可以区分谁是机器人
+	// <`usersig>` 为trtc 用户的签名
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 任务的事件通知信息，用于指定直播流处理的结果。

@@ -1101,6 +1101,9 @@ type ServerBaseConfig struct {
 	// 会话亲和性开关
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionAffinity *string `json:"SessionAffinity,omitnil,omitempty" name:"SessionAffinity"`
+
+	// Vpc 配置参数
+	VpcConf *VpcConf `json:"VpcConf,omitnil,omitempty" name:"VpcConf"`
 }
 
 type ServerBaseInfo struct {
@@ -1278,6 +1281,9 @@ type UpdateCloudRunServerRequestParams struct {
 
 	// 服务配置信息
 	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitnil,omitempty" name:"ServerConfig"`
+
+	// 业务类型，默认tcr
+	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
 }
 
 type UpdateCloudRunServerRequest struct {
@@ -1294,6 +1300,9 @@ type UpdateCloudRunServerRequest struct {
 
 	// 服务配置信息
 	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitnil,omitempty" name:"ServerConfig"`
+
+	// 业务类型，默认tcr
+	Business *string `json:"Business,omitnil,omitempty" name:"Business"`
 }
 
 func (r *UpdateCloudRunServerRequest) ToJsonString() string {
@@ -1312,6 +1321,7 @@ func (r *UpdateCloudRunServerRequest) FromJsonString(s string) error {
 	delete(f, "ServerName")
 	delete(f, "DeployInfo")
 	delete(f, "ServerConfig")
+	delete(f, "Business")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCloudRunServerRequest has unknown keys!", "")
 	}
@@ -1361,4 +1371,18 @@ type VersionFlowInfo struct {
 
 	// 权重
 	Priority *int64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+}
+
+type VpcConf struct {
+	// vpc id
+	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+
+	// vpc 网段
+	VpcCIDR *string `json:"VpcCIDR,omitnil,omitempty" name:"VpcCIDR"`
+
+	// subnet id
+	SubnetId *string `json:"SubnetId,omitnil,omitempty" name:"SubnetId"`
+
+	// subnet 网段
+	SubnetCIDR *string `json:"SubnetCIDR,omitnil,omitempty" name:"SubnetCIDR"`
 }

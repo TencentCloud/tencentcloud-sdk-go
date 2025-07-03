@@ -20,6 +20,24 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
+type Attribute struct {
+	// 为‘List’时属性值取Values 否则取Value
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 属性key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 属性值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 属性值列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
 type AuthToken struct {
 	// AuthToken 基础信息
 	Base *AuthTokenBase `json:"Base,omitnil,omitempty" name:"Base"`
@@ -4248,6 +4266,80 @@ func (r *DescribeNotebooksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePlatformImagesRequestParams struct {
+	// 过滤器,  Name支持ImageId/ImageName/SupportDataPipeline/AllowSaveAllContent/ImageRange，其中ImageRange支持枚举值Train,Inference,Notebook
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移信息
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量, 默认100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+type DescribePlatformImagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤器,  Name支持ImageId/ImageName/SupportDataPipeline/AllowSaveAllContent/ImageRange，其中ImageRange支持枚举值Train,Inference,Notebook
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 偏移信息
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 返回数量, 默认100
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+}
+
+func (r *DescribePlatformImagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlatformImagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePlatformImagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePlatformImagesResponseParams struct {
+	// 数量
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 镜像列表
+	PlatformImageInfos []*PlatformImageInfo `json:"PlatformImageInfos,omitnil,omitempty" name:"PlatformImageInfos"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribePlatformImagesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePlatformImagesResponseParams `json:"Response"`
+}
+
+func (r *DescribePlatformImagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePlatformImagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTrainingModelVersionRequestParams struct {
 	// 模型版本ID
 	TrainingModelVersionId *string `json:"TrainingModelVersionId,omitnil,omitempty" name:"TrainingModelVersionId"`
@@ -4961,9 +5053,10 @@ type Instance struct {
 	// DEPLOYING: 部署中
 	// RUNNING: 运行中 
 	// DEPLOY_FAILED: 部署失败
-	//  RELEASING 释放中 
+	// RELEASING 释放中 
 	// RELEASED：已释放 
 	// EXCEPTION：异常
+	// DEBT_OR_EXPIRED: 欠费过期
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceStatus *string `json:"InstanceStatus,omitnil,omitempty" name:"InstanceStatus"`
 
@@ -6223,6 +6316,64 @@ type Option struct {
 
 	// 指标值
 	Value *int64 `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type PlatformImageInfo struct {
+	// 框架名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Framework *string `json:"Framework,omitnil,omitempty" name:"Framework"`
+
+	// 镜像类型: ccr or tcr
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageType *string `json:"ImageType,omitnil,omitempty" name:"ImageType"`
+
+	// 镜像地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// TCR镜像示例所属地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegistryRegion *string `json:"RegistryRegion,omitnil,omitempty" name:"RegistryRegion"`
+
+	// TCR镜像所属实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegistryId *string `json:"RegistryId,omitnil,omitempty" name:"RegistryId"`
+
+	// 镜像名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageName *string `json:"ImageName,omitnil,omitempty" name:"ImageName"`
+
+	// 镜像Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// 框架版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrameworkVersion *string `json:"FrameworkVersion,omitnil,omitempty" name:"FrameworkVersion"`
+
+	// 支持的gpu列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportGpuList []*string `json:"SupportGpuList,omitnil,omitempty" name:"SupportGpuList"`
+
+	// 描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 业务属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraAttributes []*Attribute `json:"ExtraAttributes,omitnil,omitempty" name:"ExtraAttributes"`
+
+	// 镜像适用场景Train/Inference/Notebook
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageRange []*string `json:"ImageRange,omitnil,omitempty" name:"ImageRange"`
+
+	// 是否支持分布式部署
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportDistributedDeploy *bool `json:"SupportDistributedDeploy,omitnil,omitempty" name:"SupportDistributedDeploy"`
+
+	// 支持的地域 all(所有地域)/autonomous(自动驾驶地域)/general(通用地域)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionScope *string `json:"RegionScope,omitnil,omitempty" name:"RegionScope"`
 }
 
 type Pod struct {

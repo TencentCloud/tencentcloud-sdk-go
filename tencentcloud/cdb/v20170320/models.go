@@ -1832,9 +1832,11 @@ type ClusterNodeInfo struct {
 
 type ClusterTopology struct {
 	// RW 节点拓扑。
+	// 说明：NodeId 可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 获取。
 	ReadWriteNode *ReadWriteNode `json:"ReadWriteNode,omitnil,omitempty" name:"ReadWriteNode"`
 
 	// RO 节点拓扑。
+	// 说明：NodeId 可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 获取。
 	ReadOnlyNodes []*ReadonlyNode `json:"ReadOnlyNodes,omitnil,omitempty" name:"ReadOnlyNodes"`
 }
 
@@ -7659,10 +7661,11 @@ type DescribeDBInstancesRequestParams struct {
 	// 返回结果集排序的字段，目前支持："InstanceId"，"InstanceName"，"CreateTime"，"DeadlineTime"。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 返回结果集排序方式，目前支持："ASC" 或者 "DESC"。
+	// 返回结果集排序方式。目前支持值："ASC" - 表示升序，"DESC" - 表示降序，默认为 "DESC"。
 	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
 
 	// 是否以安全组 ID 为过滤条件。
+	// 说明：0表示否，1表示是。
 	WithSecurityGroup *int64 `json:"WithSecurityGroup,omitnil,omitempty" name:"WithSecurityGroup"`
 
 	// 是否包含独享集群详细信息，可取值：0 - 不包含，1 - 包含。
@@ -7714,10 +7717,10 @@ type DescribeDBInstancesRequestParams struct {
 	// 数据库代理 ID 。
 	ProxyIds []*string `json:"ProxyIds,omitnil,omitempty" name:"ProxyIds"`
 
-	// 数据库引擎类型。
+	// 数据库引擎类型。可选值为：InnoDB、RocksDB。
 	EngineTypes []*string `json:"EngineTypes,omitnil,omitempty" name:"EngineTypes"`
 
-	// 是否获取集群版实例节点信息，可填：true或false
+	// 是否获取集群版实例节点信息，可填：true 或 false。默认为 false。
 	QueryClusterInfo *bool `json:"QueryClusterInfo,omitnil,omitempty" name:"QueryClusterInfo"`
 }
 
@@ -7772,10 +7775,11 @@ type DescribeDBInstancesRequest struct {
 	// 返回结果集排序的字段，目前支持："InstanceId"，"InstanceName"，"CreateTime"，"DeadlineTime"。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 返回结果集排序方式，目前支持："ASC" 或者 "DESC"。
+	// 返回结果集排序方式。目前支持值："ASC" - 表示升序，"DESC" - 表示降序，默认为 "DESC"。
 	OrderDirection *string `json:"OrderDirection,omitnil,omitempty" name:"OrderDirection"`
 
 	// 是否以安全组 ID 为过滤条件。
+	// 说明：0表示否，1表示是。
 	WithSecurityGroup *int64 `json:"WithSecurityGroup,omitnil,omitempty" name:"WithSecurityGroup"`
 
 	// 是否包含独享集群详细信息，可取值：0 - 不包含，1 - 包含。
@@ -7827,10 +7831,10 @@ type DescribeDBInstancesRequest struct {
 	// 数据库代理 ID 。
 	ProxyIds []*string `json:"ProxyIds,omitnil,omitempty" name:"ProxyIds"`
 
-	// 数据库引擎类型。
+	// 数据库引擎类型。可选值为：InnoDB、RocksDB。
 	EngineTypes []*string `json:"EngineTypes,omitnil,omitempty" name:"EngineTypes"`
 
-	// 是否获取集群版实例节点信息，可填：true或false
+	// 是否获取集群版实例节点信息，可填：true 或 false。默认为 false。
 	QueryClusterInfo *bool `json:"QueryClusterInfo,omitnil,omitempty" name:"QueryClusterInfo"`
 }
 
@@ -8721,7 +8725,7 @@ func (r *DescribeErrorLogDataResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceAlarmEventsRequestParams struct {
-	// 实例 ID。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 事件查询范围开始时间，闭区间。
@@ -8739,7 +8743,7 @@ type DescribeInstanceAlarmEventsRequestParams struct {
 	// 排序方式。按事件发生事件进行排序，"DESC"-倒排；”ASC“-正序，默认倒排。
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 事件展示数量。
+	// 事件展示数量。默认为100，最大为200。
 	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量。
@@ -8752,7 +8756,7 @@ type DescribeInstanceAlarmEventsRequestParams struct {
 type DescribeInstanceAlarmEventsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 事件查询范围开始时间，闭区间。
@@ -8770,7 +8774,7 @@ type DescribeInstanceAlarmEventsRequest struct {
 	// 排序方式。按事件发生事件进行排序，"DESC"-倒排；”ASC“-正序，默认倒排。
 	Order *string `json:"Order,omitnil,omitempty" name:"Order"`
 
-	// 事件展示数量。
+	// 事件展示数量。默认为100，最大为200。
 	Limit *string `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 偏移量。
@@ -10486,26 +10490,26 @@ func (r *DescribeTablesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTagsOfInstanceIdsRequestParams struct {
-	// 实例列表。
+	// 实例列表。实例 ID 可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。可传入的数组长度暂无限制。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 分页偏移量。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页大小。
+	// 分页大小。默认为15。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeTagsOfInstanceIdsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例列表。
+	// 实例列表。实例 ID 可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。可传入的数组长度暂无限制。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 分页偏移量。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页大小。
+	// 分页大小。默认为15。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -11053,13 +11057,13 @@ type HistoryJob struct {
 }
 
 type ImportRecord struct {
-	// 状态值
+	// 状态值。0 - 初始化中，1 - 运行中，2 - 运行成功，3 - 运行失败。
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 状态值
+	// 状态值，为负数时任务异常。
 	Code *int64 `json:"Code,omitnil,omitempty" name:"Code"`
 
-	// 执行时间
+	// 执行时间，单位：秒。
 	CostTime *int64 `json:"CostTime,omitnil,omitempty" name:"CostTime"`
 
 	// 实例ID
@@ -11071,13 +11075,13 @@ type ImportRecord struct {
 	// 导入文件名
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
 
-	// 执行进度
+	// 执行进度，单位：百分比。
 	Process *int64 `json:"Process,omitnil,omitempty" name:"Process"`
 
 	// 任务创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 文件大小
+	// 文件大小，单位：byte。
 	FileSize *string `json:"FileSize,omitnil,omitempty" name:"FileSize"`
 
 	// 任务执行信息
@@ -11479,10 +11483,10 @@ type InstanceInfo struct {
 }
 
 type InstanceRebootTime struct {
-	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同
+	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 预期重启时间
+	// 预期重启时间，单位：秒。
 	TimeInSeconds *int64 `json:"TimeInSeconds,omitnil,omitempty" name:"TimeInSeconds"`
 }
 
@@ -13242,7 +13246,7 @@ type ModifyDBInstanceNameRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 修改后的实例名称。
+	// 修改后的实例名称，仅支持数字,英文大小写字母、中文以及特殊字符-_./()[]（）+=:：@ 且长度不能超过60。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 }
 
@@ -13252,7 +13256,7 @@ type ModifyDBInstanceNameRequest struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 修改后的实例名称。
+	// 修改后的实例名称，仅支持数字,英文大小写字母、中文以及特殊字符-_./()[]（）+=:：@ 且长度不能超过60。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 }
 
@@ -15103,10 +15107,10 @@ type ProxyNode struct {
 	// CPU核数
 	Cpu *uint64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 内存大小
+	// 内存大小，单位为 MB。
 	Mem *uint64 `json:"Mem,omitnil,omitempty" name:"Mem"`
 
-	// 节点状态
+	// 节点状态，0 - 初始化中，1 - 在线中，2 - 下线中，3 - 销毁中，4 - 故障恢复中，5 - 节点故障，6 - 切换中。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 代理节点可用区
@@ -17016,19 +17020,20 @@ type UpgradeDBInstanceEngineVersionRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主实例数据库引擎版本，支持值包括：5.6 和 5.7。
+	// 主实例数据库引擎版本，支持值包括：5.6、5.7、8.0。
+	// 说明：不支持越级升级，升级后不支持降级。
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
 	// 切换访问新实例的方式，默认为 0。支持值包括：0 - 立刻切换，1 - 时间窗切换；当该值为 1 时，升级过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口 [切换访问新实例](https://cloud.tencent.com/document/product/236/15864) 触发该流程。
 	WaitSwitch *int64 `json:"WaitSwitch,omitnil,omitempty" name:"WaitSwitch"`
 
-	// 是否是内核子版本升级，支持的值：1 - 升级内核子版本；0 - 升级数据库引擎版本。
+	// 是否是内核子版本升级，支持的值：1 - 升级内核子版本；0 - 升级数据库引擎版本。无默认值，请指定要升级的版本类型。
 	UpgradeSubversion *int64 `json:"UpgradeSubversion,omitnil,omitempty" name:"UpgradeSubversion"`
 
-	// 延迟阈值。取值范围1~10
+	// 延迟阈值。取值范围：1 - 10。无默认值，不传此参数时，延迟阈值为0，表示延迟阈值不做设置。
 	MaxDelayTime *int64 `json:"MaxDelayTime,omitnil,omitempty" name:"MaxDelayTime"`
 
-	// 5.7升级8.0是否忽略关键字错误，取值范围[0,1]，1表示忽略，0表示不忽略
+	// 5.7升级8.0是否忽略关键字错误，取值范围[0,1]，1表示忽略，0表示不忽略。无默认值，不传此参数表示不做处理。
 	IgnoreErrKeyword *int64 `json:"IgnoreErrKeyword,omitnil,omitempty" name:"IgnoreErrKeyword"`
 
 	// 版本升级支持指定参数
@@ -17041,19 +17046,20 @@ type UpgradeDBInstanceEngineVersionRequest struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主实例数据库引擎版本，支持值包括：5.6 和 5.7。
+	// 主实例数据库引擎版本，支持值包括：5.6、5.7、8.0。
+	// 说明：不支持越级升级，升级后不支持降级。
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
 	// 切换访问新实例的方式，默认为 0。支持值包括：0 - 立刻切换，1 - 时间窗切换；当该值为 1 时，升级过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口 [切换访问新实例](https://cloud.tencent.com/document/product/236/15864) 触发该流程。
 	WaitSwitch *int64 `json:"WaitSwitch,omitnil,omitempty" name:"WaitSwitch"`
 
-	// 是否是内核子版本升级，支持的值：1 - 升级内核子版本；0 - 升级数据库引擎版本。
+	// 是否是内核子版本升级，支持的值：1 - 升级内核子版本；0 - 升级数据库引擎版本。无默认值，请指定要升级的版本类型。
 	UpgradeSubversion *int64 `json:"UpgradeSubversion,omitnil,omitempty" name:"UpgradeSubversion"`
 
-	// 延迟阈值。取值范围1~10
+	// 延迟阈值。取值范围：1 - 10。无默认值，不传此参数时，延迟阈值为0，表示延迟阈值不做设置。
 	MaxDelayTime *int64 `json:"MaxDelayTime,omitnil,omitempty" name:"MaxDelayTime"`
 
-	// 5.7升级8.0是否忽略关键字错误，取值范围[0,1]，1表示忽略，0表示不忽略
+	// 5.7升级8.0是否忽略关键字错误，取值范围[0,1]，1表示忽略，0表示不忽略。无默认值，不传此参数表示不做处理。
 	IgnoreErrKeyword *int64 `json:"IgnoreErrKeyword,omitnil,omitempty" name:"IgnoreErrKeyword"`
 
 	// 版本升级支持指定参数

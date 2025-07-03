@@ -167,7 +167,7 @@ const (
 	// 无法识别签名，请确认是否已有签名通过申请，一般是签名未通过申请，可以查看 [签名审核](https://cloud.tencent.com/document/product/382/37745#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E7.AD.89.E5.BE.85.E5.AE.A1.E6.A0.B8) 。
 	INVALIDPARAMETERVALUE_MISSINGSIGNATURELIST = "InvalidParameterValue.MissingSignatureList"
 
-	// 禁止在模板变量中使用 URL。您可以参考正文模板审核标准下关于 [变量规范](https://cloud.tencent.com/document/product/382/39023#.E5.8F.98.E9.87.8F.E8.A7.84.E8.8C.83.5B.5D(id.3Avariable)) 的描述
+	// 禁止在模板变量中使用 URL。您可以参考正文模板审核标准下关于 [变量规范](https://cloud.tencent.com/document/product/382/39023#variable) 的描述
 	INVALIDPARAMETERVALUE_PROHIBITEDUSEURLINTEMPLATEPARAMETER = "InvalidParameterValue.ProhibitedUseUrlInTemplateParameter"
 
 	// 资质ID未找到。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。
@@ -188,7 +188,7 @@ const (
 	// 验证码模板参数格式错误，验证码类模板，模板变量只能传入0 - 6位（包括6位）纯数字。
 	INVALIDPARAMETERVALUE_TEMPLATEPARAMETERFORMATERROR = "InvalidParameterValue.TemplateParameterFormatError"
 
-	// 单个模板变量字符数超过规定的限制数。您可以参考 <a href="https://cloud.tencent.com/document/product/382/39023#.E5.8F.98.E9.87.8F.E8.A7.84.E8.8C.83.5B.5D(id.3Avariable)">正文模板审核标准</a>下变量规范中关于长度的描述，对于长期未使用的账号及2024年1月25日后开通新账号默认最长支持6个字符，您的账号具体可支持字符长度以<a href="https://console.cloud.tencent.com/smsv2/csms-template/create">控制台显示为准</a>。更多疑问可联系 <a href="https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81">腾讯云短信小助手</a> 。
+	// 单个模板变量字符数超过规定的限制数。您可以参考 <a href="https://cloud.tencent.com/document/product/382/39023#variable">正文模板审核标准</a>下变量规范中关于长度的描述，对于长期未使用的账号及2024年1月25日后开通新账号默认最长支持6个字符，您的账号具体可支持字符长度以<a href="https://console.cloud.tencent.com/smsv2/csms-template/create">控制台显示为准</a>。更多疑问可联系 <a href="https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81">腾讯云短信小助手</a> 。
 	INVALIDPARAMETERVALUE_TEMPLATEPARAMETERLENGTHLIMIT = "InvalidParameterValue.TemplateParameterLengthLimit"
 
 	// 申请国内短信通知和营销短信模板不支持添加变量。可参考 [控制台说明](https://console.cloud.tencent.com/smsv2/csms-template)，更多疑问可咨询 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)

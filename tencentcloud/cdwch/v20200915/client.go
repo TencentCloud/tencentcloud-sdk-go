@@ -457,6 +457,55 @@ func (c *Client) DescribeBackUpTablesWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeCNInstancesRequest() (request *DescribeCNInstancesRequest) {
+    request = &DescribeCNInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "DescribeCNInstances")
+    
+    
+    return
+}
+
+func NewDescribeCNInstancesResponse() (response *DescribeCNInstancesResponse) {
+    response = &DescribeCNInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCNInstances
+// 获取云原生实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeCNInstances(request *DescribeCNInstancesRequest) (response *DescribeCNInstancesResponse, err error) {
+    return c.DescribeCNInstancesWithContext(context.Background(), request)
+}
+
+// DescribeCNInstances
+// 获取云原生实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeCNInstancesWithContext(ctx context.Context, request *DescribeCNInstancesRequest) (response *DescribeCNInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCNInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCNInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCNInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCkSqlApisRequest() (request *DescribeCkSqlApisRequest) {
     request = &DescribeCkSqlApisRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -480,12 +529,7 @@ func NewDescribeCkSqlApisResponse() (response *DescribeCkSqlApisResponse) {
 // 查询集群用户、集群表，数据库等相关信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNKNOWNPARAMETER = "UnknownParameter"
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeCkSqlApis(request *DescribeCkSqlApisRequest) (response *DescribeCkSqlApisResponse, err error) {
     return c.DescribeCkSqlApisWithContext(context.Background(), request)
 }
@@ -494,12 +538,7 @@ func (c *Client) DescribeCkSqlApis(request *DescribeCkSqlApisRequest) (response 
 // 查询集群用户、集群表，数据库等相关信息
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNKNOWNPARAMETER = "UnknownParameter"
+//  INTERNALERROR = "InternalError"
 func (c *Client) DescribeCkSqlApisWithContext(ctx context.Context, request *DescribeCkSqlApisRequest) (response *DescribeCkSqlApisResponse, err error) {
     if request == nil {
         request = NewDescribeCkSqlApisRequest()

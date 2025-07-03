@@ -2910,6 +2910,61 @@ func (c *Client) DescribeNotebooksWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribePlatformImagesRequest() (request *DescribePlatformImagesRequest) {
+    request = &DescribePlatformImagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribePlatformImages")
+    
+    
+    return
+}
+
+func NewDescribePlatformImagesResponse() (response *DescribePlatformImagesResponse) {
+    response = &DescribePlatformImagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribePlatformImages
+// 查询平台镜像信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_BADNAME = "InvalidParameterValue.BadName"
+func (c *Client) DescribePlatformImages(request *DescribePlatformImagesRequest) (response *DescribePlatformImagesResponse, err error) {
+    return c.DescribePlatformImagesWithContext(context.Background(), request)
+}
+
+// DescribePlatformImages
+// 查询平台镜像信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_BADNAME = "InvalidParameterValue.BadName"
+func (c *Client) DescribePlatformImagesWithContext(ctx context.Context, request *DescribePlatformImagesRequest) (response *DescribePlatformImagesResponse, err error) {
+    if request == nil {
+        request = NewDescribePlatformImagesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePlatformImages require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePlatformImagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTrainingModelVersionRequest() (request *DescribeTrainingModelVersionRequest) {
     request = &DescribeTrainingModelVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},

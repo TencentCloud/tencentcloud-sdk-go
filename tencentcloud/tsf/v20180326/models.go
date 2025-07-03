@@ -2150,6 +2150,16 @@ type ContainerGroupDetail struct {
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
 }
 
+type ContainerGroupObservabilityConfig struct {
+	// 日志配置项ID列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessLogConfigIdList []*string `json:"BusinessLogConfigIdList,omitnil,omitempty" name:"BusinessLogConfigIdList"`
+
+	// 投递配置项ID列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessLogDeliveryConfigIdList []*string `json:"BusinessLogDeliveryConfigIdList,omitnil,omitempty" name:"BusinessLogDeliveryConfigIdList"`
+}
+
 type ContainerGroupOther struct {
 	// 实例总数
 	InstanceNum *int64 `json:"InstanceNum,omitnil,omitempty" name:"InstanceNum"`
@@ -2189,6 +2199,134 @@ type ContainerGroupOther struct {
 
 	// 服务配置信息是否匹配
 	IsNotEqualServiceConfig *bool `json:"IsNotEqualServiceConfig,omitnil,omitempty" name:"IsNotEqualServiceConfig"`
+}
+
+type ContainerGroupServiceGovernanceConfig struct {
+	// 是否开启服务治理
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableGovernance *bool `json:"EnableGovernance,omitnil,omitempty" name:"EnableGovernance"`
+
+	// 控制台场景使用 mesh服务配置信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceConfigList []*ServiceConfig `json:"ServiceConfigList,omitnil,omitempty" name:"ServiceConfigList"`
+
+	// 注册服务治理实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExclusiveInstances []*ExclusiveInstance `json:"ExclusiveInstances,omitnil,omitempty" name:"ExclusiveInstances"`
+
+	// 服务治理类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GovernanceType *string `json:"GovernanceType,omitnil,omitempty" name:"GovernanceType"`
+}
+
+type ContainerInfo struct {
+	// 容器名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 容器ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerId *string `json:"ContainerId,omitnil,omitempty" name:"ContainerId"`
+
+	// 容器状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 容器的Reason
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitnil,omitempty" name:"Reason"`
+
+	// 镜像地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Image *string `json:"Image,omitnil,omitempty" name:"Image"`
+
+	// 是否为业务主容器
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsBusinessMainContainer *bool `json:"IsBusinessMainContainer,omitnil,omitempty" name:"IsBusinessMainContainer"`
+
+	// 镜像Server
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Server *string `json:"Server,omitnil,omitempty" name:"Server"`
+
+	// 镜像名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepoName *string `json:"RepoName,omitnil,omitempty" name:"RepoName"`
+
+	// 仓库类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepoType *string `json:"RepoType,omitnil,omitempty" name:"RepoType"`
+
+	// TCR 仓库信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TcrRepoInfo *TcrRepoInfo `json:"TcrRepoInfo,omitnil,omitempty" name:"TcrRepoInfo"`
+
+	// 容器访问凭证名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
+
+	// 镜像版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagName *string `json:"TagName,omitnil,omitempty" name:"TagName"`
+
+	// 健康检查
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitnil,omitempty" name:"HealthCheckSettings"`
+
+	// 容器Cpu request
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuRequest *string `json:"CpuRequest,omitnil,omitempty" name:"CpuRequest"`
+
+	// 容器Cpu limit
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuLimit *string `json:"CpuLimit,omitnil,omitempty" name:"CpuLimit"`
+
+	// 容器Mem request
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemRequest *string `json:"MemRequest,omitnil,omitempty" name:"MemRequest"`
+
+	// 容器Mem Limit
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemLimit *string `json:"MemLimit,omitnil,omitempty" name:"MemLimit"`
+
+	// 环境变量参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Envs []*Env `json:"Envs,omitnil,omitempty" name:"Envs"`
+
+	// 环境变量参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserEnvs []*Env `json:"UserEnvs,omitnil,omitempty" name:"UserEnvs"`
+
+	// JVM参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JvmOpts *string `json:"JvmOpts,omitnil,omitempty" name:"JvmOpts"`
+
+	// 挂载信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeMountInfoList []*VolumeMountInfo `json:"VolumeMountInfoList,omitnil,omitempty" name:"VolumeMountInfoList"`
+
+	// 是否为初始化容器
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InitContainerEnable *bool `json:"InitContainerEnable,omitnil,omitempty" name:"InitContainerEnable"`
+
+	// 生命周期钩子
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LifeCycleHookList []*LifeCycleHook `json:"LifeCycleHookList,omitnil,omitempty" name:"LifeCycleHookList"`
+
+	// 是否为特权容器
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivilegeContainerEnable *bool `json:"PrivilegeContainerEnable,omitnil,omitempty" name:"PrivilegeContainerEnable"`
+
+	// 运行命令
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunCommand *string `json:"RunCommand,omitnil,omitempty" name:"RunCommand"`
+
+	// 运行参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunArg *string `json:"RunArg,omitnil,omitempty" name:"RunArg"`
+
+	// 容器名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerName *string `json:"ContainerName,omitnil,omitempty" name:"ContainerName"`
 }
 
 // Predefined struct for user
@@ -6881,6 +7019,468 @@ type DeliveryKafkaInfo struct {
 
 	// 自定义的分行值
 	CustomRule *string `json:"CustomRule,omitnil,omitempty" name:"CustomRule"`
+}
+
+// Predefined struct for user
+type DeployContainerApplicationRequestParams struct {
+	// 应用ID
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+
+	// 可观测配置
+	ObservabilityConfig *ContainerGroupObservabilityConfig `json:"ObservabilityConfig,omitnil,omitempty" name:"ObservabilityConfig"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 部署组ID，分组唯一标识
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 业务容器的环境变量参数
+	Envs []*Env `json:"Envs,omitnil,omitempty" name:"Envs"`
+
+	// 业务容器的挂载信息
+	VolumeMountInfoList []*VolumeMountInfo `json:"VolumeMountInfoList,omitnil,omitempty" name:"VolumeMountInfoList"`
+
+	// 业务主容器生命周期钩子列表
+	LifeCycleHookList []*LifeCycleHook `json:"LifeCycleHookList,omitnil,omitempty" name:"LifeCycleHookList"`
+
+	// 附属容器列表
+	AdditionalContainerList []*ContainerInfo `json:"AdditionalContainerList,omitnil,omitempty" name:"AdditionalContainerList"`
+
+	// 容器卷信息
+	VolumeInfoList []*VolumeInfo `json:"VolumeInfoList,omitnil,omitempty" name:"VolumeInfoList"`
+
+	// Service访问配置列表
+	ServiceSettingList []*ServiceSetting `json:"ServiceSettingList,omitnil,omitempty" name:"ServiceSettingList"`
+
+	// 备注
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// 部署组名称
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 容器类型
+	ContainerKind *string `json:"ContainerKind,omitnil,omitempty" name:"ContainerKind"`
+
+	// 业务容器的 镜像Server ccr.ccs.tencentyun.com
+	Server *string `json:"Server,omitnil,omitempty" name:"Server"`
+
+	// 业务容器的镜像名
+	RepoName *string `json:"RepoName,omitnil,omitempty" name:"RepoName"`
+
+	// 仓库类型
+	RepoType *string `json:"RepoType,omitnil,omitempty" name:"RepoType"`
+
+	// TCR仓库信息
+	TcrRepoInfo *TcrRepoInfo `json:"TcrRepoInfo,omitnil,omitempty" name:"TcrRepoInfo"`
+
+	// 容器访问凭证名称
+	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
+
+	// 业务容器的镜像版本号
+	TagName *string `json:"TagName,omitnil,omitempty" name:"TagName"`
+
+	// 健康检查
+	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitnil,omitempty" name:"HealthCheckSettings"`
+
+	// 业务容器的 cpu  request
+	CpuRequest *string `json:"CpuRequest,omitnil,omitempty" name:"CpuRequest"`
+
+	// 业务容器的 cpu limit
+	CpuLimit *string `json:"CpuLimit,omitnil,omitempty" name:"CpuLimit"`
+
+	// 业务容器的 mem request
+	MemRequest *string `json:"MemRequest,omitnil,omitempty" name:"MemRequest"`
+
+	// 业务容器的 mem limit
+	MemLimit *string `json:"MemLimit,omitnil,omitempty" name:"MemLimit"`
+
+	// 业务容器的 jvm 参数
+	JvmOpts *string `json:"JvmOpts,omitnil,omitempty" name:"JvmOpts"`
+
+	// 是否为初始化容器 业务主容器不能为初始化容
+	InitContainerEnable *bool `json:"InitContainerEnable,omitnil,omitempty" name:"InitContainerEnable"`
+
+	// 业务主容器是否为特权容器
+	PrivilegeContainerEnable *bool `json:"PrivilegeContainerEnable,omitnil,omitempty" name:"PrivilegeContainerEnable"`
+
+	// 业务主容器运行命令(转base64)
+	RunCommand *string `json:"RunCommand,omitnil,omitempty" name:"RunCommand"`
+
+	// 业务主容器运行参数(转base64)
+	RunArg *string `json:"RunArg,omitnil,omitempty" name:"RunArg"`
+
+	// 实例数量
+	InstanceNum *int64 `json:"InstanceNum,omitnil,omitempty" name:"InstanceNum"`
+
+	// 调度策略
+	SchedulingStrategy *SchedulingStrategy `json:"SchedulingStrategy,omitnil,omitempty" name:"SchedulingStrategy"`
+
+	// 重启策略
+	RestartPolicy *string `json:"RestartPolicy,omitnil,omitempty" name:"RestartPolicy"`
+
+	// 服务治理配置
+	ServiceSpecEncode *string `json:"ServiceSpecEncode,omitnil,omitempty" name:"ServiceSpecEncode"`
+
+	// istio容器的 mem Request
+	IstioMemRequest *string `json:"IstioMemRequest,omitnil,omitempty" name:"IstioMemRequest"`
+
+	//  istio容器的 cpu Request
+	IstioCpuRequest *string `json:"IstioCpuRequest,omitnil,omitempty" name:"IstioCpuRequest"`
+
+	// istio容器的 mem Limit
+	IstioMemLimit *string `json:"IstioMemLimit,omitnil,omitempty" name:"IstioMemLimit"`
+
+	// istio容器的 cpu Limit
+	IstioCpuLimit *string `json:"IstioCpuLimit,omitnil,omitempty" name:"IstioCpuLimit"`
+
+	// 服务治理配置
+	ServiceGovernanceConfig *ContainerGroupServiceGovernanceConfig `json:"ServiceGovernanceConfig,omitnil,omitempty" name:"ServiceGovernanceConfig"`
+
+	// agent容器的 mem Request
+	AgentMemRequest *string `json:"AgentMemRequest,omitnil,omitempty" name:"AgentMemRequest"`
+
+	// agent容器的 cpu Request
+	AgentCpuRequest *string `json:"AgentCpuRequest,omitnil,omitempty" name:"AgentCpuRequest"`
+
+	// agent容器的 mem Limit
+	AgentMemLimit *string `json:"AgentMemLimit,omitnil,omitempty" name:"AgentMemLimit"`
+
+	// agent容器的 cpu Limit
+	AgentCpuLimit *string `json:"AgentCpuLimit,omitnil,omitempty" name:"AgentCpuLimit"`
+
+	// 发布策略(0表示快速更新，1表示滚动更新。默认值为0)
+	UpdateType *int64 `json:"UpdateType,omitnil,omitempty" name:"UpdateType"`
+
+	// 更新间隔,单位秒
+	UpdateIvl *int64 `json:"UpdateIvl,omitnil,omitempty" name:"UpdateIvl"`
+
+	// 对应更新策略和策略配置参数
+	MaxSurge *string `json:"MaxSurge,omitnil,omitempty" name:"MaxSurge"`
+
+	// 对应更新策略和策略配置参数
+	MaxUnavailable *string `json:"MaxUnavailable,omitnil,omitempty" name:"MaxUnavailable"`
+
+	// 预热参数配置
+	WarmupSetting *WarmupSetting `json:"WarmupSetting,omitnil,omitempty" name:"WarmupSetting"`
+
+	// 配置模版ID
+	ConfigTemplateId *string `json:"ConfigTemplateId,omitnil,omitempty" name:"ConfigTemplateId"`
+
+	// 配置模版Version
+	ConfigTemplateVersion *int64 `json:"ConfigTemplateVersion,omitnil,omitempty" name:"ConfigTemplateVersion"`
+
+	// 是否清除数据卷信息
+	VolumeClean *bool `json:"VolumeClean,omitnil,omitempty" name:"VolumeClean"`
+
+	// 命名空间Id
+	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
+
+	// 是否部署agent容器
+	DeployAgent *bool `json:"DeployAgent,omitnil,omitempty" name:"DeployAgent"`
+
+	// javaagent信息: SERVICE_AGENT/OT_AGENT
+	AgentProfileList []*AgentProfile `json:"AgentProfileList,omitnil,omitempty" name:"AgentProfileList"`
+
+	// 是否清除Service信息
+	ServiceClean *bool `json:"ServiceClean,omitnil,omitempty" name:"ServiceClean"`
+
+	// 是否清除Env信息
+	EnvClean *bool `json:"EnvClean,omitnil,omitempty" name:"EnvClean"`
+
+	// 本次部署的描述信息
+	DeployDesc *string `json:"DeployDesc,omitnil,omitempty" name:"DeployDesc"`
+}
+
+type DeployContainerApplicationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID
+	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
+
+	// 可观测配置
+	ObservabilityConfig *ContainerGroupObservabilityConfig `json:"ObservabilityConfig,omitnil,omitempty" name:"ObservabilityConfig"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// 部署组ID，分组唯一标识
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 业务容器的环境变量参数
+	Envs []*Env `json:"Envs,omitnil,omitempty" name:"Envs"`
+
+	// 业务容器的挂载信息
+	VolumeMountInfoList []*VolumeMountInfo `json:"VolumeMountInfoList,omitnil,omitempty" name:"VolumeMountInfoList"`
+
+	// 业务主容器生命周期钩子列表
+	LifeCycleHookList []*LifeCycleHook `json:"LifeCycleHookList,omitnil,omitempty" name:"LifeCycleHookList"`
+
+	// 附属容器列表
+	AdditionalContainerList []*ContainerInfo `json:"AdditionalContainerList,omitnil,omitempty" name:"AdditionalContainerList"`
+
+	// 容器卷信息
+	VolumeInfoList []*VolumeInfo `json:"VolumeInfoList,omitnil,omitempty" name:"VolumeInfoList"`
+
+	// Service访问配置列表
+	ServiceSettingList []*ServiceSetting `json:"ServiceSettingList,omitnil,omitempty" name:"ServiceSettingList"`
+
+	// 备注
+	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// 部署组名称
+	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 容器类型
+	ContainerKind *string `json:"ContainerKind,omitnil,omitempty" name:"ContainerKind"`
+
+	// 业务容器的 镜像Server ccr.ccs.tencentyun.com
+	Server *string `json:"Server,omitnil,omitempty" name:"Server"`
+
+	// 业务容器的镜像名
+	RepoName *string `json:"RepoName,omitnil,omitempty" name:"RepoName"`
+
+	// 仓库类型
+	RepoType *string `json:"RepoType,omitnil,omitempty" name:"RepoType"`
+
+	// TCR仓库信息
+	TcrRepoInfo *TcrRepoInfo `json:"TcrRepoInfo,omitnil,omitempty" name:"TcrRepoInfo"`
+
+	// 容器访问凭证名称
+	SecretName *string `json:"SecretName,omitnil,omitempty" name:"SecretName"`
+
+	// 业务容器的镜像版本号
+	TagName *string `json:"TagName,omitnil,omitempty" name:"TagName"`
+
+	// 健康检查
+	HealthCheckSettings *HealthCheckSettings `json:"HealthCheckSettings,omitnil,omitempty" name:"HealthCheckSettings"`
+
+	// 业务容器的 cpu  request
+	CpuRequest *string `json:"CpuRequest,omitnil,omitempty" name:"CpuRequest"`
+
+	// 业务容器的 cpu limit
+	CpuLimit *string `json:"CpuLimit,omitnil,omitempty" name:"CpuLimit"`
+
+	// 业务容器的 mem request
+	MemRequest *string `json:"MemRequest,omitnil,omitempty" name:"MemRequest"`
+
+	// 业务容器的 mem limit
+	MemLimit *string `json:"MemLimit,omitnil,omitempty" name:"MemLimit"`
+
+	// 业务容器的 jvm 参数
+	JvmOpts *string `json:"JvmOpts,omitnil,omitempty" name:"JvmOpts"`
+
+	// 是否为初始化容器 业务主容器不能为初始化容
+	InitContainerEnable *bool `json:"InitContainerEnable,omitnil,omitempty" name:"InitContainerEnable"`
+
+	// 业务主容器是否为特权容器
+	PrivilegeContainerEnable *bool `json:"PrivilegeContainerEnable,omitnil,omitempty" name:"PrivilegeContainerEnable"`
+
+	// 业务主容器运行命令(转base64)
+	RunCommand *string `json:"RunCommand,omitnil,omitempty" name:"RunCommand"`
+
+	// 业务主容器运行参数(转base64)
+	RunArg *string `json:"RunArg,omitnil,omitempty" name:"RunArg"`
+
+	// 实例数量
+	InstanceNum *int64 `json:"InstanceNum,omitnil,omitempty" name:"InstanceNum"`
+
+	// 调度策略
+	SchedulingStrategy *SchedulingStrategy `json:"SchedulingStrategy,omitnil,omitempty" name:"SchedulingStrategy"`
+
+	// 重启策略
+	RestartPolicy *string `json:"RestartPolicy,omitnil,omitempty" name:"RestartPolicy"`
+
+	// 服务治理配置
+	ServiceSpecEncode *string `json:"ServiceSpecEncode,omitnil,omitempty" name:"ServiceSpecEncode"`
+
+	// istio容器的 mem Request
+	IstioMemRequest *string `json:"IstioMemRequest,omitnil,omitempty" name:"IstioMemRequest"`
+
+	//  istio容器的 cpu Request
+	IstioCpuRequest *string `json:"IstioCpuRequest,omitnil,omitempty" name:"IstioCpuRequest"`
+
+	// istio容器的 mem Limit
+	IstioMemLimit *string `json:"IstioMemLimit,omitnil,omitempty" name:"IstioMemLimit"`
+
+	// istio容器的 cpu Limit
+	IstioCpuLimit *string `json:"IstioCpuLimit,omitnil,omitempty" name:"IstioCpuLimit"`
+
+	// 服务治理配置
+	ServiceGovernanceConfig *ContainerGroupServiceGovernanceConfig `json:"ServiceGovernanceConfig,omitnil,omitempty" name:"ServiceGovernanceConfig"`
+
+	// agent容器的 mem Request
+	AgentMemRequest *string `json:"AgentMemRequest,omitnil,omitempty" name:"AgentMemRequest"`
+
+	// agent容器的 cpu Request
+	AgentCpuRequest *string `json:"AgentCpuRequest,omitnil,omitempty" name:"AgentCpuRequest"`
+
+	// agent容器的 mem Limit
+	AgentMemLimit *string `json:"AgentMemLimit,omitnil,omitempty" name:"AgentMemLimit"`
+
+	// agent容器的 cpu Limit
+	AgentCpuLimit *string `json:"AgentCpuLimit,omitnil,omitempty" name:"AgentCpuLimit"`
+
+	// 发布策略(0表示快速更新，1表示滚动更新。默认值为0)
+	UpdateType *int64 `json:"UpdateType,omitnil,omitempty" name:"UpdateType"`
+
+	// 更新间隔,单位秒
+	UpdateIvl *int64 `json:"UpdateIvl,omitnil,omitempty" name:"UpdateIvl"`
+
+	// 对应更新策略和策略配置参数
+	MaxSurge *string `json:"MaxSurge,omitnil,omitempty" name:"MaxSurge"`
+
+	// 对应更新策略和策略配置参数
+	MaxUnavailable *string `json:"MaxUnavailable,omitnil,omitempty" name:"MaxUnavailable"`
+
+	// 预热参数配置
+	WarmupSetting *WarmupSetting `json:"WarmupSetting,omitnil,omitempty" name:"WarmupSetting"`
+
+	// 配置模版ID
+	ConfigTemplateId *string `json:"ConfigTemplateId,omitnil,omitempty" name:"ConfigTemplateId"`
+
+	// 配置模版Version
+	ConfigTemplateVersion *int64 `json:"ConfigTemplateVersion,omitnil,omitempty" name:"ConfigTemplateVersion"`
+
+	// 是否清除数据卷信息
+	VolumeClean *bool `json:"VolumeClean,omitnil,omitempty" name:"VolumeClean"`
+
+	// 命名空间Id
+	NamespaceId *string `json:"NamespaceId,omitnil,omitempty" name:"NamespaceId"`
+
+	// 是否部署agent容器
+	DeployAgent *bool `json:"DeployAgent,omitnil,omitempty" name:"DeployAgent"`
+
+	// javaagent信息: SERVICE_AGENT/OT_AGENT
+	AgentProfileList []*AgentProfile `json:"AgentProfileList,omitnil,omitempty" name:"AgentProfileList"`
+
+	// 是否清除Service信息
+	ServiceClean *bool `json:"ServiceClean,omitnil,omitempty" name:"ServiceClean"`
+
+	// 是否清除Env信息
+	EnvClean *bool `json:"EnvClean,omitnil,omitempty" name:"EnvClean"`
+
+	// 本次部署的描述信息
+	DeployDesc *string `json:"DeployDesc,omitnil,omitempty" name:"DeployDesc"`
+}
+
+func (r *DeployContainerApplicationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeployContainerApplicationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplicationId")
+	delete(f, "ObservabilityConfig")
+	delete(f, "ClusterId")
+	delete(f, "GroupId")
+	delete(f, "Envs")
+	delete(f, "VolumeMountInfoList")
+	delete(f, "LifeCycleHookList")
+	delete(f, "AdditionalContainerList")
+	delete(f, "VolumeInfoList")
+	delete(f, "ServiceSettingList")
+	delete(f, "Alias")
+	delete(f, "GroupName")
+	delete(f, "Tags")
+	delete(f, "ContainerKind")
+	delete(f, "Server")
+	delete(f, "RepoName")
+	delete(f, "RepoType")
+	delete(f, "TcrRepoInfo")
+	delete(f, "SecretName")
+	delete(f, "TagName")
+	delete(f, "HealthCheckSettings")
+	delete(f, "CpuRequest")
+	delete(f, "CpuLimit")
+	delete(f, "MemRequest")
+	delete(f, "MemLimit")
+	delete(f, "JvmOpts")
+	delete(f, "InitContainerEnable")
+	delete(f, "PrivilegeContainerEnable")
+	delete(f, "RunCommand")
+	delete(f, "RunArg")
+	delete(f, "InstanceNum")
+	delete(f, "SchedulingStrategy")
+	delete(f, "RestartPolicy")
+	delete(f, "ServiceSpecEncode")
+	delete(f, "IstioMemRequest")
+	delete(f, "IstioCpuRequest")
+	delete(f, "IstioMemLimit")
+	delete(f, "IstioCpuLimit")
+	delete(f, "ServiceGovernanceConfig")
+	delete(f, "AgentMemRequest")
+	delete(f, "AgentCpuRequest")
+	delete(f, "AgentMemLimit")
+	delete(f, "AgentCpuLimit")
+	delete(f, "UpdateType")
+	delete(f, "UpdateIvl")
+	delete(f, "MaxSurge")
+	delete(f, "MaxUnavailable")
+	delete(f, "WarmupSetting")
+	delete(f, "ConfigTemplateId")
+	delete(f, "ConfigTemplateVersion")
+	delete(f, "VolumeClean")
+	delete(f, "NamespaceId")
+	delete(f, "DeployAgent")
+	delete(f, "AgentProfileList")
+	delete(f, "ServiceClean")
+	delete(f, "EnvClean")
+	delete(f, "DeployDesc")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployContainerApplicationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DeployContainerApplicationResp struct {
+	// 部署组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitnil,omitempty" name:"GroupId"`
+
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+// Predefined struct for user
+type DeployContainerApplicationResponseParams struct {
+	// 部署容器应用是否成功。
+	// true：成功。
+	// false：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *DeployContainerApplicationResp `json:"Result,omitnil,omitempty" name:"Result"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeployContainerApplicationResponse struct {
+	*tchttp.BaseResponse
+	Response *DeployContainerApplicationResponseParams `json:"Response"`
+}
+
+func (r *DeployContainerApplicationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeployContainerApplicationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -16675,6 +17275,24 @@ type HealthCheckSettings struct {
 	ReadinessProbe *HealthCheckSetting `json:"ReadinessProbe,omitnil,omitempty" name:"ReadinessProbe"`
 }
 
+type HttpGetOption struct {
+	// 主机地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
+
+	// 路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
+
+	// 端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *string `json:"Port,omitnil,omitempty" name:"Port"`
+
+	// 协议：HTTP｜HTTPS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scheme *string `json:"Scheme,omitnil,omitempty" name:"Scheme"`
+}
+
 type ImageRepository struct {
 	// 仓库名,含命名空间,如tsf/nginx
 	Reponame *string `json:"Reponame,omitnil,omitempty" name:"Reponame"`
@@ -17360,6 +17978,24 @@ type LaneRules struct {
 
 	// 泳道规则列表
 	Content []*LaneRule `json:"Content,omitnil,omitempty" name:"Content"`
+}
+
+type LifeCycleHook struct {
+	// 生命周期函数类型：PostStart|PreStop
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HookType *string `json:"HookType,omitnil,omitempty" name:"HookType"`
+
+	// 函数执行方式：execCommand|httpGet|none
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecMode *string `json:"ExecMode,omitnil,omitempty" name:"ExecMode"`
+
+	// execCommand函数执行内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecCommandContent *string `json:"ExecCommandContent,omitnil,omitempty" name:"ExecCommandContent"`
+
+	// HttpGet执行内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpGetOption *HttpGetOption `json:"HttpGetOption,omitnil,omitempty" name:"HttpGetOption"`
 }
 
 type MemoryPicture struct {

@@ -34757,6 +34757,9 @@ type ScreenTaskInfo struct {
 	// 分钟任务
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinuteNum *uint64 `json:"MinuteNum,omitnil,omitempty" name:"MinuteNum"`
+
+	// 工作流总数
+	WorkflowNum *uint64 `json:"WorkflowNum,omitnil,omitempty" name:"WorkflowNum"`
 }
 
 type ScriptInfoResponse struct {

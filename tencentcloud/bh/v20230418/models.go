@@ -956,6 +956,65 @@ type CmdTemplate struct {
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 }
 
+type Command struct {
+	// 命令
+	Cmd *string `json:"Cmd,omitnil,omitempty" name:"Cmd"`
+
+	// 命令输入的时间
+	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
+
+	// 命令执行时间相对于所属会话开始时间的偏移量，单位ms
+	TimeOffset *uint64 `json:"TimeOffset,omitnil,omitempty" name:"TimeOffset"`
+
+	// 命令执行情况，1--允许，2--拒绝，3--确认
+	Action *int64 `json:"Action,omitnil,omitempty" name:"Action"`
+
+	// 会话id
+	Sid *string `json:"Sid,omitnil,omitempty" name:"Sid"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitnil,omitempty" name:"UserName"`
+
+	// 设备account
+	Account *string `json:"Account,omitnil,omitempty" name:"Account"`
+
+	// 设备ip
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// source ip
+	FromIp *string `json:"FromIp,omitnil,omitempty" name:"FromIp"`
+
+	// 该命令所属会话的会话开始时间
+	SessTime *string `json:"SessTime,omitnil,omitempty" name:"SessTime"`
+
+	// 该命令所属会话的会话开始时间
+	SessionTime *string `json:"SessionTime,omitnil,omitempty" name:"SessionTime"`
+
+	// 复核时间
+	ConfirmTime *string `json:"ConfirmTime,omitnil,omitempty" name:"ConfirmTime"`
+
+	// 用户部门id
+	UserDepartmentId *string `json:"UserDepartmentId,omitnil,omitempty" name:"UserDepartmentId"`
+
+	// 用户部门name
+	UserDepartmentName *string `json:"UserDepartmentName,omitnil,omitempty" name:"UserDepartmentName"`
+
+	// 设备部门id
+	DeviceDepartmentId *string `json:"DeviceDepartmentId,omitnil,omitempty" name:"DeviceDepartmentId"`
+
+	// 设备部门name
+	DeviceDepartmentName *string `json:"DeviceDepartmentName,omitnil,omitempty" name:"DeviceDepartmentName"`
+
+	// 会话大小
+	Size *uint64 `json:"Size,omitnil,omitempty" name:"Size"`
+
+	// 签名值
+	SignValue *string `json:"SignValue,omitnil,omitempty" name:"SignValue"`
+
+	// 资产类型
+	DeviceKind *string `json:"DeviceKind,omitnil,omitempty" name:"DeviceKind"`
+}
+
 // Predefined struct for user
 type CreateAccessWhiteListRuleRequestParams struct {
 	// ip 10.10.10.1或者网段10.10.10.0/24，最小长度4字节，最大长度40字节。
@@ -6641,6 +6700,20 @@ type OperationTask struct {
 	FirstTime *string `json:"FirstTime,omitnil,omitempty" name:"FirstTime"`
 }
 
+type ReplayInformation struct {
+	// 令牌
+	Token *string `json:"Token,omitnil,omitempty" name:"Token"`
+
+	// 会话开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 回放链接
+	Address *string `json:"Address,omitnil,omitempty" name:"Address"`
+
+	// 回放类型 ，默认0， 1-rfb 2-mp4 3-ssh
+	ReplayType *uint64 `json:"ReplayType,omitnil,omitempty" name:"ReplayType"`
+}
+
 // Predefined struct for user
 type ReplaySessionRequestParams struct {
 	// 会话Sid
@@ -6675,6 +6748,9 @@ func (r *ReplaySessionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ReplaySessionResponseParams struct {
+	// 回放所需信息
+	ReplayInfo *ReplayInformation `json:"ReplayInfo,omitnil,omitempty" name:"ReplayInfo"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -7296,6 +7372,9 @@ func (r *SearchCommandBySidRequest) FromJsonString(s string) error {
 type SearchCommandBySidResponseParams struct {
 	// 总记录数
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 命令列表
+	CommandSet []*Command `json:"CommandSet,omitnil,omitempty" name:"CommandSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

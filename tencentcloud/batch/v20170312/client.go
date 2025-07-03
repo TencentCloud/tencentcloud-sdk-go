@@ -1016,6 +1016,59 @@ func (c *Client) DescribeJobWithContext(ctx context.Context, request *DescribeJo
     return
 }
 
+func NewDescribeJobMonitorDataRequest() (request *DescribeJobMonitorDataRequest) {
+    request = &DescribeJobMonitorDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("batch", APIVersion, "DescribeJobMonitorData")
+    
+    
+    return
+}
+
+func NewDescribeJobMonitorDataResponse() (response *DescribeJobMonitorDataResponse) {
+    response = &DescribeJobMonitorDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeJobMonitorData
+// 查询作业任务实例的资源使用监控信息。当前只支持查询弹性节点任务并且Job未删除；暂不支持计算环境类任务；该接口只支持查询作业实例时间范围之内的资源使用情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JOBIDMALFORMED = "InvalidParameter.JobIdMalformed"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+func (c *Client) DescribeJobMonitorData(request *DescribeJobMonitorDataRequest) (response *DescribeJobMonitorDataResponse, err error) {
+    return c.DescribeJobMonitorDataWithContext(context.Background(), request)
+}
+
+// DescribeJobMonitorData
+// 查询作业任务实例的资源使用监控信息。当前只支持查询弹性节点任务并且Job未删除；暂不支持计算环境类任务；该接口只支持查询作业实例时间范围之内的资源使用情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_JOBIDMALFORMED = "InvalidParameter.JobIdMalformed"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+func (c *Client) DescribeJobMonitorDataWithContext(ctx context.Context, request *DescribeJobMonitorDataRequest) (response *DescribeJobMonitorDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeJobMonitorDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobMonitorData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeJobMonitorDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeJobSubmitInfoRequest() (request *DescribeJobSubmitInfoRequest) {
     request = &DescribeJobSubmitInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

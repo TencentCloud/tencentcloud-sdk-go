@@ -6451,7 +6451,7 @@ type ListVideoDownloadTaskRequestParams struct {
 	// 任务状态（0：准备中，1：执行中，2：已完成，3：失败）
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 排序规则（仅支持 StartTime，EndTime，倒序为-StartTime，-EndTime）
+	// 排序规则（仅支持 StartTime，倒序为-StartTime）
 	SortRule *string `json:"SortRule,omitnil,omitempty" name:"SortRule"`
 
 	// 响应是否携带预览地址(0:不携带；1:携带)
@@ -6468,6 +6468,9 @@ type ListVideoDownloadTaskRequestParams struct {
 
 	// 下载地址过期时间，单位秒，最大为 1 天， 86400秒
 	UrlExpires *int64 `json:"UrlExpires,omitnil,omitempty" name:"UrlExpires"`
+
+	// 任务日期，默认当天
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 }
 
 type ListVideoDownloadTaskRequest struct {
@@ -6482,7 +6485,7 @@ type ListVideoDownloadTaskRequest struct {
 	// 任务状态（0：准备中，1：执行中，2：已完成，3：失败）
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 排序规则（仅支持 StartTime，EndTime，倒序为-StartTime，-EndTime）
+	// 排序规则（仅支持 StartTime，倒序为-StartTime）
 	SortRule *string `json:"SortRule,omitnil,omitempty" name:"SortRule"`
 
 	// 响应是否携带预览地址(0:不携带；1:携带)
@@ -6499,6 +6502,9 @@ type ListVideoDownloadTaskRequest struct {
 
 	// 下载地址过期时间，单位秒，最大为 1 天， 86400秒
 	UrlExpires *int64 `json:"UrlExpires,omitnil,omitempty" name:"UrlExpires"`
+
+	// 任务日期，默认当天
+	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 }
 
 func (r *ListVideoDownloadTaskRequest) ToJsonString() string {
@@ -6522,6 +6528,7 @@ func (r *ListVideoDownloadTaskRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "DownloadTaskId")
 	delete(f, "UrlExpires")
+	delete(f, "Date")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListVideoDownloadTaskRequest has unknown keys!", "")
 	}

@@ -1772,6 +1772,12 @@ type Task struct {
 
 	// 架构ID
 	TaskArchId *string `json:"TaskArchId,omitnil,omitempty" name:"TaskArchId"`
+
+	// 演练场景
+	TaskScenario []*TaskTarget `json:"TaskScenario,omitnil,omitempty" name:"TaskScenario"`
+
+	// 演练目的
+	TaskPurpose []*TaskTarget `json:"TaskPurpose,omitnil,omitempty" name:"TaskPurpose"`
 }
 
 type TaskConfig struct {
@@ -2119,6 +2125,21 @@ type TaskReportInfo struct {
 
 	// 归档ID
 	ArchiveUuid *string `json:"ArchiveUuid,omitnil,omitempty" name:"ArchiveUuid"`
+}
+
+type TaskTarget struct {
+	// 目标标签ID
+	TargetId *int64 `json:"TargetId,omitnil,omitempty" name:"TargetId"`
+
+	// 目标描述
+	TargetDesc *string `json:"TargetDesc,omitnil,omitempty" name:"TargetDesc"`
+
+	// 1:演练场景
+	// 2:演练目标
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 1:平台 2:用户个人
+	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
 }
 
 type Template struct {

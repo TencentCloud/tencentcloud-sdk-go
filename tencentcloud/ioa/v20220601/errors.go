@@ -29,6 +29,9 @@ const (
 	// 内部错误，数据库异常。
 	INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
 
+	// 数据库查询失败。
+	INTERNALERROR_DATABASEQUERYFAILED = "InternalError.DatabaseQueryFailed"
+
 	// 内部未知错误。
 	INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 
@@ -44,8 +47,14 @@ const (
 	// 请求参数错误。
 	INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
 
+	// 没有找到对应的终端自定义分组
+	INVALIDPARAMETERVALUE_VIRTUALDEVICEGROUPNOTFOUND = "InvalidParameterValue.VirtualDeviceGroupNotFound"
+
 	// 缺少公共参数。
 	MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+
+	// 上次操作还未完成，请稍后重试。
+	REQUESTLIMITEXCEEDED_WAITFORTHELASTOPERATIONTOCOMPLETE = "RequestLimitExceeded.WaitForTheLastOperationToComplete"
 
 	// 资源不存在。
 	RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"

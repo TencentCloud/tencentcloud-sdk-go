@@ -6241,6 +6241,9 @@ type ModifyStaffRequestParams struct {
 
 	// 座席分机号（1 到 8 打头，4 - 6 位）
 	ExtensionNumber *string `json:"ExtensionNumber,omitnil,omitempty" name:"ExtensionNumber"`
+
+	// 呼叫转移配置
+	ForwardingConfig *ForwardingConfig `json:"ForwardingConfig,omitnil,omitempty" name:"ForwardingConfig"`
 }
 
 type ModifyStaffRequest struct {
@@ -6275,6 +6278,9 @@ type ModifyStaffRequest struct {
 
 	// 座席分机号（1 到 8 打头，4 - 6 位）
 	ExtensionNumber *string `json:"ExtensionNumber,omitnil,omitempty" name:"ExtensionNumber"`
+
+	// 呼叫转移配置
+	ForwardingConfig *ForwardingConfig `json:"ForwardingConfig,omitnil,omitempty" name:"ForwardingConfig"`
 }
 
 func (r *ModifyStaffRequest) ToJsonString() string {
@@ -6299,6 +6305,7 @@ func (r *ModifyStaffRequest) FromJsonString(s string) error {
 	delete(f, "UseMobileCallOut")
 	delete(f, "UseMobileAccept")
 	delete(f, "ExtensionNumber")
+	delete(f, "ForwardingConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStaffRequest has unknown keys!", "")
 	}

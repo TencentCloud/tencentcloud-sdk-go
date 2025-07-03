@@ -501,6 +501,14 @@ type DataDisk struct {
 	DiskName *string `json:"DiskName,omitnil,omitempty" name:"DiskName"`
 }
 
+type DataPointView struct {
+	// 监控数据采集的时间
+	Timestamps []*int64 `json:"Timestamps,omitnil,omitempty" name:"Timestamps"`
+
+	// 监控指标数据; 如果涉及到多个实例的监控数据的间隙时间，取值会为null
+	Values []*float64 `json:"Values,omitnil,omitempty" name:"Values"`
+}
+
 // Predefined struct for user
 type DeleteComputeEnvRequestParams struct {
 	// 计算环境ID，环境ID通过调用接口 [DescribeComputeEnvs](https://cloud.tencent.com/document/api/599/15893)获取，不能对状态处于删除中或者存在计算实例未销毁的环境发起删除动作。
@@ -1270,6 +1278,111 @@ func (r *DescribeInstanceCategoriesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstanceCategoriesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobMonitorDataRequestParams struct {
+	// 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 作业的Task名称，详见[作业详情](https://cloud.tencent.com/document/product/599/15904)。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 作业任务实例的序号，详见[任务详情](https://cloud.tencent.com/document/product/599/15905)
+	TaskInstanceIndex *int64 `json:"TaskInstanceIndex,omitnil,omitempty" name:"TaskInstanceIndex"`
+
+	// 支持查询的指标；当前支持查询的任务指标；
+	// 
+	// - CpuUsage：cpu利用率，单位：%
+	// - MemUsage：内存利用率，单位：%
+	// - LanOuttraffic：内网出带宽，单位：Bytes/s
+	// - LanIntraffic：内网入带宽，单位：Bytes/s
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 查询任务实例的起始时间；如果未传入查询起始时间或传入的时间小于任务实例的创建时间（任务实例创建时间详见[任务详情](https://cloud.tencent.com/document/product/599/15905)），会自动将查询时间调整到任务实例的创建时间。传入时间格式只支持零时区格式。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询任务实例的终止时间；如果未传入查询终止时间或传入的时间大于任务实例的终止时间（任务实例终止时间详见[任务详情](https://cloud.tencent.com/document/product/599/15905)），并且任务实例已经结束，会自动将查询终止时间调整到任务实例的终止时间；如果任务实例未结束，会自动将查询终止时间调整到当前时间。传入时间格式只支持零时区格式。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+type DescribeJobMonitorDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 作业ID；JobId详见[作业列表](https://cloud.tencent.com/document/product/599/15909)
+	JobId *string `json:"JobId,omitnil,omitempty" name:"JobId"`
+
+	// 作业的Task名称，详见[作业详情](https://cloud.tencent.com/document/product/599/15904)。
+	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
+
+	// 作业任务实例的序号，详见[任务详情](https://cloud.tencent.com/document/product/599/15905)
+	TaskInstanceIndex *int64 `json:"TaskInstanceIndex,omitnil,omitempty" name:"TaskInstanceIndex"`
+
+	// 支持查询的指标；当前支持查询的任务指标；
+	// 
+	// - CpuUsage：cpu利用率，单位：%
+	// - MemUsage：内存利用率，单位：%
+	// - LanOuttraffic：内网出带宽，单位：Bytes/s
+	// - LanIntraffic：内网入带宽，单位：Bytes/s
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 查询任务实例的起始时间；如果未传入查询起始时间或传入的时间小于任务实例的创建时间（任务实例创建时间详见[任务详情](https://cloud.tencent.com/document/product/599/15905)），会自动将查询时间调整到任务实例的创建时间。传入时间格式只支持零时区格式。
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询任务实例的终止时间；如果未传入查询终止时间或传入的时间大于任务实例的终止时间（任务实例终止时间详见[任务详情](https://cloud.tencent.com/document/product/599/15905)），并且任务实例已经结束，会自动将查询终止时间调整到任务实例的终止时间；如果任务实例未结束，会自动将查询终止时间调整到当前时间。传入时间格式只支持零时区格式。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeJobMonitorDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobMonitorDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "TaskName")
+	delete(f, "TaskInstanceIndex")
+	delete(f, "MetricName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeJobMonitorDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeJobMonitorDataResponseParams struct {
+	// 监控数据粒度，单位:秒；时间粒度随着查询的时间范围变化，查询时间范围越小，时间粒度越小。
+	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
+
+	// 监控采集的数据。时间戳和对应的值一一对应；如果查询的任务重试，采集时间段涉及多个实例的话，某些时间段内的值为null, 表示对应时间点没有实例存在，也不存在对应的监控数据；相邻监控时间段之间的空值数量最多为10。
+	DataPoints *DataPointView `json:"DataPoints,omitnil,omitempty" name:"DataPoints"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeJobMonitorDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeJobMonitorDataResponseParams `json:"Response"`
+}
+
+func (r *DescribeJobMonitorDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeJobMonitorDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

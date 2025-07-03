@@ -2779,7 +2779,7 @@ type CreateTopicRequestParams struct {
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称，是一个不超过 128 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+	// 只能包含字母、数字、下划线、“-”、“.”
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// Partition个数，大于0
@@ -2834,7 +2834,7 @@ type CreateTopicRequest struct {
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 主题名称，是一个不超过 128 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+	// 只能包含字母、数字、下划线、“-”、“.”
 	TopicName *string `json:"TopicName,omitnil,omitempty" name:"TopicName"`
 
 	// Partition个数，大于0
@@ -5018,6 +5018,12 @@ type DescribeDatahubTaskRes struct {
 
 	// 任务标签列表
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 任务描述信息	
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 1:正常 2:隔离中
+	IsolateStatus *int64 `json:"IsolateStatus,omitnil,omitempty" name:"IsolateStatus"`
 }
 
 // Predefined struct for user

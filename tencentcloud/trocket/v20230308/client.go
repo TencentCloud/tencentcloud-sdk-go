@@ -866,7 +866,7 @@ func NewDeleteRoleResponse() (response *DeleteRoleResponse) {
 }
 
 // DeleteRole
-// 删除角色
+// 删除角色。请确保该角色相关信息不在当前代码中被使用。删除角色后，原先使用该角色进行生产或消费消息的密钥（AccessKey 和 SecretKey）将立即失效。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -877,7 +877,7 @@ func (c *Client) DeleteRole(request *DeleteRoleRequest) (response *DeleteRoleRes
 }
 
 // DeleteRole
-// 删除角色
+// 删除角色。请确保该角色相关信息不在当前代码中被使用。删除角色后，原先使用该角色进行生产或消费消息的密钥（AccessKey 和 SecretKey）将立即失效。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1176,9 +1176,19 @@ func NewDescribeConsumerGroupListResponse() (response *DescribeConsumerGroupList
 //
 // 
 //
-// 1. ConsumerGroupName，名称模糊查询
+// - ConsumerGroupName 消费组名称，支持模糊查询，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
 //
-// 2. ConsumeMessageOrderly，投递顺序性。"true":顺序投递；"false":并发投递
+// - ConsumeMessageOrderly，投递顺序性，枚举值如下：
+//
+//     - true 顺序投递
+//
+//     - false 并发投递
+//
+// 
+//
+// Filters示例： 
+//
+// [{ "Name": "ConsumeMessageOrderly", "Values": ["true"] }]
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -1191,9 +1201,19 @@ func (c *Client) DescribeConsumerGroupList(request *DescribeConsumerGroupListReq
 //
 // 
 //
-// 1. ConsumerGroupName，名称模糊查询
+// - ConsumerGroupName 消费组名称，支持模糊查询，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
 //
-// 2. ConsumeMessageOrderly，投递顺序性。"true":顺序投递；"false":并发投递
+// - ConsumeMessageOrderly，投递顺序性，枚举值如下：
+//
+//     - true 顺序投递
+//
+//     - false 并发投递
+//
+// 
+//
+// Filters示例： 
+//
+// [{ "Name": "ConsumeMessageOrderly", "Values": ["true"] }]
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -1284,13 +1304,25 @@ func NewDescribeFusionInstanceListResponse() (response *DescribeFusionInstanceLi
 // DescribeFusionInstanceList
 // 查询集群列表，支持 4.x 和 5.x 集群，其中 Filters 参数使用说明如下：
 //
-// 1. InstanceName, 名称模糊查询
+// 
 //
-// 2. InstanceId，集群ID查询
+// - InstanceName 集群名称，支持模糊查询，从本接口返回值或控制台获得
 //
-// 3. InstanceType, 集群类型查询，支持多选
+// - InstanceId 集群ID，精确查询，从当前接口或控制台获得
 //
-// 4. Version，集群版本查询
+// - InstanceType 集群类型，可参考 [InstanceItem](https://cloud.tencent.com/document/api/1493/96031#InstanceItem) 数据结构，支持多选
+//
+// - Version 集群版本，枚举值如下：
+//
+//     - 4 RocketMQ 4.x 集群
+//
+//     - 5 RocketMQ 5.x 集群
+//
+// 
+//
+// Filters示例：
+//
+//  [{ "Name": "InstanceId", "Values": ["rmq-72mo3a9o"] }]
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1301,13 +1333,25 @@ func (c *Client) DescribeFusionInstanceList(request *DescribeFusionInstanceListR
 // DescribeFusionInstanceList
 // 查询集群列表，支持 4.x 和 5.x 集群，其中 Filters 参数使用说明如下：
 //
-// 1. InstanceName, 名称模糊查询
+// 
 //
-// 2. InstanceId，集群ID查询
+// - InstanceName 集群名称，支持模糊查询，从本接口返回值或控制台获得
 //
-// 3. InstanceType, 集群类型查询，支持多选
+// - InstanceId 集群ID，精确查询，从当前接口或控制台获得
 //
-// 4. Version，集群版本查询
+// - InstanceType 集群类型，可参考 [InstanceItem](https://cloud.tencent.com/document/api/1493/96031#InstanceItem) 数据结构，支持多选
+//
+// - Version 集群版本，枚举值如下：
+//
+//     - 4 RocketMQ 4.x 集群
+//
+//     - 5 RocketMQ 5.x 集群
+//
+// 
+//
+// Filters示例：
+//
+//  [{ "Name": "InstanceId", "Values": ["rmq-72mo3a9o"] }]
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1398,17 +1442,27 @@ func NewDescribeInstanceListResponse() (response *DescribeInstanceListResponse) 
 // DescribeInstanceList
 // 查询集群列表，仅支持 5.x 集群。Filters参数使用说明如下：
 //
-// 1. InstanceName, 名称模糊查询
+// 
 //
-// 2. InstanceId，集群ID查询
+// - InstanceName 集群名称，支持模糊搜索
 //
-// 3. InstanceType, 集群类型查询，支持多选
+// - InstanceId 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得
 //
-// 3. InstanceStatus，集群状态查询，支持多选
+// - InstanceType 集群类型，可参考 [InstanceItem](https://cloud.tencent.com/document/api/1493/96031#InstanceItem) 数据结构，支持多选
+//
+// - InstanceStatus 集群状态，可参考 [InstanceItem](https://cloud.tencent.com/document/api/1493/96031#InstanceItem) 数据结构，支持多选
 //
 // 
 //
-// 当使用TagFilters查询时，Filters参数失效。
+// Filters示例：
+//
+// [{
+//
+//     "Name": "InstanceId",
+//
+//     "Values": ["rmq-72mo3a9o"]
+//
+// }]
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1419,17 +1473,27 @@ func (c *Client) DescribeInstanceList(request *DescribeInstanceListRequest) (res
 // DescribeInstanceList
 // 查询集群列表，仅支持 5.x 集群。Filters参数使用说明如下：
 //
-// 1. InstanceName, 名称模糊查询
+// 
 //
-// 2. InstanceId，集群ID查询
+// - InstanceName 集群名称，支持模糊搜索
 //
-// 3. InstanceType, 集群类型查询，支持多选
+// - InstanceId 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得
 //
-// 3. InstanceStatus，集群状态查询，支持多选
+// - InstanceType 集群类型，可参考 [InstanceItem](https://cloud.tencent.com/document/api/1493/96031#InstanceItem) 数据结构，支持多选
+//
+// - InstanceStatus 集群状态，可参考 [InstanceItem](https://cloud.tencent.com/document/api/1493/96031#InstanceItem) 数据结构，支持多选
 //
 // 
 //
-// 当使用TagFilters查询时，Filters参数失效。
+// Filters示例：
+//
+// [{
+//
+//     "Name": "InstanceId",
+//
+//     "Values": ["rmq-72mo3a9o"]
+//
+// }]
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2585,9 +2649,15 @@ func NewDescribeRoleListResponse() (response *DescribeRoleListResponse) {
 //
 // 
 //
-// 1. RoleName，角色名称模糊搜索
+// - RoleName 角色名称，支持模糊搜索，从本接口返回值或控制台获得
 //
-// 2. AccessKey，AccessKey模糊搜索
+// - AccessKey AccessKey，支持模糊搜索，从本接口返回值或控制台获得
+//
+// 
+//
+// Filters示例： 
+//
+// [{ "Name": "RoleName", "Values": ["test_role"] }]
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -2603,9 +2673,15 @@ func (c *Client) DescribeRoleList(request *DescribeRoleListRequest) (response *D
 //
 // 
 //
-// 1. RoleName，角色名称模糊搜索
+// - RoleName 角色名称，支持模糊搜索，从本接口返回值或控制台获得
 //
-// 2. AccessKey，AccessKey模糊搜索
+// - AccessKey AccessKey，支持模糊搜索，从本接口返回值或控制台获得
+//
+// 
+//
+// Filters示例： 
+//
+// [{ "Name": "RoleName", "Values": ["test_role"] }]
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -2858,7 +2934,13 @@ func NewDescribeTopicResponse() (response *DescribeTopicResponse) {
 //
 // 
 //
-// ConsumerGroup，消费组名称过滤
+// - ConsumerGroup 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
+//
+// 
+//
+// Filters示例： 
+//
+// [{ "Name": "ConsumerGroup", "Values": ["test_group"] }]
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -2872,7 +2954,13 @@ func (c *Client) DescribeTopic(request *DescribeTopicRequest) (response *Describ
 //
 // 
 //
-// ConsumerGroup，消费组名称过滤
+// - ConsumerGroup 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
+//
+// 
+//
+// Filters示例： 
+//
+// [{ "Name": "ConsumerGroup", "Values": ["test_group"] }]
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -2917,9 +3005,15 @@ func NewDescribeTopicListResponse() (response *DescribeTopicListResponse) {
 //
 // 
 //
-// 1. TopicName，主题名称模糊搜索
+// - TopicName 主题名称，支持模糊搜索，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得
 //
-// 2. TopicType，主题类型查询，支持多选，可选值：Normal,Order,Transaction,DelayScheduled
+// - TopicType 主题类型查询，支持多选，参考 [DescribeTopic](https://cloud.tencent.com/document/api/1493/97945) 接口 TopicType 字段
+//
+// 
+//
+// Filters示例：
+//
+//  [{ "Name": "TopicName", "Values": ["test_topic"] }]
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -2932,9 +3026,15 @@ func (c *Client) DescribeTopicList(request *DescribeTopicListRequest) (response 
 //
 // 
 //
-// 1. TopicName，主题名称模糊搜索
+// - TopicName 主题名称，支持模糊搜索，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得
 //
-// 2. TopicType，主题类型查询，支持多选，可选值：Normal,Order,Transaction,DelayScheduled
+// - TopicType 主题类型查询，支持多选，参考 [DescribeTopic](https://cloud.tencent.com/document/api/1493/97945) 接口 TopicType 字段
+//
+// 
+//
+// Filters示例：
+//
+//  [{ "Name": "TopicName", "Values": ["test_topic"] }]
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -2978,7 +3078,13 @@ func NewDescribeTopicListByGroupResponse() (response *DescribeTopicListByGroupRe
 //
 // 
 //
-// TopicName，主题名称过滤
+// - TopicName 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+//
+// 
+//
+// Filters示例： 
+//
+// [{ "Name": "TopicName", "Values": ["test_topic"] }]
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
@@ -2991,7 +3097,13 @@ func (c *Client) DescribeTopicListByGroup(request *DescribeTopicListByGroupReque
 //
 // 
 //
-// TopicName，主题名称过滤
+// - TopicName 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
+//
+// 
+//
+// Filters示例： 
+//
+// [{ "Name": "TopicName", "Values": ["test_topic"] }]
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"

@@ -4109,7 +4109,7 @@ type InstanceInfo struct {
 	// zookeeper节点描述信息
 	CoreSummary *NodesSummary `json:"CoreSummary,omitnil,omitempty" name:"CoreSummary"`
 
-	// 高可用，“true" "false"
+	// 高可用，"true" "false"
 	HA *string `json:"HA,omitnil,omitempty" name:"HA"`
 
 	// 高可用类型：
@@ -4235,6 +4235,12 @@ type InstanceInfo struct {
 
 	// 计算组个数
 	ComputeGroupCount *int64 `json:"ComputeGroupCount,omitnil,omitempty" name:"ComputeGroupCount"`
+
+	// 存算分离cos存储数据
+	CosStorageSize *float64 `json:"CosStorageSize,omitnil,omitempty" name:"CosStorageSize"`
+
+	// 存算分离的指标 当是true 不支持新建计算组
+	IsMasterNonVM *bool `json:"IsMasterNonVM,omitnil,omitempty" name:"IsMasterNonVM"`
 }
 
 type InstanceNode struct {
@@ -6211,6 +6217,8 @@ type ScheduleInfo struct {
 	// Day-天
 	// Week-周
 	// Month-月
+	// Quarter-季度
+	// Year-年
 	// Once-单次
 	ScheduleType *string `json:"ScheduleType,omitnil,omitempty" name:"ScheduleType"`
 

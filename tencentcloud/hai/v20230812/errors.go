@@ -134,6 +134,9 @@ const (
 	// 用户账号的网络类型是传统型，不允许使用HAI
 	UNAUTHORIZEDOPERATION_UNAUTHORIZEDNETWORKUSER = "UnauthorizedOperation.UnauthorizedNetworkUser"
 
+	// 未认证的STS操作
+	UNAUTHORIZEDOPERATION_UNAUTHORIZEDSTSOPERATION = "UnauthorizedOperation.UnauthorizedSTSOperation"
+
 	// 客户未授权使用本产品
 	UNAUTHORIZEDOPERATION_UNAUTHORIZEDUSER = "UnauthorizedOperation.UnauthorizedUser"
 

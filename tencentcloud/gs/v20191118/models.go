@@ -44,6 +44,9 @@ type AndroidApp struct {
 
 	// 应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、NORMAL 默认状态
 	UpdateState *string `json:"UpdateState,omitnil,omitempty" name:"UpdateState"`
+
+	// 安卓应用包名
+	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 }
 
 type AndroidAppCosInfo struct {
@@ -75,8 +78,14 @@ type AndroidAppVersionInfo struct {
 	// 应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。
 	CleanupMode *string `json:"CleanupMode,omitnil,omitempty" name:"CleanupMode"`
 
-	// 安卓应用版本名称
+	// 安卓应用版本名称（版本描述、备注）
 	AndroidAppVersionName *string `json:"AndroidAppVersionName,omitnil,omitempty" name:"AndroidAppVersionName"`
+
+	// 安卓应用启动页
+	Activity *string `json:"Activity,omitnil,omitempty" name:"Activity"`
+
+	// 应用版本号（Version Name）
+	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
 }
 
 type AndroidInstance struct {
@@ -2335,6 +2344,9 @@ type DescribeAndroidInstancesByAppsRequestParams struct {
 
 	// 应用 ID 列表。通过应用 ID 做集合查询
 	AndroidAppIds []*string `json:"AndroidAppIds,omitnil,omitempty" name:"AndroidAppIds"`
+
+	// 字段过滤器。Filter 的 Name 有以下值： AndroidInstanceId：实例 ID
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeAndroidInstancesByAppsRequest struct {
@@ -2348,6 +2360,9 @@ type DescribeAndroidInstancesByAppsRequest struct {
 
 	// 应用 ID 列表。通过应用 ID 做集合查询
 	AndroidAppIds []*string `json:"AndroidAppIds,omitnil,omitempty" name:"AndroidAppIds"`
+
+	// 字段过滤器。Filter 的 Name 有以下值： AndroidInstanceId：实例 ID
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeAndroidInstancesByAppsRequest) ToJsonString() string {
@@ -2365,6 +2380,7 @@ func (r *DescribeAndroidInstancesByAppsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "AndroidAppIds")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAndroidInstancesByAppsRequest has unknown keys!", "")
 	}

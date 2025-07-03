@@ -799,3 +799,135 @@ func (c *Client) DescribeSoftwareInformationWithContext(ctx context.Context, req
     err = c.Send(request, response)
     return
 }
+
+func NewDescribeVirtualDevicesRequest() (request *DescribeVirtualDevicesRequest) {
+    request = &DescribeVirtualDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeVirtualDevices")
+    
+    
+    return
+}
+
+func NewDescribeVirtualDevicesResponse() (response *DescribeVirtualDevicesResponse) {
+    response = &DescribeVirtualDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeVirtualDevices
+// 展示自定义分组终端列表，私有化调用path为：/capi/Assets/DescribeVirtualDevices
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONS = "UnauthorizedOperation.NoResourcePermissions"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeVirtualDevices(request *DescribeVirtualDevicesRequest) (response *DescribeVirtualDevicesResponse, err error) {
+    return c.DescribeVirtualDevicesWithContext(context.Background(), request)
+}
+
+// DescribeVirtualDevices
+// 展示自定义分组终端列表，私有化调用path为：/capi/Assets/DescribeVirtualDevices
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONS = "UnauthorizedOperation.NoResourcePermissions"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeVirtualDevicesWithContext(ctx context.Context, request *DescribeVirtualDevicesRequest) (response *DescribeVirtualDevicesResponse, err error) {
+    if request == nil {
+        request = NewDescribeVirtualDevicesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVirtualDevices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVirtualDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyVirtualDeviceGroupsRequest() (request *ModifyVirtualDeviceGroupsRequest) {
+    request = &ModifyVirtualDeviceGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "ModifyVirtualDeviceGroups")
+    
+    
+    return
+}
+
+func NewModifyVirtualDeviceGroupsResponse() (response *ModifyVirtualDeviceGroupsResponse) {
+    response = &ModifyVirtualDeviceGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyVirtualDeviceGroups
+// 终端自定义分组增减终端，私有化调用path为：/capi/Assets/Device/ModifyVirtualDeviceGroups
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_DATABASEQUERYFAILED = "InternalError.DatabaseQueryFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  INVALIDPARAMETERVALUE_VIRTUALDEVICEGROUPNOTFOUND = "InvalidParameterValue.VirtualDeviceGroupNotFound"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  REQUESTLIMITEXCEEDED_WAITFORTHELASTOPERATIONTOCOMPLETE = "RequestLimitExceeded.WaitForTheLastOperationToComplete"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONS = "UnauthorizedOperation.NoResourcePermissions"
+func (c *Client) ModifyVirtualDeviceGroups(request *ModifyVirtualDeviceGroupsRequest) (response *ModifyVirtualDeviceGroupsResponse, err error) {
+    return c.ModifyVirtualDeviceGroupsWithContext(context.Background(), request)
+}
+
+// ModifyVirtualDeviceGroups
+// 终端自定义分组增减终端，私有化调用path为：/capi/Assets/Device/ModifyVirtualDeviceGroups
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_DATABASEQUERYFAILED = "InternalError.DatabaseQueryFailed"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  INVALIDPARAMETERVALUE_VIRTUALDEVICEGROUPNOTFOUND = "InvalidParameterValue.VirtualDeviceGroupNotFound"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  REQUESTLIMITEXCEEDED_WAITFORTHELASTOPERATIONTOCOMPLETE = "RequestLimitExceeded.WaitForTheLastOperationToComplete"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONS = "UnauthorizedOperation.NoResourcePermissions"
+func (c *Client) ModifyVirtualDeviceGroupsWithContext(ctx context.Context, request *ModifyVirtualDeviceGroupsRequest) (response *ModifyVirtualDeviceGroupsResponse, err error) {
+    if request == nil {
+        request = NewModifyVirtualDeviceGroupsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVirtualDeviceGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyVirtualDeviceGroupsResponse()
+    err = c.Send(request, response)
+    return
+}

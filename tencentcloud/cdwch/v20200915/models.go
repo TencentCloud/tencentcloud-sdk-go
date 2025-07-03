@@ -152,6 +152,68 @@ type BackupTableContent struct {
 	Rip *string `json:"Rip,omitnil,omitempty" name:"Rip"`
 }
 
+type CNResource struct {
+	// 无
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// 无
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// 无
+	AppID *int64 `json:"AppID,omitnil,omitempty" name:"AppID"`
+
+	// 无
+	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
+
+	// 无
+	Component *string `json:"Component,omitnil,omitempty" name:"Component"`
+
+	// 无
+	DeployMode *int64 `json:"DeployMode,omitnil,omitempty" name:"DeployMode"`
+
+	// 无
+	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
+
+	// 无
+	ResourceID *string `json:"ResourceID,omitnil,omitempty" name:"ResourceID"`
+
+	// 无
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 无
+	IP *string `json:"IP,omitnil,omitempty" name:"IP"`
+
+	// 无
+	CPU *uint64 `json:"CPU,omitnil,omitempty" name:"CPU"`
+
+	// 无
+	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
+
+	// 无
+	Storage *uint64 `json:"Storage,omitnil,omitempty" name:"Storage"`
+
+	// 无
+	UUID *string `json:"UUID,omitnil,omitempty" name:"UUID"`
+
+	// 无
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 无
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 无
+	Details *string `json:"Details,omitnil,omitempty" name:"Details"`
+
+	// 无
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 无
+	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
+
+	// 无
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+}
+
 type Charge struct {
 	// 计费类型，“PREPAID” 预付费，“POSTPAID_BY_HOUR” 后付费
 	ChargeType *string `json:"ChargeType,omitnil,omitempty" name:"ChargeType"`
@@ -203,6 +265,40 @@ type ClusterInfo struct {
 
 	// 当前cluster的IP列表
 	NodeIps []*string `json:"NodeIps,omitnil,omitempty" name:"NodeIps"`
+}
+
+type CnInstanceInfo struct {
+	// ID值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
+
+	// cdwch-cn或者其他
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// cdwch-cn或者其他
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// Running
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 运行中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceStateInfo *InstanceStateInfo `json:"InstanceStateInfo,omitnil,omitempty" name:"InstanceStateInfo"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resources []*CNResource `json:"Resources,omitnil,omitempty" name:"Resources"`
 }
 
 type ConfigSubmitContext struct {
@@ -862,6 +958,114 @@ func (r *DescribeBackUpTablesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBackUpTablesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCNInstancesRequestParams struct {
+	// 搜索的集群id名称
+	SearchInstanceID *string `json:"SearchInstanceID,omitnil,omitempty" name:"SearchInstanceID"`
+
+	// 搜索的集群name
+	SearchInstanceName *string `json:"SearchInstanceName,omitnil,omitempty" name:"SearchInstanceName"`
+
+	// 分页参数，第一页为0，第二页为10
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页参数，分页步长，默认为10
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 搜索标签列表
+	SearchTags []*SearchTags `json:"SearchTags,omitnil,omitempty" name:"SearchTags"`
+
+	// 集群类型，弹性版或自研数仓版
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 组件名称列表
+	Components []*string `json:"Components,omitnil,omitempty" name:"Components"`
+}
+
+type DescribeCNInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 搜索的集群id名称
+	SearchInstanceID *string `json:"SearchInstanceID,omitnil,omitempty" name:"SearchInstanceID"`
+
+	// 搜索的集群name
+	SearchInstanceName *string `json:"SearchInstanceName,omitnil,omitempty" name:"SearchInstanceName"`
+
+	// 分页参数，第一页为0，第二页为10
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页参数，分页步长，默认为10
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 搜索标签列表
+	SearchTags []*SearchTags `json:"SearchTags,omitnil,omitempty" name:"SearchTags"`
+
+	// 集群类型，弹性版或自研数仓版
+	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
+
+	// 组件名称列表
+	Components []*string `json:"Components,omitnil,omitempty" name:"Components"`
+}
+
+func (r *DescribeCNInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCNInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SearchInstanceID")
+	delete(f, "SearchInstanceName")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchTags")
+	delete(f, "InstanceType")
+	delete(f, "Components")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCNInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCNInstancesResponseParams struct {
+	// 实例总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 实例数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstancesList []*CnInstanceInfo `json:"InstancesList,omitnil,omitempty" name:"InstancesList"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCNInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCNInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeCNInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCNInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -918,22 +918,18 @@ type TaskInput struct {
 type TaskLabel struct {
 	// 该字段用于返回检测结果所对应的恶意标签。
 	// 返回值：Porn：色情，Abuse：谩骂，Ad：广告；以及其他令人反感、不安全或不适宜的内容类型。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 审核建议，可选值：
 	// Pass 通过，
 	// Review 建议人审，
 	// Block 确认违规
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 得分，分数是 0 ～ 100
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 命中的二级标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
 }
 

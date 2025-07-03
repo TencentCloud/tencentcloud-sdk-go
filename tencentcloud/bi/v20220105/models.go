@@ -1061,6 +1061,9 @@ type CreateUserRoleRequestParams struct {
 
 	// 用户列表（新）
 	UserInfoList []*UserInfo `json:"UserInfoList,omitnil,omitempty" name:"UserInfoList"`
+
+	// 用户组id列表
+	UserGroups []*uint64 `json:"UserGroups,omitnil,omitempty" name:"UserGroups"`
 }
 
 type CreateUserRoleRequest struct {
@@ -1074,6 +1077,9 @@ type CreateUserRoleRequest struct {
 
 	// 用户列表（新）
 	UserInfoList []*UserInfo `json:"UserInfoList,omitnil,omitempty" name:"UserInfoList"`
+
+	// 用户组id列表
+	UserGroups []*uint64 `json:"UserGroups,omitnil,omitempty" name:"UserGroups"`
 }
 
 func (r *CreateUserRoleRequest) ToJsonString() string {
@@ -1091,6 +1097,7 @@ func (r *CreateUserRoleRequest) FromJsonString(s string) error {
 	delete(f, "RoleIdList")
 	delete(f, "UserList")
 	delete(f, "UserInfoList")
+	delete(f, "UserGroups")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserRoleRequest has unknown keys!", "")
 	}

@@ -580,6 +580,7 @@ func NewInquirePriceRunInstancesResponse() (response *InquirePriceRunInstancesRe
 //  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
 //  INVALIDPARAMETERVALUE_VPCNOTFOUND = "InvalidParameterValue.VpcNotFound"
 //  RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDSTSOPERATION = "UnauthorizedOperation.UnauthorizedSTSOperation"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDUSER = "UnauthorizedOperation.UnauthorizedUser"
 func (c *Client) InquirePriceRunInstances(request *InquirePriceRunInstancesRequest) (response *InquirePriceRunInstancesResponse, err error) {
     return c.InquirePriceRunInstancesWithContext(context.Background(), request)
@@ -604,6 +605,7 @@ func (c *Client) InquirePriceRunInstances(request *InquirePriceRunInstancesReque
 //  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
 //  INVALIDPARAMETERVALUE_VPCNOTFOUND = "InvalidParameterValue.VpcNotFound"
 //  RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDSTSOPERATION = "UnauthorizedOperation.UnauthorizedSTSOperation"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDUSER = "UnauthorizedOperation.UnauthorizedUser"
 func (c *Client) InquirePriceRunInstancesWithContext(ctx context.Context, request *InquirePriceRunInstancesRequest) (response *InquirePriceRunInstancesResponse, err error) {
     if request == nil {
@@ -782,6 +784,7 @@ func NewRunInstancesResponse() (response *RunInstancesResponse) {
 //  RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
 //  UNAUTHORIZEDOPERATION_GETROLEERROR = "UnauthorizedOperation.GetRoleError"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDNETWORKUSER = "UnauthorizedOperation.UnauthorizedNetworkUser"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDSTSOPERATION = "UnauthorizedOperation.UnauthorizedSTSOperation"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDUSER = "UnauthorizedOperation.UnauthorizedUser"
 func (c *Client) RunInstances(request *RunInstancesRequest) (response *RunInstancesResponse, err error) {
     return c.RunInstancesWithContext(context.Background(), request)
@@ -811,6 +814,7 @@ func (c *Client) RunInstances(request *RunInstancesRequest) (response *RunInstan
 //  RESOURCEINSUFFICIENT_BUNDLEINVENTORYSHORTAGE = "ResourceInsufficient.BundleInventoryShortage"
 //  UNAUTHORIZEDOPERATION_GETROLEERROR = "UnauthorizedOperation.GetRoleError"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDNETWORKUSER = "UnauthorizedOperation.UnauthorizedNetworkUser"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDSTSOPERATION = "UnauthorizedOperation.UnauthorizedSTSOperation"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDUSER = "UnauthorizedOperation.UnauthorizedUser"
 func (c *Client) RunInstancesWithContext(ctx context.Context, request *RunInstancesRequest) (response *RunInstancesResponse, err error) {
     if request == nil {

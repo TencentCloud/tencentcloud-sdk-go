@@ -99,7 +99,6 @@ type AudioResultDetailLanguageResult struct {
 
 type AudioResultDetailMoanResult struct {
 	// 该字段用于返回检测结果需要检测的内容类型，此处固定为**Moan**（呻吟）以调用呻吟检测功能。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 该字段用于返回呻吟检测的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表音频越有可能属于呻吟内容。
@@ -117,7 +116,6 @@ type AudioResultDetailMoanResult struct {
 	SubLabelCode *string `json:"SubLabelCode,omitnil,omitempty" name:"SubLabelCode"`
 
 	// 该字段用于返回当前标签（Lable）下的二级标签。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubLabel *string `json:"SubLabel,omitnil,omitempty" name:"SubLabel"`
 
 	// 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
@@ -126,19 +124,15 @@ type AudioResultDetailMoanResult struct {
 
 type AudioResultDetailSpeakerResult struct {
 	// 该字段用于返回检测结果需要检测的内容类型。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 该字段用于返回呻吟检测的置信度，取值范围：0（置信度最低）-100（置信度最高），越高代表音频越有可能属于说话人声纹。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 该字段用于返回对应说话人的片段在音频文件内的开始时间，单位为秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *float64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
 
 	// 该字段用于返回对应说话人的片段在音频文件内的结束时间，单位为秒。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *float64 `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -734,7 +728,7 @@ type LabelResults struct {
 	// 场景
 	Scene *string `json:"Scene,omitnil,omitempty" name:"Scene"`
 
-	// 建议
+	// 建议值
 	Suggestion *int64 `json:"Suggestion,omitnil,omitempty" name:"Suggestion"`
 
 	// 标签

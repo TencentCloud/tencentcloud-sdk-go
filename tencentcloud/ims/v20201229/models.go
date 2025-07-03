@@ -358,7 +358,6 @@ type LibDetail struct {
 	LibId *string `json:"LibId,omitnil,omitempty" name:"LibId"`
 
 	// 该字段用于返回自定义库的名称,以方便自定义库管理和配置。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibName *string `json:"LibName,omitnil,omitempty" name:"LibName"`
 
 	// 该字段用于返回识别图像对象的ID以方便文件管理。
@@ -368,7 +367,6 @@ type LibDetail struct {
 	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
 
 	// 该字段用于返回其他自定义标签以满足您的定制化场景需求，若无需求则可略过。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tag *string `json:"Tag,omitnil,omitempty" name:"Tag"`
 
 	// 该字段用于返回对应模型命中的分值，取值为**0-100**，如：*Porn 99* 则代表相应识别内容命中色情标签的分值为99。
