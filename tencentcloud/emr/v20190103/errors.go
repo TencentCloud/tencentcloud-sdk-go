@@ -269,6 +269,9 @@ const (
 	// 无效的任务步骤类型。
 	INVALIDPARAMETER_INVALIDJOBTYPE = "InvalidParameter.InvalidJobType"
 
+	// 不合法的LoadBalancerId
+	INVALIDPARAMETER_INVALIDLOADBALANCER = "InvalidParameter.InvalidLoadBalancer"
+
 	// 无效的登录设置。
 	INVALIDPARAMETER_INVALIDLOGINSETTING = "InvalidParameter.InvalidLoginSetting"
 

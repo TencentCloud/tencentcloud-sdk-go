@@ -1501,6 +1501,9 @@ type CreateClusterRequestParams struct {
 
 	// 节点标识信息，目前只提供给tf平台使用
 	NodeMarks []*NodeMark `json:"NodeMarks,omitnil,omitempty" name:"NodeMarks"`
+
+	// clb id
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 }
 
 type CreateClusterRequest struct {
@@ -1590,6 +1593,9 @@ type CreateClusterRequest struct {
 
 	// 节点标识信息，目前只提供给tf平台使用
 	NodeMarks []*NodeMark `json:"NodeMarks,omitnil,omitempty" name:"NodeMarks"`
+
+	// clb id
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil,omitempty" name:"LoadBalancerId"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -1626,6 +1632,7 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "ZoneResourceConfiguration")
 	delete(f, "CosBucket")
 	delete(f, "NodeMarks")
+	delete(f, "LoadBalancerId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
 	}
@@ -4311,6 +4318,9 @@ type DescribeInstanceRenewNodesResponseParams struct {
 	// 用户所有的标签键列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaInfo []*string `json:"MetaInfo,omitnil,omitempty" name:"MetaInfo"`
+
+	// 集群依赖的Redis实例Id
+	RedisInfo []*string `json:"RedisInfo,omitnil,omitempty" name:"RedisInfo"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`

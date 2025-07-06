@@ -527,6 +527,69 @@ func (c *Client) DescribeDeviceInfoWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeDeviceVirtualGroupsRequest() (request *DescribeDeviceVirtualGroupsRequest) {
+    request = &DescribeDeviceVirtualGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ioa", APIVersion, "DescribeDeviceVirtualGroups")
+    
+    
+    return
+}
+
+func NewDescribeDeviceVirtualGroupsResponse() (response *DescribeDeviceVirtualGroupsResponse) {
+    response = &DescribeDeviceVirtualGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDeviceVirtualGroups
+// 查询终端自定义分组列表，私有化调用path为：/capi/Assets/Device/DescribeDeviceVirtualGroups
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONS = "UnauthorizedOperation.NoResourcePermissions"
+func (c *Client) DescribeDeviceVirtualGroups(request *DescribeDeviceVirtualGroupsRequest) (response *DescribeDeviceVirtualGroupsResponse, err error) {
+    return c.DescribeDeviceVirtualGroupsWithContext(context.Background(), request)
+}
+
+// DescribeDeviceVirtualGroups
+// 查询终端自定义分组列表，私有化调用path为：/capi/Assets/Device/DescribeDeviceVirtualGroups
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYDATA = "FailedOperation.QueryData"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DATABASEEXCEPTION = "InternalError.DatabaseException"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INVALIDPARAMETER_REQUESTPARAM = "InvalidParameter.RequestParam"
+//  MISSINGPARAMETER_COMMONPARAM = "MissingParameter.CommonParam"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  UNAUTHORIZEDOPERATION_NORESOURCEPERMISSIONS = "UnauthorizedOperation.NoResourcePermissions"
+func (c *Client) DescribeDeviceVirtualGroupsWithContext(ctx context.Context, request *DescribeDeviceVirtualGroupsRequest) (response *DescribeDeviceVirtualGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeviceVirtualGroupsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeviceVirtualGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeviceVirtualGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
     request = &DescribeDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},

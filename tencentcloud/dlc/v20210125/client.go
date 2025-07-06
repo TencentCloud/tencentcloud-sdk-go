@@ -911,6 +911,63 @@ func (c *Client) CancelTaskWithContext(ctx context.Context, request *CancelTaskR
     return
 }
 
+func NewCancelTasksRequest() (request *CancelTasksRequest) {
+    request = &CancelTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CancelTasks")
+    
+    
+    return
+}
+
+func NewCancelTasksResponse() (response *CancelTasksResponse) {
+    response = &CancelTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CancelTasks
+// 批量取消任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER_INVALIDSQLCONFIGSQL = "InvalidParameter.InvalidSQLConfigSQL"
+//  INVALIDPARAMETER_PARAMETERBASE64DECODEFAILED = "InvalidParameter.ParameterBase64DecodeFailed"
+//  INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
+func (c *Client) CancelTasks(request *CancelTasksRequest) (response *CancelTasksResponse, err error) {
+    return c.CancelTasksWithContext(context.Background(), request)
+}
+
+// CancelTasks
+// 批量取消任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER_INVALIDSQLCONFIGSQL = "InvalidParameter.InvalidSQLConfigSQL"
+//  INVALIDPARAMETER_PARAMETERBASE64DECODEFAILED = "InvalidParameter.ParameterBase64DecodeFailed"
+//  INVALIDPARAMETER_SQLTASKNOTFOUND = "InvalidParameter.SQLTaskNotFound"
+func (c *Client) CancelTasksWithContext(ctx context.Context, request *CancelTasksRequest) (response *CancelTasksResponse, err error) {
+    if request == nil {
+        request = NewCancelTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckDataEngineConfigPairsValidityRequest() (request *CheckDataEngineConfigPairsValidityRequest) {
     request = &CheckDataEngineConfigPairsValidityRequest{
         BaseRequest: &tchttp.BaseRequest{},

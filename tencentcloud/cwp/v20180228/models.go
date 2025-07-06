@@ -2646,6 +2646,9 @@ type BashEventsInfoNew struct {
 
 	// 检测来源 0:bash日志 1:实时监控
 	DetectBy *int64 `json:"DetectBy,omitnil,omitempty" name:"DetectBy"`
+
+	// 执行命令(解码后)
+	BashCmdDecoded *string `json:"BashCmdDecoded,omitnil,omitempty" name:"BashCmdDecoded"`
 }
 
 type BashPolicy struct {
@@ -21447,6 +21450,15 @@ type DescribeMalwareTimingScanSettingResponseParams struct {
 	// 查杀范围 0 脚本类之外的恶意文件，1全部恶意文件
 	ProtectFileScope *uint64 `json:"ProtectFileScope,omitnil,omitempty" name:"ProtectFileScope"`
 
+	// 执行清理开关 0未开启 1开启
+	DoClean *uint64 `json:"DoClean,omitnil,omitempty" name:"DoClean"`
+
+	// 自选的隔离主机集合
+	QuaraUuids []*string `json:"QuaraUuids,omitnil,omitempty" name:"QuaraUuids"`
+
+	// 用户选择的隔离范围，0：默认全隔离 1：用户自选
+	QuaraScope *uint64 `json:"QuaraScope,omitnil,omitempty" name:"QuaraScope"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -37392,6 +37404,12 @@ type MalWareList struct {
 
 	// 附加信息
 	MachineExtraInfo *MachineExtraInfo `json:"MachineExtraInfo,omitnil,omitempty" name:"MachineExtraInfo"`
+
+	// 是否可以清理
+	DoClean *bool `json:"DoClean,omitnil,omitempty" name:"DoClean"`
+
+	// 首次检出方式 0扫描；1实时监控
+	FirstDetectionMethod *uint64 `json:"FirstDetectionMethod,omitnil,omitempty" name:"FirstDetectionMethod"`
 }
 
 type MaliciousRequestWhiteListInfo struct {
@@ -37510,6 +37528,9 @@ type MalwareInfo struct {
 
 	// 木马进程是否存在
 	ProcessExists *bool `json:"ProcessExists,omitnil,omitempty" name:"ProcessExists"`
+
+	// 首次检出方式0扫描;1实时监控
+	FirstDetectionMethod *uint64 `json:"FirstDetectionMethod,omitnil,omitempty" name:"FirstDetectionMethod"`
 }
 
 type MalwareRisk struct {
@@ -39969,6 +39990,12 @@ type ModifyMalwareTimingScanSettingsRequestParams struct {
 
 	// 查杀范围 0 脚本类之外的恶意文件，1全部恶意文件
 	ProtectFileScope *uint64 `json:"ProtectFileScope,omitnil,omitempty" name:"ProtectFileScope"`
+
+	// 自选的隔离主机集合
+	QuaraUuids []*string `json:"QuaraUuids,omitnil,omitempty" name:"QuaraUuids"`
+
+	// 用户选择的隔离范围，0：默认全隔离 1：用户自选
+	QuaraScope *uint64 `json:"QuaraScope,omitnil,omitempty" name:"QuaraScope"`
 }
 
 type ModifyMalwareTimingScanSettingsRequest struct {
@@ -40025,6 +40052,12 @@ type ModifyMalwareTimingScanSettingsRequest struct {
 
 	// 查杀范围 0 脚本类之外的恶意文件，1全部恶意文件
 	ProtectFileScope *uint64 `json:"ProtectFileScope,omitnil,omitempty" name:"ProtectFileScope"`
+
+	// 自选的隔离主机集合
+	QuaraUuids []*string `json:"QuaraUuids,omitnil,omitempty" name:"QuaraUuids"`
+
+	// 用户选择的隔离范围，0：默认全隔离 1：用户自选
+	QuaraScope *uint64 `json:"QuaraScope,omitnil,omitempty" name:"QuaraScope"`
 }
 
 func (r *ModifyMalwareTimingScanSettingsRequest) ToJsonString() string {
@@ -40056,6 +40089,8 @@ func (r *ModifyMalwareTimingScanSettingsRequest) FromJsonString(s string) error 
 	delete(f, "EnableMemShellScan")
 	delete(f, "ProtectMode")
 	delete(f, "ProtectFileScope")
+	delete(f, "QuaraUuids")
+	delete(f, "QuaraScope")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMalwareTimingScanSettingsRequest has unknown keys!", "")
 	}
@@ -43977,6 +44012,9 @@ type RiskProcessEvent struct {
 
 	// 主机uuid
 	Uuid *string `json:"Uuid,omitnil,omitempty" name:"Uuid"`
+
+	// 首次检出方式 0扫描;1实时监控
+	FirstDetectionMethod *uint64 `json:"FirstDetectionMethod,omitnil,omitempty" name:"FirstDetectionMethod"`
 }
 
 type RuleInfo struct {
@@ -44413,6 +44451,12 @@ func (r *ScanVulRequest) FromJsonString(s string) error {
 type ScanVulResponseParams struct {
 	// 任务id
 	TaskId *uint64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 自选主机里面包含基础版个数
+	BasicVersionCount *uint64 `json:"BasicVersionCount,omitnil,omitempty" name:"BasicVersionCount"`
+
+	// 创建扫描任务机器个数
+	SuccessCount *uint64 `json:"SuccessCount,omitnil,omitempty" name:"SuccessCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -47143,7 +47187,7 @@ type WarningInfoObj struct {
 }
 
 type WarningObject struct {
-	// 事件告警类型；1：离线，2：木马，3：异常登录，4：爆破，5：漏洞（已拆分为9-12四种类型）6：高位命令，7：反弹sell，8：本地提权，9：系统组件漏洞，10：web应用漏洞，11：应急漏洞，12：安全基线，14：恶意请求，15: 网络攻击，16：Windows系统漏洞，17：Linux软件漏洞
+	// 事件告警类型；1：离线，2：木马，3：异常登录，4：爆破，5：漏洞（已拆分为9-12四种类型）6：高危命令，7：反弹sell，8：本地提权，9：系统组件漏洞，10：web应用漏洞，11：应急漏洞，12：安全基线，14：恶意请求，15: 网络攻击，16：Windows系统漏洞，17：Linux软件漏洞
 	Type *uint64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 1: 关闭告警 0: 开启告警
@@ -47160,6 +47204,9 @@ type WarningObject struct {
 
 	// 告警主机范围类型，0:全部主机，1:按所属项目选，2:按腾讯云标签选，3:按主机安全标签选，4:自选主机
 	HostRange *int64 `json:"HostRange,omitnil,omitempty" name:"HostRange"`
+
+	// 单位
+	Unit *string `json:"Unit,omitnil,omitempty" name:"Unit"`
 }
 
 type WebHookCustomField struct {

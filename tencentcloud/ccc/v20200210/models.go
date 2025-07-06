@@ -6956,6 +6956,9 @@ type ServerPushText struct {
 	// - Priority=1、Interrupt=true，会打断现有交互，立刻播报，播报过程中不会被打断
 	// - Priority=1、Interrupt=false、DropMode=1，会等待当前交互结束，再进行播报，播报过程中不会被打断
 	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 是否将文本加入到llm历史上下文中
+	AddHistory *bool `json:"AddHistory,omitnil,omitempty" name:"AddHistory"`
 }
 
 type SkillGroupInfoItem struct {

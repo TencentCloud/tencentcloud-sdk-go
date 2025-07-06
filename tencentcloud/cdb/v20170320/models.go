@@ -581,10 +581,10 @@ func (r *AnalyzeAuditLogsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AssociateSecurityGroupsRequestParams struct {
-	// 安全组 ID。
+	// 安全组 ID。可通过 [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/236/15854) 接口获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 
-	// 实例 ID 列表，一个或者多个实例 ID 组成的数组。
+	// 实例 ID 列表，一个或者多个实例 ID 组成的数组。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 当传入只读实例ID时，默认操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True
@@ -594,10 +594,10 @@ type AssociateSecurityGroupsRequestParams struct {
 type AssociateSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 安全组 ID。
+	// 安全组 ID。可通过 [DescribeDBSecurityGroups](https://cloud.tencent.com/document/api/236/15854) 接口获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitnil,omitempty" name:"SecurityGroupId"`
 
-	// 实例 ID 列表，一个或者多个实例 ID 组成的数组。
+	// 实例 ID 列表，一个或者多个实例 ID 组成的数组。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 当传入只读实例ID时，默认操作的是对应只读组的安全组。如果需要操作只读实例ID的安全组， 需要将该入参置为True
@@ -3093,10 +3093,11 @@ type CreateDBInstanceHourRequestParams struct {
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
 	// 私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
-	// 说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。
+	// 说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。若此项不填，则系统会选择默认的 VPC。
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
 	// 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 [查询子网列表](/document/api/215/15784)。
+	// 说明：若此项不填，则系统会选择默认 VPC 下的默认子网。
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
 	// 项目 ID，不填为默认项目。
@@ -3110,13 +3111,14 @@ type CreateDBInstanceHourRequestParams struct {
 	MasterInstanceId *string `json:"MasterInstanceId,omitnil,omitempty" name:"MasterInstanceId"`
 
 	// 实例类型，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。
-	// 说明：必填项。
+	// 说明：请选择实例类型，不填会默认选择 master。
 	InstanceRole *string `json:"InstanceRole,omitnil,omitempty" name:"InstanceRole"`
 
 	// 主实例地域信息，购买灾备、RO实例时，该字段必填。
 	MasterRegion *string `json:"MasterRegion,omitnil,omitempty" name:"MasterRegion"`
 
-	// 自定义端口，端口支持范围：[ 1024-65535 ] 。
+	// 自定义端口，端口支持范围：[1024 - 65535]。
+	// 说明：不填则默认为3306。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 设置 root 账号密码，密码规则：8 - 64 个字符，至少包含字母、数字、字符（支持的字符：_+-&=!@#$%^*()）中的两种，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义。
@@ -3231,10 +3233,11 @@ type CreateDBInstanceHourRequest struct {
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
 	// 私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
-	// 说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。
+	// 说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。若此项不填，则系统会选择默认的 VPC。
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
 	// 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 [查询子网列表](/document/api/215/15784)。
+	// 说明：若此项不填，则系统会选择默认 VPC 下的默认子网。
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
 	// 项目 ID，不填为默认项目。
@@ -3248,13 +3251,14 @@ type CreateDBInstanceHourRequest struct {
 	MasterInstanceId *string `json:"MasterInstanceId,omitnil,omitempty" name:"MasterInstanceId"`
 
 	// 实例类型，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。
-	// 说明：必填项。
+	// 说明：请选择实例类型，不填会默认选择 master。
 	InstanceRole *string `json:"InstanceRole,omitnil,omitempty" name:"InstanceRole"`
 
 	// 主实例地域信息，购买灾备、RO实例时，该字段必填。
 	MasterRegion *string `json:"MasterRegion,omitnil,omitempty" name:"MasterRegion"`
 
-	// 自定义端口，端口支持范围：[ 1024-65535 ] 。
+	// 自定义端口，端口支持范围：[1024 - 65535]。
+	// 说明：不填则默认为3306。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 设置 root 账号密码，密码规则：8 - 64 个字符，至少包含字母、数字、字符（支持的字符：_+-&=!@#$%^*()）中的两种，购买主实例时可指定该参数，购买只读实例或者灾备实例时指定该参数无意义。
@@ -3458,23 +3462,25 @@ type CreateDBInstanceRequestParams struct {
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
-	// 说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。
+	// 说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。若此项不填，则系统会选择默认的 VPC。
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
 	// 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 [查询子网列表](/document/api/215/15784)。
+	// 说明：若此项不填，则系统会选择默认 VPC 下的默认子网。
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
 	// 项目 ID，不填为默认项目。购买只读实例和灾备实例时，项目 ID 默认和主实例保持一致。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 自定义端口，端口支持范围：[ 1024-65535 ]。
+	// 说明：若此项不填，则默认为3306。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 实例类型，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。
-	// 说明：必填项。
+	// 说明：请选择实例类型，不填会默认选择 master。
 	InstanceRole *string `json:"InstanceRole,omitnil,omitempty" name:"InstanceRole"`
 
-	// 实例 ID，购买只读实例时必填，该字段表示只读实例的主实例 ID，请使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询云数据库实例 ID。
+	// 实例 ID，购买只读实例或灾备实例时必填，该字段表示只读实例或灾备实例的主实例 ID，请使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询云数据库实例 ID。
 	MasterInstanceId *string `json:"MasterInstanceId,omitnil,omitempty" name:"MasterInstanceId"`
 
 	// MySQL 版本，值包括：5.5、5.6、5.7和8.0，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口获取可创建的实例版本。
@@ -3501,7 +3507,7 @@ type CreateDBInstanceRequestParams struct {
 	// 备库 2 的可用区信息，默认为空，购买三节点主实例时可指定该参数。
 	BackupZone *string `json:"BackupZone,omitnil,omitempty" name:"BackupZone"`
 
-	// 自动续费标记，可选值为：0 - 不自动续费；1 - 自动续费。
+	// 自动续费标记，可选值为：0 - 不自动续费；1 - 自动续费。默认为0。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 主实例地域信息，购买灾备、RO实例时，该字段必填。
@@ -3597,23 +3603,25 @@ type CreateDBInstanceRequest struct {
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
 	// 私有网络 ID，请使用 [查询私有网络列表](/document/api/215/15778)。
-	// 说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。
+	// 说明：如果创建的是集群版实例，此参数为必填且为私有网络类型。若此项不填，则系统会选择默认的 VPC。
 	UniqVpcId *string `json:"UniqVpcId,omitnil,omitempty" name:"UniqVpcId"`
 
 	// 私有网络下的子网 ID，如果设置了 UniqVpcId，则 UniqSubnetId 必填，请使用 [查询子网列表](/document/api/215/15784)。
+	// 说明：若此项不填，则系统会选择默认 VPC 下的默认子网。
 	UniqSubnetId *string `json:"UniqSubnetId,omitnil,omitempty" name:"UniqSubnetId"`
 
 	// 项目 ID，不填为默认项目。购买只读实例和灾备实例时，项目 ID 默认和主实例保持一致。
 	ProjectId *int64 `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 
 	// 自定义端口，端口支持范围：[ 1024-65535 ]。
+	// 说明：若此项不填，则默认为3306。
 	Port *int64 `json:"Port,omitnil,omitempty" name:"Port"`
 
 	// 实例类型，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。
-	// 说明：必填项。
+	// 说明：请选择实例类型，不填会默认选择 master。
 	InstanceRole *string `json:"InstanceRole,omitnil,omitempty" name:"InstanceRole"`
 
-	// 实例 ID，购买只读实例时必填，该字段表示只读实例的主实例 ID，请使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询云数据库实例 ID。
+	// 实例 ID，购买只读实例或灾备实例时必填，该字段表示只读实例或灾备实例的主实例 ID，请使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口查询云数据库实例 ID。
 	MasterInstanceId *string `json:"MasterInstanceId,omitnil,omitempty" name:"MasterInstanceId"`
 
 	// MySQL 版本，值包括：5.5、5.6、5.7和8.0，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/api/236/17229) 接口获取可创建的实例版本。
@@ -3640,7 +3648,7 @@ type CreateDBInstanceRequest struct {
 	// 备库 2 的可用区信息，默认为空，购买三节点主实例时可指定该参数。
 	BackupZone *string `json:"BackupZone,omitnil,omitempty" name:"BackupZone"`
 
-	// 自动续费标记，可选值为：0 - 不自动续费；1 - 自动续费。
+	// 自动续费标记，可选值为：0 - 不自动续费；1 - 自动续费。默认为0。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 主实例地域信息，购买灾备、RO实例时，该字段必填。
@@ -4206,7 +4214,7 @@ type CustomConfig struct {
 	// 设备类型
 	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
 
-	// 内存
+	// 内存，单位为MB
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
 	// 核数
@@ -6669,20 +6677,20 @@ func (r *DescribeCPUExpandStrategyInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCdbProxyInfoRequestParams struct {
-	// 实例ID
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 代理组ID
+	// 代理组 ID。
 	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
 }
 
 type DescribeCdbProxyInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 代理组ID
+	// 代理组 ID。
 	ProxyGroupId *string `json:"ProxyGroupId,omitnil,omitempty" name:"ProxyGroupId"`
 }
 
@@ -7398,14 +7406,16 @@ func (r *DescribeDBInstanceGTIDResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstanceInfoRequestParams struct {
-	// 实例 ID。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+	// 说明：仅主实例支持查询，此项仅支持输入主实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
 type DescribeDBInstanceInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+	// 说明：仅主实例支持查询，此项仅支持输入主实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 }
 
@@ -9461,7 +9471,7 @@ func (r *DescribeProjectSecurityGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProxyCustomConfRequestParams struct {
-	// 实例ID
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 分页
@@ -9474,7 +9484,7 @@ type DescribeProxyCustomConfRequestParams struct {
 type DescribeProxyCustomConfRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 分页
@@ -9970,24 +9980,24 @@ func (r *DescribeRollbackTaskDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSSLStatusRequestParams struct {
-	// 实例 ID。
-	// 说明：实例 ID 和实例组 ID 两个参数选其一填写即可。若要查询双节点、三节点实例 SSL 开通情况，请填写实例 ID 参数进行查询。单节点（云盘）、集群版实例不支持开启 SSL，因此不支持查询。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+	// 说明：实例 ID 和只读组 ID 两个参数选其一填写即可。若要查询双节点、三节点实例 SSL 开通情况，请填写实例 ID 参数进行查询。单节点（云盘）、云盘版实例不支持开启 SSL，因此不支持查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 只读组 ID。
-	// 说明：实例 ID 和实例组 ID 两个参数选其一填写即可。若要查询只读实例或只读组 SSL 开通情况，请填写 RoGroupId 参数，并注意填写的都是只读组 ID。单节点（云盘）、集群版实例不支持开启 SSL，因此不支持查询。
+	// 只读组 ID。可通过 [DescribeRoGroups](https://cloud.tencent.com/document/api/236/40939) 接口获取。
+	// 说明：实例 ID 和只读组 ID 两个参数选其一填写即可。若要查询只读实例或只读组 SSL 开通情况，请填写 RoGroupId 参数，并注意填写的都是只读组 ID。单节点（云盘）、云盘版实例不支持开启 SSL，因此不支持查询。
 	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
 }
 
 type DescribeSSLStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。
-	// 说明：实例 ID 和实例组 ID 两个参数选其一填写即可。若要查询双节点、三节点实例 SSL 开通情况，请填写实例 ID 参数进行查询。单节点（云盘）、集群版实例不支持开启 SSL，因此不支持查询。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+	// 说明：实例 ID 和只读组 ID 两个参数选其一填写即可。若要查询双节点、三节点实例 SSL 开通情况，请填写实例 ID 参数进行查询。单节点（云盘）、云盘版实例不支持开启 SSL，因此不支持查询。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 只读组 ID。
-	// 说明：实例 ID 和实例组 ID 两个参数选其一填写即可。若要查询只读实例或只读组 SSL 开通情况，请填写 RoGroupId 参数，并注意填写的都是只读组 ID。单节点（云盘）、集群版实例不支持开启 SSL，因此不支持查询。
+	// 只读组 ID。可通过 [DescribeRoGroups](https://cloud.tencent.com/document/api/236/40939) 接口获取。
+	// 说明：实例 ID 和只读组 ID 两个参数选其一填写即可。若要查询只读实例或只读组 SSL 开通情况，请填写 RoGroupId 参数，并注意填写的都是只读组 ID。单节点（云盘）、云盘版实例不支持开启 SSL，因此不支持查询。
 	RoGroupId *string `json:"RoGroupId,omitnil,omitempty" name:"RoGroupId"`
 }
 

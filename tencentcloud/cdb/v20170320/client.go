@@ -4888,7 +4888,7 @@ func NewDescribeDBInstanceInfoResponse() (response *DescribeDBInstanceInfoRespon
 }
 
 // DescribeDBInstanceInfo
-// 本接口（DescribeDBInstanceInfo）用于查询实例基本信息（实例 ID，实例名称，是否开通加密）。
+// 本接口（DescribeDBInstanceInfo）用于查询实例基本信息（实例 ID，实例名称，是否开通加密），只读实例不支持查询。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4904,7 +4904,7 @@ func (c *Client) DescribeDBInstanceInfo(request *DescribeDBInstanceInfoRequest) 
 }
 
 // DescribeDBInstanceInfo
-// 本接口（DescribeDBInstanceInfo）用于查询实例基本信息（实例 ID，实例名称，是否开通加密）。
+// 本接口（DescribeDBInstanceInfo）用于查询实例基本信息（实例 ID，实例名称，是否开通加密），只读实例不支持查询。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6713,7 +6713,7 @@ func NewDescribeSSLStatusResponse() (response *DescribeSSLStatusResponse) {
 }
 
 // DescribeSSLStatus
-// 查询 SSL 开通情况。如果已经开通 SSL ，会同步返回证书下载链接。
+// 本接口（DescribeSSLStatus）用于查询 SSL 开通情况。如果已经开通 SSL ，会同步返回证书下载链接。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
@@ -6728,7 +6728,7 @@ func (c *Client) DescribeSSLStatus(request *DescribeSSLStatusRequest) (response 
 }
 
 // DescribeSSLStatus
-// 查询 SSL 开通情况。如果已经开通 SSL ，会同步返回证书下载链接。
+// 本接口（DescribeSSLStatus）用于查询 SSL 开通情况。如果已经开通 SSL ，会同步返回证书下载链接。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"

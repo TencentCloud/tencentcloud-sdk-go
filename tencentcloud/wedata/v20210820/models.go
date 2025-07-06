@@ -2457,6 +2457,10 @@ type BizCatalogsInfo struct {
 	// 类目顺序
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Position *int64 `json:"Position,omitnil,omitempty" name:"Position"`
+
+	// 类目名称英文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NameEn *string `json:"NameEn,omitnil,omitempty" name:"NameEn"`
 }
 
 type BytesSpeed struct {

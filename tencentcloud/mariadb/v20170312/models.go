@@ -7023,6 +7023,15 @@ type UpgradeDBInstanceRequestParams struct {
 
 	// 变更部署时指定的新可用区列表，第1个为主可用区，其余为从可用区
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
+
+	// 切换开始时间，格式如: "2019-12-12 07:00:00"。开始时间必须在当前时间一个小时以后，3天以内。
+	SwitchStartTime *string `json:"SwitchStartTime,omitnil,omitempty" name:"SwitchStartTime"`
+
+	// 切换结束时间, 格式如: "2019-12-12 07:15:00"，结束时间必须大于开始时间。
+	SwitchEndTime *string `json:"SwitchEndTime,omitnil,omitempty" name:"SwitchEndTime"`
+
+	// 是否自动重试。 0：不自动重试 1：自动重试
+	SwitchAutoRetry *int64 `json:"SwitchAutoRetry,omitnil,omitempty" name:"SwitchAutoRetry"`
 }
 
 type UpgradeDBInstanceRequest struct {
@@ -7047,6 +7056,15 @@ type UpgradeDBInstanceRequest struct {
 
 	// 变更部署时指定的新可用区列表，第1个为主可用区，其余为从可用区
 	Zones []*string `json:"Zones,omitnil,omitempty" name:"Zones"`
+
+	// 切换开始时间，格式如: "2019-12-12 07:00:00"。开始时间必须在当前时间一个小时以后，3天以内。
+	SwitchStartTime *string `json:"SwitchStartTime,omitnil,omitempty" name:"SwitchStartTime"`
+
+	// 切换结束时间, 格式如: "2019-12-12 07:15:00"，结束时间必须大于开始时间。
+	SwitchEndTime *string `json:"SwitchEndTime,omitnil,omitempty" name:"SwitchEndTime"`
+
+	// 是否自动重试。 0：不自动重试 1：自动重试
+	SwitchAutoRetry *int64 `json:"SwitchAutoRetry,omitnil,omitempty" name:"SwitchAutoRetry"`
 }
 
 func (r *UpgradeDBInstanceRequest) ToJsonString() string {
@@ -7067,6 +7085,9 @@ func (r *UpgradeDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "AutoVoucher")
 	delete(f, "VoucherIds")
 	delete(f, "Zones")
+	delete(f, "SwitchStartTime")
+	delete(f, "SwitchEndTime")
+	delete(f, "SwitchAutoRetry")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDBInstanceRequest has unknown keys!", "")
 	}

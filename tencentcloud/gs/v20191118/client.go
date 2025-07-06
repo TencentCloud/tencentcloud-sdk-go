@@ -1723,7 +1723,7 @@ func NewDescribeAndroidInstancesByAppsResponse() (response *DescribeAndroidInsta
 }
 
 // DescribeAndroidInstancesByApps
-// 查询安装指定应用的安卓实例
+// 批量查询安装指定应用的安卓实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1738,7 +1738,7 @@ func (c *Client) DescribeAndroidInstancesByApps(request *DescribeAndroidInstance
 }
 
 // DescribeAndroidInstancesByApps
-// 查询安装指定应用的安卓实例
+// 批量查询安装指定应用的安卓实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -161,10 +161,15 @@ type AndroidInstanceAppInfo struct {
 	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 
 	// 应用包版本
+	//
+	// Deprecated: PackageVersion is deprecated.
 	PackageVersion *string `json:"PackageVersion,omitnil,omitempty" name:"PackageVersion"`
 
 	// 应用包标签
 	PackageLabel *string `json:"PackageLabel,omitnil,omitempty" name:"PackageLabel"`
+
+	// 应用包版本号
+	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
 }
 
 type AndroidInstanceDevice struct {
@@ -214,6 +219,17 @@ type AndroidInstanceLabel struct {
 
 	// 标签值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type AndroidInstanceLabelDetail struct {
+	// 标签
+	Label *AndroidInstanceLabel `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 标签描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
+
+	// 标签创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type AndroidInstanceProperty struct {
@@ -880,8 +896,11 @@ type CreateAndroidInstanceLabelRequestParams struct {
 	// 标签键
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 标签值
+	// 标签值。普通场景下，该值不需要填写；高级场景下，需要两个层级进行分组时才填写。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 标签描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 type CreateAndroidInstanceLabelRequest struct {
@@ -890,8 +909,11 @@ type CreateAndroidInstanceLabelRequest struct {
 	// 标签键
 	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
 
-	// 标签值
+	// 标签值。普通场景下，该值不需要填写；高级场景下，需要两个层级进行分组时才填写。
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 标签描述
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 func (r *CreateAndroidInstanceLabelRequest) ToJsonString() string {
@@ -908,6 +930,7 @@ func (r *CreateAndroidInstanceLabelRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Key")
 	delete(f, "Value")
+	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndroidInstanceLabelRequest has unknown keys!", "")
 	}
@@ -1175,6 +1198,9 @@ type CreateAndroidInstancesRequestParams struct {
 
 	// 镜像 ID。如果不填，将使用默认的系统镜像
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// 安卓实例标签列表
+	Labels []*AndroidInstanceLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
 
 type CreateAndroidInstancesRequest struct {
@@ -1205,6 +1231,9 @@ type CreateAndroidInstancesRequest struct {
 
 	// 镜像 ID。如果不填，将使用默认的系统镜像
 	ImageId *string `json:"ImageId,omitnil,omitempty" name:"ImageId"`
+
+	// 安卓实例标签列表
+	Labels []*AndroidInstanceLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
 
 func (r *CreateAndroidInstancesRequest) ToJsonString() string {
@@ -1224,6 +1253,7 @@ func (r *CreateAndroidInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Number")
 	delete(f, "HostSerialNumbers")
 	delete(f, "ImageId")
+	delete(f, "Labels")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndroidInstancesRequest has unknown keys!", "")
 	}
@@ -2173,7 +2203,12 @@ type DescribeAndroidInstanceLabelsResponseParams struct {
 	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 安卓实例标签列表
+	//
+	// Deprecated: Labels is deprecated.
 	Labels []*AndroidInstanceLabel `json:"Labels,omitnil,omitempty" name:"Labels"`
+
+	// 安卓实例标签详情列表
+	AndroidInstanceLabels []*AndroidInstanceLabelDetail `json:"AndroidInstanceLabels,omitnil,omitempty" name:"AndroidInstanceLabels"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -2339,13 +2374,13 @@ type DescribeAndroidInstancesByAppsRequestParams struct {
 	// 偏移量，默认为 0	
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制量，默认为20，最大值为100	
+	// 限制量，默认为 20，最大值为 500	
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 应用 ID 列表。通过应用 ID 做集合查询
+	// 应用 ID 列表。当 AndroidIds 为多条数据时（例如 app1, app2），返回的实例列表为：安装了 app1 应用的实例和安装了 app2 应用的实例集合（并集）。
 	AndroidAppIds []*string `json:"AndroidAppIds,omitnil,omitempty" name:"AndroidAppIds"`
 
-	// 字段过滤器。Filter 的 Name 有以下值： AndroidInstanceId：实例 ID
+	// 字段过滤器，Filter 的 Name 有以下值： AndroidInstanceId：实例 Id
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -2355,13 +2390,13 @@ type DescribeAndroidInstancesByAppsRequest struct {
 	// 偏移量，默认为 0	
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 限制量，默认为20，最大值为100	
+	// 限制量，默认为 20，最大值为 500	
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
-	// 应用 ID 列表。通过应用 ID 做集合查询
+	// 应用 ID 列表。当 AndroidIds 为多条数据时（例如 app1, app2），返回的实例列表为：安装了 app1 应用的实例和安装了 app2 应用的实例集合（并集）。
 	AndroidAppIds []*string `json:"AndroidAppIds,omitnil,omitempty" name:"AndroidAppIds"`
 
-	// 字段过滤器。Filter 的 Name 有以下值： AndroidInstanceId：实例 ID
+	// 字段过滤器，Filter 的 Name 有以下值： AndroidInstanceId：实例 Id
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
@@ -3784,11 +3819,11 @@ type ModifyAndroidInstancesLabelsRequestParams struct {
 	// 安卓实例 ID 列表
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
 
-	// 安卓实例标签列表
-	AndroidInstanceLabels []*AndroidInstanceLabel `json:"AndroidInstanceLabels,omitnil,omitempty" name:"AndroidInstanceLabels"`
-
 	// 操作类型。ADD：标签键不存在的添加新标签，标签键存在的将覆盖原有标签REMOVE：根据标签键删除标签REPLACE：使用请求标签列表替换原来所有标签CLEAR：清除所有标签
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// 安卓实例标签列表
+	AndroidInstanceLabels []*AndroidInstanceLabel `json:"AndroidInstanceLabels,omitnil,omitempty" name:"AndroidInstanceLabels"`
 }
 
 type ModifyAndroidInstancesLabelsRequest struct {
@@ -3797,11 +3832,11 @@ type ModifyAndroidInstancesLabelsRequest struct {
 	// 安卓实例 ID 列表
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitnil,omitempty" name:"AndroidInstanceIds"`
 
-	// 安卓实例标签列表
-	AndroidInstanceLabels []*AndroidInstanceLabel `json:"AndroidInstanceLabels,omitnil,omitempty" name:"AndroidInstanceLabels"`
-
 	// 操作类型。ADD：标签键不存在的添加新标签，标签键存在的将覆盖原有标签REMOVE：根据标签键删除标签REPLACE：使用请求标签列表替换原来所有标签CLEAR：清除所有标签
 	Operation *string `json:"Operation,omitnil,omitempty" name:"Operation"`
+
+	// 安卓实例标签列表
+	AndroidInstanceLabels []*AndroidInstanceLabel `json:"AndroidInstanceLabels,omitnil,omitempty" name:"AndroidInstanceLabels"`
 }
 
 func (r *ModifyAndroidInstancesLabelsRequest) ToJsonString() string {
@@ -3817,8 +3852,8 @@ func (r *ModifyAndroidInstancesLabelsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "AndroidInstanceIds")
-	delete(f, "AndroidInstanceLabels")
 	delete(f, "Operation")
+	delete(f, "AndroidInstanceLabels")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAndroidInstancesLabelsRequest has unknown keys!", "")
 	}

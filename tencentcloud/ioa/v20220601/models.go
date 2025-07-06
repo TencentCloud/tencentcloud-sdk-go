@@ -824,6 +824,92 @@ type DescribeDeviceInfoRspData struct {
 	ServiceList []*DeviceServiceInfo `json:"ServiceList,omitnil,omitempty" name:"ServiceList"`
 }
 
+type DescribeDeviceVirtualGroupsPageRsp struct {
+	// 分页公共对象
+	Page *Paging `json:"Page,omitnil,omitempty" name:"Page"`
+
+	// 终端自定义分组列表数据
+	Items []*DeviceVirtualDeviceGroupsDetail `json:"Items,omitnil,omitempty" name:"Items"`
+}
+
+// Predefined struct for user
+type DescribeDeviceVirtualGroupsRequestParams struct {
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// 滤条件、分页参数 <li>Name - String - 是否必填：否 - 操作符: like  - 排序支持：否- 按终端自定义分组过滤。</li> <li>DeviceVirtualGroupName - String - 是否必填：否 - 操作符: like  - 排序支持：否- 按终端自定义分组过滤。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 必填，系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0）
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+
+	// 非必填，自定义分组ids
+	VirtualGroupIds []*int64 `json:"VirtualGroupIds,omitnil,omitempty" name:"VirtualGroupIds"`
+}
+
+type DescribeDeviceVirtualGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+	DomainInstanceId *string `json:"DomainInstanceId,omitnil,omitempty" name:"DomainInstanceId"`
+
+	// 滤条件、分页参数 <li>Name - String - 是否必填：否 - 操作符: like  - 排序支持：否- 按终端自定义分组过滤。</li> <li>DeviceVirtualGroupName - String - 是否必填：否 - 操作符: like  - 排序支持：否- 按终端自定义分组过滤。</li>
+	Condition *Condition `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 必填，系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0）
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+
+	// 非必填，自定义分组ids
+	VirtualGroupIds []*int64 `json:"VirtualGroupIds,omitnil,omitempty" name:"VirtualGroupIds"`
+}
+
+func (r *DescribeDeviceVirtualGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceVirtualGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainInstanceId")
+	delete(f, "Condition")
+	delete(f, "OsType")
+	delete(f, "VirtualGroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceVirtualGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceVirtualGroupsResponseParams struct {
+	// 查询终端自定义分组的Data数据
+	Data *DescribeDeviceVirtualGroupsPageRsp `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDeviceVirtualGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeviceVirtualGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeviceVirtualGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceVirtualGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeDevicesPageRsp struct {
 	// 数据分页信息
 	Paging *Paging `json:"Paging,omitnil,omitempty" name:"Paging"`
@@ -1838,6 +1924,26 @@ type DeviceServiceInfo struct {
 	// 启动用户
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *string `json:"User,omitnil,omitempty" name:"User"`
+}
+
+type DeviceVirtualDeviceGroupsDetail struct {
+	// 终端自定义分组id
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 自定义分组名称
+	DeviceVirtualGroupName *string `json:"DeviceVirtualGroupName,omitnil,omitempty" name:"DeviceVirtualGroupName"`
+
+	// 设备数
+	DeviceCount *int64 `json:"DeviceCount,omitnil,omitempty" name:"DeviceCount"`
+
+	// 系统类型（0: win，1：linux，2: mac，4：android，5：ios  ）
+	OsType *int64 `json:"OsType,omitnil,omitempty" name:"OsType"`
+
+	// 创建时间
+	Itime *string `json:"Itime,omitnil,omitempty" name:"Itime"`
+
+	// 更新时间
+	Utime *string `json:"Utime,omitnil,omitempty" name:"Utime"`
 }
 
 type Filter struct {

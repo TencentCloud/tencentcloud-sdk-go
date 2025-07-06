@@ -1237,6 +1237,67 @@ func (r *CancelTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CancelTasksRequestParams struct {
+	// 任务Id数组，全局唯一
+	TaskId []*string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 配置信息，key-value数组，对外不可见。key1：AuthorityRole（鉴权角色，默认传SubUin，base64加密，仅在jdbc提交任务时使用）
+	Config []*KVPair `json:"Config,omitnil,omitempty" name:"Config"`
+}
+
+type CancelTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务Id数组，全局唯一
+	TaskId []*string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 配置信息，key-value数组，对外不可见。key1：AuthorityRole（鉴权角色，默认传SubUin，base64加密，仅在jdbc提交任务时使用）
+	Config []*KVPair `json:"Config,omitnil,omitempty" name:"Config"`
+}
+
+func (r *CancelTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "Config")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelTasksResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CancelTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelTasksResponseParams `json:"Response"`
+}
+
+func (r *CancelTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CheckDataEngineConfigPairsValidityRequestParams struct {
 	// 引擎小版本ID
 	ChildImageVersionId *string `json:"ChildImageVersionId,omitnil,omitempty" name:"ChildImageVersionId"`
