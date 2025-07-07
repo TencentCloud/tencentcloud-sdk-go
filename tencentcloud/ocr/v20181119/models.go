@@ -1208,6 +1208,14 @@ type CardWarnInfo struct {
 	// 0：正常
 	// 1：有PS
 	PSCheck *int64 `json:"PSCheck,omitnil,omitempty" name:"PSCheck"`
+
+	// 是否模糊：
+	// 0:正常
+	// 1:模糊
+	BlurCheck *int64 `json:"BlurCheck,omitnil,omitempty" name:"BlurCheck"`
+
+	// 模糊分数， 范围：0.0-1.0，分数越高越模糊，建议阈值为0.5
+	BlurScore *float64 `json:"BlurScore,omitnil,omitempty" name:"BlurScore"`
 }
 
 type CellContent struct {
@@ -2866,6 +2874,9 @@ type ExtractDocMultiRequestParams struct {
 	// Table -- 表格模版
 	// SteelLabel -- 实物标签识别模板
 	// CarInsurance -- 车辆保险单识别模板
+	// MultiRealEstateCertificate -- 房产材料识别模板
+	// MultiRealEstateMaterial -- 房产证明识别模板
+	// HongKongUtilityBill -- 香港水电煤单识别模板
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 是否开启全文字段坐标值的识别
@@ -2916,6 +2927,9 @@ type ExtractDocMultiRequest struct {
 	// Table -- 表格模版
 	// SteelLabel -- 实物标签识别模板
 	// CarInsurance -- 车辆保险单识别模板
+	// MultiRealEstateCertificate -- 房产材料识别模板
+	// MultiRealEstateMaterial -- 房产证明识别模板
+	// HongKongUtilityBill -- 香港水电煤单识别模板
 	ConfigId *string `json:"ConfigId,omitnil,omitempty" name:"ConfigId"`
 
 	// 是否开启全文字段坐标值的识别
@@ -9506,6 +9520,9 @@ type RecognizeValidIDCardOCRRequestParams struct {
 
 	// 默认值为false，打开返回字段级反光和字段级完整性告警。类型为：临时、港澳台居住证、外国人居住证失效
 	EnableWordCheck *bool `json:"EnableWordCheck,omitnil,omitempty" name:"EnableWordCheck"`
+
+	// 默认值为false，打开返回证件是否模糊。
+	EnableQualityCheck *bool `json:"EnableQualityCheck,omitnil,omitempty" name:"EnableQualityCheck"`
 }
 
 type RecognizeValidIDCardOCRRequest struct {
@@ -9556,6 +9573,9 @@ type RecognizeValidIDCardOCRRequest struct {
 
 	// 默认值为false，打开返回字段级反光和字段级完整性告警。类型为：临时、港澳台居住证、外国人居住证失效
 	EnableWordCheck *bool `json:"EnableWordCheck,omitnil,omitempty" name:"EnableWordCheck"`
+
+	// 默认值为false，打开返回证件是否模糊。
+	EnableQualityCheck *bool `json:"EnableQualityCheck,omitnil,omitempty" name:"EnableQualityCheck"`
 }
 
 func (r *RecognizeValidIDCardOCRRequest) ToJsonString() string {
@@ -9581,6 +9601,7 @@ func (r *RecognizeValidIDCardOCRRequest) FromJsonString(s string) error {
 	delete(f, "EnableReshootCheck")
 	delete(f, "EnablePSCheck")
 	delete(f, "EnableWordCheck")
+	delete(f, "EnableQualityCheck")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeValidIDCardOCRRequest has unknown keys!", "")
 	}

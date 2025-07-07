@@ -26,6 +26,7 @@ import (
 	advisorv20200721 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/advisor/v20200721"
 	afv20200226 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/af/v20200226"
 	afcv20200226 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/afc/v20200226"
+	ai3dv20250513 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ai3d/v20250513"
 	aiartv20221229 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/aiart/v20221229"
 	amev20190916 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ame/v20190916"
 	amsv20200608 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ams/v20200608"
@@ -394,6 +395,19 @@ func TestAfcv20200226Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init afc_v20200226 client: %v", err)
+    }
+}
+
+func TestAi3Dv20250513Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := ai3dv20250513.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init ai3d_v20250513 client: %v", err)
     }
 }
 

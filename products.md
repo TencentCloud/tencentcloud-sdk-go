@@ -6,6 +6,7 @@
 | advisor | [云顾问](https://cloud.tencent.com/document/product/1264) | [查看](https://cloud.tencent.com/document/product/1264/63123) | 2025-04-10 01:07:31 |
 | af | [借贷反欺诈](https://cloud.tencent.com/document/product/668) | [查看](https://cloud.tencent.com/document/product/668/44006) | 2024-11-22 11:20:38 |
 | afc | [定制建模](https://cloud.tencent.com/document/product/1029) | [查看](https://cloud.tencent.com/document/product/1029/44022) | 2024-05-31 01:07:25 |
+| ai3d | [腾讯混元生3D](https://cloud.tencent.com/document/product/1804) | [查看](https://cloud.tencent.com/document/product/1804/120839) | 2025-07-07 09:27:16 |
 | aiart | [大模型图像创作引擎](https://cloud.tencent.com/document/product/1668) | [查看](https://cloud.tencent.com/document/product/1668/88078) | 2025-07-03 20:52:42 |
 | ame | [正版曲库直通车](https://cloud.tencent.com/document/product/1155) | [查看](https://cloud.tencent.com/document/product/1155/40107) | 2023-08-17 01:06:14 |
 | ams | [音频内容安全](https://cloud.tencent.com/document/product/1219) | [查看](https://cloud.tencent.com/document/product/1219/53269) | 2025-07-03 01:07:38 |
@@ -74,7 +75,7 @@
 | csip | [云安全一体化平台](https://cloud.tencent.com/document/product/664) | [查看](https://cloud.tencent.com/document/product/664/90836) | 2025-07-04 01:23:34 |
 | csxg | [5G入云服务](https://cloud.tencent.com/document/product/1687) | [查看](https://cloud.tencent.com/document/product/1687/91691) | 2024-03-20 01:12:25 |
 | ctem | [暴露面管理服务](https://cloud.tencent.com/document/product/1755) | [查看](https://cloud.tencent.com/document/product/1755/120331) | 2025-06-27 11:47:34 |
-| cvm | [云服务器](https://cloud.tencent.com/document/product/213) | [查看](https://cloud.tencent.com/document/product/213/15695) | 2025-07-02 01:28:54 |
+| cvm | [云服务器](https://cloud.tencent.com/document/product/213) | [查看](https://cloud.tencent.com/document/product/213/15695) | 2025-07-07 17:33:35 |
 | cwp | [主机安全](https://cloud.tencent.com/document/product/296) | [查看](https://cloud.tencent.com/document/product/296/19831) | 2025-07-07 01:18:14 |
 | cws | [漏洞扫描服务](https://cloud.tencent.com/document/product) | [查看](https://cloud.tencent.com/document/product) | 2019-11-22 12:16:15 |
 | cynosdb | [TDSQL-C MySQL 版](https://cloud.tencent.com/document/product/1003) | [查看](https://cloud.tencent.com/document/product/1003/48107) | 2025-06-26 01:15:00 |
@@ -165,7 +166,7 @@
 | nlp | [NLP 技术](https://cloud.tencent.com/document/product/271) | [查看](https://cloud.tencent.com/document/product/271/35491) | 2025-01-14 01:21:36 |
 | npp | [号码保护](https://cloud.tencent.com/document/product) | [查看](https://cloud.tencent.com/document/product/610/40974) | 2020-04-22 08:00:22 |
 | oceanus | [流计算 Oceanus](https://cloud.tencent.com/document/product/849) | [查看](https://cloud.tencent.com/document/product/849/52020) | 2025-07-04 02:08:45 |
-| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | [查看](https://cloud.tencent.com/document/product/866/33522) | 2025-07-03 02:14:08 |
+| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | [查看](https://cloud.tencent.com/document/product/866/33522) | 2025-07-07 17:23:39 |
 | omics | [腾讯健康组学平台](https://cloud.tencent.com/document/product/1643) | [查看](https://cloud.tencent.com/document/product/1643/89111) | 2025-05-02 01:23:37 |
 | organization | [集团账号管理](https://cloud.tencent.com/document/product/850) | [查看](https://cloud.tencent.com/document/product/850/63320) | 2025-06-25 01:34:52 |
 | partners | [渠道合作伙伴](https://cloud.tencent.com/document/product/563) | [查看](https://cloud.tencent.com/document/product/563/17375) | 2025-06-30 17:12:03 |
