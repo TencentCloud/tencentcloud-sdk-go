@@ -758,6 +758,9 @@ const (
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
+	// 获取CDC IDC VIP失败.
+	RESOURCEUNAVAILABLE_FAILEDGETCDCIDCVIP = "ResourceUnavailable.FailedGetCdcIdcVip"
+
 	// 当前用户不在指定终端节点服务的白名单内。
 	RESOURCEUNAVAILABLE_SERVICEWHITELISTNOTADDED = "ResourceUnavailable.ServiceWhiteListNotAdded"
 

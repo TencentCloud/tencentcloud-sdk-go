@@ -840,19 +840,19 @@ type CreateMigrationTaskRequestParams struct {
 	// 迁移任务名称
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 迁移方式标志位，默认为0。0: 桶迁移；1: 清单迁移
+	// 迁移方式标志位，默认为0。0：桶迁移；1：清单迁移
 	MigrationType *uint64 `json:"MigrationType,omitnil,omitempty" name:"MigrationType"`
 
 	// 迁移模式，默认为0。0: 全量迁移
 	MigrationMode *uint64 `json:"MigrationMode,omitnil,omitempty" name:"MigrationMode"`
 
-	// 数据源账号的SecretId
+	// 数据源账号的 SecretId
 	SrcSecretId *string `json:"SrcSecretId,omitnil,omitempty" name:"SrcSecretId"`
 
-	// 数据源账号的SecretKey
+	// 数据源账号的 SecretKey
 	SrcSecretKey *string `json:"SrcSecretKey,omitnil,omitempty" name:"SrcSecretKey"`
 
-	// 文件系统实例Id
+	// 文件系统实例 ID，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 文件系统路径
@@ -861,16 +861,16 @@ type CreateMigrationTaskRequestParams struct {
 	// 同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖
 	CoverType *uint64 `json:"CoverType,omitnil,omitempty" name:"CoverType"`
 
-	// 数据源服务商。COS: 腾讯云COS，OSS: 阿里云OSS，OBS:华为云OBS
+	// 数据源服务商。COS：腾讯云COS，OSS：阿里云OSS，OBS：华为云OBS
 	SrcService *string `json:"SrcService,omitnil,omitempty" name:"SrcService"`
 
-	// 数据源桶名称，名称和地址至少有一个
+	// 数据源桶名称；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
 
 	// 数据源桶地域
 	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
-	// 数据源桶地址，名称和地址至少有一个
+	// 数据源桶地址；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数
 	BucketAddress *string `json:"BucketAddress,omitnil,omitempty" name:"BucketAddress"`
 
 	// 清单地址，迁移方式为清单迁移时必填
@@ -879,10 +879,10 @@ type CreateMigrationTaskRequestParams struct {
 	// 目标文件系统名称
 	FsName *string `json:"FsName,omitnil,omitempty" name:"FsName"`
 
-	// 源桶路径，默认为/
+	// 源桶路径，默认为 /
 	BucketPath *string `json:"BucketPath,omitnil,omitempty" name:"BucketPath"`
 
-	// 迁移方向。0: 对象存储迁移至文件系统，1: 文件系统迁移至对象存储。默认 0
+	// 迁移方向；0：对象存储迁移至文件系统，1：文件系统迁移至对象存储。默认为0
 	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 }
 
@@ -892,19 +892,19 @@ type CreateMigrationTaskRequest struct {
 	// 迁移任务名称
 	TaskName *string `json:"TaskName,omitnil,omitempty" name:"TaskName"`
 
-	// 迁移方式标志位，默认为0。0: 桶迁移；1: 清单迁移
+	// 迁移方式标志位，默认为0。0：桶迁移；1：清单迁移
 	MigrationType *uint64 `json:"MigrationType,omitnil,omitempty" name:"MigrationType"`
 
 	// 迁移模式，默认为0。0: 全量迁移
 	MigrationMode *uint64 `json:"MigrationMode,omitnil,omitempty" name:"MigrationMode"`
 
-	// 数据源账号的SecretId
+	// 数据源账号的 SecretId
 	SrcSecretId *string `json:"SrcSecretId,omitnil,omitempty" name:"SrcSecretId"`
 
-	// 数据源账号的SecretKey
+	// 数据源账号的 SecretKey
 	SrcSecretKey *string `json:"SrcSecretKey,omitnil,omitempty" name:"SrcSecretKey"`
 
-	// 文件系统实例Id
+	// 文件系统实例 ID，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
 	FileSystemId *string `json:"FileSystemId,omitnil,omitempty" name:"FileSystemId"`
 
 	// 文件系统路径
@@ -913,16 +913,16 @@ type CreateMigrationTaskRequest struct {
 	// 同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖
 	CoverType *uint64 `json:"CoverType,omitnil,omitempty" name:"CoverType"`
 
-	// 数据源服务商。COS: 腾讯云COS，OSS: 阿里云OSS，OBS:华为云OBS
+	// 数据源服务商。COS：腾讯云COS，OSS：阿里云OSS，OBS：华为云OBS
 	SrcService *string `json:"SrcService,omitnil,omitempty" name:"SrcService"`
 
-	// 数据源桶名称，名称和地址至少有一个
+	// 数据源桶名称；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数
 	BucketName *string `json:"BucketName,omitnil,omitempty" name:"BucketName"`
 
 	// 数据源桶地域
 	BucketRegion *string `json:"BucketRegion,omitnil,omitempty" name:"BucketRegion"`
 
-	// 数据源桶地址，名称和地址至少有一个
+	// 数据源桶地址；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数
 	BucketAddress *string `json:"BucketAddress,omitnil,omitempty" name:"BucketAddress"`
 
 	// 清单地址，迁移方式为清单迁移时必填
@@ -931,10 +931,10 @@ type CreateMigrationTaskRequest struct {
 	// 目标文件系统名称
 	FsName *string `json:"FsName,omitnil,omitempty" name:"FsName"`
 
-	// 源桶路径，默认为/
+	// 源桶路径，默认为 /
 	BucketPath *string `json:"BucketPath,omitnil,omitempty" name:"BucketPath"`
 
-	// 迁移方向。0: 对象存储迁移至文件系统，1: 文件系统迁移至对象存储。默认 0
+	// 迁移方向；0：对象存储迁移至文件系统，1：文件系统迁移至对象存储。默认为0
 	Direction *uint64 `json:"Direction,omitnil,omitempty" name:"Direction"`
 }
 
@@ -974,7 +974,7 @@ func (r *CreateMigrationTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMigrationTaskResponseParams struct {
-	// 迁移任务Id
+	// 迁移任务 ID
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

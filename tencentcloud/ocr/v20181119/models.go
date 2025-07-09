@@ -666,6 +666,9 @@ type BizLicenseOCRRequestParams struct {
 
 	// 是否返回自动拼接的有效期，默认为true
 	EnablePeriodComplete *bool `json:"EnablePeriodComplete,omitnil,omitempty" name:"EnablePeriodComplete"`
+
+	// 是否支持营业类证件识别（包括营业执照和非营业执照的其他证件），默认为false
+	EnableBusinessCertificate *bool `json:"EnableBusinessCertificate,omitnil,omitempty" name:"EnableBusinessCertificate"`
 }
 
 type BizLicenseOCRRequest struct {
@@ -689,6 +692,9 @@ type BizLicenseOCRRequest struct {
 
 	// 是否返回自动拼接的有效期，默认为true
 	EnablePeriodComplete *bool `json:"EnablePeriodComplete,omitnil,omitempty" name:"EnablePeriodComplete"`
+
+	// 是否支持营业类证件识别（包括营业执照和非营业执照的其他证件），默认为false
+	EnableBusinessCertificate *bool `json:"EnableBusinessCertificate,omitnil,omitempty" name:"EnableBusinessCertificate"`
 }
 
 func (r *BizLicenseOCRRequest) ToJsonString() string {
@@ -707,6 +713,7 @@ func (r *BizLicenseOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "EnableCopyWarn")
 	delete(f, "EnablePeriodComplete")
+	delete(f, "EnableBusinessCertificate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BizLicenseOCRRequest has unknown keys!", "")
 	}
@@ -785,6 +792,9 @@ type BizLicenseOCRResponseParams struct {
 
 	// 是否是电子营业执照。false为没有，true为有。
 	Electronic *bool `json:"Electronic,omitnil,omitempty" name:"Electronic"`
+
+	// 非营业执照的营业类证件识别结果，将以结构化形式呈现。
+	BusinessCertificate []*BusinessCertificateInfo `json:"BusinessCertificate,omitnil,omitempty" name:"BusinessCertificate"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -1081,6 +1091,17 @@ func (r *BusinessCardOCRResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *BusinessCardOCRResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type BusinessCertificateInfo struct {
+	// 识别出的名称
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 识别出的字段名称对应的值
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+
+	// 坐标
+	Rect *Rect `json:"Rect,omitnil,omitempty" name:"Rect"`
 }
 
 type CandWord struct {

@@ -776,6 +776,59 @@ func (c *Client) RebootMachinesWithContext(ctx context.Context, request *RebootM
     return
 }
 
+func NewSetMachineLoginRequest() (request *SetMachineLoginRequest) {
+    request = &SetMachineLoginRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "SetMachineLogin")
+    
+    
+    return
+}
+
+func NewSetMachineLoginResponse() (response *SetMachineLoginResponse) {
+    response = &SetMachineLoginResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// SetMachineLogin
+// 设置是否开启节点登录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) SetMachineLogin(request *SetMachineLoginRequest) (response *SetMachineLoginResponse, err error) {
+    return c.SetMachineLoginWithContext(context.Background(), request)
+}
+
+// SetMachineLogin
+// 设置是否开启节点登录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) SetMachineLoginWithContext(ctx context.Context, request *SetMachineLoginRequest) (response *SetMachineLoginResponse, err error) {
+    if request == nil {
+        request = NewSetMachineLoginRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetMachineLogin require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetMachineLoginResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartMachinesRequest() (request *StartMachinesRequest) {
     request = &StartMachinesRequest{
         BaseRequest: &tchttp.BaseRequest{},

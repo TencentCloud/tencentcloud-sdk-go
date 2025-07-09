@@ -3787,6 +3787,70 @@ func (r *DescribeSupervisorsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeUserDetailRequestParams struct {
+	// 用户id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 用户在客户系统的Id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询（UserId不为空时，OriginId不生效）。
+	OriginId *string `json:"OriginId,omitnil,omitempty" name:"OriginId"`
+}
+
+type DescribeUserDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 用户在客户系统的Id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询（UserId不为空时，OriginId不生效）。
+	OriginId *string `json:"OriginId,omitnil,omitempty" name:"OriginId"`
+}
+
+func (r *DescribeUserDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserId")
+	delete(f, "OriginId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserDetailResponseParams struct {
+	// 当前获取用户信息数组列表
+	Users []*UserInfo `json:"Users,omitnil,omitempty" name:"Users"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeUserDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUserRequestParams struct {
 	// 用户id。支持通过 user_id 或 OriginId 查询用户信息，优先使用 user_id 进行查询。
 	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`

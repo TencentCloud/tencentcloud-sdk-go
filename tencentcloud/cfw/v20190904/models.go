@@ -4903,6 +4903,99 @@ func (r *DescribeIdsWhiteRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLogStorageStatisticRequestParams struct {
+
+}
+
+type DescribeLogStorageStatisticRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeLogStorageStatisticRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogStorageStatisticRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogStorageStatisticRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogStorageStatisticResponseParams struct {
+	// 返回状态码 0 成功 非0不成功
+	ReturnCode *int64 `json:"ReturnCode,omitnil,omitempty" name:"ReturnCode"`
+
+	// 返回信息  success 成功 其他 不成功
+	ReturnMsg *string `json:"ReturnMsg,omitnil,omitempty" name:"ReturnMsg"`
+
+	// 已使用存储量，单位B
+	UsedSize *int64 `json:"UsedSize,omitnil,omitempty" name:"UsedSize"`
+
+	// 配额存储总量，单位B
+	TotalSize *int64 `json:"TotalSize,omitnil,omitempty" name:"TotalSize"`
+
+	// 存储天数
+	StorageDay *int64 `json:"StorageDay,omitnil,omitempty" name:"StorageDay"`
+
+	// 访问控制日志存储量，单位B
+	AclSize *int64 `json:"AclSize,omitnil,omitempty" name:"AclSize"`
+
+	// 入侵防御日志存储量，单位B
+	IdsSize *int64 `json:"IdsSize,omitnil,omitempty" name:"IdsSize"`
+
+	// 流量日志存储量，单位B
+	NetFlowSize *int64 `json:"NetFlowSize,omitnil,omitempty" name:"NetFlowSize"`
+
+	// 操作日志存储量，单位B
+	OperateSize *int64 `json:"OperateSize,omitnil,omitempty" name:"OperateSize"`
+
+	// 剩余存储量，单位B
+	LeftSize *int64 `json:"LeftSize,omitnil,omitempty" name:"LeftSize"`
+
+	// 计费模式，0后付费，1预付费
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// 每日增加日志存储量柱状图
+	TimeHistogram []*StorageHistogram `json:"TimeHistogram,omitnil,omitempty" name:"TimeHistogram"`
+
+	// 柱形图格式数据
+	TimeHistogramShow *StorageHistogramShow `json:"TimeHistogramShow,omitnil,omitempty" name:"TimeHistogramShow"`
+
+	// 后付费模式存储状态，0正常，1欠费停止写入
+	ArrearsStopWriting *int64 `json:"ArrearsStopWriting,omitnil,omitempty" name:"ArrearsStopWriting"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLogStorageStatisticResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLogStorageStatisticResponseParams `json:"Response"`
+}
+
+func (r *DescribeLogStorageStatisticResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogStorageStatisticResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLogsRequestParams struct {
 	// 日志类型标识
 	// 流量日志：互联网边界防火墙netflow_border，NAT边界防火墙netflow_nat，VPC间防火墙vpcnetflow，内网流量日志netflow_fl，流量分析日志netflow_nta
@@ -7182,6 +7275,12 @@ type InstanceInfo struct {
 
 	// vpcid信息
 	VpcId *string `json:"VpcId,omitnil,omitempty" name:"VpcId"`
+}
+
+type IntArray struct {
+	// 数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*int64 `json:"List,omitnil,omitempty" name:"List"`
 }
 
 type IntrusionDefenseRule struct {
@@ -11098,6 +11197,42 @@ func (r *StopSecurityGroupRuleDispatchResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopSecurityGroupRuleDispatchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type StorageHistogram struct {
+	// 访问控制日志存储量，单位B
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AclSize *int64 `json:"AclSize,omitnil,omitempty" name:"AclSize"`
+
+	// 入侵防御日志存储量，单位B
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdsSize *int64 `json:"IdsSize,omitnil,omitempty" name:"IdsSize"`
+
+	// 流量日志存储量，单位B
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetFlowSize *int64 `json:"NetFlowSize,omitnil,omitempty" name:"NetFlowSize"`
+
+	// 操作日志存储量，单位B
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateSize *int64 `json:"OperateSize,omitnil,omitempty" name:"OperateSize"`
+
+	// 统计时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Time *string `json:"Time,omitnil,omitempty" name:"Time"`
+}
+
+type StorageHistogramShow struct {
+	// 存储类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageType []*string `json:"StorageType,omitnil,omitempty" name:"StorageType"`
+
+	// 日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Dates []*string `json:"Dates,omitnil,omitempty" name:"Dates"`
+
+	// 数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*IntArray `json:"Data,omitnil,omitempty" name:"Data"`
 }
 
 type SwitchListsData struct {

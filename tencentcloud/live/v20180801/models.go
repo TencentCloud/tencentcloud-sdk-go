@@ -1411,6 +1411,95 @@ type CertInfo struct {
 	DomainList []*string `json:"DomainList,omitnil,omitempty" name:"DomainList"`
 }
 
+type ChildTemplateInfo struct {
+	// 自适应码率转码模板，子模板Id。
+	// 入参时候，填写此字段，表示更新子模板，否则是新增子模板。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// 子模板名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
+
+	// 视频编码：h264/h265/origin，默认origin。
+	// 
+	// origin: 保持原始编码格式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vcodec *string `json:"Vcodec,omitnil,omitempty" name:"Vcodec"`
+
+	// 视频码率。范围：0kbps - 8000kbps。
+	// 0为保持原始码率。
+	// 注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoBitrate *int64 `json:"VideoBitrate,omitnil,omitempty" name:"VideoBitrate"`
+
+	// 宽，默认0。
+	// 范围[0-3000]。
+	// 数值必须是2的倍数，0是原始宽度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 高，默认0。
+	// 范围[0-3000]
+	// 数值必须是2的倍数，0是原始高度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
+
+	// 帧率，默认0。
+	// 范围0-60fps。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fps *int64 `json:"Fps,omitnil,omitempty" name:"Fps"`
+
+	// 关键帧间隔，单位：秒。
+	// 默认原始的间隔。
+	// 范围2-6。
+	// 同一个父模板下面的所有子模板，gop必须相等且存在。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Gop *int64 `json:"Gop,omitnil,omitempty" name:"Gop"`
+
+	// 是否保留视频，0：否，1：是。默认1。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NeedVideo *int64 `json:"NeedVideo,omitnil,omitempty" name:"NeedVideo"`
+
+	// 是否保留音频，0：否，1：是。默认1。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NeedAudio *int64 `json:"NeedAudio,omitnil,omitempty" name:"NeedAudio"`
+
+	// 当设置的码率>原始码率时，是否以原始码率为准。
+	// 0：否， 1：是
+	// 默认 0。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BitrateToOrig *int64 `json:"BitrateToOrig,omitnil,omitempty" name:"BitrateToOrig"`
+
+	// 当设置的高度>原始高度时，是否以原始高度为准。
+	// 0：否， 1：是
+	// 默认 0。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeightToOrig *int64 `json:"HeightToOrig,omitnil,omitempty" name:"HeightToOrig"`
+
+	// 当设置的帧率>原始帧率时，是否以原始帧率为准。
+	// 0：否， 1：是
+	// 默认 0。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FpsToOrig *int64 `json:"FpsToOrig,omitnil,omitempty" name:"FpsToOrig"`
+
+	// 是否以短边作为高度，0：否，1：是。默认0。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShortEdgeAsHeight *int64 `json:"ShortEdgeAsHeight,omitnil,omitempty" name:"ShortEdgeAsHeight"`
+
+	// HLS 分片类型。
+	// 可选值：ts、fmp4。
+	// 注：编码方式为 H.265 时生效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HlsContainerFormat *string `json:"HlsContainerFormat,omitnil,omitempty" name:"HlsContainerFormat"`
+
+	// 编码标签。
+	// 可选值：hvc1、hev1。
+	// 注：HLS 分片类型选择 fmp4 时生效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HlsMp4VideoCodecTag *string `json:"HlsMp4VideoCodecTag,omitnil,omitempty" name:"HlsMp4VideoCodecTag"`
+}
+
 type ClientIpPlaySumInfo struct {
 	// 客户端 IP，点分型。
 	ClientIp *string `json:"ClientIp,omitnil,omitempty" name:"ClientIp"`
@@ -19438,6 +19527,16 @@ type TemplateInfo struct {
 	// DRM 加密项，多个用|分割，可选值：AUDIO、SD、HD、UHD1、UHD2，后四个为一组，同组中的内容只能选一个。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DRMTracks *string `json:"DRMTracks,omitnil,omitempty" name:"DRMTracks"`
+
+	// 是否创建自适应码率，默认值 0。
+	// 0：否。
+	// 1：是。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAdaptiveBitRate *int64 `json:"IsAdaptiveBitRate,omitnil,omitempty" name:"IsAdaptiveBitRate"`
+
+	// 自适应码率，子转码模板信息，当 IsAdaptiveBitRate 为 1 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdaptiveChildren []*ChildTemplateInfo `json:"AdaptiveChildren,omitnil,omitempty" name:"AdaptiveChildren"`
 }
 
 type TimeShiftBillData struct {

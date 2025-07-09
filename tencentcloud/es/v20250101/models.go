@@ -330,6 +330,12 @@ type Document struct {
 
 	// 文件名称，当使用 base64上传的时候使用。
 	FileName *string `json:"FileName,omitnil,omitempty" name:"FileName"`
+
+	// 文档的起始页码
+	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
+
+	// 文档的结束页码
+	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
 }
 
 type DocumentChunkUsage struct {

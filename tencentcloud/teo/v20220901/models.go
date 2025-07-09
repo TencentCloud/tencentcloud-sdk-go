@@ -475,6 +475,14 @@ type AliasDomain struct {
 	ModifiedOn *string `json:"ModifiedOn,omitnil,omitempty" name:"ModifiedOn"`
 }
 
+type AllowActionParameters struct {
+	// 最小延迟响应时间，当配置为 0s 时，表示不延迟直接响应。支持的单位有：<li>s：秒，取值范围 0～5。</li>
+	MinDelayTime *string `json:"MinDelayTime,omitnil,omitempty" name:"MinDelayTime"`
+
+	// 最大延迟响应时间，支持的单位有：<li>s：秒，取值范围 5～10。</li>
+	MaxDelayTime *string `json:"MaxDelayTime,omitnil,omitempty" name:"MaxDelayTime"`
+}
+
 type ApplicationProxy struct {
 	// 站点ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -989,6 +997,11 @@ type BotManagedRule struct {
 	DropManagedIds []*int64 `json:"DropManagedIds,omitnil,omitempty" name:"DropManagedIds"`
 }
 
+type BotManagement struct {
+	// 客户端认证规则的定义列表。该功能内测中，如需使用，请提工单或联系智能客服。
+	ClientAttestationRules *ClientAttestationRules `json:"ClientAttestationRules,omitnil,omitempty" name:"ClientAttestationRules"`
+}
+
 type BotPortraitRule struct {
 	// 本功能的开关，取值有：
 	// <li>on：开启；</li>
@@ -1410,6 +1423,37 @@ type CheckRegionHealthStatus struct {
 
 	// 源站健康状态。
 	OriginHealthStatus []*OriginHealthStatus `json:"OriginHealthStatus,omitnil,omitempty" name:"OriginHealthStatus"`
+}
+
+type ClientAttestationRule struct {
+	// 客户端认证规则的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li> <b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li> <b>删除</b>已有规则：BotManagement 参数中，ClientAttestationRule 列表中未包含的已有规则将被删除。</li>
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 客户端认证规则的名称。
+	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
+
+	// 规则是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+	Enabled *string `json:"Enabled,omitnil,omitempty" name:"Enabled"`
+
+	// 规则的优先级，数值越小越优先执行，范围是 0 ~ 100，默认为 0。
+	Priority *uint64 `json:"Priority,omitnil,omitempty" name:"Priority"`
+
+	// 规则的具体内容，需符合表达式语法，详细规范参见产品文档。
+	Condition *string `json:"Condition,omitnil,omitempty" name:"Condition"`
+
+	// 客户端认证选项 ID。
+	AttesterId *string `json:"AttesterId,omitnil,omitempty" name:"AttesterId"`
+
+	// 客户端设备配置。若 ClientAttestationRules 参数中，未指定 DeviceProfiles 参数值：保持已有客户端设备配置，不做修改。
+	DeviceProfiles []*DeviceProfile `json:"DeviceProfiles,omitnil,omitempty" name:"DeviceProfiles"`
+
+	// 客户端认证未通过的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值为 Monitor。
+	InvalidAttestationAction *SecurityAction `json:"InvalidAttestationAction,omitnil,omitempty" name:"InvalidAttestationAction"`
+}
+
+type ClientAttestationRules struct {
+	// 客户端认证的列表。使用 ModifySecurityPolicy 修改 Web 防护配置时：<li>  若未指定 SecurityPolicy.BotManagement.ClientAttestationRules 中的 Rules 参数，或 Rules 参数长度为零：清空所有客户端认证规则配置。</li> <li> 若 SecurityPolicy.BotManagement 参数中，未指定 ClientAttestationRules 参数值：保持已有客户端认证规则配置，不做修改。</li>
+	Rules []*ClientAttestationRule `json:"Rules,omitnil,omitempty" name:"Rules"`
 }
 
 type ClientFiltering struct {
@@ -9198,7 +9242,7 @@ func (r *DescribeSecurityIPGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSecurityIPGroupResponseParams struct {
-	// 安全 IP 组的详细配置信息。包含每个安全 IP 组的 ID 、名称、 IP / 网段列表信息和过期时间信息。
+	// 安全 IP 组的详细配置信息。包含每个安全 IP 组的 ID 、名称、IP / 网段总数量、 IP / 网段列表信息和过期时间信息。
 	IPGroups []*IPGroup `json:"IPGroups,omitnil,omitempty" name:"IPGroups"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10577,6 +10621,23 @@ type DetectLengthLimitRule struct {
 	Action *string `json:"Action,omitnil,omitempty" name:"Action"`
 }
 
+type DeviceProfile struct {
+	// 客户端设备类型。取值有：<li>iOS；</li><li>Android；</li><li>WebView。</li>
+	ClientType *string `json:"ClientType,omitnil,omitempty" name:"ClientType"`
+
+	// 判定请求为高风险的最低值，取值范围为 1～99。数值越大请求风险越高越接近 Bot 客户端发起的请求。默认值为 50，对应含义 51～100 为高风险。
+	HighRiskMinScore *uint64 `json:"HighRiskMinScore,omitnil,omitempty" name:"HighRiskMinScore"`
+
+	// 高风险请求的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值为 Monitor。
+	HighRiskRequestAction *SecurityAction `json:"HighRiskRequestAction,omitnil,omitempty" name:"HighRiskRequestAction"`
+
+	// 判定请求为中风险的最低值，取值范围为 1～99。数值越大请求风险越高越接近 Bot 客户端发起的请求。默认值为 15，对应含义 16～50 为中风险。
+	MediumRiskMinScore *uint64 `json:"MediumRiskMinScore,omitnil,omitempty" name:"MediumRiskMinScore"`
+
+	// 中风险请求的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值为 Monitor。
+	MediumRiskRequestAction *SecurityAction `json:"MediumRiskRequestAction,omitnil,omitempty" name:"MediumRiskRequestAction"`
+}
+
 type DiffIPWhitelist struct {
 	// 最新IP白名单列表。
 	LatestIPWhitelist *IPWhitelist `json:"LatestIPWhitelist,omitnil,omitempty" name:"LatestIPWhitelist"`
@@ -11754,8 +11815,11 @@ type IPGroup struct {
 	// IP 组内容，仅支持 IP 及 IP 网段。
 	Content []*string `json:"Content,omitnil,omitempty" name:"Content"`
 
+	// IP 组中正在生效的 IP 或网段个数。作为出参时有效，作为入参时无需填写该字段。
+	IPTotalCount *int64 `json:"IPTotalCount,omitnil,omitempty" name:"IPTotalCount"`
+
 	// IP 定时过期信息。
-	// 作为入参：用于为指定的 IP 地址或网段配置定时过期时间。
+	// 作为入参，用于为指定的 IP 地址或网段配置定时过期时间。
 	// 作为出参，包含以下两类信息：
 	// <li>当前未到期的定时过期信息：尚未触发的过期配置。</li>
 	// <li>一周内已到期的定时过期信息：已触发的过期配置。</li>
@@ -15988,7 +16052,9 @@ type OwnershipVerification struct {
 
 type PartialModule struct {
 	// 模块名称，取值为：
-	// <li>waf：托管规则。</li>
+	// <li>managed-rule：托管规则 Id；</li>
+	// <li>managed-group：托管规则组；</li>
+	// <li>waf：待废弃，托管规则。</li>
 	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
 
 	// 模块下的需要例外的具体规则ID列表。
@@ -17215,6 +17281,9 @@ type SecurityAction struct {
 	// 当 Name 为 Redirect 时的附加参数。
 	RedirectActionParameters *RedirectActionParameters `json:"RedirectActionParameters,omitnil,omitempty" name:"RedirectActionParameters"`
 
+	// 当 Name 为 Allow 时的附加参数。
+	AllowActionParameters *AllowActionParameters `json:"AllowActionParameters,omitnil,omitempty" name:"AllowActionParameters"`
+
 	// 当 Name 为 Challenge 时的附加参数。
 	ChallengeActionParameters *ChallengeActionParameters `json:"ChallengeActionParameters,omitnil,omitempty" name:"ChallengeActionParameters"`
 
@@ -17267,7 +17336,7 @@ type SecurityPolicy struct {
 	// 托管规则配置。
 	ManagedRules *ManagedRules `json:"ManagedRules,omitnil,omitempty" name:"ManagedRules"`
 
-	// HTTP DDOS防护配置。
+	// HTTP DDOS 防护配置。
 	HttpDDoSProtection *HttpDDoSProtection `json:"HttpDDoSProtection,omitnil,omitempty" name:"HttpDDoSProtection"`
 
 	// 速率限制规则配置。
@@ -17275,6 +17344,9 @@ type SecurityPolicy struct {
 
 	// 例外规则配置。
 	ExceptionRules *ExceptionRules `json:"ExceptionRules,omitnil,omitempty" name:"ExceptionRules"`
+
+	// Bot 管理配置。
+	BotManagement *BotManagement `json:"BotManagement,omitnil,omitempty" name:"BotManagement"`
 }
 
 type SecurityTemplateBinding struct {

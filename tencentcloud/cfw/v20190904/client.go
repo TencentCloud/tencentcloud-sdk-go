@@ -3346,6 +3346,61 @@ func (c *Client) DescribeIdsWhiteRuleWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeLogStorageStatisticRequest() (request *DescribeLogStorageStatisticRequest) {
+    request = &DescribeLogStorageStatisticRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeLogStorageStatistic")
+    
+    
+    return
+}
+
+func NewDescribeLogStorageStatisticResponse() (response *DescribeLogStorageStatisticResponse) {
+    response = &DescribeLogStorageStatisticResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLogStorageStatistic
+// 租户日志存储统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeLogStorageStatistic(request *DescribeLogStorageStatisticRequest) (response *DescribeLogStorageStatisticResponse, err error) {
+    return c.DescribeLogStorageStatisticWithContext(context.Background(), request)
+}
+
+// DescribeLogStorageStatistic
+// 租户日志存储统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeLogStorageStatisticWithContext(ctx context.Context, request *DescribeLogStorageStatisticRequest) (response *DescribeLogStorageStatisticResponse, err error) {
+    if request == nil {
+        request = NewDescribeLogStorageStatisticRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogStorageStatistic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLogStorageStatisticResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLogsRequest() (request *DescribeLogsRequest) {
     request = &DescribeLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},

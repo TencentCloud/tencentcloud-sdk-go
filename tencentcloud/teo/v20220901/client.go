@@ -6018,7 +6018,7 @@ func NewDescribeSecurityIPGroupResponse() (response *DescribeSecurityIPGroupResp
 }
 
 // DescribeSecurityIPGroup
-// 查询安全 IP 组的配置信息，包括安全 IP 组的 ID、名称和内容。
+// 查询安全 IP 组的配置信息，包括安全 IP 组的 ID、名称和内容。本接口的查询结果中，每个 IP 组最多只返回 2000 个 IP / 网段。如果存在超过 2000 个 IP / 网段的超大 IP 组，请调用 DescribeSecurityIPGroupContent 进行分页查询。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
@@ -6029,7 +6029,7 @@ func (c *Client) DescribeSecurityIPGroup(request *DescribeSecurityIPGroupRequest
 }
 
 // DescribeSecurityIPGroup
-// 查询安全 IP 组的配置信息，包括安全 IP 组的 ID、名称和内容。
+// 查询安全 IP 组的配置信息，包括安全 IP 组的 ID、名称和内容。本接口的查询结果中，每个 IP 组最多只返回 2000 个 IP / 网段。如果存在超过 2000 个 IP / 网段的超大 IP 组，请调用 DescribeSecurityIPGroupContent 进行分页查询。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"

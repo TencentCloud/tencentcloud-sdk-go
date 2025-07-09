@@ -6246,6 +6246,11 @@ type CreateOrganizationAuthUrlRequestParams struct {
 	// 1.  超管的信息（超管姓名，超管手机号）必须为必填参数。
 	// 2.  认证方式AuthorizationTypes必须只能是上传授权书方式 
 	PowerOfAttorneys []*string `json:"PowerOfAttorneys,omitnil,omitempty" name:"PowerOfAttorneys"`
+
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 4096长度。
+	// 
+	// 在. 企业引导企业实名认证后回调中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_staffs" target="_blank">回调通知</a>模块。
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 }
 
 type CreateOrganizationAuthUrlRequest struct {
@@ -6356,6 +6361,11 @@ type CreateOrganizationAuthUrlRequest struct {
 	// 1.  超管的信息（超管姓名，超管手机号）必须为必填参数。
 	// 2.  认证方式AuthorizationTypes必须只能是上传授权书方式 
 	PowerOfAttorneys []*string `json:"PowerOfAttorneys,omitnil,omitempty" name:"PowerOfAttorneys"`
+
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 4096长度。
+	// 
+	// 在. 企业引导企业实名认证后回调中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_staffs" target="_blank">回调通知</a>模块。
+	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
 }
 
 func (r *CreateOrganizationAuthUrlRequest) ToJsonString() string {
@@ -6391,6 +6401,7 @@ func (r *CreateOrganizationAuthUrlRequest) FromJsonString(s string) error {
 	delete(f, "Endpoint")
 	delete(f, "Initialization")
 	delete(f, "PowerOfAttorneys")
+	delete(f, "UserData")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationAuthUrlRequest has unknown keys!", "")
 	}

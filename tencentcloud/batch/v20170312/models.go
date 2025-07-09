@@ -2319,6 +2319,47 @@ type InternetAccessible struct {
 
 	// 带宽包ID。可通过[ DescribeBandwidthPackages ](https://cloud.tencent.com/document/api/215/19209)接口返回值中的`BandwidthPackageId`获取。该参数仅在RunInstances接口中作为入参使用。
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitnil,omitempty" name:"BandwidthPackageId"`
+
+	// 线路类型。各种线路类型详情可参考：[EIP 的 IP 地址类型](https://cloud.tencent.com/document/product/1199/41646)。默认值：BGP。
+	// 
+	// - BGP：常规 BGP 线路
+	// 
+	// 已开通静态单线IP白名单的用户，可选值：
+	// 
+	//  - CMCC：中国移动
+	//  - CTCC：中国电信
+	//  - CUCC：中国联通
+	// 
+	// 注意：仅部分地域支持静态单线IP。
+	// 示例值：BGP
+	InternetServiceProvider *string `json:"InternetServiceProvider,omitnil,omitempty" name:"InternetServiceProvider"`
+
+	// 公网 IP 类型。
+	// 
+	// - WanIP：普通公网IP。
+	// - HighQualityEIP：精品 IP。仅新加坡和中国香港支持精品IP。
+	// - AntiDDoSEIP：高防 IP。仅部分地域支持高防IP，详情可见[弹性公网IP产品概述](https://cloud.tencent.com/document/product/1199/41646)。
+	// 
+	// 如需为资源分配公网IPv4地址，请指定公网IPv4地址类型。
+	// 
+	// 示例值：WanIP
+	// 
+	// 此功能仅部分地区灰度开发，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
+	IPv4AddressType *string `json:"IPv4AddressType,omitnil,omitempty" name:"IPv4AddressType"`
+
+	// 弹性公网 IPv6 类型。
+	// - EIPv6：弹性公网 IPv6。
+	// - HighQualityEIPv6：精品 IPv6。仅中国香港支持精品IPv6。
+	// 
+	// 如需为资源分配IPv6地址，请指定弹性公网IPv6类型。
+	// 示例值：EIPv6
+	// 
+	// 此功能仅部分地区灰度开发，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
+	IPv6AddressType *string `json:"IPv6AddressType,omitnil,omitempty" name:"IPv6AddressType"`
+
+	// 高防包唯一ID，申请高防IP时，该字段必传。
+	// 示例值：bgp-12345678
+	AntiDDoSPackageId *string `json:"AntiDDoSPackageId,omitnil,omitempty" name:"AntiDDoSPackageId"`
 }
 
 type ItemPrice struct {

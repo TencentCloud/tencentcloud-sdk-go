@@ -28663,6 +28663,9 @@ func (r *DescribeVulHostTopResponse) FromJsonString(s string) error {
 type DescribeVulInfoCvssRequestParams struct {
 	// 漏洞id
 	VulId *uint64 `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// 兼容应用防护漏洞防御容器视角告警里漏洞详情，默认是主机视角，可选字段，Source=tcss则为容器视角漏洞详情，后端会把VulId转为主机vul_vuls里的VulId
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 }
 
 type DescribeVulInfoCvssRequest struct {
@@ -28670,6 +28673,9 @@ type DescribeVulInfoCvssRequest struct {
 	
 	// 漏洞id
 	VulId *uint64 `json:"VulId,omitnil,omitempty" name:"VulId"`
+
+	// 兼容应用防护漏洞防御容器视角告警里漏洞详情，默认是主机视角，可选字段，Source=tcss则为容器视角漏洞详情，后端会把VulId转为主机vul_vuls里的VulId
+	Source *string `json:"Source,omitnil,omitempty" name:"Source"`
 }
 
 func (r *DescribeVulInfoCvssRequest) ToJsonString() string {
@@ -28685,6 +28691,7 @@ func (r *DescribeVulInfoCvssRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "VulId")
+	delete(f, "Source")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulInfoCvssRequest has unknown keys!", "")
 	}

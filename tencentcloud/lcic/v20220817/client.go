@@ -3192,6 +3192,57 @@ func (c *Client) DescribeUserWithContext(ctx context.Context, request *DescribeU
     return
 }
 
+func NewDescribeUserDetailRequest() (request *DescribeUserDetailRequest) {
+    request = &DescribeUserDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeUserDetail")
+    
+    
+    return
+}
+
+func NewDescribeUserDetailResponse() (response *DescribeUserDetailResponse) {
+    response = &DescribeUserDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserDetail
+// 获取用户信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+func (c *Client) DescribeUserDetail(request *DescribeUserDetailRequest) (response *DescribeUserDetailResponse, err error) {
+    return c.DescribeUserDetailWithContext(context.Background(), request)
+}
+
+// DescribeUserDetail
+// 获取用户信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+func (c *Client) DescribeUserDetailWithContext(ctx context.Context, request *DescribeUserDetailRequest) (response *DescribeUserDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeWhiteBoardSnapshotRequest() (request *DescribeWhiteBoardSnapshotRequest) {
     request = &DescribeWhiteBoardSnapshotRequest{
         BaseRequest: &tchttp.BaseRequest{},

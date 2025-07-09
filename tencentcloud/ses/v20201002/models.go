@@ -2466,7 +2466,12 @@ type SendEmailStatus struct {
 	UserUnsubscribed *bool `json:"UserUnsubscribed,omitnil,omitempty" name:"UserUnsubscribed"`
 
 	// 用户是否举报该发送者
+	//
+	// Deprecated: UserComplainted is deprecated.
 	UserComplainted *bool `json:"UserComplainted,omitnil,omitempty" name:"UserComplainted"`
+
+	// 用户是否举报该发送者
+	UserComplained *bool `json:"UserComplained,omitnil,omitempty" name:"UserComplained"`
 }
 
 type SendTaskData struct {
