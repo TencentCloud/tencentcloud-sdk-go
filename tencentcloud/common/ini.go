@@ -2,7 +2,7 @@ package common
 
 import (
 	"fmt"
-    "io/ioutil"
+	"io/ioutil"
 	"strings"
 
 	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
@@ -22,7 +22,7 @@ func openFile(path string) (data []byte, err error) {
 }
 
 func parse(path string) (*sections, error) {
-	result := &sections{map[string]*section{}}
+	result := &sections{contains: map[string]*section{}}
 	buf, err := openFile(path)
 	if err != nil {
 		return &sections{}, err
@@ -35,7 +35,7 @@ func parse(path string) (*sections, error) {
 		return &sections{}, tcerr.NewTencentCloudSDKError(iniErr, msg, "")
 	}
 	currentSectionName := globalSectionName
-	currentSection := &section{make(map[string]*value)}
+	currentSection := &section{content: make(map[string]*value)}
 	for i, line := range lines {
 		line = strings.Replace(line, "\r", "", -1)
 		line = strings.TrimSpace(line)
@@ -58,7 +58,7 @@ func parse(path string) (*sections, error) {
 				result.contains[currentSectionName] = currentSection
 				// new section
 				currentSectionName = tempSection
-				currentSection = &section{make(map[string]*value, 0)}
+				currentSection = &section{content: make(map[string]*value, 0)}
 				continue
 			} else {
 				msg := fmt.Sprintf("INI file %s lien %d is not valid: wrong section", path, i)
