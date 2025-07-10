@@ -1,88 +1,10 @@
-# Release v1.0.1203
+# Release v1.0.1204
 
-## 批量计算(batch) 版本：2017-03-12
+## 弹性 MapReduce(emr) 版本：2019-01-03
 
-### 第 59 次发布
+### 第 116 次发布
 
-发布时间：2025-07-08 01:09:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [InternetAccessible](https://cloud.tencent.com/document/api/599/15912#InternetAccessible)
-
-	* 新增成员：InternetServiceProvider, IPv4AddressType, IPv6AddressType, AntiDDoSPackageId
-
-
-
-
-## 云防火墙(cfw) 版本：2019-09-04
-
-### 第 83 次发布
-
-发布时间：2025-07-08 01:14:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeLogStorageStatistic](https://cloud.tencent.com/document/api/1132/120865)
-
-新增数据结构：
-
-* [IntArray](https://cloud.tencent.com/document/api/1132/49071#IntArray)
-* [StorageHistogram](https://cloud.tencent.com/document/api/1132/49071#StorageHistogram)
-* [StorageHistogramShow](https://cloud.tencent.com/document/api/1132/49071#StorageHistogramShow)
-
-
-
-## 云安全一体化平台(csip) 版本：2022-11-21
-
-### 第 57 次发布
-
-发布时间：2025-07-09 01:16:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateAccessKeyCheckTask](https://cloud.tencent.com/document/api/664/120916)
-* [CreateAccessKeySyncTask](https://cloud.tencent.com/document/api/664/120915)
-* [DescribeAbnormalCallRecord](https://cloud.tencent.com/document/api/664/120914)
-* [DescribeAccessKeyAlarm](https://cloud.tencent.com/document/api/664/120913)
-* [DescribeAccessKeyAlarmDetail](https://cloud.tencent.com/document/api/664/120912)
-* [DescribeAccessKeyRisk](https://cloud.tencent.com/document/api/664/120911)
-* [DescribeAccessKeyRiskDetail](https://cloud.tencent.com/document/api/664/120910)
-* [DescribeAccessKeyUserDetail](https://cloud.tencent.com/document/api/664/120909)
-* [DescribeAccessKeyUserList](https://cloud.tencent.com/document/api/664/120908)
-* [DescribeRiskCallRecord](https://cloud.tencent.com/document/api/664/120907)
-* [DescribeUserCallRecord](https://cloud.tencent.com/document/api/664/120906)
-* [UpdateAccessKeyAlarmStatus](https://cloud.tencent.com/document/api/664/120905)
-* [UpdateAccessKeyRemark](https://cloud.tencent.com/document/api/664/120904)
-
-新增数据结构：
-
-* [AccessKeyAlarm](https://cloud.tencent.com/document/api/664/90825#AccessKeyAlarm)
-* [AccessKeyAlarmCount](https://cloud.tencent.com/document/api/664/90825#AccessKeyAlarmCount)
-* [AccessKeyRisk](https://cloud.tencent.com/document/api/664/90825#AccessKeyRisk)
-* [AccessKeyUser](https://cloud.tencent.com/document/api/664/90825#AccessKeyUser)
-* [RiskCallRecord](https://cloud.tencent.com/document/api/664/90825#RiskCallRecord)
-* [UserCallRecord](https://cloud.tencent.com/document/api/664/90825#UserCallRecord)
-
-
-
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 150 次发布
-
-发布时间：2025-07-08 01:18:22
+发布时间：2025-07-10 01:45:01
 
 本次发布包含了以下内容：
 
@@ -90,41 +12,33 @@
 
 修改接口：
 
-* [DescribeVulInfoCvss](https://cloud.tencent.com/document/api/296/60898)
+* [CreateSLInstance](https://cloud.tencent.com/document/api/589/110872)
 
-	* 新增入参：Source
+	* 新增入参：DeploymentMode
+
+* [DescribeSLInstance](https://cloud.tencent.com/document/api/589/110871)
+
+	* 新增出参：SLInstance
 
 
+新增数据结构：
 
-
-## Elasticsearch Service(es) 版本：2025-01-01
-
-### 第 6 次发布
-
-发布时间：2025-07-09 01:25:15
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [SLInstance](https://cloud.tencent.com/document/api/589/33981#SLInstance)
 
 修改数据结构：
 
-* [Document](https://cloud.tencent.com/document/api/845/117811#Document)
+* [SLInstanceInfo](https://cloud.tencent.com/document/api/589/33981#SLInstanceInfo)
 
-	* 新增成员：FileStartPageNumber, FileEndPageNumber
-
-
-
-
-## Elasticsearch Service(es) 版本：2018-04-16
+	* 新增成员：DeployRole
 
 
 
-## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 234 次发布
+## 腾讯云智能体开发平台(lke) 版本：2023-11-30
 
-发布时间：2025-07-09 01:25:21
+### 第 53 次发布
+
+发布时间：2025-07-10 02:04:34
 
 本次发布包含了以下内容：
 
@@ -132,57 +46,104 @@
 
 修改接口：
 
-* [CreateOrganizationAuthUrl](https://cloud.tencent.com/document/api/1323/105134)
+* [CreateRelease](https://cloud.tencent.com/document/api/1759/105079)
 
-	* 新增入参：UserData
+	* 新增入参：ChannelBizIds
 
+* [DescribeApp](https://cloud.tencent.com/document/api/1759/105072)
 
+	* 新增出参：AgentType
 
+* [GetVarList](https://cloud.tencent.com/document/api/1759/116687)
 
-## 实时互动-教育版(lcic) 版本：2022-08-17
+	* 新增入参：NeedInternalVar
 
-### 第 74 次发布
-
-发布时间：2025-07-09 01:31:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeUserDetail](https://cloud.tencent.com/document/api/1639/120917)
-
-
-
-## 云直播CSS(live) 版本：2018-08-01
-
-### 第 151 次发布
-
-发布时间：2025-07-08 01:34:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
 
 新增数据结构：
 
-* [ChildTemplateInfo](https://cloud.tencent.com/document/api/267/20474#ChildTemplateInfo)
+* [AgentKnowledge](https://cloud.tencent.com/document/api/1759/105104#AgentKnowledge)
+* [BackgroundImageConfig](https://cloud.tencent.com/document/api/1759/105104#BackgroundImageConfig)
 
 修改数据结构：
 
-* [TemplateInfo](https://cloud.tencent.com/document/api/267/20474#TemplateInfo)
+* [AgentKnowledgeFilter](https://cloud.tencent.com/document/api/1759/105104#AgentKnowledgeFilter)
 
-	* 新增成员：IsAdaptiveBitRate, AdaptiveChildren
+	* 新增成员：KnowledgeList, AllKnowledge
+
+* [AgentModelInfo](https://cloud.tencent.com/document/api/1759/105104#AgentModelInfo)
+
+	* 新增成员：MaxReasoningRound
+
+* [DocSegment](https://cloud.tencent.com/document/api/1759/105104#DocSegment)
+
+	* 新增成员：PageInfos
+
+* [KnowledgeQaConfig](https://cloud.tencent.com/document/api/1759/105104#KnowledgeQaConfig)
+
+	* 新增成员：BackgroundImage, OpeningQuestions
+
+* [ListDocItem](https://cloud.tencent.com/document/api/1759/105104#ListDocItem)
+
+	* 新增成员：StaffName
+
+* [ListQaItem](https://cloud.tencent.com/document/api/1759/105104#ListQaItem)
+
+	* 新增成员：StaffName
 
 
 
 
-## 文字识别(ocr) 版本：2018-11-19
+## 医疗报告结构化(mrs) 版本：2020-09-10
 
-### 第 201 次发布
+### 第 36 次发布
 
-发布时间：2025-07-09 01:37:21
+发布时间：2025-07-10 02:12:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [IndicatorItem](https://cloud.tencent.com/document/api/1314/56230#IndicatorItem)
+
+	* 新增成员：Method
+
+
+
+
+## NLP 技术(nlp) 版本：2019-04-08
+
+### 第 24 次发布
+
+发布时间：2025-07-10 02:12:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ComposePoetry
+* EvaluateWordSimilarity
+* GenerateKeywordSentence
+* RetrieveSimilarWords
+* TextEmbellish
+* TextWriting
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* Embellish
+* KeywordSentence
+* Writing
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 152 次发布
+
+发布时间：2025-07-10 02:31:01
 
 本次发布包含了以下内容：
 
@@ -190,43 +151,18 @@
 
 修改接口：
 
-* [BizLicenseOCR](https://cloud.tencent.com/document/api/866/36215)
+* [DescribeNamespaceBundlesOpt](https://cloud.tencent.com/document/api/1179/59039)
 
-	* 新增入参：EnableBusinessCertificate
-
-	* 新增出参：BusinessCertificate
-
-
-新增数据结构：
-
-* [BusinessCertificateInfo](https://cloud.tencent.com/document/api/866/33527#BusinessCertificateInfo)
-
-
-
-## 邮件推送(ses) 版本：2020-10-02
-
-### 第 32 次发布
-
-发布时间：2025-07-08 01:43:38
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [SendEmailStatus](https://cloud.tencent.com/document/api/1288/51053#SendEmailStatus)
-
-	* 新增成员：UserComplained
+	* 新增入参：Tenant
 
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-09-01
+## TI-ONE 训练平台(tione) 版本：2021-11-11
 
-### 第 108 次发布
+### 第 86 次发布
 
-发布时间：2025-07-09 01:46:46
+发布时间：2025-07-10 02:35:49
 
 本次发布包含了以下内容：
 
@@ -234,50 +170,42 @@
 
 新增数据结构：
 
-* [AllowActionParameters](https://cloud.tencent.com/document/api/1552/80721#AllowActionParameters)
-* [BotManagement](https://cloud.tencent.com/document/api/1552/80721#BotManagement)
-* [ClientAttestationRule](https://cloud.tencent.com/document/api/1552/80721#ClientAttestationRule)
-* [ClientAttestationRules](https://cloud.tencent.com/document/api/1552/80721#ClientAttestationRules)
-* [DeviceProfile](https://cloud.tencent.com/document/api/1552/80721#DeviceProfile)
+* [PublicDataSourceFS](https://cloud.tencent.com/document/api/851/75051#PublicDataSourceFS)
 
 修改数据结构：
 
-* [IPGroup](https://cloud.tencent.com/document/api/1552/80721#IPGroup)
+* [ModelInfo](https://cloud.tencent.com/document/api/851/75051#ModelInfo)
 
-	* 新增成员：IPTotalCount
-
-* [SecurityAction](https://cloud.tencent.com/document/api/1552/80721#SecurityAction)
-
-	* 新增成员：AllowActionParameters
-
-* [SecurityPolicy](https://cloud.tencent.com/document/api/1552/80721#SecurityPolicy)
-
-	* 新增成员：BotManagement
+	* 新增成员：PublicDataSource
 
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-01-06
+## TI-ONE 训练平台(tione) 版本：2019-10-22
 
 
 
-## 容器服务(tke) 版本：2022-05-01
+## TSF-应用管理&Consul(tsf) 版本：2018-03-26
 
-### 第 13 次发布
+### 第 127 次发布
 
-发布时间：2025-07-09 01:49:06
+发布时间：2025-07-10 02:42:56
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [SetMachineLogin](https://cloud.tencent.com/document/api/457/120918)
+* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
 
 
+修改数据结构：
 
-## 容器服务(tke) 版本：2018-05-25
+* [ImageRepository](https://cloud.tencent.com/document/api/649/36099#ImageRepository)
+
+* [ThreadPicture](https://cloud.tencent.com/document/api/649/36099#ThreadPicture)
+
 
 
 

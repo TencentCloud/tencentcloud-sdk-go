@@ -1271,7 +1271,7 @@ func NewCreateFreeCloudStorageResponse() (response *CreateFreeCloudStorageRespon
 }
 
 // CreateFreeCloudStorage
-// 开通免费云存服务
+// 开通云存卡服务
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1282,7 +1282,7 @@ func (c *Client) CreateFreeCloudStorage(request *CreateFreeCloudStorageRequest) 
 }
 
 // CreateFreeCloudStorage
-// 开通免费云存服务
+// 开通云存卡服务
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

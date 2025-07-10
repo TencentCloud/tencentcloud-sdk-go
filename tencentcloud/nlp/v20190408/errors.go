@@ -17,9 +17,6 @@ package v20190408
 const (
 	// 此产品的特有错误码
 
-	// 操作失败。
-	FAILEDOPERATION = "FailedOperation"
-
 	// 余额不足，开通失败，请充值后再开通。
 	FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
 
@@ -28,9 +25,6 @@ const (
 
 	// 暂无春联生成，请更换关键词重试。
 	FAILEDOPERATION_NOCOUPLETS = "FailedOperation.NoCouplets"
-
-	// 暂无诗词生成，请更换关键词重试。
-	FAILEDOPERATION_NOPOETRY = "FailedOperation.NoPoetry"
 
 	// 暂无结果，请更换文本重试。
 	FAILEDOPERATION_NORESULTS = "FailedOperation.NoResults"
@@ -68,20 +62,11 @@ const (
 	// 文本解析异常。
 	INTERNALERROR_TEXTPARSINGERROR = "InternalError.TextParsingError"
 
-	// 服务调用失败。
-	INVALIDPARAMETER_SERVICEERROR = "InvalidParameter.ServiceError"
-
 	// 文本长度超过限制。
 	INVALIDPARAMETER_TEXTTOOLONGCODE = "InvalidParameter.TextTooLongCode"
 
-	// Genre非法，请参考Genre参数说明。
-	INVALIDPARAMETERVALUE_GENRE = "InvalidParameterValue.Genre"
-
 	// 参数不合法。
 	INVALIDPARAMETERVALUE_INVALIDPARAMETER = "InvalidParameterValue.InvalidParameter"
-
-	// PoetryType非法，请参考PoetryType参数说明。
-	INVALIDPARAMETERVALUE_POETRYTYPE = "InvalidParameterValue.PoetryType"
 
 	// Text输入含有敏感信息。
 	INVALIDPARAMETERVALUE_SENSITIVETEXT = "InvalidParameterValue.SensitiveText"
@@ -110,9 +95,6 @@ const (
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
-	// 资源不可用。
-	RESOURCEUNAVAILABLE = "ResourceUnavailable"
-
 	// 账号已被冻结。
 	RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
 
@@ -127,9 +109,6 @@ const (
 
 	// 资源已被回收。
 	RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
-
-	// 您的账号尚未开通NLP服务，请登录腾讯云NLP控制台进行服务开通后再使用
-	RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 
 	// 账号已停服。
 	RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"

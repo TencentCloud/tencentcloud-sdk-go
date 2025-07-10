@@ -2426,6 +2426,9 @@ type IndicatorItem struct {
 
 	// 标本
 	Sample *string `json:"Sample,omitnil,omitempty" name:"Sample"`
+
+	// 检测方法
+	Method *string `json:"Method,omitnil,omitempty" name:"Method"`
 }
 
 type IndicatorItemV2 struct {

@@ -5942,6 +5942,9 @@ type DescribeNamespaceBundlesOptRequestParams struct {
 
 	// bundle 所属的 broker IP 地址，支持模糊查询
 	OwnerBroker *string `json:"OwnerBroker,omitnil,omitempty" name:"OwnerBroker"`
+
+	// 租户(如果没有自定义租户名称，和 tenantId 相同；如果有配置自定义租户名称，则为自定义租户名 user_tenant)
+	Tenant *string `json:"Tenant,omitnil,omitempty" name:"Tenant"`
 }
 
 type DescribeNamespaceBundlesOptRequest struct {
@@ -5970,6 +5973,9 @@ type DescribeNamespaceBundlesOptRequest struct {
 
 	// bundle 所属的 broker IP 地址，支持模糊查询
 	OwnerBroker *string `json:"OwnerBroker,omitnil,omitempty" name:"OwnerBroker"`
+
+	// 租户(如果没有自定义租户名称，和 tenantId 相同；如果有配置自定义租户名称，则为自定义租户名 user_tenant)
+	Tenant *string `json:"Tenant,omitnil,omitempty" name:"Tenant"`
 }
 
 func (r *DescribeNamespaceBundlesOptRequest) ToJsonString() string {
@@ -5992,6 +5998,7 @@ func (r *DescribeNamespaceBundlesOptRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Bundle")
 	delete(f, "OwnerBroker")
+	delete(f, "Tenant")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNamespaceBundlesOptRequest has unknown keys!", "")
 	}

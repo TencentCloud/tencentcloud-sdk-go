@@ -106,6 +106,30 @@ type AgentInputUserInputValue struct {
 	Values []*string `json:"Values,omitnil,omitempty" name:"Values"`
 }
 
+type AgentKnowledge struct {
+	// 知识库id
+	KnowledgeBizId *string `json:"KnowledgeBizId,omitnil,omitempty" name:"KnowledgeBizId"`
+
+	// 0-应用内知识库
+	// 1-共享知识库
+	KnowledgeType *int64 `json:"KnowledgeType,omitnil,omitempty" name:"KnowledgeType"`
+
+	// 0-全部知识
+	// 1-按文档和问答
+	// 2-按标签
+	Filter *int64 `json:"Filter,omitnil,omitempty" name:"Filter"`
+
+	// 文档id
+	DocBizIds []*string `json:"DocBizIds,omitnil,omitempty" name:"DocBizIds"`
+
+	// true:包含所有问答
+	// false:不包含问答
+	AllQa *bool `json:"AllQa,omitnil,omitempty" name:"AllQa"`
+
+	// 文档标签过滤器
+	Tag *AgentKnowledgeFilterTag `json:"Tag,omitnil,omitempty" name:"Tag"`
+}
+
 type AgentKnowledgeAttrLabel struct {
 	// 属性ID
 	AttributeBizId *string `json:"AttributeBizId,omitnil,omitempty" name:"AttributeBizId"`
@@ -123,6 +147,12 @@ type AgentKnowledgeFilter struct {
 
 	// 标签过滤器
 	Tag *AgentKnowledgeFilterTag `json:"Tag,omitnil,omitempty" name:"Tag"`
+
+	// 知识库列表
+	KnowledgeList []*AgentKnowledge `json:"KnowledgeList,omitnil,omitempty" name:"KnowledgeList"`
+
+	// 是否检索全部知识
+	AllKnowledge *bool `json:"AllKnowledge,omitnil,omitempty" name:"AllKnowledge"`
 }
 
 type AgentKnowledgeFilterDocAndAnswer struct {
@@ -184,6 +214,9 @@ type AgentModelInfo struct {
 
 	// 指令长度字符限制
 	InstructionsWordsLimit *uint64 `json:"InstructionsWordsLimit,omitnil,omitempty" name:"InstructionsWordsLimit"`
+
+	// 单次会话最大推理轮数
+	MaxReasoningRound *uint64 `json:"MaxReasoningRound,omitnil,omitempty" name:"MaxReasoningRound"`
 }
 
 type AgentPluginHeader struct {
@@ -728,6 +761,23 @@ type AttributeLabelRefByWorkflow struct {
 
 	// 标签值引用的工作流列表
 	WorkflowList []*WorkflowRef `json:"WorkflowList,omitnil,omitempty" name:"WorkflowList"`
+}
+
+type BackgroundImageConfig struct {
+	// 横图(pc)
+	LandscapeImageUrl *string `json:"LandscapeImageUrl,omitnil,omitempty" name:"LandscapeImageUrl"`
+
+	// 原始图
+	OriginalImageUrl *string `json:"OriginalImageUrl,omitnil,omitempty" name:"OriginalImageUrl"`
+
+	// 长图(手机)
+	PortraitImageUrl *string `json:"PortraitImageUrl,omitnil,omitempty" name:"PortraitImageUrl"`
+
+	// 主题色
+	ThemeColor *string `json:"ThemeColor,omitnil,omitempty" name:"ThemeColor"`
+
+	// 亮度值
+	Brightness *int64 `json:"Brightness,omitnil,omitempty" name:"Brightness"`
 }
 
 type BaseConfig struct {
@@ -1849,6 +1899,9 @@ type CreateReleaseRequestParams struct {
 
 	// 发布描述
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 渠道业务ID
+	ChannelBizIds []*string `json:"ChannelBizIds,omitnil,omitempty" name:"ChannelBizIds"`
 }
 
 type CreateReleaseRequest struct {
@@ -1859,6 +1912,9 @@ type CreateReleaseRequest struct {
 
 	// 发布描述
 	Desc *string `json:"Desc,omitnil,omitempty" name:"Desc"`
+
+	// 渠道业务ID
+	ChannelBizIds []*string `json:"ChannelBizIds,omitnil,omitempty" name:"ChannelBizIds"`
 }
 
 func (r *CreateReleaseRequest) ToJsonString() string {
@@ -1875,6 +1931,7 @@ func (r *CreateReleaseRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BotBizId")
 	delete(f, "Desc")
+	delete(f, "ChannelBizIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateReleaseRequest has unknown keys!", "")
 	}
@@ -2964,6 +3021,9 @@ type DescribeAppResponseParams struct {
 
 	// 应用是否在复制中
 	IsCopying *bool `json:"IsCopying,omitnil,omitempty" name:"IsCopying"`
+
+	// 智能体类型 dialogue 对话式智能体，wechat 公众号智能体
+	AgentType *string `json:"AgentType,omitnil,omitempty" name:"AgentType"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -5022,6 +5082,9 @@ type DocSegment struct {
 
 	// 文档的自定义链接
 	WebUrl *string `json:"WebUrl,omitnil,omitempty" name:"WebUrl"`
+
+	// 页码信息
+	PageInfos []*uint64 `json:"PageInfos,omitnil,omitempty" name:"PageInfos"`
 }
 
 type DocumentElement struct {
@@ -6254,6 +6317,9 @@ type GetVarListRequestParams struct {
 
 	// 按变量类型过滤，默认查询所有类型(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO)
 	VarType *string `json:"VarType,omitnil,omitempty" name:"VarType"`
+
+	// 是否需要内部变量(默认false)
+	NeedInternalVar *bool `json:"NeedInternalVar,omitnil,omitempty" name:"NeedInternalVar"`
 }
 
 type GetVarListRequest struct {
@@ -6276,6 +6342,9 @@ type GetVarListRequest struct {
 
 	// 按变量类型过滤，默认查询所有类型(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO)
 	VarType *string `json:"VarType,omitnil,omitempty" name:"VarType"`
+
+	// 是否需要内部变量(默认false)
+	NeedInternalVar *bool `json:"NeedInternalVar,omitnil,omitempty" name:"NeedInternalVar"`
 }
 
 func (r *GetVarListRequest) ToJsonString() string {
@@ -6296,6 +6365,7 @@ func (r *GetVarListRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "VarType")
+	delete(f, "NeedInternalVar")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetVarListRequest has unknown keys!", "")
 	}
@@ -6930,6 +7000,14 @@ type KnowledgeQaConfig struct {
 
 	// 共享知识库关联配置
 	ShareKnowledgeBases []*ShareKnowledgeBase `json:"ShareKnowledgeBases,omitnil,omitempty" name:"ShareKnowledgeBases"`
+
+	// 背景图相关信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackgroundImage *BackgroundImageConfig `json:"BackgroundImage,omitnil,omitempty" name:"BackgroundImage"`
+
+	// 开场问题
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpeningQuestions []*string `json:"OpeningQuestions,omitnil,omitempty" name:"OpeningQuestions"`
 }
 
 type KnowledgeQaOutput struct {
@@ -7620,6 +7698,9 @@ type ListDocItem struct {
 
 	// false:未停用，ture:已停用
 	IsDisabled *bool `json:"IsDisabled,omitnil,omitempty" name:"IsDisabled"`
+
+	// 员工名称
+	StaffName *string `json:"StaffName,omitnil,omitempty" name:"StaffName"`
 }
 
 // Predefined struct for user
@@ -8120,6 +8201,9 @@ type ListQaItem struct {
 
 	// 问答是否停用，false:未停用，ture:已停用
 	IsDisabled *bool `json:"IsDisabled,omitnil,omitempty" name:"IsDisabled"`
+
+	// 员工名称
+	StaffName *string `json:"StaffName,omitnil,omitempty" name:"StaffName"`
 }
 
 // Predefined struct for user
@@ -9464,7 +9548,7 @@ type ModifyAppRequestParams struct {
 	// 应用 ID
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
-	// 应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classifys-知识标签提取
+	// 应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classify-知识标签提取
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 
 	// 应用基础配置
@@ -9483,7 +9567,7 @@ type ModifyAppRequest struct {
 	// 应用 ID
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
 
-	// 应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classifys-知识标签提取
+	// 应用类型；knowledge_qa-知识问答管理；summary-知识摘要；classify-知识标签提取
 	AppType *string `json:"AppType,omitnil,omitempty" name:"AppType"`
 
 	// 应用基础配置

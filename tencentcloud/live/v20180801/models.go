@@ -2858,7 +2858,7 @@ type CreateLivePullStreamTaskRequestParams struct {
 	// 2. 该自定义 ID 用于防止重复发起请求时产生重复任务。后面也可以用 SpecifyTaskId 来修改或删除任务。
 	SpecifyTaskId *string `json:"SpecifyTaskId,omitnil,omitempty" name:"SpecifyTaskId"`
 
-	// 任务描述，限制 512 字节。
+	// 任务描述，限制 512 字节。不可以使用特殊字符，如Unicode的特殊字符集。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
 	// 完整目标 URL 地址。
@@ -3018,7 +3018,7 @@ type CreateLivePullStreamTaskRequest struct {
 	// 2. 该自定义 ID 用于防止重复发起请求时产生重复任务。后面也可以用 SpecifyTaskId 来修改或删除任务。
 	SpecifyTaskId *string `json:"SpecifyTaskId,omitnil,omitempty" name:"SpecifyTaskId"`
 
-	// 任务描述，限制 512 字节。
+	// 任务描述，限制 512 字节。不可以使用特殊字符，如Unicode的特殊字符集。
 	Comment *string `json:"Comment,omitnil,omitempty" name:"Comment"`
 
 	// 完整目标 URL 地址。

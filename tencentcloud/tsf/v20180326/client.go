@@ -877,6 +877,7 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE_CLUSTERCIDRCONFLICT = "InvalidParameterValue.ClusterCidrConflict"
 //  INVALIDPARAMETERVALUE_CLUSTERNAMEEXIST = "InvalidParameterValue.ClusterNameExist"
+//  INVALIDPARAMETERVALUE_CLUSTERNAMEPREFIXILLEGALERROR = "InvalidParameterValue.ClusterNamePrefixIllegalError"
 //  INVALIDPARAMETERVALUE_CLUSTERNAMEREQUIRED = "InvalidParameterValue.ClusterNameRequired"
 //  INVALIDPARAMETERVALUE_CLUSTERREGIONINVALID = "InvalidParameterValue.ClusterRegionInvalid"
 //  INVALIDPARAMETERVALUE_CLUSTERTYPEINVALID = "InvalidParameterValue.ClusterTypeInvalid"
@@ -908,6 +909,7 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE_CLUSTERCIDRCONFLICT = "InvalidParameterValue.ClusterCidrConflict"
 //  INVALIDPARAMETERVALUE_CLUSTERNAMEEXIST = "InvalidParameterValue.ClusterNameExist"
+//  INVALIDPARAMETERVALUE_CLUSTERNAMEPREFIXILLEGALERROR = "InvalidParameterValue.ClusterNamePrefixIllegalError"
 //  INVALIDPARAMETERVALUE_CLUSTERNAMEREQUIRED = "InvalidParameterValue.ClusterNameRequired"
 //  INVALIDPARAMETERVALUE_CLUSTERREGIONINVALID = "InvalidParameterValue.ClusterRegionInvalid"
 //  INVALIDPARAMETERVALUE_CLUSTERTYPEINVALID = "InvalidParameterValue.ClusterTypeInvalid"
@@ -2915,6 +2917,7 @@ func NewDeleteClusterResponse() (response *DeleteClusterResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
+//  FAILEDOPERATION_CLUSTEROPERATEENVILLEGALERROR = "FailedOperation.ClusterOperateEnvIllegalError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESTKECLUSTERABNORMAL = "FailedOperation.ContainergroupKubernetesTkeClusterAbnormal"
 //  FAILEDOPERATION_CPCLUSTERUNAVAILABLE = "FailedOperation.CpClusterUnavailable"
 //  FAILEDOPERATION_TKECLUSTERDELETEFAILED = "FailedOperation.TkeClusterDeleteFailed"
@@ -2940,6 +2943,7 @@ func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteC
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
+//  FAILEDOPERATION_CLUSTEROPERATEENVILLEGALERROR = "FailedOperation.ClusterOperateEnvIllegalError"
 //  FAILEDOPERATION_CONTAINERGROUPKUBERNETESTKECLUSTERABNORMAL = "FailedOperation.ContainergroupKubernetesTkeClusterAbnormal"
 //  FAILEDOPERATION_CPCLUSTERUNAVAILABLE = "FailedOperation.CpClusterUnavailable"
 //  FAILEDOPERATION_TKECLUSTERDELETEFAILED = "FailedOperation.TkeClusterDeleteFailed"
@@ -13234,6 +13238,7 @@ func NewRemoveInstancesResponse() (response *RemoveInstancesResponse) {
 // 从 TSF 集群中批量移除云主机节点
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTEROPERATEENVILLEGALERROR = "FailedOperation.ClusterOperateEnvIllegalError"
 //  FAILEDOPERATION_INSTANCEDELETEFAILED = "FailedOperation.InstanceDeleteFailed"
 //  INTERNALERROR_TKEAPIFAILEDOPERATION = "InternalError.TkeApiFailedOperation"
 //  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTBUSY = "InvalidParameterValue.CvmCaeMasterAgentBusy"
@@ -13248,6 +13253,7 @@ func (c *Client) RemoveInstances(request *RemoveInstancesRequest) (response *Rem
 // 从 TSF 集群中批量移除云主机节点
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTEROPERATEENVILLEGALERROR = "FailedOperation.ClusterOperateEnvIllegalError"
 //  FAILEDOPERATION_INSTANCEDELETEFAILED = "FailedOperation.InstanceDeleteFailed"
 //  INTERNALERROR_TKEAPIFAILEDOPERATION = "InternalError.TkeApiFailedOperation"
 //  INVALIDPARAMETERVALUE_CVMCAEMASTERAGENTBUSY = "InvalidParameterValue.CvmCaeMasterAgentBusy"

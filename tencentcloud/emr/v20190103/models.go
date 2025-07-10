@@ -2106,10 +2106,10 @@ type CreateSLInstanceRequestParams struct {
 	// 实例名称。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例计费模式，0表示后付费，即按量计费。
+	// 实例计费模式，0表示后付费，即按量计费，1表示预付费，即包年包月。
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 实例存储类型，填写CLOUD_HSSD，表示性能云存储。
+	// 实例存储类型，CLOUD_HSSD表示性能云存储， CLOUD_BSSD表示标准云存储。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// 实例单节点磁盘容量，单位GB，单节点磁盘容量需大于等于100，小于等于250*CPU核心数，容量调整步长为100。
@@ -2129,6 +2129,9 @@ type CreateSLInstanceRequestParams struct {
 
 	// 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808	
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 部署模式
+	DeploymentMode *string `json:"DeploymentMode,omitnil,omitempty" name:"DeploymentMode"`
 }
 
 type CreateSLInstanceRequest struct {
@@ -2137,10 +2140,10 @@ type CreateSLInstanceRequest struct {
 	// 实例名称。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
-	// 实例计费模式，0表示后付费，即按量计费。
+	// 实例计费模式，0表示后付费，即按量计费，1表示预付费，即包年包月。
 	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
 
-	// 实例存储类型，填写CLOUD_HSSD，表示性能云存储。
+	// 实例存储类型，CLOUD_HSSD表示性能云存储， CLOUD_BSSD表示标准云存储。
 	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
 
 	// 实例单节点磁盘容量，单位GB，单节点磁盘容量需大于等于100，小于等于250*CPU核心数，容量调整步长为100。
@@ -2160,6 +2163,9 @@ type CreateSLInstanceRequest struct {
 
 	// 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808	
 	ClientToken *string `json:"ClientToken,omitnil,omitempty" name:"ClientToken"`
+
+	// 部署模式
+	DeploymentMode *string `json:"DeploymentMode,omitnil,omitempty" name:"DeploymentMode"`
 }
 
 func (r *CreateSLInstanceRequest) ToJsonString() string {
@@ -2183,6 +2189,7 @@ func (r *CreateSLInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "PrePaySetting")
 	delete(f, "ClientToken")
+	delete(f, "DeploymentMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSLInstanceRequest has unknown keys!", "")
 	}
@@ -5473,6 +5480,9 @@ type DescribeSLInstanceResponseParams struct {
 
 	// 实例节点总数。
 	NodeNum *int64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
+
+	// Serverless Instance infomation
+	SLInstance []*SLInstance `json:"SLInstance,omitnil,omitempty" name:"SLInstance"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -11435,6 +11445,62 @@ func (r *RunJobFlowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SLInstance struct {
+	// EMR Instance Id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// EMR Numeric Instance Id
+	ClusterId *int64 `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
+
+	// Instance Name
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// Region id
+	RegionId *int64 `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// Zone Name
+	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// Pay Mode
+	PayMode *int64 `json:"PayMode,omitnil,omitempty" name:"PayMode"`
+
+	// Disk Type
+	DiskType *string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+
+	// Disk Size
+	DiskSize *int64 `json:"DiskSize,omitnil,omitempty" name:"DiskSize"`
+
+	// Node Type
+	NodeType *string `json:"NodeType,omitnil,omitempty" name:"NodeType"`
+
+	// Node Number
+	NodeNum *int64 `json:"NodeNum,omitnil,omitempty" name:"NodeNum"`
+
+	// Expire Time
+	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// Isolate Time
+	IsolateTime *string `json:"IsolateTime,omitnil,omitempty" name:"IsolateTime"`
+
+	// Create Time
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// Auto Renew Flag
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+
+	// EMR Numeric Instance Status
+	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// Zone Setting
+	ZoneSettings []*ZoneSetting `json:"ZoneSettings,omitnil,omitempty" name:"ZoneSettings"`
+
+	// Bound Tags
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// Deploy Role
+	DeployRole *string `json:"DeployRole,omitnil,omitempty" name:"DeployRole"`
+}
+
 type SLInstanceInfo struct {
 	// 集群实例字符串ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
@@ -11494,6 +11560,9 @@ type SLInstanceInfo struct {
 
 	// 过期时间，后付费返回0000-00-00 00:00:00
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
+
+	// 主备部署角色
+	DeployRole *string `json:"DeployRole,omitnil,omitempty" name:"DeployRole"`
 }
 
 // Predefined struct for user

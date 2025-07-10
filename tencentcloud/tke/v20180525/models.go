@@ -4062,7 +4062,7 @@ type CreateReservedInstancesRequestParams struct {
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 
-	// 预留券名称。
+	// 预留券名称，名称不得超过60个字符。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
@@ -4081,7 +4081,7 @@ type CreateReservedInstancesRequest struct {
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
 	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil,omitempty" name:"InstanceChargePrepaid"`
 
-	// 预留券名称。
+	// 预留券名称，名称不得超过60个字符。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
@@ -6125,14 +6125,14 @@ func (r *DeletePrometheusTemplateSyncResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteReservedInstancesRequestParams struct {
-	// 预留券实例ID。
+	// 预留券实例ID。可通过 [DescribeReservedInstances](https://cloud.tencent.com/document/product/457/99162) 接口返回值中的ReservedInstanceId获取。
 	ReservedInstanceIds []*string `json:"ReservedInstanceIds,omitnil,omitempty" name:"ReservedInstanceIds"`
 }
 
 type DeleteReservedInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 预留券实例ID。
+	// 预留券实例ID。可通过 [DescribeReservedInstances](https://cloud.tencent.com/document/product/457/99162) 接口返回值中的ReservedInstanceId获取。
 	ReservedInstanceIds []*string `json:"ReservedInstanceIds,omitnil,omitempty" name:"ReservedInstanceIds"`
 }
 
@@ -10478,7 +10478,7 @@ func (r *DescribeOpenPolicyListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePodChargeInfoRequestParams struct {
-	// 集群ID
+	// 集群 ID。TKE 集群可通过 [DescribeClusters](https://cloud.tencent.com/document/api/457/31862) 接口返回值中的ClusterId获取。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 命名空间
@@ -10487,14 +10487,14 @@ type DescribePodChargeInfoRequestParams struct {
 	// Pod名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// Pod的Uid
+	// Pod的Uid，可以通过Uids 来批量查询，也可以通过 Namespace 和 Name 来查询某个 Pod 的计费信息。Uids 不传时，Namespace 和 Name 必须同时传。
 	Uids []*string `json:"Uids,omitnil,omitempty" name:"Uids"`
 }
 
 type DescribePodChargeInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 集群 ID。TKE 集群可通过 [DescribeClusters](https://cloud.tencent.com/document/api/457/31862) 接口返回值中的ClusterId获取。
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 命名空间
@@ -10503,7 +10503,7 @@ type DescribePodChargeInfoRequest struct {
 	// Pod名称
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
-	// Pod的Uid
+	// Pod的Uid，可以通过Uids 来批量查询，也可以通过 Namespace 和 Name 来查询某个 Pod 的计费信息。Uids 不传时，Namespace 和 Name 必须同时传。
 	Uids []*string `json:"Uids,omitnil,omitempty" name:"Uids"`
 }
 
@@ -10562,7 +10562,7 @@ type DescribePodDeductionRateRequestParams struct {
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	//  节点名称
+	// 节点 ID
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 }
 
@@ -10575,7 +10575,7 @@ type DescribePodDeductionRateRequest struct {
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	//  节点名称
+	// 节点 ID
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 }
 
@@ -10630,10 +10630,10 @@ type DescribePodsBySpecRequestParams struct {
 	// 核数
 	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 内存
+	// 内存，单位：GiB
 	Memory *float64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 卡数，有0.25、0.5、1、2、4等
+	// 卡数，有0.25、0.5、1、2、4和8
 	GpuNum *string `json:"GpuNum,omitnil,omitempty" name:"GpuNum"`
 
 	// 可用区
@@ -10642,7 +10642,7 @@ type DescribePodsBySpecRequestParams struct {
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 节点名称
+	// 节点 ID
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
 	// 偏移量，默认0。
@@ -10672,10 +10672,10 @@ type DescribePodsBySpecRequest struct {
 	// 核数
 	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 内存
+	// 内存，单位：GiB
 	Memory *float64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 卡数，有0.25、0.5、1、2、4等
+	// 卡数，有0.25、0.5、1、2、4和8
 	GpuNum *string `json:"GpuNum,omitnil,omitempty" name:"GpuNum"`
 
 	// 可用区
@@ -10684,7 +10684,7 @@ type DescribePodsBySpecRequest struct {
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 节点名称
+	// 节点 ID
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
 	// 偏移量，默认0。
@@ -12438,7 +12438,7 @@ type DescribeReservedInstanceUtilizationRateRequestParams struct {
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	//  节点名称
+	// 节点 ID
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 }
 
@@ -12451,7 +12451,7 @@ type DescribeReservedInstanceUtilizationRateRequest struct {
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	//  节点名称
+	// 节点 ID
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 }
 
@@ -12516,7 +12516,7 @@ type DescribeReservedInstancesRequestParams struct {
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// status
-	// 按照**【状态**】进行过滤。状态：Creating、Active、Expired、Refunded。
+	// 按照**【状态**】进行过滤。状态：Creating：创建中、Active：生效中、Expired：已过期、Refunded：已退还。
 	// 类型：String
 	// 必选：否
 	// 
@@ -12591,7 +12591,7 @@ type DescribeReservedInstancesRequest struct {
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// status
-	// 按照**【状态**】进行过滤。状态：Creating、Active、Expired、Refunded。
+	// 按照**【状态**】进行过滤。状态：Creating：创建中、Active：生效中、Expired：已过期、Refunded：已退还。
 	// 类型：String
 	// 必选：否
 	// 
@@ -15397,7 +15397,7 @@ type InstanceAdvancedSettings struct {
 }
 
 type InstanceChargePrepaid struct {
-	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
+	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
 	Period *uint64 `json:"Period,omitnil,omitempty" name:"Period"`
 
 	// 自动续费标识。取值范围：
@@ -17512,7 +17512,7 @@ func (r *ModifyPrometheusTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyReservedInstanceScopeRequestParams struct {
-	// 预留券唯一 ID
+	// 预留券实例ID。可通过 [DescribeReservedInstances](https://cloud.tencent.com/document/product/457/99162) 接口返回值中的ReservedInstanceId获取。
 	ReservedInstanceIds []*string `json:"ReservedInstanceIds,omitnil,omitempty" name:"ReservedInstanceIds"`
 
 	// 预留券抵扣范围信息
@@ -17522,7 +17522,7 @@ type ModifyReservedInstanceScopeRequestParams struct {
 type ModifyReservedInstanceScopeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 预留券唯一 ID
+	// 预留券实例ID。可通过 [DescribeReservedInstances](https://cloud.tencent.com/document/product/457/99162) 接口返回值中的ReservedInstanceId获取。
 	ReservedInstanceIds []*string `json:"ReservedInstanceIds,omitnil,omitempty" name:"ReservedInstanceIds"`
 
 	// 预留券抵扣范围信息
@@ -17876,10 +17876,10 @@ type PodDeductionRate struct {
 	// Pod的 CPU
 	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// Pod 的内存
+	// Pod 的内存，单位：GiB
 	Memory *float64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	//  Pod 的类型
+	//  Pod 的类型， intel，amd，windows-common，windows-amd，sa4，sa5，s7，s8，t4，v100，l20，l40，a10\*gnv4，a10\*gnv4v，a10\*pnv4
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	//  Pod 的 GPU 卡数，Pod 类型为 GPU 时有效。
@@ -17924,7 +17924,7 @@ type PodNodeInfo struct {
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	//  节点名称
+	// 节点 ID
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
 	// 可用区
@@ -18698,7 +18698,7 @@ type RIUtilizationDetail struct {
 	// Pod的命名空间
 	Namespace *string `json:"Namespace,omitnil,omitempty" name:"Namespace"`
 
-	// 工作负载类型
+	// 工作负载类型，如 deployment、statefulset和pod等。
 	Kind *string `json:"Kind,omitnil,omitempty" name:"Kind"`
 
 	// 工作负载名称
@@ -18926,7 +18926,7 @@ func (r *RemoveNodeFromNodePoolResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RenewReservedInstancesRequestParams struct {
-	// 预留券实例ID，每次请求实例的上限为100。
+	// 预留券实例ID。可通过 [DescribeReservedInstances](https://cloud.tencent.com/document/product/457/99162) 接口返回值中的ReservedInstanceId获取，每次请求实例的上限为100。
 	ReservedInstanceIds []*string `json:"ReservedInstanceIds,omitnil,omitempty" name:"ReservedInstanceIds"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
@@ -18939,7 +18939,7 @@ type RenewReservedInstancesRequestParams struct {
 type RenewReservedInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 预留券实例ID，每次请求实例的上限为100。
+	// 预留券实例ID。可通过 [DescribeReservedInstances](https://cloud.tencent.com/document/product/457/99162) 接口返回值中的ReservedInstanceId获取，每次请求实例的上限为100。
 	ReservedInstanceIds []*string `json:"ReservedInstanceIds,omitnil,omitempty" name:"ReservedInstanceIds"`
 
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
@@ -19038,7 +19038,7 @@ type ReservedInstance struct {
 	// 节点名称
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
-	//  上个周期预留券的抵扣状态，Deduct、NotDeduct
+	//  上个周期预留券的抵扣状态，Deduct：已抵扣、NotDeduct：未抵扣
 	DeductStatus *string `json:"DeductStatus,omitnil,omitempty" name:"DeductStatus"`
 }
 
@@ -19052,7 +19052,7 @@ type ReservedInstanceScope struct {
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	//  节点名称
+	// 节点 ID
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 }
 
@@ -19063,7 +19063,7 @@ type ReservedInstanceSpec struct {
 	// 核数
 	Cpu *float64 `json:"Cpu,omitnil,omitempty" name:"Cpu"`
 
-	// 内存
+	// 内存，单位：GiB
 	Memory *float64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
 	// GPU卡数，当Type为GPU类型时设置。
@@ -19080,10 +19080,10 @@ type ReservedInstanceUtilizationRate struct {
 	// 核数
 	CPU *float64 `json:"CPU,omitnil,omitempty" name:"CPU"`
 
-	// 内存
+	// 内存，单位：GiB
 	Memory *float64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	//  预留券类型
+	//  预留券类型, common：CPU通用，amd：AMD专用，windows-common: Windows容器 CPU通用，windows-amd：Windows容器 AMD专用，sa4，sa5，s7，s8，t4，v100，l20，l40，a10\*gnv4，a10\*gnv4v，a10\*pnv4
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// GPU 卡数
@@ -19095,7 +19095,7 @@ type ReservedInstanceUtilizationRate struct {
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
-	// 节点名称
+	// 节点 ID
 	NodeName *string `json:"NodeName,omitnil,omitempty" name:"NodeName"`
 
 	// Pod 数量

@@ -21,7 +21,7 @@ import (
 )
 
 type File3D struct {
-	// 3D文件的格式。取值范围：OBJ
+	// 文件格式
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
 	// 文件的Url（有效期24小时）

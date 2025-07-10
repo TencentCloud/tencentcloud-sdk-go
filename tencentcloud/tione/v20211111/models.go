@@ -5437,6 +5437,9 @@ type ModelInfo struct {
 
 	// 模型的类别 多模态MultiModal, 文本大模型 LLM
 	ModelCategory *string `json:"ModelCategory,omitnil,omitempty" name:"ModelCategory"`
+
+	// 数据源的配置
+	PublicDataSource *PublicDataSourceFS `json:"PublicDataSource,omitnil,omitempty" name:"PublicDataSource"`
 }
 
 type ModelInputInfo struct {
@@ -6515,6 +6518,10 @@ type ProbeAction struct {
 
 	// 探针类型，默认 HTTPGet，可选值：HTTPGet、Exec、TCPSocket
 	ActionType *string `json:"ActionType,omitnil,omitempty" name:"ActionType"`
+}
+
+type PublicDataSourceFS struct {
+
 }
 
 // Predefined struct for user

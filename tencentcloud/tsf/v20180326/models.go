@@ -7581,9 +7581,13 @@ type DeployContainerGroupRequestParams struct {
 	RepoType *string `json:"RepoType,omitnil,omitempty" name:"RepoType"`
 
 	// 数据卷信息-废弃，请用VolumeInfoList参数
+	//
+	// Deprecated: VolumeInfos is deprecated.
 	VolumeInfos *VolumeInfo `json:"VolumeInfos,omitnil,omitempty" name:"VolumeInfos"`
 
 	// 数据卷挂载点信息-废弃，请用VolumeMountInfoList参数
+	//
+	// Deprecated: VolumeMountInfos is deprecated.
 	VolumeMountInfos *VolumeMountInfo `json:"VolumeMountInfos,omitnil,omitempty" name:"VolumeMountInfos"`
 
 	// 数据卷信息，list
@@ -17337,6 +17341,8 @@ type ImageRepository struct {
 	ApplicationId *string `json:"ApplicationId,omitnil,omitempty" name:"ApplicationId"`
 
 	// ApplicationName值（废弃）
+	//
+	// Deprecated: ApplicationName is deprecated.
 	ApplicationName *ScalableRule `json:"ApplicationName,omitnil,omitempty" name:"ApplicationName"`
 
 	// ApplicationName值
@@ -22296,6 +22302,8 @@ type ThreadPicture struct {
 	ThreadActive []*CurvePoint `json:"ThreadActive,omitnil,omitempty" name:"ThreadActive"`
 
 	// 守护线程数 拼写错误，废弃
+	//
+	// Deprecated: DeamonThreadCount is deprecated.
 	DeamonThreadCount []*CurvePoint `json:"DeamonThreadCount,omitnil,omitempty" name:"DeamonThreadCount"`
 
 	// 守护线程数
