@@ -422,6 +422,9 @@ type CreateEmailIdentityRequestParams struct {
 
 	// 生成的dkim密钥长度。0:1024，1:2048
 	DKIMOption *uint64 `json:"DKIMOption,omitnil,omitempty" name:"DKIMOption"`
+
+	// tag 标签
+	TagList []*TagList `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 type CreateEmailIdentityRequest struct {
@@ -432,6 +435,9 @@ type CreateEmailIdentityRequest struct {
 
 	// 生成的dkim密钥长度。0:1024，1:2048
 	DKIMOption *uint64 `json:"DKIMOption,omitnil,omitempty" name:"DKIMOption"`
+
+	// tag 标签
+	TagList []*TagList `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 func (r *CreateEmailIdentityRequest) ToJsonString() string {
@@ -448,6 +454,7 @@ func (r *CreateEmailIdentityRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EmailIdentity")
 	delete(f, "DKIMOption")
+	delete(f, "TagList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEmailIdentityRequest has unknown keys!", "")
 	}
@@ -1189,6 +1196,9 @@ type EmailIdentity struct {
 
 	// 域名配置的独立ip
 	SendIp []*string `json:"SendIp,omitnil,omitempty" name:"SendIp"`
+
+	// tag 标签
+	TagList []*TagList `json:"TagList,omitnil,omitempty" name:"TagList"`
 }
 
 type EmailSender struct {
@@ -1796,12 +1806,27 @@ func (r *ListEmailAddressResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListEmailIdentitiesRequestParams struct {
+	// tag 标签
+	TagList []*TagList `json:"TagList,omitnil,omitempty" name:"TagList"`
 
+	// 分页 limit
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页 offset
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 type ListEmailIdentitiesRequest struct {
 	*tchttp.BaseRequest
 	
+	// tag 标签
+	TagList []*TagList `json:"TagList,omitnil,omitempty" name:"TagList"`
+
+	// 分页 limit
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页 offset
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 }
 
 func (r *ListEmailIdentitiesRequest) ToJsonString() string {
@@ -1816,7 +1841,9 @@ func (r *ListEmailIdentitiesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "TagList")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListEmailIdentitiesRequest has unknown keys!", "")
 	}
@@ -1833,6 +1860,9 @@ type ListEmailIdentitiesResponseParams struct {
 
 	// 单域名最高日发送量
 	MaxDailyQuota *uint64 `json:"MaxDailyQuota,omitnil,omitempty" name:"MaxDailyQuota"`
+
+	// 总数
+	Total *uint64 `json:"Total,omitnil,omitempty" name:"Total"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -2532,6 +2562,14 @@ type Simple struct {
 
 	// base64之后的纯文本信息，如果没有Html，邮件中会直接显示纯文本；如果有Html，它代表邮件的纯文本样式
 	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
+}
+
+type TagList struct {
+	// 产品
+	TagKey *string `json:"TagKey,omitnil,omitempty" name:"TagKey"`
+
+	// ses
+	TagValue *string `json:"TagValue,omitnil,omitempty" name:"TagValue"`
 }
 
 type Template struct {

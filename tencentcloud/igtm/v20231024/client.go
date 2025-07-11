@@ -841,6 +841,136 @@ func (c *Client) DescribeAddressPoolListWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeDetectPackageDetailRequest() (request *DescribeDetectPackageDetailRequest) {
+    request = &DescribeDetectPackageDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("igtm", APIVersion, "DescribeDetectPackageDetail")
+    
+    
+    return
+}
+
+func NewDescribeDetectPackageDetailResponse() (response *DescribeDetectPackageDetailResponse) {
+    response = &DescribeDetectPackageDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDetectPackageDetail
+// 探测任务包详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_SEARCHINFO = "ResourceNotFound.SearchInfo"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDERROR = "UnauthorizedOperation.UnauthorizedError"
+//  UNSUPPORTEDOPERATION_USERNOTFOUND = "UnsupportedOperation.UserNotFound"
+func (c *Client) DescribeDetectPackageDetail(request *DescribeDetectPackageDetailRequest) (response *DescribeDetectPackageDetailResponse, err error) {
+    return c.DescribeDetectPackageDetailWithContext(context.Background(), request)
+}
+
+// DescribeDetectPackageDetail
+// 探测任务包详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_SEARCHINFO = "ResourceNotFound.SearchInfo"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDERROR = "UnauthorizedOperation.UnauthorizedError"
+//  UNSUPPORTEDOPERATION_USERNOTFOUND = "UnsupportedOperation.UserNotFound"
+func (c *Client) DescribeDetectPackageDetailWithContext(ctx context.Context, request *DescribeDetectPackageDetailRequest) (response *DescribeDetectPackageDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeDetectPackageDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDetectPackageDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDetectPackageDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDetectTaskPackageListRequest() (request *DescribeDetectTaskPackageListRequest) {
+    request = &DescribeDetectTaskPackageListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("igtm", APIVersion, "DescribeDetectTaskPackageList")
+    
+    
+    return
+}
+
+func NewDescribeDetectTaskPackageListResponse() (response *DescribeDetectTaskPackageListResponse) {
+    response = &DescribeDetectTaskPackageListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDetectTaskPackageList
+// 探测任务套餐列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_SEARCHINFO = "ResourceNotFound.SearchInfo"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDERROR = "UnauthorizedOperation.UnauthorizedError"
+//  UNSUPPORTEDOPERATION_USERNOTFOUND = "UnsupportedOperation.UserNotFound"
+func (c *Client) DescribeDetectTaskPackageList(request *DescribeDetectTaskPackageListRequest) (response *DescribeDetectTaskPackageListResponse, err error) {
+    return c.DescribeDetectTaskPackageListWithContext(context.Background(), request)
+}
+
+// DescribeDetectTaskPackageList
+// 探测任务套餐列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_SEARCHINFO = "ResourceNotFound.SearchInfo"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDERROR = "UnauthorizedOperation.UnauthorizedError"
+//  UNSUPPORTEDOPERATION_USERNOTFOUND = "UnsupportedOperation.UserNotFound"
+func (c *Client) DescribeDetectTaskPackageListWithContext(ctx context.Context, request *DescribeDetectTaskPackageListRequest) (response *DescribeDetectTaskPackageListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDetectTaskPackageListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDetectTaskPackageList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDetectTaskPackageListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDetectorsRequest() (request *DescribeDetectorsRequest) {
     request = &DescribeDetectorsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1105,6 +1235,71 @@ func (c *Client) DescribeInstanceListWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeInstanceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstancePackageListRequest() (request *DescribeInstancePackageListRequest) {
+    request = &DescribeInstancePackageListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("igtm", APIVersion, "DescribeInstancePackageList")
+    
+    
+    return
+}
+
+func NewDescribeInstancePackageListResponse() (response *DescribeInstancePackageListResponse) {
+    response = &DescribeInstancePackageListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInstancePackageList
+// 实例套餐列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_SEARCHINFO = "ResourceNotFound.SearchInfo"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDERROR = "UnauthorizedOperation.UnauthorizedError"
+//  UNSUPPORTEDOPERATION_USERNOTFOUND = "UnsupportedOperation.UserNotFound"
+func (c *Client) DescribeInstancePackageList(request *DescribeInstancePackageListRequest) (response *DescribeInstancePackageListResponse, err error) {
+    return c.DescribeInstancePackageListWithContext(context.Background(), request)
+}
+
+// DescribeInstancePackageList
+// 实例套餐列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_SEARCHINFO = "ResourceNotFound.SearchInfo"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDERROR = "UnauthorizedOperation.UnauthorizedError"
+//  UNSUPPORTEDOPERATION_USERNOTFOUND = "UnsupportedOperation.UserNotFound"
+func (c *Client) DescribeInstancePackageListWithContext(ctx context.Context, request *DescribeInstancePackageListRequest) (response *DescribeInstancePackageListResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstancePackageListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstancePackageList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstancePackageListResponse()
     err = c.Send(request, response)
     return
 }

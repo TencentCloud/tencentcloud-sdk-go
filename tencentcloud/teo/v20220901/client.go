@@ -2510,6 +2510,59 @@ func (c *Client) CreateSharedCNAMEWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateWebSecurityTemplateRequest() (request *CreateWebSecurityTemplateRequest) {
+    request = &CreateWebSecurityTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CreateWebSecurityTemplate")
+    
+    
+    return
+}
+
+func NewCreateWebSecurityTemplateResponse() (response *CreateWebSecurityTemplateResponse) {
+    response = &CreateWebSecurityTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateWebSecurityTemplate
+// 创建安全策略配置模板
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  LIMITEXCEEDED_SECURITY = "LimitExceeded.Security"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) CreateWebSecurityTemplate(request *CreateWebSecurityTemplateRequest) (response *CreateWebSecurityTemplateResponse, err error) {
+    return c.CreateWebSecurityTemplateWithContext(context.Background(), request)
+}
+
+// CreateWebSecurityTemplate
+// 创建安全策略配置模板
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  LIMITEXCEEDED_SECURITY = "LimitExceeded.Security"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) CreateWebSecurityTemplateWithContext(ctx context.Context, request *CreateWebSecurityTemplateRequest) (response *CreateWebSecurityTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateWebSecurityTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateWebSecurityTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateWebSecurityTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateZoneRequest() (request *CreateZoneRequest) {
     request = &CreateZoneRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3689,6 +3742,59 @@ func (c *Client) DeleteSharedCNAMEWithContext(ctx context.Context, request *Dele
     request.SetContext(ctx)
     
     response = NewDeleteSharedCNAMEResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteWebSecurityTemplateRequest() (request *DeleteWebSecurityTemplateRequest) {
+    request = &DeleteWebSecurityTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DeleteWebSecurityTemplate")
+    
+    
+    return
+}
+
+func NewDeleteWebSecurityTemplateResponse() (response *DeleteWebSecurityTemplateResponse) {
+    response = &DeleteWebSecurityTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteWebSecurityTemplate
+// 删除安全策略配置模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DeleteWebSecurityTemplate(request *DeleteWebSecurityTemplateRequest) (response *DeleteWebSecurityTemplateResponse, err error) {
+    return c.DeleteWebSecurityTemplateWithContext(context.Background(), request)
+}
+
+// DeleteWebSecurityTemplate
+// 删除安全策略配置模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DeleteWebSecurityTemplateWithContext(ctx context.Context, request *DeleteWebSecurityTemplateRequest) (response *DeleteWebSecurityTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteWebSecurityTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteWebSecurityTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteWebSecurityTemplateResponse()
     err = c.Send(request, response)
     return
 }
@@ -6535,6 +6641,116 @@ func (c *Client) DescribeTopL7CacheDataWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeWebSecurityTemplateRequest() (request *DescribeWebSecurityTemplateRequest) {
+    request = &DescribeWebSecurityTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeWebSecurityTemplate")
+    
+    
+    return
+}
+
+func NewDescribeWebSecurityTemplateResponse() (response *DescribeWebSecurityTemplateResponse) {
+    response = &DescribeWebSecurityTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWebSecurityTemplate
+// 查询安全策略配置模板详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = "LimitExceeded.QueryTimeLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeWebSecurityTemplate(request *DescribeWebSecurityTemplateRequest) (response *DescribeWebSecurityTemplateResponse, err error) {
+    return c.DescribeWebSecurityTemplateWithContext(context.Background(), request)
+}
+
+// DescribeWebSecurityTemplate
+// 查询安全策略配置模板详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = "LimitExceeded.QueryTimeLimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) DescribeWebSecurityTemplateWithContext(ctx context.Context, request *DescribeWebSecurityTemplateRequest) (response *DescribeWebSecurityTemplateResponse, err error) {
+    if request == nil {
+        request = NewDescribeWebSecurityTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWebSecurityTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWebSecurityTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeWebSecurityTemplatesRequest() (request *DescribeWebSecurityTemplatesRequest) {
+    request = &DescribeWebSecurityTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeWebSecurityTemplates")
+    
+    
+    return
+}
+
+func NewDescribeWebSecurityTemplatesResponse() (response *DescribeWebSecurityTemplatesResponse) {
+    response = &DescribeWebSecurityTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeWebSecurityTemplates
+// 查询安全策略配置模板列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) DescribeWebSecurityTemplates(request *DescribeWebSecurityTemplatesRequest) (response *DescribeWebSecurityTemplatesResponse, err error) {
+    return c.DescribeWebSecurityTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeWebSecurityTemplates
+// 查询安全策略配置模板列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) DescribeWebSecurityTemplatesWithContext(ctx context.Context, request *DescribeWebSecurityTemplatesRequest) (response *DescribeWebSecurityTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeWebSecurityTemplatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeWebSecurityTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeWebSecurityTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeZoneConfigImportResultRequest() (request *DescribeZoneConfigImportResultRequest) {
     request = &DescribeZoneConfigImportResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6558,10 +6774,10 @@ func NewDescribeZoneConfigImportResultResponse() (response *DescribeZoneConfigIm
 // 查询站点配置项导入结果接口，本接口用于站点配置导入接口（ImportZoneConfig）的结果查询。该功能仅支持标准版或企业版套餐的站点使用。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = "LimitExceeded.QueryTimeLimitExceeded"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
 func (c *Client) DescribeZoneConfigImportResult(request *DescribeZoneConfigImportResultRequest) (response *DescribeZoneConfigImportResultResponse, err error) {
     return c.DescribeZoneConfigImportResultWithContext(context.Background(), request)
 }
@@ -6570,10 +6786,10 @@ func (c *Client) DescribeZoneConfigImportResult(request *DescribeZoneConfigImpor
 // 查询站点配置项导入结果接口，本接口用于站点配置导入接口（ImportZoneConfig）的结果查询。该功能仅支持标准版或企业版套餐的站点使用。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = "LimitExceeded.QueryTimeLimitExceeded"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
 func (c *Client) DescribeZoneConfigImportResultWithContext(ctx context.Context, request *DescribeZoneConfigImportResultRequest) (response *DescribeZoneConfigImportResultResponse, err error) {
     if request == nil {
         request = NewDescribeZoneConfigImportResultRequest()
@@ -9795,6 +10011,55 @@ func (c *Client) ModifySecurityPolicyWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifySecurityPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyWebSecurityTemplateRequest() (request *ModifyWebSecurityTemplateRequest) {
+    request = &ModifyWebSecurityTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyWebSecurityTemplate")
+    
+    
+    return
+}
+
+func NewModifyWebSecurityTemplateResponse() (response *ModifyWebSecurityTemplateResponse) {
+    response = &ModifyWebSecurityTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyWebSecurityTemplate
+// 修改安全策略配置模板
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) ModifyWebSecurityTemplate(request *ModifyWebSecurityTemplateRequest) (response *ModifyWebSecurityTemplateResponse, err error) {
+    return c.ModifyWebSecurityTemplateWithContext(context.Background(), request)
+}
+
+// ModifyWebSecurityTemplate
+// 修改安全策略配置模板
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+func (c *Client) ModifyWebSecurityTemplateWithContext(ctx context.Context, request *ModifyWebSecurityTemplateRequest) (response *ModifyWebSecurityTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyWebSecurityTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyWebSecurityTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyWebSecurityTemplateResponse()
     err = c.Send(request, response)
     return
 }

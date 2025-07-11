@@ -215,7 +215,8 @@ func NewCreateBackUpScheduleResponse() (response *CreateBackUpScheduleResponse) 
 // 创建或者修改备份策略
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateBackUpSchedule(request *CreateBackUpScheduleRequest) (response *CreateBackUpScheduleResponse, err error) {
     return c.CreateBackUpScheduleWithContext(context.Background(), request)
 }
@@ -224,7 +225,8 @@ func (c *Client) CreateBackUpSchedule(request *CreateBackUpScheduleRequest) (res
 // 创建或者修改备份策略
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateBackUpScheduleWithContext(ctx context.Context, request *CreateBackUpScheduleRequest) (response *CreateBackUpScheduleResponse, err error) {
     if request == nil {
         request = NewCreateBackUpScheduleRequest()
@@ -264,7 +266,8 @@ func NewCreateCoolDownPolicyResponse() (response *CreateCoolDownPolicyResponse) 
 // 创建冷热分层策略
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCoolDownPolicy(request *CreateCoolDownPolicyRequest) (response *CreateCoolDownPolicyResponse, err error) {
     return c.CreateCoolDownPolicyWithContext(context.Background(), request)
 }
@@ -273,7 +276,8 @@ func (c *Client) CreateCoolDownPolicy(request *CreateCoolDownPolicyRequest) (res
 // 创建冷热分层策略
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCoolDownPolicyWithContext(ctx context.Context, request *CreateCoolDownPolicyRequest) (response *CreateCoolDownPolicyResponse, err error) {
     if request == nil {
         request = NewCreateCoolDownPolicyRequest()
@@ -313,7 +317,8 @@ func NewCreateInstanceNewResponse() (response *CreateInstanceNewResponse) {
 // 通过API创建集群
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateInstanceNew(request *CreateInstanceNewRequest) (response *CreateInstanceNewResponse, err error) {
     return c.CreateInstanceNewWithContext(context.Background(), request)
 }
@@ -322,7 +327,8 @@ func (c *Client) CreateInstanceNew(request *CreateInstanceNewRequest) (response 
 // 通过API创建集群
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateInstanceNewWithContext(ctx context.Context, request *CreateInstanceNewRequest) (response *CreateInstanceNewResponse, err error) {
     if request == nil {
         request = NewCreateInstanceNewRequest()
@@ -362,7 +368,8 @@ func NewCreateWorkloadGroupResponse() (response *CreateWorkloadGroupResponse) {
 // 创建资源组
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateWorkloadGroup(request *CreateWorkloadGroupRequest) (response *CreateWorkloadGroupResponse, err error) {
     return c.CreateWorkloadGroupWithContext(context.Background(), request)
 }
@@ -371,7 +378,8 @@ func (c *Client) CreateWorkloadGroup(request *CreateWorkloadGroupRequest) (respo
 // 创建资源组
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateWorkloadGroupWithContext(ctx context.Context, request *CreateWorkloadGroupRequest) (response *CreateWorkloadGroupResponse, err error) {
     if request == nil {
         request = NewCreateWorkloadGroupRequest()
@@ -411,7 +419,8 @@ func NewDeleteBackUpDataResponse() (response *DeleteBackUpDataResponse) {
 // 删除备份数据
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteBackUpData(request *DeleteBackUpDataRequest) (response *DeleteBackUpDataResponse, err error) {
     return c.DeleteBackUpDataWithContext(context.Background(), request)
 }
@@ -420,7 +429,8 @@ func (c *Client) DeleteBackUpData(request *DeleteBackUpDataRequest) (response *D
 // 删除备份数据
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteBackUpDataWithContext(ctx context.Context, request *DeleteBackUpDataRequest) (response *DeleteBackUpDataResponse, err error) {
     if request == nil {
         request = NewDeleteBackUpDataRequest()
@@ -460,7 +470,8 @@ func NewDeleteWorkloadGroupResponse() (response *DeleteWorkloadGroupResponse) {
 // 删除资源组
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteWorkloadGroup(request *DeleteWorkloadGroupRequest) (response *DeleteWorkloadGroupResponse, err error) {
     return c.DeleteWorkloadGroupWithContext(context.Background(), request)
 }
@@ -469,7 +480,8 @@ func (c *Client) DeleteWorkloadGroup(request *DeleteWorkloadGroupRequest) (respo
 // 删除资源组
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteWorkloadGroupWithContext(ctx context.Context, request *DeleteWorkloadGroupRequest) (response *DeleteWorkloadGroupResponse, err error) {
     if request == nil {
         request = NewDeleteWorkloadGroupRequest()
@@ -509,7 +521,8 @@ func NewDescribeAreaRegionResponse() (response *DescribeAreaRegionResponse) {
 // 集群列表页上显示地域信息及各个地域的集群总数
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAreaRegion(request *DescribeAreaRegionRequest) (response *DescribeAreaRegionResponse, err error) {
     return c.DescribeAreaRegionWithContext(context.Background(), request)
 }
@@ -518,7 +531,8 @@ func (c *Client) DescribeAreaRegion(request *DescribeAreaRegionRequest) (respons
 // 集群列表页上显示地域信息及各个地域的集群总数
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAreaRegionWithContext(ctx context.Context, request *DescribeAreaRegionRequest) (response *DescribeAreaRegionResponse, err error) {
     if request == nil {
         request = NewDescribeAreaRegionRequest()
@@ -558,7 +572,8 @@ func NewDescribeBackUpJobResponse() (response *DescribeBackUpJobResponse) {
 // 查询备份实例列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBackUpJob(request *DescribeBackUpJobRequest) (response *DescribeBackUpJobResponse, err error) {
     return c.DescribeBackUpJobWithContext(context.Background(), request)
 }
@@ -567,7 +582,8 @@ func (c *Client) DescribeBackUpJob(request *DescribeBackUpJobRequest) (response 
 // 查询备份实例列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBackUpJobWithContext(ctx context.Context, request *DescribeBackUpJobRequest) (response *DescribeBackUpJobResponse, err error) {
     if request == nil {
         request = NewDescribeBackUpJobRequest()
@@ -607,7 +623,8 @@ func NewDescribeBackUpJobDetailResponse() (response *DescribeBackUpJobDetailResp
 // 查询备份任务详情
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBackUpJobDetail(request *DescribeBackUpJobDetailRequest) (response *DescribeBackUpJobDetailResponse, err error) {
     return c.DescribeBackUpJobDetailWithContext(context.Background(), request)
 }
@@ -616,7 +633,8 @@ func (c *Client) DescribeBackUpJobDetail(request *DescribeBackUpJobDetailRequest
 // 查询备份任务详情
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBackUpJobDetailWithContext(ctx context.Context, request *DescribeBackUpJobDetailRequest) (response *DescribeBackUpJobDetailResponse, err error) {
     if request == nil {
         request = NewDescribeBackUpJobDetailRequest()
@@ -656,7 +674,8 @@ func NewDescribeBackUpSchedulesResponse() (response *DescribeBackUpSchedulesResp
 // 获取备份、迁移的调度任务信息
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBackUpSchedules(request *DescribeBackUpSchedulesRequest) (response *DescribeBackUpSchedulesResponse, err error) {
     return c.DescribeBackUpSchedulesWithContext(context.Background(), request)
 }
@@ -665,7 +684,8 @@ func (c *Client) DescribeBackUpSchedules(request *DescribeBackUpSchedulesRequest
 // 获取备份、迁移的调度任务信息
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBackUpSchedulesWithContext(ctx context.Context, request *DescribeBackUpSchedulesRequest) (response *DescribeBackUpSchedulesResponse, err error) {
     if request == nil {
         request = NewDescribeBackUpSchedulesRequest()
@@ -705,7 +725,8 @@ func NewDescribeBackUpTablesResponse() (response *DescribeBackUpTablesResponse) 
 // 获取可备份表信息
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBackUpTables(request *DescribeBackUpTablesRequest) (response *DescribeBackUpTablesResponse, err error) {
     return c.DescribeBackUpTablesWithContext(context.Background(), request)
 }
@@ -714,7 +735,8 @@ func (c *Client) DescribeBackUpTables(request *DescribeBackUpTablesRequest) (res
 // 获取可备份表信息
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBackUpTablesWithContext(ctx context.Context, request *DescribeBackUpTablesRequest) (response *DescribeBackUpTablesResponse, err error) {
     if request == nil {
         request = NewDescribeBackUpTablesRequest()
@@ -754,7 +776,8 @@ func NewDescribeBackUpTaskDetailResponse() (response *DescribeBackUpTaskDetailRe
 // 查询备份任务进度详情
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBackUpTaskDetail(request *DescribeBackUpTaskDetailRequest) (response *DescribeBackUpTaskDetailResponse, err error) {
     return c.DescribeBackUpTaskDetailWithContext(context.Background(), request)
 }
@@ -763,7 +786,8 @@ func (c *Client) DescribeBackUpTaskDetail(request *DescribeBackUpTaskDetailReque
 // 查询备份任务进度详情
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBackUpTaskDetailWithContext(ctx context.Context, request *DescribeBackUpTaskDetailRequest) (response *DescribeBackUpTaskDetailResponse, err error) {
     if request == nil {
         request = NewDescribeBackUpTaskDetailRequest()
@@ -803,7 +827,8 @@ func NewDescribeClusterConfigsResponse() (response *DescribeClusterConfigsRespon
 // 获取集群的最新的几个配置文件（config.xml、metrika.xml、user.xml）的内容，显示给用户
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterConfigs(request *DescribeClusterConfigsRequest) (response *DescribeClusterConfigsResponse, err error) {
     return c.DescribeClusterConfigsWithContext(context.Background(), request)
 }
@@ -812,7 +837,8 @@ func (c *Client) DescribeClusterConfigs(request *DescribeClusterConfigsRequest) 
 // 获取集群的最新的几个配置文件（config.xml、metrika.xml、user.xml）的内容，显示给用户
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeClusterConfigsWithContext(ctx context.Context, request *DescribeClusterConfigsRequest) (response *DescribeClusterConfigsResponse, err error) {
     if request == nil {
         request = NewDescribeClusterConfigsRequest()

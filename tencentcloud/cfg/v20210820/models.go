@@ -2200,6 +2200,12 @@ type Template struct {
 
 	// 护栏处理方式，1--顺序回滚，2--演练暂停
 	PolicyDealType *int64 `json:"PolicyDealType,omitnil,omitempty" name:"PolicyDealType"`
+
+	// 演练场景
+	TemplateScenario []*TaskTarget `json:"TemplateScenario,omitnil,omitempty" name:"TemplateScenario"`
+
+	// 演练目的
+	TemplatePurpose []*TaskTarget `json:"TemplatePurpose,omitnil,omitempty" name:"TemplatePurpose"`
 }
 
 type TemplateGroup struct {

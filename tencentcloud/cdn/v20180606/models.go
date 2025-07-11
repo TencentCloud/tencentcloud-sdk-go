@@ -12873,7 +12873,7 @@ type UserAgentFilter struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
 
-	// UA黑白名单生效规则列表
+	// UA黑白名单生效规则列表，不能超过10条规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilterRules []*UserAgentFilterRule `json:"FilterRules,omitnil,omitempty" name:"FilterRules"`
 }
@@ -12891,7 +12891,7 @@ type UserAgentFilterRule struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RulePaths []*string `json:"RulePaths,omitnil,omitempty" name:"RulePaths"`
 
-	// UserAgent列表
+	// UserAgent列表，UserAgent 个数不能超过 10个
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserAgents []*string `json:"UserAgents,omitnil,omitempty" name:"UserAgents"`
 

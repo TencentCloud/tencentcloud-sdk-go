@@ -149,6 +149,14 @@ type AddressPoolDetail struct {
 	UpdatedOn *string `json:"UpdatedOn,omitnil,omitempty" name:"UpdatedOn"`
 }
 
+type CostItem struct {
+	// 计费项名称
+	CostName *string `json:"CostName,omitnil,omitempty" name:"CostName"`
+
+	// 计费项值
+	CostValue *uint64 `json:"CostValue,omitnil,omitempty" name:"CostValue"`
+}
+
 // Predefined struct for user
 type CreateAddressPoolRequestParams struct {
 	// 地址池名称，不允许重复
@@ -993,6 +1001,160 @@ func (r *DescribeAddressPoolListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDetectPackageDetailRequestParams struct {
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+type DescribeDetectPackageDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+}
+
+func (r *DescribeDetectPackageDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDetectPackageDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDetectPackageDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDetectPackageDetailResponseParams struct {
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源类型 TASK 探测任务
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 额度
+	Quota *uint64 `json:"Quota,omitnil,omitempty" name:"Quota"`
+
+	// 过期时间
+	CurrentDeadline *string `json:"CurrentDeadline,omitnil,omitempty" name:"CurrentDeadline"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 是否过期
+	IsExpire *uint64 `json:"IsExpire,omitnil,omitempty" name:"IsExpire"`
+
+	// 状态 ENABLED: 正常 ISOLATED: 隔离 DESTROYED：销毁 REFUNDED：已退款
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 是否自动续费0不1是
+	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 计费项
+	CostItemList []*CostItem `json:"CostItemList,omitnil,omitempty" name:"CostItemList"`
+
+	// 使用数量
+	UsedNum *uint64 `json:"UsedNum,omitnil,omitempty" name:"UsedNum"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDetectPackageDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDetectPackageDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeDetectPackageDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDetectPackageDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDetectTaskPackageListRequestParams struct {
+	// 每页条数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 探测任务过滤条件：ResourceId 探测任务的资源id，PeriodStart 最小过期时间,PeriodEnd 最大过期时间
+	Filters []*ResourceFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeDetectTaskPackageListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每页条数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 探测任务过滤条件：ResourceId 探测任务的资源id，PeriodStart 最小过期时间,PeriodEnd 最大过期时间
+	Filters []*ResourceFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeDetectTaskPackageListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDetectTaskPackageListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDetectTaskPackageListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDetectTaskPackageListResponseParams struct {
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 探测任务套餐列表
+	TaskPackageSet []*DetectTaskPackage `json:"TaskPackageSet,omitnil,omitempty" name:"TaskPackageSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDetectTaskPackageListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDetectTaskPackageListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDetectTaskPackageListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDetectTaskPackageListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDetectorsRequestParams struct {
 
 }
@@ -1234,6 +1396,80 @@ func (r *DescribeInstanceListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstancePackageListRequestParams struct {
+	// 每页条数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// InstanceId实例Id，InstanceName实例名称，ResourceId套餐Id，PackageType套餐类型 
+	Filters []*ResourceFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 是否使用：0未使用1已使用
+	IsUsed *uint64 `json:"IsUsed,omitnil,omitempty" name:"IsUsed"`
+}
+
+type DescribeInstancePackageListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每页条数
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// InstanceId实例Id，InstanceName实例名称，ResourceId套餐Id，PackageType套餐类型 
+	Filters []*ResourceFilter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 是否使用：0未使用1已使用
+	IsUsed *uint64 `json:"IsUsed,omitnil,omitempty" name:"IsUsed"`
+}
+
+func (r *DescribeInstancePackageListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancePackageListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "IsUsed")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancePackageListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstancePackageListResponseParams struct {
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 实例套餐列表
+	InstanceSet []*InstancePackage `json:"InstanceSet,omitnil,omitempty" name:"InstanceSet"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeInstancePackageListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstancePackageListResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstancePackageListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancePackageListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1575,6 +1811,47 @@ func (r *DescribeStrategyListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DetectTaskPackage struct {
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 资源类型
+	// TASK 探测任务
+	ResourceType *string `json:"ResourceType,omitnil,omitempty" name:"ResourceType"`
+
+	// 额度
+	Quota *uint64 `json:"Quota,omitnil,omitempty" name:"Quota"`
+
+	// 套餐过期时间
+	CurrentDeadline *string `json:"CurrentDeadline,omitnil,omitempty" name:"CurrentDeadline"`
+
+	// 套餐创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 是否过期0否1是
+	IsExpire *uint64 `json:"IsExpire,omitnil,omitempty" name:"IsExpire"`
+
+	// 状态
+	// ENABLED: 正常
+	// ISOLATED: 隔离
+	// DESTROYED：销毁
+	// REFUNDED：已退款
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 是否自动续费0不1是
+	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 计费项
+	CostItemList []*CostItem `json:"CostItemList,omitnil,omitempty" name:"CostItemList"`
+
+	// 探测任务类型：100系统设定；200计费；300管理系统；110D监控迁移的免费任务；120容灾切换任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Group *uint64 `json:"Group,omitnil,omitempty" name:"Group"`
+}
+
 type DetectorGroup struct {
 	// 线路组id GroupLineId
 	Gid *uint64 `json:"Gid,omitnil,omitempty" name:"Gid"`
@@ -1816,6 +2093,59 @@ type InstanceInfo struct {
 	// 实例名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+}
+
+type InstancePackage struct {
+	// 实例套餐资源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
+
+	// 实例名
+	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
+
+	// 套餐类型
+	// FREE: 免费版
+	// STANDARD：标准版
+	// ULTIMATE：旗舰版
+	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
+
+	// 套餐过期时间
+	CurrentDeadline *string `json:"CurrentDeadline,omitnil,omitempty" name:"CurrentDeadline"`
+
+	// 套餐创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 是否过期0否1是
+	IsExpire *uint64 `json:"IsExpire,omitnil,omitempty" name:"IsExpire"`
+
+	// 实例状态
+	// ENABLED: 正常
+	// DISABLED: 禁用
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 是否自动续费0不1是
+	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 计费项
+	CostItemList []*CostItem `json:"CostItemList,omitnil,omitempty" name:"CostItemList"`
+
+	// 最小检查间隔时间s
+	MinCheckInterval *uint64 `json:"MinCheckInterval,omitnil,omitempty" name:"MinCheckInterval"`
+
+	// 最小TTL s
+	MinGlobalTtl *uint64 `json:"MinGlobalTtl,omitnil,omitempty" name:"MinGlobalTtl"`
+
+	// 流量策略类型：ALL返回全部，WEIGHT权重
+	TrafficStrategy []*string `json:"TrafficStrategy,omitnil,omitempty" name:"TrafficStrategy"`
+
+	// 策略类型：LOCATION按地理位置调度，DELAY按延迟调度
+	ScheduleStrategy []*string `json:"ScheduleStrategy,omitnil,omitempty" name:"ScheduleStrategy"`
 }
 
 type MainAddressPool struct {

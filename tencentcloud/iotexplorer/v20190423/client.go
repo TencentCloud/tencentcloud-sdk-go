@@ -459,6 +459,10 @@ func NewCancelAssignTWeCallLicenseResponse() (response *CancelAssignTWeCallLicen
 }
 
 // CancelAssignTWeCallLicense
+// 业务已下线
+//
+// 
+//
 // 取消分配
 //
 // 可能返回的错误码:
@@ -470,6 +474,10 @@ func (c *Client) CancelAssignTWeCallLicense(request *CancelAssignTWeCallLicenseR
 }
 
 // CancelAssignTWeCallLicense
+// 业务已下线
+//
+// 
+//
 // 取消分配
 //
 // 可能返回的错误码:

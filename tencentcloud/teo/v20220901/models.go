@@ -688,6 +688,20 @@ type BillingDataFilter struct {
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
 }
 
+type BindDomainInfo struct {
+	// 域名。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 域名所属的站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 绑定状态，取值有: 
+	// <li>process：绑定中；</li>
+	// <li>online：绑定成功；</li>
+	// <li>fail：绑定失败。</li>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+}
+
 // Predefined struct for user
 type BindSecurityTemplateToEntityRequestParams struct {
 	// 需要绑定或解绑的策略模板所属站点 ID。
@@ -4002,6 +4016,77 @@ func (r *CreateSharedCNAMEResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateWebSecurityTemplateRequestParams struct {
+	// 站点 ID。该参数明确策略模板在访问权限上归属的站点。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 策略模板名称。由中文、英文、数字和下划线组成，不能以下划线开头，且长度不能超过 32 个字符。
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
+
+	// 安全策略模板配置内容，字段为空时生成默认配置。目前支持 Web 防护模块中的例外规则、自定义规则、速率限制规则和托管规则配置，通过表达式语法对安全策略进行配置。 Bot 管理规则配置暂不支持，正在开发中。
+	SecurityPolicy *SecurityPolicy `json:"SecurityPolicy,omitnil,omitempty" name:"SecurityPolicy"`
+}
+
+type CreateWebSecurityTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。该参数明确策略模板在访问权限上归属的站点。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 策略模板名称。由中文、英文、数字和下划线组成，不能以下划线开头，且长度不能超过 32 个字符。
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
+
+	// 安全策略模板配置内容，字段为空时生成默认配置。目前支持 Web 防护模块中的例外规则、自定义规则、速率限制规则和托管规则配置，通过表达式语法对安全策略进行配置。 Bot 管理规则配置暂不支持，正在开发中。
+	SecurityPolicy *SecurityPolicy `json:"SecurityPolicy,omitnil,omitempty" name:"SecurityPolicy"`
+}
+
+func (r *CreateWebSecurityTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWebSecurityTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "TemplateName")
+	delete(f, "SecurityPolicy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWebSecurityTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateWebSecurityTemplateResponseParams struct {
+	// 策略模板 ID。
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateWebSecurityTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateWebSecurityTemplateResponseParams `json:"Response"`
+}
+
+func (r *CreateWebSecurityTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWebSecurityTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateZoneRequestParams struct {
 	// 站点接入类型。该参数取值如下，不填写时默认为 partial：
 	// <li>partial：CNAME 接入；</li>
@@ -4019,7 +4104,9 @@ type CreateZoneRequestParams struct {
 	// <li> overseas: 全球可用区（不含中国大陆）。</li>
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
-	// 待绑定的目标套餐 ID。当您账号下已存在套餐时，可以填写此参数，直接将站点绑定至该套餐。若您当前没有可绑定的套餐时，请前往控制台购买套餐完成站点创建。
+	// 待绑定的目标套餐 ID。当您账号下已存在套餐时，可以填写此参数，直接将站点绑定至该套餐。若您当前没有可绑定的套餐时，可通过 [CreatePlan](https://cloud.tencent.com/document/product/1552/105771) 购买套餐。
+	// 注意：如果不填写此参数，将创建一个处于“init”状态的站点，该站点为未激活状态，并不会显示在控制台上。您可以通过访问 [BindZoneToPlan](https://cloud.tencent.com/document/product/1552/83042) 来绑定套餐并激活站点，激活后站点可以正常提供服务。
+	// 
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
 
 	// 同名站点标识。限制输入数字、英文、"." 、"-" 和 "_"，长度 200 个字符以内。详情参考 [同名站点标识](https://cloud.tencent.com/document/product/1552/70202)，无此使用场景时，该字段保留为空即可。
@@ -4060,7 +4147,9 @@ type CreateZoneRequest struct {
 	// <li> overseas: 全球可用区（不含中国大陆）。</li>
 	Area *string `json:"Area,omitnil,omitempty" name:"Area"`
 
-	// 待绑定的目标套餐 ID。当您账号下已存在套餐时，可以填写此参数，直接将站点绑定至该套餐。若您当前没有可绑定的套餐时，请前往控制台购买套餐完成站点创建。
+	// 待绑定的目标套餐 ID。当您账号下已存在套餐时，可以填写此参数，直接将站点绑定至该套餐。若您当前没有可绑定的套餐时，可通过 [CreatePlan](https://cloud.tencent.com/document/product/1552/105771) 购买套餐。
+	// 注意：如果不填写此参数，将创建一个处于“init”状态的站点，该站点为未激活状态，并不会显示在控制台上。您可以通过访问 [BindZoneToPlan](https://cloud.tencent.com/document/product/1552/83042) 来绑定套餐并激活站点，激活后站点可以正常提供服务。
+	// 
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
 
 	// 同名站点标识。限制输入数字、英文、"." 、"-" 和 "_"，长度 200 个字符以内。详情参考 [同名站点标识](https://cloud.tencent.com/document/product/1552/70202)，无此使用场景时，该字段保留为空即可。
@@ -5503,6 +5592,67 @@ func (r *DeleteSharedCNAMEResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteSharedCNAMEResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteWebSecurityTemplateRequestParams struct {
+	// 站点 ID。需要传入目标策略模板在访问权限上归属的站点，可使用 DescribeWebSecurityTemplates 接口查询策略模板归属的站点。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 策略模板 ID。
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+type DeleteWebSecurityTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。需要传入目标策略模板在访问权限上归属的站点，可使用 DescribeWebSecurityTemplates 接口查询策略模板归属的站点。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 策略模板 ID。
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+func (r *DeleteWebSecurityTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWebSecurityTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteWebSecurityTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteWebSecurityTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteWebSecurityTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteWebSecurityTemplateResponseParams `json:"Response"`
+}
+
+func (r *DeleteWebSecurityTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteWebSecurityTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10197,6 +10347,130 @@ func (r *DescribeTopL7CacheDataResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTopL7CacheDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWebSecurityTemplateRequestParams struct {
+	// 站点 ID。需要传入目标策略模板在访问权限上归属的站点，可使用 DescribeWebSecurityTemplates 接口查询策略模板归属的站点。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 策略模板 ID。
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+type DescribeWebSecurityTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。需要传入目标策略模板在访问权限上归属的站点，可使用 DescribeWebSecurityTemplates 接口查询策略模板归属的站点。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 策略模板 ID。
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+}
+
+func (r *DescribeWebSecurityTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebSecurityTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWebSecurityTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWebSecurityTemplateResponseParams struct {
+	// 安全策略模板配置内容，Bot 配置暂不支持，正在开发中。
+	SecurityPolicy *SecurityPolicy `json:"SecurityPolicy,omitnil,omitempty" name:"SecurityPolicy"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeWebSecurityTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWebSecurityTemplateResponseParams `json:"Response"`
+}
+
+func (r *DescribeWebSecurityTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebSecurityTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWebSecurityTemplatesRequestParams struct {
+	// 站点 ID 列表。单次查询最多传入 100 个站点。
+	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
+}
+
+type DescribeWebSecurityTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID 列表。单次查询最多传入 100 个站点。
+	ZoneIds []*string `json:"ZoneIds,omitnil,omitempty" name:"ZoneIds"`
+}
+
+func (r *DescribeWebSecurityTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebSecurityTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWebSecurityTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWebSecurityTemplatesResponseParams struct {
+	// 策略模板总数。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 策略模板列表。
+	SecurityPolicyTemplates []*SecurityPolicyTemplateInfo `json:"SecurityPolicyTemplates,omitnil,omitempty" name:"SecurityPolicyTemplates"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeWebSecurityTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWebSecurityTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeWebSecurityTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWebSecurityTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -15200,6 +15474,83 @@ func (r *ModifySecurityPolicyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyWebSecurityTemplateRequestParams struct {
+	// 站点 ID。需要传入目标策略模板在访问权限上归属的站点，可使用 DescribeWebSecurityTemplates 接口查询策略模板归属的站点。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 策略模板 ID。
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// 修改后的策略模板名称。由中文、英文、数字和下划线组成，不能以下划线开头，且长度不能超过32个字符。字段为空时则不修改。
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
+
+	// 安全策略模板配置内容。值为空时不修改；没有传入的子模块结构不会被修改。目前支持 Web 防护模块中的例外规则、自定义规则、速率限制规则和托管规则配置，通过表达式语法对安全策略进行配置。 Bot 管理规则配置暂不支持，正在开发中。
+	// 特别说明：当入参某个子模块结构时，请确保携带所有需要保留的规则内容，未传入规则内容视为删除。
+	SecurityPolicy *SecurityPolicy `json:"SecurityPolicy,omitnil,omitempty" name:"SecurityPolicy"`
+}
+
+type ModifyWebSecurityTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。需要传入目标策略模板在访问权限上归属的站点，可使用 DescribeWebSecurityTemplates 接口查询策略模板归属的站点。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 策略模板 ID。
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// 修改后的策略模板名称。由中文、英文、数字和下划线组成，不能以下划线开头，且长度不能超过32个字符。字段为空时则不修改。
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
+
+	// 安全策略模板配置内容。值为空时不修改；没有传入的子模块结构不会被修改。目前支持 Web 防护模块中的例外规则、自定义规则、速率限制规则和托管规则配置，通过表达式语法对安全策略进行配置。 Bot 管理规则配置暂不支持，正在开发中。
+	// 特别说明：当入参某个子模块结构时，请确保携带所有需要保留的规则内容，未传入规则内容视为删除。
+	SecurityPolicy *SecurityPolicy `json:"SecurityPolicy,omitnil,omitempty" name:"SecurityPolicy"`
+}
+
+func (r *ModifyWebSecurityTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyWebSecurityTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "TemplateId")
+	delete(f, "TemplateName")
+	delete(f, "SecurityPolicy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyWebSecurityTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyWebSecurityTemplateResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyWebSecurityTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyWebSecurityTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifyWebSecurityTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyWebSecurityTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyZoneRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -17347,6 +17698,20 @@ type SecurityPolicy struct {
 
 	// Bot 管理配置。
 	BotManagement *BotManagement `json:"BotManagement,omitnil,omitempty" name:"BotManagement"`
+}
+
+type SecurityPolicyTemplateInfo struct {
+	// 策略模板所属的站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 策略模板 ID。
+	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
+
+	// 策略模板名称。
+	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
+
+	// 策略模板绑定的域名信息。
+	BindDomains []*BindDomainInfo `json:"BindDomains,omitnil,omitempty" name:"BindDomains"`
 }
 
 type SecurityTemplateBinding struct {

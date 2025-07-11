@@ -161,6 +161,9 @@ type BackUpJobDisplay struct {
 
 	// 错误原因
 	ErrorReason *string `json:"ErrorReason,omitnil,omitempty" name:"ErrorReason"`
+
+	// 快照保留策略
+	SnapshotRemainPolicy *SnapshotRemainPolicy `json:"SnapshotRemainPolicy,omitnil,omitempty" name:"SnapshotRemainPolicy"`
 }
 
 type BackupCosInfo struct {
@@ -172,6 +175,9 @@ type BackupCosInfo struct {
 
 	// 备份文件名称
 	SnapShotPath *string `json:"SnapShotPath,omitnil,omitempty" name:"SnapShotPath"`
+
+	// cos桶所在地域
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 }
 
 type BackupStatus struct {
@@ -553,21 +559,31 @@ type CreateBackUpScheduleRequestParams struct {
 	BackUpTables []*BackupTableContent `json:"BackUpTables,omitnil,omitempty" name:"BackUpTables"`
 
 	// 0为默认。1时是对远端的doris进行备份，不周期，一次性
+	//
+	// Deprecated: BackupType is deprecated.
 	BackupType *int64 `json:"BackupType,omitnil,omitempty" name:"BackupType"`
 
 	// 远端doris集群的连接信息
+	//
+	// Deprecated: DorisSourceInfo is deprecated.
 	DorisSourceInfo *DorisSourceInfo `json:"DorisSourceInfo,omitnil,omitempty" name:"DorisSourceInfo"`
 
-	// 0为默认。1时是一次性备份。2时是远端备份
+	// 0为周期备份。1时是立即备份。3时是定时备份。
 	BackupTimeType *int64 `json:"BackupTimeType,omitnil,omitempty" name:"BackupTimeType"`
 
 	// 0为默认。1时是备份完成后立即恢复
+	//
+	// Deprecated: RestoreType is deprecated.
 	RestoreType *int64 `json:"RestoreType,omitnil,omitempty" name:"RestoreType"`
 
 	// 0为默认。1时是提供自定义的secret连接cos
+	//
+	// Deprecated: AuthType is deprecated.
 	AuthType *int64 `json:"AuthType,omitnil,omitempty" name:"AuthType"`
 
 	// cos认证的信息
+	//
+	// Deprecated: CosSourceInfo is deprecated.
 	CosSourceInfo *CosSourceInfo `json:"CosSourceInfo,omitnil,omitempty" name:"CosSourceInfo"`
 
 	// 调度任务名
@@ -584,6 +600,12 @@ type CreateBackUpScheduleRequestParams struct {
 
 	// 当前任务的cos桶信息
 	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
+
+	// 快照保留策略
+	SnapshotRemainPolicy *SnapshotRemainPolicy `json:"SnapshotRemainPolicy,omitnil,omitempty" name:"SnapshotRemainPolicy"`
+
+	// 备份数据所在地域，当前地域应该为空
+	DataRemoteRegion *string `json:"DataRemoteRegion,omitnil,omitempty" name:"DataRemoteRegion"`
 }
 
 type CreateBackUpScheduleRequest struct {
@@ -615,7 +637,7 @@ type CreateBackUpScheduleRequest struct {
 	// 远端doris集群的连接信息
 	DorisSourceInfo *DorisSourceInfo `json:"DorisSourceInfo,omitnil,omitempty" name:"DorisSourceInfo"`
 
-	// 0为默认。1时是一次性备份。2时是远端备份
+	// 0为周期备份。1时是立即备份。3时是定时备份。
 	BackupTimeType *int64 `json:"BackupTimeType,omitnil,omitempty" name:"BackupTimeType"`
 
 	// 0为默认。1时是备份完成后立即恢复
@@ -641,6 +663,12 @@ type CreateBackUpScheduleRequest struct {
 
 	// 当前任务的cos桶信息
 	CosBucket *string `json:"CosBucket,omitnil,omitempty" name:"CosBucket"`
+
+	// 快照保留策略
+	SnapshotRemainPolicy *SnapshotRemainPolicy `json:"SnapshotRemainPolicy,omitnil,omitempty" name:"SnapshotRemainPolicy"`
+
+	// 备份数据所在地域，当前地域应该为空
+	DataRemoteRegion *string `json:"DataRemoteRegion,omitnil,omitempty" name:"DataRemoteRegion"`
 }
 
 func (r *CreateBackUpScheduleRequest) ToJsonString() string {
@@ -671,6 +699,8 @@ func (r *CreateBackUpScheduleRequest) FromJsonString(s string) error {
 	delete(f, "ScheduleInfo")
 	delete(f, "UpdateStatus")
 	delete(f, "CosBucket")
+	delete(f, "SnapshotRemainPolicy")
+	delete(f, "DataRemoteRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBackUpScheduleRequest has unknown keys!", "")
 	}
@@ -3648,6 +3678,9 @@ type DescribeSqlApisRequestParams struct {
 
 	// 表名
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 用户名列表
+	UserNames []*string `json:"UserNames,omitnil,omitempty" name:"UserNames"`
 }
 
 type DescribeSqlApisRequest struct {
@@ -3681,6 +3714,9 @@ type DescribeSqlApisRequest struct {
 
 	// 表名
 	TableName *string `json:"TableName,omitnil,omitempty" name:"TableName"`
+
+	// 用户名列表
+	UserNames []*string `json:"UserNames,omitnil,omitempty" name:"UserNames"`
 }
 
 func (r *DescribeSqlApisRequest) ToJsonString() string {
@@ -3703,6 +3739,7 @@ func (r *DescribeSqlApisRequest) FromJsonString(s string) error {
 	delete(f, "Catalogs")
 	delete(f, "DatabaseName")
 	delete(f, "TableName")
+	delete(f, "UserNames")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSqlApisRequest has unknown keys!", "")
 	}
@@ -4279,6 +4316,9 @@ type InstanceNode struct {
 
 	// 可用区
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
+
+	// 虚拟可用区
+	VirtualZone *string `json:"VirtualZone,omitnil,omitempty" name:"VirtualZone"`
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
@@ -4898,11 +4938,14 @@ type ModifyUserPrivilegesV3RequestParams struct {
 	// 用户链接来自的 IP	
 	WhiteHost *string `json:"WhiteHost,omitnil,omitempty" name:"WhiteHost"`
 
-	// 更新类型，默认0，1为更新绑定计算组
+	// 更新类型，默认0，1为更新绑定计算组，2为更新默认计算组
 	UpdateType *int64 `json:"UpdateType,omitnil,omitempty" name:"UpdateType"`
 
 	// 需绑定计算组列表
 	UpdateComputeGroups []*string `json:"UpdateComputeGroups,omitnil,omitempty" name:"UpdateComputeGroups"`
+
+	// 默认计算组
+	DefaultComputeGroup *string `json:"DefaultComputeGroup,omitnil,omitempty" name:"DefaultComputeGroup"`
 }
 
 type ModifyUserPrivilegesV3Request struct {
@@ -4920,11 +4963,14 @@ type ModifyUserPrivilegesV3Request struct {
 	// 用户链接来自的 IP	
 	WhiteHost *string `json:"WhiteHost,omitnil,omitempty" name:"WhiteHost"`
 
-	// 更新类型，默认0，1为更新绑定计算组
+	// 更新类型，默认0，1为更新绑定计算组，2为更新默认计算组
 	UpdateType *int64 `json:"UpdateType,omitnil,omitempty" name:"UpdateType"`
 
 	// 需绑定计算组列表
 	UpdateComputeGroups []*string `json:"UpdateComputeGroups,omitnil,omitempty" name:"UpdateComputeGroups"`
+
+	// 默认计算组
+	DefaultComputeGroup *string `json:"DefaultComputeGroup,omitnil,omitempty" name:"DefaultComputeGroup"`
 }
 
 func (r *ModifyUserPrivilegesV3Request) ToJsonString() string {
@@ -4945,6 +4991,7 @@ func (r *ModifyUserPrivilegesV3Request) FromJsonString(s string) error {
 	delete(f, "WhiteHost")
 	delete(f, "UpdateType")
 	delete(f, "UpdateComputeGroups")
+	delete(f, "DefaultComputeGroup")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserPrivilegesV3Request has unknown keys!", "")
 	}
@@ -5151,6 +5198,9 @@ type NodeInfo struct {
 
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 虚拟可用区
+	VirtualZone *string `json:"VirtualZone,omitnil,omitempty" name:"VirtualZone"`
 }
 
 type NodeInfos struct {
@@ -5186,6 +5236,9 @@ type NodeInfos struct {
 
 	// rip
 	RIp *string `json:"RIp,omitnil,omitempty" name:"RIp"`
+
+	// 虚拟可用区
+	VirtualZone *string `json:"VirtualZone,omitnil,omitempty" name:"VirtualZone"`
 }
 
 type NodesSummary struct {
@@ -6025,6 +6078,9 @@ type RestoreStatus struct {
 
 	// 实例对应snapshot的id
 	TaskId *int64 `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 恢复任务id
+	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 }
 
 // Predefined struct for user
@@ -6310,6 +6366,17 @@ type SlowQueryRecord struct {
 
 	// 计算组
 	ComputeGroup *string `json:"ComputeGroup,omitnil,omitempty" name:"ComputeGroup"`
+}
+
+type SnapshotRemainPolicy struct {
+	// 0-不主动删除；1-超过指定时间周期自动删除；2-保留指定数据快照
+	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 保留快照的时间
+	RemainDays *int64 `json:"RemainDays,omitnil,omitempty" name:"RemainDays"`
+
+	// 保留最新快照的数量
+	RemainLatestNum *int64 `json:"RemainLatestNum,omitnil,omitempty" name:"RemainLatestNum"`
 }
 
 type Tag struct {

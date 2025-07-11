@@ -13222,6 +13222,9 @@ type PulsarProClusterInfo struct {
 
 	// 用户自定义的租户别名，如果没有，会复用专业集群 ID
 	Tenant *string `json:"Tenant,omitnil,omitempty" name:"Tenant"`
+
+	// 删除保护开关标识
+	DeleteProtection *int64 `json:"DeleteProtection,omitnil,omitempty" name:"DeleteProtection"`
 }
 
 type PulsarProClusterSpecInfo struct {

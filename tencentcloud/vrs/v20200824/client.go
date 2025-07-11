@@ -256,7 +256,7 @@ func NewDetectEnvAndSoundQualityResponse() (response *DetectEnvAndSoundQualityRe
 // DetectEnvAndSoundQuality
 // 本接口用于检测音频的环境和音频质量。
 //
-// 对于一句话声音复刻，音频时长需大于3s，小于15s，文件大小不能超过2MB，音频需为单声道，位深为16bit。建议格式：wav、单声道、采样率48kHz或24kHz 
+// 对于一句话声音复刻，音频时长需大于5s，小于15s，文件大小不能超过2MB，音频需为单声道，位深为16bit。建议格式：wav、单声道、采样率48kHz或24kHz 
 //
 // • 请求方法为 HTTP POST , Content-Type为"application/json; charset=utf-8"
 //
@@ -276,7 +276,7 @@ func (c *Client) DetectEnvAndSoundQuality(request *DetectEnvAndSoundQualityReque
 // DetectEnvAndSoundQuality
 // 本接口用于检测音频的环境和音频质量。
 //
-// 对于一句话声音复刻，音频时长需大于3s，小于15s，文件大小不能超过2MB，音频需为单声道，位深为16bit。建议格式：wav、单声道、采样率48kHz或24kHz 
+// 对于一句话声音复刻，音频时长需大于5s，小于15s，文件大小不能超过2MB，音频需为单声道，位深为16bit。建议格式：wav、单声道、采样率48kHz或24kHz 
 //
 // • 请求方法为 HTTP POST , Content-Type为"application/json; charset=utf-8"
 //

@@ -201,8 +201,14 @@ type AndroidInstanceImage struct {
 	// 镜像可用区
 	AndroidInstanceImageZone *string `json:"AndroidInstanceImageZone,omitnil,omitempty" name:"AndroidInstanceImageZone"`
 
+	// 镜像描述
+	AndroidInstanceImageDescription *string `json:"AndroidInstanceImageDescription,omitnil,omitempty" name:"AndroidInstanceImageDescription"`
+
 	// 安卓10
 	AndroidVersion *string `json:"AndroidVersion,omitnil,omitempty" name:"AndroidVersion"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 }
 
 type AndroidInstanceInformation struct {
@@ -834,6 +840,9 @@ type CreateAndroidInstanceImageRequestParams struct {
 
 	// 安卓实例 ID
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
+
+	// 安卓实例镜像描述
+	AndroidInstanceImageDescription *string `json:"AndroidInstanceImageDescription,omitnil,omitempty" name:"AndroidInstanceImageDescription"`
 }
 
 type CreateAndroidInstanceImageRequest struct {
@@ -844,6 +853,9 @@ type CreateAndroidInstanceImageRequest struct {
 
 	// 安卓实例 ID
 	AndroidInstanceId *string `json:"AndroidInstanceId,omitnil,omitempty" name:"AndroidInstanceId"`
+
+	// 安卓实例镜像描述
+	AndroidInstanceImageDescription *string `json:"AndroidInstanceImageDescription,omitnil,omitempty" name:"AndroidInstanceImageDescription"`
 }
 
 func (r *CreateAndroidInstanceImageRequest) ToJsonString() string {
@@ -860,6 +872,7 @@ func (r *CreateAndroidInstanceImageRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AndroidInstanceImageName")
 	delete(f, "AndroidInstanceId")
+	delete(f, "AndroidInstanceImageDescription")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndroidInstanceImageRequest has unknown keys!", "")
 	}
@@ -2076,6 +2089,12 @@ type DescribeAndroidInstanceImagesRequestParams struct {
 
 	// 限制量，默认为20，最大值为100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 字段过滤器。Filter 的 Name 有以下值：
+	// ImageName：镜像名称
+	// ImageState：镜像状态
+	// AndroidVersion：安卓版本
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 type DescribeAndroidInstanceImagesRequest struct {
@@ -2092,6 +2111,12 @@ type DescribeAndroidInstanceImagesRequest struct {
 
 	// 限制量，默认为20，最大值为100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 字段过滤器。Filter 的 Name 有以下值：
+	// ImageName：镜像名称
+	// ImageState：镜像状态
+	// AndroidVersion：安卓版本
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 }
 
 func (r *DescribeAndroidInstanceImagesRequest) ToJsonString() string {
@@ -2110,6 +2135,7 @@ func (r *DescribeAndroidInstanceImagesRequest) FromJsonString(s string) error {
 	delete(f, "AndroidInstanceImageZones")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAndroidInstanceImagesRequest has unknown keys!", "")
 	}

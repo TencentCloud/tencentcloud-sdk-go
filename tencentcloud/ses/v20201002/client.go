@@ -271,6 +271,7 @@ func NewCreateEmailAddressResponse() (response *CreateEmailAddressResponse) {
 // 在验证了发信域名之后，您需要一个发信地址来发送邮件。例如发信域名是mail.qcloud.com，那么发信地址可以为 service@mail.qcloud.com。如果您想要收件人在收件箱列表中显示您的别名，例如"腾讯云邮件通知"。那么发信地址为： 别名 空格 尖括号 邮箱地址。请注意中间需要有空格
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -291,6 +292,7 @@ func (c *Client) CreateEmailAddress(request *CreateEmailAddressRequest) (respons
 // 在验证了发信域名之后，您需要一个发信地址来发送邮件。例如发信域名是mail.qcloud.com，那么发信地址可以为 service@mail.qcloud.com。如果您想要收件人在收件箱列表中显示您的别名，例如"腾讯云邮件通知"。那么发信地址为： 别名 空格 尖括号 邮箱地址。请注意中间需要有空格
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -342,6 +344,7 @@ func NewCreateEmailIdentityResponse() (response *CreateEmailIdentityResponse) {
 // 在使用身份发送电子邮件之前，您需要有一个电子邮件域名，该域名可以是您的网站或者移动应用的域名。您首先必须进行验证，证明自己是该域名的所有者，并且授权给腾讯云SES发送许可，才可以从该域名发送电子邮件。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -361,6 +364,7 @@ func (c *Client) CreateEmailIdentity(request *CreateEmailIdentityRequest) (respo
 // 在使用身份发送电子邮件之前，您需要有一个电子邮件域名，该域名可以是您的网站或者移动应用的域名。您首先必须进行验证，证明自己是该域名的所有者，并且授权给腾讯云SES发送许可，才可以从该域名发送电子邮件。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -917,6 +921,7 @@ func NewDeleteEmailIdentityResponse() (response *DeleteEmailIdentityResponse) {
 // 删除发信域名，删除后，将不可再使用该域名进行发信
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -932,6 +937,7 @@ func (c *Client) DeleteEmailIdentity(request *DeleteEmailIdentityRequest) (respo
 // 删除发信域名，删除后，将不可再使用该域名进行发信
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1092,6 +1098,7 @@ func NewGetEmailIdentityResponse() (response *GetEmailIdentityResponse) {
 // 获取某个发信域名的配置详情
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1108,6 +1115,7 @@ func (c *Client) GetEmailIdentity(request *GetEmailIdentityRequest) (response *G
 // 获取某个发信域名的配置详情
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1618,6 +1626,7 @@ func NewListEmailIdentitiesResponse() (response *ListEmailIdentitiesResponse) {
 // 获取当前发信域名列表，包含已验证通过与未验证的域名
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1633,6 +1642,7 @@ func (c *Client) ListEmailIdentities(request *ListEmailIdentitiesRequest) (respo
 // 获取当前发信域名列表，包含已验证通过与未验证的域名
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2212,6 +2222,7 @@ func NewUpdateEmailIdentityResponse() (response *UpdateEmailIdentityResponse) {
 // 您已经成功配置好了您的DNS，接下来请求腾讯云验证您的DNS配置是否正确
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION_SERVICENOTAVAILABLE = "FailedOperation.ServiceNotAvailable"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -2229,6 +2240,7 @@ func (c *Client) UpdateEmailIdentity(request *UpdateEmailIdentityRequest) (respo
 // 您已经成功配置好了您的DNS，接下来请求腾讯云验证您的DNS配置是否正确
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION_SERVICENOTAVAILABLE = "FailedOperation.ServiceNotAvailable"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -2277,6 +2289,7 @@ func NewUpdateEmailSmtpPassWordResponse() (response *UpdateEmailSmtpPassWordResp
 // 设置邮箱的smtp密码。若要通过smtp发送邮件，必须为邮箱设置smtp密码。初始时，邮箱没有设置smtp密码，不能使用smtp的方式发送邮件。设置smtp密码后，可以修改密码。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_INVALIDSMTPPASSWORD = "InvalidParameterValue.InvalidSmtpPassWord"
 //  INVALIDPARAMETERVALUE_NOSUCHSENDER = "InvalidParameterValue.NoSuchSender"
@@ -2289,6 +2302,7 @@ func (c *Client) UpdateEmailSmtpPassWord(request *UpdateEmailSmtpPassWordRequest
 // 设置邮箱的smtp密码。若要通过smtp发送邮件，必须为邮箱设置smtp密码。初始时，邮箱没有设置smtp密码，不能使用smtp的方式发送邮件。设置smtp密码后，可以修改密码。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_INVALIDSMTPPASSWORD = "InvalidParameterValue.InvalidSmtpPassWord"
 //  INVALIDPARAMETERVALUE_NOSUCHSENDER = "InvalidParameterValue.NoSuchSender"

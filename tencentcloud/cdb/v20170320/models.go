@@ -4487,14 +4487,14 @@ func (r *DeleteAuditRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAuditRuleTemplatesRequestParams struct {
-	// 审计规则模板ID,可通过[DescribeAuditRuleTemplates](https://cloud.tencent.com/document/api/236/101811)接口获取，单次允许最多删除5个规则模板。
+	// 审计规则模板 ID，可通过 [DescribeAuditRuleTemplates](https://cloud.tencent.com/document/api/236/101811) 接口获取，单次允许最多删除5个规则模板。
 	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil,omitempty" name:"RuleTemplateIds"`
 }
 
 type DeleteAuditRuleTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 审计规则模板ID,可通过[DescribeAuditRuleTemplates](https://cloud.tencent.com/document/api/236/101811)接口获取，单次允许最多删除5个规则模板。
+	// 审计规则模板 ID，可通过 [DescribeAuditRuleTemplates](https://cloud.tencent.com/document/api/236/101811) 接口获取，单次允许最多删除5个规则模板。
 	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil,omitempty" name:"RuleTemplateIds"`
 }
 
@@ -13819,26 +13819,26 @@ func (r *ModifyInstancePasswordComplexityResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type ModifyInstanceTagRequestParams struct {
-	// 实例 ID。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 要增加或修改的标签。
+	// 要增加或修改的标签。ReplaceTags 和 DeleteTags 必填一个。
 	ReplaceTags []*TagInfo `json:"ReplaceTags,omitnil,omitempty" name:"ReplaceTags"`
 
-	// 要删除的标签。
+	// 要删除的标签。ReplaceTags 和 DeleteTags 必填一个。
 	DeleteTags []*TagInfo `json:"DeleteTags,omitnil,omitempty" name:"DeleteTags"`
 }
 
 type ModifyInstanceTagRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID。
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 要增加或修改的标签。
+	// 要增加或修改的标签。ReplaceTags 和 DeleteTags 必填一个。
 	ReplaceTags []*TagInfo `json:"ReplaceTags,omitnil,omitempty" name:"ReplaceTags"`
 
-	// 要删除的标签。
+	// 要删除的标签。ReplaceTags 和 DeleteTags 必填一个。
 	DeleteTags []*TagInfo `json:"DeleteTags,omitnil,omitempty" name:"DeleteTags"`
 }
 

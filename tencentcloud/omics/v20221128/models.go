@@ -92,6 +92,12 @@ type ClusterOption struct {
 
 	// 限制范围。
 	LimitRange *LimitRange `json:"LimitRange,omitnil,omitempty" name:"LimitRange"`
+
+	// 系统节点池实例规格。
+	SystemNodeInstanceType *string `json:"SystemNodeInstanceType,omitnil,omitempty" name:"SystemNodeInstanceType"`
+
+	// 系统节点池实例数量。
+	SystemNodeCount *uint64 `json:"SystemNodeCount,omitnil,omitempty" name:"SystemNodeCount"`
 }
 
 type CosFileInfo struct {
@@ -1569,6 +1575,12 @@ type ResourceIds struct {
 
 	// 弹性容器集群ID。
 	EKSId *string `json:"EKSId,omitnil,omitempty" name:"EKSId"`
+
+	// TKE容器集群ID。
+	TKEId *string `json:"TKEId,omitnil,omitempty" name:"TKEId"`
+
+	// TKE系统节点池ID。
+	TKESystemNodePoolId *string `json:"TKESystemNodePoolId,omitnil,omitempty" name:"TKESystemNodePoolId"`
 }
 
 type ResourceQuota struct {
