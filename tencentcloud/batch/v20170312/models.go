@@ -2344,7 +2344,7 @@ type InternetAccessible struct {
 	// 
 	// 示例值：WanIP
 	// 
-	// 此功能仅部分地区灰度开发，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
+	// 此功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
 	IPv4AddressType *string `json:"IPv4AddressType,omitnil,omitempty" name:"IPv4AddressType"`
 
 	// 弹性公网 IPv6 类型。
@@ -2354,7 +2354,7 @@ type InternetAccessible struct {
 	// 如需为资源分配IPv6地址，请指定弹性公网IPv6类型。
 	// 示例值：EIPv6
 	// 
-	// 此功能仅部分地区灰度开发，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
+	// 此功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
 	IPv6AddressType *string `json:"IPv6AddressType,omitnil,omitempty" name:"IPv6AddressType"`
 
 	// 高防包唯一ID，申请高防IP时，该字段必传。

@@ -1962,7 +1962,7 @@ type RunGroup struct {
 	// 输入COS地址。
 	InputCosUri *string `json:"InputCosUri,omitnil,omitempty" name:"InputCosUri"`
 
-	// 输入模版ID。
+	// 输入模板ID。
 	InputTemplateId *string `json:"InputTemplateId,omitnil,omitempty" name:"InputTemplateId"`
 
 	// WDL运行选项。

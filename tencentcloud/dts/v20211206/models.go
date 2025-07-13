@@ -3614,6 +3614,9 @@ type DifferenceItem struct {
 	// 数据库名
 	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
 
+	// schema
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
 	// 表名
 	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
 
@@ -6222,6 +6225,9 @@ type SkippedItem struct {
 	// 数据库名
 	Db *string `json:"Db,omitnil,omitempty" name:"Db"`
 
+	// schema名
+	Schema *string `json:"Schema,omitnil,omitempty" name:"Schema"`
+
 	// 表名
 	Table *string `json:"Table,omitnil,omitempty" name:"Table"`
 
@@ -6931,7 +6937,7 @@ type SyncDetailInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepInfos []*StepInfo `json:"StepInfos,omitnil,omitempty" name:"StepInfos"`
 
-	// 不能发起一致性校验的原因
+	// 不能发起内置校验的原因
 	CauseOfCompareDisable *string `json:"CauseOfCompareDisable,omitnil,omitempty" name:"CauseOfCompareDisable"`
 
 	// 任务的错误和解决方案信息

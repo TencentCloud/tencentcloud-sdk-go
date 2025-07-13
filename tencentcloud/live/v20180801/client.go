@@ -890,6 +890,55 @@ func (c *Client) CopyCasterWithContext(ctx context.Context, request *CopyCasterR
     return
 }
 
+func NewCreateAuditKeywordsRequest() (request *CreateAuditKeywordsRequest) {
+    request = &CreateAuditKeywordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "CreateAuditKeywords")
+    
+    
+    return
+}
+
+func NewCreateAuditKeywordsResponse() (response *CreateAuditKeywordsResponse) {
+    response = &CreateAuditKeywordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateAuditKeywords
+// 创建关键词，并关联到关键词库。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateAuditKeywords(request *CreateAuditKeywordsRequest) (response *CreateAuditKeywordsResponse, err error) {
+    return c.CreateAuditKeywordsWithContext(context.Background(), request)
+}
+
+// CreateAuditKeywords
+// 创建关键词，并关联到关键词库。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateAuditKeywordsWithContext(ctx context.Context, request *CreateAuditKeywordsRequest) (response *CreateAuditKeywordsResponse, err error) {
+    if request == nil {
+        request = NewCreateAuditKeywordsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAuditKeywords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAuditKeywordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCasterRequest() (request *CreateCasterRequest) {
     request = &CreateCasterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3129,6 +3178,55 @@ func (c *Client) CreateScreenshotTaskWithContext(ctx context.Context, request *C
     return
 }
 
+func NewDeleteAuditKeywordsRequest() (request *DeleteAuditKeywordsRequest) {
+    request = &DeleteAuditKeywordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DeleteAuditKeywords")
+    
+    
+    return
+}
+
+func NewDeleteAuditKeywordsResponse() (response *DeleteAuditKeywordsResponse) {
+    response = &DeleteAuditKeywordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteAuditKeywords
+// 删除关键词信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteAuditKeywords(request *DeleteAuditKeywordsRequest) (response *DeleteAuditKeywordsResponse, err error) {
+    return c.DeleteAuditKeywordsWithContext(context.Background(), request)
+}
+
+// DeleteAuditKeywords
+// 删除关键词信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteAuditKeywordsWithContext(ctx context.Context, request *DeleteAuditKeywordsRequest) (response *DeleteAuditKeywordsResponse, err error) {
+    if request == nil {
+        request = NewDeleteAuditKeywordsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAuditKeywords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAuditKeywordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCasterRequest() (request *DeleteCasterRequest) {
     request = &DeleteCasterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5362,6 +5460,55 @@ func (c *Client) DescribeAreaBillBandwidthAndFluxListWithContext(ctx context.Con
     request.SetContext(ctx)
     
     response = NewDescribeAreaBillBandwidthAndFluxListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAuditKeywordsRequest() (request *DescribeAuditKeywordsRequest) {
+    request = &DescribeAuditKeywordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeAuditKeywords")
+    
+    
+    return
+}
+
+func NewDescribeAuditKeywordsResponse() (response *DescribeAuditKeywordsResponse) {
+    response = &DescribeAuditKeywordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeAuditKeywords
+// 获取关键词信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeAuditKeywords(request *DescribeAuditKeywordsRequest) (response *DescribeAuditKeywordsResponse, err error) {
+    return c.DescribeAuditKeywordsWithContext(context.Background(), request)
+}
+
+// DescribeAuditKeywords
+// 获取关键词信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeAuditKeywordsWithContext(ctx context.Context, request *DescribeAuditKeywordsRequest) (response *DescribeAuditKeywordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAuditKeywordsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAuditKeywords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAuditKeywordsResponse()
     err = c.Send(request, response)
     return
 }

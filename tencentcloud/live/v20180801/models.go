@@ -1776,6 +1776,57 @@ func (r *CopyCasterResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateAuditKeywordsRequestParams struct {
+
+}
+
+type CreateAuditKeywordsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *CreateAuditKeywordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAuditKeywordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAuditKeywordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAuditKeywordsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateAuditKeywordsResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAuditKeywordsResponseParams `json:"Response"`
+}
+
+func (r *CreateAuditKeywordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAuditKeywordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateCasterInputPushUrlRequestParams struct {
 	// 导播台ID
 	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
@@ -4939,6 +4990,57 @@ type DelayInfo struct {
 }
 
 // Predefined struct for user
+type DeleteAuditKeywordsRequestParams struct {
+
+}
+
+type DeleteAuditKeywordsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DeleteAuditKeywordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAuditKeywordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAuditKeywordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAuditKeywordsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteAuditKeywordsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAuditKeywordsResponseParams `json:"Response"`
+}
+
+func (r *DeleteAuditKeywordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAuditKeywordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteCasterInputInfoRequestParams struct {
 	// 导播台ID
 	CasterId *uint64 `json:"CasterId,omitnil,omitempty" name:"CasterId"`
@@ -6751,6 +6853,57 @@ func (r *DescribeAreaBillBandwidthAndFluxListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAreaBillBandwidthAndFluxListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditKeywordsRequestParams struct {
+
+}
+
+type DescribeAuditKeywordsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeAuditKeywordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditKeywordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditKeywordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAuditKeywordsResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeAuditKeywordsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAuditKeywordsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAuditKeywordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAuditKeywordsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

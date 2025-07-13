@@ -2028,7 +2028,7 @@ type InstanceInfo struct {
 	// zookeeper节点描述信息
 	CommonSummary *NodesSummary `json:"CommonSummary,omitnil,omitempty" name:"CommonSummary"`
 
-	// 高可用，“true" "false"
+	// 高可用,"true" "false"
 	HA *string `json:"HA,omitnil,omitempty" name:"HA"`
 
 	// 访问地址，例如 "10.0.0.1:9000"
@@ -2147,6 +2147,9 @@ type InstanceInfo struct {
 
 	// 是否开启公网clb
 	HasPublicCloudClb *bool `json:"HasPublicCloudClb,omitnil,omitempty" name:"HasPublicCloudClb"`
+
+	// 可升级的zk版本
+	UpgradeZkVersions *string `json:"UpgradeZkVersions,omitnil,omitempty" name:"UpgradeZkVersions"`
 }
 
 type InstanceNode struct {
