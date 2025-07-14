@@ -268,7 +268,10 @@ func NewCreateCustomDomainResponse() (response *CreateCustomDomainResponse) {
 // 创建自定义域名
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CNAME = "FailedOperation.CNAME"
 //  INVALIDPARAMETERVALUE_CERTCONFIG_EMPTY = "InvalidParameterValue.CertConfig.empty"
+//  INVALIDPARAMETERVALUE_DOMAIN = "InvalidParameterValue.Domain"
+//  INVALIDPARAMETERVALUE_INVALIDCERTCONFIG = "InvalidParameterValue.InvalidCertConfig"
 func (c *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (response *CreateCustomDomainResponse, err error) {
     return c.CreateCustomDomainWithContext(context.Background(), request)
 }
@@ -277,7 +280,10 @@ func (c *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (respons
 // 创建自定义域名
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CNAME = "FailedOperation.CNAME"
 //  INVALIDPARAMETERVALUE_CERTCONFIG_EMPTY = "InvalidParameterValue.CertConfig.empty"
+//  INVALIDPARAMETERVALUE_DOMAIN = "InvalidParameterValue.Domain"
+//  INVALIDPARAMETERVALUE_INVALIDCERTCONFIG = "InvalidParameterValue.InvalidCertConfig"
 func (c *Client) CreateCustomDomainWithContext(ctx context.Context, request *CreateCustomDomainRequest) (response *CreateCustomDomainResponse, err error) {
     if request == nil {
         request = NewCreateCustomDomainRequest()
@@ -408,6 +414,7 @@ func NewCreateFunctionResponse() (response *CreateFunctionResponse) {
 //  LIMITEXCEEDED_CONTAINERIMAGEACCELERATEQUOTA = "LimitExceeded.ContainerImageAccelerateQuota"
 //  LIMITEXCEEDED_EIP = "LimitExceeded.Eip"
 //  LIMITEXCEEDED_FUNCTION = "LimitExceeded.Function"
+//  LIMITEXCEEDED_GPURESERVEDQUOTA = "LimitExceeded.GpuReservedQuota"
 //  LIMITEXCEEDED_INITTIMEOUT = "LimitExceeded.InitTimeout"
 //  LIMITEXCEEDED_INTRAIP = "LimitExceeded.IntraIp"
 //  LIMITEXCEEDED_MEMORY = "LimitExceeded.Memory"
@@ -541,6 +548,7 @@ func (c *Client) CreateFunction(request *CreateFunctionRequest) (response *Creat
 //  LIMITEXCEEDED_CONTAINERIMAGEACCELERATEQUOTA = "LimitExceeded.ContainerImageAccelerateQuota"
 //  LIMITEXCEEDED_EIP = "LimitExceeded.Eip"
 //  LIMITEXCEEDED_FUNCTION = "LimitExceeded.Function"
+//  LIMITEXCEEDED_GPURESERVEDQUOTA = "LimitExceeded.GpuReservedQuota"
 //  LIMITEXCEEDED_INITTIMEOUT = "LimitExceeded.InitTimeout"
 //  LIMITEXCEEDED_INTRAIP = "LimitExceeded.IntraIp"
 //  LIMITEXCEEDED_MEMORY = "LimitExceeded.Memory"
@@ -1991,6 +1999,7 @@ func NewGetFunctionLogsResponse() (response *GetFunctionLogsResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ES = "InternalError.ES"
 //  INTERNALERROR_EXCEPTION = "InternalError.Exception"
+//  INTERNALERROR_SEARCHFAILED = "InternalError.SearchFailed"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_CLS = "InvalidParameter.Cls"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -2027,6 +2036,7 @@ func (c *Client) GetFunctionLogs(request *GetFunctionLogsRequest) (response *Get
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ES = "InternalError.ES"
 //  INTERNALERROR_EXCEPTION = "InternalError.Exception"
+//  INTERNALERROR_SEARCHFAILED = "InternalError.SearchFailed"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_CLS = "InvalidParameter.Cls"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -3166,6 +3176,7 @@ func NewPublishVersionResponse() (response *PublishVersionResponse) {
 //  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
 //  LIMITEXCEEDED_CONTAINERIMAGEACCELERATE = "LimitExceeded.ContainerImageAccelerate"
 //  LIMITEXCEEDED_CONTAINERIMAGEACCELERATEQUOTA = "LimitExceeded.ContainerImageAccelerateQuota"
+//  LIMITEXCEEDED_FUNCTIONVERSIONS = "LimitExceeded.FunctionVersions"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
 //  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
@@ -3190,6 +3201,7 @@ func (c *Client) PublishVersion(request *PublishVersionRequest) (response *Publi
 //  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
 //  LIMITEXCEEDED_CONTAINERIMAGEACCELERATE = "LimitExceeded.ContainerImageAccelerate"
 //  LIMITEXCEEDED_CONTAINERIMAGEACCELERATEQUOTA = "LimitExceeded.ContainerImageAccelerateQuota"
+//  LIMITEXCEEDED_FUNCTIONVERSIONS = "LimitExceeded.FunctionVersions"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
 //  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
@@ -3895,6 +3907,7 @@ func NewUpdateFunctionConfigurationResponse() (response *UpdateFunctionConfigura
 //  INVALIDPARAMETERVALUE_VPC = "InvalidParameterValue.Vpc"
 //  INVALIDPARAMETERVALUE_WEBSOCKETSPARAMS = "InvalidParameterValue.WebSocketsParams"
 //  LIMITEXCEEDED_EIP = "LimitExceeded.Eip"
+//  LIMITEXCEEDED_FS = "LimitExceeded.Fs"
 //  LIMITEXCEEDED_INITTIMEOUT = "LimitExceeded.InitTimeout"
 //  LIMITEXCEEDED_INTRAIP = "LimitExceeded.IntraIp"
 //  LIMITEXCEEDED_MEMORY = "LimitExceeded.Memory"
@@ -3905,6 +3918,7 @@ func NewUpdateFunctionConfigurationResponse() (response *UpdateFunctionConfigura
 //  RESOURCENOTFOUND_CFSSTATUSERROR = "ResourceNotFound.CfsStatusError"
 //  RESOURCENOTFOUND_CFSVPCNOTMATCH = "ResourceNotFound.CfsVpcNotMatch"
 //  RESOURCENOTFOUND_CMQ = "ResourceNotFound.Cmq"
+//  RESOURCENOTFOUND_COSOBJECT = "ResourceNotFound.CosObject"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
 //  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
 //  RESOURCENOTFOUND_GETCFSMOUNTINSERROR = "ResourceNotFound.GetCfsMountInsError"
@@ -3983,6 +3997,7 @@ func (c *Client) UpdateFunctionConfiguration(request *UpdateFunctionConfiguratio
 //  INVALIDPARAMETERVALUE_VPC = "InvalidParameterValue.Vpc"
 //  INVALIDPARAMETERVALUE_WEBSOCKETSPARAMS = "InvalidParameterValue.WebSocketsParams"
 //  LIMITEXCEEDED_EIP = "LimitExceeded.Eip"
+//  LIMITEXCEEDED_FS = "LimitExceeded.Fs"
 //  LIMITEXCEEDED_INITTIMEOUT = "LimitExceeded.InitTimeout"
 //  LIMITEXCEEDED_INTRAIP = "LimitExceeded.IntraIp"
 //  LIMITEXCEEDED_MEMORY = "LimitExceeded.Memory"
@@ -3993,6 +4008,7 @@ func (c *Client) UpdateFunctionConfiguration(request *UpdateFunctionConfiguratio
 //  RESOURCENOTFOUND_CFSSTATUSERROR = "ResourceNotFound.CfsStatusError"
 //  RESOURCENOTFOUND_CFSVPCNOTMATCH = "ResourceNotFound.CfsVpcNotMatch"
 //  RESOURCENOTFOUND_CMQ = "ResourceNotFound.Cmq"
+//  RESOURCENOTFOUND_COSOBJECT = "ResourceNotFound.CosObject"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
 //  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
 //  RESOURCENOTFOUND_GETCFSMOUNTINSERROR = "ResourceNotFound.GetCfsMountInsError"

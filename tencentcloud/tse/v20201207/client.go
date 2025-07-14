@@ -4433,6 +4433,99 @@ func (c *Client) DescribeCloudNativeAPIGatewayServicesWithContext(ctx context.Co
     return
 }
 
+func NewDescribeCloudNativeAPIGatewayServicesLightRequest() (request *DescribeCloudNativeAPIGatewayServicesLightRequest) {
+    request = &DescribeCloudNativeAPIGatewayServicesLightRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeCloudNativeAPIGatewayServicesLight")
+    
+    
+    return
+}
+
+func NewDescribeCloudNativeAPIGatewayServicesLightResponse() (response *DescribeCloudNativeAPIGatewayServicesLightResponse) {
+    response = &DescribeCloudNativeAPIGatewayServicesLightResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudNativeAPIGatewayServicesLight
+// 轻量查询云原生网关服务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  FAILEDOPERATION_ROLE = "FailedOperation.Role"
+//  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
+//  INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNAUTHORIZEDOPERATION_CAMPASSROLENOTEXIST = "UnauthorizedOperation.CamPassRoleNotExist"
+//  UNAUTHORIZEDOPERATION_UIN = "UnauthorizedOperation.Uin"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeCloudNativeAPIGatewayServicesLight(request *DescribeCloudNativeAPIGatewayServicesLightRequest) (response *DescribeCloudNativeAPIGatewayServicesLightResponse, err error) {
+    return c.DescribeCloudNativeAPIGatewayServicesLightWithContext(context.Background(), request)
+}
+
+// DescribeCloudNativeAPIGatewayServicesLight
+// 轻量查询云原生网关服务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
+//  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  FAILEDOPERATION_ROLE = "FailedOperation.Role"
+//  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
+//  INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
+//  INVALIDPARAMETERVALUE_RESOURCEALREADYEXIST = "InvalidParameterValue.ResourceAlreadyExist"
+//  INVALIDPARAMETERVALUE_SPECIFICATION = "InvalidParameterValue.Specification"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+//  UNAUTHORIZEDOPERATION_CAMPASSROLENOTEXIST = "UnauthorizedOperation.CamPassRoleNotExist"
+//  UNAUTHORIZEDOPERATION_UIN = "UnauthorizedOperation.Uin"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DescribeCloudNativeAPIGatewayServicesLightWithContext(ctx context.Context, request *DescribeCloudNativeAPIGatewayServicesLightRequest) (response *DescribeCloudNativeAPIGatewayServicesLightResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudNativeAPIGatewayServicesLightRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudNativeAPIGatewayServicesLight require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudNativeAPIGatewayServicesLightResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudNativeAPIGatewayUpstreamRequest() (request *DescribeCloudNativeAPIGatewayUpstreamRequest) {
     request = &DescribeCloudNativeAPIGatewayUpstreamRequest{
         BaseRequest: &tchttp.BaseRequest{},

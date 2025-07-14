@@ -7808,7 +7808,7 @@ type HttpHeaderPathRule struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeaderName *string `json:"HeaderName,omitnil,omitempty" name:"HeaderName"`
 
-	// http 头部值，最多可设置 1000 个字符
+	// http 头部值，最多可设置 2000 个字符
 	// Mode 为 del 时非必填
 	// Mode 为 add/set 时必填
 	// 注意：此字段可能返回 null，表示取不到有效值。

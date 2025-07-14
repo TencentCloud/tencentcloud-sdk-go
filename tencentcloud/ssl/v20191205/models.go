@@ -2884,6 +2884,9 @@ type DeployRecord struct {
 
 	// 托管资源创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+
+	// 待部署总数
+	PendingTotalCount *int64 `json:"PendingTotalCount,omitnil,omitempty" name:"PendingTotalCount"`
 }
 
 type DeployRecordDetail struct {
@@ -5014,6 +5017,9 @@ type DescribeHostDeployRecordDetailResponseParams struct {
 	// 部署中总数
 	RunningTotalCount *int64 `json:"RunningTotalCount,omitnil,omitempty" name:"RunningTotalCount"`
 
+	// 带部署总数
+	PendingTotalCount *int64 `json:"PendingTotalCount,omitnil,omitempty" name:"PendingTotalCount"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -5569,6 +5575,9 @@ type DescribeHostUpdateRecordDetailResponseParams struct {
 
 	// 部署中总数,如果取不到返回0
 	RunningTotalCount *int64 `json:"RunningTotalCount,omitnil,omitempty" name:"RunningTotalCount"`
+
+	// 待部署总数
+	PendingTotalCount *int64 `json:"PendingTotalCount,omitnil,omitempty" name:"PendingTotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
@@ -8461,7 +8470,7 @@ type UploadCertificateResponseParams struct {
 	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitnil,omitempty" name:"CertificateId"`
 
-	// 重复证书的ID
+	// 当入参Repeatable为false的时候 返回的重复证书的ID，注意当用户上传相同的证书超过5000张的时候，当前接口会无视入参Repeatable，直接返回重复证书的ID。
 	RepeatCertId *string `json:"RepeatCertId,omitnil,omitempty" name:"RepeatCertId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

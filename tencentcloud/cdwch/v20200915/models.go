@@ -1045,7 +1045,7 @@ type DescribeCNInstancesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstancesList []*CnInstanceInfo `json:"InstancesList,omitnil,omitempty" name:"InstancesList"`
 
-	// -
+	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 

@@ -1176,6 +1176,267 @@ func (c *Client) DescribeJobRecordsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeLeakageCodesRequest() (request *DescribeLeakageCodesRequest) {
+    request = &DescribeLeakageCodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ctem", APIVersion, "DescribeLeakageCodes")
+    
+    
+    return
+}
+
+func NewDescribeLeakageCodesResponse() (response *DescribeLeakageCodesResponse) {
+    response = &DescribeLeakageCodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLeakageCodes
+// 获取代码泄露数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeLeakageCodes(request *DescribeLeakageCodesRequest) (response *DescribeLeakageCodesResponse, err error) {
+    return c.DescribeLeakageCodesWithContext(context.Background(), request)
+}
+
+// DescribeLeakageCodes
+// 获取代码泄露数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeLeakageCodesWithContext(ctx context.Context, request *DescribeLeakageCodesRequest) (response *DescribeLeakageCodesResponse, err error) {
+    if request == nil {
+        request = NewDescribeLeakageCodesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLeakageCodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLeakageCodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLeakageDatasRequest() (request *DescribeLeakageDatasRequest) {
+    request = &DescribeLeakageDatasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ctem", APIVersion, "DescribeLeakageDatas")
+    
+    
+    return
+}
+
+func NewDescribeLeakageDatasResponse() (response *DescribeLeakageDatasResponse) {
+    response = &DescribeLeakageDatasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLeakageDatas
+// 获取数据泄露事件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeLeakageDatas(request *DescribeLeakageDatasRequest) (response *DescribeLeakageDatasResponse, err error) {
+    return c.DescribeLeakageDatasWithContext(context.Background(), request)
+}
+
+// DescribeLeakageDatas
+// 获取数据泄露事件
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeLeakageDatasWithContext(ctx context.Context, request *DescribeLeakageDatasRequest) (response *DescribeLeakageDatasResponse, err error) {
+    if request == nil {
+        request = NewDescribeLeakageDatasRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLeakageDatas require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLeakageDatasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLeakageEmailsRequest() (request *DescribeLeakageEmailsRequest) {
+    request = &DescribeLeakageEmailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ctem", APIVersion, "DescribeLeakageEmails")
+    
+    
+    return
+}
+
+func NewDescribeLeakageEmailsResponse() (response *DescribeLeakageEmailsResponse) {
+    response = &DescribeLeakageEmailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeLeakageEmails
+// 获取邮箱泄露数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeLeakageEmails(request *DescribeLeakageEmailsRequest) (response *DescribeLeakageEmailsResponse, err error) {
+    return c.DescribeLeakageEmailsWithContext(context.Background(), request)
+}
+
+// DescribeLeakageEmails
+// 获取邮箱泄露数据
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REGIONERROR = "RegionError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeLeakageEmailsWithContext(ctx context.Context, request *DescribeLeakageEmailsRequest) (response *DescribeLeakageEmailsResponse, err error) {
+    if request == nil {
+        request = NewDescribeLeakageEmailsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLeakageEmails require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLeakageEmailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeManagesRequest() (request *DescribeManagesRequest) {
     request = &DescribeManagesRequest{
         BaseRequest: &tchttp.BaseRequest{},

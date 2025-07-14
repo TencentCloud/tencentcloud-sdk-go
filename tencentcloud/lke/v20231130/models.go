@@ -1121,95 +1121,6 @@ type Context struct {
 }
 
 // Predefined struct for user
-type ConvertDocumentRequestParams struct {
-	// 图片的 Url 地址。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经 Base64 编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
-
-	// 图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
-
-	// 当传入文件是PDF类型（FileType=PDF）时，用来指定pdf识别的起始页码，识别的页码包含当前值。
-	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
-
-	// 当传入文件是PDF类型（FileType=PDF）时，用来指定pdf识别的结束页码，识别的页码包含当前值。
-	// 建议一次请求的页面不超过3页。
-	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
-}
-
-type ConvertDocumentRequest struct {
-	*tchttp.BaseRequest
-	
-	// 图片的 Url 地址。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经 Base64 编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
-
-	// 图片的 Base64 值。 支持的图片格式：PNG、JPG、JPEG、PDF，暂不支持 GIF 格式。 支持的图片大小：所下载图片经Base64编码后不超过 8M。图片下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
-
-	// 当传入文件是PDF类型（FileType=PDF）时，用来指定pdf识别的起始页码，识别的页码包含当前值。
-	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
-
-	// 当传入文件是PDF类型（FileType=PDF）时，用来指定pdf识别的结束页码，识别的页码包含当前值。
-	// 建议一次请求的页面不超过3页。
-	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
-}
-
-func (r *ConvertDocumentRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ConvertDocumentRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "FileUrl")
-	delete(f, "FileBase64")
-	delete(f, "FileStartPageNumber")
-	delete(f, "FileEndPageNumber")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ConvertDocumentRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ConvertDocumentResponseParams struct {
-	// 识别生成的word文件base64编码的字符串
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	WordRecognizeInfo []*WordRecognizeInfo `json:"WordRecognizeInfo,omitnil,omitempty" name:"WordRecognizeInfo"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type ConvertDocumentResponse struct {
-	*tchttp.BaseResponse
-	Response *ConvertDocumentResponseParams `json:"Response"`
-}
-
-func (r *ConvertDocumentResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ConvertDocumentResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type Coord struct {
-	// 横坐标
-	X *int64 `json:"X,omitnil,omitempty" name:"X"`
-
-	// 纵坐标
-	Y *int64 `json:"Y,omitnil,omitempty" name:"Y"`
-}
-
-// Predefined struct for user
 type CreateAgentRequestParams struct {
 	// 应用ID
 	AppBizId *string `json:"AppBizId,omitnil,omitempty" name:"AppBizId"`
@@ -1438,84 +1349,6 @@ func (r *CreateAttributeLabelResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAttributeLabelResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateCorpRequestParams struct {
-	// 企业全称
-	FullName *string `json:"FullName,omitnil,omitempty" name:"FullName"`
-
-	// 联系人名称
-	ContactName *string `json:"ContactName,omitnil,omitempty" name:"ContactName"`
-
-	// 联系人邮箱
-	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
-
-	// 联系人手机号
-	Telephone *string `json:"Telephone,omitnil,omitempty" name:"Telephone"`
-}
-
-type CreateCorpRequest struct {
-	*tchttp.BaseRequest
-	
-	// 企业全称
-	FullName *string `json:"FullName,omitnil,omitempty" name:"FullName"`
-
-	// 联系人名称
-	ContactName *string `json:"ContactName,omitnil,omitempty" name:"ContactName"`
-
-	// 联系人邮箱
-	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
-
-	// 联系人手机号
-	Telephone *string `json:"Telephone,omitnil,omitempty" name:"Telephone"`
-}
-
-func (r *CreateCorpRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateCorpRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "FullName")
-	delete(f, "ContactName")
-	delete(f, "Email")
-	delete(f, "Telephone")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCorpRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type CreateCorpResponseParams struct {
-	// 企业ID
-	CorpBizId *string `json:"CorpBizId,omitnil,omitempty" name:"CorpBizId"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type CreateCorpResponse struct {
-	*tchttp.BaseResponse
-	Response *CreateCorpResponseParams `json:"Response"`
-}
-
-func (r *CreateCorpResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *CreateCorpResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3481,78 +3314,6 @@ func (r *DescribeConcurrencyUsageResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeCorpRequestParams struct {
-
-}
-
-type DescribeCorpRequest struct {
-	*tchttp.BaseRequest
-	
-}
-
-func (r *DescribeCorpRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeCorpRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCorpRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeCorpResponseParams struct {
-	// 企业ID
-	CorpBizId *string `json:"CorpBizId,omitnil,omitempty" name:"CorpBizId"`
-
-	// 应用配额
-	RobotQuota *uint64 `json:"RobotQuota,omitnil,omitempty" name:"RobotQuota"`
-
-	// 企业全称
-	FullName *string `json:"FullName,omitnil,omitempty" name:"FullName"`
-
-	// 是否试用
-	IsTrial *bool `json:"IsTrial,omitnil,omitempty" name:"IsTrial"`
-
-	// 是否试用过期
-	IsTrialExpired *bool `json:"IsTrialExpired,omitnil,omitempty" name:"IsTrialExpired"`
-
-	// 可用应用数量
-	AvailableAppQuota *uint64 `json:"AvailableAppQuota,omitnil,omitempty" name:"AvailableAppQuota"`
-
-	// 是否支持自定义模型配置
-	IsSupportCustomModel *bool `json:"IsSupportCustomModel,omitnil,omitempty" name:"IsSupportCustomModel"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type DescribeCorpResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeCorpResponseParams `json:"Response"`
-}
-
-func (r *DescribeCorpResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeCorpResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeDocRequestParams struct {
 	// 应用ID
 	BotBizId *string `json:"BotBizId,omitnil,omitempty" name:"BotBizId"`
@@ -5087,80 +4848,6 @@ type DocSegment struct {
 	PageInfos []*uint64 `json:"PageInfos,omitnil,omitempty" name:"PageInfos"`
 }
 
-type DocumentElement struct {
-	// 文档元素索引
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Index *int64 `json:"Index,omitnil,omitempty" name:"Index"`
-
-	// 元素类型，包括paragraph、table、formula、figure、title、header、footer、figure_text
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
-
-	// 元素内容，当type为figure或formula(公式识别关闭)时该字段内容为图片的位置
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Text *string `json:"Text,omitnil,omitempty" name:"Text"`
-
-	// 元素坐标，左上角(x1, y1)，右上角(x2, y2)，右下角(x3, y3)，左下角(x4, y4)
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Polygon *Polygon `json:"Polygon,omitnil,omitempty" name:"Polygon"`
-
-	// 元素层级
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Level *int64 `json:"Level,omitnil,omitempty" name:"Level"`
-
-	// 入参开启EnableInsetImage后返回，表示在InsetImagePackage中的内嵌图片名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	InsetImageName *string `json:"InsetImageName,omitnil,omitempty" name:"InsetImageName"`
-
-	// 嵌套的文档元素信息，一般包含的是文档内嵌入图片的文字识别结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Elements []*DocumentElement `json:"Elements,omitnil,omitempty" name:"Elements"`
-}
-
-type DocumentRecognizeInfo struct {
-	// 输入PDF文件的页码，从1开始。输入图片的话值始终为1
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
-
-	// 旋转角度
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Angle *int64 `json:"Angle,omitnil,omitempty" name:"Angle"`
-
-	// AI算法识别处理后的图片高度
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
-
-	// AI算法识别处理后的图片宽度
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
-
-	// 图片的原始高度，输入PDF文件则表示单页PDF转图片之后的图片高度
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	OriginHeight *int64 `json:"OriginHeight,omitnil,omitempty" name:"OriginHeight"`
-
-	// 图片的原始宽度，输入PDF文件则表示单页PDF转图片之后的图片宽度
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	OriginWidth *int64 `json:"OriginWidth,omitnil,omitempty" name:"OriginWidth"`
-
-	// 文档元素信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Elements []*DocumentElement `json:"Elements,omitnil,omitempty" name:"Elements"`
-
-	// 旋转角度
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RotatedAngle *float64 `json:"RotatedAngle,omitnil,omitempty" name:"RotatedAngle"`
-}
-
-type EmbeddingObject struct {
-	// 向量
-	Embedding []*float64 `json:"Embedding,omitnil,omitempty" name:"Embedding"`
-}
-
 // Predefined struct for user
 type ExportAttributeLabelRequestParams struct {
 	// 应用ID
@@ -5855,80 +5542,6 @@ func (r *GetDocPreviewResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type GetEmbeddingRequestParams struct {
-	// 模型名称
-	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
-
-	// 需要 embedding 的文本, 单条文本最大长度500个字符, 总条数最大7条
-	Inputs []*string `json:"Inputs,omitnil,omitempty" name:"Inputs"`
-
-	// 是否在线, 后台异步任务使用离线, 实时任务使用在线, 默认值: false
-	Online *bool `json:"Online,omitnil,omitempty" name:"Online"`
-}
-
-type GetEmbeddingRequest struct {
-	*tchttp.BaseRequest
-	
-	// 模型名称
-	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
-
-	// 需要 embedding 的文本, 单条文本最大长度500个字符, 总条数最大7条
-	Inputs []*string `json:"Inputs,omitnil,omitempty" name:"Inputs"`
-
-	// 是否在线, 后台异步任务使用离线, 实时任务使用在线, 默认值: false
-	Online *bool `json:"Online,omitnil,omitempty" name:"Online"`
-}
-
-func (r *GetEmbeddingRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetEmbeddingRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Model")
-	delete(f, "Inputs")
-	delete(f, "Online")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetEmbeddingRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type GetEmbeddingResponseParams struct {
-	// 特征
-	Data []*EmbeddingObject `json:"Data,omitnil,omitempty" name:"Data"`
-
-	// 消耗量，返回TotalToken
-	Usage *Usage `json:"Usage,omitnil,omitempty" name:"Usage"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type GetEmbeddingResponse struct {
-	*tchttp.BaseResponse
-	Response *GetEmbeddingResponseParams `json:"Response"`
-}
-
-func (r *GetEmbeddingResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetEmbeddingResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type GetLikeDataCountRequestParams struct {
 	// 开始日期
 	StartTime *uint64 `json:"StartTime,omitnil,omitempty" name:"StartTime"`
@@ -6146,69 +5759,6 @@ func (r *GetMsgRecordResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetMsgRecordResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type GetReconstructDocumentResultRequestParams struct {
-	// 任务唯一Id。[CreateReconstructDocumentFlow](https://cloud.tencent.com/document/product/1759/107506) 返回的TaskId。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-type GetReconstructDocumentResultRequest struct {
-	*tchttp.BaseRequest
-	
-	// 任务唯一Id。[CreateReconstructDocumentFlow](https://cloud.tencent.com/document/product/1759/107506) 返回的TaskId。
-	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
-}
-
-func (r *GetReconstructDocumentResultRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetReconstructDocumentResultRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "TaskId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetReconstructDocumentResultRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type GetReconstructDocumentResultResponseParams struct {
-	// 任务状态: Success->执行完成；Processing->执行中；Failed->执行失败；WaitExecute->等待执行。
-	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
-
-	// 本次文档解析的结果文件，存储在腾讯云COS的下载URL，下载URL的有效期为10分钟。
-	DocumentRecognizeResultUrl *string `json:"DocumentRecognizeResultUrl,omitnil,omitempty" name:"DocumentRecognizeResultUrl"`
-
-	// 本次文档解析失败的页码信息。
-	FailedPages []*ReconstructDocumentFailedPage `json:"FailedPages,omitnil,omitempty" name:"FailedPages"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type GetReconstructDocumentResultResponse struct {
-	*tchttp.BaseResponse
-	Response *GetReconstructDocumentResultResponseParams `json:"Response"`
-}
-
-func (r *GetReconstructDocumentResultResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetReconstructDocumentResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9385,17 +8935,6 @@ func (r *ListWorkflowRunsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type Message struct {
-	// role表示角色  user标识用户提问，assistant标识返回的答案
-	// 
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Role *string `json:"Role,omitnil,omitempty" name:"Role"`
-
-	// 对话内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
-}
-
 type ModelInfo struct {
 	// 模型名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -10715,20 +10254,6 @@ type PluginToolReqParam struct {
 	AnyOf []*PluginToolReqParam `json:"AnyOf,omitnil,omitempty" name:"AnyOf"`
 }
 
-type Polygon struct {
-	// 左上顶点坐标
-	LeftTop *Coord `json:"LeftTop,omitnil,omitempty" name:"LeftTop"`
-
-	// 右上顶点坐标
-	RightTop *Coord `json:"RightTop,omitnil,omitempty" name:"RightTop"`
-
-	// 右下顶点坐标
-	RightBottom *Coord `json:"RightBottom,omitnil,omitempty" name:"RightBottom"`
-
-	// 左下顶点坐标
-	LeftBottom *Coord `json:"LeftBottom,omitnil,omitempty" name:"LeftBottom"`
-}
-
 type Procedure struct {
 	// 执行过程英语名
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -10879,80 +10404,6 @@ type QAQuery struct {
 	QueryType *string `json:"QueryType,omitnil,omitempty" name:"QueryType"`
 }
 
-// Predefined struct for user
-type QueryRewriteRequestParams struct {
-	// 需要改写的问题
-	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
-
-	// 需要改写的多轮历史会话，每轮历史对话需要包含user（问）和assistant（答）成对输入，由于模型字符限制，最多提供4轮对话。
-	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
-
-	// 模型名称
-	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
-}
-
-type QueryRewriteRequest struct {
-	*tchttp.BaseRequest
-	
-	// 需要改写的问题
-	Question *string `json:"Question,omitnil,omitempty" name:"Question"`
-
-	// 需要改写的多轮历史会话，每轮历史对话需要包含user（问）和assistant（答）成对输入，由于模型字符限制，最多提供4轮对话。
-	Messages []*Message `json:"Messages,omitnil,omitempty" name:"Messages"`
-
-	// 模型名称
-	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
-}
-
-func (r *QueryRewriteRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *QueryRewriteRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Question")
-	delete(f, "Messages")
-	delete(f, "Model")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryRewriteRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type QueryRewriteResponseParams struct {
-	// 改写结果
-	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
-
-	// 消耗量，返回输入token数，输出token数以及总token数
-	Usage *Usage `json:"Usage,omitnil,omitempty" name:"Usage"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type QueryRewriteResponse struct {
-	*tchttp.BaseResponse
-	Response *QueryRewriteResponseParams `json:"Response"`
-}
-
-func (r *QueryRewriteResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *QueryRewriteResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type QuoteInfo struct {
 	// 参考来源位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -11035,119 +10486,6 @@ func (r *RateMsgRecordResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RateMsgRecordResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type ReRankDataObject struct {
-	// 第一段内容
-	PromptA *string `json:"PromptA,omitnil,omitempty" name:"PromptA"`
-
-	// 第二段内容
-	PromptB *string `json:"PromptB,omitnil,omitempty" name:"PromptB"`
-}
-
-type ReconstructDocumentConfig struct {
-	// 生成的Markdown中是否嵌入图片
-	EnableInsetImage *bool `json:"EnableInsetImage,omitnil,omitempty" name:"EnableInsetImage"`
-}
-
-type ReconstructDocumentFailedPage struct {
-	// 失败页码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
-}
-
-// Predefined struct for user
-type ReconstructDocumentRequestParams struct {
-	// 文件的 Base64 值。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
-	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
-
-	// 文件的 Url 地址。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经 Base64 编码后不超过 8M。文件下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
-
-	// 当传入文件是PDF类型时，用来指定pdf识别的起始页码，识别的页码包含当前值。默认为1，表示从pdf文件的第1页开始识别。
-	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
-
-	// 当传入文件是PDF类型时，用来指定pdf识别的结束页码，识别的页码包含当前值。默认为10，表示识别到pdf文件的第10页。单次调用最多支持识别10页内容，即FileEndPageNumber-FileStartPageNumber需要不大于10。
-	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
-
-	// 配置选项，支持配置是否在生成的Markdown中是否嵌入图片
-	Config *ReconstructDocumentConfig `json:"Config,omitnil,omitempty" name:"Config"`
-}
-
-type ReconstructDocumentRequest struct {
-	*tchttp.BaseRequest
-	
-	// 文件的 Base64 值。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经Base64编码后不超过 8M。文件下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。
-	FileBase64 *string `json:"FileBase64,omitnil,omitempty" name:"FileBase64"`
-
-	// 文件的 Url 地址。 支持的文件格式：PNG、JPG、JPEG、PDF。 支持的文件大小：所下载文件经 Base64 编码后不超过 8M。文件下载时间不超过 3 秒。 支持的图片像素：单边介于20-10000px之间。 文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-	FileUrl *string `json:"FileUrl,omitnil,omitempty" name:"FileUrl"`
-
-	// 当传入文件是PDF类型时，用来指定pdf识别的起始页码，识别的页码包含当前值。默认为1，表示从pdf文件的第1页开始识别。
-	FileStartPageNumber *int64 `json:"FileStartPageNumber,omitnil,omitempty" name:"FileStartPageNumber"`
-
-	// 当传入文件是PDF类型时，用来指定pdf识别的结束页码，识别的页码包含当前值。默认为10，表示识别到pdf文件的第10页。单次调用最多支持识别10页内容，即FileEndPageNumber-FileStartPageNumber需要不大于10。
-	FileEndPageNumber *int64 `json:"FileEndPageNumber,omitnil,omitempty" name:"FileEndPageNumber"`
-
-	// 配置选项，支持配置是否在生成的Markdown中是否嵌入图片
-	Config *ReconstructDocumentConfig `json:"Config,omitnil,omitempty" name:"Config"`
-}
-
-func (r *ReconstructDocumentRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ReconstructDocumentRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "FileBase64")
-	delete(f, "FileUrl")
-	delete(f, "FileStartPageNumber")
-	delete(f, "FileEndPageNumber")
-	delete(f, "Config")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReconstructDocumentRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ReconstructDocumentResponseParams struct {
-	// 识别生成的Markdown文件base64编码的字符串
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	MarkdownBase64 *string `json:"MarkdownBase64,omitnil,omitempty" name:"MarkdownBase64"`
-
-	// 输入文件中嵌入的图片放在一个文件夹中打包为.zip压缩文件，识别生成的Markdown文件通过路径关联插入本文件夹中的图片。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	InsetImagePackage *string `json:"InsetImagePackage,omitnil,omitempty" name:"InsetImagePackage"`
-
-	// 输入文件中嵌入的图片中文字内容的识别结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DocumentRecognizeInfo []*DocumentRecognizeInfo `json:"DocumentRecognizeInfo,omitnil,omitempty" name:"DocumentRecognizeInfo"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type ReconstructDocumentResponse struct {
-	*tchttp.BaseResponse
-	Response *ReconstructDocumentResponseParams `json:"Response"`
-}
-
-func (r *ReconstructDocumentResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ReconstructDocumentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11717,98 +11055,6 @@ type RunNodeInfo struct {
 	// 当前节点的所有槽位的值，key：SlotID。没有值的时候也要返回空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlotValues []*ValueInfo `json:"SlotValues,omitnil,omitempty" name:"SlotValues"`
-}
-
-// Predefined struct for user
-type RunReRankRequestParams struct {
-	// 查询内容，必填
-	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
-
-	// 文档列表，必填，最多20个
-	Docs []*string `json:"Docs,omitnil,omitempty" name:"Docs"`
-
-	// 模型名称, 非必填，默认: lke-reranker-base
-	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
-
-	// 需要计算关联性的2段内容
-	//
-	// Deprecated: DataList is deprecated.
-	DataList []*ReRankDataObject `json:"DataList,omitnil,omitempty" name:"DataList"`
-
-	// 是否在线, 后台异步任务使用离线, 实时任务使用在线, 默认值: false
-	//
-	// Deprecated: Online is deprecated.
-	Online *bool `json:"Online,omitnil,omitempty" name:"Online"`
-}
-
-type RunReRankRequest struct {
-	*tchttp.BaseRequest
-	
-	// 查询内容，必填
-	Query *string `json:"Query,omitnil,omitempty" name:"Query"`
-
-	// 文档列表，必填，最多20个
-	Docs []*string `json:"Docs,omitnil,omitempty" name:"Docs"`
-
-	// 模型名称, 非必填，默认: lke-reranker-base
-	Model *string `json:"Model,omitnil,omitempty" name:"Model"`
-
-	// 需要计算关联性的2段内容
-	DataList []*ReRankDataObject `json:"DataList,omitnil,omitempty" name:"DataList"`
-
-	// 是否在线, 后台异步任务使用离线, 实时任务使用在线, 默认值: false
-	Online *bool `json:"Online,omitnil,omitempty" name:"Online"`
-}
-
-func (r *RunReRankRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RunReRankRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Query")
-	delete(f, "Docs")
-	delete(f, "Model")
-	delete(f, "DataList")
-	delete(f, "Online")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunReRankRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type RunReRankResponseParams struct {
-	// 相关性, 数值越大越相关
-	ScoreList []*float64 `json:"ScoreList,omitnil,omitempty" name:"ScoreList"`
-
-	// 消耗量，仅返回TotalToken
-	Usage *Usage `json:"Usage,omitnil,omitempty" name:"Usage"`
-
-	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
-}
-
-type RunReRankResponse struct {
-	*tchttp.BaseResponse
-	Response *RunReRankResponseParams `json:"Response"`
-}
-
-func (r *RunReRankResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RunReRankResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -12670,20 +11916,6 @@ func (r *UploadAttributeLabelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type Usage struct {
-	// 文档页数
-	TotalPages *int64 `json:"TotalPages,omitnil,omitempty" name:"TotalPages"`
-
-	// 输入token数
-	InputTokens *int64 `json:"InputTokens,omitnil,omitempty" name:"InputTokens"`
-
-	// 输出token数
-	OutputTokens *int64 `json:"OutputTokens,omitnil,omitempty" name:"OutputTokens"`
-
-	// 总token数
-	TotalTokens *int64 `json:"TotalTokens,omitnil,omitempty" name:"TotalTokens"`
-}
-
 type UserBaseInfo struct {
 	// 用户ID
 	UserBizId *string `json:"UserBizId,omitnil,omitempty" name:"UserBizId"`
@@ -12814,16 +12046,6 @@ type VoiceConfig struct {
 	// 音色名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VoiceName *string `json:"VoiceName,omitnil,omitempty" name:"VoiceName"`
-}
-
-type WordRecognizeInfo struct {
-	// 输入文件的页码数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PageNumber *int64 `json:"PageNumber,omitnil,omitempty" name:"PageNumber"`
-
-	// word的base64
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	WordBase64 *string `json:"WordBase64,omitnil,omitempty" name:"WordBase64"`
 }
 
 type WorkFlowSummary struct {

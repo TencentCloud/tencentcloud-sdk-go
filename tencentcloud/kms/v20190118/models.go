@@ -709,6 +709,27 @@ type DataKeyMetadata struct {
 
 	// 资源ID，格式：creatorUin/$creatorUin/$dataKeyId
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
+
+	// 密钥是否是主副本。0:主本，1:同步副本。
+	IsSyncReplica *int64 `json:"IsSyncReplica,omitnil,omitempty" name:"IsSyncReplica"`
+
+	// 同步的原始地域
+	SourceRegion *string `json:"SourceRegion,omitnil,omitempty" name:"SourceRegion"`
+
+	// 密钥同步的状态，0:未同步，1:同步成功，2:同步失败，3:同步中。
+	SyncStatus *int64 `json:"SyncStatus,omitnil,omitempty" name:"SyncStatus"`
+
+	// 同步的结果描述
+	SyncMessages *string `json:"SyncMessages,omitnil,omitempty" name:"SyncMessages"`
+
+	// 同步的开始时间
+	SyncStartTime *uint64 `json:"SyncStartTime,omitnil,omitempty" name:"SyncStartTime"`
+
+	// 同步的结束时间
+	SyncEndTime *uint64 `json:"SyncEndTime,omitnil,omitempty" name:"SyncEndTime"`
+
+	// 同步的原始集群，如果为空，是公有云公共集群
+	SourceHsmClusterId *string `json:"SourceHsmClusterId,omitnil,omitempty" name:"SourceHsmClusterId"`
 }
 
 // Predefined struct for user
@@ -1433,6 +1454,14 @@ func (r *DescribeWhiteBoxServiceStatusResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeWhiteBoxServiceStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DestinationSyncConfig struct {
+	// 同步任务的目标地域
+	DestinationRegion *string `json:"DestinationRegion,omitnil,omitempty" name:"DestinationRegion"`
+
+	// HsmClusterId为空表示公有云共享版，如果不为空表示地域下独享版集群。
+	HsmClusterId *string `json:"HsmClusterId,omitnil,omitempty" name:"HsmClusterId"`
 }
 
 type DeviceFingerprint struct {
@@ -3010,6 +3039,12 @@ type GetServiceStatusResponseParams struct {
 	// IsAllowedDataKeyHosted为1时有效，已使用的数据密钥数量。
 	DataKeyUsedCount *uint64 `json:"DataKeyUsedCount,omitnil,omitempty" name:"DataKeyUsedCount"`
 
+	// 同步任务的目标地域信息
+	SyncTaskList []*DestinationSyncConfig `json:"SyncTaskList,omitnil,omitempty" name:"SyncTaskList"`
+
+	// 是否支持同步任务。true:支持，false:不支持。
+	IsAllowedSync *bool `json:"IsAllowedSync,omitnil,omitempty" name:"IsAllowedSync"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -3261,6 +3296,27 @@ type KeyMetadata struct {
 
 	// 上次乱转时间（Unix timestamp）
 	LastRotateTime *uint64 `json:"LastRotateTime,omitnil,omitempty" name:"LastRotateTime"`
+
+	//  密钥是否是主副本。0:主本，1:同步副本。
+	IsSyncReplica *int64 `json:"IsSyncReplica,omitnil,omitempty" name:"IsSyncReplica"`
+
+	// 同步的原始地域
+	SourceRegion *string `json:"SourceRegion,omitnil,omitempty" name:"SourceRegion"`
+
+	// 密钥同步的状态，0:未同步,1:同步成功,2:同步失败,3:同步中。
+	SyncStatus *int64 `json:"SyncStatus,omitnil,omitempty" name:"SyncStatus"`
+
+	// 同步的结果描述
+	SyncMessages *string `json:"SyncMessages,omitnil,omitempty" name:"SyncMessages"`
+
+	// 同步的开始时间
+	SyncStartTime *uint64 `json:"SyncStartTime,omitnil,omitempty" name:"SyncStartTime"`
+
+	// 同步的结束时间
+	SyncEndTime *uint64 `json:"SyncEndTime,omitnil,omitempty" name:"SyncEndTime"`
+
+	// 同步的原始集群，如果为空，是公有云公共集群
+	SourceHsmClusterId *string `json:"SourceHsmClusterId,omitnil,omitempty" name:"SourceHsmClusterId"`
 }
 
 // Predefined struct for user

@@ -131,77 +131,6 @@ func (c *Client) CheckAttributeLabelReferWithContext(ctx context.Context, reques
     return
 }
 
-func NewConvertDocumentRequest() (request *ConvertDocumentRequest) {
-    request = &ConvertDocumentRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("lke", APIVersion, "ConvertDocument")
-    
-    
-    return
-}
-
-func NewConvertDocumentResponse() (response *ConvertDocumentResponse) {
-    response = &ConvertDocumentResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ConvertDocument
-// 产品规划
-//
-// 
-//
-// 接口支持图片和PDF转可编辑word格式文件，将文件中的图片、文本、表格等元素识别，并根据位置进行还原。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) ConvertDocument(request *ConvertDocumentRequest) (response *ConvertDocumentResponse, err error) {
-    return c.ConvertDocumentWithContext(context.Background(), request)
-}
-
-// ConvertDocument
-// 产品规划
-//
-// 
-//
-// 接口支持图片和PDF转可编辑word格式文件，将文件中的图片、文本、表格等元素识别，并根据位置进行还原。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) ConvertDocumentWithContext(ctx context.Context, request *ConvertDocumentRequest) (response *ConvertDocumentResponse, err error) {
-    if request == nil {
-        request = NewConvertDocumentRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ConvertDocument require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewConvertDocumentResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateAgentRequest() (request *CreateAgentRequest) {
     request = &CreateAgentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -223,32 +152,12 @@ func NewCreateAgentResponse() (response *CreateAgentResponse) {
 
 // CreateAgent
 // 你创建一个Agent
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) CreateAgent(request *CreateAgentRequest) (response *CreateAgentResponse, err error) {
     return c.CreateAgentWithContext(context.Background(), request)
 }
 
 // CreateAgent
 // 你创建一个Agent
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) CreateAgentWithContext(ctx context.Context, request *CreateAgentRequest) (response *CreateAgentResponse, err error) {
     if request == nil {
         request = NewCreateAgentRequest()
@@ -286,32 +195,12 @@ func NewCreateAppResponse() (response *CreateAppResponse) {
 
 // CreateApp
 // 创建知识引擎应用。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) CreateApp(request *CreateAppRequest) (response *CreateAppResponse, err error) {
     return c.CreateAppWithContext(context.Background(), request)
 }
 
 // CreateApp
 // 创建知识引擎应用。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
-//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) CreateAppWithContext(ctx context.Context, request *CreateAppRequest) (response *CreateAppResponse, err error) {
     if request == nil {
         request = NewCreateAppRequest()
@@ -373,55 +262,6 @@ func (c *Client) CreateAttributeLabelWithContext(ctx context.Context, request *C
     request.SetContext(ctx)
     
     response = NewCreateAttributeLabelResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewCreateCorpRequest() (request *CreateCorpRequest) {
-    request = &CreateCorpRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("lke", APIVersion, "CreateCorp")
-    
-    
-    return
-}
-
-func NewCreateCorpResponse() (response *CreateCorpResponse) {
-    response = &CreateCorpResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// CreateCorp
-// 创建企业
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CreateCorp(request *CreateCorpRequest) (response *CreateCorpResponse, err error) {
-    return c.CreateCorpWithContext(context.Background(), request)
-}
-
-// CreateCorp
-// 创建企业
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) CreateCorpWithContext(ctx context.Context, request *CreateCorpRequest) (response *CreateCorpResponse, err error) {
-    if request == nil {
-        request = NewCreateCorpRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateCorp require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateCorpResponse()
     err = c.Send(request, response)
     return
 }
@@ -1606,55 +1446,6 @@ func (c *Client) DescribeConcurrencyUsageGraphWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeConcurrencyUsageGraphResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeCorpRequest() (request *DescribeCorpRequest) {
-    request = &DescribeCorpRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("lke", APIVersion, "DescribeCorp")
-    
-    
-    return
-}
-
-func NewDescribeCorpResponse() (response *DescribeCorpResponse) {
-    response = &DescribeCorpResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// DescribeCorp
-// 企业详情
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeCorp(request *DescribeCorpRequest) (response *DescribeCorpResponse, err error) {
-    return c.DescribeCorpWithContext(context.Background(), request)
-}
-
-// DescribeCorp
-// 企业详情
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) DescribeCorpWithContext(ctx context.Context, request *DescribeCorpRequest) (response *DescribeCorpResponse, err error) {
-    if request == nil {
-        request = NewDescribeCorpRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeCorp require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeCorpResponse()
     err = c.Send(request, response)
     return
 }
@@ -2906,63 +2697,6 @@ func (c *Client) GetDocPreviewWithContext(ctx context.Context, request *GetDocPr
     return
 }
 
-func NewGetEmbeddingRequest() (request *GetEmbeddingRequest) {
-    request = &GetEmbeddingRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("lke", APIVersion, "GetEmbedding")
-    
-    
-    return
-}
-
-func NewGetEmbeddingResponse() (response *GetEmbeddingResponse) {
-    response = &GetEmbeddingResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// GetEmbedding
-// 本接口（GetEmbedding）调用文本表示模型，将文本转化为用数值表示的向量形式，可用于文本检索、信息推荐、知识挖掘等场景。
-//
-// 开通[产品体验](https://lke.cloud.tencent.com/lke/#/trialProduct)后可获得50wtoken体验额度。
-//
-// 本接口（GetEmbedding）有单账号调用上限控制，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) GetEmbedding(request *GetEmbeddingRequest) (response *GetEmbeddingResponse, err error) {
-    return c.GetEmbeddingWithContext(context.Background(), request)
-}
-
-// GetEmbedding
-// 本接口（GetEmbedding）调用文本表示模型，将文本转化为用数值表示的向量形式，可用于文本检索、信息推荐、知识挖掘等场景。
-//
-// 开通[产品体验](https://lke.cloud.tencent.com/lke/#/trialProduct)后可获得50wtoken体验额度。
-//
-// 本接口（GetEmbedding）有单账号调用上限控制，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) GetEmbeddingWithContext(ctx context.Context, request *GetEmbeddingRequest) (response *GetEmbeddingResponse, err error) {
-    if request == nil {
-        request = NewGetEmbeddingRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("GetEmbedding require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewGetEmbeddingResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewGetLikeDataCountRequest() (request *GetLikeDataCountRequest) {
     request = &GetLikeDataCountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3069,65 +2803,6 @@ func (c *Client) GetMsgRecordWithContext(ctx context.Context, request *GetMsgRec
     return
 }
 
-func NewGetReconstructDocumentResultRequest() (request *GetReconstructDocumentResultRequest) {
-    request = &GetReconstructDocumentResultRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("lke", APIVersion, "GetReconstructDocumentResult")
-    
-    
-    return
-}
-
-func NewGetReconstructDocumentResultResponse() (response *GetReconstructDocumentResultResponse) {
-    response = &GetReconstructDocumentResultResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// GetReconstructDocumentResult
-// 本接口为异步接口的查询结果接口，用于获取文档解析处理结果。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) GetReconstructDocumentResult(request *GetReconstructDocumentResultRequest) (response *GetReconstructDocumentResultResponse, err error) {
-    return c.GetReconstructDocumentResultWithContext(context.Background(), request)
-}
-
-// GetReconstructDocumentResult
-// 本接口为异步接口的查询结果接口，用于获取文档解析处理结果。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) GetReconstructDocumentResultWithContext(ctx context.Context, request *GetReconstructDocumentResultRequest) (response *GetReconstructDocumentResultResponse, err error) {
-    if request == nil {
-        request = NewGetReconstructDocumentResultRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("GetReconstructDocumentResult require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewGetReconstructDocumentResultResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewGetTaskStatusRequest() (request *GetTaskStatusRequest) {
     request = &GetTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3151,12 +2826,8 @@ func NewGetTaskStatusResponse() (response *GetTaskStatusResponse) {
 // 获取任务状态
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) GetTaskStatus(request *GetTaskStatusRequest) (response *GetTaskStatusResponse, err error) {
     return c.GetTaskStatusWithContext(context.Background(), request)
 }
@@ -3165,12 +2836,8 @@ func (c *Client) GetTaskStatus(request *GetTaskStatusRequest) (response *GetTask
 // 获取任务状态
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) GetTaskStatusWithContext(ctx context.Context, request *GetTaskStatusRequest) (response *GetTaskStatusResponse, err error) {
     if request == nil {
         request = NewGetTaskStatusRequest()
@@ -5016,59 +4683,6 @@ func (c *Client) ModifyRejectedQuestionWithContext(ctx context.Context, request 
     return
 }
 
-func NewQueryRewriteRequest() (request *QueryRewriteRequest) {
-    request = &QueryRewriteRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("lke", APIVersion, "QueryRewrite")
-    
-    
-    return
-}
-
-func NewQueryRewriteResponse() (response *QueryRewriteResponse) {
-    response = &QueryRewriteResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// QueryRewrite
-// 多轮改写（QueryRewrite）主要用于多轮对话中，进行指代消解和省略补全。使用本接口，无需输入prompt描述，根据对话历史即可生成更精确的用户查询。在应用场景上，本接口可应用于智能问答、对话式搜索等多种场景。
-//
-// 开通[产品体验](https://lke.cloud.tencent.com/lke/#/trialProduct)后可获得50wtoken体验额度。本接口（QueryRewrite）有单账号调用上限控制，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) QueryRewrite(request *QueryRewriteRequest) (response *QueryRewriteResponse, err error) {
-    return c.QueryRewriteWithContext(context.Background(), request)
-}
-
-// QueryRewrite
-// 多轮改写（QueryRewrite）主要用于多轮对话中，进行指代消解和省略补全。使用本接口，无需输入prompt描述，根据对话历史即可生成更精确的用户查询。在应用场景上，本接口可应用于智能问答、对话式搜索等多种场景。
-//
-// 开通[产品体验](https://lke.cloud.tencent.com/lke/#/trialProduct)后可获得50wtoken体验额度。本接口（QueryRewrite）有单账号调用上限控制，如您有提高并发限制的需求请 [联系我们](https://cloud.tencent.com/act/event/Online_service) 。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) QueryRewriteWithContext(ctx context.Context, request *QueryRewriteRequest) (response *QueryRewriteResponse, err error) {
-    if request == nil {
-        request = NewQueryRewriteRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("QueryRewrite require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewQueryRewriteResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewRateMsgRecordRequest() (request *RateMsgRecordRequest) {
     request = &RateMsgRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5118,75 +4732,6 @@ func (c *Client) RateMsgRecordWithContext(ctx context.Context, request *RateMsgR
     return
 }
 
-func NewReconstructDocumentRequest() (request *ReconstructDocumentRequest) {
-    request = &ReconstructDocumentRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("lke", APIVersion, "ReconstructDocument")
-    
-    
-    return
-}
-
-func NewReconstructDocumentResponse() (response *ReconstructDocumentResponse) {
-    response = &ReconstructDocumentResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// ReconstructDocument
-// 支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
-//
-// 
-//
-// 体验期间单账号限制qps仅为1，若有正式接入需要请与产研团队沟通开放。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) ReconstructDocument(request *ReconstructDocumentRequest) (response *ReconstructDocumentResponse, err error) {
-    return c.ReconstructDocumentWithContext(context.Background(), request)
-}
-
-// ReconstructDocument
-// 支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
-//
-// 
-//
-// 体验期间单账号限制qps仅为1，若有正式接入需要请与产研团队沟通开放。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
-func (c *Client) ReconstructDocumentWithContext(ctx context.Context, request *ReconstructDocumentRequest) (response *ReconstructDocumentResponse, err error) {
-    if request == nil {
-        request = NewReconstructDocumentRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ReconstructDocument require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewReconstructDocumentResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewReferShareKnowledgeRequest() (request *ReferShareKnowledgeRequest) {
     request = &ReferShareKnowledgeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5210,13 +4755,7 @@ func NewReferShareKnowledgeResponse() (response *ReferShareKnowledgeResponse) {
 // 应用引用共享知识库，可以引用一个或多个，每次都是全量覆盖
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ReferShareKnowledge(request *ReferShareKnowledgeRequest) (response *ReferShareKnowledgeResponse, err error) {
     return c.ReferShareKnowledgeWithContext(context.Background(), request)
 }
@@ -5225,13 +4764,7 @@ func (c *Client) ReferShareKnowledge(request *ReferShareKnowledgeRequest) (respo
 // 应用引用共享知识库，可以引用一个或多个，每次都是全量覆盖
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ReferShareKnowledgeWithContext(ctx context.Context, request *ReferShareKnowledgeRequest) (response *ReferShareKnowledgeResponse, err error) {
     if request == nil {
         request = NewReferShareKnowledgeRequest()
@@ -5271,13 +4804,7 @@ func NewRenameDocResponse() (response *RenameDocResponse) {
 // 文档重命名
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) RenameDoc(request *RenameDocRequest) (response *RenameDocResponse, err error) {
     return c.RenameDocWithContext(context.Background(), request)
 }
@@ -5286,13 +4813,7 @@ func (c *Client) RenameDoc(request *RenameDocRequest) (response *RenameDocRespon
 // 文档重命名
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_FILEDECODEFAILED = "FailedOperation.FileDecodeFailed"
-//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
-//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
-//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
-//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
-//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
-//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) RenameDocWithContext(ctx context.Context, request *RenameDocRequest) (response *RenameDocResponse, err error) {
     if request == nil {
         request = NewRenameDocRequest()
@@ -5452,55 +4973,6 @@ func (c *Client) RetryReleaseWithContext(ctx context.Context, request *RetryRele
     request.SetContext(ctx)
     
     response = NewRetryReleaseResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewRunReRankRequest() (request *RunReRankRequest) {
-    request = &RunReRankRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("lke", APIVersion, "RunReRank")
-    
-    
-    return
-}
-
-func NewRunReRankResponse() (response *RunReRankResponse) {
-    response = &RunReRankResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    } 
-    return
-
-}
-
-// RunReRank
-// 基于知识引擎精调模型技术的rerank模型，支持对多路召回的结果进行重排序，根据query与切片内容的相关性，按分数由高到低对切片进行排序，并输出对应的打分结果。（这个接口已下线，请使用新接口，接口文档：https://cloud.tencent.com/document/product/1772/115339）。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) RunReRank(request *RunReRankRequest) (response *RunReRankResponse, err error) {
-    return c.RunReRankWithContext(context.Background(), request)
-}
-
-// RunReRank
-// 基于知识引擎精调模型技术的rerank模型，支持对多路召回的结果进行重排序，根据query与切片内容的相关性，按分数由高到低对切片进行排序，并输出对应的打分结果。（这个接口已下线，请使用新接口，接口文档：https://cloud.tencent.com/document/product/1772/115339）。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-func (c *Client) RunReRankWithContext(ctx context.Context, request *RunReRankRequest) (response *RunReRankResponse, err error) {
-    if request == nil {
-        request = NewRunReRankRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("RunReRank require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewRunReRankResponse()
     err = c.Send(request, response)
     return
 }

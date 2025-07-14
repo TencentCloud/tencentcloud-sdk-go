@@ -1710,6 +1710,441 @@ func (r *DescribeJobRecordsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLeakageCodesRequestParams struct {
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+
+	// 是否新增数据
+	IsNew *bool `json:"IsNew,omitnil,omitempty" name:"IsNew"`
+
+	// 企业ID
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 子公司ID列表
+	EnterpriseUidList []*string `json:"EnterpriseUidList,omitnil,omitempty" name:"EnterpriseUidList"`
+
+	// 数据输出格式：json、file，默认不填为json
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 创建时间-开始
+	CreateAtStart *string `json:"CreateAtStart,omitnil,omitempty" name:"CreateAtStart"`
+
+	// 创建时间-结束
+	CreateAtEnd *string `json:"CreateAtEnd,omitnil,omitempty" name:"CreateAtEnd"`
+
+	// 更新时间-开始
+	UpdateAtStart *string `json:"UpdateAtStart,omitnil,omitempty" name:"UpdateAtStart"`
+
+	// 更新时间-结束
+	UpdateAtEnd *string `json:"UpdateAtEnd,omitnil,omitempty" name:"UpdateAtEnd"`
+
+	// 查询数组
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 是否显示被忽略的数据
+	Ignored *bool `json:"Ignored,omitnil,omitempty" name:"Ignored"`
+}
+
+type DescribeLeakageCodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+
+	// 是否新增数据
+	IsNew *bool `json:"IsNew,omitnil,omitempty" name:"IsNew"`
+
+	// 企业ID
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 子公司ID列表
+	EnterpriseUidList []*string `json:"EnterpriseUidList,omitnil,omitempty" name:"EnterpriseUidList"`
+
+	// 数据输出格式：json、file，默认不填为json
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 创建时间-开始
+	CreateAtStart *string `json:"CreateAtStart,omitnil,omitempty" name:"CreateAtStart"`
+
+	// 创建时间-结束
+	CreateAtEnd *string `json:"CreateAtEnd,omitnil,omitempty" name:"CreateAtEnd"`
+
+	// 更新时间-开始
+	UpdateAtStart *string `json:"UpdateAtStart,omitnil,omitempty" name:"UpdateAtStart"`
+
+	// 更新时间-结束
+	UpdateAtEnd *string `json:"UpdateAtEnd,omitnil,omitempty" name:"UpdateAtEnd"`
+
+	// 查询数组
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 是否显示被忽略的数据
+	Ignored *bool `json:"Ignored,omitnil,omitempty" name:"Ignored"`
+}
+
+func (r *DescribeLeakageCodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLeakageCodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IsAggregation")
+	delete(f, "IsNew")
+	delete(f, "CustomerId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "EnterpriseUidList")
+	delete(f, "Format")
+	delete(f, "CreateAtStart")
+	delete(f, "CreateAtEnd")
+	delete(f, "UpdateAtStart")
+	delete(f, "UpdateAtEnd")
+	delete(f, "Filters")
+	delete(f, "Ignored")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLeakageCodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLeakageCodesResponseParams struct {
+	// 总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*DisplayLeakageCode `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLeakageCodesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLeakageCodesResponseParams `json:"Response"`
+}
+
+func (r *DescribeLeakageCodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLeakageCodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLeakageDatasRequestParams struct {
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+
+	// 是否新增数据
+	IsNew *bool `json:"IsNew,omitnil,omitempty" name:"IsNew"`
+
+	// 企业ID
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 子公司ID列表
+	EnterpriseUidList []*string `json:"EnterpriseUidList,omitnil,omitempty" name:"EnterpriseUidList"`
+
+	// 数据输出格式：json、file，默认不填为json
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 创建时间-开始
+	CreateAtStart *string `json:"CreateAtStart,omitnil,omitempty" name:"CreateAtStart"`
+
+	// 创建时间-结束
+	CreateAtEnd *string `json:"CreateAtEnd,omitnil,omitempty" name:"CreateAtEnd"`
+
+	// 更新时间-开始
+	UpdateAtStart *string `json:"UpdateAtStart,omitnil,omitempty" name:"UpdateAtStart"`
+
+	// 更新时间-结束
+	UpdateAtEnd *string `json:"UpdateAtEnd,omitnil,omitempty" name:"UpdateAtEnd"`
+
+	// 查询数组
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 是否显示被忽略的数据
+	Ignored *bool `json:"Ignored,omitnil,omitempty" name:"Ignored"`
+}
+
+type DescribeLeakageDatasRequest struct {
+	*tchttp.BaseRequest
+	
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+
+	// 是否新增数据
+	IsNew *bool `json:"IsNew,omitnil,omitempty" name:"IsNew"`
+
+	// 企业ID
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 子公司ID列表
+	EnterpriseUidList []*string `json:"EnterpriseUidList,omitnil,omitempty" name:"EnterpriseUidList"`
+
+	// 数据输出格式：json、file，默认不填为json
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 创建时间-开始
+	CreateAtStart *string `json:"CreateAtStart,omitnil,omitempty" name:"CreateAtStart"`
+
+	// 创建时间-结束
+	CreateAtEnd *string `json:"CreateAtEnd,omitnil,omitempty" name:"CreateAtEnd"`
+
+	// 更新时间-开始
+	UpdateAtStart *string `json:"UpdateAtStart,omitnil,omitempty" name:"UpdateAtStart"`
+
+	// 更新时间-结束
+	UpdateAtEnd *string `json:"UpdateAtEnd,omitnil,omitempty" name:"UpdateAtEnd"`
+
+	// 查询数组
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 是否显示被忽略的数据
+	Ignored *bool `json:"Ignored,omitnil,omitempty" name:"Ignored"`
+}
+
+func (r *DescribeLeakageDatasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLeakageDatasRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IsAggregation")
+	delete(f, "IsNew")
+	delete(f, "CustomerId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "EnterpriseUidList")
+	delete(f, "Format")
+	delete(f, "CreateAtStart")
+	delete(f, "CreateAtEnd")
+	delete(f, "UpdateAtStart")
+	delete(f, "UpdateAtEnd")
+	delete(f, "Filters")
+	delete(f, "Ignored")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLeakageDatasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLeakageDatasResponseParams struct {
+	// 总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*DisplayLeakageData `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLeakageDatasResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLeakageDatasResponseParams `json:"Response"`
+}
+
+func (r *DescribeLeakageDatasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLeakageDatasResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLeakageEmailsRequestParams struct {
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+
+	// 是否新增数据
+	IsNew *bool `json:"IsNew,omitnil,omitempty" name:"IsNew"`
+
+	// 企业ID
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 子公司ID列表
+	EnterpriseUidList []*string `json:"EnterpriseUidList,omitnil,omitempty" name:"EnterpriseUidList"`
+
+	// 数据输出格式：json、file，默认不填为json
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 创建时间-开始
+	CreateAtStart *string `json:"CreateAtStart,omitnil,omitempty" name:"CreateAtStart"`
+
+	// 创建时间-结束
+	CreateAtEnd *string `json:"CreateAtEnd,omitnil,omitempty" name:"CreateAtEnd"`
+
+	// 更新时间-开始
+	UpdateAtStart *string `json:"UpdateAtStart,omitnil,omitempty" name:"UpdateAtStart"`
+
+	// 更新时间-结束
+	UpdateAtEnd *string `json:"UpdateAtEnd,omitnil,omitempty" name:"UpdateAtEnd"`
+
+	// 查询数组
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 是否显示被忽略的数据
+	Ignored *bool `json:"Ignored,omitnil,omitempty" name:"Ignored"`
+}
+
+type DescribeLeakageEmailsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+
+	// 是否新增数据
+	IsNew *bool `json:"IsNew,omitnil,omitempty" name:"IsNew"`
+
+	// 企业ID
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 子公司ID列表
+	EnterpriseUidList []*string `json:"EnterpriseUidList,omitnil,omitempty" name:"EnterpriseUidList"`
+
+	// 数据输出格式：json、file，默认不填为json
+	Format *string `json:"Format,omitnil,omitempty" name:"Format"`
+
+	// 创建时间-开始
+	CreateAtStart *string `json:"CreateAtStart,omitnil,omitempty" name:"CreateAtStart"`
+
+	// 创建时间-结束
+	CreateAtEnd *string `json:"CreateAtEnd,omitnil,omitempty" name:"CreateAtEnd"`
+
+	// 更新时间-开始
+	UpdateAtStart *string `json:"UpdateAtStart,omitnil,omitempty" name:"UpdateAtStart"`
+
+	// 更新时间-结束
+	UpdateAtEnd *string `json:"UpdateAtEnd,omitnil,omitempty" name:"UpdateAtEnd"`
+
+	// 查询数组
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+
+	// 是否显示被忽略的数据
+	Ignored *bool `json:"Ignored,omitnil,omitempty" name:"Ignored"`
+}
+
+func (r *DescribeLeakageEmailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLeakageEmailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IsAggregation")
+	delete(f, "IsNew")
+	delete(f, "CustomerId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "EnterpriseUidList")
+	delete(f, "Format")
+	delete(f, "CreateAtStart")
+	delete(f, "CreateAtEnd")
+	delete(f, "UpdateAtStart")
+	delete(f, "UpdateAtEnd")
+	delete(f, "Filters")
+	delete(f, "Ignored")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLeakageEmailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLeakageEmailsResponseParams struct {
+	// 总数
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*DisplayLeakageEmail `json:"List,omitnil,omitempty" name:"List"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeLeakageEmailsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLeakageEmailsResponseParams `json:"Response"`
+}
+
+func (r *DescribeLeakageEmailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLeakageEmailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeManagesRequestParams struct {
 	// 是否聚合数据
 	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
@@ -3433,6 +3868,30 @@ type DisplayJobRecordDetail struct {
 	// 目标
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data []*IdndValue `json:"Data,omitnil,omitempty" name:"Data"`
+}
+
+type DisplayLeakageCode struct {
+	// 主键ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 链接
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
+type DisplayLeakageData struct {
+	// 主键ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 链接
+	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+}
+
+type DisplayLeakageEmail struct {
+	// 主键ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 邮箱
+	Email *string `json:"Email,omitnil,omitempty" name:"Email"`
 }
 
 type DisplayManage struct {
