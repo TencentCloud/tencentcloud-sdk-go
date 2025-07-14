@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 	"strconv"
+	"sync"
 	"time"
 
 	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
@@ -22,6 +23,7 @@ type OIDCRoleArnProvider struct {
 	durationSeconds  int64
 	Endpoint         string
 	beforeRefresh    func(provider *OIDCRoleArnProvider) error
+	mu               sync.RWMutex
 }
 
 type oidcStsRsp struct {
@@ -104,12 +106,18 @@ func (r *OIDCRoleArnProvider) GetCredential() (CredentialIface, error) {
 		action  = "AssumeRoleWithWebIdentity"
 	)
 
+	r.mu.Lock()
 	if r.beforeRefresh != nil {
 		err := r.beforeRefresh(r)
 		if err != nil {
+			r.mu.Unlock()
 			return nil, err
 		}
 	}
+	r.mu.Unlock()
+
+	r.mu.RLock()
+	defer r.mu.RUnlock()
 
 	if r.durationSeconds > 43200 || r.durationSeconds <= 0 {
 		return nil, tcerr.NewTencentCloudSDKError(creErr, "AssumeRoleWithWebIdentity durationSeconds should be in the range of 0~43200s", "")
