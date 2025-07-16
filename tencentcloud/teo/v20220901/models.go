@@ -3115,6 +3115,259 @@ func (r *CreateLoadBalancerResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateMultiPathGatewayLineRequestParams struct {
+	// 站点 ID 。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 多通道安全网关 ID 。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 线路类型，取值有：
+	//  <li>direct ：直连线路，不支持修改和删除。</li> <li>proxy ：EdgeOne 四层代理线路，支持修改实例 ID 和规则 ID，不支持删除。</li> <li>custom ：自定义线路，支持修改、删除实例 ID 和规则 ID。</li>
+	LineType *string `json:"LineType,omitnil,omitempty" name:"LineType"`
+
+	// 线路地址，格式为 ip:port。
+	LineAddress *string `json:"LineAddress,omitnil,omitempty" name:"LineAddress"`
+
+	// 四层代理实例 ID，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）必传，可由接口 [DescribeL4Proxy](https://cloud.tencent.com/document/api/1552/103413) 获取。
+	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
+
+	// 转发规则 ID ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）必传，可以从接口 [DescribeL4ProxyRules](https://cloud.tencent.com/document/api/1552/103412) 获取。
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+}
+
+type CreateMultiPathGatewayLineRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID 。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 多通道安全网关 ID 。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 线路类型，取值有：
+	//  <li>direct ：直连线路，不支持修改和删除。</li> <li>proxy ：EdgeOne 四层代理线路，支持修改实例 ID 和规则 ID，不支持删除。</li> <li>custom ：自定义线路，支持修改、删除实例 ID 和规则 ID。</li>
+	LineType *string `json:"LineType,omitnil,omitempty" name:"LineType"`
+
+	// 线路地址，格式为 ip:port。
+	LineAddress *string `json:"LineAddress,omitnil,omitempty" name:"LineAddress"`
+
+	// 四层代理实例 ID，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）必传，可由接口 [DescribeL4Proxy](https://cloud.tencent.com/document/api/1552/103413) 获取。
+	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
+
+	// 转发规则 ID ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）必传，可以从接口 [DescribeL4ProxyRules](https://cloud.tencent.com/document/api/1552/103412) 获取。
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+}
+
+func (r *CreateMultiPathGatewayLineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMultiPathGatewayLineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "GatewayId")
+	delete(f, "LineType")
+	delete(f, "LineAddress")
+	delete(f, "ProxyId")
+	delete(f, "RuleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMultiPathGatewayLineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMultiPathGatewayLineResponseParams struct {
+	// 线路 ID ， 取值有:
+	// <li> line-1： EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li>
+	// <li> line-2 及以上：EdgeOne 四层代理线路或者自定义线路，支持修改、删除实例和规则。</li>
+	LineId *string `json:"LineId,omitnil,omitempty" name:"LineId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMultiPathGatewayLineResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMultiPathGatewayLineResponseParams `json:"Response"`
+}
+
+func (r *CreateMultiPathGatewayLineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMultiPathGatewayLineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMultiPathGatewayRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 网关类型，取值有：
+	// <li> cloud：云上网关，腾讯云创建和管理的网关；</li>
+	// <li> private：自有网关，用户部署的私有网关。</li>
+	GatewayType *string `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+
+	// 网关名称，16 个字符以内，可用字符（a-z,A-Z,0-9,-,_）。
+	GatewayName *string `json:"GatewayName,omitnil,omitempty" name:"GatewayName"`
+
+	// 网关端口，范围 1～65535（除去 8888 ）。
+	GatewayPort *int64 `json:"GatewayPort,omitnil,omitempty" name:"GatewayPort"`
+
+	// 网关地域，GatewayType 取值为 cloud（云上网关）必填。可以从接口 DescribeMultiPathGatewayRegions 获取 RegionId 列表。
+	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// 网关地址，GatewayType 取值为 private（自有网关）必填，使用该地址时，请确保该地址已录入腾讯云多通道安全加速网关系统。如未录入，需要在本接口调用前通过工单或者联系架构师把网关 IP 地址提前录入腾讯云多通道安全加速网关系统。
+	GatewayIP *string `json:"GatewayIP,omitnil,omitempty" name:"GatewayIP"`
+}
+
+type CreateMultiPathGatewayRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 网关类型，取值有：
+	// <li> cloud：云上网关，腾讯云创建和管理的网关；</li>
+	// <li> private：自有网关，用户部署的私有网关。</li>
+	GatewayType *string `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+
+	// 网关名称，16 个字符以内，可用字符（a-z,A-Z,0-9,-,_）。
+	GatewayName *string `json:"GatewayName,omitnil,omitempty" name:"GatewayName"`
+
+	// 网关端口，范围 1～65535（除去 8888 ）。
+	GatewayPort *int64 `json:"GatewayPort,omitnil,omitempty" name:"GatewayPort"`
+
+	// 网关地域，GatewayType 取值为 cloud（云上网关）必填。可以从接口 DescribeMultiPathGatewayRegions 获取 RegionId 列表。
+	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// 网关地址，GatewayType 取值为 private（自有网关）必填，使用该地址时，请确保该地址已录入腾讯云多通道安全加速网关系统。如未录入，需要在本接口调用前通过工单或者联系架构师把网关 IP 地址提前录入腾讯云多通道安全加速网关系统。
+	GatewayIP *string `json:"GatewayIP,omitnil,omitempty" name:"GatewayIP"`
+}
+
+func (r *CreateMultiPathGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMultiPathGatewayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "GatewayType")
+	delete(f, "GatewayName")
+	delete(f, "GatewayPort")
+	delete(f, "RegionId")
+	delete(f, "GatewayIP")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMultiPathGatewayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMultiPathGatewayResponseParams struct {
+	// 网关 ID。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMultiPathGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMultiPathGatewayResponseParams `json:"Response"`
+}
+
+func (r *CreateMultiPathGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMultiPathGatewayResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMultiPathGatewaySecretKeyRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 多通道安全加速网关接入密钥，base64字符串，编码前字符串长度为 32-48 个字符，非必填，不填系统自动生成，可通过接口 DescribeMultiPathGatewaySecretKey 查询。
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+}
+
+type CreateMultiPathGatewaySecretKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 多通道安全加速网关接入密钥，base64字符串，编码前字符串长度为 32-48 个字符，非必填，不填系统自动生成，可通过接口 DescribeMultiPathGatewaySecretKey 查询。
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+}
+
+func (r *CreateMultiPathGatewaySecretKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMultiPathGatewaySecretKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "SecretKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMultiPathGatewaySecretKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMultiPathGatewaySecretKeyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateMultiPathGatewaySecretKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMultiPathGatewaySecretKeyResponseParams `json:"Response"`
+}
+
+func (r *CreateMultiPathGatewaySecretKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMultiPathGatewaySecretKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateOriginGroupRequestParams struct {
 	// 站点 ID
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -5287,6 +5540,135 @@ func (r *DeleteLoadBalancerResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteLoadBalancerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMultiPathGatewayLineRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 网关 ID。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 线路 ID。
+	LineId *string `json:"LineId,omitnil,omitempty" name:"LineId"`
+}
+
+type DeleteMultiPathGatewayLineRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 网关 ID。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 线路 ID。
+	LineId *string `json:"LineId,omitnil,omitempty" name:"LineId"`
+}
+
+func (r *DeleteMultiPathGatewayLineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMultiPathGatewayLineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "GatewayId")
+	delete(f, "LineId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMultiPathGatewayLineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMultiPathGatewayLineResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteMultiPathGatewayLineResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteMultiPathGatewayLineResponseParams `json:"Response"`
+}
+
+func (r *DeleteMultiPathGatewayLineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMultiPathGatewayLineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMultiPathGatewayRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 网关 ID。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+}
+
+type DeleteMultiPathGatewayRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 网关 ID。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+}
+
+func (r *DeleteMultiPathGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMultiPathGatewayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "GatewayId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMultiPathGatewayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMultiPathGatewayResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteMultiPathGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteMultiPathGatewayResponseParams `json:"Response"`
+}
+
+func (r *DeleteMultiPathGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMultiPathGatewayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8309,6 +8691,340 @@ func (r *DescribeLoadBalancerListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeLoadBalancerListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMultiPathGatewayLineRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 网关 ID。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 线路 ID。
+	LineId *string `json:"LineId,omitnil,omitempty" name:"LineId"`
+}
+
+type DescribeMultiPathGatewayLineRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 网关 ID。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 线路 ID。
+	LineId *string `json:"LineId,omitnil,omitempty" name:"LineId"`
+}
+
+func (r *DescribeMultiPathGatewayLineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMultiPathGatewayLineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "GatewayId")
+	delete(f, "LineId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMultiPathGatewayLineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMultiPathGatewayLineResponseParams struct {
+	// 线路信息。
+	Line *MultiPathGatewayLine `json:"Line,omitnil,omitempty" name:"Line"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMultiPathGatewayLineResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMultiPathGatewayLineResponseParams `json:"Response"`
+}
+
+func (r *DescribeMultiPathGatewayLineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMultiPathGatewayLineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMultiPathGatewayRegionsRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+}
+
+type DescribeMultiPathGatewayRegionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+}
+
+func (r *DescribeMultiPathGatewayRegionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMultiPathGatewayRegionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMultiPathGatewayRegionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMultiPathGatewayRegionsResponseParams struct {
+	// 网关可用地域列表。
+	GatewayRegions []*GatewayRegion `json:"GatewayRegions,omitnil,omitempty" name:"GatewayRegions"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMultiPathGatewayRegionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMultiPathGatewayRegionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeMultiPathGatewayRegionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMultiPathGatewayRegionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMultiPathGatewayRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 网关 ID。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+}
+
+type DescribeMultiPathGatewayRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 网关 ID。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+}
+
+func (r *DescribeMultiPathGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMultiPathGatewayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "GatewayId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMultiPathGatewayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMultiPathGatewayResponseParams struct {
+	// 网关详情。
+	GatewayDetail *MultiPathGateway `json:"GatewayDetail,omitnil,omitempty" name:"GatewayDetail"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMultiPathGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMultiPathGatewayResponseParams `json:"Response"`
+}
+
+func (r *DescribeMultiPathGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMultiPathGatewayResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMultiPathGatewaySecretKeyRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+}
+
+type DescribeMultiPathGatewaySecretKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+}
+
+func (r *DescribeMultiPathGatewaySecretKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMultiPathGatewaySecretKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMultiPathGatewaySecretKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMultiPathGatewaySecretKeyResponseParams struct {
+	// 接入密钥。
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMultiPathGatewaySecretKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMultiPathGatewaySecretKeyResponseParams `json:"Response"`
+}
+
+func (r *DescribeMultiPathGatewaySecretKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMultiPathGatewaySecretKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMultiPathGatewaysRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 分页查询偏移量。默认值：0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询限制数目。默认值：20，最大值：1000。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 网关列表的过滤字段，该参数不填写时，返回当前 appid 下所有网关信息，详细的过滤条件如下：
+	// <li> gateway-type：按照网关类型进行过滤，支持取值 cloud 和 private，分别代表过滤云上网关和自由网关；</li>
+	// <li> keyword：按照网关名的关键字进行过滤。</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+type DescribeMultiPathGatewaysRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 分页查询偏移量。默认值：0。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 分页查询限制数目。默认值：20，最大值：1000。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 网关列表的过滤字段，该参数不填写时，返回当前 appid 下所有网关信息，详细的过滤条件如下：
+	// <li> gateway-type：按照网关类型进行过滤，支持取值 cloud 和 private，分别代表过滤云上网关和自由网关；</li>
+	// <li> keyword：按照网关名的关键字进行过滤。</li>
+	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
+}
+
+func (r *DescribeMultiPathGatewaysRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMultiPathGatewaysRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMultiPathGatewaysRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMultiPathGatewaysResponseParams struct {
+	// 网关详情。
+	Gateways []*MultiPathGateway `json:"Gateways,omitnil,omitempty" name:"Gateways"`
+
+	// 总条数。
+	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeMultiPathGatewaysResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMultiPathGatewaysResponseParams `json:"Response"`
+}
+
+func (r *DescribeMultiPathGatewaysResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMultiPathGatewaysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11770,6 +12486,17 @@ type FunctionRuleCondition struct {
 	RuleConditions []*RuleCondition `json:"RuleConditions,omitnil,omitempty" name:"RuleConditions"`
 }
 
+type GatewayRegion struct {
+	// 地域 ID 。
+	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// 中文地域名称。
+	CNName *string `json:"CNName,omitnil,omitempty" name:"CNName"`
+
+	// 英文地域名称。
+	ENName *string `json:"ENName,omitnil,omitempty" name:"ENName"`
+}
+
 type Grpc struct {
 	// 是否开启 Grpc 配置，取值有：
 	// <li>on：开启；</li>
@@ -14814,6 +15541,253 @@ func (r *ModifyLoadBalancerResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyMultiPathGatewayLineRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 多通道安全加速网关 ID 。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 线路 ID ， 取值有:
+	// <li> line-1： EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li>
+	// <li> line-2 及以上：EdgeOne 四层代理线路或者自定义线路，支持修改、删除实例和规则。</li>
+	LineId *string `json:"LineId,omitnil,omitempty" name:"LineId"`
+
+	// 线路类型，取值有： 
+	// <li>proxy ：EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li> 
+	// <li>custom ：自定义线路，支持编辑、删除实例和规则。</li>
+	LineType *string `json:"LineType,omitnil,omitempty" name:"LineType"`
+
+	// 线路地址，格式为 host:port，直连线路（ LineType 取值为 direct ）不允许修改，其余类型支持修改。
+	LineAddress *string `json:"LineAddress,omitnil,omitempty" name:"LineAddress"`
+
+	// 四层代理实例 ID  ，当线路类型 LineType  取值为 proxy（EdgeOne 四层代理）可传入，进行修改。
+	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
+
+	// 转发规则 ID ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）可传入，进行修改。
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+}
+
+type ModifyMultiPathGatewayLineRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 多通道安全加速网关 ID 。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 线路 ID ， 取值有:
+	// <li> line-1： EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li>
+	// <li> line-2 及以上：EdgeOne 四层代理线路或者自定义线路，支持修改、删除实例和规则。</li>
+	LineId *string `json:"LineId,omitnil,omitempty" name:"LineId"`
+
+	// 线路类型，取值有： 
+	// <li>proxy ：EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li> 
+	// <li>custom ：自定义线路，支持编辑、删除实例和规则。</li>
+	LineType *string `json:"LineType,omitnil,omitempty" name:"LineType"`
+
+	// 线路地址，格式为 host:port，直连线路（ LineType 取值为 direct ）不允许修改，其余类型支持修改。
+	LineAddress *string `json:"LineAddress,omitnil,omitempty" name:"LineAddress"`
+
+	// 四层代理实例 ID  ，当线路类型 LineType  取值为 proxy（EdgeOne 四层代理）可传入，进行修改。
+	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
+
+	// 转发规则 ID ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）可传入，进行修改。
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+}
+
+func (r *ModifyMultiPathGatewayLineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMultiPathGatewayLineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "GatewayId")
+	delete(f, "LineId")
+	delete(f, "LineType")
+	delete(f, "LineAddress")
+	delete(f, "ProxyId")
+	delete(f, "RuleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMultiPathGatewayLineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMultiPathGatewayLineResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyMultiPathGatewayLineResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyMultiPathGatewayLineResponseParams `json:"Response"`
+}
+
+func (r *ModifyMultiPathGatewayLineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMultiPathGatewayLineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMultiPathGatewayRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 网关 ID。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 网关名称，16 个字符以内，可用字符（a-z,A-Z,0-9,-,_）。
+	GatewayName *string `json:"GatewayName,omitnil,omitempty" name:"GatewayName"`
+
+	// 网关地址，GatewayType 取值为 private（自有网关）可填入进行修改，使用该地址时，请确保该地址已录入腾讯云多通道安全加速网关系统。如未录入，需要在本接口调用前通过工单或者联系架构师把网关 IP 地址提前录入腾讯云多通道安全加速网关系统。
+	GatewayIP *string `json:"GatewayIP,omitnil,omitempty" name:"GatewayIP"`
+
+	// 网关端口，范围 1～65535（除去 8888 ），只支持修改 GatewayType 取值为 private 的自有网关。
+	GatewayPort *int64 `json:"GatewayPort,omitnil,omitempty" name:"GatewayPort"`
+}
+
+type ModifyMultiPathGatewayRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 网关 ID。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 网关名称，16 个字符以内，可用字符（a-z,A-Z,0-9,-,_）。
+	GatewayName *string `json:"GatewayName,omitnil,omitempty" name:"GatewayName"`
+
+	// 网关地址，GatewayType 取值为 private（自有网关）可填入进行修改，使用该地址时，请确保该地址已录入腾讯云多通道安全加速网关系统。如未录入，需要在本接口调用前通过工单或者联系架构师把网关 IP 地址提前录入腾讯云多通道安全加速网关系统。
+	GatewayIP *string `json:"GatewayIP,omitnil,omitempty" name:"GatewayIP"`
+
+	// 网关端口，范围 1～65535（除去 8888 ），只支持修改 GatewayType 取值为 private 的自有网关。
+	GatewayPort *int64 `json:"GatewayPort,omitnil,omitempty" name:"GatewayPort"`
+}
+
+func (r *ModifyMultiPathGatewayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMultiPathGatewayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "GatewayId")
+	delete(f, "GatewayName")
+	delete(f, "GatewayIP")
+	delete(f, "GatewayPort")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMultiPathGatewayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMultiPathGatewayResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyMultiPathGatewayResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyMultiPathGatewayResponseParams `json:"Response"`
+}
+
+func (r *ModifyMultiPathGatewayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMultiPathGatewayResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMultiPathGatewaySecretKeyRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 多通道安全加速网关接入密钥，base64 字符串，编码前字符串长度为 32-48 个字符。
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+}
+
+type ModifyMultiPathGatewaySecretKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 多通道安全加速网关接入密钥，base64 字符串，编码前字符串长度为 32-48 个字符。
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+}
+
+func (r *ModifyMultiPathGatewaySecretKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMultiPathGatewaySecretKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "SecretKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMultiPathGatewaySecretKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMultiPathGatewaySecretKeyResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyMultiPathGatewaySecretKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyMultiPathGatewaySecretKeyResponseParams `json:"Response"`
+}
+
+func (r *ModifyMultiPathGatewaySecretKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMultiPathGatewaySecretKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyOriginACLRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
@@ -15955,6 +16929,61 @@ func (r *ModifyZoneStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type MultiPathGateway struct {
+	// 网关 ID。
+	GatewayId *string `json:"GatewayId,omitnil,omitempty" name:"GatewayId"`
+
+	// 网关名。
+	GatewayName *string `json:"GatewayName,omitnil,omitempty" name:"GatewayName"`
+
+	// 网关类型，取值有：
+	// <li> cloud：云上网关，腾讯云创建和管理的网关。</li>
+	// <li> private：自有网关，用户部署的私有网关。</li>
+	GatewayType *string `json:"GatewayType,omitnil,omitempty" name:"GatewayType"`
+
+	// 网关端口，范围 1～65535（除去 8888 ）。
+	GatewayPort *int64 `json:"GatewayPort,omitnil,omitempty" name:"GatewayPort"`
+
+	// 网关状态，取值有：
+	// <li> creating : 创建中；</li>
+	// <li> online : 在线；</li>
+	// <li> offline : 离线；</li>
+	// <li> disable : 已停用。</li>
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 网关 IP， 格式为 IPv4。
+	GatewayIP *string `json:"GatewayIP,omitnil,omitempty" name:"GatewayIP"`
+
+	// 网关地域 Id，可以从接口 DescribeMultiPathGatewayRegions 获取 RegionId 列表。
+	RegionId *string `json:"RegionId,omitnil,omitempty" name:"RegionId"`
+
+	// 线路信息，当查询网关信息详情 DescribeMultiPathGateway 的时候会返回，当查询网关列表 DescribeMultiPathGateways 的时候不会返回。
+	Lines []*MultiPathGatewayLine `json:"Lines,omitnil,omitempty" name:"Lines"`
+}
+
+type MultiPathGatewayLine struct {
+	// 线路 ID ， 其中 line-0 和 line-1 为系统内置线路 ID，取值有:
+	// <li> line-0：直连线路，不支持添加、编辑和删除；</li>
+	// <li> line-1： EdgeOne 四层代理线路，支持修改实例和规则，不支持删除；</li>
+	// <li> line-2 及以上：EdgeOne 四层代理线路或者自定义线路，支持修改、删除实例和规则。</li>
+	LineId *string `json:"LineId,omitnil,omitempty" name:"LineId"`
+
+	// 线路类型，取值有：
+	// <li>direct ：直连线路，不支持编辑、不支持删除；</li>
+	// <li>proxy ：EdgeOne 四层代理线路，支持编辑修改实例和规则，不支持删除；</li>
+	// <li>custom ：自定义线路，支持编辑、支持删除。</li>
+	LineType *string `json:"LineType,omitnil,omitempty" name:"LineType"`
+
+	// 线路地址，格式为 host:port 。
+	LineAddress *string `json:"LineAddress,omitnil,omitempty" name:"LineAddress"`
+
+	// 四层代理实例 ID  ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）返回。
+	ProxyId *string `json:"ProxyId,omitnil,omitempty" name:"ProxyId"`
+
+	// 转发规则 ID ，当线路类型 LineType 取值为 proxy（EdgeOne 四层代理）返回。
+	RuleId *string `json:"RuleId,omitnil,omitempty" name:"RuleId"`
+}
+
 type MutualTLS struct {
 	// 双向认证配置开关，取值有：
 	// <li>on：开启；</li>
@@ -16903,6 +17932,63 @@ type RealtimeLogDeliveryTask struct {
 type RedirectActionParameters struct {
 	// 重定向的URL。
 	URL *string `json:"URL,omitnil,omitempty" name:"URL"`
+}
+
+// Predefined struct for user
+type RefreshMultiPathGatewaySecretKeyRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+}
+
+type RefreshMultiPathGatewaySecretKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+}
+
+func (r *RefreshMultiPathGatewaySecretKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefreshMultiPathGatewaySecretKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RefreshMultiPathGatewaySecretKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RefreshMultiPathGatewaySecretKeyResponseParams struct {
+	// 多通道安全加速网关接入密钥。
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RefreshMultiPathGatewaySecretKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *RefreshMultiPathGatewaySecretKeyResponseParams `json:"Response"`
+}
+
+func (r *RefreshMultiPathGatewaySecretKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefreshMultiPathGatewaySecretKeyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RenewFlag struct {

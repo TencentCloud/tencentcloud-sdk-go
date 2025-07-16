@@ -1436,6 +1436,7 @@ func NewAssociateHaVipInstanceResponse() (response *AssociateHaVipInstanceRespon
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_DUPLICATEDHAVIPASSOCIATIONS = "InvalidParameterValue.DuplicatedHaVipAssociations"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -1451,6 +1452,7 @@ func (c *Client) AssociateHaVipInstance(request *AssociateHaVipInstanceRequest) 
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
+//  INVALIDPARAMETERVALUE_DUPLICATEDHAVIPASSOCIATIONS = "InvalidParameterValue.DuplicatedHaVipAssociations"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_PARAMETERMISMATCH = "InvalidParameterValue.ParameterMismatch"
 //  LIMITEXCEEDED = "LimitExceeded"

@@ -37162,6 +37162,9 @@ type Machine struct {
 
 	// 备注信息
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
+
+	// 主机安全agent版本
+	AgentVersion *string `json:"AgentVersion,omitnil,omitempty" name:"AgentVersion"`
 }
 
 type MachineClearHistory struct {

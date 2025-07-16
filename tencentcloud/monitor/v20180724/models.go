@@ -2490,7 +2490,7 @@ type CreatePrometheusAlertGroupRequestParams struct {
 	// 不为空时会覆盖 `Rules`字段下所有告警规则状态
 	GroupState *int64 `json:"GroupState,omitnil,omitempty" name:"GroupState"`
 
-	// 云监控告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
+	// 腾讯云可观测平台告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
 	AMPReceivers []*string `json:"AMPReceivers,omitnil,omitempty" name:"AMPReceivers"`
 
 	// 自定义告警通知模板
@@ -2518,7 +2518,7 @@ type CreatePrometheusAlertGroupRequest struct {
 	// 不为空时会覆盖 `Rules`字段下所有告警规则状态
 	GroupState *int64 `json:"GroupState,omitnil,omitempty" name:"GroupState"`
 
-	// 云监控告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
+	// 腾讯云可观测平台告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
 	AMPReceivers []*string `json:"AMPReceivers,omitnil,omitempty" name:"AMPReceivers"`
 
 	// 自定义告警通知模板
@@ -13063,16 +13063,30 @@ type ModifyConditionsTemplateRequestCondition struct {
 
 type ModifyConditionsTemplateRequestEventCondition struct {
 	// 告警通知周期
+	//
+	// Deprecated: AlarmNotifyPeriod is deprecated.
 	AlarmNotifyPeriod *string `json:"AlarmNotifyPeriod,omitnil,omitempty" name:"AlarmNotifyPeriod"`
 
 	// 告警通知方式
+	//
+	// Deprecated: AlarmNotifyType is deprecated.
 	AlarmNotifyType *string `json:"AlarmNotifyType,omitnil,omitempty" name:"AlarmNotifyType"`
 
 	// 事件ID
+	//
+	// Deprecated: EventID is deprecated.
 	EventID *string `json:"EventID,omitnil,omitempty" name:"EventID"`
 
 	// 规则ID
+	//
+	// Deprecated: RuleID is deprecated.
 	RuleID *int64 `json:"RuleID,omitnil,omitempty" name:"RuleID"`
+
+	// 重构后的eventType
+	MetricName *string `json:"MetricName,omitnil,omitempty" name:"MetricName"`
+
+	// 事件描述信息
+	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 }
 
 // Predefined struct for user
@@ -14171,7 +14185,7 @@ type PrometheusAlertGroupSet struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitnil,omitempty" name:"GroupName"`
 
-	// 云监控告警模板ID ，返回告警模板转换后的notice ID。
+	// 腾讯云可观测平台告警模板ID ，返回告警模板转换后的notice ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AMPReceivers []*string `json:"AMPReceivers,omitnil,omitempty" name:"AMPReceivers"`
 
@@ -16757,7 +16771,7 @@ type UpdatePrometheusAlertGroupRequestParams struct {
 	// 不为空时会覆盖 `Rules`字段下所有告警规则状态
 	GroupState *int64 `json:"GroupState,omitnil,omitempty" name:"GroupState"`
 
-	// 云监控告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
+	// 腾讯云可观测平台告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
 	AMPReceivers []*string `json:"AMPReceivers,omitnil,omitempty" name:"AMPReceivers"`
 
 	// 自定义告警通知模板
@@ -16788,7 +16802,7 @@ type UpdatePrometheusAlertGroupRequest struct {
 	// 不为空时会覆盖 `Rules`字段下所有告警规则状态
 	GroupState *int64 `json:"GroupState,omitnil,omitempty" name:"GroupState"`
 
-	// 云监控告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
+	// 腾讯云可观测平台告警通知模板ID列表，形如Consumer-xxxx或notice-xxxx
 	AMPReceivers []*string `json:"AMPReceivers,omitnil,omitempty" name:"AMPReceivers"`
 
 	// 自定义告警通知模板

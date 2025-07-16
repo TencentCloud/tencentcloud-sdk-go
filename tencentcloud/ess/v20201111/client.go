@@ -645,6 +645,97 @@ func (c *Client) CreateBatchCancelFlowUrlWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateBatchInformationExtractionTaskRequest() (request *CreateBatchInformationExtractionTaskRequest) {
+    request = &CreateBatchInformationExtractionTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateBatchInformationExtractionTask")
+    
+    
+    return
+}
+
+func NewCreateBatchInformationExtractionTaskResponse() (response *CreateBatchInformationExtractionTaskResponse) {
+    response = &CreateBatchInformationExtractionTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBatchInformationExtractionTask
+// 此接口（CreateBatchInformationExtractionTask）用来通过上传后的PDF资源编号来批量创建合同智能审查任务。<br/>
+//
+// 
+//
+// 适用场景：根据合同关键词（字段名称）来提取PDF合同文件的字段结果信息。
+//
+// 
+//
+// 注: 
+//
+// 1. PDF格式限制大小为10M以下
+//
+// 2. 仅支持5个PDF文件批量发起
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BALANCENOTENOUGH = "FailedOperation.BalanceNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SENSITIVEFILECONTENT = "InvalidParameter.SensitiveFileContent"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+func (c *Client) CreateBatchInformationExtractionTask(request *CreateBatchInformationExtractionTaskRequest) (response *CreateBatchInformationExtractionTaskResponse, err error) {
+    return c.CreateBatchInformationExtractionTaskWithContext(context.Background(), request)
+}
+
+// CreateBatchInformationExtractionTask
+// 此接口（CreateBatchInformationExtractionTask）用来通过上传后的PDF资源编号来批量创建合同智能审查任务。<br/>
+//
+// 
+//
+// 适用场景：根据合同关键词（字段名称）来提取PDF合同文件的字段结果信息。
+//
+// 
+//
+// 注: 
+//
+// 1. PDF格式限制大小为10M以下
+//
+// 2. 仅支持5个PDF文件批量发起
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BALANCENOTENOUGH = "FailedOperation.BalanceNotEnough"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SENSITIVEFILECONTENT = "InvalidParameter.SensitiveFileContent"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+func (c *Client) CreateBatchInformationExtractionTaskWithContext(ctx context.Context, request *CreateBatchInformationExtractionTaskRequest) (response *CreateBatchInformationExtractionTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateBatchInformationExtractionTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBatchInformationExtractionTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBatchInformationExtractionTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBatchInitOrganizationUrlRequest() (request *CreateBatchInitOrganizationUrlRequest) {
     request = &CreateBatchInitOrganizationUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10198,6 +10289,69 @@ func (c *Client) DescribeFlowTemplatesWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeFlowTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInformationExtractionTaskRequest() (request *DescribeInformationExtractionTaskRequest) {
+    request = &DescribeInformationExtractionTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeInformationExtractionTask")
+    
+    
+    return
+}
+
+func NewDescribeInformationExtractionTaskResponse() (response *DescribeInformationExtractionTaskResponse) {
+    response = &DescribeInformationExtractionTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeInformationExtractionTask
+// 本接口（DescribeInformationExtractionTask）用于获取合同智能提取任务详情，包括任务的状态和提取的字段结果信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+func (c *Client) DescribeInformationExtractionTask(request *DescribeInformationExtractionTaskRequest) (response *DescribeInformationExtractionTaskResponse, err error) {
+    return c.DescribeInformationExtractionTaskWithContext(context.Background(), request)
+}
+
+// DescribeInformationExtractionTask
+// 本接口（DescribeInformationExtractionTask）用于获取合同智能提取任务详情，包括任务的状态和提取的字段结果信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+func (c *Client) DescribeInformationExtractionTaskWithContext(ctx context.Context, request *DescribeInformationExtractionTaskRequest) (response *DescribeInformationExtractionTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeInformationExtractionTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInformationExtractionTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInformationExtractionTaskResponse()
     err = c.Send(request, response)
     return
 }

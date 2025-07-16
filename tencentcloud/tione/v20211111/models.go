@@ -5749,6 +5749,9 @@ type ModifyModelServiceRequestParams struct {
 
 	// sidecar配置
 	Sidecar *SidecarSpec `json:"Sidecar,omitnil,omitempty" name:"Sidecar"`
+
+	// 资源组 id
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -5872,6 +5875,9 @@ type ModifyModelServiceRequest struct {
 
 	// sidecar配置
 	Sidecar *SidecarSpec `json:"Sidecar,omitnil,omitempty" name:"Sidecar"`
+
+	// 资源组 id
+	ResourceGroupId *string `json:"ResourceGroupId,omitnil,omitempty" name:"ResourceGroupId"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -5918,6 +5924,7 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "HealthProbe")
 	delete(f, "RollingUpdate")
 	delete(f, "Sidecar")
+	delete(f, "ResourceGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}

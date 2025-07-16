@@ -1709,6 +1709,177 @@ func (c *Client) CreateLoadBalancerWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateMultiPathGatewayRequest() (request *CreateMultiPathGatewayRequest) {
+    request = &CreateMultiPathGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CreateMultiPathGateway")
+    
+    
+    return
+}
+
+func NewCreateMultiPathGatewayResponse() (response *CreateMultiPathGatewayResponse) {
+    response = &CreateMultiPathGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMultiPathGateway
+// 通过本接口创建多通道安全加速网关，包括云上网关（腾讯云创建和管理的网关）和自有网关（用户部署的私有网关），需要通过接口 DescribeMultiPathGateway，查询状态为 online 即创建成功。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateMultiPathGateway(request *CreateMultiPathGatewayRequest) (response *CreateMultiPathGatewayResponse, err error) {
+    return c.CreateMultiPathGatewayWithContext(context.Background(), request)
+}
+
+// CreateMultiPathGateway
+// 通过本接口创建多通道安全加速网关，包括云上网关（腾讯云创建和管理的网关）和自有网关（用户部署的私有网关），需要通过接口 DescribeMultiPathGateway，查询状态为 online 即创建成功。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateMultiPathGatewayWithContext(ctx context.Context, request *CreateMultiPathGatewayRequest) (response *CreateMultiPathGatewayResponse, err error) {
+    if request == nil {
+        request = NewCreateMultiPathGatewayRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMultiPathGateway require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMultiPathGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateMultiPathGatewayLineRequest() (request *CreateMultiPathGatewayLineRequest) {
+    request = &CreateMultiPathGatewayLineRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CreateMultiPathGatewayLine")
+    
+    
+    return
+}
+
+func NewCreateMultiPathGatewayLineResponse() (response *CreateMultiPathGatewayLineResponse) {
+    response = &CreateMultiPathGatewayLineResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMultiPathGatewayLine
+// 通过本接口创建接入多通道安全加速网关的线路。包括 EdgeOne 四层代理线路、自定义线路。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateMultiPathGatewayLine(request *CreateMultiPathGatewayLineRequest) (response *CreateMultiPathGatewayLineResponse, err error) {
+    return c.CreateMultiPathGatewayLineWithContext(context.Background(), request)
+}
+
+// CreateMultiPathGatewayLine
+// 通过本接口创建接入多通道安全加速网关的线路。包括 EdgeOne 四层代理线路、自定义线路。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateMultiPathGatewayLineWithContext(ctx context.Context, request *CreateMultiPathGatewayLineRequest) (response *CreateMultiPathGatewayLineResponse, err error) {
+    if request == nil {
+        request = NewCreateMultiPathGatewayLineRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMultiPathGatewayLine require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMultiPathGatewayLineResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateMultiPathGatewaySecretKeyRequest() (request *CreateMultiPathGatewaySecretKeyRequest) {
+    request = &CreateMultiPathGatewaySecretKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CreateMultiPathGatewaySecretKey")
+    
+    
+    return
+}
+
+func NewCreateMultiPathGatewaySecretKeyResponse() (response *CreateMultiPathGatewaySecretKeyResponse) {
+    response = &CreateMultiPathGatewaySecretKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMultiPathGatewaySecretKey
+// 通过本接口创建接入多通道安全加速网关的密钥，客户基于接入密钥签名接入多通道安全加速网关。每个站点下只有一个密钥，可用于接入该站点下的所有网关，可通过接口 DescribeMultiPathGatewaySecretKey 查询。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateMultiPathGatewaySecretKey(request *CreateMultiPathGatewaySecretKeyRequest) (response *CreateMultiPathGatewaySecretKeyResponse, err error) {
+    return c.CreateMultiPathGatewaySecretKeyWithContext(context.Background(), request)
+}
+
+// CreateMultiPathGatewaySecretKey
+// 通过本接口创建接入多通道安全加速网关的密钥，客户基于接入密钥签名接入多通道安全加速网关。每个站点下只有一个密钥，可用于接入该站点下的所有网关，可通过接口 DescribeMultiPathGatewaySecretKey 查询。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateMultiPathGatewaySecretKeyWithContext(ctx context.Context, request *CreateMultiPathGatewaySecretKeyRequest) (response *CreateMultiPathGatewaySecretKeyResponse, err error) {
+    if request == nil {
+        request = NewCreateMultiPathGatewaySecretKeyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMultiPathGatewaySecretKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMultiPathGatewaySecretKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOriginGroupRequest() (request *CreateOriginGroupRequest) {
     request = &CreateOriginGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3439,6 +3610,120 @@ func (c *Client) DeleteLoadBalancerWithContext(ctx context.Context, request *Del
     request.SetContext(ctx)
     
     response = NewDeleteLoadBalancerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteMultiPathGatewayRequest() (request *DeleteMultiPathGatewayRequest) {
+    request = &DeleteMultiPathGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DeleteMultiPathGateway")
+    
+    
+    return
+}
+
+func NewDeleteMultiPathGatewayResponse() (response *DeleteMultiPathGatewayResponse) {
+    response = &DeleteMultiPathGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteMultiPathGateway
+// 通过本接口删除多通道安全加速网关，包括自有网关和云上网关。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteMultiPathGateway(request *DeleteMultiPathGatewayRequest) (response *DeleteMultiPathGatewayResponse, err error) {
+    return c.DeleteMultiPathGatewayWithContext(context.Background(), request)
+}
+
+// DeleteMultiPathGateway
+// 通过本接口删除多通道安全加速网关，包括自有网关和云上网关。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteMultiPathGatewayWithContext(ctx context.Context, request *DeleteMultiPathGatewayRequest) (response *DeleteMultiPathGatewayResponse, err error) {
+    if request == nil {
+        request = NewDeleteMultiPathGatewayRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMultiPathGateway require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteMultiPathGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteMultiPathGatewayLineRequest() (request *DeleteMultiPathGatewayLineRequest) {
+    request = &DeleteMultiPathGatewayLineRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DeleteMultiPathGatewayLine")
+    
+    
+    return
+}
+
+func NewDeleteMultiPathGatewayLineResponse() (response *DeleteMultiPathGatewayLineResponse) {
+    response = &DeleteMultiPathGatewayLineResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteMultiPathGatewayLine
+// 通过本接口删除接入多通道安全加速网关的线路，仅自定义线路支持删除。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteMultiPathGatewayLine(request *DeleteMultiPathGatewayLineRequest) (response *DeleteMultiPathGatewayLineResponse, err error) {
+    return c.DeleteMultiPathGatewayLineWithContext(context.Background(), request)
+}
+
+// DeleteMultiPathGatewayLine
+// 通过本接口删除接入多通道安全加速网关的线路，仅自定义线路支持删除。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DeleteMultiPathGatewayLineWithContext(ctx context.Context, request *DeleteMultiPathGatewayLineRequest) (response *DeleteMultiPathGatewayLineResponse, err error) {
+    if request == nil {
+        request = NewDeleteMultiPathGatewayLineRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMultiPathGatewayLine require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteMultiPathGatewayLineResponse()
     err = c.Send(request, response)
     return
 }
@@ -5491,6 +5776,291 @@ func (c *Client) DescribeLoadBalancerListWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeLoadBalancerListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMultiPathGatewayRequest() (request *DescribeMultiPathGatewayRequest) {
+    request = &DescribeMultiPathGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeMultiPathGateway")
+    
+    
+    return
+}
+
+func NewDescribeMultiPathGatewayResponse() (response *DescribeMultiPathGatewayResponse) {
+    response = &DescribeMultiPathGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMultiPathGateway
+// 通过本接口查询多通道安全加速网关详情。如名称、网关 ID、IP、端口、类型等。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeMultiPathGateway(request *DescribeMultiPathGatewayRequest) (response *DescribeMultiPathGatewayResponse, err error) {
+    return c.DescribeMultiPathGatewayWithContext(context.Background(), request)
+}
+
+// DescribeMultiPathGateway
+// 通过本接口查询多通道安全加速网关详情。如名称、网关 ID、IP、端口、类型等。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeMultiPathGatewayWithContext(ctx context.Context, request *DescribeMultiPathGatewayRequest) (response *DescribeMultiPathGatewayResponse, err error) {
+    if request == nil {
+        request = NewDescribeMultiPathGatewayRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMultiPathGateway require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMultiPathGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMultiPathGatewayLineRequest() (request *DescribeMultiPathGatewayLineRequest) {
+    request = &DescribeMultiPathGatewayLineRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeMultiPathGatewayLine")
+    
+    
+    return
+}
+
+func NewDescribeMultiPathGatewayLineResponse() (response *DescribeMultiPathGatewayLineResponse) {
+    response = &DescribeMultiPathGatewayLineResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMultiPathGatewayLine
+// 通过本接口查询接入多通道安全加速网关的线路。包括直连、EdgeOne 四层代理线路、自定义线路。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeMultiPathGatewayLine(request *DescribeMultiPathGatewayLineRequest) (response *DescribeMultiPathGatewayLineResponse, err error) {
+    return c.DescribeMultiPathGatewayLineWithContext(context.Background(), request)
+}
+
+// DescribeMultiPathGatewayLine
+// 通过本接口查询接入多通道安全加速网关的线路。包括直连、EdgeOne 四层代理线路、自定义线路。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeMultiPathGatewayLineWithContext(ctx context.Context, request *DescribeMultiPathGatewayLineRequest) (response *DescribeMultiPathGatewayLineResponse, err error) {
+    if request == nil {
+        request = NewDescribeMultiPathGatewayLineRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMultiPathGatewayLine require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMultiPathGatewayLineResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMultiPathGatewayRegionsRequest() (request *DescribeMultiPathGatewayRegionsRequest) {
+    request = &DescribeMultiPathGatewayRegionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeMultiPathGatewayRegions")
+    
+    
+    return
+}
+
+func NewDescribeMultiPathGatewayRegionsResponse() (response *DescribeMultiPathGatewayRegionsResponse) {
+    response = &DescribeMultiPathGatewayRegionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMultiPathGatewayRegions
+// 通过本接口查询用户创建的多通道安全加速网关（云上网关）的可用地域列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeMultiPathGatewayRegions(request *DescribeMultiPathGatewayRegionsRequest) (response *DescribeMultiPathGatewayRegionsResponse, err error) {
+    return c.DescribeMultiPathGatewayRegionsWithContext(context.Background(), request)
+}
+
+// DescribeMultiPathGatewayRegions
+// 通过本接口查询用户创建的多通道安全加速网关（云上网关）的可用地域列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeMultiPathGatewayRegionsWithContext(ctx context.Context, request *DescribeMultiPathGatewayRegionsRequest) (response *DescribeMultiPathGatewayRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeMultiPathGatewayRegionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMultiPathGatewayRegions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMultiPathGatewayRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMultiPathGatewaySecretKeyRequest() (request *DescribeMultiPathGatewaySecretKeyRequest) {
+    request = &DescribeMultiPathGatewaySecretKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeMultiPathGatewaySecretKey")
+    
+    
+    return
+}
+
+func NewDescribeMultiPathGatewaySecretKeyResponse() (response *DescribeMultiPathGatewaySecretKeyResponse) {
+    response = &DescribeMultiPathGatewaySecretKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMultiPathGatewaySecretKey
+// 通过本接口查询接入多通道安全加速网关的密钥，客户基于接入密钥签名接入多通道安全加速网关。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeMultiPathGatewaySecretKey(request *DescribeMultiPathGatewaySecretKeyRequest) (response *DescribeMultiPathGatewaySecretKeyResponse, err error) {
+    return c.DescribeMultiPathGatewaySecretKeyWithContext(context.Background(), request)
+}
+
+// DescribeMultiPathGatewaySecretKey
+// 通过本接口查询接入多通道安全加速网关的密钥，客户基于接入密钥签名接入多通道安全加速网关。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeMultiPathGatewaySecretKeyWithContext(ctx context.Context, request *DescribeMultiPathGatewaySecretKeyRequest) (response *DescribeMultiPathGatewaySecretKeyResponse, err error) {
+    if request == nil {
+        request = NewDescribeMultiPathGatewaySecretKeyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMultiPathGatewaySecretKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMultiPathGatewaySecretKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeMultiPathGatewaysRequest() (request *DescribeMultiPathGatewaysRequest) {
+    request = &DescribeMultiPathGatewaysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeMultiPathGateways")
+    
+    
+    return
+}
+
+func NewDescribeMultiPathGatewaysResponse() (response *DescribeMultiPathGatewaysResponse) {
+    response = &DescribeMultiPathGatewaysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeMultiPathGateways
+// 通过本接口查询用户创建的多通道安全加速网关列表。支持翻页。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeMultiPathGateways(request *DescribeMultiPathGatewaysRequest) (response *DescribeMultiPathGatewaysResponse, err error) {
+    return c.DescribeMultiPathGatewaysWithContext(context.Background(), request)
+}
+
+// DescribeMultiPathGateways
+// 通过本接口查询用户创建的多通道安全加速网关列表。支持翻页。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeMultiPathGatewaysWithContext(ctx context.Context, request *DescribeMultiPathGatewaysRequest) (response *DescribeMultiPathGatewaysResponse, err error) {
+    if request == nil {
+        request = NewDescribeMultiPathGatewaysRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMultiPathGateways require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMultiPathGatewaysResponse()
     err = c.Send(request, response)
     return
 }
@@ -9406,6 +9976,177 @@ func (c *Client) ModifyLoadBalancerWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyMultiPathGatewayRequest() (request *ModifyMultiPathGatewayRequest) {
+    request = &ModifyMultiPathGatewayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyMultiPathGateway")
+    
+    
+    return
+}
+
+func NewModifyMultiPathGatewayResponse() (response *ModifyMultiPathGatewayResponse) {
+    response = &ModifyMultiPathGatewayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMultiPathGateway
+// 通过本接口修改多通道安全加速网关信息，如名称、网关 ID、IP、端口等。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyMultiPathGateway(request *ModifyMultiPathGatewayRequest) (response *ModifyMultiPathGatewayResponse, err error) {
+    return c.ModifyMultiPathGatewayWithContext(context.Background(), request)
+}
+
+// ModifyMultiPathGateway
+// 通过本接口修改多通道安全加速网关信息，如名称、网关 ID、IP、端口等。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyMultiPathGatewayWithContext(ctx context.Context, request *ModifyMultiPathGatewayRequest) (response *ModifyMultiPathGatewayResponse, err error) {
+    if request == nil {
+        request = NewModifyMultiPathGatewayRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMultiPathGateway require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMultiPathGatewayResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMultiPathGatewayLineRequest() (request *ModifyMultiPathGatewayLineRequest) {
+    request = &ModifyMultiPathGatewayLineRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyMultiPathGatewayLine")
+    
+    
+    return
+}
+
+func NewModifyMultiPathGatewayLineResponse() (response *ModifyMultiPathGatewayLineResponse) {
+    response = &ModifyMultiPathGatewayLineResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMultiPathGatewayLine
+// 通过本接口修改接入多通道安全加速网关的线路，包括 EdgeOne 四层代理线路、自定义线路。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyMultiPathGatewayLine(request *ModifyMultiPathGatewayLineRequest) (response *ModifyMultiPathGatewayLineResponse, err error) {
+    return c.ModifyMultiPathGatewayLineWithContext(context.Background(), request)
+}
+
+// ModifyMultiPathGatewayLine
+// 通过本接口修改接入多通道安全加速网关的线路，包括 EdgeOne 四层代理线路、自定义线路。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyMultiPathGatewayLineWithContext(ctx context.Context, request *ModifyMultiPathGatewayLineRequest) (response *ModifyMultiPathGatewayLineResponse, err error) {
+    if request == nil {
+        request = NewModifyMultiPathGatewayLineRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMultiPathGatewayLine require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMultiPathGatewayLineResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMultiPathGatewaySecretKeyRequest() (request *ModifyMultiPathGatewaySecretKeyRequest) {
+    request = &ModifyMultiPathGatewaySecretKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyMultiPathGatewaySecretKey")
+    
+    
+    return
+}
+
+func NewModifyMultiPathGatewaySecretKeyResponse() (response *ModifyMultiPathGatewaySecretKeyResponse) {
+    response = &ModifyMultiPathGatewaySecretKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyMultiPathGatewaySecretKey
+// 通过本接口修改接入多通道安全加速网关的密钥，客户基于接入密钥签名接入多通道安全加速网关，修改后原密钥失效。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyMultiPathGatewaySecretKey(request *ModifyMultiPathGatewaySecretKeyRequest) (response *ModifyMultiPathGatewaySecretKeyResponse, err error) {
+    return c.ModifyMultiPathGatewaySecretKeyWithContext(context.Background(), request)
+}
+
+// ModifyMultiPathGatewaySecretKey
+// 通过本接口修改接入多通道安全加速网关的密钥，客户基于接入密钥签名接入多通道安全加速网关，修改后原密钥失效。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyMultiPathGatewaySecretKeyWithContext(ctx context.Context, request *ModifyMultiPathGatewaySecretKeyRequest) (response *ModifyMultiPathGatewaySecretKeyResponse, err error) {
+    if request == nil {
+        request = NewModifyMultiPathGatewaySecretKeyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMultiPathGatewaySecretKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMultiPathGatewaySecretKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyOriginACLRequest() (request *ModifyOriginACLRequest) {
     request = &ModifyOriginACLRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10437,6 +11178,63 @@ func (c *Client) ModifyZoneStatusWithContext(ctx context.Context, request *Modif
     request.SetContext(ctx)
     
     response = NewModifyZoneStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRefreshMultiPathGatewaySecretKeyRequest() (request *RefreshMultiPathGatewaySecretKeyRequest) {
+    request = &RefreshMultiPathGatewaySecretKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "RefreshMultiPathGatewaySecretKey")
+    
+    
+    return
+}
+
+func NewRefreshMultiPathGatewaySecretKeyResponse() (response *RefreshMultiPathGatewaySecretKeyResponse) {
+    response = &RefreshMultiPathGatewaySecretKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RefreshMultiPathGatewaySecretKey
+// 通过本接口刷新多通道安全加速网关的密钥。客户基于接入密钥签名接入多通道安全加速网关。每个站点下只有一个密钥，可用于接入该站点下的所有网关，刷新密钥后，原始密钥会失效。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) RefreshMultiPathGatewaySecretKey(request *RefreshMultiPathGatewaySecretKeyRequest) (response *RefreshMultiPathGatewaySecretKeyResponse, err error) {
+    return c.RefreshMultiPathGatewaySecretKeyWithContext(context.Background(), request)
+}
+
+// RefreshMultiPathGatewaySecretKey
+// 通过本接口刷新多通道安全加速网关的密钥。客户基于接入密钥签名接入多通道安全加速网关。每个站点下只有一个密钥，可用于接入该站点下的所有网关，刷新密钥后，原始密钥会失效。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) RefreshMultiPathGatewaySecretKeyWithContext(ctx context.Context, request *RefreshMultiPathGatewaySecretKeyRequest) (response *RefreshMultiPathGatewaySecretKeyResponse, err error) {
+    if request == nil {
+        request = NewRefreshMultiPathGatewaySecretKeyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RefreshMultiPathGatewaySecretKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRefreshMultiPathGatewaySecretKeyResponse()
     err = c.Send(request, response)
     return
 }

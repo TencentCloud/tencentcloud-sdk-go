@@ -658,6 +658,46 @@ func (r *AddLiveWatermarkResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AuditKeyword struct {
+	// 关键词内容。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 关键词标签。
+	// 可取值：Normal: 正常 ，Polity: 政治，Porn: 色情，Sexy：性感，Ad: 广告，Illegal: 违法，Abuse: 谩骂，Terror: 暴恐，Spam: 灌水，Moan:呻吟。
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+}
+
+type AuditKeywordDeleteDetail struct {
+	// 关键词 Id。
+	KeywordId *string `json:"KeywordId,omitnil,omitempty" name:"KeywordId"`
+
+	// 关键词内容。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 是否删除成功。
+	Deleted *bool `json:"Deleted,omitnil,omitempty" name:"Deleted"`
+
+	// 如果删除失败，错误信息。
+	Error *string `json:"Error,omitnil,omitempty" name:"Error"`
+}
+
+type AuditKeywordInfo struct {
+	// 关键词 Id。
+	KeywordId *string `json:"KeywordId,omitnil,omitempty" name:"KeywordId"`
+
+	// 关键词内容。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 关键词标签。
+	// 可取值：Normal: 正常 ，Polity: 政治，Porn: 色情，Sexy：性感，Ad: 广告，Illegal: 违法，Abuse: 谩骂，Terror: 暴恐，Spam: 灌水，Moan:呻吟。
+	Label *string `json:"Label,omitnil,omitempty" name:"Label"`
+
+	// 创建时间。UTC 格式，例如：2018-11-29T19:00:00Z。
+	// 注意：
+	// 1. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示。
+	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
+}
+
 // Predefined struct for user
 type AuthenticateDomainOwnerRequestParams struct {
 	// 要验证的域名。
@@ -1777,12 +1817,21 @@ func (r *CopyCasterResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAuditKeywordsRequestParams struct {
+	// 关键词列表。
+	Keywords []*AuditKeyword `json:"Keywords,omitnil,omitempty" name:"Keywords"`
 
+	// 直播审核词库Id。
+	LibId *string `json:"LibId,omitnil,omitempty" name:"LibId"`
 }
 
 type CreateAuditKeywordsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 关键词列表。
+	Keywords []*AuditKeyword `json:"Keywords,omitnil,omitempty" name:"Keywords"`
+
+	// 直播审核词库Id。
+	LibId *string `json:"LibId,omitnil,omitempty" name:"LibId"`
 }
 
 func (r *CreateAuditKeywordsRequest) ToJsonString() string {
@@ -1797,7 +1846,8 @@ func (r *CreateAuditKeywordsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Keywords")
+	delete(f, "LibId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAuditKeywordsRequest has unknown keys!", "")
 	}
@@ -1806,6 +1856,12 @@ func (r *CreateAuditKeywordsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAuditKeywordsResponseParams struct {
+	// 添加成功的关键词 Id 列表。
+	KeywordIds []*string `json:"KeywordIds,omitnil,omitempty" name:"KeywordIds"`
+
+	// 重复关键词列表。
+	DupInfos []*AuditKeywordInfo `json:"DupInfos,omitnil,omitempty" name:"DupInfos"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -4337,6 +4393,14 @@ type CreateLiveTranscodeTemplateRequestParams struct {
 	// DRM 加密项，可选值：AUDIO、SD、HD、UHD1、UHD2，后四个为一组，同组中的内容只能选一个。
 	// 不传递或者为空字符串，清空之前的DRM配置。
 	DRMTracks *string `json:"DRMTracks,omitnil,omitempty" name:"DRMTracks"`
+
+	// 是否创建自适应码率，默认值 0。
+	// 0：否。
+	// 1：是。
+	IsAdaptiveBitRate *int64 `json:"IsAdaptiveBitRate,omitnil,omitempty" name:"IsAdaptiveBitRate"`
+
+	// 自适应码率，子转码模板信息，当 IsAdaptiveBitRate 为 1 时有效。
+	AdaptiveChildren []*ChildTemplateInfo `json:"AdaptiveChildren,omitnil,omitempty" name:"AdaptiveChildren"`
 }
 
 type CreateLiveTranscodeTemplateRequest struct {
@@ -4437,6 +4501,14 @@ type CreateLiveTranscodeTemplateRequest struct {
 	// DRM 加密项，可选值：AUDIO、SD、HD、UHD1、UHD2，后四个为一组，同组中的内容只能选一个。
 	// 不传递或者为空字符串，清空之前的DRM配置。
 	DRMTracks *string `json:"DRMTracks,omitnil,omitempty" name:"DRMTracks"`
+
+	// 是否创建自适应码率，默认值 0。
+	// 0：否。
+	// 1：是。
+	IsAdaptiveBitRate *int64 `json:"IsAdaptiveBitRate,omitnil,omitempty" name:"IsAdaptiveBitRate"`
+
+	// 自适应码率，子转码模板信息，当 IsAdaptiveBitRate 为 1 时有效。
+	AdaptiveChildren []*ChildTemplateInfo `json:"AdaptiveChildren,omitnil,omitempty" name:"AdaptiveChildren"`
 }
 
 func (r *CreateLiveTranscodeTemplateRequest) ToJsonString() string {
@@ -4473,6 +4545,8 @@ func (r *CreateLiveTranscodeTemplateRequest) FromJsonString(s string) error {
 	delete(f, "ShortEdgeAsHeight")
 	delete(f, "DRMType")
 	delete(f, "DRMTracks")
+	delete(f, "IsAdaptiveBitRate")
+	delete(f, "AdaptiveChildren")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLiveTranscodeTemplateRequest has unknown keys!", "")
 	}
@@ -4991,12 +5065,21 @@ type DelayInfo struct {
 
 // Predefined struct for user
 type DeleteAuditKeywordsRequestParams struct {
+	// 要删除的关键词 Id 列表。
+	KeywordIds []*string `json:"KeywordIds,omitnil,omitempty" name:"KeywordIds"`
 
+	// 关键词库 Id。
+	LibId *string `json:"LibId,omitnil,omitempty" name:"LibId"`
 }
 
 type DeleteAuditKeywordsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 要删除的关键词 Id 列表。
+	KeywordIds []*string `json:"KeywordIds,omitnil,omitempty" name:"KeywordIds"`
+
+	// 关键词库 Id。
+	LibId *string `json:"LibId,omitnil,omitempty" name:"LibId"`
 }
 
 func (r *DeleteAuditKeywordsRequest) ToJsonString() string {
@@ -5011,7 +5094,8 @@ func (r *DeleteAuditKeywordsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "KeywordIds")
+	delete(f, "LibId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAuditKeywordsRequest has unknown keys!", "")
 	}
@@ -5020,6 +5104,12 @@ func (r *DeleteAuditKeywordsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAuditKeywordsResponseParams struct {
+	// 成功删除关键词的数量。
+	SuccessCount *int64 `json:"SuccessCount,omitnil,omitempty" name:"SuccessCount"`
+
+	// 关键词详情列表。
+	Infos []*AuditKeywordDeleteDetail `json:"Infos,omitnil,omitempty" name:"Infos"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -6858,12 +6948,41 @@ func (r *DescribeAreaBillBandwidthAndFluxListResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type DescribeAuditKeywordsRequestParams struct {
+	// 获取偏移量。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
+	// 单页条数，最大为100条，超过则按100条返回。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 关键词库 Id。
+	LibId *string `json:"LibId,omitnil,omitempty" name:"LibId"`
+
+	// 关键词搜索字段。
+	// 为空字符串时忽略。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 标签类别搜索。
+	Labels []*int64 `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
 
 type DescribeAuditKeywordsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 获取偏移量。
+	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
+
+	// 单页条数，最大为100条，超过则按100条返回。
+	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 关键词库 Id。
+	LibId *string `json:"LibId,omitnil,omitempty" name:"LibId"`
+
+	// 关键词搜索字段。
+	// 为空字符串时忽略。
+	Content *string `json:"Content,omitnil,omitempty" name:"Content"`
+
+	// 标签类别搜索。
+	Labels []*int64 `json:"Labels,omitnil,omitempty" name:"Labels"`
 }
 
 func (r *DescribeAuditKeywordsRequest) ToJsonString() string {
@@ -6878,7 +6997,11 @@ func (r *DescribeAuditKeywordsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "LibId")
+	delete(f, "Content")
+	delete(f, "Labels")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAuditKeywordsRequest has unknown keys!", "")
 	}
@@ -6887,6 +7010,12 @@ func (r *DescribeAuditKeywordsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAuditKeywordsResponseParams struct {
+	// 关键词总条数。
+	Total *int64 `json:"Total,omitnil,omitempty" name:"Total"`
+
+	// 关键词详情列表。
+	Infos []*AuditKeywordInfo `json:"Infos,omitnil,omitempty" name:"Infos"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }
@@ -17290,6 +17419,14 @@ type ModifyLiveTranscodeTemplateRequestParams struct {
 	// DRM 加密项，可选值：AUDIO、SD、HD、UHD1、UHD2，后四个为一组，同组中的内容只能选一个。
 	// 不传递或者为空字符串，清空之前的DRM配置。
 	DRMTracks *string `json:"DRMTracks,omitnil,omitempty" name:"DRMTracks"`
+
+	// 是否创建自适应码率，默认值 0。
+	// 0：否。
+	// 1：是。
+	IsAdaptiveBitRate *int64 `json:"IsAdaptiveBitRate,omitnil,omitempty" name:"IsAdaptiveBitRate"`
+
+	// 自适应码率，子转码模板信息，当 IsAdaptiveBitRate 为 1 时有效。
+	AdaptiveChildren []*ChildTemplateInfo `json:"AdaptiveChildren,omitnil,omitempty" name:"AdaptiveChildren"`
 }
 
 type ModifyLiveTranscodeTemplateRequest struct {
@@ -17380,6 +17517,14 @@ type ModifyLiveTranscodeTemplateRequest struct {
 	// DRM 加密项，可选值：AUDIO、SD、HD、UHD1、UHD2，后四个为一组，同组中的内容只能选一个。
 	// 不传递或者为空字符串，清空之前的DRM配置。
 	DRMTracks *string `json:"DRMTracks,omitnil,omitempty" name:"DRMTracks"`
+
+	// 是否创建自适应码率，默认值 0。
+	// 0：否。
+	// 1：是。
+	IsAdaptiveBitRate *int64 `json:"IsAdaptiveBitRate,omitnil,omitempty" name:"IsAdaptiveBitRate"`
+
+	// 自适应码率，子转码模板信息，当 IsAdaptiveBitRate 为 1 时有效。
+	AdaptiveChildren []*ChildTemplateInfo `json:"AdaptiveChildren,omitnil,omitempty" name:"AdaptiveChildren"`
 }
 
 func (r *ModifyLiveTranscodeTemplateRequest) ToJsonString() string {
@@ -17415,6 +17560,8 @@ func (r *ModifyLiveTranscodeTemplateRequest) FromJsonString(s string) error {
 	delete(f, "ShortEdgeAsHeight")
 	delete(f, "DRMType")
 	delete(f, "DRMTracks")
+	delete(f, "IsAdaptiveBitRate")
+	delete(f, "AdaptiveChildren")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveTranscodeTemplateRequest has unknown keys!", "")
 	}

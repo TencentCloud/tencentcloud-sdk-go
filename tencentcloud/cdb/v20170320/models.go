@@ -960,10 +960,10 @@ type AutoStrategy struct {
 	// Deprecated: ShrinkPeriod is deprecated.
 	ShrinkPeriod *int64 `json:"ShrinkPeriod,omitnil,omitempty" name:"ShrinkPeriod"`
 
-	// 弹性扩容观测周期（秒级），可取值为：5，30，45，60，180，300，600，900，1800。
+	// 弹性扩容观测周期（秒级），可取值为：15，30，45，60，180，300，600，900，1800。
 	ExpandSecondPeriod *int64 `json:"ExpandSecondPeriod,omitnil,omitempty" name:"ExpandSecondPeriod"`
 
-	// 缩容观测周期（秒级），可取值为：300。
+	// 缩容观测周期（秒级），可取值为：300、600、900、1800。
 	ShrinkSecondPeriod *int64 `json:"ShrinkSecondPeriod,omitnil,omitempty" name:"ShrinkSecondPeriod"`
 }
 

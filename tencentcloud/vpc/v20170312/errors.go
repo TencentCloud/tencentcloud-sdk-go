@@ -230,6 +230,9 @@ const (
 	// 本端地域和端地域重复。
 	INVALIDPARAMETERVALUE_DUPLICATEREGION = "InvalidParameterValue.DuplicateRegion"
 
+	// 指定的HaVip和实例存在绑定。
+	INVALIDPARAMETERVALUE_DUPLICATEDHAVIPASSOCIATIONS = "InvalidParameterValue.DuplicatedHaVipAssociations"
+
 	// 当前IP已在其他公网IP类型的流量镜像中使用。
 	INVALIDPARAMETERVALUE_DUPLICATEDLBTRAFFICMIRRORCOLLECTORS = "InvalidParameterValue.DuplicatedLbTrafficMirrorCollectors"
 

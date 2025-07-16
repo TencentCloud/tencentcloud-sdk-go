@@ -148,6 +148,9 @@ type AddClusterSlaveZoneRequestParams struct {
 
 	// binlog同步方式。默认值：async。可选值：sync、semisync、async
 	BinlogSyncWay *string `json:"BinlogSyncWay,omitnil,omitempty" name:"BinlogSyncWay"`
+
+	// 半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。
+	SemiSyncTimeout *int64 `json:"SemiSyncTimeout,omitnil,omitempty" name:"SemiSyncTimeout"`
 }
 
 type AddClusterSlaveZoneRequest struct {
@@ -161,6 +164,9 @@ type AddClusterSlaveZoneRequest struct {
 
 	// binlog同步方式。默认值：async。可选值：sync、semisync、async
 	BinlogSyncWay *string `json:"BinlogSyncWay,omitnil,omitempty" name:"BinlogSyncWay"`
+
+	// 半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。
+	SemiSyncTimeout *int64 `json:"SemiSyncTimeout,omitnil,omitempty" name:"SemiSyncTimeout"`
 }
 
 func (r *AddClusterSlaveZoneRequest) ToJsonString() string {
@@ -178,6 +184,7 @@ func (r *AddClusterSlaveZoneRequest) FromJsonString(s string) error {
 	delete(f, "ClusterId")
 	delete(f, "SlaveZone")
 	delete(f, "BinlogSyncWay")
+	delete(f, "SemiSyncTimeout")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddClusterSlaveZoneRequest has unknown keys!", "")
 	}
@@ -11972,6 +11979,9 @@ type ModifyClusterSlaveZoneRequestParams struct {
 
 	// binlog同步方式。默认值：async。可选值：sync、semisync、async
 	BinlogSyncWay *string `json:"BinlogSyncWay,omitnil,omitempty" name:"BinlogSyncWay"`
+
+	// 半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。
+	SemiSyncTimeout *int64 `json:"SemiSyncTimeout,omitnil,omitempty" name:"SemiSyncTimeout"`
 }
 
 type ModifyClusterSlaveZoneRequest struct {
@@ -11988,6 +11998,9 @@ type ModifyClusterSlaveZoneRequest struct {
 
 	// binlog同步方式。默认值：async。可选值：sync、semisync、async
 	BinlogSyncWay *string `json:"BinlogSyncWay,omitnil,omitempty" name:"BinlogSyncWay"`
+
+	// 半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。
+	SemiSyncTimeout *int64 `json:"SemiSyncTimeout,omitnil,omitempty" name:"SemiSyncTimeout"`
 }
 
 func (r *ModifyClusterSlaveZoneRequest) ToJsonString() string {
@@ -12006,6 +12019,7 @@ func (r *ModifyClusterSlaveZoneRequest) FromJsonString(s string) error {
 	delete(f, "OldSlaveZone")
 	delete(f, "NewSlaveZone")
 	delete(f, "BinlogSyncWay")
+	delete(f, "SemiSyncTimeout")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterSlaveZoneRequest has unknown keys!", "")
 	}
@@ -16161,6 +16175,9 @@ type SlaveZoneAttrItem struct {
 
 	// binlog同步方式
 	BinlogSyncWay *string `json:"BinlogSyncWay,omitnil,omitempty" name:"BinlogSyncWay"`
+
+	// 半同步超时时间，单位ms
+	SemiSyncTimeout *int64 `json:"SemiSyncTimeout,omitnil,omitempty" name:"SemiSyncTimeout"`
 }
 
 type SlaveZoneStockInfo struct {

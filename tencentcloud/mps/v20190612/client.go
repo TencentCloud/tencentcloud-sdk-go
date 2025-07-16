@@ -829,6 +829,79 @@ func (c *Client) CreateLiveRecordTemplateWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateMediaEvaluationRequest() (request *CreateMediaEvaluationRequest) {
+    request = &CreateMediaEvaluationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mps", APIVersion, "CreateMediaEvaluation")
+    
+    
+    return
+}
+
+func NewCreateMediaEvaluationResponse() (response *CreateMediaEvaluationResponse) {
+    response = &CreateMediaEvaluationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMediaEvaluation
+// 发起视频评测任务，功能包括：
+//
+// 
+//
+// 1. 对一个原视频和多个转码后的视频进行评分。
+//
+// 2. 计算不同转码方式的 BD-Rate。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+func (c *Client) CreateMediaEvaluation(request *CreateMediaEvaluationRequest) (response *CreateMediaEvaluationResponse, err error) {
+    return c.CreateMediaEvaluationWithContext(context.Background(), request)
+}
+
+// CreateMediaEvaluation
+// 发起视频评测任务，功能包括：
+//
+// 
+//
+// 1. 对一个原视频和多个转码后的视频进行评分。
+//
+// 2. 计算不同转码方式的 BD-Rate。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_GENERATERESOURCE = "FailedOperation.GenerateResource"
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
+//  INVALIDPARAMETERVALUE_SESSIONID = "InvalidParameterValue.SessionId"
+//  INVALIDPARAMETERVALUE_SESSIONIDTOOLONG = "InvalidParameterValue.SessionIdTooLong"
+func (c *Client) CreateMediaEvaluationWithContext(ctx context.Context, request *CreateMediaEvaluationRequest) (response *CreateMediaEvaluationResponse, err error) {
+    if request == nil {
+        request = NewCreateMediaEvaluationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMediaEvaluation require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMediaEvaluationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePersonSampleRequest() (request *CreatePersonSampleRequest) {
     request = &CreatePersonSampleRequest{
         BaseRequest: &tchttp.BaseRequest{},
