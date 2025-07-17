@@ -4770,8 +4770,6 @@ func NewSearchFacesReturnsByGroupResponse() (response *SearchFacesReturnsByGroup
 //
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 //
-// 
-//
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION_ACROSSVERSIONSERROR = "FailedOperation.AcrossVersionsError"
@@ -4873,8 +4871,6 @@ func (c *Client) SearchFacesReturnsByGroup(request *SearchFacesReturnsByGroupReq
 // >     
 //
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
-//
-// 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"

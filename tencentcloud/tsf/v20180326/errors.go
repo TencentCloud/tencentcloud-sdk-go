@@ -1145,7 +1145,7 @@ const (
 	// 部署组在更新中 请稍后再执行该操作。
 	RESOURCEINUSE_GROUPINOPERATION = "ResourceInUse.GroupInOperation"
 
-	// 实例已经存在。
+	// 集群内有云主机,不允许删除集群。
 	RESOURCEINUSE_INSTANCEEXISTS = "ResourceInUse.InstanceExists"
 
 	// 机器实例已经被使用。

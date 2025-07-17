@@ -951,6 +951,59 @@ func (c *Client) BatchUpdateIntegrationTasksWithContext(ctx context.Context, req
     return
 }
 
+func NewBindProjectExecutorResourceRequest() (request *BindProjectExecutorResourceRequest) {
+    request = &BindProjectExecutorResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "BindProjectExecutorResource")
+    
+    
+    return
+}
+
+func NewBindProjectExecutorResourceResponse() (response *BindProjectExecutorResourceResponse) {
+    response = &BindProjectExecutorResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// BindProjectExecutorResource
+// 商业化版本：执行资源组-资源包绑定项目
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECUTORCLUSTERSTATUSERROR = "FailedOperation.ExecutorClusterStatusError"
+//  FAILEDOPERATION_FAILEDOPERATIONWITHREASON = "FailedOperation.FailedOperationWithReason"
+func (c *Client) BindProjectExecutorResource(request *BindProjectExecutorResourceRequest) (response *BindProjectExecutorResourceResponse, err error) {
+    return c.BindProjectExecutorResourceWithContext(context.Background(), request)
+}
+
+// BindProjectExecutorResource
+// 商业化版本：执行资源组-资源包绑定项目
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECUTORCLUSTERSTATUSERROR = "FailedOperation.ExecutorClusterStatusError"
+//  FAILEDOPERATION_FAILEDOPERATIONWITHREASON = "FailedOperation.FailedOperationWithReason"
+func (c *Client) BindProjectExecutorResourceWithContext(ctx context.Context, request *BindProjectExecutorResourceRequest) (response *BindProjectExecutorResourceResponse, err error) {
+    if request == nil {
+        request = NewBindProjectExecutorResourceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindProjectExecutorResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindProjectExecutorResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckAlarmRegularNameExistRequest() (request *CheckAlarmRegularNameExistRequest) {
     request = &CheckAlarmRegularNameExistRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1326,6 +1379,57 @@ func (c *Client) CountOpsInstanceStateWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateBaseProjectRequest() (request *CreateBaseProjectRequest) {
+    request = &CreateBaseProjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CreateBaseProject")
+    
+    
+    return
+}
+
+func NewCreateBaseProjectResponse() (response *CreateBaseProjectResponse) {
+    response = &CreateBaseProjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateBaseProject
+// 创建项目 仅项目本身，不包含集群等信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_QUOTAEXCEEDERROR = "InvalidParameter.QuotaExceedError"
+func (c *Client) CreateBaseProject(request *CreateBaseProjectRequest) (response *CreateBaseProjectResponse, err error) {
+    return c.CreateBaseProjectWithContext(context.Background(), request)
+}
+
+// CreateBaseProject
+// 创建项目 仅项目本身，不包含集群等信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_QUOTAEXCEEDERROR = "InvalidParameter.QuotaExceedError"
+func (c *Client) CreateBaseProjectWithContext(ctx context.Context, request *CreateBaseProjectRequest) (response *CreateBaseProjectResponse, err error) {
+    if request == nil {
+        request = NewCreateBaseProjectRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBaseProject require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBaseProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCodeTemplateRequest() (request *CreateCodeTemplateRequest) {
     request = &CreateCodeTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1350,6 +1454,9 @@ func NewCreateCodeTemplateResponse() (response *CreateCodeTemplateResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateCodeTemplate(request *CreateCodeTemplateRequest) (response *CreateCodeTemplateResponse, err error) {
     return c.CreateCodeTemplateWithContext(context.Background(), request)
 }
@@ -1359,6 +1466,9 @@ func (c *Client) CreateCodeTemplate(request *CreateCodeTemplateRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateCodeTemplateWithContext(ctx context.Context, request *CreateCodeTemplateRequest) (response *CreateCodeTemplateResponse, err error) {
     if request == nil {
         request = NewCreateCodeTemplateRequest()
@@ -3547,6 +3657,55 @@ func (c *Client) DeleteTaskDsWithContext(ctx context.Context, request *DeleteTas
     request.SetContext(ctx)
     
     response = NewDeleteTaskDsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTaskLineageRequest() (request *DeleteTaskLineageRequest) {
+    request = &DeleteTaskLineageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DeleteTaskLineage")
+    
+    
+    return
+}
+
+func NewDeleteTaskLineageResponse() (response *DeleteTaskLineageResponse) {
+    response = &DeleteTaskLineageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteTaskLineage
+// 删除任务血缘信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteTaskLineage(request *DeleteTaskLineageRequest) (response *DeleteTaskLineageResponse, err error) {
+    return c.DeleteTaskLineageWithContext(context.Background(), request)
+}
+
+// DeleteTaskLineage
+// 删除任务血缘信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteTaskLineageWithContext(ctx context.Context, request *DeleteTaskLineageRequest) (response *DeleteTaskLineageResponse, err error) {
+    if request == nil {
+        request = NewDeleteTaskLineageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTaskLineage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTaskLineageResponse()
     err = c.Send(request, response)
     return
 }
@@ -10986,6 +11145,57 @@ func (c *Client) DiagnoseProWithContext(ctx context.Context, request *DiagnosePr
     return
 }
 
+func NewDisableProjectRequest() (request *DisableProjectRequest) {
+    request = &DisableProjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DisableProject")
+    
+    
+    return
+}
+
+func NewDisableProjectResponse() (response *DisableProjectResponse) {
+    response = &DisableProjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DisableProject
+// 禁用项目
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DisableProject(request *DisableProjectRequest) (response *DisableProjectResponse, err error) {
+    return c.DisableProjectWithContext(context.Background(), request)
+}
+
+// DisableProject
+// 禁用项目
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DisableProjectWithContext(ctx context.Context, request *DisableProjectRequest) (response *DisableProjectResponse, err error) {
+    if request == nil {
+        request = NewDisableProjectRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableProject require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDownloadLogByLineRequest() (request *DownloadLogByLineRequest) {
     request = &DownloadLogByLineRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11148,6 +11358,57 @@ func (c *Client) DryRunDIOfflineTaskWithContext(ctx context.Context, request *Dr
     request.SetContext(ctx)
     
     response = NewDryRunDIOfflineTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableProjectRequest() (request *EnableProjectRequest) {
+    request = &EnableProjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "EnableProject")
+    
+    
+    return
+}
+
+func NewEnableProjectResponse() (response *EnableProjectResponse) {
+    response = &EnableProjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// EnableProject
+// 启用项目
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) EnableProject(request *EnableProjectRequest) (response *EnableProjectResponse, err error) {
+    return c.EnableProjectWithContext(context.Background(), request)
+}
+
+// EnableProject
+// 启用项目
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) EnableProjectWithContext(ctx context.Context, request *EnableProjectRequest) (response *EnableProjectResponse, err error) {
+    if request == nil {
+        request = NewEnableProjectRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableProject require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableProjectResponse()
     err = c.Send(request, response)
     return
 }
@@ -12693,6 +12954,57 @@ func (c *Client) ModifyMonitorStatusWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyMonitorStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyProjectRequest() (request *ModifyProjectRequest) {
+    request = &ModifyProjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ModifyProject")
+    
+    
+    return
+}
+
+func NewModifyProjectResponse() (response *ModifyProjectResponse) {
+    response = &ModifyProjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyProject
+// 修改项目基础信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_WORKSPACENAMEDUPLICATION = "InvalidParameter.WorkspaceNameDuplication"
+func (c *Client) ModifyProject(request *ModifyProjectRequest) (response *ModifyProjectResponse, err error) {
+    return c.ModifyProjectWithContext(context.Background(), request)
+}
+
+// ModifyProject
+// 修改项目基础信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_WORKSPACENAMEDUPLICATION = "InvalidParameter.WorkspaceNameDuplication"
+func (c *Client) ModifyProjectWithContext(ctx context.Context, request *ModifyProjectRequest) (response *ModifyProjectResponse, err error) {
+    if request == nil {
+        request = NewModifyProjectRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyProject require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyProjectResponse()
     err = c.Send(request, response)
     return
 }
@@ -14626,6 +14938,9 @@ func NewSubmitTaskTestRunResponse() (response *SubmitTaskTestRunResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) SubmitTaskTestRun(request *SubmitTaskTestRunRequest) (response *SubmitTaskTestRunResponse, err error) {
     return c.SubmitTaskTestRunWithContext(context.Background(), request)
 }
@@ -14635,6 +14950,9 @@ func (c *Client) SubmitTaskTestRun(request *SubmitTaskTestRunRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) SubmitTaskTestRunWithContext(ctx context.Context, request *SubmitTaskTestRunRequest) (response *SubmitTaskTestRunResponse, err error) {
     if request == nil {
         request = NewSubmitTaskTestRunRequest()
@@ -14675,6 +14993,9 @@ func NewSubmitWorkflowResponse() (response *SubmitWorkflowResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) SubmitWorkflow(request *SubmitWorkflowRequest) (response *SubmitWorkflowResponse, err error) {
     return c.SubmitWorkflowWithContext(context.Background(), request)
 }
@@ -14684,6 +15005,9 @@ func (c *Client) SubmitWorkflow(request *SubmitWorkflowRequest) (response *Submi
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) SubmitWorkflowWithContext(ctx context.Context, request *SubmitWorkflowRequest) (response *SubmitWorkflowResponse, err error) {
     if request == nil {
         request = NewSubmitWorkflowRequest()
@@ -14987,6 +15311,55 @@ func (c *Client) TriggerManualTasksWithContext(ctx context.Context, request *Tri
     return
 }
 
+func NewUnboundProjectExecutorResourceRequest() (request *UnboundProjectExecutorResourceRequest) {
+    request = &UnboundProjectExecutorResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "UnboundProjectExecutorResource")
+    
+    
+    return
+}
+
+func NewUnboundProjectExecutorResourceResponse() (response *UnboundProjectExecutorResourceResponse) {
+    response = &UnboundProjectExecutorResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// UnboundProjectExecutorResource
+// 商业化版本：执行资源组/资源包解除绑定项目
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) UnboundProjectExecutorResource(request *UnboundProjectExecutorResourceRequest) (response *UnboundProjectExecutorResourceResponse, err error) {
+    return c.UnboundProjectExecutorResourceWithContext(context.Background(), request)
+}
+
+// UnboundProjectExecutorResource
+// 商业化版本：执行资源组/资源包解除绑定项目
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) UnboundProjectExecutorResourceWithContext(ctx context.Context, request *UnboundProjectExecutorResourceRequest) (response *UnboundProjectExecutorResourceResponse, err error) {
+    if request == nil {
+        request = NewUnboundProjectExecutorResourceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnboundProjectExecutorResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnboundProjectExecutorResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUnlockIntegrationTaskRequest() (request *UnlockIntegrationTaskRequest) {
     request = &UnlockIntegrationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -15093,6 +15466,9 @@ func NewUpdateCodeTemplateResponse() (response *UpdateCodeTemplateResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) UpdateCodeTemplate(request *UpdateCodeTemplateRequest) (response *UpdateCodeTemplateResponse, err error) {
     return c.UpdateCodeTemplateWithContext(context.Background(), request)
 }
@@ -15103,6 +15479,9 @@ func (c *Client) UpdateCodeTemplate(request *UpdateCodeTemplateRequest) (respons
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_NOLOCK = "FailedOperation.NoLock"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) UpdateCodeTemplateWithContext(ctx context.Context, request *UpdateCodeTemplateRequest) (response *UpdateCodeTemplateResponse, err error) {
     if request == nil {
         request = NewUpdateCodeTemplateRequest()

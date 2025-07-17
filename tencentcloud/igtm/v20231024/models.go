@@ -23,23 +23,18 @@ import (
 type Address struct {
 	// 地址值：只支持ipv4、ipv6和域名格式；
 	// 不支持回环地址、保留地址、内网地址与腾讯保留网段
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Addr *string `json:"Addr,omitnil,omitempty" name:"Addr"`
 
 	// 是否启用:DISABLED不启用；ENABLED启用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsEnable *string `json:"IsEnable,omitnil,omitempty" name:"IsEnable"`
 
 	// 地址id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressId *uint64 `json:"AddressId,omitnil,omitempty" name:"AddressId"`
 
 	// 地址名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
 
 	// OK正常，DOWN故障，WARN风险，UNKNOWN探测中，UNMONITORED未知
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 权重，流量策略为WEIGHT时，必填；范围1-100
@@ -47,21 +42,17 @@ type Address struct {
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedOn *string `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
 
 	// 修改时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedOn *string `json:"UpdatedOn,omitnil,omitempty" name:"UpdatedOn"`
 }
 
 type AddressLocation struct {
 	// ip地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Addr *string `json:"Addr,omitnil,omitempty" name:"Addr"`
 
 	// 所属地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Location *string `json:"Location,omitnil,omitempty" name:"Location"`
 }
 
@@ -121,19 +112,15 @@ type AddressPool struct {
 
 type AddressPoolDetail struct {
 	// 地址池 id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoolId *uint64 `json:"PoolId,omitnil,omitempty" name:"PoolId"`
 
 	// 地址池名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoolName *string `json:"PoolName,omitnil,omitempty" name:"PoolName"`
 
 	// 地址池地址类型：IPV4、IPV6、DOMAIN
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddrType *string `json:"AddrType,omitnil,omitempty" name:"AddrType"`
 
 	// 流量策略: WEIGHT负载均衡，ALL解析全部
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrafficStrategy *string `json:"TrafficStrategy,omitnil,omitempty" name:"TrafficStrategy"`
 
 	// 监控器id
@@ -141,11 +128,9 @@ type AddressPoolDetail struct {
 	MonitorId *uint64 `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedOn *string `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedOn *string `json:"UpdatedOn,omitnil,omitempty" name:"UpdatedOn"`
 }
 
@@ -1872,35 +1857,27 @@ type DetectorGroup struct {
 
 type GroupLine struct {
 	// 分组线路id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DnsLineId *uint64 `json:"DnsLineId,omitnil,omitempty" name:"DnsLineId"`
 
 	// 父节点 0为根节点
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Parent *uint64 `json:"Parent,omitnil,omitempty" name:"Parent"`
 
 	// 线路名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LineName *string `json:"LineName,omitnil,omitempty" name:"LineName"`
 
 	// 10=9 DNSPod 线路 id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LineId *string `json:"LineId,omitnil,omitempty" name:"LineId"`
 
 	// 是否已使用过
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Useful *bool `json:"Useful,omitnil,omitempty" name:"Useful"`
 
 	// 0为未使用
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubGroup *uint64 `json:"SubGroup,omitnil,omitempty" name:"SubGroup"`
 
 	// 权限标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	LinePackage *uint64 `json:"LinePackage,omitnil,omitempty" name:"LinePackage"`
 
 	// 1
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *uint64 `json:"Weight,omitnil,omitempty" name:"Weight"`
 }
 
@@ -1912,7 +1889,6 @@ type Instance struct {
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 资源 id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 业务域名
@@ -1936,7 +1912,6 @@ type Instance struct {
 	// FREE: 免费版
 	// STANDARD：标准版
 	// ULTIMATE：旗舰版
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
 	// 实例运行状态
@@ -1944,40 +1919,30 @@ type Instance struct {
 	// FAULTY: 有风险
 	// DOWN: 宕机
 	// UNKNOWN: 未知
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	WorkingStatus *string `json:"WorkingStatus,omitnil,omitempty" name:"WorkingStatus"`
 
-	// 实例状态
-	// ENABLED: 正常
-	// DISABLED: 禁用
+	// 实例状态，ENABLED: 正常，DISABLED: 禁用
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 是否cname接入：true已接入；false未接入
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsCnameConfigured *bool `json:"IsCnameConfigured,omitnil,omitempty" name:"IsCnameConfigured"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 策略数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrategyNum *int64 `json:"StrategyNum,omitnil,omitempty" name:"StrategyNum"`
 
 	// 绑定地址池个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressPoolNum *int64 `json:"AddressPoolNum,omitnil,omitempty" name:"AddressPoolNum"`
 
 	// 绑定监控器数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorNum *int64 `json:"MonitorNum,omitnil,omitempty" name:"MonitorNum"`
 
 	// 地址池id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoolId *uint64 `json:"PoolId,omitnil,omitempty" name:"PoolId"`
 
 	// 地址池名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoolName *string `json:"PoolName,omitnil,omitempty" name:"PoolName"`
 
 	// 实例创建时间
@@ -1994,8 +1959,7 @@ type InstanceConfig struct {
 	// 业务域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
 
-	// CUSTOM: 自定义接入域名
-	// SYSTEM: 系统接入域名
+	// CUSTOM: 自定义接入域名，SYSTEM: 系统接入域名
 	AccessType *string `json:"AccessType,omitnil,omitempty" name:"AccessType"`
 
 	// 备注
@@ -2004,10 +1968,10 @@ type InstanceConfig struct {
 	// 全局记录过期时间	
 	GlobalTtl *int64 `json:"GlobalTtl,omitnil,omitempty" name:"GlobalTtl"`
 
-	// 接入主域名，自定义接入域名时必填
+	// 接入主域名
 	AccessDomain *string `json:"AccessDomain,omitnil,omitempty" name:"AccessDomain"`
 
-	// 接入子域名，自定义接入域名时必填
+	// 接入子域名
 	AccessSubDomain *string `json:"AccessSubDomain,omitnil,omitempty" name:"AccessSubDomain"`
 }
 
@@ -2039,7 +2003,6 @@ type InstanceDetail struct {
 	// FREE: 免费版
 	// STANDARD：标准版
 	// ULTIMATE：旗舰版
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageType *string `json:"PackageType,omitnil,omitempty" name:"PackageType"`
 
 	// 实例运行状态
@@ -2049,17 +2012,13 @@ type InstanceDetail struct {
 	// UNKNOWN: 未知
 	WorkingStatus *string `json:"WorkingStatus,omitnil,omitempty" name:"WorkingStatus"`
 
-	// 实例状态
-	// ENABLED: 正常
-	// DISABLED: 禁用
+	// 实例状态，ENABLED: 正常；DISABLED: 禁用
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// cname是否接入：true已接入；false未接入
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsCnameConfigured *bool `json:"IsCnameConfigured,omitnil,omitempty" name:"IsCnameConfigured"`
 
 	// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
 	// 策略数量
@@ -2072,7 +2031,6 @@ type InstanceDetail struct {
 	MonitorNum *int64 `json:"MonitorNum,omitnil,omitempty" name:"MonitorNum"`
 
 	// 实例绑定套餐资源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 
 	// 订阅事件列表
@@ -2087,11 +2045,9 @@ type InstanceDetail struct {
 
 type InstanceInfo struct {
 	// 实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 实例名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 }
 
@@ -2168,7 +2124,6 @@ type MainAddressPool struct {
 
 type MainPoolWeight struct {
 	// 地址池id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoolId *uint64 `json:"PoolId,omitnil,omitempty" name:"PoolId"`
 
 	// 权重
@@ -2615,89 +2570,68 @@ type MonitorDetail struct {
 	MonitorId *uint64 `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 
 	// 监控器名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorName *string `json:"MonitorName,omitnil,omitempty" name:"MonitorName"`
 
 	// 所属用户
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
 	// 监控节点id组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DetectorGroupIds []*uint64 `json:"DetectorGroupIds,omitnil,omitempty" name:"DetectorGroupIds"`
 
 	// 探测协议 PING TCP HTTP HTTPS
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckProtocol *string `json:"CheckProtocol,omitnil,omitempty" name:"CheckProtocol"`
 
 	// 探测周期
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CheckInterval *uint64 `json:"CheckInterval,omitnil,omitempty" name:"CheckInterval"`
 
 	// 发包数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PingNum *uint64 `json:"PingNum,omitnil,omitempty" name:"PingNum"`
 
 	// tcp端口
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TcpPort *uint64 `json:"TcpPort,omitnil,omitempty" name:"TcpPort"`
 
 	// 探测 host
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Host *string `json:"Host,omitnil,omitempty" name:"Host"`
 
 	// 探测路径
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Path *string `json:"Path,omitnil,omitempty" name:"Path"`
 
 	// 返回值阈值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReturnCodeThreshold *uint64 `json:"ReturnCodeThreshold,omitnil,omitempty" name:"ReturnCodeThreshold"`
 
 	// 是否开启3xx重定向跟随 ENABLED DISABLED
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableRedirect *string `json:"EnableRedirect,omitnil,omitempty" name:"EnableRedirect"`
 
 	// 是否启用 sni
 	// ENABLED DISABLED
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableSni *string `json:"EnableSni,omitnil,omitempty" name:"EnableSni"`
 
 	// 丢包率上限
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PacketLossRate *uint64 `json:"PacketLossRate,omitnil,omitempty" name:"PacketLossRate"`
 
 	// 探测超时
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Timeout *uint64 `json:"Timeout,omitnil,omitempty" name:"Timeout"`
 
 	// 失败次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailTimes *uint64 `json:"FailTimes,omitnil,omitempty" name:"FailTimes"`
 
 	// 失败率上限100
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailRate *uint64 `json:"FailRate,omitnil,omitempty" name:"FailRate"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedOn *string `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedOn *string `json:"UpdatedOn,omitnil,omitempty" name:"UpdatedOn"`
 
 	// 监控节点类型
 	// AUTO INTERNAL OVERSEAS IPV6 ALL
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DetectorStyle *string `json:"DetectorStyle,omitnil,omitempty" name:"DetectorStyle"`
 
 	// 探测次数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	DetectNum *uint64 `json:"DetectNum,omitnil,omitempty" name:"DetectNum"`
 
 	// 持续周期数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContinuePeriod *uint64 `json:"ContinuePeriod,omitnil,omitempty" name:"ContinuePeriod"`
 }
 

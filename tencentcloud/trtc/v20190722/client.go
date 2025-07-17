@@ -195,6 +195,121 @@ func (c *Client) CreateBasicModerationWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateCloudModerationRequest() (request *CreateCloudModerationRequest) {
+    request = &CreateCloudModerationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "CreateCloudModeration")
+    
+    
+    return
+}
+
+func NewCreateCloudModerationResponse() (response *CreateCloudModerationResponse) {
+    response = &CreateCloudModerationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCloudModeration
+// 接口说明：
+//
+// 启动云端审核功能，完成房间内的音视频切片，视频截帧，或者录制音频流，送审到指定的审核商，完成审核。
+//
+// 
+//
+// 您可以通过此接口实现如下目标：
+//
+// * 指定审核参数（ModerationParams）来指定审核需要的详细参数。
+//
+// * 指定存储参数（ModerationStorageParams）将命中的审核文件指定上传到您希望的云存储，目前支持腾讯云（对象存储COS）和第三方AWS
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  FAILEDOPERATION_RESTRICTEDCONCURRENCY = "FailedOperation.RestrictedConcurrency"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ACCESSKEY = "MissingParameter.AccessKey"
+//  MISSINGPARAMETER_BUCKET = "MissingParameter.Bucket"
+//  MISSINGPARAMETER_REGION = "MissingParameter.Region"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_SECRETKEY = "MissingParameter.SecretKey"
+//  MISSINGPARAMETER_SLICEPARAMS = "MissingParameter.SliceParams"
+//  MISSINGPARAMETER_SLICESTORAGEPARAMS = "MissingParameter.SliceStorageParams"
+//  MISSINGPARAMETER_SLICETYPE = "MissingParameter.SliceType"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  MISSINGPARAMETER_USERSIG = "MissingParameter.UserSig"
+//  MISSINGPARAMETER_VENDOR = "MissingParameter.Vendor"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCloudModeration(request *CreateCloudModerationRequest) (response *CreateCloudModerationResponse, err error) {
+    return c.CreateCloudModerationWithContext(context.Background(), request)
+}
+
+// CreateCloudModeration
+// 接口说明：
+//
+// 启动云端审核功能，完成房间内的音视频切片，视频截帧，或者录制音频流，送审到指定的审核商，完成审核。
+//
+// 
+//
+// 您可以通过此接口实现如下目标：
+//
+// * 指定审核参数（ModerationParams）来指定审核需要的详细参数。
+//
+// * 指定存储参数（ModerationStorageParams）将命中的审核文件指定上传到您希望的云存储，目前支持腾讯云（对象存储COS）和第三方AWS
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  FAILEDOPERATION_RESTRICTEDCONCURRENCY = "FailedOperation.RestrictedConcurrency"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ACCESSKEY = "MissingParameter.AccessKey"
+//  MISSINGPARAMETER_BUCKET = "MissingParameter.Bucket"
+//  MISSINGPARAMETER_REGION = "MissingParameter.Region"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_SECRETKEY = "MissingParameter.SecretKey"
+//  MISSINGPARAMETER_SLICEPARAMS = "MissingParameter.SliceParams"
+//  MISSINGPARAMETER_SLICESTORAGEPARAMS = "MissingParameter.SliceStorageParams"
+//  MISSINGPARAMETER_SLICETYPE = "MissingParameter.SliceType"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  MISSINGPARAMETER_USERSIG = "MissingParameter.UserSig"
+//  MISSINGPARAMETER_VENDOR = "MissingParameter.Vendor"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCloudModerationWithContext(ctx context.Context, request *CreateCloudModerationRequest) (response *CreateCloudModerationResponse, err error) {
+    if request == nil {
+        request = NewCreateCloudModerationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCloudModeration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCloudModerationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCloudRecordingRequest() (request *CreateCloudRecordingRequest) {
     request = &CreateCloudRecordingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -338,6 +453,121 @@ func (c *Client) CreateCloudRecordingWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateCloudSliceTaskRequest() (request *CreateCloudSliceTaskRequest) {
+    request = &CreateCloudSliceTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "CreateCloudSliceTask")
+    
+    
+    return
+}
+
+func NewCreateCloudSliceTaskResponse() (response *CreateCloudSliceTaskResponse) {
+    response = &CreateCloudSliceTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateCloudSliceTask
+// 接口说明：
+//
+// 启动云端切片功能，完成房间内的音视频切片，并上传到指定的云存储。
+//
+// 
+//
+// 您可以通过此接口实现如下目标：
+//
+// * 指定切片参数（SliceParams）来指定需要切片的主播的黑名单或者白名单。
+//
+// * 指定存储参数（SliceStorageParams）来指定上传到您希望的云存储，目前支持腾讯云（对象存储COS）和第三方AWS
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  FAILEDOPERATION_RESTRICTEDCONCURRENCY = "FailedOperation.RestrictedConcurrency"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ACCESSKEY = "MissingParameter.AccessKey"
+//  MISSINGPARAMETER_BUCKET = "MissingParameter.Bucket"
+//  MISSINGPARAMETER_REGION = "MissingParameter.Region"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_SECRETKEY = "MissingParameter.SecretKey"
+//  MISSINGPARAMETER_SLICEPARAMS = "MissingParameter.SliceParams"
+//  MISSINGPARAMETER_SLICESTORAGEPARAMS = "MissingParameter.SliceStorageParams"
+//  MISSINGPARAMETER_SLICETYPE = "MissingParameter.SliceType"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  MISSINGPARAMETER_USERSIG = "MissingParameter.UserSig"
+//  MISSINGPARAMETER_VENDOR = "MissingParameter.Vendor"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCloudSliceTask(request *CreateCloudSliceTaskRequest) (response *CreateCloudSliceTaskResponse, err error) {
+    return c.CreateCloudSliceTaskWithContext(context.Background(), request)
+}
+
+// CreateCloudSliceTask
+// 接口说明：
+//
+// 启动云端切片功能，完成房间内的音视频切片，并上传到指定的云存储。
+//
+// 
+//
+// 您可以通过此接口实现如下目标：
+//
+// * 指定切片参数（SliceParams）来指定需要切片的主播的黑名单或者白名单。
+//
+// * 指定存储参数（SliceStorageParams）来指定上传到您希望的云存储，目前支持腾讯云（对象存储COS）和第三方AWS
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  FAILEDOPERATION_RESTRICTEDCONCURRENCY = "FailedOperation.RestrictedConcurrency"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ACCESSKEY = "MissingParameter.AccessKey"
+//  MISSINGPARAMETER_BUCKET = "MissingParameter.Bucket"
+//  MISSINGPARAMETER_REGION = "MissingParameter.Region"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_SECRETKEY = "MissingParameter.SecretKey"
+//  MISSINGPARAMETER_SLICEPARAMS = "MissingParameter.SliceParams"
+//  MISSINGPARAMETER_SLICESTORAGEPARAMS = "MissingParameter.SliceStorageParams"
+//  MISSINGPARAMETER_SLICETYPE = "MissingParameter.SliceType"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  MISSINGPARAMETER_USERSIG = "MissingParameter.UserSig"
+//  MISSINGPARAMETER_VENDOR = "MissingParameter.Vendor"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCloudSliceTaskWithContext(ctx context.Context, request *CreateCloudSliceTaskRequest) (response *CreateCloudSliceTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateCloudSliceTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCloudSliceTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCloudSliceTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePictureRequest() (request *CreatePictureRequest) {
     request = &CreatePictureRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -472,6 +702,79 @@ func (c *Client) DeleteBasicModerationWithContext(ctx context.Context, request *
     return
 }
 
+func NewDeleteCloudModerationRequest() (request *DeleteCloudModerationRequest) {
+    request = &DeleteCloudModerationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DeleteCloudModeration")
+    
+    
+    return
+}
+
+func NewDeleteCloudModerationResponse() (response *DeleteCloudModerationResponse) {
+    response = &DeleteCloudModerationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCloudModeration
+// 成功开启云端审核任务后，可以使用此接口来停止送审。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteCloudModeration(request *DeleteCloudModerationRequest) (response *DeleteCloudModerationResponse, err error) {
+    return c.DeleteCloudModerationWithContext(context.Background(), request)
+}
+
+// DeleteCloudModeration
+// 成功开启云端审核任务后，可以使用此接口来停止送审。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteCloudModerationWithContext(ctx context.Context, request *DeleteCloudModerationRequest) (response *DeleteCloudModerationResponse, err error) {
+    if request == nil {
+        request = NewDeleteCloudModerationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCloudModeration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCloudModerationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCloudRecordingRequest() (request *DeleteCloudRecordingRequest) {
     request = &DeleteCloudRecordingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -541,6 +844,79 @@ func (c *Client) DeleteCloudRecordingWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDeleteCloudRecordingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCloudSliceTaskRequest() (request *DeleteCloudSliceTaskRequest) {
+    request = &DeleteCloudSliceTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DeleteCloudSliceTask")
+    
+    
+    return
+}
+
+func NewDeleteCloudSliceTaskResponse() (response *DeleteCloudSliceTaskResponse) {
+    response = &DeleteCloudSliceTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DeleteCloudSliceTask
+// 成功开启切片任务后，可以使用此接口来停止任务。停止切片成功后不代表文件全部传输完成，如果未完成后台将会继续上传文件，成功后通过事件回调通知客户文件全部传输完成状态。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteCloudSliceTask(request *DeleteCloudSliceTaskRequest) (response *DeleteCloudSliceTaskResponse, err error) {
+    return c.DeleteCloudSliceTaskWithContext(context.Background(), request)
+}
+
+// DeleteCloudSliceTask
+// 成功开启切片任务后，可以使用此接口来停止任务。停止切片成功后不代表文件全部传输完成，如果未完成后台将会继续上传文件，成功后通过事件回调通知客户文件全部传输完成状态。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteCloudSliceTaskWithContext(ctx context.Context, request *DeleteCloudSliceTaskRequest) (response *DeleteCloudSliceTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteCloudSliceTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCloudSliceTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCloudSliceTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -874,6 +1250,81 @@ func (c *Client) DescribeCallDetailInfoWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeCloudModerationRequest() (request *DescribeCloudModerationRequest) {
+    request = &DescribeCloudModerationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeCloudModeration")
+    
+    
+    return
+}
+
+func NewDescribeCloudModerationResponse() (response *DescribeCloudModerationResponse) {
+    response = &DescribeCloudModerationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudModeration
+// 成功开启审核任务后，可以使用此接口来查询审核任务状态和订阅的黑白名单信息。仅在任务进行时有效，任务退出后查询将会返回错误。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudModeration(request *DescribeCloudModerationRequest) (response *DescribeCloudModerationResponse, err error) {
+    return c.DescribeCloudModerationWithContext(context.Background(), request)
+}
+
+// DescribeCloudModeration
+// 成功开启审核任务后，可以使用此接口来查询审核任务状态和订阅的黑白名单信息。仅在任务进行时有效，任务退出后查询将会返回错误。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudModerationWithContext(ctx context.Context, request *DescribeCloudModerationRequest) (response *DescribeCloudModerationResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudModerationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudModeration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudModerationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudRecordingRequest() (request *DescribeCloudRecordingRequest) {
     request = &DescribeCloudRecordingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -949,6 +1400,81 @@ func (c *Client) DescribeCloudRecordingWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeCloudRecordingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCloudSliceTaskRequest() (request *DescribeCloudSliceTaskRequest) {
+    request = &DescribeCloudSliceTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeCloudSliceTask")
+    
+    
+    return
+}
+
+func NewDescribeCloudSliceTaskResponse() (response *DescribeCloudSliceTaskResponse) {
+    response = &DescribeCloudSliceTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeCloudSliceTask
+// 成功开启切片后，可以使用此接口来查询切片任务状态。仅在任务进行时有效，任务退出后查询将会返回错误。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudSliceTask(request *DescribeCloudSliceTaskRequest) (response *DescribeCloudSliceTaskResponse, err error) {
+    return c.DescribeCloudSliceTaskWithContext(context.Background(), request)
+}
+
+// DescribeCloudSliceTask
+// 成功开启切片后，可以使用此接口来查询切片任务状态。仅在任务进行时有效，任务退出后查询将会返回错误。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeCloudSliceTaskWithContext(ctx context.Context, request *DescribeCloudSliceTaskRequest) (response *DescribeCloudSliceTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudSliceTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudSliceTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudSliceTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -2891,6 +3417,79 @@ func (c *Client) DismissRoomByStrRoomIdWithContext(ctx context.Context, request 
     return
 }
 
+func NewModifyCloudModerationRequest() (request *ModifyCloudModerationRequest) {
+    request = &ModifyCloudModerationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "ModifyCloudModeration")
+    
+    
+    return
+}
+
+func NewModifyCloudModerationResponse() (response *ModifyCloudModerationResponse) {
+    response = &ModifyCloudModerationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCloudModeration
+// 成功开启云端审核任务后，可以使用此接口来更新订阅黑白名单。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyCloudModeration(request *ModifyCloudModerationRequest) (response *ModifyCloudModerationResponse, err error) {
+    return c.ModifyCloudModerationWithContext(context.Background(), request)
+}
+
+// ModifyCloudModeration
+// 成功开启云端审核任务后，可以使用此接口来更新订阅黑白名单。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyCloudModerationWithContext(ctx context.Context, request *ModifyCloudModerationRequest) (response *ModifyCloudModerationResponse, err error) {
+    if request == nil {
+        request = NewModifyCloudModerationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCloudModeration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCloudModerationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyCloudRecordingRequest() (request *ModifyCloudRecordingRequest) {
     request = &ModifyCloudRecordingRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2960,6 +3559,79 @@ func (c *Client) ModifyCloudRecordingWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyCloudRecordingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCloudSliceTaskRequest() (request *ModifyCloudSliceTaskRequest) {
+    request = &ModifyCloudSliceTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "ModifyCloudSliceTask")
+    
+    
+    return
+}
+
+func NewModifyCloudSliceTaskResponse() (response *ModifyCloudSliceTaskResponse) {
+    response = &ModifyCloudSliceTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyCloudSliceTask
+// 成功开启切片任务后，可以使用此接口来更新任务。用于更新指定订阅流白名单或者黑名单。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyCloudSliceTask(request *ModifyCloudSliceTaskRequest) (response *ModifyCloudSliceTaskResponse, err error) {
+    return c.ModifyCloudSliceTaskWithContext(context.Background(), request)
+}
+
+// ModifyCloudSliceTask
+// 成功开启切片任务后，可以使用此接口来更新任务。用于更新指定订阅流白名单或者黑名单。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CSUNSUPPORTMETHOD = "FailedOperation.CSUnsupportMethod"
+//  INTERNALERROR_CSINTERNALERROR = "InternalError.CSInternalError"
+//  INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
+//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyCloudSliceTaskWithContext(ctx context.Context, request *ModifyCloudSliceTaskRequest) (response *ModifyCloudSliceTaskResponse, err error) {
+    if request == nil {
+        request = NewModifyCloudSliceTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCloudSliceTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCloudSliceTaskResponse()
     err = c.Send(request, response)
     return
 }

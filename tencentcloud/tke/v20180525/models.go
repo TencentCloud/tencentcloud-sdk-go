@@ -3349,6 +3349,9 @@ type CreateImageCacheRequestParams struct {
 	// 自定义制作镜像缓存过程中容器实例的宿主机上的 DNS。如：
 	// "nameserver 4.4.4.4\nnameserver 8.8.8.8"
 	ResolveConfig *string `json:"ResolveConfig,omitnil,omitempty" name:"ResolveConfig"`
+
+	// 腾讯云标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type CreateImageCacheRequest struct {
@@ -3397,6 +3400,9 @@ type CreateImageCacheRequest struct {
 	// 自定义制作镜像缓存过程中容器实例的宿主机上的 DNS。如：
 	// "nameserver 4.4.4.4\nnameserver 8.8.8.8"
 	ResolveConfig *string `json:"ResolveConfig,omitnil,omitempty" name:"ResolveConfig"`
+
+	// 腾讯云标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *CreateImageCacheRequest) ToJsonString() string {
@@ -3425,6 +3431,7 @@ func (r *CreateImageCacheRequest) FromJsonString(s string) error {
 	delete(f, "RegistrySkipVerifyList")
 	delete(f, "RegistryHttpEndPointList")
 	delete(f, "ResolveConfig")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateImageCacheRequest has unknown keys!", "")
 	}
@@ -15064,6 +15071,15 @@ type ImageCache struct {
 	// UpdateFailed：更新失败
 	// 只有状态为Ready时，才能正常使用镜像缓存
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 镜像缓存保留时间天数，过期将会自动清理，默认为0，永不过期。
+	RetentionDays *uint64 `json:"RetentionDays,omitnil,omitempty" name:"RetentionDays"`
+
+	// 镜像拉取凭证
+	ImageRegistryCredentials []*ImageRegistryCredential `json:"ImageRegistryCredentials,omitnil,omitempty" name:"ImageRegistryCredentials"`
+
+	// 腾讯云标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type ImageCacheEvent struct {
@@ -20705,6 +20721,9 @@ type UpdateImageCacheRequestParams struct {
 
 	// 安全组Id
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// 腾讯云标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 type UpdateImageCacheRequest struct {
@@ -20730,6 +20749,9 @@ type UpdateImageCacheRequest struct {
 
 	// 安全组Id
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil,omitempty" name:"SecurityGroupIds"`
+
+	// 腾讯云标签
+	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
 }
 
 func (r *UpdateImageCacheRequest) ToJsonString() string {
@@ -20751,6 +20773,7 @@ func (r *UpdateImageCacheRequest) FromJsonString(s string) error {
 	delete(f, "ImageCacheSize")
 	delete(f, "RetentionDays")
 	delete(f, "SecurityGroupIds")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateImageCacheRequest has unknown keys!", "")
 	}

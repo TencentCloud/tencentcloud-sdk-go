@@ -254,6 +254,9 @@ const (
 	// 资源ID和函数名参数不能同时为空。
 	INVALIDPARAMETER_FUNCTIONNAMEORRESOURCEIDREQUIRED = "InvalidParameter.FunctionNameOrResourceIdRequired"
 
+	// GooseFsRequired 未必项。
+	INVALIDPARAMETER_GOOSEFSREQUIRED = "InvalidParameter.GooseFsRequired"
+
 	// 创建函数传参异常。
 	INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 
@@ -311,14 +314,38 @@ const (
 	// CertConfig配置为空。
 	INVALIDPARAMETERVALUE_CERTCONFIG_EMPTY = "InvalidParameterValue.CertConfig.empty"
 
+	// CfsId参数异常。
+	INVALIDPARAMETERVALUE_CFSID = "InvalidParameterValue.CfsId"
+
+	// CfsLocalMountDir参数异常。
+	INVALIDPARAMETERVALUE_CFSLOCALMOUNTDIR = "InvalidParameterValue.CfsLocalMountDir"
+
+	// CfsMountInsId参数异常。
+	INVALIDPARAMETERVALUE_CFSMOUNTINSID = "InvalidParameterValue.CfsMountInsId"
+
 	// cfs配置项重复。
 	INVALIDPARAMETERVALUE_CFSPARAMETERDUPLICATE = "InvalidParameterValue.CfsParameterDuplicate"
 
 	// cfs配置项取值与规范不符。
 	INVALIDPARAMETERVALUE_CFSPARAMETERERROR = "InvalidParameterValue.CfsParameterError"
 
+	// CfsRegion参数异常。
+	INVALIDPARAMETERVALUE_CFSREGION = "InvalidParameterValue.CfsRegion"
+
+	// CfsRemoteMountDir参数异常。
+	INVALIDPARAMETERVALUE_CFSREMOTEMOUNTDIR = "InvalidParameterValue.CfsRemoteMountDir"
+
 	// cfs参数格式与规范不符。
 	INVALIDPARAMETERVALUE_CFSSTRUCTIONERROR = "InvalidParameterValue.CfsStructionError"
+
+	// CfsType参数异常。
+	INVALIDPARAMETERVALUE_CFSTYPE = "InvalidParameterValue.CfsType"
+
+	// CfsUserGroupId参数异常。
+	INVALIDPARAMETERVALUE_CFSUSERGROUPID = "InvalidParameterValue.CfsUserGroupId"
+
+	// CfsUserId参数异常。
+	INVALIDPARAMETERVALUE_CFSUSERID = "InvalidParameterValue.CfsUserId"
 
 	// Ckafka传入错误。
 	INVALIDPARAMETERVALUE_CKAFKA = "InvalidParameterValue.Ckafka"
@@ -367,6 +394,24 @@ const (
 
 	// CosBucketRegion取值与规范不符，请修正后再试。可参考：https://cloud.tencent.com/document/product/583/17244#Code。
 	INVALIDPARAMETERVALUE_COSBUCKETREGION = "InvalidParameterValue.CosBucketRegion"
+
+	// CosFsBucketMountDir参数异常。
+	INVALIDPARAMETERVALUE_COSFSBUCKETMOUNTDIR = "InvalidParameterValue.CosFsBucketMountDir"
+
+	// CosFsBucketName参数异常。
+	INVALIDPARAMETERVALUE_COSFSBUCKETNAME = "InvalidParameterValue.CosFsBucketName"
+
+	// CosFsLocalMountDir参数异常。
+	INVALIDPARAMETERVALUE_COSFSLOCALMOUNTDIR = "InvalidParameterValue.CosFsLocalMountDir"
+
+	// CosFsRegion参数异常。
+	INVALIDPARAMETERVALUE_COSFSREGION = "InvalidParameterValue.CosFsRegion"
+
+	// CosFsStruction参数异常。
+	INVALIDPARAMETERVALUE_COSFSSTRUCTION = "InvalidParameterValue.CosFsStruction"
+
+	// CosFsType参数异常。
+	INVALIDPARAMETERVALUE_COSFSTYPE = "InvalidParameterValue.CosFsType"
 
 	// COS通知规则冲突。
 	INVALIDPARAMETERVALUE_COSNOTIFYRULECONFLICT = "InvalidParameterValue.CosNotifyRuleConflict"
@@ -461,6 +506,36 @@ const (
 	// GitUserNameSecret 传参有误。
 	INVALIDPARAMETERVALUE_GITUSERNAMESECRET = "InvalidParameterValue.GitUserNameSecret"
 
+	// GooseFsCluster参数异常。
+	INVALIDPARAMETERVALUE_GOOSEFSCLUSTER = "InvalidParameterValue.GooseFsCluster"
+
+	// GooseFs SiteProperties 配置格式化失败。
+	INVALIDPARAMETERVALUE_GOOSEFSCLUSTERGOOSEFSSITEPROPERTIESBASE64DECODEERR = "InvalidParameterValue.GooseFsClusterGooseFsSitePropertiesBase64DecodeErr"
+
+	// GooseFs SiteProperties 配置格式化异常。
+	INVALIDPARAMETERVALUE_GOOSEFSCLUSTERGOOSEFSSITEPROPERTIESFORMATERR = "InvalidParameterValue.GooseFsClusterGooseFsSitePropertiesFormatErr"
+
+	// GooseFsEndpoint参数异常。
+	INVALIDPARAMETERVALUE_GOOSEFSENDPOINT = "InvalidParameterValue.GooseFsEndpoint"
+
+	// GooseFsFuseJVMConfig参数异常。
+	INVALIDPARAMETERVALUE_GOOSEFSFUSEJVMCONFIG = "InvalidParameterValue.GooseFsFuseJVMConfig"
+
+	// GooseFsLocalMountDir参数异常。
+	INVALIDPARAMETERVALUE_GOOSEFSLOCALMOUNTDIR = "InvalidParameterValue.GooseFsLocalMountDir"
+
+	// GooseFsNamespace参数异常。
+	INVALIDPARAMETERVALUE_GOOSEFSNAMESPACE = "InvalidParameterValue.GooseFsNamespace"
+
+	// GooseFsRemoteMountPath参数异常。
+	INVALIDPARAMETERVALUE_GOOSEFSREMOTEMOUNTPATH = "InvalidParameterValue.GooseFsRemoteMountPath"
+
+	// GooseFsStructionError参数异常。
+	INVALIDPARAMETERVALUE_GOOSEFSSTRUCTIONERROR = "InvalidParameterValue.GooseFsStructionError"
+
+	// GooseFsType参数异常。
+	INVALIDPARAMETERVALUE_GOOSEFSTYPE = "InvalidParameterValue.GooseFsType"
+
 	// Handler传入错误。
 	INVALIDPARAMETERVALUE_HANDLER = "InvalidParameterValue.Handler"
 
@@ -515,6 +590,9 @@ const (
 	// MinCapacity 参数传入错误。
 	INVALIDPARAMETERVALUE_MINCAPACITY = "InvalidParameterValue.MinCapacity"
 
+	// MountOption参数异常。
+	INVALIDPARAMETERVALUE_MOUNTOPTION = "InvalidParameterValue.MountOption"
+
 	// Name参数传入错误。
 	INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 
@@ -541,6 +619,12 @@ const (
 
 	// 入参不是标准的json。
 	INVALIDPARAMETERVALUE_PARAM = "InvalidParameterValue.Param"
+
+	// Permission参数异常。
+	INVALIDPARAMETERVALUE_PERMISSION = "InvalidParameterValue.Permission"
+
+	// PluginConfig 参数异常。
+	INVALIDPARAMETERVALUE_PLUGINCONFIG = "InvalidParameterValue.PluginConfig"
 
 	// ProtocolType参数传入错误。
 	INVALIDPARAMETERVALUE_PROTOCOLTYPE = "InvalidParameterValue.ProtocolType"
@@ -847,6 +931,15 @@ const (
 
 	// 获取cfs信息错误。
 	RESOURCENOTFOUND_GETCFSNOTMATCH = "ResourceNotFound.GetCfsNotMatch"
+
+	// GooseFsClusterEndpoint 不存在。
+	RESOURCENOTFOUND_GOOSEFSCLUSTERENDPOINT = "ResourceNotFound.GooseFsClusterEndpoint"
+
+	// GooseFsClusterId 不存在。
+	RESOURCENOTFOUND_GOOSEFSCLUSTERID = "ResourceNotFound.GooseFsClusterId"
+
+	// GooseFsClusterNamespace 不存在。
+	RESOURCENOTFOUND_GOOSEFSCLUSTERNAMESPACE = "ResourceNotFound.GooseFsClusterNamespace"
 
 	// 未找到指定的ImageConfig，请创建后再试。
 	RESOURCENOTFOUND_IMAGECONFIG = "ResourceNotFound.ImageConfig"

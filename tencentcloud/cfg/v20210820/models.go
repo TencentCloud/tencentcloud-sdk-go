@@ -2140,6 +2140,9 @@ type TaskTarget struct {
 
 	// 1:平台 2:用户个人
 	Source *int64 `json:"Source,omitnil,omitempty" name:"Source"`
+
+	// 目标标签是否已被删除
+	TargetStatus *int64 `json:"TargetStatus,omitnil,omitempty" name:"TargetStatus"`
 }
 
 type Template struct {

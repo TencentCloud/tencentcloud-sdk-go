@@ -198,6 +198,70 @@ type CloudAuditStorage struct {
 	FileNamePrefix []*string `json:"FileNamePrefix,omitnil,omitempty" name:"FileNamePrefix"`
 }
 
+type CloudModerationStorage struct {
+	// 腾讯云对象存储COS以及第三方云存储账号信息
+	// 0：腾讯云对象存储 COS
+	// 1：AWS S3
+	// 2: 阿里云 OSS
+	// 示例值：0
+	Vendor *uint64 `json:"Vendor,omitnil,omitempty" name:"Vendor"`
+
+	// 腾讯云对象存储的[地域信息]（https://cloud.tencent.com/document/product/436/6224#.E5.9C.B0.E5.9F.9F）。
+	// 示例值：cn-shanghai-1
+	// 
+	// AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions）
+	// 示例值：ap-southeast-3	
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 云存储桶名称。
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// 云存储的access_key账号信息。
+	// 若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretId值。
+	// 示例值：test-accesskey
+	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
+
+	// 云存储的secret_key账号信息。
+	// 若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretKey值。
+	// 示例值：test-secretkey
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// 云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围az,AZ,0~9,'_'和'-'，举个例子，切片文件xxx.mp3在 ["prefix1", "prefix2"]作用下，音频切片文件会变成prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC时间}.ogg，视频截帧会变成prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC时间}.png 
+	FileNamePrefix []*string `json:"FileNamePrefix,omitnil,omitempty" name:"FileNamePrefix"`
+}
+
+type CloudSliceStorage struct {
+	// 腾讯云对象存储COS以及第三方云存储账号信息
+	// 0：腾讯云对象存储 COS
+	// 1：AWS S3
+	// 2: 阿里云 OSS
+	// 示例值：0
+	Vendor *uint64 `json:"Vendor,omitnil,omitempty" name:"Vendor"`
+
+	// 腾讯云对象存储的[地域信息]（https://cloud.tencent.com/document/product/436/6224#.E5.9C.B0.E5.9F.9F）。
+	// 示例值：cn-shanghai-1
+	// 
+	// AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions）
+	// 示例值：ap-southeast-3	
+	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
+
+	// 云存储桶名称。
+	Bucket *string `json:"Bucket,omitnil,omitempty" name:"Bucket"`
+
+	// 云存储的access_key账号信息。
+	// 若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretId值。
+	// 示例值：test-accesskey
+	AccessKey *string `json:"AccessKey,omitnil,omitempty" name:"AccessKey"`
+
+	// 云存储的secret_key账号信息。
+	// 若存储至腾讯云对象存储COS，请前往https://console.cloud.tencent.com/cam/capi 查看或创建，对应链接中密钥字段的SecretKey值。
+	// 示例值：test-secretkey
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// 云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围az,AZ,0~9,'_'和'-'，举个例子，切片文件xxx.mp3在 ["prefix1", "prefix2"]作用下，音频切片文件会变成prefix1/prefix2/{taskId}/{userId}/audios/{sdkappid}_{roomId}_{userid}_{UTC时间}.ogg，视频截帧会变成prefix1/prefix2/{taskId}/{userId}/images/{sdkappid}_{roomId}_{userid}_{UTC时间}.png 
+	FileNamePrefix []*string `json:"FileNamePrefix,omitnil,omitempty" name:"FileNamePrefix"`
+}
+
 type CloudStorage struct {
 	// 腾讯云对象存储COS以及第三方云存储账号信息
 	// 0：腾讯云对象存储 COS
@@ -389,6 +453,112 @@ func (r *CreateBasicModerationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateCloudModerationRequestParams struct {
+	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和TRTC的房间所对应的SdkAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，为TRTC房间所对应的RoomId。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 机器人的UserId，用于进房发起审核任务。【*注意】这个UserId不能与当前房间内的主播观众UserId重复。如果一个房间发起多个切片任务时，机器人的userid也不能相互重复，否则会中断前一个切片任务。建议可以把房间ID作为UserId的标识的一部分，即机器人UserId在房间内唯一。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。
+	UserSig *string `json:"UserSig,omitnil,omitempty" name:"UserSig"`
+
+	// 云端审核控制参数。
+	ModerationParams *ModerationParams `json:"ModerationParams,omitnil,omitempty" name:"ModerationParams"`
+
+	// 云端审核文件上传到云存储的参数
+	ModerationStorageParams *ModerationStorageParams `json:"ModerationStorageParams,omitnil,omitempty" name:"ModerationStorageParams"`
+
+	// TRTC房间号的类型。 【*注意】必须和录制的房间所对应的RoomId类型相同: 0: 字符串类型的RoomId 1: 32位整型的RoomId（默认） 示例值：1
+	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
+
+	// 任务ID可以调用的时效性，从成功开启任务并获得TaskID后开始计算，超时后无法调用查询、更新和停止等接口，但是切片任务不会停止。 参数的单位是小时，默认24小时（1天），最大可设置72小时（3天），最小设置6小时。举例说明：如果不设置该参数，那么开始切片成功后，查询、更新和停止切片的调用时效为24个小时。
+	ResourceExpiredHour *uint64 `json:"ResourceExpiredHour,omitnil,omitempty" name:"ResourceExpiredHour"`
+}
+
+type CreateCloudModerationRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和TRTC的房间所对应的SdkAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，为TRTC房间所对应的RoomId。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 机器人的UserId，用于进房发起审核任务。【*注意】这个UserId不能与当前房间内的主播观众UserId重复。如果一个房间发起多个切片任务时，机器人的userid也不能相互重复，否则会中断前一个切片任务。建议可以把房间ID作为UserId的标识的一部分，即机器人UserId在房间内唯一。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。
+	UserSig *string `json:"UserSig,omitnil,omitempty" name:"UserSig"`
+
+	// 云端审核控制参数。
+	ModerationParams *ModerationParams `json:"ModerationParams,omitnil,omitempty" name:"ModerationParams"`
+
+	// 云端审核文件上传到云存储的参数
+	ModerationStorageParams *ModerationStorageParams `json:"ModerationStorageParams,omitnil,omitempty" name:"ModerationStorageParams"`
+
+	// TRTC房间号的类型。 【*注意】必须和录制的房间所对应的RoomId类型相同: 0: 字符串类型的RoomId 1: 32位整型的RoomId（默认） 示例值：1
+	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
+
+	// 任务ID可以调用的时效性，从成功开启任务并获得TaskID后开始计算，超时后无法调用查询、更新和停止等接口，但是切片任务不会停止。 参数的单位是小时，默认24小时（1天），最大可设置72小时（3天），最小设置6小时。举例说明：如果不设置该参数，那么开始切片成功后，查询、更新和停止切片的调用时效为24个小时。
+	ResourceExpiredHour *uint64 `json:"ResourceExpiredHour,omitnil,omitempty" name:"ResourceExpiredHour"`
+}
+
+func (r *CreateCloudModerationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudModerationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	delete(f, "UserId")
+	delete(f, "UserSig")
+	delete(f, "ModerationParams")
+	delete(f, "ModerationStorageParams")
+	delete(f, "RoomIdType")
+	delete(f, "ResourceExpiredHour")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudModerationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCloudModerationResponseParams struct {
+	// 云端审核服务分配的任务ID。任务ID是对一次切片任务生命周期过程的唯一标识，结束任务时会失去意义。任务ID需要业务保存下来，作为下次针对这个任务操作的参数
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCloudModerationResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCloudModerationResponseParams `json:"Response"`
+}
+
+func (r *CreateCloudModerationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudModerationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateCloudRecordingRequestParams struct {
 	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和录制的房间所对应的SdkAppId相同。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -522,6 +692,119 @@ func (r *CreateCloudRecordingResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateCloudRecordingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCloudSliceTaskRequestParams struct {
+	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和TRTC的房间所对应的SdkAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，为TRTC房间所对应的RoomId。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 机器人的UserId，用于进房发起切片任务。【*注意】这个UserId不能与当前房间内的主播观众UserId重复。如果一个房间发起多个切片任务时，机器人的userid也不能相互重复，否则会中断前一个切片任务。建议可以把房间ID作为UserId的标识的一部分，即机器人UserId在房间内唯一。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。
+	UserSig *string `json:"UserSig,omitnil,omitempty" name:"UserSig"`
+
+	// 云端切片控制参数。
+	SliceParams *SliceParams `json:"SliceParams,omitnil,omitempty" name:"SliceParams"`
+
+	// 云端切片文件上传到云存储的参数
+	SliceStorageParams *SliceStorageParams `json:"SliceStorageParams,omitnil,omitempty" name:"SliceStorageParams"`
+
+	// TRTC房间号的类型。 【*注意】必须和录制的房间所对应的RoomId类型相同: 0: 字符串类型的RoomId 1: 32位整型的RoomId（默认） 示例值：1
+	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
+
+	// 接口可以调用的时效性，从成功开启录制并获得任务ID后开始计算，超时后无法调用查询、更新和停止等接口，但是录制任务不会停止。 参数的单位是小时，默认72小时（3天），最大可设置720小时（30天），最小设置6小时。举例说明：如果不设置该参数，那么开始录制成功后，查询、更新和停止录制的调用时效为72个小时。 示例值：24
+	ResourceExpiredHour *uint64 `json:"ResourceExpiredHour,omitnil,omitempty" name:"ResourceExpiredHour"`
+
+	// TRTC房间权限加密串，只有在TRTC控制台启用了高级权限控制的时候需要携带，在TRTC控制台如果开启高级权限控制后，TRTC 的后台服务系统会校验一个叫做 [PrivateMapKey] 的“权限票据”，权限票据中包含了一个加密后的 RoomId 和一个加密后的“权限位列表”。由于 PrivateMapKey 中包含 RoomId，所以只提供了 UserSig 没有提供 PrivateMapKey 时，并不能进入指定的房间。 示例值：eJw1jcEKgkAURX9FZlvY****fL9rfNX4_
+	PrivateMapKey *string `json:"PrivateMapKey,omitnil,omitempty" name:"PrivateMapKey"`
+}
+
+type CreateCloudSliceTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和TRTC的房间所对应的SdkAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，为TRTC房间所对应的RoomId。
+	RoomId *string `json:"RoomId,omitnil,omitempty" name:"RoomId"`
+
+	// 机器人的UserId，用于进房发起切片任务。【*注意】这个UserId不能与当前房间内的主播观众UserId重复。如果一个房间发起多个切片任务时，机器人的userid也不能相互重复，否则会中断前一个切片任务。建议可以把房间ID作为UserId的标识的一部分，即机器人UserId在房间内唯一。
+	UserId *string `json:"UserId,omitnil,omitempty" name:"UserId"`
+
+	// 机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算UserSig的方案。
+	UserSig *string `json:"UserSig,omitnil,omitempty" name:"UserSig"`
+
+	// 云端切片控制参数。
+	SliceParams *SliceParams `json:"SliceParams,omitnil,omitempty" name:"SliceParams"`
+
+	// 云端切片文件上传到云存储的参数
+	SliceStorageParams *SliceStorageParams `json:"SliceStorageParams,omitnil,omitempty" name:"SliceStorageParams"`
+
+	// TRTC房间号的类型。 【*注意】必须和录制的房间所对应的RoomId类型相同: 0: 字符串类型的RoomId 1: 32位整型的RoomId（默认） 示例值：1
+	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
+
+	// 接口可以调用的时效性，从成功开启录制并获得任务ID后开始计算，超时后无法调用查询、更新和停止等接口，但是录制任务不会停止。 参数的单位是小时，默认72小时（3天），最大可设置720小时（30天），最小设置6小时。举例说明：如果不设置该参数，那么开始录制成功后，查询、更新和停止录制的调用时效为72个小时。 示例值：24
+	ResourceExpiredHour *uint64 `json:"ResourceExpiredHour,omitnil,omitempty" name:"ResourceExpiredHour"`
+
+	// TRTC房间权限加密串，只有在TRTC控制台启用了高级权限控制的时候需要携带，在TRTC控制台如果开启高级权限控制后，TRTC 的后台服务系统会校验一个叫做 [PrivateMapKey] 的“权限票据”，权限票据中包含了一个加密后的 RoomId 和一个加密后的“权限位列表”。由于 PrivateMapKey 中包含 RoomId，所以只提供了 UserSig 没有提供 PrivateMapKey 时，并不能进入指定的房间。 示例值：eJw1jcEKgkAURX9FZlvY****fL9rfNX4_
+	PrivateMapKey *string `json:"PrivateMapKey,omitnil,omitempty" name:"PrivateMapKey"`
+}
+
+func (r *CreateCloudSliceTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudSliceTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	delete(f, "UserId")
+	delete(f, "UserSig")
+	delete(f, "SliceParams")
+	delete(f, "SliceStorageParams")
+	delete(f, "RoomIdType")
+	delete(f, "ResourceExpiredHour")
+	delete(f, "PrivateMapKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudSliceTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCloudSliceTaskResponseParams struct {
+	// 云端切片服务分配的任务ID。任务ID是对一次切片任务生命周期过程的唯一标识，结束任务时会失去意义。任务ID需要业务保存下来，作为下次针对这个任务操作的参数
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type CreateCloudSliceTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCloudSliceTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateCloudSliceTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudSliceTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -689,6 +972,70 @@ func (r *DeleteBasicModerationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteCloudModerationRequestParams struct {
+	// TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 审核任务的唯一Id，在启动切片任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DeleteCloudModerationRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 审核任务的唯一Id，在启动切片任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteCloudModerationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudModerationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudModerationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCloudModerationResponseParams struct {
+	// 审核任务的唯一Id，在启动切片任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCloudModerationResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCloudModerationResponseParams `json:"Response"`
+}
+
+func (r *DeleteCloudModerationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudModerationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteCloudRecordingRequestParams struct {
 	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -749,6 +1096,70 @@ func (r *DeleteCloudRecordingResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteCloudRecordingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCloudSliceTaskRequestParams struct {
+	// TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 切片任务的唯一Id，在启动切片任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DeleteCloudSliceTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 切片任务的唯一Id，在启动切片任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteCloudSliceTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudSliceTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudSliceTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCloudSliceTaskResponseParams struct {
+	// 切片任务的唯一Id，在启动切片任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DeleteCloudSliceTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCloudSliceTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteCloudSliceTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudSliceTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1195,6 +1606,76 @@ func (r *DescribeCallDetailInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCloudModerationRequestParams struct {
+	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 云端审核任务的唯一Id，在启动切片任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeCloudModerationRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 云端审核任务的唯一Id，在启动切片任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeCloudModerationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudModerationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudModerationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudModerationResponseParams struct {
+	// 切片任务的唯一Id，在启动切片任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 云端切片任务的状态信息。Idle:表示当前任务空闲中,InProgress:表示当前任务正在进行中,Exited:表示当前任务正在退出的过程中。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 订阅黑白名单
+	SubscribeStreamUserIds *SubscribeModerationUserIds `json:"SubscribeStreamUserIds,omitnil,omitempty" name:"SubscribeStreamUserIds"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudModerationResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudModerationResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudModerationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudModerationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCloudRecordingRequestParams struct {
 	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
 	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
@@ -1274,6 +1755,73 @@ func (r *DescribeCloudRecordingResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCloudRecordingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudSliceTaskRequestParams struct {
+	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 切片任务的唯一Id，在启动切片任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+type DescribeCloudSliceTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 切片任务的唯一Id，在启动切片任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeCloudSliceTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudSliceTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudSliceTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudSliceTaskResponseParams struct {
+	// 切片任务的唯一Id，在启动切片任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 云端切片任务的状态信息。Idle:表示当前任务空闲中,InProgress:表示当前任务正在进行中,Exited:表示当前任务正在退出的过程中。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudSliceTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudSliceTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudSliceTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudSliceTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3951,6 +4499,134 @@ type MixUserInfo struct {
 	RoomIdType *uint64 `json:"RoomIdType,omitnil,omitempty" name:"RoomIdType"`
 }
 
+type ModerationParams struct {
+	// 审核任务类型， 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核4:音频流式审核 5:音频流式+视频截帧审核  默认值1 （流式审核需要供应商支持才生效）
+	ModerationType *uint64 `json:"ModerationType,omitnil,omitempty" name:"ModerationType"`
+
+	// 房间内持续没有用户（主播）上行推流的状态超过MaxIdleTime的时长，自动停止切片，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于1800秒(0.5小时)。示例值：30 
+	MaxIdleTime *uint64 `json:"MaxIdleTime,omitnil,omitempty" name:"MaxIdleTime"`
+
+	// 音频切片时长，默认15s 示例值：15
+	SliceAudio *uint64 `json:"SliceAudio,omitnil,omitempty" name:"SliceAudio"`
+
+	// 视频截帧间隔时长，默认5s
+	SliceVideo *uint64 `json:"SliceVideo,omitnil,omitempty" name:"SliceVideo"`
+
+	// 供应商枚举，
+	// tianyu : 天御内容安全 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
+	// ace  : ACE内容安全 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
+	// shumei : 数美审核（支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
+	// yidun : 网易易盾审核 （支持 1:音频切片审核，2:视频截帧审核，3:音视切片审核+视频截帧审核）
+	ModerationSupplier *string `json:"ModerationSupplier,omitnil,omitempty" name:"ModerationSupplier"`
+
+	// 第三方审核商送审需要配置信息
+	ModerationSupplierParam *ModerationSupplierParam `json:"ModerationSupplierParam,omitnil,omitempty" name:"ModerationSupplierParam"`
+
+	// 是否保存命中文件 0 默认不保存  1 保存命中文件
+	SaveModerationFile *uint64 `json:"SaveModerationFile,omitnil,omitempty" name:"SaveModerationFile"`
+
+	// 是否回调所有审核结果:
+	// 0 默认回调所有结果 
+	// 1 仅回调命中结果 
+	CallbackAllResults *uint64 `json:"CallbackAllResults,omitnil,omitempty" name:"CallbackAllResults"`
+
+	// 指定订阅流白名单或者黑名单。
+	SubscribeStreamUserIds *SubscribeModerationUserIds `json:"SubscribeStreamUserIds,omitnil,omitempty" name:"SubscribeStreamUserIds"`
+}
+
+type ModerationStorageParams struct {
+	// 腾讯云对象存储COS以及第三方云存储的账号信息
+	CloudModerationStorage *CloudModerationStorage `json:"CloudModerationStorage,omitnil,omitempty" name:"CloudModerationStorage"`
+}
+
+type ModerationSupplierParam struct {
+	// 供应审核商账号id，数美天御不为空，易盾为空
+	AppID *string `json:"AppID,omitnil,omitempty" name:"AppID"`
+
+	// 供应审核商秘钥id
+	SecretId *string `json:"SecretId,omitnil,omitempty" name:"SecretId"`
+
+	// 供应审核商秘钥key
+	SecretKey *string `json:"SecretKey,omitnil,omitempty" name:"SecretKey"`
+
+	// 音频场景，策略id或者businessId
+	AudioBizType *string `json:"AudioBizType,omitnil,omitempty" name:"AudioBizType"`
+
+	// 图片场景，策略id或者businessId
+	ImageBizType *string `json:"ImageBizType,omitnil,omitempty" name:"ImageBizType"`
+}
+
+// Predefined struct for user
+type ModifyCloudModerationRequestParams struct {
+	// TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 审核任务的唯一Id，在启动切片任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 指定订阅流白名单或者黑名单。
+	SubscribeStreamUserIds *SubscribeStreamUserIds `json:"SubscribeStreamUserIds,omitnil,omitempty" name:"SubscribeStreamUserIds"`
+}
+
+type ModifyCloudModerationRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 审核任务的唯一Id，在启动切片任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 指定订阅流白名单或者黑名单。
+	SubscribeStreamUserIds *SubscribeStreamUserIds `json:"SubscribeStreamUserIds,omitnil,omitempty" name:"SubscribeStreamUserIds"`
+}
+
+func (r *ModifyCloudModerationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCloudModerationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	delete(f, "SubscribeStreamUserIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudModerationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCloudModerationResponseParams struct {
+	// 审核任务的唯一Id，在启动切片任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyCloudModerationResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCloudModerationResponseParams `json:"Response"`
+}
+
+func (r *ModifyCloudModerationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCloudModerationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type ModifyCloudRecordingRequestParams struct {
 	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
@@ -4026,6 +4702,77 @@ func (r *ModifyCloudRecordingResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyCloudRecordingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCloudSliceTaskRequestParams struct {
+	// TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 切片任务的唯一Id，在启动切片任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 指定订阅流白名单或者黑名单。
+	SubscribeStreamUserIds *SubscribeStreamUserIds `json:"SubscribeStreamUserIds,omitnil,omitempty" name:"SubscribeStreamUserIds"`
+}
+
+type ModifyCloudSliceTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitnil,omitempty" name:"SdkAppId"`
+
+	// 切片任务的唯一Id，在启动切片任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 指定订阅流白名单或者黑名单。
+	SubscribeStreamUserIds *SubscribeStreamUserIds `json:"SubscribeStreamUserIds,omitnil,omitempty" name:"SubscribeStreamUserIds"`
+}
+
+func (r *ModifyCloudSliceTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCloudSliceTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	delete(f, "SubscribeStreamUserIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudSliceTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCloudSliceTaskResponseParams struct {
+	// 切片任务的唯一Id，在启动切片任务成功后会返回。
+	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyCloudSliceTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCloudSliceTaskResponseParams `json:"Response"`
+}
+
+func (r *ModifyCloudSliceTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCloudSliceTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4774,6 +5521,36 @@ type ServerPushText struct {
 type SingleSubscribeParams struct {
 	// 用户媒体流参数。
 	UserMediaStream *UserMediaStream `json:"UserMediaStream,omitnil,omitempty" name:"UserMediaStream"`
+}
+
+type SliceParams struct {
+	// 切片任务类型:
+	// 1:音频切片；
+	// 2:视频截帧；
+	// 3:音视切片+视频截帧
+	// 示例值：1 
+	SliceType *uint64 `json:"SliceType,omitnil,omitempty" name:"SliceType"`
+
+	// 房间内持续没有主播的状态超过MaxIdleTime的时长，自动停止录制，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。
+	// 示例值：30
+	MaxIdleTime *uint64 `json:"MaxIdleTime,omitnil,omitempty" name:"MaxIdleTime"`
+
+	// 音频切片时长，默认15s 示例值：15
+	SliceAudio *uint64 `json:"SliceAudio,omitnil,omitempty" name:"SliceAudio"`
+
+	// 视频截帧间隔时长，默认5s， 示例值：5
+	SliceVideo *uint64 `json:"SliceVideo,omitnil,omitempty" name:"SliceVideo"`
+
+	// 指定订阅流白名单或者黑名单。
+	SubscribeStreamUserIds *SubscribeStreamUserIds `json:"SubscribeStreamUserIds,omitnil,omitempty" name:"SubscribeStreamUserIds"`
+
+	// 已废弃，从控制台配置回调url
+	SliceCallbackUrl *string `json:"SliceCallbackUrl,omitnil,omitempty" name:"SliceCallbackUrl"`
+}
+
+type SliceStorageParams struct {
+	// 腾讯云对象存储COS以及第三方云存储的账号信息
+	CloudSliceStorage *CloudSliceStorage `json:"CloudSliceStorage,omitnil,omitempty" name:"CloudSliceStorage"`
 }
 
 type SmallVideoLayoutParams struct {
@@ -6059,6 +6836,24 @@ type StorageParams struct {
 
 	// 腾讯云云点播Vod的存储信息
 	CloudVod *CloudVod `json:"CloudVod,omitnil,omitempty" name:"CloudVod"`
+}
+
+type SubscribeModerationUserIds struct {
+	// 订阅音频流白名单，指定订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表订阅UserId 1，2，3的音频流；["1.*$"], 代表订阅UserId前缀为1的音频流。默认不填订阅房间内所有的音频流，订阅列表用户数不超过32。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubscribeAudioUserIds []*string `json:"SubscribeAudioUserIds,omitnil,omitempty" name:"SubscribeAudioUserIds"`
+
+	// 订阅音频流黑名单，指定不订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表不订阅UserId 1，2，3的音频流；["1.*$"], 代表不订阅UserId前缀为1的音频流。默认不填订阅房间内所有音频流，订阅列表用户数不超过32。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnSubscribeAudioUserIds []*string `json:"UnSubscribeAudioUserIds,omitnil,omitempty" name:"UnSubscribeAudioUserIds"`
+
+	// 订阅视频流白名单，指定订阅哪几个UserId的视频流，例如["1", "2", "3"], 代表订阅UserId  1，2，3的视频流；["1.*$"], 代表订阅UserId前缀为1的视频流。默认不填订阅房间内所有视频流，订阅列表用户数不超过32。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubscribeVideoUserIds []*string `json:"SubscribeVideoUserIds,omitnil,omitempty" name:"SubscribeVideoUserIds"`
+
+	// 订阅视频流黑名单，指定不订阅哪几个UserId的视频流，例如["1", "2", "3"], 代表不订阅UserId  1，2，3的视频流；["1.*$"], 代表不订阅UserId前缀为1的视频流。默认不填订阅房间内所有视频流，订阅列表用户数不超过32。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnSubscribeVideoUserIds []*string `json:"UnSubscribeVideoUserIds,omitnil,omitempty" name:"UnSubscribeVideoUserIds"`
 }
 
 type SubscribeStreamUserIds struct {

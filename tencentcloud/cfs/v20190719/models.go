@@ -2516,6 +2516,14 @@ func (r *DescribeUserQuotaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ExstraPerformanceInfo struct {
+	// fixed: 最终值固定
+	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+
+	// 额外购买的CFS性能值，单位MB/s。
+	Performance *int64 `json:"Performance,omitnil,omitempty" name:"Performance"`
+}
+
 type FileSystemByPolicy struct {
 	// 文件系统名称
 	CreationToken *string `json:"CreationToken,omitnil,omitempty" name:"CreationToken"`
@@ -2646,6 +2654,14 @@ type FileSystemInfo struct {
 
 	// 文件系统版本
 	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+
+	// 额外性能信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExstraPerformanceInfo []*ExstraPerformanceInfo `json:"ExstraPerformanceInfo,omitnil,omitempty" name:"ExstraPerformanceInfo"`
+
+	// basic：标准版元数据类型
+	// enhanced：增项版元数据类型
+	MetaType *string `json:"MetaType,omitnil,omitempty" name:"MetaType"`
 }
 
 type Filter struct {
