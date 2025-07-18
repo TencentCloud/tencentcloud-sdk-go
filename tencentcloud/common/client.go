@@ -721,3 +721,17 @@ func NewClientWithProviders(region string, providers ...Provider) (client *Clien
 	}
 	return client.WithProvider(pc)
 }
+
+func (c *Client) InitBaseRequest(req **tchttp.BaseRequest, mod, ver, act string) {
+	if *req == nil {
+		*req = &tchttp.BaseRequest{}
+	}
+
+	if (*req).GetParams() == nil {
+		(*req).Init()
+	}
+
+	if (*req).GetAction() == "" {
+		(*req).WithApiInfo(mod, ver, act)
+	}
+}
