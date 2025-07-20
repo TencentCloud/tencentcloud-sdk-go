@@ -42,7 +42,7 @@ type AndroidApp struct {
 	// 应用模式（NORMAL : 普通模式；ADVANCED : 高级模式）
 	AppMode *string `json:"AppMode,omitnil,omitempty" name:"AppMode"`
 
-	// 应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、NORMAL 默认状态
+	// 应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、PACKAGE_NAME_MISMATCH 包名不匹配、VERSION_ALREADY_EXISTS 版本已存在、APP_PARSE_FAIL app 解析失败、APP_EXISTS_SECURITY_RISK app 存在安全风险、NORMAL 默认状态
 	UpdateState *string `json:"UpdateState,omitnil,omitempty" name:"UpdateState"`
 
 	// 安卓应用包名
@@ -61,9 +61,7 @@ type AndroidAppVersionInfo struct {
 	// 安卓应用版本
 	AndroidAppVersion *string `json:"AndroidAppVersion,omitnil,omitempty" name:"AndroidAppVersion"`
 
-	// 安卓应用版本创建状态（NORMAL：无、UPLOADING：上传中、
-	// CREATING： 创建中、
-	// CREATE_FAIL：创建失败、CREATE_SUCCESS：创建成功）
+	// 安卓应用版本创建状态，取值：NORMAL：无（默认）、UPLOADING：上传中、CREATING： 创建中、CREATE_FAIL：创建失败、PACKAGE_NAME_MISMATCH：包名不匹配、VERSION_ALREADY_EXISTS：版本已存在、APP_PARSE_FAIL： app 解析失败、APP_EXISTS_SECURITY_RISK：app 存在安全风险、CREATE_SUCCESS：创建成功
 	State *string `json:"State,omitnil,omitempty" name:"State"`
 
 	// 安卓应用版本创建时间
@@ -86,6 +84,15 @@ type AndroidAppVersionInfo struct {
 
 	// 应用版本号（Version Name）
 	VersionName *string `json:"VersionName,omitnil,omitempty" name:"VersionName"`
+
+	// 应用包 MD5
+	MD5 *string `json:"MD5,omitnil,omitempty" name:"MD5"`
+
+	// 应用包文件大小（字节）
+	FileSize *int64 `json:"FileSize,omitnil,omitempty" name:"FileSize"`
+
+	// 安卓应用包名
+	PackageName *string `json:"PackageName,omitnil,omitempty" name:"PackageName"`
 }
 
 type AndroidInstance struct {

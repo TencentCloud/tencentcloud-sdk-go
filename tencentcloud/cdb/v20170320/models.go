@@ -1337,6 +1337,12 @@ type CdbZoneSellConf struct {
 
 	// 可支持的售卖数据库引擎类型
 	EngineType []*string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
+
+	// 集群版实例在当前可用区的售卖状态。可能的返回值为：1-上线；3-停售；4-不展示
+	CloudNativeClusterStatus *int64 `json:"CloudNativeClusterStatus,omitnil,omitempty" name:"CloudNativeClusterStatus"`
+
+	// 集群版或者单节点基础型支持的磁盘类型。
+	DiskTypeConf []*DiskTypeConfigItem `json:"DiskTypeConf,omitnil,omitempty" name:"DiskTypeConf"`
 }
 
 // Predefined struct for user
@@ -10996,6 +11002,14 @@ func (r *DisassociateSecurityGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DiskTypeConfigItem struct {
+	// 磁盘对应的实例类型。仅支持单节点基础型和集群版。
+	DeviceType *string `json:"DeviceType,omitnil,omitempty" name:"DeviceType"`
+
+	// 可以选择的磁盘类型列表。
+	DiskType []*string `json:"DiskType,omitnil,omitempty" name:"DiskType"`
+}
+
 type DrInfo struct {
 	// 灾备实例状态
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
@@ -11583,18 +11597,18 @@ func (r *IsolateDBInstanceResponse) FromJsonString(s string) error {
 }
 
 type LocalBinlogConfig struct {
-	// 本地binlog保留时长，可取值范围：[72,168]。
+	// 本地 binlog 保留时长，可取值范围：[6,168]。
 	SaveHours *int64 `json:"SaveHours,omitnil,omitempty" name:"SaveHours"`
 
-	// 本地binlog空间使用率，可取值范围：[30,50]。
+	// 本地 binlog 空间使用率，可取值范围：[30,50]。
 	MaxUsage *int64 `json:"MaxUsage,omitnil,omitempty" name:"MaxUsage"`
 }
 
 type LocalBinlogConfigDefault struct {
-	// 本地binlog保留时长，可取值范围：[72,168]。
+	// 本地 binlog 保留时长，可取值范围：[6,168]。
 	SaveHours *int64 `json:"SaveHours,omitnil,omitempty" name:"SaveHours"`
 
-	// 本地binlog空间使用率，可取值范围：[30,50]。
+	// 本地 binlog 空间使用率，可取值范围：[30,50]。
 	MaxUsage *int64 `json:"MaxUsage,omitnil,omitempty" name:"MaxUsage"`
 }
 
@@ -15954,7 +15968,7 @@ type SlowLogInfo struct {
 	// 备份文件大小，单位：Byte
 	Size *int64 `json:"Size,omitnil,omitempty" name:"Size"`
 
-	// 备份快照时间，时间格式：2016-03-17 02:10:37
+	// 备份快照时间，时间格式：2016-03-17
 	Date *string `json:"Date,omitnil,omitempty" name:"Date"`
 
 	// 内网下载地址

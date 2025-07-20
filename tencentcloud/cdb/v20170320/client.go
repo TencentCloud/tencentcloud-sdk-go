@@ -2517,7 +2517,7 @@ func NewDeleteBackupResponse() (response *DeleteBackupResponse) {
 }
 
 // DeleteBackup
-// 本接口(DeleteBackup)用于删除数据库备份。本接口只支持删除手动发起的备份。
+// 本接口（DeleteBackup）用于删除数据库备份。本接口只支持删除手动发起的备份。
 //
 // 可能返回的错误码:
 //  CDBERROR_BACKUPERROR = "CdbError.BackupError"
@@ -2531,7 +2531,7 @@ func (c *Client) DeleteBackup(request *DeleteBackupRequest) (response *DeleteBac
 }
 
 // DeleteBackup
-// 本接口(DeleteBackup)用于删除数据库备份。本接口只支持删除手动发起的备份。
+// 本接口（DeleteBackup）用于删除数据库备份。本接口只支持删除手动发起的备份。
 //
 // 可能返回的错误码:
 //  CDBERROR_BACKUPERROR = "CdbError.BackupError"

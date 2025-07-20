@@ -7004,6 +7004,65 @@ func (c *Client) DescribeUserInfoWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeUserRegisterTimeRequest() (request *DescribeUserRegisterTimeRequest) {
+    request = &DescribeUserRegisterTimeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeUserRegisterTime")
+    
+    
+    return
+}
+
+func NewDescribeUserRegisterTimeResponse() (response *DescribeUserRegisterTimeResponse) {
+    response = &DescribeUserRegisterTimeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeUserRegisterTime
+// 该接口（DescribeUserRegisterTime）用于查询当前用户注册时间，并判断是否是老用户。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeUserRegisterTime(request *DescribeUserRegisterTimeRequest) (response *DescribeUserRegisterTimeResponse, err error) {
+    return c.DescribeUserRegisterTimeWithContext(context.Background(), request)
+}
+
+// DescribeUserRegisterTime
+// 该接口（DescribeUserRegisterTime）用于查询当前用户注册时间，并判断是否是老用户。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeUserRegisterTimeWithContext(ctx context.Context, request *DescribeUserRegisterTimeRequest) (response *DescribeUserRegisterTimeResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserRegisterTimeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserRegisterTime require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserRegisterTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserRolesRequest() (request *DescribeUserRolesRequest) {
     request = &DescribeUserRolesRequest{
         BaseRequest: &tchttp.BaseRequest{},

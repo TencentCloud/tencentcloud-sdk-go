@@ -58,19 +58,15 @@ type AddressLocation struct {
 
 type AddressPool struct {
 	// 地址池 id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoolId *uint64 `json:"PoolId,omitnil,omitempty" name:"PoolId"`
 
 	// 地址池名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoolName *string `json:"PoolName,omitnil,omitempty" name:"PoolName"`
 
 	// 地址池地址类型：IPV4、IPV6、DOMAIN
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddrType *string `json:"AddrType,omitnil,omitempty" name:"AddrType"`
 
 	// 流量策略: WEIGHT负载均衡，ALL解析全部
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrafficStrategy *string `json:"TrafficStrategy,omitnil,omitempty" name:"TrafficStrategy"`
 
 	// 监控器id
@@ -78,19 +74,15 @@ type AddressPool struct {
 	MonitorId *uint64 `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 
 	// OK正常，DOWN故障，WARN风险，UNKNOWN未知
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 地址数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressNum *int64 `json:"AddressNum,omitnil,omitempty" name:"AddressNum"`
 
 	// 探点数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorGroupNum *int64 `json:"MonitorGroupNum,omitnil,omitempty" name:"MonitorGroupNum"`
 
 	// 探测任务数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorTaskNum *int64 `json:"MonitorTaskNum,omitnil,omitempty" name:"MonitorTaskNum"`
 
 	// 实例相关信息
@@ -102,11 +94,9 @@ type AddressPool struct {
 	AddressSet []*Address `json:"AddressSet,omitnil,omitempty" name:"AddressSet"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedOn *string `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedOn *string `json:"UpdatedOn,omitnil,omitempty" name:"UpdatedOn"`
 }
 
@@ -1040,7 +1030,7 @@ type DescribeDetectPackageDetailResponseParams struct {
 	// 状态 ENABLED: 正常 ISOLATED: 隔离 DESTROYED：销毁 REFUNDED：已退款
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 是否自动续费0不1是
+	// 是否自动续费：0否1是
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitnil,omitempty" name:"AutoRenewFlag"`
 
 	// 备注
@@ -1493,7 +1483,6 @@ func (r *DescribeMonitorDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMonitorDetailResponseParams struct {
 	// 探测规则
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorDetail *MonitorDetail `json:"MonitorDetail,omitnil,omitempty" name:"MonitorDetail"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1626,7 +1615,6 @@ func (r *DescribeQuotasRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeQuotasResponseParams struct {
 	// 配额id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Quotas *Quota `json:"Quotas,omitnil,omitempty" name:"Quotas"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2110,15 +2098,12 @@ type MainAddressPool struct {
 	AddressPools []*MainPoolWeight `json:"AddressPools,omitnil,omitempty" name:"AddressPools"`
 
 	// 地址池集合id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MainAddressPoolId *uint64 `json:"MainAddressPoolId,omitnil,omitempty" name:"MainAddressPoolId"`
 
 	// 切换阀值，不能大于主力集合内地址总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MinSurviveNum *uint64 `json:"MinSurviveNum,omitnil,omitempty" name:"MinSurviveNum"`
 
 	// 切换策略:ALL解析所有地址；WEIGHT：负载均衡。当为ALL时，解析地址的权重值为1；当为WEIGHT时；权重为地址池权重*地址权重
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrafficStrategy *string `json:"TrafficStrategy,omitnil,omitempty" name:"TrafficStrategy"`
 }
 
@@ -2637,47 +2622,36 @@ type MonitorDetail struct {
 
 type Quota struct {
 	// 探测任务配额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskQuota *uint64 `json:"TaskQuota,omitnil,omitempty" name:"TaskQuota"`
 
 	// 地址池配额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoolQuota *uint64 `json:"PoolQuota,omitnil,omitempty" name:"PoolQuota"`
 
 	// 地址配额
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressQuota *uint64 `json:"AddressQuota,omitnil,omitempty" name:"AddressQuota"`
 
 	// 探点资源数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorQuota *uint64 `json:"MonitorQuota,omitnil,omitempty" name:"MonitorQuota"`
 
 	// 消息资源数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MessageQuota *uint64 `json:"MessageQuota,omitnil,omitempty" name:"MessageQuota"`
 
 	// 已使用探测任务数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedTaskQuota *uint64 `json:"UsedTaskQuota,omitnil,omitempty" name:"UsedTaskQuota"`
 
 	// 已使用体验实例数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedFreeInstanceNum *uint64 `json:"UsedFreeInstanceNum,omitnil,omitempty" name:"UsedFreeInstanceNum"`
 
 	// 已使用付费实例
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedBillInstanceNum *uint64 `json:"UsedBillInstanceNum,omitnil,omitempty" name:"UsedBillInstanceNum"`
 
 	// 体验套餐总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FreePackageNum *uint64 `json:"FreePackageNum,omitnil,omitempty" name:"FreePackageNum"`
 
 	// 已使用付费套餐数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedBillPackageNum *uint64 `json:"UsedBillPackageNum,omitnil,omitempty" name:"UsedBillPackageNum"`
 
 	// 付费套餐总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillPackageNum *uint64 `json:"BillPackageNum,omitnil,omitempty" name:"BillPackageNum"`
 }
 
@@ -2700,17 +2674,14 @@ type Source struct {
 	DnsLineId *uint64 `json:"DnsLineId,omitnil,omitempty" name:"DnsLineId"`
 
 	// 解析请求来源线路名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 }
 
 type Strategy struct {
 	// 实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 策略名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 地址来源
@@ -2718,11 +2689,9 @@ type Strategy struct {
 	Source []*Source `json:"Source,omitnil,omitempty" name:"Source"`
 
 	// 策略id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrategyId *uint64 `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
 
 	// 健康状态：ok健康、warn风险、down故障
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 生效的主力池id，null则为未知
@@ -2734,49 +2703,38 @@ type Strategy struct {
 	ActivateLevel *int64 `json:"ActivateLevel,omitnil,omitempty" name:"ActivateLevel"`
 
 	// 当前生效地址池集合类型：main主力；fallback兜底
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActivePoolType *string `json:"ActivePoolType,omitnil,omitempty" name:"ActivePoolType"`
 
 	// 当前生效地址池流量策略：all解析所有；weight负载均衡
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActiveTrafficStrategy *string `json:"ActiveTrafficStrategy,omitnil,omitempty" name:"ActiveTrafficStrategy"`
 
 	// 监控器数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorNum *uint64 `json:"MonitorNum,omitnil,omitempty" name:"MonitorNum"`
 
 	// 是否开启：ENABLED开启；DISABLED关闭
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsEnabled *string `json:"IsEnabled,omitnil,omitempty" name:"IsEnabled"`
 
 	// 是否保留线路：enabled保留，disabled不保留，只保留默认线路
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeepDomainRecords *string `json:"KeepDomainRecords,omitnil,omitempty" name:"KeepDomainRecords"`
 
 	// 调度模式：AUTO默认；PAUSE仅暂停不切换
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SwitchPoolType *string `json:"SwitchPoolType,omitnil,omitempty" name:"SwitchPoolType"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedOn *string `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedOn *string `json:"UpdatedOn,omitnil,omitempty" name:"UpdatedOn"`
 }
 
 type StrategyDetail struct {
 	// 实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 策略id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrategyId *uint64 `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
 
 	// 策略名
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 线路
@@ -2792,7 +2750,6 @@ type StrategyDetail struct {
 	FallbackAddressPoolSet []*MainAddressPool `json:"FallbackAddressPoolSet,omitnil,omitempty" name:"FallbackAddressPoolSet"`
 
 	// 是否保留线路：enabled保留，disabled不保留，只保留默认线路
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	KeepDomainRecords *string `json:"KeepDomainRecords,omitnil,omitempty" name:"KeepDomainRecords"`
 
 	// 生效主力地址池id
@@ -2800,14 +2757,11 @@ type StrategyDetail struct {
 	ActivateMainPoolId *uint64 `json:"ActivateMainPoolId,omitnil,omitempty" name:"ActivateMainPoolId"`
 
 	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedOn *string `json:"CreatedOn,omitnil,omitempty" name:"CreatedOn"`
 
 	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedOn *string `json:"UpdatedOn,omitnil,omitempty" name:"UpdatedOn"`
 
 	// 调度模式：AUTO默认；PAUSE仅暂停不切换
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SwitchPoolType *string `json:"SwitchPoolType,omitnil,omitempty" name:"SwitchPoolType"`
 }

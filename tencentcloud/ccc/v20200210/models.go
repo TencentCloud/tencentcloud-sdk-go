@@ -6988,6 +6988,9 @@ type SkillGroupInfoItem struct {
 
 	// 技能组内线号码
 	Alias *string `json:"Alias,omitnil,omitempty" name:"Alias"`
+
+	// 是否同振
+	RingAll *bool `json:"RingAll,omitnil,omitempty" name:"RingAll"`
 }
 
 type SkillGroupItem struct {
