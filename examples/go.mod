@@ -6,7 +6,7 @@ require (
 	github.com/golang/protobuf v1.5.2
 	github.com/pierrec/lz4 v2.6.1+incompatible
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ame v1.0.753
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.802
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.1209
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v1.0.753
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecc v1.0.753
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ess v1.0.753
@@ -16,8 +16,6 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/monitor v1.0.753
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/soe v1.0.753
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ssm v1.0.753
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tci v1.0.753
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tic v1.0.753
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trtc v1.0.753
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc v1.0.753
 	google.golang.org/protobuf v1.28.1
@@ -29,19 +27,17 @@ require (
 )
 
 replace (
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ame v1.0.753 => ../tencentcloud/ame
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.753 => ../tencentcloud/common
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v1.0.753 => ../tencentcloud/cvm
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecc v1.0.753 => ../tencentcloud/ecc
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ess v1.0.753 => ../tencentcloud/ess
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/essbasic v1.0.753 => ../tencentcloud/essbasic
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hcm v1.0.753 => ../tencentcloud/hcm
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hunyuan v1.0.802 => ../tencentcloud/hunyuan
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/monitor v1.0.753 => ../tencentcloud/monitor
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/soe v1.0.753 => ../tencentcloud/soe
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ssm v1.0.753 => ../tencentcloud/ssm
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tci v1.0.753 => ../tencentcloud/tci
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tic v1.0.753 => ../tencentcloud/tic
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trtc v1.0.753 => ../tencentcloud/trtc
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc v1.0.753 => ../tencentcloud/vpc
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ame => ../tencentcloud/ame
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common => ../tencentcloud/common
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm => ../tencentcloud/cvm
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecc => ../tencentcloud/ecc
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ess => ../tencentcloud/ess
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/essbasic => ../tencentcloud/essbasic
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hcm => ../tencentcloud/hcm
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/hunyuan => ../tencentcloud/hunyuan
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/monitor => ../tencentcloud/monitor
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/soe => ../tencentcloud/soe
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ssm => ../tencentcloud/ssm
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trtc => ../tencentcloud/trtc
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc => ../tencentcloud/vpc
 )
