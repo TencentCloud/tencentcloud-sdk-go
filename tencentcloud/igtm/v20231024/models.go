@@ -475,7 +475,6 @@ func (r *CreateMonitorRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateMonitorResponseParams struct {
 	// 监控器id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorId *uint64 `json:"MonitorId,omitnil,omitempty" name:"MonitorId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -575,7 +574,6 @@ func (r *CreateStrategyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateStrategyResponseParams struct {
 	// 新增策略id
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrategyId *int64 `json:"StrategyId,omitnil,omitempty" name:"StrategyId"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -633,7 +631,6 @@ func (r *DeleteAddressPoolRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAddressPoolResponseParams struct {
 	// 是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -691,7 +688,6 @@ func (r *DeleteMonitorRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMonitorResponseParams struct {
 	// 成功返回
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -756,7 +752,6 @@ func (r *DeleteStrategyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteStrategyResponseParams struct {
 	// 是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -814,7 +809,6 @@ func (r *DescribeAddressLocationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAddressLocationResponseParams struct {
 	// 所属地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressLocation []*AddressLocation `json:"AddressLocation,omitnil,omitempty" name:"AddressLocation"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -872,11 +866,9 @@ func (r *DescribeAddressPoolDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAddressPoolDetailResponseParams struct {
 	// 资源组详情描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressPool *AddressPoolDetail `json:"AddressPool,omitnil,omitempty" name:"AddressPool"`
 
 	// 资源组中的资源列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressSet []*Address `json:"AddressSet,omitnil,omitempty" name:"AddressSet"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -948,11 +940,9 @@ func (r *DescribeAddressPoolListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAddressPoolListResponseParams struct {
 	// 资源组列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddressPoolSet []*AddressPool `json:"AddressPoolSet,omitnil,omitempty" name:"AddressPoolSet"`
 
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1343,15 +1333,12 @@ func (r *DescribeInstanceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceListResponseParams struct {
 	// 实例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceSet []*Instance `json:"InstanceSet,omitnil,omitempty" name:"InstanceSet"`
 
 	// 列表总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 是否支持系统域名接入：true支持；false不支持
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	SystemAccessEnabled *bool `json:"SystemAccessEnabled,omitnil,omitempty" name:"SystemAccessEnabled"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1554,7 +1541,6 @@ func (r *DescribeMonitorsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMonitorsResponseParams struct {
 	// 监控器列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonitorDataSet []*MonitorDetail `json:"MonitorDataSet,omitnil,omitempty" name:"MonitorDataSet"`
 
 	// 数量
@@ -1757,11 +1743,9 @@ func (r *DescribeStrategyListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeStrategyListResponseParams struct {
 	// 策略列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrategySet []*Strategy `json:"StrategySet,omitnil,omitempty" name:"StrategySet"`
 
 	// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2124,7 +2108,7 @@ type ModifyAddressPoolRequestParams struct {
 	// 地址池名称，不允许重复
 	PoolName *string `json:"PoolName,omitnil,omitempty" name:"PoolName"`
 
-	// 流量策略: WEIGHT负载均衡，ALl解析全部
+	// 流量策略: WEIGHT负载均衡，ALL解析全部
 	TrafficStrategy *string `json:"TrafficStrategy,omitnil,omitempty" name:"TrafficStrategy"`
 
 	// 监控器id
@@ -2143,7 +2127,7 @@ type ModifyAddressPoolRequest struct {
 	// 地址池名称，不允许重复
 	PoolName *string `json:"PoolName,omitnil,omitempty" name:"PoolName"`
 
-	// 流量策略: WEIGHT负载均衡，ALl解析全部
+	// 流量策略: WEIGHT负载均衡，ALL解析全部
 	TrafficStrategy *string `json:"TrafficStrategy,omitnil,omitempty" name:"TrafficStrategy"`
 
 	// 监控器id
@@ -2179,7 +2163,6 @@ func (r *ModifyAddressPoolRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAddressPoolResponseParams struct {
 	// 是否修改成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2413,7 +2396,6 @@ func (r *ModifyMonitorRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyMonitorResponseParams struct {
 	// success 为修改成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2527,7 +2509,6 @@ func (r *ModifyStrategyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyStrategyResponseParams struct {
 	// 是否成功
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Msg *string `json:"Msg,omitnil,omitempty" name:"Msg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

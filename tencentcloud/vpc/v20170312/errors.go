@@ -1394,6 +1394,9 @@ const (
 	// SPD本端网段冲突，请检查后重试。
 	UNSUPPORTEDOPERATION_VPNCONNSPDOVERLAP = "UnsupportedOperation.VpnConnSPDOverlap"
 
+	// 当前创建VPN网关所使用的VPC没有分配IPV6子网。
+	UNSUPPORTEDOPERATION_VPNGATEWAYVPCNOIPV6SUBNET = "UnsupportedOperation.VpnGatewayVpcNoIpv6Subnet"
+
 	// VPC类型VPN网关必须携带VpcId。
 	UNSUPPORTEDOPERATION_VPNGWVPCIDMUSTHAVE = "UnsupportedOperation.VpnGwVpcIdMustHave"
 

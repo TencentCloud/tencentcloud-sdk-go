@@ -1197,6 +1197,15 @@ type CreateAICallRequestParams struct {
 	// 2.  dify-inputs-user 为dify的user值
 	// 3.  dify-inputs-conversation_id 为dify的conversation_id值
 	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
+
+	// 模型topP
+	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
+
+	// vad的远场人声抑制能力（不会对asr识别效果造成影响），范围为[0, 3]，默认为0。推荐设置为2，有较好的远场人声抑制能力。
+	VadLevel *uint64 `json:"VadLevel,omitnil,omitempty" name:"VadLevel"`
+
+	// 衔接语
+	ToneWord *ToneWordInfo `json:"ToneWord,omitnil,omitempty" name:"ToneWord"`
 }
 
 type CreateAICallRequest struct {
@@ -1458,6 +1467,15 @@ type CreateAICallRequest struct {
 	// 2.  dify-inputs-user 为dify的user值
 	// 3.  dify-inputs-conversation_id 为dify的conversation_id值
 	Variables []*Variable `json:"Variables,omitnil,omitempty" name:"Variables"`
+
+	// 模型topP
+	TopP *float64 `json:"TopP,omitnil,omitempty" name:"TopP"`
+
+	// vad的远场人声抑制能力（不会对asr识别效果造成影响），范围为[0, 3]，默认为0。推荐设置为2，有较好的远场人声抑制能力。
+	VadLevel *uint64 `json:"VadLevel,omitnil,omitempty" name:"VadLevel"`
+
+	// 衔接语
+	ToneWord *ToneWordInfo `json:"ToneWord,omitnil,omitempty" name:"ToneWord"`
 }
 
 func (r *CreateAICallRequest) ToJsonString() string {
@@ -1501,6 +1519,9 @@ func (r *CreateAICallRequest) FromJsonString(s string) error {
 	delete(f, "ExtractConfig")
 	delete(f, "Temperature")
 	delete(f, "Variables")
+	delete(f, "TopP")
+	delete(f, "VadLevel")
+	delete(f, "ToneWord")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAICallRequest has unknown keys!", "")
 	}
@@ -7433,6 +7454,14 @@ type TimeRange struct {
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
+type ToneWordInfo struct {
+	// 首句超时时间，单位秒
+	FirstSentenceTimeout *float64 `json:"FirstSentenceTimeout,omitnil,omitempty" name:"FirstSentenceTimeout"`
+
+	// 承接语气词
+	ZHToneWords *ZHToneWordsInfo `json:"ZHToneWords,omitnil,omitempty" name:"ZHToneWords"`
+}
+
 // Predefined struct for user
 type TransferToManualRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
@@ -7974,4 +8003,15 @@ type Variable struct {
 
 	// 变量值
 	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type ZHToneWordsInfo struct {
+	// 中性词列表
+	Neutral []*string `json:"Neutral,omitnil,omitempty" name:"Neutral"`
+
+	// 正面词列表
+	Positive []*string `json:"Positive,omitnil,omitempty" name:"Positive"`
+
+	// 负面词列表
+	Negative []*string `json:"Negative,omitnil,omitempty" name:"Negative"`
 }

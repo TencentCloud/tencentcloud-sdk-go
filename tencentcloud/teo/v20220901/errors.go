@@ -308,6 +308,9 @@ const (
 	// 函数名称和本账号下其他函数冲突。
 	INVALIDPARAMETER_FUNCTIONNAMECONFLICT = "InvalidParameter.FunctionNameConflict"
 
+	// GroupBy参数超过数量限制。
+	INVALIDPARAMETER_GROUPBYLIMITEXCEEDED = "InvalidParameter.GroupByLimitExceeded"
+
 	// 开启 Grpc 协议支持需要同时开启 HTTP/2 协议支持。
 	INVALIDPARAMETER_GRPCREQUIREHTTP2 = "InvalidParameter.GrpcRequireHttp2"
 

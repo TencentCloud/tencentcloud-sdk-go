@@ -263,7 +263,6 @@ type SecurityAlarmTable struct {
 	SdlId *string `json:"SdlId,omitnil,omitempty" name:"SdlId"`
 
 	// 自定义富化字段信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RichCustomInfos []*string `json:"RichCustomInfos,omitnil,omitempty" name:"RichCustomInfos"`
 
 	// 攻击者ip

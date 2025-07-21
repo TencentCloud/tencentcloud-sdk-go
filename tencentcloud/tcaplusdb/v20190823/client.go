@@ -2882,6 +2882,10 @@ func NewRollbackTablesResponse() (response *RollbackTablesResponse) {
 }
 
 // RollbackTables
+// 不再使用
+//
+// 
+//
 // 表格数据回档
 //
 // 可能返回的错误码:
@@ -2897,6 +2901,10 @@ func (c *Client) RollbackTables(request *RollbackTablesRequest) (response *Rollb
 }
 
 // RollbackTables
+// 不再使用
+//
+// 
+//
 // 表格数据回档
 //
 // 可能返回的错误码:

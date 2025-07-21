@@ -2955,6 +2955,12 @@ type DeployRecordDetail struct {
 
 	// 部署CLB监听器的Url
 	Url []*string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 当前部署证书加密算法
+	Algorithm *string `json:"Algorithm,omitnil,omitempty" name:"Algorithm"`
+
+	// 原证书加密算法
+	OldAlgorithm *string `json:"OldAlgorithm,omitnil,omitempty" name:"OldAlgorithm"`
 }
 
 type DeployRecordInfo struct {
@@ -7857,6 +7863,9 @@ type TeoInstanceDetail struct {
 	// failed：申请失败；
 	// issued：绑定失败。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 证书加密算法
+	Algorithm *string `json:"Algorithm,omitnil,omitempty" name:"Algorithm"`
 }
 
 type TeoInstanceList struct {
@@ -8301,6 +8310,12 @@ type UpdateRecordDetail struct {
 
 	// 监听器Url(clb专属)
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
+
+	// 新证书加密算法
+	Algorithm *string `json:"Algorithm,omitnil,omitempty" name:"Algorithm"`
+
+	// 旧证书加密算法
+	OldAlgorithm *string `json:"OldAlgorithm,omitnil,omitempty" name:"OldAlgorithm"`
 }
 
 type UpdateRecordDetails struct {

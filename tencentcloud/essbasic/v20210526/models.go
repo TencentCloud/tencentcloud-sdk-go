@@ -5231,8 +5231,7 @@ type ChannelDescribeEmployeesRequestParams struct {
 	// 注: `同名字的Key的过滤条件会冲突,  只能填写一个`
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 指定分页返回第几页的数据，如果不传默认返回第一页。
-	// 页码从 0 开始，即首页为 0，最大20000。
+	// 偏移量:从 0 开始，最大20000。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 暂未开放
@@ -5267,8 +5266,7 @@ type ChannelDescribeEmployeesRequest struct {
 	// 注: `同名字的Key的过滤条件会冲突,  只能填写一个`
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
-	// 指定分页返回第几页的数据，如果不传默认返回第一页。
-	// 页码从 0 开始，即首页为 0，最大20000。
+	// 偏移量:从 0 开始，最大20000。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
 	// 暂未开放
@@ -6522,6 +6520,36 @@ func (r *ChannelVerifyPdfResponse) FromJsonString(s string) error {
 type CommonApproverOption struct {
 	// 是否允许修改签署人信息
 	CanEditApprover *bool `json:"CanEditApprover,omitnil,omitempty" name:"CanEditApprover"`
+
+	// 是否可以拒签 默认false-可以拒签 true-不可以拒签
+	NoRefuse *bool `json:"NoRefuse,omitnil,omitempty" name:"NoRefuse"`
+
+	// 是否可以转发 默认false-可以转发 true-不可以转发
+	NoTransfer *bool `json:"NoTransfer,omitnil,omitempty" name:"NoTransfer"`
+
+	// 当签署方有多个签署区时候，是否隐藏一键所有的签署区
+	// 
+	// false：（默认）不隐藏
+	// true：隐藏，每个签署区要单独选择印章或者签名
+	HideOneKeySign *bool `json:"HideOneKeySign,omitnil,omitempty" name:"HideOneKeySign"`
+
+	// 签署人阅读合同限制参数
+	//  <br/>取值：
+	// <ul>
+	// <li> LimitReadTimeAndBottom，阅读合同必须限制阅读时长并且必须阅读到底</li>
+	// <li> LimitReadTime，阅读合同仅限制阅读时长</li>
+	// <li> LimitBottom，阅读合同仅限制必须阅读到底</li>
+	// <li> NoReadTimeAndBottom，阅读合同不限制阅读时长且不限制阅读到底（白名单功能，请联系客户经理开白使用）</li>
+	// </ul>
+	FlowReadLimit *string `json:"FlowReadLimit,omitnil,omitempty" name:"FlowReadLimit"`
+
+	// 禁止在签署过程中添加签署日期控件
+	//  <br/>前置条件：文件发起合同时，指定SignBeanTag=1（可以在签署过程中添加签署控件）：
+	// <ul>
+	// <li> 默认值：false，在开启：签署过程中添加签署控件时，添加签署控件会默认自带签署日期控件</li>
+	// <li> 可选值：true，在开启：签署过程中添加签署控件时，添加签署控件不会自带签署日期控件</li>
+	// </ul>
+	ForbidAddSignDate *bool `json:"ForbidAddSignDate,omitnil,omitempty" name:"ForbidAddSignDate"`
 }
 
 type CommonFlowApprover struct {

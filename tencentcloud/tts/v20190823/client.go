@@ -409,6 +409,8 @@ func NewTextToVoiceResponse() (response *TextToVoiceResponse) {
 //
 // 超自然大模型音色：暂不支持
 //
+// 一句话复刻音色：默认10并发
+//
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  INTERNALERROR_ERRORGETROUTE = "InternalError.ErrorGetRoute"
@@ -465,6 +467,8 @@ func (c *Client) TextToVoice(request *TextToVoiceRequest) (response *TextToVoice
 // 大模型音色：默认20并发
 //
 // 超自然大模型音色：暂不支持
+//
+// 一句话复刻音色：默认10并发
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"

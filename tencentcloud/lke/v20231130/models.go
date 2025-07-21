@@ -10422,7 +10422,10 @@ type RateMsgRecordRequestParams struct {
 	// 消息ID 【大模型回复答案的RecordID】
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
-	// 1: 点赞,  2: 点踩
+	// 1: 点赞;  2: 点踩;   
+	// 注：
+	// 1) 评测端不支持点赞、点踩
+	// 2) 消息回复类型为欢迎语、并发超限、实时文档，不支持点赞、点踩
 	Score *uint64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 原因，只有Score参数为2即点踩的时候才需要输入
@@ -10438,7 +10441,10 @@ type RateMsgRecordRequest struct {
 	// 消息ID 【大模型回复答案的RecordID】
 	RecordId *string `json:"RecordId,omitnil,omitempty" name:"RecordId"`
 
-	// 1: 点赞,  2: 点踩
+	// 1: 点赞;  2: 点踩;   
+	// 注：
+	// 1) 评测端不支持点赞、点踩
+	// 2) 消息回复类型为欢迎语、并发超限、实时文档，不支持点赞、点踩
 	Score *uint64 `json:"Score,omitnil,omitempty" name:"Score"`
 
 	// 原因，只有Score参数为2即点踩的时候才需要输入

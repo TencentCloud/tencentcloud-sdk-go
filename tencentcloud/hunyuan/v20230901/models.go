@@ -1813,11 +1813,26 @@ type Multimedia struct {
 	// 1. type 为 image 时，地址为图片的预览地址；其他类型时，地址为封面图地址。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
+	// 如果Url为图片地址，标识图片宽度。
+	Width *int64 `json:"Width,omitnil,omitempty" name:"Width"`
+
+	// 如果Url为图片地址，标识图片高度。
+	Height *int64 `json:"Height,omitnil,omitempty" name:"Height"`
+
 	// 多媒体详情地址。
 	// 说明：
 	// 1. 仅 type 为 image 时，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JumpUrl *string `json:"JumpUrl,omitnil,omitempty" name:"JumpUrl"`
+
+	// 缩略图地址。
+	ThumbURL *string `json:"ThumbURL,omitnil,omitempty" name:"ThumbURL"`
+
+	// 缩略图宽度
+	ThumbWidth *int64 `json:"ThumbWidth,omitnil,omitempty" name:"ThumbWidth"`
+
+	// 缩略图高度
+	ThumbHeight *int64 `json:"ThumbHeight,omitnil,omitempty" name:"ThumbHeight"`
 
 	// 名称。
 	// 说明：
@@ -1840,6 +1855,15 @@ type Multimedia struct {
 	// 1. 仅 type 为 music 时，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ext *SongExt `json:"Ext,omitnil,omitempty" name:"Ext"`
+
+	// 发布时间。
+	PublishTime *string `json:"PublishTime,omitnil,omitempty" name:"PublishTime"`
+
+	// 站点名称
+	SiteName *string `json:"SiteName,omitnil,omitempty" name:"SiteName"`
+
+	// 站点图标
+	SiteIcon *string `json:"SiteIcon,omitnil,omitempty" name:"SiteIcon"`
 }
 
 type Processes struct {

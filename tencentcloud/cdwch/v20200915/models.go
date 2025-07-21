@@ -153,64 +153,64 @@ type BackupTableContent struct {
 }
 
 type CNResource struct {
-	// 无
+	// 资源id
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
-	// 无
+	// 集群的id
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
-	// 无
+	// 用户appid
 	AppID *int64 `json:"AppID,omitnil,omitempty" name:"AppID"`
 
-	// 无
+	// 用户uin
 	Uin *string `json:"Uin,omitnil,omitempty" name:"Uin"`
 
-	// 无
+	// 组件
 	Component *string `json:"Component,omitnil,omitempty" name:"Component"`
 
-	// 无
+	// 部署模式
 	DeployMode *int64 `json:"DeployMode,omitnil,omitempty" name:"DeployMode"`
 
-	// 无
+	// 规格名称
 	SpecName *string `json:"SpecName,omitnil,omitempty" name:"SpecName"`
 
-	// 无
+	// 资源id
 	ResourceID *string `json:"ResourceID,omitnil,omitempty" name:"ResourceID"`
 
-	// 无
+	// 资源的状态
 	Status *int64 `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 无
+	// 私有网络ip
 	IP *string `json:"IP,omitnil,omitempty" name:"IP"`
 
-	// 无
+	// 核数
 	CPU *uint64 `json:"CPU,omitnil,omitempty" name:"CPU"`
 
-	// 无
+	// 内存
 	Memory *uint64 `json:"Memory,omitnil,omitempty" name:"Memory"`
 
-	// 无
+	// 存储大小
 	Storage *uint64 `json:"Storage,omitnil,omitempty" name:"Storage"`
 
-	// 无
+	// 服务器ID
 	UUID *string `json:"UUID,omitnil,omitempty" name:"UUID"`
 
-	// 无
+	// 地域
 	Region *string `json:"Region,omitnil,omitempty" name:"Region"`
 
-	// 无
+	// 地区
 	Zone *string `json:"Zone,omitnil,omitempty" name:"Zone"`
 
-	// 无
+	// 详细信息
 	Details *string `json:"Details,omitnil,omitempty" name:"Details"`
 
-	// 无
+	// 创建时间
 	CreateTime *string `json:"CreateTime,omitnil,omitempty" name:"CreateTime"`
 
-	// 无
+	// 修改时间
 	ModifyTime *string `json:"ModifyTime,omitnil,omitempty" name:"ModifyTime"`
 
-	// 无
+	// 过期时间
 	ExpireTime *string `json:"ExpireTime,omitnil,omitempty" name:"ExpireTime"`
 }
 
@@ -269,35 +269,27 @@ type ClusterInfo struct {
 
 type CnInstanceInfo struct {
 	// ID值
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ID *int64 `json:"ID,omitnil,omitempty" name:"ID"`
 
 	// cdwch-cn或者其他
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitnil,omitempty" name:"InstanceType"`
 
 	// cdwch-cn或者其他
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// Running
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 运行中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusDesc *string `json:"StatusDesc,omitnil,omitempty" name:"StatusDesc"`
 
 	// 无
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceStateInfo *InstanceStateInfo `json:"InstanceStateInfo,omitnil,omitempty" name:"InstanceStateInfo"`
 
 	// -
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceID *string `json:"InstanceID,omitnil,omitempty" name:"InstanceID"`
 
 	// 无
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resources []*CNResource `json:"Resources,omitnil,omitempty" name:"Resources"`
 }
 
@@ -1038,15 +1030,12 @@ func (r *DescribeCNInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCNInstancesResponseParams struct {
 	// 实例总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
 	// 实例数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstancesList []*CnInstanceInfo `json:"InstancesList,omitnil,omitempty" name:"InstancesList"`
 
 	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
 
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。

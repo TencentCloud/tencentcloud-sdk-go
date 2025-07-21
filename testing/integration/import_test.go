@@ -99,6 +99,7 @@ import (
 	csipv20221121 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/csip/v20221121"
 	csxgv20230303 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/csxg/v20230303"
 	ctemv20231128 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ctem/v20231128"
+	ctsdbv20230202 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ctsdb/v20230202"
 	cvmv20170312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm/v20170312"
 	cwpv20180228 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cwp/v20180228"
 	cwsv20180312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cws/v20180312"
@@ -1318,6 +1319,19 @@ func TestCtemv20231128Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init ctem_v20231128 client: %v", err)
+    }
+}
+
+func TestCtsdbv20230202Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := ctsdbv20230202.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init ctsdb_v20230202 client: %v", err)
     }
 }
 

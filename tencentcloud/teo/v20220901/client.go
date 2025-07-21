@@ -4486,6 +4486,7 @@ func NewDescribeBillingDataResponse() (response *DescribeBillingDataResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER_GROUPBYLIMITEXCEEDED = "InvalidParameter.GroupByLimitExceeded"
 //  INVALIDPARAMETER_INVALIDINTERVAL = "InvalidParameter.InvalidInterval"
 //  INVALIDPARAMETER_INVALIDMETRIC = "InvalidParameter.InvalidMetric"
 //  INVALIDPARAMETER_ZONEHASNOTBEENBOUNDTOPLAN = "InvalidParameter.ZoneHasNotBeenBoundToPlan"
@@ -4498,6 +4499,7 @@ func (c *Client) DescribeBillingData(request *DescribeBillingDataRequest) (respo
 //
 // 可能返回的错误码:
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER_GROUPBYLIMITEXCEEDED = "InvalidParameter.GroupByLimitExceeded"
 //  INVALIDPARAMETER_INVALIDINTERVAL = "InvalidParameter.InvalidInterval"
 //  INVALIDPARAMETER_INVALIDMETRIC = "InvalidParameter.InvalidMetric"
 //  INVALIDPARAMETER_ZONEHASNOTBEENBOUNDTOPLAN = "InvalidParameter.ZoneHasNotBeenBoundToPlan"
