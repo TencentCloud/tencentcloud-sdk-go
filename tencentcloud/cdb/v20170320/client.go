@@ -9739,6 +9739,63 @@ func (c *Client) ModifyRoGroupInfoWithContext(ctx context.Context, request *Modi
     return
 }
 
+func NewModifyRoGroupVipVportRequest() (request *ModifyRoGroupVipVportRequest) {
+    request = &ModifyRoGroupVipVportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "ModifyRoGroupVipVport")
+    
+    
+    return
+}
+
+func NewModifyRoGroupVipVportResponse() (response *ModifyRoGroupVipVportResponse) {
+    response = &ModifyRoGroupVipVportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyRoGroupVipVport
+// 该接口（ModifyRoGroupVipVport）用于修改Ro组的vip和vport。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_VPCERROR = "InternalError.VpcError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyRoGroupVipVport(request *ModifyRoGroupVipVportRequest) (response *ModifyRoGroupVipVportResponse, err error) {
+    return c.ModifyRoGroupVipVportWithContext(context.Background(), request)
+}
+
+// ModifyRoGroupVipVport
+// 该接口（ModifyRoGroupVipVport）用于修改Ro组的vip和vport。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_VPCERROR = "InternalError.VpcError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyRoGroupVipVportWithContext(ctx context.Context, request *ModifyRoGroupVipVportRequest) (response *ModifyRoGroupVipVportResponse, err error) {
+    if request == nil {
+        request = NewModifyRoGroupVipVportRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRoGroupVipVport require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRoGroupVipVportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyTimeWindowRequest() (request *ModifyTimeWindowRequest) {
     request = &ModifyTimeWindowRequest{
         BaseRequest: &tchttp.BaseRequest{},

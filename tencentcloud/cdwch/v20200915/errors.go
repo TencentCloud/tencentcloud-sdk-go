@@ -20,6 +20,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// Action连接集群执行sql超时
+	FAILEDOPERATION_CLUSTEREXECUTEEXCEEDED = "FailedOperation.ClusterExecuteExceeded"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 

@@ -269,6 +269,9 @@ const (
 	// 审计日志文件数超过最大限制数
 	OPERATIONDENIED_AUDITFILEOVERQUOTAERROR = "OperationDenied.AuditFileOverQuotaError"
 
+	// 实例{{1}}审计日志关闭状态，暂无法操作。
+	OPERATIONDENIED_AUDITLOGCLOSEDERROR = "OperationDenied.AuditLogClosedError"
+
 	// 审计规则不存在
 	OPERATIONDENIED_AUDITPOLICYNOTEXISTERROR = "OperationDenied.AuditPolicyNotExistError"
 
@@ -283,6 +286,9 @@ const (
 
 	// 集群当前状态不允许该操作。
 	OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
+
+	// 功能{{1}}暂不支持
+	OPERATIONDENIED_FEATURENOTSUPPORTERROR = "OperationDenied.FeatureNotSupportError"
 
 	// 获取proxy失败
 	OPERATIONDENIED_GETPROXYGROUPFAILEDERROR = "OperationDenied.GetProxyGroupFailedError"
@@ -299,8 +305,14 @@ const (
 	// 账号余额不足。
 	OPERATIONDENIED_INSUFFICIENTBALANCEERROR = "OperationDenied.InsufficientBalanceError"
 
+	// 不是{{1}}的回档集群
+	OPERATIONDENIED_ISNOTROLLBACKCLUSTERERROR = "OperationDenied.IsNotRollbackClusterError"
+
 	// 响应大小超限制:{{1}}， 请减少查询数量。
 	OPERATIONDENIED_LENGTHOVERLIMIT = "OperationDenied.LengthOverLimit"
+
+	// 非{{1}}天内{{2}}的克隆集群。
+	OPERATIONDENIED_LIMITDAYFORAUDITREPLAYERROR = "OperationDenied.LimitDayForAuditReplayError"
 
 	// 您没有权限操作该资源（进行该操作）。
 	OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"

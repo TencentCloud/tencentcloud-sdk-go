@@ -298,6 +298,10 @@ type AdaptiveDynamicStreamingTaskInput struct {
 	// Common：音视频类型
 	// PureAudio：纯音频类型
 	DefinitionType *string `json:"DefinitionType,omitnil,omitempty" name:"DefinitionType"`
+
+	// 字幕参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubtitleTemplate *SubtitleTemplate `json:"SubtitleTemplate,omitnil,omitempty" name:"SubtitleTemplate"`
 }
 
 type AdaptiveDynamicStreamingTemplate struct {

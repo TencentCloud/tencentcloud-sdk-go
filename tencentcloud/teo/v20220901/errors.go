@@ -1151,6 +1151,9 @@ const (
 	// 当前有互相排斥的请求操作并行发起，请稍后重试。
 	OPERATIONDENIED_RESOURCELOCKEDTEMPORARY = "OperationDenied.ResourceLockedTemporary"
 
+	// 高级防护资源售卖火爆，已售罄，正在加紧补货中，当前无法开启高级防护，请您耐心等待。
+	OPERATIONDENIED_SECURITYLACKOFRESOURCES = "OperationDenied.SecurityLackOfResources"
+
 	// 绑定在共享 CNAME 中的域名不允许变更 中国大陆网络优化（国际加速）访问，如果您需要单独变更，请先将域名从共享 CNAME 中解绑。
 	OPERATIONDENIED_SHAREDCNAMEUNSUPPORTEDACCELERATEMAINLAND = "OperationDenied.SharedCNAMEUnsupportedAccelerateMainland"
 

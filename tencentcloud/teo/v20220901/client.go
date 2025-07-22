@@ -4947,6 +4947,67 @@ func (c *Client) DescribeDDoSAttackTopDataWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeDDoSProtectionRequest() (request *DescribeDDoSProtectionRequest) {
+    request = &DescribeDDoSProtectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeDDoSProtection")
+    
+    
+    return
+}
+
+func NewDescribeDDoSProtectionResponse() (response *DescribeDDoSProtectionResponse) {
+    response = &DescribeDDoSProtectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeDDoSProtection
+// 获取站点的独立 DDoS 防护信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) DescribeDDoSProtection(request *DescribeDDoSProtectionRequest) (response *DescribeDDoSProtectionResponse, err error) {
+    return c.DescribeDDoSProtectionWithContext(context.Background(), request)
+}
+
+// DescribeDDoSProtection
+// 获取站点的独立 DDoS 防护信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_UNKNOWN = "UnauthorizedOperation.Unknown"
+func (c *Client) DescribeDDoSProtectionWithContext(ctx context.Context, request *DescribeDDoSProtectionRequest) (response *DescribeDDoSProtectionResponse, err error) {
+    if request == nil {
+        request = NewDescribeDDoSProtectionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDDoSProtection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDDoSProtectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDefaultCertificatesRequest() (request *DescribeDefaultCertificatesRequest) {
     request = &DescribeDefaultCertificatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8768,6 +8829,59 @@ func (c *Client) ModifyCustomErrorPageWithContext(ctx context.Context, request *
     return
 }
 
+func NewModifyDDoSProtectionRequest() (request *ModifyDDoSProtectionRequest) {
+    request = &ModifyDDoSProtectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyDDoSProtection")
+    
+    
+    return
+}
+
+func NewModifyDDoSProtectionResponse() (response *ModifyDDoSProtectionResponse) {
+    response = &ModifyDDoSProtectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ModifyDDoSProtection
+// 修改站点的独立 DDoS 防护。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  OPERATIONDENIED_SECURITYLACKOFRESOURCES = "OperationDenied.SecurityLackOfResources"
+func (c *Client) ModifyDDoSProtection(request *ModifyDDoSProtectionRequest) (response *ModifyDDoSProtectionResponse, err error) {
+    return c.ModifyDDoSProtectionWithContext(context.Background(), request)
+}
+
+// ModifyDDoSProtection
+// 修改站点的独立 DDoS 防护。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  OPERATIONDENIED_SECURITYLACKOFRESOURCES = "OperationDenied.SecurityLackOfResources"
+func (c *Client) ModifyDDoSProtectionWithContext(ctx context.Context, request *ModifyDDoSProtectionRequest) (response *ModifyDDoSProtectionResponse, err error) {
+    if request == nil {
+        request = NewModifyDDoSProtectionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDDoSProtection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDDoSProtectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDnsRecordsRequest() (request *ModifyDnsRecordsRequest) {
     request = &ModifyDnsRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8791,7 +8905,9 @@ func NewModifyDnsRecordsResponse() (response *ModifyDnsRecordsResponse) {
 // 您可以通过本接口批量修改 DNS 记录。
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  OPERATIONDENIED_SECURITYLACKOFRESOURCES = "OperationDenied.SecurityLackOfResources"
 func (c *Client) ModifyDnsRecords(request *ModifyDnsRecordsRequest) (response *ModifyDnsRecordsResponse, err error) {
     return c.ModifyDnsRecordsWithContext(context.Background(), request)
 }
@@ -8800,7 +8916,9 @@ func (c *Client) ModifyDnsRecords(request *ModifyDnsRecordsRequest) (response *M
 // 您可以通过本接口批量修改 DNS 记录。
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  OPERATIONDENIED_SECURITYLACKOFRESOURCES = "OperationDenied.SecurityLackOfResources"
 func (c *Client) ModifyDnsRecordsWithContext(ctx context.Context, request *ModifyDnsRecordsRequest) (response *ModifyDnsRecordsResponse, err error) {
     if request == nil {
         request = NewModifyDnsRecordsRequest()
@@ -8840,7 +8958,9 @@ func NewModifyDnsRecordsStatusResponse() (response *ModifyDnsRecordsStatusRespon
 // 您可以通过本接口批量修改 DNS 记录的状态，批量对记录进行开启和停用。
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  OPERATIONDENIED_SECURITYLACKOFRESOURCES = "OperationDenied.SecurityLackOfResources"
 func (c *Client) ModifyDnsRecordsStatus(request *ModifyDnsRecordsStatusRequest) (response *ModifyDnsRecordsStatusResponse, err error) {
     return c.ModifyDnsRecordsStatusWithContext(context.Background(), request)
 }
@@ -8849,7 +8969,9 @@ func (c *Client) ModifyDnsRecordsStatus(request *ModifyDnsRecordsStatusRequest) 
 // 您可以通过本接口批量修改 DNS 记录的状态，批量对记录进行开启和停用。
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  OPERATIONDENIED_SECURITYLACKOFRESOURCES = "OperationDenied.SecurityLackOfResources"
 func (c *Client) ModifyDnsRecordsStatusWithContext(ctx context.Context, request *ModifyDnsRecordsStatusRequest) (response *ModifyDnsRecordsStatusResponse, err error) {
     if request == nil {
         request = NewModifyDnsRecordsStatusRequest()

@@ -2908,6 +2908,10 @@ type ExtractDocMultiRequestParams struct {
 
 	// 模版的单个属性配置
 	ConfigAdvanced *ConfigAdvanced `json:"ConfigAdvanced,omitnil,omitempty" name:"ConfigAdvanced"`
+
+	// cn时，添加的key为中文  
+	// en时，添加的key为英语
+	OutputLanguage *string `json:"OutputLanguage,omitnil,omitempty" name:"OutputLanguage"`
 }
 
 type ExtractDocMultiRequest struct {
@@ -2961,6 +2965,10 @@ type ExtractDocMultiRequest struct {
 
 	// 模版的单个属性配置
 	ConfigAdvanced *ConfigAdvanced `json:"ConfigAdvanced,omitnil,omitempty" name:"ConfigAdvanced"`
+
+	// cn时，添加的key为中文  
+	// en时，添加的key为英语
+	OutputLanguage *string `json:"OutputLanguage,omitnil,omitempty" name:"OutputLanguage"`
 }
 
 func (r *ExtractDocMultiRequest) ToJsonString() string {
@@ -2985,6 +2993,7 @@ func (r *ExtractDocMultiRequest) FromJsonString(s string) error {
 	delete(f, "EnableCoord")
 	delete(f, "OutputParentKey")
 	delete(f, "ConfigAdvanced")
+	delete(f, "OutputLanguage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExtractDocMultiRequest has unknown keys!", "")
 	}

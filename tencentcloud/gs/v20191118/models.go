@@ -2276,6 +2276,9 @@ type DescribeAndroidInstanceTasksStatusRequestParams struct {
 
 	// 限制量，默认为20，最大值为100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 时间范围限制，以天数为单位
+	RecentDays *int64 `json:"RecentDays,omitnil,omitempty" name:"RecentDays"`
 }
 
 type DescribeAndroidInstanceTasksStatusRequest struct {
@@ -2292,6 +2295,9 @@ type DescribeAndroidInstanceTasksStatusRequest struct {
 
 	// 限制量，默认为20，最大值为100
 	Limit *uint64 `json:"Limit,omitnil,omitempty" name:"Limit"`
+
+	// 时间范围限制，以天数为单位
+	RecentDays *int64 `json:"RecentDays,omitnil,omitempty" name:"RecentDays"`
 }
 
 func (r *DescribeAndroidInstanceTasksStatusRequest) ToJsonString() string {
@@ -2310,6 +2316,7 @@ func (r *DescribeAndroidInstanceTasksStatusRequest) FromJsonString(s string) err
 	delete(f, "Filter")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "RecentDays")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAndroidInstanceTasksStatusRequest has unknown keys!", "")
 	}

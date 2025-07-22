@@ -4685,6 +4685,21 @@ type DDoSBlockData struct {
 	BlockArea *string `json:"BlockArea,omitnil,omitempty" name:"BlockArea"`
 }
 
+type DDoSProtection struct {
+	// 指定独立 DDoS 的防护范围。取值为：
+	// <li> protect_all_domains：独立 DDoS 防护对站点内全部域名生效，新接入域名自动开启独立 DDoS 防护，入参为 protect_all_domains 时，入参 DomainDDoSProtections 不作处理；</li>
+	// <li> protect_specified_domains：仅对指定域名生效，具体范围可通过 DomainDDoSProtection 参数指定。</li>
+	ProtectionOption *string `json:"ProtectionOption,omitnil,omitempty" name:"ProtectionOption"`
+
+	// 域名的独立 DDoS 防护配置。在入参场景中：
+	// <li> 当 ProtectionOption 保持为 protect_specified_domains 时：未填写的域名维持原有独立 DDoS 防护配置不变，显式指定的域名​按传入参数更新；</li>
+	// <li> 当 ProtectionOption 由 protect_all_domains 切换为 protect_specified_domains 时：若 DomainDDoSProtections 传空，停用站点下全部域名的独立 DDoS 防护；若 DomainDDoSProtections 不为空，参数中指定的域名停用或保持独立 DDoS 防护，其余未列出的域名统一停用独立 DDoS 防护。</li>
+	DomainDDoSProtections []*DomainDDoSProtection `json:"DomainDDoSProtections,omitnil,omitempty" name:"DomainDDoSProtections"`
+
+	// 共享 CNAME 的独立 DDoS 防护配置。仅作为出参使用。
+	SharedCNAMEDDoSProtections []*DomainDDoSProtection `json:"SharedCNAMEDDoSProtections,omitnil,omitempty" name:"SharedCNAMEDDoSProtections"`
+}
+
 type DDosProtectionConfig struct {
 	// 中国大陆地区独立 DDoS 防护的规格。详情请参考 [独立 DDoS 防护相关费用](https://cloud.tencent.com/document/product/1552/94162)
 	// <li>PLATFORM：平台默认防护，即不开启独立 DDoS 防护；</li>
@@ -7505,6 +7520,63 @@ func (r *DescribeDDoSAttackTopDataResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDDoSAttackTopDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDDoSProtectionRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+}
+
+type DescribeDDoSProtectionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+}
+
+func (r *DescribeDDoSProtectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDoSProtectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDoSProtectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDDoSProtectionResponseParams struct {
+	// 独立 DDoS 防护配置。用于控制独立 DDoS 防护的生效范围。
+	DDoSProtection *DDoSProtection `json:"DDoSProtection,omitnil,omitempty" name:"DDoSProtection"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeDDoSProtectionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDDoSProtectionResponseParams `json:"Response"`
+}
+
+func (r *DescribeDDoSProtectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDDoSProtectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11732,6 +11804,16 @@ type DnsVerification struct {
 	RecordValue *string `json:"RecordValue,omitnil,omitempty" name:"RecordValue"`
 }
 
+type DomainDDoSProtection struct {
+	// 域名。
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 域名的独立 DDoS 开关，取值为：
+	// <li> on：已开启；</li>
+	// <li> off：已关闭。</li>
+	Switch *string `json:"Switch,omitnil,omitempty" name:"Switch"`
+}
+
 // Predefined struct for user
 type DownloadL4LogsRequestParams struct {
 	// 开始时间。
@@ -14473,6 +14555,67 @@ func (r *ModifyCustomErrorPageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyCustomErrorPageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDDoSProtectionRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 独立 DDoS 防护配置。
+	DDoSProtection *DDoSProtection `json:"DDoSProtection,omitnil,omitempty" name:"DDoSProtection"`
+}
+
+type ModifyDDoSProtectionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil,omitempty" name:"ZoneId"`
+
+	// 独立 DDoS 防护配置。
+	DDoSProtection *DDoSProtection `json:"DDoSProtection,omitnil,omitempty" name:"DDoSProtection"`
+}
+
+func (r *ModifyDDoSProtectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDDoSProtectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "DDoSProtection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDDoSProtectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDDoSProtectionResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyDDoSProtectionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDDoSProtectionResponseParams `json:"Response"`
+}
+
+func (r *ModifyDDoSProtectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDDoSProtectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

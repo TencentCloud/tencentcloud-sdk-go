@@ -529,6 +529,8 @@ func NewDescribeCkSqlApisResponse() (response *DescribeCkSqlApisResponse) {
 // 查询集群用户、集群表，数据库等相关信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLUSTEREXECUTEEXCEEDED = "FailedOperation.ClusterExecuteExceeded"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeCkSqlApis(request *DescribeCkSqlApisRequest) (response *DescribeCkSqlApisResponse, err error) {
     return c.DescribeCkSqlApisWithContext(context.Background(), request)
@@ -538,6 +540,8 @@ func (c *Client) DescribeCkSqlApis(request *DescribeCkSqlApisRequest) (response 
 // 查询集群用户、集群表，数据库等相关信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLUSTEREXECUTEEXCEEDED = "FailedOperation.ClusterExecuteExceeded"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeCkSqlApisWithContext(ctx context.Context, request *DescribeCkSqlApisRequest) (response *DescribeCkSqlApisResponse, err error) {
     if request == nil {

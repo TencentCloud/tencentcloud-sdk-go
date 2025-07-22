@@ -679,7 +679,7 @@ type BindingPolicyObjectRequestParams struct {
 	// 实例分组ID
 	InstanceGroupId *int64 `json:"InstanceGroupId,omitnil,omitempty" name:"InstanceGroupId"`
 
-	// 需要绑定的对象维度信息
+	// 需要绑定的对象维度信息，当为实例绑定渠道时，此处为必填信息
 	Dimensions []*BindingPolicyObjectDimension `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
 
 	// 事件配置的告警
@@ -704,7 +704,7 @@ type BindingPolicyObjectRequest struct {
 	// 实例分组ID
 	InstanceGroupId *int64 `json:"InstanceGroupId,omitnil,omitempty" name:"InstanceGroupId"`
 
-	// 需要绑定的对象维度信息
+	// 需要绑定的对象维度信息，当为实例绑定渠道时，此处为必填信息
 	Dimensions []*BindingPolicyObjectDimension `json:"Dimensions,omitnil,omitempty" name:"Dimensions"`
 
 	// 事件配置的告警

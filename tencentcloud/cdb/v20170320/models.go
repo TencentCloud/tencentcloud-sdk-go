@@ -13649,13 +13649,13 @@ func (r *ModifyDBInstanceVipVportResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstanceParamRequestParams struct {
-	// 实例短 ID 列表。
+	// 实例 ID 列表。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 要修改的参数列表。每一个元素是 Name 和 CurrentValue 的组合。Name 是参数名，CurrentValue 是要修改成的值。
 	ParamList []*Parameter `json:"ParamList,omitnil,omitempty" name:"ParamList"`
 
-	// 模板id，ParamList和TemplateId必须至少传其中之一
+	// 模板 ID，ParamList 和 TemplateId 必须至少传其中之一。可通过 [DescribeParamTemplateInfo](https://cloud.tencent.com/document/product/236/32660) 接口获取。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 执行参数调整任务的方式，默认为 0。支持值包括：0 - 立刻执行，1 - 时间窗执行；当该值为 1 时，每次只能传一个实例（InstanceIds数量为1）
@@ -13671,13 +13671,13 @@ type ModifyInstanceParamRequestParams struct {
 type ModifyInstanceParamRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例短 ID 列表。
+	// 实例 ID 列表。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 要修改的参数列表。每一个元素是 Name 和 CurrentValue 的组合。Name 是参数名，CurrentValue 是要修改成的值。
 	ParamList []*Parameter `json:"ParamList,omitnil,omitempty" name:"ParamList"`
 
-	// 模板id，ParamList和TemplateId必须至少传其中之一
+	// 模板 ID，ParamList 和 TemplateId 必须至少传其中之一。可通过 [DescribeParamTemplateInfo](https://cloud.tencent.com/document/product/236/32660) 接口获取。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 执行参数调整任务的方式，默认为 0。支持值包括：0 - 立刻执行，1 - 时间窗执行；当该值为 1 时，每次只能传一个实例（InstanceIds数量为1）
@@ -13741,20 +13741,20 @@ func (r *ModifyInstanceParamResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstancePasswordComplexityRequestParams struct {
-	// 要修改密码复杂度的实例 ID。
+	// 要修改密码复杂度的实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	// 说明：支持输入多个实例 ID 进行修改。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 要修改的密码复杂度的选项。每一个选项是以组合形式写入的，一个组合包括 Name 和 CurrentValue，其中 Name 表示对应选项的参数名，CurrentValue 表示参数值。例如：[{"Name": "validate_password.length", "CurrentValue": "10"}]，表示将密码的最小字符数修改为10。
 	// 说明：不同数据库版本的实例，支持修改的密码复杂度的选项如下。
 	// 1. MySQL 8.0：
-	// 选项 validate_password.policy，表示密码复杂度的开关，值为 LOW 时表示关闭；值为 MEDIUM 时表示开启。温馨提示：如需修改具体的密码策略，此选项的值需为 MEDIUM。
+	// 选项 validate_password.policy，表示密码复杂度的开关，值为 LOW 时表示关闭；值为 MEDIUM 时表示开启。
 	// 选项 validate_password.length，表示密码总长度的最小字符数。
 	// 选项 validate_password.mixed_case_count，表示小写和大写字母的最小字符数。
 	// 选项 validate_password.number_count，表示数字的最小字符数。
 	// 选项 validate_password.special_char_count，表示特殊字符的最小字符数。
 	// 2. MySQL 5.6、MySQL 5.7：
-	// 选项 validate_password_policy，表示密码复杂度的开关，值为 LOW 时表示关闭；值为 MEDIUM 时表示开启。温馨提示：如需修改具体的密码策略，此选项的值需为 MEDIUM。
+	// 选项 validate_password_policy，表示密码复杂度的开关，值为 LOW 时表示关闭；值为 MEDIUM 时表示开启。
 	// 选项 validate_password_length，表示密码总长度的最小字符数。
 	// 选项 validate_password_mixed_case_count，表示小写和大写字母的最小字符数。
 	// 选项 validate_password_number_count，表示数字的最小字符数。
@@ -13765,20 +13765,20 @@ type ModifyInstancePasswordComplexityRequestParams struct {
 type ModifyInstancePasswordComplexityRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要修改密码复杂度的实例 ID。
+	// 要修改密码复杂度的实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	// 说明：支持输入多个实例 ID 进行修改。
 	InstanceIds []*string `json:"InstanceIds,omitnil,omitempty" name:"InstanceIds"`
 
 	// 要修改的密码复杂度的选项。每一个选项是以组合形式写入的，一个组合包括 Name 和 CurrentValue，其中 Name 表示对应选项的参数名，CurrentValue 表示参数值。例如：[{"Name": "validate_password.length", "CurrentValue": "10"}]，表示将密码的最小字符数修改为10。
 	// 说明：不同数据库版本的实例，支持修改的密码复杂度的选项如下。
 	// 1. MySQL 8.0：
-	// 选项 validate_password.policy，表示密码复杂度的开关，值为 LOW 时表示关闭；值为 MEDIUM 时表示开启。温馨提示：如需修改具体的密码策略，此选项的值需为 MEDIUM。
+	// 选项 validate_password.policy，表示密码复杂度的开关，值为 LOW 时表示关闭；值为 MEDIUM 时表示开启。
 	// 选项 validate_password.length，表示密码总长度的最小字符数。
 	// 选项 validate_password.mixed_case_count，表示小写和大写字母的最小字符数。
 	// 选项 validate_password.number_count，表示数字的最小字符数。
 	// 选项 validate_password.special_char_count，表示特殊字符的最小字符数。
 	// 2. MySQL 5.6、MySQL 5.7：
-	// 选项 validate_password_policy，表示密码复杂度的开关，值为 LOW 时表示关闭；值为 MEDIUM 时表示开启。温馨提示：如需修改具体的密码策略，此选项的值需为 MEDIUM。
+	// 选项 validate_password_policy，表示密码复杂度的开关，值为 LOW 时表示关闭；值为 MEDIUM 时表示开启。
 	// 选项 validate_password_length，表示密码总长度的最小字符数。
 	// 选项 validate_password_mixed_case_count，表示小写和大写字母的最小字符数。
 	// 选项 validate_password_number_count，表示数字的最小字符数。
@@ -14337,6 +14337,74 @@ func (r *ModifyRoGroupInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyRoGroupInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRoGroupVipVportRequestParams struct {
+	// RO组的ID。
+	UGroupId *string `json:"UGroupId,omitnil,omitempty" name:"UGroupId"`
+
+	// 目标IP。
+	DstIp *string `json:"DstIp,omitnil,omitempty" name:"DstIp"`
+
+	// 目标Port。
+	DstPort *int64 `json:"DstPort,omitnil,omitempty" name:"DstPort"`
+}
+
+type ModifyRoGroupVipVportRequest struct {
+	*tchttp.BaseRequest
+	
+	// RO组的ID。
+	UGroupId *string `json:"UGroupId,omitnil,omitempty" name:"UGroupId"`
+
+	// 目标IP。
+	DstIp *string `json:"DstIp,omitnil,omitempty" name:"DstIp"`
+
+	// 目标Port。
+	DstPort *int64 `json:"DstPort,omitnil,omitempty" name:"DstPort"`
+}
+
+func (r *ModifyRoGroupVipVportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRoGroupVipVportRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UGroupId")
+	delete(f, "DstIp")
+	delete(f, "DstPort")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoGroupVipVportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRoGroupVipVportResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyRoGroupVipVportResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRoGroupVipVportResponseParams `json:"Response"`
+}
+
+func (r *ModifyRoGroupVipVportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRoGroupVipVportResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

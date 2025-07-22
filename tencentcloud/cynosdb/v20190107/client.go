@@ -9581,6 +9581,69 @@ func (c *Client) RenewClustersWithContext(ctx context.Context, request *RenewClu
     return
 }
 
+func NewReplayInstanceAuditLogRequest() (request *ReplayInstanceAuditLogRequest) {
+    request = &ReplayInstanceAuditLogRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ReplayInstanceAuditLog")
+    
+    
+    return
+}
+
+func NewReplayInstanceAuditLogResponse() (response *ReplayInstanceAuditLogResponse) {
+    response = &ReplayInstanceAuditLogResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReplayInstanceAuditLog
+// 回放实例审计日志
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_AUDITLOGCLOSEDERROR = "OperationDenied.AuditLogClosedError"
+//  OPERATIONDENIED_FEATURENOTSUPPORTERROR = "OperationDenied.FeatureNotSupportError"
+//  OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
+//  OPERATIONDENIED_ISNOTROLLBACKCLUSTERERROR = "OperationDenied.IsNotRollbackClusterError"
+//  OPERATIONDENIED_LIMITDAYFORAUDITREPLAYERROR = "OperationDenied.LimitDayForAuditReplayError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ReplayInstanceAuditLog(request *ReplayInstanceAuditLogRequest) (response *ReplayInstanceAuditLogResponse, err error) {
+    return c.ReplayInstanceAuditLogWithContext(context.Background(), request)
+}
+
+// ReplayInstanceAuditLog
+// 回放实例审计日志
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_AUDITLOGCLOSEDERROR = "OperationDenied.AuditLogClosedError"
+//  OPERATIONDENIED_FEATURENOTSUPPORTERROR = "OperationDenied.FeatureNotSupportError"
+//  OPERATIONDENIED_INSTANCESTATUSDENIEDERROR = "OperationDenied.InstanceStatusDeniedError"
+//  OPERATIONDENIED_ISNOTROLLBACKCLUSTERERROR = "OperationDenied.IsNotRollbackClusterError"
+//  OPERATIONDENIED_LIMITDAYFORAUDITREPLAYERROR = "OperationDenied.LimitDayForAuditReplayError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ReplayInstanceAuditLogWithContext(ctx context.Context, request *ReplayInstanceAuditLogRequest) (response *ReplayInstanceAuditLogResponse, err error) {
+    if request == nil {
+        request = NewReplayInstanceAuditLogRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReplayInstanceAuditLog require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReplayInstanceAuditLogResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResetAccountPasswordRequest() (request *ResetAccountPasswordRequest) {
     request = &ResetAccountPasswordRequest{
         BaseRequest: &tchttp.BaseRequest{},
