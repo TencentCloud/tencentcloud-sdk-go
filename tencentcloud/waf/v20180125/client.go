@@ -8677,7 +8677,7 @@ func NewModifyGenerateDealsResponse() (response *ModifyGenerateDealsResponse) {
 }
 
 // ModifyGenerateDeals
-// 提供给clb等使用的waf实例下单接口，目前只支持clb旗舰版实例的下单，该接口会进行入参校验，然后调用是否为收购用户，然后调用计费接口下单。目前只支持预付费下单，计费侧接口：https://tcb.woa.com/magical-brush/docs/754661947
+// 提供给clb等使用的waf实例下单接口，目前只支持clb旗舰版实例的下单，该接口会进行入参校验，然后调用是否为收购用户，然后调用计费接口下单。目前只支持预付费下单
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -8706,7 +8706,7 @@ func (c *Client) ModifyGenerateDeals(request *ModifyGenerateDealsRequest) (respo
 }
 
 // ModifyGenerateDeals
-// 提供给clb等使用的waf实例下单接口，目前只支持clb旗舰版实例的下单，该接口会进行入参校验，然后调用是否为收购用户，然后调用计费接口下单。目前只支持预付费下单，计费侧接口：https://tcb.woa.com/magical-brush/docs/754661947
+// 提供给clb等使用的waf实例下单接口，目前只支持clb旗舰版实例的下单，该接口会进行入参校验，然后调用是否为收购用户，然后调用计费接口下单。目前只支持预付费下单
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

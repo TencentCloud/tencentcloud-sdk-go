@@ -1,42 +1,10 @@
-# Release v1.0.1212
+# Release v1.0.1213
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 腾讯云数据仓库TCHouse-P(cdwpg) 版本：2020-12-30
 
-### 第 198 次发布
+### 第 13 次发布
 
-发布时间：2025-07-23 01:11:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ModifyRoGroupVipVport](https://cloud.tencent.com/document/api/236/121628)
-
-
-
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
-
-### 第 139 次发布
-
-发布时间：2025-07-23 01:18:48
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ReplayInstanceAuditLog](https://cloud.tencent.com/document/api/1003/121629)
-
-
-
-## 云游戏(gs) 版本：2019-11-18
-
-### 第 51 次发布
-
-发布时间：2025-07-23 01:26:05
+发布时间：2025-07-24 01:13:17
 
 本次发布包含了以下内容：
 
@@ -44,18 +12,16 @@
 
 修改接口：
 
-* [DescribeAndroidInstanceTasksStatus](https://cloud.tencent.com/document/api/1162/117270)
-
-	* 新增入参：RecentDays
+* [CreateInstanceByApi](https://cloud.tencent.com/document/api/878/98894)
 
 
 
 
-## 媒体处理(mps) 版本：2019-06-12
+## 医疗报告结构化(mrs) 版本：2020-09-10
 
-### 第 134 次发布
+### 第 37 次发布
 
-发布时间：2025-07-23 01:33:36
+发布时间：2025-07-24 01:35:01
 
 本次发布包含了以下内容：
 
@@ -63,18 +29,20 @@
 
 修改数据结构：
 
-* [AdaptiveDynamicStreamingTaskInput](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingTaskInput)
+* [DiseaseMedicalHistory](https://cloud.tencent.com/document/api/1314/56230#DiseaseMedicalHistory)
 
-	* 新增成员：SubtitleTemplate
+	* 新增成员：DiseasePresent
+
+* [TreatmentRecord](https://cloud.tencent.com/document/api/1314/56230#TreatmentRecord)
 
 
 
 
 ## 文字识别(ocr) 版本：2018-11-19
 
-### 第 203 次发布
+### 第 204 次发布
 
-发布时间：2025-07-23 01:35:04
+发布时间：2025-07-24 01:35:35
 
 本次发布包含了以下内容：
 
@@ -82,36 +50,58 @@
 
 修改接口：
 
-* [ExtractDocMulti](https://cloud.tencent.com/document/api/866/119451)
+* [MLIDCardOCR](https://cloud.tencent.com/document/api/866/37656)
 
-	* 新增入参：OutputLanguage
+* [MLIDPassportOCR](https://cloud.tencent.com/document/api/866/37657)
+
+* [RecognizeThaiIDCardOCR](https://cloud.tencent.com/document/api/866/48475)
 
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-09-01
+## TI-ONE 训练平台(tione) 版本：2021-11-11
 
-### 第 113 次发布
+### 第 88 次发布
 
-发布时间：2025-07-23 01:43:25
+发布时间：2025-07-24 01:45:31
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [DescribeDDoSProtection](https://cloud.tencent.com/document/api/1552/121631)
-* [ModifyDDoSProtection](https://cloud.tencent.com/document/api/1552/121630)
+* [HorizontalPodAutoscaler](https://cloud.tencent.com/document/api/851/75051#HorizontalPodAutoscaler)
 
-新增数据结构：
-
-* [DDoSProtection](https://cloud.tencent.com/document/api/1552/80721#DDoSProtection)
-* [DomainDDoSProtection](https://cloud.tencent.com/document/api/1552/80721#DomainDDoSProtection)
+	* 新增成员：ScaleUpStabilizationWindowSeconds, ScaleDownStabilizationWindowSeconds
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-01-06
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
+
+
+
+## 容器服务(tke) 版本：2022-05-01
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 202 次发布
+
+发布时间：2025-07-24 01:45:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SwitchInfo](https://cloud.tencent.com/document/api/457/31866#SwitchInfo)
+
+	* 新增成员：ErrorMsg, Status
+
 
 
 

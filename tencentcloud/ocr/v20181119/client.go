@@ -4069,6 +4069,7 @@ func NewMLIDCardOCRResponse() (response *MLIDCardOCRResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOSPECIFIEDCARD = "FailedOperation.ImageNoSpecifiedCard"
 //  FAILEDOPERATION_INVALIDPOSTALCODELENGTH = "FailedOperation.InvalidPostalCodeLength"
 //  FAILEDOPERATION_NOMASIDCARD = "FailedOperation.NoMASIDCard"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
@@ -4092,6 +4093,7 @@ func (c *Client) MLIDCardOCR(request *MLIDCardOCRRequest) (response *MLIDCardOCR
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGENOSPECIFIEDCARD = "FailedOperation.ImageNoSpecifiedCard"
 //  FAILEDOPERATION_INVALIDPOSTALCODELENGTH = "FailedOperation.InvalidPostalCodeLength"
 //  FAILEDOPERATION_NOMASIDCARD = "FailedOperation.NoMASIDCard"
 //  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"

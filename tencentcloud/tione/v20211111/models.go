@@ -4870,6 +4870,12 @@ type HorizontalPodAutoscaler struct {
 	// "concurrency-util":单个实例请求数量值。范围{1,100000}
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HpaMetrics []*Option `json:"HpaMetrics,omitnil,omitempty" name:"HpaMetrics"`
+
+	// 扩容观察期，单位秒
+	ScaleUpStabilizationWindowSeconds *int64 `json:"ScaleUpStabilizationWindowSeconds,omitnil,omitempty" name:"ScaleUpStabilizationWindowSeconds"`
+
+	// 缩容观察期，单位秒
+	ScaleDownStabilizationWindowSeconds *int64 `json:"ScaleDownStabilizationWindowSeconds,omitnil,omitempty" name:"ScaleDownStabilizationWindowSeconds"`
 }
 
 type HostPath struct {

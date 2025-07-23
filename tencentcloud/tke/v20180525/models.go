@@ -19742,11 +19742,11 @@ type SuperNodeResource struct {
 }
 
 type Switch struct {
-	// 集群ID
-	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
-
 	// 审计开关的详细信息
 	Audit *SwitchInfo `json:"Audit,omitnil,omitempty" name:"Audit"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil,omitempty" name:"ClusterId"`
 
 	// 事件开关的详细信息
 	Event *SwitchInfo `json:"Event,omitnil,omitempty" name:"Event"`
@@ -19762,20 +19762,26 @@ type SwitchInfo struct {
 	// 开启标识符 true代表开启
 	Enable *bool `json:"Enable,omitnil,omitempty" name:"Enable"`
 
+	// 获取日志状态失败时，返回错误信息
+	ErrorMsg *string `json:"ErrorMsg,omitnil,omitempty" name:"ErrorMsg"`
+
 	// CLS日志集ID
 	LogsetId *string `json:"LogsetId,omitnil,omitempty" name:"LogsetId"`
+
+	// 日志主题状态，opened表示已开启，opening开启中，closed表示已关闭，closing 表示关闭中
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// CLS日志主题ID
 	TopicId *string `json:"TopicId,omitnil,omitempty" name:"TopicId"`
 
-	// 当前log-agent版本
-	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
+	// CLS日志主题所属region
+	TopicRegion *string `json:"TopicRegion,omitnil,omitempty" name:"TopicRegion"`
 
 	// 是否可升级
 	UpgradeAble *bool `json:"UpgradeAble,omitnil,omitempty" name:"UpgradeAble"`
 
-	// CLS日志主题所属region
-	TopicRegion *string `json:"TopicRegion,omitnil,omitempty" name:"TopicRegion"`
+	// 当前log-agent版本
+	Version *string `json:"Version,omitnil,omitempty" name:"Version"`
 }
 
 // Predefined struct for user

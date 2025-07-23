@@ -1075,6 +1075,9 @@ type DiseaseMedicalHistory struct {
 
 	// 输血史
 	TransfusionHistory *string `json:"TransfusionHistory,omitnil,omitempty" name:"TransfusionHistory"`
+
+	// 现病史
+	DiseasePresent *string `json:"DiseasePresent,omitnil,omitempty" name:"DiseasePresent"`
 }
 
 type DiseasePresentBlock struct {
@@ -4835,6 +4838,8 @@ type TreatmentRecord struct {
 	ChiefComplaint *string `json:"ChiefComplaint,omitnil,omitempty" name:"ChiefComplaint"`
 
 	// 现病史
+	//
+	// Deprecated: DiseasePresent is deprecated.
 	DiseasePresent *string `json:"DiseasePresent,omitnil,omitempty" name:"DiseasePresent"`
 
 	// 主要症状体征
