@@ -1998,7 +1998,7 @@ func NewDescribeBindDBListResponse() (response *DescribeBindDBListResponse) {
 // 查询DB绑定的列表
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeBindDBList(request *DescribeBindDBListRequest) (response *DescribeBindDBListResponse, err error) {
     return c.DescribeBindDBListWithContext(context.Background(), request)
 }
@@ -2007,7 +2007,7 @@ func (c *Client) DescribeBindDBList(request *DescribeBindDBListRequest) (respons
 // 查询DB绑定的列表
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeBindDBListWithContext(ctx context.Context, request *DescribeBindDBListRequest) (response *DescribeBindDBListResponse, err error) {
     if request == nil {
         request = NewDescribeBindDBListRequest()
@@ -2047,7 +2047,7 @@ func NewDescribeCOSAssetSensitiveDistributionResponse() (response *DescribeCOSAs
 // 数据资产报告-查询cos的资产分布详情接口
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeCOSAssetSensitiveDistribution(request *DescribeCOSAssetSensitiveDistributionRequest) (response *DescribeCOSAssetSensitiveDistributionResponse, err error) {
     return c.DescribeCOSAssetSensitiveDistributionWithContext(context.Background(), request)
 }
@@ -2056,7 +2056,7 @@ func (c *Client) DescribeCOSAssetSensitiveDistribution(request *DescribeCOSAsset
 // 数据资产报告-查询cos的资产分布详情接口
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeCOSAssetSensitiveDistributionWithContext(ctx context.Context, request *DescribeCOSAssetSensitiveDistributionRequest) (response *DescribeCOSAssetSensitiveDistributionResponse, err error) {
     if request == nil {
         request = NewDescribeCOSAssetSensitiveDistributionRequest()
@@ -2096,7 +2096,7 @@ func NewDescribeDSPAAssessmentHighRiskTop10OverviewResponse() (response *Describ
 // 查询高风险资产的top10
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeDSPAAssessmentHighRiskTop10Overview(request *DescribeDSPAAssessmentHighRiskTop10OverviewRequest) (response *DescribeDSPAAssessmentHighRiskTop10OverviewResponse, err error) {
     return c.DescribeDSPAAssessmentHighRiskTop10OverviewWithContext(context.Background(), request)
 }
@@ -2105,7 +2105,7 @@ func (c *Client) DescribeDSPAAssessmentHighRiskTop10Overview(request *DescribeDS
 // 查询高风险资产的top10
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeDSPAAssessmentHighRiskTop10OverviewWithContext(ctx context.Context, request *DescribeDSPAAssessmentHighRiskTop10OverviewRequest) (response *DescribeDSPAAssessmentHighRiskTop10OverviewResponse, err error) {
     if request == nil {
         request = NewDescribeDSPAAssessmentHighRiskTop10OverviewRequest()
@@ -2145,7 +2145,7 @@ func NewDescribeDSPAAssessmentLatestRiskDetailInfoResponse() (response *Describe
 // 查询最新风险项详情数据
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeDSPAAssessmentLatestRiskDetailInfo(request *DescribeDSPAAssessmentLatestRiskDetailInfoRequest) (response *DescribeDSPAAssessmentLatestRiskDetailInfoResponse, err error) {
     return c.DescribeDSPAAssessmentLatestRiskDetailInfoWithContext(context.Background(), request)
 }
@@ -2154,7 +2154,7 @@ func (c *Client) DescribeDSPAAssessmentLatestRiskDetailInfo(request *DescribeDSP
 // 查询最新风险项详情数据
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeDSPAAssessmentLatestRiskDetailInfoWithContext(ctx context.Context, request *DescribeDSPAAssessmentLatestRiskDetailInfoRequest) (response *DescribeDSPAAssessmentLatestRiskDetailInfoResponse, err error) {
     if request == nil {
         request = NewDescribeDSPAAssessmentLatestRiskDetailInfoRequest()
@@ -2194,7 +2194,7 @@ func NewDescribeDSPAAssessmentLatestRiskListResponse() (response *DescribeDSPAAs
 // 查询最新的风险详情列表数据
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeDSPAAssessmentLatestRiskList(request *DescribeDSPAAssessmentLatestRiskListRequest) (response *DescribeDSPAAssessmentLatestRiskListResponse, err error) {
     return c.DescribeDSPAAssessmentLatestRiskListWithContext(context.Background(), request)
 }
@@ -2203,7 +2203,7 @@ func (c *Client) DescribeDSPAAssessmentLatestRiskList(request *DescribeDSPAAsses
 // 查询最新的风险详情列表数据
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeDSPAAssessmentLatestRiskListWithContext(ctx context.Context, request *DescribeDSPAAssessmentLatestRiskListRequest) (response *DescribeDSPAAssessmentLatestRiskListResponse, err error) {
     if request == nil {
         request = NewDescribeDSPAAssessmentLatestRiskListRequest()
@@ -2243,7 +2243,7 @@ func NewDescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse() (response *Des
 // 风险概览-查询新发现风险统计数
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeDSPAAssessmentNewDiscoveredRiskOverview(request *DescribeDSPAAssessmentNewDiscoveredRiskOverviewRequest) (response *DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse, err error) {
     return c.DescribeDSPAAssessmentNewDiscoveredRiskOverviewWithContext(context.Background(), request)
 }
@@ -2252,7 +2252,7 @@ func (c *Client) DescribeDSPAAssessmentNewDiscoveredRiskOverview(request *Descri
 // 风险概览-查询新发现风险统计数
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeDSPAAssessmentNewDiscoveredRiskOverviewWithContext(ctx context.Context, request *DescribeDSPAAssessmentNewDiscoveredRiskOverviewRequest) (response *DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeDSPAAssessmentNewDiscoveredRiskOverviewRequest()
@@ -2292,7 +2292,7 @@ func NewDescribeDSPAAssessmentPendingRiskOverviewResponse() (response *DescribeD
 // 风险概览-查询待处理风险统计数
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeDSPAAssessmentPendingRiskOverview(request *DescribeDSPAAssessmentPendingRiskOverviewRequest) (response *DescribeDSPAAssessmentPendingRiskOverviewResponse, err error) {
     return c.DescribeDSPAAssessmentPendingRiskOverviewWithContext(context.Background(), request)
 }
@@ -2301,7 +2301,7 @@ func (c *Client) DescribeDSPAAssessmentPendingRiskOverview(request *DescribeDSPA
 // 风险概览-查询待处理风险统计数
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeDSPAAssessmentPendingRiskOverviewWithContext(ctx context.Context, request *DescribeDSPAAssessmentPendingRiskOverviewRequest) (response *DescribeDSPAAssessmentPendingRiskOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeDSPAAssessmentPendingRiskOverviewRequest()
@@ -2341,7 +2341,7 @@ func NewDescribeDSPAAssessmentProcessingRiskOverviewResponse() (response *Descri
 // 风险概览-查询处理中风险统计数
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeDSPAAssessmentProcessingRiskOverview(request *DescribeDSPAAssessmentProcessingRiskOverviewRequest) (response *DescribeDSPAAssessmentProcessingRiskOverviewResponse, err error) {
     return c.DescribeDSPAAssessmentProcessingRiskOverviewWithContext(context.Background(), request)
 }
@@ -2350,7 +2350,7 @@ func (c *Client) DescribeDSPAAssessmentProcessingRiskOverview(request *DescribeD
 // 风险概览-查询处理中风险统计数
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeDSPAAssessmentProcessingRiskOverviewWithContext(ctx context.Context, request *DescribeDSPAAssessmentProcessingRiskOverviewRequest) (response *DescribeDSPAAssessmentProcessingRiskOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeDSPAAssessmentProcessingRiskOverviewRequest()
@@ -2390,7 +2390,7 @@ func NewDescribeDSPAAssessmentRiskAmountOverviewResponse() (response *DescribeDS
 // 风险概览页风险数量和受影响资产数概览统计
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeDSPAAssessmentRiskAmountOverview(request *DescribeDSPAAssessmentRiskAmountOverviewRequest) (response *DescribeDSPAAssessmentRiskAmountOverviewResponse, err error) {
     return c.DescribeDSPAAssessmentRiskAmountOverviewWithContext(context.Background(), request)
 }
@@ -2399,7 +2399,7 @@ func (c *Client) DescribeDSPAAssessmentRiskAmountOverview(request *DescribeDSPAA
 // 风险概览页风险数量和受影响资产数概览统计
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeDSPAAssessmentRiskAmountOverviewWithContext(ctx context.Context, request *DescribeDSPAAssessmentRiskAmountOverviewRequest) (response *DescribeDSPAAssessmentRiskAmountOverviewResponse, err error) {
     if request == nil {
         request = NewDescribeDSPAAssessmentRiskAmountOverviewRequest()

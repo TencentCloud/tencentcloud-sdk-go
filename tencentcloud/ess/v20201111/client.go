@@ -5812,6 +5812,273 @@ func (c *Client) CreateLegalSealQrCodeWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateMiniAppPrepareFlowRequest() (request *CreateMiniAppPrepareFlowRequest) {
+    request = &CreateMiniAppPrepareFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateMiniAppPrepareFlow")
+    
+    
+    return
+}
+
+func NewCreateMiniAppPrepareFlowResponse() (response *CreateMiniAppPrepareFlowResponse) {
+    response = &CreateMiniAppPrepareFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// CreateMiniAppPrepareFlow
+// 创建小程序发起流程链接，在小程序页面上完成签署人等信息的编辑与确认后，可快速发起流程。
+//
+//  <br/>
+//
+// 适用场景：如果需要签署人在自己的APP、小程序、H5应用中发起合同，可在收集合同信息，签署人等信息后（非必选），通过此接口获取跳转腾讯电子签小程序的合同发起跳转链接，跳转到腾讯电子签小程序继续合同的发起。
+//
+// 
+//
+// 跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>
+//
+// 
+//
+// 注：
+//
+// <ul>
+//
+// <li>1. 签署链接的有效期为<font color="red">90天</font>，超过有效期链接不可用</li>
+//
+// <li>2. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）</li>
+//
+//  <li>3. 调用接口后，<font color="red">流程不会立即发起，需使用链接跳转到小程序上继续发起流程操作</font>。</li>
+//
+// <li>4. <font color="red">使用链接成功发起一份合同后，链接立即失效</font></li>
+//
+// </ul>
+//
+// 
+//
+// 其中小程序的原始Id如下，或者查看小程序信息自助获取。
+//
+// 
+//
+// | 小程序 | AppID | 原始ID |
+//
+// | ------------ | ------------ | ------------ |
+//
+// | 腾讯电子签（正式版） | wxa023b292fd19d41d | gh_da88f6188665 |
+//
+// | 腾讯电子签Demo | wx371151823f6f3edf | gh_39a5d3de69fa |
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
+//  FAILEDOPERATION_FLOWHASDOCUMENT = "FailedOperation.FlowHasDocument"
+//  FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
+//  FAILEDOPERATION_ORGANIZATIONNAMECHANGED = "FailedOperation.OrganizationNameChanged"
+//  FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  FAILEDOPERATION_USERINFONOMATCH = "FailedOperation.UserInfoNoMatch"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_CCNUM = "InvalidParameter.CcNum"
+//  INVALIDPARAMETER_CLIENTTOKEN = "InvalidParameter.ClientToken"
+//  INVALIDPARAMETER_CUSTOMSHOWMAP = "InvalidParameter.CustomShowMap"
+//  INVALIDPARAMETER_FLOWCALLBACKURL = "InvalidParameter.FlowCallbackUrl"
+//  INVALIDPARAMETER_FLOWDEADLINE = "InvalidParameter.FlowDeadLine"
+//  INVALIDPARAMETER_FLOWDESCRIPTION = "InvalidParameter.FlowDescription"
+//  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
+//  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
+//  INVALIDPARAMETER_FLOWUSERDATA = "InvalidParameter.FlowUserData"
+//  INVALIDPARAMETER_FROMSOURCE = "InvalidParameter.FromSource"
+//  INVALIDPARAMETER_IDCARDVALIDITYOVERLIMIT = "InvalidParameter.IdCardValidityOverLimit"
+//  INVALIDPARAMETER_INVALIDMOBILE = "InvalidParameter.InvalidMobile"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTIFYTYPE = "InvalidParameter.NotifyType"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_PERSONAUTOSIGNTAG = "InvalidParameter.PersonAutoSignTag"
+//  INVALIDPARAMETER_PREREADTIME = "InvalidParameter.PreReadTime"
+//  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER_APPROVERMOBILE = "MissingParameter.ApproverMobile"
+//  MISSINGPARAMETER_APPROVERNAME = "MissingParameter.ApproverName"
+//  MISSINGPARAMETER_APPROVERORGANIZATIONINFO = "MissingParameter.ApproverOrganizationInfo"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_APPROVERREPEAT = "OperationDenied.ApproverRepeat"
+//  OPERATIONDENIED_BRANCHSENDFLOWTOPARENTNOTALLOW = "OperationDenied.BranchSendFlowToParentNotAllow"
+//  OPERATIONDENIED_CCFORBID = "OperationDenied.CcForbid"
+//  OPERATIONDENIED_CCUSERREPEAT = "OperationDenied.CcUserRepeat"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  OPERATIONDENIED_ORGUNIFORMSOCIALCREDITCODEERR = "OperationDenied.OrgUniformSocialCreditCodeErr"
+//  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
+//  OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
+//  OPERATIONDENIED_OVERSEAFORBID = "OperationDenied.OverSeaForbid"
+//  OPERATIONDENIED_PERSONHASNOSIGNATURE = "OperationDenied.PersonHasNoSignature"
+//  OPERATIONDENIED_PERSONNOOPENSERVERSIGN = "OperationDenied.PersonNoOpenServerSign"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_AUTHACTIVEORGANIZATION = "ResourceNotFound.AuthActiveOrganization"
+//  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
+//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
+//  RESOURCENOTFOUND_SUPERADMIN = "ResourceNotFound.SuperAdmin"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateMiniAppPrepareFlow(request *CreateMiniAppPrepareFlowRequest) (response *CreateMiniAppPrepareFlowResponse, err error) {
+    return c.CreateMiniAppPrepareFlowWithContext(context.Background(), request)
+}
+
+// CreateMiniAppPrepareFlow
+// 创建小程序发起流程链接，在小程序页面上完成签署人等信息的编辑与确认后，可快速发起流程。
+//
+//  <br/>
+//
+// 适用场景：如果需要签署人在自己的APP、小程序、H5应用中发起合同，可在收集合同信息，签署人等信息后（非必选），通过此接口获取跳转腾讯电子签小程序的合同发起跳转链接，跳转到腾讯电子签小程序继续合同的发起。
+//
+// 
+//
+// 跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>
+//
+// 
+//
+// 注：
+//
+// <ul>
+//
+// <li>1. 签署链接的有效期为<font color="red">90天</font>，超过有效期链接不可用</li>
+//
+// <li>2. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）</li>
+//
+//  <li>3. 调用接口后，<font color="red">流程不会立即发起，需使用链接跳转到小程序上继续发起流程操作</font>。</li>
+//
+// <li>4. <font color="red">使用链接成功发起一份合同后，链接立即失效</font></li>
+//
+// </ul>
+//
+// 
+//
+// 其中小程序的原始Id如下，或者查看小程序信息自助获取。
+//
+// 
+//
+// | 小程序 | AppID | 原始ID |
+//
+// | ------------ | ------------ | ------------ |
+//
+// | 腾讯电子签（正式版） | wxa023b292fd19d41d | gh_da88f6188665 |
+//
+// | 腾讯电子签Demo | wx371151823f6f3edf | gh_39a5d3de69fa |
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
+//  FAILEDOPERATION_FLOWHASDOCUMENT = "FailedOperation.FlowHasDocument"
+//  FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
+//  FAILEDOPERATION_ORGANIZATIONNAMECHANGED = "FailedOperation.OrganizationNameChanged"
+//  FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  FAILEDOPERATION_USERINFONOMATCH = "FailedOperation.UserInfoNoMatch"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_CCNUM = "InvalidParameter.CcNum"
+//  INVALIDPARAMETER_CLIENTTOKEN = "InvalidParameter.ClientToken"
+//  INVALIDPARAMETER_CUSTOMSHOWMAP = "InvalidParameter.CustomShowMap"
+//  INVALIDPARAMETER_FLOWCALLBACKURL = "InvalidParameter.FlowCallbackUrl"
+//  INVALIDPARAMETER_FLOWDEADLINE = "InvalidParameter.FlowDeadLine"
+//  INVALIDPARAMETER_FLOWDESCRIPTION = "InvalidParameter.FlowDescription"
+//  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
+//  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
+//  INVALIDPARAMETER_FLOWUSERDATA = "InvalidParameter.FlowUserData"
+//  INVALIDPARAMETER_FROMSOURCE = "InvalidParameter.FromSource"
+//  INVALIDPARAMETER_IDCARDVALIDITYOVERLIMIT = "InvalidParameter.IdCardValidityOverLimit"
+//  INVALIDPARAMETER_INVALIDMOBILE = "InvalidParameter.InvalidMobile"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTIFYTYPE = "InvalidParameter.NotifyType"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_PERSONAUTOSIGNTAG = "InvalidParameter.PersonAutoSignTag"
+//  INVALIDPARAMETER_PREREADTIME = "InvalidParameter.PreReadTime"
+//  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER_APPROVERMOBILE = "MissingParameter.ApproverMobile"
+//  MISSINGPARAMETER_APPROVERNAME = "MissingParameter.ApproverName"
+//  MISSINGPARAMETER_APPROVERORGANIZATIONINFO = "MissingParameter.ApproverOrganizationInfo"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_APPROVERREPEAT = "OperationDenied.ApproverRepeat"
+//  OPERATIONDENIED_BRANCHSENDFLOWTOPARENTNOTALLOW = "OperationDenied.BranchSendFlowToParentNotAllow"
+//  OPERATIONDENIED_CCFORBID = "OperationDenied.CcForbid"
+//  OPERATIONDENIED_CCUSERREPEAT = "OperationDenied.CcUserRepeat"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  OPERATIONDENIED_ORGUNIFORMSOCIALCREDITCODEERR = "OperationDenied.OrgUniformSocialCreditCodeErr"
+//  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
+//  OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
+//  OPERATIONDENIED_OVERSEAFORBID = "OperationDenied.OverSeaForbid"
+//  OPERATIONDENIED_PERSONHASNOSIGNATURE = "OperationDenied.PersonHasNoSignature"
+//  OPERATIONDENIED_PERSONNOOPENSERVERSIGN = "OperationDenied.PersonNoOpenServerSign"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_AUTHACTIVEORGANIZATION = "ResourceNotFound.AuthActiveOrganization"
+//  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
+//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
+//  RESOURCENOTFOUND_SUPERADMIN = "ResourceNotFound.SuperAdmin"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) CreateMiniAppPrepareFlowWithContext(ctx context.Context, request *CreateMiniAppPrepareFlowRequest) (response *CreateMiniAppPrepareFlowResponse, err error) {
+    if request == nil {
+        request = NewCreateMiniAppPrepareFlowRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMiniAppPrepareFlow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMiniAppPrepareFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateModifyAdminAuthorizationUrlRequest() (request *CreateModifyAdminAuthorizationUrlRequest) {
     request = &CreateModifyAdminAuthorizationUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},

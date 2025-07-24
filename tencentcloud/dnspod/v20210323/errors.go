@@ -29,6 +29,9 @@ const (
 	// 抱歉，该账户已经被锁定。
 	FAILEDOPERATION_ACCOUNTISLOCKED = "FailedOperation.AccountIsLocked"
 
+	// 当前套餐版本不支持流量分析，请先升级为尊享版或企业版套餐
+	FAILEDOPERATION_AUTHLOGUNSUPPORT = "FailedOperation.AuthLogUnsupport"
+
 	// 您的账户下包含个人豪华域名，不能直接升级，请联系销售。
 	FAILEDOPERATION_CONTAINSPERSONALVIP = "FailedOperation.ContainsPersonalVip"
 
@@ -163,6 +166,12 @@ const (
 
 	// 该域名已在您的域名列表中，请删除后再添加到别名列表
 	INVALIDPARAMETER_ALIASISMYDOMAIN = "InvalidParameter.AliasIsMyDomain"
+
+	// 解析状态不正确
+	INVALIDPARAMETER_AUTHLOGINVALIDRETCODE = "InvalidParameter.AuthLogInvalidRetCode"
+
+	// 地域不正确
+	INVALIDPARAMETER_AUTHLOGINVALIDSCOPE = "InvalidParameter.AuthLogInvalidScope"
 
 	// 创建批量域名任务失败，原因：内部错误。
 	INVALIDPARAMETER_BATCHDOMAINCREATEACTIONERROR = "InvalidParameter.BatchDomainCreateActionError"
@@ -302,6 +311,9 @@ const (
 	// 域名已经在该账号下。
 	INVALIDPARAMETER_EMAILSAME = "InvalidParameter.EmailSame"
 
+	// 结束时间超出范围
+	INVALIDPARAMETER_ENDDATEBEYONDRANGE = "InvalidParameter.EndDateBeyondRange"
+
 	// 商品子类型无效。
 	INVALIDPARAMETER_GOODSCHILDTYPEINVALID = "InvalidParameter.GoodsChildTypeInvalid"
 
@@ -344,6 +356,9 @@ const (
 	// 请输入正确的订单号。
 	INVALIDPARAMETER_INVALIDDEALNAME = "InvalidParameter.InvalidDealName"
 
+	// 无效的结束时间
+	INVALIDPARAMETER_INVALIDENDDATE = "InvalidParameter.InvalidEndDate"
+
 	// 不是合法的IP段。
 	INVALIDPARAMETER_INVALIDIP = "InvalidParameter.InvalidIp"
 
@@ -355,6 +370,9 @@ const (
 
 	// 源域名ID格式不正确。
 	INVALIDPARAMETER_INVALIDSRCDOMAINID = "InvalidParameter.InvalidSrcDomainId"
+
+	// 无效的开始时间
+	INVALIDPARAMETER_INVALIDSTARTDATE = "InvalidParameter.InvalidStartDate"
 
 	// 无效的时间。
 	INVALIDPARAMETER_INVALIDTIME = "InvalidParameter.InvalidTime"
@@ -524,6 +542,9 @@ const (
 	// 共享用户中包含未实名认证用户。
 	INVALIDPARAMETER_SHAREDUSERSUNREALNAME = "InvalidParameter.SharedUsersUnrealName"
 
+	// 开始时间超出范围
+	INVALIDPARAMETER_STARTDATEBEYONDRANGE = "InvalidParameter.StartDateBeyondRange"
+
 	// 开始时间不能大于结束时间。
 	INVALIDPARAMETER_STARTTIMEGREATERTHANENDTIME = "InvalidParameter.StarttimeGreaterThanEndtime"
 
@@ -532,6 +553,9 @@ const (
 
 	// 子域名不正确。
 	INVALIDPARAMETER_SUBDOMAININVALID = "InvalidParameter.SubdomainInvalid"
+
+	// 子域名个数超过允许的范围
+	INVALIDPARAMETER_SUBSBEYONDRANGE = "InvalidParameter.SubsBeyondRange"
 
 	// 任务未完成。
 	INVALIDPARAMETER_TASKNOTCOMPLETED = "InvalidParameter.TaskNotCompleted"

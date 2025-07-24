@@ -5116,6 +5116,88 @@ func (r *ModifyCustomerResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyLabelRequestParams struct {
+	// 资产或风险主键ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 企业ID，在企业管理页面查看
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 模块，包括：enterprise：企业架构，domain：主域名，sub_domain：子域名，asset：IP资产，port：端口服务，http：HTTP资产，vul：漏洞信息，app：APP，wechat_applet：微信小程序，wechat_official_account：微信公众号，github：Github信息泄露，manage：管理后台暴露，config：目录爆破，dark_web：暗网泄露，net_disk：文库网盘泄露，supply_chain：供应链，weak_password：弱口令，sensitive_info：敏感信息泄露
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+
+	// 标签详情
+	Labels *string `json:"Labels,omitnil,omitempty" name:"Labels"`
+}
+
+type ModifyLabelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资产或风险主键ID
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 企业ID，在企业管理页面查看
+	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`
+
+	// 模块，包括：enterprise：企业架构，domain：主域名，sub_domain：子域名，asset：IP资产，port：端口服务，http：HTTP资产，vul：漏洞信息，app：APP，wechat_applet：微信小程序，wechat_official_account：微信公众号，github：Github信息泄露，manage：管理后台暴露，config：目录爆破，dark_web：暗网泄露，net_disk：文库网盘泄露，supply_chain：供应链，weak_password：弱口令，sensitive_info：敏感信息泄露
+	Module *string `json:"Module,omitnil,omitempty" name:"Module"`
+
+	// 是否聚合数据
+	IsAggregation *bool `json:"IsAggregation,omitnil,omitempty" name:"IsAggregation"`
+
+	// 标签详情
+	Labels *string `json:"Labels,omitnil,omitempty" name:"Labels"`
+}
+
+func (r *ModifyLabelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLabelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "CustomerId")
+	delete(f, "Module")
+	delete(f, "IsAggregation")
+	delete(f, "Labels")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLabelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLabelResponseParams struct {
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type ModifyLabelResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLabelResponseParams `json:"Response"`
+}
+
+func (r *ModifyLabelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLabelResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type StopJobRecordRequestParams struct {
 	// 企业ID
 	CustomerId *int64 `json:"CustomerId,omitnil,omitempty" name:"CustomerId"`

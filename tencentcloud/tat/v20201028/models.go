@@ -2198,6 +2198,9 @@ type Invocation struct {
 	// 命令ID。
 	CommandId *string `json:"CommandId,omitnil,omitempty" name:"CommandId"`
 
+	// 执行的命令的名称
+	CommandName *string `json:"CommandName,omitnil,omitempty" name:"CommandName"`
+
 	// 执行任务状态。取值范围：
 	// 
 	// - PENDING：等待下发

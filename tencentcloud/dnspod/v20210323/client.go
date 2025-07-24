@@ -4893,6 +4893,91 @@ func (c *Client) DescribeRecordTypeWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeResolveCountRequest() (request *DescribeResolveCountRequest) {
+    request = &DescribeResolveCountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeResolveCount")
+    
+    
+    return
+}
+
+func NewDescribeResolveCountResponse() (response *DescribeResolveCountResponse) {
+    response = &DescribeResolveCountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeResolveCount
+// 查看域名的解析量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHLOGUNSUPPORT = "FailedOperation.AuthLogUnsupport"
+//  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
+//  FAILEDOPERATION_DOMAINNOTINSERVICE = "FailedOperation.DomainNotInService"
+//  FAILEDOPERATION_TEMPORARYERROR = "FailedOperation.TemporaryError"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_AUTHLOGINVALIDRETCODE = "InvalidParameter.AuthLogInvalidRetCode"
+//  INVALIDPARAMETER_AUTHLOGINVALIDSCOPE = "InvalidParameter.AuthLogInvalidScope"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETER_ENDDATEBEYONDRANGE = "InvalidParameter.EndDateBeyondRange"
+//  INVALIDPARAMETER_INVALIDENDDATE = "InvalidParameter.InvalidEndDate"
+//  INVALIDPARAMETER_INVALIDSTARTDATE = "InvalidParameter.InvalidStartDate"
+//  INVALIDPARAMETER_PARAMSMISSING = "InvalidParameter.ParamsMissing"
+//  INVALIDPARAMETER_STARTDATEBEYONDRANGE = "InvalidParameter.StartDateBeyondRange"
+//  INVALIDPARAMETER_SUBSBEYONDRANGE = "InvalidParameter.SubsBeyondRange"
+//  INVALIDPARAMETERVALUE_DOMAINGRADEINVALID = "InvalidParameterValue.DomainGradeInvalid"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+func (c *Client) DescribeResolveCount(request *DescribeResolveCountRequest) (response *DescribeResolveCountResponse, err error) {
+    return c.DescribeResolveCountWithContext(context.Background(), request)
+}
+
+// DescribeResolveCount
+// 查看域名的解析量
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_AUTHLOGUNSUPPORT = "FailedOperation.AuthLogUnsupport"
+//  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
+//  FAILEDOPERATION_DOMAINNOTINSERVICE = "FailedOperation.DomainNotInService"
+//  FAILEDOPERATION_TEMPORARYERROR = "FailedOperation.TemporaryError"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_AUTHLOGINVALIDRETCODE = "InvalidParameter.AuthLogInvalidRetCode"
+//  INVALIDPARAMETER_AUTHLOGINVALIDSCOPE = "InvalidParameter.AuthLogInvalidScope"
+//  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
+//  INVALIDPARAMETER_ENDDATEBEYONDRANGE = "InvalidParameter.EndDateBeyondRange"
+//  INVALIDPARAMETER_INVALIDENDDATE = "InvalidParameter.InvalidEndDate"
+//  INVALIDPARAMETER_INVALIDSTARTDATE = "InvalidParameter.InvalidStartDate"
+//  INVALIDPARAMETER_PARAMSMISSING = "InvalidParameter.ParamsMissing"
+//  INVALIDPARAMETER_STARTDATEBEYONDRANGE = "InvalidParameter.StartDateBeyondRange"
+//  INVALIDPARAMETER_SUBSBEYONDRANGE = "InvalidParameter.SubsBeyondRange"
+//  INVALIDPARAMETERVALUE_DOMAINGRADEINVALID = "InvalidParameterValue.DomainGradeInvalid"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
+//  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
+func (c *Client) DescribeResolveCountWithContext(ctx context.Context, request *DescribeResolveCountRequest) (response *DescribeResolveCountResponse, err error) {
+    if request == nil {
+        request = NewDescribeResolveCountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResolveCount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResolveCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSnapshotConfigRequest() (request *DescribeSnapshotConfigRequest) {
     request = &DescribeSnapshotConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

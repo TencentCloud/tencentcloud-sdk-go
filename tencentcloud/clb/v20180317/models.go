@@ -1356,7 +1356,7 @@ type CreateListenerRequestParams struct {
 	// 创建端口段监听器时必须传入此参数，用以标识结束端口。同时，入参Ports只允许传入一个成员，用以标识开始端口。【如果您需要体验端口段功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】。
 	EndPort *uint64 `json:"EndPort,omitnil,omitempty" name:"EndPort"`
 
-	// 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
+	// 解绑后端目标时，是否发RST给两端（客户端和服务器），此参数仅适用于TCP监听器。
 	DeregisterTargetRst *bool `json:"DeregisterTargetRst,omitnil,omitempty" name:"DeregisterTargetRst"`
 
 	// 证书信息，支持同时传入不同算法类型的多本服务端证书，参数限制如下：
@@ -1442,7 +1442,7 @@ type CreateListenerRequest struct {
 	// 创建端口段监听器时必须传入此参数，用以标识结束端口。同时，入参Ports只允许传入一个成员，用以标识开始端口。【如果您需要体验端口段功能，请通过 [工单申请](https://console.cloud.tencent.com/workorder/category)】。
 	EndPort *uint64 `json:"EndPort,omitnil,omitempty" name:"EndPort"`
 
-	// 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
+	// 解绑后端目标时，是否发RST给两端（客户端和服务器），此参数仅适用于TCP监听器。
 	DeregisterTargetRst *bool `json:"DeregisterTargetRst,omitnil,omitempty" name:"DeregisterTargetRst"`
 
 	// 证书信息，支持同时传入不同算法类型的多本服务端证书，参数限制如下：

@@ -5226,6 +5226,11 @@ type CreateProcedureTemplateRequestParams struct {
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitnil,omitempty" name:"AiAnalysisTask"`
 
 	// AI 内容识别类型任务参数。
+	AiRecognitionTaskSet []*AiRecognitionTaskInput `json:"AiRecognitionTaskSet,omitnil,omitempty" name:"AiRecognitionTaskSet"`
+
+	// 该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
+	//
+	// Deprecated: AiRecognitionTask is deprecated.
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitnil,omitempty" name:"AiRecognitionTask"`
 
 	// 音视频审核类型任务参数。
@@ -5255,6 +5260,9 @@ type CreateProcedureTemplateRequest struct {
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitnil,omitempty" name:"AiAnalysisTask"`
 
 	// AI 内容识别类型任务参数。
+	AiRecognitionTaskSet []*AiRecognitionTaskInput `json:"AiRecognitionTaskSet,omitnil,omitempty" name:"AiRecognitionTaskSet"`
+
+	// 该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitnil,omitempty" name:"AiRecognitionTask"`
 
 	// 音视频审核类型任务参数。
@@ -5279,6 +5287,7 @@ func (r *CreateProcedureTemplateRequest) FromJsonString(s string) error {
 	delete(f, "MediaProcessTask")
 	delete(f, "AiContentReviewTask")
 	delete(f, "AiAnalysisTask")
+	delete(f, "AiRecognitionTaskSet")
 	delete(f, "AiRecognitionTask")
 	delete(f, "ReviewAudioVideoTask")
 	if len(f) > 0 {
@@ -21030,7 +21039,12 @@ type ProcedureTemplate struct {
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitnil,omitempty" name:"AiAnalysisTask"`
 
 	// AI 内容识别类型任务参数。
+	AiRecognitionTaskSet []*AiRecognitionTaskInput `json:"AiRecognitionTaskSet,omitnil,omitempty" name:"AiRecognitionTaskSet"`
+
+	// 该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: AiRecognitionTask is deprecated.
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitnil,omitempty" name:"AiRecognitionTask"`
 
 	// 微信小程序发布任务参数。
@@ -23297,6 +23311,11 @@ type ResetProcedureTemplateRequestParams struct {
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitnil,omitempty" name:"AiAnalysisTask"`
 
 	// AI 内容识别类型任务参数。
+	AiRecognitionTaskSet []*AiRecognitionTaskInput `json:"AiRecognitionTaskSet,omitnil,omitempty" name:"AiRecognitionTaskSet"`
+
+	// 该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
+	//
+	// Deprecated: AiRecognitionTask is deprecated.
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitnil,omitempty" name:"AiRecognitionTask"`
 
 	// 音视频审核类型任务参数。
@@ -23326,6 +23345,9 @@ type ResetProcedureTemplateRequest struct {
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitnil,omitempty" name:"AiAnalysisTask"`
 
 	// AI 内容识别类型任务参数。
+	AiRecognitionTaskSet []*AiRecognitionTaskInput `json:"AiRecognitionTaskSet,omitnil,omitempty" name:"AiRecognitionTaskSet"`
+
+	// 该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitnil,omitempty" name:"AiRecognitionTask"`
 
 	// 音视频审核类型任务参数。
@@ -23350,6 +23372,7 @@ func (r *ResetProcedureTemplateRequest) FromJsonString(s string) error {
 	delete(f, "MediaProcessTask")
 	delete(f, "AiContentReviewTask")
 	delete(f, "AiAnalysisTask")
+	delete(f, "AiRecognitionTaskSet")
 	delete(f, "AiRecognitionTask")
 	delete(f, "ReviewAudioVideoTask")
 	if len(f) > 0 {

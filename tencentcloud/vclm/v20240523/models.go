@@ -760,6 +760,9 @@ type SubmitTemplateToVideoJobRequestParams struct {
 	// 标识内容设置。
 	// 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
 	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+
+	// 视频输出分辨率，默认值：360p  - 枚举值：  720p  360p。
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 }
 
 type SubmitTemplateToVideoJobRequest struct {
@@ -784,6 +787,9 @@ type SubmitTemplateToVideoJobRequest struct {
 	// 标识内容设置。
 	// 默认在生成视频的右下角添加“视频由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
 	LogoParam *LogoParam `json:"LogoParam,omitnil,omitempty" name:"LogoParam"`
+
+	// 视频输出分辨率，默认值：360p  - 枚举值：  720p  360p。
+	Resolution *string `json:"Resolution,omitnil,omitempty" name:"Resolution"`
 }
 
 func (r *SubmitTemplateToVideoJobRequest) ToJsonString() string {
@@ -802,6 +808,7 @@ func (r *SubmitTemplateToVideoJobRequest) FromJsonString(s string) error {
 	delete(f, "Images")
 	delete(f, "LogoAdd")
 	delete(f, "LogoParam")
+	delete(f, "Resolution")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitTemplateToVideoJobRequest has unknown keys!", "")
 	}

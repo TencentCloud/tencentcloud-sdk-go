@@ -12554,6 +12554,9 @@ type StageInfoDetail struct {
 
 	// 步骤耗时
 	TimeConsuming *string `json:"TimeConsuming,omitnil,omitempty" name:"TimeConsuming"`
+
+	// id，前端用
+	Id *int64 `json:"Id,omitnil,omitempty" name:"Id"`
 }
 
 type StarRocksQueryInfo struct {

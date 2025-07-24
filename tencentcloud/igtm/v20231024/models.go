@@ -240,7 +240,7 @@ type CreateInstanceRequestParams struct {
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 套餐资源id，必填
+	// 套餐资源id
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 
@@ -275,7 +275,7 @@ type CreateInstanceRequest struct {
 	// 备注
 	Remark *string `json:"Remark,omitnil,omitempty" name:"Remark"`
 
-	// 套餐资源id，必填
+	// 套餐资源id
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
 }
 

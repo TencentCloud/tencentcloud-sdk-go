@@ -4953,6 +4953,97 @@ func (r *DescribeRecordTypeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeResolveCountRequestParams struct {
+	// 要查询解析量的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 查询的开始时间，格式：YYYY-MM-DD，最多允许查询最近32天的数据。
+	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
+
+	// 查询的结束时间，格式：YYYY-MM-DD，最多允许查询最近32天的数据。
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
+
+	// 数据统计格式，取值为minute、hour、day，分别表示按十分钟、小时、天统计数据
+	DnsFormat *string `json:"DnsFormat,omitnil,omitempty" name:"DnsFormat"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+type DescribeResolveCountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要查询解析量的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 查询的开始时间，格式：YYYY-MM-DD，最多允许查询最近32天的数据。
+	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
+
+	// 查询的结束时间，格式：YYYY-MM-DD，最多允许查询最近32天的数据。
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
+
+	// 数据统计格式，取值为minute、hour、day，分别表示按十分钟、小时、天统计数据
+	DnsFormat *string `json:"DnsFormat,omitnil,omitempty" name:"DnsFormat"`
+
+	// 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+	DomainId *uint64 `json:"DomainId,omitnil,omitempty" name:"DomainId"`
+}
+
+func (r *DescribeResolveCountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResolveCountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "StartDate")
+	delete(f, "EndDate")
+	delete(f, "DnsFormat")
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResolveCountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResolveCountResponseParams struct {
+	// 解析量明细
+	Data []*ResolveCountDataItem `json:"Data,omitnil,omitempty" name:"Data"`
+
+	// 解析量统计信息
+	Info *ResolveCountInfo `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 别名解析量明细
+	AliasData []*ResolveCountAliasItem `json:"AliasData,omitnil,omitempty" name:"AliasData"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type DescribeResolveCountResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeResolveCountResponseParams `json:"Response"`
+}
+
+func (r *DescribeResolveCountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResolveCountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSnapshotConfigRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
@@ -8209,6 +8300,42 @@ type RecordListItem struct {
 
 	// 是否是默认的ns记录
 	DefaultNS *bool `json:"DefaultNS,omitnil,omitempty" name:"DefaultNS"`
+}
+
+type ResolveCountAliasItem struct {
+	// 域名解析量统计信息
+	Info *ResolveCountInfo `json:"Info,omitnil,omitempty" name:"Info"`
+
+	// 解析量明细
+	Data []*ResolveCountDataItem `json:"Data,omitnil,omitempty" name:"Data"`
+}
+
+type ResolveCountDataItem struct {
+	// 解析量
+	Num *uint64 `json:"Num,omitnil,omitempty" name:"Num"`
+
+	// 统计的时间点
+	DateKey *string `json:"DateKey,omitnil,omitempty" name:"DateKey"`
+}
+
+type ResolveCountInfo struct {
+	// 当前统计周期解析量总计
+	DnsTotal *uint64 `json:"DnsTotal,omitnil,omitempty" name:"DnsTotal"`
+
+	// 当前查询的域名
+	Domain *string `json:"Domain,omitnil,omitempty" name:"Domain"`
+
+	// 当前统计周期开始时间
+	StartDate *string `json:"StartDate,omitnil,omitempty" name:"StartDate"`
+
+	// 当前统计周期结束时间
+	EndDate *string `json:"EndDate,omitnil,omitempty" name:"EndDate"`
+
+	// 当前统计的子域名
+	SubDomain *string `json:"SubDomain,omitnil,omitempty" name:"SubDomain"`
+
+	// 数据统计格式，取值为minute、hour、day，分别表示按十分钟、小时、天统计数据
+	DnsFormat *string `json:"DnsFormat,omitnil,omitempty" name:"DnsFormat"`
 }
 
 // Predefined struct for user
