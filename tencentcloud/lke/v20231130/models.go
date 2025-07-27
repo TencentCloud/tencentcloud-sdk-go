@@ -5960,7 +5960,7 @@ type GetWsTokenReq_Label struct {
 
 // Predefined struct for user
 type GetWsTokenRequestParams struct {
-	// 接入类型， 5-API 访客
+	// 接入类型， 5-API 访客，目前仅支持传5
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	//   应用AppKey </br>   获取方式:</br>   1、应用发布后在应用页面[发布管理]-[调用信息]-[API管理]处获取</br>   2、参考 https://cloud.tencent.com/document/product/1759/109469 第二项
@@ -5977,7 +5977,7 @@ type GetWsTokenRequestParams struct {
 type GetWsTokenRequest struct {
 	*tchttp.BaseRequest
 	
-	// 接入类型， 5-API 访客
+	// 接入类型， 5-API 访客，目前仅支持传5
 	Type *int64 `json:"Type,omitnil,omitempty" name:"Type"`
 
 	//   应用AppKey </br>   获取方式:</br>   1、应用发布后在应用页面[发布管理]-[调用信息]-[API管理]处获取</br>   2、参考 https://cloud.tencent.com/document/product/1759/109469 第二项

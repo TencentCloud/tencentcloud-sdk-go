@@ -1364,21 +1364,27 @@ func (r *CreateAndroidInstancesScreenshotResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type CreateCosCredentialRequestParams struct {
-	// Cos 密钥类型， Mobile 移动端, PC 桌面, AndroidApp 安卓应用
+	// Cos 密钥类型，取值： Mobile 云手游、PC 云端游、AndroidApp 云手机应用管理、AndroidAppFile 云手机文件管理、AndroidAppBackup 云手机备份还原
 	CosType *string `json:"CosType,omitnil,omitempty" name:"CosType"`
 
-	// 云手机 Cos 数据
+	// 云手机应用管理 Cos 数据
 	AndroidAppCosInfo *AndroidAppCosInfo `json:"AndroidAppCosInfo,omitnil,omitempty" name:"AndroidAppCosInfo"`
+
+	// 云手机文件管理 Cos 数据
+	AndroidAppFileCosInfo *FileCosInfo `json:"AndroidAppFileCosInfo,omitnil,omitempty" name:"AndroidAppFileCosInfo"`
 }
 
 type CreateCosCredentialRequest struct {
 	*tchttp.BaseRequest
 	
-	// Cos 密钥类型， Mobile 移动端, PC 桌面, AndroidApp 安卓应用
+	// Cos 密钥类型，取值： Mobile 云手游、PC 云端游、AndroidApp 云手机应用管理、AndroidAppFile 云手机文件管理、AndroidAppBackup 云手机备份还原
 	CosType *string `json:"CosType,omitnil,omitempty" name:"CosType"`
 
-	// 云手机 Cos 数据
+	// 云手机应用管理 Cos 数据
 	AndroidAppCosInfo *AndroidAppCosInfo `json:"AndroidAppCosInfo,omitnil,omitempty" name:"AndroidAppCosInfo"`
+
+	// 云手机文件管理 Cos 数据
+	AndroidAppFileCosInfo *FileCosInfo `json:"AndroidAppFileCosInfo,omitnil,omitempty" name:"AndroidAppFileCosInfo"`
 }
 
 func (r *CreateCosCredentialRequest) ToJsonString() string {
@@ -1395,6 +1401,7 @@ func (r *CreateCosCredentialRequest) FromJsonString(s string) error {
 	}
 	delete(f, "CosType")
 	delete(f, "AndroidAppCosInfo")
+	delete(f, "AndroidAppFileCosInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCosCredentialRequest has unknown keys!", "")
 	}
@@ -3161,6 +3168,11 @@ func (r *FetchAndroidInstancesLogsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *FetchAndroidInstancesLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type FileCosInfo struct {
+	// 文件 Id
+	FileId *string `json:"FileId,omitnil,omitempty" name:"FileId"`
 }
 
 type Filter struct {

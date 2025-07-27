@@ -600,6 +600,9 @@ type CertificateInfoSubmitRequestParams struct {
 
 	// 只针对Dnspod系列证书有效，ca机构类型可为sectigo和digicert
 	CaType *string `json:"CaType,omitnil,omitempty" name:"CaType"`
+
+	// 签名算法
+	SignAlgo *string `json:"SignAlgo,omitnil,omitempty" name:"SignAlgo"`
 }
 
 type CertificateInfoSubmitRequest struct {
@@ -745,6 +748,9 @@ type CertificateInfoSubmitRequest struct {
 
 	// 只针对Dnspod系列证书有效，ca机构类型可为sectigo和digicert
 	CaType *string `json:"CaType,omitnil,omitempty" name:"CaType"`
+
+	// 签名算法
+	SignAlgo *string `json:"SignAlgo,omitnil,omitempty" name:"SignAlgo"`
 }
 
 func (r *CertificateInfoSubmitRequest) ToJsonString() string {
@@ -799,6 +805,7 @@ func (r *CertificateInfoSubmitRequest) FromJsonString(s string) error {
 	delete(f, "TechTitle")
 	delete(f, "Type")
 	delete(f, "CaType")
+	delete(f, "SignAlgo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CertificateInfoSubmitRequest has unknown keys!", "")
 	}
@@ -7074,7 +7081,7 @@ type ReplaceCertificateRequestParams struct {
 	// 验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
 	ValidType *string `json:"ValidType,omitnil,omitempty" name:"ValidType"`
 
-	// 类型，默认 Original。可选项：Original = 原证书 CSR，Upload = 手动上传，Online = 在线生成。
+	// 类型，默认 original。可选项：original = 原证书 CSR，upload = 手动上传，online = 在线生成。
 	CsrType *string `json:"CsrType,omitnil,omitempty" name:"CsrType"`
 
 	// CSR 内容，手动上传的时候需要。
@@ -7092,6 +7099,9 @@ type ReplaceCertificateRequestParams struct {
 
 	// CSR加密参数，CsrEncryptAlgo为RSA时， 可选2048、4096等默认为2048；CsrEncryptAlgo为ECC时，可选prime256v1，secp384r1等，默认为prime256v1; 
 	CertCSRKeyParameter *string `json:"CertCSRKeyParameter,omitnil,omitempty" name:"CertCSRKeyParameter"`
+
+	// 签名算法
+	SignAlgo *string `json:"SignAlgo,omitnil,omitempty" name:"SignAlgo"`
 }
 
 type ReplaceCertificateRequest struct {
@@ -7103,7 +7113,7 @@ type ReplaceCertificateRequest struct {
 	// 验证类型：DNS_AUTO = 自动DNS验证（仅支持在腾讯云解析且解析状态正常的域名使用该验证类型），DNS = 手动DNS验证，FILE = 文件验证。
 	ValidType *string `json:"ValidType,omitnil,omitempty" name:"ValidType"`
 
-	// 类型，默认 Original。可选项：Original = 原证书 CSR，Upload = 手动上传，Online = 在线生成。
+	// 类型，默认 original。可选项：original = 原证书 CSR，upload = 手动上传，online = 在线生成。
 	CsrType *string `json:"CsrType,omitnil,omitempty" name:"CsrType"`
 
 	// CSR 内容，手动上传的时候需要。
@@ -7121,6 +7131,9 @@ type ReplaceCertificateRequest struct {
 
 	// CSR加密参数，CsrEncryptAlgo为RSA时， 可选2048、4096等默认为2048；CsrEncryptAlgo为ECC时，可选prime256v1，secp384r1等，默认为prime256v1; 
 	CertCSRKeyParameter *string `json:"CertCSRKeyParameter,omitnil,omitempty" name:"CertCSRKeyParameter"`
+
+	// 签名算法
+	SignAlgo *string `json:"SignAlgo,omitnil,omitempty" name:"SignAlgo"`
 }
 
 func (r *ReplaceCertificateRequest) ToJsonString() string {
@@ -7143,6 +7156,7 @@ func (r *ReplaceCertificateRequest) FromJsonString(s string) error {
 	delete(f, "Reason")
 	delete(f, "CertCSREncryptAlgo")
 	delete(f, "CertCSRKeyParameter")
+	delete(f, "SignAlgo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReplaceCertificateRequest has unknown keys!", "")
 	}

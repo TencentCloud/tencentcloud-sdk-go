@@ -470,6 +470,10 @@ func NewCreateDiagnoseUrlResponse() (response *CreateDiagnoseUrlResponse) {
 }
 
 // CreateDiagnoseUrl
+// 以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
+//
+// 
+//
 // ### <font color=red>**该接口已废弃** </font><br>
 //
 // CreateDiagnoseUrl 用于添加域名诊断任务URL。
@@ -495,6 +499,10 @@ func (c *Client) CreateDiagnoseUrl(request *CreateDiagnoseUrlRequest) (response 
 }
 
 // CreateDiagnoseUrl
+// 以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
+//
+// 
+//
 // ### <font color=red>**该接口已废弃** </font><br>
 //
 // CreateDiagnoseUrl 用于添加域名诊断任务URL。
@@ -1995,6 +2003,10 @@ func NewDescribeDiagnoseReportResponse() (response *DescribeDiagnoseReportRespon
 }
 
 // DescribeDiagnoseReport
+// 以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
+//
+// 
+//
 // ### <font color=red>**该接口已废弃** </font><br>
 //
 // DescribeDiagnoseReport 用于获取指定报告id的内容。
@@ -2010,6 +2022,10 @@ func (c *Client) DescribeDiagnoseReport(request *DescribeDiagnoseReportRequest) 
 }
 
 // DescribeDiagnoseReport
+// 以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
+//
+// 
+//
 // ### <font color=red>**该接口已废弃** </font><br>
 //
 // DescribeDiagnoseReport 用于获取指定报告id的内容。
@@ -4697,6 +4713,10 @@ func NewGetDisableRecordsResponse() (response *GetDisableRecordsResponse) {
 }
 
 // GetDisableRecords
+// 以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
+//
+// 
+//
 // ### <font color=red>**该接口已废弃** </font><br>
 //
 // GetDisableRecords 用于查询资源禁用历史，及 URL 当前状态。
@@ -4724,6 +4744,10 @@ func (c *Client) GetDisableRecords(request *GetDisableRecordsRequest) (response 
 }
 
 // GetDisableRecords
+// 以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
+//
+// 
+//
 // ### <font color=red>**该接口已废弃** </font><br>
 //
 // GetDisableRecords 用于查询资源禁用历史，及 URL 当前状态。
@@ -5012,6 +5036,10 @@ func NewListDiagnoseReportResponse() (response *ListDiagnoseReportResponse) {
 }
 
 // ListDiagnoseReport
+// 以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
+//
+// 
+//
 // ### <font color=red>**该接口已废弃** </font><br>
 //
 // ListDiagnoseReport 用于获取用户诊断URL访问后各个子任务的简要详情。
@@ -5028,6 +5056,10 @@ func (c *Client) ListDiagnoseReport(request *ListDiagnoseReportRequest) (respons
 }
 
 // ListDiagnoseReport
+// 以上诊断报告, 域名版本管理相关接口功能均废弃,  已确认现网0调用, 申请预下线,(预下线不会影响调用, 只会在接口中添加提示信息, 正式下线仍需人工确认)
+//
+// 
+//
 // ### <font color=red>**该接口已废弃** </font><br>
 //
 // ListDiagnoseReport 用于获取用户诊断URL访问后各个子任务的简要详情。

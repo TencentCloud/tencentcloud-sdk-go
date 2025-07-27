@@ -9130,6 +9130,98 @@ func (r *RecognizeTableAccurateOCRResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RecognizeTableMultiOCRRequestParams struct {
+	// 图片/PDF的 Base64 值。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。 
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 图片/PDF的 Url 地址。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。 
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 文档的起始页码。  当传入文件是PDF型时，用来指定识别的起始页码，识别的页码包含当前值。
+	PdfStartPageNumber *int64 `json:"PdfStartPageNumber,omitnil,omitempty" name:"PdfStartPageNumber"`
+
+	// 文档的结束页码。 当传入文件是PDF类型时，用来指定识别的结束页码，识别的页码包含当前值。单次调用最多支持识别3页内容，即PdfEndPageNumber-PdfStartPageNumber需要不大于3。
+	PdfEndPageNumber *int64 `json:"PdfEndPageNumber,omitnil,omitempty" name:"PdfEndPageNumber"`
+
+	// 配置选项，支持配置输出数据格式。
+	// 
+	// * **Mdbase64** 返回 base64 编码的 markdown 格式文本。
+	// * **Excelbase64** 返回 base64 编码的 excel 文件。
+	DataFormat *string `json:"DataFormat,omitnil,omitempty" name:"DataFormat"`
+}
+
+type RecognizeTableMultiOCRRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片/PDF的 Base64 值。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。 
+	ImageBase64 *string `json:"ImageBase64,omitnil,omitempty" name:"ImageBase64"`
+
+	// 图片/PDF的 Url 地址。 要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。 图片支持的像素范围：需介于20-10000px之间。 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。 
+	ImageUrl *string `json:"ImageUrl,omitnil,omitempty" name:"ImageUrl"`
+
+	// 文档的起始页码。  当传入文件是PDF型时，用来指定识别的起始页码，识别的页码包含当前值。
+	PdfStartPageNumber *int64 `json:"PdfStartPageNumber,omitnil,omitempty" name:"PdfStartPageNumber"`
+
+	// 文档的结束页码。 当传入文件是PDF类型时，用来指定识别的结束页码，识别的页码包含当前值。单次调用最多支持识别3页内容，即PdfEndPageNumber-PdfStartPageNumber需要不大于3。
+	PdfEndPageNumber *int64 `json:"PdfEndPageNumber,omitnil,omitempty" name:"PdfEndPageNumber"`
+
+	// 配置选项，支持配置输出数据格式。
+	// 
+	// * **Mdbase64** 返回 base64 编码的 markdown 格式文本。
+	// * **Excelbase64** 返回 base64 编码的 excel 文件。
+	DataFormat *string `json:"DataFormat,omitnil,omitempty" name:"DataFormat"`
+}
+
+func (r *RecognizeTableMultiOCRRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeTableMultiOCRRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "PdfStartPageNumber")
+	delete(f, "PdfEndPageNumber")
+	delete(f, "DataFormat")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeTableMultiOCRRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RecognizeTableMultiOCRResponseParams struct {
+	// Base64 编码后的 Excel 数据或 Markdown 数据。  注意：此字段可能返回空，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataBase64 *string `json:"DataBase64,omitnil,omitempty" name:"DataBase64"`
+
+	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
+}
+
+type RecognizeTableMultiOCRResponse struct {
+	*tchttp.BaseResponse
+	Response *RecognizeTableMultiOCRResponseParams `json:"Response"`
+}
+
+func (r *RecognizeTableMultiOCRResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecognizeTableMultiOCRResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RecognizeTableOCRRequestParams struct {
 	// 图片/PDF的 Base64 值。
 	// 要求图片/PDF经Base64编码后不超过 7M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。

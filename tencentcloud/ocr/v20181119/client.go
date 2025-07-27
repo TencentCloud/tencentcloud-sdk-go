@@ -6951,6 +6951,89 @@ func (c *Client) RecognizeTableAccurateOCRWithContext(ctx context.Context, reque
     return
 }
 
+func NewRecognizeTableMultiOCRRequest() (request *RecognizeTableMultiOCRRequest) {
+    request = &RecognizeTableMultiOCRRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "RecognizeTableMultiOCR")
+    
+    
+    return
+}
+
+func NewRecognizeTableMultiOCRResponse() (response *RecognizeTableMultiOCRResponse) {
+    response = &RecognizeTableMultiOCRResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RecognizeTableMultiOCR
+// 基于MLLM(多模态大语言模型)的表格识别能力，针对复杂表格的算法识别效果更佳，适配财务报表识别场景，并可输出直接对接业务系统的Excel数据。
+//
+// 
+//
+// 默认接口请求频率限制：1次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeTableMultiOCR(request *RecognizeTableMultiOCRRequest) (response *RecognizeTableMultiOCRResponse, err error) {
+    return c.RecognizeTableMultiOCRWithContext(context.Background(), request)
+}
+
+// RecognizeTableMultiOCR
+// 基于MLLM(多模态大语言模型)的表格识别能力，针对复杂表格的算法识别效果更佳，适配财务报表识别场景，并可输出直接对接业务系统的Excel数据。
+//
+// 
+//
+// 默认接口请求频率限制：1次/秒。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_PDFPARSEFAILED = "FailedOperation.PDFParseFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNKNOWFILETYPEERROR = "FailedOperation.UnKnowFileTypeError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) RecognizeTableMultiOCRWithContext(ctx context.Context, request *RecognizeTableMultiOCRRequest) (response *RecognizeTableMultiOCRResponse, err error) {
+    if request == nil {
+        request = NewRecognizeTableMultiOCRRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecognizeTableMultiOCR require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecognizeTableMultiOCRResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRecognizeTableOCRRequest() (request *RecognizeTableOCRRequest) {
     request = &RecognizeTableOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},

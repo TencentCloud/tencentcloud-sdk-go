@@ -2360,10 +2360,10 @@ type CreateBackupRequestParams struct {
 	// 例：如果需要备份 db1 库的 tb1、tb2 表 和 db2 库。则该参数设置为 [{"Db": "db1", "Table": "tb1"}, {"Db": "db1", "Table": "tb2"}, {"Db": "db2"}]。
 	BackupDBTableList []*BackupItem `json:"BackupDBTableList,omitnil,omitempty" name:"BackupDBTableList"`
 
-	// 手动备份别名
+	// 手动备份别名，输入长度请在60个字符内。
 	ManualBackupName *string `json:"ManualBackupName,omitnil,omitempty" name:"ManualBackupName"`
 
-	// 是否需要加密物理备份， 当BackupMethod为physical 时，该值才有意义。 不指定则使用实例备份默认加密策略。
+	// 是否需要加密物理备份，可选值为：on - 是，off - 否。当 BackupMethod 为 physical 时，该值才有意义。不指定则使用实例备份默认加密策略，这里的默认加密策略指通过 [DescribeBackupEncryptionStatus](https://cloud.tencent.com/document/product/236/86508) 接口查询出的实例当前加密策略。
 	EncryptionFlag *string `json:"EncryptionFlag,omitnil,omitempty" name:"EncryptionFlag"`
 }
 
@@ -2380,10 +2380,10 @@ type CreateBackupRequest struct {
 	// 例：如果需要备份 db1 库的 tb1、tb2 表 和 db2 库。则该参数设置为 [{"Db": "db1", "Table": "tb1"}, {"Db": "db1", "Table": "tb2"}, {"Db": "db2"}]。
 	BackupDBTableList []*BackupItem `json:"BackupDBTableList,omitnil,omitempty" name:"BackupDBTableList"`
 
-	// 手动备份别名
+	// 手动备份别名，输入长度请在60个字符内。
 	ManualBackupName *string `json:"ManualBackupName,omitnil,omitempty" name:"ManualBackupName"`
 
-	// 是否需要加密物理备份， 当BackupMethod为physical 时，该值才有意义。 不指定则使用实例备份默认加密策略。
+	// 是否需要加密物理备份，可选值为：on - 是，off - 否。当 BackupMethod 为 physical 时，该值才有意义。不指定则使用实例备份默认加密策略，这里的默认加密策略指通过 [DescribeBackupEncryptionStatus](https://cloud.tencent.com/document/product/236/86508) 接口查询出的实例当前加密策略。
 	EncryptionFlag *string `json:"EncryptionFlag,omitnil,omitempty" name:"EncryptionFlag"`
 }
 
@@ -2757,7 +2757,7 @@ func (r *CreateCdbProxyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateCloneInstanceRequestParams struct {
-	// 克隆源实例Id。
+	// 克隆源实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 如果需要克隆实例回档到指定时间，则指定该值。时间格式为：yyyy-mm-dd hh:mm:ss。
@@ -2780,7 +2780,7 @@ type CreateCloneInstanceRequestParams struct {
 	// 实例硬盘大小，单位：GB，需要不低于克隆源实例，默认和源实例相同。
 	Volume *int64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
-	// 新产生的克隆实例名称。
+	// 新产生的克隆实例名称。支持输入最大60个字符。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 安全组参数，可使用 [查询项目安全组信息](https://cloud.tencent.com/document/api/236/15850) 接口查询某个项目的安全组详情。
@@ -2841,7 +2841,7 @@ type CreateCloneInstanceRequestParams struct {
 type CreateCloneInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 克隆源实例Id。
+	// 克隆源实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 如果需要克隆实例回档到指定时间，则指定该值。时间格式为：yyyy-mm-dd hh:mm:ss。
@@ -2864,7 +2864,7 @@ type CreateCloneInstanceRequest struct {
 	// 实例硬盘大小，单位：GB，需要不低于克隆源实例，默认和源实例相同。
 	Volume *int64 `json:"Volume,omitnil,omitempty" name:"Volume"`
 
-	// 新产生的克隆实例名称。
+	// 新产生的克隆实例名称。支持输入最大60个字符。
 	InstanceName *string `json:"InstanceName,omitnil,omitempty" name:"InstanceName"`
 
 	// 安全组参数，可使用 [查询项目安全组信息](https://cloud.tencent.com/document/api/236/15850) 接口查询某个项目的安全组详情。
@@ -3972,16 +3972,16 @@ func (r *CreateDeployGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateParamTemplateRequestParams struct {
-	// 参数模板名称。
+	// 参数模板名称。支持输入最大60个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 参数模板描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// MySQL 版本号。
+	// MySQL 版本号。可选值：5.6、5.7、8.0。
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
-	// 源参数模板 ID。
+	// 源参数模板 ID。可通过 [DescribeParamTemplates](https://cloud.tencent.com/document/api/236/32659) 接口获取。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 参数列表。
@@ -3991,22 +3991,23 @@ type CreateParamTemplateRequestParams struct {
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
 	// 实例引擎类型，默认为"InnoDB"，支持值包括："InnoDB"，"RocksDB"。
+	// 说明：数据库版本 MySQL 5.7、MySQL 8.0才支持 RocksDB。
 	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
 }
 
 type CreateParamTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 参数模板名称。
+	// 参数模板名称。支持输入最大60个字符。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 参数模板描述。
 	Description *string `json:"Description,omitnil,omitempty" name:"Description"`
 
-	// MySQL 版本号。
+	// MySQL 版本号。可选值：5.6、5.7、8.0。
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
-	// 源参数模板 ID。
+	// 源参数模板 ID。可通过 [DescribeParamTemplates](https://cloud.tencent.com/document/api/236/32659) 接口获取。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 参数列表。
@@ -4016,6 +4017,7 @@ type CreateParamTemplateRequest struct {
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
 	// 实例引擎类型，默认为"InnoDB"，支持值包括："InnoDB"，"RocksDB"。
+	// 说明：数据库版本 MySQL 5.7、MySQL 8.0才支持 RocksDB。
 	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
 }
 
@@ -4723,14 +4725,14 @@ func (r *DeleteDeployGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteParamTemplateRequestParams struct {
-	// 参数模板ID。
+	// 参数模板 ID。可通过 [DescribeParamTemplates](https://cloud.tencent.com/document/api/236/32659) 接口获取。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
 type DeleteParamTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 参数模板ID。
+	// 参数模板 ID。可通过 [DescribeParamTemplates](https://cloud.tencent.com/document/api/236/32659) 接口获取。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
@@ -6006,26 +6008,26 @@ func (r *DescribeBackupConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackupDecryptionKeyRequestParams struct {
-	// 实例ID，格式如：cdb-XXXX。与云数据库控制台页面中显示的实例 ID 相同。
+	// 实例 ID，格式如：cdb-fybaegd8。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例的备份ID，可通过DescribeBackups接口查询备份的ID。
+	// 实例的备份 ID，可通过 [DescribeBackups](https://cloud.tencent.com/document/api/236/15842) 接口查询备份的 ID。
 	BackupId *int64 `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 
-	// 备份类型 data: 数据备份 binlog:日志备份，默认为data
+	// 备份类型。data-数据备份，binlog-日志备份，默认为 data。
 	BackupType *string `json:"BackupType,omitnil,omitempty" name:"BackupType"`
 }
 
 type DescribeBackupDecryptionKeyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cdb-XXXX。与云数据库控制台页面中显示的实例 ID 相同。
+	// 实例 ID，格式如：cdb-fybaegd8。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 实例的备份ID，可通过DescribeBackups接口查询备份的ID。
+	// 实例的备份 ID，可通过 [DescribeBackups](https://cloud.tencent.com/document/api/236/15842) 接口查询备份的 ID。
 	BackupId *int64 `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 
-	// 备份类型 data: 数据备份 binlog:日志备份，默认为data
+	// 备份类型。data-数据备份，binlog-日志备份，默认为 data。
 	BackupType *string `json:"BackupType,omitnil,omitempty" name:"BackupType"`
 }
 
@@ -6200,14 +6202,14 @@ func (r *DescribeBackupEncryptionStatusResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeBackupOverviewRequestParams struct {
-	// 需要查询的云数据库产品类型，目前仅支持 "mysql"。
+	// 需要查询备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
 type DescribeBackupOverviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要查询的云数据库产品类型，目前仅支持 "mysql"。
+	// 需要查询备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -6275,7 +6277,7 @@ func (r *DescribeBackupOverviewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackupSummariesRequestParams struct {
-	// 需要查询的云数据库产品类型，目前仅支持 "mysql"。
+	// 需要查询备份实时统计的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 分页查询数据的偏移量，默认为0。
@@ -6294,7 +6296,7 @@ type DescribeBackupSummariesRequestParams struct {
 type DescribeBackupSummariesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要查询的云数据库产品类型，目前仅支持 "mysql"。
+	// 需要查询备份实时统计的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 
 	// 分页查询数据的偏移量，默认为0。
@@ -6437,14 +6439,14 @@ func (r *DescribeBackupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBinlogBackupOverviewRequestParams struct {
-	// 需要查询的云数据库产品类型，目前仅支持 "mysql"。
+	// 需要查询日志备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
 type DescribeBinlogBackupOverviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要查询的云数据库产品类型，目前仅支持 "mysql"。
+	// 需要查询日志备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -6804,26 +6806,26 @@ func (r *DescribeCdbZoneConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCloneListRequestParams struct {
-	// 查询指定源实例的克隆任务列表。
+	// 查询指定源实例的克隆任务列表。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) 接口获取实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 分页查询时的偏移量，默认值为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页查询时的每页条目数，默认值为20。
+	// 分页查询时的每页条目数，默认值为20，建议最大取值100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
 type DescribeCloneListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询指定源实例的克隆任务列表。
+	// 查询指定源实例的克隆任务列表。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/api/236/15872) 接口获取实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// 分页查询时的偏移量，默认值为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页查询时的每页条目数，默认值为20。
+	// 分页查询时的每页条目数，默认值为20，建议最大取值100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -7486,7 +7488,7 @@ func (r *DescribeDBInstanceInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBInstanceLogToCLSRequestParams struct {
-	// 实例ID
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// CLS服务所在地域
@@ -7496,7 +7498,7 @@ type DescribeDBInstanceLogToCLSRequestParams struct {
 type DescribeDBInstanceLogToCLSRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
 	// CLS服务所在地域
@@ -8231,14 +8233,14 @@ func (r *DescribeDBSwitchRecordsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDataBackupOverviewRequestParams struct {
-	// 需要查询的云数据库产品类型，目前仅支持 "mysql"。
+	// 需要查询数据备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
 type DescribeDataBackupOverviewRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要查询的云数据库产品类型，目前仅支持 "mysql"。
+	// 需要查询数据备份概览的云数据库产品类型。可取值为：mysql 指双节点/三节点的高可用实例，mysql-basic 指单节点云盘版实例，mysql-cluster 指云盘版（原集群版）实例。
 	Product *string `json:"Product,omitnil,omitempty" name:"Product"`
 }
 
@@ -8327,7 +8329,7 @@ type DescribeDatabasesRequestParams struct {
 	// 偏移量，最小值为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 单次请求数量，默认值为20，最小值为1，最大值为100。
+	// 单次请求数量，默认值为20，最小值为1，最大值为5000。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 匹配数据库库名的正则表达式。
@@ -8343,7 +8345,7 @@ type DescribeDatabasesRequest struct {
 	// 偏移量，最小值为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 单次请求数量，默认值为20，最小值为1，最大值为100。
+	// 单次请求数量，默认值为20，最小值为1，最大值为5000。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 匹配数据库库名的正则表达式。
@@ -8377,7 +8379,7 @@ type DescribeDatabasesResponseParams struct {
 	// 符合查询条件的实例总数。
 	TotalCount *int64 `json:"TotalCount,omitnil,omitempty" name:"TotalCount"`
 
-	// 返回的实例信息。
+	// 实例中的数据库名称列表。
 	Items []*string `json:"Items,omitnil,omitempty" name:"Items"`
 
 	// 数据库名以及字符集
@@ -8405,26 +8407,28 @@ func (r *DescribeDatabasesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDefaultParamsRequestParams struct {
-	// 引擎版本，目前支持 ["5.1", "5.5", "5.6", "5.7", "8.0"]
+	// 引擎版本，目前支持 ["5.1", "5.5", "5.6", "5.7", "8.0"]。
+	// 说明：引擎版本为必填。
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
-	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
+	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。默认值为：HIGH_STABILITY。
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
-	// 参数模板引擎，默认值：InnoDB
+	// 参数模板引擎，默认值：InnoDB，可取值：InnoDB、RocksDB。
 	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
 }
 
 type DescribeDefaultParamsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 引擎版本，目前支持 ["5.1", "5.5", "5.6", "5.7", "8.0"]
+	// 引擎版本，目前支持 ["5.1", "5.5", "5.6", "5.7", "8.0"]。
+	// 说明：引擎版本为必填。
 	EngineVersion *string `json:"EngineVersion,omitnil,omitempty" name:"EngineVersion"`
 
-	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
+	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。默认值为：HIGH_STABILITY。
 	TemplateType *string `json:"TemplateType,omitnil,omitempty" name:"TemplateType"`
 
-	// 参数模板引擎，默认值：InnoDB
+	// 参数模板引擎，默认值：InnoDB，可取值：InnoDB、RocksDB。
 	EngineType *string `json:"EngineType,omitnil,omitempty" name:"EngineType"`
 }
 
@@ -8857,7 +8861,7 @@ type DescribeInstanceParamRecordsRequestParams struct {
 	// 分页偏移量，默认值：0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页大小，默认值：20。
+	// 分页大小，默认值：20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -8870,7 +8874,7 @@ type DescribeInstanceParamRecordsRequest struct {
 	// 分页偏移量，默认值：0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 分页大小，默认值：20。
+	// 分页大小，默认值：20，最大值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 }
 
@@ -9911,7 +9915,7 @@ type DescribeRollbackTaskDetailRequestParams struct {
 	// 异步任务 ID。
 	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
-	// 分页参数，每次请求返回的记录数。默认值为 20，最大值为 100。
+	// 分页参数，每次请求返回的记录数。默认值为20，建议最大取值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页偏移量。默认为 0。
@@ -9927,7 +9931,7 @@ type DescribeRollbackTaskDetailRequest struct {
 	// 异步任务 ID。
 	AsyncRequestId *string `json:"AsyncRequestId,omitnil,omitempty" name:"AsyncRequestId"`
 
-	// 分页参数，每次请求返回的记录数。默认值为 20，最大值为 100。
+	// 分页参数，每次请求返回的记录数。默认值为20，建议最大取值为100。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 分页偏移量。默认为 0。
@@ -10338,10 +10342,10 @@ func (r *DescribeSupportedPrivilegesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTableColumnsRequestParams struct {
-	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 数据库名称，可使用[查询数据库](https://cloud.tencent.com/document/api/236/17493)接口获得。
+	// 数据库名称，可使用 [查询数据库](https://cloud.tencent.com/document/api/236/17493) 接口获得。
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
 
 	// 数据库中的表的名称。
@@ -10351,10 +10355,10 @@ type DescribeTableColumnsRequestParams struct {
 type DescribeTableColumnsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+	// 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 数据库名称，可使用[查询数据库](https://cloud.tencent.com/document/api/236/17493)接口获得。
+	// 数据库名称，可使用 [查询数据库](https://cloud.tencent.com/document/api/236/17493) 接口获得。
 	Database *string `json:"Database,omitnil,omitempty" name:"Database"`
 
 	// 数据库中的表的名称。
@@ -10421,7 +10425,7 @@ type DescribeTablesRequestParams struct {
 	// 记录偏移量，默认值为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 单次请求返回的数量，默认值为20，最大值为2000。
+	// 单次请求返回的数量，默认值为20，最大值为5000。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 匹配数据库表名的正则表达式，规则同 MySQL 官网
@@ -10440,7 +10444,7 @@ type DescribeTablesRequest struct {
 	// 记录偏移量，默认值为0。
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 单次请求返回的数量，默认值为20，最大值为2000。
+	// 单次请求返回的数量，默认值为20，最大值为5000。
 	Limit *int64 `json:"Limit,omitnil,omitempty" name:"Limit"`
 
 	// 匹配数据库表名的正则表达式，规则同 MySQL 官网
@@ -11039,7 +11043,7 @@ type DrInfo struct {
 }
 
 type ErrlogItem struct {
-	// 错误发生时间。
+	// 错误发生时间。时间戳，秒级
 	Timestamp *uint64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
 	// 错误详情
@@ -12595,10 +12599,12 @@ func (r *ModifyAutoRenewFlagResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyBackupConfigRequestParams struct {
-	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
+	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 备份文件的保留时间，单位为天。最小值为7天，最大值为1830天。
+	// 数据备份文件的保留时间，单位为天。
+	// 1. MySQL 双节点、三节点、云盘版数据备份文件可以保留7天 - 1830天。
+	// 2. MySQL 单节点（云盘）数据备份文件可以保留7天 - 30天。
 	ExpireDays *int64 `json:"ExpireDays,omitnil,omitempty" name:"ExpireDays"`
 
 	// (将废弃，建议使用 BackupTimeWindow 参数) 备份时间范围，格式为：02:00-06:00，起点和终点时间目前限制为整点，目前可以选择的范围为： 00:00-12:00，02:00-06:00，06：00-10：00，10:00-14:00，14:00-18:00，18:00-22:00，22:00-02:00。
@@ -12607,13 +12613,15 @@ type ModifyBackupConfigRequestParams struct {
 	// 自动备份方式，仅支持：physical - 物理冷备
 	BackupMethod *string `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
-	// binlog的保留时间，单位为天。最小值为7天，最大值为1830天。该值的设置不能大于备份文件的保留时间。
+	// binlog 的保留时间，单位为天。
+	// 1. MySQL 双节点、三节点、云盘版日志备份文件可以保留7天 - 3650天。
+	// 2. MySQL 单节点（云盘）日志备份文件可以保留7天 - 30天。
 	BinlogExpireDays *int64 `json:"BinlogExpireDays,omitnil,omitempty" name:"BinlogExpireDays"`
 
 	// 备份时间窗，比如要设置每周二和周日 10:00-14:00之间备份，该参数如下：{"Monday": "", "Tuesday": "10:00-14:00", "Wednesday": "", "Thursday": "", "Friday": "", "Saturday": "", "Sunday": "10:00-14:00"}    （注：可以设置一周的某几天备份，但是每天的备份时间需要设置为相同的时间段。 如果设置了该字段，将忽略StartTime字段的设置）
 	BackupTimeWindow *CommonTimeWindow `json:"BackupTimeWindow,omitnil,omitempty" name:"BackupTimeWindow"`
 
-	// 定期保留开关，off - 不开启定期保留策略，on - 开启定期保留策略，默认为off。首次开启定期保留策略时，BackupPeriodSaveDays，BackupPeriodSaveInterval，BackupPeriodSaveCount，StartBackupPeriodSaveDate参数为必填项，否则定期保留策略不会生效
+	// 定期保留开关，off - 不开启定期保留策略，on - 开启定期保留策略，默认为off。
 	EnableBackupPeriodSave *string `json:"EnableBackupPeriodSave,omitnil,omitempty" name:"EnableBackupPeriodSave"`
 
 	// 长期保留开关,该字段功能暂未上线，可忽略。off - 不开启长期保留策略，on - 开启长期保留策略，默认为off，如果开启，则BackupPeriodSaveDays，BackupPeriodSaveInterval，BackupPeriodSaveCount参数无效
@@ -12659,10 +12667,12 @@ type ModifyBackupConfigRequestParams struct {
 type ModifyBackupConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
+	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 备份文件的保留时间，单位为天。最小值为7天，最大值为1830天。
+	// 数据备份文件的保留时间，单位为天。
+	// 1. MySQL 双节点、三节点、云盘版数据备份文件可以保留7天 - 1830天。
+	// 2. MySQL 单节点（云盘）数据备份文件可以保留7天 - 30天。
 	ExpireDays *int64 `json:"ExpireDays,omitnil,omitempty" name:"ExpireDays"`
 
 	// (将废弃，建议使用 BackupTimeWindow 参数) 备份时间范围，格式为：02:00-06:00，起点和终点时间目前限制为整点，目前可以选择的范围为： 00:00-12:00，02:00-06:00，06：00-10：00，10:00-14:00，14:00-18:00，18:00-22:00，22:00-02:00。
@@ -12671,13 +12681,15 @@ type ModifyBackupConfigRequest struct {
 	// 自动备份方式，仅支持：physical - 物理冷备
 	BackupMethod *string `json:"BackupMethod,omitnil,omitempty" name:"BackupMethod"`
 
-	// binlog的保留时间，单位为天。最小值为7天，最大值为1830天。该值的设置不能大于备份文件的保留时间。
+	// binlog 的保留时间，单位为天。
+	// 1. MySQL 双节点、三节点、云盘版日志备份文件可以保留7天 - 3650天。
+	// 2. MySQL 单节点（云盘）日志备份文件可以保留7天 - 30天。
 	BinlogExpireDays *int64 `json:"BinlogExpireDays,omitnil,omitempty" name:"BinlogExpireDays"`
 
 	// 备份时间窗，比如要设置每周二和周日 10:00-14:00之间备份，该参数如下：{"Monday": "", "Tuesday": "10:00-14:00", "Wednesday": "", "Thursday": "", "Friday": "", "Saturday": "", "Sunday": "10:00-14:00"}    （注：可以设置一周的某几天备份，但是每天的备份时间需要设置为相同的时间段。 如果设置了该字段，将忽略StartTime字段的设置）
 	BackupTimeWindow *CommonTimeWindow `json:"BackupTimeWindow,omitnil,omitempty" name:"BackupTimeWindow"`
 
-	// 定期保留开关，off - 不开启定期保留策略，on - 开启定期保留策略，默认为off。首次开启定期保留策略时，BackupPeriodSaveDays，BackupPeriodSaveInterval，BackupPeriodSaveCount，StartBackupPeriodSaveDate参数为必填项，否则定期保留策略不会生效
+	// 定期保留开关，off - 不开启定期保留策略，on - 开启定期保留策略，默认为off。
 	EnableBackupPeriodSave *string `json:"EnableBackupPeriodSave,omitnil,omitempty" name:"EnableBackupPeriodSave"`
 
 	// 长期保留开关,该字段功能暂未上线，可忽略。off - 不开启长期保留策略，on - 开启长期保留策略，默认为off，如果开启，则BackupPeriodSaveDays，BackupPeriodSaveInterval，BackupPeriodSaveCount参数无效
@@ -13159,68 +13171,72 @@ func (r *ModifyCdbProxyParamResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBInstanceLogToCLSRequestParams struct {
-	// 实例ID
+	// 实例 ID，可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 日志类型：error/slowlog
+	// 日志类型。error：错误日志，slowlog：慢日志。
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
-	// 投递状态：ON/OFF
+	// 投递状态。ON：开启，OFF：关闭。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 是否需要创建日志集
+	// 是否需要创建日志集。默认为 false。
 	CreateLogset *bool `json:"CreateLogset,omitnil,omitempty" name:"CreateLogset"`
 
-	// 需要创建日志集时为日志集名称；选择已有日志集时，为日志集ID
+	// 需要创建日志集时为日志集名称；选择已有日志集时，为日志集 ID。默认为空。
+	// 说明：当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。
 	Logset *string `json:"Logset,omitnil,omitempty" name:"Logset"`
 
-	// 是否需要创建日志主题
+	// 是否需要创建日志主题。默认为 false。
 	CreateLogTopic *bool `json:"CreateLogTopic,omitnil,omitempty" name:"CreateLogTopic"`
 
-	// 需要创建日志主题时为日志主题名称；选择已有日志主题时，为日志主题ID
+	// 需要创建日志主题时为日志主题名称；选择已有日志主题时，为日志主题 ID。默认为空。
+	// 说明：当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。
 	LogTopic *string `json:"LogTopic,omitnil,omitempty" name:"LogTopic"`
 
-	// 日志主题有效期，不填写时，默认30天
+	// 日志主题有效期，不填写时，默认30天，最大值3600。
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 创建日志主题时，是否创建索引
+	// 创建日志主题时，是否创建索引，默认为 false。
 	CreateIndex *bool `json:"CreateIndex,omitnil,omitempty" name:"CreateIndex"`
 
-	// CLS所在地域
+	// CLS 所在地域，不填择默认为 Region 的参数值。
 	ClsRegion *string `json:"ClsRegion,omitnil,omitempty" name:"ClsRegion"`
 }
 
 type ModifyDBInstanceLogToCLSRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例 ID，可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 日志类型：error/slowlog
+	// 日志类型。error：错误日志，slowlog：慢日志。
 	LogType *string `json:"LogType,omitnil,omitempty" name:"LogType"`
 
-	// 投递状态：ON/OFF
+	// 投递状态。ON：开启，OFF：关闭。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
-	// 是否需要创建日志集
+	// 是否需要创建日志集。默认为 false。
 	CreateLogset *bool `json:"CreateLogset,omitnil,omitempty" name:"CreateLogset"`
 
-	// 需要创建日志集时为日志集名称；选择已有日志集时，为日志集ID
+	// 需要创建日志集时为日志集名称；选择已有日志集时，为日志集 ID。默认为空。
+	// 说明：当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。
 	Logset *string `json:"Logset,omitnil,omitempty" name:"Logset"`
 
-	// 是否需要创建日志主题
+	// 是否需要创建日志主题。默认为 false。
 	CreateLogTopic *bool `json:"CreateLogTopic,omitnil,omitempty" name:"CreateLogTopic"`
 
-	// 需要创建日志主题时为日志主题名称；选择已有日志主题时，为日志主题ID
+	// 需要创建日志主题时为日志主题名称；选择已有日志主题时，为日志主题 ID。默认为空。
+	// 说明：当参数 Status 的值为 ON 时，Logset 和 LogTopic 参数必须填一个。
 	LogTopic *string `json:"LogTopic,omitnil,omitempty" name:"LogTopic"`
 
-	// 日志主题有效期，不填写时，默认30天
+	// 日志主题有效期，不填写时，默认30天，最大值3600。
 	Period *int64 `json:"Period,omitnil,omitempty" name:"Period"`
 
-	// 创建日志主题时，是否创建索引
+	// 创建日志主题时，是否创建索引，默认为 false。
 	CreateIndex *bool `json:"CreateIndex,omitnil,omitempty" name:"CreateIndex"`
 
-	// CLS所在地域
+	// CLS 所在地域，不填择默认为 Region 的参数值。
 	ClsRegion *string `json:"ClsRegion,omitnil,omitempty" name:"ClsRegion"`
 }
 
@@ -13901,26 +13917,34 @@ func (r *ModifyInstanceTagResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyLocalBinlogConfigRequestParams struct {
-	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
+	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 本地binlog保留时长，可取值范围：[72,168]，当实例存在灾备实例时，可取值范围：[120,168]。
+	// 本地 binlog 保留时长。不同实例的可取值如下：
+	// 1. 云盘版实例、双节点实例、三节点实例的本地 binlog 保留时长（小时）默认为120，范围：6 - 168。
+	// 2. 灾备实例的本地 binlog 保留时长（小时）默认为120，范围：120 - 168。
+	// 3. 单节点云盘实例的本地 binlog 保留时长（小时）默认为120，范围：0 - 168。
+	// 4. 若双节点实例、三节点实例下无灾备实例，则该主实例的本地 binlog 保留时长（小时）范围是：6 - 168；若双节点实例、三节点实例下有灾备实例，或者要为双节点实例、三节点实例添加灾备实例，为避免同步异常，该主实例的本地 binlog 保留时长（小时）不能设置低于120小时，范围是：120 - 168。
 	SaveHours *int64 `json:"SaveHours,omitnil,omitempty" name:"SaveHours"`
 
-	// 本地binlog空间使用率，可取值范围：[30,50]。
+	// 本地 binlog 空间使用率，可取值范围：[30,50]。
 	MaxUsage *int64 `json:"MaxUsage,omitnil,omitempty" name:"MaxUsage"`
 }
 
 type ModifyLocalBinlogConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
+	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 本地binlog保留时长，可取值范围：[72,168]，当实例存在灾备实例时，可取值范围：[120,168]。
+	// 本地 binlog 保留时长。不同实例的可取值如下：
+	// 1. 云盘版实例、双节点实例、三节点实例的本地 binlog 保留时长（小时）默认为120，范围：6 - 168。
+	// 2. 灾备实例的本地 binlog 保留时长（小时）默认为120，范围：120 - 168。
+	// 3. 单节点云盘实例的本地 binlog 保留时长（小时）默认为120，范围：0 - 168。
+	// 4. 若双节点实例、三节点实例下无灾备实例，则该主实例的本地 binlog 保留时长（小时）范围是：6 - 168；若双节点实例、三节点实例下有灾备实例，或者要为双节点实例、三节点实例添加灾备实例，为避免同步异常，该主实例的本地 binlog 保留时长（小时）不能设置低于120小时，范围是：120 - 168。
 	SaveHours *int64 `json:"SaveHours,omitnil,omitempty" name:"SaveHours"`
 
-	// 本地binlog空间使用率，可取值范围：[30,50]。
+	// 本地 binlog 空间使用率，可取值范围：[30,50]。
 	MaxUsage *int64 `json:"MaxUsage,omitnil,omitempty" name:"MaxUsage"`
 }
 
@@ -14037,10 +14061,10 @@ func (r *ModifyNameOrDescByDpIdResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyParamTemplateRequestParams struct {
-	// 模板 ID。
+	// 模板 ID。可通过 [DescribeParamTemplateInfo](https://cloud.tencent.com/document/product/236/32660) 接口获取。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 模板名称，长度不超过64。
+	// 模板名称，仅支持数字、英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@,且长度不能超过60。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 模板描述，长度不超过255。
@@ -14053,10 +14077,10 @@ type ModifyParamTemplateRequestParams struct {
 type ModifyParamTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 模板 ID。
+	// 模板 ID。可通过 [DescribeParamTemplateInfo](https://cloud.tencent.com/document/product/236/32660) 接口获取。
 	TemplateId *int64 `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
-	// 模板名称，长度不超过64。
+	// 模板名称，仅支持数字、英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@,且长度不能超过60。
 	Name *string `json:"Name,omitnil,omitempty" name:"Name"`
 
 	// 模板描述，长度不超过255。
@@ -15857,19 +15881,19 @@ type RollbackDBName struct {
 }
 
 type RollbackInstancesInfo struct {
-	// 云数据库实例ID
+	// 云数据库实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil,omitempty" name:"InstanceId"`
 
-	// 回档策略。可选值为：table、db、full；默认值为full。table - 极速回档模式，仅导入所选中表级别的备份和binlog，如有跨表操作，且关联表未被同时选中，将会导致回档失败，该模式下参数Databases必须为空；db - 快速模式，仅导入所选中库级别的备份和binlog，如有跨库操作，且关联库未被同时选中，将会导致回档失败；full - 普通回档模式，将导入整个实例的备份和binlog，速度较慢。
+	// 回档策略。可选值为：table、db、full。table - 极速回档模式，仅导入所选中表级别的备份和binlog，如有跨表操作，且关联表未被同时选中，将会导致回档失败，该模式下参数Databases必须为空；db - 快速模式，仅导入所选中库级别的备份和binlog，如有跨库操作，且关联库未被同时选中，将会导致回档失败；full - 普通回档模式，将导入整个实例的备份和 binlog，速度较慢。
 	Strategy *string `json:"Strategy,omitnil,omitempty" name:"Strategy"`
 
-	// 数据库回档时间，时间格式为：yyyy-mm-dd hh:mm:ss
+	// 数据库回档时间，时间格式为：yyyy-mm-dd hh:mm:ss。
 	RollbackTime *string `json:"RollbackTime,omitnil,omitempty" name:"RollbackTime"`
 
-	// 待回档的数据库信息，表示整库回档
+	// 待回档的数据库信息，表示整库回档。
 	Databases []*RollbackDBName `json:"Databases,omitnil,omitempty" name:"Databases"`
 
-	// 待回档的数据库表信息，表示按表回档
+	// 待回档的数据库表信息，表示按表回档。
 	Tables []*RollbackTables `json:"Tables,omitnil,omitempty" name:"Tables"`
 }
 
@@ -16050,7 +16074,7 @@ type SlowLogInfo struct {
 }
 
 type SlowLogItem struct {
-	// Sql的执行时间。
+	// Sql的执行时间。秒级时间戳。
 	Timestamp *uint64 `json:"Timestamp,omitnil,omitempty" name:"Timestamp"`
 
 	// Sql的执行时长（秒）。
