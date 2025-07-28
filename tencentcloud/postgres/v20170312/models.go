@@ -664,7 +664,7 @@ func (r *CreateAccountResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBackupPlanRequestParams struct {
-	// 实例ID。
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
 	// 备份计划名称。
@@ -682,14 +682,15 @@ type CreateBackupPlanRequestParams struct {
 	// 备份结束时间，不传跟随默认计划。
 	MaxBackupStartTime *string `json:"MaxBackupStartTime,omitnil,omitempty" name:"MaxBackupStartTime"`
 
-	// 数据备份保留时长，week默认是7,month为30。
+	// 数据备份保留时长，单位：天。取值范围为：[0,30000)
+	// BackupPeriodType为week时默认是7,为month时默认为31。
 	BaseBackupRetentionPeriod *uint64 `json:"BaseBackupRetentionPeriod,omitnil,omitempty" name:"BaseBackupRetentionPeriod"`
 }
 
 type CreateBackupPlanRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
 	// 备份计划名称。
@@ -707,7 +708,8 @@ type CreateBackupPlanRequest struct {
 	// 备份结束时间，不传跟随默认计划。
 	MaxBackupStartTime *string `json:"MaxBackupStartTime,omitnil,omitempty" name:"MaxBackupStartTime"`
 
-	// 数据备份保留时长，week默认是7,month为30。
+	// 数据备份保留时长，单位：天。取值范围为：[0,30000)
+	// BackupPeriodType为week时默认是7,为month时默认为31。
 	BaseBackupRetentionPeriod *uint64 `json:"BaseBackupRetentionPeriod,omitnil,omitempty" name:"BaseBackupRetentionPeriod"`
 }
 
@@ -763,14 +765,14 @@ func (r *CreateBackupPlanResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBaseBackupRequestParams struct {
-	// 实例ID。
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 }
 
 type CreateBaseBackupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 }
 
@@ -1376,7 +1378,7 @@ type CreateParameterTemplateRequestParams struct {
 	// 模板名称，长度为1～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
-	// 数据库大版本号，例如：11，12，13
+	// 数据库大版本号，例如：11，12，13。可通过[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)接口获取
 	DBMajorVersion *string `json:"DBMajorVersion,omitnil,omitempty" name:"DBMajorVersion"`
 
 	// 数据库引擎，例如：postgresql，mssql_compatible
@@ -1392,7 +1394,7 @@ type CreateParameterTemplateRequest struct {
 	// 模板名称，长度为1～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@
 	TemplateName *string `json:"TemplateName,omitnil,omitempty" name:"TemplateName"`
 
-	// 数据库大版本号，例如：11，12，13
+	// 数据库大版本号，例如：11，12，13。可通过[DescribeDBVersions](https://cloud.tencent.com/document/api/409/89018)接口获取
 	DBMajorVersion *string `json:"DBMajorVersion,omitnil,omitempty" name:"DBMajorVersion"`
 
 	// 数据库引擎，例如：postgresql，mssql_compatible
@@ -2382,20 +2384,20 @@ func (r *DeleteAccountResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteBackupPlanRequestParams struct {
-	// 实例ID。	
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 备份计划的ID。
+	// 备份计划的ID。可通过[DescribeBackupPlans](https://cloud.tencent.com/document/api/409/68069)接口获取
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
 }
 
 type DeleteBackupPlanRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。	
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 备份计划的ID。
+	// 备份计划的ID。可通过[DescribeBackupPlans](https://cloud.tencent.com/document/api/409/68069)接口获取
 	PlanId *string `json:"PlanId,omitnil,omitempty" name:"PlanId"`
 }
 
@@ -2443,20 +2445,20 @@ func (r *DeleteBackupPlanResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteBaseBackupRequestParams struct {
-	// 实例ID。
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 数据备份ID。
+	// 数据备份ID。可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取。7天内自动备份集不允许删除。
 	BaseBackupId *string `json:"BaseBackupId,omitnil,omitempty" name:"BaseBackupId"`
 }
 
 type DeleteBaseBackupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 数据备份ID。
+	// 数据备份ID。可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取。7天内自动备份集不允许删除。
 	BaseBackupId *string `json:"BaseBackupId,omitnil,omitempty" name:"BaseBackupId"`
 }
 
@@ -2582,20 +2584,20 @@ func (r *DeleteDBInstanceNetworkAccessResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteLogBackupRequestParams struct {
-	// 实例ID。
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 日志备份ID。
+	// 日志备份ID。可通过[DescribeLogBackups](https://cloud.tencent.com/document/api/409/89021)接口获取。注：7天内自动备份集不允许删除。
 	LogBackupId *string `json:"LogBackupId,omitnil,omitempty" name:"LogBackupId"`
 }
 
 type DeleteLogBackupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 日志备份ID。
+	// 日志备份ID。可通过[DescribeLogBackups](https://cloud.tencent.com/document/api/409/89021)接口获取。注：7天内自动备份集不允许删除。
 	LogBackupId *string `json:"LogBackupId,omitnil,omitempty" name:"LogBackupId"`
 }
 
@@ -3117,7 +3119,7 @@ func (r *DescribeBackupDownloadRestrictionResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeBackupDownloadURLRequestParams struct {
-	// 实例ID。
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
 	// 备份类型，目前支持：LogBackup，BaseBackup。
@@ -3126,7 +3128,7 @@ type DescribeBackupDownloadURLRequestParams struct {
 	// 备份的唯一ID。
 	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 
-	// 链接的有效时间，默认为12小时。
+	// 链接的有效时间，取值为[0,36]，默认为12小时。
 	URLExpireTime *uint64 `json:"URLExpireTime,omitnil,omitempty" name:"URLExpireTime"`
 
 	// 备份下载限制
@@ -3136,7 +3138,7 @@ type DescribeBackupDownloadURLRequestParams struct {
 type DescribeBackupDownloadURLRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
 	// 备份类型，目前支持：LogBackup，BaseBackup。
@@ -3145,7 +3147,7 @@ type DescribeBackupDownloadURLRequest struct {
 	// 备份的唯一ID。
 	BackupId *string `json:"BackupId,omitnil,omitempty" name:"BackupId"`
 
-	// 链接的有效时间，默认为12小时。
+	// 链接的有效时间，取值为[0,36]，默认为12小时。
 	URLExpireTime *uint64 `json:"URLExpireTime,omitnil,omitempty" name:"URLExpireTime"`
 
 	// 备份下载限制
@@ -3280,14 +3282,14 @@ func (r *DescribeBackupOverviewResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBackupPlansRequestParams struct {
-	// 实例ID
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 }
 
 type DescribeBackupPlansRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 }
 
@@ -3439,10 +3441,10 @@ type DescribeBaseBackupsRequestParams struct {
 
 	// 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 	// db-instance-id：按照实例ID过滤，类型为string。
-	// db-instance-name：按照实例名过滤，类型为string。
+	// db-instance-name：按照实例名过滤，支持模糊匹配，类型为string。
 	// db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
 	// base-backup-id：按照备份集ID过滤，类型为string。
-	// db-instance-status：按实例状态过滤，类型为string。取值参考DBInstance结构的DBInstanceStatus字段。
+	// db-instance-status：按实例状态过滤，类型为string。取值参考[DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)结构的DBInstanceStatus字段。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 每页显示数量，取值范围为1-100，默认为返回10条。
@@ -3451,10 +3453,10 @@ type DescribeBaseBackupsRequestParams struct {
 	// 数据偏移量，从0开始。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序字段，支持StartTime,FinishTime,Size。
+	// 排序字段，支持StartTime,FinishTime,Size。默认值：StartTime。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序方式，包括升序：asc，降序：desc。
+	// 排序方式，包括升序：asc，降序：desc。默认值：desc。
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 }
 
@@ -3469,10 +3471,10 @@ type DescribeBaseBackupsRequest struct {
 
 	// 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 	// db-instance-id：按照实例ID过滤，类型为string。
-	// db-instance-name：按照实例名过滤，类型为string。
+	// db-instance-name：按照实例名过滤，支持模糊匹配，类型为string。
 	// db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
 	// base-backup-id：按照备份集ID过滤，类型为string。
-	// db-instance-status：按实例状态过滤，类型为string。取值参考DBInstance结构的DBInstanceStatus字段。
+	// db-instance-status：按实例状态过滤，类型为string。取值参考[DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)结构的DBInstanceStatus字段。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 每页显示数量，取值范围为1-100，默认为返回10条。
@@ -3481,10 +3483,10 @@ type DescribeBaseBackupsRequest struct {
 	// 数据偏移量，从0开始。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序字段，支持StartTime,FinishTime,Size。
+	// 排序字段，支持StartTime,FinishTime,Size。默认值：StartTime。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序方式，包括升序：asc，降序：desc。
+	// 排序方式，包括升序：asc，降序：desc。默认值：desc。
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 }
 
@@ -3618,10 +3620,10 @@ func (r *DescribeClassesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCloneDBInstanceSpecRequestParams struct {
-	// 实例ID。
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 基础备份集ID，此入参和RecoveryTargetTime必须选择一个传入。如与RecoveryTargetTime参数同时设置，则以此参数为准。
+	// 基础备份集ID，可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取。此入参和RecoveryTargetTime必须选择一个传入。如与RecoveryTargetTime参数同时设置，则以此参数为准。
 	BackupSetId *string `json:"BackupSetId,omitnil,omitempty" name:"BackupSetId"`
 
 	// 恢复目标时间，此入参和BackupSetId必须选择一个传入。时区以东八区（UTC+8）为准。
@@ -3631,10 +3633,10 @@ type DescribeCloneDBInstanceSpecRequestParams struct {
 type DescribeCloneDBInstanceSpecRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 基础备份集ID，此入参和RecoveryTargetTime必须选择一个传入。如与RecoveryTargetTime参数同时设置，则以此参数为准。
+	// 基础备份集ID，可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取。此入参和RecoveryTargetTime必须选择一个传入。如与RecoveryTargetTime参数同时设置，则以此参数为准。
 	BackupSetId *string `json:"BackupSetId,omitnil,omitempty" name:"BackupSetId"`
 
 	// 恢复目标时间，此入参和BackupSetId必须选择一个传入。时区以东八区（UTC+8）为准。
@@ -4957,9 +4959,9 @@ type DescribeLogBackupsRequestParams struct {
 
 	// 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 	// db-instance-id：按照实例ID过滤，类型为string。
-	// db-instance-name：按照实例名过滤，类型为string。
+	// db-instance-name：按照实例名过滤，支持模糊匹配，类型为string。
 	// db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
-	// db-instance-status：按实例状态过滤，类型为string。取值参考DBInstance结构的DBInstanceStatus字段。
+	// db-instance-status：按实例状态过滤，类型为string。取值参考[DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)结构的DBInstanceStatus字段。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 每页显示数量，取值范围为1-100，默认为返回10条。
@@ -4968,10 +4970,10 @@ type DescribeLogBackupsRequestParams struct {
 	// 数据偏移量，从0开始。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序字段，支持StartTime,FinishTime,Size。
+	// 排序字段，支持StartTime,FinishTime,Size。默认值：StartTime
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序方式，包括升序：asc，降序：desc。
+	// 排序方式，包括升序：asc，降序：desc。默认值：desc。
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 }
 
@@ -4986,9 +4988,9 @@ type DescribeLogBackupsRequest struct {
 
 	// 按照一个或者多个过滤条件进行查询，目前支持的过滤条件有：
 	// db-instance-id：按照实例ID过滤，类型为string。
-	// db-instance-name：按照实例名过滤，类型为string。
+	// db-instance-name：按照实例名过滤，支持模糊匹配，类型为string。
 	// db-instance-ip：按照实例私有网络IP地址过滤，类型为string。
-	// db-instance-status：按实例状态过滤，类型为string。取值参考DBInstance结构的DBInstanceStatus字段。
+	// db-instance-status：按实例状态过滤，类型为string。取值参考[DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)结构的DBInstanceStatus字段。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 每页显示数量，取值范围为1-100，默认为返回10条。
@@ -4997,10 +4999,10 @@ type DescribeLogBackupsRequest struct {
 	// 数据偏移量，从0开始。
 	Offset *uint64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序字段，支持StartTime,FinishTime,Size。
+	// 排序字段，支持StartTime,FinishTime,Size。默认值：StartTime
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序方式，包括升序：asc，降序：desc。
+	// 排序方式，包括升序：asc，降序：desc。默认值：desc。
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 }
 
@@ -5185,14 +5187,14 @@ func (r *DescribeOrdersResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeParameterTemplateAttributesRequestParams struct {
-	// 参数模板ID
+	// 参数模板ID。可通过[DescribeParameterTemplates](https://tapd.woa.com/tapd_fe/20400322/story/detail/1020400322125673714)接口获取
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
 type DescribeParameterTemplateAttributesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 参数模板ID
+	// 参数模板ID。可通过[DescribeParameterTemplates](https://tapd.woa.com/tapd_fe/20400322/story/detail/1020400322125673714)接口获取
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 }
 
@@ -5261,7 +5263,7 @@ func (r *DescribeParameterTemplateAttributesResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type DescribeParameterTemplatesRequestParams struct {
-	// 过滤条件，目前支持的过滤条件有：TemplateName, TemplateId，DBMajorVersion，DBEngine
+	// 过滤条件，目前支持的过滤条件有：TemplateName, TemplateId，DBMajorVersion，DBEngine。TemplateName不支持模糊匹配。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 每页显示数量，[0，100]，默认 20
@@ -5270,17 +5272,17 @@ type DescribeParameterTemplatesRequestParams struct {
 	// 数据偏移量
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序指标，枚举值，支持：CreateTime，TemplateName，DBMajorVersion
+	// 排序指标，枚举值，支持：CreateTime，TemplateName，DBMajorVersion。如果不指定该参数，默认将按照参数模板的编号倒序排列，也就是说最新添加的参数模板会排在最前面。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序方式，枚举值，支持：asc（升序） ，desc（降序）
+	// 排序方式，枚举值，支持：asc（升序） ，desc（降序）。默认值为asc。当未指定OrderBy时，该参数失效，此时排序方式为OrderBy参数描述中给出的默认排序方式。
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 }
 
 type DescribeParameterTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 过滤条件，目前支持的过滤条件有：TemplateName, TemplateId，DBMajorVersion，DBEngine
+	// 过滤条件，目前支持的过滤条件有：TemplateName, TemplateId，DBMajorVersion，DBEngine。TemplateName不支持模糊匹配。
 	Filters []*Filter `json:"Filters,omitnil,omitempty" name:"Filters"`
 
 	// 每页显示数量，[0，100]，默认 20
@@ -5289,10 +5291,10 @@ type DescribeParameterTemplatesRequest struct {
 	// 数据偏移量
 	Offset *int64 `json:"Offset,omitnil,omitempty" name:"Offset"`
 
-	// 排序指标，枚举值，支持：CreateTime，TemplateName，DBMajorVersion
+	// 排序指标，枚举值，支持：CreateTime，TemplateName，DBMajorVersion。如果不指定该参数，默认将按照参数模板的编号倒序排列，也就是说最新添加的参数模板会排在最前面。
 	OrderBy *string `json:"OrderBy,omitnil,omitempty" name:"OrderBy"`
 
-	// 排序方式，枚举值，支持：asc（升序） ，desc（降序）
+	// 排序方式，枚举值，支持：asc（升序） ，desc（降序）。默认值为asc。当未指定OrderBy时，该参数失效，此时排序方式为OrderBy参数描述中给出的默认排序方式。
 	OrderByType *string `json:"OrderByType,omitnil,omitempty" name:"OrderByType"`
 }
 
@@ -6929,7 +6931,7 @@ func (r *ModifyAccountRemarkResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyBackupDownloadRestrictionRequestParams struct {
-	// 备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。
+	// 备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。当该参数取值为CUSTOMIZE时，Vpc限制和Ip限制需要至少填写一项。
 	RestrictionType *string `json:"RestrictionType,omitnil,omitempty" name:"RestrictionType"`
 
 	// vpc限制效力，ALLOW 允许；DENY 拒绝。
@@ -6950,7 +6952,7 @@ type ModifyBackupDownloadRestrictionRequestParams struct {
 type ModifyBackupDownloadRestrictionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。
+	// 备份文件下载限制类型，NONE 无限制，内外网都可以下载；INTRANET 只允许内网下载；CUSTOMIZE 自定义限制下载的vpc或ip。当该参数取值为CUSTOMIZE时，Vpc限制和Ip限制需要至少填写一项。
 	RestrictionType *string `json:"RestrictionType,omitnil,omitempty" name:"RestrictionType"`
 
 	// vpc限制效力，ALLOW 允许；DENY 拒绝。
@@ -7015,7 +7017,7 @@ func (r *ModifyBackupDownloadRestrictionResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type ModifyBackupPlanRequestParams struct {
-	// 实例ID
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
 	// 实例最早开始备份时间
@@ -7027,7 +7029,7 @@ type ModifyBackupPlanRequestParams struct {
 	// 实例备份保留时长，取值范围为7-1830，单位是天
 	BaseBackupRetentionPeriod *uint64 `json:"BaseBackupRetentionPeriod,omitnil,omitempty" name:"BaseBackupRetentionPeriod"`
 
-	// 实例备份周期，若是星期维度，格式为小写星期英文单词；若是按月维度，格式为数字字符，如["1","2"]。
+	// 实例备份周期，若是星期维度，格式为小写星期英文单词，且至少设置两天备份；若是按月维度，格式为数字字符，如["1","2"]。
 	BackupPeriod []*string `json:"BackupPeriod,omitnil,omitempty" name:"BackupPeriod"`
 
 	// 实例日志备份保留时长，取值范围为7-1830，单位是天
@@ -7043,7 +7045,7 @@ type ModifyBackupPlanRequestParams struct {
 type ModifyBackupPlanRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
 	// 实例最早开始备份时间
@@ -7055,7 +7057,7 @@ type ModifyBackupPlanRequest struct {
 	// 实例备份保留时长，取值范围为7-1830，单位是天
 	BaseBackupRetentionPeriod *uint64 `json:"BaseBackupRetentionPeriod,omitnil,omitempty" name:"BaseBackupRetentionPeriod"`
 
-	// 实例备份周期，若是星期维度，格式为小写星期英文单词；若是按月维度，格式为数字字符，如["1","2"]。
+	// 实例备份周期，若是星期维度，格式为小写星期英文单词，且至少设置两天备份；若是按月维度，格式为数字字符，如["1","2"]。
 	BackupPeriod []*string `json:"BackupPeriod,omitnil,omitempty" name:"BackupPeriod"`
 
 	// 实例日志备份保留时长，取值范围为7-1830，单位是天
@@ -7118,10 +7120,10 @@ func (r *ModifyBackupPlanResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyBaseBackupExpireTimeRequestParams struct {
-	// 实例ID。
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 数据备份ID。
+	// 数据备份ID。可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取
 	BaseBackupId *string `json:"BaseBackupId,omitnil,omitempty" name:"BaseBackupId"`
 
 	// 新过期时间。
@@ -7131,10 +7133,10 @@ type ModifyBaseBackupExpireTimeRequestParams struct {
 type ModifyBaseBackupExpireTimeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 数据备份ID。
+	// 数据备份ID。可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取
 	BaseBackupId *string `json:"BaseBackupId,omitnil,omitempty" name:"BaseBackupId"`
 
 	// 新过期时间。
@@ -7972,7 +7974,7 @@ type ModifyDBInstancesProjectRequestParams struct {
 	// 实例ID集合。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。支持同时操作多个实例。
 	DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitnil,omitempty" name:"DBInstanceIdSet"`
 
-	// 所属新项目的ID。可通过[DescribeProject](https://cloud.tencent.com/document/api/651/78725)获取
+	// 所属新项目的ID。可通过[DescribeProjects](https://cloud.tencent.com/document/api/651/78725)获取
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -7982,7 +7984,7 @@ type ModifyDBInstancesProjectRequest struct {
 	// 实例ID集合。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。支持同时操作多个实例。
 	DBInstanceIdSet []*string `json:"DBInstanceIdSet,omitnil,omitempty" name:"DBInstanceIdSet"`
 
-	// 所属新项目的ID。可通过[DescribeProject](https://cloud.tencent.com/document/api/651/78725)获取
+	// 所属新项目的ID。可通过[DescribeProjects](https://cloud.tencent.com/document/api/651/78725)获取
 	ProjectId *string `json:"ProjectId,omitnil,omitempty" name:"ProjectId"`
 }
 
@@ -8176,7 +8178,7 @@ func (r *ModifyMaintainTimeWindowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyParameterTemplateRequestParams struct {
-	// 参数模板ID，用于唯一确认参数模板，不可修改
+	// 参数模板ID，用于唯一确认参数模板，不可修改。可通过[DescribeParameterTemplates](https://cloud.tencent.com/document/api/409/84067)接口获取
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 参数模板名称，长度为1～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@  注：若该字段为空    ，则保持原参数模板名称
@@ -8195,7 +8197,7 @@ type ModifyParameterTemplateRequestParams struct {
 type ModifyParameterTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 参数模板ID，用于唯一确认参数模板，不可修改
+	// 参数模板ID，用于唯一确认参数模板，不可修改。可通过[DescribeParameterTemplates](https://cloud.tencent.com/document/api/409/84067)接口获取
 	TemplateId *string `json:"TemplateId,omitnil,omitempty" name:"TemplateId"`
 
 	// 参数模板名称，长度为1～60个字符，仅支持数字,英文大小写字母、中文以及特殊字符_-./()（）[]+=：:@  注：若该字段为空    ，则保持原参数模板名称
@@ -8269,10 +8271,10 @@ type ModifyPrivilege struct {
 
 // Predefined struct for user
 type ModifyReadOnlyDBInstanceWeightRequestParams struct {
-	// 实例ID
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 只读组ID
+	// 只读组ID。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
 	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitnil,omitempty" name:"ReadOnlyGroupId"`
 
 	// 只读实例在只读组中的流量权重(1-50)
@@ -8282,10 +8284,10 @@ type ModifyReadOnlyDBInstanceWeightRequestParams struct {
 type ModifyReadOnlyDBInstanceWeightRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
-	// 只读组ID
+	// 只读组ID。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
 	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitnil,omitempty" name:"ReadOnlyGroupId"`
 
 	// 只读实例在只读组中的流量权重(1-50)
@@ -8895,14 +8897,14 @@ type ReadOnlyGroup struct {
 
 // Predefined struct for user
 type RebalanceReadOnlyGroupRequestParams struct {
-	// 只读组ID
+	// 只读组ID。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
 	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitnil,omitempty" name:"ReadOnlyGroupId"`
 }
 
 type RebalanceReadOnlyGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 只读组ID
+	// 只读组ID。可通过[DescribeReadOnlyGroups](https://cloud.tencent.com/document/api/409/52599)接口获取
 	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitnil,omitempty" name:"ReadOnlyGroupId"`
 }
 
@@ -9257,13 +9259,13 @@ func (r *RestartDBInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RestoreDBInstanceObjectsRequestParams struct {
-	// 实例ID。
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
 	// 需要恢复的对象列表。假设需要恢复的对象名为user，则恢复后的名称为user_bak_${LinuxTime}。${LinuxTime}无法指定，由系统根据任务发起的linux时间设定。
 	RestoreObjects []*string `json:"RestoreObjects,omitnil,omitempty" name:"RestoreObjects"`
 
-	// 恢复所用备份集。BackupSetId与RestoreTargetTime有且只能传一个。
+	// 恢复所用备份集。BackupSetId与RestoreTargetTime有且只能传一个。可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取
 	BackupSetId *string `json:"BackupSetId,omitnil,omitempty" name:"BackupSetId"`
 
 	// 恢复目标时间，北京时间。BackupSetId与RestoreTargetTime有且只能传一个。
@@ -9273,13 +9275,13 @@ type RestoreDBInstanceObjectsRequestParams struct {
 type RestoreDBInstanceObjectsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID。
+	// 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
 	DBInstanceId *string `json:"DBInstanceId,omitnil,omitempty" name:"DBInstanceId"`
 
 	// 需要恢复的对象列表。假设需要恢复的对象名为user，则恢复后的名称为user_bak_${LinuxTime}。${LinuxTime}无法指定，由系统根据任务发起的linux时间设定。
 	RestoreObjects []*string `json:"RestoreObjects,omitnil,omitempty" name:"RestoreObjects"`
 
-	// 恢复所用备份集。BackupSetId与RestoreTargetTime有且只能传一个。
+	// 恢复所用备份集。BackupSetId与RestoreTargetTime有且只能传一个。可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取
 	BackupSetId *string `json:"BackupSetId,omitnil,omitempty" name:"BackupSetId"`
 
 	// 恢复目标时间，北京时间。BackupSetId与RestoreTargetTime有且只能传一个。

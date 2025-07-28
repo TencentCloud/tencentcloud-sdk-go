@@ -123,6 +123,7 @@ type Activity struct {
 	// <li>action-adaptive-substream：自适应码流</li>
 	// <li>action-AIQualityControl：媒体质检</li>
 	// <li>action-SmartSubtitles：智能字幕</li>
+	// <li>action-exec-rules：判断规则</li>
 	// 
 	// 
 	ActivityType *string `json:"ActivityType,omitnil,omitempty" name:"ActivityType"`
@@ -176,6 +177,10 @@ type ActivityPara struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QualityControlTask *AiQualityControlTaskInput `json:"QualityControlTask,omitnil,omitempty" name:"QualityControlTask"`
 
+	// 任务条件判断
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecRulesTask *ExecRulesTask `json:"ExecRulesTask,omitnil,omitempty" name:"ExecRulesTask"`
+
 	// 智能字幕任务
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SmartSubtitlesTask *SmartSubtitlesTaskInput `json:"SmartSubtitlesTask,omitnil,omitempty" name:"SmartSubtitlesTask"`
@@ -221,6 +226,10 @@ type ActivityResItem struct {
 	// 媒体质检任务输出
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QualityControlTask *ScheduleQualityControlTaskResult `json:"QualityControlTask,omitnil,omitempty" name:"QualityControlTask"`
+
+	// 条件判断任务输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecRuleTask *ScheduleExecRuleTaskResult `json:"ExecRuleTask,omitnil,omitempty" name:"ExecRuleTask"`
 
 	// 智能字幕任务输出
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -302,6 +311,9 @@ type AdaptiveDynamicStreamingTaskInput struct {
 	// 字幕参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubtitleTemplate *SubtitleTemplate `json:"SubtitleTemplate,omitnil,omitempty" name:"SubtitleTemplate"`
+
+	// 转码参数扩展字段
+	StdExtInfo *string `json:"StdExtInfo,omitnil,omitempty" name:"StdExtInfo"`
 }
 
 type AdaptiveDynamicStreamingTemplate struct {
@@ -549,6 +561,10 @@ type AiAnalysisTaskDelLogoOutput struct {
 
 	// 基于画面提取的字幕翻译文件路径。
 	TranslateSubtitlePath *string `json:"TranslateSubtitlePath,omitnil,omitempty" name:"TranslateSubtitlePath"`
+
+	// 擦除的字幕位置。**注意**：仅对字幕提取且开启返回字幕位置时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubtitlePos *SubtitlePosition `json:"SubtitlePos,omitnil,omitempty" name:"SubtitlePos"`
 }
 
 type AiAnalysisTaskDelLogoResult struct {
@@ -10880,6 +10896,12 @@ type DescribeTasksRequestParams struct {
 
 	// 翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
 	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
+
+	// 查询任务开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询任务结束时间。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 type DescribeTasksRequest struct {
@@ -10893,6 +10915,12 @@ type DescribeTasksRequest struct {
 
 	// 翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
 	ScrollToken *string `json:"ScrollToken,omitnil,omitempty" name:"ScrollToken"`
+
+	// 查询任务开始时间
+	StartTime *string `json:"StartTime,omitnil,omitempty" name:"StartTime"`
+
+	// 查询任务结束时间。
+	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
 func (r *DescribeTasksRequest) ToJsonString() string {
@@ -10910,6 +10938,8 @@ func (r *DescribeTasksRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "Limit")
 	delete(f, "ScrollToken")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTasksRequest has unknown keys!", "")
 	}
@@ -12194,6 +12224,17 @@ type EvaluationTemplateInputInfo struct {
 	Definition *uint64 `json:"Definition,omitnil,omitempty" name:"Definition"`
 }
 
+type ExecRuleTaskData struct {
+	// 质检条件判断需要执行的节点索引。
+	RearDriveIndex []*int64 `json:"RearDriveIndex,omitnil,omitempty" name:"RearDriveIndex"`
+}
+
+type ExecRulesTask struct {
+	// 条件判断信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rules []*Rules `json:"Rules,omitnil,omitempty" name:"Rules"`
+}
+
 // Predefined struct for user
 type ExecuteFunctionRequestParams struct {
 	// 调用后端接口名称。
@@ -12712,11 +12753,9 @@ type HighlightSegmentItem struct {
 	SegmentTags []*string `json:"SegmentTags,omitnil,omitempty" name:"SegmentTags"`
 
 	// 直播切片对应直播起始时间点，采用 ISO 日期格式。	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginTime *string `json:"BeginTime,omitnil,omitempty" name:"BeginTime"`
 
 	// 直播切片对应直播结束时间点，采用 ISO 日期格式。	
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil,omitempty" name:"EndTime"`
 }
 
@@ -13062,7 +13101,6 @@ type LiveActivityResult struct {
 	// 原子任务类型。
 	// <li>LiveRecord：直播录制。</li>
 	// <li>AiQualityControl：媒体质检。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActivityType *string `json:"ActivityType,omitnil,omitempty" name:"ActivityType"`
 
 	// 原子任务输出。
@@ -13178,25 +13216,20 @@ type LiveScheduleLiveRecordTaskResult struct {
 
 type LiveScheduleTask struct {
 	// 直播编排任务 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitnil,omitempty" name:"TaskId"`
 
 	// 任务流状态，取值：
 	// <li>PROCESSING：处理中；</li>
 	// <li>FINISH：已完成。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
 
 	// 源异常时返回非0错误码，返回0 时请使用各个具体任务的 ErrCode。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrCode *int64 `json:"ErrCode,omitnil,omitempty" name:"ErrCode"`
 
 	// 源异常时返回对应异常Message，否则请使用各个具体任务的 Message。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
 
 	// 直播流 URL。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitnil,omitempty" name:"Url"`
 
 	// 直播编排任务输出。
@@ -13852,6 +13885,9 @@ type MediaAiAnalysisTagItem struct {
 
 	// 标签的可信度，取值范围是 0 到 100。
 	Confidence *float64 `json:"Confidence,omitnil,omitempty" name:"Confidence"`
+
+	// 根据不同类型决定
+	SpecialInfo *string `json:"SpecialInfo,omitnil,omitempty" name:"SpecialInfo"`
 }
 
 type MediaAnimatedGraphicsItem struct {
@@ -14197,6 +14233,7 @@ type MediaProcessTaskImageSpriteResult struct {
 	Input *ImageSpriteTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 对视频截雪碧图任务的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaImageSpriteItem `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
@@ -14279,6 +14316,7 @@ type MediaProcessTaskSampleSnapshotResult struct {
 	Input *SampleSnapshotTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 对视频做采样截图任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaSampleSnapshotItem `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
@@ -14305,6 +14343,7 @@ type MediaProcessTaskSnapshotByTimeOffsetResult struct {
 	Input *SnapshotByTimeOffsetTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 对视频按指定时间点截图任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *MediaSnapshotByTimeOffsetItem `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
@@ -17840,6 +17879,9 @@ type ProcessMediaRequestParams struct {
 	// 媒体质检类型任务参数。
 	AiQualityControlTask *AiQualityControlTaskInput `json:"AiQualityControlTask,omitnil,omitempty" name:"AiQualityControlTask"`
 
+	// 智能字幕
+	SmartSubtitlesTask *SmartSubtitlesTaskInput `json:"SmartSubtitlesTask,omitnil,omitempty" name:"SmartSubtitlesTask"`
+
 	// 任务的事件通知信息，不填代表不获取事件通知。
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
 
@@ -17859,9 +17901,6 @@ type ProcessMediaRequestParams struct {
 
 	// 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
-
-	// 智能字幕
-	SmartSubtitlesTask *SmartSubtitlesTaskInput `json:"SmartSubtitlesTask,omitnil,omitempty" name:"SmartSubtitlesTask"`
 
 	// 是否跳过元信息获取，可选值： 
 	// 0：表示不跳过 
@@ -17909,6 +17948,9 @@ type ProcessMediaRequest struct {
 	// 媒体质检类型任务参数。
 	AiQualityControlTask *AiQualityControlTaskInput `json:"AiQualityControlTask,omitnil,omitempty" name:"AiQualityControlTask"`
 
+	// 智能字幕
+	SmartSubtitlesTask *SmartSubtitlesTaskInput `json:"SmartSubtitlesTask,omitnil,omitempty" name:"SmartSubtitlesTask"`
+
 	// 任务的事件通知信息，不填代表不获取事件通知。
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil,omitempty" name:"TaskNotifyConfig"`
 
@@ -17928,9 +17970,6 @@ type ProcessMediaRequest struct {
 
 	// 资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。
 	ResourceId *string `json:"ResourceId,omitnil,omitempty" name:"ResourceId"`
-
-	// 智能字幕
-	SmartSubtitlesTask *SmartSubtitlesTaskInput `json:"SmartSubtitlesTask,omitnil,omitempty" name:"SmartSubtitlesTask"`
 
 	// 是否跳过元信息获取，可选值： 
 	// 0：表示不跳过 
@@ -17960,13 +17999,13 @@ func (r *ProcessMediaRequest) FromJsonString(s string) error {
 	delete(f, "AiAnalysisTask")
 	delete(f, "AiRecognitionTask")
 	delete(f, "AiQualityControlTask")
+	delete(f, "SmartSubtitlesTask")
 	delete(f, "TaskNotifyConfig")
 	delete(f, "TasksPriority")
 	delete(f, "SessionId")
 	delete(f, "SessionContext")
 	delete(f, "TaskType")
 	delete(f, "ResourceId")
-	delete(f, "SmartSubtitlesTask")
 	delete(f, "SkipMateData")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessMediaRequest has unknown keys!", "")
@@ -18071,27 +18110,21 @@ type ProhibitedOcrReviewTemplateInfoForUpdate struct {
 
 type QualityControlData struct {
 	// 为true时表示视频无音频轨。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoAudio *bool `json:"NoAudio,omitnil,omitempty" name:"NoAudio"`
 
 	// 为true时表示视频无视频轨。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoVideo *bool `json:"NoVideo,omitnil,omitempty" name:"NoVideo"`
 
 	// 视频无参考质量评分，百分制。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QualityEvaluationScore *int64 `json:"QualityEvaluationScore,omitnil,omitempty" name:"QualityEvaluationScore"`
 
 	// 视频无参考质量评分，MOS分数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QualityEvaluationMeanOpinionScore *float64 `json:"QualityEvaluationMeanOpinionScore,omitnil,omitempty" name:"QualityEvaluationMeanOpinionScore"`
 
 	// 内容质检检出异常项。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	QualityControlResultSet []*QualityControlResult `json:"QualityControlResultSet,omitnil,omitempty" name:"QualityControlResultSet"`
 
-	// 格式诊断检出异常项
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 格式诊断检出异常项。
 	ContainerDiagnoseResultSet []*ContainerDiagnoseResultItem `json:"ContainerDiagnoseResultSet,omitnil,omitempty" name:"ContainerDiagnoseResultSet"`
 }
 
@@ -18226,6 +18259,15 @@ type QualityControlResult struct {
 	QualityControlItems []*QualityControlItem `json:"QualityControlItems,omitnil,omitempty" name:"QualityControlItems"`
 }
 
+type QualityControlStrategy struct {
+	// 策略类型。取值：
+	// - TimeSpotCheck
+	StrategyType *string `json:"StrategyType,omitnil,omitempty" name:"StrategyType"`
+
+	// 根据时间的抽检策略。
+	TimeSpotCheck *TimeSpotCheck `json:"TimeSpotCheck,omitnil,omitempty" name:"TimeSpotCheck"`
+}
+
 type QualityControlTemplate struct {
 	// 媒体质检模板唯一标识。
 	Definition *int64 `json:"Definition,omitnil,omitempty" name:"Definition"`
@@ -18255,6 +18297,9 @@ type QualityControlTemplate struct {
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil,omitempty" name:"UpdateTime"`
+
+	// 媒体质检的抽检策略。
+	Strategy *QualityControlStrategy `json:"Strategy,omitnil,omitempty" name:"Strategy"`
 }
 
 type RTMPAddressDestination struct {
@@ -18668,6 +18713,34 @@ type ResilientStreamConf struct {
 	BufferTime *uint64 `json:"BufferTime,omitnil,omitempty" name:"BufferTime"`
 }
 
+type RuleConditionItem struct {
+	// 质检项条件对应的Key。
+	Key *string `json:"Key,omitnil,omitempty" name:"Key"`
+
+	// 条件对应的Value。
+	Value *string `json:"Value,omitnil,omitempty" name:"Value"`
+}
+
+type Rules struct {
+	// 判断条件id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil,omitempty" name:"Id"`
+
+	// 判断条件配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Conditions []*RuleConditionItem `json:"Conditions,omitnil,omitempty" name:"Conditions"`
+
+	// 条件列表的链接符号，取值如下：
+	// 
+	// - &&：逻辑与
+	// - ||：逻辑或
+	Linker *string `json:"Linker,omitnil,omitempty" name:"Linker"`
+
+	// 满足判断条件执行节点索引；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RearDriveIndexs []*int64 `json:"RearDriveIndexs,omitnil,omitempty" name:"RearDriveIndexs"`
+}
+
 type S3InputInfo struct {
 	// S3 bucket。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -18863,16 +18936,31 @@ type ScheduleAnalysisTaskResult struct {
 	Input *AiAnalysisTaskInput `json:"Input,omitnil,omitempty" name:"Input"`
 
 	// 分析任务的输出。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output []*AiAnalysisResult `json:"Output,omitnil,omitempty" name:"Output"`
 
 	// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginProcessTime *string `json:"BeginProcessTime,omitnil,omitempty" name:"BeginProcessTime"`
 
 	// 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	FinishTime *string `json:"FinishTime,omitnil,omitempty" name:"FinishTime"`
+}
+
+type ScheduleExecRuleTaskResult struct {
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitnil,omitempty" name:"Status"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitnil,omitempty" name:"ErrCodeExt"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitnil,omitempty" name:"Message"`
+
+	// 条件判断任务的输入。
+	Input *ExecRulesTask `json:"Input,omitnil,omitempty" name:"Input"`
+
+	// 条件判断任务的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *ExecRuleTaskData `json:"Output,omitnil,omitempty" name:"Output"`
 }
 
 type ScheduleQualityControlTaskResult struct {
@@ -19450,8 +19538,8 @@ type SmartSubtitleTemplateItem struct {
 }
 
 type SmartSubtitlesResult struct {
-	// 任务的类型，取值范围：
-	// <li>AsrFullTextRecognition：语音全文识别，</li>
+	// 任务的类型，取值范围： 
+	// <li>AsrFullTextRecognition：语音全文识别，</li> 
 	// <li>TransTextRecognition：语音翻译。</li>
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
 
@@ -19477,6 +19565,24 @@ type SmartSubtitlesTaskInput struct {
 	// 智能字幕自定义参数，当 Definition 填 0 时有效。 该参数用于高度定制场景，建议您优先使用 Definition 指定智能字幕参数。	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RawParameter *RawSmartSubtitleParameter `json:"RawParameter,omitnil,omitempty" name:"RawParameter"`
+
+	// 媒体处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。 
+	// **注意**：当InputInfo.Type为URL时，该参数是必填项。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil,omitempty" name:"OutputStorage"`
+
+	// 生成字幕文件的输出路径，可以为相对路径或者绝对路径。
+	// 若需定义输出路径，路径需以`.{format}`结尾。变量名请参考 [文件名变量说明](https://cloud.tencent.com/document/product/862/37039)。
+	// 
+	// 相对路径示例:
+	// - 文件名_{变量名}.{format}
+	// - 文件名.{format}
+	// 
+	// 绝对路径示例：
+	// - /自定义路径/文件名_{变量名}.{format}
+	// 
+	// 如果不填，则默认为相对路径: `{inputName}_smartsubtitle_{definition}.{format}`。
+	OutputObjectPath *string `json:"OutputObjectPath,omitnil,omitempty" name:"OutputObjectPath"`
 }
 
 type SnapshotByTimeOffsetTaskInput struct {
@@ -19715,6 +19821,11 @@ type StreamUrlDetail struct {
 
 	// Playback: 拉流播放地址； RelayDestination：转推目的地址；SourceCaptureUrl：回源拉流地址；IngestEndpoint：推流地址
 	Type *string `json:"Type,omitnil,omitempty" name:"Type"`
+}
+
+type SubtitlePosition struct {
+	// 居中位置时Y的坐标值
+	CenterY *int64 `json:"CenterY,omitnil,omitempty" name:"CenterY"`
 }
 
 type SubtitleTemplate struct {
@@ -20131,6 +20242,23 @@ type TextWatermarkTemplateInputForUpdate struct {
 
 	// 文字内容，长度不超过100个字符。
 	TextContent *string `json:"TextContent,omitnil,omitempty" name:"TextContent"`
+}
+
+type TimeSpotCheck struct {
+	// 抽检策略的每次循环检测的时长。取值范围（单位s）：
+	// 
+	// - 最小值：10
+	// - 最大值：86400
+	CheckDuration *uint64 `json:"CheckDuration,omitnil,omitempty" name:"CheckDuration"`
+
+	// 抽检测略的检测间隔，表示在一次检测结束后，等待多长时间后，再次检测。
+	CheckInterval *uint64 `json:"CheckInterval,omitnil,omitempty" name:"CheckInterval"`
+
+	// 片头跳过时长。
+	SkipDuration *uint64 `json:"SkipDuration,omitnil,omitempty" name:"SkipDuration"`
+
+	// 循环次数，该字段为空或 0 时，默认循环直至视频结束。
+	CirclesNumber *uint64 `json:"CirclesNumber,omitnil,omitempty" name:"CirclesNumber"`
 }
 
 type TrackInfo struct {

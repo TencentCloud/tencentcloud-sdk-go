@@ -8438,6 +8438,9 @@ type UploadCertificateRequestParams struct {
 
 	// 相同的证书是否允许重复上传； true：允许上传相同指纹的证书；  false：不允许上传相同指纹的证书； 默认值：true
 	Repeatable *bool `json:"Repeatable,omitnil,omitempty" name:"Repeatable"`
+
+	// 私钥密码
+	KeyPassword *string `json:"KeyPassword,omitnil,omitempty" name:"KeyPassword"`
 }
 
 type UploadCertificateRequest struct {
@@ -8466,6 +8469,9 @@ type UploadCertificateRequest struct {
 
 	// 相同的证书是否允许重复上传； true：允许上传相同指纹的证书；  false：不允许上传相同指纹的证书； 默认值：true
 	Repeatable *bool `json:"Repeatable,omitnil,omitempty" name:"Repeatable"`
+
+	// 私钥密码
+	KeyPassword *string `json:"KeyPassword,omitnil,omitempty" name:"KeyPassword"`
 }
 
 func (r *UploadCertificateRequest) ToJsonString() string {
@@ -8488,6 +8494,7 @@ func (r *UploadCertificateRequest) FromJsonString(s string) error {
 	delete(f, "CertificateUse")
 	delete(f, "Tags")
 	delete(f, "Repeatable")
+	delete(f, "KeyPassword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadCertificateRequest has unknown keys!", "")
 	}

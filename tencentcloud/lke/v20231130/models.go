@@ -4619,6 +4619,12 @@ type DescribeTokenUsageResponseParams struct {
 	// 联网搜索次数
 	InternetSearchUsage *float64 `json:"InternetSearchUsage,omitnil,omitempty" name:"InternetSearchUsage"`
 
+	// dosage配额限制
+	DosageTypeLimit *float64 `json:"DosageTypeLimit,omitnil,omitempty" name:"DosageTypeLimit"`
+
+	// dosage当前用量	
+	DosageTypeCurr *float64 `json:"DosageTypeCurr,omitnil,omitempty" name:"DosageTypeCurr"`
+
 	// 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil,omitempty" name:"RequestId"`
 }

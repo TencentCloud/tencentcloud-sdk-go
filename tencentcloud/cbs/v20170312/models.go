@@ -1033,6 +1033,9 @@ type CreateSnapshotRequestParams struct {
 
 	// 快照绑定的标签。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 快照关联云硬盘类型, SYSTEM_DISK: 系统盘, DATA_DISK: 数据盘,非必填参数，不填时快照类型与云盘类型保持一致， 该参数基于某些场景用户需要将系统盘创建出数据盘快照共享使用。
+	DiskUsage *string `json:"DiskUsage,omitnil,omitempty" name:"DiskUsage"`
 }
 
 type CreateSnapshotRequest struct {
@@ -1052,6 +1055,9 @@ type CreateSnapshotRequest struct {
 
 	// 快照绑定的标签。
 	Tags []*Tag `json:"Tags,omitnil,omitempty" name:"Tags"`
+
+	// 快照关联云硬盘类型, SYSTEM_DISK: 系统盘, DATA_DISK: 数据盘,非必填参数，不填时快照类型与云盘类型保持一致， 该参数基于某些场景用户需要将系统盘创建出数据盘快照共享使用。
+	DiskUsage *string `json:"DiskUsage,omitnil,omitempty" name:"DiskUsage"`
 }
 
 func (r *CreateSnapshotRequest) ToJsonString() string {
@@ -1071,6 +1077,7 @@ func (r *CreateSnapshotRequest) FromJsonString(s string) error {
 	delete(f, "Deadline")
 	delete(f, "DiskBackupId")
 	delete(f, "Tags")
+	delete(f, "DiskUsage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSnapshotRequest has unknown keys!", "")
 	}

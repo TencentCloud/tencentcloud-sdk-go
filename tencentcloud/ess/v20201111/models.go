@@ -6563,6 +6563,18 @@ type CreateOrganizationAuthUrlRequestParams struct {
 	// 
 	// 在. 企业引导企业实名认证后回调中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_staffs" target="_blank">回调通知</a>模块。
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 组织机构对公打款账号，账户名跟企业名称一致。
+	// 
+	// p.s.
+	// 只有认证方式是授权书+对公打款时才生效。
+	BankAccountNumber *string `json:"BankAccountNumber,omitnil,omitempty" name:"BankAccountNumber"`
+
+	// 对方打开链接认证时，对公打款账号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
+	// 
+	// 
+	// p.s. 仅在对公打款不为空时有效
+	BankAccountNumberSame *bool `json:"BankAccountNumberSame,omitnil,omitempty" name:"BankAccountNumberSame"`
 }
 
 type CreateOrganizationAuthUrlRequest struct {
@@ -6678,6 +6690,18 @@ type CreateOrganizationAuthUrlRequest struct {
 	// 
 	// 在. 企业引导企业实名认证后回调中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_staffs" target="_blank">回调通知</a>模块。
 	UserData *string `json:"UserData,omitnil,omitempty" name:"UserData"`
+
+	// 组织机构对公打款账号，账户名跟企业名称一致。
+	// 
+	// p.s.
+	// 只有认证方式是授权书+对公打款时才生效。
+	BankAccountNumber *string `json:"BankAccountNumber,omitnil,omitempty" name:"BankAccountNumber"`
+
+	// 对方打开链接认证时，对公打款账号是否要与接口传递上来的保持一致。<ul><li><b>false（默认值）</b>：关闭状态，实际认证时允许与接口传递的信息存在不一致。</li><li><b>true</b>：启用状态，实际认证时必须与接口传递的信息完全相符。</li></ul>
+	// 
+	// 
+	// p.s. 仅在对公打款不为空时有效
+	BankAccountNumberSame *bool `json:"BankAccountNumberSame,omitnil,omitempty" name:"BankAccountNumberSame"`
 }
 
 func (r *CreateOrganizationAuthUrlRequest) ToJsonString() string {
@@ -6714,6 +6738,8 @@ func (r *CreateOrganizationAuthUrlRequest) FromJsonString(s string) error {
 	delete(f, "Initialization")
 	delete(f, "PowerOfAttorneys")
 	delete(f, "UserData")
+	delete(f, "BankAccountNumber")
+	delete(f, "BankAccountNumberSame")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationAuthUrlRequest has unknown keys!", "")
 	}

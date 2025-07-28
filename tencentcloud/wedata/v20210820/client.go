@@ -10239,6 +10239,59 @@ func (c *Client) DescribeTaskLockStatusWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeTaskParamDsRequest() (request *DescribeTaskParamDsRequest) {
+    request = &DescribeTaskParamDsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeTaskParamDs")
+    
+    
+    return
+}
+
+func NewDescribeTaskParamDsResponse() (response *DescribeTaskParamDsResponse) {
+    response = &DescribeTaskParamDsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// DescribeTaskParamDs
+// 查询任务引用参数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeTaskParamDs(request *DescribeTaskParamDsRequest) (response *DescribeTaskParamDsResponse, err error) {
+    return c.DescribeTaskParamDsWithContext(context.Background(), request)
+}
+
+// DescribeTaskParamDs
+// 查询任务引用参数
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeTaskParamDsWithContext(ctx context.Context, request *DescribeTaskParamDsRequest) (response *DescribeTaskParamDsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskParamDsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTaskParamDs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTaskParamDsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTaskRunHistoryRequest() (request *DescribeTaskRunHistoryRequest) {
     request = &DescribeTaskRunHistoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11862,6 +11915,55 @@ func (c *Client) GetIntegrationNodeColumnSchemaWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewGetIntegrationNodeColumnSchemaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetJobStatusRequest() (request *GetJobStatusRequest) {
+    request = &GetJobStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "GetJobStatus")
+    
+    
+    return
+}
+
+func NewGetJobStatusResponse() (response *GetJobStatusResponse) {
+    response = &GetJobStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// GetJobStatus
+// 获取异步任务执行结果
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GetJobStatus(request *GetJobStatusRequest) (response *GetJobStatusResponse, err error) {
+    return c.GetJobStatusWithContext(context.Background(), request)
+}
+
+// GetJobStatus
+// 获取异步任务执行结果
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) GetJobStatusWithContext(ctx context.Context, request *GetJobStatusRequest) (response *GetJobStatusResponse, err error) {
+    if request == nil {
+        request = NewGetJobStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetJobStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetJobStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -13900,6 +14002,153 @@ func (c *Client) RegisterEventListenerWithContext(ctx context.Context, request *
     return
 }
 
+func NewRemoveDatabaseRequest() (request *RemoveDatabaseRequest) {
+    request = &RemoveDatabaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "RemoveDatabase")
+    
+    
+    return
+}
+
+func NewRemoveDatabaseResponse() (response *RemoveDatabaseResponse) {
+    response = &RemoveDatabaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RemoveDatabase
+// 移除database元数据
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RemoveDatabase(request *RemoveDatabaseRequest) (response *RemoveDatabaseResponse, err error) {
+    return c.RemoveDatabaseWithContext(context.Background(), request)
+}
+
+// RemoveDatabase
+// 移除database元数据
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RemoveDatabaseWithContext(ctx context.Context, request *RemoveDatabaseRequest) (response *RemoveDatabaseResponse, err error) {
+    if request == nil {
+        request = NewRemoveDatabaseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveDatabase require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveDatabaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveSchemaRequest() (request *RemoveSchemaRequest) {
+    request = &RemoveSchemaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "RemoveSchema")
+    
+    
+    return
+}
+
+func NewRemoveSchemaResponse() (response *RemoveSchemaResponse) {
+    response = &RemoveSchemaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RemoveSchema
+// 移除schema元数据
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RemoveSchema(request *RemoveSchemaRequest) (response *RemoveSchemaResponse, err error) {
+    return c.RemoveSchemaWithContext(context.Background(), request)
+}
+
+// RemoveSchema
+// 移除schema元数据
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RemoveSchemaWithContext(ctx context.Context, request *RemoveSchemaRequest) (response *RemoveSchemaResponse, err error) {
+    if request == nil {
+        request = NewRemoveSchemaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveSchema require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveSchemaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveTableRequest() (request *RemoveTableRequest) {
+    request = &RemoveTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "RemoveTable")
+    
+    
+    return
+}
+
+func NewRemoveTableResponse() (response *RemoveTableResponse) {
+    response = &RemoveTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// RemoveTable
+// 移除table元数据
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RemoveTable(request *RemoveTableRequest) (response *RemoveTableResponse, err error) {
+    return c.RemoveTableWithContext(context.Background(), request)
+}
+
+// RemoveTable
+// 移除table元数据
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) RemoveTableWithContext(ctx context.Context, request *RemoveTableRequest) (response *RemoveTableResponse, err error) {
+    if request == nil {
+        request = NewRemoveTableRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRemoveWorkflowDsRequest() (request *RemoveWorkflowDsRequest) {
     request = &RemoveWorkflowDsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14043,6 +14292,153 @@ func (c *Client) RenewWorkflowSchedulerInfoDsWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewRenewWorkflowSchedulerInfoDsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReportDatabaseRequest() (request *ReportDatabaseRequest) {
+    request = &ReportDatabaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ReportDatabase")
+    
+    
+    return
+}
+
+func NewReportDatabaseResponse() (response *ReportDatabaseResponse) {
+    response = &ReportDatabaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReportDatabase
+// 上报database元数据
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ReportDatabase(request *ReportDatabaseRequest) (response *ReportDatabaseResponse, err error) {
+    return c.ReportDatabaseWithContext(context.Background(), request)
+}
+
+// ReportDatabase
+// 上报database元数据
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ReportDatabaseWithContext(ctx context.Context, request *ReportDatabaseRequest) (response *ReportDatabaseResponse, err error) {
+    if request == nil {
+        request = NewReportDatabaseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReportDatabase require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReportDatabaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReportSchemaRequest() (request *ReportSchemaRequest) {
+    request = &ReportSchemaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ReportSchema")
+    
+    
+    return
+}
+
+func NewReportSchemaResponse() (response *ReportSchemaResponse) {
+    response = &ReportSchemaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReportSchema
+// 上报schema元数据
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ReportSchema(request *ReportSchemaRequest) (response *ReportSchemaResponse, err error) {
+    return c.ReportSchemaWithContext(context.Background(), request)
+}
+
+// ReportSchema
+// 上报schema元数据
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ReportSchemaWithContext(ctx context.Context, request *ReportSchemaRequest) (response *ReportSchemaResponse, err error) {
+    if request == nil {
+        request = NewReportSchemaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReportSchema require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReportSchemaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReportTableRequest() (request *ReportTableRequest) {
+    request = &ReportTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ReportTable")
+    
+    
+    return
+}
+
+func NewReportTableResponse() (response *ReportTableResponse) {
+    response = &ReportTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    } 
+    return
+
+}
+
+// ReportTable
+// 上报table元数据
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ReportTable(request *ReportTableRequest) (response *ReportTableResponse, err error) {
+    return c.ReportTableWithContext(context.Background(), request)
+}
+
+// ReportTable
+// 上报table元数据
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ReportTableWithContext(ctx context.Context, request *ReportTableRequest) (response *ReportTableResponse, err error) {
+    if request == nil {
+        request = NewReportTableRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReportTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReportTableResponse()
     err = c.Send(request, response)
     return
 }
